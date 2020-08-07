@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857804"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985611"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>De REST API voor modelconversie gebruiken
 
@@ -53,6 +53,8 @@ Retourneert de ID van de actieve conversie, verpakt in een JSON-document. De vel
 
 #### <a name="request-body"></a>Aanvraagbody
 
+> [!NOTE]
+> Alles onder `input.folderPath` wordt opgehaald om de conversie uit te voeren op Azure. Als `input.folderPath` niet wordt opgegeven, wordt de volledige inhoud van de container opgehaald. Alle blobs en mappen die worden opgehaald, moeten [geldige Windows-bestands namen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)hebben.
 
 ```json
 {
@@ -79,7 +81,7 @@ Als uw ARR-account niet is gekoppeld aan uw opslag account, kunt u met deze REST
 |-----------|:-----------|
 | /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
-Retourneert de ID van de actieve conversie, verpakt in een JSON-document. De veld naam is "conversionId".
+Retourneert de ID van de actieve conversie, verpakt in een JSON-document. De veld naam is `conversionId` .
 
 #### <a name="request-body"></a>Aanvraagbody
 
@@ -88,6 +90,8 @@ De aanvraag tekst is hetzelfde als in de bovenstaande REST-aanroep maken, maar d
 > [!NOTE]
 > Deze SAS URI-tokens zijn de query teken reeksen en niet de volledige URI. 
 
+> [!NOTE]
+> Alles onder `input.folderPath` wordt opgehaald om de conversie uit te voeren op Azure. Als `input.folderPath` niet wordt opgegeven, wordt de volledige inhoud van de container opgehaald. Alle blobs en mappen die worden opgehaald, moeten [geldige Windows-bestands namen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)hebben.
 
 ```json
 {

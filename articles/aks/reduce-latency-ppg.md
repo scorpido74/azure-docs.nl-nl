@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 07/10/2020
 author: jluk
-ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056586"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986709"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Minder latentie met proximity-plaatsings groepen (preview-versie)
 
@@ -26,11 +26,7 @@ Wanneer u uw toepassing in azure implementeert, wordt er netwerk latentie gemaak
 * Een knooppunt groep moet Virtual Machine Scale Sets gebruiken om een proximity-plaatsings groep te koppelen.
 * Een knooppunt groep kan alleen een proximity-plaatsings groep koppelen aan de groep van de nodegroep.
 
-> [!IMPORTANT]
-> AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
->
-> - [AKS-ondersteunings beleid](support-policies.md)
-> - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

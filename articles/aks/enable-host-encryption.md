@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een op een host gebaseerd
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: d2b34d8c3090eb6ae3f1445ff1fc663d90367977
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4b5deeec0b76520952345e9b03135fa094a1f78e
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517719"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986862"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Versleuteling op basis van een host op de Azure Kubernetes-service (AKS) (preview)
 
@@ -57,11 +57,7 @@ az provider register --namespace Microsoft.Compute
 az provider register --namespace Microsoft.ContainerService
 ```
 
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende ondersteunings artikelen voor meer informatie:
->
-> - [AKS-ondersteunings beleid](support-policies.md)
-> - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>De CLI-extensie aks-preview installeren
 

@@ -2,20 +2,27 @@
 title: Het implementatie quotum is overschreden
 description: Hierin wordt beschreven hoe u de fout van het gebruik van meer dan 800 implementaties in de geschiedenis van de resource groep kunt oplossen.
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391176"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987049"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Fout oplossen wanneer het aantal implementaties groter is dan 800
 
 Elke resource groep is beperkt tot 800 implementaties in de implementatie geschiedenis. In dit artikel wordt de fout beschreven die u ontvangt wanneer een implementatie mislukt, omdat deze de toegestane 800-implementaties zou overschrijden. U kunt deze fout oplossen door implementaties te verwijderen uit de geschiedenis van de resource groep. Het verwijderen van een implementatie uit de geschiedenis heeft geen invloed op de resources die zijn geïmplementeerd.
 
-> [!NOTE]
-> Azure Resource Manager begint binnenkort met het automatisch verwijderen van implementaties uit uw geschiedenis als u de limiet hebt bereikt. Deze fout kan nog steeds worden weer geven als u automatische verwijderingen hebt gekozen. Zie [automatische verwijderingen uit de implementatie geschiedenis](deployment-history-deletions.md)voor meer informatie.
+Met Azure Resource Manager worden implementaties automatisch uit uw geschiedenis verwijderd, net zoals u de limiet hebt bereikt. Deze fout wordt mogelijk nog steeds weer geven om een van de volgende redenen:
+
+1. U hebt een CanNotDelete-vergren deling voor de resource groep die het verwijderen van de implementatie geschiedenis voor komt.
+1. U hebt zich afgemeld voor automatische verwijderingen.
+1. Er is een groot aantal implementaties gelijktijdig actief en de automatische verwijderingen worden niet snel genoeg verwerkt om het totale aantal te verminderen.
+
+Zie voor meer informatie over het verwijderen van de vergren deling of het door geven van gegevens in automatische verwijderingen [automatische verwijderingen uit de implementatie geschiedenis](deployment-history-deletions.md).
+
+In dit artikel wordt beschreven hoe u hand matig implementaties uit de geschiedenis kunt verwijderen.
 
 ## <a name="symptom"></a>Symptoom
 

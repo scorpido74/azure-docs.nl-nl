@@ -8,30 +8,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: f2ce8f300ae7586fc16fd9170ec290b19875d01c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 67850490a3c1d972d4d03eec545068b1d9eb9fff
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371121"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986295"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
 De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u informatie over nieuwe releases en functies, zodat u op de hoogte blijft van recente ontwikkelingen.
 
-## <a name="july-2020"></a>Juli 2020
+## <a name="august-2020"></a>2020 augustus
+
+* Model versie `2020-07-01` voor de V3 `/keyphrases` `/pii` en `/languages` eind punten die het volgende toevoegen:
+    * Aanvullende overheids [Categorieën](named-entity-types.md?tabs=personal) en land instellingen voor benoemde entiteiten herkenning.
+* Er wordt nu een HTTP 400-fout geretourneerd voor v3 API-aanvragen die de gepubliceerde [gegevens limieten](concepts/data-limits.md)overschrijden. 
+
+## <a name="july-2020"></a>Juli 2020 
 
 ### <a name="text-analytics-for-health-container---public-gated-preview"></a>Text Analytics voor de status container-Public gated preview
 
-De Text Analytics voor de status container bevindt zich nu in Public gated preview, waarmee u informatie kunt ophalen uit ongestructureerde tekst in het Engels in klinische documenten, zoals: patiënten-formulieren, notities van dokters, onderzoek documenten en kwijtings overzichten. Er wordt momenteel geen kosten in rekening gebracht voor Text Analytics voor het gebruik van de status container. 
+De Text Analytics voor de status container bevindt zich nu in Public gated preview, waarmee u informatie kunt ophalen uit ongestructureerde tekst in het Engels in klinische documenten, zoals: patiënten-formulieren, notities van dokters, onderzoek documenten en kwijtings overzichten. Er wordt momenteel geen kosten in rekening gebracht voor Text Analytics voor het gebruik van de status container.
 
 De container biedt de volgende functies:
 
 * Herkenning van benoemde entiteiten
 * Relatie-extractie
-* Entiteit koppelen
+* Entiteiten koppelen
 * Negatie
 
 
@@ -121,7 +127,7 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
 
 ### <a name="october-2019"></a>Oktober 2019
 
-#### <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
+#### <a name="named-entity-recognition-ner"></a>NER (Herkenning van benoemde entiteiten)
 
 * Een [Nieuw eind punt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) voor het herkennen van entiteits typen van persoonlijke gegevens (alleen Engels)
 
@@ -131,7 +137,7 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Uitgebreide detectie en categorisatie van entiteiten gevonden in tekst. 
     * Herkenning van de volgende nieuwe entiteits typen:
         * Telefoonnummer
-        * Het IP-adres
+        * IP-adres
 
 Koppeling van entiteit ondersteunt Engels en Spaans. NER taal ondersteuning varieert per entiteits type.
 
@@ -153,7 +159,7 @@ Het biedt ondersteuning voor Engels ( `en` ), Japans ( `ja` ), vereenvoudigd Chi
 
 * [Wat is Text Analytics-API?](overview.md)  
 * [Voorbeeldgebruikerscenario's](text-analytics-user-scenarios.md)
-* [Sentiment analyse](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Sentimentanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Taaldetectie](how-tos/text-analytics-how-to-language-detection.md)
 * [Herkenning van entiteiten](how-tos/text-analytics-how-to-entity-linking.md)
 * [Sleuteltermextractie](how-tos/text-analytics-how-to-keyword-extraction.md)

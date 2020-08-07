@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 6138dc06e8ed70ba85f4ccfc3370c044f34bd1f1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bd1362db2e70d4f9f46d80b00805856e08aedac4
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963951"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987338"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Zelf studie: SQL Data Sync instellen tussen data bases in Azure SQL Database en SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ Zie voor voor beelden van Power shell voor informatie over het configureren van 
    | ------------------------------ | ------------------------------------------------- |
    | **Naam van synchronisatie groep** | Voer een naam in voor de nieuwe synchronisatie groep. Deze naam is verschillend van de naam van de data base zelf. |
    | **Meta gegevens database synchroniseren** | Kies ervoor om een Data Base te maken (aanbevolen) of om een bestaande Data Base te gebruiken.<br/><br/>Als u **nieuwe data base**kiest, selecteert u **nieuwe data base maken.** Geef op de pagina **SQL database** de naam en configureer de nieuwe data base en selecteer **OK**.<br/><br/>Als u **bestaande Data Base gebruiken**kiest, selecteert u de data base in de lijst. |
-   | **Automatische synchronisatie** | Selecteer **aan** of **uit**.<br/><br/>Als u kiest **voor**, voert u een getal in en selecteert u **seconden**, **minuten**, **uren**of **dagen** in het gedeelte **synchronisatie frequentie** . |
+   | **Automatische synchronisatie** | Selecteer **aan** of **uit**.<br/><br/>Als u kiest **voor**, voert u een getal in en selecteert u **seconden**, **minuten**, **uren**of **dagen** in het gedeelte **synchronisatie frequentie** .<br/> De eerste synchronisatie begint nadat de geselecteerde interval periode is verstreken vanaf het moment dat de configuratie wordt opgeslagen.|
    | **Conflict oplossing** | Selecteer **hub winnen** of **lid worden gewonnen**.<br/><br/>**Hub wint** houdt in dat er conflicten optreden, maar gegevens in de hub-data base overschrijft de conflicterende gegevens in de leden database.<br/><br/>**Lid Win** : als er conflicten optreden, worden de gegevens in de data base van het lid overschreven met conflicterende gegevens in de hub-data base. |
 
    > [!NOTE]
@@ -233,7 +233,7 @@ Voor veelgestelde vragen over de client agent raadpleegt u [Veelgestelde vragen]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gefeliciteerd! U hebt een synchronisatie groep gemaakt die zowel een SQL Database exemplaar als een SQL Server-Data Base bevat.
+Gefeliciteerd. U hebt een synchronisatie groep gemaakt die zowel een SQL Database exemplaar als een SQL Server-Data Base bevat.
 
 Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 

@@ -5,22 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 5677cb3d240381e06c76ed73354981f782bdb0dd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830220"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987355"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Alles beveiligen met Azure Policy (preview-versie)
 
 Als u de beveiliging van uw AKS-cluster wilt verbeteren, kunt u bepalen welke functies er worden verleend en of er iets wordt uitgevoerd op basis van het bedrijfs beleid. Deze toegang wordt gedefinieerd via ingebouwd beleid dat is opgegeven door de [Azure Policy-invoeg toepassing voor AKS][kubernetes-policy-reference]. Door extra controle over de beveiligings aspecten van de specificatie van uw Pod te bieden, zoals root-bevoegdheden, kunt u strenger beveiliging en inzicht krijgen in wat er in uw cluster wordt geïmplementeerd. Als een pod niet voldoet aan de voor waarden die zijn opgegeven in het beleid, kan Azure Policy de pod niet toestaan om een schending te starten of te markeren. In dit artikel leest u hoe u Azure Policy kunt gebruiken om de implementatie van een Peul in AKS te beperken.
 
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende ondersteunings artikelen voor meer informatie:
->
-> * [AKS-ondersteunings beleid][aks-support-policies]
-> * [Veelgestelde vragen over ondersteuning voor Azure][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -283,11 +279,11 @@ Hieronder vindt u een overzicht van de gedrags wijzigingen tussen pod-beveiligin
 |Installatie|Functie pod-beveiligings beleid inschakelen |Invoeg toepassing inschakelen Azure Policy
 |Beleid implementeren| Resource voor pod-beveiligings beleid implementeren| Wijs Azure-beleid toe aan het bereik van het abonnement of de resource groep. De Azure Policy-invoeg toepassing is vereist voor Kubernetes-resource toepassingen.
 | Standaard beleid | Wanneer pod-beveiligings beleid is ingeschakeld in AKS, worden er standaard privileged en beleid voor onbeperkte toegang toegepast. | Er wordt geen standaard beleid toegepast door de invoeg toepassing Azure Policy in te scha kelen. U moet expliciet beleid inschakelen in Azure Policy.
-| Wie beleid kan maken en toewijzen | Er wordt een pod-beveiligings beleids resource gemaakt door Cluster beheerder | Gebruikers moeten beschikken over de machtiging ' eigenaar ' of ' Inzender ' van het resource beleid voor de cluster resource groep AKS. -Via-API kunnen gebruikers beleid toewijzen op het AKS-cluster bron bereik. De gebruiker moet mini maal de machtigingen ' eigenaar ' of ' Inzender voor resource beleid ' hebben voor de AKS-cluster bron. -In azure portal kunnen beleids regels worden toegewezen op het niveau van de beheer groep/het abonnement/de resource groep.
+| Wie beleid kan maken en toewijzen | Er wordt een pod-beveiligings beleids resource gemaakt door Cluster beheerder | Gebruikers moeten beschikken over de machtiging ' eigenaar ' of ' Inzender ' van het resource beleid voor de cluster resource groep AKS. -Via-API kunnen gebruikers beleid toewijzen op het AKS-cluster bron bereik. De gebruiker moet mini maal de machtigingen ' eigenaar ' of ' Inzender voor resource beleid ' hebben voor de AKS-cluster bron. -In de Azure Portal kunnen beleids regels worden toegewezen op het niveau van de beheer groep/het abonnement/de resource groep.
 | Beleid voor autorisatie| Gebruikers en service accounts vereisen expliciete machtigingen voor het gebruik van pod-beveiligings beleid. | Er is geen aanvullende toewijzing vereist om beleid te autoriseren. Zodra het beleid is toegewezen in azure, kunnen alle cluster gebruikers deze beleids regels gebruiken.
 | Toepas baarheid van beleid | De gebruiker met beheerders rechten negeert de afdwinging van pod-beveiligings beleid. | Alle gebruikers (beheerder & niet-beheerder) zien hetzelfde beleid. Er is geen speciale behuizing op basis van gebruikers. De beleids toepassing kan worden uitgesloten op het niveau van de naam ruimte.
 | Beleids bereik | Het Pod-beveiligings beleid is niet in een naam ruimte | Beperkings sjablonen die door Azure Policy worden gebruikt, zijn niet in een naam ruimte.
-| Actie voor weigeren/controleren/mutatie | Het Pod-beveiligings beleid ondersteunt alleen acties voor weigeren. Mutatation kan worden uitgevoerd met standaard waarden bij het maken van aanvragen. Validatie kan worden uitgevoerd tijdens update aanvragen.| Azure Policy ondersteunt zowel controle & acties weigeren. Mutatie wordt nog niet ondersteund, maar gepland.
+| Actie voor weigeren/controleren/mutatie | Het Pod-beveiligings beleid ondersteunt alleen acties voor weigeren. Mutatie kan worden uitgevoerd met standaard waarden bij het maken van aanvragen. Validatie kan worden uitgevoerd tijdens update aanvragen.| Azure Policy ondersteunt zowel controle & acties weigeren. Mutatie wordt nog niet ondersteund, maar gepland.
 | Naleving van pod-beveiligings beleid | Er is geen zicht baarheid van de naleving van de voor Schriften die bestonden voordat het Pod-beveiligings beleid is ingeschakeld. Niet-compatibele peulen die zijn gemaakt nadat pod-beveiligings beleid is ingeschakeld, worden geweigerd. | Het niet-compatibele peul dat bestond voordat een Azure-beleid werd toegepast, zou in beleids schendingen worden weer gegeven. Niet-compatibele peulen die zijn gemaakt na het inschakelen van Azure-beleid, worden geweigerd als beleids regels zijn ingesteld met een weigerings effect.
 | Beleids regels op het cluster weer geven | `kubectl get psp` | `kubectl get constrainttemplate`-Alle beleids regels worden geretourneerd.
 | Pod beveiligings beleid standaard-privileged | Wanneer u de functie inschakelt, wordt er standaard een privileged pod Security Policy resource gemaakt. | De geprivilegieerde modus impliceert geen beperking. als gevolg hiervan is het gelijk aan geen enkele Azure Policy toewijzing.

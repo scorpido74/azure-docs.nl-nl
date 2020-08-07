@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08e36f8ef31114b18a166e7a14d6d7ad8385582c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3fb13a4912fbd2a9bea39b56333adbd1329efef6
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850369"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985900"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Software omgevingen maken & gebruiken in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -320,6 +320,14 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 > [!WARNING]
 > Als u een aantal python-afhankelijkheden in uw docker-installatie kopie installeert en vergeet om user_managed_dependencies = True in te stellen, worden deze pakketten niet in de uitvoerings omgeving opgenomen, waardoor er runtime fouten optreden. Azure ML bouwt standaard een Conda-omgeving met afhankelijkheden die u hebt opgegeven en voert de uitvoering in die omgeving uit in plaats van python-bibliotheken te gebruiken die u hebt geïnstalleerd op de basis installatie kopie.
 
+### <a name="retrieve-image-details"></a>Details van installatie kopie ophalen
+
+Voor een geregistreerde omgeving kunt u details van de installatie kopie ophalen met behulp van de volgende code, waarbij `details` een instantie van [DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py) is (AzureML python SDK >= 1,11) en alle informatie bevat over de omgevings afbeelding, zoals de dockerfile, het REGI ster en de naam van de installatie kopie.
+
+```python
+details = environment.get_image_details()
+```
+
 ## <a name="use-environments-for-training"></a>Omgevingen gebruiken voor training
 
 Als u een trainings uitvoering wilt verzenden, moet u uw omgeving, het [reken doel](concept-compute-target.md)en het python-script van uw training combi neren in een uitvoerings configuratie. Deze configuratie is een wrapper-object dat wordt gebruikt voor het verzenden van uitvoeringen.
@@ -376,12 +384,6 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 # Submit the run 
 run = experiment.submit(sk_est)
-```
-### <a name="retrieve-dockerfile-from-a-run"></a>Dockerfile ophalen uit een uitvoering
-
-Gebruik de volgende code om de Dockerfile te verkrijgen voor het uitvoeren van een docker-run.
-```python
-print(run.get_environment().get_image_details().dockerfile)
 ```
 
 ## <a name="use-environments-for-web-service-deployment"></a>Omgevingen gebruiken voor de implementatie van webservices

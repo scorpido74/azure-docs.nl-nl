@@ -4,12 +4,12 @@ description: Meer informatie over het inschakelen en configureren van ultra schi
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 540269c7ecf42a7e022aa2efb048df7b11587d1a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926736"
+ms.locfileid: "87986828"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Gebruik Azure Ultra disks in azure Kubernetes service (preview)
 
@@ -49,11 +49,7 @@ Als u klaar bent, vernieuwt u de registratie van de resource provider *micro sof
 az provider register --namespace Microsoft.ContainerService
 ```
 
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende ondersteunings artikelen voor meer informatie:
->
-> - [AKS-ondersteunings beleid](support-policies.md)
-> - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>De CLI-extensie aks-preview installeren
 
@@ -95,9 +91,8 @@ Als u clusters wilt maken zonder ondersteuning voor een ultra schijf, kunt u dit
 
 U kunt Ultra schijven op bestaande clusters inschakelen door een nieuwe knooppunt groep toe te voegen aan uw cluster die ondersteuning biedt voor Ultra disks. Configureer een nieuwe knooppunt groep om versleuteling op basis van een host te gebruiken met behulp van de `--aks-custom-headers` vlag.
 
-
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
 Als u nieuwe knooppunt groepen wilt maken zonder ondersteuning voor Ultra schijven, kunt u dit doen door de aangepaste para meter weg te laten `--aks-custom-headers` .

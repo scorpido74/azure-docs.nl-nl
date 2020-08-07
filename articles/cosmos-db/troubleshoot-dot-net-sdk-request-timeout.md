@@ -3,16 +3,16 @@ title: Problemen met Azure Cosmos DB HTTP 408 of time-outs met .NET SDK oplossen
 description: Een time-outuitzondering voor .NET SDK-aanvragen vaststellen en oplossen
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a0469feed391025f8dd50a7f8b11b96265b0df29
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417604"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987406"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Problemen vaststellen en oplossen Azure Cosmos DB time-out voor de .NET SDK-aanvraag
 De HTTP 408-fout treedt op als de SDK de aanvraag niet heeft kunnen volt ooien voordat de time-outlimiet optreedt.
@@ -45,9 +45,12 @@ De client toepassing die gebruikmaakt van de SDK moet omhoog of omlaag worden ge
 Bij het uitvoeren in azure kunnen clients die gebruikmaken van de .NET SDK, de poort uitputting voor Azure SNAT (PAT) aanraken.
 
 #### <a name="solution-1"></a>Oplossing 1:
-Volg de [SNAT-hand leiding voor poort uitputting](troubleshoot-dot-net-sdk.md#snat).
+Als u op virtuele machines van Azure werkt, volgt u de [hand leiding voor de SNAT-poort uitgeput](troubleshoot-dot-net-sdk.md#snat).
 
 #### <a name="solution-2"></a>Oplossing 2:
+Als u werkt met op Azure App Service, volgt u de [hand leiding voor het oplossen van verbindings fouten](../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause) en [gebruikt u app service diagnostische gegevens](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html).
+
+#### <a name="solution-3"></a>Oplossing 3:
 Als u een HTTP-proxy gebruikt, moet u ervoor zorgen dat het het aantal verbindingen dat in de SDK is geconfigureerd kan ondersteunen `ConnectionPolicy` .
 Anders worden er verbindings problemen beschreven.
 

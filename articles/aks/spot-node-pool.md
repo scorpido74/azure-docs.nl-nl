@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374607"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987287"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Voor beeld: een steun knooppunt groep toevoegen aan een Azure Kubernetes service-cluster (AKS)
 
@@ -24,7 +24,7 @@ In dit artikel voegt u een secundaire steun knooppunt groep toe aan een bestaand
 
 In dit artikel wordt ervan uitgegaan dat u basis informatie krijgt over Kubernetes-en Azure Load Balancer concepten. Zie [Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)][kubernetes-concepts] voor meer informatie.
 
-Deze functie is momenteel in preview.
+Deze functie is momenteel beschikbaar als preview-product.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -32,11 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Wanneer u een cluster maakt voor het gebruik van een steun knooppunt groep, moet dat cluster ook Virtual Machine Scale Sets gebruiken voor knooppunt groepen en de *standaard* -SKU Load Balancer. U moet ook een extra knooppunt groep toevoegen nadat u het cluster hebt gemaakt voor het gebruik van een steun knooppunt groep. Het toevoegen van een extra knooppunt groep wordt in een latere stap behandeld, maar u moet eerst een preview-functie inschakelen.
 
-> [!IMPORTANT]
-> AKS preview-functies zijn self-service en opt-in. Ze zijn bedoeld om feedback en bugs van onze community te verzamelen. In de preview-versie zijn deze functies niet bedoeld voor productie gebruik. Functies in open bare preview vallen onder de ondersteuning voor beste inspanningen. Hulp van de technische ondersteunings teams van AKS is alleen beschikbaar tijdens kantoor uren Pacific time zone (PST). Raadpleeg de volgende ondersteunings artikelen voor meer informatie:
->
-> * [AKS-ondersteunings beleid][aks-support-policies]
-> * [Veelgestelde vragen over ondersteuning voor Azure][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="register-spotpoolpreview-preview-feature"></a>Preview-functie voor spotpoolpreview registreren
 
@@ -60,7 +56,7 @@ Als u klaar bent, vernieuwt u de registratie van de resource provider *micro sof
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="install-aks-preview-cli-extension"></a>AKS-preview CLI-extensie installeren
+### <a name="install-aks-preview-cli-extension"></a>De CLI-extensie aks-preview installeren
 
 Als u een AKS-cluster wilt maken dat gebruikmaakt van een steun knooppunt groep, hebt u de *AKS-preview cli-* extensie versie 0.4.32 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
 
@@ -85,7 +81,7 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * Een steun knooppunt groep heeft het label *kubernetes.Azure.com/scalesetpriority:spot*, de taint- *kubernetes.Azure.com/scalesetpriority=spot:NoSchedule*en het systeem-Peul heeft een anti-affiniteit.
 * U moet een [overeenkomstige tolerantie][spot-toleration] toevoegen voor het plannen van workloads op een steun knooppunt groep.
 
-## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>Een steun knooppunt groep toevoegen aan een AKS-cluster
+## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>Een spot-knooppuntgroep toevoegen aan een AKS-cluster
 
 U moet een steun knooppunt groep toevoegen aan een bestaand cluster waarvoor meerdere knooppunt groepen zijn ingeschakeld. Meer informatie over het maken van een AKS-cluster met meerdere knooppunt groepen is [hier][use-multiple-node-pools]beschikbaar.
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c4274292dfbd53abed09dfeae77ec976afe9ebc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282956"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987032"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Micro soft Identity platform en OAuth 2,0-of-flow
 
@@ -194,49 +194,6 @@ Sommige op OAuth gebaseerde webservices moeten toegang hebben tot andere web ser
 
 > [!TIP]
 > Wanneer u een met SAML beveiligde webservice aanroept vanuit een front-end-webtoepassing, kunt u gewoon de API aanroepen en een normale interactieve verificatie stroom initiëren met de bestaande sessie van de gebruiker. U hoeft alleen een OBO-stroom te gebruiken wanneer een service-naar-service-oproep een SAML-token vereist om gebruikers context te bieden.
-
-### <a name="obtain-a-saml-token-by-using-an-obo-request-with-a-shared-secret"></a>Een SAML-token verkrijgen met behulp van een OBO-aanvraag met een gedeeld geheim
-
-Een service-naar-service-aanvraag voor een SAML-verklaring bevat de volgende para meters:
-
-| Parameter | Type | Description |
-| --- | --- | --- |
-| grant_type |vereist | Het type van de token aanvraag. Voor een aanvraag die gebruikmaakt van een JWT, moet de waarde **urn zijn: IETF: params: OAuth: Grant-type: JWT-Bearer**. |
-| Assertion |vereist | De waarde van het toegangs token dat in de aanvraag wordt gebruikt.|
-| client_id |vereist | De App-ID die is toegewezen aan de aanroepende service tijdens de registratie bij Azure AD. Als u de App-ID in de Azure Portal wilt zoeken, selecteert u **Active Directory**, kiest u de map en selecteert u vervolgens de naam van de toepassing. |
-| client_secret |vereist | De sleutel die is geregistreerd voor de aanroepende service in azure AD. Deze waarde moet worden vermeld op het moment van registratie. |
-| resource |vereist | De App-ID-URI van de ontvangende service (beveiligde resource). Dit is de resource die de doel groep is van het SAML-token. Als u de URI van de App-ID wilt vinden in de Azure Portal, selecteert u **Active Directory** en kiest u de map. Selecteer de naam van de toepassing, kies **alle instellingen**en selecteer vervolgens **Eigenschappen**. |
-| requested_token_use |vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In namens-of uitstroom moet de waarde **on_behalf_of**zijn. |
-| requested_token_type | vereist | Hiermee geeft u het aangevraagde type token op. De waarde kan **urn zijn: IETF: params: OAuth: token-type: saml2** of **urn: IETF: params: OAuth: token-type: saml1** , afhankelijk van de vereisten van de toegang tot de resource. |
-
-Het antwoord bevat een SAML-token dat is gecodeerd in UTF8 en Base64url.
-
-- **SubjectConfirmationData voor een SAML-verklaring die is gebrond vanuit een OBO-aanroep**: als voor de doel toepassing een waarde voor een ontvanger is vereist in **SubjectConfirmationData**, moet de waarde een antwoord-URL voor niet-joker tekens zijn in de configuratie van de bron toepassing.
-- **Het knoop punt SubjectConfirmationData**: het knoop punt kan geen **InResponseTo** -kenmerk bevatten omdat het geen deel UITmaakt van een SAML-reactie. De toepassing die het SAML-token ontvangt, moet de SAML-bewering zonder het kenmerk **InResponseTo** kunnen accepteren.
-
-- **Instemming**: toestemming moet zijn verleend om een SAML-token met gebruikers gegevens op een OAuth-stroom te ontvangen. Zie [machtigingen en toestemming in het Azure Active Directory v 1.0-eind punt](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)voor meer informatie over machtigingen en het verkrijgen van toestemming voor de beheerder.
-
-### <a name="response-with-saml-assertion"></a>Antwoord met SAML-bevestiging
-
-| Parameter | Beschrijving |
-| --- | --- |
-| token_type |Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is **Bearer**. Zie [OAuth 2,0 Authorization Framework: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)voor meer informatie over Bearer-tokens. |
-| scope |Het bereik van toegang dat in het token wordt verleend. |
-| expires_in |De tijds duur dat het toegangs token geldig is (in seconden). |
-| expires_on |Het tijdstip waarop het toegangs token verloopt. De datum wordt weer gegeven als het aantal seconden van 1970-01-01T0:0: 0Z UTC tot de verloop tijd. Deze waarde wordt gebruikt om de levens duur van tokens in de cache te bepalen. |
-| resource |De App-ID-URI van de ontvangende service (beveiligde resource). |
-| access_token |De para meter die de SAML-bewering retourneert. |
-| refresh_token |Het vernieuwings token. De aanroepende service kan dit token gebruiken om een ander toegangs token aan te vragen nadat de huidige SAML-bewering verloopt. |
-
-- token_type: Bearer
-- expires_in: 3296
-- ext_expires_in: 0
-- expires_on: 1529627844
-- resource`https://api.contoso.com`
-- access_token:\<SAML assertion\>
-- issued_token_type: urn: IETF: params: OAuth: token-type: saml2
-- refresh_token:\<Refresh token\>
-
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Toestemming geven voor de toepassing in de middelste laag
 

@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 337ecc6069211942a809f2bf3d793c5bccc08387
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277227"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986365"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbeter de beveiliging tegen bedreigingen door beveiligings bewerkingen te integreren met Microsoft Graph Security-& Azure Logic Apps
 
@@ -115,7 +115,7 @@ Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *a
 
 Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u de [documentatie over Microsoft Graph Security Alerts](/graph/api/alert-list). Meer informatie over de [schema-eigenschappen](/graph/api/resources/alert) die door de connector worden ondersteund om uitgebreide ervaringen met deze connector te maken.
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 |--------|-------------|
 | **Waarschuwingen ophalen** | Ontvang waarschuwingen die worden gefilterd op basis van een of meer [Eigenschappen van waarschuwingen](/graph/api/resources/alert), bijvoorbeeld `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` . | 
 | **Waarschuwing op ID ontvangen** | Een specifieke waarschuwing ophalen op basis van de waarschuwings-ID. | 
@@ -126,9 +126,9 @@ Voor meer informatie over de query's die u met deze connector kunt gebruiken, ra
 
 Microsoft Graph ondersteunt [*abonnementen*](/graph/api/resources/subscription)of [*webhooks*](/graph/api/resources/webhooks). Als u abonnementen wilt ontvangen, bijwerken of verwijderen, geeft u de Odata-query parameters op die worden [ondersteund door Microsoft Graph](/graph/query-parameters) aan de construct Microsoft Graph entiteit en worden `security/alerts` gevolgd door de ODATA-query. *Neem* de basis-URL niet op, bijvoorbeeld `https://graph.microsoft.com/v1.0` . Gebruik in plaats daarvan de notatie in dit voor beeld:
 
-`security/alerts?$filter=status eq 'New'`
+`security/alerts?$filter=status eq 'NewAlert'`
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 |--------|-------------|
 | **Abonnementen maken** | [Maak een abonnement](/graph/api/subscription-post-subscriptions) dat u op de hoogte brengt van eventuele wijzigingen. U kunt dit abonnement filteren op de specifieke waarschuwings typen die u wilt. U kunt bijvoorbeeld een abonnement maken dat u op de hoogte stelt van waarschuwingen met hoge urgentie. |
 | **Actieve abonnementen ophalen** | Niet- [verlopen abonnementen ophalen](/graph/api/subscription-list). | 
@@ -144,7 +144,7 @@ Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *a
 
 Voor meer informatie over de query's die u met deze connector kunt gebruiken, raadpleegt u [' optionele query parameters ' in de referentie documentatie Microsoft Graph Security Threat Intelligence-indicator](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta). Als u uitgebreide ervaringen met deze connector wilt maken, leest u meer over de [schema-eigenschappen Threat Intelligence-indicator](/graph/api/resources/tiindicator?view=graph-rest-beta) die door de connector wordt ondersteund.
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 |--------|-------------|
 | **Threat Intelligence-Indica tors ophalen** | Get tiIndicators gefilterd op basis van een of meer [tiIndicator-eigenschappen](/graph/api/resources/tiindicator?view=graph-rest-beta), bijvoorbeeld`threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Bedreigings informatie-indicator op ID ophalen** | Een specifieke tiIndicator ophalen op basis van de tiIndicator-ID. | 

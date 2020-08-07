@@ -2,24 +2,22 @@
 title: Verwijderingen in de implementatiegeschiedenis
 description: Hierin wordt beschreven hoe Azure Resource Manager automatisch implementaties uit de implementatie geschiedenis verwijdert. Implementaties worden verwijderd wanneer de geschiedenis bijna de limiet van 800 overschrijdt.
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/07/2020
+ms.openlocfilehash: 736a25a3c73f8f4c70c5fb6c686fa2b8bb86666d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248975"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986505"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische verwijderingen van de implementatie geschiedenis
 
 Telkens wanneer u een sjabloon implementeert, wordt informatie over de implementatie naar de implementatie geschiedenis geschreven. Elke resource groep is beperkt tot 800 implementaties in de implementatie geschiedenis.
 
-Azure Resource Manager begint binnenkort met het automatisch verwijderen van implementaties uit uw geschiedenis als u de limiet hebt bereikt. Automatisch verwijderen is een wijziging ten opzichte van het gedrag van vorige. Voorheen moest u implementaties hand matig verwijderen uit de implementatie geschiedenis om te voor komen dat er een fout optreedt. **Deze functie is nog niet toegevoegd aan Azure. U wordt op de hoogte gebracht van deze aanstaande wijziging, voor het geval u zich wilt afmelden.**
+Met Azure Resource Manager worden implementaties automatisch uit uw geschiedenis verwijderd, net zoals u de limiet hebt bereikt. Automatisch verwijderen is een wijziging ten opzichte van het gedrag van vorige. Voorheen moest u implementaties hand matig verwijderen uit de implementatie geschiedenis om te voor komen dat er een fout optreedt. **Deze wijziging is geïmplementeerd op 6 augustus 2020.**
 
 > [!NOTE]
 > Het verwijderen van een implementatie uit de geschiedenis heeft geen invloed op de resources die zijn geïmplementeerd.
->
-> Als u een [CanNotDelete-vergren deling](../management/lock-resources.md) op een resource groep hebt, kunnen de implementaties voor die resource groep niet worden verwijderd. U moet de vergren deling verwijderen om te profiteren van automatische verwijderingen in de implementatie geschiedenis.
 
 ## <a name="when-deployments-are-deleted"></a>Wanneer implementaties worden verwijderd
 
@@ -35,6 +33,24 @@ Implementaties worden verwijderd uit uw geschiedenis wanneer u 775 of meer imple
 Naast implementaties triggert u ook verwijderingen wanneer u de [bewerking wat als'](template-deploy-what-if.md) uitvoert of een implementatie valideert.
 
 Wanneer u een implementatie met dezelfde naam als één in de geschiedenis geeft, stelt u de locatie in de geschiedenis opnieuw in. De implementatie wordt verplaatst naar de meest recente plaats in de geschiedenis. U kunt ook de locatie van een implementatie opnieuw instellen wanneer u na een fout [terugkeert naar die implementatie](rollback-on-error.md) .
+
+## <a name="remove-locks-that-block-deletions"></a>Vergren delingen verwijderen waarmee verwijderingen worden geblokkeerd
+
+Als u een [CanNotDelete-vergren deling](../management/lock-resources.md) op een resource groep hebt, kunnen de implementaties voor die resource groep niet worden verwijderd. U moet de vergren deling verwijderen om te profiteren van automatische verwijderingen in de implementatie geschiedenis.
+
+Als u Power shell wilt gebruiken om een vergren deling te verwijderen, voert u de volgende opdrachten uit:
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName lockedRG).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+Als u Azure CLI wilt gebruiken om een vergren deling te verwijderen, voert u de volgende opdrachten uit:
+
+```azurecli-interactive
+lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
+az lock delete --ids $lockid
+```
 
 ## <a name="opt-out-of-automatic-deletions"></a>Automatische verwijderingen afmelden
 
@@ -58,7 +74,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Resources -FeatureName Disabl
 
 Als u automatische verwijderingen opnieuw wilt inschakelen, gebruikt u Azure REST API of Azure CLI.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Gebruik [AZ feature REGI ster](/cli/azure/feature#az-feature-register)voor Azure cli.
 

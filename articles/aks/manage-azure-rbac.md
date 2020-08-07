@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 064a62b030a1fd9f3c875fce646ad8553b75d513
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799358"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986624"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC gebruiken voor Kubernetes-autorisatie (preview)
 
@@ -25,11 +25,7 @@ In dit document wordt een nieuwe aanpak behandeld waarmee u het uniforme beheer 
 
 De mogelijkheid om RBAC voor Kubernetes-resources van Azure te beheren biedt u de keuze voor het beheren van RBAC voor de cluster bronnen met behulp van Azure-of native Kubernetes-mechanismen. Wanneer deze functie is ingeschakeld, worden Azure AD-principals alleen gevalideerd door Azure RBAC, terwijl reguliere Kubernetes-gebruikers en-service accounts uitsluitend worden gevalideerd door Kubernetes RBAC. Zie [hier](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)voor meer informatie over verificatie, autorisatie en RBAC op AKS.
 
-> [!IMPORTANT]
-> AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
->
-> - [AKS-ondersteunings beleid](support-policies.md)
-> - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>Vereisten 
 - Meld u aan voor de preview-versie <https://aka.ms/aad-rbac-sign-up-form> .

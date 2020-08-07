@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 328f7bb8c03cb78f4b5375eb4f6e3d9891b83942
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: f68ee9854b40c8174fe8808fc82639b79629c0c8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760665"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987151"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
@@ -220,7 +220,7 @@ Het koppelen van de MSIX-app heeft vier afzonderlijke fasen die in de volgende v
 
 Elke fase maakt een Power shell-script. Voorbeeld scripts voor elke fase zijn [hier](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)beschikbaar.
 
-### <a name="stage-the-powershell-script"></a>Het Power shell-script faseren
+### <a name="stage-powershell-script"></a>Fase Power shell-script
 
 Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-GUID van het volume in de VHD hebt. De volume-GUID ophalen:
 
@@ -264,88 +264,48 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
     #MSIX app attach staging sample
 
     #region variables
-
     $vhdSrc="<path to vhd>"
-
     $packageName = "<package name>"
-
     $parentFolder = "<package parent folder>"
-
     $parentFolder = "\" + $parentFolder + "\"
-
     $volumeGuid = "<vol guid>"
-
     $msixJunction = "C:\temp\AppAttach\"
-
     #endregion
 
     #region mountvhd
-
     try
-
     {
-
-    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
-
-    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
-
+          Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+          Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
     }
-
     catch
-
     {
-
-    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
-
+          Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
     }
-
     #endregion
 
     #region makelink
-
     $msixDest = "\\?\Volume{" + $volumeGuid + "}\"
-
     if (!(Test-Path $msixJunction))
-
     {
-
-    md $msixJunction
-
+         md $msixJunction
     }
 
     $msixJunction = $msixJunction + $packageName
-
     cmd.exe /c mklink /j $msixJunction $msixDest
-
     #endregion
 
     #region stage
-
-    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime]
-    | Out-Null
-
+    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime] | Out-Null
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
-
-    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
-
-    $asTaskAsyncOperation =
-    $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
-    [Windows.Management.Deployment.DeploymentProgress])
-
+    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where { $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult] AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
+    $asTaskAsyncOperation = $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult], [Windows.Management.Deployment.DeploymentProgress])
     $packageManager = [Windows.Management.Deployment.PackageManager]::new()
-
     $path = $msixJunction + $parentFolder + $packageName # needed if we do the pbisigned.vhd
-
     $path = ([System.Uri]$path).AbsoluteUri
-
     $asyncOperation = $packageManager.StagePackageAsync($path, $null, "StageInPlace")
-
     $task = $asTaskAsyncOperation.Invoke($null, @($asyncOperation))
-
     $task
-
     #endregion
     ```
 
@@ -357,17 +317,12 @@ Als u het REGI ster wilt uitvoeren, voert u de volgende Power shell-cmdlets uit 
 #MSIX app attach registration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $path = "C:\Program Files\WindowsApps\" + $packageName + "\AppxManifest.xml"
-
 #endregion
 
 #region register
-
 Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
-
 #endregion
 ```
 
@@ -379,15 +334,11 @@ Voor dit script vervangt u de tijdelijke aanduiding voor **$packageName** door d
 #MSIX app attach deregistration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -PreserveRoamableApplicationData $packageName
-
 #endregion
 ```
 
@@ -399,21 +350,14 @@ Voor dit script vervangt u de tijdelijke aanduiding voor **$packageName** door d
 #MSIX app attach de staging sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $msixJunction = "C:\temp\AppAttach\"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -AllUsers -Package $packageName
-
 cd $msixJunction
-
 rmdir $packageName -Force -Verbose
-
 #endregion
 ```
 
@@ -440,7 +384,7 @@ U kunt als volgt de licenties instellen voor offline gebruik:
 2. Werk de volgende variabelen bij in het script voor stap 3:
       1. `$contentID`is de ContentID-waarde van het niet-versleutelde licentie bestand (. XML). U kunt het licentie bestand openen in een tekst editor naar keuze.
       2. `$licenseBlob`is de volledige teken reeks voor de licentie-Blob in het gecodeerde licentie bestand (. bin). U kunt het versleutelde licentie bestand openen in een tekst editor naar keuze.
-3. Voer het volgende script uit vanuit een Power shell-prompt voor beheerders. Er is een goede plaats om de licentie-installatie uit te voeren aan het einde van het [faserings script](#stage-the-powershell-script) dat ook moet worden uitgevoerd vanaf een beheerders prompt.
+3. Voer het volgende script uit vanuit een Power shell-prompt voor beheerders. Er is een goede plaats om de licentie-installatie uit te voeren aan het einde van het [faserings script](#stage-powershell-script) dat ook moet worden uitgevoerd vanaf een beheerders prompt.
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"

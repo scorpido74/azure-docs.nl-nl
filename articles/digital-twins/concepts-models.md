@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 2d062ea4f38742129d44be0e2b7ff51fe3ad8dd1
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 4d0ed9826326256e3b91815746e43d34b6934ba0
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562426"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985871"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
 
@@ -204,14 +204,7 @@ De uitbreidende interface kan geen van de definities van de bovenliggende interf
 
 ## <a name="validating-models"></a>Modellen valideren
 
-> [!TIP]
-> Het is raadzaam om uw modellen offline te valideren voordat u ze uploadt naar uw Azure Digital Apparaatdubbels-exemplaar.
-
-Er is een taal-neutraal-voor beeld beschikbaar voor het valideren van model documenten om ervoor te zorgen dat de DTDL juist is. Deze bevindt zich hier: [**DTDL validator**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)-voor beeld.
-
-Het DTDL-voor beeld van de validatie functie is gebaseerd op een .NET DTDL-parser-bibliotheek, die beschikbaar is op NuGet als een bibliotheek aan de client zijde: [**micro soft. Azure. DigitalTwins. parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). U kunt de bibliotheek ook rechtstreeks gebruiken om uw eigen validatie oplossing te ontwerpen. Wanneer u de parser-bibliotheek gebruikt, moet u ervoor zorgen dat u een versie gebruikt die compatibel is met de versie die door Azure Digital Apparaatdubbels wordt uitgevoerd. Tijdens de preview is dit versie *3.7.0*.
-
-Meer informatie over de parser-bibliotheek, inclusief gebruiks voorbeelden, vindt u in [*procedures: modellen parseren en valideren*](how-to-use-parser.md).
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: c3f3e7540f837722d4dd730c5635ac30c699ccd3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8b29708dbcc6bbb0d127b4277fd4b2d962da6e6a
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184338"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986386"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>De instellingen voor een Azure-SSIS Integration Runtime aanpassen
 
@@ -129,11 +129,11 @@ Voer de volgende stappen uit om uw Azure-SSIS IR in te richten of opnieuw te con
 
    * Als u het **onderdeel type licentie installeren** selecteert, kunt u een geïntegreerd onderdeel selecteren in onze ISV-partners in de vervolg keuzelijst **onderdeel naam** :
 
-     * Als u het onderdeel **taak-Factory van SentryOne** selecteert, kunt u de [taken fabrieks](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) suite van onderdelen van SentryOne op uw Azure-SSIS IR installeren door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **2019.4.3**.
+     * Als u het onderdeel **taak-Factory van SentryOne** selecteert, kunt u de [taken fabrieks](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) suite van onderdelen van SentryOne op uw Azure-SSIS IR installeren door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **2020.1.3**.
 
-     * Als u de **oh22's-HEDDA selecteert. IO** -onderdeel kunt u de [HEDDA installeren. ](https://hedda.io/ssis-component/)Het onderdeel io-gegevens kwaliteit/opschonen van oh22 op uw Azure-SSIS IR na het aanschaffen van de service. De huidige geïntegreerde versie is **1.0.13**.
+     * Als u de **oh22's-HEDDA selecteert. IO** -onderdeel kunt u de [HEDDA installeren. ](https://hedda.io/ssis-component/)Het onderdeel io-gegevens kwaliteit/opschonen van oh22 op uw Azure-SSIS IR na het aanschaffen van de service. De huidige geïntegreerde versie is **1.0.14**.
 
-     * Als u het **oh22's SQLPhonetics.net** -onderdeel selecteert, kunt u de [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) -gegevens kwaliteit/het overeenkomende onderdeel van oh22 op uw Azure-SSIS IR installeren door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **1.0.43**.
+     * Als u het **oh22's SQLPhonetics.net** -onderdeel selecteert, kunt u de [SQLPhonetics.net](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) -gegevens kwaliteit/het overeenkomende onderdeel van oh22 op uw Azure-SSIS IR installeren door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **1.0.45**.
 
      * Als u het **SSIS Integration Toolkit** -onderdeel van de KingswaySoft selecteert, kunt u het pakket met de [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) van connectors voor CRM/ERP/marketing/samenwerkings-apps installeren, zoals micro soft Dynamics/share point/Project Server, Oracle/sales force marketing Cloud, Azure-SSIS IR enzovoort door de product licentie code in te voeren die u hebt aangeschaft in het vak **licentie code** . De huidige geïntegreerde versie is **2019,2**.
 

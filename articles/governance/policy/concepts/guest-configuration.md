@@ -1,14 +1,14 @@
 ---
 title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
-ms.date: 05/20/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8c0f5d4df640fa29f88b3c4c6c0403ad9de97dea
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921687"
+ms.locfileid: "87987100"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
@@ -35,8 +35,9 @@ Voordat u de gast configuratie kunt gebruiken, moet u de resource provider regis
 Voor het controleren van instellingen op een machine is de extensie van de [virtuele machine](../../../virtual-machines/extensions/overview.md) ingeschakeld en moet de computer een door het systeem beheerde identiteit hebben. De uitbrei ding downloadt de toepasselijke beleids toewijzing en de bijbehorende configuratie definitie. De identiteit wordt gebruikt om de computer te verifiëren tijdens het lezen en schrijven naar de gast configuratie service. De uitbrei ding is niet vereist voor met Arc verbonden computers, omdat deze is opgenomen in de Arc Connected machine agent.
 
 > [!IMPORTANT]
-> De gast configuratie-extensie en een beheerde identiteit zijn vereist voor het controleren van virtuele Azure-machines. Voor het > van de gast configuratie-uitbrei ding is vereist voor het uitvoeren van controles op virtuele machines van Azure. Als u de uitbrei ding op schaal wilt implementeren, wijst u het volgende beleids initiatief toe: > de uitbrei ding op schaal implementeren, wijst u de volgende beleids definities toe: 
->  - [Vereisten implementeren om beleidsregels voor gastconfiguraties op virtuele machines in te schakelen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> De gast configuratie-extensie en een beheerde identiteit zijn vereist voor het controleren van virtuele Azure-machines. Wijs het volgende beleids initiatief toe om de uitbrei ding op schaal te implementeren:
+> 
+> - [Vereisten implementeren om beleidsregels voor gastconfiguraties op virtuele machines in te schakelen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>Limieten die zijn ingesteld voor de uitbrei ding
 
@@ -99,7 +100,7 @@ Voor de communicatie met de provider van de gast configuratie resource in azure,
 
 ## <a name="managed-identity-requirements"></a>Vereisten voor beheerde identiteit
 
-Beleids regels in het initiatief [voor het implementeren van vereisten om gast configuratie beleid in te scha kelen op virtuele machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) , kunnen een door het systeem toegewezen beheerde identiteit inschakelen, als deze nog niet bestaat. Er zijn twee beleids definities in het initiatief die het maken van identiteiten beheren. De IF-voor waarden in de beleids definities zorgen voor het juiste gedrag op basis van de huidige status van de machine resource in Azure.
+Met beleids definities in het initiatief [voor het implementeren van vereisten om gast configuratie beleid in te scha kelen op virtuele machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) , kan een door het systeem toegewezen beheerde identiteit worden ingeschakeld als er geen bestaat. Er zijn twee beleids definities in het initiatief die het maken van identiteiten beheren. De IF-voor waarden in de beleids definities zorgen voor het juiste gedrag op basis van de huidige status van de machine resource in Azure.
 
 Als de computer momenteel geen beheerde identiteiten heeft, is het effectief beleid: [ \[ voor beeld \] : een door het systeem toegewezen beheerde identiteit toevoegen om gast configuratie toewijzingen op virtuele machines zonder identiteiten in te scha kelen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
@@ -201,8 +202,8 @@ De ingebouwde beleids voorbeelden van de gast configuratie zijn beschikbaar op d
 
 - Meer informatie over het weer geven van de details van elke instelling in de [weer gave naleving van gast configuratie](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)
 - Bekijk voor beelden op [Azure Policy voor beelden](../samples/index.md).
-- Lees over de [structuur van Azure Policy-definities](definition-structure.md).
-- Lees [Informatie over de effecten van het beleid](effects.md).
+- Lees over de [structuur van Azure Policy-definities](./definition-structure.md).
+- Lees [Informatie over de effecten van het beleid](./effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
 - Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
 - Ontdek hoe u [niet-compatibele resources kunt herstellen](../how-to/remediate-resources.md).

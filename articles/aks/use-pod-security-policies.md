@@ -4,12 +4,12 @@ description: Meer informatie over het beheren van pod-toelatingen met behulp van
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: b5e9ec19392056115ae739d40c429d93d6ac810e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c8ec61666942fc74dcb64c03c0e3f06986e8c37
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015575"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987270"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Voor beeld: uw cluster beveiligen met behulp van pod-beveiligings beleid in azure Kubernetes service (AKS)
 
@@ -22,11 +22,7 @@ ms.locfileid: "87015575"
 
 Als u de beveiliging van uw AKS-cluster wilt verbeteren, kunt u het aantal peulen dat kan worden gepland, beperken. De meeste resources die u niet toestaat, kunnen niet worden uitgevoerd in het AKS-cluster. U definieert deze toegang met behulp van pod-beveiligings beleid. Dit artikel laat u zien hoe u pod-beveiligings beleid kunt gebruiken om de implementatie van een van de peulen in AKS te beperken.
 
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende ondersteunings artikelen voor meer informatie:
->
-> * [AKS-ondersteunings beleid][aks-support-policies]
-> * [Veelgestelde vragen over ondersteuning voor Azure][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

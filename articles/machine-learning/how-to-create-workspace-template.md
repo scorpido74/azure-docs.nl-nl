@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 06ab819065f96508bcc4ebd26371c743c89b9220
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87487799"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986559"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
@@ -750,6 +750,32 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
 
     ```text
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
+    ```
+
+### <a name="virtual-network-not-linked-to-private-dns-zone"></a>Het virtuele netwerk is niet gekoppeld aan de privé-DNS-zone
+
+Wanneer u een werk ruimte met een persoonlijk eind punt maakt, maakt de sjabloon een Privé-DNS zone met de naam __privatelink.API.azureml.MS__. Een __koppeling naar een virtueel netwerk__ wordt automatisch toegevoegd aan deze privé-DNS-zone. De koppeling wordt alleen toegevoegd voor de eerste werk ruimte en het persoonlijke eind punt dat u in een resource groep maakt. Als u een ander virtueel netwerk en een werk ruimte met een persoonlijk eind punt in dezelfde resource groep maakt, wordt het tweede virtuele netwerk mogelijk niet toegevoegd aan de privé-DNS-zone.
+
+Gebruik de volgende Azure CLI-opdracht om de virtuele netwerk koppelingen weer te geven die al bestaan voor de privé-DNS-zone:
+
+```azurecli
+az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --resource-group myresourcegroup
+```
+
+Gebruik de volgende stappen om het virtuele netwerk met een andere werk ruimte en een persoonlijk eind punt toe te voegen:
+
+1. Als u de virtuele netwerk-ID wilt vinden van het netwerk dat u wilt toevoegen, gebruikt u de volgende opdracht:
+
+    ```azurecli
+    az network vnet show --name myvnet --resource-group myresourcegroup --query id
+    ```
+    
+    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met '/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet '. Sla deze waarde op en gebruik deze in de volgende stap.
+
+2. Gebruik de volgende opdracht om een virtuele netwerk koppeling toe te voegen aan de privatelink.api.azureml.ms-zone Privé-DNS. Voor de `--virtual-network` para meter gebruikt u de uitvoer van de vorige opdracht:
+
+    ```azurecli
+    az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -4,12 +4,12 @@ description: Gebruik uw eigen sleutels (BYOK) om AKS-besturings systeem en gegev
 services: container-service
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: f0b96b3f78adf4a7efb1d43626a5aaf82a5b5d43
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d4f7842330862013644cf961f5bd8e079d097069
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499616"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985837"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Breng uw eigen sleutels (BYOK) met Azure-schijven in azure Kubernetes service (AKS)
 
@@ -23,11 +23,7 @@ Azure Storage versleutelt alle gegevens in een opslag account in rust. Standaard
 
 * U hebt de Azure CLI-versie 2.0.79 of hoger nodig en de AKS-Preview 0.4.26-extensie
 
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende artikelen met technische ondersteuning voor meer informatie.
->
-> * [AKS-ondersteunings beleid](support-policies.md)
-> * [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>De meest recente AKS CLI-preview-extensie installeren
 

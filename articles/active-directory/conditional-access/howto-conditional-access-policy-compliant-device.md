@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65b4ede6f4851418bf17d42db5b3215dafa9234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c60c0324b04bca0a8115f4ac884704012e8e1d8c
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995170"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986845"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Voorwaardelijke toegang: compatibele apparaten vereisen
 
@@ -40,13 +40,13 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**.
    1. Als u specifieke toepassingen van uw beleid moet uitsluiten, kunt u ze kiezen op het tabblad **uitsluiten** onder **Selecteer uitgesloten Cloud-apps** en kiest u **selecteren**.
-   1. Selecteer **Voltooid**.
-1. Onder **voor waarden**  >  **client-apps (preview)** stelt u **configureren** op **Ja**in en selecteert u **gereed**.
+   1. Selecteer **Gereed**.
+1. Selecteer onder **voor waarden**  >  **client-apps (preview-versie)**  >  **de client-apps waarop dit beleid van toepassing**is, geef alle geselecteerde standaard instellingen op en selecteer **gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert **u apparaat vereisen dat moet worden gemarkeerd als compatibel**.
-   1. Selecteer **Selecteren**.
+   1. Kies **Selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.
 

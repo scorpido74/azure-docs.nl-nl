@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 07/29/2020
 ms.author: aahi
-ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: b3cec783b43d0169a3d0d56ca040e1397701102e
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413328"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986165"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Ondersteuning voor Text Analytics-API v3-taal 
 
@@ -86,7 +86,7 @@ ms.locfileid: "85413328"
 | Zweeds               |     `sv`      |     ✓      |            |                                 |                    |
 | Turks               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Extractie van sleutel woorden](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Sleuteltermextractie](#tab/key-phrase-extraction)
 
 | Taal              | Taalcode | v2-ondersteuning | v3-ondersteuning | Beschikbaar vanaf versie van v3-model: |       Opmerkingen        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
@@ -106,7 +106,7 @@ ms.locfileid: "85413328"
 | Spaans               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Zweeds               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 
-#### <a name="entity-linking"></a>[Entiteit koppelen](#tab/entity-linking)
+#### <a name="entity-linking"></a>[Entiteiten koppelen](#tab/entity-linking)
 
 | Taal | Taalcode | v2-ondersteuning | v3-ondersteuning | Beschikbaar vanaf versie van v3-model: | Opmerkingen |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 0e660678f33f36b75147c2513c77d3085136127d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8c5c4a6e5d8b2997d80c7263ba17a705d3846ed8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563200"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987389"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in azure Kubernetes service
 
@@ -35,7 +35,7 @@ U moet de volgende bron hebben geïnstalleerd:
 
 AKS maakt gebruik van verschillende beheerde identiteiten voor ingebouwde services en invoeg toepassingen.
 
-| Identiteit                       | Naam    | Toepassing | Standaard machtigingen | Uw eigen identiteit meenemen
+| Identiteit                       | Naam    | Gebruiksvoorbeeld | Standaard machtigingen | Uw eigen identiteit meenemen
 |----------------------------|-----------|----------|
 | Besturingsvlak | niet zichtbaar | Gebruikt door AKS voor beheerde netwerk bronnen, waaronder binnenloads voor binnenkomend verkeer en AKS beheerde open bare Ip's | Rol Inzender voor knooppunt resource groep | Preview
 | Kubelet | AKS-cluster naam-agent pool | Verificatie met Azure Container Registry (ACR) | Rol van lezer voor knooppunt resource groep | Momenteel niet ondersteund
@@ -108,11 +108,7 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ## <a name="bring-your-own-control-plane-mi-preview"></a>Uw eigen besturings vlak instellen MI (preview-versie)
 De identiteit van een aangepast besturings element biedt toegang tot de bestaande identiteit voordat het cluster wordt gemaakt. Dit maakt scenario's mogelijk, zoals het gebruik van een aangepast VNET of outboundType van UDR met een beheerde identiteit.
 
-> [!IMPORTANT]
-> AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
->
-> - [AKS-ondersteunings beleid](support-policies.md)
-> - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 U moet de volgende resources hebben geïnstalleerd:
 - De Azure CLI, versie 2.9.0 of hoger

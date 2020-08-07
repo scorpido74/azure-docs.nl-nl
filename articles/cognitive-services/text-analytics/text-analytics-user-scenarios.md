@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 0e60ba0517fb3b9388045762853c651869cffb6a
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141807"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986454"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Voor beelden van gebruikers scenario's voor de Text Analytics-API
 
@@ -29,7 +29,7 @@ Teken inzichten van klant-en werknemers enquête resultaten door de onbewerkte t
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>Geregistreerde inkomende klant oproepen analyseren
 
-Haal inzichten uit de aanroepen van Customer Services met behulp van Text to Speech, Sentimentanalyse en Sleuteltermextractie. De resultaten in Power BI dash board of een portal weer geven om klanten beter te begrijpen, trends van klanten service te markeren en de klant betrokkenheid te stimuleren. API-aanvragen verzenden als een batch voor rapportage of in realtime voor interventie. Zie de voorbeeld code [op github](https://github.com/rlagh2/callcenteranalytics).
+Haal inzichten uit de aanroepen van Customer Services met behulp van spraak-naar-tekst, Sentimentanalyse en Sleuteltermextractie. De resultaten in Power BI dash board of een portal weer geven om klanten beter te begrijpen, trends van klanten service te markeren en de klant betrokkenheid te stimuleren. API-aanvragen verzenden als een batch voor rapportage of in realtime voor interventie. Zie de voorbeeld code [op github](https://github.com/rlagh2/callcenteranalytics).
 
 ![Een afbeelding waarin wordt beschreven hoe u inzichten kunt automatiseren van de klant service aanroepen met behulp van sentiment-analyse](media/use-cases/azure-inbound.svg)
 

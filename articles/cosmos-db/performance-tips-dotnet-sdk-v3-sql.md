@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850256"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987253"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET
 
@@ -149,7 +149,7 @@ Bij het werken met Azure Functions moeten instanties ook de bestaande [richt lij
 
 **Reactie op inhoud voor schrijf bewerkingen uitschakelen**
 
-Stel voor werk belastingen die nog maken payloads de optie EnableContentResponseOnWrite-aanvraag in op ONWAAR. De service zal de gemaakte of bijgewerkte resource niet langer naar de SDK retour neren. Normaal gesp roken bevat de toepassing het object dat wordt gemaakt, zodat het niet nodig is om de service te retour neren. De header waarden zijn nog steeds toegankelijk als aanvraag kosten. Dit kan de prestaties verbeteren omdat de SDK niet langer geheugen hoeft toe te wijzen of de hoofd tekst van de reactie te serialiseren. Dit vermindert ook het gebruik van de netwerk bandbreedte om de prestaties te verbeteren.  
+Voor werk belastingen met zware nettoladingen maken stelt u de optie EnableContentResponseOnWrite-aanvraag in op ONWAAR. De service zal de gemaakte of bijgewerkte resource niet langer naar de SDK retour neren. Normaal gesp roken bevat de toepassing het object dat wordt gemaakt, zodat het niet nodig is om de service te retour neren. De header waarden zijn nog steeds toegankelijk als aanvraag kosten. Dit kan de prestaties verbeteren omdat de SDK niet langer geheugen hoeft toe te wijzen of de hoofd tekst van de reactie te serialiseren. Dit vermindert ook het gebruik van de netwerk bandbreedte om de prestaties te verbeteren.  
 
 ```csharp
 ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };

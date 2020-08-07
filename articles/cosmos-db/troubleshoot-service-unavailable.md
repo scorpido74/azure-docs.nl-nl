@@ -3,16 +3,16 @@ title: Problemen met uitzonde ringen Azure Cosmos DB service niet beschikbaar op
 description: Uitzonde ringen voor Cosmos DB Service diagnosticeren en oplossen
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/13/2020
+ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 12ecec7cf8f406ed53fb5e054fc304bf672cbbb0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b9c24ee3b94be86ccf9d27b928c42fc194800a3b
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294104"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987372"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable"></a>Problemen vaststellen en oplossen Azure Cosmos DB service niet beschikbaar is
 De SDK kan geen verbinding maken met de Azure Cosmos DB-service.
@@ -20,19 +20,22 @@ De SDK kan geen verbinding maken met de Azure Cosmos DB-service.
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 De volgende lijst bevat bekende oorzaken en oplossingen voor niet-beschik bare uitzonde ringen voor services.
 
-### <a name="1-the-required-ports-are-not-enabled"></a>1. de vereiste poorten zijn niet ingeschakeld.
+### <a name="1-the-required-ports-are-being-blocked"></a>1. de vereiste poorten worden geblokkeerd
 Controleer of alle [vereiste poorten](performance-tips-dotnet-sdk-v3-sql.md#networking) zijn ingeschakeld.
 
-## <a name="if-an-existing-application-or-service-started-getting-503"></a>Als een bestaande toepassing of service is begonnen met het verkrijgen van 503
+### <a name="2-client-side-transient-connectivity-issues"></a>2. tijdelijke verbindings problemen aan de client zijde
+De service niet-beschik bare uitzonde ringen kan Opper vlak zijn wanneer er tijdelijke verbindings problemen zijn die time-outs veroorzaken. Doorgaans bevat de stack tracering met betrekking tot dit scenario een `TransportException` , bijvoorbeeld:
 
-### <a name="1-there-is-an-outage"></a>1. er is een storing
+```C#
+TransportException: A client transport error occurred: The request timed out while waiting for a server response. 
+(Time: xxx, activity ID: xxx, error code: ReceiveTimeout [0x0010], base error: HRESULT 0x80131500
+```
+
+Volg de [probleem oplossing](troubleshoot-dot-net-sdk-request-timeout.md#troubleshooting-steps) voor het oplossen van de aanvraag om dit op te lossen.
+
+### <a name="3-service-outage"></a>3. service uitval
 Controleer de [status van Azure](https://status.azure.com/status) om te zien of er sprake is van een doorlopend probleem.
 
-### <a name="2-snat-port-exhaustion"></a>2. SNAT-poort uitputting
-Volg de [SNAT-hand leiding voor poort uitputting](troubleshoot-dot-net-sdk.md#snat).
-
-### <a name="3-the-required-ports-are-being-blocked"></a>3. de vereiste poorten worden geblokkeerd
-Controleer of alle [vereiste poorten](performance-tips-dotnet-sdk-v3-sql.md#networking) zijn ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Problemen [vaststellen en oplossen](troubleshoot-dot-net-sdk.md) bij het gebruik van Azure Cosmos db .NET SDK
