@@ -2,18 +2,18 @@
 title: Veelgestelde vragen over FHIR Services in azure-Azure API voor FHIR
 description: Krijg antwoorden op veelgestelde vragen over de Azure API voor FHIR, zoals de opslag locatie van gegevens achter FHIR Api's en versie ondersteuning.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
-ms.author: mihansen
-ms.openlocfilehash: b3838c46dcd5515cca81f41a4b8ac55bc68ffe69
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.author: matjazl
+ms.openlocfilehash: 252abcac6e9e39930593c1b110bf6d55ffdfc33f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552931"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843518"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Veelgestelde vragen over de Azure API voor FHIR
 
@@ -52,7 +52,7 @@ Verificatie en Azure API voor FHIR. Ga voor meer informatie naar Smart [Health](
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT connector voor FHIR (preview-versie)
 
 ### <a name="what-is-iomt"></a>Wat is IoMT?
-IoMT staat voor Internet of medische dingen en is een categorie van IoT-apparaten die status-en Wellness-gegevens vastleggen en uitwisselen met andere IT-systemen in de gezondheids zorg via een netwerk. Enkele voor beelden van IoMT-apparaten zijn: fitness-en klinisch Wearables, bewakings Sens oren, traceerers voor activiteiten, Point of Care-kiosken, of zelfs een slimme Pill.
+IoMT staat voor Internet of medische dingen en is een categorie van IoT-apparaten die status-en Wellness-gegevens vastleggen en uitwisselen met andere IT-systemen in de gezondheids zorg via een netwerk. IoMT-apparaten zijn bijvoorbeeld wearables voor fitness en klinische toepassingen, bewakingssensoren, activiteitstrackers, zorgkiosken of zelfs slimme pillen.
 
 ### <a name="how-many-azure-iot-connector-for-fhir-preview-do-i-need"></a>Hoeveel Azure IoT connector voor FHIR (preview) heb ik nodig?
 Eén Azure IoT-connector voor FHIR * kan worden gebruikt om gegevens op te nemen uit een groot aantal verschillende typen apparaten. U kunt echter nog steeds kiezen om verschillende connectors te gebruiken om de volgende redenen:

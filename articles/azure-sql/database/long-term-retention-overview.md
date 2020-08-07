@@ -12,16 +12,18 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 992ad40d343fcc85b6c7c8fe0ed8b083a5b08238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344506"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808844"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Lange termijn retentie-Azure SQL Database en Azure SQL Managed instance
 
-Veel toepassingen hebben wettelijke, nalevings-of andere zakelijke doel einden waarvoor u database back-ups wilt behouden die groter zijn dan de 7-35 dagen die worden verschaft door Azure SQL Database en Azure SQL Managed instance [automatische back-ups](automated-backups-overview.md). Door gebruik te maken van de functie voor lange termijn retentie (LTR) kunt u de volledige back-ups van de opgegeven SQL Database en SQL Managed instance in Azure Blob-opslag met geografisch redundante opslag met lees toegang voor Maxi maal tien jaar opslaan. U kunt vervolgens een back-up herstellen als een nieuwe data base. Zie [Azure Storage redundantie](../../storage/common/storage-redundancy.md)voor meer informatie over Azure Storage redundantie. 
+Veel toepassingen hebben wettelijke, nalevings-of andere zakelijke doel einden waarvoor u database back-ups wilt behouden die groter zijn dan de 7-35 dagen die worden verschaft door Azure SQL Database en Azure SQL Managed instance [automatische back-ups](automated-backups-overview.md). Door gebruik te maken van de functie voor lange termijn retentie (LTR) kunt u de volledige back-ups van de opgegeven SQL Database en SQL Managed instance in Azure Blob-opslag met geografisch redundante opslag met lees toegang voor Maxi maal tien jaar opslaan. U kunt vervolgens een back-up herstellen als een nieuwe data base.
+
+Daarnaast introduceert SQL Managed instance [Configureer bare opslag redundantie van back-ups](automated-backups-overview.md#backup-storage-redundancy) , waarmee u flexibiliteit kunt kiezen tussen lokaal redundante (LRS), zone redundante (ZRS) of geografisch redundante (RA-GRS) [opslag-blobs](../../storage/common/storage-redundancy.md). Deze optie is momenteel alleen beschikbaar tijdens het proces voor het maken van een beheerd exemplaar en kan niet worden gewijzigd nadat de resource is ingericht.
 
 Lange tijd retentie kan worden ingeschakeld voor Azure SQL Database en heeft een beperkte open bare Preview voor Azure SQL Managed instance. Dit artikel bevat een conceptueel overzicht van de lange termijn retentie. Als u lange termijn retentie wilt configureren, raadpleegt u [Azure SQL database LTR configureren](long-term-backup-retention-configure.md) en het [Azure SQL Managed instance-LTR configureren](../managed-instance/long-term-backup-retention-configure.md). 
 

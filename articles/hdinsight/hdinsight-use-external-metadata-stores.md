@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/30/2020
-ms.openlocfilehash: 2d6ebcd720a5cea8d41bf3c05f753f2e9d4775d1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085902"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873089"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Externe metagegevensopslag gebruiken in Azure HDInsight
 
@@ -38,10 +38,10 @@ HDInsight maakt standaard een meta Store met elk cluster type. U kunt in plaats 
 
 * U kunt de standaard META Store niet delen met andere clusters.
 
-* In de standaard-META Store wordt gebruikgemaakt van de basis Azure SQL Database, die een limiet heeft van vijf DTU (data base Trans Action Unit).
-Deze standaard META Store wordt doorgaans gebruikt voor relatief eenvoudige workloads. Werk belastingen waarvoor geen meerdere clusters zijn vereist en die geen meta gegevens nodig hebben die langer zijn dan de levens cyclus van het cluster.
+* Standaard-META Store wordt alleen aanbevolen voor eenvoudige werk belastingen. Werk belastingen waarvoor geen meerdere clusters zijn vereist en die geen meta gegevens nodig hebben die langer zijn dan de levens cyclus van het cluster.
 
-* Voor werk belastingen wordt u aangeraden naar een externe meta Store te migreren. Raadpleeg de volgende sectie voor meer informatie.
+> [!IMPORTANT]
+> De standaard-META Store biedt een Azure SQL Database met een **elementaire 5 DTU-limiet (niet uitbreidbaar)**. Geschikt voor basis test doeleinden. Voor grote of productie werkbelasting raden wij u aan de migratie naar een externe meta Store te migreren.
 
 ## <a name="custom-metastore"></a>Aangepaste meta Store
 
@@ -81,9 +81,8 @@ U kunt uw cluster op elk gewenst moment naar een eerder gemaakt Azure SQL Databa
 
 ## <a name="hive-metastore-guidelines"></a>Hive-metastore richtlijnen
 
-* Gebruik waar mogelijk een aangepaste meta Store om reken resources (uw actieve cluster) en meta gegevens te scheiden (opgeslagen in het meta Store).
-
-* Begin met een S2-laag, die 50 DTU en 250 GB opslag biedt. Als er een knel punt wordt weer geven, kunt u de data base omhoog schalen.
+> [!NOTE]
+> Gebruik waar mogelijk een aangepaste meta Store om reken resources (uw actieve cluster) en meta gegevens te scheiden (opgeslagen in het meta Store). Begin met de S2-laag, die 50 DTU en 250 GB opslag biedt. Als er een knel punt wordt weer geven, kunt u de data base omhoog schalen.
 
 * Als u van plan bent meerdere HDInsight-clusters te gebruiken voor toegang tot afzonderlijke gegevens, gebruikt u een afzonderlijke Data Base voor de meta Store op elk cluster. Als u een meta Store deelt op meerdere HDInsight-clusters, betekent dit dat de clusters dezelfde data-en onderliggende gebruikers gegevens bestanden gebruiken.
 

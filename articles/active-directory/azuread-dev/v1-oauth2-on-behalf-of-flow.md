@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/5/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fc4de3ef934e2d1b9dcff46c78f45e7d0f3b6d8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551679"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845456"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service-naar-service-aanroepen die een overgedragen gebruikers-id gebruiken in namens-of-flow
 
@@ -59,10 +59,10 @@ Registreer zowel de middelste laag service als de client toepassing in azure AD.
 1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
 1. Stel de omleidings-URI in op de basis-URL.
 1. Selecteer **Registreren** om de toepassing te maken.
-1. Genereer een client geheim voordat u de Azure Portal afsluit.
 1. Kies in het Azure Portal uw toepassing en selecteer **certificaten & geheimen**.
 1. Selecteer **Nieuw client geheim** en voeg een geheim toe met een duur van één jaar of twee jaar.
 1. Wanneer u deze pagina opslaat, wordt de geheime waarde door de Azure Portal weer gegeven. Kopieer de geheime waarde en sla deze op een veilige locatie op.
+1. Maak een scope in uw toepassing in de pagina **een API beschikbaar** maken voor uw app en klik op een bereik toevoegen.  Mogelijk moet u ook een URI voor de toepassings-ID maken. 
 
 > [!IMPORTANT]
 > U hebt het geheim nodig om de toepassings instellingen in uw implementatie te configureren. Deze geheime waarde wordt niet opnieuw weer gegeven en kan niet worden opgehaald op een andere manier. Leg de gegevens vast zodra deze zichtbaar zijn in de Azure Portal.
@@ -79,7 +79,7 @@ Registreer zowel de middelste laag service als de client toepassing in azure AD.
 1. Selecteer **Registreren** om de toepassing te maken.
 1. Configureer machtigingen voor uw toepassing. Selecteer in **API**-machtigingen **de optie een machtiging toevoegen** en vervolgens **mijn api's**.
 1. Typ de naam van de middelste laag service in het tekst veld.
-1. Kies **machtigingen selecteren** en selecteer vervolgens **toegang \<service name> **.
+1. Kies **machtigingen selecteren** en selecteer vervolgens het bereik dat u hebt gemaakt in de laatste stap van het registreren van de middelste laag.
 
 ### <a name="configure-known-client-applications"></a>Bekende client toepassingen configureren
 
@@ -105,7 +105,7 @@ De client toepassing wordt beveiligd door een gedeeld geheim of door een certifi
 
 Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-toegangs token de volgende para meters:
 
-| Parameter | Type | Description |
+| Parameter | Type | Beschrijving |
 | --- | --- | --- |
 | grant_type |vereist | Het type van de token aanvraag. Een OBO-aanvraag gebruikt een JSON Web Token (JWT), dus de waarde moet **urn zijn: IETF: params: OAuth: Grant-type: JWT-Bearer**. |
 | Assertion |vereist | De waarde van het toegangs token dat in de aanvraag wordt gebruikt. |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat de volgende para meters:
 
-| Parameter | Type | Description |
+| Parameter | Type | Beschrijving |
 | --- | --- | --- |
 | grant_type |vereist | Het type van de token aanvraag. Een OBO-aanvraag maakt gebruik van een JWT-toegangs token, dus de waarde moet **urn zijn: IETF: params: OAuth: toekenning-type: JWT-Bearer**. |
 | Assertion |vereist | De waarde van het token dat in de aanvraag wordt gebruikt. |
@@ -249,7 +249,7 @@ Sommige op OAuth gebaseerde webservices moeten toegang hebben tot andere web ser
 
 Een service-naar-service-aanvraag voor een SAML-verklaring bevat de volgende para meters:
 
-| Parameter | Type | Description |
+| Parameter | Type | Beschrijving |
 | --- | --- | --- |
 | grant_type |vereist | Het type van de token aanvraag. Voor een aanvraag die gebruikmaakt van een JWT, moet de waarde **urn zijn: IETF: params: OAuth: Grant-type: JWT-Bearer**. |
 | Assertion |vereist | De waarde van het toegangs token dat in de aanvraag wordt gebruikt.|

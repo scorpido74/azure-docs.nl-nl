@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 0cf711f9a295abaf20cd284e819cf062c462c668
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 4737b2ef701f643ff5bec47be29b3139e27fb146
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558687"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845150"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Migratie handleiding voor ADAL naar MSAL voor python
 
@@ -30,7 +30,7 @@ Dit artikel bevat een overzicht van wijzigingen die u moet aanbrengen voor het m
 ADAL werkt met het Azure Active Directory (Azure AD) v 1.0-eind punt. De micro soft Authentication Library (MSAL) werkt met het micro soft Identity-platform, voorheen bekend als het Azure Active Directory v 2.0-eind punt. Het micro soft-identiteits platform wijkt af van Azure AD v 1.0 in dat geval:
 
 Steun
-  - Werk-en school accounts (voor Azure AD ingerichte accounts)
+  - Werk- en schoolaccounts (door Azure AD ingerichte accounts)
   - Persoonlijke accounts (zoals Outlook.com of Hotmail.com)
   - Uw klanten die hun eigen e-mail adres of sociale identiteit (zoals LinkedIn, Facebook, Google) meenemen via de Azure AD B2C aanbieding
 

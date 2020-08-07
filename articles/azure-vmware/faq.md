@@ -4,12 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836578"
+ms.locfileid: "87872324"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Veelgestelde vragen over de preview-versie van Azure VMware Solution (AVS)
 
@@ -45,7 +45,7 @@ Specifieke integratie-en gebruiks voorbeelden kunnen per geval worden geëvaluee
 
 **Kan ik vSphere-Vm's migreren uit on-premises omgevingen om persoonlijke Clouds te AVS?**
 
-Ja. VM-migratie en vMotion kunnen worden gebruikt om virtuele machines naar een privécloud te verplaatsen als aan de standaard-cross vCenter [vMotion-vereisten] [ https://kb.vmware.com/s/article/210695 ] wordt voldaan.
+Ja. VM-migratie en vMotion kunnen worden gebruikt om Vm's naar een privécloud te verplaatsen als aan de standaard vereisten voor cross vCenter van [vMotion](https://kb.vmware.com/s/article/210695) wordt voldaan.
 
 **Is een specifieke versie van vSphere vereist in on-premises omgevingen?**
 
