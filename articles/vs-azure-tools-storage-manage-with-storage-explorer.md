@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met Storage Explorer | Microsoft Docs
-description: Azure storage-resources beheren met Storage Explorer
+description: Beginnen met het beheren van Azure storage-resources met Storage Explorer. Down load en installeer Azure Storage Explorer, maak verbinding met een opslag account of-service, en meer.
 services: storage
 author: cawaMS
 ms.service: storage
@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff5480e6b78beda7fe50dc772eae925ccdb80664
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975262"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905343"
 ---
 # <a name="get-started-with-storage-explorer"></a>Aan de slag met Storage Explorer
 
@@ -133,7 +133,7 @@ Er zijn verschillende manieren om te koppelen aan een resource in Storage Explor
 
 Nadat de verbinding is toegevoegd, gaat de resource structuur naar het knoop punt dat de verbinding vertegenwoordigt. De bron wordt weer gegeven onder **lokale & gekoppelde**  >  **opslag accounts**  >  **(gekoppelde containers)**  >  **BLOB-containers**. Als Storage Explorer uw verbinding niet kan toevoegen of als u geen toegang hebt tot uw gegevens nadat u de verbinding hebt toegevoegd, raadpleegt u de [Azure Storage Explorer Troubleshooting Guide (Engelstalig](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)).
 
-#### <a name="use-a-connection-string"></a>Een connection string gebruiken
+#### <a name="use-a-connection-string"></a>Een verbindingsreeks gebruiken
 
 1. Selecteer het **verbindings** symbool om **verbinding maken met Azure Storage**te openen.
 
@@ -147,7 +147,7 @@ Nadat de verbinding is toegevoegd, gaat de resource structuur naar het knoop pun
 
 Nadat de verbinding is toegevoegd, gaat de resource structuur naar het knoop punt dat de verbinding vertegenwoordigt. De bron wordt weer gegeven onder **lokale & gekoppelde**  >  **opslag accounts**. Als Storage Explorer uw verbinding niet kan toevoegen of als u geen toegang hebt tot uw gegevens nadat u de verbinding hebt toegevoegd, raadpleegt u de [Azure Storage Explorer Troubleshooting Guide (Engelstalig](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)).
 
-#### <a name="use-a-shared-access-signature-uri"></a>Een URI voor een Shared Access-hand tekening gebruiken
+#### <a name="use-a-shared-access-signature-uri"></a>Een URI voor een SAS gebruiken
 
 1. Selecteer het **verbindings** symbool om **verbinding maken met Azure Storage**te openen.
 

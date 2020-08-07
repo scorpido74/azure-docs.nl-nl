@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ddbbb9f39dd17daf5c500bf582c100b4e1754a15
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f280e6754d40ad5dc8cbfa4b760e090d0b5b81aa
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461354"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846476"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "87461354"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
@@ -228,7 +230,7 @@ Niet altijd de meest zicht bare wijzigingen, maar ze helpen ons team sneller mee
 * Backport uniqueKeyPolicy naar v2
 * Oplossingen voor demo-en demo fouten
 
-### <a name="212"></a><a name="2.1.2"></a>2.1.2
+### <a name="212"></a><a name="2.1.2"></a>omschreven
 * Backport bieden oplossingen van de V3-vertakking
 * De hand tekening van het type executeNext () corrigeren
 * Type correcties
@@ -423,7 +425,7 @@ Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het bui
 | [versie 2.1.5](#2.1.5) |20 maart 2019 |--- |
 | [2.1.4](#2.1.4) |15 maart 2019 |--- |
 | [2.1.3](#2.1.3) |8 maart 2019 |--- |
-| [2.1.2](#2.1.2) |28 januari 2019 |--- |
+| [omschreven](#2.1.2) |28 januari 2019 |--- |
 | [2.1.1](#2.1.1) |5 december 2018 |--- |
 | [2.1.0](#2.1.0) |4 december 2018 |--- |
 | [2.0.5](#2.0.5) |7 november 2018 |--- |

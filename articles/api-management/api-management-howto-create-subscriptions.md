@@ -1,6 +1,6 @@
 ---
 title: Abonnementen maken in azure API Management | Microsoft Docs
-description: Meer informatie over het maken van abonnementen in azure API Management.
+description: Meer informatie over het maken van abonnementen in azure API Management. Er is een abonnement nodig om abonnements sleutels op te halen die toegang tot Api's toestaan.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: f8b2238eb0fab9aeeb42d11b4176c0d681b5f8e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 191323a4c150c00c93245be35c9c8af381e26b42
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073527"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904852"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Abonnementen maken in Azure API Management
 

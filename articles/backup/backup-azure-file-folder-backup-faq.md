@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-agent (MARS) – Veelgestelde vragen
 description: Behandelt Veelgestelde vragen over het maken van back-ups van bestanden en mappen met Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563093"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874619"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Veelgestelde vragen-agent voor Microsoft Azure Recovery Services (MARS)
 
@@ -32,7 +32,7 @@ De kluis referenties verlopen na tien dagen. Als het referenties bestand is verl
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>Welke tekens zijn toegestaan voor de wachtwoordzin?
 
-De wachtwoordzin moet tekens uit de ASCII-tekenset gebruiken, met ASCII-waarden die kleiner zijn dan of gelijk zijn aan 127.
+De wachtwoordzin moet tekens uit de ASCII-tekenset gebruiken, met [ASCII-waarden die kleiner zijn dan of gelijk zijn aan 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127).
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Vanaf welke stations kan ik back-ups maken van bestanden en mappen?
 

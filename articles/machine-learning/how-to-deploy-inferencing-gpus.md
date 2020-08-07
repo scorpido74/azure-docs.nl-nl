@@ -10,13 +10,13 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 5233850ef9656f225caebc10458218eede393ab3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 6bb6b373482a937819984cea7d1dc264d4f08a74
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325777"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846833"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -276,7 +276,7 @@ print("prediction:", resp.text)
 
 Zie [Create client to consumed web service](how-to-consume-web-service.md)(Engelstalig) voor meer informatie over het maken van een client toepassing.
 
-## <a name="clean-up-the-resources"></a>De resources opschonen
+## <a name="clean-up-the-resources"></a>Resources opschonen
 
 Als u het AKS-cluster specifiek voor dit voor beeld hebt gemaakt, verwijdert u uw resources Nadat u klaar bent.
 

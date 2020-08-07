@@ -3,18 +3,18 @@ title: Hybrid Cloud extension (HCX) installeren
 description: De VMware Hybrid Cloud extension (HCX)-oplossing instellen voor uw persoonlijke cloud van Azure VMware-oplossing (AVS)
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84388c3ec53d9067df2580aabb21ca5885d154b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475444"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904990"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>HCX voor Azure VMware-oplossing installeren
 
 In dit artikel worden de procedures beschreven voor het instellen van de VMWare Hybrid Cloud extension (HCX)-oplossing voor uw Azure VMWare-oplossing (AVS) privécloud. HCX maakt de migratie van uw VMware-workloads naar de Cloud en andere verbonden sites mogelijk via verschillende ingebouwde HCX ondersteunde migratie typen.
 
-HCX Advanced, de standaard installatie, ondersteunt Maxi maal drie vCenter. Als er meer dan drie zijn vereist, hebben klanten de mogelijkheid om de HCX Enter prise-invoeg toepassing via ondersteuning in te scha kelen. HCX Enter prise-installatie bevat extra kosten voor klanten na algemene Beschik baarheid (GA), maar biedt [extra functies](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+HCX Advanced, de standaard installatie, ondersteunt Maxi maal drie site verbindingen (on-premises of in de Cloud). Als er meer dan drie site verbindingen zijn vereist, hebben klanten de mogelijkheid om de HCX Enter prise-invoeg toepassing in te scha kelen via ondersteuning, die momenteel als preview-versie beschikbaar is. HCX Enter prise heeft extra kosten voor klanten na algemene Beschik baarheid (GA), maar biedt [extra functies](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
 
 
 Controleer [voordat u](#before-you-begin)aan de slag gaat, vereisten voor de [Software versie](#software-version-requirements)en de [vereisten eerst.](#prerequisites) 
@@ -22,7 +22,7 @@ Controleer [voordat u](#before-you-begin)aan de slag gaat, vereisten voor de [So
 Vervolgens worden alle benodigde procedures door lopen:
 
 > [!div class="checklist"]
-> * De on-premises HCXe eicellen implementeren
+> * De on-premises HCXe eicellen (connector) implementeren
 > * HCX activeren en configureren
 > * Netwerk-uplink en service-net configureren
 > * Voltooi de installatie door de status van het apparaat te controleren
@@ -36,11 +36,14 @@ Nadat de installatie is voltooid, kunt u de aanbevolen vervolg stappen volgen di
 * Bekijk de migratie van VMware-documenten [virtual machines met VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
 * Bekijk eventueel [overwegingen voor VMware HCX-implementatie](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html).
 * Bekijk eventueel gerelateerde VMware-materialen op HCX, zoals de VMware vSphere [blog serie](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) op HCX. 
-* Bestel een AVS HCX Enter prise Activation via AVS-ondersteunings kanalen.
+* Een AVS HCX Enter prise Activation via AVS-ondersteunings kanalen aanvragen.
 
-Het aanpassen van werk belastingen met reken-en opslag resources is een essentiële plannings stap bij het voorbereiden van het gebruik van de HCX-oplossing van de AVS-Privécloud. Adresseer de grootte stap als onderdeel van de eerste planning van de particuliere cloud omgeving.   
+Het aanpassen van werk belastingen met reken-en opslag resources is een essentiële plannings stap wanneer u de HCX-oplossing voor de automatische AVS-Cloud voorbereidt. Adresseer de grootte stap als onderdeel van de eerste planning van de particuliere cloud omgeving. 
+
+U kunt werk belastingen ook verg Roten of verkleinen door een AVS-evaluatie uit te voeren in de Azure Migrate Portal ( https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) .
 
 ## <a name="software-version-requirements"></a>Software versie vereisten
+
 Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevoerd. 
                                                          
 | Onderdeel type    | Vereisten voor de bron omgeving    | Vereisten voor de doel omgeving   |

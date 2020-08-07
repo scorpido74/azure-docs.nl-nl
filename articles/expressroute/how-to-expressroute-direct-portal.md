@@ -5,19 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 06/12/2020
+ms.date: 08/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: f22f81d69d746764af43d9167874aabedbd56f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765440"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903592"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Direct ExpressRoute maken met behulp van de Azure Portal
 
 Dit artikel laat u zien hoe u ExpressRoute direct maakt met behulp van de Azure Portal.
 Met ExpressRoute direct kunt u rechtstreeks verbinding maken met het wereld wijde netwerk van micro soft op de locatie van peering strategisch gedistribueerd over de hele wereld. Zie [About ExpressRoute Direct](expressroute-erdirect-about.md) (Over ExpressRoute Direct) voor meer informatie.
+
+## <a name="before-you-begin"></a><a name="before"></a>Voordat u begint
+
+Controleer of de resource provider **micro soft. Network** is geregistreerd voor uw abonnement. Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider.
+
+1. U hebt toegang tot uw abonnements instellingen zoals beschreven in [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md).
+1. In uw abonnement, voor **resource providers**, controleert u of de provider **micro soft. Network** een **geregistreerde** status bevat. Als de resource provider micro soft. Network niet aanwezig is in de lijst met geregistreerde providers, voegt u deze toe.
 
 ## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. ExpressRoute direct maken
 

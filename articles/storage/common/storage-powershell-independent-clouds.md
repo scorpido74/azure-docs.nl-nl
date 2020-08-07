@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ccacef6f9557bdcf683973c2ad5141b6066347b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176206"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904306"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Opslag beheren in de onafhankelijke Azure-Clouds met behulp van Power shell
 
@@ -112,6 +112,7 @@ De resultaten zijn vergelijkbaar met de volgende waarden:
 | SqlDatabaseDnsSuffix | `.database.cloudapi.de` |
 | **StorageEndpointSuffix** | `core.cloudapi.de` |
 | ... | ... |
+
 Als u alleen de eigenschap voor het eindpunt achtervoegsel van het opslag account wilt ophalen, haalt u de specifieke Cloud op en vraagt u slechts één eigenschap op.
 
 ```powershell

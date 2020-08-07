@@ -1,26 +1,29 @@
 ---
-title: Azure-Cognitive Search in .NET gebruiken
+title: Micro soft. Azure. Search (v10 toevoegen) in .NET gebruiken
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het gebruik van Azure Cognitive Search in een .NET-toepassing met behulp van C# en de .NET SDK. Op code gebaseerde taken zijn het maken van een verbinding met de service, het indexeren van inhoud en het opvragen van query's in een index.
+description: Meer informatie over het maken en beheren van Zoek objecten een .NET-toepassing met behulp van C# en versie 10 van de .NET SDK. Code fragmenten laten zien hoe u verbinding maakt met de service, indexen maakt en query's uitvoert.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 08/05/2020
+ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146920"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905420"
 ---
-# <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Azure Cognitive Search gebruiken vanuit een .NET-toepassing
+# <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>Micro soft. Azure. Search (v10 toevoegen) gebruiken in een .NET-toepassing
 
-Dit artikel bevat een overzicht om u te helpen met de [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). U kunt de .NET SDK gebruiken om een uitgebreide zoek ervaring in uw toepassing te implementeren met behulp van Azure Cognitive Search.
+In dit artikel wordt uitgelegd hoe u Zoek objecten maakt en beheert met behulp van C# en de [Azure Cognitive Search (v10 toevoegen) .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). Versie 10 is de laatste versie van het pakket micro soft. Azure. Search. Als u verdergaat, worden nieuwe functies in [Azure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) van het Azure SDK-team geïmplementeerd.
 
-## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Wat is de Azure Cognitive Search SDK?
+Als u bestaande of Inflight-ontwikkel projecten hebt, kunt u versie 10 blijven gebruiken. Voor nieuwe projecten of als u nieuwe functies wilt gebruiken, moet u een bestaande Zoek oplossing naar de nieuwe bibliotheek overzetten.
+
+## <a name="whats-in-version-10"></a>Wat is er in versie 10
+
 De SDK bestaat uit een aantal client bibliotheken waarmee u uw indexen, gegevens bronnen, Indexeer functies en synoniemen kunt beheren, evenals documenten kunt uploaden en beheren, en query's kunt uitvoeren, zonder dat u de details van HTTP en JSON hoeft te hoeven afhandelen. Deze clientbibliotheken worden allemaal gedistribueerd als NuGet-pakketten.
 
 Het belangrijkste NuGet-pakket is `Microsoft.Azure.Search` , een meta pakket dat alle andere pakketten als afhankelijkheden bevat. Gebruik dit pakket als u zojuist aan de slag bent of als u weet dat uw toepassing alle functies van Azure Cognitive Search nodig heeft.

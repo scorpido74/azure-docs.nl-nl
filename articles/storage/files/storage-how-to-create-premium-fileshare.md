@@ -1,6 +1,6 @@
 ---
 title: Een Premium Azure-bestands share maken
-description: In dit artikel leert u hoe u een Premium Azure-bestands share maakt.
+description: In dit artikel leert u hoe u een Premium Azure-bestands share maakt met behulp van de Azure Portal, Power shell of de Azure CLI.
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adeb1635489441b30c15fee69922e3abef0a53f9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497627"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903813"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Een Premium Azure-bestands share maken
 Premium-bestands shares worden aangeboden op media SSD (Solid-State Disk) en zijn handig voor i/o-intensieve workloads, waaronder hosting data bases en HPC (High-Performance Computing). Premium-bestands shares worden gehost in een speciaal type opslag account, een FileStorage-account genoemd. Premium-bestands shares zijn ontworpen voor hoge prestaties en schaal bare toepassingen op bedrijfs niveau en bieden consistente shares met lage latentie, hoge IOPS en hoge door voer.

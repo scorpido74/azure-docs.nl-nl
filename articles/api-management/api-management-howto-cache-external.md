@@ -1,6 +1,6 @@
 ---
 title: Een externe cache gebruiken in Azure API Management | Microsoft Docs
-description: Informatie over het configureren en gebruiken van een externe cache in Azure API Management.
+description: Informatie over het configureren en gebruiken van een externe cache in Azure API Management. Door gebruik te maken van een externe cache kunt u enkele beperkingen van de ingebouwde cache opheffen.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,18 +11,18 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 3f1f3d0fd0164a37c8011dc82a95337c89e103df
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cfb7dd7a3831d90235b25af9598cfbc137ffcb3d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250631"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904952"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Een extern met redis compatibele cache gebruiken in azure API Management
 
 Naast het gebruik van de ingebouwde cache, biedt Azure API Management u de mogelijkheid om antwoorden in een cache op te slaan in een externe redis, zoals Azure cache voor redis.
 
-Door gebruik te maken van een externe cache kunt u enkele beperkingen van de ingebouwde cache opvangen:
+Door gebruik te maken van een externe cache kunt u enkele beperkingen van de ingebouwde cache opheffen:
 
 * Als u wilt vermijden dat uw cache periodiek wordt gewist tijdens het bijwerken van API Management
 * Als u meer controle wilt over de configuratie van uw cache
@@ -46,7 +46,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 + [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 + Inzicht in [Aangepast opslaan in cache in Azure API Management](api-management-howto-cache.md)
 
-## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a> Een Azure-cache voor Redis maken
+## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a> Azure-cache maken voor redis
 
 In dit gedeelte wordt uitgelegd hoe u een Azure-cache voor Redis maakt in Azure. Als u al een Azure-cache voor Redis hebt, binnen of buiten Azure, kunt u <a href="#add-external-cache">doorgaan</a> naar het volgende gedeelte.
 

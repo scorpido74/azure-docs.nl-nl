@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552115"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874772"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Beheer van verificatiesessies met voorwaardelijke toegang configureren
 
@@ -106,8 +106,6 @@ Voorwaardelijke toegang is een Azure AD Premium mogelijkheid en vereist een Prem
 ![Beleid voor voorwaardelijke toegang geconfigureerd voor aanmeldings frequentie](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
 Op Azure AD geregistreerde Windows-apparaten aanmelden bij het apparaat wordt beschouwd als een prompt. Als u bijvoorbeeld de aanmeldings frequentie hebt ingesteld op 24 uur voor Office-apps, voldoen gebruikers op Azure AD geregistreerde Windows-apparaten met het aanmeldings frequentie beleid door zich aan te melden bij het apparaat en wordt er niet opnieuw gevraagd om de Office-apps te openen.
-
-Als u een andere aanmeldings frequentie hebt geconfigureerd voor verschillende web-apps die worden uitgevoerd in dezelfde browser sessie, wordt het meest strikte beleid toegepast op beide apps, omdat alle apps die in dezelfde browser sessie worden uitgevoerd, een token van één sessie delen.
 
 ### <a name="policy-2-persistent-browser-session"></a>Beleid 2: permanente browser sessie
 

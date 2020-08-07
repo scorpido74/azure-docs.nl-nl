@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3a648b11e795a7d5c8680ac8c3df95e7d0c6bb7d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c1d2613661421ae95c34edef3caafe4c6fb3d4a9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406772"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905071"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatische taal detectie voor spraak naar tekst
 
@@ -26,7 +26,7 @@ Automatische taal detectie wordt gebruikt om de meest waarschijnlijke overeenkom
 In dit artikel leert u hoe u kunt gebruiken `AutoDetectSourceLanguageConfig` om een object te maken `SpeechRecognizer` en de gedetecteerde taal op te halen.
 
 > [!IMPORTANT]
-> Deze functie is alleen beschikbaar voor de Speech SDK met C#, C++, Java, python en doel-C.
+> Deze functie is alleen beschikbaar voor de Speech SDK met C#, C++, Java, Python, java script en objectief-C.
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatische taal detectie met de Speech SDK
 
@@ -240,4 +240,24 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Naslag documentatie voor Speech SDK](speech-sdk.md)
+::: zone pivot="programming-language-csharp"
+* Zie de [voorbeeld code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741) op github voor automatische taal detectie
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+* Zie de [voorbeeld code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507) op github voor automatische taal detectie
+::: zone-end
+
+::: zone pivot="programming-language-java"
+* Zie de [voorbeeld code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521) op github voor automatische taal detectie
+::: zone-end
+
+::: zone pivot="programming-language-python"
+* Zie de [voorbeeld code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434) op github voor automatische taal detectie
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+* Zie de [voorbeeld code](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494) op github voor automatische taal detectie
+::: zone-end
+
+* [Naslag documentatie voor Speech SDK](speech-sdk.md)

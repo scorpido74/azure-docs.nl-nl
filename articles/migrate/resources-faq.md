@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate
 description: Krijg antwoorden op veelgestelde vragen over de Azure Migrate-service.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090005"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847462"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: algemene vragen
 
@@ -29,13 +29,19 @@ Gebruik Azure Migrate om on-premises infra structuur, toepassingen en gegevens t
 
 [Azure migrate](migrate-services-overview.md) biedt een gecentraliseerde hub voor evaluatie en migratie naar Azure. 
 
-[Azure site Recovery](../site-recovery/site-recovery-overview.md) is een oplossing voor nood herstel. 
+- Het gebruik van Azure Migrate biedt interoperabiliteit en toekomstige uitbrei ding met Azure Migrate-hulpprogram ma's, andere Azure-Services en hulpprogram ma's van derden.
+- De Azure Migrate: hulp programma voor server migratie is bedoeld voor server migratie naar Azure. Deze is geoptimaliseerd voor migratie. U hoeft niet meer te weten te komen over concepten en scenario's die niet rechtstreeks relevant zijn voor migratie. 
+- Er zijn geen kosten voor het gebruik van hulpprogram ma's voor de migratie van 180 dagen, vanaf het moment dat de replicatie voor een virtuele machine wordt gestart. Dit geeft u tijd om de migratie te volt ooien. U betaalt alleen voor de opslag-en netwerk resources die worden gebruikt tijdens de replicatie, en voor de reken kosten die tijdens de test migraties worden verbruikt.
+- Azure Migrate ondersteunt alle migratie scenario's die door Site Recovery worden ondersteund. Daarnaast biedt Azure Migrate voor VMware-Vm's een migratie optie zonder agent.
+- Er worden prioriteiten gegeven voor nieuwe migratie functies voor de Azure Migrate: alleen hulp programma voor server migratie. Deze functies zijn niet gericht op Site Recovery.
+
+[Azure site Recovery](../site-recovery/site-recovery-overview.md) moet alleen worden gebruikt voor herstel na nood gevallen.
 
 Het Azure Migrate: hulp programma voor server migratie maakt gebruik van enige back-end-Site Recovery functionaliteit voor het migreren van een aantal on-premises machines.
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>Ik heb een project met de vorige klassieke ervaring van Azure Migrate. Hoe kan ik beginnen met het gebruik van de nieuwe versie?
 
-U kunt projecten of onderdelen in de vorige versie niet upgraden naar de nieuwe versie. U moet [een nieuw Azure migrate-project maken](create-manage-projects.md)en er [hulpprogram ma's voor de evaluatie en migratie aan toevoegen](how-to-add-tool-first-time.md) . Gebruik de zelf studies om inzicht te krijgen in het gebruik van de hulpprogram ma's voor evaluatie en migratie die beschikbaar zijn. Als u een Log Analytics werk ruimte aan een klassiek project hebt gekoppeld, kunt u deze koppelen aan een project van de huidige versie nadat u het klassieke project hebt verwijderd.
+U kunt projecten of onderdelen in de vorige versie niet upgraden naar de nieuwe versie. U moet [een nieuw Azure Migrate-project maken](create-manage-projects.md) en daar [hulpprogramma's voor evaluatie en migratie aan toevoegen](how-to-add-tool-first-time.md). Gebruik de zelfstudies om te begrijpen hoe u de beschikbare hulpprogramma’s voor evaluatie en migratie kunt gebruiken. Als er een Log Analytics-werkruimte aan een Klassiek project was gekoppeld, kunt u deze aan een project in de huidige versie koppelen nadat u het Klassieke project hebt verwijderd.
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Wat is het verschil tussen Azure Migrate: Server analyse en de kaart Toolkit?
 

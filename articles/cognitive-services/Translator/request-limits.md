@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561464"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903404"
 ---
 # <a name="request-limits-for-translator"></a>Aanvraag limieten voor Translator
 
@@ -23,18 +23,18 @@ Dit artikel bevat beperkings limieten voor het conversie programma. Services omv
 
 ## <a name="character-and-array-limits-per-request"></a>Limieten voor tekens en matrices per aanvraag
 
-Elke Vertaal aanvraag is beperkt tot 5.000 tekens, in alle doel talen waarnaar u vertaalt. Als u bijvoorbeeld een Vertaal aanvraag van 1.500 tekens verzendt om te vertalen naar drie verschillende talen, resulteert dit in een aanvraag grootte van 1, 500x3 = 4.500 tekens, die voldoet aan de aanvraag limiet. U betaalt per teken, niet op het aantal aanvragen. Het wordt aanbevolen om kortere aanvragen te verzenden.
+Elke Vertaal aanvraag is beperkt tot 10.000 tekens, in alle doel talen waarnaar u vertaalt. Als u bijvoorbeeld een Vertaal aanvraag van 3.000 tekens verzendt om te vertalen naar drie verschillende talen, resulteert dit in een aanvraag grootte van 3000x3 = 9.000 tekens, die voldoet aan de aanvraag limiet. U betaalt per teken, niet op het aantal aanvragen. Het wordt aanbevolen om kortere aanvragen te verzenden.
 
 De volgende tabel bevat een overzicht van matrix elementen en teken limieten voor elke bewerking van de vertaler.
 
 | Bewerking | Maximale grootte van matrix element |    Maximum aantal matrix elementen |    Maximale aanvraag grootte (tekens) |
 |:----|:----|:----|:----|
-| Vertalen | 5\.000    | 100    | 5\.000 |
-| Transcriberen | 5\.000    | 10    | 5\.000 |
-| Detecteren | 10.000 |    100 |    50,000 |
-| BreakSentence | 10.000    | 100 |    50,000 |
-| Opzoeken in woordenlijst| 100 |    10    | 1000 |
-| Voorbeelden in woordenlijst | 100 voor tekst en 100 voor vertaling (200 in totaal)| 10|    2.000 |
+| Vertalen | 10.000    | 100   | 10.000 |
+| Transcriberen | 5\.000 | 10    | 5\.000 |
+| Detecteren | 10.000 | 100 |   50,000 |
+| BreakSentence | 50,000    | 100 | 50,000 |
+| Opzoeken in woordenlijst| 100 |  10  | 1000 |
+| Voorbeelden in woordenlijst | 100 voor tekst en 100 voor vertaling (200 in totaal)| 10|   2.000 |
 
 ## <a name="character-limits-per-hour"></a>Maximum aantal tekens per uur
 

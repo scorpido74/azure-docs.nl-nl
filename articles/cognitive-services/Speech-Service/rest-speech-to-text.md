@@ -3,19 +3,19 @@ title: Naslag informatie over spraak naar tekst-API (REST)-Speech Service
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het gebruik van de spraak-naar-tekst REST API. In dit artikel vindt u meer informatie over autorisatie opties, query opties, het structureren van een aanvraag en het ontvangen van een reactie.
 services: cognitive-services
-author: yinhew
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.author: yinhew
-ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: trbye
+ms.openlocfilehash: 4b1548efe942cbef842498035d6e0b0d11a91d00
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537966"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905241"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
@@ -60,7 +60,7 @@ Deze para meters kunnen worden opgenomen in de query reeks van de REST-aanvraag.
 
 Deze tabel bevat de vereiste en optionele kopteksten voor aanvragen voor spraak naar tekst.
 
-|Header| Beschrijving | Vereist/optioneel |
+|Koptekst| Beschrijving | Vereist/optioneel |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Uw abonnements sleutel voor spraak Services. | Deze header of `Authorization` is vereist. |
 | `Authorization` | Een autorisatie token dat wordt voorafgegaan door het woord `Bearer` . Zie [Verificatie](#authentication) voor meer informatie. | Deze header of `Ocp-Apim-Subscription-Key` is vereist. |

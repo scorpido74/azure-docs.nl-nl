@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync bewaken | Microsoft Docs
-description: Azure File Sync bewaken.
+description: Lees hoe u uw Azure File Sync-implementatie kunt controleren met behulp van Azure Monitor, de opslag synchronisatie service en Windows Server.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 81224e0c055ad4a94bd57ebb3aa7c8a3b30c2dd7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9a4e4a30c5a84baf5a78d0a90f7302e2b31a5946
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832617"
+ms.locfileid: "87903524"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync bewaken
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u uw Azure File Sync-implementatie bewaakt m
 In deze hand leiding worden de volgende scenario's behandeld: 
 - Azure File Sync metrische gegevens weer geven in Azure Monitor.
 - Maak waarschuwingen in Azure Monitor om u proactief te informeren over kritieke omstandigheden.
-- Bewaak de status van uw Azure File Sync-implementatie met behulp van de Azure Portal.
+- Bekijk de status van uw Azure File Sync-implementatie met behulp van de Azure Portal.
 - De gebeurtenis logboeken en prestatie meter items op uw Windows-servers gebruiken om de status van uw Azure File Sync-implementatie te controleren. 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -34,7 +34,9 @@ Gebruik [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)
 
 De metrische gegevens voor Azure File Sync zijn standaard ingeschakeld en worden verzonden naar Azure Monitor om de 15 minuten.
 
-Als u Azure File Sync metrische gegevens in Azure Monitor wilt weer geven, selecteert u het resource type **Storage Sync Services** .
+**Azure File Sync metrische gegevens weer geven in Azure Monitor**
+- Ga naar de **opslag synchronisatie service** in de **Azure Portal** en klik op **metrische gegevens**.
+- Klik op de vervolg keuzelijst **metriek** en selecteer de metrische gegevens die u wilt weer geven.
 
 De volgende metrische gegevens voor Azure File Sync zijn beschikbaar in Azure Monitor:
 
@@ -82,7 +84,7 @@ Als u de status van de geregistreerde server, de status van de server eindpunt e
 ### <a name="registered-server-health"></a>Status van geregistreerde server
 
 - Als de status van de **geregistreerde server** **online**is, communiceert de server met succes met de service.
-- Als de status van de **geregistreerde server** **offline wordt weer gegeven**, controleert u of het AzureStorageSyncMonitor.exe-proces (Storage sync monitor) op de server wordt uitgevoerd. Als de-server zich achter een firewall of proxy bevindt, raadpleegt u [dit artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) voor het configureren van de firewall en proxy.
+- Als de status van de **geregistreerde server** **offline wordt weer gegeven**, is het proces voor het controleren van de opslag synchronisatie (AzureStorageSyncMonitor.exe) niet actief of heeft de server geen toegang tot de Azure File Sync-Service. Raadpleeg de [documentatie voor probleem oplossing](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) voor hulp.
 
 ### <a name="server-endpoint-health"></a>Status van server eindpunt
 
@@ -116,16 +118,18 @@ Gebruik het telemetrie-gebeurtenis logboek op de server om de geregistreerde ser
 
 Synchronisatie status:
 
-- Gebeurtenis-ID 9102 wordt vastgelegd nadat een synchronisatie sessie is voltooid. Gebruik deze gebeurtenis om te bepalen of synchronisatie sessies zijn geslaagd (**HResult = 0**) en of er synchronisatie fouten per item zijn. Zie de documentatie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [fouten per artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) voor meer informatie.
+- Gebeurtenis-ID 9102 wordt vastgelegd zodra een synchronisatie sessie is voltooid. Gebruik deze gebeurtenis om te bepalen of synchronisatie sessies zijn geslaagd (**HResult = 0**) en of er synchronisatie fouten per item zijn. Zie de documentatie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [fouten per artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) voor meer informatie.
 
   > [!Note]  
   > Soms mislukken synchronisatie sessies volledig of hebben ze een niet-nul-PerItemErrorCount. Ze maken echter nog steeds een voortgang en sommige bestanden zijn gesynchroniseerd. U kunt dit zien in de velden toegepast zoals AppliedFileCount, AppliedDirCount, AppliedTombstoneCount en AppliedSizeBytes. In deze velden kunt u zien hoeveel van de sessie is geslaagd. Als er meerdere synchronisatie sessies mislukken in een rij en deze een toenemend aantal toegewezen aantallen hebben, geeft u de synchronisatie tijd om het opnieuw te proberen voordat u een ondersteunings ticket opent.
+
+- Gebeurtenis-ID 9121 wordt vastgelegd voor elk per-item-fout zodra de synchronisatie sessie is voltooid. Gebruik deze gebeurtenis om te bepalen hoeveel bestanden niet kunnen worden gesynchroniseerd met deze fout (**PersistentCount** en **TransientCount**). Permanente fouten per item moeten worden onderzocht, Zie [Hoe kan ik controleren of er specifieke bestanden of mappen zijn die niet worden gesynchroniseerd?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 
 - Gebeurtenis-ID 9302 wordt elke 5 tot 10 minuten geregistreerd als er een actieve synchronisatie sessie is. Gebruik deze gebeurtenis om te bepalen of de huidige synchronisatie sessie voortgang maakt (**AppliedItemCount > 0**). Als de synchronisatie niet wordt uitgevoerd, wordt de synchronisatie sessie uiteindelijk mislukt en wordt er een gebeurtenis-ID 9102 in het logboek geregistreerd met de fout. Zie de [voortgangs documentatie over synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie.
 
 Status van geregistreerde server:
 
-- Gebeurtenis-ID 9301 wordt elke 30 seconden geregistreerd wanneer een server de service voor taken opvraagt. Als GetNextJob eindigt met **status = 0**, kan de server met de service communiceren. Als GetNextJob met een fout is voltooid, raadpleegt u de [documentatie voor probleem oplossing](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) voor hulp.
+- Gebeurtenis-ID 9301 wordt elke 30 seconden geregistreerd wanneer een server de service voor taken opvraagt. Als GetNextJob eindigt met **status = 0**, kan de server met de service communiceren. Als GetNextJob met een fout is voltooid, raadpleegt u de [documentatie voor probleem oplossing](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) voor hulp.
 
 Status van Cloud lagen:
 

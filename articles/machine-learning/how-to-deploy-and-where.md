@@ -10,14 +10,14 @@ author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
+ms.custom: how-to, devx-track-python
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 42205f87e2025fa7f4492cb76aeb44a1fbf46eb6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 5e73744f3d467d08944d0e8800dd6d8824857abd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542768"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846986"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -53,11 +53,11 @@ In de volgende tabel worden de verschillende service statussen beschreven:
 
 | Status van webservice | Beschrijving | Eind status?
 | ----- | ----- | ----- |
-| Overstappen | De service is in het implementatie proces. | No |
-| Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | No |
-| Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | No |
-| Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Yes |
-| In orde | De service is in orde en het eind punt is beschikbaar. | Yes |
+| Overstappen | De service is in het implementatie proces. | Nee |
+| Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | Nee |
+| Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | Nee |
+| Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Ja |
+| In orde | De service is in orde en het eind punt is beschikbaar. | Ja |
 
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a>Batch-deinterferentie
@@ -74,7 +74,7 @@ Ondersteuning voor het implementeren naar de rand is in preview. Zie [Deploy Azu
 * [Problemen met een mislukte implementatie oplossen](how-to-troubleshoot-deployment.md)
 * [Implementeren naar Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Client toepassingen maken voor het gebruik van webservices](how-to-consume-web-service.md)
-* [Web-service bijwerken](how-to-deploy-update-web-service.md)
+* [Webservice bijwerken](how-to-deploy-update-web-service.md)
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)

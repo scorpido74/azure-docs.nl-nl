@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.custom: tracking-python, devx-track-javascript
-ms.openlocfilehash: 37200983389f73cf733969b4b30dcc04efc3227c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: 2cf6d2c02beff93553944474138bee3a2a316aa9
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422178"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874347"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Multi-Master configureren in uw toepassingen die gebruikmaken van Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Als een account is gemaakt terwijl meerdere schrijf regio's zijn ingeschakeld, m
 > [!Note]
 > Cosmos-accounts die in eerste instantie zijn geconfigureerd met één schrijf regio kunnen worden geconfigureerd voor meerdere schrijf regio's (dat wil zeggen multi-master) met een nul-tijd. Zie [meerdere regio's configureren](how-to-manage-database-account.md#configure-multiple-write-regions) voor meer informatie.
 
-## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET-SDK v2
+## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
 Stel in op om meerdere masters in uw toepassing in te scha kelen `UseMultipleWriteLocations` `true` . Stel ook `SetCurrentLocation` de regio in waarin de toepassing wordt geïmplementeerd en waar Azure Cosmos DB worden gerepliceerd:
 
@@ -35,7 +35,7 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET-SDK v3
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
 Als u meerdere masters in uw toepassing wilt inschakelen, stelt `ApplicationRegion` u de regio in waarin de toepassing wordt geïmplementeerd en waar Cosmos DB worden gerepliceerd:
 
