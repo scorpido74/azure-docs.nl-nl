@@ -1,44 +1,33 @@
 ---
-title: Hulp programma voor migratie van Azure Monitor-waarschuwingen
-description: Meer informatie over de werking van het hulp programma voor het migreren van waarschuwingen en het oplossen van problemen.
+title: Migratie van Azure Monitor waarschuwingen begrijpen
+description: Begrijp hoe de migratie van waarschuwingen werkt en los problemen op.
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564092"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852392"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>Werking van het hulpprogramma voor migratie
+# <a name="understand-migration-options-to-newer-alerts"></a>Meer informatie over migratie opties voor nieuwere waarschuwingen
 
-Zoals [eerder aangekondigd](monitoring-classic-retirement.md), worden klassieke waarschuwingen in azure monitor buiten gebruik gesteld op 31 augustus 2019 (was de eerste 30 juni 2019). Er is een hulp programma voor migratie beschikbaar in de Azure Portal voor klanten die gebruikmaken van klassieke waarschuwings regels en die migratie zelf willen activeren.
+Klassieke waarschuwingen worden [buiten gebruik gesteld](./monitoring-classic-retirement.md), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen. Binnenkort wordt een nieuwe datum aangekondigd voor de resterende migratie van waarschuwingen, [Azure Government Cloud](../../azure-government/documentation-government-welcome.md)en [Azure China 21vianet](https://docs.azure.cn/).
 
-In dit artikel wordt uitgelegd hoe het hulp programma vrijwillige migratie werkt. Ook worden oplossingen voor enkele veelvoorkomende problemen beschreven.
-
-> [!NOTE]
-> Als gevolg van een vertraging bij het uitrollen van het migratie hulpprogramma, is de buitengebruikstellings datum voor de migratie van klassieke waarschuwingen [uitgebreid tot en met 31 augustus 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) van de oorspronkelijke datum van 30 juni 2019.
-
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>Klassieke waarschuwingsregels die niet worden gemigreerd
+In dit artikel wordt uitgelegd hoe de hand matige migratie en het hulp programma voor vrijwillige migratie werken, dat wordt gebruikt voor het migreren van resterende waarschuwings regels. Ook worden oplossingen voor enkele veelvoorkomende problemen beschreven.
 
 > [!IMPORTANT]
 > Waarschuwingen voor activiteiten Logboeken (met inbegrip van service status waarschuwingen) en logboek waarschuwingen worden niet beïnvloed door de migratie. De migratie is alleen van toepassing op de [hier](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)beschreven klassieke waarschuwings regels.
 
-Hoewel het hulp programma bijna alle [klassieke waarschuwings regels](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)kan migreren, zijn er enkele uitzonde ringen. De volgende waarschuwings regels worden niet gemigreerd met het hulp programma (of tijdens de automatische migratie vanaf september 2019):
-
-- Klassieke waarschuwings regels voor metrische gegevens van de gast voor virtuele machines (zowel Windows als Linux). Zie de [richt lijnen voor het opnieuw maken van dergelijke waarschuwings regels in nieuwe metrische waarschuwingen](#guest-metrics-on-virtual-machines) verderop in dit artikel.
-- Klassieke waarschuwings regels voor de klassieke metrische gegevens van de opslag. Raadpleeg de [richt lijnen voor het bewaken van uw klassieke opslag accounts](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
-- Klassieke waarschuwings regels voor bepaalde metrische gegevens van het opslag account. [Meer informatie](#storage-account-metrics) vindt u verderop in dit artikel.
-- Klassieke waarschuwings regels op enkele Cosmos DB metrische gegevens. [Meer informatie](#cosmos-db-metrics) vindt u verderop in dit artikel.
-- Klassieke waarschuwings regels op alle klassieke virtuele machines en metrische gegevens voor Cloud Services (micro soft. ClassicCompute/informatie en micro soft. ClassicCompute/domainName/sleuven/rollen). [Meer informatie](#classic-compute-metrics) vindt u verderop in dit artikel.
-
-Als uw abonnement een van deze klassieke regels bevat, moet u ze hand matig migreren. Omdat er geen automatische migratie kan worden geboden, blijven bestaande, klassieke metrische waarschuwingen van deze typen werken tot 2020 juni. Deze uitbrei ding geeft u de tijd om over te stappen op nieuwe waarschuwingen. U kunt ook door gaan met het maken van nieuwe klassieke waarschuwingen in de bovenstaande lijst met uitzonde ringen tot en met 2020. Voor al het andere, kunnen na augustus 2019 geen nieuwe klassieke waarschuwingen worden gemaakt.
-
 > [!NOTE]
-> Naast de hierboven vermelde uitzonde ringen, als uw klassieke waarschuwings regels ongeldig zijn. Dit zijn dus [afgeschafte metrische gegevens](#classic-alert-rules-on-deprecated-metrics) of resources die zijn verwijderd, worden niet gemigreerd en zijn niet beschikbaar nadat de service buiten gebruik is gesteld.
+> Als uw klassieke waarschuwings regels ongeldig zijn, d.w.z. ze worden [afgeschaft op gedeprecieerde metrische gegevens](#classic-alert-rules-on-deprecated-metrics) of resources die zijn verwijderd, worden ze niet gemigreerd en zijn ze niet beschikbaar nadat de service buiten gebruik is gesteld.
+
+## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>Klassieke waarschuwingen hand matig migreren naar nieuwere waarschuwingen
+
+Klanten die hun resterende waarschuwingen hand matig willen migreren, kunnen dit ook doen met behulp van de volgende secties. In deze secties worden ook metrische gegevens gedefinieerd die worden ingetrokken door de resource provider en die momenteel niet rechtstreeks kunnen worden gemigreerd.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Metrische gegevens van de gast op virtuele machines
 

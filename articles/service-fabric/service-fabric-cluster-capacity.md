@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247774"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904816"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Overwegingen bij het plannen van Service Fabric cluster capaciteit
 
@@ -40,7 +40,7 @@ Het primaire knooppunt type is geconfigureerd met behulp `isPrimary` van het ken
 
 Het aantal eerste typen knoop punten is afhankelijk van het doel van het cluster en de toepassingen en services die erop worden uitgevoerd. Denk na over de volgende vragen:
 
-* ***Heeft uw toepassing meerdere services en moeten ze openbaar of Internet zijn gericht?***
+* ***Biedt uw toepassing meerdere services en moeten hiervan een of meer service openbaar zijn of op internet gericht?***
 
     Typische toepassingen bevatten een front-end Gateway Service die invoer ontvangt van een client en een of meer back-end-services die communiceren met de front-end-services, met afzonderlijke netwerken tussen de front-end-en back-end-services. Deze gevallen vereisen doorgaans drie knooppunt typen: één primair knooppunt type en twee niet-primaire knooppunt typen (één voor de front-en back-end-service).
 
@@ -155,7 +155,7 @@ De capaciteits behoeften van uw cluster worden bepaald door uw specifieke worklo
 
 #### <a name="virtual-machine-sizing"></a>Grootte van virtuele machine
 
-**Voor werk belastingen voor productie is de aanbevolen VM-grootte (SKU) standaard D2_V2 (of gelijkwaardig) met mini maal 50 GB lokale SSD.** Een lokale SSD van 50 GB wordt aanbevolen, maar sommige werk belastingen (zoals computers met Windows-containers) vereisen een grotere schijf. Houd bij het kiezen van andere [VM-grootten](../virtual-machines/sizes-general.md) voor werk belastingen de volgende beperkingen in acht:
+**Voor werk belastingen voor productie is de aanbevolen VM-grootte (SKU) [standaard D2_V2](../virtual-machines/dv2-dsv2-series.md) (of gelijkwaardig) met mini maal 50 GB lokale SSD, 2 kernen en 4 GiB geheugen.** Een lokale SSD van 50 GB wordt aanbevolen, maar sommige werk belastingen (zoals computers met Windows-containers) vereisen een grotere schijf. Houd bij het kiezen van andere [VM-grootten](../virtual-machines/sizes-general.md) voor werk belastingen de volgende beperkingen in acht:
 
 - Gedeeltelijke VM-grootten, zoals Standard a0, worden niet ondersteund.
 - *A-serie* VM-grootten worden niet ondersteund om prestatie redenen.

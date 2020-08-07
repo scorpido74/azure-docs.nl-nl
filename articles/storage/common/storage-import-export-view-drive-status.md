@@ -1,6 +1,6 @@
 ---
 title: De status van Azure import/export-taken weer geven | Microsoft Docs
-description: Meer informatie over het weer geven van de status van import/export-taken en de gebruikte stations.
+description: Meer informatie over het weer geven van de status van Azure import/export-taken en de gebruikte stations. Begrijp de factoren die van invloed zijn op hoe lang het duurt om een taak te verwerken.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c75c9a2d0b491cc00d0fc58054b9bb1e58a364b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514139"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905717"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>De status van de Import/Export-taken in Azure bekijken
 
@@ -28,7 +28,7 @@ U kunt de status van uw import-of export taken volgen vanuit het Azure Portal. K
 
 U ziet een van de volgende taak statussen, afhankelijk van waar uw station zich in het proces bevindt.
 
-| Taak status | Description |
+| Taak status | Beschrijving |
 |:--- |:--- |
 | Maken | Nadat een taak is gemaakt, wordt de status ingesteld op **maken**. Hoewel de taak de status **bezig met maken** heeft, wordt ervan uitgegaan dat de-import/export-service niet is verzonden naar het Data Center. Een taak kan Maxi maal twee weken in deze status blijven, waarna deze automatisch door de service wordt verwijderd. |
 | Verzenden | Nadat u het pakket hebt verzonden, moet u de tracerings gegevens in het Azure Portal bijwerken.  Hiermee wordt de **Verzend** status van de taak hersteld. De taak blijft in de **Verzend** status voor Maxi maal twee weken. 
@@ -44,7 +44,7 @@ In de volgende tabel wordt de levens cyclus van een afzonderlijk station beschre
 
 In de volgende tabel wordt elke status beschreven waarin elke schijf van een taak kan passeren.
 
-| Status van station | Description |
+| Status van station | Beschrijving |
 |:--- |:--- |
 | Opgegeven | Voor een import taak wordt de begin status voor een station **opgegeven**wanneer de taak wordt gemaakt op basis van de Azure Portal. Voor een export taak, omdat er geen station is opgegeven wanneer de taak wordt gemaakt, wordt de eerste status van het station **ontvangen**. |
 | Ontvangen | De schijf wordt overgezet naar de status **ontvangen** wanneer de import/export-service de stations heeft verwerkt die zijn ontvangen van het verzend bedrijf voor een import taak. Voor een export taak is de eerste status van het station de status **ontvangen** . |

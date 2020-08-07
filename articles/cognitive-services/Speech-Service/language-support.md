@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b70590002e9c49f2f8711bb7fe90de79e1d2a73
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c01e543b251020581d96d61434d0b3309535ef0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554053"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902042"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -128,7 +128,7 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 |Landinstelling  | Taal            | Geslacht | Spraak naam | Stijl ondersteuning |
 |--|--|--|--|--|
 | `ar-EG` | Arabisch (Egypte)                  | Vrouw | `ar-EG-SalmaNeural`      | Algemeen |
-| `ar-SA` | Arabisch (Saoedi-Arabië)           | Vrouw | `ar-SA-ZariyahNeura`     | Algemeen |
+| `ar-SA` | Arabisch (Saoedi-Arabië)           | Vrouw | `ar-SA-ZariyahNeural`    | Algemeen |
 | `ca-ES` | Catalaans (Spanje)                 | Vrouw | `ca-ES-AlbaNeural`       | Algemeen |
 | `da-DK` | Deens (Denemarken)                | Vrouw | `da-DK-ChristelNeural`   | Algemeen |
 | `de-DE` | Duits (Duitsland)                | Vrouw | `de-DE-KatjaNeural`      | Algemeen |

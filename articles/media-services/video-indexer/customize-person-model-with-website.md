@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/06/2020
 ms.author: kumud
-ms.openlocfilehash: 28cb73df2df91fc96d7ac19e25d7bd13f47df41e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6894eb783b990ebe98f9ebe5eb2fe112a59309a4
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047302"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904493"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Een persoonlijk model aanpassen met de Video Indexer website
 
@@ -126,9 +126,20 @@ Als u de inhoud van een van uw persoons modellen wilt bekijken, selecteert u de 
 
 ### <a name="manage-a-person"></a>Een persoon beheren
 
-Als u **beheren**selecteert, ziet u alle gezichten waaruit dit persoons model wordt getraind. Deze gezichten zijn afkomstig van instanties van deze persoon in Video's die gebruikmaken van dit persoons model of van installatie kopieën die u hand matig hebt geüpload.
+Als u **beheren**selecteert, wordt het venster **Details** van de persoon weer geven met alle gezichten waaruit dit persoons model wordt getraind. Deze gezichten zijn afkomstig van instanties van deze persoon in Video's die gebruikmaken van dit persoons model of van installatie kopieën die u hand matig hebt geüpload.
+
+> [!TIP]
+> U kunt het detail venster **van de persoon** openen door te klikken op de naam van de persoon of door te klikken op **beheren**, zoals hierboven wordt weer gegeven.
+
+#### <a name="add-a-face"></a>Een gezicht toevoegen
 
 U kunt meer gezichten toevoegen aan de persoon door **installatie kopieën toevoegen**te selecteren.
+
+#### <a name="delete-a-face"></a>Een gezicht verwijderen
+
+Selecteer de installatie kopie die u wilt verwijderen en klik op **verwijderen**.
+
+#### <a name="rename-and-delete-the-person"></a>De persoon een andere naam geven en verwijderen 
 
 U kunt het deel venster beheren gebruiken om de naam van de persoon te wijzigen en de persoon uit het persoons model te verwijderen.
 

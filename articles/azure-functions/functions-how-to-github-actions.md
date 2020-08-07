@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 3fcf26670ec03b1d3a496574e58ae706acdf5c53
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559091"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853288"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
 
@@ -26,7 +26,7 @@ Voor een Azure Functions werk stroom heeft het bestand drie secties:
 | Sectie | Taken |
 | ------- | ----- |
 | **Verificatie** | <ol><li>Definieer een service-principal.</li><li>Publicatie profiel downloaden.</li><li>Maak een GitHub-geheim.</li></ol>|
-| **Ontwikkelen** | <ol><li>Stel de omgeving in.</li><li>De functie-app bouwen.</li></ol> |
+| **PE** | <ol><li>Stel de omgeving in.</li><li>Bouw de functie-app.</li></ol> |
 | **Implementeren** | <ol><li>Implementeer de functie-app.</li></ol>|
 
 > [!NOTE]
@@ -223,4 +223,4 @@ In het volgende voor beeld wordt versie 1 van gebruikt `functions-action` :
 Als u een volledig werk stroom. yaml-bestand wilt weer geven, raadpleegt u een van de bestanden in de [werk stroom voor beelden van Azure github actions opslag plaats](https://aka.ms/functions-actions-samples) met `functionapp` de naam. U kunt deze voor beelden gebruiken als uitgangs punt voor uw werk stroom.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over GitHub-acties](https://help.github.com/en/articles/about-github-actions)
+> [Meer informatie over GitHub Actions](https://help.github.com/en/articles/about-github-actions)

@@ -2,7 +2,7 @@
 title: Toegang tot de app & bronnen beheren met groepen-Azure AD
 description: Meer informatie over het beheren van de toegang tot de Cloud-apps, on-premises apps en resources in uw organisatie met behulp van Azure Active Directory groepen.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982596"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797304"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Toegang tot apps en resources beheren met Azure Active Directory-groepen
 Met Azure Active Directory (Azure AD) kunt u groepen gebruiken om de toegang tot uw Cloud-apps, on-premises apps en uw resources te beheren. Uw resources kunnen deel uitmaken van de Azure AD-organisatie, zoals machtigingen voor het beheren van objecten via rollen in azure AD, of externe naar de organisatie, zoals voor SaaS-apps (Software as a Service), Azure-Services, share point-sites en on-premises resources.

@@ -1,5 +1,5 @@
 ---
-title: Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 10
+title: Upgrade uitvoeren naar .NET SDK versie 10
 titleSuffix: Azure Cognitive Search
 description: Code migreren naar Azure Cognitive Search .NET SDK versie 10 van oudere versies. Meer informatie over wat er nieuw is en welke code wijzigingen vereist zijn.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562388"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905778"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 10
 
@@ -111,7 +111,7 @@ var webApiSkill = new WebApiSkill(
 
 Shaper-vaardigheid kan nu invoer samenvoeging van geneste contexten toestaan. Om deze wijziging in te scha kelen, zijn we gewijzigd `InputFieldMappingEntry` zodat deze kan worden geïnstantieerd door alleen een `Source` eigenschap op te geven, of zowel de `SourceContext` als- `Inputs` Eigenschappen.
 
-Waarschijnlijk hoeft u geen code wijzigingen aan te brengen. Houd er echter rekening mee dat slechts één van deze twee combi Naties is toegestaan. Dit betekent:
+Waarschijnlijk hoeft u geen code wijzigingen aan te brengen. Houd er echter rekening mee dat slechts één van deze twee combi Naties is toegestaan. Dit houdt in:
 
 - Het `InputFieldMappingEntry` `Source` is niet toegestaan om een geïnitialiseerde te maken.
 - Het maken van een `InputFieldMappingEntry` waar alleen `SourceContext` en `Inputs` is geïnitialiseerd, is geldig.

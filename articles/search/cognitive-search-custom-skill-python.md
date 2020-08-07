@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604691"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852783"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Voor beeld: een aangepaste vaardigheid maken met behulp van python
 
@@ -32,7 +32,7 @@ De aangepaste vaardigheid is eenvoudig in het ontwerp (het voegt twee teken reek
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [Python-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
-  + [Azure Functions extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) (Azure Functions-extensie voor Visual Studio Code)
+  + [Azure Functions-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>Een Azure-functie maken
 
@@ -208,7 +208,7 @@ Nu u de standaardhostcode hebt, moet u de functie als volgt testen:
 POST [Function URL you copied above]
 ```
 
-### <a name="request-body"></a>Aanvraagbody
+### <a name="request-body"></a>Aanvraagtekst
 ```json
 {
     "values": [
@@ -265,7 +265,7 @@ Nu u een nieuwe aangepaste vaardigheid hebt, kunt u deze toevoegen aan uw vaardi
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Gefeliciteerd U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende koppelingen voor meer informatie.
+Gefeliciteerd! U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende koppelingen voor meer informatie.
 
 + [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Een aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)

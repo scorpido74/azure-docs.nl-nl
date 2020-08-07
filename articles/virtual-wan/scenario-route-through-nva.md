@@ -1,19 +1,20 @@
 ---
-title: 'Scenario: verkeer routeren via een NVA'
+title: 'Scenario: verkeer routeren via een virtueel netwerk apparaat (NVA)'
 titleSuffix: Azure Virtual WAN
 description: Verkeer routeren via een NVA
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: ed64b9d281cfbbf8202a99335ea2759b27a6fc42
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: fasttrack-edit
+ms.openlocfilehash: a8bed6c46b0660d5bf43863a5c7aaf4eeaf7e26f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142961"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853203"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scenario: verkeer routeren via een NVA
 
@@ -25,47 +26,108 @@ Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare s
 >* [Power shell-artikel](virtual-wan-route-table-nva.md)
 >
 
-## <a name="scenario-architecture"></a><a name="architecture"></a>Scenario-architectuur
+## <a name="design"></a><a name="design"></a>Ontwerpen
 
-In **afbeelding 1**zijn er twee hubs; **Hub 1** en **hub 2**.
+In dit scenario gebruiken we de naamgevings Conventie:
 
-* **Hub 1** en **hub 2** zijn rechtstreeks verbonden met NVA VNets **VNET 2** en **VNET 4**.
+* ' NVA VNets ' voor virtuele netwerken waarin gebruikers een NVA hebben geïmplementeerd en andere virtuele netwerken hebben verbonden als spokes (VNet 2 en VNet 4 in de **verbindings matrix**hieronder).
+* ' NVA spokes ' voor virtuele netwerken die zijn verbonden met een NVA VNet (VNet 5, VNet 6, VNet 7 en VNet 8 in de **verbindings matrix**hieronder).
+* ' Non-NVA VNets ' voor virtuele netwerken die zijn verbonden met een virtueel WAN zonder NVA of een andere VNets die hieraan zijn gekoppeld (VNet 1 en VNet 3 in de **verbindings matrix**hieronder).
+* Hubs voor door micro soft beheerde virtuele WAN-hubs, waarbij NVA VNets zijn verbonden. NVA spoke VNets hoeft niet te zijn verbonden met virtuele WAN-hubs, alleen op NVA VNets.
+
+De volgende verbindings matrix bevat een overzicht van de stromen die in dit scenario worden ondersteund:
+
+**Verbindings matrix**
+
+| Van             | Aan:|   *NVA-spokes*|*NVA VNets*|*Niet-NVA-VNets*|*Vertakkingen*|
+|---|---|---|---|---|---|
+| **NVA-spokes**   | &#8594; | 0/0 UDR  |  Peering |   0/0 UDR    |  0/0 UDR  |
+| **NVA VNets**    | &#8594; |   Statisch |      X   |        X     |      X    |
+| **Niet-NVA-VNets**| &#8594; |   Statisch |      X   |        X     |      X    |
+| **Vertakkingen**     | &#8594; |   Statisch |      X   |        X     |      X    |
+
+Elk van de cellen in de verbindings matrix beschrijft of een virtuele WAN-verbinding (de ' aan ' kant van de stroom, de rijkoppen in de tabel) een bestemmings voorvoegsel (de ' aan '-zijde van de stroom, de kolom koppen in de tabel cursief) voor een specifieke verkeers stroom leert. Overweeg de volgende:
+
+* NVA-spokes worden niet beheerd door virtuele WAN. Als gevolg hiervan worden de mechanismen waarmee ze zullen communiceren met andere VNets of vertakkingen door de gebruiker onderhouden. Connectiviteit met het NVA VNet wordt gegeven door een VNet-peering en een standaard route naar 0.0.0.0/0 die verwijst naar de NVA als volgende hop moet verbinding met internet hebben, andere spokes en vertakkingen
+* NVA VNets kent hun eigen NVA-spokes, maar niet over NVA-spokes die zijn verbonden met andere NVA VNets. In tabel 1 is VNet 2 bijvoorbeeld van de VNet 5 en VNet 6, maar niet over andere spokes, zoals VNet 7 en VNet 8. Er is een statische route vereist om andere voor voegsels van spokes te injecteren in NVA VNets
+* Daarnaast hebben vertakkingen en niet-NVA VNets geen NVA-spoke, omdat NVA spokes geen verbinding hebben met VWAN hubs. Als gevolg hiervan zijn er ook statische routes nodig.
+
+Als rekening wordt gehouden met de NVA-spokes worden niet beheerd door virtuele WAN, worden in alle andere rijen hetzelfde connectiviteits patroon weer gegeven. Als gevolg hiervan wordt een enkele route tabel (de standaard instelling):
+
+* Virtuele netwerken (niet-hub-VNets en gebruikers-hub-VNets):
+  * Gekoppelde route tabel: **standaard**
+  * Door geven aan route tabellen: **standaard**
+* Sleutel
+  * Gekoppelde route tabel: **standaard**
+  * Door geven aan route tabellen: **standaard**
+
+In dit scenario moeten we echter nadenken over welke statische routes moeten worden geconfigureerd. Elke statische route heeft twee onderdelen: een deel van de virtuele WAN-hub geeft de virtuele WAN-onderdelen aan die verbinding moeten maken voor elke spoke, en een andere in die specifieke verbinding die verwijst naar het concreet IP-adres dat is toegewezen aan de NVA (of op een load balancer vóór meerdere Nva's). in **afbeelding 1** ziet u het volgende:
+
+**Afbeelding 1**
+
+:::image type="content" source="media/routing-scenarios/nva/nva-static-concept.png" alt-text="Afbeelding 1":::
+
+De statische routes die we nodig hebben in de standaard tabel om verkeer te verzenden naar de NVA-spokes achter de NVA VNet, zijn als volgt:
+
+| Beschrijving | Routetabel | Statische route              |
+| ----------- | ----------- | ------------------------- |
+| VNet 2       | Standaard     | 10.2.0.0/16-> eastusconn |
+| VNet 4       | Standaard     | 10.4.0.0/16-> weconn     |
+
+Het virtuele WAN weet nu naar welke verbinding de pakketten moeten worden verzonden, maar de verbinding moet weten wat er moet gebeuren wanneer deze pakketten worden ontvangen: hier worden de verbindings route tabellen gebruikt. Hier gaan we de kortere voor voegsels (/24 in plaats van de meer/16) gebruiken om ervoor te zorgen dat deze routes de voor keur hebben boven routes die worden geïmporteerd uit de NVA VNets (VNet 2 en VNet 4):
+
+| Beschrijving | Verbinding | Statische route            |
+| ----------- | ---------- | ----------------------- |
+| VNet 5       | eastusconn | 10.2.1.0/24-> 10.2.0.5 |
+| VNet 6       | eastusconn | 10.2.2.0/24-> 10.2.0.5 |
+| VNet 7       | weconn     | 10.4.1.0/24-> 10.4.0.5 |
+| VNet 8       | weconn     | 10.4.2.0/24-> 10.4.0.5 |
+
+Nu NVA VNets, niet-NVA VNets en filialen weten hoe u alle NVA-spokes kunt bereiken. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
+
+## <a name="architecture"></a><a name="architecture"></a>Architectuur
+
+In **afbeelding 2**zijn er twee hubs; **Hub1** en **Hub2**.
+
+* **Hub1** en **Hub2** zijn rechtstreeks verbonden met NVA VNets **VNet 2** en **VNet 4**.
 
 * **Vnet 5** en **vnet 6** zijn gekoppeld aan **vnet 2**.
 
 * **Vnet 7** en **vnet 8** zijn gekoppeld aan **vnet 4**.
 
-* **VNETs 5, 6, 7, 8** zijn indirecte spokes, niet rechtstreeks verbonden met een virtuele hub.
+* **VNets 5, 6, 7, 8** zijn indirecte spokes, niet rechtstreeks verbonden met een virtuele hub.
 
-**Afbeelding 1**
+**Afbeelding 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Afbeelding 1":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Afbeelding 2" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Scenario werk stroom
 
 Als u route ring via NVA wilt instellen, kunt u overwegen de volgende stappen uit te voeren:
 
-1. Identificeer de NVA spoke VNet-verbinding. In **afbeelding 1**zijn dit **VNET 2-verbinding (Eastusconn)** en **vnet 4-verbinding (weconn)**.
+1. Identificeer de NVA spoke VNet-verbinding. In **afbeelding 2**zijn dit **VNet 2-verbinding (Eastusconn)** en **vnet 4-verbinding (weconn)**.
 
    Zorg ervoor dat er Udr's zijn ingesteld:
-   * Van VNET 5 en 6 tot VNET 2 NVA IP
-   * Van VNET 7 en 8 tot VNET 4 NVA IP 
+   * Van VNet 5 en VNet 6 tot VNet 2 NVA IP
+   * Van VNet 7 en VNet 8 tot VNet 4 NVA IP 
    
-   U hoeft VNET 5, 6, 7 en 8 niet rechtstreeks aan de virtuele hubs te koppelen. Zorg ervoor dat Nsg's in VNETs 5, 6, 7, 8 verkeer toestaan voor Branch (VPN/er/P2S) of VNETs die is verbonden met hun externe VNETs. VNET 5, 6 moet bijvoorbeeld waarborgen dat Nsg's verkeer toestaan voor on-premises adres voorvoegsels en VNETs 7, 8 die zijn verbonden met de externe hub 2. 
+   U hoeft niet rechtstreeks verbinding te maken met VNets 5, 6, 7 en 8 naar de virtuele hubs. Zorg ervoor dat Nsg's in VNets 5, 6, 7, 8 verkeer toestaan voor Branch (VPN/er/P2S) of VNets die is verbonden met hun externe VNets. VNets 5, 6 moet er bijvoorbeeld voor zorgen dat Nsg's verkeer toestaat voor on-premises adres voorvoegsels en VNets 7, 8 die zijn verbonden met de externe hub 2.
 
-2. Voeg een geaggregeerde statische route vermelding toe voor de standaard route tabel van VNETs 2, 5, 6 naar hub 1. 
+2. Voeg een geaggregeerde statische route vermelding toe voor de standaard route tabel van VNets 2, 5, 6 naar hub 1.
 
    :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Voorbeeld":::
 
-3. Configureer een statische route voor VNETs 5, 6 in de virtuele netwerk verbinding van VNET 2. Zie [virtuele hub-route ring](how-to-virtual-hub-routing.md#routing-configuration)voor het instellen van routerings configuratie voor een virtuele netwerk verbinding.
+3. Configureer een statische route voor VNets 5, 6 in de virtuele netwerk verbinding van VNet 2. Zie [virtuele hub-route ring](how-to-virtual-hub-routing.md#routing-configuration)voor het instellen van routerings configuratie voor een virtuele netwerk verbinding.
 
-4. Voeg een geaggregeerde statische route vermelding toe voor de standaard route tabel van VNETs 4, 7, 8 naar hub 1.
+4. Voeg een geaggregeerde statische route vermelding toe voor de standaard route tabel van VNets 4, 7, 8 naar hub 1.
 
 5. Herhaal stap 2, 3 en 4 voor de standaard route tabel van hub 2.
 
-Dit heeft tot gevolg dat de routerings configuratie wordt gewijzigd, zoals in de onderstaande afbeelding wordt weer gegeven
+Dit heeft tot gevolg dat de routerings configuratie verandert, zoals wordt weer gegeven in **afbeelding 3**hieronder.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Resultaat":::
+**Afbeelding 3**
+
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Afbeelding 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

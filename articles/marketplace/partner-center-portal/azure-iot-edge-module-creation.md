@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808708"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876628"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Aanbieding voor IoT Edge-module maken
 
@@ -199,15 +199,14 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) en een **middel** groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën.
+Bied PNG-bestanden van het logo van uw aanbieding in elk van de volgende vier pixel grootten:
 
-Alle drie de logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
+- **Klein (48 x 48)**
+- **Gemiddeld (90 x 90)**
+- **Groot (216 x 216)**
+- **Breed (255 x 115)**
 
-- **Klein** (48 x 48)
-- **Gemiddeld** (90 x 90)
-- **Groot** (tussen 216 x 216 en 350 x 350)
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Alle vier de logo's zijn vereist en worden gebruikt op verschillende plaatsen in de Marketplace-vermelding.
 
 #### <a name="screenshots-optional"></a>Scherm afbeeldingen (optioneel)
 

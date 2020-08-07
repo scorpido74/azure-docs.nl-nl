@@ -2,14 +2,14 @@
 title: Azure-toepassing Insights voor Java script-web-apps
 description: Het ophalen van de pagina weergave en aantal sessies, webclientgegevens, toepassingen met één pagina (SPA) en het bijhouden van gebruiks patronen. Detecteer uitzonderingen en prestatieproblemen in JavaScript-webpagina's.
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e0545660cbca68d41bc24b7266496b7912d408bc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531316"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905822"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -107,10 +107,10 @@ De beschik bare configuratie opties zijn
 | Naam | Type | Beschrijving
 |------|------|----------------
 | src | teken reeks **[vereist]** | De volledige URL van waaruit de SDK moet worden geladen. Deze waarde wordt gebruikt voor het kenmerk src van een dynamisch toegevoegd &lt; script/ &gt; label. U kunt de open bare CDN-locatie of uw eigen privé-hostserver gebruiken.
-| name | teken reeks *[Optioneel]* | De globale naam voor de geïnitialiseerde SDK, wordt standaard ingesteld op appInsights. Dit is dus ```window.appInsights``` een verwijzing naar het geïnitialiseerde exemplaar. Opmerking: als u een naam waarde opgeeft of een vorige instantie lijkt te zijn toegewezen (via de globale naam appInsightsSDK), wordt deze naam ook gedefinieerd in de globale naam ruimte, omdat ```window.appInsightsSDK=<name value>``` Dit vereist is voor de SDK-initialisatie code om ervoor te zorgen dat deze de juiste skelet-en proxy methoden van het fragment initialiseert en bijwerkt.
+| naam | teken reeks *[Optioneel]* | De globale naam voor de geïnitialiseerde SDK, wordt standaard ingesteld op `appInsights` . Dit is dus ```window.appInsights``` een verwijzing naar het geïnitialiseerde exemplaar. Opmerking: als u een naam waarde opgeeft of een vorige instantie lijkt te zijn toegewezen (via de globale naam appInsightsSDK), wordt deze naam ook gedefinieerd in de globale naam ruimte, omdat ```window.appInsightsSDK=<name value>``` Dit vereist is voor de SDK-initialisatie code om ervoor te zorgen dat deze de juiste skelet-en proxy methoden van het fragment initialiseert en bijwerkt.
 | ! | nummer in MS *[Optioneel]* | Hiermee wordt de laad vertraging gedefinieerd die moet worden gewacht voordat wordt geprobeerd de SDK te laden. De standaard waarde is 0ms en een negatieve waarde voegt onmiddellijk een script code toe aan het &lt; hoofd &gt; gebied van de pagina. vervolgens wordt de gebeurtenis voor het laden van de pagina geblokkeerd totdat het script wordt geladen (of mislukt).
 | useXhr | Booleaanse waarde *[Optioneel]* | Deze instelling wordt alleen gebruikt voor het rapporteren van SDK-laad fouten. Reporting probeert eerst fetch (), indien beschikbaar en vervolgens terug te gebruiken naar XHR, om deze waarde in te stellen op True, alleen de ophaal controle te omzeilen. Het gebruik van deze waarde is alleen vereist als uw toepassing wordt gebruikt in een omgeving waarin ophalen de fout gebeurtenissen niet zou kunnen verzenden.
-| crossOrigin | teken reeks *[Optioneel]* | Door deze instelling op te nemen, neemt de script code die is toegevoegd voor het downloaden van de SDK het kenmerk crossOrigin met deze teken reeks waarde. Wanneer niet gedefinieerd (de standaard instelling), wordt er geen crossOrigin-kenmerk toegevoegd. Er zijn geen aanbevolen waarden gedefinieerd (de standaard instelling). ""; of anoniem (voor alle geldige waarden raadpleegt u [HTML-kenmerk: crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) -documentatie)
+| crossOrigin | teken reeks *[Optioneel]* | Door deze instelling op te nemen, neemt de script code die is toegevoegd voor het downloaden van de SDK het kenmerk crossOrigin met deze teken reeks waarde. Wanneer niet gedefinieerd (de standaard instelling), wordt er geen crossOrigin-kenmerk toegevoegd. Er zijn geen aanbevolen waarden gedefinieerd (de standaard instelling). ""; of anoniem (voor alle geldige waarden raadpleegt u [HTML-kenmerk `crossorigin` :](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) documentatie)
 | configuratie | object **[vereist]** | De configuratie die wordt door gegeven aan de Application Insights SDK tijdens de initialisatie.
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Telemetrie verzenden naar de Azure Portal
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Configuratie
 De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden ingesteld op ONWAAR. Alle velden zijn optioneel, behalve voor `instrumentationKey` .
 
-| Name | Standaard | Beschrijving |
+| Naam | Standaard | Beschrijving |
 |------|---------|-------------|
 | instrumentationKey | null | **Vereist**<br>Instrumentatie sleutel die u hebt verkregen van de Azure Portal. |
 | accountId | null | Een optionele account-ID als uw app gebruikers in accounts groepeert. Geen spaties, komma's, punt komma's, is gelijk aan of verticale balken |
@@ -195,9 +195,9 @@ De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden 
 | enableResponseHeaderTracking | onjuist | Als deze waarde True is, wordt de antwoord headers voor de aanvraag van AJAX & ophalen bijgehouden. de standaard waarde is False.
 | distributedTracingMode | `DistributedTracingModes.AI` | Hiermee stelt u de gedistribueerde traceer modus in. Als AI_AND_W3C modus of de W3C-modus is ingesteld, worden W3C-tracering context headers (traceparent/tracestate) gegenereerd en opgenomen in alle uitgaande aanvragen. AI_AND_W3C is voorzien van back-compatibiliteit met alle verouderde services die zijn Application Insights instrumented. Zie [hier](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)voor beeld.
 | enableAjaxErrorStatusText | onjuist | De standaard waarde is False. Indien waar, wordt tekst met een reactie fout gegevens in afhankelijkheids gebeurtenis ingevoegd op mislukte AJAX-aanvragen.
-| enableAjaxPerfTracking | onjuist | De standaard waarde is False. Vlag waarmee het opzoeken van het aanvullende browser venster kan worden ingeschakeld. prestatie tijden in de gerapporteerde Ajax (XHR en Fetch) hebben de metrische gegevens gerapporteerd.
+| enableAjaxPerfTracking | onjuist | De standaard waarde is False. Vlag waarmee u het opzoeken van het aanvullende browser venster kunt inschakelen. de prestatie-instellingen in de gerapporteerde `ajax` (xhr en Fetch) gerapporteerde metrische gegevens.
 | maxAjaxPerfLookupAttempts | 3 | De standaard waarde is 3. Het maximum aantal keer dat er naar het venster moet worden gekeken. prestatie tijd (indien beschikbaar). Dit is vereist omdat niet alle browsers het venster invullen. prestaties vóór het rapporteren van het einde van de XHR-aanvraag en voor aanvragen voor ophalen wordt deze toegevoegd na het volt ooien.
-| ajaxPerfLookupDelay | 25 | De standaard waarde is 25 MS. De hoeveelheid tijd die moet worden gewacht voordat opnieuw wordt geprobeerd om de Vensters te vinden. prestatie-instellingen voor een Ajax-aanvraag, tijd is in milliseconden en wordt direct door gegeven aan setTimeout ().
+| ajaxPerfLookupDelay | 25 | De standaard waarde is 25 MS. De hoeveelheid tijd die moet worden gewacht voordat opnieuw wordt geprobeerd om de Vensters te vinden. prestatie-instellingen voor een `ajax` aanvraag, tijd is in milliseconden en wordt direct door gegeven aan setTimeout ().
 | enableUnhandledPromiseRejectionTracking | onjuist | Indien waar, worden niet-verwerkte beloofings afwijzingen automatisch verzameld en gerapporteerd als Java script-fout. Wanneer disableExceptionTracking is ingesteld op True (geen uitzonde ringen bijhouden), wordt de configuratie waarde genegeerd en worden niet-verwerkte beloofe weigeringen niet gerapporteerd.
 
 ## <a name="single-page-applications"></a>Toepassingen met één pagina
@@ -219,6 +219,38 @@ Als u deze instelling inschakelt `autoTrackPageVisitTime: true` , wordt de tijd 
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+
+## <a name="correlation"></a>Correlatie
+
+Correlatie van client naar server zijde wordt ondersteund voor:
+
+- XHR/AJAX-aanvragen 
+- Aanvragen ophalen 
+
+Correlatie tussen client en server zijde wordt **niet ondersteund** voor `GET` en- `POST` aanvragen.
+
+### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>Kruis-onderdeel correlatie tussen client-AJAX en server aanvragen inschakelen
+
+Om correlatie in te scha kelen `CORS` , moet de client twee extra aanvraag headers verzenden `Request-Id` en moet `Request-Context` de server de verbindingen met deze headers kunnen accepteren. Het verzenden van deze headers wordt ingeschakeld via `enableCorsCorrelation: true` de instelling in de Java script SDK-configuratie. 
+
+Afhankelijk van de `Access-Control-Allow-Headers` configuratie van de server is het vaak nodig om de lijst aan de server zijde uit te breiden door hand matig toe te voegen `Request-Id` en `Request-Context` .
+
+Access-Control-Allow-headers: `Request-Id` , `Request-Context` ,`<your header>`
+
+Als een van de servers van derden waarmee de client communiceert `Request-Id` , de-en-headers niet kan accepteren `Request-Context` en u de configuratie ervan niet kunt bijwerken, moet u ze in een uitsluitings lijst plaatsen via de `correlationHeaderExcludeDomains` configuratie-eigenschap. Deze eigenschap ondersteunt joker tekens.
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    enableCorsCorrelation: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
 
 ## <a name="explore-browserclient-side-data"></a>Browser/gegevens van client zijde verkennen
 

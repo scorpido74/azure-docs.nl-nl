@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 01/21/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588629"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904000"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3,0: BreakSentence
 
@@ -37,7 +37,7 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 | -------| ----------- |
 | api-versie <img width=200/>   | **Vereiste query parameter**.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn `3.0` . |
 | language | **Optionele query parameter**.<br/>Taal code die de taal van de invoer tekst aangeeft. Als er geen code is opgegeven, wordt automatische taal detectie toegepast. |
-| uit    | **Optionele query parameter**.<br/>Script label waarmee het script wordt aangeduid dat wordt gebruikt door de invoer tekst. Als er geen script is opgegeven, wordt het standaard script van de taal gebruikt.  | 
+| script    | **Optionele query parameter**.<br/>Script label waarmee het script wordt aangeduid dat wordt gebruikt door de invoer tekst. Als er geen script is opgegeven, wordt het standaard script van de taal gebruikt.  | 
 
 Aanvraag headers zijn onder andere:
 
@@ -61,7 +61,7 @@ De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSO
 De volgende beperkingen zijn van toepassing:
 
 * De matrix kan Maxi maal 100 elementen bevatten.
-* De tekst waarde van een matrix element mag niet langer zijn dan 10.000 tekens, inclusief spaties.
+* De tekst waarde van een matrix element mag niet langer zijn dan 50.000 tekens, inclusief spaties.
 * De volledige tekst die in de aanvraag is opgenomen, mag niet langer zijn dan 50.000 tekens, inclusief spaties.
 * Als de `language` query parameter is opgegeven, moeten alle matrix elementen zich in dezelfde taal bevindt. Anders wordt automatische taal detectie toegepast op elk matrix element onafhankelijk van elkaar.
 

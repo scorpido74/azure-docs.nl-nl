@@ -1,5 +1,5 @@
 ---
-title: bestand opnemen
+title: Include-bestand
 description: bestand voor industrie taxonomie toevoegen
 documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace

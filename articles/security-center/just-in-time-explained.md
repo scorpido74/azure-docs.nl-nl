@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfdb717a27af8dc7f3186ac7afdff4d1eb3d79f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9c77ed2bf0d764fbbbe24770cc70b3fbeec7f678
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420835"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833450"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Meer informatie over just-in-time-VM-toegang
 
@@ -44,7 +44,7 @@ Wanneer u just-in-time-VM-toegang inschakelt, kunt u de poorten op de VM selecte
 
 Als er al andere regels bestaan voor de geselecteerde poorten, hebben die bestaande regels voor rang op de nieuwe regels ' alle inkomende verkeer weigeren '. Als er geen bestaande regels zijn op de geselecteerde poorten, hebben de nieuwe regels de hoogste prioriteit in de NSG en Azure Firewall.
 
-Wanneer een gebruiker toegang tot een virtuele machine vraagt, controleert Security Center of de gebruiker [op rollen gebaseerde Access Control (RBAC)-](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) machtigingen voor die VM heeft. Als de aanvraag is goedgekeurd, Security Center configureert de Nsg's en Azure Firewall om binnenkomend verkeer naar de geselecteerde poorten van het betreffende IP-adres (of bereik) toe te staan voor de opgegeven tijd. Nadat de tijd is verstreken, wordt de Nsg's door Security Center teruggezet naar de vorige status. Verbindingen die al zijn gemaakt, worden niet onderbroken.
+Wanneer een gebruiker toegang tot een virtuele machine vraagt, controleert Security Center of de gebruiker [op rollen gebaseerde toegangs beheer (Azure RBAC)-](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) machtigingen voor die VM heeft. Als de aanvraag is goedgekeurd, Security Center configureert de Nsg's en Azure Firewall om binnenkomend verkeer naar de geselecteerde poorten van het betreffende IP-adres (of bereik) toe te staan voor de opgegeven tijd. Nadat de tijd is verstreken, wordt de Nsg's door Security Center teruggezet naar de vorige status. Verbindingen die al zijn gemaakt, worden niet onderbroken.
 
 > [!NOTE]
 > JIT ondersteunt geen Vm's die worden beveiligd door Azure-firewalls die worden beheerd door [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview).
