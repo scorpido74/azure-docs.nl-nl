@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 1fdfe57c2995628855ea8e068c4f8eb2f2ac466a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500421"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927280"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Herstel na nood gevallen naar Azure instellen voor on-premises fysieke servers
 
@@ -59,7 +59,7 @@ Een micro soft [Azure-account](https://azure.microsoft.com/)ophalen.
 Zorg ervoor dat uw Azure-account machtigingen heeft voor de replicatie van virtuele machines naar Azure.
 
 - Bekijk de [machtigingen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) die u nodig hebt om machines naar Azure te repliceren.
-- Controleer en wijzig [op rollen gebaseerde toegangsmachtigingen](../role-based-access-control/role-assignments-portal.md). 
+- Controleer en wijzig [Azure RBAC-machtigingen (op rollen gebaseerd toegangs beheer)](../role-based-access-control/role-assignments-portal.md) . 
 
 
 

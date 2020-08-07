@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 8367ec2ece59ca8794bc1eeb2027eb6c14db12a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461762"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925342"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: de implementatie van uw hybride Azure Active Directory-koppeling plannen
 
@@ -123,7 +123,7 @@ Een beheerde omgeving kan worden geïmplementeerd via een [PHS (Password Hash Sy
 Voor deze scenario's is het niet nodig om een federatieve server te configureren voor authenticatie.
 
 > [!NOTE]
-> [Cloud verificatie met behulp van gefaseerde implementatie](/hybrid/how-to-connect-staged-rollout) wordt alleen ondersteund bij het starten van Windows 10 1903 update
+> [Cloud verificatie met behulp van gefaseerde implementatie](/azure/active-directory/hybrid/how-to-connect-staged-rollout) wordt alleen ondersteund bij het starten van Windows 10 1903 update
 
 ### <a name="federated-environment"></a>Federatieve omgeving
 

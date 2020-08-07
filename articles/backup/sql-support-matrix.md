@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513180"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926447"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Ondersteunings matrix voor SQL Server back-up in virtuele machines van Azure
 
@@ -25,21 +25,26 @@ U kunt Azure Backup gebruiken om een back-up te maken van SQL Server-data bases 
 **Ondersteunde SQL Server-versies** | SQL Server 2019, SQL Server 2017 zoals beschreven op de [pagina product levenscyclus zoeken](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 en SPS zoals beschreven op de [pagina product levenscyclus zoeken](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2 SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Ondersteunde .NET-versies** | .NET Framework 4.5.2 of later geïnstalleerd op de VM
 
-## <a name="feature-consideration-and-limitations"></a>Overwegingen voor functies en beperkingen
+## <a name="feature-considerations-and-limitations"></a>Overwegingen en beperkingen van functies
+
+|Instelling  |Maximumaantal |
+|---------|---------|
+|Aantal data bases dat kan worden beveiligd op een server (en in een kluis)    |   2000      |
+|Ondersteunde database grootte (dit kan leiden tot prestatie problemen)   |   2 TB      |
+|Aantal ondersteunde bestanden in een Data Base    |   1000      |
+
+>[!NOTE]
+> [Down load de gedetailleerde resource planner](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) om het geschatte aantal beveiligde data bases te berekenen dat wordt aanbevolen per server op basis van de VM-bronnen, de band breedte en het back-upbeleid.
 
 * SQL Server back-up kan worden geconfigureerd in de Azure Portal of **Power shell**. CLI wordt niet ondersteund.
 * De oplossing wordt ondersteund op beide soorten [implementaties](../azure-resource-manager/management/deployment-models.md) -Azure Resource Manager vm's en klassieke vm's.
-* Voor virtuele machines met SQL Server is Internet verbinding vereist voor toegang tot open bare IP-adressen van Azure.
-* SQL Server **-FCI (failover cluster instance)** wordt niet ondersteund.
+* Alle back-uptypen (volledig/differentieel/logboek) en herstel modellen (eenvoudig/volledig of bulksgewijs geregistreerd) worden ondersteund.
+* Volledige en alleen-kopiëren volledige back-uptypen worden ondersteund voor **alleen-lezen** data bases.
+* Native compressie van SQL wordt ondersteund als dit expliciet door de gebruiker in het back-upbeleid is ingeschakeld. Azure Backup onderdrukking standaard instellingen op exemplaar niveau met de compressie-NO_COMPRESSION-component, afhankelijk van de waarde van dit besturings element, zoals ingesteld door de gebruiker.
+* TDE-database back-up wordt ondersteund. Als u een met TDE versleutelde data base wilt herstellen naar een andere SQL Server, moet u [het certificaat eerst herstellen naar de doel server](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Back-upcompressie voor TDE-data bases voor SQL Server 2016 en nieuwere versies is beschikbaar, maar bij lagere overdrachts grootte, zoals [hier](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)wordt uitgelegd.
 * Back-up-en herstel bewerkingen voor spiegel databases en database momentopnamen worden niet ondersteund.
-* Het gebruik van meerdere back-upoplossingen om een back-up te maken van uw zelfstandige SQL Server exemplaar of de beschikbaarheids groep SQL always kan leiden tot back-upfouten. Dit wordt onthouden.
-* Als u een back-up maakt van twee knoop punten van een beschikbaarheids groep met dezelfde of een andere oplossing, kan dit ook leiden tot back-upfouten.
-* Azure Backup ondersteunt alleen volledige en alleen-kopiëren volledige back-uptypen voor **alleen-lezen** data bases
-* Databases met zeer veel bestanden kunnen niet worden beveiligd. Het maximum aantal ondersteunde bestanden is **~ 1000**.  
-* U kunt back-ups maken naar **~ 2000** SQL server data bases in een kluis. U kunt meerdere kluizen maken voor het geval u een groter aantal data bases hebt.
-* U kunt in één bezoek back-ups configureren voor Maxi maal **50** data bases. Deze beperking helpt bij het optimaliseren van back-upbelasting.
-* Data bases worden ondersteund met een grootte van Maxi maal **2 TB** . voor grootten die groter zijn dan de mogelijke prestatie problemen.
-* Om een idee te hebben van het aantal data bases dat per server kan worden beveiligd, kunt u rekening houden met factoren zoals band breedte, VM-grootte, back-upfrequentie, database grootte enzovoort. [Down load](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) de resource Planner om het geschatte aantal data bases te berekenen dat per server kan worden uitgevoerd op basis van de VM-resources en het back-upbeleid.
+* SQL Server **-FCI (failover cluster instance)** wordt niet ondersteund.
+* Het gebruik van meerdere back-upoplossingen om een back-up te maken van uw zelfstandige SQL Server exemplaar of de beschikbaarheids groep SQL always kan leiden tot back-upfouten. Dit wordt onthouden. Als u een back-up maakt van twee knoop punten van een beschikbaarheids groep met dezelfde of een andere oplossing, kan dit ook leiden tot back-upfouten.
 * Wanneer beschikbaarheids groepen zijn geconfigureerd, worden er back-ups gemaakt van de verschillende knoop punten op basis van een aantal factoren. Hieronder vindt u een overzicht van het back-upgedrag voor een beschikbaarheids groep.
 
 ### <a name="back-up-behavior-with-always-on-availability-groups"></a>Back-up gedrag met AlwaysOn-beschikbaarheidsgroepen

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515252"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926294"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1
 Het beveiligen van gegevens in Azure Data Lake Storage Gen1 is een benadering van drie stappen.  Op rollen gebaseerd toegangs beheer (RBAC) en toegangs beheer lijsten (Acl's) moet zijn ingesteld om de toegang tot gegevens voor gebruikers en beveiligings groepen volledig in te scha kelen.
 
-1. Begin met het maken van beveiligings groepen in Azure Active Directory (AAD). Deze beveiligings groepen worden gebruikt voor het implementeren van op rollen gebaseerd toegangs beheer (RBAC) in Azure Portal. Zie voor meer informatie [Access Control op basis van rollen in Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
+1. Begin met het maken van beveiligings groepen in Azure Active Directory (AAD). Deze beveiligings groepen worden gebruikt voor het implementeren van op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure in de Azure Portal. Zie [Azure RBAC](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 2. Wijs de AAD-beveiligings groepen toe aan het Data Lake Storage Gen1-account. Hiermee beheert u de toegang tot het Data Lake Storage Gen1-account vanuit de portal-en beheer bewerkingen van de portal of Api's.
 3. Wijs de AAD-beveiligings groepen toe als Acl's (toegangs beheer lijsten) op het Data Lake Storage Gen1 bestands systeem.
 4. Daarnaast kunt u ook een IP-adres bereik instellen voor clients die toegang hebben tot de gegevens in Data Lake Storage Gen1.
@@ -147,7 +147,7 @@ Wanneer u de Acl's van beveiligings groepen uit een Data Lake Storage Gen1 besta
    
     ![Machtigingen toewijzen aan groep](./media/data-lake-store-secure-data/adl.remove.acl.png "Machtigingen toewijzen aan groep")
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Gegevens kopiëren van Azure Storage-blobs naar Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Lake Analytics gebruiken met Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
@@ -155,4 +155,3 @@ Wanneer u de Acl's van beveiligings groepen uit een Data Lake Storage Gen1 besta
 * [Aan de slag met Data Lake Storage Gen1 met behulp van PowerShell](data-lake-store-get-started-powershell.md)
 * [Aan de slag met Data Lake Storage Gen1 met behulp van .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Diagnostische logboeken openen voor Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md)
-

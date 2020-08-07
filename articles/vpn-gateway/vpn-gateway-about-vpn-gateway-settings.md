@@ -1,18 +1,18 @@
 ---
 title: 'Azure-VPN Gateway: configuratie-instellingen'
-description: Meer informatie over VPN Gateway instellingen voor virtuele Azure-netwerk gateways.
+description: Meer informatie over de configuratie van een VPN-gateway verbinding in azure, die afhankelijk is van meerdere resources, die allemaal Configureer bare instellingen bevatten.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fef54e4fff442f1c9eae523d7d278f193b84171
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708141"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926923"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Over VPN Gateway configuratie-instellingen
 
@@ -169,7 +169,7 @@ Soms moet u de instellingen van de lokale netwerk gateway wijzigen. Wanneer u bi
 
 Zie de volgende pagina's voor aanvullende technische bronnen en specifieke syntaxis vereisten bij het gebruik van REST Api's, Power shell-cmdlets of Azure CLI voor VPN Gateway configuraties:
 
-| **Klassiek** | **Resource Manager** |
+| **Klassieke** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |

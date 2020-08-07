@@ -3,16 +3,16 @@ title: Resources, rollen en toegangs beheer in Azure-toepassing inzichten | Micr
 description: Eigen aren, mede werkers en lezers van de inzichten van uw organisatie.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 38c7d7bcbcf193149fd8ab5e632674b6f8530a44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325692"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926498"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Resources, rollen en toegangs beheer in Application Insights
 
-Met op [rollen gebaseerd toegangs beheer in Microsoft Azure](../../role-based-access-control/role-assignments-portal.md)kunt u bepalen wie toegang heeft tot uw gegevens in azure [Application Insights][start]lezen en bijwerken.
+U kunt bepalen wie toegang heeft tot uw gegevens in azure [Application Insights][start]lezen en bijwerken met behulp van [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 
 > [!IMPORTANT]
 > Wijs toegang toe aan gebruikers in de **resource groep of het abonnement** waartoe de resource van de toepassing behoort, niet in de resource zelf. Wijs de rol van de **Application Insights onderdeel bijdrager** toe. Dit zorgt voor eenvormige controle van de toegang tot webtests en waarschuwingen samen met uw toepassings bron. [Meer informatie](#access).
@@ -101,7 +101,7 @@ Als de gebruiker die u wilt, niet in de adres lijst staat, kunt u iedereen uitno
 
 ## <a name="related-content"></a>Gerelateerde inhoud
 
-* [Op rollen gebaseerd toegangs beheer in azure](../../role-based-access-control/role-assignments-portal.md)
+* [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>Power shell-query voor het bepalen van het rollidmaatschap
 
@@ -135,4 +135,3 @@ $resourceGroup = "RGNAME"
 [group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
-

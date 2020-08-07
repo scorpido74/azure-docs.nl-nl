@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211dce8a2810d9eb07bf0f388753afd50add4945
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263558"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919953"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB-bron tokens gebruiken met de Gremlin-SDK
 
@@ -102,5 +102,5 @@ Met één Gremlin-account kunt u een onbeperkt aantal tokens uitgeven. U kunt ec
 Een veelvoorkomende fout die toepassingen tegen komen tijdens het gebruik van resource tokens is ' onvoldoende machtigingen in de autorisatie-header voor de bijbehorende aanvraag. Probeer het opnieuw met een andere autorisatie-header. Deze fout wordt geretourneerd wanneer een Gremlin-passage een rand of een hoek punt probeert te schrijven, maar het bron token alleen *Lees* machtigingen verleent. Inspecteer uw passage om te zien of het een van de volgende stappen bevat: *. addV ()*, *. addE ()*, *. drop ()* of *. eigenschap ()*.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Toegangs beheer op basis van rollen](role-based-access-control.md) in azure Cosmos db
+* [Op rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](role-based-access-control.md) in azure Cosmos db
 * [Meer informatie over het beveiligen van toegang tot gegevens](secure-access-to-data.md) in azure Cosmos db

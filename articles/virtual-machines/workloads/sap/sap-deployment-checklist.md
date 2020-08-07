@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836340"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924424"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -74,7 +74,7 @@ Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-p
 4.  Ontwerp van Foundation-Services. Dit ontwerp moet de volgende items bevatten:
     - Active Directory-en DNS-ontwerp.
     - Netwerk topologie binnen Azure en toewijzing van verschillende SAP-systemen.
-    - [Op rollen gebaseerde toegangs](../../../role-based-access-control/overview.md) structuur voor teams die de infra structuur en SAP-toepassingen in azure beheren.
+    - [Azure RBAC-structuur (op rollen gebaseerd toegangs beheer)](../../../role-based-access-control/overview.md) voor teams die infra structuur-en SAP-toepassingen beheren in Azure.
     - Topologie van resource groep.
     - [Strategie voor Tags Toep assen](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing).
     - Naamgevings regels voor Vm's en andere infrastructuur onderdelen en/of logische namen.

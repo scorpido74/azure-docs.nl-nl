@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4aaa729ffd272c886bf5c545574d99c9de5842f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285829"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922248"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 
@@ -80,7 +80,7 @@ Zie [verificatie details weer geven](https://aka.ms/amauthdetails)voor meer info
 
 ## <a name="authorization-with-role-based-access-control"></a>Autorisatie met op rollen gebaseerd toegangs beheer
 
-Azure Maps ondersteunt toegang tot alle principal-typen voor [op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/overview) van Azure, waaronder: individuele Azure AD-gebruikers,-groepen,-toepassingen, Azure-resources en door Azure beheerde identiteiten. Aan principal-typen wordt een set machtigingen verleend, ook wel een roldefinitie genoemd. Een roldefinitie biedt machtigingen voor het REST API acties. Het Toep assen van toegang tot een of meer Azure Maps accounts wordt een bereik genoemd. Bij het Toep assen van een principal, roldefinitie en bereik wordt een roltoewijzing gemaakt. 
+Azure Maps ondersteunt toegang tot alle principal-typen voor [op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) van Azure, waaronder: individuele Azure AD-gebruikers,-groepen,-toepassingen, Azure-resources en door Azure beheerde identiteiten. Aan principal-typen wordt een set machtigingen verleend, ook wel een roldefinitie genoemd. Een roldefinitie biedt machtigingen voor het REST API acties. Het Toep assen van toegang tot een of meer Azure Maps accounts wordt een bereik genoemd. Bij het Toep assen van een principal, roldefinitie en bereik wordt een roltoewijzing gemaakt. 
 
 In de volgende secties worden de concepten en onderdelen van Azure Maps integratie met Azure AD op rollen gebaseerd toegangs beheer besproken. Als onderdeel van het proces om uw Azure Maps-account in te stellen, wordt een Azure AD-adres lijst gekoppeld aan het Azure-abonnement waarop het Azure Maps-account zich bevindt. 
 

@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: a6a6b0b15b8d2dc08f1581cb2ea0ea4c7e8036ca
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 4992be004a4b60b7b5fb591d834e8938cf03f34f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529973"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926277"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Beveiliging in Azure Data Lake Storage Gen1
 
@@ -39,7 +39,7 @@ Elk Azure-abonnement kan worden gekoppeld aan een exemplaar van Azure Active Dir
 
 Nadat Azure Active Directory een gebruiker verifieert, zodat de gebruiker toegang heeft tot Data Lake Storage Gen1, controleert autorisatie de toegangs machtigingen voor Data Lake Storage Gen1. Data Lake Storage Gen1 de autorisatie voor account-en gegevensgerelateerde activiteiten op de volgende wijze gescheiden:
 
-* [Op rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md) (RBAC) van Azure voor account beheer
+* [Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)](../role-based-access-control/overview.md) voor account beheer
 * POSIX-ACL voor toegang tot gegevens in de Store
 
 ### <a name="rbac-for-account-management"></a>RBAC voor account beheer
@@ -53,7 +53,7 @@ Houd er rekening mee dat hoewel rollen zijn toegewezen aan account beheer, sommi
 | Rollen | Beheer rechten | Gegevens toegangs rechten | Uitleg |
 | --- | --- | --- | --- |
 | Er is geen rol toegewezen |Geen |Beheerd door ACL |De gebruiker kan de Azure Portal-of Azure PowerShell-cmdlets niet gebruiken om Data Lake Storage Gen1 te bladeren. De gebruiker kan alleen opdracht regel Programma's gebruiken. |
-| Eigenaar |Alles |Alles |De rol van eigenaar is een super gebruiker. Deze rol kan alles beheren en heeft volledige toegang tot de gegevens. |
+| Eigenaar |Alle |Alle |De rol van eigenaar is een super gebruiker. Deze rol kan alles beheren en heeft volledige toegang tot de gegevens. |
 | Lezer |Alleen-lezen |Beheerd door ACL |Met de rol lezer kan alles worden weer gegeven met betrekking tot account beheer, zoals welke gebruiker aan welke rol is toegewezen. De rol van lezer kan geen wijzigingen aanbrengen. |
 | Inzender |Alle behalve functies toevoegen en verwijderen |Beheerd door ACL |De rol Inzender kan sommige aspecten van een account beheren, zoals implementaties en het maken en beheren van waarschuwingen. De rol Inzender kan geen rollen toevoegen of verwijderen. |
 | Beheerder van gebruikerstoegang |Rollen toevoegen en verwijderen |Beheerd door ACL |De rol beheerder van gebruikers toegang kan de gebruikers toegang tot accounts beheren. |

@@ -4,12 +4,12 @@ description: Aanbevelingen voor het beveiligen van installatie kopieën en gehei
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907020"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922231"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Beveiligings overwegingen voor Azure Container Instances
 
@@ -40,7 +40,7 @@ De beveiligings bewaking en oplossingen voor het scannen van afbeeldingen, zoals
 
 ### <a name="protect-credentials"></a>Referenties beveiligen
 
-Containers kunnen worden verspreid over verschillende clusters en Azure-regio's. Daarom moet u de referenties beveiligen die vereist zijn voor aanmeldingen of API-toegang, zoals wacht woorden of tokens. Zorg ervoor dat alleen bevoegde gebruikers toegang hebben tot deze containers tijdens de overdracht en in rust. Inventariseer alle referentie geheimen en vraag ontwikkel aars om nieuwe geheimen te gebruiken-beheer Programma's die zijn ontworpen voor container platforms.  Zorg ervoor dat uw oplossing versleutelde data bases, TLS-versleuteling voor geheimen en op [rollen gebaseerd toegangs beheer op basis van](../role-based-access-control/overview.md)bevoegdheden bevat. [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) is een Cloud service die versleutelings sleutels en geheimen (zoals certificaten, verbindings reeksen en wacht woorden) beveiligt voor container toepassingen. Omdat deze gegevens gevoelig en zakelijk kritiek zijn, moet u beveiligde toegang tot uw sleutel kluizen zodat alleen geautoriseerde toepassingen en gebruikers toegang hebben.
+Containers kunnen worden verspreid over verschillende clusters en Azure-regio's. Daarom moet u de referenties beveiligen die vereist zijn voor aanmeldingen of API-toegang, zoals wacht woorden of tokens. Zorg ervoor dat alleen bevoegde gebruikers toegang hebben tot deze containers tijdens de overdracht en in rust. Inventariseer alle referentie geheimen en vraag ontwikkel aars om nieuwe geheimen te gebruiken-beheer Programma's die zijn ontworpen voor container platforms.  Zorg ervoor dat uw oplossing versleutelde data bases, TLS-versleuteling voor geheimen gegevens in transit en minimale bevoegdheden op [Azure Role-based Access Control (Azure RBAC)](../role-based-access-control/overview.md)bevat. [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) is een Cloud service die versleutelings sleutels en geheimen (zoals certificaten, verbindings reeksen en wacht woorden) beveiligt voor container toepassingen. Omdat deze gegevens gevoelig en zakelijk kritiek zijn, moet u beveiligde toegang tot uw sleutel kluizen zodat alleen geautoriseerde toepassingen en gebruikers toegang hebben.
 
 ## <a name="considerations-for-the-container-ecosystem"></a>Overwegingen voor het container ecosysteem
 

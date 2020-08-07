@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: d5eef553d0d3bf5acbcb61ef8f2dcfab88a53266
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505768"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921993"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Een Azure Active Directory Domain Services resource-forest en een uitgaand forest-vertrouwens relatie met een on-premises domein maken met behulp van Azure PowerShell
 
@@ -102,7 +102,7 @@ Gebruik het script om een resource forest voor een beheerd domein te maken `New-
 
 1. Controleer de volgende para meters die nodig zijn voor het `New-AzureAaddsForest` script. Zorg ervoor dat u ook beschikt over de vereiste **Azure PowerShell** en **Azure AD Power shell** -modules. Zorg ervoor dat u de vereisten voor het virtuele netwerk hebt gepland om toepassingen en on-premises connectiviteit te bieden.
 
-    | Name                         | Script parameter          | Beschrijving |
+    | Naam                         | Script parameter          | Beschrijving |
     |:-----------------------------|---------------------------|:------------|
     | Abonnement                 | *-azureSubscriptionId*    | Abonnements-ID die wordt gebruikt voor Azure AD DS-facturering. U kunt de lijst met abonnementen ophalen met behulp van de cmdlet [Get-AzureRMSubscription][Get-AzureRMSubscription] . |
     | Resourcegroep               | *-aaddsResourceGroupName* | De naam van de resource groep voor het beheerde domein en de gekoppelde resources. |
@@ -112,7 +112,7 @@ Gebruik het script om een resource forest voor een beheerd domein te maken `New-
 
     `New-AzureAaddsForest`Met het script kunt u het virtuele Azure-netwerk en het azure AD DS-subnet maken als deze resources nog niet bestaan. Het script kan eventueel de subnetten van de werk belasting maken, indien opgegeven:
 
-    | Name                              | Script parameter                  | Description |
+    | Naam                              | Script parameter                  | Beschrijving |
     |:----------------------------------|:----------------------------------|:------------|
     | Naam van virtueel netwerk              | *-aaddsVnetName*                  | De naam van het virtuele netwerk voor het beheerde domein.|
     | Adresruimte                     | *-aaddsVnetCIDRAddressSpace*      | Het adres bereik van het virtuele netwerk in CIDR-notatie (bij het maken van het virtuele netwerk).|
@@ -148,8 +148,8 @@ Voordat u begint, moet u ervoor zorgen dat u inzicht krijgt in de [overwegingen 
 
 1. De hybride verbinding met uw on-premises netwerk met Azure maken met behulp van een Azure VPN-of Azure ExpressRoute-verbinding. De configuratie van het hybride netwerk valt buiten het bereik van deze documentatie en kan al bestaan in uw omgeving. Raadpleeg de volgende artikelen voor meer informatie over specifieke scenario's:
 
-    * [Azure site-naar-site-VPN](/vpn-gateway/vpn-gateway-about-vpngateways).
-    * [Overzicht van Azure ExpressRoute](/vpn-gateway/vpn-gateway-about-vpngateways).
+    * [Azure site-naar-site-VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+    * [Overzicht van Azure ExpressRoute](/azure/expressroute/expressroute-introduction).
 
     > [!IMPORTANT]
     > Als u de verbinding rechtstreeks maakt naar het virtuele netwerk van uw beheerde domein, gebruikt u een afzonderlijk gateway-subnet. Maak de gateway niet in het subnet van het beheerde domein.
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Geef het script nu de volgende informatie:
 
-| Name                               | Script parameter     | Description |
+| Naam                               | Script parameter     | Beschrijving |
 |:-----------------------------------|:---------------------|:------------|
 | Domein naam van Azure AD DS            | *-ManagedDomainFqdn* | FQDN-namen van het beheerde domein, zoals *aaddscontoso.com* |
 | Domein naam van on-premises AD DS      | *-TrustFqdn*         | De FQDN van het vertrouwde forest, zoals *onprem.contoso.com* |

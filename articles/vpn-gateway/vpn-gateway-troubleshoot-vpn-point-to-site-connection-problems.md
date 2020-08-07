@@ -1,19 +1,19 @@
 ---
 title: Problemen met Azure Point-to-site-verbindingen oplossen
 titleSuffix: Azure VPN Gateway
-description: Meer informatie over het oplossen van problemen met Point-to-site-verbindingen.
+description: Meer informatie over het oplossen van veelvoorkomende punt-naar-site-verbindings problemen die u kunt voordoen in azure, met inbegrip van verschillende VPN-client fouten.
 services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: b997942fd8d8a90b4bd395c2afa7d99b64a97ad8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8fd32cb99db115484c913e1a0f00b038b62367e9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037746"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920650"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problemen oplossen: Azure Point-to-site-verbindings problemen
 
@@ -71,7 +71,7 @@ Windows 10 of Server 2016 voorbereiden voor IKEv2:
 
 1. Installeer de update.
 
-   | Besturingssysteemversie | Datum | Aantal/koppeling |
+   | Besturingssysteemversie | Date | Aantal/koppeling |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 versie 1607 | 17 januari 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 versie 1703 | 17 januari 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |

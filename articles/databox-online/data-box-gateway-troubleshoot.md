@@ -1,6 +1,6 @@
 ---
 title: De Azure-portal gebruiken om problemen met Azure Data Box Gateway op te lossen | Microsoft Docs
-description: Hier wordt beschreven hoe u problemen met Azure Data Box Gateway oplost.
+description: Meer informatie over het oplossen van problemen op uw Azure Data Box Gateway. U kunt Diagnostische gegevens uitvoeren, informatie voor ondersteuning verzamelen en Logboeken gebruiken om problemen op te lossen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 9688df6c27717cc74c874c75a9df0b47ffd24853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564024"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927178"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Problemen met uw Azure Data Box Gateway oplossen
 

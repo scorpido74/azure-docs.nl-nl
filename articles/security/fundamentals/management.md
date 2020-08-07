@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224703"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921925"
 ---
 # <a name="security-management-in-azure"></a>Beveiligingsbeheer in Azure
 Azure-abonnees kunnen hun cloudomgevingen beheren vanaf meerdere apparaten, waaronder beheerwerkstations, de pc's van ontwikkelaars en zelfs apparaten van bevoegde eindgebruikers met taakspecifieke rechten. In sommige gevallen worden beheerfuncties uitgevoerd via op het web gebaseerde consoles, zoals de [Azure Portal](https://azure.microsoft.com/features/azure-portal/). In andere gevallen zijn er mogelijk rechtstreekse verbindingen naar Azure vanaf on-premises systemen via virtuele particuliere netwerken (VPN), Terminal Services, protocollen van clienttoepassingen of de Azure Service Management API (SMAPI) (via een programma). Clienteindpunten kunnen bovendien zowel in een domein zijn samengevoegd als op zichzelf staand en niet-beheerd zijn, zoals tablets en smartphones.
@@ -66,7 +66,7 @@ Door toegangsbronnen te consolideren en niet-beheerde eindpunten te verwijderen,
 ### <a name="providing-security-for-azure-remote-management"></a>Beveiliging voor extern beheer van Azure
 Azure biedt beveiligingsmethoden om beheerders te helpen met het beheer van cloudservices en virtuele machines in Azure. Tot deze methoden behoren onder meer:
 
-* Verificatie en [toegangsbeheer op basis van rollen](../../role-based-access-control/role-assignments-portal.md).
+* Verificatie en [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Bewaking, logboekregistratie en controle.
 * Certificaten en gecodeerde communicatie.
 * Een webbeheerportal.
@@ -168,7 +168,7 @@ Ter voorkoming van diverse beveiligingsrisico's die voortvloeien uit het gebruik
 
 De virtuele machine die als zakelijke pc wordt gebruikt, wordt uitgevoerd in een beveiligde ruimte en biedt de benodigde gebruikerstoepassingen. De host blijft een 'schone bron' en past strikt netwerkbeleid toe op het basisbesturingssysteem (bijvoorbeeld het blokkeren van RDP-toegang tot de virtuele machine).
 
-## <a name="best-practices"></a>Best practices
+## <a name="best-practices"></a>Aanbevolen procedures
 Houd rekening met de volgende aanvullende richtlijnen bij het beheren van toepassingen en gegevens in Azure.
 
 ### <a name="dos-and-donts"></a>Wat u wel en wat u niet moet doen

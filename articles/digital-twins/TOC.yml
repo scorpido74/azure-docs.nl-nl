@@ -92,6 +92,8 @@
           href: troubleshoot-metrics.md
         - name: Diagnostische logboeken inschakelen
           href: troubleshoot-diagnostics.md
+        - name: Waarschuwingen inschakelen
+          href: troubleshoot-alerts.md
         - name: Bekende problemen
           href: troubleshoot-known-issues.md
         - name: Probleemoplossing

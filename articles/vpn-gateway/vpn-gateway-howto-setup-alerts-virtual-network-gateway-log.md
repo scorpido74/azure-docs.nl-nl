@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: waarschuwingen voor diagnostische bron logboek gebeurtenissen configureren'
-description: Stappen voor het configureren van waarschuwingen voor VPN Gateway diagnostische resource logboek gebeurtenissen
+description: Meer informatie over het instellen van waarschuwingen op basis van bron logboek gebeurtenissen van Azure VPN Gateway met behulp van Azure Monitor Log Analytics en de resource logboeken die beschikbaar zijn in Azure.
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 21fcebf6667eb1bc7741dfb4ba268af42567d58e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d79bdc669ab2c3785b1cde569cfce3021e4d924f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075596"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923183"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Waarschuwingen instellen voor resource logboek gebeurtenissen van VPN Gateway
 

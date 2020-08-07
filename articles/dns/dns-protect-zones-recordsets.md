@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: fbf996a66bf76520002a22169903c7961080e38b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b06ae396ae15c8572cf8160ce576651f47001add
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131528"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920497"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zones en -records beschermen
 
@@ -20,7 +20,7 @@ ms.locfileid: "87131528"
 
 DNS-zones en-records zijn essentiële bronnen. Het verwijderen van een DNS-zone of één DNS-record kan leiden tot een onderbreking van de service. Het is belang rijk dat DNS-zones en-records worden beschermd tegen onbevoegde of onopzettelijke wijzigingen.
 
-In dit artikel wordt uitgelegd hoe u met Azure DNS uw persoonlijke DNS-zones en-records kunt beveiligen tegen dergelijke wijzigingen.  We hebben twee krachtige effecten functies van Azure Resource Manager toegepast: [toegangs beheer op basis van rollen](../role-based-access-control/overview.md) en [resource vergrendelingen](../azure-resource-manager/management/lock-resources.md).
+In dit artikel wordt uitgelegd hoe u met Azure DNS uw persoonlijke DNS-zones en-records kunt beveiligen tegen dergelijke wijzigingen.  We hebben twee krachtige effecten functies toegepast door Azure Resource Manager: [op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md) en [resource vergrendelingen](../azure-resource-manager/management/lock-resources.md)van Azure.
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 

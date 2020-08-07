@@ -1,6 +1,6 @@
 ---
 title: Beheerhandleiding voor de Azure Data Box Disk-portal | Microsoft Docs
-description: Beschrijft hoe u de Azure-portal gebruikt om uw Azure Data Box te beheren.
+description: Meer informatie over het beheren van de Data Box Disk met behulp van de Azure Portal. Beheer orders, beheer schijven en volg de status van een order terwijl deze wordt uitgevoerd.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707732"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924750"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>De Azure-portal gebruiken om uw Data Box te beheren
 
@@ -119,7 +119,7 @@ Voer de volgende stappen uit om meldingsdetails te bewerken.
 
 ## <a name="view-order-status"></a>Orderstatus bekijken
 
-|Orderstatus |Description |
+|Orderstatus |Beschrijving |
 |---------|---------|
 |Besteld     | De order is geplaatst. <br> Als de schijven niet beschikbaar zijn, ontvangt u een melding. <br>Als de schijven beschikbaar zijn, identificeert Microsoft een schijf die moet worden verzonden en bereidt Microsoft een schijfpakket voor.        |
 |Verwerkt     | De order is verwerkt. <br> Tijdens de orderverwerking vinden de volgende acties plaats:<li>De schijven worden versleuteld met AES-128 BitLocker-versleuteling. </li> <li>De Data Box Disks worden vergrendeld om onbevoegde toegang te voorkomen.</li><li>De sleutel die de schijven ontgrendelt, wordt tijdens dit proces gegenereerd.</li>        |

@@ -14,12 +14,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/20/2020
-ms.openlocfilehash: 2f8706fa8b272075ec64e2d36475509732914acf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0b6aba2b857a16631871d13f4a0fc14b682393e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003185"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926697"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Een SSIS-pakket uitvoeren met de activiteit SSIS-pakket uitvoeren in Azure Data Factory
 
@@ -97,7 +97,7 @@ Voer de volgende stappen uit op het tabblad **instellingen** van de activiteit v
 
 **SSISDB** als uw pakket locatie wordt automatisch geselecteerd als uw Azure-SSIS IR is ingericht met een SSIS-catalogus (SSISDB) die wordt gehost door Azure SQL database server/beheerd exemplaar of u kunt het zelf selecteren. Als deze is geselecteerd, voert u de volgende stappen uit.
 
-   1. Als uw Azure-SSIS IR actief is en het selectie vakje **hand matige invoer** is uitgeschakeld, bladert en selecteert u uw bestaande mappen, projecten, pakketten en omgevingen van SSISDB. Selecteer **vernieuwen** om de zojuist toegevoegde mappen, projecten, pakketten of omgevingen van SSISDB op te halen, zodat deze beschikbaar zijn voor bladeren en selectie. Als u de omgevingen voor uw pakket uitvoeringen wilt zoeken en selecteren, moet u uw projecten vooraf configureren om deze omgevingen toe te voegen als verwijzingen vanuit dezelfde mappen onder SSISDB. Zie [SSIS-omgevingen maken en toewijzen](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)voor meer informatie.
+   1. Als uw Azure-SSIS IR actief is en het selectie vakje **hand matige invoer** is uitgeschakeld, bladert en selecteert u uw bestaande mappen, projecten, pakketten en omgevingen van SSISDB. Selecteer **vernieuwen** om de zojuist toegevoegde mappen, projecten, pakketten of omgevingen van SSISDB op te halen, zodat deze beschikbaar zijn voor bladeren en selectie. Als u de omgevingen voor uw pakket uitvoeringen wilt zoeken en selecteren, moet u uw projecten vooraf configureren om deze omgevingen toe te voegen als verwijzingen vanuit dezelfde mappen onder SSISDB. Zie [SSIS-omgevingen maken en toewijzen](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages)voor meer informatie.
 
    1. Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. 
 
@@ -269,7 +269,7 @@ Voer de volgende stappen uit op het tabblad **Eigenschappen onderdrukking** van 
 
    1. Voer één voor één de paden van bestaande eigenschappen in het geselecteerde pakket in om de waarden hand matig toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. Als u bijvoorbeeld de waarde van uw gebruikers variabele wilt overschrijven, voert u het pad in de volgende indeling in: `\Package.Variables[User::<variable name>].Value` . 
 
-      U kunt het juiste eigenschapspad voor elke **pakket eigenschap verkrijgen** door het pakket te openen dat het bevat op SSDT. Nadat het pakket is geopend, selecteert u de eigenschap controle stroom en **configuratie** in het venster **Eigenschappen** van SSDT. Selecteer vervolgens de knop met weglatings tekens (**...**) naast de bijbehorende **configuratie** -eigenschap om de **package configurations-Organizer** te openen die normaal gesp roken wordt gebruikt voor het [maken van pakket configuraties in pakket implementatie model](https://docs.microsoft.com/sql/integration-services/create-package-configurations?view=sql-server-2014). 
+      U kunt het juiste eigenschapspad voor elke **pakket eigenschap verkrijgen** door het pakket te openen dat het bevat op SSDT. Nadat het pakket is geopend, selecteert u de eigenschap controle stroom en **configuratie** in het venster **Eigenschappen** van SSDT. Selecteer vervolgens de knop met weglatings tekens (**...**) naast de bijbehorende **configuratie** -eigenschap om de **package configurations-Organizer** te openen die normaal gesp roken wordt gebruikt voor het [maken van pakket configuraties in pakket implementatie model](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations). 
 
       ![Pakket eigenschappen ophalen van SSDT-configurations-eigenschap](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
 

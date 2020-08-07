@@ -3,16 +3,16 @@ title: Machtigingen in Azure Advisor
 description: Advisor-machtigingen en hoe ze de mogelijkheid kunnen blok keren om abonnementen te configureren of aanbevelingen uit te stellen of te negeren.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 6b5dfdeb888b0577a40562536bd7a6dfc271cb19
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057589"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927382"
 ---
 # <a name="permissions-in-azure-advisor"></a>Machtigingen in Azure Advisor
 
-Azure Advisor biedt aanbevelingen op basis van het gebruik en de configuratie van uw Azure-resources en-abonnementen. Advisor maakt gebruik van de [ingebouwde rollen](../role-based-access-control/built-in-roles.md) van op [rollen gebaseerde Access Control](../role-based-access-control/overview.md) (RBAC) om uw toegang tot aanbevelingen en Advisor-functies te beheren. 
+Azure Advisor biedt aanbevelingen op basis van het gebruik en de configuratie van uw Azure-resources en-abonnementen. Advisor maakt gebruik van de [ingebouwde rollen](../role-based-access-control/built-in-roles.md) van [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md) voor het beheren van uw toegang tot aanbevelingen en Advisor-functies. 
 
 ## <a name="roles-and-their-access"></a>Rollen en hun toegang
 

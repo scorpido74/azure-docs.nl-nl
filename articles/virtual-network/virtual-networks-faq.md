@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 0f277661ab61e7292fbb81d96c26c7d48c6d03ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087047"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924118"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
 
@@ -109,7 +109,7 @@ Ja. Subnetten kunnen op elk gewenst moment worden toegevoegd aan VNets, zolang h
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Kan ik de grootte van mijn subnet wijzigen nadat ik het heb gemaakt?
 Ja. U kunt een subnet toevoegen, verwijderen, uitbreiden of verkleinen als hierin geen VM's of services zijn geïmplementeerd.
 
-### <a name="can-i-modify-subnets-after-i-created-them"></a>Kan ik de subnetten wijzigen nadat ik deze heb gemaakt?
+### <a name="can-i-modify-vnet-after-i-created-them"></a>Kan ik Vnet wijzigen nadat ik deze heb gemaakt?
 Ja. U kunt de CIDR-blokken die door een VNet worden gebruikt, toevoegen, verwijderen en wijzigen.
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Kan ik verbinding maken met internet als ik mijn Services in een VNet uitvoer?

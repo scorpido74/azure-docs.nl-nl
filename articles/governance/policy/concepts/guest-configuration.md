@@ -3,12 +3,12 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8c0f5d4df640fa29f88b3c4c6c0403ad9de97dea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901977"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921687"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
@@ -69,7 +69,7 @@ In de volgende tabel ziet u een lijst met ondersteunde besturings systemen in az
 |Microsoft|Windows Server|2012 en hoger|
 |Microsoft|Windows-client|Windows 10|
 |OpenLogic|CentOS|7,3 en hoger|
-|Red Hat|Red Hat Enterprise Linux|7,4-7,8, 9,0 en hoger|
+|Red Hat|Red Hat Enterprise Linux|7,4-7,8|
 |SuSE|SLES|12 SP3 en hoger|
 
 Aangepaste installatie kopieën van virtuele machines worden ondersteund door gast configuratie beleidsregels, zolang ze een van de besturings systemen in de bovenstaande tabel zijn.

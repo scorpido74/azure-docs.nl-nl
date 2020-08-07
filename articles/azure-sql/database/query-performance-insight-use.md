@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 01287f344d77dedade30892d76f5fdbd54481df1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042880"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926396"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight voor Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Voor Query Performance Insight moet het [query archief](https://msdn.microsoft.c
 
 ## <a name="permissions"></a>Machtigingen
 
-U hebt de volgende machtigingen voor [toegangs beheer op basis van rollen](../../role-based-access-control/overview.md) nodig voor het gebruik van query Performance Insight:
+U hebt de volgende machtigingen voor [Azure op rollen gebaseerde toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md) nodig voor het gebruik van query Performance Insight:
 
 * De machtigingen **lezer**, **eigenaar**, **Inzender**, **SQL DB-Inzender**of **SQL Server Inzender** zijn vereist voor het weer geven van de meest voorkomende query's en grafieken van de resource.
 * De machtigingen **eigenaar**, **bijdrager**, **SQL DB-Inzender**of **SQL Server Inzender** zijn vereist om query tekst weer te geven.

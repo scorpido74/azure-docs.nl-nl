@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 9ead7eb19e49574073f038648ca1d247b2dab98f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131698"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923880"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure-dashboards delen met behulp van op rollen gebaseerd toegangsbeheer
 
-Nadat u een dash board hebt geconfigureerd, kunt u het publiceren en delen met andere gebruikers in uw organisatie. U kunt anderen uw dash board weer geven met behulp van [op Azure Role gebaseerde Access Control](../role-based-access-control/role-assignments-portal.md) (RBAC). Een gebruiker of groep gebruikers aan een rol toewijzen. Deze rol bepaalt of gebruikers het gepubliceerde dash board kunnen weer geven of wijzigen.
+Nadat u een dash board hebt geconfigureerd, kunt u het publiceren en delen met andere gebruikers in uw organisatie. U kunt anderen uw dash board weer geven met behulp van [Azure RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/role-assignments-portal.md). Een gebruiker of groep gebruikers aan een rol toewijzen. Deze rol bepaalt of gebruikers het gepubliceerde dash board kunnen weer geven of wijzigen.
 
 Alle gepubliceerde Dash boards worden geïmplementeerd als Azure-resources. Ze bestaan als beheer bare items binnen uw abonnement en zijn opgenomen in een resource groep. Vanuit een perspectief voor toegangs beheer zijn Dash boards niet anders dan andere resources, zoals een virtuele machine of een opslag account.
 

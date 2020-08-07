@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 644184f5bb51d049d890655ada5be5ebd4c11bf7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908897"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926668"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 11
 
@@ -48,7 +48,7 @@ Indien van toepassing, wijst de volgende tabel de client bibliotheken toe tussen
 | Client die wordt gebruikt voor Indexeer functies, gegevens bronnen, vaardig heden | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**Nieuw**)](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> Versie 11 hernoemt versie 10 `SearchIndexClient` in `SearchClient` en gebruikt vervolgens de naam voor een client die werkt met de objecten index, Analyzer en synoniemen toewijzen. Wanneer u client verwijzingen bijwerkt, volgt u de volg orde van de stappen in de [stappen om te upgraden](#UpgradeSteps) om Verwar ring te voor komen tijdens het zoeken en vervangen.
+> `SearchIndexClient`bestaat in beide versies, maar ondersteunt verschillende dingen. Maak in versie 10 `SearchIndexClient` indexen en andere objecten. In versie 11 `SearchIndexClient` werkt met bestaande indexen. Om Verwar ring te voor komen bij het bijwerken van code, moet u mindful van de volg orde waarin de client verwijzingen worden bijgewerkt. Als u de volg orde van de [stappen voor het uitvoeren](#UpgradeSteps) van een upgrade volgt, moet u problemen met de vervanging van teken reeksen oplossen.
 
 <a name="naming-differences"></a>
 
@@ -125,9 +125,9 @@ Versie 11 biedt volledige ondersteuning voor de volgende objecten en bewerkingen
 
 De volgende versie 10-functies zijn nog niet beschikbaar in versie 11. Als u deze functies gebruikt, moet u de migratie uitschakelen totdat deze worden ondersteund.
 
-+ [georuimtelijke typen](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.serialization.geojsonextensions)
++ georuimtelijke typen
 + [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (hoewel u [deze tijdelijke oplossing](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)kunt gebruiken).
-+ [Kennisarchief](knowledge-store-concept-intro.md)
++ [Knowledge Store](knowledge-store-concept-intro.md)
 
 <a name="UpgradeSteps"></a>
 
