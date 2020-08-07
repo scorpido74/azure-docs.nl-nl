@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: 2eaa2202ac6c2f0fac0f53c6eeb2f5d08c764f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit, devx-track-python
+ms.openlocfilehash: a471d793cc45cc8542aa933ef8ab0a79c42e7e1f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413345"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848414"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid uitvoer binding voor Azure Functions
 
@@ -257,11 +257,11 @@ De Event Grid uitvoer binding is niet beschikbaar voor Java.
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `EventGrid` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' eventGrid '. |
 |**direction** | N.v.t. | Moet worden ingesteld op out. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code waarmee de gebeurtenis wordt aangeduid. |
+|**name** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code waarmee de gebeurtenis wordt aangeduid. |
 |**topicEndpointUri** |**TopicEndpointUri** | De naam van een app-instelling die de URI voor het aangepaste onderwerp bevat, zoals `MyTopicEndpointUri` . |
 |**topicKeySetting** |**TopicKeySetting** | De naam van een app-instelling die een toegangs sleutel voor het aangepaste onderwerp bevat. |
 

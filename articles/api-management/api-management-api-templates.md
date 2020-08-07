@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.custom: tracking-python
-ms.openlocfilehash: 193dc7a953bc746ec7211433f846343969176c96
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243695"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851711"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sjablonen in azure API Management
 
@@ -348,11 +348,11 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
 |Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`apiId`|tekenreeks|De ID van de huidige API.|  
-|`apiName`|tekenreeks|De naam van de API.|  
-|`apiDescription`|tekenreeks|Een beschrijving van de API.|  
+|`apiName`|string|De naam van de API.|  
+|`apiDescription`|string|Een beschrijving van de API.|  
 |`api`|Entiteit van [API-samen vatting](api-management-template-data-model-reference.md#APISummary) .|De huidige API.|  
 |`operation`|[Bewerking](api-management-template-data-model-reference.md#Operation)|De huidige weer gegeven bewerking.|  
-|`sampleUrl`|tekenreeks|De URL voor de huidige bewerking.|  
+|`sampleUrl`|string|De URL voor de huidige bewerking.|  
 |`operationMenu`|[Menu bewerking](api-management-template-data-model-reference.md#Menu)|Een menu met bewerkingen voor deze API.|  
 |`consoleUrl`|URI|De URI voor de knop **try it** .|  
 |`samples`|Verzameling van [code-voorbeeld](api-management-template-data-model-reference.md#Sample) entiteiten.|De code voorbeelden voor de huidige bewerking...|  

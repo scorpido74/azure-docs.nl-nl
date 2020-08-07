@@ -6,13 +6,13 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: a832fe4e212ce39ca423263ed2554c2682455002
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-python
+ms.openlocfilehash: 49bbc2199c7dc3040a24071b8eb5a91929d88e08
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165653"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849239"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Timer trigger voor Azure Functions 
 
@@ -221,7 +221,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' Timer trigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op in. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die het Timer object in functie code vertegenwoordigt. | 
+|**name** | N.v.t. | De naam van de variabele die het Timer object in functie code vertegenwoordigt. | 
 |**planning**|**ScheduleExpression**|Een [cron-expressie](#ncrontab-expressions) of een [time span](#timespan) -waarde. A `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een app service plan. U kunt de schema-expressie in een app-instelling plaatsen en deze eigenschap instellen op de naam van de app-instelling die wordt verpakt in **%** tekens, zoals in dit voor beeld:% ScheduleAppSetting%. |
 |**runOnStartup**|**RunOnStartup**|Als de `true` functie wordt aangeroepen wanneer de runtime wordt gestart. De runtime wordt bijvoorbeeld gestart wanneer de functie-app wordt geactiveerd nadat de inactiviteit is voltooid. Wanneer de functie-app opnieuw wordt gestart vanwege functie wijzigingen en wanneer de functie-app wordt geschaald. Daarom moet **runOnStartup** zelden worden ingesteld op `true` , met name bij de productie. |
 |**useMonitor**|**UseMonitor**|Ingesteld op `true` of `false` om aan te geven of het schema moet worden bewaakt. Het plannen van de controle houdt in dat het schema wordt gebruikt om ervoor te zorgen dat het schema goed wordt onderhouden, zelfs wanneer de functie-app-exemplaren opnieuw worden gestart. Als niet expliciet is ingesteld, is de standaard waarde `true` voor schema's met een terugkeer patroon dat groter is dan of gelijk is aan 1 minuut. Voor schema's die meer dan één keer per minuut activeren, is de standaard waarde `false` .

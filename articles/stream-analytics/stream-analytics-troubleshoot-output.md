@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc35e6a723afab3f230aa91e4b6895aead35e141
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037066"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903184"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problemen met Azure Stream Analytics uitvoer oplossen
 
@@ -24,7 +24,7 @@ In dit artikel worden veelvoorkomende problemen met Azure Stream Analytics uitvo
 1. Controleer de verbinding met uitvoer met behulp van de knop **verbinding testen** voor elke uitvoer.
 1. Bekijk de [metrische gegevens voor bewaking](stream-analytics-monitoring.md) op het tabblad **monitor** . Omdat de waarden worden geaggregeerd, worden de metrische gegevens een paar minuten uitgesteld.
 
-   * Als de waarde van de **invoer gebeurtenissen** groter is dan nul, kan de taak de invoer gegevens lezen. Als de waarde van de **invoer gebeurtenissen** niet groter is dan nul, is er een probleem met de invoer van de taak. Zie [problemen met invoer verbindingen oplossen](stream-analytics-troubleshoot-input.md) voor meer informatie.
+   * Als de waarde van de **invoer gebeurtenissen** groter is dan nul, kan de taak de invoer gegevens lezen. Als de waarde van de **invoer gebeurtenissen** niet groter is dan nul, is er een probleem met de invoer van de taak. Zie [problemen met invoer verbindingen oplossen](stream-analytics-troubleshoot-input.md) voor meer informatie. Als uw taak verwijst naar de invoer van gegevens, moet u splitsen op logische naam Toep assen wanneer u de metrische **invoer gebeurtenissen** bekijkt. Als er zich geen invoer gebeurtenissen van uw referentie gegevens voordoen, betekent dit waarschijnlijk dat deze invoer bron niet correct is geconfigureerd om de juiste referentie gegevensset op te halen.
    * Als de waarde voor **gegevens conversie fouten** groter is dan nul en klimmen, raadpleegt u [Azure stream Analytics gegevens fouten](data-errors.md) voor gedetailleerde informatie over gegevens conversie fouten.
    * Als de waarde voor **runtime fouten** groter is dan nul, worden de gegevens door uw taak ontvangen, maar worden er fouten gegenereerd tijdens het verwerken van de query. Als u de fouten wilt vinden, gaat u naar de [controle logboeken](../azure-resource-manager/management/view-activity-logs.md)en filtert u op de status **mislukt** .
    * Als de waarde van de **invoer gebeurtenissen** groter is dan nul en de waarde voor **uitvoer gebeurtenissen** gelijk is aan nul, is een van de volgende-instructies waar:

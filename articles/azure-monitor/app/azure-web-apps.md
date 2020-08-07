@@ -2,14 +2,14 @@
 title: Prestaties van Azure app Services controleren | Microsoft Docs
 description: Bewaking van toepassings prestaties voor Azure app Services. Grafiek belasting en respons tijd, afhankelijkheids informatie en waarschuwingen instellen voor prestaties.
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6c0d99e89e17c2aad3c7dcfe0056b597aa88d2a2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373161"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876390"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -396,6 +396,12 @@ Als u APPINSIGHTS_JAVASCRIPT_ENABLED = True gebruikt in gevallen waar inhoud is 
 Dit komt doordat de instelling van de APPINSIGHTS_JAVASCRIPT_ENABLED toepassing wordt ingesteld op True en er tegelijkertijd inhouds codering wordt weer gegeven. Dit scenario wordt nog niet ondersteund. De tijdelijke oplossing is om APPINSIGHTS_JAVASCRIPT_ENABLED te verwijderen uit de toepassings instellingen. Dit betekent dat als er nog steeds een Java script-instrumentatie aan de client/browser zijde is vereist, hand matige SDK-verwijzingen nodig zijn voor uw webpagina's. Volg de [instructies](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) voor hand matige instrumentatie met de Java script SDK.
 
 Bekijk de opmerkingen bij de [release](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)voor de meest recente informatie over de Application Insights agent/uitbrei ding.
+
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>De standaard website die wordt geïmplementeerd met Web Apps biedt geen ondersteuning voor automatische bewaking aan client zijde
+
+Wanneer u een web-app maakt met de `ASP.NET` of `.NET Core` Runtimes in azure-app Services, wordt één statische HTML-pagina geïmplementeerd als een start website. De statische webpagina laadt ook een door .NET beheerd webonderdeel in IIS. Hiermee kan bewaking zonder code aan server zijde worden getest, maar wordt automatische bewaking aan client zijde niet ondersteund.
+
+Als u serverloze servers en bewaking aan client zijde voor ASP.NET of ASP.NET Core wilt testen in een web-app Azure-app Services, raden we u aan de officiële hand leidingen te volgen voor het [maken van een ASP.net core web-app](../../app-service/app-service-web-get-started-dotnet.md) en het [maken van een ASP.NET Framework-web-app](../../app-service/app-service-web-get-started-dotnet-framework.md) en vervolgens de instructies in het huidige artikel om de bewaking in te scha kelen.
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP en WordPress worden niet ondersteund
 

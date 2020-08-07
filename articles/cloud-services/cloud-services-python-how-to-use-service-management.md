@@ -14,13 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
-ms.custom: tracking-python
-ms.openlocfilehash: 311d882814c45b3b001fde2a4f3f9027e879f29c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-python
+ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919890"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851508"
 ---
 # <a name="use-service-management-from-python"></a>Service beheer van python gebruiken
 In deze hand leiding wordt beschreven hoe u via programma code veelvoorkomende Service beheer taken vanuit python kunt uitvoeren. De **maken** -klasse in de [Azure SDK voor python](https://github.com/Azure/azure-sdk-for-python) ondersteunt programmatische toegang tot veel van de functies voor Service beheer die beschikbaar zijn in de [Azure Portal][management-portal]. U kunt deze functie gebruiken om Cloud Services, implementaties, gegevens beheer Services en virtuele machines te maken, bij te werken en te verwijderen. Deze functionaliteit kan nuttig zijn bij het bouwen van toepassingen die programmatische toegang tot Service beheer nodig hebben.
@@ -120,14 +120,14 @@ Wanneer u een Cloud service of opslag service maakt, moet u een geldige locatie 
 * Europa - noord
 * Azië - zuidoost
 * Azië - oost
-* VS - centraal
+* Central US
 * VS - noord-centraal
 * VS - zuid-centraal
 * VS - west
 * VS - oost
 * Japan - oost
 * Japan - west
-* Brazilië - zuid
+* Brazil South
 * Australië - oost
 * Australië - zuidoost
 

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/20/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 072beb4f6bd8f823b150a6e81f4308bdd6b29402
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500654"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852239"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for core (SQL) API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "87500654"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
@@ -46,15 +48,17 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 > De [Azure Cosmos DB workshops en Labs](https://aka.ms/cosmosworkshop) zijn een fantastische resource om te leren hoe u Azure Cosmos DB Java SDK v4 kunt gebruiken.
 >
 
-| |  |
+## <a name="helpful-content"></a>Nuttige inhoud
+
+| Inhoud | Koppeling |
 |---|---|
-| **SDK downloaden** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
+|**SDK downloaden**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API-documentatie** | [Naslag documentatie voor Java API](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
 |**Bijdragen aan SDK** | [Azure SDK voor Java Central opslag plaats op GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
-|**Aan de slag** | [Quick Start: een Java-app maken voor het beheren van Azure Cosmos DB SQL-API-gegevens](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [Github opslag plaats met Quick](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) Start-code | 
-|**Basic-code voorbeelden** | [Azure Cosmos DB: Java-voor beelden voor de SQL-API](sql-api-java-sdk-samples.md) · [Github opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
-|**Console-app met wijzigings feed**| [Wijzigings feed-Java SDK v4-voor beeld](create-sql-api-java-changefeed.md) · [Github opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
-|**Voor beeld van web-app**| [Een web-app bouwen met Java SDK v4](sql-api-java-application.md) · [Github opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
+|**Aan de slag** | [Quickstart: Een Java-app bouwen om Azure Cosmos DB SQL API-gegevens te beheren](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [GitHub opslag plaats met Quick Start-code](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**Basic-code voorbeelden** | [Azure Cosmos DB: Java-voorbeelden voor de SQL API](sql-api-java-sdk-samples.md) <br> [GitHub opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
+|**Console-app met wijzigings feed**| [Wijzigings feed-Java SDK v4-voor beeld](create-sql-api-java-changefeed.md) <br> [GitHub opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
+|**Voor beeld van web-app**| [Een web-app bouwen met Java SDK v4](sql-api-java-application.md) <br> [GitHub opslag plaats met voorbeeld code](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
 | **Tips voor prestaties**| [Tips voor betere prestaties voor de Java-SDK v4](performance-tips-java-sdk-v4-sql.md)| 
 | **Problemen oplossen** | [Problemen met Java-SDK v4 oplossen](troubleshoot-java-sdk-v4-sql.md) |
 | **Migreren naar v4 vanuit een oudere SDK** | [Migreren naar Java v4-SDK](migrate-java-v4-sdk.md) |
@@ -73,7 +77,7 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 * Er zijn nieuwe overload-Api's toegevoegd voor `upsertItem` met `partitionKey` . 
 * Ondersteuning voor open telemetrie-tracering is toegevoegd. 
 #### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
-* Er is een probleem opgelost waarbij SSLException wordt gegenereerd als er aanvragen in de modus GATEWAY worden geannuleerd.
+* Er is een probleem opgelost waarbij SSLException wordt gegenereerd in het geval van annulering van aanvragen in de modus GATEWAY.
 * Beleid voor opnieuw proberen van geregelde procedures voor het uitvoeren van een aanvraag
 * Er is een probleem opgelost waarbij SDK vastloopt in de modus voor fout opsporing op logboek niveau. 
 * Vaste periodieke pieken in latentie in directe modus. 
@@ -95,7 +99,7 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 * Er is een probleem opgelost in de query-en wijzigings feed bij het opnieuw maken van de verzameling met dezelfde naam.
 * Probleem opgelost met top query-ClassCastException.
 * Probleem opgelost met order by query NullPointerException.
-* Probleem opgelost bij het verwerken van geannuleerde aanvragen in de directe modus waardoor reactor `onErrorDropped` wordt aangeroepen. 
+* Probleem opgelost in de verwerking van geannuleerde aanvragen in de directe modus waardoor reactor `onErrorDropped` wordt aangeroepen. 
 
 ### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
 #### <a name="new-features"></a>Nieuwe functies
@@ -174,5 +178,5 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.

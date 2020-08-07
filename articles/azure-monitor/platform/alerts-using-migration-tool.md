@@ -6,19 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: ab5c16995a2d2bad6e44f0f9d1187ca3d66be1b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114254"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852120"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Gebruik het hulp programma voor vrijwillige migratie om uw klassieke waarschuwings regels te migreren
 
-Zoals [eerder aangekondigd](monitoring-classic-retirement.md), worden klassieke waarschuwingen in azure monitor buiten gebruik gesteld in september 2019 (oorspronkelijk juli 2019). Er is een hulp programma voor migratie beschikbaar in de Azure Portal voor klanten die gebruikmaken van klassieke waarschuwings regels en die migratie zelf willen activeren. In dit artikel wordt uitgelegd hoe u het hulp programma voor migratie kunt gebruiken om uw klassieke waarschuwings regels vrijwillig te migreren voordat de automatische migratie wordt gestart in september 2019.
-
-> [!NOTE]
-> Als gevolg van een vertraging bij het uitrollen van het migratie hulpprogramma, is de buitengebruikstellings datum voor de migratie van klassieke waarschuwingen [uitgebreid tot en met 31 augustus 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) van de oorspronkelijke datum van 30 juni 2019.
+Zoals [eerder aangekondigd](monitoring-classic-retirement.md), worden klassieke waarschuwingen in azure monitor buiten gebruik gesteld, maar nog steeds beperkt in beperkte mate van resources die de nieuwe waarschuwingen nog niet ondersteunen. Er is een hulp programma voor migratie beschikbaar in de Azure Portal voor klanten die klassieke waarschuwings regels hebben gebruikt en die migratie zelf willen activeren. In dit artikel wordt uitgelegd hoe u het hulp programma voor migratie gebruikt, dat ook wordt gebruikt voor de resterende waarschuwingen die in behandeling zijn.
 
 ## <a name="benefits-of-new-alerts"></a>Voor delen van nieuwe waarschuwingen
 
@@ -37,7 +34,7 @@ Het migratie proces converteert klassieke waarschuwings regels naar nieuwe, geli
 
 - De indeling van de meldings lading en de Api's voor het maken en beheren van nieuwe waarschuwings regels verschillen van die van de regels van de klassieke waarschuwing, omdat deze meer functies ondersteunen. [Meer informatie over het voorbereiden van de migratie](alerts-prepare-migration.md).
 
-- Sommige klassieke waarschuwings regels kunnen niet worden gemigreerd met het hulp programma. [Meer informatie over welke regels niet kunnen worden gemigreerd en wat u ermee kunt doen](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
+- Sommige klassieke waarschuwings regels kunnen niet worden gemigreerd met het hulp programma. [Meer informatie over welke regels niet kunnen worden gemigreerd en wat u ermee kunt doen](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 
     > [!NOTE]
     > Het migratie proces heeft geen invloed op de evaluatie van uw klassieke waarschuwings regels. Ze blijven worden uitgevoerd en waarschuwingen verzenden totdat ze worden gemigreerd en de nieuwe waarschuwings regels van kracht worden.

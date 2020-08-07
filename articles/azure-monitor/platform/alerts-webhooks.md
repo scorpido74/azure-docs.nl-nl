@@ -6,14 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 5561dfee3ede72f9cd28adbd47caf2db4e634360
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073581"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852103"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Een webhook met een klassieke waarschuwing voor metrische gegevens in Azure Monitor aanroepen
+
+> [!WARNING]
+> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen gebruikt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](./alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](./monitoring-classic-retirement.md), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen.
+>
 
 U kunt webhooks gebruiken om een Azure-waarschuwings melding naar andere systemen te routeren voor nabewerkingen of aangepaste acties. U kunt een webhook gebruiken voor een waarschuwing om deze te routeren naar services die SMS-berichten verzenden, fouten in het logboek registreren, een team informeren via chat-of bericht Services of voor verschillende andere acties. 
 
@@ -70,14 +74,14 @@ De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle waa
 
 | Veld | Verplicht | Vaste set waarden | Opmerkingen |
 |:--- |:--- |:--- |:--- |
-| status |Y |Geactiveerd, opgelost |De status van de waarschuwing op basis van de voor waarden die u hebt ingesteld. |
-| context |Y | |De context van de waarschuwing. |
-| tijdstempel |Y | |Het tijdstip waarop de waarschuwing is geactiveerd. |
-| id |Y | |Elke waarschuwings regel heeft een unieke ID. |
-| name |Y | |De naam van de waarschuwing. |
-| description |Y | |Een beschrijving van de waarschuwing. |
-| conditionType |Y |Metrische gegevens, gebeurtenis |Er worden twee soorten waarschuwingen ondersteund: metric en Event. Metrische waarschuwingen zijn gebaseerd op een metrische voor waarde. Gebeurtenis waarschuwingen zijn gebaseerd op een gebeurtenis in het activiteiten logboek. Gebruik deze waarde om te controleren of de waarschuwing is gebaseerd op een metrische waarde of een gebeurtenis. |
-| regeling |Y | |De specifieke velden die moeten worden gecontroleerd op basis van de waarde van **conditionType** . |
+| status |J |Geactiveerd, opgelost |De status van de waarschuwing op basis van de voor waarden die u hebt ingesteld. |
+| context |J | |De context van de waarschuwing. |
+| tijdstempel |J | |Het tijdstip waarop de waarschuwing is geactiveerd. |
+| id |J | |Elke waarschuwings regel heeft een unieke ID. |
+| naam |J | |De naam van de waarschuwing. |
+| beschrijving |J | |Een beschrijving van de waarschuwing. |
+| conditionType |J |Metrische gegevens, gebeurtenis |Er worden twee soorten waarschuwingen ondersteund: metric en Event. Metrische waarschuwingen zijn gebaseerd op een metrische voor waarde. Gebeurtenis waarschuwingen zijn gebaseerd op een gebeurtenis in het activiteiten logboek. Gebruik deze waarde om te controleren of de waarschuwing is gebaseerd op een metrische waarde of een gebeurtenis. |
+| regeling |J | |De specifieke velden die moeten worden gecontroleerd op basis van de waarde van **conditionType** . |
 | metricName |Voor metrische waarschuwingen | |De naam van de metriek die definieert wat de regel controleert. |
 | metricUnit |Voor metrische waarschuwingen |Bytes, BytesPerSecond, aantal, CountPerSecond, percentage, seconden |De eenheid die is toegestaan in de metriek. Bekijk de [toegestane waarden](/previous-versions/azure/reference/dn802430(v=azure.100)). |
 | metricValue |Voor metrische waarschuwingen | |De werkelijke waarde van de metriek die de waarschuwing heeft veroorzaakt. |
@@ -85,13 +89,13 @@ De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle waa
 | windowSize |Voor metrische waarschuwingen | |De periode die wordt gebruikt voor het bewaken van de waarschuwings activiteit op basis van de drempel waarde. De waarde moet tussen 5 minuten en 1 dag liggen. De waarde moet de ISO 8601-duur notatie hebben. |
 | timeAggregation |Voor metrische waarschuwingen |Gemiddelde, laatste, maximum, minimum, geen, totaal |Hoe de verzamelde gegevens in de loop van de tijd moeten worden gecombineerd. De standaard waarde is gemiddelde. Bekijk de [toegestane waarden](/previous-versions/azure/reference/dn802410(v=azure.100)). |
 | operator |Voor metrische waarschuwingen | |De operator die wordt gebruikt om de huidige metrische gegevens te vergelijken met de ingestelde drempel waarde. |
-| subscriptionId |Y | |De ID van het Azure-abonnement. |
-| resourceGroupName |Y | |De naam van de resource groep voor de betrokken resource. |
-| resourceName |Y | |De resource naam van de betrokken resource. |
-| resourceType |Y | |Het resource type van de betrokken resource. |
-| resourceId |Y | |De resource-ID van de betrokken resource. |
-| resourceRegion |Y | |De regio of locatie van de betrokken resource. |
-| portalLink |Y | |Een directe koppeling naar de overzichts pagina van de portal-resource. |
+| subscriptionId |J | |De ID van het Azure-abonnement. |
+| resourceGroupName |J | |De naam van de resource groep voor de betrokken resource. |
+| resourceName |J | |De resource naam van de betrokken resource. |
+| resourceType |J | |Het resource type van de betrokken resource. |
+| resourceId |J | |De resource-ID van de betrokken resource. |
+| resourceRegion |J | |De regio of locatie van de betrokken resource. |
+| portalLink |J | |Een directe koppeling naar de overzichts pagina van de portal-resource. |
 | properties |N |Optioneel |Een set sleutel-waardeparen met details over de gebeurtenis. Bijvoorbeeld `Dictionary<String, String>`. Het veld eigenschappen is optioneel. In een aangepaste UI-of logische werk stroom op basis van een app kunnen gebruikers sleutel-waardeparen invoeren die kunnen worden door gegeven via de payload. Een alternatieve manier om aangepaste eigenschappen door te geven aan de webhook is via de webhook-URI zelf (als query parameters). |
 
 > [!NOTE]

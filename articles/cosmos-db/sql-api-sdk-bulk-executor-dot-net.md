@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/27/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5fcde46738417a03cac8e5e99bea840ce2fd8bc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6644a62252c715bc8c09079edf8f0b98c50736ab
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392094"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852664"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET-bibliotheek voor bulksgewijs laden: informatie downloaden 
 
@@ -26,6 +26,8 @@ ms.locfileid: "85392094"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
@@ -71,7 +73,7 @@ ms.locfileid: "85392094"
 
 * Inclusief MongoBulkExecutor ter ondersteuning van .NET Standard 2,0. Deze functie is functioneel gelijk aan 1.3.0-release, met toevoeging van ondersteuning van .NET Standard 2,0 als het doel raamwerk.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-Preview
+### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-preview
 
 * .NET Standard 2,0 is toegevoegd als een van de ondersteunde doel stellingen om de bulk-uitvoerder bibliotheek te laten werken met .NET core-toepassingen.
 

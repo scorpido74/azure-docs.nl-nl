@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: e30096e84c31f9e73e0ce02daa5765e98bdcd192
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: d67a08d97a24d492b07f6a8b91dc20a4d7f16979
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085092"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848448"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB trigger voor Azure Functions 2. x en hoger
 
@@ -221,7 +221,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `cosmosDBTrigger` . |
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze para meter wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de lijst met documenten met wijzigingen vertegenwoordigt. |
+|**name** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de lijst met documenten met wijzigingen vertegenwoordigt. |
 |**connectionStringSetting**|**ConnectionStringSetting** | De naam van een app-instelling die de connection string bevat die wordt gebruikt om verbinding te maken met het Azure Cosmos DB account dat wordt bewaakt. |
 |**databaseName**|**DatabaseName**  | De naam van de Azure Cosmos DB-Data Base met de verzameling die wordt bewaakt. |
 |**collectionName** |**NaamVerzameling** | De naam van de verzameling die wordt bewaakt. |

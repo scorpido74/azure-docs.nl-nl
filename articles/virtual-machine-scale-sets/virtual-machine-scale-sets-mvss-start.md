@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6f47e07dcffd977121b4142924a77bdb93de3fc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503044"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831495"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Meer informatie over sjablonen voor virtuele-machine schaal sets
 [Azure Resource Manager-sjablonen](../azure-resource-manager/templates/overview.md#template-deployment-process) zijn bijzonder handig om groepen gerelateerde resources te implementeren. In deze reeks zelf studies ziet u hoe u een basis sjabloon voor een schaalset maakt en hoe u deze sjabloon wijzigt in verschillende scenario's. Alle voor beelden zijn afkomstig uit deze [github-opslag plaats](https://github.com/gatneil/mvss).
@@ -115,7 +115,7 @@ In dit geval is er slechts één element in de lijst, het virtuele netwerk van h
 ## <a name="specify-scale-set-properties"></a>Eigenschappen van schaal sets opgeven
 Schaal sets hebben veel eigenschappen voor het aanpassen van de virtuele machines in de schaalset. Zie de [sjabloon verwijzing](/azure/templates/microsoft.compute/virtualmachinescalesets)voor een volledige lijst met deze eigenschappen. Voor deze zelf studie zijn slechts enkele veelgebruikte eigenschappen ingesteld.
 ### <a name="supply-vm-size-and-capacity"></a>Grootte en capaciteit van de VM opgeven
-De schaalset moet weten welke grootte van de virtuele machine moet worden gemaakt ("SKU-naam") en hoeveel virtuele machines er moeten worden gemaakt ("SKU-capaciteit"). Zie de [documentatie over VM-grootten](../virtual-machines/windows/sizes.md)om te zien welke VM-grootten er beschikbaar zijn.
+De schaalset moet weten welke grootte van de virtuele machine moet worden gemaakt ("SKU-naam") en hoeveel virtuele machines er moeten worden gemaakt ("SKU-capaciteit"). Zie de [documentatie over VM-grootten](../virtual-machines/sizes.md)om te zien welke VM-grootten er beschikbaar zijn.
 
 ```json
        "sku": {
