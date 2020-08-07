@@ -13,12 +13,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f84e479c4780437b09ab463781edbb52d8dfdfaa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 32a1440bb641f0cbe8e3f3b8ada42e0841d9aa67
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255622"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922486"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Toepassingen migreren naar micro soft Authentication Library (MSAL)
 
@@ -52,10 +52,10 @@ De volgende artikelen kunnen u helpen bij het migreren naar MSAL:
 ## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
 
 __V: wordt ADAL verouderd?__  
-A: Ja. Vanaf 30 juni 2020 worden nieuwe functies niet meer toegevoegd aan ADAL. We zullen tot en met 30 juni 2022 essentiële beveiligingsfixes blijven toevoegen aan ADAL.
+A: Ja. Vanaf 30 juni 2020 worden nieuwe functies niet meer toegevoegd aan ADAL. We zullen tot en met 30 juni 2022 essentiële beveiligingsfixes blijven toevoegen aan ADAL. Na deze periode werken uw apps die gebruikmaken van ADAL, maar wordt u aangeraden om een upgrade uit te voeren naar MSAL, zodat u kunt profiteren van de nieuwste functies en veilig kunt blijven.
 
 __V: Hoe kan ik weet ik welke van mijn apps ADAL gebruiken?__  
-A: als u de bron code voor de toepassing hebt, kunt u verwijzen naar de bovenstaande migratie handleidingen om te helpen bepalen welke bibliotheek de app gebruikt en hoe u deze migreert naar MSAL. Als u geen toegang hebt tot de bron code van uw toepassing, kunt u [een ondersteunings aanvraag openen](developer-support-help-options.md#open-a-support-request) om een lijst op te halen van uw geregistreerde toepassingen en de bibliotheek die door elke toepassing wordt gebruikt.
+A: als u de bron code voor de toepassing hebt, kunt u verwijzen naar de bovenstaande migratie handleidingen om te helpen bepalen welke bibliotheek de app gebruikt en hoe u deze migreert naar MSAL. Als u een ISV-partner hebt, wordt u aangeraden om rechtstreeks contact op te nemen met de migratie reis naar MSAL. Als u geen toegang hebt tot de bron code van uw toepassing, kunt u [een ondersteunings aanvraag openen](developer-support-help-options.md#open-a-support-request) om een lijst op te halen van uw geregistreerde toepassingen en de bibliotheek die door elke toepassing wordt gebruikt.
 
 __V: zullen mijn bestaande ADAL-apps blijven werken?__  
 A: uw bestaande apps blijven werken zonder te worden gewijzigd. Als u van plan bent om deze te bewaren na 30 juni 2022, kunt u overwegen om deze bij te werken naar MSAL om ze te beveiligen, maar het migreren naar MSAL is niet vereist voor het onderhouden van de bestaande functionaliteit.

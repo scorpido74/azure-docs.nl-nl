@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 8041ce07c08c3b6063e2a1b3c7b55b1cec59b19a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 43ab59f109e311d9d7312b77d34321fa98a952d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087755"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926804"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Gegevens kopiëren van de HDFS-server met behulp van Azure Data Factory
+
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
 > * [Versie 1:](v1/data-factory-hdfs-connector.md)
 > * [Huidige versie](connector-hdfs.md)
@@ -32,7 +33,7 @@ In dit artikel wordt beschreven hoe u gegevens kopieert van de Hadoop Distribute
 De HDFS-connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met [ondersteunde bron-en Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 Met name de HDFS-connector ondersteunt:
 
@@ -59,12 +60,12 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service HDFS:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap *type* moet worden ingesteld op *Hdfs*. | Yes |
-| url |De URL van de HDFS |Yes |
-| authenticationType | De toegestane waarden zijn *anoniem* of *Windows*. <br><br> Zie de sectie [Kerberos-verificatie gebruiken voor de HDFS-connector](#use-kerberos-authentication-for-the-hdfs-connector) om uw on-premises omgeving in te stellen. |Yes |
+| type | De eigenschap *type* moet worden ingesteld op *Hdfs*. | Ja |
+| url |De URL van de HDFS |Ja |
+| authenticationType | De toegestane waarden zijn *anoniem* of *Windows*. <br><br> Zie de sectie [Kerberos-verificatie gebruiken voor de HDFS-connector](#use-kerberos-authentication-for-the-hdfs-connector) om uw on-premises omgeving in te stellen. |Ja |
 | userName |De gebruikers naam voor Windows-verificatie. Geef voor Kerberos-verificatie ** \<username> @ \<domain> . com**op. |Ja (voor Windows-verificatie) |
 | wachtwoord |Het wacht woord voor Windows-verificatie. Markeer dit veld als een SecureString om het veilig op te slaan in uw data factory of [verwijs naar een geheim dat is opgeslagen in een Azure-sleutel kluis](store-credentials-in-key-vault.md). |Ja (voor Windows-verificatie) |
-| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Zie de sectie [vereisten](#prerequisites) voor meer informatie. Als de Integration runtime niet is opgegeven, gebruikt de service de standaard Azure Integration Runtime. |No |
+| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Zie de sectie [vereisten](#prerequisites) voor meer informatie. Als de Integration runtime niet is opgegeven, gebruikt de service de standaard Azure Integration Runtime. |Nee |
 
 **Voor beeld: anonieme verificatie gebruiken**
 
@@ -120,9 +121,9 @@ De volgende eigenschappen worden ondersteund voor HDFS onder `location` instelli
 
 | Eigenschap   | Beschrijving                                                  | Vereist |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | De eigenschap *type* onder `location` in de gegevensset moet worden ingesteld op *HdfsLocation*. | Yes      |
-| folderPath | Het pad naar de map. Als u een Joker teken wilt gebruiken om de map te filteren, slaat u deze instelling over en geeft u het pad op in de instellingen van de activiteiten bron. | No       |
-| fileName   | De bestands naam onder de opgegeven folderPath. Als u een Joker teken wilt gebruiken om bestanden te filteren, slaat u deze instelling over en geeft u de bestands naam op in de instellingen van de activiteit bron. | No       |
+| type       | De eigenschap *type* onder `location` in de gegevensset moet worden ingesteld op *HdfsLocation*. | Ja      |
+| folderPath | Het pad naar de map. Als u een Joker teken wilt gebruiken om de map te filteren, slaat u deze instelling over en geeft u het pad op in de instellingen van de activiteiten bron. | Nee       |
+| fileName   | De bestands naam onder de opgegeven folderPath. Als u een Joker teken wilt gebruiken om bestanden te filteren, slaat u deze instelling over en geeft u de bestands naam op in de instellingen van de activiteit bron. | Nee       |
 
 **Voorbeeld:**
 
@@ -162,21 +163,21 @@ De volgende eigenschappen worden ondersteund voor HDFS onder `storeSettings` ins
 
 | Eigenschap                 | Beschrijving                                                  | Vereist                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | De eigenschap *type* onder `storeSettings` moet worden ingesteld op **HdfsReadSettings**. | Yes                                           |
+| type                     | De eigenschap *type* onder `storeSettings` moet worden ingesteld op **HdfsReadSettings**. | Ja                                           |
 | ***De te kopiëren bestanden zoeken*** |  |  |
 | OPTIE 1: statisch pad<br> | Kopieer vanuit de map of het bestandspad dat is opgegeven in de gegevensset. Als u alle bestanden uit een map wilt kopiëren, moet u ook opgeven `wildcardFileName` als `*` . |  |
-| OPTIE 2: Joker teken<br>- wildcardFolderPath | Het mappad met Joker tekens om de bron mappen te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken). Gebruik `^` dit om te escapen als uw daad werkelijke mapnaam een Joker teken of escape tekens bevat. <br>Zie voor [beelden van mappen en bestanden](#folder-and-file-filter-examples)voor meer voor beelden. | No                                            |
-| OPTIE 2: Joker teken<br>- wildcardFileName | De naam van het bestand met Joker tekens onder het opgegeven folderPath/wildcardFolderPath voor het filteren van bron bestanden. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw daad werkelijke mapnaam een Joker teken of een pad in de naam heeft.  Zie voor [beelden van mappen en bestanden](#folder-and-file-filter-examples)voor meer voor beelden. | Yes |
-| OPTIE 3: een lijst met bestanden<br>- fileListPath | Hiermee wordt aangegeven dat een opgegeven set bestanden moet worden gekopieerd. Wijs naar een tekst bestand met een lijst met bestanden die u wilt kopiëren (één bestand per regel, met het relatieve pad naar het pad dat in de gegevensset is geconfigureerd).<br/>Wanneer u deze optie gebruikt, geeft u geen bestands naam op in de gegevensset. Zie voor [beelden van bestands lijst](#file-list-examples)voor meer voor beelden. |No |
+| OPTIE 2: Joker teken<br>- wildcardFolderPath | Het mappad met Joker tekens om de bron mappen te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken). Gebruik `^` dit om te escapen als uw daad werkelijke mapnaam een Joker teken of escape tekens bevat. <br>Zie voor [beelden van mappen en bestanden](#folder-and-file-filter-examples)voor meer voor beelden. | Nee                                            |
+| OPTIE 2: Joker teken<br>- wildcardFileName | De naam van het bestand met Joker tekens onder het opgegeven folderPath/wildcardFolderPath voor het filteren van bron bestanden. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw daad werkelijke mapnaam een Joker teken of een pad in de naam heeft.  Zie voor [beelden van mappen en bestanden](#folder-and-file-filter-examples)voor meer voor beelden. | Ja |
+| OPTIE 3: een lijst met bestanden<br>- fileListPath | Hiermee wordt aangegeven dat een opgegeven set bestanden moet worden gekopieerd. Wijs naar een tekst bestand met een lijst met bestanden die u wilt kopiëren (één bestand per regel, met het relatieve pad naar het pad dat in de gegevensset is geconfigureerd).<br/>Wanneer u deze optie gebruikt, geeft u geen bestands naam op in de gegevensset. Zie voor [beelden van bestands lijst](#file-list-examples)voor meer voor beelden. |Nee |
 | ***Aanvullende instellingen*** |  | |
-| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Wanneer `recursive` is ingesteld op *True* en de Sink een archief op basis van bestanden is, wordt een lege map of submap niet gekopieerd of gemaakt bij de sink. <br>Toegestane waarden zijn *True* (standaard) en *Onwaar*.<br>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . |No |
-| modifiedDatetimeStart    | Bestanden worden gefilterd op basis van het kenmerk dat het *laatst is gewijzigd*. <br>De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het bereik van `modifiedDatetimeStart` tot is `modifiedDatetimeEnd` . De tijd wordt toegepast op de UTC-tijd zone in de indeling *2018-12-01T05:00:00Z*. <br> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.<br/>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . | No                                            |
-| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig met het opslag archief kan worden verbonden. Geef alleen een waarde op als u de gelijktijdige verbinding met het gegevens archief wilt beperken. | No                                            |
+| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Wanneer `recursive` is ingesteld op *True* en de Sink een archief op basis van bestanden is, wordt een lege map of submap niet gekopieerd of gemaakt bij de sink. <br>Toegestane waarden zijn *True* (standaard) en *Onwaar*.<br>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . |Nee |
+| modifiedDatetimeStart    | Bestanden worden gefilterd op basis van het kenmerk dat het *laatst is gewijzigd*. <br>De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het bereik van `modifiedDatetimeStart` tot is `modifiedDatetimeEnd` . De tijd wordt toegepast op de UTC-tijd zone in de indeling *2018-12-01T05:00:00Z*. <br> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.<br/>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . | Nee                                            |
+| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig met het opslag archief kan worden verbonden. Geef alleen een waarde op als u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee                                            |
 | ***DistCp-instellingen*** |  | |
-| distcpSettings | De eigenschaps groep die moet worden gebruikt wanneer u HDFS DistCp gebruikt. | No |
+| distcpSettings | De eigenschaps groep die moet worden gebruikt wanneer u HDFS DistCp gebruikt. | Nee |
 | resourceManagerEndpoint | Het garen-eind punt (nog een andere resource-onderhandelaar) | Ja, als DistCp wordt gebruikt |
 | tempScriptPath | Een mappad dat wordt gebruikt voor het opslaan van het tijdelijke DistCp-opdracht script. Het script bestand wordt gegenereerd door Data Factory en wordt verwijderd nadat de Kopieer taak is voltooid. | Ja, als DistCp wordt gebruikt |
-| distcpOptions | Aanvullende opties voor de opdracht DistCp. | No |
+| distcpOptions | Aanvullende opties voor de opdracht DistCp. | Nee |
 
 **Voorbeeld:**
 
@@ -228,10 +229,10 @@ In deze sectie wordt het resulterende gedrag beschreven als u een Joker teken fi
 
 | folderPath | fileName             | recursieve | De structuur van de bronmap en het filter resultaat ( **vetgedrukte** bestanden worden opgehaald) |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
-| `Folder*`  | (leeg, standaard instelling gebruiken) | false     | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsop**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | (leeg, standaard instelling gebruiken) | true      | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsop**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.jsop**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | false     | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | true      | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | (leeg, standaard instelling gebruiken) | onjuist     | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsop**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | (leeg, standaard instelling gebruiken) | waar      | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.jsop**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.jsop**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | `*.csv`              | onjuist     | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | `*.csv`              | waar      | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsop<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ### <a name="file-list-examples"></a>Voor beelden van bestands lijst
 
@@ -253,10 +254,10 @@ Zorg ervoor dat uw Hadoop-cluster voldoet aan de volgende vereisten om DistCp te
 
 * De services MapReduce en GARENs zijn ingeschakeld.  
 * De versie van garen is 2,5 of hoger.  
-* De HDFS-server is geïntegreerd met uw doel gegevens opslag: Azure Blob-opslag of uw Azure data Lake Store:  
+* De HDFS-server is geïntegreerd met uw doel gegevens opslag: **Azure Blob Storage** of **Azure data Lake Store (ADLS gen1)**: 
 
     - Het Azure Blob-bestands systeem wordt standaard ondersteund sinds Hadoop 2,7. U hoeft alleen het JAR-pad op te geven in de configuratie van de Hadoop-omgeving.
-    - Azure Data Lake Store bestands systeem wordt verpakt vanaf Hadoop 3.0.0-alpha1. Als uw Hadoop-cluster versie ouder is dan die versie, moet u de Azure Data Lake Storage Gen2-gerelateerde JAR-pakketten (Azure-datalake-Store. jar) hand matig importeren in het cluster en het [jar-bestandspad](https://hadoop.apache.org/releases.html)opgeven in de configuratie van de Hadoop-omgeving.
+    - Azure Data Lake Store bestands systeem wordt verpakt vanaf Hadoop 3.0.0-alpha1. Als uw Hadoop-cluster versie ouder is dan die versie, moet u de Azure Data Lake Store-gerelateerde JAR-pakketten (Azure-datalake-Store. jar) hand matig importeren in het cluster en het [jar-bestandspad](https://hadoop.apache.org/releases.html)opgeven in de configuratie van de Hadoop-omgeving.
 
 * Bereid een tijdelijke map voor in HDFS. Deze tijdelijke map wordt gebruikt voor het opslaan van een DistCp-shell script, waardoor er ruimte op KB-niveau in beslag neemt.
 * Zorg ervoor dat het gebruikers account dat is opgenomen in de gekoppelde koppelings service, gemachtigd is om:
@@ -438,13 +439,13 @@ Voor informatie over eigenschappen van opzoek activiteiten raadpleegt u [activit
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap *type* van de gegevensset moet worden ingesteld op *file share* |Yes |
-| folderPath | Het pad naar de map. Een Joker teken filter wordt ondersteund. Toegestane joker tekens zijn `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` dit om te escapen als uw werkelijke bestands naam een Joker teken of escape tekens in bevat. <br/><br/>Voor beelden: root folder/submap/, zie voor beelden van [mappen en bestands filters](#folder-and-file-filter-examples)voor meer voor beelden. |Yes |
-| fileName |  De naam of het Joker teken filter voor de bestanden onder het opgegeven folderPath. Als u geen waarde opgeeft voor deze eigenschap, wijst de gegevensset naar alle bestanden in de map. <br/><br/>Voor het filter zijn toegestane joker tekens `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken).<br/>-Voor beeld 1:`"fileName": "*.csv"`<br/>-Voor beeld 2:`"fileName": "???20180427.txt"`<br/>Gebruik `^` dit om te escapen als uw daad werkelijke mapnaam een Joker teken of escape tekens bevat. |No |
-| modifiedDatetimeStart | Bestanden worden gefilterd op basis van het kenmerk dat het *laatst is gewijzigd*. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het bereik van `modifiedDatetimeStart` tot is `modifiedDatetimeEnd` . De tijd wordt toegepast op de UTC-tijd zone in de notatie *2018-12-01T05:00:00Z*. <br/><br/> Houd er rekening mee dat de algehele prestaties van gegevens verplaatsing worden beïnvloed door deze instelling in te scha kelen wanneer u een bestands filter wilt Toep assen op een groot aantal bestanden. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.| No |
-| modifiedDatetimeEnd | Bestanden worden gefilterd op basis van het kenmerk dat het *laatst is gewijzigd*. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het bereik van `modifiedDatetimeStart` tot is `modifiedDatetimeEnd` . De tijd wordt toegepast op de UTC-tijd zone in de notatie *2018-12-01T05:00:00Z*. <br/><br/> Houd er rekening mee dat de algehele prestaties van gegevens verplaatsing worden beïnvloed door deze instelling in te scha kelen wanneer u een bestands filter wilt Toep assen op een groot aantal bestanden. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.| No |
+| type | De eigenschap *type* van de gegevensset moet worden ingesteld op *file share* |Ja |
+| folderPath | Het pad naar de map. Een Joker teken filter wordt ondersteund. Toegestane joker tekens zijn `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` dit om te escapen als uw werkelijke bestands naam een Joker teken of escape tekens in bevat. <br/><br/>Voor beelden: root folder/submap/, zie voor beelden van [mappen en bestands filters](#folder-and-file-filter-examples)voor meer voor beelden. |Ja |
+| fileName |  De naam of het Joker teken filter voor de bestanden onder het opgegeven folderPath. Als u geen waarde opgeeft voor deze eigenschap, wijst de gegevensset naar alle bestanden in de map. <br/><br/>Voor het filter zijn toegestane joker tekens `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken).<br/>-Voor beeld 1:`"fileName": "*.csv"`<br/>-Voor beeld 2:`"fileName": "???20180427.txt"`<br/>Gebruik `^` dit om te escapen als uw daad werkelijke mapnaam een Joker teken of escape tekens bevat. |Nee |
+| modifiedDatetimeStart | Bestanden worden gefilterd op basis van het kenmerk dat het *laatst is gewijzigd*. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het bereik van `modifiedDatetimeStart` tot is `modifiedDatetimeEnd` . De tijd wordt toegepast op de UTC-tijd zone in de notatie *2018-12-01T05:00:00Z*. <br/><br/> Houd er rekening mee dat de algehele prestaties van gegevens verplaatsing worden beïnvloed door deze instelling in te scha kelen wanneer u een bestands filter wilt Toep assen op een groot aantal bestanden. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.| Nee |
+| modifiedDatetimeEnd | Bestanden worden gefilterd op basis van het kenmerk dat het *laatst is gewijzigd*. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het bereik van `modifiedDatetimeStart` tot is `modifiedDatetimeEnd` . De tijd wordt toegepast op de UTC-tijd zone in de notatie *2018-12-01T05:00:00Z*. <br/><br/> Houd er rekening mee dat de algehele prestaties van gegevens verplaatsing worden beïnvloed door deze instelling in te scha kelen wanneer u een bestands filter wilt Toep assen op een groot aantal bestanden. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.| Nee |
 | indeling | Als u bestanden wilt kopiëren als zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie opmaak in zowel de definitie van de invoer-als uitvoer gegevensset over.<br/><br/>Als u bestanden wilt parseren met een specifieke indeling, worden de volgende typen bestands indelingen ondersteund: *TextFormat*, *JsonFormat*, *Avro Format*, *OrcFormat*, *ParquetFormat*. Stel de eigenschap *type* onder indeling in op een van deze waarden. Zie de secties [tekst indeling](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-indeling](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-indeling, [Orc-indeling](supported-file-formats-and-compression-codecs-legacy.md#orc-format)en [Parquet-indeling](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) voor meer informatie. |Nee (alleen voor het scenario binair kopiëren) |
-| compressie | Geef het type en compressie niveau voor de gegevens op. Zie [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs-legacy.md#compression-support)voor meer informatie.<br/>Ondersteunde typen zijn: *gzip*, *Deflate*, *bzip2*en *ZipDeflate*.<br/>Ondersteunde niveaus zijn: *optimaal* en *snelst*. |No |
+| compressie | Geef het type en compressie niveau voor de gegevens op. Zie [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs-legacy.md#compression-support)voor meer informatie.<br/>Ondersteunde typen zijn: *gzip*, *Deflate*, *bzip2*en *ZipDeflate*.<br/>Ondersteunde niveaus zijn: *optimaal* en *snelst*. |Nee |
 
 >[!TIP]
 >Als u alle bestanden in een map wilt kopiëren, geeft u alleen **FolderPath** op.<br>Als u een enkel bestand met een opgegeven naam wilt kopiëren, geeft u **FolderPath** op met een map en een **Bestands** naam met een bestand.<br>Als u een subset van bestanden onder een map wilt kopiëren, geeft u **FolderPath** op met een deel van de map en de **Bestands naam** met het Joker teken filter.
@@ -483,13 +484,13 @@ Voor informatie over eigenschappen van opzoek activiteiten raadpleegt u [activit
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap *type* van de bron van de Kopieer activiteit moet zijn ingesteld op *HdfsSource*. |Yes |
-| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Als recursief is ingesteld op *True* en de Sink een archief op basis van bestanden is, wordt een lege map of submap niet gekopieerd of gemaakt bij de sink.<br/>Toegestane waarden zijn *True* (standaard) en *Onwaar*. | No |
-| distcpSettings | De eigenschappen groep wanneer u HDFS DistCp gebruikt. | No |
+| type | De eigenschap *type* van de bron van de Kopieer activiteit moet zijn ingesteld op *HdfsSource*. |Ja |
+| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Als recursief is ingesteld op *True* en de Sink een archief op basis van bestanden is, wordt een lege map of submap niet gekopieerd of gemaakt bij de sink.<br/>Toegestane waarden zijn *True* (standaard) en *Onwaar*. | Nee |
+| distcpSettings | De eigenschappen groep wanneer u HDFS DistCp gebruikt. | Nee |
 | resourceManagerEndpoint | Het eind punt van het garen van een andere bron | Ja, als DistCp wordt gebruikt |
 | tempScriptPath | Een mappad dat wordt gebruikt voor het opslaan van het tijdelijke DistCp-opdracht script. Het script bestand wordt gegenereerd door Data Factory en wordt verwijderd nadat de Kopieer taak is voltooid. | Ja, als DistCp wordt gebruikt |
-| distcpOptions | Er zijn aanvullende opties voor de opdracht DistCp. | No |
-| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig met het opslag archief kan worden verbonden. Geef alleen een waarde op als u de gelijktijdige verbinding met het gegevens archief wilt beperken. | No |
+| distcpOptions | Er zijn aanvullende opties voor de opdracht DistCp. | Nee |
+| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig met het opslag archief kan worden verbonden. Geef alleen een waarde op als u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee |
 
 **Voor beeld: HDFS-bron in Kopieer activiteit met behulp van DistCp**
 

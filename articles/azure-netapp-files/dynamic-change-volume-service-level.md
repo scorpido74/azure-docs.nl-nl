@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e19db61efbf93e3191d5780d07952f3d195c7a59
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e974fb51ac36083e6ed8934afaa7a3e36ab8c08e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533039"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923863"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Het serviceniveau van een volume dynamisch wijzigen
 
@@ -33,8 +33,7 @@ De capaciteits groep waarnaar u het volume wilt verplaatsen, moet al bestaan. De
 
 * Nadat het volume is verplaatst naar een andere capaciteits groep, hebt u geen toegang meer tot de vorige volume activiteiten logboeken en de metrische gegevens van het volume. Het volume wordt gestart met nieuwe activiteiten logboeken en metrische gegevens onder de nieuwe capaciteits groep.
 
-* Als u een volume verplaatst naar een capaciteits groep van een hoger service niveau (bijvoorbeeld van *Standard* naar *Premium* of *Ultra* service niveau), moet u Mini maal zeven dagen wachten voordat u het volume opnieuw kunt verplaatsen naar een capaciteits groep van een lager service niveau (bijvoorbeeld van *Ultra* naar *Premium* of *standaard*).  
-Deze wacht tijd is niet van toepassing als u het volume verplaatst naar een capaciteits groep met hetzelfde service niveau of lager service niveau.
+* Als u een volume verplaatst naar een capaciteits groep van een hoger service niveau (bijvoorbeeld van *Standard* naar *Premium* of *Ultra* service niveau), moet u Mini maal zeven dagen wachten voordat u dat volume *opnieuw* kunt verplaatsen naar een capaciteits groep van een lager service niveau (bijvoorbeeld verplaatsen van *Ultra* naar *Premium* of *Standard*).  
 
 ## <a name="register-the-feature"></a>De functie registreren
 

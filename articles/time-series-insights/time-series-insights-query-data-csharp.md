@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c794cfb5f0d652e25007131d9ca39fb73e2218e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98077209e8245753bb9dae79fafd6c6a10f3eafb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080672"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920718"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights gen1-omgeving met C #
 
@@ -75,10 +75,11 @@ U kunt de pakketten ook toevoegen met behulp van [NuGet 2.12 +](https://www.nuge
 
 ## <a name="c-sample-code"></a>C#-voorbeeld code
 
-[!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
+[!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Lees de [query-API-verwijzing](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)voor meer informatie over het uitvoeren van query's.
 
 - Lees hoe u [met de client-SDK verbinding maakt met een Java script-app](https://github.com/microsoft/tsiclient) om te time series Insights.
+Azure-samples/Azure-time-series-Insights/gen1-voor beeld/csharp-TSI-gen1-Sample/Program. cs

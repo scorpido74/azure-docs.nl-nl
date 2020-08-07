@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/04/2020
-ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/06/2020
+ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446530"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925784"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)en [Azure Automation](../../automation/automation-intro.md).
@@ -122,11 +122,19 @@ Vanaf versies die na augustus 2018 zijn uitgebracht, maken we de volgende wijzig
  - Ubuntu, Debian:`apt-get install -y python2`
  - SuSE`zypper install -y python2`
 
-Het uitvoer bare bestand python2 moet met de volgende opdracht worden gealiasd als ' python ':
+Het uitvoer bare bestand python2 moet met behulp van de volgende procedure worden gealiasd voor *python* :
 
-```
-alternatives --set python `which python2`
-```
+1. Voer de volgende opdracht uit om de huidige python-alias weer te geven als er een bestaat. Als dit het geval is, noteert u de prioriteit voor de volgende stap.
+ 
+    ```
+    sudo update-alternatives ––display python
+    ```
+
+2. Voer de volgende opdracht uit. Vervang door *\<priority\>* een waarde die groter is dan de prioriteit van een bestaande koppeling of 1 als er momenteel geen koppelingen bestaan.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
+    ```
 
 ### <a name="supported-distros"></a>Ondersteunde distributies
 
@@ -194,7 +202,7 @@ De volgende tabel bevat de proxy-en firewall configuratie-informatie die is vere
 |*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |
 |*.azure-automation.net |Poort 443 |Uitgaand|Ja |
 
-Zie [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. 
+Zie [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)voor informatie over de firewall die vereist is voor Azure Government. 
 
 Als u van plan bent de Azure Automation Hybrid Runbook Worker te gebruiken om verbinding te maken met de Automation-Service voor het gebruik van runbooks of beheer oplossingen in uw omgeving, moet deze toegang hebben tot het poort nummer en de Url's die worden beschreven in [uw netwerk configureren voor de Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 

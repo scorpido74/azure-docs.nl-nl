@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77187011"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921619"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API-ontwikkeling en-integratie
 
@@ -30,7 +30,7 @@ Voor delen van verplaatsen naar de expressRouteCrossConnections-resource:
 
 * Toekomstige verbeteringen voor ExpressRoute-partners worden beschikbaar gesteld op de ExpressRouteCrossConnection-resource.
 
-* Partners kunnen op [rollen gebaseerde Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview) Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
+* Partners kunnen [Azure RBAC (op rollen gebaseerd toegangs beheer)](https://docs.microsoft.com/azure/role-based-access-control/overview) Toep assen op de expressRouteCrossConnection-resource. Met deze besturings elementen kunt u machtigingen definiëren waarvoor gebruikers accounts de expressRouteCrossConnection-resource kunnen wijzigen en peering-configuraties toevoegen/bijwerken/verwijderen.
 
 * De expressRouteCrossConnection-resource beschrijft Api's die handig kunnen zijn bij het oplossen van problemen met ExpressRoute-verbindingen. Dit omvat de ARP-tabel, het samen vatting BGP-route tabel en de details van BGP-route tabellen. Deze functie wordt niet ondersteund door de klassieke implementatie-Api's.
 

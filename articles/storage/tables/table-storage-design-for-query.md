@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1d157e7d2880761fb6559723bdc1d6c34baffb09
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 28a15541b9d706095bcd3d6d361bd7c983f195df
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903201"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926243"
 ---
 # <a name="design-for-querying"></a>Ontwerp voor query's
 Table service oplossingen kunnen intensieve, schrijf intensief of een combi natie van beide worden gelezen. In dit artikel vindt u informatie over de zaken die u moet overwegen wanneer u uw Table service ontwerpt om Lees bewerkingen efficiënt te ondersteunen. Normaal gesp roken is een ontwerp dat lees bewerkingen efficiënt ondersteunt ook efficiënt voor schrijf bewerkingen. Er zijn echter extra aandachtspunten bij het ontwerpen ter ondersteuning van schrijf bewerkingen, zoals beschreven in het artikel [ontwerp voor het wijzigen van gegevens](table-storage-design-for-modification.md).
@@ -81,14 +81,14 @@ Er zijn aanvullende overwegingen in uw keuze aan **PartitionKey** die betrekking
 ## <a name="optimizing-queries-for-the-table-service"></a>Query's optimaliseren voor de Table service
 De Table service indexeert automatisch uw entiteiten met behulp van de waarden **PartitionKey** en **RowKey** in één geclusterde index. de reden hiervoor is dat het punt query's het meest efficiënt zijn om te gebruiken. Er zijn echter geen andere indexen dan die op de geclusterde index op de **PartitionKey** en **RowKey**.
 
-Veel modellen moeten voldoen aan de vereisten om het opzoeken van entiteiten op basis van meerdere criteria mogelijk te maken. U kunt bijvoorbeeld werknemers entiteiten zoeken op basis van e-mail, werk nemer-id of achternaam. De patronen die in de [tabel ontwerp patronen](table-storage-design-patterns.md) worden beschreven, zijn van deze typen vereisten en beschrijven manieren om het feit te omzeilen dat de Table service geen secundaire indexen levert:  
+Veel modellen moeten voldoen aan de vereisten om het opzoeken van entiteiten op basis van meerdere criteria mogelijk te maken. U kunt bijvoorbeeld werknemers entiteiten zoeken op basis van e-mail, werk nemer-ID of achternaam. De patronen die in de [tabel ontwerp patronen](table-storage-design-patterns.md) worden beschreven, zijn van deze typen vereisten en beschrijven manieren om het feit te omzeilen dat de Table service geen secundaire indexen levert:  
 
 * [Intra-Partition secundair index patroon](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) : Sla meerdere kopieën van elke entiteit op met behulp van verschillende **RowKey** -waarden (in dezelfde partitie) om snelle en efficiënte zoek acties en alternatieve Sorteer volgorden mogelijk te maken met behulp van verschillende **RowKey** -waarden.  
 * [Secundair index patroon tussen partities](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) : Sla meerdere kopieën van elke entiteit op met behulp van verschillende **RowKey** -waarden in afzonderlijke partities of in afzonderlijke tabellen om snelle en efficiënte zoek acties en alternatieve Sorteer volgorden mogelijk te maken met behulp van verschillende **RowKey** -waarden.  
 * [Patroon van index entiteiten](table-storage-design-patterns.md#index-entities-pattern) : behoud index entiteiten om efficiënte Zoek opdrachten in te scha kelen waarmee lijsten met entiteiten worden geretourneerd.  
 
 ## <a name="sorting-data-in-the-table-service"></a>Gegevens sorteren in de Table service
-De Table service entiteiten retourneert die in oplopende volg orde zijn gesorteerd op basis van **PartitionKey** en vervolgens op **RowKey**. Deze sleutels zijn teken reeks waarden en om ervoor te zorgen dat numerieke waarden correct worden gesorteerd, moet u ze converteren naar een vaste lengte en ze met nullen aanvullen. Als de waarde van de werk nemer-id die u als **RowKey** gebruikt, bijvoorbeeld een geheel getal is, moet u werk nemer-id **123** converteren naar **00000123**.  
+De Table service entiteiten retourneert die in oplopende volg orde zijn gesorteerd op basis van **PartitionKey** en vervolgens op **RowKey**. Deze sleutels zijn teken reeks waarden en om ervoor te zorgen dat numerieke waarden correct worden gesorteerd, moet u ze converteren naar een vaste lengte en ze met nullen aanvullen. Als de waarde van de werk nemer-ID die u als **RowKey** gebruikt, bijvoorbeeld een geheel getal is, moet u werk nemer-id **123** converteren naar **00000123**.  
 
 Veel toepassingen hebben vereisten voor het gebruik van gegevens die in verschillende orders zijn gesorteerd: bijvoorbeeld het sorteren van werk nemers op naam of het samen voegen van de datum. De volgende patronen bepalen hoe alternatieve Sorteer volgorden voor uw entiteiten worden aangegeven:  
 

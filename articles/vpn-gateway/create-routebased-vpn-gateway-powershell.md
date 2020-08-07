@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: op route gebaseerde gateway maken: Power shell'
-description: Snel een op route gebaseerd VPN Gateway maken met behulp van Power shell
+description: Meer informatie over het maken van een op route gebaseerde Azure VPN-gateway met behulp van Power shell. Een VPN-gateway gebruiken om verbinding te maken met uw on-premises netwerk.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5cd0971b04d1bad140cf3aac29a8c153977cfa62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e6c8ec12927afbabd6c6d41ab348bad9814e82c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987637"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923200"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Een op een route gebaseerde VPN-gateway maken met behulp van Power shell
 

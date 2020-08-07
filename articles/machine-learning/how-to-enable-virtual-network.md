@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 9d49ea99b97411e15d3f264057c865219e4d63c4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7684933a7671f1f3d573cb8195551a56ebc27947
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853497"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925818"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +79,7 @@ De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag type
 * Azure Blob
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
-* Azure SQL Database
+* Azure SQL-database
 
 ### <a name="add-resources-to-the-virtual-network"></a>Resources toevoegen aan het virtuele netwerk 
 
@@ -129,7 +129,7 @@ U kunt ook de standaard gegevens opslag per module negeren. Dit geeft u de contr
 
 U kunt zowel RBAC-als POSIX-toegangscontrole lijsten (Acl's) gebruiken om de toegang tot gegevens binnen een virtueel netwerk te beheren.
 
-Als u RBAC wilt gebruiken, voegt u de beheerde identiteit van de werk ruimte toe aan de rol [BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Zie [Op rollen gebaseerd toegangsbeheer](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control) voor meer informatie.
+Als u RBAC wilt gebruiken, voegt u de beheerde identiteit van de werk ruimte toe aan de rol [BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Zie voor meer informatie [Azure Role-based Access Control (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control).
 
 Als u Acl's wilt gebruiken, kunt u toegang krijgen tot de beheerde identiteit van de werk ruimte, net als bij andere beveiligings principes. Zie [toegangs beheer lijsten voor bestanden en mappen](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)voor meer informatie.
 
@@ -203,7 +203,7 @@ Azure Machine Learning voert standaard gegevens over geldigheid en referenties c
 - Azure Blob Storage
 - Azure-bestands share
 - PostgreSQL
-- Azure SQL Database
+- Azure SQL-database
 
 Met het volgende code voorbeeld maakt u een nieuwe Azure Blob-gegevens opslag en-sets `skip_validation=True` .
 
@@ -228,7 +228,7 @@ De syntaxis voor het overs laan van de validatie van de gegevensset is vergelijk
 - JSON 
 - Parquet
 - SQL
-- File
+- Bestand
 
 Met de volgende code wordt een nieuwe JSON-gegevensset en-sets gemaakt `validate=False` .
 

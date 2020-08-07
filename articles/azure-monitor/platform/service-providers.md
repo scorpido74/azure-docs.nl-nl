@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315442"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921087"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor logboeken voor service providers
 
@@ -40,7 +40,7 @@ Er zijn twee manieren om toegang te krijgen tot een Log Analytics werkruimte in 
 
 De voor delen van de gedistribueerde architectuur zijn:
 
-* De klant kan specifieke machtigings niveaus bevestigen via [Azure delegated resource management](../../lighthouse/concepts/azure-delegated-resource-management.md), of u kunt de toegang tot de logboeken beheren met behulp van hun eigen [op rollen gebaseerde toegang](../../role-based-access-control/overview.md).
+* De klant kan specifieke machtigings niveaus bevestigen via [Azure delegated resource management](../../lighthouse/concepts/azure-delegated-resource-management.md), of u kunt de toegang tot de logboeken beheren met hun eigen [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
 * Logboeken kunnen worden verzameld van alle typen resources, niet alleen voor de VM-gegevens op basis van de agent. Bijvoorbeeld Azure audit logs.
 * Elke klant kan verschillende instellingen voor hun werk ruimte hebben, zoals retentie en het afgetopten van gegevens.
 * Isolatie tussen klanten voor regelgevings-en nalevings.
@@ -90,4 +90,3 @@ Er zijn twee opties voor het implementeren van Logboeken op een centrale locatie
 * Samenvattings rapporten genereren met behulp van [Power bi](./powerbi.md)
 
 * Onboarding van klanten naar [Azure gedelegeerd resource beheer](../../lighthouse/concepts/azure-delegated-resource-management.md).
-

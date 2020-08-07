@@ -3,18 +3,18 @@ title: Problemen met SQL Server database back-up oplossen
 description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 879a7edab77bad9671bea51e0e496f3eca96ee81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4049cca317d254bd5ee120e47cedc4cd42300e8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538714"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926481"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
 Dit artikel bevat informatie over het oplossen van problemen met SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure.
 
-Zie [over SQL Server back-up in azure vm's](sql-support-matrix.md#feature-consideration-and-limitations)voor meer informatie over het back-upproces en de beperkingen.
+Zie [over SQL Server back-up in azure vm's](sql-support-matrix.md#feature-considerations-and-limitations)voor meer informatie over het back-upproces en de beperkingen.
 
 ## <a name="sql-server-permissions"></a>SQL Server machtigingen
 

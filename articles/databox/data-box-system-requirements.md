@@ -1,6 +1,6 @@
 ---
 title: Systeem vereisten voor Microsoft Azure Data Box | Microsoft Docs
-description: Meer informatie over de software- en netwerkvereisten voor de Azure Data Box
+description: Meer informatie over belang rijke systeem vereisten voor uw Azure Data Box en voor de clients die verbinding maken met de Data Box.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 496069ebf64340bc55f03df8dc15304b4888bec0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 71f499e1cdd7ccf22d90b21ce04299798978a828
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200308"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926600"
 ---
 # <a name="azure-data-box-system-requirements"></a>Systeem vereisten voor Azure Data Box
 

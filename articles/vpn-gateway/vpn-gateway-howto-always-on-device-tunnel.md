@@ -1,19 +1,19 @@
 ---
 title: Een tunnel voor altijd-op-VPN configureren
 titleSuffix: Azure VPN Gateway
-description: Stappen voor het configureren van de always on-VPN-tunnel voor VPN Gateway
+description: Meer informatie over het configureren van always on, waarmee een VPN-verbinding wordt bijgehouden op basis van triggers, zoals het aanmelden van gebruikers, het wijzigen van de netwerk status of het scherm apparaat actief.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6db48928ebac115c42c643d669f6541a3654a53a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24043576fca4910631ccddb3924303dd642c6842
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983118"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927046"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Een AlwaysOn-VPN-apparaattunnel configureren
 
