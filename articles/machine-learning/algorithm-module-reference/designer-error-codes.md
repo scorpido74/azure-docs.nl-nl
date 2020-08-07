@@ -5,17 +5,17 @@ description: Problemen met module fout codes in Azure Machine Learning Designer 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 8d044d8921db53d9d38ae93a68f22e0e5f414bf8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372481"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876917"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Uitzonde ringen en fout codes voor de ontwerp functie (preview-versie)
 
@@ -255,8 +255,8 @@ Als het model is getraind met een van de gespecialiseerde trainings modules, kop
 
 |Model type|Trainings module| Score module|
 |----|----|----|
-|een classificatie|[Model trainen](train-model.md) |[Score Model](score-model.md)|
-|een regressie model|[Model trainen](train-model.md) |[Score Model](score-model.md)|
+|een classificatie|[Trainingsmodel](train-model.md) |[Score Model](score-model.md)|
+|een regressie model|[Trainingsmodel](train-model.md) |[Score Model](score-model.md)|
 
 <!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
 | anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|

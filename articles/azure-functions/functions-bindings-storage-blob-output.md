@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: d7ba52c34c376139538a5d0bf7747cceb6b46cb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: d089cb1844356032b956110a7475d839031ef006
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056128"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849825"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Blob Storage-uitvoer binding voor Azure Functions
 
@@ -354,7 +354,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `blob` . |
 |**direction** | N.v.t. | Moet worden ingesteld op `out` voor een uitvoer binding. Uitzonde ringen worden vermeld in de sectie [gebruik](#usage) . |
-|**naam** | N.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt.  Instellen op `$return` om te verwijzen naar de functie retour waarde.|
+|**name** | N.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt.  Instellen op `$return` om te verwijzen naar de functie retour waarde.|
 |**programmapad** |**BlobPath** | Het pad naar de BLOB-container. |
 |**Combi** |**Verbinding**| De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met de naam `AzureWebJobsStorage` .<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, niet een [opslag account met alleen BLOB](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |N.v.t. | **Toegang** | Hiermee wordt aangegeven of u wilt lezen of schrijven. |
@@ -392,7 +392,7 @@ Raadpleeg het [uitvoer voorbeeld](#example) voor meer informatie.
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding |  Verwijzing |
+| Binding |  Naslaginformatie |
 |---|---|
 | Blob | [BLOB-fout codes](/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | BLOB, tabel, wachtrij |  [Opslag fout codes](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

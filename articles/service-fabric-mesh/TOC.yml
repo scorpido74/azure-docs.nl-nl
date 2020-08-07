@@ -45,7 +45,7 @@
       href: service-fabric-mesh-networks-and-gateways.md
     - name: Schaalbaarheid van service
       href: service-fabric-mesh-scalability.md
-    - name: Bewaking en diagnose
+    - name: Controle en diagnose
       href: service-fabric-mesh-monitoring-diagnostics.md
     - name: Status opslaan
       href: service-fabric-mesh-storing-state.md
@@ -82,12 +82,10 @@
     - name: Naslaginformatie over Service Fabric Mesh CLI
       href: /cli/azure/ext/mesh
     - name: Resource-REST API's voor Service Fabric-client
-      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
+      href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
     - name: Naslaginformatie over Service Fabric Maven CLI
       href: service-fabric-mesh-reference-maven.md
-    - name: Resource Manager-sjabloon
-      href: /azure/templates/microsoft.servicefabricmesh/allversions
-- name: Bronnen
+- name: Resources
   items:
     - name: Veelgestelde vragen
       href: service-fabric-mesh-faq.md

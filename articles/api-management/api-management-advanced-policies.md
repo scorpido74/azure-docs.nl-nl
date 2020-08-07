@@ -1,6 +1,6 @@
 ---
 title: Geavanceerde beleids regels voor Azure API Management | Microsoft Docs
-description: Meer informatie over het geavanceerde beleid dat beschikbaar is voor gebruik in azure API Management.
+description: Meer informatie over het geavanceerde beleid dat beschikbaar is voor gebruik in azure API Management. Bekijk voor beelden en Bekijk extra beschik bare resources.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 3843ff986fdc37c37690bee9616861f16a334c67
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243729"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851678"
 ---
 # <a name="api-management-advanced-policies"></a>API Management advanced policies (Geavanceerde beleidsregels API Management)
 
@@ -253,9 +253,9 @@ Dit beleid op bewerking niveau stuurt geen aanvragen door naar de back-end-servi
 | Kenmerk                                     | Beschrijving                                                                                                                                                                                                                                                                                                    | Vereist | Standaard |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | timeout = "geheel getal"                             | De hoeveelheid tijd in seconden die moet worden gewacht voordat de HTTP-antwoord headers worden geretourneerd door de back-end-service voordat een time-outfout optreedt. De minimum waarde is 0 seconden. Waarden die groter zijn dan 240 seconden, worden mogelijk niet geaccepteerd omdat de onderliggende netwerk infrastructuur na deze tijd niet-actieve verbindingen kan verwijderen. | Nee       | Geen    |
-| follow-redirects = "False &#124; True"          | Hiermee geeft u op of omleidingen van de back-end-service worden gevolgd door de gateway of worden geretourneerd naar de aanroeper.                                                                                                                                                                                                    | Nee       | false   |
-| buffer-Request-Body = "False &#124; True"       | Wanneer de aanvraag is ingesteld op ' True ', wordt de buffer opgeslagen en wordt deze opnieuw gebruikt bij [opnieuw proberen](api-management-advanced-policies.md#Retry).                                                                                                                                                                                               | Nee       | false   |
-| failover-on-error-status-code = "False &#124; True" | Als deze para graaf is ingesteld op ' True ' [, wordt er een fout melding](api-management-error-handling-policies.md) weer voor antwoord codes in het bereik van 400 tot 599.                                                                                                                                                                      | Nee       | false   |
+| follow-redirects = "False &#124; True"          | Hiermee geeft u op of omleidingen van de back-end-service worden gevolgd door de gateway of worden geretourneerd naar de aanroeper.                                                                                                                                                                                                    | Nee       | onjuist   |
+| buffer-Request-Body = "False &#124; True"       | Wanneer de aanvraag is ingesteld op ' True ', wordt de buffer opgeslagen en wordt deze opnieuw gebruikt bij [opnieuw proberen](api-management-advanced-policies.md#Retry).                                                                                                                                                                                               | Nee       | onjuist   |
+| failover-on-error-status-code = "False &#124; True" | Als deze para graaf is ingesteld op ' True ' [, wordt er een fout melding](api-management-error-handling-policies.md) weer voor antwoord codes in het bereik van 400 tot 599.                                                                                                                                                                      | Nee       | onjuist   |
 
 ### <a name="usage"></a>Gebruik
 
@@ -680,7 +680,7 @@ In dit voor beeld ziet u één manier om een referentie token te verifiëren met
 | mode = "teken reeks"                   | Hiermee wordt bepaald of dit een nieuwe aanvraag of een kopie van de huidige aanvraag is. In de modus uitgaand, wordt in modus = kopiëren de hoofd tekst van de aanvraag niet geïnitialiseerd.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nee       | Nieuw      |
 | Response-variabele-name = "string" | De naam van de context variabele waarmee een antwoord object wordt ontvangen. Als de variabele niet bestaat, wordt deze gemaakt na een geslaagde uitvoering van het beleid en wordt deze toegankelijk via de [`context.Variable`](api-management-policy-expressions.md#ContextVariables) verzameling.                                                                                                                                                                                                                                                                                                                          | Ja      | N.v.t.      |
 | timeout = "geheel getal"               | Het time-outinterval in seconden voordat de aanroep van de URL mislukt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nee       | 60       |
-| negeren-fout                    | Indien waar en de aanvraag resulteert in een fout:<br /><br /> -Als de reactie variabele-name is opgegeven, bevat deze een null-waarde.<br />-Als Response-variabele-name niet is opgegeven, context. De aanvraag wordt niet bijgewerkt.                                                                                                                                                                                                                                                                                                                                                                                   | Nee       | false    |
+| negeren-fout                    | Indien waar en de aanvraag resulteert in een fout:<br /><br /> -Als de reactie variabele-name is opgegeven, bevat deze een null-waarde.<br />-Als Response-variabele-name niet is opgegeven, context. De aanvraag wordt niet bijgewerkt.                                                                                                                                                                                                                                                                                                                                                                                   | Nee       | onjuist    |
 | naam                            | Hiermee geeft u de naam van de in te stellen header op.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | N.v.t.      |
 | exists-actie                   | Hiermee geeft u op welke actie moet worden ondernomen wanneer de header al is opgegeven. Dit kenmerk moet een van de volgende waarden hebben.<br /><br /> -Override: vervangt de waarde van de bestaande header.<br />-Skip-vervangt niet de bestaande waarde van de header.<br />-append-de waarde wordt toegevoegd aan de bestaande waarde van de header.<br />-delete: verwijdert de header uit de aanvraag.<br /><br /> Als de instelling is ingesteld op het `override` Aanmelden van meerdere vermeldingen met dezelfde naam, wordt de header ingesteld op basis van alle vermeldingen (die meerdere keren worden vermeld). in het resultaat worden alleen waarden weer gegeven die in de lijst staan. | Nee       | overschrijven |
 
@@ -953,7 +953,7 @@ Het `trace` beleid voegt een aangepaste tracering toe aan de API-Inspector-uitvo
 | Kenmerk | Beschrijving                                                                                                               | Vereist | Standaard |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | Letterlijke teken reeks die betekenisvol is voor de traceer viewer en het opgeven van de bron van het bericht.                                   | Ja      | N.v.t.     |
-| ernst  | Hiermee geeft u het Ernst niveau van de tracering. Toegestane waarden zijn `verbose` , `information` , `error` (van laagste naar hoogste). | Nee       | Verbose |
+| ernst  | Hiermee geeft u het Ernst niveau van de tracering. Toegestane waarden zijn `verbose` , `information` , `error` (van laagste naar hoogste). | Nee       | Uitgebreid |
 | naam      | De naam van de eigenschap.                                                                                                     | Ja      | N.v.t.     |
 | waarde     | Waarde van de eigenschap.                                                                                                    | Ja      | N.v.t.     |
 

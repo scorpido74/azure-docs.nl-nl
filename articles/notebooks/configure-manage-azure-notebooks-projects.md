@@ -3,13 +3,13 @@ title: Azure Notebooks preview configureren en beheren
 description: Meer informatie over het beheren van meta gegevens van project, project bestanden, de omgeving van het project en de installatie stappen via zowel de Azure Notebooks gebruikers interface als rechtstreekse terminal toegang.
 ms.topic: how-to
 ms.date: 02/28/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 53acf7c916b402e291b9779948579761e79179ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85834077"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852800"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Projecten beheren en configureren in Azure Notebooks preview
 
@@ -57,7 +57,7 @@ In het project dashboard wordt de inhoud van het map-systeem van het project wee
 
 De **+ nieuwe** opdracht (sneltoets: n) maakt nieuwe bestanden of mappen. Wanneer u de opdracht gebruikt, selecteert u eerst het type item dat u wilt maken:
 
-| Item type | Description | Opdracht gedrag |
+| Item type | Beschrijving | Opdracht gedrag |
 | --- | --- | --- |
 | **Notebook** | Een Jupyter-notebook | Hiermee wordt een pop-upvenster weer gegeven waarin u de bestands naam en-taal van het notitie blok opgeeft. |
 | **Map** | Een submap | Hiermee maakt u een bewerkings veld in de bestands lijst van het project waarin u de mapnaam opgeeft. |
@@ -74,15 +74,15 @@ Elk item in de bestands lijst van het project bevat opdrachten via een context m
 
 ![Opdrachten in het context menu van een bestand](media/project-file-commands.png)
 
-| Opdracht | Sneltoets | Bewerking |
+| Opdracht | Sneltoets | Actie |
 | --- | --- | --- |
-| Uitvoeren | r (of klik) | Voert een notitieblok bestand uit. Andere bestands typen worden geopend voor weer gave.  |
+| Voer | r (of klik) | Voert een notitieblok bestand uit. Andere bestands typen worden geopend voor weer gave.  |
 | Koppeling kopiëren | y | Kopieert een koppeling naar het bestand naar het klem bord. |
 | Uitvoeren in Jupyter Lab | v | Voert een notitie blok uit in Jjupyterlab. Dit is een meer ontwikkel gerichte interface dan Jupyter normaal gesp roken. |
 | Preview | p | Hiermee opent u een HTML-voor beeld van het bestand. voor notebooks is de preview een alleen-lezen rendering van het notitie blok. Zie de sectie [Preview](#preview) voor meer informatie. |
 | Bestand bewerken | i | Hiermee opent u het bestand om het te bewerken. |
 | Downloaden | d | Hiermee downloadt u een zip-bestand dat het bestand of de inhoud van een map bevat. |
-| Naam wijzigen | a | Vraagt om een nieuwe naam voor het bestand of de map. |
+| Naam wijzigen | een | Vraagt om een nieuwe naam voor het bestand of de map. |
 | Verwijderen | x | Vraagt om bevestiging en verwijdert het bestand definitief uit het project. Verwijderingen kunnen niet ongedaan worden gemaakt. |
 | Verplaatsen | m | Hiermee verplaatst u een bestand naar een andere map in hetzelfde project. |
 
@@ -92,11 +92,11 @@ Een voor beeld van een bestand of notitie blok is een alleen-lezen weer gave van
 
 De voorbeeld pagina ondersteunt meerdere werkbalk opdrachten met sneltoetsen:
 
-| Opdracht | Sneltoets | Bewerking |
+| Opdracht | Sneltoets | Actie |
 | --- | --- | --- |
 | Delen | s | Hier wordt de pop-up weer gegeven van waaruit u een koppeling kunt verkrijgen, delen met sociale media, HTML ophalen voor insluiten en een e-mail verzendt. |
 | Klonen | c  | Kopieer het notitie blok naar uw account. |
-| Uitvoeren | r | Voert het notitie blok uit als u dit nog niet hebt toegestaan. |
+| Voer | r | Voert het notitie blok uit als u dit nog niet hebt toegestaan. |
 | Downloaden | d | Hiermee downloadt u een kopie van het notitie blok. |
 
 ## <a name="configure-the-project-environment"></a>De project omgeving configureren

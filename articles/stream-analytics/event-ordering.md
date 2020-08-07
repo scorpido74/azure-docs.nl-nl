@@ -6,13 +6,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/12/2019
-ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/06/2020
+ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044563"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901688"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Beleid voor het best Ellen van gebeurtenissen voor Azure Stream Analytics configureren
 
@@ -75,6 +75,11 @@ Wanneer meerdere partities uit dezelfde invoer stroom worden gecombineerd, is de
 Dit bericht geeft aan dat ten minste één partitie in uw invoer leeg is en dat de uitvoer wordt vertraagd door de drempel waarde voor de late aankomst. U kunt dit oplossen door het volgende te doen:  
 1. Zorg ervoor dat alle partities van uw event hub/IoT Hub invoer ontvangen. 
 2. Gebruik de component Partition by PartitionID in uw query. 
+
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Waarom kan ik een vertraging van vijf seconden zien, zelfs wanneer mijn beleid voor late ontvangst is ingesteld op 0?
+Dit gebeurt wanneer er een invoer partitie is die nooit een invoer heeft ontvangen. U kunt de invoer metrieken per partitie controleren om dit gedrag te valideren. 
+
+Wanneer een partitie geen gegevens bevat voor meer dan de geconfigureerde drempel waarde voor de latere aankomst, wordt door stream Analytics een toepassings tempel voor de toepassing voor het onderwerp van de gebeurtenis volgorde beschreven. Hiervoor is een geschatte aankomst tijd vereist. Als de partitie nooit gegevens bevat, schat de stream Analytics de tijd van aankomst als *lokale time-5 seconden*. Vanwege deze partities zou nooit gegevens hadden kunnen een watermerk vertraging van vijf seconden worden weer gegeven.  
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Overwegingen over tijdsverwerking](stream-analytics-time-handling.md)

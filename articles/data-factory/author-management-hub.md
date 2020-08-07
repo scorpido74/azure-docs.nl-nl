@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84346043"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851980"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Beheer hub in Azure Data Factory
 
@@ -57,6 +57,12 @@ Als u de gegenereerde Resource Manager-sjabloon parameters wilt overschrijven wa
 Triggers bepalen wanneer een pijplijn uitvoering moet worden gestart. Momenteel kunnen actieve triggers worden gebruikt voor een muur Clock, een periodiek interval uitvoeren of afhankelijk zijn van een gebeurtenis. Meer informatie vindt u in de [uitvoering van triggers](concepts-pipeline-execution-triggers.md#trigger-execution). In de Management hub kunt u de huidige status van een trigger maken, bewerken, verwijderen of weer geven.
 
 ![Aangepaste para meters beheren](media/author-management-hub/management-hub-triggers.png)
+
+### <a name="global-parameters"></a>Globale parameters
+
+Globale para meters zijn constanten over een data factory die kunnen worden gebruikt door een pijp lijn in een wille keurige expressie. Meer informatie vindt u in [algemene para meters](author-global-parameters.md).
+
+![Algemene para meters maken](media/author-global-parameters/create-global-parameter-3.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

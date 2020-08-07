@@ -1,6 +1,6 @@
 ---
 title: Cache beleid voor Azure API Management | Microsoft Docs
-description: Meer informatie over de cache beleidsregels die beschikbaar zijn voor gebruik in azure API Management.
+description: Meer informatie over de cache beleidsregels die beschikbaar zijn voor gebruik in azure API Management. Bekijk voor beelden en Bekijk extra beschik bare resources.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: e58cd8f19ab98601d37df185656038dbd5679eb2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fc5298b85af4eaa6cd84c871d38ea1c773abe0b4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255044"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851593"
 ---
 # <a name="api-management-caching-policies"></a>API Management-cachebeleid
 In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
@@ -110,10 +110,10 @@ Zie [beleids expressies](api-management-policy-expressions.md) en [context varia
 
 | Naam                           | Beschrijving                                                                                                                                                                                                                                                                                                                                                 | Vereist | Standaard           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| toestaan: private-Response-caching | Als deze instelling `true` is ingesteld op, staat het opslaan van aanvragen in de cache toe die een autorisatie-header bevatten.                                                                                                                                                                                                                                                                        | Nee       | false             |
+| toestaan: private-Response-caching | Als deze instelling `true` is ingesteld op, staat het opslaan van aanvragen in de cache toe die een autorisatie-header bevatten.                                                                                                                                                                                                                                                                        | Nee       | onjuist             |
 | cache-type               | U kunt kiezen uit de volgende waarden van het kenmerk:<br />- `internal`de ingebouwde API Management-cache gebruiken<br />- `external`Als u de externe cache wilt gebruiken zoals wordt beschreven in [een externe Azure-cache gebruiken voor redis in Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Als u een externe cache wilt gebruiken als deze is geconfigureerd of als de interne cache anders. | Nee       | `prefer-external` |
 | downstream-caching-type        | Dit kenmerk moet worden ingesteld op een van de volgende waarden.<br /><br /> -geen-downstream-caching is niet toegestaan.<br />-Private-downstream-caching is toegestaan.<br />-openbaar-privé en gedeeld downstream-caching is toegestaan.                                                                                                          | Nee       | geen              |
-| moet opnieuw valideren                | Wanneer downstream-caching is ingeschakeld, wordt met dit kenmerk de `must-revalidate` Cache-Control-instructie in de gateway-antwoorden in-of uitgeschakeld.                                                                                                                                                                                                                      | Nee       | true              |
+| moet opnieuw valideren                | Wanneer downstream-caching is ingeschakeld, wordt met dit kenmerk de `must-revalidate` Cache-Control-instructie in de gateway-antwoorden in-of uitgeschakeld.                                                                                                                                                                                                                      | Nee       | waar              |
 | variëren per ontwikkelaar              | Instellen op `true` het opslaan van antwoorden per [abonnements sleutel](./api-management-subscriptions.md).                                                                                                                                                                                                                                                                                                         | Ja      |         Niet waar          |
 | variëren per ontwikkelaar-groepen       | Instellen op `true` het opslaan van antwoorden per [gebruikers groep](./api-management-howto-create-groups.md).                                                                                                                                                                                                                                                                                                             | Ja      |       Niet waar            |
 

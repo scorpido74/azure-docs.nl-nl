@@ -9,13 +9,13 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.custom: tracking-python
-ms.openlocfilehash: a7dc0fcae9a6fea789d30bac10511007454ecc5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-python
+ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503994"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849095"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Synapse Studio-notebooks maken, ontwikkelen en onderhouden in azure Synapse Analytics
 
@@ -71,7 +71,7 @@ U kunt de primaire taal voor nieuwe toegevoegde cellen instellen in de vervolg k
 
 U kunt meerdere talen gebruiken in één notebook door de juiste Magic-opdracht voor de taal aan het begin van een cel op te geven. De volgende tabel bevat de Magic-opdrachten om te scha kelen tussen talen in cellen.
 
-|Opdracht Magic |Taal | Description |  
+|Opdracht Magic |Taal | Beschrijving |  
 |---|------|-----|
 |%% pyspark| Python | Voer een **python** -query uit op Spark-context.  |
 |% Spark| Scala | Voer een **scala** -query uit op Spark-context.  |  
@@ -119,7 +119,7 @@ De IntelliSense-functies bevinden zich op verschillende niveaus van de verval da
 |PySpark (python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Spark (scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
-|.NET voor Spark (C#)|Yes|-|-|-|-|-|-|-|
+|.NET voor Spark (C#)|Ja|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Tekst cel opmaken met werkbalk knoppen
 
@@ -398,7 +398,7 @@ Net als Jupyter-notebooks hebben Azure Synapse Studio-notebooks een modale gebru
 
 Met behulp van de volgende sneltoetsen kunt u eenvoudig navigeren en code uitvoeren in azure Synapse-notebooks.
 
-| Bewerking |Synapse Studio-notebook-snelkoppelingen  |
+| Actie |Synapse Studio-notebook-snelkoppelingen  |
 |--|--|
 |Voer de huidige cel uit en selecteer hieronder | SHIFT + ENTER |
 |De huidige cel uitvoeren en onder invoegen | ALT + ENTER |
@@ -417,7 +417,7 @@ Met behulp van de volgende sneltoetsen kunt u eenvoudig navigeren en code uitvoe
 
 Met de volgende sneltoetsen kunt u gemakkelijker code in azure Synapse-notebooks navigeren en uitvoeren in de bewerkings modus.
 
-| Bewerking |Synapse Studio-notebook-snelkoppelingen  |
+| Actie |Synapse Studio-notebook-snelkoppelingen  |
 |--|--|
 |Cursor omhoog verplaatsen | Omhoog |
 |Cursor omlaag verplaatsen|Omlaag|

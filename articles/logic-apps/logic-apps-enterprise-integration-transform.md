@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072425"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832736"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kaarten maken die XML transformeren tussen indelingen in Azure Logic Apps met Enterprise Integration Pack
 
@@ -36,7 +36,7 @@ Nadat u de trans formatie/toewijzing hebt geüpload in uw integratie account, ku
 
 Nu u de vereiste onderdelen hebt gemaakt, is het tijd om uw logische app te maken:  
 
-1. Maak een logische app en [koppel deze aan uw integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md "Meer informatie over het koppelen van een integratie account aan een logische app") dat de kaart bevat.
+1. Maak een logische app en [koppel deze aan uw integratie account](./logic-apps-enterprise-integration-create-integration-account.md "Meer informatie over het koppelen van een integratie account aan een logische app") dat de kaart bevat.
 2. Een **aanvraag** trigger toevoegen aan uw logische app  
    ![Scherm afbeelding van de vervolg keuzelijst ' door micro soft beheerde Api's weer geven ' terwijl de trigger voor de aanvraag is geselecteerd. De vervolg keuzelijst bevindt zich in een logische app die is gemaakt met behulp van de Visual Studio Bedrijfsintegratie SDK.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Voeg eerst **een actie toevoegen** toe om de **trans formatie XML-** actie te selecteren   
@@ -136,4 +136,3 @@ Standaard begint de reactie van de trans formatie met de byte order Mark (BOM). 
 ## <a name="learn-more"></a>Meer informatie
 * [Meer informatie over de Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack")  
 * [Meer informatie over Maps](../logic-apps/logic-apps-enterprise-integration-maps.md "Meer informatie over Enter prise Integration Maps")  
-

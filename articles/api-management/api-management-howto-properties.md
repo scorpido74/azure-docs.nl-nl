@@ -1,6 +1,6 @@
 ---
 title: Benoemde waarden gebruiken in azure API Management-beleid
-description: Meer informatie over het gebruik van benoemde waarden in azure API Management-beleid.
+description: Meer informatie over het gebruik van benoemde waarden in azure API Management-beleid. Benoemde waarden kunnen letterlijke teken reeksen en beleids expressies bevatten.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243474"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852188"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Benoemde waarden gebruiken in azure API Management-beleid
 
@@ -28,8 +28,8 @@ Elk API Management service-exemplaar heeft een verzameling sleutel-waardeparen, 
 | Kenmerk      | Type            | Description                                                                                                                            |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | tekenreeks          | Gebruikt voor het verwijzen naar de benoemde waarde in beleids regels. Een teken reeks van 1 tot 256 tekens. Alleen letters, cijfers, punten en streepjes zijn toegestaan. |
-| `Value`        | tekenreeks          | Werkelijke waarde. Mag niet leeg zijn of alleen uit spaties bestaan. Maxi maal 4096 tekens lang.                                        |
-| `Secret`       | booleaans         | Hiermee wordt bepaald of de waarde een geheim is en moet worden versleuteld of niet.                                                               |
+| `Value`        | string          | Werkelijke waarde. Mag niet leeg zijn of alleen uit spaties bestaan. Maxi maal 4096 tekens lang.                                        |
+| `Secret`       | boolean         | Hiermee wordt bepaald of de waarde een geheim is en moet worden versleuteld of niet.                                                               |
 | `Tags`         | tekenreeksmatrix | Hiermee wordt de lijst met benoemde waarden gefilterd. Maxi maal 32 tags.                                                                                    |
 
 ![Benoemde waarden](./media/api-management-howto-properties/named-values.png)
@@ -39,7 +39,7 @@ Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](./api-
 | Naam       | Waarde                      | Geheim | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
 | Waarde      | 42                         | Niet waar  | cruciale cijfers |
-| Referentie | ••••••••••••••••••••••     | Waar   | security      |
+| Referentie | ••••••••••••••••••••••     | True   | security      |
 | Expression | @ (DateTime. Now. ToString ()) | Niet waar  |               |
 
 > [!NOTE]

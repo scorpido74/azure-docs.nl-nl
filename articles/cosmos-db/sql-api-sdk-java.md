@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 06/03/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b8cc0d44c654bd7047bac462ce98126fb4a27334
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: f36a4b223c12662eec1369bd4ec1a1175e459198
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541665"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851780"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "87541665"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
@@ -94,7 +96,7 @@ Dit is de oorspronkelijke Azure Cosmos DB Java SDK v2 voor de SQL-API die synchr
 ### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * Opgeloste fout in PartitionKey voor hash v2.
 
-### <a name="212"></a><a name="2.1.2"></a>2.1.2
+### <a name="212"></a><a name="2.1.2"></a>omschreven
 * Er is ondersteuning toegevoegd voor samengestelde indexen.
 * Er is een probleem opgelost in Global Endpoint Manager om het vernieuwen af te dwingen.
 * Er is een fout opgelost voor upsert met voor waarden in de directe modus.
@@ -281,7 +283,7 @@ Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen v
 | [2.2.2](#2.2.2) |Apr 05, 2019 |--- |
 | [2.2.0](#2.2.0) |27 mrt, 2019 |--- |
 | [2.1.3](#2.1.3) |13 maart 2019 |--- |
-| [2.1.2](#2.1.2) |9 maart 2019 |--- |
+| [omschreven](#2.1.2) |9 maart 2019 |--- |
 | [2.1.1](#2.1.1) |13 december 2018 |--- |
 | [2.1.0](#2.1.0) |20 november 2018 |--- |
 | [2.0.0](#2.0.0) |Sept 21, 2018 |--- |
@@ -326,6 +328,6 @@ Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen v
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.
 

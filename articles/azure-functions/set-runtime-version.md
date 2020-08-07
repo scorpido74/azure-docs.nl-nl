@@ -3,12 +3,12 @@ title: Azure Functions runtime-versies instellen
 description: Azure Functions ondersteunt meerdere versies van de runtime. Meer informatie over het opgeven van de runtime versie van een functie-app die wordt gehost in Azure.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 3d4e40af1ba1e28bc9e9a433872e1315ffbe7747
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74ee0d382dcd468aed118a7de330eef95b329402
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079652"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830866"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions runtime-versies instellen
 
@@ -16,12 +16,12 @@ Een functie-app wordt uitgevoerd op een specifieke versie van de Azure Functions
 
 ## <a name="automatic-and-manual-version-updates"></a>Automatische en hand matige versie-updates
 
-Met Azure Functions kunt u een specifieke versie van de runtime richten met behulp van de `FUNCTIONS_EXTENSION_VERSION` toepassings instelling in een functie-app. De functie-app wordt op de opgegeven primaire versie bewaard totdat u expliciet naar een nieuwe versie gaat verplaatsen.
+Met Azure Functions kunt u een specifieke versie van de runtime richten met behulp van de `FUNCTIONS_EXTENSION_VERSION` toepassings instelling in een functie-app. De functie-app wordt op de opgegeven primaire versie bewaard totdat u expliciet naar een nieuwe versie gaat verplaatsen. Als u alleen de primaire versie opgeeft, wordt de functie-app automatisch bijgewerkt naar nieuwe secundaire versies van de runtime wanneer deze beschikbaar komen. Nieuwe secundaire versies mogen geen belang rijke wijzigingen introduceren. 
 
-Als u alleen de primaire versie opgeeft, wordt de functie-app automatisch bijgewerkt naar nieuwe secundaire versies van de runtime wanneer deze beschikbaar komen. Nieuwe secundaire versies mogen geen belang rijke wijzigingen introduceren. Als u een secundaire versie opgeeft (bijvoorbeeld ' 2.0.12345 '), wordt de functie-app vastgemaakt aan die specifieke versie totdat u deze expliciet wijzigt.
+Als u een secundaire versie opgeeft (bijvoorbeeld ' 2.0.12345 '), wordt de functie-app vastgemaakt aan die specifieke versie totdat u deze expliciet wijzigt. Oudere secundaire versies worden regel matig verwijderd uit de productie omgeving. Als dit gebeurt, wordt de functie-app uitgevoerd op de nieuwste versie in plaats van de versie die is ingesteld in `FUNCTIONS_EXTENSION_VERSION` . Daarom moet u snel problemen met uw functie-app oplossen waarvoor een specifieke secundaire versie is vereist, zodat u in plaats daarvan de primaire versie kunt instellen. Verwijderingen van de secundaire versie worden aangekondigd in [app service aankondigingen](https://github.com/Azure/app-service-announcements/issues).
 
 > [!NOTE]
-> Als u vastmaakt aan een specifieke versie van Azure Functions en vervolgens probeert te publiceren naar Azure met Visual Studio, wordt er een dialoog venster weer gegeven waarin u wordt gevraagd om bij te werken naar de nieuwste versie of de publicatie te annuleren. U kunt dit voor komen door de `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` eigenschap in het bestand toe te voegen `.csproj` .
+> Als u vastmaakt aan een specifieke primaire versie van Azure Functions en vervolgens probeert te publiceren naar Azure met behulp van Visual Studio, wordt er een dialoog venster weer gegeven waarin u wordt gevraagd om bij te werken naar de meest recente versie of om de publicatie te annuleren. U kunt dit voor komen door de `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` eigenschap in het bestand toe te voegen `.csproj` .
 
 Wanneer een nieuwe versie openbaar beschikbaar is, kunt u met een prompt in de portal naar de gewenste versie gaan. Nadat u naar een nieuwe versie hebt verplaatst, kunt u de `FUNCTIONS_EXTENSION_VERSION` toepassings instelling altijd gebruiken om terug te gaan naar een vorige versie.
 

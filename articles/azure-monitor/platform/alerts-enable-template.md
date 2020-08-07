@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 380a1366994e970c208a6c3ad505414cb12bc0c2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324094"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849016"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Een klassieke waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
+
 > [!WARNING]
-> 
-> In dit artikel wordt beschreven hoe u **klassieke metrische waarschuwingen** maakt met behulp van Resource Manager-sjablonen. Klassieke waarschuwingen werden in augustus 2019 buiten gebruik gesteld en zijn in juni 2020 volledig afgeschaft. U kunt geen nieuwe klassieke open bare Azure-waarschuwingen maken. Sommige regionale versies van Azure hebben mogelijk nog steeds de optie, maar we raden u aan in plaats daarvan [nieuwe metrische waarschuwingen](./alerts-metric-near-real-time.md) te maken met behulp van sjablonen, indien dit mogelijk is. In [dit artikel](alerts-metric-create-templates.md) vindt u meer informatie.
+> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](./alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](./monitoring-classic-retirement.md), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen.
 >
 
 In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) kunt gebruiken voor het configureren van klassieke Azure-waarschuwingen. Hierdoor kunt u automatisch waarschuwingen instellen voor uw resources wanneer ze worden gemaakt om ervoor te zorgen dat alle resources correct worden gecontroleerd.

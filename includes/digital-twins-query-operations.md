@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 82639a19ef728c22a74381d24754992e0f647976
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6dfddd9179569075abdbd94b6c1afa719db9ba1e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562464"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905585"
 ---
 ## <a name="query-language-features"></a>Functies voor query taal
 
@@ -30,7 +30,7 @@ Digitale apparaatdubbels ophalen op basis van hun...
 
 U kunt uw query's nog verder verbeteren met de volgende bewerkingen:
 * Apparaatdubbels ophalen via meerdere relatie typen ( `JOIN` query's). 
-  - Er gelden beperkingen voor het toegestane aantal `JOIN` s (één niveau voor de open bare preview).
+  - Tijdens de preview zijn Maxi maal vijf niveaus `JOIN` toegestaan.
 * Alleen de bovenste query resultaten selecteren ( `Select TOP` operator)
 * Scalaire functies gebruiken: `IS_BOOL` , `IS_DEFINED` , `IS_NULL` , `IS_NUMBER` , `IS_OBJECT` , `IS_PRIMITIVE` , `IS_STRING` , `STARTSWITH` , `ENDSWITH` .
 * Vergelijkings operatoren voor query's gebruiken: `IN` / `NIN` , `=` , `!=` , `<` , `>` , `<=` , `>=` .

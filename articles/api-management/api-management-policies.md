@@ -1,6 +1,6 @@
 ---
 title: Azure API Management-beleid | Microsoft Docs
-description: Meer informatie over het beschikbare beleid voor gebruik in Azure API Management.
+description: Meer informatie over het beschikbare beleid voor gebruik in Azure API Management. Met beleid kan de uitgever het API-gedrag via de configuratie wijzigen.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 069fc95d226e4417bb650b6092a7d00953f69e8d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4cdd9b7ace107d09ec14b23e02c56d2b13f264e6
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252842"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905666"
 ---
 # <a name="api-management-policies"></a>API Management-beleidsregels
 Deze sectie bevat een referentie voor het volgende API Management-beleid. Zie [beleid in API Management](api-management-howto-policies.md)voor meer informatie over het toevoegen en configureren van beleid.  

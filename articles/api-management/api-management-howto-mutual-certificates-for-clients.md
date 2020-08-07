@@ -1,7 +1,7 @@
 ---
 title: Api's beveiligen met verificatie op basis van client certificaten in API Management
 titleSuffix: Azure API Management
-description: Meer informatie over het beveiligen van de toegang tot Api's met behulp van client certificaten
+description: Meer informatie over het beveiligen van de toegang tot Api's met behulp van client certificaten. U kunt beleids expressies gebruiken om binnenkomende certificaten te valideren.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: e7be1e90d10a84465d6416f2c13a6e4b6855077b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 19e0d741d959eba704f26e7e8f7b5d311aa77775
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250070"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904856"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API's beveiligen met behulp van verificatie via clientcertificaten in API Management
 

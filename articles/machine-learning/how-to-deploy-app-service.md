@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: faa2945b27e083865acb506f30c4d79ef65f3ca0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 04ae1788dfd3050fdd2042f88a8e1829e9063ad3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317855"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851355"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ Voordat u implementeert, moet u definiëren wat er nodig is om het model als een
     >
     > Een ander alternatief dat kan worden gebruikt voor uw scenario is [batch voorspellingen](how-to-use-parallel-run-step.md). Dit biedt ook toegang tot gegevens opslag in de score.
 
-    Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
+    Zie [Modellen implementeren met Azure Machine Learning](how-to-deploy-and-where.md) voor meer informatie over invoerscripts.
 
 * **Afhankelijkheden**, zoals hulp scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding
 

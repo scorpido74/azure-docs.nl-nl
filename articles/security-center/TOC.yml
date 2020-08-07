@@ -63,6 +63,8 @@
           href: security-center-policy-definitions.md
         - name: Aanbevelingen gebruiken om de beveiliging te verbeteren
           href: security-center-using-recommendations.md
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Bescherming tegen bedreiging en beveiligingswaarschuwingen
       items:
         - name: Overzicht van bescherming tegen bedreigingen in Security Center

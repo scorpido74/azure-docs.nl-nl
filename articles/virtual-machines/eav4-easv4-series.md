@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 484539a9c41f055d2b215e6f5a1326d06faca82d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 31bc9a5f38d50318f858a4d7169391e9d2e5e610
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829217"
+ms.locfileid: "87848727"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4- en Easv4-serie
 
@@ -32,7 +32,7 @@ Updates voor geheugen behoud: ondersteund
 
 De grootte van de Eav4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een hogere maximum frequentie van 3.35 GHz kan bereiken en Premium SSD kan gebruiken. De grootten van de Eav4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium SSD wilt gebruiken, gebruikt u de grootte van de Easv4-serie. De prijs-en facturerings meters voor Easv4-grootten zijn gelijk aan die van de Eav3-serie.
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Max. aantal NIC's | Verwachte netwerk bandbreedte (MBps) |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale tijdelijke opslagdoorvoer: IOPS / MBps lezen / MBps schrijven | Max. aantal NIC's | Verwachte netwerk bandbreedte (Mbps) |
 | -----|-----|-----|-----|-----|-----|-----|-----|
 | Standard \_ E2a \_ v4|2|16|50|4|3000 / 46 / 23|2 | 1000 |
 | Standard \_ E4a \_ v4|4|32|100|8|6000 / 93 / 46|2 | 2000 |
