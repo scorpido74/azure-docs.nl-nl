@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 2c3e872dee06ac4fa0c8c37ce8fb77bd34dc78bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 896ffb148ec781280d103b27a4dddddb1f9ef4b0
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041869"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874653"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Invoer binding Azure Cosmos DB voor Azure Functions 2. x en hoger
 
@@ -43,8 +43,12 @@ namespace CosmosDBSamplesV2
 {
     public class ToDoItem
     {
+        [JsonProperty("id")]
         public string Id { get; set; }
+        
+        [JsonProperty("partitionKey")]
         public string PartitionKey { get; set; }
+        
         public string Description { get; set; }
     }
 }
@@ -1432,7 +1436,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB` .        |
 |**direction**     | N.v.t. | Moet worden ingesteld op `in` .         |
-|**naam**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
+|**name**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** |**DatabaseName** |De data base met het document.        |
 |**collectionName** |**NaamVerzameling** | De naam van de verzameling die het document bevat. |
 |**id**    | **Id** | De ID van het document dat moet worden opgehaald. Deze eigenschap ondersteunt [bindings expressies](./functions-bindings-expressions-patterns.md). Stel de `id` Eigenschappen en **sqlQuery** niet in. Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald. |

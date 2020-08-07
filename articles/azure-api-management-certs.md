@@ -1,6 +1,6 @@
 ---
 title: Een Azure-Service beheer certificaat uploaden | Microsoft Docs
-description: Meer informatie over het uploaden van het Service beheer certificaat voor de Azure Portal.
+description: Meer informatie over het uploaden van het Service beheer certificaat voor de Azure Portal. Met beheer certificaten kunt u verifiëren met het klassieke implementatie model.
 services: cloud-services
 documentationcenter: .net
 author: georgewallace
@@ -10,15 +10,15 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d2436b524ba6df68b12206bcb545e54a405b731
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78329116"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848550"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Een Azure Service Management-certificaat uploaden
-Met beheer certificaten kunt u verifiëren met het klassieke implementatie model van Azure. Veel programma's en hulpprogramma's (zoals Visual Studio of de Azure SDK) gebruiken deze certificaten om de configuratie en implementatie van verschillende Azure-services te automatiseren. 
+Met beheer certificaten kunt u verifiëren met het klassieke implementatie model van Azure. Voor veel programma's en hulpprogramma's (zoals Visual Studio of de Azure SDK) worden deze certificaten gebruikt om de configuratie en implementatie van verschillende Azure-services te automatiseren. 
 
 > [!WARNING]
 > Wees voorzichtig! Met deze typen certificaten kunnen gebruikers die met hen worden geverifieerd, het abonnement beheren waaraan ze zijn gekoppeld.

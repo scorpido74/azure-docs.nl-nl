@@ -3,12 +3,12 @@ title: Azure Functions beveiligen
 description: Meer informatie over hoe u de functie code die wordt uitgevoerd in azure beter kunt beveiligen tegen veelvoorkomende aanvallen.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502678"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850709"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions beveiligen
 
@@ -22,7 +22,7 @@ Zie [Azure-beveiligings basislijn voor Azure functions](security-baseline.md)voo
 
 In deze sectie vindt u meer over het configureren en uitvoeren van uw functie-app zo veilig mogelijk. 
 
-### <a name="security-center"></a>Beveiligingscentrum
+### <a name="security-center"></a>Security Center
 
 Security Center integreert met uw functie-app in de portal. Het biedt gratis een snelle evaluatie van mogelijke beveiligings problemen met betrekking tot configuraties. Functie-apps die in een specifiek abonnement worden uitgevoerd, kunnen ook gebruikmaken van de real-time beveiligings functies van Security Center, voor extra kosten. Zie [uw Azure app service Web-apps en Api's beveiligen](../security-center/security-center-app-services.md)voor meer informatie. 
 
@@ -58,7 +58,7 @@ Het bereik van systeem sleutels wordt bepaald door de uitbrei ding, maar is in h
 
 De volgende tabel vergelijkt het gebruik voor verschillende soorten toegangs sleutels:
 
-| Bewerking                                        | Bereik                    | Geldige sleutels         |
+| Actie                                        | Bereik                    | Geldige sleutels         |
 |-----------------------------------------------|--------------------------|--------------------|
 | Een functie uitvoeren                            | Specifieke functie        | Functie           |
 | Een functie uitvoeren                            | Een functie             | Functie of host   |
@@ -70,6 +70,18 @@ De volgende tabel vergelijkt het gebruik voor verschillende soorten toegangs sle
 <sup>2</sup> Specifieke namen die zijn ingesteld op uitbrei ding.
 
 Zie het artikel over het [binden van http-triggers](functions-bindings-http-webhook-trigger.md#obtaining-keys)voor meer informatie over toegangs sleutels.
+
+
+#### <a name="secret-repositories"></a>Geheime opslag plaatsen
+
+Standaard worden sleutels opgeslagen in een BLOB storage-container in het account dat is ingesteld door de `AzureWebJobsStorage` instelling. U kunt specifieke toepassings instellingen gebruiken om dit gedrag te negeren en sleutels op een andere locatie op te slaan.
+
+|Locatie  |Instelling | Waarde | Beschrijving  |
+|---------|---------|---------|---------|
+|Ander opslag account     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Hiermee worden sleutels opgeslagen in Blob-opslag van een tweede opslag account, op basis van de meegeleverde SAS-URL. Sleutels worden versleuteld voordat ze worden opgeslagen met behulp van een geheim dat uniek is voor uw functie-app. |
+|Bestandssysteem   | `AzureWebJobsSecretStorageType`   |  `files`       | Sleutels worden bewaard op het bestands systeem, versleuteld vóór opslag met behulp van een geheim dat uniek is voor uw functie-app. |
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | De kluis moet een toegangs beleid hebben dat overeenkomt met de door het systeem toegewezen beheerde identiteit van de hosting bron. Het toegangs beleid moet de identiteit de volgende geheime machtigingen verlenen: `Get` , `Set` , `List` , en `Delete` . <br/>Wanneer lokaal wordt uitgevoerd, wordt de identiteit van de ontwikkelaar gebruikt. de instellingen moeten zich in delocal.settings.jsin het [bestand](functions-run-local.md#local-settings-file)bevinden. | 
+|Kubernetes Secrets  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (optioneel) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Alleen ondersteund bij het uitvoeren van de functions-runtime in Kubernetes. Als `AzureWebJobsKubernetesSecretName` niet is ingesteld, wordt de opslag plaats als alleen-lezen beschouwd. In dit geval moeten de waarden worden gegenereerd vóór de implementatie. De Azure Functions Core Tools genereert automatisch de waarden bij het implementeren naar Kubernetes.|
 
 ### <a name="authenticationauthorization"></a>Verificatie/autorisatie
 

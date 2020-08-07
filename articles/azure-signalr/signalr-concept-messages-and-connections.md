@@ -4,14 +4,14 @@ description: Een overzicht van de belangrijkste concepten over berichten en verb
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5483e10e817ce8a0a7e7c82d817b7bdbbdd9176b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75392816"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853446"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Berichten en verbindingen in Azure SignalR Service
 
@@ -36,7 +36,13 @@ Voor de facturering worden alleen uitgaande berichten van Azure SignalR Service 
 
 Een bericht dat groter is dan 2 kB, wordt beschouwd als meerdere berichten van elk 2 kB. De grafiek met het aantal berichten in de Azure-portal wordt elke 100 berichten per hub bijgewerkt.
 
-Stel u hebt drie clients en één toepassingsserver. Vanaf één client wordt een bericht van 4 kB verzonden dat via de server moet worden uitgezonden naar alle clients. Het aantal berichten is acht: één bericht van de service naar de toepassingsserver, en drie berichten van de service naar de clients. Elk bericht wordt geteld als twee berichten van 2 kB.
+Stel bijvoorbeeld dat u één toepassings server hebt en drie clients:
+
+App server verzendt een bericht van 1 KB naar alle verbonden clients, het bericht van de app-server naar de service wordt beschouwd als een beschikbaar binnenkomend bericht. Alleen de drie berichten die vanuit de service naar elk van de client worden verzonden, worden als uitgaande berichten gefactureerd.
+
+Client A stuurt een bericht van 1 KB naar een andere client B, zonder de app server te passeren. Het bericht van client A naar-service is gratis binnenkomend bericht. Het bericht van de service naar client B wordt gefactureerd als uitgaand bericht.
+
+Als u drie clients en één toepassings server hebt. Vanaf één client wordt een bericht van 4 kB verzonden dat via de server moet worden uitgezonden naar alle clients. Het aantal gefactureerde berichten is acht: één bericht van de service naar de toepassings server en drie berichten van de service naar de clients. Elk bericht wordt geteld als twee berichten van 2 kB.
 
 ## <a name="how-connections-are-counted"></a>Hoe verbindingen worden geteld
 
@@ -44,15 +50,15 @@ Er zijn server verbindingen en client verbindingen met de Azure signalerings ser
 
 Het aantal verbindingen dat in de Azure-portal wordt weergegeven, betreft zowel server- als clientverbindingen.
 
-Stel dat u twee toepassingsservers hebt en dat u vijf hubs in code definieert. Het aantal server verbindingen is 50:2 app-servers * 5 hubs * 5 verbindingen per hub.
+Stel dat u twee toepassings servers hebt en u vijf hubs in code definieert. Het aantal server verbindingen is 50:2 app-servers * 5 hubs * 5 verbindingen per hub.
 
-ASP.NET SignalR berekent serververbindingen op een andere manier. Het bevat één standaardhub, naast de hubs die u definieert. Standaard moet elke toepassings server vijf extra initiële server verbindingen hebben. Het oorspronkelijke aantal verbindingen voor de standaard-hub blijft consistent met die van de andere hubs.
+ASP.NET SignalR berekent serververbindingen op een andere manier. Het bevat één standaardhub, naast de hubs die u definieert. Standaard moet elke toepassings server vijf extra initiële server verbindingen hebben. Het oorspronkelijke aantal verbindingen voor de standaard-hub blijft consistent met andere hubs.
 
-Tijdens de levens duur van de toepassings server houdt de service en de toepassings server de status van de synchronisatie verbinding bij en maken ze een aanpassing van server verbindingen voor betere prestaties en stabiliteit van de service. Het is dus mogelijk dat de server verbindings nummers van tijd tot tijd veranderen.
+De service en de toepassings server blijven synchroniseren van de verbindings status en maken aanpassing van server verbindingen om betere prestaties en stabiliteit van de service te verkrijgen.  Het is dus mogelijk dat de server verbindings nummers van tijd tot tijd veranderen.
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Hoe binnenkomend/uitgaand verkeer wordt geteld
 
-Het verschil tussen binnenkomend en uitgaand verkeer is gebaseerd op het perspectief van Azure SignalR Service. Verkeer wordt geteld in bytes.
+Het bericht dat naar de service wordt verzonden, is een inkomend bericht. Het bericht dat vanuit de service wordt verzonden, is een uitgaand bericht. Verkeer wordt geteld in bytes.
 
 ## <a name="related-resources"></a>Gerelateerde resources
 

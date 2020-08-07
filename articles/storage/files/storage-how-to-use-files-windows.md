@@ -1,18 +1,18 @@
 ---
 title: Een Azure-bestandsshare gebruiken met Windows | Microsoft Docs
-description: Informatie over hoe u een Azure-bestandsshare gebruikt met Windows en Windows Server.
+description: Meer informatie over het gebruik van Azure-bestands shares met Windows en Windows Server. Gebruik Azure-bestands shares met SMB 3,0 op Windows-installaties die on-premises of op virtuele machines van Azure worden uitgevoerd.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcc79a0763d7441a8a3c04723578ccc27cf5fe4e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509775"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905751"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen probleemloos worden gebruikt in Windows en Windows Server. In dit artikel worden de overwegingen besproken voor het gebruik van een Azure-bestandsshare met Windows en Windows Server.
@@ -23,15 +23,15 @@ U kunt Azure-bestandsshares gebruiken in een Windows-installatie die wordt uitge
 
 | Windows-versie        | SMB-versie | Koppelbaar in Azure-VM | Koppelbaar on-premises |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Yes | Ja |
-| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Ja |
-| Windows Server Semi-Annual-kanaal<sup>2</sup> | SMB 3.0 | Yes | Ja |
-| Windows Server 2016 | SMB 3.0 | Yes | Ja |
-| Windows 8.1 | SMB 3.0 | Yes | Ja |
-| Windows Server 2012 R2 | SMB 3.0 | Yes | Ja |
-| Windows Server 2012 | SMB 3.0 | Yes | Ja |
-| Windows 7<sup>3</sup> | SMB 2.1 | Yes | Nee |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Nee |
+| Windows Server 2019 | SMB 3.0 | Ja | Ja |
+| Windows 10<sup>1</sup> | SMB 3.0 | Ja | Ja |
+| Windows Server Semi-Annual-kanaal<sup>2</sup> | SMB 3.0 | Ja | Ja |
+| Windows Server 2016 | SMB 3.0 | Ja | Ja |
+| Windows 8.1 | SMB 3.0 | Ja | Ja |
+| Windows Server 2012 R2 | SMB 3.0 | Ja | Ja |
+| Windows Server 2012 | SMB 3.0 | Ja | Ja |
+| Windows 7<sup>3</sup> | SMB 2.1 | Ja | Nee |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ja | Nee |
 
 <sup>1</sup> Windows 10, versies 1507, 1607, 1709, 1803, 1809, 1903 en 1909.  
 <sup>2</sup> Windows Server, versies 1809, 1903 en 1909.  
@@ -59,12 +59,12 @@ Dit script ophalen:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Navigeer naar het opslag account dat de bestands share bevat die u wilt koppelen.
-1. Selecteer **Bestands shares**.
+1. Selecteer **Bestandsshares**.
 1. Selecteer de bestands share die u wilt koppelen.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Hierbij":::
 
-1. Selecteer **Verbinding maken**.
+1. Selecteer **Verbinden**.
 
     :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Scherm afbeelding van het verbindings pictogram voor de bestands share.":::
 
@@ -200,6 +200,6 @@ Nadat u deze registersleutel hebt gemaakt, moet u uw server opnieuw opstarten om
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
-- [Implementatie van Azure Files plannen](storage-files-planning.md)
+- [Een Azure Files-implementatie plannen](storage-files-planning.md)
 - [Veelgestelde vragen](../storage-files-faq.md)
 - [Problemen oplossen in Windows](storage-troubleshoot-windows-file-connection-problems.md)      

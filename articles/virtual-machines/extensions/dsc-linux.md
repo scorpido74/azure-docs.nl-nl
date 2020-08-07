@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494782"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876713"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (micro soft. OSTCExtensions. DSCForLinux)
 
@@ -29,25 +29,17 @@ Desired state Configuration (DSC) is een beheer platform dat u kunt gebruiken vo
 
 De DSCForLinux-extensie wordt gepubliceerd en ondersteund door micro soft. Met de uitbrei ding wordt de OMI-en DSC-agent geïnstalleerd op virtuele machines van Azure. De DSC-extensie kan ook de volgende acties uitvoeren:
 
-
 - Registreer de virtuele Linux-machine in een Azure Automation-account om configuraties te halen uit de Azure Automation-Service (Registreer ExtensionAction).
 - MOF-configuraties naar de Linux-VM pushen (push ExtensionAction).
 - Meta MOF-configuratie Toep assen op de Linux-VM om een pull-server te configureren om knooppunt configuratie (pull-ExtensionAction) te kunnen halen.
 - Aangepaste DSC-modules installeren op de virtuele Linux-machine (ExtensionAction installeren).
 - Verwijder aangepaste DSC-modules van de virtuele Linux-machine (Verwijder ExtensionAction).
 
- 
-
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De DSC Linux-extensie ondersteunt alle [Linux-distributies die zijn goedgekeurd op Azure](../linux/endorsed-distros.md) , met uitzonde ring van:
-
-| Distributie | Versie |
-|---|---|
-| Debian | Alle versies |
-| Ubuntu| 18,04 |
+Voor knoop punten waarop Linux wordt uitgevoerd, ondersteunt de DSC Linux-extensie alle Linux-distributies die worden vermeld in de [Power shell DSC-documentatie](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
  
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 

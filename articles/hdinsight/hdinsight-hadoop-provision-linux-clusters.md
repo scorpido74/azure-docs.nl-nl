@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 04/30/2020
-ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/06/2020
+ms.openlocfilehash: 1d11318d2af640a0cf417286ee777ce833297a4f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82889260"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873599"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer
 
@@ -26,7 +26,7 @@ Een Hadoop-cluster bestaat uit meerdere virtuele machines (knoop punten) die wor
 > [!IMPORTANT]  
 > De facturering voor het gebruik van HDInsight-clusters begint zodra er een cluster is gemaakt en stopt als een cluster wordt verwijderd. De facturering wordt pro-rato per minuut berekend, dus u moet altijd uw cluster verwijderen wanneer het niet meer wordt gebruikt. Meer informatie over het [verwijderen van een cluster.](hdinsight-delete-cluster.md)
 
-Als u meerdere clusters tegelijk gebruikt, wilt u een virtueel netwerk maken. Als u een Spark-cluster gebruikt, wilt u ook de Hive-Warehouse connector gebruiken. Zie voor meer informatie [een virtueel netwerk voor Azure HDInsight plannen](./hdinsight-plan-virtual-network-deployment.md) en [Apache Spark en Apache Hive integreren met de Hive-Warehouse connector](interactive-query/apache-hive-warehouse-connector.md).
+Als u meerdere clusters tegelijk gebruikt, wilt u een virtueel netwerk maken. Als u een Spark-cluster gebruikt, wilt u ook de Hive Warehouse Connector gebruiken. Zie [Plan a virtual network voor Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md) en [Integrate Apache Spark and Apache Hive with the Hive Warehouse Connector](interactive-query/apache-hive-warehouse-connector.md) voor meer informatie.
 
 ## <a name="cluster-setup-methods"></a>Cluster installatie methoden
 
@@ -43,7 +43,7 @@ In de volgende tabel ziet u de verschillende methoden die u kunt gebruiken om ee
 
 Dit artikel begeleidt u bij het instellen van de [Azure Portal](https://portal.azure.com), waar u een HDInsight-cluster kunt maken.
 
-## <a name="basics"></a>Basisbeginselen
+## <a name="basics"></a>Basisinstellingen
 
 ![opties voor hdinsight maken aangepaste snelle](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
@@ -67,14 +67,14 @@ Voor de namen van HDInsight-clusters gelden de volgende beperkingen:
 
 U hoeft de cluster locatie niet expliciet op te geven: het cluster bevindt zich op dezelfde locatie als de standaard opslag. Voor een lijst met ondersteunde regio's selecteert u de vervolg keuzelijst **regio** voor prijzen voor [HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
-#### <a name="cluster-type"></a>Cluster type
+#### <a name="cluster-type"></a>Clustertype
 
 Azure HDInsight biedt momenteel de volgende cluster typen, elk met een aantal onderdelen voor bepaalde functies.
 
 > [!IMPORTANT]  
 > HDInsight-clusters zijn beschikbaar in verschillende typen, elk voor één werk belasting of technologie. Er is geen ondersteunde methode voor het maken van een cluster dat meerdere typen combineert, zoals Storm en HBase op één cluster. Als uw oplossing technologieën vereist die verspreid zijn over meerdere typen HDInsight-clusters, kan een [virtueel Azure-netwerk](https://docs.microsoft.com/azure/virtual-network) verbinding maken met de vereiste cluster typen.
 
-| Cluster type | Functionaliteit |
+| Clustertype | Functionaliteit |
 | --- | --- |
 | [Hadoop](hadoop/apache-hadoop-introduction.md) |Batch-query en analyse van opgeslagen gegevens |
 | [HBase](hbase/apache-hbase-overview.md) |Verwerking voor grote hoeveel heden schemaloos, NoSQL-gegevens |
@@ -148,6 +148,9 @@ Zie [externe meta gegevens archieven gebruiken in azure HDInsight](./hdinsight-u
 Als u de Hive-tabellen wilt behouden nadat u een HDInsight-cluster hebt verwijderd, gebruikt u een aangepaste meta Store. U kunt de meta Store vervolgens koppelen aan een ander HDInsight-cluster.
 
 An HDInsight meta Store dat is gemaakt voor één HDInsight-cluster versie kan niet worden gedeeld tussen verschillende versies van het HDInsight-cluster. Zie [ondersteunde hdinsight-versies](hdinsight-component-versioning.md#supported-hdinsight-versions)voor een lijst met hdinsight-versies.
+
+> [!IMPORTANT]
+> De standaard-META Store biedt een Azure SQL Database met een **elementaire 5 DTU-limiet (niet uitbreidbaar)**. Geschikt voor basis test doeleinden. Voor grote of productie werkbelasting raden wij u aan de migratie naar een externe meta Store te migreren.
 
 #### <a name="sql-database-for-oozie"></a>SQL database voor Oozie
 

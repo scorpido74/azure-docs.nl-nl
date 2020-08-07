@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d00e4ad8b0a9f1f50c30144867babcd8c782734d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-python
+ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087126"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876781"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Gebruik de Spark-& Hive-Hulpprogram Ma's voor Visual Studio code
 
@@ -115,7 +115,7 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 3. Voer het algemene livy-eind punt in. Bijvoorbeeld: http \: //10.172.41.42:18080.
 
 4. Selecteer autorisatie type **Basic** of **none**.  Als u **Basic**selecteert:  
-    &emsp;één. Voer uw Ambari-gebruikers naam in; de standaard instelling is **admin**.  
+    &emsp;a. Voer uw Ambari-gebruikers naam in; de standaard instelling is **admin**.  
     &emsp;b. Voer uw Ambari-wacht woord in.
 
 5. Bekijk de **uitvoer** weergave voor verificatie.
@@ -331,7 +331,7 @@ Methode 2 een bestand verzenden en u ziet dat de `.vscode` map automatisch wordt
 
     **/Batches plaatsen** Aanvraag tekst
 
-    | naam | description | type |
+    | naam | beschrijving | type |
     | --- | --- | --- |
     | file | Bestand met de toepassing die moet worden uitgevoerd | Pad (vereist) |
     | proxyUser | Gebruiker die moet worden geïmiteerd bij het uitvoeren van de taak | Tekenreeks |
@@ -352,7 +352,7 @@ Methode 2 een bestand verzenden en u ziet dat de `.vscode` map automatisch wordt
 
     Antwoord tekst het gemaakte batch-object.
 
-    | naam | description | type |
+    | naam | beschrijving | type |
     | --- | ---| --- |
     | Id | Sessie-id | Int |
     | appId | Toepassings-ID van deze sessie | Tekenreeks |

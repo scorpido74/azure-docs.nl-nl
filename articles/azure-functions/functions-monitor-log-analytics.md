@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: a84dda648ccc1dc73956aeb5d8364c4c3f31c9f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: a6b7d158014a49866c6fffadcdc57c00b53deafc
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055275"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853270"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions controleren met Azure Monitor-logboeken
 
@@ -125,4 +125,4 @@ FunctionAppLogs
 
 - Bekijk het [Azure functions overzicht](functions-overview.md).
 - Meer informatie over [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md).
-- Meer informatie over de [querytaal](../azure-monitor/log-query/get-started-queries.md).
+- Lees meer over de [querytaal](../azure-monitor/log-query/get-started-queries.md).

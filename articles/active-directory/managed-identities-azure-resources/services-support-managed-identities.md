@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 49692c08787103b09e6e1502f7a9a58736239fdf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13521017076c609c2fadb4362d5cccdf12d94098
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018992"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873582"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Services die beheerde identiteiten voor Azure-resources ondersteunen
 
@@ -52,7 +52,7 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure API Management 
 Raadpleeg de volgende lijst om de beheerde identiteit voor Azure App Service te configureren (in regio's waar beschikbaar):
 
 - [Azure-portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure-CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager-sjabloon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
@@ -85,6 +85,13 @@ Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regi
 | Door het systeem toegewezen | ![Beschikbaar][check] | ![Beschikbaar][check] | Niet beschikbaar | ![Beschikbaar][check] |
 | Door de gebruiker toegewezen | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
+### <a name="azure-cognitive-services"></a>Azure Cognitive Services
+
+Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Door het systeem toegewezen | ![Beschikbaar][check] | ![Beschikbaar][check] | Niet beschikbaar | ![Beschikbaar][check] |
+| Door de gebruiker toegewezen | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -95,7 +102,7 @@ Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regi
 
 Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Container Instances te configureren (in regio's waar beschikbaar):
 
-- [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
+- [Azure-CLI](~/articles/container-instances/container-instances-managed-identity.md)
 - [Azure Resource Manager-sjabloon](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
@@ -109,7 +116,7 @@ Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regi
 
 Raadpleeg de volgende lijst voor het configureren van een beheerde identiteit voor Azure Container Registry taken (in regio's waar beschikbaar):
 
-- [Azure CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
+- [Azure-CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
 ### <a name="azure-data-explorer"></a>Azure Data Explorer
 
@@ -159,7 +166,7 @@ Type beheerde identiteit |Alles algemeen beschikbaar<br>Wereld wijde Azure-regio
 Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Functions te configureren (in regio's waar beschikbaar):
 
 - [Azure-portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure-CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager-sjabloon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
@@ -218,7 +225,7 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Policy te confi
 - [Azure-portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
 - [Azure-CLI](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
-- [Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
+- [Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
 - [REST](https://docs.microsoft.com/rest/api/resources/policyassignments/create)
 
 
@@ -258,7 +265,7 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Virtual Machine
 - [Azure-portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure-CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sjablonen](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sjablonen](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 
@@ -275,7 +282,7 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Virtual Machine
 - [Azure-portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure-CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sjablonen](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sjablonen](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 

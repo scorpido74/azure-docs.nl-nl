@@ -5,14 +5,18 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 93a86bc035803517ff61c79ae4b8a7fc46dd811f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 613620ddf4889efb7cf3df95150be97f79724a98
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322377"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852137"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klassieke metrische waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
+
+> [!WARNING]
+> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](./alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](./monitoring-classic-retirement.md), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen.
+>
 
 Klassieke metrische waarschuwingen in Azure Monitor bieden een manier om een melding te ontvangen wanneer een van uw metrische gegevens een drempel waarde overschrijdt. Klassieke waarschuwingen voor metrische gegevens is een oudere functie die alleen waarschuwingen voor niet-dimensionale metrische gegevens toestaat. Er is een bestaande nieuwere functie met de naam metrische waarschuwingen, waarmee de functionaliteit van klassieke metrische waarschuwingen wordt verbeterd. Meer informatie over de nieuwe functies voor metrische waarschuwingen vindt u in [overzicht van metrische waarschuwingen](./alerts-metric-overview.md). In dit artikel wordt beschreven hoe u klassieke metrische waarschuwings regels maakt, weergeeft en beheert via Azure Portal, Azure CLI en Power shell.
 

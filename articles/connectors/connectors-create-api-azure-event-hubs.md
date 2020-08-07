@@ -3,16 +3,16 @@ title: Verbinding maken met Azure Event Hubs
 description: Maak geautomatiseerde taken en werk stromen die gebeurtenissen bewaken en beheren met Azure Event Hubs en Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 7dab9753334a1f071d85d0d2bccbd88340e37634
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9e3bc4cdab62dd304c5266ff6c9cccf66600fb7b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284095"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848839"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Gebeurtenissen bewaken, ontvangen en verzenden met Azure Event Hubs en Azure Logic Apps
 
@@ -33,7 +33,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
 Als u ervoor wilt zorgen dat uw logische app toegang heeft tot uw event hub, controleert u uw machtigingen en haalt u de connection string voor uw Event Hubs naam ruimte op.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Ga naar uw Event Hubs *naam ruimte*, niet een specifieke Event hub. 
 
@@ -61,6 +61,9 @@ Als u ervoor wilt zorgen dat uw logische app toegang heeft tot uw event hub, con
 In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app en begint de werk stroom van uw app uit te voeren.
 
 In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten wanneer er nieuwe gebeurtenissen naar uw event hub worden verzonden. 
+
+> [!NOTE]
+> Alle Event hub-triggers zijn *lange polling* triggers, wat betekent dat de trigger alle gebeurtenissen verwerkt en vervolgens 30 seconden per partitie wacht om meer gebeurtenissen weer te geven in uw event hub. Dus als de trigger is ingesteld met vier partities, kan deze vertraging tot twee minuten duren voordat de trigger de polling van alle partities heeft voltooid. Als er geen gebeurtenissen binnen deze vertraging worden ontvangen, wordt de trigger wordt uitgevoerd. Anders wordt het lezen van gebeurtenissen voortgezet totdat de Event hub leeg is. De volgende trigger poll wordt uitgevoerd op basis van het terugkeer interval dat u opgeeft in de eigenschappen van de trigger.
 
 1. Maak in de Azure Portal of Visual Studio een lege logische app, waarmee Logic Apps Designer wordt geopend. In dit voor beeld wordt de Azure Portal gebruikt.
 
@@ -100,11 +103,6 @@ In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten
 1. Ga nu verder met het toevoegen van een of meer acties aan uw logische app voor de taken die u wilt uitvoeren met de trigger resultaten. 
 
    Als u bijvoorbeeld gebeurtenissen wilt filteren op basis van een specifieke waarde, zoals een categorie, kunt u een voor waarde toevoegen zodat de actie **gebeurtenis verzenden** alleen de gebeurtenissen verzendt die aan uw voor waarde voldoen. 
-
-> [!NOTE]
-> Alle Event hub-triggers zijn *lange polling* triggers, wat betekent dat wanneer een trigger wordt geactiveerd, de trigger alle gebeurtenissen verwerkt en gedurende 30 seconden wordt gewacht tot er meer gebeurtenissen in uw event hub worden weer gegeven.
-> Als er binnen 30 seconden geen gebeurtenissen worden ontvangen, wordt de trigger wordt uitgevoerd. Anders wordt het lezen van gebeurtenissen voortgezet totdat de Event hub leeg is.
-> De volgende trigger poll wordt uitgevoerd op basis van het terugkeer interval dat u opgeeft in de eigenschappen van de trigger.
 
 <a name="add-action"></a>
 

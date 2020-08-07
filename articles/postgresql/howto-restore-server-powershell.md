@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6fe9fdd68f9419a9f730ea64b5aea19f583d751c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f582159b0ce1355b34c42496dc7516264b62d365
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496743"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902028"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>Een back-up van Azure Database for PostgreSQL-server maken en deze terugzetten met behulp van PowerShell
 
@@ -78,7 +78,7 @@ De para meters set **PointInTimeRestore** van de `Restore-AzPostgreSqlServer` cm
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
-| Name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
+| Naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Selecteer een punt in de tijd om te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals **2020-03-13T05:59:00-08:00**. U kunt ook de UTC Zulu-indeling gebruiken, bijvoorbeeld **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | Gebruik de punt-in-time-modus om te herstellen. |
 
@@ -120,7 +120,7 @@ Voor de para meters set **Restore** van de `Restore-AzPostgreSqlServer` cmdlet z
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | De naam van de resource groep waartoe de nieuwe server behoort.|
-|Name | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
+|Naam | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
 |Locatie | eastus | De locatie van de nieuwe server. |
 |UseGeoRestore | `<SwitchParameter>` | Gebruik de geo-modus om te herstellen. |
 
@@ -133,4 +133,4 @@ De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Azure Database for PostgreSQL server parameters aanpassen met behulp van Power shell](howto-configure-server-parameters-using-powershell.md)
+> [Een Azure Database for PostgreSQL connection string genereren met Power shell](howto-connection-string-powershell.md)

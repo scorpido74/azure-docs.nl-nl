@@ -9,21 +9,22 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148086"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876577"
 ---
-# <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services virtuele netwerken configureren
+# <a name="configure-azure-cognitive-services-virtual-networks"></a>Virtuele Azure Cognitive Services-netwerken configureren
 
-Azure Cognitive Services biedt een gelaagd beveiligings model. Met dit model kunt u uw Cognitive Services-accounts beveiligen met een specifieke subset van netwerken. Wanneer netwerk regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot het account. U kunt de toegang tot uw resources beperken met aanvraag filtering. Het toestaan van alleen aanvragen die afkomstig zijn van opgegeven IP-adressen, IP-bereiken of van een lijst met subnetten in [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md). Als u geïnteresseerd bent in dit aanbod, moet u Preview- [toegang aanvragen](https://aka.ms/cog-svc-vnet-signup).
+Azure Cognitive Services biedt een gelaagd beveiligings model. Met dit model kunt u uw Cognitive Services-accounts beveiligen met een specifieke subset van netwerken. Als er netwerkregels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot het account. U kunt de toegang tot uw resources beperken met behulp van aanvraagfiltering. Het toestaan van alleen aanvragen die afkomstig zijn van opgegeven IP-adressen, IP-bereiken of van een lijst met subnetten in [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md).
 
 Een toepassing die toegang heeft tot een Cognitive Services resource wanneer de netwerk regels van kracht zijn, is autorisatie vereist. Autorisatie wordt ondersteund met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD)-referenties of met een geldige API-sleutel.
 
 > [!IMPORTANT]
 > Als u firewall regels inschakelt voor uw Cognitive Services account, worden binnenkomende aanvragen voor gegevens standaard geblokkeerd. Voor het toestaan van aanvragen via moet aan een van de volgende voor waarden worden voldaan:
+
 > * De aanvraag moet afkomstig zijn van een service in een Azure Virtual Network (VNet) in de lijst met toegestane subnetten van het doel Cognitive Services account. Het eind punt van aanvragen die afkomstig zijn van VNet, moet worden ingesteld als het [aangepaste subdomein](cognitive-services-custom-subdomains.md) van uw Cognitive Services-account.
 > * Of de aanvraag moet afkomstig zijn uit een lijst met toegestane IP-adressen.
 >
@@ -39,39 +40,39 @@ Netwerk regels worden op alle netwerk protocollen afgedwongen voor Azure Cogniti
 
 ## <a name="supported-regions-and-service-offerings"></a>Ondersteunde regio's en service aanbiedingen
 
-Ondersteuning voor virtuele netwerken voor Cognitive Services onderstaande lijst is beperkt tot *de centrale VS-EUAP*, *Zuid-Centraal VS*, VS- *Oost*, *vs-West 2*, *Europa-Noord*, *Zuid-Afrika-Noord*, *Europa-West*, *Centraal-India*, *Australië-Oost*, *VS-West*en *US gov-Virginia* Azure-regio's. Als de service aanbieding hier niet wordt vermeld, ondersteunt deze geen virtuele netwerken.
+De hieronder vermelde Cognitive Services ondersteunen virtuele netwerken in commerciële Cloud en US Gov Cloud. Als de service hier niet wordt vermeld, worden er nog geen virtuele netwerken ondersteund.
 
 > [!div class="checklist"]
-> * [Anomaly Detector](./anomaly-detector/index.yml)
+
+> * [Anomaliedetectie](./anomaly-detector/index.yml)
 > * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Face](./face/index.yml)
 > * [Form Recognizer](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
-> * [Text Analytics](./text-analytics/index.yml)
+> * [Tekstanalyse](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-
-Ondersteuning voor virtuele netwerken voor Cognitive Services onderstaande lijst is beperkt tot de *centrale VS-EUAP*, *Zuid-Centraal VS*, VS- *Oost*, *VS-West 2*, *wereld wijd*en *US gov-Virginia* Azure-regio's.
-> [!div class="checklist"]
 > * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Servicetags
-Naast het ondersteunen van service-eind punten voor virtuele netwerken voor de bovenstaande services, ondersteunt Cognitive Services ook een servicetag voor de configuratie van uitgaande netwerk regels. De volgende services zijn opgenomen in het CognitiveServicesManagement-service label.
+
+Cognitive Services ondersteunt service tags voor de configuratie van netwerk regels. De hieronder vermelde services zijn opgenomen in het **CognitiveServicesManagement** -service label.
 > [!div class="checklist"]
-> * [Anomaly Detector](./anomaly-detector/index.yml)
+
+> * [Anomaliedetectie](./anomaly-detector/index.yml)
 > * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Face](./face/index.yml)
 > * [Form Recognizer](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding (LUIS)](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
-> * [Text Analytics](./text-analytics/index.yml)
+> * [Tekstanalyse](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 > * [Translator](./translator/index.yml)
-> * [Speech Service](./speech-service/index.yml)
+> * [Speech-Service](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Standaardregel voor netwerktoegang wijzigen
 
@@ -84,7 +85,7 @@ Cognitive Services resources accepteren standaard verbindingen van clients in el
 
 U kunt de standaard regels voor netwerk toegang voor Cognitive Services resources beheren via de Azure Portal, Power shell of de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 1. Ga naar de Cognitive Services resource die u wilt beveiligen.
 
@@ -186,7 +187,7 @@ Cognitive Services resource en de virtuele netwerken die toegang hebben verleend
 
 U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren via de Azure Portal, Power shell of de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 1. Ga naar de Cognitive Services resource die u wilt beveiligen.
 
@@ -244,7 +245,7 @@ U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren 
         -ServiceEndpoint "Microsoft.CognitiveServices" | Set-AzVirtualNetwork
     ```
 
-1. Voeg een netwerk regel toe voor een virtueel netwerk en een subnet.
+1. Voeg een netwerkregel toe voor een virtueel netwerk en subnet.
 
     ```azurepowershell-interactive
     $subParameters = @{
@@ -300,7 +301,7 @@ U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren 
     --vnet-name "myvnet" --service-endpoints "Microsoft.CognitiveServices"
     ```
 
-1. Voeg een netwerk regel toe voor een virtueel netwerk en een subnet.
+1. Voeg een netwerkregel toe voor een virtueel netwerk en subnet.
 
     ```azurecli-interactive
     $subnetid=(az network vnet subnet show \
@@ -330,6 +331,7 @@ U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren 
         -g "myresourcegroup" -n "myaccount" \
         --subnet $subnetid
     ```
+
 ***
 
 > [!IMPORTANT]
@@ -361,7 +363,7 @@ Als u [ExpressRoute](../expressroute/expressroute-introduction.md) on-premises g
 
 U kunt IP-netwerk regels voor Cognitive Services resources beheren via de Azure Portal, Power shell of de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 1. Ga naar de Cognitive Services resource die u wilt beveiligen.
 
@@ -491,13 +493,13 @@ U kunt [privé-eind punten](../private-link/private-endpoint-overview.md) voor u
 
 Met persoonlijke eind punten voor Cognitive Services resources kunt u het volgende doen:
 
-- Beveilig uw Cognitive Services bron door de firewall zodanig te configureren dat alle verbindingen op het open bare eind punt voor de Cognitive Services service worden geblokkeerd.
-- Verbeter de beveiliging van het VNet door u in staat te stellen exfiltration van gegevens van het VNet te blok keren.
-- Maak veilig verbinding met Cognitive Services bronnen vanuit on-premises netwerken die verbinding maken met het VNet met behulp van [VPN-](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [expressroutes waaraan](../expressroute/expressroute-locations.md) met privé-peering.
+* Beveilig uw Cognitive Services bron door de firewall zodanig te configureren dat alle verbindingen op het open bare eind punt voor de Cognitive Services service worden geblokkeerd.
+* Verbeter de beveiliging van het VNet door u in staat te stellen exfiltration van gegevens van het VNet te blok keren.
+* Maak veilig verbinding met Cognitive Services bronnen vanuit on-premises netwerken die verbinding maken met het VNet met behulp van [VPN-](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [expressroutes waaraan](../expressroute/expressroute-locations.md) met privé-peering.
 
 ### <a name="conceptual-overview"></a>Conceptueel overzicht
 
-Een persoonlijk eind punt is een speciale netwerk interface voor een Azure-service in uw [VNet](../virtual-network/virtual-networks-overview.md). Wanneer u een persoonlijk eind punt maakt voor uw Cognitive Services-resource, biedt het een beveiligde verbinding tussen clients in uw VNet en uw bron. Het persoonlijke eind punt krijgt een IP-adres uit het IP-adres bereik van uw VNet. De verbinding tussen het persoonlijke eind punt en de Cognitive Services-service maakt gebruik van een beveiligde persoonlijke koppeling.
+Een persoonlijk eind punt is een speciale netwerk interface voor een Azure-resource in uw [VNet](../virtual-network/virtual-networks-overview.md). Het maken van een persoonlijk eind punt voor uw Cognitive Services resource zorgt voor een veilige connectiviteit tussen clients in uw VNet en uw bron. Het persoonlijke eind punt krijgt een IP-adres uit het IP-adres bereik van uw VNet. De verbinding tussen het persoonlijke eind punt en de Cognitive Services-service maakt gebruik van een beveiligde persoonlijke koppeling.
 
 Toepassingen in het VNet kunnen naadloos verbinding maken met de service via het persoonlijke eind punt, met behulp van dezelfde verbindings reeksen en autorisatie mechanismen die ze anders zouden gebruiken. De uitzonde ring is de speech-service, waarvoor een afzonderlijk eind punt is vereist. Zie de sectie over [privé-eind punten met de spraak service](#private-endpoints-with-the-speech-service). Privé-eind punten kunnen worden gebruikt met alle protocollen die worden ondersteund door de Cognitive Services bron, inclusief REST.
 
@@ -507,13 +509,13 @@ Wanneer u een persoonlijk eind punt maakt voor een Cognitive Services resource i
 
 Cognitive Services resource-eigen aren kunnen toestemmings aanvragen en de persoonlijke eind punten beheren via het tabblad*privé-eind punten*voor de Cognitive Services resource in de [Azure Portal](https://portal.azure.com).
 
-### <a name="private-endpoints"></a>Privé-eind punten
+### <a name="private-endpoints"></a>Privé-eindpunten
 
-Wanneer u het persoonlijke eind punt maakt, moet u de Cognitive Services resource opgeven waarmee verbinding wordt gemaakt. Raadpleeg de volgende artikelen voor meer informatie over het maken van een persoonlijk eind punt:
+Wanneer u het persoonlijke eind punt maakt, moet u de Cognitive Services resource opgeven waarmee verbinding wordt gemaakt. Zie voor meer informatie over het maken van een persoonlijk eind punt:
 
-- [Maak een persoonlijk eind punt met behulp van het privé koppelings centrum in de Azure Portal](../private-link/create-private-endpoint-portal.md)
-- [Een persoonlijk eind punt maken met behulp van Azure CLI](../private-link/create-private-endpoint-cli.md)
-- [Een persoonlijk eind punt maken met Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
+* [Maak een persoonlijk eind punt met behulp van het privé koppelings centrum in de Azure Portal](../private-link/create-private-endpoint-portal.md)
+* [Een persoonlijk eind punt maken met behulp van Azure CLI](../private-link/create-private-endpoint-cli.md)
+* [Een persoonlijk eind punt maken met Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
 
 ### <a name="connecting-to-private-endpoints"></a>Verbinding maken met privé-eind punten
 
@@ -523,7 +525,7 @@ Er wordt standaard een [privé-DNS-zone](../dns/private-dns-overview.md) gekoppe
 
 ### <a name="private-endpoints-with-the-speech-service"></a>Privé-eind punten met de speech-service
 
-Wanneer u privé-eind punten gebruikt met de speech-service, moet u een aangepast eind punt gebruiken om de Speech Service API aan te roepen. U kunt het globale eind punt niet gebruiken. U moet een eind punt van het formulier {account} gebruiken. {STT | TTS | Voice | DLS}. speech. micro soft. com.
+Wanneer u privé-eind punten gebruikt met de speech-service, moet u een aangepast eind punt gebruiken om de spraak service aan te roepen. U kunt het globale eind punt niet gebruiken. Het eind punt moet dit patroon volgen: `{account}.{stt|tts|voice|dls}.speech.microsoft.com` .
 
 ### <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privé-eind punten
 
@@ -531,21 +533,21 @@ Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-bron record voor d
 
 Wanneer u de eind punt-URL van buiten het VNet met het persoonlijke eind punt oplost, wordt deze omgezet in het open bare eind punt van de Cognitive Services resource. Wanneer het is opgelost vanuit het VNet dat het persoonlijke eind punt host, wordt de eind punt-URL omgezet naar het IP-adres van het privé-eind punt.
 
-Met deze aanpak is toegang tot de Cognitive Services resource mogelijk via dezelfde connection string voor clients in het VNet die als host fungeren voor de persoonlijke eind punten, evenals clients buiten het VNet.
+Met deze aanpak is toegang tot de Cognitive Services resource mogelijk via dezelfde connection string voor clients in het VNet die de persoonlijke eind punten en clients buiten het VNet hosten.
 
-Als u een aangepaste DNS-server in uw netwerk gebruikt, moeten clients de Fully Qualified Domain Name (FQDN) voor het Cognitive Services resource-eind punt kunnen omzetten naar het IP-adres van het privé-eind punt. U moet uw DNS-server zo configureren dat uw privé-koppelings subdomein wordt overgedragen aan de privé-DNS-zone voor het VNet.
+Als u een aangepaste DNS-server in uw netwerk gebruikt, moeten clients de Fully Qualified Domain Name (FQDN) voor het Cognitive Services resource-eind punt kunnen omzetten naar het IP-adres van het privé-eind punt. Configureer uw DNS-server voor het delegeren van het subdomein van uw privé-koppeling naar de privé-DNS-zone voor het VNet.
 
 > [!TIP]
 > Wanneer u een aangepaste of lokale DNS-server gebruikt, moet u uw DNS-server zo configureren dat de Cognitive Services resource naam in het subdomein ' privatelink ' wordt omgezet in het IP-adres van het privé-eind punt. U kunt dit doen door het subdomein ' privatelink ' te delegeren aan de privé-DNS-zone van het VNet of door de DNS-zone op de DNS-server te configureren en de DNS A-records toe te voegen.
 
 Raadpleeg de volgende artikelen voor meer informatie over het configureren van uw eigen DNS-server voor de ondersteuning van persoonlijke eind punten:
 
-- [Naamomzetting voor resources in virtuele Azure-netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [DNS-configuratie voor privé-eind punten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Naamomzetting voor resources in virtuele Azure-netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+* [DNS-configuratie voor privé-eind punten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ### <a name="pricing"></a>Prijzen
 
-Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link)voor prijs informatie.
+Zie [prijzen van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link) voor meer informatie over prijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

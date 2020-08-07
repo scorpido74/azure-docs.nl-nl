@@ -3,12 +3,12 @@ title: Back-ups maken van SQL Server naar Azure als een DPM-workload
 description: Een inleiding tot het maken van back-ups van SQL Server-data bases met behulp van de Azure Backup-Service
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: dd091f9446cafdb6ff91ae5679c703e07457169c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055376"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876305"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Back-ups maken van SQL Server naar Azure als een DPM-workload
 
@@ -21,6 +21,9 @@ Een back-up maken van een SQL Server Data Base naar Azure en deze herstellen van
 1. Maak een back-upbeleid om SQL Server-data bases in azure te beveiligen.
 1. Maak back-ups op aanvraag in Azure.
 1. De data base herstellen vanuit Azure.
+
+>[!NOTE]
+>DPM 2019 UR2 ondersteunt SQL Server failover cluster instances (FCI) met behulp van gedeelde cluster volumes (CSV).
 
 ## <a name="prerequisites-and-limitations"></a>Vereisten en beperkingen
 
@@ -88,7 +91,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
    >
    >
 
-1. Selecteer **Next**. DPM toont de totale beschik bare opslag ruimte. Ook wordt het mogelijke schijfruimte gebruik weer gegeven.
+1. Selecteer **Volgende**. DPM toont de totale beschik bare opslag ruimte. Ook wordt het mogelijke schijfruimte gebruik weer gegeven.
 
     ![Schijf toewijzing instellen](./media/backup-azure-backup-sql/pg-storage.png)
 
@@ -176,7 +179,7 @@ Een beveiligde entiteit, zoals een SQL Server Data Base, herstellen vanuit Azure
 1. Klik met de rechter muisknop op de naam van de data base en selecteer **herstellen**.
 
     ![Een Data Base herstellen vanuit Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM toont de details van het herstel punt. Selecteer **Next**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer vervolgens **Volgende**.
+1. DPM toont de details van het herstel punt. Selecteer **Volgende**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer vervolgens **Volgende**.
 
     ![Een Data Base op de oorspronkelijke locatie herstellen](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

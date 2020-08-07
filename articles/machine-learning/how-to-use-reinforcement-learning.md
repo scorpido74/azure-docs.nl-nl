@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7a9c367c1669aab18da5a7cb1f7d732f9b8aee9e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 0a043bf79818480e045fb1f82640639fd7dcb232
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319062"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847632"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Educatief leren (preview) met Azure Machine Learning
 
@@ -40,7 +40,7 @@ Dit artikel is gebaseerd op het [RLlib Pong-voor beeld](https://aka.ms/azureml-r
 
 Voer deze code uit in een van de volgende omgevingen. U wordt aangeraden om Azure Machine Learning Reken instantie uit te voeren voor de snelste opstart ervaring. De beproefde voorbeeld notitieblokken zijn beschikbaar om snel te klonen en uit te voeren op Azure Machine Learning Compute-instantie.
 
- - Reken instantie Azure Machine Learning
+ - Azure Machine Learning-rekeninstantie
 
      - Meer informatie over het klonen van voorbeeld notitieblokken in [zelf studie: installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md).
          - De map **How-to-use-azureml** klonen in plaats van **zelf studies**

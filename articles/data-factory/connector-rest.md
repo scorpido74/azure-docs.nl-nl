@@ -9,21 +9,21 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0a64c0a9653bd274e9298401163ad7abc1af99f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415034"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852290"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een REST-eind punt met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een REST-eind punt te kopiëren. Het artikel bouwt voort op de [Kopieer activiteit in azure Data Factory](copy-activity-overview.md), waarin een algemeen overzicht van de Kopieer activiteit wordt weer gegeven.
 
-Het verschil tussen deze REST-connector, de [http-connector](connector-http.md) en de [Web Table-connector](connector-web-table.md) zijn:
+Het verschil tussen deze REST-connector, de [http-connector](connector-http.md)en de [Web Table-connector](connector-web-table.md) zijn:
 
 - **Rest-connector** ondersteunt het kopiëren van gegevens uit rest-api's; 
 - **Http-connector** is algemeen om gegevens op te halen uit een http-eind punt, bijvoorbeeld om het bestand te downloaden. Voordat deze REST-connector beschikbaar komt, kunt u gebruikmaken van de HTTP-connector om gegevens te kopiëren van de REST-API, die wordt ondersteund, maar minder functioneel is vergeleken met de REST-connector.
@@ -62,7 +62,7 @@ De volgende eigenschappen worden ondersteund voor de REST-gekoppelde service:
 | type | De eigenschap **type** moet worden ingesteld op **RestService**. | Ja |
 | url | De basis-URL van de REST-service. | Ja |
 | enableServerCertificateValidation | Hiermee wordt aangegeven of het TLS/SSL-certificaat aan de server zijde moet worden gevalideerd wanneer er verbinding wordt gemaakt met het eind punt. | Nee<br /> (de standaard waarde is **True**) |
-| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de REST-service. Toegestane waarden zijn **anoniem**, **Basic**, **AadServicePrincipal** en **ManagedServiceIdentity**. Raadpleeg de bijbehorende secties hieronder voor meer eigenschappen en voor beelden. | Ja |
+| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de REST-service. Toegestane waarden zijn **anoniem**, **Basic**, **AadServicePrincipal**en **ManagedServiceIdentity**. Raadpleeg de bijbehorende secties hieronder voor meer eigenschappen en voor beelden. | Ja |
 | connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 ### <a name="use-basic-authentication"></a>Basis verificatie gebruiken
@@ -108,6 +108,7 @@ Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Naast d
 | servicePrincipalKey | Geef de sleutel van de Azure Active Directory toepassing op. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | tenant | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
 | aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net` .| Ja |
+| azureCloudType | Voor Service-Principal-verificatie geeft u het type van de Azure-cloud omgeving op waarvoor uw AAD-toepassing is geregistreerd. <br/> Toegestane waarden zijn **AzurePublic**, **AzureChina**, **AzureUsGovernment**en **AzureGermany**. De cloud omgeving van de data factory wordt standaard gebruikt. | Nee |
 
 **Voorbeeld**
 
@@ -305,21 +306,21 @@ Deze algemene REST-connector ondersteunt de volgende paginerings patronen:
 * Header van volgende aanvraag = waarde van eigenschap in huidige antwoord tekst
 * Kop van volgende aanvraag = waarde van header in huidige antwoord headers
 
-**Paginerings regels** worden gedefinieerd als een woorden lijst in een gegevensset die een of meer hoofdletter gevoelige sleutel-waardeparen bevat. De configuratie wordt gebruikt om de aanvraag te genereren vanaf de tweede pagina. De connector stopt met herhalen wanneer de HTTP-status code 204 (geen inhoud) wordt opgehaald, of een van de JSONPath-expressies in paginationRules retourneert null.
+**Paginerings regels** worden gedefinieerd als een woorden lijst in de gegevensset, die een of meer hoofdletter gevoelige sleutel-waardeparen bevat. De configuratie wordt gebruikt om de aanvraag te genereren vanaf de tweede pagina. De connector stopt met herhalen wanneer de HTTP-status code 204 (geen inhoud) wordt opgehaald, of een van de JSONPath-expressies in paginationRules retourneert null.
 
 **Ondersteunde sleutels** in de paginerings regels:
 
 | Sleutel | Beschrijving |
 |:--- |:--- |
 | AbsoluteUrl | Hiermee wordt de URL aangegeven voor het uitgeven van de volgende aanvraag. Dit kan **absolute URL of een relatieve URL**zijn. |
-| QueryParameters. *request_query_parameter* OF QueryParameters [' request_query_parameter '] | ' request_query_parameter ' is door de gebruiker gedefinieerd en verwijst naar één query parameter naam in de volgende HTTP-aanvraag-URL. |
-| Koppen. *request_header* OF headers [' request_header '] | ' request_header ' is door de gebruiker gedefinieerd en verwijst naar één header naam in de volgende HTTP-aanvraag. |
+| QueryParameters. *request_query_parameter* OF QueryParameters [' request_query_parameter '] | ' request_query_parameter ' is door de gebruiker gedefinieerd, die verwijst naar de naam van een query parameter in de volgende HTTP-aanvraag-URL. |
+| Koppen. *request_header* OF headers [' request_header '] | "request_header" is door de gebruiker gedefinieerd, die verwijst naar één header naam in de volgende HTTP-aanvraag. |
 
 **Ondersteunde waarden** in de paginerings regels:
 
 | Waarde | Beschrijving |
 |:--- |:--- |
-| Koppen. *response_header* OF headers [' response_header '] | "response_header" is door de gebruiker gedefinieerd en verwijst naar één header naam in het huidige HTTP-antwoord, waarvan de waarde wordt gebruikt om de volgende aanvraag uit te geven. |
+| Koppen. *response_header* OF headers [' response_header '] | ' response_header ' is door de gebruiker gedefinieerd, die verwijst naar één header naam in het huidige HTTP-antwoord en waarvan de waarde wordt gebruikt om de volgende aanvraag uit te geven. |
 | Een JSONPath-expressie die begint met ' $ ' (die de hoofdmap van de antwoord tekst vertegenwoordigt) | De antwoord tekst mag slechts één JSON-object bevatten. De JSONPath-expressie moet één primitieve waarde Retour neren, die wordt gebruikt voor het uitgeven van de volgende aanvraag. |
 
 **Voorbeeld:**
@@ -409,7 +410,7 @@ De sjabloon definieert twee para meters:
 
     | Eigenschap | Beschrijving |
     |:--- |:--- |:--- |
-    | URL |Geef de URL op waarvoor het OAuth Bearer-token moet worden opgehaald. bijvoorbeeld in het voor beeld is dithttps://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | URL |Geef de URL op waarvoor het OAuth Bearer-token moet worden opgehaald. in het voor beeld is dit bijvoorbeeldhttps://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
     | Methode | De HTTP-methode. Toegestane waarden zijn **post** en **Get**. | 
     | Kopteksten | De header is door de gebruiker gedefinieerd, die verwijst naar één header naam in de HTTP-aanvraag. | 
     | Hoofdtekst | De hoofd tekst van de HTTP-aanvraag. | 
@@ -420,7 +421,7 @@ De sjabloon definieert twee para meters:
 
     | Eigenschap | Beschrijving |
     |:--- |:--- |:--- | 
-    | Aanvraag methode | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | 
+    | Aanvraagmethode | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | 
     | Aanvullende kopteksten | Aanvullende HTTP-aanvraag headers.| 
 
    ![Bron verificatie kopiëren](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)

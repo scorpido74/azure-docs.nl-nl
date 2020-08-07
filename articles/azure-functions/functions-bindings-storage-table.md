@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: b6d8ca41c56239bc994b34119600dfa9db60ada6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 7616f6c502f0b5402aa784f707d0dafa31268d78
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083086"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853055"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-bindingen voor Azure Functions
 
@@ -33,7 +33,7 @@ De tabel opslag bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Ext
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="input"></a>Invoer
+## <a name="input"></a>Input
 
 Gebruik de Azure Table Storage-invoer binding om een tabel in een Azure Storage-account te lezen.
 
@@ -559,7 +559,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die de tabel of entiteit in functie code vertegenwoordigt. | 
+|**name** | N.v.t. | De naam van de variabele die de tabel of entiteit in functie code vertegenwoordigt. | 
 |**tableName** | **TableName** | De naam van de tabel.| 
 |**partitionKey** | **PartitionKey** |Optioneel. De partitie sleutel van de tabel entiteit die moet worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
 |**rowKey** |**RowKey** | Optioneel. De rij van de tabel entiteit die moet worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
@@ -946,7 +946,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op `out` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de tabel of entiteit vertegenwoordigt. Instellen op `$return` om te verwijzen naar de functie retour waarde.| 
+|**name** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de tabel of entiteit vertegenwoordigt. Instellen op `$return` om te verwijzen naar de functie retour waarde.| 
 |**tableName** |**TableName** | De naam van de tabel.| 
 |**partitionKey** |**PartitionKey** | De partitie sleutel van de tabel entiteit die moet worden geschreven. Zie de [sectie gebruik](#output---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
 |**rowKey** |**RowKey** | De rij van de tabel entiteit die moet worden geschreven. Zie de [sectie gebruik](#output---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
@@ -992,7 +992,7 @@ Er zijn twee opties voor het uitvoeren van een rij in een tabel opslag van een f
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Verwijzing |
+| Binding | Naslaginformatie |
 |---|---|
 | Tabel | [Fout codes voor tabellen](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | BLOB, tabel, wachtrij | [Opslag fout codes](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
