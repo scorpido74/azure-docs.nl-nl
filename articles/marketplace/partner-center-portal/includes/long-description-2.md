@@ -1,5 +1,5 @@
 ---
-title: bestand opnemen
+title: Include-bestand
 description: file
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher

@@ -1,6 +1,6 @@
 ---
 title: Azure-tabel opslag ontwerpen voor query's | Microsoft Docs
-description: Ontwerp tabellen voor query's in azure-tabel opslag.
+description: Ontwerp tabellen voor query's in azure-tabel opslag. Kies een geschikte partitie sleutel, Optimaliseer query's en sorteer gegevens voor de Table service.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d157e7d2880761fb6559723bdc1d6c34baffb09
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457639"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903201"
 ---
 # <a name="design-for-querying"></a>Ontwerp voor query's
 Table service oplossingen kunnen intensieve, schrijf intensief of een combi natie van beide worden gelezen. In dit artikel vindt u informatie over de zaken die u moet overwegen wanneer u uw Table service ontwerpt om Lees bewerkingen efficiënt te ondersteunen. Normaal gesp roken is een ontwerp dat lees bewerkingen efficiënt ondersteunt ook efficiënt voor schrijf bewerkingen. Er zijn echter extra aandachtspunten bij het ontwerpen ter ondersteuning van schrijf bewerkingen, zoals beschreven in het artikel [ontwerp voor het wijzigen van gegevens](table-storage-design-for-modification.md).
@@ -35,13 +35,13 @@ Deze sectie richt zich op de belangrijkste problemen die u moet aanpakken wannee
 ## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>Hoe uw keuze van PartitionKey en RowKey gevolgen heeft voor de query prestaties
 In de volgende voor beelden wordt ervan uitgegaan dat de tabel service werk nemers-entiteiten opslaat met de volgende structuur (in de meeste voor beelden wordt de **Time Stamp** -eigenschap voor duidelijkheid wegge laten):  
 
-| *Kolom naam* | *Gegevenstype* |
+| *Kolomnaam* | *Gegevenstype* |
 | --- | --- |
 | **PartitionKey** (afdelings naam) |Tekenreeks |
 | **RowKey** (werk nemer-id) |Tekenreeks |
 | **Voor** |Tekenreeks |
 | **Naam** |Tekenreeks |
-| **Leeftijd** |Geheel getal |
+| **Ouderdom** |Geheel getal |
 | **EmailAddress** |Tekenreeks |
 
 In het artikel [overzicht van Azure Table Storage](table-storage-overview.md) worden enkele van de belangrijkste functies van de Azure-Table service beschreven die een directe invloed hebben op het ontwerpen van query's. Dit resulteert in de volgende algemene richt lijnen voor het ontwerpen van Table service query's. Houd er rekening mee dat de filter syntaxis die in de onderstaande voor beelden wordt gebruikt, afkomstig is uit de Table service REST API, Zie [query-entiteiten](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)voor meer informatie.  

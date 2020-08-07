@@ -6,13 +6,13 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.custom: tracking-python
-ms.openlocfilehash: fa68f1ea8c0dd0d4367d3dcf39f059d0bd8a77ea
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-python
+ms.openlocfilehash: f2645cc76f6b1a59e84ee01cbc8d4c650cd6c789
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421923"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843621"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -46,7 +46,7 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
 Houd er rekening mee dat alle telemetrie-items de hoofdmap delen `operation_Id` . Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID ( `qJSXU` ) toegewezen aan de telemetrie van de afhankelijkheid en wordt de id van de pagina weergave gebruikt als `operation_ParentId` . De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId` .
 
-| Item type   | name                      | Id           | operation_ParentId | operation_Id |
+| Item type   | naam                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | Pagina weergave   | Voorraad pagina                |              | STYz               | STYz         |
 | einde | /Home/Stock ophalen           | qJSXU        | STYz               | STYz         |

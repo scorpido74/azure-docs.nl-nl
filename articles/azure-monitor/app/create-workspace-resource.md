@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ef3c2161e5a032983a2cbc9e4ccdf60af6920a7d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323108"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824984"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Application Insights resources op basis van een werk ruimte (preview)
 
@@ -19,7 +19,7 @@ Resources op basis van een werk ruimte ondersteunen volledige integratie tussen 
 Dit biedt ook algemene op rollen gebaseerde Access Control (RBAC) in uw resources en elimineert de nood zaak van query's tussen apps en werk ruimten.
 
 > [!NOTE]
-> Gegevens opname en retentie voor op werk ruimte gebaseerde Application Insights resources worden gefactureerd via de Log Analytics werk ruimte waarin de gegevens zich bevinden. Meer [informatie]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights) over facturering voor op werk ruimte gebaseerde Application Insights resources.
+> Gegevens opname en retentie voor op werk ruimte gebaseerde Application Insights resources worden gefactureerd via de Log Analytics werk ruimte waarin de gegevens zich bevinden. Meer [informatie]( ./pricing.md#workspace-based-application-insights) over facturering voor op werk ruimte gebaseerde Application Insights resources.
 
 Als u de nieuwe ervaring wilt testen, meldt u zich aan bij de [Azure Portal](https://portal.azure.com)en maakt u een Application Insights resource:
 
@@ -204,4 +204,3 @@ De verouderde functionaliteit voor continue export wordt niet ondersteund voor o
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../platform/metrics-charts.md
 [start]: ./app-insights-overview.md
-

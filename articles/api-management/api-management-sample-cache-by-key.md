@@ -1,6 +1,6 @@
 ---
 title: Custom caching in Azure API Management (Aangepast opslaan in Azure API Management)
-description: Meer informatie over het opslaan van items op sleutel in azure API Management
+description: Meer informatie over het opslaan van items op sleutel in azure API Management. U kunt de sleutel wijzigen met behulp van aanvraag headers.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7b87244b4df155768e815bdba5226fc784866f6b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a366cf6d4e17e83fd89ae21631ad5b40e8971c1b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249713"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903439"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Custom caching in Azure API Management (Aangepast opslaan in Azure API Management)
-De Azure API Management-service heeft ingebouwde ondersteuning voor [http-antwoord cache](api-management-howto-cache.md) met behulp van de resource-URL als sleutel. De sleutel kan worden gewijzigd met aanvraag headers met behulp van de `vary-by` Eigenschappen. Dit is handig voor het in de cache opslaan van volledige HTTP-antwoorden (ook wel-voors tellingen), maar soms is het handig om alleen een gedeelte van een weer gave in de cache op te slaan. De nieuwe beleids regels voor [cache-lookup-value](./api-management-caching-policies.md#GetFromCacheByKey) en [cache-Store-value](./api-management-caching-policies.md#StoreToCacheByKey) bieden de mogelijkheid om wille keurige stukjes gegevens op te slaan en op te halen uit de beleids definities. Deze mogelijkheid voegt ook waarde toe aan het eerder geïntroduceerde beleid voor het [verzenden van aanvragen](./api-management-advanced-policies.md#SendRequest) omdat u nu reacties van externe services kunt opslaan in de cache.
+De Azure API Management-service heeft ingebouwde ondersteuning voor [http-antwoord cache](api-management-howto-cache.md) met behulp van de resource-URL als sleutel. De sleutel kan worden gewijzigd met aanvraag headers met behulp van de `vary-by` Eigenschappen. Dit is handig voor het in de cache opslaan van volledige HTTP-antwoorden (ook wel bekend als weer geven), maar soms is het handig om alleen een deel van een representatie in de cache op te slaan. De nieuwe beleids regels voor [cache-lookup-value](./api-management-caching-policies.md#GetFromCacheByKey) en [cache-Store-value](./api-management-caching-policies.md#StoreToCacheByKey) bieden de mogelijkheid om wille keurige stukjes gegevens op te slaan en op te halen uit de beleids definities. Deze mogelijkheid voegt ook waarde toe aan het eerder geïntroduceerde beleid voor het [verzenden van aanvragen](./api-management-advanced-policies.md#SendRequest) omdat u nu reacties van externe services kunt opslaan in de cache.
 
 ## <a name="architecture"></a>Architectuur
 API Management-service maakt gebruik van een gedeelde gegevens cache per Tenant, zodat u, wanneer u omhoog schaalt naar meerdere eenheden, u nog steeds toegang krijgt tot dezelfde gegevens in de cache. Wanneer u werkt met een implementatie met meerdere regio's, zijn er echter onafhankelijke caches in elk van de regio's. Het is belang rijk dat u de cache niet als een gegevens archief behandelt, waarbij het de enige bron is van een deel van de gegevens. Als u dit hebt gedaan en later besluit om te profiteren van de implementatie met meerdere regio's, kunnen klanten met gebruikers die onderweg geen toegang meer hebben tot de gegevens in de cache.

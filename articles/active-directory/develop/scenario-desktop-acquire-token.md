@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 85fb188028e0e61378b1e47c1fb7b88eaaa4d7a0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 1caddf2fba8544bfbb1108865a459f4166af680b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541920"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846068"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Bureau blad-app voor het aanroepen van web-Api's: een Token ophalen
 
@@ -105,7 +105,7 @@ if not result:
     result = app.acquire_token_by_xxx(scopes=config["scope"])
 ```
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>In MSAL voor iOS en macOS
 
@@ -374,7 +374,7 @@ if not result:
 
 ```
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>In MSAL voor iOS en macOS
 
@@ -590,7 +590,7 @@ private static IAuthenticationResult acquireTokenIwa() throws Exception {
 
 Deze stroom wordt nog niet ondersteund in MSAL python.
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 Deze stroom is niet van toepassing op macOS.
 
@@ -913,7 +913,7 @@ if not result:
         config["username"], config["password"], scopes=config["scope"])
 ```
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 Deze stroom wordt niet ondersteund op MSAL voor macOS.
 
@@ -921,7 +921,7 @@ Deze stroom wordt niet ondersteund op MSAL voor macOS.
 
 ## <a name="command-line-tool-without-a-web-browser"></a>Opdracht regel programma zonder webbrowser
 
-### <a name="device-code-flow"></a>Toestel code stroom
+### <a name="device-code-flow"></a>Stroom voor apparaatcode
 
 Als u een opdracht regel programma schrijft dat geen Webbe sturings elementen heeft en u de voor gaande stromen niet of wilt gebruiken, moet u de code stroom van het apparaat gebruiken.
 
@@ -1144,7 +1144,7 @@ if not result:
         # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
 ```
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 Deze stroom is niet van toepassing op macOS.
 

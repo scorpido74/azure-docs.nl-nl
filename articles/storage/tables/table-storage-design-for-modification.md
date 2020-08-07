@@ -1,6 +1,6 @@
 ---
 title: Azure-tabel opslag ontwerpen voor het wijzigen van gegevens | Microsoft Docs
-description: Ontwerp tabellen voor het wijzigen van gegevens in azure-tabel opslag.
+description: Ontwerp tabellen voor het wijzigen van gegevens in azure-tabel opslag. Invoeg-, bijwerk-en verwijder bewerkingen optimaliseren. Zorg ervoor dat uw opgeslagen entiteiten consistent zijn.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f48cbf198e8a12d4f35293b285e6cb09bef29a1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75771543"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826463"
 ---
 # <a name="design-for-data-modification"></a>Ontwerp voor gegevenswijziging
 Dit artikel richt zich op de ontwerp overwegingen voor het optimaliseren van invoegingen, updates en verwijderingen. In sommige gevallen moet u de afweging evalueren tussen de ontwerpen die worden geoptimaliseerd voor het uitvoeren van query's op ontwerpen die worden geoptimaliseerd voor het wijzigen van gegevens, net zoals bij ontwerpen voor relationele data bases (hoewel de technieken voor het beheer van de ontwerp traden verschillen in een relationele data base). In de sectie tabel ontwerp patronen worden een aantal gedetailleerde ontwerp patronen voor de Table service beschreven en worden enkele van deze trans acties gemarkeerd. In de praktijk zult u merken dat veel modellen die zijn geoptimaliseerd voor het uitvoeren van query's, ook geschikt zijn voor het wijzigen van entiteiten.  

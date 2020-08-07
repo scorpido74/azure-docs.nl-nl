@@ -3,7 +3,7 @@ title: Een toegangs pakket aanvragen-Azure AD-rechts beheer
 description: Meer informatie over het gebruik van de portal mijn toegang om toegang aan te vragen tot een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e744adeae55252ec70c8f766db1e29a3898886c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 527255653bf2779b36e0e463cd32a0b334c00f96
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078108"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798491"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Toegang tot een toegangs pakket aanvragen in het beheer van rechten van Azure AD
 
@@ -57,9 +57,9 @@ Zodra u het toegangs pakket hebt gevonden in de portal van mijn toegang, kunt u 
 
 1. Klik op het vinkje om het toegangs pakket te selecteren.
 
-1. Klik op **toegang aanvragen** om het deel venster toegang aanvragen te openen.
+1. Klik op **Toegang aanvragen** om het deelvenster Toegang aanvragen te openen.
 
-    ![Mijn Access-Portal-toegangs pakketten](./media/entitlement-management-request-access/my-access-request-access-button.png)
+    ![Portal Mijn toegang - Toegangspakketten](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
 1. Als het vak **zakelijke rechtvaardiging** wordt weer gegeven, typt u een motivering voor toegang nodig.
 
@@ -67,7 +67,7 @@ Zodra u het toegangs pakket hebt gevonden in de portal van mijn toegang, kunt u 
 
 1. Geef indien nodig de begin datum en eind datum op.
 
-    ![Mijn Access-portal-toegang aanvragen](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Portal Mijn toegang - Toegang aanvragen](./media/entitlement-management-shared/my-access-request-access.png)
 
 1. Wanneer u klaar bent, klikt u op **verzenden** om uw aanvraag in te dienen.
 

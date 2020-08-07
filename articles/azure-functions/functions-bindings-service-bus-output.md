@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 559198c4ecbbc86cc82ce8b286d9608170e161c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: c377d9882b59731857641e1f593dd6b7b24ca7f9
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079720"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844079"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus uitvoer binding voor Azure Functions
 
@@ -284,7 +284,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' serviceBus '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op out. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. Ingesteld op ' $return ' om te verwijzen naar de retour waarde van de functie. |
+|**name** | N.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. Ingesteld op ' $return ' om te verwijzen naar de retour waarde van de functie. |
 |**queueName**|**QueueName**|De naam van de wachtrij.  Stel deze waarde alleen in als u wachtrij berichten verzendt, niet voor een onderwerp.
 |**onderwerpnaam**|**Onderwerpnaam**|De naam van het onderwerp. Stel deze waarde alleen in als er onderwerp-berichten worden verzonden, niet voor een wachtrij.|
 |**Combi**|**Verbinding**|De naam van een app-instelling die de Service Bus connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met "AzureWebJobs", kunt u alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' MyServiceBus ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyServiceBus '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard Service Bus Connection String in de app-instelling met de naam ' AzureWebJobsServiceBus '.<br><br>Volg de stappen die worden weer gegeven in [de beheer referenties ophalen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)om een Connection String te verkrijgen. De connection string moet voor een Service Bus naam ruimte zijn, niet beperkt tot een specifieke wachtrij of een specifiek onderwerp.|
@@ -346,7 +346,7 @@ Gebruik de [Azure service bus SDK](../service-bus-messaging/index.yml) in plaats
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Verwijzing |
+| Binding | Naslaginformatie |
 |---|---|
 | Service Bus | [Service Bus fout codes](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | Service Bus | [Service Bus limieten](../service-bus-messaging/service-bus-quotas.md) |
@@ -388,7 +388,7 @@ Als u hebt `isSessionsEnabled` ingesteld op `true` , `sessionHandlerOptions` wor
 |---------|---------|---------|
 |prefetchCount|0|Hiermee wordt het aantal berichten opgehaald of ingesteld dat de ontvanger van het bericht tegelijk kan aanvragen.|
 |maxAutoRenewDuration|00:05:00|De maximale duur waarbinnen de bericht vergrendeling automatisch wordt vernieuwd.|
-|Automatisch aanvullen|true|Hiermee wordt aangegeven of de trigger automatisch moet worden voltooid na de verwerking, of dat de functie code hand matig wordt aangeroepen.<br><br>De instelling in `false` wordt alleen ondersteund in C#.<br><br>Als deze `true` optie is ingesteld op, wordt het bericht automatisch door de trigger voltooid als de uitvoering van de functie is voltooid en wordt het bericht anders afgebroken.<br><br>Wanneer dit is ingesteld op `false` , bent u verantwoordelijk voor het aanroepen van [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -methoden om het bericht te volt ooien, te annuleren of deadletter. Als er een uitzonde ring wordt gegenereerd (en geen van de `MessageReceiver` methoden worden genoemd), blijft de vergren deling. Zodra de vergren deling is verlopen, wordt het bericht opnieuw in de wachtrij geplaatst `DeliveryCount` en wordt de vergren deling automatisch verlengd.<br><br>In functies zonder C # worden uitzonde ringen in de functie uitgevoerd in de runtime-aanroepen `abandonAsync` op de achtergrond. Als er geen uitzonde ring optreedt, `completeAsync` wordt deze op de achtergrond aangeroepen. |
+|Automatisch aanvullen|waar|Hiermee wordt aangegeven of de trigger automatisch moet worden voltooid na de verwerking, of dat de functie code hand matig wordt aangeroepen.<br><br>De instelling in `false` wordt alleen ondersteund in C#.<br><br>Als deze `true` optie is ingesteld op, wordt het bericht automatisch door de trigger voltooid als de uitvoering van de functie is voltooid en wordt het bericht anders afgebroken.<br><br>Wanneer dit is ingesteld op `false` , bent u verantwoordelijk voor het aanroepen van [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -methoden om het bericht te volt ooien, te annuleren of deadletter. Als er een uitzonde ring wordt gegenereerd (en geen van de `MessageReceiver` methoden worden genoemd), blijft de vergren deling. Zodra de vergren deling is verlopen, wordt het bericht opnieuw in de wachtrij geplaatst `DeliveryCount` en wordt de vergren deling automatisch verlengd.<br><br>In functies zonder C # worden uitzonde ringen in de functie uitgevoerd in de runtime-aanroepen `abandonAsync` op de achtergrond. Als er geen uitzonde ring optreedt, `completeAsync` wordt deze op de achtergrond aangeroepen. |
 |maxConcurrentCalls|16|Het maximum aantal gelijktijdige aanroepen naar de call back dat de bericht pomp moet initiëren per geschaald exemplaar. De functie runtime verwerkt standaard meerdere berichten tegelijk.|
 |maxConcurrentSessions|2000|Het maximum aantal sessies dat gelijktijdig kan worden verwerkt per geschaald exemplaar.|
 

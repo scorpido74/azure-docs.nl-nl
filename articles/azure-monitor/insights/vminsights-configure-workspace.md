@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 10c4f0ba4bfc88017304c228ca1afce4ba863118
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 40ff7bfe713f401a23dea0b3660be1b7728a1380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328302"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828554"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Log Analytics werkruimte configureren voor Azure Monitor voor VM's
 Azure Monitor voor VM's verzamelt gegevens uit een of meer Log Analytics-werk ruimten in Azure Monitor. Voordat u agents voorbereidt, moet u een werk ruimte maken en configureren. In dit artikel worden de vereisten van de werk ruimte beschreven en om deze voor Azure Monitor voor VM's te configureren.
@@ -40,10 +40,10 @@ U kunt een nieuwe Log Analytics-werk ruimte maken met behulp van een van de volg
 
 * [Azure-portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure-CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 Azure Monitor voor VM's ondersteunt Log Analytics-werk ruimten in de volgende regio's, hoewel u virtuele machines in elke regio kunt bewaken. De virtuele machines zelf zijn niet beperkt tot de regio's die worden ondersteund door de Log Analytics-werk ruimte.
 

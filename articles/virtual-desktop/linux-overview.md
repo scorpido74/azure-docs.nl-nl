@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dc9d62141a63574a6796982542cb1491108eedc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f91e130bfa83c6a9b116c05d7293aa70945e2dc2
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259861"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903541"
 ---
 # <a name="linux-support"></a>Linux Support
 
-Partners kunnen de Linux SDK voor Windows Virtual Desktop gebruiken om een zelfstandige virtueel-bureaubladclient voor Windows te bouwen. U kunt dit ook gebruiken om ondersteuning van Windows virtueel bureau blad in te scha kelen voor uw client toepassing. In deze korte hand leiding wordt uitgelegd wat de Linux SDK is en hoe u deze kunt gebruiken.
+U hebt toegang tot de virtuele bureau blad-resources van Windows vanaf uw Linux-apparaten met de volgende ondersteunde clients, die door onze thin client-partners van Linux worden geboden. We werken samen met een aantal partners om ondersteunde Windows virtual desktop-clients in te scha kelen op meer Linux-gebaseerde besturings systemen en apparaten. Als u ondersteuning voor Windows virtueel bureau blad wilt bieden op een Linux-platform dat hier niet wordt vermeld, laat het ons weten op onze [UserVoice-pagina](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
 
 ## <a name="connect-with-your-linux-device"></a>Verbinding maken met uw Linux-apparaat
 
@@ -29,14 +29,7 @@ De volgende partners hebben goedgekeurde Windows virtual desktop-clients voor Li
 
 ## <a name="what-is-the-linux-sdk"></a>Wat is de Linux SDK?
 
-U kunt de SDK-Api's gebruiken om bron feeds op te halen, verbinding te maken met de sessies van een bureau blad of externe toepassing en veel van de omleidingen te gebruiken die onze clients van de eerste partij ondersteunen.
-
-> [!NOTE]
-> De SDK is momenteel in ontwikkeling. Dit document wordt bijgewerkt met instructies voor toegang tot de SDK wanneer deze algemeen beschikbaar is.
-
-### <a name="supported-linux-distributions"></a>Ondersteunde Linux-distributies
-
-De SDK is compatibel met de meeste besturings systemen op basis van Ubuntu 18,04 of hoger. Als u een andere Linux-distributie hebt, kunt u met u samen werken om erachter te komen hoe u uw behoeften het beste wordt ondersteund.
+Linux thin client-partners kunnen gebruikmaken van de virtuele bureau blad Linux SDK Api's van Windows om bron feeds op te halen, verbinding te maken met de sessies van een bureau blad of externe toepassingen en veel van de omleidingen te gebruiken die onze clients van de eerste partij ondersteunen. De SDK is compatibel met de meeste besturings systemen op basis van Ubuntu 18,04 of hoger.
 
 ### <a name="feature-support"></a>Functie ondersteuning
 
@@ -57,13 +50,6 @@ De SDK ondersteunt meerdere verbindingen met Desktop-en externe toepassings sess
 De SDK biedt ook ondersteuning voor meerdere monitor configuraties, op voor waarde dat de monitors die u voor uw sessie selecteert, aaneengesloten zijn.
 
 Dit document wordt bijgewerkt tijdens het toevoegen van ondersteuning voor nieuwe functies en omleidingen. Ga naar onze [UserVoice-pagina](https://go.microsoft.com/fwlink/?linkid=2116523)als u nieuwe functies en andere verbeteringen wilt Voorst Ellen.
-
-## <a name="get-started-with-the-linux-sdk"></a>Aan de slag met de Linux SDK
-
-Voordat u een Linux-client voor Windows virtueel bureau blad kunt ontwikkelen, moet u het volgende doen:
-
-1. Bouw en implementeer een Windows Virtual Desktop-omgeving voor het testen of productie gebruik.
-2. Test de beschik bare clients van de eerste partij om vertrouwd te raken met de gebruikers ervaring van het virtuele Windows-bureau blad.
 
 ## <a name="next-steps"></a>Volgende stappen
 
