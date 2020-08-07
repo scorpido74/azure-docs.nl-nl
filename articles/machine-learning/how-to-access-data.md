@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
-ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: how-to, seodec18, devx-track-python
+ms.openlocfilehash: 90de785d56e50885a13d43faa77f087d1235ea18
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496097"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852528"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Zie het artikel over [beveiligde toegang](concept-data.md#data-workflow) als u w
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig:
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 - Een Azure-opslag account met een [ondersteund opslag type](#matrix).
 
@@ -124,7 +124,7 @@ Wanneer u een Azure Storage-oplossing registreert als een gegevens opslag, maakt
 In deze sectie vindt u voor beelden van het maken en registreren van een gegevens opslag via de python-SDK voor de volgende opslag typen. De para meters die in deze voor beelden worden opgegeven, zijn de **vereiste para meters** voor het maken en registreren van een gegevens opslag.
 
 * [Azure Blob-container](#azure-blob-container)
-* [Azure-bestands share](#azure-file-share)
+* [Azure-bestandsshare](#azure-file-share)
 * [Azure Data Lake Storage generatie 2](#azure-data-lake-storage-generation-2)
 
  Zie de [documentatie van de betreffende `register_azure_*` methoden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)voor het maken van gegevens opslag voor andere ondersteunde opslag Services.
@@ -259,10 +259,10 @@ U kunt ook de standaard gegevens opslag wijzigen met de volgende code. Deze moge
 
 Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken voor het scoren van punten. Sommige van deze methoden bieden geen toegang tot gegevens opslag. Gebruik de volgende tabel om inzicht te krijgen in de methoden waarmee u toegang hebt tot gegevens opslag in de Score:
 
-| Methode | Toegang tot Data Store | Description |
+| Methode | Toegang tot Data Store | Beschrijving |
 | ----- | :-----: | ----- |
 | [Batchvoorspelling](how-to-use-parallel-run-step.md) | ✔ | Doe asynchroon voorspellingen op grote hoeveelheden gegevens. |
-| [-Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |
+| [Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |
 | [Module Azure IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen om apparaten te IoT Edge. |
 
 In situaties waarin de SDK geen toegang biedt tot gegevens opslag, kunt u mogelijk aangepaste code maken met behulp van de relevante Azure SDK om toegang te krijgen tot de data. De [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python) is bijvoorbeeld een client bibliotheek die u kunt gebruiken om toegang te krijgen tot gegevens die zijn opgeslagen in blobs of bestanden.

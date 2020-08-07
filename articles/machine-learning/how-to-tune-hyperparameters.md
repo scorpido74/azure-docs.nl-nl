@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: a41fe159f3ac7ef91ba943534aaa6baeeab83001
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: c1c11d16be6bd5eb7381a811216323680fe74c08
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552404"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849366"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Hyper parameters voor uw model afstemmen met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

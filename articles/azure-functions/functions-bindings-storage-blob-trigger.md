@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 06c4ecd92368487af3110e84391ec721700a95aa
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-python
+ms.openlocfilehash: 28b608446c543fc568a5c322ffce1df6100d4a73
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461167"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852460"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob-opslag trigger voor Azure Functions
 
@@ -279,7 +279,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `blobTrigger` . Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. Uitzonde ringen worden vermeld in de sectie [gebruik](#usage) . |
-|**naam** | N.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt. |
+|**name** | N.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt. |
 |**programmapad** | **BlobPath** |De [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) die moet worden bewaakt.  Dit kan een [patroon](#blob-name-patterns)voor een BLOB-naam zijn. |
 |**Combi** | **Verbinding** | De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met de naam `AzureWebJobsStorage` .<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, geen [Blob Storage-account](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
