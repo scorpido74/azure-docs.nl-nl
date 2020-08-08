@@ -7,14 +7,14 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: NSG Flow-logboeken configureren met ARM-sjabloon
-      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
     - name: Probleem met VM-verkeersfilter vaststellen - Portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Probleem met VM-verkeersfilter vaststellen - PowerShell
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: Probleem met VM-verkeersfilter vaststellen - Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
+    - name: NSG Flow-logboeken configureren met ARM-sjabloon
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: Zelfstudies
   items:
     - name: Een VM-routeringsprobleem vaststellen

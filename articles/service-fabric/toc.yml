@@ -671,7 +671,7 @@
                 - name: Programmatisch uitschalen
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: Primair knooppunttype omhoog schalen
-                  href: service-fabric-scale-up-node-type.md
+                  href: service-fabric-scale-up-primary-node-type.md
                 - name: Een knooppunttype toevoegen
                   href: virtual-machine-scale-set-scale-node-type-scale-out.md
                 - name: Een knooppunttype verwijderen

@@ -298,6 +298,9 @@
               displayName: 'firstline worker, frontline worker, flw'
             - name: Openbare client-apps met enkele of meerdere acocunts
               href: single-multi-account.md
+            - name: Fouten en uitzonderingen verwerken
+              href: msal-android-handling-exceptions.md
+              displayName: 'android, mobile'
             - name: Logboekregistratie
               href: msal-logging.md?tabs=android
         - name: iOS en macOS

@@ -55,7 +55,7 @@
         - name: Aangepaste modellen beheren
           href: how-to-manage-model.md
         - name: Modellen parseren en valideren
-          href: how-to-use-parser.md
+          href: how-to-parse-models.md
         - name: Tags toevoegen
           href: how-to-use-tags.md
     - name: Live uitvoeringsomgeving gebruiken
