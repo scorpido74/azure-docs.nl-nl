@@ -1,6 +1,6 @@
 ---
 title: Een toegankelijke toewijzings toepassing maken met Azure Maps | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u een toepassing bouwt met toegankelijkheids functies met behulp van Microsoft Azure Maps.
+description: Meer informatie over toegankelijkheids overwegingen in Azure Maps. Bekijk welke functies beschikbaar zijn voor het toegankelijk maken van kaart toepassingen en Bekijk tips voor toegankelijkheid.
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242369"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006210"
 ---
 # <a name="building-an-accessible-application"></a>Een toegankelijke toepassing bouwen
 
@@ -142,12 +142,12 @@ Hier volgen enkele extra tips om uw webtoewijzings toepassing toegankelijker te 
     - Wacht totdat de toewijzing is voltooid om de scherm lezer bij te werken.
     - De updates tot één keer per seconde beperken. 
     - Combi neer berichten op logische wijze samen. 
-- Vermijd het gebruik van kleur als enige manier om informatie over te brengen. Gebruik tekst, pictogrammen of patronen om de kleur aan te vullen of te vervangen. Enkele overwegingen:
+- Vermijd het gebruik van kleur als enige manier om informatie over te brengen. Gebruik tekst, pictogrammen of patronen om de kleur aan te vullen of te vervangen. Enkele aandachtspunten:
     - Als u een Bubble laag gebruikt om de relatieve waarde tussen gegevens punten weer te geven, kunt u overwegen om de RADIUS van elke bel te schalen, de ballon te kleuren of beide. 
     - Overweeg het gebruik van een symbool laag met verschillende pictogrammen voor verschillende metrische categorieën, zoals drie hoeken, sterren en kwadraten. De Symbol-laag biedt ook ondersteuning voor het schalen van de grootte van het pictogram. Er kan ook een tekst label worden weer gegeven.
     - Als regel gegevens worden weer gegeven, kan de breedte worden gebruikt om het gewicht of de grootte aan te geven. Een patroon met een streepjes matrix kan worden gebruikt om verschillende categorieën met lijnen weer te geven. Een symbool laag kan worden gebruikt in combi natie met een lijn om pictogrammen langs de lijn te bedekken. Het gebruik van een pijl pictogram is handig voor het weer geven van de stroom of richting van de regel.
     - Als er veelhoek gegevens worden weer gegeven, kan een patroon, zoals strepen, worden gebruikt als alternatief voor kleur. 
-- Sommige visualisaties, zoals Heatmaps, tegel lagen en afbeeldings lagen, zijn niet toegankelijk voor gebruikers met een visuele handicap. Enkele overwegingen:
+- Sommige visualisaties, zoals Heatmaps, tegel lagen en afbeeldings lagen, zijn niet toegankelijk voor gebruikers met een visuele handicap. Enkele aandachtspunten:
     - De scherm lezer beschrijven wat de laag wordt weer gegeven wanneer deze wordt toegevoegd aan de kaart. Als er bijvoorbeeld een weer gave laag met het radar diagram wordt weer gegeven, laat u de scherm lezer zien dat "weer radar gegevens op de kaart worden overlapt".
 - Beperk de hoeveelheid functionaliteit waarvoor een muis aanwijzer nodig is. Deze functionaliteit is niet toegankelijk voor gebruikers die een toetsen bord of aanraak apparaat gebruiken om te communiceren met uw toepassing. Houd er rekening mee dat het een goed idee is om een aanwijs stijl te hebben voor interactieve inhoud, zoals klikbaar pictogrammen, koppelingen en knoppen.
 - Probeer uw toepassing te navigeren met behulp van het toetsen bord. Zorg ervoor dat de volg orde van het tabblad logisch is.

@@ -1,24 +1,22 @@
 ---
 title: Problemen met Windows Virtual Desktop Session Host oplossen-Azure
 description: Problemen oplossen bij het configureren van virtuele machines voor virtuele bureau blad-sessies van Windows.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f0665aa8427371fa458039d73297fa0e02b4eb4d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286373"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005232"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 Gebruik dit artikel voor het oplossen van problemen die zich voordoen bij het configureren van de virtuele machines (Vm's) voor virtuele bureau blad-sessies van Windows.
 
@@ -138,8 +136,8 @@ Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd o
 
 **Oplossen:** Volg deze instructies om de register fout van de agent op te lossen.
 
-1. Als er al een registratie token bestaat, verwijdert u het met Remove-AzWvdRegistrationInfo. 
-2. Voer de cmdlet **New-AzWvdRegistrationInfo** uit om een nieuw token te genereren. 
+1. Als er al een registratie token bestaat, verwijdert u het met Remove-AzWvdRegistrationInfo.
+2. Voer de cmdlet **New-AzWvdRegistrationInfo** uit om een nieuw token te genereren.
 3. Controleer of de para meter *-ExpriationTime* is ingesteld op 3 dagen.
 
 ### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Fout: Windows Virtual Desktop agent rapporteert geen heartbeat bij het uitvoeren van Get-AzWvdSessionHost
@@ -305,7 +303,7 @@ Als u zich met een Administrator-account aanmeldt bij Windows 10 Enter prise mul
 
 Als de tijds limiet verloopt, wordt een fout bericht weer gegeven met de tekst ' de externe sessie is beëindigd omdat er geen Extern bureaublad licenties voor client toegang beschikbaar zijn voor deze computer. '
 
-Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de meest recente Windows-updates heeft geïnstalleerd of dat u de Extern bureaublad licentie modus instelt via groeps beleid. Volg de stappen in de volgende secties om de groeps beleids instelling te controleren, de versie van Windows 10 Enter prise multi-session te identificeren en de bijbehorende update te installeren.  
+Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de meest recente Windows-updates heeft geïnstalleerd of dat u de Extern bureaublad licentie modus instelt via groeps beleid. Volg de stappen in de volgende secties om de groeps beleids instelling te controleren, de versie van Windows 10 Enter prise multi-session te identificeren en de bijbehorende update te installeren.
 
 >[!NOTE]
 >Voor het virtuele bureau blad van Windows is alleen een RDS-Client Access License (CAL) vereist wanneer uw hostgroep Windows Server Session hosts bevat. Zie [licentie voor uw RDS-implementatie met licenties voor client toegang](/windows-server/remote/remote-desktop-services/rds-client-access-license/)voor meer informatie over het configureren van een RDS CAL.

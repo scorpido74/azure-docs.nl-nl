@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010304"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009610"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
@@ -47,7 +47,7 @@ U kunt de volgende instellingen weer geven en configureren met behulp van het **
     * [Virtual Network](#virtual-network)
     * [Firewall](#firewall)
     * [Eigenschappen](#properties)
-    * [Vergren delingen](#locks)
+    * [Vergrendelingen](#locks)
     * [Automation-script](#automation-script)
 * Beheer
     * [Gegevens importeren](#importexport)
@@ -99,7 +99,7 @@ De sectie **instellingen** biedt u de mogelijkheid om de volgende instellingen v
 * [Virtual Network](#virtual-network)
 * [Firewall](#firewall)
 * [Eigenschappen](#properties)
-* [Vergren delingen](#locks)
+* [Vergrendelingen](#locks)
 * [Automation-script](#automation-script)
 
 
@@ -185,12 +185,12 @@ Elke prijs categorie heeft verschillende limieten voor client verbindingen, gehe
 
 | Azure-cache voor redis-metriek | Meer informatie |
 | --- | --- |
-| Gebruik van netwerkbandbreedte |[Beschik bare band breedte in cache opslaan](cache-faq.md#cache-performance) |
+| Gebruik van netwerkbandbreedte |[Beschik bare band breedte in cache opslaan](cache-planning-faq.md#azure-cache-for-redis-performance) |
 | Verbonden clients |[Standaard redis-server configuratie-MaxClients](#maxclients) |
 | Server belasting |[Gebruiks grafieken-redis-server belasting](cache-how-to-monitor.md#usage-charts) |
-| Geheugengebruik |[Cache prestaties-grootte](cache-faq.md#cache-performance) |
+| Geheugengebruik |[Cache prestaties-grootte](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-Als u uw cache wilt bijwerken, klikt u op **Nu bijwerken** om de prijs categorie te wijzigen en uw cache te [schalen](#scale) . Zie voor meer informatie over het kiezen van een prijs categorie [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Als u uw cache wilt bijwerken, klikt u op **Nu bijwerken** om de prijs categorie te wijzigen en uw cache te [schalen](#scale) . Zie [de juiste laag kiezen](cache-overview.md#choosing-the-right-tier) voor meer informatie over het kiezen van een prijs categorie
 
 
 ### <a name="scale"></a>Schalen
@@ -414,7 +414,7 @@ Nieuwe Azure-cache voor redis-exemplaren worden geconfigureerd met de volgende s
   * P4 (53 GB-530 GB)-Maxi maal 64 data bases
   * Alle Premium-caches met redis-cluster enabled-redis cluster ondersteunt alleen het gebruik van data base 0, dus de `databases` limiet voor een Premium-cache waarvoor redis-cluster is ingeschakeld, is in feite 1 en de [selectie](https://redis.io/commands/select) opdracht is niet toegestaan. Zie voor meer informatie [moet ik wijzigingen aanbrengen in mijn client toepassing voor het gebruik van clusters?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-Zie [Wat zijn redis-data bases?](cache-faq.md#what-are-redis-databases) voor meer informatie over data bases.
+Zie [Wat zijn redis-data bases?](cache-development-faq.md#what-are-redis-databases) voor meer informatie over data bases.
 
 > [!NOTE]
 > De `databases` instelling kan alleen worden geconfigureerd tijdens het maken van de cache en alleen Power shell, CLI of andere management-clients gebruiken. Zie New-AzRedisCache voor een voor beeld van het configureren van het maken van een `databases` cache met behulp van Power shell. [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)
@@ -505,4 +505,4 @@ U kunt uw cache verplaatsen naar een nieuw abonnement door te klikken op **verpl
 Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor informatie over het verplaatsen van resources van de ene resource groep naar een andere en van het ene naar het andere abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor meer informatie over het werken met redis-opdrachten [Hoe kan ik redis-opdrachten uitvoeren?](cache-faq.md#how-can-i-run-redis-commands)
+* Zie voor meer informatie over het werken met redis-opdrachten [Hoe kan ik redis-opdrachten uitvoeren?](cache-development-faq.md#how-can-i-run-redis-commands)

@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530166"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004184"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs
 
@@ -50,7 +50,7 @@ Als u Mobile Apps wilt gebruiken als uw back-end-service, raadpleegt u de [Mobil
 1. Open de app voor het weer geven van één pagina die u hebt gemaakt in de zelf studie [Push meldingen verzenden naar IOS-apps met behulp van Azure notification hubs](ios-sdk-get-started.md) .
 
    > [!NOTE]
-   > In deze sectie wordt ervan uitgegaan dat uw project is geconfigureerd met een lege organisatie naam. Als dat niet het geval is, moet u de naam van uw organisatie laten voorafgaan door aan alle klassen namen.
+   > In deze sectie wordt ervan uitgegaan dat uw project is geconfigureerd met een lege organisatie naam. Als dat niet het geval is, laten voorafgaan door u de naam van uw organisatie op alle klassen namen.
 
 2. Voeg in het `Main.storyboard` bestand de onderdelen toe die in de scherm opname van de object bibliotheek worden weer gegeven.
 
@@ -66,7 +66,7 @@ Als u Mobile Apps wilt gebruiken als uw back-end-service, raadpleegt u de [Mobil
 
      Sommige onderdelen zijn toegevoegd aan de zelf studie [Push meldingen verzenden naar IOS-apps met behulp van Azure notification hubs](ios-sdk-get-started.md) .
 
-3. Sleep vanuit de onderdelen in de weer gave **CTRL** naar `ViewController.h` en voeg deze nieuwe uitgangen toe.
+3. **Ctrl** Sleep de elementen in de weer gave naar `ViewController.h` en voeg deze nieuwe mogelijkheden toe met CTRL:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +86,13 @@ Als u Mobile Apps wilt gebruiken als uw back-end-service, raadpleegt u de [Mobil
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. `ViewController.h`Voeg in het volgende toe `#define` na uw import-instructies. Vervang de `<Enter Your Backend Endpoint>` tijdelijke aanduiding door de doel-URL die u hebt gebruikt voor het implementeren van de back-end van uw app in de vorige sectie. Bijvoorbeeld `http://your_backend.azurewebsites.net`.
+4. `ViewController.h`Voeg in het volgende toe `#define` na uw import-instructies. Vervang de `<Your backend endpoint>` tijdelijke aanduiding door de doel-URL die u hebt gebruikt voor het implementeren van de back-end van uw app in de vorige sectie. Bijvoorbeeld `http://your_backend.azurewebsites.net` :
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
-5. Maak in uw project een nieuwe cacao Touch-klasse `RegisterClient` met de naam naar de interface met de back-end van de ASP.net die u hebt gemaakt. De klasse van overnemen van maken `NSObject` . Voeg vervolgens de volgende code toe in de `RegisterClient.h` .
+5. Maak in uw project een nieuwe cacao Touch-klasse `RegisterClient` met de naam naar de interface met de back-end van de ASP.net die u hebt gemaakt. De klasse van overnemen van maken `NSObject` . Voeg vervolgens de volgende code toe in de `RegisterClient.h` :
 
     ```objc
     @interface RegisterClient : NSObject
@@ -494,7 +494,7 @@ Als u Mobile Apps wilt gebruiken als uw back-end-service, raadpleegt u de [Mobil
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u pushmeldingen kunt verzenden naar specifieke gebruikers door een tag te koppelen aan hun registraties. Als u wilt weten hoe u locatiegebaseerde pushmeldingen kunt verzenden, gaat u verder met de volgende zelfstudie: 
+In deze zelfstudie hebt u geleerd hoe u pushmeldingen kunt verzenden naar specifieke gebruikers door een tag te koppelen aan hun registraties. Als u wilt weten hoe u locatiegebaseerde pushmeldingen kunt verzenden, gaat u verder met de volgende zelfstudie:
 
 > [!div class="nextstepaction"]
 >[Locatiegebaseerde pushmeldingen verzenden](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

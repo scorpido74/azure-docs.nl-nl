@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/23/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bc9bc034abce789046803bbcad5b750984c905cb
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: f88fc4a1fd5c44b515ab44b604ebf9a885165ddc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809524"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007996"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -50,7 +50,9 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
 1. Selecteer op de pagina **script genereren** in de vervolg keuzelijst **besturings systeem** het besturings systeem waarop het script wordt uitgevoerd.
 
 1. Als de computer communiceert via een proxy server om verbinding te maken met internet, selecteert u **volgende: proxy server**.
+
 1. Geef op het tabblad **proxy server** het IP-adres van de proxy server of de naam en het poort nummer op dat door de computer wordt gebruikt om te communiceren met de proxy server. Voer de waarde in de notatie in `http://<proxyURL>:<proxyport>` .
+
 1. Selecteer **controleren + genereren**.
 
 1. Controleer de overzichts gegevens op het tabblad **controleren en genereren** en selecteer vervolgens **downloaden**. Als u nog wijzigingen wilt aanbrengen, selecteert u **vorige**.
@@ -65,7 +67,7 @@ U kunt de aangesloten machine agent hand matig installeren door de Windows Insta
 >* Als u de agent wilt installeren of verwijderen, moet u over *beheerders* machtigingen beschikken.
 >* U moet eerst het installatie pakket downloaden en kopiëren naar een map op de doel server of vanuit een gedeelde netwerkmap. Als u het installatie pakket zonder opties uitvoert, wordt een installatie wizard gestart die u kunt volgen om de agent interactief te installeren.
 
-Als de machine moet communiceren via een proxy server met de-service, moet u na de installatie van de agent een opdracht uitvoeren die verderop in het artikel wordt beschreven. Hiermee stelt u de systeem omgevingsvariabele van de proxy server in `https_proxy` .
+Als de machine moet communiceren via een proxy server naar de service, moet u na de installatie van de agent een opdracht uitvoeren die wordt beschreven in de onderstaande stappen. Met deze opdracht wordt de systeem omgevings variabele proxy server ingesteld `https_proxy` .
 
 Als u niet bekend bent met de opdracht regel opties voor Windows Installer-pakketten, raadpleegt u [Msiexec Standard-opdracht regel opties](/windows/win32/msi/standard-installer-command-line-options) en [Msiexec-opdracht regel opties](/windows/win32/msi/command-line-options).
 
@@ -75,13 +77,32 @@ Voer bijvoorbeeld het installatie programma uit met de `/?` para meter om de opt
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-Voer de volgende opdracht uit om de agent op de achtergrond te installeren en een installatie logboek bestand te maken in de `C:\Support\Logs` map die bestaat.
+1. Voer de volgende opdracht uit om de agent op de achtergrond te installeren en een installatie logboek bestand te maken in de `C:\Support\Logs` map die bestaat.
 
-```dos
-msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
-```
+    ```dos
+    msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
+    ```
 
-Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
+    Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
+
+2. Als de machine moet communiceren via een proxy server, voert u de volgende opdracht uit om de proxy server-omgevings variabele in te stellen:
+
+    ```powershell
+    [Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
+    $env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+    # For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
+    Restart-Service -Name himds
+    ```
+
+    >[!NOTE]
+    >De agent biedt geen ondersteuning voor het instellen van proxy verificatie in deze preview.
+    >
+
+3. Nadat u de agent hebt geïnstalleerd, moet u deze configureren om te communiceren met de Azure Arc-service door de volgende opdracht uit te voeren:
+
+    ```dos
+    "%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"
+    ```
 
 ### <a name="install-with-the-scripted-method"></a>Installeren met de script methode
 
@@ -97,34 +118,13 @@ Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleeg
 
 Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
 
-### <a name="configure-the-agent-proxy-setting"></a>De proxy-instelling voor de agent configureren
-
-Als u de omgevings variabele proxy server wilt instellen, voert u de volgende opdracht uit:
-
-```powershell
-# If a proxy server is needed, execute these commands with the proxy URL and port.
-[Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
-$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
-# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
-Restart-Service -Name himds
-```
-
->[!NOTE]
->De agent biedt geen ondersteuning voor het instellen van proxy verificatie in deze preview.
->
-
-### <a name="configure-agent-communication"></a>Agent communicatie configureren
-
-Nadat u de agent hebt geïnstalleerd, moet u de agent configureren om te communiceren met de Azure Arc-service door de volgende opdracht uit te voeren:
-
-`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
-
 ## <a name="install-and-validate-the-agent-on-linux"></a>De agent op Linux installeren en valideren
 
 De verbonden machine agent voor Linux is opgenomen in de voorkeurs pakket indeling voor de distributie (. RPM of. DEB) die wordt gehost in de micro soft [package-opslag plaats](https://packages.microsoft.com/). De [shell-script bundel `Install_linux_azcmagent.sh` ](https://aka.ms/azcmagent) voert de volgende acties uit:
 
 - Hiermee configureert u de hostmachine voor het downloaden van het agent pakket van packages.microsoft.com.
 - Hiermee wordt het Hybrid resource provider-pakket geïnstalleerd.
+- Registreert de machine met Azure Arc
 
 Desgewenst kunt u de agent met uw proxy gegevens configureren door de para meter op te nemen `--proxy "{proxy-url}:{proxy-port}"` .
 
@@ -149,15 +149,6 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 # Install the connected machine agent. 
 bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 ```
-
-### <a name="configure-the-agent-communication"></a>De communicatie van de agent configureren
-
-Nadat u de agent hebt geïnstalleerd, configureert u deze om te communiceren met de Azure Arc-service door de volgende opdracht uit te voeren:
-
-`azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
-
->[!NOTE]
->U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 

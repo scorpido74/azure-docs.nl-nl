@@ -1,24 +1,22 @@
 ---
 title: Windows-virtueel bureau blad Power shell-Azure
 description: Problemen met Power shell oplossen bij het instellen van een virtuele Windows-desktop omgeving.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd34fa2bc4c1083d4bd4dda7d118e0348a1a7fd0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288720"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002268"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop PowerShell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 Gebruik dit artikel om fouten en problemen op te lossen bij het gebruik van Power shell met Windows virtueel bureau blad. Zie [Windows Virtual Desktop Power shell](/powershell/module/windowsvirtualdesktop/)(Engelstalig) voor meer informatie over Extern bureaublad-services Power shell.
 
@@ -33,10 +31,10 @@ In deze sectie vindt u Power shell-opdrachten die doorgaans worden gebruikt tijd
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Fout: New-AzRoleAssignment: de verstrekte informatie is niet toegewezen aan een AD-object-ID
 
 ```powershell
-New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**Oorzaak:** De gebruiker die is opgegeven door de para meter *-SignInName,* is niet gevonden in de Azure Active Directory gekoppeld aan de virtueel-bureaublad omgeving van Windows. 
+**Oorzaak:** De gebruiker die is opgegeven door de para meter *-SignInName,* is niet gevonden in de Azure Active Directory gekoppeld aan de virtueel-bureaublad omgeving van Windows.
 
 **Oplossen:** Zorg ervoor dat u het volgende kunt doen.
 
@@ -46,7 +44,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 
 ### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>Fout: New-AzRoleAssignment: de client met object-id heeft geen machtiging voor het uitvoeren van een actie over het bereik (code: AuthorizationFailed)
 
-**Oorzaak 1:** Het account dat wordt gebruikt, heeft geen eigenaars machtigingen voor het abonnement. 
+**Oorzaak 1:** Het account dat wordt gebruikt, heeft geen eigenaars machtigingen voor het abonnement.
 
 **Oplossing 1:** Een gebruiker met eigenaars machtigingen moet de roltoewijzing uitvoeren. U moet de gebruiker ook toewijzen aan de rol beheerder van gebruikers toegang om een gebruiker toe te wijzen aan een toepassings groep.
 
@@ -57,7 +55,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 ### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>Fout: New-AzWvdHostPool: de locatie is niet beschikbaar voor het resource type
 
 ```powershell
-New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
 ```
 
 Oorzaak: Windows virtueel bureau blad ondersteunt het selecteren van de locatie van hostgroepen, toepassings groepen en werk ruimten om de meta gegevens van de service op bepaalde locaties op te slaan. Uw opties zijn beperkt tot waar deze functie beschikbaar is. Deze fout betekent dat de functie niet beschikbaar is op de locatie die u hebt gekozen.

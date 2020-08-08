@@ -1,6 +1,6 @@
 ---
 title: De Azure Maps Services-module gebruiken | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u met behulp van de Azure Maps Services-module de Microsoft Azure Maps REST-services kunt gebruiken.
+description: Meer informatie over de Azure Maps Services-module. Zie deze helper-bibliotheek laden en gebruiken voor toegang tot Azure Maps REST-services in web-of Node.js toepassingen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 69ca43021ff2c45733375e14d87d0ed65d8962e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f8d41c8248ab761c6d781263f3978937ad01e22
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287065"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004140"
 ---
 # <a name="use-the-azure-maps-services-module"></a>De Azure Maps Services-module gebruiken
 
@@ -30,7 +30,7 @@ De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bib
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - U kunt ook de Services-module voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het [Azure-Maps-rest NPM-](https://www.npmjs.com/package/azure-maps-rest) pakket en dit vervolgens hosten met uw app. Dit pakket bevat ook TypeScript-definities. Gebruik hiervoor deze opdracht:
+    - U kunt ook de Services-module voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het [Azure-Maps-rest NPM-](https://www.npmjs.com/package/azure-maps-rest) pakket en dit vervolgens hosten met uw app. Dit pakket bevat ook TypeScript-definities. Gebruik deze opdracht:
     
         > **npm install azure-maps-rest**
     

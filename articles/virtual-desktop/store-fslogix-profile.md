@@ -1,23 +1,21 @@
 ---
 title: Container voor opslag FSLogix-profiel Windows virtueel bureau blad-Azure
 description: Opties voor het opslaan van uw FSLogix-profiel voor Windows virtueel bureau blad op Azure Storage.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dfa5d6bc5707679bbe5dada9f28046202e7aae5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4702c68dcda0c794aef34d3c0675e2fd158e6d4f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808519"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009406"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Opslag opties voor FSLogix-profiel containers in virtueel bureau blad van Windows
 
-Azure biedt meerdere opslag oplossingen die u kunt gebruiken om uw FSLogix-profiel container op te slaan. In dit artikel worden opslag oplossingen vergeleken die door Azure worden geboden voor FSLogix-gebruikers profiel containers voor Windows-virtueel bureau blad. We raden u aan om FSLogix-profiel containers op Azure Files voor de meeste van onze klanten op te slaan. 
+Azure biedt meerdere opslag oplossingen die u kunt gebruiken om uw FSLogix-profiel container op te slaan. In dit artikel worden opslag oplossingen vergeleken die door Azure worden geboden voor FSLogix-gebruikers profiel containers voor Windows-virtueel bureau blad. We raden u aan om FSLogix-profiel containers op Azure Files voor de meeste van onze klanten op te slaan.
 
 Windows Virtual Desktop biedt FSLogix-profiel containers als de aanbevolen gebruikers profiel oplossing. FSLogix is ontworpen om profielen te roamen in omgevingen met externe computers, zoals Windows Virtual Desktop. Bij het aanmelden wordt deze container dynamisch gekoppeld aan de computer omgeving met behulp van een systeem eigen ondersteunde virtuele harde schijf (VHD) en een virtuele harde schijf (VHDX) van Hyper-V. Het gebruikers profiel is onmiddellijk beschikbaar en wordt in het systeem weer gegeven op dezelfde manier als een systeem eigen gebruikers profiel.
 
@@ -27,7 +25,7 @@ De volgende tabel bevat een vergelijking van de opslag oplossingen Azure Storage
 
 |Functies|Azure Files|Azure NetApp Files|Opslagruimten direct|
 |--------|-----------|------------------|---------------------|
-|Toepassing|Algemeen doel|Ultra prestaties of migratie van NetApp on-premises|Platformoverschrijdend|
+|Gebruiksvoorbeeld|Algemeen doel|Ultra prestaties of migratie van NetApp on-premises|Platformoverschrijdend|
 |Platform service|Ja, Azure-systeem eigen oplossing|Ja, Azure-systeem eigen oplossing|Nee, zelf beheerd|
 |Regionale beschikbaarheid|Alle regio's|[Regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Alle regio's|
 |Redundantie|Lokaal redundante/zone-redundant/geo-redundant|Lokaal redundant|Lokaal redundante/zone-redundant/geo-redundant|

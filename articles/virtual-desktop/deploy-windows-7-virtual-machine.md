@@ -1,30 +1,28 @@
 ---
 title: Windows 7 virtuele machine implementeren Windows virtueel bureau blad-Azure
 description: Een virtuele machine met Windows 7 configureren en implementeren op het virtuele bureau blad van Windows.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6cb4a31e3360f3f9f8c9ed4684c30295489d27d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285150"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007570"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Een virtuele Windows 7-machine implementeren in Windows Virtual Desktop
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 Het proces voor het implementeren van een virtuele machine met Windows 7 op Windows virtueel bureau blad wijkt enigszins af van de virtuele machines waarop latere versies van Windows worden uitgevoerd. In deze hand leiding wordt uitgelegd hoe u Windows 7 implementeert.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, volgt u de instructies in [een hostgroep met Power shell maken](create-host-pools-powershell.md) om een hostgroep te maken. Als u de portal gebruikt, volgt u de instructies in stap 1 tot en met 9 van [een hostgroep maken met behulp van de Azure Portal](create-host-pools-azure-marketplace.md). Daarna selecteert u **controleren + maken** om een lege hostgroep te maken. 
+Voordat u begint, volgt u de instructies in [een hostgroep met Power shell maken](create-host-pools-powershell.md) om een hostgroep te maken. Als u de portal gebruikt, volgt u de instructies in stap 1 tot en met 9 van [een hostgroep maken met behulp van de Azure Portal](create-host-pools-azure-marketplace.md). Daarna selecteert u **controleren + maken** om een lege hostgroep te maken.
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Een virtuele machine met Windows 7 configureren
 
@@ -49,9 +47,9 @@ Een Windows 7-VM instellen op het virtuele bureau blad van Windows:
      ```
 
 12. Volg de instructies [hier](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) om een registratie token op te halen.
-      
+
       - Als u liever de Azure Portal, kunt u ook naar de overzichts pagina gaan van de hostgroep waaraan u de virtuele machine wilt toevoegen en daar een token maken.
-  
+
 13. [Down load de Windows-agent voor virtueel bureau blad voor Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. [Down load de Windows Virtual Desktop Agent Manager voor Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
 15. Open het installatie programma voor de virtueel-bureaublad agent van Windows en volg de instructies. Wanneer u hierom wordt gevraagd, geeft u de registratie sleutel op die u in stap 12 hebt gemaakt.

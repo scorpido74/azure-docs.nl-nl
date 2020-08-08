@@ -8,18 +8,18 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/05/2020
-ms.openlocfilehash: 34e56e5d92526cbf46408c670127e87781e342cd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9c05753b44b0c644b121eb3ccd3316633f9e5964
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119732"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009525"
 ---
-# <a name="review-and-publish-an-offer-to-commercial-marketplace"></a>Een aanbieding voor een commerciële Marketplace controleren en publiceren
+# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Bekijk en publiceer een aanbieding naar de commerciële Marketplace
 
 In dit artikel leest u hoe u partner Center kunt gebruiken om uw aanbieding te verzenden, een voor beeld van uw aanbieding te bekijken en deze vervolgens te publiceren naar micro soft Commercial Marketplace. We laten ook zien hoe u uw publicatie status kunt controleren zoals deze wordt door de publicatie stappen. U moet al een aanbieding hebben gemaakt die u wilt publiceren.
 
-## <a name="go-to-your-offer-in-commercial-marketplace"></a>Ga naar uw aanbieding in commerciële Marketplace
+## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Ga naar uw aanbieding in de commerciële Marketplace
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
 1. Selecteer in het navigatie menu de optie **commerciële Marketplace**-  >  **overzicht**.
@@ -53,7 +53,7 @@ In dit artikel leest u hoe u partner Center kunt gebruiken om uw aanbieding te v
 
 Nadat u **publiceren**hebt geselecteerd, worden de validatie-en publicatie processen in volg orde voortgezet. In deze tabel ziet u het meest voorkomende publicatie proces:
 
-| Fase | Wat er gebeurt | 
+| Fase | Wat gebeurt er? | 
 | ------------ | ------------- | ------------- |
 | Automatische validatie | We verwerken een reeks geautomatiseerde validaties. | 
 | Certificering | We voeren hand matige validaties uit. | 

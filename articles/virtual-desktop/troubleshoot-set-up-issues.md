@@ -1,24 +1,22 @@
 ---
 title: Het maken van een hostgroep in Windows Virtual Desktop-omgeving-Azure
 description: Problemen met Tenant-en hostgroepen oplossen tijdens de installatie van een virtuele Windows-desktop omgeving.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a36e21d346e08ebe09f8c4b34f6af529d2a0f0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292561"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006159"
 ---
 # <a name="host-pool-creation"></a>Hostgroepen maken
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 In dit artikel komen problemen aan bod tijdens de eerste installatie van de virtuele bureau blad-Tenant van Windows en de gerelateerde infra structuur van de sessie-hostgroep.
 
@@ -37,13 +35,13 @@ Als u de Windows 10 Enter prise-installatie kopie voor meerdere sessies wilt geb
 > [!div class="mx-imgBorder"]
 > ![Een afbeelding met de Azure Portal het bericht ' een gratis account maken ' weer gegeven](media/create-new-account.png)
 
-**Oorzaak**: er zijn geen actieve abonnementen in het account waarmee u zich hebt aangemeld bij Azure, of het account heeft geen machtigingen om de abonnementen weer te geven. 
+**Oorzaak**: er zijn geen actieve abonnementen in het account waarmee u zich hebt aangemeld bij Azure, of het account heeft geen machtigingen om de abonnementen weer te geven.
 
 **Fix**: Meld u aan bij het abonnement waarin u de virtual machines van de host (vm's) wilt implementeren met een account met ten minste toegang op Inzender niveau.
 
 ### <a name="error-exceeding-quota-limit"></a>Fout: "overschrijding quotum limiet"
 
-Als uw bewerking de quotum limiet overschrijdt, kunt u een van de volgende dingen doen: 
+Als uw bewerking de quotum limiet overschrijdt, kunt u een van de volgende dingen doen:
 
 - Maak een nieuwe hostgroep met dezelfde para meters, maar met minder Vm's en VM-kernen.
 
@@ -119,9 +117,9 @@ Ga als volgt te werk om dit probleem op te lossen:
 Voor beeld van onbewerkte fout:
 
 ```Error
- { …{ "provisioningOperation": 
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ { …{ "provisioningOperation":
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
  "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
@@ -138,10 +136,10 @@ Voor beeld van onbewerkte fout:
 
 ```Error
 { … "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
  One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
@@ -162,7 +160,7 @@ Voor beeld van onbewerkte fout:
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n

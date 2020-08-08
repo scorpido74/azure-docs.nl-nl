@@ -1,24 +1,22 @@
 ---
 title: RDP-eigenschappen aanpassen met Power shell-Azure
 description: RDP-eigenschappen voor virtuele Windows-Bureau bladen aanpassen met Power shell-cmdlets.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 630f2a7fe2e95992cb7724a7906a0949ffcea784
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 439f009d70775428a00f627160bf4d6b8ab9b089
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271107"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009100"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Eigenschappen van Remote Desktop Protocol (RDP) voor een hostgroep aanpassen
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 Als u de eigenschappen van de Remote Desktop Protocol (RDP) van een hostgroep wilt aanpassen, zoals de ervaring voor meerdere monitors en audio-omleiding, kunt u een optimale ervaring bieden aan uw gebruikers op basis van hun behoeften. U kunt RDP-eigenschappen in virtueel bureau blad van Windows aanpassen door gebruik te maken van de Azure Portal of door gebruik te maken van de para meter *-CustomRdpProperty* in de cmdlet **Update-AzWvdHostPool** .
 
@@ -26,7 +24,7 @@ Zie [ondersteunde RDP-Bestands instellingen](https://docs.microsoft.com/windows-
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, volgt u de instructies in [de Power shell-module van Windows Virtual Desktop instellen](powershell-module.md) om uw Power shell-module in te stellen en u aan te melden bij Azure.
+Voordat u begint, volgt u de instructies in [De PowerShell-module van Windows Virtual Desktop instellen](powershell-module.md) om uw PowerShell-module in te stellen en zich bij Azure aan te melden.
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>RDP-eigenschappen configureren in de Azure Portal
 

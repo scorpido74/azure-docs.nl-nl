@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220691"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007060"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Een web-app maken in een App Service Environment v1
 
@@ -31,7 +31,7 @@ Deze zelf studie laat zien hoe u web-apps en App Service plannen maakt in een [a
 ## <a name="prerequisites"></a>Vereisten
 In deze zelf studie wordt ervan uitgegaan dat u een App Service Environment hebt gemaakt. Als u dit nog niet hebt gedaan, raadpleegt u [een app service Environment maken](app-service-web-how-to-create-an-app-service-environment.md). 
 
-## <a name="create-a-web-app"></a>Een web-app maken
+## <a name="create-a-web-app"></a>Een webtoepassing maken
 1. Klik in [Azure Portal](https://portal.azure.com/)op **een resource maken > web en mobiel > web-app**. 
    
     ![Scherm afbeelding die laat zien waar u een web-app maakt in de Azure Portal.][1]
@@ -40,7 +40,7 @@ In deze zelf studie wordt ervan uitgegaan dat u een App Service Environment hebt
     Als u meerdere abonnementen hebt om een app in uw App Service Environment te maken, moet u hetzelfde abonnement gebruiken dat u hebt gebruikt bij het maken van de omgeving. 
 3. Selecteer of maak een resourcegroep.
    
-    Met *resource groepen* kunt u gerelateerde Azure-resources beheren als een eenheid en nuttig zijn bij het instellen van RBAC-regels ( *op rollen gebaseerd toegangs beheer* ) voor uw apps. Zie voor meer informatie [Overzicht van Azure Resource Manager][ResourceGroups]. 
+    Met *resource groepen* kunt u gerelateerde Azure-resources beheren als een eenheid en nuttig zijn bij het instellen van *Azure RBAC-regels (op rollen gebaseerd toegangs beheer)* voor uw apps. Zie [Overzicht van Azure Resource Manager][ResourceGroups] voor meer informatie. 
 4. Selecteer of maak een App Service-plan.
    
     *App service-abonnementen* zijn beheerde sets van web-apps.  Normaal gesp roken wanneer u prijzen selecteert, wordt de prijs van de kosten toegepast op het App Service plan in plaats van op de afzonderlijke apps. In een ASE betaalt u voor de reken instanties die zijn toegewezen aan de ASE in plaats van wat u met uw ASP hebt vermeld.  Als u het aantal exemplaren van een web-app wilt verg Roten, kunt u de exemplaren van uw App Service plan omhoog schalen. Dit is van invloed op alle web-apps in dat plan.  Sommige functies, zoals site sleuven of VNET-integratie, hebben ook beperkingen voor de hoeveelheid binnen het abonnement.  Zie [Azure app service plannen Overview](../overview-hosting-plans.md) (Engelstalig) voor meer informatie

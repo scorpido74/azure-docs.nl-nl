@@ -1,24 +1,22 @@
 ---
 title: Het diagnostische hulp programma voor Windows virtueel bureau blad (klassiek) implementeren-Azure
 description: Het hulp programma Diagnostics UX implementeren voor het virtuele bureau blad van Windows (klassiek).
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c456f7e82bb605909f31b35cdd838145900396e2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285098"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009185"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Het Windows-hulp programma voor virtueel bureau blad (klassiek) implementeren
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 >[!IMPORTANT]
 >Vanaf 16 maart 2020 hebben we de diagnostische query's die van invloed zijn op de gebruikers ervaring tijdelijk uitgeschakeld vanwege een verhoogde vraag naar de service. Dit zorgt ervoor dat het hulp programma niet meer werkt omdat het afhankelijk is van deze query's. Dit artikel wordt bijgewerkt wanneer diagnostische query's weer beschikbaar zijn.

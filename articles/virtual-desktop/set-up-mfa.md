@@ -1,19 +1,17 @@
 ---
 title: Azure Multi-Factor Authentication instellen voor virtueel bureau blad van Windows-Azure
 description: Azure Multi-Factor Authentication instellen voor verbeterde beveiliging in Windows virtueel bureau blad.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e42ca0a0d0ff9d9df3dc42f1e165d1035d56d6a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291373"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009457"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Azure Multi-Factor Authentication voor Windows Virtual Desktop inschakelen
 
@@ -59,7 +57,7 @@ U kunt als volgt een beleid voor voorwaardelijke toegang maken waarvoor multi-fa
 
    >[!IMPORTANT]
    > De Windows-client-apps voor virtueel bureau blad worden gebruikt voor de webclient. Selecteer echter niet de app met de naam Windows Virtual Desktop Azure Resource Manager provider (50e95039-B200-4007-bc97-8d5790743a63). Deze app wordt alleen gebruikt voor het ophalen van de gebruikers feed en hoeft geen MFA te hebben.
-  
+
 1. Wanneer u uw app hebt geselecteerd, kiest u **selecteren**en selecteert u **gereed**.
 
    > [!div class="mx-imgBorder"]

@@ -1,24 +1,22 @@
 ---
 title: Windows Virtual Desktop-omgeving-Azure
 description: Meer informatie over de basis elementen van een virtueel-bureaublad omgeving van Windows, zoals hostgroepen en app-groepen.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e382c1d52130d44479e94378da895c6add7ba3ee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283415"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002608"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-omgeving
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/environment-setup-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/environment-setup-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 Virtueel bureau blad van Windows is een service waarmee gebruikers eenvoudig en veilig toegang krijgen tot hun gevirtualiseerde Bureau bladen en RemoteApps. In dit onderwerp vindt u meer informatie over de algemene structuur van de virtueel-bureaublad omgeving van Windows.
 
@@ -49,7 +47,7 @@ Als u resources naar gebruikers wilt publiceren, moet u deze toewijzen aan app-g
 
 ## <a name="workspaces"></a>Werkruimten
 
-Een werk ruimte is een logische groepering van toepassings groepen in Windows virtueel bureau blad. Elke Windows-toepassings groep voor virtueel bureau blad moet worden gekoppeld aan een werk ruimte zodat gebruikers de externe apps en Desk tops kunnen zien die ze hebben gepubliceerd.  
+Een werk ruimte is een logische groepering van toepassings groepen in Windows virtueel bureau blad. Elke Windows-toepassings groep voor virtueel bureau blad moet worden gekoppeld aan een werk ruimte zodat gebruikers de externe apps en Desk tops kunnen zien die ze hebben gepubliceerd.
 
 ## <a name="end-users"></a>Eind gebruikers
 

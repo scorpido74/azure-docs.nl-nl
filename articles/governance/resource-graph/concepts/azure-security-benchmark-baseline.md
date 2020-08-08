@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171802"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008998"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure resource Graph-beveiligings basislijn voor Azure Security Bench Mark
 
-Deze beveiligings basislijn is van toepassing op de richt lijnen [Azure Security Bench Mark](../../../security/benchmarks/overview.md) to Azure resource Graph. De Security Bench Mark van Azure biedt aanbevelingen over hoe u uw cloud oplossingen op Azure kunt beveiligen. De inhoud wordt gegroepeerd op basis van de **beveiligings controles** die zijn gedefinieerd door de Azure Security Bench Mark en de bijbehorende richt lijnen die van toepassing zijn op Azure resource Graph. **Besturings elementen** die niet van toepassing zijn op een Azure-resource grafiek, zijn uitgesloten. Zie het [volledige azure Virtual Network Security Baseline-toewijzings bestand](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)voor meer informatie over hoe Azure resource Graph volledig is toegewezen aan de beveiligings benchmark van Azure.
+Deze beveiligings basislijn is van toepassing op de richt lijnen [Azure Security Bench Mark](../../../security/benchmarks/overview.md) to Azure resource Graph. De Azure Security-benchmark biedt aanbevelingen voor hoe u uw cloudoplossingen in Azure kunt beveiligen. De inhoud wordt gegroepeerd op basis van de **beveiligings controles** die zijn gedefinieerd door de Azure Security Bench Mark en de bijbehorende richt lijnen die van toepassing zijn op Azure resource Graph. **Besturings elementen** die niet van toepassing zijn op een Azure-resource grafiek, zijn uitgesloten. Zie het [volledige azure Virtual Network Security Baseline-toewijzings bestand](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)voor meer informatie over hoe Azure resource Graph volledig is toegewezen aan de beveiligings benchmark van Azure.
 
 
 
@@ -26,7 +26,7 @@ Deze beveiligings basislijn is van toepassing op de richt lijnen [Azure Security
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
 
-**Hulp**: Azure resource Graph biedt toegang tot bron typen en eigenschappen op basis van op rollen gebaseerde toegangs beheer (RBAC). Controleer en controleer of de toegang die is verleend aan beveiligings-principals (gebruikers, groepen en service accounts) regel matig wordt gecontroleerd om ervoor te zorgen dat query's resultaten voor de juiste resources retour neren.
+**Hulp**: Azure resource Graph biedt toegang tot bron typen en eigenschappen op basis van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Controleer en controleer of de toegang die is verleend aan beveiligings-principals (gebruikers, groepen en service accounts) regel matig wordt gecontroleerd om ervoor te zorgen dat query's resultaten voor de juiste resources retour neren.
 
 * [Machtigingen in Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 

@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 27fbc669a81364bcb71160200504d61502169eae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6902d1420090b81c933f07f7e929aa86c052404
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609347"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009236"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR cognitieve vaardigheid
 
-De vaardigheid van **optische teken herkenning (OCR)** herkent gedrukte en handgeschreven tekst in afbeeldings bestanden. Deze vaardigheid maakt gebruik van de machine learning modellen van [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in cognitive Services. De **OCR** -vaardigheid is toegewezen aan de volgende functionaliteit:
+De vaardigheid van **optische teken herkenning (OCR)** herkent gedrukte en handgeschreven tekst in afbeeldings bestanden. Deze vaardigheid maakt gebruik van de machine learning modellen die door [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) in cognitive services worden verschaft. De **OCR** -vaardigheid is toegewezen aan de volgende functionaliteit:
 
-+ De [' OCR '](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API wordt gebruikt voor andere talen dan Engels. 
-+ Voor Engels wordt de nieuwe [Lees](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) -API gebruikt.
++ Voor Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlands wordt de nieuwe [Lees](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) -API gebruikt.
++ Voor alle andere talen wordt de ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API gebruikt.
 
 De **OCR** -vaardigheid extraheert tekst uit afbeeldings bestanden. Ondersteunde bestands indelingen zijn onder andere:
 
@@ -51,13 +51,13 @@ Voorheen was er een para meter met de naam ' textExtractionAlgorithm ' om aan te
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam      | Description                                          |
+| Invoer naam      | Beschrijving                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob ```imageAction``` is geproduceerd wanneer is ingesteld op een andere waarde dan ```none``` . Zie het voor [beeld](#sample-output) voor meer informatie.|
 
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
-| Uitvoer naam     | Description                   |
+| Uitvoer naam     | Beschrijving                   |
 |---------------|-------------------------------|
 | `text`            | Tekst zonder opmaak opgehaald uit de afbeelding.   |
 | `layoutText`    | Complex type waarmee de geëxtraheerde tekst wordt beschreven en de locatie waar de tekst is gevonden.|
@@ -208,7 +208,7 @@ In het bovenstaande voor beeld van de vaardig heden wordt ervan uitgegaan dat er
 }
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [TextMerger-vaardigheid](cognitive-search-skill-textmerger.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

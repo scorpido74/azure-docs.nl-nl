@@ -1,24 +1,22 @@
 ---
 title: Virtueel bureau blad van Windows (klassiek) maken van Tenant-hostgroep-Azure
 description: Problemen met Tenant-en hostgroepen oplossen tijdens de installatie van een virtueel bureau blad-Tenant omgeving (klassiek) van Windows.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269594"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009253"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Tenant en hostgroep maken in Windows virtueel bureau blad (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../troubleshoot-set-up-issues.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-set-up-issues.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 In dit artikel komen problemen aan bod tijdens de eerste installatie van de virtuele bureau blad-Tenant van Windows en de gerelateerde infra structuur van de sessie-hostgroep.
 
@@ -43,9 +41,9 @@ Voor beeld van onbewerkte fout:
 
 ```Error
 AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
-\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the
 configuration of your service subscriptions.650052 Message The app needs access to a service
-(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled.
 Contact your IT Admin to review the configuration of your service subscriptions.
 ```
 
@@ -124,12 +122,12 @@ De fout in het activiteiten logboek weer geven:
 1. Sluit de huidige Azure Marketplace-implementatie aanbieding.
 2. Zoek in de bovenste zoek balk naar en selecteer het **activiteiten logboek**.
 3. Zoek een activiteit met de naam **Validate implementation** die de status **failed** heeft en selecteer de activiteit.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Scherm opname van afzonderlijke * * activiteit voor het valideren van de implementatie * * met een mislukte * *-status](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. Selecteer JSON en schuif omlaag naar de onderkant van het scherm totdat u het veld ' statusMessage ' ziet.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Scherm opname van mislukte activiteiten, met een rood vak rond de eigenschap statusMessage van de JSON-tekst.](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
@@ -260,7 +258,7 @@ Voor beeld van onbewerkte fout:
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n

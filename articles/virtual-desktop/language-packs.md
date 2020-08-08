@@ -1,19 +1,17 @@
 ---
 title: Taal pakketten installeren op Windows 10-Vm's in virtueel bureau blad van Windows-Azure
 description: Taal pakketten installeren voor Vm's met meerdere sessies van Windows 10 in Windows virtueel bureau blad.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361299"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008760"
 ---
 # <a name="install-language-packs"></a>Taalpakketten installeren
 

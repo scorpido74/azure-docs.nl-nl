@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534733"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002329"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -35,7 +35,7 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
   - U kunt multi-factor Authentication configureren om de aanmelding bij Azure virtual machines verder te beveiligen.
   - De mogelijkheid om u aan te melden bij Linux-Vm's met Azure Active Directory werkt ook voor klanten die gebruikmaken van [Federation Services](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
-- **Naadloze samen werking:** Met Access Control op basis van rollen (RBAC) kunt u opgeven wie zich kan aanmelden bij een bepaalde VM als een gewone gebruiker of met beheerders bevoegdheden. Wanneer gebruikers lid worden van of uw team verlaten, kunt u het RBAC-beleid voor de virtuele machine bijwerken om zo nodig toegang te verlenen. Deze ervaring is veel eenvoudiger dan het reinigen van Vm's om onnodige SSH-open bare sleutels te verwijderen. Wanneer werk nemers uw organisatie verlaten en hun gebruikers account is uitgeschakeld of verwijderd uit Azure AD, hebben ze geen toegang meer tot uw resources.
+- **Naadloze samen werking:** Met op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure kunt u opgeven wie zich kan aanmelden bij een bepaalde VM als een gewone gebruiker of met beheerders bevoegdheden. Wanneer gebruikers lid worden van of uw team verlaten, kunt u het Azure RBAC-beleid voor de virtuele machine bijwerken om zo nodig toegang te verlenen. Deze ervaring is veel eenvoudiger dan het reinigen van Vm's om onnodige SSH-open bare sleutels te verwijderen. Wanneer werk nemers uw organisatie verlaten en hun gebruikers account is uitgeschakeld of verwijderd uit Azure AD, hebben ze geen toegang meer tot uw resources.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Ondersteunde Azure-regio's en Linux-distributies
 
@@ -121,7 +121,7 @@ Op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure bepaalt wie zich kan 
 > [!NOTE]
 > Als u een gebruiker wilt toestaan zich via SSH aan te melden bij de VM, moet u zich aanmelden voor de beheerder van de *virtuele machine* of de gebruiker aanmeldt voor de *virtuele machine* . Een Azure-gebruiker met de rol *eigenaar* of *Inzender* die is toegewezen aan een virtuele machine, is niet automatisch gemachtigd om zich via SSH aan te melden bij de VM.
 
-In het volgende voor beeld wordt [AZ roltoewijzing Create](/cli/azure/role/assignment#az-role-assignment-create) gebruikt om de rol van de beheerder van de *virtuele machine* toe te wijzen aan de VM voor uw huidige Azure-gebruiker. De gebruikers naam van uw actieve Azure-account wordt verkregen met [AZ account show](/cli/azure/account#az-account-show)en de *Scope* wordt ingesteld op de virtuele machine die in een vorige stap is gemaakt met [AZ VM show](/cli/azure/vm#az-vm-show). Het bereik kan ook worden toegewezen aan een resource groep of abonnement, en de normale machtigingen voor RBAC-overname zijn van toepassing. Zie [op rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) voor meer informatie
+In het volgende voor beeld wordt [AZ roltoewijzing Create](/cli/azure/role/assignment#az-role-assignment-create) gebruikt om de rol van de beheerder van de *virtuele machine* toe te wijzen aan de VM voor uw huidige Azure-gebruiker. De gebruikers naam van uw actieve Azure-account wordt verkregen met [AZ account show](/cli/azure/account#az-account-show)en de *Scope* wordt ingesteld op de virtuele machine die in een vorige stap is gemaakt met [AZ VM show](/cli/azure/vm#az-vm-show). Het bereik kan ook worden toegewezen aan een resource groep of abonnement, en normale machtigingen voor Azure RBAC-overname zijn van toepassing. Zie voor meer informatie [Azure RBAC](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -136,7 +136,7 @@ az role assignment create \
 > [!NOTE]
 > Als uw AAD-domein en de gebruikers naam van het aanmeldings domein niet overeenkomen, moet u de object-ID van uw gebruikers account opgeven met de id van de *toegewezen*gebruiker, niet alleen de gebruikers naam voor *--Assign*. U kunt de object-ID voor uw gebruikers account verkrijgen met [AZ AD-gebruikers lijst](/cli/azure/ad/user#az-ad-user-list).
 
-Zie Using the [Azure cli](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)of [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)voor meer informatie over het gebruik van RBAC om de toegang tot uw Azure-abonnements resources te beheren.
+Zie Using the [Azure cli](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)of [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)voor meer informatie over het gebruik van Azure RBAC om de toegang tot uw Azure-abonnements resources te beheren.
 
 U kunt Azure AD ook zo configureren dat multi-factor Authentication is vereist voor een specifieke gebruiker om zich aan te melden bij de virtuele Linux-machine. Zie [aan de slag met Azure multi-factor Authentication in de Cloud](../../active-directory/authentication/howto-mfa-getstarted.md)voor meer informatie.
 
@@ -185,7 +185,7 @@ Enkele veelvoorkomende fouten wanneer u een SSH-verbinding probeert te maken met
 
 ### <a name="access-denied-azure-role-not-assigned"></a>Toegang geweigerd: Azure-rol is niet toegewezen
 
-Als het volgende fout bericht wordt weer gegeven op de SSH-prompt, controleert u of u RBAC-beleid hebt geconfigureerd voor de virtuele machine die de gebruiker de *aanmeldings naam* van de beheerder of de gebruiker van de *virtuele* machine verleent:
+Als het volgende fout bericht wordt weer gegeven op de SSH-prompt, controleert u of u het beleid voor Azure RBAC hebt geconfigureerd voor de VM die de gebruiker de beheerder van de *virtuele machine* of de *gebruiker aanmeldt* voor de virtuele machine:
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com

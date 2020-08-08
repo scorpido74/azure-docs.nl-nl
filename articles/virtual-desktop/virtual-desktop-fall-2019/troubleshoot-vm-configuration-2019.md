@@ -1,24 +1,22 @@
 ---
 title: Problemen oplossen met Windows Virtual Desktop (klassieke) sessiehost-Azure
 description: Problemen oplossen bij het configureren van virtuele machines van het virtuele bureau blad van Windows (klassieke host).
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291252"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008624"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Virtuele-machine configuratie van Virtual Desktop (klassiek) van Windows-sessiehost
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../troubleshoot-vm-configuration.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-vm-configuration.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 Gebruik dit artikel voor het oplossen van problemen die zich voordoen bij het configureren van de virtuele machines (Vm's) voor virtuele bureau blad-sessies van Windows.
 
@@ -311,7 +309,7 @@ Als u zich met een Administrator-account aanmeldt bij Windows 10 Enter prise mul
 
 Als de tijds limiet verloopt, wordt een fout bericht weer gegeven met de tekst ' de externe sessie is beëindigd omdat er geen Extern bureaublad licenties voor client toegang beschikbaar zijn voor deze computer. '
 
-Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de meest recente Windows-updates heeft geïnstalleerd of dat u de Extern bureaublad licentie modus instelt via groeps beleid. Volg de stappen in de volgende secties om de groeps beleids instelling te controleren, de versie van Windows 10 Enter prise multi-session te identificeren en de bijbehorende update te installeren.  
+Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de meest recente Windows-updates heeft geïnstalleerd of dat u de Extern bureaublad licentie modus instelt via groeps beleid. Volg de stappen in de volgende secties om de groeps beleids instelling te controleren, de versie van Windows 10 Enter prise multi-session te identificeren en de bijbehorende update te installeren.
 
 >[!NOTE]
 >Voor het virtuele bureau blad van Windows is alleen een RDS-Client Access License (CAL) vereist wanneer uw hostgroep Windows Server Session hosts bevat. Zie [licentie voor uw RDS-implementatie met licenties voor client toegang](/windows-server/remote/remote-desktop-services/rds-client-access-license/)voor meer informatie over het configureren van een RDS CAL.

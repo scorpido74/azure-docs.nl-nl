@@ -1,6 +1,6 @@
 ---
 title: Een laagmap toevoegen aan een kaart | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u een laagmap aan een kaart kunt toevoegen met behulp van de Microsoft Azure Maps Web SDK.
+description: Meer informatie over het toevoegen van lijnen aan Maps. Zie de voor beelden die gebruikmaken van de Azure Maps Web-SDK om lijn lagen toe te voegen aan Maps en om lijnen met symbolen en kleur overgangen aan te passen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 366de0d17a1cdd62b95d39b1ad04b9bc76bec52c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c834ae6061fce6f2fc2f4cd7c4d80e036775b156
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286933"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010205"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Een laagmap toevoegen aan de kaart
 

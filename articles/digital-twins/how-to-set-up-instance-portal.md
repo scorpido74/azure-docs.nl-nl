@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836935"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009642"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -24,27 +24,13 @@ Deze versie van dit artikel doorloopt deze stappen hand matig, één voor één,
 * Als u deze stappen hand matig wilt door lopen met de CLI, raadpleegt u de CLI-versie van dit artikel: [*instructies: een exemplaar en authenticatie instellen (CLI)*](how-to-set-up-instance-cli.md).
 * Als u via een automatische installatie wilt uitvoeren met behulp van een voor beeld van een implementatie script, raadpleegt u de script versie van dit artikel: [*instructies: een exemplaar en authenticatie instellen (script)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
- 
-Meld u vervolgens aan bij de [Azure Portal](https://ms.portal.azure.com/) met uw referenties.
-
-## <a name="prerequisites-permission-requirements"></a>Vereisten: machtigings vereisten
-
-Als u alle stappen in dit artikel wilt uitvoeren, moet u worden geclassificeerd als een eigenaar van uw Azure-abonnement. 
-
-U kunt uw machtigings niveau controleren op de [pagina Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in de Azure Portal (u kunt deze koppeling gebruiken of zoeken naar *abonnementen* met de zoek balk van de portal). Zoek de naam van het abonnement dat u gebruikt en Bekijk uw rol hiervoor in de kolom *mijn rol* . Als u een eigenaar bent, is deze waarde *eigenaar*:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Weer gave van de pagina Abonnementen in de Azure Portal, waarbij de gebruiker wordt weer gegeven als eigenaar" lightbox="media/how-to-set-up-instance/portal/subscriptions-role.png":::
-
-Als u merkt dat de waarde *Inzender* of iets anders is dan de *eigenaar*, kunt u door gaan op een van de volgende manieren:
-* Neem contact op met de eigenaar van uw abonnement en vraag de eigenaar om de stappen in dit artikel namens u uit te voeren
-* Neem contact op met de eigenaar van uw abonnement of iemand met de rol van beheerder voor gebruikers toegang voor het abonnement en vraag om u te helpen bij de eigenaar van het abonnement, zodat u de juiste machtigingen hebt om door te gaan. Of dit geschikt is, is afhankelijk van uw organisatie en uw rol.
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Het Azure Digital Apparaatdubbels-exemplaar maken
 
-In deze sectie **maakt u een nieuw exemplaar van Azure Digital apparaatdubbels** met behulp van de Azure Portal.
+In deze sectie **maakt u een nieuw exemplaar van Azure Digital apparaatdubbels** met behulp van de [Azure Portal](https://ms.portal.azure.com/). Ga naar de portal en meld u aan met uw referenties.
 
-Nadat u bent aangemeld bij [Azure Portal](https://ms.portal.azure.com/), begint u met het selecteren van _een resource maken_ in het menu Start pagina van Azure Services.
+In de portal begint u met het selecteren van _een resource maken_ in het menu Start pagina van Azure Services.
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Selecteren van ' een resource maken ' op de start pagina van de Azure Portal":::
 
@@ -87,7 +73,7 @@ Open eerst de pagina voor uw Azure Digital Apparaatdubbels-exemplaar in het Azur
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Selecteren om een roltoewijzing toe te voegen op de pagina toegangs beheer (IAM)":::
 
-Vul de waarden in op de volgende pagina *roltoewijzing toevoegen* (moet worden voltooid door een eigenaar van het Azure-abonnement):
+Vul de waarden in op de volgende pagina *roltoewijzing toevoegen* (moet worden voltooid door een gebruiker met [voldoende machtigingen](#prerequisites-permission-requirements) in het Azure-abonnement):
 * **Rol**: Selecteer de *Azure Digital apparaatdubbels-eigenaar (preview)* in het vervolg keuzemenu
 * **Toegang toewijzen aan**: Selecteer *Azure AD-gebruiker,-groep of Service-Principal* in het vervolg keuzemenu
 * **Selecteer**: Zoek de naam of het e-mail adres van de gebruiker die u wilt toewijzen. Wanneer u het resultaat selecteert, wordt de gebruiker weer gegeven in de sectie *geselecteerde leden* .

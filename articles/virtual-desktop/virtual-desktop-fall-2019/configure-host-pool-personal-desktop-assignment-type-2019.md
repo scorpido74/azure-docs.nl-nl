@@ -1,24 +1,22 @@
 ---
 title: Windows virtueel bureau blad (klassiek) persoonlijk bureaublad toewijzings type-Azure
 description: Het toewijzings type voor een persoonlijk bureau blad-hostgroep voor een virtueel bureau blad (klassiek) configureren.
-services: virtual-desktop
-author: HeidiLohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76b68ba0a51d250e4ce143314c9126597133e97f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 669010d2de90498c98fc685fe931b084a11cd104
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271039"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008505"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren voor het virtuele bureau blad van Windows (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../configure-host-pool-personal-desktop-assignment-type.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../configure-host-pool-personal-desktop-assignment-type.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 U kunt het toewijzings type van uw persoonlijke bureau blad-hostgroep zodanig configureren dat uw Windows Virtual Desktop-omgeving beter aansluit bij uw behoeften. In dit onderwerp wordt uitgelegd hoe u een automatische of directe toewijzing voor uw gebruikers kunt configureren.
 

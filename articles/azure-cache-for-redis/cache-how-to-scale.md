@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: 36268910003c4235d7ae60d2fd68bc30d7b8b858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe725f3e4571f5b1f646b320e8c669e663c657e0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830006"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004686"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Het schalen van Azure Cache voor Redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies. Nadat u een cache hebt gemaakt, kunt u de grootte en de prijs categorie van de cache schalen als de vereisten van de toepassing veranderen. Dit artikel laat u zien hoe u uw cache kunt schalen met behulp van de Azure Portal en hulpprogram ma's zoals Azure PowerShell en Azure CLI.
@@ -26,7 +26,7 @@ U kunt de volgende metrische gegevens controleren om te helpen bepalen of u wilt
 * Netwerk bandbreedte
 * CPU-gebruik
 
-Als u vaststelt dat uw cache niet langer voldoet aan de vereisten van uw toepassing, kunt u schalen naar een grotere of kleinere prijs categorie voor de cache die geschikt is voor uw toepassing. Zie voor meer informatie over het bepalen van de prijs categorie voor de cache die u wilt gebruiken de [Azure-cache voor redis-aanbieding en de grootte die ik moet gebruiken](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
+Als u vaststelt dat uw cache niet langer voldoet aan de vereisten van uw toepassing, kunt u schalen naar een grotere of kleinere prijs categorie voor de cache die geschikt is voor uw toepassing. Zie [de juiste laag kiezen](cache-overview.md#choosing-the-right-tier)voor meer informatie over het bepalen van de prijs categorie voor de cache die u wilt gebruiken.
 
 ## <a name="scale-a-cache"></a>Een cache schalen
 Als u de cache wilt schalen, [bladert u naar de cache](cache-configure.md#configure-azure-cache-for-redis-settings) in de [Azure Portal](https://portal.azure.com) en klikt u op **schalen** in het **menu resource**.

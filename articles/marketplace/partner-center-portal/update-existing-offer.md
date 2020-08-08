@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 113808a3e2bab6c4cb9d2ea5f155a027abf1b5bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086333"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006788"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Een bestaande aanbieding bijwerken in Commerciële Marketplace
 
@@ -43,7 +43,7 @@ Een nieuw abonnement toevoegen binnen een bestaande aanbieding die u al hebt gep
 
 1. Ga op de pagina **overzicht van aanbieding** voor uw huidige aanbieding naar de **overzichts pagina plan** en selecteer **nieuw plan maken**.
 1. Maak een nieuw abonnement volgens de [richt lijnen](./create-new-saas-offer.md#plan-overview) met behulp van het **prijs model voor bestaande abonnementen**.
-1. Selecteer **concept opslaan** nadat u de naam van het abonnement hebt gewijzigd. 
+1. Selecteer **concept opslaan** nadat u de naam van het abonnement hebt gewijzigd.
 1. Selecteer **publiceren** wanneer u klaar bent om uw updates te publiceren. De pagina **[controleren en publiceren](#review-and-publish-an-updated-offer)** wordt geopend en geeft een voltooiings status voor uw updates.
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Een abonnement binnen een bestaande aanbieding bijwerken
@@ -55,6 +55,24 @@ Wijzigingen aanbrengen in een abonnement binnen een bestaande aanbieding die u a
 1. Selecteer **concept opslaan** nadat u de naam, beschrijving of Beschik baarheid van het abonnement hebt gewijzigd.
 1. Selecteer **controleren en publiceren** wanneer u klaar bent om uw updates te publiceren. De pagina **[controleren en publiceren](#review-and-publish-an-updated-offer)** wordt geopend en geeft een voltooiings status voor uw updates.
 1. Verzend het bijgewerkte abonnement voor publicatie door **publiceren**te selecteren. We sturen u een e-mail wanneer een preview-versie van de bijgewerkte aanbieding beschikbaar is om te controleren en af te melden.
+
+## <a name="offer-a-virtual-machine-plan-at-a-new-price"></a>Een abonnement op een virtuele machine aanbieden tegen een nieuwe prijs
+
+Wanneer een abonnement op een virtuele machine is gepubliceerd, kan de prijs niet worden gewijzigd. Als u hetzelfde abonnement tegen een andere prijs wilt bieden, moet u het abonnement verbergen en een nieuw plan maken met de bijgewerkte prijs. Verberg eerst het abonnement met de prijs die u wilt wijzigen:
+
+1. Klik op de pagina **overzicht van aanbieding** voor uw huidige aanbieding op het plan dat u wilt wijzigen. Als het plan niet toegankelijk is vanuit de lijst **plan overzicht** , selecteert u **alle abonnementen weer geven**.
+1. Selecteer het selectie vakje **plan verbergen** . Sla het concept op voordat u doorgaat.
+
+Nu u het abonnement met de oude prijs hebt verborgen, maakt u een kopie van dat plan met de bijgewerkte prijs:
+
+1. Ga in Partner Center terug naar **plan Overview**.
+2. Selecteer **nieuw plan maken**. Voer een **plan-id** en een **plan naam**in en selecteer **maken**.
+1. Als u de technische configuratie van het abonnement dat u hebt verborgen opnieuw wilt gebruiken, schakelt u het selectie vakje **technische configuratie opnieuw gebruiken** in. Lees het [plan overzicht](azure-vm-create-offer.md#plan-overview) voor meer informatie.
+    > [!IMPORTANT]
+    > Als u **dit abonnement selecteert, wordt de technische configuratie opnieuw gebruikt vanuit een ander abonnement**. u kunt het bovenliggende abonnement later niet meer verkopen. Gebruik deze optie niet als u wilt stoppen met het verkopen van het bovenliggende abonnement.
+3. Vul alle vereiste secties voor het nieuwe abonnement in, met inbegrip van de nieuwe prijs.
+1. Selecteer **Concept opslaan**.
+1. Nadat u alle vereiste secties voor het nieuwe abonnement hebt voltooid, selecteert u **controleren en publiceren**. Hiermee wordt uw aanbieding verzonden voor beoordeling en publicatie. Lees [de beoordeling en publiceer een aanbieding naar de commerciële Marketplace](../review-publish-offer.md) voor meer informatie.
 
 ## <a name="compare-changes-to-marketplace-offers"></a>Wijzigingen in Marketplace-aanbiedingen vergelijken
 

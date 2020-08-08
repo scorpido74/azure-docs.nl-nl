@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cdeecabf569e3c6f9b280e6b0179e5378f5b1c95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077760"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003101"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor cluster isolatie in azure Kubernetes service (AKS)
 
@@ -42,7 +42,7 @@ Met logische isolatie kan één AKS-cluster worden gebruikt voor meerdere werk b
 
 Logische schei ding van clusters biedt meestal een hogere pod-dichtheid dan fysiek geïsoleerde clusters. Er is minder dan de reken capaciteit die inactief is in het cluster. In combi natie met de Kubernetes van het cluster kunt u het aantal knoop punten omhoog of omlaag schalen om te voldoen aan de eisen. Met deze best practice methode voor automatisch schalen kunt u alleen het aantal knoop punten uitvoeren dat vereist is en de kosten minimaliseren.
 
-Kubernetes-omgevingen, in AKS of elders, zijn niet volledig veilig voor gebruik van een vijandend multi tenant. In een omgeving met meerdere tenants werken meerdere tenants met een gemeen schappelijke, gedeelde infra structuur. Als alle tenants niet kunnen worden vertrouwd, moet u daarom extra plannen om te voor komen dat een Tenant die de beveiliging en service van een ander beïnvloedt. Aanvullende beveiligings functies, zoals *pod-beveiligings beleid* en meer verfijnde, op rollen gebaseerde toegangs beheer (RBAC) voor knoop punten maken aanvallen moeilijker. Voor echte beveiliging bij het uitvoeren van vijandelijke multi tenant-workloads is een Hyper Visor echter het enige beveiligings niveau dat u moet vertrouwen. Het beveiligings domein voor Kubernetes wordt het hele cluster, niet een afzonderlijk knoop punt. Voor dit soort vijandelijke multi tenant-workloads moet u fysiek geïsoleerde clusters gebruiken.
+Kubernetes-omgevingen, in AKS of elders, zijn niet volledig veilig voor gebruik van een vijandend multi tenant. In een omgeving met meerdere tenants werken meerdere tenants met een gemeen schappelijke, gedeelde infra structuur. Als alle tenants niet kunnen worden vertrouwd, moet u daarom extra plannen om te voor komen dat een Tenant die de beveiliging en service van een ander beïnvloedt. Aanvullende beveiligings functies, zoals *pod-beveiligings beleid* en meer nauw keuriger op rollen gebaseerd toegangs beheer (RBAC) voor knoop punten maken aanvallen moeilijker. Voor echte beveiliging bij het uitvoeren van vijandelijke multi tenant-workloads is een Hyper Visor echter het enige beveiligings niveau dat u moet vertrouwen. Het beveiligings domein voor Kubernetes wordt het hele cluster, niet een afzonderlijk knoop punt. Voor dit soort vijandelijke multi tenant-workloads moet u fysiek geïsoleerde clusters gebruiken.
 
 ## <a name="physically-isolate-clusters"></a>Clusters fysiek isoleren
 

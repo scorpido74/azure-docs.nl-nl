@@ -5,13 +5,14 @@ services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
+ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251311"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003167"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -226,6 +227,8 @@ Azure Firewall biedt een FQDN-label van Azure Kubernetes service ( `AzureKuberne
 
 > [!NOTE]
 > De FQDN-code bevat alle FQDN-codes die hierboven worden vermeld en die automatisch up-to-date blijven.
+>
+> We raden u aan mini maal 20 frontend-Ip's te hebben op de Azure Firewall voor productie scenario's om te voor komen dat er geen SNAT-poort ontstaats problemen ontstaan.
 
 Hieronder ziet u een voor beeld van de architectuur van de implementatie:
 
@@ -364,7 +367,7 @@ Maak een lege route tabel die moet worden gekoppeld aan een bepaald subnet. In d
 ```azure-cli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -409,7 +412,7 @@ Nu kan een AKS-cluster worden geïmplementeerd in het bestaande virtuele netwerk
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Een service-principal met toegang maken om in het bestaande virtuele netwerk in te richten
 
-Een service-principal wordt door AKS gebruikt om cluster bronnen te maken. De service-principal die tijdens het maken wordt door gegeven, wordt gebruikt voor het maken van onderliggende AKS-resources, zoals opslag resources, Ip's en load balancers die door AKS worden gebruikt (u kunt ook in plaats daarvan een [beheerde identiteit](use-managed-identity.md) gebruiken). Als u hieronder niet de juiste machtigingen hebt verleend, kunt u het AKS-cluster niet inrichten.
+Een service-principal wordt door AKS gebruikt om cluster bronnen te maken. De service-principal die tijdens het maken wordt door gegeven, wordt gebruikt voor het maken van onderliggende AKS-resources, zoals opslag resources, Ip's en load balancers die door AKS worden gebruikt (u kunt in plaats daarvan ook een [beheerde identiteit](use-managed-identity.md) gebruiken). Als u hieronder niet de juiste machtigingen hebt verleend, kunt u het AKS-cluster niet inrichten.
 
 ```azure-cli
 # Create SP and Assign Permission to Virtual Network
@@ -482,14 +485,14 @@ Voeg een ander IP-adres toe aan de goedgekeurde bereiken met de volgende opdrach
 CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 
 # Add to AKS approved list
-az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 
 ```
 
  Gebruik de opdracht [AZ AKS Get-credentials] [AZ-AKS-Get-credentials] om te configureren `kubectl` om verbinding te maken met het zojuist gemaakte Kubernetes-cluster. 
 
  ```azure-cli
- az aks get-credentials -g $RG -n $AKS_NAME
+ az aks get-credentials -g $RG -n $AKSNAME
  ```
 
 ### <a name="deploy-a-public-service"></a>Een open bare service implementeren

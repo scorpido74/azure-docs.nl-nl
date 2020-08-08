@@ -1,19 +1,17 @@
 ---
 title: Lijst met veilige URL'S voor Windows-virtueel bureau blad-Azure
 description: Een lijst met Url's die u moet deblokkeren om ervoor te zorgen dat de implementatie van Windows virtueel bureau blad werkt zoals bedoeld.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075608"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009474"
 ---
 # <a name="safe-url-list"></a>Lijst met veilige URL's
 
@@ -69,11 +67,11 @@ Alle Extern bureaublad-clients die u gebruikt, moeten toegang hebben tot de volg
 
 |Adres|Uitgaande TCP-poort|Doel|Client(s)|
 |---|---|---|---|
-|*.wvd.microsoft.com|443|Serviceverkeer|Alles|
-|*.servicebus.windows.net|443|Probleemoplossingsgegevens|Alles|
-|go.microsoft.com|443|Microsoft FWLinks|Alles|
-|aka.ms|443|Microsoft URL-verkorter|Alles|
-|docs.microsoft.com|443|Documentatie|Alles|
+|*.wvd.microsoft.com|443|Serviceverkeer|Alle|
+|*.servicebus.windows.net|443|Probleemoplossingsgegevens|Alle|
+|go.microsoft.com|443|Microsoft FWLinks|Alle|
+|aka.ms|443|Microsoft URL-verkorter|Alle|
+|docs.microsoft.com|443|Documentatie|Alle|
 |privacy.microsoft.com|443|Privacyverklaring|Alle|
 |query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows-pc|
 

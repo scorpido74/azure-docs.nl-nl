@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop host pool verwijderen-Azure
 description: Een hostgroep verwijderen in virtueel bureau blad van Windows.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced0d7513524758975919fad90f19581d15d95f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfc9858bea468389d8ce90677f048e5d1fd3bb82
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097567"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007586"
 ---
 # <a name="delete-a-host-pool"></a>Een hostgroep verwijderen
 
@@ -39,9 +37,9 @@ Met deze cmdlet worden alle bestaande gebruikers sessies op de sessiehost van de
 
 Een hostgroep verwijderen in de Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Zoek en selecteer **Windows virtueel bureau blad**.
+2. Zoek en selecteer **Windows Virtual Desktop**.
 
 3. Selecteer **hostgroepen** in het menu aan de linkerkant van de pagina en selecteer vervolgens de naam van de hostgroep die u wilt verwijderen.
 

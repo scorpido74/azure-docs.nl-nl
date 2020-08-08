@@ -6,12 +6,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: yegu
-ms.openlocfilehash: 3f5cfccd1f85f68c619192496c62bf80ea8d4785
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4e867f28209230cf33b0f94e7cc8ca12d015ff15
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170171"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008556"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>Migreren van Managed Cache Service naar Azure cache voor redis (afgeschaft)
 Het migreren van uw toepassingen die gebruikmaken van Azure Managed Cache Service naar Azure cache voor redis, kan worden uitgevoerd met minimale wijzigingen in uw toepassing, afhankelijk van de Managed Cache Service functies die worden gebruikt door uw cache toepassing. Hoewel de Api's niet precies hetzelfde zijn, zijn ze vergelijkbaar en zijn veel van de bestaande code die Managed Cache Service gebruikt voor toegang tot een cache, opnieuw met minimale wijzigingen. In dit artikel wordt uitgelegd hoe u de benodigde configuratie-en toepassings wijzigingen kunt aanbrengen om uw Managed Cache Service-toepassingen te migreren voor het gebruik van Azure cache voor redis, en wordt getoond hoe sommige functies van Azure cache voor redis kunnen worden gebruikt voor het implementeren van de functionaliteit van een Managed Cache Service cache.
@@ -39,7 +40,7 @@ Azure Managed Cache Service en Azure cache voor redis zijn vergelijkbaar, maar i
 
 | Managed Cache Service functie | Ondersteuning voor Managed Cache Service | Azure-cache voor redis-ondersteuning |
 | --- | --- | --- |
-| Benoemde caches |Er is een standaard cache geconfigureerd, en in de standaard-en Premium-cache aanbiedingen kunnen Maxi maal negen extra benoemde caches worden geconfigureerd, indien gewenst. |Azure cache voor redis heeft een configureerbaar aantal data bases (standaard van 16) dat kan worden gebruikt voor het implementeren van een vergelijk bare functionaliteit op benoemde caches. Zie [Wat zijn Redis-databases?](cache-faq.md#what-are-redis-databases) en [Standaardconfiguratie voor Redis-server](cache-configure.md#default-redis-server-configuration) voor meer informatie. |
+| Benoemde caches |Er is een standaard cache geconfigureerd, en in de standaard-en Premium-cache aanbiedingen kunnen Maxi maal negen extra benoemde caches worden geconfigureerd, indien gewenst. |Azure cache voor redis heeft een configureerbaar aantal data bases (standaard van 16) dat kan worden gebruikt voor het implementeren van een vergelijk bare functionaliteit op benoemde caches. Zie [Wat zijn Redis-databases?](cache-development-faq.md#what-are-redis-databases) en [Standaardconfiguratie voor Redis-server](cache-configure.md#default-redis-server-configuration) voor meer informatie. |
 | Hoge beschikbaarheid |Voorziet in hoge Beschik baarheid voor items in de cache in de standaard-en Premium-cache-aanbiedingen. Als items verloren zijn gegaan vanwege een fout, zijn back-upkopieën van de items in de cache nog steeds beschikbaar. Schrijf bewerkingen naar de replica cache worden synchroon gemaakt. |Hoge Beschik baarheid is beschikbaar in de Standard-en Premium-cache-aanbiedingen, die een primaire/replica-configuratie van twee knoop punten hebben (elke Shard in een Premium-cache heeft een primair/replica-paar). Schrijf bewerkingen naar de replica worden asynchroon uitgevoerd. Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/). |
 | Meldingen |Hiermee kunnen clients asynchrone meldingen ontvangen wanneer er diverse cache bewerkingen worden uitgevoerd op een benoemde cache. |Client toepassingen kunnen redis pub/sub-of keys [Space-meldingen](cache-configure.md#keyspace-notifications-advanced-settings) gebruiken om een vergelijk bare functionaliteit te krijgen voor meldingen. |
 | Lokale cache |Slaat een kopie van objecten in de cache lokaal op de client op voor extra snelle toegang. |Client toepassingen moeten deze functionaliteit implementeren met een woorden lijst of een vergelijk bare gegevens structuur. |
@@ -47,7 +48,7 @@ Azure Managed Cache Service en Azure cache voor redis zijn vergelijkbaar, maar i
 | Verloop beleid |Het standaard verloop beleid is absoluut en het standaard verloop interval is 10 minuten. Er zijn ook verschuivende en nooit-beleids regels beschikbaar. |Standaard worden items in de cache niet verlopen, maar een verval datum kan worden geconfigureerd op basis van een schrijf bewerking met behulp van het aantal Overloads van de cache. |
 | Regio's en labels |Regio's zijn subgroepen voor items in de cache. Regio's bieden ook ondersteuning voor de annotatie van items in de cache met aanvullende beschrijvende teken reeksen met de naam tags. Regio's ondersteunen de mogelijkheid om Zoek bewerkingen uit te voeren op gelabelde items in die regio. Alle items in een regio bevinden zich in één knoop punt van het cache cluster. |een Azure-cache voor redis bestaat uit één knoop punt (tenzij redis-cluster is ingeschakeld), zodat het concept van Managed Cache Service regio's niet van toepassing is. Redis ondersteunt zoeken en Joker bewerkingen tijdens het ophalen van sleutels zodat beschrijvende Tags kunnen worden inge sloten in de sleutel namen en worden gebruikt om de items later op te halen. Zie [implementatie van cache tagging met redis](https://stackify.com/implementing-cache-tagging-redis/)voor een voor beeld van de implementatie van een tagging-oplossing met behulp van redis. |
 | Serialisatie |Managed cache biedt ondersteuning voor NetDataContractSerializer, BinaryFormatter en het gebruik van aangepaste serialisatiefunctie. De standaard waarde is NetDataContractSerializer. |Het is de verantwoordelijkheid van de client toepassing om .NET-objecten te serialiseren voordat u ze in de cache plaatst, met de keuze van de serialisatiefunctie tot de ontwikkelaar van de client toepassing. Zie [werken met .net-objecten in de cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)voor meer informatie en voorbeeld code. |
-| Cache-emulator |Managed cache biedt een lokale cache-emulator. |Azure cache voor redis heeft geen emulator, maar u kunt [de MSOpenTech-build van redis-server.exe lokaal uitvoeren](cache-faq.md#cache-emulator) om een emulator-ervaring te bieden. |
+| Cache-emulator |Managed cache biedt een lokale cache-emulator. |Azure cache voor redis heeft geen emulator, maar u kunt [redis lokaal uitvoeren](cache-development-faq.md#is-there-a-local-emulator-for-azure-cache-for-redis) om een emulator-ervaring te bieden. |
 
 ## <a name="choose-a-cache-offering"></a>Een cache aanbieding kiezen
 Microsoft Azure cache voor redis is beschikbaar in de volgende lagen:
@@ -58,7 +59,7 @@ Microsoft Azure cache voor redis is beschikbaar in de volgende lagen:
 
 Elke laag verschilt wat functies en prijzen betreft. De functies worden verderop in deze hand leiding behandeld en Zie [prijs informatie voor cache](https://azure.microsoft.com/pricing/details/cache/)voor meer informatie over prijzen.
 
-Een start punt voor migratie is het kiezen van de grootte die overeenkomt met de grootte van uw vorige Managed Cache Service cache en vervolgens omhoog of omlaag schalen, afhankelijk van de vereisten van uw toepassing. Zie voor meer informatie over het kiezen van de juiste Azure-cache voor redis-aanbieding [wat Azure-cache voor redis-aanbieding en grootte moet ik gebruiken](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
+Een start punt voor migratie is het kiezen van de grootte die overeenkomt met de grootte van uw vorige Managed Cache Service cache en vervolgens omhoog of omlaag schalen, afhankelijk van de vereisten van uw toepassing. Zie [de juiste laag kiezen](cache-overview.md#choosing-the-right-tier)voor meer informatie over het kiezen van het juiste Azure-cache geheugen voor redis-aanbiedingen.
 
 ## <a name="create-a-cache"></a>Een cache maken
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]

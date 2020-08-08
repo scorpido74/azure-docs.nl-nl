@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281562"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005309"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor toepassings ontwikkelaars om resources te beheren in azure Kubernetes service (AKS)
 
@@ -74,7 +74,7 @@ Zie [reken resources voor containers beheren][k8s-resource-limits]voor meer info
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Toepassingen ontwikkelen en fouten opsporen in een AKS-cluster
 
-**Best Practice-richt lijnen** : ontwikkel teams moeten een AKS-cluster implementeren en fouten opsporen met behulp van ontwikkel ruimten. Dit ontwikkel model zorgt ervoor dat op rollen gebaseerde toegangs beheer-, netwerk-of opslag behoeften worden geïmplementeerd voordat de app naar productie wordt geïmplementeerd.
+**Best Practice-richt lijnen** : ontwikkel teams moeten een AKS-cluster implementeren en fouten opsporen met behulp van ontwikkel ruimten. Dit ontwikkel model zorgt ervoor dat op rollen gebaseerd toegangs beheer (RBAC), netwerk of opslag behoeften worden geïmplementeerd voordat de app naar productie wordt geïmplementeerd.
 
 Met Azure dev Spaces kunt u toepassingen rechtstreeks op een AKS-cluster ontwikkelen, fouten opsporen en testen. Ontwikkel aars in een team werken samen om te bouwen en testen gedurende de levens cyclus van de toepassing. U kunt bestaande hulpprogram ma's zoals Visual Studio of Visual Studio code blijven gebruiken. Er wordt een uitbrei ding geïnstalleerd voor dev-ruimten die een optie bieden om de toepassing uit te voeren en fouten op te sporen in een AKS-cluster.
 

@@ -1,23 +1,21 @@
 ---
 title: GPU configureren voor virtueel bureau blad van Windows (klassiek)-Azure
 description: Hoe u GPU-versnelde rendering en code ring kunt inschakelen in Windows virtueel bureau blad (klassiek).
-services: virtual-desktop
 author: gundarev
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: e6c8fe95508937604c53d817d60dd637352fb6fa
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 32d5c280e80b2f21b30bb34a182070da51e21026
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288696"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008488"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>GPU-versnelling (graphics processing unit) configureren voor virtuele Windows-Bureau bladen (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../configure-vm-gpu.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../configure-vm-gpu.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 Windows Virtual Desktop biedt ondersteuning voor GPU-versnelde rendering en code ring voor betere prestaties en schaal baarheid van apps. GPU-versnelling is vooral van cruciaal belang voor grafische intensieve apps.
 

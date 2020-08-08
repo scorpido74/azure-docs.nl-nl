@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 7d5ab5c125a8a395d1bc0139421ec804e1221e12
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506431"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008964"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Problemen met Azure Cache voor Redis aan clientzijde oplossen
 
@@ -53,7 +53,7 @@ In de voor gaande uitzonde ring zijn er verschillende problemen die interessant 
 - U ziet dat in de `IOCP` sectie en de `WORKER` sectie een `Busy` waarde is die groter is dan de `Min` waarde. Dit verschil betekent dat uw `ThreadPool` instellingen moeten worden aangepast.
 - U kunt ook zien `in: 64221` . Deze waarde geeft aan dat 64.211 bytes zijn ontvangen op de kernel-laag van de client, maar niet zijn gelezen door de toepassing. Dit verschil betekent meestal dat uw toepassing (bijvoorbeeld stack Exchange. redis) geen gegevens van het netwerk leest zodra de server deze naar u verzendt.
 
-U kunt [uw `ThreadPool` instellingen configureren](cache-faq.md#important-details-about-threadpool-growth) om ervoor te zorgen dat uw thread pool snel omhoog wordt geschaald onder burst-scenario's.
+U kunt [uw `ThreadPool` instellingen configureren](cache-management-faq.md#important-details-about-threadpool-growth) om ervoor te zorgen dat uw thread pool snel omhoog wordt geschaald onder burst-scenario's.
 
 ## <a name="high-client-cpu-usage"></a>Intensief CPU-gebruik van client
 
@@ -109,4 +109,4 @@ Resoluties voor grote antwoord grootten zijn variërend, maar zijn onder andere:
 ## <a name="additional-information"></a>Aanvullende informatie
 
 - [Problemen met Azure Cache voor Redis aan serverzijde oplossen](cache-troubleshoot-server.md)
-- [Hoe kan ik Bench Mark en test de prestaties van mijn cache?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Hoe kan ik Bench Mark en test de prestaties van mijn cache?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

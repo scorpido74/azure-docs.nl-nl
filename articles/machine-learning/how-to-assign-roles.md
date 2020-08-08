@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 8cff5ec6886c0aceff5270418f9feeb145f6fd17
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c2203fec71430840e547115d24330b661bda50f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836544"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002226"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -66,7 +66,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning bewerkingen
 
-Azure Machine Learning ingebouwde acties voor veel bewerkingen en taken. Zie [Azure resource providers-bewerkingen](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor een volledige lijst.
+Azure Machine Learning ingebouwde acties voor veel bewerkingen en taken. Zie [Azure resource provider-bewerkingen](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)voor een volledige lijst.
 
 ## <a name="create-custom-role"></a>Aangepast rol maken
 
@@ -382,9 +382,9 @@ Hier volgen enkele dingen waarvan u op de hoogte moet zijn terwijl u Azure RBAC 
 Als u een door de gebruiker toegewezen identiteit op Amlcompute-clusters wilt toewijzen, moet u schrijf machtigingen hebben om Compute te maken en de [rol Managed Identity-operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator)hebben. Lees voor meer informatie over RBAC met beheerde identiteiten [hoe u de door de gebruiker toegewezen identiteit beheert](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)
 
 
-### <a name="q-do-we-support-role-based-access-controls-on-the-studio-portal"></a>V. Bieden we ondersteuning voor op rollen gebaseerd toegangs beheer op de Studio Portal?
+### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>V. Bieden we ondersteuning voor op rollen gebaseerd toegangs beheer op de Studio Portal?
 
-Azure Machine Learning Studio ondersteunt op rollen gebaseerd toegangs beheer. 
+Azure Machine Learning Studio ondersteunt op rollen gebaseerd toegangs beheer van Azure (Azure RBAC). 
 
 > [!IMPORTANT]
 > Wanneer u een aangepaste rol hebt toegewezen met specifieke machtigingen voor een gegevens wetenschapper in uw werk ruimte, worden de bijbehorende acties (zoals het toevoegen van een compute button) automatisch verborgen voor de gebruikers. Door deze items te verbergen, voor komt u dat Verwar ring wordt weer gegeven die een melding van onbevoegde toegang van de service retour neren als deze wordt gebruikt.

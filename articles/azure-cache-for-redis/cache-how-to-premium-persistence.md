@@ -6,17 +6,15 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 84a5b4784a36fb22ae50a7a1ec4fcb7e5ef5b7c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaee1c07f0fc8d5b0bba03550986291aea814fcb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80245273"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004799"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Gegevens persistentie configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen die flexibiliteit bieden bij het kiezen van cache grootte en-functies, waaronder functies voor de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. In dit artikel wordt beschreven hoe u persistentie configureert in een Premium Azure-cache voor redis-instantie.
-
-Zie [Inleiding tot de Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md)voor meer informatie over andere Premium-cache functies.
 
 ## <a name="what-is-data-persistence"></a>Wat is gegevens persistentie?
 Met [redis persistentie](https://redis.io/topics/persistence) kunt u gegevens bewaren die zijn opgeslagen in redis. U kunt ook moment opnamen maken en back-ups maken van de gegevens, die u in het geval van een hardwarestoring kunt laden. Dit is een enorm voor deel van de Basic-of Standard-laag waarbij alle gegevens worden opgeslagen in het geheugen en er mogelijk gegevens verlies kan optreden in het geval van een storing waarbij cache knooppunten niet beschikbaar zijn. 
@@ -166,7 +164,7 @@ Zie [Wat gebeurt er als ik een andere grootte heb geschaald en een back-up is he
 
 Gegevens die zijn opgeslagen in AOF-bestanden, worden onderverdeeld in meerdere pagina-blobs per knoop punt om de prestaties van het opslaan van de gegevens in de opslag te verbeteren. In de volgende tabel ziet u hoeveel pagina-blobs voor elke prijs categorie worden gebruikt:
 
-| Premiumlaag | Blobs |
+| Premium-laag | Blobs |
 |--------------|-------|
 | P1           | 4 per Shard    |
 | P2           | 8 per Shard    |
@@ -179,9 +177,9 @@ Na het opnieuw schrijven bestaan er twee sets met AOF-bestanden in de opslag. He
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het gebruik van meer Premium-cache functies.
+Meer informatie over Azure cache voor redis-functies.
 
-* [Inleiding tot de Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md)
+* [Azure-cache voor redis Premium-Service lagen](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

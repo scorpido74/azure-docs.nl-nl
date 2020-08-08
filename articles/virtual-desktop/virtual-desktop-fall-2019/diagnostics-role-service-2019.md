@@ -1,31 +1,29 @@
 ---
 title: Problemen met Windows Virtual Desktop (klassiek) vaststellen-Azure
 description: De Windows-functie voor virtueel bureau blad (klassiek) gebruiken om problemen te diagnosticeren.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285047"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009338"
 ---
 # <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Problemen in Windows virtueel bureau blad (klassiek) identificeren en onderzoeken
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../diagnostics-role-service.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../diagnostics-role-service.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. De Windows-functies voor virtuele Bureau bladen registreren een diagnostische activiteit wanneer een gebruiker met het systeem communiceert. Elk logboek bevat relevante informatie zoals de Windows-functies voor virtueel bureau blad die betrokken zijn bij de trans actie, fout berichten, Tenant gegevens en gebruikers informatie. Diagnostische activiteiten worden gemaakt door eind gebruikers en administratieve acties en kunnen worden gecategoriseerd in drie hoofd verzamelingen:
 
 * Activiteiten voor feed-abonnementen: de eind gebruiker activeert deze activiteiten wanneer ze verbinding proberen te maken met hun feed via Microsoft Extern bureaublad toepassingen.
 * Verbindings activiteiten: de eind gebruiker activeert deze activiteiten wanneer ze verbinding proberen te maken met een bureau blad of RemoteApp via Microsoft Extern bureaublad toepassingen.
 * Beheer activiteiten: de beheerder activeert deze activiteiten wanneer ze beheer bewerkingen uitvoeren op het systeem, zoals het maken van hostgroepen, het toewijzen van gebruikers aan app-groepen en het maken van roltoewijzingen.
-  
+
 Verbindingen die zich niet in het virtuele bureau blad van Windows bevinden, worden niet weer gegeven in de resultaten van diagnostische gegevens omdat de functie Service diagnostiek zelf deel uitmaakt van Windows virtueel bureau blad. Er kunnen problemen met de Windows-verbinding met virtueel bureau blad optreden wanneer de eind gebruiker problemen met de netwerk verbinding ondervindt.
 
 Als u aan de slag wilt gaan, [downloadt en importeert u de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan. Voer hierna de volgende cmdlet uit om u aan te melden bij uw account:
@@ -39,7 +37,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 De diagnostische gegevens van Windows virtueel bureau blad maakt gebruik van slechts één Power shell-cmdlet, maar bevat veel optionele para meters om problemen te beperken en te isoleren. De volgende secties bevatten een lijst met de cmdlets die u kunt uitvoeren om problemen vast te stellen. De meeste filters kunnen samen worden toegepast. Waarden die worden weer gegeven tussen vier Kante haken, zoals `<tenantName>` , moeten worden vervangen door de waarden die van toepassing zijn op uw situatie.
 
 >[!IMPORTANT]
->De functie diagnostische gegevens is voor het oplossen van problemen met één gebruiker. Alle query's die gebruikmaken van Power shell moeten de para meters *-username* of *-ActivityID* bevatten. Gebruik Log Analytics voor bewakings mogelijkheden. Zie [log Analytics voor de diagnostische functie gebruiken](diagnostics-log-analytics-2019.md) voor meer informatie over het verzenden van diagnostische gegevens naar uw werk ruimte. 
+>De functie diagnostische gegevens is voor het oplossen van problemen met één gebruiker. Alle query's die gebruikmaken van Power shell moeten de para meters *-username* of *-ActivityID* bevatten. Gebruik Log Analytics voor bewakings mogelijkheden. Zie [log Analytics voor de diagnostische functie gebruiken](diagnostics-log-analytics-2019.md) voor meer informatie over het verzenden van diagnostische gegevens naar uw werk ruimte.
 
 ### <a name="filter-diagnostic-activities-by-user"></a>Diagnostische activiteiten filteren op gebruiker
 

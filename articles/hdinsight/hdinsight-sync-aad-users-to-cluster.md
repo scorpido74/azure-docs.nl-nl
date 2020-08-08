@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 5b2a195e0a3145e97bf101b3354c2781fff15801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085970"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004426"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-gebruikers synchroniseren met een HDInsight-cluster
 
-[HDInsight-clusters met Enterprise Security Package (ESP)](hdinsight-domain-joined-introduction.md) kunnen gebruikmaken van sterke verificatie met Azure Active Directory-gebruikers (Azure AD), maar ook *op rollen gebaseerd toegangs beheer* (RBAC)-beleid gebruiken. Wanneer u gebruikers en groepen aan Azure AD toevoegt, kunt u de gebruikers synchroniseren die toegang nodig hebben tot uw cluster.
+[HDInsight-clusters met Enterprise Security Package (ESP)](hdinsight-domain-joined-introduction.md) kunnen gebruikmaken van sterke verificatie met Azure Active Directory-gebruikers (Azure AD), maar ook *op rollen gebaseerd toegangs beheer (Azure RBAC)* . Wanneer u gebruikers en groepen aan Azure AD toevoegt, kunt u de gebruikers synchroniseren die toegang nodig hebben tot uw cluster.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,7 +45,7 @@ Gebruikersgroepen die zijn opgegeven tijdens het maken van het cluster, worden o
 
 De volgende methode maakt gebruik van POST met de Ambari-REST API. Zie [HDInsight-clusters beheren met behulp van de Apache Ambari rest API](hdinsight-hadoop-manage-ambari-rest-api.md)voor meer informatie.
 
-1. Gebruik de [SSH-opdracht](hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` de naam van uw cluster te vervangen en voer de volgende opdracht in:
+1. Gebruik de [ssh-opdracht](hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` te vervangen door de naam van uw cluster.Voer vervolgens deze opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -146,7 +146,7 @@ Open de [Web-UI van Apache Ambari](hdinsight-hadoop-manage-ambari.md) om te cont
 Wanneer de nieuwe gebruiker (of een andere domein gebruiker) zich aanmeldt bij Ambari, gebruiken ze hun volledige gebruikers naam en domein referenties voor Azure AD.  In Ambari wordt een gebruikers alias weer gegeven. Dit is de weergave naam van de gebruiker in azure AD.
 De nieuwe voorbeeld gebruiker heeft de gebruikers naam `hiveuser3@contoso.com` . In Ambari wordt deze nieuwe gebruiker weer gegeven als, `hiveuser3` maar de gebruiker meldt zich aan bij Ambari als `hiveuser3@contoso.com` .
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Apache Hive beleid in HDInsight configureren met ESP](hdinsight-domain-joined-run-hive.md)
 * [HDInsight-clusters beheren met ESP](hdinsight-domain-joined-manage.md)

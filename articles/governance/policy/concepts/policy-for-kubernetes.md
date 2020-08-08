@@ -1,14 +1,14 @@
 ---
 title: Voor beeld-Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises. Dit is een preview-functie.
-ms.date: 06/12/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373756"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003504"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
 
@@ -130,10 +130,16 @@ Zodra de bovenstaande vereiste stappen zijn voltooid, installeert u de Azure Pol
 
   1. Selecteer op de hoofd pagina de knop **invoeg toepassing inschakelen** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="De Azure Policy voor de invoeg toepassing voor AKS inschakelen" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="De Azure Policy voor de invoeg toepassing voor AKS inschakelen":::
 
+     <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > Als de knop **invoeg toepassing inschakelen** grijs wordt weer gegeven, is het abonnement nog niet toegevoegd aan de preview-versie. Als de knop **invoeg toepassing uitschakelen** is ingeschakeld en er een migratie waarschuwing naar v2-bericht wordt weer gegeven, wordt Gatekeepver v2 nog steeds geïnstalleerd en moet het worden verwijderd.
+     > Als de knop **invoeg toepassing inschakelen** grijs wordt weer gegeven, is het abonnement nog niet toegevoegd aan de preview-versie. Als de knop **invoeg toepassing uitschakelen** is ingeschakeld en er een bericht over een migratie waarschuwing v2 wordt weer gegeven, wordt v1 add-on geïnstalleerd en moet het worden verwijderd voordat u v2-beleids definities toewijst. De _afgeschafte_ v1-invoeg toepassing wordt automatisch vervangen door de v2-invoeg toepassing vanaf 24 augustus 2020. Nieuwe v2-versies van de beleids definities moeten vervolgens worden toegewezen. Voer de volgende stappen uit om nu een upgrade uit te voeren:
+     > 
+     > 1. Voor het valideren van uw AKS-cluster is de V1-invoeg toepassing geïnstalleerd door de pagina **beleids regels (preview)** op uw AKS-cluster te bezoeken en de ' het huidige cluster maakt gebruik van Azure Policy add-on v1... ' Bericht.
+     > 1. [Verwijder de invoeg toepassing](#remove-the-add-on-from-aks).
+     > 1. Selecteer de knop **invoeg toepassing inschakelen** om de v2-versie van de invoeg toepassing te installeren.
+     > 1. [V2-versies van uw v1 ingebouwde beleids definities toewijzen](#assign-a-built-in-policy-definition)
 
 - Azure CLI
 
@@ -399,7 +405,7 @@ Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp
 
    - **Uitgeschakeld** : dwing het beleid niet af op het cluster. Kubernetes-toegangs aanvragen met schendingen worden niet geweigerd. De resultaten van de nalevings beoordeling zijn nog steeds beschikbaar. Bij het implementeren van nieuwe beleids definities voor het uitvoeren van clusters, is de optie _uitgeschakeld_ handig voor het testen van de beleids definitie als toegangs aanvragen met schendingen niet worden geweigerd.
 
-1. Selecteer **Next**. 
+1. Selecteer **Volgende**. 
 
 1. **Parameter waarden** instellen 
 
@@ -518,7 +524,7 @@ De Azure Policy-invoeg toepassing voor Kubernetes verzamelt beperkte diagnostisc
 De gegevens die door de invoeg toepassing worden verzameld, zijn geen persoonlijke gegevens. De volgende details worden momenteel verzameld:
 
 - Azure Policy-Agent versie van invoeg toepassing
-- Cluster type
+- Clustertype
 - Cluster regio
 - Cluster resource groep
 - Cluster bron-ID

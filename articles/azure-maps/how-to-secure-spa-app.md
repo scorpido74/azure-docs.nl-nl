@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0aa688d6e56629ca376844ce2d0669197b1bb2b7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 83fbf6fa9190953d902ab60a8a5ce131f1fd8a0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531342"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006414"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Een toepassing met één pagina beveiligen met niet-interactieve aanmelding
 
@@ -100,14 +100,14 @@ Maak een beveiligde web service-toepassing die verantwoordelijk is voor verifica
         });
     ```
 
-## <a name="grant-role-based-access"></a>Toegang op basis van rollen toekennen
+## <a name="grant-role-based-access"></a>Op rollen gebaseerde toegang verlenen
 
-U verleent op *rollen gebaseerd toegangs beheer* (RBAC) door de door het systeem toegewezen identiteit toe te wijzen aan een of meer Azure-functie definities. Als u de definities van Azure-functies wilt weer geven die beschikbaar zijn voor Azure Maps, gaat u naar **toegangs beheer (IAM)**. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*.
+U verleent op *rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)* door de door het systeem toegewezen identiteit toe te wijzen aan een of meer Azure-functie definities. Als u de definities van Azure-functies wilt weer geven die beschikbaar zijn voor Azure Maps, gaat u naar **toegangs beheer (IAM)**. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*.
 
 1. Ga naar uw **Azure Maps-account**. Selecteer de roltoewijzing van **toegangs beheer (IAM)**  >  **Role assignment**.
 
     > [!div class="mx-imgBorder"]
-    > ![RBAC toekennen](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Toegang verlenen met behulp van Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Selecteer op **het tabblad roltoewijzingen,** onder **rol**, een ingebouwde Azure Maps roldefinitie, zoals **Azure Maps gegevens lezer** of **Azure Maps gegevensinzender**. Selecteer **functie-app**onder **toegang toewijzen aan**. Selecteer de principal op naam. Selecteer vervolgens **Opslaan**.
 

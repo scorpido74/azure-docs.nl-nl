@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 0376a57e3f2c1158e9da97fb291a28c99ce2463c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d47bb7cc868c5733c6e36290f097fec783764cd3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903953"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003575"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problemen oplossen met Azure Digital Apparaatdubbels: logboek registratie van diagnostische gegevens
 
@@ -38,6 +38,8 @@ Hier vindt u informatie over het inschakelen van diagnostische instellingen voor
         - ModelsOperation
         - QueryOperation
         - AllMetrics
+        
+        Meer informatie over deze opties kunt u vinden in de sectie [*categorie gegevens*](#category-details) hieronder.
      * **Doel Details**: Kies waar u de logboeken wilt verzenden. U kunt een combi natie van de drie opties selecteren:
         - Verzenden naar Log Analytics
         - Archiveren naar een opslagaccount
@@ -50,6 +52,47 @@ Hier vindt u informatie over het inschakelen van diagnostische instellingen voor
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Scherm opname van de pagina met Diagnostische instellingen en de knop die u wilt toevoegen":::
 
 Nieuwe instellingen worden in ongeveer 10 minuten van kracht. Daarna worden logboeken weer gegeven in de geconfigureerde doel weer op de pagina **Diagnostische instellingen** voor uw exemplaar. 
+
+## <a name="category-details"></a>Categorie Details
+
+Hier vindt u meer informatie over de logboek categorieën die kunnen worden geselecteerd onder **categorie Details** bij het instellen van diagnostische instellingen.
+
+| Logboekcategorie | Beschrijving |
+| --- | --- |
+| ADTModelsOperation | Alle API-aanroepen voor modellen vastleggen |
+| ADTQueryOperation | Alle API-aanroepen met betrekking tot Query's vastleggen |
+| ADTEventRoutesOperation | Registreer alle API-aanroepen die betrekking hebben op gebeurtenis routes en voor het uitvoeren van gebeurtenissen van Azure Digital Apparaatdubbels naar een eindpunt service, zoals Event Grid, Event Hubs en Service Bus |
+| ADTDigitalTwinsOperation | Alle API-aanroepen vastleggen die betrekking hebben op Azure Digital Apparaatdubbels |
+
+Elke logboek categorie bestaat uit bewerkingen van schrijven, lezen, verwijderen en actie.  Deze toewijzing REST API aanroepen als volgt:
+
+| Gebeurtenistype | REST API bewerkingen |
+| --- | --- |
+| Schrijven | PUT and PATCH |
+| Lezen | GET |
+| Verwijderen | DELETE |
+| Actie | POST |
+
+Hier volgt een uitgebreide lijst met de bewerkingen en bijbehorende [Azure Digital apparaatdubbels rest API-aanroepen](https://docs.microsoft.com/rest/api/azure-digitaltwins/) die in elke categorie zijn geregistreerd. 
+
+>[!NOTE]
+> Elke logboek categorie bevat verschillende bewerkingen/REST API-aanroepen. In de onderstaande tabel wordt elke logboek categorie toegewezen aan alle bewerkingen/REST API-aanroepen, totdat de volgende logboek categorie wordt weer gegeven. 
+
+| Logboekcategorie | Bewerking | REST API-aanroepen en andere gebeurtenissen |
+| --- | --- | --- |
+| ADTModelsOperation | Micro soft. DigitalTwins/modellen/schrijven | Update-API voor digitale dubbele modellen |
+|  | Micro soft. DigitalTwins/modellen/lezen | Digitale twee modellen ontvangen op id en lijst-Api's |
+|  | Micro soft. DigitalTwins/modellen/verwijderen | Digitale dubbele modellen API verwijderen |
+|  | Micro soft. DigitalTwins/modellen/actie | Digitale dubbele modellen API toevoegen |
+| ADTQueryOperation | Micro soft. DigitalTwins/query/actie | Query Apparaatdubbels-API |
+| ADTEventRoutesOperation | Micro soft. DigitalTwins/eventroutes/schrijven | Gebeurtenis routes toevoegen API |
+|  | Micro soft. DigitalTwins/eventroutes/lezen | Gebeurtenis routes ophalen op basis van id en lijst-Api's |
+|  | Micro soft. DigitalTwins/eventroutes/verwijderen | Gebeurtenis routes verwijderen API |
+|  | Micro soft. DigitalTwins/eventroutes/actie | Uitgaand van een gebeurtenis naar een end-punt service (geen API-aanroep) |
+| ADTDigitalTwinsOperation | Micro soft. DigitalTwins/DigitalTwins/schrijven | Digitale Apparaatdubbels toevoegen, relatie toevoegen, bijwerken, onderdeel bijwerken |
+|  | Micro soft. DigitalTwins/DigitalTwins/lezen | Digital Apparaatdubbels get by id, component ophalen, relatie ophalen op id, binnenkomende relaties weer geven, lijst relaties |
+|  | Micro soft. DigitalTwins/DigitalTwins/verwijderen | Digitale Apparaatdubbels verwijderen, relatie verwijderen |
+|  | Micro soft. DigitalTwins/DigitalTwins/actie | Digital Apparaatdubbels, telemetrie van het onderdeel verzenden, telemetrie verzenden |
 
 ## <a name="next-steps"></a>Volgende stappen
 
