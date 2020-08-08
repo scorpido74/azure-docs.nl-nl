@@ -1,24 +1,24 @@
 ---
-title: Windows VM-installatie kopieën maken met Packer
-description: Meer informatie over het gebruik van Packer voor het maken van installatie kopieën van virtuele Windows-machines in azure
+title: Power shell-VM-installatie kopieën maken met Packer
+description: Meer informatie over het gebruik van Packer en Power shell voor het maken van installatie kopieën van virtuele machines in azure
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 02/22/2019
+ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 1597d249899756ac0d43d2dcd90019179b81bb3b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 176aa925e4662731342ec3269e61ce9c7f71cf30
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284656"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003833"
 ---
-# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Hoe kan ik met behulp van Packer installatie kopieën voor virtuele Windows-machines maken in azure?
+# <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>Power shell: met behulp van de module Packer kunt u installatie kopieën voor virtuele machines maken in azure
 Elke virtuele machine (VM) in azure wordt gemaakt op basis van een installatie kopie die de Windows-distributie-en besturingssysteem versie definieert. Installatie kopieën kunnen vooraf geïnstalleerde toepassingen en configuraties bevatten. De Azure Marketplace biedt veel kopieën van de eerste en derde partij voor het meest voorkomende besturings systeem en de toepassingen omgevingen, of u kunt uw eigen aangepaste installatie kopieën maken die zijn afgestemd op uw behoeften. In dit artikel wordt beschreven hoe u met behulp van de open source tool [Packer](https://www.packer.io/) aangepaste installatie kopieën in azure kunt definiëren en bouwen.
 
-Dit artikel is voor het laatst getest op 2/21/2019 met behulp van de [AZ Power shell-module](/powershell/azure/install-az-ps) versie 1.3.0 en de versie 1.3.4 van de [Packer](https://www.packer.io/docs/install) .
+Dit artikel is voor het laatst getest op 8/5/2020 met [Packer](https://www.packer.io/docs/install) versie 1.6.1.
 
 > [!NOTE]
 > Azure heeft nu een service, Azure Image Builder (preview), voor het definiëren en maken van uw eigen aangepaste installatie kopieën. Azure Image Builder is gebaseerd op Packer, dus u kunt zelfs uw bestaande scripts voor de inrichtings functie van de pakket shell gebruiken. Zie [een Windows-VM maken met Azure Image Builder](image-builder.md)om aan de slag te gaan met Azure Image Builder.
@@ -26,10 +26,10 @@ Dit artikel is voor het laatst getest op 2/21/2019 met behulp van de [AZ Power s
 ## <a name="create-azure-resource-group"></a>Azure-resourcegroep maken
 Tijdens het bouw proces maakt verpakker tijdelijke Azure-resources tijdens het maken van de bron-VM. Als u wilt dat de bron-VM als een installatie kopie wordt gebruikt, moet u een resource groep definiëren. De uitvoer van het pakket voor het maken van pakketten wordt opgeslagen in deze resource groep.
 
-Maak een resourcegroep met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
+Maak een resourcegroep met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voor beeld wordt een resource groep met de naam *myPackerGroup* gemaakt op de locatie *eastus* :
 
 ```azurepowershell
-$rgName = "myResourceGroup"
+$rgName = "myPackerGroup"
 $location = "East US"
 New-AzResourceGroup -Name $rgName -Location $location
 ```
@@ -37,13 +37,12 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Azure-referenties maken
 De verpakker wordt geverifieerd met Azure met behulp van een service-principal. Een Azure-Service-Principal is een beveiligings identiteit die u kunt gebruiken met apps, services en Automation-hulpprogram ma's, zoals Packer. U beheert en definieert de machtigingen voor de bewerkingen die de Service-Principal in azure kan uitvoeren.
 
-Een service-principal maken met [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) en machtigingen toewijzen aan de service-principal voor het maken en beheren van resources met [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). De waarde voor `-DisplayName` moet uniek zijn; Vervang deze indien nodig door uw eigen waarde.  
+Een service-principal maken met [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal). De waarde voor `-DisplayName` moet uniek zijn; Vervang deze indien nodig door uw eigen waarde.  
 
 ```azurepowershell
-$sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
+$sp = New-AzADServicePrincipal -DisplayName "PackerSP$(Get-Random)"
 $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
 $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
 Voer vervolgens het wacht woord en de toepassings-ID uit.
@@ -112,7 +111,6 @@ Maak een bestand met de naam *windows.jsop* en plak de volgende inhoud. Voer uw 
     "inline": [
       "Add-WindowsFeature Web-Server",
       "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
-      "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
       "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
       "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
       "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"

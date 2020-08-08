@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 554724c334cb6c51b8744de0eedd4d6815d707b5
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172579"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009576"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migreren naar Azure Cache voor Redis
 In dit artikel wordt een aantal benaderingen beschreven voor het migreren van een bestaande redis-cache die on-premises wordt uitgevoerd of in een andere Cloud service naar Azure cache voor redis.
@@ -51,7 +51,7 @@ Algemene stappen voor het implementeren van deze optie zijn:
 
 ### <a name="export-data-to-an-rdb-file-and-import-it-into-azure-cache-for-redis"></a>Gegevens exporteren naar een RDB-bestand en dit importeren in azure cache voor redis
 
-Open-source redis definieert een standaard mechanisme voor het maken van een moment opname van de gegevensset in het geheugen van de cache en het opslaan naar een bestand. Dit bestand, met de naam RDB, kan worden gelezen door een andere redis-cache. [Azure cache voor de Premium-laag van redis](cache-premium-tier-intro.md) biedt ondersteuning voor het importeren van gegevens in een cache-exemplaar via RDB-bestanden. U kunt een RDB-bestand gebruiken om gegevens van een bestaande cache over te brengen naar Azure cache voor redis.
+Open-source redis definieert een standaard mechanisme voor het maken van een moment opname van de gegevensset in het geheugen van de cache en het opslaan naar een bestand. Dit bestand, met de naam RDB, kan worden gelezen door een andere redis-cache. [Azure cache voor de Premium-laag van redis](cache-overview.md#service-tiers) biedt ondersteuning voor het importeren van gegevens in een cache-exemplaar via RDB-bestanden. U kunt een RDB-bestand gebruiken om gegevens van een bestaande cache over te brengen naar Azure cache voor redis.
 
 > [!IMPORTANT]
 > De indeling van het RDB-bestand kan worden gewijzigd tussen redis-versies en behoudt mogelijk niet achterwaartse compatibiliteit. De redis-versie van de cache die u wilt exporteren, moet gelijk zijn aan of kleiner zijn dan de versie van Azure cache voor redis.
@@ -114,5 +114,5 @@ Algemene stappen voor het implementeren van deze optie zijn:
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over Azure cache voor redis-functies.
 
-* [Inleiding tot de Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md)
+* [Azure-cache voor redis-service lagen](cache-overview.md#service-tiers)
 * [Gegevens importeren](cache-how-to-import-export-data.md#import)

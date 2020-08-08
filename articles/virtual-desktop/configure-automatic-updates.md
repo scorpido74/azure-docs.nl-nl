@@ -1,20 +1,18 @@
 ---
 title: Micro soft endpoint Configuration Manager configureren-Azure
 description: Micro soft endpoint Configuration Manager configureren voor het implementeren van software-updates voor Windows 10 Enter prise multi-session op een virtueel Windows-bureau blad.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: lizross
-ms.openlocfilehash: 100e269bb995f86d0721cd6de28cd4b933b58ecd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204384"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010120"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>Micro soft endpoint Configuration Manager configureren
 
@@ -27,7 +25,7 @@ Als u deze instelling wilt configureren, hebt u het volgende nodig:
    - Zorg ervoor dat u de micro soft endpoint Configuration Manager-agent hebt geïnstalleerd op uw virtuele machines.
    - Zorg ervoor dat uw versie van micro soft endpoint Configuration Manager ten minste op filiaal niveau 1906 is. Gebruik vertakkings niveau 1910 of hoger voor de beste resultaten.
 
-## <a name="configure-the-software-update-point"></a>Het software-update punt configureren
+## <a name="configure-the-software-update-point"></a>Het software-updatepunt configureren
 
 Als u updates voor Windows 10 Enter prise multi-session wilt ontvangen, moet u Windows Server versie 1903 en hoger inschakelen als een product binnen micro soft endpoint Configuration Manager. Deze product instelling is ook van toepassing als u de Windows Server-Update service gebruikt om updates te implementeren op uw systemen.
 

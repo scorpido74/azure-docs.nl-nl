@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857009"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004327"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Gegevens importeren en exporteren in azure cache voor redis
 Import/export is een Azure cache voor redis-gegevens beheer bewerking, waarmee u gegevens kunt importeren in azure-cache voor redis of gegevens uit Azure-cache exporteren voor redis door het importeren en exporteren van een Azure-cache voor de redis-data base (RDB) van een Premium-cache naar een BLOB in een Azure Storage-account.
@@ -24,7 +24,7 @@ Met importeren/exporteren kunt u tussen verschillende Azure-caches migreren voor
 In dit artikel vindt u een hand leiding voor het importeren en exporteren van gegevens met Azure cache voor redis en vindt u de antwoorden op veelgestelde vragen.
 
 > [!IMPORTANT]
-> Import/export is alleen beschikbaar voor [Premium-laag](cache-premium-tier-intro.md) caches.
+> Import/export is alleen beschikbaar voor [Premium-laag](cache-overview.md#service-tiers) caches.
 >
 >
 
@@ -152,6 +152,6 @@ U kunt dit oplossen door de import-of export bewerking te initiëren voordat 15 
 Exporteren werkt alleen met RDB-bestanden die zijn opgeslagen als pagina-blobs. Andere blob-typen worden momenteel niet ondersteund, met inbegrip van Blob Storage-accounts met warme en cool-lagen. Zie [Overzicht van Azure-opslagaccount](../storage/common/storage-account-overview.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het gebruik van meer Premium-cache functies.
+Meer informatie over Azure cache voor redis-functies.
 
-* [Inleiding tot de Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md)
+* [Azure-cache voor redis-service lagen](cache-overview.md#service-tiers)

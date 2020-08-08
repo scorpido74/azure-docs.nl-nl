@@ -1,24 +1,22 @@
 ---
 title: Virtuele Windows-bureau blad (klassieke) omgeving-Azure
 description: De basis elementen van een Windows-omgeving (virtueel bureau blad).
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2c019dd187c0ccd7a63f71c0373a0388135afda9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4fa281f6435013e9feb6808aab04ffa69c5f96c4
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285013"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008607"
 ---
 # <a name="windows-virtual-desktop-classic-environment"></a>Windows-omgeving (virtueel bureau blad)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../environment-setup.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../environment-setup.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 Virtueel bureau blad van Windows is een service waarmee gebruikers eenvoudig en veilig toegang krijgen tot hun gevirtualiseerde Bureau bladen en RemoteApps. In dit onderwerp vindt u meer informatie over de algemene structuur van de virtueel-bureaublad omgeving van Windows.
 

@@ -10,29 +10,29 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17847546ace558d367aed6d935db0fed6d817f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742195"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009559"
 ---
-# <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Toegang verlenen aan andere beheerders om Privileged Identity Management te beheren
+# <a name="delegate-access-to-privileged-identity-management"></a>Toegang tot Privileged Identity Management delegeren
 
-De globale beheerder die Privileged Identity Management (PIM) inschakelt voor een organisatie, kan automatisch roltoewijzingen ophalen en toegang krijgen tot Privileged Identity Management. Niemand anders in uw Azure Active Directory-organisatie (Azure AD) krijgt standaard schrijf toegang, maar ook met andere globale beheerders. Andere globale beheerders, beveiligings beheerders en beveiligings lezers hebben alleen-lezen toegang tot Privileged Identity Management. Als u toegang wilt verlenen aan Privileged Identity Management, kan de eerste gebruiker andere gebruikers toewijzen aan de rol van **beheerdersrol voor bevoegde rollen** .
+Als u de toegang tot Privileged Identity Management (PIM) wilt delegeren, kan een globale beheerder andere gebruikers toewijzen aan de rol van beheerdersrol voor bevoegde rollen. Beveiligings beheerders en beveiligings lezers hebben standaard alleen-lezen toegang tot Privileged Identity Management. Als u toegang wilt verlenen aan Privileged Identity Management, kan de eerste gebruiker andere gebruikers toewijzen aan de rol van **beheerdersrol voor bevoegde rollen** . De rol beheerdersrol is vereist voor het beheren van Azure AD-rollen. Beheerders machtigingen voor geprivilegieerde rollen zijn niet vereist voor het beheren van instellingen voor Azure-resources.
 
 > [!NOTE]
-> Voor het beheren van Privileged Identity Management is Azure Multi-Factor Authentication vereist. Aangezien micro soft-accounts zich niet kunnen registreren voor Azure Multi-Factor Authentication, kan een gebruiker die zich aanmeldt met een Microsoft-account geen toegang krijgen tot Privileged Identity Management.
+> Voor het beheren van Privileged Identity Management is Azure Multi-Factor Authentication vereist. Omdat micro soft-accounts zich niet kunnen registreren voor Azure Multi-Factor Authentication, kan een gebruiker die zich aanmeldt met een Microsoft-account geen toegang krijgen tot Privileged Identity Management.
 
 Zorg ervoor dat er altijd ten minste twee gebruikers in een rol voor geprivilegieerde rol beschikken, voor het geval één gebruiker is vergrendeld of het account wordt verwijderd.
 
-## <a name="grant-access-to-manage-pim"></a>Toegang verlenen voor het beheren van PIM
+## <a name="delegate-access-to-manage-pim"></a>Toegang delegeren om PIM te beheren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open **privileged Identity Management**in azure AD.
 
@@ -46,9 +46,9 @@ Zorg ervoor dat er altijd ten minste twee gebruikers in een rol voor geprivilegi
 
     ![Beheerder van geprivilegieerde rol-leden](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. Selecteer **lid toevoegen** om het deel venster beheerde leden toevoegen te openen.
+1. Selecteer **lid toevoegen** om het deel venster **beheerde leden toevoegen** te openen.
 
-1. Selecteer **leden selecteren** om het deel venster leden selecteren te openen.
+1. Selecteer **leden selecteren** om het deel venster **leden selecteren** te openen.
 
     ![Beheerder van geprivilegieerde rol-leden selecteren](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 
@@ -70,7 +70,7 @@ Zorg ervoor dat er altijd ten minste twee gebruikers in een rol voor geprivilegi
 
 Zorg er altijd voor dat er nog mini maal twee gebruikers aan zijn toegewezen voordat u iemand verwijdert uit de beheerderrol.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 

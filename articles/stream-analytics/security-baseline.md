@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d085ba494ea6bb6e9e80490d85e50f100fc0908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03b1d43eeaffe4449d85d384e669ba0950442ab9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485649"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003375"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Azure-beveiligings basislijn voor Stream Analytics
 
@@ -248,7 +248,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: standaard wachtwoorden wijzigen indien van toepassing
 
-**Hulp**: stream Analytics heeft niet het concept standaard wachtwoord als verificatie wordt meegeleverd met Azure Active Directory en beveiligd door op rollen gebaseerde toegangs beheer (RBAC) voor het beheren van de service. Afhankelijk van de injectie stroom Services en uitvoer services moet u de referenties die in de taken zijn geconfigureerd, roteren.
+**Hulp**: stream Analytics heeft niet het concept standaard wachtwoord als verificatie wordt meegeleverd met Azure Active Directory en beveiligd door op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de service. Afhankelijk van de injectie stroom Services en uitvoer services moet u de referenties die in de taken zijn geconfigureerd, roteren.
 
 * [Aanmeldings referenties voor invoer en uitvoer van een Stream Analytics-taak draaien](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -378,7 +378,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -442,11 +442,11 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Verantwoordelijkheid**: klant
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik op rollen gebaseerd toegangs beheer (RBAC) om te bepalen hoe gebruikers met de service communiceren.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om te bepalen hoe gebruikers met de service communiceren.
 
-* [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -565,7 +565,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure stream Analytics-resources in te delen en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
 Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -589,7 +589,7 @@ Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 Daarnaast kunt u met Azure resource Graph bronnen in de abonnementen opvragen/ontdekken.
@@ -629,7 +629,7 @@ Daarnaast kunt u met Azure resource Graph bronnen in de abonnementen opvragen/on
 ### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
@@ -932,7 +932,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 * [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
-* [Tags gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Labels gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: niet van toepassing
 

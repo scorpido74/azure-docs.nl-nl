@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: c043cfb6cf437ab55cc4a48ced716798738adbef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52569f3cec26432970606b31fe831bb6459839d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507221"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011014"
 ---
 Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën met gedeelde installatiekopieën, definities van installatiekopieën en versies van installatiekopieën, voert u de mislukte opdracht opnieuw uit in de foutopsporingsmodus. De foutopsporingsmodus wordt geactiveerd door de `--debug` Switch door te geven met CLI en de `-Debug` Switch met Power shell. Wanneer u de fout hebt gevonden, volgt u dit document om de fouten op te lossen.
 
@@ -88,7 +88,7 @@ Controleer of de **OSTYPE** van de versie van de installatie kopie die u probeer
 
 ## <a name="unable-to-share-resources"></a>Kan geen resources delen
 
-Het delen van de galerie met gedeelde installatie kopieën, de definitie van de installatie kopie en de versie van de installatie kopie van de verschillende abonnementen is ingeschakeld met behulp [van op rollen gebaseerde Access Control](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Het delen van de galerie met gedeelde installatie kopieën, de definitie van de installatie kopie en de versie van de installatie kopie van de resources tussen abonnementen is ingeschakeld met behulp [van Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles). 
 
 ## <a name="replication-is-slow"></a>De replicatie is traag
 

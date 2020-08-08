@@ -3,16 +3,16 @@ title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a4e21f29762a30baec8d5cf6e3914da2b5faadeb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321765"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002776"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
-Om het beheer van resources te vereenvoudigen, kunt u een Azure Resource Manager sjabloon (ARM-sjabloon) gebruiken om resources te implementeren op het niveau van uw Azure-abonnement. U kunt bijvoorbeeld [beleid](../../governance/policy/overview.md) en op [rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) Toep assen op uw abonnement. Dit geldt voor het hele abonnement. U kunt ook resource groepen maken binnen het abonnement en resources implementeren voor resource groepen in het abonnement.
+Om het beheer van resources te vereenvoudigen, kunt u een Azure Resource Manager sjabloon (ARM-sjabloon) gebruiken om resources te implementeren op het niveau van uw Azure-abonnement. U kunt bijvoorbeeld [beleid](../../governance/policy/overview.md) en [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md) implementeren voor uw abonnement. Dit geldt voor het hele abonnement. U kunt ook resource groepen maken binnen het abonnement en resources implementeren voor resource groepen in het abonnement.
 
 > [!NOTE]
 > U kunt implementeren op 800 verschillende resource groepen in een implementatie op abonnements niveau.
@@ -54,7 +54,7 @@ Gebruik voor het beheren van uw abonnement:
 
 * [budgetten](/azure/templates/microsoft.consumption/budgets)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [Koptags](/azure/templates/microsoft.resources/tags)
+* [tags](/azure/templates/microsoft.resources/tags)
 
 Andere ondersteunde typen zijn:
 
@@ -473,7 +473,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>Toegangsbeheer
 
-Zie [toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
+Zie [Azure-roltoewijzingen toevoegen met Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
 
 In het volgende voor beeld wordt een resource groep gemaakt, wordt er een vergren deling op toegepast en wordt een rol aan een principal toegewezen.
 

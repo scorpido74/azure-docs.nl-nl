@@ -1,6 +1,6 @@
 ---
 title: Door Web SDK ondersteunde browsers | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over ondersteunde browsers voor Microsoft Azure Maps Web SDK en hoe u kunt controleren of een browser een ondersteunde browser is.
+description: Meer informatie over hoe u kunt controleren of de Azure Maps Web-SDK een browser ondersteunt. Bekijk een lijst met ondersteunde browsers. Meer informatie over het gebruik van toewijzings Services met verouderde browsers.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988784"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002936"
 ---
 # <a name="web-sdk-supported-browsers"></a>Browsers die Web-SDK ondersteunen
 

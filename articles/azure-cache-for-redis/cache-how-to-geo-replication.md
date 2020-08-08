@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184970"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003699"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Geo-replicatie voor Azure cache instellen voor redis
 
@@ -24,7 +24,7 @@ Geo-replicatie biedt een mechanisme voor het koppelen van twee Premium-laag Azur
 
 Als u geo-replicatie tussen twee caches wilt configureren, moet aan de volgende vereisten worden voldaan:
 
-- Beide caches zijn [Premium-laag](cache-premium-tier-intro.md) caches.
+- Beide caches zijn [Premium-laag](cache-overview.md#service-tiers) caches.
 - Beide caches bevinden zich in hetzelfde Azure-abonnement.
 - De secundaire gekoppelde cache heeft dezelfde cache grootte of een grotere cache grootte dan de primaire gekoppelde cache.
 - Beide caches worden gemaakt en de status wordt uitgevoerd.
@@ -186,5 +186,6 @@ Automatische failover tussen Azure-regio's wordt niet ondersteund voor geo-gerep
 Als u een door de klant geïnitieerde failover wilt starten, koppelt u de caches dan eerst. Wijzig vervolgens uw redis-client om het eind punt van de verbinding van de secundaire cache (voorheen gekoppeld) te gebruiken. Wanneer de twee caches zijn ontkoppeld, wordt de secundaire cache opnieuw een regel matige lees-/schrijftoegang en worden aanvragen rechtstreeks van redis-clients geaccepteerd.
 
 ## <a name="next-steps"></a>Volgende stappen
+Meer informatie over Azure cache voor redis-functies.
 
-Meer informatie over de [Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md).
+* [Azure-cache voor redis-service lagen](cache-overview.md#service-tiers)

@@ -1,6 +1,6 @@
 ---
 title: Een doellaag toevoegen aan een kaart | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u een tekenlaag aan een kaart kunt toevoegen met behulp van de Microsoft Azure Maps Web SDK.
+description: Meer informatie over het weer geven van punten op kaarten als cirkels met een vaste grootte. Bekijk hoe u de Azure Maps Web-SDK kunt gebruiken om bellen lagen toe te voegen en aan te passen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 1a86c1ef12a4cae4132e79a742b99c1b95ee4cd5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 47ee9e67c6885829e3cb0082aea63367da4aa626
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287018"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006176"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Een tekenlaag aan een kaart toevoegen
 

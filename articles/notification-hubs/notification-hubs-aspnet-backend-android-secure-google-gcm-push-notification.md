@@ -5,27 +5,24 @@ documentationcenter: android
 keywords: push melding, Push meldingen, Push berichten, Android-push meldingen
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-java
-ms.openlocfilehash: 3f31c9786a8310779d71ab0c54bddc4687f765be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f2d5d618fabbe7400ce825f984ace1622a524f05
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325233"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004028"
 ---
-# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Beveiligde push meldingen verzenden met Azure Notification Hubs
+# <a name="send-secure-push-notifications-with-azure-notification-hubs"></a>Beveiligde push meldingen verzenden met Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -43,28 +40,28 @@ Vanwege regelgeving of beveiligings beperkingen kan het gebeuren dat een toepass
 
 Op hoog niveau is de stroom als volgt:
 
-1. De back-end van de app:
-   * Slaat een beveiligde Payload op in de back-enddatabase.
-   * Hiermee wordt de ID van deze melding naar het Android-apparaat verzonden (er worden geen beveiligde gegevens verzonden).
-2. De app op het apparaat wanneer de melding wordt ontvangen:
-   * Het Android-apparaat neemt contact op met de back-end die de beveiligde Payload aanvraagt.
-   * De app kan de payload weer geven als een melding op het apparaat.
+- De app-back-end:
+  * Slaat een beveiligde Payload op in de back-enddatabase.
+  * Hiermee wordt de ID van deze melding naar het Android-apparaat verzonden (er worden geen beveiligde gegevens verzonden).
+- De app op het apparaat wanneer de melding wordt ontvangen:
+  * Het Android-apparaat neemt contact op met de back-end die de beveiligde Payload aanvraagt.
+  * De app kan de payload weer geven als een melding op het apparaat.
 
-Het is belang rijk te weten dat in de voor gaande stroom (en in deze zelf studie) wordt aangenomen dat het apparaat een verificatie token opslaat in de lokale opslag nadat de gebruiker zich heeft aangemeld. Deze aanpak zorgt voor een naadloze ervaring, omdat het apparaat de beveiligde payload van de melding kan ophalen met dit token. Als uw toepassing geen verificatie tokens opslaat op het apparaat of als deze tokens verlopen zijn, moet de app bij het ontvangen van de push melding een algemene melding weer geven waarin de gebruiker wordt gevraagd de app te starten. De app verifieert vervolgens de gebruiker en toont de meldings lading.
+Het is belang rijk te weten dat in de voor gaande stroom (en in deze zelf studie) wordt aangenomen dat het apparaat een verificatie token opslaat in de lokale opslag nadat de gebruiker zich heeft aangemeld. Deze aanpak zorgt voor een naadloze ervaring, omdat het apparaat de beveiligde payload van de melding kan ophalen met dit token. Als uw toepassing geen verificatie tokens opslaat op het apparaat of als deze tokens verlopen zijn, moet de apparaat-app na het ontvangen van de push melding een algemene melding weer geven waarin de gebruiker wordt gevraagd de app te starten. De app verifieert vervolgens de gebruiker en toont de meldings lading.
 
-Deze zelf studie laat zien hoe u beveiligde push meldingen verzendt. Het is gebaseerd op de zelf studie [gebruikers melden](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) , dus u moet de stappen in deze zelf studie eerst volt ooien als u dat nog niet hebt gedaan.
+Deze zelf studie laat zien hoe u beveiligde push meldingen verzendt. Het is gebaseerd op de zelf studie [gebruikers melden](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) , dus moet u eerst de stappen in deze zelf studie volt ooien.
 
 > [!NOTE]
-> In deze zelf studie wordt ervan uitgegaan dat u uw notification hub hebt gemaakt en geconfigureerd zoals wordt beschreven in [aan de slag met Notification hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
+> In deze zelf studie wordt ervan uitgegaan dat u uw notification hub hebt gemaakt en geconfigureerd zoals wordt beschreven in aan de [slag met Notification hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-android-project"></a>Het Android-project wijzigen
 
-Nu u de back-end van uw app hebt gewijzigd om alleen de id van een push melding te verzenden, moet u uw Android *-* app wijzigen zodat deze melding wordt afgehandeld en de back-end terugbellen om het beveiligde bericht weer te geven.
+Nu u de back-end van uw app hebt gewijzigd om alleen de ID van een push melding te verzenden, moet u uw Android-app wijzigen zodat deze melding wordt afgehandeld en vervolgens terugbellen naar uw back-end om het beveiligde bericht weer te geven.
 Voor dit doel moet u ervoor zorgen dat uw Android-app weet hoe u zich kunt verifiëren met uw back-end wanneer de push meldingen worden ontvangen.
 
-Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te slaan in de gedeelde voor keuren van uw app. Analoge mechanismen kunnen worden gebruikt voor het opslaan van verificatie tokens (bijvoorbeeld OAuth-tokens) die de app moet gebruiken zonder dat hiervoor gebruikers referenties zijn vereist.
+Wijzig nu de aanmeldings stroom om de waarde van de verificatie header op te slaan in de gedeelde voor keuren van uw app. Analoge mechanismen kunnen worden gebruikt voor het opslaan van verificatie tokens (bijvoorbeeld OAuth-tokens) die de app moet gebruiken zonder dat hiervoor gebruikers referenties zijn vereist.
 
 1. Voeg in uw Android-app-project de volgende constanten toe boven aan de `MainActivity` klasse:
 
@@ -72,6 +69,7 @@ Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te s
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
     public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
     ```
+
 2. `MainActivity`Werk de methode die zich nog in de klasse `getAuthorizationHeader()` bevinden, bij met de volgende code:
 
     ```java
@@ -87,6 +85,7 @@ Wijzig nu de *aanmeldings* stroom om de waarde van de verificatie header op te s
         return basicAuthHeader;
     }
     ```
+
 3. Voeg `import` boven aan het bestand de volgende-instructies toe `MainActivity` :
 
     ```java
@@ -104,6 +103,7 @@ Wijzig nu de handler die wordt aangeroepen wanneer de melding wordt ontvangen.
         retrieveNotification(secureMessageId);
     }
     ```
+
 2. Voeg vervolgens de `retrieveNotification()` -methode toe, waarbij u de tijdelijke aanduiding vervangt `{back-end endpoint}` door het back-end-eind punt dat is verkregen tijdens het implementeren van uw back-end:
 
     ```java

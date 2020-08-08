@@ -2,13 +2,14 @@
 title: Privé-eindpunten gebruiken met Azure Batch-accounts
 description: Meer informatie over het verbinden van privé met een Azure Batch-account met behulp van privé-eind punten.
 ms.topic: how-to
-ms.date: 06/12/2020
-ms.openlocfilehash: 04f52c8c58668b2978b38c65a94533a38c593888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.custom: references_regions
+ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754481"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004238"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privé-eindpunten gebruiken met Azure Batch-accounts
 
@@ -16,16 +17,11 @@ ms.locfileid: "84754481"
 
 Met behulp van een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md)kunt u verbinding maken met een Azure batch-account via een [persoonlijk eind punt](../private-link/private-endpoint-overview.md). Het persoonlijke eind punt is een reeks privé-IP-adressen in een subnet binnen het virtuele netwerk. Vervolgens kunt u de toegang tot een Azure Batch account beperken via privé-IP-adressen.
 
-Met persoonlijke koppeling kunnen gebruikers toegang krijgen tot een Azure Batch-account vanuit het virtuele netwerk of via een peered virtueel netwerk. Resources die zijn toegewezen aan een privé koppeling, zijn ook on-premises toegankelijk via privé-peering via VPN of [Azure ExpressRoute](../expressroute/expressroute-introduction.md).
+Met persoonlijke koppeling kunnen gebruikers toegang krijgen tot een Azure Batch-account vanuit het virtuele netwerk of via een peered virtueel netwerk. Resources die zijn toegewezen aan een privé koppeling, zijn ook on-premises toegankelijk via privé-peering via VPN of [Azure ExpressRoute](../expressroute/expressroute-introduction.md). U kunt verbinding maken met een Azure Batch account dat is geconfigureerd met een persoonlijke koppeling met behulp van de [automatische of hand matige goedkeurings methode](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
 
-U kunt verbinding maken met een Azure Batch account dat is geconfigureerd met een persoonlijke koppeling met behulp van de [automatische of hand matige goedkeurings methode](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
+Ondersteuning voor particuliere connectiviteit in Azure Batch is momenteel beschikbaar in de volgende Azure-regio's: West-Centraal VS, VS-West 2, Oost-VS, Zuid-Centraal VS, US Gov-Virginia, US Gov-Arizona, Azië-oost, Frank rijk en UK-zuid.
 
 In dit artikel worden de stappen beschreven voor het maken van een persoonlijk batch-account en het openen met behulp van een persoonlijk eind punt.
-
-> [!IMPORTANT]
-> Ondersteuning voor particuliere connectiviteit in Azure Batch is momenteel beschikbaar in de open bare Preview voor de West-Centraal VS, VS-West 2, VS-Oost, Zuid-Centraal VS, US Gov-Virginia en US Gov-Arizona regio's.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="azure-portal"></a>Azure Portal
 

@@ -4,16 +4,16 @@ description: Meer informatie over het beheren van de toegang tot het Kubernetes-
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 5ed2f74d9de30b5fbdeaeb38316831db0777a0d6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501624"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009287"
 ---
-# <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Gebruik Azure-functies voor toegangs beheer op basis van rollen om toegang te definiëren tot het Kubernetes-configuratie bestand in azure Kubernetes service (AKS)
+# <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Gebruik Azure op rollen gebaseerd toegangs beheer voor het definiëren van toegang tot het Kubernetes-configuratie bestand in azure Kubernetes service (AKS)
 
-U kunt met het hulp programma communiceren met Kubernetes-clusters `kubectl` . De Azure CLI biedt een eenvoudige manier om de toegangs referenties en configuratie gegevens op te halen om verbinding te maken met uw AKS-clusters met behulp van `kubectl` . Als u wilt beperken wie de gegevens van de Kubernetes-configuratie (*kubeconfig*) kan ophalen en de machtigingen die ze hebben, te beperken, kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC).
+U kunt met het hulp programma communiceren met Kubernetes-clusters `kubectl` . De Azure CLI biedt een eenvoudige manier om de toegangs referenties en configuratie gegevens op te halen om verbinding te maken met uw AKS-clusters met behulp van `kubectl` . Als u wilt beperken wie de gegevens van de Kubernetes-configuratie (*kubeconfig*) kan ophalen en de machtigingen die ze hebben, wilt beperken, kunt u gebruikmaken van Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 
 Dit artikel laat u zien hoe u RBAC-rollen kunt toewijzen die de configuratie-informatie voor een AKS-cluster beperken.
 
@@ -27,7 +27,7 @@ Voor dit artikel moet u ook de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer 
 
 Wanneer u met het hulp programma met een AKS-cluster communiceert `kubectl` , wordt er een configuratie bestand gebruikt waarmee de verbindings gegevens van de cluster worden gedefinieerd. Dit configuratie bestand wordt doorgaans opgeslagen in *~/.Kube/config*. Er kunnen meerdere clusters worden gedefinieerd in dit *kubeconfig* -bestand. U schakelt tussen clusters met behulp van de opdracht [kubectl config use-context][kubectl-config-use-context] .
 
-Met de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] kunt u de toegangs referenties voor een AKS-cluster ophalen en deze samen voegen in het *kubeconfig* -bestand. U kunt op rollen gebaseerd toegangs beheer (RBAC) van Azure gebruiken om de toegang tot deze referenties te beheren. Met deze Azure-rollen kunt u bepalen wie het *kubeconfig* -bestand kan ophalen en welke machtigingen ze vervolgens hebben in het cluster.
+Met de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] kunt u de toegangs referenties voor een AKS-cluster ophalen en deze samen voegen in het *kubeconfig* -bestand. U kunt Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om de toegang tot deze referenties te beheren. Met deze Azure-rollen kunt u bepalen wie het *kubeconfig* -bestand kan ophalen en welke machtigingen ze vervolgens hebben in het cluster.
 
 De twee ingebouwde rollen zijn:
 

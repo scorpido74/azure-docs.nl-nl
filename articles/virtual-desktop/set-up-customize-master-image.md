@@ -1,19 +1,17 @@
 ---
 title: Een VHD-model installatie kopie voorbereiden en aanpassen-Azure
 description: Een installatie kopie van een virtueel bureau blad van Windows voorbereiden, aanpassen en uploaden naar Azure.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fe354991ce19031cc4a51b07098ab12240569a90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832522"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009508"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
@@ -211,7 +209,7 @@ In de volgende instructies wordt uitgelegd hoe u uw master installatie kopie upl
 Nu u een installatie kopie hebt, kunt u hostgroepen maken of bijwerken. Raadpleeg de volgende artikelen voor meer informatie over het maken en bijwerken van hostgroepen:
 
 - [Een hostpool maken met een Azure Resource Manager-sjabloon](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)
-- [Zelfstudie: een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Zelfstudie: Een hostpool maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
 - [Een hostpool maken met PowerShell](create-host-pools-powershell.md)
 - [Een profielcontainer maken voor een hostpool met behulp van een bestandsshare](create-host-pools-user-profile.md)
 - [De taakverdelingsmethode voor Windows Virtual Desktop configureren](configure-host-pool-load-balancing.md)

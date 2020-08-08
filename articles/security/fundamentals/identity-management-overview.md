@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 9de31ba30c4599393d9127c7852cb567cf0258ef
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542073"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002680"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
 
@@ -41,7 +41,7 @@ Het artikel is gericht op de volgende kern mogelijkheden van Azure Identity Mana
 * Eenmalige aanmelding
 * Omgekeerde proxy
 * Multi-Factor Authentication
-* Op rollen gebaseerd toegangs beheer (RBAC)
+* Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)
 * Beveiligings bewaking, waarschuwingen en rapporten op basis van machine learning
 * Identiteits-en toegangs beheer van consumenten
 * Apparaatregistratie
@@ -87,14 +87,14 @@ Meer informatie:
 * [Wat is Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
 * [Hoe Multi-Factor Authentication werkt](../../active-directory/authentication/concept-mfa-howitworks.md)
 
-## <a name="rbac"></a>RBAC
+## <a name="azure-rbac"></a>Azure RBAC
 
-Op rollen gebaseerd toegangsbeheer is een machtigingssysteem dat is gebouwd op Azure Resource Manager dat een geavanceerd toegangsbeheer van resources in Azure biedt. Met RBAC kunt u het toegangs niveau voor gebruikers nauw keurig beheren. U kunt bijvoorbeeld een gebruiker beperken tot het beheer van virtuele netwerken en een andere gebruiker voor het beheren van alle resources in een resource groep. Azure bevat diverse ingebouwde rollen die u kunt gebruiken. Hier volgen vier fundamentele ingebouwde rollen. De eerste drie zijn op alle resourcetypen van toepassing.
+Azure RBAC is een autorisatie systeem dat is gebaseerd op Azure Resource Manager dat een nauw keurig toegangs beheer biedt voor resources in Azure. Met Azure RBAC kunt u het toegangs niveau voor gebruikers nauw keurig beheren. U kunt bijvoorbeeld een gebruiker beperken tot het beheer van virtuele netwerken en een andere gebruiker voor het beheren van alle resources in een resource groep. Azure bevat diverse ingebouwde rollen die u kunt gebruiken. Hier volgen vier fundamentele ingebouwde rollen. De eerste drie zijn op alle resourcetypen van toepassing.
 
-- [Eigenaar](/azure/role-based-access-control/built-in-roles#owner) : heeft volledige toegang tot alle resources, waaronder het recht om de toegang tot anderen te delegeren. 
-- [Inzender](/azure/role-based-access-control/built-in-roles#contributor) : kan alle typen Azure-resources maken en beheren, maar kan geen toegang verlenen aan anderen.
-- [Lezer](/azure/role-based-access-control/built-in-roles#reader) : kan bestaande Azure-resources weer geven.
-- [Beheerder van gebruikers toegang](/azure/role-based-access-control/built-in-roles#user-access-administrator) : Hiermee kunt u de gebruikers toegang tot Azure-resources beheren.
+- [Eigenaar](/azure/role-based-access-control/built-in-roles#owner): heeft volledige toegang tot alle resources, waaronder het recht om toegang aan anderen te delegeren. 
+- [Inzender](/azure/role-based-access-control/built-in-roles#contributor): kan alle typen Azure-resources maken en beheren, maar kan anderen geen toegang verlenen.
+- [Lezer](/azure/role-based-access-control/built-in-roles#reader): kan bestaande Azure-resources bekijken.
+- [Beheerder gebruikerstoegang](/azure/role-based-access-control/built-in-roles#user-access-administrator): kan gebruikerstoegang tot Azure-resources beheren.
 
 Meer informatie:
 

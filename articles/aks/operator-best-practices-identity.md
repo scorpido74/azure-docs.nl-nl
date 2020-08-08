@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c7e8cd28380a86a671c74af03fa479abce5cfe25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0e11f345bfed287be3170df38a909ed24149b754
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107135"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010256"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor verificatie en autorisatie in azure Kubernetes service (AKS)
 
@@ -23,7 +23,7 @@ In dit artikel Best practices wordt uitgelegd hoe een cluster operator de toegan
 > [!div class="checklist"]
 >
 > * AKS-cluster gebruikers verifiëren met Azure Active Directory
-> * Toegang tot resources beheren met Kubernetes-op rollen gebaseerde toegangs beheer (RBAC)
+> * Toegang tot resources beheren met op rollen gebaseerd toegangs beheer (RBAC) van Kubernetes
 > * Gebruik Azure RBAC om de toegang tot de AKS-resource en de Kubernetes-API op schaal nauw keurig te beheren, evenals de kubeconfig.
 > * Een beheerde identiteit gebruiken om de meeste te verifiëren met andere services
 
@@ -33,7 +33,7 @@ In dit artikel Best practices wordt uitgelegd hoe een cluster operator de toegan
 
 De ontwikkel aars en toepassings eigenaren van uw Kubernetes-cluster moeten toegang hebben tot verschillende bronnen. Kubernetes biedt geen oplossing voor identiteits beheer om te bepalen welke gebruikers met welke bronnen kunnen communiceren. In plaats daarvan integreert u uw cluster doorgaans met een bestaande identiteits oplossing. Azure Active Directory (AD) biedt een oplossing voor identiteits beheer op bedrijfs niveau en kan worden geïntegreerd met AKS-clusters.
 
-Met Azure AD-geïntegreerde clusters in AKS maakt u *rollen* of *ClusterRoles* die toegangs machtigingen voor bronnen definiëren. Vervolgens *koppelt* u de rollen aan gebruikers of groepen vanuit Azure AD. Deze Kubernetes op rollen gebaseerde toegangs beheer (RBAC) worden besproken in de volgende sectie. De integratie van Azure AD en het beheren van de toegang tot bronnen kan worden weer gegeven in het volgende diagram:
+Met Azure AD-geïntegreerde clusters in AKS maakt u *rollen* of *ClusterRoles* die toegangs machtigingen voor bronnen definiëren. Vervolgens *koppelt* u de rollen aan gebruikers of groepen vanuit Azure AD. Deze Kubernetes op rollen gebaseerd toegangs beheer (RBAC) worden in de volgende sectie besproken. De integratie van Azure AD en het beheren van de toegang tot bronnen kan worden weer gegeven in het volgende diagram:
 
 ![Verificatie op cluster niveau voor de integratie van Azure Active Directory met AKS](media/operator-best-practices-identity/cluster-level-authentication-flow.png)
 
@@ -46,7 +46,7 @@ Met Azure AD-geïntegreerde clusters in AKS maakt u *rollen* of *ClusterRoles* d
 
 Zie [Azure Active Directory integreren met AKS][aks-aad]als u een AKS-cluster wilt maken dat gebruikmaakt van Azure AD.
 
-## <a name="use-kubernetes-role-based-access-controls-rbac"></a>Kubernetes met op rollen gebaseerde toegangs beheer (RBAC) gebruiken
+## <a name="use-kubernetes-role-based-access-control-rbac"></a>Kubernetes met op rollen gebaseerd toegangs beheer (RBAC) gebruiken
 
 **Richt lijnen voor best practices** : gebruik Kubernetes RBAC om de machtigingen te definiëren die gebruikers of groepen hebben voor resources in het cluster. Maak rollen en bindingen die de mini maal vereiste machtigingen toewijzen. Integreer met Azure AD, zodat alle wijzigingen in de gebruikers status of het groepslid maatschap automatisch worden bijgewerkt en de toegang tot cluster bronnen actueel is.
 
@@ -95,7 +95,7 @@ Er zijn twee toegangs niveaus nodig om een AKS-cluster volledig te kunnen gebrui
 1. Open de AKS-resource in uw Azure-abonnement. Met dit toegangs niveau kunt u bepalen of u uw cluster wilt schalen of upgraden met behulp van de AKS-Api's en hoe u uw kubeconfig ophaalt.
 Zie toegang tot het [cluster configuratie bestand beperken](control-kubeconfig-access.md)voor meer informatie over het beheren van de toegang tot de AKS-resource en de kubeconfig.
 
-2. Toegang tot de Kubernetes-API. Dit toegangs niveau wordt bepaald door [KUBERNETES RBAC](#use-kubernetes-role-based-access-controls-rbac) (traditioneel) of door Azure RBAC te integreren met AKS voor Kubernetes-autorisatie.
+2. Toegang tot de Kubernetes-API. Dit toegangs niveau wordt bepaald door [KUBERNETES RBAC](#use-kubernetes-role-based-access-control-rbac) (traditioneel) of door Azure RBAC te integreren met AKS voor Kubernetes-autorisatie.
 Zie [Azure RBAC gebruiken voor Kubernetes-autorisatie](manage-azure-rbac.md)voor meer informatie over het nauw keurig toekennen van machtigingen aan de KUBERNETES-API met behulp van Azure RBAC.
 
 ## <a name="use-pod-identities"></a>Pod-identiteiten gebruiken

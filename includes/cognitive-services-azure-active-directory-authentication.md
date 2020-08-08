@@ -4,20 +4,20 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 6bbdd3eb62229c3f8f180d2618dd25062ff0c1e9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062702"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010927"
 ---
-## <a name="authenticate-with-azure-active-directory"></a>Verifiëren bij Azure Active Directory
+## <a name="authenticate-with-azure-active-directory"></a>Verifiëren met Azure Active Directory
 
 > [!IMPORTANT]
 > 1. Momenteel worden **alleen** de Computer Vision-API, Face-API, Text Analytics-API, insluitende lezer, formulier herkenning, afwijkings detectie en alle Bing-services ondersteund, met uitzonde ring van Bing aangepaste zoekopdrachten ondersteuning voor verificatie met behulp van Azure Active Directory (Aad).
 > 2. AAD-verificatie moet altijd worden gebruikt in combi natie met aangepaste subdomeinnaam van uw Azure-resource. [Regionale eind punten](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) bieden geen ondersteuning voor Aad-verificatie.
 
-In de vorige secties laten we u zien hoe u met Azure Cognitive Services kunt verifiëren met behulp van een single-service of een sleutel van een abonnement op meerdere services. Hoewel deze sleutels een snel en eenvoudig pad bieden om de ontwikkeling te starten, vallen ze op korter complexe scenario's waarvoor op rollen gebaseerd toegangs beheer is vereist. Laten we eens kijken wat u nodig hebt om te verifiëren met behulp van Azure Active Directory (AAD).
+In de vorige secties laten we u zien hoe u met Azure Cognitive Services kunt verifiëren met behulp van een single-service of een sleutel van een abonnement op meerdere services. Hoewel deze sleutels een snel en eenvoudig pad bieden om te beginnen met de ontwikkeling, vallen ze korter in complexere scenario's waarvoor Azure op rollen gebaseerd toegangs beheer (Azure RBAC) vereist. Laten we eens kijken wat u nodig hebt om te verifiëren met behulp van Azure Active Directory (AAD).
 
 In de volgende secties gebruikt u de Azure Cloud Shell-omgeving of de Azure CLI voor het maken van een subdomein, het toewijzen van rollen en het verkrijgen van een Bearer-token om de Azure Cognitive Services aan te roepen. Als u vastloopt, worden er links in elke sectie weer gegeven met alle beschik bare opties voor elke opdracht in Azure Cloud Shell/Azure CLI.
 
@@ -45,7 +45,7 @@ De eerste stap is het maken van een aangepast subdomein. Als u een bestaande Cog
 Nu u een aangepast subdomein hebt dat aan uw resource is gekoppeld, moet u een rol aan een Service-Principal toewijzen.
 
 > [!NOTE]
-> Houd er rekening mee dat AAD-roltoewijzingen tot vijf minuten kunnen duren.
+> Houd er rekening mee dat Azure-roltoewijzingen het Maxi maal vijf minuten kan duren voordat deze wordt door gegeven.
 
 1. Eerst gaan we een Aad- [toepassing](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)registreren.
 

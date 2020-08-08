@@ -1,19 +1,17 @@
 ---
 title: Container bestanden voor het FSLogix-Profiel van Windows virtueel bureau blad-Azure
 description: In dit artikel worden FSLogix-profiel containers in virtueel bureau blad van Windows en Azure files beschreven.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611973"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002388"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profielcontainers en Azure Files
 
@@ -57,7 +55,7 @@ In de volgende tabel worden de voor delen en beperkingen van eerdere gebruikers 
 
 #### <a name="performance"></a>Prestaties
 
-UPD vereist [opslagruimten direct (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) om prestatie vereisten te verhelpen. UPD maakt gebruik van het SMB-protocol (Server Message Block). Het profiel wordt gekopieerd naar de virtuele machine waarin de gebruiker wordt geregistreerd. UPD met S2D is de oplossing die we voor het virtuele bureau blad van Windows raden.  
+UPD vereist [opslagruimten direct (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) om prestatie vereisten te verhelpen. UPD maakt gebruik van het SMB-protocol (Server Message Block). Het profiel wordt gekopieerd naar de virtuele machine waarin de gebruiker wordt geregistreerd. UPD met S2D is de oplossing die we voor het virtuele bureau blad van Windows raden.
 
 #### <a name="cost"></a>Kosten
 

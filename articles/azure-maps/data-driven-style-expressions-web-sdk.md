@@ -1,6 +1,6 @@
 ---
 title: Gegevensgestuurde stijl expressies in de Azure Maps Web-SDK | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u gegevensgestuurde stijl expressies kunt gebruiken in de Microsoft Azure Maps Web SDK.
+description: Meer informatie over gegevensgestuurde stijl expressies. Zie hoe u deze expressies gebruikt in de Web-SDK van Azure Maps om stijlen in kaarten aan te passen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 54477bd74df660edb12f6daffbaa2a7390f9516a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285710"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009134"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijl expressies (Web SDK)
 

@@ -1,24 +1,22 @@
 ---
 title: Bestaande Windows Virtual Desktop (klassieke) hostgroep uitbreiden met nieuwe sessie hosts-Azure
 description: Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts in virtueel bureau blad (klassiek) van Windows.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ecdd63b054fda7f973898b0b3a42a29fc94c03bb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285030"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009168"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts in virtueel bureau blad van Windows (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../expand-existing-host-pool.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../expand-existing-host-pool.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 Wanneer u het gebruik in uw hostgroep wilt verbeteren, moet u mogelijk uw bestaande hostgroep uitbreiden met nieuwe sessie-hosts om de nieuwe belasting af te handelen.
 
@@ -76,7 +74,7 @@ U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een
 
 Volg de instructies in [een hostgroep maken met behulp van de Azure Marketplace](create-host-pools-azure-marketplace-2019.md) totdat u [de Azure Marketplace-aanbieding hebt uitgevoerd om een nieuwe hostgroep in te richten](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Wanneer u dat punt krijgt, moet u de volgende informatie invoeren voor elk tabblad:
 
-### <a name="basics"></a>Basisbeginselen
+### <a name="basics"></a>Basisinstellingen
 
 Alle waarden in deze sectie moeten overeenkomen met wat u hebt opgegeven tijdens de eerste keer dat u de hostgroep en de Vm's voor de host maakt, met uitzonde ring van *standaard bureaublad gebruikers*:
 

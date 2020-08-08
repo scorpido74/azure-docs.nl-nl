@@ -1,26 +1,24 @@
 ---
 title: Verbinding maken met het virtuele bureau blad van Windows vanuit iOS-Azure
 description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de iOS-client.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bbf169a4be639d8745670a33b47a7392d13b6b07
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 79db3db5a46700f55c1dc759443cae194660372d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291458"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007638"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>Verbinding maken met het virtuele bureau blad van Windows met de iOS-client
 
 > Van toepassing op: iOS 13,0 of hoger. Compatibel met iPhone, iPad en iPod Touch.
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/connect-ios-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/connect-ios-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 U kunt toegang krijgen tot virtuele bureau blad-resources van Windows vanaf uw iOS-apparaat met onze Download bare client. In deze hand leiding wordt uitgelegd hoe u de iOS-client kunt instellen.
 

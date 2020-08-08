@@ -1,32 +1,30 @@
 ---
 title: App-groepen voor Windows Virtual Desktop Power shell-Azure beheren
 description: Virtuele bureau blad-app-groepen voor Windows beheren met Power shell.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 186c6e455fa4d2ab578d6ab2a37f8f8f0d038e02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291426"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008641"
 ---
 # <a name="manage-app-groups-using-powershell"></a>App-groepen beheren met Power shell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/manage-app-groups-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/manage-app-groups-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
-De standaard app-groep die is gemaakt voor een nieuwe Windows Virtual Desktop-hostgroep publiceert ook het volledige bureau blad. Daarnaast kunt u een of meer RemoteApp-toepassings groepen maken voor de hostgroep. Volg deze zelf studie voor het maken van een RemoteApp-app-groep en het publiceren van afzonderlijke apps in het **Start** menu.
+De standaard app-groep die is aangemaakt voor een nieuwe Windows Virtual Desktop-hostgroep publiceert ook het volledige bureaublad. Daarnaast kunt u een of meer RemoteApp-toepassingsgroepen aanmaken voor de hostgroep. Volg deze zelfstudie om een RemoteApp-app-groep te maken en individuele apps voor het menu **Start** te publiceren.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een RemoteApp-groep maken.
-> * Toegang verlenen aan RemoteApp-program ma's.
+> * Toegang verlenen tot RemoteApp-programma's.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,19 +34,19 @@ In dit artikel wordt ervan uitgegaan dat u de instructies in [de Power shell-mod
 
 Een RemoteApp-groep maken met Power shell:
 
-1. Voer de volgende Power shell-cmdlet uit om een nieuwe lege RemoteApp-toepassings groep te maken.
+1. Voer de volgende PowerShell-cmdlet uit om een nieuwe lege RemoteApp-toepassingsgroep te maken.
 
    ```powershell
    New-AzWvdApplicationGroup -Name <appgroupname> -ResourceGroupName <resourcegroupname> -ApplicationGroupType "RemoteApp" -HostPoolArmPath '/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName'-Location <azureregion>
    ```
 
-2. Beschrijving Als u wilt controleren of de app-groep is gemaakt, kunt u de volgende cmdlet uitvoeren om een lijst met alle app-groepen voor de hostgroep weer te geven.
+2. (Optioneel) Als u wilt controleren of de app-groep is gemaakt, kunt u de volgende cmdlet uitvoeren om een lijst met alle app-groepen van de hostgroep weer te geven.
 
    ```powershell
    Get-AzWvdApplicationGroup -Name <appgroupname> -ResourceGroupName <resourcegroupname>
    ```
 
-3. Voer de volgende cmdlet uit om een lijst met apps in het menu **Start** op te halen voor de installatie kopie van de virtuele machine van de hostgroep. Noteer de waarden voor **filepath**, **IconPath**, **Icon index**en andere belang rijke informatie voor de toepassing die u wilt publiceren.
+3. Voer de volgende cmdlet uit om een lijst op te halen van **startmenu**-apps in de installatiekopie van de virtuele machine van de hostgroep. Noteer de waarden voor **FilePath**, **IconPath**, **IconIndex** en andere belangrijke informatie voor de toepassing die u wilt publiceren.
 
    ```powershell
    Get-AzWvdStartMenuItem -ApplicationGroupName <appgroupname> -ResourceGroupName <resourcegroupname> | Format-List | more
@@ -78,13 +76,13 @@ Een RemoteApp-groep maken met Power shell:
    Type                : Microsoft.DesktopVirtualization/applicationgroups/startmenuitems
    ```
 
-4. Voer de volgende cmdlet uit om de toepassing te installeren op basis van `AppAlias` . `AppAlias`wordt weer gegeven wanneer u de uitvoer uit stap 3 uitvoert.
+4. Voer de volgende cmdlet uit om de toepassing te installeren op basis van `AppAlias`. `AppAlias` wordt zichtbaar wanneer u de uitkomst uit stap 3 uitvoert.
 
    ```powershell
    New-AzWvdApplication -AppAlias <appalias> -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -CommandLineSetting <DoNotAllow|Allow|Require>
    ```
 
-5. Beschrijving Voer de volgende cmdlet uit om een nieuw RemoteApp-programma te publiceren naar de toepassings groep die u in stap 1 hebt gemaakt.
+5. (Optioneel) Voer de volgende cmdlet uit om een nieuw RemoteApp-programma te publiceren naar de toepassingsgroep die u in stap 1 hebt gemaakt.
 
    ```powershell
    New-AzWvdApplication -GroupName <appgroupname> -Name <remoteappname> -ResourceGroupName <resourcegroupname> -Filepath <filepath> -IconPath <iconpath> -IconIndex <iconindex> -CommandLineSetting <DoNotAllow|Allow|Require>
@@ -97,7 +95,7 @@ Een RemoteApp-groep maken met Power shell:
    ```
 
 7. Herhaal de stappen 1 tot en met 5 voor elke toepassing die u voor deze app-groep wilt publiceren.
-8. Voer de volgende cmdlet uit om gebruikers toegang te verlenen tot de RemoteApp-program ma's in de app-groep.
+8. Voer de volgende cmdlet uit om gebruikers toegang te verlenen tot de RemoteApp-programma's in de app-groep.
 
    ```powershell
    New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
@@ -105,4 +103,4 @@ Een RemoteApp-groep maken met Power shell:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u deze hand leiding hebt, raadpleegt u [een hostgroep maken om service-updates te valideren](create-validation-host-pool.md). U kunt een groep validatie-host gebruiken om service-updates te controleren voordat u deze naar uw productie omgeving doorvoert.
+Als u deze hand leiding hebt, raadpleegt u [een hostgroep maken om service-updates te valideren](create-validation-host-pool.md). U kunt een validatiehostgroep gebruiken om service-updates te controleren voor u ze implementeert naar uw productieomgeving.

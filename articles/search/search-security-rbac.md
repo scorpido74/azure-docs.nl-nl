@@ -1,26 +1,26 @@
 ---
 title: Azure-rollen instellen voor Azure-beheerders toegang
 titleSuffix: Azure Cognitive Search
-description: Op rollen gebaseerd beheer (RBAC) in de Azure Portal voor het beheren en delegeren van beheer taken voor Azure Cognitive Search management.
+description: Op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal voor het beheren en delegeren van beheer taken voor Azure Cognitive Search management.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: d1b2576eb42cbe25919eb77fc30e2720ed812ca4
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c01806194156fb43524e2db5f4c9bf636186de95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534427"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009202"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure-rollen instellen voor beheerders toegang tot Azure Cognitive Search
 
 Azure biedt een [globaal autorisatie model op basis van rollen](../role-based-access-control/role-assignments-portal.md) voor alle services die worden beheerd via de portal-of Resource Manager-api's. De rollen eigenaar, bijdrager en lezer bepalen het *Service beheer* niveau voor Active Directory gebruikers, groepen en beveiligings-principals die aan elke rol zijn toegewezen. 
 
 > [!Note]
-> Er zijn geen toegangs beheer op basis van rollen voor het beveiligen van delen van een index of een subset van documenten. Voor toegang op basis van identiteiten via zoek resultaten kunt u beveiligings filters maken om de resultaten te beperken op basis van identiteit, en documenten te verwijderen waarvoor de aanvrager geen toegang moet hebben. Zie [beveiligings filters](search-security-trimming-for-azure-search.md) en [veilig met Active Directory](search-security-trimming-for-azure-search-with-aad.md)voor meer informatie.
+> Er is geen RBAC (op rollen gebaseerd toegangs beheer) voor het beveiligen van delen van een index of een subset van documenten. Voor toegang op basis van identiteiten via zoek resultaten kunt u beveiligings filters maken om de resultaten te beperken op basis van identiteit, en documenten te verwijderen waarvoor de aanvrager geen toegang moet hebben. Zie [beveiligings filters](search-security-trimming-for-azure-search.md) en [veilig met Active Directory](search-security-trimming-for-azure-search-with-aad.md)voor meer informatie.
 
 ## <a name="management-tasks-by-role"></a>Beheer taken per rol
 

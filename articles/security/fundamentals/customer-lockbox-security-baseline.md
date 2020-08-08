@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1e8fd08a22d5d243f404a12ff96c1a8797b97f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1cf4af12b9ef912d37014215e422d5b9c73903f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485670"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007876"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Azure-beveiligings basislijn voor Klanten-lockbox voor Microsoft Azure
 
@@ -222,13 +222,13 @@ De activiteiten logboeken die zijn gegenereerd door Klanten-lockbox naar Azure S
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Richt lijnen**: een inventaris van de gebruikers accounts met beheerders toegang tot uw klanten-lockbox aanvragen onderhouden. U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken voor het configureren van op rollen gebaseerd toegangs beheer (RBAC). De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Azure Active Directory.
+**Richt lijnen**: een inventaris van de gebruikers accounts met beheerders toegang tot uw klanten-lockbox aanvragen onderhouden. U kunt het deel venster identiteits-en toegangs beheer (IAM) in de Azure Portal voor uw abonnement gebruiken om toegangs beheer op basis van rollen (Azure RBAC) te configureren. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Azure Active Directory.
 
 De gebruiker die de rol van de eigenaar van het Azure-abonnement heeft, ontvangt een e-mail van micro soft, om hen op de hoogte te stellen van alle openstaande toegangs aanvragen bij de organisatie van de klant. Voor Klanten-lockbox aanvragen is deze persoon de aangewezen fiatteur.
 
 * [Informatie over aangepaste rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [RBAC configureren voor werkmappen](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Azure RBAC voor werkmappen configureren](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [Machtigingen voor toegangs aanvragen in Klanten-lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -377,7 +377,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -527,7 +527,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via Azure resource G
 
 * [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Meer informatie over toegangs beheer op basis van rollen in azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over toegangs beheer op basis van rollen in azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -546,7 +546,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via Azure resource G
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure-resources te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
 
 Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -608,7 +608,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 ### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in uw abonnement (en) met de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 * [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)

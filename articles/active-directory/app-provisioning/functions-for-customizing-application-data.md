@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 42dcbf693b6ec685849b1523480506e9c8f5b54b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8afe6ad23f0e23e2b9ab772f5526c63d307fa88b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202883"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003243"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Instructies: expressies schrijven voor kenmerk toewijzingen in azure AD
 
@@ -34,6 +34,7 @@ De syntaxis voor expressies voor kenmerk toewijzingen is reminiscent van Visual 
   2. Teken reeks constanten, die tussen dubbele aanhalings tekens moeten worden geplaatst. Bijvoorbeeld: "Verenigde Staten"
   3. Andere functies. Bijvoorbeeld: FunctionOne ( `<<argument1>>` , FunctionTwo ( `<<argument2>>` ))
 * Als u voor teken reeks constanten een back slash (\) of aanhalings teken (") in de teken reeks nodig hebt, moet deze worden voorafgegaan door het back slash-symbool (\). Bijvoorbeeld: "bedrijfs naam: \\ " Contoso \\ ""
+* De syntaxis is hoofdletter gevoelig. deze moet worden overwogen als teken reeksen in een functie versus kopiëren deze rechtstreeks vanuit deze locatie te plakken. 
 
 ## <a name="list-of-functions"></a>Lijst met functies
 
@@ -137,7 +138,7 @@ ConvertToUTF8Hex ("Hallo wereld!")
 Retourneert 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Aantal
 **Functieassembly**<br> Count (kenmerk)
 
 **Beschrijving:**<br> De functie Count retourneert het aantal elementen in een kenmerk met meerdere waarden
@@ -174,7 +175,7 @@ Retourneert "CN = Joe, DC = contoso, DC = com"
 
 | Naam | Vereist/herhalend | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **value** |Vereist | Datum | De AD-datum die moet worden geconverteerd naar een DateTime-type |
+| **value** |Vereist | Date | De AD-datum die moet worden geconverteerd naar een DateTime-type |
 
 **Voorbeeld:**<br>
 DateFromNum([lastLogonTimestamp])                                                                                                   
@@ -196,7 +197,7 @@ Retourneert een datum/tijd die 2012-01-01 23:00:00 vertegenwoordigt
 | **Output** |Vereist |Tekenreeks |De indeling van de uitvoer datum. |
 
 ---
-### <a name="guid"></a>GUID
+### <a name="guid"></a>Guid
 **Functieassembly**<br> GUID ()
 
 **Beschrijving:**<br> De functie-GUID genereert een nieuwe wille keurige GUID
@@ -362,8 +363,8 @@ Retourneert "Joh"
 | Naam | Vereist/herhalend | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Vereist |Tekenreeks |Meestal naam van het kenmerk. |
-| **starten** |Vereist |geheel getal |Index in de **bron** teken reeks waarin de subtekenreeks moet worden gestart. Het eerste teken in de teken reeks heeft index 1, tweede teken heeft index 2, enzovoort. |
-| **lange** |Vereist |geheel getal |Lengte van de subtekenreeks. Als de lengte van de **bron** teken reeks eindigt, wordt met de functie subtekenreeks geretourneerd vanuit **Start** index tot het einde van de **bron** teken reeks. |
+| **starten** |Vereist |integer |Index in de **bron** teken reeks waarin de subtekenreeks moet worden gestart. Het eerste teken in de teken reeks heeft index 1, tweede teken heeft index 2, enzovoort. |
+| **lange** |Vereist |integer |Lengte van de subtekenreeks. Als de lengte van de **bron** teken reeks eindigt, wordt met de functie subtekenreeks geretourneerd vanuit **Start** index tot het einde van de **bron** teken reeks. |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -532,7 +533,7 @@ Vervangt waarden binnen een teken reeks. Het werkt anders afhankelijk van de opg
 | --- | --- | --- | --- |
 | **Bron** |Vereist |Tekenreeks |**Bron** waarde die moet worden bijgewerkt. |
 | **Standaard** |Optioneel |Tekenreeks |De standaard waarde die moet worden gebruikt als de bron niet overeenkomt met een sleutel. Kan een lege teken reeks zijn (""). |
-| **prestatie** |Vereist |Tekenreeks |**Sleutel** voor het vergelijken van de **bron** waarde met. |
+| **sleutel** |Vereist |Tekenreeks |**Sleutel** voor het vergelijken van de **bron** waarde met. |
 | **value** |Vereist |Tekenreeks |Vervangings waarde voor de **bron** die overeenkomt met de sleutel. |
 
 ---
