@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop-partner integraties-Azure
 description: Meer informatie over de partners van een virtueel bureau blad van Windows en de documentatie over hoe u ermee kunt integreren.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d78de3d8e7fadc4b6760fef85fb4b850cc25111e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5431a0844a418ddcdbd595546253c1d03fda35c0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075749"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006567"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -69,9 +67,9 @@ Met Automai kunt u dezelfde scripts gebruiken voor prestatie testen, functionele
 
 ![Cloudhouse-logo](./media/partners/cloudhouse.png)
 
-Cloudhouse is een Windows-service provider voor virtueel bureau blad die klanten een kant-en-klare service voor toepassings migratie biedt, waarmee alle toepassingen, inclusief bestanden die niet compatibel zijn met moderne Windows-besturings systemen, kunnen worden verplaatst naar de virtuele bureau blad-omgeving van Windows, zodat klanten de multi-sessie-Windows 10 echt gebruiken. 
+Cloudhouse is een Windows-service provider voor virtueel bureau blad die klanten een kant-en-klare service voor toepassings migratie biedt, waarmee alle toepassingen, inclusief bestanden die niet compatibel zijn met moderne Windows-besturings systemen, kunnen worden verplaatst naar de virtuele bureau blad-omgeving van Windows, zodat klanten de multi-sessie-Windows 10 echt gebruiken.
 
-Door gebruik te maken van bewezen Cloudhouse container opslag-technologie, heeft de Cloudhouse-service alle toepassingen, waaronder die bedoeld zijn voor Windows XP, Windows 7 of Windows 8, en worden deze geïmplementeerd op een modern virtueel bureau blad van Windows, zonder dat de gebruikers ervaring van code of impact hoeft te worden gewijzigd. Cloudhouse wordt verder toegevoegd aan de waarde van Windows virtueel bureau blad door toepassingen te isoleren van het onderliggende besturings systeem, zodat Windows-onderhouds updates kunnen worden geïmplementeerd zonder dat dit van invloed is op de container toepassing. 
+Door gebruik te maken van bewezen Cloudhouse container opslag-technologie, heeft de Cloudhouse-service alle toepassingen, waaronder die bedoeld zijn voor Windows XP, Windows 7 of Windows 8, en worden deze geïmplementeerd op een modern virtueel bureau blad van Windows, zonder dat de gebruikers ervaring van code of impact hoeft te worden gewijzigd. Cloudhouse wordt verder toegevoegd aan de waarde van Windows virtueel bureau blad door toepassingen te isoleren van het onderliggende besturings systeem, zodat Windows-onderhouds updates kunnen worden geïmplementeerd zonder dat dit van invloed is op de container toepassing.
 
 - [Ga naar de website van de partner](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
@@ -111,9 +109,9 @@ Wyse thin-clients zijn ontworpen met beveiliging in het licht van beperkte kwets
 
 ![deviceTRUST-logo](./media/partners/devicetrust.png)
 
-deviceTRUST is een Windows-provider voor virtueel bureau blad-toegevoegde services die de bedrijfs onderneming contextualizes. Het stelt gebruikers in staat om vanaf elke locatie, op elk apparaat, via een wille keurig netwerk toegang te krijgen tot hun virtuele Windows-bureau blad, terwijl de IT-afdeling de informatie en het beheer kan geven die ze nodig hebben om te voldoen aan de governance vereisten. 
+deviceTRUST is een Windows-provider voor virtueel bureau blad-toegevoegde services die de bedrijfs onderneming contextualizes. Het stelt gebruikers in staat om vanaf elke locatie, op elk apparaat, via een wille keurig netwerk toegang te krijgen tot hun virtuele Windows-bureau blad, terwijl de IT-afdeling de informatie en het beheer kan geven die ze nodig hebben om te voldoen aan de governance vereisten.
 
-deviceTRUST breidt de waarde van Windows virtueel bureau blad uit met hun contextuele beveiligings technologie. deviceTRUST maakt voorwaardelijke toegang mogelijk voor een veilige toegang tot het virtuele bureau blad van Windows, voorwaardelijke toegang tot een toepassing binnen het virtuele bureau blad van Windows en voor het Toep assen van voorwaardelijke Windows-bureaublad beleid zonder extra infra structuur. Met deviceTRUST kunt u een mobiele, flexibele werk ruimte maken die voldoet aan alle vereisten voor beveiliging, naleving en regelgeving. 
+deviceTRUST breidt de waarde van Windows virtueel bureau blad uit met hun contextuele beveiligings technologie. deviceTRUST maakt voorwaardelijke toegang mogelijk voor een veilige toegang tot het virtuele bureau blad van Windows, voorwaardelijke toegang tot een toepassing binnen het virtuele bureau blad van Windows en voor het Toep assen van voorwaardelijke Windows-bureaublad beleid zonder extra infra structuur. Met deviceTRUST kunt u een mobiele, flexibele werk ruimte maken die voldoet aan alle vereisten voor beveiliging, naleving en regelgeving.
 
 - [Ga naar de website van de partner](https://devicetrust.com/wvd).
 
@@ -121,7 +119,7 @@ deviceTRUST breidt de waarde van Windows virtueel bureau blad uit met hun contex
 
 ![Ekran-systeem logo](./media/partners/ekran.png)
 
-Het ekran-systeem is een Windows-waarde voor virtueel bureau blad-partner toevoegen waarmee IT-teams alle activiteiten van externe gebruikers op Microsoft Azure virtuele machines kunnen controleren. Met ekran System kunt u activiteiten op het scherm vastleggen voor elke gebruikers sessie in gepubliceerde toepassingen of virtuele Bureau bladen, terwijl u een breed scala aan context rijke meta gegevens, zoals toepassings namen, actieve venster titels, bezochte Url's en toetsaanslagen verzamelt. Geavanceerde functies bieden diep gaande zicht baarheid en respons tijden voor snelle incidenten, waardoor ekran systeem een efficiënte oplossing voor het beheer van problemen met betrekking tot Insider Threats en naleving.  
+Het ekran-systeem is een Windows-waarde voor virtueel bureau blad-partner toevoegen waarmee IT-teams alle activiteiten van externe gebruikers op Microsoft Azure virtuele machines kunnen controleren. Met ekran System kunt u activiteiten op het scherm vastleggen voor elke gebruikers sessie in gepubliceerde toepassingen of virtuele Bureau bladen, terwijl u een breed scala aan context rijke meta gegevens, zoals toepassings namen, actieve venster titels, bezochte Url's en toetsaanslagen verzamelt. Geavanceerde functies bieden diep gaande zicht baarheid en respons tijden voor snelle incidenten, waardoor ekran systeem een efficiënte oplossing voor het beheer van problemen met betrekking tot Insider Threats en naleving.
 
 De unieke drijvende eindpunt licenties van ekran-systeemclients is geautomatiseerd voor het ondersteunen van dynamisch wijzigen van virtuele Bureau bladen. Met ekran System kunt u automatisch de toewijzing van licenties van verwijderde niet-permanente virtuele Bureau bladen opheffen en verwijderen uit uw data base. Ekran-systeem kan naadloos worden geïntegreerd met Azure Active Directory en Azure Sentinel.
 
@@ -144,7 +142,7 @@ Wanneer een gebruiker zich aanmeldt bij hun virtuele bureau blad, maakt de Fabul
 ![Flexxible IT-logo](./media/partners/flexxible.png)
 
 Flexxible is de waarde van een virtueel bureau blad van Windows-Voeg partner toe waarmee organisaties snel virtuele Windows-Bureau bladen en Citrix-werkruimte infrastructuur kunnen schalen, bewaken en efficiënt kunt beheren. Flexxible | SUITE biedt IT-beheerders de mogelijkheid om virtuele Windows-werk belastingen op intelligente wijze in te richten en te beheren in Azure.
- 
+
 Flexxible IT-technologie breidt de waarde van beide systeem eigen virtuele bureau blad-en Citrix-werk ruimte uit door algemene processen te automatiseren om de configuratie van de infra structuur, het inrichten van pc's en het dagelijks beheer te vereenvoudigen. Als u geen complexe Power shell-scripts of tijdrovende hand matige processen nodig hebt, biedt SUITE schaal bare Desktop implementatie, uitgebreide bewaking en rapportage en beveiligd beheer. Met deze functies kunt u zich richten op het leveren van een verbeterd service niveau en een goede Windows Virtual Desktop-ervaring voor uw gebruikers.
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A).
@@ -165,7 +163,7 @@ Als HP heeft trends in de branche, klant uitdagingen en de oplossingen die tijde
 ![IGEL-logo](./media/partners/igel.png)
 
 IGEL is een goedgekeurde en geverifieerde partner van Microsoft Azure en virtuele bureau blad-services van Windows. IGEL biedt IGEL OS, het besturings systeem van de volgende generatie voor Cloud-werk ruimten die zijn ontworpen voor toegang tot virtuele apps, Desk tops en Cloud werkruimten van een of meer gebruikers apparaten met een licht gewicht, eenvoudig en veilig Linux-eind punt. Een platform onafhankelijke software oplossing, IGEL-besturings systeem en de server beheer-en beheer software, IGEL Universal Management Suite (UMS), bestaat uit een eindpunt beheer-en controle oplossing waarmee ondernemingen optimaal profijt kunnen trekken van Azure-Cloud instanties en Windows Virtual Desktop-Desk tops, met inbegrip van een betaal bare multi-sessie Windows virtueel bureau blad, en de beheer-en bewerkings kosten voor
- 
+
 IGEL-besturings systeem ondersteunt alle populaire virtuele apps, Bureau bladen en Cloud werkruimte client protocollen van Citrix, micro soft en VMware. Het bevat geïntegreerde technologieën van 85 Peripheral-, Interface-en protocol partners om organisaties in staat te stellen om snel virtuele bureau blad-services van Windows in hun eigen, unieke gebruikers omgevingen aan te nemen. Het besturings systeem IGEL is een alleen-lezen, Modulair eindpunt besturingssysteem, waardoor het niet kan worden geknoeid. Het bevat nu ook een volledige vertrouwens keten die de integriteit verifieert van alle belang rijke processen die op het eind punt worden uitgevoerd, van de eindpunt-hardware (sommige geselecteerde modellen) of het UEFI-proces helemaal naar de Azure-Cloud en virtuele bureau blad-services van Windows. Met het IGEL-besturings systeem kunnen bedrijven zich abonneren op virtuele Windows-Bureau bladen vanuit de Azure-Cloud met volledig vertrouwen in de integriteit, beveiliging en beheer baarheid van de eindpunt apparaten van hun gebruikers.
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO).
@@ -175,9 +173,9 @@ IGEL-besturings systeem ondersteunt alle populaire virtuele apps, Bureau bladen 
 
 ![Ivanti-logo](./media/partners/ivanti.png)
 
-Ivanti User Workspace Manager is een Windows-service voor virtueel bureau blad met toegevoegde waarde waarmee desktop implementatie en-beheer worden vergemakkelijkt door gebruikers gegevens van het bureau blad te scheiden voor een naadloze portabiliteit. Met Ivanti kunnen gebruikers complexe projecten leveren, zoals migreren naar Windows 10, het Microsoft 365 of verplaatsen van services naar de Cloud. 
+Ivanti User Workspace Manager is een Windows-service voor virtueel bureau blad met toegevoegde waarde waarmee desktop implementatie en-beheer worden vergemakkelijkt door gebruikers gegevens van het bureau blad te scheiden voor een naadloze portabiliteit. Met Ivanti kunnen gebruikers complexe projecten leveren, zoals migreren naar Windows 10, het Microsoft 365 of verplaatsen van services naar de Cloud.
 
-Bij gebruik in combi natie met Windows Virtual Desktop biedt Ivanti gebruikers werkruimte beheer een eenvoudig context beheer van de gebruikers ervaring op het bureau blad, voor het elimineren van lange aanmeldings tijden en uitroeiing van Nightmares voor groeps beleid. Met de out-of-the-box-sjablonen van Ivanti-gebruikers werkruimte beheer wordt de installatie voor gebruikers vereenvoudigd via agents en de bestaande-console. Ivanti gebruikers werkruimte beheer biedt responsieve, beveiligde Desk tops die gebruikers bevallen, het besparen van geld op servers, het efficiënter beheren van gebruikers en het verminderen van het beveiligings risico van eind punten. 
+Bij gebruik in combi natie met Windows Virtual Desktop biedt Ivanti gebruikers werkruimte beheer een eenvoudig context beheer van de gebruikers ervaring op het bureau blad, voor het elimineren van lange aanmeldings tijden en uitroeiing van Nightmares voor groeps beleid. Met de out-of-the-box-sjablonen van Ivanti-gebruikers werkruimte beheer wordt de installatie voor gebruikers vereenvoudigd via agents en de bestaande-console. Ivanti gebruikers werkruimte beheer biedt responsieve, beveiligde Desk tops die gebruikers bevallen, het besparen van geld op servers, het efficiënter beheren van gebruikers en het verminderen van het beveiligings risico van eind punten.
 
 - [Ga naar de website van de partner](https://www.ivanti.com/products/user-workspace-manager).
 
@@ -237,9 +235,9 @@ Nerdio breidt de waarde van het virtuele bureau blad van Windows uit door eenvou
 
 ![Numecent-logo](./media/partners/numecent.png)
 
-Numecent is een Windows-service provider met toegevoegde waarde die de totale bedrijfs kosten aanzienlijk reduceert door snelle onboarding en migratie van gecompliceerde of niet-compatibele Windows-apps in Windows-omgevingen met virtueel bureau blad. Numecent minimaliseert ook de hoeveelheid configuratie die gebruikers nodig hebben, vermindert toepassings updates en vereenvoudigt complexe processen. Omdat Numecent Cloudpaging meer toepassingen naadloos ondersteunt dan elk ander hulp programma voor het leveren van toepassingen, worden er tijd-en IT-workloads in omgevingen met een verscheidenheid aan toepassingen gereduceerd. 
+Numecent is een Windows-service provider met toegevoegde waarde die de totale bedrijfs kosten aanzienlijk reduceert door snelle onboarding en migratie van gecompliceerde of niet-compatibele Windows-apps in Windows-omgevingen met virtueel bureau blad. Numecent minimaliseert ook de hoeveelheid configuratie die gebruikers nodig hebben, vermindert toepassings updates en vereenvoudigt complexe processen. Omdat Numecent Cloudpaging meer toepassingen naadloos ondersteunt dan elk ander hulp programma voor het leveren van toepassingen, worden er tijd-en IT-workloads in omgevingen met een verscheidenheid aan toepassingen gereduceerd.
 
-Wanneer u gebruikt met Windows Virtual Desktop, vermindert Cloudpaging verdere kosten door de levens cyclus van software middelen te volt ooien van de implementatie tot het bijwerken, meten en verwijderen van toepassingen. Cloudpaging vereenvoudigt het beheer van afbeeldingen door apps zo nodig dynamisch in realtime in te richten naar de implementaties van Windows virtueel bureau blad. Cloudpaging zorgt ervoor dat toepassingen zonder beheer of interventie worden uitgevoerd via de periodieke updates voor Windows 10. Cloudpaging vermindert ook de licentie kosten van dure toepassingen door efficiëntere implementatie en gebruik van deze toepassingen mogelijk te maken. 
+Wanneer u gebruikt met Windows Virtual Desktop, vermindert Cloudpaging verdere kosten door de levens cyclus van software middelen te volt ooien van de implementatie tot het bijwerken, meten en verwijderen van toepassingen. Cloudpaging vereenvoudigt het beheer van afbeeldingen door apps zo nodig dynamisch in realtime in te richten naar de implementaties van Windows virtueel bureau blad. Cloudpaging zorgt ervoor dat toepassingen zonder beheer of interventie worden uitgevoerd via de periodieke updates voor Windows 10. Cloudpaging vermindert ook de licentie kosten van dure toepassingen door efficiëntere implementatie en gebruik van deze toepassingen mogelijk te maken.
 
 - [Ga naar de website van de partner](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 
@@ -247,9 +245,9 @@ Wanneer u gebruikt met Windows Virtual Desktop, vermindert Cloudpaging verdere k
 
 ![PolicyPak-logo](./media/partners/policypak.png)
 
-PolicyPak software is een virtueel bureau blad-partner voor Windows waarmee het totale instellingen beheer voor toepassingen, bureau blad, browsers, Java en beveiligings instellingen wordt uitgevoerd. PolicyPak houdt uw desktop-, systeem-en beveiligings instellingen in overeenstemming. PolicyPak verbetert de waarde van Windows virtueel bureau blad door een reeks onderdelen toe te voegen voor het verbeteren van het ingebouwde beheer van Windows. Gebruik uw bestaande Active Directory groepsbeleid en/of Windows intune voor het leveren van PolicyPak-instellingen en verg root de mogelijkheid van beheerders om hun Windows 10-computers te beheren. 
+PolicyPak software is een virtueel bureau blad-partner voor Windows waarmee het totale instellingen beheer voor toepassingen, bureau blad, browsers, Java en beveiligings instellingen wordt uitgevoerd. PolicyPak houdt uw desktop-, systeem-en beveiligings instellingen in overeenstemming. PolicyPak verbetert de waarde van Windows virtueel bureau blad door een reeks onderdelen toe te voegen voor het verbeteren van het ingebouwde beheer van Windows. Gebruik uw bestaande Active Directory groepsbeleid en/of Windows intune voor het leveren van PolicyPak-instellingen en verg root de mogelijkheid van beheerders om hun Windows 10-computers te beheren.
 
-De belangrijkste use cases voor PolicyPak zijn het verwijderen van lokale beheerders rechten en het oplossen van UAC-Prompts, het blok keren van Ransomware, het beheren van meerdere browsers, het beheren van de bedrijfs-en compatibiliteits modus van Internet Explorer, het aantal groeps beleidsobjecten voor het beheren van Windows 10-bestands koppelingen, het beheren van Windows 10-functies en optionele functies.  
+De belangrijkste use cases voor PolicyPak zijn het verwijderen van lokale beheerders rechten en het oplossen van UAC-Prompts, het blok keren van Ransomware, het beheren van meerdere browsers, het beheren van de bedrijfs-en compatibiliteits modus van Internet Explorer, het aantal groeps beleidsobjecten voor het beheren van Windows 10-bestands koppelingen, het beheren van Windows 10-functies en optionele functies.
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN).
 - [Ga](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)naar de website van de partner.
@@ -258,9 +256,9 @@ De belangrijkste use cases voor PolicyPak zijn het verwijderen van lokale beheer
 
 ![PrinterLogic-logo](./media/partners/printerlogic.png)
 
-PrinterLogic is een Windows Virtual Desktop-service provider platform dat IT-professionals in staat stelt om alle afdruk servers te elimineren en een Maxi maal beschik bare serverloze afdruk infrastructuur te leveren. PrinterLogic breidt de waarde van Windows virtueel bureau blad en Azure uit door het eenvoudig te beheren en printer objecten te implementeren op elke printer of elk eindpunt besturingssysteem. 
+PrinterLogic is een Windows Virtual Desktop-service provider platform dat IT-professionals in staat stelt om alle afdruk servers te elimineren en een Maxi maal beschik bare serverloze afdruk infrastructuur te leveren. PrinterLogic breidt de waarde van Windows virtueel bureau blad en Azure uit door het eenvoudig te beheren en printer objecten te implementeren op elke printer of elk eindpunt besturingssysteem.
 
-Het PrinterLogic-platform is beschikbaar als SaaS of als webstack in uw eigen privécloud en zorgt ervoor dat gebruikers altijd beschikken over de juiste printers die ze nodig hebben in hun virtuele sessies op basis van de gebruikers-ID, de apparaatnaam of de locatie. Deze functionaliteit wordt aangevuld met een volledige reeks functies voor afdruk beheer in de onderneming, zoals afdruk bijhouden en rapporteren, Mobile afdrukken en veilig badge versie afdrukken. 
+Het PrinterLogic-platform is beschikbaar als SaaS of als webstack in uw eigen privécloud en zorgt ervoor dat gebruikers altijd beschikken over de juiste printers die ze nodig hebben in hun virtuele sessies op basis van de gebruikers-ID, de apparaatnaam of de locatie. Deze functionaliteit wordt aangevuld met een volledige reeks functies voor afdruk beheer in de onderneming, zoals afdruk bijhouden en rapporteren, Mobile afdrukken en veilig badge versie afdrukken.
 
 - [Ga](https://www.printerlogic.com)naar de website van de partner.
 
@@ -279,8 +277,8 @@ Afdrukken is een fundamentele taak in slechts elke Office-en Small Business-omge
 
 ![RDPSoft-logo](./media/partners/rdpsoft.png)
 
-RDPSoft is een virtueel-bureaublad partner van Windows die krachtige en goedkope bewakings-, beheer-en rapportage oplossingen biedt. Met hun Extern bureaublad Commander-aanbod kunnen IT-professionals inzicht krijgen in de status, prestaties, gebruikers activiteiten, licenties en de beveiliging van hun Windows Virtual Desktop-implementaties. 
- 
+RDPSoft is een virtueel-bureaublad partner van Windows die krachtige en goedkope bewakings-, beheer-en rapportage oplossingen biedt. Met hun Extern bureaublad Commander-aanbod kunnen IT-professionals inzicht krijgen in de status, prestaties, gebruikers activiteiten, licenties en de beveiliging van hun Windows Virtual Desktop-implementaties.
+
 De Extern bureaublad Commander-oplossingen van RDPSoft verbeteren het beheer van virtuele Windows-Bureau bladen. Premium-beheer functies vereenvoudigen de overdracht van beheer taken voor virtuele Windows-Bureau bladen ter ondersteuning van Desk medewerkers door hulp op afstand, gebruikers sessie en proces beheer te bieden. Terzelfder tijd verzamelt de Extern bureaublad Commander Suite rijke metrische gegevens over de prestaties van de gebruiker en de belasting, gebruikers activiteit en controle, Windows Virtual Desktop-verbindings kwaliteit (latentie en band breedte), licenties en beveiliging in een centraal Azure SQL Database-exemplaar voor beoordeling. Met RDPSoft zijn uitgebreide historische rapporten en uitgebreide Dash boards gewoon op weg.
 
 - [Ga naar de website van de partner](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
@@ -322,7 +320,7 @@ De ezeep-oplossing van ThinPrint breidt de waarde van virtueel bureau blad van W
 
 ![Tricerat-logo](./media/partners/tricerat.png)
 
-Tricerat biedt een superieure oplossing voor afdruk beheer voor virtueel bureau blad en andere desktop platforms van Windows. Tricerat-software heeft robuuste functionaliteit en biedt een betere ervaring voor zowel gebruikers als beheerders. Beheerders profiteren van het volledige beheer van het stuur programma, een vereenvoudigde implementatie van afdruk wachtrijen en een consistent Management op hybride platforms. Gebruikers ervaring verbetert de korte aanmeldings tijden, intelligente afdruk wachtrijen op basis van gebruiker, apparaat en netwerk locatie, en selfservice opties voor snelle printer selectie. 
+Tricerat biedt een superieure oplossing voor afdruk beheer voor virtueel bureau blad en andere desktop platforms van Windows. Tricerat-software heeft robuuste functionaliteit en biedt een betere ervaring voor zowel gebruikers als beheerders. Beheerders profiteren van het volledige beheer van het stuur programma, een vereenvoudigde implementatie van afdruk wachtrijen en een consistent Management op hybride platforms. Gebruikers ervaring verbetert de korte aanmeldings tijden, intelligente afdruk wachtrijen op basis van gebruiker, apparaat en netwerk locatie, en selfservice opties voor snelle printer selectie.
 
 Met Tricerat is het afdrukken naadloos in het virtuele bureau blad van Windows en verder. Met Tricerat-software kunnen beheerders eenvoudig on-premises printers verbinden met de Cloud, waardoor het beheer van grote ondernemingen van traditionele omgevingen naar nieuwe, moderne werk ruimten kan worden uitgebreid.
 
@@ -344,7 +342,7 @@ uberAgent is een bewakings-en analyse product dat is ontworpen voor eind gebruik
 
 In werk ruimte 365 worden al uw gegevens (zakelijke gegevens, documenten, communicatie en micro-apps) opgenomen en wordt toegang geboden tot lokale, Web-of gehoste toepassingen in één werk ruimte. Het wordt automatisch aangepast aan uw rol, locatie, apparaat, browser en meer om een persoonlijke werk ruimte te bieden. Gebruikers krijgen een vereenvoudigde en consistente ervaring, ongeacht welke technologie zich onder het Opper vlak bevindt. U kunt uw huidige oplossingen, zoals RDP, Citrix en verouderde toepassingen, integreren en verplaatsen naar het virtuele bureau blad van Windows en tegelijkertijd dezelfde gebruikers ervaring behouden. Daarnaast kunt u al uw bestands locaties, zoals share point, OneDrive, teams en bestands servers, integreren in één document beheer-app.
 
-Met werk ruimte 365 kunnen IT-beheerders Windows-toepassingen met virtueel bureau blad beschikbaar maken voor gebruikers op basis van machtigingen. De beheerder kan deze toepassingen vervolgens toevoegen aan een gedeelde toepassings groep. Wanneer de Windows-toepassing voor virtueel bureau blad wordt weer gegeven in werk ruimte 365, kunnen gebruikers deze openen vanuit hun werk ruimte zonder zich opnieuw aan te melden. 
+Met werk ruimte 365 kunnen IT-beheerders Windows-toepassingen met virtueel bureau blad beschikbaar maken voor gebruikers op basis van machtigingen. De beheerder kan deze toepassingen vervolgens toevoegen aan een gedeelde toepassings groep. Wanneer de Windows-toepassing voor virtueel bureau blad wordt weer gegeven in werk ruimte 365, kunnen gebruikers deze openen vanuit hun werk ruimte zonder zich opnieuw aan te melden.
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh).
 - [Ga naar de website van de partner](https://workspace365.net/product-tour/hybrid-workspace-365/).

@@ -1,6 +1,6 @@
 ---
 title: Toegangs beheer op afstand controleren-Azure | Microsoft Docs
-description: Dit artikel bevat informatie over het configureren van op rollen gebaseerde toegangs beheer (RBAC) in de oplossings versneller voor externe controle
+description: Dit artikel bevat informatie over het configureren van op rollen gebaseerd toegangs beheer (RBAC) in de oplossings versneller voor externe controle
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,16 +9,16 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 397e7cfbc2599d2a259f55a5f465d51cd1fe54a8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920724"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008981"
 ---
-# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Op rollen gebaseerde toegangs beheer configureren in de oplossings versneller voor externe controle
+# <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Op rollen gebaseerd toegangs beheer configureren in de oplossings versneller voor externe controle
 
-Dit artikel bevat informatie over het configureren van op rollen gebaseerde toegangs beheer in de oplossings versneller voor externe controle. Met toegangs beheer op basis van rollen kunt u de toegang voor afzonderlijke gebruikers beperken tot specifieke functies in de oplossing.
+Dit artikel bevat informatie over het configureren van op rollen gebaseerd toegangs beheer in de oplossings versneller voor externe controle. Met op rollen gebaseerd toegangs beheer kunt u de toegang voor afzonderlijke gebruikers beperken tot specifieke functies in de oplossing.
 
 ## <a name="default-settings"></a>Standaardinstellingen
 
@@ -29,19 +29,19 @@ Alle gebruikers in de rol **beheerder** hebben volledige toegang tot de oplossin
 | Machtiging            | Beheerder | Alleen-lezen |
 |----------------       |-------|-----------|
 | Oplossing weer geven         | Ja   | Ja       |
-| Waarschuwingen bijwerken         | Yes   | Nee        |
-| Waarschuwingen verwijderen         | Yes   | Nee        |
-| Apparaten maken        | Yes   | Nee        |
-| Apparaten bijwerken        | Yes   | Nee        |
-| Apparaten verwijderen        | Yes   | Nee        |
-| Apparaatgroepen maken  | Yes   | Nee        |
-| Apparaatgroepen bijwerken  | Yes   | Nee        |
-| Apparaatgroepen verwijderen  | Yes   | Nee        |
-| Regels maken          | Yes   | Nee        |
-| Update regels          | Yes   | Nee        |
-| Regels verwijderen          | Yes   | Nee        |
-| Taken maken           | Yes   | Nee        |
-| SIM-beheer bijwerken | Yes   | Nee        |
+| Waarschuwingen bijwerken         | Ja   | Nee        |
+| Waarschuwingen verwijderen         | Ja   | Nee        |
+| Apparaten maken        | Ja   | Nee        |
+| Apparaten bijwerken        | Ja   | Nee        |
+| Apparaten verwijderen        | Ja   | Nee        |
+| Apparaatgroepen maken  | Ja   | Nee        |
+| Apparaatgroepen bijwerken  | Ja   | Nee        |
+| Apparaatgroepen verwijderen  | Ja   | Nee        |
+| Regels maken          | Ja   | Nee        |
+| Update regels          | Ja   | Nee        |
+| Regels verwijderen          | Ja   | Nee        |
+| Taken maken           | Ja   | Nee        |
+| SIM-beheer bijwerken | Ja   | Nee        |
 
 De gebruiker die de oplossing heeft geïmplementeerd, krijgt standaard automatisch de rol **admin** toegewezen en is een Azure Active Directory eigenaar van de toepassing. Als eigenaar van een toepassing kunt u rollen toewijzen aan andere gebruikers via de Azure Portal. Als u wilt dat een andere gebruiker rollen toewijst in de oplossing, moeten deze ook worden ingesteld als eigenaar van een toepassing in de Azure Portal.
 
@@ -52,7 +52,7 @@ De gebruiker die de oplossing heeft geïmplementeerd, krijgt standaard automatis
 
 Als Azure Active Directory eigenaar van de toepassing kunt u de Azure Portal gebruiken om een gebruiker toe te voegen aan of te verwijderen uit de oplossing voor externe controle. In de volgende stappen wordt gebruikgemaakt van de [Azure Active Directory Enter prise-toepassing](../active-directory/manage-apps/view-applications-portal.md) die is gemaakt tijdens de implementatie van de oplossing voor externe controle.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Controleer of de [gebruiker zich in de map bevindt](../active-directory/fundamentals/add-users-azure-active-directory.md) die u gebruikt. U hebt gekozen voor de map die u wilt gebruiken wanneer u zich aanmeldt bij de [Microsoft Azure IOT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) -site. De mapnaam wordt weer gegeven in de rechter bovenhoek van de [pagina](https://www.azureiotsolutions.com/Accelerators).
 
@@ -244,7 +244,7 @@ public async Task DeleteAsync(string id)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe toegangs beheer op basis van rollen wordt geïmplementeerd in de oplossings versneller voor externe controle.
+In dit artikel hebt u geleerd hoe op rollen gebaseerd toegangs beheer wordt geïmplementeerd in de oplossings versneller voor externe controle.
 
 Zie [toegangs beheer configureren voor de time series Insights Explorer](iot-accelerators-remote-monitoring-rbac-tsi.md) voor informatie over het beheren van toegang tot de time series Insights Verkenner in de oplossing voor externe controle.
 

@@ -1,19 +1,17 @@
 ---
 title: Veelgestelde vragen over Windows virtueel bureau blad-Azure
 description: Veelgestelde vragen en aanbevolen procedures voor virtueel bureau blad van Windows.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504412"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007485"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Veelgestelde vragen over Windows Virtual Desktop
 
@@ -25,7 +23,7 @@ Als u hostgroepen en andere objecten wilt maken, moet u de rol Inzender toewijze
 
 U moet de rol beheerder voor gebruikers toegang toewijzen aan een app-groep om app-groepen te kunnen publiceren naar gebruikers of gebruikers groepen.
 
-Als u een beheerder wilt beperken om alleen gebruikers sessies te beheren, zoals het verzenden van berichten aan gebruikers, het afmelden van gebruikers, enzovoort, kunt u aangepaste rollen maken. Bijvoorbeeld: 
+Als u een beheerder wilt beperken om alleen gebruikers sessies te beheren, zoals het verzenden van berichten aan gebruikers, het afmelden van gebruikers, enzovoort, kunt u aangepaste rollen maken. Bijvoorbeeld:
 
 ```powershell
 "actions": [
@@ -116,7 +114,7 @@ Wanneer u een hostgroep hebt gemaakt, kunt u het type niet meer wijzigen. U kunt
 
 Beperkingen of quota's in FSLogix zijn afhankelijk van de opslag-Fabric die wordt gebruikt voor het opslaan van VHD (X)-bestanden van het gebruikers profiel.
 
-De volgende tabel bevat een voor beeld van hoe resources een FSLogix-profiel nodig heeft om elke gebruiker te ondersteunen. De vereisten kunnen sterk variëren, afhankelijk van de gebruiker, de toepassingen en de activiteit voor elk profiel. 
+De volgende tabel bevat een voor beeld van hoe resources een FSLogix-profiel nodig heeft om elke gebruiker te ondersteunen. De vereisten kunnen sterk variëren, afhankelijk van de gebruiker, de toepassingen en de activiteit voor elk profiel.
 
 | Resource | Vereiste |
 |---|---|

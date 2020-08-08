@@ -1,6 +1,6 @@
 ---
 title: Afbeeldings sjablonen in de Azure Maps Web-SDK | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u afbeeldings sjablonen kunt gebruiken met HTML-markeringen en verschillende lagen in de Microsoft Azure Maps Web SDK.
+description: Meer informatie over het toevoegen van afbeeldings pictogrammen en met patronen opgevulde veelhoeken met behulp van de Azure Maps Web-SDK. Bekijk de beschik bare afbeeldings-en opvul patroon sjablonen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285676"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004660"
 ---
 # <a name="how-to-use-image-templates"></a>Afbeeldingssjablonen gebruiken
 

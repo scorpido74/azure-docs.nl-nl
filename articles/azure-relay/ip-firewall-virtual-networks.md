@@ -3,12 +3,12 @@ title: Congigure IP-Firewall voor Azure Relay naam ruimte
 description: In dit artikel wordt beschreven hoe u firewall regels gebruikt om verbindingen van bepaalde IP-adressen toe te staan Azure Relay naam ruimten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8cd788475ebe54c0316b8c37bd00aa186123fbf1
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2b8d1adef30eea0af9efdb51c31390c33a14b62e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533044"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009015"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-Firewall configureren voor een Azure Relay naam ruimte
 Relay-naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -33,7 +33,6 @@ In deze sectie wordt beschreven hoe u de Azure Portal kunt gebruiken om IP-firew
 1. Selecteer de optie **geselecteerde netwerken** om de toegang tot specifieke netwerken en IP-adressen te beperken. Voer de volgende stappen uit in de sectie **firewall** :
     1. Selecteer **de optie uw IP-adres voor client toevoegen** om uw huidige client-IP de toegang tot de naam ruimte te geven. 
     2. Voer bij **adres bereik**een specifiek IPv4-adres of een bereik van IPv4-adres in CIDR-notatie in. 
-    3. Geef op of u wilt **toestaan dat vertrouwde micro soft-services deze firewall overs Laan**. 
 
         ![Optie Firewall: alle netwerken geselecteerd](./media/ip-firewall/selected-networks-trusted-access-disabled.png)
 3. Selecteer **Opslaan** op de werk balk om de instellingen op te slaan. Wacht een paar minuten totdat de bevestiging op de portal meldingen wordt weer gegeven.

@@ -1,19 +1,17 @@
 ---
 title: FSLogix-profiel containers NetApp Windows virtueel bureau blad-Azure
 description: Een FSLogix-profiel container maken met behulp van Azure NetApp Files in Windows virtueel bureau blad.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362982"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002809"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Een profiel container maken met Azure NetApp Files en AD DS
 
@@ -45,7 +43,7 @@ Voordat u een FSLogix-profiel container voor een hostgroep kunt maken, moet u he
 
 Als u aan de slag wilt gaan, moet u een Azure NetApp Files-account instellen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Zorg ervoor dat uw account Inzender-of beheerders machtigingen heeft.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zorg ervoor dat uw account Inzender-of beheerders machtigingen heeft.
 
 2. Selecteer het **Azure Cloud shell pictogram** rechts van de zoek balk om Azure Cloud shell te openen.
 

@@ -1,21 +1,19 @@
 ---
 title: Aanbevolen procedures voor de beveiliging van virtuele Windows-Bureau bladen-Azure
 description: Aanbevolen procedures voor het beveiligen van uw virtuele Windows-bureau blad-omgeving.
-services: virtual-desktop
 author: heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736669"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002283"
 ---
-# <a name="security-best-practices"></a>Aanbevolen procedures voor beveiliging
+# <a name="security-best-practices"></a>Aanbevolen beveiligingsprocedures
 
 Virtueel bureau blad van Windows is een beheerde virtueel bureau blad-service met veel beveiligings mogelijkheden om uw organisatie veilig te houden. In een Windows-implementatie op virtueel bureau blad beheert micro soft delen van de services namens de klant. De service heeft veel ingebouwde geavanceerde beveiligings functies, zoals reverse Connect, waarmee het risico wordt gereduceerd waarbij externe Bureau bladen toegankelijk zijn vanaf elke locatie.
 
@@ -31,16 +29,16 @@ Hier vindt u de beveiligings behoeften die u nodig hebt voor de implementatie va
 
 | Beveiligings behoeften | Is de klant hiervoor verantwoordelijk? |
 |---------------|:-------------------------:|
-|Identiteit|Yes|
-|Gebruikers apparaten (Mobile en PC)|Yes|
-|App-beveiliging|Yes|
-|Session Host-besturings systeem|Yes|
-|Implementatie configuratie|Yes|
-|Beveiliging op netwerkniveau|Yes|
-|Besturings vlak voor virtualisatie|No|
-|Fysieke hosts|No|
-|Fysiek netwerk|No|
-|Fysiek Data Center|No|
+|Identiteit|Ja|
+|Gebruikers apparaten (Mobile en PC)|Ja|
+|App-beveiliging|Ja|
+|Session Host-besturings systeem|Ja|
+|Implementatie configuratie|Ja|
+|Beveiliging op netwerkniveau|Ja|
+|Besturings vlak voor virtualisatie|Nee|
+|Fysieke hosts|Nee|
+|Fysiek netwerk|Nee|
+|Fysiek Data Center|Nee|
 
 De beveiligings behoeften die de klant niet verantwoordelijk is voor worden verwerkt door micro soft.
 
@@ -103,7 +101,7 @@ Sessie-hosts zijn virtuele machines die worden uitgevoerd binnen een Azure-abonn
 
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection inschakelen
 
-Als u uw implementatie wilt beveiligen tegen bekende schadelijke software, wordt u aangeraden Endpoint Protection in te scha kelen op alle sessie-hosts. U kunt Windows Defender anti virus of een programma van derden gebruiken. Zie [implementatie handleiding voor Windows Defender anti virus in een VDI-omgeving](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)voor meer informatie. 
+Als u uw implementatie wilt beveiligen tegen bekende schadelijke software, wordt u aangeraden Endpoint Protection in te scha kelen op alle sessie-hosts. U kunt Windows Defender anti virus of een programma van derden gebruiken. Zie [implementatie handleiding voor Windows Defender anti virus in een VDI-omgeving](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)voor meer informatie.
 
 Voor profiel oplossingen zoals FSLogix of andere oplossingen die VHD-bestanden koppelen, raden we u aan om VHD-bestands extensies uit te sluiten.
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: f07e18498138d29497fa6ba85c5930a5a5f7ec4e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: bf9ddc78caa1e19d35ad7e96af76dc0303a8a67c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184766"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004735"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. Een VNet is een privé netwerk in de Cloud. Wanneer een Azure-cache voor redis-exemplaar is geconfigureerd met een VNet, is het niet openbaar adresseerbaar en is deze alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtuele netwerken kunt configureren voor een Premium Azure-cache voor een redis-exemplaar.
@@ -20,8 +20,6 @@ Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit
 > Azure cache voor redis ondersteunt zowel de klassieke als de VNets van Resource Manager.
 > 
 > 
-
-Zie [Inleiding tot de Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md)voor meer informatie over andere Premium-cache functies.
 
 ## <a name="why-vnet"></a>Waarom VNet?
 De implementatie van [azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) biedt verbeterde beveiliging en isolatie voor uw Azure-cache voor redis, evenals subnetten, Toegangs beheer beleid en andere functies om de toegang verder te beperken.
@@ -237,9 +235,9 @@ In dit [overzicht](../virtual-network/virtual-networks-udr-overview.md)vindt u a
 Zie [technisch overzicht van ExpressRoute](../expressroute/expressroute-introduction.md)voor meer informatie over ExpressRoute.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het gebruik van meer Premium-cache functies.
+Meer informatie over Azure cache voor redis-functies.
 
-* [Inleiding tot de Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md)
+* [Azure-cache voor redis Premium-Service lagen](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

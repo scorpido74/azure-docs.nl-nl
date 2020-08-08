@@ -1,24 +1,22 @@
 ---
 title: Problemen met Windows Virtual Desktop vaststellen-Azure
 description: De Windows-functie diagnostische gegevens over virtueel bureau blad gebruiken om problemen te diagnosticeren.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1e3d8eb9cb40d46ae0624be9d37fd199accd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288764"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005100"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Problemen met Windows virtueel bureau blad identificeren en vaststellen
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. Zie [log Analytics gebruiken voor de functie diagnostische gegevens voor](diagnostics-log-analytics.md)meer informatie over de diagnostische mogelijkheden van Windows virtueel bureau blad.
 

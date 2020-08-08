@@ -1,6 +1,6 @@
 ---
 title: Een heatmap aan een kaart toevoegen | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u een heatmap aan een kaart toevoegt met behulp van de Microsoft Azure Maps Web SDK.
+description: Meer informatie over het maken van een heatmap. Zie How to use the Azure Maps Web SDK om een heatmap toe te voegen aan een kaart. Meer informatie over het aanpassen van heatmap.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2558f30c0d2d1e9d652efec1693e7f056426255b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a6235ee6bbb476c69114e6895403f05e69fd6e19
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282905"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010239"
 ---
 # <a name="add-a-heat-map-layer"></a>Een heatmap-laag toevoegen
 

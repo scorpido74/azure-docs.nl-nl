@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 08/07/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d4661c0819d214a2c750eb1582559f8d8a5959ed
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825137"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006601"
 ---
 # <a name="configure-and-optimize-vms"></a>VM's configureren en optimaliseren
 
@@ -27,9 +27,18 @@ In dit artikel worden bekende technieken gedeeld voor het configureren en optima
 ## <a name="vm-images"></a>VM-installatiekopieën
 Op InfiniBand ingeschakelde Vm's zijn de juiste Stuur Programma's vereist om RDMA in te scha kelen. Op Linux worden de CentOS-HPC-VM-installatie kopieën in de Marketplace vooraf geconfigureerd met de juiste Stuur Programma's. De Ubuntu-VM-installatie kopieën kunnen worden geconfigureerd met de juiste Stuur Programma's met behulp van de [instructies hier](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Het is ook raadzaam om [aangepaste VM-installatie kopieën](../../linux/tutorial-custom-images.md) te maken met de juiste Stuur Programma's en configuratie en deze herhaaldelijk te hergebruiken.
 
+> [!NOTE]
+> Op met GPU ingeschakelde vm's uit de [N-serie](../../sizes-gpu.md) zijn de juiste GPU-Stuur Programma's ook vereist, die kunnen worden toegevoegd via de [VM-extensies](../../extensions/hpccompute-gpu-linux.md) of [hand matig](../../linux/n-series-driver-setup.md). Sommige VM-installatie kopieën op de Marketplace worden ook vooraf geïnstalleerd met de NVIDIA GPU-Stuur Programma's.
+
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM-installatie kopieën
+
+#### <a name="non-sr-iov-enabled-vms"></a>Vm's waarvoor geen SR-IOV is ingeschakeld
 Voor [RDMA-compatibele](../../sizes-hpc.md#rdma-capable-instances), op SR-IOV geschikte vm's, CENTOS-HPC-versie 6,5 of hoger, is er een geschikte versie van 7,5 in Marketplace. Een voor beeld: voor [vm's uit de H16-serie](../../h-series.md)wordt versie 7,1 tot 7,5 aanbevolen. Deze VM-installatie kopieën worden vooraf geladen met de netwerk directe Stuur Programma's voor RDMA en Intel MPI versie 5,1.
 
+> [!NOTE]
+> Op deze CentOS-gebaseerde HPC-installatie kopieën voor virtuele machines die niet zijn beveiligd met SR-IOV, worden kernel-updates uitgeschakeld in het configuratie bestand **yum** . Dit komt doordat de Network direct Linux RDMA-Stuur Programma's worden gedistribueerd als een RPM-pakket, en updates van Stuur Programma's kunnen mogelijk niet worden uitgevoerd als de kernel wordt bijgewerkt.
+
+#### <a name="sr-iov-enabled-vms"></a>Vm's met SR-IOV ingeschakeld
   Voor met SR-IOV ingeschakelde [RDMA-compatibele vm's](../../sizes-hpc.md#rdma-capable-instances), [CentOS-HPC-versie 7,6 of een latere](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) versie van VM-installatie kopieën in de Marketplace, zijn geschikt. Deze VM-installatie kopieën worden geoptimaliseerd en vooraf geladen met de OFED-Stuur Programma's voor RDMA en verschillende veelgebruikte MPI-bibliotheken en weten schappelijke computing pakketten. Dit is de eenvoudigste manier om aan de slag te gaan.
 
   Voor beeld van scripts die worden gebruikt bij het maken van de VM-installatie kopieën CentOS-HPC versie 7,6 en hoger van een basis installatie kopie voor CentOS Marketplace, vindt u op de [azhpc-images opslag plaats](https://github.com/Azure/azhpc-images/tree/master/centos).

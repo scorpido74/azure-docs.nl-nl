@@ -1,24 +1,22 @@
 ---
 title: Verbinding maken met een virtueel bureau blad van Windows met de webclient-Azure
 description: Verbinding maken met het virtuele bureau blad van Windows via de webclient.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3fdbd0ddb33785655cada2600acdecdced4aeb2f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7c97009a69c937863a5776d63bab1c994a8a9160
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283432"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007604"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Verbinding maken met een virtueel bureau blad van Windows met de webclient
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/connect-web-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/connect-web-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 Met de webclient kunt u vanuit een webbrowser toegang krijgen tot uw virtuele bureau blad-resources zonder het langdurige installatie proces.
 

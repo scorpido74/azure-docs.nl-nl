@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c0fbb62f411ccc3056d782518c6c3b570106d2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828622"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008084"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management implementeren (PIM)
 
@@ -27,9 +27,9 @@ In deze stapsgewijze hand leiding wordt beschreven hoe u de implementatie van Pr
 
 > [!TIP]
 > In dit artikel ziet u items die zijn gemarkeerd als:
-> 
+>
 > : heavy_check_mark: **micro soft raadt** aan
-> 
+>
 > Dit zijn algemene aanbevelingen en u moet alleen implementeren als ze van toepassing zijn op uw specifieke bedrijfs behoeften.
 
 ## <a name="learn-about-privileged-identity-management"></a>Meer informatie over Privileged Identity Management
@@ -142,9 +142,9 @@ Volg deze stappen om het principe van minimale bevoegdheden voor uw Azure AD-rol
 
 1. Inzicht in de granulatie van de rollen door de [beschik bare Azure AD-beheerders rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles)te lezen en begrijpen. U en uw team moeten ook verwijzen naar [beheerders rollen per identiteits taak in azure AD](../users-groups-roles/roles-delegate-by-task.md), waarin de minst privileged Role voor specifieke taken wordt uitgelegd.
 
-1. Lijst met geprivilegieerde rollen in uw organisatie. U kunt de [wizard privileged Identity Management](pim-security-wizard.md#run-the-wizard) gebruiken om naar een pagina te gaan, zoals in het volgende voor blad.
+1. Lijst met geprivilegieerde rollen in uw organisatie. U kunt de Privileged Identity Management [detectie en inzichten (preview)](pim-security-wizard.md) gebruiken om naar een pagina te gaan, zoals in het volgende voor beeld.
 
-    ![Deel venster met geprivilegieerde rollen detecteren met wie privileged roles](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![De pagina detectie en inzichten (preview) om de bloot stelling via geprivilegieerde rollen te verminderen](./media/pim-deployment-plan/new-preview-page.png)
 
 1. Voor alle globale beheerders in uw organisatie, Lees waarom ze de rol nodig hebben. Als de taak van de persoon kan worden uitgevoerd door een of meer gedetailleerde beheerders rollen, moet u op basis van het lezen van de vorige documentatie de taken van de rol globale beheerder verwijderen en de toewijzingen dienovereenkomstig in Azure Active Directory maken (als referentie: micro soft heeft momenteel alleen ongeveer 10 beheerders met de rol van globale beheerder. Meer informatie over de [manier waarop micro soft gebruikmaakt van privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)).
 
@@ -351,7 +351,7 @@ Als Privileged Identity Management niet naar wens werkt in de productie omgeving
 
 #### <a name="azure-ad-roles"></a>Azure AD-rollen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure AD-rollen** en klik vervolgens op **rollen**.
 1. Voor elke rol die u hebt geconfigureerd, klikt u op het weglatings teken (**...**) voor alle gebruikers met een in aanmerking komende toewijzing.
@@ -359,7 +359,7 @@ Als Privileged Identity Management niet naar wens werkt in de productie omgeving
 
 #### <a name="azure-resource-roles"></a>Azure-resourcerollen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure-resources** en klik vervolgens op een abonnement of resource die u wilt terugzetten.
 1. Klik op **rollen**.
@@ -374,7 +374,7 @@ Het implementeren van Privileged Identity Management in productie is een belang 
 
 Gebruik de ingebouwde waarschuwings functionaliteit van Privileged Identity Management om uw organisatie beter te beveiligen. Zie [Security Alerts](pim-how-to-configure-security-alerts.md#security-alerts)(Engelstalig) voor meer informatie. Deze waarschuwingen omvatten: beheerders die geen geprivilegieerde rollen gebruiken, de rollen worden toegewezen buiten Privileged Identity Management, worden de rollen te vaak geactiveerd. Als u uw organisatie volledig wilt beveiligen, moet u de lijst met waarschuwingen regel matig door lopen en de problemen oplossen. U kunt uw waarschuwingen op de volgende manier weer geven en herstellen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Open **Azure AD privileged Identity Management**.
 1. Klik op **Azure AD-rollen** en klik vervolgens op **waarschuwingen**.
 

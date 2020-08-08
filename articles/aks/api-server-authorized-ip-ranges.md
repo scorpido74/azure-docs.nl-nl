@@ -4,12 +4,12 @@ description: Meer informatie over het beveiligen van uw cluster met behulp van e
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: c92d4e00da1cc3d372cca0bf4efbe648ae522608
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 404bd600f825a5da334811744132c6aa9b751566
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057472"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006890"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -28,7 +28,7 @@ U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfiguree
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Overzicht van door de API server geautoriseerde IP-adresbereiken
 
-De Kubernetes API-server is hoe de onderliggende Kubernetes-Api's worden weer gegeven. Dit onderdeel biedt de interactie voor beheer hulpprogramma's, zoals `kubectl` of het Kubernetes-dash board. AKS biedt een cluster Master met één Tenant, met een speciale API-server. De API-server krijgt standaard een openbaar IP-adres en u moet de toegang beheren met behulp van op rollen gebaseerd toegangs beheer (RBAC).
+De Kubernetes API-server is hoe de onderliggende Kubernetes-Api's worden weer gegeven. Dit onderdeel biedt de interactie voor beheer hulpprogramma's, zoals `kubectl` of het Kubernetes-dash board. AKS biedt een cluster Master met één Tenant, met een speciale API-server. Standaard wordt aan de API-server een openbaar IP-adres toegewezen. u moet de toegang beheren via op rollen gebaseerd toegangs beheer (RBAC).
 
 Als u de toegang tot de anderszins toegankelijke AKS Control vlak/API-server wilt beveiligen, kunt u geautoriseerde IP-bereiken inschakelen en gebruiken. Met deze geautoriseerde IP-bereiken zijn alleen gedefinieerde IP-adresbereiken toegestaan om te communiceren met de API-server. Een aanvraag naar de API-server vanaf een IP-adres dat geen deel uitmaakt van deze toegestane IP-bereiken, wordt geblokkeerd. Blijf RBAC gebruiken om gebruikers en de acties die ze aanvragen te autoriseren.
 

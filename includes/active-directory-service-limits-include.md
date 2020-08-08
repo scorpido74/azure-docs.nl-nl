@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 840357f51bbeeb877aba48fd8d04baad204cec1e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ba0791108878dada5088428ce40d1af672d1892a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375570"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011033"
 ---
 Hier vindt u de beperkingen voor gebruik en andere servicelimieten voor de Azure Active Directory-service (Azure AD).
 
@@ -30,4 +30,4 @@ Hier vindt u de beperkingen voor gebruik en andere servicelimieten voor de Azure
 | Toegangsvenster |Er is geen limiet voor het aantal toepassingen dat per gebruiker kan worden weergegeven in het toegangsvenster, ongeacht de toegewezen licenties.  |
 | Rapporten | Er kunnen maximaal 1000 rijen worden bekeken of gedownload in elk rapport. Aanvullende gegevens worden afgekapt. |
 | Beheereenheden | Een Azure AD-resources kan lid zijn van maximaal 30 beheereenheden. |
-| Beheerdersrollen en -machtigingen | <ul><li>Een groep kan niet worden toegevoegd als [eigenaar](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Een groep kan niet worden toegewezen aan een [rol](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>De mogelijkheid van gebruikers om directorygegevens van andere gebruikers te lezen kan niet worden beperkt, behalve door in de hele Azure AD-organisaties de toegang van alle gebruikers die geen beheerder zijn tot alle directorygegevens uit te schakelen (niet aanbevolen). Meer informatie over standaardmachtigingen vindt u [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Het kan 15 minuten duren of het kan nodig zijn af en weer aan te melden voordat toevoegingen of intrekkingen van beheerdersrollidmaatschappen van kracht worden.</li></ul> |
+| Beheerdersrollen en -machtigingen | <ul><li>Een groep kan niet worden toegevoegd als [eigenaar](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>De mogelijkheid van gebruikers om directorygegevens van andere gebruikers te lezen kan niet worden beperkt, behalve door in de hele Azure AD-organisaties de toegang van alle gebruikers die geen beheerder zijn tot alle directorygegevens uit te schakelen (niet aanbevolen). Meer informatie over standaardmachtigingen vindt u [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Het kan 15 minuten duren of het kan nodig zijn af en weer aan te melden voordat toevoegingen of intrekkingen van beheerdersrollidmaatschappen van kracht worden.</li></ul> |

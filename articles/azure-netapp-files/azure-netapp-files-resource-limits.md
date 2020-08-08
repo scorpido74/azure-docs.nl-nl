@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 08/07/2020
 ms.author: b-juche
-ms.openlocfilehash: a0d672f782cb9f476fa81d28ee369072caf8509b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0c790d1d8bec972135796533542a5efad6094d7c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147209"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006669"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
@@ -33,6 +33,7 @@ In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven
 |----------------|---------------------|--------------------------------------|
 |  Aantal NetApp-accounts per Azure-regio   |  10    |  Ja   |
 |  Aantal capaciteits Pools per NetApp-account   |    25     |   Ja   |
+|  Aantal volumes per NetApp-account   |    500     |   Ja   |
 |  Aantal volumes per capaciteits pool     |    500   |    Ja     |
 |  Aantal moment opnamen per volume       |    255     |    Nee        |
 |  Aantal subnetten dat wordt gedelegeerd aan Azure NetApp Files (micro soft. NetApp/volumes) per Azure-Virtual Network    |   1   |    Nee    |

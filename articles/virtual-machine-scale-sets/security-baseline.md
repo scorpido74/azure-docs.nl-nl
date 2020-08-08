@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6db83d17a9e6f3df6d691d6de616ead5407e3f5f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 89da86d753f746774737c248ee318c7a377dd7a0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133041"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007094"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Azure-beveiligings basislijn voor Virtual Machine Scale Sets
 
@@ -576,11 +576,11 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 **Verantwoordelijkheid**: klant
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Richt lijnen**: met op rollen gebaseerd toegangs beheer (RBAC) kunt u de taken binnen uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers op uw virtuele machine (VM) die ze nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen voor de virtuele machine te geven, kunt u alleen bepaalde acties toestaan. U kunt toegangs beheer voor de virtuele machine configureren in het Azure Portal, met behulp van de Azure CLI of Azure PowerShell.
+**Richt lijnen**: met behulp van Azure RBAC (op rollen gebaseerd toegangs beheer) kunt u de taken binnen uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers op uw virtuele machine (VM) die ze nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen voor de virtuele machine te geven, kunt u alleen bepaalde acties toestaan. U kunt toegangs beheer voor de virtuele machine configureren in het Azure Portal, met behulp van de Azure CLI of Azure PowerShell.
 
-* [Op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources?](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 * [Ingebouwde Azure-rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
 
@@ -916,11 +916,11 @@ In de meeste gevallen kunnen de micro soft-sjablonen voor virtuele machines in c
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
 
-**Richt lijnen**: als u aangepaste installatie kopieën gebruikt (bijvoorbeeld virtuele harde schijf), gebruikt u toegangs beheer op basis van rollen om ervoor te zorgen dat alleen gemachtigde gebruikers toegang kunnen krijgen tot de installatie kopieën.
+**Richt lijnen**: als u aangepaste installatie kopieën gebruikt (bijvoorbeeld virtuele harde schijf), gebruikt u Azure RBAC (op rollen gebaseerd toegangs beheer) om ervoor te zorgen dat alleen geautoriseerde gebruikers toegang hebben tot de installatie kopieën.
 
-* [Wat is RBAC in azure?](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure RBAC configureren](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 **Azure Security Center bewaking**: niet van toepassing
 

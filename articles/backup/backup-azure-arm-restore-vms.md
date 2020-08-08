@@ -4,12 +4,12 @@ description: Een virtuele Azure-machine herstellen vanaf een herstel punt met be
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a43e7d1d97196afdad0a1e451b0c1618f0ea3a16
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809180"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006329"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure VM-gegevens herstellen in Azure Portal
 
@@ -45,7 +45,7 @@ Enkele details over opslag accounts:
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Als u een virtuele machine wilt herstellen (een nieuwe virtuele machine maken), moet u ervoor zorgen dat u over de juiste RBAC- [machtigingen](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) (op rollen gebaseerde toegangs beheer) beschikt voor de bewerking VM herstellen.
+Als u een virtuele machine wilt herstellen (een nieuwe virtuele machine maken), moet u ervoor zorgen dat u over de juiste toegangs [machtigingen](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) voor Azure op basis van rollen (Azure RBAC) beschikt voor de bewerking VM herstellen.
 
 Als u geen machtigingen hebt, kunt u [een schijf herstellen](#restore-disks)en nadat de schijf is hersteld, kunt u [de sjabloon](#use-templates-to-customize-a-restored-vm) die is gegenereerd als onderdeel van de herstel bewerking, gebruiken om een nieuwe virtuele machine te maken.
 
@@ -173,7 +173,7 @@ De gebruikers ervaring voor het herstellen van de secundaire regio is vergelijkb
 >
 >- Nadat de herstel bewerking is geactiveerd en in de fase voor gegevens overdracht, kan de herstel taak niet worden geannuleerd.
 >- De functie voor het terugzetten van meerdere regio's herstelt CMK (door de klant beheerde sleutels) ingeschakelde Azure-Vm's waarvoor geen back-up is gemaakt in een CMK ingeschakeld Recovery Services kluis als niet-CMK ingeschakelde virtuele machines in de secundaire regio.
->- De RBAC-rollen (op rollen gebaseerd toegangs beheer) die nodig zijn om te herstellen in de secundaire regio, zijn hetzelfde als die in de primaire regio.
+>- De Azure-rollen die nodig zijn voor het herstellen van de secundaire regio, zijn hetzelfde als die in de primaire regio.
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Taken voor het herstellen van secundaire regio's bewaken
 

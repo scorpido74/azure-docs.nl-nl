@@ -1,24 +1,22 @@
 ---
 title: RDP-eigenschappen aanpassen met Power shell Windows virtueel bureau blad (klassiek)-Azure
 description: RDP-eigenschappen voor virtueel bureau blad van Windows (klassiek) aanpassen met Power shell-cmdlets.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3ed7e8b8348ae87e676ec4585bce42a1ac389e23
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1df576e3316a529ec38c4a53960ff817d129ffd8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291272"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002261"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>Remote Desktop Protocol eigenschappen voor een hostgroep in een virtueel bureau blad (klassiek) van Windows aanpassen
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../customize-rdp-properties.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../customize-rdp-properties.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 Als u de eigenschappen van de Remote Desktop Protocol (RDP) van een hostgroep wilt aanpassen, zoals de ervaring voor meerdere monitors en audio-omleiding, kunt u een optimale ervaring bieden aan uw gebruikers op basis van hun behoeften. U kunt RDP-eigenschappen in virtueel bureau blad van Windows aanpassen met behulp van de para meter **-CustomRdpProperty** in de cmdlet **set-RdsHostPool** .
 

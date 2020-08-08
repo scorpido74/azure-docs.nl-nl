@@ -1,6 +1,6 @@
 ---
 title: Een afbeelding slaag toevoegen aan een kaart | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u een afbeelding kunt bedekken op een kaart met behulp van de Microsoft Azure Maps Web SDK.
+description: Meer informatie over het toevoegen van installatie kopieën aan een kaart. Bekijk hoe u de Azure Maps Web-SDK gebruikt om afbeeldings lagen en overlay-afbeeldingen op vaste sets coördinaten aan te passen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 6ffec1afc44c6b920a64b4b92b384b6ce3829488
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a804272a92d98156122397ee7427dcb467fbdf0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286949"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010222"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Een afbeelding slaag toevoegen aan een kaart
 

@@ -1,24 +1,22 @@
 ---
 title: Beheer hulpprogramma voor virtueel bureau blad van Windows-Azure
 description: Problemen oplossen met het beheer programma voor virtueel bureau blad (klassiek) van Windows.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 442cdce2ebb6c1a3e38932411dfa2b081a44ef9f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6f03284103b4a2aa6900bf1ba5c50a4688c50b0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283364"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005479"
 ---
 # <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>Problemen oplossen met het beheer programma voor virtuele Bureau bladen van Windows (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 In dit artikel worden problemen beschreven die zich kunnen voordoen tijdens de implementatie van het Windows-hulp programma virtueel bureau blad-beheer en hoe u deze kunt oplossen.
 

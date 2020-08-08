@@ -1,24 +1,22 @@
 ---
 title: Logboek analyse van diagnostische gegevens van Windows Virtual Desktop-Azure
 description: Log Analytics gebruiken met de Windows-functie diagnostische gegevens over virtueel bureau blad.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85cd94c9ba0cf8909e2013a49d43a473a313db8b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292594"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005113"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 Het virtuele bureau blad van Windows maakt gebruik van [Azure monitor](../azure-monitor/overview.md) voor bewaking en waarschuwingen, zoals veel andere Azure-Services. Hiermee kunnen beheerders problemen identificeren via één interface. De service maakt activiteiten logboeken voor zowel gebruikers-als beheer acties. Elk activiteiten logboek valt onder de volgende categorieën:
 
@@ -134,7 +132,7 @@ Access-voorbeeld query's via de Azure Monitor Log Analytics gebruikers interface
 1. Ga naar uw Log Analytics-werk ruimte en selecteer vervolgens **Logboeken**. De voorbeeld query gebruikers interface wordt automatisch weer gegeven.
 1. Wijzig het filter in **categorie**.
 1. Selecteer **virtueel bureau blad voor Windows** om beschik bare query's te controleren.
-1. Selecteer **uitvoeren** om de geselecteerde query uit te voeren. 
+1. Selecteer **uitvoeren** om de geselecteerde query uit te voeren.
 
 Meer informatie over de voorbeeld query interface in [opgeslagen query's in Azure Monitor Log Analytics](../azure-monitor/log-query/saved-queries.md).
 

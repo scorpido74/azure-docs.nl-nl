@@ -1,26 +1,24 @@
 ---
 title: Verbinding maken met virtueel bureau blad van Windows (klassiek) Windows 10 of 7-Azure
 description: Verbinding maken met het virtuele bureau blad van Windows (klassiek) met behulp van de Windows-bureaubladclient.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d420927727c2d2209c00f4852188c4a2d8e4342d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 420c507361e3e2437366e6ccf2d46a8b78684e59
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270325"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008353"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>Verbinding maken met de Windows desktop-client (klassiek)
 
 > Van toepassing op: Windows 7, Windows 10 en Windows 10 IoT Enter prise
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Zie [dit artikel](../connect-windows-7-10.md)als u probeert Azure Resource Manager virtueel-bureaublad objecten van Windows te beheren.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../connect-windows-7-10.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren.
 
 U hebt toegang tot de virtuele Bureau bladen van Windows op apparaten met Windows 7, Windows 10 en Windows 10 IoT Enter prise met behulp van de Windows-bureaubladclient. De client biedt geen ondersteuning voor Windows 8 of Windows 8,1.
 
@@ -66,7 +64,7 @@ Er zijn twee manieren waarop u zich kunt abonneren op een werk ruimte. De client
      - Virtueel bureau blad van Windows (klassiek):`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Virtueel bureau blad van Windows:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - Als u in plaats daarvan het **e-mail** veld gebruikt, voert u uw e-mail adres in. Dit geeft de client de opdracht om te zoeken naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder [e-mail detectie](/windows-server/remote/remote-desktop-services/rds-email-discovery)heeft ingesteld.
-3. Selecteer **Next**.
+3. Selecteer **Volgende**.
 4. Meld u aan met uw gebruikers account wanneer u hierom wordt gevraagd.
 5. De resources moeten worden weer gegeven in het verbindings centrum, gegroepeerd op werk ruimte.
 

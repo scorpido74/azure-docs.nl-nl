@@ -3,16 +3,16 @@ title: Resources implementeren voor Tenant
 description: Hierin wordt beschreven hoe u resources implementeert in het Tenant bereik in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 3fbf869e371f385a335e4a154bc811a6fc8cab97
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922520"
+ms.locfileid: "88002773"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Resources maken op Tenant niveau
 
-Als uw organisatie is gerijpt, moet u mogelijk [beleid](../../governance/policy/overview.md) of op [rollen gebaseerde toegangs beheer](../../role-based-access-control/overview.md) voor uw Azure AD-Tenant definiëren en toewijzen. Met sjablonen op Tenant niveau kunt u declaratief beleid Toep assen en rollen toewijzen op globaal niveau.
+Als uw organisatie is verouderd, moet u mogelijk [beleid](../../governance/policy/overview.md) of Azure [RBAC (op rollen gebaseerd toegangs beheer)](../../role-based-access-control/overview.md) voor uw Azure AD-Tenant definiëren en toewijzen. Met sjablonen op Tenant niveau kunt u declaratief beleid Toep assen en rollen toewijzen op globaal niveau.
 
 ## <a name="supported-resources"></a>Ondersteunde resources
 
@@ -251,5 +251,5 @@ De [volgende sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
+* Zie [Azure-roltoewijzingen toevoegen met Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
 * U kunt ook sjablonen implementeren op [abonnements niveau](deploy-to-subscription.md) of op het niveau van de [beheer groep](deploy-to-management-group.md).

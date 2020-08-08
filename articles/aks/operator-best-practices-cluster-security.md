@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c4f56cf4e04b9df31c8c4204d396ead8073ec526
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244205"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003049"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor de beveiliging en upgrades van het cluster in azure Kubernetes service (AKS)
 
@@ -19,7 +19,7 @@ Wanneer u clusters beheert in azure Kubernetes service (AKS), is de beveiliging 
 Dit artikel is gericht op het beveiligen van uw AKS-cluster. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
-> * Azure Active Directory en op rollen gebaseerd toegangs beheer gebruiken voor het beveiligen van de API-server toegang
+> * Gebruik Azure Active Directory en op rollen gebaseerd toegangs beheer (RBAC) om toegang tot de API-server te beveiligen
 > * Toegang tot knooppunt bronnen beveiligen container
 > * Een AKS-cluster upgraden naar de nieuwste versie van Kubernetes
 > * Knoop punten up-to-date houden en automatisch beveiligings patches Toep assen
@@ -53,7 +53,7 @@ Op dezelfde manier als u gebruikers of groepen het minste aantal vereiste bevoeg
 Voor een gedetailleerdere controle van container acties, kunt u ook ingebouwde Linux-beveiligings functies gebruiken, zoals *AppArmor* en *seccomp*. Deze functies worden gedefinieerd op knooppunt niveau en vervolgens geïmplementeerd via een pod-manifest. Ingebouwde Linux-beveiligings functies zijn alleen beschikbaar voor Linux-knoop punten en van peulen.
 
 > [!NOTE]
-> Kubernetes-omgevingen, in AKS of elders, zijn niet volledig veilig voor gebruik van een vijandend multi tenant. Aanvullende beveiligings functies, zoals *AppArmor*, *Seccomp*, *pod Security Policies*of meer fijnere op rollen gebaseerde toegangs beheer (RBAC) voor knoop punten maken aanvallen moeilijker. Voor echte beveiliging bij het uitvoeren van vijandelijke multi tenant-workloads is een Hyper Visor echter het enige beveiligings niveau dat u moet vertrouwen. Het beveiligings domein voor Kubernetes wordt het hele cluster, niet een afzonderlijk knoop punt. Voor dit soort vijandelijke multi tenant-workloads moet u fysiek geïsoleerde clusters gebruiken.
+> Kubernetes-omgevingen, in AKS of elders, zijn niet volledig veilig voor gebruik van een vijandend multi tenant. Aanvullende beveiligings functies, zoals *AppArmor*, *Seccomp*, *pod Security Policies*of meer verfijnde op rollen gebaseerd toegangs beheer (RBAC) voor knoop punten maken aanvallen moeilijker. Voor echte beveiliging bij het uitvoeren van vijandelijke multi tenant-workloads is een Hyper Visor echter het enige beveiligings niveau dat u moet vertrouwen. Het beveiligings domein voor Kubernetes wordt het hele cluster, niet een afzonderlijk knoop punt. Voor dit soort vijandelijke multi tenant-workloads moet u fysiek geïsoleerde clusters gebruiken.
 
 ### <a name="app-armor"></a>App-beveiliging
 

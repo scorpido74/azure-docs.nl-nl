@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9bd0f1cbe1f4797a0187952b94ca48077bb3134c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854301"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004484"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Azure-beveiligings basislijn voor Security Center
 
@@ -190,7 +190,7 @@ U kunt ook gegevens die zijn gerelateerd aan en worden geproduceerd door Azure S
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Hulp**: met Azure op rollen gebaseerd toegangs beheer (RBAC) kunt u de toegang tot Azure-resources beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor bepaalde resources, en deze rollen kunnen worden geïnventariseerd of opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell of de Azure Portal. Azure Security Center heeft ingebouwde rollen voor ' beveiligings lezer ' of ' beveiliging admin, waarmee gebruikers beveiligings beleid kunnen lezen of bijwerken en waarschuwingen en aanbevelingen kan negeren.
+**Richt lijnen**: met Azure op rollen gebaseerd toegangs beheer (Azure RBAC) kunt u de toegang tot Azure-resources beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor bepaalde resources, en deze rollen kunnen worden geïnventariseerd of opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell of de Azure Portal. Azure Security Center heeft ingebouwde rollen voor ' beveiligings lezer ' of ' beveiliging admin, waarmee gebruikers beveiligings beleid kunnen lezen of bijwerken en waarschuwingen en aanbevelingen kan negeren.
 
 - [Machtigingen in Azure Security Center](security-center-permissions.md)
 
@@ -344,7 +344,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure Active Directory RBAC.
+**Richt lijnen**: isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure RBAC.
 
 Standaard worden Azure Security Center gegevens opgeslagen in de Security Center back-end-service. Als uw organisatie vereisten heeft toegevoegd om deze gegevens op te slaan in uw eigen resources, kunt u een Log Analytics-werk ruimte configureren om Security Center gegevens, waarschuwingen en aanbevelingen op te slaan. Wanneer u uw eigen werk ruimte gebruikt, kunt u verdere schei ding toevoegen door verschillende werk ruimten te configureren op basis van de omgeving waarin de gegevens afkomstig zijn.
 
@@ -376,15 +376,15 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 **Verantwoordelijkheid**: gedeeld
 
-### <a name="46-use-role-based-access-controls-to-control-access-to-resources"></a>4,6: toegangs beheer op basis van rollen gebruiken om de toegang tot resources te beheren 
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren 
 
-**Hulp**: gebruik Azure-functies voor toegangs beheer op basis van rollen om de toegang tot Azure Security Center gerelateerde gegevens en resources te beheren. Azure Security Center heeft ingebouwde rollen voor ' beveiligings lezer ' of ' beveiliging admin, waarmee gebruikers beveiligings beleid kunnen lezen of bijwerken en waarschuwingen en aanbevelingen kan negeren. De Log Analytics-werk ruimte waarin de gegevens worden opgeslagen die door Security Center zijn verzameld, heeft ook ingebouwde rollen die u kunt toewijzen als Log Analytics Reader, Log Analytics Inzender en anderen. Wijs de minst strikte rol toe die gebruikers nodig hebben om hun vereiste taken uit te voeren. Wijs bijvoorbeeld de rol Lezer toe aan gebruikers die alleen informatie over de beveiligings status van een resource hoeven te bekijken, maar geen actie ondernemen, zoals het Toep assen van aanbevelingen of het bewerken van beleid.
+**Richt lijnen**: gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot Azure Security Center gerelateerde gegevens en resources te beheren. Azure Security Center heeft ingebouwde rollen voor ' beveiligings lezer ' of ' beveiliging admin, waarmee gebruikers beveiligings beleid kunnen lezen of bijwerken en waarschuwingen en aanbevelingen kan negeren. De Log Analytics-werk ruimte waarin de gegevens worden opgeslagen die door Security Center zijn verzameld, heeft ook ingebouwde rollen die u kunt toewijzen als Log Analytics Reader, Log Analytics Inzender en anderen. Wijs de minst strikte rol toe die gebruikers nodig hebben om hun vereiste taken uit te voeren. Wijs bijvoorbeeld de rol Lezer toe aan gebruikers die alleen informatie over de beveiligings status van een resource hoeven te bekijken, maar geen actie ondernemen, zoals het Toep assen van aanbevelingen of het bewerken van beleid.
 
 - [Machtigingen voor Azure Log Analytics-werk ruimte](../role-based-access-control/built-in-roles.md#log-analytics-reader)
 
 - [Machtigingen in Azure Security Center](security-center-permissions.md)
 
-- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC configureren](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

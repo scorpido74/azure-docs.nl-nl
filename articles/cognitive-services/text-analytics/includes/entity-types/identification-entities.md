@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: f07b71bf8996612798b87d32a21a15ec72db0b32
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 6271cb449b6bbc80269dd325bd5acd7edd2e0a6d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140915"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010911"
 ---
 Deze entiteits categorie bevat financiële gegevens en officiële vormen van identificatie. Beschikbaar vanaf model versie `2019-10-01` . Subtypen worden hieronder weer gegeven. 
 
@@ -39,28 +39,39 @@ De onderstaande entiteiten worden gegroepeerd en per land weer gegeven:
 Argentinië
 * Sofi-nummer (Argentinië National Identity)
 
+Oostenrijk
+* Identiteits kaart Oosten rijk
+* Identificatie nummer voor Oosten Rijks tarief
+* BTW-nummer voor de toegevoegde waarde van de Oosten rijk
+
 Australië
-* Australië-paspoort nummer
-* Australia-BTW-bestands nummer
+* Nummer van Australië-Bank account
+* Australisch bedrijfs nummer
+* Australisch bedrijfs nummer
 * Licentie nummer van het Australia-stuur programma
 * Medisch account nummer in Australië
-* Nummer van Australië-Bank account
+* Australië-paspoort nummer
+* Australia-BTW-bestands nummer
 
 België
 * België nationaal nummer
+* BTW-nummer voor de Belgische toegevoegde waarde
 
 Brazilië 
 * Nummer van juridische entiteit in Brazilië (CNPJ)
 * Brazilië CPF-nummer
 * National ID-kaart (RG) Brazilië
 
+Bulgarije
+* Bulgarije, uniforme burger Number
+
 Canada
-* Sofi-nummer Canada
-* Rijbewijs nummer van het Canada-stuur programma
 * Rekening nummer Canada
+* Rijbewijs nummer van het Canada-stuur programma
+* Canada-Health Service nummer
 * Canada paspoort nummer
 * Privé-identificatie nummer voor Canada (PHIN)
-* Canada-Health Service nummer
+* Sofi-nummer Canada
 
 Chili
 * Nummer van de identiteits kaart 
@@ -70,7 +81,12 @@ China
 
 Kroatië
 * ID-kaart nummer van Kroatië
+* ID-kaart nummer van Kroatië
 * OIB-nummer (Kroatië Personal Identification)
+
+Cyprus
+* Cypriotische ID-kaart nummer
+* Cypriotische BTW-identificatie nummer
 
 Tsjechische Republiek
 * Persoonlijk identiteits nummer Tsjechisch
@@ -78,34 +94,49 @@ Tsjechische Republiek
 Denemarken
 * Privé-identificatie nummer Denemarken
 
+Estland
+* Persoonlijke identificatie code van Estland
+
 Europese Unie (EU)
+* Nummer ICL-betaalpas
+* Licentie nummer van het EU-stuur programma
 * Sofi-nummer van de EU
 * EU-paspoort nummer
-* Licentie nummer van het EU-stuur programma
 * Sofi-nummer van de EU of gelijkwaardige ID
 * BTW-identificatie nummer van de EU
-* Nummer ICL-betaalpas
 
 Finland
+* Euro pees Health Insurance-nummer
 * National ID Finland
 * Finland paspoort nummer
 
 Frankrijk
-* Landse nationale ID-kaart (CNI)
-* Sofi-nummer Frank rijk (INSEE)
-* Frank rijk paspoort nummer
 * Rijbewijs nummer van Frank rijk stuur programma
+* Frank rijk-medische-verzekerings nummer
+* Landse nationale ID-kaart (CNI)
+* Frank rijk paspoort nummer
+* Sofi-nummer Frank rijk (INSEE)
+* Frank rijk-belasting identificatienummer (numéro SPI.)
+* Omzetbelasting nummer van toegevoegde waarde voor Frank rijk
 
 Duitsland
+* Rijbewijs nummer van het Duitse stuur programma
 * Nummer van de Duitsland-identiteits kaart
 * Duits paspoort nummer
-* Rijbewijs nummer van het Duitse stuur programma
+* Nummer van de Duitse belasting-ID
+* Omzetbelasting nummer van toegevoegde Duitse waarde
 
 Griekenland 
 * Sofi-nummer van het Grieken land
+* Grieken land belasting identificatienummer
 
 Hongkong
 * HKID-nummer (Hong Kong Identity Card)
+
+Hongarije
+* Nationaal identificatie nummer Hongarije
+* BTW-identificatie nummer Hongarije
+* Omzetbelasting nummer toegevoegde waarde
 
 India
 * Permanent account nummer India (PAN)
@@ -123,23 +154,47 @@ Israël
 
 Italië
 * Licentie-ID van het Italië-stuur programma
+* Italië-fiscale code
+* Omzetbelasting nummer voor toegevoegde waarde van Italië
 
 Japan
+* Japans bankrekening nummer
+* Rijbewijs nummer van het Japanse stuur programma
+* Japans mijn nummer persoonlijk
+* Japanse mijn faxnummer
 * Japan Resident registratie nummer
 * Japans nummer van verblijfs kaart
-* Rijbewijs nummer van het Japanse stuur programma
-* Sofi-nummer (SIN)
+* Japans sociaal verzekerings nummer (SIN)
 * Japans paspoort nummer
-* Japans bankrekening nummer
+
+Letland
+* Persoonlijke code voor Letland
+
+Litouwen
+* Persoonlijke code van Litouwen
+
+Luxemburg
+* Luxemburgs nationaal identificatie nummer (natuurlijke personen)
+* Luxemburgs nationaal identificatie nummer (niet-natuurlijke personen)
 
 Maleisië
 * Nummer van de Maleisië-identiteits kaart
 
+Malta
+* Malta-ID-kaart nummer
+* Identificatie nummer Malta-belasting
+
 Nederland
 * BSN-nummer (Nederland burger)
+* Id-nummer Nederlandse belasting
+* Omzetbelasting nummer voor toegevoegde waarde
 
 Nieuw-Zeeland
+* Bankrekening nummer Nieuw-Zeeland
+* Rijbewijs nummer van Nieuw-Zeeland
+* Nieuw-Zeeland land/-omzet nummer
 * Nieuw-Zeelandse ministerie van status nummer
+* Nieuw-Zeelandse sofinummer
 
 Noorwegen
 * Noor wegen-identiteits nummer
@@ -150,16 +205,33 @@ Filipijnen
 Polen
 * Polen-identiteits kaart
 * Polen National ID (PESEL)
-* Polen Pass Port
+* Polen Pass Port-nummer
+* REGON nummer van Polen
+* Polen belasting identificatienummer
 
 Portugal 
 * Portugal burger kaartnummer
+* Portugal BTW-identificatie nummer
+
+Roemenië
+* Privé numerieke code van Roemenië (CNP)
+
+Rusland
+* Russisch Pass Port-nummer (binnenland)
+* Russisch Pass Port-nummer (internationaal)
 
 Saoedi-Arabië
 * Land-ID Saudi-Arabië
 
 Singapore
 * NRIC-nummer (National Registration ID) Singapore
+
+Slowakije 
+* Persoonlijk nummer van Slowakije
+
+Slovenië
+* Het BTW-identificatie nummer voor Slovenië
+* Het unieke hoofd Burgery-nummer van Slovenië
 
 Zuid-Afrika
 * Zuid-Afrika-identificatie nummer
@@ -168,11 +240,17 @@ Zuid-Korea
 * Geresident registratie nummer Zuid-Korea
 
 Spanje 
+* Spanje DNI
 * Sociaal-fiscaal nummer (SOFInummer) voor Spanje
+* Spanje belasting identificatienummer
 
 Zweden
 * Zweden nationale ID
 * Zweden Pass Port-nummer
+* Zweden-identificatie nummer
+
+Zwitserland
+* Sociaal-fiscaal nummer voor Zwitser land AHV
 
 Taiwan 
 * Taiwanese nationale ID
@@ -182,18 +260,25 @@ Taiwan
 Thailand
 * Identificatie code Thaise populatie
 
+Turkije
+* Onderliggend nationaal identificatie nummer
+
+Oekraïne
+* Oekraïne paspoort nummer (binnenland)
+* Oekraïne Pass Port-nummer (internationaal)
+
 Verenigd Koninkrijk
-* Pass Port-ID
 * Engelse Rijbewijs nummer
-* Engelse Nationaal verzekerings nummer (NINO)
-* Engelse National Health Service-nummer
 * Engelse Aantal kiezers
-* VS/VK Paspoort nummer
+* Engelse National Health Service (NHS)-nummer
+* Engelse Nationaal verzekerings nummer (NINO)
+* Engelse Paspoort nummer
+* Engelse Uniek belastingplichtige-referentie nummer
 
 Verenigde Staten
 * Amerikaans sociaal-fiscaal nummer (SSN)
 * Rijbewijs nummer van het Amerikaanse stuur programma
-* VS/VK Paspoort nummer
+* Amerikaans paspoort nummer
 * Amerikaans identificatie nummer voor de Amerikaanse belastingplichtige (ITIN)
-* DEA-nummer (medicijn Enforcement Agency)
+* DEA-nummer (U.S. medicijn Enforcement Agency)
 * Amerikaans bankrekening nummer

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 0ed0009bce18e2b0970b425c31d2f38cef387187
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008316"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007910"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Aanbevolen procedures voor Azure Cache voor Redis 
 Door deze aanbevolen procedures te volgen, kunt u de prestaties en het rendabele gebruik van uw Azure-cache voor redis-instantie maximaliseren.
@@ -55,7 +55,7 @@ Er zijn verschillende dingen die betrekking hebben op het gebruik van het geheug
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
- * [Asp.Net-sessie status provider](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
+ * [ASP.NET-sessie status provider](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
 ## <a name="when-is-it-safe-to-retry"></a>Wanneer is het veilig om het opnieuw te proberen?
@@ -73,13 +73,13 @@ Als u wilt testen hoe uw code werkt onder fout voorwaarden, kunt u overwegen de 
  * De client-VM die wordt gebruikt voor het testen moet zich **in dezelfde regio** bevinden als uw redis-cache-exemplaar.
  * **We raden u** aan om een DV2-VM-reeks te gebruiken voor uw client, omdat deze betere hardware heeft en de beste resultaten oplevert.
  * Zorg ervoor dat de client-VM die u gebruikt,*ten minste evenveel reken kracht en band breedte* heeft als de cache die wordt getest. 
- * **Schakel VRSS** in op de client computer als u zich in Windows bevindt.  [Zie hier voor meer informatie](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Voor beeld Power shell-script:
+ * **Schakel VRSS** in op de client computer als u zich in Windows bevindt.  [Zie hier voor meer informatie](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Voorbeeld PowerShell-script:
      >Power shell-ExecutionPolicy unrestricted Enable-NetAdapterRSS-name (Get-netadapter). Naam 
      
  * **Overweeg het gebruik van redis-exemplaren van een Premium-laag**.  Deze cache grootten hebben een betere netwerk latentie en door Voer omdat ze worden uitgevoerd op betere hardware voor zowel CPU als netwerk.
  
      > [!NOTE]
-     > Onze waargenomen prestatie resultaten worden [hier](cache-faq.md#azure-cache-for-redis-performance) voor uw referentie gepubliceerd.   Houd er ook rekening mee dat SSL/TLS enige overhead toevoegt, waardoor u mogelijk verschillende vertragingen en/of door Voer kunt krijgen als u transport versleuteling gebruikt.
+     > Onze waargenomen prestatie resultaten worden [hier](cache-planning-faq.md#azure-cache-for-redis-performance) voor uw referentie gepubliceerd.   Houd er ook rekening mee dat SSL/TLS enige overhead toevoegt, waardoor u mogelijk verschillende vertragingen en/of door Voer kunt krijgen als u transport versleuteling gebruikt.
  
 ### <a name="redis-benchmark-examples"></a>Voor beelden van redis-benchmarks
 **Installatie vooraf testen**: bereid het cache-exemplaar voor met de gegevens die zijn vereist voor de onderstaande opdrachten voor latentie en door voer.

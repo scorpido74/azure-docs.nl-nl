@@ -1,24 +1,22 @@
 ---
 title: Windows 7 virtuele machines Windows virtueel bureau blad (klassiek)-Azure
 description: Problemen oplossen voor virtuele Windows 7-machines (Vm's) in een Windows-omgeving (virtueel bureau blad).
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e7f433668c34fb5edc35889adcd604023202ada4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d71b4472b16372927db56b20eca4fcbde0cc625
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286339"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005411"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Problemen oplossen met virtuele machines van Windows 7 in het virtuele bureau blad van Windows (klassiek)
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 Gebruik dit artikel voor het oplossen van problemen die zich voordoen bij het configureren van de virtuele machines (Vm's) voor virtuele bureau blad-sessies van Windows.
 
@@ -47,7 +45,7 @@ U kunt deze fout oplossen door de gebruiker toe te voegen aan de Extern bureaubl
 2. Selecteer de virtuele machine waarop u het fout bericht hebt gezien.
 3. Selecteer **een opdracht uitvoeren**.
 4. Voer de volgende opdracht uit met `<username>` vervangen door de naam van de gebruiker die u wilt toevoegen:
-   
+
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add
    ```

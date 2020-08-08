@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531368"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006635"
 ---
 # <a name="secure-a-daemon-application"></a>Een daemon-toepassing beveiligen
 
 De volgende hand leiding is voor achtergrond processen, timers en taken die worden gehost in een vertrouwde en beveiligde omgeving. Voor beelden zijn onder andere Azure-webtaken, Azure function-apps, Windows-Services en andere betrouw bare achtergrond Services.
 
 > [!Tip]
-> Micro soft adviseert de implementatie van Azure Active Directory (Azure AD) en op rollen gebaseerd toegangs beheer (RBAC) voor productie toepassingen. Zie [Azure Maps-verificatie](./azure-maps-authentication.md)voor een overzicht van concepten.
+> Micro soft raadt aan om Azure Active Directory (Azure AD) en Azure RBAC (op rollen gebaseerd toegangs beheer) te implementeren voor productie toepassingen. Zie [Azure Maps-verificatie](./azure-maps-authentication.md)voor een overzicht van concepten.
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
@@ -46,7 +46,7 @@ De volgende stappen beschrijven dit proces:
 > [!Tip]
 > Als de app wordt gehost in een Azure-omgeving, moet u een beheerde identiteit implementeren om de kosten en complexiteit van het beheer van een geheim voor verificatie bij Azure Key Vault te verminderen. Raadpleeg de volgende Azure Key Vault- [zelf studie om verbinding te maken via een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app).
 
-De daemon-toepassing is verantwoordelijk voor het ophalen van de gedeelde sleutel uit een beveiligde opslag. Voor de implementatie met Azure Key Vault is verificatie via Azure AD vereist om toegang te krijgen tot het geheim. In plaats daarvan wordt u aangeraden om direct Azure AD RBAC-verificatie te Azure Maps als gevolg van de extra complexiteit en operationele vereisten voor het gebruik van gedeelde sleutel verificatie.
+De daemon-toepassing is verantwoordelijk voor het ophalen van de gedeelde sleutel uit een beveiligde opslag. Voor de implementatie met Azure Key Vault is verificatie via Azure AD vereist om toegang te krijgen tot het geheim. In plaats daarvan moedigen we directe Azure AD-verificatie aan Azure Maps als gevolg van de extra complexiteit en operationele vereisten voor het gebruik van gedeelde sleutel verificatie.
 
 > [!IMPORTANT]
 > Om het opnieuw genereren van sleutels te vereenvoudigen, raden we aan dat toepassingen één sleutel tegelijk gebruiken. Toepassingen kunnen vervolgens de niet-gebruikte sleutel opnieuw genereren en de nieuwe opnieuw gegenereerde sleutel implementeren in een beveiligd geheim archief, zoals Azure Key Vault.
@@ -109,7 +109,7 @@ Wanneer een niet-Azure-omgeving wordt uitgevoerd, zijn er geen beheerde identite
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Op rollen gebaseerde toegang verlenen voor de daemon-toepassing Azure Maps
 
-U verleent op *rollen gebaseerd toegangs beheer* (RBAC) door de gemaakte beheerde identiteit of de Service-Principal toe te wijzen aan een of meer Azure Maps rollen definities voor toegangs beheer. Als u de definities van Azure-functies wilt weer geven die beschikbaar zijn voor Azure Maps, gaat u naar **toegangs beheer (IAM)**. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*. Deze Azure Maps rollen zijn de rollen waaraan u toegang kunt verlenen.
+U verleent op *rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)* door de gemaakte beheerde identiteit of de Service-Principal toe te wijzen aan een of meer Azure Maps roldefinities. Als u de definities van Azure-functies wilt weer geven die beschikbaar zijn voor Azure Maps, gaat u naar **toegangs beheer (IAM)**. Selecteer **rollen**en zoek vervolgens naar rollen die beginnen met *Azure Maps*. Deze Azure Maps rollen zijn de rollen waaraan u toegang kunt verlenen.
 
 > [!div class="mx-imgBorder"]
 > ![Beschik bare rollen weer geven](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
@@ -117,7 +117,7 @@ U verleent op *rollen gebaseerd toegangs beheer* (RBAC) door de gemaakte beheerd
 1. Ga naar uw **Azure Maps-account**. Selecteer **Toegangsbeheer (IAM)** > **Roltoewijzingen**.
 
     > [!div class="mx-imgBorder"]
-    > ![RBAC toekennen](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Toegang verlenen met behulp van Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Voeg op het tabblad **roltoewijzingen** een roltoewijzing **toe** . 
     

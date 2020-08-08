@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 74308ae79b899a55db4682474e3dcd9dab26db98
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856939"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004878"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure-cache beheren voor redis met Azure PowerShell
 > [!div class="op_single_selector"]
@@ -141,14 +141,14 @@ De volgende tabel bevat eigenschappen en beschrijvingen voor veelgebruikte para 
 
 | Parameter | Beschrijving | Standaard |
 | --- | --- | --- |
-| Name |Naam van de cache | |
+| Naam |Naam van de cache | |
 | Locatie |Locatie van de cache | |
 | ResourceGroupName |Naam van de resource groep waarin de cache moet worden gemaakt | |
 | Grootte |De grootte van de cache. Geldige waarden zijn: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1 GB |
 | ShardCount |Het aantal Shards dat moet worden gemaakt bij het maken van een Premium-cache met clustering ingeschakeld. Geldige waarden zijn: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Hiermee geeft u de SKU van de cache op. Geldige waarden zijn: Basic, Standard, Premium |Standard |
 | RedisConfiguration |Hiermee geeft u de redis-configuratie-instellingen. Zie de volgende tabel met [RedisConfiguration-eigenschappen](#redisconfiguration-properties) voor meer informatie over elke instelling. | |
-| EnableNonSslPort |Hiermee wordt aangegeven of de niet-SSL-poort is ingeschakeld. |False |
+| EnableNonSslPort |Hiermee wordt aangegeven of de niet-SSL-poort is ingeschakeld. |Niet waar |
 | MaxMemoryPolicy |Deze para meter is afgeschaft: gebruik in plaats daarvan RedisConfiguration. | |
 | StaticIP |Bij het hosten van uw cache in een VNET, geeft u een uniek IP-adres op in het subnet voor de cache. Indien niet opgegeven, wordt er een gekozen uit het subnet. | |
 | Subnet |Wanneer u uw cache host in een VNET, geeft u de naam op van het subnet waarin de cache moet worden geïmplementeerd. | |
@@ -156,7 +156,7 @@ De volgende tabel bevat eigenschappen en beschrijvingen voor veelgebruikte para 
 | KeyType |Hiermee geeft u op welke toegangs sleutel opnieuw moet worden gegenereerd bij het vernieuwen van toegangs sleutels. Geldige waarden zijn: primair, secundair | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration-eigenschappen
-| Eigenschap | Description | Prijscategorieën |
+| Eigenschap | Beschrijving | Prijscategorieën |
 | --- | --- | --- |
 | RDB-back-up-ingeschakeld |Of [redis-gegevens persistentie](cache-how-to-premium-persistence.md) is ingeschakeld |Alleen Premium |
 | RDB-Storage-verbindings reeks |Het connection string naar het opslag account voor [redis-gegevens persistentie](cache-how-to-premium-persistence.md) |Alleen Premium |
@@ -655,7 +655,7 @@ In het volgende voor beeld wordt de naam van de cache `myCache` verwijderd.
 U kunt gegevens importeren in een Azure-cache voor redis-exemplaar met behulp van de- `Import-AzRedisCache` cmdlet.
 
 > [!IMPORTANT]
-> Import/export is alleen beschikbaar voor [Premium-laag](cache-premium-tier-intro.md) caches. Zie [gegevens importeren en exporteren in azure-cache voor redis](cache-how-to-import-export-data.md)voor meer informatie over importeren/exporteren.
+> Import/export is alleen beschikbaar voor [Premium-laag](cache-overview.md#service-tiers) caches. Zie [gegevens importeren en exporteren in azure-cache voor redis](cache-how-to-import-export-data.md)voor meer informatie over importeren/exporteren.
 > 
 > 
 
@@ -719,7 +719,7 @@ Met de volgende opdracht worden gegevens uit de blob die is opgegeven door de SA
 U kunt gegevens exporteren vanuit een Azure-cache voor een redis-exemplaar met behulp van de- `Export-AzRedisCache` cmdlet.
 
 > [!IMPORTANT]
-> Import/export is alleen beschikbaar voor [Premium-laag](cache-premium-tier-intro.md) caches. Zie [gegevens importeren en exporteren in azure-cache voor redis](cache-how-to-import-export-data.md)voor meer informatie over importeren/exporteren.
+> Import/export is alleen beschikbaar voor [Premium-laag](cache-overview.md#service-tiers) caches. Zie [gegevens importeren en exporteren in azure-cache voor redis](cache-how-to-import-export-data.md)voor meer informatie over importeren/exporteren.
 > 
 > 
 
@@ -784,7 +784,7 @@ Met de volgende opdracht worden gegevens uit een Azure-cache voor redis-exemplaa
 U kunt uw Azure-cache opnieuw opstarten voor redis-exemplaar met behulp van de- `Reset-AzRedisCache` cmdlet.
 
 > [!IMPORTANT]
-> Opnieuw opstarten is alleen beschikbaar voor [Premium-laag](cache-premium-tier-intro.md) caches. Zie [cache Administration-reboot (](cache-administration.md#reboot)Engelstalig) voor meer informatie over het opnieuw opstarten van de cache.
+> Opnieuw opstarten is alleen beschikbaar voor [Premium-laag](cache-overview.md#service-tiers) caches. Zie [cache Administration-reboot (](cache-administration.md#reboot)Engelstalig) voor meer informatie over het opnieuw opstarten van de cache.
 > 
 > 
 

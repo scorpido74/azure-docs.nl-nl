@@ -1,24 +1,22 @@
 ---
 title: Schaal sessie hosts Azure Automation virtueel bureau blad van Windows (klassiek)-Azure
 description: Het automatisch schalen van hosts met Windows Virtual Desktop (klassieke) sessies met Azure Automation.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4c09ce867a7d4dbc11c42485c39c40bd427fa451
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4092b9d5ee7453533561f5921781fee4d1823eb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288645"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005581"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Windows Virtual Desktop (klassieke) sessie-hosts schalen met behulp van Azure Automation
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op het virtuele bureau blad van Windows (klassiek), dat geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
+>Deze inhoud is van toepassing op Windows Virtual Desktop (classic), dat geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 U kunt de totale kosten voor het implementeren van virtuele Windows-Bureau bladen verlagen door uw virtuele machines (Vm's) te schalen. Dit betekent dat de virtuele machines van de host worden afgesloten en opnieuw worden toegewezen tijdens gebruiks uren en vervolgens weer worden ingeschakeld en opnieuw worden toegewezen tijdens piek uren.
 
@@ -94,7 +92,7 @@ Eerst hebt u een Azure Automation-account nodig om het Power shell-runbook uit t
     ```powershell
     Login-AzAccount
     ```
-    
+
     >[!NOTE]
     >Uw account moet bijdrage rechten hebben op het Azure-abonnement waar u het hulp programma voor schalen wilt implementeren.
 
@@ -119,7 +117,7 @@ Eerst hebt u een Azure Automation-account nodig om het Power shell-runbook uit t
          "Location"              = "<Azure_region_for_deployment>"
          "WorkspaceName"         = "<Log_analytics_workspace_name>"       # Optional. If specified, Log Analytics will be used to configure the custom log table that the runbook PowerShell script can send logs to
     }
-    
+
     .\CreateOrUpdateAzAutoAccount.ps1 @Params
     ```
 
@@ -208,23 +206,23 @@ Ten slotte moet u de Azure Logic-app maken en een uitvoerings schema instellen v
     # Set-RdsContext -TenantGroupName "<Tenant_Group_Name>"
     ```
 
-5. Voer het volgende Power shell-script uit om de Azure Logic-app en het uitvoerings schema voor uw hostgroep te maken. 
+5. Voer het volgende Power shell-script uit om de Azure Logic-app en het uitvoerings schema voor uw hostgroep te maken.
 
     >[!NOTE]
     >U moet dit script uitvoeren voor elke hostgroep die u automatisch wilt schalen, maar u hebt slechts één Azure Automation-account nodig.
 
     ```powershell
     $AADTenantId = (Get-AzContext).Tenant.Id
-    
+
     $AzSubscription = Get-AzSubscription | Out-GridView -OutputMode:Single -Title "Select your Azure Subscription"
     Select-AzSubscription -Subscription $AzSubscription.Id
-    
+
     $ResourceGroup = Get-AzResourceGroup | Out-GridView -OutputMode:Single -Title "Select the resource group for the new Azure Logic App"
-    
+
     $RDBrokerURL = (Get-RdsContext).DeploymentUrl
     $WVDTenant = Get-RdsTenant | Out-GridView -OutputMode:Single -Title "Select your WVD tenant"
     $WVDHostPool = Get-RdsHostPool -TenantName $WVDTenant.TenantName | Out-GridView -OutputMode:Single -Title "Select the host pool you'd like to scale"
-    
+
     $LogAnalyticsWorkspaceId = Read-Host -Prompt "If you want to use Log Analytics, enter the Log Analytics Workspace ID returned by when you created the Azure Automation account, otherwise leave it blank"
     $LogAnalyticsPrimaryKey = Read-Host -Prompt "If you want to use Log Analytics, enter the Log Analytics Primary Key returned by when you created the Azure Automation account, otherwise leave it blank"
     $RecurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
@@ -237,12 +235,12 @@ Ten slotte moet u de Azure Logic-app maken en een uitvoerings schema instellen v
     $LimitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, any session host VM that has user sessions, will be left untouched"
     $LogOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
     $LogOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-    
+
     $AutoAccount = Get-AzAutomationAccount | Out-GridView -OutputMode:Single -Title "Select the Azure Automation account"
     $AutoAccountConnection = Get-AzAutomationConnection -ResourceGroupName $AutoAccount.ResourceGroupName -AutomationAccountName $AutoAccount.AutomationAccountName | Out-GridView -OutputMode:Single -Title "Select the Azure RunAs connection asset"
-    
+
     $WebhookURIAutoVar = Get-AzAutomationVariable -Name 'WebhookURI' -ResourceGroupName $AutoAccount.ResourceGroupName -AutomationAccountName $AutoAccount.AutomationAccountName
-    
+
     $Params = @{
          "AADTenantId"                   = $AADTenantId                             # Optional. If not specified, it will use the current Azure context
          "SubscriptionID"                = $AzSubscription.Id                       # Optional. If not specified, it will use the current Azure context
@@ -267,7 +265,7 @@ Ten slotte moet u de Azure Logic-app maken en een uitvoerings schema instellen v
          "LogOffMessageBody"             = $LogOffMessageBody                       # Optional. Default: "Your session will be logged off. Please save and close everything."
          "WebhookURI"                    = $WebhookURIAutoVar.Value
     }
-    
+
     .\CreateOrUpdateAzLogicApp.ps1 @Params
     ```
 

@@ -8,16 +8,17 @@ ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483921"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008522"
 ---
-# <a name="export-iot-data-to-destinations-in-azure"></a>IoT-gegevens exporteren naar bestemmingen in azure
+# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>IoT-gegevens exporteren naar bestemmingen in azure met behulp van gegevens export (verouderd)
 
-*Dit onderwerp is van toepassing op beheerders.*
+> [!Note]
+> Er is een nieuwe manier om gegevens te exporteren in IoT Central. U kunt de nieuwe gegevens export gebruiken om de geëxporteerde gegevens te filteren en te verrijken, en deze te exporteren naar nieuwe doelen als webhook-eind punten. [Hier](./howto-use-data-export.md)vindt u meer informatie over de nieuwe gegevens export. Zie voor meer informatie over de verschillen tussen de nieuwe gegevens export en verouderde gegevens export de [vergelijkings tabel](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export).
 
 In dit artikel wordt beschreven hoe u de functie voor gegevens export kunt gebruiken in azure IoT Central. Met deze functie kunt u uw gegevens continu exporteren naar **azure Event hubs**, **Azure service bus**of **Azure Blob Storage** -exemplaren. Gegevens export maakt gebruik van de JSON-indeling en kan informatie over telemetrie, apparaatgegevens en apparaatinstellingen bevatten. De geëxporteerde gegevens gebruiken voor:
 
@@ -295,7 +296,7 @@ Deze moment opname is een voorbeeld bericht waarin de gegevens van apparaten en 
 }
 ```
 
-## <a name="device-templates"></a>Apparaatinstellingen
+## <a name="device-templates"></a>Apparaatsjablonen
 
 Elk bericht of momentopname record vertegenwoordigt een of meer wijzigingen aan een sjabloon van een gepubliceerd apparaat sinds het laatste geëxporteerde bericht. De informatie die in elk bericht of record wordt verzonden, omvat:
 

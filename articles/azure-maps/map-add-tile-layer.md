@@ -1,6 +1,6 @@
 ---
 title: Een laag voor een tegel aan een kaart toevoegen | Microsoft Azure kaarten
-description: In dit artikel wordt beschreven hoe u een tegel laag kunt bedekken op een kaart met behulp van de Microsoft Azure Maps Web SDK. Met de tegel lagen kunt u afbeeldingen op een kaart weer geven.
+description: Meer informatie over het opleggen van installatie kopieën op kaarten. Bekijk een voor beeld waarin de Web-SDK van Azure Maps wordt gebruikt voor het toevoegen van een tegel laag met een weers radar-overlay aan een kaart.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: bb277a3413a21011b537b47bdc8fc1979c8e81c5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c96916c029c9c49ad7d4c493fed8859354508ebe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279556"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010171"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Een titellaag toevoegen aan een kaart
 

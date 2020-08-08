@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529106"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005020"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -174,7 +174,7 @@ Na enkele ogen blikken wordt de rol bij de geselecteerde scope toegewezen aan de
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>De Azure Cloud Shell-ervaring gebruiken
 
-In het volgende voor beeld wordt [AZ roltoewijzing Create](/cli/azure/role/assignment#az-role-assignment-create) gebruikt om de rol van de beheerder van de virtuele machine toe te wijzen aan de VM voor uw huidige Azure-gebruiker. De gebruikers naam van uw actieve Azure-account wordt verkregen met [AZ account show](/cli/azure/account#az-account-show)en de scope wordt ingesteld op de virtuele machine die in een vorige stap is gemaakt met [AZ VM show](/cli/azure/vm#az-vm-show). Het bereik kan ook worden toegewezen aan een resource groep of abonnement, en de normale machtigingen voor RBAC-overname zijn van toepassing. Zie [op rollen gebaseerde toegangs beheer](../../virtual-machines/linux/login-using-aad.md)voor meer informatie.
+In het volgende voor beeld wordt [AZ roltoewijzing Create](/cli/azure/role/assignment#az-role-assignment-create) gebruikt om de rol van de beheerder van de virtuele machine toe te wijzen aan de VM voor uw huidige Azure-gebruiker. De gebruikers naam van uw actieve Azure-account wordt verkregen met [AZ account show](/cli/azure/account#az-account-show)en de scope wordt ingesteld op de virtuele machine die in een vorige stap is gemaakt met [AZ VM show](/cli/azure/vm#az-vm-show). Het bereik kan ook worden toegewezen aan een resource groep of abonnement, en normale machtigingen voor Azure RBAC-overname zijn van toepassing. Zie [Aanmelden bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie](../../virtual-machines/linux/login-using-aad.md)voor meer informatie.
 
 ```   AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -189,11 +189,11 @@ az role assignment create \
 > [!NOTE]
 > Als uw AAD-domein en gebruikers naam domein voor aanmelding niet overeenkomen, moet u de object-ID van uw gebruikers account opgeven `--assignee-object-id` , niet alleen de gebruikers naam voor `--assignee` . U kunt de object-ID voor uw gebruikers account verkrijgen met [AZ AD-gebruikers lijst](/cli/azure/ad/user#az-ad-user-list).
 
-Raadpleeg de volgende artikelen voor meer informatie over het gebruik van RBAC om de toegang tot uw Azure-abonnements bronnen te beheren:
+Raadpleeg de volgende artikelen voor meer informatie over het gebruik van Azure RBAC voor het beheren van de toegang tot uw Azure-abonnements bronnen:
 
-- [Toegang tot Azure-resources beheren met RBAC en Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-- [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](/azure/role-based-access-control/role-assignments-portal)
-- [Beheer de toegang tot Azure-resources met RBAC en Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI](/azure/role-based-access-control/role-assignments-cli)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](/azure/role-based-access-control/role-assignments-portal)
+- [Voeg Azure-roltoewijzingen toe of verwijder deze met behulp van Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
 
 ## <a name="using-conditional-access"></a>Voorwaardelijke toegang gebruiken
 

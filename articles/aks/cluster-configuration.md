@@ -3,15 +3,15 @@ title: Cluster configuratie in azure Kubernetes Services (AKS)
 description: Meer informatie over het configureren van een cluster in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1329aa056e8d1db951e01555634cf1ea709608b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252008"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008794"
 ---
 # <a name="configure-an-aks-cluster"></a>Een AKS-cluster configureren
 
@@ -233,6 +233,67 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 
 Als u reguliere gen1-knooppunt groepen wilt maken, kunt u dit doen door de aangepaste tag weg te laten `--aks-custom-headers` .
 
+
+## <a name="ephemeral-os-preview"></a>Kortstondige OS (preview-versie)
+
+De besturingssysteem schijf voor een virtuele machine van Azure wordt standaard automatisch gerepliceerd naar Azure Storage om gegevens verlies te voor komen, omdat de VM moet worden verplaatst naar een andere host. Omdat containers echter niet zijn ontworpen om de lokale status persistent te maken, biedt dit gedrag een beperkte waarde bij een aantal nadelen, waaronder het langzamer inrichten van knoop punten en een lagere latentie bij lees/schrijf bewerkingen.
+
+Tijdelijke besturingssysteem schijven worden daarentegen alleen op de hostcomputer opgeslagen, net als een tijdelijke schijf. Dit biedt een lagere latentie voor lezen/schrijven, met snellere knooppunt schaling en cluster upgrades.
+
+Net als de tijdelijke schijf wordt een tijdelijke besturingssysteem schijf opgenomen in de prijs van de virtuele machine, zodat u geen extra opslag kosten in rekening brengt.
+
+De `EnableEphemeralOSDiskPreview` functie registreren:
+
+```azurecli
+az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
+```
+
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
+```
+
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+Als u de AKS-preview CLI-extensie wilt installeren, gebruikt u de volgende Azure CLI-opdrachten:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+Als u de AKS-preview CLI-extensie wilt bijwerken, gebruikt u de volgende Azure CLI-opdrachten:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Kortstondige besturings systemen gebruiken in nieuwe clusters (preview-versie)
+
+Configureer het cluster voor het gebruik van tijdelijke besturingssysteem schijven wanneer het cluster wordt gemaakt. Gebruik de `--aks-custom-headers` markering om kortstondig besturings systeem in te stellen als het schijf type van het besturings systeem voor het nieuwe cluster.
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+Als u een normaal cluster wilt maken met behulp van besturingssysteem schijven die zijn gekoppeld aan het netwerk, kunt u dit doen door de aangepaste code weg te laten `--aks-custom-headers` . U kunt er ook voor kiezen om meer tijdelijke OS-knooppunt groepen toe te voegen aan de hand van hieronder.
+
+### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Kortstondige besturings systeem op bestaande clusters gebruiken (preview-versie)
+Configureer een nieuwe knooppunt groep om tijdelijke besturingssysteem schijven te gebruiken. Gebruik de `--aks-custom-headers` vlag om in te stellen als het schijf type van het besturings systeem voor die knooppunt groep.
+
+```azure-cli
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+> [!IMPORTANT]
+> Met het tijdelijke besturings systeem kunt u installatie kopieën van VM'S en instanties implementeren tot aan de grootte van de VM-cache. In het geval van AKS gebruikt de standaard schijf configuratie van het knoop punt 100GiB, wat betekent dat u een VM-grootte nodig hebt die een cache heeft die groter is dan 100 GiB. De standaard Standard_DS2_v2 heeft een cache grootte van 86 GiB, die niet groot genoeg is. Het Standard_DS3_v2 heeft een cache grootte van 172 GiB, die groot genoeg is. U kunt ook de standaard grootte van de besturingssysteem schijf verminderen met behulp van `--node-osdisk-size` . De minimale grootte voor AKS-installatie kopieën is 30GiB. 
+
+Als u knooppunt groepen met door het netwerk gekoppelde besturingssysteem schijven wilt maken, kunt u dit doen door de aangepaste code weg te laten `--aks-custom-headers` .
+
 ## <a name="custom-resource-group-name"></a>Aangepaste naam van resource groep
 
 Wanneer u een Azure Kubernetes-service cluster in azure implementeert, wordt er een tweede resource groep voor de worker-knoop punten gemaakt. AKS krijgt standaard de naam van de resource groep `MC_resourcegroupname_clustername_location` , maar u kunt ook uw eigen naam opgeven.
@@ -259,6 +320,7 @@ Houd er bij het werken met de knooppunt resource groep voor dat u niet:
 - Zie [een Azure Kubernetes service-cluster (AKS) bijwerken](upgrade-cluster.md) voor meer informatie over het upgraden van uw cluster naar de nieuwste versie van Kubernetes.
 - Meer informatie over [ `containerd` en Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - Raadpleeg de lijst met [Veelgestelde vragen over AKS](faq.md) om antwoorden te vinden op enkele veelgestelde vragen over AKS.
+- Meer informatie over [tijdelijke OS-schijven](../virtual-machines/ephemeral-os-disks.md).
 
 
 <!-- LINKS - internal -->

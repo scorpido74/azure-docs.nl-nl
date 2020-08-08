@@ -3,15 +3,15 @@ title: Een toepassing verifiëren voor toegang tot Azure Service Bus entiteiten
 description: Dit artikel bevat informatie over het verifiëren van een toepassing met Azure Active Directory om toegang te krijgen tot Azure Service Bus entiteiten (wacht rijen, onderwerpen, enzovoort)
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: f5142e59e1711d9bf63a7badc2d0947fd86f49f4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1d18772dfa9cf444dc55d5e4cef6f31dd6c0d669
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835966"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006261"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Een toepassing met Azure Active Directory voor toegang tot Azure Service Bus entiteiten verifiëren en autoriseren
-Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor het Service Bus van entiteiten (wacht rijen, onderwerpen, abonnementen of filters). Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
+Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor het Service Bus van entiteiten (wacht rijen, onderwerpen, abonnementen of filters). Met Azure AD kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om machtigingen te verlenen aan een beveiligingsprincipal, wat een gebruiker, groep of toepassings service-principal kan zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
 
 ## <a name="overview"></a>Overzicht
 Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot een Service Bus entiteit, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
@@ -27,12 +27,12 @@ Systeem eigen toepassingen en webtoepassingen die aanvragen indienen bij Service
 
 
 ## <a name="assigning-azure-roles-for-access-rights"></a>Azure-rollen toewijzen voor toegangs rechten
-Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [toegangs beheer op basis van rollen (Azure RBAC)](../role-based-access-control/overview.md). Azure Service Bus definieert een set ingebouwde rollen van Azure die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot Service Bus entiteiten, en u kunt ook aangepaste rollen definiëren voor toegang tot de gegevens.
+Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [Azure RBAC](../role-based-access-control/overview.md). Azure Service Bus definieert een set ingebouwde rollen van Azure die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot Service Bus entiteiten, en u kunt ook aangepaste rollen definiëren voor toegang tot de gegevens.
 
 Wanneer een Azure-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep of de Service Bus naam ruimte. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
 ## <a name="azure-built-in-roles-for-azure-service-bus"></a>Ingebouwde rollen van Azure voor Azure Service Bus
-Voor Azure Service Bus is het beheer van naam ruimten en alle gerelateerde resources via de Azure Portal en de Azure Resource Management-API al beveiligd met behulp van het RBAC-model ( *op rollen gebaseerd toegangs beheer* ). Azure biedt de onderstaande ingebouwde Azure-rollen voor het verlenen van toegang tot een Service Bus naam ruimte:
+Voor Azure Service Bus is het beheer van naam ruimten en alle gerelateerde resources via de Azure Portal en de Azure Resource Management-API al beveiligd met behulp van het Azure RBAC-model. Azure biedt de onderstaande ingebouwde Azure-rollen voor het verlenen van toegang tot een Service Bus naam ruimte:
 
 - [Azure Service Bus gegevens eigenaar](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): Hiermee wordt gegevens toegang tot Service Bus naam ruimte en de entiteiten (wacht rijen, onderwerpen, abonnementen en filters) ingeschakeld
 - [Azure Service Bus gegevens afzender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): gebruik deze rol om toegang te geven tot Service Bus naam ruimte en de entiteiten.
@@ -55,7 +55,7 @@ Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijp
 
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-rollen toewijzen met behulp van de Azure Portal  
-Raadpleeg [dit artikel](..//role-based-access-control/role-assignments-portal.md)voor meer informatie over het beheren van de toegang tot Azure-resources met RBAC en de Azure Portal. 
+Raadpleeg [dit artikel](..//role-based-access-control/role-assignments-portal.md)voor meer informatie over het beheren van de toegang tot Azure-resources met behulp van Azure RBAC en de Azure Portal. 
 
 Nadat u het juiste bereik voor een roltoewijzing hebt bepaald, navigeert u naar die resource in de Azure Portal. Geef de instellingen voor toegangs beheer (IAM) voor de resource weer en volg deze instructies voor het beheren van roltoewijzingen:
 
@@ -150,16 +150,16 @@ Wanneer u de console toepassing uitvoert, wordt u gevraagd een scenario te selec
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [Wat is Azure Role-based Access Control (Azure RBAC)](../role-based-access-control/overview.md)? voor meer informatie over RBAC.
+- Zie [Wat is Azure-op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md)? voor meer informatie over Azure RBAC.
 - Zie de volgende artikelen voor meer informatie over het toewijzen en beheren van Azure-roltoewijzingen met Azure PowerShell, Azure CLI of de REST API:
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure CLI](../role-based-access-control/role-assignments-cli.md)
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met de REST API](../role-based-access-control/role-assignments-rest.md)
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure Resource Manager sjablonen](../role-based-access-control/role-assignments-template.md)
+    - [Azure-roltoewijzingen toevoegen of verwijderen met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
+    - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI](../role-based-access-control/role-assignments-cli.md)
+    - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API](../role-based-access-control/role-assignments-rest.md)
+    - [Azure-roltoewijzingen toevoegen of verwijderen met Azure Resource Manager sjablonen](../role-based-access-control/role-assignments-template.md)
 
 Zie de volgende onderwerpen voor meer informatie over de Service Bus-berichtenservice
 
-- [Service Bus RBAC-voor beelden](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
+- [Voor beelden van Azure RBAC Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
 - [Service Bus-wachtrijen, -onderwerpen en -abonnementen](service-bus-queues-topics-subscriptions.md)
 - [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)
 - [Service Bus-onderwerpen en -abonnementen gebruiken](service-bus-dotnet-how-to-use-topics-subscriptions.md)

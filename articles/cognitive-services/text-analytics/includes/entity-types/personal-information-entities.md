@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/30/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: dd7a8b94aefbf389afef30b327ffaa367a30dd51
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2349c92fb74b546eaa929752f3d2343b9c97e6d1
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108487"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010909"
 ---
 > [!NOTE]
 > `PHI`Gebruik de `domain=phi` para meter en model versie of later om te detecteren (beveiligde status informatie) `2020-04-01` .
@@ -22,32 +22,30 @@ ms.locfileid: "86108487"
  
 De volgende entiteits categorieën worden geretourneerd bij het verzenden van aanvragen naar het `/v3.1-preview.1/entities/recognition/pii` eind punt.
 
-| Categorie   | Subcategory | Description                          | Model versie starten | Notities |
+| Categorie   | Subcategorie | Beschrijving                          | Model versie starten | Opmerkingen |
 |------------|-------------|--------------------------------------|------------------------|---|
 | Person     | N.v.t.         | Namen van personen.  | `2019-10-01`  | Ook geretourneerd met `domain=phi` . |
 | PersonType | N.v.t.         | Taak typen of-rollen die door een persoon worden beheerd. | `2020-02-01` | |
 | PhoneNumber | N.v.t. | Telefoon nummers (alleen telefoon nummers voor VS en EU). | `2019-10-01` | Ook geretourneerd met`domain=phi` |
 |Organisatie  | N.v.t. | Bedrijven, politieke groepen, muziek banden, sport clubs, overheids instanties en open bare organisaties.  | `2019-10-01` | Nationale en religions zijn niet opgenomen in dit entiteits type.  |
-|Organisatie | Medisch | Medische bedrijven en groepen. | `2020-04-01` | Ook geretourneerd met `domain=phi` . |
-|Organisatie | Beurs | Voorraad wisselkoers groepen. | `2020-04-01` | Ook geretourneerd met `domain=phi` . |
-| Organisatie | Sporten | Sport organisaties. | `2020-04-01` | Ook geretourneerd met `domain=phi` . |
+|Organisatie | Medisch | Medische bedrijven en groepen. | `2020-04-01` |  |
+|Organisatie | Beurs | Voorraad wisselkoers groepen. | `2020-04-01` |  |
+| Organisatie | Sporten | Sport organisaties. | `2020-04-01` |  |
 | Adres | N.v.t. | Volledige mailing adressen.  | `2020-04-01` | Ook geretourneerd met `domain=phi` . |
 | EU GPS-coördinaten | N.v.t. | GPS-coördinaten voor locaties binnen de Europese Unie.  | `2019-10-01` |  |
 | E-mail | N.v.t. | E-mail adressen. | `2019-10-01` | Ook geretourneerd met `domain=phi` .   |
 | URL | N.v.t. | Url's naar websites. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
-| IP | N.v.t. | IP-adressen van het netwerk. | `2019-10-01` | |
+| IP | N.v.t. | IP-adressen van het netwerk. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | DateTime | N.v.t. | Datums en tijden van de dag. | `2019-10-01` |  | 
-| DateTime | Datum | Kalender datums. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
+| DateTime | Date | Kalender datums. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | Aantal | N.v.t. | Cijfers en numerieke aantallen. | `2019-10-01` |  |
-| Aantal | Leeftijd | Leeftijd. | `2019-10-01` | | |
-| Internationale classificatie van ziekten (ICD-9-CM) | N.v.t. | Entiteiten met betrekking tot de internationale classificatie van ziekten, negende revisie.   | `2020-04-01` | |
-| Internationale classificatie van ziekten (ICD-10-CM) | N.v.t. | Entiteiten met betrekking tot de internationale classificatie van ziekten, tiende revisie.    | `2020-04-01` | |
+| Aantal | Ouderdom | Leeftijd. | `2019-10-01` | | |
 
 ## <a name="azure-information"></a>Azure-gegevens
 
 Deze entiteits categorie bevat Identificeer bare Azure-informatie, inclusief verificatie gegevens en verbindings reeksen. Beschikbaar vanaf model versie `2019-10-01` . Niet geretourneerd met de `domain=phi` para meter.
 
-| Subcategory                           | Description                                                                 |
+| Subcategorie                           | Beschrijving                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Verificatie sleutel voor Azure DocumentDB             | Autorisatie sleutel voor een Azure DocumentDB-server.                           |
 | Verbindings reeks voor de Azure IAAS-data base en de Azure SQL-verbindings reeks | Verbindings reeks voor een Azure Infrastructure as a service-data base (IaaS) en SQL connection string. |

@@ -3,21 +3,19 @@ title: Veelvoorkomende implementatiefouten oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost wanneer u resources implementeert in azure met behulp van Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: dad80cf4230c3c6b4d7d97b21d155f6e755c2ab9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/07/2020
+ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446598"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008165"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten met Azure-implementatie oplossen met Azure Resource Manager
 
 In dit artikel worden enkele veelvoorkomende problemen met Azure-implementatie beschreven en vindt u informatie over het oplossen van de fouten. Zie [Foutcodes zoeken](#find-error-code) als u de foutcode voor uw implementatiefout niet kunt vinden.
 
 Als u op zoek bent naar informatie over een fout code en deze informatie niet in dit artikel wordt verstrekt, laat het ons dan weten. Onder aan deze pagina kunt u feedback geven. De feedback wordt bijgehouden met GitHub-problemen.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="error-codes"></a>Foutcodes
 
@@ -76,6 +74,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | StorageAccountAlreadyTaken | Geef een unieke naam op voor het opslagaccount. | [Naam van opslag account oplossen](error-storage-account-name.md) |
 | StorageAccountNotFound | Controleer het abonnement, de resource groep en de naam van het opslag account dat u wilt gebruiken. | |
 | SubnetsNotInSameVnet | Een virtuele machine kan slechts één virtueel netwerk hebben. Zorg er bij het implementeren van verschillende Nic's voor dat deze deel uitmaken van hetzelfde virtuele netwerk. | [Meerdere Nic's](../../virtual-machines/windows/multiple-nics.md) |
+| SubscriptionNotFound | Er kan geen toegang worden verkregen tot een opgegeven abonnement voor de implementatie. Het kan zijn dat de abonnements-ID onjuist is. de gebruiker die de sjabloon implementeert, beschikt niet over de vereiste machtigingen om te implementeren voor het abonnement of de abonnements-ID heeft de verkeerde indeling. Wanneer u geneste implementaties gebruikt voor het [implementeren van verschillende bereiken](cross-scope-deployment.md), geeft u de GUID voor het abonnement op. | |
 | SubscriptionNotRegistered | Bij het implementeren van netwerk bronnen wordt de resource provider micro soft. Network automatisch geregistreerd in het abonnement. Soms wordt de automatische registratie niet op tijd voltooid. U kunt deze fout voor komen door de resource provider micro soft. Network te registreren vóór de implementatie. | [Registratie oplossen](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Verwijder overbodige afhankelijkheden. | [Circulaire afhankelijkheden oplossen](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | Verminder het aantal resource groepen voor één implementatie. | [Implementatie op meerdere scopes](cross-scope-deployment.md) |

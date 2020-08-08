@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02661ff3c21fa27367cc9f2c399341ed2b86db3f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6448a2d449f86e93630d9d555e101291aa84c71e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809609"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003888"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>De verbonden machine agent installeren met behulp van Windows Power shell DSC
 
@@ -49,7 +49,7 @@ Met [Windows Power shell desired state Configuration](/powershell/scripting/dsc/
 
 De resources in deze module zijn ontworpen voor het beheren van de configuratie van de Azure Connected machine agent. Ook is een Power shell `AzureConnectedMachineAgent.ps1` -script gevonden dat in de map is opgenomen `AzureConnectedMachineDsc\examples` . Het maakt gebruik van community-bronnen voor het automatiseren van het downloaden en installeren en tot stand brengen van een verbinding met Azure Arc. Dit script voert soort gelijke stappen uit die worden beschreven in het artikel de [Azure Portal hybride computers verbinden met Azure](onboard-portal.md) .
 
-Als de machine moet communiceren via een proxy server naar de service, moet u nadat u de agent hebt geïnstalleerd, een opdracht uitvoeren die [hier](onboard-portal.md#configure-the-agent-proxy-setting)wordt beschreven. Hiermee stelt u de systeem omgevingsvariabele van de proxy server in `https_proxy` . In plaats van de opdracht hand matig uit te voeren, kunt u deze stap met DSC uitvoeren met behulp van de [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) -module.
+Als de machine moet communiceren via een proxy server naar de service, moet u nadat u de agent hebt geïnstalleerd, een opdracht uitvoeren die [hier](manage-agent.md#update-or-remove-proxy-settings)wordt beschreven. Hiermee stelt u de systeem omgevingsvariabele van de proxy server in `https_proxy` . In plaats van de opdracht hand matig uit te voeren, kunt u deze stap met DSC uitvoeren met behulp van de [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) -module.
 
 >[!NOTE]
 >Als u DSC wilt uitvoeren, moet u Windows configureren om externe Power shell-opdrachten te ontvangen, zelfs wanneer u een localhost-configuratie uitvoert. Als u uw omgeving eenvoudig op de juiste wijze wilt configureren, voert u de opdracht `Set-WsManQuickConfig -Force` uit in een Power shell-terminal met verhoogde bevoegdheden.

@@ -1,26 +1,24 @@
 ---
 title: Verbinding maken met het virtuele bureau blad van Windows vanuit Android-Azure
 description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de Android-client.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1d0aebffa5f3d27a77928c2a1c7461384bf99ce8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 79d88d218d04d00def19bdd2aa98f76d2f128de1
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387877"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007757"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>Verbinding maken met een virtueel bureau blad van Windows met de Android-client
 
 > Van toepassing op: Android 4,1 en hoger, Chromebooks met ChromeOS 53 of hoger.
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op virtueel bureau blad van Windows met Azure Resource Manager virtuele bureau blad-objecten van Windows. Zie [dit artikel](./virtual-desktop-fall-2019/connect-android-2019.md)als u Windows virtueel bureau blad (klassiek) gebruikt zonder Azure Resource Manager objecten.
+>Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/connect-android-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
 U kunt toegang krijgen tot virtuele bureau blad-resources van Windows vanaf uw Android-apparaat met onze Download bare client. U kunt de Android-client ook gebruiken op Chromebook-apparaten die ondersteuning bieden voor de Google Play Store. In deze hand leiding wordt uitgelegd hoe u de Android-client kunt instellen.
 
