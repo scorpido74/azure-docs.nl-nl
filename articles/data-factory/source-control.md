@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f5a8a87d4ac4936f25e7ece2a34b518c09a063
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674588"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037623"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -211,11 +211,11 @@ Er wordt een deel venster geopend waarin u bevestigt dat de publicatie vertakkin
 
 ### <a name="permissions"></a>Machtigingen
 
-Normaal gesp roken wilt u niet dat elk teamlid gemachtigd is om de fabriek bij te werken. De volgende machtigings instellingen worden aanbevolen:
+Normaal gesp roken wilt u niet dat elk teamlid gemachtigd is om de Data Factory bij te werken. De volgende machtigings instellingen worden aanbevolen:
 
-*   Alle team leden moeten lees machtigingen hebben voor de data factory.
-*   Alleen een select-set met personen mag publiceren naar de Factory. Hiervoor moeten ze beschikken over de Data Factory rol **Inzender** voor de resource groep waarin de fabriek zich bevindt. Zie [rollen en machtigingen voor Azure Data Factory](concepts-roles-permissions.md)voor meer informatie over machtigingen.
-   
+*   Alle team leden moeten lees machtigingen hebben voor de Data Factory.
+*   Alleen een select-set met personen mag publiceren naar het Data Factory. Hiervoor moeten ze beschikken over de Data Factory rol **Inzender** voor de **resource groep** die de Data Factory bevat. Zie [rollen en machtigingen voor Azure Data Factory](concepts-roles-permissions.md)voor meer informatie over machtigingen.
+
 Het is raadzaam om directe incheckers niet toe te staan voor de vertakking voor samen werking. Deze beperking kan helpen te voor komen dat er fouten optreden bij elke check-in om een pull-aanvraag beoordelings proces te door lopen dat wordt beschreven in [functie vertakkingen maken](source-control.md#creating-feature-branches).
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Wacht woorden van Azure Key Vault gebruiken

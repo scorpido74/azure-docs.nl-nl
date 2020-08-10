@@ -1,5 +1,5 @@
 ---
-title: SaaS-fulfillment-Api's in micro soft Commercial Marketplace
+title: SaaS-fulfillment-Api's in de micro soft Commercial Marketplace
 description: Een inleiding tot de fulfillment-Api's waarmee u uw SaaS-aanbiedingen in Microsoft AppSource en Azure Marketplace kunt integreren.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d9413deb99ce938429d05f7c6348c5914e7dd2b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e6381afb19018822f6f37171a5ca4b3d929b42e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304136"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037521"
 ---
-# <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>SaaS-fulfillment-Api's in micro soft Commercial Marketplace
+# <a name="saas-fulfillment-apis-in-the-microsoft-commercial-marketplace"></a>SaaS-fulfillment-Api's in de micro soft Commercial Marketplace
 
 Met de SaaS-fulfillment-Api's kunnen uitgevers, ook wel onafhankelijke software leveranciers (Isv's), hun SaaS-toepassingen publiceren en verkopen in Microsoft AppSource, Azure Marketplace en Azure Portal. Met deze Api's kunnen ISV-toepassingen deel nemen aan alle commerce ingeschakelde kanalen: directe, partner-LED (wederverkoper) en veld-LED.  Integreren met deze Api's is een vereiste voor het maken en publiceren van een transactable SaaS-aanbieding in het partner centrum.
 

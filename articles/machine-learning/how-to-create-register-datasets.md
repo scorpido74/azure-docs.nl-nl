@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 18eecdfeca58bc04c77dd0e39658a51fe56d0e68
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b2252a70aea6df755bb8b37c36b77b08db819ba9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513091"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037538"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -25,17 +25,15 @@ ms.locfileid: "87513091"
 
 In dit artikel leert u hoe u Azure Machine Learning gegevens sets maakt om toegang te krijgen tot gegevens voor uw lokale of externe experimenten. Zie het artikel over [beveiligde toegang](concept-data.md#data-workflow) als u wilt weten waar gegevens sets passen in de algehele werk stroom van Azure machine learning Data Access.
 
-Als u een gegevensset maakt, maakt u ook een verwijzing naar de locatie van de gegevensbron, samen met een kopie van de bijbehorende metagegevens. Omdat de gegevens zich op de bestaande locatie blijven, ontstaan er geen extra opslag kosten en wordt de integriteit van uw gegevens bronnen niet bedreigd. Ook gegevens sets zijn vertraagd-geëvalueerd, die hulp middelen in de snelheid van de werk stroom prestaties.
+Als u een gegevensset maakt, maakt u ook een verwijzing naar de locatie van de gegevensbron, samen met een kopie van de bijbehorende metagegevens. Omdat de gegevens zich op de bestaande locatie blijven, ontstaan er geen extra opslag kosten en wordt de integriteit van uw gegevens bronnen niet bedreigd. Ook gegevens sets worden geëvalueerd in vertraagd, die hulp middelen in de snelheid van werk stroom prestaties. U kunt gegevens sets maken op basis van gegevens opslag, open bare Url's en [Azure open gegevens sets](../open-datasets/how-to-create-dataset-from-open-dataset.md).
 
 Met Azure Machine Learning gegevens sets kunt u het volgende doen:
 
 * Bewaar één kopie van de gegevens in uw opslag, waarnaar wordt verwezen door gegevens sets.
 
-* Naadloos toegang krijgen tot gegevens tijdens model training zonder dat u zich zorgen hoeft te maken over verbindings reeksen of gegevens paden.
+* Naadloos toegang krijgen tot gegevens tijdens model training zonder dat u zich zorgen hoeft te maken over verbindings reeksen of gegevens paden. Meer [informatie over het trainen van gegevens sets](how-to-train-with-datasets.md).
 
 * Gegevens delen en samen werken met andere gebruikers.
-
-Meer [informatie over het trainen van gegevens sets](how-to-train-with-datasets.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,6 +44,12 @@ Als u gegevens sets wilt maken en gebruiken, hebt u het volgende nodig:
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
 
 * De [Azure machine learning SDK voor python is geïnstalleerd](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), waaronder het pakket met de azureml-gegevens sets.
+
+    * Maak een [Azure machine learning Compute-exemplaar](concept-compute-instance.md#managing-a-compute-instance), een volledig geconfigureerde en beheerde ontwikkel omgeving met daarin geïntegreerde notebooks en de SDK die al is geïnstalleerd.
+
+    **OF**
+
+    * Werk met uw eigen Jupyter-notebook en installeer de SDK zelf met [deze instructies](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 > [!NOTE]
 > Sommige dataset-klassen hebben afhankelijkheden van het pakket voor [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Dit is alleen compatibel met 64-bits python. Voor Linux-gebruikers worden deze klassen alleen ondersteund in de volgende distributies: Red Hat Enterprise Linux (7, 8), Ubuntu (14,04, 16,04, 18,04), Fedora (27, 28), Debian (8, 9) en CentOS (7).
@@ -162,8 +166,8 @@ titanic_ds.take(3).to_pandas_dataframe()
 |TabIndex|PassengerId|Dummy tekst|Pclass|Naam|Seks|Ouderdom|SibSp|Parch|Ticket|Tickets|Hand|Ingeschepend
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Niet waar|3|Braund, Mr. Owen Harris|man|22,0|1|0|A/5 21171|7,2500||S
-1|2|Waar|1|Cumings, Mevr. John Bradley (Florence Briggs th...|vrouwelijk|38,0|1|0|PC 17599|71,2833|C85|C
-2|3|Waar|3|Heikkinen, missen. Laina|vrouwelijk|26,0|0|0|STON/O2. 3101282|7,9250||S
+1|2|True|1|Cumings, Mevr. John Bradley (Florence Briggs th...|vrouwelijk|38,0|1|0|PC 17599|71,2833|C85|C
+2|3|True|3|Heikkinen, missen. Laina|vrouwelijk|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 ### <a name="create-a-dataset-from-pandas-dataframe"></a>Een gegevensset maken op basis van Pandas data frame
 
@@ -224,50 +228,15 @@ Een gegevensset maken in Studio:
 1. Selecteer **volgende** om het formulier **Details bevestigen** weer te geven. Controleer uw selecties en maak een optioneel gegevens profiel voor uw gegevensset. Meer informatie over [gegevensprofilering](how-to-use-automated-ml-for-ml-models.md#profile). 
 1. Selecteer **maken** om het maken van de gegevensset te volt ooien.
 
+## <a name="create-datasets-with-azure-open-datasets"></a>Gegevens sets maken met Azure open gegevens sets
+
+[Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) zijn samengestelde openbare gegevenssets die u kunt gebruiken om scenariospecifieke functies toe te voegen aan machine learning-oplossingen voor nauwkeurigere modellen. Gegevens sets bevatten informatie over openbaar domein voor weer, telling, feest dagen, open bare veiligheid en locatie die u helpen bij het trainen van machine learning modellen en verrijkende voorspellende oplossingen. Open gegevens sets bevinden zich in de Cloud op Microsoft Azure en zijn opgenomen in zowel de SDK als de Studio.
+
+Meer informatie over het maken [van Azure machine learning gegevens sets van Azure open gegevens sets](../open-datasets/how-to-create-dataset-from-open-dataset.md). 
+
 ## <a name="train-with-datasets"></a>Trainen met gegevenssets
 
 Gebruik uw gegevens sets in uw machine learning experimenten voor trainings ML-modellen. [Meer informatie over het trainen van gegevens sets](how-to-train-with-datasets.md)
-
-## <a name="create-datasets-with-azure-open-datasets"></a>Gegevens sets maken met Azure open gegevens sets
-
-[Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) zijn samengestelde openbare gegevenssets die u kunt gebruiken om scenariospecifieke functies toe te voegen aan machine learning-oplossingen voor nauwkeurigere modellen. Gegevens sets bevatten informatie over openbaar domein voor weer, telling, feest dagen, open bare veiligheid en locatie die u helpen bij het trainen van machine learning modellen en verrijkende voorspellende oplossingen. Open gegevens sets bevinden zich in de Cloud op Microsoft Azure en zijn opgenomen in de SDK en de gebruikers interface van de werk ruimte.
-
-### <a name="use-the-sdk"></a>De SDK gebruiken
-
-Als u gegevens sets met Azure open gegevens sets wilt maken vanuit de SDK, moet u ervoor zorgen dat u het pakket met hebt geïnstalleerd `pip install azureml-opendatasets` . Elke afzonderlijke gegevensset wordt vertegenwoordigd door een eigen klasse in de SDK en bepaalde klassen zijn beschikbaar als een `TabularDataset` , `FileDataset` of beide. Zie de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) voor een volledige lijst met klassen.
-
-U kunt bepaalde klassen ophalen als ofwel een `TabularDataset` of `FileDataset` , waarmee u de bestanden rechtstreeks kunt bewerken en/of downloaden. Andere klassen kunnen een gegevensset **alleen** ophalen met behulp van een van `get_tabular_dataset()` of- `get_file_dataset()` functies. In het volgende code voorbeeld ziet u enkele voor beelden van deze typen klassen.
-
-```python
-from azureml.opendatasets import MNIST
-
-# MNIST class can return either TabularDataset or FileDataset
-tabular_dataset = MNIST.get_tabular_dataset()
-file_dataset = MNIST.get_file_dataset()
-
-from azureml.opendatasets import Diabetes
-
-# Diabetes class can return ONLY TabularDataset and must be called from the static function
-diabetes_tabular = Diabetes.get_tabular_dataset()
-```
-
-Wanneer u een gegevensset registreert die is gemaakt op basis van geopende gegevens sets, worden er geen gegevens direct gedownload, maar worden de gegevens later weer gegeven wanneer u hierom wordt gevraagd (bijvoorbeeld tijdens training) vanuit een centrale opslag locatie.
-
-### <a name="use-the-ui"></a>De gebruikers interface gebruiken
-
-U kunt ook gegevens sets maken van de klassen Open gegevens sets via de gebruikers interface. Selecteer in uw werk ruimte het tabblad **gegevens sets** onder **assets**. Selecteer in de vervolg keuzelijst **gegevensset maken** de optie **uit geopende gegevens sets**.
-
-![Gegevensset openen met de gebruikers interface](./media/how-to-create-register-datasets/open-datasets-1.png)
-
-Selecteer een gegevensset door de tegel ervan te selecteren. (U hebt de mogelijkheid om te filteren met behulp van de zoek balk.) Selecteer **volgende**.
-
-![Gegevensset kiezen](./media/how-to-create-register-datasets/open-datasets-2.png)
-
-Kies een naam waaronder u de gegevensset wilt registreren en de gegevens eventueel kunt filteren met behulp van de beschik bare filters. In dit geval filtert u voor de gegevensset van de open bare feest dagen de periode tot één jaar en de land code naar alleen de Verenigde Staten. Selecteer **Maken**.
-
-![Gegevensset-para meters instellen en gegevensset maken](./media/how-to-create-register-datasets/open-datasets-3.png)
-
-De gegevensset is nu beschikbaar in uw werk ruimte onder **gegevens sets**. U kunt deze op dezelfde manier gebruiken als andere gegevens sets die u hebt gemaakt.
 
 ## <a name="version-datasets"></a>Versie gegevens sets
 

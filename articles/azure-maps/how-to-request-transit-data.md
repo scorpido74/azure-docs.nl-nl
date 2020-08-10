@@ -1,6 +1,6 @@
 ---
 title: Doorvoer gegevens aanvragen met Microsoft Azure Maps Mobility service
-description: In dit artikel leert u hoe u gegevens van open bare door Voer kunt aanvragen met behulp van de Microsoft Azure Maps Mobility service.
+description: Informatie over het gebruik van de Azure Maps Mobility-service om gegevens van open bare door voer te vragen, zoals metro gebied-Id's, door Voer gestopt, routes en route routes.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/22/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 38fc6f213cbd58fc829a6605bdbed7d25e99bb8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0aad822f0433a161e20c520296ce9fb9eb296f7e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319011"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037742"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Open bare doorvoer gegevens aanvragen met behulp van de Azure Maps Mobility-service
 

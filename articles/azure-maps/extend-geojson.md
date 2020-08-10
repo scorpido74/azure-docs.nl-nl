@@ -1,6 +1,6 @@
 ---
 title: Uitgebreide geojson-geometrie | Microsoft Azure kaarten
-description: In dit artikel leert u hoe Microsoft Azure Maps de geojson spec uitbreidt om bepaalde geometrieën weer te geven.
+description: Meer informatie over hoe Azure Maps de geojson-specificatie uitbreidt om extra geometrische vormen te bevatten. Voor beelden weer geven waarmee cirkels en rechthoeken worden ingesteld voor gebruik in kaarten.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687494"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037453"
 ---
 # <a name="extended-geojson-geometries"></a>Uitgebreide geojson-geometrie
 

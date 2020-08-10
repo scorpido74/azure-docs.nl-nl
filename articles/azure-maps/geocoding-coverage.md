@@ -1,6 +1,6 @@
 ---
 title: Geocoderings dekking in de zoek service van Microsoft Azure Maps
-description: In dit artikel vindt u meer informatie over Microsoft Azure toewijzing van geocoderings dekking in verschillende landen/regio's.
+description: Bekijk in welke regio's Azure Maps zoek functies worden beschreven. Geocoderings categorieën zijn onder andere adres punten, huis nummers, straat niveau, stads niveau en interessante punten.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/28/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386908"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037436"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocoderings dekking Azure Maps
 
@@ -87,7 +87,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Britse Maagdeneilanden                              |                 |                |              |      ✓     |          ✓         |
-|  Amerikaanse Maagdeneilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Amerikaanse Maagden eilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Azië en Stille Oceaan
 

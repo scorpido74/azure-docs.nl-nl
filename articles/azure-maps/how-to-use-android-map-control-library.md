@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met het besturings element Android map | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u aan de slag gaat met het besturings element Android map met behulp van de Microsoft Azure Mapss Android SDK.
+description: Vertrouwd raken met de Azure Maps Android SDK. Zie een project maken in Android Studio, de SDK installeren en een interactieve kaart maken.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f3a19a3e596d4d0162e92ac3f69c1333eea6aa41
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: fca1b48911ff2af977b8415ad1d9ec1cc2801623
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132157"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037759"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Aan de slag met Azure Maps Android SDK
 

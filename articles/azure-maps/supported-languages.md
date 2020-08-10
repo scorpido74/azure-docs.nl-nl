@@ -1,6 +1,6 @@
 ---
 title: Ondersteuning voor lokalisatie | Microsoft Azure kaarten
-description: In dit artikel vindt u meer informatie over ondersteunde talen voor de services in Microsoft Azure Maps.
+description: Zie welke regio's Azure Maps ondersteunt met services zoals kaarten, zoek functies, route ring, weer en verkeers incidenten. Meer informatie over het instellen van de weergave parameter.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0d3adc4bc49379a9ec3408ab76b913a096840dbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127890"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037691"
 ---
 # <a name="localization-support-in-azure-maps"></a>Ondersteuning voor lokalisatie in Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps ondersteunt diverse talen en weer gaven op basis van land/regio. In d
 Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
   
 
-| Id         | Naam                   |  Maps | Zoeken | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
+| Id         | Naam                   |  Kaarten | Zoeken | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -110,44 +110,44 @@ Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De vo
 > Na 1 augustus 2019 wordt met de **weer gave** -para meter de geretourneerde kaart inhoud voor de hierboven genoemde nieuwe regio's/landen gedefinieerd. Azure Maps **weer gave** -para meter (ook wel ' para meter gebruikers regio ' genoemd) is een ISO-3166-land code van twee letters waarmee de juiste toewijzingen voor dat land of deze regio worden weer gegeven waarmee wordt aangegeven welke set van geopolitieke inhoud wordt geretourneerd via Azure Maps Services, met inbegrip van randen en labels die op de kaart worden weer gegeven. 
 
 Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld zoals vereist voor de rest api's en de sdk's, die door uw services worden gebruikt.
->  
->
->  **Rest-Api's:**
->  
->  Zorg ervoor dat u de weer gave-para meter hebt ingesteld zoals vereist. Met de weer gave-para meter geeft u op welke set van geopolitieke, betwiste inhoud wordt geretourneerd via Azure Maps Services. 
->
->  Betrokken Azure Maps REST-services:
->    
->    * Kaart tegel ophalen
->    * Kaart afbeelding ophalen 
->    * Zoek actie ophalen
->    * Zoek POI ophalen
->    * Categorie Zoek POI ophalen
->    * Zoek in de buurt ophalen
->    * Zoek adres ophalen
->    * Gestructureerd Zoek adres ophalen
->    * Zoekadres omkeren
->    * Adres omgekeerde cross-straat ophalen
->    * Post-zoekopdracht binnen geometrie
->    * Batch Preview voor het zoeken naar een adres
->    * Voor beeld van het terugdraaiende batch bericht na zoeken
->    * Zoek opdracht op route plaatsen
->    * Voor beeld van zoeken in fuzzy batch
->
->    
->  **Sdk's**
->
->  Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld als vereist en u de meest recente versie van de Web-SDK en ANDROID-SDK hebt. Betrokken Sdk's:
->
->    * Azure Maps Web-SDK
->    * Azure Maps Android-SDK
+  
+
+### <a name="rest-apis"></a>Rest-Api's
+  
+Zorg ervoor dat u de weer gave-para meter hebt ingesteld zoals vereist. Met de weer gave-para meter geeft u op welke set van geopolitieke, betwiste inhoud wordt geretourneerd via Azure Maps Services. 
+
+Betrokken Azure Maps REST-services:
+    
+ * Kaart tegel ophalen
+ * Kaart afbeelding ophalen 
+ * Zoek actie ophalen
+ * Zoek POI ophalen
+ * Categorie Zoek POI ophalen
+ * Zoek in de buurt ophalen
+ * Zoek adres ophalen
+ * Gestructureerd Zoek adres ophalen
+ * Zoekadres omkeren
+ * Adres omgekeerde cross-straat ophalen
+ * Post-zoekopdracht binnen geometrie
+ * Batch Preview voor het zoeken naar een adres
+ * Voor beeld van het terugdraaiende batch bericht na zoeken
+ * Zoek opdracht op route plaatsen
+ * Voor beeld van zoeken in fuzzy batch
+
+ 
+### <a name="sdks"></a>SDK's
+
+Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld als vereist en u de meest recente versie van de Web-SDK en ANDROID-SDK hebt. Betrokken Sdk's:
+
+ * Azure Maps Web-SDK
+ * Azure Maps Android-SDK
 
 De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze niet in de aanvraag hebt gedefinieerd. Bepaal de locatie van uw gebruikers. Stel vervolgens de **weer gave** -para meter op de juiste manier in voor die locatie. U kunt ook ' weer gave = automatisch ' instellen, waardoor de kaart gegevens worden geretourneerd op basis van het IP-adres van de aanvraag.  De **weer gave** -para meter in azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetgeving, waaronder die wetten over de toewijzing van het land/de regio waar kaarten, afbeeldingen en andere gegevens en inhoud van derden waartoe u toegang wilt krijgen via Azure Maps beschikbaar worden gesteld.
 
 
 De volgende tabel bevat ondersteunde weer gaven.
 
-| Weergave         | Beschrijving                            |  Maps | Zoeken | JS-Map Control |
+| Weergave         | Beschrijving                            |  Kaarten | Zoeken | JS-Map Control |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Verenigde Arabische Emiraten (Arabische weer gave)    |   ✓   |        |     ✓          |
 | AR           | Argentinië (Argentijnse weer gave)           |   ✓   |    ✓   |     ✓          |
