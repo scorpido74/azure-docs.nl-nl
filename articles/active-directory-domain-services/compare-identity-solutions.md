@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555133"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489585"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Zelfbeheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken
 
@@ -47,7 +47,7 @@ Als u toepassingen en services hebt die toegang nodig hebben tot traditionele ve
 
 Met Azure AD DS worden de kernserviceonderdelen door Microsoft geïmplementeerd en onderhouden als een *beheerde* domeinervaring. U hoeft de AD DS-infrastructuur voor onderdelen zoals de VM's, het Windows Server-besturingssysteem of de domeincontrollers (DC's) niet te implementeren, te beheren, te patchen en te beveiligen.
 
-Azure AD DS biedt een kleinere subset met functies voor de traditioneel zelfbeheerde AD DS-omgeving, waardoor een deel van de complexiteit van het ontwerp en beheer wordt beperkt. Zo hoeven er geen AD-forests, domein, sites en replicatiekoppelingen te worden ontworpen en onderhouden. U kunt nog steeds [forestvertrouwensrelaties maken tussen Azure AD DS en on-premises omgevingen (momenteel in preview)][create-forest-trust].
+Azure AD DS biedt een kleinere subset met functies voor de traditioneel zelfbeheerde AD DS-omgeving, waardoor een deel van de complexiteit van het ontwerp en beheer wordt beperkt. Zo hoeven er geen AD-forests, domein, sites en replicatiekoppelingen te worden ontworpen en onderhouden. U kunt nog steeds [forestvertrouwensrelaties maken tussen Azure AD DS en on-premises omgevingen][create-forest-trust].
 
 Voor toepassingen en services die worden uitgevoerd in de cloud en toegang moeten hebben tot traditionele verificatiemechanismen zoals Kerberos of NTLM, biedt Azure AD DS een beheerde domeinervaring met de minimale hoeveelheid beheeroverhead. Zie [Beheerconcepten voor gebruikersaccounts, wachtwoorden en beheer in Azure AD DS][administration-concepts] voor meer informatie.
 

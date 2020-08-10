@@ -3,42 +3,43 @@ title: Een toepassing ontwikkelen op Kubernetes
 services: azure-dev-spaces
 ms.date: 02/20/2020
 ms.topic: quickstart
-description: In deze Quick Start leert u hoe u Azure dev Spaces en de opdracht regel gebruikt voor het ontwikkelen van een toepassing op de Azure Kubernetes-service
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
+description: In deze quickstart leert u hoe u met Azure Dev Spaces en de opdrachtregel een toepassing kunt ontwikkelen in Azure Kubernetes Service
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 337c3cb139e1fe0c35344e49271503b98a59fa7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 82e7e73a91b07770881353465af063497deae085
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82165999"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414799"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Quick Start: een toepassing ontwikkelen op Kubernetes-Azure dev Spaces
+# <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Quickstart: Een toepassing ontwikkelen op Kubernetes - Azure Dev Spaces
 In deze handleiding leert u het volgende:
 
 - Azure Dev Spaces instellen met een beheerd Kubernetes-cluster in Azure.
-- Code in containers ontwikkelen en uitvoeren met behulp van de opdracht regel.
+- Code in containers ontwikkelen en uitvoeren met behulp van de opdrachtregel.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free)maken.
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Een upgrade maken van een Azure Kubernetes Service-cluster
 
-U moet een AKS-cluster maken in een [ondersteunde regio][supported-regions]. Met de onderstaande opdrachten maakt u een resource groep met de naam *MyResourceGroup* en een AKS-cluster met de naam *MyAKS*.
+U moet een AKS-cluster maken in een [ondersteunde regio][supported-regions]. Met de onderstaande opdrachten maakt u een resourcegroep met de naam *MyResourceGroup* en een AKS-cluster met de naam *MyAKS*.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure Dev Spaces instellen op uw AKS-cluster inschakelen
 
-Gebruik de `use-dev-spaces` opdracht om ontwikkel ruimten in uw AKS-cluster in te scha kelen en de prompts te volgen. Met de onderstaande opdracht maakt u ontwikkel ruimten in het *MyAKS* -cluster in de groep *MyResourceGroup* en maakt u een *standaard* dev-ruimte.
+Gebruik de opdracht `use-dev-spaces` om Dev Spaces in te schakelen voor uw AKS-cluster en volg de prompts. Met de onderstaande opdracht schakelt u Dev Spaces in voor het cluster *MyAKS* in de groep *MyResourceGroup* en maakt u een *standaard* dev-ruimte.
 
 > [!NOTE]
-> De `use-dev-spaces` opdracht installeert ook de Azure dev Space cli als deze nog niet is geïnstalleerd. U kunt de CLI voor Azure dev Spaces niet installeren in de Azure Cloud Shell.
+> Met de opdracht `use-dev-spaces` wordt ook de CLI voor Azure Dev Spaces geïnstalleerd als die nog niet is geïnstalleerd. U kunt de CLI voor Azure Dev Spaces niet installeren in Azure Cloud Shell.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -60,11 +61,11 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-## <a name="get-sample-application-code"></a>Voorbeeld toepassings code ophalen
+## <a name="get-sample-application-code"></a>Voorbeeldtoepassingscode ophalen
 
-In dit artikel gebruikt u de [voorbeeld toepassing Azure dev Spaces](https://github.com/Azure/dev-spaces) om te demonstreren hoe u Azure dev Spaces gebruikt.
+In dit artikel gebruikt u de [voorbeeldtoepassing van Azure Dev Spaces](https://github.com/Azure/dev-spaces) om het gebruiken van Azure Dev Spaces te demonstreren.
 
-Kloon de toepassing van GitHub en navigeer naar de map *dev-Spaces/samples/nodejs/Getting-Started/Webfront-front-front-end* :
+Kloon de toepassing van GitHub en ga naar de map *dev-spaces/samples/nodejs/getting-started/webfrontend*:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
@@ -73,22 +74,22 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="prepare-the-application"></a>De toepassing voorbereiden
 
-Als u uw toepassing wilt uitvoeren op Azure dev Spaces, hebt u een Dockerfile-en helm-grafiek nodig. Voor sommige talen, zoals [Java][java-quickstart], [.net core][netcore-quickstart]en [node. js][nodejs-quickstart], kunnen met het client hulpprogramma van Azure dev Spaces alle benodigde assets worden gegenereerd. Voor veel andere talen, zoals go, PHP en Python, kan de-client hulpprogramma het helm-diagram genereren, mits u een geldige Dockerfile kunt opgeven.
+Als u de toepassing wilt uitvoeren in Azure Dev Spaces, hebt u een Dockerfile en een Helm-grafiek nodig. Voor sommige talen, zoals [Java][java-quickstart], [.NET Core][netcore-quickstart]en [Node.js][nodejs-quickstart], kunnen de hulpprogramma's van de Azure Dev Spaces-client alle assets genereren die u nodig hebt. Voor veel andere talen, zoals Go, PHP en Python, kunnen de hulpprogramma's de Helm-grafiek genereren, mits u een geldige Dockerfile opgeeft.
 
-Genereer de docker-en helm-grafiek assets voor het uitvoeren van de `azds prep` toepassing in Kubernetes met behulp van de opdracht:
+Genereer de assets Docker- en Helm-grafiek voor het uitvoeren van de toepassing in Kubernetes met behulp van de `azds prep`-opdracht:
 
 ```cmd
 azds prep --enable-ingress
 ```
 
-U moet de `prep` opdracht uitvoeren vanuit de map *dev-Spaces/samples/nodejs/Getting-Started/webfrontend* om de docker-en helm-grafiek elementen correct te genereren.
+U moet de opdracht `prep` uitvoeren vanuit de map *dev-spaces/samples/nodejs/getting-started/webfrontend* voor het correct genereren van de assets Docker en Helm-grafiek.
 
 > [!TIP]
-> Met `prep` deze opdracht wordt geprobeerd [een Dockerfile-en helm-grafiek](how-dev-spaces-works-prep.md#prepare-your-code) voor uw project te genereren. Azure dev Spaces gebruiken deze bestanden om uw code te bouwen en uit te voeren, maar u kunt deze bestanden wijzigen als u wilt wijzigen hoe het project wordt gemaakt en uitgevoerd.
+> Met de opdracht `prep` wordt geprobeerd [een Dockerfile en Helm-grafiek](how-dev-spaces-works-prep.md#prepare-your-code) voor uw project te genereren. Azure Dev Spaces maakt gebruik van deze bestanden om uw code te compileren en uit te voeren, maar u kunt deze bestanden wijzigen als u de opzet en uitvoering van het project wilt wijzigen.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Code schrijven en uitvoeren in Kubernetes
 
-Bouw en voer uw code in AKS met behulp van de `azds up` opdracht:
+Gebruik de opdracht `azds up` om de code in AKS te compileren en uit te voeren:
 
 ```cmd
 $ azds up
@@ -112,26 +113,26 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-U ziet de service die wordt uitgevoerd door de open bare URL te openen, die wordt weer gegeven in `azds up` de uitvoer van de opdracht. In dit voor beeld is *`http://webfrontend.1234567890abcdef1234.eus.azds.io/`* de open bare URL.
+U kunt de service zien die wordt uitgevoerd door de openbare URL te openen. Deze wordt weergegeven in de uitvoer van de opdracht `azds up`. In dit voorbeeld is de openbare URL *`http://webfrontend.1234567890abcdef1234.eus.azds.io/`* .
 
 > [!NOTE]
-> Wanneer u tijdens het uitvoeren `azds up`naar uw service navigeert, worden de traceringen van de HTTP-aanvraag ook weer `azds up` gegeven in de uitvoer van de opdracht. Deze traceringen kunnen u helpen bij het oplossen van problemen met uw service en fout opsporing. U kunt deze traceringen uitschakelen met `--disable-http-traces` wanneer u `azds up`uitvoert.
+> Wanneer u naar uw service navigeert terwijl `azds up` wordt uitgevoerd, worden de traceringen van de HTTP-aanvraag ook weergegeven in de uitvoer van de opdracht `azds up`. Deze traceringen kunnen helpen bij het opsporen en oplossen van problemen met de service. U kunt deze traceringen uitschakelen met behulp van `--disable-http-traces` wanneer u `azds up`uitvoert.
 
-Als u de `azds up` opdracht met *CTRL + c*stopt, wordt de service nog steeds uitgevoerd in AKS en blijft de open bare URL beschikbaar.
+Als u de opdracht `azds up` stopt met behulp van *Ctrl + C*, wordt de service nog steeds uitgevoerd in AKS en blijft de openbare URL beschikbaar.
 
 ## <a name="update-code"></a>Code bijwerken
 
-Als u een bijgewerkte versie van uw service wilt implementeren, kunt u elk bestand in het project bijwerken en `azds up` de opdracht opnieuw uitvoeren. Bijvoorbeeld:
+Als u een bijgewerkte versie van uw service wilt implementeren, kunt u een bestand in uw project bijwerken en `azds up` nogmaals uitvoeren. Bijvoorbeeld:
 
-1. Als `azds up` het nog steeds wordt uitgevoerd, drukt u op *CTRL + c*.
-1. Update [regel 13 in `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) op:
+1. Als `azds up` nog steeds wordt uitgevoerd, drukt u op *Ctrl + C*.
+1. Wijzig [regel 13 in `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) in:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Sla uw wijzigingen op.
-1. Voer de `azds up` opdracht opnieuw uit:
+1. Voer de opdracht `azds up` opnieuw uit:
 
     ```cmd
     $ azds up
@@ -142,8 +143,8 @@ Als u een bijgewerkte versie van uw service wilt implementeren, kunt u elk besta
     ...    
     ```
 
-1. Navigeer naar uw actieve service en Bekijk uw wijzigingen.
-1. Druk op *CTRL + c* om de `azds up` opdracht te stoppen.
+1. Navigeer naar uw actieve service en bekijk uw wijzigingen.
+1. Druk op *Ctrl + C* om de opdracht `azds up` te stoppen.
 
 ## <a name="clean-up-your-azure-resources"></a>Uw Azure-resources opschonen
 
@@ -153,10 +154,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te ontwikkelen in meerdere containers en hoe u samenwerkings ontwikkeling kunt vereenvoudigen door te werken met verschillende versies of vertakkingen van uw code in verschillende ruimten.
+Ontdek hoe Azure Dev Spaces u kan helpen om complexere toepassingen te ontwikkelen binnen meerdere containers en hoe u ontwikkeling in samenwerkingsverband vereenvoudigt door in verschillende ruimten met verschillende versies of vertakkingen van uw code te werken.
 
 > [!div class="nextstepaction"]
-> [Team ontwikkeling in azure dev Spaces][team-quickstart]
+> [Teamontwikkeling in Azure Dev Spaces][team-quickstart]
 
 [java-quickstart]: quickstart-java.md
 [nodejs-quickstart]: quickstart-nodejs.md

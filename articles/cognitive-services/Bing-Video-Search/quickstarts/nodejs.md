@@ -1,5 +1,5 @@
 ---
-title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en node. js-Bing Video Search"
+title: "Quickstart: Video's zoeken met de REST API en Node.js - Bing Video Search"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST API te verzenden met behulp van JavaScript.
 services: cognitive-services
@@ -10,24 +10,25 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 693b8209498f07928c811fd084eaf259bcbcb5ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9658d488fac187e63d04ca435c9233629407ac07
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849634"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408098"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en node. js
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Quickstart: Video's zoeken met de Bing Video's zoeken-REST API en Node.js
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Video's zoeken-API te maken. Met deze eenvoudige Java script-toepassing wordt een HTTP-Zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing wordt geschreven in Java script en gebruikmaakt van node. js, is de API een REST-webservice die compatibel is met de meeste programmeer talen. 
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Video’s zoeken-API te maken. Deze eenvoudige JavaScript-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het JSON-antwoord weer. Hoewel deze toepassing in JavaScript is geschreven en gebruikmaakt van Node.js, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. 
 
 De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) met extra foutafhandeling en codeaantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Node. js](https://nodejs.org/en/download/).
+* [Node.js](https://nodejs.org/en/download/).
 
-* De aanvraag module voor Java script. Deze module installeren met behulp van `npm install request` .
+* De Request-module voor JavaScript. Installeer deze module met behulp van `npm install request`.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -40,7 +41,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     let https = require('https');
     ```
 
-2. Maak variabelen voor uw API-eind punt, abonnements sleutel en zoek term. Voor de `host` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor uw API-eindpunt, abonnementssleutel en zoekterm. Voor de `host`-waarde kunt u het globale eindpunt in de volgende code gebruiken of het eindpunt voor het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat voor uw resource wordt weergegeven in Azure Portal.
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -51,7 +52,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
 
 ## <a name="create-a-response-handler"></a>Een antwoordhandler maken
 
-1. Maak een functie met de naam `response_handler` om een JSON-antwoord van de API weer te geven. Maak een variabele voor de hoofdtekst van het antwoord. Het antwoord toevoegen wanneer een `data` markering wordt ontvangen met behulp van `response.on()` .
+1. Maak een functie met de naam `response_handler` om een JSON-antwoord van de API weer te geven. Maak een variabele voor de hoofdtekst van het antwoord. Voeg door middel van `response.on()` het antwoord toe als de vlag `data` wordt ontvangen.
 
     ```javascript
     let response_handler = function (response) {
@@ -62,7 +63,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
     };
     ```
     
-1. Gebruik in deze functie `response.on()` Wanneer `end` wordt gesignaleerd om de Bing-gerelateerde headers op te slaan (beginnend met `bingapis` of `x-msedge-` ). Parser het JSON `JSON.parse()` -bestand met, converteer het naar een teken reeks met `JSON.stringify()` en druk het af.
+1. Gebruik in deze functie `response.on()` wanneer `end` wordt gesignaleerd om de Bing-gerelateerde headers op te slaan (te beginnen met `bingapis` of `x-msedge-`). Parseer het JSON-bestand met behulp van `JSON.parse()`, converteer het met `JSON.stringify()` naar een tekenreeks en druk deze af.
 
     ```javascript
     response.on('end', function () {
@@ -78,7 +79,7 @@ De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azu
 
 ## <a name="create-and-send-the-search-request"></a>De zoekaanvraag samenstellen en verzenden
 
-Maak de functie `bing_video_search()`. Voeg de parameters voor uw aanvraag toe, inclusief uw hostnaam en de headers. Codeer uw zoekterm en voeg deze met de parameter `?q=` toe achter uw padparameter. Verzend vervolgens de aanvraag met `req.end()` .
+Maak de functie `bing_video_search()`. Voeg de parameters voor uw aanvraag toe, inclusief uw hostnaam en de headers. Codeer uw zoekterm en voeg deze met de parameter `?q=` toe achter uw padparameter. Verzend vervolgens de aanvraag met `req.end()`.
 
 ```javascript
 let bing_video_search = function (search_term) {
@@ -210,7 +211,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md)
+> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md).
 
 ## <a name="see-also"></a>Zie ook 
 

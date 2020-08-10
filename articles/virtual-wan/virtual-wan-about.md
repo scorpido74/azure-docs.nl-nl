@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 9e4c3615d16834a0517b46f1be7221eef28c602c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058744"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513142"
 ---
 # <a name="about-azure-virtual-wan"></a>Over Azure Virtual WAN
 
@@ -124,9 +124,9 @@ Zie het artikel [Virtual WAN-partners en -locaties](virtual-wan-locations-partne
 
 Routeringstabellen hebben nu functies voor koppeling en doorgifte. Een vooraf bestaande routeringstabel is een routeringstabel die deze functies niet heeft. Als u al bestaande routes in Hub Routing hebt en u de nieuwe mogelijkheden wilt gebruiken, moet u rekening houden met het volgende:
 
-* **Standard Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u nieuwe mogelijkheden voor de routetabellen wilt gebruiken, moet u wachten tot de week van 3 augustus wanneer de implementatie van Azure afgerond is. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en probeer vervolgens nieuwe routetabellen te maken (beschikbaar in de sectie Routeringstabellen voor de hub in Azure Portal).
+* **Standard Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor routeringstabellen wilt gebruiken, moet u wachten tot de week van 17 augustus wanneer de implementatie in Azure is afgerond. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en probeer vervolgens nieuwe routetabellen te maken (beschikbaar in de sectie Routeringstabellen voor de hub in Azure Portal).
 
-* **Basic Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor de routetabellen wilt gebruiken, moet u wachten tot de week van 3 augustus wanneer de implementatie van Azure afgerond is. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en **upgrade** uw virtuele WAN Basic naar Standard. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
+* **Basic Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor routeringstabellen wilt gebruiken, moet u wachten tot de week van 17 augustus wanneer de implementatie in Azure is afgerond. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en **upgrade** uw virtuele WAN Basic naar Standard. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>Veelgestelde vragen
 

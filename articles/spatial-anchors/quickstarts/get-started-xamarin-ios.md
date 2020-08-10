@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 625a1a256ec5f1668c97e74c37e567a4ceb3612f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 12fb644430d4bfd6444c6bbf09d37b4662ca6fd1
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871160"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810102"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Quickstart: Een Xamarin iOS-app maken met Azure Spatial Anchors
 
@@ -55,9 +55,7 @@ Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleut
 
 Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
 
-Open `Xamarin/SampleXamarin.iOS/ViewControllers/DemoViewControllerBase.cs`.
-
-Zoek `StartSession()` en voeg de volgende regel toe waarbij u uw accountdomein van eerder gebruikt: `this.cloudSession.Configuration.AccountDomain = "MyAccountDomain";`.
+Zoek het veld `SpatialAnchorsAccountDomain` en vervang `Set me` door het accountdomein.
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>De app implementeren op uw iOS-apparaat
 
@@ -67,7 +65,7 @@ Stel het opstartproject in op **SampleXamarin.iOS**, wijzig de **oplossingsconfi
 
 ![Configuratie van Visual Studio](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-Selecteer **Uitvoeren** > **Starten zonder foutopsporing** om uw app te implementeren en te starten.
+Selecteer **Uitvoeren** > **Starten zonder fout opsporing** om uw app te implementeren en te starten.
 
 Selecteer in de app **Basisinstellingen** om de demo uit te voeren en volg de instructies om een bladwijzer te plaatsen en opnieuw aan te roepen.
 

@@ -4,12 +4,12 @@ description: Snel een Jupyter-notebook maken en uitvoeren via Azure Notebooks Pr
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec1a03cb1c05248458a47ec4b22a0243b31bafcd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832097"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423283"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Quickstart: Een notebook maken en uitvoeren in Azure Notebooks Preview
 
@@ -43,7 +43,7 @@ Geen.
 
 1. Na enkele ogenblikken gaat Azure Notebooks naar het nieuwe project. Voeg een notebook toe aan het project door het vervolgkeuzemenu **+ Nieuw** te selecteren (dat mogelijk alleen wordt weergegeven als **+** ) en selecteer vervolgens **Notebook**:
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    :::image type="content" source="media/quickstarts/empty-project-new-notebook-button.png" alt-text="Een nieuw, leeg project en de opdracht om een notebook toe te voegen." lightbox="media/quickstarts/empty-project-new-notebook-button.png":::
 
 1. Voer in de pop-up **Nieuw notebook maken** die wordt weergegeven een bestandsnaam in voor uw notebook, zoals *HelloWorldInPython.ipynb* ( *.ipynb* staat voor IronPython (Jupyter) Notebook), en selecteer **Python 3.6** als de taal (ook de *kernel* genoemd):
 

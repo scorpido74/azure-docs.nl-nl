@@ -3,12 +3,12 @@ title: Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde serv
 description: Overzicht en architectuur van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties van ISO 27001 bekijken.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 0ef39a4e409320d08529904239dc17fc563c2044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072871"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927348"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Overzicht van de voorbeeldblauwdruk voor ISO 27001 conforme gedeelde services
 
@@ -25,7 +25,7 @@ VDC is een in de praktijk bewezen set referentiearchitecturen, automatiseringshu
 
 Deze omgeving bestaat uit diverse Azure-services die samen een veilige, volledig bewaakte en direct inzetbare infrastructuur voor gedeelde services bieden op basis van de ISO 27001-standaarden. De omgeving bestaat uit de volgende elementen:
 
-- Rollen op basis van [op rollen gebaseerd toegangsbeheer](../../../../role-based-access-control/overview.md) voor scheiding van taken met het oog op optimaal beheer. Vóór de implementatie van de infrastructuur worden er drie rollen gedefinieerd:
+- [Azure-rollen](../../../../role-based-access-control/overview.md) voor scheiding van taken met het oog op optimaal beheer. Vóór de implementatie van de infrastructuur worden er drie rollen gedefinieerd:
   - De rol NetOps beschikt over de rechten die nodig zijn om de netwerkomgeving te beheren, waaronder firewallinstellingen, instellingen voor netwerkbeveiligingsgroepen, routering en andere netwerkfuncties
   - De rol SecOps beschikt over de rechten die nodig zijn om het [Azure Security Center](../../../../security-center/security-center-intro.md) te implementeren en te beheren, en het [Azure-beleid](../../../policy/overview.md) te definiëren, evenals over andere beveiligingsgerelateerde rechten
   - De rol SysOps beschikt over de rechten die nodig zijn om het [Azure-beleid](../../../policy/overview.md) binnen het abonnement te definiëren en [Log Analytics](../../../../azure-monitor/overview.md) te beheren voor de volledige omgeving, evenals over andere operationele rechten

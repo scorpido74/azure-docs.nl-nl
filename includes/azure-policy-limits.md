@@ -1,29 +1,29 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
 ms.date: 04/23/2020
 ms.author: dacoulte
-ms.openlocfilehash: e9faea1d5913a19dfdeff662e26992529dc1b22d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 08183cc2cbe2fce83bc7347da22308931b99dcc1
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466888"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010972"
 ---
-Er is een maximum aantal voor elk object type voor Azure Policy. De vermelding _Bereik_ slaat op het abonnement of op de [beheergroep](../articles/governance/management-groups/overview.md).
+Voor elk objecttype in Azure Policy bestaat er een maximum. De vermelding _Bereik_ slaat op het abonnement of op de [beheergroep](../articles/governance/management-groups/overview.md).
 
 | Waar | Wat | Maximum |
 |---|---|---|
 | Bereik | Beleidsdefinities | 500 |
-| Bereik | Initiatiefdefinities | 100 |
+| Bereik | Initiatiefdefinities | 200 |
 | Tenant | Initiatiefdefinities | 2500 |
-| Bereik | Toewijzing van beleid of initiatief | 100 |
+| Bereik | Beleids- of initiatieftoewijzingen | 200 |
 | Beleidsdefinitie | Parameters | 20 |
-| Initiatiefdefinitie | Beleidsregels | 100 |
+| Initiatiefdefinitie | Beleidsregels | 1000 |
 | Initiatiefdefinitie | Parameters | 100 |
-| Toewijzing van beleid of initiatief | Uitzonderingen (geen bereiken) | 400 |
-| Beleidsregel | Geneste voor waarden | 512 |
-| Herstel taak | Resources | 500 |
+| Beleids- of initiatieftoewijzingen | Uitzonderingen (geen bereiken) | 400 |
+| Beleidsregel | Geneste voorwaarden | 512 |
+| Hersteltaak | Resources | 500 |

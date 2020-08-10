@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Access Control in Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Begrijpen hoe toegangs beheer werkt in Azure Data Lake Storage Gen2
+description: Begrijpen hoe toegangs beheer werkt in Azure Data Lake Storage Gen2. Op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) en POSIX-achtige Acl's worden ondersteund.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 54867278b583124473b5b41c164714bf91f2f631
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543296"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030483"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangsbeheer in Data Lake Storage Gen2
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een webzoekopdracht uitvoeren met Node.js-Bing Web Search REST API'
+title: 'Quickstart: Een zoekopdracht op internet uitvoeren met Node.js - Bing Webzoekopdrachten-REST API'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen naar de REST API van Bing Web Search te verzenden via Node.js en een JSON-antwoord te ontvangen
 services: cognitive-services
@@ -10,30 +10,30 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: 97d5c78264f9b2d9f21c618597ccd1c3709c9e0f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611319"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405922"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Quick Start: zoeken op internet met behulp van de Bing Web Search REST API en Node.js
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Quickstart: Zoeken op internet met behulp van de REST API voor Bing Web Search en Node.js
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Webzoekopdrachten-API te maken. Met deze Node.js toepassing wordt een zoek opdracht naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing wordt geschreven in Java script, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Gebruik deze quickstart om de Bing Web Search API voor de eerste keer aan te roepen. Deze Node.js-toepassing verzendt een zoekaanvraag naar de API en geeft het JSON-antwoord weer. Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u verdergaat met deze snelstart moet u beschikken over:
 
-* [Node.js 6](https://nodejs.org/en/download/) of hoger
+* [Node.js 6](https://nodejs.org/en/download/) of later
 * Een abonnementssleutel
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Een project maken en de vereiste modules declareren
 
-Maak een nieuw Node.js-project in uw favoriete IDE of editor. Kopieer vervolgens het volgende code fragment naar uw project in een bestand met de naam search.js:
+Maak een nieuw Node.js-project in uw favoriete IDE of editor. Kopieer vervolgens het volgende codefragment naar uw project in een bestand met de naam search.js:
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -43,9 +43,9 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Abonnementssleutel instellen
 
-In dit code fragment wordt de `AZURE_SUBSCRIPTION_KEY` omgevings variabele gebruikt voor het opslaan van uw abonnements sleutel. Dit is een goede gewoonte om te voor komen dat uw sleutels per ongeluk worden blootgesteld tijdens het implementeren van code.
+Dit codefragment gebruikt de omgevingsvariabele `AZURE_SUBSCRIPTION_KEY` voor het opslaan van de abonnementssleutel, hetgeen een goede gewoonte is om te voorkomen dat uw sleutels per ongeluk worden weergegeven wanneer u code implementeert.
 
-Als u niet bekend bent met het gebruik van omgevings variabelen of als u deze app zo snel mogelijk wilt uitvoeren, moet u `process.env['AZURE_SUBSCRIPTION_KEY']` de sleutel van uw abonnement vervangen als een teken reeks.
+Als u niet bekend bent met het gebruik van omgevingsvariabelen of als u deze app zo snel mogelijk wilt uitvoeren, vervangt u `process.env['AZURE_SUBSCRIPTION_KEY']` door uw abonnementssleutel die is ingesteld als een tekenreeks.
 
 ```javascript
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
@@ -56,15 +56,15 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>Een functie maken voor het versturen van de aanvraag
 
-Deze functie maakt een beveiligde GET-aanvraag en slaat de zoek query op als een query parameter in het pad. 
+Met deze functie wordt een beveiligde GET-aanvraag gemaakt, waarbij de zoekquery als een queryparameter wordt opgeslagen in het pad. 
 
-1. Voor de `hostname` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.  
+1. Voor de `hostname`-waarde kunt u het globale eindpunt in de volgende code gebruiken of het eindpunt voor het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat voor uw resource wordt weergegeven in Azure Portal.  
 
-2. Gebruiken `encodeURIComponent` om ongeldige tekens te escapepen. De abonnements sleutel wordt door gegeven in een header. 
+2. Gebruik `encodeURIComponent` om ongeldige tekens buiten te sluiten. De abonnementssleutel wordt doorgegeven in een header. 
 
 3. De callback ontvangt een [respons](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) die zich abonneert op de gebeurtenis `data` om de JSON-hoofdtekst te aggregeren, op `error` om eventuele problemen vast te leggen en op `end` om te weten wanneer het bericht moet worden beschouwd als voltooid. 
 
-4. Wanneer de app is voltooid, worden de relevante kopteksten en hoofd tekst van het bericht afgedrukt. U kunt de kleuren aanpassen en de diepte instellen op basis van uw voor keur. Een diepte van `1` geeft een goed overzicht van het antwoord.
+4. Wanneer de app is voltooid, worden de betreffende headers en de hoofdtekst van het bericht weergegeven. U kunt naar wens de kleuren aanpassen en de diepte instellen. Een diepte van `1` geeft een goed overzicht van het antwoord.
 
 ```javascript
 function bingWebSearch(query) {
@@ -94,7 +94,7 @@ function bingWebSearch(query) {
 
 ## <a name="get-the-query"></a>De query bepalen
 
-We bekijken de argumenten van het programma om de query te vinden. Het eerste argument is het pad naar het knoop punt, de tweede is de bestands naam en de derde is uw query. Als de query afwezig is, wordt de standaardquery 'Microsoft Cognitive Services' gebruikt.
+We bekijken de argumenten van het programma om de query te vinden. Het eerste argument is het pad naar het knooppunt, het tweede is de bestandsnaam en het derde is de query. Als de query afwezig is, wordt de standaardquery 'Microsoft Cognitive Services' gebruikt.
 
 ```javascript
 const query = process.argv[2] || 'Microsoft Cognitive Services'
@@ -102,7 +102,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 
 ## <a name="make-a-request-and-print-the-response"></a>Een aanvraag maken en het antwoord weergeven
 
-Nu alles is gedefinieerd, gaan we onze functie bellen.
+Nu alles is gedefinieerd, kunnen we onze functie aanroepen.
 
 ```javascript
 bingWebSearch(query)
@@ -110,7 +110,7 @@ bingWebSearch(query)
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-De laatste stap is het uitvoeren van de code met de opdracht: `node search.js "<your query>"` .
+De laatste stap bestaat uit het uitvoeren van uw code met de opdracht: `node search.js "<your query>"`.
 
 Als u uw code wilt vergelijken met die van ons, volgt hier het volledige programma:
 
@@ -276,6 +276,6 @@ Antwoorden afkomstig van de Bing Webzoekopdrachten-API worden geretourneerd in d
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Bing Webzoekopdrachten-API zelf studie voor een app met één pagina](../tutorial-bing-web-search-single-page-app.md)
+> [Zelfstudie voor de app met één pagina voor de Bing Web Search API](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

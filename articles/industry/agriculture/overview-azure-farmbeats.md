@@ -1,73 +1,73 @@
 ---
-title: Wat is Azure FarmBeats
+title: Wat is Azure FarmBeats?
 description: Biedt een overzicht van Azure FarmBeats
 author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80667307"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439553"
 ---
-# <a name="overview-of-azure-farmbeats-preview"></a>Overzicht van Azure FarmBeats (preview-versie)
+# <a name="overview-of-azure-farmbeats-preview"></a>Overzicht van Azure Notebooks (preview)
 
-Azure FarmBeats is een Business-to-Business-aanbieding die beschikbaar is in azure Marketplace. Hiermee worden aggregatie van agrarische gegevens sets in verschillende providers mogelijk. Met Azure FarmBeats kunt u modellen voor kunst matige intelligentie (AI) of machine learning (ML) maken op basis van gegevens sets met zekering. Door gebruik te maken van Azure FarmBeats kunnen de landbouw bedrijven zich richten op de belangrijkste waarde-toevoegen in plaats van de niet-gedifferentieerde zware opheffen van data engineering.
+Azure FarmBeats is een Business-to-business-aanbieding die beschikbaar is in Azure Marketplace. Hiermee kunnen agrarische gegevenssets vanuit verschillende providers worden verzameld. Met Azure FarmBeats kunt u AI-modellen (AI: kunstmatige intelligentie) of ML-modellen (ML: machine learning) maken op basis van samengevoegde gegevenssets. Door gebruik te maken van Azure FarmBeats kunnen de landbouwbedrijven zich richten op de kernzaken die van toegevoegde waarde zijn in plaats van de niet-gedifferentieerde zware inzet op data engineering.
 
 > [!NOTE]
-> Azure FarmBeats is momenteel beschikbaar als open bare preview. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure FarmBeats wordt zonder service level agreement gegeven. Gebruik het [Azure FarmBeats-forum](https://aka.ms/FarmBeatsMSDN ) voor ondersteuning.
+> Azure FarmBeats is momenteel beschikbaar als openbare preview-versie. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Azure FarmBeats wordt geleverd zonder Service Level Agreement. Gebruik het [ondersteuningsforum voor Azure FarmBeats](https://aka.ms/farmbeatssupport) voor ondersteuning.
 
-![Maten van project-Farm](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
+![Een Farm Beats-project](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
 Met de preview-versie van Azure FarmBeats kunt u het volgende doen:
 
-- Evalueer de farm status met behulp van de vegetatie-index en de water index op basis van satelliet afbeelding.
-- Krijg aanbevelingen over het aantal vocht sensors dat moet worden gebruikt en waar ze moeten worden geplaatst.
-- Houd Farm voorwaarden bij door te visualiseren van de massa gegevens die door Sens oren van verschillende leveranciers zijn verzameld.
-- Kaart voor bodem vocht ophalen op basis van het fusie van satelliet-en sensor gegevens.
-- Krijg inzicht in de bewerkings acties door AI/ML-modellen boven op geaggregeerde gegevens sets te bouwen.
-- Bouw of verbeter uw oplossing voor digitale land bouwers door de farm status adviezen te bieden.
+- De status van het landbouwbedrijf beoordelen met behulp van de vegetatie-index en de waterindex op basis van satellietbeelden.
+- Aanbevelingen krijgen over het aantal sensoren voor bodemvochtigheid dat moet worden gebruikt en waar ze moeten worden geplaatst.
+- De situatie op het landbouwbedrijf bijhouden door bodemgegevens te visualiseren die door sensoren van verschillende leveranciers zijn verzameld.
+- Een kaart voor bodemvochtigheid verkrijgen op basis van het samenvoegen van satelliet- en sensorgegevens.
+- Praktische inzichten verkrijgen door AI/ML-modellen boven op geaggregeerde gegevenssets te compileren.
+- Uw digitale landbouwoplossing compileren of uitbreiden door adviezen over de status van het landbouwbedrijf te bieden.
 
 ## <a name="datahub"></a>Datahub
 
-De Azure FarmBeats Datahub is een API-laag, waarmee aggregatie, normalisatie en contextualization van verschillende agrarische gegevens sets tussen providers worden ingeschakeld. U kunt Azure FarmBeats gebruiken om het volgende te krijgen:
-- **Sensor gegevens** van twee sensor-providers [Davis instrumenten](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), [pessl-instrumenten](https://metos.at/)
-- **Satelliet afbeelding** van de missie van de [Sentinel-2-](https://sentinel.esa.int/web/sentinel/home) satelliet van het Euro pees ruimte-agentschap
-- **Drone image** uit drie drone-installatie kopie providers [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/)
+De Azure FarmBeats Datahub is een API-laag waarmee u diverse landbouwgegevenssets van verschillende providers kunt verzamelen, normaliseren en contextualiseren. U kunt Azure FarmBeats gebruiken om het volgende te krijgen:
+- **Sensorgegevens** van drie sensorproviders [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), [Pessl Instruments](https://metos.at/)
+- **Satellietbeelden** van de satellietmissie [Sentinel-2](https://sentinel.esa.int/web/sentinel/home) van het Europees Ruimteagentschap
+- **Dronebeelden** van drie dronebeeldenproviders [senseFly](https://www.sensefly.com/), [SlantRange](https://slantrange.com/), [DJI](https://dji.com/)
 
-Datahub is ontworpen als een uitbreidbaar API-platform. We werken met veel meer providers om te integreren met Azure FarmBeats, zodat u meer keuze hebt tijdens het bouwen van uw oplossing.
+Datahub is ontworpen als een uitbreidbaar API-platform. We werken met veel meer providers die we willen integreren met Azure FarmBeats, zodat u meer keuze hebt tijdens het compileren van uw oplossing.
 
-## <a name="accelerator"></a>Snelle
+## <a name="accelerator"></a>Accelerator
 
-De Azure FarmBeats Accelerator is een voor beeld van een webtoepassing, die boven op Datahub is gebouwd. De Accelerator-Jump-Start uw gebruikers interface en model ontwikkeling. De Azure FarmBeats Accelerator maakt gebruik van Azure FarmBeats-Api's. Er worden opgenomen sensor gegevens gevisualiseerd als grafieken en model uitvoer als kaarten. U kunt de Accelerator bijvoorbeeld gebruiken om snel een farm te maken en een vegetatie-index toewijzing of een sensor plaatsings kaart voor die Farm te verkrijgen.
+De Azure FarmBeats Accelerator is een voorbeeldwebtoepassing, die is gecompileerd boven op Datahub. Met de Accelerator kunt u snel aan de slag met uw gebruikersinterface en de ontwikkeling van modellen. De Azure FarmBeats Accelerator maakt gebruik van Azure FarmBeats-API's. Hiermee worden opgenomen sensorgegevens gevisualiseerd als grafieken en modelresultaten als kaarten. U kunt met de Accelerator bijvoorbeeld snel een landbouwbedrijf maken en eenvoudig een kaart met de vegetatie-index of een kaart met sensorlocaties voor dit landbouwbedrijf verkrijgen.
 
 ## <a name="role-based-access-control-rbac"></a>Toegangsbeheer op basis van rollen (RBAC)
 
-Een beheerder kan toegangs regels voor Azure FarmBeats definiëren met behulp van een van de vooraf gedefinieerde rollen. Rollen bepalen op welke gebieden van de toepassing een gebruiker toegang heeft en welke acties ze kunnen uitvoeren. Er zijn twee soorten rollen in azure FarmBeats: voor gebruikers en voor partners.
+Een beheerder kan toegangsregels voor Azure FarmBeats definiëren met behulp van een van de vooraf gedefinieerde rollen. Rollen bepalen tot welke gebieden van de toepassing gebruikers toegang hebben en welke acties ze kunnen uitvoeren. Er zijn twee soorten rollen in Azure FarmBeats: voor gebruikers en voor partners.
 
 ### <a name="user-roles"></a>Gebruikersrollen
 
-Een [beheerder kan gebruikers toevoegen en beheren](manage-users-in-azure-farmbeats.md) en hun toegangs niveaus definiëren op basis van twee gebruikers rollen: beheerder en alleen-lezen.
+Een [beheerder kan gebruikers toevoegen en beheren](manage-users-in-azure-farmbeats.md) en hun toegangsniveaus definiëren op basis van twee gebruikersrollen: Beheerder en Alleen-lezen.
 
-### <a name="partner-roles"></a>Partner rollen
+### <a name="partner-roles"></a>Partnerrollen
 
-Een beheerder kan meerdere partners als gegevens providers toevoegen aan Azure FarmBeats. Hieronder vindt u een overzicht van de beschik bare partner rollen in FarmBeats en de bijbehorende machtigingen:
+Een beheerder kan meerdere partners als gegevensprovider aan Azure FarmBeats toevoegen. Hieronder vindt u een overzicht van de beschikbare partnerrollen in FarmBeats en de bijbehorende machtigingen:
 
-| Partner type    |   Acties  | Bereik |
+| Partnertype    |   Acties  | Bereik |
 | ---- | -------- | -------- |
-| Sensor partner  |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken | DeviceModel, apparaat, SensorModel, sensor <br/> <br/> Extended type |
-| Imagey-partner  |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken <br/> <br/> Lezen | Scène, SceneFile <br/> <br/> Extended type <br/> <br/> Voorzien |
-| Weer partner * <br/> <br/>  (* Binnenkort beschikbaar) |   Maken, lezen, bijwerken <br/> <br/> Lezen, bijwerken <br/> <br/> Lezen | WeatherDataModel, WeatherDataLocation, taak type <br/> <br/> Extended type <br/> <br/> Voorzien |
+| Sensorpartner  |   Maken, Lezen, Bijwerken <br/> <br/> Lezen, Bijwerken | DeviceModel, Device, SensorModel, Sensor <br/> <br/> ExtendedType |
+| Partner voor beeldmateriaal  |   Maken, Lezen, Bijwerken <br/> <br/> Lezen, Bijwerken <br/> <br/> Lezen | Scene, SceneFile <br/> <br/> ExtendedType <br/> <br/> Landbouwbedrijf |
+| Partner voor weerberichten* <br/> <br/>  (* binnenkort beschikbaar) |   Maken, Lezen, Bijwerken <br/> <br/> Lezen, Bijwerken <br/> <br/> Lezen | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> ExtendedType <br/> <br/> Landbouwbedrijf |
 
 ## <a name="resources"></a>Resources
 
-Azure FarmBeats wordt zonder extra kosten aangeboden en u betaalt alleen voor de Azure-resources die u gebruikt. U kunt de onderstaande bronnen gebruiken voor meer informatie over de aanbieding:
+Azure FarmBeats wordt zonder extra kosten aangeboden. U betaalt alleen voor de Azure-resources die u gebruikt. U kunt de onderstaande resources gebruiken voor meer informatie over de aanbieding:
 
-- Blijf op de hoogte van het nieuwste Azure FarmBeats News door de [Azure FarmBeats-blog](https://aka.ms/farmbeatsblog)te bezoeken.
-- Zoek hulp door een vraag te plaatsen op ons [ondersteunings forum voor Azure FarmBeats](https://aka.ms/farmbeatssupport).
-- Geef feedback door post of stem toe voor een functie idee op ons [Feedback forum van Azure FarmBeats](https://aka.ms/farmbeatsfeedback).
+- Blijf op de hoogte van het laatste nieuws over Azure FarmBeats door onze [Azure FarmBeats-blog](https://aka.ms/farmbeatsblog) te bezoeken.
+- U kunt om assistentie vragen door een vraag te plaatsen op het [ondersteuningsforum voor Azure FarmBeats](https://aka.ms/farmbeatssupport).
+- U kunt feedback geven door een bericht te plaatsen over of te stemmen op een idee voor een functie op het [Azure FarmBeats-feedbackforum](https://aka.ms/farmbeatsfeedback).
 
 ## <a name="next-steps"></a>Volgende stappen
 

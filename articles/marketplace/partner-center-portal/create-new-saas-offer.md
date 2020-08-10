@@ -3,18 +3,18 @@ title: Een SaaS-aanbieding, Azure Marketplace en Microsoft AppSource maken
 description: Het maken van een SaaS-aanbieding (Software as a Service) voor het aanbieden of verkopen van Microsoft AppSource, Azure Marketplace of via het programma Cloud Solution Provider (CSP) met behulp van het micro soft-programma voor commerciële Marketplace in micro soft Partner Center.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 07/22/2020
+ms.topic: how-to
+ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7fbb50308f14acbcec98c562fe72763341538df2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800333"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031027"
 ---
-# <a name="create-a-saas-offer"></a>Een SaaS-aanbieding maken
+# <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Een SaaS-aanbieding maken in de commerciële Marketplace
 
 Als u wilt beginnen met het maken van SaaS-aanbiedingen (Software as a Service) in de commerciële Marketplace, moet u eerst [een partner centrum-account maken](./create-account.md) en het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, met het tabblad **overzicht** geselecteerd.
 
@@ -83,7 +83,7 @@ Met SaaS-oplossingen die worden uitgevoerd in het Azure-abonnement van de uitgev
 
 SaaS biedt ondersteuning voor maandelijkse of jaarlijkse facturering op basis van een vast bedrag, per gebruiker of verbruiks kosten met behulp van de service voor facturering via data limiet. De commerciële Marketplace van micro soft werkt op een agentuur model, waardoor uitgevers prijzen instellen, micro soft billt klanten en micro soft betaalt de inkomsten aan de uitgever terwijl er kosten in rekening worden gebracht.
 
-Dit is een voor beeld van een uitsplitsing van kosten en uitbetalingen om het agentuur model te demonstreren (alle prijzen zijn alleen bedoeld als voor beeld van de werkelijke kosten):
+Dit is een voor beeld van een uitsplitsing van de kosten en uitbetalingen om het agentuur model te demonstreren (alle vermelde prijzen zijn bijvoorbeeld enkel en niet bedoeld om de werkelijke kosten weer te geven):
 
 |**De licentie kosten**|**$100 per maand**|
 |:---|:---|
@@ -282,16 +282,18 @@ Dit veld is vereist.
 #### <a name="files-and-images"></a>Bestanden en installatie kopieën
 
 - **Documenten** (vereist): Voeg gerelateerde marketing documenten toe voor uw aanbieding, in PDF-indeling, van ten minste één en Maxi maal drie documenten per aanbieding.
-- **Installatie kopieën** (vereist): er zijn meerdere locaties waar de logo afbeeldingen van uw aanbieding kunnen worden weer gegeven in de Marketplace ('s). Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) en een **middel** groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën. Het toevoegen van een **breed** logo is optioneel.
+- **Afbeeldingen** : logo afbeeldingen uploaden in PNG-indeling:
 
-    Er zijn drie logo grootten vereist voor gebruik op verschillende plaatsen in de lijst. een is optioneel:
+  - **Klein** (48 x 48 pixels, vereist)
+  - **Gemiddeld** (90 x 90 pixels, vereist)
+  - **Groot** (216 x 216 pixels, vereist)
+  - **Breed** (255 x 115 pixels) (optioneel)
 
-    - **Klein** (48 x 48)
-    - **Gemiddeld** (90 x 90)
-    - **Groot** (tussen 216 x 216 en 350 x 350)
-    - **Breed** (255 x 115), *optioneel*
+   Deze drie logo grootten worden op verschillende locaties in de winkel gebruikt:
 
-    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+   -   Het kleine logo (48 x 48 pixels) wordt weer gegeven in de zoek resultaten voor Azure Marketplace en op de pagina Microsoft AppSource hoofd pagina en zoek resultaten. 
+   -   Het gemiddelde logo (90 x 90 pixels) wordt weer gegeven wanneer u een nieuwe resource maakt in Microsoft Azure.
+   -   Het grote logo (tussen 216 x 216 en 350 x 350 pixels) wordt weer gegeven op uw aanbiedings pagina in azure Marketplace en Microsoft AppSource.
 
 - **Scherm afbeeldingen** (vereist): Voeg een maximum van vijf scherm opnamen toe, met een grootte van 1280 x 720 pixels. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
 - **Video's** (optioneel): voeg links toe aan Video's die uw aanbieding aantonen. U kunt links gebruiken naar YouTube-en/of Vimeo-Video's, die samen met uw aanbieding aan klanten worden weer gegeven. U moet ook een miniatuur afbeelding van de video invoeren, met een grootte van 1280 x 720 pixels in PNG-indeling. U kunt Maxi maal vier Video's per aanbieding weer geven.

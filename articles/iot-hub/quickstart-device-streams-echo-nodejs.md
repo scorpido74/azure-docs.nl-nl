@@ -1,36 +1,36 @@
 ---
-title: Communiceren met de app apparaat in node. js met Azure IoT Hub Device streams
-description: In deze Quick Start voert u een node. js-service-side-toepassing uit die met een IoT-apparaat communiceert via een apparaatgegevens stroom.
+title: Communiceren met de apparaattoepassing in Node.js met Azure IoT Hub-apparaatstreams
+description: In deze quickstart voert u een Node.js-toepassing aan de servicezijde uit die via een apparaatstream communiceert met een IoT-apparaat.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 0757c5eb8639e4a864b049adc92c97a7cf69adba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d398e450175c9f97c419b397266cda0a52e7e21c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78675510"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416108"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Quick Start: communiceren met een toepassings toepassing in node. js via IoT Hub apparaat streams (preview)
+# <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Quickstart: Communiceren met een apparaattoepassing in Node.js via IoT Hub-apparaatstreams (preview)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-In deze Quick Start voert u een toepassing aan de service zijde uit en stelt u de communicatie tussen een apparaat en service in met behulp van Device streams. Met Azure IoT Hub-apparaatklassen kunnen service-en apparaat-apps communiceren op een veilige en firewall vriendelijke manier. Tijdens de open bare preview ondersteunt de node. js SDK alleen Device streams aan de kant van de service. Daarom bevat deze quickstart alleen instructies voor het uitvoeren van de toepassing aan de servicezijde.
+In deze quickstart voert u een toepassing aan de service zijde uit en stelt u de communicatie in tussen een apparaat en een service met behulp van apparaatstreams. Azure IoT Hub-apparaatstreams zorgen ervoor dat service- en apparaattoepassingen kunnen communiceren op een beveiligde manier die via de firewall wordt toegestaan. Gedurende de openbare preview biedt de Node.js SDK alleen ondersteuning voor apparaatstreams aan de servicezijde. Daarom bevat deze quickstart alleen instructies voor het uitvoeren van de toepassing aan de servicezijde.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volt ooien van de [communicatie met apparaat-apps in C via IOT hub Device streams](./quickstart-device-streams-echo-c.md) of [communiceert met apparaat-apps in C# via IOT hub apparaat stromen](./quickstart-device-streams-echo-csharp.md).
+* U moet de quickstarts [Communiceren met apparaat-apps in C via IoT Hub-apparaatstreams](./quickstart-device-streams-echo-c.md) of [Communiceren met apparaat-apps in C# via IOT Hub-apparaatstreams](./quickstart-device-streams-echo-csharp.md) hebben voltooid.
 
 * Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Node. js 10 +](https://nodejs.org).
+* [Node.js 10+](https://nodejs.org).
 
-* [Een voor beeld van een node. js-project](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
+* [Een voorbeeld van een Node.js-project](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
 
 Gebruik de volgende opdracht om de huidige versie van Node.js op uw ontwikkelcomputer te controleren:
 
@@ -38,21 +38,21 @@ Gebruik de volgende opdracht om de huidige versie van Node.js op uw ontwikkelcom
 node --version
 ```
 
-Microsoft Azure IoT Hub biedt momenteel ondersteuning voor het streamen van apparaten als een [Preview-functie](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Microsoft Azure IoT Hub ondersteunt momenteel apparaatstreams als een [preview-functie](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!IMPORTANT]
-> De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
+> De preview van apparaatstreams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 >
 > * VS - centraal
-> * Centrale VS-EUAP
+> * VS - centraal EUAP
 > * Europa - noord
 > * Azië - zuidoost
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-### <a name="add-azure-iot-extension"></a>Azure IoT-extensie toevoegen
+### <a name="add-azure-iot-extension"></a>Azure IoT CLI-extensie toevoegen
 
-Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. Met de IoT-extensie worden DPS-opdrachten (IoT Hub, IoT Edge en IoT Device Provisioning Service) toegevoegd aan Azure CLI.
+Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI aan uw CLI Shell-instantie toe te voegen. Met de IoT-extensie worden alleen opdrachten voor IoT Hub-, IoT Edge- en IoT DPS (Device Provisioning Service) toegevoegd aan Azure CLI.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -62,21 +62,21 @@ az extension add --name azure-iot
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-U kunt deze stap overslaan als u eerder deze zelfstudie hebt voltooid: [Snelstartgids: Telemetriegegevens vanaf een apparaat verzenden naar een IoT-hub en de telemetriegegevens op de hub lezen met een back-endtoepassing (Python)](quickstart-send-telemetry-node.md).
+Als u [Snelstart: Als u telemetrie vanaf een apparaat wilt verzenden naar een IoT-hub](quickstart-send-telemetry-node.md), kunt u deze stap overslaan.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 
-U kunt deze stap overslaan als u eerder deze zelfstudie hebt voltooid: [Snelstartgids: Telemetriegegevens vanaf een apparaat verzenden naar een IoT-hub en de telemetriegegevens op de hub lezen met een back-endtoepassing (Python)](quickstart-send-telemetry-node.md).
+Als u [Snelstart: Als u telemetrie vanaf een apparaat wilt verzenden naar een IoT-hub](quickstart-send-telemetry-node.md), kunt u deze stap overslaan.
 
 Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze snelstart gebruikt u Azure Cloud Shell om een gesimuleerd apparaat te registreren.
 
-1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaat-id te maken.
+1. Voer de volgende opdrachten uit in Azure Cloud Shell om de apparaat-id te maken.
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
-   **Mijn**: dit is de naam voor het apparaat dat u registreert. Het is raadzaam om **mijn** te gebruiken zoals wordt weer gegeven. Als u een andere naam kiest voor uw apparaat, moet u deze naam ook in dit artikel gebruiken en de apparaatnaam bijwerken in de voorbeeld toepassingen voordat u ze uitvoert.
+   **MyDevice**: Dit is de naam van het apparaat dat u gaat registreren. Het is raadzaam om **MyDevice** te gebruiken zoals wordt weergegeven. Als u een andere naam voor het apparaat kiest, moet u deze naam mogelijk ook in de rest van dit artikel gebruiken, en moet u de apparaatnaam bijwerken in de voorbeeldtoepassingen voordat u ze uitvoert.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
@@ -90,21 +90,21 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
     az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Bekijk de geretourneerde service connection string voor later gebruik in deze Quick Start. Het lijkt op het volgende voorbeeld:
+    Noteer de geretourneerde serviceverbindingsreeks voor later gebruik in deze quickstart. Het lijkt op het volgende voorbeeld:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
 ## <a name="communicate-between-device-and-service-via-device-streams"></a>Communicatie tussen apparaat en service via apparaatstreams
 
-In deze sectie voert u zowel de toepassing op het apparaat als de toepassing aan de service zijde uit en communiceert u tussen de twee toepassingen.
+In deze sectie voert u zowel de toepassing op het apparaat als de toepassing aan de servicezijde uit en communiceert u tussen de twee toepassingen.
 
 ### <a name="run-the-device-side-application"></a>De toepassing aan de apparaatzijde uitvoeren
 
-Zoals eerder vermeld, biedt de IoT Hub Node.js SDK alleen ondersteuning voor apparaatstreams aan de servicezijde. Voor een toepassing aan het apparaat gebruikt u een van de begeleidende apparaten in deze Quick starts:
+Zoals eerder vermeld, biedt de IoT Hub Node.js SDK alleen ondersteuning voor apparaatstreams aan de servicezijde. Voor de toepassing aan de apparaatzijde gebruikt u een van de bijbehorende apparaatprogramma’s die beschikbaar zijn in deze quickstarts:
 
-* [Communiceren met apparaat-apps in C via IoT Hub Device streams](./quickstart-device-streams-echo-c.md)
+* [Communiceren met apparaattoepassingen in C via IoT Hub-apparaatstreams](./quickstart-device-streams-echo-c.md)
 
-* [Communiceren met apparaat-apps in C# via IoT Hub Device streams](./quickstart-device-streams-echo-csharp.md)
+* [Communiceren met apparaattoepassingen in C# via IoT Hub-apparaatstreams](./quickstart-device-streams-echo-csharp.md)
 
 Controleer of de toepassing aan apparaatzijde wordt uitgevoerd voordat u naar de volgende stap gaat.
 
@@ -115,9 +115,9 @@ De Node.js-toepassing aan de servicezijde in deze quickstart heeft de volgende f
 * Maakt een apparaatstream naar een IoT-apparaat.
 * Leest invoer vanaf de opdrachtregel en verzendt deze naar de apparaattoepassing, die de invoer op zijn beurt terugstuurt.
 
-De code demonstreert het initiatie proces van een apparaat stroom en hoe dit kan worden gebruikt om gegevens te verzenden en te ontvangen.
+De code demonstreert het initiatieproces van een apparaatstream en laat zien hoe gegevens hiermee worden verzonden en ontvangen.
 
-Ervan uitgaande dat de toepassing op het apparaat wordt uitgevoerd, volgt u de onderstaande stappen in een lokaal Terminal venster om de toepassing aan de service zijde in node. js uit te voeren:
+Ervan uitgaande dat de toepassing aan de apparaatzijde wordt uitgevoerd, volgt u de volgende stappen in een lokaal terminalvenster voor het uitvoeren van de toepassing aan de serverzijde in Node.js:
 
 * Geef de referenties van uw service en de apparaat-id op als omgevingsvariabelen.
  
@@ -131,7 +131,7 @@ Ervan uitgaande dat de toepassing op het apparaat wordt uitgevoerd, volgt u de o
    SET STREAMING_TARGET_DEVICE=MyDevice
    ```
   
-   Wijzig de tijdelijke aanduiding ServiceConnectionString zodat deze overeenkomt met uw service connection string en **mijn** overeenkomen met uw apparaat-id als u een andere naam hebt opgegeven.
+   Wijzig de tijdelijke aanduiding ServiceConnectionString zodat deze overeenkomt met uw serviceverbindingsreeks, en zodat **MyDevice** overeenkomt met uw apparaat-id als u die van u een andere naam hebt gegeven.
 
 * Navigeer naar `Quickstarts/device-streams-service` in de uitgepakte projectmap en voer het voorbeeld uit met behulp van het knooppunt.
 
@@ -145,9 +145,9 @@ Ervan uitgaande dat de toepassing op het apparaat wordt uitgevoerd, volgt u de o
    node echo.js
    ```
 
-Aan het einde van de laatste stap initieert de toepassing aan de servicezijde een stream naar uw apparaat die vervolgens via de stroom een tekenreeksbuffer naar de service verzendt. In dit voor beeld leest het programma aan de service zijde gewoon `stdin` het op de Terminal en verzendt het naar het apparaat, dat vervolgens weer echo's. Hiermee wordt een geslaagde bidirectionele communicatie tussen de twee toepassingen aangegeven.
+Aan het einde van de laatste stap initieert de toepassing aan de servicezijde een stream naar uw apparaat die vervolgens via de stroom een tekenreeksbuffer naar de service verzendt. In dit voorbeeld leest de toepassing aan de serverzijde de `stdin` op de terminal en verzendt deze naar het apparaat, die deze op zijn beurt terugstuurt. Hiermee wordt een geslaagde bidirectionele communicatie tussen de twee toepassingen aangegeven.
 
-![Console-uitvoer aan service zijde](./media/quickstart-device-streams-echo-nodejs/service-console-output.png)
+![Console-uitvoer aan servicezijde](./media/quickstart-device-streams-echo-nodejs/service-console-output.png)
 
 Vervolgens kunt u het programma beëindigen door nogmaals op Enter te drukken.
 
@@ -157,7 +157,7 @@ Vervolgens kunt u het programma beëindigen door nogmaals op Enter te drukken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick start gaat u een IoT-hub instellen, een apparaat registreren, een apparaat stroom tot stand brengen tussen toepassingen op het apparaat en de service kant en de stream gebruiken om gegevens heen en weer te sturen tussen de toepassingen.
+In deze quickstart hebt u een IoT-hub ingesteld, een apparaat geregistreerd, een apparaatstroom tussen toepassingen aan de apparaat- en servicezijde tot stand gebracht en de stroom gebruikt om gegevens tussen de toepassingen heen en weer te verzenden.
 
 Gebruik de onderstaande koppelingen voor meer informatie over apparaatstreams:
 

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: spraak, intenties en entiteiten herkennen-spraak service'
+title: 'Quickstart: Spraak, intenties en entiteiten herkennen - Speech-service'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u de Speech SDK voor het interactief herkennen van spraak van audio gegevens die zijn vastgelegd van een microfoon.
+description: In deze quickstart gebruikt u de Speech SDK voor het interactief herkennen van spraak vanuit audiogegevens die zijn vastgelegd met een microfoon.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,15 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: erhopf
+ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 67a3b812fef92b0cee25b6710ff9fdd3b3800ee9
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: cd7e72f858bedb8df70a74dffcdf655500cf4709
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391652"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406199"
 ---
-# <a name="quickstart-recognize-speech-intents-and-entities-with-language-understanding-luis"></a>Snelstartgids: spraak, intenties en entiteiten herkennen met Language Understanding (LUIS)
+# <a name="quickstart-recognize-speech-intents-and-entities-with-language-understanding-luis"></a>Quickstart: Spraak, intenties en entiteiten herkennen met Language Understanding (LUIS)
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/intent-recognition/header.md)]

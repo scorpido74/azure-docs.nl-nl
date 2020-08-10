@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c27a50f823dcda74d735e6314c9004ec36769d4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870885"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810306"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Quickstart: Een Xamarin Android-app maken met Azure Spatial Anchors
 
@@ -63,9 +63,7 @@ Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleut
 
 Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
 
-Open `Xamarin/SampleXamarin.Android/AzureSpatialAnchorsManager.cs`.
-
-Zoek `AzureSpatialAnchorsManager(Session arCoreSession)` en voeg de volgende regel toe waarbij u uw accountdomein van eerder gebruikt: `this.spatialAnchorsSession.Configuration.AccountDomain = "MyAccountDomain";`.
+Zoek het veld `SpatialAnchorsAccountDomain` en vervang `Set me` door het accountdomein.
 
 ## <a name="deploy-the-app-to-your-android-device"></a>De app op uw Android-apparaat implementeren
 

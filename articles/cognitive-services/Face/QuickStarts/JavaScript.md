@@ -1,32 +1,33 @@
 ---
-title: 'Snelstart: Gezichten in een afbeelding detecteren met de REST API en JavaScript'
+title: 'Quickstart: Gezichten in een afbeelding detecteren met de REST API en JavaScript'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart detecteert u gezichten in een afbeelding met behulp van de Face-API met JavaScript in Cognitive Services.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
+ms.custom: devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: e94dc53fa5c0a6f44417324c9a7d7c1496d18f17
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: 15b9c78a1ca24077ce88c77759519cc08076abd5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986627"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405939"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en JavaScript
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Quickstart: Gezichten in een afbeelding detecteren met de REST API en JavaScript
 
-In deze Quick Start gebruikt u de Azure face REST API met Java script om menselijke gezichten in een installatie kopie te detecteren.
+In deze quickstart gebruikt u de Azure Face REST API met JavaScript om menselijke gezichten in een afbeelding te detecteren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Een Face-resource maken"  target="_blank">maakt u een Face-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Face-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 * Een code-editor zoals [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="initialize-the-html-file"></a>Het HTML-bestand initialiseren
@@ -44,7 +45,7 @@ Maak een nieuw HTML-bestand, *detectFaces.html*, en voeg de volgende code toe.
 </html>
 ```
 
-Voeg vervolgens de volgende code toe in het element `body` van het document. Met deze code wordt een basis gebruikers interface ingesteld met een URL-veld, een knop **vlak analyseren** , een antwoord venster en een afbeeldings weergave deel venster.
+Voeg vervolgens de volgende code toe in het element `body` van het document. Met deze code wordt een eenvoudige gebruikersinterface ingesteld met een URL-veld, een knop **Gezicht analyseren**, een antwoordvenster en een venster voor de weergave van afbeeldingen.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -68,7 +69,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>Het JavaScript-script schrijven
 
-Voeg de volgende code rechtstreeks boven het element `h1` toe in uw document. Met deze code wordt de Java script-code ingesteld die de Face-API aanroept.
+Voeg de volgende code rechtstreeks boven het element `h1` toe in uw document. Met deze code wordt de JavaScript-code ingesteld waarmee de Face-API wordt aangeroepen.
 
 ```html
 <script type="text/javascript">
@@ -127,7 +128,7 @@ Voeg de volgende code rechtstreeks boven het element `h1` toe in uw document. Me
 </script>
 ```
 
-U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet de `uriBase` teken reeks wijzigen zodat deze de juiste eindpunt teken reeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
+U moet het veld `subscriptionKey` bijwerken met de waarde van uw abonnementssleutel en de tekenreeks `uriBase` zo wijzigen dat deze de juiste eindpunttekenreeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -137,7 +138,7 @@ Open *detectFaces.html* in uw browser. Wanneer u op de knop **Gezicht analyseren
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-De volgende tekst is een voor beeld van een geslaagde JSON-reactie.
+De volgende tekst is een voorbeeld van een geslaagd JSON-antwoord.
 
 ```json
 [
@@ -233,7 +234,7 @@ De volgende tekst is een voor beeld van een geslaagde JSON-reactie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Java script-script geschreven dat de Azure face-service aanroept om gezichten te detecteren in een installatie kopie en de kenmerken ervan te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
+In deze quickstart hebt u een JavaScript-script geschreven waarmee de Azure Face-service wordt aangeroepen om gezichten in een afbeelding te detecteren en de gezichtskenmerken te retourneren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
 
 > [!div class="nextstepaction"]
 > [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

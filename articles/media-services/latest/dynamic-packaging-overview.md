@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 07/31/2020
 ms.author: juliako
-ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090107"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489772"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische pakketten in Media Services v3
 
@@ -33,6 +33,8 @@ In Media Services vertegenwoordigt een [streaming-eindpunt](streaming-endpoint-c
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Voorbereiding van de bronbestanden voor levering
 
 U moet uw mezzaninebestand (bronbestand) [coderen](encoding-concept.md) in een set multi-bitrate MP4-bestanden (ISO Base Media 14496-12) om gebruik te maken van dynamische pakketten. U moet een [asset](assets-concept.md) hebben met de gecodeerde MP4- en streaming-configuratiebestanden die nodig zijn voor dynamische pakketten van Media Services. Vanuit deze set MP4-bestanden kunt u dynamische pakketten gebruiken voor het leveren van video via de protocollen voor streaming media die hieronder worden beschreven.
+
+Dynamische pakketten van Azure Media Services ondersteunen alleen video- en audiobestanden in de MP4-containerindeling. Audiobestanden moeten ook worden gecodeerd in een MP4-container wanneer alternatieve codecs, zoals Dolby, worden gebruikt.  
 
 > [!TIP]
 > Eén manier om de MP4- en streamingconfiguratiebestanden op te halen is door [uw mezzanine-bestand te coderen met Media Services](#encode-to-adaptive-bitrate-mp4s). 
@@ -87,7 +89,7 @@ In het volgende diagram ziet u de werkstroom voor streaming on demand met dynami
 
 ![Diagram van een werkstroom voor streaming on demand met dynamische pakketten](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Het downloadpad is aanwezig in de bovenstaande afbeelding om te laten zien dat u een MP4-bestand rechtstreeks via het *streaming-eindpunt* (origin) kunt downloaden (u geeft het downloadbare [streaming-beleid](streaming-policy-concept.md) op in de streaming-locator).<br/>Het dynamische pakket wijzigt het bestand niet. 
+Het downloadpad is aanwezig in de bovenstaande afbeelding om te laten zien dat u een MP4-bestand rechtstreeks via het *streaming-eindpunt* (origin) kunt downloaden (u geeft het downloadbare [streaming-beleid](streaming-policy-concept.md) op in de streaming-locator).<br/>Het dynamische pakket wijzigt het bestand niet. U kunt eventueel de API's van Azure Blob Storage gebruiken als u een MP4 rechtstreeks wilt openen voor progressief downloaden als u de functies voor het *streaming-eindpunt* wilt omzeilen. 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>Coderen naar MP4's met adaptieve bitsnelheid
 
@@ -123,17 +125,17 @@ Zie [Overzicht van live streamen](live-streaming-overview.md) voor informatie ov
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Video-codecs die worden ondersteund door dynamische pakketten
 
-Dynamische pakketten ondersteunen MP4-bestanden die video bevatten die is gecodeerd met [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC of AVC1) of [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 of hvc1).
+Dynamische pakketten ondersteunen videobestanden in de bestandsindeling MP4-container en bevatten video die is gecodeerd met [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC of AVC1) of [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 of hvc1).
 
 > [!NOTE]
 > Resoluties van maximaal 4.000 en framesnelheden van maximaal 60 frames per seconde zijn getest met *dynamische pakketten*. De [Premium-encoder](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) ondersteunt het coderen van H. 265 via de oudere v2-API's.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Audio-codecs die worden ondersteund door dynamische pakketten
 
-Dynamische pakketten ondersteunen audio die is gecodeerd met de volgende protocollen:
+Dynamische pakketten ondersteunen ook audiobestanden die zijn opgeslagen in de bestandsindeling MP4-container die gecodeerde audiostroom bevat in een van de volgende codecs:
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 of HE-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 of E-AC3)
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 of HE-AAC v2). 
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 of E-AC3).  De gecodeerde audio moet worden opgeslagen in de MP4-containerindeling om met dynamische pakketten te kunnen werken.
 * Dolby Atmos
 
    Het streamen van Dolby Atmos-inhoud wordt ondersteund voor standaarden zoals het MPEG-DASH-protocol met CSF (Common Streaming Format) of CMAF (Common Media Application Format) gefragmenteerde MP4, en via HLS (HTTP Live Streaming) met CMAF.
@@ -146,6 +148,10 @@ Dynamische pakketten ondersteunen audio die is gecodeerd met de volgende protoco
     * DTS-HD Lossless (no core) (DTSL)
 
 Dynamische pakketten ondersteunen meerdere audiosporen met DASH of HLS (versie 4 of later) voor streaming-assets die meerdere audiosporen met meerdere codecs en talen bevatten.
+
+Voor alle bovenstaande audiocodecs moet de gecodeerde audio worden opgeslagen in de MP4-containerindeling om met dynamische pakketten te kunnen werken. De service biedt geen ondersteuning voor raw-bestandsindelingen van elementaire streams in Blob Storage (het volgende wordt bijvoorbeeld niet ondersteund: .DTS, .AC3.) 
+
+Alleen bestanden met de extensie .mp4 of .mp4a worden ondersteund voor audiopakketten. 
 
 ### <a name="limitations"></a>Beperkingen
 

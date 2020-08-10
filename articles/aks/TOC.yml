@@ -290,8 +290,8 @@
           href: windows-container-powershell.md
         - name: Externe verbinding maken
           href: rdp.md
-        - name: Bekende beperkingen
-          href: windows-node-limitations.md
+        - name: FAQ over Windows Server-containers
+          href: windows-faq.md
         - name: Het Kubernetes-dashboard gebruiken
           href: kubernetes-dashboard.md
         - name: Dockerfiles voor Windows Server-containers maken

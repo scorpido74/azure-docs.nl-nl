@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1864ce5a3c1b5b0b2e0cfe757e66fca2074b764c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125187"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475802"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Quickstart: Een load balancer maken om taken van VM's te verdelen via de Azure-portal
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Quickstart: Een openbare load balancer maken om taken van VM's te verdelen via Azure Portal
 
 Ga aan de slag met Azure Load Balancer via de Azure-portal om een openbare load balancer en drie virtuele machines te maken.
 
@@ -36,7 +36,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[Optie 1 (standaard): Een load balancer maken (Standard SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[Optie 1 (standaard): Een openbare load balancer maken (Standard-SKU)](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Voor productieworkloads wordt de load balancer uit de Standard SKU aanbevolen.  Zie **[Azure Load Balancer-SKU's](skus.md)** voor meer informatie over SKU's.
@@ -76,7 +76,7 @@ In deze sectie configureert u het volgende:
 
 * Load balancer-instellingen voor een back-endadresgroep.
 * Een statustest.
-* Een load balancer-regel en een automatische uitgaande regel.
+* Een load balancer-regel.
 
 ### <a name="create-a-backend-pool"></a>Een back-endpool maken
 
@@ -281,7 +281,7 @@ Zie [Uitgaande verbindingen in Azure](load-balancer-outbound-connections.md) voo
 
 8. Selecteer **Opslaan**.
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[Optie 2: Een load balancer (Basic SKU) maken](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[Optie 2: Een openbare load balancer maken (Basic-SKU)](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Voor productieworkloads wordt de load balancer uit de Standard SKU aanbevolen.  Zie **[Azure Load Balancer-SKU's](skus.md)** voor meer informatie over SKU's.
@@ -468,8 +468,9 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
 5. Selecteer het tabblad **Beheer** of selecteer **Volgende** > **Beheer**.
 
 6. Op het tabblad **Beheer** voert u het volgende in of selecteert u het volgende:
+    
     | Instelling | Waarde |
-    |-|-|
+    |---|---|
     | **Controle** | |
     | Diagnostische gegevens over opstarten | Selecteer **Uit** |
 
@@ -484,6 +485,24 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
     | Naam |  **myVM2** |**myVM3**|
     | Beschikbaarheidsset| **myAvailabilitySet** selecteren | **myAvailabilitySet** selecteren|
     | Netwerkbeveiligingsgroep | Het bestaande **myNSG** selecteren| Het bestaande **myNSG** selecteren|
+
+### <a name="add-virtual-machines-to-the-backend-pool"></a>Virtuele machines toevoegen aan de back-endpool
+
+De virtuele machines die in de vorige stappen zijn gemaakt, moeten worden toegevoegd aan de back-endpool van **myLoadBalancer**.
+
+1. Selecteer **Alle services** in het linkermenu en selecteer **Alle resources**. Selecteer vervolgens **myLoadBalancer** en in de lijst met resources.
+
+2. Selecteer onder **Instellingen** de optie **Back-endpools** en vervolgens **myBackendPool**.
+
+3. Selecteer in **Gekoppeld aan** de optie **Virtuele machines**.
+
+4. Selecteer in het gedeelte **Virtuele machines** de optie **+ Toevoegen**.
+
+5. Schakel de selectievakjes naast **myVM1**, **myVM2** en **myVM3** in.
+
+6. Selecteer **Toevoegen**.
+
+7. Selecteer **Opslaan**.
 
 ---
 

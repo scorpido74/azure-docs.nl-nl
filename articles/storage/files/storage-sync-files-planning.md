@@ -1,18 +1,18 @@
 ---
 title: Een Azure File Sync-implementatie plannen | Microsoft Docs
-description: Meer informatie over hoe u rekening moet houden bij het plannen van een Azure Files-implementatie.
+description: Plan voor een implementatie met Azure File Sync, een service waarmee u een aantal Azure-bestands shares in de cache kunt opslaan op een on-premises Windows Server-of Cloud-VM.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036791"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030658"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 
@@ -271,7 +271,7 @@ De andere belangrijkste methode voor het versleutelen van gegevens is het versle
 
 Azure File Sync werkt niet met NTFS Encrypted File System (NTFS EFS) of versleutelings oplossingen van derden die boven het bestands systeem zitten, maar onder de gegevens stroom van het bestand. 
 
-### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
+### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
 
 > [!NOTE]
 > Met Azure File Sync Service wordt de ondersteuning voor TLS 1.0 en 1,1 op 1 augustus 2020 verwijderd. Alle ondersteunde Azure File Sync agent versies gebruiken standaard al TLS 1.2. Het gebruik van een eerdere versie van TLS kan optreden als TLS 1.2 is uitgeschakeld op uw server of als er een proxy wordt gebruikt. Als u een proxy gebruikt, raden we u aan om de proxy configuratie te controleren. Azure File Sync Service regio's die zijn toegevoegd na 5/1/2020, ondersteunen alleen TLS 1.2 en ondersteuning voor TLS 1.0 en 1,1 worden verwijderd uit bestaande regio's op 1 augustus 2020.  Zie voor meer informatie de [hand leiding](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync)voor het oplossen van problemen.
@@ -311,7 +311,7 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | Canada | Canada - midden | `canadacentral` |
 | Openbaar | Canada | Canada - oost | `canadaeast` |
 | Openbaar | Europa | Europa - noord | `northeurope` |
-| Openbaar | Europa | Europa - west | `westeurope` |
+| Openbaar | Europa | Europa -west | `westeurope` |
 | Openbaar | Frankrijk | Frankrijk - centraal | `francecentral` |
 | Openbaar | Frankrijk | Frankrijk-zuid * | `francesouth` |
 | Openbaar | India | India - centraal | `centralindia` |
@@ -326,14 +326,14 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | VAE | UAE - noord | `uaenorth` |
 | Openbaar | VK | Verenigd Koninkrijk Zuid | `uksouth` |
 | Openbaar | VK | Verenigd Koninkrijk West | `ukwest` |
-| Openbaar | VS | Central US | `centralus` |
+| Openbaar | VS | VS - centraal | `centralus` |
 | Openbaar | VS | VS - oost | `eastus` |
-| Openbaar | VS | US - oost 2 | `eastus2` |
+| Openbaar | VS | VS - oost 2 | `eastus2` |
 | Openbaar | VS | VS - noord-centraal | `northcentralus` |
 | Openbaar | VS | South Central US | `southcentralus` |
 | Openbaar | VS | VS - west-centraal | `westcentralus` |
 | Openbaar | VS | VS - west | `westus` |
-| Openbaar | VS | West US 2 | `westus2` |
+| Openbaar | VS | VS - west 2 | `westus2` |
 | US Gov | VS | VS (overheid) - Arizona | `usgovarizona` |
 | US Gov | VS | VS (overheid) - Texas | `usgovtexas` |
 | US Gov | VS | VS (overheid) - Virginia | `usgovvirginia` |

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht voor nieuws met node. js-Bing News Search uitvoeren REST API'
+title: 'Quickstart: Nieuws zoeken met Node.js - REST API voor Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via Node.js en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -10,39 +10,39 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 24dd1e719b9eb401038d47c4d1c42139258f36f9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: d0ed69aecf03e5c8e3a65e3ac532c02c89b65ba8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872057"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406602"
 ---
-# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Snelstartgids: een zoek opdracht uitvoeren met behulp van node. js en de Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Quickstart: Nieuws zoeken met Node.js en de REST API voor Bing News Search
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige Java script-toepassing wordt een zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven.
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Nieuws zoeken-API te maken. Deze eenvoudige JavaScript-toepassing verzendt een zoekquery naar de API en geeft het JSON-antwoord weer.
 
-Hoewel deze toepassing wordt geschreven in Java script en wordt uitgevoerd in node. js, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Hoewel deze toepassing in JavaScript is geschreven en wordt uitgevoerd in Node.js, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
+De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Nieuwste versie van [Node.js](https://nodejs.org/en/download/).
-* De [Java script-aanvraag bibliotheek](https://github.com/request/request).
+* De [JavaScript-aanvragenbibliotheek](https://github.com/request/request).
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Java script-bestand in uw favoriete IDE of editor en stel de beperkende en HTTPS-vereisten in.
+1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor en stel de vereisten voor striktheid en HTTPS in.
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Maak variabelen voor het API-eind punt, het zoekpad voor de nieuws-API, uw abonnements sleutel en zoek term. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource. 
+2. Maak variabelen voor het API-eindpunt, het zoekpad voor de nieuws-API, uw abonnementssleutel en de zoekterm. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource. 
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -55,7 +55,7 @@ De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/A
 
 1. Definieer een functie met de naam `response_handler` en als parameter de HTTP-aanroep `response`. 
 
-   Voeg code toe aan deze functie in de volgende stappen.
+   Voeg in de volgende stappen code toe aan deze functie.
 
 2. Definieer een variabele voor de hoofdtekst van het JSON-antwoord.  
 
@@ -65,7 +65,7 @@ De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/A
     };
     ```
 
-3. Sla de hoofd tekst van het antwoord op wanneer de `data` markering wordt aangeroepen.
+3. Sla de hoofdtekst van het antwoord op wanneer de vlag `data` wordt aangeroepen.
 
     ```javascript
     response.on('data', function (d) {
@@ -73,7 +73,7 @@ De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/A
     });
     ```
 
-3. Wanneer een `end` vlag is gesignaleerd, kunnen de JSON en kopteksten worden weer gegeven.
+3. Wanneer de vlag `end` wordt gesignaleerd, kunnen het JSON-antwoord en de headers worden weergegeven.
 
     ```javascript
     response.on('end', function () {

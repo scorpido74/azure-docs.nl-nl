@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 2dde784e2f67266b2f6c6ccd7da20f01546bbda7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a045ef0fea70347f168e8ae0cc93e0c359f31dfa
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506482"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031116"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions bindings uitbreidingen registreren
 
-In Azure Functions versie 2. x zijn [bindingen](./functions-triggers-bindings.md) beschikbaar als afzonderlijke pakketten vanuit de functions-runtime. Terwijl .NET functions toegang tot bindingen via NuGet-pakketten maakt, bieden uitbreidings bundels een andere functie toegang tot alle bindingen via een configuratie-instelling.
+Met ingang van Azure Functions versie 2. x zijn [bindingen](./functions-triggers-bindings.md) beschikbaar als afzonderlijke pakketten vanuit de functions-runtime. Terwijl .NET functions toegang tot bindingen via NuGet-pakketten maakt, bieden uitbreidings bundels een andere functie toegang tot alle bindingen via een configuratie-instelling.
 
 Houd rekening met de volgende punten met betrekking tot bindings extensies:
 
@@ -24,30 +24,38 @@ Houd rekening met de volgende punten met betrekking tot bindings extensies:
 
 De volgende tabel geeft aan wanneer en hoe u bindingen registreert.
 
-| Ontwikkelomgeving |Registratie<br/> in functions 1. x  |Registratie<br/> in functies 2. x  |
+| Ontwikkelomgeving |Registratie<br/> in functions 1. x  |Registratie<br/> in functies 3. x/2. x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure Portal|Automatisch|Automatisch|
+|Azure Portal|Automatisch|Automatisch<sup>*</sup>|
 |Ontwikkeling van Non-.NET-talen of lokale Azure core-Hulpprogram Ma's|Automatisch|[Azure Functions Core Tools-en uitbreidings bundels gebruiken](#extension-bundles)|
 |C# Class-bibliotheek met Visual Studio|[NuGet-hulpprogram ma's gebruiken](#vs)|[NuGet-hulpprogram ma's gebruiken](#vs)|
 |C#-klassen bibliotheek met Visual Studio code|N.v.t.|[.NET Core SLI gebruiken](#vs-code)|
 
-## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>Uitbreidings bundels voor lokale ontwikkeling
+<sup>*</sup>Portal maakt gebruik van uitbreidings bundels.
 
-Uitbreidings bundels is een implementatie technologie waarmee u een compatibele set functies binding extensies kunt toevoegen aan uw functie-app. Wanneer u uw app bouwt, worden er een vooraf gedefinieerde set extensies toegevoegd. Extensie pakketten die in een bundel zijn gedefinieerd, zijn compatibel met elkaar, waarmee u conflicten tussen pakketten kunt voor komen. U schakelt uitbreidings bundels in de host.jsvan de app in.  
+## <a name="extension-bundles"></a><a name="extension-bundles"></a>Uitbreidings bundels
 
-U kunt uitbreidings bundels gebruiken met versie 2. x en latere versies van de functions-runtime. Zorg ervoor dat u de nieuwste versie van [Azure functions core tools](functions-run-local.md#v2)gebruikt bij het ontwikkelen van lokale.
+Met uitbreidings bundels kunt u een compatibele set van functies bindings extensies toevoegen aan uw functie-app. Wanneer u bundels gebruikt, wordt er een vooraf gedefinieerde set extensies toegevoegd wanneer u uw app bouwt. Extensie pakketten die in een bundel zijn gedefinieerd, worden geverifieerd om compatibel te zijn met elkaar, waarmee u conflicten tussen pakketten kunt voor komen. Met uitbreidings bundels kunt u voor komen dat u .NET-project code publiceert met een project met non-.NET-functies. U schakelt uitbreidings bundels in de host.jsvan de app in.  
 
-Gebruik uitbreidings bundels voor lokale ontwikkeling met behulp van Azure Functions Core Tools, Visual Studio code en wanneer u op afstand bouwt.
+U kunt uitbreidings bundels gebruiken met versie 2. x en latere versies van de functions-runtime. 
 
-Als u geen uitbreidings bundels gebruikt, moet u de .NET Core 2. x SDK installeren op uw lokale computer voordat u de binding-extensies installeert. Met uitbreidings bundels wordt deze vereiste voor lokale ontwikkeling verwijderd. 
+Gebruik uitbreidings bundels voor lokale ontwikkeling met behulp van Azure Functions Core Tools, Visual Studio code en wanneer u op afstand bouwt. Zorg ervoor dat u de nieuwste versie van [Azure functions core tools](functions-run-local.md#v2)gebruikt bij het ontwikkelen van lokale. Uitbreidings bundels worden ook gebruikt bij het ontwikkelen van functies in de Azure Portal. 
+
+Als u geen uitbreidings bundels gebruikt, moet u de .NET Core 2. x SDK installeren op uw lokale computer voordat u de [bindings uitbreidingen expliciet installeert](#explicitly-install-extensions). Een uitbrei ding. csproj-bestand, waarmee expliciet de vereiste extensies worden gedefinieerd, wordt toegevoegd aan uw project. Met uitbreidings bundels worden deze vereisten voor lokale ontwikkeling verwijderd. 
 
 Als u uitbreidings bundels wilt gebruiken, moet u de *host.jsin* het bestand bijwerken met de volgende vermelding voor `extensionBundle` :
  
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-<a name="local-csharp"></a>
+## <a name="explicitly-install-extensions"></a>Expliciete extensies installeren
 
-## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C \# Class-bibliotheek met Visual Studio
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
+
+## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet-pakketten
+
+Voor een project op basis van C#-klassen bibliotheek moet u uitbreidings bundels installeren die specifiek zijn ontworpen voor projecten die geen klasse zijn 
+
+### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C \# Class-bibliotheek met Visual Studio
 
 In **Visual Studio**kunt u pakketten installeren via de Package Manager-console met behulp van de opdracht [installeren-pakket](/nuget/tools/ps-ref-install-package) , zoals wordt weer gegeven in het volgende voor beeld:
 

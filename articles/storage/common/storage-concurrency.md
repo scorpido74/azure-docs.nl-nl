@@ -1,7 +1,7 @@
 ---
 title: Gelijktijdigheid beheren
 titleSuffix: Azure Storage
-description: Meer informatie over het beheren van gelijktijdigheid voor de blob-, wachtrij-, tabel-en bestands Services.
+description: Meer informatie over het beheren van gelijktijdigheid in Azure Storage voor de blob-, wachtrij-, tabel-en bestands Services. Meer informatie over de drie belangrijkste strategieën voor het gelijktijdig gebruik van gegevens.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504284"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030381"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Gelijktijdigheid beheren in Microsoft Azure Storage
 
@@ -90,13 +90,13 @@ De volgende tabel bevat een overzicht van de container bewerkingen die voorwaard
 
 | Bewerking | Retourneert container ETag-waarde | Accepteert voorwaardelijke kopteksten |
 |:--- |:--- |:--- |
-| Container maken |Yes |No |
-| Container eigenschappen ophalen |Yes |No |
-| Meta gegevens van container ophalen |Yes |No |
+| Container maken |Ja |Nee |
+| Container eigenschappen ophalen |Ja |Nee |
+| Meta gegevens van container ophalen |Ja |Nee |
 | Meta gegevens van container instellen |Ja |Ja |
-| Container-ACL ophalen |Yes |No |
-| Container-ACL instellen |Yes |Ja (*) |
-| Container verwijderen |No |Yes |
+| Container-ACL ophalen |Ja |Nee |
+| Container-ACL instellen |Ja |Ja (*) |
+| Container verwijderen |Nee |Ja |
 | Lease-container |Ja |Ja |
 | Blobs weer geven |Nee |Nee |
 
@@ -108,18 +108,18 @@ De volgende tabel bevat een overzicht van de BLOB-bewerkingen die voorwaardelijk
 |:--- |:--- |:--- |
 | BLOB plaatsen |Ja |Ja |
 | BLOB ophalen |Ja |Ja |
-| BLOB-eigenschappen ophalen |Ja |Ja |
+| Get Blob Properties (Blob-eigenschappen ophalen) |Ja |Ja |
 | BLOB-eigenschappen instellen |Ja |Ja |
 | BLOB-meta gegevens ophalen |Ja |Ja |
 | BLOB-meta gegevens instellen |Ja |Ja |
 | Lease-BLOB (*) |Ja |Ja |
 | Moment opname-BLOB |Ja |Ja |
-| BLOB kopiëren |Yes |Ja (voor de bron-en doel-blob) |
+| BLOB kopiëren |Ja |Ja (voor de bron-en doel-blob) |
 | Kopiëren van BLOB afbreken |Nee |Nee |
-| BLOB verwijderen |No |Yes |
+| BLOB verwijderen |Nee |Ja |
 | Blok keren |Nee |Nee |
 | Blokkerings lijst plaatsen |Ja |Ja |
-| Blokkerings lijst ophalen |Yes |No |
+| Blokkerings lijst ophalen |Ja |Nee |
 | Pagina plaatsen |Ja |Ja |
 | Paginabereiken ophalen |Ja |Ja |
 
@@ -166,7 +166,7 @@ De volgende BLOB-bewerkingen kunnen leases gebruiken voor het beheren van pessim
 
 * BLOB plaatsen
 * BLOB ophalen
-* BLOB-eigenschappen ophalen
+* Get Blob Properties (Blob-eigenschappen ophalen)
 * BLOB-eigenschappen instellen
 * BLOB-meta gegevens ophalen
 * BLOB-meta gegevens instellen
@@ -197,7 +197,7 @@ De volgende container bewerkingen kunnen leases gebruiken voor het beheren van p
 
 Zie voor meer informatie:  
 
-* [Specifying Conditional Headers for Blob Service Operations (Voorwaardelijke headers opgeven voor bewerkingen van de blob-service)](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Voorwaardelijke headers opgeven voor bewerkingen van de blob-service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Lease-container](https://msdn.microsoft.com/library/azure/jj159103.aspx)
 * [Lease-blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
@@ -244,13 +244,13 @@ De volgende tabel bevat een overzicht van hoe de tabel entiteit bewerkingen ETag
 
 | Bewerking | Retourneert ETag-waarde | Vereist if-match-aanvraag header |
 |:--- |:--- |:--- |
-| Entiteiten opvragen |Yes |Nee |
-| Entiteit invoegen |Yes |Nee |
+| Entiteiten opvragen |Ja |Nee |
+| Entiteit invoegen |Ja |Nee |
 | Entiteit bijwerken |Ja |Ja |
 | Entiteit samen voegen |Ja |Ja |
-| Entiteit verwijderen |Nee |Yes |
-| Entiteit invoegen of vervangen |Yes |Nee |
-| Entiteit invoegen of samen voegen |Yes |Nee |
+| Entiteit verwijderen |Nee |Ja |
+| Entiteit invoegen of vervangen |Ja |Nee |
+| Entiteit invoegen of samen voegen |Ja |Nee |
 
 Houd er rekening mee dat de bewerkingen **entiteit invoegen of vervangen** en **entiteit invoegen of samen voegen** *geen* Gelijktijdigheids controles uitvoeren omdat ze geen ETag-waarde naar de Table-service verzenden.  
 

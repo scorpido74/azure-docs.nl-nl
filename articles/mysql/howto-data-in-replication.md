@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: d1012a2afa84270089ae44b1c5d224e65a2e01ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 8/7/2020
+ms.openlocfilehash: dbf3a13ed5a544406950dbcfb5ea8796eceb03c1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118559"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030542"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL Replicatie van inkomende gegevens configureren
 
@@ -37,11 +37,11 @@ Bekijk de [beperkingen en vereisten](concepts-data-in-replication.md#limitations
    > De Azure Database for MySQL-server moet worden gemaakt in de Algemeen of de prijs categorie geoptimaliseerd voor geheugen.
    > 
 
-2. Dezelfde gebruikers accounts en bijbehorende bevoegdheden maken
+1. Dezelfde gebruikers accounts en bijbehorende bevoegdheden maken
 
    Gebruikers accounts worden niet gerepliceerd van de hoofd server naar de replica server. Als u van plan bent gebruikers toegang te geven tot de replica-server, moet u hand matig alle accounts en de bijbehorende bevoegdheden maken op deze nieuw gemaakte Azure Database for MySQL server.
 
-3. Voeg het IP-adres van de hoofd server toe aan de firewall regels van de replica. 
+1. Voeg het IP-adres van de hoofd server toe aan de firewall regels van de replica. 
 
    Firewallregels bijwerken met de [Azure-portal](howto-manage-firewall-using-portal.md) of [Azure CLI](howto-manage-firewall-using-cli.md).
 
@@ -55,7 +55,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
    
    Test de verbinding met de hoofd server door te proberen verbinding te maken vanaf een hulp programma zoals de MySQL-opdracht regel die wordt gehost op een andere computer of op basis van het [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) dat beschikbaar is in de Azure Portal.
 
-2. Binaire logboek registratie inschakelen
+1. Binaire logboek registratie inschakelen
 
    Controleer of binaire logboek registratie is ingeschakeld op de Master door de volgende opdracht uit te voeren: 
 
@@ -67,7 +67,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
 
    Als `log_bin` wordt geretourneerd met de waarde uit, schakelt u binaire logboek registratie in door het bestand My. cnf te bewerken, zodat de `log_bin=ON` server opnieuw wordt opgestart om de wijziging van kracht te laten worden.
 
-3. Instellingen van de hoofd server
+1. Instellingen van de hoofd server
 
    Replicatie van inkomende gegevens vereist dat para meters `lower_case_table_names` consistent zijn tussen de Master-en replica-servers. Deze para meter is standaard 1 in Azure Database for MySQL. 
 
@@ -75,7 +75,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-4. Een nieuwe replicatie functie maken en machtigingen instellen
+1. Een nieuwe replicatie functie maken en machtigingen instellen
 
    Maak een gebruikers account op de hoofd server die is geconfigureerd met replicatie bevoegdheden. Dit kan worden gedaan via SQL-opdrachten of een hulp programma zoals MySQL Workbench. Overweeg of u van plan bent te repliceren met SSL, omdat dit moet worden opgegeven bij het maken van de gebruiker. Raadpleeg de MySQL-documentatie voor meer informatie over het [toevoegen van gebruikers accounts](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) op uw hoofd server. 
 
@@ -115,8 +115,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
 
    ![Replicatie-slave](./media/howto-data-in-replication/replicationslave.png)
 
-
-5. De master-server instellen op de modus alleen-lezen
+1. De master-server instellen op de modus alleen-lezen
 
    Voordat u begint met het dumpen van de data base, moet de server in de modus alleen-lezen worden geplaatst. In de modus alleen-lezen kan de Master geen schrijf transacties verwerken. Beoordeel de impact op uw bedrijf en plan het alleen-lezen venster in een rustige tijd, indien nodig.
 
@@ -125,7 +124,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
    SET GLOBAL read_only = ON;
    ```
 
-6. Naam en offset van binair logboek bestand ophalen
+1. Naam en offset van binair logboek bestand ophalen
 
    Voer de [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) opdracht uit om de huidige binaire logboek bestandsnaam en-offset te bepalen.
     
@@ -138,11 +137,11 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
  
 ## <a name="dump-and-restore-master-server"></a>Hoofd server dumpen en herstellen
 
-1. Alle data bases van de hoofd server dumpen
+1. Bepaal welke data bases en tabellen u wilt repliceren naar Azure Database for MySQL en voer de dump uit vanaf de hoofd server.
+ 
+    U kunt mysqldump gebruiken om data bases van uw Master te dumpen. Raadpleeg [Dump & herstellen](concepts-migrate-dump-restore.md)voor meer informatie. Het is niet nodig om MySQL-bibliotheek en test bibliotheek te dumpen.
 
-   U kunt mysqldump gebruiken om data bases van uw Master te dumpen. Raadpleeg [Dump & herstellen](concepts-migrate-dump-restore.md)voor meer informatie. Het is niet nodig om MySQL-bibliotheek en test bibliotheek te dumpen.
-
-2. De modus lezen/schrijven instellen voor de hoofd server
+1. De modus lezen/schrijven instellen voor de hoofd server
 
    Wanneer de data base is gedumpt, wijzigt u de Master MySQL-server weer in de modus lezen/schrijven.
 
@@ -151,7 +150,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
    UNLOCK TABLES;
    ```
 
-3. Dump bestand herstellen naar nieuwe server
+1. Dump bestand herstellen naar nieuwe server
 
    Herstel het dump bestand naar de server die in de Azure Database for MySQL-service is gemaakt. Raadpleeg [dump & herstellen](concepts-migrate-dump-restore.md) voor het herstellen van een dump bestand naar een MySQL-server. Als het dump bestand groot is, uploadt u het naar een virtuele machine in azure binnen dezelfde regio als de replica server. Herstel het op de Azure Database for MySQL-server vanaf de virtuele machine.
 
@@ -175,33 +174,39 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
    - master_ssl_ca: de context van het CA-certificaat. Als SSL niet wordt gebruikt, geeft u een lege teken reeks door.
        - U wordt aangeraden deze para meter door te geven als een variabele. Raadpleeg de volgende voor beelden voor meer informatie.
 
-> [!NOTE]
-> Als de hoofd server wordt gehost in een Azure-VM, stelt u ' toegang tot Azure-Services toestaan ' in om de Master-en replica servers met elkaar te laten communiceren. Deze instelling kan worden gewijzigd via de **beveiligings** opties voor de verbinding. Raadpleeg de [firewall regels beheren via de portal](howto-manage-firewall-using-portal.md) voor meer informatie.
-
+   > [!NOTE]
+   > Als de hoofd server wordt gehost in een Azure-VM, stelt u ' toegang tot Azure-Services toestaan ' in om de Master-en replica servers met elkaar te laten communiceren. Deze instelling kan worden gewijzigd via de **beveiligings** opties voor de verbinding. Raadpleeg de [firewall regels beheren via de portal](howto-manage-firewall-using-portal.md) voor meer informatie.
+      
    **Voorbeelden**
-
+   
    *Replicatie met SSL*
-
+   
    De variabele `@cert` wordt gemaakt door de volgende mysql-opdrachten uit te voeren: 
-
-   ```sql
-   SET @cert = '-----BEGIN CERTIFICATE-----
-   PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
-   -----END CERTIFICATE-----'
-   ```
-
+   
+      ```sql
+      SET @cert = '-----BEGIN CERTIFICATE-----
+      PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
+      -----END CERTIFICATE-----'
+      ```
+   
    Replicatie met SSL wordt ingesteld tussen een hoofd server die wordt gehost in het domein ' companya.com ' en een replica server die wordt gehost in Azure Database for MySQL. Deze opgeslagen procedure wordt uitgevoerd op de replica. 
-
-   ```sql
-   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
-   ```
+   
+      ```sql
+      CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
+      ```
    *Replicatie zonder SSL*
-
+   
    Replicatie zonder SSL wordt ingesteld tussen een hoofd server die wordt gehost in het domein ' companya.com ' en een replica server die wordt gehost in Azure Database for MySQL. Deze opgeslagen procedure wordt uitgevoerd op de replica.
+   
+      ```sql
+      CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
+      ```
 
-   ```sql
-   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
-   ```
+1. Filteren 
+ 
+   Als u het repliceren van sommige tabellen vanuit uw model wilt overs Laan, moet u de `replicate_wild_ignore_table` Server parameter op de replica server bijwerken. Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) voor meer informatie over deze para meter.
+    
+    U kunt de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md)gebruiken om de para meter bij te werken.
 
 1. Replicatie starten
 

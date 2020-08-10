@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure Resource Graph
 description: Meer informatie over hoe u met de Azure Resource Graph-service complexe query's op schaal kunt uitvoeren op resources in abonnementen en tenants.
-ms.date: 06/29/2020
+ms.date: 07/25/2020
 ms.topic: overview
-ms.openlocfilehash: 9c15ff12f21c1d3d168828eae67de51069cdcada
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970600"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541784"
 ---
 # <a name="what-is-azure-resource-graph"></a>Wat is Azure Resource Graph?
 
@@ -62,6 +62,10 @@ Om Resource Graph te kunnen gebruiken, moet u over de juiste machtigingen beschi
 > Resource Graph gebruikt de voor een principal beschikbare abonnementen tijdens de aanmelding. Als u resources van een nieuw abonnement wilt zien die tijdens een actieve sessie zijn toegevoegd, moet de principal de context vernieuwen. Deze actie wordt automatisch uitgevoerd wanneer u zich afmeldt en opnieuw aanmeldt.
 
 Azure CLI en Azure PowerShell gebruiken abonnementen waartoe de gebruiker toegang heeft. Wanneer u REST API rechtstreeks gebruikt, wordt de lijst met abonnementen aangeboden door de gebruiker. Als de gebruiker toegang heeft tot een van de abonnementen in de lijst, worden de queryresultaten geretourneerd voor de abonnementen waartoe de gebruiker toegang heeft. Dit gedrag is hetzelfde als u bij het aanroepen van [Resourcegroepen - Lijst](/rest/api/resources/resourcegroups/list) \- resourcegroepen krijgt waartoe u toegang hebt, zonder enige indicatie dat het resultaat gedeeltelijk kan zijn. Als er geen abonnementen zijn in de lijst abonnementen waarvoor de gebruiker de juiste rechten heeft, is het antwoord een _403_ (verboden).
+
+> [!NOTE]
+> In de **preview** van de REST API versie `2020-04-01-preview` kan de lijst met abonnementen zijn weggelaten.
+> Wanneer zowel de eigenschap `subscriptions` als de eigenschap `managementGroupId` niet in de aanvraag zijn gedefinieerd, wordt het _bereik_ ingesteld op de tenant. Zie [Bereik van de query](./concepts/query-language.md#query-scope) voor meer informatie.
 
 ## <a name="throttling"></a>Beperking
 

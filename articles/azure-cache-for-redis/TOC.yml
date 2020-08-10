@@ -39,11 +39,11 @@
       items:
         - name: Spring Boot-initialisatie gebruiken
           href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: Caching gebruiken met klassementen
+    - name: Klassementen maken
       href: cache-web-app-cache-aside-leaderboard.md
-    - name: Azure PowerShell
+    - name: Beheren met Azure PowerShell
       href: cache-how-to-manage-redis-cache-powershell.md
-    - name: Azure CLI
+    - name: Beheren met Azure CLI
       href: cli-samples.md
 - name: Concepten
   items:
@@ -65,7 +65,7 @@
     - name: Plannen
       items:
         - name: Een cachelaag selecteren
-          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
+          href: cache-overview.md#choosing-the-right-tier
         - name: Uw cache distribueren via clustering
           href: cache-how-to-premium-clustering.md
         - name: Uw cache behouden met Redis-gegevenspersistentie
@@ -82,6 +82,12 @@
           href: cache-migration-guide.md
         - name: Migreren vanuit Managed Cache Service (afgeschaft)
           href: cache-migrate-to-redis.md
+        - name: Veelgestelde vragen over planning
+          href: cache-planning-faq.md
+    - name: Build
+      items:
+        - name: Veelgestelde vragen over ontwikkeling
+          href: cache-development-faq.md
     - name: Automatiseren
       items:
         - name: Implementeren en beheren met Azure PowerShell
@@ -106,12 +112,22 @@
           href: cache-how-to-redis-cli-tool.md
         - name: TLS 1.0 en 1.1 verwijderen
           href: cache-remove-tls-10-11.md
+        - name: Veelgestelde vragen over beheer
+          href: cache-management-faq.md
     - name: Controleren
       items:
         - name: Bewaken in Azure Portal
           href: cache-how-to-monitor.md
         - name: Waarschuwingen instellen voor uitzonderingen
           href: cache-how-to-monitor.md#operations-and-alerts
+        - name: Veelgestelde vragen over bewaking
+          href: cache-monitor-troubleshoot-faq.md
+    - name: Schalen
+      items:
+        - name: Bijwerken naar een andere grootte en laag
+          href: cache-how-to-scale.md
+        - name: Redis-cluster gebruiken om in/uit te schalen
+          href: cache-how-to-premium-clustering.md
     - name: Problemen vaststellen en oplossen
       items:
         - name: Problemen met Redis-server oplossen
@@ -122,12 +138,8 @@
           href: cache-troubleshoot-timeouts.md
         - name: Problemen met gegevensverlies oplossen
           href: cache-troubleshoot-data-loss.md
-    - name: Schalen
-      items:
-        - name: Bijwerken naar een andere grootte en laag
-          href: cache-how-to-scale.md
-        - name: Redis-cluster gebruiken om in/uit te schalen
-          href: cache-how-to-premium-clustering.md
+        - name: Veelgestelde vragen over probleemoplossing
+          href: cache-monitor-troubleshoot-faq.md
 - name: Naslaginformatie
   items:
     - name: Voorbeelden voor Azure Cache voor Redis

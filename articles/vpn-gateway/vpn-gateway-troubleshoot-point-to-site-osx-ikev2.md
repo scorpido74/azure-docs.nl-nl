@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: problemen met Point-to-site-verbindingen oplossen: Mac OS X-clients'
-description: 'Problemen met punt-naar-site-verbinding van Mac OS X oplossen. Controleer deze instellingen: Server adres, externe ID, lokale ID, verificatie-instellingen en versie van besturings systeem.'
+description: Meer informatie over het oplossen van problemen met Point-to-site-verbindingen van Mac OS X met behulp van de systeem eigen VPN-client en IKEv2.
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: ae7ca9ad69bc5bea20fc959f86e41439bd01cd5c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920752"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030657"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Problemen met punt-naar-site-VPN-verbindingen van Mac OS X VPN-clients oplossen
 

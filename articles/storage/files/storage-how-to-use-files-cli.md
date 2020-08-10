@@ -7,15 +7,16 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95d7abca27ec9db46a72140bc8a61b2841c63fcb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77598558"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495772"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Snelstart: Azure-bestandsshares maken en beheren met Azure CLI
-In deze handleiding worden de basisbeginselen besproken van het werken met [Azure-bestandsshares](storage-files-introduction.md) met behulp van Azure CLI. Azure-bestandsshares zijn net als andere bestandsshares, maar worden in de cloud opgeslagen en ondersteund op het Azure-platform. Azure-bestandsshares ondersteunen het SMB-protocol volgens de industriestandaard en bieden de mogelijkheid bestanden te delen tussen meerdere machines, toepassingen en exemplaren. 
+# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Quickstart: Azure-bestandsshares maken en beheren met Azure CLI
+In deze handleiding worden de basisbeginselen besproken van het werken met [Azure-bestandsshares](storage-files-introduction.md) met behulp van Azure CLI. Azure-bestandsshares zijn net als andere bestandsshares, maar worden in de cloud opgeslagen en ondersteund op het Azure-platform. Azure-bestandsshares ondersteunen het SMB-protocol volgens de industriestandaard en bieden de mogelijkheid bestanden te delen tussen meerdere computers, toepassingen en exemplaren. 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -28,7 +29,7 @@ Azure CLI-opdrachten retourneren standaard JavaScript Object Notation (JSON). JS
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Als u nog geen Azure-resourcegroep hebt, kunt u met de opdracht [az group create](/cli/azure/group) een groep maken. 
 
-In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *VS-West 2* :
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt in de locatie *US - west 2*:
 
 ```azurecli-interactive 
 export resourceGroupName="myResourceGroup"
@@ -43,7 +44,7 @@ az group create \
 ## <a name="create-a-storage-account"></a>Create a storage account
 Een opslagaccount is een gedeelde opslaggroep waarin u Azure-bestandsshares of andere opslagresources, zoals blobs of wachtrijen, kunt implementeren. Een opslagaccount kan een onbeperkt aantal bestandsshares bevatten. Een share kan een onbeperkt aantal bestanden opslaan, tot de capaciteitslimiet van het opslagaccount.
 
-In het volgende voor beeld wordt een opslag account gemaakt met behulp van de opdracht [AZ Storage account create](/cli/azure/storage/account) . Namen van opslagaccounts moeten uniek zijn. Gebruik `$RANDOM` om een nummer toe te voegen aan de naam en deze zo uniek te maken.
+In het volgende voorbeeld wordt een opslagaccount gemaakt met de opdracht [az storage account create](/cli/azure/storage/account). Namen van opslagaccounts moeten uniek zijn. Gebruik `$RANDOM` om een nummer toe te voegen aan de naam en deze zo uniek te maken.
 
 ```azurecli-interactive 
 export storageAccountName="mystorageacct$RANDOM"
@@ -59,7 +60,7 @@ az storage account create \
 ```
 
 > [!Note]  
-> Shares groter dan 5 TiB (Maxi maal 100 TiB per share) zijn alleen beschikbaar in lokaal redundante (LRS) en zone redundante (ZRS) opslag accounts. Verwijder de `--enable-large-file-share` para meter als u een geo-REDUNDANT (GRS) of geo-zone-REDUNDANT (GZRS)-opslag account wilt maken.
+> Shares groter dan 5 TiB (maximaal 100 TiB per share) zijn alleen beschikbaar in lokaal redundante (LRS) en zoneredundante (ZRS) opslagaccounts. Als u een geo-redundante (GRS) of geo-zone-redundante (GZRS) opslagaccount wilt maken, verwijdert u de parameter `--enable-large-file-share`.
 
 ### <a name="get-the-storage-account-key"></a>Opslagaccountsleutel opvragen
 Opslagaccountsleutels regelen de toegang tot resources in een opslagaccount. Wanneer u een opslagaccount maakt, worden de sleutels automatisch gemaakt. U kunt de opslagaccountsleutels voor uw opslagaccount opvragen met de opdracht [az storage account keys list](/cli/azure/storage/account/keys): 
@@ -85,24 +86,24 @@ az storage share create \
     --output none
 ```
 
-De namen van shares mogen alleen kleine letters, cijfers en afbreekstreepjes bevatten, maar mogen niet met een afbreekstreepje beginnen. Zie [shares, directory's, bestanden en meta gegevens benoemen en hiernaar verwijzen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)voor meer informatie over de naamgeving van bestands shares en bestanden.
+De namen van shares mogen alleen kleine letters, cijfers en enkele afbreekstreepjes bevatten, maar mogen niet met een afbreekstreepje beginnen. Zie [Naming and referencing shares, directories, files, and metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Shares, mappen, bestanden en metagegevens een naam geven en hiernaar verwijzen) voor meer informatie over de naamgeving van bestandsshares en bestanden.
 
-## <a name="use-your-azure-file-share"></a>Uw Azure-bestandsshare gebruiken
+## <a name="use-your-azure-file-share"></a>Azure-bestandsshare gebruiken
 Azure Files biedt twee methoden voor het werken met bestanden en mappen in uw Azure-bestandsshare: het [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) volgens de industriestandaard en het [File REST-protocol](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
 
-Zie het volgende document op basis van uw besturingssysteem om een bestandsshare met SMB te koppelen:
+Zie het volgende document op basis van het besturingssysteem om een bestandsshare met SMB te koppelen:
 - [Linux](storage-how-to-use-files-linux.md)
-- [macOS](storage-how-to-use-files-mac.md)
+- [MacOS](storage-how-to-use-files-mac.md)
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Een Azure-bestandsshare gebruiken met het File REST-protocol 
-Het is mogelijk om rechtstreeks met het File REST protocol te werken (handcrafting REST HTTP-aanroepen), maar de meest voorkomende manier om het File REST protocol te gebruiken, is het gebruik van de Azure CLI, de [Azure PowerShell module](storage-how-to-use-files-powershell.md)of een Azure Storage SDK, die allemaal een fraaie wrapper rond het bestand rest protocol in de script-en programmeer taal van uw keuze biedt.  
+Het is mogelijk om rechtstreeks met het File REST-protocol te werken (zelf REST HTTP-aanroepen maken). De meest gebruikelijke manier om het File REST-protocol te gebruiken, is echter met Azure CLI, de [Azure PowerShell-module](storage-how-to-use-files-powershell.md) of een Azure Storage-SDK, die allemaal een mooie wrapper rond het File REST-protocol bieden in de script-/programmeertaal van uw keuze.  
 
 In de meeste gevallen gebruikt u Azure Files en de Azure-bestandsshare via het SMB-protocol, omdat dit u de mogelijkheid biedt om de bestaande toepassingen en hulpprogramma's te gebruiken die u verwacht te kunnen gebruiken, maar er zijn diverse redenen waarom het gebruik van de File REST-API in plaats van SMB voordelen oplevert, zoals:
 
 - U bladert door uw bestandsshare via de Azure Bach Cloud Shell (die geen ondersteuning biedt voor het koppelen van bestandsshares via SMB).
 - U profiteert van serverloze resources, zoals [Azure Functions](../../azure-functions/functions-overview.md). 
-- U maakt een waarde-add-service die werkt met veel Azure-bestands shares, zoals het uitvoeren van back-ups of antivirus scans.
+- U maakt een waarde-toevoegende-service die werkt met veel Azure-bestandsshares, zoals het uitvoeren van back-ups of antivirusscans.
 
 In de volgende voorbeelden ziet u hoe u Azure CLI gebruikt voor het bewerken van een Azure-bestandsshare met het File REST-protocol. 
 
@@ -119,7 +120,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>Bestand uploaden
-Om te laten zien hoe u een bestand kunt uploaden [`az storage file upload`](/cli/azure/storage/file) met behulp van de opdracht, moet u eerst een bestand maken dat u wilt uploaden op het Cloud shell Scratch-station. In het volgende voorbeeld maakt u het bestand en uploadt u het bestand:
+Om te laten zien hoe u een bestand uploadt met behulp van de opdracht [`az storage file upload`](/cli/azure/storage/file), maakt u eerst een bestand dat u naar de scratch-schijf van Cloud Shell kunt uploaden. In het volgende voorbeeld maakt u het bestand en uploadt u het bestand:
 
 ```azurecli-interactive
 cd ~/clouddrive/
@@ -135,7 +136,7 @@ az storage file upload \
 
 Als u Azure CLI lokaal uitvoert, vervangt u `~/clouddrive` door een bestaand pad op uw computer.
 
-Nadat u het bestand hebt geüpload, kunt u de [`az storage file list`](/cli/azure/storage/file) opdracht gebruiken om te controleren of het bestand is geüpload naar uw Azure-bestands share:
+Nadat het bestand is geüpload, kunt u de opdracht [`az storage file list`](/cli/azure/storage/file) gebruiken om te controleren of het bestand daadwerkelijk is geüpload naar uw Azure-bestandsshare:
 
 ```azurecli-interactive
 az storage file list \
@@ -147,7 +148,7 @@ az storage file list \
 ```
 
 ### <a name="download-a-file"></a>Bestand downloaden
-U kunt de [`az storage file download`](/cli/azure/storage/file) opdracht gebruiken om een kopie te downloaden van het bestand dat u hebt geüpload naar het Cloud shell Scratch station:
+U kunt de opdracht [`az storage file download`](/cli/azure/storage/file) gebruiken om een kopie te downloaden van het bestand dat u hebt geüpload naar de scratch-schijf van Cloud Shell:
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
@@ -163,7 +164,7 @@ az storage file download \
 ```
 
 ### <a name="copy-files"></a>Bestanden kopiëren
-Een veelvoorkomende taak is het kopiëren van bestanden van een bestands share naar een andere bestands share. Maak een nieuwe share, zodat u deze functionaliteit ziet. Kopieer het bestand dat u hebt geüpload naar deze nieuwe share met behulp van de opdracht [az storage file copy](/cli/azure/storage/file/copy): 
+Een veelvoorkomende taak is het kopiëren van bestanden tussen bestandsshares. Maak een nieuwe share, zodat u deze functionaliteit ziet. Kopieer het bestand dat u hebt geüpload naar deze nieuwe share met behulp van de opdracht [az storage file copy](/cli/azure/storage/file/copy): 
 
 ```azurecli-interactive
 otherShareName="myshare2"
@@ -202,16 +203,16 @@ az storage file list \
     --output table
 ```
 
-Hoewel de `az storage file copy start` opdracht handig is voor het verplaatsen van bestanden tussen Azure-bestands shares, voor migraties en grotere gegevens `rsync` verplaatsingen, kunt `robocopy` u het beste op macOS en Linux en in Windows. `rsync`en `robocopy` gebruik SMB om de gegevens verplaatsing uit te voeren in plaats van de FILEREST-API.
+Hoewel de opdracht `az storage file copy start` handig is voor het verplaatsen van bestanden tussen Azure-bestandsshares, wordt aanbevolen om voor migraties en grotere gegevensverplaatsingen `rsync` voor macOS en Linux en `robocopy` voor Windows te gebruiken. `rsync` en `robocopy` gebruiken SMB om de gegevensverplaatsingen uit te voeren in plaats van de FileREST-API.
 
 ## <a name="create-and-manage-share-snapshots"></a>Momentopnamen van shares maken en beheren
 Een andere handige taak die u kunt doen met een Azure-bestandsshare is het maken van een momentopname van de share. Een momentopname bevat voor een specifiek moment de actuele inhoud van een Azure-bestandsshare. Momentopnamen van een share zijn vergelijkbaar met bepaalde technologieën van besturingssystemen die u mogelijk al kent, zoals:
 
-- Moment opnamen van [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) voor Linux-systemen.
-- Moment opnamen van [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) voor macOS.
-- [Volume Shadow Copy service (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) voor Windows-bestands systemen, zoals NTFS en ReFS.
+- Momentopnamen van [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) voor Linux-systemen.
+- Momentopnamen van [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) voor macOS.
+- [Volume Shadow Copy Service (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) voor Windows-bestandssystemen, zoals NTFS en ReFS.
  
-U kunt een moment opname van een share maken [`az storage share snapshot`](/cli/azure/storage/share) met behulp van de opdracht:
+U kunt een momentopname van een share maken met behulp van de opdracht [`az storage share snapshot`](/cli/azure/storage/share):
 
 ```azurecli-interactive
 snapshot=$(az storage share snapshot \
@@ -275,7 +276,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Een share-momentopname verwijderen
-U kunt een moment opname van een share verwijderen [`az storage share delete`](/cli/azure/storage/share) met behulp van de opdracht. Gebruik de variabele die de verwijzing `$SNAPSHOT` naar de `--snapshot`-parameter bevat:
+U kunt een momentopname van een share verwijderen met behulp van de opdracht [`az storage share delete`](/cli/azure/storage/share). Gebruik de variabele die de verwijzing `$SNAPSHOT` naar de `--snapshot`-parameter bevat:
 
 ```azurecli-interactive
 az storage share delete \
@@ -287,7 +288,7 @@ az storage share delete \
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Wanneer u klaar bent, kunt u de [`az group delete`](/cli/azure/group) opdracht gebruiken om de resource groep en alle gerelateerde resources te verwijderen: 
+Als u klaar bent, kunt u de opdracht [`az group delete`](/cli/azure/group) gebruiken om de resourcegroep en alle bijbehorende resources te verwijderen: 
 
 ```azurecli-interactive 
 az group delete --name $resourceGroupName

@@ -11,20 +11,21 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: de135b57755919a1d312783409caf3e800e03fd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077997"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761022"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Quickstart: Pushmeldingen instellen in een notification hub
 
 Azure Notification Hubs biedt een push-engine die gebruiksvriendelijk is en kan worden geschaald. Gebruik Notification Hubs om meldingen te verzenden naar elk platform (iOS, Android, Windows, Baidu) en vanaf elke mogelijke back-end (in de cloud of on-premises). Zie [Wat is Azure Notification Hubs?](notification-hubs-push-notification-overview.md) voor meer informatie.
 
-In deze quickstart gebruikt u de PNS-instellingen (Platform Notification System) in Notification Hubs om pushmeldingen in te stellen op meerdere platforms. In de quickstart ziet u de stappen die in de Azure Portal worden gezet.  [Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) bevat instructies voor het gebruik van de Azure CLI.
+In deze quickstart gebruikt u de PNS-instellingen (Platform Notification System) in Notification Hubs om pushmeldingen in te stellen op meerdere platforms. In de quickstart ziet u de stappen die in de Azure Portal worden gezet. [Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) bevat instructies voor het gebruik van de Azure CLI.
 
-Maak nu een notification hub als u dat nog niet hebt gedaan. Zie [Een Azure notification hub maken met behulp van de Azure-portal](create-notification-hub-portal.md) of [Een Azure notification hub maken met behulp van de Azure-CLI](create-notification-hub-azure-cli.md) voor meer informatie
+Maak nu een notification hub als u dat nog niet hebt gedaan. Zie [Een Azure notification hub maken met behulp van Azure Portal](create-notification-hub-portal.md) of [Een Azure notification hub maken met behulp van de Azure-CLI](create-notification-hub-azure-cli.md) voor meer informatie.
 
 ## <a name="apple-push-notification-service"></a>Apple Push Notification Service
 
@@ -108,9 +109,7 @@ Voordat u begint, moet u het volgende hebben:
 
 Verkrijg Azure CLI-verwijzingen voor andere platforms met de opdracht [az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential).
 
----
-
-Zie [Pushmeldingen naar Android-apparaten verzenden](notification-hubs-android-push-notification-google-fcm-get-started.md) voor meer informatie over het pushen van meldingen naar een Android-app.
+Zie [Pushmeldingen naar Android-apparaten verzenden met Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md) voor meer informatie over het verzenden van meldingen naar een Android-app.
 
 ## <a name="windows-push-notification-service"></a>Windows Push Notification Services
 

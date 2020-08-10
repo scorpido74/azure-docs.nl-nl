@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: fb90390814af39b240c9a157f490ee9390afeb8f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843807"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030500"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexering beheren in de API van Azure Cosmos DB voor MongoDB
 
@@ -40,7 +40,7 @@ Bij een query worden meerdere enkelvoudige veld indexen gebruikt, waar beschikba
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Samengestelde indexen (MongoDB Server versie 3,6)
 
-Azure Cosmos DB-API voor MongoDB ondersteunt samengestelde indexen voor accounts die gebruikmaken van versie 3,6 wire protocol. U kunt Maxi maal acht velden in een samengestelde index toevoegen. In tegens telling tot in MongoDB moet u alleen een samengestelde index maken als uw query efficiënt moet worden gesorteerd op meerdere velden tegelijk. Voor query's met meerdere filters die niet hoeven te worden gesorteerd, maakt u meerdere enkelvoudige veld indexen in plaats van één samengestelde index.
+Azure Cosmos DB-API voor MongoDB ondersteunt samengestelde indexen voor accounts die gebruikmaken van versie 3,6 wire protocol. U kunt Maxi maal acht velden in een samengestelde index toevoegen. **In tegens telling tot in MongoDB moet u alleen een samengestelde index maken als uw query efficiënt moet worden gesorteerd op meerdere velden tegelijk.** Voor query's met meerdere filters die niet hoeven te worden gesorteerd, maakt u meerdere enkelvoudige veld indexen in plaats van één samengestelde index.
 
 Met de volgende opdracht maakt u een samengestelde index voor de velden `name` en `age` :
 
@@ -57,6 +57,9 @@ U kunt ook de voor gaande samengestelde index gebruiken om efficiënt te sortere
 De volg orde van de paden in de samengestelde index moet echter exact overeenkomen met de query. Hier volgt een voor beeld van een query waarvoor een extra samengestelde index is vereist:
 
 `db.coll.find().sort({age:1,name:1})`
+
+> [!NOTE]
+> U kunt geen samengestelde indexen maken voor geneste eigenschappen of matrices.
 
 ### <a name="multikey-indexes"></a>MultiKey-indexen
 

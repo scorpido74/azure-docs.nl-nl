@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Computer Vision 2,0 en 2,1-pak gedrukte en handgeschreven tekst-REST, java script'
+title: 'Quickstart: Computer Vision 2.0 en 2.1 - Gedrukte en handgeschreven tekst extraheren - REST, JavaScript'
 titleSuffix: Azure Cognitive Services
-description: In deze Snelstartgids extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision-API met Java script.
+description: In deze quickstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision-API met JavaScript.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 25b60a414278f0bba6358524ec1c4aa1e7d27567
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-javascript
+ms.openlocfilehash: 75c5b8fa8542de2bb3d7bed438d6025303f75cb0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986807"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407384"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Snelstartgids: gedrukte en handgeschreven tekst extra heren met behulp van de Computer Vision REST API en Java script
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Quickstart: Gedrukte en handgeschreven tekst extraheren met behulp van de Computer Vision REST API en JavaScript
 
-In deze Quick Start haalt u gedrukte en handgeschreven tekst uit een afbeelding op met behulp van de Computer Vision REST API. Met de [methoden lezen en](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) [Lees resultaat ophalen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) kunt u tekst in een afbeelding detecteren en herkende tekens uitpakken in een door een machine Lees bare teken stroom. 
+In deze snelstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision REST API. Met de methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) en [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren. 
 
 > [!IMPORTANT]
-> De methode [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de batch Read-methode een URI in de waarde van het `Operation-Location` veld Antwoord header. U kunt deze URI vervolgens aanroepen, waarmee de API [Get Lees resultaat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) wordt aangegeven om de status te controleren en de resultaten van de aanroep van de methode Read te retour neren.
+> De methode [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode Batch Read een URI in de waarde van het antwoordheader-veld `Operation-Location`. Deze URI vertegenwoordigt de [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)-API en u kunt deze URI aanroepen om de status te controleren en de resultaten van de aanroep van de Read-methode te retourneren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Een Azure-abonnement - [Maak een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
@@ -38,10 +38,10 @@ In deze Quick Start haalt u gedrukte en handgeschreven tekst uit een afbeelding 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
 1. Kopieer de volgende code naar een teksteditor.
-1. U kunt eventueel de waarde van het `value` kenmerk voor het `inputImage` besturings element vervangen door de URL van een andere afbeelding waaruit u tekst wilt extra heren.
+1. Vervang eventueel de waarde van het kenmerk `value` voor het besturingselement `inputImage` door de URL van een andere afbeelding waaruit u tekst wilt extraheren.
 1. Sla de code op als een bestand met de extensie `.html`. Bijvoorbeeld `get-text.html`.
 1. Open een browservenster.
-1. Wanneer de webpagina wordt weer gegeven in de browser, vult u de vereiste para meters in en kiest u de knop **afbeelding lezen** .
+1. Wanneer de webpagina wordt weergegeven in de browser, vult u de vereiste parameters in en selecteert u de knop **Afbeelding lezen**.
 
 ```html
 <!DOCTYPE html>
@@ -387,7 +387,7 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldwebpagin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Een Java script-toepassing verkennen die gebruikmaakt van Computer Vision voor het uitvoeren van optische teken herkenning (OCR). miniaturen met slimme bijgesneden maken; en het detecteren, categoriseren, labelen en beschrijven van visuele functies in afbeeldingen. 
+Bekijk een JavaScript-toepassing die gebruikmaakt van Computer Vision om optische tekenherkenning (Optical Character Recognition of OCR) uit te voeren, maak slim bijgesneden miniaturen en detecteer, categoriseer, label en beschrijf visuele kenmerken in afbeeldingen. 
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de Computer Vision-API met JavaScript](../Tutorials/javascript-tutorial.md)

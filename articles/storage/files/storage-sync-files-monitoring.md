@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1d7b29bbd508223888c6f205e25008c0b29fecea
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922931"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031078"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync bewaken
 
@@ -81,17 +81,32 @@ Zie de sectie voor [beelden van waarschuwingen](#alert-examples) voor instructie
 
 ## <a name="storage-sync-service"></a>Opslagsynchronisatieservice
 
-Als u de status van de geregistreerde server, de status van de server eindpunt en de metrische gegevens wilt bekijken, gaat u naar de opslag synchronisatie service in de Azure Portal. U kunt de geregistreerde server status weer geven op de Blade **geregistreerde servers** en server eindpunt status op de Blade **synchronisatie groepen** .
+Als u de status van uw Azure File Sync-implementatie in het **Azure Portal**wilt weer geven, gaat u naar de **opslag synchronisatie service** en vindt u de volgende informatie:
+
+- Status van geregistreerde server
+- Status van server eindpunt
+    - Bestanden die niet worden gesynchroniseerd
+    - Synchronisatie activiteit
+    - Efficiëntie van Cloud lagen
+    - Bestanden die niet worden gelaagd
+    - Fouten intrekken
+- Metrische gegevens
 
 ### <a name="registered-server-health"></a>Status van geregistreerde server
+
+Als u de **status van de geregistreerde server** in de portal wilt bekijken, gaat u naar de sectie **geregistreerde servers** van de **opslag synchronisatie service**.
 
 - Als de status van de **geregistreerde server** **online**is, communiceert de server met succes met de service.
 - Als de status van de **geregistreerde server** **offline wordt weer gegeven**, is het proces voor het controleren van de opslag synchronisatie (AzureStorageSyncMonitor.exe) niet actief of heeft de server geen toegang tot de Azure File Sync-Service. Raadpleeg de [documentatie voor probleem oplossing](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) voor hulp.
 
 ### <a name="server-endpoint-health"></a>Status van server eindpunt
 
-- De eindpunt status van de server in de portal is gebaseerd op de synchronisatie gebeurtenissen die worden vastgelegd in het logboek voor telemetrie op de server (ID 9102 en 9302). Als een synchronisatie sessie mislukt als gevolg van een tijdelijke fout, zoals het annuleren van de fout, wordt de synchronisatie mogelijk nog steeds in orde weer gegeven in de portal zolang de huidige synchronisatie sessie de voortgang wordt gemaakt. Gebeurtenis-ID 9302 wordt gebruikt om te bepalen of er bestanden worden toegepast. Zie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [voortgang van synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie.
-- Raadpleeg de [documentatie voor probleem oplossing](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) voor hulp bij het maken van een synchronisatie fout, omdat de synchronisatie niet wordt uitgevoerd.
+Als u de status van een **Server eindpunt** wilt weer geven in de portal, gaat u naar de sectie **synchronisatie groepen** van de **opslag synchronisatie service** en selecteert u een **synchronisatie groep**.
+
+- De **status van het server eindpunt** en de **synchronisatie** in de portal is gebaseerd op de synchronisatie gebeurtenissen die worden vastgelegd in het logboek voor telemetrie op de server (id 9102 en 9302). Als een synchronisatie sessie mislukt vanwege een tijdelijke fout, zoals het annuleren van de fout, wordt de synchronisatie nog steeds weer gegeven als in orde in de portal zolang de huidige synchronisatie sessie de voortgang (bestanden wordt toegepast). Gebeurtenis-ID 9302 is de gebeurtenis synchronisatie voortgang en gebeurtenis-ID 9102 wordt vastgelegd zodra een synchronisatie sessie is voltooid.  Zie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [voortgang van synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie. Als er een fout wordt weer gegeven in de portal omdat de synchronisatie niet wordt uitgevoerd, raadpleegt u de documentatie voor het [oplossen van problemen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
+- De **bestanden die niet** in de portal worden gesynchroniseerd, zijn gebaseerd op gebeurtenis-id 9121 die wordt vastgelegd in het logboek voor telemetrie op de server. Deze gebeurtenis wordt geregistreerd voor elke item fout wanneer de synchronisatie sessie is voltooid. Als u fouten per item wilt oplossen, raadpleegt u [Hoe kan ik controleren of er specifieke bestanden of mappen zijn die niet worden gesynchroniseerd?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+- Als u de **efficiëntie van de Cloud lagen** in de portal wilt bekijken, gaat u naar de eigenschappen van het **Server eindpunt** en navigeert u naar de sectie **Cloud-laag** . De gegevens voor de efficiëntie van de Cloud lagen zijn gebaseerd op gebeurtenis-ID 9071 die is vastgelegd in het logboek voor telemetrie-gebeurtenissen op de server. Zie [overzicht van Cloud lagen](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering)voor meer informatie.
+- Ga naar de eigenschappen van het **Server eindpunt** en navigeer naar het gedeelte **Cloud-Tiering** om bestanden weer te geven die **niet zijn gelaagd** en fouten in de portal **intrekken** . **Bestanden die niet worden gelaagd** , zijn gebaseerd op gebeurtenis-id 9003 die is geregistreerd in het logboek voor telemetrie op de server en fouten in het **intrekken** van gebeurtenissen zijn gebaseerd op gebeurtenis-id 9006. Zie problemen oplossen met bestanden die niet kunnen worden [getierd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) en [het oplossen van problemen met bestanden die niet kunnen worden ingetrokken](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)voor informatie over het onderzoeken van bestanden die niet kunnen worden gelaagd of ingetrokken.
 
 ### <a name="metric-charts"></a>Metrische grafieken
 
@@ -112,13 +127,13 @@ Als u de status van de geregistreerde server, de status van de server eindpunt e
 
 ## <a name="windows-server"></a>Windows Server
 
-Op de Windows-Server waarop de Azure File Sync-agent is geïnstalleerd, kunt u Cloud lagen, geregistreerde servers en synchronisatie status weer geven.
+Op de **Windows-Server** waarop de Azure file sync-agent is geïnstalleerd, kunt u de status van de server eindpunten op die server weer geven met behulp van de **gebeurtenis logboeken** en **prestatie meter items**.
 
 ### <a name="event-logs"></a>Gebeurtenislogboeken
 
 Gebruik het telemetrie-gebeurtenis logboek op de server om de geregistreerde server-, synchronisatie-en Cloud-laag status te bewaken. Het logboek voor telemetrie bevindt zich in Logboeken onder *toepassingen en Services\Microsoft\FileSync\Agent*.
 
-Synchronisatie status:
+Synchronisatie status
 
 - Gebeurtenis-ID 9102 wordt vastgelegd zodra een synchronisatie sessie is voltooid. Gebruik deze gebeurtenis om te bepalen of synchronisatie sessies zijn geslaagd (**HResult = 0**) en of er synchronisatie fouten per item zijn. Zie de documentatie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [fouten per artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) voor meer informatie.
 
@@ -129,11 +144,11 @@ Synchronisatie status:
 
 - Gebeurtenis-ID 9302 wordt elke 5 tot 10 minuten geregistreerd als er een actieve synchronisatie sessie is. Gebruik deze gebeurtenis om te bepalen of de huidige synchronisatie sessie voortgang maakt (**AppliedItemCount > 0**). Als de synchronisatie niet wordt uitgevoerd, wordt de synchronisatie sessie uiteindelijk mislukt en wordt er een gebeurtenis-ID 9102 in het logboek geregistreerd met de fout. Zie de [voortgangs documentatie over synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie.
 
-Status van geregistreerde server:
+Status van geregistreerde server
 
 - Gebeurtenis-ID 9301 wordt elke 30 seconden geregistreerd wanneer een server de service voor taken opvraagt. Als GetNextJob eindigt met **status = 0**, kan de server met de service communiceren. Als GetNextJob met een fout is voltooid, raadpleegt u de [documentatie voor probleem oplossing](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) voor hulp.
 
-Status van Cloud lagen:
+Status van Cloud lagen
 
 - Als u de activiteit voor het bijhouden van lagen op een server wilt bewaken, gebruikt u gebeurtenis-ID 9003, 9016 en 9029 in het logboek voor telemetrie, dat zich bevindt in Logboeken onder *toepassingen en Services\Microsoft\FileSync\Agent*.
 

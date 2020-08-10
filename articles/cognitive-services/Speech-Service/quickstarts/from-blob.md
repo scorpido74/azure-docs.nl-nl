@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in Blob Storage'
+title: 'Quickstart: Spraak herkennen die is opgeslagen in blobopslag'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u de batch transcriptie REST API om de spraak die is opgeslagen in een SAS-BLOB Asynchroon te herkennen.
+description: In deze quickstart gebruikt u de REST API voor batchtranscriptie om de in een SAS-blob opgeslagen spraak asynchroon te herkennen.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,15 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: trbye
+ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 1469e02b675af9458b6cbdf9d05edca0185ab984
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: 4d284dab671b86b4cbbe31b9689bba9450a71311
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391669"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406165"
 ---
-# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Quick Start: spraak herkennen die zijn opgeslagen in Blob Storage
+# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Quickstart: Spraak herkennen die is opgeslagen in blobopslag
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]

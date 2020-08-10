@@ -1,6 +1,6 @@
 ---
-title: Beheer van beheer eenheden (preview)-Azure AD | Microsoft Docs
-description: Beheer eenheden gebruiken voor meer gedetailleerde delegering van machtigingen in Azure Active Directory
+title: Beheer van beheereenheden (preview) - Azure AD | Microsoft Docs
+description: Beheereenheden gebruiken voor een meer gedetailleerde delegatie van machtigingen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,101 +9,101 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a01bb7d2f4aa3d31204d6235e955e82e471d5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 093f4f3cd54f1e4638a0fbcd161a2af4fecba5da
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729044"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475784"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Beheer van beheer eenheden in Azure Active Directory (preview-versie)
+# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Beheer van beheereenheden in Azure Active Directory (preview)
 
-In dit artikel worden administratieve eenheden in Azure Active Directory (Azure AD) beschreven. Een beheer eenheid is een Azure AD-resource die een container kan zijn voor andere Azure AD-resources. In deze preview-versie kan een administratieve eenheid alleen gebruikers en groepen bevatten.
+In dit artikel worden beheereenheden in Azure Active Directory (Azure AD) beschreven. Een beheereenheid is een Azure AD-resource die een container kan zijn voor andere Azure AD-resources. In deze preview-versie kan een beheereenheid alleen gebruikers en groepen bevatten.
 
-Met beheer eenheden kunt u beheerders machtigingen verlenen die zijn beperkt tot een afdeling, regio of ander segment van uw organisatie die u definieert. U kunt administratieve eenheden gebruiken om machtigingen te delegeren aan regionale beheerders of om beleid op een gedetailleerd niveau in te stellen. Een gebruikers account beheerder kan bijvoorbeeld profiel gegevens bijwerken, wacht woorden opnieuw instellen en licenties voor gebruikers alleen in hun administratieve eenheid toewijzen.
+Met beheereenheden kunt u beheerdersmachtigingen verlenen die zijn beperkt tot een afdeling, een regio of een ander door u gedefinieerd segment van uw organisatie. U kunt beheereenheden gebruiken om machtigingen te delegeren aan regionale beheerders of om een beleid op een gedetailleerd niveau in te stellen. Beheerders van gebruikersaccounts kunnen bijvoorbeeld profielgegevens bijwerken, wachtwoorden opnieuw instellen en licenties toewijzen voor uitsluitend gebruikers die in hun beheereenheid zijn opgenomen.
 
- Bijvoorbeeld het delegeren van regionale ondersteunings specialisten is de beheerdersrol van de [helpdesk beheerder](directory-assign-admin-roles.md#helpdesk-administrator) beperkt tot het beheren van alleen de gebruikers in de regio die ze ondersteunen.
+ Wanneer u bijvoorbeeld de rol [Helpdeskbeheerder](directory-assign-admin-roles.md#helpdesk-administrator) delegeert aan regionale ondersteuningsspecialisten, is dat beperkt tot het beheren van uitsluitend de gebruikers in de regio die ze ondersteunen.
 
 ## <a name="deployment-scenario"></a>Implementatiescenario
 
-Het beperken van het beheer bereik met behulp van administratieve eenheden kan nuttig zijn in organisaties die bestaan uit onafhankelijke divisies van welke aard dan ook. Bekijk het voor beeld van een grote universiteit die bestaat uit een groot aantal zelfstandige scholen (school van bedrijf, school van engineering, enzovoort) die elk een team van IT-beheerders heeft die de toegang beheren, gebruikers beheren en beleids regels voor hun school instellen. Een centrale beheerder kan het volgende doen:
+Het beperken van het beheerbereik met behulp van beheereenheden kan nuttig zijn in organisaties die bestaan uit onafhankelijke divisies van welke aard dan ook. Neem bijvoorbeeld een grote universiteit die bestaat uit een groot aantal zelfstandige faculteiten (Bedrijfskunde, Technische wetenschappen, enzovoort), die elk over een team IT-beheerders beschikken die de toegang regelen, gebruikers beheren en beleidsregels voor hun school instellen. Een centrale beheerder kan het volgende doen:
 
-- Een rol maken met beheerders machtigingen van alleen Azure AD-gebruikers in de Business School-beheer eenheid
-- Een administratieve eenheid maken voor de school van het bedrijf
-- De beheerder-eenheid vullen met alleen de studenten en mede werkers van zakelijke school
-- Het IT-team van de zakelijke school toevoegen aan de rol met hun bereik
+- Een rol maken met beheerdersmachtigingen die betrekking hebben op uitsluitend Azure AD-gebruikers in de beheereenheid voor de faculteit Bedrijfskunde
+- Een beheereenheid maken voor de faculteit Bedrijfskunde
+- De beheereenheid vullen met uitsluitend de studenten en medewerkers van de faculteit Bedrijfskunde
+- Het IT-team van de faculteit Bedrijfskunde toevoegen aan de rol met hun bereik
 
 ## <a name="license-requirements"></a>Licentievereisten
 
-Voor het gebruik van beheer eenheden is een Azure Active Directory Premium licentie vereist voor elke beheerder van de beheer eenheid en Azure Active Directory Free licenties voor leden van de beheer eenheid. Zie [aan de slag met Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)voor meer informatie.
+Voor het gebruik van beheereenheden is een Azure Active Directory Premium-licentie vereist voor elke beheerder van een beheereenheid en Azure Active Directory Free-licenties voor leden van de beheereenheid. Zie [Aan de slag met Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) voor meer informatie.
 
-## <a name="manage-administrative-units"></a>Beheer eenheden beheren
+## <a name="manage-administrative-units"></a>Beheereenheden beheren
 
-In deze preview-versie kunt u beheer eenheden beheren met behulp van de Azure Portal, Power shell-cmdlets en scripts of de Microsoft Graph. Raadpleeg de documentatie voor meer informatie:
+In deze preview-versie kunt u beheereenheden beheren met behulp van Azure Portal, PowerShell-cmdlets en -scripts of de Microsoft Graph. U kunt onze documentatie raadplegen voor meer informatie:
 
-- [Rollen maken, verwijderen, vullen en toevoegen aan beheer eenheden](roles-admin-units-manage.md): procedures voor volt ooien
-- [Werken met beheerders eenheden](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0): werken met beheer eenheden met behulp van Power shell
-- [Graph-ondersteuning voor administratieve](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta)eenheden: gedetailleerde documentatie over Microsoft Graph voor beheer eenheden.
+- [Rollen maken, verwijderen, vullen en toevoegen aan beheereenheden](roles-admin-units-manage.md): Instructieprocedures uitvoeren
+- [Werken met beheereenheden](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0): Werken met beheereenheden met behulp van PowerShell
+- [Graph-ondersteuning voor beheereenheden](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta): Gedetailleerde documentatie over Microsoft Graph voor beheereenheden.
 
-### <a name="planning-your-administrative-units"></a>Uw beheer eenheden plannen
+### <a name="planning-your-administrative-units"></a>Uw beheereenheden plannen
 
-Beheer eenheden kunnen worden gebruikt voor het logisch groeperen van Azure AD-resources. Bijvoorbeeld: voor een organisatie waarvan de IT-afdeling wereld wijd is gespreid, kan het zinvol zijn om beheer eenheden te maken die deze geografische grenzen definiëren. In een ander scenario waarbij een Multi-National organisatie verschillende ' suborganisatie ' heeft, die semi-autonoom in bewerkingen zijn, kan elke subgroep worden vertegenwoordigd door een administratieve eenheid.
+Beheereenheden kunnen worden gebruikt voor het logisch groeperen van Azure AD-resources. Het kan bijvoorbeeld voor een organisatie waarvan de IT-afdeling over de hele wereld is verspreid zinvol zijn om beheereenheden te maken waarmee deze geografische grenzen worden gedefinieerd. In een ander scenario waarin een multinationale organisatie verschillende suborganisaties heeft die semi-autonoom hun activiteiten uitvoeren, kan voor elke suborganisatie een beheereenheid worden gebruikt.
 
-De criteria voor het maken van administratieve eenheden worden geleid door de unieke vereisten van een organisatie. Beheer eenheden zijn een gemeen schappelijke manier om structuur te definiëren tussen M365-Services. We raden u aan om uw administratieve eenheden voor te bereiden met het gebruik ervan in M365 Services. U kunt de maximale waarde van administratieve eenheden ophalen wanneer u algemene resources aan M365 in een administratieve eenheid kunt koppelen.
+De criteria voor het maken van beheereenheden worden bepaald door de unieke vereisten van een organisatie. Beheereenheden zijn een veelgebruikte manier om structuur aan te brengen in M365-services. We raden u aan om bij het voorbereiden van uw beheereenheden rekening te houden met het gebruik ervan in M365-services. U kunt beheereenheden optimaal benutten wanneer u veelgebruikte resources in M365 kunt koppelen in een beheereenheid.
 
-U kunt het maken van administratieve eenheden in de organisatie verwachten door de volgende fasen door te lopen:
+Het maken van beheereenheden in de organisatie doorloopt doorgaans de volgende fasen:
 
-1. Eerste acceptatie: uw organisatie begint met het maken van administratieve eenheden op basis van de initiële criteria en het aantal administratieve eenheden neemt toe naarmate de criteria worden verfijnd.
-1. Weghalen: zodra de criteria goed zijn gedefinieerd, worden de beheer eenheden die niet meer nodig zijn, verwijderd.
-1. Stabilisatie: de structuur van uw organisatie is duidelijk gedefinieerd en het aantal administratieve eenheden wordt niet aanzienlijk gewijzigd gedurende een korte periode.
+1. Eerste aanname: Uw organisatie begint met het maken van beheereenheden op basis van aanvankelijke criteria en het aantal beheereenheden zal toenemen naarmate de criteria worden verfijnd.
+1. Snoeien: Wanneer de criteria goed zijn gedefinieerd, worden beheereenheden verwijderd die niet meer nodig zijn.
+1. Stabilisatie: De structuur van uw organisatie is duidelijk gedefinieerd en het aantal beheereenheden zal op korte termijn niet beduidend veranderen.
 
-## <a name="currently-supported-scenarios"></a>Momenteel ondersteunde scenario's
+## <a name="currently-supported-scenarios"></a>Scenario's die momenteel worden ondersteund
 
-Globale beheerders of beheerders van bevoegde rollen kunnen de Azure AD-Portal gebruiken om beheer eenheden te maken, gebruikers als leden van beheer eenheden toe te voegen en vervolgens IT-mede werkers toe te wijzen aan beheerders rollen met beheer eenheden. De beheerders van de beheer eenheid kunnen vervolgens de Office 365-Portal gebruiken voor het basis beheer van gebruikers in hun beheer eenheden.
+Globale beheerders of beheerders voor bevoorrechte rollen kunnen de Azure AD-portal gebruiken om beheereenheden te maken, gebruikers als leden van beheereenheden toe te voegen en vervolgens IT-medewerkers toe te wijzen aan beheerdersrollen voor specifieke beheereenheden. De beheerders van een specifieke beheereenheid kunnen vervolgens de Office 365-portal gebruiken voor het basisbeheer van gebruikers in hun beheereenheden.
 
-Daarnaast kunnen groepen worden toegevoegd als leden van de beheer eenheid en een groeps beheerder met beheerders eenheden die ze kunnen beheren met Power shell, het Microsoft Graph en de Azure AD-Portal.
+Daarnaast kunnen groepen worden toegevoegd als leden van de beheereenheid en een groepsbeheerder voor een specifieke beheereenheid kan ze beheren met PowerShell, Microsoft Graph en de Azure AD-portal.
 
-In de onderstaande tabel wordt de huidige ondersteuning voor beheer-eenheids scenario's beschreven.
+In de onderstaande tabel wordt de huidige ondersteuning voor scenario's met beheereenheden beschreven.
 
-### <a name="administrative-unit-management"></a>Beheer van administratieve eenheden
+### <a name="administrative-unit-management"></a>Het beheren van beheereenheden
 
-Machtigingen |   MS Graph/Power shell   | Azure AD-Portal | Microsoft 365-beheercentrum
+Machtigingen |   MS Graph/PowerShell   | Azure AD-portal | Het Microsoft 365-beheercentrum
 ----------- | ----------------------- | --------------- | -----------------
-Beheer eenheden maken en verwijderen   |    Ondersteund    |   Ondersteund   |    Niet ondersteund
-Leden van de beheer eenheid afzonderlijk toevoegen en verwijderen    |   Ondersteund    |   Ondersteund   |    Niet ondersteund
-Leden van beheer eenheden bulksgewijs toevoegen en verwijderen met het CSV-bestand   |    Niet ondersteund     |  Ondersteund   |    Geen abonnement om te ondersteunen
-Beheerders met beheerders rechten toewijzen  |     Ondersteund    |   Ondersteund    |   Niet ondersteund
-Automatisch AU-leden toevoegen en verwijderen op basis van kenmerken | Niet ondersteund | Niet ondersteund | Niet ondersteund
+Beheereenheden maken en verwijderen   |    Ondersteund    |   Ondersteund   |    Niet ondersteund
+Leden van een beheereenheid afzonderlijk toevoegen en verwijderen    |   Ondersteund    |   Ondersteund   |    Niet ondersteund
+Leden van een beheereenheid bulksgewijs toevoegen en verwijderen met een CSV-bestand   |    Niet ondersteund     |  Ondersteund   |    Geen abonnement die dit ondersteunt
+Beheerders voor een specifieke beheereenheid toewijzen  |     Ondersteund    |   Ondersteund    |   Niet ondersteund
+Leden voor een beheereenheid dynamisch toevoegen en verwijderen op basis van kenmerken | Niet ondersteund | Niet ondersteund | Niet ondersteund
 
 ### <a name="user-management"></a>Gebruikersbeheer
 
-Machtigingen |   MS Graph/Power shell   | Azure AD-Portal | Microsoft 365-beheercentrum
+Machtigingen |   MS Graph/PowerShell   | Azure AD-portal | Het Microsoft 365-beheercentrum
 ----------- | ----------------------- | --------------- | -----------------
-beheer van beheer eenheden van gebruikers eigenschappen, wacht woorden, licenties   |    Ondersteund     |  Ondersteund   |   Ondersteund
-beheer-en blok kering van gebruikers aanmeldingen op beheerders eenheid    |   Ondersteund   |    Ondersteund   |    Ondersteund
-beheer van de gebruiker MFA-referenties met beheer eenheden   |    Ondersteund   |   Ondersteund   |   Niet ondersteund
+beheer van gebruikerseigenschappen, wachtwoorden en licenties voor een specifieke beheereenheid   |    Ondersteund     |  Ondersteund   |   Ondersteund
+blokkeren en deblokkeren van gebruikersaanmeldingen voor een specifieke beheereenheid    |   Ondersteund   |    Ondersteund   |    Ondersteund
+beheer van MFA-referenties van gebruikers voor een specifieke beheereenheid   |    Ondersteund   |   Ondersteund   |   Niet ondersteund
 
 ### <a name="group-management"></a>Groepsbeheer
 
-Machtigingen |   MS Graph/Power shell   | Azure AD-Portal | Microsoft 365-beheercentrum
+Machtigingen |   MS Graph/PowerShell   | Azure AD-portal | Het Microsoft 365-beheercentrum
 ----------- | ----------------------- | --------------- | -----------------
-beheer van beheer eenheden van groeps eigenschappen en leden     |  Ondersteund   |    Ondersteund    |  Niet ondersteund
-beheer van beheer eenheden op groeps licenties   |    Ondersteund  |    Ondersteund   |   Niet ondersteund
+beheer van groepseigenschappen en -leden voor een specifieke beheereenheid     |  Ondersteund   |    Ondersteund    |  Niet ondersteund
+beheer van groepslicenties voor een specifieke beheereenheid   |    Ondersteund  |    Ondersteund   |   Niet ondersteund
 
 > [!NOTE]
 >
-> Beheerders met een bereik van een beheer eenheid kunnen geen regels voor dynamische groepslid maatschappen beheren.
+> Beheerders met het bereik van een beheereenheid kunnen geen dynamische groepslidmaatschapsregels beheren.
 
-Beheer eenheden hebben alleen betrekking op beheer machtigingen. Ze verhinderen niet dat leden of beheerders hun [standaard gebruikers machtigingen](../fundamentals/users-default-permissions.md) kunnen gebruiken om te bladeren door andere gebruikers, groepen of bronnen buiten de administratieve eenheid. In de Office 365-Portal worden gebruikers buiten de administratieve eenheden van een bereik beheerder gefilterd, maar u kunt door andere gebruikers bladeren in de Azure AD-Portal, Power shell en andere micro soft-Services.
+Het bereik van beheereenheden is alleen van toepassing op beheermachtigingen. Ze verhinderen niet dat leden of beheerders hun [standaardgebruikersmachtigingen](../fundamentals/users-default-permissions.md) gebruiken om door andere gebruikers, groepen of resources buiten de beheereenheid te bladeren. In de Office 365-portal worden gebruikers buiten de beheereenheden van een beheerder met een bereik eruit gefilterd, maar u kunt door andere gebruikers bladeren in de Azure AD-portal, PowerShell en andere Microsoft-services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [AUs beheren](roles-admin-units-manage.md)
-- [Gebruikers beheren in AUs](roles-admin-units-add-manage-users.md)
-- [Groepen beheren in AUs](roles-admin-units-add-manage-groups.md)
-- [Scoped rollen toewijzen aan een AU](roles-admin-units-assign-roles.md)
+- [Beheereenheden beheren](roles-admin-units-manage.md)
+- [Gebruikers beheren in beheereenheden](roles-admin-units-add-manage-users.md)
+- [Groepen beheren in beheereenheden](roles-admin-units-add-manage-groups.md)
+- [Rollen met een bereik toewijzen aan een beheereenheid](roles-admin-units-assign-roles.md)

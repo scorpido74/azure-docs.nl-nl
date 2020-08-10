@@ -1,18 +1,18 @@
 ---
-title: Overzicht van de portal Commerciële Marketplace in Partnercentrum
-description: Meer informatie over de portal voor commerciële Marketplace in het partner centrum en het aanbieden en verkopen van aanbiedingen op Azure Marketplace, AppSource en het programma Cloud Solution Provider (CSP).
+title: Overzicht van de portal voor commerciële Marketplace in het partner centrum
+description: Meer informatie over de micro soft Commercial Marketplace-Portal in het partner centrum en over het aanbieden en verkopen van aanbiedingen op Azure Marketplace, AppSource en het programma Cloud Solution Provider (CSP).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c91e6396171511fa3b11b0295504f0ca0d75d15
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047586"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030858"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Overzicht van de portal voor commerciële Marketplace in het partner centrum
 

@@ -2,20 +2,30 @@
 title: Overzicht van Data Lake Analytics
 description: Met Data Lake Analytics kunt u zakelijke beslissingen nemen aan de hand van inzichten die u hebt gekregen uit uw cloudgegevens. Dit kan op elke schaal.
 services: data-lake-analytics
+author: saveenr
+ms.author: saveenr
+ms.reviewer: jasonwhowell
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: 01a38829056d8f96ddc1029fc4df5ec79414e8bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b86b569b1b14b943cdc6dcc805a7b7a208d03447
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321002"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475116"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Wat is Azure Data Lake Analytics?
 
 Azure Data Lake Analytics is een service op aanvraag voor het uitvoeren van analysetaken, om de analyse van big data te vereenvoudigen. U hoeft geen hardware te implementeren, configureren en optimaliseren, maar kunt query's schrijven om uw data te transformeren en waardevolle inzichten te verkrijgen. De analyseservice kan taken van elke schaal onmiddellijk verwerken, door de hoeveelheid rekenkracht die u nodig hebt aan te passen. U betaalt alleen voor de tijd die nodig is voor het uitvoeren van uw taak, wat het gebruik van deze service zeer rendabel maakt. 
+
+## <a name="azure-data-lake-analytics-recent-update-information"></a>Informatie over recente updates van Azure Data Lake Analytics
+
+De Azure Data Lake Analytics-service wordt van tijd tot tijd voor bepaalde doeleinden bijgewerkt. We blijven de ondersteuning voor deze service bieden met updates voor onderdelen, bètaversies van onderdelen, enzovoort. 
+
+- Zie [Wat is er nieuw in Data Lake Analytics?](data-lake-analytics-whats-new.md) voor algemene informatie over recente updates.
+- Raadpleeg de [Releaseopmerking voor Azure Data Lake Analytics](https://github.com/Azure/AzureDataLake/tree/master/docs/Release_Notes) voor details van elke update.
 
 ## <a name="dynamic-scaling"></a>Dynamische schaalbaarheid
   
@@ -41,8 +51,10 @@ Data Lake Analytics is een rendabele oplossing voor het uitvoeren van big data-w
   
 Data Lake Analytics werkt met Azure Data Lake Storage en biedt daarmee de hoogste prestaties, doorvoer en parallellisering. Het werkt ook met Azure Storage-blobs, Azure SQL Database en Azure Synapse Analytics (vroeger Azure SQL Data Warehouse).
 
+
 ## <a name="next-steps"></a>Volgende stappen
 
+* Bekijk de recente update van Azure Data Lake Analytics via [Wat is er nieuw in Azure Data Lake Analytics?](data-lake-analytics-whats-new.md)
 * Aan de slag met Data Lake Analytics met behulp van [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli.md)
 * Azure Data Lake Analytics beheren met behulp van [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md)
 * [Kosten beheersen en geld besparen met Data Lake Analytics](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

@@ -3,12 +3,12 @@ title: Uw resources organiseren met beheergroepen - Azure Governance
 description: Informatie over de managementgroepen, hoe hun machtigingen werken en hoe u ze gebruikt.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132922"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529344"
 ---
 # <a name="what-are-azure-management-groups"></a>Wat zijn Azure-beheergroepen?
 
@@ -38,7 +38,7 @@ Een ander scenario waarbij u beheergroepen kunt gebruiken, is om gebruikers toeg
 
 ## <a name="root-management-group-for-each-directory"></a>Hoofdbeheergroep voor elke map
 
-Elke map krijgt één beheergroep op het hoogste niveau, de 'hoofdbeheergroep'. Deze hoofdbeheergroep is zo in de hiërarchie ingebouwd dat alle beheergroepen en abonnementen hierin zijn opgevouwen. Met deze hoofdbeheergroep kunt u algemene beleidsregels en RBAC-toewijzingen op directoryniveau toepassen. De globale beheerder van Azure AD moet eerst de rol Beheerder gebruikerstoegang van deze hoofdgroep [aan zichzelf toewijzen](../../role-based-access-control/elevate-access-global-admin.md). Nadat hij dit heeft gedaan, kan de beheerder een RBAC-rol toewijzen aan andere directory-gebruikers of -groepen om de hiërarchie te beheren. Als beheerder kunt u uw eigen account toewijzen als eigenaar van de hoofdbeheergroep.
+Elke map krijgt één beheergroep op het hoogste niveau, de 'hoofdbeheergroep'. Deze hoofdbeheergroep is zo in de hiërarchie ingebouwd dat alle beheergroepen en abonnementen hierin zijn opgevouwen. Met deze hoofdbeheergroep kunt u algemene beleidsregels en Azure-roltoewijzingen toepassen op mapniveau. De globale beheerder van Azure AD moet eerst de rol Beheerder gebruikerstoegang van deze hoofdgroep [aan zichzelf toewijzen](../../role-based-access-control/elevate-access-global-admin.md). Nadat hij dit heeft gedaan, kan de beheerder een Azure-rol toewijzen aan andere directory-gebruikers of -groepen om de hiërarchie te beheren. Als beheerder kunt u uw eigen account toewijzen als eigenaar van de hoofdbeheergroep.
 
 ### <a name="important-facts-about-the-root-management-group"></a>Belangrijke feiten over de hoofdbeheergroep
 
@@ -50,7 +50,7 @@ Elke map krijgt één beheergroep op het hoogste niveau, de 'hoofdbeheergroep'. 
   - Wanneer er een nieuw abonnement wordt gemaakt, wordt dit standaard automatisch in de hoofdbeheergroep geplaatst.
 - Alle Azure-klanten kunnen de hoofdbeheergroep zien, maar niet alle klanten hebben de mogelijkheid om die hoofdbeheergroep te beheren.
   - Iedereen die toegang heeft tot een abonnement, kan de context zien van waar dat abonnement zich in de hiërarchie bevindt.  
-  - Niemand krijgt standaard toegang tot de hoofdbeheergroep. Globale beheerders van Azure AD zijn de enige gebruikers die zichzelf toegang kunnen verschaffen. Wanneer ze toegang hebben tot de hoofdbeheergroep, kunnen de globale beheerders elke RBAC-rol toewijzen aan andere gebruikers, zodat deze het beheer daarover hebben  
+  - Niemand krijgt standaard toegang tot de hoofdbeheergroep. Globale beheerders van Azure AD zijn de enige gebruikers die zichzelf toegang kunnen verschaffen. Wanneer ze toegang hebben tot de hoofdbeheergroep, kunnen de globale beheerders elke Azure-rol toewijzen aan andere gebruikers, zodat deze het beheer daarover hebben  
     .
 - In SDK fungeert de hoofdbeheergroep, of tenanthoofdmap, als een beheergroep.
 
@@ -82,12 +82,12 @@ Als u vragen hebt over dit backfill-proces, neemt u contact op met: `managementg
   
 ## <a name="management-group-access"></a>Toegang tot beheergroepen
 
-Azure-beheergroepen ondersteunen [op rollen gebaseerd toegangsbeheer (RBAC) van Azure](../../role-based-access-control/overview.md) voor alle soorten toegang tot resources en roldefinities.
-Deze machtigingen worden overgenomen door onderliggende resources die in de hiërarchie zijn opgenomen. Iedere RBAC-rol kan worden toegewezen aan een beheergroep die door alle onderliggende items in de hiërarchie tot de resources worden overgenomen. Zo kan de RBAC-rol van VM-inzender aan een beheergroep worden toegewezen. Deze rol heeft geen actie in de beheergroep, maar wordt overgenomen door alle VM's in die beheergroep.
+Azure-beheergroepen ondersteunen [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](../../role-based-access-control/overview.md) voor alle soorten toegang tot resources en roldefinities.
+Deze machtigingen worden overgenomen door onderliggende resources die in de hiërarchie zijn opgenomen. Elke Azure-rol kan worden toegewezen aan een beheergroep die door alle onderliggende items in de hiërarchie voor de resources worden overgenomen. Zo kan de Azure-rol VM-inzender aan een beheergroep worden toegewezen. Deze rol heeft geen actie in de beheergroep, maar wordt overgenomen door alle VM's in die beheergroep.
 
 In de volgende tabel staat een lijst met rollen en de acties die worden ondersteund in beheergroepen.
 
-| Naam RBAC-rol             | Maken | Naam wijzigen | Verplaatsen\*\* | Verwijderen | Toegang toewijzen | Beleid toewijzen | Lezen  |
+| Naam van Azure-rol             | Maken | Naam wijzigen | Verplaatsen\*\* | Verwijderen | Toegang toewijzen | Beleid toewijzen | Lezen  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |Eigenaar                       | X      | X      | X        | X      | X             | X             | X     |
 |Inzender                 | X      | X      | X        | X      |               |               | X     |

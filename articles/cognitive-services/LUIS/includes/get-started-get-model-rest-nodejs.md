@@ -1,5 +1,5 @@
 ---
-title: 'Model met REST-aanroep in C ophalen #'
+title: Model ophalen met REST-aanroep in Node.js
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,14 +8,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: a1a72d9be339ed1ee0a1c525ee426047b1768f2f
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d2dd43366068c8b0d5f280a4c5c22ac774824f59
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416367"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407252"
 ---
-[Referentie documentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  Voor [beeld](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-model-with-rest/model.js)
+[Referentiedocumentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [Voorbeeld](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-model-with-rest/model.js)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,19 +27,19 @@ ms.locfileid: "84416367"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="create-the-nodejs-project"></a>Het node. js-project maken
+## <a name="create-the-nodejs-project"></a>Het Node.js-project maken
 
-1. Maak een nieuwe map voor het node. js-project, zoals `node-model-with-rest` .
+1. Maak een nieuwe map voor uw Node.js-project, zoals `node-model-with-rest`.
 
-1. Open een nieuwe opdracht prompt, navigeer naar de map die u hebt gemaakt en voer de volgende opdracht uit:
+1. Open een nieuwe opdrachtprompt, navigeer naar de map die u hebt gemaakt en voer de volgende opdracht uit:
 
     ```console
     npm init
     ```
 
-    Druk op ENTER bij elke prompt om de standaard instellingen te accepteren.
+    Druk op Enter bij elke prompt om de standaardinstellingen te accepteren.
 
-1. Installeer de module voor de aanvraag-ATP door de volgende opdracht in te voeren:
+1. Installeer de module request-promise door de volgende opdracht in te voeren:
 
     ```console
     npm install --save request
@@ -46,29 +47,29 @@ ms.locfileid: "84416367"
     npm install --save querystring
     ```
 
-## <a name="change-model-programmatically"></a>Model via een programma wijzigen
+## <a name="change-model-programmatically"></a>Model programmatisch wijzigen
 
 1. Maak een nieuw bestand met de naam `model.js`. Voeg de volgende code toe:
 
     [!code-javascript[Code snippet](~/cognitive-services-quickstart-code/javascript/LUIS/node-model-with-rest/model.js)]
 
-1. Vervang de waarden die beginnen met `YOUR-` met uw eigen waarden.
+1. Vervang de waarden die beginnen met `YOUR-` door uw eigen waarden.
 
-    |Informatie|Functie|
+    |Informatie|Doel|
     |--|--|
-    |`YOUR-APP-ID`| De ID van uw LUIS-app. |
-    |`YOUR-AUTHORING-KEY`|De bewerkings sleutel voor uw 32-teken.|
-    |`YOUR-AUTHORING-ENDPOINT`| Het eind punt van de ontwerp-URL. Bijvoorbeeld `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. U stelt de naam van de resource in wanneer u de resource hebt gemaakt.|
+    |`YOUR-APP-ID`| De id van uw LUIS-app. |
+    |`YOUR-AUTHORING-KEY`|Uw ontwerpsleutel van 32 tekens.|
+    |`YOUR-AUTHORING-ENDPOINT`| Het eindpunt van uw ontwerp-URL. Bijvoorbeeld `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. U heeft uw resourcenaam ingesteld toen u de resource aanmaakte.|
 
-    Toegewezen sleutels en resources zijn zichtbaar in de LUIS-Portal in de sectie beheren op de pagina **Azure-resources** . De App-ID is beschikbaar in hetzelfde gedeelte beheren op de pagina **Toepassings instellingen** .
+    Toegewezen sleutels en resources zijn zichtbaar in het LUIS-portaal in de sectie Beheren op de pagina **Azure-resources**. De App-ID is beschikbaar in hetzelfde gedeelte Beheren op de pagina **Toepassingsinstellingen**.
 
-1. Voer bij de opdracht prompt de volgende opdracht uit om het project uit te voeren:
+1. Voer bij de opdrachtprompt de volgende opdracht in om het project uit te voeren:
 
     ```console
     node model.js
     ```
 
-1. Het ontwerp antwoord controleren:
+1. Het creatieantwoord controleren:
 
     ```json
     addUtterance:
@@ -156,7 +157,7 @@ ms.locfileid: "84416367"
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Quick Start, verwijdert u de projectmap uit het bestands systeem.
+Wanneer u klaar bent met deze quickstart, verwijdert u de projectmap uit het bestandssysteem.
 
 ## <a name="next-steps"></a>Volgende stappen
 

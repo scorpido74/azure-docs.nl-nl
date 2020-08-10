@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: c0db3fb828355318d31264c856900f8c9bd13b43
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cf2dbbd7c5f5684059b646e24a8fbc808b7698d1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586610"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405348"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -17,7 +18,7 @@ ms.locfileid: "83586610"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
-Maak een nieuw project met behulp van uw favoriete IDE of editor of een nieuwe map met een bestand met de naam `translate-text.js` op uw bureau blad. Kopieer vervolgens dit code fragment naar uw project/bestand:
+Maak een nieuw project met behulp van uw favoriete IDE of editor of een nieuwe map met een bestand met de naam `translate-text.js` op uw bureaublad. Kopieer vervolgens dit codefragment naar uw project/bestand:
 
 ```javascript
 const request = require('request');
@@ -29,9 +30,9 @@ const uuidv4 = require('uuid/v4');
 
 Deze modules zijn vereist om de HTTP-aanvraag te maken en om een unieke id voor de `'X-ClientTraceId'`-header te maken.
 
-## <a name="set-the-subscription-key-and-endpoint"></a>De abonnements sleutel en het eind punt instellen
+## <a name="set-the-subscription-key-and-endpoint"></a>Abonnementssleutel en eindpunt instellen
 
-In dit voor beeld wordt geprobeerd om de sleutel van het Vertaal abonnement en het eind punt te lezen uit deze omgevings variabelen: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT` . Als u niet bekend bent met omgevings variabelen, kunt u `subscriptionKey` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
+In dit voorbeeld wordt geprobeerd de abonnementssleutel en het eindpunt van Translator te lezen vanuit de omgevingsvariabelen `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` en `TRANSLATOR_TEXT_ENDPOINT`. Als u niet bekend bent met omgevingsvariabelen, kunt u `subscriptionKey` en `endpoint` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructies.
 
 Kopieer deze code naar uw project:
 
@@ -50,10 +51,10 @@ var endpoint = process.env[endpoint_var];
 
 ## <a name="configure-the-request"></a>Aanvraag configureren
 
-Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert de aanvraag:
+Met de methode `request()`, beschikbaar gesteld via de aanvraagmodule, kunt u de HTTP-methode, URL, aanvraagparameters, headers en de JSON-hoofdtekst doorgeven als een `options`-object. In dit codefragment configureert u de aanvraag:
 
 >[!NOTE]
-> Zie [Translator 3,0: vertalen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate)voor meer informatie over eind punten, routes en aanvraag parameters.
+> Meer informatie over eindpunten, routes en aanvraagparameters vindt u in [Translator 3.0: vertalen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
 ```javascript
 let options = {
@@ -78,11 +79,11 @@ let options = {
 
 U kunt aanvragen het eenvoudigst verifiëren door uw abonnementssleutel op te geven als `Ocp-Apim-Subscription-Key`-header. Dat doen we in dit voorbeeld dan ook. Als alternatief kunt u in plaats van uw abonnementssleutel een toegangstoken gebruiken en het toegangstoken opgeven als `Authorization`-header voor het valideren van uw aanvraag.
 
-Als u een Cognitive Services abonnement op meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraag headers toevoegen.
+Als u een Cognitive Services-abonnement voor meerdere services gebruikt, moet u ook de `Ocp-Apim-Subscription-Region` in uw aanvraagheaders toevoegen.
 
 Zie [Verificatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) voor meer informatie.
 
-## <a name="make-the-request-and-print-the-response"></a>De aanvraag maken en het antwoord weergeven
+## <a name="make-the-request-and-print-the-response"></a>De aanvraag maken en het antwoord afdrukken
 
 Vervolgens maakt u de aanvraag via de methode `request()`. Deze gebruikt het `options`-object dat in de vorige sectie als eerste argument is gemaakt, waarna het opgemaakte JSON-antwoord wordt afgedrukt.
 
@@ -97,7 +98,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>Alles samenvoegen
 
-Dat is alles. u hebt een eenvoudig programma samengesteld waarmee het conversie programma wordt aangeroepen en een JSON-antwoord wordt geretourneerd. Het is nu tijd om uw programma uit te voeren:
+Dat was het. U hebt een eenvoudig programma gemaakt dat we Translator zullen noemen. Er is een JSON-antwoord geretourneerd. Het is nu tijd om uw programma uit te voeren:
 
 ```console
 node translate-text.js
@@ -134,7 +135,7 @@ Als u uw abonnementssleutel hebt vastgelegd in het programma, verwijdert u deze 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de API-verwijzing voor meer informatie over wat u met de vertaler kunt doen.
+Bekijk de API-verwijzing voor meer informatie over wat u met de Translator kunt doen.
 
 > [!div class="nextstepaction"]
-> [API-verwijzing](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+> [API-naslaginformatie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

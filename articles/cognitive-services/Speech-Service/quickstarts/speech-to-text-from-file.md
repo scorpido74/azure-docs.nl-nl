@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: spraak herkennen vanuit een audio bestand-spraak service'
+title: 'Quickstart: Spraak herkennen vanuit een audiobestand - Speech-service'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u de Speech SDK om spraak van een audio bestand te herkennen.
+description: In deze quickstart gebruikt u de Speech SDK om spraak te herkennen vanuit een audiobestand.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,15 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: trbye
+ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js-spx
-ms.openlocfilehash: 4411c0af64c5db516b7d165c67925233230ed883
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: b0ee2d18dda05f1e0409fdc91dcd54698c809975
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391618"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406304"
 ---
-# <a name="quickstart-recognize-speech-from-an-audio-file"></a>Quick Start: spraak herkennen vanuit een audio bestand
+# <a name="quickstart-recognize-speech-from-an-audio-file"></a>Quickstart: Spraak herkennen vanuit een audiobestand
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-file/header.md)]

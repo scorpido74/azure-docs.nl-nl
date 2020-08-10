@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: Een iOS-app maken'
-description: In deze quickstart leert u een iOS-app maken met behulp van Spatial Anchors.
+description: U gaat leren om programmatisch een iOS-app te maken met behulp van Azure Spatial Anchors in Swift of Objective-C.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 542b5168bb70d876d91f8a747a230f2b754568e9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 2df66979d1e8f400f2630f5e531cd201244fdc6d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873111"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809983"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Quickstart: een iOS-app maken met Azure Spatial Anchors, in Swift of Objective-C
 
@@ -101,7 +101,7 @@ Zoek het veld `spatialAnchorsAccountKey` en vervang `Set me` met de accountsleut
 
 Zoek het veld `spatialAnchorsAccountId` en vervang `Set me` met de account-id.
 
-Zoek `startSession()` en voeg de volgende regel toe waarbij u uw accountdomein van eerder gebruikt: `cloudSession!.configuration.accountDomain = "MyAccountDomain";`.
+Zoek het veld `spatialAnchorsAccountDomain` en vervang `Set me` door het accountdomein.
 
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
@@ -111,7 +111,7 @@ Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleut
 
 Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
 
-Zoek `startSession()` en voeg de volgende regel toe waarbij u uw accountdomein van eerder gebruikt: `_cloudSession.configuration.accountDomain = @"MyAccountDomain";`.
+Zoek het veld `SpatialAnchorsAccountDomain` en vervang `Set me` door het accountdomein.
 
 ---
 

@@ -1,8 +1,8 @@
 ---
-title: 'Quick Start: groepen & leden weer geven-Azure AD'
+title: 'Quickstart: groepen en leden weergeven - Azure AD'
 description: Instructies voor het zoeken en weergeven van uw organisatiegroepen en hun toegewezen leden.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,21 +13,21 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ddedd753eb98a8656006c9dddc412e44330e1a21
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75423018"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797488"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Snelstartgids: Groepen en groepsleden van uw organisatie weergeven in Azure Active Directory
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Quickstart: Groepen en groepsleden van uw organisatie weergeven in Azure Active Directory
 U kunt de bestaande groepen en groepsleden van uw organisatie met de Azure-portal weergeven. Groepen worden gebruikt voor het beheren van gebruikers (leden) die allemaal dezelfde toegang en machtigingen nodig hebben voor mogelijk beperkte apps en services.
 
 In deze snelstartgids gaat u alle bestaande groepen van uw organisatie weergeven en kijken welke leden deel uitmaken van de groepen.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u begint, moet u het volgende doen:
@@ -40,35 +40,35 @@ Meld u bij de [Azure-portal](https://portal.azure.com/) aan met het account van 
 ## <a name="create-a-new-group"></a>Een nieuwe groep maken 
 Maak een nieuwe groep, met de naam _MDM-beleid - West_. Zie [Een groep maken en leden toevoegen in Azure Active Directory](active-directory-groups-create-azure-portal.md) voor meer informatie over het maken van een groep.
 
-1. Selecteer **Azure Active Directory**, **Groepen** en vervolgens **Nieuwe groep**.
+1. Selecteer **Azure Active Directory**, **Groepen** en **Nieuwe groep**.
 
 2. Vul de pagina **Groep** in:
     
-    - **Groepstype:** selecteer **Beveiliging**
+    - **Groepstype:** Selecteer **Beveiliging**
     
-    - **Groepsnaam:** type _MDM-beleid - West_
+    - **Groepsnaam:** Voer _MDM-beleid - West_ in
     
-    - **Type lidmaatschap:** selecteer **Toegewezen**.
+    - **Type lidmaatschap:** Selecteer **Toegewezen**.
 
 3. Selecteer **Maken**.
 
 ## <a name="create-a-new-user"></a>Een nieuwe gebruiker maken
-Maak een nieuwe gebruiker met de naam _Alain Charon_. Een gebruiker moet bestaan voordat deze kan worden toegevoegd als een groepslid. Schakel het tabblad ' aangepaste domein namen ' eerst in om de geverifieerde domein naam op te halen waarin u gebruikers wilt maken. Zie [Gebruikers toevoegen of verwijderen met Azure Active Directory](add-users-azure-active-directory.md) voor meer informatie over het maken van een gebruiker.
+Maak een nieuwe gebruiker met de naam _Alain Charon_. Een gebruiker moet bestaan voordat deze kan worden toegevoegd als een groepslid. Bekijk eerst het tabblad Aangepaste domeinnamen om de geverifieerde domeinnaam te verkrijgen van het domein waarin u gebruikers wilt maken. Zie [Gebruikers toevoegen of verwijderen met Azure Active Directory](add-users-azure-active-directory.md) voor meer informatie over het maken van een gebruiker.
 
 1. Selecteer **Azure Active Directory**, **Gebruikers** en **Nieuwe gebruiker**.
 
 2. Vul de pagina **Gebruiker** in:
 
-    - **Naam:** type _Alain Charon_.
+    - **Naam:** Voer _Alain Charon_ in.
 
-    - **Gebruikers naam:** Typ *alain\@contoso.com*.
+    - **Gebruikersnaam:** Typ *alain\@contoso.com*.
 
 3. Kopieer het automatisch gegenereerde wachtwoord in het vak **Wachtwoord** en selecteer vervolgens **Maken**.
 
 ## <a name="add-a-group-member"></a>Een groepslid toevoegen
 U hebt nu een groep en een gebruiker gemaakt. De volgende stap is dat we _Alain Charon_ als lid gaan toevoegen aan de groep _MDM-beleid - West_. Zie [Groepsleden toevoegen of verwijderen met Azure Active Directory](active-directory-groups-members-azure-portal.md) voor meer informatie over het toevoegen van groepsleden.
 
-1. Selecteer **Azure Active Directory** > **groepen**.
+1. Selecteer **Azure Active Directory** > **Groepen**.
 
 2. Zoek op de pagina **Groepen - Alle groepen** de groep **MDM-beleid - West** en selecteer de groep.
 
@@ -81,7 +81,7 @@ U hebt nu een groep en een gebruiker gemaakt. De volgende stap is dat we _Alain 
 ## <a name="view-all-groups"></a>Alle groepen weergeven
 U kunt alle groepen voor uw organisatie weergeven op de pagina **Groepen - Alle groepen** van de Azure-portal.
 
-- Selecteer Azure **Active Directory** > -**groepen**.
+- Selecteer **Azure Active Directory** > **Groepen**.
 
     De pagina **Groepen - Alle groepen** wordt weergegeven, met een overzicht van alle actieve groepen.
 
@@ -118,7 +118,7 @@ Deze groep wordt gebruikt in een aantal van de procedures die worden beschreven 
 
     De pagina **Overzicht van MDM-beleid - West** wordt weergegeven.
 
-3. Selecteer **verwijderen**.
+3. Selecteer **Verwijderen**.
 
     De groep en de bijbehorende leden worden verwijderd.
 

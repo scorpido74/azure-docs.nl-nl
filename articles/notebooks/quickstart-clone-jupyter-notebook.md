@@ -3,12 +3,12 @@ title: Een Jupyter-notebook van GitHub klonen met Azure Notebooks Preview
 description: Kloon snel een Jupyter-notebook van een GitHub-opslagplaats en voer deze uit in uw Azure Notebooks-account.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833083"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424474"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Quickstart: Een notebook klonen in Azure Notebooks Preview
 
@@ -49,7 +49,7 @@ Geen.
 
 1. Zodra het klonen is voltooid, wordt het nieuwe project in Azure Notebooks weergegeven, waarin u de kopieën van alle bestanden kunt zien.
 
-    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
+    :::image type="content" source="media/quickstarts/completed-clone.png" alt-text="Weergave van een voltooide kloon." lightbox="media/quickstarts/completed-clone.png":::
 
 ## <a name="share-a-notebook"></a>Een notebook delen
 
