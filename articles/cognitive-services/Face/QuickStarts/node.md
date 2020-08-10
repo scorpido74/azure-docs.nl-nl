@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Gezichten in een afbeelding detecteren met de Azure REST API en Node.js'
+title: 'Quickstart: Gezichten in een afbeelding detecteren met de Azure REST API en Node.js'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart gebruikt u de Azure Face REST API met Node.js om gezichten in een afbeelding te detecteren.
 services: cognitive-services
@@ -10,25 +10,26 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 2ca95731cc2d85675545591d8ef38e461484c6e9
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0c893609d81abbe1ea1bdfab2d3d0c6e49bf98f4
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368019"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406653"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Snelstart: Gezichten in een afbeelding detecteren met de Face REST API en Node.js
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Quickstart: Gezichten in een afbeelding detecteren met de Face REST API en Node.js
 
-In deze Quick Start gebruikt u de Azure face REST API met Node.js om menselijke gezichten in een installatie kopie te detecteren.
+In deze quickstart gebruikt u de Azure Face REST API met Node.js om menselijke gezichten in een afbeelding te detecteren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Een Face-resource maken"  target="_blank">maakt u een Face-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Face-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 - Een code-editor zoals [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="set-up-the-node-environment"></a>De Node-omgeving instellen
@@ -41,7 +42,7 @@ npm install axios --save
 
 ## <a name="write-the-nodejs-script"></a>Het Node.js-script schrijven
 
-Plak de volgende code in *facedetection.js*. Met deze velden wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U kunt [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) en de sleutel en het eind punt van uw face-abonnement toevoegen. U kunt desgewenst het veld `imageUrl` wijzigen zodat het verwijst naar uw invoerafbeelding.
+Plak de volgende code in *facedetection.js*. Met deze velden wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) en voeg hieraan uw Azure Face-abonnementssleutel en -eindpunt toe. U kunt desgewenst het veld `imageUrl` wijzigen zodat het verwijst naar uw invoerafbeelding.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -112,7 +113,7 @@ Nadat u de wijzigingen hebt aangebracht, opent u een opdrachtprompt en voert u h
 node facedetection.js
 ```
 
-Dit is de volledige JSON-gegevens uit `response.data` . Bijvoorbeeld:
+Dit zijn de volledige JSON-gegevens van `response.data`. Bijvoorbeeld:
 
 ```json
 [
@@ -295,7 +296,7 @@ Dit is de volledige JSON-gegevens uit `response.data` . Bijvoorbeeld:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Node.js script geschreven dat de Azure face-service aanroept om gezichten te detecteren in een installatie kopie en de kenmerken ervan te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
+In deze quickstart hebt u een Node.js-script geschreven waarmee de Azure Face-service wordt aangeroepen om gezichten in een afbeelding te detecteren en de gezichtskenmerken te retourneren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
 
 > [!div class="nextstepaction"]
 > [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

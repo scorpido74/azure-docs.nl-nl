@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: externe installatie kopie analyseren-REST, java script'
+title: 'Quickstart: Een externe afbeelding analyseren - REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart analyseert u een afbeelding met behulp van de Computer Vision-API met JavaScript.
 services: cognitive-services
@@ -10,35 +10,35 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: e9ae6a94b83fc4bf3d37cc7080a5900feffff8b6
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-javascript
+ms.openlocfilehash: 7760d3256b0e8bc3efa79de2c2785a482a5e04a9
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987214"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406789"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Snelstart: Een externe afbeelding analyseren met behulp van de REST-API en JavaScript in Computer Vision
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Quickstart: Een externe afbeelding analyseren met behulp van de REST API en JavaScript in Computer Vision
 
-In deze Snelstartgids gaat u een op afstand opgeslagen afbeelding analyseren om visuele functies te extra heren met behulp van de Computer Vision REST API. Met de methode voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kunt u visuele functies extra heren op basis van de inhoud van de installatie kopie.
+In deze quickstart analyseert u een extern opgeslagen afbeelding om visuele kenmerken te verkrijgen met behulp van de REST-API van Computer Vision. Met de [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-methode kunt u visuele kenmerken verkrijgen op basis van de afbeeldingsinhoud.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Een Azure-abonnement - [Maak een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Maak een bestand met de naam _analyze-image.html_, open het in een tekst editor en kopieer de volgende code hierin.
+1. Maak een bestand met de naam _analyze-image.html_, open het in een teksteditor en kopieer de volgende code naar dit bestand.
 1. Vervang eventueel de waarde van het `value`-kenmerk voor het `inputImage`-besturingselement door de URL van een andere afbeelding die u wilt analyseren.
 1. Open een browservenster.
 1. Sleep het bestand in de browser naar het browservenster.
-1. Wanneer de webpagina wordt weer gegeven in de browser, plakt u uw abonnements sleutel en eind punt-URL in de relevante invoer vakken.
-1. Selecteer de knop **afbeelding analyseren** .
+1. Wanneer de webpagina wordt weergegeven in de browser, plakt u uw abonnementssleutel en eindpunt-URL in de relevante invoervakken.
+1. Selecteer de knop **Afbeelding analyseren**.
 
 ```html
 <!DOCTYPE html>

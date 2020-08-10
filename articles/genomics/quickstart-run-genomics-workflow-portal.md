@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 167bcf4364b88529256b79574c6b8c03098fed02
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: cd0cf3bb7df8efc944fabb8e236f32adb38749d4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607122"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424122"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Quickstart: Een werkstroom uitvoeren via de Microsoft Genomics-service
 
@@ -48,18 +48,18 @@ Zie [Wat is Microsoft Genomics?](overview-what-is-genomics.md) voor meer informa
 
 ## <a name="set-up-install-the-microsoft-genomics-python-client"></a>Instellen: De Python-client voor Microsoft Genomics installeren
 
-U moet Python en de Python-client voor Microsoft Genomics installeren in uw lokale omgeving. 
+U moet zowel Python als de Python-client voor Microsoft Genomics `msgen` in uw lokale omgeving installeren. 
 
 ### <a name="install-python"></a>Python installeren
 
 De Python-client voor Microsoft Genomics is compatibel met Python 2.7.12 of een nieuwere 2.7.xx-versie. 2.7.14 is de voorgestelde versie. U vindt de download [hier](https://www.python.org/downloads/release/python-2714/). 
 
 > [!IMPORTANT]
-> Python 3.x is niet compatibel met Python 2.7.xx.  MSGen is een Python 2.7-toepassing. Zorg er bij het uitvoeren van MSGen voor dat uw actieve Python-omgeving een 2.7.xx-versie van Python gebruikt. Er treden mogelijk fouten op bij gebruik van MSGen met een 3.x-versie van Python.
+> Python 3.x is niet compatibel met Python 2.7.xx.  `msgen` is een Python 2.7-app. Zorg er bij het uitvoeren van `msgen` voor dat uw actieve Python-omgeving een 2.7.xx-versie van Python gebruikt. Er treden mogelijk fouten op bij het gebruik van `msgen` met een 3.x-versie van Python.
 
-### <a name="install-the-microsoft-genomics-client"></a>De Microsoft Genomics-client installeren
+### <a name="install-the-microsoft-genomics-python-client-msgen"></a>De Python-client voor Microsoft Genomics `msgen` installeren
 
-Gebruik Python-`pip` om de Microsoft Genomics-client `msgen` te installeren. Bij de volgende instructies wordt ervan uitgegaan dat Python al op het systeempad staat. Als de `pip`-installatie niet wordt herkend, dient u Python en de submap voor scripts aan het systeempad toe te voegen.
+Gebruik Python-`pip` om de Microsoft Genomics-client `msgen` te installeren. Bij de volgende instructies wordt ervan uitgegaan dat Python 2.x al in het systeempad staat. Als de installatie van `pip` niet wordt herkend, moet u Python en de submap voor scripts aan het systeempad toe te voegen.
 
 ```
 pip install --upgrade --no-deps msgen
@@ -67,14 +67,9 @@ pip install msgen
 ```
 
 Als u `msgen` niet wilt installeren als een systeembreed binair bestand en systeembrede Python-pakketten niet wilt wijzigen, gebruikt u de markering `–-user` met `pip`.
-Als u de installatie op basis van een pakket of setup.py gebruikt, worden alle vereiste pakketten geïnstalleerd. Anders zijn de vereiste basispakketten voor `msgen` 
+Als u de installatie op basis van een pakket of setup.py gebruikt, worden alle vereiste pakketten geïnstalleerd.
 
- * [Azure-storage](https://pypi.python.org/pypi/azure-storage). 
- * [Requests](https://pypi.python.org/pypi/requests). 
-
-U kunt deze pakketten installeren met `pip`, `easy_install` of via de standaard `setup.py`-procedures. 
-
-### <a name="test-the-microsoft-genomics-client"></a>De Microsoft Genomics-client testen
+### <a name="test-msgen-python-client"></a>Test de Python-client `msgen`
 Download het configuratiebestand in uw Genomics-account om de client voor Microsoft Genomics te testen. Navigeer in Azure Portal naar uw Genomics-account door links bovenin **Alle services** te selecteren en vervolgens Genomics-accounts te zoeken en te selecteren.
 
 ![Microsoft Genomics opzoeken in Azure Portal](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Microsoft Genomics opzoeken in Azure Portal")
@@ -119,18 +114,20 @@ De Microsoft Genomics-service verwacht leesbewerkingen voor eindsequenties (FAST
 
 U dient binnen uw opslagaccount een blob-container te maken voor uw invoergegevens en een tweede blob-container voor de uitvoergegevens.  Upload de invoergegevens naar uw blob-container voor invoer. U kunt hiervoor verschillende hulpprogramma's gebruiken, waaronder [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), [BlobPorter](https://github.com/Azure/blobporter) en [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 
-## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-python-client"></a>Een werkstroom uitvoeren via de Microsoft Genomics-service met behulp van de Python-client 
+## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>Een werkstroom uitvoeren via de Microsoft Genomics-service met behulp van de Python-client `msgen`
 
 Als u een werkstroom wilt uitvoeren via de service Microsoft Genomics, bewerkt u het bestand *config.txt* om de invoer- en uitvoeropslagcontainer voor uw gegevens op te geven.
 Open het bestand *config.txt* dat u van uw Genomics-account hebt gedownload. De gedeelten die u dient op te geven zijn de abonnementssleutel en de zes items onderaan, de naam van het opslagaccount, de sleutel en de naam van de container voor zowel invoer als uitvoer. U kunt deze informatie vinden door in Azure Portal naar **Toegangssleutels** voor uw opslagaccount te navigeren of rechtstreeks vanuit Azure Storage Explorer.  
 
-![Genomics-configuratie](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Genomics-configuratie")
+![Genomics-configuratie](./media/quickstart-run-genomics-workflow-portal/genomics-config.PNG "Genomics-configuratie")
 
 Als u graag GATK4 wilt uitvoeren, stelt u de parameter `process_name` in op `gatk4`.
 
 De Genomics-service voert standaard VCF-bestanden uit. Als u graag gVCF-uitvoer wilt in plaats van VCF-uitvoer (gelijk aan `-emitRefConfidence` in GATK 3.x en `emit-ref-confidence` in GATK 4.x), voegt u de parameter `emit_ref_confidence` toe aan uw *config.txt* en stelt u deze in op `gvcf`, zoals wordt weergegeven in de vorige afbeelding.  Als u weer terug wilt naar VCF-uitvoer, verwijdert u deze uit het bestand *config.txt* of stelt u de parameter `emit_ref_confidence` in op `none`. 
 
-### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>De werkstroom in de service Microsoft Genomics verzenden met de client voor Microsoft Genomics
+`bgzip` is een hulpprogramma waarmee het VCF- of gVCF-bestand wordt gecomprimeerd en `tabix` een index voor het gecomprimeerde bestand maakt. De Genomics-service voert standaard `bgzip` gevolgd door `tabix` uit voor '.g.vcf'-uitvoer, maar voert deze hulpprogramma's niet standaard uit voor '.vcf '-uitvoer. Wanneer u de service uitvoert, resulteert dit in '.gz'- (bgzip-uitvoer) en 'tbi'-bestanden (tabix-uitvoer). Het argument is een Booleaanse waarde, die standaard is ingesteld op False voor '.vcf'-uitvoer en standaard is ingesteld op True voor '.g.vcf'-uitvoer. Als u dit wilt gebruiken op de opdrachtregel, geeft u `-bz` of `--bgzip-output` op als `true` (voer bgzip en tabix uit) of `false`. Als u dit argument wilt gebruiken in het bestand *config.txt*, voegt u `bgzip_output: true` of `bgzip_output: false` toe aan het bestand.
+
+### <a name="submit-your-workflow-to-the-microsoft-genomics-service-using-the-msgen-python-client"></a>Uw werkstroom verzenden naar de Microsoft Genomics-service met behulp van de Python-client `msgen`
 
 Gebruik de Python-client voor Microsoft Genomics om uw werkstroom te verzenden met de volgende opdracht:
 
@@ -146,4 +143,5 @@ msgen list -f c:\temp\config.txt
 Nadat de werkstroom is voltooid, kunt u de uitvoerbestanden weergeven in uw Azure-opslagaccount in de uitvoercontainer die u hebt geconfigureerd. 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u voorbeeldinvoergegevens geüpload naar Azure Storage en een werkstroom verzonden naar de Microsoft Genomics-service via de Python-client voor `msgen`. Ga voor meer informatie over andere invoerbestandstypen die kunnen worden gebruikt met de Microsoft Genomics-service naar de volgende pagina's: [paired FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [Multiple FASTQ or BAM](quickstart-input-multiple.md) (gekoppelde FASTQ/BAM/Meerdere FASTQ of BAM). U kunt ook deze zelfstudie lezen met behulp van de [Azure notebook tutorial](https://aka.ms/genomicsnotebook) (Zelfstudie in Azure-notitieblokken).
+
+In dit artikel hebt u voorbeeldinvoergegevens geüpload naar Azure Storage en een werkstroom verzonden naar de Microsoft Genomics-service via de Python-client voor `msgen`. Ga voor meer informatie over andere invoerbestandstypen die kunnen worden gebruikt met de Microsoft Genomics-service naar de volgende pagina's: [paired FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [Multiple FASTQ or BAM](quickstart-input-multiple.md) (gekoppelde FASTQ/BAM/Meerdere FASTQ of BAM). U kunt deze zelfstudie ook bekijken met behulp van ons [voorbeeld van de Azure-notebook](https://aka.ms/genomicsnotebook) door het bestand Genomics Tutorial.ipynb te downloaden en een notebooklezer, zoals [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook), te gebruiken om het bestand te openen en door te nemen.

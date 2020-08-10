@@ -5,19 +5,19 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 10/17/2018
+ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3d400726bfb65b2548bc773ffb460fe1ad426a0
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510324"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513448"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Quickstart: Een virtuele Linux-machine maken in Azure met PowerShell
 
-De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. In deze snelstart wordt beschreven hoe u de Azure PowerShell-module gebruikt voor het implementeren van een virtuele Linux-machine (VM) in Azure. In deze snelstart wordt de Marketplace-installatiekopie voor Ubuntu 16.04 LTS van Canonical gebruikt. Wanneer u uw virtuele machine in actie wilt zien, voert u ook SSH voor de virtuele machine uit en installeert u de NGINX-webserver.
+De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-resources vanaf de PowerShell-opdrachtregel of in scripts. In deze snelstart wordt beschreven hoe u de Azure PowerShell-module gebruikt voor het implementeren van een virtuele Linux-machine (VM) in Azure. In deze quickstart wordt de Marketplace-installatiekopie voor Ubuntu 18.04 LTS van Canonical gebruikt. Wanneer u uw virtuele machine in actie wilt zien, voert u ook SSH voor de virtuele machine uit en installeert u de NGINX-webserver.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -29,17 +29,18 @@ Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek 
 
 ## <a name="create-ssh-key-pair"></a>Een SSH-sleutelpaar maken
 
-U hebt een SSH-sleutelpaar nodig om deze snelstart te volgen. Als u al een SSH-sleutelpaar hebt, kunt u deze stap overslaan.
+Gebruik[ssh-keygen](https://www.ssh.com/ssh/keygen/) om een SSH-sleutelpaar te maken. Als u al een SSH-sleutelpaar hebt, kunt u deze stap overslaan.
 
-Open een bash-shell en gebruik [ssh-keygen](https://www.ssh.com/ssh/keygen/) om een SSH-sleutelpaar te maken. Als u geen een bash-shell op uw lokale computer hebt, kunt u de [Azure Cloud Shell](https://shell.azure.com/bash) gebruiken.  
 
 ```azurepowershell-interactive
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Zie [SSH-sleutels gebruiken met Windows](ssh-from-windows.md) voor gedetailleerde informatie over het maken van SSH-sleutelparen, waaronder het gebruik van PuTTy.
+U wordt gevraagd om een bestandsnaam op te geven voor het sleutelpaar of u kunt op **Enter** drukken om de standaardlocatie van `/home/<username>/.ssh/id_rsa` te gebruiken. U kunt desgewenst ook een wachtwoord voor de sleutels maken.
 
-Als u uw SSH-sleutelpaar met behulp van de Cloud Shell maakt, wordt deze opgeslagen in een containerinstallatiekopie in een [opslagaccount dat automatisch wordt gemaakt door Cloud Shell](../../cloud-shell/persisting-shell-storage.md). Verwijder het opslagaccount of de bestanden die het bevat niet totdat u uw sleutels hebt opgehaald. Anders verliest u toegang tot de virtuele machine. 
+Zie [SSH-sleutels gebruiken met Windows](ssh-from-windows.md) voor gedetailleerde informatie over het maken van SSH-sleutelparen.
+
+Als u het SSH-sleutelpaar maakt met behulp van Cloud Shell, wordt dit opgeslagen in een [opslagaccount dat automatisch wordt gemaakt door Cloud Shell](../../cloud-shell/persisting-shell-storage.md). Verwijder het opslagaccount of de bestandsshare die het bevat niet voordat u uw sleutels hebt opgehaald. Anders verliest u toegang tot de virtuele machine. 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -147,7 +148,7 @@ Set-AzVMOperatingSystem `
 Set-AzVMSourceImage `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "18.04-LTS" `
   -Version "latest" | `
 Add-AzVMNetworkInterface `
   -Id $nic.Id
@@ -178,7 +179,7 @@ Maak een SSH-verbinding met de virtuele machine met behulp van het openbare IP-a
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-Met behulp van dezelfde bash-shell die u hebt gebruikt om uw SSH-sleutelpaar te maken (zoals de [Azure Cloud Shell](https://shell.azure.com/bash) of uw lokale bash-shell), plakt u de opdracht voor de SSH-verbinding in de shell om een SSH-sessie te maken.
+Gebruik dezelfde shell die u hebt gebruikt om uw SSH-sleutelpaar te maken en plak de volgende opdracht in de shell om een SSH-sessie te maken. Vervang *10.111.12.123* door het IP-adres van uw virtuele machine.
 
 ```bash
 ssh azureuser@10.111.12.123

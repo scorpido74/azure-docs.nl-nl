@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: gedrukte tekst extra heren-REST, java script'
+title: 'Quickstart: Gedrukte tekst extraheren - REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de Computer Vision-API met JavaScript.
 services: cognitive-services
@@ -10,38 +10,38 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 98ea4d30e3630cd7e4e8ee687621e3feac8b98d4
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.custom: seodec18, devx-track-javascript
+ms.openlocfilehash: e4ba34c8967020e38092d94b7e1aacd505e3dac1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986797"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406840"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API en Java script
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Quickstart: Gedrukte tekst extraheren (Optical Character Recognition of OCR) met behulp van de Computer Vision REST API en JavaScript
 
 > [!NOTE]
-> Als u Engelse taal tekst wilt extra heren, kunt u overwegen de nieuwe [Lees bewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)te gebruiken. Er is een [Java script-Snelstartgids](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/javascript-hand-text) beschikbaar.
+> Als u Engelstalige tekst extraheert, overweeg dan de nieuwe [leesbewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) te gebruiken. Er is een [quickstart voor JavaScript](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/javascript-hand-text) beschikbaar.
 
-In deze Quick Start haalt u gedrukte tekst op met behulp van de Computer Vision REST API met OCR (optische teken herkenning) van een afbeelding. Met de [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) -methode kunt u gedrukte tekst in een afbeelding detecteren en herkende tekens uitpakken in een door een machine bruikbare teken stroom.
+In deze quickstart gebruikt u optische tekenherkenning (OCR) om tekst uit een afbeelding te extraheren met behulp van de Computer Vision REST API. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Een Azure-abonnement - [Maak een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Maak een bestand met de naam _get-printed-text.html_, open het in een tekst editor en kopieer de volgende code hierin.
+1. Maak een bestand met de naam _get-printed-text.html_, open het in een teksteditor en kopieer de volgende code naar dit bestand.
 1. Vervang eventueel de waarde van het `value`-kenmerk voor het `inputImage`-besturingselement door de URL van een andere afbeelding die u wilt analyseren.
 1. Open een browservenster.
 1. Sleep het bestand in de browser naar het browservenster.
-1. Wanneer de webpagina wordt weer gegeven in de browser, plakt u uw abonnements sleutel en eind punt-URL in de relevante invoer vakken.
-1. Selecteer de knop **afbeelding lezen** .
+1. Wanneer de webpagina wordt weergegeven in de browser, plakt u uw abonnementssleutel en de eindpunt-URL in de relevante invoervakken.
+1. Selecteer de knop **Afbeelding lezen**.
 
 ```html
 <!DOCTYPE html>
@@ -245,7 +245,7 @@ Een geslaagd antwoord wordt geretourneerd in JSON-indeling. De voorbeeldwebpagin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Daarna kunt u een Java script-toepassing verkennen die gebruikmaakt van Computer Vision voor het uitvoeren van optische teken herkenning (OCR). miniaturen met slimme bijgesneden maken; en het detecteren, categoriseren, labelen en beschrijven van visuele functies in afbeeldingen. 
+Bekijk vervolgens een JavaScript-app die gebruikmaakt van Computer Vision om optische tekenherkenning (OCR) uit te voeren, maak slim bijgesneden miniaturen en detecteer, categoriseer, label en beschrijf visuele kenmerken in afbeeldingen. 
 
 > [!div class="nextstepaction"]
 > [Zelfstudie voor de Computer Vision-API met JavaScript](../Tutorials/javascript-tutorial.md)

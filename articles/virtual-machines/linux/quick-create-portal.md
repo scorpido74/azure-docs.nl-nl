@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392835"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499973"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Quickstart: Een virtuele Linux-machine maken in Azure-portal
 
@@ -32,11 +32,11 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com) als u dat nog niet he
 1. Selecteer **Toevoegen** op de pagina **virtuele machines**. De pagina **Een virtuele machine maken** wordt geopend.
 1. Zorg ervoor dat op het tabblad **Basics** onder **Projectgegevens** het juiste abonnement is geselecteerd, en kies **Nieuwe maken** om een nieuwe resourcegroep te maken. Typ *myResourceGroup* als de naam.*. 
 
-    ![Een nieuwe resourcegroep maken voor uw VM](./media/quick-create-portal/project-details.png)
+    ![Schermafbeelding van het gedeelte Projectgegevens waarin wordt weergegeven waar u het Azure-abonnement en de resourcegroep voor de virtuele machine selecteert](./media/quick-create-portal/project-details.png)
 
 1. Typ onder **Exemplaardetails***myVM* als **Naam van de virtuele machine** en kies *VS - oost* als de **Regio** en kies *Ubuntu 18.04 LTS* voor uw **Installatiekopie**. Houd voor de rest de standaardinstellingen aan.
 
-    ![Sectie Exemplaardetails](./media/quick-create-portal/instance-details.png)
+    ![Schermafbeelding van het gedeelte Instantiegegevens waarin u een naam voor de virtuele machine opgeeft en hiervoor de regio, installatiekopie en grootte selecteert](./media/quick-create-portal/instance-details.png)
 
 1. Selecteer **Openbare SSH-sleutel** onder **Beheerdersaccount**.
 
@@ -44,11 +44,11 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com) als u dat nog niet he
 
 1. Voor **Openbare SSH-sleutel bron**, laat u de standaardwaarde van **Nieuwe sleutelpaar genereren** en typt u vervolgens *myKey* voor de **Naam van sleutelpaar**.
 
-    ![Administrator-account](./media/quick-create-portal/administrator-account.png)
+    ![Schermafbeelding van het gedeelte Beheerdersaccount waarin u een verificatietype selecteert en de beheerdersreferenties opgeeft](./media/quick-create-portal/administrator-account.png)
 
 1. Onder **Regels voor binnenkomende poort** > **Openbare binnenkomende poorten**, kiest u **​​Geselecteerde poorten toestaan** en selecteert u vervolgens **SSH (22)** en  **HTTP (80)** in de vervolgkeuzelijst. 
 
-    ![Open poorten voor RDP en HTTP](./media/quick-create-portal/inbound-port-rules.png)
+    ![Schermafbeelding van het gedeelte Regels voor binnenkomende poorten waarin u selecteert voor welke poorten binnenkomende verbindingen toegestaan zijn](./media/quick-create-portal/inbound-port-rules.png)
 
 1. Laat de resterende standaardwaarden staan ​​en selecteer vervolgens de knop **Beoordelen en maken** aan de onderkant van de pagina.
 
@@ -61,7 +61,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com) als u dat nog niet he
 1. Selecteer op de pagina voor de nieuwe virtuele machine het openbare IP-adres en kopieer het naar het klembord.
 
 
-    ![Kopieer het openbare IP-adres](./media/quick-create-portal/ip-address.png)
+    ![Schermafbeelding waarin wordt getoond hoe u het IP-adres voor de virtuele machine kopieert](./media/quick-create-portal/ip-address.png)
 
 ## <a name="connect-to-virtual-machine"></a>Verbinding maken met de virtuele machine
 
@@ -94,7 +94,7 @@ Wanneer u klaar bent, typt u `exit` om de SSH-sessie te verlaten.
 
 Gebruik een webbrowser naar keuze om de standaard NGINX-welkomstpagina weer te geven. Voer het openbare IP-adres van uw VM in als het webadres. Het openbare IP-adres kan worden gevonden op de overzichtspagina van de virtuele machine of als onderdeel van de SSH-verbindingsreeks die u eerder hebt gebruikt.
 
-![Standaardsite van NGINX](./media/quick-create-portal/nginx.png)
+![Schermafbeelding waarin de NGINX-standaardsite in een browser wordt weergegeven](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

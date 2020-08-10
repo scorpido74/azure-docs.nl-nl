@@ -3,12 +3,12 @@ title: Overzicht van Azure Service Bus-berichtenservice | Microsoft Docs
 description: Dit artikel bevat een overzicht op hoog niveau van Azure Service Bus, een volledig beheerde berichtenbroker die binnen ondernemingen kan worden geïntegreerd.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 8583996cde23b056261662a0640aa310e63d45a9
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341660"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501471"
 ---
 # <a name="what-is-azure-service-bus"></a>Wat is Azure Service Bus?
 
@@ -92,7 +92,7 @@ Een fout kan ertoe leiden dat de client twijfelt over het resultaat van een verz
 ### <a name="security-protocols"></a>Beveiligingsprotocollen
 <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
-Service Bus biedt ondersteuning voor beveiligingsprotocollen zoals [SAS](service-bus-sas.md) (Shared Access Signatures), [RBAC](authenticate-application.md) (op rollen gebaseerd toegangsbeheer) en [MSI](service-bus-managed-service-identity.md) (Managed Service Identity) voor Azure-resources.
+Service Bus ondersteunt beveiligingsprotocollen, zoals [Shared Access Signatures](service-bus-sas.md) (SAS), [Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](authenticate-application.md) en [Beheerde identiteiten voor Azure-resources](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geo-noodherstel
 

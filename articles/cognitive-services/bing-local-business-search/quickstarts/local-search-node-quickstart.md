@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: een query naar de API verzenden met behulp van Node.js-Bing lokale zakelijke zoek opdracht'
+title: 'Quickstart: Een query naar de API verzenden met behulp van Node.js - Bing Local Business Search'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze Quick Start om aanvragen te verzenden naar de Bing lokale Business Search-API, een Azure-cognitieve service.
+description: Gebruik deze quickstart om aanvragen te verzenden naar de Bing Local Business Search-API, een Azure Cognitive Service.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,36 +10,37 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 2b5de1c5bf99ff2516a0eb836d540fc2833d99cb
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d0ee55c0baa6d7ec2ff86aa0e37b10ca4c973b77
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611251"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408132"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Snelstartgids: een query naar de Bing Local Business Search-API verzenden met Node.js
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Quickstart: Een query verzenden naar de Bing Local Business Search-API met behulp van Node.js
 
-Gebruik deze Quick Start om te leren hoe u aanvragen verzendt naar de Bing lokale Business Search-API, een Azure-cognitieve service. Hoewel deze eenvoudige toepassing wordt geschreven in Node.js, is de API een betrouw bare webservice die compatibel is met elke programmeer taal die kan leiden tot het maken van HTTP-aanvragen en het parseren van JSON.
+Gebruik deze quickstart om te leren hoe u aanvragen verzendt naar de Bing Local Business Search-API, een Azure Cognitive Service. Hoewel deze eenvoudige app in Node.js is geschreven, is de API een RESTful-webservice die compatibel is met programmeertalen waarin HTTP-aanvragen kunnen worden uitgevoerd en JSON kan worden geparseerd.
 
-In deze voorbeeld toepassing worden lokale antwoord gegevens opgehaald uit de API voor een zoek query.
+In deze voorbeeldtoepassing worden lokale antwoordgegevens opgehaald uit de API voor een zoekquery.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
 * Nieuwste versie van [Node.js](https://nodejs.org/en/download/).
-* De [Java script-aanvraag bibliotheek](https://github.com/request/request).
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* De [JavaScript-aanvragenbibliotheek](https://github.com/request/request).
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Een Bing Search-resource maken"  target="_blank">maakt u een Bing Search-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
 
 
 ## <a name="code-scenario"></a>Codescenario
 
-Met de volgende code wordt de aanvraag gedefinieerd en verzonden, die in de volgende stappen wordt geïmplementeerd:
+Met de volgende code wordt de aanvraag gedefinieerd en verzonden die in de volgende stappen wordt geïmplementeerd:
 
 1. Declareer variabelen om het eindpunt op te geven met een host en pad.
-2. Geef de query op en voeg de query parameter toe.
+2. Geef de query op en voeg de queryparameter toe.
 3. Maak een handlerfunctie voor het antwoord.
-4. Definieer de zoek functie die de aanvraag maakt en voegt de `Ocp-Apim-Subscription-Key` header toe.
-5. Voer de zoek functie uit.
+4. Definieer de zoekfunctie die de aanvraag maakt en de header `Ocp-Apim-Subscription-Key` toevoegt.
+5. Voer de zoekfunctie uit.
 
 
 ```javascript
@@ -93,6 +94,6 @@ Search();
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Lokale zakelijke zoek acties C# Quick Start](local-quickstart.md)
-* [Lokale zakelijke zoek opdracht voor zoeken in Java Quick Start](local-search-java-quickstart.md)
-* [Snelstartgids voor lokale zakelijke Zoek opdrachten python](local-search-python-quickstart.md)
+* [Quickstart over zoeken naar lokale bedrijven met C#](local-quickstart.md)
+* [Quickstart over Bing Local Business Search met Java](local-search-java-quickstart.md)
+* [Quickstart over zoeken naar lokale bedrijven met Python](local-search-python-quickstart.md)

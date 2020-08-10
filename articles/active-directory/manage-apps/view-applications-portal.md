@@ -12,13 +12,12 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dce579596563855022f14bb2c07353b84d1e6127
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055389"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808368"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Quickstart: De lijst met toepassingen weergeven die gebruikmaken van uw Azure Active Directory-tenant (Azure AD) voor identiteitsbeheer
 
@@ -68,11 +67,17 @@ Ga als volgt te werk om naar een bepaalde toepassing te zoeken:
 3. Voer de eerste paar letters van een toepassingsnaam in. In dit voorbeeld ziet u dat alle toepassingen beginnen met **Verkoop**.
     ![Voorbeeld toont alle apps die beginnen met Sales](media/view-applications-portal/search-by-prefix.png)
 
+
+> [!TIP]
+> U kunt het beheer van apps automatiseren met behulp van de Graph API. Zie [App-beheer automatiseren met de Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+U hebt geen nieuwe resources gemaakt in deze quickstart, dus u hoeft niets op te schonen.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u geleerd hoe u de toepassingen kunt weergeven in uw Azure AD-tenant. U hebt geleerd hoe u de lijst met toepassingen kunt filteren op toepassingstype, status en zichtbaarheid. U hebt ook geleerd hoe u kunt zoeken naar een bepaalde toepassing.
-
-- [Een app toevoegen](add-application-portal.md)
-- [Een app configureren](add-application-portal-configure.md)
-- [Eenmalige aanmelding instellen](add-application-portal-setup-sso.md)
-- [Een app verwijderen](delete-application-portal.md)
+Ga naar het volgende artikel voor meer informatie over het gebruik van Azure AD als de id-provider voor een app.
+> [!div class="nextstepaction"]
+> [Een app toevoegen](add-application-portal.md)

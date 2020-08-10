@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 360af0406a816a02540881962ed8794d69ce3bbb
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340825"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531809"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Quickstart: Een Azure-bestandsshare maken en beheren met Azure PowerShell 
 In deze handleiding worden de basisbeginselen besproken van het werken met [Azure-bestandsshares](storage-files-introduction.md) met PowerShell. Azure-bestandsshares zijn net als andere bestandsshares, maar worden in de cloud opgeslagen en ondersteund op het Azure-platform. Azure-bestandsshares ondersteunen het SMB-protocol volgens de industriestandaard en bieden de mogelijkheid bestanden te delen tussen meerdere computers, toepassingen en exemplaren. 
@@ -88,7 +88,7 @@ In de meeste gevallen gebruikt u uw Azure-bestandsshare via het SMB-protocol, om
 - U profiteert van serverloze resources, zoals [Azure Functions](../../azure-functions/functions-overview.md). 
 - U maakt een waarde-toevoegende-service die werkt met veel Azure-bestandsshares, zoals het uitvoeren van back-ups of antivirusscans.
 
-In de volgende voorbeelden ziet u hoe u de Azure PowerShell-module gebruikt voor het bewerken van uw Azure-bestandsshare met het File REST-protocol. De parameter `-Context` wordt gebruikt voor het ophalen van de sleutel van het opslagaccount om de aangegeven acties op de bestandsshare uit te voeren. Als u de sleutel voor het opslagaccount wilt ophalen, moet u de RBAC-rol van `Owner` op het opslagaccount hebben.
+In de volgende voorbeelden ziet u hoe u de Azure PowerShell-module gebruikt voor het bewerken van uw Azure-bestandsshare met het File REST-protocol. De parameter `-Context` wordt gebruikt voor het ophalen van de sleutel van het opslagaccount om de aangegeven acties op de bestandsshare uit te voeren. Als u de sleutel voor het opslagaccount wilt ophalen, moet u over de Azure-rol `Owner` voor het opslagaccount beschikken.
 
 #### <a name="create-directory"></a>Map maken
 Als u in de hoofdmap van uw Azure-bestandsshare een nieuwe map wilt maken met de naam *myDirectory*, gebruikt u de cmdlet [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory).

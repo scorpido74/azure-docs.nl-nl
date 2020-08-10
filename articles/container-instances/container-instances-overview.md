@@ -2,14 +2,14 @@
 title: Serverloze containers in Azure
 description: De Azure Container Instances-service is de snelste en eenvoudigste methode voor het uitvoeren van geïsoleerde containers in Azure. Hierbij hoeft u geen virtuele machines te beheren of een orchestrator op een hoger niveau te gebruiken.
 ms.topic: overview
-ms.date: 04/25/2019
+ms.date: 07/28/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259511"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498681"
 ---
 # <a name="what-is-azure-container-instances"></a>Wat is Azure Container Instances?
 
@@ -20,6 +20,11 @@ Azure Container Instances is een ideale oplossing voor elk scenario dat kan werk
 ## <a name="fast-startup-times"></a>Snel opstarten
 
 Containers bieden aanzienlijke opstartvoordelen ten opzichte van virtuele machines (VM’s). Met Azure Container Instances kunnen containers in Azure in enkele seconden worden gestart, zonder dat u VM’s hoeft in te richten en te beheren.
+
+U kunt Linux- of Windows-containerinstallatiekopieën halen uit Docker Hub, een privé [Azure-containerregister](../container-registry/index.yml), of een ander clouddockerregister. Azure Container Instances slaat verschillende veelgebruikte basisbesturingssysteeminstallatiekopieën op in het cachegeheugen, waardoor de implementatie van uw aangepaste app-installatiekopieën sneller verloopt.
+
+> [!NOTE]
+> Op dit moment kunt u een installatiekopie van een on-premises register niet implementeren in Azure Container Instances.
 
 ## <a name="container-access"></a>Toegang tot container
 
@@ -68,7 +73,7 @@ Azure Container Instances biedt ondersteuning voor planning van [meerdere contai
 
 ## <a name="virtual-network-deployment"></a>Implementatie van virtuele netwerken
 
-Met deze functie van Azure Container Instances, momenteel beschikbaar voor productiewerkbelastingen in een deel van de Azure-regio’s, kunt u [containerinstanties in Azure Virtual Network implementeren](container-instances-vnet.md). Als u containerinstanties in een subnet binnen uw virtuele netwerk implementeert, kunnen ze veilig communiceren met andere resources in het virtuele netwerk, met inbegrip van on-premises resources (via [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ ExpressRoute](../expressroute/expressroute-introduction.md)).
+Azure Container Instances maakt [de implementatie van containerinstanties in een virtueel netwerk in Azure](container-instances-vnet.md) mogelijk. Als containerinstanties zijn geïmplementeerd in een subnet in uw virtuele netwerk, kunnen ze veilig communiceren met andere resources in het virtuele netwerk, waaronder on-premises resources (via [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 ## <a name="next-steps"></a>Volgende stappen
 
