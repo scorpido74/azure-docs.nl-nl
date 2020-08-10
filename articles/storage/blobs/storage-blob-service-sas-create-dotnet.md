@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/20/2019
+ms.date: 08/07/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 6f1beea12b33dcc3c0111e26d79daf096c1eedcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0d442624448cfe48fdd9ab426147599acbb940d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808417"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034717"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Een service-SAS maken voor een container of BLOB met .NET
 
@@ -25,9 +25,17 @@ In dit artikel wordt beschreven hoe u de sleutel van het opslag account gebruikt
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>Een service-SAS voor een BLOB-container maken
 
-Als u een service-SAS voor een container wilt maken, roept u de methode [CloudBlobContainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) aan.
-
 In het volgende code voorbeeld wordt een SAS voor een container gemaakt. Als de naam van een bestaand opgeslagen toegangs beleid wordt gegeven, wordt dat beleid gekoppeld aan de SAS. Als er geen opgeslagen toegangs beleid wordt gegeven, maakt de code een ad-hoc-SAS in de container.
+
+### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Maak een nieuwe [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder). Roep vervolgens de [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) aan om de SAS-token teken reeks op te halen. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Als u een service-SAS voor een container wilt maken, roept u de methode [CloudBlobContainer. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) aan.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -67,13 +75,23 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
     // Return the URI string for the container, including the SAS token.
     return container.Uri + sasContainerToken;
 }
+
 ```
+---
 
 ## <a name="create-a-service-sas-for-a-blob"></a>Een service-SAS maken voor een BLOB
 
-Als u een service-SAS voor een BLOB wilt maken, roept u de methode [CloudBlob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) aan.
-
 In het volgende code voorbeeld wordt een SAS gemaakt op een blob. Als de naam van een bestaand opgeslagen toegangs beleid wordt gegeven, wordt dat beleid gekoppeld aan de SAS. Als er geen opgeslagen toegangs beleid wordt gegeven, maakt de code een ad-hoc-SA'S op de blob.
+
+### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Maak een nieuwe [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder). Roep vervolgens de [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) aan om de SAS-token teken reeks op te halen. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Als u een service-SAS voor een BLOB wilt maken, roept u de methode [CloudBlob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) aan.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -117,6 +135,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     return blob.Uri + sasBlobToken;
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

@@ -1,20 +1,20 @@
 ---
 title: Gegevens overdragen van of naar Azure Files met behulp van AzCopy V10 toevoegen | Microsoft Docs
-description: Gegevens overdragen met AzCopy en file storage.
+description: Gegevens overdragen met AzCopy en file storage. AzCopy is een opdracht regel programma voor het kopiëren van blobs of bestanden naar of van een opslag account. Gebruik AzCopy met Azure Files.
 author: normesta
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7123a90505e5068422d76f22042deac46e721218
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e75ea5a8f5fdeaf7c3562e50d9493341d41ce393
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292722"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037147"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en bestandopslag 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en bestandsopslag 
 
 AzCopy is een opdrachtregelprogramma dat u kunt gebruiken om blobs of bestanden vanuit of naar een opslagaccount te kopiëren. Dit artikel bevat voorbeeld opdrachten die samen werken met Azure Files.
 

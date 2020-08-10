@@ -1,6 +1,6 @@
 ---
 title: 'BGP en Azure VPN Gateway: overzicht'
-description: Meer informatie over Azure VPN Gateway ondersteunt Border Gateway Protocol, het standaard routerings protocol dat wordt gebruikt voor het uitwisselen van route ring en informatie over bereik baarheid.
+description: Meer informatie over Border Gateway Protocol (BGP) in azure VPN, het standaard Internet Protocol voor het uitwisselen van route ring en bereik baarheid van informatie tussen netwerken.
 services: vpn-gateway
 author: yushwang
 manager: rossort
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
-ms.openlocfilehash: f514c2708c3a81ff56c6029d5e43df43ad503036
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 368532eb05ade95a979029871733e057cbdcd6d6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924696"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035549"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>Over BGP met Azure VPN Gateway
 Dit artikel bevat een overzicht van BGP (Border Gateway Protocol)-ondersteuning in azure VPN Gateway.

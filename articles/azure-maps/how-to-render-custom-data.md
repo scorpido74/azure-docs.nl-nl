@@ -1,6 +1,6 @@
 ---
 title: Aangepaste gegevens op een raster kaart weer geven | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u aangepaste gegevens op een raster kaart kunt weer geven met behulp van Microsoft Azure Maps statische installatie kopie service.
+description: Meer informatie over het toevoegen van markerings punten, labels en geometrische vormen aan een raster kaart. Zie hoe u de statische installatie kopie service gebruikt in Azure Maps voor dit doel.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/23/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6eae060b2ed2b0f7d6de5ac54d92677c95fc8a89
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d5dcc2701a0b77509868471ec97c45917b2ccf42
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126870"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037368"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
 
@@ -41,9 +41,9 @@ De S0-laag van het Azure Maps account ondersteunt slechts één exemplaar van de
 
 Voer de volgende stappen uit om de markerings punten met labels en een aangepaste installatie kopie te genereren:
 
-1. Maak een verzameling waarin de aanvragen worden opgeslagen. Selecteer in de app postman de optie **Nieuw**. Selecteer **verzameling**in het venster **Nieuw maken** . Geef de verzameling een naam en selecteer de knop **maken** . 
+1. Maak een verzameling waarin de aanvragen worden opgeslagen. Selecteer in de app postman de optie **Nieuw**. Selecteer **Collection** (Verzameling) in het venster **Create New** (Nieuwe maken). Geef de verzameling een naam en selecteer de knop **Create** (Maken). 
 
-2. Als u de aanvraag wilt maken, selecteert u **Nieuw** opnieuw. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer een **aanvraag naam** in voor de markerings punten. Selecteer de verzameling die u in de vorige stap hebt gemaakt, als de locatie voor het opslaan van de aanvraag. Selecteer vervolgens **Opslaan**.
+2. Selecteer nogmaals **New** (Nieuw) om de aanvraag te maken. Selecteer **Request** (Aanvraag) in het venster **Create New** (Nieuwe maken). Voer een **aanvraag naam** in voor de markerings punten. Selecteer de verzameling die u in de vorige stap hebt gemaakt, als de locatie voor het opslaan van de aanvraag. Selecteer vervolgens **Opslaan**.
     
     ![Een aanvraag maken in postman](./media/how-to-render-custom-data/postman-new.png)
 

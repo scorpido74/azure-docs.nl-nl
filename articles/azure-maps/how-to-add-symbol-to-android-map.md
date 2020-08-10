@@ -1,6 +1,6 @@
 ---
 title: Een symbool laag toevoegen aan Android-kaarten | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u punt gegevens op een kaart kunt renderen door een Symbol-laag toe te voegen met behulp van de Microsoft Azure Maps Android SDK.
+description: Meer informatie over het toevoegen van een markering aan een kaart. Bekijk een voor beeld waarin de Azure Maps Android SDK wordt gebruikt om een Symbol-laag toe te voegen die op punten gebaseerde gegevens uit een gegevens bron bevat.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 528c5a5ba4314e44334548334e312d1111768cf5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 99a4f69a814314b233a3129ed31d18ffa1682d8d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127074"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037385"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Een symbool laag aan een kaart toevoegen met Azure Maps Android SDK
 

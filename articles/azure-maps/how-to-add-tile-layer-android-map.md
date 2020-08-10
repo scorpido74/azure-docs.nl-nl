@@ -1,6 +1,6 @@
 ---
 title: Een tegel laag toevoegen aan Android-kaarten | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u een tegel laag op een kaart kunt weer geven met behulp van de Microsoft Azure Mapss Android SDK.
+description: Meer informatie over het toevoegen van een tegel laag aan een kaart. Bekijk een voor beeld waarin de Azure Maps Android-SDK wordt gebruikt om een weers radar-overlay toe te voegen aan een kaart.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7480ba3befaf560eace2cae4ef4a822012373a2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126972"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037351"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Een tegel laag aan een kaart toevoegen met behulp van de Azure Maps Android SDK
 

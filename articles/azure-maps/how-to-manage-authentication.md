@@ -1,7 +1,7 @@
 ---
 title: Verificatie beheren
 titleSuffix: Azure Maps
-description: Gebruik de Azure Portal om verificatie te beheren in Microsoft Azure Maps.
+description: Vertrouwd raken met Azure Maps-verificatie. Bekijk welke benadering het beste werkt in welk scenario. Meer informatie over het gebruik van de portal om verificatie-instellingen weer te geven.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 870ecb8bda9f07c9270724002d381a4f58bc4d13
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8fc27ea4de7e81f1279f68d2e4a1a7fde1fcf41f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531725"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037334"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verificatie in Azure Maps beheren
 
@@ -49,7 +49,7 @@ De volgende tabel bevat een overzicht van de algemene scenario's voor verificati
 | [Vertrouwde daemon/niet-interactieve client toepassing](./how-to-secure-daemon-app.md)        | Azure AD       | Hoog          | Laag                | Middelgroot             |
 | [Toepassing met één pagina op internet met interactieve eenmalige aanmelding](./how-to-secure-spa-users.md) | Azure AD       | Hoog          | Gemiddeld             | Gemiddeld             |
 | [Toepassing voor één pagina op internet met niet-interactieve aanmelding](./how-to-secure-spa-app.md)      | Azure AD       | Hoog          | Gemiddeld             | Gemiddeld             |
-| [Webtoepassing met interactieve eenmalige aanmelding](./how-to-secure-webapp-users.md)          | Azure AD       | Hoog          | Hoog               | Middelgroot             |
+| [Webtoepassing met interactieve eenmalige aanmelding](./how-to-secure-webapp-users.md)          | Azure AD       | Hoog          | Hoog               | Gemiddeld             |
 | [IoT-apparaat/invoer beperkt apparaat](./how-to-secure-device-code.md)                     | Azure AD       | Hoog          | Gemiddeld             | Gemiddeld             |
 
 Met de koppelingen in de tabel gaat u naar gedetailleerde configuratie-informatie voor elk scenario.

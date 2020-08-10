@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 93366bf963350bf9cbdbda15ec4070c21a1dc975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090141"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036569"
 ---
-# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Veelgestelde vragen over micro soft Commercial Marketplace
+# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over de commerciële Marketplace.
 
 ## <a name="general"></a>Algemeen
 
-### <a name="what-is-microsoft-commercial-marketplace"></a>Wat is micro soft Commercial Marketplace?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Wat is de micro soft Commercial Marketplace?
 
 De commerciële Marketplace verbindt zakelijke en overheids instanties met oplossingen die zijn gebouwd door onze partners. Onze partners maken en beheren aanbiedingen in partner centrum en klanten kunnen oplossingen ontdekken en kopen via productervaringen, zoals Microsoft AppSource, Azure Marketplace, wederverkopers in het Cloud Solution Provider-programma en onze verkoop teams via het programma voor gezamenlijk verkopen.
 
@@ -60,7 +60,7 @@ De manieren waarop klanten uw commerciële Marketplace-aanbieding kunnen gebruik
 
 - Voor oplossingen die u automatisch geeft, ongeacht of ze worden betaald, uw eigen licentie (BYOL) of gratis, worden klanten gevraagd om *dit nu te doen*.
 - Aanbiedingen die ondersteuning bieden voor een test drive (demo) aanvragen van de klant om het *station te testen*. 
-- SaaS-aanbiedingen (Software as a Service) die een proef versie bieden buiten onze commerciële Marketplace *gratis proef versie*.
+- SaaS-aanbiedingen (Software as a Service) die een proef versie bieden buiten de commerciële Marketplace *gratis proef versie*.
 - Met eenvoudige vermeldingen kan de klant *contact met mij opnemen*.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Hoe kan ik aanbiedingen voor de commerciële Marketplace maken?
@@ -77,7 +77,7 @@ U kunt ook [deel nemen aan ons Active Community-Forum](https://www.microsoftpart
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>Welke analyses zijn beschikbaar voor mijn organisatie vanuit de commerciële Marketplace?
 
-We bieden rapportage over uw aanbiedingen binnen onze commerciële Marketplace. Als u toegang wilt krijgen tot gegevens over klanten, bestellingen, Store engagement en meer, gaat u naar [Analytics voor de commerciële Marketplace in het partner centrum](partner-center-portal/analytics.md).
+We bieden rapportage over uw aanbiedingen binnen de commerciële Marketplace. Als u toegang wilt krijgen tot gegevens over klanten, bestellingen, Store engagement en meer, gaat u naar [Analytics voor de commerciële Marketplace in het partner centrum](partner-center-portal/analytics.md).
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Wat is de relatie van micro soft met mijn klanten?
 
@@ -124,7 +124,7 @@ Als u een aankoop tegen een zeer lage prijs wilt volt ooien, kunt u het beste ee
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Wat zijn leads van de commerciële Marketplace en wat moet ik ermee doen?
 
-Als klanten uw aanbiedingen gebruiken op de Microsoft AppSource-en Azure Marketplace-winkel, worden er gegevens vastgelegd. Nadat klanten voldoende interesse hebben bewezen, wordt een lead gemaakt en wordt er een verkoop kans naar het systeem van uw keuze verzonden. Uitgevers die succes hebben met onze commerciële Marketplace, kunnen vaak leads maken, relaties ontwikkelen en interesses in deals inzetten.
+Als klanten uw aanbiedingen gebruiken op de Microsoft AppSource-en Azure Marketplace-winkel, worden er gegevens vastgelegd. Nadat klanten voldoende interesse hebben bewezen, wordt een lead gemaakt en wordt er een verkoop kans naar het systeem van uw keuze verzonden. Uitgevers die succesvol zijn voor de commerciële Marketplace, streven vaak naar leads, ontwikkelen relaties en scha kelen rente in deals.
 
 Zie [leads van klanten in uw Marketplace-aanbieding](partner-center-portal/commercial-marketplace-get-customer-leads.md)voor meer informatie.
 
@@ -285,7 +285,7 @@ Zie [betalings drempels, methoden en tijd frames](partner-center-portal/payment-
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>In welke landen/regio's worden belasting namens mij beheerd?
 
-Klanten kunnen oplossingen vinden op basis van onze commerciële Marketplace over de hele wereld, en we beheren de belasting op verschillende locaties. 
+Klanten kunnen oplossingen van de commerciële Marketplace over de hele wereld vinden en wij beheren de belasting op verschillende locaties. 
 
 Als u de volledige lijst met locaties wilt bekijken, gaat u naar [belasting gegevens voor uitgevers van commerciële markt plaatsen](partner-center-portal/tax-details-paid-transactions.md).
 

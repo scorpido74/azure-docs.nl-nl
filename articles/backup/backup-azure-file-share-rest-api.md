@@ -3,12 +3,12 @@ title: Back-ups maken van Azure-bestands shares met REST API
 description: Meer informatie over het gebruik van REST API voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055028"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036739"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Back-up maken van Azure-bestands share met Azure Backup via rest API
 
@@ -106,9 +106,9 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105304Z:d9bdb266-8349-4dbd-968
 Date   : Mon, 27 Jan 2020 10:53:04 GMT
 ```
 
-### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Lijst met opslag accounts ophalen die kunnen worden beveiligd met Recovery Services kluis
+### <a name="get-list-of-storage-accounts-with-file-shares-that-can-be-backed-up-with-recovery-services-vault"></a>Lijst met opslag accounts ophalen met bestands shares waarvan een back-up kan worden gemaakt met Recovery Services kluis
 
-Als u wilt controleren of ' caching ' is voltooid, vermeldt u alle Beveilig bare opslag accounts in het abonnement. Ga vervolgens naar het gewenste opslag account in het antwoord. Dit wordt gedaan met behulp van de bewerking [ProtectableContainers ophalen](/rest/api/backup/protectablecontainers/list) .
+Als u wilt controleren of ' caching ' is voltooid, vermeldt u alle opslag accounts in het abonnement met bestands shares waarvan een back-up kan worden gemaakt met de Recovery Services kluis. Ga vervolgens naar het gewenste opslag account in het antwoord. Dit wordt gedaan met behulp van de bewerking [ProtectableContainers ophalen](/rest/api/backup/protectablecontainers/list) .
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'

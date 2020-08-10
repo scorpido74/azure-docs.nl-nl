@@ -1,6 +1,6 @@
 ---
 title: Kies de juiste prijs categorie voor Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over de prijs categorieën die worden aangeboden door Microsoft Azure kaarten.
+description: Meer informatie over Azure Maps prijs categorieën. Bekijk welke functies worden aangeboden in welke lagen en Bekijk de belangrijkste aandachtspunten voor het kiezen van een prijs categorie.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 359c2270f3de269adae13ce976cedeb4248935d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30507b289a0ae4f831c8bcf4e038049301da7981
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285761"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036773"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>De juiste prijscategorie kiezen in Azure Maps
 

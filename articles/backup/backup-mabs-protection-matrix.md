@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 Protection-matrix
 description: In dit artikel wordt een ondersteunings matrix weer gegeven met alle werk belastingen, gegevens typen en installaties die Azure Backup Server beveiligt.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 974820389e84f727a9aab284716b3be9020c6dd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032592"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036722"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 Protection-matrix
 
@@ -23,6 +23,9 @@ Gebruik de volgende matrix voor MABS v3 UR1:
 * Installatie van MABS: de computer/locatie waarop u MABS wilt installeren.
 
 * Beveiliging en herstel – Geef een lijst weer met gedetailleerde informatie over de werk belastingen, zoals ondersteunde opslag container of ondersteunde implementatie.
+
+>[!NOTE]
+>Ondersteuning voor de 32-bits beveiligings agent is afgeschaft met MABS v3 UR1. Zie [32-bits beveiligings agent afschaffen](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation).
 
 ## <a name="protection-support-matrix"></a>Ondersteuningsmatrix voor beveiliging
 

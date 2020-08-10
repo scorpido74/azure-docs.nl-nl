@@ -1,6 +1,6 @@
 ---
 title: AzCopy configureren, optimaliseren en problemen oplossen met Azure Storage | Microsoft Docs
-description: AzCopy configureren, optimaliseren en problemen oplossen.
+description: AzCopy met Azure Storage configureren, optimaliseren en problemen hiermee oplossen. Wijzig de locatie van of verwijder de plannings-en logboek bestanden. Wijzig het standaard logboek niveau.
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282429"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037181"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Configureren, optimaliseren en problemen oplossen in AzCopy
 
@@ -42,7 +42,7 @@ Momenteel biedt AzCopy geen ondersteuning voor proxy's waarvoor authenticatie me
 
 Als u AzCopy uitvoert in Windows en u wilt weten dat u _geen_ proxy kunt gebruiken (in plaats van de instellingen automatisch te detecteren), gebruikt u deze opdrachten. Met deze instellingen zal AzCopy niet zoeken naar of proberen om een proxy te gebruiken.
 
-| Besturingssysteem | Omgeving | Opdracht  |
+| Besturingssysteem | Omgeving | Opdrachten  |
 |--------|-----------|----------|
 | **Windows** | Opdracht prompt (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
 | **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|

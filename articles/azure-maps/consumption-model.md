@@ -1,6 +1,6 @@
 ---
 title: Voertuig modellen voor route ring | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over verbruiks modellen voor Voer tuigen voor route ring in Microsoft Azure Maps.
+description: 'Meer informatie over de verbruiks modellen die Azure Maps ondersteunt: verbranding en elektrisch. Zie welke para meters elk model gebruikt en parameter beperkingen weer geven.'
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b44186d783a249192a8c13ee97063034ee319df7
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190256"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036756"
 ---
 # <a name="consumption-model"></a>Verbruiksmodel
 

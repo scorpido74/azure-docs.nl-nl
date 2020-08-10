@@ -1,6 +1,6 @@
 ---
 title: Azure Maps metrische gegevens over het gebruik van de API weer geven | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u de metrische gegevens voor uw Microsoft Azure Maps-API-aanroepen in de Azure Portal kunt weer geven.
+description: Meer informatie over het weer geven van metrische gegevens over Azure Maps-API-gebruik, zoals totaal aantal aanvragen, totaal aantal fouten en beschik baarheid. Zie gegevens filteren en resultaten splitsen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/06/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57fb699a7225a53af1f093520855e8e2ef132f42
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 766bb2eaf6878a8d7261472ba11ea7acd46de92e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130729"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036484"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Metrische gegevens over het gebruik van Azure Maps-API weergeven
 

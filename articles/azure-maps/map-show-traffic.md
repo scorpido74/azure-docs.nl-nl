@@ -1,6 +1,6 @@
 ---
 title: Verkeer op een kaart weer geven | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u verkeers gegevens op een kaart kunt weer geven met behulp van de Microsoft Azure Maps Web SDK.
+description: Meer informatie over het toevoegen van verkeers gegevens aan Maps. Meer informatie over stroom gegevens en hoe u de Azure Maps Web-SDK kunt gebruiken om incident gegevens en stroom gegevens toe te voegen aan Maps.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 5bb088c4650cfdfec59383a7bcf8f340952e5d55
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 063fbd2ad4f2f5d427fd2cb39b8ce9b231eba374
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273011"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036422"
 ---
 # <a name="show-traffic-on-the-map"></a>Verkeer weergeven op de kaart
 
@@ -58,7 +58,7 @@ Zie de <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>bedekkings opties</a>
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)

@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263242"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036348"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen en machtigingen voor Azure Data Factory
 
@@ -26,21 +26,21 @@ In dit artikel worden de functies beschreven die nodig zijn voor het maken en be
 
 ## <a name="roles-and-requirements"></a>Functies en vereisten
 
-Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rol *Inzender* of *Eigenaar*, of moet dit een *beheerder* van het Azure-abonnement zijn. Als u de machtigingen die u in het abonnement hebt, wilt bekijken, gaat u naar Azure Portal, selecteert u rechtsboven uw gebruikersnaam en selecteert u vervolgens **Machtigingen**. Als u toegang tot meerdere abonnementen hebt, moet u het juiste abonnement selecteren. 
+Als u Data Factory-exemplaren wilt maken, moet het gebruikers account waarmee u zich bij Azure aanmeldt, lid zijn van de rol *Inzender* , de rol van *eigenaar* of een *beheerder* van het Azure-abonnement. Als u de machtigingen die u in het abonnement hebt, wilt bekijken, gaat u naar Azure Portal, selecteert u rechtsboven uw gebruikersnaam en selecteert u vervolgens **Machtigingen**. Als u toegang tot meerdere abonnementen hebt, moet u het juiste abonnement selecteren. 
 
 Als u onderliggende resources wilt maken en beheren voor Data Factory, waaronder gegevenssets, gekoppelde services, pijplijnen, triggers en integratieruntimes, zijn de volgende vereisten van toepassing:
-- Als u onderliggende resources in Azure Portal wilt maken en beheren, moet u de rol **Data Factory-inzender** op minimaal het niveau van de resourcegroep hebben.
+- Als u onderliggende resources in de Azure Portal wilt maken en beheren, moet u behoren tot de rol **Data Factory Inzender** op het niveau van de **resource groep** of hoger.
 - Voor het maken en beheren van onderliggende resources met PowerShell of de SDK is de rol **Inzender** op minimaal het resourceniveau voldoende.
 
 Zie het artikel [Rollen toevoegen](../cost-management-billing/manage/add-change-subscription-administrator.md) voor voorbeelden van instructies voor het toevoegen van een gebruiker aan een rol.
 
 ## <a name="set-up-permissions"></a>Machtigingen instellen
 
-Nadat u een Data Factory hebt gemaakt, wilt u mogelijk andere gebruikers laten werken met de data factory. Als u deze toegang wilt verlenen aan andere gebruikers, moet u deze toevoegen aan de ingebouwde rol **Data Factory Inzender** voor de resource groep die de Data Factory bevat.
+Nadat u een Data Factory hebt gemaakt, wilt u mogelijk andere gebruikers laten werken met de data factory. Als u deze toegang wilt verlenen aan andere gebruikers, moet u deze toevoegen aan de ingebouwde rol **Data Factory Inzender** voor de **resource groep** die de Data Factory bevat.
 
 ### <a name="scope-of-the-data-factory-contributor-role"></a>Bereik van de rol Data Factory Inzender
 
-Als u lid bent van de rol **Data Factory Inzender** , kunnen gebruikers het volgende doen:
+Door het lidmaatschap van de rol **Data Factory Inzender** kunnen gebruikers het volgende doen:
 - Gegevens fabrieken en onderliggende resources maken, bewerken en verwijderen, waaronder gegevens sets, gekoppelde services, pijp lijnen, triggers en Integration Runtimes.
 - Resource Manager-sjablonen implementeren. Implementatie van Resource Manager is de implementatie methode die wordt gebruikt door Data Factory in het Azure Portal.
 - App Insights-waarschuwingen voor een data factory beheren.
@@ -50,7 +50,7 @@ Zie [Data Factory rol Inzender](../role-based-access-control/built-in-roles.md#d
 
 ### <a name="resource-manager-template-deployment"></a>Implementatie van Resource Manager-sjabloon
 
-Met de rol **Data Factory Inzender** , op het niveau van de resource groep of hoger, kunnen gebruikers Resource Manager-sjablonen implementeren. Als gevolg hiervan kunnen leden van de rol Resource Manager-sjablonen gebruiken voor het implementeren van zowel gegevens fabrieken als hun onderliggende resources, inclusief gegevens sets, gekoppelde services, pijp lijnen, triggers en Integration Runtimes. Als u lidmaatschap van deze rol gebruikt, kan de gebruiker echter geen andere resources maken.
+Met de rol **Data Factory Inzender** , op het niveau van de resource groep of hoger, kunnen gebruikers Resource Manager-sjablonen implementeren. Als gevolg hiervan kunnen leden van de rol Resource Manager-sjablonen gebruiken voor het implementeren van zowel gegevens fabrieken als hun onderliggende resources, inclusief gegevens sets, gekoppelde services, pijp lijnen, triggers en Integration Runtimes. Als u lidmaatschap van deze rol gebruikt, kan de gebruiker geen andere resources maken.
 
 Machtigingen voor Azure opslag plaatsen en GitHub zijn onafhankelijk van Data Factory machtigingen. Als gevolg hiervan kan een gebruiker met opslag plaats-machtigingen die alleen lid is van de rol lezer, Data Factory onderliggende resources bewerken en wijzigingen door voeren in de opslag plaats, maar kan deze wijzigingen niet publiceren.
 

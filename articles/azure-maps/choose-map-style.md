@@ -1,6 +1,6 @@
 ---
 title: De stijl van de Azure Maps Web-Map Control wijzigen
-description: In dit artikel vindt u meer informatie over stijl functies van de Azure Maps Web Map Control
+description: Meer informatie over het wijzigen van de stijl en opties van een kaart. Zie een besturings element stijl kiezer toevoegen aan een kaart in Azure Maps zodat gebruikers kunnen scha kelen tussen verschillende stijlen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a4c1629302c72d6f59f7f1fd10dc850d46cea5a7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285786"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036790"
 ---
 # <a name="change-the-style-of-the-map"></a>Stijl van de kaart wijzigen
 
@@ -118,7 +118,7 @@ De volgende code laat zien hoe u de standaard `mapStyles` basisstijl lijst overs
 Voor meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)

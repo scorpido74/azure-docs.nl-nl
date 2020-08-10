@@ -1,6 +1,6 @@
 ---
 title: Zoom niveaus en tegel raster in Microsoft Azure Maps
-description: In dit artikel vindt u meer informatie over zoom niveaus en tegel rasters in Microsoft Azure kaarten.
+description: Meer informatie over het instellen van zoom niveaus in Azure Maps. Zie geografische coördinaten omzetten in pixel coördinaten, tegel coördinaten en quadkeys. Code voorbeelden weer geven.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/14/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093048"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035872"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomniveaus en tegelraster
 
@@ -53,8 +53,8 @@ De volgende tabel bevat de volledige lijst met waarden voor zoom niveaus waarbij
 |12|38,2|9779,2|
 |13|19,1|4889,6|
 |14|9.6|2457,6|
-|15|4,8|1228,8|
-|16|2,4|614,4|
+|15|4.8|1228,8|
+|16|2.4|614,4|
 |17|1.2|307,2|
 |18|0,6|152,8|
 |19|0,3|76,4|

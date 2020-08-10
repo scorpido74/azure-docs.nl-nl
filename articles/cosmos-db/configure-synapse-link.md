@@ -1,17 +1,17 @@
 ---
 title: Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
 description: Meer informatie over het inschakelen van Synapse-koppeling voor Azure Cosmos-accounts, het maken van een container met een analytische opslag, het verbinden van de Azure Cosmos-data base in Synapse-werk ruimte en het uitvoeren van query's.
-author: SriChintala
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: srchi
-ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rosouz
+ms.openlocfilehash: 9499fe2140f4a345d48bce6ef010989cfc22c58e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262035"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037079"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
 
@@ -32,7 +32,7 @@ Gebruik de volgende stappen om analytische query's uit te voeren met de Synapse-
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449142"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037028"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -65,7 +65,7 @@ In de volgende stappen wordt een Windows-installatie programma (MSI) gebruikt om
 
 1. Als u geen [uitbreidings bundels](functions-bindings-register.md#extension-bundles)wilt gebruiken, installeert u de [.net Core 3. x SDK voor Windows](https://dotnet.microsoft.com/download).
 
-# <a name="macos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram Ma's voor macOS te installeren.
 
@@ -205,7 +205,23 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 > [!IMPORTANT]
 > Standaard maken versie 2. x en latere versies van de kern Hulpprogramma's functie-app-projecten voor de .NET-runtime als [C#-klassen projecten](functions-dotnet-class-library.md) (. csproj). Deze C#-projecten, die kunnen worden gebruikt met Visual Studio of Visual Studio code, worden gecompileerd tijdens het testen en bij het publiceren naar Azure. Als u in plaats daarvan dezelfde C# script bestanden (. CSX) wilt maken en gebruiken die zijn gemaakt in versie 1. x en in de portal, moet u de `--csx` para meter toevoegen wanneer u functies maakt en implementeert.
 
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+## <a name="register-extensions"></a>Extensies registreren
+
+Met uitzonde ring van HTTP-en timer-triggers, worden function-bindingen in runtime versie 2. x en hoger geïmplementeerd als uitbreidings pakketten. Voor HTTP-bindingen en timer triggers zijn geen extensies vereist. 
+
+Om incompatibiliteit tussen de verschillende uitbreidings pakketten te beperken, kunt u met functies naar een uitbreidings bundel in uw host.jsop Project bestand verwijzen. Als u ervoor kiest om geen uitbreidings bundels te gebruiken, moet u ook .NET Core 2. x SDK lokaal installeren en een uitbrei ding van extensies. csproj met uw functions-project onderhouden.  
+
+In versie 2. x en voorbij de Azure Functions runtime moet u de uitbrei dingen expliciet registreren voor de bindings typen die in uw functies worden gebruikt. U kunt ervoor kiezen om bindings uitbreidingen afzonderlijk te installeren of u kunt een referentie voor een uitbreidings bundel toevoegen aan de host.jsvan het project bestand. Met uitbreidings bundels wordt de kans verwijderd om compatibiliteits problemen met het pakket op te lossen wanneer u meerdere bindings typen gebruikt. Het is de aanbevolen methode voor het registreren van bindings uitbreidingen. Extensie bundels verwijdert ook de vereiste van het installeren van de .NET Core 2. x SDK. 
+
+### <a name="use-extension-bundles"></a>Uitbreidings bundels gebruiken
+
+[!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
+
+Zie [Azure functions bindings uitbreidingen registreren](functions-bindings-register.md#extension-bundles)voor meer informatie. U moet uitbreidings bundels toevoegen aan de host.jsop voordat u bindingen toevoegt aan het function.jsbestand.
+
+### <a name="explicitly-install-extensions"></a>Expliciete extensies installeren
+
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 

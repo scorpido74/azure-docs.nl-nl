@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Networking Services
-description: Meer informatie over netwerk services in azure, waaronder connectiviteits Services, toepassings beveiligings Services, services voor het leveren van toepassingen en netwerk bewaking.
+description: Meer informatie over netwerk services in azure, waaronder connectiviteit, toepassings beveiliging, levering van toepassingen en netwerk bewakings Services.
 services: networking
 documentationcenter: na
 author: KumudD
@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 5b32f6b368af62bad13a505472a9ddd4709c032c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282157"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037249"
 ---
 # <a name="azure-networking-services-overview"></a>Overzicht van Azure Networking Services
 
@@ -34,7 +34,7 @@ In deze sectie worden de services beschreven die verbinding bieden tussen Azure-
 |[Virtueel netwerk](#vnet)|Hiermee kunnen Azure-bronnen veilig communiceren met elkaar, Internet en on-premises netwerken.| <p>[Netwerkverkeer filteren](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Netwerkverkeer routeren](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Netwerktoegang tot resources beperken](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Virtuele netwerken met elkaar verbinden](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|Breidt uw on-premises netwerken uit in de micro soft-Cloud via een persoonlijke verbinding die wordt vereenvoudigd door een connectiviteits provider.|<p>[Een ExpressRoute-circuit maken en wijzigen](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[Peering voor een ExpressRoute-circuit maken en wijzigen](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[Een VNet koppelen aan een ExpressRoute-circuit](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[Route filters configureren en beheren voor ExpressRoute-circuits](../expressroute/how-to-routefilter-portal.md)</p>|
 |[VPN Gateway](#vpngateway)|Versleuteld verkeer verzenden tussen een virtueel Azure-netwerk en een on-premises locatie via het open bare Internet.|<p>[Site-naar-site-verbindingen](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet-naar-VNet-verbindingen](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Punt-naar-site-verbindingen](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
-|[Virtuele WAN](#virtualwan)|Optimaliseert en automatiseert de verbinding tussen filialen en Azure. Azure-regio's fungeren als hubs die u kunt gebruiken om uw filialen te koppelen aan.|<p>[Site-naar-site-verbindingen](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute-verbindingen](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
+|[Virtual WAN](#virtualwan)|Optimaliseert en automatiseert de verbinding tussen filialen en Azure. Azure-regio's fungeren als hubs die u kunt gebruiken om uw filialen te koppelen aan.|<p>[Site-naar-site-verbindingen](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute-verbindingen](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Host DNS-domeinen die naam omzetting bieden met behulp van Microsoft Azure-infra structuur.|<p>[Uw domein hosten in Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[DNS-records voor een web-app maken](../dns/dns-web-sites-custom-domain.md)</p> <p>[Een alias record maken voor Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Een alias record maken voor openbaar IP-adres](../dns/tutorial-alias-pip.md)</p> <p>[Een alias record maken voor de zone bron record](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|Configureer veilige en naadloze RDP/SSH-verbindingen met uw virtuele machines rechtstreeks in de Azure Portal via TLS. Wanneer u verbinding maakt via Azure Bastion, hebt u geen openbaar IP-adres nodig voor uw virtuele machines|<p>[Een Azure Bastion-host maken](../bastion/bastion-create-host-portal.md)</p><p>[Via SSH verbinding maken met een virtuele Linux-machine](../bastion/bastion-connect-vm-ssh.md)</p><p>[Verbinding maken met behulp van RDP met een Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[NAT-gateway van virtueel netwerk](#nat)|Maak een NAT-gateway om uitgaande connectiviteit te bieden voor een virtuele machine.|<p>[Een NAT-gateway maken](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
@@ -65,7 +65,7 @@ In het volgende diagram ziet u meerdere site-naar-site-VPN-verbindingen met hetz
 
 Zie [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)voor meer informatie over verschillende typen VPN-verbindingen.
 
-### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtuele WAN
+### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtual WAN
 Azure Virtual WAN is een netwerk service die zorgt voor geoptimaliseerde en geautomatiseerde vertakkings connectiviteit met, en via Azure. Azure-regio's fungeren als hubs die u kunt gebruiken om uw filialen te koppelen aan. U kunt de Azure-backbone gebruiken om ook vertakkingen te verbinden en te profiteren van de connectiviteit van Branch-to-VNet. Met Azure Virtual WAN worden veel Azure Cloud Connectivity Services, zoals site-naar-site VPN, ExpressRoute, punt-naar-site-gebruikers-VPN, in één operationele interface gecombineerd. Connectiviteit met Azure VNets wordt tot stand gebracht met behulp van virtuele netwerk verbindingen. Zie [Wat is virtueel WAN van Azure?](../virtual-wan/virtual-wan-about.md)voor meer informatie.
 
 ![Virtual WAN-diagram](./media/networking-overview/virtualwan1.png)
@@ -102,7 +102,7 @@ In deze sectie worden netwerk services in azure beschreven waarmee u uw netwerk 
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS Protection 
 [Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) biedt tegen maatregelen tegen de meest geavanceerde DDoS bedreigingen. De service biedt verbeterde mogelijkheden voor DDoS-beperking voor uw toepassing en resources die zijn geïmplementeerd in uw virtuele netwerken. Klanten die Azure DDoS Protection gebruiken, hebben bovendien toegang tot DDoS snelle reactie ondersteuning om DDoS-experts te benaderen tijdens een actieve aanval.
 
-![DDoS-beveiliging](./media/networking-overview/ddos-protection.png)
+![DDoS Protection](./media/networking-overview/ddos-protection.png)
 
 ### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall
 
@@ -148,7 +148,7 @@ In deze sectie worden de netwerk services in azure beschreven waarmee u toepassi
 |[Application Gateway](#applicationgateway)|Azure Application Gateway is een load balancer voor webverkeer waarmee u het verkeer naar uw webapps kunt beheren.|<p>[Webverkeer omleiden met Azure Application Gateway](../application-gateway/quick-create-portal.md)</p><p>[Zelfstudie: Een toepassingsgateway configureren met TLS-beëindiging met de Azure-portal](../application-gateway/create-ssl-portal.md)</p><p>[Een toepassingsgateway maken met een omleiding op basis van een URL-pad](../application-gateway/create-url-route-portal.md) </p>|
 |
 
-### <a name="content-delivery-network"></a><a name="cdn"></a>CDN (Content Delivery Network)
+### <a name="content-delivery-network"></a><a name="cdn"></a>Content Delivery Network
 Azure Content Delivery Network (CDN) biedt ontwikkelaars een globale oplossing voor het snel leveren van inhoud met hoge bandbreedte door de inhoud op strategische, fysieke knooppunten in de hele wereld in de cache op te slaan. Zie voor meer informatie over Azure CDN [Azure Content Delivery Network](../cdn/cdn-overview.md)
 
 ![Azure CDN](./media/networking-overview/cdn-overview.png)

@@ -1,18 +1,18 @@
 ---
 title: Veelgestelde vragen over Azure Files | Microsoft Docs
-description: Vind antwoorden op veelgestelde vragen over Azure Files.
+description: Krijg antwoorden op veelgestelde vragen over Azure Files. U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises Windows-, Linux-of macOS-implementaties.
 author: roygara
 ms.service: storage
 ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 87c1aa4d65b313f4c068ef11c9d2209e9318ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bdc9451f0dbc32e14197cde48a3613196b864c0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482867"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037130"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -425,7 +425,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 **Azure Files met IBM MQ Hoe kan ik gebruiken?**  
     IBM heeft een document uitgebracht waarmee klanten van IBM MQ Azure Files met de IBM-service kunnen configureren. Zie [How to set a IBM MQ multi-instance Queue Manager with Microsoft Azure files service](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)(Engelstalig) voor meer informatie.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Problemen met Azure Files in Windows oplossen](storage-troubleshoot-windows-file-connection-problems.md)
 * [Problemen met Azure Files in Linux oplossen](storage-troubleshoot-linux-file-connection-problems.md)
-* [Problemen met Azure Files Sync oplossen](storage-sync-files-troubleshoot.md)
+* [Problemen oplossen met Azure File Sync](storage-sync-files-troubleshoot.md)

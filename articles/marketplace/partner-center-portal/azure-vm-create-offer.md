@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 07/28/2020
-ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798066"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037266"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -242,20 +242,23 @@ Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn 
 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen zorgen ervoor dat uw inzending wordt afgewezen.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de https://upload.xboxlive.com service die wordt gebruikt door het partner centrum niet blokkeert.
 
-#### <a name="store-logos"></a>Winkel logo's
+#### <a name="azure-marketplace-logos"></a>Azure Marketplace-logo's
 
-Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) en een **middel** groot (90 x 90 pixels) te maken. U kunt deze desgewenst vervangen door verschillende installatie kopieën.
+Geef PNG-bestanden van het logo van uw aanbieding op met de volgende vier afbeeldings dimensies:
 
-Alle drie de logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
+- **Klein** (48 &times; 48 pixels)
+- **Gemiddeld** (90 &times; 90 pixels)
+- **Groot** (216 &times; 216 pixels)
+- **Breed** (255 &times; 115 pixels)
 
-- **Klein** (48 x 48)
-- **Gemiddeld** (90 x 90)
-- **Groot** (tussen 216 x 216 en 350 x 350)
+Alle vier de logo's zijn vereist en worden weer gegeven in verschillende Azure Marketplace-vermeldingen.
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

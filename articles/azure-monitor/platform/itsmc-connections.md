@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 2df7d8273b2b25cd0171b38e5cc0ada557ea9a2d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325352"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035022"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-producten/-services verbinden met IT-servicebeheerconnector
 Dit artikel bevat informatie over het configureren van de verbinding tussen uw ITSM-product/-service en de IT Service Management-connector (ITSMC) in Log Analytics om uw werk items centraal te beheren. Zie [overzicht](./itsmc-overview.md)voor meer informatie over ITSMC.
@@ -179,13 +179,14 @@ De volgende secties bevatten informatie over het aansluiten van uw ServiceNow-pr
 ### <a name="prerequisites"></a>Vereisten
 Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 - ITSMC is geïnstalleerd. Meer informatie: [het toevoegen van de IT Service Management-connector-oplossing](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- ServiceNow ondersteunde versies: New York, Madrid, Londen, Kingston, Jakarta, Istanboel, Helsinki, Genève.
+- ServiceNow ondersteunde versies: Orlando, New York, Madrid, Londen, Kingston, Jakarta, Istanboel, Helsinki, Genève.
 > [!NOTE]
 > ITSMC biedt alleen ondersteuning voor de officiële SaaS-aanbieding van de service. Persoonlijke implementaties van de service worden nu niet ondersteund. 
 
 **ServiceNow-beheerders moeten het volgende doen in hun ServiceNow-exemplaar**:
 - Genereer een client-ID en client geheim voor het ServiceNow-product. Voor informatie over het genereren van client-ID en geheim, raadpleegt u de volgende informatie zoals vereist:
 
+    - [OAuth instellen voor Orlando](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth voor New York instellen](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth instellen voor Madrid](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth instellen voor Londen](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

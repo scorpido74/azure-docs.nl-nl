@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met Microsoft Azure Maps web map-besturings element
-description: Meer informatie over het gebruik van de Microsoft Azure Maps web map-Webkaart Control-client-side java script-bibliotheek voor het weer geven van kaarten en Inge sloten Azure Maps functionaliteit in uw web-of mobiele toepassing.
+description: Meer informatie over het toevoegen van Maps aan web-en mobiele toepassingen met behulp van de Map Control java script-bibliotheek aan de client zijde in Azure Maps. Zie overzichten lokaliseren.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287073"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035950"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Het kaartbesturingselement in Azure Maps gebruiken
 
@@ -34,22 +34,22 @@ U kunt een kaart insluiten in een webpagina met behulp van de Map Control java s
 
 1. Maak een nieuw HTML-bestand.
 
-2. Laden in de Azure Maps Web-SDK. U kunt een van de twee opties kiezen.
+2. Laden in de Azure Maps Web-SDK. U kunt een van de volgende twee opties kiezen:
 
     * Gebruik de wereld wijd gehoste CDN-versie van de Azure Maps Web-SDK door verwijzingen toe te voegen aan het Java script en het opmaak model in het `<head>` element van het HTML-bestand:
 
-        ```HTML
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        ```
+      ```html
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
     * Laad de Azure Maps Web SDK-bron code lokaal met behulp van het [Azure-Maps-Control NPM-](https://www.npmjs.com/package/azure-maps-control) pakket en host dit met uw app. Dit pakket bevat ook TypeScript-definities.
 
-    > **NPM Azure-Maps-beheer installeren**
+      > **NPM Azure-Maps-beheer installeren**
 
     Voeg vervolgens verwijzingen naar het Azure Maps opmaak model toe aan het `<head>` element van het bestand:
 
-    ```HTML
+    ```html
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
      ```
 

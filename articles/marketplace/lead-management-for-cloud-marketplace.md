@@ -1,5 +1,5 @@
 ---
-title: Lead beheer voor commerciële Marketplace | Azure Marketplace en AppSource
+title: Lead beheer voor de commerciële Marketplace | Azure Marketplace en AppSource
 description: Een overzicht van de verschillende onderwerpen met betrekking tot het publiceren van aanbiedingen en technische artefacten naar Azure Marketplace en AppSource
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 2abbef88ed7bac41b84eb06c8c0ec9c8a906b2f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119443"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035175"
 ---
-# <a name="lead-management-for-commercial-marketplace"></a>Lead beheer voor commerciële Marketplace
+# <a name="lead-management-for-the-commercial-marketplace"></a>Lead beheer voor de commerciële Marketplace
 
 Klanten zijn het midden van een goed bedrijf. Bij de trans formatie van de huidige product verwervingen, moeten de markt verwerkers zich richten op het rechtstreeks verbinden met klanten en het bouwen van een relatie. Daarom is het genereren van leads van hoge kwaliteit een essentieel hulp middel voor uw verkoop cyclus. Nadat u uw aanbieding in het [partner centrum](https://partner.microsoft.com/)hebt opgenomen, zijn er hulpprogram ma's ingeschakeld waarmee u direct nadat een klant rente hebt gegeven, de contact gegevens van de klant kunt ontvangen of uw product in de Marketplace implementeert. 
 

@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562443"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034954"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Overzicht van lokale cache Azure App Service
 
@@ -36,7 +36,7 @@ De functie Azure App Service lokale cache biedt een weer gave van webrollen van 
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hoe de lokale cache het gedrag van App Service wijzigt
 * _D:\home_ verwijst naar de lokale cache, die op het VM-exemplaar wordt gemaakt wanneer de app wordt gestart. _D:\Local_ blijft verwijzen naar de tijdelijke VM-specifieke opslag.
-* De lokale cache bevat een eenmalige kopie van de _/site_ -en _/siteextensions_ -mappen van het gedeelde inhouds archief, respectievelijk op _D:\home\site_ en _D:\home\siteextensions_. De bestanden worden gekopieerd naar de lokale cache wanneer de app wordt gestart. De grootte van de twee mappen voor elke app is standaard beperkt tot 1 GB, maar kan worden verhoogd tot 2 GB. Houd er rekening mee dat als de cache groter wordt, het langer duurt om de cache te laden. Als de gekopieerde bestanden de grootte van de lokale cache overschrijden, App Service lokale cache op de achtergrond negeren en lezen van de externe bestands share.
+* De lokale cache bevat een eenmalige kopie van de _/site_ -en _/siteextensions_ -mappen van het gedeelde inhouds archief, respectievelijk op _D:\home\site_ en _D:\home\siteextensions_. De bestanden worden gekopieerd naar de lokale cache wanneer de app wordt gestart. De grootte van de twee mappen voor elke app is standaard beperkt tot 1 GB, maar kan worden verhoogd tot 2 GB. Houd er rekening mee dat als de cache groter wordt, het langer duurt om de cache te laden. Als u de limiet voor de lokale cache hebt verhoogd naar 2 GB en de gekopieerde bestanden de maximum grootte van 2 GB overschrijden, App Service lokale cache en lees bewerkingen op de externe bestands share op de achtergrond genegeerd. Als er geen limiet is gedefinieerd of als de limiet is ingesteld op een lagere waarde dan 2 GB en de gekopieerde bestanden de limiet overschrijden, kan de implementatie of swap mislukken met een fout.
 * De lokale cache is lezen/schrijven. Elke wijziging wordt echter verwijderd wanneer de app virtuele machines verplaatst of opnieuw wordt gestart. Gebruik niet de lokale cache voor apps die essentiële gegevens in het inhouds archief opslaan.
 * _D:\home\LogFiles_ en _D:\home\Data_ bevatten logboek bestanden en app-gegevens. De twee submappen worden lokaal opgeslagen in het VM-exemplaar en worden periodiek naar het gedeelde inhouds archief gekopieerd. Apps kunnen logboek bestanden en gegevens persistent maken door deze te schrijven naar deze mappen. De kopie naar het gedeelde inhouds archief is echter het meest geschikt voor het geval dat logboek bestanden en gegevens verloren gaan als gevolg van een plotselinge crash van een VM-exemplaar.
 * Het [streamen van Logboeken](troubleshoot-diagnostic-logs.md#stream-logs) wordt beïnvloed door de best mogelijke kopieer activiteit. U kunt in de gestreamde Logboeken een vertraging van één minuut opvolgen.
@@ -94,7 +94,7 @@ U wordt aangeraden lokale cache te gebruiken in combi natie met de functie [stag
 * Wanneer u klaar bent, kunt u een [swap bewerking](../app-service/deploy-staging-slots.md#Swap) uitgeven tussen uw staging-en productie-sleuven.  
 * Plak instellingen bevatten naam en plak een sleuf. Als de Faserings sleuf wordt gewisseld naar productie, neemt deze de instellingen van de lokale cache-app over. De zojuist verwisselde productie sleuf wordt na een paar minuten uitgevoerd op de lokale cache en wordt na de wisseling opwarmen als onderdeel van de sleuf opwarm. Wanneer de wisseling van de sleuf is voltooid, wordt uw productie sleuf uitgevoerd op basis van de lokale cache.
 
-## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
+## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ's)
 
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Hoe kan ik zien of de lokale cache van toepassing is op mijn app?
 Als uw app een hoogwaardige, betrouw bare inhouds opslag nodig heeft, wordt het inhouds archief niet gebruikt voor het schrijven van kritieke gegevens tijdens runtime. Dit is minder dan 2 GB in totale grootte. het antwoord is "ja"! Als u de totale grootte van uw/site-en/siteextensions-mappen wilt ophalen, kunt u de site-extensie ' Azure Web Apps Disk Usage ' gebruiken.

@@ -1,6 +1,6 @@
 ---
 title: 'On-premises netwerk verbinden met een virtueel Azure-netwerk: site-naar-site-VPN: Portal'
-description: Stappen voor het maken van een IPSec-verbinding van uw on-premises netwerk met een virtueel Azure-netwerk via het openbare internet. Deze stappen helpen u een cross-premises site-naar-site-VPN-gatewayverbinding te maken met de portal.
+description: Maak een IPsec-site-naar-site-VPN Gateway verbinding van uw on-premises netwerk met een virtueel Azure-netwerk via het open bare Internet met behulp van de portal.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 601e31cde22942abd6d2bc7c5bdcbc5d97f5a591
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfd03935f5189a544f11e5b8bbdd4b46e2aa989
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987668"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037062"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Een site-naar-site-verbinding maken in Azure Portal
 
@@ -92,7 +92,7 @@ De lokale netwerkgateway verwijst doorgaans naar uw on-premises locatie. U geeft
 
 * **Naam:** Site1
 * **Resourcegroep: **TestRG1
-* **Locatie:** VS - oost
+* **Locatie:** VS-Oost
 
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]

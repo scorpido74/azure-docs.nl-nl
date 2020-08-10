@@ -1,18 +1,18 @@
 ---
 title: Azure Files implementeren | Microsoft Docs
-description: Meer informatie over het implementeren van Azure Files van begin tot einde.
+description: Meer informatie over het implementeren van Azure Files van begin tot einde. Gegevens overdragen naar Azure Files. Automatisch koppelen op de benodigde computers of servers.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b9df9375dee59df987cea01a4142a22a78eb533e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08bcb41dd8d9f4643b03d855960d8632b778ff84
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510796"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034495"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files implementeren
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard SMB-protocol. In dit artikel wordt uitgelegd hoe u Azure Files in uw organisatie nagenoeg implementeert.

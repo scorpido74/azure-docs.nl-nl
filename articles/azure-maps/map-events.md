@@ -1,6 +1,6 @@
 ---
 title: Toewijzings gebeurtenissen verwerken | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u een interactieve Web-SDK kunt koppelen met toewijzings gebeurtenissen met behulp van de Microsoft Azure Maps Web SDK.
+description: Meer informatie over de gebeurtenissen die worden geactiveerd wanneer gebruikers met kaarten communiceren. Een lijst met alle ondersteunde toewijzings gebeurtenissen weer geven. Zie de Azure Maps Web-SDK gebruiken voor het verwerken van gebeurtenissen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 667ab684ef4a453d210af36c0221d350b25c9829
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282888"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036438"
 ---
 # <a name="interact-with-the-map"></a>Interactie met de kaart
 

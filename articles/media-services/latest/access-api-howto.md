@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090158"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035789"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Referenties voor toegang tot Media Services-API ophalen  
 
@@ -45,7 +45,7 @@ In dit artikel worden de stappen beschreven voor het verkrijgen van referenties 
 Op de pagina **API-toegang** kunt u de verificatie methode selecteren die u wilt gebruiken om verbinding te maken met de API. De pagina bevat ook de waarden die u nodig hebt om verbinding te maken met de API.
 
 1. Selecteer uw Media Services account in de [Azure Portal](https://portal.azure.com/).
-2. Selecteer hoe u verbinding wilt maken met de Media Services-API.
+2. Selecteer de Blade **API-toegang (nieuw)** op de linkernavigatiebalk.
 3. Selecteer onder **verbinding maken met Media Services-API**de versie van de Media Services-API waarmee u verbinding wilt maken (v3 is de nieuwste versie van de service).
 
 ### <a name="service-principal-authentication--recommended"></a>Service-Principal-verificatie (aanbevolen)

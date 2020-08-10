@@ -1,6 +1,6 @@
 ---
-title: Azure Storage Explorer toegankelijkheid (preview-versie) | Microsoft Docs
-description: Azure Storage Explorer toegankelijkheid (preview-versie)
+title: Azure Storage Explorer toegankelijkheid | Microsoft Docs
+description: Toegankelijkheid in Azure Storage Explorer begrijpen. Bekijk de beschik bare scherm lezers, de zoom mogelijkheden, Thema's met hoog contrast en sneltoetsen.
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
-ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca4a8d719277eaa1d853d53d282649f839256be9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60457247"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035482"
 ---
 # <a name="storage-explorer-accessibility"></a>Storage Explorer toegankelijkheid
 
@@ -59,7 +59,7 @@ Opdracht       | Sneltoets
 --------------|--------------------
 Nieuw venster    | **Control + Shift + N**
 Editor sluiten  | **Control + F4**
-Afsluiten          | **Control + Shift + W**
+Quit          | **Control + Shift + W**
 
 ### <a name="navigation-commands"></a>Navigatie opdrachten
 
@@ -67,7 +67,7 @@ Opdracht                | Sneltoets
 -----------------------|----------------------
 Focus volgende paneel       | **F6**
 Focus van vorig paneel   | **SHIFT + F6**
-Verkenner               | **Control + Shift + E**
+Explorer               | **Control + Shift + E**
 Accountbeheer     | **Control + Shift + A**
 Kantlijn balk in-/uitschakelen        | **Control + B**
 Activiteitenlogboek           | **Control + Shift + L**

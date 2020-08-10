@@ -8,12 +8,12 @@ ms.date: 08/04/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 737fe4b334e60f1b51e8f60f39e8821588a6841c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f51630154b77233aeb2587ac3a2d603c1da6fa4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010289"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036552"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>IoT-gegevens exporteren naar Cloud bestemmingen met behulp van gegevens export (preview-versie)
 
@@ -33,7 +33,7 @@ In dit artikel wordt beschreven hoe u de nieuwe preview-functies voor het export
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een beheerder zijn in uw IoT Central-toepassing of machtigingen voor het exporteren van gegevens hebben.
+Als u gegevens export (preview-versie) wilt gebruiken, moet u een v3-toepassing hebben en moet u machtigingen voor gegevens export hebben.
 
 ## <a name="set-up-export-destination"></a>Export bestemming instellen
 
@@ -150,15 +150,22 @@ Maak een nieuwe bestemming of Voeg een bestemming toe die u al hebt gemaakt.
 
 ## <a name="export-contents-and-format"></a>Inhoud en indeling exporteren
 
-Voor Event Hubs en Service Bus doelen worden gegevens in bijna realtime geëxporteerd. De gegevens bevindt zich in de hoofd tekst van het bericht en bevindt zich in JSON-indeling als UTF-8. Hieronder vindt u voor beelden.
+### <a name="azure-blob-storage-destination"></a>Doel van Azure Blob Storage
 
-Bij Blob Storage worden gegevens eenmaal per minuut geëxporteerd, waarbij elk bestand met de batch wijzigingen sinds het laatste geëxporteerde bestand is. Geëxporteerde gegevens worden in drie mappen in JSON-indeling geplaatst. De standaard paden in uw opslag account zijn:
+De gegevens worden eenmaal per minuut geëxporteerd, waarbij elk bestand met de batch wijzigingen sinds het laatste geëxporteerde bestand. Geëxporteerde gegevens worden in drie mappen in JSON-indeling geplaatst. De standaard paden in uw opslag account zijn:
 
 - Telemetrie: _{container}/{app-id}/{partition_id}/{yyyy}/{mm}/{dd}/{hh}/{mm}/{filename}_
 - Eigenschaps wijzigingen: _{container}/{app-id}/{partition_id}/{yyyy}/{mm}/{dd}/{hh}/{mm}/{filename}_
 
 Als u door de geëxporteerde bestanden in de Azure Portal wilt bladeren, gaat u naar het bestand en selecteert u het tabblad **BLOB bewerken** .
 
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Azure-Event Hubs en Azure Service Bus doelen
+
+Gegevens worden bijna realtime geëxporteerd. De gegevens bevindt zich in de hoofd tekst van het bericht en bevindt zich in JSON-indeling als UTF-8. 
+
+In de aantekeningen of de verzameling systeem eigenschappen van het bericht vindt u, `iotcentral-device-id` , `iotcentral-application-id` `iotcentral-message-source` en `iotcentral-message-type` die dezelfde waarden hebben als de overeenkomende velden in de hoofd tekst van het bericht.
+
+### <a name="webhook-destination"></a>Webhook-doel
 Voor webhooks-bestemmingen worden gegevens ook bijna in realtime geëxporteerd. De gegevens in de hoofd tekst van het bericht bevindt zich in dezelfde indeling als voor Event Hubs en Service Bus.
 
 
@@ -169,7 +176,7 @@ Elk geëxporteerd bericht bevat een genormaliseerde vorm van het volledige beric
 - `messageSource`Wat is *telemetrie* voor het exporteren van telemetriegegevens
 - `deviceId`van het apparaat dat het telemetrie-bericht heeft verzonden
 - `schema`is de naam en versie van het payload-schema
-- `templateId`is de id van de apparaat sjabloon gekoppeld aan het apparaat
+- `templateId`is de ID van de apparaat sjabloon gekoppeld aan het apparaat
 - `enrichments`zijn er verrijkingen die zijn ingesteld voor de export
 - `messageProperties`zijn de extra gegevens die het apparaat naast het bericht heeft verzonden. Dit wordt ook wel *toepassings eigenschappen*genoemd. [meer informatie vindt u in IOT hub docs](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -217,7 +224,7 @@ Elk bericht of record vertegenwoordigt een wijziging van een apparaat of Cloud e
 - `messageType`Dit is *cloudPropertyChange* of *devicePropertyDesiredChange*, *devicePropertyReportedChange*
 - `deviceId`van het apparaat waarvan de eigenschappen zijn gewijzigd
 - `schema`is de naam en versie van het payload-schema
-- `templateId`is de id van de apparaat sjabloon gekoppeld aan het apparaat
+- `templateId`is de ID van de apparaat sjabloon gekoppeld aan het apparaat
 - `enrichments`zijn er verrijkingen die zijn ingesteld voor de export
 
 IoT Central exporteert voor Event Hubs en Service Bus nieuwe bericht gegevens naar uw Event Hub-of Service Bus-wachtrij of-onderwerp in bijna realtime.
@@ -254,6 +261,7 @@ Dit is een tabel waarin de verschillen tussen de verouderde gegevens export en d
 | Filteren | Geen | Is afhankelijk van het geëxporteerde gegevens type. Filteren op telemetrie, bericht eigenschappen, eigenschaps waarden |
 | Verrijken | Geen | Verrijken met een aangepaste teken reeks of een eigenschaps waarde op het apparaat |
 | Bestemmingen | Azure Event Hubs, Azure Service Bus wacht rijen en onderwerpen, Azure Blob Storage | Hetzelfde als voor verouderde gegevens export en webhooks| 
+| Ondersteunde apps | V2, V3 | Alleen v3 |
 | Opvallende limieten | 5 uitvoer per app, 1 doel per export | 10 export-doel verbindingen per app | 
 
 ## <a name="next-steps"></a>Volgende stappen

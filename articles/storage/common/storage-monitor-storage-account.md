@@ -1,6 +1,6 @@
 ---
 title: Een Azure Storage-account bewaken in de Azure Portal | Microsoft Docs
-description: Meer informatie over het bewaken van een opslag account in azure met behulp van de Azure Portal.
+description: Meer informatie over het bewaken van een opslag account in azure met behulp van de Azure Portal en Azure Opslaganalyse.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 46ff6fb26cf568474b24d941e4a174b425bf5207
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474356"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034665"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Een Storage-account bewaken in de Azure-portal
 

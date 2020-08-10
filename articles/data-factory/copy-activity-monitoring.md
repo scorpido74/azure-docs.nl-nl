@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249684"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036365"
 ---
 # <a name="monitor-copy-activity"></a>Kopieeractiviteit bewaken
 
@@ -50,12 +50,14 @@ In de **Details van de onderste uitvoering en de duur** worden de belangrijkste 
 
 De details van de gegevens van de Kopieer activiteit en prestatie kenmerken worden ook weer gegeven in de sectie uitvoer resultaat van de **Kopieer activiteit**  >  **Output** , die wordt gebruikt om de weer gave van de UI-bewaking te genereren. Hieronder vindt u een volledige lijst met eigenschappen die kunnen worden geretourneerd. U ziet alleen de eigenschappen die van toepassing zijn op uw Kopieer scenario. Zie [programmatisch een Azure-Data Factory bewaken](monitor-programmatically.md)voor meer informatie over het uitvoeren van een programma voor het bewaken van activiteiten in het algemeen.
 
-| Naam van eigenschap  | Description | Eenheid in uitvoer |
+| Naam van eigenschap  | Beschrijving | Eenheid in uitvoer |
 |:--- |:--- |:--- |
 | dataRead | De werkelijke hoeveelheid gegevens die uit de bron is gelezen. | Int64-waarde, in bytes |
 | dataWritten | De werkelijke koppeling van gegevens die zijn geschreven/doorgevoerd in de sink. De grootte kan afwijken van de `dataRead` grootte, omdat in elk gegevens archief de gegevens worden opgeslagen. | Int64-waarde, in bytes |
 | filesRead | Het aantal bestanden dat is gelezen van de bron op basis van een bestand. | Int64-waarde (geen eenheid) |
 | filesWritten | Het aantal bestanden dat is geschreven/doorgevoerd naar de op bestanden gebaseerde sink. | Int64-waarde (geen eenheid) |
+| filesSkipped | Het aantal bestanden dat is overgeslagen van de bron op basis van een bestand. | Int64-waarde (geen eenheid) |
+| dataConsistencyVerification | Details van de verificatie van de gegevens consistentie, waar u kunt zien of de gekopieerde gegevens zijn geverifieerd om consistent te zijn tussen de bron-en doel opslag. Meer informatie vindt u in [dit artikel](copy-activity-data-consistency.md#monitoring). | Matrix |
 | sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Int64-waarde (geen eenheid) |
 | sinkPeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit. | Int64-waarde (geen eenheid) |
 | rowsRead | Het aantal rijen dat uit de bron is gelezen. Deze metrische waarde is niet van toepassing wanneer u bestanden kopieert zonder deze te parseren, bijvoorbeeld wanneer de bron-en Sink-gegevens sets het type binaire indeling hebben, of een ander indelings type met identieke instellingen. | Int64-waarde (geen eenheid) |
@@ -65,15 +67,17 @@ De details van de gegevens van de Kopieer activiteit en prestatie kenmerken word
 | doorvoer | Frequentie van gegevens overdracht. | Drijvende-komma getal, in KBps |
 | sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Int32-waarde (geen eenheid) |
 | sinkPeakConnections| Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit.| Int32-waarde (geen eenheid) |
-| sqlDwPolyBase | Hiermee wordt aangegeven of poly Base wordt gebruikt wanneer gegevens naar SQL Data Warehouse worden gekopieerd. | Boolean-waarde |
-| redshiftUnload | Hiermee wordt aangegeven of verwijderen wordt gebruikt wanneer gegevens uit Redshift worden gekopieerd. | Boolean-waarde |
-| hdfsDistcp | Hiermee wordt aangegeven of DistCp wordt gebruikt wanneer gegevens worden gekopieerd uit HDFS. | Boolean-waarde |
+| sqlDwPolyBase | Hiermee wordt aangegeven of poly Base wordt gebruikt wanneer gegevens naar SQL Data Warehouse worden gekopieerd. | Booleaans |
+| redshiftUnload | Hiermee wordt aangegeven of verwijderen wordt gebruikt wanneer gegevens uit Redshift worden gekopieerd. | Booleaans |
+| hdfsDistcp | Hiermee wordt aangegeven of DistCp wordt gebruikt wanneer gegevens worden gekopieerd uit HDFS. | Booleaans |
 | effectiveIntegrationRuntime | Het uitvoeren van de uitvoering van de activiteit (IR) of runtime (Integration runtime), in de indeling `<IR name> (<region if it's Azure IR>)` . | Tekst (teken reeks) |
 | usedDataIntegrationUnits | De efficiënte gegevens integratie-eenheden tijdens het kopiëren. | Int32-waarde |
 | usedParallelCopies | De effectief parallelCopies tijdens de Kopieer activiteit. | Int32-waarde |
-| redirectRowPath | Pad naar het logboek van overgeslagen rijen die niet compatibel zijn in de Blob-opslag die u configureert in de `redirectIncompatibleRowSettings` eigenschap. Zie [fout tolerantie](copy-activity-overview.md#fault-tolerance). | Tekst (teken reeks) |
+| logPath | Pad naar het sessie logboek van overgeslagen gegevens in de Blob-opslag. Zie [fout tolerantie](copy-activity-overview.md#fault-tolerance). | Tekst (teken reeks) |
 | executionDetails | Meer details over de stadia waarin de Kopieer activiteit wordt uitgevoerd, en de bijbehorende stappen, duur, configuraties, enzovoort. We raden u aan deze sectie niet te parseren omdat deze kan worden gewijzigd. Raadpleeg de sectie [visueel bewaken](#monitor-visually) voor meer informatie over de manier waarop u de prestaties van kopiëren kunt begrijpen en oplossen. | Matrix |
 | perfRecommendation | Tips voor het afstemmen van de prestaties kopiëren. Zie [Tips voor het afstemmen van prestaties](copy-activity-performance-troubleshooting.md#performance-tuning-tips) voor meer informatie. | Matrix |
+| billingReference | Het facturerings verbruik voor de opgegeven uitvoeringsrun. Meer informatie over [monitor verbruik op activiteit-uitvoerings niveau](plan-manage-costs.md#monitor-consumption-at-activity-run-level). | Object |
+| durationInQueue | De wachtrij duur in seconden voordat de Kopieer activiteit wordt uitgevoerd. | Object |
 
 **Voorbeeld:**
 
@@ -83,6 +87,7 @@ De details van de gegevens van de Kopieer activiteit en prestatie kenmerken word
     "dataWritten": 1180089300500,
     "filesRead": 110,
     "filesWritten": 110,
+    "filesSkipped": 0,
     "sourcePeakConnections": 640,
     "sinkPeakConnections": 1024,
     "copyDuration": 388,
@@ -92,6 +97,11 @@ De details van de gegevens van de Kopieer activiteit en prestatie kenmerken word
     "usedDataIntegrationUnits": 128,
     "billingReference": "{\"activityType\":\"DataMovement\",\"billableDuration\":[{\"Managed\":11.733333333333336}]}",
     "usedParallelCopies": 64,
+    "dataConsistencyVerification": 
+    { 
+        "VerificationResult": "Verified", 
+        "InconsistentData": "None" 
+    },
     "executionDetails": [
         {
             "source": {

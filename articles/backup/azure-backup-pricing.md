@@ -3,12 +3,12 @@ title: Prijzen van Azure Backup
 description: Meer informatie over het schatten van de kosten voor budget tering Azure Backup prijzen.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 274a61ff5a98fa1291f9d8917af9ab1d1b3da2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdb3dc756e1ee7e32453acd7246952c84abebaf7
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391108"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035753"
 ---
 # <a name="azure-backup-pricing"></a>Prijzen van Azure Backup
 
@@ -38,7 +38,7 @@ Voor een schatting van de kosten voor het maken van een back-up van virtuele Azu
 - Aantal servers met deze grootte
 
 - Wat is de verwachte hoeveelheid gegevens verloop op deze servers?<br>
-  Verloop verwijst naar de hoeveelheid wijziging in gegevens. Als u bijvoorbeeld een virtuele machine met 200 GB aan gegevens hebt waarvan een back-up moet worden gemaakt en als 10 GB aan het bestand elke dag wordt gewijzigd, is het dagelijkse verloop 5%.
+  Verloop verwijst naar de hoeveelheid wijziging in gegevens. Als u bijvoorbeeld een virtuele machine met 200 GB aan gegevens hebt waarvan een back-up moet worden gemaakt en er 10 GB aan wijzigingen per dag wordt aangebracht, is het dagelijkse verloop 5%.
 
   - Een hoger verloop betekent dat u een back-up maakt van meer gegevens
 
@@ -58,7 +58,7 @@ Voor een schatting van de kosten voor het maken van een back-up van virtuele Azu
 
   - Hoe lang verwacht u "moment opnamen direct terugzetten"? (1-5 dagen)
 
-    - Met deze optie kunt u vanaf Maxi maal zeven dagen op een snelle manier herstellen met behulp van moment opnamen die op schijven zijn opgeslagen
+    - Met deze optie kunt u vanaf een snelle manier herstellen van meer dan zeven dagen, met behulp van moment opnamen die op schijven zijn opgeslagen.
 
 - **Optioneel** : selectieve schijf back-up
 
@@ -129,6 +129,7 @@ Voor een schatting van de kosten voor het maken van een back-up van SAP HANA ser
 - De totale grootte van de SAP HANA data bases waarvan u een back-up wilt maken. Dit moet de som zijn van de volledige back-upgrootte van elk van de data bases, zoals gerapporteerd door SAP HANA.
 - Aantal SAP HANA servers met de bovenstaande grootte
 - Wat is de verwachte grootte van logboek back-ups?
+  
   - De% geeft de gemiddelde dagelijkse logboek grootte aan als een percentage van de totale grootte van SAP HANA data bases waarvan u een back-up maakt op de SAP HANA server
 - Wat is het verwachte aantal dagelijkse gegevens verloop op deze servers?
   - De% geeft de gemiddelde dagelijkse verloop grootte aan als een percentage van de totale grootte van SAP HANA data bases waarvan u een back-up maakt op de SAP HANA server
@@ -144,9 +145,37 @@ Voor een schatting van de kosten voor het maken van een back-up van SAP HANA ser
   - Hoe lang wilt u ' maandelijks ' back-ups behouden? (in maanden)
   - Hoe lang wilt u ' jaarlijks ' back-ups behouden? (in jaren)
 - **Optioneel** : redundantie van back-upopslag
+  
   - Dit duidt op de redundantie van het opslag account waarnaar de back-upgegevens worden verzonden. We raden u aan **GRS** te gebruiken voor de hoogste Beschik baarheid. Omdat het ervoor zorgt dat een kopie van uw back-upgegevens in een andere regio wordt bewaard, helpt u bij het voldoen aan meerdere nalevings standaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel-of test omgevingen waarvoor geen back-ups op bedrijfs niveau nodig zijn.
 - **Optioneel** : regionale prijzen aanpassen of kortings tarieven Toep assen
+  
   - Als u de schattingen voor een andere regio of kortings tarieven wilt controleren, selecteert u **Ja** voor de **schatting pogingen voor een andere regio?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
+  
+## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Kosten schatten voor het maken van back-ups van Azure-bestands shares
+
+Voor een schatting van de kosten voor het maken van een back-up van Azure-bestands shares met behulp van de [back-upoplossing op basis van moment opname](azure-file-share-backup-overview.md) die wordt aangeboden door Azure backup, hebt u de volgende
+
+- Grootte (**in GB**) van de bestands shares waarvan u een back-up wilt maken.
+
+- Als u een back-up van bestands shares wilt verspreiden over meerdere opslag accounts, geeft u het aantal opslag accounts op dat als host fungeert voor de bestands shares met de bovenstaande grootte.
+
+- Verwachte hoeveelheid gegevens verloop op de bestands shares waarvan u een back-up wilt maken. <br>Verloop verwijst naar de hoeveelheid wijziging in gegevens en is rechtstreeks van invloed op de opslag grootte van de moment opname. Als u bijvoorbeeld een bestands share hebt met 200 GB aan gegevens waarvan u een back-up wilt maken, en 10 GB aan het bestand elke dag wordt gewijzigd, is het dagelijkse verloop 5%.
+  - Een hoger verloop betekent dat de hoeveelheid gegevens in de bestands share elke dag hoog is en dat de incrementele moment opname (waarbij alleen de gegevens wijzigingen worden vastgelegd) ook groter zou zijn.
+  - Selecteer laag (1%), gemiddeld (3%) of hoog (5%) op basis van de kenmerken en het gebruik van de bestands share.
+  - Als u het exacte **verloop%** voor uw bestands share weet, kunt u de optie **uw eigen% opgeven** selecteren in de vervolg keuzelijst. Geef de waarden op (in%) dagelijks, wekelijks, maandelijks en jaarlijks verloop.
+
+- Type opslag account (Standard of Premium) en de instelling voor opslag redundantie van het opslag account dat als host fungeert voor de back-up van de bestands share. <br>In de huidige back-upoplossing voor Azure-bestands shares worden moment opnamen opgeslagen in hetzelfde opslag account als de back-up van de bestands share. De opslag kosten die zijn gekoppeld aan moment opnamen worden dus gefactureerd als onderdeel van uw Azure-bestanden factuur, op basis van de prijs van de moment opname voor het account type en de redundantie-instelling van het opslag account dat als host fungeert voor de back-up en moment opnamen.
+
+- Bewaren voor verschillende back-ups
+  - Hoe lang wilt u ' dagelijks ' back-ups behouden? (in dagen)
+  - Hoe lang wilt u ' wekelijkse ' back-ups behouden? (in weken)
+  - Hoe lang wilt u ' maandelijks ' back-ups behouden? (in maanden)
+  - Hoe lang wilt u ' jaarlijks ' back-ups behouden? (in jaren)
+
+  Raadpleeg [de ondersteunings matrix voor Azure-bestands share](azure-file-share-support-matrix.md#retention-limits) voor de Maxi maal ondersteunde Bewaar waarden in elke categorie.
+
+- **Optioneel** : regionale prijzen aanpassen of kortings tarieven Toep assen.
+  - De standaard waarden die zijn ingesteld voor de opslag kosten voor moment opnamen per GB en de kosten van beveiligde instanties in de Estimator zijn voor de regio VS-Oost. Als u de schattingen voor een andere regio of kortings tarieven wilt controleren, selecteert u **Ja** voor de optie **schattingen voor een andere regio?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

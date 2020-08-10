@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/9/2020
-ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 8/7/2020
+ms.openlocfilehash: 518d3880a740de2cda4f01e362d8a5ef7865b361
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206942"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037300"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -67,7 +67,7 @@ De volgende tabel bevat een overzicht van de verschillen tussen de serverloze Co
 | | **Serverloze compute** | **Ingerichte compute** |
 |:---|:---|:---|
 |**Database gebruiks patroon**| Onregelmatige, onvoorspelbaar gebruik met minder gemiddelde reken capaciteit gedurende een bepaalde periode. | Meer reguliere gebruiks patronen met een hoger gemiddelde reken gebruik gedurende een bepaalde periode of meerdere data bases met elastische Pools.|
-| **Prestatie beheer-inspanning** |Lower|Hoger|
+| **Prestatie beheer-inspanning** |Lager|Hoger|
 |**Berekening schalen**|Automatisch|Handmatig|
 |**Reactie tijd van berekeningen**|Lager dan inactieve Peri Oden|Onmiddellijk|
 |**Granulatie facturering**|Per seconde|Per uur|
@@ -88,7 +88,7 @@ Geheugen voor serverloze data bases is vaker vrijgemaakt dan voor ingerichte Com
 
 #### <a name="cache-reclamation"></a>Cache terugwinning
 
-In tegens telling tot provisioned Compute-data bases, wordt het geheugen van de SQL-cache vrijgemaakt van een serverloze data base wanneer het CPU-of actieve cache gebruik laag is.  Houd er rekening mee dat wanneer het CPU-gebruik laag is, het actieve cache gebruik hoog kan blijven, afhankelijk van het gebruiks patroon en te voor komen dat geheugen wordt terugwinning.
+In tegens telling tot provisioned Compute-data bases, wordt het geheugen van de SQL-cache vrijgemaakt van een serverloze data base wanneer het CPU-of actieve cache gebruik laag is.
 
 - Het actieve cache gebruik wordt als laag beschouwd als de totale grootte van de meest recent gebruikte cache vermeldingen voor een bepaalde tijd onder een drempel waarde valt.
 - Wanneer het inwinnen van de cache wordt geactiveerd, wordt de grootte van de doel cache oplopend verhoogd naar een fractie van de vorige grootte, en wordt er alleen een vrijmaken als het gebruik laag blijft.
@@ -96,6 +96,8 @@ In tegens telling tot provisioned Compute-data bases, wordt het geheugen van de 
 - De cache grootte wordt nooit kleiner dan de minimale geheugen limiet, zoals gedefinieerd door de minimale vCores die kan worden geconfigureerd.
 
 In zowel serverloze als ingerichte Compute-data bases kunnen cache vermeldingen worden verwijderd als alle beschik bare geheugen wordt gebruikt.
+
+Houd er rekening mee dat wanneer het CPU-gebruik laag is, het actieve cache gebruik hoog kan blijven, afhankelijk van het gebruiks patroon en te voor komen dat geheugen wordt terugwinning.  Daarnaast kan er meer vertraging optreden nadat de gebruikers activiteit is gestopt voordat het geheugen wordt terugwinning als gevolg van periodieke achtergrond processen die reageren op eerdere gebruikers activiteit.  Delete-bewerkingen genereren bijvoorbeeld Ghost-records die zijn gemarkeerd voor verwijdering, maar die niet fysiek worden verwijderd totdat het Ghost Cleanup-proces wordt uitgevoerd, waardoor het lezen van gegevens pagina's in de cache kan omvatten.
 
 #### <a name="cache-hydration"></a>Cache Hydration
 
@@ -129,7 +131,7 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |---|---|
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
-|Detectie en classificatie van gegevens|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
+|Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
 |Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
 |Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
@@ -176,7 +178,7 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
 In de volgende voor beelden wordt een nieuwe data base gemaakt in de serverloze Compute-laag.
 
-#### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+#### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 Zie [Quick Start: een enkele data base maken in Azure SQL database met behulp van de Azure Portal](single-database-create-quickstart.md).
 

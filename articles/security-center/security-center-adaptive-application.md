@@ -1,6 +1,6 @@
 ---
 title: Adaptieve toepassingsbesturingselementen in Azure Security Center
-description: Dit document helpt u bij het gebruik van adaptief toepassings beheer in Azure Security Center voor het white list van toepassingen die worden uitgevoerd op Azure-machines.
+description: Dit document helpt u bij het gebruik van adaptief toepassings beheer in Azure Security Center om lijst toepassingen toe te staan die worden uitgevoerd op Azure-machines.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,173 +11,218 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/23/2019
+ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77604668"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036951"
 ---
-# <a name="adaptive-application-controls"></a>Adaptieve toepassingsbesturingselementen
-Lees hoe u toepassingsbeheer configureert in Azure Security Center met behulp van dit stapsgewijze overzicht.
+# <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
 
-## <a name="what-are-adaptive-application-controls-in-security-center"></a>Wat zijn adaptieve toepassingsbesturingselementen in Security Center?
-Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end oplossing van Azure Security Center waarmee u kunt bepalen welke toepassingen kunnen worden uitgevoerd op uw Azure-en niet-Azure-machines (Windows en Linux). Met andere voor delen kunt u uw computers onder andere beschermen tegen malware. Security Center gebruikt machine learning voor het analyseren van de toepassingen die op uw computers worden uitgevoerd en maakt een lijst met toegestane gegevens van deze intelligentie. Deze mogelijkheid vereenvoudigt het proces van het configureren en onderhouden van beleids regels voor het toestaan van toepassingen, zodat u het volgende kunt doen:
+Meer informatie over de voor delen van de besturings elementen voor adaptieve toepassingen van Azure Security Center en hoe u uw beveiliging kunt verbeteren met behulp van deze, intelligente functie van gegevens.
 
-- Blok keer of Meld u aan bij pogingen om schadelijke toepassingen uit te voeren, met inbegrip van degenen die anders kunnen worden gemist door antimalware-oplossingen.
-- Voldoen aan het beveiligingsbeleid van uw organisatie waarin alleen het gebruik van gelicentieerde software is toegestaan.
-- Vermijden dat in uw omgeving ongewenste software wordt gebruikt.
-- Vermijden dat oude en niet-ondersteunde apps worden uitgevoerd.
-- Voorkomen dat bepaalde softwareprogramma's worden uitgevoerd die in uw organisatie niet zijn toegestaan.
-- De IT-afdeling in staat stellen de toegang tot gevoelige gegevens te beheren via het gebruik van apps.
 
-> [!NOTE]
-> Voor niet-Azure-en Linux-computers worden adaptieve toepassings besturings elementen alleen in de controle modus ondersteund.
+## <a name="what-are-security-centers-adaptive-application-controls"></a>Wat zijn de adaptieve toepassings besturings elementen van Security Center?
 
-## <a name="how-to-enable-adaptive-application-controls"></a>Hoe worden adaptieve toepassingsbesturingselementen ingeschakeld?
+Adaptieve toepassings besturings elementen zijn een intelligente en geautomatiseerde oplossing voor het definiëren van allow-lijsten met bekende veilige toepassingen voor uw machines. 
 
-Met besturings elementen voor adaptieve toepassingen kunt u een set toepassingen definiëren die op geconfigureerde machine groepen mogen worden uitgevoerd. Deze functie is beschikbaar voor zowel Azure-als niet-Azure-Windows (alle versies, klassieke of Azure Resource Manager) en Linux-machines. Voer de volgende stappen uit om de lijsten met toegestane apps van uw toepassing te configureren:
+Organisaties hebben vaak verzamelingen machines die regel matig dezelfde processen uitvoeren. Security Center gebruikt machine learning voor het analyseren van de toepassingen die worden uitgevoerd op uw computers en het maken van een lijst met bekende veilige software. Lijsten toestaan worden gebaseerd op uw specifieke Azure-workloads en u kunt de aanbevelingen verder aanpassen met behulp van de onderstaande instructies.
 
-1. Open het dashboard van **Security Center**.
+Wanneer u besturings elementen voor adaptieve toepassingen hebt ingeschakeld en geconfigureerd, ontvangt u beveiligings waarschuwingen als een andere toepassing dan de toepassingen die u hebt gedefinieerd als veilig worden uitgevoerd.
 
-1. Ga naar het deelvenster aan de linkerkant en selecteer **Adaptieve toepassingsbesturingselementen** onder **Geavanceerde cloudbeveiliging**.
 
-    [![Defensie](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
+## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>Wat zijn de voor delen van adaptieve toepassings besturings elementen?
 
-De pagina **Besturingselementen voor adaptieve toepassingen** wordt geopend.
+Door lijsten met bekende veilige toepassingen te definiëren en waarschuwingen te genereren wanneer iets anders wordt uitgevoerd, kunt u meerdere beveiligings doelen bereiken:
 
-![besturingselementen](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+- Mogelijke malware identificeren, zelfs als deze niet mogelijk is met antimalware-oplossingen
+- Verbeter de naleving van lokale beveiligings beleidsregels waarmee het gebruik van alleen gelicentieerde software wordt bepaald
+- Vermijd het uitvoeren van oude of niet-ondersteunde toepassingen
+- Voor komen dat specifieke software wordt geblokkeerd door uw organisatie
+- Het toezicht verhogen van apps die toegang hebben tot gevoelige gegevens
 
-De sectie **Groepen virtuele machines** bevat drie tabbladen:
 
-* **Geconfigureerd**: een lijst van groepen met de VM's waarvoor toepassingsbeheer is geconfigureerd.
-* **Aanbevolen**: een lijst met groepen waarvoor toepassingsbeheer wordt aanbevolen. Security Center maakt gebruik van machine learning om virtuele machines te identifiveren die baat zouden hebben bij het gebruik van toepassingsbeheer. Hierbij wordt gekeken of de virtuele machines consequent dezelfde toepassingen uitvoeren.
-* **Geen aanbeveling**: een lijst van groepen met VM's waarvoor geen aanbevelingen zijn gedaan voor het gebruik van toepassingsbeheer. Hierbij kan het bijvoorbeeld gaan om virtuele machines waarop toepassingen steeds wisselen en geen stabiele status hebben.
 
-> [!NOTE]
-> Security Center gebruikt een eigen clustering-algoritme voor groepen met VM's om ervoor te zorgen dat vergelijkbare VM’s het optimale aanbevolen toepassingsbeheerbeleid krijgen.
->
->
+## <a name="availability"></a>Beschikbaarheid
 
-### <a name="configure-a-new-application-control-policy"></a>Een nieuw toepassingsbeheerbeleid configureren
+|Aspect|Details|
+|----|:----|
+|Release status:|Algemene beschikbaarheid|
+|Koers|Standard-laag|
+|Ondersteunde machines:|![Ja ](./media/icons/yes-icon.png) Azure-en niet-Azure-machines met Windows en Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -machines|
+|Vereiste rollen en machtigingen:|**Beveiligings lezers** en **lezers** rollen kunnen zowel groepen als de lijsten met bekende veilige toepassingen weer geven<br>**Inzender** -en **beveiligings beheerders** rollen kunnen zowel groepen bewerken als de lijsten met bekende veilige toepassingen|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|||
 
-1. Selecteer het tabblad **Aanbevolen** voor een lijst met groepen met aanbevelingen voor toepassings beheer:
 
-   ![Aanbevolen](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
-   De lijst bevat:
+## <a name="enable-application-controls-on-a-group-of-machines"></a>Toepassings besturings elementen op een groep machines inschakelen
 
-   - **Groeps naam**: de naam van het abonnement en de groep
-   - **Vm's en computers**: het aantal virtuele machines in de groep
-   - **Status**: de status van de aanbevelingen
-   - **Ernst**: het Ernst niveau van de aanbevelingen
+Als Security Center groepen computers heeft geïdentificeerd in uw abonnementen die consistent een gelijksoortige set toepassingen uitvoeren, wordt u gevraagd de volgende aanbeveling te gebruiken: **adaptieve toepassings besturings elementen voor het definiëren van veilige toepassingen moeten op uw computers worden ingeschakeld**.
 
-2. Klik op een groep om de optie **regels voor toepassings beheer maken** te openen.
+Selecteer de aanbeveling of open de pagina adaptieve toepassings besturings elementen om de lijst met voorgestelde, bekende veilige toepassingen en groepen machines weer te geven.
 
-   [![Regels voor toepassingsbeheer](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
+1. Selecteer in het menu van Security Center **adaptieve toepassings besturings elementen**.
 
-3. Bekijk in de **Select vm's**de lijst met aanbevolen vm's en schakel alle selectie vakjes uit waarop u geen white list-beleid wilt Toep assen. Vervolgens ziet u twee lijsten:
+    De pagina **adaptieve toepassings besturings elementen** wordt geopend met de vm's die zijn gegroepeerd op de volgende tabbladen:
 
-   - **Aanbevolen toepassingen**: een lijst met toepassingen die veelvuldig voor komen op de virtuele machines in deze groep en die worden aanbevolen om uit te voeren.
-   - **Meer toepassingen**: een lijst met toepassingen die minder frequent zijn op de virtuele machines in deze groep of die Exploitables worden genoemd (Zie meer hieronder) en aanbevolen voor controle.
+    - **Geconfigureerd** : groepen computers die al een gedefinieerde lijst met toegestane apps hebben. Het tabblad geconfigureerd wordt voor elke groep weer gegeven:
+        - het aantal machines in de groep
+        - recente waarschuwingen
 
-4. Bekijk de toepassingen in elk van de lijsten en schakel uit wat u niet wilt toepassen. Elke lijst bevat:
+    - **Aanbevolen** : groepen computers waarop dezelfde toepassingen consistent worden uitgevoerd en waarvoor geen acceptatie lijst is geconfigureerd. We raden u aan om besturings elementen voor adaptieve toepassingen voor deze groepen in te scha kelen.
+    
+      > [!TIP]
+      > Als u een groeps naam met het voor voegsel ' REVIEWGROUP ' ziet, bevat deze machines met een gedeeltelijk consistente lijst met toepassingen. Security Center geen patroon ziet, maar u wordt aangeraden deze groep te controleren om te zien of _u_ hand matig een aantal regels voor adaptieve toepassings besturings elementen kunt definiëren zoals beschreven in [de regel voor het aanpassen van een groep met adaptieve toepassings besturings elementen bewerken](#editing-a-groups-adaptive-application-controls-rule).
+      >
+      > U kunt computers ook van deze groep naar andere groepen verplaatsen, zoals beschreven in [een machine verplaatsen van de ene groep naar een andere](#move-a-machine-from-one-group-to-another).
 
-   - **Naam**: de certificaat gegevens of het volledige pad van een toepassing
-   - **BESTANDSTYPEN**: het bestandstype van de toepassing. Dit kan EXE, script, MSI of een permutatie van deze typen zijn.
-   - **Exploitable**: een waarschuwings pictogram geeft aan of een specifieke toepassing door een aanvaller kan worden gebruikt om een lijst met toegestane toepassingen te omzeilen. U wordt aanbevolen om deze toepassingen te controleren voordat ze worden goedgekeurd.
-   - **GEBRUIKERS**: gebruikers die worden aanbevolen om een toepassing uit te mogen voeren
+    - **Geen aanbeveling** : machines zonder een gedefinieerde lijst met toegestane toepassingen en die de functie niet ondersteunen. Uw computer kan om de volgende redenen op dit tabblad staan:
+      - Er ontbreekt een Log Analytics agent
+      - De Log Analytics-agent verzendt geen gebeurtenissen
+      - Het is een Windows-computer met een reeds bestaand [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker) -beleid ingeschakeld door ofwel een GPO ofwel een lokaal beveiligings beleid
 
-5. Selecteer **Maken** nadat u uw selecties hebt gemaakt. <br>
-   Nadat u maken hebt geselecteerd, worden met Azure Security Center automatisch de juiste regels gemaakt boven op de ingebouwde oplossing lijst met toegestane toepassingen beschikbaar op Windows-servers (AppLocker).
+      > [!TIP]
+      > Security Center moet ten minste twee weken aan gegevens hebben om de unieke aanbevelingen per groep machines te definiëren. Computers die onlangs zijn gemaakt of die behoren tot abonnementen die alleen recent zijn ingeschakeld met de laag standaard, worden weer gegeven op het tabblad **geen aanbeveling** .
 
-> [!NOTE]
-> - Security Center heeft minimaal twee weken aan gegevens nodig om een basislijn te maken en de unieke aanbevelingen per groep virtuele machines te vullen. Voor nieuwe klanten van de Security Center-standaardcategorie worden groepen virtuele machines in het begin weergegeven op het tabblad *Geen aanbeveling*.
-> - Adaptieve toepassingsbesturingselementen in Security Center bieden geen ondersteuning voor virtuele machines waarvoor al een AppLocker-beleid is ingeschakeld door een groepsbeleidsobject (GPO) of een lokaal beveiligingsbeleid.
-> -  Als een beveiligings best practice, probeert Security Center altijd een uitgevers regel te maken voor toepassingen die zijn geselecteerd om te worden toegestaan. alleen als een toepassing geen informatie over de uitgever heeft (ook wel niet ondertekend), wordt er een padregel gemaakt voor het volledige pad van de specifieke toepassing.
->   
 
-### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>Een groep die met toepassingsbeheer is geconfigureerd, bewerken en bewaken
+1. Open het tabblad **Aanbevolen** . De groepen computers met aanbevolen acceptatie lijsten worden weer gegeven.
 
-1. Als u een groep wilt bewerken en controleren die is geconfigureerd met een lijst beleid voor het toestaan van toepassingen, keert u terug naar de pagina **adaptieve toepassings besturings elementen** en selecteert u **geconfigureerd** onder **groepen vm's**:
+   ![Tabblad Aanbevolen](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
 
-   ![Groepen](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
+1. Selecteer een groep. 
 
-   De lijst bevat:
+1. Als u de nieuwe regel wilt configureren, bekijkt u de verschillende secties van de pagina **regels voor toepassings beheer configureren** en de inhoud die uniek is voor deze specifieke groep computers:
 
-   - **Groeps naam**: de naam van het abonnement en de groep
-   - **Vm's en computers**: het aantal virtuele machines in de groep
-   - **Modus**: de controle modus meldt pogingen om toepassingen uit te voeren die niet voor komen in de lijst met toegestane apps. Met afdwingen kunnen toepassingen alleen worden uitgevoerd als ze zich in de acceptatie lijst bevinden
-   - **Waarschuwingen**: eventuele huidige schendingen
+   ![Een nieuwe regel configureren](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
-2. Klik op een groep om wijzigingen aan te brengen op de pagina **toepassings beheer beleid bewerken** .
+   1. **Machines selecteren** : standaard worden alle computers in de geïdentificeerde groep geselecteerd. Selecteer een optie om deze uit deze regel te verwijderen.
+   
+   1. **Aanbevolen toepassingen** : Bekijk deze lijst met toepassingen die gemeen schappelijk zijn voor de computers in deze groep en aanbevolen zijn om uit te voeren.
+   
+   1. **Meer toepassingen** : Bekijk deze lijst met toepassingen die minder vaak worden gezien op de computers in deze groep of waarvan bekend is dat deze kunnen worden gebruikt. Een waarschuwings pictogram geeft aan dat een specifieke toepassing door een aanvaller kan worden gebruikt om een lijst met toegestane toepassingen te omzeilen. U wordt aangeraden deze toepassingen zorgvuldig te bekijken.
 
-   ![Beveiliging](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
+      > [!TIP]
+      > Beide toepassings lijsten bevatten de optie om een bepaalde toepassing te beperken tot bepaalde gebruikers. Het principe van minimale bevoegdheden waar mogelijk wordt aangenomen.
+      > 
+      > Toepassingen worden gedefinieerd door hun uitgevers, als een toepassing geen uitgever gegevens heeft (deze is niet ondertekend), wordt er een padregel gemaakt voor het volledige pad van de specifieke toepassing.
 
-3. Onder **Beveiligingsmodus** kunt u een keuze maken uit de volgende opties:
+   1. Als u de regel wilt Toep assen, selecteert u **controle**. 
 
-   - **Controle**: in deze modus worden de regels niet afgedwongen door de oplossing voor toepassingsbeheer en wordt alleen de activiteit op de beveiligde virtuele machines gecontroleerd. Dit wordt aanbevolen voor scenario's waarin u eerst het algehele gedrag wilt observeren voordat de uitvoering van een app op de doel-VM wordt geblokkeerd.
-   - **Afdwingen**: in deze modus worden de regels wel afgedwongen door de oplossing voor toepassingsbeheer. Ook worden toepassingen die niet mogen worden uitgevoerd, geblokkeerd.
 
-   > [!NOTE]
-   > -  De beveiligings modus **afdwingen** is uitgeschakeld tot verdere kennisgeving.
-   > - Zoals eerder vermeld, wordt een nieuw beleid voor toepassingsbeheer altijd standaard geconfigureerd in de modus *Controle*. 
+
+
+## <a name="editing-a-groups-adaptive-application-controls-rule"></a>De regel voor de besturings elementen voor adaptieve toepassingen van een groep bewerken
+
+U kunt ervoor kiezen om de acceptatie lijst voor een groep machines te bewerken vanwege bekende wijzigingen in uw organisatie. 
+
+De regels voor een groep machines bewerken:
+
+1. Selecteer in het menu van Security Center **adaptieve toepassings besturings elementen**.
+
+1. Selecteer op het tabblad **geconfigureerd** de groep met de regel die u wilt bewerken.
+
+1. Bekijk de verschillende secties van de pagina **regels voor toepassings beheer configureren** zoals beschreven in [besturings elementen voor adaptieve toepassingen inschakelen op een groep machines](#enable-application-controls-on-a-group-of-machines).
+
+1. Voeg eventueel een of meer aangepaste regels toe:
+
+   1. Selecteer **regel toevoegen**.
+
+      ![Een aangepaste regel toevoegen](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
+
+   1. Als u een bekend veilig pad definieert, wijzigt u het **regel type** in ' pad '. U kunt joker tekens in het pad toevoegen.
+   
+      > [!TIP]
+      > Enkele scenario's waarvoor joker tekens in een pad handig kunnen zijn:
+      > 
+      > * Een Joker teken aan het einde van een pad gebruiken om alle uitvoer bare bestanden in deze map en submappen toe te staan.
+      > * Een Joker teken gebruiken in het midden van een pad om een bekende naam van een uitvoerbaar bestand met een gewijzigde mapnaam in te scha kelen (bijvoorbeeld persoonlijke gebruikers mappen met een bekend uitvoerbaar bestand, automatisch gegenereerde mapnamen, enzovoort).
+  
+   1. Definieer de toegestane gebruikers en typen beveiligde bestanden.
+
+   1. Wanneer u klaar bent met het definiëren van de regel, selecteert u **toevoegen**.
+
+1. Selecteer **Opslaan**om de wijzigingen toe te passen.
+
+
+
+
+## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Reageren op de ' Allowlist-regels in uw adaptief toepassings beheer beleid moeten worden bijgewerkt ' aanbeveling
+
+U ziet deze aanbeveling wanneer de machine learning van Security Center mogelijk legitiem gedrag identificeert dat niet eerder is toegestaan. De aanbeveling stelt nieuwe regels voor uw bestaande definities voor om het aantal foutieve positieve waarschuwingen te verminderen.
+
+De problemen oplossen:
+
+1. Selecteer op de pagina aanbevelingen de **Allowlist-regels in het adaptieve toepassings beheer beleid moet worden bijgewerkt** om groepen met een nieuw geïdentificeerd, mogelijk legitiem gedrag te zien.
+
+1. Selecteer de groep met de regel die u wilt bewerken.
+
+1. Bekijk de verschillende secties van de pagina **regels voor toepassings beheer configureren** zoals beschreven in [besturings elementen voor adaptieve toepassingen inschakelen op een groep machines](#enable-application-controls-on-a-group-of-machines).
+
+1. Selecteer **audit**om de wijzigingen toe te passen.
+
+
+
+
+## <a name="auditing-alerts-and-violations"></a>Waarschuwingen en schendingen controleren
+
+1. Selecteer in het menu van Security Center **adaptieve toepassings besturings elementen**.
+
+1. Als u groepen wilt weer geven met machines met recente waarschuwingen, controleert u de groepen die worden vermeld op het tabblad **geconfigureerd** .
+
+1. Selecteer een groep om verder te onderzoeken.
+
+   ![Recente waarschuwingen](./media/security-center-adaptive-application/recent-alerts.png)
+
+1. Selecteer een waarschuwing voor meer informatie en de lijst met betrokken computers.
+
+
+
+## <a name="move-a-machine-from-one-group-to-another"></a>Een machine van de ene naar de andere groep verplaatsen
+
+Wanneer u een machine van de ene naar de andere groep verplaatst, wordt het toepassings beheer beleid dat wordt toegepast, gewijzigd in de instellingen van de groep waarnaar u het hebt verplaatst. U kunt een machine ook van een geconfigureerde groep naar een niet-geconfigureerde groep verplaatsen, waardoor alle toepassings beheer regels die op de machine zijn toegepast, worden verwijderd.
+
+1. Selecteer op de pagina **adaptieve toepassings besturings elementen** op het tabblad **geconfigureerd** de groep die de computer bevat die moet worden verplaatst.
+
+1. Open de lijst met **geconfigureerde machines**.
+
+1. Open het menu van de computer vanaf drie punten aan het einde van de rij en selecteer **verplaatsen**. De **computer verplaatsen naar een ander groeps** deel venster wordt geopend.
+
+1. Selecteer de doel groep en selecteer **machine verplaatsen**.
+
+1. Selecteer **Opslaan**om uw wijzigingen op te slaan.
+
+
+
+
+
+## <a name="managing-application-controls-via-the-rest-api"></a>Besturings elementen voor toepassingen beheren via de REST API 
+
+Als u de besturings elementen voor adaptieve toepassingen programmatisch wilt beheren, gebruikt u onze REST API. 
+
+De volledige API-documentatie is [hier](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols).
+
+Enkele van de functies die beschikbaar zijn via de REST API:
+
+* De **lijst** haalt alle groeps aanbevelingen op en biedt een JSON met een object voor elke groep.
+
+* **Haal** de JSON op met de volledige aanbevelings gegevens (dat wil zeggen, een lijst met computers, regels voor Uitgever/pad, enzovoort).
+
+* Met **put** configureert u uw regel (gebruik de JSON die u hebt opgehaald met **Get** als de hoofd tekst voor deze aanvraag).
+ 
+   > [!IMPORTANT]
+   > De **put** -functie verwacht minder para meters dan de JSON die wordt geretourneerd door de opdracht Get contains.
    >
+   > Verwijder de volgende eigenschappen voordat u de JSON gebruikt in de put-aanvraag: recommendationStatus, configurationStatus, issues, location en hebben.
 
-4. Onder **beleids uitbreiding**voegt u een toepassingspad toe dat u wilt toestaan. Nadat u deze paden hebt toegevoegd, wordt door Security Center het beleid voor lijst met toegestane toepassingen op de virtuele machines in de geselecteerde groep VM'S bijgewerkt en worden de juiste regels voor deze toepassingen gemaakt, naast de regels die al aanwezig zijn.
 
-5. Bekijk de huidige schendingen die worden vermeld in de sectie **recente waarschuwingen** . Klik op elke regel die u wilt omleiden naar de pagina **waarschuwingen** binnen Azure Security Center en Bekijk alle waarschuwingen die door Azure Security Center zijn gedetecteerd op de gekoppelde vm's.
-   - **Waarschuwingen**: eventuele schendingen die zijn vastgelegd.
-   - **Nee. van Vm's**: het aantal virtuele machines met dit waarschuwings type.
 
-6. Onder **Publisher white list regels**, **Path white list Rules**en **hash white list-regels** kunt u zien welke toepassings white list-regels momenteel zijn geconfigureerd op de virtuele machines binnen een groep, volgens het type regel verzameling. Voor elke regel kunt u het volgende zien:
-
-   - **Regel**: de specifieke para meters op basis waarvan een toepassing door AppLocker wordt gecontroleerd om te bepalen of een toepassing mag worden uitgevoerd.
-   - **Bestands type**: de bestands typen die worden gedekt door een specifieke regel. Dit kan een van de volgende zijn: EXE, script, MSI of een permutatie van die bestands typen.
-   - **Gebruikers**: naam of aantal gebruikers die een toepassing mogen uitvoeren die wordt gedekt door een toepassing white list regel.
-
-   ![Regels voor opname in de whitelist](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
-
-7. Klik op de drie punten aan het einde van elke regel als u de specifieke regel wilt verwijderen of de toegestane gebruikers wilt bewerken.
-
-8. Nadat u wijzigingen hebt aangebracht in een beleid voor **adaptieve toepassings besturings elementen** , klikt u op **Opslaan**.
-
-### <a name="not-recommended-list"></a>De lijst Niet aanbevolen
-
-Security Center beveelt alleen white list-beleid van toepassingen aan voor virtuele machines waarop een stabiele set toepassingen wordt uitgevoerd. Opname in de whitelist wordt niet aanbevolen als de toepassingen op de bijbehorende virtuele machines voortdurend wisselen.
-
-![Aanbeveling](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
-
-De lijst bevat:
-- **Groeps naam**: de naam van het abonnement en de groep
-- **Vm's en computers**: het aantal virtuele machines in de groep
-
-Met Azure Security Center kunt u ook een white list-beleid voor toepassingen definiëren op niet-aanbevolen groepen Vm's. Volg dezelfde principes als eerder beschreven, voor het configureren van een toepassing white list-beleid voor die groepen.
-
-## <a name="move-a-vm-from-one-group-to-another"></a>Een virtuele machine verplaatsen van de ene groep naar een andere
-
- Wanneer u een virtuele machine verplaatst van de ene groep naar een andere, wordt het beleid voor toepassings beheer toegepast op wijzigingen in de instellingen van de groep waarnaar u het hebt verplaatst. U kunt een virtuele machine ook van een geconfigureerde groep naar een niet-geconfigureerde groep verplaatsen, wat resulteert in het verwijderen van een toepassings beheer beleid dat eerder is toegepast op de virtuele machine.
-
- 1. Klik op het tabblad **geconfigureerd** van de pagina **adaptieve toepassings besturings elementen** op de groep waarnaar de VM momenteel moet worden verplaatst.
-1. Klik op **geconfigureerde vm's en computers**.
-1. Klik op de drie puntjes in de regel van de virtuele machine die u wilt verplaatsen en klik vervolgens op **verplaatsen**. Het venster **computer naar andere groep verplaatsen** wordt geopend.
-
-    ![Beveiliging](./media/security-center-adaptive-application/adaptive-application-move-group.png)
-
- 1. Selecteer de groep waarnaar u de virtuele machine wilt verplaatsen, klik op **computer verplaatsen**en klik op **Opslaan**.
-
-    ![Beveiliging](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
-
- > [!NOTE]
-> Zorg ervoor dat u op **Opslaan** klikt nadat u op **computer verplaatsen**hebt geklikt. Als u niet op **Opslaan**klikt, wordt de computer niet verplaatst.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u gebruik kunt maken van adaptieve toepassings beheer in Azure Security Center voor het white list van toepassingen die worden uitgevoerd in Azure-en niet-Azure-Vm's. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
+In dit document hebt u geleerd hoe u adaptief toepassings beheer in Azure Security Center kunt gebruiken om lijst toestaan te definiëren van toepassingen die worden uitgevoerd op uw Azure-en niet-Azure-machines. Zie voor meer informatie over enkele van de andere functies van de Cloud beveiliging van een andere Security Center.
 
-* [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Informatie over het beheren van waarschuwingen en het reageren op beveiligingsincidenten in Security Center.
-* [Beveiligings status bewaken in azure Security Center](security-center-monitoring.md). Meer informatie over het controleren van de status van uw Azure-resources.
-* Meer [informatie over beveiligings waarschuwingen in azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Meer informatie over de verschillende typen beveiligingswaarschuwingen.
-* [Azure Security Center probleemoplossings handleiding](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Informatie over het oplossen van veelvoorkomende problemen met Security Center.
-* [Azure-beveiligings blog](https://blogs.msdn.com/b/azuresecurity/). Raadpleeg de blogberichten over beveiliging en naleving in Azure.
+* [Meer informatie over just-in-time-VM-toegang](just-in-time-explained.md)
+* [Uw Azure Kubernetes-clusters beveiligen](azure-kubernetes-service-integration.md)
