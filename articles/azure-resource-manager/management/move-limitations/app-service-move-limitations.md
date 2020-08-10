@@ -2,13 +2,13 @@
 title: Azure App Service resources verplaatsen
 description: Gebruik Azure Resource Manager om App Service resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80655770"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042054"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Richt lijnen voor App Service resources verplaatsen
 
@@ -23,7 +23,8 @@ Bij het verplaatsen van een web-app tussen abonnementen, gelden de volgende rich
     - App Service-abonnementen
     - Geüploade of geïmporteerde TLS/SSL-certificaten
     - App Service-omgevingen
-- Alle App Service resources in de resource groep moeten samen worden verplaatst. Houd er rekening mee dat App Service omgevingen niet kunnen worden verplaatst naar een nieuwe resource groep of naar een nieuw abonnement.
+- Alle App Service resources in de resource groep moeten samen worden verplaatst.
+- App Service omgevingen kunnen niet worden verplaatst naar een nieuwe resource groep of een nieuw abonnement. U kunt echter een web-app en een app service-plan verplaatsen naar een nieuw abonnement zonder de App Service Environment te verplaatsen. Na de verplaatsing wordt de web-app niet meer gehost in de App Service Environment.
 - U kunt een certificaat dat is gebonden aan een web verplaatsen zonder de TLS-bindingen te verwijderen, zolang het certificaat met alle andere resources in de resource groep is verplaatst.
 - App Service resources kunnen alleen worden verplaatst van de resource groep waarin ze oorspronkelijk zijn gemaakt. Als een App Service resource niet langer in de oorspronkelijke resource groep staat, zet u deze terug naar de oorspronkelijke resource groep. Verplaats vervolgens de resource over abonnementen.
 

@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562409"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042102"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -31,6 +31,9 @@ Op deze pagina vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 ### <a name="what-license-is-required-to-use-azure-ad-application-proxy"></a>Welke licentie is vereist voor het gebruik van Azure AD-toepassingsproxy?
 
 Als u Azure AD-toepassingsproxy wilt gebruiken, moet u een Azure AD Premium P1-of P2-licentie hebben. Zie voor meer informatie over licenties [Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/)
+
+### <a name="what-happens-to-azure-ad-application-proxy-in-my-tenant-if-my-license-expires"></a>Wat gebeurt er met Azure AD-toepassingsproxy in mijn Tenant, als mijn licentie verloopt?
+Als uw licentie is verlopen, wordt de toepassings proxy automatisch uitgeschakeld. Uw toepassings gegevens worden Maxi maal één jaar opgeslagen.
 
 ### <a name="why-is-the-enable-application-proxy-button-grayed-out"></a>Waarom is de knop toepassings proxy inschakelen grijs?
 

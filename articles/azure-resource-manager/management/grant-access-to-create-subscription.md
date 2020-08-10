@@ -6,12 +6,12 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aef9c6781c87ff4e84e46de711308319755e4630
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824474"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042065"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Toegang verlenen voor het maken van Azure Enter prise-abonnementen (preview-versie)
 
@@ -180,7 +180,7 @@ Als u [abonnementen wilt maken onder een inschrijvings account](programmatically
 
 Voor het bijhouden van de abonnementen die zijn gemaakt via deze API, gebruikt u de [API voor Tenant activiteiten logboeken](/rest/api/monitor/tenantactivitylogs). Het is momenteel niet mogelijk Power shell, CLI of Azure Portal te gebruiken om het maken van abonnementen bij te houden.
 
-1. [Verhoog het toegangsniveau](../../role-based-access-control/elevate-access-global-admin.md) als tenantbeheerder van de Azure AD-tenant en wijs vervolgens de rol van Lezer toe aan de controlerende gebruiker voor het bereik `/providers/microsoft.insights/eventtypes/management`.
+1. [Verhoog het toegangsniveau](../../role-based-access-control/elevate-access-global-admin.md) als tenantbeheerder van de Azure AD-tenant en wijs vervolgens de rol van Lezer toe aan de controlerende gebruiker voor het bereik `/providers/microsoft.insights/eventtypes/management`. Deze toegang is beschikbaar in de rol [lezer](../../role-based-access-control/built-in-roles.md#reader) , de rol [bewaking van Inzender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) of een [aangepaste rol](../../role-based-access-control/custom-roles.md).
 1. Als controle gebruiker roept u de API voor het [Tenant activiteiten logboek](/rest/api/monitor/tenantactivitylogs) op om activiteiten voor het maken van abonnementen weer te geven. Voorbeeld:
 
     ```

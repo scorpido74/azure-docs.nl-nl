@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9d1854b459e799d5cbb401de9ac717dd7d0fde1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9da94f80f9a9c1b3cba7b8e3ac4fef7e717918c9
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71961239"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042748"
 ---
 # <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Wat is de functie voor het autoregistreren van Azure DNS privé zones
 
@@ -29,7 +29,8 @@ U kunt auto registratie inschakelen door de optie automatische registratie insch
 
 * De functie voor het registreren van gegevens werkt alleen voor virtuele machines. Voor alle andere resources, zoals interne load balancers enz., kunt u DNS-records hand matig maken in de privé-DNS-zone die aan het virtuele netwerk is gekoppeld.
 * DNS-records worden alleen automatisch gemaakt voor de NIC van de primaire virtuele machine. Als uw virtuele machines meer dan één NIC hebben, kunt u hand matig de DNS-records maken voor andere netwerk interfaces.
-* de registratie van IPv6 (AAAA-records) wordt niet ondersteund.
+* DNS-records worden alleen automatisch gemaakt als de NIC van de primaire virtuele machine DHCP gebruikt. Als er statische IP-adressen zijn geconfigureerd (bijvoorbeeld om [meerdere IP-adressen in azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-portal#os-config)te gebruiken), maakt automatische registratie geen records voor die virtuele machine.
+* De registratie van IPv6 (AAAA-records) wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 

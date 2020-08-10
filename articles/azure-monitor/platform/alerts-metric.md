@@ -4,14 +4,14 @@ description: Meer informatie over het gebruik van Azure Portal of CLI om metrisc
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/10/2020
 ms.subservice: alerts
-ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321119"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042731"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrische waarschuwing maken, bekijken en beheren met Azure Monitor
 
@@ -88,6 +88,7 @@ U kunt metrische waarschuwings regels weer geven en beheren met behulp van de Bl
 
 6. Klik op **gereed** om uw wijzigingen op te slaan.
 
+
 ## <a name="with-azure-cli"></a>Met Azure CLI
 
 In de vorige secties wordt beschreven hoe u metrische waarschuwings regels kunt maken, weer geven en beheren met behulp van Azure Portal. In deze sectie wordt beschreven hoe u hetzelfde kunt doen met meerdere platformen van [Azure cli](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). De snelste manier om te beginnen met het gebruik van Azure CLI is via [Azure Cloud shell](../../cloud-shell/overview.md?view=azure-cli-latest). Voor dit artikel gaan we Cloud Shell gebruiken.
@@ -133,6 +134,14 @@ In de vorige secties wordt beschreven hoe u metrische waarschuwings regels kunt 
     ```azurecli
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
+
+## <a name="with-powershell"></a>Met PowerShell
+
+Er zijn speciale Power shell-cmdlets beschikbaar voor metrische waarschuwings regels:
+
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): Hiermee wordt een nieuwe metrische waarschuwings regel gemaakt of een bestaande bijgewerkt.
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): Hiermee worden een of meer metrische waarschuwings regels opgehaald.
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): Hiermee verwijdert u een waarschuwings regel voor metrische gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 

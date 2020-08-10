@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1875c9147f62619d8961096adb6a0f3986496b41
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459438"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041524"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een onderliggend technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -117,7 +117,7 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 | ServiceUrl | Ja | De URL van het REST API-eind punt. |
 | AuthenticationType | Ja | Het type verificatie dat wordt uitgevoerd door de claim provider voor de REST. Mogelijke waarden: `None` , `Basic` , `Bearer` of `ClientCertificate` . De `None` waarde geeft aan dat de rest API anoniem is. De `Basic` waarde geeft aan dat de rest API is beveiligd met HTTP Basic-verificatie. Alleen geverifieerde gebruikers, met inbegrip van Azure AD B2C, hebben toegang tot uw API. De `ClientCertificate` waarde (aanbevolen) geeft aan dat de rest API de toegang beperkt met behulp van verificatie op basis van client certificaten. Alleen services die de juiste certificaten hebben, bijvoorbeeld Azure AD B2C, hebben toegang tot uw API. De `Bearer` waarde geeft aan dat de rest API de toegang beperkt met behulp van client OAuth2 Bearer-token. |
 | AllowInsecureAuthInProduction| Nee| Hiermee wordt aangegeven of de `AuthenticationType` kan worden ingesteld op `none` in productie omgeving ( `DeploymentMode` van de [TrustFrameworkPolicy](trustframeworkpolicy.md) is ingesteld op `Production` of niet is opgegeven). Mogelijke waarden: True of False (standaard). |
-| SendClaimsIn | Nee | Hiermee wordt aangegeven hoe de invoer claims worden verzonden naar de claim provider voor de REST. Mogelijke waarden: `Body` (standaard), `Form` , `Header` of `QueryString` . De `Body` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in de JSON-indeling. De `Form` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de invoer claim die in de aanvraag header wordt verzonden. De `QueryString` waarde is de invoer claim die wordt verzonden in de query teken reeks van de aanvraag. De HTTP-woorden die door elk van beide worden aangeroepen, zijn als volgt:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: Ophalen</li><li>`QueryString`: Ophalen</li></ul> |
+| SendClaimsIn | Nee | Hiermee wordt aangegeven hoe de invoer claims worden verzonden naar de claim provider voor de REST. Mogelijke waarden: `Body` (standaard), `Form` , `Header` `Url` of `QueryString` . De `Body` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in de JSON-indeling. De `Form` waarde is de invoer claim die in de hoofd tekst van de aanvraag wordt verzonden in een ampersand ' & ' gescheiden sleutel waarde-indeling. De `Header` waarde is de invoer claim die in de aanvraag header wordt verzonden. De `Url` waarde is de invoer claim die wordt verzonden in de URL, bijvoorbeeld https://{claim1}. example. com/{claim2}/{claim3}? { claim4} = {claim5}. De `QueryString` waarde is de invoer claim die wordt verzonden in de query teken reeks van de aanvraag. De HTTP-woorden die door elk van beide worden aangeroepen, zijn als volgt:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: Ophalen</li><li>`Url`: Ophalen</li><li>`QueryString`: Ophalen</li></ul> |
 | ClaimsFormat | Nee | Momenteel niet gebruikt, kan worden genegeerd. |
 | ClaimUsedForRequestPayload| Nee | Naam van een teken reeks claim die de payload bevat die naar de REST API moet worden verzonden. |
 | DebugMode | Nee | Voert het technische profiel in de foutopsporingsmodus. Mogelijke waarden: `true` , of `false` (standaard). In de foutopsporingsmodus kan de REST API meer informatie retour neren. Zie de sectie [fout bericht over het retour neren](#returning-validation-error-message) . |

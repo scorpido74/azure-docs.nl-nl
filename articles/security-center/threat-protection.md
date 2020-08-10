@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836799"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041983"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
@@ -114,12 +114,13 @@ Zie [app service-plannen](https://azure.microsoft.com/pricing/details/app-servic
 
 ### <a name="availability"></a>Beschikbaarheid
 
-- Release status: **algemene Beschik baarheid**
-- Vereiste rollen: **beveiligings beheerder** kan waarschuwingen negeren. **Beveiligings lezer** kan bevindingen weer geven.
-- Clouds<br>
-    ✔ Commerciële Clouds<br>
-    ✘ US Gov<br>
-    ✘ China gov, andere gov
+|Aspect|Details|
+|----|:----|
+|Release status:|Algemeen beschikbaar|
+|Koers|Standard-laag|
+|Vereiste rollen en machtigingen:|**Beveiligings beheerder** kan waarschuwingen negeren.<br>**Beveiligings lezer** kan bevindingen weer geven.|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
@@ -150,14 +151,13 @@ Zie voor meer informatie:
 
 ### <a name="availability"></a>Beschikbaarheid
 
-- Release status:
-    - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (algemene Beschik baarheid)
-    - [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (preview-versie)
-    - [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (preview-versie)
-- Clouds<br>
-    ✔ Commerciële Clouds<br>
-    ✔ US Gov<br>
-    ✘ China gov, andere gov
+|Aspect|Details|
+|----|:----|
+|Release status:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (algemene Beschik baarheid)<br>[Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (preview-versie)<br>[Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (preview-versie)|
+|Koers|Standard-laag|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China gov, andere gov|
+|||
+
 
 ### <a name="whats-protected"></a>Wat is er beveiligd?
 

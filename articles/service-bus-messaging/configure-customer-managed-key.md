@@ -3,12 +3,12 @@ title: Uw eigen sleutel configureren voor het versleutelen van Azure Service Bus
 description: Dit artikel bevat informatie over het configureren van uw eigen sleutel voor het versleutelen van Azure Service Bus gegevens rest.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ca1597f26ec1c7ccaa578d4e7dcd68e0ef54f60c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4eef0965f585291c31a3698d1d37abf67c6295c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85475982"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041560"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren voor het versleutelen van Azure Service Bus gegevens op rest door gebruik te maken van de Azure Portal
 Azure Service Bus Premium zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Service Bus Premium is afhankelijk van Azure Storage om de gegevens op te slaan en de standaard instelling is dat alle gegevens die zijn opgeslagen met Azure Storage, worden versleuteld met door micro soft beheerde sleutels. 
@@ -21,7 +21,7 @@ Het inschakelen van de functie BYOK is een eenmalige installatie procedure voor 
 > [!NOTE]
 > Er zijn enkele voor behoud van de door de klant beheerde sleutel voor versleuteling aan de service zijde. 
 >   * Deze functie wordt ondersteund door [Azure service bus Premium](service-bus-premium-messaging.md) -laag. Het kan niet worden ingeschakeld voor de standaardlaag Service Bus naam ruimten.
->   * De versleuteling kan alleen worden ingeschakeld voor nieuwe of lege naam ruimten. Als de naam ruimte gegevens bevat, mislukt de versleutelings bewerking.
+>   * De versleuteling kan alleen worden ingeschakeld voor nieuwe of lege naam ruimten. Als de naam ruimte alle wacht rijen of onderwerpen bevat, mislukt de versleutelings bewerking.
 
 U kunt Azure Key Vault gebruiken voor het beheren van uw sleutels en het controleren van uw sleutel gebruik. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md) voor meer informatie over Azure Key Vault.
 

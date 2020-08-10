@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 1ba8977272817d41334ccf0d9ad01d4d751bfb17
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439215"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041694"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -26,9 +26,9 @@ Zie [Azure Firewall-functies](features.md) voor meer informatie over Azure Firew
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Wat is het typische implementatie model voor Azure Firewall?
 
-U kunt Azure Firewall op elk virtueel netwerk implementeren, maar klanten implementeren dit doorgaans op een centraal virtueel netwerk en andere virtuele netwerken op de peer in een hub-en-spoke-model. U kunt vervolgens de standaard route van de gekoppelde virtuele netwerken instellen om naar dit virtuele netwerk met centrale firewall te verwijzen. Wereld wijde VNet-peering wordt ondersteund, maar dit wordt niet aanbevolen vanwege mogelijke problemen met de prestaties en latentie tussen regio's. Voor de beste prestaties moet u één firewall per regio implementeren.
+U kunt Azure Firewall op elk virtueel netwerk implementeren, maar klanten implementeren dit doorgaans op een centraal virtueel netwerk en peeren er andere virtuele netwerken op in een hub-en-spoke-model. U kunt vervolgens de standaard route van de gekoppelde virtuele netwerken instellen om naar dit virtuele netwerk met centrale firewall te verwijzen. Wereld wijde VNet-peering wordt ondersteund, maar dit wordt niet aanbevolen vanwege mogelijke problemen met de prestaties en latentie tussen regio's. Implementeer één firewall per regio voor de beste prestaties.
 
-Het voor deel van dit model is de mogelijkheid om centraal controle te uitoefenen op meerdere spoke-VNETs in verschillende abonnementen. Er zijn ook kosten besparingen, omdat u niet afzonderlijk een firewall in elk VNet hoeft te implementeren. De kosten besparingen moeten worden gemeten tegenover de kosten voor het koppelen van de peering op basis van de verkeers patronen van de klant.
+Het voordeel van dit model is de mogelijkheid om centraal controle te uitoefenen op meerdere spoke-VNET's in verschillende abonnementen. Er zijn ook kosten besparingen, omdat u niet afzonderlijk een firewall in elk VNet hoeft te implementeren. De kostenbesparingen moeten worden berekend ten opzichte van de bijbehorende peeringkosten op basis van de verkeerspatronen van de klant.
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Hoe kan ik de Azure Firewall installeren?
 
@@ -137,11 +137,13 @@ Nee. NAT-regels voegen impliciet een bijbehorende netwerk regel toe om het verta
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hoe werken joker tekens in een toepassings regel doel-FQDN?
 
+Joker tekens kunnen momenteel alleen worden gebruikt aan de linkerkant van de FQDN. Bijvoorbeeld ***. contoso.com** en ***contoso.com**.
+
 Als u ***. contoso.com**configureert, is *anyvalue*. contoso.com, maar niet contoso.com (het domein Apex) toegestaan. Als u het domein Apex wilt toestaan, moet u het expliciet configureren als een doel-FQDN.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Wat betekent de *inrichtings status: mislukt* ?
 
-Wanneer een configuratie wijziging wordt toegepast, probeert Azure Firewall alle onderliggende back-end-exemplaren bij te werken. In zeldzame gevallen kan een van deze backend-exemplaren niet worden bijgewerkt met de nieuwe configuratie en wordt het update proces gestopt met een mislukte inrichtings status. Uw Azure Firewall is nog steeds operationeel, maar de toegepaste configuratie kan een inconsistente status hebben, waarbij sommige instanties de vorige configuratie hebben, waarbij anderen de bijgewerkte regelset hebben. Als dit het geval is, kunt u proberen om de configuratie nog een keer bij te werken totdat de bewerking is geslaagd en uw firewall een *geslaagde* inrichtings status heeft.
+Wanneer er een configuratiewijziging wordt toegepast, probeert Azure Firewall alle onderliggende back-endexemplaren bij te werken. In zeldzame gevallen kan een van deze backend-exemplaren niet worden bijgewerkt met de nieuwe configuratie en wordt het update proces gestopt met een mislukte inrichtings status. Uw Azure Firewall is nog steeds operationeel, maar de toegepaste configuratie kan inconsistent zijn, waarbij sommige exemplaren de vorige configuratie hebben en andere de bijgewerkte regelset hebben. Als dit het geval is, kunt u proberen om de configuratie nog een keer bij te werken totdat de bewerking is geslaagd en uw firewall een *geslaagde* inrichtings status heeft.
 
 ## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Hoe verwerkt Azure Firewall gepland onderhoud en niet-geplande fouten?
 Azure Firewall bestaat uit verschillende back-end-knoop punten in een actief/actief-configuratie.  Voor elk gepland onderhoud hebben we verbindings verwerkings logica voor het op de juiste wijze bijwerken van knoop punten.  Updates worden gepland tijdens niet-kantoor uren voor elk van de Azure-regio's om het risico van onderbrekingen verder te beperken.  Voor ongeplande problemen instantiëren we een nieuw knoop punt om het knoop punt dat is mislukt te vervangen.  De verbinding met het nieuwe knoop punt wordt doorgaans binnen tien seconden na het tijdstip van de fout hersteld.

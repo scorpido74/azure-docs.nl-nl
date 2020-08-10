@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089937"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042497"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Waarschuwingen onderdrukken van de bedreigings beveiliging van Azure Security Center
 
@@ -21,9 +21,15 @@ Op deze pagina wordt uitgelegd hoe u regels voor het onderdrukken van waarschuwi
 
 ## <a name="availability"></a>Beschikbaarheid
 
-- Release status: **Preview**
-- Vereiste rollen: **beveiligings beheerder** en- **eigenaar** kunnen regels maken/verwijderen. **Beveiligings lezer** en **lezer** kunnen regels weer geven.
-- Clouds: ✔ commerciële Clouds ✔ National/soeverein (US Gov, China gov, andere gov)
+|Aspect|Details|
+|----|:----|
+|Release status:|Preview|
+|Koers|Gratis laag<br>(De meeste beveiligings waarschuwingen gelden alleen voor de Standard-laag)|
+|Vereiste rollen en machtigingen:|**Beveiligings beheerder** en- **eigenaar** kunnen regels maken/verwijderen.<br>**Beveiligings lezer** en **lezer** kunnen regels weer geven.|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|||
+
+
 
 
 ## <a name="what-are-suppression-rules"></a>Wat zijn onderdrukkings regels?
@@ -32,9 +38,9 @@ De bedreigings beveiligings onderdelen van Azure Security Center het detecteren 
 
 Wanneer één waarschuwing niet interessant of relevant is, kunt u deze hand matig verwijderen. U kunt ook de functie onderdrukkings regels gebruiken om in de toekomst automatisch vergelijk bare waarschuwingen te negeren. Normaal gesp roken gebruikt u een onderdrukkings regel voor het volgende:
 
-- waarschuwingen onderdrukken die u als foutieve positieven hebt geïdentificeerd
+- Waarschuwingen onderdrukken die u als foutieve positieven hebt geïdentificeerd
 
-- waarschuwingen onderdrukken die te vaak worden geactiveerd om nuttig te zijn
+- Waarschuwingen onderdrukken die te vaak worden geactiveerd om nuttig te zijn
 
 Met de onderdrukkings regels worden de criteria gedefinieerd waarvoor waarschuwingen automatisch moeten worden genegeerd.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2020
 ms.author: memildin
-ms.openlocfilehash: b66969b26a801e6bd9aacf999c1c1ef9179ef1bd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 767ad928779743ec28dbe3da8be6154a1fe0b0ab
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534665"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042307"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Azure Container Registry afbeeldingen scannen door Security Center
 
@@ -27,17 +27,16 @@ Als u zich in de Standard-laag van Azure Security Center bevindt, kunt u de bund
 
 ## <a name="availability"></a>Beschikbaarheid
 
-- Release status: **algemene Beschik baarheid**
-- Vereiste rollen: **beveiligings lezer** en [rol van Azure container Registry lezer](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
-- Ondersteunde registers en installatie kopieën:
-    - ✔ Door Linux gehoste ACR-registers die toegankelijk zijn via het open bare Internet en shell toegang bieden.
-    - ✘ Door Windows gehoste ACR-registers.
-    - ✘ ' Persoonlijke ' registers-Security Center vereist dat uw registers toegankelijk zijn via het open bare Internet. Security Center kan momenteel geen verbinding maken met, of scannen, registers met toegang beperkt met een firewall, een service-eind punt of persoonlijke eind punten zoals een persoonlijke Azure-koppeling.
-    - ✘ Zeer minimale afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of Distroless-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.
-- Clouds 
-    - ✔ Commerciële Clouds
-    - ✘-Cloud voor de Amerikaanse overheid
-    - ✘ China Government Cloud, andere overheids Clouds
+|Aspect|Details|
+|----|:----|
+|Release status:|Algemene beschikbaarheid|
+|Koers|Standard-laag|
+|Ondersteunde registers en installatie kopieën:|![Ja ](./media/icons/yes-icon.png) door Linux gehoste ACR-registers die toegankelijk zijn via het open bare Internet en shell toegang bieden.<br>![Geen door ](./media/icons/yes-icon.png) Windows gehoste ACR-registers.<br>![Geen ](./media/icons/yes-icon.png) persoonlijke registers-Security Center vereist dat uw registers toegankelijk zijn via het open bare Internet. Security Center kan momenteel geen verbinding maken met, of scannen, registers met toegang beperkt met een firewall, een service-eind punt of persoonlijke eind punten zoals een persoonlijke Azure-koppeling.<br>![Geen ](./media/icons/yes-icon.png) minimale afbeeldings afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of "Distroless"-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.|
+|Vereiste rollen en machtigingen:|Rol van **beveiligings lezer** en [Azure container Registry lezer](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|||
+
+
 
 
 ## <a name="when-are-images-scanned"></a>Wanneer worden afbeeldingen gescand?

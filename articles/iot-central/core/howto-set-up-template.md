@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1f5e1347850c038386d32b52378674ac20316e4c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3e4b44c8f784524b4cd363a2f4531c5bf0a70e0d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337208"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041592"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Een nieuw IoT-apparaattype definiëren in uw Azure IoT Central-toepassing
 
 *Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
-Een apparaatsjabloon is een blauwdruk die de kenmerken en het gedrag definieert van een type apparaat dat verbinding maakt met een Azure IoT Central-toepassing.
+Een sjabloon voor een apparaat is een blauw druk die de kenmerken en het gedrag definieert van een type apparaat dat verbinding maakt met een [Azure IOT Central-toepassing](concepts-app-templates.md).
 
 Een opbouw functie kan bijvoorbeeld een apparaatprofiel maken voor een verbonden ventilator die de volgende kenmerken heeft:
 
@@ -31,17 +31,21 @@ Een opbouw functie kan bijvoorbeeld een apparaatprofiel maken voor een verbonden
 - Biedt een opdracht voor het opnieuw opstarten van het apparaat
 - Geeft een algemeen overzicht van het apparaat via een dash board
 
-Met deze apparaatprofiel kan een operator echte ventilator apparaten maken en verbinden. Al deze ventilatoren hebben metingen, eigenschappen en opdrachten die Opera tors gebruiken om ze te controleren en te beheren. Opera tors van het dash board en de formulieren worden gebruikt om te communiceren met de ventilator apparaten.
+Met deze apparaatprofiel kan een operator echte ventilator apparaten maken en verbinden. Al deze ventilatoren hebben metingen, eigenschappen en opdrachten die Opera tors gebruiken om ze te controleren en te beheren. Opera tors van het [dash board](#add-dashboards) en de formulieren worden gebruikt om te communiceren met de ventilator apparaten. Een ontwikkelaar van het apparaat gebruikt de sjabloon om te begrijpen hoe het apparaat samenwerkt met de toepassing. Zie [telemetrie, Property en Command payloads](concepts-telemetry-properties-commands.md)voor meer informatie.
 
 > [!NOTE]
 > Alleen bouwers en beheerders kunnen sjablonen voor apparaten maken, bewerken en verwijderen. Elke gebruiker kan apparaten op de pagina **apparaten** maken op basis van bestaande Apparaatinstellingen.
 
 In een IoT Central-toepassing gebruikt een apparaatprofiel een mogelijkheidsprofiel om de mogelijkheden van een apparaat te beschrijven. Als opbouw functie hebt u verschillende opties voor het maken van Apparaatinstellingen:
 
-- Ontwerp de sjabloon voor het apparaat in IoT Central en implementeer vervolgens het hulp model van het apparaat in de code van uw apparaat.
+- Ontwerp de sjabloon voor het apparaat in IoT Central en [Implementeer vervolgens het hulp model van het apparaat in de code van uw apparaat](concepts-telemetry-properties-commands.md).
 - Importeer een mogelijkheidsprofiel vanuit de [Azure Certified voor IOT-apparaat Catalog](https://aka.ms/iotdevcat). Voeg vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toe die uw IoT Central toepassing nodig heeft.
 - Maak een mogelijkheidsprofiel met Visual Studio code. Implementeer uw apparaatcode vanuit het model. Importeer het mogelijkheidsprofiel hand matig in uw IoT Central-toepassing en voeg vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toe die uw IoT Central toepassing nodig heeft.
 - Maak een mogelijkheidsprofiel met Visual Studio code. Implementeer uw apparaatcode vanuit het model en verbind uw echte apparaat met uw IoT Central-toepassing met behulp van een apparaat-eerste verbinding. IoT Central zoekt en importeert het mogelijkheidsprofiel uit de open bare opslag plaats voor u. U kunt vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toevoegen die uw IoT Central toepassing nodig heeft voor de sjabloon voor het apparaat.
+
+U kunt ook apparaatprofielen toevoegen aan een IoT Central-toepassing met behulp van de [rest API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) of de [cli](howto-manage-iot-central-from-cli.md).
+
+Sommige [toepassings sjablonen](concepts-app-templates.md) bevatten al sjablonen voor apparaten die handig zijn in het scenario dat door de toepassings sjabloon wordt ondersteund. Zie bijvoorbeeld [in-Store Analytics-architectuur](../retail/store-analytics-architecture.md).
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>Een sjabloon voor een apparaat maken vanuit de catalogus met apparaten
 
@@ -66,7 +70,7 @@ Een sjabloon voor een apparaat maken in IoT Central:
 1. Ga naar de pagina met **Apparaatinstellingen** in uw IOT Central-toepassing.
 1. Selecteer **+ Nieuw**  >  **aangepast**.
 1. Voer een naam in voor de sjabloon, zoals **omgevings sensor**.
-1.  Druk op **Enter**. IoT Central maakt een lege sjabloon voor het apparaat.
+1. Druk op **Enter**. IoT Central maakt een lege sjabloon voor het apparaat.
 
 ## <a name="manage-a-device-template"></a>Een sjabloon voor een apparaat beheren
 
@@ -149,7 +153,7 @@ De volgende tabel bevat de configuratie-instellingen voor een eigenschaps mogeli
 | Opmerking | Eventuele opmerkingen over de eigenschaps mogelijkheid. |
 | Beschrijving | Een beschrijving van de eigenschaps mogelijkheid. |
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 U kunt de opdrachten van een apparaat aanroepen vanuit IoT Central. Opdrachten geven optioneel para meters door aan het apparaat en ontvangen een reactie van het apparaat. U kunt bijvoorbeeld een opdracht aanroepen om een apparaat binnen tien seconden opnieuw op te starten.
 
@@ -164,7 +168,7 @@ De volgende tabel bevat de configuratie-instellingen voor een opdracht mogelijkh
 | Opmerking | Eventuele opmerkingen over de opdracht mogelijkheid. |
 | Beschrijving | Een beschrijving van de opdracht mogelijkheid. |
 | Aanvraag | Indien ingeschakeld, een definitie van de aanvraag parameter, met inbegrip van: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
-| Reactie | Als deze optie is ingeschakeld, wordt een definitie van het opdracht antwoord gegeven, waaronder: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
+| Antwoord | Als deze optie is ingeschakeld, wordt een definitie van het opdracht antwoord gegeven, waaronder: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
 
 ## <a name="manage-an-interface"></a>Een interface beheren
 

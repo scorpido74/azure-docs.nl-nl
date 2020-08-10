@@ -4,12 +4,12 @@ description: Meer informatie over het aanpassen van de functie voor verificatie 
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 747729b7cbb3dcce72eb36704b5965e8427b59e1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 32b7db234cd91aaf9fa5fcfa9b35679d32561474
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424253"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042612"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Geavanceerd gebruik van verificatie en autorisatie in Azure App Service
 
@@ -468,6 +468,67 @@ De volgende uitputtende configuratie opties in het bestand:
     }
 }
 ```
+
+## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>Uw app vastmaken aan een specifieke runtime versie voor verificatie
+
+Wanneer u verificatie/autorisatie inschakelt, wordt het platform geinjecteerd in uw HTTP request-pijp lijn, zoals beschreven in het [onderdeel overzicht](overview-authentication-authorization.md#how-it-works). Deze middleware van het platform wordt regel matig bijgewerkt met nieuwe functies en verbeteringen als onderdeel van de routine-updates. Uw web-of functie-app wordt standaard uitgevoerd op de meest recente versie van deze middleware van het platform. Deze automatische updates zijn altijd achterwaarts compatibel. In het zeldzame geval dat deze automatische update een runtime probleem voor uw web-of functie-app introduceert, kunt u tijdelijk teruggaan naar de vorige middleware-versie. In dit artikel wordt uitgelegd hoe u tijdelijk een app vastmaakt aan een specifieke versie van de middleware voor authenticatie.
+
+### <a name="automatic-and-manual-version-updates"></a>Automatische en hand matige versie-updates 
+
+U kunt uw app vastmaken aan een specifieke versie van de middleware van het platform door een `runtimeVersion` instelling voor de app in te stellen. Uw app wordt altijd uitgevoerd op de meest recente versie, tenzij u ervoor kiest om deze expliciet terug te koppelen aan een specifieke versie. Er worden een aantal versies tegelijk ondersteund. Als u vastmaakt aan een ongeldige versie die niet meer wordt ondersteund, gebruikt uw app in plaats daarvan de nieuwste versie. Als u de meest recente versie altijd wilt uitvoeren, stelt `runtimeVersion` u in op ~ 1. 
+
+### <a name="view-and-update-the-current-runtime-version"></a>De huidige runtime versie weer geven en bijwerken
+
+U kunt de runtime versie die door uw app wordt gebruikt, wijzigen. De nieuwe runtime versie wordt van kracht nadat de app opnieuw is opgestart. 
+
+#### <a name="view-the-current-runtime-version"></a>De huidige runtime versie weer geven
+
+U kunt de huidige versie van de platform verificatie-middleware weer geven met behulp van de Azure CLI of via een van de built0-in-versie-HTTP-eind punten in uw app.
+
+##### <a name="from-the-azure-cli"></a>Uit de Azure CLI
+
+Gebruik de Azure CLI om de huidige middleware-versie te bekijken met de opdracht [AZ webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) .
+
+```azurecli-interactive
+az webapp auth show --name <my_app_name> \
+--resource-group <my_resource_group>
+```
+
+Vervang in deze code door `<my_app_name>` de naam van uw app. Vervang ook door `<my_resource_group>` de naam van de resource groep voor uw app.
+
+Het veld wordt weer geven `runtimeVersion` in de CLI-uitvoer. Dit komt overeen met de volgende voorbeeld uitvoer, die is afgekapt voor duidelijkheid: 
+```output
+{
+  "additionalLoginParams": null,
+  "allowedAudiences": null,
+    ...
+  "runtimeVersion": "1.3.2",
+    ...
+}
+```
+
+##### <a name="from-the-version-endpoint"></a>Van het versie-eind punt
+
+U kunt ook op/.auth/version-eind punt in een app drukken om de huidige middleware-versie te bekijken waarop de app wordt uitgevoerd. Deze ziet eruit als in de volgende voorbeeld uitvoer:
+```output
+{
+"version": "1.3.2"
+}
+```
+
+#### <a name="update-the-current-runtime-version"></a>De huidige runtime versie bijwerken
+
+Met de Azure CLI kunt u de `runtimeVersion` instelling in de app bijwerken met de opdracht [AZ webapp auth update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) .
+
+```azurecli-interactive
+az webapp auth update --name <my_app_name> \
+--resource-group <my_resource_group> \
+--runtime-version <version>
+```
+
+Vervang door `<my_app_name>` de naam van uw app. Vervang ook door `<my_resource_group>` de naam van de resource groep voor uw app. Vervang ook door `<version>` een geldige versie van de 1. x-runtime of `~1` voor de meest recente versie. U kunt de release opmerkingen vinden in de verschillende runtime versies [hier] ( https://github.com/Azure/app-service-announcements) om te bepalen welke versie moet worden vastgemaakt aan.
+
+U kunt deze opdracht uitvoeren vanuit de [Azure Cloud shell](../cloud-shell/overview.md) door deze in het voor gaande code voorbeeld **te kiezen.** U kunt de [Azure cli ook lokaal](https://docs.microsoft.com/cli/azure/install-azure-cli) gebruiken om deze opdracht uit te voeren nadat u [AZ login](https://docs.microsoft.com/cli/azure/reference-index#az-login) hebt uitgevoerd om u aan te melden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

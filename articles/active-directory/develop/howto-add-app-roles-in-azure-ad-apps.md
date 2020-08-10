@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da697ad6fac5c75faacbfb20b768a4ec96528881
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058627"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041456"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
 
@@ -34,7 +34,7 @@ Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.
 
 ### <a name="declare-app-roles-using-azure-portal"></a>App-rollen declareren met Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de **map en het abonnement** op de werk balk van de portal.
 1. Kies in de lijst **Favorieten** of **alle directory's** de Active Directory Tenant waar u de toepassing wilt registreren.
 1. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory**.
@@ -74,7 +74,7 @@ In het volgende voor beeld ziet `appRoles` u hoe u kunt toewijzen aan `users` .
 ```
 
 > [!NOTE]
->De `displayName` mag geen spaties bevatten.
+>De `displayName` mag spaties bevatten.
 
 U kunt app-rollen definiëren voor het doel `users` , `applications` of beide. Wanneer deze beschikbaar is voor `applications` , worden de app-rollen weer gegeven als toepassings machtigingen onder sectie **beheren** > **API-machtigingen > een machtiging > mijn API'S toevoegen > een API > toepassings machtigingen te kiezen**. In het volgende voor beeld ziet u een app-rol die is gericht op een `Application` .
 

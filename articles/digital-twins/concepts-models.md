@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4d0ed9826326256e3b91815746e43d34b6934ba0
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985871"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042629"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
 
@@ -36,8 +36,8 @@ Azure Digital Apparaatdubbels maakt gebruik van **DTDL _versie 2_**. Voor meer i
 Binnen een model definitie is het code-item op het hoogste niveau een **Interface**. Hiermee wordt het volledige model ingekapseld en de rest van het model gedefinieerd in de interface. 
 
 Een DTDL-model interface kan nul, één of veel van de volgende velden bevatten:
-* **Eigenschap** -eigenschappen zijn gegevens velden die de status van een entiteit vertegenwoordigen (zoals de eigenschappen in veel object-georiënteerde programmeer talen). In tegens telling tot telemetrie, een tijdgebonden gegevens gebeurtenis, hebben eigenschappen een back-up van de opslag en kunnen ze op elk gewenst moment worden gelezen.
-* **Telemetrie** -telemetrie-velden vertegenwoordigen metingen of gebeurtenissen en worden vaak gebruikt om de leesingen van de sensor te beschrijven. Telemetrie wordt niet opgeslagen op een digitale dubbele; het lijkt meer op een stroom aan gegevens gebeurtenissen die ergens kunnen worden verzonden. 
+* **Eigenschap** -eigenschappen zijn gegevens velden die de status van een entiteit vertegenwoordigen (zoals de eigenschappen in veel object-georiënteerde programmeer talen). Eigenschappen hebben een back-up van de opslag en kunnen op elk gewenst moment worden gelezen.
+* **Telemetrie** -telemetrie-velden vertegenwoordigen metingen of gebeurtenissen en worden vaak gebruikt om de leesingen van de sensor te beschrijven. In tegens telling tot eigenschappen wordt telemetrie niet opgeslagen op een digitale dubbele; het is een reeks tijdgebonden gegevens gebeurtenissen die moeten worden verwerkt wanneer deze zich voordoen. Zie de sectie [*Eigenschappen versus telemetrie*](#properties-vs-telemetry) hieronder voor meer informatie over de verschillen tussen eigenschappen en telemetrie.
 * **Onderdeel** -onderdelen bieden u de mogelijkheid om uw model interface als een assembly van andere interfaces te maken, als u dat wilt. Een voor beeld van een component is een *frontCamera* -interface (en een andere onderdeel interface *backCamera*) die worden gebruikt voor het definiëren van een model voor een *telefoon*. U moet eerst een interface voor *frontCamera* definiëren alsof het een eigen model is, en vervolgens kunt u hiernaar verwijzen bij het definiëren van de *telefoon*.
 
     Gebruik een onderdeel om iets te beschrijven dat een integraal onderdeel is van uw oplossing, maar waarvoor geen afzonderlijke identiteit nodig is, en dat u niet afzonderlijk hoeft te maken, verwijderen of opnieuw wilt rangschikken in het dubbele diagram. Als u wilt dat entiteiten onafhankelijk van elkaar aanwezig zijn in de dubbele grafiek, vertegenwoordigen ze als afzonderlijke digitale apparaatdubbels van verschillende modellen, verbonden door *relaties* (zie volgende opsommings teken).
@@ -47,7 +47,25 @@ Een DTDL-model interface kan nul, één of veel van de volgende velden bevatten:
 * **Relatie** -relaties bieden u de mogelijkheid om te zien hoe een digitale twee kunnen worden betrokken bij andere digitale apparaatdubbels. Relaties kunnen verschillende semantische betekenissen vertegenwoordigen, zoals *contains* ("vloer bevat room"), *koelen* ("HVAC Cool Room"), *isBilledTo* ("compressor" wordt gefactureerd voor gebruiker "), enzovoort. Met relaties kan de oplossing een grafiek van gerelateerde entiteiten bieden.
 
 > [!NOTE]
-> De specificatie voor DTDL definieert ook **opdrachten**. Dit zijn methoden die kunnen worden uitgevoerd op een digitale twee (zoals een reset-opdracht of een opdracht om een ventilator in of uit te scha kelen). *Opdrachten worden momenteel echter niet ondersteund in azure Digital apparaatdubbels.*
+> De [specificatie voor DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definieert ook **opdrachten**. Dit zijn methoden die kunnen worden uitgevoerd op een digitale twee (zoals een reset-opdracht of een opdracht om een ventilator in of uit te scha kelen). *Opdrachten worden momenteel echter niet ondersteund in azure Digital apparaatdubbels.*
+
+### <a name="properties-vs-telemetry"></a>Eigenschappen versus telemetrie
+
+Hier volgt een aantal aanvullende richt lijnen voor het onderscheiden van DTDL- **Eigenschappen** en **telemetrie** -velden in azure Digital apparaatdubbels.
+
+Het verschil tussen eigenschappen en telemetrie voor Azure Digital Apparaatdubbels-modellen is als volgt:
+* Er wordt naar verwachting van de **Eigenschappen** een back-up van de opslag. Dit betekent dat u op elk gewenst moment een eigenschap kunt lezen en de waarde ervan ophaalt. Als de eigenschap schrijfbaar is, kunt u ook een waarde opslaan in de-eigenschap.  
+* **Telemetrie** lijkt meer op een stroom aan gebeurtenissen; het is een set gegevens berichten met korte levens duur. Als u Luis teren niet hebt ingesteld voor de gebeurtenis en de acties die moeten worden uitgevoerd wanneer deze zich voordoen, is het niet mogelijk om de gebeurtenis op een later tijdstip te traceren. U kunt deze niet terugvallen en later lezen. 
+  - In C#-termen is telemetrie vergelijkbaar met een C#-gebeurtenis. 
+  - In IoT-termen is telemetrie meestal één meting die door een apparaat wordt verzonden.
+
+**Telemetrie** wordt vaak gebruikt met IOT-apparaten, omdat veel apparaten niet geschikt zijn voor of geïnteresseerd zijn in het opslaan van de meet waarden die ze genereren. Ze verzenden ze net als een stroom van "telemetrie"-gebeurtenissen. In dit geval kunt u op geen enkel moment op het apparaat zoeken naar de laatste waarde van het veld telemetrie. In plaats daarvan moet u Luis teren naar de berichten van het apparaat en acties uitvoeren wanneer de berichten binnenkomen. 
+
+Als gevolg hiervan zult u bij het ontwerpen van een model in azure Digital Apparaatdubbels waarschijnlijk **Eigenschappen** in de meeste gevallen gebruiken om uw apparaatdubbels te model leren. Zo kunt u de back-upopslag en de mogelijkheid om gegevens velden te lezen en er query's op uitvoeren.
+
+Telemetrie en eigenschappen werken vaak samen om het binnenbrengen van gegevens van apparaten te verwerken. Als alle inkomend verkeer naar Azure Digital Apparaatdubbels is via [api's](how-to-use-apis-sdks.md), gebruikt u meestal uw inkomende functie om de telemetrie-of eigenschaps gebeurtenissen van apparaten te lezen en een eigenschap in ADT in te stellen als antwoord. 
+
+U kunt ook een telemetrie-gebeurtenis publiceren vanuit de Azure Digital Apparaatdubbels-API. Net als bij andere telemetrie is dit een gebeurtenis met een korte levens duur waarvoor een listener moet worden afgehandeld.
 
 ### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Specifieke Azure Digital Apparaatdubbels DTDL-implementaties
 

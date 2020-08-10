@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519694"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042315"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Beveiligingswaarschuwingen en aanbevelingen exporteren
 
@@ -31,12 +31,14 @@ Met deze hulpprogram ma's kunt u het volgende doen:
 
 ## <a name="availability"></a>Beschikbaarheid
 
-- Release status: **algemeen beschikbaar**
-- Vereiste rollen en machtigingen:
-    - **Lezer** op het abonnement dat de export configuratie bevat
-    - **Rol van beveiligings beheerder** voor de resource groep (of **eigenaar**)
-    - Moet ook schrijf machtigingen hebben voor de doel resource
-- Clouds: ✔ commerciële Clouds ✔ US Gov ✘ China gov, andere gov
+|Aspect|Details|
+|----|:----|
+|Release status:|Algemeen beschikbaar|
+|Koers|Gratis laag|
+|Vereiste rollen en machtigingen:|**Lezer** op het abonnement dat de export configuratie bevat<br>**Rol van beveiligings beheerder** voor de resource groep (of **eigenaar**)<br>Moet ook schrijf machtigingen hebben voor de doel resource|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China gov, andere gov|
+|||
+
 
 
 ## <a name="setting-up-a-continuous-export"></a>Een continue export instellen
@@ -138,6 +140,6 @@ In dit artikel hebt u geleerd hoe u continue export van uw aanbevelingen en waar
 Raadpleeg de volgende documentatie voor gerelateerde materialen: 
 
 - [Documentatie over Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
-- [Documentatie voor Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
+- [Informatie over Azure-Sentinel](https://docs.microsoft.com/azure/sentinel/)
 - [Azure Monitor-documentatie](https://docs.microsoft.com/azure/azure-monitor/)
 - [Schema's voor werk stroom automatisering en doorlopend exporteren van gegevens typen](https://aka.ms/ASCAutomationSchemas)

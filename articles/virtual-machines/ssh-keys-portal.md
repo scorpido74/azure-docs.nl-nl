@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 39dbf7d9ad933dd47f0a566f02b5e276e4b615a3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87514323"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041745"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>SSH-sleutels in de Azure Portal genereren en opslaan
 
@@ -22,17 +22,17 @@ U kunt een SSH-sleutel maken wanneer u voor het eerst een virtuele machine maakt
 
 Als u bestaande sleutels hebt en u deze eenvoudig wilt gebruiken in de portal, kunt u deze uploaden en opslaan in azure voor hergebruik.
 
-Zie (SSH-sleutels gebruiken om verbinding te maken met virtuele Linux-machines) [./Linux/SSH-from-Windows.MD] voor meer gedetailleerde informatie over het maken en gebruiken van SSH-sleutels met virtuele Linux-machines.
+Zie [SSH-sleutels gebruiken voor verbinding met virtuele Linux-machines](./linux/ssh-from-windows.md)voor meer informatie over het maken en gebruiken van SSH-sleutels met virtuele Linux-machines.
 
 ## <a name="generate-new-keys"></a>Nieuwe sleutels genereren
 
-1. Open de [Azure Portal] ( https://portal.azure.com .
+1. Open de [Azure Portal](https://portal.azure.com).
 
 1. Typ aan de bovenkant van de pagina *SSH* om te zoeken. Onder **Marketplace*selecteert u **SSH-sleutels**.
 
 1. Op de pagina **SSH-sleutel** selecteert u **maken**.
 
-:::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="Een nieuwe resource groep maken en een SSH-sleutel paar genereren":::
+   :::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="Een nieuwe resource groep maken en een SSH-sleutel paar genereren":::
 
 1. Selecteer in **resource groep** de optie **nieuwe maken** om een nieuwe resource groep te maken om uw sleutels op te slaan. Typ een naam voor de resource groep en selecteer **OK**.
 
@@ -48,7 +48,7 @@ Zie (SSH-sleutels gebruiken om verbinding te maken met virtuele Linux-machines) 
 
 1. Vervolgens wordt er een pop-upvenster weer gegeven, selecteert u **persoonlijke sleutel downloaden en resource maken**. Hiermee wordt de SSH-sleutel gedownload als een. pem-bestand.
 
-:::image type="content" source="./media/ssh-keys/download-key.png" alt-text="De persoonlijke sleutel downloaden als een. pem-bestand":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="De persoonlijke sleutel downloaden als een. pem-bestand":::
 
 1. Zodra het. pem-bestand is gedownload, wilt u het mogelijk ergens op uw computer plaatsen waar het eenvoudig van kan verwijzen naar van uw SSH-client.
 
@@ -66,15 +66,15 @@ Typ bijvoorbeeld:`ssh -i /Downloads/mySSHKey.pem azureuser@123.45.67.890`
 
 ## <a name="upload-an-ssh-key"></a>Een SSH-sleutel uploaden
 
-U kunt ook een open bare SSH-sleutel uploaden om op te slaan in Azure. Zie [SSH-sleutels gebruiken voor verbinding met virtuele Linux-machines ](./linux/ssh-from-windows.md)voor informatie over het maken van een SSH-sleutel paar.
+U kunt ook een open bare SSH-sleutel uploaden om op te slaan in Azure. Zie [SSH-sleutels gebruiken voor verbinding met virtuele Linux-machines](./linux/ssh-from-windows.md)voor informatie over het maken van een SSH-sleutel paar.
 
-1. Open de [Azure Portal] ( https://portal.azure.com .
+1. Open de [Azure Portal](https://portal.azure.com).
 
 1. Typ aan de bovenkant van de pagina *SSH* om te zoeken. Onder **Marketplace*selecteert u **SSH-sleutels**.
 
 1. Op de pagina **SSH-sleutel** selecteert u **maken**.
 
-:::image type="content" source="./media/ssh-keys/upload.png" alt-text="Een open bare SSH-sleutel uploaden om te worden opgeslagen in azure":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Een open bare SSH-sleutel uploaden om te worden opgeslagen in azure":::
 
 1. Selecteer in **resource groep** de optie **nieuwe maken** om een nieuwe resource groep te maken om uw sleutels op te slaan. Typ een naam voor de resource groep en selecteer **OK**.
 
@@ -92,4 +92,4 @@ Zodra de sleutel is geüpload, kunt u deze gebruiken wanneer u een VM maakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie (SSH-sleutels gebruiken om verbinding te maken met virtuele Linux-machines) [./Linux/SSH-from-Windows.MD] voor meer informatie over het gebruik van SSH-sleutels met Azure-Vm's.
+Zie [SSH-sleutels gebruiken om verbinding te maken met virtuele Linux-machines](./linux/ssh-from-windows.md)voor meer informatie over het gebruik van SSH-sleutels met Azure-vm's.

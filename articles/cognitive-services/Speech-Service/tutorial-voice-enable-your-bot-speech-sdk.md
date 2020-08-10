@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 38a2dd42c010e5b213fd89aa046c7c5b1e1d0a7f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758934"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041781"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -38,6 +38,7 @@ De chat-bot die u in deze zelf studie maakt, volgt de volgende stappen:
 1. De herkende tekst wordt door gegeven aan de echo-bot als een bot-Framework activiteit.
 1. De antwoord tekst wordt omgezet in audio door de TTS-Service (tekst naar spraak) en gestreamd naar de client toepassing voor afspelen.
 
+<!-- svg src in User Story 1754106 -->
 ![diagram-tag](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "De stroom van het spraak kanaal")
 
 > [!NOTE]
@@ -73,7 +74,7 @@ De client-app die u in deze zelf studie maakt, maakt gebruik van een aantal Azur
    * Voer een naam in voor de **resource groep**. We raden **SpeechEchoBotTutorial-ResourceGroup**aan.
    * Selecteer in de vervolg keuzelijst **regio** **VS West**.
 1. Klik op **Controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
-1. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
+1. Klik op **Create**. Het kan enkele minuten duren om de resource groep te maken.
 1. Net als bij de resources die u later in deze zelf studie maakt, is het een goed idee om deze resource groep vast te maken aan uw dash board voor eenvoudige toegang. Als u deze resource groep wilt vastmaken, klikt u op het speld pictogram rechts van de naam van de resource groep.
 
 ### <a name="choosing-an-azure-region"></a>Een Azure-regio kiezen
@@ -123,7 +124,7 @@ De volgende stap is het maken van een App Service-abonnement. Een App Service-pl
    * Selecteer voor **regio** **VS-West**.
    * Zorg ervoor dat **standaard S1** is geselecteerd voor de **prijs categorie**. Dit moet de standaard waarde zijn. Als dat niet het geval is, moet u ervoor zorgen dat u het **besturings systeem** instelt op **Windows** zoals hierboven wordt beschreven.
 5. Klik op **Controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
-6. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
+6. Klik op **Create**. Het kan enkele minuten duren om de resource groep te maken.
 
 Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGroup**) twee resources heeft:
 
@@ -200,7 +201,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
    * Voor het **abonnement**stelt u deze in op **gratis proef versie**
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**
    * Voor **hosting plan**selecteert u **SpeechEchoBotTutorial-AppServicePlan**
-1. Klik op **Maken**. Klik in het laatste scherm van de wizard op **volt ooien**.
+1. Klik op **Create**. Klik in het laatste scherm van de wizard op **volt ooien**.
 1. Klik aan de rechter kant van het venster publiceren op **publiceren** . Visual Studio implementeert de bot naar Azure.
 1. Er wordt een bericht weer gegeven in het uitvoer venster van Visual Studio dat er als volgt uitziet:
 
@@ -471,7 +472,7 @@ Als u de in deze zelf studie geïmplementeerde ECHO-bot niet wilt blijven gebrui
 > [!div class="nextstepaction"]
 > [Uw eigen client-app bouwen met de Speech SDK](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * Implementatie in een [Azure-regio](https://azure.microsoft.com/global-infrastructure/locations/) in de buurt om de reactie tijd van bot te bekijken
 * Implementeren in een [Azure-regio die hoogwaardige NEURAL TTS-stemmen ondersteunt](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534631"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042272"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>E-mail meldingen instellen voor beveiligings waarschuwingen 
 
@@ -34,9 +34,15 @@ Security Center beperkt het volume van uitgaande mails om waarschuwings intensie
 
 ## <a name="availability"></a>Beschikbaarheid
 
-- Release status: **algemeen beschikbaar**
-- Vereiste rollen: **beveiligings beheerder** of **eigenaar van abonnement** 
-- Clouds: ✔ commerciële Clouds ✔ US Gov (gedeeltelijk) ✘ National/soeverein (China gov, andere gov)
+|Aspect|Details|
+|----|:----|
+|Release status:|Algemeen beschikbaar|
+|Koers|Gratis laag|
+|Vereiste rollen en machtigingen:|**Beveiligings beheerder**<br>**Abonnements eigenaar** |
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov (gedeeltelijk)<br>![Nee](./media/icons/no-icon.png) China gov, andere gov|
+|||
+
+
 
 
 ## <a name="set-up-email-notifications-for-alerts"></a>E-mail meldingen voor waarschuwingen instellen<a name="email"></a>

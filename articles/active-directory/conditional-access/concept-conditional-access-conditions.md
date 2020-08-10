@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032119"
+ms.locfileid: "88042476"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
 
@@ -68,7 +68,7 @@ Standaard zijn alle nieuw gemaakte beleids regels voor voorwaardelijke toegang v
 > Het gedrag van de voor waarde client-apps is bijgewerkt in augustus 2020. Als u bestaande beleids regels voor voorwaardelijke toegang hebt, blijven deze ongewijzigd. Als u echter op een bestaand beleid klikt, is de optie voor het configureren van de configuratie verwijderd en worden de client-apps waarop het beleid van toepassing is geselecteerd.
 
 > [!IMPORTANT]
-> Aanmeldingen vanaf verouderde verificatie-clients bieden geen ondersteuning voor MFA en geven geen status informatie over de apparaten door aan Azure AD, zodat deze worden geblokkeerd door besturings elementen voor voorwaardelijke toegang, zoals het vereisen van MFA of compatibele apparaten. Als u accounts hebt die verouderde verificatie moeten gebruiken, moet u deze accounts uitsluiten van het beleid of het beleid zo configureren dat het alleen van toepassing is op moderne authenticatie-clients.
+> Aanmeldingen vanaf verouderde verificatie-clients bieden geen ondersteuning voor MFA en geven geen status informatie over de apparaten door aan Azure AD, zodat deze worden geblokkeerd door besturings elementen voor voorwaardelijke toegang, zoals het vereisen van MFA of compatibele apparaten. Als u een account hebt dat verouderde verificatie moet gebruiken, moet u deze accounts uitsluiten van het beleid of het beleid zo configureren dat het alleen van toepassing is op moderne authenticatie-clients.
 
 De **instelling** in-en uitschakelen wanneer ingesteld op **Ja** is van toepassing op geselecteerde items, wanneer deze optie is ingesteld op **Nee** , is van toepassing op alle client-apps, waaronder moderne en verouderde verificatie-clients. Deze wissel knop wordt niet weer gegeven in beleids regels die zijn gemaakt vóór 2020 augustus.
 

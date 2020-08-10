@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca500401a6bff8a00dd9c51eecb29aa93fdbc82b
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800480"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042646"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure Digital Apparaatdubbels integreren met andere services
 
-Azure Digital Apparaatdubbels wordt doorgaans samen met andere services gebruikt. Met behulp van [**gebeurtenis routes**](concepts-route-events.md)ontvangen Azure Digital apparaatdubbels gegevens van upstream-Services, zoals [IOT hub](../iot-hub/about-iot-hub.md), die worden gebruikt voor het leveren van telemetriegegevens en meldingen. Azure Digital Apparaatdubbels kan ook gegevens routeren naar downstream-Services voor opslag, integratie van werk stromen, analyses en andere toepassingen. 
+Azure Digital Apparaatdubbels wordt doorgaans samen met andere services gebruikt. Met behulp van [**gebeurtenis routes**](concepts-route-events.md)ontvangen Azure Digital apparaatdubbels gegevens van upstream-Services, zoals [IOT hub](../iot-hub/about-iot-hub.md), die worden gebruikt voor het leveren van telemetriegegevens en meldingen. 
+
+Azure Digital Apparaatdubbels kan ook gegevens naar downstream-Services routeren, zoals Azure Maps ([*How to: use Azure Digital apparaatdubbels to update a Azure Mapsing in een binnenshuis*](how-to-integrate-maps.md)) en time series Insights ([*How to: Integration with time series Insights*](how-to-integrate-time-series-insights.md)), voor opslag, werk stroom integratie, analyses en meer. 
 
 ## <a name="data-ingress"></a>Gegevens binnenkomend
 
