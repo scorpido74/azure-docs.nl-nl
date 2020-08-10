@@ -1,14 +1,14 @@
 ---
 title: ISM-BEVEILIGING Australische overheid blauwdrukvoorbeeldoverzicht
 description: Overzicht van blauwdrukvoorbeeld van de ISM-BEVEILIGING van de Australische overheid. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties van ISM-BEVEILIGING bekijken.
-ms.date: 03/10/2020
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: d82598498fa7eb24ec2ea3f591d08ce8f9503b54
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517096"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760427"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Toewijzing van beheeropties van het blauwdrukvoorbeeld van de ISM-BEVEILIGING van de Australische overheid
 
@@ -106,10 +106,10 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 
 - Netwerktoegang tot opslagaccounts moet zijn beperkt
 - Service Fabric-clusters mogen alleen gebruikmaken van Azure Active Directory voor clientverificatie
-- \[Preview\]: Controleresultaten weergeven van virtuele Linux-machines waarvoor externe verbindingen met accounts zonder wachtwoorden zijn toegestaan
-- \[Preview\]:  Vereisten implementeren om virtuele Linux-machines te controleren waarvoor externe verbindingen met accounts zonder wachtwoorden zijn toegestaan
-- \[Preview\]: Controleresultaten weergeven van virtuele Linux-machines met accounts zonder wachtwoorden
-- \[Preview\]: Vereisten implementeren om Linux-VM's met accounts zonder wachtwoorden te controleren
+- Controleresultaten weergeven van virtuele Linux-machines waarvoor externe verbindingen met accounts zonder wachtwoorden zijn toegestaan
+- Vereisten implementeren om virtuele Linux-machines te controleren waarvoor externe verbindingen met accounts zonder wachtwoorden zijn toegestaan
+- Controleresultaten weergeven van virtuele Linux-machines met accounts zonder wachtwoorden
+- Vereisten implementeren om Linux-VM's met accounts zonder wachtwoorden te controleren
 
 ### <a name="0974-multi-factor-authentication-is-used-to-authenticate-standard-users"></a>0974 Meervoudige verificatie wordt gebruikt voor verificatie van standaardgebruikers
 
@@ -122,8 +122,8 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 Wachtwoordzinnen voor enkelvoudige verificatie bestaan uit minimaal 14 tekens met complexiteit, idealiter met vier willekeurige woorden
 
-- \[Preview\]: Controleresultaten van configuraties voor Windows-VM's weergeven in 'Beveiligingsopties: Accountbeleid'
-- \[Preview\]: Vereisten implementeren om configuraties voor Windows-VM's te controleren in 'Beveiligingsinstellingen: Accountbeleid'
+- Controleresultaten van configuraties voor Windows-VM's weergeven in 'Beveiligingsopties: Accountbeleid'
+- Vereisten implementeren om configuraties voor Windows-VM's te controleren in 'Beveiligingsinstellingen: Accountbeleid'
 
 ## <a name="guidelines-for-system-management---system-administration"></a>Richtlijnen voor systeembeheer: systeembeheer
 
@@ -147,7 +147,7 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 - Beveiligingsproblemen in uw SQL-databases moeten worden opgelost
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld op uw SQL-servers
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld voor uw beheerde SQL-exemplaren
-- \[Preview\]: Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
+- Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op machines
 - Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
 - Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 - Beveiligingsproblemen in de beveiligingsconfiguratie op uw computers moeten worden hersteld
@@ -159,7 +159,7 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 - Beveiligingsproblemen in uw SQL-databases moeten worden opgelost
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld op uw SQL-servers
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld voor uw beheerde SQL-exemplaren
-- \[Preview\]: Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
+- Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
 - Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
 - Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 - Beveiligingsproblemen in de beveiligingsconfiguratie op uw computers moeten worden hersteld
@@ -171,7 +171,7 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 - Beveiligingsproblemen in uw SQL-databases moeten worden opgelost
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld op uw SQL-servers
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld voor uw beheerde SQL-exemplaren
-- \[Preview\]: Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
+- Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
 - Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
 - Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 - Beveiligingsproblemen in de beveiligingsconfiguratie op uw computers moeten worden hersteld
@@ -183,7 +183,7 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 - Beveiligingsproblemen in uw SQL-databases moeten worden opgelost
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld op uw SQL-servers
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld voor uw beheerde SQL-exemplaren
-- \[Preview\]: Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
+- Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
 - Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
 - Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 - Beveiligingsproblemen in de beveiligingsconfiguratie op uw computers moeten worden hersteld
@@ -195,7 +195,7 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 - Beveiligingsproblemen in uw SQL-databases moeten worden opgelost
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld op uw SQL-servers
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld voor uw beheerde SQL-exemplaren
-- \[Preview\]: Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
+- Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
 - Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
 - Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 - Beveiligingsproblemen in de beveiligingsconfiguratie op uw computers moeten worden hersteld
@@ -207,7 +207,7 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 - Beveiligingsproblemen in uw SQL-databases moeten worden opgelost
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld op uw SQL-servers
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld voor uw beheerde SQL-exemplaren
-- \[Preview\]: Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
+- Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
 - Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
 - Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 - Beveiligingsproblemen in de beveiligingsconfiguratie op uw computers moeten worden hersteld
@@ -229,8 +229,8 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 ### <a name="0582-the-following-events-are-logged-for-operating-systems-access-to-important-data-and-processes-application-crashes-and-any-error-messages-attempts-to-use-special-privileges-changes-to-accounts-changes-to-security-policy-changes-to-system-configurations-domain-name-system-dns-and-hypertext-transfer-protocol-http-requests-failed-attempts-to-access-data-and-system-resources-service-failures-and-restarts-system-startup-and-shutdown-transfer-of-data-to-external-media-user-or-group-management-use-of-special-privileges"></a>0582 De volgende gebeurtenissen worden vastgelegd voor besturingssystemen: toegang tot belangrijke gegevens en processen, vastlopen van toepassingen en eventuele foutberichten, pogingen tot gebruik van speciale bevoegdheden, wijzigingen in accounts, wijzigingen in beveiligingsbeleid, wijzigingen in systeemconfiguraties, DNS- (Domeinnaamsystemen) en HTTP-aanvragen (Hypertext Transfer Protocol), mislukte pogingen om toegang te krijgen tot gegevens en systeemresources, servicefouten en het opnieuw opstarten van services, starten en stoppen van systemen, overdracht van gegevens naar externe media, gebruikers- of groepsbeheer, gebruik van speciale bevoegdheden
 
 - \[Preview\]: Implementatie van de Log Analytics-agent controleren - VM-installatiekopie (besturingssysteem) onvermeld
-- \[Preview\]: Implementatie van de Log Analytics-agent controleren in VMSS - VM-installatiekopie (besturingssysteem) onvermeld
-- \[Preview\]: Log Analytics-werkruimte voor VM controleren - niet-overeenkomende items rapporteren
+- Implementatie van de Log Analytics-agent controleren in VMSS - VM-installatiekopie (besturingssysteem) onvermeld
+- Log Analytics-werkruimte voor VM controleren - niet-overeenkomende items rapporteren
 - Diagnostische instelling voor controleren
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 De volgende gebeurtenissen worden vastgelegd voor databases: toegang tot bijzonder belangrijke gegevens, toevoeging van nieuwe gebruikers, specifiek voor bevoorrechte gebruikers, query's met opmerkingen, query's met meerdere ingesloten query's, waarschuwingen of fouten van query's of databases, pogingen tot het uitbreiden van bevoegdheden, toegang die lukt of mislukt, wijzigingen in de databasestructuur, acties van de databasebeheerder, aan- en afmeldingen bij de database, wijzigingen van gegevens, gebruik van uitvoerbare opdrachten
@@ -246,7 +246,7 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 - Beveiligingsproblemen in uw SQL-databases moeten worden opgelost
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld op uw SQL-servers
 - De evaluatie van beveiligingsproblemen moet worden ingeschakeld voor uw beheerde SQL-exemplaren
-- \[Preview\]: Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
+- Evaluatie van beveiligingsproblemen moet zijn ingeschakeld op virtuele machines
 - Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
 - Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 - Beveiligingsproblemen in de beveiligingsconfiguratie op uw computers moeten worden hersteld

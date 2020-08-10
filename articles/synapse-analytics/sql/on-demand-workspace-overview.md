@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480436"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496386"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (preview) in Azure Synapse Analytics 
 
@@ -31,7 +31,7 @@ SQL on-demand is serverloos, wat betekent dat het niet nodig is om infrastructuu
 
 Als u Apache Spark voor Azure Synapse gebruikt in uw gegevenspijplijn, voor het voorbereiden, opschonen of verrijken van gegevens, kunt u [query's uitvoeren op externe Spark-tabellen](develop-storage-files-spark-tables.md) die u in het proces hebt gemaakt, rechtstreeks vanuit SQL on-demand. Gebruik [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) om uw eindpunt van SQL on-demand over te brengen naar het [VNet van uw beheerde werkruimte](../security/synapse-workspace-managed-vnet.md).  
 
-## <a name="who-is-sql-on-demand-for"></a>Voor wie is SQL on-demand bedoeld?
+## <a name="sql-on-demand-benefits"></a>Voordelen van SQL on-demand
 
 Als u gegevens in de data lake wilt verkennen, inzicht in de lake wilt verkrijgen of uw bestaande pijplijn voor gegevenstransformatie wilt optimaliseren, is SQL on-demand een goede keuze. De service is geschikt voor de volgende scenario's:
 
@@ -46,7 +46,7 @@ Er zijn verschillende functies rollen die voordeel kunnen hebben van SQL on-dema
 - Gegevensanalisten kunnen [gegevens en externe Spark-tabellen verkennen](develop-storage-files-spark-tables.md) die zijn gemaakt door gegevenswetenschappers of data engineers met behulp van de voor hen vertrouwde T-SQL-taal of met hun favoriete tools, die kunnen worden verbonden met SQL on-demand.
 - BI-professionals kunnen snel [Power BI-rapporten maken van gegevens in het lake](tutorial-connect-power-bi-desktop.md) en in Spark-tabellen.
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>Wat moet ik doen om aan de slag te gaan?
+## <a name="how-to-start-using-sql-on-demand"></a>Aan de slag met SQL on-demand
 
 Er wordt in elke Azure Synapse-werkruimte een eindpunt voor SQL on-demand ingericht. U hoeft alleen maar een werkruimte te maken om direct query's te kunnen uitvoeren met behulp van uw favoriete tools.
 
@@ -54,7 +54,7 @@ Er wordt in elke Azure Synapse-werkruimte een eindpunt voor SQL on-demand ingeri
 
 Met SQL on-demand kunnen bestaande hulpprogramma's voor ad-hoc SQL-query's en business intelligence gebruikmaken van gegevens in de data lake. Omdat SQL on-demand de vertrouwde T-SQL-syntaxis ondersteunt, kan elk hulpprogramma dat via een TDS-verbinding SQL kan aanbieden, on-demand [verbinding maken met en query's uitvoeren op Synapse SQL](connect-overview.md). U kunt verbinding maken met Azure Data Studio en ad-hoc query's uitvoeren of verbinding maken met Power BI om binnen enkele minuten inzichten te verzamelen.
 
-## <a name="is-full-t-sql-supported"></a>Wordt T-SQL volledig ondersteund?
+## <a name="t-sql-support"></a>Ondersteuning voor T-SQL
 
 SQL on-demand biedt de T-SQL-surface area voor query's, waardoor bepaalde aspecten iets zijn verbeterd/uitgebreid om te voorzien in scenario's met het uitvoeren van query's op semi-gestructureerde en ongestructureerde gegevens. Daarnaast worden sommige aspecten van de T-SQL-taal niet ondersteund vanwege het ontwerp van SQL on-demand. Zo DML-functionaliteit op dit moment bijvoorbeeld niet ondersteund.
 

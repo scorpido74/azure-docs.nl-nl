@@ -3,16 +3,16 @@ title: Zelfstudie - Stream Analytics aan de rand met behulp van Azure IoT Edge
 description: In deze zelfstudie implementeert u Azure Stream Analytics als module op een Iot Edge-apparaat
 author: kgremban
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220273"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439401"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Zelfstudie: Azure Stream Analytics implementeren als een IoT Edge-module
 
@@ -134,7 +134,7 @@ Met behulp van de drie elementen invoer, uitvoer en query wordt in deze sectie e
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. Selecteer **Opslaan**.
+1. Selecteer **Query opslaan**.
 
 ### <a name="configure-iot-edge-settings"></a>Instellingen voor IoT Edge configureren
 
@@ -189,7 +189,7 @@ In deze zelfstudie gaat u twee modules implementeren. De eerste is **SimulatedTe
 
 1. Selecteer **Bijwerken** of **Annuleren**.
 
-1. Noteer de naam van uw Stream Analytics-module omdat u deze in de volgende stap nodig hebt, en selecteer vervolgens **Volgende: Routes** om door te gaan.
+1. Noteer de naam van uw Stream Analytics-module omdat u deze in de volgende stap nodig hebt. Selecteer vervolgens **Volgende: Routes** om door te gaan.
 
 1. Op het tabblad **Routes** definieert u hoe berichten tussen modules en de IoT Hub worden uitgewisseld. Berichten worden gemaakt met behulp van naam/waarde-paren. Vervang de standaardnaam en -waarden van `route` en `upstream` door de naam/waarde-paren die in de volgende tabel worden weergegeven, waarbij u exemplaren van _{moduleName}_ vervangt door de naam van uw Azure Stream Analytics-module.
 

@@ -1,18 +1,18 @@
 ---
 title: Problemen oplossen Azure File Sync | Microsoft Docs
-description: Veelvoorkomende problemen met Azure File Sync oplossen.
+description: Los veelvoorkomende problemen in een implementatie op Azure File Sync op, die u kunt gebruiken om Windows Server te transformeren naar een snelle cache van uw Azure-bestands share.
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17c8f846201553d3cfa9a2d68b8b4a7ab655c378
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d268358f2f80cc9d347fa722d5027e1a87894b20
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232375"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034393"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -1002,7 +1002,7 @@ if ($fileShare -eq $null) {
 
     Als de service **micro soft. StorageSync** of **Hybrid file sync** niet in de lijst wordt weer gegeven, voert u de volgende stappen uit:
 
-    - Klik op **Toevoegen**.
+    - Klik op **Add**.
     - Selecteer in het veld **rol** de optie **lezer en gegevens toegang**.
     - Typ **micro soft. StorageSync**in het veld **selecteren** , selecteer de rol en klik op **Opslaan**.
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130908"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498970"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Azure voorbereiden op herstel na noodgevallen van on-premises machines naar Azure
 
@@ -62,7 +62,7 @@ U kunt deze taken alleen uitvoeren als aan uw account de ingebouwde rol van Inze
 6. Selecteer bij **Regio** de regio waarin de kluis zich moet bevinden. In dit voorbeeld gebruiken we **Europa - west**.
 7. Selecteer **Controleren + maken**.
 
-   ![Een nieuwe kluis maken](./media/tutorial-prepare-azure/new-vault-settings.png)
+   ![Schermopname van de pagina Een Recovery Services-kluis maken.](./media/tutorial-prepare-azure/new-vault-settings.png)
 
    De nieuwe kluis wordt nu vermeld in **Dashboard** > **Alle resources** en op de hoofdpagina **Recovery Services-kluizen**.
 
@@ -81,7 +81,7 @@ On-premises machines worden gerepliceerd naar beheerde Azure-schijven. Wanneer e
 9. We laten de standaardopties staan voor DDoS-basisbescherming zonder service-eindpunt of firewall op het netwerk.
 9. Selecteer **Maken**.
 
-   ![Een virtueel netwerk maken](media/tutorial-prepare-azure/create-network.png)
+   ![Schermopname van de opties voor het maken van een virtueel netwerk.](media/tutorial-prepare-azure/create-network.png)
 
 Het duurt een paar seconden voordat het virtuele netwerk is gemaakt. Nadat dit is gemaakt, wordt het in het dashboard van de Azure-portal weergegeven.
 

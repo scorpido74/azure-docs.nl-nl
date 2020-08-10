@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207799"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445909"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Zelfstudie: Azure Remote Rendering en modelopslag beveiligen
 
@@ -143,7 +143,7 @@ We gaan **RemoteRenderingCoordinator** wijzigen om een aangepast model te laden 
     }
     ```
 
-    Met deze code worden drie extra tekenreeksvariabelen toegevoegd aan het onderdeel **RemoteRenderingCoordinator-** .\
+    Met deze code worden drie extra tekenreeksvariabelen toegevoegd aan het onderdeel **RemoteRenderingCoordinator**.
     ![Gekoppeld model](./media/storage-account-linked-model.png)
 
 1. Voeg uw waarden toe aan het onderdeel **RemoteRenderingCoordinator**. Als u de [quickstart voor modelconversie](../../../quickstarts/convert-model.md) hebt uitgevoerd, hebt u nu de volgende waarden:
@@ -156,7 +156,7 @@ We gaan **RemoteRenderingCoordinator** wijzigen om een aangepast model te laden 
     > Als u [het script **Conversion.ps1** uitvoert](../../../quickstarts/convert-model.md#run-the-conversion), zonder het argument "-UseContainerSas", worden alle bovenstaande waarden voor u uitgevoerd in plaats van het SAS-token. ![Gekoppeld model](./media/converted-output.png)
 1. U kunt het GameObject **TestModel** voorlopig verwijderen of uitschakelen, om ruimte te maken voor het aangepaste model dat u wilt laden.
 1. Speel de scène af en maak verbinding met een externe sessie.
-1. Klik met de rechtermuisknop op uw **RemoteRenderingCoordinator** en selecteer **Gekoppeld aangepast model laden**.\
+1. Klik met de rechtermuisknop op uw **RemoteRenderingCoordinator** en selecteer **Gekoppeld aangepast model laden**.
     ![Gekoppeld model laden](./media/load-linked-model.png)
 
 Deze stappen hebben de beveiliging van de toepassing verhoogd door het SAS-token uit de lokale toepassing te verwijderen.
@@ -176,16 +176,13 @@ Het script **RemoteRenderingCoordinator** bevat een gemachtigde met de naam **AR
 1. Volg de [Instructies: Verificatie configureren - Verificatie voor geïmplementeerde toepassingen](../../../how-tos/authentication.md#authentication-for-deployed-applications). Volg de specifieke instructies in de documentatie voor Azure Spatial Anchors voor [gebruikersverificatie van Azure AD](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication). Dit omvat het registreren van een nieuwe Azure Active Directory-toepassing en het configureren van toegang tot uw ARR-exemplaar.
 1. Nadat u de nieuwe AAD-toepassing hebt geconfigureerd, controleert u of uw AAD-toepassing eruitziet zoals in de volgende afbeeldingen:
 
-    **AAD-toepassing -> Verificatie**\
-    ![App-verificatie](./media/app-authentication-public.png)
+    **AAD-toepassing -> Verificatie** ![App-verificatie](./media/app-authentication-public.png)
 
-    **AAD-toepassing -> API-machtigingen**\
-    ![App-API's](./media/request-api-permissions-step-five.png)
+    **AAD-toepassing -> API-machtigingen** ![App-API's](./media/request-api-permissions-step-five.png)
 
 1. Nadat u uw Remote Rendering-account hebt geconfigureerd, controleert u of uw configuratie eruitziet zoals in de volgende afbeelding:
 
-    **AAR -> AccessControl (IAM)** \
-    ![ARR-rol](./media/azure-remote-rendering-role-assignment-complete.png)
+    **AAR -> AccessControl (IAM)** ![ARR-rol](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
     > Een rol van *Eigenaar* is niet voldoende om sessies te kunnen beheren via de clienttoepassing. Aan elke gebruiker die u de mogelijkheid wilt geven om sessies te beheren, moet u de rol van **Remote Rendering-client** toewijzen. Aan elke gebruiker die u de mogelijkheid wilt geven om sessies te beheren en modellen te converteren, moet u de rol van **Remote Rendering-beheerder** toewijzen.
@@ -356,10 +353,8 @@ Als AAD-verificatie actief is, moet u zich telkens wanneer u de toepassing start
 
 1. Druk op Play (Afspelen) in de Unity-editor en verleen toestemming voor het uitvoeren van een sessie.
     Omdat het onderdeel **AADAuthentication** een weergavecontroller heeft, wordt het automatisch gekoppeld om een prompt weer te geven na het scherm voor het sessieverificatiemodel.
-1. Volg de instructies in het scherm rechts van **AppMenu**. \
-    U krijgt iets te zien zoals dit:\
-    ![AAD-verificatieonderdeel](./media/device-flow-instructions.png)\
-    Nadat u de opgegeven code op uw secundaire apparaat (of browser op hetzelfde apparaat) hebt ingevoerd en u zich hebt aangemeld met behulp van uw referenties, wordt een toegangstoken geretourneerd naar de aanvragende toepassing, in dit geval de Unity-editor.
+1. Volg de instructies in het scherm rechts van **AppMenu**.
+    U krijgt iets te zien zoals dit: ![AAD-verificatieonderdeel](./media/device-flow-instructions.png) Nadat u de opgegeven code op uw secundaire apparaat (of browser op hetzelfde apparaat) hebt ingevoerd en u zich hebt aangemeld met behulp van uw referenties, wordt een toegangstoken geretourneerd naar de aanvragende toepassing, in dit geval de Unity-editor.
 1. Hierna moet alles in de toepassing verder normaal worden uitgevoerd. Controleer de Unity-console op fouten als u de fasen niet op de verwachte wijze doorloopt.
 
 ## <a name="build-to-device"></a>Bouwen naar apparaat

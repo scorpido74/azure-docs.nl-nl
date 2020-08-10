@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b36469a89c7bae39ae3c2d62792c2ccde0fcfda9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498505"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799324"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw de documentatie van Azure Monitor?
 
@@ -20,7 +20,7 @@ In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzie
 ## <a name="june-2020"></a>Juni 2020
 
 ### <a name="general"></a>Algemeen
-- [Azure Monitor implementeren ](platform/deploy-scale.md) - nieuw artikel.
+- [Azure Monitor implementeren ](deploy-scale.md) - nieuw artikel.
 - [Door de klant beheerde sleutel in Azure Monitor](platform/customer-managed-keys.md) - bijgewerkte eigenschap billingtype. PowerShell-opdrachten toegevoegd.
 
 ### <a name="agents"></a>Agents

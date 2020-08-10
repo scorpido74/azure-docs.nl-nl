@@ -1,6 +1,6 @@
 ---
 title: Azure Blob Storage-resources beheren met Storage Explorer | Microsoft Docs
-description: Azure Blob-containers en-blobs beheren met Storage Explorer
+description: Beheer Azure Blob Storage-resources met Storage Explorer. Maak een BLOB-container, Bekijk de inhoud van de BLOB-container, verwijder of kopieer een BLOB-container en meer.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298120"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033611"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-resources beheren met Storage Explorer
 
@@ -35,7 +35,7 @@ U moet het volgende doen om de stappen in dit artikel uit te voeren:
 * [Storage Explorer downloaden en installeren](https://www.storageexplorer.com)
 * [Verbinding maken met een Azure-opslag account of-service](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
-## <a name="create-a-blob-container"></a>Een blob-container maken
+## <a name="create-a-blob-container"></a>Een blobcontainer maken
 
 Alle blobs moeten zich in een BLOB-container bevinden. Dit is simpelweg een logische groepering van blobs. Een account kan een onbeperkt aantal containers bevatten en elke container kan een onbeperkt aantal blobs opslaan.
 

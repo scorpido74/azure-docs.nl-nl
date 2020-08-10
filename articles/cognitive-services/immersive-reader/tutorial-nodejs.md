@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: de insluitende lezer starten met node. js'
+title: 'Zelfstudie: De Insluitende lezer starten met behulp van Node.js'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie maakt u een node. js-toepassing waarmee de insluitende lezer wordt gestart.
+description: In deze zelfstudie wordt beschreven hoe u een Node.js-toepassing maakt waarmee de Insluitende lezer wordt gestart.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,36 +10,37 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 139dd2ebdabbc91a6de3b0a1eb921b110d47c3f3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c64fc95c44aad81087cada23639e3b13bf478056
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842024"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407180"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Zelf studie: de insluitende lezer (node. js) starten
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Zelfstudie: Start de Insluitende lezer (Node.js)
 
-In het [overzicht](./overview.md)hebt u geleerd wat de insluitende lezer is en hoe deze de bewezen technieken implementeert om de Lees vaardigheid te verbeteren voor taal kennis, opkomende lezers en studenten met meer informatie. In deze zelf studie wordt beschreven hoe u een node. js-webtoepassing maakt waarmee de insluitende lezer wordt gestart. In deze zelfstudie leert u het volgende:
+In het [overzicht](./overview.md) hebt u geleerd wat de Insluitende lezer is en hoe het bewezen technieken implementeert om begrijpend lezen te verbeteren voor taalverwervers, beginnende lezers en studenten met leerproblemen. In deze zelfstudie wordt beschreven hoe u een Node.js-webtoepassing maakt waarmee de Insluitende lezer wordt gestart. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een node. js-web-app maken met Express
+> * Een Node.js-web-app maken met Express
 > * Een toegangstoken verkrijgen
-> * De insluitende lezer starten met voorbeeld inhoud
+> * De Insluitende lezer starten met voorbeeldinhoud
 > * De taal van uw inhoud opgeven
-> * De taal van de insluitende Reader-interface opgeven
-> * De insluitende lezer starten met wiskundige inhoud
+> * De taal van de Insluitende lezer-interface opgeven
+> * De Insluitende lezer starten met rekenkundige inhoud
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een resource voor insluitende lezer die is geconfigureerd voor Azure Active Directory authenticatie. Volg [deze instructies om de](./how-to-create-immersive-reader.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
-* [Node. js](https://nodejs.org/) en [garens](https://yarnpkg.com)
-* Een IDE zoals [Visual Studio code](https://code.visualstudio.com/)
+* Een Insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](./how-to-create-immersive-reader.md) om deze in te stellen. U hebt enkele waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
+* [Node.js](https://nodejs.org/) en [Yarn](https://yarnpkg.com)
+* Een code-editor, zoals [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Een node. js-web-app maken met Express
+## <a name="create-a-nodejs-web-app-with-express"></a>Een Node.js-web-app maken met Express
 
-Maak een node. js-web-app `express-generator` met het hulp programma.
+Maak een Node.js-web-app met het hulpprogramma `express-generator`.
 
 ```bash
 npm install express-generator -g
@@ -47,7 +48,7 @@ express --view=pug myapp
 cd myapp
 ```
 
-Installeer garen afhankelijkheden en voeg `request` afhankelijkheden `dotenv`toe en, die later in de zelf studie worden gebruikt.
+Installeer Yarn-afhankelijkheden en voeg de afhankelijkheden `request` en `dotenv` toe. Deze worden verderop in de zelfstudie gebruikt.
 
 ```bash
 yarn
@@ -55,11 +56,11 @@ yarn add request
 yarn add dotenv
 ```
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Een Azure AD-verificatie token verkrijgen
+## <a name="acquire-an-azure-ad-authentication-token"></a>Een Azure AD-verificatietoken verkrijgen
 
-Schrijf vervolgens een back-end-API om een Azure AD-verificatie token op te halen.
+Schrijf vervolgens een back-end-API om een Azure AD-verificatietoken op te halen.
 
-Voor dit onderdeel hebt u enkele waarden nodig uit de hierboven beschreven Azure AD-verificatie configuratie. Ga terug naar het tekst bestand dat u van deze sessie hebt opgeslagen.
+Voor dit onderdeel hebt u enkele waarden nodig uit de hierboven beschreven configuratie voor Azure AD-verificatie. Raadpleeg het tekstbestand dat u van die sessie hebt opgeslagen.
 
 ````text
 TenantId     => Azure subscription TenantId
@@ -68,7 +69,7 @@ ClientSecret => Azure AD Application Service Principal password
 Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
 ````
 
-Zodra u deze waarden hebt, maakt u een nieuw bestand met de naam _. env_en plakt u de volgende code in de gegevens bron, waarbij u de waarden van de aangepaste eigenschappen kunt opgeven. Neem geen aanhalings tekens of de {en} op.
+Wanneer u deze waarden hebt, maakt u een nieuw bestand met de naam _.env_ en plakt u de volgende code erin, waarbij u de eerder aangepaste eigenschapswaarden opgeeft. Geef geen aanhalingstekens of accolades erbij op.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -77,17 +78,17 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Zorg ervoor dat dit bestand niet wordt door gegeven aan broncode beheer, omdat het geheimen bevat dat niet openbaar mag worden gemaakt.
+Zorg ervoor dat u dit bestand niet doorvoert in broncodebeheer, omdat het geheimen bevat die niet openbaar moeten worden gemaakt.
 
-Open vervolgens _app. js_ en voeg het volgende toe boven aan het bestand. Hiermee worden de eigenschappen die in het. env-bestand zijn gedefinieerd, geladen als omgevings variabelen in een knoop punt.
+Open vervolgens _app.js_ en voeg het volgende toe boven aan het bestand. Hiermee worden de eigenschappen die in het ENV-bestand zijn gedefinieerd, geladen als omgevingsvariabelen in Node.
 
 ```javascript
 require('dotenv').config();
 ```
 
-Open het _routes\index.js_ -bestand en vervang de inhoud door de volgende code.
+Open het bestand _routes\index.js_ en vervang de inhoud ervan door de volgende code.
 
-Met deze code wordt een API-eind punt gemaakt waarmee een Azure AD-verificatie token wordt verkregen met behulp van het wacht woord voor de Service-Principal. Ook wordt het subdomein opgehaald. Vervolgens wordt een object geretourneerd dat het token en subdomein bevat.
+Met deze code wordt een API-eindpunt gemaakt waarmee een Azure AD-verificatietoken wordt verkregen met behulp van uw wachtwoord voor de service-principal. Ook wordt het subdomein opgehaald. Vervolgens wordt een-object met het token en het subdomein geretourneerd.
 
 ```javascript
 var request = require('request');
@@ -128,18 +129,18 @@ module.exports = router;
 
 ```
 
-Het **getimmersivereaderlaunchparams** -API-eind punt moet worden beveiligd achter een vorm van verificatie (bijvoorbeeld [OAuth](https://oauth.net/2/)) om te voor komen dat onbevoegde gebruikers tokens verkrijgen om te gebruiken voor uw insluitende lezer-service en facturering; Dit werk valt buiten het bereik van deze zelf studie.
+Het API-eindpunt **getimmersivereaderlaunchparams** moet worden beveiligd achter een vorm van verificatie (bijvoorbeeld [OAuth-](https://oauth.net/2/)) om te voorkomen dat niet-geautoriseerde gebruikers tokens verkrijgen die kunnen worden gebruikt voor uw Insluitende lezer-service en -facturering. Dit valt buiten het bereik van deze zelfstudie.
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
+## <a name="launch-the-immersive-reader-with-sample-content"></a>De Insluitende lezer starten met voorbeeldinhoud
 
-1. Open _views\layout.Pug_en voeg de volgende code toe onder het `head` label vóór de `body` tag. Met `script` deze tags worden de [insluitende lezer-SDK](https://github.com/microsoft/immersive-reader-sdk) en jQuery geladen.
+1. Open _views\layout.pug_ en voeg de volgende code toe onder de tag `head`, vóór de tag `body`. Met deze `script`-tags worden de [Insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en jQuery geladen.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
-2. Open _views\index.Pug_en vervang de inhoud door de volgende code. Met deze code wordt de pagina met enkele voorbeeld inhoud gevuld en wordt een knop toegevoegd waarmee de insluitende lezer wordt gestart.
+2. Open _views\index.pug_ en vervang de inhoud ervan door de volgende code. Met deze code wordt de pagina met wat voorbeeldinhoud gevuld en wordt een knop toegevoegd waarmee Insluitende lezer kan worden gestart.
 
     ```pug
     extends layout
@@ -183,25 +184,25 @@ Het **getimmersivereaderlaunchparams** -API-eind punt moet worden beveiligd acht
             }
     ```
 
-3. Onze web-app is nu klaar. Start de app door uit te voeren:
+3. Onze web-app is nu klaar. Start de app met de volgende opdracht:
 
     ```bash
     npm start
     ```
 
-4. Open uw browser en ga naar _http://localhost:3000_. De bovenstaande inhoud wordt weer geven op de pagina. Klik op de knop **insluitende lezer** om de insluitende lezer te starten met de inhoud.
+4. Open uw browser en ga naar _http://localhost:3000_ . De bovenstaande inhoud wordt weergegeven op de pagina. Klik op de knop **Insluitende lezer** om deze met uw inhoud te starten.
 
 ## <a name="specify-the-language-of-your-content"></a>De taal van uw inhoud opgeven
 
-De insluitende lezer biedt ondersteuning voor veel verschillende talen. U kunt de taal van uw inhoud opgeven door de volgende stappen uit te voeren.
+Insluitende lezer biedt ondersteuning voor veel verschillende talen. U kunt de taal van uw inhoud opgeven door de volgende stappen uit te voeren.
 
-1. Open _views\index.Pug_ en voeg de volgende code toe onder `p(id=content)` het label dat u in de vorige stap hebt toegevoegd. Met deze code wordt de Engelse inhoud van inhoud aan uw pagina toegevoegd.
+1. Open _views\index.pug_ en voeg de volgende code toe onder de tag `p(id=content)` die u in de vorige stap hebt toegevoegd. Met deze code wordt enige Spaanse inhoud van inhoud aan uw pagina toegevoegd.
 
     ```pug
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.
     ```
 
-2. Voeg in de Java script-code het volgende toe boven de `ImmersiveReader.launchAsync`aanroep van. Met deze code wordt de Spaanse inhoud door gegeven aan de insluitende lezer.
+2. Voeg in de JavaScript-code het volgende toe boven de aanroep van `ImmersiveReader.launchAsync`. Met deze code wordt de Spaanse inhoud doorgegeven aan Insluitende lezer.
 
     ```pug
     content.chunks.push({
@@ -210,13 +211,13 @@ De insluitende lezer biedt ondersteuning voor veel verschillende talen. U kunt d
     });
     ```
 
-3. Ga opnieuw _http://localhost:3000_ naar opnieuw. De Spaanse tekst op de pagina wordt weer gegeven, en wanneer u op **insluitende lezer**klikt, wordt deze ook in de insluitende lezer getoond.
+3. Ga opnieuw naar _http://localhost:3000_ . De Spaanse tekst wordt op de pagina weergegeven. Wanneer u op **Insluitende lezer** klikt, wordt deze ook in de Insluitende lezer getoond.
 
-## <a name="specify-the-language-of-the-immersive-reader-interface"></a>De taal van de insluitende Reader-interface opgeven
+## <a name="specify-the-language-of-the-immersive-reader-interface"></a>De taal van de Insluitende lezer-interface opgeven
 
-De taal van de insluitende Reader-interface komt standaard overeen met de taal instellingen van de browser. U kunt ook de taal van de insluitende Reader-interface met de volgende code opgeven.
+De taal van de Insluitende lezer-interface komt standaard overeen met de taalinstellingen van de browser. U kunt ook de taal van de Insluitende lezer-interface opgeven met de volgende code.
 
-1. Vervang in _views\index.Pug_de aanroep door door `ImmersiveReader.launchAsync(token, subdomain, content)` de onderstaande code in te voeren.
+1. Vervang in _views\index.pug_ de aanroep van `ImmersiveReader.launchAsync(token, subdomain, content)` door de onderstaande code.
 
     ```javascript
     const options = {
@@ -225,13 +226,13 @@ De taal van de insluitende Reader-interface komt standaard overeen met de taal i
     ImmersiveReader.launchAsync(token, subdomain, content, options);
     ```
 
-2. Ga naar _http://localhost:3000_. Wanneer u de insluitende lezer start, wordt de interface weer gegeven in het Frans.
+2. Navigeer naar _http://localhost:3000_ . Wanneer u de Insluitende lezer start, wordt de interface weergegeven in het Frans.
 
-## <a name="launch-the-immersive-reader-with-math-content"></a>De insluitende lezer starten met wiskundige inhoud
+## <a name="launch-the-immersive-reader-with-math-content"></a>De Insluitende lezer starten met rekenkundige inhoud
 
-U kunt wiskundige inhoud in de insluitende lezer toevoegen met behulp van [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML).
+U kunt rekenkundige inhoud in de Insluitende lezer toevoegen met behulp van [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
-1. Wijzig _views\index.Pug_ zodat de volgende code wordt toegevoegd aan de aanroep `ImmersiveReader.launchAsync`:
+1. Voeg in _views\index.pug_ de volgende code toe boven de aanroep van `ImmersiveReader.launchAsync`:
 
     ```javascript
     const mathML = '<math xmlns="https://www.w3.org/1998/Math/MathML" display="block"> \
@@ -256,9 +257,9 @@ U kunt wiskundige inhoud in de insluitende lezer toevoegen met behulp van [MathM
     });
     ```
 
-2. Ga naar _http://localhost:3000_. Wanneer u de insluitende lezer start en naar beneden schuift, ziet u de formule math.
+2. Navigeer naar _http://localhost:3000_ . Wanneer u de Insluitende lezer start en naar beneden schuift, ziet u de rekenkundige formule.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](./reference.md)
-* Code voorbeelden weer geven op [github](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp)
+* De [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor Insluitende lezer](./reference.md) verkennen
+* Codevoorbeelden op [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp) bekijken

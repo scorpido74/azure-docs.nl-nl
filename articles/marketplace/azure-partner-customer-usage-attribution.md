@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/14/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: ab729d34219c05ee76a2a14832f41342d29eab21
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065804"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031282"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -45,7 +45,7 @@ Een GUID is een unieke referentie-id met 32 hexadecimale cijfers. Als u GUID'S v
 
 We raden u aan om voor elk product een unieke GUID te maken voor elk aanbod en distributie kanaal. U kunt ervoor kiezen om een enkele GUID voor de meerdere distributie kanalen van het product te gebruiken als u niet wilt dat rapportage wordt gesplitst.
 
-Als u een product implementeert met behulp van een sjabloon en deze beschikbaar is op zowel Azure Marketplace als op GitHub, kunt u twee afzonderlijke GUID'S maken en registreren:
+Als u een product implementeert met behulp van een sjabloon en deze beschikbaar is op Azure Marketplace en op GitHub, kunt u twee afzonderlijke GUID'S maken en registreren:
 
 - Product A in azure Marketplace
 - Product A op GitHub
@@ -61,7 +61,7 @@ De GUID'S moeten worden geregistreerd in het partner centrum om het gebruik van 
 Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de GUID registreert in Partner Center, worden toekomstige implementaties bijgehouden.
 
 > [!NOTE]
-> Als u uw [Azure-toepassing](./partner-center-portal/create-new-azure-apps-offer.md) -aanbod publiceert naar de Azure Marketplace via partner centrum, wordt een nieuwe GUID die wordt gebruikt in uw sjabloon, automatisch geregistreerd bij het partner centrum-profiel wanneer de sjabloon wordt geüpload.  
+> Als u uw [Azure-toepassing](./partner-center-portal/create-new-azure-apps-offer.md) -aanbod publiceert naar Azure Marketplace via partner centrum, wordt een nieuwe GUID die wordt gebruikt in uw sjabloon automatisch geregistreerd bij het partner centrum-profiel wanneer de sjabloon wordt geüpload.  
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
 
@@ -82,7 +82,7 @@ Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de
 1. Selecteer **Opslaan**.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sjablonen gebruiken
-Veel partner oplossingen worden geïmplementeerd met Azure Resource Manager sjablonen. Als u een resource manager-sjabloon hebt die beschikbaar is in de Azure Marketplace, op GitHub of als Snelstartgids, is het proces om uw sjabloon te wijzigen om de toewijzing van klant gebruik direct uit te scha kelen.
+Veel partner oplossingen worden geïmplementeerd met Azure Resource Manager sjablonen. Als u een resource manager-sjabloon hebt die beschikbaar is in azure Marketplace, op GitHub of als Snelstartgids, is het proces voor het wijzigen van uw sjabloon om de toewijzing van klant gebruik direct uit te scha kelen.
 
 > [!NOTE]
 > Zie voor meer informatie over het maken en publiceren van oplossings sjablonen.
@@ -269,7 +269,7 @@ Als u hulp nodig hebt bij het voorbereiden van de Marketplace en/of de toewijzin
 1. Kies de **categorie** voor uw probleem:
 
    - Selecteer voor problemen met de gebruiks koppeling **andere**.
-   - Selecteer **toegangs**problemen als u toegang wilt krijgen tot de Azure Marketplace.
+   - Selecteer voor toegangs problemen met Azure Marketplace het **toegangs probleem**.
 
      ![De probleem categorie kiezen](media/marketplace-publishers-guide/lu-article-incident.png)
 

@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084701"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420818"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Zelfstudie: Uw virtuele hub beveiligen met Azure Firewall Manager
 
@@ -108,7 +108,7 @@ Herhaal om verbinding te maken met de **Spoke-02** het virtuele netwerk: verbind
 
 ### <a name="configure-the-hub-and-spoke-routing"></a>De hub en spoke-routering configureren
 
-Open in de Azure-portal een Cloud Shell en voer de volgende Azure PowerShell uit om de vereiste hub en spoke-routering te configureren.
+Open in de Azure-portal een Cloud Shell en voer de volgende Azure PowerShell uit om de vereiste hub en spoke-routering te configureren. Voor verbindingen van het type spoke/vertakking met peering moet doorgifte worden ingesteld op **GEEN**. Hiermee wordt communicatie tussen willekeurige spokes onderling voorkomen en wordt verkeer naar de firewall gerouteerd met behulp van de standaardroute.
 
 ```azurepowershell
 $noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `

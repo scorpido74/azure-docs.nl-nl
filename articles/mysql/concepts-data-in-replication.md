@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/7/2020
+ms.openlocfilehash: a9d6c1b2438f20a06062842b96b147e094760238
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79533229"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031214"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Gegevens repliceren naar Azure Database for MySQL
 
@@ -30,6 +30,11 @@ Gebruik de [Azure database Migration service](https://azure.microsoft.com/servic
 ### <a name="data-not-replicated"></a>Gegevens niet gerepliceerd
 De [*MySQL-systeem database*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) op de hoofd server wordt niet gerepliceerd. Wijzigingen van accounts en machtigingen op de hoofd server worden niet gerepliceerd. Als u een account op de master server maakt en dit account toegang heeft tot de replica server, moet u het account hand matig op de replica server maken. Zie de [MySQL-hand leiding](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)voor meer informatie over de tabellen die zijn opgenomen in de systeem database.
 
+### <a name="filtering"></a>Filteren
+Voor het overs laan van gerepliceerde tabellen van de hoofd server (lokaal gehost, in virtuele machines of een database service die wordt gehost door andere cloud providers), `replicate_wild_ignore_table` wordt de para meter ondersteund. U kunt deze para meter eventueel bijwerken op de replica server die wordt gehost in azure met behulp van de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md).
+
+Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) voor meer informatie over deze para meter.
+
 ### <a name="requirements"></a>Vereisten
 - De versie van de hoofd server moet ten minste MySQL-versie 5,6 zijn. 
 - De versies van de hoofd-en replica server moeten hetzelfde zijn. Beide moeten bijvoorbeeld MySQL-versie 5,6 zijn of beide moeten MySQL-versie 5,7 zijn.
@@ -41,7 +46,7 @@ De [*MySQL-systeem database*](https://dev.mysql.com/doc/refman/5.7/en/system-sch
 - Zorg ervoor dat de computer waarop de hoofdserver wordt gehost zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
 - Zorg ervoor dat de hoofd server een **openbaar IP-adres**heeft, dat de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
 
-### <a name="other"></a>Overig
+### <a name="other"></a>Overige
 - Replicatie van gegevens wordt alleen ondersteund in de Algemeen en de prijs categorieën die zijn geoptimaliseerd voor geheugen.
 - Algemene trans actie-id's (GTID) worden niet ondersteund.
 

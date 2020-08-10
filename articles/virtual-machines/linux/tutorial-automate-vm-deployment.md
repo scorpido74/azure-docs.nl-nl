@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-een virtuele Linux-machine aanpassen met Cloud-init in azure
-description: In deze zelf studie leert u hoe u Cloud-init en Key Vault kunt gebruiken om Linux-Vm's aan te passen wanneer ze voor het eerst in Azure worden opgestart
+title: Zelfstudie - Een Linux-VM aanpassen in Azure met cloud-init
+description: In deze zelfstudie leert u hoe u cloud-init en Key Vault gebruikt voor het aanpassen van virtuele Linux-machines als ze de eerste keer worden opgestart in Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: d2a6568b0d62c880a688160cf981fb33083ae02e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 2a07480bf5b3defb4176437d99274e9ecfb4ba13
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81461477"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433018"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Zelfstudie - Cloud-init gebruiken voor het aanpassen van een virtuele Linux-machine in Azure bij de eerste keer dat die wordt opgestart
 
@@ -32,7 +32,7 @@ In een vorige zelfstudie hebt u geleerd hoe u een virtuele machine (VM) via SSH 
 > * Key Vault gebruiken voor het veilig opslaan van certificaten
 > * Beveiligde implementaties van NGINX automatiseren met cloud-init
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="cloud-init-overview"></a>Overzicht van cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een Linux-VM als deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Als de initialisatie van de cloud-init wordt uitgevoerd tijdens het opstartproces, zijn er geen extra stappen of agents vereist om uw configuratie toe te passen.
@@ -41,21 +41,21 @@ Cloud-init werkt ook in distributies. U gebruikt bijvoorbeeld niet **apt-get ins
 
 Samen met onze partners willen we cloud-init opnemen en werkend krijgen in de installatiekopieën die zij aan Azure leveren. De volgende tabel geeft een overzicht van de huidige beschikbaarheid van cloud-init op Azure-platforminstallatiekopieën:
 
-| Uitgever | Aanbieding | SKU | Versie | Cloud-init gereed |
+| Uitgever | Aanbieding | SKU | Versie | Gereed voor cloud-init |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18,04-LTS |meest recente |ja | 
+|Canonical |UbuntuServer |18.04-LTS |meest recente |ja | 
 |Canonical |UbuntuServer |16.04-LTS |meest recente |ja | 
 |Canonical |UbuntuServer |14.04.5-LTS |meest recente |ja |
 |CoreOS |CoreOS |Stabiel |meest recente |ja |
-|Open Logic 7,6 |CentOS |7-CI |meest recente |preview |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja |
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
+|OpenLogic 7.6 |CentOS |7-CI |meest recente |preview |
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |ja |
+|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
 
 
 ## <a name="create-cloud-init-config-file"></a>Een cloud-init-configuratiebestand maken
 Als u cloud-init in actie wilt zien, maakt u een VM waarop NGINX is geïnstalleerd en een eenvoudige 'Hallo wereld' Node.js-app wordt uitgevoerd. Met de volgende cloud init-configuratie installeert u de vereiste pakketten, maakt u een Node.js-app en initialiseert en start u vervolgens de app.
 
-Maak een bestand met de naam *Cloud-init. txt* op de bash-prompt of in het Cloud shell en plak de volgende configuratie. Typ `sensible-editor cloud-init.txt` bijvoorbeeld om het bestand te maken en een lijst met beschik bare editors weer te geven. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
+Maak bij de Bash-prompt of in Cloud Shell een bestand met de naam *cloud-init.txt* en plak de volgende configuratie in het bestand. Typ bijvoorbeeld `sensible-editor cloud-init.txt` om het bestand te maken en om een overzicht van beschikbare editors te zien. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
 
 ```bash
 #cloud-config
@@ -108,7 +108,7 @@ Voordat u een virtuele machine kunt maken, moet u eerst een resourcegroep maken 
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Maak een virtuele machine met [az vm create](/cli/azure/vm#az-vm-create). Gebruik de `--custom-data`-parameter om door te geven in uw cloud-init-configuratiebestand. Geef het volledige pad naar *cloud-init.txt* op als u het bestand buiten uw huidige werkmap hebt opgeslagen. In het volgende voor beeld wordt een VM gemaakt met de naam *myVM*:
+Maak een virtuele machine met [az vm create](/cli/azure/vm#az-vm-create). Gebruik de `--custom-data`-parameter om door te geven in uw cloud-init-configuratiebestand. Geef het volledige pad naar *cloud-init.txt* op als u het bestand buiten uw huidige werkmap hebt opgeslagen. In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt:
 
 ```azurecli-interactive
 az vm create \
@@ -129,7 +129,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Web-app testen
-U kunt nu een webbrowser openen en *http:\/\/\<publicIpAddress>* invoeren in de adres balk. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. De Node.js-app wordt weergegeven zoals in het volgende voorbeeld:
+U kunt nu een webbrowser openen en *http:\/\/\<publicIpAddress>* in de adresbalk invoeren. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. De Node.js-app wordt weergegeven zoals in het volgende voorbeeld:
 
 ![Actieve NGINX-site weergeven](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -183,7 +183,7 @@ vm_secret=$(az vm secret format --secret "$secret" --output json)
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>Cloud-init-config maken om NGINX te beveiligen
 Wanneer u een virtuele machine maakt, worden certificaten en sleutels opgeslagen in de beveiligde */var/lib/waagent/* directory. U kunt de bijgewerkte cloud-init-configuratie uit het vorige voorbeeld gebruiken om het certificaat toe te voegen en NGINX te configureren.
 
-Maak een bestand met de naam *cloud-init-secured.txt* en plak de volgende configuratie. Als u de Cloud Shell gebruikt, maakt u het Cloud-init-configuratie bestand en niet op uw lokale computer. Typ `sensible-editor cloud-init-secured.txt` bijvoorbeeld om het bestand te maken en een lijst met beschik bare editors weer te geven. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
+Maak een bestand met de naam *cloud-init-secured.txt* en plak de volgende configuratie. Als u Cloud Shell gebruikt, maakt u het cloud-init-configuratiebestand daar en niet op uw lokale computer. Typ bijvoorbeeld `sensible-editor cloud-init-secured.txt` om het bestand te maken en om een overzicht van beschikbare editors te zien. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
 
 ```yaml
 #cloud-config
@@ -260,7 +260,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>De beveiligde web-app testen
-U kunt nu een webbrowser openen en *https:\/\/\<publicIpAddress>* invoeren in de adres balk. Geef uw eigen openbare IP-adres op zoals weergegeven in de uitvoer tijdens het maken van de vorige VM. Als u een zelfondertekend certificaat gebruikt, aanvaardt u de beveiligingswaarschuwing:
+Nu kunt u een webbrowser openen en *https:\/\/\<publicIpAddress>* in de adresbalk invoeren. Geef uw eigen openbare IP-adres op zoals weergegeven in de uitvoer tijdens het maken van de vorige VM. Als u een zelfondertekend certificaat gebruikt, aanvaardt u de beveiligingswaarschuwing:
 
 ![Beveiligingswaarschuwing voor web browser accepteren](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

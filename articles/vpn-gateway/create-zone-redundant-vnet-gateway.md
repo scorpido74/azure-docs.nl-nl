@@ -1,6 +1,6 @@
 ---
 title: Een zone-redundante virtuele netwerk gateway maken in Azure-beschikbaarheidszones
-description: Meer informatie over het implementeren van VPN-en ExpressRoute-gateways in Azure-beschikbaarheidszones, het toevoegen van tolerantie, schaal baarheid en hogere Beschik baarheid van VNet-gateways.
+description: Meer informatie over het implementeren van zone-redundante VPN-gateways en ExpressRoute-gateways in Azure-beschikbaarheidszones.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: ccb6050ae4d56d2f8e57b4a590d01fb6acd9bd8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 1404f5201ff5f543e34c6a4c8e5713cab3a4c51b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925153"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033475"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Een zone-redundante virtuele netwerk gateway maken in Azure-beschikbaarheidszones
 

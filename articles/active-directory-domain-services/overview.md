@@ -10,18 +10,20 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6efd33b9f8825b5b5699b6106dadafec851ed454
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734551"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488547"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Wat is Azure Active Directory Domain Services?
 
 Azure Active Directory Domain Services (Azure AD DS) biedt beheerde domeinservices zoals domeindeelname, groepsbeleid, Lightweight Directory Access Protocol (LDAP) en Kerberos/NTLM-verificatie. U gebruikt deze domeinservices zonder domeincontrollers (DC’s) in de cloud te hoeven implementeren, beheren en patchen.
 
-Een beheerd domein is een DNS-naamruimte en bijbehorende directory. Het beheerde domein integreert met uw bestaande Azure AD-tenant, waardoor gebruikers zich kunnen aanmelden met hun bestaande referenties. U kunt ook bestaande groepen en gebruikersaccounts gebruiken om toegang tot resources te beveiligen, wat een soepelere lift-and-shift van on-premises resources naar Azure biedt.
+Wanneer u een beheerd Azure AD DS-domein maakt, definieert u een unieke naamruimte. Deze naamruimte bestaat uit de domeinnaam, zoals *aaddscontoso.com*, en er worden twee domeincontrollers (DC's) geïmplementeerd in uw geselecteerde Azure-regio. Deze implementatie van DC's wordt een replicaset genoemd. Het beheerde domein integreert met uw bestaande Azure AD-tenant, waardoor gebruikers zich kunnen aanmelden met hun bestaande referenties. U kunt ook bestaande groepen en gebruikersaccounts gebruiken om toegang tot resources te beveiligen, wat een soepelere lift-and-shift van on-premises resources naar Azure biedt.
+
+U kunt een beheerd domein uitbreiden als u meer dan één replicaset per Azure AD-tenant wilt hebben. Replicasets kunnen worden toegevoegd aan elk gekoppeld virtueel netwerk in een Azure-regio die Azure AD DS ondersteunt. Extra replica sets in verschillende Azure-regio's bieden geografisch herstel na noodgeval voor oudere toepassingen als een Azure-regio offline gaat. Replicasets zijn momenteel beschikbaar in preview. Zie [Concepten en functies van replicasets voor beheerde domeinen][concepts-replica-sets].
 
 Azure AD DS kan met uw bestaande Azure AD-tenant worden geïntegreerd. Dankzij deze integratie kunnen gebruikers zich met hun bestaande referenties aanmelden bij services en toepassingen die zijn verbonden met het beheerde domein. U kunt ook bestaande groepen en gebruikersaccounts gebruiken om toegang tot resources te beveiligen. Deze functies bieden een soepeler lift-and-shift van on-premises resources naar Azure.
 
@@ -150,3 +152,4 @@ Raadpleeg de volgende artikelen voor meer informatie over het verschil tussen Az
 [forest-trusts]: concepts-resource-forest.md
 [administration-concepts]: administration-concepts.md
 [synchronization]: synchronization.md
+[concepts-replica-sets]: concepts-replica-sets.md

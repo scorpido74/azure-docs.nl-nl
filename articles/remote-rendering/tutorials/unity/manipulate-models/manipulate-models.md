@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4928938c38df8a1ed0f1e31c73e755a4f7f6c371
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367627"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449053"
 ---
 # <a name="tutorial-manipulating-models"></a>Zelfstudie: Modellen bewerken
 
@@ -332,18 +332,14 @@ Wanneer een raycast is voltooid in de **RemoteRayCastPointerHandler**, wordt de 
 
 2. Voeg op het GameObject **TestModel** dat u eerder hebt gemaakt, de componenten **RemoteRayCastPointerHandler** en **RemoteEntityHelper** toe.
 1. Wijs de `EntityToDebugLog`-methode toe aan de `OnRemoteEntityClicked`-gebeurtenis. Wanneer het uitvoertype van de gebeurtenis en het invoertype van de methode overeenkomen, kunnen we de dynamische gebeurtenishookup van Unity gebruiken om de waarde van de gebeurtenis automatisch over te dragen naar de methode.
-    1. Een nieuw callback field\ maken
-    ![Callback toevoegen](./media/add-callback-remote-entity-clicked.png)
-    1. Sleep de component **Remote Entity Helper** naar het veld Object om te verwijzen naar het bovenliggende GameObject\
-    ![Object toewijzen](./media/assign-object.png)
-    1. Wijs de `EntityToDebugLog` toe als callback\
-    ![Callback toewijzen](./media/remote-entity-event.png)
+    1. Een nieuw callback-veld ![Add callback](./media/add-callback-remote-entity-clicked.png) maken
+    1. Sleep de component **Remote Entity Helper** naar het veld Object om te verwijzen naar het bovenliggende GameObject ![Assign object](./media/assign-object.png)
+    1. Wijs `EntityToDebugLog` toe als de callback ![Assign callback](./media/remote-entity-event.png)
 1. Druk op afspelen in de Unity Editor om de scène te starten, verbinding te maken met een externe sessie en het testmodel te laden.
 1. Gebruik de Handsimulatie van MRTK en houd de Shift-toets aande linkerzijde ingedrukt.
 1. Bestuur de handsimulatie, zodat de handstraal naar het testmodel wijst.
 1. Klik lang om een tik in de lucht te simuleren en zo de `OnPointerClicked`-gebeurtenis uit te voeren.
-1. Controle of de Unity Console een logboekbericht bevat met de naam van de geselecteerde onderliggende entiteit. Bijvoorbeeld:\
-![Voorbeeld van onderliggende entiteit](./media/child-entity-example.png)
+1. Controle of de Unity Console een logboekbericht bevat met de naam van de geselecteerde onderliggende entiteit. Bijvoorbeeld: ![Voorbeeld van onderliggende entiteit](./media/child-entity-example.png)
 
 ## <a name="synchronizing-the-remote-object-graph-into-the-unity-hierarchy"></a>De grafiek van het externe object synchroniseren met de Unity-hiërarchie
 
@@ -351,9 +347,9 @@ Tot nu toe hebben we slechts één lokaal GameObject gezien dat het volledige mo
 
 1. Start de scène en laad het testmodel.
 1. Vouw de onderliggende items van het GameObject **TestModel** in de Unity-hiërarchie uit en selecteer het GameObject **TestModel_Entity**.
-1. Klik in de Inspector op de knop *Onderliggende items tonen*. \
+1. Klik in de Inspector op de knop *Onderliggende items tonen*.
 ![Onderliggende items tonen](./media/show-remote-children.png)
-1. Ga verder met het uitvouwen van onderliggende items in de hiërarchie en klik op *Onderliggende items weergeven* totdat een grote lijst met onderliggende items wordt weer gegeven.\
+1. Ga verder met het uitvouwen van onderliggende items in de hiërarchie en klik op *Onderliggende items weergeven* totdat een grote lijst met onderliggende items wordt weer gegeven.
 ![Alle onderliggende items](./media/test-model-children.png)
 
 Er is nu een lijst met tientallen entiteiten te zien in de hiërarchie. Als u er een selecteert, worden de componenten `Transform` en `RemoteEntitySyncObject` weergegeven in de Inspector. Standaard wordt niet elke entiteit automatisch gesynchroniseerd met elk frame, waardoor lokale wijzigingen in de `Transform` niet gesynchroniseerd worden naar de server. U kunt *Elk frame synchroniseren* aanvinken en vervolgens de transformatie verplaatsen, schalen of draaien in de Scèneweergave. U zult het gegenereerde model niet zien in de scèneweergave, bekijk de Gameweergave om de nieuwe positie en draaiing van het model te zien.
@@ -371,13 +367,13 @@ Hetzelfde proces kan via een programma worden uitgevoerd en vormt de eerste stap
     }
     ```
 
-1. Voeg een extra callback toe aan de gebeurtenis `OnRemoteEntityClicked` van **RemoteRayCastPointerHandler** en stel deze in op `MakeSyncedGameObject`.\
+1. Voeg een extra callback toe aan de gebeurtenis `OnRemoteEntityClicked` van **RemoteRayCastPointerHandler** en stel deze in op `MakeSyncedGameObject`.
 ![Extra callback](./media/additional-callback.png)
 1. Gebruik de Handsimulatie van MRTK en houd de Shift-toets aande linkerzijde ingedrukt.
 1. Bestuur de handsimulatie, zodat de handstraal naar het testmodel wijst.
 1. Klik lang om een tik in de lucht te simuleren en zo de `OnPointerClicked`-gebeurtenis uit te voeren.
-1. Controleer de hiërarchie en vouw deze uit om een nieuw onderliggend object te zien, dat de aangeklikte entiteit weergeeft.\
-![Weergave GameObject](./media/gameobject-representing-entity.png)\
+1. Controleer de hiërarchie en vouw deze uit om een nieuw onderliggend object te zien, dat de aangeklikte entiteit weergeeft.
+![Weergave GameObject](./media/gameobject-representing-entity.png)
 1. Verwijder na het testen de callback voor `MakeSyncedGameObject`, aangezien we deze later gaan opnemen in andere effecten.
 
 > [!NOTE]

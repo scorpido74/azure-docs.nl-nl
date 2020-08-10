@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798219"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032591"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
@@ -101,7 +101,7 @@ Op deze pagina kunt u het primaire product instellen dat door uw consulting serv
     - Analyse
     - App-modernisatie
     - Archiveren
-    - AI en Machine Learning
+    - AI + Machine Learning
     - Backup
     - Big data
     - Gegevens platform
@@ -160,7 +160,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 8. Scherm afbeeldingen/Video's
 9. Documenten
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -202,19 +202,22 @@ Voeg Maxi maal drie (maar ten minste één) PDF-documenten voor uw aanbieding to
 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) te maken. U kunt dit eventueel vervangen door een andere afbeelding.
+Bied PNG-bestanden van het logo van uw aanbieding in elk van de volgende pixel grootten:
 
-Beide logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
+- **Klein (48 x 48)**
+- **Groot (216 x 216)**
 
-- **Klein** (48 x 48)
-- **Groot** (tussen 216 x 216 en 350 x 350)
+Alle logo's zijn vereist en worden op verschillende plaatsen in de Marketplace-vermelding gebruikt.
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+-   Het kleine logo (48 x 48 pixels) wordt weer gegeven in de zoek resultaten voor Azure Marketplace en op de pagina Microsoft AppSource hoofd pagina en zoek resultaten. 
+-   Het grote logo (tussen 216 x 216 en 350 x 350 pixels) wordt weer gegeven op uw aanbiedings pagina in azure Marketplace en Microsoft AppSource.
 
 #### <a name="screenshots-optional"></a>Scherm afbeeldingen (optioneel)
 

@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: spraak samen te brengen in audio bestand-Speech-Service'
+title: 'Quickstart: Spraak synthetiseren naar een audiobestand - Spraakservice'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u de Speech SDK om tekst te converteren naar gesynthesizerde spraak in een audio bestand.
+description: In deze quickstart gebruikt u de Speech SDK om tekst te converteren naar gesynthetiseerde spraak in een audiobestand.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,15 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: trbye
+ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-two-with-js-spx
-ms.openlocfilehash: a902f15b8e782cd001e4d6dab3177751e39900e8
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: bc1e9c5f6ef5e38ca0dab7cf4875f1143cdadaca
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391448"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405179"
 ---
-# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Quick Start: spraak samen te brengen in een audio bestand
+# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Quickstart: Spraaksynthese in een audiobestand
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts-audio-file/header.md)]

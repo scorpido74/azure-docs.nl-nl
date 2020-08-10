@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e008091b3d0b450384cb7a672a62c786c33bfeab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034993"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419628"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Zelfstudie: Risicodetectie voor gebruikersaanmeldingen gebruiken als trigger voor Azure Multi-Factor Authentication of het wijzigen van wachtwoorden
 
@@ -39,7 +39,7 @@ In deze zelfstudie leert u het volgende:
 
 Om deze zelfstudie te voltooien, hebt u de volgende resources en machtigingen nodig:
 
-* Een werkende Azure AD-tenant waarop minimaal een Azure Ad Premium P2-proeflicentie is ingeschakeld.
+* Een werkende Azure AD-tenant waarop minimaal een Azure Ad Premium P2- of -proeflicentie is ingeschakeld.
     * [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
 * Een account met de bevoegdheden van een *globale beheerder*.
 * Azure AD dat is geconfigureerd voor self-service voor wachtwoordherstel en Azure Multi-Factor Authentication

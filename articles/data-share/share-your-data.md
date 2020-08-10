@@ -1,144 +1,144 @@
 ---
-title: 'Zelf studie: delen buiten uw organisatie-Azure-gegevens share'
-description: 'Zelf studie: gegevens delen met klanten en partners met behulp van de Azure-gegevens share'
+title: 'Zelfstudie: Delen buiten uw organisatie - Azure Data Share'
+description: 'Zelfstudie: Gegevens delen met klanten en partners met behulp van Azure Data Share'
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/10/2019
-ms.openlocfilehash: a8265680f74b2d5679d1ebfbb2873dd096f498a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 07/30/2020
+ms.openlocfilehash: 1de793dc2f4f72efb67c954e60262c3d7f1b74fc
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77083047"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511970"
 ---
-# <a name="tutorial-share-data-using-azure-data-share"></a>Zelf studie: gegevens delen met Azure data share  
+# <a name="tutorial-share-data-using-azure-data-share"></a>Zelfstudie: Gegevens delen met Azure Data Share  
 
-In deze zelf studie leert u hoe u een nieuwe Azure-gegevens share instelt en hoe u uw gegevens met klanten en partners buiten uw Azure-organisatie gaat delen. 
+In deze zelfstudie leert u hoe u een nieuwe Azure Data Share instelt en hoe u uw gegevens met klanten en partners buiten uw Azure-organisatie kunt delen. 
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Maak een gegevensshare.
 > * Voeg gegevenssets toe aan uw gegevensshare.
-> * Maak een momentopname schema voor uw gegevens share. 
+> * Schakel een schema voor momentopnamen in voor uw gegevensshare. 
 > * Voeg ontvangers toe aan uw gegevensshare. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Het e-mail adres van uw ontvanger voor Azure (met hun e-mail alias werkt niet).
-* Als de bron-Azure-gegevens opslag zich in een ander Azure-abonnement bevindt dan de service die u gebruikt om een gegevens share bron te maken, registreert u de [resource provider micro soft. DataShare](concepts-roles-permissions.md#resource-provider-registration) in het abonnement waar het Azure-gegevens archief zich bevindt. 
+* Azure-abonnement: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Het e-mailadres voor Azure van de ontvanger (de e-mailalias werkt niet).
+* Als de bron-Azure-gegevensopslag zich in een ander Azure-abonnement bevindt dan de opslag die u gebruikt om een Data Share-resource te maken, registreert u de [resourceprovider Microsoft.DataShare](concepts-roles-permissions.md#resource-provider-registration) in het abonnement waarin de Azure-gegevensopslag zich bevindt. 
 
-### <a name="share-from-a-storage-account"></a>Delen vanuit een opslag account:
+### <a name="share-from-a-storage-account"></a>Delen vanaf een opslagaccount:
 
-* Een Azure Storage account: als u er nog geen hebt, kunt u een [Azure Storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) maken
-* Toestemming om te schrijven naar het opslag account dat aanwezig is in *micro soft. Storage/Storage accounts/write*. Deze machtiging bevindt zich in de rol Inzender.
-* Machtiging voor het toevoegen van roltoewijzing aan het opslag account dat aanwezig is in *micro soft. autorisatie/roltoewijzingen/schrijven*. Deze machtiging bevindt zich in de rol van eigenaar. 
+* Een Azure Storage-account: U kunt een gratis [Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) aanmaken als u nog niet een hebt
+* Machtiging om naar het opslagaccount te schrijven, aanwezig in *Microsoft.Storage/storageAccounts/write*. Deze machtiging maakt onderdeel uit van de rol Inzender.
+* Machtiging om roltoewijzing toe te voegen aan het opslagaccount, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar. 
 
 
 ### <a name="share-from-a-sql-based-source"></a>Delen vanuit een bron op basis van SQL:
 
-* Een Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met tabellen en weer gaven die u wilt delen.
-* Toestemming om te schrijven naar de data bases op SQL Server, die aanwezig zijn in *micro soft. SQL/servers/data bases/schrijven*. Deze machtiging bevindt zich in de rol Inzender.
-* Machtiging voor de gegevens share om toegang te krijgen tot het Data Warehouse. U kunt dit doen door de volgende stappen uit te voeren: 
-    1. Stel uzelf in als de Azure Active Directory beheerder voor de SQL-Server.
-    1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van Azure Active Directory.
-    1. Gebruik de query-editor (preview) om het volgende script uit te voeren om de door de resource beheerde identiteit als db_datareader toe te voegen. U moet verbinding maken met behulp van Active Directory en niet SQL Server-verificatie. 
+* Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met tabellen en weergaven die u wilt delen.
+* Machtiging om naar de databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender.
+* Machtiging voor de gegevensshare om toegang te krijgen tot de datawarehouse. U kunt dit doen via de volgende stappen: 
+    1. Stel uzelf in als de Azure Active Directory-beheerder voor de SQL-server.
+    1. Maak verbinding met Azure SQL Database/Data Warehouse met behulp van Azure Active Directory.
+    1. Gebruik Queryeditor (preview) om het volgende script uit te voeren en de beheerde identiteit van de Data Share-resource toe te voegen als een db_datareader. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 
     
         ```sql
         create user "<share_acct_name>" from external provider;     
         exec sp_addrolemember db_datareader, "<share_acct_name>"; 
         ```                   
-       Houd er rekening mee dat de *<share_acc_name>* de naam van uw gegevens share bron is. Als u nog geen resource voor gegevens delen hebt gemaakt, kunt u later terug naar deze vereiste.  
+       U ziet dat *<share_acc_name>* de naam is van uw Data Share-resource. Als u nog geen Data Share-resource hebt gemaakt, kunt u later aan deze vereiste voldoen.  
 
-* Een Azure SQL Database gebruiker met ' db_datareader ' toegang om te navigeren en de tabellen en/of weer gaven te selecteren die u wilt delen. 
+* Een Azure SQL Database-gebruiker met db_datareader-toegang om door de tabellen en/of weergaven die u wilt delen te navigeren en ze te selecteren. 
 
-* Client-IP SQL Server toegang tot Firewall. U kunt dit doen door de volgende stappen uit te voeren: 
-    1. Ga in SQL Server in Azure Portal naar *firewalls en virtuele netwerken*
-    1. Klik op de **aan/uit** om toegang tot Azure-Services toe te staan.
-    1. Klik op **+ client IP toevoegen** en klik op **Opslaan**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald wanneer u de volgende keer dat u SQL-gegevens deelt van Azure Portal. U kunt ook een IP-bereik toevoegen. 
+* Toegang tot de firewall van SQL Server via het IP-adres van de client. U kunt dit doen via de volgende stappen: 
+    1. Ga in SQL Server in de Azure-portal naar *Firewalls en virtuele netwerken*
+    1. Klik op de wisselknop **Aan** om toegang tot Azure-services toe te staan.
+    1. Klik op **+ IP-adres van client toevoegen** en klik op **Opslaan**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald de volgende keer dat u SQL-gegevens deelt vanuit de Azure-portal. U kunt ook een IP-bereik toevoegen. 
 
 ### <a name="share-from-azure-data-explorer"></a>Delen vanuit Azure Data Explorer
-* Een Azure Data Explorer-cluster met data bases die u wilt delen.
-* Toestemming om te schrijven naar Azure Data Explorer cluster, dat aanwezig is in *micro soft. Kusto/clusters/schrijven*. Deze machtiging bevindt zich in de rol Inzender.
-* Machtiging voor het toevoegen van roltoewijzing aan het Azure Data Explorer-cluster, dat aanwezig is in *micro soft. autorisatie/roltoewijzingen/schrijven*. Deze machtiging bevindt zich in de rol van eigenaar.
+* Een Azure Data Explorer-cluster met databases die u wilt delen.
+* Machtiging om naar het Azure Data Explorer-cluster te schrijven, aanwezig in *Microsoft.Kusto/clusters/write*. Deze machtiging maakt onderdeel uit van de rol Inzender.
+* Machtiging om roltoewijzing toe te voegen aan het Azure Data Explorer-cluster, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-## <a name="create-a-data-share-account"></a>Een gegevens share-account maken
+## <a name="create-a-data-share-account"></a>Een Data Share-account maken
 
-Een Azure-gegevens share bron maken in een Azure-resource groep.
+Maak een Azure Data Share-resource in een Azure-resourcegroep.
 
 1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal.
 
-1. Zoeken naar *gegevens share*.
+1. Zoek naar *Data Share*.
 
-1. Selecteer gegevens share en selecteer **maken**.
+1. Selecteer Data Share en selecteer **Maken**.
 
-1. Vul de basis gegevens van uw Azure-gegevens share bron in met de volgende gegevens. 
+1. Vul de basisgegevens van uw Azure Data Share-resource in met de volgende informatie. 
 
-     **Instelling** | **Voorgestelde waarde** | **Veld Beschrijving**
+     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Naam | *datashareacount* | Geef een naam op voor uw gegevens share-account. |
-    | Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw gegevens share-account.|
-    | Resourcegroep | *test-Resource-Group* | Gebruik een bestaande resourcegroep of maak een nieuwe. |
-    | Locatie | *VS - oost 2* | Selecteer een regio voor uw gegevens share-account.
+    | Naam | *datashareacount* | Geef een naam op voor uw gegevensshare-account. |
+    | Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw gegevensshare-account.|
+    | Resourcegroep | *test-resource-group* | Gebruik een bestaande resourcegroep of maak een nieuwe. |
+    | Locatie | *US - oost 2* | Geef een regio op voor uw gegevensshare-account.
     | | |
 
-1. Selecteer **maken** om uw gegevens share-account in te richten. Het inrichten van een nieuw gegevens share account duurt doorgaans ongeveer 2 minuten of minder. 
+1. Selecteer **Maken** om uw gegevensshare-account in te richten. Het inrichten van een nieuw gegevensshare-account duurt doorgaans 2 minuten of minder. 
 
 1. Nadat de implementatie is voltooid, selecteert u **Ga naar resource**.
 
-## <a name="create-a-data-share"></a>Een gegevens share maken
+## <a name="create-a-data-share"></a>Een gegevensshare maken
 
-1. Ga naar de pagina overzicht van gegevens delen.
+1. Ga naar de overzichtspagina van uw gegevensshare.
 
     ![Uw gegevens delen](./media/share-receive-data.png "Uw gegevens delen") 
 
-1. Selecteer **beginnen met het delen van uw gegevens**.
+1. Selecteer **Beginnen met het delen van uw gegevens**.
 
 1. Selecteer **Maken**.   
 
-1. Vul de details in voor uw gegevens share. Geef een naam, type share, beschrijving van share-inhoud en gebruiks voorwaarden op (optioneel). 
+1. Vul de details in voor uw gegevensshare. Geef een naam, type share, beschrijving van de share-inhoud en gebruiksvoorwaarden (optioneel) op. 
 
-    ![EnterShareDetails](./media/enter-share-details.png "Share gegevens invoeren") 
+    ![EnterShareDetails](./media/enter-share-details.png "Gegevens van share invoeren") 
 
-1. Selecteer **door gaan**
+1. Selecteer **Doorgaan**
 
-1. Selecteer gegevens **sets toevoegen**om gegevens sets toe te voegen aan uw gegevens share. 
+1. Selecteer **Gegevenssets toevoegen** om gegevenssets aan uw gegevensshare toe te voegen. 
 
     ![Gegevenssets](./media/datasets.png "Gegevenssets")
 
-1. Selecteer het type gegevensset dat u wilt toevoegen. U ziet een andere lijst met typen gegevensset, afhankelijk van het share type (moment opname of in-place) dat u in de vorige stap hebt geselecteerd. Als u het delen van een Azure SQL Database of Azure SQL Data Warehouse, wordt u gevraagd om een aantal SQL-referenties op te vragen. Verificatie met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
+1. Selecteer het type gegevensset dat u wilt toevoegen. Welke lijst met typen gegevensset wordt weergegeven, is afhankelijk van het type share (momentopname of in-place) dat u in de vorige stap hebt geselecteerd. Als u deelt vanuit een Azure SQL Database of Azure SQL Data Warehouse, wordt u om SQL-referenties gevraagd. Voer de verificatie uit met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
 
-    ![AddDatasets](./media/add-datasets.png "Gegevens sets toevoegen")    
+    ![AddDatasets](./media/add-datasets.png "Gegevenssets toevoegen")    
 
-1. Navigeer naar het object dat u wilt delen en selecteer gegevens sets toevoegen. 
+1. Navigeer naar het object dat u wilt delen en selecteer Gegevenssets toevoegen. 
 
-    ![SelectDatasets](./media/select-datasets.png "Gegevens sets selecteren")    
+    ![SelectDatasets](./media/select-datasets.png "Gegevenssets selecteren")    
 
-1. Voer op het tabblad ontvangers in de e-mail adressen van uw gegevens consument in door + ontvanger toevoegen te selecteren. 
+1. Voer op het tabblad Ontvangers de e-mailadressen in van uw gegevensgebruiker door + Ontvanger toevoegen te selecteren. 
 
     ![AddRecipients](./media/add-recipient.png "Ontvangers toevoegen") 
 
-1. Selecteer **door gaan**
+1. Selecteer **Doorgaan**
 
-1. Als u het type snap shot share hebt geselecteerd, kunt u het momentopname schema configureren om updates van uw gegevens aan uw gegevens consument toe te voegen. 
+1. Als u het type share momentopname hebt geselecteerd, kunt u het momentopnameschema configureren om updates van uw gegevens naar uw gegevensgebruiker te sturen. 
 
-    ![EnableSnapshots](./media/enable-snapshots.png "Moment opnamen inschakelen") 
+    ![EnableSnapshots](./media/enable-snapshots.png "Momentopnamen inschakelen") 
 
-1. Selecteer een begin tijd en een herhalings interval. 
+1. Selecteer een begintijd en een herhalingsinterval. 
 
-1. Selecteer **door gaan**
+1. Selecteer **Doorgaan**
 
-1. Controleer op het tabblad controleren en maken de inhoud, instellingen, ontvangers en synchronisatie-instellingen van uw pakket. Selecteer **maken**
+1. Controleer op het tabblad Beoordelen en maken de inhoud, instellingen, ontvangers en synchronisatie-instellingen van uw pakket. Selecteer **Maken**
 
-Uw Azure-gegevens share is nu gemaakt en de ontvanger van uw gegevens share is nu klaar om uw uitnodiging te accepteren. 
+Uw Azure-gegevensshare is nu gemaakt en de ontvanger van uw gegevensshare kan nu uw uitnodiging accepteren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie leert u hoe u een Azure-gegevens share maakt en ontvangers uitnodigt. Ga door naar de zelf studie voor het [accepteren en ontvangen van gegevens](subscribe-to-data-share.md) voor meer informatie over hoe een gegevens gebruiker een gegevens share kan accepteren en ontvangen. 
+In deze zelfstudie hebt u geleerd hoe u een Azure-gegevensshare maakt en ontvangers uitnodigt. Voor meer informatie over hoe een gegevensgebruiker een gegevensshare kan accepteren en ontvangen, gaat u door naar de zelfstudie voor het [accepteren en ontvangen van gegevens](subscribe-to-data-share.md). 

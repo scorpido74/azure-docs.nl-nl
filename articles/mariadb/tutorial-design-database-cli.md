@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een Azure Database for MariaDB ontwerpen-Azure CLI'
+title: 'Zelfstudie: Een Azure Database for MariaDB ontwerpen met Azure CLI'
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure Database for MariaDB-server en -database maakt en beheert met behulp van Azure CLI vanaf de opdrachtregel.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: 455d7a0c1b3826060ade1083ec6eea99e397574b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: f08f9065b2a7361294a2f6257c85be772d0f7119
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79534844"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496063"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Zelfstudie: een Azure Database for MariaDB ontwerpen met Azure CLI
 
@@ -22,7 +22,7 @@ Azure Database for MariaDB is een relationele databaseservice in de Microsoft Cl
 > [!div class="checklist"]
 > * Een Azure Database for MariaDB maken
 > * De serverfirewall configureren
-> * Het [opdracht regel programma mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) gebruiken om een Data Base te maken
+> * Het [opdrachtregelprogramma mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) gebruiken om een database te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken
@@ -30,11 +30,11 @@ Azure Database for MariaDB is een relationele databaseservice in de Microsoft Cl
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-U kunt de Azure Cloud Shell in de browser gebruiken of [Azure cli installeren]( /cli/azure/install-azure-cli) op uw eigen computer om de code blokken in deze zelf studie uit te voeren.
+U kunt de Azure Cloud Shell gebruiken in de browser of [Azure CLI installeren]( /cli/azure/install-azure-cli) op uw eigen computer om de codeblokken in deze zelfstudie uit te voeren.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 Als u meerdere abonnementen hebt, kiest u het abonnement waarin de resource is opgenomen of wordt gefactureerd. Selecteer een specifiek abonnements-ID in uw account met de opdracht [az account set](/cli/azure/account#az-account-set).
 ```azurecli-interactive
@@ -122,7 +122,7 @@ mysql -h mydemoserver.database.windows.net -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Een lege database maken
-Wanneer u met de server bent verbonden, maakt u een lege data base.
+Zodra u met de server bent verbonden, maakt u een lege database.
 ```sql
 mysql> CREATE DATABASE mysampledb;
 ```
@@ -175,9 +175,9 @@ Stel dat u deze tabel per ongeluk hebt verwijderd. Dit is iets wat u niet eenvou
 Voor deze herstelbewerking hebt u de volgende gegevens nodig:
 
 - Herstelpunt: selecteer een tijdstip voorafgaand aan het moment waarop de server is gewijzigd. De tijd moet eerder zijn dan of gelijk zijn aan het tijdstip van de oudste back-up van de brondatabase.
-- Doelserver: geef de naam op van de nieuwe server waarnaar u wilt herstellen.
-- Bronserver: geef de naam op van de server waarvan u gegevens wilt terugzetten.
-- Locatie: u kunt de regio niet selecteren, standaard is deze hetzelfde als die van de bronserver.
+- Doelserver: geef de naam op van de nieuwe server waarnaar u wilt herstellen
+- Bronserver: geef de naam op van de server waarvan u gegevens wilt terugzetten
+- Locatie: u kunt de regio niet selecteren, standaard is deze hetzelfde als die van de bronserver
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
@@ -188,7 +188,7 @@ De opdracht `az mariadb server restore` vereist de volgende parameters:
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resourcegroep waarin de bronserver bestaat.  |
-| name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
+| naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Selecteer een bepaald tijdstip om naar te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik ISO8601-notatie voor datum en tijd. U kunt bijvoorbeeld uw eigen lokale tijdzone, zoals `2017-04-13T05:59:00-08:00`, gebruiken of de UTC Zulu-notatie `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | De naam of ID van de bronserver voor het herstellen. |
 
@@ -201,7 +201,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Azure Database for MariaDB-server maken
 > * De serverfirewall configureren
-> * Het [opdracht regel programma mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) gebruiken om een Data Base te maken
+> * Het [opdrachtregelprogramma mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) gebruiken om een database te maken
 > * Voorbeeldgegevens laden
 > * Querygegevens
 > * Gegevens bijwerken

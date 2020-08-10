@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: een Bing Web Search-client bibliotheek gebruiken'
+title: 'Quickstart: Een Bing Web Search-clientbibliotheek gebruiken'
 titleSuffix: Azure Cognitive Services
-description: De Bing Webzoekopdrachten-API biedt client bibliotheken waarmee u eenvoudig zoek functies in uw toepassingen kunt integreren. Gebruik deze Snelstartgids om Zoek opdrachten te verzenden en de resultaten terug te halen.
+description: De Bing Web Search-API biedt clientbibliotheken aan waarmee u eenvoudig zoekmogelijkheden in uw toepassingen kunt integreren. Gebruik deze quickstart om zoekaanvragen te sturen en resultaten terug te krijgen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: tracking-python
-ms.openlocfilehash: 738e3a4d77fe98e6616dc6ef3e7ac54581d4a76c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.custom: tracking-python, devx-track-javascript
+ms.openlocfilehash: dec412bd72988ca2fc1aee29f245e23ab1dea6ed
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604181"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406369"
 ---
-# <a name="quickstart-use-a-bing-web-search-client-library"></a>Snelstartgids: een Bing Web Search-client bibliotheek gebruiken
+# <a name="quickstart-use-a-bing-web-search-client-library"></a>Quickstart: Een Bing Web Search-clientbibliotheek gebruiken
 
 ::: zone pivot="programming-language-csharp"
 

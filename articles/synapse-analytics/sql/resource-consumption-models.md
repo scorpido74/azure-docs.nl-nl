@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a358052d5f3959a236f29461890c989e77edb4dc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 086c853b21301074cf35f13db52db1fdb145518c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369013"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489568"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL-resourceverbruik
 
@@ -27,7 +27,7 @@ SQL on-demand is een betalen per query-service waarvoor u niet de juiste grootte
 
 Aanbevelingen voor het kiezen van het ideale aantal Data Warehouse Units (DWU's) om de prijs en prestaties te optimaliseren en hoe u het aantal units kunt wijzigen.
 
-### <a name="what-are-data-warehouse-units"></a>Wat zijn Data Warehouse Units?
+### <a name="data-warehouse-units"></a>Data Warehouse Units
 
 Een Synapse SQL-pool vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische resources worden gedefinieerd als een combinatie van CPU, geheugen en IO. Deze drie resources worden gebundeld in rekenschaaleenheden, ook wel Data Warehouse Units (DWU's) genoemd. Een DWU vertegenwoordigt een abstracte, genormaliseerde meting van rekenresources en prestaties. Door een wijziging in uw serviceniveau wordt het aantal beschikbare DWU's voor het systeem gewijzigd, waardoor de prestaties en de kosten van uw systeem worden aangepast.
 
@@ -79,7 +79,7 @@ Naarmate u DWU's vergroot, vergroot u lineair de computerresources. Gen2 biedt d
 
 Elke SQL-server (bijvoorbeeld myserver.database.windows.net) heeft een [DTU-quotum (Database Transaction Unit)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) dat een specifiek aantal DWU's toestaat. Zie de [Capaciteitslimieten voor workloadbeheer](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management) voor meer informatie.
 
-### <a name="how-many-data-warehouse-units-do-i-need"></a>Hoeveel DWU's heb ik nodig?
+### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>Bepaal het aantal datawarehouse-eenheden dat u nodig hebt
 
 Het ideale aantal DWU's hangt zeer veel af van uw workload en de hoeveelheid gegevens die u in het systeem hebt geladen.
 

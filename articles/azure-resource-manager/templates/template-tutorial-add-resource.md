@@ -1,65 +1,66 @@
 ---
-title: Zelf studie-resource aan sjabloon toevoegen
-description: Hierin worden de stappen beschreven voor het maken van uw eerste Azure Resource Manager sjabloon. Meer informatie over de syntaxis van het sjabloon bestand en het implementeren van een opslag account.
+title: 'Zelfstudie: een resource aan een sjabloon toevoegen'
+description: Hierin worden de stappen voor het maken van uw eerste Azure Resource Manager-sjabloon beschreven. U krijgt meer informatie over de syntaxis van sjabloonbestanden en het implementeren van een opslagaccount.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0163fcc62ea6c813af8e9e5693ca35fa0e650f96
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80411737"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497525"
 ---
-# <a name="tutorial-add-a-resource-to-your-arm-template"></a>Zelf studie: een resource toevoegen aan uw ARM-sjabloon
+# <a name="tutorial-add-a-resource-to-your-arm-template"></a>Zelfstudie: Een resource aan uw ARM-sjabloon toevoegen
 
-In de [vorige zelf studie](template-tutorial-create-first-template.md)hebt u geleerd hoe u een lege sjabloon maakt en deze implementeert. U bent nu klaar om een werkelijke resource te implementeren. In deze zelf studie voegt u een opslag account toe. Het duurt ongeveer **9 minuten** om deze zelf studie te volt ooien.
+In de [vorige zelfstudie](template-tutorial-create-first-template.md) hebt u geleerd hoe u een lege sjabloon maakt en deze implementeert. U kunt nu een daadwerkelijke resource implementeren. In deze zelfstudie voegt u een opslagaccount toe. Deze zelfstudie neemt ongeveer **9 minuten** in beslag.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U wordt aangeraden de [inleidende zelf studie over sjablonen](template-tutorial-create-first-template.md)te volt ooien, maar dit is niet vereist.
+U wordt aangeraden om eerst de [inleidende zelfstudie over sjablonen](template-tutorial-create-first-template.md) te voltooien, maar dit is niet verplicht.
 
-U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
+U moet beschikken over Visual Studio Code met de extensie Resource Manager Tools (hulpprogramma's voor resourcebeheer), plus Azure PowerShell of Azure CLI. Zie de [hulpprogramma's voor sjablonen](template-tutorial-create-first-template.md#get-tools) voor meer informatie.
 
 ## <a name="add-resource"></a>Resource toevoegen
 
-Als u een opslag account definitie wilt toevoegen aan de bestaande sjabloon, bekijkt u de gemarkeerde JSON in het volgende voor beeld. In plaats van een poging om secties van de sjabloon te kopiëren, kopieert u het hele bestand en vervangt u uw sjabloon door de inhoud ervan.
+Als u een opslagaccountdefinitie aan de bestaande sjabloon wilt toevoegen, bekijkt u de gemarkeerde JSON in het volgende voorbeeld. In plaats van secties van de sjabloon te kopiëren, kopieert u het hele bestand en vervangt u uw sjabloon door de inhoud ervan.
 
-Vervang **{Geef unieke naam}** (inclusief de accolades) door een unieke naam voor het opslag account.
+Vervang **{provide-unique-name}** (met inbegrip van de accolades) door een unieke naam van een opslagaccount.
 
 > [!IMPORTANT]
-> De naam van het opslagaccount moet uniek zijn in Azure. De naam mag alleen kleine letters of cijfers bevatten. De waarde mag niet langer zijn dan 24 tekens. U kunt een naamgevings patroon gebruiken zoals het gebruik van **store1** als voor voegsel en vervolgens uw initialen en de datum van vandaag toevoegen. De naam die u gebruikt, kan er bijvoorbeeld uitzien als **store1abc09092019**.
+> De naam van het opslagaccount moet uniek zijn in Azure. De naam mag alleen kleine letters of cijfers bevatten. De naam mag niet langer zijn dan 24 tekens. U kunt een naamgevingspatroon gebruiken zoals het gebruik van **store1** als voorvoegsel en vervolgens uw initialen en de datum van vandaag toevoegen. Uw naam kan er bijvoorbeeld uitzien als **store1abc09092019**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
-Het raden van een unieke naam voor een opslag account is niet eenvoudig en werkt niet goed voor het automatiseren van grote implementaties. Verderop in deze reeks zelf studies gebruikt u sjabloon functies waarmee u gemakkelijker een unieke naam kunt maken.
+Het bedenken van een unieke naam voor een opslagaccount is niet eenvoudig en werkt niet goed voor het automatiseren van grote implementaties. Verderop in deze serie zelfstudies gebruikt u sjabloonfuncties waarmee u gemakkelijker een unieke naam kunt maken.
 
 ## <a name="resource-properties"></a>Resource-eigenschappen
 
-U vraagt zich misschien af hoe u de eigenschappen voor elk resource type kunt vinden. U kunt de [verwijzing arm-sjabloon](/azure/templates/) gebruiken om de resource typen te vinden die u wilt implementeren.
+U vraagt zich misschien af hoe u de eigenschappen voor elk resourcetype kunt vinden. U kunt de resourcetypen die u wilt implementeren, vinden in het [referentiemateriaal voor ARM-sjablonen](/azure/templates/).
 
 Elke resource die u implementeert, heeft ten minste de volgende drie eigenschappen:
 
-- **type**: het type van de resource. Deze waarde is een combi natie van de naam ruimte van de resource provider en het resource type (zoals micro soft. Storage/Storage accounts).
-- **apiVersion**: de versie van de rest API die moet worden gebruikt voor het maken van de resource. Elke resource provider heeft zijn eigen API-versies gepubliceerd, waardoor deze waarde specifiek is voor het type.
-- **naam**: naam van de resource.
+- **type**: Het type resource. Deze waarde is een combinatie van de naamruimte van de resourceprovider en het resourcetype (zoals Microsoft.Storage/storageAccounts).
+- **apiVersion**: De versie van de REST API die moet worden gebruikt voor het maken van de resource. Elke resourceprovider heeft zijn eigen API-versies gepubliceerd. Met andere woorden, elk type heeft een specifieke waarde.
+- **name**: De naam van de resource.
 
-De meeste resources hebben ook een **locatie** -eigenschap, die de regio instelt waarin de resource wordt geïmplementeerd.
+De meeste resources hebben ook de eigenschap **location**. Hiermee wordt de regio ingesteld waarin de resource wordt geïmplementeerd.
 
-De overige eigenschappen variëren per bron type en API-versie. Het is belang rijk om inzicht te krijgen in de verbinding tussen de API-versie en de beschik bare eigenschappen, dus we gaan meer details door.
+De overige eigenschappen variëren per resourcetype en API-versie. Het is belangrijk om inzicht te krijgen in het verband tussen de API-versie en de beschikbare eigenschappen. Daarom gaan we er hier dieper op in.
 
-In deze zelf studie hebt u een opslag account aan de sjabloon toegevoegd. U kunt deze API-versie zien op [storage accounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). U ziet dat u niet alle eigenschappen aan uw sjabloon hebt toegevoegd. Veel van de eigenschappen zijn optioneel. De resource provider micro soft. Storage kan een nieuwe API-versie vrijgeven, maar de versie die u implementeert, hoeft niet te worden gewijzigd. U kunt deze versie blijven gebruiken en er zeker van zijn dat de resultaten van uw implementatie consistent zijn.
+In deze zelfstudie hebt u een opslagaccount aan de sjabloon toegevoegd. U kunt zien dat de API-versie [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts) is. Merk op dat u niet alle eigenschappen aan uw sjabloon hebt toegevoegd. Veel eigenschappen zijn optioneel. De resourceprovider Microsoft.Storage kan een nieuwe API-versie uitbrengen, maar de versie die u implementeert, hoeft niet te worden gewijzigd. U kunt deze versie blijven gebruiken en er zeker van zijn dat de resultaten van uw implementatie consistent zijn.
 
-Als u een oudere API-versie bekijkt, zoals [storage accounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts), ziet u dat er een kleiner aantal eigenschappen beschikbaar is.
+Als u een oudere API-versie bekijkt, zoals [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts), ziet u dat er minder eigenschappen beschikbaar zijn.
 
-Als u besluit de API-versie voor een resource te wijzigen, moet u de eigenschappen voor die versie evalueren en de sjabloon op de juiste wijze aanpassen.
+Als u besluit de API-versie voor een resource te wijzigen, moet u de eigenschappen voor die versie evalueren en de sjabloon dienovereenkomstig aanpassen.
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-U kunt de sjabloon implementeren om het opslag account te maken. Geef uw implementatie een andere naam zodat u deze eenvoudig kunt vinden in de geschiedenis.
+U kunt de sjabloon implementeren om het opslagaccount te maken. Geef een andere naam voor uw implementatie op zodat u deze eenvoudig kunt vinden in de geschiedenis.
 
-Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
+Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group) als u de resourcegroep nog niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de variabele **templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals weergegeven in de [eerste zelfstudie](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -72,7 +73,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u deze implementatie opdracht wilt uitvoeren, moet u de [nieuwste versie](/cli/azure/install-azure-cli) van Azure cli hebben.
+Als u deze implementatieopdracht wilt uitvoeren, moet u beschikken over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI.
 
 ```azurecli
 az deployment group create \
@@ -84,44 +85,44 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de switch **debug** met de implementatie opdracht om de logboeken voor fout opsporing weer te geven.  U kunt ook de **uitgebreide** switch gebruiken om de volledige logboeken voor fout opsporing weer te geven.
+> Als de implementatie is mislukt, gebruikt u de schakeloptie **debug** met de implementatieopdracht om de logboeken voor foutopsporing weer te geven.  U kunt ook de schakeloptie **verbose** gebruiken om de volledige logboeken voor foutopsporing weer te geven.
 
-Twee mogelijke implementatie fouten die kunnen optreden:
+Er kunnen twee implementatiefouten kunnen optreden:
 
-- Fout: code = AccountNameInvalid; Bericht = {Geef unieke naam} is geen geldige naam voor een opslag account. De naam van het opslag account moet tussen 3 en 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
+- Fout: Code=AccountNameInvalid; Bericht={provide-unique-name} is geen geldige naam voor een opslagaccount. Een opslagaccountnaam moet tussen 3 en 24 tekens lang zijn en mag alleen bestaan uit getallen en kleine letters.
 
-    Vervang **{Geef unieke naam}** in de sjabloon door een unieke naam voor het opslag account.  Zie [resource toevoegen](#add-resource).
+    Vervang **{provide-unique-name}** (met inbegrip van de accolades) in de sjabloon door een unieke opslagaccountnaam.  Zie [Resource toevoegen](#add-resource).
 
-- Fout: code = StorageAccountAlreadyTaken; Bericht = het opslag account met de naam store1abc09092019 wordt al gebruikt.
+- Fout: Code = StorageAccountAlreadyTaken; Bericht=Het opslagaccount met de naam store1abc09092019 wordt al gebruikt.
 
-    Probeer in de sjabloon een andere naam voor het opslag account.
+    Probeer in de sjabloon een andere naam voor het opslagaccount.
 
-Deze implementatie duurt langer dan de implementatie van de lege sjabloon omdat het opslag account is gemaakt. Het kan ongeveer een minuut duren, maar is doorgaans sneller.
+Deze implementatie duurt langer dan de implementatie van de lege sjabloon omdat het opslagaccount is gemaakt. Het kan een minuut duren, maar gewoonlijk gaat het sneller.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
+U kunt de implementatie controleren door de resourcegroep te bekijken vanuit de Azure Portal.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer **resource groepen**in het menu links.
-1. Selecteer de resource groep die u hebt geïmplementeerd.
-1. U ziet dat er een opslag account is geïmplementeerd.
-1. U ziet dat het label implementatie nu de volgende tekst bevat: **implementaties: 2 geslaagd**.
+1. Selecteer **Resourcegroepen** in het linkermenu.
+1. Selecteer de resourcegroep waarin de sjabloon is geïmplementeerd.
+1. U ziet dat een opslagaccount is geïmplementeerd.
+1. U ziet dat het implementatielabel nu de volgende tekst bevat: **Implementaties: 2 geslaagd**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
+Als u verdergaat met de volgende zelfstudie, hoeft u de resourcegroep niet te verwijderen.
 
-Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
+Als u nu stopt, wilt u de geïmplementeerde resources wellicht opschonen door de resourcegroep te verwijderen.
 
-1. Selecteer in de Azure Portal **resource groep** in het menu links.
+1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **resource groep verwijderen** in het bovenste menu.
+4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt een eenvoudige sjabloon gemaakt voor het implementeren van een Azure Storage-account.  In de volgende zelf studies leert u hoe u para meters, variabelen, resources en uitvoer kunt toevoegen aan een sjabloon. Deze functies zijn de bouw stenen voor veel complexere sjablonen.
+U hebt een eenvoudige sjabloon voor het implementeren van een Azure-opslagaccount gemaakt.  In de volgende zelfstudies leert u hoe u parameters, variabelen, resources en uitvoer toevoegt aan een sjabloon. Deze items zijn de bouwstenen voor veel complexere sjablonen.
 
 > [!div class="nextstepaction"]
-> [Para meters toevoegen](template-tutorial-add-parameters.md)
+> [Parameters toevoegen](template-tutorial-add-parameters.md)

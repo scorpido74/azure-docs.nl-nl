@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91068bacee0bde9e11cc23816bd8e2a101854fb2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c75da4c27eae76df51836143c4fb383a1473159a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388255"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564126"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Voorlopig verwijderen wordt ingeschakeld voor alle sleutelkluizen
 
@@ -73,7 +73,7 @@ U moet nu kunnen filteren op welke sleutelkluizen voorlopig verwijderen hebben i
 1. Meld u aan bij Azure Portal.
 2. Zoek uw sleutelkluis.
 3. Selecteer Eigenschappen onder Instellingen.
-4. Schakel onder Voorlopig verwijderen het keuzerondje Herstel inschakelen in. van deze kluis en de bijbehorende objecten.
+4. Schakel onder Voorlopig verwijderen het keuzerondje in voor het activeren van herstel voor deze kluis en de bijbehorende objecten.
 5. Stel de bewaarperiode in voor voorlopig verwijderen.
 6. Selecteer Opslaan.
 

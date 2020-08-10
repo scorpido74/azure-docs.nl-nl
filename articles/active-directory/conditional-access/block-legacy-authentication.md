@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/13/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3df4eee14e5ce2f0638058efde0f80d0e5b051
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f72e477d332b33b7434663fb13cb3ca4f4c2069d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275476"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032178"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Procedure: verouderde verificatie naar Azure AD blok keren met voorwaardelijke toegang   
 
@@ -49,7 +49,7 @@ Azure AD biedt ondersteuning voor een aantal van de meest gebruikte verificatie-
 - Oudere Microsoft Office-apps
 - Apps die e-mail protocollen zoals POP, IMAP en SMTP gebruiken
 
-Verificatie met één factor (bijvoorbeeld gebruikers naam en wacht woord) is niet voldoende dagen. Wacht woorden zijn ongeldig omdat ze gemakkelijk te raden zijn en wij (mens) zijn slecht bij het kiezen van goede wacht woorden. Wacht woorden zijn ook kwetsbaar voor diverse aanvallen zoals phishing en wachtwoord spray. Een van de eenvoudigste dingen die u kunt doen om te beschermen tegen wachtwoord dreigingen is het implementeren van MFA. Met MFA, zelfs als een aanvaller in bezit is van het wacht woord van een gebruiker, is het wacht woord alleen niet voldoende om te verifiëren en toegang te krijgen tot de gegevens.
+Verificatie met één factor (bijvoorbeeld gebruikers naam en wacht woord) is niet voldoende dagen. Wacht woorden zijn ongeldig omdat ze gemakkelijk te raden zijn en wij (mens) zijn slecht bij het kiezen van goede wacht woorden. Wacht woorden zijn ook kwetsbaar voor diverse aanvallen zoals phishing en wachtwoord spray. Een van de eenvoudigste dingen die u kunt doen om te beschermen tegen wachtwoord dreigingen is het implementeren van multi-factor Authentication (MFA). Met MFA, zelfs als een aanvaller in bezit is van het wacht woord van een gebruiker, is het wacht woord alleen niet voldoende om te verifiëren en toegang te krijgen tot de gegevens.
 
 Hoe kunt u voor komen dat apps die verouderde verificatie gebruiken, toegang krijgen tot de resources van uw Tenant? De aanbeveling is om ze alleen te blok keren met een beleid voor voorwaardelijke toegang. Als dat nodig is, kunt u alleen bepaalde gebruikers en specifieke netwerk locaties gebruiken voor het gebruik van apps die zijn gebaseerd op verouderde verificatie.
 
@@ -91,46 +91,24 @@ Bij filteren worden alleen de aanmeldings pogingen weer gegeven die zijn gemaakt
 
 In deze logboeken wordt aangegeven welke gebruikers nog steeds afhankelijk zijn van verouderde verificatie en welke toepassingen verouderde protocollen gebruiken om verificatie aanvragen uit te voeren. Voor gebruikers die niet in deze logboeken worden weer gegeven en worden bevestigd dat ze geen verouderde authenticatie gebruiken, implementeert alleen het beleid voor voorwaardelijke toegang voor deze gebruikers.
 
-### <a name="block-legacy-authentication"></a>Verouderde verificatie blokkeren 
+## <a name="block-legacy-authentication"></a>Verouderde verificatie blokkeren 
 
-In een beleid voor voorwaardelijke toegang kunt u een voor waarde instellen die is gekoppeld aan de client-apps die worden gebruikt voor toegang tot uw resources. Met de voor waarde voor client-apps kunt u het bereik beperken tot apps met behulp van verouderde verificatie door **Exchange ActiveSync-clients** en **andere clients** te selecteren onder **Mobile apps en desktop-clients**.
+Er zijn twee manieren om het beleid voor voorwaardelijke toegang te gebruiken om verouderde verificatie te blok keren.
 
-![Andere clients](./media/block-legacy-authentication/01.png)
-
-Als u de toegang tot deze apps wilt blok keren, moet u **toegang blok keren**selecteren.
-
-![Toegang blokkeren](./media/block-legacy-authentication/02.png)
-
-### <a name="select-users-and-cloud-apps"></a>Gebruikers en Cloud-apps selecteren
-
-Als u verouderde verificatie voor uw organisatie wilt blok keren, denkt u waarschijnlijk dat u dit kunt doen door het volgende te selecteren:
-
-- Alle gebruikers
-- Alle Cloud-apps
-- Toegang blokkeren
-
-![Toewijzingen](./media/block-legacy-authentication/03.png)
-
-Azure heeft een veiligheids functie waarmee wordt voor komen dat u een beleid zoals dit kunt maken, omdat deze configuratie de [Aanbevolen procedures](best-practices.md) voor beleids regels voor voorwaardelijke toegang schendt.
+- [Verouderde verificatie rechtstreeks blok keren](#directly-blocking-legacy-authentication)
+- [Verouderde verificatie indirect blok keren](#indirectly-blocking-legacy-authentication)
  
-![Beleids configuratie wordt niet ondersteund](./media/block-legacy-authentication/04.png)
+### <a name="directly-blocking-legacy-authentication"></a>Verouderde verificatie rechtstreeks blok keren
 
-De veiligheids functie is nood zakelijk omdat het *blok keren van alle gebruikers en alle Cloud-apps* de mogelijkheid heeft om uw hele organisatie te blok keren om zich aan te melden bij uw Tenant. U moet ten minste één gebruiker uitsluiten om te voldoen aan de minimale best practice vereiste. U kunt ook een directory-rol uitsluiten.
+De eenvoudigste manier om verouderde verificatie voor uw hele organisatie te blok keren, is door een beleid voor voorwaardelijke toegang te configureren dat specifiek van toepassing is op verouderde authenticatie clients en de toegang blokkeert. Wanneer u gebruikers en toepassingen aan het beleid toewijst, moet u ervoor zorgen dat u gebruikers en service accounts uitsluit die nog moeten worden aangemeld met verouderde verificatie. Configureer de client-apps voor waarde door **Exchange ActiveSync-clients** en **andere clients**te selecteren. Als u de toegang voor deze client-Apps wilt blok keren, configureert u de toegangs elementen om de toegang te blok keren.
 
-![Beleids configuratie wordt niet ondersteund](./media/block-legacy-authentication/05.png)
+![Voor waarde voor client-apps geconfigureerd om verouderde auth te blok keren](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 
-U kunt aan deze veiligheids functie voldoen door één gebruiker uit uw beleid uit te sluiten. In het ideale geval moet u enkele [beheerders accounts voor nood gevallen in azure AD](../users-groups-roles/directory-emergency-access.md) definiëren en deze uitsluiten van uw beleid.
+### <a name="indirectly-blocking-legacy-authentication"></a>Verouderde verificatie indirect blok keren
 
-Als u de [modus alleen rapport](concept-conditional-access-report-only.md) gebruikt wanneer u uw beleid voor het blok keren van verouderde verificatie inschakelt, biedt uw organisatie de mogelijkheid om te controleren wat het effect van het beleid zou zijn.
+Zelfs als uw organisatie niet gereed is voor het blok keren van verouderde verificatie voor de hele organisatie, moet u ervoor zorgen dat aanmeldingen met behulp van verouderde verificatie geen beleids regels passeren waarvoor toekennings controles nodig zijn, zoals het vereisen van multi-factor Authentication of compatibele/hybride Azure AD-apparaten. Tijdens de verificatie bieden verouderde verificatie-clients geen ondersteuning voor het verzenden van MFA, apparaatcompatibiliteit of status informatie aan Azure AD. Daarom moet u beleids regels met granting Controls Toep assen op alle client toepassingen, zodat verouderde op verificatie gebaseerde aanmeldingen die niet aan de toekennings besturings elementen kunnen voldoen, worden geblokkeerd. Met de algemene Beschik baarheid van de voor waarde client-apps in augustus 2020 is nieuw gemaakt beleid voor voorwaardelijke toegang standaard van toepassing op alle client-apps.
 
-## <a name="policy-deployment"></a>Implementatie van beleid
-
-Voordat u uw beleid in productie neemt, moet u het volgende doen:
- 
-- **Service accounts** : Identificeer gebruikers accounts die worden gebruikt als service accounts of op apparaten, zoals telefoons in een Vergader Zaal. Zorg ervoor dat deze accounts sterke wacht woorden hebben en voeg ze toe aan een uitgesloten groep.
-- **Aanmeldings rapporten** : Bekijk het aanmeldings rapport en zoek naar **ander client** verkeer. Identificeer het hoogste gebruik en onderzoek waarom het in gebruik is. Normaal gesp roken wordt het verkeer gegenereerd door oudere Office-clients die geen gebruik maken van moderne verificatie of door bepaalde e-mail-apps van derden. Maak een plan om het gebruik van deze apps te verplaatsen of als de impact laag is, Informeer uw gebruikers dat ze deze apps niet meer kunnen gebruiken.
- 
-Zie [Hoe moet u een nieuw beleid implementeren?](best-practices.md#how-should-you-deploy-a-new-policy)voor meer informatie.
+![Standaard configuratie van client-apps voor waarde](./media/block-legacy-authentication/client-apps-condition-configured-no.png)
 
 ## <a name="what-you-should-know"></a>Wat u moet weten
 
@@ -141,14 +119,6 @@ Het configureren van een beleid voor **andere clients** blokkeert de hele organi
 Het kan tot 24 uur duren voordat het beleid van kracht wordt.
 
 U kunt alle beschik bare granting-besturings elementen voor de andere voor waarden van de **clients** selecteren. de ervaring van de eind gebruiker is echter altijd dezelfde toegang die wordt geblokkeerd.
-
-Als u verouderde verificatie blokkeert met de voor waarde **andere clients** , kunt u ook het platform en de locatie voorwaarde van het apparaat instellen. Als u bijvoorbeeld alleen verouderde verificatie voor mobiele apparaten wilt blok keren, stelt u de voor waarde **apparaat platformen** in door het volgende te selecteren:
-
-- Android
-- iOS
-- Windows Phone
-
-![Beleids configuratie wordt niet ondersteund](./media/block-legacy-authentication/06.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

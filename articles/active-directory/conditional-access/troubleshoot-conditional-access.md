@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610503"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032965"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Problemen met aanmelden met behulp van voorwaardelijke toegang oplossen
 
@@ -55,11 +55,16 @@ Ga als volgt te werk om te ontdekken welk beleid of beleid voor voorwaardelijke 
    1. Informatie op het tabblad **probleem oplossing en ondersteuning** kan een duidelijke reden geven voor het mislukken van een aanmelding, zoals een apparaat dat niet aan de nalevings vereisten voldoet.
    1. Als u verder wilt onderzoeken, zoomt u in op de configuratie van het beleid door te klikken op de naam van het **beleid**. Als u op de **beleids naam** klikt, wordt de gebruikers interface van de beleids configuratie voor het geselecteerde beleid weer gegeven voor controle en bewerking.
    1. De gegevens van de **client gebruiker** en het **apparaat** die zijn gebruikt voor de evaluatie van het voorwaardelijke toegangs beleid zijn ook beschikbaar in de **basis informatie**, **locatie**, **apparaatgegevens**, **verificatie gegevens**en **aanvullende details** tabbladen van de aanmeldings gebeurtenis.
-   1. Als u het beletsel teken aan de rechter kant van het beleid selecteert, worden de beleids Details van het beleid geopend. Dit geeft beheerders aanvullende informatie over waarom een beleid is toegepast of niet.
+
+### <a name="policy-details"></a>Details van beleid
+
+Als u het weglatings teken aan de rechter kant van het beleid selecteert in een aanmeldings gebeurtenis, worden de beleids Details geopend. Dit geeft beheerders aanvullende informatie over waarom een beleid is toegepast of niet.
 
    ![Tabblad voorwaardelijke toegang voor gebeurtenis aanmelden](./media/troubleshoot-conditional-access/image5.png)
 
    ![Beleids Details (preview-versie)](./media/troubleshoot-conditional-access/policy-details.png)
+
+De linkerkant bevat details die zijn verzameld bij het aanmelden en de rechter kant bevat details over de vraag of deze details voldoen aan de vereisten van het toegepaste beleid voor voorwaardelijke toegang. Beleid voor voorwaardelijke toegang is alleen van toepassing wanneer aan alle voor waarden wordt voldaan of niet is geconfigureerd.
 
 Als de informatie in de gebeurtenis niet voldoende is om inzicht te krijgen in de aanmeldings resultaten of het beleid aan te passen om de gewenste resultaten te krijgen, kan een ondersteunings incident worden geopend. Navigeer naar het tabblad **probleem oplossing en ondersteuning** van het aanmeldings gebeurtenis en selecteer **een nieuwe ondersteunings aanvraag maken**.
 

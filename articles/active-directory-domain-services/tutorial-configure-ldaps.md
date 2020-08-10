@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 995ca20ed264d78e93e04a6f54e4f691ec551e84
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024856"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404171"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Secure LDAP configureren voor een door Azure Active Directory Domain Services beheerd domein
 
@@ -110,6 +110,7 @@ Om Secure LDAP te gebruiken, wordt het netwerkverkeer versleuteld met behulp van
 * Er wordt een **persoonlijke** sleutel toegepast op het beheerde domein.
     * Deze persoonlijke sleutel wordt gebruikt om het Secure LDAP-verkeer te *ontsleutelen*. De persoonlijke sleutel moet alleen worden toegepast op het beheerde domein en niet wijdverbreid over clientcomputers worden gedistribueerd.
     * Een certificaat dat de persoonlijke sleutel bevat, heeft de bestandsindeling *.pfx*.
+    * Het versleutelingsalgoritme voor het certificaat moet *TripleDES-SHA1* zijn.
 * Een **openbare** sleutel wordt toegepast op de clientcomputers.
     * Deze openbare sleutel wordt gebruikt om het beveiligde LDAP-verkeer te *versleutelen*. De openbare sleutel kan worden gedistribueerd naar clientcomputers.
     * Certificaten zonder de persoonlijke sleutel hebben de bestandsindeling *.cer*.
@@ -149,7 +150,7 @@ Voordat u het digitale certificaat dat u hebt gemaakt in de vorige stap kunt geb
 
 1. Omdat dit certificaat wordt gebruikt om gegevens te ontsleutelen, moet u de toegang zorgvuldig regelen. U kunt een wachtwoord toepassen om het gebruik van het certificaat te beveiligen. Zonder het juiste wachtwoord kan het certificaat niet worden toegepast op een service.
 
-    Kies op de pagina **Beveiliging** de optie voor **Wachtwoord** om het *PFX*-certificaatbestand te beveiligen. Voer een wachtwoord in en bevestig dit. Selecteer vervolgens **Volgende**. Dit wachtwoord wordt in de volgende sectie gebruikt om Secure LDAP in te schakelen voor uw beheerde domein.
+    Kies op de pagina **Beveiliging** de optie voor **Wachtwoord** om het *PFX*-certificaatbestand te beveiligen. Het versleutelingsalgoritme moet *TripleDES-SHA1* zijn. Voer een wachtwoord in en bevestig dit. Selecteer vervolgens **Volgende**. Dit wachtwoord wordt in de volgende sectie gebruikt om Secure LDAP in te schakelen voor uw beheerde domein.
 1. Geef op de pagina **Bestand dat u wilt exporteren** de bestandsnaam en de locatie waar u het certificaat wilt exporteren op, bijvoorbeeld *C:\Users\accountname\azure-ad-ds.pfx*. Noteer het wachtwoord en de locatie van het *PFX*-bestand omdat u deze informatie in de volgende stappen nodig hebt.
 1. Selecteer **Voltooien** op de controlepagina om het certificaat naar een *PFX*-certificaatbestand te exporteren. Er wordt een dialoogvenster voor bevestiging weergegeven wanneer het certificaat is geëxporteerd.
 1. Laat MMC geopend voor gebruik in de volgende sectie.
@@ -210,7 +211,7 @@ Er wordt een melding weergegeven dat Secure LDAP wordt geconfigureerd voor het b
 
 Het duurt enkele minuten om Secure LDAP in te schakelen voor uw beheerde domein. Als het Secure LDAP-certificaat dat u opgeeft niet voldoet aan de vereiste criteria, kunt u Secure LDAP niet inschakelen voor het beheerde domein.
 
-Enkele veelvoorkomende redenen hiervoor zijn een onjuiste domeinnaam of het feit dat het certificaat binnenkort verloopt of al is verlopen. U kunt het certificaat opnieuw maken met geldige parameters en vervolgens Secure LDAP inschakelen met dit bijgewerkte certificaat.
+Enkele veelvoorkomende redenen hiervoor zijn een onjuiste domeinnaam, het versleutelingsalgoritme voor het certificaat is niet ingesteld op *TripleDES-SHA1* of het certificaat verloopt binnenkort of is al verlopen. U kunt het certificaat opnieuw maken met geldige parameters en vervolgens Secure LDAP inschakelen met dit bijgewerkte certificaat.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Secure LDAP-toegang via internet beperken
 

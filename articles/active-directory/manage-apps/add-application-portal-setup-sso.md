@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 461a424f23161e1567c6b32a38db0225efc56b1e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387282"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808385"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Eenmalige aanmelding (SSO) instellen voor een toepassing in uw Azure Active Directory-tenant (Azure AD)
 
@@ -61,6 +61,16 @@ Eenmalige aanmelding voor een toepassing instellen:
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Schermopname toont de optie voor eenmalige aanmelding in het Enterprise-abonnement op de pagina met GitHub-prijzen.":::
 
 
-## <a name="next-step"></a>Volgende stap
+> [!TIP]
+> U kunt het beheer van apps automatiseren met behulp van de Graph API. Zie [App-beheer automatiseren met de Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
 
-- [Een app verwijderen](delete-application-portal.md)
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u de quickstart-reeks hebt voltooid, kunt u de app verwijderen om uw testtenant op te schonen. Zie [Een app verwijderen](delete-application-portal.md) in de laatste quickstart in deze reeks voor meer informatie over het verwijderen van een app.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Ga naar het volgende artikel om te lezen hoe u een app verwijdert.
+> [!div class="nextstepaction"]
+> [Een app verwijderen](delete-application-portal.md)

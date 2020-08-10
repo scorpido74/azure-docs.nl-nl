@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529621"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554019"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Quickstart: Een Azure Cognitive Search-service maken in de portal
 
@@ -30,8 +30,8 @@ Hebt u liever PowerShell? Gebruik de [servicesjabloon](https://azure.microsoft.c
 De volgende service-eigenschappen staan gedurende de levensduur van de service vast. Als een of meerdere wilt wijzigen, is er een nieuwe service vereist. Aangezien ze vast staan, is het belangrijk om na te denken over de implicaties voor het gebruik bij het invullen van de eigenschappen:
 
 * De servicenaam wordt onderdeel van het URL-eindpunt ([tips](#name-the-service) voor handige servicenamen).
-* De servicelaag is van [invloed op de facturering](search-sku-tier.md) en zorgt voor een opwaartse limiet op de capaciteit.
-* De serviceregio kan de beschikbaarheid van bepaalde scenario's bepalen. Als u geïnteresseerd bent in kennisanalyse en AI-verrijking, hebt u Cognitive Services en mogelijk ook Azure Machine Learning in dezelfde regio als Azure Cognitive Search nodig.
+* De servicelaag is van [invloed op de facturering](search-sku-tier.md) en zorgt voor een opwaartse limiet op de capaciteit. Sommige functies zijn niet beschikbaar in de gratis laag.
+* De serviceregio kan de beschikbaarheid van bepaalde scenario's bepalen. Als u [functies met sterke beveiliging](search-security-overview.md) of [AI-verrijking](cognitive-search-concept-intro.md) wilt gebruiken, moet u Azure Cognitive Search in dezelfde regio als andere services plaatsen, of in regio's die de desbetreffende functie bieden. 
 
 ## <a name="subscribe-free-or-paid"></a>Abonneren (gratis of betaald)
 
@@ -51,7 +51,7 @@ U kunt ook [voordelen voor MSDN-abonnees activeren](https://azure.microsoft.com/
 
 ## <a name="choose-a-subscription"></a>Kies een abonnement
 
-Als u meerdere abonnementen hebt, kiest u er één voor uw zoekservice.
+Als u meerdere abonnementen hebt, kiest u er één voor uw zoekservice. Als u [dubbele versleuteling](search-security-overview.md#double-encryption) implementeert of andere functies die afhankelijk zijn van beheerde service-identiteiten, kiest u hetzelfde abonnement als voor Azure Key Vault of andere services waarvoor beheerde identiteiten worden gebruikt.
 
 ## <a name="set-a-resource-group"></a>Stel een resourcegroep in
 
@@ -89,6 +89,8 @@ Azure Cognitive Search is beschikbaar in de meeste regio’s. De lijst met onder
 
 > [!Note]
 > India - centraal en VAE - noord zijn momenteel niet beschikbaar voor nieuwe services. Voor services die al beschikbaar zijn in die regio’s, kunt u zonder beperkingen opschalen en wordt uw service volledig ondersteund in die regio. De beperkingen zijn tijdelijk en alleen beperkt tot nieuwe services. We zullen deze opmerking verwijderen wanneer de beperkingen niet meer van toepassing zijn.
+>
+> Dubbele versleuteling is alleen beschikbaar in bepaalde regio's. Zie [Dubbele versleuteling](search-security-overview.md#double-encryption) voor meer informatie.
 
 ### <a name="requirements"></a>Vereisten
 

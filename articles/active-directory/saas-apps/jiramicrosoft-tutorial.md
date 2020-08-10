@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0c44953a33e6ccd0bbe406159e9636411695ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f06f0f376c1ecafcff833aa4b6bece0a0e35d10
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017091"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475274"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Confluence SAML SSO by Microsoft
 
@@ -42,7 +42,7 @@ Gebruik uw Microsoft Azure Active Directory-account met JIRA Server van Atlassia
 Voor het configureren van Azure AD-integratie met JIRA SAML SSO by Microsoft hebt u het volgende nodig:
 
 - Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
-- JIRA Core en Software 6.4 tot 8.8.0 of JIRA Service Desk 3.0 tot 4.8.0 moeten zijn geïnstalleerd en geconfigureerd op een 64-bits versie van Windows
+- JIRA Core and Software 6.4 tot 8.11.0 of JIRA Service Desk 3.0 tot 4.8.0 moeten zijn geïnstalleerd en geconfigureerd op een 64-bits versie van Windows
 - JIRA-server is ingeschakeld voor HTTPS
 - In de volgende sectie kunt u zien wat de ondersteunde versies zijn van de JIRA-invoegtoepassing.
 - De JIRA-server is bereikbaar op internet vanaf de aanmeldingspagina van Azure AD voor verificatie en moet token uit Azure AD kunnen ontvangen
@@ -63,7 +63,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 
 ## <a name="supported-versions-of-jira"></a>Ondersteunde versies van JIRA
 
-* JIRA Core en Software: 6.4 tot 8.8.0
+* JIRA Core en Software: 6.4 tot 8.11.0
 * JIRA Service Desk 3.0.0 tot 4.8.0
 * JIRA ondersteunt ook 5.2. Klik voor meer informatie op [Microsoft Azure Active Directory-eenmalige aanmelding voor JIRA 5.2](jira52microsoft-tutorial.md)
 

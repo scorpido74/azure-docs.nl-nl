@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 0818ab782710e6a102d2034790ff8d997cd54f8e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338024"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808436"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Een toepassing toevoegen aan uw Azure Active Directory-tenant (Azure AD)
 
@@ -58,8 +57,15 @@ Om een toepassing toevoegen aan uw Azure Active Directory-tenant:
 
 U hebt een toepassing toegevoegd. In de volgende quickstart ziet u hoe u het logo kunt wijzigen en andere eigenschappen van de toepassing kunt bewerken.
 
+> [!TIP]
+> U kunt het beheer van apps automatiseren met behulp van de Graph API. Zie [App-beheer automatiseren met de Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u niet verder gaat met de quickstart-reeks, kunt u de app verwijderen om uw testtenant op te schonen. Zie [Een app verwijderen](delete-application-portal.md) in de laatste quickstart in deze reeks voor meer informatie over het verwijderen van een app.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een app configureren](add-application-portal-configure.md)
-- [Eenmalige aanmelding instellen](add-application-portal-setup-sso.md)
-- [Een app verwijderen](delete-application-portal.md)
+Ga naar het volgende artikel om te lezen hoe u een app configureert.
+> [!div class="nextstepaction"]
+> [Een app configureren](add-application-portal-configure.md)

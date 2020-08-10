@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c44d2d80e311fd42f0e2167cb0495a4070d0a313
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9cf30324371043d8b702d3e22ec3ecd98e114ba6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025860"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428581"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Zelfstudie: Hybride Azure Active Directory-deelname configureren voor federatieve domeinen
 
@@ -80,6 +80,9 @@ Voor hybride Azure AD-koppeling moeten apparaten toegang tot de volgende Microso
 - `https://device.login.microsoftonline.com`
 - De beveiligingstokenservice (voor STS - federatieve domeinen) van uw organisatie
 - `https://autologon.microsoftazuread-sso.com` (Als u naadloze eenmalige aanmelding gebruikt of wilt gebruiken)
+
+> [!WARNING]
+> Als uw organisatie proxyservers gebruikt die SSL-verkeer onderscheppen voor scenario's zoals preventie van gegevensverlies of beperkingen voor Azure AD-tenants, moet u ervoor zorgen dat verkeer naar 'https://device.login.microsoftonline.com ' wordt uitgesloten van TLS break-and-inspect. Als u 'https://device.login.microsoftonline.com ' niet uitsluit, kan dit problemen geven met de verificatie van clientcertificaten, die op hun beurt weer problemen veroorzaken met apparaatregistratie en voorwaardelijke toegang op basis van apparaten.
 
 Vanaf Windows 10 1803 is het zo dat als de directe hybride Azure AD-koppeling mislukt voor federatieve omgeving met gebruik van AD FS, we vertrouwen op Azure AD Connect om het computerobject in Azure AD te synchroniseren dat vervolgens wordt gebruikt om de apparaatregistratie voor hybride Azure AD-koppeling te voltooien. Verifieer dat Azure AD Connect de computerobjecten heeft gesynchroniseerd van de apparaten die u hybride Azure AD-gekoppeld wilt maken. Als de computerobjecten bij specifieke organisatie-eenheden horen, moet u ook deze OE's worden configureren voor synchronisatie in Azure AD Connect. Zie [Filteren configureren door Azure AD Connect te gebruiken](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) (Op organisatie-eenheden gebaseerde filters) voor meer informatie over het synchroniseren van computerobjecten met behulp van Azure AD Connect.
 

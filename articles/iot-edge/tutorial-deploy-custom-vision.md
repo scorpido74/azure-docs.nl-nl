@@ -1,20 +1,20 @@
 ---
-title: Zelf studie-Custom Vision classificatie implementeren op een apparaat met behulp van Azure IoT Edge
+title: 'Zelfstudie: Custom Vision-classificatie op een apparaat implementeren met Azure IoT Edge'
 description: In deze zelfstudie leert u hoe u een Computer Vision-model uitvoert als een container met behulp van Custom Vision en IoT Edge.
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/15/2020
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76166998"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439734"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Zelfstudie: Custom Vision Service gebruiken om afbeeldingsclassificatie uit te voeren aan de rand
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 <center>
 
-![Diagram-zelf studie architectuur, faseren en classificatie implementeren](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+![Diagram - architectuur van zelfstudie, classificatie faseren en implementeren](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
 </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -40,21 +40,21 @@ In deze zelfstudie leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 >[!TIP]
->Deze zelf studie is een vereenvoudigde versie van de [Custom Vision en Azure IOT Edge op een voorbeeld project van Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) . Deze zelf studie is ontworpen om te worden uitgevoerd op een virtuele machine in de Cloud en maakt gebruik van statische installatie kopieën om de afbeeldings classificatie te trainen en te testen, wat nuttig is voor iemand die alleen begint met het evalueren van Custom Vision op IoT Edge. Het voorbeeld project maakt gebruik van fysieke hardware en stelt een feed voor een live-camera in voor het trainen en testen van de classificatie van de installatie kopie, wat nuttig is voor iemand die een gedetailleerd, realistisch scenario wil uitproberen.
+>Deze zelfstudie is een vereenvoudigde versie van het voorbeeldproject [Custom Vision en Azure IoT Edge op een Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi). Deze zelfstudie is ontworpen om te worden uitgevoerd op een virtuele machine in de cloud en maakt gebruik van statische afbeeldingen om de functie voor afbeeldingsclassificatie te trainen en te testen, wat handig is voor iemand die net begint met het evalueren van Custom Vision in IoT Edge. Het voorbeeldproject maakt gebruik van fysieke hardware en stelt een live camerafeed in voor het trainen en testen van de functie voor afbeeldingsclassificatie, wat handig is voor iemand die een meer gedetailleerd praktijkscenario wil uitproberen.
 
-Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen:
+Voordat u met deze zelfstudie begint, moet u de vorige zelfstudie hebben doorlopen om uw omgeving voor Linux-containerontwikkeling in te stellen: [IoT Edge-modules ontwikkelen voor Linux-apparaten](tutorial-develop-for-linux.md). Als u die zelfstudie hebt voltooid, hebt u de volgende vereisten klaarstaan:
 
-* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
-* Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md)
-* Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* [Docker CE](https://docs.docker.com/install/) is geconfigureerd voor het uitvoeren van Linux-containers.
+* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een [Linux-apparaat met Azure IoT Edge](quickstart-linux.md)
+* Een containerregister, zoals [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* [Visual Studio Code](https://code.visualstudio.com/) geconfigureerd met de [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+* [Docker CE](https://docs.docker.com/install/) geconfigureerd voor het uitvoeren van Linux-containers.
 
-Als u een IoT Edge module wilt ontwikkelen met de Custom Vision-service, installeert u de volgende aanvullende vereisten op uw ontwikkel computer:
+Om een IoT Edge-module te ontwikkelen met de Custom Vision-service, moeten de volgende aanvullende vereisten op uw ontwikkelcomputer zijn geïnstalleerd:
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Python-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+* [Python-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Een afbeeldingsclassificatie bouwen met Custom Vision
 
@@ -76,11 +76,11 @@ Wanneer de afbeeldingsclassificatie is gemaakt en getraind, kunt u deze als een 
    | ----- | ----- |
    | Naam | Geef een naam op voor uw project, bijvoorbeeld **EdgeTreeClassifier**. |
    | Beschrijving | Optionele projectbeschrijving. |
-   | Resource | Selecteer een van de Azure-resource groepen die een Custom Vision Service Resource bevat of **Maak een nieuwe** als u deze nog niet hebt toegevoegd. |
+   | Resource | Selecteer een van uw Azure-resource groepen die een Custom Vision Service Resource bevat of **maak nieuwe groepen** als u er nog geen hebt toegevoegd. |
    | Projecttypen | **Classificatie** |
    | Classificatietypen | **Multiclass (één label per afbeelding)** |
    | Domeinen | **Algemeen (compact)** |
-   | Export mogelijkheden | **Basis platforms (tensor flow, CoreML, ONNX,...)** |
+   | Exportmogelijkheden | **Basisplatforms (TensorFlow, CoreML, ONNX, ...)** |
 
 5. Selecteer **Project maken**.
 
@@ -142,7 +142,7 @@ U hebt nu de bestanden voor een containerversie van de afbeeldingsclassificatie 
 
 Een oplossing is een logische manier om meerdere modules voor één IoT Edge-implementatie te ontwikkelen en te organiseren. Een oplossing bevat code voor een of meer modules, evenals het implementatiemanifest waarin wordt gedeclareerd hoe u deze modules op een IoT Edge-apparaat worden geconfigureerd. 
 
-1. Selecteer**opdracht palet** **weer geven** > om het VS code-opdracht palet te openen. 
+1. Selecteer in Visual Studio Code **View** > **Command Palette** om het VS Code-opdrachtpalet te openen. 
 
 1. Voer in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** in en voer deze uit. Geef in het opdrachtpalet de volgende informatie op om de oplossing te maken: 
 
@@ -152,7 +152,7 @@ Een oplossing is een logische manier om meerdere modules voor één IoT Edge-imp
    | Een naam opgeven voor de oplossing | Voer een beschrijvende naam voor uw oplossing in, bijvoorbeeld **CustomVisionSolution**, of accepteer de standaardinstelling. |
    | Modulesjabloon selecteren | Kies **Python-module**. |
    | Een modulenaam opgeven | Noem de module **classificatie**.<br><br>Het is belangrijk dat deze modulenaam in kleine letters wordt opgegeven. IoT Edge is hoofdlettergevoelig wat de verwijzing naar modules betreft, en deze oplossing gebruikt een bibliotheek die alle aanvragen opmaakt in kleine letters. |
-   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de laatste stap. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal.<br><br>De uiteindelijke teken reeks ziet eruit als ** \<register naam\>. azurecr.io/Classifier**. |
+   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de laatste stap. Vervang **localhost:5000** door de waarde van de **aanmeldingsserver** uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal.<br><br>De uiteindelijke tekenreeks ziet er als volgt uit **\<registry name\>.azurecr.io/classifier**. |
  
    ![Opslagplaats voor Docker-installatiekopieën opgeven](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -162,17 +162,19 @@ De werkruimte van de IoT Edge-oplossing wordt geladen in het Visual Studio Code-
 
 In het omgevingsbestand worden de referenties voor het containerregister opgeslagen. Deze referenties worden gedeeld met de IoT Edge-runtime. De runtime heeft deze referenties nodig om uw persoonlijke installatiekopieën naar het IoT Edge-apparaat te halen.
 
+De IoT Edge-extensie probeert uw containerregisterreferenties van Azure op te halen en deze in het omgevingsbestand in te vullen. Controleer of uw referenties al zijn toegevoegd. Als dat niet het geval is, voegt u ze nu toe:
+
 1. Open in VS Code Explorer het .env-bestand.
 2. Werk de velden **gebruikersnaam** en **wachtwoord** bij met de waarden die u hebt gekopieerd uit het Azure-containerregister.
 3. Sla dit bestand op.
 
-### <a name="select-your-target-architecture"></a>Selecteer uw doel architectuur
+### <a name="select-your-target-architecture"></a>Uw doelarchitectuur selecteren
 
-Visual Studio code kan momenteel modules ontwikkelen voor Linux AMD64-en Linux ARM32v7-apparaten. U moet selecteren welke architectuur u wilt richten op elke oplossing, omdat de container is gebouwd en anders wordt uitgevoerd voor elk type architectuur. De standaard waarde is Linux AMD64, wat we gebruiken voor deze zelf studie. 
+Momenteel kunt u met Visual Studio Code modules ontwikkelen voor apparaten met Linux AMD64 en Linux ARM32v7. U moet voor elke oplossing selecteren op welke architectuur u zich richt, omdat de container voor elk type architectuur anders wordt opgebouwd en anders wordt uitgevoerd. De standaardwaarde is Linux AMD64, wat we ook gaan gebruiken voor deze zelfstudie. 
 
-1. Open het opdracht palet en zoek naar **Azure IOT Edge: Stel het standaard doel platform voor de rand oplossing**in of selecteer het snelkoppelings pictogram in de zijbalk aan de onderkant van het venster. 
+1. Open het opdrachtpalet en zoek **Azure IoT Edge: standaarddoelplatform voor Edge-oplossing instellen** of selecteer het snelkoppelingspictogram onderaan het venster. 
 
-2. Selecteer in het opdracht palet de doel architectuur in de lijst met opties. Voor deze zelf studie gebruiken we een virtuele machine van Ubuntu als het IoT Edge-apparaat, zodat de standaard **amd64**wordt bewaard. 
+2. Selecteer in het opdrachtpalet de doelarchitectuur in de lijst met opties. In deze zelfstudie gebruiken we een virtuele Ubuntu-machine als het IoT Edge-apparaat, dus laten we de standaardinstelling **amd64** staan. 
 
 ### <a name="add-your-image-classifier"></a>Een afbeeldingsclassificatie toevoegen
 
@@ -192,7 +194,7 @@ De Python-modulesjabloon in Visual Studio Code bevat wat voorbeeldcode die u kun
 
 6. Open het bestand **module.json** in de map classificatie. 
 
-7. Werk de **platforms** para meter bij zodat deze verwijst naar de nieuwe Dockerfile die u hebt toegevoegd en verwijder alle opties behalve amd64. Dit is de enige architectuur die voor deze zelf studie wordt gebruikt. 
+7. Werk de parameter **platforms** bij zodat deze verwijst naar het nieuwe Dockerfile dat u hebt toegevoegd en verwijder alle opties behalve AMD64. Dit is de enige architectuur die we voor deze zelfstudie gebruiken. 
 
    ```json
    "platforms": {
@@ -210,14 +212,14 @@ In een echte Custom Vision-implementatie zou u een camera hebben die live afbeel
 
 In deze sectie voegt u een nieuwe module aan dezelfde CustomVisionSolution toe en geeft u code op om de gesimuleerde camera te maken. 
 
-1. In hetzelfde Visual Studio Code-venster gebruikt u het opdrachtenpalet om **Azure IoT Edge: IoT Edge-module toevoegen** uit te voeren. Geef in het opdrachtenpalet de volgende informatie op voor uw nieuwe module: 
+1. In hetzelfde Visual Studio Code-venster gebruikt u het opdrachtenpalet om **Azure IoT Edge: Add IoT Edge Module** uit te voeren. Geef in het opdrachtenpalet de volgende informatie op voor uw nieuwe module: 
 
    | Vraag | Waarde | 
    | ------ | ----- |
-   | Implementatiesjabloonbestand selecteren | Selecteer het bestand deployment.template.json in de map CustomVisionSolution. |
+   | Implementatiesjabloonbestand selecteren | Selecteer het bestand **deployment.template.json** in de map CustomVisionSolution. |
    | Modulesjabloon selecteren | Selecteer **Python-module** |
    | Een modulenaam opgeven | Noem de module **cameraCapture** |
-   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Vervang **localhost:5000** door de waarde van de aanmeldingsserver voor uw Azure-containerregister.<br><br>De laatste teken reeks ziet eruit als ** \<registrynaam\>. azurecr.io/cameracapture**. |
+   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Vervang **localhost:5000** door de waarde van **Aanmeldingsserver** voor uw Azure-containerregister.<br><br>De uiteindelijke tekenreeks ziet er als volgt uit **\<registryname\>.azurecr.io/cameracapture**. |
 
    De nieuwe module wordt in de oplossingswerkruimte van het VS Code-venster geladen en het bestand deployment.template.json wordt bijgewerkt. Nu moet u twee modulemappen zien: classificatie en cameraCapture. 
 
@@ -322,11 +324,11 @@ In deze sectie voegt u een nieuwe module aan dezelfde CustomVisionSolution toe e
 
 In plaats van een echte camera te gebruiken om dit scenario een afbeeldingsfeed te bieden, gebruiken we één testafbeelding. U vindt een testafbeelding in de GitHub-opslagplaats die u eerder in deze zelfstudie hebt gedownload voor de trainingsafbeeldingen. 
 
-1. Ga naar de test installatie kopie, die zich bevindt zich op de**test****afbeeldingen** / van **cognitieve CustomVision-Windows** / -voor**beelden** / . 
+1. Navigeer naar de testafbeelding in **Cognitive-CustomVision-Windows** / **Samples** / **Images** / **Test**. 
 
 2. Kopieer**test_image.jpg** 
 
-3. Blader naar de map van uw IOT EDGE-oplossing en plak de test installatie kopie in de map **modules** / **cameraCapture** . De afbeelding moet zich in dezelfde map bevinden als het bestand main.py dat u in de vorige sectie hebt bewerkt. 
+3. Blader naar de map van uw IoT Edge-oplossing en plak de testafbeelding in de map **modules** / **cameraCapture**. De afbeelding moet zich in dezelfde map bevinden als het bestand main.py dat u in de vorige sectie hebt bewerkt. 
 
 4. Open in Visual Studio Code het bestand **Dockerfile.amd64** voor de cameraCapture-module.
 
@@ -346,9 +348,9 @@ De IoT Edge-extensie voor Visual Studio Code bevat een sjabloon in elke IoT Edge
 
 1. Open het bestand **deployment.template.json** in de oplossingsmap. 
 
-2. Zoek de sectie **modules** , die drie modules moet bevatten: de twee die u hebt gemaakt, geclassificeerd en cameraCapture, en een derde die standaard is opgenomen in SimulatedTemperatureSensor. 
+2. Zoek de sectie **modules**, drie modules moet bevatten: de twee die u hebt gemaakt, classificatie en cameraCapture, en een derde, die standaard is opgenomen, SimulatedTemperatureSensor. 
 
-3. Verwijder de module **SimulatedTemperatureSensor** met alle bijbehorende para meters. Deze module is opgenomen om voorbeeldgegevens voor testscenario's te verstrekken, maar deze is niet nodig in deze implementatie. 
+3. Verwijder de module **SimulatedTemperatureSensor** met alle bijbehorende parameters. Deze module is opgenomen om voorbeeldgegevens voor testscenario's te verstrekken, maar deze is niet nodig in deze implementatie. 
 
 4. Als u de afbeeldingsclassificatiemodule een andere naam hebt gegeven dan **classificatie**, gebruik die naam dan en controleer of deze alleen kleine letters bevat. De module cameraCapture roept de classificatiemodule aan met behulp van een bibliotheek met aanvragen die alle aanvragen omzet in kleine letters, en IoT Edge is hoofdlettergevoelig. 
 
@@ -364,7 +366,7 @@ De IoT Edge-extensie voor Visual Studio Code bevat een sjabloon in elke IoT Edge
 
     ```json
         "routes": {
-          "CameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
+          "cameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
         },
     ```
 
@@ -372,31 +374,51 @@ De IoT Edge-extensie voor Visual Studio Code bevat een sjabloon in elke IoT Edge
 
 7. Sla het bestand **deployment.template.json** op.
 
-## <a name="build-and-deploy-your-iot-edge-solution"></a>Uw IoT Edge-oplossing maken en implementeren
+## <a name="build-and-push-your-iot-edge-solution"></a>Uw IoT Edge-oplossing bouwen en pushen
 
-Nu beide modules zijn gemaakt en de implementatiemanifestsjabloon is geconfigureerd, kunt u de containerafbeeldingen gaan bouwen en naar uw containerregister pushen. 
+Nu beide modules zijn gemaakt en de implementatiemanifestsjabloon is geconfigureerd, kunt u de containerafbeeldingen gaan bouwen en naar uw containerregister pushen.
 
 Wanneer de afbeeldingen in het register staan, kunt u de oplossing implementeren op een IoT Edge-apparaat. U kunt modules op een apparaat instellen via de IoT Hub, maar u hebt ook toegang tot uw IoT Hub en apparaten via Visual Studio Code. In dit gedeelte stelt u de toegang tot uw IoT Hub in en gebruikt u VS Code om uw oplossing op uw IoT Edge-apparaat te implementeren.
 
-Eerst gaat u de oplossing bouwen en naar het containerregister pushen. 
+Eerst gaat u de oplossing bouwen en naar het containerregister pushen.
 
-1. Klik in VS Code Explorer met de rechtermuisknop op het bestand **deployment.template.json** en selecteer **Build and Push IoT Edge solution**. U kunt de voortgang van deze bewerking bekijken in de in VS Code geïntegreerde terminal. 
-2. U ziet dat er een nieuwe map is toegevoegd aan uw oplossing, **configuratie**. Vouw deze map uit en open het bestand **Implementation. json** in.
-3. Lees de informatie in het bestand deployment.json. Het bestand deployment.json wordt automatisch gemaakt (of bijgewerkt) op basis van het implementatiesjabloonbestand dat u hebt geconfigureerd en op basis van informatie uit de oplossing, zoals het .env-bestand en de module.json-bestanden. 
+1. Open de met VS Code geïntegreerde terminal door **View** > **Terminal** te selecteren.
 
-Selecteer vervolgens uw apparaat en implementeer uw oplossing.
+2. Meld u aan bij Docker door de volgende opdracht in de terminal in te voeren. Meld u aan met de gebruikersnaam, het wachtwoord en de aanmeldingsserver uit het Azure-containerregister. U kunt deze waarden ophalen in de sectie **Toegangssleutels** van het register in Azure Portal.
 
-1. Vouw in VS Code Explorer de sectie **Azure IoT Hub Devices** uit. 
-2. Klik met de rechtermuisknop op het doelapparaat van uw implementatie en selecteer **Implementatie maken voor één apparaat**. 
-3. Ga in de bestandsverkenner naar de map **config** in uw oplossing en kies **deployment.json**. Klik op **Edge-distributiemanifest selecteren**. 
+   ```bash
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
+   ```
 
-Als de implementatie is geslaagd, wordt er een bevestigingsbericht weergegeven in de VS Code-uitvoer. Vouw in VS Code Explorer de details uit over het IoT Edge-apparaat dat u voor deze implementatie hebt gebruikt. Als de modules niet meteen worden weergegeven, beweegt u de muisaanwijzer over de koptekst **Azure IoT Hub-apparaten** om de knop Vernieuwen in te schakelen. Het kan even duren voordat de modules starten en aan IoT Hub rapporteren. 
+   Mogelijk wordt een beveiligingswaarschuwing weergegeven waarin het gebruik van `--password-stdin` wordt aanbevolen. Hoewel dit wordt aanbevolen voor productiescenario's, valt het buiten het bereik van deze zelfstudie. Zie de documentatie voor [aanmelding bij Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) voor meer informatie.
 
-U kunt ook controleren of alle modules op uw eigen apparaat actief zijn. Voer op uw IoT Edge-apparaat de volgende opdracht uit om de status van de modules te bekijken. Het kan even duren voordat de modules starten.
+3. Klik in VS Code Explorer met de rechtermuisknop op het bestand **deployment.template.json** en selecteer **Build and Push IoT Edge solution**.
+
+   Met de opdracht voor bouwen en pushen worden drie bewerkingen gestart. Eerst wordt er een nieuwe map met de naam **config** in de oplossing gemaakt die het volledige implementatiemanifest bevat, die is gebouwd op basis van de informatie in de implementatiesjabloon en andere oplossingsbestanden. Daarna wordt `docker build` uitgevoerd om de containerinstallatiekopie te bouwen op basis van de juiste dockerfile voor uw doelarchitectuur. Vervolgens wordt `docker push` uitgevoerd om de opslagplaats van de installatiekopie naar het containerregister te pushen.
+
+   Dit proces kan de eerste keer enkele minuten duren, maar de volgende keer dat u de opdrachten uitvoert, wordt het sneller uitgevoerd.
+
+## <a name="deploy-modules-to-device"></a>Modules op het apparaat implementeren
+
+Gebruik Visual Studio Code Explorer en de Azure IoT Tools-extensie om het moduleproject op uw IoT Edge-apparaat te implementeren. U hebt al een implementatiemanifest voorbereid voor uw scenario, namelijk het bestand **deployment.amd64.json** in de map config. U hoeft nu alleen nog maar een apparaat te selecteren dat de implementatie moet ontvangen.
+
+Zorg ervoor dat uw IoT Edge-apparaat actief is.
+
+1. Vouw in de Visual Studio Code Explorer, onder de sectie **Azure IoT Hub**, de optie **Apparaten** uit om de lijst met IoT-apparaten weer te geven.
+
+2. Klik met de rechtermuisknop op de naam van het IoT Edge-apparaat en selecteer **Implementatie voor één apparaat maken**.
+
+3. Selecteer het bestand **deployment.amd64.json** in de map **config** en klik vervolgens op **Edge-distributiemanifest selecteren**. Gebruik niet het bestand deployment.template.json.
+
+4. Vouw onder uw apparaat **Modules** uit voor een lijst met de geïmplementeerde en actieve modules. Klik op de knop Vernieuwen. U ziet nu de nieuwe modules **classifier** en **cameraCapture**, die worden uitgevoerd samen met de **$edgeAgent** en **$edgeHub**.  
+
+U kunt ook controleren of alle modules op uw eigen apparaat actief zijn. Voer op uw IoT Edge-apparaat de volgende opdracht uit om de status van de modules te bekijken.
 
    ```bash
    iotedge list
    ```
+
+Het kan enkele minuten duren voordat de modules zijn gestart. De IoT Edge-runtime moet het nieuwe implementatiemanifest ontvangen, de module-installatiekopieën uit de containerruntime ophalen en vervolgens elke nieuwe module starten.
 
 ## <a name="view-classification-results"></a>Classificatieresultaten weergeven
 
@@ -408,15 +430,20 @@ Bekijk op uw apparaat de logboeken van de module cameraCapture om de berichten t
    iotedge logs cameraCapture
    ```
 
-Vanuit Visual Studio code klikt u met de rechter muisknop op de naam van uw IoT Edge-apparaat en selecteert u **controle van ingebouwd gebeurtenis-eind punt starten**. 
+Klik in de Visual Studio Code Explorer met de rechtermuisknop op de naam van uw IoT Edge-apparaat en selecteer **Bewaking van ingebouwd gebeurteniseindpunt starten**. 
 
-De resultaten van de Custom Vision-module, die als berichten vanuit de module cameraCapture zijn verzonden, geven de waarschijnlijkheid aan dat de afbeelding een Canadese den of een Japanse kers is. Omdat het een afbeelding van een Canadese den is, moet u de waarschijnlijkheid 1.0 zien. 
+> [!NOTE]
+> Mogelijk ziet u in eerste instantie enkele verbindingsfouten in de uitvoer van de cameraCapture-module. Dit komt door de vertraging tussen het implementeren en starten van de modules.
+>
+> De cameraCapture-module zal de verbinding automatisch opnieuw proberen tot stand te brengen totdat dit is gelukt. Daarna moet u de verwachte berichten voor afbeeldingsclassificatie gaan zien die hieronder worden beschreven.
+
+De resultaten van de Custom Vision-module, die als berichten vanuit de module cameraCapture zijn verzonden, geven de waarschijnlijkheid aan dat de afbeelding een Canadese den of een Japanse kers is. Omdat het een afbeelding van een Canadese den is, moet u de waarschijnlijkheid 1.0 zien.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Als u van plan bent door te gaan met het volgende aanbevolen artikel, kunt u de resources en configuraties die u hebt gemaakt behouden en opnieuw gebruiken. U kunt ook hetzelfde IoT Edge-apparaat blijven gebruiken als een testapparaat. 
 
-Anders kunt u de lokale configuraties en de Azure-resources die u in dit artikel hebt gebruikt, verwijderen om kosten te voor komen. 
+Anders kunt u de lokale configuraties en Azure-resources die u in dit artikel hebt gemaakt, verwijderen om kosten te voorkomen. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
@@ -429,4 +456,4 @@ Als u een uitgebreidere versie van dit scenario wilt proberen met een live camer
 Ga verder met de volgende zelfstudies om te leren hoe Azure IoT Edge u verder kan helpen bij het omzetten van uw gegevens in bedrijfsinzichten.
 
 > [!div class="nextstepaction"]
-> [Gegevens aan de rand opslaan met SQL Server-databases](tutorial-store-data-sql-server.md)
+> [Gegevens opslaan met SQL Server-databases](tutorial-store-data-sql-server.md)

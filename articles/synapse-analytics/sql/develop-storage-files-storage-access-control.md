@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283449"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534767"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Toegang tot opslagaccounts beheren voor SQL on-demand (preview)
 
@@ -89,7 +89,7 @@ U kunt de volgende combinaties van autorisatie- en Azure Storage-typen gebruiken
 
 
 > [!IMPORTANT]
-> Wanneer u toegang krijgt tot opslag die wordt beveiligd door de firewall, kan alleen Beheerde identiteit worden gebruikt. U moet [vertrouwde Microsoft-services toestaan](../../storage/common/storage-network-security.md#trusted-microsoft-services) en expliciet [een RBAC-rol toewijzen](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights) aan de [door het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor dat resource-exemplaar. In dit geval komt het toegangsbereik voor het exemplaar overeen met de RBAC-rol die aan de beheerde identiteit is toegewezen.
+> Wanneer u toegang krijgt tot opslag die wordt beveiligd door de firewall, kan alleen Beheerde identiteit worden gebruikt. U moet de instelling [Vertrouwde Microsoft-services toestaan](../../storage/common/storage-network-security.md#trusted-microsoft-services) inschakelen en expliciet [een Azure-rol toewijzen](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) aan de [door het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor dat resource-exemplaar. In dit geval komt het toegangsbereik voor het exemplaar overeen met de Azure-rol die aan de beheerde identiteit is toegewezen.
 >
 
 ## <a name="credentials"></a>Referenties
@@ -219,7 +219,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>Voorbeelden
 
-**Toegang tot openbaar beschikbare gegevensbron**
+### <a name="access-a-publicly-available-data-source"></a>**Toegang tot een openbaar beschikbare gegevensbron**
 
 Gebruik het volgende script om een tabel te maken die toegang heeft tot een openbaar beschikbare gegevensbron.
 
@@ -248,7 +248,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
 GO
 ```
 
-**Toegang tot gegevensbron met behulp van referenties**
+### <a name="access-a-data-source-using-credentials"></a>**Toegang tot een gegevensbron met behulp van referenties**
 
 Pas het volgende script aan om een externe tabel te maken die toegang heeft tot Azure-storage met behulp van een SAS-token, de Azure AD-identiteit van een gebruiker of de beheerde identiteit van de werkruimte.
 

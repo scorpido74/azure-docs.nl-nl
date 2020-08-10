@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 2d291af3cc6175b371f71fb63402ecb45afcba34
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9c2345c93a163464ea735400c9269e2e3fc27ecf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223445"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488139"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services inschakelen met behulp van PowerShell
 
@@ -154,9 +154,9 @@ Wanneer in de Azure-portal wordt weergegeven dat inrichten van het beheerde dome
 
 * Werk de DNS-instellingen voor het virtuele netwerk bij, zodat virtuele machines het beheerde domein kunnen vinden voor domeindeelname of verificatie.
     * Selecteer het beheerde domein in de portal om DNS te configureren. In het **Overzichtsvenster** wordt u gevraagd om deze DNS-instellingen automatisch te configureren.
-* Als u een beheerd domein hebt gemaakt in een regio die ondersteuning biedt voor beschikbaarheidszones, maakt u een netwerkbeveiligingsgroep om het verkeer in het virtuele netwerk voor het beheerde domein te beperken. Er wordt een Standard Load Balancer van Azure gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
-    * Selecteer het beheerde domein in de portal om de netwerkbeveiligingsgroep en vereiste regels goed te laten werken. In het **Overzichtsvenster** wordt u gevraagd om de netwerkbeveiligingsgroep automatisch te maken en configureren.
-* U moet [Wachtwoordsynchronisatie in Azure AD Domain Services inschakelen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich bij het beheerde domein kunnen aanmelden met hun bedrijfsreferenties.
+* Maak een netwerkbeveiligingsgroep om het verkeer in het virtuele netwerk voor het beheerde domein te beperken. Er wordt een Standard Load Balancer van Azure gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
+    * Als u de netwerkbeveiligingsgroep en de vereiste regels wilt maken, installeert u eerst het `New-AzureAddsNetworkSecurityGroup`-script met de opdracht `Install-Script -Name New-AaddsNetworkSecurityGroup` en voert u vervolgens `New-AaddsNetworkSecurityGroup`uit. De vereiste regels voor het beheerde domein worden voor u gemaakt.
+* U moet [Wachtwoordsynchronisatie in Azure AD DS inschakelen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich bij het beheerde domein kunnen aanmelden met hun bedrijfsreferenties.
 
 ## <a name="complete-powershell-script"></a>PowerShell-script voltooien
 
@@ -241,9 +241,9 @@ Wanneer in de Azure-portal wordt weergegeven dat inrichten van het beheerde dome
 
 * Werk de DNS-instellingen voor het virtuele netwerk bij, zodat virtuele machines het beheerde domein kunnen vinden voor domeindeelname of verificatie.
     * Selecteer het beheerde domein in de portal om DNS te configureren. In het **Overzichtsvenster** wordt u gevraagd om deze DNS-instellingen automatisch te configureren.
-* Als u een beheerd domein hebt gemaakt in een regio die ondersteuning biedt voor beschikbaarheidszones, maakt u een netwerkbeveiligingsgroep om het verkeer in het virtuele netwerk voor het beheerde domein te beperken. Er wordt een Standard Load Balancer van Azure gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
-    * Selecteer het beheerde domein in de portal om de netwerkbeveiligingsgroep en vereiste regels goed te laten werken. In het **Overzichtsvenster** wordt u gevraagd om de netwerkbeveiligingsgroep automatisch te maken en configureren.
-* U moet [Wachtwoordsynchronisatie in Azure AD Domain Services inschakelen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich bij het beheerde domein kunnen aanmelden met hun bedrijfsreferenties.
+* Maak een netwerkbeveiligingsgroep om het verkeer in het virtuele netwerk voor het beheerde domein te beperken. Er wordt een Standard Load Balancer van Azure gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
+    * Als u de netwerkbeveiligingsgroep en de vereiste regels wilt maken, installeert u eerst het `New-AzureAddsNetworkSecurityGroup`-script met de opdracht `Install-Script -Name New-AaddsNetworkSecurityGroup` en voert u vervolgens `New-AaddsNetworkSecurityGroup`uit. De vereiste regels voor het beheerde domein worden voor u gemaakt.
+* U moet [Wachtwoordsynchronisatie in Azure AD DS inschakelen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich bij het beheerde domein kunnen aanmelden met hun bedrijfsreferenties.
 
 ## <a name="next-steps"></a>Volgende stappen
 

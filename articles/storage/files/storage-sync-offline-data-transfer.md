@@ -1,18 +1,18 @@
 ---
 title: Gegevens migreren naar Azure File Sync met Azure Data Box
-description: Migreer bulk gegevens op een manier die compatibel is met Azure File Sync.
+description: Migreer bulk gegevens die compatibel zijn met Azure File Sync. Voorkom bestands conflicten en behoud de Acl's en tijds tempels van bestanden en mappen nadat u synchronisatie hebt ingeschakeld.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827891"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034342"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Bulkgegevens migreren in Azure File Sync met Azure DataBox
 U kunt op twee manieren bulk gegevens migreren naar Azure File Sync:

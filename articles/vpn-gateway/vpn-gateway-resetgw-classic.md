@@ -1,18 +1,18 @@
 ---
 title: Een Azure VPN-gateway opnieuw instellen om de IPsec-tunnel opnieuw in te stellen
-description: In dit artikel wordt uitgelegd hoe u uw Azure VPN Gateway opnieuw instelt om IPsec-tunnels te herstellen. Het artikel is van toepassing op VPN-gateways in zowel het klassieke als het Resource Manager-implementatie model.
+description: Stel uw Azure-VPN Gateway opnieuw in om IPsec-tunnels voor VPN-gateways in zowel het klassieke als het Resource Manager-implementatie model opnieuw in te stellen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 90a01e4ee3ddf7b100ef51e55b9917c709a05864
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f78b33a95001639abfeaecb381b597f5273c0fc
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982880"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033050"
 ---
 # <a name="reset-a-vpn-gateway"></a>Een VPN-gateway opnieuw instellen
 

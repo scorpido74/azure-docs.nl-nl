@@ -4,12 +4,12 @@ description: Meer informatie over het schalen van een Service Fabric cluster doo
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: 01f6c90f9f7d7679f5b108138e2d2318eb6b9e18
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5cabe7e377c29812252074336d7c5e9c9d3ba259
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010831"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031964"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Een primair knooppunttype voor Service Fabric-clusters omhoog schalen
 In dit artikel wordt beschreven hoe u het primaire knooppunt type van een Service Fabric cluster omhoog kunt schalen door een extra knooppunt type aan het cluster toe te voegen. Een Service Fabric-cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw microservices worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Virtuele-machine schaal sets vormen een Azure Compute-resource die u gebruikt om een verzameling virtuele machines als een set te implementeren en te beheren. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunttype kan vervolgens afzonderlijk worden beheerd.
@@ -62,9 +62,6 @@ New-AzResourceGroupDeployment `
 ### <a name="add-a-new-primary-node-type-to-the-cluster"></a>Een nieuw type primair knoop punt toevoegen aan het cluster
 > [!Note]
 > De resources die in de volgende stappen zijn gemaakt, worden het nieuwe primaire knooppunt type in het cluster zodra de schaal bewerking is voltooid. Zorg ervoor dat u namen gebruikt die uniek zijn van het eerste subnet, het open bare IP-adres, het Load Balancer, de Schaalset voor virtuele machines en het knooppunt type. 
-
-> [!Note]
-> Als u al een open bare standaard-SKU gebruikt en standaard SKU LB, hoeft u geen nieuwe netwerk resources te maken. 
 
 U kunt een sjabloon vinden met de volgende stappen: [service Fabric-nieuw knooppunt type cluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-2.json). De volgende stappen bevatten gedeeltelijke resource fragmenten die de wijzigingen in de nieuwe resources markeren.  
 
@@ -162,7 +159,40 @@ Het Service Fabric cluster heeft nu twee knooppunt typen wanneer de implementati
 ### <a name="remove-the-existing-node-type"></a>Het bestaande knooppunt type verwijderen 
 Zodra de implementatie van de resources is voltooid, kunt u beginnen met het uitschakelen van de knoop punten in het oorspronkelijke primaire knooppunt type. Wanneer de knoop punten zijn uitgeschakeld, worden de systeem services gemigreerd naar het nieuwe primaire knooppunt type dat in de bovenstaande stap is geïmplementeerd.
 
-1. Schakel de knoop punten in het knooppunt type 0. 
+1. Stel de eigenschap primair knooppunt type in de Service Fabric cluster resource in op false. 
+```json
+{
+    "name": "[variables('vmNodeType0Name')]",
+    "applicationPorts": {
+        "endPort": "[variables('nt0applicationEndPort')]",
+        "startPort": "[variables('nt0applicationStartPort')]"
+    },
+    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
+    "durabilityLevel": "Bronze",
+    "ephemeralPorts": {
+        "endPort": "[variables('nt0ephemeralEndPort')]",
+        "startPort": "[variables('nt0ephemeralStartPort')]"
+    },
+    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
+    "isPrimary": false,
+    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
+    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+}
+```
+2. Implementeer de sjabloon met de bijgewerkte eigenschap isPrimary voor het oorspronkelijke knooppunt type. U vindt hier een sjabloon waarvan de primaire vlag is ingesteld op False voor het oorspronkelijke knooppunt type: [service Fabric-primair knooppunt type onwaar](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json).
+
+```powershell
+# deploy the updated template files to the existing resource group
+$templateFilePath = "C:\AzureDeploy-3.json"
+$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $templateFilePath `
+    -TemplateParameterFile $parameterFilePath `
+```
+
+3. Schakel de knoop punten in het knooppunt type 0. 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterConnectionEndpoint `
     -KeepAliveIntervalInSec 10 `
@@ -196,7 +226,7 @@ foreach($node in $nodes)
 > [!Note]
 > Het kan even duren voordat deze stap is voltooid. 
 
-2. Stop de gegevens op het knooppunt type 0. 
+4. Stop de gegevens op het knooppunt type 0. 
 ```powershell
 foreach($node in $nodes)
 {
@@ -208,62 +238,18 @@ foreach($node in $nodes)
   }
 }
 ```
-3. Toewijzing van knoop punten in de oorspronkelijke Schaalset voor virtuele machines ongedaan maken 
+5. Toewijzing van knoop punten in de oorspronkelijke Schaalset voor virtuele machines ongedaan maken 
 ```powershell
 $scaleSetName="nt1vm"
 $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
 
 Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
 ```
+> [!Note]
+> Stap 6 en 7 zijn optioneel als u al een open bare standaard-SKU gebruikt en standaard SKU load balancer. In dit geval kunt u meerdere virtuele-machine schaal sets/knooppunt typen onder hetzelfde load balancer hebben. 
 
-4. Verwijder de knooppunt status van het knooppunt type 0.
-```powershell
-foreach($node in $nodes)
-{
-  if ($node.NodeType -eq $nodeType)
-  {
-    $node.NodeName
+6. U kunt nu het oorspronkelijke IP-adres en de Load Balancer resources verwijderen. In deze stap werkt u ook de DNS-naam bij. 
 
-    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
-  }
-}
-```
-5. Stel de eigenschap primair knooppunt type in de Service Fabric cluster resource in op false. 
-
-```json
-{
-    "name": "[variables('vmNodeType0Name')]",
-    "applicationPorts": {
-        "endPort": "[variables('nt0applicationEndPort')]",
-        "startPort": "[variables('nt0applicationStartPort')]"
-    },
-    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-    "durabilityLevel": "Bronze",
-    "ephemeralPorts": {
-        "endPort": "[variables('nt0ephemeralEndPort')]",
-        "startPort": "[variables('nt0ephemeralStartPort')]"
-    },
-    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
-    "isPrimary": false,
-    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
-    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-}
-```
-
-5. Implementeer de sjabloon met de bijgewerkte eigenschap isPrimary voor het oorspronkelijke knooppunt type. U vindt hier een sjabloon waarvan de primaire vlag is ingesteld op False voor het oorspronkelijke knooppunt type: [service Fabric-primair knooppunt type onwaar](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json).
-
-```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-3.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
-
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath `
-```
-
-7. U kunt nu het oorspronkelijke IP-adres en de Load Balancer resources verwijderen. In deze stap werkt u ook de DNS-naam bij. 
 ```powershell
 $lbname="LB-cluster-name-nt1vm"
 $lbResourceType="Microsoft.Network/loadBalancers"
@@ -283,11 +269,24 @@ $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
 ``` 
-6. Werk het beheer eindpunt op het cluster bij om naar het nieuwe IP-adres te verwijzen. 
+
+7. Werk het beheer eindpunt op het cluster bij om naar het nieuwe IP-adres te verwijzen. 
 ```json
   "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
 ```
-7. Verwijder de verwijzing naar het oorspronkelijke knooppunt type van de Service Fabric resource in de ARM-sjabloon. 
+8. Verwijder de knooppunt status van het knooppunt type 0.
+```powershell
+foreach($node in $nodes)
+{
+  if ($node.NodeType -eq $nodeType)
+  {
+    $node.NodeName
+
+    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
+  }
+}
+```
+9. Verwijder de verwijzing naar het oorspronkelijke knooppunt type van de Service Fabric resource in de ARM-sjabloon. 
 ```json
 "name": "[variables('vmNodeType0Name')]",
 "applicationPorts": {
@@ -338,13 +337,10 @@ Alleen voor Silver-en hogere duurzaamheids clusters werkt u de cluster bron bij 
  } 
 }
 ```
+10. Verwijder alle andere resources met betrekking tot het oorspronkelijke knooppunt type uit de ARM-sjabloon. Zie [service Fabric-nieuw cluster knooppunt type](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) voor een sjabloon waarbij al deze oorspronkelijke resources zijn verwijderd.
 
-8. Verwijder alle andere resources met betrekking tot het oorspronkelijke knooppunt type uit de ARM-sjabloon. Zie [service Fabric-nieuw cluster knooppunt type](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) voor een sjabloon waarbij al deze oorspronkelijke resources zijn verwijderd.
-
-9. Implementeer de gewijzigde Azure Resource Manager sjabloon. * * Deze stap neemt enige tijd in beslag, meestal Maxi maal twee uur. Met deze upgrade worden instellingen gewijzigd in de InfrastructureService. Daarom is het opnieuw opstarten van het knoop punt vereist. In dit geval wordt forceRestart genegeerd. De para meter upgradeReplicaSetCheckTimeout geeft de maximale tijds duur op die Service Fabric wacht tot een partitie een veilige status heeft, als deze niet al een veilige status heeft. Zodra de controle van de veiligheid is geslaagd voor alle partities op een knoop punt, wordt Service Fabric door gegeven aan de upgrade op dat knoop punt. De waarde voor de para meter upgradeTimeout kan worden teruggebracht tot 6 uur, maar er moet een maximale beveiliging van 12 uur worden gebruikt.
-Controleer vervolgens of:
-
-* Service Fabric resource in de portal is nu weer gegeven.
+11. Implementeer de gewijzigde Azure Resource Manager sjabloon. * * Deze stap neemt enige tijd in beslag, meestal Maxi maal twee uur. Met deze upgrade worden instellingen gewijzigd in de InfrastructureService. Daarom is het opnieuw opstarten van het knoop punt vereist. In dit geval wordt forceRestart genegeerd. De para meter upgradeReplicaSetCheckTimeout geeft de maximale tijds duur op die Service Fabric wacht tot een partitie een veilige status heeft, als deze niet al een veilige status heeft. Zodra de controle van de veiligheid is geslaagd voor alle partities op een knoop punt, wordt Service Fabric door gegeven aan de upgrade op dat knoop punt. De waarde voor de para meter upgradeTimeout kan worden teruggebracht tot 6 uur, maar er moet een maximale beveiliging van 12 uur worden gebruikt.
+Controleer vervolgens of de Service Fabric resource in de portal gereed wordt weer gegeven. 
 
 ```powershell
 # deploy the updated template files to the existing resource group

@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046873"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483549"
 ---
-# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Toegang krijgen tot een externe opslag in Synapse SQL (on-demand)
+# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Toegang krijgen tot externe opslag in Synapse SQL (on-demand)
 
 In dit document wordt beschreven hoe gebruikers gegevens kunnen lezen van bestanden die zijn opgeslagen op Azure Storage in Synapse SQL (on-demand). Gebruikers hebben de volgende opties om toegang te krijgen tot de opslag:
 
@@ -59,7 +59,7 @@ Als er geen CREDENTIAL op serverniveau is die overeenkomt met de URL of als de S
 > [!NOTE]
 > Deze versie van OPENROWSET is ontworpen om snel en eenvoudig gegevens te verkennen met behulp van standaardauthenticatie. Als u imitatie of beheerde identiteit wilt gebruiken, gebruikt u OPENROWSET met DATASOURCE zoals in de volgende sectie wordt beschreven.
 
-### <a name="querying-data-sources-using-openrowset"></a>Query's uitvoeren op gegevensbronnen met OPENROWSET
+### <a name="query-data-sources-using-openrowset"></a>Query's uitvoeren op gegevensbronnen met OPENROWSET
 
 Met OPENROWSET kunnen gebruikers een query uitvoeren op bestanden die in een externe gegevensbron zijn geplaatst:
 
@@ -91,7 +91,7 @@ Een aanroeper moet een van de volgende machtigingen hebben voor het uitvoeren va
   - Met `ADMINISTER DATABASE BULK OPERATIONS` kan een gebruiker binnen een databasebereik de OPENROWSET-functie uitvoeren.
 - REFERENCES DATABASE SCOPED CREDENTIAL naar de referenties waarnaar wordt verwezen in EXTERNAL DATA SOURCE
 
-#### <a name="accessing-anonymous-data-sources"></a>Toegang tot anonieme gegevensbronnen
+#### <a name="access-anonymous-data-sources"></a>Toegang tot anonieme gegevensbronnen
 
 Een gebruiker kan EXTERNAL DATA SOURCE maken zonder CREDENTIAL die verwijst naar een openbaar toegankelijke opslag OF Azure AD-passthrough-verificatie gebruiken:
 
@@ -132,7 +132,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 
 Met DATABASE SCOPED CREDENTIAL geeft u op hoe gebruikers toegang kunnen krijgen tot bestanden op de gegevensbron waarnaar wordt verwezen.
 
-### <a name="reading-external-files-with-external-table"></a>Externe bestanden met EXTERNAL TABLE lezen
+### <a name="read-external-files-with-external-table"></a>Externe bestanden met EXTERNAL TABLE lezen
 
 Met EXTERNAL TABLE kunt u gegevens lezen van de bestanden waarnaar wordt verwezen via de gegevensbron met behulp van de SQL SELECT-standaardinstructie:
 

@@ -1,24 +1,25 @@
 ---
-title: 'Zelf studie: bot Language Understanding Node.js v4'
-description: Gebruik Node.js om in deze zelf studie een chat-bot te bouwen die is geïntegreerd met language Standing (LUIS). Deze chatbot maakt gebruik van de app Human Resources om snel een botoplossing te implementeren. De bot is gebouwd met Bot Framework versie 4 en de Azure-web-app-bot.
+title: 'Zelfstudie: Language Understanding Bot Node.js v4'
+description: Bouw met behulp van Node.js een chatbot met ingebouwd taalbegrip (LUIS) in deze zelfstudie. Deze chatbot maakt gebruik van de app Human Resources om snel een botoplossing te implementeren. De bot is gebouwd met Bot Framework versie 4 en de Azure-web-app-bot.
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f726034f18f834dcaf9b202ffbf03a45e5b6ce7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 522502a043778d6f482c1756506063dfa6515ca3
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443537"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405021"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Zelf studie: een web-app-bot gebruiken die is ingeschakeld met Language Understanding in Node.js
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Zelfstudie: Een web-app-bot met Language Understanding in Node.js gebruiken
 
-Gebruik Node.js om een chat-bot te maken die is geïntegreerd met language Standing (LUIS). De bot is gebouwd met de Azure [Web app bot](https://docs.microsoft.com/azure/bot-service/) -resource en [bot Framework-versie](https://github.com/Microsoft/botbuilder-dotnet) v4.
+Bouw met behulp van Node.js een chatbot met ingebouwd taalbegrip (LUIS). De bot is gebouwd met de Azure-resource [Web-app-bot](https://docs.microsoft.com/azure/bot-service/) en [Bot Framework versie](https://github.com/Microsoft/botbuilder-dotnet) 4.
 
 **In deze zelfstudie leert u het volgende:**
 
 > [!div class="checklist"]
 > * Een web-app-bot maken. Bij dit proces wordt een nieuwe LUIS-app gemaakt.
-> * Het bot-project downloaden dat is gemaakt door de Web bot service
+> * Het project downloaden dat is gemaakt door de webbotservice
 > * De bot en emulator lokaal op uw computer starten
 > * De uitingsresultaten in de bot bekijken
 
@@ -27,7 +28,7 @@ Gebruik Node.js om een chat-bot te maken die is geïntegreerd met language Stand
 * [Botemulator](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
-## <a name="create-a-web-app-bot-resource"></a>Een web-app-bot-resource maken
+## <a name="create-a-web-app-bot-resource"></a>Een web-app-botresource maken
 
 1. Selecteer in de [Azure-portal](https://portal.azure.com) de optie **Nieuwe resource maken**.
 
@@ -37,72 +38,72 @@ Gebruik Node.js om een chat-bot te maken die is geïntegreerd met language Stand
 
     |Instelling|Doel|Aanbevolen instelling|
     |--|--|--|
-    |Bot-ingang|Resourcenaam|`luis-nodejs-bot-` + `<your-name>`, bijvoorbeeld, `luis-nodejs-bot-johnsmith`|
+    |Botnaam|Resourcenaam|`luis-nodejs-bot-` + `<your-name>`, bijvoorbeeld, `luis-nodejs-bot-johnsmith`|
     |Abonnement|Het abonnement waarvoor de bot moet worden gemaakt.|Uw primaire abonnement.
     |Resourcegroep|Logische groep van Azure-resources|Maak een nieuwe groep voor het opslaan van alle resources die worden gebruikt met deze bot. Geef de groep de naam `luis-nodejs-bot-resource-group`.|
     |Locatie|Azure-regio: deze hoeft niet dezelfde te zijn als de LUIS-regio voor maken en publiceren.|`westus`|
     |Prijscategorie|Wordt gebruikt voor serviceaanvraaglimieten en facturatie.|`F0` is de gratis laag.
-    |App-naam|Deze naam wordt gebruikt als subdomein wanneer uw bot wordt geïmplementeerd in de cloud (bijvoorbeeld humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, bijvoorbeeld, `luis-nodejs-bot-johnsmith`|
+    |Naam van app|Deze naam wordt gebruikt als subdomein wanneer uw bot wordt geïmplementeerd in de cloud (bijvoorbeeld humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, bijvoorbeeld, `luis-nodejs-bot-johnsmith`|
     |Botsjabloon|Instellingen voor het botframework - zie de volgende tabel|
     |Locatie van LUIS-app|Moet hetzelfde zijn als de regio waarin de LUIS-resource zich bevindt|`westus`|
-    |App service-plan/-locatie|Wijzig niet van de beschik bare standaard waarde.|
-    |Application Insights|Wijzig niet van de beschik bare standaard waarde.|
-    |Micro soft App-ID en-wacht woord|Wijzig niet van de beschik bare standaard waarde.|
+    |App Service-plan/-locatie|Wijzig de gegeven standaardwaarde niet.|
+    |Application Insights|Wijzig de gegeven standaardwaarde niet.|
+    |Microsoft-app-id en wachtwoord|Wijzig de gegeven standaardwaarde niet.|
 
-1. Selecteer in de **bot-sjabloon**het volgende en kies vervolgens de knop **selecteren** onder deze instellingen:
+1. Selecteer het volgende in de **botsjabloon** en kies de knop **Selecteren** onder deze instellingen:
 
     |Instelling|Doel|Selectie|
     |--|--|--|
     |SDK-taal|Computertaal van de bot|**Node.js**|
-    |Tape|Type bot|**Basisbot**|
+    |Bot|Type bot|**Basisbot**|
 
-1. Selecteer **Maken**. Hiermee maakt u de botservice en implementeert u deze in Azure. Bij dit proces wordt een LUIS-app gemaakt met de naam `luis-nodejs-bot-XXXX`. Deze naam is gebaseerd op de naam van de/Azure bot service-app.
+1. Selecteer **Maken**. Hiermee maakt u de botservice en implementeert u deze in Azure. Bij dit proces wordt een LUIS-app gemaakt met de naam `luis-nodejs-bot-XXXX`. Deze naam is gebaseerd op de app-naam /Azure Bot Service.
 
     > [!div class="mx-imgBorder"]
-    > [![Web-app-bot maken](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    > [![Een web-app-bot maken](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
-    Wacht tot de bot-service is gemaakt voordat u doorgaat.
+    Wacht tot de botservice is gemaakt voordat u doorgaat.
 
-1. Selecteer `Go to resource` in de melding om naar de bot-pagina van uw web-app te gaan.
+1. Selecteer `Go to resource` in de melding om naar de pagina van uw web-app-bot te gaan.
 
-## <a name="the-bot-has-a-language-understanding-model"></a>De bot heeft een Language Understanding model
+## <a name="the-bot-has-a-language-understanding-model"></a>De bot heeft een Language Understanding-model
 
-Tijdens het maken van de bot-service wordt ook een nieuwe LUIS-app gemaakt met intents en voor beeld-uitingen. Met de bot kunnen de volgende intenties worden toegewezen aan de nieuwe LUIS-app:
+Bij het maken van de botservice wordt ook een nieuwe LUIS-app met intenties en voorbeelduitingen gemaakt. Met de bot kunnen de volgende intenties worden toegewezen aan de nieuwe LUIS-app:
 
 |LUIS-intenties van de basisbot|voorbeelduiting|
 |--|--|
-|Boek vlucht|`Travel to Paris`|
+|Vlucht boeken|`Travel to Paris`|
 |Annuleren|`bye`|
 |GetWeather|`what's the weather like?`|
 |Geen|Alles buiten het domein van de app.|
 
-## <a name="test-the-bot-in-web-chat"></a>De bot in Web Chat testen
+## <a name="test-the-bot-in-web-chat"></a>De bot testen in een webgesprek
 
-1. Selecteer in de Azure Portal voor de nieuwe bot nog **testen in Web Chat**.
-1. Voer in het tekstvak **type uw bericht** de tekst in `Book a flight from Seattle to Berlin tomorrow` . De bot reageert met de verificatie dat u een vlucht wilt boeken.
+1. Selecteer in de Azure Portal voor de nieuwe bot **Testen in webgesprek**.
+1. Voer in het tekstvak **Typ uw bericht** de tekst `Book a flight from Seattle to Berlin tomorrow` in. De bot vraagt u te bevestigen dat u een vlucht wilt boeken.
 
-    ![Scherm opname van Azure Portal, voer de tekst ' Hello ' in.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
+    ![Schermopname van de Azure-portal, voer de tekst 'hello' in.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    U kunt de test functionaliteit gebruiken om uw bot snel te testen. Down load de bot-code en gebruik Visual Studio code voor een volledige test, inclusief fout opsporing.
+    U kunt de testfunctionaliteit gebruiken om uw bot snel te testen. Download de bot-code en gebruik Visual Studio Code voor een volledige test, inclusief foutopsporing.
 
-## <a name="download-the-web-app-bot-source-code"></a>De bron code voor de web-app-bot downloaden
+## <a name="download-the-web-app-bot-source-code"></a>De broncode van de web-app-bot downloaden
 Als u de code van de web-app-bot verder wilt ontwikkelen, downloadt u de code en gebruikt u deze op uw lokale computer.
 
 1. In de Azure-portal selecteert u **Bouwen** in het gedeelte **Botbeheer**.
 
 1. Selecteer **Broncode bot downloaden**.
 
-    [![De bron code van de web-app-bot voor de Basic-bot downloaden](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![Download de broncode van de web-app-bot voor de basisbot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Wanneer het pop-updialoogvenster de **app-instellingen in het gedownloade zip-bestand**opvraagt, selecteert u **Ja**. Dit biedt de LUIS-instellingen.
+1. Wanneer in het pop-updialoogvenster de vraag **App-instellingen opnemen in het gedownloade ZIP-bestand?** wordt weergegeven, selecteert u **Ja**. Hiermee worden de LUIS-instellingen geconfigureerd.
 
 1. Als de broncode is ingepakt, ziet u een bericht met een link voor het downloaden van de code. Selecteer de link.
 
-1. Sla het zip-bestand op uw lokale computer op en pak de bestanden uit. Open de projectmap met Visual Studio code.
+1. Sla het zip-bestand op uw lokale computer op en pak de bestanden uit. Open de projectmap met Visual Studio Code.
 
-## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Code controleren om utterance te verzenden naar LUIS en antwoord te ontvangen
+## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Code voor het verzenden van een uiting naar LUIS en het ontvangen van een antwoord controleren
 
-1. Als u de gebruiker utterance naar het LUIS-Voorspellings eindpunt wilt verzenden, opent u de **dialoog vensters-> flightBookingRecognizer.js** bestand. Hier wordt de uiting die de gebruiker heeft ingevoerd in de bot naar LUIS verzonden. Het antwoord van LUIS wordt geretourneerd door de methode **executeLuisQuery** .
+1. Als u de gebruikersuiting verzenden naar het LUIS-voorspellingseindpunt, opent u het bestand **dialogs -> flightBookingRecognizer.js**. Hier wordt de uiting die de gebruiker heeft ingevoerd in de bot naar LUIS verzonden. Het antwoord van LUIS wordt geretourneerd op basis van de methode **executeLuisQuery**.
 
     ```javascript
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -179,7 +180,7 @@ Als u de code van de web-app-bot verder wilt ontwikkelen, downloadt u de code en
     module.exports.FlightBookingRecognizer = FlightBookingRecognizer;
     ```
 
-1. De **dialoog vensters-> mainDialog** legt de utterance vast en verzendt deze naar de executeLuisQuery in de actStep-methode.
+1. In **dialogs -> mainDialog** wordt de uiting vastgelegd en naar executeLuisQuery verzonden in de methode actStep.
 
     ```javascript
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -348,42 +349,42 @@ Als u de code van de web-app-bot verder wilt ontwikkelen, downloadt u de code en
 
 <a name="ask-bot-a-question-for-the-book-flight-intent"></a>
 
-## <a name="start-the-bot-code"></a>De bot-code starten
+## <a name="start-the-bot-code"></a>De botcode starten
 
-1. Open een Windows-console of Linux-of macOS-Terminal.
+1. Open een Windows-console of een Linux- of macOS-terminal.
 
-1. Ga naar de map met de bot-code en voer de volgende opdracht in om de dotenv-afhankelijkheid te installeren:
+1. Ga naar de map met de botcode en voer de volgende opdracht in om de dotenv-afhankelijkheid te installeren:
 
     ```console
     npm install dotenv --save
     ```
 
-1. Voer de volgende opdracht in om de bot te starten:
+1. Voer de volgende opdracht uit om de bot te starten:
 
     ```console
     node index.js
     ```
 
-Er wordt een browservenster geopend met de website van de web-app-bot op `http://localhost:3978/`. Er wordt een start pagina weer gegeven met informatie over uw bot.
+Er wordt een browservenster geopend met de website van de web-app-bot op `http://localhost:3978/`. Er wordt een startpagina met informatie over uw bot weergegeven.
 
-![Er wordt een start pagina weer gegeven met informatie over uw bot.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
+![Er wordt een startpagina met informatie over uw bot weergegeven.](./media/bfv4-csharp/running-bot-web-home-page-success.png)
 
-## <a name="use-the-bot-emulator-to-test-the-bot"></a>De bot-emulator gebruiken om de bot te testen
+## <a name="use-the-bot-emulator-to-test-the-bot"></a>De bot testen met de botemulator
 
-Vraag bot een vraag voor de bedoeling van de Book-vlucht.
+Stel de bot een vraag voor de intentie Vlucht boeken.
 
-1. Start de bot-emulator en selecteer **Open bot**.
-1. Voer in het pop-upvenster **een bot openen** uw bot-URL in, bijvoorbeeld `http://localhost:3978/api/messages` . De `/api/messages` route is het webadres voor de bot.
-1. Voer de **micro soft app-id** en het **micro soft app-wacht woord**in die u in het **. env** -bestand hebt gevonden in de hoofdmap van de bot-code die u hebt gedownload.
+1. Start de botemulator en selecteer **Bot openen**.
+1. Voer in het pop-updialoogvenster **Een bot openen** uw bot-URL in, zoals `http://localhost:3978/api/messages`. De route `/api/messages` is het webadres voor de bot.
+1. Voer de **Microsoft-app-id** en het **Microsoft-app-wachtwoord** in. U vindt deze in het bestand met de extensie **.env** in de hoofdmap van de botcode die u hebt gedownload.
 
-1. Voer in de bot-emulator `Book a flight from Seattle to Berlin tomorrow` hetzelfde antwoord in voor de Basic-bot die u hebt ontvangen tijdens de **test in Web Chat**.
+1. Voer in de botemulator `Book a flight from Seattle to Berlin tomorrow` in en ontvang hetzelfde antwoord voor de basisbot wat u hebt ontvangen bij **Testen in webgesprek**.
 
-    [![Basic-bot-antwoord in emulator](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![Antwoord van de basisbot in de emulator](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. Selecteer **Ja**. De bot reageert met een overzicht van de bijbehorende acties.
-1. Selecteer de regel die is opgenomen in het logboek van de bot-emulator `<- trace LuisV3 Trace` . Hiermee wordt het JSON-antwoord van LUIS voor de intentie en entiteiten van de utterance weer gegeven.
+1. Selecteer in het logboek van de botemulator de regel die `<- trace LuisV3 Trace` bevat. Hiermee wordt het JSON-antwoord van LUIS voor de intentie en entiteiten van de uiting weergegeven.
 
-    [![Basic-bot-antwoord in emulator](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![Antwoord van de basisbot in de emulator](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
@@ -392,4 +393,4 @@ Vraag bot een vraag voor de bedoeling van de Book-vlucht.
 Bekijk meer [voorbeelden](https://github.com/microsoft/botframework-solutions) met gespreksbots.
 
 > [!div class="nextstepaction"]
-> [Een Language Understanding-app bouwen met een aangepast onderwerps domein](luis-quickstart-intents-only.md)
+> [Een Language Understanding-app bouwen met een aangepast onderwerpdomein](luis-quickstart-intents-only.md)

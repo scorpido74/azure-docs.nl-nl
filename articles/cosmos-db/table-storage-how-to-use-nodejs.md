@@ -8,12 +8,13 @@ ms.topic: sample
 ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 2abe23de5fbd2feada6ac8ff0a827b8575bcb28b
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6a9a3df1d200aae9e5ea401652752656ed9ff423
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172003"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760971"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Azure Table Storage of de Azure Cosmos DB Table-API van Node.js gebruiken
 
@@ -122,7 +123,7 @@ function (returnObject, finalCallback, next)
 
 In deze retouraanroep en na verwerking van `returnObject` (de reactie van de aanvraag op de server), moet de retouraanroep `next` aanroepen als deze bestaat om door te gaan met het verwerken van andere filters of gewoon `finalCallback` aanroepen om te stoppen met service-aanroepen.
 
-Twee filters waarmee logica voor nieuwe pogingen wordt geïmplementeerd, zijn opgenomen in de Azure SDK voor Node.js: `ExponentialRetryPolicyFilter** and `LinearRetryPolicyFilter`. The following creates a `TableService` object that uses the `ExponentialRetryPolicyFilter`:
+Bij de Azure-SDK voor Node.js zijn twee filters opgenomen waarmee logica voor opnieuw proberen wordt geïmplementeerd: `ExponentialRetryPolicyFilter` en `LinearRetryPolicyFilter`. Met de volgende code wordt een `TableService`-object gemaakt dat gebruikmaakt van `ExponentialRetryPolicyFilter`:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();

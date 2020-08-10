@@ -6,19 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 07/15/2020
-ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 60efc645b1b5824306c1d4aa3e763eb9d2bc745d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076345"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553921"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Nieuwe functies in Azure Cognitive Search
 
 Meer informatie over nieuwe functies in de service. Voeg een bladwijzer toe aan deze pagina om up-to-date te blijven over de service.
 
 ## <a name="feature-announcements-in-2020"></a>Aankondigingen van functies in 2020
+
+### <a name="august-2020"></a>Augustus 2020
+
+|Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
+|---------|------------------|-------------|---------------|
+| [Dubbele versleuteling](search-security-overview.md#encryption) | Beveiliging | U kunt dubbele versleuteling inschakelen in de opslaglaag door CMK-versleuteling (door klant beheerde sleutels) te configureren voor nieuwe zoekservices. Maak een nieuwe service, [configureer door klant beheerde sleutels en pas deze toe](search-security-manage-encryption-keys.md) op indexen of synoniemtoewijzingen en u kunt gebruikmaken van dubbele versleuteling voor die inhoud. | Algemeen beschikbaar (GA) voor alle zoekservices die zijn gemaakt na 1 augustus 2020 in deze regio's: VS - west 2, VS - oost, VS - zuid-centraal, US Gov - Virginia, US Gov - Arizona. Gebruik de portal, REST-API's voor beheer of SDK's om de service te maken. |
 
 ### <a name="july-2020"></a>Juli 2020
 

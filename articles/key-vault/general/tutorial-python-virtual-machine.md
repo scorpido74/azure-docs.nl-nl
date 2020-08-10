@@ -9,28 +9,26 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 453307b304c4cb1899b1de31117c944ac66fcddb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29317e9d5972faf9326a17ebbbe83063f79cdf23
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093562"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512794"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Zelfstudie: Azure Key Vault gebruiken met een virtuele machine in Python
 
-Azure Key Vault helpt u bij het beveiligen van geheimen zoals API-sleutels, de databaseverbindingsreeksen die nodig zijn voor toegang tot uw toepassingen, services en IT-resources.
+Met Azure Key Vault kunt u sleutels, geheimen en certificaten beveiligen, zoals API-sleutels en databaseverbindingsreeksen.
 
-In deze zelfstudie leert u hoe u ervoor zorgt dat een consoletoepassing informatie ophaalt uit Azure Key Vault. Hiervoor moet u beheerde identiteiten voor Azure-resources gebruiken. 
-
-In deze zelfstudie leert u het volgende:
+In deze zelfstudie configureert u een Python-toepassing voor het lezen van gegevens uit Azure Key Vault met behulp van beheerde identiteiten voor Azure-resources. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
-> * Een sleutelkluis maken.
-> * Voeg een geheim toe aan de sleutelkluis.
-> * Een geheim ophalen uit de sleutelkluis.
-> * Een virtuele Azure-machine maken.
-> * Schakel een beheerde identiteit in.
-> * Wijs machtigingen toe aan de VM-identiteit.
+> * Een sleutelkluis maken
+> * Een geheim opslaan in Key Vault
+> * Een virtuele Linux-machine maken
+> * Een [Beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) inschakelen voor de virtuele machine
+> * De vereiste machtigingen verlenen aan de consoletoepassing om gegevens te lezen uit Key Vault
+> * Een geheim lezen uit Key Vault
 
 Lees voordat u verdergaat eerst [Basisconcepten van Key Vault](basic-concepts.md). 
 
@@ -50,34 +48,43 @@ Als u zich bij Azure wilt aanmelden met de Azure CLI, voert u het volgende in:
 az login
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Een resourcegroep en sleutelkluis maken
+## <a name="create-a-resource-group-and-key-vault"></a>Een resourcegroep en sleutelkluis maken
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-## <a name="add-a-secret-to-the-key-vault"></a>Een geheim toevoegen aan de sleutelkluis
+## <a name="populate-your-key-vault-with-a-secret"></a>Vul uw sleutelkluis in met een geheim
 
-We gaan een geheim toevoegen om te laten zien hoe dit werkt. Het geheim kan een SQL-verbindingsreeks zijn of andere informatie die u zowel veilig als beschikbaar wilt houden op de toepassing.
-
-Typ de volgende opdracht om een geheim te maken in de sleutelkluis met de naam **AppGeheim**:
-
-```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
-```
-
-Met dit geheim wordt de waarde **MijnGeheim** opgeslagen.
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
-Gebruik een van de volgende manieren om een virtuele machine te maken:
 
-* [De Azure CLI](../../virtual-machines/windows/quick-create-cli.md)
-* [PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
-* [Azure Portal](../../virtual-machines/windows/quick-create-portal.md)
+Gebruik een van de volgende methoden om een VM met de naam **myVM** te maken:
+
+| Linux | Windows |
+|--|--|
+| [Azure-CLI](../../virtual-machines/linux/quick-create-cli.md) | [Azure-CLI](../../virtual-machines/windows/quick-create-cli.md) |
+| [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
+| [Azure-portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) |
+
+Als u een Linux-VM wilt maken met behulp van de Azure CLI, gebruikt u de opdracht [az vm create](/cli/azure/vm).  In het volgende voorbeeld wordt een gebruikersaccount met de naam *azureuser* toegevoegd. De parameter `--generate-ssh-keys` wordt gebruikt om automatisch een SSH-sleutel te genereren en deze te plaatsen in de standaardsleutellocatie ( *~/.ssh*). 
+
+```azurecli-interactive
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --generate-ssh-keys
+```
+
+Noteer de waarde van `publicIpAddress` in de uitvoer.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Een identiteit toewijzen aan de virtuele machine
-In deze stap maakt u een door het systeem toegewezen identiteit voor de virtuele machine door de volgende opdracht uit te voeren in de Azure CLI:
+
+Maak een door het systeem toegewezen identiteit voor de virtuele machine met de opdracht [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) van de Azure CLI:
 
 ```azurecli
-az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
+az vm identity assign --name "myVM" --resource-group "myResourceGroup"
 ```
 
 Bekijk de door het systeem toegewezen identiteit die wordt weergegeven in de volgende code. De uitvoer van de vorige opdracht ziet er als volgt uit: 
@@ -90,65 +97,73 @@ Bekijk de door het systeem toegewezen identiteit die wordt weergegeven in de vol
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>Machtigingen toewijzen aan de VM-identiteit
+
 U kunt nu de eerder gemaakte identiteitsmachtigingen toewijzen aan uw sleutelkluis door de volgende opdracht uit te voeren:
 
 ```azurecli
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
+az keyvault set-policy --name "<your-unique-keyvault-name>" --object-id "<systemAssignedIdentity>" --secret-permissions get list
 ```
 
-## <a name="log-on-to-the-virtual-machine"></a>Aanmelden bij de virtuele machine
+## <a name="log-in-to-the-vm"></a>Aanmelden bij de nieuwe virtuele machine
 
-Als u zich wilt aanmelden bij de virtuele machine, volgt u de instructies in [Verbinding maken met en aanmelden bij een virtuele Azure-machine met Windows](../../virtual-machines/windows/connect-logon.md).
+Als u zich wilt aanmelden bij de virtuele machine, volgt u de instructies in [Verbinding maken met en aanmelden bij een virtuele Azure-machine met Linux](../../virtual-machines/linux/login-using-aad.md) of [Verbinding maken en aanmelden bij een virtuele Azure-machine met Windows](../../virtual-machines/windows/connect-logon.md).
 
-## <a name="create-and-run-a-sample-python-app"></a>Een Python-voorbeeld-app maken en uitvoeren
 
-In het volgende gedeelte vindt u een voorbeeldbestand genaamd *Sample.py*. In dit voorbeeld wordt gebruikgemaakt van een bibliotheek voor [aanvragen](https://2.python-requests.org/en/master/) om HTTP GET-aanroepen uit te voeren.
+Als u zich wilt aanmelden bij een Linux-VM, kunt u de opdracht ssh gebruiken met het <publicIpAddress> dat is opgegeven in de stap [Een virtuele machine maken](#create-a-virtual-machine):
 
-## <a name="edit-samplepy"></a>Sample.py bewerken
+```terminal
+ssh azureuser@<PublicIpAddress>
+```
 
-Nadat u *Sample.py* hebt gemaakt, opent u het bestand en kopieert u de code in dit gedeelte. 
+## <a name="install-python-libraries-on-the-vm"></a>Python-bibliotheken installeren op de VM
 
-De code beschrijft een proces dat uit twee stappen bestaat:
-1. Haal een token uit het lokale MSI-eindpunt op de virtuele machine op.  
-  Hiermee wordt ook een token uit Azure AD opgehaald.
-1. Geef het token door aan de sleutelkluis en haal vervolgens het geheim op. 
+Installeer op de virtuele machine de twee Python-bibliotheken die we gaan gebruiken in het Python-script: `azure-keyvault-secrets` en `azure.identity`.  
+
+Op een Linux-VM kunt u deze bijvoorbeeld installeren met behulp van `pip3`:
+
+```bash
+pip3 install azure-keyvault-secrets
+
+pip3 install azure.identity
+```
+
+## <a name="create-and-edit-the-sample-python-script"></a>Het Python-voorbeeldscript maken en bewerken
+
+Maak op de virtuele machine een Python-bestand met de naam **sample.py**. Bewerk het bestand zodat het de volgende code bevat, waarbij u <your-unique-keyvault-name> vervangt door de naam van uw sleutelkluis:
 
 ```python
-    # importing the requests library 
-    import requests 
+from azure.keyvault.secrets import SecretClient
+from azure.identity import DefaultAzureCredential
 
-    # Step 1: Fetch an access token from a Managed Identity enabled azure resource.
-    # Resources with an MSI configured recieve an AAD access token by using the Azure Instance Metadata Service (IMDS)
-    # IMDS provides an endpoint accessible to all IaaS VMs using a non-routable well-known IP Address
-    # To learn more about IMDS and MSI Authentication see the following link: https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service
-    # Note that the resource here is https://vault.azure.net for public cloud and api-version is 2018-02-01
-    MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
-    r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"}) 
-      
-    # extracting data in json format 
-    # This request gets an access_token from Azure AD by using the local MSI endpoint.
-    data = r.json() 
-    
-    # Step 2: Pass the access_token received from previous HTTP GET call to your key vault.
-    KeyVaultURL = "https://{YOUR KEY VAULT NAME}.vault.azure.net/secrets/{YOUR SECRET NAME}?api-version=2016-10-01"
-    kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
-    
-    print(kvSecret.json()["value"])
+keyVaultName = "<your-unique-keyvault-name>"
+KVUri = f"https://{keyVaultName}.vault.azure.net"
+secretName = "mySecret"
+
+credential = DefaultAzureCredential()
+client = SecretClient(vault_url=KVUri, credential=credential)
+retrieved_secret = client.get_secret(secretName)
+
+print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_secret.value}'")
 ```
 
-U kunt de geheime waarde weergeven door de volgende code uit te voeren: 
+## <a name="run-the-sample-python-app"></a>De Python-voorbeeld-app uitvoeren
 
-```console
-python Sample.py
+Voer ten slotte **sample.py** uit. Als alles goed is, moet de waarde van uw geheim worden geretourneerd:
+
+```bash
+python3 sample.py
+
+The value of secret 'mySecret' in '<your-unique-keyvault-name>' is: 'Success!'
 ```
-
-In de voorgaande code ziet u hoe u bewerkingen met Azure Key Vault uitvoert op een virtuele Windows-machine. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als ze niet meer nodig zijn, verwijdert u de virtuele machine en de sleutelkluis.
+Als ze niet meer nodig zijn, verwijdert u de virtuele machine en de sleutelkluis.  U kunt dit snel doen door simpelweg de resource groep te verwijderen waarvan ze deel uitmaken:
+
+```azurecli
+az group delete -g myResourceGroup
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [REST-API van Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/)
+[REST-API van Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ca3c7d6bc6621c4b82a44431ae313384c1653f79
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0ae304763718f649d7895394d67c2aec307f14af
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324230"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799987"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Quickstart: Een Java web-app maken in Azure App Service on Windows
 
@@ -51,11 +51,17 @@ cd helloworld
 
 Bij het implementeren naar Azure App Service kunnen uw Azure-referenties automatisch worden opgehaald van de Azure CLI. Als Azure CLI niet is geïnstalleerd, wordt u door de Maven-invoegtoepassing aangemeld met OAuth of apparaataanmelding. Raadpleeg indien nodig de details van [verificatie met Maven-invoegtoepassingen](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
-U kunt de volgende Maven-opdracht uitvoeren in de opdrachtprompt om de implementatie te configureren. Kies **'2'** voor het **Windows**-besturingssysteem in de eerste stap en accepteer vervolgens de standaardconfiguraties door op **ENTER** te drukken tot u **Bevestigen (J/N)** ziet. Druk vervolgens op **'j'** om de configuratie te voltooien. 
-
+U kunt de onderstaande Maven-opdracht uitvoeren om de implementatie te configureren.
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
+
+U wordt gevraagd om het volgende te selecteren: 
+* **OS (standaardwaarde: `linux`)**
+* **Java Version (standaardwaarde: `1.8`)**
+* **Web Container (standaardwaarde: `tomcat 8.5`)** 
+
+Zorg dat u **`2`** invoert om in de eerste stap **Windows** als het besturingssysteem (OS) te kiezen. De andere configuraties kunt u op de standaardwaarde laten staan door op **Enter** te drukken. Druk ten slotte op **`Y`** bij de prompt **Confirm (Y/N)** om de configuratie te voltooien.
 
 Een voorbeeldproces ziet er als volgt uit:
 
@@ -153,8 +159,11 @@ U kunt de configuraties voor App Service indien nodig rechtstreeks in uw pom-bes
 `<runtime>` | true | De configuratie van de runtime-omgeving. U kunt u de details [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) bekijken. | 0.1.0+
 `<deployment>` | true | De implementatieconfiguratie. U kunt de details [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) bekijken. | 0.1.0+
 
+Let op de waarden voor `<appName>` en `<resourceGroup>`(`helloworld-1590394316693` en `helloworld-1590394316693-rg` in de demo) aangezien deze later worden gebruikt.
+
 > [!div class="nextstepaction"]
 > [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=app-service-web-get-started-java&step=config)
+
 
 ## <a name="deploy-the-app"></a>De app implementeren
 
@@ -169,13 +178,14 @@ Implementeer vervolgens uw Java-app in Azure met de volgende opdracht:
 mvn package azure-webapp:deploy
 ```
 
-Zodra de implementatie is voltooid, bladert u naar de geïmplementeerde toepassing met behulp van de volgende URL in uw webbrowser, bijvoorbeeld `http://<webapp>.azurewebsites.net/`.
+Zodra de implementatie is voltooid, is uw toepassing beschikbaar op `http://<appName>.azurewebsites.net/`(`http://helloworld-1590394316693.azurewebsites.net` in de demo). Open de URL met uw lokale webbrowser. U ziet dan het volgende als het goed is:
 
 ![Voorbeeld-app uitgevoerd in Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 **Gefeliciteerd!** U hebt uw eerste Java-app geïmplementeerd in App Service on Windows.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

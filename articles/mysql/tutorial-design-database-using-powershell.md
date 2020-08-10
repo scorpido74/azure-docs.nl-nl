@@ -1,28 +1,28 @@
 ---
-title: 'Zelf studie: een server Azure PowerShell-Azure Database for MySQL ontwerpen'
-description: In deze zelf studie wordt uitgelegd hoe u Azure Database for MySQL-server en-data base maakt en beheert met behulp van Power shell.
+title: 'Zelfstudie: Een server ontwerpen - Azure PowerShell - Azure Database for MySQL'
+description: In deze zelfstudie wordt uitgelegd hoe u een Azure Database for MySQL-server en -database maakt en beheert met PowerShell.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
-ms.custom: mvc
-ms.openlocfilehash: 6bb3c25d4d4d24e626ad210c78c6ac64c560e43e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 32efda0c97bec10f2c8aa29d6f83a28538d64468
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614387"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496760"
 ---
-# <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>Zelf studie: een Azure Database for MySQL ontwerpen met behulp van Power shell
+# <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>Zelfstudie: Een Azure Database for MySQL ontwerpen met PowerShell
 
-Azure Database voor MySQL is een relationele databaseservice in de Microsoft Cloud die is gebaseerd op de MySQL Community Edition database engine. In deze zelf studie gebruikt u Power shell en andere hulpprogram ma's om te leren hoe u:
+Azure Database voor MySQL is een relationele databaseservice in de Microsoft Cloud die is gebaseerd op de MySQL Community Edition database engine. In deze zelfstudie gebruikt u PowerShell en andere hulpprogramma's om het volgende te leren:
 
 > [!div class="checklist"]
 > - Een Azure Database voor MySQL maken
 > - De serverfirewall configureren
-> - Het [opdracht regel programma mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) gebruiken om een Data Base te maken
+> - Het [opdrachtregelprogramma mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) gebruiken om een database te maken
 > - Voorbeeldgegevens laden
 > - Querygegevens
 > - Gegevens bijwerken
@@ -30,15 +30,15 @@ Azure Database voor MySQL is een relationele databaseservice in de Microsoft Clo
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-Als u Power shell lokaal wilt gebruiken, moet u voor dit artikel de AZ Power shell-module installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Zie [Install Azure PowerShell](/powershell/azure/install-az-ps)(Engelstalig) voor meer informatie over het installeren van de AZ Power shell-module.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell.
 
 > [!IMPORTANT]
-> Hoewel de AZ. MySql Power shell-module in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met `Install-Module -Name Az.MySql -AllowPrerelease`behulp van de volgende opdracht:.
-> Zodra de AZ. MySql Power shell-module algemeen beschikbaar is, wordt het onderdeel van toekomstige AZ Power shell-module releases en is deze systeem eigen beschikbaar vanuit Azure Cloud Shell.
+> Zo lang de PowerShell-module Az.MySQL in preview is, moet u deze afzonderlijk van de Az-module van PowerShell installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> Zodra de PowerShell-module Az.MySQL algemeen beschikbaar is, wordt het onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
-Als dit de eerste keer is dat u de Azure Database for MySQL-service gebruikt, moet u de resource provider **micro soft. DBforMySQL** registreren.
+Als dit de eerste keer is dat u de Azure Database for MySQL-service gebruikt, moet u de resourceprovider van **Microsoft.DBforMySQ:** registreren.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMySQL
@@ -46,7 +46,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMySQL
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resources moeten worden gefactureerd. Selecteer een specifieke abonnements-ID met behulp van de cmdlet [set-AzContext](/powershell/module/az.accounts/set-azcontext) .
+Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer een specifieke abonnementen-id met behulp van de cmdlet [set-AzContext](/powershell/module/az.accounts/set-azcontext).
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -54,9 +54,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een [Azure-resource groep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) met behulp van de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
+Maak een [Azure-resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) met de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
 
-In het volgende voor beeld wordt een resource groep met de naam **myresourcegroup** gemaakt in de regio **VS-West** .
+In het volgende voorbeeld wordt een resourcegroep met de naam **myresourcegroup** gemaakt in de regio **US – West**.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -64,9 +64,9 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Een Azure-database voor MySQL-server maken
 
-Maak een Azure Database for MySQL-server met `New-AzMySqlServer` de cmdlet. Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
+Maak een Azure Database for MySQL-server met de cmdlet `New-AzMySqlServer`. Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
 
-In het volgende voor beeld wordt een MySQL-server in de regio **VS-West** met de naam **mydemoserver** in de resource groep **myresourcegroup** gemaakt met de aanmelding van de server beheerder van **myadmin**. Het is een generatie-5-server in de prijs categorie algemeen gebruik met twee vCores en geografisch redundante back-ups ingeschakeld. Documenteer het wacht woord dat in de eerste regel van het voor beeld wordt gebruikt, aangezien dit het wacht woord is voor het account van de MySQL-Server beheerder.
+In het volgende voorbeeld wordt een MySQL-server gemaakt in de regio **US - west**. De server heeft de naam **mydemoserver** en bevindt zich in de resourcegroep **myresourcegroup**. De serverbeheerder kan zich aanmelden met **myadmin**. De server is een Gen 5-server in de prijscategorie Algemeen en beschikt over twee vCores. Daarnaast is geografisch redundante back-ups ingeschakeld. Noteer het wachtwoord dat in de eerste regel van het voorbeeld wordt gebruikt, aangezien dit het wachtwoord voor het beheerdersaccount van de MySQL-server is.
 
 > [!TIP]
 > Een servernaam wordt toegewezen aan een DNS-naam en moet wereldwijd uniek zijn in Azure.
@@ -76,35 +76,35 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -GeoRedundantBackup Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-De **SKU** -parameter waarde volgt de **\_vCores van de\_prijs categorie-laag** , zoals wordt weer gegeven in de volgende voor beelden.
+De parameterwaarde voor de **SKU** volgt de conventie **prijscategorie\_compute-generatie\_vCores** zoals is te zien in de volgende voorbeelden.
 
 - `-Sku B_Gen5_1` komt overeen met Basic, Gen 5 en 1 vCore. Deze optie is de kleinst beschikbare SKU.
 - `-Sku GP_Gen5_32` komt overeen met Algemeen gebruik, Gen 5 en 32 vCores.
 - `-Sku MO_Gen5_2` komt overeen met Geoptimaliseerd voor geheugen, Gen 5 en 2 vCores.
 
-Zie [Azure database for MySQL prijs categorieën](./concepts-pricing-tiers.md)voor informatie over geldige **SKU** -waarden per regio en voor lagen.
+Meer informatie over geldige **SKU**-waarden per regio en de categorieën vindt u in [Prijscategorieën voor Azure Database for MySQL](./concepts-pricing-tiers.md).
 
-U kunt de prijs categorie Basic gebruiken als Light Compute en I/O voldoende zijn voor uw werk belasting.
+Overweeg het gebruik van de prijscategorie Basic als lichte reken- en I/O-capaciteit voldoende is voor uw workload.
 
 > [!IMPORTANT]
-> Servers die zijn gemaakt in de prijs categorie Basic kunnen niet later worden geschaald naar algemeen gebruik of geoptimaliseerd voor geheugen en kunnen niet geografisch worden gerepliceerd.
+> Servers die zijn gemaakt in de prijscategorie Basic, kunnen later niet meer worden geschaald voor algemeen gebruik of worden geoptimaliseerd voor het geheugen. Daarnaast is het niet mogelijk om geo-replicatie te gebruiken.
 
 ## <a name="configure-a-firewall-rule"></a>Een firewallregel configureren
 
-Een Azure Database for MySQL firewall regel op server niveau maken met behulp van de `New-AzMySqlFirewallRule` -cmdlet. Met een firewall regel op server niveau kan een externe toepassing, zoals het `mysql` opdracht regel programma of MySQL Workbench, verbinding maken met uw server via de firewall van de Azure database for MySQL-service.
+Maak een firewallregel op Azure Database for MySQL-serverniveau voor Azure Database met de cmdlet `New-AzMySqlFirewallRule`. Met een firewallregel op serverniveau is een externe toepassing mogelijk, zoals het opdrachtregelprogramma `mysql` of MySQL Workbench om verbinding te maken met uw server via de Azure Database for MySQL-servicefirewall.
 
-In het volgende voor beeld wordt een firewall regel gemaakt met de naam **AllowMyIP** , die verbindingen van een specifiek IP-adres, 192.168.0.1, toestaat. Vervang een IP-adres of bereik van IP-adressen die overeenkomen met de locatie van waaruit u verbinding maakt.
+In het volgende voorbeeld wordt een firewallregel met de naam **AllowMyIP** gemaakt waarmee verbindingen van een specifiek IP-adres, 192.168.0.1, worden toegestaan. Vervang dit door een IP-adres of een bereik van IP-adressen dat overeenkomt met de locatie van waaruit u verbinding maakt.
 
 ```azurepowershell-interactive
 New-AzMySqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -ServerName mydemoserver -StartIPAddress 192.168.0.1 -EndIPAddress 192.168.0.1
 ```
 
 > [!NOTE]
-> Verbindingen met Azure Database voor MySQL communiceren via poort 3306. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 3306 mogelijk niet toegestaan. In dit scenario kunt u alleen verbinding maken met de server als uw IT-afdeling poort 3306 opent.
+> Verbindingen met Azure Database voor MySQL communiceren via poort 3306. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 3306 mogelijk niet toegestaan. In dit scenario kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 3306 opent.
 
 ## <a name="get-the-connection-information"></a>De verbindingsgegevens ophalen
 
-Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsreferenties opgeven. Gebruik het volgende voor beeld om de verbindings gegevens te bepalen. Noteer de waarden voor **FullyQualifiedDomainName** en **Administrator Login**.
+Als u verbinding met uw server wilt maken, moet u hostgegevens en toegangsreferenties opgeven. Gebruik het volgende voorbeeld om de verbindingsgegevens te bepalen. Noteer de waarden voor **FullyQualifiedDomainName** en de **AdministratorLogin**.
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
@@ -117,9 +117,9 @@ FullyQualifiedDomainName                    AdministratorLogin
 mydemoserver.mysql.database.azure.com       myadmin
 ```
 
-## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>Verbinding maken met de server met behulp van het opdracht regel programma mysql
+## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>Verbinding maken met de server met het opdrachtregelprogramma mysql
 
-Maak verbinding met uw server met `mysql` behulp van het opdracht regel programma. Zie [mysql-community-down loads](https://dev.mysql.com/downloads/shell/)voor het downloaden en installeren van het opdracht regel programma. U kunt ook een vooraf geïnstalleerde versie van het `mysql` opdracht regel programma in azure Cloud shell openen door de knop **try it** te selecteren in een code voorbeeld in dit artikel. Andere manieren om toegang te krijgen tot Azure Cloud Shell zijn om de knop **>_** te selecteren op de werk balk rechtsboven in de Azure portal of door naar [shell.Azure.com](https://shell.azure.com/)te gaan.
+Maak verbinding met de server met behulp van het `mysql`opdrachtregelprogramma. Zie [MySQL Community Downloads](https://dev.mysql.com/downloads/shell/) als u het opdrachtregelprogramma wilt downloaden en installeren. U kunt ook een vooraf geïnstalleerde versie openen van het `mysql` opdrachtregelhulpprogramma in Azure Cloud Shell door de knop **Proberen**in een codevoorbeeld in dit artikel te selecteren. Andere manieren om toegang te krijgen tot Azure Cloud Shell zijn de selectie van de knop **> _** in de werkbalk rechtsboven in de Azure Portal of een bezoek aan [shell.azure.com](https://shell.azure.com/).
 
 ```azurepowershell-interactive
 mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
@@ -186,13 +186,13 @@ SELECT * FROM inventory;
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Een database herstellen naar een eerder tijdstip
 
-U kunt de server naar een eerder tijdstip herstellen. De herstelde gegevens worden gekopieerd naar een nieuwe server en de bestaande server blijft ongewijzigd. Als een tabel bijvoorbeeld per ongeluk wordt verwijderd, kunt u de herstel bewerking op het tijdstip herstellen. Vervolgens kunt u de ontbrekende tabel en gegevens ophalen van de herstelde kopie van de server.
+U kunt de server naar een eerder tijdstip herstellen. De herstelde gegevens worden gekopieerd naar een nieuwe server. De bestaande server blijft ongewijzigd. Als een tabel bijvoorbeeld per ongeluk wordt verwijderd, kunt u de server herstellen naar een tijdstip net voordat de tabel werd verwijderd. Vervolgens kunt u de ontbrekende tabel en gegevens ophalen van de herstelde kopie van de server.
 
-Als u de server wilt herstellen, `Restore-AzMySqlServer` gebruikt u de Power shell-cmdlet.
+Als u de server wilt herstellen, gebruikt u de PowerShell-cmdlet `Restore-AzMySqlServer`.
 
-### <a name="run-the-restore-command"></a>Voer de opdracht herstellen uit
+### <a name="run-the-restore-command"></a>De herstelopdracht uitvoeren
 
-Voer het volgende voor beeld uit in Power shell om de server te herstellen.
+Voer het volgende voorbeeld uit in PowerShell uit om de server te herstellen.
 
 ```azurepowershell-interactive
 $restorePointInTime = (Get-Date).AddMinutes(-10)
@@ -200,15 +200,15 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-restored -ResourceGroupName myresourcegroup -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
 ```
 
-Wanneer u een server naar een eerder tijdstip herstelt, wordt er een nieuwe server gemaakt. De oorspronkelijke server en de bijbehorende data bases van het opgegeven tijdstip worden naar de nieuwe server gekopieerd.
+Wanneer u een server naar een eerder tijdstip herstelt, wordt er een nieuwe server gemaakt. De oorspronkelijke server en de bijbehorende databases van het opgegeven tijdstip worden naar de nieuwe server gekopieerd.
 
-De waarden voor de locatie en de prijs categorie voor de herstelde server blijven hetzelfde als de oorspronkelijke server.
+De locatie en prijscategorie van de herstelde server zijn hetzelfde als die van de oorspronkelijke server.
 
-Nadat het herstel proces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder op het moment dat de herstel bewerking werd gestart. Het wacht woord kan worden gewijzigd op de pagina **overzicht** van de nieuwe server.
+Nadat het herstelproces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De aanmeldingsnaam en het wachtwoord voor de nieuwe server zijn hetzelfde als voor de bestaande server op het moment dat de herstelbewerking werd gestart. Het wachtwoord kan worden gewijzigd op de pagina **Overzicht** van de nieuwe server.
 
-De nieuwe server die tijdens het herstellen is gemaakt, heeft geen VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor de nieuwe server. Firewall regels van de oorspronkelijke server worden hersteld.
+De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de VNet-service-eindpunten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor de nieuwe server. Firewallregels van de oorspronkelijke server worden hersteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een back-up maken van een Azure Database for MySQL-server en deze herstellen met Power shell](howto-restore-server-powershell.md)
+> [Een back-up van Azure Database for MySQL-server maken en deze terugzetten met behulp van PowerShell](howto-restore-server-powershell.md)

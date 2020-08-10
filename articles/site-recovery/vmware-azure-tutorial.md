@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290658"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501198"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Herstel van on-premises VMware-VM’s naar Azure na een noodgeval instellen
 
@@ -87,7 +87,7 @@ Al deze componenten worden samen geïnstalleerd op de enkele on-premises machine
 1. Meld u aan bij de VMware vCenter-server of vSphere ESXi-host met behulp van de VMware vSphere-client.
 2. Selecteer in het menu **Bestand** de optie **OVF-sjabloon implementeren** om de **wizard voor het implementeren van OVF-sjablonen** te starten.
 
-     ![OVF-sjabloon](./media/vmware-azure-tutorial/vcenter-wizard.png)
+     ![Schermopname van de opdracht OVF-sjabloon implementeren in de VMWare vSphere-client.](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
 3. Voer in **Bron selecteren** de locatie van de gedownloade OVF in.
 4. Selecteer **Volgende** in **Beoordelingsdetails**.
@@ -153,7 +153,7 @@ Selecteer en controleer doelbronnen.
 1. Selecteer **Infrastructuur voorbereiden** > **Doel**. Selecteer het Azure-abonnement dat u wilt gebruiken. Er wordt gebruikgemaakt van een Resource Manager-model.
 2. Site Recovery controleert of u een of meer virtuele netwerken hebt. U zou deze moeten hebben als u de Azure-onderdelen in het [eerste deel](tutorial-prepare-azure.md) van deze reeks zelfstudies hebt ingesteld.
 
-   ![Doeltabblad](./media/vmware-azure-tutorial/storage-network.png)
+   ![Schermopname van de opties voor De infrastructuur voorbereiden > Doel.](./media/vmware-azure-tutorial/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>Een replicatiebeleid maken
 
@@ -165,7 +165,7 @@ Selecteer en controleer doelbronnen.
 6. Bij **Bewaarperiode van het herstelpunt** geeft u op hoe lang elk herstelpunt moet worden bewaard. Voor deze zelfstudie wordt 72 uur gebruikt. Gerepliceerde VM’s kunnen worden hersteld naar een willekeurig punt in een tijdvenster.
 7. Bij **Frequentie van de app-consistente momentopname** geeft u op hoe vaak app-consistente momentopnamen moeten worden gemaakt. Gebruik de standaardwaarde van 60 minuten. Selecteer **OK** om het beleid te maken.
 
-   ![Replicatiebeleid maken](./media/vmware-azure-tutorial/replication-policy.png)
+   ![Schermopname van de opties voor het maken van het replicatiebeleid.](./media/vmware-azure-tutorial/replication-policy.png)
 
 - Het beleid wordt automatisch gekoppeld aan de configuratieserver.
 - Standaard wordt automatisch een bijbehorend beleid voor failback gemaakt. Als het replicatiebeleid bijvoorbeeld**repbeleid** is, is het failbackbeleid **repbeleid-failback**. Dit beleid wordt pas gebruikt als u een failback initieert vanuit Azure.

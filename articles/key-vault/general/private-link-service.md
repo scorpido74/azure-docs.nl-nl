@@ -7,12 +7,13 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: 95a999f38104e0bb3cfd6a510bd8f9e3d5440562
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 70a0620369792c1aaf2c11867fd468f42d6bb9ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521085"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494686"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Sleutelkluis integreren met Azure Private Link
 
@@ -233,6 +234,38 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
+
+## <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
+
+* Controleer of het privé-eindpunt is goedgekeurd. 
+    1. U kunt dit controleren en oplossen in de Azure-portal. Open de Key Vault-resource en klik op de optie Netwerken. 
+    2. Selecteer vervolgens het tabblad Verbindingen met privé-eindpunt. 
+    3. Controleer of de verbindingsstatus Goedgekeurd is, en de inrichtingsstatus Geslaagd. 
+    4. U kunt ook naar de privé-eindpuntresource navigeren en dezelfde eigenschappen daar bekijken om te controleren of het virtuele netwerk overeenkomt met het virtuele netwerk dat u gebruikt.
+
+* Controleer of u een privé-DNS-zoneresource hebt. 
+    1. U moet een privé-DNS-zoneresource hebben met de exacte naam: privatelink.vaultcore.azure.net. 
+    2. Zie de volgende koppeling voor meer informatie over het instellen hiervan. [Privé-DNS-zones](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    
+* Controleer of de privé-DNS-zone niet is gekoppeld aan het virtuele netwerk. Dit kan het probleem zijn als het openbare IP-adres nog steeds wordt geretourneerd. 
+    1. Als de privé-DNS-zone niet is gekoppeld aan het virtuele netwerk, retourneert de DNS-query die afkomstig is van het virtuele netwerk het openbare IP-adres van de sleutelkluis. 
+    2. Navigeer naar de privé-DNS-zoneresource in de Azure-portal en klik op de optie Virtuele netwerkkoppelingen. 
+    4. Het virtuele netwerk waarmee aanroepen van de sleutelkluis worden uitgevoerd, moet worden weergegeven. 
+    5. Als dat niet het geval is, voegt u het toe. 
+    6. Zie het volgende document voor gedetailleerde stappen: [Het virtuele netwerk koppelen aan de privé-DNS-zone](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+
+* Controleer of in de privé-DNS-zone geen A-record voor de sleutelkluis ontbreekt. 
+    1. Navigeer naar de pagina Privé-DNS-zone. 
+    2. Klik op Overzicht en controleer of er een A-record is met de eenvoudige naam van uw sleutelkluis (fabrikam). Geef geen achtervoegsel op.
+    3. Controleer de spelling en maak of corrigeer de A-record. U kunt een TTL van 3600 (1 uur) gebruiken. 
+    4. Zorg ervoor dat u het juiste privé-IP-adres opgeeft. 
+    
+* Controleer of de A-record het juiste IP-adres heeft. 
+    1. U kunt het IP-adres controleren door de resource van het privé-eindpunt te openen in de Azure-portal 
+    2. Navigeer naar de resource Microsoft.Network/privateEndpoints in de Azure-portal (niet de resource in de sleutelkluis)
+    3. Zoek op de overzichtspagina naar Netwerkinterface en klik op die koppeling. 
+    4. De koppeling toont het overzicht van de NIC-resource, met de eigenschap Privé-IP-adres. 
+    5. Controleer of dit het juiste IP-adres is dat is opgegeven in de A-record.
 
 ## <a name="limitations-and-design-considerations"></a>Beperkingen en overwegingen bij het ontwerp
 

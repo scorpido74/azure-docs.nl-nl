@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 3cd8b18358128c8566c0cde668c084a22dd261d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320694"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528822"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Quickstart: Azure Cache voor Redis met Java gebruiken
 
@@ -30,12 +30,24 @@ In deze quickstart neemt u Azure Cache voor Redis op in een Java-app met de [Jed
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Voeg omgevingsvariabelen toe voor **HOST NAME** en **Primary** (primaire toegangssleutel). U gebruikt deze variabelen vanuit uw code in plaats van de gevoelige gegevens rechtstreeks op te nemen in uw code.
+## <a name="setting-up-the-working-environment"></a>De werkomgeving instellen 
+
+Afhankelijk van het besturingssysteem, voegt u omgevingsvariabelen toe voor **Hostnaam** en **Primaire toegangssleutel**. Open een opdrachtprompt, of een terminalvenster, en stel de volgende waarden in:
 
 ```CMD 
-set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
-set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+set REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 ```
+
+```bash
+export REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
+```
+
+Vervang de plaatsaanduidingen door de volgende waarden:
+
+- `<YOUR_HOST_NAME>`: De DNS-hostnaam, op te halen uit de sectie *Eigenschappen* van de resource voor Azure Cache voor Redis in de Azure-portal.
+- `<YOUR_PRIMARY_ACCESS_KEY>`: De primaire toegangssleutel, op te halen uit de sectie *Toegangssleutels* van de resource voor Azure Cache voor Redis in de Azure-portal.
 
 ## <a name="create-a-new-java-app"></a>Een nieuwe Java-app maken
 

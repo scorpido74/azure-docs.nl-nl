@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: 684f85042fd09c14621801ec017fea0e632f2598
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 6e0851a55673792adc905d27fdd3f5c13d572032
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "84870528"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563956"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Azure API for FHIR openen met Postman
 
@@ -23,6 +23,7 @@ Een clienttoepassing wil toegang tot een FHIR-API via een [REST API](https://www
 ## <a name="prerequisites"></a>Vereisten
 
 - Een FHIR-eindpunt in Azure. U kunt dat instellen met behulp van de beheerde Azure API for FHIR of de Open Source FHIR-server voor Azure. Stel de beheerde Azure API for FHIR in met behulp van [Azure Portal](fhir-paas-portal-quickstart.md), [PowerShell](fhir-paas-powershell-quickstart.md)of [Azure CLI](fhir-paas-cli-quickstart.md).
+- Een [ clienttoepassing](register-confidential-azure-ad-client-app.md) die u gebruikt om toegang te krijgen tot de FHIR-service.
 - Postman is geïnstalleerd. U kunt het programma downloaden op [https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>Details van FHIR-server en verificatie
@@ -108,7 +109,7 @@ Als u het toegangstoken inspecteert met een hulpprogramma zoals [https://jwt.ms]
 }
 ```
 
-Als u problemen probeert op te lossen, kunt u het beste beginnen met een validatie of u de juiste doelgroep hebt (`aud`-claim). Als uw token van de juiste certificaatverlener (`iss`-claim) afkomstig is en de juiste doelgroep (`aud`-claim) heeft, maar u nog steeds geen toegang tot de FHIR-API hebt, is het waarschijnlijk dat de gebruiker of service-principal (`oid`-claim) geen toegang heeft tot het FHIR-gegevensvlak. U wordt aangeraden om [toegangsbeheer op basis van Azure-rollen](configure-azure-rbac.md) te gebruiken om gegevenslaagrollen toe te wijzen aan gebruikers. Als u een externe, secundaire Azure Active Directory-tenant voor uw gegevensvlak gebruikt, moet u [lokale RBAC-toewijzingen configureren](configure-local-rbac.md).
+Als u problemen probeert op te lossen, kunt u het beste beginnen met een validatie of u de juiste doelgroep hebt (`aud`-claim). Als uw token van de juiste certificaatverlener (`iss`-claim) afkomstig is en de juiste doelgroep (`aud`-claim) heeft, maar u nog steeds geen toegang tot de FHIR-API hebt, is het waarschijnlijk dat de gebruiker of service-principal (`oid`-claim) geen toegang heeft tot het FHIR-gegevensvlak. U wordt aangeraden om [op rollen gebaseerd toegangsbeheer van Azure](configure-azure-rbac.md) (Azure RBAC) te gebruiken om gegevenslaagrollen toe te wijzen aan gebruikers. Als u een externe, secundaire Azure Active Directory-tenant voor uw gegevensvlak gebruikt, moet u [lokale RBAC-toewijzingen configureren](configure-local-rbac.md).
 
 Het is ook mogelijk om [een token voor de Azure API for FHIR op te halen met behulp van de Azure CLI](get-healthcare-apis-access-token-cli.md). Als u een token gebruikt dat met de Azure CLI is verkregen, moet u het autorisatietype Bearer-token gebruiken en het token rechtstreeks plakken.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025775"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428374"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Zelfstudie: Hybride Azure Active Directory-gekoppelde apparaten handmatig configureren
 
@@ -59,6 +59,9 @@ Zorg ervoor dat de volgende URL’s toegankelijk zijn vanaf computers in uw orga
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * De STS van uw organisatie (voor federatieve domeinen), moet worden opgenomen in de instellingen van het lokale intranet van de gebruiker
+
+> [!WARNING]
+> Als uw organisatie proxyservers gebruikt die SSL-verkeer onderscheppen voor scenario's zoals preventie van gegevensverlies of beperkingen voor Azure AD-tenants, moet u ervoor zorgen dat verkeer naar 'https://device.login.microsoftonline.com ' wordt uitgesloten van TLS break-and-inspect. Als u 'https://device.login.microsoftonline.com ' niet uitsluit, kan dit problemen geven met de verificatie van clientcertificaten, die op hun beurt weer problemen veroorzaken met apparaatregistratie en voorwaardelijke toegang op basis van apparaten.
 
 Als uw organisatie gebruik wil gaan maken van naadloze eenmalige aanmelding, moet de volgende URL bereikbaar zijn vanaf de computers binnen uw organisatie. De URL moet ook worden toegevoegd aan de lokale intranetzone van de gebruiker.
 

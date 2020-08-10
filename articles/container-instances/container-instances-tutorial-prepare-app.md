@@ -1,17 +1,17 @@
 ---
-title: Zelf studie-container installatie kopie voorbereiden voor implementatie
+title: 'Zelfstudie: containerinstallatiekopie voorbereiden voor implementatie'
 description: Zelfstudie 1 van 3 voor Azure Container Instances - Een app voorbereiden in een containerinstallatiekopie voor implementatie in Azure Container Instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 3a73d68f99c7e2ec4c71e408abbdbc7eec7ee95d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533347"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407163"
 ---
-# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Zelf studie: een container installatie kopie maken voor implementatie naar Azure Container Instances
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Zelfstudie: een containerinstallatiekopie voor implementatie in Azure Container Instances maken
 
 Met Azure Container Instances kunt u Docker-containers implementeren in de Azure-infrastructuur zonder virtuele machines in te richten of gebruik te maken van een service op een hoger niveau. In deze zelfstudie verpakt u een kleine Node.js-webtoepassing in een containerinstallatiekopie die kan worden uitgevoerd met behulp van Azure Container Instances.
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ead20713752b4eb28700541b4314241d86b6cc27
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8b48cfa29555cf0ca15428758208df27a52a84f7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87278541"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491134"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Zelfstudie: Een door Azure Active Directory Domain Services beheerd domein maken en configureren met geavanceerde configuratieopties
 
@@ -100,7 +100,7 @@ Vul de velden in het venster *Basisinstellingen* van het Azure-portal in om een 
     Voor deze zelfstudie selecteert u de *Standaard*-SKU.
 1. Een *forest* is een logische constructie die door Active Directory Domain Services wordt gebruikt om een of meer domeinen te groeperen. Een beheerd domein wordt standaard gemaakt als een *Gebruikersforest*. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving.
 
-    Met een *resourceforest* worden alleen gebruikers en groepen gesynchroniseerd die rechtstreeks in Azure AD zijn gemaakt. Resourceforests zijn momenteel beschikbaar als preview-versie. Raadpleeg [Overzicht van Azure AD DS-resourceforests][resource-forests] voor meer informatie over *resourceforests*, waaronder redenen om deze te gebruiken en hoe u forestvertrouwensrelaties maakt met on-premises AD DS-domeinen.
+    Met een *resourceforest* worden alleen gebruikers en groepen gesynchroniseerd die rechtstreeks in Azure AD zijn gemaakt. Wachtwoord-hashes voor on-premises gebruikers worden nooit gesynchroniseerd naar een beheerd domein wanneer u een resourceforest maakt. Raadpleeg [Overzicht van Azure AD DS-resourceforests][resource-forests] voor meer informatie over *resourceforests*, waaronder redenen om deze te gebruiken en hoe u forestvertrouwensrelaties maakt met on-premises AD DS-domeinen.
 
     Voor deze zelfstudie kiest u voor het maken van een *gebruikersforest*.
 

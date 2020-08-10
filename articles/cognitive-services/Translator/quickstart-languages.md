@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: de lijst met ondersteunde talen ophalen-Translator'
+title: 'Quickstart: Lijst met ondersteunde talen ophalen - Translator'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick start krijgt u een lijst met talen die worden ondersteund voor vertaling, vele en dictionary lookup met behulp van het conversie programma.
+description: In deze quickstart haalt u een lijst met ondersteunde talen op voor vertaling, transliteratie en opzoeken in woordenlijsten en voorbeelden met behulp van Translator.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 0b2ab2c438abca9fda071f83adc18c234fbdb63e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 715f75223b84302395ecf5b0cd4f32f4eb348de7
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606731"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405416"
 ---
-# <a name="quickstart-use-the-translator-to-get-a-list-of-supported-languages"></a>Snelstartgids: de vertaler gebruiken om een lijst met ondersteunde talen op te halen
+# <a name="quickstart-use-the-translator-to-get-a-list-of-supported-languages"></a>Quickstart: Translator gebruiken om een lijst met ondersteunde talen op te halen
 
-In deze Quick start krijgt u een lijst met talen die worden ondersteund voor vertaling, vele en dictionary lookup met behulp van het conversie programma.
+In deze quickstart haalt u een lijst met ondersteunde talen op voor vertaling, transliteratie en opzoeken in woordenlijsten en voorbeelden met behulp van Translator.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/languages-csharp.md)]

@@ -1,53 +1,54 @@
 ---
-title: 'Zelf studie: sjabloon exporteren uit de Azure Portal'
-description: Meer informatie over het gebruik van een geëxporteerde sjabloon om de ontwikkeling van uw sjabloon te volt ooien.
+title: 'Zelfstudie: sjabloon exporteren uit de Azure-portal'
+description: Meer informatie over het gebruik van een geëxporteerde sjabloon om de ontwikkeling van uw sjabloon te voltooien.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f95efbaedc2718c968062c47427ab7765756bde7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80408553"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497151"
 ---
-# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Zelf studie: geëxporteerde sjabloon uit het Azure Portal gebruiken
+# <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Zelfstudie: Uit de Azure-portal geëxporteerde sjabloon gebruiken
 
-In deze zelfstudie reeks hebt u een sjabloon gemaakt voor het implementeren van een Azure-opslag account. In de volgende twee zelf studies voegt u een *app service-abonnement* en een *website*toe. In plaats van helemaal nieuwe sjablonen te maken, leert u hoe u sjablonen uit de Azure Portal exporteert en hoe u voorbeeld sjablonen uit de [Azure Quick](https://azure.microsoft.com/resources/templates/)start-sjablonen gebruikt. U kunt deze sjablonen aanpassen voor uw gebruik. Deze zelf studie is gericht op het exporteren van sjablonen en het aanpassen van het resultaat voor uw sjabloon. Het duurt ongeveer **14 minuten** om te volt ooien.
+In deze serie zelfstudies hebt u een sjabloon gemaakt voor het implementeren van een Azure-opslagaccount. In de volgende twee zelfstudies voegt u een *App Service-plan* en een *website* toe. In plaats van totaal nieuwe sjablonen te maken, leert u hoe u sjablonen uit de Azure-portal exporteert en hoe u voorbeeldsjablonen van [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/) kunt gebruiken. U kunt deze sjablonen aanpassen voor eigen gebruik. Deze zelfstudie is gericht op het exporteren van sjablonen en het aanpassen van het resultaat voor uw sjabloon. Dit neemt ongeveer **14 minuten** in beslag.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U wordt aangeraden de [zelf studie over uitvoer](template-tutorial-add-outputs.md)te volt ooien, maar dit is niet vereist.
+U wordt aangeraden om eerst de [zelfstudie over uitvoer](template-tutorial-add-outputs.md) te voltooien, maar dit is niet verplicht.
 
-U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en een Azure PowerShell of Azure CLI. Zie voor meer informatie [sjabloon hulpprogramma's](template-tutorial-create-first-template.md#get-tools).
+U moet beschikken over Visual Studio Code met de extensie Resource Manager Tools (hulpprogramma's voor resourcebeheer), plus Azure PowerShell of Azure CLI. Zie de [hulpprogramma's voor sjablonen](template-tutorial-create-first-template.md#get-tools) voor meer informatie.
 
 ## <a name="review-template"></a>Sjabloon controleren
 
-Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
+Aan het einde van de vorige zelfstudie had uw sjabloon de volgende JSON:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 
-Deze sjabloon werkt goed voor het implementeren van opslag accounts, maar mogelijk wilt u er meer resources aan toevoegen. U kunt een sjabloon uit een bestaande resource exporteren om de JSON voor die resource snel te verkrijgen.
+Deze sjabloon werkt goed voor het implementeren van opslagaccounts, maar mogelijk wilt u er meer resources aan toevoegen. U kunt een sjabloon uit een bestaande resource exporteren om de JSON voor die resource snel te verkrijgen.
 
 ## <a name="create-app-service-plan"></a>Een App Service-plan maken
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **Een resource maken**.
-1. In **de Marketplace doorzoeken**voert u **app service plan**in en selecteert u vervolgens **app service plan**.  Selecteer geen **app service plan (klassiek)**
+1. Voer **App Service-plan** in **Marketplace doorzoeken** en selecteer **App Service-plan**.  Selecteer niet **App Service-plan (klassiek)**
 1. Selecteer **Maken**.
 1. Voer het volgende in:
 
-    - **Abonnement**: Selecteer uw Azure-abonnement.
-    - **Resource groep**: Selecteer **nieuwe maken** en geef een naam op. Geef een andere naam op voor de resource groep dan het account dat u in deze zelfstudie reeks hebt gebruikt.
-    - **Naam**: Voer een naam in voor het app service-plan.
-    - **Besturings systeem**: Selecteer **Linux**.
-    - **Regio**: Selecteer een Azure-locatie. Bijvoorbeeld **VS - centraal**.
-    - **Prijs categorie**: als u kosten wilt besparen, wijzigt u de SKU in **Basic B1** (onder dev/test).
+    - **Abonnement**: selecteer uw Azure-abonnement.
+    - **Resourcegroep**: Selecteer **Nieuwe maken** en geef een naam op. Geef een andere resourcegroepsnaam op dan degene die u al in deze serie zelfstudies hebt gebruikt.
+    - **Naam**: voer een naam in voor het App service-plan.
+    - **Besturingssysteem**: selecteer **Linux**.
+    - **Regio**: selecteer een Azure-locatie. Bijvoorbeeld **VS - centraal**.
+    - **Prijscategorie**: als u kosten wilt besparen, wijzigt u de SKU in **Basic B1** (onder Dev/Test).
 
-    ![Sjabloon portal voor het exporteren van Resource Manager-sjablonen](./media/template-tutorial-export-template/resource-manager-template-export.png)
-1. Selecteer **controleren en maken**.
-1. Selecteer **Maken**. Het duurt enkele minuten om de resource te maken.
+    ![Portal voor het exporteren van Resource Manager-sjablonen](./media/template-tutorial-export-template/resource-manager-template-export.png)
+1. Selecteer **Controleren en maken**.
+1. Selecteer **Maken**. Het kan even duren om de resource te maken.
 
 ## <a name="export-template"></a>Sjabloon exporteren
 
@@ -55,34 +56,34 @@ Deze sjabloon werkt goed voor het implementeren van opslag accounts, maar mogeli
 
     ![Ga naar resource](./media/template-tutorial-export-template/resource-manager-template-export-go-to-resource.png)
 
-1. Selecteer **sjabloon exporteren**.
+1. Selecteer **Sjabloon exporteren**.
 
-    ![Sjabloon voor exporteren van Resource Manager-sjabloon](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
+    ![Sjabloon voor het exporteren van Resource Manager-sjablonen](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
-   De functie sjabloon exporteren neemt de huidige status van een resource en genereert een sjabloon om deze te implementeren. Het exporteren van een sjabloon kan een handige manier zijn om snel de JSON te krijgen die u nodig hebt om een resource te implementeren.
+   Met de functie voor het exporteren van sjablonen wordt de huidige status van een resource opgehaald en een sjabloon gegenereerd om deze te implementeren. Het exporteren van een sjabloon kan een handige manier zijn om snel de JSON te verkrijgen die u nodig hebt om een resource te implementeren.
 
-1. Kopieer de definitie van **micro soft. web/server farms** en de parameter definitie naar uw sjabloon.
+1. Kopieer de definitie **Microsoft.Web/serverfarms** en de parameterdefinitie naar uw sjabloon.
 
-    ![Sjabloon export sjabloon geëxporteerde Resource Manager-sjabloon](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
+    ![Geëxporteerde Resource Manager-sjabloon](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
 > [!IMPORTANT]
-> De geëxporteerde sjabloon is doorgaans uitgebreider dan u mogelijk wilt bij het maken van een sjabloon. Het SKU-object in de geëxporteerde sjabloon heeft bijvoorbeeld vijf eigenschappen. Deze sjabloon werkt, maar u kunt gewoon de eigenschap **name** gebruiken. U kunt beginnen met de geëxporteerde sjabloon en deze vervolgens aanpassen aan uw vereisten.
+> De geëxporteerde sjabloon is doorgaans uitgebreider dan u wellicht wilt bij het maken van een sjabloon. Het SKU-object in de geëxporteerde sjabloon heeft bijvoorbeeld vijf eigenschappen. Deze sjabloon werkt, maar u kunt ook gewoon de eigenschap **name** (naam) gebruiken. U kunt beginnen met de geëxporteerde sjabloon en deze vervolgens aanpassen aan uw vereisten.
 
 ## <a name="revise-existing-template"></a>Bestaande sjabloon herzien
 
-De geëxporteerde sjabloon biedt u de meeste benodigde JSON, maar u moet deze aanpassen voor uw sjabloon. Let vooral op verschillen in para meters en variabelen tussen uw sjabloon en de geëxporteerde sjabloon. Het export proces kent uiteraard niet de para meters en variabelen die u al hebt gedefinieerd in uw sjabloon.
+De geëxporteerde sjabloon biedt u het merendeel van de benodigde JSON, maar u moet deze aanpassen voor uw sjabloon. Let vooral op verschillen in parameters en variabelen tussen uw sjabloon en de geëxporteerde sjabloon. Voor het exportproces is uiteraard niet bekend welke parameters en variabelen u al hebt gedefinieerd in uw sjabloon.
 
-In het volgende voor beeld worden de toevoegingen aan uw sjabloon gemarkeerd. Het bevat de geëxporteerde code plus enkele wijzigingen. Eerst wordt de naam van de para meter gewijzigd zodat deze overeenkomt met uw naam Conventie. Ten tweede wordt uw locatie parameter gebruikt voor de locatie van het app service-plan. Ten derde wordt de **naam** in het object **Properties** verwijderd, omdat deze waarde overbodig is met de eigenschap **name** op het niveau van de resource.
+In het volgende voorbeeld worden de toevoegingen aan uw sjabloon uitgelicht. Het bevat de geëxporteerde code plus enkele wijzigingen. Eerst wordt de naam van de parameter gewijzigd zodat deze overeenkomt met uw naamconventie. Ten tweede wordt uw locatieparameter gebruikt voor de locatie van het App Service-plan. Ten derde wordt **name** (naam) uit het object **properties**  (eigenschappen) verwijderd, omdat deze waarde overbodig is wegens de eigenschap **name** op resourceniveau.
 
-Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
+Kopieer het hele bestand en vervang uw sjabloon door de inhoud ervan.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json" range="1-77" highlight="28-31,50-69":::
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-Gebruik Azure CLI of Azure PowerShell voor het implementeren van een sjabloon.
+U kunt Azure CLI of Azure PowerShell gebruiken om een sjabloon te implementeren.
 
-Als u de resource groep nog niet hebt gemaakt, raadpleegt u [resource groep maken](template-tutorial-create-first-template.md#create-resource-group). In het voor beeld wordt ervan uitgegaan dat u de **templateFile** -variabele hebt ingesteld op het pad naar het sjabloon bestand, zoals wordt weer gegeven in de [eerste zelf studie](template-tutorial-create-first-template.md#deploy-template).
+Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group) als u de resourcegroep nog niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de variabele **templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals weergegeven in de [eerste zelfstudie](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -97,7 +98,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u deze implementatie opdracht wilt uitvoeren, moet u de [nieuwste versie](/cli/azure/install-azure-cli) van Azure cli hebben.
+Als u deze implementatieopdracht wilt uitvoeren, moet u beschikken over de [nieuwste versie](/cli/azure/install-azure-cli) van Azure CLI.
 
 ```azurecli
 az deployment group create \
@@ -110,31 +111,31 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de switch **debug** met de implementatie opdracht om de logboeken voor fout opsporing weer te geven.  U kunt ook de **uitgebreide** switch gebruiken om de volledige logboeken voor fout opsporing weer te geven.
+> Als de implementatie is mislukt, gebruikt u de schakeloptie **debug** met de implementatieopdracht om de logboeken voor foutopsporing weer te geven.  U kunt ook de schakeloptie **verbose** gebruiken om de volledige logboeken voor foutopsporing weer te geven.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
-U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
+U kunt de implementatie controleren door de resourcegroep te bekijken vanuit de Azure Portal.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer **resource groepen**in het menu links.
-1. Selecteer de resource groep die u hebt geïmplementeerd.
-1. De resource groep bevat een opslag account en een App Service plan.
+1. Selecteer **Resourcegroepen** in het linkermenu.
+1. Selecteer de resourcegroep waarin de sjabloon is geïmplementeerd.
+1. De resourcegroep bevat een opslagaccount en een App Service-plan.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u verdergaat met de volgende zelf studie, hoeft u de resource groep niet te verwijderen.
+Als u verdergaat met de volgende zelfstudie, hoeft u de resourcegroep niet te verwijderen.
 
-Als u nu stopt, wilt u misschien de resources opschonen die u hebt geïmplementeerd door de resource groep te verwijderen.
+Als u nu stopt, wilt u de geïmplementeerde resources wellicht opschonen door de resourcegroep te verwijderen.
 
-1. Selecteer in de Azure Portal **resource groep** in het menu links.
+1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **resource groep verwijderen** in het bovenste menu.
+4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u een sjabloon uit de Azure Portal exporteert en hoe u de geëxporteerde sjabloon gebruikt voor het ontwikkelen van sjablonen. U kunt ook de Azure Quick Start-sjablonen gebruiken om de ontwikkeling van sjablonen te vereenvoudigen.
+U hebt geleerd hoe u een sjabloon uit de Azure-portal exporteert en hoe u de geëxporteerde sjabloon verder kunt ontwikkelen. U kunt ook de Azure-quickstart-sjablonen gebruiken om de ontwikkeling van sjablonen te vereenvoudigen.
 
 > [!div class="nextstepaction"]
-> [Sjablonen voor Azure Quick Start gebruiken](template-tutorial-quickstart-template.md)
+> [Azure-quickstart-sjablonen gebruiken](template-tutorial-quickstart-template.md)

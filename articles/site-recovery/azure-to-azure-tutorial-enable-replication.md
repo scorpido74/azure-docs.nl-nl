@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a3cec6cb009e3d83d22f3f2a4140afe16db180a8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 50bf1ec7f21ccbc3a3fa8feaea02e45bd08a158a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372923"
+ms.locfileid: "87421413"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Herstel na noodgevallen instellen voor Azure-VM's
 
@@ -66,12 +66,12 @@ Om ervoor te zorgen dat Site Recovery werkt zoals verwacht, moet u de uitgaande 
 
 Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, staat u toegang tot deze URL’s toe:
 
-| **URL** | **Details** |
-| ------- | ----------- |
-| `*.blob.core.windows.net` | Hiermee kunnen gegevens van de VM naar het cache-opslagaccount in de bronregio worden geschreven. |
-| `login.microsoftonline.com` | Verzorgt autorisatie en authenticatie voor de URL’s van Site Recovery. |
-| `*.hypervrecoverymanager.windowsazure.com` | Maakt het de VM mogelijk te communiceren met de Site Recovery-service. |
-| `*.servicebus.windows.net` | Maakt het de VM mogelijk bewakings- en diagnosegegevens van Site Recovery te schrijven. |
+| **Naam**                  | **Commercieel**                               | **Overheid**                                 | **Beschrijving** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Hiermee kunnen gegevens van de VM naar het cache-opslagaccount in de bronregio worden geschreven. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Verzorgt autorisatie en authenticatie voor de URL’s van Site Recovery. |
+| Replicatie               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Maakt het de VM mogelijk te communiceren met de Site Recovery-service. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Maakt het de VM mogelijk bewakings- en diagnosegegevens van Site Recovery te schrijven. |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Uitgaande connectiviteit voor IP-adresbereiken
 

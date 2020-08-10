@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 432c92bcfa8a2e0df26adf1516f5bdc9ee73d267
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289296"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502372"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Failback uitvoeren van een virtuele Azure-machine uit tussen Azure-regio's
 
@@ -42,7 +42,7 @@ Nadat de virtuele machines opnieuw zijn beveiligd, kunt u desgewenst een failbac
 
 1. Selecteer in de kluis **Gerepliceerde items**en selecteer vervolgens de VM die opnieuw is beveiligd.
 
-    ![Failback uitvoeren naar primaire regio](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
+    ![Schermopname met failback naar de primaire regio in de Azure-portal.](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
 
 2. Selecteer in **Gerepliceerde items** de virtuele machine en selecteer vervolgens **Failover**.
 3. Selecteer in **Failover** een herstelpunt waarnaar u de failover wilt uitvoeren:
@@ -55,7 +55,7 @@ Nadat de virtuele machines opnieuw zijn beveiligd, kunt u desgewenst een failbac
 7. Nadat u de failover hebt geverifieerd, selecteert u **Failover doorvoeren**. Na het doorvoeren worden alle beschikbare herstelpunten verwijderd. De optie om het herstelpunt te wijzigen is niet meer beschikbaar.
 8. Voor de VM moet zijn weergegeven dat failover en failback zijn uitgevoerd.
 
-    ![VM in primaire en secundaire regio's](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+    ![Schermopname van VM in primaire en secundaire regio's.](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
 > Voor machines die beheerde schijven gebruiken en de Site Recovery-extensie vanaf versie 9.28.x.x [update-rollup 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) uitvoeren, schoont Site Recovery machines in de secundaire regio voor noodherstel op nadat de failback is voltooid en de VM's opnieuw zijn beveiligd. Het is niet nodig om VM's en NIC's handmatig uit de secundaire regio te verwijderen. VM’s met niet-beheerde schijven worden niet opgeschoond. Als u de replicatie volledig uitschakelt nadat u een failback hebt uitgevoerd, worden, naast de VM's en NIC's, de schijven in de regio voor noodherstel door Site Recovery opgeschoond.

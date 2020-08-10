@@ -1,19 +1,19 @@
 ---
-title: Azure CLI-script-server configuraties wijzigen (PostgreSQL)
+title: 'Azure CLI-script: serverconfiguraties wijzigen (POstgreSQL)'
 description: Dit CLI-voorbeeldscript maakt een lijst met alle beschikbare serverconfiguratieopties en werkt de waarde van een van de opties bij.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 02/28/2018
-ms.openlocfilehash: d2b54d1173b9591de2482f4b3368d3dde8b8c766
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 097b7692c5088a0860b8778fe8f315a84cf6b147
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71947801"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496556"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Configuraties van een Azure Database for PostgreSQL-server opsommen en bijwerken met behulp van Azure CLI
 Met dit CLI-voorbeeldscript wordt een lijst gemaakt van alle beschikbare configuratieparameters en de toegestane waarden ervan voor Azure-Database for PostgreSQL-server, en wordt *log_retention_days* ingesteld op een andere waarde dan de standaardwaarde.
@@ -33,9 +33,9 @@ Gebruik de volgende opdracht om de resourcegroep en alle resources die er aan zi
 ## <a name="script-explanation"></a>Uitleg van het script
 Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weergegeven:
 
-| **Cmd** | **Opmerkingen** |
+| **Opdracht** | **Opmerkingen** |
 |---|---|
-| [az group create](/cli/azure/group) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az group create](/cli/azure/group) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [az postgres server create](/cli/azure/postgres/server) | Hiermee wordt een PostgreSQL-server gemaakt waar de SQL-database wordt gehost. |
 | [az postgres server configuration list](/cli/azure/postgres/server/configuration) | Hiermee wordt een lijst gemaakt van de configuraties van een Azure Database for PostgreSQL-server. |
 | [az postgres server configuration set](/cli/azure/postgres/server/configuration) | Hiermee wordt de configuratie van een Azure Database for PostgreSQL-server bijgewerkt. |
@@ -43,6 +43,6 @@ Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weerg
 | [az group delete](/cli/azure/group) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-- Lees de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
-- Meer scripts om te proberen: [Azure CLI-voorbeelden voor Azure Database for PostgreSQL](../sample-scripts-azure-cli.md)
+- Meer informatie over Azure CLI: [Azure CLI-documentatie](/cli/azure).
+- Aanvullende scripts proberen: [Azure CLI-voorbeelden voor Azure Database for PostgreSQL](../sample-scripts-azure-cli.md)
 - Zie voor meer informatie over serverparameters [Serverparameters configureren in Azure-portal](../howto-configure-server-parameters-using-portal.md).

@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035057"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419543"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Zelfstudie: Aanmeldingen van gebruikers beveiligen met Azure Multi-Factor Authentication
 
@@ -39,7 +39,7 @@ In deze zelfstudie leert u het volgende:
 
 Om deze zelfstudie te voltooien, hebt u de volgende resources en machtigingen nodig:
 
-* Een werkende Azure AD-tenant waarvoor een Azure AD Premium- of proeflicentie is ingeschakeld.
+* Een werkende Azure AD-tenant waarop minimaal een Azure AD Premium P1- of -proeflicentie is ingeschakeld.
     * [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
 * Een account met de bevoegdheden van een *globale beheerder*.
 * Een niet-beheerder met een wachtwoord dat u kent, zoals *testuser*. In deze zelfstudie test u met dit account Azure Multi-Factor Authentication voor eindgebruikers.
@@ -65,7 +65,7 @@ Maak eerst beleid voor voorwaardelijke toegang en wijs de testgroep met gebruike
 1. Schakel het selectie vakje in bij **Gebruikers en groepen** en klik op **Selecteren** om te door de beschikbare Azure AD-gebruikers en -groepen te bladeren.
 1. Selecteer uw Azure AD-groep, bijvoorbeeld *MFA-Test-Group* en kies vervolgens **Selecteren**.
 
-    [![](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png "Select your Azure AD group to use with the Conditional Access policy")](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
+    [ ![Selecteer de Azure AD-groep die u wilt gebruiken voor het beleid voor voorwaardelijke toegang](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png) ](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
 
 1. Selecteer **Gereed** als u het beleid voor voorwaardelijke toegang op de groep wilt toepassen.
 

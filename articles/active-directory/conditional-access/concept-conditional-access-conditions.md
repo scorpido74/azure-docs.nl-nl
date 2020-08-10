@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275000"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032119"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
 
 Binnen een beleid voor voorwaardelijke toegang kan een beheerder gebruik maken van signalen van voor waarden zoals risico, platform of locatie om hun beleids beslissingen te verbeteren. 
 
-![Een beleid voor voorwaardelijke toegang definiëren en voor waarden opgeven](./media/concept-conditional-access-conditions/conditional-access-conditions.png)
+[![Een beleid voor voorwaardelijke toegang definiëren en voor waarden opgeven](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 Er kunnen meerdere voor waarden worden gecombineerd om een nauw keurig en specifiek beleid voor voorwaardelijke toegang te maken.
 
@@ -60,21 +60,28 @@ Sommige organisaties kunnen er bijvoorbeeld voor kiezen om geen multi-factor Aut
 
 Meer informatie over locaties vindt u in het artikel, [Wat is de voor waarde voor de locatie in azure Active Directory voorwaardelijke toegang](location-condition.md).
 
-## <a name="client-apps-preview"></a>Client-apps (preview-versie)
+## <a name="client-apps"></a>Client-apps
 
-Beleid voor voorwaardelijke toegang is standaard van toepassing op browser toepassingen en toepassingen die gebruikmaken van moderne verificatie protocollen. Naast deze toepassingen kunnen beheerders kiezen voor Exchange ActiveSync-clients en andere clients die gebruikmaken van verouderde protocollen.
+Standaard zijn alle nieuw gemaakte beleids regels voor voorwaardelijke toegang van toepassing op alle client-app-typen, zelfs als de voor waarde voor de client-apps niet is geconfigureerd. 
 
 > [!NOTE]
-> De schakel optie Ja/Nee in de voor waarde client-apps configureren is verwijderd, zodat u gemakkelijker kunt zien welke client-apps zijn geselecteerd. Dit heeft geen invloed op de client-apps waarop een bestaand beleid van toepassing is.
+> Het gedrag van de voor waarde client-apps is bijgewerkt in augustus 2020. Als u bestaande beleids regels voor voorwaardelijke toegang hebt, blijven deze ongewijzigd. Als u echter op een bestaand beleid klikt, is de optie voor het configureren van de configuratie verwijderd en worden de client-apps waarop het beleid van toepassing is geselecteerd.
 
-- Browser
-   - Dit zijn webtoepassingen die gebruikmaken van protocollen zoals SAML, WS-Federation, OpenID Connect Connect of services die zijn geregistreerd als een OAuth-vertrouwelijke client.
-- Mobiele apps en desktop-clients
-   - Moderne verificatie-clients
-      - Deze optie omvat toepassingen zoals het Office-bureau blad en de telefoon toepassingen.
+> [!IMPORTANT]
+> Aanmeldingen vanaf verouderde verificatie-clients bieden geen ondersteuning voor MFA en geven geen status informatie over de apparaten door aan Azure AD, zodat deze worden geblokkeerd door besturings elementen voor voorwaardelijke toegang, zoals het vereisen van MFA of compatibele apparaten. Als u accounts hebt die verouderde verificatie moeten gebruiken, moet u deze accounts uitsluiten van het beleid of het beleid zo configureren dat het alleen van toepassing is op moderne authenticatie-clients.
+
+De **instelling** in-en uitschakelen wanneer ingesteld op **Ja** is van toepassing op geselecteerde items, wanneer deze optie is ingesteld op **Nee** , is van toepassing op alle client-apps, waaronder moderne en verouderde verificatie-clients. Deze wissel knop wordt niet weer gegeven in beleids regels die zijn gemaakt vóór 2020 augustus.
+
+- Moderne verificatie-clients
+   - Browser
+      - Dit zijn webtoepassingen die gebruikmaken van protocollen zoals SAML, WS-Federation, OpenID Connect Connect of services die zijn geregistreerd als een OAuth-vertrouwelijke client.
+   - Mobiele apps en desktop-clients
+      -  Deze optie omvat toepassingen zoals het Office-bureau blad en de telefoon toepassingen.
+- Verouderde verificatie-clients
    - Exchange ActiveSync-clients
-      - Dit omvat standaard alle gebruik van het Exchange ActiveSync-protocol (EAS). Het kiezen van **beleid alleen Toep assen op ondersteunde platforms** wordt beperkt tot ondersteunde platforms zoals IOS, Android en Windows.
+      - Dit omvat alle gebruik van het Exchange ActiveSync-protocol (EAS).
       - Wanneer het beleid het gebruik van Exchange ActiveSync blokkeert, ontvangt de betrokken gebruiker één quarantaine-e-mail. Dit e-mail bericht bevat informatie over waarom ze zijn geblokkeerd en bevatten herstel instructies als dit mogelijk is.
+      - Beheerders kunnen beleid alleen Toep assen op ondersteunde platformen (zoals iOS, Android en Windows) via de MS Graph API van de voorwaardelijke toegang.
    - Andere clients
       - Deze optie omvat clients die gebruikmaken van basis/verouderde verificatie protocollen die geen ondersteuning bieden voor moderne verificatie.
          - Geverifieerde SMTP: wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.
@@ -95,7 +102,7 @@ Deze voor waarden worden meestal gebruikt voor het vereisen van een beheerd appa
 
 Deze instelling werkt met alle browsers. Om echter te voldoen aan het beleid van een apparaat, zoals een vereiste apparaat vereist, worden de volgende besturings systemen en browsers ondersteund:
 
-| Besturingssysteem | Browsers |
+| OS | Browsers |
 | :-- | :-- |
 | Windows 10 | Micro soft Edge, Internet Explorer, Chrome |
 | Windows 8/8,1 | Internet Explorer, Chrome |
@@ -156,7 +163,7 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Office 365 Exchange Online | Windows 8,1, Windows 7 |
 | Mobiele Outlook-app | Office 365 Exchange Online | Android, iOS |
 | Power BI-app | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
-| Skype voor bedrijven | Office 365 Exchange Online| Android, iOS |
+| Skype voor Bedrijven | Office 365 Exchange Online| Android, iOS |
 | App Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS en Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-clients

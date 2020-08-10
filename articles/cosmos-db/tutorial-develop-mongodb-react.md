@@ -9,12 +9,13 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8fbf06d6bd93de578039959d9f0235f1f55d448e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69614112"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424270"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Een MongoDB-app maken met React en Azure Cosmos DB  
 
@@ -69,7 +70,7 @@ In deze video ziet u hoe u een Azure Cosmos DB-account maakt in Azure Portal, de
 
 ## <a name="read-and-create-heroes-in-the-app"></a>Hero's in de app lezen en maken
 
-In deze video ziet u hoe u helds leest en helds maakt in de Cosmos-data base, en hoe u deze methoden kunt testen met behulp van Postman en de gebruikers interface reageren. 
+In deze video ziet u hoe u hero's leest en hero's maakt in de Cosmos-database, en hoe u deze methoden test in Postman en de React-gebruikersinterface. 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 

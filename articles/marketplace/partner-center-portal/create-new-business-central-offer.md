@@ -1,18 +1,18 @@
 ---
 title: Een Dynamics 365 Business Central-aanbieding maken-micro soft Commercial Marketplace
-description: Meer informatie over de stappen en overwegingen voor het maken van een nieuwe Dynamics 365 Business Central-aanbieding in de portal voor commerciële Marketplace in het partner centrum. U kunt uw aanbieding aanbieden of verkopen in azure Marketplace of via het programma Cloud Solution Provider (CSP).
+description: Meer informatie over de stappen en overwegingen voor het maken van een nieuwe Dynamics 365 Business Central-aanbieding in micro soft Commercial Marketplace in Partner Center. U kunt uw aanbieding aanbieden of verkopen in azure Marketplace of via het programma Cloud Solution Provider (CSP).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 5ec8949d1ba614ca947f9848182ae2c94e044fc3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: ff93a336b50ceac1106b31726d865ed3e0b41108
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800395"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031469"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Een Dynamics 365 Business Central-aanbieding maken
 
@@ -180,19 +180,21 @@ In het gedeelte **ondersteuning voor contact opnemen** moet u ook de **ondersteu
 
 Geef hier ten minste één (en Maxi maal drie) gerelateerde marketing documenten op, zoals witboeken, brochures, controle lijsten of presentaties. Deze documenten moeten de PDF-indeling hebben.
 
-### <a name="store-logos"></a>Winkel logo's
+### <a name="marketplace-images"></a>Marketplace-installatie kopieën
 
-Geef een PNG-bestand op voor het logo van **grote** grootte (tussen 216 x 216 en 350 x 350 pixels). In het partner centrum wordt dit gebruikt om een **klein** logo (48 x 48 pixels) te maken. U kunt dit eventueel vervangen door een andere afbeelding.
+Bied logo's en installatie kopieën voor uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. 
 
-Beide logo grootten zijn vereist voor gebruik op verschillende plaatsen in de vermelding:
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
-- **Klein** (48 x 48)
-- **Groot** (tussen 216 x 216 en 350 x 350)
+Upload uw aanbiedings logo in twee grootten:
+
+* **Klein** (48 x 48 pixels)
+* **Groot** (216 x 216 pixels)
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 >[!NOTE]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door `https://upload.xboxlive.com` Partner Center gebruikte service niet blokkeert.
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

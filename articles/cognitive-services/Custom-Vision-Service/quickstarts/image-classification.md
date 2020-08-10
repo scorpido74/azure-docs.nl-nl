@@ -1,22 +1,22 @@
 ---
-title: 'Snelstartgids: afbeeldings classificatie maken met Custom Vision SDK'
-description: 'Snelstartgids: een project maken, Tags toevoegen, afbeeldingen uploaden, uw project trainen en een voor spelling maken met behulp van de Custom Vision SDK'
+title: 'Quickstart: Afbeeldingsclassificatie maken met Custom Vision-SDK'
+description: 'Quickstart: Maak een project, voeg tags toe, upload afbeeldingen, train uw project en doe een voorspelling met behulp van de Custom Vision-SDK.'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 71eab722cbf00714954a16840f5ecbeb4ff29c22
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 89ac56655b7f844689fa3d948141ad0190da02b4
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609366"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406028"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk"></a>Snelstartgids: een afbeeldings classificatie project maken met de Custom Vision SDK
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk"></a>Quickstart: Een project voor afbeeldingsclassificatie maken met de Custom Vision-SDK
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-tutorial.md)]

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e77701e17ef1b47aa6b8e3b8f2d10e93bf5e054e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ead0c13a1fce0b5d56c9dd875c594a2269e2c78c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093383"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513108"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Zelfstudie: Azure Key Vault gebruiken met een virtuele machine in .NET
 
@@ -56,21 +56,15 @@ Als u zich met behulp van Azure CLI wilt aanmelden bij Azure, voert u het volgen
 az login
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Een resourcegroep en sleutelkluis maken
+## <a name="create-a-resource-group-and-key-vault"></a>Een resourcegroep en sleutelkluis maken
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="populate-your-key-vault-with-a-secret"></a>Vul uw sleutelkluis in met een geheim
+## <a name="populate-your-key-vault-with-a-secret"></a>Vul uw sleutelkluis in met een geheim
 
-Voeg nu een geheim toe aan uw sleutelkluis met de opdracht [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set). Typ de volgende opdracht om een geheim te maken in de sleutelkluis met de naam **mijnGeheim**:
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
-```azurecli
-az keyvault secret set --vault-name "<your-unique-key-vault-name>" --name "mySecret" --value "MySecret"
-```
-
-Met dit geheim wordt de waarde **MijnGeheim** opgeslagen.
-
-### <a name="create-a-virtual-machine"></a>Een virtuele machine maken
+## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 Gebruik een van de volgende manieren om een virtuele Windows of Linux-machine te maken:
 
 | Windows | Linux |
@@ -79,7 +73,7 @@ Gebruik een van de volgende manieren om een virtuele Windows of Linux-machine te
 | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) |
 | [Azure-portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure-portal](../../virtual-machines/linux/quick-create-portal.md) |
 
-### <a name="assign-an-identity-to-the-vm"></a>Een identiteit toewijzen aan de virtuele machine
+## <a name="assign-an-identity-to-the-vm"></a>Een identiteit toewijzen aan de virtuele machine
 Maak een door het systeem toegewezen identiteit voor de virtuele machine met de opdracht [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign):
 
 ```azurecli
@@ -95,14 +89,14 @@ Bekijk de door het systeem toegewezen identiteit die wordt weergegeven in de vol
 }
 ```
 
-### <a name="assign-permissions-to-the-vm-identity"></a>Machtigingen toewijzen aan de VM-identiteit
+## <a name="assign-permissions-to-the-vm-identity"></a>Machtigingen toewijzen aan de VM-identiteit
 Wijs de eerder gemaakte identiteitsmachtigingen toe aan uw sleutelkluis met de opdracht [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy):
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-### <a name="sign-in-to-the-virtual-machine"></a>Aanmelden bij de virtuele machine
+## <a name="sign-in-to-the-virtual-machine"></a>Aanmelden bij de virtuele machine
 
 Als u zich wilt aanmelden bij de virtuele machine, volgt u de instructies in [Verbinding maken met en aanmelden bij een virtuele Azure-machine met Windows](../../virtual-machines/windows/connect-logon.md) of [Verbinding maken en aanmelden bij de virtuele Azure-machine die Linux uitvoert](../../virtual-machines/linux/login-using-aad.md).
 

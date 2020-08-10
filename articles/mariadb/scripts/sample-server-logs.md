@@ -1,19 +1,19 @@
 ---
-title: CLI-script-trage query logboeken downloaden-Azure Database for MariaDB
-description: Dit Azure CLI-voorbeeld script laat zien hoe u de langzame query logboeken van een Azure Database for MariaDB-server inschakelt en downloadt.
+title: "CLI-script: logboeken voor langzame query's downloaden in Azure Database for MariaDB"
+description: Dit Azure CLI-voorbeeldscript laat zien hoe u de logboeken voor langzame query's kunt inschakelen en downloaden voor een Azure Database for MariaDB-server.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: a6d4ed70418f39b24a68362d5006f3f374693cb6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 5212f4eb17ef7b4ed1b89604fc12a1e13bae78f4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74777345"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502185"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Logboeken voor langzame query's van een Azure Database for MariaDB-server inschakelen en downloaden met behulp van Azure CLI
 Met dit CLI-voorbeeldscript worden de logboeken voor langzame query's van één Azure Database for MariaDB-server ingeschakeld en gedownload.
@@ -33,9 +33,9 @@ Gebruik de volgende opdracht om de resourcegroep en alle resources die er aan zi
 ## <a name="script-explanation"></a>Uitleg van het script
 Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weergegeven:
 
-| **Cmd** | **Opmerkingen** |
+| **Opdracht** | **Opmerkingen** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | Hiermee wordt een MariaDB-server gemaakt waarop de databases worden gehost. |
 | [az mariadb server configuration list](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) | Hiermee maakt u een lijst van de configuratiewaarden voor een server. |
 | [az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) | Hiermee werkt u de configuratie van een server bij. |
@@ -44,5 +44,5 @@ Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weerg
 | [az group delete](/cli/azure/group#az-group-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-- Lees de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
-- Meer scripts om te proberen: [Azure CLI-voorbeelden voor Azure Database for MariaDB](../sample-scripts-azure-cli.md)
+- Meer informatie over Azure CLI: [Azure CLI-documentatie](/cli/azure).
+- Aanvullende scripts proberen: [Azure CLI-voorbeelden voor Azure Database for MariaDB](../sample-scripts-azure-cli.md)

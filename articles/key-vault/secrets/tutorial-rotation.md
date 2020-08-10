@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 67fe36cf86c886f9d67d98cc8d34a090db4a71cb
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b61ba7f160d012cc3d9ad9f477e969a626fdc38e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372991"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541416"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Het rouleren van een geheim voor resources met één set verificatiereferenties automatiseren
 
@@ -41,7 +41,8 @@ In deze zelfstudie leert u hoe u de periodieke roulatie van geheimen voor databa
 
 U kunt de onderstaande implementatiekoppeling gebruiken als u geen bestaande sleutelkluis en SQL Server hebt:
 
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+[![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+
 1. Selecteer onder **Resourcegroep** de optie **Nieuwe maken**. Geef de groep de naam **akvrotation**.
 1. Typ bij **Aanmeldgegevens SQL-beheerder** de aanmeldings-id van de SQL-beheerder. 
 1. Selecteer **Controleren + maken**.
@@ -76,8 +77,10 @@ Voor de functie-app zijn de volgende onderdelen vereist:
 - Een toegangsbeleid om de functie-app-id toegang te geven tot geheimen in Key Vault
 - Een EventGrid-gebeurtenisabonnement voor de gebeurtenis **SecretNearExpiry**
 
-1. Selecteer de koppeling voor de Azure-sjabloonimplementatie:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+1. Selecteer de koppeling voor de Azure-sjabloonimplementatie: 
+
+   [![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
+
 1. Selecteer in de lijst **Resourcegroep** de optie **akvrotation**.
 1. Typ in **SQL Server-naam** de naam van de SQL Server met het wachtwoord dat u wilt rouleren
 1. Typ in **Naam voor Key Vault** de naam van de sleutelkluis
@@ -217,8 +220,10 @@ Voor de web-app zijn de volgende onderdelen vereist:
 - Een web-app met door het systeem beheerde identiteit
 - Een toegangsbeleid voor het openen van geheimen in Key Vault via een door de web-app beheerde identiteit
 
-1. Selecteer de koppeling voor de Azure-sjabloonimplementatie:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+1. Selecteer de koppeling voor de Azure-sjabloonimplementatie: 
+
+   [![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json)
+
 1. Selecteer de resourcegroep **akvrotation**.
 1. Typ in **SQL Server-naam** de naam van de SQL Server met het wachtwoord dat u wilt rouleren
 1. Typ in **Naam voor Key Vault** de naam van de sleutelkluis

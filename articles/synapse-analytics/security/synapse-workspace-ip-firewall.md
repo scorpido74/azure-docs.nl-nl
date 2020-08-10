@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: a06b4e6ced437cc83fadfad000fa682264264874
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052413"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503919"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>IP-firewallregels voor Azure Synapse Analytics (preview-versie)
 
@@ -35,7 +35,7 @@ U kunt ook IP-firewallregels toevoegen aan een Synapse-werkruimte nadat de werkr
 
 ![IP-configuratie van Synapse-werkruimte in de Azure-portal.](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
 
-## <a name="connecting-to-synapse-from-your-own-network"></a>Verbinding maken met Synapse via uw eigen netwerk
+## <a name="connect-to-synapse-from-your-own-network"></a>Verbinding maken met Synapse via uw eigen netwerk
 
 U kunt verbinding maken met uw Synapse-werkruimte met behulp van Synapse Studio. U kunt ook SQL Server Management Studio (SSMS) gebruiken om verbinding te maken met de SQL-resources (SQL-groepen en SQL on-demand) in uw werkruimte.
 

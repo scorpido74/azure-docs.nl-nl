@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7a4693dabc62ec03897ccc46398bdff77118fe4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283007"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032081"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Voorwaardelijke toegang: verouderde verificatie blok keren
 
@@ -36,11 +36,11 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
    1. Selecteer **Gereed**.
 1. Selecteer onder **Cloud-apps of-acties** **alle Cloud-apps**.
    1. Selecteer **Gereed**.
-1. Onder **voor waarden**  >  **client-apps (preview)**, onder **Selecteer de client-apps waarop dit beleid van toepassing is**:
-   1. Controleer alleen de vakken **Mobile apps en desktop-clients**  >  **andere clients**.
+1. Stel onder **voor waarden**  >  **client-apps** **configureren** in op **Ja**.
+   1. Controleer alleen de vakken **Exchange ActiveSync-clients** en **andere clients**.
    1. Selecteer **Gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang blok keren**.
-   1. Selecteer **Selecteren**.
+   1. Kies **Selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in op **alleen rapport**.
 1. Selecteer **maken** om uw beleid in te stellen.
 

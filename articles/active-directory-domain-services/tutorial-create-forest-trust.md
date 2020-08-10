@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 40dd7f1b177fd1319b145036c8263ba2c6e30137
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024669"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87492153"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Zelfstudie: Een uitgaande forestvertrouwensrelatie in één richting maken naar een on-premises domein in Azure Active Directory Domain Services (preview)
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Zelfstudie: Een uitgaande forestvertrouwensrelatie in één richting maken naar een on-premises domein in Azure Active Directory Domain Services
 
-In omgevingen waarin u geen wachtwoordhashes kunt synchroniseren, of waarin gebruikers werken die zich alleen aanmelden via een smartcard (zodat ze hun wachtwoord niet kennen), kunt u een resourceforest gebruiken in Azure AD DS (Azure Active Directory Domain Services). Een resourceforest maakt gebruik van een uitgaande vertrouwensrelatie in één richting van Azure AD DS naar één of meer on-premises AD DS-omgevingen. Met deze vertrouwensrelatie kunnen gebruikers, toepassingen en computers worden geverifieerd in een on-premises domein vanuit het met Azure AD DS beheerde domein. Azure AD DS-resourceforests bevinden zich momenteel in de preview-fase.
+In omgevingen waarin u geen wachtwoordhashes kunt synchroniseren, of waarin gebruikers werken die zich alleen aanmelden via een smartcard (zodat ze hun wachtwoord niet kennen), kunt u een resourceforest gebruiken in Azure AD DS (Azure Active Directory Domain Services). Een resourceforest maakt gebruik van een uitgaande vertrouwensrelatie in één richting van Azure AD DS naar één of meer on-premises AD DS-omgevingen. Met deze vertrouwensrelatie kunnen gebruikers, toepassingen en computers worden geverifieerd in een on-premises domein vanuit het met Azure AD DS beheerde domein. Bij gebruik van een resourceforest worden hashes van on-premises wachtwoorden nooit gesynchroniseerd.
 
 ![Diagram van forestvertrouwensrelatie van Azure AD DS naar on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 

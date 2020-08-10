@@ -1,7 +1,7 @@
 ---
-title: Voor beeld van Azure CLI-script-werken met sleutel waarden in app-configuratie opslag
+title: 'Voorbeeld van Azure CLI-script: werken met sleutel-waardeparen in een App Configuration-archief'
 titleSuffix: Azure App Configuration
-description: Een Azure CLI-script gebruiken om sleutel waarden te maken, weer te geven, bij te werken en te verwijderen uit het configuratie archief van de app
+description: Een Azure CLI-script gebruiken om sleutel-waardeparen te maken, weergeven, bijwerken en verwijderen uit App Configuration-archief
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,18 +9,19 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e3407a1da469bf4f31e5d54d83ee837bddbafffc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523643"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494754"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Werken met sleutelwaarden in een Azure-app-configuratiearchief
 
-Dit voorbeeld script laat zien hoe u:
-* Een nieuw sleutel/waarde-paar maken
-* Alle bestaande sleutel-waardeparen weer geven
+Dit voorbeeldscript laat zien hoe u het volgende kunt doen:
+* Een nieuw sleutel-waardepaar maken
+* Alle bestaande sleutel-waardeparen weergeven
 * De waarde van een nieuwe sleutel bijwerken
 * Het nieuwe sleutel-waardepaar verwijderen
 
@@ -28,7 +29,7 @@ Dit voorbeeld script laat zien hoe u:
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Voor dit artikel is Azure CLI versie 2,0 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
+Voor dit artikel is Azure CLI versie 2.0 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -79,16 +80,16 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Deze tabel bevat de opdrachten die worden gebruikt in het voorbeeld script. 
+Deze tabel bevat de opdrachten die worden gebruikt in het voorbeeldscript. 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Een sleutel/waarde-paar maken of bijwerken. |
-| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Sleutel-waardeparen weer geven in een app-configuratie archief. |
-| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Verwijder een sleutel/waarde-paar. |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Een sleutel-waardepaar maken of bijwerken. |
+| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | De sleutel-waardeparen weergeven die zijn opgenomen in een App Configuration-archief. |
+| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Een sleutel-waardepaar verwijderen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Extra CLI-script voorbeelden voor configuratie van apps vindt u in de voor beelden van de [Azure-app configuratie-cli](../cli-samples.md).
+Meer voorbeelden van CLI-scripts voor een App Configuration-archief vindt u in de [Azure App Configuration CLI-voorbeelden](../cli-samples.md).

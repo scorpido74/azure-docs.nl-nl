@@ -1,7 +1,7 @@
 ---
-title: Snelstartgids voor insluitende Reader node. js-client bibliotheek
+title: Quickstart voor de Node.js-clientbibliotheek voor Insluitende lezer
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start bouwt u een volledig nieuwe web-app en voegt u de functionaliteit van de insluitende Reader API toe.
+description: In deze quickstart maakt u een nieuwe web-app en voegt u de API-functionaliteit voor de Insluitende lezer toe.
 services: cognitive-services
 author: pasta
 manager: nitinme
@@ -9,28 +9,29 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2092ccbedd95ee13ac4ad929f052afd1d85729ec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d0d5c77fde24b705dbfa7ac44b0d32f0967d1526
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268719"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425042"
 ---
-De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulp programma waarmee bewezen technieken worden geïmplementeerd om de Lees vaardigheid te verbeteren.
+De [Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma waarmee bewezen technieken worden geïmplementeerd om de leesvaardigheid te verbeteren.
 
-In deze Snelstartgids bouwt u een volledig nieuwe web-app en integreert u de insluitende lezer met behulp van de insluitende lezer-client bibliotheek. [Hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)vindt u een volledig werkend voor beeld van deze Quick Start.
+In deze Quickstart maakt u een nieuwe web-app en integreert u de Insluitende lezer door de clientbibliotheek voor de insluitende lezer te gebruiken. U vindt [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs) een volledig werkend voorbeeld van deze quickstart.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een resource voor insluitende lezer die is geconfigureerd voor Azure Active Directory authenticatie. Volg [deze instructies om de](../../how-to-create-immersive-reader.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
-* [Node. js](https://nodejs.org/) en [garens](https://yarnpkg.com)
-* Een IDE zoals [Visual Studio code](https://code.visualstudio.com/)
+* Een Insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. U hebt enkele waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
+* [Node.js](https://nodejs.org/) en [Yarn](https://yarnpkg.com)
+* Een code-editor, zoals [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Een node. js-web-app maken met Express
+## <a name="create-a-nodejs-web-app-with-express"></a>Een Node.js-web-app maken met Express
 
-Maak een node. js-web-app met het `express-generator` hulp programma.
+Maak een Node.js-web-app met het hulpprogramma `express-generator`.
 
 ```bash
 npm install express-generator -g
@@ -38,7 +39,7 @@ express --view=pug quickstart-nodejs
 cd quickstart-nodejs
 ```
 
-Installeer garen afhankelijkheden en voeg afhankelijkheden toe `request` en `dotenv` , die later worden gebruikt in de Quick Start.
+Installeer Yarn-afhankelijkheden en voeg de afhankelijkheden `request` en `dotenv` toe. Deze worden verderop in de quickstart gebruikt.
 
 ```bash
 yarn
@@ -48,10 +49,10 @@ yarn add dotenv
 
 ## <a name="set-up-authentication"></a>Verificatie instellen
 
-### <a name="configure-authentication-values"></a>Verificatie waarden configureren
+### <a name="configure-authentication-values"></a>Verificatietypewaarden configureren
 
-Maak een nieuw bestand met de naam _. env_ in de hoofdmap van uw project. Plak de volgende code in het bestand en geef de waarden op die zijn opgegeven bij het maken van uw insluitende lezer-resource.
-Neem geen aanhalings tekens of de {en} op.
+Maak een nieuw bestand met de naam _. env_ in de hoofdmap van uw project. Plak de volgende code in het bestand, waarbij u de waarden opgeeft die zijn verstrekt bij het maken van de resource voor de Insluitende lezer.
+Laat aanhalingstekens of accolades weg.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -60,18 +61,18 @@ CLIENT_SECRET={YOUR_CLIENT_SECRET}
 SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
-Zorg ervoor dat dit bestand niet wordt door gegeven aan broncode beheer, omdat het geheimen bevat dat niet openbaar mag worden gemaakt.
+Zorg ervoor dat u dit bestand niet doorvoert in broncodebeheer, omdat het geheimen bevat die niet openbaar moeten worden gemaakt.
 
-Open vervolgens _app. js_ en voeg het volgende toe boven aan het bestand. Hiermee worden de eigenschappen die in het. env-bestand zijn gedefinieerd, geladen als omgevings variabelen in een knoop punt.
+Open vervolgens _app.js_ en voeg het volgende toe aan het begin van het bestand. Hiermee worden de eigenschappen die in het ENV-bestand zijn gedefinieerd, geladen als omgevingsvariabelen in Node.
 
 ```javascript
 require('dotenv').config();
 ```
 
 ### <a name="update-the-router-to-acquire-the-token"></a>De router bijwerken om het token te verkrijgen
-Open het _routes\index.js_ -bestand en vervang de automatisch gegenereerde code door de volgende code.
+Open het bestand _routes\index.js_ en vervang de automatisch gegenereerde code door de volgende code.
 
-Met deze code wordt een API-eind punt gemaakt waarmee een Azure AD-verificatie token wordt verkregen met behulp van het wacht woord voor de Service-Principal. Ook wordt het subdomein opgehaald. Vervolgens wordt een object geretourneerd dat het token en subdomein bevat.
+Met deze code wordt er een API-eindpunt gemaakt waarmee een Azure AD-verificatietoken wordt verkregen met behulp van uw wachtwoord voor de service-principal. Ook wordt hiermee het subdomein opgehaald. Vervolgens wordt een-object met het token en het subdomein geretourneerd.
 
 ```javascript
 var express = require('express');
@@ -123,11 +124,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-Het **GetTokenAndSubdomain** -API-eind punt moet worden beveiligd achter een vorm van verificatie (bijvoorbeeld [OAuth](https://oauth.net/2/)) om te voor komen dat onbevoegde gebruikers tokens verkrijgen om te gebruiken voor uw insluitende lezer-service en facturering; Dit werk valt buiten het bereik van deze Quick Start.
+Het API-eindpunt **GetTokenAndSubdomain** moet worden beveiligd met een vorm van verificatie (bijvoorbeeld [OAuth-](https://oauth.net/2/)) om te voorkomen dat niet-geautoriseerde gebruikers tokens verkrijgen die kunnen worden gebruikt voor uw Insluitende lezer-service en -facturering. Dit valt buiten het bereik van deze quickstart.
 
-## <a name="add-sample-content"></a>Voorbeeld inhoud toevoegen
+## <a name="add-sample-content"></a>Voorbeeldinhoud toevoegen
 
-Nu gaan we voorbeeld inhoud toevoegen aan deze web-app. Open _views\index.Pug_ en vervang de automatisch gegenereerde code door dit voor beeld:
+Nu gaan we voorbeeldinhoud toevoegen aan deze web-app. Open _views\index.pug_ en vervang de automatisch gegenereerde code door dit voorbeeld:
 
 ```pug
 doctype html
@@ -233,11 +234,11 @@ script(type="text/javascript").
 ```
 
 
-U ziet dat alle tekst een kenmerk **lang** heeft, waarin de talen van de tekst worden beschreven. Dit kenmerk helpt de insluitende lezer de relevante taal-en grammatica functies te bieden.
+U ziet dat alle tekst een **taal**-kenmerk bevat waarmee de talen van de tekst worden beschreven. Dit kenmerk helpt de Insluitende lezer de relevante taal-en grammaticafuncties te bieden.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
-Onze web-app is nu klaar. Start de app door uit te voeren:
+Onze web-app is nu klaar. Start de app met de volgende opdracht:
 
 ```bash
 npm start
@@ -245,14 +246,14 @@ npm start
 
 Open uw browser en ga naar _http://localhost:3000_ . U ziet nu het volgende:
 
-![Voorbeeldapp](../../media/quickstart-nodejs/1-buildapp.png)
+![Voorbeeld-app](../../media/quickstart-nodejs/1-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>De insluitende lezer starten
+## <a name="launch-the-immersive-reader"></a>De Insluitende lezer starten
 
-Wanneer u op de knop ' insluitende lezer ' klikt, ziet u dat de insluitende lezer wordt gestart met de inhoud op de pagina.
+Wanneer u op de knop ‘Immersive Reader’ klikt, ziet u dat de Insluitende lezer wordt gestart met de inhoud van de pagina.
 
-![Immersive Reader](../../media/quickstart-nodejs/2-viewimmersivereader.png)
+![Insluitende lezer](../../media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](../../reference.md)
+* De [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor Insluitende lezer](../../reference.md) verkennen

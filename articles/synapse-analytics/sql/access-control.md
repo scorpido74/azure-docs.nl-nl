@@ -9,19 +9,19 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 6dc0bb08e3d824c1d3fea155d1b3d4c52e1af4a6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765077"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499837"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Toegang tot werkruimten, gegevens en pijplijnen beheren
 
 Meer informatie over toegangsbeheer voor werkruimten, gegevens en pijplijnen in een Azure Synapse Analytics-werkruimte (preview).
 
 > [!NOTE]
-> Voor GA is RBAC beter ontwikkeld door de introductie van Synapse-specifieke Azure RBAC-rollen
+> Voor GA is RBAC beter ontwikkeld door de introductie van Synapse-specifieke Azure-rollen
 
 ## <a name="access-control-for-workspace"></a>Toegangsbeheer voor werkruimte
 

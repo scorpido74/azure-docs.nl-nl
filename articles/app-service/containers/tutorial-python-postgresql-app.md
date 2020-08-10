@@ -10,12 +10,13 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: 718c9a62cc867e5d65cc3c79e78ce3282f1037c7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+- devx-track-azurecli
+ms.openlocfilehash: 0ab19e538d2ffb97f9bb80c47f9ce5471bdb87a9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285846"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799461"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Zelfstudie: Een Django-web-app implementeren met PostgreSQL in Azure App Service
 
@@ -30,6 +31,9 @@ In deze zelfstudie gebruikt u de Azure CLI om de volgende taken te voltooien:
 > * Uw code bijwerken en opnieuw implementeren
 > * Diagnostische logboeken weergeven
 > * De web-app in Azure Portal beheren
+
+U kunt ook de [versie voor de Azure-portal van deze zelfstudie](/azure/developer/python/tutorial-python-postgresql-app-portal) gebruiken.
+
 
 ## <a name="set-up-your-initial-environment"></a>Uw eerste omgeving instellen
 

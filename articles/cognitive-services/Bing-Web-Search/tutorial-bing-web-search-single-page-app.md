@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een web-app van één pagina maken: Bing Webzoekopdrachten-API'
+title: 'Zelfstudie: Een web-app van één pagina maken - Bing Webzoekopdrachten-API'
 titleSuffix: Azure Cognitive Services
 description: Deze app met één pagina laat zien aan hoe de Bing Webzoekopdrachten-API kan worden gebruikt voor het ophalen, parseren en weergeven van relevante zoekresultaten in een app met één pagina.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6d958cd2fa95cd3c3747afc80b47c17f55e4248a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603584"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405531"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Webzoekopdrachten-API
 
@@ -36,8 +37,8 @@ Voor het gebruik van deze app is een [Azure Cognitive Services-account](https://
 
 Hier zijn een aantal zaken die u nodig hebt om de app uit te voeren:
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" maakt u een Bing Search resource Maak "  target="_blank"> een Bing Search resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Een Bing Search-resource maken"  target="_blank">maakt u een Bing Search-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
 
 * Node.js 8 of later
 
@@ -128,7 +129,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` kan worden ingesteld op `strict`, `moderate` of `off`, waarbij `moderate` de standaardinstelling voor Bing Web Search is. Dit formulier gebruikt een selectie vakje met twee statussen: `strict` of `moderate` .
+`SafeSearch` kan worden ingesteld op `strict`, `moderate` of `off`, waarbij `moderate` de standaardinstelling voor Bing Web Search is. In dit formulier wordt een selectievakje met twee statussen gebruikt: `strict` of `moderate`.
 
 Als een van de **Promoten**-selectievakjes is geselecteerd, wordt de `answerCount`-parameter toegevoegd aan de query. `answerCount` is vereist wanneer u de `promote`-parameter gebruikt. In dit fragment is de waarde ingesteld op `9` zodat alle beschikbare resultaattypen worden geretourneerd.
 > [!NOTE]
@@ -425,7 +426,7 @@ De afbeeldingsrenderer:
 
 De afbeeldingsrenderer gebruikt de variabelen `section` en `index` om resultaten verschillend weer te geven, afhankelijk van de locatie waar ze worden weergegeven. Tussen afbeeldingsresultaten wordt in de zijbalk een regeleinde (`<br>`-tag) ingevoegd, zodat in de zijbalk een kolom met afbeeldingen wordt weergegeven. In andere secties wordt het eerste afbeeldingsresultaat `(index === 0)` voorafgegaan door een `<p>`-tag.
 
-De miniatuurgrootte wordt gebruik in de `<img>`-tag en in de velden `h` en `w` in de URL van de miniatuur. De kenmerken `title` en `alt` (een tekstuele beschrijving van de afbeelding) zijn opgebouwd uit de naam van de afbeelding en de hostnaam in de URL.
+De miniatuurgrootte wordt gebruik in de `<img>`-code en in de velden `h` en `w` in de URL van de miniatuur. De kenmerken `title` en `alt` (een tekstuele beschrijving van de afbeelding) zijn opgebouwd uit de naam van de afbeelding en de hostnaam in de URL.
 
 Hier ziet u een voorbeeld van de manier waarop afbeeldingen worden weergegeven in de voorbeeld-app:
 
@@ -435,7 +436,7 @@ Hier ziet u een voorbeeld van de manier waarop afbeeldingen worden weergegeven i
 
 Antwoorden van de Bing Zoeken-API kunnen een `X-MSEdge-ClientID`-header omvatten die bij elke volgende aanvraag moet worden teruggestuurd naar de API. Als meer dan één van de Bing Zoeken-API's door uw app wordt gebruikt, moet u ervoor zorgen dat dezelfde client-id wordt verzonden bij elke aanvraag vanuit alle services.
 
-Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's zoekopdrachten van gebruikers worden gekoppeld. Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de aanvraag. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen’ de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen. Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies uit te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
+Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's zoekopdrachten van gebruikers worden gekoppeld. Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de aanvraag. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen' de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen. Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
 
 Met beveiligingsbeleid voor de browser, zoals Cross-Origin Resource Sharing (CORS), kan worden voorkomen dat de voorbeeld-app toegang heeft tot de `X-MSEdge-ClientID`-header. Deze beperking treedt op wanneer het antwoord op een zoekopdracht een andere oorsprong heeft dan de pagina waarop de zoekopdracht is uitgevoerd. In een productieomgeving kunt u dit beleid omzeilen door een serverscript te hosten waarmee de API wordt aangeroepen in hetzelfde domein als de webpagina. Omdat het script dezelfde oorsprong heeft als de webpagina, is de `X-MSEdge-ClientID`-header vervolgens beschikbaar voor JavaScript.
 

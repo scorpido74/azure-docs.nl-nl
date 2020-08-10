@@ -1,6 +1,6 @@
 ---
 title: Ontwerp patronen voor Azure Storage-tabellen | Microsoft Docs
-description: Gebruik patronen voor Azure Table service-oplossingen.
+description: Bekijk ontwerp patronen die geschikt zijn voor gebruik met Table service oplossingen in Azure. Los problemen en handels transacties op die in andere artikelen worden besproken.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cbafe7c3e3b76ea13a8ca7a82b2968662b43685a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 32904044cf6dcecf19b1a78eb4236dc02555bb86
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081227"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034193"
 ---
 # <a name="table-design-patterns"></a>Tabelontwerppatronen
 In dit artikel worden enkele patronen beschreven die geschikt zijn voor gebruik met Table service oplossingen. U zult ook zien hoe u een aantal van de problemen en commerciële benadert die worden besproken in andere ontwerp artikelen van Table-opslag. In het volgende diagram ziet u een overzicht van de relaties tussen de verschillende patronen:  
@@ -82,7 +82,7 @@ Sla meerdere exemplaren van elke entiteit op met behulp van verschillende **RowK
 ### <a name="context-and-problem"></a>Context en probleem
 De Table service indexeert automatisch entiteiten met behulp van de waarden **PartitionKey** en **RowKey** . Hiermee kan een client toepassing een entiteit efficiënt ophalen met behulp van deze waarden. Met de tabel structuur die hieronder wordt weer gegeven, kan een client toepassing bijvoorbeeld een punt query gebruiken om een afzonderlijke werknemers entiteit op te halen met behulp van de afdelings naam en de werk nemer-ID (de waarden **PartitionKey** en **RowKey** ). Een client kan ook entiteiten ophalen die zijn gesorteerd op werk nemer-ID binnen elke afdeling.  
 
-![Werknemer-id](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
+![Werknemers-id](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
 
 Als u ook een werknemers entiteit wilt kunnen vinden op basis van de waarde van een andere eigenschap, zoals e-mail adres, moet u een minder efficiënte partitie Scan gebruiken om een overeenkomst te vinden. Dit komt doordat de Table service geen secundaire indexen biedt. Daarnaast is er geen optie voor het aanvragen van een lijst met werk nemers die in een andere volg orde zijn gesorteerd dan **RowKey** order.  
 
@@ -729,7 +729,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Tijdstempel</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -741,7 +741,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
+<th>Ouderdom</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -761,7 +761,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
+<th>Ouderdom</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -798,7 +798,7 @@ De Table service is een tabel archief met *schema-minder* . Dit betekent dat een
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
+<th>Ouderdom</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -821,7 +821,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Tijdstempel</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -834,7 +834,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
+<th>Ouderdom</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -856,7 +856,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
+<th>Ouderdom</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -897,7 +897,7 @@ Elke entiteit moet nog steeds waarden voor **PartitionKey**, **RowKey**en **Time
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Leeftijd</th>
+<th>Ouderdom</th>
 <th>E-mail</th>
 </tr>
 <tr>

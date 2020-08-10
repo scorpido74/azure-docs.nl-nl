@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ae3d0ac6fb332fa17fbe938572b94c51e0785089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200741"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449009"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Zelfstudie: Interfaces en aangepaste modellen
 
@@ -75,14 +75,14 @@ U kunt nu de prefab **AppMenu** toevoegen aan de scène voor visuele feedback va
 1. De prefab **AppMenu** zoeken in *Assets/RemoteRenderingTutorial/Prefabs/AppMenu*
 1. Sleep de prefab **AppMenu** in de scène.
 1. U ziet een dialoogvenster voor **TMP Importer**, aangezien dit de eerste keer is dat we *Text Mesh Pro*-assets in de scène opnemen. Volg de instructies voor **TMP Essentials importeren**. Sluit vervolgens het dialoogvenster voor importeren, de voorbeelden en extra's zijn niet nodig.
-1. Het **AppMenu** is geconfigureerd om automatisch een verbinding te maken en de modaal te bieden voor verbinding met een sessie, zodat we de omleiding die eerder is ingesteld, kunnen verwijderen. Verwijder op het GameObject **RemoteRenderingCoordinator** de omleiding voor autorisatie die we eerder hebben geïmplementeerd door op de knop '-' te drukken op de gebeurtenis **Bij autorisatieaanvraag**.\
- ![Omleiding verwijderen](./media/remove-bypass-event.png).\
+1. Het **AppMenu** is geconfigureerd om automatisch een verbinding te maken en de modaal te bieden voor verbinding met een sessie, zodat we de omleiding die eerder is ingesteld, kunnen verwijderen. Verwijder op het GameObject **RemoteRenderingCoordinator** de omleiding voor autorisatie die we eerder hebben geïmplementeerd door op de knop '-' te drukken op de gebeurtenis **Bij autorisatieaanvraag**.
+ ![Verwijder de omleiding](./media/remove-bypass-event.png).
 1. Test het weergavebesturingselement door op **Afspelen** te drukken in de Unity Editor.
 1. U kunt, nu MRTK is geconfigureerd, in de Editor de WASD-sleutels gebruiken om de positie van uw weergave te wijzigen en de rechtermuisknop vasthouden en de muis verplaatsen om uw weergaverichting te wijzigen. Probeer door de scène te bewegen om te zien hoe de besturingselementen werken.
 1. Op het apparaat kunt u uw palm heffen om het **AppMenu** op te roepen, in de Unity Editor gebruikt u de sneltoets 'M'.
 1. Als u het menu niet meer kunt vinden, drukt u op de toets 'M' om het menu op te roepen. Het menu wordt geplaatst bij de camera voor eenvoudige interactie.
-1. De autorisatie wordt nu weergegeven als een aanvraag aan de rechterkant van het **AppMenu**. Vanaf nu gebruikt u dit om de app te autoriseren om remote rendering-sessies te beheren.\
- ![Gebruikersinterface goedkeuren](./media/authorize-request-ui.png)\
+1. De autorisatie wordt nu weergegeven als een aanvraag aan de rechterkant van het **AppMenu**. Vanaf nu gebruikt u dit om de app te autoriseren om remote rendering-sessies te beheren.
+ ![Gebruikersinterface goedkeuren](./media/authorize-request-ui.png)
 1. Stop het afspelen van Unity om door te gaan met de zelfstudie.
 
 ## <a name="manage-model-state"></a>Status van model beheren
@@ -255,11 +255,11 @@ Eenvoudig gezegd, bevat **RemoteRenderedModel** de gegevens die nodig zijn om ee
 We gaan het nieuwe script testen door het testmodel opnieuw te laden. We maken een GameObject dat het script bevat en een bovenliggend element van het testmodel is.
 
 1. Maak een nieuw, leeg GameObject in de scène en geef die de naam **TestModel**.
-1. Voeg het script *RemoteRenderedModel* toe aan **TestModel**.\
+1. Voeg het script *RemoteRenderedModel* toe aan **TestModel**.
 ![Component RemoteRenderedModel toevoegen](./media/add-remote-rendered-model-script.png)
-1. Voer bij `Model Display Name` en `Model Path` respectievelijk '*TestModel*' en '*builtin://Engine*' in.\
+1. Voer bij `Model Display Name` en `Model Path` respectievelijk '*TestModel*' en '*builtin://Engine*' in.
 ![Modelgegevens opgeven](./media/add-model-script.png)
-1. Plaats het object **TestModel** voor de camera op positie **x = 0, y = 0, z = 3**.\
+1. Plaats het object **TestModel** voor de camera op positie **x = 0, y = 0, z = 3**.
 ![Object plaatsen](./media/test-model-position.png)
 1. Zorg ervoor dat **AutomaticallyLoad** is ingeschakeld.
 1. Druk op **Afspelen** in de Unity Editor om de toepassing te testen.
@@ -280,7 +280,7 @@ Volg de stappen die zijn opgegeven in de [Snelstartgids: Een model converteren v
 ## <a name="load-and-rendering-a-custom-model"></a>Een aangepast model laden en weergeven
 
 1. Maak een nieuw, leeg GameObject in de scène en geef deze een soortgelijke naam als uw aangepast model.
-1. Voeg het script *RemoteRenderedModel* toe aan het nieuw gemaakte GameObject.\
+1. Voeg het script *RemoteRenderedModel* toe aan het nieuw gemaakte GameObject.
  ![Component RemoteRenderedModel toevoegen](./media/add-remote-rendered-model-script.png)
 1. Vul in de `Model Display Name` een passende naam in voor uw model.
 1. Vul de *Shared Access Signature (SAS)* URI in van het model dat u in voorgaande stappen hebt gemaakt in `Model Path`.

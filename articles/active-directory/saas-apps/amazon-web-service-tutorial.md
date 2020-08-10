@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75b6ba110264ae3826093222e9cd3c4073bc17f0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0e16fdaed8ce7e73718569652e88e66844850175
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683594"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416558"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Zelfstudie: Integratie van eenmalige aanmelding in Azure Active Directory met Amazon Web Services (AWS)
 
@@ -105,7 +105,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de sectie **SAML-basisconfiguratie** is de toepassing vooraf geconfigureerd en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op **Opslaan** te klikken.
+1. Werk in de sectie **Standaard-SAML-configuratie** zowel **Id (entiteits-id)** als **Antwoord-URL** bij met dezelfde standaardwaarde: `https://signin.aws.amazon.com/saml`. U moet **Opslaan** selecteren om de configuratiewijzigingen op te slaan.
 
 1. Geef de id-waarde op als u meer dan één instantie configureert. Gebruik vanaf de tweede instantie de volgende indeling, met inbegrip van een **#** -teken om een unieke SPN-waarde op te geven.
 
@@ -123,7 +123,15 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
     | Rol            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
     | SessionDuration             | "Geef een waarde op tussen 900 seconden (15 minuten) en 43200 seconden (12 uur)" |  `https://aws.amazon.com/SAML/Attributes` |
 
-1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
+1. Ga naar de pagina **Eenmalige aanmelding instellen met SAML** en selecteer in het dialoogvenster **SAML-handtekeningcertificaat** (Stap 3) de optie **Een certificaat toevoegen**.
+
+    ![Nieuw SAML-certificaat maken](common/add-saml-certificate.png)
+
+1. Genereer een nieuw SAML-handtekeningcertificaat en selecteer vervolgens **Nieuw certificaat**. Voer een e-mailadres voor certificaatmeldingen in.
+   
+    ![Nieuw SAML-certificaat](common/new-saml-certificate.png) 
+
+1. Ga in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve gegevens** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op de computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -160,7 +168,7 @@ In dit gedeelte gaat u B. Simon toestemming geven voor gebruik van eenmalige aan
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ## <a name="configure-amazon-web-services-aws-sso"></a>Eenmalige aanmelding bij Amazon Web Services (AWS) configureren

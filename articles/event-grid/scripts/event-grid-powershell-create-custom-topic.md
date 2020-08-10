@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van Azure PowerShell-script - Aangepast onderwerp maken | Microsoft Docs
-description: In dit artikel vindt u een voor beeld van een Azure PowerShell script dat laat zien hoe u een Event Grid aangepast onderwerp maakt.
+description: Dit artikel bevat een voorbeeld van een Azure PowerShell-script dat laat zien hoe u een Event Grid kunt maken voor een aangepast onderwerp.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 915b8e13adaa440063f5db62b72fa39e1035d576
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76719939"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460776"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Aangepast Event Grid-onderwerp maken met PowerShell
 
@@ -36,9 +36,9 @@ In dit script wordt de volgende opdracht gebruikt om het aangepaste onderwerp te
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Hiermee wordt een aangepast Event Grid-onderwerp gemaakt. |
+| [New-AzEventGridTopic](/powershell/module/az.eventgrid/new-azeventgridtopic) | Hiermee wordt een aangepast Event Grid-onderwerp gemaakt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Overzicht van door Azure beheerde toepassingen](../overview.md) voor algemene informatie over beheerde toepassingen.
-* Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie over PowerShell.
+* Zie [Documentatie over Azure PowerShell](/powershell/azure/get-started-azureps) voor meer informatie over PowerShell.

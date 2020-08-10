@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a594a754f33ae60d151215deb5a5ed57f87126c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050654"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543555"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Zelfstudie: Een bestaande aangepaste DNS-naam toewijzen aan Azure App Service
 
@@ -95,7 +95,12 @@ Wanneer u de volgende melding ziet, is de schaalbewerking voltooid.
 
 ## <a name="get-domain-verification-id"></a>Verificatie-id van domein ophalen
 
-Als u een aangepast domein wilt toevoegen aan uw app, moet u verifiëren dat u de eigenaar van het domein bent door een verificatie-id als TXT-record toe te voegen bij uw domeinprovider. Klik in het linkernavigatievenster van uw app-pagina onder **Instellingen** op **Aangepaste domeinen**. Kopieer hier de waarde van de verificatie-id van het aangepaste domein. U hebt deze verificatie-id nodig voor de volgende stap.
+Als u een aangepast domein wilt toevoegen aan uw app, moet u verifiëren dat u de eigenaar van het domein bent door een verificatie-id als TXT-record toe te voegen bij uw domeinprovider. Klik in het linkernavigatievenster van de app-pagina op **Aangepaste domeinen**. Kopieer de waarde van **Verificatie-id aangepast domein** op de pagina **Aangepaste domeinen** voor de volgende stap.
+
+![Verificatie-id van aangepast domein ophalen](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
+
+> [!WARNING]
+> Het toevoegen van domeinverificatie-id's aan uw aangepaste domein kan zwevende DNS-vermeldingen voorkomen evenals overnames van subdomeinen. Zie [Subdomein overnemen](../security/fundamentals/subdomain-takeover.md) voor meer informatie over deze veelvoorkomende, zeer kritieke bedreiging.
 
 ## <a name="map-your-domain"></a>Uw domein toewijzen
 

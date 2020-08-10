@@ -9,12 +9,13 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 06/04/2020
 ms.author: tamram
-ms.openlocfilehash: 471a8018a608da818f5961973f23123874c63427
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: eca67c4a5a942e6cd06f67cac868905da0e1f533
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434460"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535141"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Quickstart: Blobs maken, downloaden, uploaden en weergeven met Azure CLI
 
@@ -79,7 +80,7 @@ az storage account create \
 
 Blobs worden altijd naar een container geüpload. U kunt groepen blobs ordenen in containers net zoals u bestanden op uw computer in mappen ordent. Gebruik de opdracht [az storage container create](/cli/azure/storage/container) om een container te maken voor het opslaan van blobs. 
 
-In het volgende voorbeeld wordt uw Azure AD-account gebruikt om de bewerking voor het maken van de container te autoriseren. Voordat u de container maakt, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. Zelfs als u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevensbewerkingen uit te voeren voor het opslagaccount. Zie [Azure CLI gebruiken om een RBAC-rol toe te wijzen voor toegang](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json) voor meer informatie over het toewijzen van RBAC-rollen.  
+In het volgende voorbeeld wordt uw Azure AD-account gebruikt om de bewerking voor het maken van de container te autoriseren. Voordat u de container maakt, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. Zelfs als u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevensbewerkingen uit te voeren voor het opslagaccount. Zie [Azure CLI gebruiken om een Azure-rol toe te wijzen voor toegang](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json) voor meer informatie over het toewijzen van Azure-rollen.  
 
 U kunt ook de sleutel voor het opslagaccount gebruiken om de bewerking voor het maken van de container te autoriseren. Zie [Toegang verlenen tot blob- of wachtrijgegevens met Azure CLI](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json) voor meer informatie over het autoriseren van gegevensbewerkingen met Azure CLI.
 

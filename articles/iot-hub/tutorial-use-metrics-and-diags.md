@@ -1,6 +1,6 @@
 ---
 title: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een Azure IoT-hub
-description: Meer informatie over het instellen en gebruiken van metrische gegevens en Diagnostische logboeken met een Azure IoT hub. Zo beschikt u over gegevens die u kunt analyseren om problemen met de hub op te sporen.
+description: Lees hoe u metrische gegevens en diagnostische logboeken instelt en gebruikt met een Azure IoT-hub. Zo beschikt u over gegevens die u kunt analyseren om problemen met de hub op te sporen.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -10,14 +10,15 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 3eda4cd8dc10bd9128186b2ff4f8d6ac0254fe5d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+- devx-track-azurecli
+ms.openlocfilehash: b31fc9df5451665b79a41172286a0cc471b681fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770602"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500994"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Zelf studie: metrische gegevens en Diagnostische logboeken instellen en gebruiken met een IoT-hub
+# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Zelfstudie: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een IoT-hub
 
 Als u een IoT Hub-oplossing in een productieomgeving gebruikt, wilt u metrische gegevens instellen en diagnostische logboeken inschakelen. Als er dan een probleem optreedt, hebt u gegevens die u kunt bekijken om het probleem te diagnosticeren en sneller op te lossen. In dit artikel ziet u hoe u de diagnostische logboeken met diagnostische gegevens kunt inschakelen en op fouten controleren. U gaat ook wat metrische gegevens instellen om in de gaten te houden, en waarschuwingen die worden geactiveerd wanneer de metrische gegevens een bepaalde grens raken. U kunt bijvoorbeeld een e-mail naar u laten verzenden wanneer het aantal verzonden telemetrieberichten een bepaalde grens overschrijdt, of wanneer het aantal gebruikte berichten de hoeveelheid toegestane berichten per dag voor de IoT-hub nadert. 
 
@@ -44,7 +45,7 @@ In deze zelfstudie voert u de volgende taken uit:
 
 - Een e-mailaccount dat e-mail kan ontvangen.
 
-- Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+- Zorg ervoor dat de poort 8883 is geopend in de firewall. In het apparaatvoorbeeld in deze zelfstudie wordt het MQTT-protocol gebruikt, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -55,7 +56,7 @@ Voor deze zelfstudie hebt u een IoT-hub, een opslagaccount en een gesimuleerd Io
 
 Dit zijn de vereiste stappen.
 
-1. Maak een [resource groep](../azure-resource-manager/management/overview.md). 
+1. Maak een [resourcegroep](../azure-resource-manager/management/overview.md). 
 
 2. Maak een IoT-hub.
 
@@ -120,7 +121,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Bij het maken van de apparaat-id wordt mogelijk de volgende fout weer gegeven: *Er zijn geen sleutels gevonden voor de beleids iothubowner van IOT hub ContosoTestHub*. U kunt deze fout corrigeren door de Azure CLI IoT-extensie bij te werken en vervolgens de laatste twee opdrachten in het script opnieuw uit te voeren. 
+>Bij het maken van de apparaat-id krijgt u mogelijk de volgende foutmelding: *Geen sleutels gevonden voor beleid iothubowner van IoT Hub ContosoTestHub*. U kunt deze fout corrigeren door de Azure CLI IoT-extensie bij te werken en vervolgens de laatste twee opdrachten in het script opnieuw uit te voeren. 
 >
 >Hier volgt de opdracht voor het bijwerken van de extensie. Voer deze uit in uw Cloud Shell-instantie.
 >
@@ -139,7 +140,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
    ![Schermafbeelding van het gedeelte Diagnostische instellingen van de IoT Hub-blade.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
-3. Zorg ervoor dat het abonnement en de resourcegroep correct zijn. Schakel onder **Resourcetype** het selectievakje **Alles selecteren** uit, zoek **IoT Hub** op en schakel het in. (Het selectie vakje wordt ingeschakeld als u *alles opnieuw selecteert* , maar u kunt dit gewoon negeren.) Onder **resource**selecteert u de naam van de hub. Uw scherm moet lijken op deze afbeelding: 
+3. Zorg ervoor dat het abonnement en de resourcegroep correct zijn. Schakel onder **Resourcetype** het selectievakje **Alles selecteren** uit, zoek **IoT Hub** op en schakel het in. (Het vinkje naast *Alles selecteren* verschijnt weer; negeer dit gewoon.) Selecteer onder **Resource** de naam van de hub. Uw scherm moet lijken op deze afbeelding: 
 
    ![Schermafbeelding van het gedeelte Diagnostische instellingen van de IoT Hub-blade.](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
 
@@ -167,7 +168,7 @@ Stel nu wat metrische gegevens in om naar te kijken wanneer berichten naar hub w
 
 1. Klik in het deelvenster met instellingen voor de IoT-hub op de optie **Metrische gegevens** in de sectie **Bewaking**.
 
-2. Klik bovenaan het scherm op **Afgelopen 24 uur (automatisch)**. Selecteer in de vervolgkeuzelijst die wordt weergegeven **Afgelopen 4 uur** in bij **Tijdsbereik**, en stel **Tijdgranulatie** in op **1 minuut**, lokale tijd. Klik op **Toepassen** om deze instellingen op te slaan. 
+2. Klik bovenaan het scherm op **Afgelopen 24 uur (automatisch)** . Selecteer in de vervolgkeuzelijst die wordt weergegeven **Afgelopen 4 uur** in bij **Tijdsbereik**, en stel **Tijdgranulatie** in op **1 minuut**, lokale tijd. Klik op **Toepassen** om deze instellingen op te slaan. 
 
    ![Schermafbeelding van de tijdinstellingen voor de metrische gegevens.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
 
@@ -200,25 +201,25 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
     Vul de velden in: 
 
-    **Abonnement**: verlaat dit veld dat is ingesteld voor uw huidige abonnement.
+    **Abonnement**: Laat dit veld ingesteld op uw huidige abonnement.
 
-    **Bron**: Stel dit veld in op *metrische gegevens*.
+    **Bron**: Stel dit veld in op *Metrische gegevens*.
 
-    **Resource groep**: Stel dit veld in op uw huidige resource groep *ContosoResources*. 
+    **Resourcegroep**: Stel dit veld in op uw huidige resourcegroep, *ContosoResources*. 
 
-    **Resource type**: Stel dit veld in op IOT hub. 
+    **Resourcetype**: Stel dit veld in op IoT Hub. 
 
-    **Resource**: Selecteer uw IOT-hub, *ContosoTestHub*.
+    **Resource**: Selecteer uw IoT-hub, *ContosoTestHub*.
 
 3. Klik op **Waarschuwing voor metrische gegevens toevoegen (klassiek)** om een nieuwe waarschuwing in te stellen.
 
     Vul de velden in:
 
-    **Naam**: Geef een naam op voor uw waarschuwings regel, zoals *telemetrie-berichten*.
+    **Naam**: Geef een naam op voor de waarschuwingsregel, zoals *telemetrieberichten*.
 
-    **Beschrijving**: Geef een beschrijving op van de waarschuwing, zoals een *waarschuwing wanneer er 1000 telemetriegegevens worden verzonden*. 
+    **Beschrijving**: Geef een beschrijving op voor de waarschuwing, zoals *waarschuwen wanneer er 1000 telemetrieberichten zijn verzonden*. 
 
-    **Bron**: Stel dit in op *metrische gegevens*.
+    **Bron**: Stel dit in op *Metrische gegevens*.
 
     **Abonnement**, **Resourcegroep** en **Resource** moeten worden ingesteld op de waarden die u hebt geselecteerd in het scherm **Klassieke waarschuwingen weergeven**. 
 
@@ -228,13 +229,13 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
 4. Stel na de grafiek de volgende velden in:
 
-   **Voor waarde**: ingesteld op *groter dan*.
+   **Voorwaarde**: Stel in op *Groter dan*.
 
-   **Drempel waarde**: ingesteld op 1000.
+   **Drempel**: Stel in op 1000.
 
-   **Period**: ingesteld op *de laatste 5 minuten*.
+   **Periode**: Stel in op *In de afgelopen 5 minuten*.
 
-   E- **mail ontvangers van meldingen**: plaats hier uw e-mail adres. 
+   **Ontvangers van e-mailmeldingen**: Voeg hier uw e-mailadres toe. 
 
    ![Schermafbeelding van de onderste helft van het waarschuwingenscherm.](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
@@ -244,11 +245,11 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
    Klik in het scherm **Klassieke waarschuwingen weergeven** op **Waarschuwing voor metrische gegevens toevoegen (klassiek)** en vul vervolgens in het deelvenster **Regel toevoegen** deze velden in.
 
-   **Naam**: Geef een naam op voor de waarschuwings regel, zoals het *aantal gebruikte berichten*.
+   **Naam**: Geef een naam op voor de waarschuwingsregel, zoals *aantal gebruikte berichten*.
 
-   **Beschrijving**: Geef een beschrijving op van de waarschuwing, zoals *waarschuwing, wanneer u een quotum wilt*ontvangen.
+   **Beschrijving**: Geef een beschrijving op voor de waarschuwing, zoals *waarschuwen wanneer het quotum bijna op is*.
 
-   **Bron**: Stel dit veld in op *metrische gegevens*.
+   **Bron**: Stel dit veld in op *Metrische gegevens*.
 
     **Abonnement**, **Resourcegroep** en **Resource** moeten worden ingesteld op de waarden die u hebt geselecteerd in het scherm **Klassieke waarschuwingen weergeven**. 
 
@@ -256,13 +257,13 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
 6. Vul onder de grafiek de volgende velden in:
 
-   **Voor waarde**: ingesteld op *groter dan*.
+   **Voorwaarde**: Stel in op *Groter dan*.
 
-   **Drempel waarde**: ingesteld op 1000.
+   **Drempel**: Stel in op 1000.
 
-   **Periode**: Stel dit veld in op *de laatste vijf minuten*. 
+   **Periode**: Stel dit veld in op *In de afgelopen 5 minuten*. 
 
-   E- **mail ontvangers van meldingen**: plaats hier uw e-mail adres. 
+   **Ontvangers van e-mailmeldingen**: Voeg hier uw e-mailadres toe. 
 
    Klik op **OK** om de regel op te slaan. 
 
@@ -278,7 +279,7 @@ IoT Hub is nog niet gemigreerd naar de [metrische gegevens in Azure Monitor](/az
 
 Eerder in het scriptinstellingsgedeelte stelt u een apparaat in voor de simulatie via een IoT-apparaat. In deze sectie downloadt u een .NET-consoletoepassing die een apparaat simuleert dat apparaat-naar-cloud-berichten naar een IoT Hub verzendt.  
 
-Download de oplossing voor de [IoT-apparaatsimulatie](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Met deze koppeling wordt een opslag plaats gedownload met verschillende toepassingen. de oplossing die u zoekt, bevindt zich in IOT-hub/zelf studies/route ring/.
+Download de oplossing voor de [IoT-apparaatsimulatie](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Met deze link downloadt u een opslagplaats die meerdere toepassingen bevat. De oplossing die u zoekt, bevindt zich in iot-hub/Tutorials/Routing/.
 
 Dubbelklik op het oplossingsbestand (SimulatedDevice.sln om de code in Visual Studio) te openen en open vervolgens Program.cs. Vervang `{iot hub hostname}` door de hostnaam van de IoT Hub. De indeling van de hostnaam van de IoT Hub is **{iot-hub-name} .azure-devices.net**. Voor deze zelfstudie is de naam van de hubhost **ContosoTestHub.azure devices.net**. Vervang vervolgens `{device key}` door de apparaatsleutel die u eerder hebt opgeslagen bij het instellen van het gesimuleerde apparaat. 
 

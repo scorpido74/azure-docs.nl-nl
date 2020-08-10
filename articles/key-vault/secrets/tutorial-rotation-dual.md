@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: ba9ff0ead1131b091aa1a5ece2ecf94d2319a968
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800694"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542192"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>Het rouleren van een geheim voor resources met twee sets verificatiereferenties automatiseren
 
@@ -41,9 +41,8 @@ In de bovenstaande oplossing slaat Azure Key Vault afzonderlijke toegangssleutel
 * Twee Azure Storage-accounts
 
 U kunt de onderstaande implementatiekoppeling gebruiken als u geen bestaande sleutelkluis en opslagaccounts hebt:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+
+[![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. Selecteer onder **Resourcegroep** de optie **Nieuwe maken**. Geef de groep de naam **akvrotation** en klik op **OK**.
 1. Selecteer **Beoordelen en maken**.
@@ -79,10 +78,9 @@ Deze onderdelen en configuratie zijn vereist voor de roulatiefunctie van functie
 - Opslagaccountroulatiefuncties met gebeurtenistrigger en http-trigger (roulatie op aanvraag)
 - EventGrid-gebeurtenisabonnement voor de gebeurtenis **SecretNearExpiry**
 
-1. Selecteer de koppeling voor de Azure-sjabloonimplementatie:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Selecteer de koppeling voor de Azure-sjabloonimplementatie: 
+
+   [![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. Selecteer in de lijst **Resourcegroep** de optie **akvrotation**.
 1. Typ in **Naam van opslagaccount** de naam van het opslagaccount met de toegangssleutels die u wilt rouleren
@@ -154,10 +152,9 @@ Voor het toevoegen van extra sleutels voor het opslagaccount voor roulatie aan e
 - De servicerol Sleuteloperator voor opslagaccounts toewijzen aan de functie-app voor toegang tot de toegangssleutels van het opslagaccount
 - EventGrid-gebeurtenisabonnement voor de gebeurtenis **SecretNearExpiry**
 
-1. Selecteer de koppeling voor de Azure-sjabloonimplementatie:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Selecteer de koppeling voor de Azure-sjabloonimplementatie: 
+
+   [![Afbeelding met een knop met het label Implementeren naar Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
 
 1. Selecteer in de lijst **Resourcegroep** de optie **akvrotation**.
 1. Typ in **Naam van opslagaccount** de naam van het opslagaccount met de toegangssleutels die u wilt rouleren

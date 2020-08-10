@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b7f924c7f115e8eddda93ea0c096ab94411da72
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652499"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810391"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Quickstart: Een Android-app maken met Azure Spatial Anchors
 
@@ -86,7 +86,7 @@ Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleut
 
 Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
 
-Zoek `public AzureSpatialAnchorsManager(Session arCoreSession)` en voeg de volgende regel toe waarbij u uw accountdomein van eerder gebruikt: `spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");`.
+Zoek het veld `SpatialAnchorsAccountDomain` en vervang `Set me` door het accountdomein.
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
@@ -96,7 +96,7 @@ Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleut
 
 Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
 
-Zoek `AzureSpatialAnchorsApplication::StartCloudSession()` en voeg de volgende regel toe waarbij u uw accountdomein van eerder gebruikt: `m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");`.
+Zoek het veld `SpatialAnchorsAccountDomain` en vervang `Set me` door het accountdomein.
 
 ---
 

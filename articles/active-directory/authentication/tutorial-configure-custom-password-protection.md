@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5b2f3a61e2167067bd6e61ee2a36bb1d22950d8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518536"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419662"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Zelfstudie: Aangepaste verboden wachtwoorden configureren voor Azure Active Directory-wachtwoordbeveiliging
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 
 Voor het voltooien van deze zelfstudie hebt u de volgende resources en machtigingen nodig:
 
-* Een werkende Azure AD-tenant waarop minimaal een proeflicentie is ingeschakeld.
+* Een werkende Azure AD-tenant waarop minimaal een Azure AD Premium P1- of -proeflicentie is ingeschakeld.
     * [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
 * Een account met de bevoegdheden van een *globale beheerder*.
 * Een niet-beheerder met een wachtwoord dat u kent, zoals *testuser*. U gaat dit account gebruiken in deze zelfstudie om een wachtwoordwijziging te testen.
@@ -77,7 +77,7 @@ Voer de volgende stappen uit om de aangepaste lijst met verboden wachtwoorden in
 
     Geef de woorden op die u wilt verbieden in wachtwoorden, zoals wordt weergegeven in het volgende voorbeeld:
 
-    [![](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png "Modify the custom banned password list under Authentication Methods in the Azure portal")](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
+    [ ![De aangepaste lijst met verboden wachtwoorden wijzigen onder Verificatiemethoden in de Azure-portal](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png) ](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
 1. Laat de optie **Wachtwoordbeveiliging op Windows Server Active Directory inschakelen** op *Nee* staan.
 1. Selecteer **Opslaan** om de aangepaste lijst met verboden wachtwoorden in te schakelen.

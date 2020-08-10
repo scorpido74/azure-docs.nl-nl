@@ -3,12 +3,12 @@ title: 'Zelfstudie: back-ups maken van SAP HANA-databases in virtuele Azure-mach
 description: In deze zelfstudie ontdekt u hoe u een back-up naar een Azure Backup Recovery Services-kluis maakt van SAP HANA-databases die op een virtuele Azure-machine worden uitgevoerd.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 8f6fa00f65a99798ee105852a269247d717ad75d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f89d21a252870befae7807d2dda96828aaaa1326
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513265"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439656"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Zelfstudie: Een back-up maken van SAP HANA-databases in een Azure-VM
 
@@ -23,7 +23,7 @@ In deze zelfstudie ziet u hoe u een back-up naar een Azure Backup Recovery Servi
 [Hier](sap-hana-backup-support-matrix.md#scenario-support) vindt u alle scenario's die we momenteel ondersteunen.
 
 >[!NOTE]
->[Aan de slag]() met de preview voor back-ups van SAP HANA voor RHEL (7.4, 7.6, 7.7 or 8.1). Neem voor verdere vragen contact met ons op via [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+>Per 1 augustus 2020 is SAP HANA backup for RHEL (7.4, 7.6, 7.7 en 8.1) algemeen beschikbaar.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,7 +31,7 @@ Doe het volgende voordat u back-ups gaat configureren:
 
 * Identificeer of maak een [Recovery Services-kluis](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) in dezelfde regio en hetzelfde abonnement als de VM waarop SAP HANA wordt uitgevoerd.
 * Sta connectiviteit van de virtuele machine naar internet toe, zodat de virtuele machine Azure kan bereiken. Dit wordt beschreven in de onderstaande procedure [De netwerkverbinding instellen](#set-up-network-connectivity).
-* Zorg ervoor dat de gecombineerde lengte van de SAP HANA Server VM-naam en de Resource Group-naam niet langer is dan 84 tekens voor Azure Resoure Manager (ARM_ VM's (en 77 tekens voor klassieke VM's). Deze beperking geldt omdat sommige tekens zijn gereserveerd door de service.
+* Zorg ervoor dat de gecombineerde lengte van de SAP HANA Server VM-naam en de Resource Group-naam niet langer is dan 84 tekens voor Azure Resource Manager (ARM_ VM's (en 77 tekens voor klassieke VM's). Deze beperking geldt omdat sommige tekens zijn gereserveerd door de service.
 * Er moet een sleutel in de **hdbuserstore** bestaan waarmee aan de volgende criteria wordt voldaan:
   * De sleutel moet aanwezig zijn in de standaard-**hdbuserstore**. De standaardwaarde is het `<sid>adm`-account waaronder SAP HANA is geïnstalleerd.
   * Voor MDC moet de sleutel verwijzen naar de SQL-poort van **NAMESERVER**. In het geval van SDC moet worden verwezen naar de SQL-poort van **INDEXSERVER**
@@ -43,60 +43,59 @@ Doe het volgende voordat u back-ups gaat configureren:
 
 ## <a name="set-up-network-connectivity"></a>De netwerkverbinding instellen
 
-Voor alle bewerkingen is voor de virtuele SAP HANA-machine een verbinding met openbare IP-adressen van Azure nodig. VM-bewerkingen (databasedetectie, back-ups configureren, back-ups plannen, herstelpunten herstellen, enzovoort) zullen mislukken zonder verbinding met de openbare IP-adressen van Azure.
+Voor alle bewerkingen voor een SAP HANA-database die wordt uitgevoerd op een virtuele Azure-machine, is connectiviteit met de Azure Backup-service, Azure Storage en Azure Active Directory vereist. Dit kan worden bereikt door gebruik te maken van privé-eindpunten of door toegang te verlenen tot de vereiste openbare IP-adressen of FQDN's. Zonder de juiste connectiviteit met de vereiste Azure-services kunnen bewerkingen zoals het detecteren van databases, het configureren van back-ups, het uitvoeren van back-ups en het herstellen van gegevens mislukken.
 
-Breng een verbinding tot stand met behulp van één van de volgende opties:
+De volgende tabel bevat een lijst van de verschillende alternatieven die u kunt gebruiken om connectiviteit tot stand te brengen:
 
-### <a name="allow-the-azure-datacenter-ip-ranges"></a>De IP-bereiken voor Azure Datacenter toestaan
+| **Optie**                        | **Voordelen**                                               | **Nadelen**                                            |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Privé-eindpunten                 | Maakt back-ups via privé-eindpunten in het virtuele netwerk mogelijk  <br><br>   Biedt uitgebreide beheermogelijkheden aan de zijde van het netwerk en de kluis | U betaalt standaard [kosten](https://azure.microsoft.com/pricing/details/private-link/) voor privé-eindpunten |
+| NSG-servicetags                  | Eenvoudiger om te beheren omdat veranderingen in het bereik automatisch worden samengevoegd   <br><br>   Geen extra kosten | Kan alleen worden gebruikt met NSG's  <br><br>    Biedt toegang tot de gehele service |
+| Azure Firewall FQDN-tags          | Eenvoudiger om te beheren omdat de vereiste FQDN's automatisch worden beheerd | Kan alleen worden gebruikt met Azure Firewall                         |
+| Toegang tot FQDN's/IP-adressen van de service toestaan | Geen extra kosten   <br><br>  Werkt met alle netwerkbeveiligingsapparaten en firewalls | Er is mogelijk toegang tot een groot aantal IP-adressen of FQDN's vereist   |
+| Een HTTP-proxy gebruiken                 | Eén internettoegangspunt voor virtuele machines                       | Extra kosten voor het uitvoeren van een virtuele machine met de proxysoftware         |
 
-Door deze optie zijn de [IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653) in het gedownloade bestand toegestaan. Voor toegang tot een NSG (netwerkbeveiligingsgroep) gebruikt u de cmdlet Set-AzureNetworkSecurityRule. Als uw lijst met veilige ontvangers alleen regiospecifieke IP-adressen bevat, moet u ook de lijst met veilige ontvangers en de servicetag van Azure Active Directory (Azure AD) bijwerken om verificatie in te schakelen.
+Meer informatie over het gebruik van deze opties vindt u hieronder:
 
-### <a name="allow-access-using-nsg-tags"></a>Toegang toestaan met behulp van NSG-tags
+### <a name="private-endpoints"></a>Privé-eindpunten
 
-Als u NSG gebruikt om de connectiviteit te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang tot Azure Backup toe te staan. Daarnaast moet u ook connectiviteit voor verificatie en gegevensoverdracht toestaan met behulp van [regels](../virtual-network/security-overview.md#service-tags) voor Azure AD en Azure Storage. U kunt dit instellen via Azure Portal of via PowerShell.
+Met privé-eindpunten kunt u veilig verbinding maken tussen servers in een virtueel netwerk en uw Recovery Services-kluis. Het privé eindpunt gebruikt een IP-adres van de VNET-adresruimte voor uw kluis. Het netwerkverkeer tussen uw resources in het virtuele netwerk en de kluis loopt via het virtuele netwerk en een privé-koppeling in het Microsoft-backbonenetwerk. Dit voorkomt blootstelling aan het openbare internet. Meer informatie over privé-eindpunten voor Azure Backup vindt u [hier](./private-endpoints.md).
 
-U kunt als volgt een regel maken via de portal:
+### <a name="nsg-tags"></a>NSG-tags
 
-  1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
-  2. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
-  3. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](../virtual-network/manage-network-security-group.md#security-rule-settings). Controleer of de optie **Doel** is ingesteld op **Servicetag** en **Doelservicetag** is ingesteld op **AzureBackup**.
-  4. Klik op **Toevoegen** om de zojuist gemaakt uitgaande beveiligingsregel op te slaan.
+Als u netwerkbeveiligingsgroepen (NSG's) gebruikt, gebruikt u de servicetag *AzureBackup* om uitgaande toegang tot Azure Backup toe te staan. Naast de Azure Backup-tag moet u ook connectiviteit voor verificatie en gegevensoverdracht toestaan met behulp van [NSG-regels](../virtual-network/security-overview.md#service-tags) voor *Azure AD* en *Azure Storage*.  In de volgende stappen wordt het proces voor het maken van een regel voor de Azure Backup-tag beschreven:
 
-U kunt als volgt een regel maken met behulp van PowerShell:
+1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
 
- 1. Azure-accountreferenties toevoegen en de nationale clouds bijwerken<br/>
-      `Add-AzureRmAccount`<br/>
+1. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
 
- 2. Het NSG-abonnement selecteren<br/>
-      `Select-AzureRmSubscription "<Subscription Id>"`
+1. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](../virtual-network/manage-network-security-group.md#security-rule-settings). Controleer of de optie **Doel** is ingesteld op *Servicetag* en **Doelservicetag** is ingesteld op *AzureBackup*.
 
- 3. De NSG selecteren<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+1. Klik op **Toevoegen** om de zojuist gemaakt uitgaande beveiligingsregel op te slaan.
 
- 4. De regel Uitgaand toestaan toevoegen voor Azure Backup-servicetag<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+U kunt op vergelijkbare wijze ook uitgaande NSG-beveiligingsregels maken voor Azure Storage en Azure AD. Zie [dit artikel](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) voor meer informatie over servicetags.
 
- 5. De regel Uitgaand toestaan toevoegen voor Storage-servicetag<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+### <a name="azure-firewall-tags"></a>Azure Firewall-tags
 
- 6. De regel Uitgaand toestaan toevoegen voor AzureActiveDirectory-servicetag<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+Als u Azure Firewall gebruikt, maakt u een toepassingsregel met behulp van de [Azure Firewall FQDN-tag](../firewall/fqdn-tags.md) *AzureBackup*. Hiermee wordt alle uitgaande toegang tot Azure Backup toegestaan.
 
- 7. De NSG opslaan<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+### <a name="allow-access-to-service-ip-ranges"></a>Toegang tot IP-bereiken van de service toestaan
 
-**Toegang toestaan met behulp van Azure Firewall-tags**. Als u Azure Firewall gebruikt, maakt u een toepassingsregel met behulp van de [FQDN-tag](../firewall/fqdn-tags.md) AzureBackup. Hierdoor is uitgaande toegang tot Azure Backup toegestaan.
+Als u ervoor kiest om toegang tot IP-adressen van de service toe te staan, raadpleegt u de IP-bereiken in het JSON-bestand dat [hier](https://www.microsoft.com/download/confirmation.aspx?id=56519) beschikbaar is. U moet toegang tot IP-adressen die overeenkomen met Azure Backup, Azure Storage en Azure Active Directory toestaan.
 
-**Implementeer een HTTP-proxyserver om verkeer te routeren**. Wanneer u een back-up maakt van een SAP HANA-database op een virtuele Azure-machine, gebruikt de back-upextensie op de virtuele machine de HTTPS-API's voor het verzenden van beheeropdrachten naar Azure Backup en gegevens naar Azure Storage. De back-upextensie maakt ook gebruik van Azure AD voor verificatie. Leid het verkeer van de back-upextensie voor deze drie services via de HTTP-proxy. De extensies zijn het enige onderdeel dat wordt geconfigureerd voor toegang tot het openbare internet.
+### <a name="allow-access-to-service-fqdns"></a>Toegang tot FQDN's van de service toestaan
 
-Onder ander de volgende voor- en nadelen behoren tot de connectiviteitsopties:
+U kunt ook de volgende FQDN's gebruiken om toegang te verlenen tot de vereiste services van uw servers:
 
-**Optie** | **Voordelen** | **Nadelen**
---- | --- | ---
-IP-bereiken toestaan | Geen extra kosten | Ingewikkeld om te beheren omdat de IP-adresbereiken na verloop van tijd veranderen <br/><br/> Biedt toegang tot heel Azure, niet alleen tot Azure Storage
-NSG-servicetags gebruiken | Eenvoudiger om te beheren omdat veranderingen in het bereik automatisch worden samengevoegd <br/><br/> Geen extra kosten <br/><br/> | Kan alleen worden gebruikt met NSG's <br/><br/> Biedt toegang tot de gehele service
-Azure Firewall FQDN-tags gebruiken | Eenvoudiger om te beheren omdat de vereiste FQDN's automatisch worden beheerd | Kan alleen worden gebruikt met Azure Firewall
-Een HTTP-proxy gebruiken | Gedetailleerde controle via de proxy over de opslag-URL's is toegestaan <br/><br/> Eén internettoegangspunt voor virtuele machines <br/><br/> Niet onderhevig aan Azure-IP-adreswijzigingen | Extra kosten voor het uitvoeren van een virtuele machine met de proxysoftware
+| Service    | Domeinnamen waarvoor toegang nodig is                             |
+| -------------- | ------------------------------------------------------------ |
+| Azure Backup  | `*.backup.windowsazure.com`                             |
+| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
+| Azure AD      | Toegang tot FQDN's toestaan onder de secties 56 en 59 volgens [dit artikel](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) |
+
+### <a name="use-an-http-proxy-server-to-route-traffic"></a>Een HTTP-proxyserver gebruiken om verkeer te routeren
+
+Wanneer u een back-up maakt van een SAP HANA-database die wordt uitgevoerd op een virtuele Azure-machine, gebruikt de back-upextensie op de virtuele machine de HTTPS-API's voor het verzenden van beheeropdrachten naar Azure Backup en gegevens naar Azure Storage. De back-upextensie maakt ook gebruik van Azure AD voor verificatie. Leid het verkeer van de back-upextensie voor deze drie services via de HTTP-proxy. Gebruik de lijst met IP-adressen en FQDN's die hierboven worden genoemd om toegang tot de vereiste services toe te staan. Geverifieerde proxyservers worden niet ondersteund.
 
 ## <a name="what-the-pre-registration-script-does"></a>Wat doet het script vóór registratie
 

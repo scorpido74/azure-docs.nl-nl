@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092929"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496913"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Zelfstudie: Een database beveiligen in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -190,7 +190,7 @@ Toevoegen van een gebruiker met SQL-verificatie:
 Voor verificatie met Azure Active Directory moeten databasegebruikers ingesloten worden gemaakt. Een ingesloten databasegebruiker wordt toegewezen aan een identiteit in de Azure AD-directory die is gekoppeld aan de database, en heeft geen aanmelding in de *hoofd*database. De Azure AD-identiteit kan een individuele gebruiker of een groep zijn. Zie voor meer informatie [Contained Database Users - Making Your Database Portable](/sql/relational-databases/security/contained-database-users-making-your-database-portable) en raadpleeg de [Azure AD-zelfstudie](authentication-aad-configure.md) over verificatie met behulp van Azure AD.
 
 > [!NOTE]
-> Databasegebruikers (behalve beheerders) kunnen niet in de Azure-portal worden gemaakt. Azure RBAC-rollen worden niet doorgegeven aan SQL-servers, databases of datawarehouses. Ze worden alleen gebruikt voor het beheren van Azure-resources, en zijn niet van toepassing op databasemachtigingen.
+> Databasegebruikers (behalve beheerders) kunnen niet in de Azure-portal worden gemaakt. Azure-rollen worden niet doorgegeven aan SQL-servers, databases of datawarehouses. Ze worden alleen gebruikt voor het beheren van Azure-resources, en zijn niet van toepassing op databasemachtigingen.
 >
 > Zo verleent de rol *Inzender voor SQL Server* geen toegang voor het maken van verbinding met een database of datawarehouse. Deze machtiging moet binnen de database worden verleend met behulp van T-SQL-instructies.
 

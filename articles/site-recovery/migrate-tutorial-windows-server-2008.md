@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281273"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503817"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Servers waarop Windows Server 2008 wordt uitgevoerd, naar Azure migreren
 
@@ -104,7 +104,7 @@ Voer de volgende taken uit om het Azure-abonnement en de on-premises VMware-/fys
 5. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om na te gaan welke regio's er worden ondersteund.
 6. Als u de kluis snel wilt kunnen openen via het dashboard, klikt u op **Vastmaken aan dashboard** en vervolgens op **Maken**.
 
-   ![Nieuwe kluis](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
+   ![Schermopname van nieuwe opties voor maken van kluis.](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
 De nieuwe kluis wordt toegevoegd op het **Dashboard** onder **Alle resources** en op de hoofdpagina van **Recovery Services-kluizen**.
 
@@ -136,15 +136,15 @@ Het beleid wordt automatisch gekoppeld aan de configuratieserver.
 > [!WARNING]
 > Controleer of u **Uit** hebt opgegeven in de instelling Frequentie van de app-consistente momentopname van het replicatiebeleid. Alleen crashconsistente herstelpunten worden ondersteund tijdens het repliceren van servers waarop Windows Server 2008 wordt uitgevoerd. Als u een andere waarde opgeeft voor de frequentie van de app-consistente momentopname, leidt dat tot foutieve waarschuwingen. Het gevolg is dat de replicatiestatus van de server kritiek wordt vanwege gebrek aan app-consistente herstelpunten.
 
-   ![Replicatiebeleid maken](media/migrate-tutorial-windows-server-2008/create-policy.png)
+   ![Schermopname met opties voor maken van replicatiebeleid.](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
 ### <a name="enable-replication"></a>Replicatie inschakelen
 
 [Schakel replicatie in](physical-azure-disaster-recovery.md#enable-replication) voor de Windows Server 2008 SP2-/Windows Server 2008 R2 SP1-server die wordt gemigreerd.
    
-   ![Fysieke server toevoegen](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
+   ![Schermopname met opties voor toevoegen van fysieke machines.](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
 
-   ![Replicatie inschakelen](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
+   ![Schermopname met opties voor inschakelen van replicatie.](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
 ### <a name="run-a-test-migration"></a>Een testmigratie uitvoeren
 
@@ -152,7 +152,7 @@ U kunt een testfailover van de replicatieservers uitvoeren als de initiële repl
 
 Voer een [testfailover](tutorial-dr-drill-azure.md) naar Azure uit om te controleren of alles goed werkt.
 
-   ![Testfailover](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Schermopname met de opdracht voor testen van failover.](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ### <a name="migrate-to-azure"></a>Migreren naar Azure
@@ -168,7 +168,7 @@ Een failover uitvoeren voor de machines die u wilt migreren.
     - Het migratieproces wordt voltooid, de replicatie voor de server wordt gestopt en Site Recovery-facturering voor de server wordt gestopt.
     - Met deze stap worden de replicatiegegevens opgeschoond. De gemigreerde VM's worden niet verwijderd.
 
-   ![Migratie voltooien](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Schermopname met de opdracht voor voltooien van migratie.](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]

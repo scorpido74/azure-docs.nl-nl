@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134095"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504225"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Herstel na noodgevallen instellen voor on-premises Hyper-V-VM's naar Azure
 
@@ -51,14 +51,14 @@ Dit is de derde zelfstudie in een reeks. In deze zelfstudie wordt ervan uitgegaa
 6. Bij **Gebruikt u System Center VMM om uw Hyper-V-hosts te beheren** selecteert u **Nee**.
 7. Selecteer **OK**.
 
-    ![Replicatiedoel](./media/hyper-v-azure-tutorial/replication-goal.png)
+    ![Schermopname van de opties voor Beveiligingsdoel in De infrastructuur voorbereiden.](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>Implementatieplanning bevestigen
 
 1. Als u een grote implementatie plant, moet u in **Implementatieplanning** de Deployment Planner voor Hyper-V downloaden via de koppeling op de pagina. [Meer informatie](hyper-v-deployment-planner-overview.md) over de planning van de implementatie van Hyper-V.
 2. Voor deze zelfstudie hebben we de Deployment Planner niet nodig. Selecteer in **Hebt u de implementatieplanning uitgevoerd?** de optie **Dat doe ik later**. Selecteer vervolgens **OK**.
 
-    ![Implementatieplanning](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![Schermopname van de opties voor Implementatieplanning in De infrastructuur voorbereiden.](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>De bronomgeving instellen
 
@@ -68,17 +68,17 @@ Als u de bronomgeving wilt instellen, maakt u een Hyper-V-site en voegt u de Hyp
 2. Selecteer **+ Hyper-V-locatie** in **Bron voorbereiden**.
 3. Geef in **Hyper-V-site maken** de naam van de site op. We gebruiken **ContosoHyperVSite**.
 
-    ![Hyper-V-site](./media/hyper-v-azure-tutorial/hyperv-site.png)
+    ![Schermopname van de selectie van Hyper-V-locatie in De infrastructuur voorbereiden.](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
 4. Nadat de site is gemaakt, in **Bron voorbereiden** > **Stap 1: Selecteer Hyper-V-site** en selecteer de site die u hebt gemaakt.
 5. Selecteer **+ Hyper-V-server**.
 
-    ![Hyper-V-server](./media/hyper-v-azure-tutorial/hyperv-server.png)
+    ![Schermopname van de selectie van Hyper-V-server in De infrastructuur voorbereiden.](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. Download het installatieprogramma voor Microsoft Azure Site Recovery Provider.
 7. Download de registratiesleutel voor de kluis. U hebt deze sleutel nodig tijdens de installatie van de provider. De sleutel blijft vijf dagen na het genereren ervan geldig.
 
-    ![Provider en registratiesleutel downloaden](./media/hyper-v-azure-tutorial/download.png)
+    ![Schermopname van de opties voor het downloaden van de provider en registratiesleutel.](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>Provider installeren

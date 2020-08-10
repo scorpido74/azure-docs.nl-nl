@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130985"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498987"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Azure-resources voorbereiden op herstel na noodgevallen
 
@@ -63,7 +63,7 @@ Installatiekopieën van gerepliceerde machines worden bewaard in Azure Storage. 
 9. Kies bij **Locatie** de geografische locatie van het opslagaccount. Gebruik voor deze zelfstudie **Europa - west**.
 10. Selecteer **Maken** om het opslagaccount te maken.
 
-   ![Create a storage account](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Schermopname van de opties voor het maken van een opslagaccount.](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -74,7 +74,7 @@ Installatiekopieën van gerepliceerde machines worden bewaard in Azure Storage. 
 3. Selecteer bij **Locatie** de regio waarin de kluis zich moet bevinden. Gebruik voor deze zelfstudie **Europa - west**.
 4. Voor snelle toegang tot de kluis vanuit het dashboard, selecteert u **Aan dashboard vastmaken** > **Maken**.
 
-![Een nieuwe kluis maken](./media/tutorial-prepare-azure/new-vault-settings.png)
+![Schermopname van de pagina Een Recovery Services-kluis maken.](./media/tutorial-prepare-azure/new-vault-settings.png)
 
 De nieuwe kluis wordt weergegeven in **Dashboard** > **Alle resources** en op de hoofdpagina **Recovery Services-kluizen**.
 
@@ -91,7 +91,7 @@ Wanneer de Azure VM's zijn gemaakt vanuit de opslag na de failover, worden ze ge
 7. Laat de standaardopties staan voor DDoS-basisbescherming, zonder service-eindpunt op het netwerk.
 8. Selecteer **Maken**.
 
-![Een virtueel netwerk maken](media/tutorial-prepare-azure/create-network.png)
+![Schermopname van de opties voor het maken van een virtueel netwerk.](media/tutorial-prepare-azure/create-network.png)
 
 Het duurt een paar seconden voordat het virtuele netwerk is gemaakt. Nadat dit is gemaakt, wordt het in het dashboard van de Azure-portal weergegeven.
 

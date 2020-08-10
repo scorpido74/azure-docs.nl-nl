@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253134"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032880"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Problemen oplossen met behulp van het hulp programma What If in voorwaardelijke toegang
 
@@ -24,15 +24,15 @@ ms.locfileid: "85253134"
 
 In dit artikel wordt uitgelegd hoe u dit hulp programma kunt gebruiken om uw beleid voor voorwaardelijke toegang te testen.
 
-## <a name="what-it-is"></a>Wat is het?
+## <a name="what-it-is"></a>Wat het is
 
 Met het **What if beleid voor voorwaardelijke toegang** kunt u inzicht krijgen in de impact van uw beleid voor voorwaardelijke toegang in uw omgeving. In plaats van uw beleid te testen door meerdere aanmeldingen hand matig uit te voeren, kunt u met dit hulp programma een gesimuleerde aanmelding van een gebruiker evalueren. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport. In het rapport worden niet alleen de toegepaste beleids regels voor voorwaardelijke toegang, maar ook het [klassieke beleid](policy-migration.md#classic-policies) weer geven als ze bestaan.    
 
 Het hulp programma **What if** biedt een manier om snel te bepalen welke beleids regels van toepassing zijn op een specifieke gebruiker. U kunt de informatie gebruiken, bijvoorbeeld als u een probleem moet oplossen.    
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe werkt het?
 
-In het **What if hulp programma voor voorwaardelijke toegang**moet u eerst de instellingen configureren van het aanmeldings scenario dat u wilt simuleren. Deze instellingen omvatten:
+In het **What if hulp programma voor voorwaardelijke toegang**moet u eerst de instellingen configureren van het aanmeldings scenario dat u wilt simuleren. Deze instellingen zijn onder meer:
 
 - De gebruiker die u wilt testen 
 - De Cloud-apps waartoe de gebruiker toegang probeert te krijgen
@@ -76,13 +76,13 @@ Deze instelling imiteert de [voor waarde apparaat platforms](concept-conditional
 
 ### <a name="client-apps"></a>Client-apps
 
-Deze instelling imiteert de [voor waarde voor client-apps](concept-conditional-access-conditions.md#client-apps-preview).
+Deze instelling imiteert de [voor waarde voor client-apps](concept-conditional-access-conditions.md#client-apps).
 Deze instelling zorgt er standaard voor dat een evaluatie van alle beleids regels met **browser** -of **mobiele apps en desktop-clients** afzonderlijk of beide is geselecteerd. Er wordt ook een beleid gedetecteerd waarmee **Exchange ActiveSync (EAS)** wordt afgedwongen. U kunt deze instelling beperken door het volgende te selecteren:
 
 - **Browser** voor het evalueren van alle beleids regels waarvoor ten minste een **browser** is geselecteerd. 
 - **Mobiele apps en desktop-clients** om alle beleids regels te evalueren waarvoor ten minste **Mobile apps en desktop-clients** zijn geselecteerd. 
 
-### <a name="sign-in-risk"></a>Aanmeldings risico
+### <a name="sign-in-risk"></a>Aanmeldingsrisico
 
 Deze instelling imiteert de [aanmeldings risico voorwaarde](concept-conditional-access-conditions.md#sign-in-risk).   
 

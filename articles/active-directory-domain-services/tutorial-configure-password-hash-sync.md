@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e9d6f31674db0744e220a9cd88033a32bb5c1e17
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 02828e0c159e2d30dacc5759f1239dae1268dac5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024686"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491779"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Zelfstudie: Wachtwoordsynchronisatie met Azure Active Directory Domain Services inschakelen voor hybride omgevingen
 
@@ -22,7 +22,7 @@ Voor hybride omgevingen kan een Azure Active Directory-tenant (Azure AD) worden 
 
 Als u Azure AD DS wilt gebruiken met accounts die zijn gesynchroniseerd vanuit een on-premises AD DS-omgeving, moet u Azure AD Connect configureren om de vereiste wachtwoordhashes voor NTLM- en Kerberos-verificatie te synchroniseren. Nadat Azure AD Connect is geconfigureerd, worden ook verouderde wachtwoordhashes met Azure AD gesynchroniseerd wanneer een on-premises account wordt gemaakt of een wachtwoord wordt gewijzigd.
 
-U hoeft deze stappen niet uit te voeren als u cloudaccounts zonder een on-premises AD DS-omgeving gebruikt.
+U hoeft deze stappen niet uit te voeren als u cloudaccounts zonder een on-premises AD DS-omgeving gebruikt of als u een *resourceforest* gebruikt. Voor beheerde domeinen die gebruikmaken van een resourceforest, worden hashes van on-premises wachtwoorden nooit gesynchroniseerd. Verificatie voor on-premises accounts gebruik de forest-vertrouwensrelatie(s) op uw eigen AD DS-domeincontrollers.
 
 In deze zelfstudie komen deze onderwerpen aan bod:
 

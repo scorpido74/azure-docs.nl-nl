@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a5e2a3569c70404d64d24ecfc35a8258ea864a4f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054488"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480421"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Zelfstudie: Door Azure beheerde toepassingen in Marketplace publiceren
 
@@ -98,7 +98,7 @@ Een SKU wordt in Marketplace weergegeven onder de bovenliggende aanbieding. Een 
 
      Zie [Bewerkingen voor de resourceprovider van Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) voor beschikbare acties. Als u bijvoorbeeld wilt toestaan dat consumenten virtuele machines opnieuw opstarten, moet u `Microsoft.Compute/virtualMachines/restart/action` toevoegen aan de toegestane acties. De actie `*/read` is automatisch toegestaan zodat deze instelling niet hoeft te worden toegevoegd.
    * **PrincipalId**: Deze eigenschap is de id van Azure Active Directory (Azure AD) van een gebruiker, groep of toepassing die toegang krijgt tot de resources in het abonnement van de klant. In de roldefinitie worden de machtigingen beschreven.
-   * **Role Definition**: Deze eigenschap bestaat uit een lijst met alle ingebouwde rollen voor op rollen gebaseerd toegangsbeheer (RBAC) die worden aangeboden door Azure AD. U kunt de rol selecteren die het meest geschikt is voor het beheren van resources namens de klant.
+   * **Role Definition**: Deze eigenschap bestaat uit een lijst met alle ingebouwde rollen van Azure die worden aangeboden door Azure AD. U kunt de rol selecteren die het meest geschikt is voor het beheren van resources namens de klant.
    * **Policy Settings**: Pas een [Azure Policy](../../governance/policy/overview.md) op uw beheerde toepassing toe om nalevingsvereisten voor de geïmplementeerde oplossingen te specificeren. Selecteer de gewenste beleidsregels in de beschikbare opties. Geef bij **Policy Parameters** een JSON-tekenreeks met de parameterwaarden op. Zie [Voorbeelden van Azure Policy](../../governance/policy/samples/index.md) voor beleidsdefinities en de indeling van de parameterwaarden.
 
 U kunt verschillende autorisaties toevoegen. Het wordt aangeraden om een AD-gebruikersgroep te maken en de id van deze groep op te geven voor **PrincipalId**. Op deze manier kunt u meer gebruikers toevoegen aan de gebruikersgroep zonder dat u de SKU hoeft bij te werken.

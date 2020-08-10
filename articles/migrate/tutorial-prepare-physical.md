@@ -4,12 +4,12 @@ description: Leer hoe u voorbereidingen treft voor evaluatie/migratie van fysiek
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113248"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420784"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voorbereiden op evaluatie en migratie van fysieke servers naar Azure
 
@@ -138,7 +138,7 @@ Voordat u het Azure Migrate-apparaat instelt en de evaluatie begint in de volgen
 
 Azure Migrate heeft machtigingen nodig om on-premises servers te detecteren.
 
-- **Windows:** U moet een domeinbeheerder of lokale beheerder zijn op alle Windows-servers die u wilt detecteren. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken.
+- **Windows:** U hebt een domeinaccount nodig om servers te detecteren die lid zijn van een domein, en een lokaal account om computers te detecteren die geen lid zijn van een domein. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken.
 - **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren.
 
 ## <a name="prepare-for-physical-server-migration"></a>Voorbereiden op de migratie van fysieke servers

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 07/03/2019
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d3b8d94148e3db163411c21cccf39c7630c6b3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83737636"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032905"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Problemen met voorwaardelijke toegang oplossen met het What If-hulp programma
 
@@ -41,7 +41,7 @@ De volgende aanvullende informatie is optioneel, maar helpt bij het beperken van
 * Apparaatplatform
 * Client-apps (preview-versie)
 * Apparaatstatus (preview-versie) 
-* Aanmeldings risico
+* Aanmeldingsrisico
 
 Deze informatie kan worden verzameld van de gebruiker, het apparaat of het logboek van Azure AD-aanmeldingen.
 
@@ -61,13 +61,13 @@ In deze lijst ziet u welke beleids regels voor voorwaardelijke toegang van toepa
 
 In deze lijst worden de beleids regels voor voorwaardelijke toegang weer gegeven die niet van toepassing zijn als de voor waarden worden toegepast. De lijst bevat alle beleids regels en de reden waarom ze niet van toepassing zijn. Voor beelden zijn onder meer gebruikers en groepen die kunnen worden uitgesloten van een beleid.
 
-## <a name="use-case"></a>Toepassing
+## <a name="use-case"></a>Gebruiksvoorbeeld
 
 Veel organisaties maken beleids regels op basis van netwerk locaties, waardoor vertrouwde locaties en het blok keren van toegang tot de locatie worden geblokkeerd.
 
 Om te valideren of een configuratie op de juiste wijze is gemaakt, kan een beheerder het What If-hulp programma gebruiken om toegang te simuleren, vanaf een locatie die moet worden toegestaan en van een locatie die moet worden geweigerd.
 
-![What If-hulp programma geeft resultaten weer met toegang voor blok keren](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)
+[![What if-hulp programma geeft resultaten weer met toegang voor blok keren](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png#lightbox)
 
 In dit geval heeft de gebruiker geen toegang tot de Cloud-app in de toekomst naar Noord-Korea omdat Contoso de toegang tot die locatie heeft geblokkeerd.
 
@@ -76,6 +76,6 @@ Deze test kan worden uitgebreid om andere gegevens punten op te nemen om het ber
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is voorwaardelijke toegang?](overview.md)
-* [Wat is Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)
+* [Wat is Azure Active Directory Identity Protection](../identity-protection/overview-v2.md)
 * [Wat is een apparaat-id?](../devices/overview.md)
 * [Hoe werkt het - Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

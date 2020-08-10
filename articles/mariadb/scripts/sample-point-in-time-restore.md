@@ -1,19 +1,19 @@
 ---
-title: CLI-script-server herstellen-Azure Database for MariaDB
+title: 'CLI-script: Azure Database for MariaDB-server terugzetten'
 description: Dit Azure CLI-voorbeeldscript laat zien hoe u een Azure Database for MariaDB-server en de databases ervan kunt terugzetten naar een eerder tijdstip.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: d7591c4f88026644ee2453150cfa226a155ab32d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 839aae2ccf9433dafec0ddee692c476611924aa0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74771701"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497389"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Een Azure Database for MariaDB-server terugzetten met behulp van Azure CLI
 Met dit CLI-voorbeeldscript wordt één Azure Database for MariaDB-server teruggezet naar een eerder tijdstip.
@@ -33,13 +33,13 @@ Gebruik de volgende opdracht om de resourcegroep en alle resources die er aan zi
 ## <a name="script-explanation"></a>Uitleg van het script
 Dit script maakt gebruik van de opdrachten die in de volgende tabel worden weergegeven:
 
-| **Cmd** | **Opmerkingen** |
+| **Opdracht** | **Opmerkingen** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | Hiermee wordt een MariaDB-server gemaakt waarop de databases worden gehost. |
 | [az mariadb server restore](/cli/azure/mariadb/server#az-mariadb-server-restore) | Een server herstellen uit een back-up. |
 | [az group delete](/cli/azure/group#az-group-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-- Lees de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
-- Meer scripts om te proberen: [Azure CLI-voorbeelden voor Azure Database for MariaDB](../sample-scripts-azure-cli.md)
+- Meer informatie over Azure CLI: [Azure CLI-documentatie](/cli/azure).
+- Aanvullende scripts proberen: [Azure CLI-voorbeelden voor Azure Database for MariaDB](../sample-scripts-azure-cli.md)

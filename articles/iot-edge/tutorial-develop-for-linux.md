@@ -4,17 +4,17 @@ description: In deze zelfstudie wordt uitgelegd hoe u uw ontwikkelcomputer en cl
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 924654dace53b326e3a29bb834f773122b0476ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081114"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439128"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Linux-apparaten
 
@@ -63,7 +63,7 @@ Een ontwikkelcomputer:
 
 * U kunt uw eigen computer of een virtuele machine gebruiken, afhankelijk van uw ontwikkelvoorkeuren.
   * Zorg ervoor dat uw ontwikkelcomputer ondersteuning biedt voor geneste virtualisatie. Deze mogelijkheid is nodig voor het uitvoeren van een container-engine, die u in de volgende sectie installeert.
-* De meeste besturingssystemen waarop een container-engine kan worden uitgevoerd, kunnen worden gebruikt voor het ontwikkelen van IoT Edge-modules voor Linux-apparaten. In deze zelfstudie wordt gebruikgemaakt van een Windows-computer. Er wordt echter gewezen op bekende verschillen in MacOS of Linux.
+* De meeste besturingssystemen waarop een container-engine kan worden uitgevoerd, kunnen worden gebruikt voor het ontwikkelen van IoT Edge-modules voor Linux-apparaten. In deze zelfstudie wordt gebruikgemaakt van een Windows-computer. Er wordt echter gewezen op bekende verschillen in macOS of Linux.
 * Installeer [Git](https://git-scm.com/) om verderop in deze zelfstudie modulesjabloonpakketten op te halen.  
 * [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
@@ -112,7 +112,7 @@ Gebruik de IoT-extensies voor Visual Studio Code voor het ontwikkelen van IoT Ed
 
 8. Open de sectie Explorer van Visual Studio Code door het pictogram te selecteren in de activiteitenbalk aan de linkerkant of door **View** > **Explorer** te selecteren.
 
-9. Onder aan de sectie Explorer vouwt u het samengevouwen menu **Azure IoT Hub Devices** uit. Als het goed is, ziet u nu de apparaten en IoT Edge-apparaten die zijn gekoppeld aan de IoT-hub die u hebt geselecteerd in het opdrachtenpalet.
+9. Vouw onderaan de sectie Explorer het samengevouwen menu **Azure IoT Hub / Devices** uit. Als het goed is, ziet u nu de apparaten en IoT Edge-apparaten die zijn gekoppeld aan de IoT-hub die u hebt geselecteerd in het opdrachtenpalet.
 
    ![Apparaten weergeven in uw IoT-hub](./media/tutorial-develop-for-linux/view-iot-hub-devices.png)
 
@@ -134,7 +134,7 @@ Zoek en selecteer in het Visual Studio Code-opdrachtenpalet de optie **Azure IoT
    | Een naam opgeven voor de oplossing | Voer een beschrijvende naam voor de oplossing in of accepteer de standaardnaam **EdgeSolution**. |
    | Modulesjabloon selecteren | Kies **C# Module**. |
    | Een modulenaam opgeven | Accepteer de standaardwaarde **SampleModule**. |
-   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de naam die u in de laatste stap hebt opgegeven. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal. <br><br> De uiteindelijke opslagplaats voor de installatiekopie ziet er als volgt uit: \<registry name\>.azurecr.io/nodemodule. |
+   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de naam die u in de laatste stap hebt opgegeven. Vervang **localhost:5000** door de waarde van de **aanmeldingsserver** uit uw Azure-containerregister. U vindt de waarde van de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal. <br><br> De uiteindelijke opslagplaats voor de installatiekopie ziet er als volgt uit: \<registry name\>.azurecr.io/nodemodule. |
 
    ![Opslagplaats voor Docker-installatiekopieën opgeven](./media/tutorial-develop-for-linux/image-repository.png)
 
@@ -172,7 +172,7 @@ Momenteel kunt u met Visual Studio Code C#-modules ontwikkelen voor Linux AMD64-
 
 De oplossingssjabloon die u hebt gemaakt, bevat voorbeeldcode voor een IoT Edge-module. In deze voorbeeldmodule worden berichten eenvoudigweg ontvangen en vervolgens doorgegeven. Met de pijplijnfunctionaliteit wordt een belangrijk concept in IoT Edge gedemonstreerd, waarmee modules met elkaar communiceren.
 
-Elke module kan meerdere *invoer*- en *uitvoer*wachtrijen hebben die in hun code zijn gedeclareerd. Met de IoT Edge-hub die op het apparaat wordt uitgevoerd, worden berichten van de uitvoer van een module naar de invoer van een of meer modules gerouteerd. De specifieke taal voor het declareren van invoer en uitvoer verschilt per taal, maar het concept is voor alle modules hetzelfde. Zie [Routes declareren](module-composition.md#declare-routes) voor meer informatie over routering tussen modules.
+Elke module kan meerdere *invoer*- en *uitvoer*wachtrijen hebben die in hun code zijn gedeclareerd. Met de IoT Edge-hub die op het apparaat wordt uitgevoerd, worden berichten van de uitvoer van een module naar de invoer van een of meer modules gerouteerd. De specifieke code voor het declareren van invoer en uitvoer verschilt per taal, maar het concept is voor alle modules hetzelfde. Zie [Routes declareren](module-composition.md#declare-routes) voor meer informatie over routering tussen modules.
 
 De C#-voorbeeldcode die bij de projectsjabloon hoort, maakt gebruik van de [ModuleClient-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) van de IoT Hub SDK voor .NET.
 
@@ -194,11 +194,11 @@ De C#-voorbeeldcode die bij de projectsjabloon hoort, maakt gebruik van de [Modu
 
 7. Zoek de eigenschap **modules** van de gewenste eigenschappen van $edgeAgent.
 
-   Er moeten hier twee modules worden weergegeven. De eerste is **SimulatedTemperatureSensor**, die standaard is opgenomen in alle sjablonen om gesimuleerde temperatuurgegevens te bieden die u kunt gebruiken om uw modules te testen. De tweede is de module **SampleModule** die u als onderdeel van deze oplossing hebt gemaakt.
+   Er moeten hier twee modules worden weergegeven. Een is de **SimulatedTemperatureSensor**-module, die standaard is opgenomen in alle sjablonen om gesimuleerde temperatuurgegevens te bieden die u kunt gebruiken om uw modules te testen. De andere is de module **SampleModule** die u als onderdeel van deze oplossing hebt gemaakt.
 
 8. Zoek onder aan het bestand de gewenste eigenschappen voor de module **$edgeHub**.
 
-   Een van de functies van de IoT Edge hub-module bestaat uit het routeren van berichten tussen alle modules in een implementatie. Bekijk de waarden in de eigenschap **routes**. De eerste route, **SampleModuleToIoTHub**, gebruikt een jokerteken ( **\*** ) om berichten aan te geven die afkomstig zijn uit uitvoerwachtrijen in de SampleModule-module. Deze berichten gaan naar *$upstream*, een gereserveerde naam die IoT Hub aangeeft. De tweede route, sensorToSampleModule, neemt berichten over van de SimulatedTemperatureSensor-module en stuurt deze door naar de invoerwachtrij *input1* die in de SampleModule-code is geïnitialiseerd.
+   Een van de functies van de IoT Edge hub-module bestaat uit het routeren van berichten tussen alle modules in een implementatie. Bekijk de waarden in de eigenschap **routes**. De ene route, **SampleModuleToIoTHub**, gebruikt een jokerteken ( **\*** ) om berichten aan te geven die afkomstig zijn uit uitvoerwachtrijen in de SampleModule-module. Deze berichten gaan naar *$upstream*, een gereserveerde naam die IoT Hub aangeeft. De andere route, **sensorToSampleModule**, neemt berichten over van de SimulatedTemperatureSensor-module en stuurt deze door naar de invoerwachtrij *input1* die in de SampleModule-code is geïnitialiseerd.
 
    ![Routes bekijken in deployment.template.json](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -276,7 +276,7 @@ Als er fouten optreden bij het bouwen en pushen van de installatiekopie van de m
 
 U hebt gecontroleerd of de gemaakte containerinstallatiekopieën zijn opgeslagen in het containerregister, dus het is tijd om ze te implementeren op een apparaat. Zorg ervoor dat uw IoT Edge-apparaat actief is.
 
-1. Vouw in Visual Studio Code Explorer de sectie Azure IoT Hub Devices uit.
+1. Vouw in de Visual Studio Code Explorer, onder de sectie **Azure IoT Hub**, de optie **Apparaten** uit om de lijst met IoT-apparaten weer te geven.
 
 2. Klik met de rechtermuisknop op de naam van het IoT Edge-apparaat dat u wilt implementeren en selecteer **Create Deployment for Single Device**.
 
@@ -286,11 +286,9 @@ U hebt gecontroleerd of de gemaakte containerinstallatiekopieën zijn opgeslagen
 
    Gebruik niet het bestand deployment.template.json, dat geen containerregisterreferenties of module-installatiekopiewaarden bevat. Als u ontwikkelt voor een Linux ARM32-apparaat, wordt het implementatiemanifest deployment.arm32v7.json genoemd.
 
-4. Vouw de details voor uw IoT Edge-apparaat uit en vouw vervolgens de lijst **Modules** voor uw apparaat uit.
+4. Vouw onder uw apparaat **Modules** uit voor een lijst met de geïmplementeerde en actieve modules. Klik op de knop Vernieuwen. U ziet nu de nieuwe SimulatedTemperatureSensor- en SampleModule-modules die op uw apparaat worden uitgevoerd.
 
-5. Gebruik de vernieuwknop om de weergave van het apparaat bij te werken totdat u ziet dat de modules SimulatedTemperatureSensor en SampleModule op het apparaat worden uitgevoerd.
-
-   Het kan enkele minuten duren voordat beide modules worden gestart. De IoT Edge-runtime moet het nieuwe implementatiemanifest ontvangen, de module-installatiekopieën uit de containerruntime ophalen en vervolgens elke nieuwe module starten.
+   Het kan enkele minuten duren voordat de modules zijn gestart. De IoT Edge-runtime moet het nieuwe implementatiemanifest ontvangen, de module-installatiekopieën uit de containerruntime ophalen en vervolgens elke nieuwe module starten.
 
    ![Modules weergeven die op uw IoT Edge-apparaat worden uitgevoerd](./media/tutorial-develop-for-linux/view-running-modules.png)
 
@@ -327,6 +325,14 @@ De opdrachten in deze sectie zijn voor uw IoT Edge apparaat, niet voor uw ontwik
    IoT Edge-modules zijn hoofdlettergevoelig.
 
    De SimulatedTemperatureSensor- en SampleModule-logboeken moeten de berichten weergeven die ze verwerken. De edgeAgent-module is verantwoordelijk voor het starten van de andere modules, dus de logboeken hiervan bevatten informatie over het implementeren van het implementatiemanifest. Als een module niet wordt vermeld of niet wordt uitgevoerd, bevatten de edgeAgent-logboeken waarschijnlijk de fouten. De edgeHub-module is verantwoordelijk voor de communicatie tussen de modules en IoT Hub. Als de modules actief zijn, maar de berichten niet op uw IoT-hub arriveren, bevatten de edgeHub-logboeken waarschijnlijk de fouten.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u van plan bent door te gaan met het volgende aanbevolen artikel, kunt u de resources en configuraties die u hebt gemaakt behouden en opnieuw gebruiken. U kunt ook hetzelfde IoT Edge-apparaat blijven gebruiken als een testapparaat.
+
+Anders kunt u de lokale configuraties en Azure-resources die u in dit artikel hebt gemaakt, verwijderen om kosten te voorkomen.
+
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

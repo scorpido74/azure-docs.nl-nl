@@ -1,19 +1,19 @@
 ---
-title: Een functie-app maken met DevOps-implementatie-Azure CLI
+title: Een functie-app maken met DevOps-implementatie - Azure CLI
 description: Een functie-app maken en functiecode implementeren vanuit Azure DevOps
 ms.date: 07/03/2018
 ms.topic: sample
-ms.custom: mvc
-ms.openlocfilehash: d10c3987aef6e0a32081acd17425517f5109c4bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 773a08646f7a69e1ed828621bad48a6c6729eb88
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922644"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498518"
 ---
-# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Een functie maken in azure die wordt geïmplementeerd vanuit Azure DevOps
+# <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Een functie in Azure maken die wordt geïmplementeerd vanuit Azure DevOps
 
-In dit onderwerp wordt beschreven hoe u Azure Functions kunt gebruiken om een [serverloze](https://azure.microsoft.com/solutions/serverless/) functie-app te maken met behulp van het [verbruiks abonnement](../functions-scale.md#consumption-plan). De functie-app, een container voor uw functies, wordt continu geïmplementeerd vanuit een Azure DevOps-opslag plaats. 
+In dit onderwerp leest u hoe u Azure Functions kunt gebruiken om een functie-app [zonder server](https://azure.microsoft.com/solutions/serverless/) te maken met behulp van het [verbruiksabonnement](../functions-scale.md#consumption-plan). De functie-app, wat een container is voor uw functies, wordt continu vanuit een Azure DevOps-opslagplaats geïmplementeerd. 
 
 Voor het voltooien van dit onderwerp hebt u het volgende nodig:
 
@@ -36,17 +36,17 @@ In dit voorbeeld maakt u een Azure-functie-app en implementeert u functiecode va
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script maakt gebruik van de volgende opdrachten voor het maken van een resourcegroep, opslagaccount, functie-app en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+Dit script maakt gebruik van de volgende opdrachten voor het maken van een resourcegroep, opslagaccount, functie-app en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Hiermee maakt u het opslagaccount dat vereist is voor de functie-app. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het serverloze [verbruiks abonnement](../functions-scale.md#consumption-plan). |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Hiermee maakt u een functie-app in het serverloze [verbruiksabonnement](../functions-scale.md#consumption-plan). |
 | [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Hiermee koppelt u een functie-app aan een Git- of Mercurial-opslagplaats. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende CLI-voorbeeldscripts voor Azure Functions vindt u in de [Azure Functions-documentatie](../functions-cli-samples.md).
