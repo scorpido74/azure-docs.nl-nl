@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 3af3134f715dc124b4aee3ac0a7bfbf11df6a462
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5b516eb913bf9e7b8337a41483682e1201c58890
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801866"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759033"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Meer informatie over de basisbeginselen van de Speech CLI
 
@@ -62,7 +62,7 @@ De opdrachten in de vorige sectie zijn handig om snel te zien hoe de Spraakservi
 Als u een map met audiobestanden hebt, kunt u met de Speech CLI eenvoudig en snel batchgewijze spraakherkenning uitvoeren. Voer eenvoudig de volgende opdracht uit en wijs naar uw map met de opdracht `--files`. In dit voorbeeld voegt u `\*.wav` toe aan de map om alle `.wav`-bestanden in de map te herkennen. Geef daarnaast het argument `--threads` op om de herkenning uit te voeren op tien parallelle threads.
 
 > [!NOTE]
-> Het argument `--threads` kan ook worden gebruikt in de volgende sectie voor `spx synthesize`-opdrachten; de beschikbare threads zijn afhankelijk van de CPU en het huidige belastingpercentage.
+> Het argument `--threads` kan ook worden gebruikt in de volgende sectie voor `spx synthesize`-opdrachten; de beschikbare threads zijn afhankelijk van de CPU en het huidige belastingspercentage.
 
 ```shell
 spx recognize --files C:\your_wav_file_dir\*.wav --output file C:\output_dir\speech_output.tsv --threads 10

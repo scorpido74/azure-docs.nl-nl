@@ -1,33 +1,34 @@
 ---
-title: Beveiligde inhoud Azure Media Player
-description: Azure Media Player ondersteunt momenteel versleutelde inhoud van AES-128 bits-enveloppen en gemeen schappelijke versleutelde inhoud.
+title: Beveiligde Azure Media Player-inhoud
+description: Azure Media Player ondersteunt momenteel AES-128 bits envelop-versleuteling en normaal versleutelde inhoud.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 64414d3ec31e8763b7c576af93374bf514141fd4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: da79556b466e3511845724e969c76477ad2ba0a8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726492"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423011"
 ---
 # <a name="protected-content"></a>Beveiligde inhoud #
 
-Azure Media Player ondersteunt momenteel versleutelde inhoud met AES-128 bits-enveloppen en gemeen schappelijke versleutelde inhoud (via PlayReady en Widevine) of versleutelde inhoud via FairPlay. Als u beveiligde inhoud op de juiste manier wilt afspelen, moet u `protectionInfo`Azure Media Player de. Deze informatie bestaat per bron en kan rechtstreeks op de `<source>` tag worden toegevoegd via de `data-setup`.  U kunt ook `protectionInfo` rechtstreeks als een para meter toevoegen als u de bron dynamisch instelt.
+Azure Media Player ondersteunt momenteel AES-128 bits envelop-versleuteling en normaal versleutelde inhoud (va PlayReady en Widevine), of versleutelde inhoud via FairPlay. Als u beveiligde inhoud op de juiste manier wilt afspelen, moet u de `protectionInfo` opgeven in Azure Media Player. Deze informatie bestaat per bron en kan rechtstreeks aan het `<source>`-label worden toegevoegd via de `data-setup`.  U kunt de `protectionInfo` ook rechtstreeks als parameter toevoegen als u de bron dynamisch instelt.
 
-`protectionInfo`Hiermee wordt een JSON-object geaccepteerd en opgenomen:
+`protectionInfo` accepteert een JSON-object en omvat:
 
-- `type`: `AES` of `PlayReady` `Widevine` of`FairPlay`
-- `certificateUrl`: dit moet een directe koppeling naar het gehoste FairPlay-certificaat zijn
+- `type`: `AES` of `PlayReady` of `Widevine` of `FairPlay`
+- `certificateUrl`: dit moet een directe koppeling zijn naar het gehoste FairPlay-certificaat
 
-- `authenticationToken`: dit is een optie veld om een niet-gecodeerd verificatie token toe te voegen
+- `authenticationToken`: dit is een optieveld waarin u een niet-gecodeerd verificatietoken kunt toevoegen
 
 > [!IMPORTANT]
-> Het **certificateUrl** -object is alleen nodig voor Fairplay DRM. * * *
+> Het **certificateUrl**-object is alleen nodig voor FairPlay DRM.***
 >[!NOTE]
-> De standaard techOrder is gewijzigd om de nieuwe technicus te voorzien van een `html5FairPlayHLS` eigen Fairplay-inhoud op browsers die deze ondersteunen (Safari op OSX 8 +). Als u FairPlay inhoud wilt afspelen **en** u de standaard techOrder hebt gewijzigd in een aangepaste versie van uw toepassing, moet u deze nieuwe tech toevoegen aan uw techOrder-object. We raden u aan deze op te nemen vóór Silverlight, zodat uw inhoud niet wordt afgespeeld via PlayReady.
+> De standaard techOrder is specifiek voor de nieuwe tech-`html5FairPlayHLS` die specifiek is bedoeld voor het afspelen van FairPlay-inhoud op browsers die dit ondersteunen (Safari op OSX 8+). Als u FairPlay-inhoud wilt afspelen **EN** de standaard techOrder hebt gewijzigd in een aangepaste versie van uw toepassing, moet u deze nieuwe tech toevoegen aan uw techOrder-object. Het wordt aanbevolen deze op te nemen vóór silverlightSS, zodat uw inhoud niet wordt afgespeeld via PlayReady.
 
 ## <a name="code-sample"></a>Codevoorbeeld ##
 
@@ -55,7 +56,7 @@ or
     );
 ```
 
-of, met meerdere DRM
+of, met meervoudig DRM
 
 ```javascript
     var myPlayer = amp("vid1", /* Options */);
@@ -79,10 +80,10 @@ of, met meerdere DRM
 ```
 
 > [!NOTE]
-> Niet alle browsers/platformen kunnen beveiligde inhoud afspelen. Zie de sectie [afspeel technologie](azure-media-player-playback-technology.md) voor meer informatie over wat er wordt ondersteund.
+> Niet via alle browsers/platformen kan beveiligde inhoud worden afgespeeld. Zie de sectie [Afspeeltechnologie](azure-media-player-playback-technology.md) voor meer informatie over wat wordt ondersteund.
 > [!IMPORTANT]
-> Het token dat is door gegeven aan de speler is bedoeld voor beveiligde inhoud en wordt alleen gebruikt voor geverifieerde gebruikers. Er wordt van uitgegaan dat de toepassing gebruikmaakt van SSL of een andere vorm van beveiligings maatregel. De eind gebruiker is ook assummed om vertrouwd te zijn om het token niet te misbruiken. Als dat niet het geval is, moet u uw beveiligings experts betreffen.
+> Het token dat is doorgegeven aan de speler is bedoeld voor beveiligde inhoud en wordt alleen gebruikt voor geverifieerde gebruikers. Er wordt van uitgegaan dat voor de toepassing gebruik wordt gemaakt van SSL of een andere beveiligingsmaatregel. Tevens wordt ervan uitgegaan dat erop kan worden vertrouwd dat de eindgebruiker het token niet misbruikt. Als dat niet het geval is, moet u uw beveiligingsexperts betrekken.
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)
+- [Quickstart voor Azure Media Player](azure-media-player-quickstart.md)

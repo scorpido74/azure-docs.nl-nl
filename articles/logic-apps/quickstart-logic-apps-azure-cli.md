@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.openlocfilehash: aabb42dc8d86e500875819cbfc169bcc86733219
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/30/2020
+ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100958"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499548"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Quickstart: Logische apps maken en beheren met behulp van Azure CLI
 
@@ -271,3 +271,11 @@ U kunt de volgende optionele globale Azure CLI-parameters gebruiken met uw `az l
 | Fouten opsporen | `--debug` | Hiermee worden alle logboeken voor foutopsporing weergegeven. |
 | Help-bericht | `--help -h` | Hiermee wordt het Help-dialoogvenster weergegeven. |
 | Query’s uitvoeren | `--query` | Hiermee wordt een JMESPath-queryreeks ingesteld voor JSON-uitvoer. |
+
+## <a name="next-steps"></a>Volgende stappen
+
+Raadpleeg de [documentatie van Azure CLI](/cli/azure/?view=azure-cli-latest) voor meer informatie over de Azure CLI.
+
+Zie [het voorbeeldscript en de werkstroomdefinitie](sample-logic-apps-cli-script.md) voor een voorbeeld van het maken van een eenvoudige logische app via de CLI.
+
+Aanvullende Logic Apps CLI-voorbeeldscripts vindt u in [Microsoft's voorbeeldcodebrowser](/samples/browse/?products=azure-logic-apps).

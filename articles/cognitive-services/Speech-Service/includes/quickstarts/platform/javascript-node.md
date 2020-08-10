@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: Speech SDK voor Java script (NodeJS) platform Setup-Speech Service'
+title: 'Quickstart: Speech-SDK voor JavaScript-platform (NodeJS) instellen: Speech-service'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform in te stellen voor het gebruik van Java script (NodeJS) met de Speech Service SDK.
+description: Gebruik deze handleiding om uw platform in te stellen voor het gebruik van JavaScript (NodeJS) met de Speech-service-SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 86fb18270496212054f1f2a32ccfa893f8e2d0bd
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e5c83b4b8e579223fa8bc00e1347e5cb2f92fca1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980125"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406406"
 ---
-In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor Java script installeert voor gebruik met NodeJS. Als u alleen de naam van het pakket wilt gebruiken om aan de slag te gaan, voert u `npm install microsoft-cognitiveservices-speech-sdk` uit vanuit uw bestaande project.
+In deze handleiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor JavaScript installeert voor gebruik met NodeJS. Als u enkel de pakketnaam nodig hebt om zelf aan de slag te gaan, voert u `npm install microsoft-cognitiveservices-speech-sdk` uit.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -29,9 +30,9 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 ## <a name="create-a-new-npm-project"></a>Maak een nieuw NPM-project.
 
-Maak een nieuwe map en voer `npm init` de prompts uit en volg deze instructies.
+Maak een nieuwe map, voer `npm init` uit en doorloop de prompts.
 
-## <a name="add-the-speech-sdk-package"></a>Het Speech SDK-pakket toevoegen
+## <a name="add-the-speech-sdk-package"></a>Het Speech-SDK-pakket toevoegen
 
 Voer `npm install microsoft-cognitiveservices-speech-sdk` uit.
 

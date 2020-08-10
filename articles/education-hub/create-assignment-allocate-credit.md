@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: e0d0804ce1f43d246dc4e87e222cbfbaf7db58aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a850e5ea851ee539c663b00ecc7f2053eae8dc34
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100966"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534087"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>Een opdracht maken en studiepunten toewijzen
 
@@ -31,7 +31,7 @@ Azure Education Hub accepteert elk e-mailadres met de indeling _____@___.___ als
 > [!IMPORTANT]
 > Werk- en schoolaccounts zijn onderworpen aan hun eigen beleid, met inbegrip van de vraag of een e-mailadres uit een ander domein dan de organisatie is toegestaan (bijvoorbeeld het toevoegen van student2@outlook.com aan het domein @school.edu). Zorg ervoor dat u deze beleidsregels controleert voordat u nieuwe gebruikers toevoegt.
 
-Wanneer een werk- of schoolaccount (bijvoorbeeld student1@school.edu) als op rollen gebaseerd toegangsbeheer (RBAC) wordt toegevoegd aan Educator Sponsor Portal of [Azure Portal](https://portal.azure.com), stuurt Azure automatisch een e-mailbericht naar de ontvanger. Deze e-mail vereist dat de gebruiker het nieuwe account en de RBAC-rol accepteert voordat de toegang tot het abonnement wordt verleend. Als u een onderwijsassistent of docent bent, moet u studenten hiervan op de hoogte stellen zodat het abonnement in Azure Portal wordt weergegeven zoals verwacht. De e-mail ziet er ongeveer als volgt uit:
+Wanneer een werk- of schoolaccount (bijvoorbeeld student1@school.edu) als op rollen gebaseerd toegangsbeheer (RBAC) wordt toegevoegd aan Educator Sponsor Portal of [Azure Portal](https://portal.azure.com), stuurt Azure automatisch een e-mailbericht naar de ontvanger. Voor deze e-mail dient de gebruiker het nieuwe account en de Azure-rol te accepteren voordat de toegang tot het abonnement wordt verleend. Als u een onderwijsassistent of docent bent, moet u studenten hiervan op de hoogte stellen zodat het abonnement in Azure Portal wordt weergegeven zoals verwacht. De e-mail ziet er ongeveer als volgt uit:
 
 :::image type="content" source="media/create-assignment-allocate-credit/azure-active-directory-get-started.png" alt-text="Aan de slag met Azure Active Directory" border="false":::
 

@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: punagpal
-ms.openlocfilehash: bc85765666ba3baeae7ec795118f615f6b4b4368
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95f5b5f13401c224ccf67c5f013deedf00379de7
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101072"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446799"
 ---
 # <a name="quickstart-deploy-iot-connector-preview-using-azure-portal"></a>Quickstart: IoT-connector (preview) implementeren met Azure Portal
 
@@ -181,7 +181,7 @@ Nadat u uw IoT Central-toepassing hebt geïmplementeerd, wordt telemetrische geg
 U kunt op FHIR gebaseerde observatieresources die zijn gemaakt met de IoT-connector in Azure API for FHIR, weergeven met behulp van Postman. [Stel Postman in voor toegang tot Azure API for FHIR](access-fhir-postman-tutorial.md) en maak een `GET`-aanvraag naar `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` om FHIR-observatieresources met de hartslagwaarde weer te geven. 
 
 > [!TIP]
-> Zorg ervoor dat uw gebruiker de juiste toegang heeft tot het Azure API for FHIR-gegevensvlak. Gebruik [Op rollen gebaseerd toegangsbeheer van Azure](configure-azure-rbac.md) om gegevenslaagrollen toe te wijzen.
+> Zorg ervoor dat uw gebruiker de juiste toegang heeft tot het Azure API for FHIR-gegevensvlak. Gebruik [Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](configure-azure-rbac.md) om gegevensvlakrollen toe te wijzen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

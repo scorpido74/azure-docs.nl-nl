@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: c2dcba05e3b1fc5cfc32d6f1b38c22b811b73626
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 60ad7f5df4f13d626d7a2c24990c7f48db28d01d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352646"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475223"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>Vernieuwde preview voor IoT Plug en Play
 
@@ -86,7 +86,7 @@ De service-SDK is beschikbaar in [node. js](https://github.com/Azure/azure-iot-s
 
 De extensie [Azure IoT Device Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) biedt creatieondersteuning voor DTDL v1, integratie met de vorige versie van de modelopslagplaats en het genereren van code.
 
-Als u creatieondersteuning nodig hebt voor DTDL v2 in VS Code, installeert u de nieuwe [DTDL-extensie](https://github.com/azure/vscode-dtdl) in VS code. De extensie biedt geen integratie met de modelopslagplaats of het genereren van code. Het beheer van modellen in de opslagplaats verloopt nu via een [web-UI](https://aka.ms/iotmodelrepo).
+Als u creatieondersteuning nodig hebt voor DTDL v2 in VS Code, installeert u de nieuwe [DTDL-extensie](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) in VS code. De extensie biedt geen integratie met de modelopslagplaats of het genereren van code. Het beheer van modellen in de opslagplaats verloopt nu via een [web-UI](https://aka.ms/iotmodelrepo) of [CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest).
 
 ## <a name="digital-twin-service-side-rest-apis"></a>Digital Twin REST API's aan servicezijde
 
@@ -103,8 +103,6 @@ De bestaande REST API's worden nog steeds ondersteund in deze release.
 Er is nu één modelopslagplaats met zowel openbaar gepubliceerde modellen als persoonlijke met RBAC beveiligde bedrijfsmodellen. Alle modellen hebben een unieke id en zijn onveranderbaar nadat ze zijn gemaakt.
 
 Bestaande opslagplaatsen voor bedrijfsmodellen van de vorige release worden niet ondersteund in deze release. U kunt de website van [Microsoft Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com/products) blijven gebruiken voor het beheren van de oude DTDL v1-modellen. U kunt deze website echter niet meer gebruiken om apparaten te registreren, te testen en te certificeren.
-
-De Azure IoT-extensie voor de Azure CLI biedt geen ondersteuning voor de nieuwe modelopslagplaats. De opdrachten `az iot pnp` werken alleen in de modelopslagplaatsen uit de vorige versie.
 
 ## <a name="azure-iot-central"></a>Azure IoT Central
 

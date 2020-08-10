@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: client bibliotheek voor formulier herkenning | Microsoft Docs'
-description: Ga aan de slag met de client bibliotheek voor [product naam].
+title: 'Quickstart: Clientbibliotheek van Form Recognizer | Microsoft Docs'
+description: Aan de slag met de [Product Name]-clientbibliotheek.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,22 +9,23 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.author: pafarley
+ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: c00a30dd10abd58e488a11b2ff79161695789e33
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: ee798ba765346d701851d6873f75c0e572ba7d04
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997614"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405450"
 ---
-# <a name="quickstart-use-the-form-recognizer-client-library"></a>Snelstartgids: de Form Recognizer-client bibliotheek gebruiken
+# <a name="quickstart-use-the-form-recognizer-client-library"></a>Quickstart: De clientbibliotheek van Form Recognizer gebruiken
 
-Aan de slag met de formulier Recognizer-client bibliotheek. Formulier herkenning is een cognitieve service die gebruikmaakt van machine learning technologie om sleutel-waardeparen en tabel gegevens uit formulier documenten te identificeren en uit te pakken. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Voer de volgende stappen uit om het SDK-pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
+Aan de slag met de Form Recognizer-clientbibliotheek. Form Recognizer is een Cognitive Service-dienst die gebruikmaakt van machine learning-technologie om sleutel-waardeparen en tabelgegevens uit formulierdocumenten te identificeren en te extraheren. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Volg deze stappen om het SDK-pakket te installeren en de voorbeeldcode voor basistaken te proberen.
 
-Gebruik de Form Recognizer-client bibliotheek voor het volgende:
+De clientbibliotheek van Form Recognizer gebruiken voor het volgende:
 
-* [Formulier inhoud herkennen](#recognize-form-content)
-* [Bevestigingen herkennen](#recognize-receipts)
+* [Formulierinhoud herkennen](#recognize-form-content)
+* [Ontvangstbewijzen herkennen](#recognize-receipts)
 * [Aangepast model trainen](#train-a-custom-model)
 * [Formulieren analyseren met een aangepast model](#analyze-forms-with-a-custom-model)
 * [Uw aangepaste modellen beheren](#manage-your-custom-models)

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338041"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808402"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Eigenschappen configureren voor een toepassing in uw Azure Active Directory-tenant (Azure AD)
 
@@ -95,9 +95,17 @@ Ga als volgt te werk om een aangepast logo te gebruiken:
    > [!NOTE]
    > De miniatuur die in het deelvenster **Eigenschappen** wordt weergegeven, wordt niet meteen bijgewerkt. U kunt het venster **Eigenschappen** sluiten en opnieuw openen om het bijgewerkte pictogram weer te geven.
 
+
+> [!TIP]
+> U kunt het beheer van apps automatiseren met behulp van de Graph API. Zie [App-beheer automatiseren met de Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u niet verder gaat met de quickstart-reeks, kunt u de app verwijderen om uw testtenant op te schonen. Zie [Een app verwijderen](delete-application-portal.md) in de laatste quickstart in deze reeks voor meer informatie over het verwijderen van een app.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de eigenschappen van een toepassing hebt geconfigureerd, kunt u doorgaan met het instellen van eenmalige aanmelding.
-
-- [Eenmalige aanmelding instellen](add-application-portal-setup-sso.md)
-- [Een app verwijderen](delete-application-portal.md)
+Ga door naar het volgende artikel voor meer informatie over het instellen van eenmalige aanmelding voor een app.
+> [!div class="nextstepaction"]
+> [Eenmalige aanmelding instellen](add-application-portal-setup-sso.md)

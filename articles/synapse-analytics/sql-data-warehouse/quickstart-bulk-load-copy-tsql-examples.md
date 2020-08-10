@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1e44b58335bf90dbc0e97b58de7f878bc94c91c7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05dd1f1d429b59c4d621b63c6b78a1fc00e8d4dd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371954"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528460"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Gegevens veilig laden met Synapse SQL
 
@@ -88,13 +88,13 @@ Beheerde identiteitsverificatie is vereist wanneer uw opslagaccount is gekoppeld
    > [!NOTE]
    > Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar de v2** voor algemeen gebruik met behulp van deze [gids](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
-3. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs de RBAC-rol van **Eigenaar van opslagblobgegevens, Inzender of Lezer** op uw SQL Server toe.
+3. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs de Azure-rol **Eigenaar, Inzender of Lezer van Storage Blob-gegevens** toe aan uw SQL Server.
 
    > [!NOTE]
    > Alleen leden met de bevoegdheid Eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [gids](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor verschillende ingebouwde Azure-rollen.
    
     > [!IMPORTANT]
-    > Geef de RBAC-rol van Eigenaar van **opslag** **blobgegevens**, Inzender of Lezer op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer. 
+    > Geef de Azure-rol Eigenaar, Inzender of Lezer van **Storage** **Blob-gegevens** op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer. 
 
     ![RBAC-machtiging verlenen om te laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
@@ -112,10 +112,10 @@ Beheerde identiteitsverificatie is vereist wanneer uw opslagaccount is gekoppeld
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory-verificatie (AAD)
 #### <a name="steps"></a>Stappen
 
-1. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs de RBAC-rol van **Eigenaar van opslagblobgegevens, Inzender of Lezer** aan uw AAD-gebruiker toe. 
+1. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs de Azure-rol **Eigenaar, Inzender of Lezer van Storage Blob-gegevens** toe aan uw AAD-gebruiker. 
 
     > [!IMPORTANT]
-    > Geef de RBAC-rol van Eigenaar van **opslag** **blobgegevens**, Inzender of Lezer op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer.
+    > Geef de Azure-rol Eigenaar, Inzender of Lezer van **Storage** **Blob-gegevens** op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer.
 
     ![RBAC-machtiging verlenen om te laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 

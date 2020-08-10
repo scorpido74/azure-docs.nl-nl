@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223904"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808232"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Een toepassing verwijderen uit uw Azure Active Directory-tenant (Azure AD)
 
@@ -44,9 +43,15 @@ Een toepassing verwijderen uit uw Azure AD-tenant:
 1. Selecteer **Eigenschappen** in de sectie **Beheren** van het linkervenster.
 1. Selecteer **Verwijderen** en selecteer vervolgens **Ja** om te bevestigen dat u de app uit uw Azure AD-tenant wilt verwijderen.
 
+> [!TIP]
+> U kunt het beheer van apps automatiseren met behulp van de Graph API. Zie [App-beheer automatiseren met de Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u de quickstart-reeks hebt voltooid, kunt u de app verwijderen om uw testtenant op te schonen. Hoe u de app verwijdert, is behandeld in deze quickstart.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Best practices voor toepassingsbeheer](application-management-fundamentals.md)
-- [Algemene scenario's voor toepassingsbeheer](common-scenarios.md)
-- [Zichtbaarheid en beheer van toepassingsbeheer](cloud-app-security.md)
+U hebt de quickstart-reeks voltooid! Lees als volgende stap meer over best practices in app-beheer.
+> [!div class="nextstepaction"]
+> [Best practices voor toepassingsbeheer](application-management-fundamentals.md)

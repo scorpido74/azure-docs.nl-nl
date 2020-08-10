@@ -1,22 +1,22 @@
 ---
-title: 'Quick Start: object detectie maken met Custom Vision SDK'
-description: 'Quick Start: een project maken, Tags toevoegen, afbeeldingen uploaden, uw project trainen en objecten detecteren met behulp van de SDK van Custom Vision.'
+title: 'Quickstart: Objectdetectie maken met Custom Vision-SDK'
+description: 'Quickstart: Maak een project, voeg labels toe, upload afbeeldingen, train uw project en detecteer objecten met de Custom Vision-SDK.'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 1a8541e0ac1f819bf8189e677a532244a0900789
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 6b67ef73ca0faca0dbac5068129ed3acd9d466a4
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610046"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407304"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>Snelstartgids: een object detectie project maken met de Custom Vision SDK
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>Quickstart: Een objectdetectieproject maken met Custom Vision-SDK
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-tutorial-od.md)]

@@ -6,13 +6,13 @@ ms.service: service-fabric
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
-ms.date: 04/24/2020
-ms.openlocfilehash: 70b5387e5e58bd30aa61feefc1bf4e5e98af9b1d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/29/2020
+ms.openlocfilehash: 359b527733ee8eebf7e1e7d12c40a0c74ec1c9bd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259351"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460300"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Quickstart: Een Service Fabric-cluster maken met behulp van ARM-sjabloon
 
@@ -42,7 +42,7 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 
 Kloon of download de opslagplaats voor [Azure Resource Manager-quickstartsjablonen](https://github.com/Azure/azure-quickstart-templates). U kunt ook lokaal de volgende bestanden kopiëren die we gebruiken vanuit de map *service-Fabric-Secure-cluster-5-node-1-nodeType*:
 
-* [New-ServiceFabricClusterCertificate.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/New-ServiceFabricClusterCertificate.ps1)
+* [New-ServiceFabricClusterCertificate.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/scripts/New-ServiceFabricClusterCertificate.ps1)
 * [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
 * [azuredeploy.parameters.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.parameters.json)
 
@@ -68,10 +68,10 @@ $keyVaultName = "SFQuickstartKV"
 New-AzResourceGroup -Name $resourceGroupName -Location SouthCentralUS
 
 # Create a Key Vault enabled for deployment
-New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $resourceGroupName -Location SouthCentralUS -EnabledForDeployment
+New-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -Location SouthCentralUS -EnabledForDeployment
 
 # Generate a certificate and upload it to Key Vault
-.\New-ServiceFabricClusterCertificate.ps1
+.\scripts\New-ServiceFabricClusterCertificate.ps1
 ```
 
 In het script wordt u gevraagd om het volgende te doen (zorg dat u *CertDNSName* en *KeyVaultName* in de onderstaande voorbeeldwaarden wijzigt):
@@ -178,6 +178,18 @@ Als u de resourcegroep niet meer nodig hebt, verwijdert u deze. Hierdoor worden 
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
+```
+
+Verwijder vervolgens het clustercertificaat uit uw lokale archief. Lijst met geïnstalleerde certificaten voor het vinden van de vingerafdruk voor uw cluster:
+
+```powershell
+Get-ChildItem Cert:\CurrentUser\My\
+```
+
+Verwijder vervolgens het certificaat:
+
+```powershell
+Get-ChildItem Cert:\CurrentUser\My\{THUMBPRINT} | Remove-Item
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

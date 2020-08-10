@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 8b44dc230dbee1b29b9889a1b81e35ebe25f6b97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c5133b9c012b628e43e956c56d5112e1ad4649
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078691"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447028"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Wat is er nieuw in Azure Load Balancer?
 
@@ -34,6 +34,16 @@ Azure Load Balancer wordt regelmatig bijgewerkt. Blijf op de hoogte van de laats
 | Validatie | Aanvulling van validatie voor HA-poorten | Er is een validatie toegevoegd om ervoor te zorgen dat HA-poortregels en niet-HA-poortregels alleen kunnen worden geconfigureerd wanneer Zwevend IP-adres is ingeschakeld. Voorheen zou deze configuratie worden geaccepteerd maar niet werken zoals de bedoeling is. Er zijn geen wijzigingen aangebracht in de functionaliteit. Klik [hier](load-balancer-ha-ports-overview.md#limitations) voor meer informatie| Juni 2020 |
 | Functie| IPv6-ondersteuning voor Azure Load Balancer (algemeen beschikbaar) | U kunt IPv6-adressen gebruiken als front-end voor uw Azure Load Balancers. Meer informatie over het [maken van een dual stack-toepassing hier](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |April 2020|
 | Functie| Opnieuw instellen van TCP bij Time-out voor inactiviteit (algemeen beschikbaar)| Gebruik Opnieuw instellen van TCP om he gedrag van de toepassing voorspelbaarder te maken. [Meer informatie](load-balancer-tcp-reset.md)| Februari 2020 |
+
+## <a name="known-issues"></a>Bekende problemen
+
+De productgroep werkt actief aan oplossingen voor de volgende bekende problemen:
+
+|Probleem |Beschrijving  |Oplossing  |
+| ---------- |---------|---------|
+| Log Analytics-export | Log Analytics kan geen metrische gegevens voor Standard Load Balancers of statuslogboeken voor statustesten voor Basic Load Balancers exporteren  | [Gebruik Azure Monitor voor multidimensionale metrische gegevens voor uw Standard Load Balancer](load-balancer-standard-diagnostics.md). Hoewel het niet mogelijk is om Log Analytics te gebruiken voor bewaking, biedt Azure Monitor visualisatie voor een uitgebreide set multidimensionale metrische gegevens. U kunt gebruikmaken van het vooraf geconfigureerde dashboard met metrische gegevens via de subblade Insights van uw Load Balancer. Als u Basic Load Balancer gebruikt, voert u een [upgrade naar Standard](upgrade-basic-standard.md) uit voor bewaking van metrische gegevens op productieniveau.
+
+  
 
 ## <a name="next-steps"></a>Volgende stappen
 
