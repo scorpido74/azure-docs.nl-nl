@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924424"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067253"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -44,7 +44,8 @@ Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-p
     - Beveiligings principes voor het uitvoeren van belang rijke Bedrijfs gegevens in Azure. Als u meer wilt weten over de beveiliging van gegevens, gaat u naar de [Azure Security-documentatie](../../../security/index.yml).
 2.  Technisch ontwerp document. Dit document moet het volgende bevatten:
     - Een blok diagram voor de oplossing.
-    - De grootte van compute-, opslag-en netwerk onderdelen in Azure. Zie [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533)voor SAP-grootte van virtuele machines van Azure.
+    - De grootte van compute-, opslag-en netwerk onderdelen in Azure. Zie voor SAP-grootte van virtuele machines van Azure [SAP 
+    -  Opmerking #1928533] ( https://launchpad.support.sap.com/#/notes/1928533) .
     - Architectuur voor bedrijfs continuïteit en herstel na nood gevallen.
     - Gedetailleerde informatie over versies van het besturings systeem, DB, kernel en SAP-ondersteunings pakketten. Het is niet nood zakelijk dat elke besturingssysteem versie die wordt ondersteund door SAP NetWeaver of S/4HANA wordt ondersteund op virtuele machines van Azure. Hetzelfde geldt voor de DBMS-releases. Controleer de volgende bronnen om de SAP-releases, DBMS-releases en versies van het besturings systeem bij te werken en zo nodig upgrades voor SAP-en Azure-ondersteuning te garanderen. U moet beschikken over release combinaties die worden ondersteund door SAP en Azure om volledige ondersteuning van SAP en micro soft te krijgen. Indien nodig moet u een upgrade van bepaalde software onderdelen plannen. Meer informatie over ondersteunde SAP-, OS-en DBMS-software wordt hier beschreven:
         - [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533). In deze opmerking worden de minimale OS-Releases gedefinieerd die worden ondersteund op virtuele machines van Azure. Ook worden de mini maal vereiste database releases gedefinieerd voor de meeste niet-HANA-data bases. Ten slotte biedt het de SAP-grootte voor door SAP ondersteunde Azure VM-typen.
@@ -56,9 +57,11 @@ Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-p
         - [SAP-ondersteuning Opmerking #2555629-SAP HANA 2,0 van dynamische lagen – Hyper Visor-en Cloud ondersteuning](https://launchpad.support.sap.com/#/notes/2555629)
         - [SAP-ondersteuning Opmerking #1662610: ondersteunings Details voor het SIOS-beveiligings pakket voor Linux](https://launchpad.support.sap.com/#/notes/1662610)
         - SAP-notities voor andere SAP-specifieke producten.     
-    - U kunt het beste strikte drie lagen ontwerpen voor SAP-productie systemen. Het is niet raadzaam om ASCS en/of DBMS en/of app-servers te combi neren op één virtuele machine. Het gebruik van multi-SID-cluster configuraties voor SAP Central-Services wordt ondersteund op Windows-gast besturingssystemen in Azure. Deze configuratie wordt echter niet ondersteund voor SAP Central-Services op Linux-besturings systemen in Azure. In deze artikelen vindt u documentatie voor het scenario voor het Windows-gast besturingssysteem:
+    - Het gebruik van multi-SID cluster configuraties voor SAP Central Services wordt ondersteund op Windows-, SLES-en RHEL-gast besturingssystemen in Azure. Houd er wel van uit dat de krachtige RADIUS de meer ASCS/SCS die u op een multi-SID-cluster plaatst kan verg Roten. Raadpleeg de volgende artikelen voor informatie over het scenario voor het respectieve gast besturingssysteem:
         - [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en gedeelde schijf op Azure](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en file share op Azure](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
+        - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor de multi-SID-hand leiding voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+        - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op Red Hat Enterprise Linux voor de multi-SID-hand leiding voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
     - Architectuur met hoge Beschik baarheid en herstel na nood gevallen.
         - Bepaal op basis van RTO en RPO hoe de architectuur voor hoge Beschik baarheid en herstel na nood gevallen moet worden weer geven.
         - Voor maximale Beschik baarheid binnen een zone, controleert u wat de gewenste DBMS in azure moet aanbieden. De meeste DBMS-pakketten bieden synchrone methoden van een synchrone hot stand-by, die we aanraden voor productie systemen. Raadpleeg ook de SAP-gerelateerde documentatie voor verschillende data bases, te beginnen met [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belastingen](./dbms_guide_general.md) en gerelateerde documenten.
@@ -78,7 +81,7 @@ Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-p
     - Topologie van resource groep.
     - [Strategie voor Tags Toep assen](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing).
     - Naamgevings regels voor Vm's en andere infrastructuur onderdelen en/of logische namen.
-5.  Micro soft Premier Support-contract. Identificeer uw Technical Account Manager (TAM) van micro soft. Zie SAP-ondersteunings [opmerking #2015553](https://launchpad.support.sap.com/#/notes/2015553)voor SAP-ondersteunings vereisten.
+5.  Micro soft Professional-of Premier Support-contract. Identificeer uw Technical Account Manager (TAM) van micro soft als u een premier-ondersteunings contract met micro soft hebt. Zie SAP-ondersteunings [opmerking #2015553](https://launchpad.support.sap.com/#/notes/2015553)voor SAP-ondersteunings vereisten.
 6.  Het aantal Azure-abonnementen en het kern quotum voor de abonnementen. [Open ondersteunings aanvragen om de quota van Azure-abonnementen naar behoefte te verhogen](../../../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 7.  Gegevens reductie en gegevens migratie plan voor het migreren van SAP-gegevens naar Azure. SAP NetWeaver Systems bevat richt lijnen voor het beperken van het volume van grote hoeveel heden gegevens. Zie [deze SAP-hand leiding](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) over gegevens beheer in SAP ERP-systemen. Een deel van de inhoud is ook van toepassing op netweave en S/4HANA-systemen in het algemeen.
 8.  Een geautomatiseerde implementatie methode. Het doel van de automatisering van infrastructuur implementaties in Azure is om op een deterministische manier te implementeren en de deterministische resultaten te verkrijgen. Veel klanten gebruiken scripts op basis van Power shell of CLI. Er zijn echter verschillende open-source technologieën die u kunt gebruiken om Azure-infra structuur voor SAP te implementeren en zelfs SAP-software te installeren. U kunt voor beelden vinden op GitHub:
@@ -106,6 +109,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
            -  [Grootten voor virtuele Windows-machines in azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
            -  [Grootten voor virtuele Linux-machines in azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
    2. Opslag.
+        - Controleer het document [Azure Storage typen voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
         - Gebruik ten minste [Azure Standard-SSD Storage](../../windows/disks-types.md#standard-ssd) voor virtuele machines die een SAP-toepassings lagen vertegenwoordigen en voor de implementatie van DBMSs die geen prestatie gevoelig zijn.
         - In het algemeen wordt het gebruik van [Azure Standard-HDD-schijven](../../windows/disks-types.md#standard-hdd)niet aangeraden.
         - Gebruik [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) voor alle DBMS-vm's die op afstand gevoelig zijn.

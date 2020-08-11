@@ -3,12 +3,12 @@ title: Uw eigen sleutel configureren voor het versleutelen van Azure Service Bus
 description: Dit artikel bevat informatie over het configureren van uw eigen sleutel voor het versleutelen van Azure Service Bus gegevens rest.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: a4eef0965f585291c31a3698d1d37abf67c6295c
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 97de8df336367a74f66628675569c06d7726f2a4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041560"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067236"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren voor het versleutelen van Azure Service Bus gegevens op rest door gebruik te maken van de Azure Portal
 Azure Service Bus Premium zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Service Bus Premium is afhankelijk van Azure Storage om de gegevens op te slaan en de standaard instelling is dat alle gegevens die zijn opgeslagen met Azure Storage, worden versleuteld met door micro soft beheerde sleutels. 
@@ -44,7 +44,7 @@ Voer de volgende stappen uit om door de klant beheerde sleutels in te scha kelen
 
 Nadat u door de klant beheerde sleutels hebt ingeschakeld, moet u de door de klant beheerde sleutel koppelen aan uw Azure Service Bus naam ruimte. Service Bus ondersteunt alleen Azure Key Vault. Als u de optie **versleuteling met door de klant beheerde sleutel** in de vorige sectie inschakelt, moet u de sleutel in azure Key Vault importeren. De sleutels moeten ook **zacht verwijderen** hebben en **niet leeg** zijn geconfigureerd voor de sleutel. Deze instellingen kunnen worden geconfigureerd met [Power shell](../key-vault/general/soft-delete-powershell.md) of [cli](../key-vault/general/soft-delete-cli.md#enabling-purge-protection).
 
-1. Als u een nieuwe sleutel kluis wilt maken, volgt u de Azure Key Vault [Snelstartgids](../key-vault/general/overview.md). Zie [over sleutels, geheimen en certificaten](../key-vault/about-keys-secrets-and-certificates.md)voor meer informatie over het importeren van bestaande sleutels.
+1. Als u een nieuwe sleutel kluis wilt maken, volgt u de Azure Key Vault [Snelstartgids](../key-vault/general/overview.md). Zie [over sleutels, geheimen en certificaten](../key-vault/general/about-keys-secrets-certificates.md)voor meer informatie over het importeren van bestaande sleutels.
 1. Gebruik de opdracht AZ-sleutel [kluis maken](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) om zowel zacht verwijderen als beveiliging opschonen in te scha kelen bij het maken van een kluis.
 
     ```azurecli-interactive
@@ -323,5 +323,3 @@ In deze stap werkt u de Service Bus naam ruimte bij met sleutel kluis gegevens.
 Zie de volgende artikelen:
 - [Overzicht van Service Bus](service-bus-messaging-overview.md)
 - [Overzicht van Key Vault](../key-vault/general/overview.md)
-
-

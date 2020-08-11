@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432011"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067168"
 ---
 # <a name="configure-the-model-conversion"></a>De modelconversie configureren
 
@@ -49,6 +49,12 @@ De inhoud van het bestand moet voldoen aan het volgende JSON-schema:
             },
             "minItems": 3,
             "maxItems": 3
+        },
+        "metadataKeys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "additionalProperties" : false
@@ -130,6 +136,12 @@ De `none` modus heeft de minste runtime overhead en ook iets betere laad tijden.
 ### <a name="coordinate-system-overriding"></a>Het coördinaten systeem overschrijven
 
 * `axis`-Als u de coördinaten systeem-eenheid vectoren wilt overschrijven. Standaard waarden zijn `["+x", "+y", "+z"]` . In theorie heeft de FBX-indeling een kop waarin deze vectoren worden gedefinieerd en de conversie gebruikt die informatie om de scène te transformeren. De glTF-indeling definieert ook een vast coördinaten systeem. In de praktijk hebben sommige assets onjuiste gegevens in hun koptekst of zijn ze opgeslagen met een andere coördinaten systeem Conventie. Met deze optie kunt u het coördinaten systeem overschrijven om te compenseren. Bijvoorbeeld: `"axis" : ["+x", "+z", "-y"]` de Z-as en Y-as worden uitgewisseld en de coördinaten van de y-as worden bijkomen.
+
+### <a name="node-meta-data"></a>Meta gegevens van knoop punt
+
+* `metadataKeys`-Hiermee kunt u sleutels van eigenschappen van knoop punt meta gegevens opgeven die u in het conversie resultaat wilt laten blijven. U kunt exacte sleutels of joker tekens opgeven. Joker tekens hebben de notatie ABC * en komen overeen met een sleutel die begint met ' ABC '. Ondersteunde typen waarden voor meta gegevens zijn `bool` , `int` , en `float` `string` .
+
+    Voor GLTF-bestanden zijn deze gegevens afkomstig uit het [extras-object op knoop punten](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras). Voor FBX-bestanden zijn deze gegevens afkomstig uit de `Properties70` gegevens op `Model nodes` . Raadpleeg de documentatie van uw 3D-hulp programma voor meer informatie.
 
 ### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::Formatteer
 

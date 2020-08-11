@@ -2,16 +2,31 @@
 title: Upgrade van toepassing Service Fabric
 description: Dit artikel bevat een inleiding tot het upgraden van een Service Fabric-toepassing, inclusief het kiezen van upgrade modi en het uitvoeren van status controles.
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 8/5/2020
+ms.openlocfilehash: cb0c1c0049957244b94b59707b70e47dc53f6c9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247996"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067508"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade van toepassing Service Fabric
 Een Azure Service Fabric-toepassing is een verzameling van services. Tijdens een upgrade vergelijkt Service Fabric het nieuwe [toepassings manifest](service-fabric-application-and-service-manifests.md) met de vorige versie en bepaalt u welke services in de toepassing moeten worden bijgewerkt. Service Fabric vergelijkt de versie nummers in de service manifesten met de versie nummers in de vorige versie. Als een service niet is gewijzigd, wordt die service niet geüpgraded.
+
+> [!NOTE]
+> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s blijven niet behouden in een toepassings upgrade. Als u de huidige toepassings parameters wilt behouden, moet de gebruiker eerst de para meters ophalen en deze door geven aan de aanroep van de upgrade-API zoals hieronder wordt weer gegeven:
+```powershell
+$myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
+$appParamCollection = $myApplication.ApplicationParameters
+
+$applicationParameterMap = @{}
+foreach ($pair in $appParamCollection)
+{
+    $applicationParameterMap.Add($pair.Name, $pair.Value);
+}
+
+Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -ApplicationTypeVersion 2.0.0 -ApplicationParameter $applicationParameterMap -Monitored -FailureAction Rollback
+```
 
 ## <a name="rolling-upgrades-overview"></a>Overzicht van rolling upgrades
 Bij een upgrade van een rolling toepassing wordt de upgrade in fasen uitgevoerd. In elke fase wordt de upgrade toegepast op een subset knoop punten in het cluster, een update domein genoemd. Als gevolg hiervan blijft de toepassing beschikbaar tijdens de upgrade. Tijdens de upgrade kan het cluster een combi natie van de oude en nieuwe versies bevatten.

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 3806135b7ed212e6eb5ea458c015ebc5810e0e80
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034865"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067491"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Dubbele versleuteling van Azure Database for PostgreSQL-infra structuur
 
@@ -36,7 +36,7 @@ Implementatie op de infrastructuur lagen ondersteunt ook een verscheidenheid aan
 
 Infra structuur dubbele versleuteling voor Azure Database for PostgreSQL biedt de volgende voor delen:
 
-1. **Toevoeging van de implementatie van crypto grafie** : de geplande overstap naar op hardware gebaseerde versleuteling zal de implementaties verder spreiden door een implementatie op basis van de software te bieden naast de implementatie op basis van het programma.
+1. **Extra diversiteit van crypto grafie** -de geplande overgang naar op hardware gebaseerde versleuteling zal de implementaties verder spreiden door een implementatie op basis van de software te bieden, naast de implementatie op basis van toepassingen.
 2. **Implementatie fouten** -twee versleutelings lagen op infrastructuur laag worden beschermd tegen fouten in de cache of het geheugen beheer in hogere lagen die gegevens over de Lees bare tekst weer gegeven. Daarnaast zorgt de twee lagen er ook voor dat er fouten optreden in de implementatie van de versleuteling in het algemeen.
 
 De combi natie van deze biedt een zware beveiliging tegen veelvoorkomende bedreigingen en zwakke plekken die worden gebruikt voor de aanval van crypto grafie.
@@ -45,7 +45,7 @@ De combi natie van deze biedt een zware beveiliging tegen veelvoorkomende bedrei
 
 De versleutelings mogelijkheden die door Azure Database for PostgreSQL worden geboden, kunnen samen worden gebruikt. Hieronder vindt u een overzicht van de verschillende scenario's die u kunt gebruiken:
 
-|  ##   | Standaard versleuteling | Infra structuur dubbele versleuteling | Gegevens versleuteling met door de klant beheerde sleutels  |
+|  ##   | Standaard versleuteling | Dubbele infrastructuurversleuteling | Gegevens versleuteling met door de klant beheerde sleutels  |
 |:------|:------------------:|:--------------------------------:|:--------------------------------------------:|
 | 1     | *Ja*              | *Nee*                             | *Nee*                                         |
 | 2     | *Ja*              | *Ja*                            | *Nee*                                         |
@@ -54,7 +54,7 @@ De versleutelings mogelijkheden die door Azure Database for PostgreSQL worden ge
 |       |                    |                                  |                                              |
 
 > [!Important]
-> - Scenario 2 en 4 hebben aanzienlijke gevolgen voor de prestaties van de Azure Database for PostgreSQL-server vanwege de extra laag van infrastructuur versleuteling.
+> - Scenario 2 en 4 hebben invloed op de prestaties van de Azure Database for PostgreSQL-server vanwege de extra laag van infrastructuur versleuteling.
 > - Het configureren van een infra structuur met dubbele versleuteling voor Azure Database for PostgreSQL is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de opslag versleuteling niet meer wijzigen. U kunt echter nog steeds gegevens versleuteling inschakelen met behulp van door de klant beheerde sleutels voor de server die is gemaakt met/zonder een infra structuur met dubbele code ring.
 
 ## <a name="limitations"></a>Beperkingen

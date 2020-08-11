@@ -3,15 +3,15 @@ title: Lijst met veilige URL'S voor Windows-virtueel bureau blad-Azure
 description: Een lijst met Url's die u moet deblokkeren om ervoor te zorgen dat de implementatie van Windows virtueel bureau blad werkt zoals bedoeld.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009474"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067202"
 ---
 # <a name="safe-url-list"></a>Lijst met veilige URL's
 
@@ -76,4 +76,6 @@ Alle Extern bureaublad-clients die u gebruikt, moeten toegang hebben tot de volg
 |query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows-pc|
 
 >[!IMPORTANT]
->Het openen van deze URL's is essentieel voor een betrouwbare clientervaring. Toegang blokkeren tot deze URL's wordt niet ondersteund en heeft gevolgen voor de functionaliteit van de service. Deze URL's komen enkel overeen met de clientsites en -resources, en bevatten geen URL's voor andere services zoals Azure Active Directory.
+>Het openen van deze URL's is essentieel voor een betrouwbare clientervaring. Toegang blokkeren tot deze URL's wordt niet ondersteund en heeft gevolgen voor de functionaliteit van de service.
+>
+>Deze Url's komen alleen overeen met client sites en-resources. Deze lijst bevat geen Url's voor andere services, zoals Azure Active Directory. Azure Active Directory Url's vindt u onder ID 56 in de [Office 365-url's en IP-](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)adresbereiken.

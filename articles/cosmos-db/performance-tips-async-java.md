@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6aa55f864319146c4d3237eb9e6725da2a68035f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d925c1387a408d38eb7974a01ebf3ce3386b7e58
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308981"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067607"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tips voor betere prestaties voor Azure Cosmos DB async Java SDK v2
 
@@ -35,7 +35,7 @@ Azure Cosmos DB is een snelle en flexibele gedistribueerde data base die naadloo
 
 Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd rekening met de volgende opties:
 
-## <a name="networking"></a>Netwerken
+## <a name="networking"></a>Networking
 
 * **Verbindings modus: directe modus gebruiken**
     
@@ -239,28 +239,6 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
     ```
     * - nofile 100000
     ```
-
-* **Systeem eigen TLS/SSL-implementatie gebruiken voor Netty**
-
-    Netty kan OpenSSL rechtstreeks gebruiken voor TLS-implementatie stack voor betere prestaties. Als deze configuratie Netty ontbreekt, wordt de standaard-TLS-implementatie van Java teruggestuurd.
-
-    op Ubuntu:
-    ```bash
-    sudo apt-get install openssl
-    sudo apt-get install libapr1
-    ```
-
-    en voeg de volgende afhankelijkheden toe aan de Maven-afhankelijkheden van uw project:
-    ```xml
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-tcnative</artifactId>
-      <version>2.0.20.Final</version>
-      <classifier>linux-x86_64</classifier>
-    </dependency>
-    ```
-
-Raadpleeg deze instructies voor andere platforms (Red Hat, Windows, Mac, enzovoort)https://netty.io/wiki/forked-tomcat-native.html
 
 ## <a name="indexing-policy"></a>Indexeringsbeleid
  

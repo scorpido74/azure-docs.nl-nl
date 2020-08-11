@@ -7,23 +7,23 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 6bcbdbb72f3d26522790b769a8185138c1207a98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336835"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067389"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Een Service Bus naam ruimte maken met behulp van een Azure Resource Manager sjabloon
 
-Meer informatie over het implementeren van een Azure Resource Manager sjabloon voor het maken van een Service Bus naam ruimte. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen. Zie [Azure Resource Manager-documentatie](/azure/azure-resource-manager/)voor meer informatie over het maken van sjablonen.
+Meer informatie over het implementeren van een Azure Resource Manager sjabloon voor het maken van een Service Bus naam ruimte. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen. Zie [Azure Resource Manager-documentatie](../azure-resource-manager/index.yml)voor meer informatie over het maken van sjablonen.
 
 De volgende sjablonen zijn ook beschikbaar voor het maken van Service Bus-naam ruimten:
 
-* [Een Service Bus naam ruimte maken met wachtrij](./service-bus-resource-manager-namespace-queue.md)
-* [Een Service Bus naam ruimte met een onderwerp en een abonnement maken](./service-bus-resource-manager-namespace-topic.md)
-* [Een Service Bus naam ruimte maken met een wachtrij-en autorisatie regel](./service-bus-resource-manager-namespace-auth-rule.md)
-* [Een Service Bus naam ruimte maken met een onderwerp, een abonnement en een regel](./service-bus-resource-manager-namespace-topic-with-rule.md)
+* [Een Service Bus-naamruimte met een wachtrij maken](./service-bus-resource-manager-namespace-queue.md)
+* [Een Service Bus-naamruimte met een onderwerp en abonnement maken](./service-bus-resource-manager-namespace-topic.md)
+* [Een Service Bus-naamruimte met een wachtrij en een autorisatieregel maken](./service-bus-resource-manager-namespace-auth-rule.md)
+* [Een Service Bus-naamruimte met een onderwerp, een abonnement en een regel maken](./service-bus-resource-manager-namespace-topic-with-rule.md)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,7 +35,7 @@ In deze Snelstartgids gebruikt u een [bestaande resource manager-sjabloon](https
 
 [!code-json[create-azure-service-bus-namespace](~/quickstart-templates/101-servicebus-create-namespace/azuredeploy.json)]
 
-Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)start-sjablonen voor meer voor beelden van sjablonen.
+Zie [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular) voor meer informatie over sjabloonvoorbeelden.
 
 Een service bus-naam ruimte maken door een sjabloon te implementeren:
 
@@ -56,9 +56,9 @@ Een service bus-naam ruimte maken door een sjabloon te implementeren:
     De naam van de resource groep is de naam van de service bus-naam ruimte waaraan **RG** is toegevoegd.
 
 2. Selecteer **Kopiëren** om het PowerShell-script te kopiëren.
-3. Klik met de rechter muisknop op de shell-console en selecteer vervolgens **Plakken**.
+3. Klik met de rechtermuisknop op de shell-console en selecteer **Plakken**.
 
-Het duurt enkele minuten om een Event Hub te maken.
+Het kan even duren om een Event Hub te maken.
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 

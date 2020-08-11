@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 3f7d08e2290291dfcd931ed5609e30d5fec9f973
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835643"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067219"
 ---
 # <a name="permissions-in-azure-security-center"></a>Machtigingen in Azure Security Center
 
@@ -40,12 +40,12 @@ Naast deze rollen zijn er twee specifieke Security Center-rollen:
 
 De volgende tabel bevat rollen en toegestane acties in Security Center.
 
-|Actie|Beveiligings lezer/ <br> Lezer |Beveiligingsbeheerder  |Inzender voor resource groepen/ <br> Eigenaar van resource groep  |Mede werker van abonnement  |Abonnements eigenaar  |
+|Bewerking|Beveiligings lezer/ <br> Lezer |Beveiligingsbeheerder  |Inzender voor resource groepen/ <br> Eigenaar van resource groep  |Mede werker van abonnement  |Abonnements eigenaar  |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |Beveiligings beleid bewerken|-|✔|-|-|✔|
 |Initiatieven (waaronder) reglementaire nalevings standaarden toevoegen/toewijzen|-|-|-|-|✔|
 |Prijs categorie voor abonnement wijzigen|-|✔|-|-|✔|
-|Automatische inrichting in-of uitschakelen|-|✔|✔|-|✔|
+|Automatische inrichting in-of uitschakelen|-|✔|-|✔|✔|
 |Aanbevelingen voor beveiliging Toep assen op een resource</br> (en gebruik een [snelle oplossing!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
 |Waarschuwingen negeren|-|✔|-|✔|✔|
 |Waarschuwingen en aanbevelingen weer geven|✔|✔|✔|✔|✔|

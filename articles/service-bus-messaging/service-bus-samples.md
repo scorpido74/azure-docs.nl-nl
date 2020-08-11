@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: article
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: beafd0d49e8fccaef4ccc043d198875b9f1b1ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 750ee2f05e81fe18560a20227aefb52ca343e07b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341021"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067525"
 ---
 # <a name="service-bus-messaging-samples"></a>Voor beelden van Service Bus-berichten
 In de Service Bus Messa ging-voor beelden worden de belangrijkste functies van [Service Bus Messa ging](https://azure.microsoft.com/services/service-bus/)gedemonstreerd. Op dit moment kunt u de voor beelden vinden op de volgende locaties:
@@ -30,5 +30,4 @@ Daarnaast is de [Service Bus Explorer](https://github.com/paolosalvatori/Service
 Zie de volgende onderwerpen voor conceptuele overzichten van Service Bus.
 
 * [Overzicht van Service Bus berichten](service-bus-messaging-overview.md)
-* [Service Bus-architectuur](service-bus-architecture.md)
-
+* [Service Bus-architectuur](./service-bus-messaging-overview.md)

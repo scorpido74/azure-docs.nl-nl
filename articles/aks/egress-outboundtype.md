@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244443"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067355"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route
 
@@ -60,7 +60,7 @@ Hieronder vindt u een netwerk topologie die standaard wordt geïmplementeerd in 
 
 Als `userDefinedRouting` is ingesteld, AKS niet automatisch uitzonderings paden configureren. De uitgebrachte installatie moet door u worden uitgevoerd.
 
-Het AKS-cluster moet worden geïmplementeerd in een bestaand virtueel netwerk met een subnet dat eerder is geconfigureerd omdat bij gebruik van de standaard-load balancer (SLB)-architectuur, moet u expliciete uitgaand verkeer tot stand brengen. Daarom vereist deze architectuur expliciet uitgaand verkeer naar een apparaat als een firewall, gateway, proxy of om de NAT (Network Address Translation) toe te staan door een openbaar IP-adres dat is toegewezen aan de standaard load balancer of het apparaat.
+Het AKS-cluster moet worden geïmplementeerd in een bestaand virtueel netwerk met een subnet dat eerder is geconfigureerd omdat als er geen standaard load balancer-architectuur (SLB) wordt gebruikt, moet u expliciete uitgang instellen. Daarom vereist deze architectuur expliciet uitgaand verkeer naar een apparaat als een firewall, gateway, proxy of om de NAT (Network Address Translation) toe te staan door een openbaar IP-adres dat is toegewezen aan de standaard load balancer of het apparaat.
 
 De resource provider AKS implementeert een Standard-load balancer (SLB). De load balancer is niet geconfigureerd met regels en er [worden geen kosten in rekening gebracht tot er een regel wordt geplaatst](https://azure.microsoft.com/pricing/details/load-balancer/). AKS wordt niet automatisch een openbaar IP-adres voor de SLB-frontend ingericht en de load balancer back-end-groep **niet** automatisch geconfigureerd.
 

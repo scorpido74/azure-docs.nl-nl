@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca164b6ad6b5333c662a6632b27f658ab479231c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023990"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067627"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -208,7 +208,7 @@ Ingeschakelde regio's:
 - VS Govt Arizona
 - VS Govt Texas
 - VS - west-centraal
-- Europa - west
+- Europa -west
 - VS - west
 - VS - west 2
 
@@ -224,7 +224,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | SQL Managed Instance | Azure SQL Managed instance wordt momenteel niet ondersteund met grootschalige-data bases. |
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met grootschalige.|
 | Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks worden gemigreerd naar een niet-grootschalige. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een Bacpac-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort). Bacpac exporteren/importeren uit Azure Portal, vanuit Power shell met [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) of [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport), vanuit Azure CLI met [AZ SQL DB export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) en [az SQL DB import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import), en van [rest API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) wordt niet ondersteund. Bacpac import/export voor kleinere grootschalige-data bases (tot 200 GB) wordt ondersteund met behulp van SSMS en [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) versie 18,4 of hoger. Voor grotere data bases kan het maken van een Bacpac-export/-import enige tijd duren en kan om verschillende redenen mislukken.|
-| Migratie van data bases met persistente in-Memory OLTP-objecten | Grootschalige ondersteunt alleen niet-persistente in-Memory OLTP-objecten (tabel typen, systeem eigen SPs en functies).  Permanente in-Memory OLTP-tabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als op schijven gebaseerde objecten voordat een Data Base naar de grootschalige wordt gemigreerd.|
+| Migratie van data bases met in-Memory OLTP-objecten | Grootschalige ondersteunt een subset van in-Memory OLTP-objecten, waaronder door het geheugen geoptimaliseerde tabel typen, tabel variabelen en systeem eigen, gecompileerde modules. Als er echter een wille keurig type in-Memory OLTP-objecten aanwezig zijn in de data base die wordt gemigreerd, wordt de migratie van Premium-en Bedrijfskritiek-service lagen naar grootschalige niet ondersteund. Als u een dergelijke Data Base wilt migreren naar grootschalige, moeten alle OLTP-objecten in het geheugen en de bijbehorende afhankelijkheden worden verwijderd. Nadat de data base is gemigreerd, kunnen deze objecten opnieuw worden gemaakt. Duurzame en niet-duurzame tabellen die zijn geoptimaliseerd voor geheugen, worden momenteel niet ondersteund in grootschalige en moeten opnieuw worden gemaakt als schijf tabellen.|
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren. |
 | Data base kopiëren | U kunt geen database kopie gebruiken om een nieuwe data base in Azure SQL grootschalige te maken. |
 | TDE/Azure-integratie | Transparante database versleuteling met behulp van Azure Key Vault (vaak uw eigen sleutel of BYOK genoemd) is momenteel beschikbaar als preview-versie. |

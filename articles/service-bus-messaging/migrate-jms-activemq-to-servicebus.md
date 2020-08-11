@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369030"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067151"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Bestaande JMS-toepassingen (Java Message Service 2,0) migreren van Apache ActiveMQ naar Azure Service Bus
 
@@ -89,7 +89,7 @@ Service Bus biedt verschillende functies voor beveiliging en hoge Beschik baarhe
   * [Service-eindpunten voor virtueel netwerk](service-bus-service-endpoints.md)
   * [Firewall](service-bus-ip-filtering.md)
   * [Versleuteling aan de service zijde met de door de klant beheerde sleutel (BYOK)](configure-customer-managed-key.md)
-  * [Privé-eind punten](private-link-service.md)
+  * [Privé-eindpunten](private-link-service.md)
   * [Verificatie en autorisatie](service-bus-authentication-and-authorization.md)
 
 ### <a name="monitoring-alerts-and-tracing"></a>Bewaking, waarschuwingen en tracering
@@ -272,7 +272,7 @@ Nu u de toepassing hebt gewijzigd om berichten van Service Bus te verzenden en t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de [Spring boot starter voor Azure service bus JMS](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) voor naadloze integratie met Service Bus.
+Gebruik de [Spring boot starter voor Azure service bus JMS](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) voor naadloze integratie met Service Bus.
 
 Voor meer informatie over Service Bus Messa ging en JMS raadpleegt u:
 

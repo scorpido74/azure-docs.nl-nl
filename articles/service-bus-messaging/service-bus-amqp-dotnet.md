@@ -3,12 +3,12 @@ title: Azure Service Bus met .NET en AMQP 1,0 | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Service Bus kunt gebruiken vanuit een .NET-toepassing met behulp van AMQP (Advanced Messa ging Queuing protocol).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d969607a28759af3b6ee36d79638bb27d0d53808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340190"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067100"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Gebruik Service Bus van .NET met AMQP 1,0
 
@@ -52,7 +52,7 @@ Gebruik voor het vereenvoudigen van de interoperabiliteit met non-.NET-clients a
 
 | Object type .NET-tekst | Type toegewezen AMQP | AMQP tekst sectie Type |
 | --- | --- | --- |
-| booleaans |booleaans |Waarde AMQP |
+| booleaans |boolean |Waarde AMQP |
 | DBCS |ubyte |Waarde AMQP |
 | USHORT |USHORT |Waarde AMQP |
 | uint |uint |Waarde AMQP |
@@ -66,21 +66,21 @@ Gebruik voor het vereenvoudigen van de interoperabiliteit met non-.NET-clients a
 | decimal |decimal128 |Waarde AMQP |
 | char |char |Waarde AMQP |
 | DateTime |tijdstempel |Waarde AMQP |
-| GUID |uuid |Waarde AMQP |
+| Guid |uuid |Waarde AMQP |
 | byte [] |binair |Waarde AMQP |
 | tekenreeks |tekenreeks |Waarde AMQP |
 | System. Collections. IList |list |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. |
-| System. matrix |matrix |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. |
+| System. matrix |array |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. |
 | System. Collections. IDictionary |map |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. Opmerking: alleen teken reeks sleutels worden ondersteund. |
-| Uri |Beschrijving van de teken reeks (Zie de volgende tabel) |Waarde AMQP |
+| URI |Beschrijving van de teken reeks (Zie de volgende tabel) |Waarde AMQP |
 | Date time offset |Lange beschrijving (Zie de volgende tabel) |Waarde AMQP |
 | TimeSpan |Lange beschrijving (Zie het volgende) |Waarde AMQP |
-| Streamen |binair |AMQP-gegevens (mogelijk meerdere). De gegevens secties bevatten de onbewerkte bytes die zijn gelezen van het Stream-object. |
+| Stroom |binair |AMQP-gegevens (mogelijk meerdere). De gegevens secties bevatten de onbewerkte bytes die zijn gelezen van het Stream-object. |
 | Ander object |binair |AMQP-gegevens (mogelijk meerdere). Bevat het geserialiseerde binaire bestand van het object dat gebruikmaakt van de DataContractSerializer of een serialisatiefunctie die door de toepassing wordt geleverd. |
 
-| .NET-type | Type beschrijving van toegewezen AMQP | Notities |
+| .NET-type | Type beschrijving van toegewezen AMQP | Opmerkingen |
 | --- | --- | --- |
-| Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |URI. AbsoluteUri |
+| URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |URI. AbsoluteUri |
 | Date time offset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |Date time offset. UtcTicks |
 | TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>` |Time span. Ticks |
 
@@ -109,7 +109,7 @@ Wilt u meer weten? Ga naar de volgende koppelingen:
 * [AMQP 1.0-protocolhandleiding]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
-[DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
+[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
@@ -117,4 +117,3 @@ Wilt u meer weten? Ga naar de volgende koppelingen:
 [Azure portal]: https://portal.azure.com
 [Overzicht van Service Bus AMQP]: service-bus-amqp-overview.md
 [AMQP 1.0-protocolhandleiding]: service-bus-amqp-protocol-guide.md
-

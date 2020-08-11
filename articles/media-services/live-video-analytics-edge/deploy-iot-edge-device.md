@@ -3,12 +3,12 @@ title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074453"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067885"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
@@ -86,8 +86,8 @@ Met de live video Analytics op IoT Edge worden de eigenschappen van de module du
 
 ### <a name="deploy-using-the-azure-portal"></a>Implementeren met behulp van de Azure-portal
 
-De Azure Portal begeleidt u bij het maken van een implementatie manifest en het pushen van de implementatie naar een IoT Edge-apparaat.
-Uw apparaat selecteren
+De Azure Portal begeleidt u bij het maken van een implementatie manifest en het pushen van de implementatie naar een IoT Edge-apparaat.  
+#### <a name="select-your-device-and-set-modules"></a>Uw apparaat selecteren en modules instellen
 
 1. Meld u aan bij de [Azure-portal](https://ms.portal.azure.com/) en ga naar uw IoT Hub.
 1. Selecteer **IOT Edge** in het menu.
@@ -112,23 +112,12 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
     > [!TIP]
     > Selecteer **toevoegen** totdat u waarden hebt opgegeven op de tabbladen **module-instellingen**, **container maken**en **module dubbele instellingen** , zoals beschreven in deze procedure.
     
-    > [!IMPORTANT]
+    > [!WARNING]
     > Azure IoT Edge is hoofdletter gevoelig wanneer u aanroepen naar modules uitvoert. Noteer de exacte teken reeks die u gebruikt als de module naam.
 
 1. Open het tabblad **omgevings variabelen** .
    
-   Kopieer en plak de volgende JSON in het vak om de gebruikers-ID en de groeps-ID op te geven die moeten worden gebruikt om de toepassings gegevens en de video-uitvoer op te slaan.
-    ```   
-   {
-        "LOCAL_USER_ID": 
-        {
-            "value": "1010"
-        },
-        "LOCAL_GROUP_ID": {
-            "value": "1010"
-        }
-    }
-     ``` 
+   Voeg de volgende waarden toe aan de invoer vakken die u ![ omgevings variabelen ziet](./media/deploy-iot-edge-device/environment-variables.png) 
 
 1. Open het tabblad **Opties voor container maken** .
 
@@ -201,8 +190,8 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
-   [!Note]
-   De dubbele eigenschap **allowUnsecuredEndpoints** is ingesteld op True voor het doel van de zelf studies en de Quick starts.   
+   > [!Note]
+   > De dubbele eigenschap **allowUnsecuredEndpoints** is ingesteld op True voor het doel van de zelf studies en de Quick starts.   
    U moet deze eigenschap instellen op **Onwaar** als deze wordt uitgevoerd in de productie omgeving. Dit zorgt ervoor dat alle onbeveiligde eind punten worden geblokkeerd door de toepassing en dat de grafiek topologieën moeten worden uitgevoerd als er geldige verbindings referenties nodig zijn.  
    
     Selecteer toevoegen om de module dubbele eigenschappen toe te voegen.
@@ -239,7 +228,7 @@ Vervolgens kunt u het voor beeld testen door een directe methode aan te roepen. 
 1. Klik op de menu optie directe methode.
 
     > [!NOTE] 
-    > U moet een waarde toevoegen in de secties van de verbindings reeks, zoals u kunt zien op de huidige pagina. U hoeft niets te verbergen of te wijzigen in de sectie **instellings naam** . Het is een goed hulp om het publiek te laten zijn.
+    > U moet een waarde toevoegen in de secties van de verbindings reeks, zoals u kunt zien op de huidige pagina. U hoeft niets te verbergen of te wijzigen in de sectie **instellings naam** . U kunt dit openbaar houden.
 
     ![Directe methode](./media/deploy-iot-edge-device/module-details.png)
 1. Voer vervolgens ' GraphTopologyList ' in het vak methode naam in.
@@ -258,5 +247,7 @@ Vervolgens kunt u het voor beeld testen door een directe methode aan te roepen. 
     ![De status 200 bericht](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>Volgende stappen
+Probeer [Quick Start: aan de slag-live video Analytics op IOT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
-[Quickstart: Over Live Video Analytics in IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+> [!TIP]
+> In de opdracht voert u volgende uit en gebruikt u `device-id` in plaats van de standaard instelling `lva-sample-device` .

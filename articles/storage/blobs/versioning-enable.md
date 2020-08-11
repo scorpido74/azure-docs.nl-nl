@@ -1,24 +1,28 @@
 ---
 title: BLOB-versie beheer inschakelen en beheren (preview)
 titleSuffix: Azure Storage
-description: Meer informatie over het inschakelen van BLOB-versie beheer in de Azure Portal of met behulp van een Azure Resource Manager sjabloon.
+description: Meer informatie over het inschakelen van BLOB-versie beheer (preview) in de Azure Portal of met behulp van een Azure Resource Manager sjabloon.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086044"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067270"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>BLOB-versie beheer inschakelen en beheren
+# <a name="enable-and-manage-blob-versioning-preview"></a>BLOB-versie beheer inschakelen en beheren (preview)
 
-U kunt BLOB-versie beheer (preview) voor het opslag account op elk gewenst moment in-of uitschakelen met behulp van de Azure Portal of een Azure Resource Manager sjabloon.
+U kunt Blob Storage-versie beheer (preview) inschakelen om automatisch eerdere versies van een object te onderhouden.  Wanneer BLOB-versie beheer is ingeschakeld, kunt u een eerdere versie van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd.
+
+In dit artikel wordt beschreven hoe u BLOB-versie beheer in-of uitschakelt voor het opslag account met behulp van de Azure Portal of een Azure Resource Manager sjabloon.
+
+U moet zich registreren voor de preview voordat u BLOB-versie beheer inschakelt. Zie voor meer informatie over de BLOB-versie, inclusief hoe u zich kunt registreren voor de preview, [BLOB-versie beheer (preview)](versioning-overview.md).
 
 ## <a name="enable-blob-versioning"></a>Blobversiebeheer inschakelen
 

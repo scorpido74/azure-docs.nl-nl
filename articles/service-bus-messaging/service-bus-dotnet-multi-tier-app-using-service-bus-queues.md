@@ -4,12 +4,12 @@ description: Een .NET-zelfstudie waarmee u in Azure een app met meerdere lagen k
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 183f3b6e1231c843c04290024a89c270f0dd0026
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 044d0698f1ea181e8f508f92ad2c30ec29b6490b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083936"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067831"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-toepassing met meerdere lagen die Azure Service Bus-wachtrijen gebruikt
 
@@ -24,7 +24,7 @@ U leert het volgende:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-In deze zelfstudie zult u de toepassing met meerdere lagen ontwikkelen en uitvoeren in een cloudservice van Azure. De front-end is een ASP.NET MVC-webrol en de back-end is een werkrol die gebruikmaakt van een Service Bus-wachtrij. U kunt dezelfde toepassing met meerdere lagen maken met de front-end als een webproject dat wordt geïmplementeerd op een Azure-website in plaats van een cloudservice. U kunt ook de zelfstudie [.NET on-premises/hybride cloud-toepassing](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) gebruiken.
+In deze zelfstudie zult u de toepassing met meerdere lagen ontwikkelen en uitvoeren in een cloudservice van Azure. De front-end is een ASP.NET MVC-webrol en de back-end is een werkrol die gebruikmaakt van een Service Bus-wachtrij. U kunt dezelfde toepassing met meerdere lagen maken met de front-end als een webproject dat wordt geïmplementeerd op een Azure-website in plaats van een cloudservice. U kunt ook de zelfstudie [.NET on-premises/hybride cloud-toepassing](../azure-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) gebruiken.
 
 In de volgende scherm afbeelding wordt de voltooide toepassing weer gegeven.
 
