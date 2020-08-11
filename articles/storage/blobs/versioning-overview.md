@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498596"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056530"
 ---
 # <a name="blob-versioning-preview"></a>Versie beheer van BLOB (preview)
 
@@ -24,6 +24,8 @@ U kunt Blob Storage-versie beheer (preview) inschakelen om automatisch eerdere v
 BLOB-versie beheer is ingeschakeld voor het opslag account en is van toepassing op alle blobs in het opslag account. Nadat u BLOB-versie beheer voor een opslag account hebt ingeschakeld, onderhoudt Azure Storage automatisch versies voor elke Blob in het opslag account.
 
 Micro soft raadt aan om BLOB-versie beheer te gebruiken om eerdere versies van een BLOB voor superieure gegevens beveiliging te behouden. Gebruik, indien mogelijk, Blob-versie beheer in plaats van BLOB-moment opnamen om vorige versies te behouden. BLOB-moment opnamen bieden vergelijk bare functionaliteit als ze eerdere versies van een BLOB behouden, maar moment opnamen moeten hand matig worden bewaard door uw toepassing.
+
+Zie [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)voor meer informatie over het inschakelen van BLOB-versies.
 
 > [!IMPORTANT]
 > BLOB-versie beheer kan u niet helpen bij het herstellen van een onbedoelde verwijdering van een opslag account of container. Als u onbedoeld verwijderen van het opslag account wilt voor komen, configureert u een **CannotDelete** -vergren deling voor de bron van het opslag account. Zie [resources vergren delen om onverwachte wijzigingen](../../azure-resource-manager/management/lock-resources.md)te voor komen voor meer informatie over het vergren delen van Azure-resources.
@@ -177,9 +179,9 @@ BLOB-versie beheer is ontworpen om uw gegevens te beschermen tegen onbedoeld of 
 
 In de volgende tabel ziet u welke RBAC-acties ondersteuning bieden bij het verwijderen van een BLOB of een BLOB-versie.
 
-| Description | Blob service bewerking | RBAC-gegevens actie vereist | Ondersteuning voor geïntegreerde RBAC-rollen |
+| Beschrijving | Blob service bewerking | RBAC-gegevens actie vereist | Ondersteuning voor geïntegreerde RBAC-rollen |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| De huidige versie van de BLOB verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/verwijderen** | Inzender voor Storage BLOB-gegevens |
+| De huidige versie van de BLOB verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/verwijderen** | Inzender voor Storage Blob-gegevens |
 | Een versie verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/deleteBlobVersion/Action** | Eigenaar van gegevens van opslag-BLOB |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Para meters voor Shared Access Signature (SAS)
@@ -197,14 +199,15 @@ De volgende tabel bevat de vereiste machtiging voor een SAS om een BLOB-versie t
 BLOB-versie beheer is beschikbaar als preview in de volgende regio's:
 
 - VS - oost 2
-- Central US
+- VS - centraal
 - Europa - noord
 - Europa - west
 - Frankrijk - centraal
 - Canada - oost
 - Canada - midden
 
-Het voor beeld is alleen bedoeld voor niet-productie gebruik.
+> [!IMPORTANT]
+> De preview-versie van BLOB-versies is alleen bedoeld voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
 
 Versie 2019-10-10 en hoger van de Azure Storage REST API ondersteunt BLOB-versie beheer.
 
@@ -226,7 +229,7 @@ Als u zich wilt inschrijven voor de preview-versie van de blob, gebruikt u Power
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Als u zich bij Power shell wilt registreren, roept u de opdracht [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) aan.
+Als u zich wilt registreren bij Power shell, roept u de opdracht [REGI ster-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) aan.
 
 ```powershell
 # Register for blob versioning (preview)
@@ -242,8 +245,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Als u zich wilt registreren bij Azure CLI, roept u de opdracht [AZ feature REGI ster](/cli/azure/feature#az-feature-register) aan.
 
 ```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name Versioning
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
 ```
 
 ---
@@ -266,8 +269,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Als u de status van uw registratie met Azure CLI wilt controleren, roept u de opdracht [AZ functie](/cli/azure/feature#az-feature-show) aan.
 
 ```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name Versioning
+az feature show --namespace Microsoft.Storage --name Versioning
 ```
 
 ---

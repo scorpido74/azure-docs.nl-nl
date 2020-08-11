@@ -5,17 +5,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/27/2020
-ms.openlocfilehash: 725d1cf38a0c7f6de02addc62577e397a935af94
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/07/2020
+ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041044"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053147"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics gegevens fouten
 
-Gegevens fouten zijn fouten die optreden tijdens het verwerken van de gegevens.  Deze fouten worden meestal veroorzaakt tijdens het deserialiseren van gegevens, de serialisatie en schrijf bewerkingen.  Wanneer er gegevens fouten optreden, schrijft Stream Analytics gedetailleerde informatie en voor beelden van gebeurtenissen naar de bron Logboeken.  In sommige gevallen wordt een samen vatting van deze informatie ook verstrekt via Portal meldingen.
+Gegevens fouten zijn fouten die optreden tijdens het verwerken van de gegevens.  Deze fouten worden meestal veroorzaakt tijdens het deserialiseren van gegevens, de serialisatie en schrijf bewerkingen.  Wanneer er gegevens fouten optreden, schrijft Stream Analytics gedetailleerde informatie en voor beelden van gebeurtenissen naar de bron Logboeken. Schakel Diagnostische logboeken in uw taak in om deze aanvullende gegevens op te halen. In sommige gevallen wordt een samen vatting van deze informatie ook verstrekt via Portal meldingen.
 
 In dit artikel vindt u een overzicht van de verschillende fout typen, oorzaken en resource logboek Details voor invoer-en uitvoer gegevens fouten.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 47448a97c89b1feddfc43da300cb53fd65eaff05
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041781"
+ms.locfileid: "88056649"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -60,7 +60,7 @@ Dit is wat u moet doen om deze zelf studie te volt ooien:
 - Een Windows 10-PC met een werkende microfoon en luid sprekers (of hoofd telefoon)
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) of hoger, waarop de **ASP.net-en Web Development** -werk belasting is geïnstalleerd
 - [.NET Framework runtime 4.6.1](https://dotnet.microsoft.com/download) of hoger
-- Een Azure-account. [Meld u gratis aan](https://azure.microsoft.com/free/ai/).
+- Een Azure-account. [Gratis aanmelden](https://azure.microsoft.com/free/cognitive-services/)
 - Een [GitHub](https://github.com/)-account
 - [Git voor Windows](https://git-scm.com/download/win)
 
@@ -83,7 +83,6 @@ Als u voor deze zelf studie een andere regio wilt gebruiken, kunnen de volgende 
 
 * Zorg ervoor dat u een [ondersteunde Azure-regio](regions.md#voice-assistants)gebruikt.
 * Het directe lijn spraak kanaal maakt gebruik van de tekst-naar-spraak-service, die standaard en Neural stemmen heeft. Neural stemmen zijn [beperkt tot specifieke Azure-regio's](regions.md#standard-and-neural-voices).
-* Sleutels voor een gratis proef versie kunnen worden beperkt tot een specifieke regio.
 
 Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor meer informatie over regio's.
 

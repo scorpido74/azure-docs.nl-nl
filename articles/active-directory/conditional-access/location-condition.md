@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 091555bac780f3abc7089d6214d0f9a8cfbf98cd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518433"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055374"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>De locatie voorwaarde gebruiken in een beleid voor voorwaardelijke toegang 
 
@@ -190,7 +190,7 @@ Wanneer u benoemde locaties maakt of bijwerkt voor bulk updates, kunt u een CSV-
 
 Wanneer u een door de Cloud gehoste proxy of VPN-oplossing gebruikt, is het IP-adres dat door Azure AD wordt gebruikt bij het evalueren van een beleid, het IP-adres van de proxy. De header X-Forwarding for (XFF) die het open bare IP-adres van de gebruiker bevat, wordt niet gebruikt omdat er geen validatie is van een vertrouwde bron. Daarom zou een methode voor het Faking van een IP-adres worden weer gegeven.
 
-Als er een Cloud proxy is ingesteld, kan een beleid dat wordt gebruikt om een aan een domein gekoppeld apparaat te vereisen, worden gebruikt, of de in-Corpnet claim van AD FS.
+Als er een Cloud proxy is ingesteld, kan een beleid dat wordt gebruikt om een hybride Azure AD-apparaat toe te voegen worden gebruikt, of de in-Corpnet claim van AD FS.
 
 ### <a name="api-support-and-powershell"></a>API-ondersteuning en Power shell
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: 6010c67b531d0f1ebb0ed836062cd5e323e5474c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5124a0336773412ae9c36a32a0f6f86da62a31
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083511"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056241"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een Windows VHD of VHDX voorbereiden om te uploaden naar Azure
 
@@ -58,7 +58,7 @@ Gebruik een van de methoden in deze sectie om de virtuele schijf om te zetten en
 1. Als u wilt converteren van VHDX, selecteert u **VHD**  >  **volgende**.
 1. Als u wilt converteren van een dynamisch uitbreid bare schijf, selecteert u de optie **vaste grootte**  >  **volgende**.
 1. Zoek en selecteer een pad om het nieuwe VHD-bestand op te slaan.
-1. Selecteer **Voltooien**.
+1. Selecteer **Finish**.
 
 ### <a name="use-powershell-to-convert-the-disk"></a>Power shell gebruiken om de schijf te converteren
 
@@ -82,7 +82,7 @@ Als u een Windows VM-installatie kopie in de [VMDK-bestands indeling](https://en
 1. Selecteer uw virtuele schijf op de pagina **virtuele harde schijf zoeken** .
 1. Selecteer op de pagina **actie kiezen** de optie **uitvouwen**  >  **volgende**.
 1. Voer op de pagina **virtuele harde schijf zoeken** de nieuwe grootte in GiB > **volgende**.
-1. Selecteer **Voltooien**.
+1. Selecteer **Finish**.
 
 ### <a name="use-powershell-to-resize-the-disk"></a>Het formaat van de schijf wijzigen met Power shell
 
@@ -488,6 +488,7 @@ In het bijzonder vereist Sysprep dat de stations volledig worden ontsleuteld voo
 
 1. Meld u aan bij de Windows-VM.
 1. Een Power shell-sessie uitvoeren als beheerder.
+1. Verwijder de Panther-map (C:\Windows\Panther).
 1. Wijzig de Directory in `%windir%\system32\sysprep` . Voer vervolgens `sysprep.exe` uit.
 1. Selecteer in het dialoog venster **hulp programma voor systeem voorbereiding** de optie **systeem out-of-Box Experience (OOBE) opgeven**en zorg ervoor dat het selectie vakje **generalize** is geselecteerd.
 

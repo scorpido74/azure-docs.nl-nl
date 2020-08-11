@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087852"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056513"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Compatibiliteits niveau voor Azure Stream Analytics taken
 
@@ -142,11 +142,11 @@ De volgende belang rijke wijzigingen worden geïntroduceerd in compatibiliteits 
 
 **niveau van 1,1:** Met CREATE TABLE kunt u een sterk schema opgeven. De Stream Analytics-engine valideert dat de gegevens voldoen aan dit schema. Met dit model kan de opdracht gebeurtenissen filteren met NaN-waarden.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Automatische conversie voor datetime-teken reeksen uitschakelen in JSON
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>Automatische conversie van datetime-teken reeksen uitschakelen naar DateTime-type bij ingangen voor JSON
 
-**niveau van 1,0:** Met de JSON-parser worden teken reeks waarden met datum/tijd/zone-informatie automatisch geconverteerd naar DateTime-type en vervolgens geconverteerd naar UTC. Dit gedrag heeft geleid tot verlies van informatie over de tijd zone.
+**niveau van 1,0:** Met de JSON-parser worden teken reeks waarden met datum/tijd/zone-informatie automatisch geconverteerd naar DATETIME-type bij ingangs gegevens zodat de oorspronkelijke notatie en tijd zone-informatie in de waarde direct verloren gaat. Omdat dit wordt gedaan bij inkomend verkeer, zelfs als dat veld niet in de query is gebruikt, wordt dit geconverteerd naar UTC DateTime.
 
-**niveau van 1,1:** Er zijn niet meer automatisch conversie van teken reeks waarden met datum/tijd/zone-informatie naar het type DateTime. Als gevolg hiervan wordt informatie over de tijd zone bewaard.
+**niveau van 1,1:** Er wordt geen automatische conversie van teken reeks waarden met datum/tijd/zone-informatie naar DATETIME-type. Als gevolg hiervan worden de tijdzone gegevens en de oorspronkelijke opmaak bewaard. Als het veld NVARCHAR (MAX) echter wordt gebruikt in de query als onderdeel van een datum/tijd-expressie (bijvoorbeeld de functie DATEADD), wordt dit geconverteerd naar het DATETIME-type om de berekening uit te voeren en verliest het oorspronkelijke formulier.
 
 ## <a name="next-steps"></a>Volgende stappen
 

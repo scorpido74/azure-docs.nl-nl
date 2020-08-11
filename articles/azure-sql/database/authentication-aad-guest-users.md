@@ -9,19 +9,19 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
-ms.openlocfilehash: b3abda9787654734b24cc27987921ef40d8070fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2c8aa39b6819e135181e2d153825e89686359538
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294064"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053759"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD-gastgebruikers maken en instellen als Azure AD-beheerder
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 > [!NOTE]
-> Dit artikel bevindt zich in de **open bare preview**.
+> Dit artikel is beschikbaar in de **openbare preview-versie**.
 
 Gast gebruikers in Azure Active Directory (Azure AD) zijn gebruikers die zijn geïmporteerd in de huidige Azure AD van andere Azure Active Directory-mappen of buiten de Directory. Gast gebruikers kunnen bijvoorbeeld gebruikers van andere Azure Active Directory-mappen of van accounts zoals * \@ Outlook.com*, * \@ Hotmail.com*, * \@ Live.com*of * \@ Gmail.com*toevoegen. In dit artikel wordt uitgelegd hoe u een Azure AD-gast gebruiker maakt en die gebruiker instelt als een Azure AD-beheerder voor de logische Azure SQL-Server, zonder dat deze gast gebruiker deel moet uitmaken van een groep in azure AD.
 
@@ -103,7 +103,7 @@ Volg deze stappen om een Azure AD-gast gebruiker in te stellen als de Azure AD-b
 1. Voer de volgende Power shell-opdracht uit om de gast gebruiker toe te voegen als Azure AD-beheerder voor uw logische Azure SQL-Server:
 
     - Vervang door de `<ResourceGroupName>` naam van uw Azure-resource groep die de logische Azure SQL-Server bevat.
-    - Vervang door `<ServerName>` de naam van uw logische Azure SQL-Server. Als uw server naam is `myserver.database.windows.net` , vervangt u door `<Server Name>` `myserver` .
+    - Vervang door `<ServerName>` de naam van uw logische Azure SQL-Server. Als de servernaam `myserver.database.windows.net` is, vervangt u `<Server Name>` door `myserver`.
     - Vervang door `<DisplayNameOfGuestUser>` de gebruikers naam van uw gast.
 
     ```powershell
@@ -133,9 +133,9 @@ Volg deze stappen om een Azure AD-gast gebruiker in te stellen als de Azure AD-b
 
 ## <a name="limitations"></a>Beperkingen
 
-Er is een beperking voor de Azure Portal waarmee wordt voor komen dat een Azure AD-gast gebruiker wordt geselecteerd als Azure AD-beheerder voor SQL Database, een door SQL beheerd exemplaar en Azure Synapse. Voor gast accounts buiten uw Azure AD, zoals * \@ Outlook.com*, * \@ Hotmail.com*, * \@ Live.com*of * \@ Gmail.com*, worden deze accounts in de AD-beheer kiezer weer gegeven, maar ze zijn grijs en kunnen niet worden geselecteerd. Gebruik de hierboven vermelde [Power shell-of cli-opdrachten](#setting-a-guest-user-as-an-azure-ad-admin) om de Azure AD-beheerder in te stellen. Een Azure AD-groep met de gast gebruiker kan ook worden ingesteld als de Azure AD-beheerder voor de logische SQL-Server.
+Er is een beperking voor de Azure Portal waarmee wordt voor komen dat een Azure AD-gast gebruiker wordt geselecteerd als Azure AD-beheerder voor een door SQL beheerd exemplaar. Voor gast accounts buiten uw Azure AD, zoals * \@ Outlook.com*, * \@ Hotmail.com*, * \@ Live.com*of * \@ Gmail.com*, worden deze accounts in de AD-beheer kiezer weer gegeven, maar ze zijn grijs en kunnen niet worden geselecteerd. Gebruik de hierboven vermelde [Power shell-of cli-opdrachten](#setting-a-guest-user-as-an-azure-ad-admin) om de Azure AD-beheerder in te stellen. Een Azure AD-groep met de gast gebruiker kan ook worden ingesteld als de Azure AD-beheerder voor het SQL Managed instance.
 
-Deze functionaliteit wordt ingeschakeld voor SQL Database en Azure Synapse vóór de algemene Beschik baarheid van deze functie.
+Deze functionaliteit wordt ingeschakeld voor SQL Managed instance vóór de algemene Beschik baarheid van deze functie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

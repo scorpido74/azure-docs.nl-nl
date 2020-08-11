@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ca106625acf28aded0009fd09022843f1016faf3
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006788"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056139"
 ---
-# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Een bestaande aanbieding bijwerken in Commerciële Marketplace
+# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Een bestaande aanbieding bijwerken in de commerciële Marketplace
 
 U kunt uw bestaande aanbiedingen weer geven op het tabblad **overzicht** van de [Portal voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) in het partner centrum.
 
-Een bestaande aanbieding die momenteel Live is in Marketplace bijwerken:
+Als u een bestaande aanbieding die momenteel in de commerciële Marketplace woont, wilt bijwerken:
 
 1. Selecteer de naam van de aanbieding die u wilt bijwerken. De status van de aanbieding kan worden vermeld als **Preview**, **Live**, **publiceren in voortgang**, **concept**, **aandacht vereist**of **niet beschikbaar** (als u eerder hebt gekozen om te stoppen met het verkopen van de aanbieding). Zodra deze aanbieding is geselecteerd, wordt de **overzichts** pagina van de aanbieding geopend.
 2. Selecteer **bijwerken** in de kaart op de overzichts pagina van de aanbieding of de menu opdracht in de linkernavigatiebalk voor het gebied dat u wilt bijwerken. U kunt de **aanbiedings instellingen**, de **Eigenschappen** **, de aanbieding,** de **Preview**, de **technische configuratie**, het overzicht van het **abonnement**of het **test station**bijwerken.
@@ -74,7 +74,7 @@ Nu u het abonnement met de oude prijs hebt verborgen, maakt u een kopie van dat 
 1. Selecteer **Concept opslaan**.
 1. Nadat u alle vereiste secties voor het nieuwe abonnement hebt voltooid, selecteert u **controleren en publiceren**. Hiermee wordt uw aanbieding verzonden voor beoordeling en publicatie. Lees [de beoordeling en publiceer een aanbieding naar de commerciële Marketplace](../review-publish-offer.md) voor meer informatie.
 
-## <a name="compare-changes-to-marketplace-offers"></a>Wijzigingen in Marketplace-aanbiedingen vergelijken
+## <a name="compare-changes-to-commercial-marketplace-offers"></a>Wijzigingen in commerciële Marketplace-aanbiedingen vergelijken
 
 U kunt de wijzigingen die u aanbrengt in een [gepubliceerd](#compare-changes-to-published-offer) of [Preview](#compare-changes-to-a-preview-offer) -aanbieding controleren voordat u ze Live maakt met behulp van **vergelijken**.
 
@@ -161,11 +161,13 @@ Als u de aanbieding op een later tijdstip wilt publiceren, moet u eerst het publ
 
 ## <a name="stop-selling-an-offer-or-plan"></a>Stoppen met verkopen van een aanbieding of abonnement
 
+Om verschillende redenen kunt u besluiten om uw aanbieding uit de micro soft Commercial Marketplace te verwijderen. Met het verwijderen van aanbiedingen kunnen nieuwe klanten uw aanbieding niet meer kopen of implementeren, maar heeft dit geen invloed op bestaande klanten.
+
 Als u wilt stoppen met het verkopen van een aanbieding nadat u deze hebt gepubliceerd, selecteert u **niet meer verkopen** op de **overzichts** pagina van de aanbieding.
 
-Zodra u bevestigt dat u de aanbieding niet meer wilt verkopen, is het niet meer zichtbaar in de Marketplace en kunnen er geen nieuwe klanten worden gedownload.
+Nadat u hebt bevestigd dat u de aanbieding niet meer wilt verkopen, wordt deze binnen enkele uren niet meer weer gegeven in de commerciële Marketplace en kunnen er geen nieuwe klanten worden gedownload.
 
-Als u wilt stoppen met het verkopen van een abonnement, selecteert u **stoppen met verkopen** op de **overzichts** pagina van het abonnement. De optie om te stoppen met het verkopen van een abonnement is alleen beschikbaar als u meer dan één abonnement hebt in de aanbieding. U kunt ervoor kiezen om niet meer dan één abonnement te verkopen zonder dat dit van invloed is op andere abonnementen binnen uw aanbieding. Zodra u hebt gecontroleerd of u wilt stoppen met het verkopen van het abonnement, moet u de aanbieding opnieuw publiceren om de wijziging door te voeren. Nadat de aanbieding opnieuw is gepubliceerd, is het plan niet meer zichtbaar op Marketplace en kunnen er geen nieuwe klanten worden gedownload.
+Als u wilt stoppen met het verkopen van een abonnement, selecteert u **stoppen met verkopen** op de **overzichts** pagina van het abonnement. De optie om te stoppen met het verkopen van een abonnement is alleen beschikbaar als u meer dan één abonnement hebt in de aanbieding. U kunt ervoor kiezen om niet meer dan één abonnement te verkopen zonder dat dit van invloed is op andere abonnementen binnen uw aanbieding. Zodra u hebt gecontroleerd of u wilt stoppen met het verkopen van het abonnement, moet u de aanbieding opnieuw publiceren om de wijziging door te voeren. Nadat de aanbieding opnieuw is gepubliceerd, is het plan niet meer zichtbaar in de commerciële Marketplace en kunnen er geen nieuwe klanten worden gedownload.
 
 Klanten die de aanbieding of het plan eerder hebben aangeschaft, kunnen deze nog steeds gebruiken. Ze kunnen de app opnieuw downloaden, maar ze ontvangen geen updates als u de aanbieding bijwerkt en opnieuw publiceert of op een later tijdstip.
 

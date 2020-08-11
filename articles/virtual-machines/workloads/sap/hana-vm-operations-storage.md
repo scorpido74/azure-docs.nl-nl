@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/30/2020
+ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e0efc2c64a1cbdcc2c83c019f7743406054afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074033"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053436"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -321,6 +321,44 @@ Daarom kunt u overwegen om een vergelijk bare door Voer voor de ANF-volumes te i
 > U kunt de grootte van Azure NetApp Files volumes dynamisch opnieuw instellen, zonder dat u de volumes nodig hebt `unmount` , de virtuele machines stoppen of SAP Hana stoppen. Zo kan de toepassing voldoen aan de verwachte en onvoorziene doorvoer vereisten.
 
 Documentatie over het implementeren van een SAP HANA scale-out configuratie met een stand-by-knoop punt met behulp van NFS v 4.1-volumes die worden gehost in ANF, wordt gepubliceerd in [SAP Hana uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op SuSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md).
+
+
+## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Prijs bewuste oplossing met Azure Premium Storage
+Tot nu toe zijn de Azure Premium Storage-oplossing die in dit document wordt beschreven in sectie [oplossingen met Premium Storage en azure write Accelerator voor virtuele machines uit de M-serie van Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) , bedoeld voor het SAP Hana van productie-ondersteunde scenario's. Een van de kenmerken van productie configuraties die kunnen worden ondersteund, is de schei ding van de volumes voor SAP HANA gegevens en meld u opnieuw aan op twee verschillende volumes. De reden hiervoor is dat de kenmerken van de werk belasting op de volumes verschillend zijn. En dat met de voorgestelde productie configuraties, kan een ander type caching of zelfs verschillende typen Azure-blok opslag nodig zijn. De productie ondersteunde configuraties die gebruikmaken van Azure-blok opslag doel om te voldoen aan de [Sla voor Azure-virtual machines voor één VM](https://azure.microsoft.com/support/legal/sla/virtual-machines/) .  Voor niet-productie scenario's is het mogelijk dat een aantal van de overwegingen voor productie systemen niet van toepassing is op meer niet-productie systemen met een lage eind tijd. Als gevolg hiervan kunnen de HANA-gegevens en het logboek volume worden gecombineerd. Uiteindelijk met een aantal culprits, zoals uiteindelijk geen bepaalde doorvoer-of latentie-Kpi's die vereist zijn voor productie systemen. Een ander aspect voor het verlagen van de kosten in dergelijke omgevingen kan het gebruik zijn van [Azure Standard-SSD Storage](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage). Hoewel een keuze waarmee de [Sla van één VM voor Azure virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/)ongeldig wordt gemaakt. 
+
+Een kostenbesparend alternatief voor dergelijke configuraties kan er als volgt uitzien:
+
+
+| VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /Hana/data en/Hana/log<br /> Striped met LVM of MDADM | /hana/shared | /root volume | /usr/sap | aantekeningen |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 112 GiB | 768 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | Niet langer dan 1ms opslag latentie<sup>1</sup> |
+| E16v3 | 128 GiB | 384 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | VM-type is niet gecertificeerd voor HANA <br /> Niet langer dan 1ms opslag latentie<sup>1</sup> |
+| M32ts | 192 GiB | 500 MB/s | 3 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 5.000<sup>2</sup> |
+| E20ds_v4 | 160 GiB | 480 MB/s | 4 x P6 | 1 x E15 | 1 x E6 | 1 x E6 | Niet langer dan 1ms opslag latentie<sup>1</sup> |
+| E32v3 | 256 GiB | 768 MB/s | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | VM-type is niet gecertificeerd voor HANA <br /> Niet langer dan 1ms opslag latentie<sup>1</sup> |
+| E32ds_v4 | 256 GiB | 768 MBps | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Niet langer dan 1ms opslag latentie<sup>1</sup> |
+| M32ls | 256 GiB | 500 MB/s | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 5.000<sup>2</sup> |
+| E48ds_v4 | 384 GiB | 1.152 MBps | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Niet langer dan 1ms opslag latentie<sup>1</sup> |
+| E64v3 | 432 GiB | 1.200 MB/s | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Niet langer dan 1ms opslag latentie<sup>1</sup> |
+| E64ds_v4 | 504 GiB | 1200 MB/s |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Niet langer dan 1ms opslag latentie<sup>1</sup> |
+| M64ls | 512 GiB | 1.000 MB/s | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 10.000<sup>2</sup> |
+| M64s | 1.000 GiB | 1.000 MB/s | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 10.000<sup>2</sup> |
+| M64ms | 1.750 GiB | 1.000 MB/s | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 10.000<sup>2</sup> |
+| M128s | 2.000 GiB | 2.000 MB/s |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 20.000<sup>2</sup> |
+| M208s_v2 | 2.850 GiB | 1.000 MB/s | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 10.000<sup>2</sup> |
+| M128ms | 3.800 GiB | 2.000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 20.000<sup>2</sup> |
+| M208ms_v2 | 5.700 GiB | 1.000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 10.000<sup>2</sup> |
+| M416s_v2 | 5.700 GiB | 2.000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 20.000<sup>2</sup> |
+| M416ms_v2 | 11400 GiB | 2.000 MB/s | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 20.000<sup>2</sup> |
+
+
+<sup>1</sup> [Azure write Accelerator](../../linux/how-to-enable-write-accelerator.md) kan niet worden gebruikt met de VM-families Ev4 en Ev4. Als gevolg van het gebruik van Azure Premium Storage is de I/O-latentie niet kleiner dan 1ms
+
+<sup>2</sup> de VM-serie ondersteunt [Azure write Accelerator](../../linux/how-to-enable-write-accelerator.md), maar er is een kans dat de limiet voor IOPS van de schrijf versnelling de schijf configuraties kan beperken de IOPS-mogelijkheden
+
+In het geval van het combi neren van het gegevens-en logboek volume voor SAP HANA, mag de schijven waarop het striped volume wordt gebouwd geen lees-of lees-en schrijf cache hebben ingeschakeld.
+
+Er worden VM-typen weer gegeven die niet zijn gecertificeerd met SAP en die niet worden vermeld in de zogenaamde [SAP Hana hardware-map](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Feedback van klanten was dat deze niet-vermelde VM-typen zijn gebruikt voor een aantal niet-productie taken.
 
 
 ## <a name="next-steps"></a>Volgende stappen

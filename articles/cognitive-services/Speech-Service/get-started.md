@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc1f8ed31c8d7199a31643a76e611d828da77ac
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656134"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056462"
 ---
-# <a name="try-the-speech-service-for-free"></a>Probeer de speech-service gratis uit
+# <a name="try-the-speech-service-for-free"></a>Speech Service gratis uitproberen
 
 In dit artikel kiest u een optie om de spraak service eenvoudig gratis te testen, zodat u kunt ontdekken wat de service kan doen en bepalen of het geschikt is voor uw behoeften. Kies een van de volgende twee opties, afhankelijk van uw situatie en gebruiks voorbeeld:
 
@@ -52,7 +52,7 @@ Zodra u een Microsoft-account hebt, gaat u naar de [pagina aanmelden bij Azure](
 
 Een spraak service resource (gratis of betaalde laag) toevoegen aan uw Azure-account:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw Microsoft-account.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met behulp van uw Microsoft-account.
 
 1. Selecteer **een resource maken** in de linkerbovenhoek van de portal. Als u geen **resource maken**ziet, kunt u deze altijd vinden door het samengevouwen menu linksboven te selecteren:
 
@@ -87,7 +87,7 @@ Als u wilt overschakelen van het ene naar het andere abonnement, bijvoorbeeld wa
 
 ## <a name="about-regions"></a>Over regio's
 
-- Als uw toepassing gebruikmaakt van een [spraak-SDK](speech-sdk.md), geeft u de regio code op `westus`, zoals bij het maken van een spraak configuratie.
+- Als uw toepassing gebruikmaakt van een [spraak-SDK](speech-sdk.md), geeft u de regio code op, zoals bij het maken van `westus` een spraak configuratie.
 - Als uw toepassing gebruikmaakt van een van de rest- [api's](rest-apis.md)van de speech-service, maakt de regio deel uit van de EINDPUNT-URI die u gebruikt bij het maken van aanvragen.
 - Sleutels die zijn gemaakt voor een regio, zijn alleen geldig in die regio. Als u deze probeert te gebruiken met andere regio's, worden verificatie fouten veroorzaakt.
 
@@ -96,5 +96,5 @@ Als u wilt overschakelen van het ene naar het andere abonnement, bijvoorbeeld wa
 Voltooi een van onze Quick starts voor 10 minuten of Bekijk onze SDK-voor beelden:
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: spraak herkennen in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [Speech SDK](speech-sdk.md#sample-source-code) -voor beelden
+> [Snelstartgids: spraak herkennen met de spraak-cli](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programmer-tool-spx) 
+>  Voor [beelden van Speech SDK](speech-sdk.md#sample-source-code)

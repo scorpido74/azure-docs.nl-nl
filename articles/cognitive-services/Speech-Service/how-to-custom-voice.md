@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 2aacf8881a57f0677177cd341a0ddc63224b26b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402059"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056683"
 ---
 # <a name="get-started-with-custom-voice"></a>Aan de slag met Custom Voice
 
@@ -56,7 +56,7 @@ Zodra u een Azure-account en een spraak service-abonnement hebt gemaakt, moet u 
 4. Als u wilt overschakelen naar een ander spraak abonnement, gebruikt u het tandwiel-pictogram in de bovenste navigatie balk.
 
 > [!NOTE]
-> De aangepaste Voice-service biedt geen ondersteuning voor de gratis proef versie van 30 dagen. U moet een F0 of een S0-sleutel hebben gemaakt in azure voordat u de service kunt gebruiken.
+> U moet een F0 of een S0-sleutel hebben gemaakt in azure voordat u de service kunt gebruiken.
 
 ## <a name="how-to-create-a-project"></a>Een project maken
 
@@ -70,5 +70,5 @@ Als u uw eerste project wilt maken, selecteert u het tabblad **tekst naar spraak
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aangepaste spraak gegevens voorbereiden](how-to-custom-voice-prepare-data.md)
-- [Een aangepaste stem maken](how-to-custom-voice-create-voice.md)
+- [Een Custom Voice maken](how-to-custom-voice-create-voice.md)
 - [Hand leiding: uw stem voorbeelden vastleggen](record-custom-voice-samples.md)

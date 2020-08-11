@@ -1,14 +1,14 @@
 ---
 title: Uw Azure-resources verkennen
 description: Meer informatie over het gebruik van de resource Graph-query taal om uw resources te verkennen en te ontdekken hoe ze zijn verbonden.
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83654498"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056581"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Azure-resources verkennen met Resource Graph
 
@@ -207,8 +207,8 @@ Resources
 | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-Voordat u de query uitvoert, weet u zeker dat het **type** **micro soft. Compute/disks**is?
-Als u de volledige ID bekijkt, ziet u **/providers/Microsoft.Compute/disks/** als onderdeel van de teken reeks. Dit teken reeks fragment geeft u een hint voor het type waarnaar moet worden gezocht. Een alternatieve methode is om de limiet te verwijderen per type en in plaats daarvan alleen op het ID-veld te zoeken. Als de ID uniek is, wordt er slechts één record geretourneerd en bevat de eigenschap **type** deze details.
+Voordat u de query uitvoert, weet u zeker dat het **type** **micro soft. Compute/disks**is? Als u de volledige ID bekijkt, ziet u **/providers/Microsoft.Compute/disks/** als onderdeel van de teken reeks.
+Dit teken reeks fragment geeft u een hint voor het type waarnaar moet worden gezocht. Een alternatieve methode is om de limiet te verwijderen per type en in plaats daarvan alleen op het ID-veld te zoeken. Als de ID uniek is, wordt er slechts één record geretourneerd en bevat de eigenschap **type** deze details.
 
 > [!NOTE]
 > Voor een goede werking van dit voor beeld moet u het veld ID vervangen door een resultaat uit uw eigen omgeving.

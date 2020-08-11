@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/29/2020
+ms.date: 08/09/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9bb290106c5ceafe8c636bbeeab38b74ea475eb4
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204040"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056187"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
@@ -33,7 +33,7 @@ In dit artikel wordt beschreven hoe u een of meer toegangs Beoordelingen voor gr
 - Azure AD Premium P2
 - Globale beheerder of gebruikers beheerder
 
-Zie [licentie vereisten](access-reviews-overview.md#license-requirements)voor meer informatie.
+Zie [Licentievereisten](access-reviews-overview.md#license-requirements) voor meer informatie.
 
 ## <a name="create-one-or-more-access-reviews"></a>Een of meer toegangs beoordelingen maken
 
@@ -153,6 +153,6 @@ U kunt ook toegangs beoordelingen maken met behulp van Api's. Wat u doet om toeg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegang tot groepen of toepassingen controleren](perform-access-review.md)
+- [Toegang tot groepen of toepassingen beoordelen](perform-access-review.md)
 - [De toegang tot groepen of toepassingen controleren](review-your-access.md)
-- [Een toegangs beoordeling van groepen of toepassingen volt ooien](complete-access-review.md)
+- [Een toegangsbeoordeling van groepen of toepassingen voltooien](complete-access-review.md)

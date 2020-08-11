@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
-ms.openlocfilehash: b7d7ec95d2227076ff7b7a95ce6e72fffc840975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073342"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055199"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Wat is Azure SQL Managed instance?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Een onderdeel van de Azure SQL-product familie, Azure SQL Managed instance is de intelligente, schaal bare Cloud database service die de breedste SQL Server data base-engine-compatibiliteit combineert met alle voor delen van een volledig beheerd en groen wordende platform als een service. SQL Managed instance heeft bijna 100% compatibel met de nieuwste data base-engine van SQL Server (Enter prise Edition), waarbij een [VNet-implementatie (native Virtual Network](../../virtual-network/virtual-networks-overview.md) ) wordt geboden waarmee veelvoorkomende beveiligings problemen worden opgelost en een [bedrijfs model](https://azure.microsoft.com/pricing/details/sql-database/) kan worden gebruikt voor bestaande SQL Server klanten. Met SQL Managed instance kunnen bestaande SQL Server klanten hun on-premises toepassingen naar de Cloud tillen en naar een andere data base verplaatsen met minimale toepassings-en database wijzigingen. Tegelijkertijd behoudt SQL Managed instance alle PaaS-mogelijkheden (automatische patches en versie-updates, [geautomatiseerde back-ups](../database/automated-backups-overview.md), [hoge Beschik baarheid](../database/high-availability-sla.md)) waarmee de overhead en TCO van het beheer drastisch worden verminderd.
+Azure SQL Managed instance is de intelligente, schaal bare Cloud database service die de ruime SQL Server data base-engine compatibiliteit combineert met alle voor delen van een volledig beheerd en groen wordende platform als een service. SQL Managed instance heeft bijna 100% compatibel met de nieuwste data base-engine van SQL Server (Enter prise Edition), waarbij een [VNet-implementatie (native Virtual Network](../../virtual-network/virtual-networks-overview.md) ) wordt geboden waarmee veelvoorkomende beveiligings problemen worden opgelost en een [bedrijfs model](https://azure.microsoft.com/pricing/details/sql-database/) kan worden gebruikt voor bestaande SQL Server klanten. Met SQL Managed instance kunnen bestaande SQL Server klanten hun on-premises toepassingen naar de Cloud tillen en naar een andere data base verplaatsen met minimale toepassings-en database wijzigingen. Tegelijkertijd behoudt SQL Managed instance alle PaaS-mogelijkheden (automatische patches en versie-updates, [geautomatiseerde back-ups](../database/automated-backups-overview.md), [hoge Beschik baarheid](../database/high-availability-sla.md)) waarmee de overhead en TCO van het beheer drastisch worden verminderd.
 
 > [!IMPORTANT]
 > Zie [ondersteunde regio's](resource-limits.md#supported-regions)voor een lijst met REGIO'S waar SQL Managed Instance momenteel beschikbaar is.
@@ -53,15 +53,15 @@ De belangrijkste functies van SQL Managed instance worden weer gegeven in de vol
 |Functie | Beschrijving|
 |---|---|
 | Versie/build van SQL Server | SQL Server data base-engine (laatste stabiel) |
-| Beheerde geautomatiseerde back-ups | Yes |
-| Ingebouwde instantie-en database controle en-metrische gegevens | Yes |
-| Automatische software patching | Yes |
-| De nieuwste functies van de data base-engine | Yes |
+| Beheerde geautomatiseerde back-ups | Ja |
+| Ingebouwde instantie-en database controle en-metrische gegevens | Ja |
+| Automatische software patching | Ja |
+| De nieuwste functies van de data base-engine | Ja |
 | Aantal gegevens bestanden (rijen) per data base | Meerdere |
 | Aantal logboek bestanden (logboek) per data base | 1 |
-| VNet-Azure Resource Manager-implementatie | Yes |
-| VNet-klassiek implementatie model | No |
-| Portal ondersteuning | Yes|
+| VNet-Azure Resource Manager-implementatie | Ja |
+| VNet-klassiek implementatie model | Nee |
+| Portal ondersteuning | Ja|
 | SSIS (ingebouwde integratie service) | No-SSIS maakt deel uit van [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | SSAS (ingebouwde Analysis Service) | Nee-SSAS is afzonderlijke [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Ingebouwde Reporting service (SSRS) | Geen gebruik [Power bi gepagineerde rapporten](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) of host SSRS op een virtuele machine van Azure. SQL Managed instance kan geen SSRS als service uitvoeren, maar kan [SSRS-catalogus databases](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) hosten voor een rapport server die is geïnstalleerd op een virtuele Azure-machine met behulp van SQL Server-verificatie. |
@@ -113,7 +113,7 @@ De volgende lijst geeft een overzicht van de belangrijkste kenmerken van de Bedr
 
 Meer informatie over de verschillen tussen de service lagen in [SQL Managed instance resource limieten](resource-limits.md#service-tier-characteristics).
 
-## <a name="management-operations"></a>Beheer bewerkingen
+## <a name="management-operations"></a>Beheerbewerkingen
 
 Azure SQL Managed instance biedt beheer bewerkingen die u kunt gebruiken om automatisch nieuwe beheerde instanties te implementeren, exemplaar-eigenschappen bij te werken en instanties te verwijderen wanneer ze niet meer nodig zijn. Gedetailleerde uitleg van beheer bewerkingen vindt u op de pagina [overzicht van beheer bewerkingen voor beheerde exemplaren](management-operations-overview.md) .
 
@@ -131,7 +131,7 @@ SQL Managed instance biedt extra beveiligings isolatie van andere tenants op het
 
 Het volgende diagram geeft een overzicht van de verschillende connectiviteits opties voor uw toepassingen:
 
-![Hoge beschikbaarheid](./media/sql-managed-instance-paas-overview/application-deployment-topologies.png)  
+![Maximale beschikbaarheid](./media/sql-managed-instance-paas-overview/application-deployment-topologies.png)  
 
 Zie voor meer informatie over VNet-integratie en het afdwingen van het netwerk beleid op subnetniveau [vnet-architectuur voor beheerde instanties](connectivity-architecture-overview.md) en [Verbind uw toepassing met een beheerd exemplaar](connect-application-instance.md).
 
@@ -192,7 +192,7 @@ De migratie benadering maakt gebruik van SQL-back-ups naar Azure Blob-opslag. Ba
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-Azure Database Migration Service is een volledig beheerde service die is ontworpen om naadloze migratie van meerdere database bronnen naar Azure-gegevens platforms mogelijk te maken met minimale downtime. Deze service stroomlijnt de taken die nodig zijn voor het verplaatsen van bestaande data bases van derden en SQL Server naar Azure SQL Database, Azure SQL Managed instance en SQL Server op Azure VM. Zie [de migratie van uw on-premises Data Base naar een met SQL beheerd exemplaar met behulp van database Migration service](https://aka.ms/migratetoMIusingDMS).
+Azure Database Migration Service is een volledig beheerde service die is ontworpen voor naadloze migratie van meerdere databasebronnen naar Azure-gegevensplatforms met slechts minimale downtime. Deze service stroomlijnt de taken die nodig zijn voor het verplaatsen van bestaande data bases van derden en SQL Server naar Azure SQL Database, Azure SQL Managed instance en SQL Server op Azure VM. Zie [de migratie van uw on-premises Data Base naar een met SQL beheerd exemplaar met behulp van database Migration service](https://aka.ms/migratetoMIusingDMS).
 
 ## <a name="sql-features-supported"></a>Ondersteunde SQL-functies
 

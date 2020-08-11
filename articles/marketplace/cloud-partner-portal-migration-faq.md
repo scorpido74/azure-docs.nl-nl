@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 59f66b88c998a78f5bd3ccf3757cb791aea2521b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279301"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056547"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Veelgestelde vragen over overgang van de Cloud Partner-portal naar het partner centrum
 
@@ -143,7 +143,7 @@ De updates die u niet publiceert, worden opgeslagen als concept. Ga door met de 
 
 ### <a name="enhanced-preview-options"></a>Verbeterde preview-opties
 
-Het partner centrum bevat een [vergelijkings functie](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers) met verbeterde filter opties. Dit biedt u de mogelijkheid om te vergelijken met de preview-versie en de live versies van de aanbieding.
+Het partner centrum bevat een [vergelijkings functie](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers) met verbeterde filter opties. Dit biedt u de mogelijkheid om te vergelijken met de preview-versie en de live versies van de aanbieding.
 
 [![Scherm afbeelding toont de functie vergelijken met partner centrum.](media/cpp-pc-faq/compare.png "Hiermee wordt de functie voor het vergelijken van partner Centers weer gegeven")](media/cpp-pc-faq/compare.png#lightbox)
 

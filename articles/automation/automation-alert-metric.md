@@ -1,71 +1,64 @@
 ---
 title: Azure Automation runbooks met metrische waarschuwingen bewaken
-description: In dit artikel leest u hoe u runbooks bewaakt op basis van metrische gegevens.
+description: In dit artikel wordt beschreven hoe u een metrische waarschuwing kunt instellen op basis van de voltooiings status van het runbook.
 services: automation
-ms.date: 11/01/2018
+ms.date: 08/10/2020
 ms.topic: article
-ms.openlocfilehash: 20aaee5b699e9721bf9083030604df1385da1915
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8767687f0b72d3469bef570770ac81fa8300097f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828743"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055922"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Runbooks bewaken met metrische waarschuwingen
 
-In dit artikel leert u hoe u waarschuwingen kunt maken op basis van de voltooiings status van runbooks.
+In dit artikel leert u hoe u een [metrische waarschuwing](../azure-monitor/platform/alerts-metric-overview.md) kunt maken op basis van de voltooiings status van het runbook.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Aanmelden bij Azure op https://portal.azure.com
+Meld u aan bij [Azure Portal](https://portal.azure.com)
 
 ## <a name="create-alert"></a>Waarschuwing maken
 
 Met waarschuwingen kunt u een voor waarde definiëren die moet worden bewaakt en een actie die moet worden uitgevoerd wanneer aan deze voor waarde wordt voldaan.
 
-Navigeer in het Azure Portal naar uw Automation-account. Onder **bewaking**selecteert u **waarschuwingen** en klikt u op **+ nieuwe waarschuwings regel**. Het bereik voor het doel is al gedefinieerd voor uw Automation-account.
+1. Start de Azure Automation-Service in de Azure Portal door op **alle services**te klikken en vervolgens **Automation-accounts**te zoeken en te selecteren.
+
+2. Selecteer in de lijst met Automation-accounts het account waarvoor u een waarschuwing wilt maken. 
+
+3. Onder **bewaking**selecteert u **waarschuwingen** en selecteert u vervolgens **+ nieuwe waarschuwings regel**. Het bereik voor het doel is al gedefinieerd en gekoppeld aan uw Automation-account.
 
 ### <a name="configure-alert-criteria"></a>Waarschuwings criteria configureren
 
-1. Klik op **+ criteria toevoegen**. Selecteer **metrische gegevens** voor het **signaal type**en kies **Totaal aantal taken** in de tabel.
+1. Klik op **voor waarde selecteren**. Selecteer **metrische gegevens** voor het **signaal type**en kies **Totaal aantal taken** in de lijst.
 
 2. Op de pagina **signaal logica configureren** kunt u de logica definiëren waarmee de waarschuwing wordt geactiveerd. Onder de historische grafiek ziet u twee dimensies, de naam en de **status**van het **Runbook** . Dimensies zijn verschillende eigenschappen voor een metriek die kan worden gebruikt voor het filteren van resultaten. Selecteer bij **runbooknaam**het runbook waarvoor u een melding wilt ontvangen of laat het veld leeg om op alle runbooks te waarschuwen. Selecteer voor **status**een status in de vervolg keuzelijst die u wilt controleren. De runbook-naam en status waarden die in de vervolg keuzelijst worden weer gegeven, zijn alleen voor taken die in de afgelopen week zijn uitgevoerd.
 
-   Als u een waarschuwing wilt ontvangen over een status of runbook dat niet wordt weer gegeven in de vervolg keuzelijst, klikt u op het **\+** volgende bij de dimensie. Met deze actie opent u een dialoog venster waarin u een aangepaste waarde kunt invoeren die voor die dimensie onlangs niet is verzonden. Als u een waarde opgeeft die niet bestaat voor een eigenschap, wordt uw waarschuwing niet geactiveerd.
+   Als u een waarschuwing wilt ontvangen over een status of runbook dat niet wordt weer gegeven in de vervolg keuzelijst, klikt u op de optie **aangepaste waarde toevoegen** naast de dimensie. Met deze actie wordt een dialoog venster geopend waarin u een aangepaste waarde kunt opgeven die onlangs niet voor die dimensie is verzonden. Als u een waarde opgeeft die niet bestaat voor een eigenschap, wordt uw waarschuwing niet geactiveerd.
 
    > [!NOTE]
-   > Als u geen naam voor de dimensie **RunbookName** toepast en er runbooks zijn die voldoen aan de status criteria, waaronder verborgen systeem runbooks, ontvangt u een waarschuwing.
+   > Als u geen naam opgeeft voor de naam van de **runbooknaam** , wordt er een waarschuwing weer gegeven als er runbooks zijn die voldoen aan de status criteria, die verborgen systeem runbooks bevatten.
+
+    Als u bijvoorbeeld een waarschuwing wilt ontvangen wanneer een runbook een _mislukte_ status retourneert, moet u, naast het opgeven van de naam van het runbook, de aangepaste dimensie waarde voor de **status** dimensie toevoegen **mislukt**.
+
+    :::image type="content" source="./media/automation-alert-metric/specify-dimension-custom-value.png" alt-text="Aangepaste dimensie waarde opgeven" border="false":::
 
 3. Definieer onder **waarschuwings logica**de voor waarde en drempel waarde voor uw waarschuwing. Hieronder wordt een voor beeld van uw voor waarde gedefinieerd.
 
-4. Selecteer onder **geëvalueerd op basis van**de tijds duur voor de query en hoe vaak de query moet worden uitgevoerd. Als u bijvoorbeeld **de laatste vijf minuten** voor de **periode** en **elke 1 minuut** voor de **frequentie**hebt gekozen, zoekt de waarschuwing naar het aantal runbooks dat in de afgelopen vijf minuten aan uw criteria is voldaan. Deze query wordt elke minuut uitgevoerd en zodra de opgegeven waarschuwings criteria niet meer in een venster van vijf minuten worden gevonden, wordt de waarschuwing automatisch opgelost. Klik op **Gereed** als u klaar bent.
+4. Selecteer onder **geëvalueerd op basis van**de tijds duur voor de query en hoe vaak deze query moet worden uitgevoerd. Als u bijvoorbeeld **de laatste vijf minuten** voor de **periode**en **elke 1 minuut** voor de **frequentie**hebt gekozen, zoekt de waarschuwing naar het aantal runbooks dat in de afgelopen vijf minuten aan uw criteria is voldaan. Deze query wordt elke minuut uitgevoerd en zodra de opgegeven waarschuwings criteria niet meer in een venster van vijf minuten worden gevonden, wordt de waarschuwing automatisch opgelost. Klik op **Gereed** als u klaar bent.
 
    ![Een resource voor de waarschuwing selecteren](./media/automation-alert-activity-log/configure-signal-logic.png)
 
-### <a name="define-alert-details"></a>Waarschuwingsdetails definiëren
-
-1. Onder **2. Definieer waarschuwings Details**, geef de waarschuwing een beschrijvende naam en beschrijving. Stel de **Ernst** in die overeenkomt met uw waarschuwings voorwaarde. Er zijn vijf Ernst, variërend van 0 tot 5. De waarschuwingen worden gezien op dezelfde onafhankelijk van de ernst, u kunt de ernst overeenkomen met uw bedrijfs logica.
-
-1. Onder aan de sectie bevindt zich een knop waarmee u de regel na voltooiing kunt inschakelen. Standaard worden regels ingeschakeld bij het maken. Als u Nee selecteert, kunt u de waarschuwing maken en wordt deze in een **Uitgeschakelde** status gemaakt. Op de pagina **regels** in azure monitor kunt u deze selecteren en op **inschakelen** klikken om de waarschuwing in te scha kelen wanneer u klaar bent.
-
 ### <a name="define-the-action-to-take"></a>Definieer de actie die moet worden uitgevoerd
 
-1. Minder dan **3. Actie groep definiëren**, klikt u op **+ nieuwe actie groep**. Een actie groep is een groep acties die u in meer dan één waarschuwing kunt gebruiken. Deze kunnen bestaan uit, maar zijn niet beperkt tot, e-mail meldingen, runbooks, webhooks en nog veel meer. Zie voor meer informatie over actie groepen [actie groepen maken en beheren](../azure-monitor/platform/action-groups.md)
+1. Onder **actie groep**selecteert u **actie groep opgeven**. Een actie groep is een groep acties die u in meer dan één waarschuwing kunt gebruiken. Deze kunnen bestaan uit, maar zijn niet beperkt tot, e-mail meldingen, runbooks, webhooks en nog veel meer. Zie [actie groepen maken en beheren](../azure-monitor/platform/action-groups.md)voor meer informatie over actie groepen en stappen voor het maken van een e-mail melding.
 
-1. Voer in het vak **Naam van de actiegroep** een beschrijvende naam en een korte naam in. De korte naam wordt gebruikt in plaats van een volledige naam van de actiegroep als er meldingen via deze groep worden verzonden.
+### <a name="define-alert-details"></a>Waarschuwingsdetails definiëren
 
-1. Selecteer in de sectie **acties** onder **actie type** **e-mail/SMS/push/Voice**.
+1. Geef bij Details van de **waarschuwings regel**de waarschuwing een beschrijvende naam en beschrijving. Stel de **Ernst** in die overeenkomt met uw waarschuwings voorwaarde. Er zijn vijf Ernst, variërend van 0 tot 5. De waarschuwingen worden gezien op dezelfde onafhankelijk van de ernst, u kunt de ernst overeenkomen met uw bedrijfs logica.
 
-1. Geef op de pagina **E-mail/sms/push/spraak** een naam op. Schakel het selectievakje **E-mail** in en voer een geldig e-mailadres in dat moet worden gebruikt.
-
-   ![E-mailactiegroep configureren](./media/automation-alert-activity-log/add-action-group.png)
-
-1. Klik op **OK** op de pagina **E-mail/sms/push/spraak** om de pagina te sluiten en klik op **OK** om de pagina **Actiegroep toevoegen** te sluiten. De naam die u op deze pagina opgeeft, wordt opgeslagen als **actie naam**.
-
-1. Wanneer u klaar bent, klikt u op **Opslaan**. Met deze actie wordt de regel gemaakt waarmee u wordt gewaarschuwd wanneer een runbook met een bepaalde status is voltooid.
-
-> [!NOTE]
-> Wanneer u een e-mail adres aan een actie groep toevoegt, wordt een e-mail melding verzonden met de mede deling dat het adres is toegevoegd aan een actie groep.
+1. Standaard worden regels ingeschakeld bij het maken, tenzij u **Nee** selecteert voor de optie **waarschuwings regel inschakelen bij het maken**. Voor waarschuwingen die zijn gemaakt met een uitgeschakelde status kunt u ze in de toekomst inschakelen wanneer u klaar bent. Selecteer **waarschuwings regel maken** om uw wijzigingen op te slaan.
 
 ## <a name="receive-notification"></a>Melding ontvangen
 

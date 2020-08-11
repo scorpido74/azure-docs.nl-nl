@@ -1,14 +1,14 @@
 ---
 title: Werken met uw beheer groepen-Azure governance
 description: Meer informatie over het weer geven, onderhouden, bijwerken en verwijderen van uw beheer groeps hiërarchie.
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43837dcaed9b9628573ee92244ede542107155f9
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535005"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055136"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheer groepen
 
@@ -65,9 +65,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 Als u een beheer groep wilt verwijderen, moet aan de volgende vereisten worden voldaan:
 
-1. Er zijn geen onderliggende beheer groepen of-abonnementen in de beheer groep.
-
-   - Zie [beheer groepen en abonnementen verplaatsen in de hiërarchie](#moving-management-groups-and-subscriptions)als u een abonnement of beheer groep naar een andere beheer groep wilt verplaatsen.
+1. Er zijn geen onderliggende beheer groepen of-abonnementen in de beheer groep. Zie [beheer groepen en abonnementen verplaatsen in de hiërarchie](#moving-management-groups-and-subscriptions)als u een abonnement of beheer groep naar een andere beheer groep wilt verplaatsen.
 
 1. U moet schrijf machtigingen hebben voor de beheer groep (eigenaar, Inzender of Inzender voor beheer groepen). Als u wilt zien welke machtigingen u hebt, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie voor meer informatie over Azure-rollen.  
    [Toegang en machtigingen beheren met RBAC](../../role-based-access-control/overview.md).
@@ -200,7 +198,7 @@ az account management-group show --name 'Contoso' -e -r
 
 Een van de redenen om een beheer groep te maken, is om abonnementen samen te bundelen. Alleen beheer groepen en abonnementen kunnen onderliggende items van een andere beheer groep worden gemaakt. Een abonnement dat naar een beheer groep verplaatst, neemt alle gebruikers toegang en het beleid over van de bovenliggende beheer groep
 
-Wanneer u een beheer groep of een abonnement naar een onderliggend niveau van een andere beheer groep verplaatst, moeten er drie regels worden geëvalueerd als waar.
+Wanneer u een beheer groep of een abonnement verplaatst naar een onderliggend item van een andere beheer groep, moeten drie regels worden geëvalueerd als waar.
 
 Als u de verplaatsing wilt uitvoeren, hebt u het volgende nodig: 
 
@@ -233,7 +231,7 @@ Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de be
 
    :::image type="content" source="./media/add_context_sub.png" alt-text="Beschik bare abonnementen om toe te voegen aan een beheer groep" border="false":::
 
-1. Selecteer opslaan.
+1. Selecteer Opslaan.
 
 ### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Een abonnement verwijderen uit een beheer groep in de portal
 

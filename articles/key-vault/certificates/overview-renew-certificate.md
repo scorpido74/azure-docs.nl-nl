@@ -10,18 +10,21 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: c6999b67a5c0a0f4ca7cb943ae8de3afd8b6a11e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097008"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056275"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Over Azure Key Vault certificaat vernieuwen
 
 Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inrichten, beheren en implementeren en beveiligde communicatie mogelijk maken voor toepassingen. Zie voor meer algemene informatie over certificaten [Azure Key Vault certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)
 
 Met een kort certificaat of het verg Roten van de frequentie van de draaiing van certificaten beperkt het bereik van de kwaadwillende persoon voor schade.
+
+## <a name="certificate-expiration-notifications"></a>Meldingen voor verlopen van certificaten
+Zorg er eerst voor dat u een certificaat contact persoon toevoegt aan uw Key Vault om een melding te ontvangen wanneer certificaten bijna verlopen (bijvoorbeeld gebruik Power shell [add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)) om te configureren wanneer u een melding wilt ontvangen over het verlopen van certificaten. [Voer de volgende stappen](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) uit om de actie voor de levens duur te configureren
 
 Er zijn drie categorieën voor het maken van certificaten in sleutel kluis. Deze hand leiding helpt u te begrijpen hoe het vernieuwen van certificaten kan worden gerealiseerd.
 -   Certificaten die zijn gemaakt met een geïntegreerde CA (DigiCert of GlobalSign)
@@ -55,6 +58,10 @@ Goed nieuws. Azure-sleutel kluizen zorgen er ook voor dat zelfondertekende certi
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 Als het certificaat dat is uitgegeven de status uitgeschakeld heeft in de Azure Portal, gaat u door met het weer geven van de certificaat bewerking om het fout bericht voor dat certificaat weer te geven.
+
+### <a name="frequently-asked-questions"></a>Veelgestelde vragen
+Worden de labels gerepliceerd nadat het certificaat automatisch is vernieuwd?
+Nee, tags worden alleen gerepliceerd als de gebruiker de labels zelf hand matig kopieert.
 
 ### <a name="see-also"></a>Zie ook
 *   [Key Vault integreren met DigiCert-certificeringsinstantie](how-to-integrate-certificate-authority.md)

@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460606"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053216"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migreren naar Cloud authenticatie met behulp van gefaseerde implementatie (preview-versie)
 
@@ -84,7 +84,7 @@ De volgende scenario's worden niet ondersteund voor gefaseerde implementatie:
 
 - Wanneer u voor het eerst een beveiligings groep voor gefaseerde implementatie toevoegt, bent u beperkt tot 200 gebruikers om een UX-time-out te voor komen. Nadat u de groep hebt toegevoegd, kunt u, indien nodig, meer gebruikers toevoegen.
 
-- Terwijl gebruikers zich in de gefaseerde implementatie bevinden, wordt het beleid voor wachtwoord verloop ingesteld op 90 dagen zonder optie om het aan te passen. 
+- Wanneer gebruikers zich in de gefaseerde implementatie bevinden, wordt het beleid voor het verlopen van wacht woorden ingesteld op 90 dagen, wanneer EnforceCloudPasswordPolicyForPasswordSyncedUsers is ingeschakeld. 
 
 
 ## <a name="get-started-with-staged-rollout"></a>Aan de slag met gefaseerde implementatie

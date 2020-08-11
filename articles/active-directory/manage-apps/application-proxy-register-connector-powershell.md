@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea90c80d9edbefe9df05a5d64da612a89c3b251f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850808"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054831"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Een script voor installatie zonder toezicht maken voor de Azure AD-toepassingsproxy-connector
 
@@ -37,6 +37,9 @@ Deze mogelijkheid is nuttig wanneer u het volgende wilt doen:
 De connector van de [toepassings proxy](application-proxy-connectors.md) werkt alleen als deze is geregistreerd bij uw Azure AD-adres lijst met behulp van een toepassings beheerder en wacht woord. Normaal gesp roken wordt deze informatie tijdens de installatie van de connector ingevoerd in een pop-updialoogvenster, maar u kunt Power shell gebruiken om dit proces te automatiseren.
 
 Er zijn twee stappen voor een installatie zonder toezicht. Installeer eerst de connector. Registreer vervolgens de connector bij Azure AD.
+
+> [!IMPORTANT]
+> Als u de connector voor Azure Government Cloud installeert, controleert u de [vereisten](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) en [installatie stappen](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). Hiervoor moet u de toegang tot een andere set URL's en een extra parameter inschakelen om de installatie uit te voeren.
 
 ## <a name="install-the-connector"></a>De connector installeren
 Gebruik de volgende stappen om de connector te installeren zonder deze te registreren:

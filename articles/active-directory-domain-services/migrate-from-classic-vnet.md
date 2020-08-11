@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/09/2020
+ms.date: 08/10/2020
 ms.author: iainfou
-ms.openlocfilehash: f77d9cd72476f9f2c30ca22bb2296efe1fd6cf9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051676"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054286"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure Active Directory Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
 
@@ -197,6 +197,12 @@ Voer de volgende stappen uit om het beheerde domein voor te bereiden voor migrat
     ```powershell
     $creds = Get-Credential
     ```
+    
+1. Definieer een variabele voor uw Azure-abonnements-ID. Als dat nodig is, kunt u de cmdlet [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) gebruiken om uw abonnement-id's weer te geven. Geef uw eigen abonnement-ID op in de volgende opdracht:
+
+   ```powershell
+   $subscriptionId = 'yourSubscriptionId'
+   ```
 
 1. Voer nu de `Migrate-Aadds` cmdlet uit met de para meter *-Prepare* . Geef de *-ManagedDomainFqdn* op voor uw eigen beheerde domein, zoals *aaddscontoso.com*:
 
@@ -204,7 +210,8 @@ Voer de volgende stappen uit om het beheerde domein voor te bereiden voor migrat
     Migrate-Aadds `
         -Prepare `
         -ManagedDomainFqdn aaddscontoso.com `
-        -Credentials $creds
+        -Credentials $creds `
+        -SubscriptionId $subscriptionId
     ```
 
 ## <a name="migrate-the-managed-domain"></a>Het beheerde domein migreren
@@ -224,7 +231,8 @@ Migrate-Aadds `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 Nadat het script het beheerde domein heeft gevalideerd, wordt de migratie voor bereid. Voer *Y* in om het migratie proces te starten.
@@ -310,7 +318,8 @@ Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 ### <a name="restore"></a>Herstellen

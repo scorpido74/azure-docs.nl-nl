@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: rohink
-ms.openlocfilehash: 4b0f79ba072c813a7639e87025c19a34e65df023
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69bdf9a0e04b4d9c2a55f1c0f346d601830ded09
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183457"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053062"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Het internetdomein van een bedrijf naar een Traffic Manager-domein laten wijzen
 
@@ -23,7 +23,7 @@ Wanneer u een Traffic Manager-profiel maakt, wijst Azure automatisch een DNS-naa
 
 Om de naam `www.contoso.com` bijvoorbeeld te laten verwijzen naar de Traffic Manager-DNS-naam `contoso.trafficmanager.net`, maakt u de volgende DNS-bronrecord:
 
-`www.contoso.com IN CNAME contoso.trafficmanager.net`
+`www.contoso.com IN CNAME contoso.trafficmanager.net.`
 
 Alle verkeers aanvragen naar *www- \. contoso.com* worden doorgestuurd naar *contoso.trafficmanager.net*.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 9804992aee318fdc34815bdbe4187144704cd667
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099770"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053913"
 ---
 # <a name="what-is-batch-transcription"></a>Wat is batch-transcriptie?
 
@@ -346,4 +346,4 @@ U kunt het voor beeld in de `samples/batch` Directory vinden in de [github-voorb
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
+- [Spraak naar tekst v3 API-referentie](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

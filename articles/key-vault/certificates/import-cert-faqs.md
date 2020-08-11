@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 402672d8eeaae8a5097e2ab2905997eb1f646ad6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445782"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056343"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Veelgestelde vragen-Azure Key Vault certificaat importeren
 
@@ -32,6 +32,10 @@ Het geüploade beveiligde certificaat na opslag in de sleutel kluis slaat geen w
 ### <a name="how-can-i-resolve-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-in-key-vault"></a>Hoe kan ik ' fout met ongeldige para meter ' oplossen? Wat zijn de ondersteunde certificaatindelingen voor het importeren in de sleutelkluis?
 
 Wanneer u het certificaat importeert, moet u ervoor zorgen dat de sleutel is opgenomen in het bestand zelf. Als u de persoonlijke sleutel afzonderlijk in een andere indeling hebt, moet u de sleutel combi neren met het certificaat. Sommige certificerings instanties bieden certificaten in verschillende indelingen, dus voordat u het certificaat importeert, moet u ervoor zorgen dat ze de indeling. pem of. pfx hebben en dat de gebruikte sleutel RSA of ECC is. Raadpleeg deze voor het controleren van de [certificaat vereisten](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) en [vereisten voor certificaat sleutels](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection).
+
+###  <a name="can-i-import-certificate-using-arm-template"></a>Kan ik een certificaat met een ARM-sjabloon importeren?
+
+Nee, het is niet mogelijk om certifiate-bewerkingen uit te voeren met ARM-sjablonen. De aanbevolen tijdelijke oplossing is om de methoden voor het importeren van certificaten in de API of CLI of Power shell te gebruiken. Als u een bestaande-certificaat hebt, kunt u het importeren als een geheim.
 
 ### <a name="error-when-importing-certificate-via-portal-something-went-wrong-how-can-i-investigate-further"></a>Fout bij het importeren van het certificaat via de portal: 'Er is iets fout gegaan'. Hoe kan ik verder onderzoeken?
     

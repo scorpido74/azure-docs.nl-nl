@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f242b4a7e984ceeb183547cb3a949927f3c91da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653105"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053997"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgraden naar de nieuwste versie van Azure Multi-Factor Authentication Server
 
@@ -41,7 +41,7 @@ Upgrade stappen in een oogopslag:
 4. Voer het nieuwe installatie programma uit op elke MFA-server. Voer eerst onderliggende servers bij, omdat deze het oude gegevens bestand dat door de Master wordt gerepliceerd, kan lezen.
 
    > [!NOTE]
-   > Wanneer u een server bijwerkt, moet deze worden verwijderd uit alle loadbalancing of verkeer delen met andere MFA-servers.
+   > Wanneer u een server bijwerkt, moet deze worden verwijderd uit de taak verdeling of het delen van verkeer met andere MFA-servers.
    >
    > U hoeft uw huidige MFA-server niet te verwijderen voordat u het installatie programma uitvoert. Het installatie programma voert een in-place upgrade uit. Het installatiepad wordt vanuit de vorige installatie vanuit het REGI ster opgehaald, zodat het wordt geïnstalleerd op dezelfde locatie (bijvoorbeeld C:\Program Files\Multi-Factor Authentication Server).
   

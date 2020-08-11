@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 85ec94ccf853d4f8b02a14ba08e9515170b36b5e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387775"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054797"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Een implementatie van eenmalige aanmelding plannen
 
@@ -50,7 +50,7 @@ Er zijn twee primaire manieren waarop u uw gebruikers in staat kunt stellen om e
 
 - **Met federatieve eenmalige aanmelding** Azure AD verifieert de gebruiker aan de toepassing met behulp van hun Azure AD-account. Deze methode wordt ondersteund voor toepassingen die ondersteuning bieden voor protocollen zoals SAML 2,0, WS-Federation of OpenID Connect Connect, en is de uitgebreide modus van eenmalige aanmelding. U kunt het beste federatieve SSO met Azure AD gebruiken wanneer een toepassing dit ondersteunt, in plaats van SSO-en ADFS-aanmelding op basis van wacht woorden.
 
-- **Wanneer gebruikers met een wacht woord** zijn aangemeld bij de toepassing met een gebruikers naam en wacht woord, krijgen ze de eerste keer toegang. Na de eerste aanmelding levert Azure AD de gebruikersnaam en het wachtwoord voor de toepassing. Met eenmalige aanmelding op basis van wacht woorden kan beveiligde toepassings wachtwoorden worden opgeslagen en opnieuw worden afgespeeld met een webbrowser extensie of een mobiele app. Deze optie maakt gebruik van het bestaande aanmeldings proces dat wordt meegeleverd met de toepassing, stelt een beheerder in staat om de wacht woorden te beheren en vereist niet dat de gebruiker het wacht woord kent.
+- **Wanneer gebruikers met een wacht woord** zijn aangemeld bij de toepassing met een gebruikers naam en wacht woord, krijgen ze de eerste keer toegang. Na de eerste aanmelding levert Azure AD de gebruikersnaam en het wachtwoord voor de toepassing. Bij eenmalige aanmelding op basis van een wachtwoord is beveiligde toepassingswachtwoordopslag en -herhaling mogelijk door middel van een webbrowserextensie of mobiele app. Deze optie maakt gebruik van het bestaande aanmeldings proces dat wordt meegeleverd met de toepassing, stelt een beheerder in staat om de wacht woorden te beheren en vereist niet dat de gebruiker het wacht woord kent.
 
 ### <a name="considerations-for-federation-based-sso"></a>Overwegingen voor SSO op basis van Federatie
 
@@ -60,7 +60,7 @@ Er zijn twee primaire manieren waarop u uw gebruikers in staat kunt stellen om e
 
 ### <a name="considerations-for-password-based-sso"></a>Overwegingen voor SSO op basis van wacht woorden
 
-Voor het gebruik van Azure AD voor SSO op basis van een wacht woord moet een browser extensie worden geïmplementeerd waarmee de referenties veilig worden opgehaald en de aanmeldings formulieren worden ingevuld. Definieer een mechanisme voor het implementeren van de uitbrei ding op schaal met [ondersteunde browsers](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Opties zijn onder andere:
+Voor het gebruik van Azure AD voor SSO op basis van een wacht woord moet een browser extensie worden geïmplementeerd waarmee de referenties veilig worden opgehaald en de aanmeldings formulieren worden ingevuld. Definieer een mechanisme voor het implementeren van de uitbrei ding op schaal met [ondersteunde browsers](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Een aantal opties:
 
 - [groepsbeleid voor Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 - [Configuration Manager voor Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
@@ -324,3 +324,5 @@ De volgende koppelingen geven scenario's voor het oplossen van problemen. U kunt
 [Toegang via eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 [Zelf studie voor Application SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+
+[Technisch document downloaden-implementatie plan voor eenmalige aanmelding](https://aka.ms/SSODeploymentPlan)

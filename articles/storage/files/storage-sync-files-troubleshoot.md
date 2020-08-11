@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d268358f2f80cc9d347fa722d5027e1a87894b20
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034393"
+ms.locfileid: "88056258"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -47,7 +47,7 @@ Na het maken van een server eindpunt op Windows Server 2012 R2, treedt de volgen
 stationsletter: \ is niet toegankelijk.  
 De parameter is onjuist.
 
-Installeer de meest recente updates voor Windows Server 2012 R2 en start de server opnieuw op om het probleem op te lossen.
+U kunt dit probleem oplossen door [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) te installeren en de server opnieuw op te starten. Als deze update niet kan worden geïnstalleerd omdat een latere update al is geïnstalleerd, gaat u naar Windows Update, installeert u de nieuwste updates voor Windows Server 2012 R2 en start u de server opnieuw op.
 
 <a id="server-registration-missing-subscriptions"></a>**Bij de server registratie worden niet alle Azure-abonnementen weer geven**  
 Wanneer u een server registreert met behulp van ServerRegistration.exe, ontbreken er abonnementen wanneer u op de vervolg keuzelijst van het Azure-abonnement klikt.
@@ -338,7 +338,7 @@ Als u deze fouten wilt zien, voert u **FileSyncErrorsReport.ps1** het Power shel
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Het bestand kan niet worden gesynchroniseerd omdat het maximum aantal conflict bestanden is bereikt. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zie Azure File Sync [Veelgestelde vragen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution)voor meer informatie over bestands conflicten. | Verminder het aantal conflict bestanden om dit probleem op te lossen. Het bestand wordt gesynchroniseerd zodra het aantal conflict bestanden kleiner is dan 100. |
 
 #### <a name="handling-unsupported-characters"></a>Niet-ondersteunde tekens verwerken
-Als in het Power shell-script voor **FileSyncErrorsReport.ps1** fouten worden weer gegeven als gevolg van niet-ondersteunde tekens (fout code 0x8007007b of 0x80c80255), moet u de tekens bij fout verwijderen of de naam van de betreffende bestands namen wijzigen. In Power shell worden deze tekens waarschijnlijk afgedrukt als vraag tekens of lege rechthoeken omdat de meeste van deze tekens geen standaard-visuele code ring hebben. Het [evaluatie hulpprogramma](storage-sync-files-planning.md#evaluation-cmdlet) kan worden gebruikt om tekens te identificeren die niet worden ondersteund.
+Als in het Power shell-script van **FileSyncErrorsReport.ps1** per item synchronisatie fouten worden weer gegeven als gevolg van niet-ondersteunde tekens (fout code 0x8007007b of 0x80c80255), moet u de tekens bij fout verwijderen of de naam van de betreffende bestands namen wijzigen. In Power shell worden deze tekens waarschijnlijk afgedrukt als vraag tekens of lege rechthoeken omdat de meeste van deze tekens geen standaard-visuele code ring hebben. Het [evaluatie hulpprogramma](storage-sync-files-planning.md#evaluation-cmdlet) kan worden gebruikt om tekens te identificeren die niet worden ondersteund. Als uw gegevensset meerdere bestanden met ongeldige tekens bevat, gebruikt u het script [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) om de namen van bestanden te wijzigen die niet-ondersteunde tekens bevatten.
 
 De onderstaande tabel bevat alle Unicode-tekens Azure File Sync nog niet wordt ondersteund.
 

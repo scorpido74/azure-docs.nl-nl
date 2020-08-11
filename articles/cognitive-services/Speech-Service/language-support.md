@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: c01e543b251020581d96d61434d0b3309535ef0c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902042"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053572"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -361,20 +361,20 @@ Raadpleeg de volgende tabel voor ondersteunde talen voor de verschillende Speake
 | Landinstelling | Taal | Tekst afhankelijke verificatie | Tekst onafhankelijke verificatie | Tekst onafhankelijke identificatie |
 |----|----|----|----|----|
 | nl-NL | Engels (VS) | ja | ja | ja |
-|zh-CN  |Chinees (Mandarijn, vereenvoudigd)|    N.v.t.|    ja|    ja|
-|de-DE  |Duits (Duitsland)   |N.v.t.    |ja    |ja|
-|en-GB  |Engels (UK)   |N.v.t.    |ja    |ja|
-|fr-FR  |Frans (Frankrijk)    |N.v.t.    |ja    |ja|
-|en-AU  |Engels (Australië)    |N.v.t.    |ja    |ja|
-|en-CA  |Engels (Canada)   |N.v.t.|   ja|    ja|
-|FR-CA  |Frans (Canada)    |N.v.t.    |ja|   ja|
-|it-IT  |Italiaans|   N.v.t. |ja|   ja|
-|es-ES| Spaans (Spanje) |N.v.t.    |ja|   ja|
-|es-MX  |Spaans (Mexico)   |N.v.t.|   ja|    ja|
-|ja-JP| Japans    |N.v.t.    |ja    |ja|
-|pt-BR| Portugees (Brazilië)|    N.v.t.|    ja|    ja|
+|zh-CN    |Chinees (Mandarijn, vereenvoudigd)|    N.v.t.|    ja|    ja|
+|de-DE    |Duits (Duitsland)    |N.v.t.    |ja    |ja|
+|en-GB    |Engels (UK)    |N.v.t.    |ja    |ja|
+|fr-FR    |Frans (Frankrijk)    |N.v.t.    |ja    |ja|
+|en-AU    |Engels (Australië)    |N.v.t.    |ja    |ja|
+|en-CA    |Engels (Canada)    |N.v.t.|    ja|    ja|
+|FR-CA    |Frans (Canada)    |N.v.t.    |ja|    ja|
+|it-IT    |Italiaans|    N.v.t.    |ja|    ja|
+|es-ES|    Spaans (Spanje)    |N.v.t.    |ja|    ja|
+|es-MX    |Spaans (Mexico)    |N.v.t.|    ja|    ja|
+|ja-JP|    Japans    |N.v.t.    |ja    |ja|
+|pt-BR|    Portugees (Brazilië)|    N.v.t.|    ja|    ja|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw proef abonnement voor spraak services ophalen](https://azure.microsoft.com/try/cognitive-services/)
+* [Een gratis Azure-account maken](https://azure.microsoft.com/free/cognitive-services/)
 * [Zie spraak herkennen in C #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

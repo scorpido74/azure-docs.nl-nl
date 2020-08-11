@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 77c0489838685d65d7579f37d6a6cb922af509f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062537"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053742"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Door de klant beheerde sleutels voor uw Azure Batch account configureren met Azure Key Vault en beheerde identiteit
 
@@ -82,7 +82,7 @@ Vul in het veld **selecteren** onder **Principal**de in `principalId` die u eerd
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Een sleutel in Azure Key Vault genereren
 
-In de Azure Portal gaat u naar de Key Vault instantie in de sectie **sleutel** en selecteert u **genereren/importeren**. Selecteer het **sleutel type** en de `RSA` **sleutel grootte** `2048` .
+In de Azure Portal gaat u naar de Key Vault instantie in de sectie **sleutel** en selecteert u **genereren/importeren**. Selecteer het **sleutel type** en de `RSA` **RSA-sleutel grootte** moet ten minste `2048` bits zijn. `EC`sleutel typen worden momenteel niet ondersteund als een door de klant beheerde sleutel voor een batch-account.
 
 ![Een sleutel maken](./media/batch-customer-managed-key/create-key.png)
 
@@ -142,6 +142,7 @@ az batch account set \
 ```
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
   * **Worden door de klant beheerde sleutels ondersteund voor bestaande batch-accounts?** Nee. Door de klant beheerde sleutels worden alleen ondersteund voor nieuwe batch-accounts.
+  * **Kan ik RSA-sleutel grootten selecteren die groter zijn dan 2048 bits?** Ja, RSA-sleutel groottes `3072` en `4096` bits worden ook ondersteund.
   * **Welke bewerkingen zijn beschikbaar nadat een door de klant beheerde sleutel is ingetrokken?** De enige bewerking die is toegestaan, is het verwijderen van een account als batch de toegang tot de door de klant beheerde sleutel verliest.
   * **Hoe kan ik de toegang tot mijn batch-account herstellen als ik de Key Vault sleutel per ongeluk verwijder?** Aangezien het opschonen van de beveiliging en het voorlopig verwijderen zijn ingeschakeld, kunt u de bestaande sleutels herstellen. Zie [een Azure Key Vault herstellen](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault)voor meer informatie.
   * **Kan ik door de klant beheerde sleutels uitschakelen?** U kunt het versleutelings type van het batch-account op elk gewenst moment weer instellen op ' micro soft Managed key '. Daarna kunt u de sleutel verwijderen of wijzigen.

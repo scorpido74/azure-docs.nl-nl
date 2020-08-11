@@ -16,15 +16,15 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359004"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053283"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische upgrade
-Deze functie is geïntroduceerd in build [1.1.105.0 (uitgebracht op februari 2016)](reference-connect-version-history.md#111050).  Deze functie is bijgewerkt in [Build 1.1.561](reference-connect-version-history.md#115610) en ondersteunt nu aanvullende scenario's die voorheen niet werden ondersteund.
+Deze functie is geïntroduceerd in build [1.1.105.0 (uitgebracht op februari 2016)](reference-connect-version-history.md).  Deze functie is bijgewerkt in [Build 1.1.561](reference-connect-version-history.md) en ondersteunt nu aanvullende scenario's die voorheen niet werden ondersteund.
 
 ## <a name="overview"></a>Overzicht
 Zorg ervoor dat de Azure AD Connect-installatie altijd up-to-date is, is nog nooit zo eenvoudig geweest met de functie voor **automatische upgrades** . Deze functie is standaard ingeschakeld voor snelle installaties en DirSync-upgrades. Wanneer een nieuwe versie wordt uitgebracht, wordt de installatie automatisch geüpgraded.
@@ -79,7 +79,7 @@ De resultaat code bevat een voor voegsel met een overzicht van de status.
 
 Hier volgt een lijst met de meest voorkomende berichten die u vindt. Er worden niet alle weer gegeven, maar het resultaat moet duidelijk zijn bij wat het probleem is.
 
-| Resultaat bericht | Description |
+| Resultaat bericht | Beschrijving |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Kan niet schrijven naar het REGI ster. |

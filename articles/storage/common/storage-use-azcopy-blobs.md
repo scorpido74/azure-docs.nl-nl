@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: bcb4563f7106161920b89897b706b05d2f819938
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4bf3974cd561626c280dc65aa5fc78d0c9a159b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282446"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056496"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overdragen met AzCopy en Blob Storage
 
@@ -283,7 +283,7 @@ Deze voor beelden werken ook met accounts die een hiërarchische naam ruimte heb
 >
 > |Scenario|Vlag|
 > |---|---|
-> |Kopieer bestanden als toevoeg-blobs of pagina-blobs.|**--BLOB-type** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
+> |Blobs kopiëren als blok-, pagina-of toevoeg-blobs.|**--BLOB-type** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
 > |Kopiëren naar een specifieke toegangs laag (zoals de laag archief).|**--Block-BLOB-tier** = \[ Geen \| Hot- \| koud \| Archief\]|
 > |Bestanden automatisch decomprimeren.|**--decomprimeren** = \[ gzip- \| Deflate\]|
 > 
