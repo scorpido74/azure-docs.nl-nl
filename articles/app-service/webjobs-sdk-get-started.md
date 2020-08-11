@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3b3e52b8386f212521f0fa1ca97cbd658374209
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743624"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078305"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Aan de slag met de Azure WebJobs SDK voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -185,7 +185,7 @@ Vanaf versie 3. x moet u de opslag bindings extensie expliciet installeren die i
 
    De `message` para meter moet geen teken reeks zijn. U kunt ook binden aan een JSON-object, een byte matrix of een [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) -object. [Zie het gebruik van wachtrij Triggers](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Elk bindings type (zoals wacht rijen, blobs of tabellen) heeft een andere set parameter typen waarmee u verbinding kunt maken.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 De Azure Storage-emulator die lokaal wordt uitgevoerd, beschikt niet over alle functies die nodig zijn voor de webjobs SDK. In dit gedeelte maakt u een opslag account in Azure en configureert u het project om het te gebruiken. Als u al een opslag account hebt, gaat u verder met stap 6.
 
@@ -310,7 +310,7 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>App Service app-en Application Insights-exemplaar maken
 
-1. Als u nog geen app hebt App Service die u kunt gebruiken, maakt u er [een](app-service-web-get-started-dotnet-framework.md). Wanneer u uw app maakt, kunt u ook een verbonden Application Insights-resource maken. Wanneer u dit doet, `APPINSIGHTS_INSTRUMENTATIONKEY` wordt de in uw app ingesteld voor u.
+1. Als u nog geen app hebt App Service die u kunt gebruiken, maakt u er [een](quickstart-dotnet-framework.md). Wanneer u uw app maakt, kunt u ook een verbonden Application Insights-resource maken. Wanneer u dit doet, `APPINSIGHTS_INSTRUMENTATIONKEY` wordt de in uw app ingesteld voor u.
 
 1. Als u nog geen Application Insights resource hebt die u kunt gebruiken, maakt u er [een](../azure-monitor/app/create-new-resource.md ). Stel het **toepassings type** in op **Algemeen**en sla de secties die volgen **de instrumentatie sleutel kopiëren**op.
 
@@ -326,13 +326,13 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
 1. Voeg in het vak **verbindings reeksen** de volgende vermelding toe.
 
-   |Name  |verbindings reeks  |Database type|
+   |Naam  |verbindings reeks  |Database type|
    |---------|---------|------|
-   |AzureWebJobsStorage | {de opslag connection string die u eerder hebt gekopieerd}|Aangepast|
+   |AzureWebJobsStorage | {de opslag connection string die u eerder hebt gekopieerd}|Aangepast telefoonnummer|
 
 1. Als het vak **Toepassings instellingen** geen Application Insights instrumentatie sleutel heeft, voegt u het toe dat u eerder hebt gekopieerd. (De instrumentatie sleutel is mogelijk al aanwezig, afhankelijk van hoe u de App Service-app hebt gemaakt.)
 
-   |Name  |Waarde  |
+   |Naam  |Waarde  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentatie sleutel} |
 
@@ -428,7 +428,7 @@ In deze sectie voert u lokaal opnieuw uit om te controleren of logboek gegevens 
 
 1. Sluit het console venster.
 
-## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Implementeren op Azure
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Implementeren in Azure
 
 Tijdens de implementatie maakt u een app service-exemplaar waarin u uw functies kunt uitvoeren. Wanneer u een .NET Core-Console-app publiceert naar App Service in azure, wordt deze automatisch uitgevoerd als Webtaak. Zie [Webjobs ontwikkelen en implementeren met Visual Studio](webjobs-dotnet-deploy-vs.md)voor meer informatie over publiceren.
 

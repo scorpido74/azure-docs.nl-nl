@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/25/2020
+ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 14f9ab0b1c3b8b437e46a7b6a2d8b87f03442a02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b8d3472eeedab72644456b4278d3b9f3625c5850
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290449"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078184"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een IR bewaken in Azure Data Factory
 
@@ -161,7 +161,7 @@ Voorbeeld uitvoer (er wordt van uitgegaan dat er twee knoop punten zijn gekoppel
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS-integratie-runtime
 
-Azure-SSIS IR is een volledig beheerd cluster met virtuele Azure-machines (of knoop punten) dat is toegewezen om uw SSIS-pakketten uit te voeren. U kunt SSIS-pakket uitvoeringen aanroepen op Azure-SSIS IR met behulp van verschillende methoden, bijvoorbeeld via Azure-SQL Server Data Tools (SSDT), AzureDTExec opdracht regel hulpprogramma, T-SQL op SQL Server Management Studio (SSMS)/SQL Server Agent en SSIS-pakket activiteiten uitvoeren in ADF-pijp lijnen. Azure-SSIS IR voert geen andere ADF-activiteiten uit. Wanneer u eenmaal hebt ingericht, kunt u de algemene/knooppunt specifieke eigenschappen en statussen controleren via Azure PowerShell, Azure Portal en Azure Monitor.
+Azure-SSIS IR is een volledig beheerd cluster met virtuele Azure-machines (Vm's of knoop punten) die zijn toegewezen om uw SSIS-pakketten uit te voeren. U kunt SSIS-pakket uitvoeringen aanroepen op Azure-SSIS IR met behulp van verschillende methoden, bijvoorbeeld via Azure-SQL Server Data Tools (SSDT), AzureDTExec opdracht regel hulpprogramma, T-SQL op SQL Server Management Studio (SSMS)/SQL Server Agent en SSIS-pakket activiteiten uitvoeren in ADF-pijp lijnen. Azure-SSIS IR voert geen andere ADF-activiteiten uit. Wanneer u eenmaal hebt ingericht, kunt u de algemene/knooppunt specifieke eigenschappen en statussen controleren via Azure PowerShell, Azure Portal en Azure Monitor.
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-powershell"></a>De Azure SSIS Integration runtime bewaken met Azure PowerShell
 
@@ -228,31 +228,55 @@ Als u uw Azure-SSIS IR in Azure Portal wilt bewaken, gaat u naar de pagina **Int
 
 ![Alle Integration Runtimes bewaken](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
-Selecteer vervolgens de naam van uw Azure-SSIS IR om de pagina controle te openen, waar u de eigenschappen en statussen van de algemene/specifieke knoop punten kunt zien.
+Selecteer vervolgens de naam van uw Azure-SSIS IR om de pagina controle te openen, waar u de eigenschappen en statussen van de algemene/specifieke knoop punten kunt zien. Afhankelijk van de manier waarop u de instellingen algemeen, implementatie en Geavanceerd van uw Azure-SSIS IR configureert, vindt u in deze pagina verschillende informatief en functionele tegels.  In de informatie tegels **type** en **regio** worden respectievelijk het type en de regio van uw Azure-SSIS IR weer gegeven. De tegel informatie over **knooppunt grootte** bevat de SKU (SSIS edition_VM tier_VM Series), het aantal CPU-kernen en de grootte van het RAM-geheugen per knoop punt voor uw Azure-SSIS IR. De tegel belichte **/AANGEvraagde knoop** punten vergelijkt het aantal knoop punten dat momenteel wordt uitgevoerd op het totale aantal knoop punten dat eerder is aangevraagd voor uw Azure-SSIS IR. De functionele tegels worden in meer details hieronder beschreven.
 
 ![Uw Azure-SSIS IR bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
 
-Op de **status** tegel van de pagina Azure-SSIS IR bewaking ziet u de algehele status, bijvoorbeeld **actief** of **gestopt**. Als u de status actief selecteert, **wordt** er een venster weer gegeven met de knop Live **stoppen** om de Azure-SSIS IR te stoppen. Als u de status **stopped** selecteert, wordt er een venster weer gegeven met de knop Live **Start** om uw Azure-SSIS IR te starten. Het pop-upvenster bevat ook de knop **uitvoeren SSIS-pakket** om automatisch een ADF-pijp lijn te genereren met de activiteit uitvoeren SSIS-pakket die op uw Azure-SSIS IR wordt uitgevoerd (Zie [SSIS-pakketten uitvoeren als uitvoering van SSIS-pakket activiteiten in ADF-pijp lijnen](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) en het tekstvak **Resource-ID** van waaruit u uw Azure-SSIS IR resource-id () kunt kopiëren `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` die kan worden gebruikt voor het aanschaffen van extra Premium/gelicentieerde SSIS-onderdelen van onafhankelijke software leveranciers (isv's) en deze aan uw Azure-SSIS IR te binden (Zie [Premium/gelicentieerde onderdelen op uw Azure-SSIS IR installeren](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
+#### <a name="status-tile"></a>STATUS tegel
+
+Op de **status** tegel van de pagina Azure-SSIS IR bewaking ziet u de algehele status, bijvoorbeeld **actief** of **gestopt**. Als u de status actief selecteert, **wordt** er een venster weer gegeven met de knop Live **stoppen** om de Azure-SSIS IR te stoppen. Als u de status **stopped** selecteert, wordt er een venster weer gegeven met de knop Live **Start** om uw Azure-SSIS IR te starten. Het pop-upvenster bevat ook de knop **Execute SSIS package** om automatisch een ADF-pijp lijn te genereren met activiteit voor het uitvoeren van SSIS-pakketten die op uw Azure-SSIS IR wordt uitgevoerd (Zie [SSIS-packs uitvoeren als uitvoering van SSIS-pakket activiteiten in ADF-pijp lijnen](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) en het tekstvak **resource-id** , van waaruit u uw Azure-SSIS IR resource-id () kunt kopiëren `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` . Het achtervoegsel van de Azure-SSIS IR Resource-ID die uw ADF-en Azure-SSIS IR-namen bevat vormt een cluster-ID die kan worden gebruikt voor het aanschaffen van extra Premium/gelicentieerde SSIS-onderdelen van onafhankelijke software leveranciers (Isv's) en deze aan uw Azure-SSIS IR te koppelen (Zie [Premium/gelicentieerde onderdelen op uw Azure-SSIS IR installeren](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
 
 ![De tegel Azure-SSIS IR STATUS bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
+
+#### <a name="ssisdb-server-endpoint-tile"></a>Tegel SSISDB-SERVER EINDPUNT
 
 Als u een project implementatie model gebruikt waarbij pakketten worden opgeslagen in SSISDB die worden gehost door uw Azure SQL Database Server of beheerde instantie, ziet u de tegel **SSISDB server-eind punt** op de pagina Azure-SSIS IR bewaking (Zie [uw implementatie-instellingen voor Azure-SSIS IR configureren](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Op deze tegel kunt u een koppeling selecteren met uw Azure SQL Database Server of een beheerd exemplaar om een venster te openen, waar u het server eindpunt vanuit een tekstvak kunt kopiëren en gebruiken wanneer u verbinding maakt vanuit SSMS om uw pakketten te implementeren, te configureren, uit te voeren en te beheren. In het pop-upvenster kunt u ook de koppeling **uw Azure SQL database of beheerde exemplaar instellingen weer geven** selecteren om uw SSISDB opnieuw te configureren/verg Roten of verkleinen in azure Portal.
 
 ![De tegel Azure-SSIS IR-SSISDB bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
 
+#### <a name="proxy--staging-tile"></a>Tegel voor PROXY/fase ring
+
+Als u zelf-Hostende IR (SHIR) downloadt, installeert en configureert als proxy voor uw Azure-SSIS IR om toegang te krijgen tot gegevens on-premises, ziet u de tegel **proxy/STAGING** op uw Azure-SSIS IR monitoring-pagina (Zie [SHIR configureren als proxy voor uw Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Op deze tegel kunt u een koppeling selecteren die uw SHIR aanwijst om de controle pagina ervan te openen. U kunt ook een andere koppeling selecteren om uw Azure-Blob Storage aan te wijzen voor fase ring om de gekoppelde service opnieuw te configureren.
+
+#### <a name="validate-vnet--subnet-tile"></a>De tegel VNET/SUBNET valideren
+
 Als u uw Azure-SSIS IR aan een VNet koppelt, ziet u de tegel **VNet/SUBNET valideren** op uw Azure-SSIS IR bewakings pagina (zie [uw Azure-SSIS IR toevoegen aan een vnet](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)). Op deze tegel kunt u een koppeling selecteren voor uw VNet en subnet om een venster te openen, waar u uw VNet-Resource-ID ( `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet` ) en de naam van het subnet kopieert vanuit tekst vakken, en uw vnet-en subnet-configuraties kunt valideren om ervoor te zorgen dat de vereiste inkomende/uitgaande netwerk verkeer en het beheer van uw Azure-SSIS IR niet worden belemmerd.
 
 ![De tegel Azure-SSIS IR-validatie bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
+
+#### <a name="diagnose-connectivity-tile"></a>CONNECTIVITEITs tegel DIAGNOSTICeren
 
 Op de tegel connectiviteit voor het controleren van de **verbinding** van de pagina bewaking van Azure-SSIS IR kunt u de **verbindings koppeling testen** selecteren om een venster te openen. hier kunt u de verbindingen tussen uw Azure-SSIS IR en relevante pakket-en configuratie-en gegevens archieven controleren, evenals beheer Services via hun Fully Qualified Domain Name (FQDN)/IP-adres en de aangewezen poort (Zie [verbindingen testen van uw Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)).
 
 ![De tegel Azure-SSIS IR-diagnose controleren](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
+#### <a name="static-public-ip-addresses-tile"></a>Tegel voor statische open bare IP-adressen
+
+Als u uw eigen statische open bare IP-adressen voor Azure-SSIS IR meebrengt, ziet u de tegel **statische open bare IP-adressen** op de pagina voor Azure-SSIS IR bewaking (Zie [uw eigen statische open bare IP-adressen voor Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)plaatsen). Op deze tegel kunt u koppelingen selecteren met uw eerste/tweede statische open bare IP-adressen voor Azure-SSIS IR om een venster te openen waarin u de resource-ID () kunt kopiëren `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress` van een tekstvak. In het pop-upvenster kunt u ook de koppeling **uw eerste/tweede statische open bare IP-adres weer geven** selecteren om uw eerste/tweede statische open bare IP-adres te beheren in azure Portal.
+
+![De tegel Azure-SSIS IR-diagnose controleren](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+
+#### <a name="package-stores-tile"></a>Tegel pakket winkels
+
 Als u pakket implementatie model gebruikt waarbij pakketten worden opgeslagen in het bestands systeem/Azure Files/SQL Server Data Base (MSDB) gehost door uw door Azure SQL beheerd exemplaar en worden beheerd via Azure-SSIS IR pakket winkels, ziet u de tegel **pakket archieven** op de pagina voor Azure-SSIS IR controle (zie [uw Azure-SSIS IR implementatie-instellingen configureren](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Op deze tegel kunt u een koppeling selecteren met het aantal pakket archieven dat is gekoppeld aan uw Azure-SSIS IR om een venster te openen. hier kunt u de relevante gekoppelde services voor uw Azure-SSIS IR-pakket archieven opnieuw configureren op het bestands systeem/Azure Files/MSDB gehost door uw door Azure SQL beheerd exemplaar.
 
 ![De tegel Azure-SSIS IR-pakket bewaken](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
 
+#### <a name="errors-tile"></a>Tegel fout (en)
+
 Als er problemen zijn met het starten/stoppen/onderhoud/bijwerken van uw Azure-SSIS IR, ziet u een tegel met een extra **fout (en)** op de pagina voor Azure-SSIS IR bewaking. Op deze tegel kunt u een koppeling selecteren met het aantal fouten dat door uw Azure-SSIS IR is gegenereerd om een venster weer te geven, waar u deze fouten in meer details kunt zien en kopiëren om de aanbevolen oplossingen te vinden in onze probleemoplossings handleiding (Zie [problemen met uw Azure-SSIS IR oplossen](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)).
+
+![De tegel Azure-SSIS IR-diagnose controleren](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>De Azure SSIS Integration runtime bewaken met Azure Monitor
 
@@ -262,11 +286,11 @@ Zie [SSIS-bewerkingen controleren met Azure monitor](https://docs.microsoft.com/
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure-SSIS Integration runtime:
 
-- [Azure-SSIS Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Dit artikel bevat conceptuele informatie over integratie-Runtimes in het algemeen, met inbegrip van de Azure-SSIS IR. 
-- [Zelfstudie: SSIS-pakketten implementeren in Azure](tutorial-create-azure-ssis-runtime-portal.md). In dit artikel vindt u stapsgewijze instructies voor het maken van een Azure-SSIS IR en het gebruik van SQL Database voor het hosten van de SSIS-catalogus. 
-- [Procedure: Een Azure SSIS Integration Runtime maken](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van SQL Managed instance en het toevoegen van de IR aan een virtueel netwerk. 
-- [Een Azure-SSIS IR beheren](manage-azure-ssis-integration-runtime.md). In dit artikel leest u hoe u een Azure-SSIS IR stopt, start of verwijdert. Er wordt ook uitgelegd hoe u een Azure-SSIS IR kunt uitschalen door meer knooppunten toe te voegen aan de IR. 
-- [Een Azure-SSIS-integratieruntime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md). Dit artikel bevat algemene informatie over het toevoegen van een Azure-SSIS IR aan een virtueel netwerk van Azure. Het bevat ook stappen om Azure Portal te gebruiken voor het configureren van het virtuele netwerk, zodat de Azure-SSIS IR kan worden toegevoegd aan het virtuele netwerk. 
+- [Azure-SSIS Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Dit artikel bevat conceptuele informatie over Integration Runtimes in het algemeen, met inbegrip van de Azure-SSIS IR. 
+- [Zelfstudie: SSIS-pakketten implementeren in Azure](tutorial-create-azure-ssis-runtime-portal.md). In dit artikel vindt u stapsgewijze instructies voor het maken van uw Azure-SSIS IR en het gebruik van Azure SQL Database voor het hosten van de SSIS-catalogus (SSISDB). 
+- [Procedure: Een Azure SSIS Integration Runtime maken](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van Azure SQL Managed instance voor het hosten van SSISDB. 
+- [Een Azure-SSIS IR beheren](manage-azure-ssis-integration-runtime.md). Dit artikel laat u zien hoe u uw Azure-SSIS IR kunt starten, stoppen of verwijderen. U ziet ook hoe u deze kunt schalen door meer knoop punten toe te voegen. 
+- [Een Azure-SSIS-integratieruntime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md). Dit artikel bevat instructies voor het toevoegen van uw Azure-SSIS IR aan een virtueel netwerk.
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor het bewaken van pijp lijnen op verschillende manieren: 

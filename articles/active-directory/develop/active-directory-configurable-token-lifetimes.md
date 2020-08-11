@@ -13,16 +13,17 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: d25c2e2603f36ff090d01f235a4c8e4a1ae12605
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: d6b6e300a3bd799e94405af143d84cf9fdd8d4c1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552846"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077132"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Configureer bare levens duur van tokens in micro soft Identity platform (preview-versie)
 
-U kunt de levens duur opgeven van een token dat is uitgegeven door het micro soft Identity-platform. U kunt de levensduur van een token instellen voor alle apps in uw organisatie, voor een multitenanttoepassing (voor meerdere organisaties) of voor een specifieke service-principal in uw organisatie.
+U kunt de levens duur opgeven van een token dat is uitgegeven door het micro soft Identity-platform. U kunt de levensduur van een token instellen voor alle apps in uw organisatie, voor een multitenanttoepassing (voor meerdere organisaties) of voor een specifieke service-principal in uw organisatie. 
+> Het configureren van de levens duur van tokens voor beheerde identiteits service-principals wordt momenteel niet ondersteund.
 
 > [!IMPORTANT]
 > Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](https://go.microsoft.com/fwlink/?linkid=2083106) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 30 mei 2020 kan geen enkele nieuwe Tenant gebruikmaken van het beleid voor de levens duur van tokens voor het configureren van sessie-en vernieuwings tokens. De afschaffing vindt plaats binnen een aantal maanden na dat, wat betekent dat we de bestaande sessie niet meer zullen door lopen en tokens voor vernieuwen worden vernieuwd. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.

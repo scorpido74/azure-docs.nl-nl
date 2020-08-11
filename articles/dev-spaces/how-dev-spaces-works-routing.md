@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces en hoe route ring werkt
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 8677284d61a0a08a3262c26d6307399922dab4be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512466"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077662"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hoe route ring werkt met Azure dev Spaces
 
@@ -49,7 +49,7 @@ Alle andere TCP-verkeer dat niet HTTP wordt door gegeven via de ingangs controll
 
 ## <a name="sharing-a-dev-space"></a>Een ontwikkelings ruimte delen
 
-Wanneer u met een team werkt, kunt u [een dev-ruimte delen binnen een heel team](how-to/share-dev-spaces.md) en afgeleide ontwikkel ruimten maken. Een ontwikkel ruimte kan worden gebruikt door iedereen met Inzender toegang tot de resource groep van de ontwikkelings ruimte.
+Wanneer u met een team werkt, kunt u een dev-ruimte delen binnen een heel team en afgeleide ontwikkel ruimten maken. Een ontwikkel ruimte kan worden gebruikt door iedereen met Inzender toegang tot de resource groep van de ontwikkelings ruimte.
 
 U kunt ook een nieuwe ontwikkel ruimte maken die is afgeleid van een andere dev-ruimte. Wanneer u een afgeleide dev-ruimte maakt, wordt het label *azds.io/Parent-Space=Parent-Space-name* toegevoegd aan de naam ruimte van de afgeleide dev-ruimte. Daarnaast worden alle toepassingen van de bovenliggende ontwikkel ruimte gedeeld met de afgeleide dev-ruimte. Als u een bijgewerkte versie van een toepassing implementeert in de afgeleide dev-ruimte, bestaat deze alleen in de afgeleide dev-ruimte en blijft de bovenliggende ontwikkel ruimte ongewijzigd. U kunt Maxi maal drie niveaus afgeleide dev-ruimten of groot *ouders* hebben.
 

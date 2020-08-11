@@ -1,16 +1,16 @@
 ---
-title: Probleemoplossing
+title: Problemen oplossen
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835694"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077030"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -284,7 +284,7 @@ U kunt bijvoorbeeld de *Windows BranchCache* -service stoppen en uitschakelen:
 
 Bij het uitvoeren van een service met Azure-ontwikkel ruimten in een AKS-cluster met een [beheerde identiteit](../aks/use-managed-identity.md) en [pod beheerde identiteiten](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) , reageert het proces mogelijk niet meer na de installatie stap van de *grafiek* . Als u de *azds-injectie-webhook* in de *azds* -naam ruimte inspecteert, ziet u deze fout mogelijk.
 
-De services Azure dev Spaces worden uitgevoerd op uw cluster. Gebruik de beheerde identiteit van het cluster om te communiceren met de back-upservers van Azure dev buiten het cluster. Wanneer de beheerde identiteit Pod is geïnstalleerd, worden er netwerk regels geconfigureerd op de knoop punten van uw cluster om alle aanroepen voor beheerde identiteits referenties om te leiden naar een [NMI-daemon (node Managed Identity) die op het cluster is geïnstalleerd](https://github.com/Azure/aad-pod-identity#node-managed-identity). Deze NMI-Daemonset identificeert de aanroepende pod en zorgt ervoor dat Pod is gelabeld om toegang te krijgen tot de aangevraagde beheerde identiteit. Azure dev Spaces kunnen niet detecteren of pod beheerde identiteit is geïnstalleerd op een cluster, waardoor de benodigde configuratie niet kan worden uitgevoerd om Azure dev Spaces-Services toegang te geven tot de beheerde identiteit van het cluster. Omdat de Azure dev Spaces-Services niet zijn geconfigureerd voor toegang tot de beheerde identiteit van het cluster, staat de NMI-Daemonset niet toe dat ze een AAD-token voor de beheerde identiteit verkrijgen en niet kunnen communiceren met Azure dev Spaces back-upservices.
+De services Azure dev Spaces worden uitgevoerd op uw cluster. Gebruik de beheerde identiteit van het cluster om te communiceren met de back-upservers van Azure dev buiten het cluster. Wanneer de beheerde identiteit Pod is geïnstalleerd, worden er netwerk regels geconfigureerd op de knoop punten van uw cluster om alle aanroepen voor beheerde identiteits referenties om te leiden naar een [NMI-daemon (node Managed Identity) die op het cluster is geïnstalleerd](https://github.com/Azure/aad-pod-identity#node-managed-identity). Deze NMI-Daemonset identificeert de aanroepende pod en zorgt ervoor dat Pod is gelabeld om toegang te krijgen tot de aangevraagde beheerde identiteit. Azure dev Spaces kunnen niet detecteren of pod beheerde identiteit is geïnstalleerd op een cluster, waardoor de benodigde configuratie niet kan worden uitgevoerd om Azure dev Spaces-Services toegang te geven tot de beheerde identiteit van het cluster. Omdat de Azure dev Spaces-Services niet zijn geconfigureerd voor toegang tot de beheerde identiteit van het cluster, staat de NMI-Daemonset niet toe dat ze een Azure AD-token voor de beheerde identiteit verkrijgen en niet kunnen communiceren met Azure dev Spaces back-upservices.
 
 Om dit probleem op te lossen, past u een [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) toe voor de *azds-injecter-webhook* en updatet u het gehele instrument door Azure dev Spaces om toegang te krijgen tot de beheerde identiteit.
 
@@ -416,7 +416,7 @@ U kunt dit probleem oplossen door de [VS code-extensie voor C#](https://marketpl
 
 Deze fout wordt mogelijk weer gegeven bij het uitvoeren van het fout opsporingsprogramma voor Visual Studio-code. Mogelijk beschikt u niet over de VS code-uitbrei ding voor Azure dev Spaces die zijn geïnstalleerd op uw ontwikkel computer.
 
-U kunt dit probleem oplossen door de [VS code-extensie voor Azure dev Spaces](get-started-netcore.md)te installeren.
+U kunt dit probleem oplossen door de VS code-extensie voor Azure dev Spaces te installeren.
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Fout ' ongeldige ' CWD-waarde '/src '. Het systeem kan het opgegeven bestand niet vinden. " of ' starten: programma '/src/[pad naar project binary] ' bestaat niet '
 

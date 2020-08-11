@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760793"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078934"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integreren met Azure AD-toepassingsproxy op een server met een registratie service voor netwerk apparaten (NDES)
 
@@ -89,10 +89,10 @@ Azure AD-toepassingsproxy is gebaseerd op Azure. Het biedt u een enorme hoeveelh
 
 1. Er wordt een **HTTP-fout 403-niet-toegestaan** antwoord weer geven.
 
-1. Wijzig de door de beschik bare NDES-URL (via Microsoft Intune) op apparaten. deze wijziging kan zich in het micro soft-eindpunt configuratie centrum of in de intune-Cloud beontvangen.
+1. Wijzig de beschik bare NDES-URL (via Microsoft Intune) op apparaten. Deze wijziging kan in micro soft endpoint Configuration Manager of in het beheer centrum van micro soft Endpoint Manager staan.
 
-   * Ga voor Configuration Center naar het certificaat registratiepunt (CRP) en pas de URL aan. Deze URL is wat apparaten aanroepen en hun uitdaging presen teren.
-   * Voor alleen de intune-Cloud, ook wel zelfstandige versie van intune genoemd, kunt u een nieuw SCEP-beleid bewerken of maken en de nieuwe URL toevoegen.
+   * Ga voor Configuration Manager naar het certificaat registratiepunt en pas de URL aan. Deze URL is wat apparaten aanroepen en hun uitdaging presen teren.
+   * Voor zelfstandige versie van intune kunt u een nieuw SCEP-beleid bewerken of maken en de nieuwe URL toevoegen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

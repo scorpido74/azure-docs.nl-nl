@@ -1,31 +1,49 @@
 ---
-title: Aangepaste opslag toevoegen (Windows-container)
-description: Meer informatie over het koppelen van een aangepaste netwerk share in een aangepaste Windows-container in Azure App Service. Bestanden delen tussen apps, statische inhoud extern beheren en lokaal toegang krijgen, enzovoort.
+title: Azure Storage toevoegen (container)
+description: Meer informatie over het koppelen van een aangepaste netwerk share in een container-app in Azure App Service. Bestanden delen tussen apps, statische inhoud extern beheren en lokaal toegang krijgen, enzovoort.
 author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: app-service-containers-windows-linux
+ms.openlocfilehash: 8ced35f30966a96061792ad2171afe19599ed22c
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77120681"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077251"
 ---
-# <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Azure Files configureren in een Windows-container op App Service
+# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Toegang Azure Storage als een netwerk share vanuit een container in App Service
 
-> [!NOTE]
-> Dit artikel is van toepassing op aangepaste Windows-containers. Zie [inhoud van Azure Storage bezorgen](./containers/how-to-serve-content-from-azure-storage.md)om te implementeren in app service op _Linux_.
->
+::: zone pivot="container-windows"
 
-Deze hand leiding laat zien hoe u toegang krijgt tot Azure Storage in Windows-containers. Alleen [Azure files shares](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli) en [Premium-bestands shares](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare) worden ondersteund. U gebruikt Azure Files-shares in deze procedure. Voor delen zijn onder andere beveiligde inhoud, portabiliteit van inhoud, toegang tot meerdere apps en meerdere overdrachts methoden.
+In deze hand leiding wordt beschreven hoe u Azure Storage-bestanden als een netwerk share koppelt aan een Windows-container in App Service. Alleen [Azure files shares](../storage/files/storage-how-to-use-files-cli.md) en [Premium-bestands shares](../storage/files/storage-how-to-create-premium-fileshare.md) worden ondersteund. Voor delen zijn onder andere beveiligde inhoud, portabiliteit van inhoud, toegang tot meerdere apps en meerdere overdrachts methoden.
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+In deze hand leiding wordt uitgelegd hoe u Azure Storage kunt koppelen aan een Linux-container App Service. Voor delen zijn onder andere beveiligde inhoud, draag baarheid van inhoud, permanente opslag, toegang tot meerdere apps en meerdere overdrachts methoden.
+
+::: zone-end
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Azure cli](/cli/azure/install-azure-cli) (2.0.46 of hoger).
-- [Een bestaande Windows-container-app in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
-- [Een Azure-bestands share maken](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)
-- [Bestanden uploaden naar Azure-bestands share](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
+::: zone pivot="container-windows"
+
+- [Een bestaande Windows-container-app in Azure App Service](quickstart-custom-container.md)
+- [Een Azure-bestands share maken](../storage/files/storage-how-to-use-files-cli.md)
+- [Bestanden uploaden naar Azure-bestands share](../storage/files/storage-files-deployment-guide.md)
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+- Een bestaande [app service in de Linux-app](index.yml).
+- Een [Azure Storage-account](../storage/common/storage-account-create.md?tabs=azure-cli)
+- Een [Azure-bestands share en-map](../storage/files/storage-how-to-use-files-cli.md).
+
+::: zone-end
 
 > [!NOTE]
 > Azure Files is niet-standaard opslag en wordt afzonderlijk gefactureerd, niet opgenomen in de web-app. Het gebruik van de firewall configuratie wordt niet ondersteund vanwege beperkingen van de infra structuur.
@@ -33,32 +51,79 @@ Deze hand leiding laat zien hoe u toegang krijgt tot Azure Storage in Windows-co
 
 ## <a name="limitations"></a>Beperkingen
 
-- Azure Storage in Windows-containers is beschikbaar als **Preview-versie** en wordt **niet ondersteund** voor **productie scenario's**.
-- Azure Storage in Windows-containers ondersteunt het koppelen van **Azure files containers** (lezen/schrijven).
-- Azure Storage in Windows-containers wordt momenteel **niet ondersteund** voor het nemen van uw eigen code Scenario's in Windows app service-abonnementen.
-- Azure Storage in Windows-containers **biedt geen ondersteuning** voor het gebruik van de **opslag firewall** -configuratie vanwege beperkingen van de infra structuur.
-- Met Azure Storage in Windows-containers kunt u **Maxi maal vijf** koppel punten per app opgeven.
+::: zone pivot="container-windows"
+
+- Azure Storage in App Service is **een preview-versie** en wordt **niet ondersteund** voor **productie scenario's**.
+- Azure Storage in App Service wordt momenteel **niet ondersteund** voor het nemen van uw eigen code scenario's (niet-container Windows-apps).
+- Azure Storage in App Service biedt **geen ondersteuning** voor het gebruik van de **opslag firewall** -configuratie vanwege beperkingen van de infra structuur.
+- Met Azure Storage met App Service kunt u **Maxi maal vijf** koppel punten per app opgeven.
 - Azure Storage die aan een app zijn gekoppeld, is niet toegankelijk via App Service FTP-en FTPs-eind punten. Gebruik [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-- Azure Storage wordt afzonderlijk in rekening gebracht en **niet opgenomen** in uw web-app. Meer informatie over [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage).
 
-## <a name="link-storage-to-your-web-app-preview"></a>Opslag koppelen aan uw web-app (preview)
+::: zone-end
 
- Als u een Azure Files share wilt koppelen aan een map in uw App Service-app, gebruikt u de [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) opdracht. Het opslag type moet Azure files zijn.
+::: zone pivot="container-linux"
+
+- Azure Storage in App Service is **in Preview** voor app service in Linux en Web App for containers. Het wordt **niet ondersteund** voor **productie scenario's**.
+- Azure Storage in App Service ondersteunt het koppelen van **Azure files containers** (lezen/schrijven) en **Azure Blob-containers** (alleen-lezen)
+- Azure Storage in App Service biedt **geen ondersteuning** voor het gebruik van de **opslag firewall** -configuratie vanwege beperkingen van de infra structuur.
+- Met Azure Storage in App Service kunt u **Maxi maal vijf** koppel punten per app opgeven.
+- Azure Storage die aan een app zijn gekoppeld, is niet toegankelijk via App Service FTP-en FTPs-eind punten. Gebruik [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+
+::: zone-end
+
+## <a name="link-storage-to-your-app"></a>Opslag koppelen aan uw app
+
+::: zone pivot="container-windows"
+
+Nadat u uw [Azure Storage-account, de bestands share en de map](#prerequisites)hebt gemaakt, kunt u uw app nu configureren met Azure Storage.
+
+Als u een Azure Files share wilt koppelen aan een map in uw App Service-app, gebruikt u de [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) opdracht. Het opslag type moet Azure files zijn.
 
 ```azurecli
-az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory of form c:<directory name> >
+az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
 ```
 
 U moet dit doen voor andere directory's die u wilt koppelen aan een Azure Files share.
 
-## <a name="verify"></a>Verifiëren
+::: zone-end
 
-Zodra een Azure Files share is gekoppeld aan een web-app, kunt u dit controleren door de volgende opdracht uit te voeren:
+::: zone pivot="container-linux"
+
+Nadat u uw [Azure Storage-account, de bestands share en de map](#prerequisites)hebt gemaakt, kunt u uw app nu configureren met Azure Storage.
+
+Als u een opslag account wilt koppelen aan een map in uw App Service-app, gebruikt u de [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) opdracht. Het opslag type kan AzureBlob of Azure files zijn. Azure files wordt in dit voor beeld gebruikt. De instelling van het koppelingspad komt overeen met de map die u wilt koppelen van Azure Storage. Als u deze instelt op/, wordt de hele Azure Storage gekoppeld.
+
+
+> [!CAUTION]
+> De map die is opgegeven als koppel pad in uw web-app moet leeg zijn. Alle inhoud die in deze map is opgeslagen, wordt verwijderd wanneer een externe koppeling wordt toegevoegd. Als u bestanden migreert voor een bestaande app, maakt u een back-up van uw app en de bijbehorende inhoud voordat u begint.
+>
 
 ```azurecli
-az webapp config storage-account list --resource-group <resource_group> --name <app_name>
+az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory>
+```
+
+U moet dit doen voor alle andere directory's die u aan een opslag account wilt koppelen.
+
+::: zone-end
+
+## <a name="verify-linked-storage"></a>Gekoppelde opslag controleren
+
+Zodra de share is gekoppeld aan de app, kunt u dit controleren door de volgende opdracht uit te voeren:
+
+```azurecli
+az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een ASP.net-app migreren naar Azure app service met behulp van een Windows-container (preview)](app-service-web-tutorial-windows-containers-custom-fonts.md).
+::: zone pivot="container-windows"
+
+- [Aangepaste software migreren naar Azure app service met behulp van een aangepaste container](tutorial-custom-container.md?pivots=container-windows).
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+- [Configureer een aangepaste container](configure-custom-container.md?pivots=platform-linux).
+
+::: zone-end

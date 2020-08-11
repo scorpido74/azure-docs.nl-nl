@@ -4,12 +4,12 @@ description: Meer informatie over het aanpassen van de functie voor verificatie 
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 32b7db234cd91aaf9fa5fcfa9b35679d32561474
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042612"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078390"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Geavanceerd gebruik van verificatie en autorisatie in Azure App Service
 
@@ -17,8 +17,7 @@ In dit artikel wordt beschreven hoe u de ingebouwde [verificatie en autorisatie 
 
 Als u snel aan de slag wilt gaan, raadpleegt u een van de volgende zelf studies:
 
-* [Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
-* [Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service voor Linux](containers/tutorial-auth-aad.md)
+* [Zelfstudie: Zelfstudie: Gebruikers eind-tot-eind verifiëren en autoriseren in Azure App Service](tutorial-auth-aad.md)
 * [Uw app configureren voor aanmelding met Azure Active Directory](configure-authentication-provider-aad.md)
 * [Uw app configureren voor aanmelding met Facebook](configure-authentication-provider-facebook.md)
 * [Uw app configureren voor aanmelding met Google](configure-authentication-provider-google.md)
@@ -533,5 +532,4 @@ U kunt deze opdracht uitvoeren vanuit de [Azure Cloud shell](../cloud-shell/over
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: gebruikers end-to-end verifiëren en autoriseren (Windows)](app-service-web-tutorial-auth-aad.md) 
->  [Zelf studie: gebruikers end-to-end verifiëren en autoriseren (Linux)](containers/tutorial-auth-aad.md)
+> [Zelfstudie: gebruikers eind-tot-eind verifiëren en autoriseren](tutorial-auth-aad.md)

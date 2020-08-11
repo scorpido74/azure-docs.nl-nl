@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/14/2020
-ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/05/2020
+ms.openlocfilehash: e6a4c7fe739bd517646f8401e5c812a557441e9f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445290"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076894"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
 
@@ -29,22 +29,37 @@ De volgende tabellen bieden een snelle vergelijking van de Azure Monitor agents 
 
 ### <a name="windows-agents"></a>Windows-agents
 
-| | Diagnostiek<br>extensie (WAD) | Log Analytics<br>agent | Afhankelijkheid<br>agent |
-|:---|:---|:---|:---|
-| **Omgevingen worden ondersteund** | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | 
-| **Agent vereisten**  | Geen | Geen | Vereist Log Analytics-agent |
-| **Verzamelde gegevens** | Gebeurtenislogboeken<br>ETW-gebeurtenissen<br>Prestaties<br>Logboeken op basis van bestanden<br>IIS-logboeken<br>.NET-app-logboeken<br>Crashdumps<br>Logboeken met diagnostische gegevens van agent | Gebeurtenislogboeken<br>Prestaties<IIS logs><br>Logboeken op basis van bestanden<br>Inzicht en oplossingen<br>Overige services | Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
-| **Gegevens die worden verzonden naar** | Azure Storage<br>Azure Monitor metrische gegevens<br>Event Hub | Azure Monitor-logboeken | Azure Monitor-logboeken |
+| | Azure Monitor-agent (preview-versie) | Diagnostiek<br>extensie (WAD) | Log Analytics<br>agent | Afhankelijkheid<br>agent |
+|:---|:---|:---|:---|:---|
+| **Omgevingen worden ondersteund** | Azure<br>Andere Cloud<br>On-premises | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | 
+| **Agent vereisten**  | Geen | Geen | Geen | Vereist Log Analytics-agent |
+| **Verzamelde gegevens** | Gebeurtenislogboeken<br>Prestaties | Gebeurtenislogboeken<br>ETW-gebeurtenissen<br>Prestaties<br>Logboeken op basis van bestanden<br>IIS-logboeken<br>.NET-app-logboeken<br>Crashdumps<br>Logboeken met diagnostische gegevens van agent | Gebeurtenislogboeken<br>Prestaties<IIS logs><br>Logboeken op basis van bestanden<br>Inzicht en oplossingen<br>Overige services | Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
+| **Gegevens die worden verzonden naar** | Azure Monitor-logboeken<br>Azure Monitor metrische gegevens<br>Azure Storage<br>Event Hub | Azure Storage<br>Azure Monitor metrische gegevens<br>Event Hub | Azure Monitor-logboeken | Azure Monitor-logboeken |
 
 
 ### <a name="linux-agents"></a>Linux-agents
 
-| | Diagnostiek<br>extensie (LAD) | Telegrafie<br>agent | Log Analytics<br>agent | Afhankelijkheid<br>agent |
-|:---|:---|:---|:---|:---|
-| **Omgevingen worden ondersteund** | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises |
-| **Agent vereisten**  | Geen | Geen | Geen | Vereist Log Analytics-agent |
-| **Verzamelde gegevens** | Syslog<br>Prestaties | Prestaties | Syslog<br>Prestaties| Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
-| **Gegevens die worden verzonden naar** | Azure Storage<br>Event Hub | Azure Monitor metrische gegevens | Azure Monitor-logboeken | Azure Monitor-logboeken |
+| | Azure Monitor-agent (preview-versie) | Diagnostiek<br>extensie (LAD) | Telegrafie<br>agent | Log Analytics<br>agent | Afhankelijkheid<br>agent |
+|:---|:---|:---|:---|:---|:---|
+| **Omgevingen worden ondersteund** | Azure | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises |
+| **Agent vereisten**  | Geen | Geen | Geen | Geen | Vereist Log Analytics-agent |
+| **Verzamelde gegevens** | Syslog<br>Prestaties | Syslog<br>Prestaties | Prestaties | Syslog<br>Prestaties| Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
+| **Gegevens die worden verzonden naar** | Azure Monitor-logboeken<br>Azure Storage<br>Azure Monitor metrische gegevens<br>Event Hub | Azure Storage<br>Event Hub | Azure Monitor metrische gegevens | Azure Monitor-logboeken | Azure Monitor-logboeken |
+
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor-agent (preview-versie)
+De [Azure monitor-agent](azure-monitor-agent-overview.md) bevindt zich momenteel in de preview-versie en vervangt de log Analytics agent, diagnose-uitbrei ding en de telegrafa-agent voor virtuele Windows-en Linux-machines. Het kan gegevens verzenden naar Azure Monitor logboeken en Azure Monitor metrische gegevens en gebruikt [gegevensverzamelings regels (DCR)](data-collection-rule-overview.md) die een meer schaal bare methode bieden voor het configureren van gegevens verzameling en-bestemmingen voor elke agent.
+
+Gebruik de Azure Monitor agent als u het volgende moet doen:
+
+- Verzamel logboeken en metrische gegevens voor gasten van elke virtuele machine in azure, in andere Clouds of on-premises. (Alleen in de preview-versie van Azure)
+- Gegevens verzenden naar Azure Monitor logboeken en Azure Monitor metrieken voor analyse met Azure Monitor. 
+- Gegevens verzenden naar Azure Storage voor archiveren.
+- Gegevens verzenden naar hulpprogram ma's van derden met behulp van [Azure Event hubs](diagnostics-extension-stream-event-hubs.md).
+- Beheer de beveiliging van uw virtuele machines met behulp van [Azure Security Center](../../security-center/security-center-intro.md) of [Azure Sentinel](../../sentinel/overview.md). (Niet beschikbaar in de preview-versie.)
+
+De beperkingen van de Azure Monitor-agent zijn:
+
+- Momenteel beschikbaar als open bare preview. Bekijk de [huidige beperkingen](azure-monitor-agent-overview.md#current-limitations) voor een lijst met beperkingen tijdens de open bare preview.
 
 ## <a name="log-analytics-agent"></a>Log Analytics-agent
 

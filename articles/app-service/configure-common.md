@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389769"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077370"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in het Azure Portal
 
@@ -33,13 +33,13 @@ Voor ASP.NET-en ASP.NET Core-ontwikkel aars is het instellen van de app-instelli
 
 U kunt ook de app-instellingen ophalen als omgevings variabelen tijdens runtime. Zie voor taalspecifieke stappen voor de taal stack:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Aangepaste containers](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Aangepaste containers](configure-custom-container.md#configure-environment-variables)
 
 App-instellingen worden altijd versleuteld wanneer ze worden opgeslagen (versleuteld-at-rest).
 
@@ -104,13 +104,13 @@ In runtime zijn verbindings reeksen beschikbaar als omgevings variabelen, met al
 
 Bijvoorbeeld, een MySql-connection string met de naam *connectionstring1* kan worden gebruikt als de omgevings variabele `MYSQLCONNSTR_connectionString1` . Zie voor taalspecifieke stappen voor de taal stack:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Aangepaste containers](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Aangepaste containers](configure-custom-container.md#configure-environment-variables)
 
 Verbindings reeksen worden altijd versleuteld wanneer ze worden opgeslagen (versleuteld-at-rest).
 
@@ -176,7 +176,7 @@ Hier kunt u enkele algemene instellingen voor de app configureren. Voor sommige 
     > [!NOTE]
     > De meeste moderne browsers bieden alleen ondersteuning voor HTTP/2-protocollen via TLS, terwijl niet-versleuteld verkeer HTTP/1.1 blijft gebruiken. Beveilig uw aangepaste DNS-naam om ervoor te zorgen dat client browsers verbinding maken met uw app met HTTP/2. Zie [een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in azure app service](configure-ssl-bindings.md)voor meer informatie.
     - **ARR-affiniteit**: in een implementatie met meerdere exemplaren moet u ervoor zorgen dat de client voor de levens duur van de sessie wordt doorgestuurd naar hetzelfde exemplaar. U kunt deze optie instellen op **uitschakelen** voor stateless toepassingen.
-- **Fout opsporing**: externe fout opsporing inschakelen voor [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)-, [ASP.net core](/visualstudio/debugger/remote-debugging-azure)-of [Node.js](containers/configure-language-nodejs.md#debug-remotely) -apps. Deze optie wordt na 48 uur automatisch uitgeschakeld.
+- **Fout opsporing**: externe fout opsporing inschakelen voor [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)-, [ASP.net core](/visualstudio/debugger/remote-debugging-azure)-of [Node.js](configure-language-nodejs.md#debug-remotely) -apps. Deze optie wordt na 48 uur automatisch uitgeschakeld.
 - **Binnenkomende client certificaten**: client certificaten in [wederzijdse verificatie](app-service-web-configure-tls-mutual-auth.md)vereisen.
 
 ## <a name="configure-default-documents"></a>Standaard documenten configureren
@@ -215,7 +215,7 @@ Als u virtuele toepassingen en directory's wilt configureren, geeft u elke virtu
 
 ### <a name="containerized-apps"></a>Apps in de container
 
-U kunt [aangepaste opslag voor uw container-app toevoegen](containers/how-to-serve-content-from-azure-storage.md). Apps in containers bevatten alle Linux-apps en ook de aangepaste Windows-en Linux-containers die worden uitgevoerd op App Service. Klik op **nieuw Azure Storage** uw aangepaste opslag als volgt te koppelen en te configureren:
+U kunt [aangepaste opslag voor uw container-app toevoegen](configure-connect-to-azure-storage.md). Apps in containers bevatten alle Linux-apps en ook de aangepaste Windows-en Linux-containers die worden uitgevoerd op App Service. Klik op **nieuw Azure Storage** uw aangepaste opslag als volgt te koppelen en te configureren:
 
 - **Naam**: de weergave naam.
 - **Configuratie opties**: **Basic** of **Advanced**.
@@ -228,22 +228,22 @@ U kunt [aangepaste opslag voor uw container-app toevoegen](containers/how-to-ser
 - **Toegangs sleutel**: voor geavanceerde configuratie, de toegangs sleutel.
 - **Koppelingspad**: het absolute pad in uw container om de aangepaste opslag te koppelen.
 
-Zie [Inhoud uit Azure Storage leveren in App Service voor Linux](containers/how-to-serve-content-from-azure-storage.md) voor meer informatie.
+Zie [toegang Azure Storage als een netwerk share vanuit een container in app service](configure-connect-to-azure-storage.md)voor meer informatie.
 
 ## <a name="configure-language-stack-settings"></a>Taal stack-instellingen configureren
 
 Voor Linux-apps raadpleegt u:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.js](containers/configure-language-nodejs.md)
-- [PHP](containers/configure-language-php.md)
-- [Python](containers/how-to-configure-python.md)
-- [Java](containers/configure-language-java.md)
-- [Ruby](containers/configure-language-ruby.md)
+- [ASP.NET Core](configure-language-dotnetcore.md)
+- [Node.js](configure-language-nodejs.md)
+- [PHP](configure-language-php.md)
+- [Python](configure-language-python.md)
+- [Java](configure-language-java.md)
+- [Ruby](configure-language-ruby.md)
 
 ## <a name="configure-custom-containers"></a>Aangepaste containers configureren
 
-Zie [een aangepaste Linux-container configureren voor Azure app service](containers/configure-custom-container.md)
+Zie [een aangepaste Linux-container configureren voor Azure app service](configure-custom-container.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

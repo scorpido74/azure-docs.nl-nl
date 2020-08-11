@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: a3601010eae614049b4af5aa2ddbcdc6acda21cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444876"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079019"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Een Lab instellen om te beheren en te ontwikkelen met SQL Server
 
@@ -20,7 +20,7 @@ In dit artikel laten we zien hoe u een virtuele-machine sjabloon kunt instellen 
 
 ## <a name="lab-configuration"></a>Lab-configuratie
 
-Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie [zelf studie voor het instellen van een Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)voor meer informatie over het maken van een nieuw Lab-account. U kunt ook een bestaand Lab-account gebruiken.
+Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie [zelf studie voor het instellen van een Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)voor meer informatie over het maken van een nieuw Lab-account. U kunt ook een bestaand Lab-account gebruiken.
 
 ### <a name="lab-account-settings"></a>Instellingen van Lab-account
 
@@ -86,7 +86,7 @@ De hierboven gekozen afbeelding bevat [Visual Studio 2019 Community](https://vis
 
 Visual Studio bevat het hulp programma voor het **opslaan en verwerken van gegevens** , dat SQL Server Data Tools bevat (SSDT).  Zie [SQL Server Data Tools Overview](https://docs.microsoft.com/sql/ssdt/sql-server-data-tools?view=sql-server-ver15)voor meer informatie over de mogelijkheden van SSDT.  Zie [verbinding maken met een Data Base en bladeren door bestaande objecten](https://docs.microsoft.com/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)om te controleren of de verbinding met de gedeelde SQL Server voor de klasse is geslaagd. Als u wordt gevraagd om de sjabloon computer-IP toe te voegen aan de [lijst met toegestane computers](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure) die verbinding kunnen maken met uw SQL Server-exemplaar.
 
-Visual Studio biedt ondersteuning voor verschillende werk belastingen, inclusief **Web-& Cloud** -en **Desktop & mobiele** werk belastingen.  Beide werk belastingen ondersteunen SQL Server als een gegevens bron. Zie [een ASP.net core-en SQL database-app bouwen in azure app service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb) zelf studie voor meer informatie over het gebruik van ASP.NET Core naar SQL Server.  Gebruik de [System. data. SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) -bibliotheek om verbinding te maken met een SQL database vanuit een [Xamarin](https://docs.microsoft.com/xamarin) -app.
+Visual Studio biedt ondersteuning voor verschillende werk belastingen, inclusief **Web-& Cloud** -en **Desktop & mobiele** werk belastingen.  Beide werk belastingen ondersteunen SQL Server als een gegevens bron. Zie [een ASP.net core-en SQL database-app bouwen in azure app service](https://docs.microsoft.com/azure/app-service/tutorial-dotnetcore-sqldb-app) zelf studie voor meer informatie over het gebruik van ASP.NET Core naar SQL Server.  Gebruik de [System. data. SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) -bibliotheek om verbinding te maken met een SQL database vanuit een [Xamarin](https://docs.microsoft.com/xamarin) -app.
 
 ## <a name="install-azure-data-studio"></a>Installeer Azure Data Studio
 

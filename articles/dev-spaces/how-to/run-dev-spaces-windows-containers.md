@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Meer informatie over het uitvoeren van Azure-ontwikkel ruimten op een bestaand cluster met Windows-containers
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Windows-containers
-ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: deee02bf13778950b934d87d02eb21068d89f323
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80240490"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077047"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interactie met Windows-containers met behulp van Azure dev Spaces
 
@@ -141,7 +141,7 @@ azds up
 De `azds prep --enable-ingress` opdracht genereert het helm-diagram en de Dockerfiles voor uw toepassing.
 
 > [!TIP]
-> De [Dockerfile-en helm-grafiek](../how-dev-spaces-works-prep.md#prepare-your-code) voor uw project wordt gebruikt door Azure dev Spaces om uw code te bouwen en uit te voeren, maar u kunt deze bestanden aanpassen als u wilt wijzigen hoe het project wordt gemaakt en uitgevoerd.
+> De [Dockerfile en Helm-grafiek](../how-dev-spaces-works-prep.md#prepare-your-code) voor uw project worden gebruikt in Azure Dev Spaces om uw code te bouwen en uit te voeren, maar u kunt deze bestanden wijzigen als u wilt wijzigen hoe het project wordt gebouwd en uitgevoerd.
 
 De `azds up` opdracht voert uw service uit in de naam ruimte.
 
@@ -161,16 +161,16 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-U ziet de service die wordt uitgevoerd door de open bare URL te openen, die wordt weer gegeven in de uitvoer van de azds omhoog-opdracht. In dit voor beeld is de open bare URL `http://dev.webfrontend.abcdef0123.eus.azds.io/` . Ga naar de service in een browser en klik bovenaan op *info* . Controleer of er een bericht wordt weer gegeven van de *mywebapi* -service met de versie van Windows die in de container wordt gebruikt.
+U ziet de service die wordt uitgevoerd door de open bare URL te openen, die wordt weer gegeven in de uitvoer van de azds omhoog-opdracht. In dit voorbeeld is `http://dev.webfrontend.abcdef0123.eus.azds.io/` de openbare URL. Ga naar de service in een browser en klik bovenaan op *info* . Controleer of er een bericht wordt weer gegeven van de *mywebapi* -service met de versie van Windows die in de container wordt gebruikt.
 
 ![Voor beeld-app met Windows-versie van mywebapi](../media/run-dev-spaces-windows-containers/sample-app.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te ontwikkelen in meerdere containers en hoe u samenwerkings ontwikkeling kunt vereenvoudigen door te werken met verschillende versies of vertakkingen van uw code in verschillende ruimten.
+Ontdek hoe Azure Dev Spaces u kan helpen om complexere toepassingen te ontwikkelen binnen meerdere containers en hoe u ontwikkeling in samenwerkingsverband vereenvoudigt door in verschillende ruimten met verschillende versies of vertakkingen van uw code te werken.
 
 > [!div class="nextstepaction"]
-> [Team ontwikkeling in azure dev Spaces][team-development-qs]
+> [Teamontwikkeling in Azure Dev Spaces][team-development-qs]
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -179,6 +179,5 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[team-development]: ../team-development-netcore.md
 [using-taints]: ../../aks/use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
 [windows-container-cli]: ../../aks/windows-container-cli.md

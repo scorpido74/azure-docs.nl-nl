@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c785e2b13e7d5c57ff6d5ce9161fea1a80da77e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019536"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077506"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
 
@@ -115,7 +115,7 @@ Sta toegang tot de volgende URL's toe:
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Communicatie tussen de connector en de Application Proxy-cloudservice |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | De connector gebruikt deze Url's om certificaten te verifiëren |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | De connector gebruikt deze URL's tijdens het registratieproces. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | De connector gebruikt deze URL's tijdens het registratieproces. |
 
 Als uw firewall of proxy u toestaat om DNS-acceptatie lijsten te configureren, kunt u verbindingen met \* . msappproxy.net en \* . servicebus.Windows.net toestaan. Als dat niet het geval is, moet u toegang verlenen tot de [IP-bereiken van Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653). die overigens elke week worden bijgewerkt.
 

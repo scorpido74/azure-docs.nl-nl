@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 32fc57e720f9c23f6ef26f02b2cd4a82c4266984
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f547f60bf6c67b757f2e12f06f1e39100c3e76cb
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957032"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077149"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Uw app implementeren voor Azure App Service met een ZIP-of WAR-bestand
 
@@ -40,7 +40,7 @@ Als u de stappen in dit artikel wilt uitvoeren, [maakt u een app service-app](/a
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-Het bovenstaande eind punt werkt op dit moment niet voor Linux-App Services. Overweeg in plaats daarvan FTP of de [API voor zip-implementatie](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) te gebruiken.
+Het bovenstaande eind punt werkt op dit moment niet voor Linux-App Services. Overweeg in plaats daarvan FTP of de [API voor zip-implementatie](faq-app-service-linux.md#continuous-integration-and-deployment) te gebruiken.
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>ZIP-bestand implementeren met Azure CLI
 

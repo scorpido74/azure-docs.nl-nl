@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d40e9dbc2c4da6b298f7245318c95de983edcc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 65aed14ec7f644f2792aaecde5c8bccfffdd8081
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530143"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078441"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Cloud groepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory (preview-versie)
 
@@ -53,7 +53,7 @@ We hebben ontworpen hoe groepen worden toegewezen aan rollen om te voor komen da
 De volgende scenario's worden momenteel niet ondersteund:  
 
 - Cloud groepen toewijzen aan aangepaste Azure AD-rollen
-- Wijs Cloud groepen toe aan Azure AD-rollen (ingebouwd of aangepast) in een administratieve eenheid.
+- Wijs Cloud groepen toe aan Azure AD-rollen (ingebouwd of aangepast) via een administratieve eenheid of een toepassings bereik.
 - On-premises groepen toewijzen aan Azure AD-rollen (ingebouwd of aangepast)
 
 ## <a name="known-issues"></a>Bekende problemen

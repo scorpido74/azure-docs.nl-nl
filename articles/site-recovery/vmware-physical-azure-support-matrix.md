@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor nood herstel voor VMware/fysiek in Azure Site 
 description: Hierin wordt een overzicht gegeven van de ondersteuning voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 595f12f9204dff58af0bfebb60402cc89ffb386a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7bb4422eb17353dc4e1895de8dcb2c427c6d0d15
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826242"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079396"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -168,6 +168,9 @@ BTRFS | BTRFS wordt ondersteund door [Update pakket 34](https://support.microsof
 --- | ---
 Grootte van schijf op een gerepliceerde VM wijzigen | Wordt op de bron-VM vóór de failover direct in de VM-eigenschappen ondersteund. U hoeft replicatie niet uit te scha kelen of opnieuw in te scha kelen.<br/><br/> Als u de bron-VM na een failover wijzigt, worden de wijzigingen niet vastgelegd.<br/><br/> Als u na een failover de schijf grootte op de Azure-VM wijzigt, maakt Site Recovery een nieuwe virtuele machine met de updates.
 Schijf toevoegen op een gerepliceerde VM | Niet ondersteund.<br/> Schakel de replicatie voor de virtuele machine uit, voeg de schijf toe en schakel de replicatie opnieuw in.
+
+> [!NOTE]
+> Wijzigingen in de schijf identiteit worden niet ondersteund. Als het partitioneren van de schijf bijvoorbeeld is gewijzigd van GPT naar MBR of andersom, wordt de schijf identiteit gewijzigd. In een dergelijk scenario wordt de replicatie onderbroken en wordt een nieuwe installatie vereist. 
 
 ## <a name="network"></a>Netwerk
 
