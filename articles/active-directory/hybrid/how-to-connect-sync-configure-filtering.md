@@ -16,17 +16,17 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e00ef5f015c554e49d7326120d29f5c5da4a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357763"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061503"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-synchronisatie: filtering configureren
 Met behulp van filteren kunt u bepalen welke objecten in Azure Active Directory (Azure AD) uit uw on-premises map worden weer gegeven. Bij de standaard configuratie worden alle objecten in alle domeinen in de geconfigureerde forests gebruikt. In het algemeen is dit de aanbevolen configuratie. Gebruikers die Office 365-workloads gebruiken, zoals Exchange Online en Skype voor bedrijven, profiteren van een volledige algemene adres lijst zodat ze een e-mail kunnen verzenden en iedereen kan bellen. Met de standaard configuratie zouden ze dezelfde ervaring hebben als bij een on-premises implementatie van Exchange of Lync.
 
-In sommige gevallen moet u echter enkele wijzigingen aanbrengen in de standaard configuratie. Enkele voorbeelden:
+In sommige gevallen moet u echter enkele wijzigingen aanbrengen in de standaard configuratie. Hier volgen enkele voorbeelden:
 
 * U wilt de [multi-Azure AD-adreslijst topologie](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)gebruiken. Vervolgens moet u een filter Toep assen om te bepalen welke objecten worden gesynchroniseerd met een bepaalde Azure AD-adres lijst.
 * U voert een pilot uit voor Azure of Office 365 en u wilt alleen een subset van gebruikers in azure AD. In de kleine pilot is het niet belang rijk dat u beschikt over een volledige algemene adres lijst om de functionaliteit te demonstreren.
@@ -47,7 +47,7 @@ Omdat met filteren veel objecten tegelijk kan worden verwijderd, moet u ervoor z
 
 Om te voor komen dat u per ongeluk veel objecten verwijdert, is de functie '[onopzettelijke verwijderingen voor komen](how-to-connect-sync-feature-prevent-accidental-deletes.md)' standaard ingeschakeld. Als u veel objecten als gevolg van filtering (standaard 500) wilt verwijderen, moet u de stappen in dit artikel volgen om de verwijderingen door te laten gaan naar Azure AD.
 
-Als u een build vóór november 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) gebruikt, een wijziging aanbrengt in een filter configuratie en wachtwoord-hash-synchronisatie gebruikt, moet u een volledige synchronisatie van alle wacht woorden activeren nadat u de configuratie hebt voltooid. Zie [een volledige synchronisatie van alle wacht woorden activeren](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)voor de stappen voor het activeren van een volledige synchronisatie met een wacht woord. Als u werkt met build 1.0.9125 of hoger, wordt in de normale **volledige synchronisatie** ook berekend of wacht woorden moeten worden gesynchroniseerd en als deze extra stap niet meer nodig is.
+Als u een build vóór november 2015 ([1.0.9125](reference-connect-version-history.md)) gebruikt, een wijziging aanbrengt in een filter configuratie en wachtwoord-hash-synchronisatie gebruikt, moet u een volledige synchronisatie van alle wacht woorden activeren nadat u de configuratie hebt voltooid. Zie [een volledige synchronisatie van alle wacht woorden activeren](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)voor de stappen voor het activeren van een volledige synchronisatie met een wacht woord. Als u werkt met build 1.0.9125 of hoger, wordt in de normale **volledige synchronisatie** ook berekend of wacht woorden moeten worden gesynchroniseerd en als deze extra stap niet meer nodig is.
 
 Als **gebruikers** objecten per ongeluk in azure AD zijn verwijderd vanwege een filter fout, kunt u de gebruikers objecten in azure AD opnieuw maken door uw filter configuraties te verwijderen. Vervolgens kunt u uw directory's opnieuw synchroniseren. Met deze actie worden de gebruikers teruggezet vanuit de Prullenbak in azure AD. U kunt echter geen andere object typen verwijderen. Als u bijvoorbeeld per ongeluk een beveiligings groep verwijdert en deze hebt gebruikt om een resource te ACL, kunnen de groep en de bijbehorende Acl's niet worden hersteld.
 
@@ -70,7 +70,7 @@ Voer de volgende stappen uit om de geplande taak uit te scha kelen die elke drie
 
 1. **Taak planner** starten vanuit het menu **Start** .
 2. Zoek direct onder de **taak planner-bibliotheek**de taak met de naam **Azure AD Sync scheduler**, klik met de rechter muisknop en selecteer **uitschakelen**.  
-   ![Task Scheduler](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
+   ![Taak planner](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
 3. U kunt nu configuratie wijzigingen aanbrengen en de synchronisatie-engine hand matig uitvoeren vanuit de **Synchronization Service Manager** -console.
 
 Wanneer u alle filter wijzigingen hebt voltooid, vergeet dan niet om terug te gaan en de taak opnieuw **in te scha kelen** .
@@ -202,7 +202,7 @@ U kunt de synchronisatie-engine zo configureren dat nieuwe organisatie-eenheden 
 Met deze configuratie is een nieuwe organisatie-eenheid die is gemaakt onder ManagedObjects niet gesynchroniseerd.
 
 ## <a name="attribute-based-filtering"></a>Filteren op basis van kenmerken
-Zorg ervoor dat u de[1.0.9125](reference-connect-version-history.md#1091250)(november 2015) of hoger gebruikt voor het werken met deze stappen.
+Zorg ervoor dat u de[1.0.9125](reference-connect-version-history.md)(november 2015) of hoger gebruikt voor het werken met deze stappen.
 
 > [!IMPORTANT]
 >U wordt aangeraden de standaard regels die door **Azure AD Connect**zijn gemaakt, niet te wijzigen. Als u de regel wilt wijzigen, moet u deze klonen en de oorspronkelijke regel uitschakelen. Breng de gewenste wijzigingen aan in de gekloonde regel. Als u dit doet (door de oorspronkelijke regel uit te scha kelen), zult u eventuele oplossingen voor fouten of functies die via die regel zijn ingeschakeld, missen.
@@ -319,7 +319,7 @@ Nu is het tijd om de Scheduler opnieuw in te scha kelen.
 ## <a name="group-based-filtering"></a>Filteren op basis van een groep
 U kunt filteren op basis van een groep configureren de eerste keer dat u Azure AD Connect installeert met behulp van [aangepaste installatie](how-to-connect-install-custom.md#sync-filtering-based-on-groups). Het is bedoeld voor een pilot implementatie waarbij u slechts een klein aantal objecten wilt synchroniseren. Wanneer u filteren op basis van groepen uitschakelt, kan het niet meer worden ingeschakeld. Het wordt *niet ondersteund* voor het gebruik van filteren op basis van groepen in een aangepaste configuratie. Het wordt alleen ondersteund voor het configureren van deze functie met behulp van de installatie wizard. Wanneer u de pilot hebt voltooid, gebruikt u een van de andere filter opties in dit onderwerp. Wanneer u filtering op basis van een organisatie-eenheid gebruikt in combi natie met filteren op basis van een groep, moeten de OE (s) waar de groep en de leden ervan zich bevinden, worden opgenomen.
 
-Bij het synchroniseren van meerdere AD-forests kunt u filteren op basis van een groep configureren door voor elke AD-connector een andere groep op te geven. Als u een gebruiker wilt synchroniseren in één AD-forest en dezelfde gebruiker een of meer overeenkomende objecten in andere AD-forests heeft, moet u ervoor zorgen dat het gebruikers object en alle bijbehorende objecten zich in groeps filter bereik bevinden. Voor voor beelden:
+Bij het synchroniseren van meerdere AD-forests kunt u filteren op basis van een groep configureren door voor elke AD-connector een andere groep op te geven. Als u een gebruiker wilt synchroniseren in één AD-forest en dezelfde gebruiker een of meer overeenkomende objecten in andere AD-forests heeft, moet u ervoor zorgen dat het gebruikers object en alle bijbehorende objecten zich in groeps filter bereik bevinden. Voorbeelden:
 
 * U hebt een gebruiker in een forest met een bijbehorend FSP-object (Foreign Security Principal) in een ander forest. Beide objecten moeten zich in een groeps filter bereik bevinden. Anders wordt de gebruiker niet gesynchroniseerd met Azure AD.
 
