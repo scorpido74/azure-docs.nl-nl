@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471741"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056955"
 ---
 # <a name="caching-with-azure-front-door"></a>Caching met de voor deur van Azure
 In het volgende document wordt het gedrag voor de voor deur opgegeven met routerings regels waarvoor caching is ingeschakeld. De voor deur is een modern Content Delivery Network (CDN), samen met dynamische site versnelling en taak verdeling, ondersteunt ook caching-gedrag, net als bij andere CDN.
@@ -111,6 +111,12 @@ Cache-Control-antwoord headers die aangeven dat het antwoord niet in de cache mo
 De volgende aanvraag headers worden niet doorgestuurd naar een back-end wanneer caching wordt gebruikt.
 - Content-length
 - Overdracht-encoding
+
+## <a name="cache-duration"></a>Cacheduur
+
+De duur van de cache kan worden geconfigureerd in zowel de voor deur Designer als in de regel engine. De cache duur die in de-ingang Designer is ingesteld, is de minimale cache duur. Deze onderdrukking werkt niet als de header van het cache besturings element van de oorsprong een grotere TTL heeft dan de onderdrukkings waarde. 
+
+De engine voor het instellen van de cache duur via regels is een werkelijke cache-overschrijving, wat betekent dat deze de onderdrukkings waarde gebruikt ongeacht de oorspronkelijke antwoord header.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 06/07/2019
+ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: c2bd10ab4c98fe2e77332c3cc2566ab2f0c7ad42
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d704c6026e9d007a7365a3b72649ca509585da4d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87841803"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88057618"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Extra limieten voor Premium file share-niveaus
 
@@ -23,11 +23,11 @@ ms.locfileid: "87841803"
 
 #### <a name="file-level-limits"></a>Limieten voor bestands niveau
 
-|Gebied  |Premium-bestand  |Standaard bestand |
+|Gebied  |Standaard bestand  |Premium-bestand  |
 |---------|---------|---------|
-|Grootte                  |4 TiB         |1 TiB|
-|Maximum aantal IOPS per bestand     |5\.000         |1000|
-|Gelijktijdige ingangen    |2.000         |2.000|
-|Uitgaand verkeer  |300-MiB per seconde|      Zie standaard waarden voor doorvoer bestanden|
-|Inkomend verkeer  |200-MiB per seconde| Zie standaard waarden voor doorvoer bestanden|
-|Doorvoer| Zie Premium file ingress/uitgangs waarden| Maxi maal 60 MiB per seconde|
+|Grootte     |1 TiB         |4 TiB         |
+|Maximum aantal IOPS per bestand      |1000         |5\.000         |
+|Gelijktijdige ingangen     |2.000         |2.000         |
+|Uitgaand verkeer     |Zie standaard waarden voor doorvoer bestanden         |300-MiB per seconde         |
+|Inkomend verkeer     |Zie standaard waarden voor doorvoer bestanden         |200-MiB per seconde         |
+|Doorvoer     |Maxi maal 60 MiB per seconde         |Zie Premium file ingress/uitgangs waarden         |

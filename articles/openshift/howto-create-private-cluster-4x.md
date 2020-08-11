@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727639"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056768"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Een persoonlijk Azure Red Hat open Shift 4-cluster maken
 
@@ -23,24 +23,9 @@ In dit artikel maakt u een voor bereiding van uw omgeving voor het maken van Azu
 > * De vereisten instellen en het vereiste virtuele netwerk en subnetten maken
 > * Een cluster met een persoonlijk API-server eindpunt en een persoonlijke ingangs controller implementeren
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.75 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.6.0 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-
-### <a name="install-the-az-aro-extension"></a>De ' AZ Aro-extensie installeren
-Met de `az aro`-extensie kunt u Azure Red Hat OpenShift-clusters rechtstreeks met de opdrachtregel maken, openen en verwijderen met behulp van de Azure CLI.
-
-Voer de volgende opdracht uit om de `az aro`-extensie te installeren.
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-Als de extensie al is geïnstalleerd, kunt u deze bijwerken met de volgende opdracht.
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
 
 ### <a name="register-the-resource-provider"></a>De resourceprovider registreren
 
@@ -48,21 +33,6 @@ Vervolgens moet u de resourceprovider `Microsoft.RedHatOpenShift` registreren in
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-Controleer of de extensie is geregistreerd.
-
-```azurecli-interactive
-az -v
-```
-
-  Als het goed is, wordt ongeveer de volgende uitvoer weergegeven.
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Een pull-geheim voor Red Hat ophalen (optioneel)

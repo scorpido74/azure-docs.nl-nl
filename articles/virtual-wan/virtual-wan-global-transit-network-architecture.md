@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856371"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056887"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Wereld wijde doorvoer netwerk architectuur en virtueel WAN
 
@@ -121,7 +121,7 @@ Geforceerde tunneling kan worden ingeschakeld door het configureren van de stand
 
 Een virtuele hub geeft een geleerde standaard route door aan een VPN-verbinding tussen een virtueel netwerk en een site-naar-site als de standaard vlag inschakelen is ingeschakeld op de verbinding. 
 
-Deze markering wordt weer gegeven wanneer de gebruiker een verbinding met een virtueel netwerk, een VPN-verbinding of een ExpressRoute wijzigt. Deze vlag wordt standaard uitgeschakeld wanneer een site of een ExpressRoute-circuit is verbonden met een hub. Het is standaard ingeschakeld wanneer een virtuele netwerk verbinding wordt toegevoegd om een VNet te verbinden met een virtuele hub. De standaard route is niet afkomstig van de virtuele WAN-hub. de standaard route wordt door gegeven als deze al is geleerd door de virtuele WAN-hub als gevolg van het implementeren van een firewall in de hub, of als een andere verbonden site geforceerde tunneling heeft ingeschakeld.
+Deze vlag wordt weergegeven als de gebruiker een verbinding met een virtueel netwerk, een VPN-verbinding of een ExpressRoute aanpast. Deze vlag wordt standaard uitgeschakeld wanneer een site of een ExpressRoute-circuit met een hub wordt verbonden. De vlag is standaard ingeschakeld wanneer een virtuele netwerkverbinding wordt toegevoegd om een VNet te verbinden met een virtuele hub. De standaardroute is niet afkomstig van de Virtual WAN-hub. De standaardroute wordt doorgegeven als deze al bekend is bij de virtuele WAN-hub als gevolg van het implementeren van een firewall in de hub, of als voor een andere verbonden site geforceerd tunnelen is ingeschakeld.
 
 ## <a name="security-and-policy-control"></a><a name="security"></a>Beveiliging en beleids beheer
 
@@ -132,6 +132,9 @@ De virtuele WAN-hubs van Azure verdeelen alle netwerk eindpunten via het hybride
 ![beveiligde virtuele hub met Azure Firewall](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
 **Afbeelding 5: beveiligde virtuele hub met Azure Firewall**
+
+> [!NOTE]
+> Inter-hub met firewall wordt momenteel niet ondersteund. Verkeer tussen hubs gaat direct over op de Azure Firewall in elke hub.
 
 Azure Firewall naar het virtuele WAN ondersteunt de volgende globale beveiligde doorvoer paden voor verbindingen. De letters tussen haakjes worden toegewezen aan afbeelding 5.
 

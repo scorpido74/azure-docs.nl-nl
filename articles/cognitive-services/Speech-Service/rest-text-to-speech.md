@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 0f43d1f780f838fdc49eb055536204026edcc729
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079233"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056802"
 ---
 # <a name="text-to-speech-rest-api"></a>REST API voor tekst-naar-spraak
 
@@ -59,7 +59,7 @@ Voordat u deze API gebruikt, moet u het volgende weten:
 | South Central US | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Azië - zuidoost | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Verenigd Koninkrijk Zuid | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Europa - west | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Europa -west | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | VS - west | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | VS - west 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
@@ -67,7 +67,7 @@ Voordat u deze API gebruikt, moet u het volgende weten:
 
 In deze tabel vindt u de vereiste en optionele kopteksten voor tekst-naar-spraak-aanvragen.
 
-| Header | Beschrijving | Vereist/optioneel |
+| Koptekst | Beschrijving | Vereist/optioneel |
 |--------|-------------|---------------------|
 | `Authorization` | Een autorisatie token dat wordt voorafgegaan door het woord `Bearer` . Zie [Verificatie](#authentication) voor meer informatie. | Vereist |
 
@@ -167,7 +167,7 @@ Deze regio's worden ondersteund voor tekst naar spraak met behulp van de REST AP
 
 In deze tabel vindt u de vereiste en optionele kopteksten voor tekst-naar-spraak-aanvragen.
 
-| Header | Beschrijving | Vereist/optioneel |
+| Koptekst | Beschrijving | Vereist/optioneel |
 |--------|-------------|---------------------|
 | `Authorization` | Een autorisatie token dat wordt voorafgegaan door het woord `Bearer` . Zie [Verificatie](#authentication) voor meer informatie. | Vereist |
 | `Content-Type` | Hiermee geeft u het type inhoud op voor de opgegeven tekst. Geaccepteerde waarde: `application/ssml+xml` . | Vereist |
@@ -241,6 +241,6 @@ Als de HTTP-status is `200 OK` , bevat de hoofd tekst van het antwoord een audio
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services)
+- [Een gratis Azure-account maken](https://azure.microsoft.com/free/cognitive-services/)
 - [Asynchrone synthese voor lange-vorm audio](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [Aan de slag met Custom Voice](how-to-custom-voice.md)
