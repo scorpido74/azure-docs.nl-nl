@@ -3,18 +3,18 @@ title: Azure Service Bus metrische gegevens in Azure Monitor | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u Azure Monitor kunt gebruiken om Service Bus entiteiten (wacht rijen, onderwerpen en abonnementen) te bewaken.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: c4bf33fc7aa21be150a1ee0d6c65df84a391565e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089682"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065009"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metrische gegevens in Azure Monitor
 
 Service Bus metrische gegevens geven u de status van resources in uw Azure-abonnement. Met een uitgebreide set met metrische gegevens kunt u de algemene status van uw Service Bus-resources controleren, niet alleen op het niveau van de naam ruimte, maar ook op het niveau van de entiteit. Deze statistieken kunnen van belang zijn wanneer u de status van Service Bus kunt bewaken. Metrische gegevens kunnen ook helpen bij het oplossen van problemen met de hoofd oorzaak zonder dat u contact hoeft op te nemen met de ondersteuning van Azure.
 
-Azure Monitor biedt uniforme gebruikers interfaces voor bewaking in verschillende Azure-Services. Zie voor meer informatie [bewaking in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) en het voor beeld [Azure monitor metrische gegevens ophalen met .net](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) op github.
+Azure Monitor biedt uniforme gebruikers interfaces voor bewaking in verschillende Azure-Services. Zie voor meer informatie [bewaking in Microsoft Azure](../azure-monitor/overview.md) en het voor beeld [Azure monitor metrische gegevens ophalen met .net](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) op github.
 
 > [!IMPORTANT]
 > Als er gedurende twee uur geen interactie met een entiteit is geweest, worden de metrische gegevens als een waarde weer gegeven totdat de entiteit niet langer inactief is.
@@ -169,9 +169,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [overzicht van Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md).
+Zie het [overzicht van Azure monitor](../azure-monitor/overview.md).
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png
-
-

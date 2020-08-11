@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 09050bc6895076994baf1c98c65aa87672a5652e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551690"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066063"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -427,7 +427,7 @@ Windows Defender ATP en EDR | Rollen toewijzen<br>Computer groepen beheren<br>De
 [Slimme vergrendeling](../authentication/howto-password-smart-lockout.md) | Definieer de drempel en duur voor vergren delingen wanneer mislukte aanmeldings gebeurtenissen plaatsvinden.
 [Wachtwoord beveiliging](../authentication/concept-password-ban-bad.md) | Aangepaste lijst met verboden wacht woorden of on-premises wachtwoord beveiliging configureren.
 
-### <a name="security-operator"></a>[Beveiligings operator](#security-operator-permissions)
+### <a name="security-operator"></a>[Beveiligingsoperator](#security-operator-permissions)
 
 Gebruikers met deze rol kunnen waarschuwingen beheren en algemene alleen-lezen toegang hebben voor beveiligings functies, inclusief alle informatie in Microsoft 365 Security Center, Azure Active Directory, identiteits beveiliging, Privileged Identity Management en Office 365 Security & compliance Center. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in het Office 365 Security & compliance Center](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
@@ -545,11 +545,11 @@ Kan alle aspecten van app-registraties en bedrijfs-apps maken en beheren.
 | micro soft. Directory/appRoleAssignments/update | AppRoleAssignments bijwerken in Azure Active Directory. |
 | micro soft. Directory/appRoleAssignments/verwijderen | Verwijder appRoleAssignments in Azure Active Directory. |
 | micro soft. map/audit logs bevat/allProperties/lezen | Lees alle eigenschappen (inclusief bevoorrechte eigenschappen) op audit logs bevat in Azure Active Directory. |
-| micro soft. map/connectorGroups/alle/lezen | Lees de eigenschappen van connector groep voor toepassings proxy in Azure Active Directory. |
-| micro soft. map/connectorGroups/alle/update | Werk alle eigenschappen van de connector groep van de toepassings proxy bij in Azure Active Directory. |
+| micro soft. map/connectorGroups/allProperties/lezen | Lees de eigenschappen van connector groep voor toepassings proxy in Azure Active Directory. |
+| micro soft. Directory/connectorGroups/allProperties/update | Werk alle eigenschappen van de connector groep van de toepassings proxy bij in Azure Active Directory. |
 | micro soft. map/connectorGroups/maken | Maak Application proxy connector-groepen in Azure Active Directory. |
 | micro soft. Directory/connectorGroups/verwijderen | Toepassings proxy connector groepen verwijderen in Azure Active Directory. |
-| micro soft. map/connectors/alles/lezen | Lees alle eigenschappen van de toepassings proxy connector in Azure Active Directory. |
+| micro soft. Directory/connectors/allProperties/lezen | Lees alle eigenschappen van de toepassings proxy connector in Azure Active Directory. |
 | micro soft. map/connectors/maken | Application proxy-connectors maken in Azure Active Directory. |
 | micro soft. Directory/policies/applicationConfiguration/Basic/Read | Lees de eigenschap policies. applicationConfiguration in Azure Active Directory. |
 | micro soft. Directory/policies/applicationConfiguration/Basic/update | Werk de eigenschap policies. applicationConfiguration bij in Azure Active Directory. |
@@ -1426,7 +1426,6 @@ Kan de Office-apps Cloud Services, waaronder beleid en instellingen beheer, behe
 | micro soft. office365. messageCenter/berichten/lezen | Lees berichten in micro soft. office365. messageCenter. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
-| micro soft. office365. usageReports/de aflezingen/lezen | Lees de gebruiks rapporten van Office 365. |
 | micro soft. office365. userCommunication/cons/allTasks | Lees de zicht baarheid van nieuwe berichten en werk deze bij. |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
@@ -1941,7 +1940,7 @@ Power platform-beheerder | Power-platform beheerder | 11648597-926c-4cf3-9c36-bc
 Printer beheerder | Printer beheerder | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
 Printer technicus | Printer technicus | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
 Beheerder voor geprivilegieerde authenticatie | Beheerder voor geprivilegieerde authenticatie | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
-Beheerder van geprivilegieerde rol | Beheerder van geprivilegieerde rol | e8611ab8-c189-46e8-94e1-60213ab1f814
+Beheerder van geprivilegieerde rol | Beheerder voor bevoorrechte rollen | e8611ab8-c189-46e8-94e1-60213ab1f814
 Rapport lezer | Rapport lezer | 4a5d8f65-41da-4de4-8968-e035b65339cf
 Beheerder zoeken | Beheerder zoeken | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 Zoek editor | Zoek editor | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
@@ -1974,7 +1973,7 @@ De volgende rollen mogen niet worden gebruikt. Ze zijn afgeschaft en worden in d
 
 Niet elke rol die wordt geretourneerd door Power shell of MS Graph API is zichtbaar in Azure Portal. In de volgende tabel worden deze verschillen ingedeeld.
 
-API-naam | Azure Portal naam | Notities
+API-naam | Azure Portal naam | Opmerkingen
 -------- | ------------------- | -------------
 Company Administratoristrain opr | Globale beheerder | [De naam is gewijzigd voor betere duidelijkheid](directory-assign-admin-roles.md#role-template-ids)
 CRM Service-beheerder | Dynamics 365-beheerder | [Weerspiegelt huidige product huisstijl](directory-assign-admin-roles.md#role-template-ids)

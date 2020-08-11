@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290163"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064788"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
@@ -26,7 +26,7 @@ Key Vault is een op de cloud gebaseerd extern systeem voor sleutel beheer. Het i
 
 ## <a name="benefits"></a>Voordelen
 
-Gegevens versleuteling voor Azure Database for PostgreSQL één server biedt de volgende voor delen:
+Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for PostgreSQL één server biedt de volgende voor delen:
 
 * Gegevens toegang wordt volledig beheerd door u door de mogelijkheid om de sleutel te verwijderen en de data base ontoegankelijk te maken. 
 *    Volledige controle over de levens cyclus van de sleutel, inclusief het draaien van de sleutel die moet worden uitgelijnd met bedrijfs beleid
@@ -48,8 +48,8 @@ De DEKs, versleuteld met de KEKs, worden afzonderlijk opgeslagen. Alleen een ent
 Voor een PostgreSQL-server voor het gebruik van door de klant beheerde sleutels die zijn opgeslagen in Key Vault voor het versleutelen van de DEK, geeft een Key Vault-beheerder de volgende toegangs rechten voor de server:
 
 * **ophalen**: voor het ophalen van het open bare onderdeel en de eigenschappen van de sleutel in de sleutel kluis.
-* **wrapKey**: de dek kan worden versleuteld.
-* **sleutel uitpakken**: de dek kan worden ontsleuteld.
+* **wrapKey**: de dek kan worden versleuteld. De versleutelde DEK wordt opgeslagen in de Azure Database for PostgreSQL.
+* **sleutel uitpakken**: de dek kan worden ontsleuteld. Azure Database for PostgreSQL moet de ontsleutelde DEK hebben om de gegevens te versleutelen/ontsleutelen
 
 De sleutel kluis beheerder kan [logboek registratie van Key Vault controle gebeurtenissen ook inschakelen](../azure-monitor/insights/key-vault-insights-overview.md), zodat ze later kunnen worden gecontroleerd.
 
@@ -59,16 +59,16 @@ Wanneer de server is geconfigureerd voor het gebruik van de door de klant beheer
 
 Hier volgen de vereisten voor het configureren van Key Vault:
 
-* Key Vault en Azure Database for PostgreSQL één server moeten tot dezelfde Azure Active Directory (Azure AD)-Tenant behoren. Cross-Tenant Key Vault en server interacties worden niet ondersteund. Als u later resources wilt verplaatsen, moet u de gegevens versleuteling opnieuw configureren.
+* Key Vault en Azure Database for PostgreSQL één server moeten tot dezelfde Azure Active Directory (Azure AD)-Tenant behoren. Cross-Tenant Key Vault en server interacties worden niet ondersteund. Als u de Key Vault resource later wilt verplaatsen, moet u de gegevens versleuteling opnieuw configureren.
 * Schakel de functie voor het voorlopig verwijderen van de sleutel kluis in om te beschermen tegen gegevens verlies als een onbedoelde sleutel (of Key Vault) wordt verwijderd. Voorlopig verwijderde bronnen worden 90 dagen bewaard, tenzij de gebruiker deze in de tussen tijd herstelt of verwijdert. De herstel-en opschoon acties hebben hun eigen machtigingen die zijn gekoppeld aan een Key Vault toegangs beleid. De functie voor voorlopig verwijderen is standaard uitgeschakeld, maar u kunt deze inschakelen via Power shell of de Azure CLI (Houd er rekening mee dat u deze niet via de Azure Portal hoeft in te scha kelen).
-* Verleen de Azure Database for PostgreSQL enkele server toegang tot de sleutel kluis met de machtigingen Get, wrapKey en sleutel uitpakken met behulp van de unieke beheerde identiteit. In de Azure Portal wordt de unieke identiteit automatisch gemaakt wanneer gegevens versleuteling is ingeschakeld op de PostgreSQL één server. Zie [gegevens versleuteling voor Azure database for PostgreSQL Eén server met behulp van de Azure Portal](howto-data-encryption-portal.md) voor gedetailleerde, stapsgewijze instructies voor het gebruik van de Azure Portal.
+* Verleen de Azure Database for PostgreSQL enkele server toegang tot de sleutel kluis met de machtigingen Get, wrapKey en sleutel uitpakken met behulp van de unieke beheerde identiteit. In de Azure Portal wordt de unieke service-identiteit automatisch gemaakt wanneer gegevens versleuteling is ingeschakeld op de PostgreSQL één server. Zie [gegevens versleuteling voor Azure database for PostgreSQL Eén server met behulp van de Azure Portal](howto-data-encryption-portal.md) voor gedetailleerde, stapsgewijze instructies voor het gebruik van de Azure Portal.
 
 Hieronder vindt u de vereisten voor het configureren van de door de klant beheerde sleutel:
 
 * De door de klant beheerde sleutel die moet worden gebruikt voor het versleutelen van de DEK kan alleen asymmetrisch zijn: RSA 2048.
 * De datum en tijd waarop de sleutel wordt geactiveerd, moeten in het verleden liggen. De verval datum (indien ingesteld) moet een datum en tijd in de toekomst zijn.
 * De sleutel moet de *ingeschakelde* status hebben.
-* Als u een bestaande sleutel in de sleutel kluis importeert, moet u deze opgeven in de ondersteunde bestands indelingen ( `.pfx` , `.byok` , `.backup` ).
+* Als u [een bestaande sleutel](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey) in de sleutel kluis importeert, moet u deze opgeven in de ondersteunde bestands indelingen ( `.pfx` , `.byok` , `.backup` ).
 
 ## <a name="recommendations"></a>Aanbevelingen
 

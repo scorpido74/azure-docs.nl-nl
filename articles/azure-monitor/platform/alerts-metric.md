@@ -4,14 +4,14 @@ description: Meer informatie over het gebruik van Azure Portal of CLI om metrisc
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042731"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065859"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrische waarschuwing maken, bekijken en beheren met Azure Monitor
 
@@ -139,9 +139,18 @@ In de vorige secties wordt beschreven hoe u metrische waarschuwings regels kunt 
 
 Er zijn speciale Power shell-cmdlets beschikbaar voor metrische waarschuwings regels:
 
-- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): Hiermee wordt een nieuwe metrische waarschuwings regel gemaakt of een bestaande bijgewerkt.
-- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): Hiermee worden een of meer metrische waarschuwings regels opgehaald.
-- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): Hiermee verwijdert u een waarschuwings regel voor metrische gegevens.
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): een nieuwe metrische waarschuwings regel maken of een bestaande bijwerken.
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): een of meer metrische waarschuwings regels ophalen.
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): een waarschuwing regel voor metrische gegevens verwijderen.
+
+## <a name="with-rest-api"></a>Met REST-API
+
+- [Maken of bijwerken](/rest/api/monitor/metricalerts/createorupdate): Maak een nieuwe metrische waarschuwings regel of werk een bestaande waarschuwing bij.
+- [Ophalen](/rest/api/monitor/metricalerts/get): een specifieke waarschuwings regel voor metrische gegevens ophalen.
+- [Weer geven op resource groep](/rest/api/monitor/metricalerts/listbyresourcegroup): een lijst met metrische waarschuwings regels in een specifieke resource groep ophalen.
+- [Lijst op abonnement](/rest/api/monitor/metricalerts/listbysubscription): een lijst met metrische waarschuwings regels in een specifiek abonnement ophalen.
+- [Bijwerken](/rest/api/monitor/metricalerts/update): een waarschuwing regel voor metrische gegevens bijwerken.
+- [Verwijderen](/rest/api/monitor/metricalerts/delete): een waarschuwings regel voor metrische gegevens verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

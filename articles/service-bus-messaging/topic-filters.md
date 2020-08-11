@@ -3,12 +3,12 @@ title: Filters voor Azure Service Bus-onderwerp | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe abonnees kunnen bepalen welke berichten ze willen ontvangen van een onderwerp door filters op te geven.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339967"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066743"
 ---
 # <a name="topic-filters-and-actions"></a>Onderwerpfilters en acties
 
@@ -58,10 +58,8 @@ Route ring gebruikt filters voor het distribueren van berichten over topic-abonn
 > Omdat de Azure Portal nu ondersteuning biedt voor Service Bus Explorer-functionaliteit, kunnen abonnements filters vanuit de portal worden gemaakt of bewerkt. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk de volgende voor beelden: 
+Bekijk de volgende voorbeelden: 
 
 - [.NET-eenvoudige zelf studie verzenden en ontvangen met filters](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET-onderwerp filters](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Azure Resource Manager-sjabloon](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
-
-
+- [Azure Resource Manager-sjabloon](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)

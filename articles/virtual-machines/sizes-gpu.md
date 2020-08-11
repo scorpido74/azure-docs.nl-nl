@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 15b6de6a03bc5dd67650076beac603845b99ff59
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 711bcc06a65483921492aaad819b961fc09740d4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286186"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067032"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Grootte van door GPU geoptimaliseerde virtuele machines
 
 Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschikbaar zijn met één, meerdere of gedeeltelijke Gpu's. Deze grootten zijn ontworpen voor computerintensieve, grafisch intensieve en visualisatie werk belastingen. Dit artikel bevat informatie over het aantal en het type Gpu's, Vcpu's, gegevens schijven en Nic's. Opslag doorvoer en netwerk bandbreedte worden ook voor elke grootte in deze groepering opgenomen.
 
-- De grootte van de [NC-serie](nc-series.md), [NCv2-](ncv2-series.md)serie, [NCv3-serie](ncv3-series.md) is geoptimaliseerd voor computerintensieve en netwerkintensieve toepassingen en algoritmen. Enkele voor beelden zijn CUDA en OpenCL toepassingen en simulaties, AI en diep gaande lessen. De NCv3-serie is gericht op werk belastingen met hoge prestaties, met de Tesla V100 GPU van NVIDIA. De NC-serie maakt gebruik van de Intel Xeon E5-2690 v3 2,60 GHz v3-processor (Haswell) en de virtuele machines uit de NCv2-en NCv3-serie gebruiken de Intel Xeon E5-2690 v4-processor (Broadwell).
+- De grootten van de [NC-serie](nc-series.md), de [NCv2-](ncv2-series.md)serie, de [NCv3-serie](ncv3-series.md) en de [NCT4_v3 serie](nct4-v3-series.md) zijn geoptimaliseerd voor computerintensieve en netwerkintensieve toepassingen en algoritmen. Enkele voor beelden zijn CUDA en OpenCL toepassingen en simulaties, AI en diep gaande lessen. De NCT4v3-serie is gericht op het afleiden van workloads met NVIDIA Tesla T4 GPU en AMD EPYC2 Rome-processor. De NCv3-serie is gericht op werk belastingen met hoge prestaties, met de Tesla V100 GPU van NVIDIA. De NC-serie maakt gebruik van de Intel Xeon E5-2690 v3 2,60 GHz v3-processor (Haswell) en de virtuele machines uit de NCv2-en NCv3-serie gebruiken de Intel Xeon E5-2690 v4-processor (Broadwell).
 
 - [ND-serie](nd-series.md)en [NDv2-serie](ndv2-series.md) zijn gericht op trainings-en inleidende scenario's voor diep gaande lessen. Ze gebruiken de NVIDIA Tesla P40 GPU en de Intel Xeon E5-2690 v4-processor (Broadwell). De NDv2-serie maakt gebruik van de Intel Xeon Platinum 8168-processor (Skylake).
 

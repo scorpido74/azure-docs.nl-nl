@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 2ac15317fe45573805ff7f6395884f7cb101fec3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f03b5e93e4ed5155f6a713c152fbcf34dc873674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112830"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065876"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Connectiviteits architectuur in Azure Database for PostgreSQL
 In dit artikel wordt uitgelegd wat de Azure Database for PostgreSQL connectiviteits architectuur is en hoe het verkeer wordt omgeleid naar uw Azure Database for PostgreSQL data base-exemplaar van clients, zowel binnen als buiten Azure.
@@ -32,7 +32,7 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | Australië-Central2     | 20.36.113.0   |
 | Australië - oost | 13.75.149.87, 40.79.161.1     |
 | Australië - zuidoost |191.239.192.109, 13.73.109.251   |
-| Brazilië - zuid | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
+| Brazil South | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Canada - midden |40.85.224.249  |
 | Canada - oost | 40.86.226.166    |
 | VS - centraal | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
@@ -50,7 +50,7 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | India - centraal | 104.211.96.159     |
 | India - zuid | 104.211.224.146  |
 | India - west | 104.211.160.80    |
-| Japan - oost | 13.78.61.196, 191.237.240.43  |
+| Japan East | 13.78.61.196, 191.237.240.43  |
 | Japan - west | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Korea - centraal | 52.231.32.42   |
 | Korea - zuid | 52.231.200.86    |
@@ -58,15 +58,15 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | Europa - noord | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
 | Zuid-Afrika - noord  | 102.133.152.0    |
 | Zuid-Afrika - west | 102.133.24.0   |
-| VS - zuid-centraal |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
+| South Central US |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | Azië - zuidoost | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | UAE - centraal | 20.37.72.64  |
 | UAE - noord | 65.52.248.0    |
 | Verenigd Koninkrijk Zuid | 51.140.184.11   |
 | Verenigd Koninkrijk West | 51.141.8.11  |
 | VS - west-centraal | 13.78.145.25     |
-| Europa -west | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
-| VS - west | 104.42.238.205, 23.99.34.75  |
+| Europa -west | 40.68.37.158, 191.237.232.75, 13.69.105.208, 104.40.169.187  |
+| VS - west | 104.42.238.205, 23.99.34.75, 13.86.216.212, 13.86.217.212 |
 | VS - west 2 | 13.66.226.202  |
 ||||
 

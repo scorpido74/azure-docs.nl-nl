@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: da458b8aaf1ace7b87e98ded59a4bf90e4158e0f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 39a4cbd5ffd04aa3346b1ce4f3b73576b92c4d3b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054083"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065485"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekende problemen en oplossingen met SCIM 2,0-protocol compatibiliteit van de Azure AD User Provisioning Service
 
@@ -43,14 +43,14 @@ In de onderstaande tabel staat een item dat is gemarkeerd als vast, dat het juis
 | Extensie kenmerken gebruiken de notatie dot '. ' vóór kenmerk namen in plaats van dubbele punt notatie ': ' |  Ja  | 18 december 2018  | downgrade naar customappSSO |
 | Patch aanvragen voor kenmerken met meerdere waarden bevatten ongeldige syntaxis van het filter | Ja  |  18 december 2018  | downgrade naar customappSSO |
 | Aanvragen voor het maken van groepen bevatten een ongeldige schema-URI | Ja  |  18 december 2018  |  downgrade naar customappSSO |
-| PATCH-gedrag bijwerken om compatibiliteit te garanderen | Nee | NOG TE BEPALEN| Preview-vlag gebruiken |
+| Update van PATCH-gedrag om te zorgen voor naleving (bijvoorbeeld actief als Booleaanse en de juiste verwijdering van groepslid maatschappen) | Nee | NOG TE BEPALEN| Preview-vlag gebruiken |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>Vlaggen voor het wijzigen van het SCIM-gedrag
 Gebruik de onderstaande vlaggen in de Tenant-URL van uw toepassing om het standaard gedrag van de SCIM-client te wijzigen.
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM markeert tot later gedrag.":::
 
-* Gebruik de volgende URL om het PATCH gedrag bij te werken en ervoor te zorgen dat SCIM compatibel zijn. Dit gedrag is momenteel alleen beschikbaar wanneer u de vlag gebruikt, maar zal de standaard instelling in de komende maanden worden.
+* Gebruik de volgende URL om het PATCH gedrag bij te werken en te zorgen voor SCIM-naleving (bijvoorbeeld actief als Booleaanse en de juiste verwijdering van groepslid maatschappen). Dit gedrag is momenteel alleen beschikbaar wanneer u de vlag gebruikt, maar zal de standaard instelling in de komende maanden worden.
   * **URL (scim-compatibel):** AzureAdScimPatch062020
   * **SCIM RFC-verwijzingen:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2

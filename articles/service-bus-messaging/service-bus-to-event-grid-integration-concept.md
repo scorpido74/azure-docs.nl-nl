@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9c9c061e31ac4d3eba8d31352253bb25b62a9b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503290"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065111"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Overzicht integratie Azure Service Bus met Azure Event Grid
 
@@ -41,9 +41,9 @@ Service Bus gaat vandaag gebeurtenissen verzenden voor twee scenario's:
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * DeadletterMessagesAvailable
 
-Bovendien worden de standaard Event Grid-beveiliging en [verificatiemechanismen](https://docs.microsoft.com/azure/event-grid/security-authentication) gebruikt.
+Bovendien worden de standaard Event Grid-beveiliging en [verificatiemechanismen](../event-grid/security-authentication.md) gebruikt.
 
-Zie [Azure Event Grid-gebeurtenisschema's](https://docs.microsoft.com/azure/event-grid/event-schema) voor meer informatie.
+Zie [Azure Event Grid-gebeurtenisschema's](../event-grid/event-schema.md) voor meer informatie.
 
 #### <a name="active-messages-available-event"></a>De gebeurtenis Actieve berichten beschikbaar
 
@@ -132,7 +132,7 @@ Ga als volgt te werk als u een nieuw Event Grid-abonnement wilt maken:
 
 ## <a name="azure-cli-instructions"></a>Instructies voor Azure CLI
 
-Controleer eerst of Azure CLI versie 2.0 of hoger is geïnstalleerd. [Download het installatieprogramma](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Selecteer **Windows + X**en open een nieuwe Power shell-console met beheerders machtigingen. U kunt ook een opdrachtshell in Azure Portal gebruiken.
+Controleer eerst of Azure CLI versie 2.0 of hoger is geïnstalleerd. [Download het installatieprogramma](/cli/azure/install-azure-cli?view=azure-cli-latest). Selecteer **Windows + X**en open een nieuwe Power shell-console met beheerders machtigingen. U kunt ook een opdrachtshell in Azure Portal gebruiken.
 
 Voer de volgende code uit:
 
@@ -150,7 +150,7 @@ Als u BASH gebruikt
 
 ## <a name="powershell-instructions"></a>Instructies voor PowerShell
 
-Controleer of u Azure PowerShell hebt geïnstalleerd. [Download het installatieprogramma](https://docs.microsoft.com/powershell/azure/install-Az-ps). Selecteer **Windows+X** en open een nieuwe PowerShell-console met beheerdersmachtigingen. U kunt ook een opdrachtshell in Azure Portal gebruiken.
+Controleer of u Azure PowerShell hebt geïnstalleerd. [Download het installatieprogramma](/powershell/azure/install-Az-ps). Selecteer **Windows+X** en open een nieuwe PowerShell-console met beheerdersmachtigingen. U kunt ook een opdrachtshell in Azure Portal gebruiken.
 
 ```powershell-interactive
 Connect-AzAccount
@@ -171,10 +171,10 @@ U kunt nu kennismaken met de andere instelopties of testen of er gebeurtenissen 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Voorbeelden](service-bus-to-event-grid-integration-example.md) ophalen van Service Bus en Event Grid.
-* Meer informatie over [Event Grid](https://docs.microsoft.com/azure/event-grid/).
-* Meer informatie over [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
-* Meer informatie over [Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
-* Meer informatie over [Service Bus](https://docs.microsoft.com/azure/service-bus/).
+* Meer informatie over [Event Grid](../event-grid/index.yml).
+* Meer informatie over [Azure Functions](../azure-functions/index.yml).
+* Meer informatie over [Logic Apps](../logic-apps/index.yml).
+* Meer informatie over [Service Bus](/azure/service-bus/).
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

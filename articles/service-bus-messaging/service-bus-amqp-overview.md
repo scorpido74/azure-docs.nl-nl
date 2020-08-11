@@ -3,15 +3,15 @@ title: Overzicht van AMQP 1,0 in Azure Service Bus
 description: Lees hoe Azure Service Bus Advanced Message Queueing Protocol (AMQP) ondersteunt, een open standaard protocol.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1113ffd268c991ba8a9c8f574b90d555a81ae840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083868"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066335"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Ondersteuning voor AMQP 1,0 in Service Bus
-Zowel de Azure Service Bus Cloud service als on-premises [service bus voor Windows Server (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) ondersteunen het AMQP (Advanced Message queueing Protocol) 1,0. Met AMQP kunt u platform onafhankelijke, hybride toepassingen bouwen met behulp van een open standaard protocol. U kunt toepassingen bouwen met behulp van onderdelen die zijn gebouwd met behulp van verschillende talen en frameworks, en die worden uitgevoerd op verschillende besturings systemen. Al deze onderdelen kunnen verbinding maken met Service Bus en gestructureerde bedrijfs berichten efficiënt en met volledige betrouw baarheid uitwisselen.
+Zowel de Azure Service Bus Cloud service als on-premises [service bus voor Windows Server (Service Bus 1,1)](/previous-versions/service-bus-archive/dn282144(v=azure.100)) ondersteunen het AMQP (Advanced Message queueing Protocol) 1,0. Met AMQP kunt u platform onafhankelijke, hybride toepassingen bouwen met behulp van een open standaard protocol. U kunt toepassingen bouwen met behulp van onderdelen die zijn gebouwd met behulp van verschillende talen en frameworks, en die worden uitgevoerd op verschillende besturings systemen. Al deze onderdelen kunnen verbinding maken met Service Bus en gestructureerde bedrijfs berichten efficiënt en met volledige betrouw baarheid uitwisselen.
 
 ## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Inleiding: wat is AMQP 1,0 en waarom is het belang rijk?
 Normaal gesp roken hebben op berichten georiënteerde middlewareproducten een eigen protocol gebruikt voor communicatie tussen client toepassingen en makelaars. Dit betekent dat als u de Messa ging-Broker van een bepaalde leverancier hebt geselecteerd, u de bibliotheken van die leverancier moet gebruiken om uw client toepassingen te verbinden met die Broker. Dit leidt tot een zekere mate van afhankelijkheid van die leverancier, omdat het voor de poort van een toepassing naar een ander product nood zakelijk is dat code wijzigingen in alle verbonden toepassingen worden aangebracht. 
@@ -84,6 +84,6 @@ Wilt u meer weten? Ga naar de volgende koppelingen:
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [Service Bus van .NET gebruiken met AMQP]: service-bus-amqp-dotnet.md
-[Service Bus van Java gebruiken met AMQP]: service-bus-amqp-java.md
-[Apache Qpid Proton-C op een Azure Linux-VM installeren]: service-bus-amqp-apache.md
-[AMQP in Service Bus voor Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[Service Bus van Java gebruiken met AMQP]: ./service-bus-java-how-to-use-jms-api-amqp.md
+[Apache Qpid Proton-C op een Azure Linux-VM installeren]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

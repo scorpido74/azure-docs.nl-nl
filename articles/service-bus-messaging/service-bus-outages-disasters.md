@@ -3,12 +3,12 @@ title: Azure Service Bus toepassingen isoleren tegen storingen en rampen
 description: In deze artikelen vindt u technieken voor het beveiligen van toepassingen tegen een mogelijke Azure Service Bus storing.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339650"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065621"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Best practices voor de isolatie van toepassingen tegen Service Bus-uitval en -noodgevallen
 
@@ -72,7 +72,7 @@ Bij het gebruik van passieve replicatie kunnen berichten in de volgende scenario
 De [geo-replicatie met Service Bus Standard-laag][Geo-replication with Service Bus Standard Tier] voor beeld toont de passieve replicatie van Messa ging-entiteiten.
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Relay-eind punten beveiligen tegen data centers storingen of nood gevallen
-Met geo-replicatie van [Azure relay](../service-bus-relay/relay-what-is-it.md) -eind punten kan een service die een relay-eind punt beschikbaar maakt, bereikbaar zijn in de aanwezigheid van service bus storingen. Om geo-replicatie te kunnen garanderen, moet de service twee relay-eind punten in verschillende naam ruimten maken. De naam ruimten moeten zich in verschillende data centers bevinden en de twee eind punten moeten verschillende namen hebben. U kunt bijvoorbeeld een primair eind punt bereiken onder **contosoPrimary.servicebus.Windows.net/myPrimaryService**, terwijl de secundaire tegen hanger kan worden bereikt onder **contosoSecondary.servicebus.Windows.net/mySecondaryService**.
+Met geo-replicatie van [Azure relay](../azure-relay/relay-what-is-it.md) -eind punten kan een service die een relay-eind punt beschikbaar maakt, bereikbaar zijn in de aanwezigheid van service bus storingen. Om geo-replicatie te kunnen garanderen, moet de service twee relay-eind punten in verschillende naam ruimten maken. De naam ruimten moeten zich in verschillende data centers bevinden en de twee eind punten moeten verschillende namen hebben. U kunt bijvoorbeeld een primair eind punt bereiken onder **contosoPrimary.servicebus.Windows.net/myPrimaryService**, terwijl de secundaire tegen hanger kan worden bereikt onder **contosoSecondary.servicebus.Windows.net/mySecondaryService**.
 
 De service luistert vervolgens op beide eind punten en een client kan de service via een van beide eind punten aanroepen. Een client toepassing kiest wille keurig een van de relays als het primaire eind punt en verzendt de aanvraag naar het actieve eind punt. Als de bewerking mislukt met een fout code, geeft deze fout aan dat het relay-eind punt niet beschikbaar is. De toepassing opent een kanaal naar het back-upeindpunt en geeft de aanvraag opnieuw uit. Op dat moment worden de switch rollen actief en back-upeindpunt: de client toepassing beschouwt het oude actieve eind punt als het nieuwe back-upeindpunt en het oude back-upeindpunt als nieuw actief eind punt. Als beide verzend bewerkingen mislukken, blijven de rollen van de twee entiteiten ongewijzigd en wordt er een fout geretourneerd.
 
@@ -81,7 +81,7 @@ Raadpleeg de volgende artikelen voor meer informatie over herstel na nood gevall
 
 * [Azure Service Bus geo-nood herstel](service-bus-geo-dr.md)
 * [Bedrijfs continuïteit Azure SQL Database][Azure SQL Database Business Continuity]
-* [Robuuste toepassingen ontwerpen voor Azure][Azure resiliency technical guidance]
+* [Tolerante toepassingen ontwerpen voor Azure][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md

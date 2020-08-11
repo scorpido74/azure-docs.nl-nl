@@ -2,13 +2,13 @@
 title: Upgrade van de app Service Fabric met behulp van Power shell
 description: In dit artikel wordt uitgelegd hoe u een Service Fabric toepassing implementeert, hoe u de code wijzigt en een upgrade uitvoert met behulp van Power shell.
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/5/2020
+ms.openlocfilehash: 2bd74d071d5dfb3385d4203704eacd5ba685917e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195881"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064584"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade van toepassing Service Fabric met behulp van Power shell
 > [!div class="op_single_selector"]
@@ -24,6 +24,21 @@ De meestgebruikte en aanbevolen upgrade aanpak is de bewaakte rolling upgrade.  
 Een bewaakte toepassings upgrade kan worden uitgevoerd met behulp van de beheerde of systeem eigen Api's, Power shell, Azure CLI, Java of REST. Zie [uw toepassing upgraden met Visual Studio](service-fabric-application-upgrade-tutorial.md)voor instructies over het uitvoeren van een upgrade met Visual Studio.
 
 Met Service Fabric bewaakte rolling upgrades kan de toepassings beheerder het status evaluatie beleid configureren dat Service Fabric gebruikt om te bepalen of de toepassing in orde is. Daarnaast kan de beheerder de actie configureren die moet worden uitgevoerd wanneer de status evaluatie mislukt (bijvoorbeeld door een automatische terugdraai bewerking uit te voeren). In deze sectie wordt een bewaakte upgrade door lopen voor een van de SDK-voor beelden die gebruikmaken van Power shell. 
+
+> [!NOTE]
+> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s blijven niet behouden in een toepassings upgrade. Als u de huidige toepassings parameters wilt behouden, moet de gebruiker eerst de para meters ophalen en deze door geven aan de aanroep van de upgrade-API zoals hieronder wordt weer gegeven:
+```powershell
+$myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
+$appParamCollection = $myApplication.ApplicationParameters
+
+$applicationParameterMap = @{}
+foreach ($pair in $appParamCollection)
+{
+    $applicationParameterMap.Add($pair.Name, $pair.Value);
+}
+
+Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -ApplicationTypeVersion 2.0.0 -ApplicationParameter $applicationParameterMap -Monitored -FailureAction Rollback
+```
 
 ## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>Stap 1: het voor beeld van Visual objecten bouwen en implementeren
 Bouw en publiceer de toepassing door met de rechter muisknop te klikken op het toepassings project **VisualObjectsApplication** en de opdracht **Publish** te selecteren.  Zie [service Fabric-zelf studie](service-fabric-application-upgrade-tutorial.md)over de upgrade van toepassingen voor meer informatie.  U kunt ook Power shell gebruiken om uw toepassing te implementeren.

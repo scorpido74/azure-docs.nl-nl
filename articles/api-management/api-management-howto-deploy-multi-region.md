@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790476"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065451"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Exemplaar van Azure API Management-service implementeren in meerdere Azure-regio's
 
@@ -28,6 +28,9 @@ Een nieuwe Azure API Management-service bevat in eerste instantie slechts één 
 
 > [!NOTE]
 > Alleen het gateway onderdeel van API Management wordt geïmplementeerd in alle regio's. Het Service Management-onderdeel en de ontwikkelaars Portal worden alleen gehost in de primaire regio. In het geval van de onderbreking van de primaire regio, wordt de toegang tot de ontwikkelaars Portal en de mogelijkheid om de configuratie te wijzigen (bijvoorbeeld het toevoegen van Api's, het Toep assen van beleid) verstoord tot de primaire regio weer online is. Terwijl de primaire regio offline beschikbaar is, blijven secundaire regio's het API-verkeer verwerken met de meest recente configuratie die voor hen beschikbaar is.
+
+>[!IMPORTANT]
+> De functie voor het opslaan van klant gegevens in één regio is momenteel alleen beschikbaar in de regio Zuidoost-Azië (Singapore) van de Azië en Stille Oceaan geo. Voor alle andere regio's worden klant gegevens opgeslagen in geografische regio.
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 

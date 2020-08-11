@@ -4,12 +4,12 @@ description: In dit artikel wordt uitgelegd hoe u Azure Service Bus-beheer bibli
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a8f0f8ef299f9d27d3c1be2746052536c4e5e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341711"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066165"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus-beheerbibliotheken
 
@@ -26,11 +26,11 @@ De Azure Service Bus-beheer bibliotheken kunnen Service Bus naam ruimten en enti
 
 Als u de Service Bus-beheer bibliotheken wilt gaan gebruiken, moet u zich verifiëren met de service Azure Active Directory (Azure AD). Voor Azure AD moet u worden geverifieerd als Service-Principal, waarmee u toegang hebt tot uw Azure-resources. Zie een van de volgende artikelen voor meer informatie over het maken van een Service-Principal:  
 
-* [Gebruik de Azure Portal om Active Directory-toepassing en Service-Principal te maken die toegang hebben tot resources](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Gebruik de Azure Portal om Active Directory-toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md)
+* [Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-Deze zelf studies bieden u een `AppId` (client-id), `TenantId` , en `ClientSecret` (verificatie sleutel), die allemaal worden gebruikt voor verificatie door de beheer bibliotheken. U moet ten minste [**Azure Service Bus gegevens eigenaar**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) of [**Inzender**](/azure/role-based-access-control/built-in-roles#contributor) machtigingen hebben voor de resource groep waarop u wilt uitvoeren.
+Deze zelf studies bieden u een `AppId` (client-id), `TenantId` , en `ClientSecret` (verificatie sleutel), die allemaal worden gebruikt voor verificatie door de beheer bibliotheken. U moet ten minste [**Azure Service Bus gegevens eigenaar**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) of [**Inzender**](../role-based-access-control/built-in-roles.md#contributor) machtigingen hebben voor de resource groep waarop u wilt uitvoeren.
 
 ## <a name="programming-pattern"></a>Programmerings patroon
 

@@ -3,12 +3,12 @@ title: Gids voor probleem oplossing voor Azure Service Bus | Microsoft Docs
 description: Dit artikel bevat een lijst met Azure Service Bus Messa ging-uitzonde ringen en voorgestelde acties die moeten worden uitgevoerd wanneer de uitzonde ring optreedt.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071311"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067049"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Gids voor probleem oplossing voor Azure Service Bus
 In dit artikel vindt u tips en aanbevelingen voor het oplossen van problemen die kunnen optreden bij het gebruik van Azure Service Bus. 
@@ -80,7 +80,7 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 De identiteit heeft geen machtigingen voor toegang tot het onderwerp Service Bus. 
 
 ### <a name="resolution"></a>Oplossing
-Om deze fout op te lossen, installeert u de bibliotheek [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) .  Zie [Local Development Authentication](..\key-vault\service-to-service-authentication.md#local-development-authentication)(Engelstalig) voor meer informatie. 
+Om deze fout op te lossen, installeert u de bibliotheek [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) .  Zie [Local Development Authentication](../key-vault/general/service-to-service-authentication.md#local-development-authentication)(Engelstalig) voor meer informatie. 
 
 Zie [een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure service bus resources](service-bus-managed-service-identity.md)voor meer informatie over het toewijzen van machtigingen aan rollen.
 
@@ -101,5 +101,4 @@ Open een nieuwe verbinding met de Service Bus naam ruimte om meer berichten te v
 Zie de volgende artikelen: 
 
 - [Uitzonde ringen Azure Resource Manager](service-bus-resource-manager-exceptions.md). De lijst met uitzonde ringen die zijn gegenereerd bij het werken met Azure Service Bus met behulp van Azure Resource Manager (via sjablonen of directe aanroepen).
-- [Messa ging-uitzonde ringen](service-bus-messaging-exceptions.md). Het bevat een lijst met uitzonde ringen die zijn gegenereerd door .NET Framework voor Azure Service Bus. 
-
+- [Messa ging-uitzonde ringen](service-bus-messaging-exceptions.md). Het bevat een lijst met uitzonde ringen die zijn gegenereerd door .NET Framework voor Azure Service Bus.

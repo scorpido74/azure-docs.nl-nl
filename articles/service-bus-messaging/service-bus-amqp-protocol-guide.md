@@ -3,12 +3,12 @@ title: AMQP 1,0 in Azure Service Bus en Event Hubs protocol handleiding | Micros
 description: Protocol gids voor expressies en beschrijving van AMQP 1,0 in Azure Service Bus en Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511310"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064533"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 in Azure Service Bus en Event Hubs protocol gids
 
@@ -73,7 +73,7 @@ Verbindingen, kanalen en sessies zijn kortstondig. Als de onderliggende verbindi
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP voor de uitgaande poort
 
-Clients die gebruikmaken van AMQP-verbindingen via TCP, moeten poorten 5671 en 5672 in de lokale firewall moeten worden geopend. Naast deze poorten is het mogelijk nodig extra poorten te openen als de [EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) -functie is ingeschakeld. `EnableLinkRedirect`is een nieuwe berichten functie waarmee u een hop kunt overs Laan tijdens het ontvangen van berichten, waardoor de door Voer wordt verbeterd. De client begint direct met de back-end-service te communiceren via het poort bereik 104XX, zoals wordt weer gegeven in de volgende afbeelding. 
+Clients die gebruikmaken van AMQP-verbindingen via TCP, moeten poorten 5671 en 5672 in de lokale firewall moeten worden geopend. Naast deze poorten is het mogelijk nodig extra poorten te openen als de [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) -functie is ingeschakeld. `EnableLinkRedirect`is een nieuwe berichten functie waarmee u een hop kunt overs Laan tijdens het ontvangen van berichten, waardoor de door Voer wordt verbeterd. De client begint direct met de back-end-service te communiceren via het poort bereik 104XX, zoals wordt weer gegeven in de volgende afbeelding. 
 
 ![Lijst met doel poorten][4]
 
@@ -366,7 +366,7 @@ Het aanvraag bericht heeft de volgende toepassings eigenschappen:
 
 De eigenschap *name* identificeert de entiteit waaraan het token moet worden gekoppeld. In Service Bus is het het pad naar de wachtrij, of onderwerp/abonnement. De eigenschap *type* geeft het token type aan:
 
-| Token type | Beschrijving van het token | Type hoofd tekst | Notities |
+| Token type | Beschrijving van het token | Type hoofd tekst | Opmerkingen |
 | --- | --- | --- | --- |
 | AMQP: JWT |JSON Web Token (JWT) |AMQP-waarde (teken reeks) |Nog niet beschikbaar. |
 | AMQP: swt |Eenvoudig webtoken (SWT) |AMQP-waarde (teken reeks) |Alleen ondersteund voor SWT-tokens die zijn uitgegeven door AAD/ACS |
@@ -419,5 +419,5 @@ Ga voor meer informatie over AMQP naar de volgende koppelingen:
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [Overzicht van Service Bus AMQP]: service-bus-amqp-overview.md
-[AMQP 1,0-ondersteuning voor Service Bus gepartitioneerde wacht rijen en onderwerpen]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[AMQP in Service Bus voor Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[AMQP 1,0-ondersteuning voor Service Bus gepartitioneerde wacht rijen en onderwerpen]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

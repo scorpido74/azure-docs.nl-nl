@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 07/03/2020
-ms.openlocfilehash: b20cb074a21196467c0264247e8f5d885d7956a0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 08/11/2020
+ms.openlocfilehash: e7199b6d54a0150845bfc09c38e002e6cc298ee7
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423300"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066726"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -110,45 +110,9 @@ In de hoofd tekst, neemt `KeyType` u de eigenschap op als `Primary` of `Secondar
 
 ### <a name="enable-azure-active-directory-oauth"></a>Azure Active Directory OAuth inschakelen
 
-Als uw logische app begint met een [trigger voor aanvragen](../connectors/connectors-native-reqres.md), kunt u [Azure Active Directory open-verificatie](../active-directory/develop/index.yml) (Azure AD OAuth) inschakelen door een autorisatie beleid voor binnenkomende oproepen naar de aanvraag trigger te maken. Lees de volgende overwegingen voordat u deze verificatie inschakelt:
+Als uw logische app begint met een [trigger voor aanvragen](../connectors/connectors-native-reqres.md), kunt u [Azure Active Directory open verificatie](../active-directory/develop/index.yml) (Azure AD OAuth) inschakelen door een autorisatie beleid voor inkomende oproepen te definiëren of toe te voegen aan de aanvraag trigger. Wanneer uw logische app een binnenkomende aanvraag met een verificatie token ontvangt, vergelijkt Azure Logic Apps de claims van het token met de claims in elk autorisatie beleid. Als er een overeenkomst is tussen de claims van het token en alle claims in ten minste één beleid, is de autorisatie geslaagd voor de inkomende aanvraag. Het token kan meer claims hebben dan het aantal dat is opgegeven door het autorisatie beleid.
 
-* Een inkomende oproep naar uw logische app kan slechts één autorisatie schema, ofwel Azure AD OAuth of [Shared Access signatures (SAS)](#sas), gebruiken. Alleen autorisatie schema's van [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) worden ondersteund voor OAuth-tokens, die alleen voor de aanvraag trigger worden ondersteund.
-
-* Uw logische app is beperkt tot een maximum aantal autorisatie beleidsregels. Elk autorisatie beleid heeft ook een maximum aantal [claims](../active-directory/develop/developer-glossary.md#claim). Zie [Informatie over limieten en configuratie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits) voor meer informatie.
-
-* Een autorisatie beleid moet ten minste de **Issuer** claim bevatten, die een waarde heeft die begint met `https://sts.windows.net/` of `https://login.microsoftonline.com/` (OAuth v2) als de id van de uitgever van Azure AD. Zie [toegangs tokens voor micro soft Identity platform](../active-directory/develop/access-tokens.md)voor meer informatie over toegangs tokens.
-
-Als u Azure AD OAuth wilt inschakelen, volgt u deze stappen om een of meer autorisatie beleid toe te voegen aan uw logische app.
-
-1. Zoek en open uw logische app in het [Azure Portal](https://portal.microsoft.com)in de ontwerp functie voor logische apps.
-
-1. Selecteer in het menu van de logische app onder **instellingen**de optie **autorisatie**. Nadat het autorisatie venster is geopend, selecteert u **beleid toevoegen**.
-
-   ![Selecteer autorisatie > beleid toevoegen](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
-
-1. Geef informatie op over het autorisatie beleid door de [claim typen](../active-directory/develop/developer-glossary.md#claim) en waarden op te geven die uw logische app verwacht in het verificatie token dat wordt gepresenteerd door elke binnenkomende aanroep naar de aanvraag trigger:
-
-   ![Informatie opgeven voor autorisatie beleid](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
-
-   | Eigenschap | Vereist | Beschrijving |
-   |----------|----------|-------------|
-   | **Beleids naam** | Ja | De naam die u wilt gebruiken voor het autorisatie beleid |
-   | **Claims** | Ja | De claim typen en-waarden die uw logische app accepteert van binnenkomende oproepen. Dit zijn de beschik bare claim typen: <p><p>- **Verlener** <br>- **Gericht** <br>- **Onderwerp** <br>- **JWT-id** (JSON Web token-id) <p><p>De **claim** lijst moet mini maal de claim van de **verlener** bevatten, die een waarde heeft die begint met de `https://sts.windows.net/` of `https://login.microsoftonline.com/` als de id van de Azure AD-Uitgever. Zie [claims in azure AD-beveiligings tokens](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)voor meer informatie over deze claim typen. U kunt ook uw eigen claim type en-waarde opgeven. |
-   |||
-
-1. Selecteer een van de volgende opties om een claim toe te voegen:
-
-   * Als u een ander claim type wilt toevoegen, selecteert u **standaard claim toevoegen**, selecteert u het claim type en geeft u de claim waarde op.
-
-   * Als u uw eigen claim wilt toevoegen, selecteert u **aangepaste claim toevoegen**en geeft u de aangepaste claim waarde op.
-
-1. Selecteer **beleid toevoegen**om een ander autorisatie beleid toe te voegen. Herhaal de vorige stappen om het beleid in te stellen.
-
-1. Selecteer **Opslaan** als u klaar bent.
-
-Uw logische app is nu ingesteld voor het gebruik van Azure AD OAuth voor het machtigen van inkomende aanvragen. Wanneer uw logische app een binnenkomende aanvraag met een verificatie token ontvangt, vergelijkt Azure Logic Apps de claims van het token met de claims in elk autorisatie beleid. Als er een overeenkomst is tussen de claims van het token en alle claims in ten minste één beleid, is de autorisatie geslaagd voor de inkomende aanvraag. Het token kan meer claims hebben dan het aantal dat is opgegeven door het autorisatie beleid.
-
-Stel bijvoorbeeld dat uw logische app een autorisatie beleid heeft dat twee claim typen vereist, verlener en publiek. Dit voor beeld van een gedecodeerd [toegangs token](../active-directory/develop/access-tokens.md) bevat beide claim typen:
+Stel bijvoorbeeld dat uw logische app een autorisatie beleid heeft dat twee claim typen vereist, **verlener** en **publiek**. Dit voor beeld van een gedecodeerd [toegangs token](../active-directory/develop/access-tokens.md) bevat beide claim typen:
 
 ```json
 {
@@ -191,6 +155,93 @@ Stel bijvoorbeeld dat uw logische app een autorisatie beleid heeft dat twee clai
 }
 ```
 
+#### <a name="considerations-for-enabling-azure-oauth"></a>Overwegingen voor het inschakelen van Azure OAuth
+
+Lees de volgende overwegingen voordat u deze verificatie inschakelt:
+
+* Een inkomende oproep naar uw logische app kan slechts één autorisatie schema, ofwel Azure AD OAuth of [Shared Access signatures (SAS)](#sas), gebruiken. Alleen autorisatie schema's van [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) worden ondersteund voor OAuth-tokens, die alleen voor de aanvraag trigger worden ondersteund.
+
+* Uw logische app is beperkt tot een maximum aantal autorisatie beleidsregels. Elk autorisatie beleid heeft ook een maximum aantal [claims](../active-directory/develop/developer-glossary.md#claim). Zie [Informatie over limieten en configuratie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits) voor meer informatie.
+
+* Een autorisatie beleid moet ten minste de **Issuer** claim bevatten, die een waarde heeft die begint met `https://sts.windows.net/` of `https://login.microsoftonline.com/` (OAuth v2) als de id van de uitgever van Azure AD. Zie [toegangs tokens voor micro soft Identity platform](../active-directory/develop/access-tokens.md)voor meer informatie over toegangs tokens.
+
+<a name="define-authorization-policy-portal"></a>
+
+#### <a name="define-authorization-policy-in-azure-portal"></a>Autorisatie beleid definiëren in Azure Portal
+
+Als u Azure AD OAuth wilt inschakelen voor uw logische app in de Azure Portal, voert u de volgende stappen uit om een of meer autorisatie beleid toe te voegen aan uw logische app:
+
+1. Zoek en open uw logische app in het [Azure Portal](https://portal.microsoft.com)in de ontwerp functie voor logische apps.
+
+1. Selecteer in het menu van de logische app onder **instellingen**de optie **autorisatie**. Nadat het autorisatie venster is geopend, selecteert u **beleid toevoegen**.
+
+   ![Selecteer autorisatie > beleid toevoegen](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
+
+1. Geef informatie op over het autorisatie beleid door de [claim typen](../active-directory/develop/developer-glossary.md#claim) en waarden op te geven die uw logische app verwacht in het verificatie token dat wordt gepresenteerd door elke binnenkomende aanroep naar de aanvraag trigger:
+
+   ![Informatie opgeven voor autorisatie beleid](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
+
+   | Eigenschap | Vereist | Beschrijving |
+   |----------|----------|-------------|
+   | **Beleids naam** | Ja | De naam die u wilt gebruiken voor het autorisatie beleid |
+   | **Claims** | Ja | De claim typen en-waarden die uw logische app accepteert van binnenkomende oproepen. Dit zijn de beschik bare claim typen: <p><p>- **Verlener** <br>- **Gericht** <br>- **Onderwerp** <br>- **JWT-id** (JSON Web token-id) <p><p>De **claim** lijst moet mini maal de claim van de **verlener** bevatten, die een waarde heeft die begint met de `https://sts.windows.net/` of `https://login.microsoftonline.com/` als de id van de Azure AD-Uitgever. Zie [claims in azure AD-beveiligings tokens](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)voor meer informatie over deze claim typen. U kunt ook uw eigen claim type en-waarde opgeven. |
+   |||
+
+1. Selecteer een van de volgende opties om een claim toe te voegen:
+
+   * Als u een ander claim type wilt toevoegen, selecteert u **standaard claim toevoegen**, selecteert u het claim type en geeft u de claim waarde op.
+
+   * Als u uw eigen claim wilt toevoegen, selecteert u **aangepaste claim toevoegen**en geeft u de aangepaste claim waarde op.
+
+1. Selecteer **beleid toevoegen**om een ander autorisatie beleid toe te voegen. Herhaal de vorige stappen om het beleid in te stellen.
+
+1. Selecteer **Opslaan** als u klaar bent.
+
+<a name="define-authorization-policy-template"></a>
+
+#### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Autorisatie beleid definiëren in Azure Resource Manager sjabloon
+
+Als u Azure AD OAuth wilt inschakelen in de ARM-sjabloon voor het implementeren van uw logische app, voegt u in de `properties` sectie voor de [resource definitie van de logische app](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)een `accessControl` object toe als er geen bestaat, dat een `triggers` object bevat. Voeg in het- `triggers` object een `openAuthenticationPolicies` object toe waarin u een of meer autorisatie beleidsregels definieert door de volgende syntaxis te volgen:
+
+```json
+"resources": [
+   {
+      // Start logic app resource definition
+      "properties": {
+         "state": "<Enabled-or-Disabled>",
+         "definition": {<workflow-definition>},
+         "parameters": {<workflow-definition-parameter-values>},
+         "accessControl": {
+            "triggers": {
+               "openAuthenticationPolicies": {
+                  "policies": {
+                     "<policy-name>": {
+                        "type": "AAD",
+                        "claims": [
+                           {
+                              "name": "<claim-name>",
+                              "values": "<claim-value>"
+                           }
+                        ]
+                     }
+                  }
+               }
+            },
+         },
+      },
+      "name": "[parameters('LogicAppName')]",
+      "type": "Microsoft.Logic/workflows",
+      "location": "[parameters('LogicAppLocation')]",
+      "apiVersion": "2016-06-01",
+      "dependsOn": [
+      ]
+   }
+   // End logic app resource definition
+],
+```
+
+Zie voor meer informatie over de `accessControl` sectie [binnenkomende IP-bereiken beperken in azure Resource Manager sjabloon](#restrict-inbound-ip-template) en [verwijzing naar sjablonen voor micro soft. Logic-werk stromen](/templates/microsoft.logic/2019-05-01/workflows).
+
 <a name="restrict-inbound-ip"></a>
 
 ### <a name="restrict-inbound-ip-addresses"></a>Inkomende IP-adressen beperken
@@ -213,6 +264,8 @@ Als u wilt dat uw logische app alleen als een geneste logische app wordt geactiv
 
 > [!NOTE]
 > Ongeacht het IP-adres kunt u nog steeds een logische app met een op aanvragen gebaseerde trigger uitvoeren met behulp van de [Logic Apps rest API: werk stroom triggers-aanvraag uitvoeren](/rest/api/logic/workflowtriggers/run) of door middel van API management. Voor dit scenario is echter nog steeds [verificatie](../active-directory/develop/authentication-vs-authorization.md) vereist voor de Azure-rest API. Alle gebeurtenissen worden weer gegeven in het controle logboek van Azure. Zorg ervoor dat u de beleids regels voor toegangs beheer dienovereenkomstig instelt.
+
+<a name="restrict-inbound-ip-template"></a>
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Binnenkomende IP-bereiken in Azure Resource Manager sjabloon beperken
 
@@ -750,7 +803,7 @@ Als de optie [basis](../active-directory-b2c/secure-rest-api.md) beschikbaar is,
 
 | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | Basic | Het te gebruiken verificatie type |
+| **Verificatie** | `type` | Ja | Basic | Het te gebruiken verificatietype |
 | **Gebruikersnaam** | `username` | Ja | <*gebruikers naam*>| De gebruikers naam voor het verifiëren van de toegang tot het eind punt van de doel service |
 | **Wachtwoord** | `password` | Ja | <*wacht woord*> | Het wacht woord voor het verifiëren van de toegang tot het eind punt van de doel service |
 ||||||
@@ -826,7 +879,7 @@ Op aanvraag triggers kunt u [Azure Active Directory open-verificatie](../active-
 | **Doelgroep** | `audience` | Ja | <*resource-naar-autoriseren*> | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld`https://management.core.windows.net/` |
 | **Client-id** | `clientId` | Ja | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |
 | **Referentie type** | `credentialType` | Ja | Certificaat <br>of <br>Geheim | Het referentie type dat door de client wordt gebruikt voor het aanvragen van autorisatie. Deze eigenschap en waarde worden niet weer gegeven in de onderliggende definitie van de logische app, maar bepaalt de eigenschappen die worden weer gegeven voor het geselecteerde referentie type. |
-| **Geheim** | `secret` | Ja, maar alleen voor het referentie type ' geheim ' | <*client-geheim*> | Het client geheim voor het aanvragen van autorisatie |
+| **Gescheiden** | `secret` | Ja, maar alleen voor het referentie type ' geheim ' | <*client-geheim*> | Het client geheim voor het aanvragen van autorisatie |
 | **Pfx** | `pfx` | Ja, maar alleen voor het referentie type ' certificaat ' | <*encoded-pfx-file-content*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
 | **Wachtwoord** | `password` | Ja, maar alleen voor het referentie type ' certificaat ' | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand |
 |||||
@@ -874,7 +927,7 @@ Geef in de trigger of actie die onbewerkte authenticatie ondersteunt de volgende
 
 | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | Onbewerkt | Het te gebruiken verificatie type |
+| **Verificatie** | `type` | Ja | Onbewerkt | Het te gebruiken verificatietype |
 | **Waarde** | `value` | Ja | <*autorisatie-header-waarde*> | De waarde van de autorisatie-header die moet worden gebruikt voor verificatie |
 ||||||
 
@@ -909,7 +962,7 @@ Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-
 
    | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
    |---------------------|-----------------|----------|-------|-------------|
-   | **Verificatie** | `type` | Ja | **Beheerde identiteit** <br>of <br>`ManagedServiceIdentity` | Het te gebruiken verificatie type |
+   | **Verificatie** | `type` | Ja | **Beheerde identiteit** <br>of <br>`ManagedServiceIdentity` | Het te gebruiken verificatietype |
    | **Beheerde identiteit** | `identity` | Ja | * **Door het systeem toegewezen beheerde identiteit** <br>of <br>`SystemAssigned` <p><p>* <door de *gebruiker toegewezen identiteits naam*> | De beheerde identiteit die moet worden gebruikt |
    | **Doelgroep** | `audience` | Ja | <*doel-Resource-ID*> | De resource-ID voor de doel resource waartoe u toegang wilt krijgen. <p>`https://storage.azure.com/`Maakt bijvoorbeeld de [toegangs tokens](../active-directory/develop/access-tokens.md) voor verificatie geldig voor alle opslag accounts. U kunt echter ook een URL voor de basis service opgeven, zoals `https://fabrikamstorageaccount.blob.core.windows.net` voor een specifiek opslag account. <p>**Opmerking**: de eigenschap **doel groep** kan in sommige triggers of acties worden verborgen. Als u deze eigenschap zichtbaar wilt maken, opent u de lijst **nieuwe para meter toevoegen** in de trigger of actie en selecteert u **doel groep**. <p><p>**Belang rijk**: Zorg ervoor dat deze doel resource-id *precies overeenkomt* met de waarde die door Azure AD wordt verwacht, inclusief alle vereiste afsluitende slashes. De `https://storage.azure.com/` resource-id voor alle Azure Blob Storage-accounts vereist dus een afsluitende slash. De resource-ID voor een specifiek opslag account vereist echter geen afsluitende slash. Zie [Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)om deze resource-id's te vinden. |
    |||||
@@ -946,7 +999,7 @@ U kunt Azure Logic Apps gebruiken in [Azure Government](../azure-government/docu
 
 * Als u uw eigen code wilt uitvoeren of XML-trans formatie wilt uitvoeren, [maakt u een Azure-functie en roept](../logic-apps/logic-apps-azure-functions.md)u deze aan in plaats van de functie voor [inline code](../logic-apps/logic-apps-add-run-inline-code.md) te gebruiken of [om assembly's respectievelijk te gebruiken als kaarten](../logic-apps/logic-apps-enterprise-integration-maps.md). Stel ook de hostomgeving in voor uw functie-app om te voldoen aan uw isolatie vereisten.
 
-  Om bijvoorbeeld te voldoen aan de vereisten van impact niveau 5, maakt u uw functie-app met het [app service plan](../azure-functions/functions-scale.md#app-service-plan) met behulp van de [ **geïsoleerde** prijs categorie](../app-service/overview-hosting-plans.md) samen met een [app service Environment (ASE)](../app-service/environment/intro.md) die ook gebruikmaakt van de **geïsoleerde** prijs categorie. In deze omgeving werken apps op specifieke virtuele Azure-machines en speciale virtuele Azure-netwerken, waarmee u de computer isolatie kunt isoleren voor uw apps en Maxi maal uitbreid bare mogelijkheden. Zie [Azure Government impact niveau 5-Azure functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)voor meer informatie.
+  Om bijvoorbeeld te voldoen aan de vereisten van impact niveau 5, maakt u uw functie-app met het [app service plan](../azure-functions/functions-scale.md#app-service-plan) met behulp van de [ **geïsoleerde** prijs categorie](../app-service/overview-hosting-plans.md) samen met een [app service Environment (ASE)](../app-service/environment/intro.md) die ook gebruikmaakt van de **geïsoleerde** prijs categorie. In deze omgeving werken apps op specifieke virtuele machines van Azure en speciale virtuele Azure-netwerken, die netwerk isolatie bieden naast reken isolatie voor uw apps en maximale schaal mogelijkheden. Zie [Azure Government impact niveau 5-Azure functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)voor meer informatie.
 
   Raadpleeg de volgende onderwerpen voor meer informatie:<p>
 

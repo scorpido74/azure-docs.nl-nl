@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 6532ec33d930ab42a9aa04a92d84ab795f32ebd6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 079e3f9219d649d9740d38a8a8452e51b9d84acf
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034872"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066403"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Dubbele versleuteling van Azure Database for MySQL-infra structuur
 
@@ -36,7 +36,7 @@ Implementatie op de infrastructuur lagen ondersteunt ook een verscheidenheid aan
 
 Infra structuur dubbele versleuteling voor Azure Database for MySQL biedt de volgende voor delen:
 
-1. **Toevoeging van de implementatie van crypto grafie** : de geplande overstap naar op hardware gebaseerde versleuteling zal de implementaties verder spreiden door een implementatie op basis van de software te bieden naast de implementatie op basis van het programma.
+1. **Extra diversiteit van crypto grafie** -de geplande overgang naar op hardware gebaseerde versleuteling zal de implementaties verder spreiden door een implementatie op basis van de software te bieden, naast de implementatie op basis van toepassingen.
 2. **Implementatie fouten** -twee versleutelings lagen op infrastructuur laag worden beschermd tegen fouten in de cache of het geheugen beheer in hogere lagen die gegevens over de Lees bare tekst weer gegeven. Daarnaast zorgt de twee lagen er ook voor dat er fouten optreden in de implementatie van de versleuteling in het algemeen.
 
 De combi natie van deze biedt een zware beveiliging tegen veelvoorkomende bedreigingen en zwakke plekken die worden gebruikt voor de aanval van crypto grafie.
@@ -45,7 +45,7 @@ De combi natie van deze biedt een zware beveiliging tegen veelvoorkomende bedrei
 
 De versleutelings mogelijkheden die door Azure Database for MySQL worden geboden, kunnen samen worden gebruikt. Hieronder vindt u een overzicht van de verschillende scenario's die u kunt gebruiken:
 
-|  ##   | Standaard versleuteling | Infra structuur dubbele versleuteling | Gegevens versleuteling met door de klant beheerde sleutels  |
+|  ##   | Standaard versleuteling | Dubbele infrastructuurversleuteling | Gegevens versleuteling met door de klant beheerde sleutels  |
 |:------|:------------------:|:--------------------------------:|:--------------------------------------------:|
 | 1     | *Ja*              | *Nee*                             | *Nee*                                         |
 | 2     | *Ja*              | *Ja*                            | *Nee*                                         |
@@ -54,7 +54,7 @@ De versleutelings mogelijkheden die door Azure Database for MySQL worden geboden
 |       |                    |                                  |                                              |
 
 > [!Important]
-> - Scenario 2 en 4 hebben aanzienlijke gevolgen voor de prestaties van de Azure Database for MySQL-server vanwege de extra laag van infrastructuur versleuteling.
+> - Scenario 2 en 4 kunnen een door Voer van 5-10 procent veroorzaken op basis van het type werk belasting voor Azure Database for MySQL server vanwege de extra laag van infrastructuur versleuteling.
 > - Het configureren van een infra structuur met dubbele versleuteling voor Azure Database for MySQL is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de opslag versleuteling niet meer wijzigen. U kunt echter nog steeds gegevens versleuteling inschakelen met behulp van door de klant beheerde sleutels voor de server die is gemaakt met/zonder een infra structuur met dubbele code ring.
 
 ## <a name="limitations"></a>Beperkingen

@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/21/2020
+ms.date: 8/10/2020
 ms.author: yohaddad
-ms.openlocfilehash: 04e75d108b9f518311ad19b2f9027dd0ad7e9e88
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e14295842413464ed9faced59c8bb897f192a511
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002876"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067015"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
@@ -76,24 +76,22 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 
 
 ## <a name="june-2020-guest-os"></a>Juni 2020-gast besturingssysteem
->[!NOTE]
->Het juni gast besturingssysteem wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem van april gast. Deze lijst is onderhevig aan wijzigingen.
 
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2,99, 3,86, 4,79  |  9 juni 2020  |
-|  Rel 20-06  |  [4561616]  |  Meest recente cumulatieve update (LCU)  |  5,44  |  9 juni 2020  |
-|  Rel 20-06  |  [4561608]  |  Meest recente cumulatieve update (LCU)  |  6,20  |  9 juni 2020  |
-|  Rel 20-06  |  [4562030]  |  Onderhouds stack-update  |  2,99  |  9 juni 2020  |
-|  Rel 20-06  |  [4561643]  |  Maandelijks samen vouwen  |  2,99  |  9 juni 2020  |
-|  Rel 20-06  |  [4562252]  |  Onderhouds stack-update  |  3,86  |  9 juni 2020  |
-|  Rel 20-06  |  [4561612]  |  Maandelijks samen vouwen  |  3,86  |  9 juni 2020  |
-|  Rel 20-06  |  [4561600]  |  Flits  |  3,86, 4,79, 5,44, 6,20  |  9 juni 2020  |
-|  Rel 20-06  |  [4562253]  |  Onderhouds stack-update  |  4,79  |  9 juni 2020  |
-|  Rel 20-06  |  [4561666]  |  Maandelijks samen vouwen  |  4,79  |  9 juni 2020  |
-|  Rel 20-06  |  [4562561]  |  Onderhouds stack-update  |  5,44  |  9 juni 2020  |
-|  Rel 20-06  |  [4562562]  |  Onderhouds stack-update  |  6,20  |  9 juni 2020  |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  [2,99], [3,86], [4,79]  |  9 juni 2020  |
+|  Rel 20-06  |  [4561616]  |  Meest recente cumulatieve update (LCU)  |  [5,44]  |  9 juni 2020  |
+|  Rel 20-06  |  [4561608]  |  Meest recente cumulatieve update (LCU)  |  [6,20]  |  9 juni 2020  |
+|  Rel 20-06  |  [4562030]  |  Onderhouds stack-update  |  [2,99]  |  9 juni 2020  |
+|  Rel 20-06  |  [4561643]  |  Maandelijks samen vouwen  |  [2,99]  |  9 juni 2020  |
+|  Rel 20-06  |  [4562252]  |  Onderhouds stack-update  |  [3,86]  |  9 juni 2020  |
+|  Rel 20-06  |  [4561612]  |  Maandelijks samen vouwen  |  [3,86]  |  9 juni 2020  |
+|  Rel 20-06  |  [4561600]  |  Flits  |  [3,86], [4,79], [5,44], [6,20]  |  9 juni 2020  |
+|  Rel 20-06  |  [4562253]  |  Onderhouds stack-update  |  [4,79]  |  9 juni 2020  |
+|  Rel 20-06  |  [4561666]  |  Maandelijks samen vouwen  |  [4,79]  |  9 juni 2020  |
+|  Rel 20-06  |  [4562561]  |  Onderhouds stack-update  |  [5,44]  |  9 juni 2020  |
+|  Rel 20-06  |  [4562562]  |  Onderhouds stack-update  |  [6,20]  |  9 juni 2020  |
 
 
 
@@ -109,6 +107,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4561666]: https://support.microsoft.com/kb/4561666
 [4562561]: https://support.microsoft.com/kb/4562561
 [4562562]: https://support.microsoft.com/kb/4562562
+[2,99]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,86]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,44]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,20]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="may-2020-guest-os"></a>Mei 2020-gast besturingssysteem
@@ -573,10 +576,10 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 |  Rel 19-07   |  [4506977]  |  .NET 3,5-beveiliging   |  4,68  |  9 juli 2019  |
 |  Rel 19-07   |  [4507457]  |  Windows-beveiliging   |  4,68  |  9 juli 2019  |
 |  Rel 19-07   |  [4507460]  |  Windows-beveiliging   |  5.33  |  9 juli 2019  |
-|  Rel 19-07   |  [4506998]  |  .NET 3,5 & 4.7.2-beveiliging   |  6,9  |  9 juli 2019  |
-|  Rel 19-07   |  [4507469]  |  Windows-beveiliging   |  6,9  |  9 juli 2019  |
+|  Rel 19-07   |  [4506998]  |  .NET 3,5 & 4.7.2-beveiliging   |  6.9  |  9 juli 2019  |
+|  Rel 19-07   |  [4507469]  |  Windows-beveiliging   |  6.9  |  9 juli 2019  |
 |  N.v.t.  |  [4503537]  |  Update van juni 19-onderhouds stack voor (Server 2016)   |  5.33  |  14 mei 2019  |
-|  N.v.t.  |  [4504369]  |  Update van juni 19-onderhouds stack voor (Server 2019)   |  6,9  |  14 mei 2019  |
+|  N.v.t.  |  [4504369]  |  Update van juni 19-onderhouds stack voor (Server 2019)   |  6.9  |  14 mei 2019  |
 |  N.v.t.  |  [4503292]  |  Juni ' 19 niet-beveiliging (Server 2008 R2)   |  2,88  |  20 mei 2019  |
 |  N.v.t.  |  [4503285]  |  Juni ' 19 niet-beveiliging (Server 2012)   |  3,75  |  14 mei 2019  |
 |  N.v.t.  |  [4503276]  |  Juni ' 19 niet-beveiliging (Server 2012 R2)   |  4,68  |  14 mei 2019  |
@@ -1305,7 +1308,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 ## <a name="march-2017-guest-os"></a>Maart 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| Rel 17-03 |  [4013429] |Verbeteringen en oplossingen | 5,5 | 14 maart 2017 |
+| Rel 17-03 |  [4013429] |Verbeteringen en oplossingen | 5.5 | 14 maart 2017 |
 | Rel 17-03 |  [4012212] |Update van 2017 maart voor alleen de kwaliteit van beveiliging voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,60 |14 maart 2017 |
 | Rel 17-03 |  [4012213] |Update van maart 2017 voor alleen beveiliging van de kwaliteit van Windows 8,1 en Windows Server 2012 R2 |4,40 |14 maart 2017 |
 | Rel 17-03 |  [4012214] |Update van maart 2017 voor alleen beveiligings kwaliteit voor Windows Server 2012|3,47 |14 maart 2017 |
@@ -1314,7 +1317,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | N.v.t. |  [3212646] |6 januari 2017 Security Monthly Rollup voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,60 |14 maart 2017 |
 | N.v.t. |  [3205409] |Update van december 2016 Security Monthly voor Windows Server 2012 |3,47 |14 maart 2017 |
 | N.v.t. |  [3205401] |Update van december 2016 Security Monthly voor Windows 8,1 en Windows Server 2012 R2 |4,40 |14 maart 2017 |
-| N.v.t. |  [3211320] |Service stack update voor Windows 10 versie 1607 en Windows Server 2016:24 januari 2017 |5,5 |14 maart 2017 |
+| N.v.t. |  [3211320] |Service stack update voor Windows 10 versie 1607 en Windows Server 2016:24 januari 2017 |5.5 |14 maart 2017 |
 
 ## <a name="january-2017-guest-os"></a>Januari 2017-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -1596,7 +1599,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-075 |[3072633] |Beveiligings problemen in OLE kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-076 |[3067505] |Beveiligings probleem in Windows Remote Procedure Call kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-077 |[3077657] |Beveiligings probleem in het ATM-letter type-stuur programma kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| N.v.t. |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4,22, 3,29, 2,41 |14 juli 2015 |
+| NA |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4,22, 3,29, 2,41 |14 juli 2015 |
 
 ## <a name="june-2015-guest-os"></a>Juni 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -1629,7 +1632,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-040 |[3045711] |Beveiligings probleem in ADFS kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
 | MS15-041 |[3048010] |Beveiligings probleem in .NET Framework kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
 | MS15-042 |[3047234] |Beveiligings probleem in Windows Hyper-V kan denial of service toestaan |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| N.v.t. |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4,20, 3,27, 2,39 |Apr 17, 2015 |
+| NA |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4,20, 3,27, 2,39 |Apr 17, 2015 |
 
 ## <a name="april-2015-guest-os"></a>April 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |

@@ -3,12 +3,12 @@ title: Gepartitioneerde Azure Service Bus-wacht rijen en-onderwerpen maken | Mic
 description: Hierin wordt beschreven hoe u Service Bus-wacht rijen en-onderwerpen partitioneert met meerdere bericht brokers.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6ea0bee255f489355056f91d82195382153786bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c43d8d560ddede021b70b0cdc167f42052904b0b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339644"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064856"
 ---
 # <a name="partitioned-queues-and-topics"></a>Gepartitioneerde wachtrijen en onderwerpen
 
@@ -19,7 +19,7 @@ Azure Service Bus maakt gebruik van meerdere bericht Brokers voor het verwerken 
  
 Het is niet mogelijk om de partitie optie te wijzigen voor een bestaande wachtrij of elk onderwerp. u kunt de optie alleen instellen wanneer u de entiteit maakt.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe werkt het?
 
 Elke gepartitioneerde wachtrij of elk onderwerp bestaat uit meerdere partities. Elke partitie wordt opgeslagen in een ander berichten archief en verwerkt door een andere Message Broker. Wanneer een bericht wordt verzonden naar een gepartitioneerde wachtrij of onderwerp, wordt het bericht Service Bus toegewezen aan een van de partities. De selectie wordt wille keurig uitgevoerd door Service Bus of door gebruik te maken van een partitie sleutel die door de afzender kan worden opgegeven.
 
@@ -149,4 +149,4 @@ Meer informatie over de basis concepten van de AMQP 1,0 Messa ging-specificatie 
 [QueueDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
 [TopicDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablepartitioning
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto
-[AMQP 1.0 support for Service Bus partitioned queues and topics]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+[AMQP 1.0 support for Service Bus partitioned queues and topics]: ./service-bus-amqp-protocol-guide.md

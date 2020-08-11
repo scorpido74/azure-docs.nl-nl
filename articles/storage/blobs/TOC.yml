@@ -158,8 +158,10 @@
           items:
             - name: Versiebeheer
               href: versioning-overview.md
-            - name: Voorlopig verwijderen
-              href: soft-delete-overview.md
+            - name: Blobs voorlopig verwijderen
+              href: soft-delete-blob-overview.md
+            - name: Containers voorlopig verwijderen
+              href: soft-delete-container-overview.md
             - name: Momentopnamen
               href: snapshots-overview.md
             - name: Feed wijzigen
@@ -423,8 +425,10 @@
           items:
             - name: Blobversiebeheer inschakelen
               href: versioning-enable.md
-            - name: Voorlopig verwijderen inschakelen
-              href: soft-delete-enable.md
+            - name: Voorlopig verwijderen inschakelen voor blobs
+              href: soft-delete-blob-enable.md
+            - name: Voorlopig verwijderen inschakelen voor containers
+              href: soft-delete-container-enable.md
             - name: Momentopnamen maken (.NET)
               href: snapshots-manage-dotnet.md
             - name: Logboeken voor wijzigingenfeeds verwerken
@@ -721,7 +725,7 @@
               href: data-lake-storage-directory-file-acl-java.md
             - name: Python
               href: data-lake-storage-directory-file-acl-python.md
-            - name: JavaScript
+            - name: Javascript
               href: data-lake-storage-directory-file-acl-javascript.md
             - name: PowerShell
               href: data-lake-storage-directory-file-acl-powershell.md

@@ -49,6 +49,8 @@
       items:
         - name: Azure AD-architectuur
           href: active-directory-architecture.md
+        - name: Al uw apps met Azure AD integreren
+          href: five-steps-to-full-application-integration-with-azure-ad.md
     - name: Implementatiehandleiding
       items:
         - name: 'Implementatie 30, 90 en hoger'

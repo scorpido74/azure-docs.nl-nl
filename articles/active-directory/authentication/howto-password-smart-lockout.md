@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ffbd23dccd7bac03e849241866416ac07af4a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035414"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065978"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Gebruikers accounts beveiligen tegen aanvallen met Azure Active Directory slimme vergren deling
 
@@ -24,7 +24,7 @@ Slimme vergren deling helpt bij het vergren delen van ongeldige actors waarmee d
 
 ## <a name="how-smart-lockout-works"></a>Hoe slim vergren delen werkt
 
-Standaard vergrendelt Smart Lock het account van aanmeldings pogingen voor één minuut na 10 mislukte pogingen. Het account vergrendelt na elke volgende mislukte aanmeldings poging, gedurende één minuut om de eerste keer en langer bij de volgende pogingen.
+Standaard vergrendelt Smart Lock het account van aanmeldings pogingen voor één minuut na 10 mislukte pogingen. Het account vergrendelt na elke volgende mislukte aanmeldings poging, gedurende één minuut om de eerste keer en langer bij de volgende pogingen. Om te voor komen dat een aanvaller dit gedrag kan omzeilen, wordt de snelheid waarmee de vergrendelings periode toeneemt, niet in mindering gespreid over extra mislukte aanmeldings pogingen.
 
 Slimme vergren deling houdt de laatste drie ongeldige hashes met een onjuist wacht woord bij om te voor komen dat de vergrendelings teller voor hetzelfde wacht woord wordt verhoogd. Als iemand hetzelfde onjuiste wacht woord meermaals invoert, wordt het account niet langer vergrendeld.
 
@@ -69,7 +69,7 @@ Op basis van de vereisten van uw organisatie kunt u de waarden voor de slimme ve
 
 Voer de volgende stappen uit om de slimme vergrendelings waarden voor uw organisatie te controleren of te wijzigen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek en selecteer *Azure Active Directory*en selecteer **beveiligings**  >  **verificatie methoden**  >  **wachtwoord beveiliging**.
 1. Stel de **drempel waarde voor vergren deling**in op basis van het aantal mislukte aanmeldingen dat is toegestaan voor een account voordat het voor het eerst wordt vergrendeld.
 

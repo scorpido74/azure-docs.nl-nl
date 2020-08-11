@@ -3,16 +3,16 @@ title: Azure Service Bus-migreren naar Shared Access Signature autorisatie
 description: Meer informatie over het migreren van Azure Active Directory-Access Control Service naar Shared Access Signature-autorisatie.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340120"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064618"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus-migreren van Azure Active Directory Access Control Service naar Shared Access Signature autorisatie
 
-Service Bus toepassingen hebben eerder een keuze nodig bij het gebruik van twee verschillende autorisatie modellen: het [Shared Access Signature (SAS)](service-bus-sas.md) -token model dat rechtstreeks wordt geleverd door service bus, en een federatief model waarin het beheer van autorisatie regels wordt beheerd door de [Azure Active Directory](/azure/active-directory/) Access Control service (ACS), en tokens die zijn verkregen van ACS worden door gegeven aan service bus om toegang tot de gewenste functies te verlenen.
+Service Bus toepassingen hebben eerder een keuze nodig bij het gebruik van twee verschillende autorisatie modellen: het [Shared Access Signature (SAS)](service-bus-sas.md) -token model dat rechtstreeks wordt geleverd door service bus, en een federatief model waarin het beheer van autorisatie regels wordt beheerd door de [Azure Active Directory](../active-directory/index.yml) Access Control service (ACS), en tokens die zijn verkregen van ACS worden door gegeven aan service bus om toegang tot de gewenste functies te verlenen.
 
 Het ACS-autorisatie model is al vervangen door [SAS-autorisatie](service-bus-authentication-and-authorization.md) als het voorkeurs model, en alle documentatie, richt lijnen en voor beelden bevatten exclusief SAS vandaag. Bovendien is het niet meer mogelijk om nieuwe Service Bus naam ruimten te maken die zijn gekoppeld aan ACS.
 
@@ -56,4 +56,3 @@ Zie de volgende onderwerpen voor meer informatie over Service Bus-verificatie:
 
 * [Vereenvoudigde Service Bus-verificatie en -autorisatie](service-bus-authentication-and-authorization.md)
 * [Verificatie Service Bus met hand tekeningen voor gedeelde toegang](service-bus-sas.md)
-

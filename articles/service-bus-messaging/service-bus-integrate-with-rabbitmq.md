@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071622"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064550"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>RabbitMQ integreren met Azure Service Bus
 
@@ -20,7 +20,7 @@ In deze hand leiding wordt beschreven hoe u berichten verzendt van RabbitMQ naar
 
 Hier volgen enkele scenario's waarin we gebruik kunnen maken van deze mogelijkheden:
 
-- **Edge-instellingen**: er is een Edge-instelling waarbij we berichten verzenden naar RabbitMQ, maar we willen deze berichten door sturen naar [Azure service bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview) voor verdere verwerking. Daarom kunnen we veel van de [Azure Big Data-mogelijkheden](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/big-data)gebruiken.
+- **Edge-instellingen**: er is een Edge-instelling waarbij we berichten verzenden naar RabbitMQ, maar we willen deze berichten door sturen naar [Azure service bus](./service-bus-messaging-overview.md) voor verdere verwerking. Daarom kunnen we veel van de [Azure Big Data-mogelijkheden](/azure/architecture/guide/architecture-styles/big-data)gebruiken.
 - **Hybride Cloud**: uw bedrijf heeft een derde partij aangeschaft die gebruikmaakt van RabbitMQ voor hun bericht behoeften. Ze bevinden zich in een andere cloud. Tijdens de overgang naar Azure kunt u al gegevens delen door de RabbitMQ met Azure Service Bus te bridgen.
 - **Integratie**van derden: een derde partij gebruikt RabbitMQ als een Broker en wil hun gegevens naar ons verzenden, maar ze zijn ook buiten onze organisatie. We kunnen ze voorzien van een SAS-sleutel waarmee ze toegang hebben tot een beperkt aantal Azure Service Bus wacht rijen waarnaar ze hun berichten kunnen door sturen.
 
@@ -28,7 +28,7 @@ De lijst gaat in, maar we kunnen de meeste van deze use cases oplossen door Rabb
 
 Eerst moet u een gratis Azure-account maken door u [hier](https://azure.microsoft.com/free/) aan te melden
 
-Zodra u bent aangemeld bij uw account, gaat u naar de [Azure Portal](https://portal.azure.com/) en maakt u een nieuwe Azure service bus [naam ruimte](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal). Naam ruimten zijn de bereik containers waar de Messa ging-onderdelen Live zullen zijn, zoals wacht rijen en onderwerpen.
+Zodra u bent aangemeld bij uw account, gaat u naar de [Azure Portal](https://portal.azure.com/) en maakt u een nieuwe Azure service bus [naam ruimte](./service-bus-create-namespace-portal.md). Naam ruimten zijn de bereik containers waar de Messa ging-onderdelen Live zullen zijn, zoals wacht rijen en onderwerpen.
 
 ## <a name="adding-a-new-azure-service-bus-namespace"></a>Een nieuwe Azure Service Bus naam ruimte toevoegen
 
@@ -40,7 +40,7 @@ Selecteer vervolgens integratie en klik op Azure Service Bus om een bericht naam
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Azure service bus selecteren":::
 
-U wordt gevraagd de naam ruimte gegevens in te voeren. Selecteer het Azure-abonnement dat u wilt gebruiken. Als u geen [resource groep](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)hebt, kunt u een nieuwe maken.
+U wordt gevraagd de naam ruimte gegevens in te voeren. Selecteer het Azure-abonnement dat u wilt gebruiken. Als u geen [resource groep](../azure-resource-manager/management/manage-resource-groups-portal.md)hebt, kunt u een nieuwe maken.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Een naamruimte maken":::
 
@@ -76,7 +76,7 @@ Het is nu tijd om de referenties op te halen die nodig zijn voor het verbinden v
 
 ## <a name="connecting-rabbitmq-to-azure-service-bus"></a>RabbitMQ verbinden met Azure Service Bus
 
-U moet een [Shared Access Policy](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) (SAS) voor uw wachtrij maken, zodat RabbitMQ er berichten naar kan publiceren. Met een SAS-beleid kunt u opgeven wat externe partij mag doen met uw resource. Het idee is dat RabbitMQ berichten kan verzenden, maar de wachtrij niet luistert of beheert.
+U moet een [Shared Access Policy](../storage/common/storage-sas-overview.md) (SAS) voor uw wachtrij maken, zodat RabbitMQ er berichten naar kan publiceren. Met een SAS-beleid kunt u opgeven wat externe partij mag doen met uw resource. Het idee is dat RabbitMQ berichten kan verzenden, maar de wachtrij niet luistert of beheert.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="SAS-beleid toevoegen":::
 

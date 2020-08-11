@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045646"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064941"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Een service voor splitsen en samen voegen implementeren om gegevens te verplaatsen tussen Shard-data bases
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ De bestanden worden geplaatst in een map met de naam **micro soft. Azure. SqlDat
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Maak een Azure SQL Database-data base die wordt gebruikt als de Data Base voor splitsen en samen voegen. Ga naar de [Azure Portal](https://portal.azure.com). Maak een nieuwe **SQL database**. Geef de Data Base een naam en maak een nieuwe beheerder en een nieuw wacht woord. Zorg ervoor dat u de naam en het wacht woord noteert voor later gebruik.
+1. Maak een Azure SQL Database-data base die wordt gebruikt als de Data Base voor splitsen en samen voegen. Ga naar [Azure Portal](https://portal.azure.com). Maak een nieuwe **SQL database**. Geef de Data Base een naam en maak een nieuwe beheerder en een nieuw wacht woord. Zorg ervoor dat u de naam en het wacht woord noteert voor later gebruik.
 
 1. Zorg ervoor dat de server met Azure-Services verbinding kan maken. Zorg er in de portal in de **firewall instellingen**voor dat de instelling **toegang tot Azure-Services toestaan** is ingesteld op **aan**. Klik op het pictogram opslaan.
 
@@ -108,7 +108,7 @@ Voer de volgende opdracht uit vanuit hetzelfde venster waarin makecert is uitgev
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Upload het PFX-bestand naar de Cloud service
 
-1. Ga naar de [Azure Portal](https://portal.azure.com).
+1. Ga naar [Azure Portal](https://portal.azure.com).
 2. Selecteer **Cloud Services**.
 3. Selecteer de Cloud service die u hierboven hebt gemaakt voor de service voor splitsen en samen voegen.
 4. Klik op **certificaten** in het bovenste menu.
@@ -173,6 +173,9 @@ Bepaal het web-eind punt van uw service voor splitsen en samen voegen. U kunt di
 ### <a name="test-with-powershell-scripts"></a>Testen met Power shell-scripts
 
 De implementatie en uw omgeving kunnen worden getest door de meegeleverde Power shell-voorbeeld scripts uit te voeren.
+
+> [!IMPORTANT]
+> De voorbeeld scripts worden uitgevoerd op Power shell 5,1. Ze worden op dit moment niet uitgevoerd op Power shell 6 of hoger.
 
 De volgende script bestanden zijn opgenomen:
 

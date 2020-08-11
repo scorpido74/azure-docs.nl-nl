@@ -3,12 +3,12 @@ title: Firewall regels voor Azure Event Hubs | Microsoft Docs
 description: Gebruik firewall regels om verbindingen van specifieke IP-adressen toe te staan aan Azure Event Hubs.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: b59c34e80fb08e35a9ed8b1b3e406e2e63517877
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7870260b77785af59f4f186274775067f2292ef6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836816"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066046"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Toegang tot Azure Event Hubs-naam ruimten van bepaalde IP-adressen of bereiken toestaan
 Event Hubs naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -18,9 +18,9 @@ Deze functie is handig in scenario's waarin Azure Event Hubs alleen toegankelijk
 >[!WARNING]
 > Het inschakelen van IP-filtering kan verhinderen dat andere Azure-Services communiceren met Event Hubs.
 >
-> Vertrouwde micro soft-services worden niet ondersteund wanneer virtuele netwerken zijn geïmplementeerd.
+> Vertrouwde micro soft-services worden niet ondersteund wanneer IP-filtering wordt geïmplementeerd.
 >
-> Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
+> Algemene scenario's voor Azure die niet werken met IP-filtering (Let op: de lijst is **niet** volledig)-
 > - Azure Stream Analytics
 > - Azure-IoT Hub routes
 > - Azure IoT-Device Explorer

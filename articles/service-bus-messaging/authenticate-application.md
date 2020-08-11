@@ -3,12 +3,12 @@ title: Een toepassing verifiëren voor toegang tot Azure Service Bus entiteiten
 description: Dit artikel bevat informatie over het verifiëren van een toepassing met Azure Active Directory om toegang te krijgen tot Azure Service Bus entiteiten (wacht rijen, onderwerpen, enzovoort)
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1d18772dfa9cf444dc55d5e4cef6f31dd6c0d669
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006261"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064822"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Een toepassing met Azure Active Directory voor toegang tot Azure Service Bus entiteiten verifiëren en autoriseren
 Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor het Service Bus van entiteiten (wacht rijen, onderwerpen, abonnementen of filters). Met Azure AD kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om machtigingen te verlenen aan een beveiligingsprincipal, wat een gebruiker, groep of toepassings service-principal kan zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -102,7 +102,7 @@ Nadat u uw toepassing hebt geregistreerd, ziet u de **toepassings-id (client)** 
 
 ![Toepassings-ID van de geregistreerde toepassing](./media/authenticate-application/application-id.png)
 
-Zie [toepassingen integreren met Azure Active Directory](../active-directory/develop/quickstart-v2-register-an-app.md)voor meer informatie over het registreren van een toepassing met Azure AD.
+Zie [toepassingen integreren met Azure Active Directory](../active-directory/develop/quickstart-register-app.md)voor meer informatie over het registreren van een toepassing met Azure AD.
 
 > [!IMPORTANT]
 > Noteer de **TenantId** en de **ApplicationId**. U hebt deze waarden nodig om de toepassing uit te voeren.

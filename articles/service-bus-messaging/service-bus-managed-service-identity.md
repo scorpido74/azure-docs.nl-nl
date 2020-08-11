@@ -3,12 +3,12 @@ title: Beheerde identiteiten voor Azure-resources met Service Bus
 description: In dit artikel wordt beschreven hoe u beheerde identiteiten gebruikt om toegang te krijgen tot Azure Service Bus entiteiten (wacht rijen, onderwerpen en abonnementen).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a3458d7d160317e383da6217252e3dd7ed52e90f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b33f4e9b38d55ef3ed709df8d09f1ffd62a8bca8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008896"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066284"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure Service Bus bronnen
 [Beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) is een functie van meerdere Azure waarmee u een beveiligde identiteit kunt maken die is gekoppeld aan de implementatie waaronder uw toepassings code wordt uitgevoerd. U kunt deze identiteit vervolgens koppelen aan de toegangs beheer rollen die aangepaste machtigingen verlenen om toegang te krijgen tot specifieke Azure-resources die uw toepassing nodig heeft.
@@ -65,7 +65,7 @@ Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijp
 ## <a name="enable-managed-identities-on-a-vm"></a>Beheerde identiteiten op een virtuele machine inschakelen
 Voordat u beheerde identiteiten voor Azure-resources kunt gebruiken om Service Bus-resources van uw virtuele machine te autoriseren, moet u eerst beheerde identiteiten voor Azure-resources inschakelen op de VM. Zie een van de volgende artikelen voor meer informatie over het inschakelen van beheerde identiteiten voor Azure-resources:
 
-- [Azure-portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure-portal](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure-CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sjabloon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)

@@ -4,12 +4,12 @@ description: De Java-berichten service (JMS) gebruiken met Azure Service Bus en 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 935579bdcb142969d9baf7ca24cf03268620bf46
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: be6b5de7946fc54ab58087fccabed9f5ed09251d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799681"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065774"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>De Java-berichten service (JMS) gebruiken met Azure Service Bus en AMQP 1,0
 
@@ -29,7 +29,7 @@ Ondersteuning voor AMQP 1,0 in Azure Service Bus houdt in dat u de functie voor 
 In deze hand leiding wordt ervan uitgegaan dat u al een Service Bus naam ruimte hebt met een wachtrij met de naam `basicqueue` . Als dat niet het geval is, kunt u [de naam ruimte en wachtrij maken](service-bus-create-namespace-portal.md) met behulp van de [Azure Portal](https://portal.azure.com). Zie [aan de slag met Service Bus wachtrijen](service-bus-dotnet-get-started-with-queues.md)voor meer informatie over het maken van service bus naam ruimten en wacht rijen.
 
 > [!NOTE]
-> Gepartitioneerde wacht rijen en onderwerpen bieden ook ondersteuning voor AMQP. Zie [gepartitioneerde Messa ging-entiteiten](service-bus-partitioning.md) en [AMQP 1,0-ondersteuning voor service bus gepartitioneerde wacht rijen en onderwerpen](service-bus-partitioned-queues-and-topics-amqp-overview.md)voor meer informatie.
+> Gepartitioneerde wacht rijen en onderwerpen bieden ook ondersteuning voor AMQP. Zie [gepartitioneerde Messa ging-entiteiten](service-bus-partitioning.md) en [AMQP 1,0-ondersteuning voor service bus gepartitioneerde wacht rijen en onderwerpen](./service-bus-amqp-protocol-guide.md)voor meer informatie.
 > 
 > 
 
@@ -380,7 +380,7 @@ U kunt ook Service Bus AMQP 1,0 gebruiken uit andere talen, waaronder .NET, C, p
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Ondersteuning voor AMQP 1,0 in Azure Service Bus](service-bus-amqp-overview.md)
-* [AMQP 1,0 gebruiken met de Service Bus .NET API](service-bus-dotnet-advanced-message-queuing.md)
+* [AMQP 1,0 gebruiken met de Service Bus .NET API](./service-bus-amqp-dotnet.md)
 * [Service Bus AMQP 1,0-hand leiding voor ontwikkel aars](service-bus-amqp-dotnet.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)
 * [Java Developer Center](https://azure.microsoft.com/develop/java/)

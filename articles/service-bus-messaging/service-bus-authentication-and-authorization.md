@@ -3,12 +3,12 @@ title: Verificatie en autorisatie Azure Service Bus | Microsoft Docs
 description: Verifieer apps om te Service Bus met de verificatie van Shared Access Signature (SAS).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 56461c13cf6589b5f66f05837e1bcaa6a49a58c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337713"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066858"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Vereenvoudigde Service Bus-verificatie en -autorisatie
 Er zijn twee manieren om toegang tot Azure Service Bus-resources te verifiëren en te autoriseren: Azure activity Directory (Azure AD) en Shared Access signatures (SAS). In dit artikel vindt u informatie over het gebruik van deze twee typen beveiligings mechanismen. 
@@ -27,10 +27,10 @@ Raadpleeg de volgende artikelen voor meer informatie over verificatie met Azure 
 > [!IMPORTANT]
 > Het autoriseren van gebruikers of toepassingen die gebruikmaken van het OAuth 2,0-token dat wordt geretourneerd door Azure AD, biedt een superieure beveiliging en gebruiks vriendelijk gebruik van Shared Access signatures (SAS). Met Azure AD hoeft u geen tokens op te slaan in uw code en mogelijke beveiligings problemen met Risico's. U wordt aangeraden gebruik te maken van Azure AD als dat mogelijk is met uw Azure Service Bus toepassingen. 
 
-## <a name="shared-access-signature"></a>Handtekening voor gedeelde toegang
+## <a name="shared-access-signature"></a>Shared Access Signature
 Met [SAS-verificatie](service-bus-sas.md) kunt u een gebruiker toegang verlenen tot Service Bus resources, met specifieke rechten. SAS-verificatie in Service Bus omvat de configuratie van een cryptografische sleutel met bijbehorende rechten op een Service Bus bron. Clients kunnen vervolgens toegang krijgen tot deze bron door een SAS-token te presen teren, dat bestaat uit de bron-URI waartoe toegang wordt verkregen en een verloop datum dat met de geconfigureerde sleutel is ondertekend.
 
-U kunt sleutels voor SAS voor een Service Bus naam ruimte configureren. De sleutel is van toepassing op alle Messa ging-entiteiten binnen die naam ruimte. U kunt ook sleutels configureren voor Service Bus-wacht rijen en-onderwerpen. SAS wordt ook ondersteund op [Azure relay](../service-bus-relay/relay-authentication-and-authorization.md).
+U kunt sleutels voor SAS voor een Service Bus naam ruimte configureren. De sleutel is van toepassing op alle Messa ging-entiteiten binnen die naam ruimte. U kunt ook sleutels configureren voor Service Bus-wacht rijen en-onderwerpen. SAS wordt ook ondersteund op [Azure relay](../azure-relay/relay-authentication-and-authorization.md).
 
 Als u SAS wilt gebruiken, kunt u een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -object configureren in een naam ruimte, wachtrij of onderwerp. Deze regel bestaat uit de volgende elementen:
 
@@ -46,7 +46,7 @@ Voor toegang tot een entiteit vereist de client een SAS-token dat is gegenereerd
 Ondersteuning voor SAS-verificatie voor Service Bus is opgenomen in de Azure .NET SDK-versie 2,0 en hoger. SAS bevat ondersteuning voor een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Alle Api's die een connection string als para meter accepteren, bieden ondersteuning voor SAS-verbindings reeksen.
 
 > [!IMPORTANT]
-> Als u Azure Active Directory Access Control (ook wel bekend als Access Control Service of ACS) met Service Bus, houd er dan rekening mee dat de ondersteuning voor deze methode nu beperkt is en dat u [uw toepassing moet migreren om SAS te gebruiken](service-bus-migrate-acs-sas.md) of OAuth 2,0-verificatie met Azure ad te gebruiken (aanbevolen). Zie [dit blog bericht](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)voor meer informatie over de afschaffing van ACS.
+> Als u Azure Active Directory Access Control (ook wel bekend als Access Control Service of ACS) met Service Bus, houd er dan rekening mee dat de ondersteuning voor deze methode nu beperkt is en dat u [uw toepassing moet migreren om SAS te gebruiken](service-bus-migrate-acs-sas.md) of OAuth 2,0-verificatie met Azure ad te gebruiken (aanbevolen). Zie [dit blog bericht](/archive/blogs/servicebus/upcoming-changes-to-acs-enabled-namespaces)voor meer informatie over de afschaffing van ACS.
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor meer informatie over verificatie met Azure AD:

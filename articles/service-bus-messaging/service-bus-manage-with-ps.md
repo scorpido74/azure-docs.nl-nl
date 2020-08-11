@@ -3,12 +3,12 @@ title: Power shell gebruiken voor het beheren van Azure Service Bus resources | 
 description: In dit artikel wordt uitgelegd hoe u met behulp van Azure PowerShell-module Service Bus entiteiten kunt maken en beheren (naam ruimten, wacht rijen, onderwerpen, abonnementen).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ff79d8cf2aac09a0b8d2f04ade0b3d1d9b2e74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341747"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065740"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Power shell gebruiken voor het beheren van Service Bus resources
 
@@ -159,8 +159,8 @@ U kunt de [Service Bus Power shell-module](/powershell/module/az.servicebus) geb
 
 Er zijn een aantal alternatieve manieren om Service Bus entiteiten te beheren, zoals beschreven in deze blog berichten:
 
-* [Service Bus-wacht rijen,-onderwerpen en-abonnementen maken met een Power shell-script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-* [Een Service Bus naam ruimte en een event hub maken met een Power shell-script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+* [Service Bus-wacht rijen,-onderwerpen en-abonnementen maken met een Power shell-script](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+* [Een Service Bus naam ruimte en een event hub maken met een Power shell-script](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 * [Service Bus Power shell-scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

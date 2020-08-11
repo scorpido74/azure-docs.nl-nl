@@ -3,12 +3,12 @@ title: Toegangs beheer Azure Service Bus met hand tekeningen voor gedeelde toega
 description: Overzicht van Service Bus toegangs beheer met behulp van hand tekeningen voor gedeelde toegang, Details over SAS-autorisatie met Azure Service Bus.
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: b75f1ec3a1aac36124287523140c24d468329aaa
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460691"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066182"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Toegangs beheer Service Bus met hand tekeningen voor gedeelde toegang
 
@@ -27,7 +27,7 @@ SAS-beveiligingen hebben toegang tot Service Bus op basis van autorisatie regels
 
 Shared Access Signatures zijn een autorisatie mechanisme op basis van claims met behulp van eenvoudige tokens. Met SAS worden sleutels nooit door gegeven op de kabel. Sleutels worden gebruikt voor het cryptografisch ondertekenen van informatie die later door de service kan worden geverifieerd. SAS kan worden gebruikt in combi natie met een gebruikers naam-en wachtwoord schema waarbij de client onmiddellijk in bezit is van een naam van een autorisatie regel en een overeenkomende sleutel. SAS kan ook worden gebruikt als een federatief beveiligings model, waarbij de client een time-Limited en ondertekend toegangs token ontvangt van een beveiligings token service, zonder dat deze ooit in bezit is van de handtekening sleutel.
 
-SAS-verificatie in Service Bus is geconfigureerd met benoemde [Shared Access Authorization-autorisatie regels](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) die gekoppelde toegangs rechten hebben en een paar primaire en secundaire cryptografische sleutels. De sleutels zijn 256-bits waarden in Base64-weer gave. U kunt regels configureren op het niveau van de naam ruimte, op Service Bus [relays](../service-bus-relay/relay-what-is-it.md), [wacht rijen](service-bus-messaging-overview.md#queues)en [onderwerpen](service-bus-messaging-overview.md#topics).
+SAS-verificatie in Service Bus is geconfigureerd met benoemde [Shared Access Authorization-autorisatie regels](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) die gekoppelde toegangs rechten hebben en een paar primaire en secundaire cryptografische sleutels. De sleutels zijn 256-bits waarden in Base64-weer gave. U kunt regels configureren op het niveau van de naam ruimte, op Service Bus [relays](../azure-relay/relay-what-is-it.md), [wacht rijen](service-bus-messaging-overview.md#queues)en [onderwerpen](service-bus-messaging-overview.md#topics).
 
 Het [Shared Access Signature](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) -token bevat de naam van de gekozen autorisatie regel, de URI van de resource die moet worden geopend, het verloop van de bron en een door de HMAC-sha256 cryptografische hand tekening die wordt berekend op basis van deze velden met behulp van de primaire of secundaire cryptografie sleutel van de gekozen autorisatie regel.
 
@@ -84,7 +84,7 @@ Het token bevat de niet-gehashte waarden, zodat de ontvanger de hash opnieuw kan
 
 De resource-URI is de volledige URI van de Service Bus resource waarmee de toegang wordt geclaimd. Bijvoorbeeld, `http://<namespace>.servicebus.windows.net/<entityPath>` of `sb://<namespace>.servicebus.windows.net/<entityPath>` ; `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` ... 
 
-**De URI moet een [percentage zijn gecodeerd](https://msdn.microsoft.com/library/4fkewx0t.aspx).**
+**De URI moet een [percentage zijn gecodeerd](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1).**
 
 De gedeelde toegangs autorisatie regel die wordt gebruikt voor ondertekening moet worden geconfigureerd voor de entiteit die door deze URI wordt opgegeven of door een van de hiërarchische bovenliggende items. Bijvoorbeeld `http://contoso.servicebus.windows.net/contosoTopics/T1` of `http://contoso.servicebus.windows.net` in het vorige voor beeld.
 

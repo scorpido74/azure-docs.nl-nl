@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8d8b558ebc49a009548afe9a8527985b9e4f5c75
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057193"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066658"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Voorlopig verwijderen voor containers inschakelen en beheren (preview-versie)
 
 Met de tijdelijke verwijdering van de container (preview) wordt voor komen dat uw gegevens per ongeluk of onbedoeld worden gewijzigd of verwijderd. Wanneer het dynamisch verwijderen van een container is ingeschakeld voor een opslag account, kan een container en de inhoud ervan worden hersteld nadat deze zijn verwijderd, binnen een Bewaar periode die u opgeeft.
 
-Als er een mogelijkheid is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een ander opslag account, wordt door micro soft aangeraden om de optie voor het voorlopig verwijderen van containers in te scha kelen. In dit artikel wordt beschreven hoe u de optie voorlopig verwijderen voor containers inschakelt. Zie [voorlopig verwijderen voor containers (preview)](soft-delete-container-overview.md)voor meer informatie over het voorlopig verwijderen van een container.
+Als er een mogelijkheid is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een ander opslag account, wordt door micro soft aangeraden om de optie voor het voorlopig verwijderen van containers in te scha kelen. In dit artikel wordt beschreven hoe u de optie voorlopig verwijderen voor containers inschakelt. Zie [voorlopig verwijderen voor containers (preview)](soft-delete-container-overview.md)voor meer informatie over het voorlopig verwijderen van een container, inclusief hoe u zich kunt registreren voor de preview-versie.
 
 Voor end-to-end gegevens beveiliging raadt micro soft u aan om ook voor het voorlopig verwijderen van blobs en BLOB-versie beheer (preview) in te scha kelen. Zie voor meer informatie over het inschakelen van zacht verwijderen voor blobs de [optie voorlopig verwijderen inschakelen en beheren voor blobs](soft-delete-blob-enable.md). Zie voor meer informatie over het inschakelen van versie beheer van BLOB [(preview-versie)](versioning-overview.md).
 
