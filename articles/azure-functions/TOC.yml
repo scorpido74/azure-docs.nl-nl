@@ -70,7 +70,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: JavaScript
+        - name: Javascript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -103,6 +103,7 @@
           href: functions-bindings-example.md
         - name: Binding-extensies registreren
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: Patronen van Binding-expressies
           href: functions-bindings-expressions-patterns.md
         - name: Binding-retourwaarden gebruiken
@@ -119,7 +120,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: JavaScript
+        - name: Javascript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -272,8 +273,6 @@
           displayName: 'app setting, application setting'
         - name: De runtimeversie instellen
           href: set-runtime-version.md
-        - name: Handmatig een uitbreiding registreren
-          href: install-update-binding-extensions-manual.md
         - name: Een functie uitschakelen
           href: disable-function.md
         - name: Geo-noodherstel
