@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Service Bus | Microsoft Docs
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Service Bus.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371240"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080810"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-Veelgestelde vragen (FAQ)
 
@@ -57,7 +57,7 @@ Ga als volgt te werk om de juiste IP-adressen te zoeken die u wilt toevoegen aan
 1. Voer de volgende opdracht uit vanaf een opdracht prompt: 
 
     ```
-    nslookup <YourNamespaceName>.cloudapp.net
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
 2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . Dit IP-adres is statisch. Als u de naam ruimte op een ander cluster herstelt, wordt de enige keer dat deze wordt gewijzigd.
 
@@ -66,7 +66,7 @@ Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra 
 1. Eerst voert u Nslookup uit op de naam ruimte.
 
     ```
-    nslookup <yournamespace>.cloudapp.net
+    nslookup <yournamespace>.servicebus.windows.net
     ```
 2. Noteer de naam in de sectie **niet-bindende antwoord** , die een van de volgende indelingen heeft: 
 

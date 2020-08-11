@@ -5,18 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74671612"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080195"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Functionaliteit van het besturings systeem op Azure App Service
 In dit artikel wordt de algemene besturingssysteem functionaliteit beschreven die beschikbaar is voor alle Windows-apps die worden uitgevoerd op [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Deze functionaliteit omvat bestands-, netwerk-en register toegang, en Diagnostische logboeken en-gebeurtenissen. 
 
 > [!NOTE] 
-> [Linux-apps](containers/app-service-linux-intro.md) in app service worden uitgevoerd in hun eigen containers. Geen toegang tot het besturings systeem van de host is toegestaan. u hebt toegang tot de hoofd database. Voor [apps die in Windows-containers worden uitgevoerd](app-service-web-get-started-windows-container.md), hebt u ook beheerders toegang tot de container, maar geen toegang tot het hostbesturingssysteem. 
+> [Linux-apps](overview.md#app-service-on-linux) in app service worden uitgevoerd in hun eigen containers. Geen toegang tot het besturings systeem van de host is toegestaan. u hebt toegang tot de hoofd database. Voor [apps die in Windows-containers worden uitgevoerd](quickstart-custom-container.md?pivots=container-windows), hebt u ook beheerders toegang tot de container, maar geen toegang tot het hostbesturingssysteem. 
 >
 
 <a id="tiers"></a>
@@ -60,7 +60,7 @@ Het is belang rijk om uw schijf gebruik te bewaken naarmate uw toepassing groeit
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>Netwerk stations (ook wel UNC-shares)
+### <a name="network-drives-unc-shares"></a>Netwerk stations (UNC-shares)
 Een van de unieke aspecten van App Service die het implementeren en onderhouden van apps eenvoudig maken, is dat alle gebruikers inhoud wordt opgeslagen op een aantal UNC-shares. Dit model is goed voor het algemene patroon van inhouds opslag dat wordt gebruikt door on-premises webhosting omgevingen met meerdere servers met gelijke taak verdeling. 
 
 Binnen App Service is er een aantal UNC-shares gemaakt in elk Data Center. Een percentage van de gebruikers inhoud voor alle klanten in elk Data Center wordt toegewezen aan elke UNC-share. Daarnaast wordt alle bestands inhoud voor één abonnement van een klant altijd op dezelfde UNC-share geplaatst. 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447311"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080861"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er bewaakt door Azure Monitor?:
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
@@ -71,7 +71,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |AppConfig | Nee | Nee | Nee |  |
 |Application Gateway | Ja | Ja | Nee |  |
 |Attestation-service | Nee | Nee | Nee |  |
-|Automatisering | Ja | Ja | Nee |  |
+|Automation | Ja | Ja | Nee |  |
 |Azure Service Manager (RDFE) | Nee | Nee | Nee |  |
 |Backup | Nee | Ja | Nee |  |
 |Bastion | Nee | Nee | Nee |  |
@@ -99,7 +99,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Database for PostgreSQL | Ja | Ja | Nee |  |
 |Database Migration Service | Nee | Nee | Nee |  |
 |Databricks | Nee | Ja | Nee |  |
-|DDoS-beveiliging | Ja | Ja | Nee |  |
+|DDoS Protection | Ja | Ja | Nee |  |
 |DevOps | Nee | Nee | Nee |  |
 |DNS | Ja | Nee | Nee |  |
 |Domeinnamen | Nee | Nee | Nee |  |
@@ -145,11 +145,11 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Resource Graph | Nee | Nee | Nee |  |
 |Resource Manager | Nee | Nee | Nee |  |
 |Retail-zoek opdracht: door Bing | Nee | Nee | Nee |  |
-|Search | Ja | Ja | Nee |  |
+|Zoeken | Ja | Ja | Nee |  |
 |Service Bus | Ja | Ja | Nee |  |
 |Service Fabric | Nee | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Aanmeldings Portal | Nee | Nee | Nee |  |
-|Site Recovery | Nee | Ja | Nee |  |
+|Siteherstel | Nee | Ja | Nee |  |
 |Lente-Cloud service | Nee | Nee | Nee |  |
 |SQL Data Warehouse | Ja | Ja | Nee |  |
 |SQL Database | Ja | Ja | Nee |  |
@@ -164,7 +164,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Traffic Manager | Ja | Ja | Nee |  |
 |Universeel afdrukken | Nee | Nee | Nee |  |
 |Virtual Machine Scale Sets | Nee | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
-|Virtuele machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtual Machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
 |Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
 |Virtual Network-NSG-stroom logboeken | Nee | Ja | Nee |  |
 |VPN Gateway | Ja | Ja | Nee |  |
@@ -220,7 +220,7 @@ Azure Monitor kunt gegevens verzamelen van resources buiten Azure met behulp van
 | Resource | Methode |
 |:---|:---|
 | Toepassingen | Bewaak webtoepassingen buiten Azure met Application Insights. Zie [Wat is Application Insights?](./app/app-insights-overview.md). |
-| Virtuele machines | Gebruik de Log Analytics-agent voor het verzamelen van gegevens van het gast besturingssysteem van virtuele machines in andere Cloud omgevingen of on-premises. Zie [logboek gegevens verzamelen met de log Analytics-agent](platform/log-analytics-agent.md). |
+| Virtuele machines | Gebruik agents om gegevens te verzamelen van het gast besturingssysteem van virtuele machines in andere Cloud omgevingen of on-premises. Zie [overzicht van Azure monitor agents](platform/agents-overview.md). |
 | REST API-client | Er zijn afzonderlijke Api's beschikbaar voor het schrijven van gegevens naar Azure Monitor logboeken en meet waarden van een REST API-client. Zie [logboek gegevens naar Azure monitor verzenden met de http data collector-API](platform/data-collector-api.md) voor logboeken en [aangepaste metrische gegevens voor een Azure-resource naar het Azure monitor metrische archief verzenden met behulp van een rest API](platform/metrics-store-custom-rest-api.md) voor metrieken. |
 
 

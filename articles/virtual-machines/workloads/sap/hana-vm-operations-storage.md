@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053436"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080521"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -133,7 +133,7 @@ Met name op kleinere DBMS-systemen waarbij uw werk belasting enkele honderden tr
 > SAP HANA certificering voor virtuele machines uit de M-serie van Azure bestaat uitsluitend met Azure Write Accelerator voor het **/Hana/log** -volume. Als gevolg hiervan wordt het productie scenario SAP HANA implementaties op virtuele machines uit de d-serie van Azure M naar verwachting geconfigureerd met Azure Write Accelerator voor het **/Hana/log** -volume.  
 
 > [!NOTE]
-> In scenario's waarbij Azure Premium Storage betrokken is, implementeren we burst-mogelijkheden in de configuratie. Zorg ervoor dat als u hulpprogram ma's voor opslag testen van ongeacht welke vorm of hetzelfde formulier, de manier waarop [Azure Premium schijf bursting](../../linux/disk-bursting.md) werkt. Als u de opslag tests uitvoert die worden geleverd via het SAP HWCCT-of HCMT-hulp programma, zullen we niet verwachten dat alle tests aan de criteria voldoen omdat sommige tests de bursting-tegoed overschrijden die u kunt verzamelen. Met name wanneer alle tests opeenvolgend worden uitgevoerd zonder te onderbreken.
+> In scenario's waarbij Azure Premium Storage betrokken is, implementeren we burst-mogelijkheden in de configuratie. Zorg ervoor dat u bij het gebruik van hulpprogram ma's voor opslag testen van ongeacht welke vorm of elk formulier gebruikmaakt van de manier waarop [Azure Premium schijf bursting werkt](../../linux/disk-bursting.md) . Als u de opslag tests uitvoert die worden geleverd via het SAP HWCCT-of HCMT-hulp programma, zullen we niet verwachten dat alle tests aan de criteria voldoen omdat sommige tests de bursting-tegoed overschrijden die u kunt verzamelen. Met name wanneer alle tests opeenvolgend worden uitgevoerd zonder te onderbreken.
 
 
 > [!NOTE]

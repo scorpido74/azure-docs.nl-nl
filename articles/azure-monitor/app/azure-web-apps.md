@@ -4,12 +4,12 @@ description: Bewaking van toepassings prestaties voor Azure app Services. Grafie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6c0d99e89e17c2aad3c7dcfe0056b597aa88d2a2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d30d5fa8532b9bdec2b231daf9a59732dc1ebce8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876390"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079685"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -401,7 +401,7 @@ Bekijk de opmerkingen bij de [release](https://github.com/Microsoft/ApplicationI
 
 Wanneer u een web-app maakt met de `ASP.NET` of `.NET Core` Runtimes in azure-app Services, wordt één statische HTML-pagina geïmplementeerd als een start website. De statische webpagina laadt ook een door .NET beheerd webonderdeel in IIS. Hiermee kan bewaking zonder code aan server zijde worden getest, maar wordt automatische bewaking aan client zijde niet ondersteund.
 
-Als u serverloze servers en bewaking aan client zijde voor ASP.NET of ASP.NET Core wilt testen in een web-app Azure-app Services, raden we u aan de officiële hand leidingen te volgen voor het [maken van een ASP.net core web-app](../../app-service/app-service-web-get-started-dotnet.md) en het [maken van een ASP.NET Framework-web-app](../../app-service/app-service-web-get-started-dotnet-framework.md) en vervolgens de instructies in het huidige artikel om de bewaking in te scha kelen.
+Als u serverloze servers en bewaking aan client zijde voor ASP.NET of ASP.NET Core wilt testen in een web-app Azure-app Services, raden we u aan de officiële hand leidingen te volgen voor het [maken van een ASP.net core web-app](../../app-service/quickstart-dotnetcore.md) en het [maken van een ASP.NET Framework-web-app](../../app-service/quickstart-dotnet-framework.md) en vervolgens de instructies in het huidige artikel om de bewaking in te scha kelen.
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP en WordPress worden niet ondersteund
 

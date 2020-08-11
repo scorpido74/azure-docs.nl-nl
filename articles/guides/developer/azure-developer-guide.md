@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: aae0ed4efa7f96ab6258dbf0ce4c34a6879ecbc2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d91fd15d7f1f5d2bb1bd97b5a28ef56f09797140
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832804"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080314"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Introductiehandleiding voor Azure-ontwikkelaars
 
@@ -64,7 +64,7 @@ U kunt uw bestaande toepassingen migreren naar App Service met behulp van het [h
 
 > **Wanneer gebruiken**: gebruik app service wanneer u bestaande webtoepassingen naar Azure migreert en wanneer u een volledig beheerd hosting platform voor uw web-apps nodig hebt. U kunt App Service ook gebruiken als u mobiele clients wilt ondersteunen of REST-Api's met uw app wilt weer geven.
 >
-> **Aan de slag**: app service maakt het eenvoudig om uw eerste web- [app](../../app-service/app-service-web-get-started-dotnet.md), [mobiele app](../../app-service-mobile/app-service-mobile-ios-get-started.md)of API- [app](../../app-service/app-service-web-tutorial-rest-api.md)te maken en te implementeren.
+> **Aan de slag**: app service maakt het eenvoudig om uw eerste web- [app](../../app-service/quickstart-dotnetcore.md), [mobiele app](../../app-service-mobile/app-service-mobile-ios-get-started.md)of API- [app](../../app-service/app-service-web-tutorial-rest-api.md)te maken en te implementeren.
 >
 > **Nu uitproberen**: met app service kunt u een app met korte levens duur inrichten om het platform te proberen zonder dat u zich hoeft aan te melden voor een Azure-account. Probeer het platform en [Maak uw Azure app service-app](https://tryappservice.azure.com/).
 

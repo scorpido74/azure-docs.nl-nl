@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857201"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079804"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
@@ -29,7 +29,7 @@ U leert het volgende:
 Als u Visual Studio Ultimate hebt, kunt u ook [IntelliTrace](/visualstudio/debugger/intellitrace) gebruiken voor fout opsporing. IntelliTrace wordt niet behandeld in deze zelf studie.
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>Vereisten
-Deze zelf studie werkt met de ontwikkel omgeving, webproject en App Service-app die u hebt ingesteld in [een ASP.net-app maken in azure app service](app-service-web-get-started-dotnet-framework.md). Voor de secties webjobs hebt u de toepassing nodig die u in aan [de slag met de Azure WEBJOBS SDK][GetStartedWJ]hebt gemaakt.
+Deze zelf studie werkt met de ontwikkel omgeving, webproject en App Service-app die u hebt ingesteld in [een ASP.net-app maken in azure app service](quickstart-dotnet-framework.md). Voor de secties webjobs hebt u de toepassing nodig die u in aan [de slag met de Azure WEBJOBS SDK][GetStartedWJ]hebt gemaakt.
 
 De code voorbeelden die in deze zelf studie worden weer gegeven, zijn voor een C# MVC-webtoepassing, maar de procedures voor het oplossen van problemen zijn hetzelfde voor Visual Basic en Web Forms-toepassingen.
 
@@ -51,7 +51,7 @@ Visual Studio biedt toegang tot een subset van de app-beheer functies en configu
 
     Zie [accounts, abonnementen en beheerders rollen beheren](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)voor meer informatie over het maken van verbinding met Azure-resources vanuit Visual Studio.
 2. In **Server Explorer**vouwt u **Azure** uit en vouwt u **app service**uit.
-3. Vouw de resource groep uit met de app die u hebt gemaakt in [een ASP.net-app maken in azure app service](app-service-web-get-started-dotnet-framework.md), klik met de rechter muisknop op het app-knoop punt en klik op **instellingen weer geven**.
+3. Vouw de resource groep uit met de app die u hebt gemaakt in [een ASP.net-app maken in azure app service](quickstart-dotnet-framework.md), klik met de rechter muisknop op het app-knoop punt en klik op **instellingen weer geven**.
 
     ![Instellingen in Server Explorer weer geven](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -108,9 +108,9 @@ Als het gedetailleerde fout bericht niet voldoende informatie biedt en u de fout
 
 Externe fout opsporing werkt niet in Express-edities van Visual Studio.
 
-In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project dat u maakt in [een ASP.net-app maken in azure app service](app-service-web-get-started-dotnet-framework.md).
+In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project dat u maakt in [een ASP.net-app maken in azure app service](quickstart-dotnet-framework.md).
 
-1. Open het webproject dat u hebt gemaakt in [een ASP.net-app maken in azure app service](app-service-web-get-started-dotnet-framework.md).
+1. Open het webproject dat u hebt gemaakt in [een ASP.net-app maken in azure app service](quickstart-dotnet-framework.md).
 
 1. Open *Controllers\HomeController.cs*.
 
@@ -129,7 +129,7 @@ In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project da
 
 1. Klik in **Solution Explorer**met de rechter muisknop op het project en klik op **publiceren**.
 
-1. Selecteer in de vervolg keuzelijst **profiel** het profiel dat u hebt gebruikt bij het maken van [een ASP.net-app in azure app service](app-service-web-get-started-dotnet-framework.md). Klik vervolgens op instellingen.
+1. Selecteer in de vervolg keuzelijst **profiel** het profiel dat u hebt gebruikt bij het maken van [een ASP.net-app in azure app service](quickstart-dotnet-framework.md). Klik vervolgens op instellingen.
 
 1. Klik in het dialoog venster **publiceren** op het tabblad **instellingen** , wijzig de **configuratie** in **fout opsporing**en klik vervolgens op **Opslaan**.
 
@@ -264,7 +264,7 @@ Logboeken worden geschreven naar bestanden in een map *logfiles* in het bestands
 ## <a name="create-and-view-application-trace-logs"></a><a name="apptracelogs"></a>Tracerings logboeken voor toepassingen maken en weer geven
 In deze sectie voert u de volgende taken uit:
 
-* Voeg tracerings instructies toe aan het webproject dat u hebt gemaakt in aan de [slag met Azure en ASP.net](app-service-web-get-started-dotnet-framework.md).
+* Voeg tracerings instructies toe aan het webproject dat u hebt gemaakt in aan de [slag met Azure en ASP.net](quickstart-dotnet-framework.md).
 * Bekijk de logboeken wanneer u het project lokaal uitvoert.
 * Bekijk de logboeken zoals deze worden gegenereerd door de toepassing die wordt uitgevoerd in Azure.
 
@@ -686,5 +686,5 @@ Raadpleeg de volgende bronnen voor meer informatie over het analyseren van webse
 ### <a name="analyzing-failed-request-tracing-logs"></a>Logboeken voor tracering van mislukte aanvragen analyseren
 De micro soft TechNet-website bevat een sectie voor het [traceren van mislukte aanvragen](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing) . Dit kan handig zijn als u wilt weten hoe u deze logboeken kunt gebruiken. Deze documentatie is echter voornamelijk gericht op het configureren van tracering van mislukte aanvragen in IIS, wat u niet kunt doen in Azure App Service.
 
-[GetStarted]: app-service-web-get-started-dotnet.md
+[GetStarted]: quickstart-dotnetcore.md?pivots=platform-windows
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

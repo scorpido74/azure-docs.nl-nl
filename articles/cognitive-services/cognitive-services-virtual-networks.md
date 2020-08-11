@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876577"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080895"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Virtuele Azure Cognitive Services-netwerken configureren
 
@@ -40,10 +40,9 @@ Netwerk regels worden op alle netwerk protocollen afgedwongen voor Azure Cogniti
 
 ## <a name="supported-regions-and-service-offerings"></a>Ondersteunde regio's en service aanbiedingen
 
-De hieronder vermelde Cognitive Services ondersteunen virtuele netwerken in commerciële Cloud en US Gov Cloud. Als de service hier niet wordt vermeld, worden er nog geen virtuele netwerken ondersteund.
+Virtuele netwerken (VNETs) worden ondersteund in [regio's waar Cognitive services beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/). Als de cognitieve service niet wordt weer gegeven, ondersteunt deze momenteel geen virtuele netwerken.
 
 > [!div class="checklist"]
-
 > * [Anomaliedetectie](./anomaly-detector/index.yml)
 > * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
@@ -59,8 +58,8 @@ De hieronder vermelde Cognitive Services ondersteunen virtuele netwerken in comm
 ## <a name="service-tags"></a>Servicetags
 
 Cognitive Services ondersteunt service tags voor de configuratie van netwerk regels. De hieronder vermelde services zijn opgenomen in het **CognitiveServicesManagement** -service label.
-> [!div class="checklist"]
 
+> [!div class="checklist"]
 > * [Anomaliedetectie](./anomaly-detector/index.yml)
 > * [Computer Vision](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)

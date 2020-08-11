@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Een Azure Arc-Kubernetes-cluster verbinden met Azure Arc
 keywords: Kubernetes, Arc, azure, K8s, containers
 ms.custom: references_regions
-ms.openlocfilehash: 2c5e697f3dd67087582118fb6a6e083feecf549f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050089"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080487"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Een Azure Arc-Kubernetes-cluster verbinden (preview-versie)
 
@@ -52,7 +52,7 @@ Controleer of u de volgende vereisten hebt voor bereid:
   az extension update --name k8sconfiguration
   ```
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 * VS - oost
 * Europa -west
@@ -172,6 +172,41 @@ U kunt deze resource ook bekijken op de [Azure Portal](https://portal.azure.com/
 > [!NOTE]
 > Na de onboarding van het cluster duurt het ongeveer vijf tot tien minuten voor de meta gegevens van het cluster (cluster versie, versie van agent, aantal knoop punten) naar het Opper vlak op de overzichts pagina van de Azure Arc enabled Kubernetes-resource in Azure Portal.
 
+## <a name="connect-using-an-outbound-proxy-server"></a>Verbinding maken via een uitgaande proxy server
+
+Als uw cluster zich achter een uitgaande proxy server bevindt, moeten Azure CLI en de Arc enabled Kubernetes-agents hun aanvragen via de uitgaande proxy server routeren. De volgende configuratie zorgt ervoor dat:
+
+1. Controleer de versie van de `connectedk8s` extensie die op uw computer is geïnstalleerd door deze opdracht uit te voeren:
+
+    ```bash
+    az -v
+    ```
+
+    U hebt `connectedk8s` extensie versie >= 0.2.3 nodig voor het instellen van agents met een uitgaande proxy. Als u versie < 0.2.3 op uw computer, volgt u de [stappen](#before-you-begin) voor het bijwerken om de nieuwste versie van de extensie op uw computer te verkrijgen.
+
+2. Stel de omgevings variabelen in die nodig zijn voor Azure CLI:
+
+    ```bash
+    export HTTP_PROXY=<proxy-server-ip-address>:<port>
+    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+    ```
+
+3. Voer de opdracht Connect uit met de opgegeven proxy parameters:
+
+    ```bash
+    az connectedk8s connect -n <cluster-name> -g <resource-group> \
+    --proxy-https https://<proxy-server-ip-address>:<port> \
+    --proxy-http http://<proxy-server-ip-address>:<port> \
+    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```
+
+> [!NOTE]
+> 1. Het opgeven van excludedCIDR onder---overs laan van het bereik is belang rijk om ervoor te zorgen dat de communicatie in het cluster niet wordt verbroken voor de agents.
+> 2. De bovenstaande proxy specificatie wordt momenteel alleen toegepast voor Arc-agents en niet voor de stroom die wordt gebruikt in sourceControlConfiguration. Het Kubernetes-team van Arc is actief op deze functie en het is binnenkort beschikbaar.
+
+## <a name="azure-arc-agents-for-kubernetes"></a>Azure Arc-agents voor Kubernetes
+
 Azure Arc enabled Kubernetes implementeert enkele opera tors in de `azure-arc` naam ruimte. U kunt deze implementaties en peulen hier bekijken:
 
 ```console
@@ -199,8 +234,6 @@ pod/flux-logs-agent-7c489f57f4-mwqqv            2/2     Running  0       16h
 pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
-
-## <a name="azure-arc-agents-for-kubernetes"></a>Azure Arc-agents voor Kubernetes
 
 Azure Arc enabled Kubernetes bestaat uit een aantal agents (opera tors) die in uw cluster worden uitgevoerd en die zijn geïmplementeerd in de `azure-arc` naam ruimte.
 

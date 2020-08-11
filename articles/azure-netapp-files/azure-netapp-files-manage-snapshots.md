@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 271c3c9f63ee3f761826e214f3bf32a8df5f1cbe
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 85990aee5143c9ccc0362a00597a748763977204
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533288"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080212"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met behulp van Azure NetApp Files
 
@@ -60,7 +60,7 @@ De functie voor het **momentopname beleid** is momenteel beschikbaar als preview
 2. Controleer de status van de functie registratie: 
 
     > [!NOTE]
-    > Het **RegistrationState** kan `Registering` enkele minuten duren voordat de status wordt gewijzigd in `Registered` . Wacht totdat de status is **geregistreerd** voordat u doorgaat.
+    > Het **RegistrationState** kan `Registering` tot 60 minuten duren voordat de status wordt gewijzigd in `Registered` . Wacht totdat de status is **geregistreerd** voordat u doorgaat.
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
@@ -160,7 +160,7 @@ Op dit moment kunt u een moment opname alleen herstellen naar een nieuw volume.
 
     ![Herstellen naar nieuw volume](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. Klik op **beoordeling + maken**.  Klik op **Maken**.   
+4. Klik op **beoordeling + maken**.  Klik op **Create**.   
     Het nieuwe volume gebruikt hetzelfde protocol dat door de moment opname wordt gebruikt.   
     Het nieuwe volume waarnaar de moment opname wordt teruggezet, wordt weer gegeven op de Blade volumes.
 

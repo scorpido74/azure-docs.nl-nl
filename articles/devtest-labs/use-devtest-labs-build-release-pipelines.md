@@ -3,12 +3,12 @@ title: DevTest Labs in Azure Pipelines gebruiken om pijplijnen te ontwikkelen en
 description: Meer informatie over het gebruik van Azure DevTest Labs in azure-pijp lijnen build-en release pijplijnen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 71af1e0dfe205fe1028f7b82b41f3ed38ebefd3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483071"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080331"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>DevTest Labs in Azure Pipelines gebruiken om pijplijnen te ontwikkelen en uit te brengen
 In dit artikel vindt u informatie over de manier waarop DevTest Labs kan worden gebruikt in azure pipelines build-en release-pijp lijnen. 
@@ -26,7 +26,7 @@ Zodra de build is voltooid, worden de build-artefacten door de **release pijplij
 
 Een van de nodige lokalen is dat alle informatie die nodig is voor het opnieuw maken van het geteste ecosysteem beschikbaar is binnen de bouw artefacten, inclusief de configuratie van de Azure-resources. Als Azure-resources kosten in rekening brengen, willen bedrijven het gebruik van deze resources zelf kunnen beheren of bijhouden. In sommige gevallen kunnen Azure Resource Manager sjablonen die worden gebruikt om de resources te maken en te configureren, worden beheerd door een andere afdeling zoals het. Deze sjablonen kunnen worden opgeslagen in een andere opslag plaats. Het leidt naar een interessante situatie waarin een build wordt gemaakt en getest, en zowel de code als de configuratie moeten worden opgeslagen in de constructie artefacten om het systeem op de juiste manier opnieuw in productie te maken. 
 
-Wanneer u DevTest Labs gebruikt tijdens de build/test-fase, kunt u Azure Resource Manager sjablonen en ondersteunende bestanden toevoegen aan de build-bronnen, zodat tijdens de release fase de exacte configuratie die wordt gebruikt om te testen met wordt geïmplementeerd voor productie. Met de taak **Azure DevTest Labs omgeving maken** met de juiste configuratie worden de Resource Manager-sjablonen in de build-artefacten opgeslagen. Voor dit voor beeld gebruikt u de code uit de [zelf studie: een .net core-en SQL database-web-app maken in azure app service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)om de web-app in azure te implementeren en te testen.
+Wanneer u DevTest Labs gebruikt tijdens de build/test-fase, kunt u Azure Resource Manager sjablonen en ondersteunende bestanden toevoegen aan de build-bronnen, zodat tijdens de release fase de exacte configuratie die wordt gebruikt om te testen met wordt geïmplementeerd voor productie. Met de taak **Azure DevTest Labs omgeving maken** met de juiste configuratie worden de Resource Manager-sjablonen in de build-artefacten opgeslagen. Voor dit voor beeld gebruikt u de code uit de [zelf studie: een .net core-en SQL database-web-app maken in azure app service](../app-service/tutorial-dotnetcore-sqldb-app.md)om de web-app in azure te implementeren en te testen.
 
 ![Algehele stroom](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
@@ -40,7 +40,7 @@ Er zijn een aantal items die moeten worden gemaakt:
 Met de build-pijp lijn wordt een DevTest Labs-omgeving gemaakt en de code voor het testen geïmplementeerd.
 
 ## <a name="set-up-a-build-pipeline"></a>Een build-pijp lijn instellen
-Maak in azure-pijp lijnen een build-pijp lijn met behulp van de code in de [zelf studie: een .net core-en SQL database-web-app maken in azure app service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Gebruik de **ASP.net core** sjabloon, waarmee de benodigde taak wordt gevuld om de code te bouwen, te testen en te publiceren.
+Maak in azure-pijp lijnen een build-pijp lijn met behulp van de code in de [zelf studie: een .net core-en SQL database-web-app maken in azure app service](../app-service/tutorial-dotnetcore-sqldb-app.md). Gebruik de **ASP.net core** sjabloon, waarmee de benodigde taak wordt gevuld om de code te bouwen, te testen en te publiceren.
 
 ![De ASP.NET-sjabloon selecteren](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 

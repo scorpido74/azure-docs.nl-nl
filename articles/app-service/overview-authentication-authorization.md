@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562375"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080725"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure Functions
 
@@ -56,7 +56,7 @@ De module verificatie en autorisatie wordt uitgevoerd in een afzonderlijke conta
 
 ### <a name="userapplication-claims"></a>Gebruikers/toepassings claims
 
-Voor alle taal Frameworks maakt App Service de claims in het inkomende token (of dit van een geverifieerde eind gebruiker of een client toepassing afkomstig is) die beschikbaar zijn voor uw code door ze in de aanvraag headers in te voeren. Voor ASP.NET 4,6-apps vult App Service [claimsprincipal is. current](/dotnet/api/system.security.claims.claimsprincipal.current) in met de claims van de geverifieerde gebruiker, zodat u het standaard .net-code patroon kunt volgen, inclusief het `[Authorize]` kenmerk. Op dezelfde manier wordt voor PHP-apps App Service de `_SERVER['REMOTE_USER']` variabele ingevuld. Voor java-apps zijn de claims [toegankelijk via de Tomcat-servlet](containers/configure-language-java.md#authenticate-users-easy-auth).
+Voor alle taal Frameworks maakt App Service de claims in het inkomende token (of dit van een geverifieerde eind gebruiker of een client toepassing afkomstig is) die beschikbaar zijn voor uw code door ze in de aanvraag headers in te voeren. Voor ASP.NET 4,6-apps vult App Service [claimsprincipal is. current](/dotnet/api/system.security.claims.claimsprincipal.current) in met de claims van de geverifieerde gebruiker, zodat u het standaard .net-code patroon kunt volgen, inclusief het `[Authorize]` kenmerk. Op dezelfde manier wordt voor PHP-apps App Service de `_SERVER['REMOTE_USER']` variabele ingevuld. Voor java-apps zijn de claims [toegankelijk via de Tomcat-servlet](configure-language-java.md#authenticate-users-easy-auth).
 
 Voor [Azure functions](../azure-functions/functions-overview.md) `ClaimsPrincipal.Current` is niet ingevuld voor .net-code, maar u kunt wel de gebruikers claims in de aanvraag headers vinden of het `ClaimsPrincipal` object ophalen uit de context van de aanvraag of zelfs via een bindings parameter. Zie [werken met client identiteiten](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) voor meer informatie.
 
@@ -149,7 +149,7 @@ Met deze optie hoeft u geen verificatie code in uw app te schrijven. Nauw keurig
 
 ## <a name="more-resources"></a>Meer bronnen
 
-[Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
+[Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service (Windows)](tutorial-auth-aad.md)  
 [Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service voor Linux](containers/tutorial-auth-aad.md)  
 [Verificatie en autorisatie aanpassen in app service](app-service-authentication-how-to.md) 
  [.Net core-integratie van Azure AppService EasyAuth (derde partij)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 

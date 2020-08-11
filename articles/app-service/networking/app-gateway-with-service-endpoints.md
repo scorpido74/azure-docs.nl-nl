@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 5e32baa10e98f0f57a861f8cebfb7506ad615631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74980060"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080929"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Integratie met Service-eind punten Application Gateway
 Er zijn drie variaties van App Service waarvoor een enigszins verschillende configuratie van de integratie met Azure-toepassing gateway is vereist. De variaties zijn onder andere gewone App Service, ook wel bekend als multi tenant, interne Load Balancer (ILB) App Service Environment (ASE) en externe ASE. In dit artikel wordt uitgelegd hoe u dit kunt configureren met App Service (multi tenant) en overwegingen over ILB en externe ASE kunt bespreken.
@@ -33,7 +33,7 @@ Er zijn twee delen voor deze configuratie naast het maken van de App Service en 
 
 ## <a name="using-azure-portal"></a>Azure Portal gebruiken
 Met Azure Portal voert u vier stappen uit om de installatie in te richten en te configureren. Als u bestaande resources hebt, kunt u de eerste stappen overs Laan.
-1. Maak een App Service met behulp van een van de Quick starts in de App Service Documentatie, bijvoorbeeld [Snelstartgids voor .net core](../../app-service/app-service-web-get-started-dotnet.md)
+1. Maak een App Service met behulp van een van de Quick starts in de App Service Documentatie, bijvoorbeeld [Snelstartgids voor .net core](../quickstart-dotnetcore.md)
 2. Maak een Application Gateway met behulp van de Snelstartgids van de [Portal](../../application-gateway/quick-create-portal.md), maar sla de sectie backend-doelen toevoegen over.
 3. Configureer [app service als een back-end in Application Gateway](../../application-gateway/configure-web-app-portal.md), maar sla de sectie toegang beperken niet over.
 4. Maak tot slot de [toegangs beperking met behulp van service-eind punten](../../app-service/app-service-ip-restrictions.md#service-endpoints).

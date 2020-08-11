@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034954"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080708"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Overzicht van lokale cache Azure App Service
 
 > [!NOTE]
-> De lokale cache wordt niet ondersteund in functie-apps of in containers App Service-apps, zoals in [Windows-containers](app-service-web-get-started-windows-container.md) of op [app service in Linux](containers/app-service-linux-intro.md).
+> De lokale cache wordt niet ondersteund in functie-apps of in containers App Service-apps, zoals in [Windows-containers](quickstart-custom-container.md?pivots=container-windows) of op [app service in Linux](overview.md#app-service-on-linux).
 
 
 Azure App Service inhoud wordt opgeslagen op Azure Storage en wordt op een duurzame manier als een inhouds share geoppereerd. Dit ontwerp is bedoeld om te werken met verschillende apps en heeft de volgende kenmerken:  
@@ -102,7 +102,7 @@ Als uw app een hoogwaardige, betrouw bare inhouds opslag nodig heeft, wordt het 
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Hoe kan ik zien of mijn site is overgeschakeld naar het gebruik van een lokale cache?
 Als u de functie lokale cache gebruikt met Faserings omgevingen, wordt de wissel bewerking niet voltooid totdat de lokale cache wordt opgewarmd. Als u wilt controleren of uw site wordt uitgevoerd op de lokale cache, kunt u de variabele voor de werk proces omgeving controleren `WEBSITE_LOCALCACHE_READY` . Gebruik de instructies op de pagina [omgevings variabele van werk processen](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) voor toegang tot de omgevings variabele werk processen op meerdere exemplaren.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb zojuist nieuwe wijzigingen gepubliceerd, maar mijn app lijkt deze niet te bevatten. Hoe komt dat?
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb zojuist nieuwe wijzigingen gepubliceerd, maar mijn app lijkt deze niet te bevatten. Waarom?
 Als uw app gebruikmaakt van lokale cache, moet u de site opnieuw opstarten om de laatste wijzigingen op te halen. Wilt u geen wijzigingen publiceren naar een productie site? Zie de sleuf opties in het gedeelte eerder best practices.
 
 > [!NOTE]

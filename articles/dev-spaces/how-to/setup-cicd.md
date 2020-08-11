@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Meer informatie over het instellen van continue integratie/continue implementatie met Azure DevOps met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229326"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080263"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD gebruiken met Azure Dev Spaces
 
@@ -24,7 +24,7 @@ In dit artikel vindt u instructies voor het instellen van continue integratie/co
 Hoewel dit artikel u begeleidt bij Azure DevOps, zijn dezelfde concepten ook van toepassing op CI/CD-systemen zoals Jenkins, TeamCity, etc.
 
 ## <a name="prerequisites"></a>Vereisten
-* [Azure Kubernetes service (AKS)-cluster met Azure dev Spaces ingeschakeld](../get-started-netcore.md)
+* Azure Kubernetes service (AKS)-cluster met Azure dev Spaces ingeschakeld
 * [Azure dev Spaces CLI geïnstalleerd](upgrade-tools.md)
 * [Azure DevOps-organisatie met een project](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
@@ -41,7 +41,7 @@ Maak een nieuwe ruimte met de naam _dev_ met behulp van de `azds space select` o
 azds space select -n dev
 ```
 
-Als u wordt gevraagd een bovenliggende ontwikkel ruimte te selecteren, selecteert u _\<none\>_ .
+Wanneer u wordt gevraagd een bovenliggende dev-ruimte te selecteren, selecteert u _\<none\>_ .
 
 Nadat u de ontwikkelings ruimte hebt gemaakt, moet u het achtervoegsel van de host bepalen. Gebruik de `azds show-context` opdracht om het achtervoegsel van de host van de Azure dev Spaces-controller weer te geven.
 
@@ -99,7 +99,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Voor de **standaard versie**kiest u **meest recent in de standaard vertakking build pijplijn met Tags**.
 1. Laat **labels** leeg.
 1. Stel de **bron alias** in op `drop` . De waarde van de **bron alias** wordt gebruikt door de vooraf gedefinieerde release taken zodat deze moet worden ingesteld.
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 1. Klik nu op het pictogram bliksem flits op de zojuist gemaakte `drop` artefact bron, zoals hieronder wordt weer gegeven:
 
     ![Setup van continue implementatie van release artefact](../media/common/release-artifact-cd-setup.png)
@@ -119,7 +119,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Klik op **Opslaan** in de rechter bovenhoek en **OK**.
 1. Klik op **+ release** (naast de knop Opslaan) en **Maak een release**.
 1. Controleer onder **artefacten**de meest recente build van uw build-pijp lijn is geselecteerd.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 Er wordt nu een geautomatiseerd release proces gestart, waarbij de *mywebapi* -en Webfront- *End* grafieken worden geïmplementeerd in uw Kubernetes-cluster in de _ontwikkel_ ruimte op het hoogste niveau. U kunt de voortgang van uw release bewaken in de Azure DevOps-webportal:
 
@@ -185,5 +185,7 @@ Hier volgt een voor beeld van een naam ruimte structuur die ondersteuning biedt 
 
 ## <a name="next-steps"></a>Volgende stappen
 
+Meer informatie over de werking van Azure dev Spaces.
+
 > [!div class="nextstepaction"]
-> [Meer informatie over team ontwikkeling met behulp van Azure dev Spaces](../team-development-netcore.md)
+> [Hoe Azure Dev Spaces werkt](../how-dev-spaces-works.md)

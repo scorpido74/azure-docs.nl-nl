@@ -3,12 +3,12 @@ title: Azure Windows Communication Foundation (WCF) Relay hybride on-premises/Cl
 description: Ontdek hoe u een on-premises WCF-service zichtbaar maakt voor een webtoepassing in de cloud met behulp van Azure Relay
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9ac01beb28b1246122f437bcf1c7a7be7a1dfd9
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314413"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079957"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Een on-premises WCF-service zichtbaar maken voor een webtoepassing in de cloud met behulp van Azure Relay
 
@@ -244,7 +244,7 @@ In deze sectie bouwt u een eenvoudige ASP.NET-toepassing op waarmee gegevens wor
     ![Verificatie opgeven][18]
 
 1. Selecteer in **een nieuwe ASP.NET-webtoepassing**maken de optie **maken** om de MVC-app te maken.
-1. Azure-resources configureren voor een nieuwe web-app. Volg de stappen in [uw web-app publiceren](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard). Ga vervolgens terug naar deze zelf studie en ga verder met de volgende stap.
+1. Azure-resources configureren voor een nieuwe web-app. Volg de stappen in [uw web-app publiceren](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard). Ga vervolgens terug naar deze zelf studie en ga verder met de volgende stap.
 1. Klik in **Solution Explorer**met de rechter muisknop op **modellen** en **Add**Selecteer vervolgens  >  **klasse**toevoegen.
 1. Geef de klasse de naam *product.cs*en selecteer vervolgens **toevoegen**.
 
@@ -427,7 +427,7 @@ Sluit beide toepassingen voordat u doorgaat naar de volgende sectie.
 
 De volgende stap bestaat uit het opnieuw publiceren van de **ProductsPortal** front-end van Azure web app:
 
-1. Klik in **Solution Explorer**met de rechter muisknop op het project **ProductsPortal** en selecteer **publiceren**. Selecteer op de pagina **publiceren** de optie **publiceren**.
+1. Klik in **Solution Explorer**met de rechter muisknop op het project **ProductsPortal** en selecteer **publiceren**. Selecteer op de pagina **Publiceren** de optie **Publiceren**.
 
    > [!NOTE]
    > Mogelijk wordt er een foutbericht weergegeven in het browservenster wanneer het **ProductsPortal**-webproject automatisch wordt gestart na de implementatie. Dit is normaal en doet zich voor omdat de **ProductsServer**-toepassing nog niet wordt uitgevoerd.

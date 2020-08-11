@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een ASP.NET-app in Azure 
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1aeb243b3ff4a1e6bd2ae984510d2ec709776fa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53654520ea20bd8ee797de61449a616eadd001a5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908092"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080144"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Een ASP.NET-app configureren voor Azure App Service
 
@@ -18,7 +18,7 @@ ms.locfileid: "84908092"
 
 ASP.NET-apps moeten worden geïmplementeerd voor Azure App Service als gecompileerde binaire bestanden. Het Visual Studio-hulp programma voor publiceren bouwt de oplossing en implementeert vervolgens de gecompileerde binaire bestanden rechtstreeks, terwijl de App Service implementatie-engine de code opslagplaats eerst implementeert en vervolgens de binaire bestanden compileert.
 
-Deze hand leiding bevat belang rijke concepten en instructies voor ASP.NET-ontwikkel aars. Als u Azure App Service nog nooit hebt gebruikt, volgt u eerst de [ASP.net Snelstartgids](app-service-web-get-started-dotnet-framework.md) en [ASP.net met SQL database zelf studie](app-service-web-tutorial-dotnet-sqldatabase.md) .
+Deze hand leiding bevat belang rijke concepten en instructies voor ASP.NET-ontwikkel aars. Als u Azure App Service nog nooit hebt gebruikt, volgt u eerst de [ASP.net Snelstartgids](quickstart-dotnet-framework.md) en [ASP.net met SQL database zelf studie](app-service-web-tutorial-dotnet-sqldatabase.md) .
 
 ## <a name="show-supported-net-framework-runtime-versions"></a>Ondersteunde .NET Framework runtime versies weer geven
 

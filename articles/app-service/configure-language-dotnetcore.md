@@ -1,24 +1,27 @@
 ---
-title: Windows ASP.NET Core-Apps configureren
-description: Meer informatie over het configureren van een ASP.NET Core-app in de systeem eigen Windows-exemplaren van App Service. In dit artikel worden de meest algemene configuratietaken beschreven.
+title: ASP.NET Core-Apps configureren
+description: Meer informatie over het configureren van een ASP.NET Core-app in de systeem eigen Windows-exemplaren of in een vooraf ontwikkelde Linux-container in Azure App Service. In dit artikel worden de meest algemene configuratietaken beschreven.
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5819fc5b2d6e64d1812dacd88a2a4f840f6e03c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: app-service-platform-windows-linux
+ms.openlocfilehash: 77bff369e2af09921a2065a031166c017128f008
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908091"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080161"
 ---
-# <a name="configure-a-windows-aspnet-core-app-for-azure-app-service"></a>Een Windows ASP.NET Core-app configureren voor Azure App Service
+# <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Een ASP.NET Core-app configureren voor Azure App Service
 
 > [!NOTE]
 > Zie voor ASP.NET in .NET Framework [een ASP.net-app configureren voor Azure app service](configure-language-dotnet-framework.md)
 
-ASP.NET Core-apps moeten worden geïmplementeerd op Azure App Service als gecompileerde binaire bestanden. Het Visual Studio-hulp programma voor publiceren bouwt de oplossing en implementeert vervolgens de gecompileerde binaire bestanden rechtstreeks, terwijl de App Service implementatie-engine de code opslagplaats eerst implementeert en vervolgens de binaire bestanden compileert. Zie [Configure a Linux ASP.net core app for Azure app service](containers/configure-language-dotnetcore.md)voor meer informatie over Linux-apps.
+ASP.NET Core-apps moeten worden geïmplementeerd op Azure App Service als gecompileerde binaire bestanden. Het Visual Studio-hulp programma voor publiceren bouwt de oplossing en implementeert vervolgens de gecompileerde binaire bestanden rechtstreeks, terwijl de App Service implementatie-engine de code opslagplaats eerst implementeert en vervolgens de binaire bestanden compileert.
 
-Deze hand leiding bevat belang rijke concepten en instructies voor ASP.NET Core ontwikkel aars. Als u Azure App Service nog nooit hebt gebruikt, volgt u eerst de [ASP.net Snelstartgids](app-service-web-get-started-dotnet.md) en [ASP.net core met SQL database zelf studie](app-service-web-tutorial-dotnetcore-sqldb.md) .
+Deze hand leiding bevat belang rijke concepten en instructies voor ASP.NET Core ontwikkel aars. Als u Azure App Service nog nooit hebt gebruikt, volgt u eerst de [ASP.net core Snelstartgids](quickstart-dotnetcore.md) en [ASP.net core SQL database zelf studie](tutorial-dotnetcore-sqldb-app.md) .
+
+::: zone pivot="platform-windows"  
 
 ## <a name="show-supported-net-core-runtime-versions"></a>Ondersteunde .NET core runtime-versies weer geven
 
@@ -28,9 +31,69 @@ In App Service hebben de Windows-exemplaren al alle ondersteunde .NET Core-versi
 dotnet --info
 ```
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="show-net-core-version"></a>.NET core-versie weer geven
+
+Als u de huidige versie van .NET core wilt weer geven, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com):
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+Als u alle ondersteunde .NET Core-versies wilt weer geven, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com):
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep DOTNETCORE
+```
+
+::: zone-end
+
 ## <a name="set-net-core-version"></a>.NET core-versie instellen
 
+::: zone pivot="platform-windows"  
+
 Stel het doel raamwerk in het project bestand voor uw ASP.NET Core-project in. Zie voor meer informatie [de .net core-versie selecteren die u wilt gebruiken in de](https://docs.microsoft.com/dotnet/core/versions/selection) documentatie van .net core.
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+Voer de volgende opdracht uit in de [Cloud shell](https://shell.azure.com) om de .net core-versie in te stellen op 3,1:
+
+```azurecli-interactive
+az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|3.1"
+```
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="customize-build-automation"></a>De automatisering van bouwbewerkingen aanpassen
+
+Als u uw app wilt implementeren met behulp van Git of zip-pakketten waarbij bouwautomatisering is ingeschakeld, moet u de volgende stappen voor de App Service-bouwautomatisering in deze volgorde uitvoeren:
+
+1. Voer aangepast script uit als dit door `PRE_BUILD_SCRIPT_PATH` is opgegeven.
+1. Voer uit `dotnet restore` om NuGet-afhankelijkheden te herstellen.
+1. Voer uit `dotnet publish` om een binair bestand te maken voor productie.
+1. Voer aangepast script uit als dit is opgegeven door `POST_BUILD_SCRIPT_PATH`.
+
+`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Als u vooraf gebouwde opdrachten wilt uitvoeren, definieert u `PRE_BUILD_COMMAND`. Als u achteraf gebouwde opdrachten wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
+
+In het volgende voorbeeld worden de twee variabelen voor een reeks opdrachten opgegeven, gescheiden door komma's.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Zie [Oryx-configuratie](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md) voor aanvullende omgevingsvariabelen om bouwautomatisering aan te passen.
+
+Zie Oryx-documentatie voor meer informatie over hoe App Service worden uitgevoerd en gebouwd ASP.NET Core apps in Linux [: hoe .net core-apps zijn gedetecteerd en gebouwd](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md).
+
+::: zone-end
 
 ## <a name="access-environment-variables"></a>Toegang tot omgevingsvariabelen
 
@@ -115,7 +178,7 @@ In App Service vindt [SSL-beëindiging](https://wikipedia.org/wiki/TLS_terminati
 
 - Configureer de middleware met [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) voor het door sturen `X-Forwarded-For` van de en- `X-Forwarded-Proto` headers in `Startup.ConfigureServices` .
 - Voeg persoonlijke IP-adresbereiken toe aan de bekende netwerken, zodat de middleware de App Service load balancer kan vertrouwen.
-- Roep de methode [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) aan in `Startup.Configure` voordat u andere middlewares aanroept.
+- Roep de methode [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) aan in voordat u een `Startup.Configure` andere middleware aanroept.
 
 Als u alle drie de elementen samen plaatst, ziet uw code eruit als in het volgende voor beeld:
 
@@ -146,7 +209,25 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Zie [ASP.net core configureren voor het werken met proxy servers en load balancers](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)voor meer informatie.
 
+::: zone pivot="platform-linux"
+
+## <a name="open-ssh-session-in-browser"></a>SSH-sessie in de browser openen
+
+[!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
+
+[!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
+
+::: zone-end
+
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: app ASP.NET Core met SQL Database](app-service-web-tutorial-dotnetcore-sqldb.md)
+> [Zelf studie: app ASP.NET Core met SQL Database](tutorial-dotnetcore-sqldb-app.md)
+
+::: zone pivot="platform-linux"
+
+> [!div class="nextstepaction"]
+> [Veelgestelde vragen over App Service Linux](faq-app-service-linux.md)
+
+::: zone-end
+

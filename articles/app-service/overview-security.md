@@ -5,12 +5,12 @@ keywords: Azure app service, Web-app, mobiele app, API-app, functie-app, beveili
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6c8aeeaded659fb7fd37409c3d9e495aa711fa6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649054"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080297"
 ---
 # <a name="security-in-azure-app-service"></a>Beveiliging in Azure App Service
 
@@ -56,7 +56,7 @@ App Service-verificatie en-autorisatie ondersteunen meerdere verificatie provide
 Bij verificatie bij een back-end-service biedt App Service twee verschillende mechanismen, afhankelijk van uw behoeften:
 
 - **Service-identiteit** : Meld u aan bij de externe resource met behulp van de identiteit van de app zelf. Met App Service kunt u eenvoudig een [beheerde identiteit](overview-managed-identity.md)maken, die u kunt gebruiken om te verifiëren met andere services, zoals [Azure SQL database](/azure/sql-database/) of [Azure Key Vault](/azure/key-vault/). Zie voor een end-to-end zelf studie [een beveiligde Azure SQL database verbinding van app service met behulp van een beheerde identiteit](app-service-web-tutorial-connect-msi.md).
-- Namens de gebruiker **(OBO)** : Maak gedelegeerde toegang tot externe bronnen. Met Azure Active Directory als verificatie provider kan uw App Service-app gedelegeerde aanmelding uitvoeren op een externe service, zoals [Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) of een externe API-App in app service. Zie voor een end-to-end-zelf studie de [gebruikers verifiëren en autoriseren in azure app service](app-service-web-tutorial-auth-aad.md).
+- Namens de gebruiker **(OBO)** : Maak gedelegeerde toegang tot externe bronnen. Met Azure Active Directory als verificatie provider kan uw App Service-app gedelegeerde aanmelding uitvoeren op een externe service, zoals [Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) of een externe API-App in app service. Zie voor een end-to-end-zelf studie de [gebruikers verifiëren en autoriseren in azure app service](tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Connectiviteit met externe bronnen
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482680"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079668"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Apps in Azure App Service bewaken
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde functionaliteit voor het controleren van web apps, mobiele apps en api's in de [Azure Portal](https://portal.azure.com).
@@ -31,7 +31,7 @@ Als de app wordt gehost in een *Basic*-, *Standard*-of *Premium* -abonnement, wo
 
 Quota voor gratis of gedeelde apps zijn:
 
-| Quota | Description |
+| Quota | Beschrijving |
 | --- | --- |
 | **CPU (kort)** | De hoeveelheid CPU die is toegestaan voor deze app in een interval van 5 minuten. Dit quotum wordt om de vijf minuten opnieuw ingesteld. |
 | **CPU (dag)** | De totale hoeveelheid CPU die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
@@ -63,6 +63,10 @@ U kunt quota's verhogen of verwijderen uit uw app door uw App Service-abonnement
 
 > [!IMPORTANT]
 > De **gemiddelde reactie tijd** wordt afgeschaft om Verwar ring met metrische aggregaties te voor komen. Gebruik de **reactie tijd** als vervanging.
+
+> [!NOTE]
+> Metrische gegevens voor een app bevatten de aanvragen voor de SCM-site van de app (kudu).  Dit omvat aanvragen om de logstream van de site weer te geven met behulp van kudu.  Logstream-aanvragen kunnen enkele minuten duren, wat van invloed is op de metrische aanvraag tijd.  Gebruikers moeten op de hoogte zijn van deze relatie wanneer ze deze metrische gegevens gebruiken met logica voor automatisch schalen.
+> 
 
 Metrische gegevens geven informatie over de app of het gedrag van het App Service plan.
 

@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 5b454c324d475eb4f692e1715cb2ea45105f78e1
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056921"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079583"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,7 +142,7 @@ De volgende tabel bevat een overzicht van Azure Machine Learning activiteiten en
 | Elk type uitvoering verzenden | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
 | Een pijplijn eindpunt publiceren | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | Een geregistreerd model implementeren op een AKS/ACI-bron | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
-| Score voor een geïmplementeerd AKS-eind punt | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol waardoor: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (wanneer u geen Aad-verificatie gebruikt) of `"/workspaces/read"` (wanneer u token verificatie gebruikt) |
+| Score voor een geïmplementeerd AKS-eind punt | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol waarmee: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (wanneer u geen Azure Active Directory auth) of `"/workspaces/read"` (wanneer u token verificatie gebruikt) |
 | Toegang tot opslag met interactieve notebooks | Niet vereist | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
 | Nieuwe aangepaste rol maken | Eigenaar, bijdrager of aangepaste rol die`Microsoft.Authorization/roleDefinitions/write` | Niet vereist | Eigenaar, bijdrager of aangepaste rol, waardoor:`/workspaces/computes/write` |
 
@@ -374,10 +374,14 @@ Ze kunnen ook worden gevonden in de lijst met [bewerkingen van de resource provi
 Hier volgen enkele dingen waarvan u op de hoogte moet zijn terwijl u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruikt:
 
 - Wanneer u een resource maakt in azure, zegt u een werk ruimte, bent u niet rechtstreeks de eigenaar van de werk ruimte. Uw rol wordt overgenomen van de hoogste rol van het bereik waarvoor u gemachtigd bent in dat abonnement. Als u bijvoorbeeld een netwerk beheerder bent en u de machtigingen hebt om een Machine Learning-werk ruimte te maken, wordt u de rol netwerk beheerder toegewezen voor die werk ruimte en niet de rol van eigenaar.
-- Wanneer er twee roltoewijzingen aan dezelfde AAD-gebruiker zijn met conflicterende delen van acties/verhoudingen, worden uw bewerkingen die worden vermeld in de ene rol, mogelijk niet van kracht als ze ook worden weer gegeven als acties in een andere rol. Lees [hoe Azure RBAC bepaalt of een gebruiker toegang heeft tot een resource](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) voor meer informatie over hoe Azure-roltoewijzingen parseert.
-- Als u uw reken resources binnen een VNet wilt implementeren, moet u expliciet machtigingen hebben voor ' micro soft. Network/virtualNetworks/join's/Action ' op die VNet-resource.
-- Het kan soms tot 1 uur duren voordat de nieuwe roltoewijzingen van kracht worden via de cache machtigingen in de stack.
+- Wanneer er twee roltoewijzingen aan dezelfde Azure Active Directory gebruiker met conflicterende secties met acties/verhoudingen, worden uw bewerkingen die worden vermeld in de ene rol, mogelijk niet van kracht als ze ook worden weer gegeven als acties in een andere rol. Lees [hoe Azure RBAC bepaalt of een gebruiker toegang heeft tot een resource](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) voor meer informatie over hoe Azure-roltoewijzingen parseert.
+- Als u uw reken resources binnen een VNet wilt implementeren, moet u expliciet machtigingen hebben voor de volgende acties:
+    - "Micro soft. Network/virtualNetworks/lid/Action" voor de VNet-resource.
+    - ' Micro soft. Network/virtualNetworks/subnet/lid/Action ' op de bron van het subnet.
+    
+    Zie voor meer informatie over RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking).
 
+- Het kan soms tot 1 uur duren voordat de nieuwe roltoewijzingen van kracht worden via de cache machtigingen in de stack.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>V. Welke machtigingen heb ik nodig om een door de gebruiker toegewezen beheerde identiteit te gebruiken met mijn Amlcompute-clusters?
 

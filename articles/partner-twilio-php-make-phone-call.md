@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e75b5a265ba85813581e39a548d897ea57a33da6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637311"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080555"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Een telefoon gesprek doen met behulp van Twilio in een PHP-toepassing in azure
 In het volgende voor beeld ziet u hoe u Twilio kunt gebruiken om een oproep te doen van een PHP-webpagina die wordt gehost in Azure. De resulterende toepassing vraagt de gebruiker om telefoon gesprek waarden, zoals wordt weer gegeven in de volgende scherm afbeelding.
@@ -105,7 +105,7 @@ Naast het aanroepen van de aanroep, wordt in **makecall. php** enkele meta gegev
 ![Azure-aanroep antwoord met Twilio en PHP][twilio_php_response]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
-De volgende stap is het [implementeren van uw toepassing naar Azure web apps met git](app-service/app-service-web-get-started-php.md) (maar niet alle informatie die er relevant is). 
+De volgende stap is het [implementeren van uw toepassing naar Azure web apps met git](app-service/quickstart-php.md) (maar niet alle informatie die er relevant is). 
 
 ## <a name="next-steps"></a>Volgende stappen
 Deze code werd verschaft om u de basis functionaliteit te laten zien met behulp van Twilio in PHP op Azure. Voordat u naar Azure implementeert in productie, wilt u mogelijk meer fout afhandeling of andere functies toevoegen. Bijvoorbeeld:
