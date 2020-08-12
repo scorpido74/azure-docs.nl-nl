@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696415"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120895"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Verschillen tussen MSAL JS en ADAL JS
 
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u kiest tussen de micro soft-verificatie bib
 
 In de meeste gevallen wilt u het micro soft-identiteits platform en de MSAL.js gebruiken. Dit is de nieuwste generatie micro soft-verificatie bibliotheken. Met MSAL.js kunt u tokens verkrijgen voor gebruikers die zich aanmelden bij uw toepassing met Azure AD (werk-en school accounts), micro soft (persoonlijke) accounts (MSA) of Azure AD B2C.
 
-Als u al bekend bent met het v 1.0-eind punt (en ADAL.js), wilt u wellicht lezen [wat er anders is dan het v 2.0-eind punt?](active-directory-v2-compare.md).
+Als u al bekend bent met het v 1.0-eind punt (en ADAL.js), wilt u wellicht lezen [wat er anders is dan het v 2.0-eind punt?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 U moet echter nog steeds ADAL.js gebruiken als uw toepassing zich moet aanmelden bij eerdere versies van [Active Directory Federation Services (ADFS)](/windows-server/identity/active-directory-federation-services).
 
@@ -96,4 +96,4 @@ In v 2.0 kunnen gebruikers zich met behulp van de `https://login.microsoftonline
     ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [vergelijking van v 1.0 en v 2.0](active-directory-v2-compare.md)voor meer informatie.
+Zie [vergelijking van v 1.0 en v 2.0](../azuread-dev/azure-ad-endpoint-comparison.md)voor meer informatie.

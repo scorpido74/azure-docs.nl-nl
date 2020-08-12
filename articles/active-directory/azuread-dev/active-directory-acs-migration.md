@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551723"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117784"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Procedure: migreren vanuit Azure Access Control Service
 
@@ -59,7 +59,7 @@ Alle communicatie met de STS-en beheer bewerkingen wordt uitgevoerd op deze URL.
 
 De uitzonde ring hierop is het verkeer naar `https://accounts.accesscontrol.windows.net` . Verkeer naar deze URL wordt al verwerkt door een andere service en **wordt niet** beïnvloed door de Access Control afschaffing. 
 
-Zie [Access Control Service 2,0 (gearchiveerd)](https://msdn.microsoft.com/library/hh147631.aspx)voor meer informatie over Access Control.
+Zie [Access Control Service 2,0 (gearchiveerd)](/previous-versions/azure/azure-services/hh147631(v=azure.100))voor meer informatie over Access Control.
 
 ## <a name="find-out-which-of-your-apps-will-be-impacted"></a>Meer informatie over welke apps worden beïnvloed
 
@@ -129,13 +129,13 @@ Elke micro soft-Cloud service die tokens accepteert die zijn uitgegeven door Acc
 
 | Service | Hulp |
 | ------- | -------- |
-| Azure Service Bus | [Migreren naar hand tekeningen voor gedeelde toegang](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure Service Bus relay | [Migreren naar hand tekeningen voor gedeelde toegang](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure Managed cache | [Migreren naar Azure cache voor redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure data Market | [Migreren naar het Cognitive Services-API's](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk Services | [Migreren naar de Logic Apps-functie van Azure App Service](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure Service Bus | [Migreren naar hand tekeningen voor gedeelde toegang](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure Service Bus relay | [Migreren naar hand tekeningen voor gedeelde toegang](../../azure-relay/relay-migrate-acs-sas.md) |
+| Azure Managed cache | [Migreren naar Azure Cache voor Redis](../../azure-cache-for-redis/cache-faq.md) |
+| Azure data Market | [Migreren naar het Cognitive Services-API's](https://azure.microsoft.com/services/cognitive-services/) |
+| BizTalk Services | [Migreren naar de Logic Apps-functie van Azure App Service](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Migreren naar Azure AD-verificatie](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure Backup | [De Azure Backup-Agent bijwerken](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Azure Backup | [De Azure Backup-Agent bijwerken](../../backup/backup-azure-file-folder-backup-faq.md) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -150,10 +150,10 @@ Share point 2013-, 2016-en share point online-klanten hebben in de Cloud, on-pre
 
 | Functie | Hulp |
 | ------- | -------- |
-| Gebruikers verifiëren vanuit Azure AD | Voorheen heeft Azure AD geen ondersteuning voor SAML 1,1-tokens die vereist zijn door share point voor verificatie, en ACS werd gebruikt als een tussen persoon die share point compatibel met Azure AD-token indelingen heeft gemaakt. Nu kunt u [rechtstreeks verbinding maken met share point met Azure AD met behulp van Azure AD-App galerie share point op de on-premises app](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
-| [App-verificatie & server-naar-Server-verificatie in share point on-premises](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Niet beïnvloed door ACS-uittredingen; u hoeft niets te wijzigen. | 
-| [Beperkte verificatie van de vertrouwens relatie voor share point-invoeg toepassingen (door de provider gehoste en share point gehost)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Niet beïnvloed door ACS-uittredingen; u hoeft niets te wijzigen. |
-| [Zoeken in hybride share point-Cloud](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Niet beïnvloed door ACS-uittredingen; u hoeft niets te wijzigen. |
+| Gebruikers verifiëren vanuit Azure AD | Voorheen heeft Azure AD geen ondersteuning voor SAML 1,1-tokens die vereist zijn door share point voor verificatie, en ACS werd gebruikt als een tussen persoon die share point compatibel met Azure AD-token indelingen heeft gemaakt. Nu kunt u [rechtstreeks verbinding maken met share point met Azure AD met behulp van Azure AD-App galerie share point op de on-premises app](../saas-apps/sharepoint-on-premises-tutorial.md). |
+| [App-verificatie & server-naar-Server-verificatie in share point on-premises](/SharePoint/security-for-sharepoint-server/authentication-overview) | Niet beïnvloed door ACS-uittredingen; u hoeft niets te wijzigen. | 
+| [Beperkte verificatie van de vertrouwens relatie voor share point-invoeg toepassingen (door de provider gehoste en share point gehost)](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Niet beïnvloed door ACS-uittredingen; u hoeft niets te wijzigen. |
+| [Zoeken in hybride share point-Cloud](/archive/blogs/spses/cloud-hybrid-search-service-application) | Niet beïnvloed door ACS-uittredingen; u hoeft niets te wijzigen. |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>Webtoepassingen die gebruikmaken van passieve verificatie
 
@@ -214,7 +214,7 @@ Op hoog niveau *is Azure Active Directory waarschijnlijk de beste keuze voor uw 
 
 Als u besluit dat Azure AD het beste migratie traject is voor uw toepassingen en services, moet u rekening houden met twee manieren om uw app te integreren met Azure AD.
 
-Als u WS-Federation of WIF wilt gebruiken om te integreren met Azure AD, kunt u het beste de aanpak volgen die wordt beschreven in [federatieve eenmalige aanmelding configureren voor een toepassing buiten de galerie](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). Het artikel verwijst naar het configureren van Azure AD voor op SAML gebaseerde eenmalige aanmelding, maar is ook geschikt voor het configureren van WS-Federation. Als u deze aanpak volgt, is een Azure AD Premium-licentie vereist. Deze aanpak heeft twee voor delen:
+Als u WS-Federation of WIF wilt gebruiken om te integreren met Azure AD, kunt u het beste de aanpak volgen die wordt beschreven in [federatieve eenmalige aanmelding configureren voor een toepassing buiten de galerie](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md). Het artikel verwijst naar het configureren van Azure AD voor op SAML gebaseerde eenmalige aanmelding, maar is ook geschikt voor het configureren van WS-Federation. Als u deze aanpak volgt, is een Azure AD Premium-licentie vereist. Deze aanpak heeft twee voor delen:
 
 - U profiteert van de volledige flexibiliteit van het aanpassen van Azure AD-tokens. U kunt de claims die zijn uitgegeven door Azure AD, aanpassen om te voldoen aan de claims die worden uitgegeven door Access Control. Dit omvat met name de claim van de gebruikers-ID of de naam-id. Als u consistente gebruikers-Id's voor uw gebruikers wilt blijven ontvangen nadat u de technologieën hebt gewijzigd, moet u ervoor zorgen dat de gebruikers-Id's die zijn uitgegeven door Azure AD overeenkomen met die van Access Control.
 - U kunt een certificaat voor token-ondertekening configureren dat specifiek is voor uw toepassing en met een levens duur die u beheert.
@@ -224,7 +224,7 @@ Als u WS-Federation of WIF wilt gebruiken om te integreren met Azure AD, kunt u 
 
 Een alternatieve methode is het volgen van [Dit code voorbeeld](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), waardoor er enigszins verschillende instructies worden geboden voor het instellen van WS-Federation. Dit code voorbeeld maakt geen gebruik van WIF, maar in plaats daarvan de ASP.NET 4,5 OWIN middleware. De instructies voor app-registratie zijn echter geldig voor apps die gebruikmaken van WIF. u hebt geen Azure AD Premium-licentie nodig. 
 
-Als u deze aanpak kiest, moet u inzicht krijgen [in de rollover van de handtekening sleutel in azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Deze benadering maakt gebruik van de globale Azure AD-handtekening sleutel voor het uitgeven van tokens. WIF wordt standaard niet automatisch vernieuwd. Wanneer Azure AD de globale ondertekeningssleutel draait, moet uw WIF-implementatie worden voor bereid om de wijzigingen te accepteren. Zie [belang rijke informatie over de rollover van de handtekening sleutel in azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx)voor meer informatie.
+Als u deze aanpak kiest, moet u inzicht krijgen [in de rollover van de handtekening sleutel in azure AD](../develop/active-directory-signing-key-rollover.md). Deze benadering maakt gebruik van de globale Azure AD-handtekening sleutel voor het uitgeven van tokens. WIF wordt standaard niet automatisch vernieuwd. Wanneer Azure AD de globale ondertekeningssleutel draait, moet uw WIF-implementatie worden voor bereid om de wijzigingen te accepteren. Zie [belang rijke informatie over de rollover van de handtekening sleutel in azure AD](/previous-versions/azure/dn641920(v=azure.100))voor meer informatie.
 
 Als u kunt integreren met Azure AD via de OpenID Connect Connect-of OAuth-protocollen, wordt u aangeraden dit te doen. We hebben uitgebreide documentatie en richt lijnen over hoe u Azure AD integreert in uw webtoepassing die beschikbaar is in onze [Azure AD-ontwikkelaars handleiding](https://aka.ms/aaddev).
 
@@ -265,8 +265,8 @@ In de volgende tabel worden de functies van Access Control vergeleken die releva
 
 Als u besluit dat Azure AD B2C het beste migratie traject is voor uw toepassingen en services, begint u met de volgende bronnen:
 
-- [Documentatie over Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
-- [Aangepaste beleids regels Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Documentatie over Azure AD B2C](../../active-directory-b2c/overview.md)
+- [Aangepaste beleids regels Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md)
 - [Azure AD B2C prijzen](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Migreren naar ping-identiteit of Auth0

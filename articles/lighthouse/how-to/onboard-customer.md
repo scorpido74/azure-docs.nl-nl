@@ -1,16 +1,16 @@
 ---
-title: Onboarding van een klant naar Azure Lighthouse
+title: Een klant onboarden in Azure Lighthouse
 description: Meer informatie over hoe u een klant kunt opsturen naar Azure Lighthouse, zodat de resources toegankelijk zijn en kunnen worden beheerd via uw eigen Tenant met behulp van Azure delegated resource management.
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cac40a835ff3227a31611b31655865d43fa378ab
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133479"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118872"
 ---
-# <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding van een klant naar Azure Lighthouse
+# <a name="onboard-a-customer-to-azure-lighthouse"></a>Een klant onboarden in Azure Lighthouse
 
 In dit artikel wordt uitgelegd hoe u, als service provider, een klant kan onboarden naar Azure Lighthouse. Als u dit doet, kunnen de gedelegeerde resources (abonnementen en/of resource groepen) van de klant worden benaderd en beheerd via uw eigen Azure Active Directory (Azure AD)-Tenant met behulp van [Azure delegated resource management](../concepts/azure-delegated-resource-management.md).
 
@@ -86,7 +86,7 @@ Als u autorisaties wilt definiëren, moet u de ID-waarden weten voor elke gebrui
 (Get-AzADUser -UserPrincipalName '<yourUPN>').id
 
 # To retrieve the objectId for an SPN
-(Get-AzADApplication -DisplayName '<appDisplayName>').objectId
+(Get-AzADApplication -DisplayName '<appDisplayName>' | Get-AzADServicePrincipal).Id
 
 # To retrieve role definition IDs
 (Get-AzRoleDefinition -Name '<roleName>').id
@@ -131,7 +131,7 @@ De sjabloon die u kiest, is afhankelijk van het feit of u een volledig abonnemen
 |---------|---------|---------|
 |Abonnement   |[delegatedResourceManagement.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Resourcegroep   |[rgDelegatedResourceManagement.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Meerdere resource groepen binnen een abonnement   |[multipleRgDelegatedResourceManagement.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Meerdere resourcegroepen binnen een abonnement   |[multipleRgDelegatedResourceManagement.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |Abonnement (wanneer u een aanbieding gebruikt die is gepubliceerd op Azure Marketplace)   |[marketplaceDelegatedResourceManagement.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.jsop](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
@@ -254,7 +254,7 @@ Wanneer het abonnement van een klant is geslaagd voor Azure Lighthouse, kunnen g
 In de Tenant van de service provider:
 
 1. Navigeer naar de [pagina mijn klanten](view-manage-customers.md).
-2. Selecteer **klanten**.
+2. Selecteer **Klanten**.
 3. Bevestig dat u de abonnement/abonnementen kunt zien met de naam van de aanbieding die u in de Resource Manager-sjabloon hebt opgenomen.
 
 > [!IMPORTANT]
@@ -263,7 +263,7 @@ In de Tenant van de service provider:
 In de Tenant van de klant:
 
 1. Navigeer naar de [pagina service providers](view-manage-service-providers.md).
-2. Selecteer **aanbiedingen voor de service provider**.
+2. Selecteer **Aanbiedingen van serviceproviders**.
 3. Bevestig dat u de abonnement/abonnementen kunt zien met de naam van de aanbieding die u in de Resource Manager-sjabloon hebt opgenomen.
 
 > [!NOTE]

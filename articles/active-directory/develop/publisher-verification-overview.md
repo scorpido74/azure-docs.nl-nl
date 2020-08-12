@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682437"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120776"
 ---
 # <a name="publisher-verification-preview"></a>Verificatie van uitgever (preview)
 
@@ -42,13 +42,13 @@ Er zijn enkele vereisten voor Publisher-verificatie, waarvan sommige micro soft-
 
 -  Een MPN-ID voor een geldig [Microsoft Partner Network](https://partner.microsoft.com/membership) account dat het [verificatie](/partner-center/verification-responses) proces heeft voltooid. Dit MPN-account moet het [globale account van de partner (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) voor uw organisatie zijn. 
 
--  Een Azure AD-Tenant met een door DNS geverifieerd [aangepast domein](/azure/active-directory/fundamentals/add-custom-domain). Het aangepaste domein moet overeenkomen met het domein van het e-mail adres dat wordt gebruikt tijdens de verificatie in de vorige stap. 
+-  Een Azure AD-Tenant met een door DNS geverifieerd [aangepast domein](../fundamentals/add-custom-domain.md). Het aangepaste domein moet overeenkomen met het domein van het e-mail adres dat wordt gebruikt tijdens de verificatie in de vorige stap. 
 
 -  Een app die is geregistreerd in een Azure AD-Tenant, met een [uitgevers domein](howto-configure-publisher-domain.md) dat is geconfigureerd met het domein dat eerder is gebruikt. 
 
 -  De gebruiker die de verificatie uitvoert, moet gemachtigd zijn om wijzigingen aan te brengen in de app-registratie in azure AD en het MPN-account in partner centrum. 
 
-    -  In azure AD moet deze gebruiker de eigenaar van de app zijn of een van de volgende [rollen](/azure/active-directory/users-groups-roles/directory-assign-admin-roles)hebben: toepassings beheerder, Cloud toepassings beheerder, globale beheerder. 
+    -  In azure AD moet deze gebruiker de eigenaar van de app zijn of een van de volgende [rollen](../users-groups-roles/directory-assign-admin-roles.md)hebben: toepassings beheerder, Cloud toepassings beheerder, globale beheerder. 
 
     -  In het partner centrum moet deze gebruiker over de volgende [rollen](/partner-center/permissions-overview)beschikken: MPN admin, accounts Administrator of een globale beheerder (dit is een gedeelde rol in azure AD).
     
@@ -67,7 +67,7 @@ Hieronder vindt u enkele veelgestelde vragen met betrekking tot het Uitgever ver
 
   Ontwikkel aars die ook met Microsoft 365 integreren, kunnen extra voor delen ontvangen van deze Program ma's. Raadpleeg voor meer informatie [Microsoft 365 Uitgever verklaring](/microsoft-365-app-certification/docs/attestation) en [Microsoft 365 app-certificering](/microsoft-365-app-certification/docs/certification). 
 
-- **Is dit hetzelfde als de Azure AD-toepassings galerie?** Geen uitgever verificatie is een complementair, maar afzonderlijk programma aan de [Azure Active Directory-toepassings galerie](/azure/active-directory/azuread-dev/howto-app-gallery-listing). Ontwikkel aars die voldoen aan de bovenstaande criteria, moeten het verificatie proces voor de uitgever onafhankelijk van deelname aan het programma volt ooien. 
+- **Is dit hetzelfde als de Azure AD-toepassings galerie?** Geen uitgever verificatie is een complementair, maar afzonderlijk programma aan de [Azure Active Directory-toepassings galerie](../azuread-dev/howto-app-gallery-listing.md). Ontwikkel aars die voldoen aan de bovenstaande criteria, moeten het verificatie proces voor de uitgever onafhankelijk van deelname aan het programma volt ooien. 
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het [markeren van een app als uitgever gecontroleerd](mark-app-as-publisher-verified.md).

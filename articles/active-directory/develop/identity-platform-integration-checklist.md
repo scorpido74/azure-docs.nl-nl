@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 9a1f86a78eaac96f2a6202b4ec29e99a0a978ff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554384"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116798"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Best practices en aanbevelingen van micro soft Identity platform
 
@@ -25,12 +25,12 @@ In dit artikel worden aanbevolen procedures, aanbevelingen en algemene toezichte
 
 Als u net aan de slag gaat, raadpleegt u de [documentatie voor micro soft Identity platform](index.yml) voor meer informatie over de basis principes van verificatie, toepassings scenario's in het micro soft-identiteits platform en nog veel meer.
 
-Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effectief wordt geïntegreerd met het [micro soft Identity-platform](https://docs.microsoft.com/azure/active-directory/develop/).
+Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effectief wordt geïntegreerd met het [micro soft Identity-platform](./index.yml).
 
 > [!TIP]
 > De *integratie-assistent* in de Azure Portal kan u helpen bij het Toep assen van veel van deze aanbevolen procedures en aanbevelingen. Selecteer een van de [app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in de Azure Portal en selecteer vervolgens het menu **-item voor de integratie-assistent (preview)** om aan de slag te gaan met de-assistent.
 
-## <a name="basics"></a>Basisbeginselen
+## <a name="basics"></a>Basisinstellingen
 
 ![in ](./media/active-directory-integration-checklist/checkbox-two.svg) het selectie vakje [wordt het micro soft-platform beleid](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)gelezen en begrepen. Zorg ervoor dat uw toepassing voldoet aan de voor waarden die worden beschreven, zoals ze zijn ontworpen om gebruikers en het platform te beveiligen.
 
@@ -58,9 +58,9 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 
 ![selectie vakje ](./media/active-directory-integration-checklist/checkbox-two.svg) verplaatsen buiten gebruikers naam/wacht woord. Gebruik geen [wacht woord](v2-oauth-ropc.md)voor de ROPC van de resource-eigenaar, waarmee de wacht woorden van gebruikers rechtstreeks worden verwerkt. Deze stroom vereist een hoge mate van vertrouwen en gebruikers belichting en mag alleen worden gebruikt als andere, veiliger, stromen niet kunnen worden gebruikt. Deze stroom is nog steeds nodig in sommige scenario's (zoals DevOps), maar houd er wel rekening mee dat het gebruik ervan beperkingen oplegt aan uw toepassing.  Lees [verificatie stromen en toepassings scenario's](authentication-flows-app-scenarios.md)voor meer moderne benaderingen.
 
-![selectie vakje ](./media/active-directory-integration-checklist/checkbox-two.svg) beveiligen en beheren van uw vertrouwelijke app-referenties voor web-apps, Web-api's en daemon-apps. [Certificaat referenties](active-directory-certificate-credentials.md)gebruiken, niet wachtwoord referenties (client geheimen). Als u een wachtwoord referentie moet gebruiken, hoeft u deze niet hand matig in te stellen. Sla geen referenties op in code of config en laat deze nooit door de mens worden verwerkt. Gebruik, indien mogelijk, [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) of [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) om uw referenties op te slaan en regel matig te draaien.
+![selectie vakje ](./media/active-directory-integration-checklist/checkbox-two.svg) beveiligen en beheren van uw vertrouwelijke app-referenties voor web-apps, Web-api's en daemon-apps. [Certificaat referenties](active-directory-certificate-credentials.md)gebruiken, niet wachtwoord referenties (client geheimen). Als u een wachtwoord referentie moet gebruiken, hoeft u deze niet hand matig in te stellen. Sla geen referenties op in code of config en laat deze nooit door de mens worden verwerkt. Gebruik, indien mogelijk, [beheerde identiteiten voor Azure-resources](../managed-identities-azure-resources/overview.md) of [Azure Key Vault](../../key-vault/general/basic-concepts.md) om uw referenties op te slaan en regel matig te draaien.
 
-![selectie vakje Controleer ](./media/active-directory-integration-checklist/checkbox-two.svg) of uw toepassing de machtigingen voor de minste bevoegdheden aanvraagt. Vraag alleen om machtigingen die uw toepassing absoluut nodig heeft en alleen wanneer u ze nodig hebt. Meer informatie over de verschillende [soorten machtigingen](v2-permissions-and-consent.md#permission-types). Gebruik indien nodig alleen toepassings machtigingen. Gebruik waar mogelijk gedelegeerde machtigingen. Zie deze [Naslag informatie voor machtigingen](https://docs.microsoft.com/graph/permissions-reference)voor een volledige lijst met Microsoft Graph machtigingen.
+![selectie vakje Controleer ](./media/active-directory-integration-checklist/checkbox-two.svg) of uw toepassing de machtigingen voor de minste bevoegdheden aanvraagt. Vraag alleen om machtigingen die uw toepassing absoluut nodig heeft en alleen wanneer u ze nodig hebt. Meer informatie over de verschillende [soorten machtigingen](v2-permissions-and-consent.md#permission-types). Gebruik indien nodig alleen toepassings machtigingen. Gebruik waar mogelijk gedelegeerde machtigingen. Zie deze [Naslag informatie voor machtigingen](/graph/permissions-reference)voor een volledige lijst met Microsoft Graph machtigingen.
 
 ![selectievakje](./media/active-directory-integration-checklist/checkbox-two.svg) Als u een API wilt beveiligen met behulp van het micro soft-identiteits platform, kunt u de machtigingen die ze moeten openbaren zorgvuldig door lopen. Bedenk wat de juiste granulatie voor uw oplossing is en welke machtiging (en) toestemming van de beheerder nodig heeft. Controleer op de verwachte machtigingen in de inkomende tokens voordat u autorisatie beslissingen neemt.
 
@@ -68,7 +68,7 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 
 ![selectie vakje ](./media/active-directory-integration-checklist/checkbox-two.svg) gebruik moderne verificatie oplossingen (OAuth 2,0, [OpenID Connect Connect](v2-protocols-oidc.md)) om gebruikers veilig aan te melden.
 
-![selectie vakje ](./media/active-directory-integration-checklist/checkbox-two.svg) niet rechtstreeks Program meren op protocollen zoals OAuth 2,0 en open id. Maak in plaats daarvan gebruik van de [micro soft Authentication Library (MSAL)](msal-overview.md). De MSAL-bibliotheken beveiligen beveiligings protocollen veilig in een gemakkelijk te gebruiken bibliotheek en u krijgt ingebouwde ondersteuning voor scenario's voor [voorwaardelijke toegang](/azure/active-directory/conditional-access/overview) , [SSO (single sign-on)](/azure/active-directory/manage-apps/what-is-single-sign-on)voor het apparaat en ingebouwde ondersteuning voor het opslaan van tokens. Zie de lijst met door micro soft ondersteunde [client bibliotheken](reference-v2-libraries.md#microsoft-supported-client-libraries) en middleware- [bibliotheken](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) en de lijst met [compatibele client bibliotheken](reference-v2-libraries.md#compatible-client-libraries)van derden voor meer informatie.<br/><br/>Als u code nodig hebt voor de verificatie protocollen, moet u een methodologie zoals [micro soft sdl](https://www.microsoft.com/sdl/default.aspx)volgen. Let op de beveiligings overwegingen in de standaard specificaties van elk protocol.
+![selectie vakje ](./media/active-directory-integration-checklist/checkbox-two.svg) niet rechtstreeks Program meren op protocollen zoals OAuth 2,0 en open id. Maak in plaats daarvan gebruik van de [micro soft Authentication Library (MSAL)](msal-overview.md). De MSAL-bibliotheken beveiligen beveiligings protocollen veilig in een gemakkelijk te gebruiken bibliotheek en u krijgt ingebouwde ondersteuning voor scenario's voor [voorwaardelijke toegang](../conditional-access/overview.md) , [SSO (single sign-on)](../manage-apps/what-is-single-sign-on.md)voor het apparaat en ingebouwde ondersteuning voor het opslaan van tokens. Zie de lijst met door micro soft ondersteunde [client bibliotheken](reference-v2-libraries.md#microsoft-supported-client-libraries) en middleware- [bibliotheken](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) en de lijst met [compatibele client bibliotheken](reference-v2-libraries.md#compatible-client-libraries)van derden voor meer informatie.<br/><br/>Als u code nodig hebt voor de verificatie protocollen, moet u een methodologie zoals [micro soft sdl](https://www.microsoft.com/sdl/default.aspx)volgen. Let op de beveiligings overwegingen in de standaard specificaties van elk protocol.
 
 ![selectie vakje ](./media/active-directory-integration-checklist/checkbox-two.svg) Migreer bestaande apps van [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) naar [micro soft-verificatie bibliotheek](msal-overview.md). MSAL is de nieuwste identiteits platform oplossing van micro soft en verdient de voor keur aan ADAL. Het is beschikbaar op .NET, java script, Android, iOS, macOS en is ook in open bare Preview voor python en Java. Meer informatie over het migreren van [ADAL.net](msal-net-migration.md)-, [ADAL.js](msal-compare-msal-js-and-adal-js.md)-en [ADAL.net-en IOS Broker](msal-net-migration-ios-broker.md) -apps.
 
@@ -80,7 +80,7 @@ Gebruik de volgende controle lijst om ervoor te zorgen dat uw toepassing effecti
 
 ![selectievakje](./media/active-directory-integration-checklist/checkbox-two.svg) Bekijk de toegangs token waarde niet of probeer deze te parseren als een client.  Ze kunnen waarden wijzigen, indelingen of zelfs worden versleuteld zonder waarschuwing: gebruik altijd de id_token als uw client iets moet weten over de gebruiker of Microsoft Graph kan worden aangeroepen.  Alleen web-Api's moeten toegangs tokens parseren (omdat ze de indelingen definiëren en de versleutelings sleutels instellen).
 
-## <a name="end-user-experience"></a>De ervaring voor de eindgebruiker
+## <a name="end-user-experience"></a>Ervaring voor de eindgebruiker
 
 ![in het selectie vakje wordt ](./media/active-directory-integration-checklist/checkbox-two.svg) [de toestemming van de](application-consent-experience.md) hand leiding begrepen en worden de onderdelen van de toestemming prompt van uw app geconfigureerd zodat eind gebruikers en beheerders voldoende informatie hebben om te bepalen of ze uw app vertrouwen.
 

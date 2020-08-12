@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 3b775d88409a03f6de54b9db3ab62d6988c5bddd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ec4103251d27114b8fe40101c0e78c259106a440
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313044"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120878"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Migratie handleiding voor ADAL naar MSAL voor Java
 
@@ -37,15 +37,15 @@ MSAL voor Java is de verificatie bibliotheek die u kunt gebruiken met het micro 
 
 ## <a name="differences"></a>Verschillen
 
-Als u met het eind punt (en ADAL4J) van Azure AD voor ontwikkel aars (v 1.0) hebt gewerkt, wilt u wellicht lezen [wat er anders is dan het micro soft Identity platform (v 2.0)-eind punt?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison).
+Als u met het eind punt (en ADAL4J) van Azure AD voor ontwikkel aars (v 1.0) hebt gewerkt, wilt u wellicht lezen [wat er anders is dan het micro soft Identity platform (v 2.0)-eind punt?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="scopes-not-resources"></a>Scopes die geen resources zijn
 
-ADAL4J schaft tokens aan voor resources, terwijl MSAL voor Java tokens ophaalt voor scopes. Een aantal MSAL voor Java-klassen vereist een scope-para meter. Deze para meter is een lijst met teken reeksen die de gewenste machtigingen en benodigde bronnen declareren. Bekijk [de bereiken van Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference) om voorbeeld bereik te bekijken.
+ADAL4J schaft tokens aan voor resources, terwijl MSAL voor Java tokens ophaalt voor scopes. Een aantal MSAL voor Java-klassen vereist een scope-para meter. Deze para meter is een lijst met teken reeksen die de gewenste machtigingen en benodigde bronnen declareren. Bekijk [de bereiken van Microsoft Graph](/graph/permissions-reference) om voorbeeld bereik te bekijken.
 
 U kunt het `/.default` bereik achtervoegsel toevoegen aan de resource om uw apps van het v 1.0-eind punt (ADAL) te migreren naar het micro soft Identity platform-eind punt (MSAL). Bijvoorbeeld: voor de resource waarde van `https://graph.microsoft.com` is de equivalente bereik waarde `https://graph.microsoft.com/.default` .  Als de bron zich niet in het URL-formulier bevindt, maar een resource-ID van het formulier `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kunt u de waarde van bereik nog steeds gebruiken als `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
-Voor meer informatie over de verschillende typen bereiken, verwijzen wij u naar [machtigingen en toestemming in het micro soft-identiteits platform](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) en de [scopes voor een web API die v 1.0-tokens accepteert](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) .
+Voor meer informatie over de verschillende typen bereiken, verwijzen wij u naar [machtigingen en toestemming in het micro soft-identiteits platform](./v2-permissions-and-consent.md) en de [scopes voor een web API die v 1.0-tokens accepteert](./msal-v1-app-scopes.md) .
 
 ## <a name="core-classes"></a>Kern klassen
 
@@ -86,9 +86,9 @@ Als u de `https://login.microsoftonline.com/common` instantie in v 2.0 gebruikt,
 
 Het eind punt v 1.0 (gebruikt door ADAL) verzendt alleen tokens van v 1.0.
 
-Het v 2.0-eind punt (gebruikt door MSAL) kan v 1.0-en v 2.0-tokens verzenden. Een eigenschap van het toepassings manifest van de Web-API stelt ontwikkel aars in staat om te kiezen welke versie van het token wordt geaccepteerd. Zie `accessTokenAcceptedVersion` de documentatie over [toepassings manifesten](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) .
+Het v 2.0-eind punt (gebruikt door MSAL) kan v 1.0-en v 2.0-tokens verzenden. Een eigenschap van het toepassings manifest van de Web-API stelt ontwikkel aars in staat om te kiezen welke versie van het token wordt geaccepteerd. Zie `accessTokenAcceptedVersion` de documentatie over [toepassings manifesten](./reference-app-manifest.md) .
 
-Zie voor meer informatie over de tokens v 1.0 en v 2.0 [Azure Active Directory toegangs tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+Zie voor meer informatie over de tokens v 1.0 en v 2.0 [Azure Active Directory toegangs tokens](./access-tokens.md).
 
 ## <a name="adal-to-msal-migration"></a>Migratie van ADAL naar MSAL
 

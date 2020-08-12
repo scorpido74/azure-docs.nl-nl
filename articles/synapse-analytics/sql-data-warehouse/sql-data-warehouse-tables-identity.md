@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080723"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121320"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>IDENTITEIT gebruiken voor het maken van surrogaat sleutels in de SQL-groep Synapse
 
@@ -24,7 +24,9 @@ In dit artikel vindt u aanbevelingen en voor beelden voor het gebruik van de IDE
 
 ## <a name="what-is-a-surrogate-key"></a>Wat is een surrogaat sleutel?
 
-Een surrogaat sleutel in een tabel is een kolom met een unieke id voor elke rij. De sleutel wordt niet gegenereerd op basis van de tabel gegevens. Gegevens modelers zoals het maken van surrogaat sleutels in hun tabellen wanneer ze data warehouse modellen ontwerpen. U kunt met behulp van de IDENTITEITs eigenschap dit doel eenvoudig en effectief belasten zonder de belasting prestaties te beïnvloeden. Voor de IDENTITEITs eigenschap gelden enkele beperkingen zoals beschreven in [Create Table-identiteit (eigenschap)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). Een van de beperkingen van identiteit is dat het niet gegarandeerd uniek is. Het instellen van de identiteit voor het invoegen en niet opnieuw seeden van de identiteits waarde leidt tot meer unieke waarden, maar kan in alle gevallen geen uniek karakter garanderen. Als u identiteits waarden niet kunt gebruiken vanwege de beperkingen van de identiteit, maakt u een afzonderlijke tabel met een huidige waarde en beheert u de toegang tot de tabel-en nummer toewijzing met uw toepassing. 
+Een surrogaat sleutel in een tabel is een kolom met een unieke id voor elke rij. De sleutel wordt niet gegenereerd op basis van de tabel gegevens. Gegevens modelers zoals het maken van surrogaat sleutels in hun tabellen wanneer ze data warehouse modellen ontwerpen. U kunt met behulp van de IDENTITEITs eigenschap dit doel eenvoudig en effectief belasten zonder de belasting prestaties te beïnvloeden.
+> [!NOTE]
+> De IDENTITEITs waarde in Synapse SQL is niet gegarandeerd uniek als de gebruiker expliciet een dubbele waarde invoegt met de SET IDENTITY_INSERT ON of een Seed-identiteit. Zie [Create Table (Transact-SQL) Identity (eigenschap)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)voor meer informatie. 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Een tabel maken met een IDENTITEITs kolom
 

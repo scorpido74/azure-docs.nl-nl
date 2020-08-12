@@ -12,12 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b2f9fd27515e9ecda6e78ae16528a4956d3bf607
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 42f100618ac6ce8769c4a7da67a5bd586794c63b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552761"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115591"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Rollover van de handtekening sleutel in het micro soft Identity-platform
 In dit artikel wordt beschreven wat u moet weten over de open bare sleutels die worden gebruikt door micro soft Identity platform voor het ondertekenen van beveiligings tokens. Het is belang rijk te weten dat deze sleutels periodiek worden doorgevoerd en kan in een nood geval direct worden doorgevoerd. Alle toepassingen die gebruikmaken van het micro soft-identiteits platform moeten de sleutel rollover proces programmatisch kunnen afhandelen of een periodiek hand matig rollover proces instellen. Ga verder met lezen om te begrijpen hoe de sleutels werken, hoe u de invloed van de rollover op uw toepassing kunt beoordelen en hoe u uw toepassing kunt bijwerken of een periodiek hand matig rollover proces kunt instellen voor het afhandelen van Key rollover, indien nodig.
@@ -148,7 +148,7 @@ Als u in Visual Studio 2013 een web API-toepassing hebt gemaakt met behulp van d
 
 Als u verificatie hand matig hebt geconfigureerd, volgt u de onderstaande instructies om te leren hoe u uw web-API kunt configureren om de bijbehorende sleutel gegevens automatisch bij te werken.
 
-Het volgende code fragment laat zien hoe u de meest recente sleutels van het document met federatieve meta gegevens ophaalt en vervolgens de [JWT-token-handler](https://msdn.microsoft.com/library/dn205065.aspx) gebruikt om het token te valideren. In het code fragment wordt ervan uitgegaan dat u uw eigen cache mechanisme gebruikt voor het persistent maken van de sleutel voor het valideren van toekomstige tokens van het micro soft Identity-platform, ongeacht of het zich in een Data Base, configuratie bestand of ergens anders bevinden.
+Het volgende code fragment laat zien hoe u de meest recente sleutels van het document met federatieve meta gegevens ophaalt en vervolgens de [JWT-token-handler](/previous-versions/dotnet/framework/security/json-web-token-handler) gebruikt om het token te valideren. In het code fragment wordt ervan uitgegaan dat u uw eigen cache mechanisme gebruikt voor het persistent maken van de sleutel voor het valideren van toekomstige tokens van het micro soft Identity-platform, ongeacht of het zich in een Data Base, configuratie bestand of ergens anders bevinden.
 
 ```
 using System;
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Webtoepassingen die bronnen beveiligen en maken met Visual Studio 2012
-Als uw toepassing is gemaakt in Visual Studio 2012, hebt u waarschijnlijk het hulp programma voor identiteits-en toegangs beheer gebruikt voor het configureren van uw toepassing. Het is ook waarschijnlijk dat u gebruikmaakt van het [valideren van de naam register van de verlener (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). De VINR is verantwoordelijk voor het onderhouden van informatie over vertrouwde id-providers (micro soft Identity platform) en de sleutels die worden gebruikt om tokens te valideren die door hen worden uitgegeven. Met de VINR kunt u de belang rijke informatie die is opgeslagen in een Web.config bestand, ook eenvoudig bijwerken door het meest recente document met federatieve meta gegevens te downloaden dat is gekoppeld aan uw directory, te controleren of de configuratie verouderd is met het nieuwste document en de toepassing zo aan te werken dat deze de nieuwe sleutel nodig heeft.
+Als uw toepassing is gemaakt in Visual Studio 2012, hebt u waarschijnlijk het hulp programma voor identiteits-en toegangs beheer gebruikt voor het configureren van uw toepassing. Het is ook waarschijnlijk dat u gebruikmaakt van het [valideren van de naam register van de verlener (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry). De VINR is verantwoordelijk voor het onderhouden van informatie over vertrouwde id-providers (micro soft Identity platform) en de sleutels die worden gebruikt om tokens te valideren die door hen worden uitgegeven. Met de VINR kunt u de belang rijke informatie die is opgeslagen in een Web.config bestand, ook eenvoudig bijwerken door het meest recente document met federatieve meta gegevens te downloaden dat is gekoppeld aan uw directory, te controleren of de configuratie verouderd is met het nieuwste document en de toepassing zo aan te werken dat deze de nieuwe sleutel nodig heeft.
 
 Als u uw toepassing hebt gemaakt met behulp van een van de code voorbeelden of de overzichts documentatie van micro soft, is de logica voor sleutel rollover al opgenomen in uw project. U ziet dat de onderstaande code al in uw project bestaat. Als uw toepassing deze logica nog niet heeft, volgt u de onderstaande stappen om deze toe te voegen en te controleren of deze correct werkt.
 
@@ -288,14 +288,14 @@ Volg de onderstaande stappen om te controleren of de sleutel rollover logica wer
 Als u een toepassing op WIF v 1.0 hebt gemaakt, is er geen mechanisme voor het automatisch vernieuwen van de configuratie van uw toepassing om een nieuwe sleutel te gebruiken.
 
 * *Eenvoudigste manier* Gebruik het FedUtil-hulp programma dat is opgenomen in de WIF-SDK, waarmee het meest recente meta gegevens document kan worden opgehaald en uw configuratie kan worden bijgewerkt.
-* Werk uw toepassing bij naar .NET 4,5, die de nieuwste versie van WIF bevat die zich in de systeem naam ruimte bevindt. U kunt vervolgens het [validatie programma naam register (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) gebruiken om automatische updates van de configuratie van de toepassing uit te voeren.
+* Werk uw toepassing bij naar .NET 4,5, die de nieuwste versie van WIF bevat die zich in de systeem naam ruimte bevindt. U kunt vervolgens het [validatie programma naam register (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) gebruiken om automatische updates van de configuratie van de toepassing uit te voeren.
 * Voer een hand matige rollover uit conform de instructies aan het einde van dit document.
 
 Instructies voor het gebruik van de FedUtil om uw configuratie bij te werken:
 
 1. Controleer of de WIF v 1.0 SDK is geïnstalleerd op uw ontwikkel computer voor Visual Studio 2008 of 2010. U kunt [deze hier downloaden](https://www.microsoft.com/en-us/download/details.aspx?id=4451) als u deze nog niet hebt geïnstalleerd.
 2. Open de oplossing in Visual Studio, klik met de rechter muisknop op het betreffende project en selecteer **federatieve meta gegevens bijwerken**. Als deze optie niet beschikbaar is, is FedUtil en/of de WIF v 1.0 SDK niet geïnstalleerd.
-3. Selecteer in de prompt **Update** om te beginnen met het bijwerken van uw federatieve meta gegevens. Als u toegang hebt tot de server omgeving waar de toepassing wordt gehost, kunt u eventueel de [automatische update planner](https://msdn.microsoft.com/library/ee517272.aspx)van FedUtil gebruiken.
+3. Selecteer in de prompt **Update** om te beginnen met het bijwerken van uw federatieve meta gegevens. Als u toegang hebt tot de server omgeving waar de toepassing wordt gehost, kunt u eventueel de [automatische update planner](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))van FedUtil gebruiken.
 4. Klik op **volt ooien** om het update proces te volt ooien.
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webtoepassingen/Api's die resources beveiligen met behulp van andere bibliotheken of hand matig een van de ondersteunde protocollen implementeren

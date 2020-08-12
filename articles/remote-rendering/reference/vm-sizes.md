@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: aab914caa2647146639aa366f558c80bebcfde54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8e439a055b71ed291573965c561ee31610e3ed4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84810206"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121609"
 ---
 # <a name="vm-sizes"></a>Formaten van virtuele machines
 
@@ -76,7 +76,7 @@ Daarom is het mogelijk om een toepassing te schrijven die de `standard` grootte 
 
 Er zijn twee manieren om het aantal veelhoeken van een model of scène te bepalen die bijdragen aan de budget limiet van de `standard` VM grootte:
 * Haal het JSON-bestand van de [conversie uitvoer](../how-tos/conversion/get-information.md)op in de sectie model conversie en controleer de `numFaces` vermelding in de [ *inputStatistics* ](../how-tos/conversion/get-information.md#the-inputstatistics-section)
-* Als uw toepassing een dynamische inhoud behandelt, kan het aantal gerenderde veelhoeken dynamisch worden opgevraagd tijdens runtime. Gebruik een [query voor prestatie analyse](../overview/features/performance-queries.md#performance-assessment-queries) en controleer het `polygonsRendered` lid in de `FrameStatistics` struct. De achtergrond van het dambord is altijd vervaagd met enige vertraging om ervoor te zorgen dat de gebruikers actie kan worden uitgevoerd na deze asynchrone query. Gebruikers actie kan bijvoorbeeld model instanties verbergen of verwijderen.
+* Als uw toepassing een dynamische inhoud behandelt, kan het aantal gerenderde veelhoeken dynamisch worden opgevraagd tijdens runtime. Gebruik een [query voor prestatie analyse](../overview/features/performance-queries.md#performance-assessment-queries) en controleer het `polygonsRendered` lid in de `FrameStatistics` struct. Het `polygonsRendered` veld wordt ingesteld op `bad` wanneer de renderer de grens van de veelhoek opraakt. De achtergrond van het dambord is altijd vervaagd met enige vertraging om ervoor te zorgen dat de gebruikers actie kan worden uitgevoerd na deze asynchrone query. Gebruikers actie kan bijvoorbeeld model instanties verbergen of verwijderen.
 
 ## <a name="pricing"></a>Prijzen
 

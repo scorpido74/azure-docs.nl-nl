@@ -12,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 50748334a59dd6b3d7601bd8a32ac99bfe90b0fe
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c193742527cf69526d69549d3c10f5591f0d2f93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552812"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115693"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integreren met micro soft Identity platform
 
@@ -31,15 +31,15 @@ Uw toepassing kan op verschillende manieren worden geïntegreerd met het micro s
 
 ### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>Ondersteuning van micro soft Identity platform als een manier om u aan te melden bij uw toepassing
 
-**Verminder de wrijving van het probleem en verminder de ondersteunings kosten.** Door micro soft Identity platform te gebruiken om u aan te melden bij uw toepassing, hebben uw gebruikers niet meer dan een naam en wacht woord om te onthouden. Als ontwikkelaar hebt u nog een minder wacht woord om op te slaan en te beveiligen. Het is niet mogelijk om verg eten wacht woorden opnieuw in te voeren. Dit kan alleen aanzienlijk zijn. Micro soft Identity platform-bevoegdheden melden zich aan voor enkele van de populairste Cloud toepassingen van de wereld, waaronder Office 365 en Microsoft Azure. Met honderden miljoenen gebruikers van miljoenen organisaties is uw gebruiker al aangemeld bij het micro soft Identity-platform. Meer informatie over het [toevoegen van ondersteuning voor micro soft Identity-platform Sign in](authentication-scenarios.md).
+**Verminder de wrijving van het probleem en verminder de ondersteunings kosten.** Door micro soft Identity platform te gebruiken om u aan te melden bij uw toepassing, hebben uw gebruikers niet meer dan een naam en wacht woord om te onthouden. Als ontwikkelaar hebt u nog een minder wacht woord om op te slaan en te beveiligen. Het is niet mogelijk om verg eten wacht woorden opnieuw in te voeren. Dit kan alleen aanzienlijk zijn. Micro soft Identity platform-bevoegdheden melden zich aan voor enkele van de populairste Cloud toepassingen van de wereld, waaronder Office 365 en Microsoft Azure. Met honderden miljoenen gebruikers van miljoenen organisaties is uw gebruiker al aangemeld bij het micro soft Identity-platform. Meer informatie over het [toevoegen van ondersteuning voor micro soft Identity-platform Sign in](./authentication-vs-authorization.md).
 
 **Vereenvoudig de registratie voor uw toepassing.**  Wanneer u zich aanmeldt voor uw toepassing, kan micro soft Identity platform essentiële informatie over een gebruiker verzenden, zodat u uw aanmeldings formulier vooraf kunt invullen of het volledig wilt elimineren. Gebruikers kunnen zich aanmelden voor uw toepassing met behulp van hun Azure AD-account via een vertrouwde instemming-ervaring die vergelijkbaar is met die van sociale media en mobiele toepassingen. Elke gebruiker kan zich registreren en aanmelden bij een toepassing die is geïntegreerd met het micro soft-identiteits platform zonder dat hiervoor een rol is vereist. Meer informatie over [het aanmelden van uw toepassing voor aanmelding bij een Azure ad-account](../../app-service/configure-authentication-provider-aad.md).
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Bladeren naar gebruikers, het inrichten van gebruikers beheren en de toegang tot uw toepassing controleren
 
-**Blader naar gebruikers in de Directory.**  Gebruik de Microsoft Graph-API om gebruikers te helpen bij het zoeken en zoeken naar andere personen in hun organisatie bij het uitnodigen van anderen of het verlenen van toegang, in plaats van dat ze e-mail adressen moeten typen. Gebruikers kunnen bladeren door gebruik te maken van een vertrouwde Adresboek stijl interface, inclusief het weer geven van de details van de organisatie hiërarchie. Meer informatie over de [Microsoft Graph-API](https://docs.microsoft.com/graph/overview).
+**Blader naar gebruikers in de Directory.**  Gebruik de Microsoft Graph-API om gebruikers te helpen bij het zoeken en zoeken naar andere personen in hun organisatie bij het uitnodigen van anderen of het verlenen van toegang, in plaats van dat ze e-mail adressen moeten typen. Gebruikers kunnen bladeren door gebruik te maken van een vertrouwde Adresboek stijl interface, inclusief het weer geven van de details van de organisatie hiërarchie. Meer informatie over de [Microsoft Graph-API](/graph/overview).
 
-**Active Directory groepen en distributie lijsten opnieuw gebruiken die uw klant al beheert.**  Azure AD bevat de groepen die uw klant al gebruikt voor het distribueren van e-mail en het beheren van de toegang. Gebruik de Microsoft Graph-API om deze groepen opnieuw te gebruiken in plaats van uw klant te verplichten om een afzonderlijke set groepen in uw toepassing te maken en te beheren. Groeps informatie kan ook worden verzonden naar uw toepassing in aanmeldings tokens. Meer informatie over de [Microsoft Graph-API](https://docs.microsoft.com/graph/overview).
+**Active Directory groepen en distributie lijsten opnieuw gebruiken die uw klant al beheert.**  Azure AD bevat de groepen die uw klant al gebruikt voor het distribueren van e-mail en het beheren van de toegang. Gebruik de Microsoft Graph-API om deze groepen opnieuw te gebruiken in plaats van uw klant te verplichten om een afzonderlijke set groepen in uw toepassing te maken en te beheren. Groeps informatie kan ook worden verzonden naar uw toepassing in aanmeldings tokens. Meer informatie over de [Microsoft Graph-API](/graph/overview).
 
 **Gebruik het micro soft Identity-platform om te bepalen wie toegang heeft tot uw toepassing.**  Beheerders en eigen aren van toepassingen in azure AD kunnen toegang tot toepassingen toewijzen aan specifieke gebruikers en groepen. Met de Microsoft Graph-API kunt u deze lijst lezen en gebruiken om het inrichten en het ongedaan maken van de inrichting van resources en toegang in uw toepassing te beheren.
 
@@ -47,13 +47,13 @@ Uw toepassing kan op verschillende manieren worden geïntegreerd met het micro s
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Toegang krijgen tot het profiel van de gebruiker, de agenda, het e-mail adres, de contact personen, bestanden en meer
 
-**Micro soft Identity platform is de autorisatie server voor Office 365 en andere zakelijke services van micro soft.**  Als u het micro soft Identity-platform voor het aanmelden bij uw toepassing ondersteunt of als ondersteuning voor het koppelen van uw huidige gebruikers accounts aan Azure AD-gebruikers accounts met behulp van OAuth 2,0, kunt u lees-en schrijf toegang aanvragen voor het profiel van een gebruiker, agenda, e-mail, contact personen, bestanden en andere informatie. U kunt eenvoudig gebeurtenissen naar de agenda van de gebruiker schrijven en bestanden in OneDrive lezen of schrijven. Meer informatie over [het verkrijgen van toegang tot de Office 365-api's](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).
+**Micro soft Identity platform is de autorisatie server voor Office 365 en andere zakelijke services van micro soft.**  Als u het micro soft Identity-platform voor het aanmelden bij uw toepassing ondersteunt of als ondersteuning voor het koppelen van uw huidige gebruikers accounts aan Azure AD-gebruikers accounts met behulp van OAuth 2,0, kunt u lees-en schrijf toegang aanvragen voor het profiel van een gebruiker, agenda, e-mail, contact personen, bestanden en andere informatie. U kunt eenvoudig gebeurtenissen naar de agenda van de gebruiker schrijven en bestanden in OneDrive lezen of schrijven. Meer informatie over [het verkrijgen van toegang tot de Office 365-api's](/previous-versions/office/office-365-api/).
 
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Promoot uw toepassing in Azure en Office 365 marketplaces
 
 **Promoot uw toepassing tot miljoenen organisaties die al gebruikmaken van Azure AD.**  Gebruikers die deze markt plaatsen zoeken en bezoeken, maken al gebruik van een of meer Cloud Services, waardoor ze gekwalificeerde Cloud service-klanten zijn. Meer informatie over het promoten van uw toepassing in [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/).
 
-**Wanneer gebruikers zich aanmelden voor uw toepassing, wordt deze weer gegeven in het Azure AD-toegangs venster en het start programma voor Office 365-apps.**  Gebruikers kunnen snel en eenvoudig terugkeren naar uw toepassing, waardoor de gebruikers betrokkenheid wordt verbeterd. Meer informatie over het [Azure AD-toegangs venster](../user-help/active-directory-saas-access-panel-introduction.md).
+**Wanneer gebruikers zich aanmelden voor uw toepassing, wordt deze weer gegeven in het Azure AD-toegangs venster en het start programma voor Office 365-apps.**  Gebruikers kunnen snel en eenvoudig terugkeren naar uw toepassing, waardoor de gebruikers betrokkenheid wordt verbeterd. Meer informatie over het [Azure AD-toegangs venster](../user-help/my-apps-portal-end-user-access.md).
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>Beveiligde apparaat-naar-service-en service-to-service-communicatie
 
@@ -73,9 +73,9 @@ Integratie met micro soft Identity platform wordt geleverd met voor delen waarbi
 
 **Multi-factor Authentication.**  Micro soft Identity platform biedt systeem eigen multi-factor Authentication. IT-beheerders kunnen multi-factor Authentication vereisen voor toegang tot uw toepassing, zodat u deze ondersteuning niet zelf hoeft te coderen. Meer informatie over [multi-factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
-**Afwijkende aanmeldings detectie.**  Micro soft Identity platform verwerkt meer dan een miljard aanmeldingen per dag, terwijl u machine learning algoritmen gebruikt om verdachte activiteiten te detecteren en IT-beheerders op de hoogte te stellen van mogelijke problemen. Als u zich aanmeldt bij micro soft Identity-platform, wordt deze bescherming voor deel van uw toepassing. Meer informatie over het [weer geven van Azure Active Directory Access-rapport](../active-directory-view-access-usage-reports.md).
+**Afwijkende aanmeldings detectie.**  Micro soft Identity platform verwerkt meer dan een miljard aanmeldingen per dag, terwijl u machine learning algoritmen gebruikt om verdachte activiteiten te detecteren en IT-beheerders op de hoogte te stellen van mogelijke problemen. Als u zich aanmeldt bij micro soft Identity-platform, wordt deze bescherming voor deel van uw toepassing. Meer informatie over het [weer geven van Azure Active Directory Access-rapport](../reports-monitoring/overview-reports.md).
 
-**Voorwaardelijke toegang.**  Naast multi-factor Authentication kunnen beheerders specifieke voor waarden vereisen voordat gebruikers zich kunnen aanmelden bij uw toepassing. Voor waarden die kunnen worden ingesteld, zijn onder andere het IP-adres bereik van client apparaten, lidmaatschap van de opgegeven groepen en de status van het apparaat dat wordt gebruikt voor toegang. Meer informatie over [voorwaardelijke toegang van Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+**Voorwaardelijke toegang.**  Naast multi-factor Authentication kunnen beheerders specifieke voor waarden vereisen voordat gebruikers zich kunnen aanmelden bij uw toepassing. Voor waarden die kunnen worden ingesteld, zijn onder andere het IP-adres bereik van client apparaten, lidmaatschap van de opgegeven groepen en de status van het apparaat dat wordt gebruikt voor toegang. Meer informatie over [voorwaardelijke toegang van Azure Active Directory](../conditional-access/overview.md).
 
 ### <a name="easy-development"></a>Eenvoudige ontwikkeling
 
@@ -91,5 +91,4 @@ Integratie met micro soft Identity platform wordt geleverd met voor delen waarbi
 
 [Aan de slag](v2-overview.md#getting-started)met het schrijven van code.
 
-[Gebruikers aanmelden met het micro soft Identity-platform](authentication-scenarios.md)
-
+[Gebruikers aanmelden met het micro soft Identity-platform](./authentication-vs-authorization.md)

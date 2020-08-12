@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7654de8bf26c3eaa3c93c8efcf99577fe88e6f24
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540339"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116314"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource-certificering verkrijgen voor Azure Active Directory
 
@@ -47,7 +47,7 @@ Zie voor meer informatie over multitenancy [een Azure Active Directory-gebruiker
 
 Een *toepassing met één Tenant* is een toepassing die alleen aanmeldingen accepteert van gebruikers van een gedefinieerd Azure AD-exemplaar. Externe gebruikers (met inbegrip van werk-of school accounts van andere organisaties of persoonlijke accounts) kunnen zich aanmelden bij een toepassing met één Tenant nadat elke gebruiker als gast account is toegevoegd aan het Azure AD-exemplaar dat de toepassing is geregistreerd. 
 
-U kunt gebruikers als gast accounts toevoegen aan Azure AD via de [Azure AD B2B-samen werking](../b2b/what-is-b2b.md) en u kunt dit op [een programmatische](../../active-directory-b2c/code-samples.md)manier doen. Bij het gebruik van B2B kunnen gebruikers een self-service portal maken waarvoor geen uitnodiging is vereist om zich aan te melden. Zie [Self-Service Portal voor Azure AD B2B-samenwerkings aanmelding](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal)voor meer informatie.
+U kunt gebruikers als gast accounts toevoegen aan Azure AD via de [Azure AD B2B-samen werking](../external-identities/what-is-b2b.md) en u kunt dit op [een programmatische](../../active-directory-b2c/code-samples.md)manier doen. Bij het gebruik van B2B kunnen gebruikers een self-service portal maken waarvoor geen uitnodiging is vereist om zich aan te melden. Zie [Self-Service Portal voor Azure AD B2B-samenwerkings aanmelding](../external-identities/self-service-portal.md)voor meer informatie.
 
 Toepassingen met één Tenant kunnen de *contact* ervaring mogelijk maken, maar als u de proef versie met eenmalige Klik/gratis wilt inschakelen, moet u in plaats daarvan multitenancy in uw toepassing inschakelen.
 
@@ -108,7 +108,7 @@ Zie [deze video](https://aka.ms/trialexperienceforwebapps)voor meer informatie o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [verificatie scenario's voor Azure AD](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios)voor meer informatie over het bouwen van toepassingen die ondersteuning bieden voor Azure AD-aanmeldingen.
+- Zie [verificatie scenario's voor Azure AD](./v1-authentication-scenarios.md)voor meer informatie over het bouwen van toepassingen die ondersteuning bieden voor Azure AD-aanmeldingen.
 - Ga voor meer informatie over het weer geven van uw SaaS-toepassing in AppSource naar [AppSource-partner gegevens](https://appsource.microsoft.com/partners)
 
 ## <a name="get-support"></a>Ondersteuning krijgen

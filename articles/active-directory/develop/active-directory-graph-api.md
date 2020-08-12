@@ -12,19 +12,19 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 73cdac1a372b42df5a8f52ea09f04ecc40031698
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d88c685f1e55bd361ac50662d9eaf931cba15c3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885715"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115795"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 
 > [!IMPORTANT]
-> We raden u ten zeerste aan [Microsoft Graph](https://developer.microsoft.com/graph) te gebruiken in plaats van azure AD Graph API om toegang te krijgen tot Azure Active Directory-resources (Azure AD). We richten ons momenteel op ontwikkelingen in Microsoft Graph. Voor Azure AD Graph API zijn geen verdere verbeteringen gepland. Er zijn een zeer beperkt aantal scenario's waarvoor Azure AD Graph API mogelijk nog steeds geschikt is. Zie voor meer informatie de [Microsoft Graph of het](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blog bericht van Azure AD Graph en [Migreer Azure AD Graph-apps naar Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
+> We raden u ten zeerste aan [Microsoft Graph](https://developer.microsoft.com/graph) te gebruiken in plaats van azure AD Graph API om toegang te krijgen tot Azure Active Directory-resources (Azure AD). We richten ons momenteel op ontwikkelingen in Microsoft Graph. Voor Azure AD Graph API zijn geen verdere verbeteringen gepland. Er zijn een zeer beperkt aantal scenario's waarvoor Azure AD Graph API mogelijk nog steeds geschikt is. Zie voor meer informatie de [Microsoft Graph of het](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blog bericht van Azure AD Graph en [Migreer Azure AD Graph-apps naar Microsoft Graph](/graph/migrate-azure-ad-graph-overview).
 
-Dit artikel is van toepassing op Azure AD-Graph API. Zie [de Microsoft Graph-API gebruiken](https://docs.microsoft.com/graph/use-the-api)voor vergelijk bare informatie met betrekking tot Microsoft Graph-API.
+Dit artikel is van toepassing op Azure AD-Graph API. Zie [de Microsoft Graph-API gebruiken](/graph/use-the-api)voor vergelijk bare informatie met betrekking tot Microsoft Graph-API.
 
 De Azure Active Directory Graph API-biedt programmatische toegang tot Azure AD via REST API-eindpunten. Toepassingen kunnen Azure AD Graph API gebruiken om bewerkingen voor maken, lezen, bijwerken en verwijderen uit te voeren op Directory gegevens en-objecten. Azure AD Graph API ondersteunt bijvoorbeeld de volgende algemene bewerkingen voor een gebruikers object:
 
@@ -36,23 +36,23 @@ De Azure Active Directory Graph API-biedt programmatische toegang tot Azure AD v
 
 Daarnaast kunt u vergelijk bare bewerkingen uitvoeren op andere objecten, zoals groepen en toepassingen. Als u Azure AD-Graph API wilt aanroepen in een directory, moet uw toepassing zijn geregistreerd bij Azure AD. Uw toepassing moet ook toegang krijgen tot Azure AD Graph API. Deze toegang wordt normaal gesp roken bereikt via de toestemming stroom van een gebruiker of beheerder.
 
-Als u de Azure Active Directory Graph API wilt gaan gebruiken, raadpleegt u de [hand leiding voor Azure ad Graph API Snelstartgids](active-directory-graph-api-quickstart.md)of raadpleegt u de [interactieve documentatie over Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
+Als u de Azure Active Directory Graph API wilt gaan gebruiken, raadpleegt u de [hand leiding voor Azure ad Graph API Snelstartgids](./microsoft-graph-intro.md)of raadpleegt u de [interactieve documentatie over Azure AD Graph API](/previous-versions/azure/ad/graph/api/api-catalog).
 
 ## <a name="features"></a>Functies
 
 Azure AD Graph API biedt de volgende functies:
 
-* **Rest API-eind punten**: Azure AD-Graph API is een rest-service die bestaat uit eind punten die worden geopend met standaard HTTP-aanvragen. Azure AD Graph API ondersteunt XML-of JSON-inhouds typen (Java Script object Notation) voor aanvragen en antwoorden. Zie overzicht van [Azure AD Graph rest API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)voor meer informatie.
-* **Verificatie met Azure AD**: elke aanvraag voor azure AD Graph API moet worden geverifieerd door een JSON Web token (JWT) toe te voegen in de autorisatie-header van de aanvraag. Dit token wordt verkregen door een aanvraag uit te voeren voor het token eindpunt van Azure AD en geldige referenties op te geven. U kunt de OAuth 2,0-client referenties stroom of de autorisatie code subsidie stroom gebruiken om een token te verkrijgen om de grafiek aan te roepen. Voor meer informatie, [OAuth 2,0 in azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
-* **Op rollen gebaseerde autorisatie (RBAC)**: beveiligings groepen worden gebruikt voor het uitvoeren van RBAC in azure AD-Graph API. Als u bijvoorbeeld wilt bepalen of een gebruiker toegang heeft tot een specifieke resource, kan de toepassing de bewerking voor het [controleren van groepslid maatschappen (transitief)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) aanroepen. dit retourneert waar of onwaar.
-* **Differentiële query**: met differentiële query's kunt u wijzigingen in een map bijhouden tussen twee Peri Oden zonder dat u regel matig query's moet uitvoeren op Azure AD Graph API. Dit type aanvraag retourneert alleen de wijzigingen die zijn aangebracht tussen de vorige differentiële query aanvraag en de huidige aanvraag. Zie [Azure AD Graph API Differential query](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query)voor meer informatie.
-* **Directory-extensies**: u kunt aangepaste eigenschappen toevoegen aan Directory-objecten zonder een extern gegevens archief. Als voor uw toepassing bijvoorbeeld een Skype ID-eigenschap voor elke gebruiker is vereist, kunt u de nieuwe eigenschap in de Directory registreren en deze beschikbaar voor gebruik op elk gebruikers object. Zie [Azure AD Graph API Directory-schema-uitbrei dingen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)voor meer informatie.
+* **Rest API-eind punten**: Azure AD-Graph API is een rest-service die bestaat uit eind punten die worden geopend met standaard HTTP-aanvragen. Azure AD Graph API ondersteunt XML-of JSON-inhouds typen (Java Script object Notation) voor aanvragen en antwoorden. Zie overzicht van [Azure AD Graph rest API](/previous-versions/azure/ad/graph/api/api-catalog)voor meer informatie.
+* **Verificatie met Azure AD**: elke aanvraag voor azure AD Graph API moet worden geverifieerd door een JSON Web token (JWT) toe te voegen in de autorisatie-header van de aanvraag. Dit token wordt verkregen door een aanvraag uit te voeren voor het token eindpunt van Azure AD en geldige referenties op te geven. U kunt de OAuth 2,0-client referenties stroom of de autorisatie code subsidie stroom gebruiken om een token te verkrijgen om de grafiek aan te roepen. Voor meer informatie, [OAuth 2,0 in azure AD](/previous-versions/azure/dn645545(v=azure.100)).
+* **Op rollen gebaseerde autorisatie (RBAC)**: beveiligings groepen worden gebruikt voor het uitvoeren van RBAC in azure AD-Graph API. Als u bijvoorbeeld wilt bepalen of een gebruiker toegang heeft tot een specifieke resource, kan de toepassing de bewerking voor het [controleren van groepslid maatschappen (transitief)](/previous-versions/azure/ad/graph/api/functions-and-actions#checkMemberGroups) aanroepen. dit retourneert waar of onwaar.
+* **Differentiële query**: met differentiële query's kunt u wijzigingen in een map bijhouden tussen twee Peri Oden zonder dat u regel matig query's moet uitvoeren op Azure AD Graph API. Dit type aanvraag retourneert alleen de wijzigingen die zijn aangebracht tussen de vorige differentiële query aanvraag en de huidige aanvraag. Zie [Azure AD Graph API Differential query](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-differential-query)voor meer informatie.
+* **Directory-extensies**: u kunt aangepaste eigenschappen toevoegen aan Directory-objecten zonder een extern gegevens archief. Als voor uw toepassing bijvoorbeeld een Skype ID-eigenschap voor elke gebruiker is vereist, kunt u de nieuwe eigenschap in de Directory registreren en deze beschikbaar voor gebruik op elk gebruikers object. Zie [Azure AD Graph API Directory-schema-uitbrei dingen](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)voor meer informatie.
 * **Beveiligd met een machtigings bereik**: Azure AD Graph API maakt toestemmings zoekbereiken mogelijk die beveiligde toegang tot Azure AD-gegevens met behulp van OAuth 2,0. Het ondersteunt diverse typen client-apps, waaronder:
   
   * gebruikers interfaces waarvoor gedelegeerde toegang tot gegevens is verleend via de autorisatie van de aangemelde gebruiker (gedelegeerde)
   * Service/daemon-toepassingen die op de achtergrond werken zonder dat er een aangemelde gebruiker aanwezig is en gebruikmaakt van door de toepassing gedefinieerde toegangs beheer op basis van rollen
     
-    Zowel gedelegeerde als toepassings machtigingen vertegenwoordigen een bevoegdheid die wordt weer gegeven door de Azure AD-Graph API en kan worden aangevraagd door client toepassingen via de functies voor toepassings registratie van machtigingen in de [Azure Portal](https://portal.azure.com). [Azure AD Graph API-machtigings bereik](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) biedt informatie over wat er beschikbaar is voor gebruik door uw client toepassing.
+    Zowel gedelegeerde als toepassings machtigingen vertegenwoordigen een bevoegdheid die wordt weer gegeven door de Azure AD-Graph API en kan worden aangevraagd door client toepassingen via de functies voor toepassings registratie van machtigingen in de [Azure Portal](https://portal.azure.com). [Azure AD Graph API-machtigings bereik](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes) biedt informatie over wat er beschikbaar is voor gebruik door uw client toepassing.
 
 ## <a name="scenarios"></a>Scenario's
 
@@ -65,5 +65,5 @@ Azure AD Graph API maakt veel toepassings scenario's mogelijk. De volgende scena
 
 Zie de volgende onderwerpen om te beginnen met het gebruik van de Azure Active Directory Graph API:
 
-* [Hand leiding voor Azure AD Graph API Snelstartgids](active-directory-graph-api-quickstart.md)
-* [Documentatie over de REST van Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
+* [Hand leiding voor Azure AD Graph API Snelstartgids](./microsoft-graph-intro.md)
+* [Documentatie over de REST van Azure AD Graph](/previous-versions/azure/ad/graph/api/api-catalog)

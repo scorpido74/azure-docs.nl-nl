@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/17/2020
+ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592267"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121014"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
-## <a name="whats-new"></a>Wat is er nieuw?
+## <a name="whats-new"></a>Wat is nieuw?
 
 Versie 3 van het conversie programma biedt een moderne op JSON gebaseerde web-API. Het verbetert de bruikbaarheid en prestaties door bestaande functies te consolideren in minder bewerkingen en biedt nieuwe functies.
 
@@ -147,11 +147,11 @@ Een verificatie token is 10 minuten geldig. Het token moet opnieuw worden gebrui
 
 ## <a name="virtual-network-support"></a>Ondersteuning voor virtuele netwerken
 
-Vertaal service is nu beschikbaar met Virtual Network mogelijkheden in een beperkt aantal regio's ( `WestUS2` ,, `EastUS` ,, `SouthCentralUS` `WestUS` `CentralUSEUAP` , `global` ). Als u Virtual Network wilt inschakelen, raadpleegt u [Azure Cognitive Services virtuele netwerken configureren](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+De Translator-service is nu beschikbaar met de mogelijkheden van Virtual Network (VNET) in alle regio's van de open bare Azure-Cloud. Als u Virtual Network wilt inschakelen, raadpleegt u [Azure Cognitive Services virtuele netwerken configureren](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
 Wanneer u deze functie inschakelt, moet u het aangepaste eind punt gebruiken om het conversie programma aan te roepen. U kunt het globale Translator-eind punt ("api.cognitive.microsofttranslator.com") niet gebruiken en u kunt zich niet verifiëren met een toegangs token.
 
-U kunt het aangepaste eind punt vinden wanneer u de [resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)van de vertaler hebt gemaakt.
+U kunt het aangepaste eind punt vinden nadat u een [Translator-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) hebt gemaakt en toegang hebt toegestaan vanuit geselecteerde netwerken en privé-eind punten.
 
 |Kopteksten|Beschrijving|
 |:-----|:----|

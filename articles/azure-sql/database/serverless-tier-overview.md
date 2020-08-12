@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 8/7/2020
-ms.openlocfilehash: 518d3880a740de2cda4f01e362d8a5ef7865b361
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037300"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121354"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -119,7 +119,7 @@ De volgende functies bieden geen ondersteuning voor automatische onderbrekingen,
 - Geo-replicatie (actieve groepen met geo-replicatie en automatische failover).
 - Lange termijn retentie van back-ups (LTR).
 - De gesynchroniseerde data base die wordt gebruikt in SQL Data Sync.  In tegens telling tot synchronisatie databases ondersteunen de data bases van hubs en leden automatische onderbrekingen.
-- De taak database die wordt gebruikt in elastische taken.
+- De taak database die wordt gebruikt in elastische taken (preview).
 
 Autopauzeren wordt tijdelijk voor komen tijdens de implementatie van sommige service-updates waarvoor de data base online is.  In dergelijke gevallen wordt automatisch onderbreken opnieuw toegestaan zodra de service-update is voltooid.
 
@@ -132,7 +132,7 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
 |Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
-|Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
+|Controles|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
 |Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
 |Evaluatie van beveiligingsproblemen|Ad hoc-scans en periodieke scans als deze functie is ingeschakeld|

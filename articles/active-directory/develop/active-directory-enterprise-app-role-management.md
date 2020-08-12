@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: ad66e0698cf0705c7a4db90a6dd515b71fed84e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478617"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116084"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: de rol claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -40,7 +40,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
 2. Selecteer **bedrijfs toepassingen**. Selecteer vervolgens **alle toepassingen**.
 
-    ![Deel venster ondernemings toepassingen][2]
+    ![Het deelvenster Bedrijfstoepassingen][2]
 
 3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven in het dialoog venster.
 
@@ -88,7 +88,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
       ![Query voor het ophalen van de service-principal die u moet wijzigen](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    bijvoorbeeld Extraheer de eigenschap **appRoles** uit het object Service-Principal.
+    g. Extraheer de eigenschap **appRoles** uit het object Service-Principal.
 
       ![Details van de eigenschap appRoles](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
@@ -265,7 +265,7 @@ Als u een bestaande functie wilt verwijderen, voert u de volgende stappen uit:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [app-documentatie](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)voor extra stappen.
+Zie de [app-documentatie](../saas-apps/tutorial-list.md)voor extra stappen.
 
 <!--Image references-->
 <!--Image references-->

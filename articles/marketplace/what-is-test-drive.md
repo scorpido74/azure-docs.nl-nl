@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229445"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121864"
 ---
 # <a name="what-is-a-test-drive"></a>Wat is een test drive?
 
@@ -44,7 +44,17 @@ Zie de koppeling onder [volgende stap](#next-step) aan het einde van dit onderwe
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager test drive
 
-Deze implementatie sjabloon bevat alle Azure-resources waaruit uw oplossing bestaat. Voor producten die in dit scenario passen, worden alleen Azure-resources gebruikt. Dit is de enige test drive optie voor virtuele machines of aanbiedingen van Azure-apps.
+Deze implementatie sjabloon bevat alle Azure-resources waaruit uw oplossing bestaat. Voor producten die in dit scenario passen, worden alleen Azure-resources gebruikt. De Azure Resource Manager test drive is beschikbaar voor de volgende aanbiedings typen: 
+
+- Azure-toepassingen
+- Dynamics 365 for Business Central
+- Dynamics 365 voor klant betrokkenheid & PowerApps
+- Dynamics 365 for Operations
+- SaaS
+- Virtuele machines
+
+>[!NOTE]
+>Dit is de enige test drive optie voor aanbiedingen van virtuele machines en Azure-toepassingen.
 
 ### <a name="hosted-test-drive"></a>Gehoste test drive
 

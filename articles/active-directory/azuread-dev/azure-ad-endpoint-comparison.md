@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034904"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116390"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Waarom bijwerken naar Microsoft Identity Platform (v2.0)?
 
@@ -33,9 +33,9 @@ Wanneer u een nieuwe toepassing ontwikkelt, is het belang rijk dat u weet wat de
 
 * Met het eind punt v 1.0 kunnen alleen werk-en school accounts worden aangemeld bij uw toepassing (Azure AD)
 * Met het micro soft Identity platform-eind punt kunnen werk-en school accounts van Azure AD en persoonlijke micro soft-accounts (MSA), zoals hotmail.com, outlook.com en msn.com, worden aangemeld.
-* Beide eind punten accepteren ook aanmeldingen van *[gast gebruikers](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* van een Azure AD-Directory voor toepassingen die zijn geconfigureerd als *[single tenant](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* of voor *multi tenant* -toepassingen die zijn geconfigureerd om naar het Tenant-specifieke eind punt () te verwijzen `https://login.microsoftonline.com/{TenantId_or_Name}` .
+* Beide eind punten accepteren ook aanmeldingen van *[gast gebruikers](../external-identities/what-is-b2b.md)* van een Azure AD-Directory voor toepassingen die zijn geconfigureerd als *[single tenant](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* of voor *multi tenant* -toepassingen die zijn geconfigureerd om naar het Tenant-specifieke eind punt () te verwijzen `https://login.microsoftonline.com/{TenantId_or_Name}` .
 
-Met het micro soft Identity platform-eind punt kunt u apps schrijven die aanmeldingen accepteren van persoonlijke micro soft-accounts en werk-en school accounts. Dit biedt u de mogelijkheid om uw app volledig account-neutraal te schrijven. Als uw app bijvoorbeeld de [Microsoft Graph](https://graph.microsoft.io)aanroept, zijn er extra functies en gegevens beschikbaar voor werk accounts, zoals hun share point-sites of Directory gegevens. Maar voor veel acties, zoals het [lezen van de e-mail van een gebruiker](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0), heeft dezelfde code toegang tot het e-mail bericht voor zowel privé-als werk-en school accounts.
+Met het micro soft Identity platform-eind punt kunt u apps schrijven die aanmeldingen accepteren van persoonlijke micro soft-accounts en werk-en school accounts. Dit biedt u de mogelijkheid om uw app volledig account-neutraal te schrijven. Als uw app bijvoorbeeld de [Microsoft Graph](https://graph.microsoft.io)aanroept, zijn er extra functies en gegevens beschikbaar voor werk accounts, zoals hun share point-sites of Directory gegevens. Maar voor veel acties, zoals het [lezen van de e-mail van een gebruiker](/graph/api/user-list-messages?view=graph-rest-1.0), heeft dezelfde code toegang tot het e-mail bericht voor zowel privé-als werk-en school accounts.
 
 Voor het micro soft Identity platform-eind punt kunt u de micro soft Authentication Library (MSAL) gebruiken om toegang te krijgen tot de consument, het onderwijs en de zakelijke wereld. Het Azure AD v 1.0-eind punt accepteert alleen aanmeldingen van werk-en school accounts.
 
@@ -141,7 +141,7 @@ App-registraties die ondersteuning bieden voor werk-en school accounts en persoo
 
 ### <a name="restrictions-on-redirect-urls"></a>Beperkingen voor omleidings-Url's
 
-Zie de micro soft Identity platform [-](https://docs.microsoft.com/azure/active-directory/develop/reply-url) documentatie voor de meest actuele informatie over beperkingen voor het omleiden van url's voor apps die zijn geregistreerd voor micro soft Identity platform.
+Zie de micro soft Identity platform [-](../develop/reply-url.md) documentatie voor de meest actuele informatie over beperkingen voor het omleiden van url's voor apps die zijn geregistreerd voor micro soft Identity platform.
 
 Zie [een app registreren met de nieuwe app-registraties-ervaring](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie over het registreren van een app voor gebruik met micro soft Identity platform.
 

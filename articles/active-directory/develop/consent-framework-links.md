@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: 86b592ecf5485654ab6860addbfde48cee4df077
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15270a998aff174c04acf2969d984eb022852635
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885545"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117359"
 ---
 # <a name="how-application-consent-works"></a>Hoe toepassingstoestemming werkt
 
@@ -24,10 +24,10 @@ In dit artikel vindt u meer informatie over de werking van het Azure AD instemmi
 
 ## <a name="recommended-documents"></a>Aanbevolen documenten
 
-- Bekijk algemene informatie [over hoe toestemming een resource-eigenaar kan de toegang tot bronnen van een toepassing te bepalen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent).
-- Een stapsgewijze overzicht van [de manier waarop het Azure AD toestemmings raamwerk toestemming implementeert](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Meer informatie over [hoe een multi tenant-toepassing het toestemming raamwerk kan gebruiken voor het](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) implementeren van de toestemming ' gebruiker ' en ' beheerder ', zodat meer geavanceerde toepassings patronen met meerdere lagen worden ondersteund.
-- Meer informatie over [hoe toestemming wordt ondersteund op de OAuth 2,0-protocol laag tijdens de autorisatie code toekenning stroom.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+- Bekijk algemene informatie [over hoe toestemming een resource-eigenaar kan de toegang tot bronnen van een toepassing te bepalen](./developer-glossary.md#consent).
+- Een stapsgewijze overzicht van [de manier waarop het Azure AD toestemmings raamwerk toestemming implementeert](./quickstart-register-app.md).
+- Meer informatie over [hoe een multi tenant-toepassing het toestemming raamwerk kan gebruiken voor het](./howto-convert-app-to-be-multi-tenant.md) implementeren van de toestemming ' gebruiker ' en ' beheerder ', zodat meer geavanceerde toepassings patronen met meerdere lagen worden ondersteund.
+- Meer informatie over [hoe toestemming wordt ondersteund op de OAuth 2,0-protocol laag tijdens de autorisatie code toekenning stroom.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
 
 ## <a name="next-steps"></a>Volgende stappen
 [AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552778"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115608"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Kenmerken van Directory-schema-extensies in claims gebruiken
 
@@ -34,7 +34,7 @@ De id voor een Directory schema-extensie kenmerk is van het formulier *Extension
 ## <a name="registering-and-using-directory-schema-extensions"></a>Active Directory-schema-uitbrei dingen registreren en gebruiken
 De extensie kenmerken van het Directory-schema kunnen op een van de volgende twee manieren worden geregistreerd en ingevuld:
 
-- Door AD Connect te configureren om ze te maken en gegevens te synchroniseren vanuit on-premises AD. Zie [Azure AD Connect Directory-extensies voor synchronisatie](/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions).
+- Door AD Connect te configureren om ze te maken en gegevens te synchroniseren vanuit on-premises AD. Zie [Azure AD Connect Directory-extensies voor synchronisatie](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
 - Microsoft Graph registreren, de waarden van en lezen van de Directory schema extensie kenmerken Directory schema- [extensies | Graph API concepten](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) en/of Power shell + [beheer extensie kenmerken met AzureAD Power shell-cmdlets](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0).
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>Claims verzenden met gegevens uit Directory-schema extensie kenmerken die zijn gemaakt met AD Connect

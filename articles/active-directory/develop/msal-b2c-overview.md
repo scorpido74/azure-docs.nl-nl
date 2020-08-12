@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308562"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119785"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Micro soft-verificatie bibliotheek voor Java script gebruiken om te werken met Azure AD B2C
 
@@ -44,7 +44,7 @@ MSAL.js voor het knoop punt is momenteel in ontwikkeling. Zie het [schema](https
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
-Als u uw web-API met Azure AD B2C wilt beveiligen, moet u deze eerst registreren. Zie [uw toepassing registreren](../../active-directory-b2c/add-web-application.md) voor gedetailleerde stappen.
+Als u uw web-API met Azure AD B2C wilt beveiligen, moet u deze eerst registreren. Zie [uw toepassing registreren](../../active-directory-b2c/add-web-api-application.md) voor gedetailleerde stappen.
 
 ### <a name="step-2-download-the-sample-application"></a>Stap 2: de voorbeeld toepassing downloaden
 

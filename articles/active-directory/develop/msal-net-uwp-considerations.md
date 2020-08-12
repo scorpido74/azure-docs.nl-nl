@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 502bbe65cdc0aef768ff4f017b1f6a920815b001
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652696"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118855"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Overwegingen voor het gebruik van Universeel Windows-platform met MSAL.NET
 Ontwikkel aars van toepassingen die gebruikmaken van Universeel Windows-platform (UWP) met MSAL.NET, moeten rekening houden met de concepten in dit artikel.
@@ -29,8 +29,8 @@ Op het Windows Runtime (WinRT)-platform `PublicClientApplication` heeft de Boole
 > [!IMPORTANT]
 > `UseCorporateNetwork`Als u de eigenschap instelt op True, wordt ervan uitgegaan dat de ontwikkelaar van de toepassing IWA in de toepassing heeft ingeschakeld. IWA inschakelen:
 > - `Package.appxmanifest`Schakel op het tabblad **mogelijkheden** van uw UWP-toepassing de volgende mogelijkheden in:
->   - **Ondernemings verificatie**
->   - **Particuliere netwerken (client & server)**
+>   - **Ondernemingsverificatie**
+>   - **Particuliere netwerken (client en server)**
 >   - **Gedeeld gebruikers certificaat**
 
 IWA is niet standaard ingeschakeld omdat Microsoft Store een hoog verificatie niveau vereist voordat het toepassingen accepteert die de mogelijkheden van ondernemings verificatie of gedeelde gebruikers certificaten aanvragen. Niet alle ontwikkel aars willen dit verificatie niveau.
@@ -56,7 +56,7 @@ U kunt dit probleem voor komen door ervoor te zorgen dat WAB (het onderliggende 
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-Zie voor meer informatie [Web authentication Broker-Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
+Zie voor meer informatie [Web authentication Broker-Fiddler](/windows/uwp/security/web-authentication-broker#fiddler).
 
 ## <a name="next-steps"></a>Volgende stappen
 In de volgende voor beelden vindt u meer informatie.

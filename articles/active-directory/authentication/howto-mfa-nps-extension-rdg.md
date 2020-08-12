@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848741"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117019"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Uw Extern bureaublad-gateway-infra structuur integreren met behulp van de Network Policy Server (NPS)-extensie en Azure AD
 
@@ -110,6 +110,11 @@ Volg de stappen in aan [de slag met Azure multi-factor Authentication in de Clou
 Zodra een account voor MFA is ingeschakeld, kunt u zich niet meer aanmelden bij bronnen waarvoor het MFA-beleid geldt, totdat u een vertrouwd apparaat hebt geconfigureerd om te gebruiken voor de tweede verificatie factor en u hebt geverifieerd met verificatie in twee stappen.
 
 Volg de stappen in [Wat heeft Azure multi-factor Authentication voor mij?](../user-help/multi-factor-authentication-end-user.md) om uw apparaten te begrijpen en goed te configureren voor MFA met uw gebruikers account.
+
+> [!IMPORTANT]
+> Het aanmeldings gedrag voor Extern bureaublad-gateway biedt geen optie om een verificatie code in te voeren met Azure Multi-Factor Authentication. U moet een gebruikers account configureren voor telefonische verificatie of de Microsoft Authenticator-app met push meldingen.
+>
+> Als een van deze twee verificatie methoden niet is geconfigureerd voor een gebruiker, kunnen ze de Azure Multi-Factor Authentication-uitdaging niet volt ooien en zich aanmelden bij de Extern bureaublad-gateway.
 
 ## <a name="install-and-configure-nps-extension"></a>NPS-extensie installeren en configureren
 

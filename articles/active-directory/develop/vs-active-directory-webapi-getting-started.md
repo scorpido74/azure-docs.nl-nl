@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: ee79333e1092cfcf2cd35e408f86dcfc9e1327cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76aabbfce02d7e2bd8361dc99b4ba20d1f62f15
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479008"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114486"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Aan de slag met Azure Active Directory (WebApi-projecten)
 
@@ -33,5 +33,5 @@ Alle controllers in uw project zijn voorzien van het `[Authorize]` kenmerk. Voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Verificatie scenario's voor Azure Active Directory](authentication-scenarios.md)
+- [Verificatie scenario's voor Azure Active Directory](./authentication-vs-authorization.md)
 - [Aanmelding met Microsoft toevoegen aan een ASP.NET-web-app](quickstart-v2-aspnet-webapp.md)

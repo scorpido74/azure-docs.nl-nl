@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5ea28a7a4669fd000800bf62b7b940abefcf7551
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030959"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114894"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -108,9 +108,9 @@ Metrische waarschuwingen zijn standaard stateful en daarom worden er geen extra 
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Een waarschuwings regel definiëren op basis van een aangepaste metriek die nog niet is verzonden
 
-Wanneer u een metrische waarschuwings regel maakt, wordt de naam van de metrische gegevens gevalideerd op basis van de [API voor metrische definities](/rest/api/monitor/metricdefinitions/list) om er zeker van te zijn dat deze bestaat. In sommige gevallen wilt u een waarschuwings regel maken voor een aangepaste metriek, zelfs voordat deze wordt verzonden. Bijvoorbeeld bij het maken (met een ARM-sjabloon) een Application Insights resource die een aangepaste metriek zal genereren, samen met een waarschuwings regel die de metrische gegevens bewaakt.
+Wanneer u een metrische waarschuwings regel maakt, wordt de naam van de metrische gegevens gevalideerd op basis van de [API voor metrische definities](/rest/api/monitor/metricdefinitions/list) om er zeker van te zijn dat deze bestaat. In sommige gevallen wilt u een waarschuwings regel maken voor een aangepaste metriek, zelfs voordat deze wordt verzonden. Bijvoorbeeld bij het maken (met een resource manager-sjabloon) een Application Insights resource die aangepaste metrische gegevens zal genereren, samen met een waarschuwings regel die de metrische gegevens controleert.
 
-Als u wilt voor komen dat de implementatie mislukt wanneer u probeert de definities van de aangepaste metrische gegevens te valideren, kunt u de para meter *skipMetricValidation* gebruiken in het gedeelte criteria van de waarschuwings regel, waardoor de metrische validatie wordt overgeslagen. Zie het volgende voor beeld voor het gebruik van deze para meter in een ARM-sjabloon (Zie [hier]( ./alerts-metric-create-templates.md)voor voor beelden van volledige arm-sjablonen voor het maken van regels voor metrische waarschuwingen).
+Als u wilt voor komen dat de implementatie mislukt wanneer u probeert de definities van de aangepaste metrische gegevens te valideren, kunt u de para meter *skipMetricValidation* gebruiken in het gedeelte criteria van de waarschuwings regel, waardoor de metrische validatie wordt overgeslagen. Zie het onderstaande voor beeld voor het gebruik van deze para meter in een resource manager-sjabloon. Zie voor meer informatie de [volledige Resource Manager-sjabloon voorbeelden voor het maken van metrische waarschuwings regels](./alerts-metric-create-templates.md).
 
 ```json
 "criteria": {

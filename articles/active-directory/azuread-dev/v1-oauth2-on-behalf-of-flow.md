@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6fc4de3ef934e2d1b9dcff46c78f45e7d0f3b6d8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845456"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117733"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service-naar-service-aanroepen die een overgedragen gebruikers-id gebruiken in namens-of-flow
 
@@ -51,7 +51,7 @@ Registreer zowel de middelste laag service als de client toepassing in azure AD.
 
 ### <a name="register-the-middle-tier-service"></a>De service voor de middelste laag registreren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer uw account in de bovenste balk en zoek in de lijst met **mappen** een Active Directory-Tenant voor uw toepassing.
 1. Selecteer **meer services** in het linkerdeel venster en kies **Azure Active Directory**.
 1. Selecteer **app-registraties** en vervolgens **nieuwe registratie**.
@@ -69,7 +69,7 @@ Registreer zowel de middelste laag service als de client toepassing in azure AD.
 
 ### <a name="register-the-client-application"></a>De client toepassing registreren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer uw account in de bovenste balk en zoek in de lijst met **mappen** een Active Directory-Tenant voor uw toepassing.
 1. Selecteer **meer services** in het linkerdeel venster en kies **Azure Active Directory**.
 1. Selecteer **app-registraties** en vervolgens **nieuwe registratie**.
@@ -264,7 +264,7 @@ Het antwoord bevat een SAML-token dat is gecodeerd in UTF8 en Base64url.
 - **SubjectConfirmationData voor een SAML-verklaring die is gebrond vanuit een OBO-aanroep**: als voor de doel toepassing een waarde voor een ontvanger is vereist in **SubjectConfirmationData**, moet de waarde een antwoord-URL voor niet-joker tekens zijn in de configuratie van de bron toepassing.
 - **Het knoop punt SubjectConfirmationData**: het knoop punt kan geen **InResponseTo** -kenmerk bevatten omdat het geen deel UITmaakt van een SAML-reactie. De toepassing die het SAML-token ontvangt, moet de SAML-bewering zonder het kenmerk **InResponseTo** kunnen accepteren.
 
-- **Instemming**: toestemming moet zijn verleend om een SAML-token met gebruikers gegevens op een OAuth-stroom te ontvangen. Zie [machtigingen en toestemming in het Azure Active Directory v 1.0-eind punt](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)voor meer informatie over machtigingen en het verkrijgen van toestemming voor de beheerder.
+- **Instemming**: toestemming moet zijn verleend om een SAML-token met gebruikers gegevens op een OAuth-stroom te ontvangen. Zie [machtigingen en toestemming in het Azure Active Directory v 1.0-eind punt](./v1-permissions-consent.md)voor meer informatie over machtigingen en het verkrijgen van toestemming voor de beheerder.
 
 ### <a name="response-with-saml-assertion"></a>Antwoord met SAML-bevestiging
 

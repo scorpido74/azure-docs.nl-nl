@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 79b9be504639b35c7c15d427bd7766ed2dd15535
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541903"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121082"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Een Token ophalen voor een mobiele app die web-Api's aanroept
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive`heeft slechts één verplichte para meter: `scopes` . `scopes`Met de para meter worden teken reeksen opgesomd die de bereiken definiëren waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunt u de vereiste bereiken vinden in de API-verwijzing van elke Microsoft Graph-API. Ga in de verwijzing naar de sectie ' machtigingen '.
 
-Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](https://docs.microsoft.com/graph/api/user-list-contacts), gebruikt u de scope ' gebruiker. read ', ' Contacts. read '. Zie [Microsoft Graph permissions Reference](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)(Engelstalig) voor meer informatie.
+Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](/graph/api/user-list-contacts), gebruikt u de scope ' gebruiker. read ', ' Contacts. read '. Zie [Microsoft Graph permissions Reference](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)(Engelstalig) voor meer informatie.
 
 Op Android kunt u de bovenliggende activiteit opgeven wanneer u de app maakt met behulp van `PublicClientApplicationBuilder` . Als u de bovenliggende activiteit op dat moment niet opgeeft, kunt u deze later opgeven met behulp `.WithParentActivityOrWindow` van zoals in de volgende sectie. Als u bovenliggende activiteit opgeeft, wordt het token na de interactie teruggestuurd naar die bovenliggende activiteit. Als u deze niet opgeeft, genereert de `.ExecuteAsync()` aanroep een uitzonde ring.
 
@@ -234,7 +234,7 @@ De klasse definieert de volgende constanten:
 - `ForceLogin`Hiermee kan de service de gebruiker om referenties vragen, zelfs als de prompt niet nodig is.
 
     Deze optie kan nuttig zijn als het ophalen van het token mislukt en u de gebruiker opnieuw wilt aanmelden. In dit geval verzendt MSAL `prompt=login` naar de ID-provider. U kunt deze optie gebruiken in toepassingen met een eigen beveiliging waarbij de gebruiker zich bij het beheer van de organisatie moet aanmelden elke keer dat ze toegang hebben tot specifieke delen van de toepassing.
-- `Never`is alleen voor .NET 4,5 en Windows Runtime (WinRT). Met deze constante wordt de gebruiker niet gevraagd, maar wordt geprobeerd de cookie te gebruiken die is opgeslagen in de verborgen Inge sloten webweergave. Zie [Using Web browsers with MSAL.net](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)(Engelstalig) voor meer informatie.
+- `Never`is alleen voor .NET 4,5 en Windows Runtime (WinRT). Met deze constante wordt de gebruiker niet gevraagd, maar wordt geprobeerd de cookie te gebruiken die is opgeslagen in de verborgen Inge sloten webweergave. Zie [Using Web browsers with MSAL.net](./msal-net-web-browsers.md)(Engelstalig) voor meer informatie.
 
     Als deze optie mislukt, wordt `AcquireTokenInteractive` een uitzonde ring gegenereerd om u te waarschuwen dat er een UI-interactie nodig is. Vervolgens moet u een andere `Prompt` para meter gebruiken.
 - `NoPrompt`Er wordt geen prompt verzonden naar de ID-provider.

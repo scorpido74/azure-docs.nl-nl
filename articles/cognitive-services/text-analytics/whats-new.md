@@ -10,22 +10,58 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 67850490a3c1d972d4d03eec545068b1d9eb9fff
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986295"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121847"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
 De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u informatie over nieuwe releases en functies, zodat u op de hoogte blijft van recente ontwikkelingen.
 
-## <a name="august-2020"></a>2020 augustus
+## <a name="august-2020"></a>Augustus 2020
+
+### <a name="general-api-updates"></a>Algemene API-updates
 
 * Model versie `2020-07-01` voor de V3 `/keyphrases` `/pii` en `/languages` eind punten die het volgende toevoegen:
     * Aanvullende overheids [Categorieën](named-entity-types.md?tabs=personal) en land instellingen voor benoemde entiteiten herkenning.
 * Er wordt nu een HTTP 400-fout geretourneerd voor v3 API-aanvragen die de gepubliceerde [gegevens limieten](concepts/data-limits.md)overschrijden. 
+
+### <a name="text-analytics-for-health-container-august-updates"></a>Text Analytics voor updates van status container augustus
+
+De volgende updates zijn specifiek voor de augustus-versie van de Text Analytics alleen voor de status container.
+
+* Nieuwe model versie voor Text Analytics status:`2020-07-24`
+* Nieuwe URL voor het verzenden van Text Analytics voor status aanvragen:`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+
+De volgende eigenschappen in het JSON-antwoord zijn gewijzigd:
+
+* De naam van `type` is gewijzigd in `category` 
+* De naam van `score` is gewijzigd in `confidenceScore`
+* Entiteiten in het `category` veld van de JSON-uitvoer zijn nu in Pascal-gevallen. De naam van de volgende entiteiten is gewijzigd:
+    * `EXAMINATION_RELATION`is gewijzigd in `RelationalOperator` .
+    * `EXAMINATION_UNIT`is gewijzigd in `MeasurementUnit` .
+    * `EXAMINATION_VALUE`is gewijzigd in `MeasurementValue` .
+    * `ROUTE_OR_MODE`is hernoemd `MedicationRoute` .
+    * De naam van de relationele entiteit `ROUTE_OR_MODE_OF_MEDICATION` is gewijzigd in `RouteOfMedication` .
+
+De volgende entiteiten zijn toegevoegd:
+
+* NER
+    * `AdministrativeEvent`
+    * `CareEnvironment`
+    * `HealthcareProfession`
+    * `MedicationForm` 
+
+* Relatie-extractie
+    * `DirectionOfCondition`
+    * `DirectionOfExamination`
+    * `DirectionOfTreatment`
+
+> [!div class="nextstepaction"]
+> [Meer informatie over Text Analytics voor de status container](how-tos/text-analytics-for-health.md)
 
 ## <a name="july-2020"></a>Juli 2020 
 
@@ -39,10 +75,6 @@ De container biedt de volgende functies:
 * Relatie-extractie
 * Entiteiten koppelen
 * Negatie
-
-
-> [!div class="nextstepaction"]
-> [Meer informatie over Text Analytics voor de status container](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>Mei 2020
 
@@ -117,7 +149,7 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Organisatie
     * Leeftijd als subtype onder hoeveelheid
     * Datum als een subtype onder DateTime
-    * E-mail 
+    * Email 
     * Telefoon nummer (alleen VS)
     * URL
     * IP-adres

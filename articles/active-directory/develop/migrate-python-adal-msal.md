@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 4737b2ef701f643ff5bec47be29b3139e27fb146
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845150"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119909"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Migratie handleiding voor ADAL naar MSAL voor python
 
@@ -38,19 +38,19 @@ Steun
   - OAuth v 2.0
   - OpenID Connect Connect (OIDC)
 
-Zie [Wat is er anders in het micro soft Identity platform (v 2.0)-eind punt?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison) voor meer informatie.
+Zie [Wat is er anders in het micro soft Identity platform (v 2.0)-eind punt?](../azuread-dev/azure-ad-endpoint-comparison.md) voor meer informatie.
 
 ### <a name="scopes-not-resources"></a>Scopes die geen resources zijn
 
-ADAL python schaft tokens voor bronnen aan, maar MSAL python verkrijgt tokens voor scopes. Het API-Opper vlak in MSAL python heeft geen resource parameter meer. U moet bereiken opgeven als een lijst met teken reeksen die de gewenste machtigingen en benodigde bronnen declareren. Zie [Microsoft Graph scopes](https://docs.microsoft.com/graph/permissions-reference)voor een voor beeld van bereiken.
+ADAL python schaft tokens voor bronnen aan, maar MSAL python verkrijgt tokens voor scopes. Het API-Opper vlak in MSAL python heeft geen resource parameter meer. U moet bereiken opgeven als een lijst met teken reeksen die de gewenste machtigingen en benodigde bronnen declareren. Zie [Microsoft Graph scopes](/graph/permissions-reference)voor een voor beeld van bereiken.
 
 U kunt het `/.default` bereik achtervoegsel toevoegen aan de resource om uw apps van het v 1.0-eind punt (ADAL) te migreren naar het micro soft Identity platform-eind punt (MSAL). Bijvoorbeeld: voor de resource waarde van `https://graph.microsoft.com` is de equivalente bereik waarde `https://graph.microsoft.com/.default` .  Als de bron zich niet in het URL-formulier bevindt, maar een resource-ID van het formulier `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kunt u de waarde van bereik nog steeds gebruiken als `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
-Voor meer informatie over de verschillende typen bereiken, verwijzen wij u naar [machtigingen en toestemming in het micro soft-identiteits platform](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) en de [scopes voor een web API die v 1.0-tokens accepteert](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) .
+Voor meer informatie over de verschillende typen bereiken, verwijzen wij u naar [machtigingen en toestemming in het micro soft-identiteits platform](./v2-permissions-and-consent.md) en de [scopes voor een web API die v 1.0-tokens accepteert](./msal-v1-app-scopes.md) .
 
 ### <a name="error-handling"></a>Foutafhandeling
 
-Azure Active Directory Authentication Library (ADAL) voor python gebruikt de uitzonde ring `AdalError` om aan te geven dat er een probleem is. MSAL voor python gebruikt in plaats daarvan fout codes. Zie [MSAL voor python-fout afhandeling](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python)voor meer informatie.
+Azure Active Directory Authentication Library (ADAL) voor python gebruikt de uitzonde ring `AdalError` om aan te geven dat er een probleem is. MSAL voor python gebruikt in plaats daarvan fout codes. Zie [MSAL voor python-fout afhandeling](./msal-handling-exceptions.md?tabs=python)voor meer informatie.
 
 ### <a name="api-changes"></a>API-wijzigingen
 
@@ -122,4 +122,4 @@ print("Migration completed")
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [vergelijking van v 1.0 en v 2.0](active-directory-v2-compare.md)voor meer informatie.
+Zie [vergelijking van v 1.0 en v 2.0](../azuread-dev/azure-ad-endpoint-comparison.md)voor meer informatie.

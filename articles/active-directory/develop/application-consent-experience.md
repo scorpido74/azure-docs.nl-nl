@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885579"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115472"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Inzicht in ervaringen met Azure AD-toepassingtoestemming
 
@@ -28,10 +28,10 @@ Meer informatie over de gebruikers ervaring voor de toepassings instemming van A
 
 Toestemming is het proces van een gebruiker die toestemming verleent voor toegang tot beveiligde resources voor hun naam. Een beheerder of gebruiker kan worden gevraagd om toestemming te geven om toegang tot hun organisatie/individuele gegevens toe te staan.
 
-De daad werkelijke gebruikers ervaring van het verlenen van toestemming varieert afhankelijk van het beleid dat is ingesteld op de Tenant van de gebruiker, het bereik van de instantie van de gebruiker (of rol) en het type [machtigingen](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent) dat door de client toepassing wordt aangevraagd. Dit betekent dat toepassings ontwikkelaars en Tenant beheerders enige controle over de toestemming hebben. Beheerders beschikken over de flexibiliteit om beleid in te stellen en uit te scha kelen voor een Tenant of app voor het beheren van de toestemmings ervaring in hun Tenant. Ontwikkel aars van toepassingen kunnen bepalen welke typen machtigingen worden aangevraagd en of ze gebruikers willen begeleiden via de toestemming stroom van de gebruiker of door de beheerder.
+De daad werkelijke gebruikers ervaring van het verlenen van toestemming varieert afhankelijk van het beleid dat is ingesteld op de Tenant van de gebruiker, het bereik van de instantie van de gebruiker (of rol) en het type [machtigingen](../azuread-dev/v1-permissions-consent.md) dat door de client toepassing wordt aangevraagd. Dit betekent dat toepassings ontwikkelaars en Tenant beheerders enige controle over de toestemming hebben. Beheerders beschikken over de flexibiliteit om beleid in te stellen en uit te scha kelen voor een Tenant of app voor het beheren van de toestemmings ervaring in hun Tenant. Ontwikkel aars van toepassingen kunnen bepalen welke typen machtigingen worden aangevraagd en of ze gebruikers willen begeleiden via de toestemming stroom van de gebruiker of door de beheerder.
 
 - De machtigings stroom van de **gebruiker** is wanneer een toepassings ontwikkelaar gebruikers doorstuurt naar het autorisatie-eind punt met het doel om alleen toestemming voor de huidige gebruiker vast te leggen.
-- De **beheerder stuurt toestemming stroom** wanneer een toepassings ontwikkelaar gebruikers doorstuurt naar het eind punt van de beheerder met het doel om toestemming voor de hele Tenant vast te leggen. Ontwikkel aars van toepassingen moeten alle machtigingen in de `RequiredResourceAccess` eigenschap in het manifest van de toepassing weer geven om ervoor te zorgen dat de beheerder toestemming stroom goed werkt. Zie het [toepassings manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)voor meer informatie.
+- De **beheerder stuurt toestemming stroom** wanneer een toepassings ontwikkelaar gebruikers doorstuurt naar het eind punt van de beheerder met het doel om toestemming voor de hele Tenant vast te leggen. Ontwikkel aars van toepassingen moeten alle machtigingen in de `RequiredResourceAccess` eigenschap in het manifest van de toepassing weer geven om ervoor te zorgen dat de beheerder toestemming stroom goed werkt. Zie het [toepassings manifest](./reference-app-manifest.md)voor meer informatie.
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>Bouw stenen van de toestemming prompt
 
@@ -41,12 +41,12 @@ Het volgende diagram en deze tabel bevatten informatie over de bouw stenen van d
 
 ![Bouw stenen van de toestemming prompt](./media/application-consent-experience/consent_prompt.png)
 
-| # | Onderdeel | Functie |
+| # | Onderdeel | Doel |
 | ----- | ----- | ----- |
 | 1 | Gebruikers-id | Deze id vertegenwoordigt de gebruiker die de client toepassing heeft aangevraagd om toegang te krijgen tot beveiligde bronnen namens. |
 | 2 | Titel | De titel wordt gewijzigd op basis van het feit of de gebruikers de toestemming stroom van de gebruiker of beheerder door lopen. In de machtigings stroom van de gebruiker wordt de titel ' machtigingen aangevraagd ' weer gegeven in de stroom van de beheerder toestemming de titel heeft een extra regel ' accepteren voor uw organisatie '. |
 | 3 | App-logo | Deze installatie kopie zou gebruikers kunnen helpen een visuele indicatie te krijgen van de vraag of deze app de app is die ze wilde gebruiken. Deze installatie kopie wordt verzorgd door toepassings ontwikkelaars en het eigendom van deze installatie kopie wordt niet gevalideerd. |
-| 4 | App-naam | Deze waarde moet de gebruikers op de hoogte stellen van de toegang tot de gegevens van de toepassing. Opmerking Deze naam wordt verschaft door de ontwikkel aars en het eigendom van deze app-naam wordt niet gevalideerd. |
+| 4 | Naam van app | Deze waarde moet de gebruikers op de hoogte stellen van de toegang tot de gegevens van de toepassing. Opmerking Deze naam wordt verschaft door de ontwikkel aars en het eigendom van deze app-naam wordt niet gevalideerd. |
 | 5 | Uitgeversdomein | Deze waarde moet gebruikers hebben van een domein dat ze mogelijk kunnen evalueren voor betrouw baarheid. Dit domein wordt door de ontwikkel aars verschaft en het eigendom van dit domein van de uitgever wordt gevalideerd. |
 | 6 | Machtigingen | Deze lijst bevat de machtigingen die worden aangevraagd door de client toepassing. Gebruikers moeten altijd de typen machtigingen die worden aangevraagd, evalueren om te begrijpen welke gegevens de client toepassing voor hun naam mag gebruiken als ze deze accepteren. Als ontwikkelaar van toepassingen is het het beste om toegang aan te vragen bij de machtigingen met de minste bevoegdheden. |
 | 7 | Beschrijving van machtiging | Deze waarde wordt verschaft door de service die de machtigingen weergeeft. Als u de beschrijvingen van machtigingen wilt zien, moet u de punt haken naast de machtiging scha kelen. |
@@ -81,6 +81,6 @@ Hier volgen de toestemming die een gebruiker kan zien in de scenario's voor alge
     1. Gebruikers die geen beheerder zijn, zien hetzelfde scherm als 2. II hierboven.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Een stapsgewijze overzicht van [de manier waarop het Azure AD toestemmings raamwerk toestemming implementeert](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Meer informatie over [hoe een multi tenant-toepassing het toestemming raamwerk kan gebruiken voor het](active-directory-devhowto-multi-tenant-overview.md) implementeren van de toestemming ' gebruiker ' en ' beheerder ', zodat meer geavanceerde toepassings patronen met meerdere lagen worden ondersteund.
+- Een stapsgewijze overzicht van [de manier waarop het Azure AD toestemmings raamwerk toestemming implementeert](./quickstart-register-app.md).
+- Meer informatie over [hoe een multi tenant-toepassing het toestemming raamwerk kan gebruiken voor het](./howto-convert-app-to-be-multi-tenant.md) implementeren van de toestemming ' gebruiker ' en ' beheerder ', zodat meer geavanceerde toepassings patronen met meerdere lagen worden ondersteund.
 - Meer informatie [over het configureren van het Publisher-domein van de app](howto-configure-publisher-domain.md).

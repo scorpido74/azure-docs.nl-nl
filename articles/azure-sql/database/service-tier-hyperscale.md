@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: ca164b6ad6b5333c662a6632b27f658ab479231c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067627"
+ms.locfileid: "88120640"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -105,7 +105,9 @@ Azure Storage bevat alle gegevens bestanden in een Data Base. Pagina servers hou
 
 ## <a name="backup-and-restore"></a>Back-ups en herstellen
 
-Back-ups zijn gebaseerd op bestands momentopnamen en zijn daarom bijna direct. Met opslag-en Compute-schei ding kunt u de bewerking voor back-up/herstel naar de opslaglaag beperken om de verwerkings belasting van de primaire Compute replica te verminderen. Als gevolg hiervan heeft de back-up van de data base geen invloed op de prestaties van het primaire reken knooppunt. Op dezelfde manier worden herstel bewerkingen uitgevoerd door terug te keren naar moment opnamen van bestanden, en als dit geen grootte van de gegevens bewerking is. Herstellen is een constante tijd, en zelfs meerdere terabyte-data bases kunnen binnen enkele minuten worden hersteld in plaats van uren of dagen. Bij het maken van nieuwe data bases door een bestaande back-up te herstellen, wordt ook gebruikgemaakt van deze functie: het maken van database kopieën voor ontwikkelings-of test doeleinden, zelfs op terabyte-formaat databases, is doable binnen enkele minuten.
+Back-ups zijn gebaseerd op bestands momentopnamen en zijn daarom bijna direct. Met opslag-en Compute-schei ding kunt u de bewerking voor back-up/herstel naar de opslaglaag beperken om de verwerkings belasting van de primaire Compute replica te verminderen. Als gevolg hiervan heeft de back-up van de data base geen invloed op de prestaties van het primaire reken knooppunt. Op dezelfde manier wordt Point-in-time herstel (PITR) uitgevoerd door terug te keren naar moment opnamen van bestanden. Dit is geen grootte van de gegevens bewerking. Het herstellen van een grootschalige-data base in dezelfde Azure-regio is een constante tijd en zelfs meerdere terabyte-data bases kunnen in enkele minuten worden hersteld in plaats van uren of dagen. Bij het maken van nieuwe data bases door een bestaande back-up te herstellen, wordt ook gebruikgemaakt van deze functie: het maken van database kopieën voor ontwikkelings-of test doeleinden, zelfs op terabyte-formaat databases, is doable binnen enkele minuten.
+
+Zie [een grootschalige-data base herstellen naar een andere regio](#restoring-a-hyperscale-database-to-a-different-region)voor het geo-herstel van grootschalige-data bases.
 
 ## <a name="scale-and-performance-advantages"></a>Schaal-en prestatie voordelen
 
@@ -156,7 +158,7 @@ Zie [Sla voor Azure SQL database](https://azure.microsoft.com/support/legal/sla/
 
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Herstel na nood geval voor grootschalige-data bases
 
-### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Een grootschalige-data base herstellen naar een andere Geografie
+### <a name="restoring-a-hyperscale-database-to-a-different-region"></a>Een grootschalige-data base herstellen naar een andere regio
 
 Als u een grootschalige-data base in Azure SQL Database moet herstellen naar een andere regio dan die die momenteel wordt gehost in, als onderdeel van een nood herstel bewerking of een analyse, herlocatie of een andere reden, is de primaire methode een geografisch herstel van de data base. Dit omvat precies dezelfde stappen als wat u zou gebruiken om een andere data base in SQL Database naar een andere regio te herstellen:
 

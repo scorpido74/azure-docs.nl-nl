@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526796"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121388"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights gebruiken
 
@@ -83,7 +83,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
   - Netwerk routerings tabel
   - Poorten en status geopend
 
-- Opslag
+- Storage
   - Lijst met apparaten blok keren
   - Lijst met partities
   - Koppelings punten lijst
@@ -99,6 +99,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
+  - /var/log/sysstat of/var/log/sa [ `**` ]
   - /var/log/cloud-init.log
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
@@ -112,7 +113,9 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
 - [Meta gegevens van Azure virtual machine-instantie](../windows/instance-metadata-service.md)
 
 >[!Note]
->[ `*` ] PCI-informatie is nog niet verzameld in Debian-en SLES-distributies
+>[ `*` ] PCI-gegevens zijn nog niet verzameld voor Debian-en SLES-distributies.
+> 
+>[ `**` ]/var/log/sysstat of/var/log/sa bevat de rapport bestanden voor systeem activiteiten die worden verzameld door het sysstat-pakket. Als het sysstat-pakket niet is geïnstalleerd op de virtuele machine, biedt het PerfInsights-hulp programma een aanbeveling om het te installeren.
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>De PerfInsights Linux uitvoeren op uw VM
 
@@ -121,7 +124,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
 #### <a name="tool-requirements"></a>Hulp programma vereisten
 
 - Dit hulp programma moet worden uitgevoerd op de VM met het prestatie probleem.
-- Python 2,7 moet zijn geïnstalleerd op de VM
+- Python 3. x of python 2,7 moet zijn geïnstalleerd op de virtuele machine.
 
 - De volgende distributies worden momenteel ondersteund:
 

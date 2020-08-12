@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035482"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116458"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problemen oplossen: on-premises Azure AD-wachtwoord beveiliging
 
@@ -72,7 +72,20 @@ Azure AD-wachtwoord beveiliging heeft een kritieke afhankelijkheid van de functi
 
    Er is een KDS-beveiligings oplossing geïntroduceerd in Windows Server 2016 waarmee de indeling van versleutelde KDS-buffers wordt gewijzigd. deze buffers kunnen soms niet worden ontsleuteld in Windows Server 2012 en Windows Server 2012 R2. De omgekeerde richting is het versleutelen van onKDSe buffers die zijn versleuteld in Windows Server 2012 en Windows Server 2012 R2 worden altijd gedecodeerd op Windows Server 2016 of hoger. Als op de domein controllers in uw Active Directory-domeinen een combi natie van deze besturings systemen wordt uitgevoerd, kunnen er soms problemen met de ontsleuteling van Azure AD-wachtwoord beveiliging worden gerapporteerd. Het is niet mogelijk om de timing of symptomen van deze fouten nauw keurig te voors pellen op basis van de aard van de beveiligings oplossing, en gezien dat het niet-deterministisch is welke Azure AD-wachtwoord beveiliging DC-agent op welke domein controller gegevens op een bepaald moment versleutelt.
 
-   Micro soft onderzoekt een oplossing voor dit probleem, maar er is nog geen ETA beschikbaar. In de tussen tijd is er geen oplossing voor dit probleem, anders dan voor het uitvoeren van een combi natie van deze incompatibele besturings systemen in uw Active Directory domein (en). Met andere woorden, u moet alleen Windows Server 2012-en Windows Server 2012 R2-domein controllers uitvoeren, of alleen Windows Server 2016 en hoger domein controllers uitvoeren.
+   Er is geen oplossing voor dit probleem, anders dan voor het uitvoeren van een combi natie van deze incompatibele besturings systemen in uw Active Directory domein (en). Met andere woorden, u moet alleen Windows Server 2012-en Windows Server 2012 R2-domein controllers uitvoeren, of alleen Windows Server 2016 en hoger domein controllers uitvoeren.
+
+## <a name="dc-agent-thinks-the-forest-has-not-been-registered"></a>DC-agent denkt dat het forest niet is geregistreerd
+
+Het symptoom van dit probleem is 30016 gebeurtenissen die worden vastgelegd in het DC Agent\Admin-kanaal dat deel uitmaakt van:
+
+```text
+The forest has not been registered with Azure. Password policies cannot be downloaded from Azure unless this is corrected.
+```
+
+Er zijn twee mogelijke oorzaken voor dit probleem.
+
+1. Het forest is inderdaad niet geregistreerd. Voer de opdracht REGI ster-AzureADPasswordProtectionForest uit zoals beschreven in de [implementatie vereisten](howto-password-ban-bad-on-premises-deploy.md)om het probleem op te lossen.
+1. Het forest is geregistreerd, maar de DC-agent kan de registratie gegevens van het forest niet ontsleutelen. Dit geldt voor dezelfde hoofd oorzaak als het probleem #2 hierboven vermeld onder [DC-agent kan wachtwoord beleids bestanden niet versleutelen of ontsleutelen](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files). Een eenvoudige manier om deze theorie te bevestigen, is dat deze fout alleen wordt weer geven bij DC-agents die worden uitgevoerd op Windows Server 2012-of Windows Server 2012R2-domein controllers, terwijl DC-agents die worden uitgevoerd op Windows Server 2016 en latere domein controllers prima zijn. De tijdelijke oplossing is hetzelfde: werk alle domein controllers bij naar Windows Server 2016 of hoger.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Er worden zwakke wacht woorden geaccepteerd, maar dit mag niet
 

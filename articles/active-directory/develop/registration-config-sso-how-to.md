@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 465adbb71abaa45160399ecba2ebfb692a8307c2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82890469"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120674"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Eenmalige aanmelding voor een toepassing configureren
 
@@ -26,20 +26,20 @@ Het inschakelen van federatieve eenmalige aanmelding (SSO) in uw app wordt autom
 
 * Als u een mobiele app bouwt, hebt u mogelijk aanvullende configuraties nodig om brokered of niet-brokered SSO in te scha kelen.
 
-Zie [SSO van meerdere apps inschakelen in Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)voor Android.<br>
+Zie [SSO van meerdere apps inschakelen in Android](../azuread-dev/howto-v1-enable-sso-android.md)voor Android.<br>
 
-Zie [SSO van meerdere apps inschakelen in Ios](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)voor IOS.
+Zie [SSO van meerdere apps inschakelen in Ios](../azuread-dev/howto-v1-enable-sso-ios.md)voor IOS.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure AD SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Azure AD SSO](../manage-apps/what-is-single-sign-on.md)<br>
 
-[SSO van meerdere apps inschakelen in Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[SSO van meerdere apps inschakelen in Android](../azuread-dev/howto-v1-enable-sso-android.md)<br>
 
-[SSO van meerdere apps inschakelen in iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[SSO van meerdere apps inschakelen in iOS](../azuread-dev/howto-v1-enable-sso-ios.md)<br>
 
-[Apps integreren in AzureAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[Apps integreren in AzureAD](./quickstart-register-app.md)<br>
 
-[Machtigingen en toestemming in het eindpunt van het Microsoft-identiteitsplatform](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Machtigingen en toestemming in het eindpunt van het Microsoft-identiteitsplatform](./v2-permissions-and-consent.md)<br>
 
 [AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

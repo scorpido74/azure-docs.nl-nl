@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80550251"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114911"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Modus voor gedeeld apparaat voor iOS-apparaten
 
@@ -67,7 +67,7 @@ Het apparaat moet worden geconfigureerd voor de ondersteuning van de modus gedee
       - Type: Booleaans
       - Waarde: True
 
-    Zie de [intune-configuratie documentatie](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)voor meer informatie over het configureren van met intune.
+    Zie de [intune-configuratie documentatie](/intune/configuration/ios-device-features-settings)voor meer informatie over het configureren van met intune.
 
 1. Configureer vervolgens uw MDM om de Microsoft Authenticator-app naar uw apparaat te pushen via een MDM-profiel.
 

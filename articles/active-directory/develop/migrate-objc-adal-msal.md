@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77085172"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119926"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Toepassingen migreren naar MSAL voor iOS en macOS
 
@@ -45,7 +45,7 @@ Het micro soft Identity-platform heeft enkele belang rijke verschillen met Azure
 * Het Azure Active Directory v 1.0-eind punt vereist dat alle machtigingen vooraf worden gedeclareerd tijdens de registratie van de toepassing. Dit betekent dat deze machtigingen statisch zijn.
 * Met het micro soft Identity-platform kunt u dynamisch machtigingen aanvragen. Apps kunnen alleen om machtigingen vragen als dat nodig is en meer aanvragen als de app nodig heeft.
 
-Voor meer informatie over verschillen tussen Azure Active Directory v 1.0 en het micro soft-identiteits platform, Zie [Waarom bijwerken naar micro soft Identity platform (v 2.0)?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison).
+Voor meer informatie over verschillen tussen Azure Active Directory v 1.0 en het micro soft-identiteits platform, Zie [Waarom bijwerken naar micro soft Identity platform (v 2.0)?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="adal-and-msal-library-differences"></a>Verschillen in ADAL-en MSAL-bibliotheek
 
@@ -77,7 +77,7 @@ Dit is het ingebouwde bereik voor elke toepassing. Dit verwijst naar de statisch
 
 Als u het `/.default` bereik wilt gebruiken, voegt `/.default` u toe aan de resource-id. Bijvoorbeeld: `https://graph.microsoft.com/.default`. Als uw resource eindigt met een schuine streep ( `/` ), moet u nog steeds toevoegen `/.default` , met inbegrip van de voorloop back slash, wat resulteert in een bereik met een dubbele slash ( `//` ).
 
-U kunt [hier](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope) meer informatie lezen over het gebruik van het bereik '/.default '
+U kunt [hier](./v2-permissions-and-consent.md#the-default-scope) meer informatie lezen over het gebruik van het bereik '/.default '
 
 ### <a name="supporting-different-webview-types--browsers"></a>Ondersteuning voor verschillende webweergave typen & browsers
 
@@ -207,7 +207,7 @@ MSAL op iOS biedt ook ondersteuning voor twee andere typen SSO:
 
 ## <a name="intune-mam-sdk"></a>InTune MAM SDK
 
-De [intune mam SDK](https://docs.microsoft.com/intune/app-sdk-get-started) ondersteunt MSAL voor IOS, te beginnen met versie [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2)
+De [intune mam SDK](/intune/app-sdk-get-started) ondersteunt MSAL voor IOS, te beginnen met versie [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2)
 
 ## <a name="msal-and-adal-in-the-same-app"></a>MSAL en ADAL in dezelfde app
 

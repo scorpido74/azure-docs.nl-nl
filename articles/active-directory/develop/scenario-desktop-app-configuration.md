@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 9388ef4aa320147815bec79c2fa4b90bce3cdac1
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 56d2e01d35f25ac469e808a805382463d2b23ceb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846136"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121099"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Bureau blad-app voor het aanroepen van web-Api's: code configuratie
 
@@ -107,8 +107,8 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 Voor meer informatie over het configureren van een MSAL.NET-bureaublad toepassing:
 
-- `PublicClientApplicationBuilder`Zie de referentie documentatie [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)voor een lijst met alle wijzigingen die beschikbaar zijn op.
-- `PublicClientApplicationOptions`Zie [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) in de referentie documentatie voor een beschrijving van alle opties die worden weer gegeven in.
+- `PublicClientApplicationBuilder`Zie de referentie documentatie [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)voor een lijst met alle wijzigingen die beschikbaar zijn op.
+- `PublicClientApplicationOptions`Zie [PublicClientApplicationOptions](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) in de referentie documentatie voor een beschrijving van alle opties die worden weer gegeven in.
 
 ### <a name="complete-example-with-configuration-options"></a>Volledig voor beeld met configuratie opties
 

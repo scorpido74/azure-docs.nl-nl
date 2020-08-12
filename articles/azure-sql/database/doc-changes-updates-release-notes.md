@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: af19b72846c78ef80ba170b6d6e0cec97fa2b96e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533356"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121456"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 | ---| --- |
 | Versneld database herstel met afzonderlijke data bases en elastische Pools | Zie [versneld database herstel](../accelerated-database-recovery.md)voor meer informatie.|
 | Gegevensdetectie en -classificatie  |Zie [Azure SQL database en Azure Synapse Analytics data discovery & classificatie](data-discovery-and-classification-overview.md)voor meer informatie.|
-| Taken voor Elastic Database | Zie [elastische taken maken, configureren en beheren](elastic-jobs-overview.md)voor meer informatie. |
+| Taken voor Elastic data base (preview-versie) | Zie [elastische taken maken, configureren en beheren](elastic-jobs-overview.md)voor meer informatie. |
 | Elastische query’s | Zie [overzicht van elastische query's](elastic-query-overview.md)voor meer informatie. |
 | Elastische transacties | [Gedistribueerde trans acties over Cloud databases](elastic-transactions-overview.md). |
 | Query-Editor in het Azure Portal |Zie [de SQL-query editor van het Azure Portal gebruiken om verbinding te maken en gegevens op te vragen](connect-query-portal.md)voor meer informatie.|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 6c5e0779ce0dfe2730a60873316c66184e038a35
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 50cf58f83115cfb8c84fe7b2a37b6664c2d9c567
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039871"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116679"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Zwakke versleuteling en wachtwoord-hash-synchronisatie uitschakelen om een Azure Active Directory Domain Services beheerd domein te beveiligen
 
@@ -33,7 +33,7 @@ U hebt de volgende resources nodig om dit artikel te voltooien:
 * Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises map of een cloudmap.
     * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
-    * [Maak en configureer, indien nodig, een door Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
+    * [Maak en configureer zo nodig een door Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Installeer en configureer Azure PowerShell.
     * Indien nodig, volgt u de instructies voor [installeren van de Azure PowerShell-module en verbinding maken met uw Azure-abonnement](/powershell/azure/install-az-ps).
     * Zorg ervoor dat u zich bij uw Azure-abonnement aanmeldt met behulp van de [Connect-AzAccount][Connect-AzAccount]-cmdlet.
@@ -74,6 +74,11 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 ```
 
 Het duurt enkele ogen blikken voordat de beveiligings instellingen worden toegepast op het beheerde domein.
+
+> [!IMPORTANT]
+> Nadat u NTLM hebt uitgeschakeld, voert u een volledige wachtwoord hash-synchronisatie uit in Azure AD Connect om alle wacht woord-hashes te verwijderen uit het beheerde domein. Als u NTLM uitschakelt maar geen wachtwoord hash-synchronisatie afdwingt, worden NTLM-wachtwoord hashes voor een gebruikers account alleen verwijderd bij de volgende wachtwoord wijziging. Dit gedrag zou ertoe kunnen leiden dat een gebruiker zich aanmeldt als de referenties in de cache zijn opgeslagen op een systeem waarop NTLM als verificatie methode wordt gebruikt.
+>
+> Zodra de NTLM-wachtwoord-hash verschilt van de Kerberos-wachtwoord-hash, werkt terugval naar NTLM niet. Referenties in de cache werken ook niet meer als de virtuele machine verbinding heeft met de beheerde domein controller.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

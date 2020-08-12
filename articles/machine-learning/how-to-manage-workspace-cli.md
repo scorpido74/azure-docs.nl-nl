@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 06/25/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 4910dc03cc4ef24b8515271a9197650c4b041f01
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: how-to
+ms.openlocfilehash: 6c2d1b3db422a40f7bcf237c292b48183d99962b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489602"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121269"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,20 +28,20 @@ In dit artikel leert u hoe u een Azure Machine Learning-werk ruimte maakt met be
 
 * Als u de CLI-opdrachten in dit document wilt gebruiken vanuit uw **lokale omgeving**, hebt u de [Azure CLI nodig](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-    Als u de [Azure Cloud shell](https://azure.microsoft.com//features/cloud-shell/)gebruikt, wordt de CLI geopend via de browser en in de Cloud.
+    Als u [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) gebruikt, opent u de CLI via de browser en bevindt deze zich in de cloud.
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>De CLI koppelen aan uw Azure-abonnement
 
 > [!IMPORTANT]
 > Als u de Azure Cloud Shell gebruikt, kunt u deze sectie overs Laan. De Cloud shell verifieert u automatisch met het account dat u hebt aangemeld bij uw Azure-abonnement.
 
-Er zijn verschillende manieren waarop u kunt verifiëren bij uw Azure-abonnement vanuit de CLI. De meeste basis is om interactief te verifiëren met behulp van een browser. Als u interactief wilt verifiëren, opent u een opdracht regel of Terminal en gebruikt u de volgende opdracht:
+Er zijn verschillende manieren waarop u zich kunt verifiëren bij uw Azure-abonnement vanuit de CLI. De eenvoudigste methode is interactieve verificatie met behulp van een browser. Voor interactieve verificatie opent u een opdrachtregel of terminal en gebruikt u de volgende opdracht:
 
 ```azurecli-interactive
 az login
 ```
 
-Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser openen en de instructies op de opdracht regel volgen. De instructies moeten bladeren naar [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en een autorisatie code invoeren.
+Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser openen en de aanwijzingen op de opdrachtregel volgen. Dit omvat het bladeren naar [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en het invoeren van een autorisatiecode.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -49,7 +49,7 @@ Zie [Aanmelden met Azure cli](https://docs.microsoft.com/cli/azure/authenticate-
 
 ## <a name="install-the-machine-learning-extension"></a>De machine learning-extensie installeren
 
-Als u de extensie machine learning wilt installeren, gebruikt u de volgende opdracht:
+Installeer de machine learning-extensie met de volgende opdracht:
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -78,16 +78,16 @@ De Azure Machine Learning-werk ruimte is afhankelijk van de volgende Azure-Servi
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-De Azure Machine Learning-werk ruimte moet binnen een resource groep worden gemaakt. U kunt een bestaande resource groep gebruiken of een nieuwe maken. Gebruik de volgende opdracht om __een nieuwe resource groep te maken__. Vervang door `<resource-group-name>` de naam die u voor deze resource groep wilt gebruiken. Vervang door `<location>` de Azure-regio die u wilt gebruiken voor deze resource groep:
+De Azure Machine Learning-werk ruimte moet binnen een resource groep worden gemaakt. U kunt een bestaande resource groep gebruiken of een nieuwe maken. Met de volgende opdracht kunt u __een nieuwe resourcegroep maken__. Vervang `<resource-group-name>` door de naam die u voor deze resourcegroep wilt gebruiken. Vervang `<location>` door de Azure-regio die u voor deze resourcegroep wilt gebruiken:
 
 > [!TIP]
-> U moet een regio selecteren waar Azure Machine Learning beschikbaar is. Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)voor meer informatie.
+> U moet een regio selecteren waar Azure Machine Learning beschikbaar is. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service) voor informatie.
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
 ```
 
-Het antwoord van deze opdracht is vergelijkbaar met de volgende JSON:
+De respons van deze opdracht is vergelijkbaar met de volgende JSON:
 
 ```json
 {
@@ -103,7 +103,7 @@ Het antwoord van deze opdracht is vergelijkbaar met de volgende JSON:
 }
 ```
 
-Zie [AZ Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest)(Engelstalig) voor meer informatie over het werken met resource groepen.
+Zie [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest) voor meer informatie over het werken met resourcegroepen.
 
 ### <a name="automatically-create-required-resources"></a>Automatisch vereiste resources maken
 
@@ -141,6 +141,44 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
   "workspaceid": "<GUID>"
 }
 ```
+
+### <a name="virtual-network-and-private-endpoint"></a>Virtueel netwerk en persoonlijk eind punt
+
+Als u de toegang tot uw werk ruimte wilt beperken tot een virtueel netwerk, kunt u de volgende para meters gebruiken:
+
+* `--pe-name`: De naam van het persoonlijke eind punt dat is gemaakt.
+* `--pe-auto-approval`: Of privé-eindpunt verbindingen met de werk ruimte automatisch moeten worden goedgekeurd.
+* `--pe-resource-group`: De resource groep waarin het persoonlijke eind punt moet worden gemaakt. Moet dezelfde groep zijn die het virtuele netwerk bevat.
+* `--pe-vnet-name`: Het bestaande virtuele netwerk voor het maken van het persoonlijke eind punt in.
+* `--pe-subnet-name`: De naam van het subnet waarin het persoonlijke eind punt moet worden gemaakt. De standaardwaarde is `default`.
+
+Zie [netwerk isolatie en privacy](how-to-enable-virtual-network.md)voor meer informatie over het gebruik van een persoonlijk eind punt en een virtueel netwerk met uw werk ruimte.
+
+### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Door de klant beheerde sleutel en een werk ruimte met hoge bedrijfs impact
+
+Standaard worden metrische gegevens en meta data voor de werk ruimte opgeslagen in een Azure Cosmos DB exemplaar dat door micro soft wordt beheerd. Deze gegevens zijn versleuteld met door micro soft beheerde sleutels. 
+
+Als u een __Enter prise__ -versie van Azure machine learning maakt, kunt u de zelf code opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat metrische gegevens en meta data opslaat in uw Azure-abonnement. Gebruik de `--cmk-keyvault` para meter om de Azure Key Vault op te geven die de sleutel bevat en `--resource-cmk-uri` om de URL op te geven van de sleutel in de kluis.
+
+> [!IMPORTANT]
+> Voordat u de `--cmk-keyvault` `--resource-cmk-uri` para meters en gebruikt, moet u eerst de volgende acties uitvoeren:
+>
+> 1. Machtig de __machine learning-app__ (in identiteits-en toegangs beheer) met Inzender machtigingen voor uw abonnement.
+> 1. Volg de stappen in door de [klant beheerde sleutels configureren](/azure/cosmos-db/how-to-setup-cmk) voor:
+>     * De Azure Cosmos DB provider registreren
+>     * Een Azure Key Vault maken en configureren
+>     * Een sleutel genereren
+>
+>     U hoeft het Azure Cosmos DB exemplaar niet hand matig te maken, er wordt een voor u gemaakt tijdens het maken van de werk ruimte. Dit Azure Cosmos DB exemplaar wordt in een afzonderlijke resource groep gemaakt met behulp van een naam op basis van dit patroon: `<your-resource-group-name>_<GUID>` .
+>
+> U kunt deze instelling niet wijzigen nadat de werk ruimte is gemaakt. Als u de Azure Cosmos DB die door uw werk ruimte worden gebruikt, verwijdert, moet u ook de werk ruimte verwijderen die er gebruik van maakt.
+
+Gebruik de para meter om de gegevens te beperken die door micro soft worden verzameld op uw werk ruimte `--hbi-workspace` . 
+
+> [!IMPORTANT]
+> Het selecteren van belang rijke bedrijfs impact kan alleen worden uitgevoerd bij het maken van een werk ruimte. U kunt deze instelling niet wijzigen nadat de werk ruimte is gemaakt.
+
+Zie [Enter prise Security for Azure machine learning](concept-enterprise-security.md#encryption-at-rest)voor meer informatie over door de klant beheerde sleutels en een werk ruimte met een grote bedrijfs impact.
 
 ### <a name="use-existing-resources"></a>Bestaande resources gebruiken
 

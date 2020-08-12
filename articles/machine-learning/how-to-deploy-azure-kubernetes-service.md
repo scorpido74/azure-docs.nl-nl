@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 9503abf147ee89ec03e7e1317df823426ea37b1c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758880"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120827"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Het AKS-cluster en de AML-werk ruimte kunnen zich in verschillende resource groe
 > Het maken of verzenden van een bijlage is een eenmalige taak. Zodra een AKS-cluster is verbonden met de werk ruimte, kunt u het gebruiken voor implementaties. U kunt het AKS-cluster loskoppelen of verwijderen als u het niet meer nodig hebt. Zodra de verbinding is verbroken of verwijderd, kunt u niet meer implementeren naar het cluster.
 
 > [!IMPORTANT]
-> Het wordt ten zeerste aanbevolen om lokaal fouten op te sporen voordat u de webservice implementeert, voor meer informatie. Raadpleeg [lokaal fouten opsporen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+> U wordt aangeraden lokaal fouten op te sporen voordat u de webservice implementeert. Zie voor meer informatie [fouten opsporen in lokaal](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
 >
 > U kunt ook verwijzen naar Azure Machine Learning- [implementeren naar lokale notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
@@ -63,7 +63,7 @@ Het AKS-cluster en de AML-werk ruimte kunnen zich in verschillende resource groe
 
 - In het __cli__ -fragment in dit artikel wordt ervan uitgegaan dat u een document hebt gemaakt `inferenceconfig.json` . Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van dit document.
 
-- Als u een Standard Load Balancer (SLB) hebt geïmplementeerd in uw cluster in plaats van een basis Load Balancer (BLB), maakt u een cluster in de AKS-Portal/CLI/SDK en koppelt u dit aan de AML-werk ruimte.
+- Als u een Standard Load Balancer (SLB) hebt geïmplementeerd in uw cluster in plaats van een Basic-Load Balancer (BLB), maakt u een cluster in de AKS-Portal/CLI/SDK en koppelt u het vervolgens aan de werk ruimte AML.
 
 - Als u een AKS-cluster koppelt, waarvoor een [geautoriseerd IP-bereik is ingeschakeld voor toegang tot de API-server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), schakelt u de IP-adresbereiken van het AML-besturings vlak in voor het AKS-cluster. Het AML-besturings vlak wordt geïmplementeerd in gepaarde regio's en er wordt een detwistisatie voor het AKS-cluster geïmplementeerd. Als u geen toegang hebt tot de API-server, kan het niet meer worden geïmplementeerd. Gebruik de [IP-bereiken](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) voor beide [regio's]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) bij het inschakelen van de IP-bereiken in een AKS-cluster.
 
@@ -88,7 +88,7 @@ __IP-adresbereiken van Authroized werken alleen met Standard Load Balancer.__
 Het maken of koppelen van een AKS-cluster is een eenmalig proces voor uw werk ruimte. U kunt dit cluster hergebruiken voor meerdere implementaties. Als u het cluster of de resource groep verwijdert die het bevat, moet u de volgende keer dat u moet implementeren een nieuw cluster maken. Er kunnen meerdere AKS-clusters aan uw werk ruimte zijn gekoppeld.
  
 Azure Machine Learning ondersteunt nu het gebruik van een Azure Kubernetes-service waarvoor een persoonlijke koppeling is ingeschakeld.
-Volg docs [hier](https://docs.microsoft.com/azure/aks/private-clusters) om een persoonlijk AKS-cluster te maken
+Volg [hier](https://docs.microsoft.com/azure/aks/private-clusters) de documenten voor het maken van een persoonlijk AKS-cluster
 
 > [!TIP]
 > Als u uw AKS-cluster met behulp van een Azure Virtual Network wilt beveiligen, moet u eerst het virtuele netwerk maken. Zie voor meer informatie [beveiligd experimenten en demijnen met Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
@@ -109,6 +109,13 @@ from azureml.core.compute import AksCompute, ComputeTarget
 # For example, to create a dev/test cluster, use:
 # prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
+# Example configuration to use an existing virtual network
+# prov_config.vnet_name = "mynetwork"
+# prov_config.vnet_resourcegroup_name = "mygroup"
+# prov_config.subnet_name = "default"
+# prov_config.service_cidr = "10.0.0.0/16"
+# prov_config.dns_service_ip = "10.0.0.10"
+# prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
 aks_name = 'myaks'
 # Create the cluster
@@ -267,7 +274,7 @@ Zie voor meer informatie over het gebruik van VS code [implementeren naar AKS vi
 
 ### <a name="understand-the-deployment-processes"></a>Meer informatie over de implementatie processen
 
-Het woord ' implementatie ' wordt gebruikt in zowel Kubernetes als Azure Machine Learning. ' Implementatie ' heeft zeer verschillende betekenissen in deze twee contexten. In Kubernetes is een een `Deployment` concrete entiteit die is opgegeven met een declaratief yaml-bestand. Een Kubernetes `Deployment` heeft een gedefinieerde levens cyclus en concrete relaties met andere Kubernetes-entiteiten, zoals `Pods` en `ReplicaSets` . Meer informatie over Kubernetes van documenten en Video's vindt u op [Wat is Kubernetes?](https://aka.ms/k8slearning).
+Het woord ' implementatie ' wordt gebruikt in zowel Kubernetes als Azure Machine Learning. ' Implementatie ' heeft verschillende betekenissen in deze twee contexten. In Kubernetes is een een `Deployment` concrete entiteit die is opgegeven met een declaratief yaml-bestand. Een Kubernetes `Deployment` heeft een gedefinieerde levens cyclus en concrete relaties met andere Kubernetes-entiteiten, zoals `Pods` en `ReplicaSets` . Meer informatie over Kubernetes van documenten en Video's vindt u op [Wat is Kubernetes?](https://aka.ms/k8slearning).
 
 In Azure Machine Learning wordt ' implementatie ' gebruikt voor een meer algemene indruk van het maken van de beschik baarheid en het opschonen van uw project resources. De stappen die Azure Machine Learning een deel van de implementatie beschouwt zijn:
 

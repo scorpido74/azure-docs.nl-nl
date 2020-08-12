@@ -13,12 +13,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8895e52209622025f943aaa6a4261b68a7e2899c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034836"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116293"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Richt lijnen voor ontwikkel aars voor de functie voor voorwaardelijke toegang van Azure Active Directory
 
@@ -90,7 +90,7 @@ Ontwikkel aars kunnen deze uitdaging volgen en toevoegen aan een nieuwe aanvraag
 
 ### <a name="prerequisites"></a>Vereisten
 
-Voorwaardelijke toegang van Azure AD is een functie die deel uitmaakt van [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Meer informatie over licentie vereisten vindt u in het [gebruiks rapport zonder licentie](../active-directory-conditional-access-unlicensed-usage-report.md). Ontwikkel aars kunnen deel nemen aan het [micro soft Developer Network](https://msdn.microsoft.com/dn308572.aspx), dat een gratis abonnement op de Enter prise Mobility Suite bevat, waaronder Azure AD Premium.
+Voorwaardelijke toegang van Azure AD is een functie die deel uitmaakt van [Azure AD Premium](../fundamentals/active-directory-whatis.md). Meer informatie over licentie vereisten vindt u in het [gebruiks rapport zonder licentie](../reports-monitoring/overview-reports.md). Ontwikkel aars kunnen deel nemen aan het [micro soft Developer Network](/), dat een gratis abonnement op de Enter prise Mobility Suite bevat, waaronder Azure AD Premium.
 
 ### <a name="considerations-for-specific-scenarios"></a>Overwegingen voor specifieke scenario's
 
@@ -175,9 +175,9 @@ Onze app moet worden onderschept `error=interaction_required` . De toepassing ka
 
 Als u dit scenario wilt uitproberen, raadpleegt u ons [js Spa-code voorbeeld](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Dit code voorbeeld maakt gebruik van het beleid voor voorwaardelijke toegang en de Web-API die u eerder hebt geregistreerd met een JS SPA om dit scenario te demonstreren. Hier ziet u hoe u de claim Challenge goed kunt afhandelen en een toegangs token krijgt dat kan worden gebruikt voor uw web-API. U kunt ook het voor beeld van de algemene [Angular.js code](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) uitchecken voor hulp bij een hoek Spa
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-* Zie [voorwaardelijke toegang in azure Active Directory](../active-directory-conditional-access-azure-portal.md)voor meer informatie over de mogelijkheden.
+* Zie [voorwaardelijke toegang in azure Active Directory](../conditional-access/overview.md)voor meer informatie over de mogelijkheden.
 * Zie [github opslag plaats code samples](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)(Engelstalig) voor meer informatie over Azure ad-code voorbeelden.
 * Zie de [Bibliotheek handleiding](active-directory-authentication-libraries.md)voor meer informatie over de ADAL-SDK en toegang tot de referentie documentatie.
 * Zie [gebruikers aanmelden met het multi tenant-patroon](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie over scenario's met meerdere tenants.

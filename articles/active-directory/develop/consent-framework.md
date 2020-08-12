@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: e706c0eeb848b6cd14a3c14de821ca59a9c52ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe321de279397d24e0926cf1ef26a1d66adac8c4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611361"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117308"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Raamwerk Azure Active Directory-toestemming
 
@@ -28,7 +28,7 @@ Het Framework is gebaseerd op een gebruiker of een beheerder die toestemming gee
 
 Het toestemming raamwerk is gebaseerd op OAuth 2,0 en de verschillende stromen, zoals autorisatie code toekenning en client referenties verlenen, met behulp van open bare of vertrouwelijke clients. Met behulp van OAuth 2,0 kunt u met Azure AD veel verschillende soorten client toepassingen bouwen, zoals op een telefoon, Tablet, server of webtoepassing, en toegang krijgen tot de vereiste bronnen.
 
-Zie [toegang tot webtoepassingen met oauth 2,0-en Azure AD](v2-oauth2-auth-code-flow.md) -en [verificatie SCENARIO'S voor Azure AD](authentication-scenarios.md)machtigen voor meer informatie over het gebruik van het toestemming raamwerk met OAuth 2.0-autorisatie subsidies. Zie [app-verificatie met Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)voor informatie over het verkrijgen van geautoriseerde toegang tot Office 365 via Microsoft Graph.
+Zie [toegang tot webtoepassingen met oauth 2,0-en Azure AD](v2-oauth2-auth-code-flow.md) -en [verificatie SCENARIO'S voor Azure AD](./authentication-vs-authorization.md)machtigen voor meer informatie over het gebruik van het toestemming raamwerk met OAuth 2.0-autorisatie subsidies. Zie [app-verificatie met Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)voor informatie over het verkrijgen van geautoriseerde toegang tot Office 365 via Microsoft Graph.
 
 ## <a name="consent-experience---an-example"></a>Bestemmings ervaring-een voor beeld
 
@@ -65,4 +65,4 @@ In de volgende stappen ziet u hoe de bestemmings ervaring werkt voor zowel de on
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [een app converteren naar multi tenant](howto-convert-app-to-be-multi-tenant.md)
-* Meer informatie over [hoe toestemming wordt ondersteund op de OAuth 2,0-protocol laag tijdens de autorisatie code toekenning stroom.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+* Meer informatie over [hoe toestemming wordt ondersteund op de OAuth 2,0-protocol laag tijdens de autorisatie code toekenning stroom.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
