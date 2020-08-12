@@ -49,6 +49,8 @@
       items:
         - name: Beveiligingsbasislijn
           href: security-baseline.md
+    - name: Gegevenslocatie
+      href: data-residency.md
 - name: Instructiegidsen
   items:
     - name: Network Watcher configureren

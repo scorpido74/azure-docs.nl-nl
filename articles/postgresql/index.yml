@@ -8,12 +8,12 @@ metadata:
   ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 4deeec3686d2e3b0a150b74a222f7f1eab0a93fd
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 432dfe4e7907d8599dd9655a3e3eb67987ea6f39
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73932229"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88078016"
 landingContent:
 - title: Algemene informatie over Azure Database for PostgreSQL
   linkLists:
@@ -54,7 +54,7 @@ landingContent:
     - text: Een database ontwerpen met Azure CLI
       url: tutorial-design-database-using-azure-cli.md
     - text: Een web-app maken met Python en de CLI
-      url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
+      url: ../app-service/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
     - text: De service controleren en afstemmen
       url: tutorial-monitor-and-tune.md
 - title: Een Hyperscale-cluster (Citus) maken
@@ -85,7 +85,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Informatie over de firewall
+    - text: De firewall begrijpen
       url: concepts-firewall-rules.md
     - text: Firewall-regels maken
       url: howto-manage-firewall-using-portal.md
@@ -93,21 +93,21 @@ landingContent:
       url: concepts-ssl-connection-security.md
   - linkListType: get-started
     links:
-    - text: Verbinding maken met behulp van Python
+    - text: Verbinding maken met Python
       url: connect-python.md
     - text: Verbinding maken met behulp van Node.js
       url: connect-nodejs.md
-    - text: Verbinding maken met behulp van Java
+    - text: Verbinding maken met Java
       url: connect-java.md
-    - text: Verbinding maken met behulp van Ruby
+    - text: Verbinding maken met Ruby
       url: connect-ruby.md
-    - text: Verbinding maken met behulp van PHP
+    - text: Verbinding maken met PHP
       url: connect-php.md
-    - text: Verbinding maken met behulp van .NET
+    - text: Verbinding maken met .NET
       url: connect-csharp.md
-    - text: Verbinding maken met behulp van Go
+    - text: Verbinding maken met Go
       url: connect-go.md
-- title: Coderen met programmeer-API's
+- title: Code met programmeer-API's
   linkLists:
   - linkListType: get-started
     links:

@@ -468,13 +468,13 @@
     - name: Automatisch gebruikers inrichten (SCIM)
       items:
         - name: Wat is automatische inrichting van gebruikers?
-          href: /azure/active-directory/app-provisioning/user-provisioning
+          href: ../app-provisioning/user-provisioning.md
         - name: Een SCIM-eindpunt ontwikkelen en integreren
-          href: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
+          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md
         - name: Algemene scenario's voor inrichting
-          href: /azure/active-directory/app-provisioning/scim-graph-scenarios
+          href: ../app-provisioning/scim-graph-scenarios.md
         - name: Configuratie automatiseren met behulp van MS Graph
-          href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
+          href: ../app-provisioning/application-provisioning-configure-api.md
     - name: Help-artikelen over de Azure-portal
       items:
         - name: Standaardlevensduur van tokens voor een zelf ontwikkelde toepassing
@@ -630,7 +630,7 @@
         - name: Publiceren naar de Azure AD-app-galerie
           href: v2-howto-app-gallery-listing.md
         - name: Publiceren naar het Office 365-verkopersdashboard
-          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
 - name: Naslaginformatie
   items:
     - name: Manifest van de toepassing
@@ -642,7 +642,7 @@
       displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: Identiteits- en toegangs-API's in Microsoft Graph
-      href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview'
+      href: /graph/api/resources/azure-ad-overview
     - name: Codes van verificatie- en autorisatiefouten
       displayName: AADSTS
       href: reference-aadsts-error-codes.md
@@ -663,7 +663,7 @@
     - name: Aanmelden met Microsoft uitproberen
       href: 'https://azure.microsoft.com/develop/identity/signin/'
     - name: Beheerde identiteiten voor Azure-resources
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+      href: ../managed-identities-azure-resources/overview.md
     - name: Ondersteuning vragen
       displayName: 'support, help options'
       href: developer-support-help-options.md
