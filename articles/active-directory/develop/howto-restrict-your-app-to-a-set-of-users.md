@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6e20b2f8c0e12fdb23668d16e2cbd7936cc4e48c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: a9b0090fa13a6d2f7a837a4f5ffee37d70893318
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445458"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116900"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Procedure: uw Azure AD-App beperken tot een set gebruikers in een Azure AD-Tenant
 
@@ -39,7 +39,7 @@ De optie om een app te beperken tot een specifieke set gebruikers of beveiliging
 - Toepassingen die rechtstreeks zijn gebouwd op het Azure AD-toepassings platform die gebruikmaken van OAuth 2.0/OpenID Connect Connect-verificatie nadat een gebruiker of beheerder heeft ingestemd met die toepassing.
 
      > [!NOTE]
-     > Deze functie is alleen beschikbaar voor web-app/Web-API en bedrijfs toepassingen. Apps die zijn geregistreerd als [systeem eigen](quickstart-v1-integrate-apps-with-azure-ad.md) , kunnen niet worden beperkt tot een set gebruikers of beveiligings groepen in de Tenant.
+     > Deze functie is alleen beschikbaar voor web-app/Web-API en bedrijfs toepassingen. Apps die zijn geregistreerd als [systeem eigen](./quickstart-register-app.md) , kunnen niet worden beperkt tot een set gebruikers of beveiligings groepen in de Tenant.
 
 ## <a name="update-the-app-to-enable-user-assignment"></a>De app bijwerken om de gebruikers toewijzing in te scha kelen
 
@@ -95,8 +95,8 @@ Zodra u uw app hebt geconfigureerd om gebruikers toewijzing in te scha kelen, ku
 
 ## <a name="more-information"></a>Meer informatie
 
-- [Procedure: app-functies toevoegen in uw toepassing](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)
+- [Procedure: app-functies toevoegen in uw toepassing](./howto-add-app-roles-in-azure-ad-apps.md)
 - [Autorisatie toevoegen met behulp van app-rollen & rollen claims aan een ASP.NET Core-web-app](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Beveiligings groepen en toepassings rollen gebruiken in uw apps (video)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory, nu met groeps claims en toepassings rollen](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory-app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory-app-manifest](./reference-app-manifest.md)

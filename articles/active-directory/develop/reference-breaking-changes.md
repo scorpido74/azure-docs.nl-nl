@@ -12,12 +12,12 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2fe41cdc6fa1adef96568981df5bb13129fe900f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026727"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115030"
 ---
 # <a name="whats-new-for-authentication"></a>Wat is er nieuw voor verificatie?
 
@@ -49,7 +49,7 @@ Geen gepland op dit moment.  Hieronder vindt u een overzicht van de wijzigingen 
 
 Op 1 juni 2018 is de certificerings instantie van officiële Azure Active Directory (AAD) voor Azure Government gewijzigd van `https://login-us.microsoftonline.com` naar `https://login.microsoftonline.us` . Deze wijziging is ook van toepassing op Microsoft 365 GCC High en DoD, die ook services van AAD Azure Government. Als u eigenaar bent van een toepassing in een Amerikaanse Government-Tenant, moet u uw toepassing bijwerken om gebruikers in te schrijven op het `.us` eind punt.  
 
-Vanaf 5 mei is Azure AD bezig met het afdwingen van de wijziging van het eind punt, waardoor overheids gebruikers zich niet kunnen aanmelden bij apps die worden gehost in Amerikaanse overheids tenants met behulp van het open bare eind punt ( `microsoftonline.com` ).  Er wordt een fout weer gegeven wanneer er betrokken apps worden weer gegeven `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Deze fout geeft aan dat de app probeert zich aan te melden bij een Amerikaanse overheids gebruiker op het eind punt van de open bare Cloud. Als uw app zich in een open bare Cloud Tenant bevindt en bedoeld is voor de ondersteuning van Amerikaanse overheids gebruikers, moet u [uw app bijwerken zodat deze expliciet worden ondersteund](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). Hiervoor moet u mogelijk een nieuwe app-registratie in de Amerikaanse overheids Cloud maken. 
+Vanaf 5 mei is Azure AD bezig met het afdwingen van de wijziging van het eind punt, waardoor overheids gebruikers zich niet kunnen aanmelden bij apps die worden gehost in Amerikaanse overheids tenants met behulp van het open bare eind punt ( `microsoftonline.com` ).  Er wordt een fout weer gegeven wanneer er betrokken apps worden weer gegeven `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Deze fout geeft aan dat de app probeert zich aan te melden bij een Amerikaanse overheids gebruiker op het eind punt van de open bare Cloud. Als uw app zich in een open bare Cloud Tenant bevindt en bedoeld is voor de ondersteuning van Amerikaanse overheids gebruikers, moet u [uw app bijwerken zodat deze expliciet worden ondersteund](./authentication-national-cloud.md). Hiervoor moet u mogelijk een nieuwe app-registratie in de Amerikaanse overheids Cloud maken. 
 
 Het afdwingen van deze wijziging wordt uitgevoerd met behulp van een geleidelijke implementatie op basis van hoe vaak gebruikers van de Amerikaanse overheids Cloud zich aanmelden bij de toepassing-apps die door Amerikaanse overheids gebruikers worden gebruikt, en apps die regel matig door de gebruikers van de Amerikaanse overheid worden gehanteerd, zullen afdwinging hebben toegepast. We verwachten dat afdwinging voor alle apps in juni 2020 is voltooid. 
 
@@ -98,7 +98,7 @@ Wanneer een verificatie reactie vanuit login.microsoftonline.com naar een toepas
 
 **Beïnvloede eind punten**: zowel v 1.0 als v 2.0
 
-**Getroffen protocol**: Anywhere post wordt gebruikt ([client referenties](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), inzending van [autorisatie code](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)en [vernieuwing](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)van het token)
+**Getroffen protocol**: Anywhere post wordt gebruikt ([client referenties](./v2-oauth2-client-creds-grant-flow.md), inzending van [autorisatie code](./v2-oauth2-auth-code-flow.md), [ROPC](./v2-oauth-ropc.md), [OBO](./v2-oauth2-on-behalf-of-flow.md)en [vernieuwing](./v2-oauth2-auth-code-flow.md#refresh-the-access-token)van het token)
 
 Met ingang van de week van 9/2 worden verificatie aanvragen die gebruikmaken van de POST-methode gevalideerd met striktere HTTP-standaarden.  In het bijzonder worden spaties en dubbele aanhalings tekens (") niet meer verwijderd uit de waarden van het aanvraag formulier. Deze wijzigingen worden niet verwacht om bestaande clients te verstoren, en zorgen ervoor dat aanvragen die naar Azure AD worden verzonden, elke keer betrouwbaar worden afgehandeld. In de toekomst (zie hierboven) gaan we ook dubbele para meters afwijzen en de stuk lijst in aanvragen negeren.
 
@@ -113,9 +113,9 @@ De huidige datum `?e=    "f"&g=h` wordt identiek geparseerd `?e=f&g=h` `e`  ==  
 
 **Ingangs datum**: 26 juli 2019
 
-**Beïnvloede eind punten**: zowel [v 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) als [v 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**Beïnvloede eind punten**: zowel [v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) als [v 2.0](./v2-oauth2-client-creds-grant-flow.md)
 
-**Beïnvloede protocol**: [client referenties (tokens van app-only)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**Beïnvloede protocol**: [client referenties (tokens van app-only)](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 
 Een beveiligings wijziging heeft Live juli 26 die de manier waarop alleen app-tokens (via de client referenties verlenen) wordt uitgegeven, gewijzigd. Voorheen konden toepassingen tokens ophalen voor het aanroepen van andere apps, ongeacht de aanwezigheid van de Tenant of rollen die zijn gemachtigd voor die toepassing.  Dit gedrag is bijgewerkt, zodat voor resources (ook wel web-Api's genoemd) zijn ingesteld op één Tenant (de standaard instelling), de client toepassing moet bestaan in de resource Tenant.  Houd er rekening mee dat bestaande toestemming tussen de client en de API nog steeds niet is vereist en dat apps nog steeds hun eigen autorisatie controles moeten uitvoeren om ervoor te zorgen dat er een `roles` claim aanwezig is en de verwachte waarde voor de API bevat.
 

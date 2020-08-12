@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885528"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117206"
 ---
 # <a name="support-and-help-options-for-developers"></a>Ondersteunings- en Help-opties voor ontwikkelaars
 
@@ -30,7 +30,7 @@ Als u net begint met de integratie met Azure Active Directory (Azure AD), micro 
 > * Als u een probleem met een van onze verificatie bibliotheken tegen komt, kunt u een *github* -probleem veroorzaken
 > * Ten slotte, als u met iemand moet praten, wilt u mogelijk een ondersteunings aanvraag openen
 
-## <a name="search"></a>Search
+## <a name="search"></a>Zoeken
 
 Als u een vraag hebt over de ontwikkeling, kunt u het antwoord mogelijk vinden in de documentatie, voor [beelden van github](https://github.com/azure-samples)of antwoorden op [stack overflow](https://www.stackoverflow.com) vragen.
 
@@ -46,7 +46,7 @@ Waar *{uw zoek termen}* overeenkomen met uw zoek woorden.
 
 ## <a name="use-the-development-support-tools"></a>De hulpprogram ma's voor ontwikkelings ondersteuning gebruiken
 
-| Hulpprogramma  | Description  |
+| Hulpprogramma  | Beschrijving  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Plak een ID of toegangs token om de claim namen en-waarden te decoderen. |
 | [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Hulp programma waarmee u aanvragen kunt doen en reacties op de Microsoft Graph-API ziet. |
@@ -62,7 +62,7 @@ Als u via zoeken geen antwoord op uw vraag kunt vinden, dient u een nieuwe vraag
 | ADAL-bibliotheek | [adal](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL-bibliotheek     | [msal](https://stackoverflow.com/questions/tagged/msal) |
 | OWIN-middleware  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure-B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
 | [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[micro soft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
 | Elk ander gebied dat betrekking heeft op verificatie-of autorisatie-onderwerpen | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 5abc10d149cdb2c054f4122cd805ec22b2e37e2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096924"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114656"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Cloud Shell implementeren in een virtueel Azure-netwerk
 > [!NOTE]
@@ -103,7 +103,7 @@ Ga naar de relay die is gemaakt met de bovenstaande sjabloon en selecteer ' netw
 > [!NOTE]
 > Deze stap moet worden uitgevoerd voor elke beheerder die gebruikmaakt van Cloud Shell.
 
-Ga na de implementatie van de bovenstaande stappen naar Cloud Shell in het Azure Portal of op https://shell.azure.com .
+Ga na de implementatie van de bovenstaande stappen naar Cloud Shell in het Azure Portal of op https://shell.azure.com . Een van deze ervaringen moet worden gebruikt elke keer dat u verbinding wilt maken met een geïsoleerde Cloud Shell ervaring.
 
 > [!NOTE]
 > Als Cloud Shell in het verleden is gebruikt, moet de bestaande clouddrive worden ontkoppeld. U kunt dit uitvoeren `clouddrive unmount` vanuit een actieve Cloud shell-sessie door de pagina te vernieuwen.

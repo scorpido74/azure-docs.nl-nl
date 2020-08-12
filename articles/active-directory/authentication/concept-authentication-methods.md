@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b6111529d1a3d37f08b29fb5c0751fb6a49acea5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054065"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116764"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke authenticatie- en verificatiemethoden zijn er beschikbaar in Azure Active Directory?
 
@@ -45,6 +45,8 @@ De volgende tabel geeft een overzicht van de methoden die beschikbaar zijn voor 
 | [Beveiligingsvragen](#security-questions) | Nee | Alleen SSPR |
 | [E-mailadres](#email-address) | Nee | Alleen SSPR |
 | [App-wachtwoorden](#app-passwords) | Nee | Alleen in bepaalde gevallen MFA |
+
+Deze verificatie methoden kunnen worden geconfigureerd in de Azure Portal en het gebruik van de [Microsoft Graph rest API bèta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)wordt steeds vaker gebruikt.
 
 Dit artikel bevat een overzicht van de verschillende verificatie-en verificatie methoden die beschikbaar zijn in azure AD en alle specifieke beperkingen of beperkingen.
 
@@ -297,6 +299,8 @@ Zie de [zelfstudie voor self-service voor wachtwoordherstel (SSPR)][tutorial-ssp
 Zie [hoe Azure AD self-service password reset werkt][concept-sspr]voor meer informatie over SSPR-concepten.
 
 Zie [hoe Azure multi-factor Authentication werkt][concept-mfa]voor meer informatie over MFA-concepten.
+
+Meer informatie over het configureren van verificatie methoden met behulp van de [Microsoft Graph rest API bèta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

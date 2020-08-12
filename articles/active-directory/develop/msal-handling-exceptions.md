@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204623"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120946"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-uitzonde ringen en-fouten verwerken
 
@@ -236,7 +236,7 @@ In MSAL voor python worden de meeste fouten overgebracht als een retour waarde v
 * Een geslaagd antwoord bevat de `"access_token"` sleutel. De indeling van het antwoord wordt gedefinieerd door het OAuth2-protocol. Zie [5,1 geslaagde reactie](https://tools.ietf.org/html/rfc6749#section-5.1) voor meer informatie
 * Een fout bericht bevat `"error"` en is doorgaans `"error_description"` . De indeling van het antwoord wordt gedefinieerd door het OAuth2-protocol. Zie [5,2-fout](https://tools.ietf.org/html/rfc6749#section-5.2) melding voor meer informatie
 
-Als er een fout wordt geretourneerd, `"error_description"` bevat de sleutel een bericht met een lees bare tekst. Deze bevat meestal een fout code voor micro soft Identity platform. Zie [fout codes voor verificatie en autorisatie](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes)voor meer informatie over de verschillende fout codes.
+Als er een fout wordt geretourneerd, `"error_description"` bevat de sleutel een bericht met een lees bare tekst. Deze bevat meestal een fout code voor micro soft Identity platform. Zie [fout codes voor verificatie en autorisatie](./reference-aadsts-error-codes.md)voor meer informatie over de verschillende fout codes.
 
 In MSAL voor python zijn uitzonde ringen zeldzame, omdat de meeste fouten worden verwerkt door een fout waarde te retour neren. De `ValueError` uitzonde ring wordt alleen gegenereerd als er een probleem is met de manier waarop u de bibliotheek probeert te gebruiken, bijvoorbeeld wanneer de API-para meter (s) ongeldig zijn.
 

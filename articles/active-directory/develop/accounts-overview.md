@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: 1dabadfe30a28fdae409f8452aac2cca4b765418
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313486"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115982"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Accounts en tenantprofielen (Android)
 
@@ -69,7 +69,7 @@ In het bovenstaande diagram:
   - Een Tenant profiel voor `tom@live.com` bestaat in elk van deze tenants.
 - Informatie over Tom en Bob in andere tenants kan afwijken van die in het record systeem. Ze kunnen verschillen met kenmerken zoals de functie, de kantoor locatie, enzovoort. Ze kunnen lid zijn van groepen en/of rollen binnen elke organisatie (Azure Active Directory Tenant). We verwijzen naar deze informatie als bob@contoso.com Tenant profiel.
 
-In het diagram bob@contoso.com en tom@live.com toegang hebben tot resources in verschillende Azure Active Directory tenants. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)voor meer informatie.
+In het diagram bob@contoso.com en tom@live.com toegang hebben tot resources in verschillende Azure Active Directory tenants. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../external-identities/add-users-administrator.md)voor meer informatie.
 
 ## <a name="accounts-and-single-sign-on-sso"></a>Accounts en eenmalige aanmelding (SSO)
 
@@ -118,10 +118,10 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> Raadpleeg [claims in een id_token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token) voor een lijst met beschik bare claims van het account object
+> Raadpleeg [claims in een id_token](./id-tokens.md#claims-in-an-id_token) voor een lijst met beschik bare claims van het account object
 
 > [!TIP]
-> Als u aanvullende claims in uw id_token wilt toevoegen, raadpleegt u de documentatie voor de optionele claims in [How to: optionele claims voor uw Azure AD-App opgeven](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)
+> Als u aanvullende claims in uw id_token wilt toevoegen, raadpleegt u de documentatie voor de optionele claims in [How to: optionele claims voor uw Azure AD-App opgeven](./active-directory-optional-claims.md)
 
 ### <a name="access-tenant-profile-claims"></a>Claims voor toegang tot Tenant profielen
 

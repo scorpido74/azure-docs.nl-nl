@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1adff446e6d41e30db109d0871811dc651f1f4f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b16ee98b44e52482423229a0940c8927a94d4c83
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026242"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118668"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-app die zich aanmeldt bij gebruikers: app-registratie
 
@@ -41,7 +41,7 @@ U kunt deze koppelingen gebruiken om het maken van uw webtoepassing te Boots tra
 > De te gebruiken Portal verschilt, afhankelijk van of uw toepassing wordt uitgevoerd in de Microsoft Azure open bare Cloud of in een nationale of soevereine Cloud. Zie [National Clouds](./authentication-national-cloud.md#app-registration-endpoints)(Engelstalig) voor meer informatie.
 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account. U kunt zich ook aanmelden bij de [Azure Portal keuze](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#app-registration-endpoints) voor de nationale Cloud.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account. U kunt zich ook aanmelden bij de [Azure Portal keuze](./authentication-national-cloud.md#app-registration-endpoints) voor de nationale Cloud.
 2. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u uw account in de rechter bovenhoek. Stel vervolgens uw portal-sessie in op de gewenste Azure Active Directory-Tenant (Azure AD).
 3. Selecteer in het linkerdeel venster de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**  >  **nieuwe registratie**.
 
@@ -119,7 +119,7 @@ U kunt deze koppelingen gebruiken om het maken van uw webtoepassing te Boots tra
 > - MyOrg (alleen accounts in deze organisatie Directory)
 > - AnyOrg (accounts in elke organisatie Directory)
 >
-> U kunt een toepassing maken die zich aanmeldt bij gebruikers met hun persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox of Outlook.com). Maak eerst een multi tenant-toepassing. Ondersteunde account typen zijn accounts in elke organisatie Directory. Wijzig vervolgens de [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) eigenschap in **2** en de [`signInAudience`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#signinaudience-attribute) eigenschap `AzureADandPersonalMicrosoftAccount` in het manifest van de [toepassing](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) van de Azure Portal. Zie [stap 1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) in de ASP.net core zelf studie voor meer informatie. U kunt deze stap generaliseren voor web-apps in elke gewenste taal.
+> U kunt een toepassing maken die zich aanmeldt bij gebruikers met hun persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox of Outlook.com). Maak eerst een multi tenant-toepassing. Ondersteunde account typen zijn accounts in elke organisatie Directory. Wijzig vervolgens de [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute) eigenschap in **2** en de [`signInAudience`](./reference-app-manifest.md#signinaudience-attribute) eigenschap `AzureADandPersonalMicrosoftAccount` in het manifest van de [toepassing](./reference-app-manifest.md) van de Azure Portal. Zie [stap 1,3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) in de ASP.net core zelf studie voor meer informatie. U kunt deze stap generaliseren voor web-apps in elke gewenste taal.
 
 ## <a name="next-steps"></a>Volgende stappen
 

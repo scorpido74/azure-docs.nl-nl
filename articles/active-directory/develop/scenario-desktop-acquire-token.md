@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 1caddf2fba8544bfbb1108865a459f4166af680b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c394a3e84982db31b5727d170c143e9c07636d62
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846068"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121065"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Bureau blad-app voor het aanroepen van web-Api's: een Token ophalen
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Verplichte para meters
 
-`AcquireTokenInteractive`heeft slechts één verplichte para meter, ``scopes`` die een opsomming bevat van teken reeksen die de bereiken definiëren waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunnen de vereiste bereiken worden gevonden in de API-verwijzing van elke Microsoft Graph-API in de sectie met de naam ' permissions '. Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](https://docs.microsoft.com/graph/api/user-list-contacts), moet de scope ' gebruiker. read ', ' Contacts. read ' worden gebruikt. Zie [Microsoft Graph permissions Reference](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)(Engelstalig) voor meer informatie.
+`AcquireTokenInteractive`heeft slechts één verplichte para meter, ``scopes`` die een opsomming bevat van teken reeksen die de bereiken definiëren waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunnen de vereiste bereiken worden gevonden in de API-verwijzing van elke Microsoft Graph-API in de sectie met de naam ' permissions '. Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](/graph/api/user-list-contacts), moet de scope ' gebruiker. read ', ' Contacts. read ' worden gebruikt. Zie [Microsoft Graph permissions Reference](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)(Engelstalig) voor meer informatie.
 
 Op Android moet u ook de bovenliggende activiteit opgeven met behulp van `.WithParentActivityOrWindow` , zoals wordt weer gegeven, zodat het token wordt teruggestuurd naar de bovenliggende activiteit na de interactie. Als u deze niet opgeeft, wordt er een uitzonde ring gegenereerd bij het aanroepen van `.ExecuteAsync()` .
 
@@ -278,7 +278,7 @@ Het MSAL.NET-team heeft de UI-tests herschreven om dit uitbreidings mechanisme t
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Een fantastische ervaring bieden met SystemWebViewOptions
 
-Vanuit MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) kunt u het volgende opgeven:
+Vanuit MSAL.NET 4,1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) kunt u het volgende opgeven:
 
 - De URI naar ( `BrowserRedirectError` ) of het HTML-fragment dat moet worden weer gegeven ( `HtmlMessageError` ) in het geval van aanmeld-of toestemmings fouten in de webbrowser van het systeem.
 - De URI naar ( `BrowserRedirectSuccess` ) of het HTML-fragment dat moet worden weer gegeven ( `HtmlMessageSuccess` ) in het geval van een geslaagde aanmelding of toestemming.
@@ -433,13 +433,13 @@ Als u zich wilt aanmelden voor een domein gebruiker op een domein of Azure AD-co
   - Of de Tenant beheerder moet eerder toestemming hebben gegeven voor alle gebruikers in de Tenant om de toepassing te gebruiken.
   - Met andere woorden:
     - U bent als ontwikkelaar geselecteerd voor de **toekennings** knop in de Azure Portal.
-    - Of een Tenant beheerder heeft de knop **toestemming geven/ingetrokken beheerder voor {Tenant domein}** geselecteerd op het tabblad **API-machtigingen** van de registratie voor de toepassing. Zie [machtigingen voor toegang tot Web-Api's toevoegen](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)voor meer informatie.
-    - Of u hebt een manier gegeven waarop gebruikers toestemming kunnen geven voor de toepassing. Zie [aanvragen van individuele gebruikers toestemming](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent)voor meer informatie.
-    - Of u hebt een manier gegeven waarop de Tenant beheerder toestemming kan geven voor de toepassing. Zie toestemming van de [beheerder](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant)voor meer informatie.
+    - Of een Tenant beheerder heeft de knop **toestemming geven/ingetrokken beheerder voor {Tenant domein}** geselecteerd op het tabblad **API-machtigingen** van de registratie voor de toepassing. Zie [machtigingen voor toegang tot Web-Api's toevoegen](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)voor meer informatie.
+    - Of u hebt een manier gegeven waarop gebruikers toestemming kunnen geven voor de toepassing. Zie [aanvragen van individuele gebruikers toestemming](./v2-permissions-and-consent.md#requesting-individual-user-consent)voor meer informatie.
+    - Of u hebt een manier gegeven waarop de Tenant beheerder toestemming kan geven voor de toepassing. Zie toestemming van de [beheerder](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)voor meer informatie.
 
 - Deze stroom is ingeschakeld voor .NET-Desktop-, .NET core-en UWP-apps.
 
-Zie [machtigingen en toestemming van micro soft-identiteits platform](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)voor meer informatie over toestemming.
+Zie [machtigingen en toestemming van micro soft-identiteits platform](./v2-permissions-and-consent.md)voor meer informatie over toestemming.
 
 ### <a name="learn-how-to-use-it"></a>Meer informatie over hoe u deze kunt gebruiken
 

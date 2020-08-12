@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e86b89fbf325eb0af5e4127e7fe113b87b1b70c2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f9ad5eeec17027b0e2891069af703c28aee9c528
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874262"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119093"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisatie van token cache in MSAL.NET
 Nadat een [token is verkregen](msal-acquire-cache-tokens.md), wordt het in de cache opgeslagen door micro soft Authentication Library (MSAL).  De toepassings code moet proberen een token op te halen uit de cache voordat een token wordt verkregen met een andere methode.  In dit artikel wordt de standaard-en aangepaste serialisatie van de token cache in MSAL.NET beschreven.
@@ -325,7 +325,7 @@ services.AddDistributedSqlServerCache(options =>
 });
 ```
 
-Hun gebruik wordt aanbevolen in de [ASP.net core web-app-zelf studie](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) in de fase [2-2-token cache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache).
+Hun gebruik wordt aanbevolen in de [ASP.net core web-app-zelf studie](/aspnet/core/tutorials/first-mvc-app/) in de fase [2-2-token cache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache).
 
 ## <a name="next-steps"></a>Volgende stappen
 

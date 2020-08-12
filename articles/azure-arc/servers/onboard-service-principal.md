@@ -1,19 +1,14 @@
 ---
 title: Hybride machines op schaal aansluiten op Azure
 description: In dit artikel leert u hoe u met behulp van een Service-Principal computers kunt verbinden met Azure met behulp van Azure Arc voor servers (preview).
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 75badd5b6c26938c5c6b02be331fe697bebe050d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0f599ae6bab8a2b1ce442df677ba5de206d11ab2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809486"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121813"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hybride machines op schaal aansluiten op Azure
 
@@ -23,7 +18,7 @@ De installatie methoden voor het installeren en configureren van de verbonden ma
 
 Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 Aan het einde van dit proces hebt u uw hybride computers verbonden met Azure Arc voor servers.
 

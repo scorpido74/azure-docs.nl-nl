@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5d66e79e79edd98f3192d0187d6f0454c3aeffa
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708923"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121473"
 ---
 # <a name="vpn-gateway-faq"></a>Veelgestelde vragen VPN-gateways
 
@@ -126,6 +126,10 @@ U kunt alleen PSK-verificatie (vooraf gedeelde sleutels) gebruiken.
 ### <a name="can-i-configure-force-tunneling"></a>Kan ik geforceerde tunneling configureren?
 
 Ja. Zie [Configure force tunneling](vpn-gateway-about-forced-tunneling.md) (Geforceerde tunneling configureren).
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Kan ik NAT-T op mijn VPN-verbindingen gebruiken?
+
+Ja, NAT-Traversal (NAT-T) wordt ondersteund. Er wordt door Azure VPN Gateway geen NAT-achtige functionaliteit uitgevoerd voor de interne pakketten van/naar de IPsec-tunnels.  Controleer in deze configuratie of het on-premises apparaat de IPSec-tunnel initieert.
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>Kan ik mijn eigen VPN-server in Azure instellen en deze gebruiken om verbinding te maken met mijn on-premises netwerk?
 

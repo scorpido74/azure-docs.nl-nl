@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: cc78df7ea904bf85f5f2561319e6fc773244e971
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 912cf31e29854e9fcd54bbc358bb954c0d7bf389
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005210"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116696"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Veelgestelde vragen over Azure Active Directory (AD) Domain Services
 
@@ -117,7 +117,11 @@ Nee. Het schema wordt door micro soft beheerd voor het beheerde domein. Schema-u
 Ja. Leden van de groep *Aad DC-Administrators* krijgen *DNS-administrator* bevoegdheden voor het wijzigen van DNS-records in het beheerde domein. Deze gebruikers kunnen de DNS-beheer console gebruiken op een computer met Windows Server die is toegevoegd aan het beheerde domein voor het beheren van DNS. Als u de DNS-beheer console wilt gebruiken, installeert u de *Hulpprogram ma's voor DNS-server*, die deel uitmaakt van de optionele functie *Remote Server Administration Tools* op de-server. Zie [DNS beheren in een Azure AD Domain Services beheerd domein](manage-dns.md)voor meer informatie.
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Wat is het beleid voor de levens duur van wacht woorden op een beheerd domein?
-De standaard levensduur van het wacht woord voor een Azure AD Domain Services beheerd domein is 90 dagen. De levens duur van het wacht woord is niet gesynchroniseerd met de levens duur van het wacht woord dat is geconfigureerd in azure AD. Daarom hebt u mogelijk een situatie waarin gebruikers wachtwoorden verlopen in uw beheerde domein, maar nog steeds geldig zijn in azure AD. In dergelijke scenario's moeten gebruikers hun wacht woord wijzigen in azure AD en wordt het nieuwe wacht woord gesynchroniseerd met uw beheerde domein. Daarnaast worden de kenmerken van het *wacht woord-niet-verlopen* en de *gebruiker die moet worden gewijzigd-bij de volgende aanmelding* voor gebruikers accounts niet gesynchroniseerd met uw beheerde domein.
+De standaard levensduur van het wacht woord voor een Azure AD Domain Services beheerd domein is 90 dagen. De levens duur van het wacht woord is niet gesynchroniseerd met de levens duur van het wacht woord dat is geconfigureerd in azure AD. Daarom hebt u mogelijk een situatie waarin gebruikers wachtwoorden verlopen in uw beheerde domein, maar nog steeds geldig zijn in azure AD. In dergelijke scenario's moeten gebruikers hun wacht woord wijzigen in azure AD en wordt het nieuwe wacht woord gesynchroniseerd met uw beheerde domein. Als u de standaard levensduur van het wacht woord in een beheerd domein wilt wijzigen, kunt u [aangepaste wachtwoord beleidsregels maken en configureren.](password-policy.md)
+
+Daarnaast wordt het Azure AD-wachtwoord beleid voor *DisablePasswordExpiration* gesynchroniseerd met een beheerd domein. Wanneer *DisablePasswordExpiration* wordt toegepast op een gebruiker in azure AD, is *DONT_EXPIRE_PASSWORD* toegepast op de waarde *userAccountControl* voor de gesynchroniseerde gebruiker in het beheerde domein.
+
+Wanneer gebruikers hun wacht woord opnieuw instellen in azure AD, wordt het kenmerk *forceChangePasswordNextSignIn = True* toegepast. Een beheerd domein synchroniseert dit kenmerk vanuit Azure AD. Wanneer het beheerde domein detecteert dat *forceChangePasswordNextSignIn* is ingesteld voor een gesynchroniseerde gebruiker vanuit Azure AD, wordt het kenmerk *pwdLastSet* in het beheerde domein ingesteld op *0*, waardoor het wacht woord dat momenteel is ingesteld, ongeldig is.
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Biedt Azure AD Domain Services AD-account vergrendelings beveiliging?
 Ja. Vijf ongeldige wachtwoord pogingen binnen twee minuten op het beheerde domein zorgen ervoor dat een gebruikers account 30 minuten wordt vergrendeld. Na 30 minuten wordt het gebruikers account automatisch ontgrendeld. Bij ongeldige wachtwoord pogingen op het beheerde domein wordt het gebruikers account in azure AD niet vergrendeld. Het gebruikers account is alleen vergrendeld binnen uw Azure AD Domain Services beheerde domein. Zie voor meer informatie [wacht woord-en account vergrendelings beleid in beheerde domeinen](password-policy.md).

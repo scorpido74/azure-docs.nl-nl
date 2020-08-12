@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 774822eae5ab327f57da3eca4499ca14d3e0c7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82584309"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117478"
 ---
 # <a name="application-model"></a>Toepassingsmodel
 
@@ -86,4 +86,4 @@ Voor meer informatie over het toepassings model:
 
 * Bekijk [hoe en waarom toepassingen worden toegevoegd aan Azure AD](active-directory-how-applications-are-added.md) voor meer informatie over toepassings objecten en service-principals in micro soft Identity platform.
 * Zie [pacht in azure Active Directory](single-and-multi-tenant-apps.md) voor meer informatie over apps met één Tenant en apps met meerdere tenants.
-* Zie [Azure Active Directory B2C-documentatie](https://docs.microsoft.com/azure/active-directory-b2c) voor meer informatie over hoe Azure AD ook Azure Active Directory B2C biedt zodat organisaties zich kunnen aanmelden bij gebruikers, meestal klanten, met behulp van sociale identiteiten, zoals een Google-account.
+* Zie [Azure Active Directory B2C-documentatie](../../active-directory-b2c/index.yml) voor meer informatie over hoe Azure AD ook Azure Active Directory B2C biedt zodat organisaties zich kunnen aanmelden bij gebruikers, meestal klanten, met behulp van sociale identiteiten, zoals een Google-account.

@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477801"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116968"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookiewijzigingen in Chrome-browser verwerken
 
@@ -59,20 +59,20 @@ In de onderstaande tabel ziet u de pull-aanvragen die hebben gewerkt aan de Same
 
 Zie ook voor meer informatie over het afhandelen van SameSite-cookies in ASP.NET en ASP.NET Core:
 
-- [Werken met SameSite-cookies in ASP.net core](https://docs.microsoft.com/aspnet/core/security/samesite) .
+- [Werken met SameSite-cookies in ASP.net core](/aspnet/core/security/samesite) .
 - [ASP.NET-blog op SameSite-probleem](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
 # <a name="python"></a>[Python](#tab/python)
 
 | Voorbeeld |
 | ------ |
-|  [MS-Identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
+|  [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Voorbeeld | Pull-aanvraag |
 | ------ | ------------ |
-|  [MS-Identity-Java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [Dezelfde site cookie oplossen #24](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
+|  [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [Dezelfde site cookie oplossen #24](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
 |  [MS-Identity-Java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [Dezelfde site cookie oplossen #4](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
 
 ---

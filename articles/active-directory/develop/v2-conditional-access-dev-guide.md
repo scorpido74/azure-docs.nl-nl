@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771074"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120623"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Hulp voor ontwikkelaars bij voorwaardelijke toegang van Azure Active Directory
 
@@ -33,7 +33,7 @@ Zie het artikel [Wat is voorwaardelijke toegang](../conditional-access/overview.
 
 Voor ontwikkel aars die apps bouwen voor Azure AD, laat dit artikel zien hoe u voorwaardelijke toegang kunt gebruiken. u leert ook hoe u toegang krijgt tot bronnen waarvoor u geen controle hebt over het beleid voor voorwaardelijke toegang. In dit artikel vindt u ook de implicaties van voorwaardelijke toegang in de namens-of-stroom, Web-apps, toegang tot Microsoft Graph en het aanroepen van Api's.
 
-Er wordt uitgegaan van kennis van apps met [één](quickstart-register-app.md) en [meerdere tenants](howto-convert-app-to-be-multi-tenant.md) en [algemene verificatie patronen](authentication-scenarios.md) .
+Er wordt uitgegaan van kennis van apps met [één](quickstart-register-app.md) en [meerdere tenants](howto-convert-app-to-be-multi-tenant.md) en [algemene verificatie patronen](./authentication-vs-authorization.md) .
 
 > [!NOTE]
 > Voor het gebruik van deze functie is een Azure AD Premium P1-licentie vereist. Zie [Algemeen beschikbare functies van de edities Gratis, Basic en Premium vergelijken](https://azure.microsoft.com/pricing/details/active-directory/) als u een licentie zoekt die bij uw vereisten past.
@@ -52,7 +52,7 @@ Met name de volgende scenario's vereisen code voor het afhandelen van voorwaarde
 * Apps met één pagina met MSAL.js
 * Web Apps het aanroepen van een resource
 
-Beleid voor voorwaardelijke toegang kan worden toegepast op de app, maar kan ook worden toegepast op een web-API die toegang heeft tot uw app. Voor meer informatie over het configureren van beleid voor voorwaardelijke toegang, Zie [Quick Start: MFA vereisen voor specifieke apps met Azure Active Directory voorwaardelijke toegang](../conditional-access/app-based-mfa.md).
+Beleid voor voorwaardelijke toegang kan worden toegepast op de app, maar kan ook worden toegepast op een web-API die toegang heeft tot uw app. Voor meer informatie over het configureren van beleid voor voorwaardelijke toegang, Zie [Quick Start: MFA vereisen voor specifieke apps met Azure Active Directory voorwaardelijke toegang](../authentication/tutorial-enable-azure-mfa.md).
 
 Afhankelijk van het scenario kan een zakelijke klant op elk gewenst moment beleid voor voorwaardelijke toegang Toep assen en verwijderen. Om ervoor te zorgen dat uw app kan blijven functioneren als er een nieuw beleid wordt toegepast, moet u de "Challenge"-verwerking implementeren. De volgende voor beelden illustreren de verwerking van challenges.
 
@@ -93,7 +93,7 @@ Ontwikkel aars kunnen deze uitdaging volgen en toevoegen aan een nieuwe aanvraag
 
 ### <a name="prerequisites"></a>Vereisten
 
-Voorwaardelijke toegang van Azure AD is een functie die deel uitmaakt van [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Klanten met een [Microsoft 365 Business-licentie](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot de functies voor voorwaardelijke toegang.
+Voorwaardelijke toegang van Azure AD is een functie die deel uitmaakt van [Azure AD Premium](../fundamentals/active-directory-whatis.md). Klanten met een [Microsoft 365 Business-licentie](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot de functies voor voorwaardelijke toegang.
 
 ### <a name="considerations-for-specific-scenarios"></a>Overwegingen voor specifieke scenario's
 
@@ -178,9 +178,9 @@ Onze app moet worden onderschept `error=interaction_required` . De toepassing ka
 
 Als u dit scenario wilt uitproberen, raadpleegt u ons [js Spa-code voorbeeld](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/a2b257381b410c765ee01ecb611aa6f98c099eb1/2.%20Web%20API%20now%20calls%20Microsoft%20Graph/README.md). Dit code voorbeeld maakt gebruik van het beleid voor voorwaardelijke toegang en de Web-API die u eerder hebt geregistreerd met een JS SPA om dit scenario te demonstreren. Hier ziet u hoe u de claim Challenge goed kunt afhandelen en een toegangs token krijgt dat kan worden gebruikt voor uw web-API. U kunt ook het voor beeld van de algemene [Angular.js code](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) uitchecken voor hulp bij een hoek Spa
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-* Zie [voorwaardelijke toegang in azure Active Directory](/azure/active-directory/conditional-access/overview)voor meer informatie over de mogelijkheden.
+* Zie [voorwaardelijke toegang in azure Active Directory](../conditional-access/overview.md)voor meer informatie over de mogelijkheden.
 * Zie voor [beelden](sample-v2-code.md)voor meer Azure ad-code voorbeelden.
 * Voor meer informatie over de MSAL-SDK en toegang tot de referentie documentatie raadpleegt u [overzicht van micro soft Authentication Library](msal-overview.md).
 * Zie [gebruikers aanmelden met het multi tenant-patroon](howto-convert-app-to-be-multi-tenant.md)voor meer informatie over scenario's met meerdere tenants.

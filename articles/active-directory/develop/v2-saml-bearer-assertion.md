@@ -12,12 +12,12 @@ ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 2d745ddcf7b1d5bd7976a0ca8461c13d8ae3c849
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282378"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114690"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Micro soft Identity platform en OAuth 2,0-bevestiging stroom voor SAML Bearer
 Met de OAuth 2,0-bevestigings stroom voor SAML Bearer kunt u een OAuth-toegangs token aanvragen met behulp van een SAML-verklaring wanneer een client een bestaande vertrouwens relatie moet gebruiken. De hand tekening die wordt toegepast op de SAML-verklaring biedt verificatie van de geautoriseerde app. Een SAML-verklaring is een XML-beveiligings token dat is uitgegeven door een id-provider en wordt gebruikt door een service provider. De service provider vertrouwt op basis van de inhoud om het onderwerp van de bewering te identificeren voor beveiligings doeleinden.
@@ -37,7 +37,7 @@ Laat ons nu weten hoe we de SAML-bewering programmatisch kunnen ophalen. Deze aa
 
 ### <a name="prerequisites"></a>Vereisten
 
-Een vertrouwens relatie tot stand brengen tussen de autorisatie server/omgeving (Microsoft 365) en de ID-provider, of de verlener van de SAML 2,0 Bearer-verklaring (ADFS). Als u ADFS wilt configureren voor eenmalige aanmelding en als id-provider, kunt u [dit artikel](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/)raadplegen.
+Een vertrouwens relatie tot stand brengen tussen de autorisatie server/omgeving (Microsoft 365) en de ID-provider, of de verlener van de SAML 2,0 Bearer-verklaring (ADFS). Als u ADFS wilt configureren voor eenmalige aanmelding en als id-provider, kunt u [dit artikel](/archive/blogs/canitpro/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365)raadplegen.
 
 Registreer de toepassing in de [Portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade):
 1. Meld u aan bij de [Blade app-registratie van de portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) (u gebruikt de v 2.0-eind punten voor Graph API en moet de toepassing daarom registreren in deze portal. Anders kunnen we de registraties in azure Active Directory gebruiken. 

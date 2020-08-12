@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925784"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121524"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)en [Azure Automation](../../automation/automation-intro.md).
@@ -174,7 +174,7 @@ We raden u ten zeerste aan de agent te configureren om ten minste Transport Laye
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>SHA-2-ondersteuning voor ondertekening van code voor Windows
-De Windows-agent gaat exclusief SHA-2-ondertekening gebruiken op 17 augustus 2020. Deze wijziging is van invloed op klanten die de Log Analytics-agent gebruiken op een verouderd besturings systeem als onderdeel van een Azure-service (Azure Monitor, Azure Automation, Azure Updatebeheer, Azure Wijzigingen bijhouden, Azure Security Center, Azure Sentinel, Windows Defender ATP). Voor de wijziging is geen actie van de klant vereist tenzij u de agent uitvoert op een verouderde versie van het besturings systeem (Windows 7, Windows Server 2008 R2 en Windows Server 2008). Klanten die gebruikmaken van een verouderde versie van het besturings systeem, moeten de volgende acties uitvoeren op hun computers vóór 17 augustus 2020 of hun agents stoppen met het verzenden van gegevens naar hun Log Analytics-werk ruimten:
+De Windows-agent gaat uitsluitend gebruikmaken van SHA-2-ondertekening op 2 november 2020. Deze wijziging is van invloed op klanten die de Log Analytics-agent gebruiken op een verouderd besturings systeem als onderdeel van een Azure-service (Azure Monitor, Azure Automation, Azure Updatebeheer, Azure Wijzigingen bijhouden, Azure Security Center, Azure Sentinel, Windows Defender ATP). Voor de wijziging is geen actie van de klant vereist tenzij u de agent uitvoert op een verouderde versie van het besturings systeem (Windows 7, Windows Server 2008 R2 en Windows Server 2008). Klanten die gebruikmaken van een verouderde versie van het besturings systeem, moeten de volgende acties uitvoeren op hun computers vóór 2 november 2020 of hun agents verzenden geen gegevens naar hun Log Analytics-werk ruimten:
 
 1. Installeer het meest recente Service Pack voor uw besturings systeem. De vereiste Service Pack versies zijn:
     - Windows 7 SP1

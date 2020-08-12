@@ -3,16 +3,12 @@ title: VM-extensie beheer met Azure Arc voor servers
 description: Azure Arc voor servers (preview) kan de implementatie van extensies van virtuele machines beheren die configuratie van de na de implementatie en Automation-taken bieden met niet-Azure Vm's.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.openlocfilehash: eb1de0c2a5b995231c2972fca7279195cbaea9e7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809626"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121303"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Extensie beheer voor virtuele machines met Azure Arc voor servers (preview-versie)
 
@@ -40,7 +36,7 @@ De functionaliteit van de VM-extensie is alleen beschikbaar in de lijst met [ond
 
 In deze preview worden de volgende VM-extensies ondersteund op Windows-en Linux-computers.
 
-|Extensie |Besturingssysteem |Publisher |Aanvullende informatie |
+|Extensie |Besturingssysteem |Uitgever |Aanvullende informatie |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Aangepaste script extensie voor Windows](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Micro soft. Power shell|[Windows Power shell DSC-extensie](../../virtual-machines/extensions/dsc-windows.md)|
@@ -711,7 +707,7 @@ Als u de Azure Monitor dependency agent-extensie wilt gebruiken, is het volgende
 }
 ```
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald uit de Azure Portal.
 
