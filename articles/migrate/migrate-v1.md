@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306108"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836000"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
@@ -101,7 +101,7 @@ Gereedheid houdt rekening met een aantal VM-eigenschappen om te bepalen of de VM
 --- | --- | ---
 **Opstarttype** | BIOS ondersteund. UEFI niet ondersteund. | Voorwaardelijk gereed als het opstarttype UEFI is.
 **Kernen** | Kernen van machine <= het maximum aantal kernen (128) dat wordt ondersteund voor een Azure-VM.<br/><br/> Als de prestatiegeschiedenis beschikbaar is, houdt Azure Migrate rekening met de gebruikte kernen.<br/>Als er een comfortfactor is opgegeven in de evaluatie-instellingen, wordt het aantal gebruikte kernen vermenigvuldigd met de comfortfactor.<br/><br/> Als er geen prestatiegeschiedenis is, gebruikt Azure Migrate de toegewezen kernen, zonder de comfortfactor toe te passen. | Gereed indien kleiner dan of gelijk aan de limieten.
-**Geheugen** | De grootte van het geheugen van de machine <= het maximale geheugen (3892 GB op Azure M series Standard_M128m&nbsp;<sup>2</sup>) voor een Azure-VM. [Meer informatie](../virtual-machines/windows/sizes.md).<br/><br/> Als de prestatiegeschiedenis beschikbaar is, houdt Azure Migrate rekening met het gebruikte geheugen.<br/><br/>Als er een comfortfactor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfortfactor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt, zonder dat de comfortfactor wordt toegepast.<br/><br/> | Gereed indien binnen de limieten.
+**Geheugen** | De grootte van het geheugen van de machine <= het maximale geheugen (3892 GB op Azure M series Standard_M128m&nbsp;<sup>2</sup>) voor een Azure-VM. [Meer informatie](../virtual-machines/sizes.md).<br/><br/> Als de prestatiegeschiedenis beschikbaar is, houdt Azure Migrate rekening met het gebruikte geheugen.<br/><br/>Als er een comfortfactor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfortfactor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt, zonder dat de comfortfactor wordt toegepast.<br/><br/> | Gereed indien binnen de limieten.
 **Opslagschijf** | De toegewezen grootte van een schijf moet 4 TB (4096 GB) of minder zijn.<br/><br/> Het aantal schijven dat is gekoppeld aan de machine moet 65 of minder zijn, inclusief de besturingssysteemschijf. | Gereed indien binnen de limieten.
 **Netwerken** | Aan een machine moet 32 of minder NIC's zijn gekoppeld. | Gereed indien binnen de limieten.
 
@@ -263,7 +263,7 @@ Voor computers die worden bewaakt met System Center Operations Manager 2012 R2 o
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - Meer informatie over de [ondersteuning voor de afhankelijkheidsagent](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) voor de Windows- en Linux-besturingssystemen.
-- [Meer informatie](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) over hoe u scripts kunt gebruiken om de afhankelijkheidsagent te installeren.
+- [Meer informatie](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) over hoe u scripts kunt gebruiken om de afhankelijkheidsagent te installeren.
 
 >[!NOTE]
 > Het artikel Azure Monitor voor VM's waarnaar wordt verwezen om een overzicht te geven van de systeemvereisten, en de methoden voor het implementeren van de afhankelijkheidsagent, zijn ook van toepassing op de Servicetoewijzing-oplossing.

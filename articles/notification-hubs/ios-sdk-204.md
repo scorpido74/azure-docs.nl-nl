@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 80a9a98043a39b654f0d62a84ae81e12797b15b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d89d46e3365a97d9deea8a89de2d9a1d5799cb72
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022358"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836051"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>Zelfstudie: Pushmeldingen verzenden naar iOS-apps met Azure Notification Hubs (versie 2.0.4)
 
@@ -456,7 +456,7 @@ Pushmeldingen worden gewoonlijk in een back-endservice zoals Mobile Apps of ASP.
 
 Hier volgt een lijst met andere zelfstudies die u mogelijk kunt bekijken voor het verzenden van meldingen:
 
-- Azure Mobile Apps: Zie  [Pushmeldingen toevoegen aan uw iOS-app](/azure/app-service-mobile/app-service-mobile-ios-get-started-push) voor een voorbeeld van hoe u meldingen verzendt vanuit een back-end van Mobile Apps die is geïntegreerd met Notification Hubs.
+- Azure Mobile Apps: Zie  [Pushmeldingen toevoegen aan uw iOS-app](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push) voor een voorbeeld van hoe u meldingen verzendt vanuit een back-end van Mobile Apps die is geïntegreerd met Notification Hubs.
 - ASP.NET: zie  [Gebruik Notification Hubs om pushmeldingen naar gebruikers te verzenden](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 - Azure Notification Hubs Java-SDK: zie  [Notification Hubs gebruiken vanuit Java](notification-hubs-java-push-notification-tutorial.md)  voor het verzenden van meldingen vanuit Java. Dit is getest in Eclipse voor Android-ontwikkeling.
 - PHP: zie  [Notification Hubs gebruiken vanuit PHP](notification-hubs-php-push-notification-tutorial.md).

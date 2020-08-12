@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: d74994609799c155453f0c7cac887f2e033ea90b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 11e5d4e31f388dcffe7f1292afa223562d44b20a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087279"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832294"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Quickstart: Een virtuele Windows-machine maken met een ARM-sjabloon
 
@@ -63,7 +63,7 @@ Verschillende resources worden in de sjabloon gedefinieerd:
     - **Beheerderswachtwoord**: geef een wachtwoord op voor de beheerdersaccount. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](faq.md#what-are-the-password-requirements-when-creating-a-vm).
     - **DNS-labelvoorvoegsel**: voer een unieke ID in om te gebruiken als onderdeel van het DNS label.
     - **Versie van besturingssysteem van Windows**: selecteer welke versie van Windows u wilt uitvoeren op de VM.
-    - **VM-grootte**: selecteer de [grootte](sizes.md) die kan worden gebruikt voor de VM.
+    - **VM-grootte**: selecteer de [grootte](../sizes.md) die kan worden gebruikt voor de VM.
     - **Locatie**: de standaardlocatie is hetzelfde als van de resourcegroep als die al bestaat.
 1. Selecteer **Controleren + maken**. Selecteer nadat de validatie is afgerond **Maken** om de VM te maken en te implementeren.
 

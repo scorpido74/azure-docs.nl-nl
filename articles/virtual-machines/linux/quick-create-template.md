@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 479e580ee8821f0a6de054c631714c5386927e4f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0849aeb6180a17238f0885896a863936cfdf715d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083913"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827653"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Quickstart: Een virtuele Ubuntu Linux-machine maken met een ARM-sjabloon
 
@@ -65,7 +65,7 @@ Verschillende resources worden in de sjabloon gedefinieerd:
     - **DNS-labelvoorvoegsel**: voer een unieke ID in om te gebruiken als onderdeel van het DNS label.
     - **Versie van besturingssysteem van Ubuntu**: selecteer welke versie van Ubuntu u wilt uitvoeren op de VM.
     - **Locatie**: de standaardlocatie is hetzelfde als van de resourcegroep als die al bestaat.
-    - **VM-grootte**: selecteer de [grootte](sizes.md) die kan worden gebruikt voor de VM.
+    - **VM-grootte**: selecteer de [grootte](../sizes.md) die kan worden gebruikt voor de VM.
     - **Naam van virtueel netwerk**: naam van het vNet.
     - **Subnetnaam**: naam van het subnet dat de VM moet gebruiken.
     - **Naam van de netwerkbeveiligingsgroep**: naam van de netwerkbeveiligingsgroep.

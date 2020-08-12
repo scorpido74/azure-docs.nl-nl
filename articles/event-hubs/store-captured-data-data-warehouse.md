@@ -4,12 +4,12 @@ description: 'Zelfstudie: In deze zelfstudie leest u hoe u gegevens uit uw Event
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7030014a8926b1db11ad99ba031e51194ddfd9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039494"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833722"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Zelfstudie: Vastgelegde Event Hub-gegevens migreren naar een SQL Data Warehouse met behulp van Event Grid en Azure Functions
 
@@ -178,4 +178,4 @@ Voer na een paar minuten een query uit op de tabel in uw SQL Data Warehouse. U z
 ## <a name="next-steps"></a>Volgende stappen 
 U kunt krachtige hulpmiddelen voor gegevensvisualisatie gebruiken met uw datawarehouse om bruikbare inzichten te verkrijgen.
 
-In dit artikel leest u hoe u [Power BI met SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) gebruikt
+In dit artikel leest u hoe u [Power BI met SQL Data Warehouse](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) gebruikt

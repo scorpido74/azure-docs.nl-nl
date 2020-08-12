@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 706ae5a6c93468da9a65293c1bb4eefb136b938d
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553271"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829676"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Aangepaste KPI-dashboards maken met behulp van Azure Application Insights
 
@@ -34,7 +34,7 @@ Vereisten voor het voltooien van deze zelfstudie:
 - Implementeer een .NET-toepassing in Azure en [schakel de Application Insights-SDK](../app/asp-net.md)in.
 
 > [!NOTE]
-> De vereiste machtigingen voor het werken met dashboards worden beschreven in het artikel over [toegangsbeheer voor dashboards](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboard-share-access#understanding-access-control-for-dashboards).
+> De vereiste machtigingen voor het werken met dashboards worden beschreven in het artikel over [toegangsbeheer voor dashboards](../../azure-portal/azure-portal-dashboard-share-access.md#understanding-access-control-for-dashboards).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
@@ -131,4 +131,3 @@ Nu u weet hoe u aangepaste dashboards maakt, kunt u de verdere Application Insig
 
 > [!div class="nextstepaction"]
 > [Diepe diagnostische gegevens](../app/devops.md)
-

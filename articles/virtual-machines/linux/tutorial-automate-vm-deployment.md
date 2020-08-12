@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 2a07480bf5b3defb4176437d99274e9ecfb4ba13
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: f1d439569f15d7680d54b35e7ec1c52ca7843af7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433018"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828962"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Zelfstudie - Cloud-init gebruiken voor het aanpassen van een virtuele Linux-machine in Azure bij de eerste keer dat die wordt opgestart
 
@@ -57,7 +57,7 @@ Als u cloud-init in actie wilt zien, maakt u een VM waarop NGINX is geïnstallee
 
 Maak bij de Bash-prompt of in Cloud Shell een bestand met de naam *cloud-init.txt* en plak de volgende configuratie in het bestand. Typ bijvoorbeeld `sensible-editor cloud-init.txt` om het bestand te maken en om een overzicht van beschikbare editors te zien. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
 
-```bash
+```yaml
 #cloud-config
 package_upgrade: true
 packages:
