@@ -12,12 +12,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb629b80958ed2897f76eb099f738c33b48c3696
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868669"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119603"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Toestemming van de beheerder op het micro soft Identity-platform
 
@@ -45,7 +45,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Parameter     | Voorwaarde     | Description                                                                               |
+| Parameter     | Voorwaarde     | Beschrijving                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
 | `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden geleverd in de indeling GUID of beschrijvende naam of in `organizations` het algemeen, zoals wordt weer gegeven in het voor beeld. Gebruik ' common ' niet, omdat persoonlijke accounts geen toestemming van de beheerder kunnen bieden, behalve in de context van een Tenant. Gebruik, indien mogelijk, de Tenant-ID om te zorgen voor optimale compatibiliteit met persoonlijke accounts die tenants beheren. |
 | `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
@@ -88,5 +88,5 @@ Toevoegen aan de para meters die worden weer gegeven in een geslaagde reactie, w
 ## <a name="next-steps"></a>Volgende stappen
 - Zie [een app converteren naar multi tenant](howto-convert-app-to-be-multi-tenant.md)
 - Meer informatie over de [toestemming wordt ondersteund op de OAuth 2,0-protocol laag tijdens de autorisatie code toekenning stroom](v2-oauth2-auth-code-flow.md#request-an-authorization-code).
-- Meer informatie [over hoe een toepassing met meerdere tenants het toestemming raamwerk kan gebruiken voor het](active-directory-devhowto-multi-tenant-overview.md) implementeren van de toestemming ' gebruiker ' en ' beheerder ', zodat meer geavanceerde toepassings patronen met meerdere lagen worden ondersteund.
+- Meer informatie [over hoe een toepassing met meerdere tenants het toestemming raamwerk kan gebruiken voor het](./howto-convert-app-to-be-multi-tenant.md) implementeren van de toestemming ' gebruiker ' en ' beheerder ', zodat meer geavanceerde toepassings patronen met meerdere lagen worden ondersteund.
 - Meer informatie over [Azure AD-toepassings toestemmings ervaringen](application-consent-experience.md)

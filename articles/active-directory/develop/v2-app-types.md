@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682268"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121167"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Toepassings typen voor micro soft Identity platform
 
@@ -83,7 +83,7 @@ U kunt de identiteit van de gebruiker controleren door de ID-token te valideren 
 
 Als u dit scenario in actie wilt zien, kunt u een van de voor beelden van de aanmeldings code voor de web-app in het gedeelte [aan de slag met micro soft Identity platform](v2-overview.md#getting-started) uitproberen.
 
-Naast het gebruik van een eenvoudige aanmelding moet een webserver-app mogelijk toegang hebben tot een andere webservice, zoals een REST API. In dit geval maakt de webserver-app deel uit van een gecombineerde OpenID connect-verbinding en OAuth 2,0-stroom met behulp van de [OAuth 2,0-autorisatie code stroom](v2-oauth2-auth-code-flow.md). Meer informatie over dit scenario vindt u [in aan de slag met web apps en Web-api's](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+Naast het gebruik van een eenvoudige aanmelding moet een webserver-app mogelijk toegang hebben tot een andere webservice, zoals een REST API. In dit geval maakt de webserver-app deel uit van een gecombineerde OpenID connect-verbinding en OAuth 2,0-stroom met behulp van de [OAuth 2,0-autorisatie code stroom](v2-oauth2-auth-code-flow.md). Meer informatie over dit scenario vindt u [in aan de slag met web apps en Web-api's](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet).
 
 
 ## <a name="web-apis"></a>Web-API's

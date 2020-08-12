@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282990"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118447"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-protocol voor eenmalige aanmelding
 
@@ -50,7 +50,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | --- | --- | --- |
 | Id | Vereist | Azure AD gebruikt dit kenmerk om het `InResponseTo` kenmerk van het geretourneerde antwoord in te vullen. De ID mag niet beginnen met een getal, dus een algemene strategie is om een teken reeks als ' id ' te laten voorafgaan door naar de teken reeks representatie van een GUID. `id6c1c178c166d486687be4aaf5e482730`Is bijvoorbeeld een geldige id. |
 | Versie | Vereist | Deze para meter moet worden ingesteld op **2,0**. |
-| IssueInstant | Vereist | Dit is een datum/tijd-teken reeks met een UTC-waarde en een [notatie voor retour afronding ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). In azure AD wordt een DateTime-waarde van dit type verwacht, maar de waarde wordt niet geëvalueerd of gebruikt. |
+| IssueInstant | Vereist | Dit is een datum/tijd-teken reeks met een UTC-waarde en een [notatie voor retour afronding ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). In azure AD wordt een DateTime-waarde van dit type verwacht, maar de waarde wordt niet geëvalueerd of gebruikt. |
 | AssertionConsumerServiceUrl | Optioneel | Als deze para meter wordt opgegeven, moet deze overeenkomen met de `RedirectUri` Cloud service in azure AD. |
 | ForceAuthn | Optioneel | Dit is een Booleaanse waarde. Als deze eigenschap waar is, betekent dit dat de gebruiker wordt afgedwongen om zich opnieuw te verifiëren, zelfs als ze een geldige sessie met Azure AD hebben. |
 | IsPassive | Optioneel | Dit is een Booleaanse waarde die aangeeft of Azure AD de gebruiker zonder tussen komst van de gebruiker op de achtergrond moet verifiëren, met behulp van de sessie cookie als er een bestaat. Als dit het geval is, probeert Azure AD de gebruiker te verifiëren met behulp van de sessie cookie. |
@@ -104,7 +104,7 @@ Een `Signature` element in `AuthnRequest` elementen is optioneel. Azure AD valid
 ### <a name="subject"></a>Onderwerp
 Neem geen `Subject` element op. Azure AD biedt geen ondersteuning voor het opgeven van een onderwerp voor een aanvraag en er wordt een fout geretourneerd als er een wordt opgegeven.
 
-## <a name="response"></a>Reactie
+## <a name="response"></a>Antwoord
 Wanneer een aangevraagde aanmelding is voltooid, boekt Azure AD een reactie op de Cloud service. Een reactie op een geslaagde aanmeldings poging ziet eruit als in het volgende voor beeld:
 
 ```
@@ -150,7 +150,7 @@ Wanneer een aangevraagde aanmelding is voltooid, boekt Azure AD een reactie op d
 </samlp:Response>
 ```
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 Het `Response` element bevat het resultaat van de autorisatie aanvraag. Azure AD stelt de `ID` en `Version` `IssueInstant` waarden in het- `Response` element in. Ook worden de volgende kenmerken ingesteld:
 

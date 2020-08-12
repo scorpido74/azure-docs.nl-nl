@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955672"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121439"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Veelgestelde vragen over SQL Server op virtuele Azure-machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -162,7 +162,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Kan ik een tweede exemplaar van SQL Server op dezelfde VM installeren? Kan ik de geïnstalleerde functies van het standaard exemplaar wijzigen?**
 
-   Ja. De SQL Server-installatie media bevindt zich in een map op station **C** . Voer **Setup.exe** uit vanaf die locatie om nieuwe SQL Server instanties toe te voegen of om andere geïnstalleerde functies van SQL Server op de computer te wijzigen. Houd er rekening mee dat sommige functies, zoals geautomatiseerde back-ups, automatische patching en Azure Key Vault integratie, alleen kunnen worden uitgevoerd op het standaard exemplaar of een benoemd exemplaar dat correct is geconfigureerd (zie vraag 3). 
+   Ja. De SQL Server-installatie media bevindt zich in een map op station **C** . Voer **Setup.exe** uit vanaf die locatie om nieuwe SQL Server instanties toe te voegen of om andere geïnstalleerde functies van SQL Server op de computer te wijzigen. Houd er rekening mee dat sommige functies, zoals geautomatiseerde back-ups, automatische patching en Azure Key Vault integratie, alleen kunnen worden uitgevoerd op het standaard exemplaar of een benoemd exemplaar dat correct is geconfigureerd (zie vraag 3). Klanten die [Software Assurance gebruiken via het Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) of het licentie model voor **betalen per gebruik** kunnen meerdere exemplaren van SQL Server op de virtuele machine installeren zonder extra licentie kosten te betalen. Aanvullende SQL Server-exemplaren kunnen systeem bronnen beperken, tenzij correct geconfigureerd. 
 
 1. **Kan ik het standaardexemplaar van SQL Server verwijderen?**
 

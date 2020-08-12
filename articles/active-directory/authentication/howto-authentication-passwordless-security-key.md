@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550415"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116594"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden zonder wacht woord voor beveiligings sleutel inschakelen (preview)
 
@@ -30,7 +30,7 @@ Dit document is gericht op het inschakelen van op wacht woord gebaseerde verific
 ## <a name="requirements"></a>Vereisten
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [Preview van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md)
+- [Voor beeld van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md) inschakelen
 - Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys)
 - Webauthn vereist Windows 10 versie 1809 of hoger * *
 
@@ -50,7 +50,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2-beveiligings sleutel methode inschakelen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**  >  **Security**  >  **Authentication methods**  >  **beleid voor verificatie methode**voor beveiligings verificatie methoden (preview).
 1. Kies onder de **beveiligings sleutel methode FIDO2**de volgende opties:
    1. **Inschakelen** -ja of Nee

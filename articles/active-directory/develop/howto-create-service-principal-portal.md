@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 06e1abc4f863674cc67c1a78a9f2f626565d296f
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c8f9bc283d88121ad4b6144b8ac9463510349212
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828928"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117223"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources
 
@@ -178,7 +178,7 @@ Als u ervoor kiest geen certificaat te gebruiken, kunt u een nieuw toepassings g
    ![Kopieer de geheime waarde omdat u deze later niet kunt ophalen](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Toegangs beleid voor resources configureren
-Houd er rekening mee dat u aanvullende machtigingen moet configureren voor bronnen die voor uw toepassing toegankelijk moeten zijn. U moet bijvoorbeeld ook [het toegangs beleid van een sleutel kluis bijwerken](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) om uw toepassing toegang te geven tot sleutels, geheimen of certificaten.  
+Houd er rekening mee dat u aanvullende machtigingen moet configureren voor bronnen die voor uw toepassing toegankelijk moeten zijn. U moet bijvoorbeeld ook [het toegangs beleid van een sleutel kluis bijwerken](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) om uw toepassing toegang te geven tot sleutels, geheimen of certificaten.  
 
 1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw sleutel kluis en selecteer **toegangs beleid**.  
 1. Selecteer **toegangs beleid toevoegen**en selecteer vervolgens de sleutel, het geheim en de certificaat machtigingen die u uw toepassing wilt verlenen.  Selecteer de service-principal die u eerder hebt gemaakt.

@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bfc6b6fa6a2af8750c868aaacb289d39306ce06e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83770973"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118617"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Referenties voor het micro soft Identity platform en het OAuth 2,0 Resource owner-wacht woord
 
@@ -33,7 +33,7 @@ Het micro soft Identity-platform biedt ondersteuning voor de [OAuth 2,0 Resource
 > * Persoonlijke accounts die worden uitgenodigd voor een Azure AD-Tenant, kunnen ROPC niet gebruiken.
 > * Accounts die geen wacht woorden hebben, kunnen zich niet aanmelden via ROPC. Voor dit scenario raden we u aan om in plaats daarvan een andere stroom te gebruiken voor uw app.
 > * Als gebruikers [multi-factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) moeten gebruiken om zich aan te melden bij de toepassing, zullen ze in plaats daarvan worden geblokkeerd.
-> * ROPC wordt niet ondersteund in [hybride identiteits Federatie](/azure/active-directory/hybrid/whatis-fed) scenario's (bijvoorbeeld Azure AD en ADFS gebruikt voor het verifiëren van on-premises accounts). Als gebruikers worden omgeleid naar een volledige pagina naar een on-premises ID-provider, kan Azure AD de gebruikers naam en het wacht woord niet testen voor die id-aanbieder. [Pass-Through-verificatie](/azure/active-directory/hybrid/how-to-connect-pta) wordt echter ondersteund met ROPC.
+> * ROPC wordt niet ondersteund in [hybride identiteits Federatie](../hybrid/whatis-fed.md) scenario's (bijvoorbeeld Azure AD en ADFS gebruikt voor het verifiëren van on-premises accounts). Als gebruikers worden omgeleid naar een volledige pagina naar een on-premises ID-provider, kan Azure AD de gebruikers naam en het wacht woord niet testen voor die id-aanbieder. [Pass-Through-verificatie](../hybrid/how-to-connect-pta.md) wordt echter ondersteund met ROPC.
 
 ## <a name="protocol-diagram"></a>Protocol diagram
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Parameter | Voorwaarde | Description |
+| Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
 | `tenant` | Vereist | De Directory-Tenant waarvan u de gebruiker wilt registreren. Dit kan een GUID of beschrijvende naam zijn. Deze para meter kan niet worden ingesteld op `common` of `consumers` , maar kan worden ingesteld op `organizations` . |
 | `client_id` | Vereist | De ID van de toepassing (client) die de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina die aan uw app is toegewezen. |
@@ -90,7 +90,7 @@ In het volgende voor beeld ziet u een geslaagd token antwoord:
 }
 ```
 
-| Parameter | Indeling | Description |
+| Parameter | Indeling | Beschrijving |
 | --------- | ------ | ----------- |
 | `token_type` | Tekenreeks | Altijd ingesteld op `Bearer` . |
 | `scope` | Door spaties gescheiden teken reeksen | Als er een toegangs token is geretourneerd, worden in deze para meter de scopes vermeld waarvoor het toegangs token geldig is. |
@@ -105,12 +105,12 @@ U kunt het vernieuwings token gebruiken om nieuwe toegangs tokens te verkrijgen 
 
 Als de gebruiker geen juiste gebruikers naam of wacht woord heeft opgegeven, of als de client niet de aangevraagde toestemming heeft ontvangen, zal de verificatie mislukken.
 
-| Fout | Description | Client actie |
+| Fout | Beschrijving | Client actie |
 |------ | ----------- | -------------|
 | `invalid_grant` | De verificatie is mislukt | De referenties zijn onjuist of de client heeft geen toestemming voor de aangevraagde bereiken. Als de bereiken niet worden verleend, `consent_required` wordt een fout geretourneerd. Als dit het geval is, moet de client de gebruiker naar een interactieve prompt verzenden met een webweergave of browser. |
 | `invalid_request` | De aanvraag is onjuist samengesteld | Het toekennings type wordt niet ondersteund voor de `/common` or- `/consumers` verificatie contexten.  Gebruik `/organizations` in plaats daarvan een Tenant-id. |
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 
 * Probeer ROPC voor uzelf uit met behulp van de [voorbeeld console toepassing](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Lees over de [beperkingen van micro soft Identity-platform](active-directory-v2-limitations.md)om te bepalen of u het v 2.0-eind punt moet gebruiken.
+* Lees over de [beperkingen van micro soft Identity-platform](../azuread-dev/azure-ad-endpoint-comparison.md)om te bepalen of u het v 2.0-eind punt moet gebruiken.

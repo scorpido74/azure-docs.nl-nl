@@ -1,5 +1,5 @@
 ---
-title: Elastic Database-taken maken en beheren met Transact-SQL (T-SQL)
+title: Elastic Database-taken (preview) maken en beheren met Transact-SQL (T-SQL)
 description: Voer scripts uit in veel data bases met Elastic Database-taak agent met behulp van Transact-SQL (T-SQL).
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: c91f96afefe924856b7416844d37c4d7a13c794b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045037"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119110"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) gebruiken om Elastic Database taken te maken en te beheren
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Transact-SQL (T-SQL) gebruiken om Elastic Database taken te maken en te beheren (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Dit artikel bevat een groot aantal voorbeeld scenario's om aan de slag te gaan met elastische taken met behulp van T-SQL.
@@ -389,7 +389,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 De volgende opgeslagen procedures bevinden zich in de [Jobs-data base](job-automation-overview.md#job-database).
 
-|Opgeslagen procedure  |Description  |
+|Opgeslagen procedure  |Beschrijving  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Hiermee wordt een nieuwe taak toegevoegd.    |
 |[sp_update_job](#sp_update_job)    |      Hiermee wordt een bestaande taak bijgewerkt.   |
@@ -1204,7 +1204,7 @@ GO
 
 De volgende weer gaven zijn beschikbaar in de [Jobs-data base](job-automation-overview.md#job-database).
 
-|Weergave  |Description  |
+|Weergave  |Beschrijving  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Taak uitvoerings geschiedenis weer geven.      |
 |[functies](#jobs-view)     |   Hiermee worden alle taken weer gegeven.      |
@@ -1220,7 +1220,7 @@ De volgende weer gaven zijn beschikbaar in de [Jobs-data base](job-automation-ov
 
 Taak uitvoerings geschiedenis weer geven.
 
-|Kolomnaam | Gegevenstype | Description |
+|Kolomnaam | Gegevenstype | Beschrijving |
 |---------|---------|---------|
 |**job_execution_id** | uniqueidentifier | Unieke ID van een exemplaar van de uitvoering van een taak.
 |**job_name** | nvarchar (128) | De naam van de taak.
@@ -1247,7 +1247,7 @@ Taak uitvoerings geschiedenis weer geven.
 
 Hiermee worden alle taken weer gegeven.
 
-|Kolomnaam | Gegevenstype |Description|
+|Kolomnaam | Gegevenstype |Beschrijving|
 |------|------|-------|
 |**job_name** | nvarchar (128) | De naam van de taak.|
 |**job_id**| uniqueidentifier |De unieke ID van de taak.|
@@ -1264,7 +1264,7 @@ Hiermee worden alle taken weer gegeven.
 
 Alle taak versies worden weer gegeven.
 
-|Kolomnaam|Gegevenstype|Description|
+|Kolomnaam|Gegevenstype|Beschrijving|
 |------|------|-------|
 |**job_name**|nvarchar (128)|De naam van de taak.|
 |**job_id**|uniqueidentifier|De unieke ID van de taak.|
@@ -1276,7 +1276,7 @@ Alle taak versies worden weer gegeven.
 
 Hiermee worden alle stappen in de huidige versie van elke taak weer gegeven.
 
-|Kolomnaam|Gegevenstype|Description|
+|Kolomnaam|Gegevenstype|Beschrijving|
 |------|------|-------|
 |**job_name**|nvarchar (128)|De naam van de taak.|
 |**job_id**|uniqueidentifier|De unieke ID van de taak.|
@@ -1316,7 +1316,7 @@ Toont alle stappen in alle versies van elke taak. Het schema is identiek aan [jo
 
 Een lijst met alle doel groepen.
 
-|Kolomnaam|Gegevenstype|Description|
+|Kolomnaam|Gegevenstype|Beschrijving|
 |-----|-----|-----|
 |**target_group_name**|nvarchar (128)|De naam van de doel groep, een verzameling data bases.
 |**target_group_id**|uniqueidentifier|De unieke ID van de doel groep.
@@ -1327,7 +1327,7 @@ Een lijst met alle doel groepen.
 
 Toont alle leden van alle doel groepen.
 
-|Kolomnaam|Gegevenstype|Description|
+|Kolomnaam|Gegevenstype|Beschrijving|
 |-----|-----|-----|
 |**target_group_name**|nvarchar (128|De naam van de doel groep, een verzameling data bases. |
 |**target_group_id**|uniqueidentifier|De unieke ID van de doel groep.|

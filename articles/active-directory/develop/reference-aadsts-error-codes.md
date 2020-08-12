@@ -12,19 +12,19 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2d18a50a21c41830796c913a424707897d277218
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026761"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115098"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Verificatie- en autorisatiefoutcodes in Azure AD
 
 Zoeken naar informatie over de AADSTS-fout codes die worden geretourneerd door de Azure Active Directory (de Azure AD) Security Token Service (STS)? Lees dit document om AADSTS-fout beschrijvingen, fixes en enkele voorgestelde tijdelijke oplossingen te vinden.
 
 > [!NOTE]
-> Deze informatie is voorlopig en kan worden gewijzigd. Hebt u een vraag of kunt u niet vinden wat u zoekt? Maak een GitHub-probleem of Raadpleeg de [ondersteunings-en Help-opties voor ontwikkel aars](active-directory-develop-help-support.md) voor meer informatie over andere manieren om hulp en ondersteuning te krijgen.
+> Deze informatie is voorlopig en kan worden gewijzigd. Hebt u een vraag of kunt u niet vinden wat u zoekt? Maak een GitHub-probleem of Raadpleeg de [ondersteunings-en Help-opties voor ontwikkel aars](./developer-support-help-options.md) voor meer informatie over andere manieren om hulp en ondersteuning te krijgen.
 >
 > Deze documentatie wordt verstrekt voor ontwikkel aars-en beheer richtlijnen, maar mag niet worden gebruikt door de client zelf. Fout codes kunnen op elk gewenst moment worden gewijzigd, zodat er meer gedetailleerde fout berichten worden weer geven die zijn bedoeld om de ontwikkelaar te helpen bij het bouwen van de toepassing. Apps die afhankelijk zijn van tekst of fout code nummers, worden na verloop van tijd gesplitst.
 
@@ -95,7 +95,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS50000 | TokenIssuanceError: er is een probleem met de aanmeldings service. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) om dit probleem op te lossen. |
 | AADSTS50001 | InvalidResource: de resource is uitgeschakeld of bestaat niet. Controleer de code van de app om te controleren of u de exacte resource-URL hebt opgegeven voor de resource die u wilt openen.  |
 | AADSTS50002 | NotAllowedTenant-aanmelden is mislukt vanwege een beperkte proxy toegang op de Tenant. Als het uw eigen tenantbeleid is, kunt u de instellingen voor de beperkte tenant wijzigen om dit probleem op te lossen. |
-| AADSTS50003 | MissingSigningKey-aanmelden is mislukt vanwege een ontbrekende handtekening sleutel of certificaat. Dit kan zijn omdat er geen handtekening sleutel is geconfigureerd in de app. Bekijk de oplossingen die worden beschreven op [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) . Als u nog steeds problemen ziet, neemt u contact op met de eigenaar van de app of een app-beheerder. |
+| AADSTS50003 | MissingSigningKey-aanmelden is mislukt vanwege een ontbrekende handtekening sleutel of certificaat. Dit kan zijn omdat er geen handtekening sleutel is geconfigureerd in de app. Bekijk de oplossingen die worden beschreven op [.. /Manage-apps/Application-Sign-in-problem-Federated-SSO-Gallery.MD # certificaat-of-sleutel-niet geconfigureerd](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Als u nog steeds problemen ziet, neemt u contact op met de eigenaar van de app of een app-beheerder. |
 | AADSTS50005 | DevicePolicyError: gebruiker heeft geprobeerd zich aan te melden bij een apparaat vanaf een platform dat momenteel niet wordt ondersteund via het beleid voor voorwaardelijke toegang. |
 | AADSTS50006 | InvalidSignature-handtekening verificatie is mislukt vanwege een ongeldige hand tekening. |
 | AADSTS50007 | PartnerEncryptionCertificateMissing-het partner versleutelings certificaat is niet gevonden voor deze app. [Open een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) bij micro soft om dit probleem te verhelpen. |
@@ -139,7 +139,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS50089 | Stroomtoken verlopen, verificatie is mislukt. Laat de gebruiker opnieuw proberen zich aan te melden met gebruikers naam en wacht woord. |
 | AADSTS50097 | DeviceAuthenticationRequired: de verificatie van het apparaat is vereist. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized-de JWT-hand tekening is ongeldig. |
-| AADSTS50105 | EntitlementGrantsNotFound-de aangemelde gebruiker is niet toegewezen aan een rol voor de aangemelde app. Wijs de gebruiker toe aan de app. Meer informatie: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role) . |
+| AADSTS50105 | EntitlementGrantsNotFound-de aangemelde gebruiker is niet toegewezen aan een rol voor de aangemelde app. Wijs de gebruiker toe aan de app. Meer informatie:[.. /Manage-apps/Application-Sign-in-problem-Federated-SSO-Gallery.MD # gebruiker-not-assigned-a-Role](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role). |
 | AADSTS50107 | InvalidRealmUri-het aangevraagde Federatie realm-object bestaat niet. Neem contact op met de beheerder van de tenant. |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat: probleem met JWT-header. Neem contact op met de beheerder van de tenant. |
 | AADSTS50124 | De ClaimsTransformationInvalidInputParameter-claim transformatie bevat een ongeldige invoer parameter. Neem contact op met de tenantbeheerder om het beleid bij te werken. |
@@ -188,7 +188,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist-de gebruiker of beheerder heeft niet ingestemd met het gebruik van de toepassing met ID X. Verzend een interactieve autorisatie aanvraag voor deze gebruiker en resource. |
 | AADSTS65004 | UserDeclinedConsent: de gebruiker heeft geen toestemming gegeven om toegang te krijgen tot de app. Laat de gebruiker zich opnieuw aanmelden en toestemming geven voor de app|
-| AADSTS65005 | MisconfiguredApplication-de vereiste resource toegangs lijst van de app bevat geen apps die kunnen worden gedetecteerd door de resource of de client-app heeft toegang aangevraagd tot de resource, die niet is opgegeven in de vereiste resource toegangs lijst of de grafiek service heeft een ongeldige aanvraag of bron niet gevonden. Als de app SAML ondersteunt, is het mogelijk dat u de app met de verkeerde id (entiteit) hebt geconfigureerd. Probeer de oplossing die wordt vermeld voor SAML uit met behulp van de onderstaande koppeling:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication-de vereiste resource toegangs lijst van de app bevat geen apps die kunnen worden gedetecteerd door de resource of de client-app heeft toegang aangevraagd tot de resource, die niet is opgegeven in de vereiste resource toegangs lijst of de grafiek service heeft een ongeldige aanvraag of bron niet gevonden. Als de app SAML ondersteunt, is het mogelijk dat u de app met de verkeerde id (entiteit) hebt geconfigureerd. Probeer de oplossing die wordt vermeld voor SAML uit met behulp van de onderstaande koppeling:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS650052 | De app heeft toegang nodig tot een service `(\"{name}\")` waarvoor uw organisatie `\"{organization}\"` geen abonnement heeft of is ingeschakeld. Neem contact op met uw IT-beheerder om de configuratie van uw service abonnementen te controleren. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant-verificatie is mislukt. Het vernieuwings token is niet geldig. De fout kan de volgende oorzaken hebben:<ul><li>De header voor token binding is leeg</li><li>Hash van token binding komt niet overeen</li></ul> |
@@ -250,7 +250,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS90043 | NationalCloudAuthCodeRedirection: de functie is uitgeschakeld. |
 | AADSTS90051 | InvalidNationalCloudId-de nationale Cloud-id bevat een ongeldige Cloud-id. |
 | AADSTS90055 | TenantThrottlingError: er zijn te veel binnenkomende aanvragen. Deze uitzonde ring wordt gegenereerd voor geblokkeerde tenants. |
-| AADSTS90056 | BadResourceRequest: als u de code voor een toegangs token wilt inwisselen, moet de app een POST-aanvraag verzenden naar het `/token` eind punt. Voordat u dit doet, moet u ook een autorisatie code opgeven en deze verzenden in de POST-aanvraag naar het `/token` eind punt. Raadpleeg dit artikel voor een overzicht van de OAuth 2,0-autorisatie code stroom: [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) . De gebruiker naar het `/authorize` eind punt sturen, waardoor een authorization_code wordt geretourneerd. Door een aanvraag naar het `/token` eind punt te posten, krijgt de gebruiker het toegangs token. Meld u aan bij de Azure Portal en controleer **App-registraties >-eind punten** om te bevestigen dat de twee eind punten correct zijn geconfigureerd. |
+| AADSTS90056 | BadResourceRequest: als u de code voor een toegangs token wilt inwisselen, moet de app een POST-aanvraag verzenden naar het `/token` eind punt. Voordat u dit doet, moet u ook een autorisatie code opgeven en deze verzenden in de POST-aanvraag naar het `/token` eind punt. Raadpleeg dit artikel voor een overzicht van de OAuth 2,0-autorisatie code stroom: [.. /azuread-dev/v1-protocols-OAuth-code.MD](../azuread-dev/v1-protocols-oauth-code.md). De gebruiker naar het `/authorize` eind punt sturen, waardoor een authorization_code wordt geretourneerd. Door een aanvraag naar het `/token` eind punt te posten, krijgt de gebruiker het toegangs token. Meld u aan bij de Azure Portal en controleer **App-registraties >-eind punten** om te bevestigen dat de twee eind punten correct zijn geconfigureerd. |
 | AADSTS90072 | PassThroughUserMfaError: het externe account waarmee de gebruiker zich aanmeldt, bestaat niet op de Tenant waarin ze zijn aangemeld; de gebruiker kan dus niet voldoen aan de MFA-vereisten voor de Tenant. Het account moet eerst worden toegevoegd als een externe gebruiker in de Tenant. Meld u af en meld u aan met een ander Azure AD-gebruikers account. |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid: er is een fout opgetreden tijdens het verwerken van een WS-Federation-bericht door de service. Het bericht is ongeldig. |
 | AADSTS90082 | OrgIdWsFederationNotSupported: het geselecteerde verificatie beleid voor de aanvraag wordt momenteel niet ondersteund. |
@@ -324,4 +324,4 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Hebt u een vraag of kunt u niet vinden wat u zoekt? Maak een GitHub-probleem of Raadpleeg de [ondersteunings-en Help-opties voor ontwikkel aars](active-directory-develop-help-support.md) voor meer informatie over andere manieren om hulp en ondersteuning te krijgen.
+* Hebt u een vraag of kunt u niet vinden wat u zoekt? Maak een GitHub-probleem of Raadpleeg de [ondersteunings-en Help-opties voor ontwikkel aars](./developer-support-help-options.md) voor meer informatie over andere manieren om hulp en ondersteuning te krijgen.

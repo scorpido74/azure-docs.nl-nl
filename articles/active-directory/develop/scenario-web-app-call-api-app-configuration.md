@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2da2755af4b44c0b17550676845c38c1a93cf801
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ac438b42f25fc82a0a5dd5384205e809e45ff57a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845184"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120082"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Een web-app die web-Api's aanroept: code configuratie
 
@@ -61,7 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 Zie [token cache serialisatie Options](#token-cache) (Engelstalig) als u meer wilt weten over de token cache.
 
 > [!NOTE]
-> Als u de code voorbeelden hier volledig wilt begrijpen, moet u bekend zijn met [ASP.net core fundamentals](https://docs.microsoft.com/aspnet/core/fundamentals), met name bij het [invoegen van afhankelijkheden](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) en [Opties](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
+> Als u de code voorbeelden hier volledig wilt begrijpen, moet u bekend zijn met [ASP.net core fundamentals](/aspnet/core/fundamentals), met name bij het [invoegen van afhankelijkheden](/aspnet/core/fundamentals/dependency-injection) en [Opties](/aspnet/core/fundamentals/configuration/options).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -268,7 +268,7 @@ Het gebruik van client verklaringen is een geavanceerd scenario dat wordt beschr
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-De zelf studie voor ASP.NET core maakt gebruik van afhankelijkheids injectie om u te laten bepalen welke implementatie van de token cache in het Startup.cs-bestand voor uw toepassing. Micro soft. Identity. web wordt geleverd met vooraf ontwikkelde token-cache-serialisatiefunctie beschreven in de [serialisatie van de token cache](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application). Een interessante mogelijkheid is om ASP.NET Core [gedistribueerde geheugen caches](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache)te kiezen:
+De zelf studie voor ASP.NET core maakt gebruik van afhankelijkheids injectie om u te laten bepalen welke implementatie van de token cache in het Startup.cs-bestand voor uw toepassing. Micro soft. Identity. web wordt geleverd met vooraf ontwikkelde token-cache-serialisatiefunctie beschreven in de [serialisatie van de token cache](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application). Een interessante mogelijkheid is om ASP.NET Core [gedistribueerde geheugen caches](/aspnet/core/performance/caching/distributed#distributed-memory-cache)te kiezen:
 
 ```csharp
 // Use a distributed token cache by adding:

@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aaac1beaae70325bee9752ca51a499f2908bdda
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77160757"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119229"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Ondersteuning voor Active Directory Federation Services in MSAL.NET
 Met Active Directory Federation Services (AD FS) in Windows Server kunt u OpenID Connect Connect en OAuth 2,0-verificatie en-autorisatie toevoegen aan toepassingen die u ontwikkelt. Deze toepassingen kunnen gebruikers vervolgens rechtstreeks verifiëren tegen AD FS. Lees [AD FS scenario's voor ontwikkel aars](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)voor meer informatie.
@@ -58,4 +58,4 @@ Er zijn momenteel geen plannen voor het ondersteunen van een rechtstreekse verbi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor de federatieve situatie [Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+Zie voor de federatieve situatie [Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein](../manage-apps/configure-authentication-for-federated-users-portal.md)

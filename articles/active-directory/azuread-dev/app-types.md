@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154947"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116441"
 ---
 # <a name="application-types-in-v10"></a>Toepassings typen in v 1.0
 
@@ -41,7 +41,7 @@ Dit zijn de vijf scenario's voor de primaire toepassing die worden ondersteund d
 Volg de koppelingen om meer te weten te komen over elk type app en inzicht te krijgen in de scenario's op hoog niveau voordat u met de code aan de slag gaat. U kunt ook meer te weten komen over de verschillen die u moet weten wanneer u een bepaalde app schrijft die werkt met het eind punt van de v 1.0 of van het v 2.0-eind punt.
 
 > [!NOTE]
-> Het v 2.0-eind punt biedt geen ondersteuning voor alle Azure AD-scenario's en-functies. Als u wilt bepalen of u het v 2.0-eind punt moet gebruiken, leest u over [v 2.0-beperkingen](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+> Het v 2.0-eind punt biedt geen ondersteuning voor alle Azure AD-scenario's en-functies. Als u wilt bepalen of u het v 2.0-eind punt moet gebruiken, leest u over [v 2.0-beperkingen](./azure-ad-endpoint-comparison.md?bc=%2fazure%2factive-directory%2fazuread-dev%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fazuread-dev%2ftoc.json).
 
 U kunt elk van de hier beschreven apps en scenario's ontwikkelen met behulp van verschillende talen en platforms. Ze worden allemaal ondersteund door de volledige code voorbeelden die beschikbaar zijn in de code samples Guide: [v 1.0 code samples by scenario](sample-v1-code.md) en [v 2.0 code samples by scenario](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). U kunt de code voorbeelden ook rechtstreeks vanuit de bijbehorende [github-voorbeeld opslagplaatsen](https://github.com/Azure-Samples?q=active-directory)downloaden.
 

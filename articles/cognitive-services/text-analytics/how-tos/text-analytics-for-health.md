@@ -8,16 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 9b76dac0734985b01a4a73ad4fc7f2a5f35838db
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 71cbf03a36dd95eb66c3dcbaffbf4b63d889f507
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986896"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121575"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Procedure: Text Analytics gebruiken voor de status (preview)
+
+> [!NOTE]
+> De Text Analytics voor de status container is onlangs bijgewerkt. Bekijk [wat er nieuw is](../whats-new.md) voor meer informatie over recente wijzigingen. Vergeet niet om de meest recente container te halen voor het gebruik van de updates die worden vermeld.
 
 > [!IMPORTANT] 
 > Text Analytics status is een preview-functie die IS ingesteld op ' AS IS ' en ' WITH ALL FAULTs '. Daarom **moet Text Analytics voor status (preview) niet worden geïmplementeerd of geïmplementeerd in productie gebruik.** Text Analytics de status niet is bedoeld of beschikbaar gesteld voor gebruik als medisch apparaat, klinisch ondersteunings programma of andere technologie, bedoeld om te worden gebruikt in de diagnose, het verkrijgen, beperken, behandelen of voor komen van ziekten of andere voor waarden en er wordt geen licentie of recht verleend door micro soft om deze mogelijkheid voor dergelijke doel einden te gebruiken. Deze mogelijkheid is niet ontworpen of bedoeld om te worden geïmplementeerd of gedistribueerd als een plaatsvervanger voor professioneel medisch advies of advies, diagnose, behandeling of het klinisch arrest van een ziekte medewerker, en mag niet als zodanig worden gebruikt. De klant is alleen verantwoordelijk voor het gebruik van Text Analytics voor de status. Micro soft garandeert niet dat Text Analytics voor de gezondheid of materialen die in verband met de mogelijkheid worden geleverd, voldoende zijn voor medische doel einden of dat anderszins voldoen aan de gezondheids-en medische vereisten van een persoon. 
@@ -229,7 +232,7 @@ De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling.
 Gebruik de onderstaande voor beeld-krul aanvraag voor het verzenden van een query naar de container die u hebt geïmplementeerd om de variabele te vervangen `serverURL` door de juiste waarde.
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.0-preview.1/domains/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -269,8 +272,8 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
                     "offset": 17,
                     "length": 11,
                     "text": "itchy sores",
-                    "type": "SYMPTOM_OR_SIGN",
-                    "score": 0.97,
+                    "category": "SymptomOrSign",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ]
@@ -283,8 +286,8 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
                     "offset": 11,
                     "length": 4,
                     "text": "50mg",
-                    "type": "DOSAGE",
-                    "score": 1.0,
+                    "category": "Dosage",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
@@ -292,8 +295,8 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
                     "offset": 16,
                     "length": 8,
                     "text": "benadryl",
-                    "type": "MEDICATION_NAME",
-                    "score": 0.99,
+                    "category": "MedicationName",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
@@ -339,50 +342,35 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
                     "offset": 32,
                     "length": 11,
                     "text": "twice daily",
-                    "type": "FREQUENCY",
-                    "score": 1.0,
+                    "category": "Frequency",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ],
             "relations": [
                 {
-                    "relationType": "DOSAGE_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "0",
-                            "role": "ATTRIBUTE"
-                        },
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        }
-                    ]
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
                 },
                 {
-                    "relationType": "FREQUENCY_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        },
-                        {
-                            "id": "2",
-                            "role": "ATTRIBUTE"
-                        }
-                    ]
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-05-08"
+    "modelVersion": "2020-07-24"
 }
 ```
 
-> [!NOTE] 
-> In sommige gevallen kan een enkele negatie detectie enkele voor waarden in een keer oplossen. De ontkenning van een herkende entiteit wordt weer gegeven in de JSON-uitvoer met de Booleaanse waarde van de `isNegated` vlag:
+### <a name="negation-detection-output"></a>Uitvoer van negatie detectie
+
+Wanneer u de detectie van negatie gebruikt, kan één negatie term in sommige gevallen meerdere voor waarden tegelijk aanpakken. De ontkenning van een herkende entiteit wordt weer gegeven in de JSON-uitvoer met de Booleaanse waarde van de `isNegated` vlag:
 
 ```json
 {
@@ -390,7 +378,7 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
   "offset": 90,
   "length": 10,
   "text": "chest pain",
-  "type": "SYMPTOM_OR_SIGN",
+  "category": "SymptomOrSign",
   "score": 0.9972,
   "isNegated": true,
   "links": [
@@ -403,6 +391,33 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
       "id": "0000023593"
     },
     ...
+```
+
+### <a name="relation-extraction-output"></a>Uitvoer van relatie-extractie
+
+Uitvoer van relatie-extractie bevat URI-verwijzingen naar de *bron* van de relatie en het *doel*ervan. Entiteiten met een relatie rol van `ENTITY` worden toegewezen aan het `target` veld. Entiteiten met een relatie rol van `ATTRIBUTE` worden toegewezen aan het `source` veld. Afkortings relaties bevatten bidirectionele `source` en `target` velden en worden `bidirectional` ingesteld op `true` . 
+
+```json
+"relations": [
+  {
+      "relationType": "DosageOfMedication",
+      "score": 1.0,
+      "bidirectional": false,
+      "source": "#/documents/2/entities/0",
+      "target": "#/documents/2/entities/1",
+      "entities": [
+          {
+              "id": "0",
+              "role": "ATTRIBUTE"
+          },
+          {
+              "id": "1",
+              "role": "ENTITY"
+          }
+      ]
+  },
+...
+]
 ```
 
 ## <a name="see-also"></a>Zie ook

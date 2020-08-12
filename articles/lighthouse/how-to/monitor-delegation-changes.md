@@ -1,14 +1,14 @@
 ---
 title: Overdrachts wijzigingen in uw beheer Tenant bewaken
 description: Meer informatie over het bewaken van overdrachts activiteiten van klant tenants naar uw beheer Tenant.
-ms.date: 07/10/2020
+ms.date: 08/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 63b19f56538f060a158fd665a9bef3bf43a9d087
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9842ad91c059fe4da70221d8c7c5570084bcc6b9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252280"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119008"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Overdrachts wijzigingen in uw beheer Tenant bewaken
 
@@ -23,7 +23,7 @@ In dit onderwerp worden de machtigingen beschreven die nodig zijn voor het bewak
 
 ## <a name="enable-access-to-tenant-level-data"></a>Toegang tot gegevens op Tenant niveau inschakelen
 
-Voor toegang tot activiteiten logboek gegevens op Tenant niveau moet aan een account de ingebouwde rol van de [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader) worden toegewezen in het hoofd bereik (/). Deze toewijzing moet worden uitgevoerd door een gebruiker met de rol globale beheerder met extra verhoogde toegang.
+Voor toegang tot activiteiten logboek gegevens op Tenant niveau moet aan een account de ingebouwde rol van de [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader) Azure zijn toegewezen in het hoofd bereik (/). Deze toewijzing moet worden uitgevoerd door een gebruiker met de rol globale beheerder met extra verhoogde toegang.
 
 ### <a name="elevate-access-for-a-global-administrator-account"></a>Toegang tot een globaal beheerders account verhogen
 
@@ -31,16 +31,18 @@ Als u een rol wilt toewijzen in het hoofd bereik (/), moet u de rol globale behe
 
 Zie [toegang uitbreiden voor het beheer van alle Azure-abonnementen en-beheer groepen](../../role-based-access-control/elevate-access-global-admin.md)voor gedetailleerde instructies voor het toevoegen en verwijderen van uitbrei ding van bevoegdheden.
 
-Nadat u de toegang hebt verhoogd, heeft uw account de rol beheerder voor gebruikers toegang in Azure in het hoofd bereik. Met deze roltoewijzing kunt u alle resources weer geven en toegang toewijzen in een abonnement of beheer groep in de map, en kunt u roltoewijzingen maken op basis van het hoofd bereik. 
+Nadat u de toegang hebt verhoogd, heeft uw account de rol beheerder voor gebruikers toegang in Azure in het hoofd bereik. Met deze roltoewijzing kunt u alle resources weer geven en toegang toewijzen in een abonnement of beheer groep in de map, en kunt u roltoewijzingen maken op basis van het hoofd bereik.
 
 ### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>Een nieuw Service-Principal-account maken voor toegang tot gegevens op Tenant niveau
 
-Zodra u uw toegang hebt uitgebreid, kunt u de juiste machtigingen toewijzen aan een account, zodat de gegevens van het activiteiten logboek op Tenant niveau kunnen worden opgevraagd. Dit account moet beschikken over de ingebouwde rol van [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader) die is toegewezen aan het hoofd bereik van uw beheer Tenant.
+Zodra u uw toegang hebt uitgebreid, kunt u de juiste machtigingen toewijzen aan een account, zodat de gegevens van het activiteiten logboek op Tenant niveau kunnen worden opgevraagd. Dit account moet beschikken over de ingebouwde rol van de [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader) Azure die is toegewezen aan het hoofd bereik van uw beheer Tenant.
 
 > [!IMPORTANT]
 > Het verlenen van een roltoewijzing in het hoofd bereik houdt in dat dezelfde machtigingen van toepassing zijn op elke resource in de Tenant.
 
-Omdat dit een breed toegangs niveau is, raden we u aan deze rol toe te wijzen aan een Service-Principal-account, in plaats van aan een afzonderlijke gebruiker of aan een groep. Daarnaast raden wij u aan de volgende aanbevolen procedures uit te voeren:
+Omdat dit een breed toegangs niveau is, raden we u aan deze rol toe te wijzen aan een Service-Principal-account, in plaats van aan een afzonderlijke gebruiker of aan een groep.
+
+ Daarnaast raden wij u aan de volgende aanbevolen procedures uit te voeren:
 
 - [Maak een nieuw Service-Principal-account](../../active-directory/develop/howto-create-service-principal-portal.md) dat alleen voor deze functie wordt gebruikt, in plaats van deze rol toe te wijzen aan een bestaande service-principal die wordt gebruikt voor andere Automation.
 - Zorg ervoor dat deze service-principal geen toegang heeft tot de resources van een gedelegeerde klant.
@@ -65,13 +67,16 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
 
+> [!NOTE]
+> U kunt ook de ingebouwde rol voor controle van Azure in het hoofd bereik toewijzen aan afzonderlijke gebruikers of aan gebruikers groepen. Dit kan handig zijn als u wilt dat een gebruiker [overdrachts gegevens rechtstreeks in het Azure Portal kan weer geven](#view-delegation-changes-in-the-azure-portal). Als u dit doet, moet u er rekening mee houden dat dit een breed toegangs niveau is dat moet worden beperkt tot het minste aantal gebruikers dat mogelijk is.
+
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Verhoogde toegang voor het account van de globale beheerder verwijderen
 
 Nadat u het account voor de Service-Principal hebt gemaakt en de rol van bewakings lezer aan het hoofd bereik hebt toegewezen, moet u ervoor zorgen dat u [de verhoogde toegang](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) voor het account van de globale beheerder verwijdert, omdat dit toegangs niveau niet langer nodig is.
 
 ## <a name="query-the-activity-log"></a>Een query uitvoeren op het activiteiten logboek
 
-Wanneer u een nieuw Service-Principal-account hebt gemaakt met behulp van de toegang tot het hoofd bereik van de beheer-Tenant, kunt u deze gebruiken voor het opvragen en rapporteren van overdrachts activiteiten in uw Tenant. 
+Wanneer u een nieuw Service-Principal-account hebt gemaakt met behulp van de toegang tot het hoofd bereik van de beheer-Tenant, kunt u deze gebruiken voor het opvragen en rapporteren van overdrachts activiteiten in uw Tenant.
 
 [Dit Azure PowerShell script](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) kan worden gebruikt om een query uit te proberen voor de afgelopen 1 dag van de activiteit en rapporten van toegevoegde of verwijderde delegaties (of pogingen die niet zijn gelukt). Het zoekt naar de logboek gegevens van de [Tenant activiteit](/rest/api/monitor/TenantActivityLogs/List) en bouwt vervolgens de volgende waarden op om te rapporteren over delegaties die worden toegevoegd of verwijderd:
 
@@ -85,7 +90,7 @@ Houd bij het uitvoeren van query's op deze gegevens de volgende informatie:
 
 - Als er meerdere resource groepen in één implementatie worden gedelegeerd, worden afzonderlijke vermeldingen geretourneerd voor elke resource groep.
 - Wijzigingen die zijn aangebracht in een eerdere delegering (zoals het bijwerken van de machtigings structuur) worden geregistreerd als een extra delegering.
-- Zoals hierboven vermeld, moet een account beschikken over de ingebouwde rol bewakings lezer in het hoofd bereik (/) om toegang te kunnen krijgen tot deze gegevens op Tenant niveau.
+- Zoals hierboven vermeld, moet een account beschikken over de ingebouwde rol van de bewakings lezer Azure in het hoofd bereik (/) om toegang te kunnen krijgen tot deze gegevens op Tenant niveau.
 - U kunt deze gegevens gebruiken in uw eigen werk stromen en rapportage. U kunt bijvoorbeeld de [http data collector API (open bare preview)](../../azure-monitor/platform/data-collector-api.md) gebruiken om gegevens te registreren voor Azure monitor van een rest API-client en vervolgens [actie groepen](../../azure-monitor/platform/action-groups.md) gebruiken om meldingen of waarschuwingen te maken.
 
 ```azurepowershell-interactive
@@ -159,6 +164,15 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
+
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Wijzigingen in de delegatie weer geven in de Azure Portal
+
+Gebruikers aan wie de bewakings lezer Azure ingebouwde rol in het hoofd bereik is toegewezen, kunnen wijzigingen in de overdracht rechtstreeks in het Azure Portal weer geven.
+
+1. Ga naar de pagina **mijn klanten** en selecteer vervolgens **activiteiten logboek** in het navigatie menu aan de linkerkant.
+1. Zorg ervoor dat **Directory-activiteit** is geselecteerd in het filter aan de bovenkant van het scherm.
+
+Er wordt een lijst met overdrachts wijzigingen weer gegeven. U kunt **kolommen bewerken** selecteren om de **status**, **gebeurtenis categorie**, **tijd**, **tijds tempel**, **abonnement**en gebeurtenis te tonen of te verbergen, **geïnitieerd door**, **resource groep**, **resource type**en **resource** waarden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

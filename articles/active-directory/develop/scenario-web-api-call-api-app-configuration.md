@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 95cb1181f841ce5f958b8a85697d7261f442b410
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 29c57411a2a35c36d0b4a9d4def931821b795094
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799596"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121133"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Een web-API die web-Api's aanroept: code configuratie
 
@@ -176,7 +176,7 @@ U kunt ook een voor beeld van een OBO-stroom implementatie bekijken in [Node.js 
 
 ## <a name="protocol"></a>Protocol
 
-Zie voor meer informatie over het OBO-protocol [micro soft Identity platform en OAuth 2,0-of-flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
+Zie voor meer informatie over het OBO-protocol [micro soft Identity platform en OAuth 2,0-of-flow](./v2-oauth2-on-behalf-of-flow.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

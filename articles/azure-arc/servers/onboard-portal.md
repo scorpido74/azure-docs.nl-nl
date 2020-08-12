@@ -1,20 +1,15 @@
 ---
 title: Verbinding maken tussen hybride computers en Azure via de Azure Portal
 description: In dit artikel leert u hoe u de Agent installeert en computers verbindt met Azure met behulp van Azure Arc voor servers (preview) van de Azure Portal.
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: f88fc4a1fd5c44b515ab44b604ebf9a885165ddc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007996"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120980"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -24,7 +19,7 @@ Voor deze methode moet u beheerders rechten op de computer hebben om de agent te
 
 Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>Het installatie script genereren op basis van de Azure Portal
 

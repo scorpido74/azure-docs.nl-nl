@@ -13,16 +13,16 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696518"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119875"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>MSAL voor Android gebruiken met B2C
 
-Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars van toepassingen gebruikers met sociale en lokale identiteiten verifiëren met behulp van [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/). Azure AD B2C is een service voor identiteits beheer. Gebruik deze functie om aan te passen en te beheren hoe klanten zich registreren, aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken.
+Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars van toepassingen gebruikers met sociale en lokale identiteiten verifiëren met behulp van [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml). Azure AD B2C is een service voor identiteits beheer. Gebruik deze functie om aan te passen en te beheren hoe klanten zich registreren, aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken.
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>Bekende instanties en omleidings-URI configureren
 
@@ -54,7 +54,7 @@ In het configuratie bestand voor de app worden twee gedeclareerd `authorities` .
 }
 ```
 
-De `redirect_uri` moet zijn geregistreerd in de app-configuratie en is ook in `AndroidManifest.xml` ter ondersteuning van omleiding tijdens de [autorisatie code toekennings stroom](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code).
+De `redirect_uri` moet zijn geregistreerd in de app-configuratie en is ook in `AndroidManifest.xml` ter ondersteuning van omleiding tijdens de [autorisatie code toekennings stroom](../../active-directory-b2c/authorization-code-flow.md).
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication initialiseren
 
@@ -153,7 +153,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>Beleid voor wachtwoord wijziging verwerken
 
-De gebruikers stroom voor het registreren of aanmelden van het lokale account bevat een**verg eten wacht woord?** gekoppeld. Als u op deze koppeling klikt, wordt de gebruikers stroom voor wacht woord opnieuw instellen niet automatisch geactiveerd.
+De gebruikers stroom voor het registreren of aanmelden van het lokale account bevat een**verg eten wacht woord?** . Als u op deze koppeling klikt, wordt de gebruikers stroom voor wacht woord opnieuw instellen niet automatisch geactiveerd.
 
 In plaats daarvan wordt de fout code `AADB2C90118` geretourneerd naar uw app. Uw app moet deze fout code verwerken door een specifieke gebruikers stroom uit te voeren waarmee het wacht woord opnieuw wordt ingesteld.
 
@@ -227,7 +227,7 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken claims
 
-Claims die in de IdToken worden geretourneerd, worden gevuld door de Security Token Service (STS), niet door MSAL. Afhankelijk van de ID-provider (IdP) die wordt gebruikt, zijn sommige claims mogelijk niet aanwezig. Sommige id bieden momenteel geen `preferred_username` claim. Omdat deze claim wordt gebruikt door MSAL voor caching, wordt een tijdelijke aanduiding `MISSING FROM THE TOKEN RESPONSE` in plaats daarvan gebruikt. Zie [overzicht van tokens in azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims)voor meer informatie over B2C IdToken claims.
+Claims die in de IdToken worden geretourneerd, worden gevuld door de Security Token Service (STS), niet door MSAL. Afhankelijk van de ID-provider (IdP) die wordt gebruikt, zijn sommige claims mogelijk niet aanwezig. Sommige id bieden momenteel geen `preferred_username` claim. Omdat deze claim wordt gebruikt door MSAL voor caching, wordt een tijdelijke aanduiding `MISSING FROM THE TOKEN RESPONSE` in plaats daarvan gebruikt. Zie [overzicht van tokens in azure Active Directory B2C](../../active-directory-b2c/tokens-overview.md#claims)voor meer informatie over B2C IdToken claims.
 
 ## <a name="managing-accounts-and-policies"></a>Accounts en beleids regels beheren
 
@@ -239,4 +239,4 @@ Wanneer u tokens vernieuwt voor een beleid met `acquireTokenSilent` , geeft u he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over Azure Active Directory B2C (Azure AD B2C) op [Wat is Azure Active Directory B2C?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+Meer informatie over Azure Active Directory B2C (Azure AD B2C) op [Wat is Azure Active Directory B2C?](../../active-directory-b2c/overview.md)

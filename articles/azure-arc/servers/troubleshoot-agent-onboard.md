@@ -1,19 +1,14 @@
 ---
 title: Problemen met Azure-Arc voor Server Agent-verbindings problemen oplossen
 description: In dit artikel wordt beschreven hoe u problemen oplost en oplost met de verbonden machine agent die zich voordoet met Azure Arc voor servers (preview) wanneer u probeert verbinding te maken met de service.
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2a6f51f1c6901eaa18c1de9c1fc788ed583b7394
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5cd2560279085485a8ac7b285e4f601060a924f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809439"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118005"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Problemen met de verbindings problemen van de verbonden computer agent oplossen
 

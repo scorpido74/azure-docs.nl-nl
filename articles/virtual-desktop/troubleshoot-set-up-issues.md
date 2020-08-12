@@ -3,15 +3,15 @@ title: Het maken van een hostgroep in Windows Virtual Desktop-omgeving-Azure
 description: Problemen met Tenant-en hostgroepen oplossen tijdens de installatie van een virtuele Windows-desktop omgeving.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 01/08/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006159"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121371"
 ---
 # <a name="host-pool-creation"></a>Hostgroepen maken
 
@@ -252,6 +252,12 @@ the VM.\\\"
 **Oorzaak:** Deze fout wordt veroorzaakt door een statische route, een firewall regel of een NSG die het downloaden van het zip-bestand dat is gekoppeld aan de Azure Resource Manager-sjabloon blokkeert.
 
 **Oplossen:** Verwijder de blokkerende statische route, firewall regel of NSG. U kunt eventueel het JSON-bestand van de Azure Resource Manager sjabloon openen in een tekst editor, de koppeling naar een zip-bestand maken en de resource downloaden naar een toegestane locatie.
+
+### <a name="error-cant-delete-a-session-host-from-the-host-pool-after-deleting-the-vm"></a>Fout: kan geen sessiehost verwijderen uit de hostgroep nadat de virtuele machine is verwijderd
+
+**Oorzaak:** U moet de sessiehost verwijderen voordat u de virtuele machine verwijdert.
+
+**Oplossen:** Plaats de sessiehost in de verwerkings modus, Meld alle gebruikers af bij de sessiehost en verwijder vervolgens de host.
 
 ## <a name="next-steps"></a>Volgende stappen
 

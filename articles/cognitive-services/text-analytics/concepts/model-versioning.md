@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: b3e8c2c8a5e95cc5c862112410f5073a5e600651
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 7d008dc0f7ed90397ac07e12320d861b107f0f46
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986760"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120929"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>Model versie beheer in de Text Analytics-API
 
@@ -38,15 +38,17 @@ Gebruik de onderstaande tabel om te bepalen welke model versies door elk eind pu
 
 Meer informatie over de updates voor deze modellen vindt u in [Wat is er nieuw](../whats-new.md).
 
-## <a name="text-analytics-for-health"></a>Text Analytics voor de status
+## <a name="text-analytics-for-health"></a>Text Analytics voor status
 
 De [Text Analytics voor de status](../how-tos/text-analytics-for-health.md) container maakt gebruik van afzonderlijke model versies dan de bovenstaande API-eind punten.  Houd er rekening mee dat er slechts één model versie beschikbaar is per container installatie kopie.
 
 | Eindpunt                        | Tag container installatie kopie                     | Model versie |
 |---------------------------------|-----------------------------------------|---------------|
-| `/domains/health`               | `1.1.012640001-amd64-preview`of de nieuwste | `2020-05-08`  |
+| `/domains/health`               | `1.1.013150001-amd64-preview`of de nieuwste | `2020-07-24`  |
+| `/domains/health`               | `1.1.012640001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
+| `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-07-24`  |
 
 
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feb7c4a4417d64e039793bd96141c965f6437414
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e09ad2991d552cb9886911ac75ea23c690204a71
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050917"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116645"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>On-premises Azure AD-wachtwoord beveiliging afdwingen voor Active Directory Domain Services
 
@@ -87,6 +87,9 @@ De on-premises Azure AD-onderdelen voor wachtwoord beveiliging werken als volgt:
 Voor de implementatie van Azure AD-wachtwoord beveiliging in een AD DS-forest is registratie van dat forest met Azure AD vereist. Elke proxy service die is geïmplementeerd, moet ook worden geregistreerd bij Azure AD. Deze forest-en proxy registraties zijn gekoppeld aan een specifieke Azure AD-Tenant, die impliciet wordt geïdentificeerd door de referenties die worden gebruikt tijdens de registratie.
 
 Het AD DS-forest en alle geïmplementeerde proxy services binnen een forest moeten zijn geregistreerd bij dezelfde Tenant. Het is niet mogelijk om een AD DS-forest of proxy services in dat forest te registreren bij verschillende Azure AD-tenants. Symptomen van een dergelijke configuratie met een onjuiste configuratie zijn het niet mogelijk om wachtwoord beleid te downloaden.
+
+> [!NOTE]
+> Klanten die meerdere Azure AD-tenants hebben, moeten daarom één DN-Tenant kiezen voor het registreren van elk forest voor Azure AD-wachtwoord beveiliging.
 
 ## <a name="download"></a>Downloaden
 

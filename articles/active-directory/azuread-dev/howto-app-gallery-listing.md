@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcb8f709bc75fdf9fe80ee26497acb78cc023327
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383866"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116339"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -99,7 +99,7 @@ Als u een toepassing in de Azure AD-App-galerie wilt weer geven, moet u eerst ee
     * Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van OpenID Connect Connect, selecteert u **OpenID Connect connect & OAuth 2,0** , zoals wordt weer gegeven.
     * Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-- **Saml 2,0** of **WS-voeder**: als uw app SAML 2,0 ondersteunt, kunt u deze rechtstreeks integreren met een Azure AD-Tenant door de [instructies te volgen om een aangepaste toepassing toe te voegen](../active-directory-saas-custom-apps.md).
+- **Saml 2,0** of **WS-voeder**: als uw app SAML 2,0 ondersteunt, kunt u deze rechtstreeks integreren met een Azure AD-Tenant door de [instructies te volgen om een aangepaste toepassing toe te voegen](../manage-apps/view-applications-portal.md).
 
   ![Een SAML 2,0-of WS--toepassing in de galerie weer geven](./media/howto-app-gallery-listing/saml.png)
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 005fb194a5c1539b70ccb8e8ac7d938b190ee4f5
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563309"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120963"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Beveiligde web-API: scopes en app-rollen controleren
 
@@ -88,7 +88,7 @@ De `VerifyUserHasAnyAcceptedScope` methode ziet er ongeveer als volgt uit:
 
 #### <a name="verify-the-scopes-more-globally"></a>De bereiken wereld wijd controleren
 
-Het definiëren van gedetailleerde bereiken voor uw web-API en het controleren van de scopes in elke controller actie is de aanbevolen benadering. Het is echter ook mogelijk om de scopes op het niveau van de toepassing of een controller te verifiëren met behulp van ASP.NET Core. Zie [autorisatie op basis van claims](https://docs.microsoft.com/aspnet/core/security/authorization/claims) in de ASP.net core-documentatie voor meer informatie.
+Het definiëren van gedetailleerde bereiken voor uw web-API en het controleren van de scopes in elke controller actie is de aanbevolen benadering. Het is echter ook mogelijk om de scopes op het niveau van de toepassing of een controller te verifiëren met behulp van ASP.NET Core. Zie [autorisatie op basis van claims](/aspnet/core/security/authorization/claims) in de ASP.net core-documentatie voor meer informatie.
 
 ### <a name="net-mvc"></a>.NET MVC
 
@@ -96,7 +96,7 @@ Voor ASP.NET vervangt u gewoon `HttpContext.User` door `ClaimsPrincipal.Current`
 
 ## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>App-rollen controleren in Api's die worden aangeroepen door daemon-apps
 
-Als uw web-API wordt aangeroepen door een [daemon-app](scenario-daemon-overview.md), moet voor die app een toepassings machtiging voor uw web-API zijn vereist. Zoals u kunt zien in het weer geven van [toepassings machtigingen (app-rollen)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles), worden deze machtigingen beschikbaar gesteld door uw API. Een voor beeld is de rol van de `access_as_application` app.
+Als uw web-API wordt aangeroepen door een [daemon-app](scenario-daemon-overview.md), moet voor die app een toepassings machtiging voor uw web-API zijn vereist. Zoals u kunt zien in het weer geven van [toepassings machtigingen (app-rollen)](./scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles), worden deze machtigingen beschikbaar gesteld door uw API. Een voor beeld is de rol van de `access_as_application` app.
 
 U moet uw API nu controleren of het token dat wordt ontvangen de claim bevat `roles` en dat deze claim de verwachte waarde heeft. De verificatie code is vergelijkbaar met de code die de gedelegeerde machtigingen verifieert, behalve dat uw controller actie tests voor rollen heeft uitgevoerd in plaats van bereiken:
 

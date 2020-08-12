@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da697ad6fac5c75faacbfb20b768a4ec96528881
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 0ba348bc9c97ba8be415cac2e5fd7d102d850568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041456"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117070"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
 
@@ -95,7 +95,7 @@ U kunt app-rollen definiëren voor het doel `users` , `applications` of beide. W
 "availableToOtherTenants": false,
 ```
 
-Het aantal gedefinieerde rollen heeft gevolgen voor de limieten die het toepassings manifest heeft. Deze zijn uitvoerig besproken op de pagina [manifest limieten](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) .
+Het aantal gedefinieerde rollen heeft gevolgen voor de limieten die het toepassings manifest heeft. Deze zijn uitvoerig besproken op de pagina [manifest limieten](./reference-app-manifest.md#manifest-limits) .
 
 ### <a name="assign-users-and-groups-to-roles"></a>Gebruikers en groepen toewijzen aan rollen
 
@@ -128,6 +128,6 @@ Wanneer de gebruikers die zijn toegewezen aan de verschillende app-rollen zich a
 - [Autorisatie toevoegen met behulp van app-rollen & rollen claims aan een ASP.NET Core-web-app](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Autorisatie in uw toepassingen implementeren met het micro soft Identity platform (video)](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory, nu met groeps claims en toepassings rollen](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory-app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory-app-manifest](./reference-app-manifest.md)
 - [AAD-toegangs tokens](access-tokens.md)
 - [AAD`id_tokens`](id-tokens.md)

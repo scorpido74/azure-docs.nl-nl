@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 28ace84f9a80b71209d7963d02b66317292b151b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1a7407c947c1c5bae1eed00acb0f216722f3d09
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882536"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121031"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>Mobiele apps voorbereiden voor productie
 
@@ -36,7 +36,7 @@ Voor elk type micro soft Authentication Library (MSAL) vindt u voorbeeld code en
 
 ## <a name="mitigate-and-investigate-issues"></a>Problemen oplossen en onderzoeken
 
-Gegevens verzamelen voor betere diagnose van problemen in uw app. Zie [logboek registratie in MSAL-toepassingen](https://docs.microsoft.com/azure/active-directory/develop/msal-logging)voor informatie over de soorten gegevens die u kunt verzamelen.
+Gegevens verzamelen voor betere diagnose van problemen in uw app. Zie [logboek registratie in MSAL-toepassingen](./msal-logging.md)voor informatie over de soorten gegevens die u kunt verzamelen.
 
 Hier volgen enkele suggesties voor het verzamelen van gegevens:
 

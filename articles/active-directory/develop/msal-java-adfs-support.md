@@ -13,12 +13,12 @@ ms.date: 11/21/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: f1ad755e444968cbbbe9e048be53fb72f65c3b37
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5d01d1143563637e21aaa06a3f997c1507e4d8f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87312636"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114775"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>Ondersteuning voor Active Directory Federation Services in MSAL voor Java
 
@@ -48,4 +48,4 @@ Wanneer u een token aanschaft met `ConfidentialClientApplication.AcquireToken()`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor de federatieve situatie [Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)
+Zie voor de federatieve situatie [Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein](../manage-apps/configure-authentication-for-federated-users-portal.md)

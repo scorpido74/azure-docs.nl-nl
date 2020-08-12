@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 0cdcb5287434c72bf54337611d67de8d6f65d8d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb6f5c4840f127ac174b6b60359dd52a4797b3ec
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479509"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119671"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-De Microsoft Graph-API is een REST Web-API waarmee u toegang hebt tot Microsoft Cloud-service bronnen. Nadat u uw app hebt geregistreerd en verificatie tokens voor een gebruiker of service hebt opgehaald, kunt u aanvragen indienen bij de Microsoft Graph-API. Zie [overzicht van Microsoft Graph](https://docs.microsoft.com/graph/overview)voor meer informatie.
+De Microsoft Graph-API is een REST Web-API waarmee u toegang hebt tot Microsoft Cloud-service bronnen. Nadat u uw app hebt geregistreerd en verificatie tokens voor een gebruiker of service hebt opgehaald, kunt u aanvragen indienen bij de Microsoft Graph-API. Zie [overzicht van Microsoft Graph](/graph/overview)voor meer informatie.
 
 Microsoft Graph maakt REST-Api's en client bibliotheken beschikbaar voor toegang tot gegevens op de volgende Microsoft 365-Services:
 - Office 365-Services: Delve, Excel, micro soft-boekingen, micro soft teams, OneDrive, OneNote, Outlook/Exchange, planner en share point
@@ -30,11 +30,11 @@ Microsoft Graph maakt REST-Api's en client bibliotheken beschikbaar voor toegang
 
 ## <a name="versions"></a>Versies
 
-Microsoft Graph ondersteunt momenteel twee versies: v 1.0 en bèta. De versie v 1.0 bevat algemeen beschik bare Api's. De v 1.0-versie gebruiken voor alle productie-apps. De bèta versie bevat Api's die momenteel als preview-versie beschikbaar zijn. We raden u aan de bèta versie alleen te gebruiken voor het testen van apps die in ontwikkeling zijn. Gebruik geen bèta-Api's in uw productie-apps. Zie voor meer informatie [versie beheer, ondersteuning en beleid voor het wijzigen van wijzigingen voor Microsoft Graph](https://docs.microsoft.com/graph/versioning-and-support).
+Microsoft Graph ondersteunt momenteel twee versies: v 1.0 en bèta. De versie v 1.0 bevat algemeen beschik bare Api's. De v 1.0-versie gebruiken voor alle productie-apps. De bèta versie bevat Api's die momenteel als preview-versie beschikbaar zijn. We raden u aan de bèta versie alleen te gebruiken voor het testen van apps die in ontwikkeling zijn. Gebruik geen bèta-Api's in uw productie-apps. Zie voor meer informatie [versie beheer, ondersteuning en beleid voor het wijzigen van wijzigingen voor Microsoft Graph](/graph/versioning-and-support).
 
-Zie [Microsoft Graph bèta-eindpunt referentie](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta) voor meer informatie over het gebruik van de bèta-api's.
+Zie [Microsoft Graph bèta-eindpunt referentie](/graph/api/overview?view=graph-rest-beta) voor meer informatie over het gebruik van de bèta-api's.
 
-Zie [Microsoft Graph referentie rest API v 1.0](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) als u de api's van v 1.0 wilt gaan gebruiken
+Zie [Microsoft Graph referentie rest API v 1.0](/graph/api/overview?view=graph-rest-1.0) als u de api's van v 1.0 wilt gaan gebruiken
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -42,7 +42,7 @@ Als u wilt lezen uit of schrijven naar een resource zoals een gebruiker of een e
 
 `{HTTP method} https://graph.microsoft.com/{version}/{resource}?{query-parameters}`
 
-Zie [de Microsoft Graph-API gebruiken](https://docs.microsoft.com/graph/use-the-api) voor meer informatie over de elementen van de geconstrueerde aanvraag
+Zie [de Microsoft Graph-API gebruiken](/graph/use-the-api) voor meer informatie over de elementen van de geconstrueerde aanvraag
 
 Quick start-voor beelden zijn beschikbaar om u te laten zien hoe u toegang krijgt tot de kracht van de Microsoft Graph-API. De voor beelden die beschikbaar zijn, hebben toegang tot twee services met één verificatie: Microsoft-account en Outlook. Met elke Snelstartgids krijgt u toegang tot gegevens uit de profielen van Microsoft-account gebruikers en worden gebeurtenissen uit hun agenda weer gegeven.
 De Quick starts bestaan uit vier stappen:
@@ -51,7 +51,7 @@ De Quick starts bestaan uit vier stappen:
 - Het voor beeld maken
 - Meld u aan en Bekijk gebeurtenissen in uw agenda
 
-Wanneer u de Snelstartgids hebt voltooid, hebt u een app die kan worden uitgevoerd. Zie de [Veelgestelde vragen over Microsoft Graph Quick](https://docs.microsoft.com/graph/quick-start-faq)start voor meer informatie. Zie [Microsoft Graph Snelstartgids](https://developer.microsoft.com/graph/quick-start)om aan de slag te gaan met de voor beelden.
+Wanneer u de Snelstartgids hebt voltooid, hebt u een app die kan worden uitgevoerd. Zie de [Veelgestelde vragen over Microsoft Graph Quick](/graph/quick-start-faq)start voor meer informatie. Zie [Microsoft Graph Snelstartgids](https://developer.microsoft.com/graph/quick-start)om aan de slag te gaan met de voor beelden.
 
 ## <a name="tools"></a>Hulpprogramma's
 

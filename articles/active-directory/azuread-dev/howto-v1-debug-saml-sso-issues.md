@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: bbd622ccb7aeecfff4d3dc744623105a593e6a67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383577"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116135"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Foutopsporing uitvoeren in op SAML gebaseerde eenmalige aanmelding bij toepassingen in Azure Active Directory
 
@@ -104,4 +104,4 @@ Voer de volgende stappen uit om de fout op te lossen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu eenmalige aanmelding aan uw toepassing werkt, kunt u het inrichten van [gebruikers en](../manage-apps/user-provisioning.md) het ongedaan maken van de inrichting van SaaS-toepassingen automatiseren of aan de [slag met voorwaardelijke toegang](../conditional-access/app-based-conditional-access.md).
+Nu eenmalige aanmelding aan uw toepassing werkt, kunt u het inrichten van [gebruikers en](../app-provisioning/user-provisioning.md) het ongedaan maken van de inrichting van SaaS-toepassingen automatiseren of aan de [slag met voorwaardelijke toegang](../conditional-access/app-based-conditional-access.md).

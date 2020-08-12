@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 36479acca56aa97a5453a9ab99691ed1993daaf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e260e36aaa06cf9e157d58ad870b9817218c15da
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477002"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114639"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Aan de slag met Azure Active Directory (ASP.NET MVC-projecten)
 
@@ -82,5 +82,5 @@ Als u de besturings elementen voor aanmelden/afmelden wilt toevoegen aan uw weer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Verificatie scenario's voor Azure Active Directory](authentication-scenarios.md)
+- [Verificatie scenario's voor Azure Active Directory](./authentication-vs-authorization.md)
 - [Aanmelding met Microsoft toevoegen aan een ASP.NET-web-app](quickstart-v2-aspnet-webapp.md)

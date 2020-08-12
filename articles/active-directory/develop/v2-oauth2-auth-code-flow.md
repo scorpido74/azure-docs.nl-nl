@@ -13,12 +13,12 @@ ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 945d6ac15c3cb0b3f98ebb14e6b859b8f356b944
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ef42dbb4cad1d40a35af28845baa402763acfc9b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419832"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119620"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Micro soft Identity platform en OAuth 2,0-autorisatie code stroom
 
@@ -73,7 +73,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_type` | vereist    | Moet `code` de autorisatie code stroom bevatten.       |
 | `redirect_uri`  | vereist | De redirect_uri van uw app, waar verificatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet exact overeenkomen met een van de redirect_uris die u in de portal hebt geregistreerd, behalve het moet een URL-code ring zijn. Voor systeem eigen & mobiele apps moet u de standaard waarde van gebruiken `https://login.microsoftonline.com/common/oauth2/nativeclient` .   |
 | `scope`  | vereist    | Een lijst met door spaties gescheiden [bereiken](v2-permissions-and-consent.md) waarvan u wilt dat de gebruiker toestemming geeft.  In het `/authorize` gedeelte van de aanvraag kan dit meerdere resources omvatten, zodat uw app toestemming kan krijgen voor meerdere web-api's die u wilt aanroepen. |
-| `response_mode`   | aanbevelingen | Hiermee geeft u de methode op die moet worden gebruikt om het resulterende token terug naar uw app te verzenden. Dit kan een van de volgende zijn:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`levert de code als een query reeks parameter op de omleidings-URI. Als u een ID-token met behulp van de impliciete stroom aanvraagt, kunt u niet gebruiken `query` zoals opgegeven in de [OpenID Connect-specificatie](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Als u alleen de code wilt aanvragen, kunt u `query` , `fragment` of gebruiken `form_post` . `form_post`Hiermee wordt een bericht met de code uitgevoerd naar de omleidings-URI. Zie [OpenID Connect Connect protocol](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)(Engelstalig) voor meer informatie.  |
+| `response_mode`   | aanbevelingen | Hiermee geeft u de methode op die moet worden gebruikt om het resulterende token terug naar uw app te verzenden. Dit kan een van de volgende zijn:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`levert de code als een query reeks parameter op de omleidings-URI. Als u een ID-token met behulp van de impliciete stroom aanvraagt, kunt u niet gebruiken `query` zoals opgegeven in de [OpenID Connect-specificatie](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Als u alleen de code wilt aanvragen, kunt u `query` , `fragment` of gebruiken `form_post` . `form_post`Hiermee wordt een bericht met de code uitgevoerd naar de omleidings-URI. Zie [OpenID Connect Connect protocol](../azuread-dev/v1-protocols-openid-connect-code.md)(Engelstalig) voor meer informatie.  |
 | `state`                 | aanbevelingen | Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van alle inhoud die u wilt. Een wille keurig gegenereerde unieke waarde wordt doorgaans gebruikt om [vervalsing van aanvragen op meerdere sites](https://tools.ietf.org/html/rfc6749#section-10.12)te voor komen. Met de waarde kan ook informatie over de status van de gebruiker in de app worden gecodeerd voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
 | `prompt`  | optioneel    | Hiermee wordt het type gebruikers interactie aangegeven dat vereist is. De enige geldige waarden op dit moment zijn `login` , `none` , en `consent` .<br/><br/>- `prompt=login`dwingt de gebruiker de referenties op die aanvraag in te voeren, waarbij eenmalige aanmelding wordt genegeerd.<br/>- `prompt=none`is het tegenovergestelde: Hiermee zorgt u ervoor dat de gebruiker niet in een interactieve prompt wordt weer gegeven. Als de aanvraag niet op de achtergrond kan worden voltooid via eenmalige aanmelding, wordt door het micro soft Identity platform-eind punt een `interaction_required` fout geretourneerd.<br/>- `prompt=consent`het dialoog venster OAuth-toestemming wordt geactiveerd nadat de gebruiker zich heeft aangemeld, waarbij de gebruiker wordt gevraagd om machtigingen te verlenen aan de app.<br/>- `prompt=select_account`onderbreekt eenmalige aanmelding voor het aanbieden van accounts selectie alle accounts in een sessie of een eventueel onthouden account of een optie om ervoor te kiezen om een ander account samen te gebruiken.<br/> |
 | `login_hint`  | optioneel    | Kan worden gebruikt om het veld gebruikers naam/e-mail adres vooraf in te vullen op de aanmeldings pagina voor de gebruiker, als u de gebruikers naam van tevoren kent. Vaak gebruiken apps deze para meter tijdens het opnieuw verifiëren, waarbij de gebruikers naam al is geëxtraheerd van een eerdere aanmelding met de `preferred_username` claim.   |
@@ -277,7 +277,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Probeer deze aanvraag uit te voeren in postman! (Vergeet niet om de te vervangen `refresh_token` ) [ ![ Probeer deze aanvraag uit te voeren in postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| Parameter     | Type           | Description        |
+| Parameter     | Type           | Beschrijving        |
 |---------------|----------------|--------------------|
 | `tenant`        | vereist     | De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich kan aanmelden bij de toepassing. De toegestane waarden zijn `common` , `organizations` , `consumers` en Tenant-id's. Zie [basis beginselen van protocollen](active-directory-v2-protocols.md#endpoints)voor meer informatie.   |
 | `client_id`     | vereist    | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |

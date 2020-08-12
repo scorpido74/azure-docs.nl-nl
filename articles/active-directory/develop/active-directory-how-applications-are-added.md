@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884270"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115761"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hoe en waarom toepassingen worden toegevoegd aan Azure AD
 
@@ -74,7 +74,7 @@ Net als toepassings objecten kunnen service-principals ook worden gemaakt via me
   * Wanneer u zich abonneert op Office 365 of een proef versie start, worden een of meer service-principals gemaakt in de map die de verschillende services vertegenwoordigt die worden gebruikt voor het leveren van alle functies die zijn gekoppeld aan Office 365.
   * Voor sommige Office 365-Services, zoals share point, worden voortdurend service-principals gemaakt om beveiligde communicatie tussen onderdelen, waaronder werk stromen, mogelijk te maken.
 * Wanneer een beheerder een toepassing toevoegt uit de app-galerie (Hiermee wordt ook een onderliggend app-object gemaakt)
-* Een toepassing voor het gebruik van [Azure AD-toepassingsproxy](/azure/active-directory/manage-apps/application-proxy) toevoegen
+* Een toepassing voor het gebruik van [Azure AD-toepassingsproxy](../manage-apps/application-proxy.md) toevoegen
 * Een toepassing verbinden voor eenmalige aanmelding met SAML of een eenmalige aanmelding met een wacht woord (SSO)
 * Programmatisch via de Microsoft Graph-API of Power shell
 
@@ -104,8 +104,8 @@ Toepassingen die u zelf toevoegt (wordt weer gegeven als **app (uw)** in het dia
   * Claim transformatie regels
   * Kenmerk toewijzingen (gebruikers inrichten)
 * Zie de referentie documentatie voor de Microsoft Graph-API voor meer informatie over de Service-Principal en toepassings objecten:
-  * [Toepassing](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [Service-Principal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Toepassing](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Service-Principal](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Waarom kunnen toepassingen worden geïntegreerd met Azure AD?
 

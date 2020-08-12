@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5a74f1ca8d1055885561a35dbd18899193d3924d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0561be00f50dad0fe89ca47428802f45ee44f50d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984141"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121422"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Een site-naar-site-verbinding met een VNet toevoegen met een bestaande VPN-gateway verbinding
 
@@ -43,7 +43,7 @@ Controleer de volgende items:
 * De virtuele netwerk gateway voor uw VNet is RouteBased. Als u een PolicyBased VPN-gateway hebt, moet u de gateway van het virtuele netwerk verwijderen en een nieuwe VPN-gateway maken als RouteBased.
 * Geen van de adresbereiken overlapt voor een van de VNets waarmee dit VNet verbinding maakt.
 * U hebt een compatibel VPN-apparaat en iemand die dit kan configureren. Zie [About VPN Devices](vpn-gateway-about-vpn-devices.md) (Over VPN-apparaten). Als u niet weet hoe u uw VPN-apparaat moet configureren of de IP-adresbereiken in uw on-premises netwerkconfiguratie niet kent, moet u contact opnemen met iemand die u hierbij kan helpen en de benodigde gegevens kan verstrekken.
-* U hebt een extern gericht openbaar IP-adres voor uw VPN-apparaat. Dit IP-adres kan zich niet achter een NAT bevinden.
+* U hebt een extern gericht openbaar IP-adres voor uw VPN-apparaat.
 
 ## <a name="part-1---configure-a-connection"></a><a name="part1"></a>Deel 1: een verbinding configureren
 1. Navigeer via een browser naar de [Azure Portal](https://portal.azure.com) en log, indien nodig, in met uw Azure-account.

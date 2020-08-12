@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f98be2ef6a82c099425655fd7e5d25a4358844bf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982579"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115438"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten (preview-versie)
 
@@ -70,7 +70,7 @@ Gebruik de volgende para meters voor het configureren van de micro soft Enter pr
   - `https://login.usgovcloudapi.net`
   - `https://login-us.microsoftonline.com`
 
-U kunt Microsoft Intune als uw MDM-service gebruiken om de configuratie van de micro soft Enter prise SSO-invoeg toepassing te vereenvoudigen. Zie de [intune-configuratie documentatie](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)voor meer informatie.
+U kunt Microsoft Intune als uw MDM-service gebruiken om de configuratie van de micro soft Enter prise SSO-invoeg toepassing te vereenvoudigen. Zie de [intune-configuratie documentatie](/intune/configuration/ios-device-features-settings)voor meer informatie.
 
 ## <a name="using-the-sso-extension-in-your-application"></a>De SSO-extensie in uw toepassing gebruiken
 

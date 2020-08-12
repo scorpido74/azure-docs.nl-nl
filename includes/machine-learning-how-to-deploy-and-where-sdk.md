@@ -6,12 +6,12 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 624824f5b6b8f7154ccd7b50da49f3f4bb179bb9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 97f0412141f15ad0a72c02b92cfcf089b61db0cf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542769"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120338"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -100,12 +100,11 @@ Zie de documentatie voor de [model klasse](https://docs.microsoft.com/python/api
 
 Zie [een bestaand model implementeren](../articles/machine-learning/how-to-deploy-existing-model.md)voor meer informatie over het werken met modellen die buiten Azure machine learning zijn getraind.
 
-
 ## <a name="define-an-entry-script"></a>Een invoer script definiëren
 
 [!INCLUDE [write entry script](machine-learning-entry-script.md)]
 
-## <a name="define-an-inference-configuration"></a>Een configuratie voor het afstellen van een interferentie definiëren
+## <a name="define-an-inferenceconfig"></a>Een InferenceConfig definiëren
 
 Een configuratie voor het afwijzen van een interferentie beschrijft het instellen van de webservice die uw model bevat. Het wordt later gebruikt wanneer u het model implementeert.
 
@@ -162,12 +161,9 @@ Zie de documentatie van [InferenceConfig](https://docs.microsoft.com/python/api/
 
 ## <a name="choose-a-compute-target"></a>Een reken doel kiezen
 
-
 [!INCLUDE [aml-compute-target-deploy](aml-compute-target-deploy.md)]
 
-
-
-## <a name="define-a-deployment-configuration"></a>Een implementatie configuratie definiëren
+## <a name="define-a-deploymentconfiguration"></a>Een DeploymentConfiguration definiëren
 
 Voordat u uw model implementeert, moet u de implementatie configuratie definiëren. *De implementatie configuratie is specifiek voor het reken doel dat als host fungeert voor de webservice.* Wanneer u bijvoorbeeld een model lokaal implementeert, moet u de poort opgeven waar de service aanvragen accepteert. De implementatie configuratie maakt geen deel uit van het invoer script. Het wordt gebruikt voor het definiëren van de kenmerken van het Compute-doel die als host dienen voor het model en het script.
 
@@ -187,7 +183,6 @@ De klassen voor lokale, Azure Container Instances-en AKS-webservices kunnen word
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-
 ## <a name="deploy-your-model"></a>Uw model implementeren
 
 U bent nu klaar om uw model te implementeren. In het onderstaande voor beeld wordt een lokale implementatie gedemonstreerd. De syntaxis is afhankelijk van het berekenings doel dat u in de vorige stap hebt gekozen.
@@ -203,11 +198,9 @@ print(service.state)
 
 Zie de documentatie voor [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py), [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)en [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)voor meer informatie.
 
-
 ## <a name="delete-resources"></a>Resources verwijderen
 
 Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `service.delete()` .
 Als u een geregistreerd model wilt verwijderen, gebruikt u `model.delete()` .
 
 Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)voor meer informatie.
-

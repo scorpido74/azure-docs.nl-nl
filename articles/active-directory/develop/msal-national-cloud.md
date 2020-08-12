@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81533986"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119434"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>MSAL gebruiken in een nationale cloud omgeving
 
@@ -40,7 +40,7 @@ Voordat u begint, moet u ervoor zorgen dat u voldoet aan deze vereisten.
 
 ### <a name="choose-the-appropriate-identities"></a>Kies de juiste identiteiten
 
-[Azure Government](https://docs.microsoft.com/azure/azure-government/) toepassingen kunnen gebruikers verifiëren met Azure AD Government-identiteiten en open bare Azure AD-identiteiten. Omdat u een van deze identiteiten kunt gebruiken, moet u bepalen welk instantie-eind punt u moet kiezen voor uw scenario:
+[Azure Government](../../azure-government/index.yml) toepassingen kunnen gebruikers verifiëren met Azure AD Government-identiteiten en open bare Azure AD-identiteiten. Omdat u een van deze identiteiten kunt gebruiken, moet u bepalen welk instantie-eind punt u moet kiezen voor uw scenario:
 
 - Azure AD Public: dit wordt vaak gebruikt als uw organisatie al een open bare Azure AD-Tenant heeft ter ondersteuning van Office 365 (openbaar of GCC) of een andere toepassing.
 - Azure AD government: veel gebruikt als uw organisatie al een Azure AD Government-Tenant heeft ter ondersteuning van Office 365 (GCC High of DoD) of als u een nieuwe Tenant maakt in azure AD Government.
@@ -49,7 +49,7 @@ Nadat u hebt besloten, hebt u een speciale overweging waar u uw app-registratie 
 
 ### <a name="get-an-azure-government-subscription"></a>Een Azure Government-abonnement verkrijgen
 
-Zie [uw abonnement beheren en er verbinding mee maken in azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions)om een Azure Government-abonnement te krijgen.
+Zie [uw abonnement beheren en er verbinding mee maken in azure Government](../../azure-government/documentation-government-manage-subscriptions.md)om een Azure Government-abonnement te krijgen.
 
 Als u nog geen abonnement op Azure Government hebt, maakt u een [gratis account](https://azure.microsoft.com/global-infrastructure/government/request/) voordat u begint.
 
@@ -127,14 +127,14 @@ In die code:
     - Als uw toepassing **accounts in deze organisatie Directory**ondersteunt, vervangt u deze waarde door de Tenant-id of Tenant naam (bijvoorbeeld contoso.Microsoft.com).
     - Als uw toepassing **accounts in een organisatorische Directory**ondersteunt, vervangt u deze waarde door `organizations` .
 
-    Zie [Azure AD-verificatie-eind punten](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)voor het vinden van verificatie-eind punten voor alle nationale Clouds.
+    Zie [Azure AD-verificatie-eind punten](./authentication-national-cloud.md#azure-ad-authentication-endpoints)voor het vinden van verificatie-eind punten voor alle nationale Clouds.
 
     > [!NOTE]
     > Persoonlijke micro soft-accounts worden niet ondersteund in nationale Clouds.
 
 - `graphEndpoint`is het Microsoft Graph-eind punt voor de micro soft-Cloud voor de Amerikaanse overheid.
 
-   Zie [Microsoft Graph-eind punten in nationale Clouds](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)om Microsoft Graph-eind punten te vinden voor alle nationale Clouds.
+   Zie [Microsoft Graph-eind punten in nationale Clouds](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)om Microsoft Graph-eind punten te vinden voor alle nationale Clouds.
 
 ## <a name="python"></a>[Python](#tab/python)
 
@@ -150,7 +150,7 @@ Uw python-toepassing voor MSAL inschakelen voor soevereine Clouds:
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- Voor het aanroepen van micro soft Graph is een specifieke URL voor het eind punt van een grafiek vereist die afhankelijk is van de cloud die u gebruikt. Als u Microsoft Graph eind punten voor alle nationale Clouds wilt vinden, raadpleegt u de [Microsoft Graph en de basis-eind punten van de service grafiek Verkenner](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- Voor het aanroepen van micro soft Graph is een specifieke URL voor het eind punt van een grafiek vereist die afhankelijk is van de cloud die u gebruikt. Als u Microsoft Graph eind punten voor alle nationale Clouds wilt vinden, raadpleegt u de [Microsoft Graph en de basis-eind punten van de service grafiek Verkenner](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
     Hier volgt een voor beeld van een eind punt van een grafiek, met bereik:
 
@@ -173,7 +173,7 @@ Hier volgt een voor beeld van een instantie:
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- Voor het aanroepen van micro soft Graph is een specifieke URL voor het eind punt van een grafiek vereist die afhankelijk is van de cloud die u gebruikt. Als u Microsoft Graph eind punten voor alle nationale Clouds wilt vinden, raadpleegt u de [Microsoft Graph en de basis-eind punten van de service grafiek Verkenner](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- Voor het aanroepen van micro soft Graph is een specifieke URL voor het eind punt van een grafiek vereist die afhankelijk is van de cloud die u gebruikt. Als u Microsoft Graph eind punten voor alle nationale Clouds wilt vinden, raadpleegt u de [Microsoft Graph en de basis-eind punten van de service grafiek Verkenner](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 Hier volgt een voor beeld van een eind punt van een grafiek, met bereik:
 
@@ -225,6 +225,6 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 Meer informatie over:
 
 - [Verificatie in nationale Clouds](authentication-national-cloud.md)
-- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Duitsland](https://docs.microsoft.com/azure/germany/)
+- [Azure Government](../../azure-government/index.yml)
+- [Azure China 21Vianet](/azure/china/)
+- [Azure Duitsland](../../germany/index.yml)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: c44575ca43063388d5c65855542cf15700d2cb5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1469fcfa68b10353b78d31ccc758c61bf7746692
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80883165"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120691"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registratievelden in Azure-portal voor zelf ontwikkelde apps
 
@@ -38,7 +38,7 @@ In dit artikel vindt u een korte beschrijving van alle beschik bare velden in he
 |------------------|------------------------------------------------------------------------------------------|
 | Naam             | De naam van de toepassing. De waarde moet mini maal vier tekens bevatten.                |
 | Ondersteunde accounttypen| Selecteer welke accounts u uw toepassing wilt laten ondersteunen: accounts in deze organisatie-map alleen, accounts in een organisatie Directory of accounts in een organisatorische map en persoonlijke micro soft-accounts.  |
-| Omleidings-URI (optioneel) | Selecteer het type app dat u wilt maken, **Web** of **open bare client (mobiele & bureau blad)** en voer vervolgens de omleidings-URI (of antwoord-URL) in voor uw toepassing. Geef voor webtoepassingen de basis-URL van de app op. http://localhost:31544 kan bijvoorbeeld de URL zijn van een web-app die op uw lokale machine wordt uitgevoerd. Gebruikers moeten deze URL gebruiken om zich bij een webclienttoepassing aan te melden. Geef voor openbare clienttoepassingen de URI op die in Azure Active Directory wordt gebruikt om tokenantwoorden te retourneren. Voer een waarde in die specifiek is voor uw toepassing, zoals myapp://auth. Bekijk onze [Quick](https://docs.microsoft.com/azure/active-directory/develop)starts voor specifieke voor beelden voor webtoepassingen of systeem eigen toepassingen.|
+| Omleidings-URI (optioneel) | Selecteer het type app dat u wilt maken, **Web** of **open bare client (mobiele & bureau blad)** en voer vervolgens de omleidings-URI (of antwoord-URL) in voor uw toepassing. Geef voor webtoepassingen de basis-URL van de app op. http://localhost:31544 kan bijvoorbeeld de URL zijn van een web-app die op uw lokale machine wordt uitgevoerd. Gebruikers moeten deze URL gebruiken om zich bij een webclienttoepassing aan te melden. Geef voor openbare clienttoepassingen de URI op die in Azure Active Directory wordt gebruikt om tokenantwoorden te retourneren. Voer een waarde in die specifiek is voor uw toepassing, zoals myapp://auth. Bekijk onze [Quick](./index.yml)starts voor specifieke voor beelden voor webtoepassingen of systeem eigen toepassingen.|
 
 Zodra u de bovenstaande velden hebt ingevuld, wordt de toepassing geregistreerd in het Azure Portal en wordt u omgeleid naar de overzichts pagina van de toepassing. De pagina instellingen in het linkerdeel venster onder **beheren** hebben meer velden waarmee u uw toepassing kunt aanpassen. In de onderstaande tabellen worden alle velden beschreven. U ziet alleen een subset van deze velden, afhankelijk van of u een webtoepassing of een open bare client toepassing hebt gemaakt.
 

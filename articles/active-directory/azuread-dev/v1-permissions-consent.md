@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154471"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117614"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Machtigingen en toestemming in het Azure Active Directory v 1.0-eind punt
 
@@ -33,8 +33,8 @@ Azure Active Directory (Azure AD) maakt uitgebreid gebruik van machtigingen voor
 
 Azure AD definieert twee soorten machtigingen:
 
-* **Gedelegeerde machtigingen** - Deze worden gebruikt door apps met een aangemelde gebruiker. Voor deze apps geeft de gebruiker of een beheerder toestemming voor de machtigingen die de app aanvraagt. De app krijgt vervolgens machtigingen om als de aangemelde gebruiker te handelen wanneer een API wordt aangeroepen. Afhankelijk van de API kan de gebruiker mogelijk niet rechtstreeks toestemming geven voor de API en moet er in plaats daarvan [een beheerder zijn om "toestemming van de beheerder" te bieden](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
-* **Toepassingsmachtigingen** - Deze worden gebruikt door apps die worden uitgevoerd zonder aangemelde gebruiker, zoals apps die als achtergrondservices of daemons worden uitgevoerd. Toepassings machtigingen kunnen alleen worden [gezonden door beheerders](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant) , omdat ze doorgaans krachtig zijn en toegang hebben tot gegevens op gebruikers grenzen of gegevens die anders zouden worden beperkt tot beheerders. Gebruikers die zijn gedefinieerd als eigen aren van de bron toepassing (de API die de machtigingen publiceert), kunnen ook toepassings machtigingen verlenen voor de Api's waarvan ze eigenaar zijn.
+* **Gedelegeerde machtigingen** - Deze worden gebruikt door apps met een aangemelde gebruiker. Voor deze apps geeft de gebruiker of een beheerder toestemming voor de machtigingen die de app aanvraagt. De app krijgt vervolgens machtigingen om als de aangemelde gebruiker te handelen wanneer een API wordt aangeroepen. Afhankelijk van de API kan de gebruiker mogelijk niet rechtstreeks toestemming geven voor de API en moet er in plaats daarvan [een beheerder zijn om "toestemming van de beheerder" te bieden](../develop/howto-convert-app-to-be-multi-tenant.md).
+* **Toepassingsmachtigingen** - Deze worden gebruikt door apps die worden uitgevoerd zonder aangemelde gebruiker, zoals apps die als achtergrondservices of daemons worden uitgevoerd. Toepassings machtigingen kunnen alleen worden [gezonden door beheerders](../develop/v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) , omdat ze doorgaans krachtig zijn en toegang hebben tot gegevens op gebruikers grenzen of gegevens die anders zouden worden beperkt tot beheerders. Gebruikers die zijn gedefinieerd als eigen aren van de bron toepassing (de API die de machtigingen publiceert), kunnen ook toepassings machtigingen verlenen voor de Api's waarvan ze eigenaar zijn.
 
 Effectieve machtigingen zijn de machtigingen die uw app zal hebben wanneer deze aanvragen bij een API indient. 
 
@@ -75,12 +75,12 @@ Toepassingen in Azure AD zijn afhankelijk van toestemming om toegang te krijgen 
 * **Statische toestemming van gebruikers** - Vindt automatisch plaats via de [OAuth 2.0-autorisatiestroom](v1-protocols-oauth-code.md#request-an-authorization-code) als u de resource opgeeft waarmee uw app wil communiceren. In het scenario met statische toestemming van de gebruiker moet uw app al de benodigde machtigingen hebben opgegeven in de configuratie van de app in de Azure Portal. Als de gebruiker (of eventueel de beheerder) geen toestemming voor deze app heeft gegeven, zal Azure AD de gebruiker op dit moment vragen om toestemming te geven. 
 
     Kom meer te weten over het registreren van een Azure AD-app die toegang tot een statische set API’s vraagt.
-* **Dynamische toestemming van de gebruiker** - Is een functie in v2 van het Azure ADD-appmodel. In dit scenario vraagt uw app een reeks machtigingen aan die nodig zijn in de [OAuth 2.0-autorisatiestroom voor v2-apps](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent). Als de gebruiker nog geen toestemming heeft gegeven, krijgt hij op dit moment een melding om toestemming te geven. [Meer informatie over dynamische toestemming](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
+* **Dynamische toestemming van de gebruiker** - Is een functie in v2 van het Azure ADD-appmodel. In dit scenario vraagt uw app een reeks machtigingen aan die nodig zijn in de [OAuth 2.0-autorisatiestroom voor v2-apps](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent). Als de gebruiker nog geen toestemming heeft gegeven, krijgt hij op dit moment een melding om toestemming te geven. [Meer informatie over dynamische toestemming](./azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
     > [!IMPORTANT]
     > Dynamische toestemming kan handig zijn, maar brengt een grote uitdaging met zich mee voor machtigingen die toestemming van een beheerder vereisen omdat de toestemmingservaring van de beheerder op het moment van toestemming niets weet over deze machtigingen. Als u machtigingen met beheerders rechten nodig hebt of als uw app gebruikmaakt van dynamische toestemming, moet u alle machtigingen in de Azure Portal (niet alleen de subset van machtigingen waarvoor beheerders toestemming nodig heeft) registreren. Hierdoor kunnen Tenant beheerders toestemming geven namens al hun gebruikers.
   
-* **Toestemming van de beheerder** - Is vereist als uw app toegang nodig heeft tot bepaalde machtigingen met hoge privileges. Deze toestemming waarborgt dat beheerders een aantal extra controles hebben voordat ze apps of gebruikers autoriseren om toegang te krijgen tot uiterst geprivilegieerde gegevens van de organisatie. [Meer informatie over het verlenen van toestemming van de beheerder](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+* **Toestemming van de beheerder** - Is vereist als uw app toegang nodig heeft tot bepaalde machtigingen met hoge privileges. Deze toestemming waarborgt dat beheerders een aantal extra controles hebben voordat ze apps of gebruikers autoriseren om toegang te krijgen tot uiterst geprivilegieerde gegevens van de organisatie. [Meer informatie over het verlenen van toestemming van de beheerder](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 

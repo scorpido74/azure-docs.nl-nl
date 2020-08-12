@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 7075fbd098736bb297f4a2e3a93aecca5b9182a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b43029f9c955b69e91ea3a65c2b62391ec1da5b4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478855"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114622"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Wat is er gebeurd met mijn WebAPI-project (Visual Studio Azure Active Directory Connected service)
 
@@ -31,7 +31,7 @@ Zie [aan](vs-active-directory-webapi-getting-started.md)de slag voor meer inform
 
 Van invloed op het project bestand *. NET references) en `packages.config` (NuGet references).
 
-| Type | Verwijzing |
+| Type | Naslaginformatie |
 | --- | --- |
 | NET NuGet | Micro soft. Owin |
 | NET NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -44,7 +44,7 @@ Van invloed op het project bestand *. NET references) en `packages.config` (NuGe
 
 Aanvullende verwijzingen als u de optie **Directory gegevens lezen** hebt geselecteerd:
 
-| Type | Verwijzing |
+| Type | Naslaginformatie |
 | --- | --- |
 | NET NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (alleen Visual Studio 2015) |
@@ -58,7 +58,7 @@ Aanvullende verwijzingen als u de optie **Directory gegevens lezen** hebt gesele
 
 De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, net als in Visual Studio 2015):
 
-| Type | Verwijzing |
+| Type | Naslaginformatie |
 | --- | --- |
 | NET NuGet | Micro soft. AspNet. Identity. core |
 | NET NuGet | Micro soft. AspNet. Identity. EntityFramework |
@@ -127,5 +127,5 @@ Meer [informatie over Azure Active Directory](https://azure.microsoft.com/servic
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Verificatie scenario's voor Azure Active Directory](authentication-scenarios.md)
+- [Verificatie scenario's voor Azure Active Directory](./authentication-vs-authorization.md)
 - [Aanmelding met Microsoft toevoegen aan een ASP.NET-web-app](quickstart-v2-aspnet-webapp.md)

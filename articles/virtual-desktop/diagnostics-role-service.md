@@ -3,15 +3,15 @@ title: Problemen met Windows Virtual Desktop vaststellen-Azure
 description: De Windows-functie diagnostische gegevens over virtueel bureau blad gebruiken om problemen te diagnosticeren.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005100"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121405"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Problemen met Windows virtueel bureau blad identificeren en vaststellen
 
@@ -60,6 +60,14 @@ De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uit
 |8|ConnectionBroken|De verbinding tussen de client en de gateway of server is verbroken. Er is geen actie vereist, tenzij deze onverwacht plaatsvindt.|
 |14|UnexpectedNetworkDisconnect|De verbinding met het netwerk is verbroken. Vraag de gebruiker om opnieuw verbinding te maken.|
 |24|ReverseConnectFailed|De virtuele machine van de host heeft geen directe regel van het gezichts vermogen om te RD-gateway. Zorg ervoor dat het IP-adres van de gateway kan worden omgezet.|
+
+## <a name="error-cant-add-user-assignments-to-an-app-group"></a>Fout: kan geen gebruikers toewijzingen toevoegen aan een app-groep
+
+Nadat u een gebruiker aan een app-groep hebt toegewezen, wordt in de Azure Portal een waarschuwing weer gegeven waarin staat dat de sessie eindigt of verificatie problemen ondervindt-extensie Microsoft_Azure_WVD. De pagina toewijzing wordt vervolgens niet geladen en vervolgens stopt het laden van pagina's in de Azure Portal (bijvoorbeeld Azure Monitor, Log Analytics, Service Health enzovoort).
+
+**Oorzaak:** Er is een probleem met het beleid voor voorwaardelijke toegang. De Azure Portal probeert een token te verkrijgen voor Microsoft Graph, dat afhankelijk is van share point online. De klant heeft een beleid voor voorwaardelijke toegang met de naam ' Microsoft Office 365 gebruiks voorwaarden voor gegevens opslag ' waarvoor gebruikers de gebruiks voorwaarden voor toegang tot de gegevens opslag moeten accepteren. Ze hebben zich echter nog niet aangemeld, dus het Azure Portal kan het token niet ophalen.
+
+**Oplossen:** Voordat u zich aanmeldt bij de Azure Portal, moet de beheerder zich eerst aanmelden bij share point en akkoord gaan met de gebruiks voorwaarden. Daarna moeten ze zich kunnen aanmelden bij de Azure Portal zoals normaal.
 
 ## <a name="next-steps"></a>Volgende stappen
 

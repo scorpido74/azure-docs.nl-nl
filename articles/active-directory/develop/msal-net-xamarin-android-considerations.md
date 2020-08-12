@@ -13,12 +13,12 @@ ms.date: 04/24/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d244bbbe96bcea45da5c0860e4af52409123fb7f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652673"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118685"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>Overwegingen voor het gebruik van Xamarin Android met MSAL.NET
 In dit artikel wordt beschreven wat u moet overwegen wanneer u Xamarin Android gebruikt met micro soft Authentication Library voor .NET (MSAL.NET).
@@ -92,7 +92,7 @@ Het *AndroidManifest.xml* bestand moet de volgende waarden bevatten:
 
 Vervang de waarde door de naam van het pakket dat u hebt geregistreerd in het Azure Portal `android:host=` . Vervang de sleutel-hash die u hebt geregistreerd in het Azure Portal voor de `android:path=` waarde. De hash van de hand tekening mag *geen* URL-code ring zijn. Zorg ervoor dat er een voorloop back slash ( `/` ) aan het begin van uw hand tekening-hash wordt weer gegeven.
 
-U kunt ook [de activiteit in code maken in](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) plaats van *AndroidManifest.xml*hand matig te bewerken. Als u de activiteit in code wilt maken, maakt u eerst een klasse die het `Activity` kenmerk en het `IntentFilter` kenmerk bevat. 
+U kunt ook [de activiteit in code maken in](/xamarin/android/platform/android-manifest#the-basics) plaats van *AndroidManifest.xml*hand matig te bewerken. Als u de activiteit in code wilt maken, maakt u eerst een klasse die het `Activity` kenmerk en het `IntentFilter` kenmerk bevat. 
 
 Hier volgt een voor beeld van een klasse die de waarden van het XML-bestand vertegenwoordigt:
 

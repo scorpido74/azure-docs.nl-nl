@@ -3,15 +3,15 @@ title: Windows Virtual Desktop-hostgroep maken Power shell-Azure
 description: Een hostgroep in Windows Virtual Desktop maken met Power shell-cmdlets.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3e4b326b5a78f4b14bdd87e842d8ca485f56831
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002601"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121150"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Een Windows-hostgroep voor virtueel bureau blad maken met Power shell
 
@@ -116,6 +116,32 @@ Ga als volgt te werk op elke virtuele machine om de virtuele bureau blad-agents 
 
 >[!IMPORTANT]
 >Voor het beveiligen van uw virtuele bureau blad-omgeving in azure, raden we u aan om de binnenkomende poort 3389 niet te openen op uw virtuele machines. Voor het virtuele bureau blad van Windows is geen open bare poort 3389 voor gebruikers nodig om toegang te krijgen tot de virtuele machines van de hostgroep. Als u poort 3389 moet openen voor het oplossen van problemen, raden we u aan [just-in-time-VM-toegang](../security-center/security-center-just-in-time.md)te gebruiken. U wordt ook aangeraden uw Vm's niet toe te wijzen aan een openbaar IP-adres.
+
+## <a name="update-the-agent"></a>De agent bijwerken
+
+U moet de agent bijwerken als u een van de volgende situaties hebt:
+
+- U wilt een eerder geregistreerde sessie migreren naar een nieuwe hostgroep
+- De sessiehost wordt niet weer gegeven in uw hostgroep na een update
+
+De agent bijwerken:
+
+1. Meld u als beheerder aan bij de VM.
+2. Ga naar **Services**en stop de **Rdagent** -en **extern bureaublad agent loader** -processen.
+3. Zoek vervolgens de agent en de bootloader MSIs. Ze bevinden zich in de map **C:\DeployAgent** of op welke locatie je deze hebt opgeslagen toen je deze installeerde.
+4. Zoek de volgende bestanden en verwijder ze:
+     
+     - Micro soft. RDInfra. RDAgent. Installer-x64-verx. x. x
+     - Micro soft. RDInfra. RDAgentBootLoader. Installer-x64
+
+   Als u deze bestanden wilt verwijderen, klikt u met de rechter muisknop op elke bestands naam en selecteert u vervolgens **verwijderen**.
+5. U kunt eventueel ook de volgende register instellingen verwijderen:
+     
+     - Computer \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
+     - Computer \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
+
+6. Zodra u deze items hebt verwijderd, moeten alle koppelingen met de oude hostgroep worden verwijderd. Als u deze host opnieuw wilt registreren bij de service, volgt u de instructies in [de virtuele machines registreren bij de hostgroep voor virtuele Windows-Bureau bladen](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

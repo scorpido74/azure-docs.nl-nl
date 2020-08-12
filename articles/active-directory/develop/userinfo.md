@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 08386e2c54a45fe4a6e35ce6d7ebb51145827a6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84268532"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119637"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>User info-eind punt voor micro soft Identity platform
 
@@ -34,7 +34,7 @@ Als onderdeel van de OpenID Connect Connect-specificatie wordt het user info-ein
 
 De informatie die beschikbaar is in het ID-token dat uw app kan ontvangen, is een superset van de informatie die kan worden opgehaald uit het user info-eind punt.  Omdat u tegelijkertijd een ID-token kunt ophalen om het user info-eind punt aan te roepen, wordt u aangeraden dat ID-token te gebruiken voor het ophalen van informatie over de gebruiker in plaats van het user info-eind punt aan te roepen.  Het gebruik van het ID-token elimineert één tot twee netwerk aanvragen van uw toepassing starten, waardoor de latentie in uw toepassing wordt verminderd.
 
-Als u meer informatie over de gebruiker nodig hebt, moet u de [Microsoft Graph- `/user` API](https://docs.microsoft.com/graph/api/user-get) aanroepen om gegevens op te halen, zoals een Office-nummer of-functie.   U kunt ook [optionele claims](active-directory-optional-claims.md) gebruiken om aanvullende gebruikers gegevens op te geven in uw id-en toegangs tokens.
+Als u meer informatie over de gebruiker nodig hebt, moet u de [Microsoft Graph- `/user` API](/graph/api/user-get) aanroepen om gegevens op te halen, zoals een Office-nummer of-functie.   U kunt ook [optionele claims](active-directory-optional-claims.md) gebruiken om aanvullende gebruikers gegevens op te geven in uw id-en toegangs tokens.
 
 ## <a name="calling-the-userinfo-endpoint"></a>Het user info-eind punt aanroepen
 

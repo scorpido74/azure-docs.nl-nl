@@ -3,15 +3,15 @@ title: Veelgestelde vragen over Windows virtueel bureau blad-Azure
 description: Veelgestelde vragen en aanbevolen procedures voor virtueel bureau blad van Windows.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007485"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121116"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Veelgestelde vragen over Windows Virtual Desktop
 
@@ -47,8 +47,6 @@ Als u een beheerder wilt beperken om alleen gebruikers sessies te beheren, zoals
 Wanneer een gebruiker is toegewezen aan een app-groep, voert de service een eenvoudige toewijzing van Azure-functies uit. Als gevolg hiervan moeten de Azure Active Directory van de gebruiker (AD) en de Azure AD van de app-groep zich op dezelfde locatie bestaan. Alle service objecten, zoals hostgroepen, app-groepen en werk ruimten, moeten ook zich in dezelfde Azure AD bevinden als de gebruiker.
 
 U kunt virtuele machines (Vm's) in een andere Azure AD maken, zolang u de Active Directory synchroniseert met de Azure AD van de gebruiker in hetzelfde virtuele netwerk (VNET).
-
-Azure Lighthouse biedt geen volledige ondersteuning voor het beheren van de virtuele Windows-desktop omgeving. Omdat Lighthouse momenteel geen cross-Azure AD-Tenant gebruikers beheer ondersteunt, moeten Lighthouse-klanten zich nog steeds aanmelden bij de Azure AD die klanten gebruiken om gebruikers te beheren.
 
 ## <a name="what-are-location-restrictions"></a>Wat zijn locatie beperkingen?
 
@@ -132,3 +130,11 @@ Deze factoren kunnen invloed hebben op de schaal limiet voor hostgroepen:
 - Er gelden beperkingen voor het aantal kernen dat u per regio en per abonnement kunt maken. Als u bijvoorbeeld een Enterprise Agreement-abonnement hebt, kunt u 350 kernen maken. U moet 350 delen met behulp van het standaard aantal kernen per VM of uw eigen kern limiet om te bepalen hoeveel Vm's u kunt maken telkens wanneer u de sjabloon uitvoert. Meer informatie over [virtual machines limieten-Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager).
 
 - De naam van het VM-voor voegsel en het aantal Vm's zijn minder dan 15 tekens. Zie [naamgevings regels en beperkingen voor Azure-resources](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute)voor meer informatie.
+
+## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>Kan ik Windows-omgevingen met virtuele Bureau bladen beheren met Azure Lighthouse?
+
+Azure Lighthouse biedt geen volledige ondersteuning voor het beheren van virtueel-bureaublad omgevingen van Windows. Omdat Lighthouse momenteel geen cross-Azure AD-Tenant gebruikers beheer ondersteunt, moeten Lighthouse-klanten zich nog steeds aanmelden bij de Azure AD die klanten gebruiken om gebruikers te beheren.
+
+U kunt ook geen CSP sandbox-abonnementen gebruiken met de virtueel-bureaublad service van Windows. Zie voor meer informatie het [account sandbox-integratie](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
+
+Ten slotte, als u de resource provider van het CSP-eigenaars account hebt ingeschakeld, kunnen de CSP-klant accounts de resource provider niet wijzigen.

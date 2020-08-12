@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75b6559117420ad75b79c58b219400690b25b4cb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185832"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117869"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>IOS-toepassingen migreren die gebruikmaken van Microsoft Authenticator van ADAL.NET naar MSAL.NET
 
@@ -38,7 +38,7 @@ Ze inschakelen:
 
 - Eenmalige aanmelding.
 - Apparaat-id, die wordt vereist door een [beleid voor voorwaardelijke toegang](../conditional-access/overview.md). Zie [Apparaatbeheer](../conditional-access/concept-conditional-access-conditions.md#device-platforms)voor meer informatie.
-- Verificatie van de toepassings-id. Dit is ook vereist in sommige bedrijfs scenario's. Zie [intune-Mobile Application Management (mam) (Engelstalig)](https://docs.microsoft.com/intune/mam-faq)voor meer informatie.
+- Verificatie van de toepassings-id. Dit is ook vereist in sommige bedrijfs scenario's. Zie [intune-Mobile Application Management (mam) (Engelstalig)](/intune/mam-faq)voor meer informatie.
 
 ## <a name="migrate-from-adal-to-msal"></a>Migreren van ADAL naar MSAL
 
@@ -241,4 +241,4 @@ Zie [de Broker gebruiken in Xamarin. IOS-toepassingen](msal-net-use-brokers-with
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [Xamarin IOS-specifieke overwegingen met MSAL.net](msal-net-xamarin-ios-considerations.md). 
+Meer informatie over [Xamarin IOS-specifieke overwegingen met MSAL.net](msal-net-xamarin-ios-considerations.md).

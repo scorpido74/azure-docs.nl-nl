@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/06/2020
-ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905493"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120759"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -302,6 +302,47 @@ time.sleep(600)
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
+* **automl_setup mislukt**: 
+    * Voer automl_setup uit vanaf een Anaconda-prompt in Windows. Klik [hier](https://docs.conda.io/en/latest/miniconda.html)om Miniconda te installeren.
+    * Zorg ervoor dat de Conda 64-bits is geïnstalleerd in plaats van 32-bits door de opdracht uit te voeren `conda info` . De `platform` moet `win-64` voor Windows of `osx-64` voor Mac zijn.
+    * Zorg ervoor dat Conda 4.4.10 of hoger is geïnstalleerd. U kunt de versie controleren met de opdracht `conda -V` . Als u een vorige versie hebt geïnstalleerd, kunt u deze bijwerken met behulp van de opdracht: `conda update conda` .
+    * Spreek`gcc: error trying to exec 'cc1plus'`
+      *  Als de `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` fout is opgetreden, installeert u build Essentials met behulp van de Ndere-opdracht `sudo apt-get install build-essential` .
+      * Geef een nieuwe naam als de eerste para meter op automl_setup om een nieuwe Conda-omgeving te maken. Bekijk bestaande Conda-omgevingen met `conda env list` en verwijder ze met `conda env remove -n <environmentname>` .
+      
+* **automl_setup_linux. sh mislukt**: als automl_setup_linus. sh mislukt bij Ubuntu Linux met de fout:`unable to execute 'gcc': No such file or directory`-
+  1. Zorg ervoor dat de uitgaande poorten 53 en 80 zijn ingeschakeld. Op een virtuele machine van Azure kunt u dit doen vanuit Azure portal door de virtuele machine te selecteren en op netwerken te klikken.
+  2. Voer de volgende opdracht uit:`sudo apt-get update`
+  3. Voer de volgende opdracht uit:`sudo apt-get install build-essential --fix-missing`
+  4. `automl_setup_linux.sh`Opnieuw uitvoeren
+
+* **Configuration. ipynb mislukt**:
+  * Voor lokale Conda moet u er eerst voor zorgen dat automl_setup susccessfully worden uitgevoerd.
+  * Zorg ervoor dat de subscription_id juist is. Zoek de subscription_id in azure portal door alle services te selecteren en vervolgens op abonnementen. De tekens ' < ' en ' > ' mogen niet worden opgenomen in de subscription_id waarde. `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"`Heeft bijvoorbeeld een geldige indeling.
+  * Zorg ervoor dat Inzender of eigenaar toegang heeft tot het abonnement.
+  * Controleer of de regio een van de ondersteunde regio's is: `eastus2` , `eastus` , `westcentralus` , `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
+  * Zorg ervoor dat u toegang tot de regio hebt met behulp van Azure Portal.
+  
+* **importeren AutoMLConfig mislukt**: er zijn pakket wijzigingen in de geautomatiseerde machine learning versie 1.0.76, waarvoor de vorige versie moet worden verwijderd voordat u de nieuwe versie bijwerkt. Als de `ImportError: cannot import name AutoMLConfig` is aangetroffen na een upgrade van een SDK-versie vóór v 1.0.76 naar v 1.0.76 of hoger, lost u de fout op door het volgende uit te voeren: `pip uninstall azureml-train automl` en vervolgens `pip install azureml-train-auotml` . Het script automl_setup. cmd doet dit automatisch. 
+
+* **werk ruimte. from_config mislukt**: als de aanroepen WS = workspace. from_config () mislukt-
+  1. Controleer of de configuratie. ipynb-notebook is uitgevoerd.
+  2. Als het notitie blok wordt uitgevoerd vanuit een map die zich niet in de map bevindt waar de `configuration.ipynb` was uitgevoerd, kopieert u de map aml_config en het bestand config.jsop dat item zich in de nieuwe map. Workspace. from_config leest de config.jsop voor de notitieblokmap of de bovenliggende map.
+  3. Als er een nieuw abonnement, een resource groep, werk ruimte of regio wordt gebruikt, moet u ervoor zorgen dat u het `configuration.ipynb` notitie blok opnieuw uitvoert. Het is niet mogelijk om config.jsrechtstreeks te wijzigen als de werk ruimte al bestaat in de opgegeven resource groep onder het opgegeven abonnement.
+  4. Als u de regio wilt wijzigen, wijzigt u de werk ruimte, de resource groep of het abonnement. `Workspace.create`Er wordt geen werk ruimte gemaakt of bijgewerkt als deze al bestaat, zelfs als de opgegeven regio verschillend is.
+  
+* **Voorbeeld notitieblok mislukt**: als een voor beeld van een notebook mislukt met een fout die prepert, methode of bibliotheek niet bestaat:
+  * Zorg ervoor dat de correctcorrect-kernel is geselecteerd in de jupyter-notebook. De kernel wordt weer gegeven in de rechter bovenhoek van de notitie blok pagina. De standaard waarde is azure_automl. Houd er rekening mee dat de kernel wordt opgeslagen als onderdeel van het notitie blok. Als u overschakelt naar een nieuwe Conda-omgeving, moet u dus de nieuwe kernel in het notitie Blok selecteren.
+      * Voor Azure Notebooks moet het python 3,6 zijn. 
+      * Voor lokale Conda-omgevingen moet het de naam zijn van de Conda-envioronment die u hebt opgegeven in automl_setup.
+  * Zorg ervoor dat het notitie blok voor de SDK-versie is die u gebruikt. U kunt de SDK-versie controleren door `azureml.core.VERSION` in een jupyter notebook-cel uit te voeren. U kunt de vorige versie van de voorbeeld notitieblokken downloaden van GitHub door op de knop te klikken `Branch` , het tabblad te selecteren `Tags` en vervolgens de versie te selecteren.
+
+* **Numpy importeren mislukt in Windows: in**sommige Windows-omgevingen wordt een fout weer geven bij het laden van numpy met de laatste python-versie 3.6.8. Als u dit probleem ziet, probeert u met python-versie 3.6.7.
+
+* **Numpy importeren mislukt**: Controleer de tensor flow-versie in de omgeving Automated ml Conda. Ondersteunde versies zijn < 1,13. Tensor flow uit de omgeving verwijderen als versie >= 1,13, kunt u de versie van tensor flow controleren en als volgt verwijderen:
+  1. Start een opdracht shell, activeer de Conda-omgeving waar automatisch ml-pakketten worden geïnstalleerd.
+  2. Voer `pip freeze` in en zoek naar `tensorflow` , indien gevonden, de weer gegeven versie moet < 1,13
+  3. Als de vermelde versie een niet-ondersteunde versie is, `pip uninstall tensorflow` typt u in de opdracht shell en voert u y in voor bevestiging.
 
 ## <a name="deploy--serve-models"></a>Modellen implementeren & bedienen
 

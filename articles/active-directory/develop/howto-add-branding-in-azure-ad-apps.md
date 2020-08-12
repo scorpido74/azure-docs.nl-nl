@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478192"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117291"
 ---
 # <a name="branding-guidelines-for-applications"></a>Huisstijlrichtlijnen voor apps
 
@@ -61,7 +61,7 @@ Uw app heeft misschien aparte paden voor registratie en aanmelding, en de volgen
 
 ## <a name="visual-guidance-for-app-acquisition"></a>Visuele begeleiding voor app-download
 
-Uw koppeling ‘Download de app’ moet de gebruiker naar de Azure AD-pagina voor toegangsverlening (autorisatie) leiden, zodat de beheerder van een organisatie kan autoriseren dat uw app toegang heeft tot de gegevens van die organisatie, die worden gehost door Microsoft. In het artikel [Toepassingen integreren met Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) staat meer informatie over hoe u toegang kunt aanvragen.
+Uw koppeling ‘Download de app’ moet de gebruiker naar de Azure AD-pagina voor toegangsverlening (autorisatie) leiden, zodat de beheerder van een organisatie kan autoriseren dat uw app toegang heeft tot de gegevens van die organisatie, die worden gehost door Microsoft. In het artikel [Toepassingen integreren met Azure Active Directory](./quickstart-register-app.md) staat meer informatie over hoe u toegang kunt aanvragen.
 
 Nadat beheerders toestemming hebben gegeven voor uw app, kunnen ze deze toevoegen aan hun Office 365 App Launcher-ervaring voor gebruikers (toegankelijk via wafel en van [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Als u deze mogelijkheid wilt adverteren, kunt u termen zoals ‘Voeg deze app aan uw organisatie toe’ gebruiken en een knop tonen zoals in het volgende voorbeeld:
 

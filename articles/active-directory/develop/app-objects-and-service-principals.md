@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 65726a1b43cdbcb5a36d4a6d3f3df97669e1028f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a3e6d918f4ab94c4533e930ea73b5267deb53a4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027232"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115523"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Toepassings- en service-principal-objecten in Azure Active Directory
 
@@ -91,12 +91,12 @@ In dit voorbeeld scenario:
 ## <a name="next-steps"></a>Volgende stappen
 
 - U kunt de [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) gebruiken om de toepassing en Service-Principal-objecten op te vragen.
-- U kunt toegang krijgen tot het toepassings object van een toepassing met behulp van de Microsoft Graph-API, de manifest-editor [van de Azure Portal][AZURE-Portal] of [Azure AD Power shell-cmdlets](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0), zoals wordt vertegenwoordigd door de entiteit van de OData- [toepassing][MS-Graph-App-Entity].
-- U kunt toegang krijgen tot het Service-Principal-object van een toepassing via de Microsoft Graph-API of [Azure AD Power shell-cmdlets](https://docs.microsoft.com/powershell/azure/?view=azureadps-2.0), zoals wordt aangegeven door de OData [ServicePrincipal-entiteit][MS-Graph-Sp-Entity].
+- U kunt toegang krijgen tot het toepassings object van een toepassing met behulp van de Microsoft Graph-API, de manifest-editor [van de Azure Portal][AZURE-Portal] of [Azure AD Power shell-cmdlets](/powershell/azure/?view=azureadps-2.0), zoals wordt vertegenwoordigd door de entiteit van de OData- [toepassing][MS-Graph-App-Entity].
+- U kunt toegang krijgen tot het Service-Principal-object van een toepassing via de Microsoft Graph-API of [Azure AD Power shell-cmdlets](/powershell/azure/?view=azureadps-2.0), zoals wordt aangegeven door de OData [ServicePrincipal-entiteit][MS-Graph-Sp-Entity].
 
 <!--Image references-->
 
 <!--Reference style links -->
-[MS-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
-[MS-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
+[MS-Graph-App-Entity]: /graph/api/resources/application
+[MS-Graph-Sp-Entity]: /graph/api/resources/serviceprincipal
 [AZURE-Portal]: https://portal.azure.com

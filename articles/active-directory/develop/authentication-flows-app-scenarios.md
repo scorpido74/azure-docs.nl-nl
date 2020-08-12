@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d6cb8cf4b97ed3882d41a4eb179f11bf05f42118
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d16407d1cfadcb7d3a79968fae4436e7c631e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82593162"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115642"
 ---
-# <a name="authentication-flows-and-application-scenarios"></a>Verificatie stromen en toepassings scenario's
+# <a name="authentication-flows-and-application-scenarios"></a>Verificatiestromen en app-scenario's
 
 Het micro soft Identity platform (v 2.0)-eind punt ondersteunt verificatie voor verschillende soorten architectuur van moderne toepassingen. Alle architecturen zijn gebaseerd op de industrie standaard protocollen [OAuth 2,0 en OpenID Connect Connect](active-directory-v2-protocols.md). Met behulp van de [verificatie bibliotheken voor het micro soft-identiteits platform](reference-v2-libraries.md)verifiëren toepassingen identiteiten en verkrijgen tokens voor toegang tot beveiligde api's.
 
@@ -131,7 +131,7 @@ Er is een andere mogelijkheid voor door Windows gehoste toepassingen op computer
 
 Toepassingen die worden uitgevoerd op een apparaat zonder browser, kunnen nog steeds een API aanroepen namens een gebruiker. De gebruiker moet zich aanmelden op een ander apparaat met een webbrowser om te verifiëren. Voor dit scenario moet u de [code stroom](https://aka.ms/msal-net-device-code-flow)van het apparaat gebruiken.
 
-![Toestel code stroom](media/scenarios/device-code-flow-app.svg)
+![Stroom voor apparaatcode](media/scenarios/device-code-flow-app.svg)
 
 Hoewel het niet wordt aangeraden om het te gebruiken, is de werk [stroom gebruikers naam en wacht woord](scenario-desktop-acquire-token.md#username-and-password) beschikbaar in open bare client toepassingen. Deze stroom is nog steeds nodig in sommige scenario's zoals DevOps.
 
@@ -154,9 +154,9 @@ In sommige scenario's, zoals die voor voorwaardelijke toegang tot een apparaat-I
 Zie voor meer informatie [mobiele app die web-api's aanroept](scenario-mobile-overview.md).
 
 > [!NOTE]
-> Een mobiele app die gebruikmaakt van MSAL. iOS, MSAL. Voor Android-of MSAL.NET op Xamarin kunnen app-beveiligings beleid worden toegepast. Het beleid kan bijvoorbeeld voor komen dat een gebruiker beveiligde tekst kopieert. De mobiele app wordt beheerd door intune en wordt door intune herkend als een beheerde app. Zie [Microsoft intune app SDK Overview](https://docs.microsoft.com/intune/app-sdk)(Engelstalig) voor meer informatie.
+> Een mobiele app die gebruikmaakt van MSAL. iOS, MSAL. Voor Android-of MSAL.NET op Xamarin kunnen app-beveiligings beleid worden toegepast. Het beleid kan bijvoorbeeld voor komen dat een gebruiker beveiligde tekst kopieert. De mobiele app wordt beheerd door intune en wordt door intune herkend als een beheerde app. Zie [Microsoft intune app SDK Overview](/intune/app-sdk)(Engelstalig) voor meer informatie.
 >
-> De [intune app SDK](https://docs.microsoft.com/intune/app-sdk-get-started) is gescheiden van MSAL-bibliotheken en communiceert zelf met Azure AD.
+> De [intune app SDK](/intune/app-sdk-get-started) is gescheiden van MSAL-bibliotheken en communiceert zelf met Azure AD.
 
 ### <a name="protected-web-api"></a>Beveiligde web-API
 
@@ -198,21 +198,21 @@ Scenario's met betrekking tot het verkrijgen van tokens zijn ook toegewezen aan 
   <tr>
    <td><a href="scenario-spa-overview.md"><img alt="Single-Page App" src="media/scenarios/spa-app.svg"></a></td>
    <td><a href="scenario-spa-overview.md">App met één pagina</a></td>
-   <td><a href="v2-oauth2-implicit-grant-flow.md">Wenst</a></td>
+   <td><a href="v2-oauth2-implicit-grant-flow.md">Impliciet</a></td>
    <td>Werk-of school accounts, persoonlijke accounts en Azure Active Directory B2C (Azure AD B2C)</td>
  </tr>
 
   <tr>
    <td><a href="scenario-web-app-sign-user-overview.md"><img alt="Web app that signs in users" src="media/scenarios/scenario-webapp-signs-in-users.svg"></a></td>
    <td><a href="scenario-web-app-sign-user-overview.md">Web-app waarmee gebruikers worden aangemeld</a></td>
-   <td><a href="v2-oauth2-auth-code-flow.md">Autorisatie code</a></td>
+   <td><a href="v2-oauth2-auth-code-flow.md">Autorisatiecode</a></td>
    <td>Werk-of school accounts, persoonlijke accounts en Azure AD B2C</td>
  </tr>
 
   <tr>
    <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that signs in users" src="media/scenarios/web-app.svg"></a></td>
    <td><a href="scenario-web-app-call-api-overview.md">Web-app die web-API's aanroept</a></td>
-   <td><a href="v2-oauth2-auth-code-flow.md">Autorisatie code</a></td>
+   <td><a href="v2-oauth2-auth-code-flow.md">Autorisatiecode</a></td>
    <td>Werk-of school accounts, persoonlijke accounts en Azure AD B2C</td>
  </tr>
 
@@ -254,7 +254,7 @@ Scenario's met betrekking tot het verkrijgen van tokens zijn ook toegewezen aan 
   <tr>
    <td><a href="scenario-daemon-overview.md"><img alt="Daemon app that calls web APIs" src="media/scenarios/daemon-app.svg"></a></td>
    <td><a href="scenario-daemon-overview.md">Daemon-app die web-Api's aanroept</a></td>
-   <td><a href="v2-oauth2-client-creds-grant-flow.md">Clientreferenties</a></td>
+   <td><a href="v2-oauth2-client-creds-grant-flow.md">Client referenties</a></td>
    <td>Alleen app-machtigingen die geen gebruiker hebben en alleen worden gebruikt in azure AD-organisaties</td>
  </tr>
 
@@ -305,5 +305,5 @@ Zie voor meer informatie [door micro soft ondersteunde bibliotheken per OS/taal]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de [basis principes van verificatie](authentication-scenarios.md) en [toegangs tokens in het micro soft Identity-platform](access-tokens.md).
+* Meer informatie over de [basis principes van verificatie](./authentication-vs-authorization.md) en [toegangs tokens in het micro soft Identity-platform](access-tokens.md).
 * Meer informatie over [het beveiligen van de toegang tot IOT-apps](/azure/architecture/example-scenario/iot-aad/iot-aad).

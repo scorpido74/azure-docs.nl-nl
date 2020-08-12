@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e758c69f91fb60a83dfcc119b2c7f7aba44384ca
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: e210c19f40ed77bd7c1bc1dcfc2f2787e3ea2087
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054658"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120283"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Toepassingen migreren naar MSAL.NET
 
@@ -37,7 +37,7 @@ In dit artikel worden de verschillen beschreven tussen de micro soft Authenticat
 
 In de meeste gevallen wilt u MSAL.NET en het micro soft Identity platform-eind punt gebruiken. Dit is de nieuwste generatie micro soft-verificatie bibliotheken. Met MSAL.NET kunt u tokens verkrijgen voor gebruikers die zich aanmelden bij uw toepassing met Azure AD (werk-en school accounts), micro soft (persoonlijk) accounts (MSA) of Azure AD B2C.
 
-Als u al bekend bent met het Azure AD voor ontwikkel aars (v 1.0)-eind punt (en ADAL.NET), wilt u wellicht lezen [wat er anders is dan het micro soft Identity platform (v 2.0)-eind punt?](active-directory-v2-compare.md).
+Als u al bekend bent met het Azure AD voor ontwikkel aars (v 1.0)-eind punt (en ADAL.NET), wilt u wellicht lezen [wat er anders is dan het micro soft Identity platform (v 2.0)-eind punt?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 U moet echter nog steeds ADAL.NET gebruiken als uw toepassing zich moet aanmelden bij eerdere versies van [Active Directory Federation Services (ADFS)](/windows-server/identity/active-directory-federation-services). Zie [ADFS-ondersteuning](https://aka.ms/msal-net-adfs-support)voor meer informatie.
 
@@ -123,7 +123,7 @@ Verlenen | ADAL.NET | MSAL.NET
 Interactief | [Interactieve verificatie](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [Tokens interactief ophalen in MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 Geïntegreerde Windows-authenticatie | [Geïntegreerde verificatie op Windows (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Geïntegreerde Windows-verificatie](msal-authentication-flows.md#integrated-windows-authentication)
 Gebruikers naam/wacht woord | [Tokens ophalen met gebruikers naam en wacht woord](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [Wachtwoord verificatie voor gebruikers naam](msal-authentication-flows.md#usernamepassword)
-Toestel code stroom | [Apparaatprofiel voor apparaten zonder webbrowsers](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [Toestel code stroom](msal-authentication-flows.md#device-code)
+Stroom voor apparaatcode | [Apparaatprofiel voor apparaten zonder webbrowsers](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [Toestel code stroom](msal-authentication-flows.md#device-code)
 
 #### <a name="confidential-client-applications"></a>Vertrouwelijke client toepassingen
 
@@ -131,7 +131,7 @@ Hier volgen de subsidies die worden ondersteund in ADAL.NET en MSAL.NET voor web
 
 Type app | Verlenen | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
-Web-app, Web-API, daemon | Client referenties | [Client referentie stromen in ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Client referentie stromen in MSAL.NET](msal-authentication-flows.md#client-credentials)
+Web-app, Web-API, daemon | Clientreferenties | [Client referentie stromen in ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Client referentie stromen in MSAL.NET](msal-authentication-flows.md#client-credentials)
 Web-API | Namens | [Service voor het aanroepen van services namens de gebruiker met ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Namens in MSAL.NET](msal-authentication-flows.md#on-behalf-of)
 Web-app | Verificatie code | [Tokens ophalen met autorisatie codes op Web-apps met ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Tokens ophalen met autorisatie codes op Web-apps met een MSAL.NET](msal-authentication-flows.md#authorization-code)
 
@@ -161,7 +161,7 @@ Zie voor meer informatie over de tokens v 1.0 en v 2.0 [Azure Active Directory t
 
 ## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Bereiken voor een web-API die v 1.0-tokens accepteert
 
-OAuth2 machtigingen zijn machtigings bereiken die een v 1.0 Web API (resource)-toepassing beschikbaar maakt voor client toepassingen. Deze machtigings bereiken kunnen tijdens de toestemming aan client toepassingen worden verleend. Zie de sectie over oauth2Permissions in [Azure Active Directory toepassings manifest](active-directory-application-manifest.md).
+OAuth2 machtigingen zijn machtigings bereiken die een v 1.0 Web API (resource)-toepassing beschikbaar maakt voor client toepassingen. Deze machtigings bereiken kunnen tijdens de toestemming aan client toepassingen worden verleend. Zie de sectie over oauth2Permissions in [Azure Active Directory toepassings manifest](./reference-app-manifest.md).
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Bereiken voor het aanvragen van toegang tot specifieke OAuth2-machtigingen van een v 1.0-toepassing
 

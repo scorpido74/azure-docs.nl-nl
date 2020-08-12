@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 5c598807f36000a18211e32eba53220bfbeea2f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1a8ce0bc94c61a0cfe6cdad11375763ba954957d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108704"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122350"
 ---
 ### <a name="verify-that-a-container-is-running"></a>Controleren of een container wordt uitgevoerd
 
@@ -29,12 +29,12 @@ ms.locfileid: "86108704"
 
 Er zijn verschillende Url's die u ook kunt gebruiken om te controleren of de container wordt uitgevoerd.
 
-|Aanvraag|Functie|
+|Aanvraag|Doel|
 |--|--|
-|`http://localhost:5000/`|De container bevat een start pagina.|
+|`http://localhost:5000/`|De container bevat een startpagina.|
 |`http://localhost:5000/ready`|Met GET heeft dit een verificatie dat de container gereed is voor het accepteren van een query op het model. Deze aanvraag kan worden gebruikt voor Kubernetes- [en gereedheids tests](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|
 |`http://localhost:5000/status`|Met GET, zoals het/Ready-eind punt, wordt gecontroleerd of de container wordt uitgevoerd zonder dat er een query voor het model wordt gemaakt. Deze aanvraag kan worden gebruikt voor Kubernetes- [en gereedheids tests](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|
 |`http://localhost:5000/swagger`|Via deze URL biedt de container een volledige set documentatie voor de eind punten en een `Try it now` functie. Met deze functie kunt u uw instellingen invoeren in een HTML-formulier op het web en de query maken zonder dat u code hoeft te schrijven. Nadat de query is geretourneerd, wordt een voor beeld van een krul opdracht weer gegeven om te demonstreren welke HTTP-headers en hoofdtekst indeling vereist zijn. |
 |`http://localhost:5000/demo`| Deze functie is aangevraagd via een browser en biedt een interactieve visualisatie van de resultaten van query's van invoer tekst voorbeelden of een die u opgeeft.  |
 
-Gebruik deze aanvraag-URL `http://localhost:5000/text/analytics/v3.0-preview.1/domains/health` om een query naar de container te verzenden.
+Gebruik deze aanvraag-URL `http://localhost:5000/text/analytics/v3.2-preview.1/entities/health` om een query naar de container te verzenden.
