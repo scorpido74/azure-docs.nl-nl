@@ -1,18 +1,18 @@
 ---
 title: Overzicht van beveiliging in Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Begrijpen hoe Azure Data Lake Storage Gen1 een veiligere big data store is
+description: Meer informatie over de beveiligings mogelijkheden van Azure Data Lake Storage Gen1, waaronder verificatie, autorisatie, netwerk isolatie, gegevens beveiliging en controle.
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 4992be004a4b60b7b5fb591d834e8938cf03f34f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926277"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192827"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Beveiliging in Azure Data Lake Storage Gen1
 
@@ -21,7 +21,7 @@ Veel bedrijven maken gebruik van big data Analytics voor zakelijke inzichten om 
 * Verificatie
 * Autorisatie
 * Netwerkisolatie
-* Gegevensbeveiliging
+* Gegevensbescherming
 * Controleren
 
 ## <a name="authentication-and-identity-management"></a>Verificatie en identiteits beheer
@@ -53,7 +53,7 @@ Houd er rekening mee dat hoewel rollen zijn toegewezen aan account beheer, sommi
 | Rollen | Beheer rechten | Gegevens toegangs rechten | Uitleg |
 | --- | --- | --- | --- |
 | Er is geen rol toegewezen |Geen |Beheerd door ACL |De gebruiker kan de Azure Portal-of Azure PowerShell-cmdlets niet gebruiken om Data Lake Storage Gen1 te bladeren. De gebruiker kan alleen opdracht regel Programma's gebruiken. |
-| Eigenaar |Alle |Alle |De rol van eigenaar is een super gebruiker. Deze rol kan alles beheren en heeft volledige toegang tot de gegevens. |
+| Eigenaar |Alles |Alles |De rol van eigenaar is een super gebruiker. Deze rol kan alles beheren en heeft volledige toegang tot de gegevens. |
 | Lezer |Alleen-lezen |Beheerd door ACL |Met de rol lezer kan alles worden weer gegeven met betrekking tot account beheer, zoals welke gebruiker aan welke rol is toegewezen. De rol van lezer kan geen wijzigingen aanbrengen. |
 | Inzender |Alle behalve functies toevoegen en verwijderen |Beheerd door ACL |De rol Inzender kan sommige aspecten van een account beheren, zoals implementaties en het maken en beheren van waarschuwingen. De rol Inzender kan geen rollen toevoegen of verwijderen. |
 | Beheerder van gebruikerstoegang |Rollen toevoegen en verwijderen |Beheerd door ACL |De rol beheerder van gebruikers toegang kan de gebruikers toegang tot accounts beheren. |
@@ -76,7 +76,7 @@ Gebruik Data Lake Storage Gen1 om de toegang tot uw gegevens archief op netwerk 
 
 Azure Virtual Networks (VNet) Support service tags voor Data Lake gen 1. Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen. Zie overzicht van Azure- [service Tags](../virtual-network/service-tags-overview.md)voor meer informatie.
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 Data Lake Storage Gen1 beschermt uw gegevens gedurende de hele levens cyclus. Voor gegevens die onderweg zijn, gebruikt Data Lake Storage Gen1 het Protocol van de industrie norm Transport Layer Security (TLS 1,2) om gegevens via het netwerk te beveiligen.
 

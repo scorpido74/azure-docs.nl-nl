@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 248fcdc8d57ca2408ada01db4ecf3b8ee7712e4d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: bbb42643e23020742cab66812f58f78f4529fe07
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388042"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192846"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -106,11 +106,11 @@ In deze weer gave kunt u de back-upitems identificeren waarvoor geen back-up is 
 
 Als u inactieve resources wilt weer geven, gaat u naar het tabblad **optimaliseren** en klikt u op de tegel **inactieve resources** . Als u op deze tegel klikt, wordt een raster weer gegeven met details van alle inactieve resources die in het geselecteerde bereik bestaan. Het raster toont standaard items die geen herstel punt hebben in de afgelopen 7 dagen. Als u inactieve resources wilt zoeken voor een ander tijds bereik, kunt u het filter **tijd bereik** aanpassen boven aan het tabblad.
 
-Als u een inactieve resource hebt geïdentificeerd, kunt u het probleem verder onderzoeken door te navigeren naar het dash board back-upitem of de Blade Azure-resource voor die resource (waar van toepassing). Afhankelijk van uw scenario kunt u ervoor kiezen om de back-up voor de machine te stoppen (als deze niet meer bestaat), waardoor de kosten voor beveiligde instanties worden bespaard, of u kunt problemen op de machine oplossen om ervoor te zorgen dat back-ups betrouwbaar worden gemaakt.
+Als u een inactieve resource hebt geïdentificeerd, kunt u het probleem verder onderzoeken door te navigeren naar het dash board back-upitem of de Blade Azure-resource voor die resource (waar van toepassing). Afhankelijk van uw scenario kunt u ervoor kiezen om de back-up voor de machine te stoppen (als deze nog niet bestaat) en overbodige back-ups te verwijderen, waardoor de kosten worden bespaard, of u kunt problemen op de machine oplossen om ervoor te zorgen dat back-ups betrouwbaar worden gemaakt.
 
 ![Tabblad optimaliseren: inactieve resources](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
 
-###### <a name="backup-items-with-a-large-retention-duration"></a>Back-upitems met een grote Bewaar periode
+###### <a name="backup-items-with-a-large-retention-duration"></a>Back-upitems met een lange bewaarperiode
 In deze weer gave kunt u de items identificeren die back-ups gedurende een langere periode hebben bewaard dan is vereist voor uw organisatie. 
 
 Door te klikken op de tegel **beleids optimalisaties** gevolgd door de tegel **optimalisaties voor retentie** wordt een raster met alle back-upitems weer gegeven waarvoor het bewaren van de dagelijkse, wekelijkse, maandelijkse of jaarlijkse retentie punt (RP) groter is dan een opgegeven waarde. Standaard worden in het raster alle back-upitems in de geselecteerde scope weer gegeven. U kunt de filters voor dagelijkse, wekelijkse, maandelijkse en jaarlijkse RP-retentie gebruiken om het raster verder te filteren en de items te identificeren waarvoor bewaren mogelijk kan worden gereduceerd om de opslag kosten voor back-ups op te slaan.
@@ -119,7 +119,7 @@ Houd er rekening mee dat voor werk belasting van de data base, zoals SQL en SAP 
 
 ![Optimalisaties voor tabblad behoud optimaliseren](./media/backup-azure-configure-backup-reports/optimize-retention.png)
 
-###### <a name="databases-configured-for-daily-full-backup"></a>Data bases die zijn geconfigureerd voor dagelijkse volledige back-up
+###### <a name="databases-configured-for-daily-full-backup"></a>Databases geconfigureerd voor dagelijkse volledige back-up 
 In deze weer gave kunt u de data base-workloads identificeren die zijn geconfigureerd voor dagelijkse volledige back-up. Vaak is het gebruik van dagelijkse differentiële back-ups en wekelijkse volledige back-ups rendabeler. 
 
 Als u op de tegel **beleids optimalisatie** klikt, gevolgd door de tegel **optimalisatie van back-upschema** , wordt een raster met alle data bases met een dagelijks volledig back-upbeleid weer gegeven. U kunt ervoor kiezen om naar een bepaald back-upitem te gaan en het beleid te wijzigen voor het gebruik van dagelijkse differentiële back-ups met een wekelijkse volledige back-up.

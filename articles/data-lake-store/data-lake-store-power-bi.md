@@ -1,17 +1,17 @@
 ---
 title: Gegevens analyseren in Azure Data Lake Storage Gen1-Power BI
-description: Gebruik Power BI voor het analyseren van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1.
+description: Meer informatie over het gebruik van Power BI Desktop voor het analyseren en visualiseren van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a692c5b23eaf23b33eef9bd2baf1e62b4bcca74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504930"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192864"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Gegevens in Azure Data Lake Storage Gen1 analyseren met behulp van Power BI
 In dit artikel leert u hoe u Power BI Desktop kunt gebruiken voor het analyseren en visualiseren van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1.
@@ -78,7 +78,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
         ![Visualisaties maken](./media/data-lake-store-power-bi/create-visualizations.png "Visualisaties maken")
     3. Het cirkel diagram moet er nu uitzien zoals hieronder wordt weer gegeven.
        
-        ![Cirkel diagram](./media/data-lake-store-power-bi/pie-chart.png "Visualisaties maken")
+        ![Cirkeldiagram](./media/data-lake-store-power-bi/pie-chart.png "Visualisaties maken")
 16. Als u een bepaald land/regio selecteert in de filters op pagina niveau, kunt u nu het aantal Stuur Programma's weer geven in elke plaats van het geselecteerde land/de regio. Selecteer bijvoorbeeld onder het tabblad **Visualisaties** de optie **Brazilië**onder **filters op pagina niveau**.
     
     ![Een land/regio selecteren](./media/data-lake-store-power-bi/select-country.png "Een land/regio selecteren")
@@ -90,6 +90,6 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 ## <a name="publish-report-to-power-bi-service"></a>Rapport publiceren naar Power BI-service
 Wanneer u de visualisaties in Power BI Desktop hebt gemaakt, kunt u deze met anderen delen door deze te publiceren naar de Power BI-service. Zie [publiceren vanuit Power bi Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/)voor instructies over hoe u dit doet.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Gegevens analyseren in Data Lake Storage Gen1 met behulp van Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 
