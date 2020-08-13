@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: e83e6df26a2b3e8eabda142ee6cd89320c59ad8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7384d03595f36e37eb70ec68d4f59b889facf76f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922639"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168028"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -46,6 +46,7 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
 > Volg het principe van de **schei ding van de problemen** (beschreven in dit scenario hierboven) bij het configureren van uw Azure time series Insights-beveiligings beleid.
 
 > [!NOTE]
+
 > * Het artikel richt zich op een toepassing met één Tenant waarbij de toepassing in slechts één organisatie is bedoeld om te worden uitgevoerd.
 > * Normaal gesp roken gebruikt u toepassingen met één Tenant voor line-of-business-toepassingen die worden uitgevoerd in uw organisatie.
 
@@ -115,6 +116,7 @@ De vereiste aanvraag headers worden hieronder beschreven.
 
 > [!IMPORTANT]
 > Het token moet exact worden uitgegeven aan de `https://api.timeseries.azure.com/` resource (ook wel bekend als het ' publiek ' van het token).
+
 > * Uw [postman](https://www.getpostman.com/) **AuthURL** is daarom:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
 > * `https://api.timeseries.azure.com/`is geldig, maar `https://api.timeseries.azure.com` niet.
 
@@ -155,7 +157,7 @@ Optionele URL-query teken reeks parameters zijn onder andere het instellen van e
 
 | Optionele query parameter | Beschrijving | Versie |
 | --- |  --- | --- |
-| `timeout=<timeout>` | Server-side-time-out voor het uitvoeren van HTTP-aanvragen. Alleen van toepassing op de api's [Get Environment Events](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) en [Get Environment aggregaties](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) . De time-outwaarde moet de ISO 8601-duur notatie hebben, bijvoorbeeld `"PT20S"` en moet in het bereik liggen `1-30 s` . De standaard waarde is `30 s` . | Gen1 |
+| `timeout=<timeout>` | Server-side-time-out voor het uitvoeren van HTTP-aanvragen. Alleen van toepassing op de api's [Get Environment Events](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) en [Get Environment aggregaties](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) . De time-outwaarde moet de ISO 8601-duur notatie hebben, bijvoorbeeld `"PT20S"` en moet in het bereik liggen `1-30 s` . De standaard waarde is `30 s` . | Gen1 |
 | `storeType=<storeType>` | Voor Gen2 omgevingen waarin warme opslag is ingeschakeld, kan de query worden uitgevoerd op de `WarmStore` of `ColdStore` . Met deze para meter in de query wordt gedefinieerd in welk archief de query moet worden uitgevoerd. Als deze niet is gedefinieerd, wordt de query uitgevoerd in de koude opslag. Als u een query wilt uitvoeren voor de warme Store, moet **storeType** worden ingesteld op `WarmStore` . Als deze niet is gedefinieerd, wordt de query uitgevoerd op basis van de koude opslag. | Gen2 |
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -164,6 +166,6 @@ Optionele URL-query teken reeks parameters zijn onder andere het instellen van e
 
 * Lees [query Gen2-gegevens met C#](./time-series-insights-update-query-data-csharp.md)voor voorbeeld code voor het aanroepen van de GEN2 Azure time series Insights API-code voorbeelden.
 
-* Lees de naslag documentatie over de [query-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) voor naslag informatie over de API.
+* Lees de naslag documentatie over de [query-API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api) voor naslag informatie over de API.
 
 * Meer informatie over het [maken van een Service-Principal](../active-directory/develop/howto-create-service-principal-portal.md).

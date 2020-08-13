@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/7/2020
-ms.openlocfilehash: dbf3a13ed5a544406950dbcfb5ea8796eceb03c1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030542"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168215"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL Replicatie van inkomende gegevens configureren
 
@@ -204,9 +204,11 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
 
 1. Filteren 
  
-   Als u het repliceren van sommige tabellen vanuit uw model wilt overs Laan, moet u de `replicate_wild_ignore_table` Server parameter op de replica server bijwerken. Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) voor meer informatie over deze para meter.
+   Als u het repliceren van sommige tabellen vanuit uw model wilt overs Laan, moet u de `replicate_wild_ignore_table` Server parameter op de replica server bijwerken. U kunt meer dan één tabel patroon opgeven met behulp van een lijst met door komma's gescheiden waarden.
+
+   Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) voor meer informatie over deze para meter. 
     
-    U kunt de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md)gebruiken om de para meter bij te werken.
+   U kunt de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md)gebruiken om de para meter bij te werken.
 
 1. Replicatie starten
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: e92f3b5d8c48c783648285c9a03d8cb8d391a5ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: af10ec10a1622f32dbc34a607b1200cb4cff8b59
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289605"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168045"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standaard overzicht
 
@@ -45,9 +45,9 @@ Azure DDoS Protection, in combi natie met aanbevolen procedures voor het ontwerp
 
 DDoS Protection Standard kan de volgende typen aanvallen beperken:
 
-- **Volumetrische aanvallen**: het doel van de aanval is het flooden van de netwerklaag met een aanzienlijke hoeveelheid schijnbaar betrouwbaar verkeer. Dit omvat UDP-flooden, versterking van stromen en andere vervalste pakket stromen. DDoS Protection Standard verkleint deze potentiële multi-Gigabyte-aanvallen door ze te absorberen en te reinigen, met de wereld wijde schaal van Azure automatisch.
-- **Protocol aanvallen**: deze aanvallen genereren een doel dat niet toegankelijk is door een zwakte te misbruiken in de Layer 3-en Layer 4-protocol stack. Dit omvat, SYN-flood-aanvallen, reflectie aanvallen en andere protocol aanvallen. DDoS Protection Standard verkleint deze aanvallen, onderscheidt zich van schadelijk en betrouwbaar verkeer door interactie met de client en het blok keren van schadelijk verkeer. 
-- **Resource (Application) Layer-aanvallen**: deze aanvallen richten op webtoepassingen, om de overdracht van gegevens tussen hosts te verstoren. De aanvallen omvatten schendingen van het HTTP-protocol, SQL-injectie, cross-site scripting en andere Layer 7-aanvallen. Gebruik een firewall voor webtoepassingen, zoals de Azure [Application Gateway Web Application firewall](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), en DDoS Protection standaard om bescherming tegen deze aanvallen te bieden. Er zijn ook Web Application Firewall aanbiedingen van derden beschikbaar in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
+- **Volumetrische aanvallen**: deze aanvallen flooden de netwerklaag met een aanzienlijke hoeveelheid schijnbaar betrouwbaar verkeer. Ze omvatten UDP-flooden, versterking van stromen en andere vervalste pakket stromen. DDoS Protection Standard verkleint deze potentiële multi-Gigabyte-aanvallen door ze te absorberen en te reinigen, met de wereld wijde schaal van Azure automatisch.
+- **Protocol aanvallen**: deze aanvallen genereren een doel dat niet toegankelijk is door een zwakte te misbruiken in de Layer 3-en Layer 4-protocol stack. Ze omvatten SYN-flood-aanvallen, reflectie-aanvallen en andere protocol aanvallen. DDoS Protection Standard verkleint deze aanvallen, onderscheidt zich van schadelijk en betrouwbaar verkeer door interactie met de client en het blok keren van schadelijk verkeer. 
+- **Resource (Application) Layer-aanvallen**: deze aanvallen richten op webtoepassingen, om de overdracht van gegevens tussen hosts te verstoren. Ze omvatten HTTP-protocol schendingen, SQL-injectie, cross-site scripting en andere Layer 7-aanvallen. Gebruik een firewall voor webtoepassingen, zoals de Azure [Application Gateway Web Application firewall](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), en DDoS Protection standaard om bescherming tegen deze aanvallen te bieden. Er zijn ook Web Application Firewall aanbiedingen van derden beschikbaar in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall).
 
 DDoS Protection Standard beveiligt bronnen in een virtueel netwerk, met inbegrip van open bare IP-adressen die zijn gekoppeld aan virtuele machines, load balancers en toepassings gateways. Wanneer de Application Gateway Web Application Firewall, of een Web Application Firewall van derden die in een virtueel netwerk met een openbaar IP-adres is geïmplementeerd, kan DDoS Protection Standard de mogelijkheid bieden om een volledige laag 3 te maken voor de beperking van laag 7.
 
@@ -58,8 +58,8 @@ DDoS Protection Standard beveiligt bronnen in een virtueel netwerk, met inbegrip
 DDoS Protection standaard functies zijn:
 
 - **Systeem eigen platform integratie:** Systeem eigen geïntegreerd in Azure. Bevat configuratie via de Azure Portal. DDoS Protection standaard begrijpt uw resources en resource configuratie.
-- **Beveiliging op basis van een bocht:** Vereenvoudigde configuratie beveiligt onmiddellijk alle resources in een virtueel netwerk zodra DDoS Protection standaard is ingeschakeld. Er is geen interventie-of gebruikers definitie vereist. DDoS Protection Standard onmiddellijk en vermindert de aanval automatisch, zodra deze is gedetecteerd.
-- **Bewaking over altijd verkeer:** De patronen van uw toepassings verkeer worden 24 uur per dag, 7 dagen per week gecontroleerd en er wordt gezocht naar indica toren van DDoS-aanvallen. De beperking wordt toegepast wanneer het beveiligings beleid wordt overschreden.
+- Kant-en- **klare beveiliging:** Vereenvoudigde configuratie beveiligt onmiddellijk alle resources in een virtueel netwerk zodra DDoS Protection standaard is ingeschakeld. Er is geen interventie-of gebruikers definitie vereist. DDoS Protection Standard onmiddellijk en vermindert de aanval automatisch, zodra deze is gedetecteerd.
+- **Bewaking over altijd verkeer:** Uw toepassings verkeers patronen worden 24 uur per dag, 7 dagen per week gecontroleerd en er wordt gezocht naar indica toren van DDoS-aanvallen. De beperking wordt toegepast wanneer het beveiligings beleid wordt overschreden.
 - **Adaptieve afstemming:** Intelligent verkeer profile ring leert het verkeer van uw toepassing gedurende een bepaalde periode en selecteert en werkt het profiel dat het meest geschikt is voor uw service. Het profiel wordt aangepast naarmate het verkeer na verloop van tijd verandert.
 - **Beveiliging met meerdere lagen:** Biedt volledige stack DDoS-beveiliging, wanneer deze met een Web Application Firewall wordt gebruikt.
 - **Uitgebreide beperkings schaal:** Meer dan 60 verschillende typen aanvallen kunnen worden gereduceerd, met globale capaciteit om te beschermen tegen de grootste bekende DDoS-aanvallen.

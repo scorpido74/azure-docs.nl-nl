@@ -4,14 +4,14 @@ description: Krijg antwoorden op veelgestelde vragen over de Cassandra-API voor 
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449733"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167603"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Cassandra-API in Azure Cosmos DB
 
@@ -79,13 +79,13 @@ Diagnostische logboeken worden beschreven in het artikel [Azure Cosmos DB diagno
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Is de primaire sleutel toegewezen aan het partitie sleutel concept van Azure Cosmos DB?
 
-Ja, de partitie sleutel wordt gebruikt om de entiteit op de juiste locatie te plaatsen. In Azure Cosmos DB wordt dit gebruikt om de juiste logische partitie te vinden die is opgeslagen op een fysieke partitie. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partition-data.md) -artikel. De essentiële maakt hier is dat een logische partitie niet de limiet van 10 GB mag overschrijden.
+Ja, de partitie sleutel wordt gebruikt om de entiteit op de juiste locatie te plaatsen. In Azure Cosmos DB wordt dit gebruikt om de juiste logische partitie te vinden die is opgeslagen op een fysieke partitie. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partition-data.md) -artikel. De essentiële maakt hier is dat een logische partitie de limiet van 20 GB niet mag overschrijden.
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Wat gebeurt er wanneer ik een melding ontvang dat een partitie vol is?
 
 Azure Cosmos DB is een systeem op basis van de Service Level Agreement (SLA). Het biedt onbeperkte schaal mogelijkheden, met garanties voor latentie, door Voer, Beschik baarheid en consistentie. Deze onbeperkte opslag is gebaseerd op horizontale schaal bare gegevens, met behulp van partitionering als het belangrijkste concept. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partition-data.md) -artikel.
 
-U moet rekening houden met de limiet van 10 GB voor het aantal entiteiten of items per logische partitie. Om ervoor te zorgen dat uw toepassing goed wordt geschaald, wordt u aangeraden *geen* Hot-partitie te maken door alle gegevens in de ene partitie op te slaan en er query's op uit te voeren. Deze fout kan alleen worden opgehaald als uw gegevens worden schuingetrokken: dat wil zeggen, u hebt veel gegevens voor één partitie sleutel (meer dan 10 &nbsp; GB). U kunt de distributie van gegevens vinden met behulp van de opslag Portal. De manier om deze fout op te lossen is het opnieuw maken van de tabel en het kiezen van een gedetailleerde, primaire (partitie sleutel), zodat de gegevens beter kunnen worden gedistribueerd.
+U moet rekening houden met de limiet van 20 GB voor het aantal entiteiten of items per logische partitie. Om ervoor te zorgen dat uw toepassing goed wordt geschaald, wordt u aangeraden *geen* Hot-partitie te maken door alle gegevens in de ene partitie op te slaan en er query's op uit te voeren. Deze fout kan alleen worden opgehaald als uw gegevens worden schuingetrokken: dat wil zeggen dat u veel gegevens voor één partitie sleutel (meer dan 20 GB) hebt. U kunt de distributie van gegevens vinden met behulp van de opslag Portal. De manier om deze fout op te lossen is het opnieuw maken van de tabel en het kiezen van een gedetailleerde, primaire (partitie sleutel), zodat de gegevens beter kunnen worden gedistribueerd.
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Kan ik de Cassandra-API gebruiken als sleutel waarde Store met miljoenen of miljarden partitie sleutels?
 

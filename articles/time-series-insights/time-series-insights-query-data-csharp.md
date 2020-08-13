@@ -9,18 +9,18 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98077209e8245753bb9dae79fafd6c6a10f3eafb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a7307a5ecdc5f6aa4b90480fa769f87317605a61
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920718"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168062"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights gen1-omgeving met C #
+# <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>Gegevens opvragen uit de Azure Time Series Insights gen1-omgeving met C-Kruis
 
-In dit C#-voor beeld ziet u hoe u de [gen1-query-api's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) kunt gebruiken om gegevens uit Azure time series Insights gen1-omgevingen op te vragen.
+In dit C#-voor beeld ziet u hoe u de [gen1-query-api's](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) kunt gebruiken om gegevens uit Azure time series Insights gen1-omgevingen op te vragen.
 
 > [!TIP]
 > Gen1 C#-code voorbeelden weer geven op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
@@ -31,26 +31,26 @@ De voorbeeld code hieronder bevat de volgende functies:
 
 * Een toegangs token verkrijgen via Azure Active Directory met behulp van [micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
 
-* Het aangeschafte toegangs token in de `Authorization` koptekst van volgende query-API-aanvragen door geven. 
+* Het aangeschafte toegangs token in de `Authorization` koptekst van volgende query-API-aanvragen door geven.
 
 * Het voor beeld roept elk van de gen1-query-Api's aan om te demonstreren hoe HTTP-aanvragen worden gedaan:
-    * De [omgevings-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api) om de omgevingen te retour neren waartoe de gebruiker toegang heeft
-    * [API voor omgevings beschikbaarheid ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
-    * [API voor omgevings gegevens ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api) om de meta gegevens van de omgeving op te halen
-    * [API voor omgevings gebeurtenissen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
-    * [API voor samen stellen van omgeving ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
-    
+  * De [omgevings-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environments-api) om de omgevingen te retour neren waartoe de gebruiker toegang heeft
+  * [API voor omgevings beschikbaarheid ophalen](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
+  * [API voor omgevings gegevens ophalen](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api) om de meta gegevens van de omgeving op te halen
+  * [API voor omgevings gebeurtenissen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
+  * [API voor samen stellen van omgeving ophalen](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
+
 * Hoe u kunt communiceren met de gen1-query-Api's met behulp van WSS voor het volgende bericht:
 
-   * [Gestreamde API voor de omgevings gebeurtenissen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
-   * [Gestreamde API voor de omgeving ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
+  * [Gestreamde API voor de omgevings gebeurtenissen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
+  * [Gestreamde API voor de omgeving ophalen](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
 
 ## <a name="prerequisites-and-setup"></a>Vereisten en installatie
 
 Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
 1. [Richt een gen1-Azure time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) omgeving in.
-1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md). 
+1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md).
 1. Installeer de vereiste project afhankelijkheden.
 1. Bewerk de voorbeeld code hieronder door elk **#DUMMY #** te vervangen door de juiste omgevings-id.
 1. Voer de code in Visual Studio uit.
@@ -75,11 +75,11 @@ U kunt de pakketten ook toevoegen met behulp van [NuGet 2.12 +](https://www.nuge
 
 ## <a name="c-sample-code"></a>C#-voorbeeld code
 
-[!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
+De Time Series Insights gen1-voor beelden vindt u in [csharpquery-voor beeld](https://github.com/Azure-Samples/Azure-Time-Series-Insights#tsi-gen1)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees de [query-API-verwijzing](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)voor meer informatie over het uitvoeren van query's.
+* Lees de [query-API-verwijzing](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api)voor meer informatie over het uitvoeren van query's.
 
-- Lees hoe u [met de client-SDK verbinding maakt met een Java script-app](https://github.com/microsoft/tsiclient) om te time series Insights.
+* Lees hoe u [met de client-SDK verbinding maakt met een Java script-app](https://github.com/microsoft/tsiclient) om te time series Insights.
 Azure-samples/Azure-time-series-Insights/gen1-voor beeld/csharp-TSI-gen1-Sample/Program. cs

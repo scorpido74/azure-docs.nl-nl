@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2503a58f7d5fe05240f374fabbe2bf88d34dcf6c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 57e99dfd0cec4ee396cc90173f1f22715c7ba760
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046626"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168181"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Maak een set referentie gegevens voor uw Azure Time Series Insights gen1-omgeving met behulp van de Azure Portal
 
@@ -30,11 +30,11 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 ### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Meer informatie over het referentie gegevens model van Time Series Insight.</br>
 
-> [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
+> [!VIDEO <https://www.youtube.com/embed/Z0NuWQUMv1o>]
 
 ## <a name="add-a-reference-data-set"></a>Een set met referentie gegevens toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 
 1. Zoek uw bestaande Azure Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Azure Time Series Insights omgeving.
 
@@ -116,6 +116,6 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Programmatisch [referentiegegevens beheren](time-series-insights-manage-reference-data-csharp.md).
+- Programmatisch [referentiegegevens beheren](time-series-insights-manage-reference-data-csharp.md).
 
-* Lees [referentie gegevens-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) -document voor de volledige API-referentie.
+- Lees [referentie gegevens-API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) -document voor de volledige API-referentie.

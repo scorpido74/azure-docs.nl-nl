@@ -4,14 +4,14 @@ description: Krijg antwoorden op veelgestelde vragen over de Table-API in Azure 
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 05a7af9bcedd84f53e020bec57fc58854861af3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392349"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167586"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Table-API in Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Er zijn enkele gedrags verschillen die gebruikers die afkomstig zijn van Azure T
 
 * Voor de .NET SDK zijn er in het bijzonder een aantal klassen en methoden die Azure Cosmos DB momenteel niet wordt ondersteund.
 
-  | Klas | Niet-ondersteunde methode |
+  | Klasse | Niet-ondersteunde methode |
   |-------|-------- |
   | CloudTableClient | \*ServiceProperties* |
   |                  | \*ServiceStats* |
@@ -274,7 +274,7 @@ Azure Cosmos DB is ontworpen als een wereld wijd gedistribueerd systeem op basis
 
 ### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Ik krijg nooit een melding over een volledig quotum (waarmee wordt aangegeven dat een partitie vol is) wanneer ik gegevens opneemt in azure-tabel opslag. Ik ontvang dit bericht met de Table-API. Is deze aanbieding beperkt en kan ik mijn bestaande toepassing wijzigen?
 
-Azure Cosmos DB is een SLA-systeem dat onbeperkte schaal biedt, met garanties voor latentie, door Voer, Beschik baarheid en consistentie. Zorg ervoor dat uw gegevens grootte en-index beheersbaar en schaalbaar zijn om gegarandeerde Premium-prestaties te garanderen. De limiet van 10 GB voor het aantal entiteiten of items per partitie sleutel is om ervoor te zorgen dat we geweldige Zoek-en query prestaties bieden. Om ervoor te zorgen dat uw toepassing goed wordt geschaald, zelfs voor Azure Storage, wordt u aangeraden *geen* Hot-partitie te maken door alle gegevens in één partitie op te slaan en er query's op uit te voeren.
+Azure Cosmos DB is een SLA-systeem dat onbeperkte schaal biedt, met garanties voor latentie, door Voer, Beschik baarheid en consistentie. Zorg ervoor dat uw gegevens grootte en-index beheersbaar en schaalbaar zijn om gegarandeerde Premium-prestaties te garanderen. De limiet van 20 GB voor het aantal entiteiten of items per partitie sleutel is om ervoor te zorgen dat we geweldige Zoek-en query prestaties bieden. Om ervoor te zorgen dat uw toepassing goed wordt geschaald, zelfs voor Azure Storage, wordt u aangeraden *geen* Hot-partitie te maken door alle gegevens in één partitie op te slaan en er query's op uit te voeren.
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>PartitionKey en RowKey zijn nog steeds vereist voor de Table-API?
 

@@ -1,14 +1,14 @@
 ---
 title: Toegang tot een delegatie verwijderen
 description: Meer informatie over het verwijderen van de toegang tot resources die aan een service provider voor Azure Lighthouse zijn overgedragen.
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111725"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167221"
 ---
 # <a name="remove-access-to-a-delegation"></a>Toegang tot een delegatie verwijderen
 
@@ -16,7 +16,10 @@ Nadat het abonnement of de resource groep van een klant is gedelegeerd aan een s
 
 Het verwijderen van een overdracht kan worden uitgevoerd door een gebruiker in de Tenant van de klant of de Tenant van de service provider, zolang de gebruiker de juiste machtigingen heeft.
 
-## <a name="customers"></a>Customers
+> [!TIP]
+> Hoewel we in dit onderwerp naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , dezelfde processen gebruiken.
+
+## <a name="customers"></a>Klanten
 
 Gebruikers in de Tenant van de klant die de [ingebouwde rol van eigenaar](../../role-based-access-control/built-in-roles.md#owner) voor een abonnement hebben, kunnen de toegang van de service provider tot dat abonnement (of de resource groepen in dat abonnement) verwijderen. Om dit te doen, kan een gebruiker in de Tenant van de klant naar de [pagina service providers](view-manage-service-providers.md#add-or-remove-service-provider-offers) van de Azure portal gaan, de aanbieding op het scherm van de **service provider** vinden en het prullenbak pictogram in de rij voor die aanbieding selecteren.
 

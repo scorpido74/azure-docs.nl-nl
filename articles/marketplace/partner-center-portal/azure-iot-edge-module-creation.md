@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032829"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167178"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Aanbieding voor IoT Edge-module maken
 
@@ -288,9 +288,11 @@ Voeg ten minste één Azure-abonnements-ID afzonderlijk toe (Maxi maal 10) of do
 
 Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, plan overzicht.
 
-### <a name="plan-overview"></a>Overzicht van plan
+## <a name="plan-overview"></a>Overzicht van plan
 
 Op dit tabblad kunt u verschillende plan opties bieden binnen dezelfde aanbieding in Partner Center. Plannen (voorheen Sku's) kunnen verschillen in wat voor Clouds beschikbaar zijn, zoals globale Clouds, overheids Clouds en de afbeelding waarnaar wordt verwezen door het plan. Als u uw aanbieding in Marketplace wilt aanbieden, moet u ten minste één abonnement instellen.
+
+U kunt Maxi maal 100 abonnementen maken voor elke aanbieding: Maxi maal 45 van deze kunnen privé zijn. Meer informatie over privé-abonnementen [vindt u in de micro soft Commercial Marketplace](../private-offers.md).
 
 Nadat u uw plannen hebt gemaakt, wordt op het tabblad Overzicht van het **plan** het volgende weer gegeven:
 
@@ -305,7 +307,7 @@ De acties die beschikbaar zijn in het plan overzicht variëren, afhankelijk van 
 - **Concept verwijderen**: als de plan status een concept is.
 - **Verkoop plan stoppen**: als de plan status Live is gepubliceerd.
 
-#### <a name="create-new-plan"></a>Nieuw plan maken
+### <a name="create-new-plan"></a>Nieuw plan maken
 
 Selecteer **nieuw plan maken**. Het dialoog venster **nieuw plan** wordt weer gegeven.
 
@@ -337,7 +339,7 @@ Deze optie is alleen zichtbaar als **Azure Government** is geselecteerd onder **
 
 Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS. Als u uw certificeringen voor deze Program ma's wilt behalen, kunt u Maxi maal 100 koppelingen opgeven die uw certificeringen beschrijven. Dit kunnen koppelingen zijn naar uw aanbiedingen op het programma, rechtstreeks of op uw eigen website. Deze koppelingen zijn alleen zichtbaar voor Azure Government klanten.
 
-## <a name="plan-listing"></a>Aanbieding plannen
+### <a name="plan-listing"></a>Aanbieding plannen
 
 Dit tabblad bevat specifieke informatie voor elk abonnement binnen dezelfde aanbieding.
 
@@ -377,7 +379,7 @@ Hier volgt een voor beeld van de details van het Azure Marketplace-plan (alle pr
 2. Plan naam
 3. Plan beschrijving
 
-## <a name="availability"></a>Beschikbaarheid
+### <a name="availability"></a>Beschikbaarheid
 
 Als u uw gepubliceerde aanbieding wilt verbergen zodat klanten deze niet kunnen zoeken, zoeken of kopen op Marketplace, schakelt u het selectie vakje **plan verbergen** op het tabblad Beschik baarheid in.
 

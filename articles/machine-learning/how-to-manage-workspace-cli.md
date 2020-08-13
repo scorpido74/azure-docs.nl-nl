@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6c2d1b3db422a40f7bcf237c292b48183d99962b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0eec9ce6b035b7bf3627c844abb97649ce972693
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121269"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167637"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -143,6 +143,9 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 ```
 
 ### <a name="virtual-network-and-private-endpoint"></a>Virtueel netwerk en persoonlijk eind punt
+
+> [!IMPORTANT]
+> Het gebruik van een persoonlijke Azure-koppeling met Azure Machine Learning werk ruimte bevindt zich momenteel in de open bare preview. Deze functionaliteit is alleen beschikbaar in de regio's **VS-Oost** en VS- **West 2** . Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Als u de toegang tot uw werk ruimte wilt beperken tot een virtueel netwerk, kunt u de volgende para meters gebruiken:
 

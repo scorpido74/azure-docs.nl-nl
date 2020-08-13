@@ -4,19 +4,19 @@ description: Een Azure IoT Edge apparaat gebruiken als een transparante gateway 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782582"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167399"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway
 
@@ -93,15 +93,19 @@ Voor productie scenario's moet u deze bestanden met uw eigen certificerings inst
    * Windows`Restart-Service iotedge`
    * Spreek`sudo systemctl restart iotedge`
 
-## <a name="deploy-edgehub-to-the-gateway"></a>EdgeHub implementeren op de gateway
+## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub en router berichten implementeren
 
-Wanneer u IoT Edge voor het eerst op een apparaat installeert, wordt slechts één systeem module automatisch gestart: de IoT Edge agent. Wanneer u de eerste implementatie voor een apparaat hebt gemaakt, wordt de tweede systeem module, de IoT Edge hub, ook gestart.
+Downstream-apparaten verzenden telemetrie en berichten naar het gateway apparaat, waarbij de IoT Edge hub-module verantwoordelijk is voor het door sturen van gegevens naar andere modules of naar IoT Hub. Als u uw gateway-apparaat voor deze functie wilt voorbereiden, controleert u het volgende:
 
-De IoT Edge hub is verantwoordelijk voor het ontvangen van inkomende berichten van downstream-apparaten en het routeren naar de volgende bestemming. Als de **edgeHub** -module niet op uw apparaat wordt uitgevoerd, maakt u een eerste implementatie voor uw apparaat. De implementatie ziet er leeg uit omdat u geen modules toevoegt, maar dit zorgt ervoor dat beide systeem modules worden uitgevoerd.
+* De module IoT Edge hub wordt geïmplementeerd op het apparaat.
 
-U kunt controleren welke modules worden uitgevoerd op een apparaat door de apparaatgegevens in de Azure Portal te controleren, de status van het apparaat weer te geven in Visual Studio of Visual Studio code of door de opdracht `iotedge list` op het apparaat zelf uit te voeren.
+  Wanneer u IoT Edge voor het eerst op een apparaat installeert, wordt slechts één systeem module automatisch gestart: de IoT Edge agent. Wanneer u de eerste implementatie voor een apparaat hebt gemaakt, wordt de tweede systeem module, de IoT Edge hub, ook gestart. Als de **edgeHub** -module niet op uw apparaat wordt uitgevoerd, maakt u een implementatie voor uw apparaat.
 
-Als de **edgeAgent** -module wordt uitgevoerd zonder de **edgeHub** -module, voert u de volgende stappen uit:
+* De module IoT Edge hub bevat routes die zijn ingesteld voor het verwerken van inkomende berichten van downstream-apparaten.
+
+  Het gateway apparaat moet een route hebben om berichten van downstream-apparaten te kunnen afhandelen of anders worden deze berichten niet verwerkt. U kunt de berichten verzenden naar modules op het gateway apparaat of rechtstreeks naar IoT Hub.
+
+Voer de volgende stappen uit om de IoT Edge hub-module te implementeren en te configureren met routes voor het afhandelen van binnenkomende berichten van downstream-apparaten:
 
 1. Ga in Azure Portal naar uw IoT-hub.
 
@@ -109,13 +113,27 @@ Als de **edgeAgent** -module wordt uitgevoerd zonder de **edgeHub** -module, voe
 
 3. Selecteer **modules instellen**.
 
-4. Selecteer **volgende: routes**.
+4. Op de pagina **modules** kunt u alle modules toevoegen die u wilt implementeren op het gateway apparaat. Voor de doel einden van dit artikel zijn we gericht op het configureren en implementeren van de edgeHub-module, die niet expliciet hoeft te worden ingesteld op deze pagina.
 
-5. Op de pagina **routes** moet u een standaard route hebben waarmee alle berichten, of van een module of van een downstream-apparaat, naar IOT hub worden verzonden. Als dat niet het geval is, voegt u een nieuwe route toe met de volgende waarden en selecteert u vervolgens **controleren + maken**:
-   * **Naam**:`route`
-   * **Waarde**:`FROM /messages/* INTO $upstream`
+5. Selecteer **volgende: routes**.
 
-6. Selecteer op de pagina **controleren en maken** de optie **maken**.
+6. Zorg er op de pagina **routes** voor dat er een route is voor het afhandelen van berichten die afkomstig zijn van downstream-apparaten. Bijvoorbeeld:
+
+   * Een route waarmee alle berichten, of van een module of van een downstream-apparaat, worden verzonden naar IoT Hub:
+       * **Naam**:`allMessagesToHub`
+       * **Waarde**:`FROM /messages/* INTO $upstream`
+
+   * Een route waarmee alle berichten van alle downstream-apparaten naar IoT Hub worden verzonden:
+      * **Naam**:`allDownstreamToHub`
+      * **Waarde**:`FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+
+      Deze route werkt omdat, in tegens telling tot berichten uit IoT Edge modules, er geen module-ID aan de berichten van downstream-apparaten is gekoppeld. Door gebruik te maken van de component **where** van de route kunnen we berichten met die systeem eigenschap filteren.
+
+      Zie [modules implementeren en routes instellen](./module-composition.md#declare-routes)voor meer informatie over het routeren van berichten.
+
+7. Zodra uw route of routes zijn gemaakt, selecteert u **controleren + maken**.
+
+8. Selecteer op de pagina **controleren en maken** de optie **maken**.
 
 ## <a name="open-ports-on-gateway-device"></a>Poorten op gateway apparaat openen
 
@@ -128,25 +146,6 @@ Een gateway scenario werkt alleen als ten minste een van de ondersteunde protoco
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
-
-## <a name="route-messages-from-downstream-devices"></a>Berichten van downstream-apparaten routeren
-
-De IoT Edge runtime kan berichten verzenden die zijn verzonden vanaf downstream-apparaten, net als berichten die door modules worden verzonden. Met deze functie kunt u analyses uitvoeren in een module die op de gateway wordt uitgevoerd voordat u gegevens naar de Cloud verzendt.
-
-Op dit moment kunt u berichten die door downstream-apparaten worden verzonden, op een andere manier onderscheiden van berichten die door modules worden verzonden. Berichten die door modules worden verzonden, bevatten een systeem eigenschap met de naam **connectionModuleId** , maar berichten die door downstream-apparaten worden verzonden, worden niet uitgevoerd. U kunt de component WHERE van de route gebruiken om berichten met die systeem eigenschap uit te sluiten.
-
-De onderstaande route is een voor beeld waarmee berichten van elk downstream-apparaat naar een module met de naam worden verzonden `ai_insights` en vervolgens worden `ai_insights` IOT hub.
-
-```json
-{
-    "routes":{
-        "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")",
-        "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream"
-    }
-}
-```
-
-Zie [modules implementeren en routes instellen](./module-composition.md#declare-routes)voor meer informatie over het routeren van berichten.
 
 ## <a name="enable-extended-offline-operation"></a>Uitgebreide offline bewerking inschakelen
 

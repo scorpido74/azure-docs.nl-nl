@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/28/2020
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fefc7b39a6539822686618d9f018084f65443ee1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: c852d416b73ba29b22efe63996835deac3a5277d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121711"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167671"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werkruimten maken en beheren in de Azure-portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,78 +42,16 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u geen 
 
    Veld|Beschrijving 
    ---|---
-   Werkruimtenaam |Voer een unieke naam in die uw werk ruimte identificeert. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt. De naam van de werk ruimte is niet hoofdletter gevoelig.
+   Werkruimtenaam |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt. De naam van de werk ruimte is niet hoofdletter gevoelig.
    Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
-   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. 
+   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
    Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
    Werkruimte editie | Selecteer **Basic** of **Enter prise**.  Deze werk ruimte-editie bepaalt de functies waartoe u toegang hebt en de prijzen. Meer informatie over de [Basic-en Enter prise Edition-aanbiedingen](overview-what-is-azure-ml.md#sku). 
 
-   :::image type="content" source="media/how-to-manage-workspace/select-edition.png" alt-text="werk ruimte configureren":::
+    ![Uw werk ruimte configureren](./media/how-to-manage-workspace/select-edition.png)
 
-1. Wanneer u klaar bent met het configureren van de werk ruimte, kunt u **controleren + maken**selecteren of door gaan naar de optionele __netwerk__ configuratie.
-
-### <a name="optional-networking"></a>Beschrijving Inbel
-
-> [!IMPORTANT]
-> Zie [netwerk isolatie en privacy](how-to-enable-virtual-network.md)voor meer informatie over het gebruik van een persoonlijk eind punt en een virtueel netwerk met uw werk ruimte.
-
-1. De standaard netwerk configuratie is het gebruik van een __openbaar eind punt__dat toegankelijk is op het open bare Internet. Als u de toegang tot uw werk ruimte wilt beperken tot een Azure-Virtual Network die u hebt gemaakt, kunt u in plaats daarvan __persoonlijk eind punt__ selecteren als de __verbindings methode__en vervolgens __+ toevoegen__ gebruiken om het eind punt te configureren.
-
-   :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Persoonlijke eindpunt selectie":::
-
-1. Stel op het formulier __persoonlijk eind punt maken__ de locatie, naam en het virtuele netwerk in op gebruik. Als u het eind punt met een Privé-DNS zone wilt gebruiken, selecteert u __integreren met privé-DNS-zone__ en selecteert u de zone in het veld __privé-DNS zone__ . Selecteer __OK__ om het eind punt te maken. 
-
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Persoonlijk eind punt maken":::
-
-1. Wanneer u klaar bent met het configureren van het netwerk, kunt u __controleren + maken__selecteren of door gaan naar de optionele __Geavanceerde__ configuratie.
-
-    > [!WARNING]
-    > Wanneer u een persoonlijk eind punt maakt, wordt er een nieuwe Privé-DNS zone gemaakt met de naam __privatelink.API.azureml.MS__ . Dit bevat een koppeling naar het virtuele netwerk. Als u meerdere werk ruimten met persoonlijke eind punten in dezelfde resource groep maakt, kan alleen het virtuele netwerk voor het eerste persoonlijke eind punt worden toegevoegd aan de DNS-zone. Gebruik de volgende stappen om vermeldingen toe te voegen voor de virtuele netwerken die worden gebruikt door de extra werk ruimten/persoonlijke eind punten:
-    > 
-    > 1. Selecteer in de [Azure Portal](https://portal.azure.com)de resource groep die de werk ruimte bevat. Selecteer vervolgens de Privé-DNS zone resource met de naam __privatelink.API.azureml.MS__.
-    > 2. Selecteer in de __instellingen__ __virtuele netwerk koppelingen__.
-    > 3. Selecteer __Toevoegen__. Geef op de pagina __virtuele netwerk koppeling toevoegen__ een unieke naam op voor de __koppeling__en selecteer vervolgens het __virtuele netwerk__ dat u wilt toevoegen. Selecteer __OK__ om de netwerk koppeling toe te voegen.
-    >
-    > Zie voor meer informatie [Azure private endpoint DNS-configuratie](/azure/private-link/private-endpoint-dns).
-
-### <a name="optional-advanced"></a>Beschrijving Gevanceerde
-
-Standaard worden metrische gegevens en meta data voor de werk ruimte opgeslagen in een Azure Cosmos DB exemplaar dat door micro soft wordt beheerd. Deze gegevens zijn versleuteld met door micro soft beheerde sleutels. 
-
-Als u de gegevens wilt beperken die door micro soft worden verzameld op uw werk ruimte, selecteert u een __werk ruimte met een grote bedrijfs impact__.
-
-> [!IMPORTANT]
-> Het selecteren van belang rijke bedrijfs impact kan alleen worden uitgevoerd bij het maken van een werk ruimte. U kunt deze instelling niet wijzigen nadat de werk ruimte is gemaakt.
-
-Als u de __Enter prise__ -versie van Azure machine learning gebruikt, kunt u in plaats daarvan uw eigen sleutel opgeven. Dit maakt het Azure Cosmos DB-exemplaar dat metrische gegevens en meta data opslaat in uw Azure-abonnement. Gebruik de volgende stappen om uw eigen sleutel te gebruiken:
-
-> [!IMPORTANT]
-> Voordat u deze stappen volgt, moet u eerst de volgende acties uitvoeren:
->
-> 1. Machtig de __machine learning-app__ (in identiteits-en toegangs beheer) met Inzender machtigingen voor uw abonnement.
-> 1. Volg de stappen in door de [klant beheerde sleutels configureren](/azure/cosmos-db/how-to-setup-cmk) voor:
->     * De Azure Cosmos DB provider registreren
->     * Een Azure Key Vault maken en configureren
->     * Een sleutel genereren
->
->     U hoeft het Azure Cosmos DB exemplaar niet hand matig te maken, er wordt een voor u gemaakt tijdens het maken van de werk ruimte. Dit Azure Cosmos DB exemplaar wordt in een afzonderlijke resource groep gemaakt met behulp van een naam op basis van dit patroon: `<your-resource-group-name>_<GUID>` .
->
-> U kunt deze instelling niet wijzigen nadat de werk ruimte is gemaakt. Als u de Azure Cosmos DB die door uw werk ruimte worden gebruikt, verwijdert, moet u ook de werk ruimte verwijderen die er gebruik van maakt.
-
-1. Selecteer door de __klant beheerde sleutels__en selecteer vervolgens __klikken om een sleutel te selecteren__.
-
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Door klant beheerde sleutels":::
-
-1. Selecteer in het formulier __sleutel selecteren van Azure Key Vault__ een bestaande Azure Key Vault, een sleutel die deze bevat en de versie van de sleutel. Deze sleutel wordt gebruikt voor het versleutelen van de gegevens die zijn opgeslagen in Azure Cosmos DB. Gebruik tot slot de knop __selecteren__ om deze sleutel te gebruiken.
-
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Selecteer de sleutel":::
-
-
-Wanneer u klaar bent met het configureren van het netwerk, selecteert u __controleren + maken__.
-
-### <a name="review--create"></a>Controleren en maken
-
-1. Controleer de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Wanneer u tevreden bent met de instellingen, selecteert u **maken**.
+1. Wanneer u klaar bent met het configureren van de werk ruimte, selecteert u **controleren + maken**.
+2. Controleer de instellingen en breng eventuele aanvullende wijzigingen of correcties aan. Wanneer u tevreden bent met de instellingen, selecteert u **maken**.
 
    > [!Warning] 
    > Het kan enkele minuten duren om uw werk ruimte in de cloud te maken.
@@ -152,7 +90,7 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Een werk ruimte zoeken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
 
 1. Typ **machine learning**in het bovenste zoek veld.  
 

@@ -1,30 +1,30 @@
 ---
 title: Een klant onboarden in Azure Lighthouse
 description: Meer informatie over hoe u een klant kunt opsturen naar Azure Lighthouse, zodat de resources toegankelijk zijn en kunnen worden beheerd via uw eigen Tenant met behulp van Azure delegated resource management.
-ms.date: 05/26/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: cac40a835ff3227a31611b31655865d43fa378ab
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: f20df54a4bc689effad210746f93928defdaf0f5
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118872"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167314"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Een klant onboarden in Azure Lighthouse
 
 In dit artikel wordt uitgelegd hoe u, als service provider, een klant kan onboarden naar Azure Lighthouse. Als u dit doet, kunnen de gedelegeerde resources (abonnementen en/of resource groepen) van de klant worden benaderd en beheerd via uw eigen Azure Active Directory (Azure AD)-Tenant met behulp van [Azure delegated resource management](../concepts/azure-delegated-resource-management.md).
 
-U kunt dit proces herhalen als u resources beheert voor meerdere klanten. Wanneer een geautoriseerde gebruiker zich vervolgens aanmeldt bij uw Tenant, kan die gebruiker worden geautoriseerd door de klant pacht bereiken om beheer bewerkingen uit te voeren, zonder dat ze zich hoeven aan te melden bij elke afzonderlijke klant Tenant.
+> [!TIP]
+> Hoewel we in dit onderwerp naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , hetzelfde proces gebruiken voor het instellen van Azure Lighthouse en het samen voegen van hun beheer ervaring.
 
-Als u de gevolgen voor klant afspraken wilt bijhouden en de herkenning wilt ontvangen, koppelt u uw Microsoft Partner Network-ID (MPN) aan ten minste één gebruikers account dat toegang heeft tot elk van de kant-en-Board abonnementen. Houd er rekening mee dat u deze koppeling moet uitvoeren in de Tenant van de service provider. Ter vereenvoudiging raden we u aan een Service-Principal-account te maken in uw Tenant die is gekoppeld aan uw MPN-ID, en de IT-lezer toegang te geven tot elke klant die u uitschakelt. Zie [een partner-id koppelen aan uw Azure-accounts](../../cost-management-billing/manage/link-partner-id.md)voor meer informatie. 
+U kunt het onboarding-proces voor meerdere klanten herhalen. Wanneer een gebruiker met de juiste machtigingen zich aanmeldt bij uw beheer Tenant, kan die gebruiker worden toegestaan tussen de klant-pacht bereiken om beheer bewerkingen uit te voeren, zonder dat ze zich hoeven aan te melden bij elke afzonderlijke klant Tenant.
+
+Als u de gevolgen voor klant afspraken wilt bijhouden en de herkenning wilt ontvangen, koppelt u uw Microsoft Partner Network-ID (MPN) aan ten minste één gebruikers account dat toegang heeft tot elk van de kant-en-Board abonnementen. U moet deze koppeling uitvoeren in de Tenant van de service provider. Ter vereenvoudiging raden we u aan een Service-Principal-account te maken in uw Tenant die is gekoppeld aan uw MPN-ID, en de IT-lezer toegang te geven tot elke klant die u uitschakelt. Zie [een partner-id koppelen aan uw Azure-accounts](../../cost-management-billing/manage/link-partner-id.md)voor meer informatie.
 
 > [!NOTE]
-> Klanten kunnen ook worden vrijgemaakt naar Azure Lighthouse wanneer ze een aanbieding voor beheerde services aanschaffen (openbaar of privé) die u naar Azure Marketplace hebt gepubliceerd. Zie [Managed Services aanbiedingen to Azure Marketplace](publish-managed-services-offers.md)(Engelstalig) voor meer informatie. U kunt ook het voorbereidings proces gebruiken dat hier wordt beschreven, samen met een aanbieding die is gepubliceerd op Azure Marketplace.
+> Klanten kunnen ook worden vrijgemaakt naar Azure Lighthouse wanneer ze een beheerde service aanbieding (openbaar of privé) aanschaffen die u [naar Azure Marketplace publiceert](publish-managed-services-offers.md). U kunt ook het voorbereidings proces gebruiken dat hier wordt beschreven, naast aanbiedingen die naar Azure Marketplace worden gepubliceerd.
 
 Voor het voorbereidings proces moeten acties worden uitgevoerd vanuit zowel de Tenant van de service provider als van de Tenant van de klant. Al deze stappen worden in dit artikel beschreven.
-
-> [!TIP]
-> Hoewel we in dit onderwerp naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , hetzelfde proces gebruiken om Azure Lighthouse in te stellen en hun beheer ervaring te consolideren.
 
 ## <a name="gather-tenant-and-subscription-details"></a>Tenant-en abonnements gegevens verzamelen
 
@@ -65,9 +65,11 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Rollen en machtigingen definiëren
 
-Als service provider wilt u mogelijk meerdere taken uitvoeren voor één klant, waarbij verschillende toegangs rechten voor verschillende bereiken zijn vereist. U kunt zoveel autorisaties definiëren als u nodig hebt om op [rollen gebaseerd toegangs beheer (RBAC) ingebouwde rollen](../../role-based-access-control/built-in-roles.md) toe te wijzen aan gebruikers in uw Tenant.
+Als service provider wilt u mogelijk meerdere taken uitvoeren voor één klant, waarbij verschillende toegangs rechten voor verschillende bereiken zijn vereist. U kunt zoveel autorisaties definiëren als u nodig hebt om de juiste [functies op basis van op rollen gebaseerde toegangs beheer (RBAC)](../../role-based-access-control/built-in-roles.md) toe te wijzen aan gebruikers in uw Tenant.
 
-Om het beheer te vereenvoudigen, raden we u aan Azure AD-gebruikers groepen te gebruiken voor elke rol, zodat u afzonderlijke gebruikers aan de groep kunt toevoegen of verwijderen, in plaats van machtigingen rechtstreeks aan die gebruiker toe te wijzen. Mogelijk wilt u ook rollen toewijzen aan een service-principal. Zorg ervoor dat u het principe van minimale bevoegdheden volgt, zodat gebruikers alleen over de benodigde machtigingen beschikken om hun taak te volt ooien. Zie [tenants, gebruikers en rollen in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md)voor aanbevelingen en informatie over ondersteunde rollen.
+Om het beheer te vereenvoudigen, kunt u het beste Azure AD-gebruikers groepen gebruiken voor elke rol. Dit biedt u de flexibiliteit om afzonderlijke gebruikers toe te voegen aan of te verwijderen uit de groep die toegang heeft, zodat u het onboarding-proces niet hoeft te herhalen om gebruikers wijzigingen door te voeren. U kunt rollen toewijzen aan een service-principal die nuttig kan zijn voor automatiserings scenario's.
+
+Bij het definiëren van uw autorisatie moet u het principe van de minimale bevoegdheid volgen, zodat gebruikers alleen over de benodigde machtigingen beschikken om hun taak te volt ooien. Zie voor richt lijnen en informatie over ondersteunde rollen [tenants, gebruikers en rollen in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md).
 
 > [!IMPORTANT]
 > Om machtigingen voor een Azure AD-groep toe te voegen, moet het **groeps type** **beveiliging** zijn en niet **Office 365**. Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.
@@ -109,12 +111,13 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 # To retrieve role definition IDs
 az role definition list --name "<roleName>" | grep name
 ```
+
 > [!TIP]
 > U kunt het beste de functie voor het verwijderen van de [registratie toewijzing beheerde services](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) toewijzen bij het voorbereiden van een klant, zodat gebruikers in uw Tenant [de toegang tot de overdracht](remove-delegation.md) later indien nodig kunnen verwijderen. Als deze rol niet is toegewezen, kunnen gedelegeerde resources alleen worden verwijderd door een gebruiker in de Tenant van de klant.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Een Azure Resource Manager sjabloon maken
 
-Voor het onboarden van uw klant moet u een [Azure Resource Manager](../../azure-resource-manager/index.yml) -sjabloon maken voor uw aanbieding met de volgende gegevens. De **mspOfferName** -en **mspOfferDescription** -waarden zijn zichtbaar voor de klant wanneer u details van de aanbieding bekijkt op de [pagina service providers](view-manage-service-providers.md) van de Azure Portal.
+Voor het onboarden van uw klant moet u een [Azure Resource Manager](../../azure-resource-manager/index.yml) -sjabloon maken voor uw aanbieding met de volgende gegevens. De waarden **mspOfferName** en **mspOfferDescription** zijn zichtbaar voor de klant op de [pagina service providers](view-manage-service-providers.md) van de Azure Portal.
 
 |Veld  |Definitie  |
 |---------|---------|
@@ -196,9 +199,7 @@ De laatste autorisatie in bovenstaand voor beeld voegt een **principalId** toe a
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>De Azure Resource Manager-sjablonen implementeren
 
-Zodra u het parameter bestand hebt bijgewerkt, moet een gebruiker in de Tenant van de klant de Azure Resource Manager-sjabloon binnen hun Tenant implementeren als implementatie op abonnements niveau. Er is een afzonderlijke implementatie nodig voor elk abonnement dat u wilt vrijgeven (of voor elk abonnement met resource groepen die u wilt voorbereiden).
-
-Omdat dit een implementatie op abonnements niveau is, kan deze niet worden gestart in de Azure Portal. De implementatie kan worden uitgevoerd met behulp van Power shell of Azure CLI, zoals hieronder wordt weer gegeven.
+Zodra u het parameter bestand hebt bijgewerkt, moet een gebruiker in de Tenant van de klant de Azure Resource Manager-sjabloon binnen hun Tenant implementeren als implementatie op abonnements niveau. Er is een afzonderlijke implementatie nodig voor elk abonnement dat u wilt vrijgeven (of voor elk abonnement met resource groepen die u wilt voorbereiden). De implementatie kan worden uitgevoerd met behulp van Power shell of Azure CLI, zoals hieronder wordt weer gegeven.
 
 > [!IMPORTANT]
 > Deze implementatie op abonnementniveau moet worden uitgevoerd door een niet-gast account in de Tenant van de klant met de [ingebouwde rol](../../role-based-access-control/built-in-roles.md#owner) van de eigenaar van het abonnement (of de resource groepen die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).

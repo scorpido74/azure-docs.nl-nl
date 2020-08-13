@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f8487126cd187ea66f9423a480c9a73151154c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420104"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168011"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Persoonlijke aanbiedingen in micro soft Commercial Marketplace
 
@@ -35,7 +35,7 @@ Persoonlijke aanbiedingen zijn nu beschikbaar voor virtuele machines, Azure-toep
 
 ## <a name="creating-private-offers-using-plans"></a>Persoonlijke aanbiedingen maken met abonnementen
 
-Voor *nieuwe of bestaande aanbiedingen met abonnementen*kunnen uitgevers eenvoudig nieuwe, persoonlijke variaties maken door nieuwe plannen (voorheen sku's) te maken en ze als privé te markeren.  
+Voor *nieuwe of bestaande aanbiedingen met abonnementen*kunnen uitgevers eenvoudig nieuwe, persoonlijke variaties maken door nieuwe plannen (voorheen sku's) te maken en ze als privé te markeren. Elke aanbieding kan Maxi maal 45 privé-abonnementen hebben.
 
 <!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
 

@@ -1,18 +1,21 @@
 ---
 title: Klanten en gedelegeerde resources weergeven en beheren
-description: Als service provider die gebruikmaakt van Azure Lighthouse, kunt u al uw gedelegeerte klant bronnen en abonnementen weer geven door naar mijn klanten te gaan in de Azure Portal.
-ms.date: 07/06/2020
+description: Als service provider of onderneming die Azure Lighthouse gebruikt, kunt u al uw gedelegeerde resources en abonnementen weer geven door naar mijn klanten te gaan in de Azure Portal.
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: f509a91d71caa3ab1ec8282f4151556f7c10d52c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 165110556282e90bbacf4ce3b3c59e34b203a528
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133275"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167195"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Klanten en gedelegeerde resources weergeven en beheren
 
-Service providers die [Azure Lighthouse](../overview.md) gebruiken, kunnen de pagina **mijn klanten** in het [Azure Portal](https://portal.azure.com) gebruiken om gedelegeerde klant resources en abonnementen weer te geven. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
+Service providers die [Azure Lighthouse](../overview.md) gebruiken, kunnen de pagina **mijn klanten** in het [Azure Portal](https://portal.azure.com) gebruiken om gedelegeerde klant resources en abonnementen weer te geven. 
+
+> [!TIP]
+> Hoewel we hier naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
 
 Als u toegang wilt krijgen tot de pagina **mijn klanten** in de Azure Portal, selecteert u **alle services**, zoekt u naar **mijn klanten** en selecteert u deze. U kunt deze ook vinden door ' mijn klanten ' in te voeren in het zoekvak boven aan de Azure Portal.
 
@@ -42,7 +45,7 @@ U kunt de volgende informatie op deze pagina bekijken:
 
 ## <a name="view-and-manage-delegations"></a>Delegaties weer geven en beheren
 
-Delegaties tonen het abonnement/de resource groep die is gedelegeerd, samen met de gebruikers en machtigingen die er toegang toe hebben. Als u deze informatie wilt weer geven, selecteert u **delegaties** aan de linkerkant van de pagina **mijn klanten** .
+Delegaties tonen het abonnement of de resource groep die is gedelegeerd, samen met de gebruikers en machtigingen die er toegang toe hebben. Als u deze informatie wilt weer geven, selecteert u **delegaties** aan de linkerkant van de pagina **mijn klanten** .
 
 Met filters boven aan de pagina kunt u uw toegangs toewijzings gegevens sorteren en groeperen of filteren op specifieke klanten, aanbiedingen of tref woorden.
 

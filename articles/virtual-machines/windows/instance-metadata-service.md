@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: d074c3f806b36ff530396fbafcb3c7c6f9661fcf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: fe059f684306e2c98e625af72248f03f0932ebad
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827568"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168266"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -47,7 +47,7 @@ Hieronder ziet u de voorbeeld code voor het ophalen van alle meta gegevens voor 
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2020-06-01
 ```
 
 **Response**
@@ -57,112 +57,97 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http:/
 
 ```json
 {
-  "compute": {
-    "azEnvironment": "AzurePublicCloud",
-    "customData": "",
-    "location": "centralus",
-    "name": "negasonic",
-    "offer": "lampstack",
-    "osType": "Linux",
-    "placementGroupId": "",
-    "plan": {
-        "name": "5-6",
-        "product": "lampstack",
-        "publisher": "bitnami"
-    },
-    "platformFaultDomain": "0",
-    "platformUpdateDomain": "0",
-    "provider": "Microsoft.Compute",
-    "publicKeys": [],
-    "publisher": "bitnami",
-    "resourceGroupName": "myrg",
-    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
-    "sku": "5-6",
-    "storageProfile": {
-        "dataDisks": [
-          {
-            "caching": "None",
-            "createOption": "Empty",
-            "diskSizeGB": "1024",
-            "image": {
-              "uri": ""
+    "compute": {
+        "azEnvironment": "AZUREPUBLICCLOUD",
+        "isHostCompatibilityLayerVm": "true",
+        "location": "westus",
+        "name": "examplevmname",
+        "offer": "Windows",
+        "osType": "linux",
+        "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
+        "plan": {
+            "name": "planName",
+            "product": "planProduct",
+            "publisher": "planPublisher"
+        },
+        "platformFaultDomain": "36",
+        "platformUpdateDomain": "42",
+        "publicKeys": [{
+                "keyData": "ssh-rsa 0",
+                "path": "/home/user/.ssh/authorized_keys0"
             },
-            "lun": "0",
-            "managedDisk": {
-              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
-              "storageAccountType": "Standard_LRS"
-            },
-            "name": "exampledatadiskname",
-            "vhd": {
-              "uri": ""
-            },
-            "writeAcceleratorEnabled": "false"
-          }
+            {
+                "keyData": "ssh-rsa 1",
+                "path": "/home/user/.ssh/authorized_keys1"
+            }
         ],
-        "imageReference": {
-          "id": "",
-          "offer": "UbuntuServer",
-          "publisher": "Canonical",
-          "sku": "16.04.0-LTS",
-          "version": "latest"
+        "publisher": "RDFE-Test-Microsoft-Windows-Server-Group",
+        "resourceGroupName": "macikgo-test-may-23",
+        "resourceId": "/subscriptions/8d10da13-8125-4ba9-a717-bf7490507b3d/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/virtualMachines/examplevmname",
+        "securityProfile": {
+            "secureBootEnabled": "true",
+            "virtualTpmEnabled": "false"
         },
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage",
-          "diskSizeGB": "30",
-          "diffDiskSettings": {
-            "option": "Local"
-          },
-          "encryptionSettings": {
-            "enabled": "false"
-          },
-          "image": {
-            "uri": ""
-          },
-          "managedDisk": {
-            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
-            "storageAccountType": "Standard_LRS"
-          },
-          "name": "exampleosdiskname",
-          "osType": "Linux",
-          "vhd": {
-            "uri": ""
-          },
-          "writeAcceleratorEnabled": "false"
-        }
-    },
-    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
-    "version": "7.1.1902271506",
-    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
-    "vmScaleSetName": "",
-    "vmSize": "Standard_A1_v2",
-    "zone": "1"
-  },
-  "network": {
-    "interface": [
-      {
-        "ipv4": {
-          "ipAddress": [
-            {
-              "privateIpAddress": "10.1.2.5",
-              "publicIpAddress": "X.X.X.X"
+        "sku": "Windows-Server-2012-R2-Datacenter",
+        "storageProfile": {
+            "dataDisks": [{
+                "caching": "None",
+                "createOption": "Empty",
+                "diskSizeGB": "1024",
+                "image": {
+                    "uri": ""
+                },
+                "lun": "0",
+                "managedDisk": {
+                    "id": "/subscriptions/8d10da13-8125-4ba9-a717-bf7490507b3d/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+                    "storageAccountType": "Standard_LRS"
+                },
+                "name": "exampledatadiskname",
+                "vhd": {
+                    "uri": ""
+                },
+                "writeAcceleratorEnabled": "false"
+            }],
+            "imageReference": {
+                "id": "",
+                "offer": "UbuntuServer",
+                "publisher": "Canonical",
+                "sku": "16.04.0-LTS",
+                "version": "latest"
+            },
+            "osDisk": {
+                "caching": "ReadWrite",
+                "createOption": "FromImage",
+                "diskSizeGB": "30",
+                "diffDiskSettings": {
+                    "option": "Local"
+                },
+                "encryptionSettings": {
+                    "enabled": "false"
+                },
+                "image": {
+                    "uri": ""
+                },
+                "managedDisk": {
+                    "id": "/subscriptions/8d10da13-8125-4ba9-a717-bf7490507b3d/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+                    "storageAccountType": "Standard_LRS"
+                },
+                "name": "exampleosdiskname",
+                "osType": "Linux",
+                "vhd": {
+                    "uri": ""
+                },
+                "writeAcceleratorEnabled": "false"
             }
-          ],
-          "subnet": [
-            {
-              "address": "10.1.2.0",
-              "prefix": "24"
-            }
-          ]
         },
-        "ipv6": {
-          "ipAddress": []
-        },
-        "macAddress": "000D3A36DDED"
-      }
-    ]
-  }
+        "subscriptionId": "8d10da13-8125-4ba9-a717-bf7490507b3d",
+        "tags": "baz:bash;foo:bar",
+        "version": "15.05.22",
+        "vmId": "02aab8a4-74ef-476e-8182-f6d2ba4166a6",
+        "vmScaleSetName": "crpteste9vflji9",
+        "vmSize": "Standard_A3",
+        "zone": ""
+    }
 }
 ```
 
@@ -192,9 +177,26 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http:
 
 De Instance Metadata Service is versie nummer en het opgeven van de API-versie in de HTTP-aanvraag is verplicht.
 
-Volg de ondersteunde service versies: 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15.
+De ondersteunde API-versies zijn: 
+- 2017-03-01
+- 2017-04-02
+- 2017-08-01 
+- 2017-10-01
+- 2017-12-01 
+- 2018-02-01
+- 2018-04-02
+- 2018-10-01
+- 2019-02-01
+- 2019-03-11
+- 2019-04-30
+- 2019-06-01
+- 2019-06-04
+- 2019-08-01
+- 2019-08-15
+- 2019-11-01
+- 2020-06-01
 
-Opmerking Wanneer een nieuwe versie wordt uitgebracht, duurt het enige tijd om alle regio's uit te rollen. Momenteel wordt versie 2019-11-01 nog steeds geïmplementeerd en is deze mogelijk niet in alle regio's beschikbaar.
+Opmerking Wanneer een nieuwe versie wordt uitgebracht, duurt het enige tijd om alle regio's uit te rollen.
 
 Als nieuwere versies worden toegevoegd, kunnen oudere versies nog steeds worden gebruikt voor compatibiliteit als uw scripts afhankelijk zijn van specifieke gegevens indelingen.
 
@@ -241,6 +243,7 @@ Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
 azEnvironment | Azure-omgeving waarin de virtuele machine wordt uitgevoerd | 2018-10-01
 customData | Deze functie is momenteel uitgeschakeld. Deze documentatie wordt bijgewerkt wanneer deze beschikbaar wordt | 2019-02-01
+isHostCompatibilityLayerVm | Hiermee wordt aangegeven of de virtuele machine wordt uitgevoerd op de compatibiliteit slaag van de host | 2020-06-01
 location | Azure-regio waarin de virtuele machine wordt uitgevoerd | 2017-04-02
 naam | Naam van de virtuele machine | 2017-04-02
 offer | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
@@ -255,6 +258,8 @@ publisher | Uitgever van de VM-installatie kopie | 2017-04-02
 resourceGroupName | [Resource groep](../../azure-resource-manager/management/overview.md) voor uw virtuele machine | 2017-08-01
 resourceId | De [volledig gekwalificeerde](/rest/api/resources/resources/getbyid) id van de resource | 2019-03-11
 sku | Specifieke SKU voor de VM-installatie kopie | 2017-04-02
+securityProfile. secureBootEnabled | Hiermee wordt aangegeven of UEFI Secure boot is ingeschakeld op de VM | 2020-06-01
+securityProfile.virtualTpmEnabled | Hiermee wordt aangegeven of de virtuele Trusted Platform Module (TPM) is ingeschakeld op de VM | 2020-06-01
 storageProfile | [Opslag profiel](#storage-metadata) bekijken | 2019-06-01
 subscriptionId | Azure-abonnement voor de virtuele machine | 2017-08-01
 tags | [Labels](../../azure-resource-manager/management/tag-resources.md) voor uw virtuele machine  | 2017-08-01
@@ -690,8 +695,8 @@ plannen | Het [abonnement op de Azure Marketplace-installatie kopie](/rest/api/c
 Time Stamp/createdOn | De UTC-tijds tempel voor het maken van het ondertekende document
 tijds tempel-expiresOn | De UTC-tijds tempel voor het verloopt van het ondertekende document
 vmId |  De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine
-subscriptionId | Azure-abonnement voor de virtuele machine, geïntroduceerd in`2019-04-30`
-sku | Specifieke SKU voor de VM-installatie kopie, geïntroduceerd in`2019-11-01`
+subscriptionId | Azure-abonnement voor de virtuele machine, geïntroduceerd in `2019-04-30`
+sku | Specifieke SKU voor de VM-installatie kopie, geïntroduceerd in `2019-11-01`
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>Voor beeld 2: controleren of de virtuele machine wordt uitgevoerd in azure
 

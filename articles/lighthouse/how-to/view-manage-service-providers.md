@@ -1,18 +1,21 @@
 ---
 title: Serviceproviders weergeven en beheren
 description: Klanten kunnen de pagina service providers in het Azure Portal gebruiken om informatie over service providers, aanbiedingen van providers en gedelegeerde resources weer te geven.
-ms.date: 07/10/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: c22408a52d973a244d67528a73d4eaa487f166ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273775"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167161"
 ---
 # <a name="view-and-manage-service-providers"></a>Serviceproviders weergeven en beheren
 
-Klanten kunnen de pagina **service providers** in het [Azure Portal](https://portal.azure.com) gebruiken om details over service providers en service providers te bekijken, specifieke resources te delegeren aan [Azure Lighthouse](../overview.md)en te winkelen naar nieuwe aanbiedingen voor service providers. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
+Klanten kunnen de pagina **service providers** in het [Azure Portal](https://portal.azure.com) gebruiken om details over service providers en service providers te bekijken, specifieke resources te delegeren aan [Azure Lighthouse](../overview.md)en te winkelen naar nieuwe aanbiedingen voor service providers.
+
+> [!TIP]
+> Hoewel we hier naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
 
 Om toegang te krijgen tot de pagina **service providers** in de Azure Portal, kan de klant **alle services**selecteren en vervolgens zoeken naar **service providers** en selecteren. Ze kunnen het ook vinden door ' service providers ' of ' Azure Lighthouse ' in te voeren in het zoekvak boven aan de Azure Portal.
 

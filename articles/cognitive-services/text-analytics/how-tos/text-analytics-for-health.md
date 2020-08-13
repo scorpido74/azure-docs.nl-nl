@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 71cbf03a36dd95eb66c3dcbaffbf4b63d889f507
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4ba7aa530699ab0e06ac42e3701265254b617f73
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121575"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167688"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Procedure: Text Analytics gebruiken voor de status (preview)
 
@@ -273,7 +273,7 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
                     "length": 11,
                     "text": "itchy sores",
                     "category": "SymptomOrSign",
-                    "ConfidenceScore": 1.0,
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 }
             ]
@@ -287,7 +287,7 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
                     "length": 4,
                     "text": "50mg",
                     "category": "Dosage",
-                    "ConfidenceScore": 1.0,
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
@@ -296,7 +296,7 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
                     "length": 8,
                     "text": "benadryl",
                     "category": "MedicationName",
-                    "ConfidenceScore": 1.0,
+                    "confidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
@@ -343,7 +343,7 @@ De volgende JSON is een voor beeld van de Text Analytics voor Health API-antwoor
                     "length": 11,
                     "text": "twice daily",
                     "category": "Frequency",
-                    "ConfidenceScore": 1.0,
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 }
             ],

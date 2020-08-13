@@ -3,12 +3,12 @@ title: Een beheerde service aanbieding naar Azure Marketplace publiceren
 description: Meer informatie over het publiceren van een Managed Service-aanbod waarmee klanten naar Azure Lighthouse worden geleid.
 ms.date: 07/28/2020
 ms.topic: how-to
-ms.openlocfilehash: e86cec16cc377470f255c8b677d7462dee6b3573
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ab12238bac7e479766b3e328c02f73521d08ad96
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407061"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167213"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Een beheerde service aanbieding naar Azure Marketplace publiceren
 

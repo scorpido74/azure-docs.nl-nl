@@ -9,30 +9,30 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2a33c701278a900e502da9e6d9520ea213ce4c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059216"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168096"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>Referentie gegevens beheren voor een Azure Time Series Insights-omgeving van 1 generatie met C #
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Referentie gegevens beheren voor een Azure Time Series Insights-omgeving van 1 generatie met C-Kruis
 
-In dit artikel wordt beschreven hoe u C#-, [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)-en Azure Active Directory kunt combi neren om PROGRAMMATISCHe API-aanvragen te maken voor de [referentie Gegevensbeheer API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)van Azure time series Insights gen 1.
+In dit artikel wordt beschreven hoe u C#-, [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)-en Azure Active Directory kunt combi neren om PROGRAMMATISCHe API-aanvragen te maken voor de [referentie Gegevensbeheer API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)van Azure time series Insights gen 1.
 
 > [!TIP]
-> GA C#-code voorbeelden weer geven op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
+> GA C#-code voorbeelden weer geven op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
 
 ## <a name="summary"></a>Samenvatting
 
 De voorbeeld code hieronder bevat de volgende functies:
 
 * Een toegangs Token ophalen met behulp van [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**.
-* Sequentiële bewerkingen voor maken, lezen, bijwerken en verwijderen voor de [referentie gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)van de gen 1.
-* Algemene antwoord codes, inclusief [veelvoorkomende fout codes](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
-    
+* Sequentiële bewerkingen voor maken, lezen, bijwerken en verwijderen voor de [referentie gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)van de gen 1.
+* Algemene antwoord codes, inclusief [veelvoorkomende fout codes](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling).
+
     De referentie Gegevensbeheer-API verwerkt elk item afzonderlijk en een fout met één item verhindert niet dat de anderen kunnen volt ooien. Als uw aanvraag bijvoorbeeld 100 items heeft en er een fout optreedt in een item, worden er 99 items geschreven en wordt er een geweigerd.
 
 ## <a name="prerequisites-and-setup"></a>Vereisten en installatie
@@ -46,7 +46,7 @@ Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
    | Sleutelnaam | Type |
    | --- | --- |
-   | uuid | Tekenreeks | 
+   | uuid | Tekenreeks |
 
 1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md). Gebruiken `http://localhost:8080/` als de **omleidings-URI**.
 
@@ -54,7 +54,7 @@ Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
 1. Bewerk de voorbeeld code hieronder door elk **#PLACEHOLDER #** te vervangen door de juiste omgevings-id.
 
-1. Voer uit `dotnet run` in de hoofdmap van uw project. Wanneer u hierom wordt gevraagd, gebruikt u uw gebruikers profiel om u aan te melden bij Azure. 
+1. Voer uit `dotnet run` in de hoofdmap van uw project. Wanneer u hierom wordt gevraagd, gebruikt u uw gebruikers profiel om u aan te melden bij Azure.
 
 ## <a name="project-dependencies"></a>Projectafhankelijkheden
 
@@ -92,6 +92,7 @@ Of
       </ItemGroup>
     </Project>
     ```
+
 1. Voer vervolgens `dotnet restore` uit.
 
 ## <a name="c-sample-code"></a>C#-voorbeeld code
@@ -114,7 +115,7 @@ namespace CsharpTsiMsalGaSample
     {
         /**
          * Review the product documentation for detailed configuration steps or skip ahead and configure your environment settings.
-         * 
+         *
          * https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization
          */
 
@@ -138,7 +139,7 @@ namespace CsharpTsiMsalGaSample
 
             /**
              * MSAL.NET configuration. Review the product documentation for more information about MSAL.NET authentication options.
-             * 
+             *
              * https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/
              */
 
@@ -174,7 +175,7 @@ namespace CsharpTsiMsalGaSample
                 Path = $"referencedatasets/{EnvironmentReferenceDataSetName}/$batch",
                 Query = "api-version=2016-12-12"
              }.Uri;
-                
+
              Console.WriteLine("Making HTTP POST to URI: {0}", uri);
              Console.WriteLine("");
 
@@ -202,7 +203,7 @@ namespace CsharpTsiMsalGaSample
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
 
-            {   
+            {
                 // CREATE reference data
                 Console.WriteLine("CREATE reference data example...");
                 Console.WriteLine("");
@@ -309,4 +310,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees de naslag informatie over [referentie gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) voor gen 1.
+* Lees de naslag informatie over [referentie gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) voor gen 1.

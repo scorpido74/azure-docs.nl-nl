@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 23ce3272d99401340d784f88dd537baa55774a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708821"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167943"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Naslag informatie voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,6 +75,14 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 - [Uitgebreide gebeurtenissen opslaan in een gebeurtenis bestand](../database/xevent-code-event-file.md)
 - [Uitgebreide gebeurtenissen opslaan in een ring buffer](../database/xevent-code-ring-buffer.md)
 
+### <a name="alerting"></a>Waarschuwingen
+
+- [Waarschuwingen maken voor een beheerd exemplaar](alerts-create.md)
+
+## <a name="operations"></a>Bewerkingen
+
+- [Door de gebruiker geïnitieerde hand matige failover op een SQL-beheerd exemplaar](user-initiated-failover.md)
+
 ## <a name="develop-applications"></a>Toepassingen ontwikkelen
 
 - [Connectiviteit](../database/connect-query-content-reference-guide.md#libraries)
@@ -99,8 +107,6 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 - [SaaS-ontwerppatronen](../database/saas-tenancy-app-design-patterns.md)
 - [Indexeerfunctie voor SaaS-video](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [Beveiliging van SaaS-app](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
-
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

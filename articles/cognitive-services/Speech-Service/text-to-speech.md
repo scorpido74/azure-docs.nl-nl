@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399506"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167705"
 ---
 # <a name="what-is-text-to-speech"></a>Wat is tekst-naar-spraak?
 
@@ -41,13 +41,7 @@ Tekst-naar-spraak van de speech-service zorgt ervoor dat uw toepassingen, hulppr
 
 ## <a name="get-started"></a>Aan de slag
 
-De tekst-naar-spraak-service is beschikbaar via de [Speech-SDK](speech-sdk.md). Er zijn verschillende algemene scenario's beschikbaar als Quick starts in verschillende talen en platformen:
-
-* [Spraaksynthese in een audiobestand](quickstarts/text-to-speech-audio-file.md)
-* [Spraaksynthese naar een luidspreker](quickstarts/text-to-speech.md)
-* [Langdurige audio asynchroon maken](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
-
-Als u wilt, is de tekst-naar-spraak-service toegankelijk via [rest](rest-text-to-speech.md).
+Bekijk de [Snelstartgids](get-started-text-to-speech.md) om aan de slag te gaan met tekst-naar-spraak. De tekst-naar-spraak-service is beschikbaar via de [Speech SDK](speech-sdk.md), het [rest API](rest-text-to-speech.md)en de [Speech cli](spx-overview.md)
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
@@ -65,7 +59,7 @@ Naast de standaard-en Neural stemmen, kunt u aangepaste stemmen maken en verfijn
 Wanneer u de service tekst naar spraak gebruikt, wordt u gefactureerd voor elk teken dat naar spraak wordt geconverteerd, inclusief Lees tekens. Hoewel het SSML-document zelf niet factureerbaar is, worden optionele elementen die worden gebruikt voor het aanpassen van de manier waarop de tekst naar spraak wordt geconverteerd, zoals fonemen en pitch, geteld als factureer bare tekens. Hier volgt een lijst met wat factureerbaar is:
 
 - Tekst die wordt door gegeven aan de service tekst naar spraak in de SSML-hoofd tekst van de aanvraag
-- Alle opmaak in het tekst veld van de aanvraag tekst in de SSML-indeling, met `<speak>` uitzonde ring van de tags en `<voice>`
+- Alle opmaak in het tekst veld van de aanvraag tekst in de SSML-indeling, met uitzonde ring van de `<speak>` `<voice>` Tags en
 - Letters, lees tekens, spaties, tabs, opmaak en alle spatie tekens
 - Elk code punt dat in Unicode is gedefinieerd
 

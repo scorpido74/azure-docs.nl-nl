@@ -9,16 +9,16 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a5ee1cc8efead7c29dadaf64adb8e2686a10621
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495071"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168079"
 ---
-# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Gebeurtenissen verzenden naar een Azure Time Series Insights gen1-omgeving met behulp van een Event Hub
+# <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Gebeurtenissen verzenden naar een Azure Time Series Insights gen1-omgeving met behulp van een Event Hub
 
 In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en configureert. Ook wordt beschreven hoe u een voorbeeld toepassing uitvoert om gebeurtenissen te pushen naar Azure Time Series Insights van Event Hubs. Als u een bestaande Event Hub hebt met gebeurtenissen in JSON-indeling, kunt u deze zelf studie overs Laan en uw omgeving bekijken in [Azure time series Insights](./time-series-insights-update-create-environment.md).
 
@@ -55,9 +55,9 @@ In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en 
 
 ## <a name="add-an-azure-time-series-insights-instance"></a>Een Azure Time Series Insights-exemplaar toevoegen
 
-In Azure Time Series Insights gen 2 kunt u contextuele gegevens toevoegen aan inkomende telemetrie met behulp van het time series model (TSM). In TSM worden uw tags of signalen gerefereerd als *instanties* en kunt u contextuele gegevens opslaan in *exemplaar velden.* De gegevens worden tijdens de query tijd gekoppeld met behulp van een **tijd reeks-id**. De **Time Series-id** voor het voorbeeld project Windmills dat later in dit artikel wordt gebruikt is `id` . Lees het overzicht van [Time Series model](./concepts-model-overview.md) voor meer informatie over het opslaan van gegevens in de exemplaar velden.
+In Azure Time Series Insights Gen2 kunt u contextuele gegevens toevoegen aan inkomende telemetrie met behulp van het time series model (TSM). In TSM worden uw tags of signalen aangeduid als *instanties* en kunt u contextuele gegevens opslaan in *exemplaar velden.* De gegevens worden tijdens de query tijd gekoppeld met behulp van een **tijd reeks-id**. De **Time Series-id** voor het voorbeeld project Windmills dat later in dit artikel wordt gebruikt is `id` . Lees het overzicht van [Time Series model](./concepts-model-overview.md) voor meer informatie over het opslaan van gegevens in de exemplaar velden.
 
-### <a name="create-a-azure-time-series-insights-event-source"></a>Een Azure Time Series Insights gebeurtenis bron maken
+### <a name="create-an-azure-time-series-insights-event-source"></a>Een Azure Time Series Insights gebeurtenis bron maken
 
 1. Als u nog geen gebeurtenis bron hebt gemaakt, voert u de stappen uit om [een gebeurtenis bron te maken](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
@@ -73,15 +73,15 @@ In Azure Time Series Insights gen 2 kunt u contextuele gegevens toevoegen aan in
 
     [![Kopieer de waarde voor de primaire sleutel connection string](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. Ga naar https://tsiclientsample.azurewebsites.net/windFarmGen.html. De URL maakt en voert gesimuleerde Windmill-apparaten uit.
+1. Ga naar <https://tsiclientsample.azurewebsites.net/windFarmGen.html>. De URL maakt en voert gesimuleerde Windmill-apparaten uit.
 1. Plak in het vak **Event hub-verbindings reeks** op de webpagina de Connection String die u hebt gekopieerd in het [invoer veld Windmill](#push-events-to-windmills-sample).
   
     [![Plak de primaire-sleutel connection string in het vak Verbindings reeks van de Event hub](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. Selecteer **klikken om te starten**. 
+1. Selecteer **klikken om te starten**.
 
     > [!TIP]
-    > De Windmill Simulator maakt ook JSON die u kunt gebruiken als een Payload met de [Azure time series INSIGHTS ga query-api's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
+    > De Windmill Simulator maakt ook JSON die u kunt gebruiken als een Payload met de [Azure time series INSIGHTS ga query-api's](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query).
 
     > [!NOTE]
     > De Simulator blijft gegevens verzenden totdat het tabblad browser is gesloten.
@@ -203,6 +203,6 @@ In Azure Time Series Insights gen 2 kunt u contextuele gegevens toevoegen aan in
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Bekijk uw omgeving](https://insights.timeseries.azure.com) in de Azure time series Insights Explorer.
+* [Bekijk uw omgeving](https://insights.timeseries.azure.com) in de Azure time series Insights Explorer.
 
-- Meer informatie over [IOT Hub-apparaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)
+* Meer informatie over [IOT Hub-apparaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)

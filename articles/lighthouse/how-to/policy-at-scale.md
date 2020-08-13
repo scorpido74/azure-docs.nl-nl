@@ -1,20 +1,23 @@
 ---
 title: Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
 description: Meer informatie over hoe u met Azure Lighthouse een beleids definitie en beleids toewijzing in meerdere tenants kunt implementeren.
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 6d7c6206916f87072f68cc0fe953c8049896cd0b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 27d32a68c1a3806e514533efbae581aa97bc6d0c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111793"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167280"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
 
 Als service provider hebt u mogelijk meerdere tenants voor klanten in [Azure Lighthouse](../overview.md). Met Azure Lighthouse kunnen service providers bewerkingen op verschillende tijdstippen in meerdere tenants tegelijk uitvoeren, waardoor beheer taken efficiënter zijn.
 
 In dit onderwerp wordt beschreven hoe u [Azure Policy](../../governance/policy/index.yml) kunt gebruiken om een beleids definitie en beleids toewijzing te implementeren voor meerdere tenants met behulp van Power shell-opdrachten. In dit voor beeld zorgt de beleids definitie ervoor dat opslag accounts worden beveiligd door alleen HTTPS-verkeer toe te staan.
+
+> [!TIP]
+> Hoewel we in dit onderwerp naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , dezelfde processen gebruiken.
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Azure resource Graph gebruiken voor het uitvoeren van een query op de tenants van de klant
 

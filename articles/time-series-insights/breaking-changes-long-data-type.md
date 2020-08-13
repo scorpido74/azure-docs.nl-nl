@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.custom: dpalled
-ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ab7a30cf6ca71e9260a9cb6e9136f2579e51812c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446640"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167994"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Ondersteuning toevoegen voor lang gegevens type in Azure Time Series Insights Gen2
 
@@ -66,7 +66,7 @@ Als u momenteel telemetriegegevens van een geheel getal verzendt, worden uw gege
 
 De gegevens van het gehele getal worden wegge schreven naar **propertyValue_long**. Eerder opgenomen (en toekomstige opgenomen) numerieke gegevens in **propertyValue_double** worden niet gekopieerd.
 
-Als u gegevens over deze twee kolommen wilt opvragen voor de eigenschap **propertyValue** , moet u de functie **Coalesce ()** SCALAIR gebruiken in uw TSX. De functie accepteert argumenten van hetzelfde **gegevens type** en retourneert de eerste niet-null-waarde in de argumenten lijst. Zie [Azure time series Insights Gen2 Data Access-concepten](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)voor meer informatie.
+Als u gegevens over deze twee kolommen wilt opvragen voor de eigenschap **propertyValue** , moet u de functie **Coalesce ()** SCALAIR gebruiken in uw TSX. De functie accepteert argumenten van hetzelfde **gegevens type** en retourneert de eerste niet-null-waarde in de argumenten lijst. Zie [Azure time series Insights Gen2 Data Access-concepten](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions)voor meer informatie.
 
 #### <a name="variable-definition-in-tsx---numeric"></a>Variabele definitie in TSX-numeriek
 
@@ -78,7 +78,7 @@ Als u gegevens over deze twee kolommen wilt opvragen voor de eigenschap **proper
 
 [![Nieuwe definitie van variabele](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>Definitie van inline-variabele met behulp van TSX-query-Api's-numeriek
 
@@ -126,7 +126,7 @@ U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. Property
 }
 ```
 
-U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 > [!NOTE]
 > U wordt aangeraden deze variabelen bij te werken op alle locaties die kunnen worden gebruikt. Deze locaties zijn onder andere tijdreeks model, opgeslagen query's en Power BI connector query's.
@@ -147,7 +147,7 @@ Als u momenteel Categorische variabelen gebruikt waarmee gehele waarden worden t
 
 U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
-Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal. Het **gegevens type** van alle argumenten in **Coalesce ()** moet van het type **Long** zijn in de aangepaste [Time Series-expressie.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal. Het **gegevens type** van alle argumenten in **Coalesce ()** moet van het type **Long** zijn in de aangepaste [Time Series-expressie.](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>Definitie van inline-variabele met behulp van TSX-query-Api's-categorische
 
@@ -227,7 +227,7 @@ Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal
 }
 ```
 
-Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal. Het **gegevens type** van alle argumenten in **Coalesce ()** moet van het type **Long** zijn in de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Categorische-variabelen vereisen nog steeds een waarde van het type geheel getal. Het **gegevens type** van alle argumenten in **Coalesce ()** moet van het type **Long** zijn in de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 > [!NOTE]
 > U wordt aangeraden deze variabelen bij te werken op alle locaties die kunnen worden gebruikt. Deze locaties zijn onder andere tijdreeks model, opgeslagen query's en Power BI connector query's.
