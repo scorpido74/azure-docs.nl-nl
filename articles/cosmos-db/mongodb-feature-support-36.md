@@ -4,15 +4,15 @@ description: 'Meer informatie over de API van Azure Cosmos DB voor MongoDB (vers
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b389b71e15edcf0558b2ce60290c1ad7b171eab
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076840"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030537"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>De API van Azure Cosmos DB voor MongoDB (versie 3.6): ondersteunde functies en syntaxis
 
@@ -495,10 +495,10 @@ $nearSphere |  Ja |
 $geometry |  Ja |
 $minDistance | Ja |
 $maxDistance | Ja |
-$center | Ja |
-$centerSphere | Ja |
-$box | Ja |
-$polygon |  Ja |
+$center | Nee |
+$centerSphere | Nee |
+$box | Nee |
+$polygon |  Nee |
 
 ## <a name="cursor-methods"></a>Cursormethoden
 

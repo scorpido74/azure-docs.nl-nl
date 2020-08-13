@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop (classic)-hostgroep voor service-updates - Azure
 description: Een validatiehostgroep maken om service-updates te bewaken voordat updates worden geïmplementeerd voor productie.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 448f02990798869e3dd5a804d1b0e0038b810a24
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f5a8d925a9875187358dc96b1770916974d1c6bd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288667"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007128"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-windows-virtual-desktop-classic"></a>Zelfstudie: Een hostgroep maken voor het valideren van service-updates in Windows Virtual Desktop (classic)
 
@@ -60,12 +58,12 @@ Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool"
 De resultaten van de cmdlet moeten er ongeveer als volgt uitzien:
 
 ```
-    TenantName          : contoso 
+    TenantName          : contoso
     TenantGroupName     : Default Tenant Group
     HostPoolName        : contosoHostPool
     FriendlyName        :
     Description         :
-    Persistent          : False 
+    Persistent          : False
     CustomRdpProperty    : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
@@ -79,7 +77,7 @@ Service-updates worden maandelijks uitgevoerd. Als er grote problemen zijn, word
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een validatiehostgroep hebt gemaakt, kunt u leren hoe u Azure Service Health gebruikt om uw Windows Virtual Desktop-implementatie te bewaken. 
+Nu u een validatiehostgroep hebt gemaakt, kunt u leren hoe u Azure Service Health gebruikt om uw Windows Virtual Desktop-implementatie te bewaken.
 
 > [!div class="nextstepaction"]
 > [Servicewaarschuwingen instellen](set-up-service-alerts-2019.md)

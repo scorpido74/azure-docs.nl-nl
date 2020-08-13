@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop, hostgroep, Azure portal - Azure
 description: Een Windows Virtual Desktop-hostgroep maken met behulp van de Azure-portal.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291436"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002671"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Zelfstudie: Een hostpool maken met de Azure-portal
 
@@ -61,7 +59,7 @@ Ga als volgt te werk om te beginnen met het maken van uw nieuwe hostgroep:
 6. Voer een unieke naam voor de hostgroep in.
 
 7. Selecteer in het veld Locatie de regio waar u de hostgroep wilt maken in de vervolgkeuzelijst.
-   
+
    De Azure-geografie die is gekoppeld aan de regio's die u hebt geselecteerd, is de locatie waar de metagegevens voor deze hostgroep en de gerelateerde objecten worden opgeslagen. Zorg ervoor dat u de regio's in de geografie kiest waarin u wilt dat de metagegevens van de service worden opgeslagen.
 
      > [!div class="mx-imgBorder"]
@@ -140,7 +138,7 @@ Ga als volgt te werk om uw virtuele machine in te stellen binnen het installatie
 
     > [!div class="mx-imgBorder"]
     > ![Een schermopname van de paginabeveiligingsgroep waarop een lijst met beschikbare poorten in een vervolgkeuzemenu wordt weergegeven.](media/available-ports.png)
-    
+
     Als u **Geavanceerd** kiest, selecteert u een bestaande netwerkbeveiligingsgroep die u al hebt geconfigureerd.
 
 10. Selecteer daarna of u wilt dat de virtuele machines aan een specifiek domein en een specifieke organisatie-eenheid worden gekoppeld. Als u **Ja** kiest, geeft u het domein op dat u wilt toevoegen. U kunt ook een specifieke organisatie-eenheid toevoegen waarin u wilt dat de virtuele machines worden geplaatst.
@@ -153,7 +151,7 @@ Met deze optie kunt u de volgende fase voor het instellen van uw hostgroep start
 
 ## <a name="workspace-information"></a>Werkruimtegegevens
 
-Met het installatieproces van de hostgroep wordt standaard een bureaubladtoepassingsgroep gemaakt. Als u wilt dat de hostgroep werkt zoals bedoeld, moet u deze app-groep publiceren naar gebruikers of gebruikersgroepen en moet u de app-groep registreren bij een werkruimte. 
+Met het installatieproces van de hostgroep wordt standaard een bureaubladtoepassingsgroep gemaakt. Als u wilt dat de hostgroep werkt zoals bedoeld, moet u deze app-groep publiceren naar gebruikers of gebruikersgroepen en moet u de app-groep registreren bij een werkruimte.
 
 Ga als volgt te werk om de bureaubladtoepassingsgroep te registreren bij een werkruimte:
 
@@ -167,10 +165,10 @@ Ga als volgt te werk om de bureaubladtoepassingsgroep te registreren bij een wer
 
     Hier kunt u labels toevoegen, zodat u de objecten kunt groeperen met metagegevens waarmee u het voor uw beheerders gemakkelijker maakt.
 
-4. Selecteer als u klaar bent de optie **Beoordelen en maken**. 
+4. Selecteer als u klaar bent de optie **Beoordelen en maken**.
 
      >[!NOTE]
-     >Het validatieproces Controleren en maken controleert niet of uw wachtwoord voldoet aan de beveiligingsnormen en of uw architectuur juist is. U moet daarom zelf controleren of er problemen zijn met een van deze zaken. 
+     >Het validatieproces Controleren en maken controleert niet of uw wachtwoord voldoet aan de beveiligingsnormen en of uw architectuur juist is. U moet daarom zelf controleren of er problemen zijn met een van deze zaken.
 
 5. Bekijk de informatie over uw implementatie om te controleren of alles juist is. Als u gereed bent, selecteert u **Maken**. Hiermee wordt het implementatieproces gestart, waarmee de volgende objecten worden gemaakt:
 

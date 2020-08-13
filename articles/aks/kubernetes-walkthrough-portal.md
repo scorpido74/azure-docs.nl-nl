@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 0ce291a068a9dbb8f24a5e0a26fbae39cfc3a161
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 987836281c1decb976418406b8e47afffb9cd0d8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056915"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003233"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Quickstart: Een AKS-cluster (Azure Kubernetes Service) implementeren met Azure Portal
 
@@ -51,7 +51,7 @@ Voltooi de volgende stappen om een AKS-cluster te maken:
 
 5. Configureer de volgende opties op de pagina **Verificatie**:
     - Maak een nieuwe service-principal door het veld **Service-principal** ingesteld te laten op **(nieuwe) standaardservice-principal**. U kunt ook *Service-principal configureren* kiezen om een bestaande te gebruiken. Als u een bestaande service-principal gebruikt, moet u de SPN-client-id en het geheim opgeven.
-    - Schakel de optie voor Kubernetes-toegangsbeheer op basis van rollen (RBAC) in. Deze bieden een verfijnder beheer van de toegang tot de Kubernetes-resources die zijn geïmplementeerd in het AKS-cluster.
+    - Schakel de optie in voor op rollen gebaseerd toegangsbeheer (RBAC) van Kubernetes. Deze bieden een verfijnder beheer van de toegang tot de Kubernetes-resources die zijn geïmplementeerd in het AKS-cluster.
 
     U kunt ook een beheerde identiteit gebruiken in plaats van een service-principal. Zie [Beheerde identiteiten gebruiken](use-managed-identity.md) voor meer informatie.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124551"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986268"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Azure Digital Twins verkennen met een voorbeeldclient-app
 
@@ -78,7 +78,7 @@ Vergeet niet het bestand op te slaan voordat u verdergaat.
 > Als u wilt proberen een eigen model te maken, kunt u de code van het *Room*-model in een nieuw bestand plakken dat u met de extensie *.json* opslaat in de map *AdtSampleApp\SampleClientApp\Models*. Vervolgens kunt u ermee spelen en eigenschappen en relaties toevoegen om alles te vertegenwoordigen wat u wilt. U kunt ook naar de andere voorbeeldmodellen in deze map kijken voor ideeën.
 
 > [!TIP] 
-> Er is een taalagnostisch [DTDL-validatorvoorbeeld](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-use-parser.md).
+> Er is een taalagnostisch [DTDL-validatorvoorbeeld](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) dat u kunt gebruiken om modeldocumenten te controleren en u ervan te verzekeren dat de DTDL geldig is. Het voorbeeld is gemaakt op basis van de DTDL-parserbibliotheek, waarover u meer kunt lezen in [*Instructies: Modellen parseren en valideren*](how-to-parse-models.md).
 
 ### <a name="get-started-with-the-command-line-app"></a>Aan de slag met de opdrachtregel-app
 

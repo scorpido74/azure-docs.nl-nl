@@ -1,19 +1,17 @@
 ---
 title: App-groepen voor het Windows Virtual Desktop-portal beheren - Azure
 description: Ontdek hoe u app-groepen voor Windows Virtual Desktop kunt beheren met het Azure-portal.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b0269b80cb879923f9f00861494915b6abe103e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283398"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010086"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Zelfstudie: App-groepen beheren met het Azure-portal
 
@@ -49,16 +47,16 @@ Als u al een hostgroep en virtuele machines van de sessiehost heeft gemaakt met 
     > ![Een schermopname van het tabblad Basis in het Azure-portal.](media/basics-tab.png)
 
 6. Als u toepassingsgroepen wilt toevoegen aan uw hostgroep, selecteer dan **Hostgroepen** in het menu aan de linkerkant van het scherm.
-   
+
     Selecteer vervolgens de naam van de hostgroep waaraan u toepassingsgroepen wilt toevoegen.
-   
+
     Selecteer vervolgens **Toepassingsgroepen** in het menu aan de linkerkant van het scherm en selecteer vervolgens **+ Toevoegen**.
 
     Selecteer ten slotte de abonnementsgroep en de resourcegroep waarin u de app-groep wilt maken. Selecteer de naam van een bestaande resourcegroep uit het vervolgkeuzemenu of selecteer **Nieuwe maken** om er een nieuwe te maken.
 
       >[!NOTE]
       >Wanneer u toepassingsgroepen aan uw hostgroep toevoegt, is de hostgroep die hoort bij de toepassingsgroep al geselecteerd, omdat u van daaruit bent genavigeerd.
-      > 
+      >
       > [!div class="mx-imgBorder"]
       >![Een schermopname van het tabblad Basis waarin de hostgroep is geselecteerd.](media/host-pool-selected.png)
 
@@ -80,7 +78,7 @@ Als u al een hostgroep en virtuele machines van de sessiehost heeft gemaakt met 
 
 12.  Selecteer het tabblad **Toepassingen** en selecteer vervolgens **+Toepassingen toevoegen**.
 
-13.  Een toepassing toevoegen vanuit het menu Start: 
+13.  Een toepassing toevoegen vanuit het menu Start:
 
       - Ga naar **Toepassingsbron** en selecteer **menu Start** in het vervolgkeuzemenu. Ga vervolgens naar **Toepassing** en kies de toepassing in het vervolgkeuzemenu.
 
@@ -111,7 +109,7 @@ Als u al een hostgroep en virtuele machines van de sessiehost heeft gemaakt met 
 16.  Als u de app-groep wilt registreren voor een werkruimte, ga dan naar **Toepassingsgroep registreren** en selecteer **Ja**. Als u de app-groep liever op een later tijdstip wilt registreren, selecteer dan **Nee**.
 
 17.  Als u **Ja**selecteert, dan kunt u een bestaande werkruimte selecteren om uw app-groep bij te registreren.
-       
+
        >[!NOTE]
        >U kunt de app-groep enkel registreren bij werkruimten die zijn aangemaakt op dezelfde locatie als de hostgroep. Daarnaast: Als u eerder een andere app-groep van dezelfde hostgroep als uw nieuwe app-groep heeft geregistreerd bij een werkruimte, dan wordt deze geselecteerd en kunt u deze niet bewerken. Alle app-groepen uit een hostgroep moeten bij dezelfde werkruimte geregistreerd worden.
 
