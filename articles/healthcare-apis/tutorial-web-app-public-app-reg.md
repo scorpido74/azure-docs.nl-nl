@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: 8414a84190659ff31596bc202d29fe45eefdc588
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 483ca63abbabaabd3b25446c9267a1b0540f60dd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536657"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852970"
 ---
 # <a name="client-application-registration"></a>Clienttoepassingen registreren
 In de vorige zelfstudie hebt u de Azure-API for FHIR geïmplementeerd en ingesteld. Nu u Azure API for FHIR hebt ingesteld, gaan we een openbare clienttoepassing registreren. U kunt de volledige instructiegids voor het [registreren van een openbare client-app](register-public-azure-ad-client-app.md) lezen voor meer informatie of om problemen op te lossen, maar voor deze zelfstudie hebben we de belangrijkste stappen op een rij gezet.
