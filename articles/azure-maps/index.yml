@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Maps-documentatie
-summary: "Microsoft Azure Maps biedt ontwikkelaars uit alle sectoren krachtige georuimtelijke mogelijkheden. Deze georuimtelijke mogelijkheden zitten vol met de meest recente kaartgegevens. Azure Maps is beschikbaar voor zowel mobiele als webtoepassingen. Azure Maps is een Azure One API-compatibele set REST API's. Het volgende is een overzicht op hoog niveau van de services die Azure Maps biedt: kaarten, zoekopdrachten, routes, verkeer, mobiliteit, weer, tijdzones, geolocatie, geofencing, kaartgegevens en Spatial Operations. De Web- en Android-SDK's maken ontwikkeling op meerdere platforms eenvoudig, flexibel en draagbaar."
+summary: "Microsoft Azure Maps biedt ontwikkelaars uit alle sectoren krachtige georuimtelijke mogelijkheden. Deze georuimtelijke mogelijkheden zitten vol met de meest recente kaartgegevens. Azure Maps is beschikbaar voor zowel mobiele als webtoepassingen. Azure Maps is een Azure One API-compatibele set REST API's. Het volgende is een overzicht op hoog niveau van de services die Azure Maps biedt: kaarten, zoekopdrachten, routes, verkeer, mobiliteit, weer, tijdzones, geolocatie, geofencing, kaartgegevens, Creator en Spatial Operations. De Web- en Android-SDK's maken ontwikkeling op meerdere platforms eenvoudig, flexibel en draagbaar."
 metadata:
   title: Azure Maps-documentatie | Microsoft Docs
   description: Lees meer informatie over Azure Maps en hoe u deze functie kunt gebruiken om georuimtelijke services te bieden voor uw webtoepassing of mobiele toepassing.
@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 0760dce9e64560c8ecb593f41b2d611bd059a639
-  ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+  ms.openlocfilehash: 4e95d7d9afb77dcf8e168a04c9e0f4fc3b266807
+  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 07/31/2020
-  ms.locfileid: "87461745"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88121643"
 landingContent:
 - title: Over Azure Maps
   linkLists:

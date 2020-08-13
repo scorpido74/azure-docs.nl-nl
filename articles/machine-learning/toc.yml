@@ -161,11 +161,8 @@
             - name: Gebruikers en rollen beheren
               href: how-to-assign-roles.md
             - name: Virtuele netwerken gebruiken
-              displayName: 'vnet, blob'
+              displayName: 'vnet, blob, private endpoint, private link'
               href: how-to-enable-virtual-network.md
-            - name: Private Link gebruiken
-              displayName: private endpoint
-              href: how-to-configure-private-link.md
             - name: Webservices beveiligen met TLS
               displayName: ssl
               href: how-to-secure-web-service.md
@@ -457,8 +454,8 @@
         - name: Problemen met pijplijnen opsporen en oplossen
           displayName: designer
           href: how-to-debug-pipelines.md
-        - name: Fouten met pijplijnen opsporen in Application Insights
-          href: how-to-debug-pipelines-application-insights.md
+        - name: Pijplijngegevens registreren in Application Insights
+          href: how-to-log-pipelines-application-insights.md
         - name: Parallelle uitvoerstap gebruiken
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md

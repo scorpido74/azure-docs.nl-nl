@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 504caffe0505a4e8a66608fcad528130630a5cc8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236204"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117767"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Evolutie van het Microsoft Identity Platform
 
@@ -49,7 +49,7 @@ De ervaring voor **[App-registraties](https://go.microsoft.com/fwlink/?linkid=20
 
 Voor integratie met Azure AD B2C (bij het verifiëren van sociale of lokale identiteiten) moet u uw toepassing registreren in een Azure AD B2C-tenant. Deze ervaring maakt ook deel uit van het Azure-portal.
 
-Gebruik de [Toepassings-API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) om uw toepassingen die zijn geïntegreerd met het Microsoft-identiteitsplatform te configureren om alle Microsoft-identiteiten te verifiëren.
+Gebruik de [Toepassings-API](/graph/api/resources/application?view=graph-rest-1.0) om uw toepassingen die zijn geïntegreerd met het Microsoft-identiteitsplatform te configureren om alle Microsoft-identiteiten te verifiëren.
 
 ### <a name="msal-libraries"></a>MSAL-bibliotheken
 
@@ -57,7 +57,7 @@ U kunt de MSAL-bibliotheek gebruiken om toepassingen te bouwen die alle Microsof
 
 U kunt ook de MSAL-bibliotheken gebruiken om uw toepassing te integreren met Azure AD B2C.
 
-Bibliotheken aan de serverzijde om webapps en web-API's te bouwen zijn algemeen beschikbaar: [ASP.NET](https://docs.microsoft.com/aspnet/overview) en [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+Bibliotheken aan de serverzijde om webapps en web-API's te bouwen zijn algemeen beschikbaar: [ASP.NET](/aspnet/overview) en [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
 
 ### <a name="microsoft-identity-platform-endpoint"></a>Eindpunt van het Microsoft-identiteitsplatform
 

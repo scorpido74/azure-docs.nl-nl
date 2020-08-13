@@ -12,12 +12,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 61a3884ce4d1075dbcac61a0c202c3a393d2d943
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84904759"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118141"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Gebruikers aanmelden en Microsoft Graph aanroepen vanuit een iOS- of macOS-app
 
@@ -149,7 +149,7 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-De enige waarde die u hierboven moet wijzigen, is de waarde die is toegewezen `kClientID`als uw [Toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id). Deze waarde maakt deel uit van de MSAL-configuratiegegevens die u hebt opgeslagen tijdens de stap aan het begin van deze zelfstudie om de toepassing te registreren in de Azure-portal.
+De enige waarde die u hierboven moet wijzigen, is de waarde die is toegewezen `kClientID`als uw [Toepassings-id](./developer-glossary.md#application-id-client-id). Deze waarde maakt deel uit van de MSAL-configuratiegegevens die u hebt opgeslagen tijdens de stap aan het begin van deze zelfstudie om de toepassing te registreren in de Azure-portal.
 
 ## <a name="configure-xcode-project-settings"></a>Xcode-projectinstellingen configureren
 
@@ -842,4 +842,4 @@ Nadat u zich hebt aangemeld, verschijnen in de app de gegevens die zijn geretour
 
 ## <a name="get-help"></a>Help opvragen
 
-Ga naar [Help en ondersteuning](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) als u problemen ondervindt met deze zelfstudie of met het Microsoft-identiteitsplatform.
+Ga naar [Help en ondersteuning](./developer-support-help-options.md) als u problemen ondervindt met deze zelfstudie of met het Microsoft-identiteitsplatform.

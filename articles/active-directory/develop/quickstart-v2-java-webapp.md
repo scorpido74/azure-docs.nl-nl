@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 1474a8ad73f7deb9a7c321f7d7994a7b2b73d624
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87312398"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115217"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Quickstart: Aanmelden met Microsoft toevoegen aan een Java-webapp
 
@@ -212,7 +212,7 @@ Als u het webvoorbeeld wilt implementeren op Tomcat, moet u een aantal wijziging
 
 
 > [!IMPORTANT]
-> Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim als platte tekst aan uw projectbestanden wordt toegevoegd, wordt u om veiligheidsredenen aangeraden een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing beschouwt. Zie [Certificaatreferenties voor toepassingsverificatie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials) voor meer informatie over het gebruik van een certificaat.
+> Deze quickstarttoepassing gebruikt een clientgeheim om zichzelf te identificeren als vertrouwelijke client. Omdat het clientgeheim als platte tekst aan uw projectbestanden wordt toegevoegd, wordt u om veiligheidsredenen aangeraden een certificaat te gebruiken in plaats van een clientgeheim voordat u de toepassing als productietoepassing beschouwt. Zie [Certificaatreferenties voor toepassingsverificatie](./active-directory-certificate-credentials.md) voor meer informatie over het gebruik van een certificaat.
 
 ## <a name="more-information"></a>Meer informatie
 
@@ -254,11 +254,11 @@ import com.microsoft.aad.msal4j.*;
 Meer informatie over machtigingen en toestemming:
 
 > [!div class="nextstepaction"]
-> [Machtigingen en toestemming](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+> [Machtigingen en toestemming](./v2-permissions-and-consent.md)
 
 Zie de Oauth 2.0-autorisatiecodestroom voor meer informatie over de auth-stroom voor dit scenario:
 
 > [!div class="nextstepaction"]
-> [Oauth-stroom voor autorisatiecode](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+> [Oauth-stroom voor autorisatiecode](./v2-oauth2-auth-code-flow.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

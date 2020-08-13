@@ -8,24 +8,22 @@ ms.topic: include
 ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: 3eb77799b1845112e9f7e5ca0b65d790625fd529
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: e49f68f43044b93f329295181717ec2d3ade9fc6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76961421"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116985"
 ---
-Als u van plan bent om door te gaan naar de volgende zelf studie, moet u de resources die u in deze Quick Start hebt gemaakt, behouden, zodat u ze opnieuw kunt gebruiken.
-
-Als u klaar bent met de voorbeeld toepassing Quick Start, verwijdert u de Azure-resources die u in deze Quick Start hebt gemaakt om kosten te voor komen.
+Als u niet door wilt gaan met de resources die in dit artikel zijn gemaakt, verwijdert u de resourcegroep die u hier hebt gemaakt om kosten te voorkomen.
 
 > [!IMPORTANT]
-> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resource groep en alle resources erin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources hebt gemaakt voor het hosten van dit voor beeld in een resource groep die resources bevat die u wilt laten blijven staan, verwijdert u elke resource afzonderlijk uit het respectieve deel venster in plaats van de resource groep te verwijderen.
+> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle resources daarin worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor dit artikel in een resourcegroep hebt gemaakt die andere resources bevat die u wilt behouden, moet u elke resource afzonderlijk verwijderen uit het deelvenster in plaats van dat u de resourcegroep verwijdert.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer **resource groepen**.
-1. Voer in het vak **filteren op naam** de naam van de resource groep in. 
-1. In de lijst met resultaten selecteert u de resource groep en klikt u met de rechter muisknop op de rij of gebruikt u de knop met het **weglatings teken** (**...**) om het context menu te openen.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
+1. Voer de naam van de resourcegroep in het vak **Filteren op naam** in. 
+1. In de lijst met resultaten selecteert u de resourcegroep en klikt u met de rechtermuisknop op de rij of gebruikt u de knop met **weglatingstekens** ( **...** ) om het contextmenu te openen.
 1. Selecteer **Resourcegroep verwijderen**.
-1. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resource groep in om te bevestigen en selecteer **verwijderen**.
+1. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resourcegroep in ter bevestiging en selecteer **Verwijderen**.
 
-Na enkele ogen blikken worden de resource groep en alle bijbehorende resources verwijderd.
+Na enkele ogenblikken worden de resourcegroep en alle bijbehorende resources verwijderd.

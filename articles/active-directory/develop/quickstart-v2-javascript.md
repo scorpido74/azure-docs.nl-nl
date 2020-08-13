@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 787f30302d163dc0097cde1be31e745d7f29bb64
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1e537c6f61a7c461b2a9edb4097fba95f5c66a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129777"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120521"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Quickstart: Gebruikers aanmelden en een toegangstoken verkrijgen in een JavaScript SPA
 
@@ -111,7 +111,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Javascript-t
 >
 > Waar:
 > - *\<Enter_the_Application_Id_Here>* is de **Toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
-> - *\<Enter_the_Cloud_Instance_Id_Here>* is de instantie van de Azure-cloud. Voer *https://login.microsoftonline.com* in voor de hoofd- (of globale) Azure-cloud. Zie [Nationale clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) voor **nationale** clouds (bijvoorbeeld China).
+> - *\<Enter_the_Cloud_Instance_Id_Here>* is de instantie van de Azure-cloud. Voer *https://login.microsoftonline.com* in voor de hoofd- (of globale) Azure-cloud. Zie [Nationale clouds](./authentication-national-cloud.md) voor **nationale** clouds (bijvoorbeeld China).
 > - *\<Enter_the_Tenant_info_here>* is ingesteld op een van de volgende opties:
 >    - Als uw toepassing *accounts in deze organisatiemap* ondersteunt, vervangt u deze waarde door de **tenant-id** of **tenantnaam** (bijvoorbeeld *contoso.microsoft.com*).
 >    - Als uw toepassing *accounts in elke organisatiemap* ondersteunt, vervang deze waarde dan door **organisaties**.
@@ -144,7 +144,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Javascript-t
 > [!div renderon="docs"]
 >
 > Waar:
-> - *\<Enter_the_Graph_Endpoint_Here>* is het eindpunt waarop API-aanroepen worden geplaatst. Voer `https://graph.microsoft.com` in voor de voornaamste of globale Microsoft Graph API-service. Zie [Implementatie van nationale clouds](https://docs.microsoft.com/graph/deployments) voor meer informatie.
+> - *\<Enter_the_Graph_Endpoint_Here>* is het eindpunt waarop API-aanroepen worden geplaatst. Voer `https://graph.microsoft.com` in voor de voornaamste of globale Microsoft Graph API-service. Zie [Implementatie van nationale clouds](/graph/deployments) voor meer informatie.
 >
 > #### <a name="step-4-run-the-project"></a>Stap 4: Het project uitvoeren
 
@@ -300,7 +300,7 @@ myMSALObj.acquireTokenPopup(requestObj)
 Voor een gedetailleerde stapsgewijze handleiding voor het bouwen van de toepassing die in deze quickstart, zie:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie om u aan te melden en MS Graph aan te roepen](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
+> [Zelfstudie om u aan te melden en MS Graph aan te roepen](./tutorial-v2-javascript-spa.md)
 
 Om de MSAL-opslagplaats voor documentatie, veelgestelde vragen, problemen, en meer te verkijken, zie:
 

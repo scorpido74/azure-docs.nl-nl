@@ -12,12 +12,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231672"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119552"
 ---
 # <a name="microsoft-identity-platform-overview"></a>Overzicht van het Microsoft-identiteitsplatform
 
@@ -59,7 +59,7 @@ Wanneer u het Microsoft-identiteitsplatform gebruikt om verificatie en autorisat
 
 Meer informatie over de basisverificatie- en Azure AD-concepten die van toepassing zijn op het Microsoft-identiteitsplatform in deze aanbevolen artikelen:
 
-- [De basisbeginselen van verificatie](authentication-scenarios.md)
+- [De basisbeginselen van verificatie](./authentication-vs-authorization.md)
 - [Toepassing en service-principals](app-objects-and-service-principals.md)
 - [Doelgroepen](v2-supported-account-types.md)
 - [Machtigingen en toestemming](v2-permissions-and-consent.md)
@@ -71,7 +71,7 @@ Meer informatie over de basisverificatie- en Azure AD-concepten die van toepassi
 
 [Azure AD B2C](../../active-directory-b2c/overview.md) - Bouw klantgerichte toepassingen waarmee gebruikers zich kunnen aanmelden met hun sociale accounts zoals Facebook of Google, of met een e-mail adres en een wachtwoord.
 
-[Azure AD B2B](../b2b/what-is-b2b.md) - Nodig externe gebruikers in uw Azure AD-tenant uit in als 'gastgebruikers' en wijs machtigingen toe voor autorisatie, terwijl ze hun bestaande referenties gebruiken voor verificatie.
+[Azure AD B2B](../external-identities/what-is-b2b.md) - Nodig externe gebruikers in uw Azure AD-tenant uit in als 'gastgebruikers' en wijs machtigingen toe voor autorisatie, terwijl ze hun bestaande referenties gebruiken voor verificatie.
 
 > [!TIP]
 > Op zoek naar documentatie voor het *Azure Active Directory-ontwikkelaarsplatform (v 1.0)* ? Bekijk het [Overzicht van Azure Active Directory voor ontwikkelaars (v1.0)](../azuread-dev/v1-overview.md).

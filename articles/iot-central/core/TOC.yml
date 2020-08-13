@@ -139,6 +139,8 @@
               href: howto-monitor-application-health.md
             - name: Over uw toepassing
               href: howto-get-app-info.md
+            - name: X.509-certificaten rouleren
+              href: how-to-roll-x509-certificates.md
         - name: Beheren vanuit andere locaties
           items:
             - name: Beheren vanuit de Azure-portal

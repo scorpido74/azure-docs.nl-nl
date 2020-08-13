@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f62f6702b36915c6a6e1350072982e231cd9c07e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058292"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118226"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Aanmelding bij Microsoft toevoegen aan een ASP.NET-web-app
 
@@ -264,7 +264,7 @@ Maak in Visual Studio een nieuwe weergave om de aanmeldknop toe te voegen en geb
     ```
 
 ### <a name="more-information"></a>Meer informatie
-Met deze pagina wordt een aanmeldknop toegevoegd, in de SVG-indeling met een zwarte achtergrond:<br/>![Aanmelden met Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Ga voor meer soorten aanmeldknoppen naar de [Huisstijlrichtlijnen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Huisstijlrichtlijnen").
+Met deze pagina wordt een aanmeldknop toegevoegd, in de SVG-indeling met een zwarte achtergrond:<br/>![Aanmelden met Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Ga voor meer soorten aanmeldknoppen naar de [Huisstijlrichtlijnen](./howto-add-branding-in-azure-ad-apps.md "Huisstijlrichtlijnen").
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Voeg een controller toe om de claims van gebruikers weer te geven
 Deze controller demonstreert het gebruik van het kenmerk `[Authorize]` om een controller te beveiligen. Met dit kenmerk wordt de toegang tot de controller beperkt doordat alleen geverifieerde gebruikers toegang krijgen. In de volgende code wordt het kenmerk gebruikt om gebruikersclaims weer te geven die zijn opgehaald als onderdeel van de aanmelding:
@@ -403,7 +403,7 @@ Toepassingen die zijn geïntegreerd met het Microsoft Identity Platform volgen e
 - De ontwikkelaar van de toepassing voegt extra machtigingen toe waarvoor **Beheerderstoestemming** nodig is.
 - Of de tenant is geconfigureerd (in **Bedrijfstoepassingen -> Gebruikersinstellingen**), waarbij gebruikers geen toestemming kunnen geven om apps in hun naam toegang te geven tot bedrijfsgegevens.
 
-Bekijk [Machtigingen en toestemming in het eindpunt van het Microsoft-identiteitsplatform](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) voor meer informatie.
+Bekijk [Machtigingen en toestemming in het eindpunt van het Microsoft-identiteitsplatform](./v2-permissions-and-consent.md) voor meer informatie.
 
 ### <a name="view-application-results"></a>Resultaten van de toepassing weergeven
 
@@ -424,7 +424,7 @@ Wanneer u naar de controllerweergave gaat, ziet u normaal gezien een tabel met d
 |**Onderwerp** |Onderwerp |Een tekenreeks die de gebruiker op unieke wijze identificeerd op het internet|
 |**Tenant ID** |Guid | Een **guid** die de Azure AD-organisatie van de gebruiker op unieke wijze vertegenwoordigt|
 
-Daarnaast ziet u een tabel met alle claims in de verificatieaanvraag. Zie de [lijst met claims die zich in een ID-token bevinden](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) voor meer informatie.
+Daarnaast ziet u een tabel met alle claims in de verificatieaanvraag. Zie de [lijst met claims die zich in een ID-token bevinden](./id-tokens.md) voor meer informatie.
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Toegang tot een methode die een kenmerk Autoriseren heeft uitproberen (optioneel)
 
@@ -484,6 +484,6 @@ Meer informatie over web-apps die web-API's aanroepen met het Microsoft Identity
 Meer informatie over het bouwen van web-apps die Microsoft Graph aanroepen:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie Microsoft Graph ASP.NET](https://docs.microsoft.com/graph/tutorials/aspnet)
+> [Zelfstudie Microsoft Graph ASP.NET](/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

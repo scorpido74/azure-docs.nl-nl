@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7193affad3da212a6a40c0d9479473ec597e86f6
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 38bd83f8bd713f2d5bda658e052c919dd3d7625d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807618"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119705"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>De Microsoft Graph API aanroepen vanuit een Universeel Windows-platformtoepassing (XAML)
 
@@ -27,7 +27,7 @@ In deze handleiding wordt uitgelegd hoe een systeemeigen UWP-toepassing een toeg
 Aan het einde van deze handleiding roept uw toepassing een beveiligde API aan met persoonlijke accounts. Voorbeelden zijn outlook.com, live.com, enzovoort. Uw toepassing roept ook werk- en schoolaccounts aan van een bedrijf of organisatie met Azure Active Directory (Azure AD).
 
 >[!NOTE]
-> Voor deze handleiding moet Visual Studio met Universeel Windows-platformontwikkeling zijn geïnstalleerd. Zie [Get set up](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) (Engelstalig) voor instructies voor het downloaden en configureren van Visual Studio voor het ontwikkelen van Universeel Windows-platform-apps.
+> Voor deze handleiding moet Visual Studio met Universeel Windows-platformontwikkeling zijn geïnstalleerd. Zie [Get set up](/windows/uwp/get-started/get-set-up) (Engelstalig) voor instructies voor het downloaden en configureren van Visual Studio voor het ontwikkelen van Universeel Windows-platform-apps.
 
 >[!NOTE]
 > Als u geen ervaring hebt met het Microsoft identity platform, begint u met de [quickstart Microsoft Graph API aanroepen vanuit een UWP-toepassing (Universeel Windows-platform)](quickstart-v2-uwp.md).

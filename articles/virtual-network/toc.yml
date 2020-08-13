@@ -12,6 +12,8 @@
       href: quick-create-powershell.md
     - name: Een virtueel netwerk maken - Azure CLI
       href: quick-create-cli.md
+    - name: Virtueel netwerk maken - ARM-sjabloon
+      href: quick-create-template.md
   expanded: true
 - name: Zelfstudies
   items:

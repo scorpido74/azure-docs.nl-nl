@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: a7553eea8941b93e589f38f8229ef35b70361f8e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129182"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115234"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Quickstart: Gebruikers aanmelden en een toegangstoken verkrijgen in een Angular-toepassing met één pagina
 
@@ -47,7 +47,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Angular-toep
 >
 > 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 > 1. Als uw account toegang heeft tot meer dan één tenant, selecteert u uw account rechts bovenin en stelt u de portalsessie in op de Azure Active Directory-tenant die u wilt gebruiken.
-> 1. Volg de [instructies om een toepassing met één pagina te registreren](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) in de Azure-portal.
+> 1. Volg de [instructies om een toepassing met één pagina te registreren](./scenario-spa-app-registration.md) in de Azure-portal.
 > 1. Voeg een nieuw platform toe aan het deelvenster **Verificatie** van de registratie van uw app en registreer de omleidings-URI: `http://localhost:4200/`.
 > 1. In deze quickstart wordt gebruikgemaakt van de [impliciete toewijzingsstroom](v2-oauth2-implicit-grant-flow.md). Selecteer de instellingen **impliciete toekenning** voor **Id-tokens** en **Toegangstokens**. Id-tokens en toegangstokens zijn vereist, omdat via de app gebruikers moeten worden aangemeld en een API moet worden aangeroepen.
 
@@ -99,7 +99,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een Angular-toep
 >|Waardenaam|Beschrijving|
 >|---------|---------|
 >|Voer_hier_de_toepassings-id_in|Op de pagina **Overzicht** van de registratie van uw toepassing, is dit uw waarde voor **Toepassings-id (client)** . |
->|Voer_hier_het_cloud-exemplaar_in|Dit is het exemplaar van de Azure-cloud. Voer **https://login.microsoftonline.com** in voor de primaire of algemene Azure-cloud. Raadpleeg [Nationale clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) voor nationale clouds (bijvoorbeeld China).|
+>|Voer_hier_het_cloud-exemplaar_in|Dit is het exemplaar van de Azure-cloud. Voer **https://login.microsoftonline.com** in voor de primaire of algemene Azure-cloud. Raadpleeg [Nationale clouds](./authentication-national-cloud.md) voor nationale clouds (bijvoorbeeld China).|
 >|Voer_hier_tenantgegevens_in| Stel een van de volgende opties in: Als uw toepassing *accounts in deze organisatiemap ondersteunt*, vervangt u deze waarde door de map-id (tenant) of tenantnaam (bijvoorbeeld **contoso.microsoft.com**). Als uw toepassing *accounts in elke organisatiemap* ondersteunt, vervang deze waarde dan door **organisaties**. Als uw toepassing *accounts in elke organisatiemap en persoonlijke Microsoft-accounts* ondersteunt, vervang deze waarde dan door **algemeen**. Als u de ondersteuning wilt beperken tot *alleen persoonlijke Microsoft-accounts*, vervang deze waarde dan door **consumenten**. |
 >|Voer_hier_de_omleidings-URI_in|Vervang door **http://localhost:4200** .|
 >|cacheLocation  | (Optioneel) Stel de browseropslag in voor de verificatiestatus. De standaardwaarde is **sessionStorage**.   |
@@ -142,5 +142,4 @@ Nadat de toepassing door de browser is geladen, selecteert u **Aanmelden**. De e
 Lees vervolgens hoe een gebruiker zich aanmeldt en tokens aanschaft in Angular-zelfstudie:
 
 > [!div class="nextstepaction"]
-> [Zelfstudies voor Angular](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
-
+> [Zelfstudies voor Angular](./tutorial-v2-angular.md)

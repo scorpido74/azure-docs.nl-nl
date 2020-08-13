@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: bd17c20707c3bf1a153e9209cd7e2ec279de0501
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554059"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115251"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Quickstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een iOS- of macOS-app
 
@@ -101,12 +101,12 @@ Navigeer in een terminalvenster naar de map met het gedownloade codevoorbeeld en
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
-> 1. Als u een app bouwt voor [nationale Azure AD-clouds](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints), vervangt u de regel die begint met 'let kGraphEndpoint' en 'let kAuthority ' door de juiste eindpunten. Gebruik de standaardwaarden voor globale toegang:
+> 1. Als u een app bouwt voor [nationale Azure AD-clouds](/graph/deployments#app-registration-and-token-service-root-endpoints), vervangt u de regel die begint met 'let kGraphEndpoint' en 'let kAuthority ' door de juiste eindpunten. Gebruik de standaardwaarden voor globale toegang:
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.com/"
 >     let kAuthority = "https://login.microsoftonline.com/common"
 >     ```
-> 1. Andere eindpunten worden [hier](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints) beschreven. Als u bijvoorbeeld de quickstart wilt uitvoeren met Azure AD Duitsland, gaat u als volgt te werk:
+> 1. Andere eindpunten worden [hier](/graph/deployments#app-registration-and-token-service-root-endpoints) beschreven. Als u bijvoorbeeld de quickstart wilt uitvoeren met Azure AD Duitsland, gaat u als volgt te werk:
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
@@ -269,6 +269,6 @@ Volg de zelfstudie voor iOS en macOS voor een volledige stapsgewijze handleiding
 ### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Meer informatie over het maken van de toepassing die wordt gebruikt in deze quickstart
 
 > [!div class="nextstepaction"]
-> [Graph API aanroepen - zelfstudie voor iOS en macOS](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [Graph API aanroepen - zelfstudie voor iOS en macOS](./tutorial-v2-ios.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

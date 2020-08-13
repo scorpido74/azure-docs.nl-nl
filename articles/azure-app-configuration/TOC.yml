@@ -109,6 +109,8 @@
       href: howto-labels-aspnet-core.md
     - name: Configuratiegegevens importeren of exporteren
       href: howto-import-export-data.md
+    - name: JSON-inhoudstype gebruiken voor sleutelwaarden
+      href: howto-leverage-json-content-type.md
     - name: Gebeurtenissen routeren naar een aangepast eindpunt
       href: howto-app-configuration-event.md
     - name: Automatisch back-ups maken van configuratiearchief

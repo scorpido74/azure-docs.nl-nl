@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256693"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120810"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Quickstart: Een tenant instellen
 
@@ -72,5 +72,5 @@ Om te beginnen met het bouwen van apps waarmee socialemedia-accounts en lokale a
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een app registreren](quickstart-register-app.md) en integreren met Microsoft Identity Platform. 
-* Meer informatie over de [basisprincipes van verificatie](authentication-scenarios.md).
+* Meer informatie over de [basisprincipes van verificatie](./authentication-vs-authorization.md).
 * Zie [Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen](../fundamentals/active-directory-how-subscriptions-associated-directory.md) voor meer informatie over de relatie tussen abonnementen en een Azure AD-tenant.
