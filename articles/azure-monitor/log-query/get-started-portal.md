@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075345"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874228"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Zelfstudie: Aan de slag met de Log Analytics-query's
 
@@ -32,7 +32,7 @@ Zie [Aan de slag met logboekquery's in Azure Monitor](get-started-queries.md) vo
 ## <a name="open-log-analytics"></a>Log Analytics openen
 Als u Log Analytics wilt gebruiken, moet u zijn aangemeld bij een Azure-account. Als u geen Azure-account hebt, [kunt u er een gratis maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Als u het merendeel van de stappen in deze zelfstudie wilt voltooien, kunt u [deze demo-omgeving](https://portal.loganalytics.io/demo) gebruiken. Hierin vindt u talloze voorbeeldgegevens. In de demo-omgeving kunt u geen query's opslaan of resultaten vastmaken aan een dashboard.
+Als u het merendeel van de stappen in deze zelfstudie wilt voltooien, kunt u [deze demo-omgeving](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) gebruiken. Hierin vindt u talloze voorbeeldgegevens. In de demo-omgeving kunt u geen query's opslaan of resultaten vastmaken aan een dashboard.
 
 U kunt ook uw eigen omgeving gebruiken als u Azure Monitor gebruikt voor het verzamelen van logboekgegevens op ten minste één Azure-resource. Als u een Log Analytics-werkruimte wilt openen, selecteert u **Logboeken** in het linkernavigatiedeelvenster van Azure Monitor. 
 

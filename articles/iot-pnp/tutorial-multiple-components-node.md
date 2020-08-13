@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 808d1ad522f6678ced54de334e7ea39fb60cd165
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d26179ab82f29ce8f937f5b444463c1308d92047
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420682"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904051"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>Zelfstudie: Een voorbeeld van een IoT Plug and Play Preview-apparaattoepassing met verschillende onderdelen verbinden met IoT Hub (Node.js)
 
@@ -98,29 +98,29 @@ Open het bestand *pnpTemperatureController.js* in de code-editor van uw keuze. D
 
 1. De `modelId` definiëren, wat de DTMI is voor het apparaat dat wordt geïmplementeerd. Deze DTMI is door de gebruiker gedefinieerd en moet overeenkomen met de DTMI van het [DTDL-model voor de temperatuurregeling](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json).
 
-1. De onderdelen implementeren die zijn gedefinieerd in het DTDL model van de temperatuurregeling. De onderdelen van een echte temperatuurregeling moeten deze twee interfaces implementeren. Deze twee interfaces zijn al gepubliceerd in een centrale opslagplaats. In dit voorbeeld zijn dit de twee interfaces:
+2. De onderdelen implementeren die zijn gedefinieerd in het DTDL model van de temperatuurregeling. De onderdelen van een echte temperatuurregeling moeten deze twee interfaces implementeren. Deze twee interfaces zijn al gepubliceerd in een centrale opslagplaats. In dit voorbeeld zijn dit de twee interfaces:
   - Thermostaat
   - Apparaatgegevens ontwikkeld door Azure
 
-1. Onderdeelnamen definiëren. Dit voorbeeld bevat twee thermostaten en één onderdeel met apparaatgegevens.
+3. Onderdeelnamen definiëren. Dit voorbeeld bevat twee thermostaten en één onderdeel met apparaatgegevens.
 
-1. Opdrachtnaam definiëren. Dit zijn de opdrachten waarop het apparaat reageert.
+4. Opdrachtnaam definiëren. Dit zijn de opdrachten waarop het apparaat reageert.
 
-1. De constante `serialNumber` definiëren. Het `serialNumber` staat vast voor een bepaald apparaat.
+5. De constante `serialNumber` definiëren. Het `serialNumber` staat vast voor een bepaald apparaat.
 
-1. De opdracht-handlers definiëren.
+6. De opdracht-handlers definiëren.
 
-1. De functies definiëren voor het verzenden van opdrachtantwoorden.
+7. De functies definiëren voor het verzenden van opdrachtantwoorden.
 
-1. De helperfuncties definiëren voor het vastleggen van opdrachtverzoeken.
+8. De helperfuncties definiëren voor het vastleggen van opdrachtverzoeken.
 
-1. Een helperfunctie definiëren om de eigenschappen te maken.
+9. Een helperfunctie definiëren om de eigenschappen te maken.
 
-1. Een listener definiëren voor updates van eigenschappen.
+10. Een listener definiëren voor updates van eigenschappen.
 
-1. Een functie definiëren om telemetrie te verzenden vanaf dit apparaat. Zowel de thermostaten als de hoofdinterface verzenden telemetrie. Deze functie ontvangt de onderdeelnaam als parameter.
+11. Een functie definiëren om telemetrie te verzenden vanaf dit apparaat. Zowel de thermostaten als de hoofdinterface verzenden telemetrie. Deze functie ontvangt de onderdeelnaam als parameter.
 
-1. Een `main`-functie definiëren die:
+12. Een `main`-functie definiëren die:
 
     1. De apparaat-SDK gebruikt om een apparaatclient te maken en verbinding te maken met uw IoT-hub. Het apparaat verzendt de `modelId` zodat de IoT-hub het apparaat kan identificeren als een IoT Plug en Play-apparaat.
 

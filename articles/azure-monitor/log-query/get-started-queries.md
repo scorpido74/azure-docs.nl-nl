@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801424"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874058"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Aan de slag met logboekquery’s in Azure Monitor
 
 > [!NOTE]
-> U kunt deze oefening in uw eigen omgeving doorlopen als u gegevens verzamelt van ten minste één virtuele machine. Als dat niet het geval is, kunt u onze [demo-omgeving](https://portal.loganalytics.io/demo) gebruiken. Deze bevat veel voorbeeldgegevens.  Raadpleeg het [deelvenster met opgeslagen voorbeeldquery’s](saved-queries.md) als u al weet hoe u een query in KQL kunt uitvoeren, maar alleen snel nuttige query's hoeft te maken op basis van resourcetype(n).
+> U kunt deze oefening in uw eigen omgeving doorlopen als u gegevens verzamelt van ten minste één virtuele machine. Als dat niet het geval is, kunt u onze [demo-omgeving](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) gebruiken. Deze bevat veel voorbeeldgegevens.  Raadpleeg het [deelvenster met opgeslagen voorbeeldquery’s](saved-queries.md) als u al weet hoe u een query in KQL kunt uitvoeren, maar alleen snel nuttige query's hoeft te maken op basis van resourcetype(n).
 
 In deze zelfstudie leert u hoe u logboekquery's schrijft in Azure Monitor. U leert het volgende:
 
