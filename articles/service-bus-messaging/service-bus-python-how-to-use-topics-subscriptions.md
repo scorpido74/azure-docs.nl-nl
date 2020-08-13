@@ -7,13 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 4c490d252fa1153324df62a6119ae6bdc548c331
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-python
+ms.openlocfilehash: f6d1b25cb502b8cb208ba5b59c91667e03c77778
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341033"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064380"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Quickstart: Service Bus-onderwerpen en -abonnementen met Python gebruiken
 
@@ -176,7 +176,7 @@ Als u een onderwerp verwijdert, worden alle abonnementen op het onderwerp verwij
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-Onderwerpen en abonnementen zijn standaard permanent en bestaan tot u ze verwijdert. Als u abonnementen automatisch wilt verwijderen nadat een bepaalde tijdsperiode is verstreken, kunt u de parameter [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) instellen voor het abonnement. 
+Onderwerpen en abonnementen zijn standaard permanent en bestaan tot u ze verwijdert. Als u abonnementen automatisch wilt verwijderen nadat een bepaalde tijdsperiode is verstreken, kunt u de parameter [auto_delete_on_idle](/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) instellen voor het abonnement. 
 
 > [!TIP]
 > U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunt u verbinding maken met een Service Bus-naamruimte en eenvoudig berichtenentiteiten beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren en de mogelijkheid om onderwerpen, wachtrijen, abonnementen, relayservices, notification hubs en event hubs te testen. 
@@ -192,4 +192,4 @@ Nu u de basisprincipes van Service Bus-onderwerpen hebt geleerd, kunt u deze kop
 [Azure Python package]: https://pypi.python.org/pypi/azure
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
-[Service Bus quotas]: service-bus-quotas.md 
+[Service Bus quotas]: service-bus-quotas.md

@@ -1,14 +1,14 @@
 ---
 title: 'Quickstart: Uw eerste portalquery'
 description: In deze quickstart volgt u de stappen om uw eerste query vanuit de Azure-portal uit te voeren met behulp van Azure Resource Graph Explorer.
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: quickstart
-ms.openlocfilehash: 1e506ee1b1c610381f300323f80c38eb6bf67caa
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958804"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056377"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure Resource Graph Explorer
 
