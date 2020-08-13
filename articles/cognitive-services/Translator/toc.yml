@@ -6,6 +6,8 @@
       items:
         - name: Wat is Translator?
           href: translator-info-overview.md
+        - name: Taalondersteuning
+          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: Snelstartgidsen
       items:
         - name: Tekst vertalen
@@ -50,7 +52,7 @@
           href: firewalls.md
     - name: Voorbeelden
       items:
-        - name: 'C#'
+        - name: C#
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
         - name: Java
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
@@ -92,22 +94,20 @@
               href: ctf-reporting.md
             - name: N beste vertalingen retourneren
               href: return-n-best-translations.md
+        - name: Aanvraaglimieten
+          href: request-limits.md
     - name: Resources
       items:
         - name: Codevoorbeelden op GitHub
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Veelgestelde vragen
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Taalondersteuning
-          href: language-support.md
         - name: Prijzen
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Regionale beschikbaarheid
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Naleving
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Aanvraaglimieten
-          href: request-limits.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Custom Translator
@@ -162,8 +162,6 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Resources
       items:
-        - name: Taalondersteuning
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
         - name: Woordenlijst
           href: custom-translator/glossary.md
         - name: Veelgestelde vragen

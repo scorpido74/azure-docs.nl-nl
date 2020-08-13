@@ -56,7 +56,7 @@
     - name: Virtuele machine loopt vast bij opstarten
       href: troubleshoot-vm-boot-configure-update.md
     - name: VM-levenscyclus en -statussen
-      href: ../windows/states-lifecycle.md
+      href: ../states-lifecycle.md
 - name: VM start niet op
   items:
     - name: Linux

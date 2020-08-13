@@ -935,6 +935,10 @@
               href: app/sharepoint.md
             - name: Windows-bureaublad
               href: app/windows-desktop.md
+        - name: Andere hulpprogramma's
+          items:
+            - name: Wijzigingsanalyse
+              href: app/change-analysis.md
     - name: Azure Monitor voor virtuele machines
       items:
         - name: Overzicht
@@ -1062,10 +1066,6 @@
           href: insights/resource-group-insights.md
         - name: Problemen met inzichten oplossen
           href: insights/troubleshoot-workbooks.md
-    - name: Wijzigingsanalyse
-      items:
-        - name: Wijzigingsanalyse
-          href: app/change-analysis.md
     - name: Oplossingen
       items:
         - name: Overzicht
