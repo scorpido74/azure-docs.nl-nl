@@ -1,7 +1,7 @@
 ---
 title: Beheer van CloudSimple-activiteiten
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Hierin worden de activiteiten concepten van de VMware-oplossing beschreven door CloudSimple
+description: Meer informatie over de activiteiten pagina's, die de activiteit samenvatten en waarmee u aanvullende details kunt vinden. Activiteiten zijn waarschuwingen, gebeurtenissen, taken en controle activiteiten.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77e996e83819b78bb9ab4484b9a1d3653a97560
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025092"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140969"
 ---
 # <a name="activity-management-overview"></a>Overzicht activiteiten beheer
 

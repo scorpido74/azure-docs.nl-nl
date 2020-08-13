@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-oplossing op CloudSimple-firewall tabellen
-description: Meer informatie over CloudSimple-firewall tabellen en firewall regels voor de privécloud.
+description: Meer informatie over CloudSimple-firewall tabellen en firewall regels van de privécloud, met inbegrip van standaard regels die op elke firewall tabel worden gemaakt.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025041"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140867"
 ---
 # <a name="firewall-tables-overview"></a>Overzicht van Firewall tabellen
 
@@ -53,7 +53,7 @@ Er zijn mogelijk extra regels vereist voor de verkeers stroom in de omgekeerde r
 
 In elke firewall tabel worden de volgende standaard regels gemaakt.
 
-|Prioriteit|Name|Status bijhouden|Richting|Verkeers type|Protocol|Bron|Bronpoort|Doel|Doelpoort|Bewerking|
+|Prioriteit|Naam|Status bijhouden|Richting|Verkeers type|Protocol|Bron|Bronpoort|Doel|Doelpoort|Bewerking|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|alles-naar-Internet toestaan|Stateful|Uitgaand|Openbaar IP-of Internet verkeer|Alle|Alle|Alle|Alle|Alle|Toestaan|
 |65001|weigeren: alle van Internet|Stateful|Inkomend|Openbaar IP-of Internet verkeer|Alle|Alle|Alle|Alle|Alle|Weigeren|

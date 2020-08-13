@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure VMware-oplossing per CloudSimple-knoop punten
-description: Meer informatie over CloudSimple-knoop punten en-concepten.
+description: Meer informatie over CloudSimple-concepten, met inbegrip van knoop punten, ingerichte knoop punten, een Privécloud en VMware-oplossing door de CloudSimple-knoop punten-Sku's.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7de4b5faa997d909089daedab7e48e5d5a6de2e7
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024922"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140833"
 ---
 # <a name="cloudsimple-nodes-overview"></a>Overzicht van CloudSimple-knoop punten
 
