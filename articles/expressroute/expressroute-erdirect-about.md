@@ -1,18 +1,18 @@
 ---
 title: Over Azure ExpressRoute direct
-description: Op deze pagina vindt u een overzicht van ExpressRoute direct
+description: Meer informatie over de belangrijkste functies van Azure ExpressRoute direct en informatie die nodig is voor het onboarden van ExpressRoute direct, zoals beschik bare Sku's en technische vereisten.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74083591"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192355"
 ---
 # <a name="about-expressroute-direct"></a>Over ExpressRoute Direct
 

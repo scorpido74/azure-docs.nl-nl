@@ -1,6 +1,6 @@
 ---
 title: 'ExpressRoute: een VNet koppelen aan een circuit: Azure Portal'
-description: Verbind een VNet met een Azure ExpressRoute-circuit. Instructies.
+description: Meer informatie over het maken van een verbinding om een virtueel netwerk te koppelen aan een Azure ExpressRoute-circuit met behulp van de Azure Portal.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad222e55f1e3051266c1398d76c8d246e342aba9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737067"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190928"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Een virtueel netwerk verbinden aan een ExpressRoute-circuit met behulp van de portal
 > [!div class="op_single_selector"]

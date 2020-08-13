@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute-sjabloon: een ExpressRoute-circuit maken'
-description: Een ExpressRoute-circuit maken, inrichten, verwijderen en de inrichting ervan opheffen.
+description: Meer informatie over hoe u een Azure ExpressRoute-circuit maakt door een Azure Resource Manager sjabloon te implementeren met behulp van Azure PowerShell.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: charwen
-ms.openlocfilehash: 336337c0860ba19095665310d2c797cf10ba183f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78318726a658b6e0dc966288f386c65ee4c6f0e4
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736302"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190450"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Een ExpressRoute-circuit maken met behulp van Azure Resource Manager sjabloon
 
@@ -73,9 +73,9 @@ Een ExpressRoute-circuit maken door een sjabloon te implementeren:
     De naam van de resource groep is de naam van de service bus-naam ruimte waaraan **RG** is toegevoegd.
 
 2. Selecteer **Kopiëren** om het PowerShell-script te kopiëren.
-3. Klik met de rechter muisknop op de shell-console en selecteer vervolgens **Plakken**.
+3. Klik met de rechtermuisknop op de shell-console en selecteer **Plakken**.
 
-Het duurt enkele minuten om een Event Hub te maken.
+Het kan even duren om een Event Hub te maken.
 
 Azure PowerShell wordt gebruikt voor het implementeren van de sjabloon in deze zelf studie. Zie voor andere implementatie methoden voor sjablonen:
 

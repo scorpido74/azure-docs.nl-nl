@@ -1,6 +1,6 @@
 ---
 title: Azure CDN optimaliseren voor het type inhouds levering
-description: Azure CDN optimaliseren voor het type inhouds levering
+description: Meer informatie over hoe Azure Content Delivery Network de levering kan optimaliseren op basis van het type inhoud. Aanbevolen procedures voor optimalisatie verbeteren de prestaties en de offload van de oorsprong.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 0255d7f47c8f9c63a2943830fa323a2e11994a9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0710f2f31510ae299fafe89dc1798f40e325e8b4
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887552"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192583"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Azure CDN optimaliseren voor het type inhouds levering
 

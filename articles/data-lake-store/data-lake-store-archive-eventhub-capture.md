@@ -1,17 +1,17 @@
 ---
 title: Gegevens vastleggen van Event Hubs naar Azure Data Lake Storage Gen1
-description: Gebruik Azure Data Lake Storage Gen1 om gegevens vast te leggen die worden ontvangen door Azure Event Hubs.
+description: Meer informatie over het gebruik van Azure Data Lake Storage Gen1 voor het vastleggen van gegevens die zijn ontvangen door Azure Event Hubs. Controleer eerst de vereisten.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515770"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190271"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Azure Data Lake Storage Gen1 gebruiken om gegevens vast te leggen van Event Hubs
 
@@ -117,6 +117,6 @@ U kunt de oplossing nu testen door gegevens te verzenden naar de Azure Event hub
 Zodra de gegevens zich in Data Lake Storage Gen1 bevindt, kunt u analytische taken uitvoeren om de gegevens te verwerken en te beheersen. Zie [USQL Avro voor beeld](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) over hoe u dit doet met Azure data Lake Analytics.
   
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Gegevens beveiligen in Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Gegevens kopiëren van Azure Storage-blobs naar Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

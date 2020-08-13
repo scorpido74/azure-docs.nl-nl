@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 08/12/2020
-ms.openlocfilehash: faef8c29b2a5e75745e36c5d826b4feee2d60a98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88169127"
+ms.locfileid: "88191201"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Door de gebruiker geïnitieerde hand matige failover op een SQL-beheerd exemplaar
 
@@ -31,6 +31,9 @@ U kunt overwegen om een van de volgende redenen een [hand matige failover](../da
 - Testen hoe failover invloed heeft op bestaande database sessies
 - Controleren of de end-to-end-prestaties van een failover zijn gewijzigd vanwege wijzigingen in de netwerk latentie
 - In sommige gevallen van prestatie vermindering van query's kan hand matige failover het prestatie probleem oplossen.
+
+> [!NOTE]
+> Om ervoor te zorgen dat uw toepassingen flexibeler zijn dan de implementatie van de productie, kunt u het risico op toepassings fouten in de productie verminderen en bijdragen aan de beschik baarheid van toepassingen voor uw klanten.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Hand matige failover initiëren op een SQL-beheerd exemplaar
 

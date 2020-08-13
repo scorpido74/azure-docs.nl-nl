@@ -1,6 +1,6 @@
 ---
 title: Methoden voor het maken van certificaten
-description: Manieren om een certificaat te maken in Key Vault.
+description: Meer informatie over de verschillende opties voor het maken of importeren van een Key Vault certificaat in Azure Key Vault. Er zijn verschillende manieren om een Key Vault certificaat te maken.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 312f04ff4b1d860724640dfc9e5ea9d75bb76bae
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81866260"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189977"
 ---
 # <a name="certificate-creation-methods"></a>Methoden voor het maken van certificaten
 

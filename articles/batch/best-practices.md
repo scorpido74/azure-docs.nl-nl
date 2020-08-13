@@ -1,14 +1,14 @@
 ---
 title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
-ms.date: 07/30/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474900"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191816"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -56,6 +56,10 @@ Groeps toewijzings fouten kunnen zich voordoen op elk moment tijdens de eerste t
 Het is mogelijk dat batch-Pools downtime-gebeurtenissen in azure kunnen ervaren. Houd dit in acht wanneer u uw scenario of werk stroom voor batch plant en ontwikkelt.
 
 In het geval dat een knoop punt uitvalt, probeert batch automatisch deze reken knooppunten te herstellen namens u. Dit kan leiden tot het opnieuw plannen van elke actieve taak op het knoop punt dat wordt hersteld. Zie [ontwerpen voor nieuwe pogingen voor](#design-for-retries-and-re-execution) meer informatie over onderbroken taken.
+
+### <a name="custom-image-pools"></a>Aangepaste installatie kopie groepen
+
+Wanneer u een Azure Batch groep maakt met behulp van de configuratie van de virtuele machine, geeft u een VM-installatie kopie op die het besturings systeem levert voor elk reken knooppunt in de pool. U kunt de pool maken met een ondersteunde Azure Marketplace-installatie kopie, of u kunt [een aangepaste installatie kopie maken met een afbeelding van de galerie met gedeelde installatie kopieën](batch-sig-images.md). Hoewel u ook een [beheerde installatie kopie](batch-custom-images.md) kunt gebruiken om een aangepaste installatie kopie groep te maken, is het raadzaam om, indien mogelijk, aangepaste installatie kopieën te maken met behulp van de galerie met gedeelde afbeeldingen. Met de galerie gedeelde afbeeldingen kunt u Pools sneller inrichten, grotere aantallen Vm's schalen en de betrouw baarheid verbeteren bij het inrichten van Vm's.
 
 ### <a name="third-party-images"></a>Installatie kopieën van derden
 

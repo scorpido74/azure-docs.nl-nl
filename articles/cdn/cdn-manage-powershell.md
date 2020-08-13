@@ -1,6 +1,6 @@
 ---
 title: Azure CDN beheren met Power shell | Microsoft Docs
-description: Meer informatie over het gebruik van de Azure PowerShell-cmdlets voor het beheren van Azure CDN.
+description: Gebruik deze zelf studie om te leren hoe u Power shell gebruikt om aspecten van uw Azure Content Delivery Network-eindpunt profielen en-eind punten te beheren.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: e7ad3034ff3730cdadcfd55765af01c97df78028
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5fa1cedf4cc5e87d11dc4b5c453d9cb2a307c3c
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073054"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192652"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Azure CDN beheren met Power shell
 Power shell biedt een van de meest flexibele methoden om uw Azure CDN profielen en eind punten te beheren.  U kunt Power shell interactief gebruiken of scripts schrijven om beheer taken te automatiseren.  In deze zelf studie ziet u een aantal van de meest voorkomende taken die u kunt uitvoeren met Power shell voor het beheren van uw Azure CDN profielen en eind punten.
@@ -80,7 +80,7 @@ Cmdlet          Unpublish-AzCdnEndpointContent                     1.4.0      Az
 ```
 
 ## <a name="getting-help"></a>Ondersteuning vragen
-U kunt hulp krijgen bij een van deze cmdlets met behulp van de- `Get-Help` cmdlet.  `Get-Help`biedt gebruik en syntaxis, en optioneel voor beelden.
+U kunt hulp krijgen bij een van deze cmdlets met behulp van de- `Get-Help` cmdlet.  `Get-Help` biedt gebruik en syntaxis, en optioneel voor beelden.
 
 ```text
 PS C:\> Get-Help Get-AzCdnProfile
@@ -139,7 +139,7 @@ Get-AzCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 > 
 
 ## <a name="listing-existing-cdn-endpoints"></a>Bestaande CDN-eind punten weer geven
-`Get-AzCdnEndpoint`kan een afzonderlijk eind punt of alle eind punten voor een profiel ophalen.  
+`Get-AzCdnEndpoint` kan een afzonderlijk eind punt of alle eind punten voor een profiel ophalen.  
 
 ```powershell
 # Get a single endpoint.
@@ -156,7 +156,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Where-Object { $_.ResourceState -eq "Runn
 ```
 
 ## <a name="creating-cdn-profiles-and-endpoints"></a>CDN-profielen en-eind punten maken
-`New-AzCdnProfile`en `New-AzCdnEndpoint` worden gebruikt voor het maken van CDN-profielen en-eind punten. De volgende Sku's worden ondersteund:
+`New-AzCdnProfile` en `New-AzCdnEndpoint` worden gebruikt voor het maken van CDN-profielen en-eind punten. De volgende Sku's worden ondersteund:
 - Standard_Verizon
 - Premium_Verizon
 - Custom_Verizon
@@ -177,7 +177,7 @@ New-AzCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku Stan
 ```
 
 ## <a name="checking-endpoint-name-availability"></a>Beschik baarheid van eindpunt naam controleren
-`Get-AzCdnEndpointNameAvailability`retourneert een object dat aangeeft of er een eindpunt naam beschikbaar is.
+`Get-AzCdnEndpointNameAvailability` retourneert een object dat aangeeft of er een eindpunt naam beschikbaar is.
 
 ```powershell
 # Retrieve availability
@@ -189,7 +189,7 @@ Else { Write-Host "No, that endpoint name is not available." }
 ```
 
 ## <a name="adding-a-custom-domain"></a>Een aangepast domein toevoegen
-`New-AzCdnCustomDomain`Hiermee voegt u een aangepaste domein naam toe aan een bestaand eind punt.
+`New-AzCdnCustomDomain` Hiermee voegt u een aangepaste domein naam toe aan een bestaand eind punt.
 
 > [!IMPORTANT]
 > U moet de CNAME met uw DNS-provider instellen, zoals wordt beschreven in het toewijzen van een [aangepast domein aan Content Delivery Network (CDN)-eind punt](cdn-map-content-to-custom-domain.md).  U kunt de toewijzing testen voordat u het eind punt wijzigt met `Test-AzCdnCustomDomain` .
@@ -208,7 +208,7 @@ If($result.CustomDomainValidated){ New-AzCdnCustomDomain -CustomDomainName Conto
 ```
 
 ## <a name="modifying-an-endpoint"></a>Een eind punt wijzigen
-`Set-AzCdnEndpoint`Hiermee wijzigt u een bestaand eind punt.
+`Set-AzCdnEndpoint` Hiermee wijzigt u een bestaand eind punt.
 
 ```powershell
 # Get an existing endpoint
@@ -223,7 +223,7 @@ Set-AzCdnEndpoint -CdnEndpoint $endpoint
 ```
 
 ## <a name="purgingpre-loading-cdn-assets"></a>CDN-assets leegmaken/vooraf laden
-`Unpublish-AzCdnEndpointContent`Hiermee worden assets in de cache gewist, terwijl `Publish-AzCdnEndpointContent` assets vooraf wordt geladen op ondersteunde eind punten.
+`Unpublish-AzCdnEndpointContent` Hiermee worden assets in de cache gewist, terwijl `Publish-AzCdnEndpointContent` assets vooraf wordt geladen op ondersteunde eind punten.
 
 ```powershell
 # Purge some assets.
@@ -237,7 +237,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Unpublish-AzCdnEndpointContent -PurgeCont
 ```
 
 ## <a name="startingstopping-cdn-endpoints"></a>CDN-eind punten starten/stoppen
-`Start-AzCdnEndpoint`en `Stop-AzCdnEndpoint` kan worden gebruikt om afzonderlijke eind punten of groepen eind punten te starten en te stoppen.
+`Start-AzCdnEndpoint` en `Stop-AzCdnEndpoint` kan worden gebruikt om afzonderlijke eind punten of groepen eind punten te starten en te stoppen.
 
 ```powershell
 # Stop the cdndocdemo endpoint
@@ -274,7 +274,7 @@ Set-AzCdnEndpoint -CdnEndpoint $ep
 ```
 
 ## <a name="deleting-cdn-resources"></a>CDN-resources verwijderen
-`Remove-AzCdnProfile`en `Remove-AzCdnEndpoint` kan worden gebruikt voor het verwijderen van profielen en eind punten.
+`Remove-AzCdnProfile` en `Remove-AzCdnEndpoint` kan worden gebruikt voor het verwijderen van profielen en eind punten.
 
 ```powershell
 # Remove a single endpoint

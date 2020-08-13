@@ -4,14 +4,14 @@ description: Veelvoorkomende problemen met Azure Monitor metrische waarschuwinge
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/09/2020
+ms.date: 08/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114894"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190673"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -130,9 +130,9 @@ Als u wilt voor komen dat de implementatie mislukt wanneer u probeert de definit
         }
 ```
 
-## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>De ARM-sjabloon van een metrische waarschuwings regel exporteren via de Azure Portal
+## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>De Azure Resource Manager sjabloon van een metrische waarschuwings regel exporteren via de Azure Portal
 
-Als u de ARM-sjabloon van een metrische waarschuwings regel exporteert, kunt u de syntaxis en eigenschappen van de JSON begrijpen. deze kunnen worden gebruikt voor het automatiseren van toekomstige implementaties.
+Als u de Resource Manager-sjabloon van een metrische waarschuwings regel exporteert, kunt u de syntaxis en eigenschappen van de JSON begrijpen en gebruiken om toekomstige implementaties te automatiseren.
 1. Ga naar de sectie **resource groepen** in de portal en selecteer de resource groep met de regel.
 2. Schakel in de sectie Overzicht het selectie vakje **verborgen typen weer geven** in.
 3. Selecteer in het filter **type** *micro soft. Insights/metricalerts*.
@@ -207,7 +207,7 @@ Zorg ervoor dat u de juiste CLI-opdrachten gebruikt voor metrische waarschuwinge
 
    - Voor een platform metriek: Zorg ervoor dat u de naam van de **metrische gegevens** gebruikt op [de pagina Azure monitor ondersteunde metrische gegevens](./metrics-supported.md)en niet de **weergave naam van de metrische gegevens**
 
-   - Voor een aangepaste metriek: Zorg ervoor dat de metriek al wordt verzonden (u kunt geen waarschuwings regel maken op een aangepaste metriek die nog niet bestaat) en dat u de naam ruimte van de aangepaste metriek opgeeft (Zie [hier](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)een arm-sjabloon)
+   - Voor een aangepaste metriek: Zorg ervoor dat de metriek al wordt verzonden (u kunt geen waarschuwings regel maken op een aangepaste metriek die nog niet bestaat) en dat u de naam ruimte van de aangepaste metriek opgeeft (Bekijk [hier](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)een voor beeld van een resource manager-sjabloon)
 
 - Als u [metrische waarschuwingen op Logboeken](./alerts-metric-logs.md)wilt maken, moet u ervoor zorgen dat de juiste afhankelijkheden worden opgenomen. Zie de [voorbeeldsjabloon](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 

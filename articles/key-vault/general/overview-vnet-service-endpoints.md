@@ -1,6 +1,6 @@
 ---
 title: Virtuele netwerk service-eind punten voor Azure Key Vault-Azure Key Vault | Microsoft Docs
-description: Overzicht van service-eind punten voor virtuele netwerken voor Key Vault
+description: Meer informatie over hoe u met virtuele netwerk service-eind punten voor Azure Key Vault de toegang tot een opgegeven virtueel netwerk kunt beperken, met inbegrip van gebruiks scenario's.
 services: key-vault
 author: amitbapat
 ms.author: ambapat
@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 891ea69dc6d53370f5f73f8bb3072a9795f07635
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090481"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190587"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuele netwerk service-eind punten voor Azure Key Vault
 

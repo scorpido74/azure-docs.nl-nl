@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8032e8809f7849ab7497da7821788c017adff12d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212051"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192320"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Resource klassen omzetten in werkbelasting groepen
 
@@ -44,13 +44,13 @@ Omdat werkbelasting groepen worden uitgevoerd op basis van het percentage van de
 
 Met de bekende `REQUEST_MIN_RESOURCE_GRANT_PERCENT` kunt u de groep WORKLOAD maken gebruiken <link> om de werkbelasting groep te maken.  U kunt optioneel een waarde opgeven `MIN_PERCENTAGE_RESOURCE` die groter is dan nul om resources voor de werkbelasting groep te isoleren.  U kunt eventueel ook `CAP_PERCENTAGE_RESOURCE` minder dan 100 opgeven om de hoeveelheid resources te beperken die de werkbelasting groep mag verbruiken.  
 
-In het onderstaande voor beeld wordt de `MIN_PERCENTAGE_RESOURCE` om 9,6% van de systeem resources toe te wijzen `wgDataLoads` en garandeert een query alle keren mogelijk.  Daarnaast `CAP_PERCENTAGE_RESOURCE` is ingesteld op 38,4% en wordt deze werkbelasting groep beperkt tot vier gelijktijdige aanvragen.  Door de `QUERY_EXECUTION_TIMEOUT_SEC` para meter in te stellen op 3600, wordt elke query die gedurende meer dan 1 uur wordt uitgevoerd, automatisch geannuleerd.
+Met behulp van mediumrc als basis voor een voor beeld wordt de onderstaande code ingesteld `MIN_PERCENTAGE_RESOURCE` op de om 10% van de systeem resources toe te wijzen `wgDataLoads` en garandeert een query alle tijden.  Daarnaast `CAP_PERCENTAGE_RESOURCE` is ingesteld op 40% en wordt deze werkbelasting groep beperkt tot vier gelijktijdige aanvragen.  Door de `QUERY_EXECUTION_TIMEOUT_SEC` para meter in te stellen op 3600, wordt elke query die gedurende meer dan 1 uur wordt uitgevoerd, automatisch geannuleerd.
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
-( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 9.6
- ,MIN_PERCENTAGE_RESOURCE = 9.6
- ,CAP_PERCENTAGE_RESOURCE = 38.4
+( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 10
+ ,MIN_PERCENTAGE_RESOURCE = 10
+ ,CAP_PERCENTAGE_RESOURCE = 40
  ,QUERY_EXECUTION_TIMEOUT_SEC = 3600)
 ```
 
@@ -59,7 +59,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 Voorheen werd de toewijzing van query's aan resource klassen uitgevoerd met [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Als u dezelfde functionaliteit wilt gebruiken en aanvragen wilt toewijzen aan werkbelasting groepen, gebruikt u de [classificatie syntaxis werk belasting maken](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Als u sp_addrolemember gebruikt, hebt u alleen de mogelijkheid om resources toe te wijzen aan een aanvraag op basis van een aanmelding.  Een classificatie biedt extra opties naast aanmelding, zoals:
     - label
     - Sessie
-    - tijd in het onderstaande voor beeld worden query's toegewezen uit de `AdfLogin` aanmelding waarvoor ook het [optie label](sql-data-warehouse-develop-label.md) is ingesteld op `factloads` de eerder gemaakte werkbelasting groep `wgDataLoads` .
+    - tijd in het onderstaande voor beeld worden query's toegewezen uit de `AdfLogin` aanmelding waarvoor ook het [optie label](sql-data-warehouse-develop-label.md)  is ingesteld op `factloads` de eerder gemaakte werkbelasting groep `wgDataLoads` .
 
 ```sql
 CREATE WORKLOAD CLASSIFIER wcDataLoads WITH  

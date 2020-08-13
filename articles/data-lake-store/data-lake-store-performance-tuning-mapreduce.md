@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 prestaties afstemmen-MapReduce
-description: Richt lijnen voor het afstemmen van Azure Data Lake Storage Gen1 MapReduce
+description: Meer informatie over het afstemmen van de prestaties van MapReduce in Azure Data Lake Storage Gen1, zoals para meters, richt lijnen, een voor beeld van de berekening en beperkingen.
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510917"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190218"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties voor MapReduce in HDInsight en Azure Data Lake Storage Gen1
 

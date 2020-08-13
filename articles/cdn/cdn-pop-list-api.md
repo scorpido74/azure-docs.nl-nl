@@ -1,6 +1,6 @@
 ---
 title: De huidige POP-IP-lijst voor Azure CDN ophalen | Microsoft Docs
-description: Meer informatie over het ophalen van de huidige POP-lijst.
+description: Meer informatie over het ophalen van POP-servers met behulp van de REST API. POP-servers maken aanvragen voor oorspronkelijke servers die zijn gekoppeld aan Azure Content Delivery Network-eind punten.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 7b98bb446fc400007e4061d09db8084960702943
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13d4587a80cbbe66e18eb1bec8f3154221ac62b5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668284"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192553"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>De huidige POP-IP-lijst voor Azure CDN ophalen
 
@@ -42,7 +42,7 @@ Configureer IP-Acl's voor voor uw back-ends om verkeer te accepteren van Azure C
 Als u service tags met Azure CDN van micro soft wilt gebruiken, moet u de Azure front-deur label gebruiken. IP-adresbereiken en service tags voor micro soft-Services vindt u [hier](https://www.microsoft.com/download/details.aspx?id=56519)
 
 
-## <a name="typical-use-case"></a>Typische gebruiksscenario’s
+## <a name="typical-use-case"></a>Typische gebruiksscenario's
 
 Uit veiligheids overwegingen kunt u deze IP-lijst gebruiken om af te dwingen dat aanvragen naar uw oorspronkelijke server alleen worden gemaakt op basis van een geldige Verizon-POP. Als iemand bijvoorbeeld de hostnaam of het IP-adres voor de oorspronkelijke server van een CDN-eind punt heeft gedetecteerd, kan de aanvraag rechtstreeks naar de oorspronkelijke server worden uitgevoerd, waardoor de schaal-en beveiligings mogelijkheden van Azure CDN worden omzeild. Dit scenario kan worden voor komen door de IP-adressen in de geretourneerde lijst als de enige toegestane IP-adressen op een bron server in te stellen. Om ervoor te zorgen dat u de meest recente POP-lijst hebt, moet u deze mini maal één keer per dag ophalen. 
 

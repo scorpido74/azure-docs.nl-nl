@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Azure Data Lake Storage Gen1 vanuit VNETs | Microsoft Docs
-description: Verbinding maken met Azure Data Lake Storage Gen1 vanuit Azure VNETs
+description: Meer informatie over het inschakelen van toegang tot Azure Data Lake Storage Gen1 van virtuele Azure-machines met beperkte toegang tot resources.
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 5793e1659f18818b85748dc0f2979895318ea913
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985404"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191392"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Toegang tot Azure Data Lake Storage Gen1 van Vm's binnen een Azure-VNET
 Azure Data Lake Storage Gen1 is een PaaS-service die wordt uitgevoerd op open bare Internet-IP-adressen. Elke server die verbinding kan maken met het open bare Internet kan meestal ook verbinding maken met Azure Data Lake Storage Gen1-eind punten. Standaard hebben alle virtuele machines in azure VNETs toegang tot internet en kunnen ze dus toegang krijgen tot Azure Data Lake Storage Gen1. Het is echter mogelijk om Vm's in een VNET zo te configureren dat ze geen toegang tot internet hebben. Voor dergelijke Vm's is de toegang tot Azure Data Lake Storage Gen1 ook beperkt. Het blok keren van open bare Internet toegang voor Vm's in azure VNETs kan worden uitgevoerd met behulp van een van de volgende methoden:
@@ -54,7 +54,7 @@ Wanneer routes, ofwel Udr's of BGP-exchangeed routes, worden gebruikt om de toeg
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Connectiviteit van Vm's die zijn beperkt met behulp van ExpressRoute inschakelen
 Wanneer een ExpressRoute-circuit is geconfigureerd, hebben de on-premises servers toegang tot Data Lake Storage Gen1 via open bare peering. Meer informatie over het configureren van ExpressRoute voor open bare peering is beschikbaar op [ExpressRoute-Veelgestelde vragen](../expressroute/expressroute-faqs.md).
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1](data-lake-store-security-overview.md)
 

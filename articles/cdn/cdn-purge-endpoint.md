@@ -1,6 +1,6 @@
 ---
 title: Een Azure CDN-eind punt verwijderen | Microsoft Docs
-description: Meer informatie over het verwijderen van alle inhoud in de cache van een Azure CDN-eind punt.
+description: Meer informatie over het verwijderen van alle inhoud in de cache van een Azure Content Delivery Network-eind punt. De elementen van de Edge-knoop punten worden in de cache opgeslagen totdat de time to Live verloopt.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: 1946da6a18956b420684f4c2ffe86f35d0084eaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc09c35ba5499c6e911ebd7dd23482ef30f931da
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887297"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192545"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Een Azure CDN-eind punt verwijderen
 ## <a name="overview"></a>Overzicht
@@ -52,14 +52,14 @@ In deze zelf studie wordt u begeleid bij het opschonen van assets van alle Edge-
    > 
    > 
 4. Selecteer welke assets u wilt verwijderen uit de Edge-knoop punten.  Als u alle assets wilt wissen, klikt u op het selectie vakje **Alles opschonen** .  Als dat niet het geval is, typt u het pad van elk activum dat u wilt verwijderen in het tekstvak **pad** . De onderstaande indelingen worden ondersteund in het pad.
-    1. **Enkelvoudige URL opschonen**: afzonderlijke activa opschonen door de volledige URL op te geven, met of zonder de bestands extensie, bijvoorbeeld, `/pictures/strasbourg.png` ;`/pictures/strasbourg`
+    1. **Enkelvoudige URL opschonen**: afzonderlijke activa opschonen door de volledige URL op te geven, met of zonder de bestands extensie, bijvoorbeeld, `/pictures/strasbourg.png` ; `/pictures/strasbourg`
     2. **Joker tekens opschonen**: sterretje ( \* ) kan worden gebruikt als Joker teken. Verwijder alle mappen, submappen en bestanden onder een eind punt met `/*` in het pad of verwijder alle submappen en bestanden onder een specifieke map door de map op te geven gevolgd door `/*` , bijvoorbeeld `/pictures/*` .  Houd er rekening mee dat het opschonen van joker tekens momenteel niet wordt ondersteund door Azure CDN vanuit Akamai. 
     3. **Basis domein opschonen**: de hoofdmap van het eind punt met '/' in het pad opschonen.
    
    > [!TIP]
    > Paden moeten worden opgegeven voor opschoning en moeten een relatieve URL zijn die overeenkomt met de volgende [reguliere expressie](/dotnet/standard/base-types/regular-expression-language-quick-reference). Het leegmaken van **alle** en het weghalen van **joker tekens** wordt momenteel niet ondersteund door de **Azure CDN van de Akamai** .
-   > > Eén URL leegmaken`@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
-   > > Query reeks`@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
+   > > Eén URL leegmaken `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
+   > > Query reeks `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > Joker teken opschonen `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";` . 
    > 
    > Als u tekst hebt ingevoerd, worden **er meer** tekstvaks weer gegeven, zodat u een lijst met meerdere assets kunt bouwen.  U kunt assets verwijderen uit de lijst door te klikken op de knop met het weglatings teken (...).
@@ -73,7 +73,7 @@ In deze zelf studie wordt u begeleid bij het opschonen van assets van alle Edge-
 > 
 > 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Vooraf assets op een Azure CDN-eindpunt laden](cdn-preload-endpoint.md)
 * [Azure CDN REST API referentie-een eind punt verwijderen of vooraf laden](/rest/api/cdn/endpoints)
 

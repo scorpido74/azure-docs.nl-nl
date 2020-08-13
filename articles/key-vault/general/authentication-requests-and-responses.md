@@ -1,6 +1,6 @@
 ---
 title: Verificatie, vragen en antwoorden
-description: Verifiëren met AD voor het gebruik van Key Vault
+description: Meer informatie over hoe Azure Key Vault aanvragen voor JSON-indeling en antwoorden en over vereiste verificatie voor het gebruik van een sleutel kluis gebruikt.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430888"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191794"
 ---
 # <a name="authentication-requests-and-responses"></a>Verificatie, vragen en antwoorden
 
@@ -28,15 +28,15 @@ In dit onderwerp worden de Details voor de Azure Key Vault-service beschreven. Z
 
  Voor het werken met objecten in de Azure Key Vault, zijn de volgende Url's:  
 
-- Voor het maken van een sleutel met de naam TESTKEY in een Key Vault gebruik-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- Voor het maken van een sleutel met de naam TESTKEY in een Key Vault gebruik- `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
-- Als u een sleutel met de naam IMPORTEDKEY wilt importeren in een Key Vault gebruik-`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- Als u een sleutel met de naam IMPORTEDKEY wilt importeren in een Key Vault gebruik- `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
-- Een geheim met de naam MYSECRET verkrijgen in een Key Vault gebruik-`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- Een geheim met de naam MYSECRET verkrijgen in een Key Vault gebruik- `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
-- Een samen vatting ondertekenen met behulp van een sleutel met de naam TESTKEY in een Key Vault gebruik-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- Een samen vatting ondertekenen met behulp van een sleutel met de naam TESTKEY in een Key Vault gebruik- `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  De instantie voor een aanvraag voor een Key Vault is altijd als volgt:`https://{keyvault-name}.vault.azure.net/`  
+  De instantie voor een aanvraag voor een Key Vault is altijd als volgt:  `https://{keyvault-name}.vault.azure.net/`  
 
   Sleutels worden altijd opgeslagen onder het pad/Keys, geheimen worden altijd opgeslagen onder het pad/Secrets.  
 

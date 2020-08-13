@@ -1,6 +1,6 @@
 ---
 title: Key Vault .NET 2. x API-opmerkingen bij de release | Microsoft Docs
-description: .NET-ontwikkel aars gebruiken deze API voor het coderen van Azure Key Vault
+description: Meer informatie over het bijwerken van apps die zijn geschreven voor eerdere versies van Azure Key Vault om te kunnen werken met de 2,0-versie van de Azure Key Vault-bibliotheek voor C# en .NET.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431915"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189836"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0-opmerkingen bij de release en de migratie handleiding
 De volgende informatie helpt u bij het migreren naar de 2,0-versie van de Azure Key Vault-bibliotheek voor C# en .NET.  Apps die zijn geschreven voor eerdere versies moeten worden bijgewerkt ter ondersteuning van de nieuwste versie.  Deze wijzigingen zijn nodig om nieuwe en verbeterde functies, zoals **Key Vault certificaten**, volledig te ondersteunen.
@@ -50,7 +50,7 @@ Key Vault certificaten x509-certificaten beheren en ondersteunt het volgende ged
 * Het *geheim* is gewijzigd in *SecretBundle*
 * *Woorden lijst* gewijzigd in *IDictionary*
 * *Lijst \<T> , teken reeks []* gewijzigd *in \<T> IList*
-* *NextList* is gewijzigd in *NextPageLink*
+* *NextList* is gewijzigd in  *NextPageLink*
 
 ## <a name="return-types"></a>Retour typen
 

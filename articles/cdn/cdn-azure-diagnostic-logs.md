@@ -1,7 +1,7 @@
 ---
 title: Diagnostische logboeken
 titleSuffix: Azure Content Delivery Network
-description: De klant kan logboek analyse voor Azure CDN inschakelen.
+description: Informatie over het gebruik van Diagnostische logboeken van Azure om kern analyses op te slaan, waarmee u metrische gegevens over het gebruik van uw Azure-Content Delivery Network-eind punt kunt exporteren.
 services: cdn
 author: asudbring
 manager: KumudD
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: dbaba67a163bb0f948de5ba2ebbdba5497ad5ff9
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116979"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191273"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnostische logboeken-Azure Content Delivery Network
 
@@ -42,7 +42,7 @@ Een Azure CDN profiel is vereist voor de volgende stappen. Raadpleeg [een Azure 
 
 Voer de volgende stappen uit om logboek registratie in te scha kelen voor uw Azure CDN-eind punt:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). 
 
 2. Ga in het Azure Portal naar **alle resources**  ->  **uw-CDN-profiel**
 
@@ -221,7 +221,7 @@ Voor toegang tot de kern analyse wordt een voorbeeld code voor een hulp programm
 
 U kunt het hulp programma als volgt gebruiken:
 
-1.  Ga naar de GitHub-koppeling:[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  Ga naar de GitHub-koppeling: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Down load de code.
 3.  Volg de instructies voor het compileren en configureren.
 4.  Voer het hulp programma uit.
@@ -257,16 +257,16 @@ Niet alle metrische gegevens zijn beschikbaar voor alle providers, hoewel deze v
 | RequestCountHttpStatus4xx | Het aantal aanvragen dat heeft geleid tot een 4xx HTTP-code (bijvoorbeeld 400, 404). | Ja | Ja |Ja |
 | RequestCountHttpStatus5xx | Het aantal aanvragen dat heeft geleid tot een 5xx HTTP-code (bijvoorbeeld 500, 504). | Ja | Ja |Ja |
 | RequestCountHttpStatusOthers | Aantal andere HTTP-codes (buiten 2xx-5xx). | Ja | Ja |Ja |
-| RequestCountHttpStatus200 | Het aantal aanvragen dat heeft geleid tot een 200 HTTP-code antwoord. | Yes | Nee  |Yes |
-| RequestCountHttpStatus206 | Het aantal aanvragen dat heeft geleid tot een 206 HTTP-code antwoord. | Yes | Nee  |Yes |
-| RequestCountHttpStatus302 | Het aantal aanvragen dat heeft geleid tot een 302 HTTP-code antwoord. | Yes | Nee  |Yes |
-| RequestCountHttpStatus304 | Het aantal aanvragen dat heeft geleid tot een 304 HTTP-code antwoord. | Yes | Nee  |Yes |
-| RequestCountHttpStatus404 | Het aantal aanvragen dat heeft geleid tot een 404 HTTP-code antwoord. | Yes | Nee  |Yes |
+| RequestCountHttpStatus200 | Het aantal aanvragen dat heeft geleid tot een 200 HTTP-code antwoord. | Ja | Nee  |Ja |
+| RequestCountHttpStatus206 | Het aantal aanvragen dat heeft geleid tot een 206 HTTP-code antwoord. | Ja | Nee  |Ja |
+| RequestCountHttpStatus302 | Het aantal aanvragen dat heeft geleid tot een 302 HTTP-code antwoord. | Ja | Nee  |Ja |
+| RequestCountHttpStatus304 | Het aantal aanvragen dat heeft geleid tot een 304 HTTP-code antwoord. | Ja | Nee  |Ja |
+| RequestCountHttpStatus404 | Het aantal aanvragen dat heeft geleid tot een 404 HTTP-code antwoord. | Ja | Nee  |Ja |
 | RequestCountCacheHit | Het aantal aanvragen dat heeft geleid tot een cache-treffer. De Asset werd rechtstreeks vanuit de POP naar de client geleverd. | Ja | Ja | Nee  |
 | RequestCountCacheMiss | Het aantal aanvragen dat heeft geleid tot een Missing in de cache. Een cache-Misser betekent dat het activum niet is gevonden op de POP die het dichtst bij de client ligt en is opgehaald van de oorsprong. | Ja | Ja | Nee |
 | RequestCountCacheNoCache | Het aantal aanvragen voor een Asset dat niet in de cache kan worden opgeslagen vanwege een gebruikers configuratie aan de rand. | Ja | Ja | Nee |
 | RequestCountCacheUncacheable | Het aantal aanvragen voor activa dat voor komt dat het in de cache wordt opgeslagen door de headers Cache-Control en Expires van het Asset. Dit aantal geeft aan dat het niet in de cache moet worden opgeslagen in een POP of de HTTP-client. | Ja | Ja | Nee |
-| RequestCountCacheOthers | Aantal aanvragen met een cache status die niet onder bovenstaande vallen. | Nee | Yes | Nee  |
+| RequestCountCacheOthers | Aantal aanvragen met een cache status die niet onder bovenstaande vallen. | Nee | Ja | Nee  |
 | EgressTotal | Uitgaande gegevens overdracht in GB | Ja |Ja |Ja |
 | EgressHttpStatus2xx | Uitgaande gegevens overdracht * voor antwoorden met 2xx HTTP-status codes in GB. | Ja | Ja | Nee  |
 | EgressHttpStatus3xx | Uitgaande gegevens overdracht voor antwoorden met 3xx HTTP-status codes in GB. | Ja | Ja | Nee  |
@@ -277,7 +277,7 @@ Niet alle metrische gegevens zijn beschikbaar voor alle providers, hoewel deze v
 | EgressCacheMiss. | Uitgaande gegevens overdracht voor antwoorden die niet zijn gevonden op de dichtstbijzijnde POP-server en die is opgehaald van de oorspronkelijke server. | Ja | Ja | Nee |
 | EgressCacheNoCache | Uitgaande gegevens overdracht voor activa die niet in de cache worden opgeslagen vanwege een gebruikers configuratie aan de rand. | Ja | Ja | Nee |
 | EgressCacheUncacheable | Uitgaande gegevens overdracht voor activa die niet in de cache worden opgeslagen door de cache-Control en of expires van de Asset. Geeft aan dat deze niet in de cache moet worden opgeslagen in een POP of de HTTP-client. | Ja | Ja | Nee |
-| EgressCacheOthers | Uitgaande gegevens overdracht voor andere cache scenario's. | Nee | Yes | Nee |
+| EgressCacheOthers | Uitgaande gegevens overdracht voor andere cache scenario's. | Nee | Ja | Nee |
 
 * Uitgaande gegevens overdracht verwijst naar verkeer dat van CDN POP-servers naar de client wordt geleverd.
 
@@ -367,7 +367,7 @@ Voorbeeld eigenschappen:
 
 ```
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Diagnostische logboeken van Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Kern analyse via Azure CDN aanvullende portal](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)

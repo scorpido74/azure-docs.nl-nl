@@ -1,6 +1,6 @@
 ---
 title: HTTP-variabelen voor de engine van Azure CDN-regels | Microsoft Docs
-description: Met HTTP-variabelen kunt u HTTP-aanvraag-en reactie gegevens ophalen.
+description: Meer informatie over HTTP-variabelen, waarmee u HTTP-aanvraag-en respons meta gegevens kunt ophalen voor sommige functies van een regel engine. Meta gegevens gebruiken voor het wijzigen van een aanvraag/antwoord.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203565"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192674"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-variabelen voor Azure CDN-regel engine
 HTTP-variabelen bieden de manier waarop u HTTP-aanvraag-en respons meta gegevens kunt ophalen. Deze meta gegevens kunnen vervolgens worden gebruikt om een aanvraag of antwoord dynamisch te wijzigen. Het gebruik van HTTP-variabelen is beperkt tot de volgende functies van de regel Engine:
@@ -34,7 +34,7 @@ HTTP-variabelen bieden de manier waarop u HTTP-aanvraag-en respons meta gegevens
 In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt een lege waarde geretourneerd als GEO-meta gegevens (bijvoorbeeld post code) niet beschikbaar zijn voor een bepaalde aanvraag.
 
 
-| Naam | Variabele | Beschrijving | Voorbeeldwaarde |
+| Name | Variabele | Beschrijving | Voorbeeldwaarde |
 | ---- | -------- | ----------- | ------------ |
 | ASN (aanvrager) | % {geo_asnum} | Hiermee wordt het AS-nummer van de aanvrager aangegeven. <br /><br />**Afgeschaft:** % {virt_dst_asnum}. <br />Deze variabele is vervangen door% {geo_asnum}. Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | AS15133 |
 | Plaats (aanvrager) | % {geo_city} | Hiermee wordt de plaats van de aanvrager aangegeven. | Los Angeles |
@@ -42,7 +42,7 @@ In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt
 | Cookie waarde | % {cookie_Cookie} | Retourneert de waarde die overeenkomt met de cookie sleutel die wordt geïdentificeerd door de cookie term. | Voorbeeld gebruik: <br />% {cookie__utma}<br /><br />Voorbeeld waarde:<br />111662281.2.10.1222100123 |
 | Land/regio (aanvrager) | % {geo_country} | Geeft het land of de regio van oorsprong van de aanvrager aan via het land-of regio nummer. <br />**Afgeschaft:** % {virt_dst_country}. <br /><br />Deze variabele is vervangen door% {geo_country}. Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | VS |
 | Aangewezen markt gebied (aanvrager) | % {geo_dma_code} |Geeft de media markt van de aanvrager aan op basis van de regio code. <br /><br />Dit veld is alleen van toepassing op aanvragen die afkomstig zijn van de Verenigde Staten.| 745 |
-| HTTP-aanvraag methode | % {request_method} | Hiermee wordt de HTTP-aanvraag methode aangegeven. | GET |
+| HTTP-aanvraagmethode | % {request_method} | Hiermee wordt de HTTP-aanvraag methode aangegeven. | GET |
 | HTTP-status code | % {status} | Hiermee wordt de HTTP-status code voor het antwoord aangegeven. | 200 |
 | IP-adres (aanvrager) | % {virt_dst_addr} | Hiermee wordt het IP-adres van de aanvrager aangegeven. | 192.168.1.1 |
 | Latitude (aanvrager) | % {geo_latitude} | Hiermee wordt de breedte van de aanvrager aangegeven. | 34,0995 |
@@ -55,7 +55,7 @@ In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt
 | Parameter waarde van de query reeks | % {arg_ &lt; para meter &gt; } | Retourneert de waarde die overeenkomt met de query teken reeks parameter geïdentificeerd door de &lt; parameter &gt; term. | Voorbeeld gebruik: <br />% {arg_language}<br /><br />Voorbeeld query teken reeks parameter: <br />? language = en<br /><br />Voorbeeld waarde: en |
 | Query teken reeks waarde | % {query_string} | Hiermee wordt de volledige query teken reeks waarde aangegeven die in de aanvraag-URL is gedefinieerd. |Key1 = val1&Key2 = val2&Key3 = val3 |
 | Verwijzend domein | % {referring_domain} | Hiermee wordt het domein aangegeven dat is gedefinieerd in de header van de verwijzings aanvraag. | <www.google.com> |
-| Regio (aanvrager) | % {geo_region} | Geeft de regio van de aanvrager (bijvoorbeeld staat of provincie) aan met de alfanumerieke afkorting. | CA |
+| Regio (aanvrager) | % {geo_region} | Geeft de regio van de aanvrager (bijvoorbeeld staat of provincie) aan met de alfanumerieke afkorting. | CA (consistentie en beschikbaarheid) |
 | Waarde van aanvraag header | % {http_RequestHeader} | Retourneert de waarde die overeenkomt met de aanvraag header die wordt geïdentificeerd door de RequestHeader-term. <br /><br />Als de naam van de aanvraag header een streepje bevat (bijvoorbeeld user-agent), vervangt u dit door een onderstrepings teken (bijvoorbeeld User_Agent).| Voorbeeld gebruik:% {http_Connection}<br /><br />Voorbeeld waarde: Keep-Alive | 
 | Host van aanvraag | % {host} | Hiermee wordt de host aangegeven die is gedefinieerd in de aanvraag-URL. | <www.mydomain.com> |
 | Aanvraag Protocol | % {request_protocol} | Geeft het aanvraag protocol aan. | HTTP/1.1 |
@@ -69,10 +69,10 @@ In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt
 De volgende tabel beschrijft de juiste syntaxis voor het opgeven van een HTTP-variabele.
 
 
-| Syntax | Voorbeeld | Beschrijving |
+| Syntaxis | Voorbeeld | Beschrijving |
 | ------ | -------- | ---------- |
 | % { &lt; HTTPVariable &gt; } | % {host} | Gebruik deze syntaxis om de volledige waarde op te halen die overeenkomt met de opgegeven &lt; HTTPVariable &gt; . |
-| % { &lt; HTTPVariableDelimiter &gt; } | % {host,} | Gebruik deze syntaxis om de case in te stellen voor de gehele waarde die overeenkomt met de opgegeven &lt; HTTPVariableDelimiter &gt; . |
+| % { &lt; HTTPVariableDelimiter &gt; } | % {host,} | Gebruik deze syntaxis om de case in te stellen voor de gehele waarde die overeenkomt met de opgegeven  &lt; HTTPVariableDelimiter &gt; . |
 | % { &lt; HTTPVariableDelimiterExpression &gt; } | % {host/= ^ www \. ([^ \. ] +) \. ([^ \. :] +)/CDN. $2. $3:80} | Gebruik een reguliere expressie voor &lt; HTTPVariableDelimiterExpression &gt; om de waarde van een http-variabele te vervangen, te verwijderen of te bewerken. |
 
 Namen van HTTP-variabelen ondersteunen alleen alfabetische tekens en onderstrepingen. Converteer niet-ondersteunde tekens naar onderstrepingen.
@@ -125,7 +125,7 @@ Een standaard waarde kan worden toegewezen aan een header wanneer deze aan een v
 
 In de volgende tabel wordt beschreven hoe u een standaard waarde definieert.
 
-| Voorwaarde | Syntax | Voorbeeld | Beschrijving |
+| Voorwaarde | Syntaxis | Voorbeeld | Beschrijving |
 | --------- | ------ | --------| ----------- |
 | Stel een koptekst in op een standaard waarde wanneer deze aan een van de volgende voor waarden voldoet: <br /><br />-Ontbrekende header <br /><br />-Header-waarde is ingesteld op NULL.| % {Variable: = waarde} | % {http_referrer: = niet opgegeven} | De verwijzende header wordt alleen ingesteld op niet *opgegeven* als deze ontbreekt of als deze is ingesteld op null. Als deze is ingesteld, wordt er geen actie uitgevoerd. |
 | Stel een koptekst in op een standaard waarde wanneer deze ontbreekt. | % {Variable = waarde} | % {http_referrer = niet opgegeven} | De verwijzende header wordt alleen ingesteld op niet *opgegeven* wanneer deze ontbreekt. Als deze is ingesteld, wordt er geen actie uitgevoerd. |
@@ -174,7 +174,7 @@ https: \/ /www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="pattern-removal"></a>Patroon verwijderen
 Tekst die overeenkomt met een specifiek patroon kan worden verwijderd uit het begin of het einde van de waarde van een variabele.
 
-| Syntax | Actie |
+| Syntaxis | Bewerking |
 | ------ | ------ |
 | % {Variable # patroon} | Tekst verwijderen wanneer het opgegeven patroon wordt gevonden aan het begin van de waarde van een variabele. |
 | % {Variabele% pattern} | Tekst verwijderen wanneer het opgegeven patroon wordt gevonden aan het einde van de waarde van een variabele. |
@@ -195,7 +195,7 @@ In de volgende tabel ziet u hoe deze syntaxis werkt.
 ### <a name="find-and-replace"></a>Zoeken en vervangen
 De syntaxis voor zoeken en vervangen wordt beschreven in de volgende tabel.
 
-| Syntax | Actie |
+| Syntaxis | Bewerking |
 | ------ | ------ |
 | % {Variabele/zoeken/vervangen} | Het eerste exemplaar van het opgegeven patroon zoeken en vervangen. |
 | % {Variable//zoeken/vervangen} | Zoek en vervang alle instanties van het opgegeven patroon. |
@@ -207,7 +207,7 @@ De syntaxis voor zoeken en vervangen wordt beschreven in de volgende tabel.
 ### <a name="find-and-rewrite"></a>Zoeken en herschrijven
 Gebruik voor een variatie op zoeken en vervangen de tekst die overeenkomt met het opgegeven patroon wanneer u deze herschrijft. De syntaxis voor zoeken en herschrijven wordt beschreven in de volgende tabel.
 
-| Syntax | Actie |
+| Syntaxis | Bewerking |
 | ------ | ------ |
 | % {Variable/= zoeken/herschrijven} | Alle exemplaren van het opgegeven patroon zoeken, kopiëren en herschrijven. |
 | % {Variable/^ zoeken/herschrijven} | Zoeken, kopiëren en herschrijven van het opgegeven patroon wanneer dit plaatsvindt aan het begin van de variabele. |

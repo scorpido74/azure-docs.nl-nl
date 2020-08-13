@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/28/2020
-ms.openlocfilehash: 28fa3fdfdb8915d528d0765bd1fded8128621208
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bdb7ba30d9fa2d0bd1eff9368d6e30e516b53895
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166515"
+ms.locfileid: "88192723"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Machine Learning-werk ruimte (preview)
 
@@ -39,7 +39,7 @@ Met de persoonlijke Azure-koppeling kunt u verbinding maken met uw werk ruimte m
 > [!IMPORTANT]
 > Op dit moment ondersteunen we alleen het inschakelen van een persoonlijk eind punt bij het maken van een nieuwe Azure Machine Learning-werk ruimte.
 
-De [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) kan worden gebruikt om een werk ruimte met een persoonlijk eind punt te maken.
+De sjabloon op [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) kan worden gebruikt om een werk ruimte met een persoonlijk eind punt te maken.
 
 Zie [een Azure Resource Manager sjabloon gebruiken om een werk ruimte voor Azure machine learning te maken](how-to-create-workspace-template.md)voor meer informatie over het gebruik van deze sjabloon, met inbegrip van persoonlijke eind punten.
 

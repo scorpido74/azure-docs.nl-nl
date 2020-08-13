@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/10/2020
-ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455975"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189817"
 ---
 # <a name="score-svd-recommender"></a>Aanbevelingsfunctie voor SVD-score
 
@@ -107,9 +107,6 @@ De gescoorde gegevensset die door Score SVD wordt geretourneerd, vermeldt de aan
 
 - De eerste kolom bevat de gebruikers-id's.
 - Er worden een aantal extra kolommen gegenereerd, afhankelijk van de waarde die u hebt ingesteld voor het **maximum aantal items dat aan een gebruiker**moet worden aanbevolen. Elke kolom bevat een aanbevolen item (per id). De aanbevelingen worden geordend op basis van de gebruikers affiniteit. Het item met de hoogste affiniteit wordt in kolom **item 1**geplaatst.
-
-> [!WARNING]
-> U kunt deze gescoorde gegevensset niet evalueren met behulp van de module [Aanbevolen evalueren](evaluate-recommender.md) .
 
 
 ##  <a name="technical-notes"></a>Technische opmerkingen

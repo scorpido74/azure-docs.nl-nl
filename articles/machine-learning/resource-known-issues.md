@@ -3,20 +3,20 @@ title: Bekende problemen bij het oplossen van problemen &
 titleSuffix: Azure Machine Learning
 description: Ontvang hulp bij het vinden en corrigeren van fouten of fouten in Azure Machine Learning. Meer informatie over bekende problemen, probleem oplossing en tijdelijke oplossingen.
 services: machine-learning
-author: j-martens
-ms.author: jmartens
+author: likebupt
+ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/06/2020
-ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/13/2020
+ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120759"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190498"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -203,7 +203,7 @@ Als u bestands share gebruikt voor andere werk belastingen, zoals gegevens overd
 |Bij het controleren van afbeeldingen worden nieuwe gelabelde afbeeldingen niet weer gegeven.     |   Als u alle gelabelde afbeeldingen wilt laden, kiest u de **eerste** knop. Met de **eerste** knop gaat u terug naar de voor kant van de lijst, maar worden alle gelabelde gegevens geladen.      |
 |Druk op ESC-toets terwijl labels voor object detectie een label met een grootte van nul maken in de linkerbovenhoek. Het verzenden van labels met deze status mislukt.     |   Verwijder het label door te klikken op de kruis markering ernaast.  |
 
-### <a name="data-drift-monitors"></a><a name="data-drift"></a>Data drift-monitors
+### <a name="data-drift-monitors"></a><a name="data-drift"></a> Data drift-monitors
 
 Beperkingen en bekende problemen voor gegevens drift-monitors:
 
@@ -248,6 +248,27 @@ Vanuit de model gegevens verzamelaar kan het tot (maar meestal minder dan) 10 mi
 ```python
 import time
 time.sleep(600)
+```
+
+* **Log voor realtime-eind punten:**
+
+Logboeken van real-time eind punten zijn klant gegevens. Voor het oplossen van real-time-eind punten kunt u de volgende code gebruiken om Logboeken in te scha kelen. 
+
+Zie voor meer informatie over het bewaken van webservice-eind punten in [dit artikel](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models).
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+Als u meerdere tenants hebt, moet u mogelijk de volgende verificatie code toevoegen voordat `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ## <a name="train-models"></a>Modellen trainen
@@ -306,14 +327,14 @@ time.sleep(600)
     * Voer automl_setup uit vanaf een Anaconda-prompt in Windows. Klik [hier](https://docs.conda.io/en/latest/miniconda.html)om Miniconda te installeren.
     * Zorg ervoor dat de Conda 64-bits is geïnstalleerd in plaats van 32-bits door de opdracht uit te voeren `conda info` . De `platform` moet `win-64` voor Windows of `osx-64` voor Mac zijn.
     * Zorg ervoor dat Conda 4.4.10 of hoger is geïnstalleerd. U kunt de versie controleren met de opdracht `conda -V` . Als u een vorige versie hebt geïnstalleerd, kunt u deze bijwerken met behulp van de opdracht: `conda update conda` .
-    * Spreek`gcc: error trying to exec 'cc1plus'`
+    * Spreek `gcc: error trying to exec 'cc1plus'`
       *  Als de `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` fout is opgetreden, installeert u build Essentials met behulp van de Ndere-opdracht `sudo apt-get install build-essential` .
       * Geef een nieuwe naam als de eerste para meter op automl_setup om een nieuwe Conda-omgeving te maken. Bekijk bestaande Conda-omgevingen met `conda env list` en verwijder ze met `conda env remove -n <environmentname>` .
       
-* **automl_setup_linux. sh mislukt**: als automl_setup_linus. sh mislukt bij Ubuntu Linux met de fout:`unable to execute 'gcc': No such file or directory`-
+* **automl_setup_linux. sh mislukt**: als automl_setup_linus. sh mislukt bij Ubuntu Linux met de fout: `unable to execute 'gcc': No such file or directory`-
   1. Zorg ervoor dat de uitgaande poorten 53 en 80 zijn ingeschakeld. Op een virtuele machine van Azure kunt u dit doen vanuit Azure portal door de virtuele machine te selecteren en op netwerken te klikken.
-  2. Voer de volgende opdracht uit:`sudo apt-get update`
-  3. Voer de volgende opdracht uit:`sudo apt-get install build-essential --fix-missing`
+  2. Voer de volgende opdracht uit: `sudo apt-get update`
+  3. Voer de volgende opdracht uit: `sudo apt-get install build-essential --fix-missing`
   4. `automl_setup_linux.sh`Opnieuw uitvoeren
 
 * **Configuration. ipynb mislukt**:
@@ -329,7 +350,7 @@ time.sleep(600)
   1. Controleer of de configuratie. ipynb-notebook is uitgevoerd.
   2. Als het notitie blok wordt uitgevoerd vanuit een map die zich niet in de map bevindt waar de `configuration.ipynb` was uitgevoerd, kopieert u de map aml_config en het bestand config.jsop dat item zich in de nieuwe map. Workspace. from_config leest de config.jsop voor de notitieblokmap of de bovenliggende map.
   3. Als er een nieuw abonnement, een resource groep, werk ruimte of regio wordt gebruikt, moet u ervoor zorgen dat u het `configuration.ipynb` notitie blok opnieuw uitvoert. Het is niet mogelijk om config.jsrechtstreeks te wijzigen als de werk ruimte al bestaat in de opgegeven resource groep onder het opgegeven abonnement.
-  4. Als u de regio wilt wijzigen, wijzigt u de werk ruimte, de resource groep of het abonnement. `Workspace.create`Er wordt geen werk ruimte gemaakt of bijgewerkt als deze al bestaat, zelfs als de opgegeven regio verschillend is.
+  4. Als u de regio wilt wijzigen, wijzigt u de werk ruimte, de resource groep of het abonnement. `Workspace.create` Er wordt geen werk ruimte gemaakt of bijgewerkt als deze al bestaat, zelfs als de opgegeven regio verschillend is.
   
 * **Voorbeeld notitieblok mislukt**: als een voor beeld van een notebook mislukt met een fout die prepert, methode of bibliotheek niet bestaat:
   * Zorg ervoor dat de correctcorrect-kernel is geselecteerd in de jupyter-notebook. De kernel wordt weer gegeven in de rechter bovenhoek van de notitie blok pagina. De standaard waarde is azure_automl. Houd er rekening mee dat de kernel wordt opgeslagen als onderdeel van het notitie blok. Als u overschakelt naar een nieuwe Conda-omgeving, moet u dus de nieuwe kernel in het notitie Blok selecteren.
@@ -352,7 +373,7 @@ Voer deze acties uit voor de volgende fouten:
 |---------|---------|
 |Fout bij het maken van de installatie kopie bij het implementeren van de webservice     |  Voeg ' pynacl = = 1.2.1 ' toe als een PIP-afhankelijkheid voor het Conda-bestand voor installatie kopie configuratie       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Wijzig de SKU voor virtuele machines die in uw implementatie worden gebruikt naar een met meer geheugen. |
-|FPGA-fout     |  U kunt geen modellen implementeren op Fpga's totdat u hebt aangevraagd en goedgekeurd voor FPGA-quotum. Vul het quotum aanvraag formulier in om toegang aan te vragen:https://aka.ms/aml-real-time-ai       |
+|FPGA-fout     |  U kunt geen modellen implementeren op Fpga's totdat u hebt aangevraagd en goedgekeurd voor FPGA-quotum. Vul het quotum aanvraag formulier in om toegang aan te vragen: https://aka.ms/aml-real-time-ai       |
 
 ### <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Azure Machine Learning-onderdelen in AKS-cluster bijwerken
 

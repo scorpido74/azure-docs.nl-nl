@@ -1,6 +1,6 @@
 ---
 title: Service limieten voor Azure Key Vault-Azure Key Vault | Microsoft Docs
-description: Meer informatie over de service limieten voor Azure Key Vault.
+description: Meer informatie over service limieten voor Azure Key Vault, waaronder belang rijke trans acties en integratie van Azure private link.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 75fec93be9b43785a91c93b7c609231e37188602
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec1894a54e9ebc10e10c40984b4891be9272bd33
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429822"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191732"
 ---
 # <a name="azure-key-vault-service-limits"></a>Azure Key Vault-service limieten
 

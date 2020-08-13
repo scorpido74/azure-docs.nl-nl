@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met de Azure CDN SDK voor Node.js | Microsoft Docs
-description: Meer informatie over het schrijven van Node.js-toepassingen voor het beheren van Azure CDN.
+description: Meer informatie over het maken van een eenvoudige Node.js-console toepassing die laat zien hoe u het maken en beheren van Azure CDN profielen en eind punten kunt automatiseren.
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 96dc7e8d9fb647779fc2188fe36fe9fbced2e53c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: da695975b92ea6f81de103da5edf730811a193f8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387486"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190703"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Aan de slag met Azure CDN-ontwikkeling
 > [!div class="op_single_selector"]
@@ -345,7 +345,7 @@ function cdnDelete() {
 We kunnen ons Node.js-programma nu uitvoeren met onze favoriete fout opsporing of via de-console.
 
 > [!TIP]
-> Als u Visual Studio code gebruikt als het fout opsporingsprogramma, moet u uw omgeving instellen op het door geven van de opdracht regel parameters.  Visual Studio code doet dit in de **launch.js** in het bestand.  Zoek naar een eigenschap met de naam **args** en voeg een matrix van teken reeks waarden toe voor uw para meters, zodat deze er ongeveer als volgt uitziet: `"args": ["list", "profiles"]` .
+> Als u Visual Studio code gebruikt als het fout opsporingsprogramma, moet u uw omgeving instellen op het door geven van de opdracht regel parameters.  Visual Studio code doet dit in de **launch.js** in het bestand.  Zoek naar een eigenschap met de naam **args** en voeg een matrix van teken reeks waarden toe voor uw para meters, zodat deze er ongeveer als volgt uitziet:  `"args": ["list", "profiles"]` .
 > 
 > 
 

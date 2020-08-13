@@ -1,6 +1,6 @@
 ---
 title: Vooraf geladen assets op een Azure CDN eind punt | Microsoft Docs
-description: Meer informatie over het vooraf laden van inhoud in cache op een Azure CDN-eind punt.
+description: Meer informatie over het vooraf laden van inhoud in cache op een Azure Content Delivery Network-eind punt. Deze functie is beschikbaar in bepaalde versies van het product.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887580"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192576"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Vooraf assets op een Azure CDN-eindpunt laden
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -50,8 +50,8 @@ In deze zelf studie wordt u begeleid bij het vooraf laden van inhoud in de cache
    > Wanneer u begint met het invoeren van tekst, worden er meer tekst vakken voor **het inhoudsdistributiepad weer** gegeven, zodat u een lijst met meerdere assets kunt bouwen. Als u assets uit de lijst wilt verwijderen, selecteert u de knop met het weglatings teken (...) en selecteert u vervolgens **verwijderen**.
    > 
    > Elk inhoudsdistributiepad moet een relatieve URL zijn die voldoet aan de volgende [reguliere expressies](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
-   > - Laad één bestandspad:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - Laad één bestand met een query reeks:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > - Laad één bestandspad: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - Laad één bestand met een query reeks: `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
    > Omdat elk activum een eigen pad moet hebben, is er geen joker teken functionaliteit voor het vooraf laden van assets.
    > 
@@ -66,7 +66,7 @@ In deze zelf studie wordt u begeleid bij het vooraf laden van inhoud in de cache
 > 
 > 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Een Azure CDN-eind punt verwijderen](cdn-purge-endpoint.md)
 * [Azure CDN REST API verwijzing: inhoud op een eind punt vooraf laden](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Azure CDN REST API verwijzing: inhoud uit een eind punt verwijderen](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)

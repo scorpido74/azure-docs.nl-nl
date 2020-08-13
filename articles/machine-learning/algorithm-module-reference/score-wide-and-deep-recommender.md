@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/12/2020
-ms.openlocfilehash: df723824b2d80694913e32904ed81972381c5bcb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/12/2020
+ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536212"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192735"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Aanbevelingsfunctie voor wide en deep learning-scores
 
@@ -33,7 +33,7 @@ Wanneer u het laatste type voor spellingen maakt, kunt u in de *productie modus*
 
 - De **evaluatie modus** werkt op een beperkt aantal gebruikers of items die kunnen worden geëvalueerd en wordt doorgaans gebruikt tijdens het experimenteren.
 
-Meer informatie over de brede en diepe aanbeveling en de onderliggend theorie vindt u in het relevante Research Paper: [Wide & diepe learning voor aanbevolen systemen](https://arxiv.org/pdf/1606.07792.pdf).  
+Meer informatie over de brede en diepe aanbeveling en de onderliggend theorie vindt u in het relevante Research Paper:  [Wide & diepe learning voor aanbevolen systemen](https://arxiv.org/pdf/1606.07792.pdf).  
 
 ## <a name="how-to-configure-score-wide-and-deep-recommender"></a>Score breedte en diepe aanbeveling configureren
 
@@ -147,9 +147,6 @@ De gescoorde gegevensset die wordt geretourneerd door de **Score breed en de die
 
 - De eerste kolom bevat de gebruikers-id's.
 - Er worden een aantal extra kolommen gegenereerd, afhankelijk van de waarde die u hebt ingesteld voor het **maximum aantal items dat aan een gebruiker**moet worden aanbevolen. Elke kolom bevat een aanbevolen item (per id). De aanbevelingen worden geordend op basis van de gebruikers-item affiniteit, waarbij het item met de hoogste affiniteit in kolom, **item 1**, is geplaatst.
-
-> [!WARNING]
-> Deze gescoorde gegevensset kan niet worden geëvalueerd met behulp van de module [aanbeveling evalueren](evaluate-recommender.md) .
 
 ##  <a name="technical-notes"></a>Technische opmerkingen
 

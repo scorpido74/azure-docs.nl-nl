@@ -1,6 +1,6 @@
 ---
 title: Migratie van meerdere regio's Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Meer informatie over de migratie tussen regio's voor Azure Data Lake Storage Gen1.
+description: Meer informatie over hoe u rekening moet houden bij het plannen en volt ooien van een migratie naar Azure Data Lake Storage Gen1 wanneer deze beschikbaar wordt in nieuwe regio's.
 services: data-lake-store
 documentationcenter: ''
 author: swums
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba28d767c11c15b2dd70eeed2b39e13b084a7500
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60518471"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191348"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Azure Data Lake Storage Gen1 migreren tussen regio's
 

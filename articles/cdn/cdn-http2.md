@@ -1,6 +1,6 @@
 ---
 title: HTTP/2-ondersteuning in Azure CDN | Microsoft Docs
-description: Meer informatie over HTTP/2-en CDN-ondersteuning.
+description: Azure Content Delivery Network ondersteunt HTTP/2, dat voor delen ten opzichte van HTTP/1, zoals multiplexing & gelijktijdigheid, header compressie en stroom afhankelijkheden.
 services: cdn
 documentationcenter: ''
 author: lichard
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: ril
-ms.openlocfilehash: 703623e3f7f314d87417458f3f9a218dfdf45427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 698b1c7734882ea7f11114476b5e9a7f36a23a0e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67849976"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192620"
 ---
 # <a name="http2-support-in-azure-cdn"></a>HTTP/2-ondersteuning in Azure CDN
 

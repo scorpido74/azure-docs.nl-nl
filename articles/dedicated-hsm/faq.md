@@ -1,6 +1,6 @@
 ---
 title: Veelgestelde vragen-Azure dedicated HSM | Microsoft Docs
-description: Veelgestelde vragen met betrekking tot verschillende onderwerpen over een speciale Azure-HSM
+description: Vind antwoorden op veelgestelde vragen over de speciale hardware Security-module van Azure, zoals basis informatie, interoperabiliteit, hoge Beschik baarheid en ondersteuning.
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310382"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189867"
 ---
 # <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
 
@@ -69,8 +69,8 @@ Vanaf eind maart 2019 is toegewezen HSM beschikbaar in de volgende 14 regio's. V
 * VS - oost
 * VS - oost 2
 * VS - west
-* VS - west 2
-* VS - zuid-centraal
+* West US 2
+* South Central US
 * Azië - zuidoost
 * Azië - oost
 * India - centraal

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: c36e37ba876b4b768d852d6ecedb8e3b4d8f09d0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288554"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191139"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM-grootten zonder lokale tijdelijke schijf 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure VM-grootten die geen lokale tijdelijke schijf hebben (d.w.z. geen lokale tijdelijke schijf). Zie voor meer informatie over deze VM-grootten [specificaties voor Dv4-en Dsv4-Series (algemeen workloads)](dv4-dsv4-series.md) of [specificaties voor Ev4-en Esv4-serie (voor geheugen geoptimaliseerde workloads)](ev4-esv4-series.md).
@@ -56,7 +56,7 @@ Als de aangepaste installatie kopie van het besturings systeem naar de lokale ti
 Vul het [feedback formulier]( https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRUMzdCQkw0OVVRTldFUUtXSTlLQVBPUkVHSy4u)in. 
 
 ## <a name="next-steps"></a>Volgende stappen 
-In dit document hebt u meer geleerd over de meest voorkomende vragen met betrekking tot virtuele machines van Azure met een lokale tijdelijke schijf. Raadpleeg de volgende artikelen voor meer informatie over deze VM-grootten:
+In dit document hebt u meer geleerd over de meest voorkomende vragen met betrekking tot virtuele machines van Azure zonder lokale tijdelijke schijf. Raadpleeg de volgende artikelen voor meer informatie over deze VM-grootten:
 
 - [Specificaties voor de Dv4-en Dsv4-serie (Algemeen workload)](dv4-dsv4-series.md)
 - [Specificaties voor Ev4 en Esv4-Series (werk belasting geoptimaliseerd voor geheugen)](ev4-esv4-series.md)

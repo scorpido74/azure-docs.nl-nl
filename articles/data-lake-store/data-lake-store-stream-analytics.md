@@ -1,17 +1,17 @@
 ---
 title: Gegevens streamen van Stream Analytics naar Data Lake Storage Gen1-Azure
-description: Gebruik Azure Stream Analytics om gegevens in Azure Data Lake Storage Gen1 te streamen.
+description: Informatie over het gebruik van Azure Data Lake Storage Gen1 als uitvoer voor een Azure Stream Analytics-taak, met een eenvoudig scenario waarmee gegevens uit een Azure Storage-BLOB worden gelezen.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515164"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192144"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Gegevens streamen van Azure Storage Blob naar Azure Data Lake Storage Gen1 met behulp van Azure Stream Analytics
 In dit artikel leert u hoe u Azure Data Lake Storage Gen1 kunt gebruiken als uitvoer voor een Azure Stream Analytics taak. In dit artikel wordt een eenvoudig scenario gedemonstreerd waarmee gegevens uit een Azure Storage BLOB (invoer) worden gelezen en de gegevens naar Data Lake Storage Gen1 worden geschreven (uitvoer).
@@ -58,7 +58,7 @@ U begint met het maken van een Stream Analytics-taak die een invoer bron en een 
    * Selecteer **Tab**voor **scheidings teken**.
    * Voor **code ring**selecteert u **UTF-8**.
 
-     Klik op **Create**. De Portal voegt nu de invoer toe en test de verbinding.
+     Klik op **Maken**. De Portal voegt nu de invoer toe en test de verbinding.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Een Data Lake Storage Gen1 uitvoer voor de taak maken
@@ -86,9 +86,9 @@ U begint met het maken van een Stream Analytics-taak die een invoer bron en een 
    * Selecteer **Tab**voor **scheidings teken**.
    * Voor **code ring**selecteert u **UTF-8**.
     
-     Klik op **Create**. De Portal voegt nu de uitvoer toe en test de verbinding.
+     Klik op **Maken**. De Portal voegt nu de uitvoer toe en test de verbinding.
     
-## <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
+## <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
 
 1. Als u een Stream Analytics-taak wilt uitvoeren, moet u een query uitvoeren op het tabblad **query** . Voor deze zelf studie kunt u de voorbeeld query uitvoeren door de tijdelijke aanduidingen te vervangen door de invoer-en uitvoer aliassen van de taak, zoals wordt weer gegeven in de scherm opname hieronder.
 
@@ -112,5 +112,5 @@ U begint met het maken van een Stream Analytics-taak die een invoer bron en een 
 
     In het deel venster Data Explorer ziet u dat de uitvoer wordt geschreven naar een mappad zoals opgegeven in de Data Lake Storage Gen1 Output Settings ( `streamanalytics/job/output/{date}/{time}` ).  
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Een HDInsight-cluster maken voor het gebruik van Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

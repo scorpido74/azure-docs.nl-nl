@@ -1,17 +1,17 @@
 ---
 title: Vergelijking van Azure Data Lake Storage Gen1 met Blob Storage
-description: Biedt een samen vatting van de verschillen tussen Azure Data Lake Storage Gen1 en Azure Blob-opslag.
+description: Meer informatie over de verschillen tussen Azure Data Lake Storage Gen1 en Azure Blob Storage over bepaalde belang rijke aspecten van big data verwerking.
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: f9a03b5636af4a60c4abf563e073e22c970b8a02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6662beec47d663f92e453f52d190e41518108b0d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921774"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191488"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 en Azure Blob Storage vergelijken
 

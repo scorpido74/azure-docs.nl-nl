@@ -3,12 +3,12 @@ title: Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 description: U kunt als volgt een upgrade uitvoeren van een bestaand Service Fabric cluster om Azure Managed disks te gebruiken met weinig of geen uitval tijd van uw cluster.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542846"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192301"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 
@@ -24,10 +24,13 @@ De algemene strategie voor het upgraden van een Service Fabric cluster knooppunt
 
 Dit artikel begeleidt u stapsgewijs door de stappen voor het upgraden van het primaire knooppunt type van een voorbeeld cluster om beheerde schijven te gebruiken, terwijl u geen uitval tijd van het cluster kunt vermijden (zie opmerking hieronder). De aanvankelijke status van het test cluster bestaat uit één knooppunt type van [Silver duurzaamheid](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), dat wordt ondersteund door een enkele schaalset met vijf knoop punten.
 
+> [!NOTE]
+> De beperkingen van een basis-SKU load balancer voor komen dat een extra schaalset wordt toegevoegd. Het is raadzaam om in plaats daarvan de standaard SKU-load balancer te gebruiken. Zie [een vergelijking van de twee sku's](/azure/load-balancer/skus)voor meer informatie.
+
 > [!CAUTION]
 > U ondervindt alleen een onderbreking met deze procedure als u afhankelijkheden hebt op de cluster-DNS (bijvoorbeeld wanneer u [service Fabric Explorer](service-fabric-visualizing-your-cluster.md)opent). [Best Practice van de front-end-services](/azure/architecture/microservices/design/gateway) van de architectuur heeft een soort [Load Balancer](/azure/architecture/guide/technology-choices/load-balancing-overview) voor de knooppunt typen om het wisselen van knoop punten mogelijk te maken zonder storingen.
 
-Hier vindt u de [sjablonen en cmdlets](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) voor Azure Resource Manager die we gaan gebruiken om het upgrade scenario te volt ooien. De sjabloon wijzigingen worden uitgelegd in [een geüpgradede schaalset implementeren voor het primaire knooppunt type](#deploy-an-upgraded-scale-set-for-the-primary-node-type) hieronder.
+Hier vindt u de [sjablonen en cmdlets](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) voor Azure Resource Manager die we gaan gebruiken om het upgrade scenario te volt ooien. De sjabloon wijzigingen worden uitgelegd in [een geüpgradede schaalset implementeren voor het primaire knooppunt type](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  hieronder.
 
 ## <a name="set-up-the-test-cluster"></a>Het test cluster instellen
 
@@ -44,7 +47,7 @@ De volgende opdrachten begeleiden u bij het genereren van een nieuw zelfondertek
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Een zelfondertekend certificaat genereren en het cluster implementeren
 
-Wijs eerst de variabelen toe die u nodig hebt voor Service Fabric cluster implementatie. Pas de waarden voor `resourceGroupName` , `certSubjectName` ,, `parameterFilePath` en `templateFilePath` voor uw specifieke account en omgeving aan:
+Wijs eerst de variabelen toe die u nodig hebt voor Service Fabric cluster implementatie. Pas de waarden voor `resourceGroupName` ,  `certSubjectName` ,, `parameterFilePath` en `templateFilePath` voor uw specifieke account en omgeving aan:
 
 ```powershell
 # Assign deployment variables
@@ -165,7 +168,7 @@ Hier vindt u de sectie-voor-sectie wijzigingen van de originele cluster implemen
 
 #### <a name="parameters"></a>Parameters
 
-Voeg een para meter toe voor de exemplaar naam van de nieuwe schaalset. Merk `vmNodeType1Name` op dat uniek is voor de nieuwe schaalset, terwijl de waarden voor aantal en grootte identiek zijn aan de oorspronkelijke schaalset.
+Voeg para meters toe voor de exemplaar naam, het aantal en de grootte van de nieuwe schaalset. Merk `vmNodeType1Name` op dat uniek is voor de nieuwe schaalset, terwijl de waarden voor aantal en grootte identiek zijn aan de oorspronkelijke schaalset.
 
 **Sjabloonbestand**
 
@@ -174,7 +177,18 @@ Voeg een para meter toe voor de exemplaar naam van de nieuwe schaalset. Merk `vm
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-}
+},
+"nt1InstanceCount": {
+    "type": "int",
+    "defaultValue": 5,
+    "metadata": {
+        "description": "Instance count for node type"
+    }
+},
+"vmNodeType1Size": {
+    "type": "string",
+    "defaultValue": "Standard_D2_v2"
+},
 ```
 
 **Parameter bestand**
@@ -182,6 +196,12 @@ Voeg een para meter toe voor de exemplaar naam van de nieuwe schaalset. Merk `vm
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
+},
+"nt1InstanceCount": {
+    "value": 5
+},
+"vmNodeType1Size": {
+    "value": "Standard_D2_v2"
 }
 ```
 
@@ -199,13 +219,13 @@ Voeg in de sectie implementatie sjabloon `variables` een vermelding toe voor de 
 
 Voeg in de sectie *resources* van de implementatie sjabloon de nieuwe schaalset voor virtuele machines toe en houd daarbij de volgende dingen:
 
-* De nieuwe schaalset verwijst naar het nieuwe knooppunt type:
+* De nieuwe schaalset verwijst naar hetzelfde knooppunt type als het origineel:
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
     ```
 
-* De nieuwe schaalset verwijst naar hetzelfde load balancer back-end-adres en-subnet als het origineel, maar gebruikt een andere load balancer binnenkomende NAT-groep:
+* De nieuwe schaalset verwijst naar dezelfde load balancer back-end-adres en-subnet (maar gebruikt een andere load balancer binnenkomende NAT-groep):
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -236,33 +256,6 @@ Voeg in de sectie *resources* van de implementatie sjabloon de nieuwe schaalset 
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
-
-Voeg vervolgens een item toe aan de `nodeTypes` lijst met de resource *micro soft. ServiceFabric/clusters* . Gebruik dezelfde waarden als voor de oorspronkelijke vermelding van het knooppunt type, met uitzonde ring van de `name` , die moet verwijzen naar het nieuwe knooppunt type (*vmNodeType1Name*).
-
-```json
-"nodeTypes": [
-    {
-        "name": "[parameters('vmNodeType0Name')]",
-        ...
-    },
-    {
-        "name": "[parameters('vmNodeType1Name')]",
-        "applicationPorts": {
-            "endPort": "[parameters('nt0applicationEndPort')]",
-            "startPort": "[parameters('nt0applicationStartPort')]"
-        },
-        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
-        "ephemeralPorts": {
-            "endPort": "[parameters('nt0ephemeralEndPort')]",
-            "startPort": "[parameters('nt0ephemeralStartPort')]"
-        },
-        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
-        "isPrimary": true,
-        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-    }
-],
-```
 
 Zodra u alle wijzigingen in de sjabloon en de parameter bestanden hebt geïmplementeerd, gaat u verder met de volgende sectie om uw Key Vault verwijzingen te verkrijgen en de updates te implementeren in uw cluster.
 

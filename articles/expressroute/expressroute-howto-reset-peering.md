@@ -1,18 +1,18 @@
 ---
 title: 'Azure-ExpressRoute: een circuit peering opnieuw instellen'
-description: ExpressRoute-circuit peerings uitschakelen en inschakelen.
+description: Meer informatie over het uitschakelen en inschakelen van peerings van een Azure ExpressRoute-circuit met behulp van Azure PowerShell. Wanneer u peerings configureert, worden deze standaard ingeschakeld.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/13/2018
 ms.author: charwen
-ms.openlocfilehash: cc4266a92d510ac84118922f7db09c99234045b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e576fe2f08d54d2642603e3b7974e00feec8ce93
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735248"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192189"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute-circuit-peerings opnieuw instellen
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121847"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192025"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
@@ -33,18 +33,18 @@ De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u inform
 
 De volgende updates zijn specifiek voor de augustus-versie van de Text Analytics alleen voor de status container.
 
-* Nieuwe model versie voor Text Analytics status:`2020-07-24`
-* Nieuwe URL voor het verzenden van Text Analytics voor status aanvragen:`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+* Nieuwe model versie voor Text Analytics status: `2020-07-24`
+* Nieuwe URL voor het verzenden van Text Analytics voor status aanvragen: `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (als u de demo-web-app die is opgenomen in deze nieuwe container installatie kopie) wilt gebruiken, moet u ervoor zorgen dat de browser cache wordt gewist.
 
 De volgende eigenschappen in het JSON-antwoord zijn gewijzigd:
 
 * De naam van `type` is gewijzigd in `category` 
 * De naam van `score` is gewijzigd in `confidenceScore`
 * Entiteiten in het `category` veld van de JSON-uitvoer zijn nu in Pascal-gevallen. De naam van de volgende entiteiten is gewijzigd:
-    * `EXAMINATION_RELATION`is gewijzigd in `RelationalOperator` .
-    * `EXAMINATION_UNIT`is gewijzigd in `MeasurementUnit` .
-    * `EXAMINATION_VALUE`is gewijzigd in `MeasurementValue` .
-    * `ROUTE_OR_MODE`is hernoemd `MedicationRoute` .
+    * `EXAMINATION_RELATION` is gewijzigd in `RelationalOperator` .
+    * `EXAMINATION_UNIT` is gewijzigd in `MeasurementUnit` .
+    * `EXAMINATION_VALUE` is gewijzigd in `MeasurementValue` .
+    * `ROUTE_OR_MODE` is hernoemd `MedicationRoute` .
     * De naam van de relationele entiteit `ROUTE_OR_MODE_OF_MEDICATION` is gewijzigd in `RouteOfMedication` .
 
 De volgende entiteiten zijn toegevoegd:
@@ -82,7 +82,7 @@ De container biedt de volgende functies:
 
 De tekst analyse-API v3 is nu algemeen beschikbaar met de volgende updates:
 
-* Model versie`2020-04-01`
+* Model versie `2020-04-01`
 * Nieuwe [gegevens limieten](concepts/data-limits.md) voor elke functie
 * Bijgewerkte [taal ondersteuning](language-support.md) voor [sentimentanalyse (SA) v3](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * Afzonderlijk eind punt voor entiteits koppeling 
@@ -98,13 +98,13 @@ De tekst analyse-API v3 is nu algemeen beschikbaar met de volgende updates:
    * Evenement-sporten
 
 De volgende eigenschappen in het JSON-antwoord zijn toegevoegd:
-   * `SentenceText`in Sentimentanalyse
-   * `Warnings`voor elk document 
+   * `SentenceText` in Sentimentanalyse
+   * `Warnings` voor elk document 
 
 De namen van de volgende eigenschappen in het JSON-antwoord zijn gewijzigd, indien van toepassing:
 
 * De naam van `score` is gewijzigd in `confidenceScore`
-    * `confidenceScore`heeft twee decimale punten nauw keurigheid. 
+    * `confidenceScore` heeft twee decimale punten nauw keurigheid. 
 * De naam van `type` is gewijzigd in `category`
 * De naam van `subtype` is gewijzigd in `subcategory`
 
@@ -149,7 +149,7 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Organisatie
     * Leeftijd als subtype onder hoeveelheid
     * Datum als een subtype onder DateTime
-    * Email 
+    * E-mail 
     * Telefoon nummer (alleen VS)
     * URL
     * IP-adres

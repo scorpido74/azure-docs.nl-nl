@@ -1,6 +1,6 @@
 ---
 title: Hoge Beschik baarheid-specifieke HSM voor Azure | Microsoft Docs
-description: Voor beeld van een hoge Beschik baarheid voor Azure en basis overwegingen
+description: Meer informatie over de basis overwegingen voor de hoge Beschik baarheid van de speciale HSM van Azure. Dit artikel bevat een voor beeld.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f8fa2f12825fe88218fe7033a1721cb49fc7335
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70882245"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189853"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Hoge Beschik baarheid van exclusieve HSM voor Azure
 
@@ -25,7 +25,7 @@ De specifieke HSM van Azure wordt uitgebreid door de Maxi maal beschik bare data
 
 ## <a name="high-availability-example"></a>Voor beeld van hoge Beschik baarheid
 
-Informatie over het configureren van HSM-apparaten voor hoge Beschik baarheid op het software niveau vindt u in de Gemalto Luna Network HSM Administration Guide (Engelstalig). Dit document is beschikbaar op de [GEMALTO HSM-pagina](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).
+Informatie over het configureren van HSM-apparaten voor hoge Beschik baarheid op het software niveau vindt u in de Gemalto Luna Network HSM Administration Guide (Engelstalig). Dit document is beschikbaar op de  [GEMALTO HSM-pagina](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).
 
 Het volgende diagram toont een Maxi maal beschik bare architectuur. Het gebruikt meerdere apparaten in de regio en meerdere apparaten die zijn gekoppeld aan een afzonderlijke regio. Deze architectuur maakt gebruik van Mini maal vier HSM-apparaten en onderdelen van virtuele netwerken.
 

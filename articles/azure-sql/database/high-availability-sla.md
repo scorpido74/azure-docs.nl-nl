@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 33521a5aed38cacbc7ce87b4a2a917ade866e378
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 62dfa3214b86139a8f836b3d9bd72585653b7fa2
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142431"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189934"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hoge Beschik baarheid voor Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -117,4 +117,5 @@ Azure SQL Database en Azure SQL Managed instance bieden een ingebouwde oplossing
 - Meer informatie over [Azure-beschikbaarheidszones](../../availability-zones/az-overview.md)
 - Meer informatie over [service Fabric](../../service-fabric/service-fabric-overview.md)
 - Meer informatie over [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)
+- Meer informatie over [het initiëren van een hand matige failover op een SQL-beheerd exemplaar](../managed-instance/user-initiated-failover.md)
 - Zie [bedrijfs continuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md) voor meer opties voor hoge Beschik baarheid en herstel na nood gevallen.

@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 16065b45a6afea25615b985d3c89445dee48bd1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167722"
+ms.locfileid: "88192402"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,6 +32,13 @@ Een __virtueel netwerk__ fungeert als beveiligings grens en isoleert uw Azure-re
 + Algemene werk ervaring van zowel de [Azure Virtual Network-Service](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) als [IP-netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm).
 
 + Een bestaand virtueel netwerk en subnet voor gebruik met uw reken resources.
+
++ Als u resources wilt implementeren in een virtueel netwerk of subnet, moet uw gebruikers account over machtigingen beschikken voor de volgende acties in op rollen gebaseerde toegangs beheer (RBAC) van Azure:
+
+    - ' Micro soft. Network/virtualNetworks/lid/Action ' op de virtuele netwerk resource.
+    - ' Micro soft. Network/virtualNetworks/subnet/lid/Action ' op de bron van het subnet.
+
+    Zie voor meer informatie over RBAC met netwerken de [ingebouwde rollen voor netwerken](/azure/role-based-access-control/built-in-roles#networking)
 
 ## <a name="private-endpoints"></a>Privé-eindpunten
 
@@ -97,7 +104,7 @@ Nadat u uw werk ruimte-en opslag service account aan het virtuele netwerk hebt t
 
 1. Selecteer __+ Nieuw gegevens archief__als u een nieuwe gegevens opslag wilt maken. Als u een bestaand item wilt bijwerken, selecteert u het gegevens archief en selecteert u __referenties bijwerken__.
 
-1. Selecteer in de instellingen voor gegevens archief de optie __Ja__ __Als u wilt dat Azure machine learning-service toegang heeft tot de opslag met behulp van door werk ruimte beheerde identiteit__.
+1. Selecteer in de instellingen voor gegevens archief de optie __Ja__  __Als u wilt dat Azure machine learning-service toegang heeft tot de opslag met behulp van door werk ruimte beheerde identiteit__.
 
 > [!NOTE]
 > Het kan tot tien minuten duren voordat deze wijzigingen van kracht worden.
@@ -263,7 +270,7 @@ Als u een [beheerd Azure machine learning __Compute-doel__ ](concept-compute-tar
 > De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) van het abonnement.
 
 
-### <a name="required-ports"></a><a id="mlcports"></a>Vereiste poorten
+### <a name="required-ports"></a><a id="mlcports"></a> Vereiste poorten
 
 Als u van plan bent het virtuele netwerk te beveiligen door het netwerk verkeer naar/van het open bare Internet te beperken, moet u binnenkomende communicaties van de Azure Batch-service toestaan.
 
@@ -294,7 +301,7 @@ De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende i
 
 ![De regels voor uitgaande NSG voor Machine Learning Compute](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
-### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a>Uitgaande connectiviteit vanuit het virtuele netwerk beperken
+### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a> Uitgaande connectiviteit vanuit het virtuele netwerk beperken
 
 Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u de uitgaande toegang van uw virtuele netwerk wilt beperken, gebruikt u de volgende stappen:
 

@@ -1,6 +1,6 @@
 ---
 title: Problemen met bestands compressie in Azure CDN oplossen | Microsoft Docs
-description: Problemen met Azure CDN bestands compressie oplossen.
+description: Meer informatie over het oplossen van problemen met bestands compressie in azure Content Delivery Network. In dit artikel komen enkele mogelijke oorzaken aan bod.
 services: cdn
 documentationcenter: ''
 author: sohamnc
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5c56564ee6f07c5d208ea5d3089a2c96fd8bbc33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888699"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192527"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Problemen met CDN-bestandscompressie oplossen
 Dit artikel helpt u bij het oplossen van problemen met [CDN-bestands compressie](cdn-improve-performance.md).
