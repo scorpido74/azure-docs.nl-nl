@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 4e62536b610595c7a53eb8333f06f147e628dec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772043"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165818"
 ---
 # <a name="using-web-browsers-msalnet"></a>Webbrowsers (MSAL.NET) gebruiken
 
@@ -47,13 +47,13 @@ Over het algemeen is het raadzaam om de standaard waarde van het platform te geb
 
 | Framework        | Ingesloten | Systeem | Standaard |
 | ------------- |-------------| -----| ----- |
-| .NET-klassiek     | Yes | Ja ^ | Ingesloten |
-| .NET Core     | No | Ja ^ | Systeem |
-| .NET Standard | No | Ja ^ | Systeem |
-| UWP | Yes | Nee | Ingesloten |
+| .NET-klassiek     | Ja | Ja ^ | Ingesloten |
+| .NET Core     | Nee | Ja ^ | Systeem |
+| .NET Standard | Nee | Ja ^ | Systeem |
+| UWP | Ja | Nee | Ingesloten |
 | Xamarin.Android | Ja | Ja  | Systeem |
 | Xamarin.iOS | Ja | Ja  | Systeem |
-| Xamarin. Mac| Yes | Nee | Ingesloten |
+| Xamarin. Mac| Ja | Nee | Ingesloten |
 
 ^ Vereist de http://localhost omleidings-URI
 

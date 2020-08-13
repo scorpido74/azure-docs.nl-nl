@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: 828c8a33315f5a76eea780705e2cdf3c2871bd14
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc4c39cf26f3ab8d1037222f967789bfbeca05ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012804"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166770"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Wat zijn Azure Machine Learning omgevingen?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -94,7 +94,7 @@ Als u wilt bepalen of u een installatie kopie in cache opnieuw wilt gebruiken of
  * Lijst met Python-pakketten in de Conda-definitie
  * Lijst met pakketten in Spark-definitie 
 
-De hash is niet afhankelijk van de naam of versie van de omgeving: als u de naam van uw omgeving wijzigt of een nieuwe omgeving maakt met de exacte eigenschappen en pakketten van een bestaande, blijft de hash-waarde gelijk. Wijzigingen in de omgevings definities, zoals het toevoegen of verwijderen van een python-pakket of het wijzigen van de pakket versie, zorgen er echter voor dat de hash-waarde wordt gewijzigd. Het is belang rijk te weten dat elke wijziging in een gecuratore omgeving de hash ongeldig maakt en een nieuwe ' niet-nagemaakte ' omgeving heeft.
+De hash is niet afhankelijk van de naam of versie van de omgeving: als u de naam van uw omgeving wijzigt of een nieuwe omgeving maakt met de exacte eigenschappen en pakketten van een bestaande, blijft de hash-waarde gelijk. Wijzigingen in de omgevings definities, zoals het toevoegen of verwijderen van een python-pakket of het wijzigen van de pakket versie, zorgen er echter voor dat de hash-waarde wordt gewijzigd. Het wijzigen van de volg orde van afhankelijkheden of kanalen in een omgeving resulteert in een nieuwe omgeving en daarom moet er een nieuwe installatie kopie worden gemaakt. Het is belang rijk te weten dat elke wijziging in een gecuratore omgeving de hash ongeldig maakt en een nieuwe ' niet-nagemaakte ' omgeving heeft.
 
 De berekende hashwaarde wordt vergeleken met de waarden in de werk ruimte en de globale ACR (of op het reken doel voor lokale uitvoeringen). Als er een overeenkomst is, wordt de in de cache opgeslagen afbeelding opgehaald, anders wordt een installatie kopie-build geactiveerd. De duur van het ophalen van een in cache opgeslagen afbeelding bevat de download tijd, terwijl de duur voor het ophalen van een nieuw gebouwde afbeelding de build-tijd en de download tijd bevat. 
 
@@ -105,7 +105,7 @@ In het volgende diagram ziet u drie omgevings definities. Er zijn twee verschill
 >[!IMPORTANT]
 > Als u een omgeving met een niet-vastgemaakte pakket afhankelijkheid maakt, blijft ```numpy``` die omgeving de pakket versie gebruiken die is geïnstalleerd _op het moment dat de omgeving wordt gemaakt_. Daarnaast blijft de oude versie van alle toekomstige omgevingen met de overeenkomende definitie bewaard. 
 
-Als u het pakket wilt bijwerken, moet u een versie nummer opgeven om het opnieuw samen stellen van de installatie kopie af te dwingen ```numpy==1.18.1``` . Er worden nieuwe afhankelijkheden, inclusief geneste items, geïnstalleerd die een eerder werkend scenario kunnen verstoren.
+Als u het pakket wilt bijwerken, moet u een versie nummer opgeven om het opnieuw samen stellen van de installatie kopie af te dwingen ```numpy==1.18.1``` . Er worden nieuwe afhankelijkheden, inclusief geneste items, geïnstalleerd die een eerder werkend scenario kunnen verstoren. 
 
 > [!WARNING]
 >  Met de methode [environment. build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) wordt de installatie kopie in de cache opnieuw opgebouwd, met mogelijk neven effect van het bijwerken van losgemaakte pakketten en het verbreken van de reproduceer baarheid voor alle omgevings definities die overeenkomen met die in de cache opgeslagen afbeelding.

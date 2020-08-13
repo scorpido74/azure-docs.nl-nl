@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2020
+ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 034e72238375750651a1374a94b844d36fd97d03
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438942"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166447"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -28,6 +28,64 @@ Azure-beveiliging is in actieve ontwikkeling en ontvangt voortdurend verbetering
 - Afgeschafte functionaliteit
 
 Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u op zoek bent naar items die ouder zijn dan zes maanden, kunt u deze vinden in het [Archief voor wat er nieuw is in azure Security Center](release-notes-archive.md).
+
+
+## <a name="august-2020"></a>Augustus 2020
+
+### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Evaluatie van beveiligings problemen op Vm's-aanbevelingen en beleids regels geconsolideerd
+
+Security Center inspecteert uw Vm's om te detecteren of ze een oplossing voor de evaluatie van beveiligings problemen uitvoeren. Als er geen oplossing voor de evaluatie van beveiligings problemen wordt gevonden, biedt Security Center een aanbeveling om de implementatie te vereenvoudigen.
+
+Als er beveiligings problemen worden gevonden, wordt in Security Center een aanbeveling gegeven waarin de resultaten worden beschreven die u zo nodig kunt onderzoeken en herstellen.
+
+Om ervoor te zorgen dat alle gebruikers een consistente ervaring hebben, ongeacht het type scanner dat ze gebruiken, hebben we vier aanbevelingen ondergaan in de volgende twee:
+
+|Uniforme aanbeveling|Beschrijving wijzigen|
+|----|:----|
+|**Er moet een oplossing voor de evaluatie van beveiligings problemen worden ingeschakeld op uw virtuele machines**|Vervangt de volgende twee aanbevelingen:<br> **•** De ingebouwde oplossing voor de evaluatie van beveiligings problemen inschakelen op virtuele machines (mogelijk gemaakt door Qualys (nu afgeschaft) (inbegrepen bij de laag standaard)<br> **•** De oplossing voor de evaluatie van beveiligings problemen moet worden geïnstalleerd op uw virtuele machines (nu afgeschaft) (standaard en gratis lagen)|
+|**Beveiligings problemen in uw virtuele machines moeten worden hersteld**|Vervangt de volgende twee aanbevelingen:<br>**•** Beveiligings problemen op uw virtuele machines herstellen (mogelijk gemaakt door Qualys) (nu afgeschaft)<br>**•** Beveiligings problemen moeten worden opgelost door een oplossing voor beveiligings evaluatie (nu afgeschaft)|
+|||
+
+U gaat nu dezelfde aanbeveling gebruiken om de uitbrei ding voor de evaluatie van beveiligings problemen van Security Center of een privé-oplossing ("BYOL") te implementeren van een partner zoals Qualys of Rapid7.
+
+Wanneer er beveiligings lekken worden gevonden en gerapporteerd aan Security Center, wordt u door één aanbeveling gewaarschuwd voor de bevindingen, ongeacht de oplossing voor de evaluatie van beveiligings problemen die ze hebben geïdentificeerd.
+
+#### <a name="updating-dependencies"></a>Afhankelijkheden bijwerken
+
+Als u scripts, query's of Automatiseringen hebt die verwijzen naar de vorige aanbevelingen of beleids sleutels/-namen, gebruikt u de onderstaande tabellen om de verwijzingen bij te werken:
+
+##### <a name="before-august-2020"></a>Vóór augustus 2020
+
+|Aanbeveling|Bereik|
+|----|:----|
+|**De ingebouwde oplossing voor de evaluatie van beveiligings problemen inschakelen op virtuele machines (aangedreven door Qualys)**<br>Sleutel: 550e890b-e652-4d22-8274-60b3bdb24c63|Ingebouwd|
+|**Beveiligings problemen op uw virtuele machines herstellen (aangedreven door Qualys)**<br>Sleutel: 1195afff-c881-495e-9bc5-1486211ae03f|Ingebouwd|
+|**De oplossing voor de evaluatie van beveiligings problemen moet worden geïnstalleerd op uw virtuele machines**<br>Sleutel: 01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
+|**Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen**<br>Sleutel: 71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
+||||
+
+
+|Beleid|Bereik|
+|----|:----|
+|**De evaluatie van beveiligings problemen moet worden ingeschakeld op virtuele machines**<br>Beleids-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Ingebouwd|
+|**Beveiligings problemen moeten worden opgelost met een oplossing voor de evaluatie van de beveiligings lekken**<br>Beleids-ID: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
+||||
+
+
+##### <a name="from-august-2020"></a>Van 2020 augustus
+
+|Aanbeveling|Bereik|
+|----|:----|
+|**Er moet een oplossing voor de evaluatie van beveiligings problemen worden ingeschakeld op uw virtuele machines**<br>Sleutel: ffff0522-1e88-47fc-8382-2a80ba848f5d|Ingebouwde en BYOL|
+|**Beveiligings problemen in uw virtuele machines moeten worden hersteld**<br>Sleutel: 1195afff-c881-495e-9bc5-1486211ae03f|Ingebouwde en BYOL|
+||||
+
+|Beleid|Bereik|
+|----|:----|
+|[**De evaluatie van beveiligings problemen moet worden ingeschakeld op virtuele machines**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>Beleids-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Ingebouwde en BYOL|
+||||
+
+
 
 ## <a name="july-2020"></a>Juli 2020
 
@@ -119,12 +177,14 @@ Meer informatie over de beveiliging van de container van Security Center in de v
 
 De functie voor besturings elementen voor adaptieve toepassingen heeft twee belang rijke updates ontvangen:
 
-- Een nieuwe aanbeveling duidt mogelijk legitiem gedrag aan dat nog niet is toegestaan. De nieuwe aanbeveling, **Allowlist regels in uw adaptieve toepassings beheer beleid moeten worden bijgewerkt**. u wordt gevraagd nieuwe regels aan het bestaande beleid toe te voegen om het aantal fout-positieven in adaptieve toepassings besturings elementen schendings waarschuwingen te verminderen.
+* Een nieuwe aanbeveling duidt mogelijk legitiem gedrag aan dat nog niet is toegestaan. De nieuwe aanbeveling, **Allowlist regels in uw adaptieve toepassings beheer beleid moeten worden bijgewerkt**. u wordt gevraagd nieuwe regels aan het bestaande beleid toe te voegen om het aantal fout-positieven in adaptieve toepassings besturings elementen schendings waarschuwingen te verminderen.
 
-- Padregels ondersteunen nu Joker tekens. Vanuit deze update kunt u regels voor toegestane paden configureren met behulp van joker tekens. Er zijn twee ondersteunde scenario's:
+* Padregels ondersteunen nu Joker tekens. Vanuit deze update kunt u regels voor toegestane paden configureren met behulp van joker tekens. Er zijn twee ondersteunde scenario's:
 
-    - Een Joker teken aan het einde van een pad gebruiken om alle uitvoer bare bestanden in deze map en submappen toe te staan
-    - Een Joker teken gebruiken in het midden van een pad om een bekende naam voor een uitvoerbaar bestand met een veranderende mapnaam (bijvoorbeeld persoonlijke gebruikers mappen met een bekend uitvoerbaar bestand, automatisch gegenereerde mapnamen, enzovoort) in te scha kelen. 
+    * Een Joker teken aan het einde van een pad gebruiken om alle uitvoer bare bestanden in deze map en submappen toe te staan
+
+    * Een Joker teken gebruiken in het midden van een pad om een bekende naam voor een uitvoerbaar bestand met een veranderende mapnaam (bijvoorbeeld persoonlijke gebruikers mappen met een bekend uitvoerbaar bestand, automatisch gegenereerde mapnamen, enzovoort) in te scha kelen.
+
 
 Meer [informatie over adaptieve toepassings besturings elementen](security-center-adaptive-application.md).
 
@@ -340,7 +400,7 @@ De beveiligings besturings elementen-en deze wissel knop maken deel uit van de n
 
 Meer informatie over beveiligings controles in [Enhanced Secure Score (preview) in azure Security Center](secure-score-security-controls.md).
 
-![Wissel knop "groeperen op besturings elementen" voor aanbevelingen](./media/secure-score-security-controls/recommendations-group-by-toggle.gif)
+![Wissel knop "groeperen op besturings elementen" voor aanbevelingen](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Uitgebreide beveiliging, aanbevolen procedures voor het implementeren van beveiliging 
 
@@ -512,17 +572,4 @@ Twee beveiligings aanbevelingen met betrekking tot webtoepassingen worden afgesc
 Deze aanbevelingen worden niet meer weer gegeven in de Security Center lijst met aanbevelingen. Het gerelateerde beleid wordt niet meer opgenomen in het initiatief ' Security Center default '.
 
 Meer informatie over [beveiligings aanbevelingen](recommendations-reference.md).
-
-
-
-## <a name="february-2020"></a>Februari 2020
-
-### <a name="fileless-attack-detection-for-linux-preview"></a>Aanvals detectie met een bestand voor Linux (preview-versie)
-
-Als aanvallers stealthier Azure Security Center-methoden gebruiken om detectie te voor komen, wordt in aanvulling op Windows de detectie van de aanval van bestanden voor Linux uitgebreid. Aanvallen waarbij misbruik wordt gemaakt van software, schadelijke nettoladingen in goed aardige systeem processen injecteren en in het geheugen verbergen. Deze technieken:
-
-- traceringen van malware op schijf minimaliseren of elimineren
-- de kans op detectie door op schijf gebaseerde scan oplossingen op basis van malware aanzienlijk beperken
-
-Als u deze bedreiging wilt bemeteren, Azure Security Center u de aanvals detectie van bestanden voor Windows in oktober 2018 vrijgegeven en nu ook uitgebreide aanvals detectie op Linux. 
 

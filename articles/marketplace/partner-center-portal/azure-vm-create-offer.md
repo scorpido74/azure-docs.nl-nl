@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037266"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166702"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -227,7 +227,7 @@ Geef de ondersteunings website op waar klanten uw ondersteunings team kunnen ber
 Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wanneer uw klanten een ondersteunings ticket openen. Deze informatie wordt niet vermeld op Azure Marketplace.
 
 - Naam
-- E-mail
+- Email
 - Telefoon
 
 ### <a name="engineering-contact"></a>Technische contact persoon
@@ -235,7 +235,7 @@ Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wan
 Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn met uw aanbieding, met inbegrip van problemen met certificering. Deze informatie wordt niet vermeld op Azure Marketplace.
 
 - Naam
-- E-mail
+- Email
 - Telefoon
 
 ### <a name="azure-marketplace-media"></a>Azure Marketplace-media
@@ -291,6 +291,8 @@ Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie.
 ## <a name="plan-overview"></a>Overzicht van plan
 
 U kunt in Partner Center diverse opties voor het plannen bieden binnen dezelfde aanbieding. Voor een aanbieding is ten minste één abonnement vereist (voorheen een SKU genoemd), wat kan variëren per verdiensten maximaliseren-doel, Azure-regio,-functies of VM-installatie kopieën.
+
+U kunt Maxi maal 100 abonnementen maken voor elke aanbieding: Maxi maal 45 van deze kunnen privé zijn. Meer informatie over privé-abonnementen [vindt u in de micro soft Commercial Marketplace](../private-offers.md).
 
 Nadat u uw plannen hebt gemaakt, selecteert u het tabblad Overzicht van het **plan** dat u wilt weer geven:
 

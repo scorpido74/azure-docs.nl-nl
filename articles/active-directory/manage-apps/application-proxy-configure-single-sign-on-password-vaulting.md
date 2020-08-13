@@ -14,18 +14,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764771"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165036"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Wachtwoord kluis voor eenmalige aanmelding met toepassings proxy
 
 Azure Active Directory-toepassingsproxy helpt u bij het verbeteren van de productiviteit door on-premises toepassingen te publiceren zodat externe werk nemers er ook veilig toegang toe kunnen krijgen. In de Azure Portal kunt u eenmalige aanmelding (SSO) ook instellen voor deze apps. Uw gebruikers hoeven zich alleen te verifiëren bij Azure AD en ze hebben toegang tot uw bedrijfs toepassing zonder zich opnieuw aan te melden.
 
-Toepassings proxy biedt ondersteuning voor verschillende [modi voor eenmalige aanmelding](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Aanmelding op basis van wacht woorden is bedoeld voor toepassingen die gebruikmaken van een combi natie van gebruikers naam en wacht woord voor verificatie. Wanneer u aanmelden op basis van wacht woorden voor uw toepassing configureert, moeten uw gebruikers één keer zich aanmelden bij de on-premises toepassing. Hierna slaat Azure Active Directory de aanmeldings gegevens op en geeft deze automatisch aan de toepassing door wanneer uw gebruikers op afstand toegang hebben tot de app.
+Toepassings proxy biedt ondersteuning voor verschillende [modi voor eenmalige aanmelding](sso-options.md#choosing-a-single-sign-on-method). Aanmelding op basis van wacht woorden is bedoeld voor toepassingen die gebruikmaken van een combi natie van gebruikers naam en wacht woord voor verificatie. Wanneer u aanmelden op basis van wacht woorden voor uw toepassing configureert, moeten uw gebruikers één keer zich aanmelden bij de on-premises toepassing. Hierna slaat Azure Active Directory de aanmeldings gegevens op en geeft deze automatisch aan de toepassing door wanneer uw gebruikers op afstand toegang hebben tot de app.
 
 U moet uw app al hebben gepubliceerd en getest met toepassings proxy. Als dat niet het geval is, volgt u de stappen in [toepassingen publiceren met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md) vervolgens weer terug.
 

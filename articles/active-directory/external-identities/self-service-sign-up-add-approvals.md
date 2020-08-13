@@ -4,19 +4,19 @@ description: API-connectors toevoegen voor aangepaste goedkeurings werk stromen 
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: how-to
+ms.topic: article
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908550"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165231"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Een aangepaste goedkeurings werk stroom toevoegen aan self-service registratie
 
@@ -65,7 +65,7 @@ Vervolgens maakt u [de API-connectors](self-service-sign-up-add-api-connector.md
 
   ![De configuratie van de goedkeurings status API-connector controleren](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **Goed keuring aanvragen** : een aanroep naar het goedkeurings systeem verzenden nadat een gebruiker de pagina kenmerk verzameling heeft voltooid, maar voordat het gebruikers account is gemaakt, om goed keuring aan te vragen. De goedkeurings aanvraag kan automatisch worden verleend of hand matig worden gecontroleerd. Voor beeld van een API-connector voor het goed keuren van aanvragen. Selecteer **claims om te verzenden** dat het goedkeurings systeem een goedkeurings beslissing moet nemen.
+- **Goed keuring aanvragen** : een aanroep naar het goedkeurings systeem verzenden nadat een gebruiker de pagina kenmerk verzameling heeft voltooid, maar voordat het gebruikers account is gemaakt, om goed keuring aan te vragen. De goedkeurings aanvraag kan automatisch worden verleend of hand matig worden gecontroleerd. Voor beeld van een API-connector voor het goed keuren van aanvragen. 
 
   ![Configuratie van API-connector voor goed keuring aanvragen](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -90,28 +90,33 @@ Nu voegt u de API-Connect oren toe aan een self-service voor het aanmelden van e
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>De registratie stroom beheren met API-antwoorden
 
-Uw goedkeurings systeem kan de [API-antwoord typen](self-service-sign-up-add-api-connector.md#expected-response-types-from-the-web-api) van de twee API-eind punten gebruiken om de registratie stroom te beheren.
+Uw goedkeurings systeem kan gebruikmaken van de reacties wanneer deze worden aangeroepen om de registratie stroom te beheren. 
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>Aanvraag en antwoorden voor de API-connector ' goedkeurings status controleren '
 
 Voor beeld van de aanvraag die wordt ontvangen door de API van de API-connector ' goedkeurings status controleren ':
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
      "issuerAssignedId":"0123456789"
      }
  ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "lastName":"Smith",
  "ui_locales":"en-US"
 }
 ```
+
+De exacte claims die worden verzonden naar de API, zijn afhankelijk van welke informatie wordt verstrekt door de ID-provider. e-mail bericht wordt altijd verzonden.
 
 #### <a name="continuation-response-for-check-approval-status"></a>Vervolg reactie op ' goedkeurings status controleren '
 
@@ -169,12 +174,12 @@ Content-type: application/json
 Voor beeld van een HTTP-aanvraag die wordt ontvangen door de API van de API-connector ' goed keuring aanvragen ':
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -182,11 +187,21 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
- "city": "Redmond",
- "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
+
+De exacte claims die worden verzonden naar de API, zijn afhankelijk van welke gegevens van de gebruiker worden verzameld of door de ID-provider worden verstrekt.
 
 #### <a name="continuation-response-for-request-approval"></a>Vervolg reactie op ' goed keuring aanvragen '
 
@@ -257,7 +272,7 @@ Na het verkrijgen van hand matige goed keuring maakt het aangepaste goedkeurings
 
 Als uw gebruiker zich heeft aangemeld met een Google-of Facebook-account, kunt u de API voor het [maken van gebruikers](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)gebruiken.
 
-1. Het goedkeurings systeem ontvangt de HTTP-aanvraag van de gebruikers stroom.
+1. Met het goedkeurings systeem wordt de HTTP-aanvraag van de gebruikers stroom ontvangen.
 
 ```http
 POST <Approvals-API-endpoint>

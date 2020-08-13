@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f8494852bcff49602645c940470b529302f119f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764805"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165070"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Systeem eigen client toepassingen inschakelen voor interactie met proxy toepassingen
 
@@ -124,4 +124,4 @@ Nadat u de MSAL-code met deze para meters hebt bewerkt, kunnen uw gebruikers zic
 
 Zie [systeem eigen apps in azure Active Directory](../azuread-dev/native-app.md)voor meer informatie over de systeem eigen toepassings stroom.
 
-Meer informatie over het instellen van [eenmalige aanmelding voor toepassingen in azure Active Directory](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+Meer informatie over het instellen van [eenmalige aanmelding voor toepassingen in azure Active Directory](sso-options.md#choosing-a-single-sign-on-method).

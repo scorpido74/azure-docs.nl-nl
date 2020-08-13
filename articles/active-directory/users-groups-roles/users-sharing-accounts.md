@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386942"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164220"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Accounts delen met Azure AD
 
@@ -55,7 +55,7 @@ Azure AD biedt ondersteuning voor gedeelde accounts voor een Enter prise Mobilit
 
 Azure AD-functies die het delen van accounts mogelijk maken omvatten:
 
-* [Eenmalige aanmelding met wacht woord](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* [Eenmalige aanmelding met wacht woord](../manage-apps/sso-options.md#password-based-sso)
 * Aanmeldings agent voor eenmalige aanmelding
 * [Groeps toewijzing](groups-self-service-management.md)
 * Aangepaste wacht woord-apps

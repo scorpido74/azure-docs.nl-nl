@@ -4,19 +4,19 @@ description: Een web-API configureren voor gebruik in een gebruikers stroom.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: how-to
+ms.topic: article
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88270d51bf50b2b175d9d8761685a8a2a8ae19b1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5f241fd038d0d7309d8e1e5578dd77f950261b68
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908555"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165172"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Een API-connector toevoegen aan een gebruikers stroom
 
@@ -38,20 +38,54 @@ Als u een [API-connector](api-connectors-overview.md)wilt gebruiken, maakt u eer
    - Momenteel wordt alleen basis verificatie ondersteund. Als u een API zonder basis verificatie voor ontwikkelings doeleinden wilt gebruiken, voert u een dummy **gebruikers naam** en **wacht woord** in die door uw API kunnen worden genegeerd. Voor gebruik met een Azure-functie met een API-sleutel kunt u de code als een query parameter in de **eind punt-URL** toevoegen (bijvoorbeeld https []() ://contoso.azurewebsites.net/API/endpoint<b>? code = 0123456789</b>).
 
    ![Een nieuwe API-connector toevoegen](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
+8. Selecteer **Opslaan**.
 
-8. Selecteer de claims die u naar de API wilt verzenden.
-9. Selecteer claims die u van de API wilt ontvangen.
-
-   <!-- ![Set API connector claims](./media/self-service-sign-up-add-api-connector/api-connector-claims.png) -->
-
-10. Selecteer **Opslaan**.
-
-### <a name="selection-of-claims-to-send-and-claims-to-receive"></a>Selectie van ' claims voor verzenden ' en ' te ontvangen claims '
 > [!IMPORTANT]
-> Mogelijk ziet u alle claims die standaard zijn geselecteerd, zoals hieronder wordt weer gegeven. Alle API-connectors worden bijgewerkt om op deze manier te werken. Uw API ontvangt alle beschik bare claims en kan een ondersteunde claim terugsturen zonder ze te configureren in de API-connector definitie. 
+> Voorheen moest u configureren welke gebruikers kenmerken moeten worden verzonden naar de API (' claims to send ') en welke gebruikers kenmerken moeten worden geaccepteerd van de API (' claims to receive '). Nu worden alle gebruikers kenmerken standaard verzonden als ze een waarde hebben en elk gebruikers kenmerk kan worden geretourneerd door de API in een vervolg-antwoord.
 
-![Claims voor API-connector instellen](./media/self-service-sign-up-add-api-connector/api-connector-claims-new.png)
+## <a name="the-request-sent-to-your-api"></a>De aanvraag die naar uw API wordt verzonden
+Een API-connector resultatenset als een **http post-** aanvraag, waarbij gebruikers kenmerken (' claims ') worden verzonden als sleutel-waardeparen in een JSON-hoofd tekst. Kenmerken worden op dezelfde manier geserialiseerd als [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties) gebruikers eigenschappen. 
 
+**Voorbeeldaanvraag**
+```http
+POST <API-endpoint>
+Content-type: application/json
+
+{
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
+     {
+     "signInType":"federated",
+     "issuer":"facebook.com",
+     "issuerAssignedId":"0123456789"
+     }
+ ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
+ "ui_locales":"en-US"
+}
+```
+
+Alleen gebruikers eigenschappen en aangepaste kenmerken die worden weer gegeven in de **Azure Active Directory**  >  aangepaste gebruikers kenmerken van**externe identiteiten**kunnen  >  **Custom user attributes** in de aanvraag worden verzonden.
+
+Aangepaste kenmerken bestaan in de indeling **extension_ \<extensions-app-id> _AttributeName** in de map. Uw API moet verwachten dat er claims in dezelfde geserialiseerde indeling worden ontvangen. Zie voor meer informatie over aangepaste kenmerken [aangepaste kenmerken definiëren voor Self-service aanmeldingen](user-flow-add-custom-attributes.md).
+
+Daarnaast wordt de **gebruikers interface land instellingen (' ui_locales ')** standaard in alle aanvragen verzonden. Het biedt de land instellingen van een gebruiker, zoals geconfigureerd op hun apparaat, dat door de API kan worden gebruikt om internationale reacties te retour neren.
+
+> [!IMPORTANT]
+> Als een claim voor verzenden geen waarde heeft op het moment dat het API-eind punt wordt aangeroepen, wordt de claim niet verzonden naar de API. Uw API moet worden ontworpen om expliciet te controleren op de verwachte waarde.
+
+> [!TIP] 
+> [**identiteiten (' Identities ')**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) en het **e-mail adres (' e-mail ')** kunnen worden gebruikt door uw API om een gebruiker te identificeren voordat ze een account in uw Tenant hebben. De claim ' Identities ' wordt verzonden wanneer een gebruiker zich verifieert met een id-provider zoals Google of Facebook. e-mail bericht wordt altijd verzonden.
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>De API-connector inschakelen in een gebruikers stroom
 
@@ -70,13 +104,72 @@ Volg deze stappen om een API-connector toe te voegen aan een self-service voor h
 
 6. Selecteer **Opslaan**.
 
-Meer informatie over [waar u een API-connector in een gebruikers stroom kunt inschakelen](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow).
+## <a name="after-signing-in-with-an-identity-provider"></a>Nadat u zich hebt aangemeld met een id-provider
 
-## <a name="request-sent-to-the-api"></a>De aanvraag is verzonden naar de API
+Een API-connector in deze stap van het registratie proces wordt direct geactiveerd nadat de gebruiker zich bij een id-provider (Google, Facebook, Azure AD) heeft geverifieerd. Deze stap gaat vooraf aan de ***pagina kenmerk verzameling***. Dit is het formulier dat wordt weer gegeven aan de gebruiker om gebruikers kenmerken te verzamelen. 
 
-Een API-connector resultatenset als een HTTP POST-aanvraag, waarbij geselecteerde claims als sleutel-waardeparen worden verzonden in een JSON-hoofd tekst. Het antwoord moet ook de HTTP-header hebben `Content-Type: application/json` . Kenmerken worden op dezelfde manier geserialiseerd als Microsoft Graph gebruikers kenmerken. <!--# TODO: Add link to MS Graph or create separate reference.-->
+<!-- The following are examples of API connector scenarios you may enable at this step:
+- Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
+- Validate whether the user is included in an allow or deny list, and control whether they can continue with the sign-up flow. -->
 
-### <a name="example-request"></a>Voorbeeldaanvraag
+### <a name="example-request-sent-to-the-api-at-this-step"></a>Voorbeeld aanvraag die wordt verzonden naar de API in deze stap
+```http
+POST <API-endpoint>
+Content-type: application/json
+
+{
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
+     {
+     "signInType":"federated",
+     "issuer":"facebook.com",
+     "issuerAssignedId":"0123456789"
+     }
+ ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "lastName":"Smith",
+ "ui_locales":"en-US"
+}
+```
+
+De exacte claims die worden verzonden naar de API, zijn afhankelijk van welke informatie wordt verstrekt door de ID-provider. e-mail bericht wordt altijd verzonden.
+
+### <a name="expected-response-types-from-the-web-api-at-this-step"></a>Verwachte antwoord typen van de Web-API bij deze stap
+
+Wanneer de Web-API tijdens een gebruikers stroom een HTTP-aanvraag van Azure AD ontvangt, kan deze de volgende antwoorden retour neren:
+
+- Vervolg reactie
+- Antwoord blok keren
+
+#### <a name="continuation-response"></a>Vervolg reactie
+
+Een vervolg antwoord geeft aan dat de gebruikers stroom moet door gaan naar de volgende stap: de pagina kenmerk verzameling.
+
+In een vervolg reactie kan de API claims retour neren. Als een claim wordt geretourneerd door de API, doet de claim het volgende:
+
+- Hiermee wordt het invoer veld vooraf ingevuld op de pagina kenmerk verzameling.
+
+Bekijk een voor beeld van een [vervolg reactie](#example-of-a-continuation-response).
+
+#### <a name="blocking-response"></a>Antwoord blok keren
+
+Een blokkerende reactie sluit de gebruikers stroom af. Het kan worden uitgegeven door de API om de voortzetting van de gebruikers stroom te stoppen door een blok pagina voor de gebruiker weer te geven. Op de pagina blok keren wordt de weer gegeven `userMessage` van de API.
+
+Bekijk een voor beeld van een [blokkerend antwoord](#example-of-a-blocking-response).
+
+## <a name="before-creating-the-user"></a>Voordat u de gebruiker maakt
+
+Een API-connector in deze stap van het registratie proces wordt aangeroepen na de pagina kenmerk verzameling, als er een is opgenomen. Deze stap wordt altijd aangeroepen voordat een gebruikers account wordt gemaakt in azure AD. 
+
+<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
+<!-- 
+- Validate user input data and ask a user to resubmit data.
+- Block a user sign-up based on data entered by the user.
+- Perform identity verification.
+- Query external systems for existing data about the user and overwrite the user-provided value. -->
+
+### <a name="example-request-sent-to-the-api-at-this-step"></a>Voorbeeld aanvraag die wordt verzonden naar de API in deze stap
 
 ```http
 POST <API-endpoint>
@@ -92,41 +185,52 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
- "postalCode": "33971",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
  "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
  "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
+De exacte claims die worden verzonden naar de API, zijn afhankelijk van welke gegevens van de gebruiker worden verzameld of door de ID-provider worden verstrekt.
 
-De **gebruikers interface land instellingen (' ui_locales ')** wordt standaard in alle aanvragen verzonden. Het biedt de land instellingen van een gebruiker en kan worden gebruikt door de API om internationale reacties te retour neren. Deze wordt niet weer gegeven in het configuratie venster van de API.
-
-Als een claim voor verzenden geen waarde heeft op het moment dat het API-eind punt wordt aangeroepen, wordt de claim niet verzonden naar de API.
-
-Aangepaste kenmerken kunnen worden gemaakt voor de gebruiker met behulp van de indeling **extension_ \<extensions-app-id> _AttributeName** . Uw API moet verwachten dat er claims in dezelfde geserialiseerde indeling worden ontvangen. Uw API kan claims retour neren met of zonder de `<extensions-app-id>` . Zie voor meer informatie over aangepaste kenmerken [aangepaste kenmerken definiëren voor Self-service aanmeldingen](user-flow-add-custom-attributes.md).
-
-> [!TIP] 
-> [**identiteiten (' Identities ')**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) en het **e-mail adres (' e-mail ')** kunnen worden gebruikt om een gebruiker te identificeren voordat ze een account in uw Tenant hebben. De claim ' Identities ' wordt verzonden wanneer een gebruiker wordt geverifieerd met een Google-of Facebook-en e-mail bericht wordt altijd verzonden.
-
-## <a name="expected-response-types-from-the-web-api"></a>Verwachte antwoord typen van de Web-API
+### <a name="expected-response-types-from-the-web-api-at-this-step"></a>Verwachte antwoord typen van de Web-API bij deze stap
 
 Wanneer de Web-API tijdens een gebruikers stroom een HTTP-aanvraag van Azure AD ontvangt, kan deze de volgende antwoorden retour neren:
 
-- [Vervolg reactie](#continuation-response)
-- [Antwoord blok keren](#blocking-response)
-- [Validatie-fout bericht](#validation-error-response)
+- Vervolg reactie
+- Antwoord blok keren
+- Validatie antwoord
 
-### <a name="continuation-response"></a>Vervolg reactie
+#### <a name="continuation-response"></a>Vervolg reactie
 
-Een vervolg antwoord geeft aan dat de gebruikers stroom moet door gaan met de volgende stap. In een vervolg reactie kan de API claims retour neren.
+Een vervolg antwoord geeft aan dat de gebruikers stroom moet door gaan naar de volgende stap: Maak de gebruiker in de Directory.
 
-Als een claim wordt geretourneerd door de API en is geselecteerd als een **claim om te ontvangen**, doet de claim het volgende:
+In een vervolg reactie kan de API claims retour neren. Als een claim wordt geretourneerd door de API, doet de claim het volgende:
 
-- Vooraf ingevulde invoer velden op de pagina kenmerk verzameling als de API-connector wordt aangeroepen voordat de pagina wordt weer gegeven.
-- Overschrijft elke waarde die al aan de claim is toegewezen.
-- Hiermee wijst u een waarde toe aan de claim als deze eerder null is.
+- Overschrijft elke waarde die al is toegewezen aan de claim op de pagina kenmerk verzameling.
 
-#### <a name="example-of-a-continuation-response"></a>Voor beeld van een vervolg reactie
+Bekijk een voor beeld van een [vervolg reactie](#example-of-a-continuation-response).
+
+#### <a name="blocking-response"></a>Antwoord blok keren
+Een blokkerende reactie sluit de gebruikers stroom af. Het kan worden uitgegeven door de API om de voortzetting van de gebruikers stroom te stoppen door een blok pagina voor de gebruiker weer te geven. Op de pagina blok keren wordt de weer gegeven `userMessage` van de API.
+
+Bekijk een voor beeld van een [blokkerend antwoord](#example-of-a-blocking-response).
+
+### <a name="validation-error-response"></a>Validatie-fout bericht
+ Wanneer de API reageert met een antwoord op validatie-fout, blijft de gebruikers stroom op de pagina kenmerk verzameling en `userMessage` wordt er een weer gegeven voor de gebruiker. De gebruiker kan vervolgens het formulier bewerken en opnieuw verzenden. Dit type antwoord kan worden gebruikt voor invoer validatie.
+
+Bekijk een voor beeld van een [validatie fout](#example-of-a-validation-error-response).
+
+## <a name="example-responses"></a>Voorbeeld reacties
+
+### <a name="example-of-a-continuation-response"></a>Voor beeld van een vervolg reactie
 
 ```http
 HTTP/1.1 200 OK
@@ -147,11 +251,7 @@ Content-type: application/json
 | \<builtInUserAttribute>                            | \<attribute-type> | Nee       | Waarden kunnen worden opgeslagen in de map als ze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en **gebruikers kenmerken** voor een gebruikers stroom. Waarden kunnen worden geretourneerd in het token als deze zijn geselecteerd als een **toepassings claim**.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nee       | De geretourneerde claim hoeft niet te bevatten `_<extensions-app-id>_` . Waarden worden opgeslagen in de map als deze zijn geselecteerd als een **claim om te ontvangen** in de API-connector configuratie en het **gebruikers kenmerk** voor een gebruikers stroom. Aangepaste kenmerken kunnen niet terug worden verzonden in het token. |
 
-### <a name="blocking-response"></a>Antwoord blok keren
-
-Een blokkerende reactie sluit de gebruikers stroom af. Het kan worden uitgegeven door de API om de voortzetting van de gebruikers stroom te stoppen door een blok pagina voor de gebruiker weer te geven. Op de pagina blok keren wordt de weer gegeven `userMessage` van de API.
-
-Voor beeld van het blokkerende antwoord:
+### <a name="example-of-a-blocking-response"></a>Voor beeld van een blokkerend antwoord
 
 ```http
 HTTP/1.1 200 OK
@@ -173,15 +273,11 @@ Content-type: application/json
 | userMessage | Tekenreeks | Ja      | Bericht dat wordt weergegeven aan de gebruiker.                                            |
 | code        | Tekenreeks | Nee       | Foutcode. Kan worden gebruikt voor fout opsporing. Niet weer gegeven voor de gebruiker. |
 
-#### <a name="end-user-experience-with-a-blocking-response"></a>Eind gebruikers ervaring met een blokkerend antwoord
+**Eind gebruikers ervaring met een blokkerend antwoord**
 
 ![Voor beeld blok pagina](./media/api-connectors-overview/blocking-page-response.png)
 
-### <a name="validation-error-response"></a>Validatie-fout bericht
-
-Een API-aanroep die wordt aangeroepen nadat een pagina met kenmerk verzamelingen een validatie fout antwoord retourneert. Wanneer u dit doet, blijft de gebruikers stroom op de pagina kenmerk verzameling en `userMessage` wordt de gebruiker weer gegeven. De gebruiker kan vervolgens het formulier bewerken en opnieuw verzenden. Dit type antwoord kan worden gebruikt voor invoer validatie.
-
-#### <a name="example-of-a-validation-error-response"></a>Voor beeld van een validatie-fout bericht
+### <a name="example-of-a-validation-error-response"></a>Voor beeld van een validatie-fout bericht
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -204,12 +300,12 @@ Content-type: application/json
 | userMessage | Tekenreeks  | Ja      | Bericht dat wordt weergegeven aan de gebruiker.                                            |
 | code        | Tekenreeks  | Nee       | Foutcode. Kan worden gebruikt voor fout opsporing. Niet weer gegeven voor de gebruiker. |
 
-#### <a name="end-user-experience-with-a-validation-error-response"></a>Eind gebruikers ervaring met validatie-fout bericht
+**Eind gebruikers ervaring met validatie-fout bericht**
 
 ![Voorbeeld validatie pagina](./media/api-connectors-overview/validation-error-postal-code.png)
 
-### <a name="integration-with-azure-functions"></a>Integratie met Azure Functions
-U kunt een HTTP-trigger in Azure Functions een eenvoudige manier gebruiken om een API te maken voor gebruik met de API-connector. U gebruikt de functie Azure om [bijvoorbeeld](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)validatie logica uit te voeren en aanmeldings pogingen te beperken tot specifieke domeinen. U kunt ook andere web-Api's, gebruikers archieven en andere Cloud Services aanroepen en aanroepen.
+## <a name="using-azure-functions"></a>Azure-functies gebruiken
+U kunt een HTTP-trigger in Azure Functions een eenvoudige manier gebruiken om een API-eind punt te maken voor gebruik met de API-connector. U gebruikt de functie Azure om [bijvoorbeeld](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)validatie logica uit te voeren en aanmeldings pogingen te beperken tot specifieke domeinen. U kunt ook andere web-Api's, gebruikers archieven en andere Cloud Services aanroepen en aanroepen vanuit uw Azure-functie voor uitgebreide scenario's.
 
 ## <a name="next-steps"></a>Volgende stappen
 

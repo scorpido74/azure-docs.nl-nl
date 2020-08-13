@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53e29734095506a3f55593f938c2d9aba5903771
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097303"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164152"
 ---
 # <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2 Explorer
 
@@ -28,7 +28,7 @@ Om aan de slag te gaan met de Azure Time Series Insights Gen2 Explorer moet u he
 * Een Azure Time Series Insights Gen2-omgeving hebben ingericht. Lees de [Azure time series Insights Gen2](./time-series-insights-update-create-environment.md) -zelf studie voor meer informatie over het inrichten van een exemplaar.
 * [Geef gegevens toegang](./time-series-insights-data-access.md) tot de Azure time series Insights Gen2-omgeving die u hebt gemaakt voor het account. U kunt ook toegang verlenen aan anderen en aan uzelf.
 * Voeg een gebeurtenis bron toe aan de Azure Time Series Insights Gen2-omgeving om gegevens naar de omgeving te pushen:
-  * Meer informatie [over verbinding maken met een event hub](./time-series-insights-how-to-add-an-event-source-eventhub.md) 
+  * Meer informatie [over verbinding maken met een event hub](./time-series-insights-how-to-add-an-event-source-eventhub.md)
   * Meer informatie [over verbinding maken met een IOT-hub](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
 ## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>De Azure Time Series Insights Gen2 Explorer verkennen
@@ -44,7 +44,6 @@ De Azure Time Series Insights Gen2 Explorer bestaat uit de volgende zeven elemen
 1. [Deel venster grafiek](#5-chart-panel): Hiermee wordt uw huidige werk grafiek weer gegeven.
 1. [Tijd lijn](#6-time-editor-panel): Hiermee kunt u de tijds duur van uw werk wijzigen.
 1. [App-balk](#7-app-bar): bevat uw opties voor gebruikers beheer (zoals de huidige Tenant) en stelt u in staat om deze te wijzigen en taal instellingen.
-
 
 ## <a name="1-environment-panel"></a>1. Omgevings paneel
 
@@ -79,19 +78,19 @@ Lees [Times-serie modellen](./concepts-model-overview.md)voor meer informatie ov
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hiërarchie structuur en zoek paneel
 
-Met de hiërarchie structuur en het zoek paneel kunt u eenvoudig uw [Time Series-model](./concepts-model-overview.md) hiërarchie doorzoeken en ernaar bladeren om de specifieke time series-exemplaren te vinden die u wilt weer geven in de grafiek. Wanneer u uw instanties selecteert, worden deze niet alleen toegevoegd aan de huidige grafiek, maar ook toegevoegd aan de gegevens bron. 
+Met de hiërarchie structuur en het zoek paneel kunt u eenvoudig uw [Time Series-model](./concepts-model-overview.md) hiërarchie doorzoeken en ernaar bladeren om de specifieke time series-exemplaren te vinden die u wilt weer geven in de grafiek. Wanneer u uw instanties selecteert, worden deze niet alleen toegevoegd aan de huidige grafiek, maar ook toegevoegd aan de gegevens bron.
 
 [![Hiërarchie structuur en zoek paneel](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 In het deel venster met zoek resultaten kunt u ook uw resultaten bekijken in een hiërarchie weergave of een lijst weergave, zodat u gemakkelijk de instanties kunt vinden die u wilt weer geven.
- 
+
 ## <a name="4-time-series-well"></a>4. tijd Series goed
 
-Op de juiste weer gave worden exemplaar velden en andere meta gegevens gekoppeld aan geselecteerde exemplaren van de tijd reeks modellen. Door de selectie vakjes aan de rechter kant in te scha kelen, kunt u specifieke exemplaren verbergen of weer geven in de huidige grafiek. 
+Op de juiste weer gave worden exemplaar velden en andere meta gegevens gekoppeld aan geselecteerde exemplaren van de tijd reeks modellen. Door de selectie vakjes aan de rechter kant in te scha kelen, kunt u specifieke exemplaren verbergen of weer geven in de huidige grafiek.
 
   [![De Gen2](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
-U kunt specifieke gegevens elementen uit uw huidige gegevens bron verwijderen door het besturings element rood **verwijderen** (prullenbak kan) aan de linkerkant van het element te selecteren. Daarnaast kunt u zelf bepalen hoe elk element in de grafiek wordt weer gegeven. U kunt ervoor kiezen om min/Maxe scha duwen, gegevens punten toe te voegen, het element in tijd te verschuiven en het exemplaar op een getrapte manier te visualiseren. 
+U kunt specifieke gegevens elementen uit uw huidige gegevens bron verwijderen door het besturings element rood **verwijderen** (prullenbak kan) aan de linkerkant van het element te selecteren. Daarnaast kunt u zelf bepalen hoe elk element in de grafiek wordt weer gegeven. U kunt ervoor kiezen om min/Maxe scha duwen, gegevens punten toe te voegen, het element in tijd te verschuiven en het exemplaar op een getrapte manier te visualiseren.
 
 Daarnaast kunt u met het besturings element verkennen eenvoudig tijd verschuivingen en spreidings diagrammen maken.  
 
@@ -104,7 +103,7 @@ Daarnaast kunt u met het besturings element verkennen eenvoudig tijd verschuivin
 
 ## <a name="5-chart-panel"></a>5. deel venster grafiek
 
-Met de grafiek kunt u Time Series-exemplaren als regels weer geven. U kunt het deel venster omgeving, het gegevens model en het configuratie scherm samen vouwen door te klikken op de Webbe sturings elementen om de grafiek groter te maken. 
+Met de grafiek kunt u Time Series-exemplaren als regels weer geven. U kunt het deel venster omgeving, het gegevens model en het configuratie scherm samen vouwen door te klikken op de Webbe sturings elementen om de grafiek groter te maken.
 
   [![Overzicht van Gen2-grafiek](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
@@ -149,7 +148,7 @@ Wanneer u werkt met Azure Time Series Insights Gen2, selecteert u eerst een tijd
 > [!TIP]
 > Een deel van de tijd lijn is gemarkeerd in een oranje of oranje kleur om de hoeveelheid gegevens aan te geven die beschikbaar is in de warme opslag.
 
-De volgende Webbe sturings elementen zijn beschikbaar in Azure Time Series Insights Gen2 om uw werk periode te selecteren. 
+De volgende Webbe sturings elementen zijn beschikbaar in Azure Time Series Insights Gen2 om uw werk periode te selecteren.
 
   [![Goed beheer van exploratie](media/v2-update-explorer/exploration-well-control.png)](media/v2-update-explorer/exploration-well-control.png#lightbox)
 
@@ -205,7 +204,7 @@ Azure Time Series Insights Gen2 Explorer ondersteunt twee Thema's:
 
 ### <a name="gen2-terms-panel"></a>Gen2-termen paneel
 
-Deze sectie is alleen van toepassing op bestaande omgevingen van de 1 generatie die de Explorer in de bijgewerkte gebruikers interface proberen te gebruiken. U kunt het product product en Gen2 van generatie 1 in combi natie gebruiken. We hebben een aantal functies van de bestaande gebruikers interface aan de bijgewerkte Explorer toegevoegd, maar u kunt de volledige UI-ervaring voor een generatie 1-omgeving in de nieuwe Azure Time Series Insights Gen2 Explorer. 
+Deze sectie is alleen van toepassing op bestaande omgevingen van de 1 generatie die de Explorer in de bijgewerkte gebruikers interface proberen te gebruiken. U kunt het product product en Gen2 van generatie 1 in combi natie gebruiken. We hebben een aantal functies van de bestaande gebruikers interface aan de bijgewerkte Explorer toegevoegd, maar u kunt de volledige UI-ervaring voor een generatie 1-omgeving in de nieuwe Azure Time Series Insights Gen2 Explorer.
 
 In plaats van de hiërarchie wordt het deel venster Azure Time Series Insights Gen2-voor waarden weer gegeven. In het deel venster voor waarden kunt u query's definiëren in uw omgeving. Gebruik deze functie om ook gegevens te filteren op basis van een predikaat.
 
@@ -222,7 +221,7 @@ In het deel venster Editor voor Azure Time Series Insights termen van Gen2 worde
 | `IN` | Teken reeks, BOOL, double, DateTime, time span, NULL | Alle operanden moeten van hetzelfde type zijn of NULL-constante zijn. |
 | `HAS` | Tekenreeks | Aan de rechter kant zijn alleen letterlijke teken reeksen met constanten toegestaan. Lege teken reeks en NULL zijn niet toegestaan. |
 
-Lees de [expressie time series (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)voor meer informatie over ondersteunde query bewerkingen en gegevens typen.
+Lees de [expressie time series (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)voor meer informatie over ondersteunde query bewerkingen en gegevens typen.
 
 ### <a name="examples-of-where-clauses"></a>Voor beelden van WHERE-componenten
 
@@ -240,10 +239,10 @@ U kunt elementen weer geven en verbergen in het deel venster grafiek door het zi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het opnemen van [gegevens](./concepts-ingestion-overview.md) in uw omgeving.
+* Meer informatie over het opnemen van [gegevens](./concepts-ingestion-overview.md) in uw omgeving.
 
-- Bekijk het artikel over [opslag](concepts-storage.md).
+* Bekijk het artikel over [opslag](concepts-storage.md).
 
-- Meer informatie over [gegevens modellering](./concepts-model-overview.md) in azure time series Insights Gen2.
+* Meer informatie over [gegevens modellering](./concepts-model-overview.md) in azure time series Insights Gen2.
 
-- Meer informatie [over het vaststellen en oplossen van problemen met](./time-series-insights-update-how-to-troubleshoot.md) uw omgeving.
+* Meer informatie [over het vaststellen en oplossen van problemen met](./time-series-insights-update-how-to-troubleshoot.md) uw omgeving.

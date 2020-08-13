@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 03/20/2019
+ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31388f27eddcef2c75d4ad4d2030655b35f6aa1c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2cb5902e3bc8bbed63d7a6e074ece824e16c5609
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446964"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165155"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Versiegeschiedenis van status Azure AD Connect
 Het Azure Active Directory team werkt Azure AD Connect Health regel matig bij met nieuwe functies en functionaliteit. In dit artikel vindt u een overzicht van de versies en functies die zijn uitgebracht.  
@@ -31,6 +31,14 @@ Het Azure Active Directory team werkt Azure AD Connect Health regel matig bij me
 >
 
 Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connect-installatie. Meer informatie over het Azure AD Connect van de [release geschiedenis](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) voor functie feedback, stemmen bij [verbindings status van gebruikers Voice Channel](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
+
+## <a name="april-2020"></a>April 2020
+**Agent update**
+
+- Azure AD Connect Health Agent voor AD FS (versie 3.1.77.0)
+
+   1.   Er is een fout opgelost voor de waarschuwing ' ongeldige SPN (Service Principal Name) voor de AD FS-service ', waarvoor de waarschuwing onjuist is gerapporteerd.
+
 
 ## <a name="july-2019"></a>Juli 2019
 **Agent update**
@@ -125,7 +133,7 @@ Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connec
   2. Oplossingen voor fouten en algemene verbeteringen
 
 
-## <a name="march-2018"></a>maart 2018
+## <a name="march-2018"></a>Maart 2018
 **Nieuwe preview-functies:**
 * Azure AD Connect Health voor AD FS-Riskeel IP-rapport en waarschuwing.
 

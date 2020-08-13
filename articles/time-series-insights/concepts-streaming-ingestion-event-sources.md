@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/12/2020
+ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491966"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163965"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-gebeurtenis bronnen
 
@@ -33,34 +33,34 @@ Wanneer u een gebeurtenis bron verbindt, worden in uw Azure Time Series Insights
 
 > [!IMPORTANT]
 >
-> * U kunt een hoge initiële latentie ervaren wanneer u een gebeurtenis bron koppelt aan uw Azure Time Series Insights Gen2-omgeving.
-> De gebeurtenis bron latentie is afhankelijk van het aantal gebeurtenissen dat zich momenteel in uw IoT Hub of event hub bevinden.
-> * Hoge latentie wordt weer gegeven nadat de bron gegevens van de gebeurtenis voor het eerst zijn opgenomen. Verzend een ondersteunings ticket via de Azure Portal als u een voortdurende hoge latentie ondervindt.
+> - U kunt een hoge initiële latentie ervaren wanneer u een gebeurtenis bron koppelt aan uw Azure Time Series Insights Gen2-omgeving.
+> - De gebeurtenis bron latentie is afhankelijk van het aantal gebeurtenissen dat zich momenteel in uw IoT Hub of event hub bevinden.
+> - Hoge latentie wordt weer gegeven nadat de bron gegevens van de gebeurtenis voor het eerst zijn opgenomen. Verzend een ondersteunings ticket via de Azure Portal als u een voortdurende hoge latentie ondervindt.
 
 ## <a name="streaming-ingestion-best-practices"></a>Best practices voor streaming-opname
 
-* Maak altijd een unieke consumenten groep voor uw Azure Time Series Insights Gen2-omgeving om gegevens van uw gebeurtenis bron te gebruiken. Het opnieuw gebruiken van consumenten groepen kan wille keurige verbreken veroorzaken en kan leiden tot verlies van gegevens.
+- Maak altijd een unieke consumenten groep voor uw Azure Time Series Insights Gen2-omgeving om gegevens van uw gebeurtenis bron te gebruiken. Het opnieuw gebruiken van consumenten groepen kan wille keurige verbreken veroorzaken en kan leiden tot verlies van gegevens.
 
-* Configureer uw Azure Time Series Insights Gen2-omgeving en uw IoT Hub en/of Event Hubs in dezelfde Azure-regio. Hoewel het mogelijk is om in een afzonderlijke regio een gebeurtenis bronnen te configureren, wordt dit scenario niet ondersteund en kunnen we geen hoge Beschik baarheid garanderen.
+- Configureer uw Azure Time Series Insights Gen2-omgeving en uw IoT Hub en/of Event Hubs in dezelfde Azure-regio. Hoewel het mogelijk is om een gebeurtenis bron in een afzonderlijke regio te configureren, wordt dit scenario niet ondersteund en kunnen we geen hoge Beschik baarheid garanderen.
 
-* Ga niet verder dan de limiet van de [doorvoer snelheid](./concepts-streaming-ingress-throughput-limits.md) van uw omgeving of per partitie limiet.
+- Ga niet verder dan de limiet van de [doorvoer snelheid](./concepts-streaming-ingress-throughput-limits.md) van uw omgeving of per partitie limiet.
 
-* Configureer een [waarschuwing](https://review.docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency?branch=pr-en-us-117938#monitor-latency-and-throttling-with-alerts) over vertraging als uw omgeving problemen ondervindt bij het verwerken van gegevens.
+- Configureer een [waarschuwing](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) over vertraging als uw omgeving problemen ondervindt bij het verwerken van gegevens.
 
-* Gebruik Streaming-opname alleen voor bijna realtime-en recente gegevens, en het streamen van historische gegevens wordt niet ondersteund.
+- Gebruik Streaming-opname alleen voor bijna realtime-en recente gegevens, en het streamen van historische gegevens wordt niet ondersteund.
 
-* Begrijpen hoe eigenschappen worden ontsnapd en JSON- [gegevens worden afgevlakt en opgeslagen.](./concepts-json-flattening-escaping-rules.md)
+- Begrijpen hoe eigenschappen worden ontsnapd en JSON- [gegevens worden afgevlakt en opgeslagen.](./concepts-json-flattening-escaping-rules.md)
 
-* Volg het principe van minimale bevoegdheden bij het leveren van verbindings reeksen voor gebeurtenis bronnen. Configureer voor Event Hubs een gedeeld toegangs beleid met alleen de claim *verzenden* en voor IOT hub de *service Connect* -machtiging alleen te gebruiken.
+- Volg het principe van minimale bevoegdheden bij het leveren van verbindings reeksen voor gebeurtenis bronnen. Configureer voor Event Hubs een gedeeld toegangs beleid met alleen de claim *verzenden* en voor IOT hub de *service Connect* -machtiging alleen te gebruiken.
 
 ### <a name="historical-data-ingestion"></a>Historische gegevens opname
 
 Het gebruik van de streaming-pijp lijn voor het importeren van historische gegevens wordt momenteel niet ondersteund in Azure Time Series Insights Gen2. Als u gegevens uit het verleden in uw omgeving wilt importeren, volgt u de onderstaande richt lijnen:
 
-* Streamt geen Live en historische gegevens parallel. Het opnemen van gegevens uit de volg orde resulteert in gedegradeerde query prestaties.
-* Neem historische gegevens op in een tijdgebonden manier om de beste prestaties te leveren.
-* Blijf binnen de limieten voor de doorvoer snelheid van de opname hieronder.
-* Schakel warme Store uit als de gegevens ouder zijn dan de Bewaar periode voor uw warme winkel.
+- Streamt geen Live en historische gegevens parallel. Het opnemen van gegevens uit de volg orde resulteert in gedegradeerde query prestaties.
+- Neem historische gegevens op in een tijdgebonden manier om de beste prestaties te leveren.
+- Blijf binnen de limieten voor de doorvoer snelheid van de opname hieronder.
+- Schakel warme Store uit als de gegevens ouder zijn dan de Bewaar periode voor uw warme winkel.
 
 ## <a name="event-source-timestamp"></a>Tijds tempel gebeurtenis bron
 
@@ -82,10 +82,6 @@ De tijd zone-offset moet worden opgemaakt als een van de volgende:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees de [regels voor json-afvlakking en-Escapes](./concepts-json-flattening-escaping-rules.md) om te begrijpen hoe gebeurtenissen worden opgeslagen. 
+- Lees de [regels voor json-afvlakking en-Escapes](./concepts-json-flattening-escaping-rules.md) om te begrijpen hoe gebeurtenissen worden opgeslagen.
 
-* Inzicht in de [doorvoer beperkingen](./concepts-streaming-ingress-throughput-limits.md) van uw omgeving
-
-
-
-
+- Inzicht in de [doorvoer beperkingen](./concepts-streaming-ingress-throughput-limits.md) van uw omgeving

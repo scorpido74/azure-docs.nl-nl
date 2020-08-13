@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: e210c19f40ed77bd7c1bc1dcfc2f2787e3ea2087
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120283"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166105"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Toepassingen migreren naar MSAL.NET
 
@@ -57,9 +57,9 @@ Het is ook mogelijk in MSAL.NET om toegang te krijgen tot v 1.0-resources. Zie d
 
 ### <a name="core-classes"></a>Kern klassen
 
-- ADAL.NET maakt gebruik van [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) als de weer gave van uw verbinding met de beveiligings token service (STS) of autorisatie server, via een instantie. In tegens telling tot MSAL.NET is ontworpen rond [client toepassingen](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Het biedt twee afzonderlijke klassen: `PublicClientApplication` en`ConfidentialClientApplication`
+- ADAL.NET maakt gebruik van [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) als de weer gave van uw verbinding met de beveiligings token service (STS) of autorisatie server, via een instantie. In tegens telling tot MSAL.NET is ontworpen rond [client toepassingen](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Het biedt twee afzonderlijke klassen: `PublicClientApplication` en `ConfidentialClientApplication`
 
-- Tokens ophalen: ADAL.NET en MSAL.NET hebben dezelfde authenticatie aanroepen ( `AcquireTokenAsync` en `AcquireTokenSilentAsync` voor ADAL.net en `AcquireTokenInteractive` en `AcquireTokenSilent` in MSAL.net), maar met andere vereiste para meters. Een verschil is het feit dat u in MSAL.NET niet langer hoeft in te geven `ClientID` van uw toepassing in elke AcquireTokenXX-oproep. De is inderdaad `ClientID` slechts eenmaal ingesteld bij het bouwen van de ( `IPublicClientApplication` of `IConfidentialClientApplication` ).
+- Tokens ophalen: ADAL.NET en MSAL.NET hebben dezelfde authenticatie aanroepen ( `AcquireTokenAsync` en  `AcquireTokenSilentAsync` voor ADAL.net en `AcquireTokenInteractive` en `AcquireTokenSilent` in MSAL.net), maar met andere vereiste para meters. Een verschil is het feit dat u in MSAL.NET niet langer hoeft in te geven `ClientID` van uw toepassing in elke AcquireTokenXX-oproep. De is inderdaad `ClientID` slechts eenmaal ingesteld bij het bouwen van de ( `IPublicClientApplication` of `IConfidentialClientApplication` ).
 
 ### <a name="iaccount-not-iuser"></a>IAccount niet IUser
 
@@ -101,7 +101,7 @@ catch(MsalUiRequiredException exception)
 
 In ADAL.NET worden claim Challenge-uitzonde ringen op de volgende manier verwerkt:
 
-- `AdalClaimChallengeException`is een uitzonde ring (afgeleid van `AdalServiceException` ) die wordt veroorzaakt door de service voor het geval een resource meer claims van de gebruiker vereist (bijvoorbeeld verificatie met twee factoren). Het `Claims` lid bevat een deel van het JSON-fragment met de claims die worden verwacht.
+- `AdalClaimChallengeException` is een uitzonde ring (afgeleid van `AdalServiceException` ) die wordt veroorzaakt door de service voor het geval een resource meer claims van de gebruiker vereist (bijvoorbeeld verificatie met twee factoren). Het `Claims` lid bevat een deel van het JSON-fragment met de claims die worden verwacht.
 - De open bare client toepassing die deze uitzonde ring ontvangt, moet nog steeds in ADAL.NET aanroepen met `AcquireTokenInteractive` een claim parameter. Deze onderdrukking van `AcquireTokenInteractive` heeft niet eens geprobeerd de cache te raken, omdat dit niet nodig is. De reden hiervoor is dat het token in de cache niet beschikt over de juiste claims (anders is dat niet het geval `AdalClaimChallengeException` ). Daarom is het niet nodig om de cache te bekijken. Houd er rekening mee dat de `ClaimChallengeException` kan worden ontvangen in een WebAPI met OBO, terwijl de `AcquireTokenInteractive` toepassing moet worden aangeroepen in een open bare client applicatie die deze web-API aanroept.
 - Zie voor meer informatie, inclusief voor beelden, [AdalClaimChallengeException](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Exceptions-in-ADAL.NET#handling-adalclaimchallengeexception) verwerken
 
@@ -241,7 +241,7 @@ Met deze methode kunt u het eerder gebruikte vernieuwings token samen met eventu
 
 Omdat deze methode is bedoeld voor scenario's die niet gebruikelijk zijn, is deze niet direct toegankelijk met de `IConfidentialClientApplication` zonder deze eerst te converteren naar `IByRefreshToken` .
 
-Dit code fragment toont enkele migratie code in een vertrouwelijke client toepassing. `GetCachedRefreshTokenForSignedInUser`Haal het vernieuwings token op dat in sommige opslag is opgeslagen door een eerdere versie van de toepassing die is gebruikt voor het gebruik van ADAL 2. x. `GetTokenCacheForSignedInUser`deserialiseren van een cache voor de aangemelde gebruiker (als vertrouwelijke client toepassingen één cache per gebruiker moeten hebben).
+Dit code fragment toont enkele migratie code in een vertrouwelijke client toepassing. `GetCachedRefreshTokenForSignedInUser` Haal het vernieuwings token op dat in sommige opslag is opgeslagen door een eerdere versie van de toepassing die is gebruikt voor het gebruik van ADAL 2. x. `GetTokenCacheForSignedInUser` deserialiseren van een cache voor de aangemelde gebruiker (als vertrouwelijke client toepassingen één cache per gebruiker moeten hebben).
 
 ```csharp
 TokenCache userCache = GetTokenCacheForSignedInUser();

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6ed9d5eb8d230b05a090424d6105865acae69e61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019349"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164917"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Externe toegang tot on-premises toepassingen via Azure AD-toepassingsproxy
 
@@ -41,7 +41,7 @@ Toepassings proxy werkt met:
 * Toepassingen die worden gehost achter een [extern bureaublad-gateway](application-proxy-integrate-with-remote-desktop-services.md)
 * Uitgebreide client-apps die zijn geïntegreerd met deMicrosoft Authentication Library (MSAL)
 
-Toepassings proxy biedt ondersteuning voor eenmalige aanmelding. Zie [Kiezen voor eenmalige aanmeldingsmethode](what-is-single-sign-on.md#choosing-a-single-sign-on-method) voor meer informatie over ondersteunde methoden.
+Toepassings proxy biedt ondersteuning voor eenmalige aanmelding. Zie [Kiezen voor eenmalige aanmeldingsmethode](sso-options.md#choosing-a-single-sign-on-method) voor meer informatie over ondersteunde methoden.
 
 Toepassings proxy wordt aanbevolen om externe gebruikers toegang te geven tot interne bronnen. Toepassings proxy vervangt de nood zaak van een VPN-of reverse-proxy. Het is niet bedoeld voor interne gebruikers in het bedrijfs netwerk.  Deze gebruikers die onnodig toepassings proxy gebruiken, kunnen onverwachte en ongewenste prestatie problemen veroorzaken.
 

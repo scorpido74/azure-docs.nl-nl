@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5e546c6eac77c4952a0d32d360f49d4251d49d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cdb6e85b6d81de3d4b88ba315ddd35bd5b37ae7a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908768"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165206"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>API-connectors gebruiken om de Self-Service-aanmelding aan te passen en uit te breiden 
 
@@ -30,7 +30,7 @@ Als ontwikkelaar of IT-beheerder kunt u API-connectors gebruiken voor het integr
 <!-- - **Enrich user data**. Integrate with your external cloud systems that store user information to integrate them with the sign-up flow. For example, your API can receive the user's email address, query a CRM system, and return the user's loyalty number. Returned claims can be used to pre-fill form fields or return additional data in the application token.  -->
 - **Aangepaste bedrijfs logica uitvoeren**. U kunt downstream-gebeurtenissen in uw Cloud systemen activeren om Push meldingen te verzenden, zakelijke data bases bij te werken, machtigingen te beheren, data bases te controleren en andere aangepaste acties uit te voeren.
 
-Een API-connector vertegenwoordigt een contract tussen Azure AD en een API-eind punt door het HTTP-eind punt, de verificatie, de aanvraag en het verwachte antwoord te definiëren. Zodra u een API-connector hebt geconfigureerd, kunt u deze inschakelen voor een specifieke stap in een gebruikers stroom. Wanneer een gebruiker die stap in de registratie stroom bereikt, wordt de API-connector aangeroepen en resultatenset als een HTTP POST-aanvraag, waarbij geselecteerde claims als sleutel-waardeparen worden verzonden in een JSON-hoofd tekst. De API-reactie kan invloed hebben op de uitvoering van de gebruikers stroom. Met het API-antwoord kan bijvoorbeeld worden geblokkeerd dat een gebruiker zich kan aanmelden, de gebruiker vragen om gegevens opnieuw in te voeren of gebruikers kenmerken te overschrijven en toe te voegen.
+Een API-connector biedt Azure Active Directory de informatie die nodig is om het API-eind punt aan te roepen door de URL en verificatie van het HTTP-eind punt te definiëren. Zodra u een API-connector hebt geconfigureerd, kunt u deze inschakelen voor een specifieke stap in een gebruikers stroom. Wanneer een gebruiker die stap in de registratie stroom bereikt, wordt de API-connector aangeroepen en resultatenset als een HTTP POST-aanvraag voor uw API, waarbij gebruikers gegevens (' claims ') worden verzonden als sleutel-waardeparen in een JSON-hoofd tekst. De API-reactie kan invloed hebben op de uitvoering van de gebruikers stroom. Met het API-antwoord kan bijvoorbeeld worden geblokkeerd dat een gebruiker zich kan aanmelden, de gebruiker vragen om gegevens opnieuw in te voeren of gebruikers kenmerken te overschrijven en toe te voegen.
 
 ## <a name="where-you-can-enable-an-api-connector-in-a-user-flow"></a>Waar u een API-connector in een gebruikers stroom kunt inschakelen
 
@@ -39,7 +39,8 @@ Er zijn twee locaties in een gebruikers stroom waar u een API-connector kunt ins
 - Nadat u zich hebt aangemeld met een id-provider
 - Voordat u de gebruiker maakt
 
-In beide gevallen worden de API-connectors aangeroepen tijdens het aanmelden, niet bij het aanmelden.
+> [!IMPORTANT]
+> In beide gevallen worden de API-connectors aangeroepen tijdens het **Aanmelden van**de gebruiker, niet bij het aanmelden.
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>Nadat u zich hebt aangemeld met een id-provider
 

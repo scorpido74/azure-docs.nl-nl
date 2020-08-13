@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: f58ec53d1c4f3ad95993fd2faff44f7164c4beeb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4d2a884bd6fd4cb62aa7cae5f3e53b865082fde8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036603"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166600"
 ---
 # <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
@@ -175,6 +175,8 @@ Selecteer **concept opslaan** voordat u doorgaat.
 ## <a name="plan-overview"></a>Overzicht van plan
 
 Elke aanbieding moet een of meer abonnementen hebben (voorheen Sku's genoemd). U kunt meerdere plannen toevoegen om verschillende functie sets tegen verschillende prijzen te ondersteunen of om een specifiek abonnement voor een beperkt publiek van specifieke klanten aan te passen. Klanten kunnen de plannen weer geven die voor hen beschikbaar zijn onder de bovenliggende aanbieding.
+
+U kunt Maxi maal 100 abonnementen maken voor elke aanbieding: Maxi maal 45 van deze kunnen privé zijn. Meer informatie over privé-abonnementen [vindt u in de micro soft Commercial Marketplace](../private-offers.md).
 
 Op de **overzichts** pagina van het abonnement selecteert u **+ nieuw plan maken**. Voer vervolgens een **plan-id** en een **plan naam**in. Beide waarden mogen alleen kleine letters, streepjes en onderstrepings tekens bevatten, met een maximum van 50 tekens. Deze waarden zijn mogelijk zichtbaar voor klanten en kunnen niet worden gewijzigd nadat u de aanbieding hebt gepubliceerd.
 

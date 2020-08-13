@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4d9583e08591e8ea5792aad28e247dff178f1c08
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080657"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164577"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Een toegangsproxy van Azure AD gebruiken om on-premises apps te publiceren voor externe gebruikers
 
@@ -99,7 +99,7 @@ De app-proxy biedt ook ondersteuning voor de volgende verificatieprotocollen met
 * [**Verificatie op basis van een formulier of wachtwoord**](application-proxy-configure-single-sign-on-password-vaulting.md). Met deze verificatiemethode melden gebruikers zich aan bij de toepassing met een gebruikersnaam en wachtwoord, bij de eerste keer dat ze deze gebruiken. Na de eerste aanmelding levert Azure AD de gebruikersnaam en het wachtwoord voor de toepassing. In dit scenario wordt verificatie verwerkt door Azure AD.
 * [**SAML-verificatie**](application-proxy-configure-single-sign-on-on-premises-apps.md). Eenmalige aanmelding op basis van SAML wordt ondersteund voor toepassingen die gebruikmaken van de protocollen SAML 2.0 of WS-Federation. Met eenmalige aanmelding via SAML verifieert Azure AD bij de toepassing met behulp van het Azure AD-account van de gebruiker.
 
-Zie [Kiezen voor eenmalige aanmeldingsmethode](what-is-single-sign-on.md#choosing-a-single-sign-on-method) voor meer informatie over ondersteunde methoden.
+Zie [Kiezen voor eenmalige aanmeldingsmethode](sso-options.md#choosing-a-single-sign-on-method) voor meer informatie over ondersteunde methoden.
 
 ### <a name="security-benefits"></a>Beveiligingsvoordelen
 

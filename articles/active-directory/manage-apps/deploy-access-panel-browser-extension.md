@@ -15,16 +15,16 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31235936109361f0f15a071346baee128060375a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763428"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164985"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Procedure: de uitbrei ding van het toegangs paneel voor Internet Explorer implementeren met behulp van groeps beleid
 
-In deze zelf studie ziet u hoe u groeps beleid gebruikt om de uitbrei ding van het toegangs paneel voor Internet Explorer op afstand te installeren op de computers van uw gebruikers. Deze extensie is vereist voor Internet Explorer-gebruikers die zich moeten aanmelden bij apps die zijn geconfigureerd met [eenmalige aanmelding op basis van wacht woorden](what-is-single-sign-on.md#password-based-sso).
+In deze zelf studie ziet u hoe u groeps beleid gebruikt om de uitbrei ding van het toegangs paneel voor Internet Explorer op afstand te installeren op de computers van uw gebruikers. Deze extensie is vereist voor Internet Explorer-gebruikers die zich moeten aanmelden bij apps die zijn geconfigureerd met [eenmalige aanmelding op basis van wacht woorden](sso-options.md#password-based-sso).
 
 Het is raadzaam dat beheerders de implementatie van deze uitbrei ding automatiseren. Anders moeten gebruikers de uitbrei ding zelf downloaden en installeren, wat gevoelig is voor gebruikers fout en beheerders machtigingen vereist. In deze zelf studie wordt één methode beschreven voor het automatiseren van software-implementaties met behulp van groeps beleid. [Meer informatie over groeps beleid.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -37,7 +37,7 @@ De uitbrei ding van het toegangs paneel is ook beschikbaar voor [Chrome](https:/
 
 ## <a name="step-1-create-the-distribution-point"></a>Stap 1: het distributie punt maken
 
-Eerst moet u het installatie pakket op een netwerk locatie plaatsen die toegankelijk is voor de computers waarop u de uitbrei ding op afstand wilt installeren. Voer de volgende stappen uit om dit te doen:
+Eerst moet u het installatie pakket op een netwerk locatie plaatsen die toegankelijk is voor de computers waarop u de uitbrei ding op afstand wilt installeren. Voer hiervoor de volgende stappen uit:
 
 1. Meld u aan bij de server als beheerder.
 1. Ga in het venster **Serverbeheer** naar **bestanden en opslag Services**.
@@ -166,7 +166,7 @@ Volg de onderstaande stappen om te controleren of de implementatie van de extens
 
    ![Controleer of de uitbrei ding voor het toegangs paneel is geïnstalleerd en ingeschakeld](./media/deploy-access-panel-browser-extension/verify-install.png)
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 
 * [Toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](what-is-single-sign-on.md)
 * [Problemen met de uitbrei ding van het toegangs paneel voor Internet Explorer oplossen](manage-access-panel-browser-extension.md)

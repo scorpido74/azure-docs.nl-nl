@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: c5d52a78dec31dd796929b141556d6da10044099
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031485"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166685"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -315,6 +315,8 @@ De technische configuratie definieert de Details (Tenant-ID en App-ID) die worde
 ## <a name="plan-overview"></a>Overzicht van plan
 
 Op dit tabblad kunt u binnen dezelfde aanbieding verschillende plan opties opgeven. Deze plannen (voorheen Sku's genoemd) kunnen verschillen qua plan type (oplossings sjabloon versus beheerde toepassing), verdiensten maximaliseren of doel groep. Configureer ten minste één abonnement om uw aanbieding in Marketplace te vermelden.
+
+U kunt Maxi maal 100 abonnementen maken voor elke aanbieding: Maxi maal 45 van deze kunnen privé zijn. Meer informatie over privé-abonnementen [vindt u in de micro soft Commercial Marketplace](../private-offers.md).
 
 Nadat u hebt gemaakt, ziet u de namen van uw plannen, Id's, plan type, Beschik baarheid (openbaar of privé), huidige publicatie status en eventuele beschik bare acties op dit tabblad.
 
