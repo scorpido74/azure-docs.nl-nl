@@ -3,12 +3,12 @@ title: Service-eind punten Virtual Network-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over het toevoegen van een service-eind punt van micro soft. EventHub aan een virtueel netwerk.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 8c798efc21f5b846965f2247d7e76249177ef946
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: cb0d9a9c4d5e2503e68620ec4e6386d8e05d471c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554070"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185061"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Toegang tot Azure Event Hubs-naam ruimten van specifieke virtuele netwerken toestaan 
 
@@ -18,24 +18,20 @@ Eenmaal geconfigureerd om te zijn gebonden aan ten minste één subnet-service-e
 
 Het resultaat is een privé-en geïsoleerde relatie tussen de werk belastingen die zijn gebonden aan het subnet en de betreffende Event Hubs naam ruimte, ondanks het waarneem bare netwerk adres van het berichten service-eind punt in een openbaar IP-bereik. Er is een uitzonde ring op dit gedrag. Als u een service-eind punt inschakelt, wordt de `denyall` regel in de [IP-firewall](event-hubs-ip-filtering.md) die aan het virtuele netwerk is gekoppeld, standaard ingeschakeld. U kunt specifieke IP-adressen toevoegen aan de IP-firewall om toegang tot het open bare eind punt van Event hub mogelijk te maken. 
 
->[!WARNING]
-> De implementatie van de integratie van virtuele netwerken kan voorkomen dat andere Azure-services interactie hebben met Event Hubs.
+>[!IMPORTANT]
+> Virtuele netwerken worden ondersteund in de lagen **Standard** en **Dedicated** van Event Hubs. Het wordt niet ondersteund in de laag **basis** .
 >
-> Vertrouwde micro soft-services worden niet ondersteund wanneer virtuele netwerken zijn geïmplementeerd.
+> Door firewall regels in te scha kelen voor uw Event Hubs-naam ruimte worden binnenkomende aanvragen standaard geblokkeerd, tenzij aanvragen afkomstig zijn van een service die vanuit toegestane virtuele netwerken wordt uitgevoerd. Aanvragen die zijn geblokkeerd, zijn onder andere die van andere Azure-Services, van de Azure Portal, van de services logboek registratie en metrische gegevens, enzovoort. 
 >
-> Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
+> Hier volgen enkele van de services die geen toegang hebben tot Event Hubs bronnen wanneer virtuele netwerken zijn ingeschakeld. Houd er rekening mee dat de lijst **niet** limitatief is.
+>
 > - Azure Stream Analytics
 > - Azure-IoT Hub routes
 > - Azure IoT-Device Explorer
+> - Azure Event Grid
+> - Azure Monitor (Diagnostische instellingen)
 >
-> De volgende micro soft-services moeten zich in een virtueel netwerk bevinden
-> - Azure Web Apps
-> - Azure Functions
-> - Azure Monitor (diagnostische instelling)
-
-
-> [!IMPORTANT]
-> Virtuele netwerken worden ondersteund in de lagen **Standard** en **Dedicated** van Event Hubs. Het wordt niet ondersteund in de laag **basis** .
+> Als uitzonde ring kunt u toegang tot Event Hubs resources van bepaalde vertrouwde services toestaan, zelfs wanneer virtuele netwerken zijn ingeschakeld. Zie [Trusted Services](#trusted-microsoft-services)(Engelstalig) voor een lijst met vertrouwde services.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Geavanceerde beveiligings scenario's ingeschakeld door VNet-integratie 
 
@@ -57,12 +53,10 @@ De regel van het virtuele netwerk is een koppeling van de Event Hubs naam ruimte
 In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service-eind punt voor een virtueel netwerk toe te voegen. Als u de toegang wilt beperken, moet u het eind punt van de virtuele netwerk service voor deze Event Hubs naam ruimte integreren.
 
 1. Navigeer naar uw **Event hubs-naam ruimte** in de [Azure Portal](https://portal.azure.com).
-4. Selecteer **netwerken** onder **instellingen** in het menu links. 
+4. Selecteer **netwerken** onder **instellingen** in het menu links. U ziet het tabblad **netwerken** alleen voor **standaard** of **toegewezen** naam ruimten. 
 
     > [!NOTE]
-    > U ziet het tabblad **netwerken** alleen voor **standaard** of **toegewezen** naam ruimten. 
-
-    Standaard is de optie **geselecteerde netwerken** geselecteerd. Als u geen IP-firewall regel opgeeft of een virtueel netwerk toevoegt op deze pagina, is de naam ruimte toegankelijk vanuit alle netwerken, waaronder openbaar Internet (met behulp van de toegangs sleutel). 
+    > Standaard is de optie **geselecteerde netwerken** geselecteerd, zoals wordt weer gegeven in de volgende afbeelding. Als u geen IP-firewall regel opgeeft of een virtueel netwerk toevoegt op deze pagina, kunt u toegang krijgen tot de naam ruimte via het **open bare Internet** (met behulp van de toegangs sleutel). 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Tabblad netwerken-opties voor geselecteerde netwerken" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -83,12 +77,15 @@ In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service
 
     > [!NOTE]
     > Als u het service-eind punt niet kunt inschakelen, kunt u het ontbrekende service-eind punt van het virtuele netwerk negeren met behulp van de Resource Manager-sjabloon. Deze functionaliteit is niet beschikbaar in de portal.
+5. Geef op of u wilt **toestaan dat vertrouwde micro soft-services deze firewall overs Laan**. Zie [vertrouwde micro soft-Services](#trusted-microsoft-services) voor meer informatie. 
 6. Selecteer **Opslaan** op de werk balk om de instellingen op te slaan. Wacht een paar minuten totdat de bevestiging op de portal meldingen wordt weer gegeven.
 
     ![Netwerk opslaan](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
     > [!NOTE]
     > Zie toegang tot specifieke [IP-adressen of bereiken toestaan](event-hubs-ip-filtering.md)om de toegang tot specifieke IP-adressen of bereiken te beperken.
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sjabloon gebruiken
 

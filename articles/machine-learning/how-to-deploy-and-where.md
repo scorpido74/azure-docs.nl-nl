@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e8aa87eecc29a5b664520cb1be2cbc5e65b2969e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 67a66ae94508a8d7f54d6112de95fa65a8fd5f09
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134544"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185414"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,13 +39,13 @@ Zie [modellen beheren, implementeren en bewaken met Azure machine learning](conc
 
 - Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 - Een model. Als u geen getraind model hebt, kunt u het model en de afhankelijkheids bestanden van [deze zelf studie](https://aka.ms/azml-deploy-cloud)gebruiken.
-- De [Azure-extensie (opdracht regel Interface) voor de machine learning-service](reference-azure-machine-learning-cli.md)
+- De [Azure-extensie (opdracht regel Interface) voor de machine learning-service](reference-azure-machine-learning-cli.md).
 
 # <a name="python"></a>[Python](#tab/python)
 
 - Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 - Een model. Als u geen getraind model hebt, kunt u het model en de afhankelijkheids bestanden van [deze zelf studie](https://aka.ms/azml-deploy-cloud)gebruiken.
-- De [Azure machine learning-Software Development Kit (SDK) voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- De [Azure machine learning-Software Development Kit (SDK) voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 ---
 
@@ -242,7 +242,7 @@ myenv = Environment.from_conda_specification(name = 'myenv',
 myenv.register(workspace=ws)
 ```
 
-Zie [software omgevingen maken & gebruiken in azure machine learning](how-to-use-environments.md) voor een gedetailleerde bespreking van het gebruik en aanpassen van python-omgevingen met Azure machine learning.
+Zie voor een gedetailleerde bespreking van het gebruik en aanpassen van python-omgevingen met Azure Machine Learning [& software omgevingen maken in azure machine learning](how-to-use-environments.md).
 
 Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
 
@@ -373,7 +373,7 @@ Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `az ml servi
 
 Als u een geregistreerd model uit uw werk ruimte wilt verwijderen, gebruikt u`az ml model delete <model id>`
 
-Meer informatie over [het verwijderen van een webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) en [het verwijderen van een model](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)
+Meer informatie over [het verwijderen van een webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) en [het verwijderen van een model](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete).
 
 # <a name="python"></a>[Python](#tab/python)
 

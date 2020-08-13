@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3973e94c9d3add25dba0af7a6b0c0deb18b77440
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 20a85c17ccd4167b29e167c55df1bd8a8cc4d56e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850437"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185652"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatische ML gebruiken in een Azure Machine Learning pijp lijn in python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -328,8 +328,9 @@ automl_config = AutoMLConfig(task = 'classification',
 
 train_step = AutoMLStep(name='AutoML_Classification',
     automl_config=automl_config,
-    passthru_automl_config=False,
     outputs=[metrics_data,model_data],
+    enable_default_model_output=False,
+    enable_default_metrics_output=False,
     allow_reuse=True)
 ```
 Het fragment bevat een Idiom die meestal wordt gebruikt met `AutoMLConfig` . Argumenten die meer Hydraulica (afstemming-ish) zijn, worden in een afzonderlijke woorden lijst opgegeven, terwijl de waarden die kleiner zijn dan de waarde die u wilt wijzigen, rechtstreeks in de constructor worden opgegeven `AutoMLConfig` . In dit geval geeft u `automl_settings` een korte uitvoering op: de uitvoering wordt gestopt na slechts twee iteraties of 15 minuten, afhankelijk van wat het eerste komt.
@@ -346,7 +347,7 @@ De `automl_settings` woorden lijst wordt door gegeven aan de `AutoMLConfig` cons
 Het `AutoMLStep` gaat hierbij `AutoMLConfig` om de en heeft, als uitvoer, de `PipelineData` objecten die zijn gemaakt om de metrieken en model gegevens op te slaan. 
 
 >[!Important]
-> U moet `passthru_automl_config` zo instellen dat `False` `AutoMLStep` objecten worden gebruikt `PipelineOutputTabularDataset` voor invoer.
+> U moet `enable_default_model_output` en instellen `enable_default_metrics_output` `False` , tenzij u dit gebruikt `AutoMLStep` .
 
 In dit voor beeld voert het geautomatiseerde ML proces Kruis validaties uit op de `training_data` . U kunt het aantal Kruis validaties beheren met het `n_cross_validations` argument. Als u uw trainings gegevens al hebt gesplitst als onderdeel van de stappen voor het voorbereiden van gegevens, kunt u `validation_data` deze zelf instellen `Dataset` .
 

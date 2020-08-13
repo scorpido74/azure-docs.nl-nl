@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6e4ed8514cd99d42790296a58296a73696989b69
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539132"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185397"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "87539132"
 In dit artikel leert u hoe u geautomatiseerde machine learning modellen kunt maken, verkennen en implementeren zonder één regel code in Azure Machine Learning Studio.
 
 >[!IMPORTANT]
-> De automatische ML-ervaring in azure machine learning Studio is een preview-versie. Bepaalde functies worden mogelijk niet ondersteund of hebben beperkte mogelijkheden.
+> De automatische ML-ervaring in Azure Machine Learning Studio is een preview-versie. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.
 
  Automatische machine learning is een proces waarbij het beste machine learning algoritme voor uw specifieke gegevens wordt geselecteerd. Met dit proces kunt u snel machine learning modellen genereren. Meer [informatie over automatische machine learning](concept-automated-ml.md).
  
@@ -80,7 +80,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
         Bestandsindeling| Definieert de indeling en het type gegevens dat is opgeslagen in een bestand.
         Scheidingsteken| Een of meer tekens die de grens aangeven tussen  afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevensstromen.
         Encoding| Identificeert welke bit-naar-tekenschematabel er moet gebruikt worden om uw gegevensset te lezen.
-        Kolomkoppen| Geeft aan hoe koppen van de gegevensset eventueel worden behandeld.
+        Kolomkoppen| Geeft aan hoe eventuele koppen van de gegevensset worden behandeld.
         Rijen overslaan | Geeft aan hoeveel rijen er eventueel worden overgeslagen in de gegevensset.
     
         Selecteer **Next**.
@@ -108,7 +108,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     Prioriteit van virtuele machine| Virtuele machines met lage prioriteit zijn goed koper, maar garanderen niet de reken knooppunten. 
     Type virtuele machine| Selecteer CPU of GPU voor type virtuele machine.
     Grootte van de virtuele machine| Selecteer de grootte van de virtuele machine voor uw berekening.
-    Min-maximum aantal knoop punten| U moet u één of meer knooppunten opgeven om gegevens te profileren. Voer het maximum aantal knoop punten in voor de reken kracht. De standaard waarde is 6 knoop punten voor een AML-berekening.
+    Min / Max knooppunten| U moet u één of meer knooppunten opgeven om gegevens te profileren. Voer het maximum aantal knoop punten in voor de reken kracht. De standaard waarde is 6 knoop punten voor een AML-berekening.
     Geavanceerde instellingen | Met deze instellingen kunt u een gebruikers account en een bestaand virtueel netwerk configureren voor uw experiment. 
     
     Selecteer **Maken**. Het maken van een nieuwe berekening kan enkele minuten duren.
@@ -134,8 +134,8 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     Aanvullende configuraties|Beschrijving
     ------|------
-    Primaire metrische gegevens| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#explore-model-metrics).
-    Aanbevolen model uitleggen | Selecteer deze optie om in of uit te scha kelen om de uitleg van het aanbevolen model weer te geven.
+    Primaire metrische gegevens| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#primary-metric).
+    Uitleg geven over het beste model | Selecteer deze optie om in of uit te scha kelen om de uitleg van het aanbevolen model weer te geven.
     Geblokkeerd algoritme| Selecteer de algoritmen die u wilt uitsluiten van de trainings taak.
     Criterium voor afsluiten| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak gestopt. <br> *Tijd van trainings taak (uren)*: hoe lang het mogelijk is om de trainings taak uit te voeren. <br> *Drempel waarde voor metrische Score*: minimale metrische score voor alle pijp lijnen. Dit zorgt ervoor dat als u een gedefinieerde doel metriek hebt die u wilt bereiken, u niet meer tijd op de trainings taak brengt dan nodig is.
     Validatie| Selecteer een van de opties voor kruis validatie die u wilt gebruiken in de trainings taak. Meer [informatie over Kruis validatie](how-to-configure-cross-validation-data-splits.md#prerequisites).
@@ -164,7 +164,7 @@ Min.| Minimum waarde van de kolom. Er worden geen lege items weer gegeven voor f
 Max| De maximum waarde van de kolom. 
 Aantal| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
 Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
-Quantiles| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
+Kwantielen| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
 Gemiddelde| Reken kundige gemiddelde of gemiddelde van de kolom.
 Standaarddeviatie| Meting van de hoeveelheid sprei ding of variatie van de gegevens van deze kolom.
 Variantie| De mate waarin de gegevens van deze kolom worden verdeeld uit de gemiddelde waarde. 

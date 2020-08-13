@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8b74fa39c47f9032e57d2b6630be1a3ef45990a3
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317281"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185176"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -127,17 +127,25 @@ Zie de [modus toegangs beheer configureren](manage-access.md#configure-access-co
 
 ## <a name="ingestion-volume-rate-limit"></a>Frequentie limiet opname volume
 
-Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. De standaard drempel voor opname snelheden is ingesteld op **6 GB/min** per werk ruimte. Dit is een geschatte waarde, omdat de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. Deze limiet geldt niet voor gegevens die worden verzonden door agents of de [Data Collector-API](data-collector-api.md).
+Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. De limiet voor de volume frequentie is om Azure Monitor klanten te beschermen tegen onverwachte opname pieken in een multitenancy. Een standaard frequentie van 500 MB (gecomprimeerd) voor de opname volume is van toepassing op werk ruimten, wat ongeveer **6 GB/min** niet-gecomprimeerd is. de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. Deze drempel waarde is van toepassing op alle opgenomen gegevens, ongeacht of deze zijn verzonden vanuit Azure-resources met [Diagnostische instellingen](diagnostic-settings.md), [Data Collector API](data-collector-api.md) of agents.
 
-Als u gegevens met een hoger snelheid naar één werk ruimte verzendt, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als uw opname volume de frequentie limiet blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een verhoging van uw werk ruimte aanvragen door een e-mail te verzenden naar LAIngestionRate@microsoft.com of een ondersteunings aanvraag te openen.
- 
-Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met de logica van een waarschuwing op basis van het aantal resultaten dat is gelukt dan nul.
+Wanneer u gegevens naar een werk ruimte verzendt met een volume snelheid van meer dan 80% van de drempel waarde die in uw werk ruimte is geconfigureerd, wordt er elke 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte terwijl de drempel waarde blijft overschreden. Wanneer de hoeveelheid opgenomen volume hoger is dan de drempel waarde, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als de frequentie van het opname volume de drempel waarde blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een aanvraag indienen om deze in uw werk ruimte te verg Roten door een ondersteunings aanvraag te openen. 
 
-``` Kusto
+Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met de logica van een waarschuwing op basis van het aantal resultaten dat is gelukt dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten.
+
+Percentage van opname volume bereikt 80% van de drempel waarde:
+```Kusto
 Operation
 |where OperationCategory == "Ingestion"
-|where Detail startswith "The rate of data crossed the threshold"
-``` 
+|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+```
+
+Drempel waarde voor inslikken volume bereikt:
+```Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The data ingestion volume rate crossed the threshold"
+```
 
 
 ## <a name="recommendations"></a>Aanbevelingen

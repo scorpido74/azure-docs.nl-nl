@@ -10,12 +10,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a08929c4affbd6eeb4d66a82d787ec5eba122e5b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c9c267097f681a78ba940283096b2c18d692e9cc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903762"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185363"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>Een opgeslagen toegangs beleid maken met .NET
 
@@ -41,7 +41,7 @@ De onderliggende REST-bewerking voor het maken van een opgeslagen toegangs belei
 
 De volgende code voorbeelden maken een opgeslagen toegangs beleid voor een container. U kunt het toegangs beleid gebruiken om beperkingen voor een service-SA'S op te geven voor de container of de blobs.
 
-# <a name="net-v12-sdk"></a>[.NET V12-SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
 Als u een opgeslagen toegangs beleid wilt maken in een container met versie 12 van de .NET-client bibliotheek voor Azure Storage, roept u een van de volgende methoden aan:
 
@@ -92,7 +92,7 @@ async static Task CreateStoredAccessPolicyAsync(string containerName)
 }
 ```
 
-# <a name="net-v11-sdk"></a>[.NET V11-SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
 
 Als u een opgeslagen toegangs beleid wilt maken in een container met versie 12 van de .NET-client bibliotheek voor Azure Storage, roept u een van de volgende methoden aan:
 
@@ -125,7 +125,7 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ---
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)](storage-sas-overview.md)
 - [Opgeslagen toegangsbeleid definiëren](/rest/api/storageservices/define-stored-access-policy)

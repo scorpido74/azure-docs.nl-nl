@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 37106517c47c86f4a4a562eebd6d120e31e22334
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a19ced1cb9496bddd1f9aa7ea9e3eb58ba7eea3d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564520"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185686"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Verbinding maken met gegevens van Azure Active Directory (Azure AD)
 
@@ -30,7 +30,7 @@ Met Azure Sentinel kunt u gegevens verzamelen van [Azure Active Directory](../ac
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u aanmeldings gegevens vanuit Azure AD wilt exporteren, moet u een Azure AD P1-of P2-licentie hebben.
+- Elke Azure AD-licentie (Free/O365/P1/P2) kan worden geïntegreerd met Azure Monitor-en opname logboek registraties in azure Sentinel. Er gelden extra kosten per gigabyte voor Azure Monitor of Azure Sentinel.
 
 - Gebruiker met de machtigingen globale beheerder of beveiligings beheerder voor de Tenant waarvan u de logboeken wilt streamen.
 

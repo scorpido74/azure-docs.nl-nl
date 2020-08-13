@@ -1,23 +1,23 @@
 ---
-title: De Azure Portal gebruiken om toegang te krijgen tot BLOB-of wachtrij gegevens
+title: Kies hoe u de toegang tot BLOB-of wachtrij gegevens in de Azure Portal wilt autoriseren
 titleSuffix: Azure Storage
 description: Wanneer u toegang hebt tot BLOB-of wachtrij gegevens met behulp van het Azure Portal, maakt de portal aanvragen voor Azure Storage onder de voor vallen. Deze aanvragen voor Azure Storage kunnen worden geverifieerd en geautoriseerd met uw Azure AD-account of de toegangs sleutel voor het opslag account.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/14/2020
+ms.date: 08/12/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 27c5b166565dd8f0803f3bca05d137e643325368
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534172"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185737"
 ---
-# <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>De Azure Portal gebruiken om toegang te krijgen tot BLOB-of wachtrij gegevens
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-in-the-azure-portal"></a>Kies hoe u de toegang tot BLOB-of wachtrij gegevens in de Azure Portal wilt autoriseren
 
 Wanneer u toegang hebt tot BLOB-of wachtrij gegevens met behulp van het [Azure Portal](https://portal.azure.com), maakt de portal aanvragen voor Azure Storage onder de voor vallen. Een aanvraag voor Azure Storage kan worden geautoriseerd met behulp van uw Azure AD-account of de toegangs sleutel voor het opslag account. De portal geeft aan welke methode u gebruikt en stelt u in staat om tussen de twee te scha kelen als u de juiste machtigingen hebt.  
 
@@ -38,7 +38,7 @@ Als u toegang wilt krijgen tot Blob-en wachtrij gegevens met de toegangs sleutel
 Wanneer u probeert toegang te krijgen tot BLOB-of wachtrij gegevens in de Azure Portal, controleert de portal eerst of aan u een rol is toegewezen met **micro soft. Storage/Storage accounts/listkeys ophalen/Action**. Als aan u een rol is toegewezen met deze actie, gebruikt de Portal de account sleutel voor toegang tot Blob-en wachtrij gegevens. Als u geen rol aan deze actie hebt toegewezen, probeert de portal toegang te krijgen tot gegevens met uw Azure AD-account.
 
 > [!NOTE]
-> De klassieke abonnements beheerder rollen service beheerder en mede beheerder bevatten het equivalent van de Azure Resource Manager rol van [eigenaar](../../role-based-access-control/built-in-roles.md#owner) . De rol **eigenaar** omvat alle acties, waaronder **micro soft. Storage/Storage accounts/listkeys ophalen/Action**, zodat een gebruiker met een van deze beheerders rollen ook toegang heeft tot Blob-en wachtrij gegevens met de account sleutel. Zie voor meer informatie [klassieke abonnements beheerders rollen, Azure-rollen en Azure AD-beheerders rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> De klassieke abonnements beheerder rollen service beheerder en mede beheerder bevatten het equivalent van de Azure Resource Manager rol van [eigenaar](../../role-based-access-control/built-in-roles.md#owner) . De rol **eigenaar** omvat alle acties, waaronder **micro soft. Storage/Storage accounts/listkeys ophalen/Action**, zodat een gebruiker met een van deze beheerders rollen ook toegang heeft tot Blob-en wachtrij gegevens met de account sleutel. Zie [Klassieke abonnementsbeheerdersrollen, Azure-rollen en Azure AD-beheerdersrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles) voor meer informatie.
 
 ### <a name="use-your-azure-ad-account"></a>Uw Azure AD-account gebruiken
 

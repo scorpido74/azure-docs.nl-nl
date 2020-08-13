@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc294eb1bdfd4a6a8c6ad001c007f83a10983644
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086429"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185805"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters automatisch schalen
 
 Met de gratis functie voor automatisch schalen van Azure HDInsight kunt u het aantal worker-knoop punten in uw cluster, op basis van eerder ingestelde criteria, verg Roten of verkleinen. U stelt een minimum-en maximum aantal knoop punten in tijdens het maken van het cluster, waarbij u de schaal criteria instelt met behulp van een dag-tijd schema of specifieke prestatie gegevens en het HDInsight-platform de rest.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe werkt het?
 
 De functie voor automatisch schalen maakt gebruik van twee soorten voor waarden voor het activeren van schaal gebeurtenissen: drempel waarden voor diverse metrische gegevens voor cluster prestaties (zogenaamde *op belasting gebaseerd schalen*) en activering op basis van tijd (genoemd *op schema gebaseerd*). Schalen op basis van een belasting wijzigt het aantal knoop punten in het cluster, binnen een bereik dat u instelt, om ervoor te zorgen dat het CPU-gebruik optimaal werkt en de uitgevoerde kosten tot een minimum worden beperkt. Schalen op basis van een schema wijzigt het aantal knoop punten in uw cluster op basis van bewerkingen die u koppelt aan specifieke datums en tijden.
 
@@ -133,7 +133,7 @@ Zie op [Linux gebaseerde clusters maken in HDInsight met behulp van de Azure Por
 
 #### <a name="load-based-autoscaling"></a>Automatisch schalen op basis van een werk belasting
 
-U kunt een HDInsight-cluster maken met behulp van automatisch schalen op basis van een Azure Resource Manager sjabloon door een `autoscale` knoop punt toe te voegen aan de `computeProfile`  >  `workernode` sectie met de eigenschappen `minInstanceCount` en `maxInstanceCount` zoals wordt weer gegeven in het JSON-code fragment hieronder.
+U kunt een HDInsight-cluster maken met behulp van automatisch schalen op basis van een Azure Resource Manager sjabloon door een `autoscale` knoop punt toe te voegen aan de `computeProfile`  >  `workernode` sectie met de eigenschappen `minInstanceCount` en `maxInstanceCount` zoals wordt weer gegeven in het JSON-code fragment hieronder. Voor een volledige Resource Manager-sjabloon raadpleegt u [Quick Start sjabloon: een Spark-cluster implementeren met Loadbased AutoScale ingeschakeld](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
 
 ```json
 {
@@ -161,7 +161,7 @@ U kunt een HDInsight-cluster maken met behulp van automatisch schalen op basis v
 
 #### <a name="schedule-based-autoscaling"></a>Automatisch schalen op basis van een planning
 
-U kunt een HDInsight-cluster maken met behulp van een Azure Resource Manager sjabloon automatisch schalen door een `autoscale` knoop punt toe te voegen aan de `computeProfile`  >  `workernode` sectie. Het `autoscale` knoop punt bevat een `recurrence` `timezone` en `schedule` die beschrijft wanneer de wijziging wordt doorgevoerd.
+U kunt een HDInsight-cluster maken met behulp van een Azure Resource Manager sjabloon automatisch schalen door een `autoscale` knoop punt toe te voegen aan de `computeProfile`  >  `workernode` sectie. Het `autoscale` knoop punt bevat een `recurrence` `timezone` en `schedule` die beschrijft wanneer de wijziging wordt doorgevoerd. Zie voor een volledige Resource Manager-sjabloon [implementeren Spark-cluster met automatisch schalen op basis van planning ingeschakeld](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased).
 
 ```json
 {
@@ -225,9 +225,9 @@ De cluster status die in de Azure Portal wordt weer gegeven, kan u helpen bij he
 
 Alle cluster status berichten die u mogelijk ziet, worden beschreven in de onderstaande lijst.
 
-| De clusterstatus | Description |
+| De clusterstatus | Beschrijving |
 |---|---|
-| In uitvoering | Het cluster werkt normaal. Alle vorige activiteiten voor automatisch schalen zijn voltooid. |
+| Wordt uitgevoerd | Het cluster werkt normaal. Alle vorige activiteiten voor automatisch schalen zijn voltooid. |
 | Bijwerken  | De configuratie van het automatisch schalen van clusters wordt bijgewerkt.  |
 | HDInsight-configuratie  | Een cluster omhoog of omlaag schalen wordt uitgevoerd.  |
 | Fout bij het bijwerken  | Er zijn problemen met HDInsight tijdens de configuratie-update voor automatisch schalen. Klanten kunnen ervoor kiezen om de update opnieuw uit te voeren of automatisch schalen uit te scha kelen.  |

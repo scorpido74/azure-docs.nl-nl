@@ -3,7 +3,7 @@ title: Linux-distributies die zijn goedgekeurd op Azure
 description: Meer informatie over Linux op door Azure goedgekeurde distributies, inclusief richt lijnen voor Ubuntu, CentOS, Oracle en SUSE.
 services: virtual-machines-linux
 documentationcenter: ''
-author: gbowerman
+author: danielsollondon
 manager: gwallace
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: fd21170c4edc1ed0587ea4d4e067e61590530623
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283313"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184989"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Officiële Linux-distributies op Azure
 
@@ -74,6 +74,14 @@ Micro soft heeft twee (2) migratie kanalen voor CoreOS-gebruikers.
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 Credativ is een onafhankelijke Consulting-en service maatschappij die is gespecialiseerd in de ontwikkeling en implementatie van professionele oplossingen door gebruik te maken van gratis software. Als toonaangevende open-source specialisten heeft Credativ internationale herkenning met veel IT-afdelingen die hun ondersteuning gebruiken. In combi natie met micro soft wordt Credativ momenteel de bijbehorende Debian-installatie kopieën voor Debian 8 (Jessie) en Debian voor 7 (Wheezy) voor bereid. Beide installatie kopieën zijn speciaal ontworpen om te worden uitgevoerd op Azure en kunnen eenvoudig worden beheerd via het platform. Credativ biedt ook ondersteuning voor de lange termijn onderhoud en het bijwerken van de Debian-installatie kopieën voor Azure via de open source-ondersteunings centra.
+
+### <a name="kinvolk"></a>Kinvolk
+[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+
+Kinvolk is het bedrijf achter Flatcar container Linux, waarbij de oorspronkelijke CoreOS Vision wordt voortgezet voor een minimale, onveranderlijke en automatisch bijgewerkte basis voor container toepassingen. Als minimale distributie bevat Flatcar alleen de pakketten die vereist zijn voor het implementeren van containers. Het onveranderbare bestands systeem garandeert consistentie en beveiliging, terwijl de functies voor automatisch bijwerken u in staat stellen altijd up-to-date te zijn met de nieuwste beveiligingsfixes. 
+
+Flatcar-container Linux is een back-up van het wereld wijde team van Linux-en container technologie-experts van Kinvolk die een optioneel commercieel ondersteunings abonnement bieden dat 24 uur per dag reageert, beveiligings-en technische waarschuwingen en exclusieve door Azure geoptimaliseerde installatie kopieën, inclusief een ondersteunings kanaal voor de lange termijn.
+
 
 ### <a name="oracle"></a>Oracle
 

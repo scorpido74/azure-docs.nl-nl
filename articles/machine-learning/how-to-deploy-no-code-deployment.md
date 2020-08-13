@@ -9,12 +9,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6c70f27eebc9d502ce7275603e99975c2efc267
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544565"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185482"
 ---
 # <a name="preview-no-code-model-deployment"></a>Evaluatie Implementatie van geen code model
 
@@ -24,6 +24,8 @@ Implementatie zonder code model is momenteel als preview-versie beschikbaar en o
 Tensor flow-modellen moeten worden geregistreerd in **SavedModel-indeling** om te kunnen werken met implementatie zonder code modellen.
 
 Zie [deze koppeling](https://www.tensorflow.org/guide/saved_model) voor meer informatie over het maken van een SavedModel.
+
+We ondersteunen een tensor flow-versie die wordt vermeld onder ' Tags ' op het [tensor flow voor DockerHub](https://registry.hub.docker.com/r/tensorflow/serving/tags).
 
 ```python
 from azureml.core import Model
@@ -129,7 +131,7 @@ print(output)
 * [Problemen met een mislukte implementatie oplossen](how-to-troubleshoot-deployment.md)
 * [Implementeren naar Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Client toepassingen maken voor het gebruik van webservices](how-to-consume-web-service.md)
-* [Web-service bijwerken](how-to-deploy-update-web-service.md)
+* [Webservice bijwerken](how-to-deploy-update-web-service.md)
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)

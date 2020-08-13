@@ -1,17 +1,17 @@
 ---
 title: Een Microsoft Azure FXT Edge-eenheid afsluiten
-description: Procedures voor opstarten en veilig afsluiten van een Azure FXT Edge-Bestandsr knoop punt
+description: Meer informatie over de procedures voor het opstarten en veilig afsluiten van een Azure FXT Edge-knoop punt met behulp van de software van het configuratie scherm van het cluster.
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 92364de82bc3de8229eced4ee02997a27afbde45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d597d5d1e86a2ea13363bc270fb55304d77dee5c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506409"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184870"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>De hardware van Azure FXT edge-apparaat veilig uitzetten
 

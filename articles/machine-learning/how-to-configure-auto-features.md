@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 94595bac2febdef1d3739703f0fa49c9ef15f218
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: a5eb24b5420431a43afa2ffd006ac821f0e907c9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166617"
+ms.locfileid: "88185754"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Parametrisatie in automatische machine learning
 
@@ -28,6 +28,8 @@ In deze hand leiding leert u het volgende:
 - Hoe u deze functies kunt aanpassen voor uw [geautomatiseerde machine learning experimenten](concept-automated-ml.md).
 
 *Functie techniek* is het proces van het gebruik van domein kennis van de gegevens voor het maken van functies die machine learning (ml) algoritmen voor meer informatie. In Azure Machine Learning worden technieken voor het schalen van gegevens en normalisatie toegepast om functie techniek gemakkelijker te maken. Deze technieken en deze functie techniek worden gezamenlijk *parametrisatie* genoemd in geautomatiseerde machine learning, of *AutoML*, experimenten.
+
+## <a name="prerequisites"></a>Vereisten
 
 In dit artikel wordt ervan uitgegaan dat u al weet hoe u een AutoML-experiment kunt configureren. Raadpleeg de volgende artikelen voor meer informatie over configuratie:
 
@@ -64,9 +66,9 @@ De volgende tabel bevat een overzicht van de technieken die automatisch worden t
 | ------------- | ------------- |
 |**Hoge kardinaliteit of geen variantie-functies verwijderen*** |Verwijder deze functies uit de trainings-en validatie sets. Is van toepassing op functies waarbij alle waarden ontbreken, met dezelfde waarde in alle rijen of met een hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
 |**Ontbrekende waarden toegerekend*** |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
-|**Aanvullende functies genereren*** |Voor DateTime-functies: jaar, maand, dag, dag van de week, dag van jaar, kwar taal, week van het jaar, uur, minuut, seconde.<br><br> *Voor prognose taken* worden de volgende extra datetime-functies gemaakt: ISO-jaar, half-halfjaar, kalender maand als teken reeks, week, dag van de week, teken reeks, dag van kwar taal, dag van jaar, am/pm (0 als het uur vóór 12:00 uur (12 uur), 1 anders), am/pm als teken reeks, uur van dag (12hr basis)<br/><br/>Voor tekst functies: term frequentie op basis van unigrams, bigrams en trigrams. Meer informatie over [hoe dit wordt gedaan met Bert.](#bert-integration)|
+|**Aanvullende functies genereren*** |Voor DateTime-functies: jaar, maand, dag, dag van de week, dag van jaar, kwar taal, week van het jaar, uur, minuut, seconde.<br><br> *Voor prognose taken* worden de volgende extra datetime-functies gemaakt: ISO-jaar, half-halfjaar, kalender maand als teken reeks, week, dag van de week, teken reeks, dag van kwar taal, dag van jaar, am/pm (0 als het uur vóór 12:00 uur (12 uur), 1 anders), am/pm als teken reeks, uur van dag (12 uur)<br/><br/>Voor tekst functies: term frequentie op basis van unigrams, bigrams en trigrams. Meer informatie over [hoe dit wordt gedaan met Bert.](#bert-integration)|
 |**Transformeren en coderen***|Numerieke functies met weinig unieke waarden transformeren in categorische-functies.<br/><br/>Code ring met één Hot-categorische wordt gebruikt voor functies met weinig kardinaliteit. Een hot-hash-code ring wordt gebruikt voor categorische-functies met een hoge kardinaliteit.|
-|**Woord insluitingen**|Met een tekst featurizer worden vectoren van tekst tokens geconverteerd naar zinnen vectoren met behulp van een voortraind model. De insluitings vector van elk woord in een document wordt samengevoegd met de rest om een document functie Vector te maken.|
+|**Woord insluitingen**|Met een tekst-featurizer worden vectoren van tekst tokens geconverteerd naar zinnen vectoren met behulp van een vooraf getraind model. De insluitings vector van elk woord in een document wordt samengevoegd met de rest om een document functie Vector te maken.|
 |**Doel codering**|Voor categorische-functies wordt met deze stap elke categorie toegewezen aan een gemiddelde doel waarde voor regressie problemen en aan de klasse-kans voor elke klasse voor classificatie problemen. Op frequentie gebaseerde weging en kruis validatie met k-vouwen worden toegepast om het overschrijden van de toewijzing en lawaai door sparse gegevens categorieën te verminderen.|
 |**Coderen van tekst doel**|Voor tekst invoer wordt een gestapeld lineair model met Bag-of-woorden gebruikt om de kans van elke klasse te genereren.|
 |**Gewicht van bewijs (WoE)**|Hiermee wordt WoE berekend als een maat eenheid van de correlatie tussen categorische-kolommen en de doel kolom. WoE wordt berekend als het logboek van de ratio van in-class versus out-of-the-Class-kansen. Met deze stap wordt één numerieke functie kolom per klasse gegenereerd en wordt de nood zaak om ontbrekende waarden en uitschieter-behandeling expliciet te verduidelijkt.|
@@ -140,34 +142,196 @@ featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "m
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
 ```
 
-## <a name="bert-integration"></a>BERT-integratie 
-[Bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) wordt gebruikt in de parametrisatie-laag van automatische milliliters. In deze laag detecteren we of een kolom vrije tekst of andere typen gegevens bevat, zoals tijds tempels of eenvoudige getallen en we parametriseer dienovereenkomstig. Voor BERT kunnen we het model verfijnen/trainen door gebruik te maken van de door de gebruiker geleverde labels. vervolgens worden de document insluitingen uitgevoerd (voor BERT deze zijn de laatste verborgen status die is gekoppeld aan het speciale [CLS]-token) als functies naast andere functies zoals op tijds tempel gebaseerde functies (bijvoorbeeld dag van de week) of getallen die veel typische gegevens sets bevatten 
+## <a name="featurization-transparency"></a>Parametrisatie transparantie
 
-Als u BERT wilt inschakelen, moet u GPU Compute for training gebruiken. Als er een CPU-berekening wordt gebruikt, wordt in plaats van BERT AutoML BiLSTM DNN featurizer. Voor het aanroepen van BERT moet u ' enable_dnn: True ' instellen in automl_settings en GPU Compute gebruiken (bijvoorbeeld vm_size = "STANDARD_NC6" of een hogere GPU). Raadpleeg [Dit notitie blok voor een voor beeld](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
+Voor elk AutoML-model is parametrisatie automatisch toegepast.  Parametrisatie omvat geautomatiseerde functie techniek (wanneer `"featurization": 'auto'` ) en schalen en normalisatie, die vervolgens van invloed zijn op het geselecteerde algoritme en de bijbehorende afstemming-waarden. AutoML ondersteunt verschillende methoden om ervoor te zorgen dat u inzicht hebt in wat is toegepast op uw model.
 
-AutoML voert de volgende stappen uit, voor het geval van BERT (u moet enable_dnn: true instellen in automl_settings voor deze items die moeten worden uitgevoerd):
+Bekijk dit voor beeld van een prognose:
 
-1. Preverwerking met inbegrip van tokenisatie van alle tekst kolommen (in de parametrisatie-samen vatting van het uiteindelijke model ziet u de StringCast-transformator. Ga naar [Dit notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) om een voor beeld te zien van het maken van de parametrisatie-samen vatting van het model met behulp van de- `get_featurization_summary()` methode.
++ Er zijn vier invoer functies: A (numeriek), B (numeriek), C (numeriek), D (DateTime).
++ De numerieke functie C wordt verwijderd omdat deze een ID-kolom met alle unieke waarden is.
++ De numerieke functies A en B bevatten ontbrekende waarden en worden daarom toegerekend aan het gemiddelde.
++ De datum/tijd-functie D is featurized in 11 verschillende ontworpen functies.
+
+Als u deze informatie wilt ophalen, gebruikt u de `fitted_model` uitvoer van uw automatische ml-experiment run.
 
 ```python
-text_transformations_used = []
-for column_group in fitted_model.named_steps['datatransformer'].get_featurization_summary():
-    text_transformations_used.extend(column_group['Transformations'])
-text_transformations_used
+automl_config = AutoMLConfig(…)
+automl_run = experiment.submit(automl_config …)
+best_run, fitted_model = automl_run.get_output()
+```
+### <a name="automated-feature-engineering"></a>Geautomatiseerde functie techniek 
+Het `get_engineered_feature_names()` retourneert een lijst met de namen van de functies van de functie.
+
+  >[!Note]
+  >Gebruik ' timeseriestransformer ' voor taak = ' prognose ', Else gebruik ' datatransformer ' voor de taak ' regressie ' of ' classificatie '.
+
+  ```python
+  fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
+  ```
+
+Deze lijst bevat alle functie namen van technici. 
+
+  ```
+  ['A', 'B', 'A_WASNULL', 'B_WASNULL', 'year', 'half', 'quarter', 'month', 'day', 'hour', 'am_pm', 'hour12', 'wday', 'qday', 'week']
+  ```
+
+`get_featurization_summary()`Hiermee wordt een parametrisatie-samen vatting van alle invoer functies opgehaald.
+
+  ```python
+  fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+  ```
+
+Uitvoer
+
+  ```
+  [{'RawFeatureName': 'A',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 2,
+    'Tranformations': ['MeanImputer', 'ImputationMarker']},
+   {'RawFeatureName': 'B',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 2,
+    'Tranformations': ['MeanImputer', 'ImputationMarker']},
+   {'RawFeatureName': 'C',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'Yes',
+    'EngineeredFeatureCount': 0,
+    'Tranformations': []},
+   {'RawFeatureName': 'D',
+    'TypeDetected': 'DateTime',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 11,
+    'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
+  ```
+
+   |Uitvoer|Definitie|
+   |----|--------|
+   |RawFeatureName|Invoer functie/kolom naam van de opgegeven gegevensset.|
+   |TypeDetected|Het gegevens type van de invoer functie is gedetecteerd.|
+   |Minder|Hiermee wordt aangegeven of de invoer functie is verwijderd of gebruikt.|
+   |EngineeringFeatureCount|Aantal functies dat wordt gegenereerd via geautomatiseerde functie technische trans formaties.|
+   |Transformaties|Lijst met trans formaties die zijn toegepast op de invoer functies voor het genereren van ontworpen functies.|
+
+### <a name="scaling-and-normalization"></a>Schalen en normalisatie
+
+Gebruik om inzicht te krijgen in de schaal/normalisatie en het geselecteerde algoritme met de afstemming-waarden `fitted_model.steps` . 
+
+De volgende voorbeeld uitvoer wordt uitgevoerd `fitted_model.steps` voor een gekozen uitvoering:
+
+```
+[('RobustScaler', 
+  RobustScaler(copy=True, 
+  quantile_range=[10, 90], 
+  with_centering=True, 
+  with_scaling=True)), 
+
+  ('LogisticRegression', 
+  LogisticRegression(C=0.18420699693267145, class_weight='balanced', 
+  dual=False, 
+  fit_intercept=True, 
+  intercept_scaling=1, 
+  max_iter=100, 
+  multi_class='multinomial', 
+  n_jobs=1, penalty='l2', 
+  random_state=None, 
+  solver='newton-cg', 
+  tol=0.0001, 
+  verbose=0, 
+  warm_start=False))
 ```
 
-2. Voegt alle tekst kolommen toe aan een enkele tekst kolom, dus u ziet "StringConcatTransformer" in het uiteindelijke model. 
+Voor meer informatie gebruikt u deze hulp functie: 
 
-> [!NOTE]
-> Onze implementatie van BERT beperkt de totale tekst lengte van een trainings voorbeeld tot 128-tokens. Dit betekent dat alle tekst kolommen bij het samen voegen de meeste 128-tokens lang moeten zijn. In het ideale geval, als er meerdere kolommen aanwezig zijn, moet elke kolom worden verwijderd, zodat aan deze voor waarde wordt voldaan. Als er bijvoorbeeld twee tekst kolommen in de gegevens zijn, moeten beide tekst kolommen worden verwijderd naar de 64-tokens (ervan uitgaande dat u wilt dat beide kolommen gelijkmatig worden weer gegeven in de laatste samengevoegde tekst kolom) voordat de gegevens worden gevoederd in AutoML. Voor samengevoegde kolommen met een lengte >128-tokens, wordt deze invoer door de Tokenizer-laag van BERT afgekapt op 128-tokens.
+```python
+from pprint import pprint
 
-3. In de stap voor het opruimen van functies vergelijkt AutoML BERT met de basis lijn (verzameling woorden) met een steek proef van de gegevens en wordt bepaald of BERT nauw keurigere verbeteringen zou opleveren. Als wordt vastgesteld dat BERT beter presteert dan de basis lijn, gebruikt AutoML vervolgens BERT voor Text parametrisatie als de optimale parametrisatie-strategie en gaat over op de volledige gegevens van featurizing. In dat geval wordt de "PretrainedTextDNNTransformer" in het uiteindelijke model weer geven.
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(
+                e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0] + ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()
 
-BERT wordt over het algemeen langer dan de meeste andere featurizers. Dit kan worden sped door meer compute in uw cluster op te geven. AutoML distribueert BERT-training over meerdere knoop punten als deze beschikbaar zijn (Maxi maal 8 knoop punten). U kunt dit doen door [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) hoger dan 1 in te stellen. Voor betere prestaties raden we u aan sku's te gebruiken met RDMA-mogelijkheden (zoals ' STANDARD_NC24r ' of ' STANDARD_NC24rs_V3 ')
+print_model(model)
+```
+
+Deze helper-functie retourneert de volgende uitvoer voor een bepaalde uitvoering met `LogisticRegression with RobustScalar` als het specifieke algoritme.
+
+```
+RobustScaler
+{'copy': True,
+'quantile_range': [10, 90],
+'with_centering': True,
+'with_scaling': True}
+
+LogisticRegression
+{'C': 0.18420699693267145,
+'class_weight': 'balanced',
+'dual': False,
+'fit_intercept': True,
+'intercept_scaling': 1,
+'max_iter': 100,
+'multi_class': 'multinomial',
+'n_jobs': 1,
+'penalty': 'l2',
+'random_state': None,
+'solver': 'newton-cg',
+'tol': 0.0001,
+'verbose': 0,
+'warm_start': False}
+```
+
+### <a name="predict-class-probability"></a>Klasse waarschijnlijkheid voors pellen
+
+Modellen die zijn gemaakt met behulp van automatische ML, bevatten alle wrapper-objecten die de functionaliteit van de open-source klasse Origin spie gelen. De meeste wrapper-objecten die worden geretourneerd door automatische MILLILITERs implementeren de `predict_proba()` functie, die een matrix-achtige of Sparse matrix gegevens voorbeeld van uw functies (X-waarden) accepteert en een n-dimensionale matrix van elk voor beeld en de bijbehorende klasse-kans retourneert.
+
+Als u het beste uitvoeren en het model hebt opgehaald met behulp van de bovenstaande oproepen, kunt u `predict_proba()` rechtstreeks vanuit het ingebouwde model aanroepen, waarbij u een `X_test` voor beeld in de juiste indeling levert, afhankelijk van het model type.
+
+```python
+best_run, fitted_model = automl_run.get_output()
+class_prob = fitted_model.predict_proba(X_test)
+```
+
+Als het onderliggende model de functie niet ondersteunt `predict_proba()` of als de indeling onjuist is, wordt een model klasse-specifieke uitzonde ring gegenereerd. Zie de documentatie voor [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) en [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) voor voor beelden van hoe deze functie voor verschillende model typen wordt geïmplementeerd.
+
+## <a name="bert-integration"></a>BERT-integratie
+
+[Bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) wordt gebruikt in de parametrisatie-laag van AutoML. Als een kolom in deze laag vrije tekst of andere typen gegevens, zoals tijds tempels of eenvoudige getallen bevat, wordt parametrisatie dienovereenkomstig toegepast.
+
+Voor BERT is het model goed afgestemd en getraind waarbij gebruik wordt gemaakt van de door de gebruiker geleverde labels. Hier worden document insluitingen uitgevoerd als functies naast andere, zoals op Time Stamp gebaseerde functies, dag van de week. 
+
+
+### <a name="bert-steps"></a>BERT-stappen
+
+Als u BERT wilt aanroepen, moet u `enable_dnn: True` in uw automl_settings instellen en een GPU-Compute (bijvoorbeeld `vm_size = "STANDARD_NC6"` of een hogere GPU) gebruiken. Als er een CPU-berekening wordt gebruikt, wordt in plaats van BERT, AutoML de BiLSTM DNN-featurizer ingeschakeld.
+
+AutoML voert de volgende stappen uit voor BERT. 
+
+1. **Voor verwerking en tokening van alle tekst kolommen**. De transformator ' StringCast ' kan bijvoorbeeld worden gevonden in de parametrisatie-samen vatting van het uiteindelijke model. Een voor beeld van het maken van een samen vatting van het model parametrisatie vindt u in [Dit notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
+
+2. **Alle tekst kolommen samen voegen tot één tekst kolom**, dus de `StringConcatTransformer` in het laatste model. 
+
+    Onze implementatie van BERT beperkt de totale tekst lengte van een trainings voorbeeld tot 128-tokens. Dit betekent dat alle tekst kolommen bij het samen voegen de meeste 128-tokens lang moeten zijn. Als er meerdere kolommen aanwezig zijn, moet elke kolom worden verwijderd zodat aan deze voor waarde wordt voldaan. Als dat niet het geval is, wordt voor de Tokenizer laag van BERT-tokens deze invoer met 128-tokens afgekapt voor samengevoegde kolommen met een lengte >128.
+
+3. **Als onderdeel van het opruimen van functies vergelijkt AutoML BERT met de basis lijn (verzameling woorden) met een voor beeld van de gegevens.** Met deze vergelijking wordt bepaald of BERT nauw keurigere verbeteringen opleveren. Als BERT beter presteert dan de basis lijn, gebruikt AutoML vervolgens BERT voor Text parametrisatie voor de hele gegevens. In dat geval wordt de `PretrainedTextDNNTransformer` in het laatste model weer geven.
+
+BERT wordt doorgaans langer uitgevoerd dan andere featurizers. Voor betere prestaties raden we u aan om ' STANDARD_NC24r ' of ' STANDARD_NC24rs_V3 ' te gebruiken voor hun RDMA-mogelijkheden. 
+
+AutoML distribueert BERT-training over meerdere knoop punten als deze beschikbaar zijn (Maxi maal acht knoop punten). Dit kan in uw object worden uitgevoerd `AutoMLConfig` door de `max_concurrent_iterations` para meter in te stellen op hoger dan 1. 
+### <a name="supported-languages"></a>Ondersteunde talen
 
 AutoML ondersteunt momenteel ongeveer 100 talen en afhankelijk van de taal van de gegevensset, kiest AutoML het juiste BERT-model. Voor Duitse gegevens gebruiken we het Duitse BERT-model. Voor het Engels gebruiken we het Engelse BERT-model. Voor alle andere talen gebruiken we het Multilingual BERT-model.
 
-In de volgende code wordt het Duitse BERT-model geactiveerd, omdat de taal van de gegevensset is opgegeven in deu, de taal code van drie letters voor Duits volgens de [ISO-classificatie](https://iso639-3.sil.org/code/deu):
+In de volgende code wordt het Duitse BERT-model geactiveerd, omdat de taal van de gegevensset is opgegeven in `deu` , de taal code van drie letters voor Duits volgens de [ISO-classificatie](https://iso639-3.sil.org/code/deu):
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

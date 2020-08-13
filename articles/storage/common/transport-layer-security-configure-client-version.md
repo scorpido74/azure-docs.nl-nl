@@ -10,12 +10,12 @@ ms.date: 07/08/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: d35b02e798d68682a3c55068f1f53f7a28d81721
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d4bead0ad73bd1315ce114c08320c6673ab0f42d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209595"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185152"
 ---
 # <a name="configure-transport-layer-security-tls-for-a-client-application"></a>Transport Layer Security (TLS) configureren voor een client toepassing
 
@@ -43,13 +43,13 @@ $ctx = $storageAccount.Context
 New-AzStorageContainer -Name "sample-container" -Context $ctx
 ```
 
-# <a name="net-v12-sdk"></a>[.NET V12-SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
 In het volgende voor beeld ziet u hoe u TLS 1,2 inschakelt in een .NET-client met behulp van versie 12 van de Azure Storage-client bibliotheek:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Networking.cs" id="Snippet_ConfigureTls12":::
 
-# <a name="net-v11-sdk"></a>[.NET V11-SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
 
 In het volgende voor beeld ziet u hoe u TLS 1,2 inschakelt in een .NET-client met versie 11 van de Azure Storage-client bibliotheek:
 

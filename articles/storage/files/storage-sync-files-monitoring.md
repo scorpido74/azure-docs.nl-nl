@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031078"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185618"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync bewaken
 
@@ -156,12 +156,13 @@ Status van Cloud lagen
   - Gebeurtenis-ID 9016 bevat spook resultaten voor een volume. Bijvoorbeeld: percentage beschik bare ruimte is het aantal bestanden dat in de sessie is gedupliceerd en het aantal bestanden dat niet kan worden Ghost.
   - Gebeurtenis-ID 9029 bevat informatie over ghost-sessies voor een server eindpunt. Bijvoorbeeld: het aantal bestanden dat is geprobeerd in de sessie, het aantal bestanden dat in de sessie is gelaag en het aantal bestanden dat al is gelaagd.
   
-- Gebruik gebeurtenis-ID 9005, 9006, 9009 en 9059 in het logboek voor telemetrie, dat zich bevindt in Logboeken onder *toepassingen en Services\Microsoft\FileSync\Agent*om de intrek activiteit op een server te controleren.
+- Gebruik gebeurtenis-ID 9005, 9006, 9009, 9059 en 9071 in het logboek voor telemetrie, dat zich bevindt in Logboeken onder *toepassingen en Services\Microsoft\FileSync\Agent*om de intrek activiteit op een server te controleren.
 
   - Gebeurtenis-ID 9005 biedt betrouw baarheid van een server eindpunt. Bijvoorbeeld: totale aantal bezochte unieke bestanden en totale aantal unieke bestanden met mislukte toegang.
   - Gebeurtenis-ID 9006 biedt fout bij het intrekken van fouten voor een server eindpunt. Bijvoorbeeld: totaal aantal mislukte aanvragen en error code. Er wordt één gebeurtenis per fout code in het logboek geregistreerd.
   - Gebeurtenis-ID 9009 biedt informatie over het intrekken van sessies voor een server eindpunt. Bijvoorbeeld: DurationSeconds, CountFilesRecallSucceeded en CountFilesRecallFailed.
   - Met gebeurtenis-ID 9059 kan de toepassing worden gedistribueerd voor een server eindpunt. Bijvoorbeeld: ShareId, toepassings naam en TotalEgressNetworkBytes.
+  - Gebeurtenis-ID 9071 biedt efficiëntie van de Cloud lagen voor een server eindpunt. Bijvoorbeeld: TotalDistinctFileCountCacheHit, TotalDistinctFileCountCacheMiss, TotalCacheHitBytes en TotalCacheMissBytes.
 
 ### <a name="performance-counters"></a>Prestatiemeteritems
 

@@ -3,12 +3,12 @@ title: Azure Event Hubs integreren met de persoonlijke koppelings service van Az
 description: Meer informatie over het integreren van Azure Event Hubs met de persoonlijke koppelings service van Azure
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 66753e51fd1e918e5659e219c5ebbe471705b3ee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421095"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185465"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Toegang tot Azure Event Hubs-naam ruimten toestaan via persoonlijke eind punten 
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
@@ -18,21 +18,19 @@ Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig ku
 Zie [Wat is een Azure Private Link?](../private-link/private-link-overview.md) voor meer informatie.
 
 > [!IMPORTANT]
-> Deze functie wordt ondersteund voor zowel de **standaard** als de **toegewezen** laag. 
-
->[!WARNING]
-> Het inschakelen van persoonlijke eind punten kan verhinderen dat andere Azure-Services communiceren met Event Hubs.
+> Deze functie wordt ondersteund voor zowel de **standaard** als de **toegewezen** laag. Het wordt niet ondersteund in de laag **basis** .
 >
-> Vertrouwde micro soft-services worden niet ondersteund bij het gebruik van virtuele netwerken.
+> Het inschakelen van persoonlijke eind punten kan verhinderen dat andere Azure-Services communiceren met Event Hubs.  Aanvragen die zijn geblokkeerd, zijn onder andere die van andere Azure-Services, van de Azure Portal, van de services logboek registratie en metrische gegevens, enzovoort. 
+> 
+> Hier volgen enkele van de services die geen toegang hebben tot Event Hubs resources wanneer persoonlijke eind punten zijn ingeschakeld. Houd er rekening mee dat de lijst **niet** limitatief is.
 >
-> Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
 > - Azure Stream Analytics
 > - Azure-IoT Hub routes
 > - Azure IoT-Device Explorer
+> - Azure Event Grid
+> - Azure Monitor (Diagnostische instellingen)
 >
-> De volgende micro soft-services moeten zich in een virtueel netwerk bevinden
-> - Azure Web Apps
-> - Azure Functions
+> Als uitzonde ring kunt u toegang verlenen tot Event Hubs resources van bepaalde vertrouwde services, zelfs wanneer persoonlijke eind punten zijn ingeschakeld. Zie [Trusted Services](#trusted-microsoft-services)(Engelstalig) voor een lijst met vertrouwde services.
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Een persoonlijk eind punt toevoegen met Azure Portal
 
@@ -52,7 +50,7 @@ Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 ### <a name="steps"></a>Stappen
 Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particuliere verbinding maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer **netwerken** onder **instellingen** in het menu links.
@@ -105,6 +103,10 @@ Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particul
 12. Controleer of de verbinding van het privé-eind punt dat u hebt gemaakt, wordt weer gegeven in de lijst met eind punten. In dit voor beeld wordt het persoonlijke eind punt automatisch goedgekeurd omdat u verbinding hebt gemaakt met een Azure-resource in uw directory en u voldoende machtigingen hebt. 
 
     ![Persoonlijk eind punt gemaakt](./media/private-link-service/private-endpoint-created.png)
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+
+Als u vertrouwde services toegang wilt verlenen tot uw naam ruimte, gaat u naar het tabblad **firewalls en virtuele netwerken** op de pagina **netwerk** en selecteert u **Ja** **Als u wilt dat vertrouwde micro soft-services deze firewall kunnen overs Laan?**. 
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>Een persoonlijk eind punt toevoegen met Power shell
 In het volgende voor beeld ziet u hoe u Azure PowerShell kunt gebruiken om een verbinding met een privé-eind punt te maken. Er wordt geen speciaal cluster voor u gemaakt. Volg de stappen in [dit artikel](event-hubs-dedicated-cluster-create-portal.md) om een toegewezen Event hubs-cluster te maken. 

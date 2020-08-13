@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2918c5842d6470e634518ff9c12f6f04aefc920
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512436"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185380"
 ---
 # <a name="what-is-azure-importexport-service"></a>Wat is Azure import/export-service?
 
@@ -125,9 +125,10 @@ De Azure import/export-service ondersteunt het kopiëren van gegevens van en naa
 |VS - oost 2    | Azië - oost        |  India - west        | US DoD Central        |
 |VS - west 2     | Azië - zuidoost        | Canada - midden        | China East         |
 |VS - centraal     | Australië - oost        | Canada - oost        | China - noord        |
-|VS - noord-centraal     |  Australië - zuidoost       | Brazilië - zuid        | Verenigd Koninkrijk Zuid        |
-|VS - zuid-centraal     | Japan - west        |Korea - centraal         | Duitsland - centraal        |
-|VS - west-centraal     |  Japan - oost       | VS (overheid) - Virginia        | Duitsland - noordoost        |
+|VS - noord-centraal     |  Australia Southeast       | Brazil South        | Verenigd Koninkrijk Zuid        |
+|South Central US     | Japan - west        |Korea - centraal         | Duitsland - centraal        |
+|VS - west-centraal     |  Japan East       | VS (overheid) - Virginia        | Duitsland - noordoost        |
+|Zuid-Afrika - west   |  Zuid-Afrika - noord |
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 

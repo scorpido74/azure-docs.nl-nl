@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 034d1c4dbbb91ad7317ffb56b1fe38e010694c44
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 53085544be9477c03fdbbc27e709bd80dea25b92
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927093"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186060"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>On-premises SSIS-workloads migreren naar SSIS in ADF
 
@@ -64,10 +64,10 @@ Afhankelijk van de [opslag typen](#four-storage-types-for-ssis-packages) van de 
 
 | **Type pakket opslag** |Hoe batch migratie SSIS-pakketten|Hoe kan ik SSIS-taken batchgewijs migreren|
 |-|-|-|
-|SSISDB|[**SSISDB** migreren](scenario-ssis-migration-ssisdb-mi.md)|[SSIS-taken migreren naar Azure SQL Managed instance agent](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent)|
-|Bestandssysteem|Implementeer deze opnieuw naar bestands shares/Azure Files via dtinstall/dtutil/hand matig kopiëren of bewaar de bestands systemen via VNet/zelf-Hostende IR. Zie [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)(Engelstalig) voor meer informatie.|<li> Migreren met de [wizard SSIS-taak migratie in SSMS](how-to-migrate-ssis-job-ssms.md) <li>Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
+|SSISDB|[**SSISDB** migreren](scenario-ssis-migration-ssisdb-mi.md)|<li>[SSIS-taken migreren naar Azure SQL Managed instance agent](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li>Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
+|Bestandssysteem|Implementeer deze opnieuw naar bestands shares/Azure Files via dtinstall/dtutil/hand matig kopiëren of bewaar de bestands systemen via VNet/zelf-Hostende IR. Zie [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)(Engelstalig) voor meer informatie.|<li>[SSIS-taken migreren naar Azure SQL Managed instance agent](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li> Migreren met de [wizard SSIS-taak migratie in SSMS](how-to-migrate-ssis-job-ssms.md) <li>Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
 |SQL Server (MSDB)|Exporteren naar bestands systemen/bestands shares/Azure Files via SSMS/dtutil. Zie [SSIS-pakketten exporteren](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service#import-and-export-packages)voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
-|Pakket archief|Exporteer deze naar bestands systemen/bestands shares/Azure Files via SSMS/dtutil of implementeer ze opnieuw op bestands shares/Azure Files via dtinstall/dtutil/hand matig kopiëren of bewaar ze in bestands systemen voor toegang via een VNet/zelf-Hostende IR. Zie dtutil Utility (Engelstalig) voor meer informatie. Zie [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)(Engelstalig) voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
+|Pakket archief|Exporteer deze naar bestands systemen/bestands shares/Azure Files via SSMS/dtutil of implementeer ze opnieuw op bestands shares/Azure Files via dtinstall/dtutil/hand matig kopiëren of bewaar ze in bestands systemen voor toegang via een VNet/zelf-Hostende IR. Zie dtutil Utility (Engelstalig) voor meer informatie. Zie [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)(Engelstalig) voor meer informatie.|<li>[SSIS-taken migreren naar Azure SQL Managed instance agent](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li> Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
 
 ### <a name="azure-sql-database-as-database-workload-destination"></a>**Azure SQL database** als doel van de database werk belasting
 
