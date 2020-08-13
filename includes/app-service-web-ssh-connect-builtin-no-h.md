@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ef19abf1da1bb2fb94109f614e7ebb0e208c1e16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 7b82fa97d4f68d33335360b2a9b04a94dfea2646
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67176512"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078594"
 ---
 [!INCLUDE [Open SSH session in browser](app-service-web-ssh-connect-no-h.md)]
 
 > [!NOTE]
-> Wijzigingen die u aanbrengt buiten de */Home* -map worden opgeslagen in de container zelf en blijven niet behouden na het opnieuw opstarten van de app.
+> Wijzigingen die u buiten de map */home* aanbrengt, worden in de container zelf opgeslagen en blijven niet behouden na het opnieuw opstarten van de app.
 >
 
-Als u een externe SSH-sessie vanaf uw lokale computer wilt openen, raadpleegt u [SSH-sessie openen vanuit externe shell](../articles/app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell).
+Als u een externe SSH-sessie wilt openen vanaf uw lokale machine, raadpleegt u [SSH-sessie openen vanaf een externe shell](../articles/app-service/configure-linux-open-ssh-session.md#open-ssh-session-from-remote-shell).

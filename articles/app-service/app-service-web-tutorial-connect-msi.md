@@ -5,19 +5,19 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 206da4e7fe92846352120d604cd8bee578eb45dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021225"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077727"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
 [App Servicex](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie in Azure. De service bevat ook een [beheerde identiteit](overview-managed-identity.md) voor uw app. Dit is een gebruiksklare oplossing voor het beveiligen van toegang tot [Azure SQL Database](/azure/sql-database/) en andere Azure-services. Beheerde identiteiten in App Service maken uw app veiliger doordat geheimen in uw app, zoals referenties in de verbindingsreeksen, worden verwijderd. In deze zelfstudie voegt u een beheerde identiteit toe aan het voorbeeld van de web-app dat u hebt gemaakt in één van de volgende zelfstudies: 
 
 - [Zelfstudie: Een ASP.NET-app in Azure bouwen met behulp van SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
-- [Zelfstudie: Een ASP.NET Core- en SQL Database-app maken in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
+- [Zelfstudie: Een ASP.NET Core- en SQL Database-app maken in Azure App Service](tutorial-dotnetcore-sqldb-app.md)
 
 Wanneer u klaar bent, maakt uw voorbeeld-app veilig verbinding met SQL Database zonder dat een gebruikersnaam en wachtwoorden zijn vereist.
 
@@ -43,7 +43,7 @@ U leert het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit artikel gaat verder waar u bent gebleven in [Zelfstudie: Een ASP.NET-app bouwen in Azure met SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) of [Zelfstudie: Een ASP.NET Core- en SQL Database-app maken in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md). Als u dat nog niet hebt gedaan, volgt u eerst een van de twee zelfstudies. U kunt ook de stappen aanpassen voor uw eigen .NET-app met SQL Database.
+Dit artikel gaat verder waar u bent gebleven in [Zelfstudie: Een ASP.NET-app bouwen in Azure met SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) of [Zelfstudie: Een ASP.NET Core- en SQL Database-app maken in Azure App Service](tutorial-dotnetcore-sqldb-app.md). Als u dat nog niet hebt gedaan, volgt u eerst een van de twee zelfstudies. U kunt ook de stappen aanpassen voor uw eigen .NET-app met SQL Database.
 
 Als u fouten wilt opsporen in uw app met SQL Database als de back-end, zorgt u ervoor dat de clientverbinding vanuit uw computer is toegestaan. Als dat niet het geval is, voegt u het IP-adres van de client toe door de stappen te volgen op [IP-firewallregels op serverniveau beheren met de Azure-portal](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
@@ -74,14 +74,14 @@ Zie [Een Azure Active Directory-beheerder inrichten voor uw server](../azure-sql
 
 ## <a name="set-up-visual-studio"></a>Visual Studio instellen
 
-### <a name="windows"></a>Windows
+### <a name="windows-client"></a>Windows-client
 Visual Studio voor Windows is geïntegreerd met Azure AD-verificatie. Als u de ontwikkeling en foutopsporing in Visual Studio wilt inschakelen, voegt u uw Azure AD-gebruiker toe in Visual Studio door **Bestand** > **Accountinstellingen** te selecteren in het menu en op **Een account toevoegen** te klikken.
 
 Als u de Azure AD-gebruiker voor Azure-serviceverificatie wilt instellen, selecteert u **Hulpprogramma's** > **Opties** in het menu en selecteert u vervolgens **Azure-serviceverificatie** > **Accounts selecteren**. Selecteer de Azure AD-gebruiker die u hebt toegevoegd en klik op **OK**.
 
 U kunt nu uw app ontwikkelen en fouten opsporen met de SQL Database als back-end, met behulp van Azure AD-verificatie.
 
-### <a name="macos"></a>MacOS
+### <a name="macos-client"></a>macOS-client
 
 Visual Studio voor Mac is niet geïntegreerd met Azure AD-verificatie. De [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)-bibliotheek die u later gebruikt, kan echter gebruikmaken van tokens van Azure CLI. Als u de ontwikkeling en foutopsporing in Visual Studio wilt inschakelen, moet u eerst [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) op uw lokale computer.
 
@@ -142,7 +142,7 @@ Open Package Manager Console in Visual Studio en voeg het NuGet-pakket [Microsof
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-In de [ASP.NET Core en SQL Database-zelfstudie](app-service-web-tutorial-dotnetcore-sqldb.md)wordt de `MyDbConnection` verbindingsreeks helemaal niet gebruikt omdat de lokale ontwikkelingsomgeving een SQLite-databasebestand gebruikt en de Azure-productieomgeving een verbindingsreeks van App Service gebruikt. Met Active Directory-verificatie is het belangrijk dat beide omgevingen dezelfde verbindingsreeks gebruiken. Vervang in *appsettings.json* de waarde van de `MyDbConnection` verbindingsreeks door:
+In de [ASP.NET Core en SQL Database-zelfstudie](tutorial-dotnetcore-sqldb-app.md)wordt de `MyDbConnection` verbindingsreeks helemaal niet gebruikt omdat de lokale ontwikkelingsomgeving een SQLite-databasebestand gebruikt en de Azure-productieomgeving een verbindingsreeks van App Service gebruikt. Met Active Directory-verificatie is het belangrijk dat beide omgevingen dezelfde verbindingsreeks gebruiken. Vervang in *appsettings.json* de waarde van de `MyDbConnection` verbindingsreeks door:
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
@@ -245,7 +245,7 @@ U hoeft nu alleen nog maar uw wijzigingen naar Azure te publiceren.
 
 Klik op de publicatiepagina op **Publiceren**. 
 
-**Als u vanuit de [-zelfstudie werkt: Bouw een ASP.NET Core en SQL Database-app in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)** , publiceer uw wijzigingen met Git, met de volgende opdrachten:
+**Als u vanuit de [-zelfstudie werkt: Bouw een ASP.NET Core en SQL Database-app in Azure App Service](tutorial-dotnetcore-sqldb-app.md)** , publiceer uw wijzigingen met Git, met de volgende opdrachten:
 
 ```bash
 git commit -am "configure managed identity"

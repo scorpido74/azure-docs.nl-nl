@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 39e3e3ce0411b10b1adc89ed6e099396dfab9873
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 3060e12b294531a697c1486b3a020dc1da1484c4
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085399"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077650"
 ---
-Maak een [Web-app](../articles/app-service/containers/app-service-linux-intro.md) in `myAppServicePlan` het app service plan. 
+Een [web-app](../articles/app-service/overview.md#app-service-on-linux) maken in het App Service-plan `myAppServicePlan`. 
 
-In de Cloud Shell kunt u de [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) opdracht gebruiken. Vervang in het volgende voorbeeld `<app-name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). 
+In Cloud Shell kunt u de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) gebruiken. Vervang in het volgende voorbeeld `<app-name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-local-git

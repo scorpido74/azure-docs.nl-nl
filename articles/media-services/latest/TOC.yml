@@ -290,12 +290,16 @@
                   href: customize-encoder-presets-how-to.md
                 - name: Een overlaytransformatie maken
                   href: how-to-create-overlay.md
+                - name: Miniaturen genereren met .NET
+                  href: media-services-generate-thumbnails-dotnet.md
             - name: Met CLI
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: Met REST
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+            - name: Miniaturen genereren met REST
+              href: media-services-generate-thumbnails-rest.md
         - name: Een subclip van een video maken
           items:
             - name: Met .NET

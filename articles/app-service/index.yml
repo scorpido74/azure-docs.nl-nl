@@ -6,13 +6,13 @@ metadata:
   description: Host websites, web-apps, RESTful API's en mobiele backends in Azure App Service. Zoek quickstarts, zelfstudies en voorbeelden om effectief te werken met App Service.
   ms.topic: landing-page
   ms.service: app-service
-  ms.date: 02/26/2020
-  ms.openlocfilehash: e8dcbe7288fb72fb5084f210bf38f7fa55f969a2
-  ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+  ms.date: 08/06/2020
+  ms.openlocfilehash: 3fc31095ec0d8e1ecdbe44c0751c55164d20e088
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 06/18/2020
-  ms.locfileid: "84987971"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080025"
 landingContent:
 - title: Meer informatie over App Service
   linkLists:
@@ -20,8 +20,6 @@ landingContent:
     links:
     - text: Wat is App Service?
       url: overview.md
-    - text: App Service op Linux
-      url: /azure/app-service/containers/
     - text: App Service-omgevingen
       url: environment/intro.md
     - text: Hostingopties vergelijken
@@ -35,19 +33,19 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Eerste ASP.NET Core-app
-      url: app-service-web-get-started-dotnet.md
-    - text: Eerste ASP.NET-app
-      url: app-service-web-get-started-dotnet-framework.md
+      url: quickstart-dotnetcore.md
+    - text: Eerste ASP.NET-app (alleen Windows)
+      url: quickstart-dotnet-framework.md
     - text: Eerste Node.js-app
-      url: app-service-web-get-started-nodejs.md
+      url: quickstart-nodejs.md
     - text: Eerste PHP-app
-      url: app-service-web-get-started-php.md
+      url: quickstart-php.md
     - text: Eerste Java-app
-      url: app-service-web-get-started-java.md
-    - text: Eerste Python-app (op Linux)
-      url: containers/quickstart-python.md
-    - text: Eerste Ruby-app (op Linux)
-      url: containers/quickstart-ruby.md
+      url: quickstart-java.md
+    - text: Eerste Python Flask-app (alleen Linux)
+      url: quickstart-python.md
+    - text: Eerste Ruby-app (alleen Linux)
+      url: quickstart-ruby.md
 - title: Algemene taken
   linkLists:
   - linkListType: tutorial
@@ -62,6 +60,8 @@ landingContent:
     links:
     - text: Diagnostische logboeken inschakelen
       url: troubleshoot-diagnostic-logs.md
+    - text: Verbinding maken met een Linux-container via SSH
+      url: configure-linux-open-ssh-session.md
     - text: Actief domein migreren naar App Service
       url: manage-custom-dns-migrate-domain.md
 - title: CRUD-app met database
@@ -71,11 +71,17 @@ landingContent:
     - text: ASP.NET-app met SQL-database
       url: app-service-web-tutorial-dotnet-sqldatabase.md
     - text: ASP.NET Core-app met SQL Database
-      url: app-service-web-tutorial-dotnetcore-sqldb.md
+      url: tutorial-dotnetcore-sqldb-app.md
     - text: PHP (Laravel)-app met Azure MySQL
-      url: app-service-web-tutorial-php-mysql.md
+      url: tutorial-php-mysql-app.md
     - text: Node.js (MEAN.js)-app met MongoDB
-      url: app-service-web-tutorial-nodejs-mongodb-app.md
+      url: tutorial-nodejs-mongodb-app.md
+    - text: Java (Spring Boot)-app met Cosmos DB
+      url: tutorial-java-spring-cosmosdb.md
+    - text: Python (Django)-app met PostgreSQL
+      url: tutorial-python-postgresql-app.md
+    - text: Ruby (Rails)-app met PostgreSQL
+      url: tutorial-ruby-postgres-app.md
 - title: Uw code of inhoud uploaden
   linkLists:
   - linkListType: deploy
@@ -90,20 +96,28 @@ landingContent:
       url: deploy-content-sync.md
     - text: CI/CD met GitHub, BitBucket, etc.
       url: deploy-continuous-deployment.md
-- title: Windows-apps in containers uitvoeren
+    - text: Uitvoeren uit pakket
+      url: deploy-run-package.md
+- title: Aangepaste containers uitvoeren
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Een aangepaste Windows-container uitvoeren
-      url: app-service-web-get-started-windows-container.md
+    - text: een aangepaste container uitvoeren
+      url: quickstart-custom-container.md
   - linkListType: tutorial
     links:
-    - text: Een verouderde app migreren naar Azure in een Windows-container
-      url: app-service-web-tutorial-windows-containers-custom-fonts.md
+    - text: Een Docker Compose-app uitvoeren (alleen Linux)
+      url: tutorial-multi-container-app.md
+    - text: Aangepaste software in een container naar Azure migreren
+      url: tutorial-custom-container.md
   - linkListType: how-to-guide
     links:
+    - text: CI/CD naar een aangepaste container
+      url: deploy-ci-cd-custom-container.md
     - text: Een container verbinden met Storage Files
       url: configure-connect-to-azure-storage.md
+    - text: Implementeren met GitHub Actions
+      url: deploy-container-github-action.md
 - title: Beheren en integreren
   linkLists:
   - linkListType: concept
@@ -115,7 +129,7 @@ landingContent:
     - text: Toegang tot resources beveiligen met beheerde identiteiten
       url: app-service-web-tutorial-connect-msi.md
     - text: Gebruikers verifiëren
-      url: app-service-web-tutorial-auth-aad.md
+      url: tutorial-auth-aad.md
     - text: RESTful API hosten met CORS
       url: app-service-web-tutorial-rest-api.md
     - text: Een CDN toevoegen aan uw toepassing

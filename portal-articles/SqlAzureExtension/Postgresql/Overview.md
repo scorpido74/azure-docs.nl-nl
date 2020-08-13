@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: 6282acaf165d2f31a1a1ac525dad75ebc64a2a7c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 271bcd188f5152bfdac3eb7895827afca2859fe4
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "62113949"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076843"
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>Documentatie voor Azure Database voor PostgreSQL
 
@@ -24,20 +24,20 @@ Azure Database for PostgreSQL is een relationele databaseservice op basis van de
 Lees hoe u een PostgreSQL-database maakt met:
 
 - [Azure Portal](/azure/postgresql/quickstart-create-server-database-portal)
-- [Azure CLI](/azure/postgresql/quickstart-create-server-database-azure-cli)
+- [Azure-CLI](/azure/postgresql/quickstart-create-server-database-azure-cli)
 
 ## <a name="step-by-step-tutorials"></a>Zelfstudies met stapsgewijze instructies
 
 Leer hoe u het volgende doet:
 
-- Een database ontwerpen: [Azure Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
-- [Een webtoepassing maken met Python en de CLI](/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
+- Een database ontwerpen: [Azure-portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
+- [Een web-app maken met Python en de CLI](/azure/app-service/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
 
 ## <a name="samples"></a>Voorbeelden 
 
 Zoek scripts om algemene taken te beheren.
 
-- [Azure CLI](/azure/postgresql/sample-scripts-azure-cli)
+- [Azure-CLI](/azure/postgresql/sample-scripts-azure-cli)
 
 ## <a name="more"></a>Meer
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a198456412c3146db2bc3e2a2483377e387f452d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b957ea9131c5124925b74576fd78665522afd8dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513329"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080229"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Zelfstudie: Een beheerde identiteit gebruiken om Key Vault te koppelen met een Azure-web-app met .NET
 
@@ -140,7 +140,7 @@ Wanneer het App Service-plan is gemaakt, toont de Azure CLI soortgelijke informa
 
 ### <a name="create-a-remote-web-app"></a>Een externe web-app maken
 
-Maak een [Azure-web-app](../../app-service/containers/app-service-linux-intro.md) in het App Service-plan `myAppServicePlan`. 
+Maak een [Azure-web-app](../../app-service/overview.md#app-service-on-linux) in het App Service-plan `myAppServicePlan`. 
 
 > [!Important]
 > Net als bij Key Vault moet een Azure-web-app een unieke naam hebben. Vervang \<your-webapp-name\> in de volgende voorbeelden door de naam van uw web-app.

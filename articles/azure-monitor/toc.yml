@@ -196,7 +196,21 @@
               href: app/pricing.md
             - name: Gegevensgebruik en kosten vastleggen
               href: platform/manage-cost-storage.md
-        - name: Log Analytics-werkruimten
+    - name: Platformlogboeken
+      items:
+        - name: Overzicht
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: Activiteitenlogboek
+          href: platform/activity-log.md
+        - name: Resourcelogboeken
+          href: platform/resource-logs.md
+        - name: Diagnostische instellingen
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
+    - name: Log Analytics
+      items:
+        - name: Werkruimten
           items:
             - name: Een werkruimte-implementatie ontwerpen
               href: platform/design-logs-deployment.md
@@ -218,119 +232,6 @@
               href: platform/service-providers.md
             - name: Toegang beheren
               href: platform/manage-access.md
-        - name: Virtuele machine-agents
-          items:
-            - name: Overzicht
-              href: platform/agents-overview.md
-            - name: Veelgestelde vragen
-              href: faq.md#agents
-            - name: Azure Diagnostics-extensie
-              items:
-                - name: Overzicht
-                  href: platform/diagnostics-extension-overview.md
-                - name: Windows
-                  displayname: diagnostics extension
-                  items:
-                    - name: Installeren en configureren
-                      items:
-                        - name: Installatieopties
-                          href: platform/diagnostics-extension-windows-install.md
-                        - name: PowerShell
-                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                        - name: Resource Manager-sjabloon
-                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
-                    - name: Verzenden naar metrische gegevens van Azure Monitor
-                      items:
-                        - name: Virtuele machine
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                        - name: VM-schaalset
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                        - name: Klassieke VM
-                          href: platform/collect-custom-metrics-guestos-vm-classic.md
-                        - name: Cloudservice
-                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: Verzenden naar Event Hubs
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Verzenden naar logboeken
-                      href: platform/diagnostics-extension-logs.md
-                    - name: Verzenden naar Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Versiegeschiedenis
-                      href: platform/diagnostics-extension-versions.md
-                    - name: Problemen oplossen
-                      href: platform/diagnostics-extension-troubleshooting.md
-                - name: Linux
-                  displayname: diagnostics extension
-                  items:
-                    - name: Overzicht
-                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
-                    - name: Metrische gegevens verzamelen met Telegraf
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics-agent
-              items:
-                - name: Overzicht
-                  href: platform/log-analytics-agent.md
-                - name: Windows-agents
-                  href: platform/agent-windows.md
-                - name: Linux-agents
-                  href: platform/agent-linux.md
-                - name: VM-extensie voor Windows
-                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-                - name: VM-extensie voor Linux
-                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-                - name: Log Analytics-gateway
-                  href: platform/gateway.md
-                - name: Agents beheren
-                  href: platform/agent-manage.md
-                - name: Status van agent
-                  href: insights/solution-agenthealth.md
-                - name: Gegevensbronnen
-                  items:
-                    - name: Overzicht
-                      href: platform/agent-data-sources.md
-                    - name: Windows-gebeurtenissen
-                      href: platform/data-sources-windows-events.md
-                    - name: Aangepaste JSON-gegevens
-                      href: platform/data-sources-json.md
-                    - name: Verzamelde prestatiegegevens
-                      href: platform/data-sources-collectd.md
-                    - name: Syslog
-                      href: platform/data-sources-syslog.md
-                    - name: Prestatiemeteritems
-                      href: platform/data-sources-performance-counters.md
-                    - name: Prestaties van Linux-toepassingen
-                      href: platform/data-sources-linux-applications.md
-                    - name: IIS-logboeken
-                      href: platform/data-sources-iis-logs.md
-                    - name: Aangepaste logboeken
-                      href: platform/data-sources-custom-logs.md
-                    - name: Aangepaste velden
-                      href: platform/custom-fields.md
-            - name: Problemen oplossen
-              items:
-                - name: VM-extensie voor Log Analytics
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/vmext-troubleshoot.md
-                - name: Windows-agent voor Log Analytics
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-windows-troubleshoot.md
-                - name: Linux-agent voor Log Analytics
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-linux-troubleshoot.md
-    - name: Platformlogboeken
-      items:
-        - name: Overzicht
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: Activiteitenlogboek
-          href: platform/activity-log.md
-        - name: Resourcelogboeken
-          href: platform/resource-logs.md
-        - name: Diagnostische instellingen
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
         - name: Overzicht van logboekquery's
           displayname: 'log query, log queries, query, queries'
           href: log-query/log-query-overview.md
@@ -424,6 +325,135 @@
           href: platform/metric-chart-samples.md
         - name: Problemen met grafieken met metrische gegevens oplossen
           href: platform/metrics-troubleshoot.md
+    - name: Gegevens verzamelen
+      items:
+        - name: Gegevensverzamelingsregels
+          href: platform/data-collection-rule-overview.md
+        - name: Aangepaste metrische gegevens
+          items:
+            - name: Aangepaste metrische gegevens
+              href: platform/metrics-custom-overview.md
+            - name: REST-API voor metrische gegevens
+              href: platform/metrics-store-custom-rest-api.md
+        - name: Aangepaste logboeken
+          items:
+            - name: API voor Log Analytics-gegevensverzamelaar
+              href: platform/data-collector-api.md
+            - name: Pijplijnvoorbeeld voor API voor Log Analytics-gegevensverzamelaar
+              href: platform/create-pipeline-datacollector-api.md
+        - name: Logic Apps
+          items:
+            - name: Connector voor Azure Monitor-logboeken
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights-connector
+              href: app/automate-with-logic-apps.md
+    - name: Agents
+      items:
+        - name: Overzicht
+          href: platform/agents-overview.md
+        - name: Veelgestelde vragen
+          href: faq.md#agents
+        - name: Azure Monitor-agent
+          items:
+            - name: Overzicht
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-overview.md
+            - name: Gegevens verzamelen
+              displayname: 'data collection rule,Azure Monitor agent'
+              href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Azure Diagnostics-extensie
+          items:
+            - name: Overzicht
+              href: platform/diagnostics-extension-overview.md
+            - name: Windows
+              displayname: diagnostics extension
+              items:
+                - name: Installeren en configureren
+                  items:
+                    - name: Installatieopties
+                      href: platform/diagnostics-extension-windows-install.md
+                    - name: PowerShell
+                      href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                    - name: Resource Manager-sjabloon
+                      href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                - name: Verzenden naar metrische gegevens van Azure Monitor
+                  items:
+                    - name: Virtuele machine
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                    - name: VM-schaalset
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                    - name: Klassieke VM
+                      href: platform/collect-custom-metrics-guestos-vm-classic.md
+                    - name: Cloudservice
+                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                - name: Verzenden naar Event Hubs
+                  href: platform/diagnostics-extension-stream-event-hubs.md
+                - name: Verzenden naar logboeken
+                  href: platform/diagnostics-extension-logs.md
+                - name: Verzenden naar Application Insights
+                  href: platform/diagnostics-extension-to-application-insights.md
+                - name: Versiegeschiedenis
+                  href: platform/diagnostics-extension-versions.md
+                - name: Problemen oplossen
+                  href: platform/diagnostics-extension-troubleshooting.md
+            - name: Linux
+              displayname: diagnostics extension
+              items:
+                - name: Overzicht
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                - name: Metrische gegevens verzamelen met Telegraf
+                  href: platform/collect-custom-metrics-linux-telegraf.md
+        - name: Log Analytics-agent
+          items:
+            - name: Overzicht
+              href: platform/log-analytics-agent.md
+            - name: Windows-agents
+              href: platform/agent-windows.md
+            - name: Linux-agents
+              href: platform/agent-linux.md
+            - name: VM-extensie voor Windows
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: VM-extensie voor Linux
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics-gateway
+              href: platform/gateway.md
+            - name: Agents beheren
+              href: platform/agent-manage.md
+            - name: Status van agent
+              href: insights/solution-agenthealth.md
+            - name: Gegevensbronnen
+              items:
+                - name: Overzicht
+                  href: platform/agent-data-sources.md
+                - name: Windows-gebeurtenissen
+                  href: platform/data-sources-windows-events.md
+                - name: Aangepaste JSON-gegevens
+                  href: platform/data-sources-json.md
+                - name: Verzamelde prestatiegegevens
+                  href: platform/data-sources-collectd.md
+                - name: Syslog
+                  href: platform/data-sources-syslog.md
+                - name: Prestatiemeteritems
+                  href: platform/data-sources-performance-counters.md
+                - name: Prestaties van Linux-toepassingen
+                  href: platform/data-sources-linux-applications.md
+                - name: IIS-logboeken
+                  href: platform/data-sources-iis-logs.md
+                - name: Aangepaste logboeken
+                  href: platform/data-sources-custom-logs.md
+                - name: Aangepaste velden
+                  href: platform/custom-fields.md
+        - name: Problemen oplossen
+          items:
+            - name: VM-extensie voor Log Analytics
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/vmext-troubleshoot.md
+            - name: Windows-agent voor Log Analytics
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-windows-troubleshoot.md
+            - name: Linux-agent voor Log Analytics
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-linux-troubleshoot.md
     - name: Automatisch schalen
       items:
         - name: Overzicht
@@ -1148,29 +1178,6 @@
               href: log-query/dashboard-upgrade.md
         - name: Gegevens naar Grafana verzenden
           href: platform/grafana-plugin.md
-    - name: Aangepaste gegevens verzamelen en analyseren
-      items:
-        - name: Aangepaste metrische gegevens
-          items:
-            - name: Aangepaste metrische gegevens
-              href: platform/metrics-custom-overview.md
-            - name: REST-API voor metrische gegevens
-              href: platform/metrics-store-custom-rest-api.md
-        - name: Aangepaste logboeken
-          items:
-            - name: API voor Log Analytics-gegevensverzamelaar
-              href: platform/data-collector-api.md
-            - name: Pijplijnvoorbeeld voor API voor Log Analytics-gegevensverzamelaar
-              href: platform/create-pipeline-datacollector-api.md
-        - name: Logic Apps
-          items:
-            - name: Connector voor Azure Monitor-logboeken
-              href: platform/logicapp-flow-connector.md
-            - name: Application Insights-connector
-              href: app/automate-with-logic-apps.md
-        - name: REST-API
-          displayname: 'metrics, analyze'
-          href: platform/rest-api-walkthrough.md
     - name: System Center-integratie
       items:
         - name: Operations Manager koppelen
@@ -1274,6 +1281,9 @@
           href: /rest/api/monitor/
         - name: Azure Monitor-logboeken
           href: /rest/api/loganalytics
+        - name: REST API-overzicht
+          displayname: 'metrics, analyze'
+          href: platform/rest-api-walkthrough.md
     - name: Resource Manager-sjablonen
       items:
         - name: Azure Monitor

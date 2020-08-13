@@ -31,6 +31,8 @@
       href: quickstart-create-security-twin.md
     - name: Aangepaste beveiligingswaarschuwingen maken
       href: quickstart-create-custom-alerts.md
+    - name: Beveiligingswaarschuwingen onderzoeken
+      href: quickstart-investigate-security-alerts.md
 - name: Concepten
   items:
     - name: Verificatie voor beveiligingsagents

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 076233c52074bca646c072e9a1abe63b15412c1b
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: ba0fd6cf7214beeaca9e93b1fe003a144c247cb5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430642"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076996"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Quickstart: Service Bus-wachtrijen in Azure gebruiken met Node.js en het azure-sb-pakket
 In deze zelfstudie leert u hoe u Node.js-toepassingen kunt maken om berichten te verzenden naar en te ontvangen van een Azure Service Bus-wachtrij met behulp van het [azure-sb-pakket](https://www.npmjs.com/package/azure-sb). De voorbeelden zijn geschreven in JavaScript en maken gebruik van de [Azure-module](https://www.npmjs.com/package/azure) van Node.js, die intern gebruikmaakt van het azure-sb-pakket.
@@ -20,7 +20,7 @@ In deze zelfstudie leert u hoe u Node.js-toepassingen kunt maken om berichten te
 > [!IMPORTANT]
 > Het [azure-sb](https://www.npmjs.com/package/azure-sb)-pakket maakt gebruik van [Service Bus REST runtime-API's](/rest/api/servicebus/service-bus-runtime-rest). U kunt een snellere ervaring verkrijgen met het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus), dat gebruikmaakt van het snellere [AMQP 1.0-protocol](service-bus-amqp-overview.md). 
 > 
-> Zie [Service Bus-wachtrijen gebruiken met Node.js en @azure/service-bus-pakket](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package) voor meer informatie over het nieuwe pakket, of blijf lezen om te zien hoe u het [azure](https://www.npmjs.com/package/azure)-pakket kunt gebruiken.
+> Zie [Service Bus-wachtrijen gebruiken met Node.js en @azure/service-bus-pakket](./service-bus-nodejs-how-to-use-queues-new-package.md) voor meer informatie over het nieuwe pakket, of blijf lezen om te zien hoe u het [azure](https://www.npmjs.com/package/azure)-pakket kunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 - Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voordelen als MSDN-abonnee](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
@@ -193,6 +193,6 @@ Zie de volgende resources voor meer informatie over wachtrijen.
 
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Create and deploy a Node.js application to an Azure Website]: ../app-service/app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application to an Azure Website]: ../app-service/quickstart-nodejs.md
 [Node.js Web Application with Storage]:../cosmos-db/table-storage-how-to-use-nodejs.md
 [Service Bus quotas]: service-bus-quotas.md

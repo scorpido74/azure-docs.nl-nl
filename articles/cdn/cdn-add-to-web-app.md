@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254609"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079906"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Zelfstudie: Azure CDN toevoegen aan een Azure App Service-web-app
 
@@ -40,16 +40,16 @@ Wat u leert:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 - [Git installeren](https://git-scm.com/)
-- [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>De web-app maken
 
-Volg de [snelstart voor statische HTML](../app-service/app-service-web-get-started-html.md) om de web-app die u gaat gebruiken te maken tot en met de stap **Browse to the app** (Bladeren naar de app).
+Volg de [snelstart voor statische HTML](../app-service/quickstart-html.md) om de web-app die u gaat gebruiken te maken tot en met de stap **Browse to the app** (Bladeren naar de app).
 
 ## <a name="log-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -60,7 +60,7 @@ Als u uw CDN-eindpunt wilt optimaliseren voor dynamische siteversnelling (DSA), 
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>Een CDN-profiel en -eindpunt maken
 
-Selecteer in het navigatiedeelvenster links **App Services** en selecteer vervolgens de app die u hebt gemaakt in de [Quickstart voor statische HTML](../app-service/app-service-web-get-started-html.md).
+Selecteer in het navigatiedeelvenster links **App Services** en selecteer vervolgens de app die u hebt gemaakt in de [Quickstart voor statische HTML](../app-service/quickstart-html.md).
 
 ![Een App Service-app in de portal selecteren](media/cdn-add-to-web-app/portal-select-app-services.png)
 
@@ -75,8 +75,8 @@ Geef op de pagina **Azure Content Delivery Network** de instellingen voor **Nieu
 | Instelling | Voorgestelde waarde | Beschrijving |
 | ------- | --------------- | ----------- |
 | **CDN-profiel** | myCDNProfile | Een CDN-profiel is een verzameling van CDN-eindpunten van dezelfde prijscategorie. |
-| **Prijs categorie** | Standard Akamai | De [prijscategorie](cdn-features.md) geeft de provider en de beschikbare functies aan. In deze zelfstudie wordt gebruikgemaakt van *Standard Akamai*. |
-| **Naam van CDN-eindpunt** | Een unieke naam in het domein azureedge.net | U hebt toegang tot uw resources in de cache op het domein * &lt;endpointnaam&gt;*. azureedge.net.
+| **Prijscategorie** | Standard Akamai | De [prijscategorie](cdn-features.md) geeft de provider en de beschikbare functies aan. In deze zelfstudie wordt gebruikgemaakt van *Standard Akamai*. |
+| **Naam van CDN-eindpunt** | Een unieke naam in het domein azureedge.net | U hebt toegang tot uw resources in de cache via het domein *&lt;naamvaneindpunt&gt;* .azureedge.net.
 
 Selecteer **Maken** om een CDN-profiel te maken.
 

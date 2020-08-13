@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 63b8c33b61d6bff28eca98929e344df7ea54e779
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c082eff4f70b0255b7701340ac6e8b377223c0b5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430683"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076860"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Quickstart: Service Bus-wachtrijen gebruiken met Node.js en het pakket azure/service-bus
 In deze zelfstudie leert u hoe u een Nodejs-programma kunt schrijven om berichten van en naar een Service Bus wachtrij te ontvangen en verzenden met behulp van het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-pakket. Dit pakket maakt gebruik van het snellere [AMQP 1.0-protocol](service-bus-amqp-overview.md), terwijl het oudere [Azure-sb](https://www.npmjs.com/package/azure-sb)-pakket gebruik maakte van [Service Bus REST runtime-API's](/rest/api/servicebus/service-bus-runtime-rest). De voorbeelden zijn geschreven in JavaScript.
@@ -22,7 +22,7 @@ In deze zelfstudie leert u hoe u een Nodejs-programma kunt schrijven om berichte
 - Als u geen wachtrij hebt om te gebruiken, volgt u de stappen in het artikel [Azure Portal gebruiken om een Service Bus-wachtrij te maken](service-bus-quickstart-portal.md) om een wachtrij te maken. Noteer de verbindingsreeks voor uw Service Bus-exemplaar en de naam van de wachtrij die u hebt gemaakt. We gebruiken deze waarden in de voorbeelden.
 
 > [!NOTE]
-> - In deze zelfstudie wordt gebruikgemaakt van voorbeelden die u kunt kopiëren en uitvoeren met [Nodejs](https://nodejs.org/). Zie voor instructies over het maken van een Node.js-toepassing [Een Node.js-toepassing maken en implementeren op een Azure-website](../app-service/app-service-web-get-started-nodejs.md) of [Node.js-cloudservice met Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - In deze zelfstudie wordt gebruikgemaakt van voorbeelden die u kunt kopiëren en uitvoeren met [Nodejs](https://nodejs.org/). Zie voor instructies over het maken van een Node.js-toepassing [Een Node.js-toepassing maken en implementeren op een Azure-website](../app-service/quickstart-nodejs.md) of [Node.js-cloudservice met Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
 > - Het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-pakket biedt nog geen ondersteuning voor het maken van wachtrijen. Gebruik het [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus)-pakket als u deze programmatisch wilt maken.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Node Package Manager (NPM) gebruiken om het pakket te installeren
@@ -33,7 +33,7 @@ npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Berichten verzenden naar een wachtrij
-Interactie met een Service Bus-wachtrij begint met het instantiëren van de [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient)-klasse en het gebruiken ervan om de [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient)-klasse te instantiëren. Zodra u de wachtrij-client hebt, kunt u een afzender maken en de [send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-)- of [sendbatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---)-methode gebruiken om berichten te verzenden.
+Interactie met een Service Bus-wachtrij begint met het instantiëren van de [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient)-klasse en het gebruiken ervan om de [QueueClient](/javascript/api/@azure/service-bus/queueclient)-klasse te instantiëren. Zodra u de wachtrij-client hebt, kunt u een afzender maken en de [send](/javascript/api/@azure/service-bus/sender#send-sendablemessageinfo-)- of [sendbatch](/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---)-methode gebruiken om berichten te verzenden.
 
 1. Open uw favoriete editor, bijvoorbeeld [Visual Studio Code](https://code.visualstudio.com/)
 2. Maak een bestand met de naam `send.js` en plak de onderstaande code hierin. Met deze code worden 10 berichten naar uw wachtrij verzonden.
@@ -83,7 +83,7 @@ Berichten bevatten enkele standaardeigenschappen, zoals `label` en `messageId` d
 Service Bus-wachtrijen ondersteunen een maximale berichtgrootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). Er is geen limiet voor het aantal berichten in een wachtrij, maar er is een limiet voor de totale grootte van de berichten in een wachtrij. De grootte van de wachtrij wordt gedefinieerd tijdens het aanmaken, met een bovengrens van 5 GB. Zie [Service Bus-quota](service-bus-quotas.md) voor meer informatie over quota.
 
 ## <a name="receive-messages-from-a-queue"></a>Berichten van een wachtrij ontvangen
-Interactie met een Service Bus-wachtrij begint met het instantiëren van de [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient)-klasse en het gebruiken ervan om de [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient)-klasse te instantiëren. Zodra u de wachtrij-client hebt, kunt u een ontvanger maken en de [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-)- of [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-)-methode gebruiken om berichten te ontvangen.
+Interactie met een Service Bus-wachtrij begint met het instantiëren van de [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient)-klasse en het gebruiken ervan om de [QueueClient](/javascript/api/@azure/service-bus/queueclient)-klasse te instantiëren. Zodra u de wachtrij-client hebt, kunt u een ontvanger maken en de [receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-)- of [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-)-methode gebruiken om berichten te ontvangen.
 
 1. Open uw favoriete editor, bijvoorbeeld [Visual Studio Code](https://code.visualstudio.com/)
 2. Maak een bestand met de naam `recieve.js` en plak de onderstaande code hierin. Deze code probeert tien berichten van uw wachtrij te ontvangen. Het werkelijke aantal dat u ontvangt, is afhankelijk van het aantal berichten in de wachtrij en de netwerklatentie.
@@ -119,7 +119,7 @@ Interactie met een Service Bus-wachtrij begint met het instantiëren van de [Ser
 
 Gefeliciteerd! U hebt zojuist berichten van een Service Bus-wachtrij ontvangen.
 
-Voor de [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-)-methode wordt een `ReceiveMode` als enum met de waarden [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) en [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) gebruikt. Vergeet niet om uw [berichten af te handelen](message-transfers-locks-settlement.md#settling-receive-operations) als u de modus `PeekLock` gebruikt met een van de `complete()`-, `abandon()`-, `defer()`- of `deadletter()`-methoden voor het bericht.
+Voor de [createReceiver](/javascript/api/@azure/service-bus/queueclient#createreceiver-receivemode-)-methode wordt een `ReceiveMode` als enum met de waarden [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) en [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) gebruikt. Vergeet niet om uw [berichten af te handelen](message-transfers-locks-settlement.md#settling-receive-operations) als u de modus `PeekLock` gebruikt met een van de `complete()`-, `abandon()`-, `defer()`- of `deadletter()`-methoden voor het bericht.
 
 > [!NOTE]
 > U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
@@ -129,4 +129,3 @@ Raadpleeg de volgende resources voor meer informatie.
 - [Wachtrijen, onderwerpen en abonnementen](service-bus-queues-topics-subscriptions.md)
 - Andere [Nodejs-voorbeelden afhandelen voor Service Bus op GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/)
-

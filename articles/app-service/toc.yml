@@ -4,8 +4,6 @@
   items:
     - name: Meer informatie over Web Apps
       href: overview.md
-    - name: Meer informatie over App Service op Linux
-      href: containers/app-service-linux-intro.md
     - name: Over App Service-omgevingen
       href: environment/intro.md
     - name: Hostingopties vergelijken
@@ -13,34 +11,50 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Een .NET Core-app maken
-      href: app-service-web-get-started-dotnet.md
-    - name: Een .NET Framework-app maken
-      href: app-service-web-get-started-dotnet-framework.md
-    - name: Een Node.js-app maken
-      href: app-service-web-get-started-nodejs.md
-    - name: Een PHP-app maken
-      href: app-service-web-get-started-php.md
-    - name: Een Java-app maken
-      href: app-service-web-get-started-java.md
-    - name: Een statische HTML-site maken
-      href: app-service-web-get-started-html.md
-    - name: Windows-container uitvoeren
-      href: app-service-web-get-started-windows-container.md
+    - name: .NET Core
+      href: quickstart-dotnetcore.md
+    - name: .NET Framework
+      href: quickstart-dotnet-framework.md
+    - name: Node.js
+      href: quickstart-nodejs.md
+    - name: PHP
+      href: quickstart-php.md
+    - name: Java
+      href: quickstart-java.md
+    - name: Python
+      href: quickstart-python.md
+    - name: Ruby
+      href: quickstart-ruby.md
+    - name: Statische HTML-site
+      href: quickstart-html.md
+    - name: Aangepaste container
+      href: quickstart-custom-container.md
+    - name: App met meerdere containers
+      href: quickstart-multi-container.md
 - name: Zelfstudies
   items:
     - name: App met DB
       items:
         - name: .Net Core met SQL DB
-          href: app-service-web-tutorial-dotnetcore-sqldb.md
+          href: tutorial-dotnetcore-sqldb-app.md
         - name: .NET Framework met SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP met MySQL
-          href: app-service-web-tutorial-php-mysql.md
+          href: tutorial-php-mysql-app.md
         - name: Node.js met MongoDB
-          href: app-service-web-tutorial-nodejs-mongodb-app.md
-    - name: Windows (container) aanpassen
-      href: app-service-web-tutorial-windows-containers-custom-fonts.md
+          href: tutorial-nodejs-mongodb-app.md
+        - name: Ruby met Postgres
+          href: tutorial-ruby-postgres-app.md
+        - name: Python met Postgres
+          href: tutorial-python-postgresql-app.md
+        - name: Java met Spring-gegevens
+          href: tutorial-java-spring-cosmosdb.md
+    - name: Aangepaste containers
+      items:
+        - name: Implementeren vanuit ACR
+          href: tutorial-custom-container.md
+        - name: App met meerdere containers
+          href: tutorial-multi-container-app.md
     - name: Veilig toegang krijgen tot SQL DB
       href: app-service-web-tutorial-connect-msi.md
     - name: RESTful API hosten
@@ -52,9 +66,11 @@
     - name: CDN toevoegen
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: Gebruikers verifiëren
-      href: app-service-web-tutorial-auth-aad.md
+      href: tutorial-auth-aad.md
     - name: E-mail/tweet verzenden
       href: tutorial-send-email.md
+    - name: Problemen oplossen
+      href: tutorial-troubleshoot-monitor.md
 - name: Voorbeelden
   items:
     - name: Azure CLI
@@ -125,8 +141,14 @@
           href: configure-language-nodejs.md
         - name: PHP configureren
           href: configure-language-php.md
+        - name: Python configureren
+          href: configure-language-python.md
         - name: Java configureren
           href: configure-language-java.md
+        - name: Ruby configureren
+          href: configure-language-ruby.md
+        - name: Aangepaste Linux-container configureren
+          href: configure-custom-container.md
         - name: Verbinding maken met on-premises bronnen
           href: web-sites-integrate-with-vnet.md
         - name: Azure Storage configureren (container)
@@ -145,10 +167,14 @@
               href: deploy-content-sync.md
             - name: Doorlopend implementeren
               href: deploy-continuous-deployment.md
+            - name: CI/CD voor aangepaste containers
+              href: deploy-ci-cd-custom-container.md
             - name: Implementeren vanuit lokale Git
               href: deploy-local-git.md
-            - name: Implementeren met GitHub Actions
+            - name: GitHub-actie
               href: deploy-github-actions.md
+            - name: GitHub-acties voor containers
+              href: deploy-container-github-action.md
             - name: Implementeren met sjabloon
               href: deploy-complex-application-predictably.md
         - name: Implementatiereferenties instellen
@@ -215,6 +241,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: Resourcegebeurtenissen ophalen
           href: get-resource-events.md
+        - name: SSH-sessie openen naar Linux-container
+          href: configure-linux-open-ssh-session.md
     - name: Een app beheren
       items:
         - name: Het hostingabonnement beheren

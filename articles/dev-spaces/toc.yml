@@ -25,38 +25,8 @@
           href: quickstart-existing-helm-chart.md
     - name: Zelfstudies
       items:
-        - name: Java (VS Code en CLI)
-          items:
-            - name: 1 - Aan de slag
-              href: get-started-java.md
-            - name: 2 - Ontwikkeling van meerdere services
-              href: multi-service-java.md
-            - name: 3 - Teamontwikkeling
-              href: team-development-java.md
-        - name: .NET Core (VS Code en CLI)
-          items:
-            - name: 1 - Aan de slag
-              href: get-started-netcore.md
-            - name: 2 - Ontwikkeling van meerdere services
-              href: multi-service-netcore.md
-            - name: 3 - Teamontwikkeling
-              href: team-development-netcore.md
-        - name: .NET Core (Visual Studio)
-          items:
-            - name: 1 - Aan de slag
-              href: get-started-netcore-visualstudio.md
-            - name: 2 - Ontwikkeling van meerdere services
-              href: multi-service-netcore-visualstudio.md
-            - name: 3 - Teamontwikkeling
-              href: team-development-netcore-visualstudio.md
-        - name: Node.js (VS Code en CLI)
-          items:
-            - name: 1 - Aan de slag
-              href: get-started-nodejs.md
-            - name: 2 - Ontwikkeling van meerdere services
-              href: multi-service-nodejs.md
-            - name: 3 - Teamontwikkeling
-              href: team-development-nodejs.md
+        - name: Aan de slag met Visual Studio
+          href: get-started-netcore-visualstudio.md
     - name: Concepten
       items:
         - name: Hoe Dev Spaces werkt
@@ -83,8 +53,6 @@
           href: how-to/install-dev-spaces.md
         - name: Een Kubernetes-cluster maken met behulp van Azure Cloud Shell
           href: how-to/create-cluster-cloud-shell.md
-        - name: Azure Dev Spaces delen
-          href: how-to/share-dev-spaces.md
         - name: Geheimen beheren
           href: how-to/manage-secrets.md
         - name: Een aangepaste NuGet-feed gebruiken
