@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 32eafc41451c42a9c929e94d30450b923e7eae83
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760920"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166974"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Ondersteuning voor het protocol Network File System (NFS) 3,0 in Azure Blob-opslag (preview-versie)
 
 Blob-opslag ondersteunt nu het NFS-protocol (Network File System) 3,0. Met deze ondersteuning kunnen Windows-of Linux-clients een container koppelen in Blob Storage vanaf een virtuele Azure-machine (VM) of een computer on-premises. 
 
 > [!NOTE]
-> Ondersteuning voor NFS 3,0-protocol in Azure Blob-opslag is in open bare preview en is beschikbaar in de volgende regio's: VS Oost, VS Centraal en Canada-centraal.
+> Ondersteuning voor NFS 3,0-protocol in Azure Blob-opslag is in open bare preview en is beschikbaar in de volgende regio's: VS Oost, VS centraal, VS-West-Centraal, Australië-zuidoost, Europa-noord, UK-west, Korea-centraal, Korea-zuid en Canada-centraal.
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Algemene werk stroom: een opslag account container koppelen
 

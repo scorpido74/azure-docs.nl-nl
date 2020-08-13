@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087483"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166940"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark gebruiken om Apache HBase-gegevens te lezen en schrijven
 
-Apache HBase wordt doorgaans opgevraagd met de API op laag niveau (scans, haalt en plaatst) of met een SQL-syntaxis met Apache Phoenix. Apache biedt ook de Apache Spark HBase-connector. De connector is een handig en alternatief voor het uitvoeren van query's en het wijzigen van gegevens die zijn opgeslagen door HBase.
+Apache HBase wordt doorgaans opgevraagd met de API op laag niveau (scans, haalt en plaatst) of met een SQL-syntaxis met Apache Phoenix. Apache biedt ook de Apache Spark HBase-connector. De connector is een handig en efficiënt alternatief voor het uitvoeren van query's en het wijzigen van gegevens die zijn opgeslagen door HBase.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -27,11 +27,10 @@ Apache HBase wordt doorgaans opgevraagd met de API op laag niveau (scans, haalt 
 
 ## <a name="overall-process"></a>Algemeen proces
 
-Het proces op hoog niveau voor het inschakelen van uw Spark-cluster voor het uitvoeren van een query op uw HDInsight-cluster is als volgt:
+Het proces op hoog niveau om uw Spark-cluster in te scha kelen om uw HBase-cluster op te vragen, is als volgt:
 
 1. Bereid enkele voorbeeld gegevens voor in HBase.
-2. Haal het hbase-site.xml-bestand op uit de HBase (/etc/hbase/conf).
-3. Plaats een kopie van hbase-site.xml in de configuratiemap van Spark 2 (/etc/spark2/conf).
+2. Haal het hbase-site.xml-bestand op uit uw HBase (/etc/hbase/conf) en plaats een kopie van hbase-site.xml in de map Spark 2-configuratie (/etc/spark2/conf). (Optioneel: script van HDInsight-team gebruiken om dit proces te automatiseren)
 4. Voer `spark-shell` een verwijzing naar de Spark HBase-connector uit met de bijbehorende maven-coördinaten in de `packages` optie.
 5. Definieer een catalogus die het schema toewijst van Spark in HBase.
 6. Interactie met de HBase-gegevens met behulp van de RDD-of data frame-Api's.
@@ -46,7 +45,7 @@ In deze stap maakt en vult u een tabel in Apache HBase op die u vervolgens kunt 
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Gebruik de `hbase shell` opdracht om de HBase-interactieve shell te starten. Voer de volgende opdracht in voor uw SSH-verbinding:
+2. Gebruik de `hbase shell` opdracht om de HBase-interactieve shell te starten. Voer de volgende opdracht in uw SSH-verbinding in:
 
     ```bash
     hbase shell
@@ -76,36 +75,77 @@ In deze stap maakt en vult u een tabel in Apache HBase op die u vervolgens kunt 
     ```hbase
     exit
     ```
+    
+## <a name="run-scripts-to-set-up-connection-between-clusters"></a>Scripts uitvoeren om verbinding tussen clusters in te stellen
 
-## <a name="copy-hbase-sitexml-to-spark-cluster"></a>hbase-site.xml naar Spark-cluster kopiëren
+Als u de communicatie tussen clusters wilt instellen, volgt u de onderstaande stappen om twee scripts op uw clusters uit te voeren. Deze scripts automatiseren het proces van het kopiëren van bestanden die worden beschreven in de onderstaande sectie ' zelf communicatie instellen '. 
 
-Kopieer de hbase-site.xml van de lokale opslag naar de hoofdmap van de standaard opslag van uw Spark-cluster.  Bewerk de onderstaande opdracht om uw configuratie weer te geven.  Voer vervolgens vanuit uw open SSH-sessie naar het HBase-cluster de volgende opdracht in:
+* Met het script dat u vanuit het HBase-cluster uitvoert, worden `hbase-site.xml` IP-toewijzings gegevens geüpload en HBase naar de standaard opslag die aan uw Spark-cluster is gekoppeld. 
+* Het script dat u vanuit het Spark-cluster uitvoert, stelt twee cron-taken in om periodiek twee hulp scripts uit te voeren:  
+    1.  HBase cron-taak: down load nieuwe `hbase-site.xml` bestanden en HBase IP-toewijzing van het standaard opslag account Spark naar het lokale knoop punt
+    2.  Taak Spark cron: controleert of een Spark is geschaald en of het cluster is beveiligd. Als dit het geval is, `/etc/hosts` gaat u naar HBase IP-toewijzing toevoegen die lokaal is opgeslagen
 
-| Syntaxis waarde | Nieuwe waarde|
-|---|---|
-|[URI-schema](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Wijzig om uw opslag ruimte weer te geven.  De onderstaande syntaxis is voor Blob Storage waarvoor beveiligde overdracht is ingeschakeld.|
-|`SPARK_STORAGE_CONTAINER`|Vervang door de naam van de standaard opslag container die wordt gebruikt voor het Spark-cluster.|
-|`SPARK_STORAGE_ACCOUNT`|Vervang door de standaard naam van het opslag account dat wordt gebruikt voor het Spark-cluster.|
+__Opmerking__: voordat u doorgaat, moet u ervoor zorgen dat u het opslag account van het Spark-cluster hebt toegevoegd aan uw HBase-cluster als secundair opslag account. Zorg ervoor dat u de scripts in de aangegeven volg orde ziet.
 
-```bash
-hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
-```
 
-Sluit vervolgens uw SSH-verbinding met uw HBase-cluster af.
+1. Gebruik [script actie](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) op uw HBase-cluster om de wijzigingen toe te passen met de volgende overwegingen: 
 
-```bash
-exit
-```
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>hbase-site.xml op uw Spark-cluster plaatsen
+    |Eigenschap | Waarde |
+    |---|---|
+    |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
+    |Knooppunt type (n)|Regio|
+    |Parameters|`-s SECONDARYS_STORAGE_URL`|
+    |Persistente|ja|
 
-1. Maak met SSH verbinding met het hoofd knooppunt van uw Spark-cluster. Bewerk de onderstaande opdracht door `SPARKCLUSTER` de naam van uw Spark-cluster te vervangen en voer de volgende opdracht in:
+    * `SECONDARYS_STORAGE_URL`is de URL van de standaard opslag met Spark-zijde. Parameter voorbeeld:`-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
+
+
+2.  Gebruik script actie op uw Spark-cluster om de wijzigingen toe te passen met de volgende overwegingen:
+
+    |Eigenschap | Waarde |
+    |---|---|
+    |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-spark.sh`|
+    |Knooppunt type (n)|Head, worker, Zookeeper|
+    |Parameters|`-s "SPARK-CRON-SCHEDULE"`(optioneel) `-h "HBASE-CRON-SCHEDULE"` Beschrijving|
+    |Persistente|ja|
+
+
+    * U kunt opgeven hoe vaak dit cluster automatisch moet controleren of er een update is. Standaard:-s "*/1 * * * *"-h 0 (in dit voor beeld wordt de Spark-cron elke minuut uitgevoerd, terwijl de cron van HBase niet wordt uitgevoerd)
+    * Omdat HBase cron niet standaard is ingesteld, moet u dit script opnieuw uitvoeren wanneer u het HBase-cluster kunt schalen. Als uw HBase-cluster regel matig wordt geschaald, kunt u ervoor kiezen om HBase cron-taak automatisch in te stellen. Bijvoorbeeld: `-h "*/30 * * * *"` Hiermee configureert u het script om elke 30 minuten controles uit te voeren. Hiermee wordt HBase cron schema regel matig uitgevoerd om het downloaden van nieuwe HBase-informatie over het algemene opslag account naar het lokale knoop punt te automatiseren.
+    
+    
+
+## <a name="set-up-communication-manually-optional-if-provided-script-in-above-step-fails"></a>Communicatie hand matig instellen (optioneel, indien opgegeven script in de bovenstaande stap mislukt)
+
+__Opmerking:__ Deze stappen moeten worden uitgevoerd telkens wanneer een van de clusters een schaal activiteit ondergaat.
+
+1. Kopieer de hbase-site.xml van de lokale opslag naar de hoofdmap van de standaard opslag van uw Spark-cluster.  Bewerk de onderstaande opdracht om uw configuratie weer te geven.  Voer vervolgens vanuit uw open SSH-sessie naar het HBase-cluster de volgende opdracht in:
+
+    | Syntaxis waarde | Nieuwe waarde|
+    |---|---|
+    |[URI-schema](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Wijzig om uw opslag ruimte weer te geven.  De onderstaande syntaxis is voor Blob Storage waarvoor beveiligde overdracht is ingeschakeld.|
+    |`SPARK_STORAGE_CONTAINER`|Vervang door de naam van de standaard opslag container die wordt gebruikt voor het Spark-cluster.|
+    |`SPARK_STORAGE_ACCOUNT`|Vervang door de standaard naam van het opslag account dat wordt gebruikt voor het Spark-cluster.|
+
+    ```bash
+    hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
+    ```
+
+2. Sluit vervolgens uw SSH-verbinding met uw HBase-cluster af.
+
+    ```bash
+    exit
+    ```
+
+
+3. Maak met SSH verbinding met het hoofd knooppunt van uw Spark-cluster. Bewerk de onderstaande opdracht door `SPARKCLUSTER` de naam van uw Spark-cluster te vervangen en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Voer de onderstaande opdracht in om de `hbase-site.xml` standaard opslag van uw Spark-cluster te kopiëren naar de map Spark 2-configuratie op de lokale opslag van het cluster:
+4. Voer de onderstaande opdracht in om de `hbase-site.xml` standaard opslag van uw Spark-cluster te kopiëren naar de map Spark 2-configuratie op de lokale opslag van het cluster:
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
@@ -123,9 +163,9 @@ De volgende tabel bevat een voor beeld van twee versies en de bijbehorende opdra
     |Spark-versie| HDI HBase-versie  | SHC-versie    |  Opdracht  |
     | :-----------:| :----------: | :-----------: |:----------- |
     |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2,4    | HDI 4,0 (HBase 2,0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    |      2.4    | HDI 4,0 (HBase 2,0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
-2. Bewaar dit Spark shell-exemplaar open en ga door met [het definiëren van een catalogus en query](#define-a-catalog-and-query). Als u de potten die overeenkomen met uw versies in de SHC core opslag plaats niet kunt vinden, gaat u verder met lezen. 
+2. Bewaar dit Spark shell-exemplaar open en ga door met [het definiëren van een catalogus en query](#define-a-catalog-and-query). Als u de potten die overeenkomen met uw versies in de SHC-kern opslagplaats niet vindt, gaat u verder met lezen. 
 
 U kunt de potten rechtstreeks vanuit de GitHub-vertakking van de [Spark-hbase-connector](https://github.com/hortonworks-spark/shc) bouwen. Als u bijvoorbeeld met Spark 2,3 en HBase 1,1 werkt, voert u de volgende stappen uit:
 

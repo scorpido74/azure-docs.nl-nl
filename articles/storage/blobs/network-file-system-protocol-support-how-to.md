@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cb3cb41b46c2def4f99af7f1811e4ff96dff7070
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760788"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167025"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Blob Storage koppelen met behulp van het NFS-protocol (Network File System) 3,0 (preview)
 
 U kunt een container in Blob Storage koppelen vanaf een op Windows of Linux gebaseerde Azure virtual machine (VM) of een Windows-of Linux-systeem dat on-premises wordt uitgevoerd met het NFS 3,0-protocol. In dit artikel vindt u stapsgewijze richt lijnen. Zie [Network File System (NFS) 3,0-protocol ondersteuning in Azure Blob-opslag (preview)](network-file-system-protocol-support.md)voor meer informatie over NFS 3,0-protocol ondersteuning in Blob Storage.
 
 > [!NOTE]
-> Ondersteuning voor NFS 3,0-protocol in Azure Blob-opslag is in open bare preview en is beschikbaar in de volgende regio's: VS Oost, VS Centraal en Canada-centraal.
+> Ondersteuning voor NFS 3,0-protocol in Azure Blob-opslag is in open bare preview en is beschikbaar in de volgende regio's: VS Oost, VS centraal, VS-West-Centraal, Australië-zuidoost, Europa-noord, UK-west, Korea-centraal, Korea-zuid en Canada-centraal.
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Stap 1: de functie NFS 3,0-protocol registreren bij uw abonnement
 
@@ -92,7 +92,7 @@ Kies bij het configureren van het account deze waarden:
 
 |Instelling | Waarde|
 |----|---|
-|Locatie|Een van de volgende regio's: VS Oost, VS Centraal en Canada-centraal |
+|Locatie|Een van de volgende regio's: VS Oost, VS centraal, VS-West-Centraal, Australië-zuidoost, Europa-noord, UK-west, Korea-centraal, Korea-zuid en Canada-centraal |
 |Prestaties|Premium|
 |Soort account|BlockBlobStorage|
 |Replicatie|Lokaal redundante opslag (LRS)|
@@ -113,7 +113,7 @@ Maak een container in uw opslag account met behulp van een van deze hulpprogram 
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure-CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-|[Azure-portal](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+|[Azure Portal](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>Stap 7: de container koppelen
 
@@ -163,7 +163,7 @@ Maak een map in uw Windows-of Linux-systeem en koppel vervolgens een container i
 |`Access denied by server while mounting`|Zorg ervoor dat de client wordt uitgevoerd in een ondersteund subnet. Bekijk de [ondersteunde netwerk locaties](network-file-system-protocol-support.md#supported-network-connections).|
 |`No such file or directory`| Zorg ervoor dat de container die u koppelt, is gemaakt nadat u hebt gecontroleerd of de functie is geregistreerd. Zie [stap 2: controleren of de functie is geregistreerd](#step-2-verify-that-the-feature-is-registered). Zorg er ook voor dat u de koppel opdracht en de para meters rechtstreeks in de Terminal typt. Als u een deel van deze opdracht vanuit een andere toepassing in de terminal kopieert, kunnen verborgen tekens in de gekopieerde gegevens deze fout veroorzaken.|
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Ondersteuning voor het protocol Network File System (NFS) 3,0 in Azure Blob-opslag (preview-versie)](network-file-system-protocol-support.md)
 

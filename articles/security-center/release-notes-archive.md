@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 19a6764b68a7a06f9777bac94c9f34aaf09aec0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cebc2c3d364cdb93c4b528c186dcef79c58ac6ea
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519576"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167008"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
 
@@ -28,6 +28,19 @@ Op deze pagina vindt u informatie over:
 - Nieuwe functies
 - Opgeloste fouten
 - Afgeschafte functionaliteit
+
+
+## <a name="february-2020"></a>Februari 2020
+
+### <a name="fileless-attack-detection-for-linux-preview"></a>Aanvals detectie met een bestand voor Linux (preview-versie)
+
+Als aanvallers stealthier Azure Security Center-methoden gebruiken om detectie te voor komen, wordt in aanvulling op Windows de detectie van de aanval van bestanden voor Linux uitgebreid. Aanvallen waarbij misbruik wordt gemaakt van software, schadelijke nettoladingen in goed aardige systeem processen injecteren en in het geheugen verbergen. Deze technieken:
+
+- traceringen van malware op schijf minimaliseren of elimineren
+- de kans op detectie door op schijf gebaseerde scan oplossingen op basis van malware aanzienlijk beperken
+
+Als u deze bedreiging wilt bemeteren, Azure Security Center u de aanvals detectie van bestanden voor Windows in oktober 2018 vrijgegeven en nu ook uitgebreide aanvals detectie op Linux. 
+
 
 
 ## <a name="january-2020"></a>Januari 2020

@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 660e200b673da53af1ee00e4de1e2ce3298e861d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 57c2fb125547149a7fea6643a483e29f5fecb495
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876441"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167042"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interactie met Apache Kafka clusters in azure HDInsight met behulp van een REST-proxy
 
-Met Kafka REST proxy kunt u met uw Kafka-cluster communiceren via een REST API over HTTP. Deze actie houdt in dat uw Kafka-clients zich buiten uw virtuele netwerk kunnen bevinden. Clients kunnen eenvoudige HTTP-aanroepen naar het Kafka-cluster maken, in plaats van te vertrouwen op Kafka-bibliotheken. In dit artikel wordt uitgelegd hoe u een Kafka-cluster maakt waarop een REST-proxy is ingeschakeld. Bevat ook een voorbeeld code die laat zien hoe u aanroepen naar REST proxy.
+Met de Kafka REST-proxy kunt u met uw Kafka-cluster communiceren via een REST API over HTTP. Deze actie houdt in dat uw Kafka-clients zich buiten uw virtuele netwerk kunnen bevinden. Clients kunnen eenvoudige HTTP-aanroepen naar het Kafka-cluster maken, in plaats van te vertrouwen op Kafka-bibliotheken. In dit artikel wordt uitgelegd hoe u een Kafka-cluster maakt waarop een REST-proxy is ingeschakeld. Bevat ook een voorbeeld code die laat zien hoe u aanroepen naar REST proxy.
 
 ## <a name="rest-api-reference"></a>Naslaginformatie over REST-API
 
@@ -47,9 +47,9 @@ Als u uw eigen VNet en netwerk verkeer met netwerk beveiligings groepen wilt beh
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. U registreert een toepassing met Azure AD. De client toepassingen die u schrijft om te communiceren met de Kafka REST-proxy, gebruiken de ID en het geheim van deze toepassing om te verifiëren bij Azure.
+1. U registreert een toepassing met Azure AD. De clienttoepassingen die u schrijft om te communiceren met de Kafka REST-proxy gebruiken de id en het geheim van deze toepassing voor verificatie bij Azure.
 
-1. Maak een Azure AD-beveiligingsgroep. Voeg de toepassing die u hebt geregistreerd bij Azure AD aan de beveiligings groep toe als **lid** van de groep. Deze beveiligings groep wordt gebruikt om te bepalen welke toepassingen mogen communiceren met de REST-proxy. Zie [een basis groep maken en leden toevoegen met Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor meer informatie over het maken van Azure ad-groepen.
+1. Maak een Azure AD-beveiligingsgroep. Voeg de toepassing die u hebt geregistreerd bij Azure AD aan de beveiligings groep toe als **lid** van de groep. Deze beveiligingsgroep wordt gebruikt om te bepalen welke toepassingen mogen communiceren met de REST-proxy. Zie [Een basisgroep maken en leden toevoegen met Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie over het maken van Azure AD-groepen.
 
     Controleer of de groep van het type **Security**is.
     ![Beveiligings groep](./media/rest-proxy/rest-proxy-group.png)
@@ -104,6 +104,7 @@ Zie [python AuthenticationContext-klasse](https://docs.microsoft.com/python/api/
 #pip3 install msal
 
 import msal
+import requests
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -140,7 +141,7 @@ getstatus = "/v1/metadata/topics"
 request_url = kafkarest_endpoint + getstatus
 
 # sending get request and saving the response as response object
-response = requests.get(request_url, headers={'Authorization': accessToken})
+response = requests.get(request_url, headers={'Authorization': 'Bearer ' + 'accessToken})
 print(response.content)
 ```
 
