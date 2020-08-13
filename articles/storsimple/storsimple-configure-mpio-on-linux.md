@@ -1,18 +1,18 @@
 ---
 title: MPIO configureren op StorSimple Linux-host
-description: MPIO configureren op StorSimple die zijn verbonden met een Linux-host met CentOS 6,6
+description: Meer informatie over de stappen die nodig zijn voor het configureren van multipath IO (MPIO) op de StorSimple Linux (CentOS 6,6)-hostserver.
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 05a67ab33c12e9f2bdbc0cd0098c39252db37e8e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187078"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183629"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>MPIO configureren op een StorSimple-host met CentOS
 In dit artikel worden de stappen beschreven die nodig zijn voor het configureren van MPIO (multipath-i/o) op de CentOS 6,6-hostserver. De hostserver is verbonden met uw Microsoft Azure StorSimple-apparaat voor hoge Beschik baarheid via iSCSI-initia tors. Hierin wordt de automatische detectie van multipath-apparaten en de specifieke installatie van alleen voor StorSimple-volumes beschreven.
@@ -214,7 +214,7 @@ De apparaten die door meerdere paden worden ondersteund, kunnen automatisch word
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Stap 2: meerdere paden configureren voor StorSimple-volumes
 Standaard worden alle apparaten zwart weer gegeven in het bestand met meerdere paden. conf en worden deze omzeild. U moet zwarte uitzonde ringen maken om meerdere paden voor volumes van StorSimple-apparaten toe te staan.
 
-1. Bewerk het `/etc/mulitpath.conf` bestand. Type:
+1. Het bestand `/etc/mulitpath.conf` bewerken. Type:
    
     `vi /etc/multipath.conf`
 1. Zoek de sectie blacklist_exceptions in het bestand met meerdere paden. conf. Uw StorSimple-apparaat moet in deze sectie als een uitzonde ring Black List worden weer gegeven. U kunt opmerkingen van relevante regels in dit bestand opheffen om deze te wijzigen, zoals hieronder wordt weer gegeven (gebruik alleen het specifieke model van het apparaat dat u gebruikt):
@@ -235,7 +235,7 @@ Standaard worden alle apparaten zwart weer gegeven in het bestand met meerdere p
 ### <a name="step-3-configure-round-robin-multipathing"></a>Stap 3: meerdere paden configureren met Round Robin
 Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de actieve controller op een evenwichtige, Round-Robin manier.
 
-1. Bewerk het `/etc/multipath.conf` bestand. Type:
+1. Het bestand `/etc/multipath.conf` bewerken. Type:
    
     `vi /etc/multipath.conf`
 1. Stel in de `defaults` sectie in `path_grouping_policy` op `multibus` . `path_grouping_policy`Hiermee geeft u het groeps beleid voor standaard paden op dat moet worden toegepast op niet-opgegeven meerdere paden. De sectie standaard waarden ziet er ongeveer uit zoals hieronder wordt weer gegeven.

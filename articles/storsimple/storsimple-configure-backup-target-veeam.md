@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000-serie als back-updoel met Veeam | Microsoft Docs
-description: Beschrijft de configuratie van de StorSimple-back-updoel met Veeam.
+description: Meer informatie over de configuratie van de StorSimple-back-updoel met Veeam en aanbevolen procedures voor het integreren van beide oplossingen.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 05ee60986703096c004c4d15764028b73d04c0bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 71a5434d985aad4033e4392dd31e6b7d112692de
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077881"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183975"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als een back-updoel met Veeam
 
@@ -507,7 +507,7 @@ Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel g
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel vervolgens Veeam. | Herstel StorSimple eerst en herstel vervolgens Veeam. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Naslaginformatie
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

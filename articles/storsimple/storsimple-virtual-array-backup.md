@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple zelf studie over het maken van een virtuele matrix | Microsoft Docs
-description: Hierin wordt beschreven hoe u een back-up maakt van StorSimple virtuele-matrix shares en-volumes.
+description: Maak geplande en hand matige back-ups voor Microsoft Azure StorSimple virtuele matrix en voer herstel op item niveau uit om een verwijderd bestand in uw virtuele matrix te herstellen.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26bf018d8823495c00b09af3a40b39315dadb31c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513665"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183221"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Maak een back-up van shares of volumes op uw virtuele StorSimple-matrix
 

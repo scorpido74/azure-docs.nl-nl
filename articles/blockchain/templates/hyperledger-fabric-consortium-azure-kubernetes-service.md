@@ -1,15 +1,15 @@
 ---
 title: Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 description: Het Hyperledger Fabric consortium-netwerk implementeren en configureren op de Azure Kubernetes-service
-ms.date: 07/27/2020
+ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6999b32224e6c41cdf9869554c884fc4779c217
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533424"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184207"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 
@@ -350,10 +350,22 @@ Volg de stappen:
 Voer vanuit peer-client toepassing de volgende opdracht uit om chaincode op het kanaal te instantiëren.  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
 ```
 
 Geef de naam van de functie en de spaties gescheiden lijst met argumenten in `<instantiateFunc>` `<instantiateFuncArgs>` respectievelijk door. Bijvoorbeeld in chaincode_example02. go chaincode, voor het instantiëren van de chaincode `<instantiateFunc>` die is ingesteld op `init` `<instantiateFuncArgs>` "a" "2000" "b" "1000".
+
+U kunt ook het JSON-bestand met de verzamelings configuratie door geven met behulp van de `--collections-config` vlag. U kunt ook de tijdelijke argumenten instellen met behulp van de `-t` vlag tijdens het instantiëren van een chaincode die wordt gebruikt voor persoonlijke trans acties.
+
+Bijvoorbeeld:
+
+```bash
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
+```
+
+Het \<collectionConfigJSONFilePath\> is het pad naar het JSON-bestand dat de verzamelingen bevat die zijn gedefinieerd voor het instantiëren van een persoonlijke gegevens chaincode. Op het volgende pad vindt u een voor beeld van een JSON-bestand met een verzamelings configuratie ten opzichte van de map azhlfTool: `./samples/chaincode/src/private_marbles/collections_config.json` .
+Geef \<transientArgs\> een geldige json in een teken reeks indeling. Alle speciale tekens escapepen. Bijvoorbeeld: `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > Voer de opdracht uit voor één van de peer-organisaties in het kanaal. Zodra de trans actie is verzonden naar de orderer, wordt deze trans actie door de orderer gedistribueerd naar alle peer-organisaties in het kanaal. Daarom wordt de chaincode geïnstantieerd op alle peer knooppunten op alle peer-organisaties in het kanaal.  
@@ -377,8 +389,12 @@ Geef de naam van de functie invoke en de door de ruimte gescheiden lijst met arg
 Voer de onderstaande opdracht uit om een query uit te voeren op chaincode:  
 
 ```bash
-./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
+Het goed keuren van peers is peers waar chaincode is geïnstalleerd en wordt aangeroepen voor het uitvoeren van trans acties. U moet de \<endorsingPeers\> bovenliggende knooppunt namen van de peer instellen in de huidige peer-organisatie. De begoedde peers weer geven voor een bepaalde chaincode en combi natie van kanalen, gescheiden door spaties. Bijvoorbeeld `-p "peer1" "peer3"`.
+
+Als u azhlfTool gebruikt om uw chaincode te installeren, moet u de namen van peer knooppunten door geven als een waarde voor het goedkeurings argument peering. De chaincode wordt geïnstalleerd op elk knoop punt van de peer voor die organisatie. 
+
 Geef de naam van de query functie en de spaties gescheiden lijst met argumenten in  `<queryFunction>`    `<queryFuncArgs>`   respectievelijk. Als u chaincode_example02. go chaincode als referentie wilt uitvoeren, moet u de waarde ' a ' in de wereld status instellen  `<queryFunction>`   op  `query`  `<queryArgs>` a.  
 
 ## <a name="troubleshoot"></a>Problemen oplossen

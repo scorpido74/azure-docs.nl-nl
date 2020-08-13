@@ -1,6 +1,6 @@
 ---
 title: Overzicht van het programma Microsoft Azure StorSimple-en Cloud oplossingen | Microsoft Docs
-description: Een overzicht van de StorSimple en CSP voor StorSimple-partners.
+description: Meer informatie over de introductie van StorSimple en Cloud Solutions Program (CSP) voor StorSimple-partners.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 358399426798ac20897d207c93a8874357e8b781
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60628656"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88181997"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Wat is StorSimple voor het programma Cloud Solutions providers?
 

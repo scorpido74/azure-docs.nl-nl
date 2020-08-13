@@ -1,17 +1,17 @@
 ---
 title: Open een ondersteunings ticket voor Microsoft Azure Edge-FXT
-description: Procedure voor het openen van een ticket voor hulp met uw Azure FXT Edge-bestands systeem
+description: Open een ondersteunings ticket met de klanten service van micro soft en ondersteuning voor hulp bij uw Azure FXT Edge-bestands systeem.
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 292844f611008b6dafbed4e46cad07c45dbecc54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16b219afa329cc105fb70000d8a088d67883feed
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72255976"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184666"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Open een ondersteunings ticket voor de Azure FXT Edge-Bestandsr
 
@@ -31,7 +31,7 @@ Gebruik de Azure Portal om een ondersteunings ticket te openen met de klanten se
     1. Onder **service**selecteert u **Azure FXT Edge-bestands**server. Mogelijk moet u op het filter besturings element **alle services** klikken om het te vinden. 
     1. Voer een **samen vatting** in en kies het **probleem type**. 
     ![Scherm opname van leeg ondersteunings aanvraag formulier](media/fxt-support-populated.png) 
-    1. Klik op **Volgende** om door te gaan. 
+    1. Klik op **Volgende** om verder te gaan. 
 1. Voeg op het tabblad **Details** meer informatie over het probleem en contact met u op te nemen. U kunt een bestand uploaden dat betrekking heeft op het probleem. 
 1. In **controleren en maken**, Controleer de informatie en klik op de knop **maken** om uw aanvraag in te dienen.
 

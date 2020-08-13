@@ -142,53 +142,17 @@
         - name: Data Access Gen2
           items:
             - name: Overzicht
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/preview'
-            - name: Modelinstellingen
-              items:
-                - name: Overzicht
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings'
-                - name: Ophalen
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get'
-                - name: Bijwerken
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update'
-            - name: Query’s uitvoeren
-              items:
-                - name: Overzicht
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query'
-                - name: Uitvoeren
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute'
-                - name: Beschikbaarheid ophalen
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability'
-                - name: Gebeurtenisschema ophalen
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema'
-            - name: Tijdsreekshiërarchieën
-              items:
-                - name: Overzicht
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies'
-                - name: Batch uitvoeren
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch'
-                - name: Ophalen
-                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
-            - name: Tijdreeksinstanties
-              items:
-                - name: Overzicht
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances'
-                - name: Batch uitvoeren
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch'
-                - name: Ophalen
-                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
-                - name: Search
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search'
-                - name: Voorstellen
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest'
-            - name: Time Series-types
-              items:
-                - name: Overzicht
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes'
-                - name: Batch uitvoeren
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch'
-                - name: Ophalen
-                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list'
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview'
+            - name: Omgevings-API's
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis'
+            - name: Model-API's
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis'
+            - name: Query-API's
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis'
+            - name: Time Series-expressie (TSX)
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax'
+            - name: API-beperkingen
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits'
         - name: Data Access Gen1
           items:
             - name: Overzicht
@@ -196,13 +160,13 @@
             - name: Query’s uitvoeren
               items:
                 - name: Query’s uitvoeren
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query'
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query'
                 - name: API
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api'
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api'
                 - name: Syntaxis
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax'
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-syntax'
             - name: API voor verwijzingsgegevens
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api'
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api'
     - name: Client-SDK
       items:
         - name: JavaScript-client-SDK

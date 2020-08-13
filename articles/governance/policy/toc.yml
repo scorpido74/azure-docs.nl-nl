@@ -10,16 +10,22 @@
   items:
     - name: Een beleid toewijzen - Portal
       displayName: 'assign, compliance'
-      href: assign-policy-portal.md
-    - name: Een beleid toewijzen - Azure PowerShell
-      displayName: 'assign, compliance'
-      href: assign-policy-powershell.md
+      href: ./assign-policy-portal.md
     - name: Een beleid toewijzen - Azure CLI
       displayName: 'assign, compliance'
-      href: assign-policy-azurecli.md
+      href: ./assign-policy-azurecli.md
+    - name: Een beleid toewijzen - Azure PowerShell
+      displayName: 'assign, compliance'
+      href: ./assign-policy-powershell.md
+    - name: Een beleid toewijzen - Python
+      displayName: 'assign, compliance'
+      href: ./assign-policy-python.md
+    - name: Een beleid toewijzen - REST
+      displayName: 'armclient, postman'
+      href: ./assign-policy-rest-api.md
     - name: Een beleid toewijzen - ARM-sjabloon
       displayName: 'assign, compliance, resource manager'
-      href: assign-policy-template.md
+      href: ./assign-policy-template.md
 - name: Zelfstudies
   items:
     - name: Azure-beleid maken en beheren

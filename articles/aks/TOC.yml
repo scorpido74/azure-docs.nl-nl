@@ -170,6 +170,8 @@
         - name: AKS met Terraform implementeren
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: De Kubernetes-resourceviewer gebruiken (preview)
+          href: kubernetes-portal.md
         - name: Het Kubernetes-dashboard gebruiken
           href: kubernetes-dashboard.md
     - name: Gegevensvolumes configureren

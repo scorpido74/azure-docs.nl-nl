@@ -1,18 +1,18 @@
 ---
 title: Opties voor gegevens overdracht naar Azure met behulp van een apparaat | Microsoft Docs
-description: Meer informatie over het kiezen van het juiste apparaat voor het overdragen van gegevens naar Azure
+description: Meer informatie over het kiezen van het juiste apparaat voor on-premises gegevens overdracht naar Azure tussen Data Box Edge, Azure File Sync en StorSimple 8000-serie.
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203973"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183272"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple vergelijken met overdrachtsopties van Azure File Sync en Data Box Edge 
 
@@ -33,7 +33,7 @@ In dit document vindt u een overzicht van de opties voor on-premises gegevens ov
 |**Edge-rekenproces** |Niet beschikbaar |Niet beschikbaar |Ondersteunt het uitvoeren van containers met behulp van Azure IoT Edge    |
 |**Vorm factor**  |Fysiek apparaat   |Agent geïnstalleerd op Windows Server |Fysiek apparaat   |
 |**Hardware**     |Fysiek apparaat dat door micro soft is meegeleverd als onderdeel van de service | Klant |Fysiek apparaat dat door micro soft is meegeleverd als onderdeel van de service  |
-|**Gegevens indeling**  |Aangepaste notatie   |Bestanden         |Blobs of bestanden    |
+|**Gegevens indeling**  |Aangepaste notatie   |Files         |Blobs of bestanden    |
 |**Protocol ondersteuning** |iSCSI          |SMB, NFS    | SMB of NFS      |
 |**Prijzen**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 

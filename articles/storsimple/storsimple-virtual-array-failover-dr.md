@@ -1,6 +1,6 @@
 ---
 title: Failover en nood herstel voor de virtuele StorSimple-matrix
-description: Meer informatie over het failover van de virtuele StorSimple-matrix.
+description: Meer informatie over herstel na nood gevallen voor uw Microsoft Azure StorSimple virtuele matrix, inclusief de gedetailleerde stappen voor het uitvoeren van een failover naar een andere virtuele matrix.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05f31993b7491dbfb0bff46c8fd2362b6bab0d4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077793"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184717"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Herstel na noodgevallen en failover van apparaat voor virtuele StorSimple-array via Azure-portal
 

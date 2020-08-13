@@ -91,8 +91,6 @@
           href: concept-customer-managed-keys.md
         - name: Uw configuratiearchief beveiligen met privé-eindpunten
           href: concept-private-endpoint.md
-        - name: Integreren met beheerde Azure-identiteit
-          href: howto-integrate-azure-managed-service-identity.md
         - name: Toegang met Azure Active Directory inschakelen
           href: concept-enable-rbac.md
         - name: Een door Azure beheerde identiteit toewijzen
@@ -115,6 +113,8 @@
       href: howto-app-configuration-event.md
     - name: Automatisch back-ups maken van configuratiearchief
       href: howto-backup-config-store.md
+    - name: Beheerde identiteiten gebruiken om App Configuration te openen
+      href: howto-integrate-azure-managed-service-identity.md
 - name: Naslaginformatie
   items:
     - name: Configuratie

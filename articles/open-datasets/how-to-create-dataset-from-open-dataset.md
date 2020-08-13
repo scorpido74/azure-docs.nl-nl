@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: db2e493f04d74308b21e8a63222f26b1e2af8546
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e6f3a541f1e9dbca2c9949fb0c5cde28cd43e8e5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038195"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183012"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Machine Learning gegevens sets maken op basis van Azure open gegevens sets
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,19 +75,21 @@ Wanneer u een gegevensset registreert die is gemaakt op basis van geopende gegev
 
 ## <a name="create-datasets-with-the-studio"></a>Gegevens sets maken met de Studio
 
-U kunt ook gegevens sets maken op basis van open gegevens sets met de [Azure machine learning Studio](https://ml.azure.com). Selecteer in uw werk ruimte het tabblad **gegevens sets** onder **assets**. Selecteer in de vervolg keuzelijst **gegevensset maken** de optie **uit geopende gegevens sets**.
+U kunt ook gegevens sets maken op basis van open gegevens sets met de [Azure machine learning Studio](https://ml.azure.com).
 
-![Gegevensset openen met de gebruikers interface](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
+1. Selecteer in uw werk ruimte het tabblad **gegevens sets** onder **assets**. Selecteer in de vervolg keuzelijst **gegevensset maken** de optie **uit geopende gegevens sets**.
 
-Selecteer een gegevensset door de tegel ervan te selecteren. (U hebt de mogelijkheid om te filteren met behulp van de zoek balk.) Selecteer **volgende**.
+    ![Gegevensset openen met de gebruikers interface](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
 
-![Gegevensset kiezen](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
+1. Selecteer een gegevensset door de tegel ervan te selecteren. (U hebt de mogelijkheid om te filteren met behulp van de zoek balk.) Selecteer **volgende**.
 
-Kies een naam waaronder u de gegevensset wilt registreren en de gegevens eventueel kunt filteren met behulp van de beschik bare filters. In dit geval filtert u voor de gegevensset van de open bare feest dagen de periode tot één jaar en de land code naar alleen de Verenigde Staten. Selecteer **Maken**.
+    ![Gegevensset kiezen](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-![Gegevensset-para meters instellen en gegevensset maken](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+1. Kies een naam waaronder u de gegevensset wilt registreren en de gegevens eventueel kunt filteren met behulp van de beschik bare filters. In dit geval filtert u voor de gegevensset van de **open bare feest dagen** de periode tot één jaar en de land code naar alleen de Verenigde Staten. Selecteer **Maken**.
 
-De gegevensset is nu beschikbaar in uw werk ruimte onder **gegevens sets**. U kunt deze op dezelfde manier gebruiken als andere gegevens sets die u hebt gemaakt.
+    ![Gegevensset-para meters instellen en gegevensset maken](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+
+    De gegevensset is nu beschikbaar in uw werk ruimte onder **gegevens sets**. U kunt deze op dezelfde manier gebruiken als andere gegevens sets die u hebt gemaakt.
 
 
 ## <a name="access-datasets-for-your-experiments"></a>Toegang tot gegevens sets voor uw experimenten

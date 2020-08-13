@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65aed14ec7f644f2792aaecde5c8bccfffdd8081
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 30d18041a746a0c1046a51cf408494ccb81019c9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078441"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183204"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Cloud groepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory (preview-versie)
 
@@ -60,7 +60,7 @@ De volgende scenario's worden momenteel niet ondersteund:
 
 - U kunt een dynamische groep niet maken of wijzigen wanneer de rol is toegewezen via een groep.
 - De functie **gefaseerde implementatie voor beheerde gebruikers aanmelding inschakelen** biedt geen ondersteuning voor toewijzing via groep.
-- *Alleen klanten met een licentie voor Azure AD P2*: wijs een groep niet als actief toe aan een rol via Azure ad en privileged Identity Management. Dit leidt tot problemen waar gebruikers hun actieve roltoewijzingen niet kunnen zien in de PIM, en de mogelijkheid tot het verwijderen van die PIM-toewijzing. In dit scenario worden in aanmerking komende toewijzingen niet beïnvloed. Als u probeert deze toewijzing te maken, ziet u mogelijk onverwacht gedrag zoals:
+- *Alleen klanten met een licentie voor Azure AD P2*: wijs een groep niet als actief toe aan een rol via Azure ad en PRIVILEGED Identity Management (PIM). Wijs met name geen rol toe aan een door de gebruiker toewijs bare groep wanneer deze wordt gemaakt *en* wijs later met Pim een rol aan de groep toe. Dit leidt tot problemen waar gebruikers hun actieve roltoewijzingen niet kunnen zien in de PIM, en de mogelijkheid tot het verwijderen van die PIM-toewijzing. In dit scenario worden in aanmerking komende toewijzingen niet beïnvloed. Als u probeert deze toewijzing te maken, ziet u mogelijk onverwacht gedrag zoals:
   - De eind tijd voor de roltoewijzing kan onjuist worden weer gegeven.
   - In de PIM-portal kunnen **mijn rollen** slechts één roltoewijzing tonen, ongeacht het aantal methoden waarmee de toewijzing wordt verleend (via een of meer groepen en direct).
 - *Alleen klanten met een licentie voor Azure AD P2* Zelfs na het verwijderen van de groep wordt er nog steeds een in aanmerking komend lid van de rol weer gegeven in PIM-gebruikers interface. Er is functioneel geen probleem. het is slechts een cache probleem in de Azure Portal.  

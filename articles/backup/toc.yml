@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: Back-ups maken van Azure-VM's met behulp van PowerShell
       href: tutorial-backup-azure-vm.md
-    - name: Een schijf terugzetten
+    - name: Een VM herstellen met Azure CLI
       href: tutorial-restore-disk.md
     - name: Afzonderlijke bestanden terugzetten
       href: tutorial-restore-files.md

@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000-serie als back-updoel met NetBackup | Microsoft Docs
-description: Beschrijft de configuratie van de StorSimple-back-updoel met VERITAS NetBackup.
+description: Meer informatie over de configuratie van de StorSimple-back-updoel met VERITAS NetBackup en best practices voor het integreren van beide oplossingen.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 34c66c3d5739fdc23323a302e3bedfb1b6301d86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077906"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184003"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple als back-updoel met NetBackup
 
@@ -535,7 +535,7 @@ Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel g
 | NetBackup-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Maak de back-upserver opnieuw en herstel de data base. | U moet de NetBackup-server opnieuw bouwen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde NetBackup-data base niet is gesynchroniseerd met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel vervolgens NetBackup. | Herstel StorSimple eerst en herstel vervolgens NetBackup. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Naslaginformatie
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

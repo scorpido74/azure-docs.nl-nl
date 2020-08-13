@@ -1,24 +1,24 @@
 ---
-title: Toegang verlenen tot BLOB-of wachtrij gegevens met Azure CLI
+title: Voer Azure CLI-opdrachten uit met Azure AD-referenties om toegang te krijgen tot BLOB-of wachtrij gegevens
 titleSuffix: Azure Storage
 description: Geef op hoe gegevens bewerkingen moeten worden geautoriseerd voor BLOB-of wachtrij gegevens met de Azure CLI. U kunt gegevens bewerkingen autoriseren met behulp van Azure AD-referenties, met de toegangs sleutel voor het account of met een SAS-token (Shared Access Signature).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 08/12/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a656ccc56d198943c8631077466115eb6411a64a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 5ab346af1516c29b1638811217b779e11f120043
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534886"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183391"
 ---
-# <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Toegang verlenen tot BLOB-of wachtrij gegevens met Azure CLI
+# <a name="run-azure-cli-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Voer Azure CLI-opdrachten uit met Azure AD-referenties om toegang te krijgen tot BLOB-of wachtrij gegevens
 
 Azure Storage biedt uitbrei dingen voor Azure CLI waarmee u kunt opgeven hoe u bewerkingen op BLOB-of wachtrij gegevens wilt autoriseren. U kunt gegevens bewerkingen op de volgende manieren autoriseren:
 

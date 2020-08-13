@@ -2,13 +2,13 @@
 title: Multi-VM-omgevingen en PaaS-resources maken met sjablonen
 description: Meer informatie over het maken van omgevingen met meerdere VM'S en PaaS resources in Azure DevTest Labs vanuit een Azure Resource Manager sjabloon
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: bab107257a6233543cecfb664b3a6d313dd0e538
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481422"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182405"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Multi-VM-omgevingen en PaaS-resources maken met Azure Resource Manager-sjablonen
 
@@ -62,7 +62,7 @@ Er zijn verschillende regels die moeten worden gevolgd om uw Azure Resource Mana
 
 Nadat u de opslag plaats hebt gemaakt en geconfigureerd, kunt u deze toevoegen aan uw Lab met behulp van de Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs het gewenste Lab.
 1. Selecteer **configuratie en beleid**in het deel venster **overzicht** van de test omgeving.
@@ -109,7 +109,7 @@ In de volgende sectie wordt beschreven hoe u omgevingen maakt op basis van een A
 
 Zodra u een Azure Resource Manager sjabloon aan het Lab hebt toegevoegd, kunnen uw Lab-gebruikers in de Azure Portal omgevingen maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 
@@ -203,10 +203,10 @@ Met het volgende voorbeeld script maakt u een omgeving in uw Lab. De opmerkingen
    Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
 
    # Get information about the user, specifically the user ID, which is used later in the script.  
-   $UserId = $((Get-AzADUser -UserPrincipalName (Get-AzContext).Account).Id.Guid)
+   $UserId = $((Get-AzADUser -UserPrincipalName ((Get-AzContext).Account).Id).Id)
 
    # Get information about the lab, such as lab location.
-   $lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName
+   $lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName
    if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." }
 
    # Get information about the repository in the lab.
@@ -261,7 +261,7 @@ Met het volgende voorbeeld script maakt u een omgeving in uw Lab. De opmerkingen
    ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG000000" -RepositoryName "myRepository" -TemplateName "My Environment template name" -EnvironmentName "myGroupEnv"
    ```
 
-U kunt ook Azure CLI gebruiken om resources te implementeren met Resource Manager-sjablonen. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/templates/deploy-cli.md)voor meer informatie.
+U kunt ook Azure CLI gebruiken om resources te implementeren met Resource Manager-sjablonen. Zie [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../azure-resource-manager/templates/deploy-cli.md) voor meer informatie.
 
 > [!NOTE]
 > Alleen een gebruiker met machtigingen voor een Lab-eigenaar kan Vm's maken op basis van een resource manager-sjabloon met behulp van Azure PowerShell. Als u het maken van een virtuele machine wilt automatiseren met een resource manager-sjabloon en u alleen gebruikers machtigingen hebt, kunt u de CLI-opdracht [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create)gebruiken.

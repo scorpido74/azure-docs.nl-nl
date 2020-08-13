@@ -1,6 +1,6 @@
 ---
 title: Zelf studie-een failover van het fysieke StorSimple-apparaat naar hetzelfde apparaat uitvoeren
-description: Meer informatie over hoe u een failover voor uw StorSimple-apparaat kunt uitvoeren op hetzelfde apparaat.
+description: Meer informatie over de stappen die nodig zijn voor het uitvoeren van een failover naar een fysiek StorSimple 8000-serie apparaat als er sprake is van een nood geval.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 60bf5b593efc5a26387680c092fc972bf9274e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511743"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184326"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Failover van het fysieke StorSimple-apparaat naar hetzelfde apparaat
 

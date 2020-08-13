@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253321"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184343"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Gebruiks voorwaarden van Azure Active Directory
 
@@ -92,7 +92,7 @@ Wanneer u het document voor de gebruiks voorwaarden hebt voltooid, gebruikt u de
 
 1. Gebruik de instellingen **verloopt op basis van begin datum** en **frequentie** om de planning op te geven voor de gebruiks voorwaarden. In de volgende tabel ziet u het resultaat voor enkele voor beelden van instellingen:
 
-   | Verloopt vanaf | Frequentie | Resultaat |
+   | Verloopt vanaf | Frequency | Resultaat |
    | --- | --- | --- |
    | De datum van vandaag  | Maandelijks | Vanaf vandaag moeten gebruikers de gebruiks voorwaarden accepteren en vervolgens elke maand opnieuw accepteren. |
    | Datum in de toekomst  | Maandelijks | Gebruikers moeten de gebruiks voorwaarden accepteren om vandaag nog te beginnen. Wanneer de datum in de toekomst plaatsvindt, verloopt de toestemmingen en worden de gebruikers elke maand opnieuw geaccepteerd.  |
@@ -101,14 +101,14 @@ Wanneer u het document voor de gebruiks voorwaarden hebt voltooid, gebruikt u de
 
    | Gebruiker | Eerste acceptatie datum | Datum eerste verloop | Datum van de tweede verloopt | Datum van derde verloop |
    | --- | --- | --- | --- | --- |
-   | Robert | 1 jan | 1 februari | 1 maart | Apr 1 |
+   | Alice | 1 jan | 1 februari | 1 maart | Apr 1 |
    | Bob | 15 jan | 1 februari | 1 maart | Apr 1 |
 
 1. Gebruik de waarde **voor de duur voordat u voor opnieuw accepteren (dagen)** de instelling opgeeft om het aantal dagen op te geven waarna de gebruiker de gebruiks voorwaarden opnieuw moet accepteren. Hiermee kunnen gebruikers hun eigen schema volgen. Als u bijvoorbeeld de duur instelt op **30** dagen, ziet u hier hoe verloop tijd voor twee gebruikers kan optreden:
 
    | Gebruiker | Eerste acceptatie datum | Datum eerste verloop | Datum van de tweede verloopt | Datum van derde verloop |
    | --- | --- | --- | --- | --- |
-   | Robert | 1 jan | 31 januari | 2 maart | Apr 1 |
+   | Alice | 1 jan | 31 januari | 2 maart | Apr 1 |
    | Bob | 15 jan | 14 februari | 16 mrt | Apr 15 |
 
    Het is mogelijk om de **verlopende** en duur te gebruiken **voordat de nieuwe acceptatie (dagen)** instellingen samen houdt, maar u kunt er ook voor gebruiken.
@@ -117,7 +117,7 @@ Wanneer u het document voor de gebruiks voorwaarden hebt voltooid, gebruikt u de
 
    ![De vervolg keuzelijst voorwaardelijke toegang om een beleids sjabloon te selecteren](./media/terms-of-use/conditional-access-templates.png)
 
-   | Template | Description |
+   | Template | Beschrijving |
    | --- | --- |
    | **Toegang tot Cloud-apps voor alle gasten** | Er wordt een beleid voor voorwaardelijke toegang gemaakt voor alle gasten en alle Cloud-apps. Dit beleid is van invloed op de Azure Portal. Zodra dit is gemaakt, moet u zich mogelijk afmelden en aanmelden. |
    | **Toegang tot Cloud-apps voor alle gebruikers** | Er wordt een beleid voor voorwaardelijke toegang gemaakt voor alle gebruikers en alle Cloud-apps. Dit beleid is van invloed op de Azure Portal. Zodra deze is gemaakt, moet u zich afmelden en aanmelden. |
@@ -253,7 +253,7 @@ Met de optie gebruikers moeten toestemming geven voor **elke Apparaatinstellinge
 Hier volgt een lijst met de ondersteunde platforms en software.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Anders |
+> |  | iOS | Android | Windows 10 | Overige |
 > | --- | --- | --- | --- | --- |
 > | **Systeemeigen app** | Ja | Ja | Ja |  |
 > | **Microsoft Edge** | Ja | Ja | Ja |  |
@@ -363,7 +363,7 @@ A: Nee, als een beheerder de Details voor de gebruiks voorwaarden (naam, weergav
 A: op dit moment kunt u een bestaand gebruiks document niet bijwerken. Als u een document met de gebruiksrecht overeenkomst wilt wijzigen, moet u een nieuw exemplaar van de gebruiksrecht overeenkomst maken.
 
 **V: als Hyper links in het PDF-document met voor waarden worden gebruikt, kunnen eind gebruikers er op klikken?**<br />
-A: Ja, eind gebruikers kunnen hyper links selecteren naar extra pagina's, maar koppelingen naar secties binnen het document worden niet ondersteund.
+A: Ja, eind gebruikers kunnen hyper links selecteren naar extra pagina's, maar koppelingen naar secties binnen het document worden niet ondersteund. Hyper links in de context van het gebruik van Pdf's werken ook niet wanneer ze worden geopend vanuit de Azure AD MyApps/MyAccount-Portal.
 
 **V: kan een gebruiks voorwaarde gebruikmaken van meerdere talen?**<br />
 A: Ja. Momenteel zijn er 108 verschillende talen die een beheerder kan configureren voor een enkele gebruiks voorwaarden. Een beheerder kan meerdere PDF-documenten uploaden en deze documenten labelen met een bijbehorende taal (Maxi maal 108). Wanneer eind gebruikers zich aanmelden, bekijken we de voor keuren van de browser taal en worden ze het overeenkomende document weer gegeven. Als er geen overeenkomst wordt gevonden, wordt het standaard document weer gegeven. Dit is het eerste document dat wordt geüpload.
@@ -391,5 +391,5 @@ A: Gebruiksvoorwaarden gebruikt de volgende eind punten voor verificatie: https:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Quick Start: vereisen dat gebruiks voorwaarden worden geaccepteerd voor toegang tot Cloud-apps](require-tou.md)
+- [Quickstart: Vereisen dat gebruiksvoorwaarden worden geaccepteerd voor toegang tot cloud-apps](require-tou.md)
 - [Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](best-practices.md)

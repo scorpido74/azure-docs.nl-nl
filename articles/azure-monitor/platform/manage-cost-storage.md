@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 391a5f054c5d80b255fd333ea416900c8c5ab6d1
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135416"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184649"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
 
@@ -575,9 +575,9 @@ Voer de volgende stappen uit om te waarschuwen als het gefactureerde gegevens vo
 - **Waarschuwingsvoorwaarde definiëren** - geef uw Log Analytics-werkruimte op als het resourcedoel.
 - **Waarschuwingscriteria** - geef het volgende op:
    - **Signaalnaam** - selecteer **Aangepast zoeken in logboeken**
-   - **Zoek query** naar `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Als u een differetn wilt 
+   - **Zoek query** naar `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . 
    - **Waarschuwingslogica** is **Gebaseerd op het ** *aantal resultaten*, en **Voorwaarde** is *Groter dan* een **Drempelwaarde** van *0*
-   - **Tijd periode** van *1440* minuten en **waarschuwings frequentie** voor elke *1440* minutesto één keer per dag uitgevoerd.
+   - **Tijd periode** van *1440* minuten en **waarschuwings frequentie** tot elke *1440* minuten om één keer per dag uit te voeren.
 - **Waarschuwingsdetails definiëren** - geef het volgende op:
    - **Naam** aan *factureer bare gegevens volume groter dan 50 GB in 24 uur*
    - **Ernst** op *Waarschuwing*
@@ -604,7 +604,7 @@ Wanneer het verzamelen van gegevens stopt, is de OperationStatus **Waarschuwing*
 |Reden voor verzamelen stopt| Oplossing| 
 |-----------------------|---------|
 |Het dagelijkse kapje van uw werk ruimte is bereikt|Wacht tot de verzameling automatisch opnieuw wordt opgestart of verhoog de dagelijkse gegevens volume limiet die wordt beschreven in het maximale dagelijkse gegevens volume beheren. De tijd voor het opnieuw instellen van dagelijkse limieten wordt weer gegeven op de pagina **dagelijks Cap** . |
-| Uw werk ruimte heeft de [frequentie van het gegevens opname volume](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) bereikt | De standaard limiet voor de frequentie van opname volumes voor gegevens die worden verzonden vanuit Azure-resources met Diagnostische instellingen is ongeveer 6 GB/min per werk ruimte. Dit is een geschatte waarde, omdat de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. Deze limiet geldt niet voor gegevens die worden verzonden door agents of de Data Collector-API. Als u gegevens met een hoger snelheid naar één werk ruimte verzendt, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de bewerkings tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als uw opname volume de frequentie limiet blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een verhoging van uw werk ruimte aanvragen door een e-mail te verzenden naar LAIngestionRate@microsoft.com of een ondersteunings aanvraag te openen. De gebeurtenis die moet worden gezocht en die aangeeft dat de frequentie limiet voor gegevens opname kan worden gevonden door de query `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` . |
+| Uw werk ruimte heeft de [frequentie van het gegevens opname volume](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) bereikt | Een standaard frequentie van 500 MB (gecomprimeerd) voor de opname volume is van toepassing op werk ruimten, wat ongeveer **6 GB/min** niet-gecomprimeerd is. de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. Deze drempel waarde is van toepassing op alle opgenomen gegevens, ongeacht of deze zijn verzonden vanuit Azure-resources met [Diagnostische instellingen](diagnostic-settings.md), [Data Collector API](data-collector-api.md) of agents. Wanneer u gegevens naar een werk ruimte verzendt met een volume snelheid van meer dan 80% van de drempel waarde die in uw werk ruimte is geconfigureerd, wordt er elke 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte terwijl de drempel waarde blijft overschreden. Wanneer de hoeveelheid opgenomen volume hoger is dan de drempel waarde, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als de frequentie van het opname volume de drempel waarde blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een aanvraag indienen om deze in uw werk ruimte te verg Roten door een ondersteunings aanvraag te openen. Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met de logica van een waarschuwing op basis van het aantal resultaten dat is gelukt dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten. Percentage van opname volume bereikt 80% van de drempel waarde: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Drempel waarde van inslikken volume bereikt: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
 |De dagelijkse limiet van de verouderde gratis prijs categorie is bereikt |Wacht tot de volgende dag voor het automatisch opnieuw opstarten van de verzameling of de prijs categorie is gewijzigd.|
 |Het Azure-abonnement bevindt zich in een onderbroken staat vanwege:<br> De gratis proef versie is beëindigd<br> Azure Pass is verlopen<br> De maandelijkse bestedings limiet is bereikt (bijvoorbeeld op een MSDN-of Visual Studio-abonnement)|Overstappen op een betaald abonnement<br> Limiet verwijderen of wachten tot de limiet is ingesteld|
 

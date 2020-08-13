@@ -5,17 +5,20 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133755"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184615"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Problemen met Azure VM-extensies oplossen
 
 Dit artikel bevat probleemoplossings stappen die u kunnen helpen bij het oplossen van Azure Site Recovery fouten met betrekking tot de VM-agent en-extensie.
 
+## <a name="low-system-resources"></a>Weinig systeem bronnen
+
+Dit probleem treedt op wanneer het systeem weinig beschikbaar geheugen heeft en kan geen geheugen toewijzen voor de installatie van de Mobility-service. Zorg ervoor dat er voldoende geheugen beschikbaar is voor de installatie om door te gaan en goed te volt ooien.
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Time-out voor uitbrei ding van Azure Site Recovery  
 

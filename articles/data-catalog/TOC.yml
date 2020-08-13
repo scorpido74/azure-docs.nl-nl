@@ -1,10 +1,11 @@
-- name: Documentatie over Data Catalog
+- name: Documentatie voor Data Catalog
   href: index.yml
 - name: Overzicht
   items:
     - name: Wat is Data Catalog?
       href: overview.md
 - name: Snelstartgidsen
+  expanded: true
   items:
     - name: Een Azure Data Catalog maken
       href: data-catalog-get-started.md
@@ -20,8 +21,6 @@
       href: data-catalog-dsr.md
     - name: Overstappen op Azure Data Catalog
       href: data-catalog-adopting-data-catalog.md
-    - name: Vereisten
-      href: data-catalog-prerequisites.md
     - name: Veelgestelde vragen
       href: data-catalog-frequently-asked-questions.md
 - name: Procedures

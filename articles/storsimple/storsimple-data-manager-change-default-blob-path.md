@@ -1,19 +1,19 @@
 ---
 title: Het BLOB-pad wijzigen van de standaard instelling
-description: Meer informatie over het instellen van een Azure-functie voor het wijzigen van de naam van een pad naar een blob-bestand
+description: Meer informatie over het instellen van een Azure-functie voor het wijzigen van de naam van een standaard pad naar een BLOB en het verplaatsen van de blobs naar een andere locatie.
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 92925fcf13f91364619262455579392a7457f6b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504828"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183714"
 ---
-# <a name="change-a-blob-path-from-the-default-path"></a>Een pad naar een BLOB wijzigen vanuit het standaardpad
+# <a name="change-a-blob-path-from-the-default-path"></a>Het standaardpad van een blob wijzigen
 
 Wanneer de StorSimple Data Manager-service de gegevens transformeert, plaatst deze standaard de getransformeerde blobs in een opslag container zoals opgegeven tijdens het maken van de doel opslagplaats. Wanneer de blobs op deze locatie arriveren, kunt u deze blobs naar een andere locatie verplaatsen. In dit artikel wordt beschreven hoe u een Azure-functie instelt voor het wijzigen van de naam van een standaard pad naar een BLOB en de blobs dus naar een andere locatie kunt verplaatsen.
 
@@ -25,9 +25,9 @@ Zorg ervoor dat u een correct geconfigureerde taak definitie hebt in uw StorSimp
 
 Voer de volgende stappen uit om een Azure-functie te maken:
 
-1. Ga naar de [Azure Portal](https://portal.azure.com/).
+1. Ga naar [Azure Portal](https://portal.azure.com/).
 
-2. Klik op **+ een resource maken**. Typ **functie-app** in het **zoekvak** en druk op **Enter**. Selecteer en klik op **functie-app** in de lijst met weer gegeven apps.
+2. Klik op **+ Een resource maken**. Typ **functie-app** in het **zoekvak** en druk op **Enter**. Selecteer en klik op **functie-app** in de lijst met weer gegeven apps.
 
     ![Typ ' functie-app ' in het zoekvak](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
@@ -181,7 +181,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
 
     3. **Sla** de functie op.
 
-        ![De functie opslaan](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
+        ![Functie opslaan](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
 12. Als u de functie wilt volt ooien, voegt u nog een bestand toe door de volgende stappen uit te voeren:
 

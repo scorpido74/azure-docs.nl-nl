@@ -6,6 +6,16 @@
       href: ./kubernetes/overview.md
     - name: Over servers met Azure Arc
       href: ./servers/overview.md
+- name: Snelstartgidsen
+  items:
+    - name: Arc inschakelen voor servers-agent
+      href: ./servers/learn/quick-enable-hybrid-vm.md
+- name: Zelfstudies
+  items:
+    - name: Beleid toewijzen om naleving te beoordelen
+      href: ./servers/learn/tutorial-assign-policy-portal.md
+    - name: Machine bewaken
+      href: ./servers/learn/tutorial-enable-vm-insights.md
 - name: Voorbeelden
   items:
     - name: Ingebouwde modules voor Azure Policy

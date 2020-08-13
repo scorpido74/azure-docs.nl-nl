@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/17/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 26d6ca641c03395996fdeaa4e54d2a001cf02bef
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507139"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88162661"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voordelen van beheerde schijven
 
@@ -53,7 +53,7 @@ Zie de [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk
 
 ### <a name="private-links"></a>Privékoppelingen
 
-Beheerde schijven bieden ondersteuning voor het gebruik van privékoppelingen voor het importeren of exporteren van een interne beheerde schijf naar uw netwerk. Met privékoppelingen kunt u een tijdsgebonden Shared Access Signature-URI (SAS) genereren voor niet-gekoppelde beheerde schijven en momentopnamen die u kunt gebruiken voor het exporteren van de gegevens naar een andere regio voor regionale expansie, herstel na noodgevallen en forensische analyse. U kunt ook de SAS-URI gebruiken om de VHD rechtstreeks naar een lege schijf van on-premises te uploaden. U kunt [Privékoppelingen](../articles/private-link/private-link-overview.md) nu gebruiken om het exporteren en importeren van beheerde schijven te beperken zodat dit alleen kan worden uitgevoerd in uw virtuele Azure-netwerk. Met privékoppelingen kunt u ervoor zorgen dat uw gegevens alleen binnen het beveiligde Microsoft-backbone-netwerk worden verplaatst.
+Private Link-ondersteuning voor beheerde schijven is momenteel in preview en kan worden gebruikt om een beheerde interne schijf naar uw netwerk te importeren of exporteren. Met privékoppelingen kunt u een tijdsgebonden Shared Access Signature-URI (SAS) genereren voor niet-gekoppelde beheerde schijven en momentopnamen die u kunt gebruiken voor het exporteren van de gegevens naar een andere regio voor regionale expansie, herstel na noodgevallen en forensische analyse. U kunt ook de SAS-URI gebruiken om de VHD rechtstreeks naar een lege schijf van on-premises te uploaden. U kunt [Privékoppelingen](../articles/private-link/private-link-overview.md) nu gebruiken om het exporteren en importeren van beheerde schijven te beperken zodat dit alleen kan worden uitgevoerd in uw virtuele Azure-netwerk. Met privékoppelingen kunt u ervoor zorgen dat uw gegevens alleen binnen het beveiligde Microsoft-backbone-netwerk worden verplaatst.
 
 Zie de artikelen over de [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) of [Portal](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md) voor meer informatie over het inschakelen van privékoppelingen voor het importeren of exporteren van een beheerde schijf.
 

@@ -88,7 +88,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
+            - name: Javascript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -117,30 +117,16 @@
   items:
     - name: Documentatie over tekst naar spraak
       href: index-text-to-speech.yml
-    - name: Overzicht
-      items:
-        - name: Wat is tekst-naar-spraak?
-          href: text-to-speech.md
-        - name: Basisbeginselen van tekst-naar-spraak
-          href: text-to-speech-basics.md
-    - name: Snelstartgids
-      items:
-        - name: Spraaksynthese naar een luidspreker
-          href: quickstarts/text-to-speech.md
-        - name: Spraaksynthese in een audiobestand
-          href: quickstarts/text-to-speech-audio-file.md
-        - name: Spraaksynthese met lange audio
-          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: Wat is tekst-naar-spraak?
+      href: text-to-speech.md
+    - name: Quickstart voor tekst-naar-spraak
+      href: get-started-text-to-speech.md
     - name: Instructiegidsen
       items:
         - name: Synthese verbeteren met SSML
           href: speech-synthesis-markup.md
         - name: Spraaksynthese met API voor lange audio
           href: long-audio-api.md
-        - name: Een lijst met stemmen ophalen met REST (Python)
-          href: quickstart-python-get-text-to-speech-voices.md
-        - name: Tekst naar spraak converteren met REST (Python)
-          href: quickstart-python-text-to-speech.md
     - name: Aanpassing
       items:
         - name: Verantwoordelijke implementatie
@@ -185,7 +171,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
+            - name: Javascript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -249,7 +235,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
+            - name: Javascript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -295,7 +281,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
+            - name: Javascript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -350,7 +336,7 @@
                 - name: Java
                   displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javaref'
-                - name: JavaScript
+                - name: Javascript
                   displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javascriptref'
                 - name: Objective-C
@@ -575,7 +561,7 @@
           href: 'https://aka.ms/csspeech/csharpref'
         - name: Java
           href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+        - name: Javascript
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
           href: 'https://aka.ms/csspeech/objectivecref'

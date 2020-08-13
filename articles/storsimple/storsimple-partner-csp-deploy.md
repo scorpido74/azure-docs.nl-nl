@@ -1,6 +1,6 @@
 ---
 title: StorSimple Virtual array implementeren voor het Cloud Solution Provider-programma
-description: Een overzicht van de StorSimple en CSP voor StorSimple-partners.
+description: Meer informatie over hoe een CSP-partner een klant of een nieuw abonnement aan een bestaande klant kan toevoegen en vervolgens een service kan maken voor het implementeren van een virtuele StorSimple-matrix in CSP.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77466906"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182218"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>StorSimple Virtual array implementeren voor het Cloud Solution Provider-programma
 
@@ -83,7 +83,7 @@ In sommige gevallen hebt u mogelijk een bestaande klant en moet u een abonnement
                               
 2. Klik in het linkerdeel venster op **klanten**. Zoek of navigeer naar de klant aan wie u een abonnement wilt toevoegen. Klik op het pictogram ![ Selectie uitvouwen ](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) om de rij voor de bedrijfs naam voor uw klant uit te vouwen. Klik in de details op **abonnementen toevoegen**.
 
-    ![Customers](./media/storsimple-partner-csp-deploy/image10.png)
+    ![Klanten](./media/storsimple-partner-csp-deploy/image10.png)
 
 3. Controleer **Microsoft Azure** voor de **beste aanbiedingen** in het abonnement en klik op **verzenden**. Hiermee maakt u een nieuw abonnement.
 

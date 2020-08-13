@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a48e598680ee969f3823dee6699c8c981dff392
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833397"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182473"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Container eigenschappen en meta gegevens beheren met .NET
 
@@ -29,7 +29,7 @@ Naam/waarde-paren van meta gegevens zijn geldige HTTP-headers en moeten dus vold
 
 ## <a name="retrieve-container-properties"></a>Container eigenschappen ophalen
 
-# <a name="net-v12-sdk"></a>[.NET V12-SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
 Roep een van de volgende methoden aan om container eigenschappen op te halen:
 
@@ -40,7 +40,7 @@ In het volgende code voorbeeld worden de systeem eigenschappen van een container
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
 
-# <a name="net-v11-sdk"></a>[.NET V11-SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
 
 Het ophalen van eigenschaps-en meta gegevens waarden voor een Blob Storage-Resource is een proces dat uit twee stappen bestaat. Voordat u deze waarden kunt lezen, moet u deze expliciet ophalen door de **FetchAttributes** -of **FetchAttributesAsync** -methode aan te roepen. De uitzonde ring op deze regel is dat de methoden **Exists** en **ExistsAsync** de juiste **FetchAttributes** -methode aanroepen onder de kaften. Wanneer u een van deze methoden aanroept, hoeft u **FetchAttributes**ook niet aan te roepen.
 
@@ -80,7 +80,7 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 
 ## <a name="set-and-retrieve-metadata"></a>Meta gegevens instellen en ophalen
 
-# <a name="net-v12-sdk"></a>[.NET V12-SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
 U kunt meta gegevens opgeven als een of meer naam/waarde-paren voor een BLOB of container resource. Als u meta gegevens wilt instellen, voegt u naam/waarde-paren toe aan een [IDictionary](/dotnet/api/system.collections.idictionary) -object en roept u vervolgens een van de volgende methoden aan om de waarden te schrijven:
 
@@ -102,7 +102,7 @@ Lees vervolgens de waarden, zoals wordt weer gegeven in het onderstaande voor be
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
 
-# <a name="net-v11-sdk"></a>[.NET V11-SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
 
 U kunt meta gegevens opgeven als een of meer naam/waarde-paren voor een BLOB of container resource. Als u meta gegevens wilt instellen, voegt u naam/waarde-paren toe aan de verzameling **meta gegevens** voor de resource en roept u vervolgens een van de volgende methoden aan om de waarden te schrijven:
 
@@ -169,7 +169,7 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [Bewerking container eigenschappen ophalen](/rest/api/storageservices/get-container-properties)
 - [Meta gegevens van de container instellen](/rest/api/storageservices/set-container-metadata)

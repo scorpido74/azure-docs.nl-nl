@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510035"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182160"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Geplande onderhouds meldingen verwerken
 
@@ -107,7 +107,8 @@ Zie [Beschik baarheid voor virtuele machines in azure](availability.md)voor meer
 **A:** Er zijn verschillende redenen waarom u geen onderhouds informatie ziet over uw Vm's:
 1.  U gebruikt een abonnement dat is gemarkeerd als interne micro soft.
 2.  Uw Vm's zijn niet gepland voor onderhoud. Het kan zijn dat de onderhouds Golf is beëindigd, geannuleerd of gewijzigd, zodat uw Vm's hierdoor niet meer worden beïnvloed.
-3.  U beschikt niet over de kolom **onderhoud** die is toegevoegd aan de lijst weergave van de virtuele machine. Hoewel we deze kolom aan de standaard weergave hebben toegevoegd, moeten klanten die zijn geconfigureerd om niet-standaard kolommen te zien, de kolom **onderhoud** hand matig toevoegen aan hun VM-lijst weergave.
+3. U hebt de toewijzing van de virtuele machine ongedaan gemaakt en vervolgens gestart. Dit kan ertoe leiden dat de virtuele machine wordt verplaatst naar een locatie waarvoor geen geplande onderhouds Golf is gepland. De virtuele machine geeft dus geen onderhouds informatie meer weer. 
+4.  U beschikt niet over de kolom **onderhoud** die is toegevoegd aan de lijst weergave van de virtuele machine. Hoewel we deze kolom aan de standaard weergave hebben toegevoegd, moeten klanten die zijn geconfigureerd om niet-standaard kolommen te zien, de kolom **onderhoud** hand matig toevoegen aan hun VM-lijst weergave.
 
 **V: mijn VM is voor de tweede keer gepland voor onderhoud. Waarom?**
 

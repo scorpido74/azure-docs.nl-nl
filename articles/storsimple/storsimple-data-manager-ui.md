@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure StorSimple Data Manager gebruikers interface
-description: Hierin wordt beschreven hoe u StorSimple Data Manager service-UI gebruikt
+description: Meer informatie over hoe u de StorSimple Data Manager-gebruikers interface kunt gebruiken om de gegevens op de StorSimple 8000 Series-apparaten te transformeren.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496437"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184531"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>De StorSimple Data Manager-service beheren in Azure Portal
 
@@ -48,7 +48,7 @@ Voer de volgende stappen uit om een StorSimple Data Manager-service te maken.
     
    5. Als u een koppeling naar deze service op uw dash board wilt ontvangen, selecteert **u vastmaken aan dash board**.
     
-   6. Klik op **Maken**.
+   6. Klik op **Create**.
 
       ![Een StorSimple Data Manager-service maken 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
