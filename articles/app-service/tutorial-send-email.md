@@ -4,12 +4,12 @@ description: Leer hoe u bedrijfsprocessen kunt aanroepen vanuit uw App Service-a
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 2b478ae75c8be978ea93a493b65dafdc7756c4b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 874c67b0d8d29c163fa5f36b3d100f1d2a013d53
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083239"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080963"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Zelfstudie: E-mail verzenden en andere bedrijfsprocessen aanroepen vanuit App Service
 
@@ -32,23 +32,23 @@ Implementeer een app naar App Service met het taalframework van uw keuze. Zie hi
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-[Zelfstudie: Een ASP.NET Core- en SQL Database-app maken in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
+[Zelfstudie: Een ASP.NET Core- en SQL Database-app maken in Azure App Service](tutorial-dotnetcore-sqldb-app.md)
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-[Zelfstudie: Een Node.js- en MongoDB-app bouwen in Azure](app-service-web-tutorial-nodejs-mongodb-app.md)
+[Zelfstudie: Een Node.js- en MongoDB-app bouwen in Azure](tutorial-nodejs-mongodb-app.md)
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-[Zelfstudie: Een PHP- en MySQL-app bouwen in Azure](app-service-web-tutorial-php-mysql.md)
+[Zelfstudie: Een PHP- en MySQL-app bouwen in Azure](tutorial-php-mysql-app.md)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-[Zelfstudie: Een Python-web-app (Django) uitvoeren met PostgreSQL in Azure App Service](containers/tutorial-python-postgresql-app.md)
+[Zelfstudie: Een Python-web-app (Django) uitvoeren met PostgreSQL in Azure App Service](tutorial-python-postgresql-app.md)
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-[Een Ruby- en Postgres-app maken in Azure App Service op Linux](containers/tutorial-ruby-postgres-app.md)
+[Een Ruby- en Postgres-app maken in Azure App Service op Linux](tutorial-ruby-postgres-app.md)
 
 ---
 
@@ -191,7 +191,7 @@ var jsonData = JsonSerializer.Serialize(new
 });
 
 HttpResponseMessage result = await client.PostAsync(
-    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/containers/configure-language-dotnetcore#access-environment-variables
+    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/configure-language-dotnetcore#access-environment-variables
     _configuration["LOGIC_APP_URL"],
     new StringContent(jsonData, Encoding.UTF8, "application/json"));
     
@@ -201,7 +201,7 @@ var statusCode = result.StatusCode.ToString();
 > [!NOTE]
 > Deze code is geschreven voor een eenvoudige demonstratie. Instantieer in de praktijk geen `HttpClient`-object voor elke aanvraag. Volg de richtlijnen in [Use IHttpClientFactory to implement resilient HTTP requests](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests) (IHttpClientFactory gebruiken voor het implementeren van tolerante HTTP-aanvragen).
 
-Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een ASP.NET Core- en SQL Database-app bouwen in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md), kunt u deze gebruiken om een e-mailbevestiging te verzenden in de [actie Maken](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65), nadat het `Todo`-item is toegevoegd.
+Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een ASP.NET Core- en SQL Database-app bouwen in Azure App Service](tutorial-dotnetcore-sqldb-app.md), kunt u deze gebruiken om een e-mailbevestiging te verzenden in de [actie Maken](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65), nadat het `Todo`-item is toegevoegd.
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
@@ -228,7 +228,7 @@ var jsonData = {
 
 ```
 
-Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een Node.js- en MongoDB-app bouwen in Azure](app-service-web-tutorial-nodejs-mongodb-app.md), kunt u deze gebruiken voor het verzenden van een e-mailbevestiging in de [functie Maken](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27), nadat [het artikel is opgeslagen](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24).
+Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een Node.js- en MongoDB-app bouwen in Azure](tutorial-nodejs-mongodb-app.md), kunt u deze gebruiken voor het verzenden van een e-mailbevestiging in de [functie Maken](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27), nadat [het artikel is opgeslagen](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24).
 
 ### <a name="php"></a>[PHP](#tab/php)
 
@@ -260,7 +260,7 @@ $response = $promise->wait();
 Log::info(print_r($response, TRUE));
 ```
 
-Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een PHP- en MySQL-app bouwen in Azure](app-service-web-tutorial-php-mysql.md), kunt u deze gebruiken om een e-mailbevestiging te verzenden in de [Route::post-functie](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), net vóór de return-instructie.
+Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een PHP- en MySQL-app bouwen in Azure](tutorial-php-mysql-app.md), kunt u deze gebruiken om een e-mailbevestiging te verzenden in de [Route::post-functie](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), net vóór de return-instructie.
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -291,7 +291,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
     print(await resp.status())
 ``` -->
 
-Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een Python (Django) web-app uitvoeren met PostgreSQL in Azure App Service](containers/tutorial-python-postgresql-app.md), kunt u deze gebruiken om een e-mailbevestiging te verzenden in de [Route::post-functie](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), net vóór de return-instructie.
+Als u deze code test op de voorbeeld-app voor [Zelfstudie: Een Python (Django) web-app uitvoeren met PostgreSQL in Azure App Service](tutorial-python-postgresql-app.md), kunt u deze gebruiken om een e-mailbevestiging te verzenden in de [Route::post-functie](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), net vóór de return-instructie.
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
@@ -308,7 +308,7 @@ body = {
 connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 ```
 
-Als u deze code test in de voorbeeld-app voor [Een Ruby- en Postgres-app maken in Azure App Service op Linux](containers/tutorial-ruby-postgres-app.md)bouwen, kunt u deze gebruiken om een e-mailbevestiging te verzenden in de actie [Maken](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) [wanneer @task.save slaagt](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30).
+Als u deze code test in de voorbeeld-app voor [Een Ruby- en Postgres-app maken in Azure App Service op Linux](tutorial-ruby-postgres-app.md)bouwen, kunt u deze gebruiken om een e-mailbevestiging te verzenden in de actie [Maken](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) [wanneer @task.save slaagt](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30).
 
 ---
 
