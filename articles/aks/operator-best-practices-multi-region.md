@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: efa4ca24dadb2fb5d347d79de20eebfacc9a58e0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285863"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142176"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)
 
@@ -93,7 +93,7 @@ De *service status* verwijst naar de gegevens in het geheugen of op schijf die e
 
 De status kan extern of naast de code worden geplaatst om de status te wijzigen. Normaal gesp roken Externalize u de status met behulp van een Data Base of een ander gegevens archief dat wordt uitgevoerd op verschillende computers via het netwerk of die op dezelfde computer wordt uitgevoerd.
 
-Containers en micro Services zijn het meest flexibel wanneer de processen die in hun worden uitgevoerd, niet de status behouden hebben. Omdat toepassingen bijna altijd een bepaalde status bevatten, kunt u een PaaS-oplossing gebruiken, zoals Azure Database for MySQL, Azure Database for PostgreSQL of Azure SQL Database.
+Containers en micro Services zijn het meest flexibel wanneer de processen die in hun worden uitgevoerd, niet de status behouden hebben. Omdat toepassingen bijna altijd een bepaalde status bevatten, kunt u een PaaS-oplossing gebruiken, zoals Azure Cosmos DB, Azure Database for PostgreSQL, Azure Database for MySQL of Azure SQL Database.
 
 Als u draag bare toepassingen wilt bouwen, raadpleegt u de volgende richt lijnen:
 

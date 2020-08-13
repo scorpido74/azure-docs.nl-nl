@@ -4,12 +4,12 @@ description: Meer informatie over de partners van Azure Monitor en hoe u toegang
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318331"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142401"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -184,6 +184,16 @@ PagerDuty, de toonaangevende oplossing voor incident beheer, heeft eersteklas on
 
 [Ga naar de documentatie.][pagerduty-doc]
 
+## <a name="promitor"></a>Promitor
+
+![Promitor-logo](./media/partners/promitor.png)
+
+Promitor is een Azure Monitor schroot waarmee de metrische gegevens beschikbaar worden gesteld in systemen zoals Atlassian Statuspage, Prometheus en stats.
+
+Push alle metrische gegevens naar Azure Monitor en gebruik ze daar waar u ze nodig hebt.
+
+[Meer informatie.][promitor-doc]
+
 ## <a name="qradar"></a>QRadar
 
 ![QRadar-logo](./media/partners/qradar.png)
@@ -293,6 +303,7 @@ Turbonomic levert werkbelasting automatisering voor hybride Clouds door tegelijk
 [newrelic-doc]: https://newrelic.com/azure "NewRelic-documentatie."
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie-documentatie."
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty-documentatie."
+[promitor-doc]: https://promitor.io/ "Promitor-documentatie."
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar-documentatie."
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic-documentatie."
 [serverless360-doc]: https://docs.serverless360.com/docs/ "Serverless360-documentatie."

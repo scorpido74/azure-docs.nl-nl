@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c394a3e84982db31b5727d170c143e9c07636d62
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121065"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141292"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Bureau blad-app voor het aanroepen van web-Api's: een Token ophalen
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Verplichte para meters
 
-`AcquireTokenInteractive`heeft slechts één verplichte para meter, ``scopes`` die een opsomming bevat van teken reeksen die de bereiken definiëren waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunnen de vereiste bereiken worden gevonden in de API-verwijzing van elke Microsoft Graph-API in de sectie met de naam ' permissions '. Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](/graph/api/user-list-contacts), moet de scope ' gebruiker. read ', ' Contacts. read ' worden gebruikt. Zie [Microsoft Graph permissions Reference](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)(Engelstalig) voor meer informatie.
+`AcquireTokenInteractive` heeft slechts één verplichte para meter, ``scopes`` die een opsomming bevat van teken reeksen die de bereiken definiëren waarvoor een token is vereist. Als het token voor Microsoft Graph is, kunnen de vereiste bereiken worden gevonden in de API-verwijzing van elke Microsoft Graph-API in de sectie met de naam ' permissions '. Als u bijvoorbeeld [de contact personen van de gebruiker wilt weer geven](/graph/api/user-list-contacts), moet de scope ' gebruiker. read ', ' Contacts. read ' worden gebruikt. Zie [Microsoft Graph permissions Reference](/graph/permissions-reference)(Engelstalig) voor meer informatie.
 
 Op Android moet u ook de bovenliggende activiteit opgeven met behulp van `.WithParentActivityOrWindow` , zoals wordt weer gegeven, zodat het token wordt teruggestuurd naar de bovenliggende activiteit na de interactie. Als u deze niet opgeeft, wordt er een uitzonde ring gegenereerd bij het aanroepen van `.ExecuteAsync()` .
 
@@ -183,7 +183,7 @@ Op Android moet u ook de bovenliggende activiteit opgeven met behulp van `.WithP
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-De gebruikers interface is belang rijk omdat deze interactief is. `AcquireTokenInteractive`heeft één specifieke optionele para meter die kan worden opgegeven voor platforms die deze kunnen ondersteunen, de bovenliggende gebruikers interface. Bij gebruik in een bureaublad toepassing `.WithParentActivityOrWindow` heeft een ander type, dat afhankelijk is van het platform.
+De gebruikers interface is belang rijk omdat deze interactief is. `AcquireTokenInteractive` heeft één specifieke optionele para meter die kan worden opgegeven voor platforms die deze kunnen ondersteunen, de bovenliggende gebruikers interface. Bij gebruik in een bureaublad toepassing `.WithParentActivityOrWindow` heeft een ander type, dat afhankelijk is van het platform.
 
 ```csharp
 // net45
@@ -211,17 +211,17 @@ Opmerkingen
 
 #### <a name="withprompt"></a>WithPrompt
 
-`WithPrompt()`wordt gebruikt om de interactiviteit met de gebruiker te beheren door een prompt op te geven.
+`WithPrompt()` wordt gebruikt om de interactiviteit met de gebruiker te beheren door een prompt op te geven.
 
 ![Afbeelding van de velden in de structuur van de prompt. Deze constante waarden bepalen de interactiviteit met de gebruiker door het type prompt te definiëren dat wordt weer gegeven door de methode WithPrompt ().](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 De klasse definieert de volgende constanten:
 
-- ``SelectAccount``Hiermee wordt de STS gedwongen het dialoog venster voor account selectie te presen teren met accounts waarvoor de gebruiker een sessie heeft. Deze optie is handig wanneer ontwikkel aars van toepassingen willen laten kiezen uit verschillende identiteiten. Deze optie verstuurt MSAL om ``prompt=select_account`` naar de ID-provider te verzenden. Dit is de standaardoptie. Het biedt een goede taak om de best mogelijke ervaring te bieden op basis van de beschik bare informatie, zoals het account en de aanwezigheid van een sessie voor de gebruiker. Wijzig deze alleen als u er geen goede reden voor hebt.
-- ``Consent``Hiermee kan de ontwikkelaar van de toepassing ervoor zorgen dat de gebruiker om toestemming wordt gevraagd, zelfs als toestemming is verleend. In dit geval verzendt MSAL `prompt=consent` naar de ID-provider. Deze optie kan worden gebruikt in sommige toepassingen met een eigen beveiliging waarbij het beheer van de organisatie vereist dat de gebruiker het dialoog venster voor toestemming krijgt telkens wanneer de toepassing wordt gebruikt.
-- ``ForceLogin``Hiermee kan de ontwikkelaar van de toepassing toestaan dat de gebruiker om referenties wordt gevraagd door de service, zelfs als deze vraag van de gebruiker mogelijk niet nodig is. Deze optie kan handig zijn om de gebruiker opnieuw aan te melden als het verkrijgen van een token mislukt. In dit geval verzendt MSAL `prompt=login` naar de ID-provider. Soms wordt het gebruikt in toepassingen met een eigen beveiliging waarbij het beheer van de organisatie vereist dat de gebruiker zich opnieuw aanmeldt, telkens wanneer ze toegang hebben tot specifieke delen van een toepassing.
-- ``Never``(alleen voor .NET 4,5 en WinRT) wordt de gebruiker niet gevraagd, maar in plaats daarvan wordt geprobeerd de cookie te gebruiken die is opgeslagen in de verborgen Inge sloten webweergave. Zie webweergaves in MSAL.NET voor meer informatie. Het gebruik van deze optie kan mislukken. In dat geval wordt `AcquireTokenInteractive` een uitzonde ring gegenereerd om te melden dat er een UI-interactie nodig is. U moet een andere `Prompt` para meter gebruiken.
-- ``NoPrompt``Er wordt geen prompt verzonden naar de ID-provider. Deze optie is alleen nuttig voor Azure Active Directory (Azure AD) B2C profiel beleid bewerken. Zie [Azure AD B2C-specifiek](https://aka.ms/msal-net-b2c-specificities)voor meer informatie.
+- ``SelectAccount`` Hiermee wordt de STS gedwongen het dialoog venster voor account selectie te presen teren met accounts waarvoor de gebruiker een sessie heeft. Deze optie is handig wanneer ontwikkel aars van toepassingen willen laten kiezen uit verschillende identiteiten. Deze optie verstuurt MSAL om ``prompt=select_account`` naar de ID-provider te verzenden. Dit is de standaardoptie. Het biedt een goede taak om de best mogelijke ervaring te bieden op basis van de beschik bare informatie, zoals het account en de aanwezigheid van een sessie voor de gebruiker. Wijzig deze alleen als u er geen goede reden voor hebt.
+- ``Consent`` Hiermee kan de ontwikkelaar van de toepassing ervoor zorgen dat de gebruiker om toestemming wordt gevraagd, zelfs als toestemming is verleend. In dit geval verzendt MSAL `prompt=consent` naar de ID-provider. Deze optie kan worden gebruikt in sommige toepassingen met een eigen beveiliging waarbij het beheer van de organisatie vereist dat de gebruiker het dialoog venster voor toestemming krijgt telkens wanneer de toepassing wordt gebruikt.
+- ``ForceLogin`` Hiermee kan de ontwikkelaar van de toepassing toestaan dat de gebruiker om referenties wordt gevraagd door de service, zelfs als deze vraag van de gebruiker mogelijk niet nodig is. Deze optie kan handig zijn om de gebruiker opnieuw aan te melden als het verkrijgen van een token mislukt. In dit geval verzendt MSAL `prompt=login` naar de ID-provider. Soms wordt het gebruikt in toepassingen met een eigen beveiliging waarbij het beheer van de organisatie vereist dat de gebruiker zich opnieuw aanmeldt, telkens wanneer ze toegang hebben tot specifieke delen van een toepassing.
+- ``Never`` (alleen voor .NET 4,5 en WinRT) wordt de gebruiker niet gevraagd, maar in plaats daarvan wordt geprobeerd de cookie te gebruiken die is opgeslagen in de verborgen Inge sloten webweergave. Zie webweergaves in MSAL.NET voor meer informatie. Het gebruik van deze optie kan mislukken. In dat geval wordt `AcquireTokenInteractive` een uitzonde ring gegenereerd om te melden dat er een UI-interactie nodig is. U moet een andere `Prompt` para meter gebruiken.
+- ``NoPrompt`` Er wordt geen prompt verzonden naar de ID-provider. Deze optie is alleen nuttig voor Azure Active Directory (Azure AD) B2C profiel beleid bewerken. Zie [Azure AD B2C-specifiek](https://aka.ms/msal-net-b2c-specificities)voor meer informatie.
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
@@ -253,7 +253,7 @@ De host van `end Url` is altijd `redirectUri` . Voer een van de volgende handeli
 
 ##### <a name="withcustomwebui-is-an-extensibility-point"></a>WithCustomWebUi is een uitbreidings punt
 
-`WithCustomWebUi`is een uitbreidbaar punt dat u kunt gebruiken om uw eigen gebruikers interface op te geven in open bare client toepassingen. U kunt de gebruiker ook het/authorize-eind punt van de ID-provider laten door lopen en hen laten aanmelden en toestemming geven. MSAL.NET kan vervolgens de verificatie code inwisselen en een Token ophalen. Het wordt bijvoorbeeld gebruikt in Visual Studio om electrons-toepassingen (bijvoorbeeld de feedback van Visual Studio) te bieden voor de webinteractie, maar laat MSAL.NET het meeste werk doen. U kunt deze ook gebruiken als u UI-automatisering wilt bieden. In open bare client toepassingen gebruikt MSAL.NET de bewijs sleutel voor code Exchange (PKCE)-standaard om ervoor te zorgen dat de beveiliging wordt geëerbiedigd. Alleen MSAL.NET kunnen de code inwisselen. Zie [RFC 7636-proof Key voor code Exchange by OAuth Public clients](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie.
+`WithCustomWebUi` is een uitbreidbaar punt dat u kunt gebruiken om uw eigen gebruikers interface op te geven in open bare client toepassingen. U kunt de gebruiker ook het/authorize-eind punt van de ID-provider laten door lopen en hen laten aanmelden en toestemming geven. MSAL.NET kan vervolgens de verificatie code inwisselen en een Token ophalen. Het wordt bijvoorbeeld gebruikt in Visual Studio om electrons-toepassingen (bijvoorbeeld de feedback van Visual Studio) te bieden voor de webinteractie, maar laat MSAL.NET het meeste werk doen. U kunt deze ook gebruiken als u UI-automatisering wilt bieden. In open bare client toepassingen gebruikt MSAL.NET de bewijs sleutel voor code Exchange (PKCE)-standaard om ervoor te zorgen dat de beveiliging wordt geëerbiedigd. Alleen MSAL.NET kunnen de code inwisselen. Zie [RFC 7636-proof Key voor code Exchange by OAuth Public clients](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie.
 
   ```csharp
   using Microsoft.Identity.Client.Extensions;
@@ -1161,8 +1161,8 @@ In het geval van .NET Framework en .NET Core kunt u, als u dit niet doet, de tok
 Klassen en interfaces die betrokken zijn bij de serialisatie van token-cache zijn de volgende typen:
 
 - ``ITokenCache``, waarmee gebeurtenissen worden gedefinieerd om te worden geabonneerd op aanvragen van de token cache-serialisatie en methoden voor het serialiseren of deserialiseren van de cache in verschillende indelingen (ADAL v 3.0, MSAL 2. x en MSAL 3. x = ADAL v 5.0).
-- ``TokenCacheCallback``is een call back aan de gebeurtenissen door gegeven, zodat u de serialisatie kunt afhandelen. Ze worden aangeroepen met argumenten van het type ``TokenCacheNotificationArgs`` .
-- ``TokenCacheNotificationArgs``biedt alleen de toepassing ``ClientId`` en een verwijzing naar de gebruiker waarvoor het token beschikbaar is.
+- ``TokenCacheCallback`` is een call back aan de gebeurtenissen door gegeven, zodat u de serialisatie kunt afhandelen. Ze worden aangeroepen met argumenten van het type ``TokenCacheNotificationArgs`` .
+- ``TokenCacheNotificationArgs`` biedt alleen de toepassing ``ClientId`` en een verwijzing naar de gebruiker waarvoor het token beschikbaar is.
 
   ![Schema voor serialisatie van token cache](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 

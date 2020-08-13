@@ -14,12 +14,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9bbc90776ca007b84d5f67c50f8550ee9c881c7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506041"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141666"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Geschiedenis van de controle activiteit voor geprivilegieerde toewijzingen van de toegangs groep (preview) in Privileged Identity Management
 
@@ -36,7 +36,9 @@ Volg deze stappen om de controle geschiedenis voor geprivilegieerde toegangs gro
 
 1. Open **Azure AD privileged Identity Management**.
 
-1. Selecteer **bevoorrechte toegang (preview)**.
+1. Selecteer **geprivilegieerde toegangs groepen (preview-versie)**.
+
+1. Selecteer de groep met bevoegde toegang waarvoor u de controle geschiedenis wilt weer geven.
 
 1. Onder **activiteit**selecteert u **resource audit**.
 
@@ -46,15 +48,15 @@ Volg deze stappen om de controle geschiedenis voor geprivilegieerde toegangs gro
 
 ## <a name="view-my-audit"></a>Mijn controle weer geven
 
-Met mijn controle kunt u uw activiteiten voor persoonlijke rollen weer geven.
+Met **mijn controle** kunt u uw activiteiten voor persoonlijke rollen weer geven voor een bevoegde toegangs groep.
 
 1. Open **Azure AD privileged Identity Management**.
 
-1. Selecteer **bevoorrechte toegang (preview)**.
+1. Selecteer **geprivilegieerde toegangs groepen (preview-versie)**.
 
-1. Selecteer het lid of de groep waarvoor u de controle geschiedenis wilt weer geven.
+1. Selecteer de groep met bevoegde toegang waarvoor u de controle geschiedenis wilt weer geven.
 
-1. Selecteer **mijn audit**.
+1. Onder **activiteit**selecteert u **mijn audit**.
 
 1. Filter de geschiedenis met een vooraf gedefinieerde datum of aangepast bereik.
 

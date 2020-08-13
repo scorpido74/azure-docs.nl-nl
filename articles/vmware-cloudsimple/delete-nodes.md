@@ -1,6 +1,6 @@
 ---
 title: Knoop punten voor VMware-oplossing verwijderen door CloudSimple-Azure
-description: Meer informatie over het verwijderen van knoop punten uit uw VMWare met CloudSimple-implementatie
+description: Meer informatie over het verwijderen van knoop punten uit uw VMWare met CloudSimple-implementatie. CloudSimple-knoop punten worden gemeten. Verwijder de knoop punten die niet van Azure Portal worden gebruikt.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 569bc6350b1bfa01228d49d28a1d12e2ab62f6f0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024735"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142261"
 ---
 # <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Knoop punten uit de Azure VMware-oplossing verwijderen door CloudSimple
 
@@ -32,7 +32,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="delete-cloudsimple-node"></a>CloudSimple-knoop punt verwijderen
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 
 2. Zoek naar **CloudSimple-knoop punten**.
 

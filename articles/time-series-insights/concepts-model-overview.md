@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289966"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141717"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Time Series-model in Azure Time Series Insights Gen2
 
@@ -75,7 +75,7 @@ Deze onderdelen worden gecombineerd om een time series-model op te geven en om u
 
 [![Overzichts grafiek voor tijdreeks model](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Een time series-model kan worden gemaakt en beheerd via de [Azure time series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview). Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
+Een time series-model kan worden gemaakt en beheerd via de [Azure time series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview). Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
 
 ## <a name="time-series-model-instances"></a>Exemplaren van de time series-model
 
@@ -101,7 +101,7 @@ Instanties worden gedefinieerd door **timeSeriesId**, **typeId**, **name**, **De
 | --- | ---|
 | timeSeriesId | De unieke ID van de tijd reeks waaraan het exemplaar is gekoppeld. In de meeste gevallen worden instanties uniek geïdentificeerd door een eigenschap zoals deviceId of assetId. In sommige gevallen kan een specifiek samengestelde ID worden gebruikt die Maxi maal drie eigenschappen combineert. |
 | typeId | De hoofdletter gevoelige unieke teken reeks-ID van het tijds reeks model waaraan het exemplaar is gekoppeld. Alle gedetecteerde nieuwe instanties worden standaard gekoppeld aan een standaard type.
-| name | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
+| naam | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
 | beschrijving | Een tekst beschrijving van het exemplaar. |
 | hierarchyIds | Hiermee definieert u de hiërarchieën waarvan het exemplaar deel uitmaakt. |
 | instanceFields | De eigenschappen van een exemplaar en alle statische gegevens waarmee een exemplaar wordt gedefinieerd. Ze definiëren waarden van hiërarchie-of niet-hiërarchie-eigenschappen, terwijl indexeren ook ondersteuning biedt voor het uitvoeren van zoek bewerkingen. |
@@ -129,7 +129,7 @@ Exemplaren hebben de volgende JSON-weer gave:
 ```
 
 > [!TIP]
-> Lees het artikel over het [uitvoeren van gegevens query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de [API-documentatie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)van het exemplaar van API voor instance-api's maken, lezen, bijwerken en verwijderen (ruw).
+> Lees het artikel over het [uitvoeren van gegevens query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de [API-documentatie](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api)van het exemplaar van API voor instance-api's maken, lezen, bijwerken en verwijderen (ruw).
 
 ## <a name="time-series-model-hierarchies"></a>Time Series-model hiërarchieën
 
@@ -148,7 +148,7 @@ Hiërarchieën worden gedefinieerd door de hiërarchie **-id**, **naam**en **bro
 | Eigenschap | Beschrijving |
 | ---| ---|
 | id | De unieke id voor de hiërarchie die wordt gebruikt, bijvoorbeeld wanneer u een exemplaar definieert. |
-| name | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
+| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
 | source | Hiermee geeft u de organisatie hiërarchie of het pad op. Dit is een bovenliggende en onderliggende volg orde van de hiërarchie die gebruikers willen maken. De bovenliggende/onderliggende eigenschappen van het toewijzings exemplaar velden. |
 
 Hiërarchieën worden weer gegeven in JSON als:
@@ -186,7 +186,7 @@ In het vorige voor beeld van JSON:
 * `ManufactureDate`Hiermee definieert u een hiërarchie met bovenliggend `year` en onderliggend item `month` . Elk `ManufactureDate` kan meerdere hebben `years` , die op zijn beurt meerdere kunnen bevatten `months` .
 
 > [!TIP]
-> Lees voor de hiërarchie-API maken, lezen, bijwerken en verwijderen (ruwe) ondersteuning het artikel [gegevens query's](concepts-query-overview.md#time-series-model-query-tsm-q-apis) en de documentatie van de [hiërarchie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> Lees voor de hiërarchie-API maken, lezen, bijwerken en verwijderen (ruwe) ondersteuning het artikel [gegevens query's](concepts-query-overview.md#time-series-model-query-tsm-q-apis) en de documentatie van de [hiërarchie-API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Voorbeeld van een hiërarchie
 
@@ -231,7 +231,7 @@ In de demo van de [Contoso wikkeling-Farm](https://insights.timeseries.azure.com
 [![Voor beeld van type time series-model](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Lees voor de typen API maken, lezen, bijwerken en verwijderen (ruwe) ondersteuning, het [gegevens query](concepts-query-overview.md#time-series-model-query-tsm-q-apis) -artikel en de [type API rest-documentatie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Lees voor de typen API maken, lezen, bijwerken en verwijderen (ruwe) ondersteuning, het [gegevens query](concepts-query-overview.md#time-series-model-query-tsm-q-apis) -artikel en de [type API rest-documentatie](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api).
 
 ### <a name="type-properties"></a>Type-eigenschappen
 
@@ -240,7 +240,7 @@ De typen van de tijd reeks model worden gedefinieerd op basis van **id**, **naam
 | Eigenschap | Beschrijving |
 | ---| ---|
 | id | De hoofdletter gevoelige unieke teken reeks-ID voor het type. |
-| name | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
+| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
 | beschrijving | Een beschrijving van de teken reeks voor het type. |
 | variabelen | Geef de variabelen op die zijn gekoppeld aan het type. |
 
@@ -288,7 +288,7 @@ De tijdreeks model typen kunnen veel variabelen hebben die formule-en verwerking
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees de referentie documentatie voor [Time Series model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) voor meer informatie over het bewerken van het model via api's.
+* Lees de referentie documentatie voor [Time Series model](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) voor meer informatie over het bewerken van het model via api's.
 
 * Verken de formules en berekeningen die u kunt maken met [Time Series model-variabelen](./concepts-variables.md)
 

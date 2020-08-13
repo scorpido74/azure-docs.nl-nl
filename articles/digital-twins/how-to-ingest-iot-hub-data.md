@@ -2,273 +2,246 @@
 title: Telemetrie opnemen vanuit IoT Hub
 titleSuffix: Azure Digital Twins
 description: Zie telemetrie-berichten van apparaten inslikken van IoT Hub.
-author: cschormann
-ms.author: cschorm
-ms.date: 3/17/2020
+author: alexkarcher-msft
+ms.author: alkarche
+ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131562"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163603"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetrie opnemen in azure Digital Apparaatdubbels
 
 Azure Digital Apparaatdubbels wordt gestuurd met gegevens van IoT-apparaten en andere bronnen. Een algemene bron voor de apparaatgegevens die in azure Digital Apparaatdubbels moet worden gebruikt, is [IOT hub](../iot-hub/about-iot-hub.md).
 
-Tijdens de preview wordt het proces voor het opnemen van gegevens in azure Digital Apparaatdubbels ingesteld op het instellen van een externe reken resource, zoals een [Azure-functie](../azure-functions/functions-overview.md), waarmee de gegevens worden ontvangen en de [DigitalTwins-api's](how-to-use-apis-sdks.md) worden gebruikt om de eigenschappen of telemetrie-gebeurtenissen op [digitale apparaatdubbels](concepts-twins-graph.md) dienovereenkomstig in te stellen. 
+Het proces voor het opnemen van gegevens in azure Digital Apparaatdubbels is het instellen van een externe reken resource, zoals een [Azure-functie](../azure-functions/functions-overview.md), waarmee de gegevens worden ontvangen en de [DigitalTwins-api's](how-to-use-apis-sdks.md) worden gebruikt voor het instellen van eigenschappen of faxgebeurtenissen op [digitale apparaatdubbels](concepts-twins-graph.md) dienovereenkomstig. 
 
 In dit document vindt u instructies voor het schrijven van een Azure-functie waarmee telemetrie kan worden opgenomen in IoT Hub.
-
-## <a name="example-telemetry-scenario"></a>Voor beeld van telemetrie-scenario
-
-In deze procedure wordt beschreven hoe u berichten van IoT Hub naar Azure Digital Apparaatdubbels verzendt met behulp van een Azure-functie. Er zijn veel mogelijke configuraties en overeenkomende strategieën die u kunt gebruiken, maar het voor beeld voor dit artikel bevat de volgende onderdelen:
-* Een thermo meter-apparaat in IoT Hub met een bekende apparaat-ID.
-* Een digitale dubbele om het apparaat te vertegenwoordigen met een overeenkomende ID
-* Een digitale dubbele representatie van een kamer
-
-> [!NOTE]
-> In dit voor beeld wordt een eenvoudige ID-overeenkomst gebruikt tussen de apparaat-ID en de bijbehorende digitale dubbele ID, maar het is mogelijk om meer geavanceerde toewijzingen van het apparaat aan de dubbele waarde toe te voegen (zoals bij een toewijzings tabel).
-
-Wanneer een temperatuur telemetrie-gebeurtenis wordt verzonden door het Thermo meter-apparaat, moet de eigenschap *Tempe ratuur* van de *kamer* dubbele worden bijgewerkt. Als u dit wilt doen, wijst u vanuit een telemetrie-gebeurtenis op een apparaat toe aan een eigenschaps-Setter op het digitale dubbele. U gebruikt topologie gegevens uit het [dubbele diagram](concepts-twins-graph.md) om de *kamer* dubbele te vinden en vervolgens kunt u de eigenschap van het dubbele instellen. In andere gevallen willen gebruikers mogelijk een eigenschap instellen op de overeenkomende dubbele waarde (in dit voor beeld is dit het dubbele met de ID van *123*). Azure Digital Apparaatdubbels biedt u veel flexibiliteit om te bepalen hoe telemetrie-gegevens worden toegewezen in apparaatdubbels. 
-
-Dit scenario wordt beschreven in een diagram hieronder:
-
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Een IoT Hub apparaat verstuurt temperatuur telemetrie via IoT Hub, Event Grid of systeem onderwerpen naar een Azure-functie, waarmee een temperatuur eigenschap wordt bijgewerkt op apparaatdubbels in azure Digital Apparaatdubbels." border="false":::
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u verder gaat met dit voor beeld, moet u de volgende vereisten volt ooien.
-1. Maak een IoT-hub. Zie de sectie *een IOT hub maken* van [deze IOT hub Snelstartgids](../iot-hub/quickstart-send-telemetry-cli.md) voor instructies.
-2. Maak ten minste één Azure-functie voor het verwerken van gebeurtenissen van IoT Hub. Zie [*How-to: een Azure-functie instellen voor het verwerken van gegevens*](how-to-create-azure-function.md) voor het bouwen van een eenvoudige Azure-functie waarmee verbinding kan worden gemaakt met Azure Digital Apparaatdubbels en Azure Digital apparaatdubbels API-functies kunt aanroepen. De rest van deze procedure wordt gebaseerd op deze functie.
-3. Stel een gebeurtenis bestemming in voor hub-gegevens. Ga in het [Azure Portal](https://portal.azure.com/)naar uw IOT hub-exemplaar. Maak onder *gebeurtenissen*een abonnement voor uw Azure-functie. 
+* **Een IOT-hub**. Zie de sectie *een IOT hub maken* van [deze IOT hub Snelstartgids](../iot-hub/quickstart-send-telemetry-cli.md) voor instructies.
+* **Een Azure-functie** met de juiste machtigingen voor het aanroepen van uw digitale dubbele instantie. Zie [*How-to: een Azure-functie instellen voor het verwerken van gegevens*](how-to-create-azure-function.md) voor instructies. 
+* **Een Digital apparaatdubbelse-instantie** die de telemetrie van uw apparaat ontvangt. Zie [ *How to: een Azure Digital apparaatdubbels-exemplaar en-verificatie instellen*](./how-to-set-up-instance-portal.md) 
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure Portal: een gebeurtenis abonnement toevoegen":::
+### <a name="example-telemetry-scenario"></a>Voor beeld van telemetrie-scenario
 
-4. Vul op de pagina *gebeurtenis abonnement maken* de velden als volgt in:
-   * Geef onder DETAILS van het *gebeurtenis abonnement*een naam op voor het abonnement dat u wilt
-   * Kies onder *gebeurtenis typen*het *apparaat telemetrie* als het gebeurtenis type waarop moet worden gefilterd
-      - Voeg filters toe aan andere gebeurtenis typen, indien gewenst.
-   * Selecteer onder *Details van eind punt*uw Azure-functie als een eind punt
+In deze procedure wordt beschreven hoe u berichten van IoT Hub naar Azure Digital Apparaatdubbels verzendt met behulp van een Azure-functie. Er zijn veel mogelijke configuraties en overeenkomende strategieën die u kunt gebruiken, maar het voor beeld voor dit artikel bevat de volgende onderdelen:
+* Een thermo meter-apparaat in IoT Hub met een bekende apparaat-ID.
+* Een digitale dubbele om het apparaat te vertegenwoordigen met een overeenkomende ID
 
-## <a name="create-an-azure-function-in-visual-studio"></a>Een Azure-functie maken in Visual Studio
+> [!NOTE]
+> In dit voor beeld wordt een eenvoudige ID-overeenkomst gebruikt tussen de apparaat-ID en de bijbehorende digitale dubbele ID, maar het is mogelijk om meer geavanceerde toewijzingen van het apparaat aan de dubbele waarde toe te voegen (zoals bij een toewijzings tabel).
+
+Wanneer een temperatuur telemetrie-gebeurtenis wordt verzonden door het Thermo meter-apparaat, moet de eigenschap *Tempe ratuur* van het digitale dubbele worden bijgewerkt. Dit scenario wordt beschreven in een diagram hieronder:
+
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Een diagram waarin een stroom diagram wordt weer gegeven. In de grafiek wordt een IoT Hub apparaat een temperatuur telemetrie via IoT Hub naar een Azure-functie verzonden, waarmee een temperatuur eigenschap op een dubbele in azure Digital Apparaatdubbels wordt bijgewerkt." border="false":::
+
+## <a name="add-a-model-and-twin"></a>Een model en dubbele toevoegen
+
+U hebt een dubbele to-update met IoT hub-gegevens nodig.
+
+Het model ziet er als volgt uit:
+```JSON
+{
+  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+  "@type": "Interface",
+  "@context": "dtmi:dtdl:context;2",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "Temperature",
+      "schema": "double"
+    }
+  ]
+}
+```
+
+Als u **dit model wilt uploaden naar uw apparaatdubbels-exemplaar**, opent u de Azure CLI en voert u de volgende opdracht uit:
+```azurecli-interactive
+az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
+```
+
+Vervolgens moet u **een dubbele maken met behulp van dit model**. Gebruik de volgende opdracht om een dubbele en set 0,0 te maken als aanvankelijke temperatuur waarde.
+```azurecli-interactive
+az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
+```
+
+De uitvoer van een geslaagde, dubbele maken-opdracht moet er als volgt uitzien:
+```json
+{
+  "$dtId": "thermostat67",
+  "$etag": "W/\"0000000-9735-4f41-98d5-90d68e673e15\"",
+  "$metadata": {
+    "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+    "Temperature": {
+      "ackCode": 200,
+      "ackDescription": "Auto-Sync",
+      "ackVersion": 1,
+      "desiredValue": 0.0,
+      "desiredVersion": 1
+    }
+  },
+  "Temperature": 0.0
+}
+```
+
+## <a name="create-an-azure-function"></a>Een Azure-functie maken
 
 In deze sectie wordt gebruikgemaakt van dezelfde Visual Studio-opstart stappen en Azure function-skelet van [*instructies: Stel een Azure-functie in voor het verwerken van gegevens*](how-to-create-azure-function.md). Het skelet behandelt verificatie en maakt een service-client, klaar om gegevens te verwerken en Azure Digital Apparaatdubbels-Api's te aanroepen als reactie. 
 
-De kern van de functie skelet is als volgt:
-
-```csharp
-namespace FunctionSample
-{
-    public static class FooFunction
-    {
-        const string adtAppId = "https://digitaltwins.azure.net";
-        private static string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("Foo")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            DigitalTwinsClient client = null;
-            try
-            {
-                ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-                DigitalTwinsClientOptions opts = 
-                    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-                client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-                                                
-                log.LogInformation($"ADT service client connection created.");
-            }
-            catch (Exception e)
-            {
-                log.LogError($"ADT service client connection failed. " + e.ToString());
-                return;
-            }
-            log.LogInformation(eventGridEvent.Data.ToString());
-        }
-    }
-}
-```
-
 In de volgende stappen voegt u specifieke code toe voor het verwerken van IoT-telemetrie-gebeurtenissen van IoT Hub.  
 
-## <a name="add-telemetry-processing"></a>Telemetrie-verwerking toevoegen
-
+### <a name="add-telemetry-processing"></a>Telemetrie-verwerking toevoegen
+    
 Telemetrie-gebeurtenissen worden in de vorm van berichten van het apparaat geleverd. De eerste stap bij het toevoegen van de telemetrie-verwerkings code wordt het relevante deel van dit apparaat geëxtraheerd uit de Event Grid gebeurtenis. 
 
-Verschillende apparaten kunnen hun berichten anders structureren, zodat de code voor deze stap afhankelijk is van het verbonden apparaat. 
+Verschillende apparaten kunnen hun berichten anders structureren, zodat de code voor **deze stap afhankelijk is van het verbonden apparaat.** 
 
-De volgende code toont een voor beeld van een eenvoudig apparaat dat telemetrie verzendt als JSON. In het voor beeld wordt de apparaat-ID geëxtraheerd van het apparaat dat het bericht heeft verzonden, evenals de waarde voor de Tempe ratuur.
+De volgende code toont een voor beeld van een eenvoudig apparaat dat telemetrie verzendt als JSON. Dit voor beeld wordt volledig verkend in [*zelf studie: verbinding maken met een end-to-end-oplossing*](./tutorial-end-to-end.md). Met de volgende code wordt de apparaat-ID gezocht van het apparaat dat het bericht heeft verzonden, evenals de waarde voor de Tempe ratuur.
 
 ```csharp
-JObject job = eventGridEvent.Data as JObject;
-string devid = (string)job["systemProperties"].ToObject<JObject>().Property("IoT-hub-connection-device-ID").Value;
-double temp = (double)job["body"].ToObject<JObject>().Property("temperature").Value;
+JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+var temperature = deviceMessage["body"]["Temperature"];
 ```
 
-Het doel van deze oefening is het bijwerken van de Tempe ratuur van een *kamer* binnen het dubbele diagram. Dit betekent dat het doel van het bericht niet het digitale element is dat is gekoppeld aan dit apparaat, maar de *lokale ruimte* die het bovenliggende item is. U kunt de bovenliggende dubbele waarde vinden met behulp van de apparaat-ID die u hebt geëxtraheerd uit het telemetrie-bericht met behulp van de bovenstaande code.
-
-U doet dit door de Azure Digital Apparaatdubbels-Api's te gebruiken om toegang te krijgen tot de binnenkomende relaties met het apparaat, dat de dubbele ID heeft (in dit geval is hetzelfde als het apparaat). Vanuit de binnenkomende relatie kunt u de ID van het bovenliggende item vinden met het code fragment hieronder.
-
-In het volgende code fragment ziet u hoe u inkomende relaties van een twee navolgende kunt ophalen:
+In het volgende code voorbeeld wordt de ID en de waarde voor de Tempe ratuur gebruikt en worden deze gebruikgemaakt van patches (waarbij updates worden gemaakt aan) die twee.
 
 ```csharp
-AsyncPageable<IncomingRelationship> res = client.GetIncomingRelationshipsAsync(twin_id);
-await foreach (IncomingRelationship irel in res)
-{
-    Log.Ok($"Relationship: {irel.RelationshipName} from {irel.SourceId} | {irel.RelationshipId}");
-}
-```
-
-Het bovenliggende element van de dubbele locatie bevindt zich in de eigenschap *SourceId* van de relatie.
-
-Het is tamelijk gebruikelijk voor een model van een dubbele waarde waarmee een apparaat slechts één binnenkomende relatie heeft. In dit geval kunt u de eerste (en enige) relatie selecteren die wordt geretourneerd. Als uw modellen meerdere typen relaties hebben, moet u mogelijk extra opgeven om te kiezen uit meerdere binnenkomende relaties. Een veelgebruikte manier om dit te doen is door de relatie te kiezen door `RelationshipName` . 
-
-Zodra u de ID van het bovenliggende element hebt die de *ruimte*bevat, kunt u ' patch ' (updates uitvoeren) die dubbele. Gebruik hiervoor de volgende code:
-
-```csharp
-UpdateOperationsUtility uou = new UpdateOperationsUtility();
-uou.AppendAddOp("/Temperature", temp);
-try
-{
-    await client.UpdateDigitalTwinAsync(twin_id, uou.Serialize());
-    Log.Ok($"Twin '{twin_id}' updated successfully!");
-}
+//Update twin using device temperature
+var uou = new UpdateOperationsUtility();
+uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 ...
 ```
 
-### <a name="full-azure-function-code"></a>Volledige Azure-functie code
+### <a name="update-your-azure-function-code"></a>Uw Azure-functie code bijwerken
 
-Als u de code uit de vorige voor beelden gebruikt, is dit de volledige Azure-functie in context:
+Nu u de code uit de vorige voor beelden kent, opent u Visual Studio en vervangt u de code van uw Azure-functie door deze voorbeeld code.
 
 ```csharp
-[FunctionName("ProcessHubToDTEvents")]
-public async void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+using System;
+using System.Net.Http;
+using Azure.Core.Pipeline;
+using Azure.DigitalTwins.Core;
+using Azure.DigitalTwins.Core.Serialization;
+using Azure.Identity;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace IotHubtoTwins
 {
-    // After this is deployed, in order for this function to be authorized on Azure Digital Twins APIs,
-    // you'll need to turn the Managed Identity Status to "On", 
-    // grab the Object ID of the function, and assign the "Azure Digital Twins Owner (Preview)" role to this function identity.
+    public class IoTHubtoTwins
+    {
+        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
+        private static readonly HttpClient httpClient = new HttpClient();
 
-    DigitalTwinsClient client = null;
-    //log.LogInformation(eventGridEvent.Data.ToString());
-    // Authenticate on Azure Digital Twins APIs
-    try
-    {
-        
-        ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-        client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-        log.LogInformation($"ADT service client connection created.");
-    }
-    catch (Exception e)
-    {
-        log.LogError($"ADT service client connection failed. " + e.ToString());
-        return;
-    }
-
-    if (client != null)
-    {
-        try
+        [FunctionName("IoTHubtoTwins")]
+        public async void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
         {
-            if (eventGridEvent != null && eventGridEvent.Data != null)
+            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
+
+            try
             {
-                #region Open this region for message format information
-                // Telemetry message format
-                //{
-                //  "properties": { },
-                //  "systemProperties": 
-                // {
-                //    "iothub-connection-device-id": "thermostat1",
-                //    "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-                //    "iothub-connection-auth-generation-id": "637199981642612179",
-                //    "iothub-enqueuedtime": "2020-03-18T18:35:08.269Z",
-                //    "iothub-message-source": "Telemetry"
-                //  },
-                //  "body": "eyJUZW1wZXJhdHVyZSI6NzAuOTI3MjM0MDg3MTA1NDg5fQ=="
-                //}
-                #endregion
-
-                // Reading deviceId from message headers
-                log.LogInformation(eventGridEvent.Data.ToString());
-                JObject job = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-                string deviceId = (string)job["systemProperties"]["iothub-connection-device-id"];
-                log.LogInformation($"Found device: {deviceId}");
-
-                // Extracting temperature from device telemetry
-                byte[] body = System.Convert.FromBase64String(job["body"].ToString());
-                var value = System.Text.ASCIIEncoding.ASCII.GetString(body);
-                var bodyProperty = (JObject)JsonConvert.DeserializeObject(value);
-                var temperature = bodyProperty["Temperature"];
-                log.LogInformation($"Device Temperature is:{temperature}");
-
-                // Update device Temperature property
-                await AdtUtilities.UpdateTwinProperty(client, deviceId, "/Temperature", temperature, log);
-
-                // Find parent using incoming relationships
-                string parentId = await AdtUtilities.FindParent(client, deviceId, "contains", log);
-                if (parentId != null)
+                //Authenticate with Digital Twins
+                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
+                DigitalTwinsClient client = new DigitalTwinsClient(
+                    new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions 
+                    { Transport = new HttpClientTransport(httpClient) });
+                log.LogInformation($"ADT service client connection created.");
+            
+                if (eventGridEvent != null && eventGridEvent.Data != null)
                 {
-                    await AdtUtilities.UpdateTwinProperty(client, parentId, "/Temperature", temperature, log);
-                }
+                    log.LogInformation(eventGridEvent.Data.ToString());
 
+                    // Reading deviceId and temperature for IoT Hub JSON
+                    JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+                    string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+                    var temperature = deviceMessage["body"]["Temperature"];
+                    
+                    log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
+
+                    //Update twin using device temperature
+                    var uou = new UpdateOperationsUtility();
+                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                }
+            }
+            catch (Exception e)
+            {
+                log.LogError($"Error in ingest function: {e.Message}");
             }
         }
-        catch (Exception e)
-        {
-            log.LogError($"Error in ingest function: {e.Message}");
-        }
     }
 }
 ```
 
-De functie van het hulp programma voor het vinden van binnenkomende relaties:
-```csharp
-public static async Task<string> FindParent(DigitalTwinsClient client, string child, string relname, ILogger log)
+## <a name="connect-your-function-to-iot-hub"></a>Verbind uw functie met IoT Hub
+
+1. Stel een gebeurtenis bestemming in voor hub-gegevens. Ga in het [Azure Portal](https://portal.azure.com/)naar uw IOT hub-exemplaar. Maak onder **gebeurtenissen**een abonnement voor uw Azure-functie. 
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Scherm afbeelding van de Azure Portal die het toevoegen van een gebeurtenis abonnement weergeeft.":::
+
+2. Vul op de pagina **gebeurtenis abonnement maken** de velden als volgt in:
+    1. Geef bij **naam**het abonnement een naam zoals u wilt.
+    2. Kies **Event grid schema**onder **gebeurtenis schema**.
+    3. Kies onder **naam van systeem onderwerp**een unieke naam.
+    4. Kies onder **gebeurtenis typen**het **apparaat telemetrie** als het gebeurtenis type waarop moet worden gefilterd.
+    5. Selecteer onder **Details van eind punt**uw Azure-functie als een eind punt.
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="Scherm afbeelding van de Azure Portal waarin de details van het gebeurtenis abonnement worden weer gegeven":::
+
+## <a name="send-simulated-iot-data"></a>Gesimuleerde IoT-gegevens verzenden
+
+Als u de nieuwe functie insluitingen wilt testen, gebruikt u de hand leiding van Device Simulator [*: verbinding maken met een end-to-end-oplossing*](./tutorial-end-to-end.md). Deze zelf studie wordt aangedreven door een voorbeeld project dat is geschreven in C#. De voorbeeld code bevindt zich hier: [Azure Digital apparaatdubbels](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)-voor beelden. U gebruikt het **DeviceSimulator** -project in die opslag plaats.
+
+In de end-to-end zelf studie voert u de volgende stappen uit:
+1. [*Het gesimuleerde apparaat bij IoT Hub registreren*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
+2. [*De simulatie configureren en uitvoeren*](./tutorial-end-to-end.md#configure-and-run-the-simulation)
+
+## <a name="validate-your-results"></a>Uw resultaten valideren
+
+Bij het uitvoeren van de bovenstaande Device Simulator wordt de waarde voor de Tempe ratuur van uw digitale-dubbele waarden gewijzigd. Voer in de Azure CLI de volgende opdracht uit om de waarde voor de Tempe ratuur te bekijken.
+
+```azurecli-interactive
+az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
+```
+
+De uitvoer moet een temperatuur waarde als volgt bevatten:
+
+```json
 {
-    // Find parent using incoming relationships
-    try
+  "result": [
     {
-        AsyncPageable<IncomingRelationship> rels = client.GetIncomingRelationshipsAsync(child);
-
-        await foreach (IncomingRelationship ie in rels)
-        {
-            if (ie.RelationshipName == relname)
-                return (ie.SourceId);
+      "$dtId": "thermostat67",
+      "$etag": "W/\"0000000-1e83-4f7f-b448-524371f64691\"",
+      "$metadata": {
+        "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+        "Temperature": {
+          "ackCode": 200,
+          "ackDescription": "Auto-Sync",
+          "ackVersion": 1,
+          "desiredValue": 69.75806974934324,
+          "desiredVersion": 1
         }
+      },
+      "Temperature": 69.75806974934324
     }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error in retrieving parent:{exc.Status}:{exc.Message}");
-    }
-    return null;
+  ]
 }
 ```
 
-En de functie van het hulp programma voor het bijwerken van de dubbele:
-```csharp
-public static async Task UpdateTwinProperty(DigitalTwinsClient client, string twinId, string propertyPath, object value, ILogger log)
-{
-    // If the twin does not exist, this will log an error
-    try
-    {
-        // Update twin property
-        UpdateOperationsUtility uou = new UpdateOperationsUtility();
-        uou.AppendAddOp(propertyPath, value);
-        await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
-    }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error:{exc.Status}/{exc.Message}");
-    }
-}
-```
-
-U hebt nu een Azure-functie die is ingericht voor het lezen en interpreteren van de scenario gegevens die afkomstig zijn van IoT Hub.
-
-## <a name="debug-azure-function-apps-locally"></a>Lokaal fouten opsporen in azure function-apps
-
-U kunt fouten opsporen in azure functions met een Event Grid trigger lokaal. Zie [*Debug Event grid trigger lokaal*](../azure-functions/functions-debug-event-grid-trigger-local.md)voor meer informatie hierover.
+Voer herhaaldelijk de query-opdracht uit om de gewijzigde waarde weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

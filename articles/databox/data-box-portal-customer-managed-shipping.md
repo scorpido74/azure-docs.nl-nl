@@ -2,18 +2,18 @@
 title: Microsoft Azure Data Box zelf beheerde verzen ding | Microsoft Docs in gegevens
 description: Beschrijving van een zelf beheerde verzend werk stroom voor Azure Data Box apparaten
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.author: alkohli
+ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608584"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142533"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Zelf-beheerde verzen ding voor Azure Data Box gebruiken in de Azure Portal
 
@@ -28,18 +28,20 @@ Zelf-beheerde verzen ding is beschikbaar als optie wanneer u [Azure data Box ord
 * Japan
 * Singapore
 * Zuid-Korea
+* India
+* Zuid-Afrika
 
 ## <a name="use-self-managed-shipping"></a>Zelfbeheerde verzending gebruiken
 
 Wanneer u een Data Box order plaatst, kunt u de optie voor zelf-beheerde verzen ding kiezen.
 
 1. Selecteer in uw Azure Data Box bestelling, onder de **contact gegevens**, **+ Verzend adres toevoegen**.
-   ![Zelf beheerde verzen ding](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Zelfbeheerde verzending](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. Wanneer u verzend type kiest, selecteert u de optie **zelf beheerde verzen ding** . Deze optie is alleen beschikbaar als u zich in een ondersteunde regio bevindt, zoals beschreven in de vereisten.
 
 3. Zodra u uw verzend adres hebt ingevoerd, moet u dit valideren en uw bestelling volt ooien.
-   ![Zelf beheerde verzen ding](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Zelfbeheerde verzending](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Zodra het apparaat is voor bereid en u een e-mail melding voor de apparaten hebt ontvangen, kunt u een ophaling plannen.
 

@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: 9d703eab97b087ed6b3e4d9c3519a7e3ee7489cd
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117410"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141496"
 ---
 # <a name="national-clouds"></a>Nationale clouds
 
@@ -67,7 +67,7 @@ Vervang voor toepassingen met één Tenant "common" in de vorige Url's door uw T
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Ga voor meer informatie over het aanroepen van de Microsoft Graph-Api's in een nationale cloud omgeving naar [Microsoft Graph in nationale Cloud implementaties](https://developer.microsoft.com/graph/docs/concepts/deployments).
+Ga voor meer informatie over het aanroepen van de Microsoft Graph-Api's in een nationale cloud omgeving naar [Microsoft Graph in nationale Cloud implementaties](/graph/deployments).
 
 > [!IMPORTANT]
 > Bepaalde services en functies in bepaalde regio's van de wereld wijde service zijn mogelijk niet beschikbaar in alle nationale Clouds. Ga naar [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)voor meer informatie over welke services beschikbaar zijn.

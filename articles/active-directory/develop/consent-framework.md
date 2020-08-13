@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: fe321de279397d24e0926cf1ef26a1d66adac8c4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117308"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141547"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Raamwerk Azure Active Directory-toestemming
 
@@ -28,7 +28,7 @@ Het Framework is gebaseerd op een gebruiker of een beheerder die toestemming gee
 
 Het toestemming raamwerk is gebaseerd op OAuth 2,0 en de verschillende stromen, zoals autorisatie code toekenning en client referenties verlenen, met behulp van open bare of vertrouwelijke clients. Met behulp van OAuth 2,0 kunt u met Azure AD veel verschillende soorten client toepassingen bouwen, zoals op een telefoon, Tablet, server of webtoepassing, en toegang krijgen tot de vereiste bronnen.
 
-Zie [toegang tot webtoepassingen met oauth 2,0-en Azure AD](v2-oauth2-auth-code-flow.md) -en [verificatie SCENARIO'S voor Azure AD](./authentication-vs-authorization.md)machtigen voor meer informatie over het gebruik van het toestemming raamwerk met OAuth 2.0-autorisatie subsidies. Zie [app-verificatie met Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)voor informatie over het verkrijgen van geautoriseerde toegang tot Office 365 via Microsoft Graph.
+Zie [toegang tot webtoepassingen met oauth 2,0-en Azure AD](v2-oauth2-auth-code-flow.md) -en [verificatie SCENARIO'S voor Azure AD](./authentication-vs-authorization.md)machtigen voor meer informatie over het gebruik van het toestemming raamwerk met OAuth 2.0-autorisatie subsidies. Zie [app-verificatie met Microsoft Graph](/graph/)voor informatie over het verkrijgen van geautoriseerde toegang tot Office 365 via Microsoft Graph.
 
 ## <a name="consent-experience---an-example"></a>Bestemmings ervaring-een voor beeld
 

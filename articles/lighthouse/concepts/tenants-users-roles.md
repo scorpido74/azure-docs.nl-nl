@@ -3,12 +3,12 @@ title: Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 description: Inzicht in de concepten van Azure Active Directory-tenants, gebruikers en rollen, en hoe ze kunnen worden gebruikt in azure Lighthouse-scenario's.
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6bcfd1603469ba27971fffa8e7c46f0f696bb6a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 855f6a39abc99f07e5847a01896ef864473358c4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105384"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163302"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 
@@ -16,7 +16,7 @@ Voordat u klanten voor [Azure Lighthouse](../overview.md)kunt voorbereiden, is h
 
 Een *Tenant* is een speciaal en vertrouwd exemplaar van Azure AD. Normaal gesp roken vertegenwoordigt elke Tenant één organisatie. Met het [gedelegeerde resource beheer van Azure](azure-delegated-resource-management.md) kunt u resources van de ene Tenant naar een andere Tenant maken. Hierdoor kunnen gebruikers in de Tenant beheren (zoals één van een service provider) toegang krijgen tot gedelegeerde resources in de Tenant van een klant, of kunnen [ondernemingen met meerdere tenants hun beheer bewerkingen centraliseren](enterprise.md).
 
-Als u deze logische projectie wilt uitvoeren, moet een abonnement (of een of meer resource groepen binnen een abonnement) in de *Tenant van de klant worden* opvolgd voor het beheer van de gedelegeerde resources van Azure. Dit voorbereidings proces kan worden uitgevoerd [via Azure Resource Manager sjablonen](../how-to/onboard-customer.md) of door [een open bare of persoonlijke aanbieding naar Azure Marketplace te publiceren](../how-to/publish-managed-services-offers.md).
+Als u deze logische *projectie wilt uitvoeren* , moet een abonnement (of een of meer resource groepen binnen een abonnement) in de Tenant van de klant worden voorstaan met Azure Lighthouse. Dit voorbereidings proces kan worden uitgevoerd [via Azure Resource Manager sjablonen](../how-to/onboard-customer.md) of door [een open bare of persoonlijke aanbieding naar Azure Marketplace te publiceren](../how-to/publish-managed-services-offers.md).
 
 Welke methode u ook kiest, u moet *autorisaties*definiëren. Elke autorisatie geeft een gebruikers account op in de beheer-Tenant die toegang heeft tot de gedelegeerde resources en een ingebouwde rol die de machtigingen instelt die elk van deze gebruikers voor deze resources heeft.
 
@@ -31,7 +31,7 @@ Alle [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) word
 - De ingebouwde rol [gebruikers toegangs beheerder](../../role-based-access-control/built-in-roles.md#user-access-administrator) wordt ondersteund, maar alleen voor het beperkte doel van het [toewijzen van rollen aan een beheerde identiteit in de Tenant van de klant](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Er worden gewoonlijk geen andere machtigingen verleend door deze rol. Als u een gebruiker met deze rol definieert, moet u ook de ingebouwde rol (len) opgeven die deze gebruiker aan beheerde identiteiten kan toewijzen.
 
 > [!NOTE]
-> Zodra een nieuwe toepasselijke ingebouwde rol aan Azure wordt toegevoegd, kan deze worden toegewezen wanneer een klant wordt ingecheckt [met Azure Resource Manager sjablonen](../how-to/onboard-customer.md). Er kan een vertraging optreden voordat de toegevoegde rol beschikbaar wordt in Cloud Partner-portal wanneer u [een beheerde service aanbieding publiceert](../how-to/publish-managed-services-offers.md).
+> Zodra een nieuwe toepasselijke ingebouwde rol aan Azure wordt toegevoegd, kan deze worden toegewezen wanneer een klant wordt ingecheckt [met Azure Resource Manager sjablonen](../how-to/onboard-customer.md). Er kan een vertraging optreden voordat de toegevoegde rol beschikbaar komt in het partner centrum wanneer [een beheerde service aanbieding wordt gepubliceerd](../how-to/publish-managed-services-offers.md).
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Aanbevolen procedures voor het definiëren van gebruikers en rollen
 

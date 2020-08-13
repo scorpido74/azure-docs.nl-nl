@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fc14d79edda1fb8e0083dffa68d23f46630ba2f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342592"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141955"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Prijs informatie voor SQL Server op virtuele machines van Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +59,7 @@ Als u een niet-lichte productie werk belasting hebt, gebruikt u een van de volge
 |-----|-----|
 | Web | Kleine websites |
 | Standard | Kleine tot middel grote werk belastingen |
-| Enterprise | Grote of bedrijfskritische workloads|
+| Onderneming | Grote of bedrijfskritische workloads|
 
 U hebt twee opties om te betalen voor SQL Server licenties voor deze edities: u *betaalt per gebruik* of *u kunt uw eigen licentie (BYOL) meenemen*.
 
@@ -67,7 +67,7 @@ U hebt twee opties om te betalen voor SQL Server licenties voor deze edities: u 
 
 Het **betalen van de SQL Server licentie per gebruik** (ook wel bekend als **u betalen tijdens**de hand) betekent dat de kosten per seconde voor het uitvoeren van de Azure-VM de kosten van de SQL Server licentie bevatten. U kunt de prijzen voor de verschillende SQL Server-edities (Web, Standard, Enter prise) zien op de pagina met prijzen voor Azure Virtual Machines voor [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) of [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
-De kosten zijn hetzelfde voor alle versies van SQL Server (2012 SP3 tot 2017). De licentie kosten per seconde zijn afhankelijk van het aantal VM-Vcpu's.
+De kosten zijn hetzelfde voor alle versies van SQL Server (2012 SP3 tot 2019). De licentie kosten per seconde zijn afhankelijk van het aantal VM-Vcpu's.
 
 U wordt aangeraden de SQL Server licenties per gebruik te betalen voor:
 
@@ -112,7 +112,7 @@ U wordt aangeraden uw eigen SQL Server-licenties te halen via License Mobility.
 
 Als u BYOL wilt gebruiken met een SQL Server-VM, moet u een licentie hebben voor SQL Server Standard of ENTER prise en [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1), een vereiste optie via sommige volume licentie Programma's en een optionele aankoop met anderen. Het prijs niveau dat door de volume licentie Programma's wordt gegeven, is afhankelijk van het type overeenkomst en het aantal en of de toezeg ging naar SQL Server. Maar als vuist regel biedt uw eigen licentie voor continue productie werkbelastingen de volgende voor delen:
 
-| BYOL voor deel | Description |
+| BYOL voor deel | Beschrijving |
 |-----|-----|
 | **Kostenbesparingen** | De [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) biedt een besparing van maxi maal 55%. Zie voor meer informatie [switching licentie model](licensing-model-azure-hybrid-benefit-ahb-change.md) |
 | **Gratis passieve secundaire replica** | Een ander voor deel van het meebrengen van uw eigen licentie is de [gratis licentie voor één passieve secundaire replica](https://azure.microsoft.com/pricing/licensing-faq/) per SQL Server voor hoge Beschik baarheid. Dit is de helft van de licentie kosten van een Maxi maal beschik bare SQL Server implementatie (bijvoorbeeld met behulp van AlwaysOn-beschikbaarheids groepen). De rechten om de passieve secundaire uit te voeren, worden verschaft via de Software Assurance-voor delen van failover-servers. |

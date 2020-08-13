@@ -1,6 +1,6 @@
 ---
 title: Lijst met updates die zijn toegepast op het Azure-gast besturingssysteem | Microsoft Docs
-description: De lijst met updates die zijn toegepast op versies van gast besturingssystemen
+description: Dit artikel bevat een overzicht van de updates voor micro soft Security Response Center die worden toegepast op verschillende Azure-gast besturingssystemen. Controleer of een update van toepassing is op het gast besturingssysteem dat u gebruikt.
 services: cloud-services
 documentationcenter: na
 author: yohaddad
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/11/2020
 ms.author: yohaddad
-ms.openlocfilehash: a8755c593f4009d4cacc3d411eb1bc1cb8ddc50d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3fb9c863b94c65d7a4333d734648d308a904e355
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079155"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142346"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.

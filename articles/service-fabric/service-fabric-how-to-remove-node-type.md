@@ -4,20 +4,20 @@ description: Meer informatie over het verwijderen van een knooppunt type van een
 author: inputoutputcode
 manager: sridmad
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 08/11/2020
 ms.author: chrpap
-ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ede999bee9ce1a4a9dd10652a2c52a840d5b24be
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247231"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163574"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Een Service Fabric knooppunt type verwijderen
-In dit artikel wordt beschreven hoe u een Azure Service Fabric cluster kunt schalen door een bestaand knooppunt type uit een cluster te verwijderen. Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Virtuele-machine schaal sets vormen een Azure Compute-resource die u gebruikt om een verzameling virtuele machines als een set te implementeren en te beheren. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunt type kan vervolgens afzonderlijk worden beheerd. Nadat u een Service Fabric cluster hebt gemaakt, kunt u horizon taal een cluster schalen door een knooppunt type (virtuele-machine schaalset) en alle knoop punten te verwijderen.  U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.  Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
+In dit artikel wordt beschreven hoe u een Azure Service Fabric cluster kunt schalen door een bestaand knooppunt type uit een cluster te verwijderen. Een Service Fabric-cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw microservices worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Virtuele-machine schaal sets vormen een Azure Compute-resource die u gebruikt om een verzameling virtuele machines als een set te implementeren en te beheren. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunttype kan vervolgens afzonderlijk worden beheerd. Nadat u een Service Fabric cluster hebt gemaakt, kunt u horizon taal een cluster schalen door een knooppunt type (virtuele-machine schaalset) en alle knoop punten te verwijderen.  U kunt de schaal van het cluster op elk gewenst moment aanpassen, zelfs als er workloads op het cluster worden uitgevoerd.  Tijdens het schalen van het cluster worden uw toepassingen ook automatisch geschaald.
 
 > [!WARNING]
-> Het gebruik van deze methode voor het verwijderen van een knooppunt type uit een productie cluster wordt niet aanbevolen om regel matig te worden gebruikt. Het is een gevaarlijke opdracht, omdat hiermee de bron van de virtuele-machine schaalset wordt verwijderd achter het knooppunt type. 
+> Het gebruik van deze methode voor het verwijderen van een knooppunt type uit een productie cluster wordt niet aanbevolen om regel matig te worden gebruikt. Het is een gevaarlijke opdracht omdat hiermee de virtuele-machineschaalsetresource achter het knooppunttype wordt verwijderd. 
 
 ## <a name="durability-characteristics"></a>Duurzaamheids kenmerken
 De veiligheid heeft de prioriteit van de snelheid bij het gebruik van Remove-AzServiceFabricNodeType. Het knooppunt type moet zilver of goud- [duurzaamheids niveau](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)zijn. de reden hiervoor is:
@@ -59,7 +59,7 @@ Bij het verwijderen van een type knoop punt dat bronzen, worden alle knoop punte
     - Het cluster is in orde.
     - Geen van de knoop punten die tot het knooppunt type behoren, worden als seed-knoop punt gemarkeerd.
 
-4. Schakel gegevens uit voor het knooppunt type.
+4. Schakel elk knoop punt in het knooppunt type uit.
 
     Maak verbinding met het cluster met behulp van Power shell en voer de volgende stap uit.
     
@@ -98,8 +98,20 @@ Bij het verwijderen van een type knoop punt dat bronzen, worden alle knoop punte
     ```
     
     Wacht totdat alle knoop punten voor het knooppunt type zijn gemarkeerd.
+
+6. Toewijzing van knoop punten in de oorspronkelijke Schaalset voor virtuele machines ongedaan maken
     
-6. Gegevens verwijderen voor het knooppunt type.
+    Meld u aan bij het Azure-abonnement waarin de schaalset is geïmplementeerd en verwijder de virtuele-machine Schaalset. 
+
+    ```powershell
+    $scaleSetName="myscaleset"
+    $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
+    
+    Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
+    ```
+
+    
+7. Gegevens verwijderen voor het knooppunt type.
 
     Maak verbinding met het cluster met behulp van Power shell en voer de volgende stap uit.
     
@@ -117,7 +129,7 @@ Bij het verwijderen van een type knoop punt dat bronzen, worden alle knoop punte
 
     Wacht totdat alle knoop punten uit het cluster zijn verwijderd. De knoop punten mogen niet worden weer gegeven in SFX.
 
-7. Verwijder het knooppunt type uit de sectie Service Fabric.
+8. Verwijder het knooppunt type uit de sectie Service Fabric.
 
     - Zoek de Azure Resource Manager-sjabloon die wordt gebruikt voor de implementatie.
     - Zoek de sectie met betrekking tot het knooppunt type in het gedeelte Service Fabric.
@@ -165,7 +177,7 @@ Bij het verwijderen van een type knoop punt dat bronzen, worden alle knoop punte
     Controleer vervolgens of:
     - Service Fabric resource in de portal is nu weer gegeven.
 
-8. Verwijder alle verwijzingen naar de resources die betrekking hebben op het knooppunt type.
+9. Verwijder alle verwijzingen naar de resources met betrekking tot het knooppunt type uit de ARM-sjabloon.
 
     - Zoek de Azure Resource Manager-sjabloon die wordt gebruikt voor de implementatie.
     - Verwijder de virtuele-machine schaalset en andere resources die zijn gerelateerd aan het knooppunt type uit de sjabloon.
@@ -173,6 +185,13 @@ Bij het verwijderen van een type knoop punt dat bronzen, worden alle knoop punte
 
     Vervolgens:
     - Wacht tot de implementatie is voltooid.
+    
+10. Verwijder resources met betrekking tot het knooppunt type die niet meer worden gebruikt. Voor beeld Load Balancer en een openbaar IP-adres. 
+
+    - Als u deze resources wilt verwijderen, kunt u dezelfde Power shell-opdracht gebruiken als wordt gebruikt in stap 6 om het specifieke resource type en de API-versie op te geven. 
+
+> [!Note]
+> Deze stap is optioneel als dezelfde Load Balancer en IP wordt hergebruikt tussen typen knoop punten.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over de [kenmerken](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)van de cluster duurzaamheid.

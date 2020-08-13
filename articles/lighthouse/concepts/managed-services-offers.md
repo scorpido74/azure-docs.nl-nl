@@ -1,14 +1,14 @@
 ---
 title: Aanbiedingen voor beheerde service in Azure Marketplace
-description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
+description: Met managed service kunt u aanbiedingen van resource beheer verkopen aan klanten in azure Marketplace.
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6c3047cd95128f689e75d9c1f5fba5a39f86291c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406857"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163319"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Aanbiedingen voor beheerde service in Azure Marketplace
 
@@ -18,7 +18,7 @@ In dit artikel wordt het type **beheerde service** aanbieding in [Azure Marketpl
 
 Met beheerde services kunt u het proces van het onboarding van klanten naar Azure Lighthouse stroom lijnen. Wanneer een klant een aanbieding in azure Marketplace koopt, kunnen ze opgeven welke abonnementen en/of resource groepen onboarding moeten worden uitgevoerd.
 
-Daarna kunnen gebruikers in uw organisatie vanuit de Tenant van uw organisatie met behulp van het [gedelegeerde resource beheer](azure-delegated-resource-management.md)aan deze resources werken, op basis van de toegang die u hebt gedefinieerd bij het maken van de aanbieding. Dit wordt gedaan via een manifest waarmee de gebruikers, groepen en service-principals van Azure Active Directory (Azure AD) worden opgegeven die toegang hebben tot de resources van de klant, samen met rollen die hun toegangs niveau bepalen. Door machtigingen toe te wijzen aan een Azure AD-groep in plaats van een reeks afzonderlijke gebruikers-of toepassings accounts, kunt u afzonderlijke gebruikers toevoegen of verwijderen wanneer uw toegangs vereisten veranderen.
+Daarna kunnen gebruikers in uw organisatie aan deze resources werken vanuit uw Tenant beheren via [Azure delegated resource management](azure-delegated-resource-management.md), volgens de toegang die u hebt gedefinieerd bij het maken van de aanbieding. Dit wordt gedaan via een manifest waarmee de gebruikers, groepen en service-principals van Azure Active Directory (Azure AD) worden opgegeven die toegang hebben tot de resources van de klant, samen met rollen die hun toegangs niveau bepalen. Door machtigingen toe te wijzen aan een Azure AD-groep in plaats van een reeks afzonderlijke gebruikers-of toepassings accounts, kunt u afzonderlijke gebruikers toevoegen of verwijderen wanneer uw toegangs vereisten veranderen.
 
 ## <a name="public-and-private-offers"></a>Open bare en persoonlijke aanbiedingen
 

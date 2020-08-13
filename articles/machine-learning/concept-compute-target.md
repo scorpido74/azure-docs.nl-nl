@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f8b532716e14a8a90b0be061f7d93abf43e55e38
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321986"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141922"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -27,7 +27,7 @@ In een typische levens cyclus voor model ontwikkeling kunt u het volgende doen:
 
 De reken resources die u voor uw reken doelen gebruikt, worden aan een [werk ruimte](concept-workspace.md)gekoppeld. Andere reken bronnen dan de lokale computer worden gedeeld door gebruikers van de werk ruimte.
 
-## <a name="training-compute-targets"></a><a name="train"></a>Doelen van de trainings compute
+## <a name="training-compute-targets"></a><a name="train"></a> Doelen van de trainings compute
 
 Azure Machine Learning heeft verschillende ondersteuning voor verschillende reken bronnen.  U kunt ook uw eigen reken resource toevoegen, maar ondersteuning voor verschillende scenario's kan variëren.
 
@@ -35,7 +35,7 @@ Azure Machine Learning heeft verschillende ondersteuning voor verschillende reke
 
 Meer informatie over [het instellen en gebruiken van een berekenings doel voor model training](how-to-set-up-training-targets.md).
 
-## <a name="deployment-targets"></a><a name="deploy"></a>Implementatie doelen
+## <a name="deployment-targets"></a><a name="deploy"></a>Implementatiedoelen
 
 De volgende reken bronnen kunnen worden gebruikt voor het hosten van uw model implementatie.
 
@@ -85,7 +85,9 @@ Raadpleeg de volgende tabel voor meer informatie over ondersteunde reeksen en be
 | D | Geen |
 | Dv2 | Geen |  
 | DSv2 | Geen |  
-| FSv2 | Geen |  
+| FSv2 | Geen | 
+| HBv2 | Goedkeuring vereist |  
+| HCS | Goedkeuring vereist |  
 | M | Goedkeuring vereist |
 | NC | Geen |    
 | NCsv2 | Goedkeuring vereist |

@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169426"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163183"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -33,9 +33,9 @@ ms.locfileid: "87169426"
 
 ## <a name="add-signing-and-encryption-keys"></a>Ondertekenings-en versleutelings sleutels toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
-1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer het pictogram **Map + Abonnement** in de werkbalk van de portal en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
+1. Zoek en selecteer **Azure AD B2C** in de Azure-portal.
 1. Selecteer op de pagina overzicht onder **beleids regels**het **Framework identiteits ervaring**.
 
 ### <a name="create-the-signing-key"></a>De handtekening sleutel maken
@@ -110,7 +110,7 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 
 Geef vervolgens op dat de toepassing moet worden behandeld als een open bare client:
 
-1. Selecteer in het menu links onder **beheren**de optie **verificatie**.
+1. Selecteer hiervoor **Verificatie** in het linkermenu onder **Beheren**.
 1. Schakel onder **Geavanceerde instellingen** **de optie toepassing behandelen als een open bare client** in (Selecteer **Ja**). Zorg ervoor dat **' allowPublicClient ': True '** is ingesteld in het manifest van de toepassing. 
 1. Selecteer **Opslaan**.
 
@@ -213,6 +213,6 @@ Zoals vermeld in [vereisten](#prerequisites), is Facebook niet vereist voor het 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer vervolgens Azure Active Directory (Azure AD) toe te voegen als een id-provider. Het basis bestand dat wordt gebruikt in deze aan de slag-hand leiding bevat al een deel van de inhoud die u nodig hebt om andere id-providers, zoals Azure AD, toe te voegen.
+Probeer vervolgens Azure Active Directory (Azure AD) toe te voegen als een id-provider. Het basis bestand dat wordt gebruikt in deze aan de slag-hand leiding bevat al een deel van de inhoud die u nodig hebt om andere id-providers, zoals Azure AD, toe te voegen. Zie voor meer informatie over het instellen van Azure AD als een id-provider [registratie instellen en aanmelden met een Azure Active Directory account met behulp van Active Directory B2C aangepast beleid](identity-provider-azure-ad-single-tenant-custom.md). 
 
-Zie voor meer informatie over het instellen van Azure AD als id-provider, [aanmelden instellen en aanmelden met een Azure Active Directory account met behulp van Active Directory B2C aangepast beleid](identity-provider-azure-ad-single-tenant-custom.md).
+Ga naar onze [partner galerie](partner-gallery.md) voor meer informatie over het implementeren van ISV-integratie met aangepaste beleids regels. 

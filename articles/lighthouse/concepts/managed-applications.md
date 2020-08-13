@@ -1,24 +1,27 @@
 ---
 title: Azure Lighthouse en door Azure beheerde toepassingen
-description: Azure Lighthouse-en Azure-toepassingen die worden beheerd...
-ms.date: 05/01/2020
+description: Krijg inzicht in de manier waarop Azure Lighthouse en door Azure beheerde toepassingen verschillende scenario's kunnen ondersteunen en hoe ze samen kunnen worden gebruikt.
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121602"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163421"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse en door Azure beheerde toepassingen
 
 Zowel door Azure beheerde toepassingen als Azure Lighthouse werken door een service provider in te scha kelen voor toegang tot bronnen die zich in de Tenant van de klant bevinden. Het kan handig zijn om inzicht te krijgen in de verschillen in de manier waarop ze werken en de scenario's die ze kunnen inschakelen, en hoe ze samen worden gebruikt.
 
+> [!TIP]
+> Hoewel we in dit onderwerp naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](enterprise.md) , gebruikmaken van dezelfde processen en hulpprogram ma's.
+
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse en door Azure beheerde toepassingen vergelijken
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
-Met [Azure Lighthouse](../overview.md), een service provider voor het rechtstreeks uitvoeren van een groot aantal beheer taken op het abonnement van een klant (of de resource groep). Deze toegang wordt bereikt door middel van een logische projectie, waardoor service providers zich kunnen aanmelden bij hun eigen Tenant en toegang hebben tot resources die deel uitmaken van de Tenant van de klant. De klant kan bepalen welke abonnementen of resource groepen u wilt delegeren aan de service provider. de klant houdt volledige toegang tot deze resources. Ze kunnen de toegang tot de service provider ook op elk gewenst moment verwijderen.
+Met [Azure Lighthouse](../overview.md)kan een service provider een breed scala aan beheer taken rechtstreeks uitvoeren op het abonnement van een klant (of de resource groep). Deze toegang wordt bereikt door middel van een logische projectie, waardoor service providers zich kunnen aanmelden bij hun eigen Tenant en toegang hebben tot resources die deel uitmaken van de Tenant van de klant. De klant kan bepalen welke abonnementen of resource groepen u wilt delegeren aan de service provider. de klant houdt volledige toegang tot deze resources. Ze kunnen de toegang tot de service provider ook op elk gewenst moment verwijderen.
 
 Als u Azure Lighthouse wilt gebruiken, zijn klanten onboarding voor [Azure-gedelegeerd resource beheer](azure-delegated-resource-management.md) door [arm-sjablonen te implementeren](../how-to/onboard-customer.md) of via een [beheerde service aanbieding in azure Marketplace](managed-services-offers.md). U kunt uw impact op klant afspraken bijhouden door [uw partner-id te koppelen](../../cost-management-billing/manage/link-partner-id.md).
 

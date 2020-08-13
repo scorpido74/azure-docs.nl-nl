@@ -1,6 +1,6 @@
 ---
 title: Een Cloud service maken en implementeren | Microsoft Docs
-description: Meer informatie over het maken en implementeren van een Cloud service met behulp van de Azure Portal.
+description: Meer informatie over hoe u de methode voor snel maken gebruikt om een Cloud service te maken en uploads te gebruiken om een Cloud service-pakket te uploaden en te implementeren in Azure.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811336"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142380"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Een Cloud service maken en implementeren
 De Azure Portal biedt twee manieren om een Cloud service te maken en te implementeren: *snel maken* en *aangepast maken*.

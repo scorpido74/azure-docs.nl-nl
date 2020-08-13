@@ -4,16 +4,16 @@ description: Bewaak uw web-app in realtime met aangepaste metrische gegevens en 
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 4b84088c1213801e61a4c669bccb1a983c999310
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321935"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142210"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: controleren & diagnose met een latentie van 1 seconde
 
-Bewaak uw Live, in-productie webtoepassing met behulp van Live Metrics Stream van [Application Insights](./app-insights-overview.md). Selecteer en filter metrische gegevens en prestatie meter items die u in realtime wilt bekijken, zonder dat u uw service hoeft te verstoren. Inspecteer stack traceringen van voor beelden van mislukte aanvragen en uitzonde ringen. In combi natie met [Profiler](./profiler.md) -en [momentopname debugger](./snapshot-debugger.md)biedt live Metrics Stream een krachtig en niet-invasief diagnostisch hulp programma voor uw Live website.
+Bewaak uw Live, in-productie webtoepassing met behulp van Live Metrics Stream (ook wel bekend als QuickPulse) van [Application Insights](./app-insights-overview.md). Selecteer en filter metrische gegevens en prestatie meter items die u in realtime wilt bekijken, zonder dat u uw service hoeft te verstoren. Inspecteer stack traceringen van voor beelden van mislukte aanvragen en uitzonde ringen. In combi natie met [Profiler](./profiler.md) -en [momentopname debugger](./snapshot-debugger.md)biedt live Metrics Stream een krachtig en niet-invasief diagnostisch hulp programma voor uw Live website.
 
 Met Live Metrics Stream kunt u het volgende doen:
 
@@ -31,19 +31,81 @@ Live metrics worden momenteel ondersteund voor ASP.NET-, ASP.NET Core-, Azure Fu
 
 ## <a name="get-started"></a>Aan de slag
 
-1. [Installeer Application Insights](../azure-monitor-app-hub.yml) in uw toepassing.
-2. Naast de Standard Application Insights-pakketten [micro soft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) is vereist voor het inschakelen van Live Metrics stream.
-3. **Update naar de nieuwste versie** van het Application Insights-pakket. Klik in Visual Studio met de rechter muisknop op het project en kies **NuGet-pakketten beheren**. Open het tabblad **updates** en selecteer alle micro soft. ApplicationInsights. *-pakketten.
+1. Volg de taalspecifieke richt lijnen om live metrische gegevens in te scha kelen.
+   * [ASP.net](./asp-net.md) -Live Metrics is standaard ingeschakeld.
+   * [ASP.net core](./asp-net-core.md)-Live Metrics is standaard ingeschakeld.
+   * [.Net/.net Core-Console/werk nemer](./worker-service.md)-Live Metrics is standaard ingeschakeld.
+   * [.NET-toepassingen: Schakel code](#enable-livemetrics-using-code-for-any-net-application)in.
+   * [Node.js](./nodejs.md#live-metrics)
 
-    Implementeer uw app opnieuw.
+2. Open in de [Azure Portal](https://portal.azure.com)de Application Insights resource voor uw app en open Live Stream.
 
-3. Open in de [Azure Portal](https://portal.azure.com)de Application Insights resource voor uw app en open Live Stream.
+3. [Beveilig het besturings kanaal](#secure-the-control-channel) als u gevoelige gegevens zoals klant namen in uw filters kunt gebruiken.
 
-4. [Beveilig het besturings kanaal](#secure-the-control-channel) als u gevoelige gegevens zoals klant namen in uw filters kunt gebruiken.
+### <a name="enable-livemetrics-using-code-for-any-net-application"></a>LiveMetrics inschakelen met behulp van code voor elke .NET-toepassing
 
-### <a name="no-data-check-your-server-firewall"></a>Zijn er geen gegevens? Controleer de firewall van uw server
+Hoewel LiveMetrics standaard is ingeschakeld tijdens onboarding met behulp van aanbevolen instructies voor .NET-toepassingen, ziet u hoe u de Live metrieken hand matig kunt instellen.
 
-Controleer of de [uitgaande poorten voor Live Metrics stream](./ip-addresses.md#outgoing-ports) zijn geopend in de firewall van uw servers.
+1. Installeer het NuGet-pakket [micro soft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector)
+2. In de volgende voorbeeld console-app-code ziet u hoe u live metrieken instelt.
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using System;
+using System.Threading.Tasks;
+
+namespace LiveMetricsDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create a TelemetryConfiguration instance.
+            TelemetryConfiguration config = TelemetryConfiguration.CreateDefault();
+            config.InstrumentationKey = "INSTRUMENTATION-KEY-HERE";
+            QuickPulseTelemetryProcessor quickPulseProcessor = null;
+            config.DefaultTelemetrySink.TelemetryProcessorChainBuilder
+                .Use((next) =>
+                {
+                    quickPulseProcessor = new QuickPulseTelemetryProcessor(next);
+                    return quickPulseProcessor;
+                })
+                .Build();
+
+            var quickPulseModule = new QuickPulseTelemetryModule();
+
+            // Secure the control channel.
+            // This is optional, but recommended.
+            quickPulseModule.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+            quickPulseModule.Initialize(config);
+            quickPulseModule.RegisterTelemetryProcessor(quickPulseProcessor);
+
+            // Create a TelemetryClient instance. It is important
+            // to use the same TelemetryConfiguration here as the one
+            // used to setup Live Metrics.
+            TelemetryClient client = new TelemetryClient(config);
+
+            // This sample runs indefinitely. Replace with actual application logic.
+            while (true)
+            {
+                // Send dependency and request telemetry.
+                // These will be shown in Live Metrics stream.
+                // CPU/Memory Performance counter is also shown
+                // automatically without any additional steps.
+                client.TrackDependency("My dependency", "target", "http://sample",
+                    DateTimeOffset.Now, TimeSpan.FromMilliseconds(300), true);
+                client.TrackRequest("My Request", DateTimeOffset.Now,
+                    TimeSpan.FromMilliseconds(230), "200", true);
+                Task.Delay(1000).Wait();
+            }
+        }
+    }
+}
+```
+
+Hoewel het bovenstaande voor beeld voor een console-app is, kan dezelfde code worden gebruikt in alle .NET-toepassingen. Als er andere TelemetryModules zijn ingeschakeld waarmee telemetrie automatisch wordt verzameld, is het belang rijk om ervoor te zorgen dat dezelfde configuratie die wordt gebruikt voor het initialiseren van deze modules ook wordt gebruikt voor de module Live Metrics.
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Hoe verschilt Live Metrics Stream van Metrics Explorer en Analytics?
 
@@ -53,7 +115,7 @@ Controleer of de [uitgaande poorten voor Live Metrics stream](./ip-addresses.md#
 |**Geen Bewaar periode**|De gegevens blijven behouden in de grafiek en vervolgens verwijderd|[Gegevens die gedurende 90 dagen worden bewaard](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**Op aanvraag**|Gegevens worden alleen gestreamd wanneer het deel venster Live Metrics is geopend. |Er worden gegevens verzonden wanneer de SDK is geïnstalleerd en ingeschakeld|
 |**Gratis**|Er worden geen kosten in rekening gebracht voor Live Stream gegevens|Onderworpen aan [prijzen](./pricing.md)
-|**Steekproeven**|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](./api-filtering-sampling.md)|
+|**Steekproeven**|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. |Gebeurtenissen kunnen worden [bemonsterd](./api-filtering-sampling.md)|
 |**Besturings kanaal**|Filter besturings signalen worden naar de SDK verzonden. U wordt aangeraden dit kanaal te beveiligen.|Communicatie is een manier, naar de portal|
 
 ## <a name="select-and-filter-your-metrics"></a>Uw metrische gegevens selecteren en filteren
@@ -97,9 +159,10 @@ Als u een bepaalde serverrol wilt bewaken, kunt u filteren op server. Als u wilt
 ## <a name="secure-the-control-channel"></a>Het besturings kanaal beveiligen
 
 > [!NOTE]
-> Op dit moment kunt u alleen een geverifieerd kanaal instellen met behulp van code basis bewaking en kunt u geen servers verifiëren met een koppeling zonder code.
+> Op dit moment kunt u alleen een geverifieerd kanaal instellen met behulp van op code gebaseerde bewaking en kunt u geen servers verifiëren met een koppeling zonder code.
 
-De criteria voor aangepaste filters die u opgeeft, worden teruggestuurd naar het onderdeel Live Metrics in de SDK van Application Insights. De filters kunnen mogelijk gevoelige informatie bevatten, zoals customerIDs. U kunt het kanaal veilig maken met een geheime API-sleutel naast de instrumentatie sleutel.
+De criteria voor aangepaste filters die u opgeeft in de Live Metrics-Portal worden teruggestuurd naar het onderdeel Live Metrics in de SDK van Application Insights. De filters kunnen mogelijk gevoelige informatie bevatten, zoals customerIDs. U kunt het kanaal veilig maken met een geheime API-sleutel naast de instrumentatie sleutel.
+
 ### <a name="create-an-api-key"></a>Een API-sleutel maken
 
 ![API-sleutel > een API-sleutel maken API-sleutel maken ](./media/live-stream/api-key.png)
@@ -107,73 +170,63 @@ De criteria voor aangepaste filters die u opgeeft, worden teruggestuurd naar het
 
 ### <a name="add-api-key-to-configuration"></a>API-sleutel aan configuratie toevoegen
 
-### <a name="classic-aspnet"></a>Klassieke ASP.NET
+### <a name="aspnet"></a>ASP.NET
 
 Voeg in het applicationinsights.config bestand de AuthenticationApiKey toe aan de QuickPulseTelemetryModule:
-``` XML
 
+```XML
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
 </Add>
-
 ```
-Of in code, stelt u deze in op de QuickPulseTelemetryModule:
+
+### <a name="aspnet-core"></a>ASP.NET Core
+
+Volg de onderstaande instructies voor [ASP.net core](./asp-net-core.md) toepassingen.
+
+Wijzig `ConfigureServices` uw Startup.CS-bestand als volgt:
+
+Voeg de volgende naam ruimte toe.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-using Microsoft.ApplicationInsights.Extensibility;
-
-             TelemetryConfiguration configuration = new TelemetryConfiguration();
-            configuration.InstrumentationKey = "YOUR-IKEY-HERE";
-
-            QuickPulseTelemetryProcessor processor = null;
-
-            configuration.TelemetryProcessorChainBuilder
-                .Use((next) =>
-                {
-                    processor = new QuickPulseTelemetryProcessor(next);
-                    return processor;
-                })
-                        .Build();
-
-            var QuickPulse = new QuickPulseTelemetryModule()
-            {
-
-                AuthenticationApiKey = "YOUR-API-KEY"
-            };
-            QuickPulse.Initialize(configuration);
-            QuickPulse.RegisterTelemetryProcessor(processor);
-            foreach (var telemetryProcessor in configuration.TelemetryProcessors)
-                {
-                if (telemetryProcessor is ITelemetryModule telemetryModule)
-                    {
-                    telemetryModule.Initialize(configuration);
-                    }
-                }
-
 ```
+
+Wijzig de `ConfigureServices` methode vervolgens als hieronder.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // existing code which include services.AddApplicationInsightsTelemetry() to enable Application Insights.
+    services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
+}
+```
+
+Meer informatie over het configureren van ASP.NET Core toepassingen vindt u in onze richt lijnen over het [configureren van telemetrie-modules in ASP.net core](./asp-net-core.md#configuring-or-removing-default-telemetrymodules).
+
+### <a name="workerservice"></a>WorkerService
+
+Volg de onderstaande instructies voor [WorkerService](./worker-service.md) -toepassingen.
+
+Voeg de volgende naam ruimte toe.
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+```
+
+Voeg vervolgens de volgende regel toe vóór de aanroep `services.AddApplicationInsightsTelemetryWorkerService` .
+
+```csharp
+    services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
+```
+
+Meer informatie over het configureren van WorkerService-toepassingen vindt u in onze richt lijnen over het [configureren van telemetrie-modules in WorkerServices](./worker-service.md#configuring-or-removing-default-telemetrymodules).
 
 ### <a name="azure-function-apps"></a>Azure Function-apps
 
 Voor Azure function-apps (v2) kunt u het kanaal beveiligen met een API-sleutel door een omgevings variabele te gebruiken.
 
-Maak een API-sleutel vanuit uw Application Insights-resource en ga naar **Toepassings instellingen** voor uw functie-app. Selecteer **nieuwe instelling toevoegen** en voer een naam `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` en een waarde in die overeenkomt met uw API-sleutel.
-
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (vereist Application Insights ASP.NET Core SDK 2.3.0 of hoger)
-
-Wijzig uw startup.cs-bestand als volgt:
-
-Eerst toevoegen
-
-```csharp
-using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-```
-
-Vervolgens voegt u de methode ConfigureServices toe:
-
-```csharp
-services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
-```
+Maak een API-sleutel in uw Application Insights-resource en ga naar **instellingen > configuratie** voor uw functie-app. Selecteer **nieuwe toepassings instelling** en voer een naam `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` en een waarde in die overeenkomt met uw API-sleutel.
 
 Als u echter alle verbonden servers herkent en vertrouwt, kunt u de aangepaste filters proberen zonder het geverifieerde kanaal. Deze optie is zes maanden beschikbaar. Deze onderdrukking is vereist na elke nieuwe sessie of wanneer een nieuwe server online is.
 
@@ -187,7 +240,7 @@ Als u echter alle verbonden servers herkent en vertrouwt, kunt u de aangepaste f
 
 | Taal                         | Basis gegevens       | Metrische gegevens voor prestaties | Aangepast filteren    | Voor beeld-telemetrie    | CPU-splitsing per proces |
 |----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
-| .NET                             | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +)  |
+| .NET Framework                   | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +)  |
 | .NET core (target =. NET Framework)| Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +)  |
 | .NET core (target =. NET core)     | Ondersteund (V 2.4.1 +) | Ondersteund*          | Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +) | **Niet ondersteund**    |
 | Azure Functions v2               | Ondersteund           | Ondersteund           | Ondersteund           | Ondersteund           | **Niet ondersteund**    |
@@ -200,17 +253,15 @@ Basis metrieken zijn onder andere aanvraag, afhankelijkheid en uitzonderings fre
 
 - PerfCounters-metrische gegevens worden ondersteund wanneer in Azure App Service voor Windows wordt uitgevoerd. (AspNetCore SDK-versie 2.4.1 of hoger)
 - PerfCounters worden ondersteund wanneer de app wordt uitgevoerd op een Windows-machine (VM of Cloud service of on-premises, enz.) (AspNetCore SDK-versie 2.7.1 of hoger), maar voor apps die zijn gericht op .NET Core 2,0 of hoger.
-- PerfCounters worden ondersteund wanneer de app overal (Linux, Windows, app service voor Linux, containers, enzovoort) wordt uitgevoerd in de nieuwste bèta versie (dat wil zeggen AspNetCore SDK-versie 2.8.0-beta1 of hoger), maar voor apps die zijn gericht op .NET Core 2,0 of hoger.
-
-Dynamische metrische gegevens worden standaard uitgeschakeld in de Node.js SDK. Als u live metrics wilt inschakelen, voegt `setSendLiveMetrics(true)` u uw [configuratie methoden](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) toe tijdens het initialiseren van de SDK.
+- PerfCounters worden ondersteund wanneer de app wordt uitgevoerd op een wille keurige locatie (Linux, Windows, app service voor Linux, containers, enzovoort) in de meest recente versies (bijvoorbeeld AspNetCore SDK-versie 2.8.0 of hoger), maar alleen voor apps met .NET Core 2,0 of hoger.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Zijn er geen gegevens? Als uw toepassing zich in een beveiligd netwerk bevindt: Live Metrics Stream gebruikt andere IP-adressen dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](./ip-addresses.md) zijn geopend in uw firewall.
+Live Metrics Stream gebruikt andere IP-adressen dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](./ip-addresses.md) zijn geopend in uw firewall. Controleer ook of de [uitgaande poorten voor Live Metrics stream](./ip-addresses.md#outgoing-ports) zijn geopend in de firewall van uw servers.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * [Gebruik controleren met Application Insights](./usage-overview.md)
 * [Diagnostische Zoek opdrachten gebruiken](./diagnostic-search.md)
 * [Profiler](./profiler.md)
 * [Fout opsporing voor moment opnamen](./snapshot-debugger.md)
-

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 1cb3af32f1ad16218c82f91c3f28d4f4ab47e677
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843501"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142516"
 ---
 # <a name="features"></a>Functies
 
@@ -21,9 +21,9 @@ Azure API voor FHIR biedt een volledig beheerde implementatie van de micro soft 
 
 ## <a name="fhir-version"></a>FHIR-versie
 
-Nieuwste versie ondersteund:`4.0.1`
+Nieuwste versie ondersteund: `4.0.1`
 
-Eerdere versies die momenteel worden ondersteund, zijn onder andere:`3.0.2`
+Eerdere versies die momenteel worden ondersteund, zijn onder andere: `3.0.2`
 
 ## <a name="rest-api"></a>REST-API
 
@@ -46,7 +46,7 @@ Eerdere versies die momenteel worden ondersteund, zijn onder andere:`3.0.2`
 | batch                          | Ja       | Ja       | Ja       |                                                     |
 | trans actie                    | Nee        | Ja       | Nee        |                                                     |
 | geschiedenis                        | Ja       | Ja       | Ja       |                                                     |
-| haalt                         | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `self`en `next` worden ondersteund                     |
+| haalt                         | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `self` en `next` worden ondersteund                     |
 | schakels                 | Nee        | Nee        | Nee        |                                                     |
 
 ## <a name="search"></a>Search
@@ -72,14 +72,14 @@ Alle typen zoek parameters worden ondersteund.
 |`:exact`               | Ja       | Ja       | Ja       |         |
 |`:contains`            | Ja       | Ja       | Ja       |         |
 |`:text`                | Ja       | Ja       | Ja       |         |
-|`:in`token          | Nee        | Nee        | Nee        |         |
-|`:below`token       | Nee        | Nee        | Nee        |         |
-|`:above`token       | Nee        | Nee        | Nee        |         |
-|`:not-in`token      | Nee        | Nee        | Nee        |         |
-|`:[type]`referentielaag  | Nee        | Nee        | Nee        |         |
-|`:below`URI         | Ja       | Ja       | Ja       |         |
+|`:in` token          | Nee        | Nee        | Nee        |         |
+|`:below` token       | Nee        | Nee        | Nee        |         |
+|`:above` token       | Nee        | Nee        | Nee        |         |
+|`:not-in` token      | Nee        | Nee        | Nee        |         |
+|`:[type]` referentielaag  | Nee        | Nee        | Nee        |         |
+|`:below` URI         | Ja       | Ja       | Ja       |         |
 |`:not`                 | Nee        | Nee        | Nee        |         |
-|`:above`URI         | Nee        | Nee        | Nee        | Probleem [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:above` URI         | Nee        | Nee        | Nee        | Probleem [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Algemene zoek parameter | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
 |-------------------------| ----------| ----------| ----------|---------|
@@ -101,9 +101,9 @@ Alle typen zoek parameters worden ondersteund.
 | `_sort`                 | Nee        | Nee        | Nee        |         |
 | `_score`                | Nee        | Nee        | Nee        |         |
 | `_count`                | Ja       | Ja       | Ja       |         |
-| `_summary`              | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `_summary=count`wordt ondersteund |
+| `_summary`              | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `_summary=count` wordt ondersteund |
 | `_include`              | Nee        | Ja       | Nee        |         |
-| `_revinclude`           | Nee        | Nee        | Nee        |         |
+| `_revinclude`           | Nee        | Ja       | Nee        | Opgenomen items zijn beperkt tot 100. |
 | `_contained`            | Nee        | Nee        | Nee        |         |
 | `_elements`             | Nee        | Nee        | Nee        |         |
 

@@ -9,25 +9,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82690290"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163659"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Referenties voor verificatie certificaat voor micro soft-identiteits platform
 
-Met micro soft Identity platform kan een toepassing eigen referenties voor authenticatie gebruiken, bijvoorbeeld in de [OAuth 2,0-client referenties Grant flowv 2.0](v2-oauth2-client-creds-grant-flow.md) en de namens [-stroom](v2-oauth2-on-behalf-of-flow.md).
+Met het micro soft Identity-platform kan een toepassing eigen referenties voor verificatie gebruiken, bijvoorbeeld in de OAuth 2,0- [client referenties toekennings](v2-oauth2-client-creds-grant-flow.md) stroom en de OBO-stroom ( [on-of](v2-oauth2-on-behalf-of-flow.md) --).
 
-Een van de referenties die een toepassing voor verificatie kan gebruiken is een JSON Web Token (JWT)-verklaring die is ondertekend met een certificaat waarvan de toepassing eigenaar is.
+Een van de referenties die een toepassing voor verificatie kan gebruiken is een [JSON Web token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT)-verklaring die is ondertekend met een certificaat waarvan de toepassing eigenaar is.
 
 ## <a name="assertion-format"></a>Bevestigings indeling
-Micro soft Identity platform om de bewering te berekenen, kunt u een van de vele [JSON Web token](https://jwt.ms/) bibliotheken gebruiken in de taal van uw keuze. De gegevens die door het token worden uitgevoerd, zijn als volgt:
+
+Als u de bewering wilt berekenen, kunt u een van de vele JWT-bibliotheken gebruiken in de taal van uw keuze. De informatie wordt uitgevoerd door het token in de [header](#header), [claims](#claims-payload)en [hand tekening](#signature).
 
 ### <a name="header"></a>Koptekst
 
@@ -35,22 +36,22 @@ Micro soft Identity platform om de bewering te berekenen, kunt u een van de vele
 | --- | --- |
 | `alg` | Moet **RS256** zijn |
 | `typ` | Moet **JWT** zijn |
-| `x5t` | Moet de X. 509-certificaat-SHA-1-vinger afdruk zijn |
+| `x5t` | De X. 509-certificaat-hash (ook wel bekend als de SHA-1- *vinger afdruk*van het certificaat) die is gecodeerd als een base64-teken reeks waarde. Als u bijvoorbeeld een 509 van een X. certificaat van opgeeft `84E05C1D98BCE3A5421D225B140B36E86A3D5534` , `x5t` zou dit een claim zijn `hOBcHZi846VCHSJbFAs26Go9VTQ` . |
 
 ### <a name="claims-payload"></a>Claims (Payload)
 
 | Parameter |  Opmerkingen |
 | --- | --- |
-| `aud` | Doel groep: moet ** https://login.microsoftonline.com/ *tenant_Id*/oauth2/token** |
-| `exp` | Verval datum: de datum waarop het token verloopt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat de geldigheid van het token verloopt.|
-| `iss` | Verlener: moet de client_id (toepassings-ID van de client service) |
+| `aud` | Doel groep: moet`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
+| `exp` | Verval datum: de datum waarop het token verloopt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat de geldigheid van het token verloopt. We raden u aan om een korte verloop tijd-10 minuten tot een uur te gebruiken.|
+| `iss` | Verlener: moet de client_id (client-*id)* van de client service zijn. |
 | `jti` | GUID: de JWT-ID |
-| `nbf` | Niet vóór: de datum waarop het token niet kan worden gebruikt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat het token is uitgegeven. |
-| `sub` | Onderwerp: als voor `iss` , moet de client_id (toepassings-id van de client service) |
+| `nbf` | Niet vóór: de datum waarop het token niet kan worden gebruikt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment waarop de bevestiging is gemaakt. |
+| `sub` | Onderwerp: als voor `iss` , moet de client_id (*client-id)* van de client service zijn. |
 
 ### <a name="signature"></a>Handtekening
 
-De hand tekening wordt berekend met het Toep assen van het certificaat, zoals beschreven in de [JSON Web token RFC7519-specificatie](https://tools.ietf.org/html/rfc7519)
+De hand tekening wordt berekend door het certificaat toe te passen zoals beschreven in de [RFC7519-specificatie van JSON Web token](https://tools.ietf.org/html/rfc7519).
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>Voor beeld van een gedecodeerde JWT-bevestiging
 
@@ -75,10 +76,11 @@ De hand tekening wordt berekend met het Toep assen van het certificaat, zoals be
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>Voor beeld van een gecodeerde JWT-bevestiging
 
-De volgende teken reeks is een voor beeld van een gecodeerde bevestiging. Als u er voorzichtig van gaat, ziet u drie secties, gescheiden door punten (.):
-* De eerste sectie codeert de header
-* In het tweede gedeelte wordt de payload gecodeerd
-* De laatste sectie is de hand tekening die wordt berekend met de certificaten uit de inhoud van de eerste twee secties
+De volgende teken reeks is een voor beeld van een gecodeerde bevestiging. Als u er voorzichtig van gaat, ziet u drie secties, gescheiden door punten ( `.` ):
+
+* De eerste sectie codeert de *header*
+* In het tweede gedeelte worden de *claims* (Payload) gecodeerd
+* De laatste sectie is de *hand tekening* die wordt berekend met de certificaten uit de inhoud van de eerste twee secties
 
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
@@ -101,8 +103,8 @@ In de registratie van de Azure-app voor de client toepassing:
 
 Als u een certificaat hebt, moet u het volgende berekenen:
 
-- `$base64Thumbprint`, dit is de base64-code ring van de certificaat-hash
-- `$base64Value`, dit is de base64-code ring van de onbewerkte gegevens van het certificaat
+- `$base64Thumbprint`-Met base64 gecodeerde waarde van de certificaat-hash
+- `$base64Value`-Base64-gecodeerde waarde van de onbewerkte gegevens van het certificaat
 
 U moet ook een GUID opgeven om de sleutel te identificeren in het manifest van de toepassing ( `$keyId` ).
 
@@ -125,9 +127,6 @@ In de registratie van de Azure-app voor de client toepassing:
 
    De `keyCredentials` eigenschap is meerdere waarden, dus u kunt meerdere certificaten uploaden voor uitgebreid sleutel beheer.
 
-## <a name="code-sample"></a>Codevoorbeeld
+## <a name="next-steps"></a>Volgende stappen
 
-> [!NOTE]
-> U moet de X5T-header berekenen door deze te converteren naar een basis teken reeks van 64 met de hash van het certificaat. De code die u wilt uitvoeren in C# is `System.Convert.ToBase64String(cert.GetCertHash());` .
-
-De voorbeeld code van een [.net core daemon-console toepassing met behulp van micro soft Identity platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) laat zien hoe een toepassing eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) met behulp van de `New-SelfSignedCertificate` Power shell-opdracht. U kunt ook gebruikmaken van de scripts voor het maken van de [app](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) voor het maken van de certificaten, het berekenen van de vinger afdruk, enzovoort.
+De [.net core daemon-console toepassing met behulp van het micro soft Identity platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) -code voorbeeld op github laat zien hoe een toepassing zijn eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) met behulp van de `New-SelfSignedCertificate` Power shell-cmdlet. U kunt ook de scripts voor het [maken van apps](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) in het voor beeld-opslag plaats gebruiken om certificaten te maken, de vinger afdruk te berekenen, enzovoort.

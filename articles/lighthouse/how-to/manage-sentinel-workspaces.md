@@ -3,12 +3,12 @@ title: Azure Sentinel-werk ruimten op schaal beheren
 description: Meer informatie over het effectief beheren van Azure Sentinel op gedelegeerde klant resources.
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105265"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163234"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-werk ruimten op schaal beheren
 
@@ -17,6 +17,9 @@ Als service provider hebt u mogelijk meerdere tenants voor klanten in [Azure Lig
 Azure Sentinel levert beveiligings analyses en bedreigings informatie, waardoor er één oplossing is voor waarschuwings detectie, zicht baarheid van bedreigingen, proactieve jacht en reactie op bedreigingen. Met Azure Lighthouse kunt u meerdere Azure-Sentinel-werk ruimten beheren op verschillende tenants op schaal. Dit maakt scenario's mogelijk, zoals het uitvoeren van query's op meerdere werk ruimten of het maken van werkmappen voor het visualiseren en bewaken van gegevens van uw verbonden gegevens bronnen om inzicht te krijgen. IP, zoals query's en playbooks blijven aanwezig in uw beheer Tenant, maar kunnen worden gebruikt voor het uitvoeren van beveiligings beheer in de tenants van de klant.
 
 Dit onderwerp bevat een overzicht van hoe u [Azure Sentinel](../../sentinel/overview.md) kunt gebruiken op schaal bare wijze voor de zicht baarheid van meerdere tenants en beheerde beveiligings Services.
+
+> [!TIP]
+> Hoewel we in dit onderwerp naar service providers en klanten verwijzen, is deze richt lijn ook van toepassing op [ondernemingen die Azure Lighthouse gebruiken om meerdere tenants te beheren](../concepts/enterprise.md).
 
 ## <a name="architectural-considerations"></a>Overwegingen voor architectuur
 

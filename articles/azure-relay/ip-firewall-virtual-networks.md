@@ -1,14 +1,14 @@
 ---
-title: Congigure IP-Firewall voor Azure Relay naam ruimte
+title: IP-Firewall configureren voor Azure Relay naam ruimte
 description: In dit artikel wordt beschreven hoe u firewall regels gebruikt om verbindingen van bepaalde IP-adressen toe te staan Azure Relay naam ruimten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2b8d1adef30eea0af9efdb51c31390c33a14b62e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e47c5071a5fc7207d4eabc162fcb24ab6ad57d28
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009015"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141853"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-Firewall configureren voor een Azure Relay naam ruimte
 Relay-naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -27,7 +27,7 @@ De IP-firewall regels worden toegepast op het niveau van de naam ruimte. Daarom 
 In deze sectie wordt beschreven hoe u de Azure Portal kunt gebruiken om IP-firewall regels voor een naam ruimte te maken. 
 
 1. Navigeer naar uw **Relay-naam ruimte** in de [Azure Portal](https://portal.azure.com).
-2. Selecteer in het linkermenu **netwerk** optie. Als u de optie **alle netwerken** in de sectie **toegang toestaan vanaf** selecteert, accepteert de relay-naam ruimte verbindingen van elk IP-adres. Deze instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
+2. Selecteer in het linkermenu **netwerk** optie. Als u de optie **alle netwerken** in de sectie  **toegang toestaan vanaf** selecteert, accepteert de relay-naam ruimte verbindingen van elk IP-adres. Deze instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert. 
 
     ![Optie Firewall: alle netwerken geselecteerd](./media/ip-firewall/all-networks-selected.png)
 1. Selecteer de optie **geselecteerde netwerken** om de toegang tot specifieke netwerken en IP-adressen te beperken. Voer de volgende stappen uit in de sectie **firewall** :

@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/23/2020
-ms.openlocfilehash: 9d29d83ed92ee0fa2217bb1c27fbf6c2fbb3584c
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 08/12/2020
+ms.openlocfilehash: e6fd405d1969a2f40a5f0c3466a57fbec60723e9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170875"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141156"
 ---
 # <a name="supported-data-types"></a>Ondersteunde gegevenstypen
 
@@ -23,7 +23,7 @@ De volgende tabel bevat de gegevens typen die worden ondersteund door Azure Time
 | Gegevenstype | Beschrijving | Voorbeeld | Naam van eigenschaps kolom in Parquet
 |---|---|---|---|
 | **booleaans** | Een gegevens type met een van de twee statussen: `true` of `false` . | `"isQuestionable" : true` | isQuestionable_bool
-| **datetime** | Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Uitgedrukt in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling. Datetime-eigenschappen worden altijd opgeslagen in UTC-indeling. Tijd zone-offsets worden toegepast en vervolgens wordt de waarde opgeslagen in UTC. Zie [deze](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) sectie voor meer informatie over de omgeving tijds tempel eigenschap en datum/tijd verschuivingen | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` | eventProcessedLocalTime_datetime
+| **datum/tijd** | Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Uitgedrukt in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling. Datetime-eigenschappen worden altijd opgeslagen in UTC-indeling. Tijd zone-offsets worden toegepast en vervolgens wordt de waarde opgeslagen in UTC. Zie [deze](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) sectie voor meer informatie over de omgeving tijds tempel eigenschap en datum/tijd verschuivingen | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` | eventProcessedLocalTime_datetime
 | **double** | Een 64-bits getal met dubbele precisie  | `"value": 31.0482941` | value_double
 | **long** | Een ondertekend 64-bits geheel getal  | `"value" : 31` | value_long
 | **tekenreeksexpressie** | Tekst waarden moeten bestaan uit geldige UTF-8. Null en lege teken reeksen worden op dezelfde manier behandeld. |  `"site": "DIM_MLGGG"` | site_string
@@ -31,7 +31,7 @@ De volgende tabel bevat de gegevens typen die worden ondersteund door Azure Time
 
 ## <a name="sending-mixed-data-types"></a>Gemengde gegevens typen verzenden
 
-Uw Azure Time Series Insights Gen2-omgeving is sterk getypeerd. Als apparaten of Tags gegevens van verschillende typen voor een eigenschap apparaat verzenden, worden de waarden opgeslagen in twee gescheiden kolommen en moet de [functie Coalesce ()](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions) worden gebruikt bij het definiëren van de variabele expressies van uw tijd reeks model in API-aanroepen.
+Uw Azure Time Series Insights Gen2-omgeving is sterk getypeerd. Als apparaten of Tags gegevens van verschillende typen voor een eigenschap apparaat verzenden, worden de waarden opgeslagen in twee gescheiden kolommen en moet de [functie Coalesce ()](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions) worden gebruikt bij het definiëren van de variabele expressies van uw tijd reeks model in API-aanroepen.
 
 De Azure Time Series Insights Explorer biedt een manier om de afzonderlijke kolommen van dezelfde eigenschap apparaat automatisch in te delen. In het onderstaande voor beeld verzendt de sensor een `PresentValue` eigenschap die zowel een Long-waarde als een double kan zijn. Als u een query wilt uitvoeren op alle opgeslagen waarden (ongeacht het gegevens type) van de `PresentValue` eigenschap, kiest `PresentValue (Double | Long)` u en de kolommen worden samengevoegd.
 
