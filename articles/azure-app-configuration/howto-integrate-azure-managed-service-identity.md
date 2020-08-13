@@ -1,22 +1,22 @@
 ---
-title: Verifiëren met Azure Managed Identities
+title: Beheerde identiteiten gebruiken om toegang te krijgen tot de app-configuratie
 titleSuffix: Azure App Configuration
-description: Verifiëren voor Azure-app configuratie met door Azure beheerde identiteiten
+description: Verifiëren voor Azure-app configuratie met behulp van beheerde identiteiten
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056842"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135467"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Integreren met Azure Managed Identities
+# <a name="use-managed-identities-to-access-app-configuration"></a>Beheerde identiteiten gebruiken om toegang te krijgen tot de app-configuratie
 
-Met Azure Active Directory [beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md) wordt het beheer van geheimen voor uw Cloud toepassing vereenvoudigd. Met een beheerde identiteit kan uw code gebruikmaken van de service-principal die is gemaakt voor de Azure-service waarop deze wordt uitgevoerd. U gebruikt een beheerde identiteit in plaats van een afzonderlijke referentie die is opgeslagen in Azure Key Vault of een lokale connection string. 
+Met Azure Active Directory [beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md) wordt het beheer van geheimen voor uw Cloud toepassing vereenvoudigd. Met een beheerde identiteit kan uw code gebruikmaken van de service-principal die is gemaakt voor de Azure-service waarop deze wordt uitgevoerd. U gebruikt een beheerde identiteit in plaats van een afzonderlijke referentie die is opgeslagen in Azure Key Vault of een lokale connection string.
 
 Azure-app-configuratie en de .NET core-, .NET Framework-en Java lente-client bibliotheken hebben beheerde identiteits ondersteuning ingebouwd. Hoewel u deze niet hoeft te gebruiken, elimineert de beheerde identiteit geen toegangs token dat geheimen bevat. De code heeft toegang tot de app-configuratie opslag door alleen het service-eind punt te gebruiken. U kunt deze URL rechtstreeks insluiten in uw code zonder geheim weer te geven.
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u kunt profiteren van de beheerde identiteit
 
 In dit artikel ziet u ook hoe u de beheerde identiteit kunt gebruiken in combi natie met de Key Vault verwijzingen van de app-configuratie. Met één beheerde identiteit kunt u probleemloos toegang krijgen tot beide geheimen van Key Vault en configuratie waarden van de app-configuratie. Als u deze functie wilt verkennen, kunt u het [gebruik van Key Vault verwijzingen met ASP.net core](./use-key-vault-references-dotnet-core.md) eerst volt ooien.
 
-U kunt elke code-editor gebruiken om de stappen in deze zelf studie uit te voeren. [Visual Studio code](https://code.visualstudio.com/) is een uitstekende optie die beschikbaar is op de Windows-, macOS-en Linux-platformen.
+U kunt elke code-editor gebruiken om de stappen in deze zelfstudie uit te voeren. [Visual Studio Code](https://code.visualstudio.com/) is een uitstekende optie die beschikbaar is op de Windows-, macOS- en Linux-platforms.
 
 In dit artikel leert u het volgende:
 
@@ -37,7 +37,7 @@ In dit artikel leert u het volgende:
 
 U hebt het volgende nodig om deze zelfstudie te voltooien:
 
-* [.Net core SDK](https://www.microsoft.com/net/download/windows).
+* [.NET Core SDK](https://www.microsoft.com/net/download/windows).
 * [Azure Cloud shell geconfigureerd](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -84,7 +84,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 
 1. Zoek het eind punt naar het configuratie archief van uw app. Deze URL wordt weer gegeven op het tabblad **toegangs sleutels** voor de Store in de Azure Portal.
 
-1. Open *appsettings.jsop*en voeg het volgende script toe. Vervang *\<service_endpoint>* , inclusief de haakjes, door de URL naar de app-configuratie opslag. 
+1. Open *appsettings.jsop*en voeg het volgende script toe. Vervang *\<service_endpoint>* , inclusief de haakjes, door de URL naar de app-configuratie opslag.
 
     ```json
     "AppConfig": {
@@ -101,9 +101,9 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 1. Als u alleen toegang wilt krijgen tot waarden die rechtstreeks in de app-configuratie zijn opgeslagen, werkt u de `CreateWebHostBuilder` methode bij door de methode te vervangen `config.AddAzureAppConfiguration()` .
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`vervangt `CreateWebHostBuilder` in .net Core 3,0.  Selecteer de juiste syntaxis op basis van uw omgeving.
+    > `CreateHostBuilder` wordt vervangen door `CreateWebHostBuilder` in .NET Core 3.0.  Selecteer de juiste syntaxis op basis van uw omgeving.
 
-    ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -117,7 +117,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
                 .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -135,7 +135,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 
 1. Als u zowel app-configuratie waarden als Key Vault referenties wilt gebruiken, moet u *Program.cs* bijwerken zoals hieronder wordt weer gegeven. Met deze code wordt een nieuwe `KeyVaultClient` gebruikt `AzureServiceTokenProvider` en wordt deze verwijzing door gegeven aan een aanroep van de- `UseAzureKeyVault` methode.
 
-    ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
             public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -157,7 +157,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
                     .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -182,6 +182,9 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
     ---
 
     U hebt nu toegang tot Key Vault verwijzingen, net zoals elke andere app-configuratie sleutel. De configuratie provider gebruikt de `KeyVaultClient` die u hebt geconfigureerd om te verifiëren bij Key Vault en de waarde op te halen.
+
+> [!NOTE]
+> `ManagedIdentityCredential`ondersteunt alleen beheerde identiteits verificatie. Het werkt niet in lokale omgevingen. Als u de code lokaal wilt uitvoeren, kunt u overwegen om `DefaultAzureCredential` te gebruiken, die ook Service-Principal-verificatie ondersteunt. Controleer de [koppeling](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) voor meer informatie.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -242,7 +245,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Beheerde identiteit gebruiken in andere talen
 
-App-configuratie-providers voor .NET Framework en Java Spring hebben ook ingebouwde ondersteuning voor beheerde identiteit. Wanneer u een van deze providers configureert, kunt u het URL-eind punt van uw Store gebruiken in plaats van de volledige connection string. 
+App-configuratie-providers voor .NET Framework en Java Spring hebben ook ingebouwde ondersteuning voor beheerde identiteit. Wanneer u een van deze providers configureert, kunt u het URL-eind punt van uw Store gebruiken in plaats van de volledige connection string.
 
 U kunt bijvoorbeeld de .NET Framework console-app die in de Quick start is gemaakt, bijwerken om de volgende instellingen op te geven in het *App.config* -bestand:
 
@@ -272,4 +275,4 @@ U kunt bijvoorbeeld de .NET Framework console-app die in de Quick start is gemaa
 In deze zelf studie hebt u een door Azure beheerde identiteit toegevoegd om de toegang tot de app-configuratie te stroom lijnen en het referentie beheer voor uw app te verbeteren. Voor meer informatie over het gebruik van App Configuration gaat u verder naar de Azure CLI-voorbeelden.
 
 > [!div class="nextstepaction"]
-> [CLI-voor beelden](./cli-samples.md)
+> [CLI-voorbeelden](./cli-samples.md)

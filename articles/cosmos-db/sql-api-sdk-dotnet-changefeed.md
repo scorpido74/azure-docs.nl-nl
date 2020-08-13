@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/05/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5f0d66a515ed13f96645e5916af2b01841950375
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f38b2715115efadef4e09a95e9392b1dfd4c68b0
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846595"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135739"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed processor SDK: down load en release-opmerkingen
 
@@ -49,6 +49,9 @@ ms.locfileid: "87846595"
 ## <a name="release-notes"></a>Releaseopmerkingen
 
 ### <a name="v2-builds"></a>v2-builds
+
+### <a name="232"></a><a name="2.3.2"/>2.3.2
+* De compatibiliteit met het lease-archief is toegevoegd met de [v3 SDK](sql-api-sdk-dotnet-standard.md) , waarmee Hot migratie paden mogelijk zijn. Een toepassing kan worden gemigreerd naar de V3 SDK en worden gemigreerd naar de processor bibliotheek voor wijzigings invoer zonder dat er een status verloren gaat.
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
 * Er is een aanvraag gecorrigeerd wanneer `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` de reden voor het sluiten is verzonden naar `FeedProcessing.IChangeFeedObserver.CloseAsync` als de partitie niet kan worden gevonden of als de doel replica niet up-to-date is met de Lees sessie. In deze gevallen `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` en `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` sluitings redenen worden nu gebruikt.
@@ -193,6 +196,7 @@ Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen v
 
 | Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |11 augustus 2020 |--- |
 | [2.3.1](#2.3.1) |30 juli 2020 |--- |
 | [2.3.0](#2.3.0) |2 april 2020 |--- |
 | [2.2.8](#2.2.8) |28 oktober 2019 |--- |
@@ -215,6 +219,6 @@ Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen v
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.

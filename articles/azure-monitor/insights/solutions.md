@@ -5,28 +5,28 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/12/2020
-ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/07/2020
+ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824780"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135523"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakings oplossingen in Azure Monitor
 
-Bewakings oplossingen maken gebruik van services in azure voor een extra analyse van de werking van een bepaalde toepassing of service. Dit artikel bevat een kort overzicht van de bewakings oplossingen in Azure en informatie over het gebruik en de installatie ervan. U kunt bewakings oplossingen toevoegen aan Azure Monitor voor alle toepassingen en services die u gebruikt. Deze zijn doorgaans gratis beschikbaar, maar verzamelen gegevens die gebruiks kosten kunnen aanroepen.
+Bewakings oplossingen in Azure Monitor bieden een analyse van de werking van een bepaalde Azure-toepassing of-service. Dit artikel bevat een kort overzicht van de bewakings oplossingen in Azure en informatie over het gebruik en de installatie ervan. U kunt bewakings oplossingen toevoegen aan Azure Monitor voor alle toepassingen en services die u gebruikt. Deze zijn doorgaans gratis beschikbaar, maar verzamelen gegevens die gebruiks kosten kunnen aanroepen.
 
 ## <a name="use-monitoring-solutions"></a>Bewakingsoplossingen gebruiken
 
-Open de pagina **overzicht** in azure monitor om een tegel weer te geven voor elke oplossing die in de werk ruimte is geïnstalleerd.
+Op de pagina **overzicht** van oplossingen in azure monitor wordt een tegel weer gegeven voor elke oplossing die in een log Analytics-werk ruimte is geïnstalleerd. Als u deze pagina wilt openen, gaat u naar **Azure monitor** in het [Azure Portal](https://ms.portal.azure.com). Selecteer in het menu **inzichten** **meer** om de Insights- **hub**te openen en klik vervolgens op **log Analytics-werk ruimten**.
 
-1. Ga naar [Azure Portal](https://ms.portal.azure.com). Zoek en selecteer **monitor**.
-1. Selecteer in het menu **inzichten** **meer**.
-1. Gebruik de vervolg keuzelijsten aan de bovenkant van het scherm om de werk ruimte of het tijds bereik te wijzigen dat wordt gebruikt voor de tegels.
-1. Klik op de tegel voor een oplossing om de bijbehorende weer gave te openen met meer gedetailleerde analyse van de verzamelde gegevens.
+[![Insights-hub](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
-![Overzicht](media/solutions/overview.png)
+
+Gebruik de vervolg keuzelijsten aan de bovenkant van het scherm om de werk ruimte of het tijds bereik te wijzigen dat wordt gebruikt voor de tegels. Klik op de tegel voor een oplossing om de bijbehorende weer gave te openen met meer gedetailleerde analyse van de verzamelde gegevens.
+
+[![Overzicht](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 Bewakings oplossingen kunnen meerdere typen Azure-resources bevatten en u kunt alle resources die zijn opgenomen in een oplossing, net als elke andere resource bekijken. Alle logboek query's die in de oplossing zijn opgenomen, worden bijvoorbeeld vermeld onder **oplossingen query's** in [query Explorer](../log-query/get-started-portal.md#load-queries) . u kunt deze query's gebruiken bij het uitvoeren van ad hoc analyses met [logboek query's](../log-query/log-query-overview.md).
 

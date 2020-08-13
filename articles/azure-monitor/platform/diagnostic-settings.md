@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: ff0df654650bb1c32d5c3e9833ebde2a81e3d65c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799953"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135433"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen
 [Platform logboeken](platform-logs-overview.md) in azure, met inbegrip van het Azure-activiteiten logboek en de resource logboeken, bieden gedetailleerde diagnostische en controle-informatie voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. [Metrische platform gegevens](data-platform-metrics.md) worden standaard verzameld en worden meestal opgeslagen in de data base met Azure monitor gegevens. In dit artikel vindt u informatie over het maken en configureren van diagnostische instellingen voor het verzenden van platform metrieken en platform logboeken naar verschillende bestemmingen.
@@ -41,34 +41,24 @@ In de volgende video vindt u een route ring van platform logboeken met Diagnosti
 
 
 ## <a name="destinations"></a>Bestemmingen
-
-Platform-logboeken en-metrische gegevens kunnen worden verzonden naar de doelen in de volgende tabel. Volg elke koppeling in de volgende tabel voor meer informatie over het verzenden van gegevens naar deze bestemming.
+Platform-logboeken en-metrische gegevens kunnen worden verzonden naar de doelen in de volgende tabel. 
 
 | Doel | Beschrijving |
 |:---|:---|
-| [Log Analytics werk ruimte](#log-analytics-workspace) | Door Logboeken en metrische gegevens naar een Log Analytics-werk ruimte te verzenden, kunt u ze analyseren met andere bewakings informatie die door Azure Monitor wordt verzameld met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. |
-| [Event hubs](#event-hub) | Door Logboeken en metrische gegevens naar Event Hubs te verzenden, kunt u met externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen. |
-| [Azure-opslag account](#azure-storage) | Het archiveren van Logboeken en metrische gegevens naar een Azure-opslag account is handig voor controle, statische analyses of back-ups. Vergeleken met Azure Monitor-logboeken en een Log Analytics-werk ruimte is Azure Storage minder kostbaar en kunnen de logboeken voor onbepaalde tijd worden bewaard. |
+| [Log Analytics werk ruimte](design-logs-deployment.md) | Door Logboeken en metrische gegevens naar een Log Analytics-werk ruimte te verzenden, kunt u ze analyseren met andere bewakings informatie die door Azure Monitor wordt verzameld met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. |
+| [Event hubs](/azure/event-hubs/) | Door Logboeken en metrische gegevens naar Event Hubs te verzenden, kunt u met externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen.  |
+| [Azure-opslag account](/azure/storage/blobs/) | Het archiveren van Logboeken en metrische gegevens naar een Azure-opslag account is handig voor controle, statische analyses of back-ups. Vergeleken met Azure Monitor-logboeken en een Log Analytics-werk ruimte is Azure Storage minder kostbaar en kunnen de logboeken voor onbepaalde tijd worden bewaard.  |
 
 
-## <a name="prerequisites"></a>Vereisten
-Alle doelen voor de diagnostische instelling moeten worden gemaakt met de vereiste machtigingen. Zie de secties hieronder voor vereisten voor elke bestemming.
+### <a name="destination-requirements"></a>Doel vereisten
 
-### <a name="log-analytics-workspace"></a>Log Analytics-werkruimte
-[Maak een nieuwe werk ruimte](../learn/quick-create-workspace.md) als u er nog geen hebt. De werk ruimte hoeft zich niet in hetzelfde abonnement te bevinden als de resource waarmee logboeken worden verzonden zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
+Alle doelen voor de diagnostische instelling moeten worden gemaakt voordat u de diagnostische instellingen maakt. De bestemming hoeft zich niet in hetzelfde abonnement te betreden als de resource die logboeken verzendt zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen. De volgende tabel bevat unieke vereisten voor elke bestemming, met inbegrip van regionale beperkingen.
 
-### <a name="event-hub"></a>Event Hub
-[Maak een event hub](../../event-hubs/event-hubs-create.md) als u er nog geen hebt. De Event Hubs naam ruimte hoeft zich niet te bevinden in hetzelfde abonnement als het abonnement dat Logboeken verzendt, zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen en beide abonnementen zich in dezelfde Tenant bevinden.
-
-Het beleid voor gedeelde toegang voor de naam ruimte definieert de machtigingen die het streaming-mechanisme heeft. Streaming naar Event Hubs vereist machtigingen voor beheren, verzenden en Luis teren. U kunt beleid voor gedeelde toegang maken of wijzigen in de Azure Portal op het tabblad configureren voor uw Event Hubs naam ruimte. Als u de diagnostische instelling wilt bijwerken zodat deze streaming bevat, moet u de machtiging ListKey hebben voor die Event Hubs autorisatie regel. 
-
-
-### <a name="azure-storage"></a>Azure Storage
-[Maak een Azure Storage-account](../../storage/common/storage-account-create.md) als u er nog geen hebt. Het opslag account hoeft zich niet in hetzelfde abonnement te betreden als de resource waarmee logboeken worden verzonden zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
-
-Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot de gegevens beter kunt beheren. Als u het activiteiten logboek en de resource logboeken Samen archiveert, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
-
-Als u de gegevens naar onveranderlijke opslag wilt verzenden, stelt u het onveranderbare beleid voor het opslag account in, zoals beschreven in [Onveranderbaarheid-beleid instellen en beheren voor Blob Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md). U moet alle stappen in dit artikel volgen, inclusief het inschakelen van beveiligde toevoeg-blobs.
+| Doel | Vereisten |
+|:---|:---|
+| Log Analytics-werkruimte | De werk ruimte hoeft zich niet in dezelfde regio te bevinden als de bron die wordt bewaakt.|
+| Event Hubs | Het beleid voor gedeelde toegang voor de naam ruimte definieert de machtigingen die het streaming-mechanisme heeft. Streaming naar Event Hubs vereist machtigingen voor beheren, verzenden en Luis teren. Als u de diagnostische instelling wilt bijwerken zodat deze streaming bevat, moet u de machtiging ListKey hebben voor die Event Hubs autorisatie regel.<br><br>De naam ruimte van de Event Hub moet zich in dezelfde regio bevinden als de resource die wordt bewaakt als de resource regionaal is. |
+| Azure Storage-account | Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot de gegevens beter kunt beheren. Als u het activiteiten logboek en de resource logboeken Samen archiveert, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.<br><br>Als u de gegevens naar onveranderlijke opslag wilt verzenden, stelt u het onveranderbare beleid voor het opslag account in, zoals beschreven in [Onveranderbaarheid-beleid instellen en beheren voor Blob Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md). U moet alle stappen in dit artikel volgen, inclusief het inschakelen van beveiligde toevoeg-blobs.<br><br>Het opslag account moet zich in dezelfde regio bevinden als de bron die wordt bewaakt als de resource regionaal is. |
 
 > [!NOTE]
 > Azure Data Lake Storage Gen2-accounts worden momenteel niet ondersteund als doel voor diagnostische instellingen, zelfs als ze kunnen worden weergegeven als een geldige optie in de Azure-portal.

@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 4ff80330ab6244bc9d108b7f5a1d4e4e0dbd4feb
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6e03b8f89ec22b74ad7dd14d9225c11fde78ec7f
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387401"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135620"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Quickstart: Een Azure Database for PostgreSQL - Hyperscale (Citus) maken in Azure Portal
 
@@ -115,7 +115,7 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Tot dusver gingen de query's alleen over de github\_-gebeurtenissen, maar we kunnen deze informatie combineren met github\_-gebruikers. Omdat we sharding hebben toegepast op gebruikers en gebeurtenissen met dezelfde id (`user_id`), bevinden de rijen van beide tabellen met overeenkomende gebruikers-id's zich op [dezelfde locatie](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation), namelijk op dezelfde databaseknooppunten, en kunnen ze eenvoudig worden gekoppeld.
+Tot dusver gingen de query's alleen over de github\_-gebeurtenissen, maar we kunnen deze informatie combineren met github\_-gebruikers. Omdat we sharding hebben toegepast op gebruikers en gebeurtenissen met dezelfde id (`user_id`), bevinden de rijen van beide tabellen met overeenkomende gebruikers-id's zich op [dezelfde locatie](concepts-hyperscale-colocation.md), namelijk op dezelfde databaseknooppunten, en kunnen ze eenvoudig worden gekoppeld.
 
 Als we naar `user_id` gaan, kan Hyperscale de samenvoegbewerking in shards pushen, zodat ze tegelijkertijd kunnen worden uitgevoerd op werkknooppunten. Laten we bijvoorbeeld de gebruikers zoeken die het grootste aantal opslagplaatsen hebben gemaakt:
 

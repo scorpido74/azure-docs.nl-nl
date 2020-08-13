@@ -6,19 +6,39 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 3/16/2020
-ms.openlocfilehash: 1173defa8bbe66cbeaaf6bd5264b0730160a197b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 8/10/2020
+ms.openlocfilehash: 85a1f0dcc2e778a09cf0d19b2a85d6faf371f032
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116825"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134514"
 ---
-# <a name="scale-a-hyperscale-citus-server-group"></a>Een Citus-Server groep (grootschalige) schalen
+# <a name="server-group-size"></a>Grootte van de Server groep
 
-Azure Database for PostgreSQL-grootschalige (Citus) biedt self-service schaling voor een hogere belasting. Met de Azure Portal kunt u eenvoudig nieuwe werk knooppunten toevoegen en de vCores van bestaande knoop punten verg Roten.
+De implementatie optie grootschalige (Citus) maakt gebruik van data base-servers voor samen werking om query's uit te voeren en meer gegevens op te slaan. De Server groep ' size ' verwijst naar het aantal servers en de hardwarebronnen van elk.
 
-## <a name="add-worker-nodes"></a>Worker-knoop punten toevoegen
+## <a name="picking-initial-size"></a>Begin grootte van opname
+
+De grootte van een server groep, in termen van het aantal knoop punten en de hardware-capaciteit, is eenvoudig te wijzigen ([Zie hieronder](#scale-a-hyperscale-citus-server-group)). U moet echter wel een begin grootte kiezen voor een nieuwe server groep. Hier volgen enkele tips voor een redelijke keuze.
+
+### <a name="multi-tenant-saas-use-case"></a>Multi tenant SaaS-gebruik-Case
+
+Voor de migratie naar grootschalige (Citus) van een bestaand PostgreSQL data base-exemplaar met één knoop punt, kunt u het beste een cluster kiezen waarvan het aantal worker vCores en het totale RAM-geheugen gelijk is aan dat van het oorspronkelijke exemplaar. In dergelijke scenario's hebben we twee tot drie verbeteringen in prestaties gezien, omdat sharding het gebruik van bronnen verbetert, waardoor kleinere indexen, enzovoort.
+
+Het aantal vCores dat vereist is voor het coördinator knooppunt is afhankelijk van uw bestaande workload (schrijf-en lees doorvoer). Het coördinator knooppunt vereist niet zoveel RAM-geheugen als worker-knoop punten, maar RAM-toewijzing wordt bepaald op basis van het aantal vCore (zoals beschreven in de [grootschalige-configuratie opties](concepts-hyperscale-configuration-options.md)), zodat het vCore aantal in feite de echte beslissing is.
+
+### <a name="real-time-analytics-use-case"></a>Real-time analyse-gebruik-Case
+
+Totaal aantal vCores: wanneer werk gegevens in het RAM-geheugen passen, kunt u een lineaire prestatie verbetering verwachten op grootschalige (Citus) in verhouding tot het aantal worker-kernen. Als u het juiste aantal vCores voor uw behoeften wilt bepalen, moet u rekening houden met de huidige latentie voor query's in uw data base met één knoop punt en de vereiste latentie in grootschalige (Citus). Deel de huidige latentie door de gewenste latentie en rond het resultaat af.
+
+RAM voor werkrollen: de beste manier is om voldoende geheugen beschikbaar te stellen zodat het merendeel van de werksets in het geheugen past. Het type query's dat door uw toepassing wordt gebruikt, is van invloed op de geheugen vereisten. U kunt uitleg analyseren uitvoeren op een query om te bepalen hoeveel geheugen nodig is. Houd er rekening mee dat vCores en RAM samen worden geschaald, zoals beschreven in het artikel [configuratie opties voor grootschalige](concepts-hyperscale-configuration-options.md) .
+
+## <a name="scale-a-hyperscale-citus-server-group"></a>Een Citus-Server groep (grootschalige) schalen
+
+Azure Database for PostgreSQL-grootschalige (Citus) biedt self-service schaling voor een hogere belasting. Met de Azure Portal kunt u eenvoudig nieuwe werk knooppunten toevoegen en de vCores van bestaande knoop punten verg Roten. Het toevoegen van knoop punten leidt tot uitval tijd en zelfs het verplaatsen van Shards naar de nieuwe knoop punten ( [Shard-herverdeling](#rebalance-shards)) gebeurt zonder query's te onderbreken.
+
+### <a name="add-worker-nodes"></a>Worker-knoop punten toevoegen
 
 Als u knoop punten wilt toevoegen, gaat u naar het tabblad **configureren** in de Server groep grootschalige (Citus).  Door de schuif regelaar voor het **aantal worker-knoop punten** te slepen, wijzigt u de waarde.
 
@@ -29,7 +49,7 @@ Klik op de knop **Opslaan** om de gewijzigde waarde van kracht te laten worden.
 > [!NOTE]
 > Zodra het aantal worker-knoop punten is verhoogd en opgeslagen, kan de schuif regelaar niet meer worden gebruikt.
 
-### <a name="rebalance-shards"></a>Shards opnieuw verdelen
+#### <a name="rebalance-shards"></a>Shards opnieuw verdelen
 
 Als u wilt profiteren van nieuwe knoop punten, moet u de gedistribueerde tabel [Shards](concepts-hyperscale-distributed-data.md#shards)opnieuw verdelen. Dit betekent dat u een aantal Shards van bestaande knoop punten naar de nieuwe hebt verplaatst. Controleer eerst of de inrichting van de nieuwe werk rollen is voltooid. Start vervolgens de Shard-herbalancer door verbinding te maken met het knoop punt van de cluster coördinator met psql en wordt uitgevoerd:
 
@@ -39,15 +59,15 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 Met de `rebalance_table_shards` functie worden alle tabellen in de groep co- [locatie](concepts-hyperscale-colocation.md) van de tabel met de naam in het argument opnieuw gebalanceerd. U hoeft de functie dus niet aan te roepen voor elke gedistribueerde tabel, maar u kunt deze ook aanroepen in een representatieve tabel vanuit elke groep voor co-locaties.
 
-## <a name="increase-or-decrease-vcores-on-nodes"></a>VCores op knoop punten verg Roten of verkleinen
+### <a name="increase-or-decrease-vcores-on-nodes"></a>VCores op knoop punten verg Roten of verkleinen
 
 > [!NOTE]
-> Deze functie is momenteel in preview. [Neem contact op met de ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)als u een wijziging wilt aanvragen in vCores voor knoop punten in uw server groep.
+> Deze functie is momenteel beschikbaar als preview-product. [Neem contact op met de ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)als u een wijziging wilt aanvragen in vCores voor knoop punten in uw server groep.
 
 Naast het toevoegen van nieuwe knoop punten, kunt u de mogelijkheden van bestaande knoop punten verg Roten. Het aanpassen van de reken capaciteit omhoog en omlaag kan nuttig zijn bij het uitvoeren van prestatie experimenten en op korte of lange termijn wijzigingen in verkeers vereisten.
 
-Als u de vCores voor alle worker-knoop punten wilt wijzigen, past u de schuif regelaar **vCores** aan onder **configuratie (per worker-knoop punt)**. De vCores van het coördinator knooppunt kan onafhankelijk worden aangepast. Klik op de koppeling **configuratie wijzigen** onder **coördinator knooppunt**. Er wordt een dialoog venster weer gegeven met schuif regelaars voor de vCores en opslag capaciteit van de coördinator. Wijzig de schuif regelaars naar wens en selecteer **OK**.
+Als u de vCores voor alle worker-knoop punten wilt wijzigen, past u de schuif regelaar **vCores** aan onder **configuratie (per worker-knoop punt)**. De vCores van het coördinator knooppunt kan onafhankelijk worden aangepast. Pas de schuif regelaar **vCores** aan onder **configuratie (coördinator knooppunt)**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de opties voor de [prestaties](concepts-hyperscale-configuration-options.md)van de Server groep.
+- Meer informatie over de opties voor de [prestaties](concepts-hyperscale-configuration-options.md)van de Server groep.

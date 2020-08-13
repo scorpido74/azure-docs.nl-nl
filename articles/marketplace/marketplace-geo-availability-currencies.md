@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: bf6215bd9225292f7b85ed6d4c4566cd4ee860b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902096"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136334"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace
 
@@ -179,11 +179,7 @@ Als u de prijs wilt aanpassen voordat u publiceert, exporteert u het werk blad p
 > [!NOTE]
 > Nadat een prijs voor een markt in uw abonnement is gepubliceerd, kunt u deze later niet meer wijzigen. Om ervoor te zorgen dat de prijzen goed zijn voordat u ze publiceert, exporteert u het werk blad prijzen en bekijkt u de prijzen op elke markt.
 
-## <a name="rate-changes"></a>Frequentie wijzigingen
-
-De tarieven die we gebruiken om lokale prijzen te berekenen, worden dagelijks bijgewerkt. Deze berekening wordt uitgevoerd wanneer de ISV de pagina opslaat en alle tarieven kunnen controleren door de prijzen vóór publicatie te exporteren en te controleren.
-
-### <a name="retrieving-currency-information-by-api"></a>De valuta gegevens worden opgehaald door de API
+## <a name="retrieving-currency-information-by-api"></a>De valuta gegevens worden opgehaald door de API
 
 Individuele prijzen (afhankelijk van hoe ze zijn ingesteld, kunnen worden beïnvloed door de wissel koersen op de dag waarop ze werden opgeslagen) kunnen worden opgehaald met behulp van een API; kan geen valuta gegevens.
 

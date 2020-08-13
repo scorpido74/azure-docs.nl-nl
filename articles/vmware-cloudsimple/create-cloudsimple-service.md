@@ -1,6 +1,6 @@
 ---
 title: 'Azure VMware-oplossing op CloudSimple: CloudSimple-service maken'
-description: Hierin wordt beschreven hoe u de CloudSimple-service maakt in de Azure Portal
+description: Meer informatie over het maken van de CloudSimple-service in de Azure Portal. Controleer de vereiste configuratie voordat u begint.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024820"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140544"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>De Azure VMware-oplossing maken op basis van de CloudSimple-service
 
@@ -29,7 +29,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>De service maken
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
     ![CloudSimple-service zoeken](media/create-cloudsimple-service-search.png)
 3. Selecteer **CloudSimple Services**.

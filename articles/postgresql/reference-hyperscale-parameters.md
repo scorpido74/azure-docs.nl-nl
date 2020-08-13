@@ -1,0 +1,238 @@
+---
+title: Server parameters – grootschalige (grootschalige (Citus)-Azure Database for PostgreSQL
+description: Para meters in de grootschalige (Citus) SQL-API
+author: jonels-msft
+ms.author: jonels
+ms.service: postgresql
+ms.subservice: hyperscale-citus
+ms.topic: reference
+ms.date: 08/10/2020
+ms.openlocfilehash: 57258540f3cd7b4c47b662b0885453cedd188e5b
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136769"
+---
+# <a name="server-parameters"></a>Serverparameters
+
+Er zijn verschillende server parameters die van invloed zijn op het gedrag van grootschalige (Citus), beide para meters van standaard PostgreSQL en para meters die specifiek zijn voor grootschalige (Citus). Ga voor meer informatie over PostgreSQL-configuratie parameters naar het gedeelte [uitvoerings tijd configuratie](http://www.postgresql.org/docs/current/static/runtime-config.html) van de postgresql-documentatie.
+
+De rest van deze referentie is gericht op het bespreken van grootschalige (Citus) specifieke configuratie parameters. Deze para meters kunnen worden ingesteld in de Azure Portal onder de **para meters voor het worker-knoop punt** onder **instellingen** voor een Citus-Server groep (grootschalige).
+
+> [!NOTE]
+>
+> Grootschalige-Server groepen waarop oudere versies van de Citus-engine worden uitgevoerd, bieden mogelijk niet alle onderstaande para meters.
+
+## <a name="general-configuration"></a>Algemene configuratie
+
+### <a name="citususe_secondary_nodes-enum"></a>Citus. Gebruik \_ secundaire \_ knoop punten (enum)
+
+Hiermee stelt u het beleid dat moet worden gebruikt bij het kiezen van knoop punten voor SELECT-query's. Als deze instelling is ingesteld op ' Always ', worden door de planner alleen een query voor de knoop punten die zijn gemarkeerd als ' secundair ' noderole in [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table).
+
+De ondersteunde waarden voor deze Enum zijn:
+
+-   **nooit:** (standaard) alle Lees bewerkingen worden uitgevoerd op primaire knoop punten.
+-   **altijd:** Er worden in plaats daarvan lees bewerkingen uitgevoerd voor secundaire knoop punten en instructies INSERT/update zijn uitgeschakeld.
+
+### <a name="cituscluster_name-text"></a>Citus. cluster \_ naam (tekst)
+
+Informeert de Planner van het coördinator knooppunt welk cluster it coördineert. Wanneer \_ de cluster naam is ingesteld, worden in de planner alleen werk knooppunten in dat cluster opgevraagd.
+
+### <a name="citusenable_version_checks-boolean"></a>Citus. \_ versie \_ controles inschakelen (Booleaanse waarde)
+
+Voor het upgraden van de grootschalige-versie (Citus) moet de server opnieuw worden opgestart (om de nieuwe gedeelde bibliotheek op te halen), gevolgd door de opdracht ALTER EXTENSION UPDATE.  Als de uitvoering van beide stappen mislukt, kan dit leiden tot fouten of crashes.
+Grootschalige (Citus) valideert daarom de versie van de code en die van de uitbrei ding die overeenkomt, en er wordt een fout opgetreden als deze niet \' .
+
+Deze waarde is standaard ingesteld op waar en is van kracht op de coördinator. In zeldzame gevallen kan het nodig zijn dat voor complexe upgrades deze para meter moet worden ingesteld op False, waardoor de controle wordt uitgeschakeld.
+
+### <a name="cituslog_distributed_deadlock_detection-boolean"></a>\_Distributed \_ deadlock-detectie Citus. log \_ (Booleaans)
+
+Hiermee wordt aangegeven of gedistribueerde verwerking van deadlock-detectie moet worden vastgelegd in het server logboek. De standaard waarde is False.
+
+### <a name="citusdistributed_deadlock_detection_factor-floating-point"></a>Citus. distributed \_ deadlock \_ detectie \_ factor (drijvende komma)
+
+Hiermee stelt u de tijd in die moet worden gewacht voordat wordt gecontroleerd op gedistribueerde deadlocks. In het bijzonder is de tijd die moet worden gewacht, de waarde wordt vermenigvuldigd met de \' [ \_ time-](https://www.postgresql.org/docs/current/static/runtime-config-locks.html) outinstelling postgresql s. De standaardwaarde is `2`. De waarde van de `-1` detectie van gedistribueerde deadlock wordt uitgeschakeld.
+
+### <a name="citusnode_connection_timeout-integer"></a>\_time-out voor verbinding met Citus. node \_ (geheel getal)
+
+De `citus.node_connection_timeout` GUC stelt de maximale duur (in milliseconden) in die moet worden gewacht op het tot stand brengen van de verbinding. Grootschalige (Citus) veroorzaakt een fout als de time-out is verstreken voordat ten minste één werk verbinding tot stand is gebracht. Deze GUC is van invloed op verbindingen van de coördinator voor werk nemers en werk rollen.
+
+-   Standaard: vijf seconden
+-   Minimum: 10 milliseconden
+-   Maximum: één uur
+
+```postgresql
+-- set to 30 seconds
+ALTER DATABASE foo
+SET citus.node_connection_timeout = 30000;
+```
+
+## <a name="query-statistics"></a>Query statistieken
+
+### <a name="citusstat_statements_purge_interval-integer"></a>Citus. stat- \_ instructies \_ opschonen \_ interval (geheel getal)
+
+Hiermee stelt u de frequentie in waarmee de onderhouds-daemon records verwijdert van [citus_stat_statements](reference-hyperscale-metadata.md#query-statistics-table) die niet overeenkomen in `pg_stat_statements` . Met deze configuratie waarde wordt het tijds interval tussen leegmaak handelingen in seconden ingesteld, met een standaard waarde van 10. Met de waarde 0 worden de leegmaak handelingen uitgeschakeld.
+
+```psql
+SET citus.stat_statements_purge_interval TO 5;
+```
+
+Deze para meter is van kracht op de coördinator en kan worden gewijzigd tijdens runtime.
+
+## <a name="data-loading"></a>Gegevens laden
+
+### <a name="citusmulti_shard_commit_protocol-enum"></a>Citus. multi \_ Shard \_ commit \_ Protocol (enum)
+
+Hiermee stelt u het doorvoer protocol dat moet worden gebruikt bij het uitvoeren van een kopie in een gedistribueerde hash-tabel. Op elke afzonderlijke Shard-plaatsing wordt de kopie uitgevoerd in een transactie blok om ervoor te zorgen dat er geen gegevens worden opgenomen als er een fout optreedt tijdens de kopie. Er is echter een specifieke fout opgetreden waarbij de kopie op alle plaatsingen slaagt, maar er treedt een (hardware)-fout op voordat alle trans acties worden doorgevoerd. Deze para meter kan worden gebruikt om gegevens verlies in dat geval te voor komen door te kiezen tussen de volgende doorvoer protocollen:
+
+-   **2pc:** (standaard) de trans acties waarbij een kopie wordt gemaakt op de Shard-plaatsingen worden eerst voor bereid met behulp van postgresql \' s [door voeren in twee fasen](http://www.postgresql.org/docs/current/static/sql-prepare-transaction.html) en vervolgens worden doorgevoerd. Mislukte door voeringen kunnen hand matig worden hersteld of worden afgebroken met respectievelijk voor BEREIDing of terugdraaien.
+    Wanneer u 2PC gebruikt, moeten de [maximale \_ voor bereide \_ trans acties](http://www.postgresql.org/docs/current/static/runtime-config-resource.html) worden verhoogd voor alle werk nemers, meestal tot dezelfde waarde als het maximum aantal \_ verbindingen.
+-   **1pc:** De trans acties waarbij een kopie wordt uitgevoerd op de Shard plaatsingen, worden in één ronde doorgevoerd. Gegevens kunnen verloren gaan als het door voeren mislukt nadat het kopiëren is geslaagd op alle plaatsingen (zeldzaam).
+
+### <a name="citusshard_replication_factor-integer"></a>Citus. Shard \_ \_ -replicatie factor (geheel getal)
+
+Hiermee stelt u de replicatie factor voor Shards, het aantal knoop punten waarop Shards worden geplaatst en de standaard waarde is 1. Deze para meter kan tijdens runtime worden ingesteld en is van kracht op de coördinator. De ideale waarde voor deze para meter is afhankelijk van de grootte van het cluster en de frequentie van knoop punten.  U kunt deze replicatie factor bijvoorbeeld verhogen als u grote clusters uitvoert en knooppunt fouten op een meer frequente wijze bekijkt.
+
+### <a name="citusshard_count-integer"></a>Citus. Shard \_ Count (geheel getal)
+
+Hiermee stelt u het aantal Shard voor hash-gepartitioneerde tabellen en de standaard waarden in op 32.  Deze waarde wordt gebruikt door de [create_distributed_table](reference-hyperscale-functions.md#create_distributed_table) UDF bij het maken van hash-gepartitioneerde tabellen. Deze para meter kan tijdens runtime worden ingesteld en is van kracht op de coördinator.
+
+### <a name="citusshard_max_size-integer"></a>Citus. Shard \_ maximum \_ grootte (geheel getal)
+
+Hiermee stelt u de maximale grootte in waarmee een Shard wordt verg root voordat deze wordt gesplitst en wordt standaard ingesteld op 1 GB. Wanneer de grootte van het bron bestand \' (dat wordt gebruikt voor fase ring) voor één Shard de configuratie waarde overschrijdt, zorgt de data base ervoor dat er een nieuwe Shard wordt gemaakt. Deze para meter kan tijdens runtime worden ingesteld en is van kracht op de coördinator.
+
+## <a name="planner-configuration"></a>Planner configuratie
+
+### <a name="cituslimit_clause_row_fetch_count-integer"></a>\_ \_ aantal opgehaalde rijen van Citus. Limit \_ -component \_ (geheel getal)
+
+Hiermee stelt u het aantal rijen dat per taak moet worden opgehaald voor het optimaliseren van de component Limit.
+In sommige gevallen moet u query's met limiet componenten mogelijk alle rijen van elke taak moeten ophalen om resultaten te genereren. In die gevallen en waar een benadering zinvolle resultaten oplevert, stelt deze configuratie waarde het aantal rijen in dat moet worden opgehaald uit elke Shard. Limiet benaderingen zijn standaard uitgeschakeld en deze para meter is ingesteld op-1. Deze waarde kan tijdens runtime worden ingesteld en is van kracht op de coördinator.
+
+### <a name="cituscount_distinct_error_rate-floating-point"></a>Citus. Count \_ DISTINCT- \_ fout \_ frequentie (drijvende komma)
+
+Met grootschalige (Citus) kan Count (DISTINCT) worden berekend met behulp van de postgresql-HLL-extensie. Met deze configuratie vermelding wordt het gewenste fout aantal ingesteld bij het berekenen van het aantal (DISTINCT). 0,0: de standaard instelling is het uitschakelen van benaderingen voor aantal (DISTINCT); en 1,0 biedt geen garanties over de nauw keurigheid van de resultaten. U wordt aangeraden deze para meter in te stellen op 0,005 voor de beste resultaten. Deze waarde kan tijdens runtime worden ingesteld en is van kracht op de coördinator.
+
+### <a name="citustask_assignment_policy-enum"></a>Citus. taak \_ toewijzings \_ beleid (enum)
+
+> [!NOTE]
+> Deze GUC is alleen van toepassing als [shard_replication_factor](reference-hyperscale-parameters.md#citusshard_replication_factor-integer) groter is dan één, of voor query's op [reference_tables](concepts-hyperscale-distributed-data.md#type-2-reference-tables).
+
+Hiermee stelt u het beleid dat moet worden gebruikt voor het toewijzen van taken aan werk nemers. De coördinator wijst taken toe aan werk nemers op basis van Shard-locaties. Met deze configuratie waarde geeft u het beleid op dat moet worden gebruikt bij het maken van deze toewijzingen.
+Op dit moment zijn er drie mogelijke taak toewijzings beleidsregels die kunnen worden gebruikt.
+
+-   **Greedy:** Het Greedy-beleid is de standaard instelling en is erop gericht om taken gelijkmatig te verdelen over de werk nemers.
+-   **Round-Robin:** Het Round Robin-beleid wijst taken toe aan werk rollen in een Round-Robin mode-afwisseling tussen verschillende replica's. Met dit beleid wordt het cluster gebruik verbeterd wanneer het aantal Shard voor een tabel laag is ten opzichte van het aantal werk rollen.
+-   **eerste replica:** Met het beleid voor de eerste replica worden taken toegewezen op basis van de invoeg volgorde van plaatsingen (replica's) voor de Shards. Met andere woorden, de fragment query voor een Shard wordt toegewezen aan de werk nemer die de eerste replica van die Shard heeft.
+    Met deze methode kunt u sterke garanties hebben over welke Shards worden gebruikt op welke knoop punten (dat wil zeggen sterker locatie van het geheugen).
+
+Deze para meter kan tijdens runtime worden ingesteld en is van kracht op de coördinator.
+
+## <a name="intermediate-data-transfer"></a>Tussenliggende Gegevensoverdracht
+
+### <a name="citusbinary_worker_copy_format-boolean"></a>Citus. binary \_ worker \_ \_ -indeling (Booleaans)
+
+Gebruik de indeling binaire kopie om tussenliggende gegevens tussen werk nemers over te dragen.
+Tijdens grote tabel samenvoegingen kan grootschalige (Citus) de gegevens tussen verschillende werk nemers dynamisch opnieuw partitioneren en in een wille keurige volg orde plaatsen. Standaard worden deze gegevens overgebracht in een tekst indeling. Door deze para meter in te scha kelen, geeft u de data base de binaire serialisatie-indeling van PostgreSQL gebruiken om deze gegevens over te dragen. Deze para meter is van toepassing op de werk nemers en moet worden gewijzigd in het bestand postgresql. conf. Na het bewerken van het configuratie bestand kunnen gebruikers een SIGHUP-signaal verzenden of de server opnieuw opstarten om deze wijziging van kracht te laten worden.
+
+### <a name="citusbinary_master_copy_format-boolean"></a>indeling van kopiëren van Citus. binary \_ \_ \_ -Master (Booleaanse waarde)
+
+Gebruik de indeling binaire kopie om gegevens over te dragen tussen coördinator en werk nemers. Bij het uitvoeren van gedistribueerde query's, sturen de werk nemers hun tussenliggende resultaten naar de coördinator voor definitieve aggregatie. Standaard worden deze gegevens overgebracht in een tekst indeling. Door deze para meter in te scha kelen, geeft u de data base de binaire serialisatie-indeling van PostgreSQL gebruiken om deze gegevens over te dragen.
+Deze para meter kan tijdens runtime worden ingesteld en is van kracht op de coördinator.
+
+### <a name="citusmax_intermediate_result_size-integer"></a>Citus. maximum \_ tussenliggende \_ resultaat \_ grootte (geheel getal)
+
+De maximale grootte in KB van tussenliggende resultaten voor Cte's die niet kunnen worden gepusht naar worker-knoop punten voor uitvoering en voor complexe subquery's. De standaard instelling is 1 GB en de waarde-1 houdt in dat er geen limiet is.
+Query's die de limiet overschrijden, worden geannuleerd en genereren een fout bericht.
+
+## <a name="ddl"></a>LANGUAGE
+
+### <a name="citusenable_ddl_propagation-boolean"></a>Citus. \_ DDL \_ -doorgifte inschakelen (Booleaans)
+
+Hiermee geeft u op of DDL-wijzigingen van de coördinator automatisch moeten worden door gegeven aan alle werk nemers. De standaardwaarde is waar. Omdat voor sommige schema wijzigingen een Access exclusieve vergren deling op tabellen is vereist en omdat de automatische doorgifte van toepassing is op alle werk nemers, kan deze een grootschalige-cluster (Citus) tijdelijk minder reageren. U kunt ervoor kiezen om deze instelling uit te scha kelen en wijzigingen hand matig door te voeren.
+
+## <a name="executor-configuration"></a>Configuratie van de uitvoerder
+
+### <a name="general"></a>Algemeen
+
+#### <a name="citusall_modifications_commutative"></a>Citus. alle \_ wijzigingen \_ Commutative
+
+Grootschalige (Citus) dwingt commutativity-regels af en verwerft de juiste vergren delingen voor wijzigings bewerkingen om de juiste werking te garanderen. Er wordt bijvoorbeeld aangenomen dat een instructie INSERT werkt met een andere INSERT-instructie, maar niet met een instructie UPDATE of DELETE. Ook wordt ervan uitgegaan dat een UPDATE-of DELETE-instructie niet werkt met een andere UPDATE-of DELETE-instructie. Deze voorzorgsmaatregel houdt in dat UPDATEs en verwijderingen grootschalige (Citus) nodig hebben om sterkere vergren delingen te verkrijgen.
+
+Als u UPDATE-instructies hebt die zijn Commutative met uw toevoegingen of andere UPDATEs, kunt u deze commutativity-hypo Thesen versoepelen door deze para meter in te stellen op True. Als deze para meter is ingesteld op True, worden alle opdrachten beschouwd als Commutative en claimt u een gedeelde vergren deling, waarmee de algehele door Voer kan worden verbeterd. Deze para meter kan tijdens runtime worden ingesteld en is van kracht op de coördinator.
+
+#### <a name="citusremote_task_check_interval-integer"></a>controle-interval voor Citus. externe \_ taak \_ \_ (geheel getal)
+
+Hiermee stelt u de frequentie in waarmee grootschalige (Citus) controleert op status van taken die worden beheerd door de taak tracker-uitvoerder. De standaard waarde is 10 MS. De coördinator wijst taken toe aan werk nemers en controleert deze vervolgens regel matig op de voortgang van elke taak \' . Met deze configuratie waarde wordt het tijds interval tussen twee daaropvolgende controles ingesteld. Deze para meter is van kracht op de coördinator en kan worden ingesteld tijdens runtime.
+
+#### <a name="citustask_executor_type-enum"></a>Citus. taak \_ \_ uitvoerings type (enum)
+
+Grootschalige (Citus) heeft drie Voer typen voor het uitvoeren van gedistribueerde SELECT-query's.  U kunt de gewenste uitvoerder selecteren door deze configuratie parameter in te stellen. De geaccepteerde waarden voor deze para meter zijn:
+
+-   **adaptief:** De standaard waarde. Het is optimaal voor snelle reacties op query's met aggregaties en naast elkaar verbonden samen voegingen over meerdere Shards.
+-   **taak-vastleggen:** De taak voor het bijhouden van taken is goed geschikt voor langdurige, complexe query's waarvoor het opnieuw instellen van gegevens op verschillende werk knooppunten en efficiënt resource beheer nodig is.
+-   **real-time:** (afgeschaft) is een vergelijkbaar doel als de adaptieve uitvoerder, maar is minder flexibel en kan meer verbindings druk veroorzaken op werk knooppunten.
+
+Deze para meter kan tijdens runtime worden ingesteld en is van kracht op de coördinator.
+
+#### <a name="citusmulti_task_query_log_level-enum-multi_task_logging"></a>Citus. \_ query-logboek niveau voor meerdere taken \_ \_ \_ (enum) {#multi_task_logging}
+
+Hiermee stelt u een logboek niveau in voor elke query die meer dan een taak genereert (dat wil zeggen, die meer dan één Shard oplevert). Logboek registratie is handig tijdens het migreren van een multi tenant-toepassing, omdat u kunt kiezen voor een fout of waarschuwing voor dergelijke query's om ze te zoeken en een Tenant \_ -id filter toe te voegen. Deze para meter kan tijdens runtime worden ingesteld en is van kracht op de coördinator. De standaard waarde voor deze para meter is \' uitgeschakeld \' .
+
+De ondersteunde waarden voor deze Enum zijn:
+
+-   **uit:** Schakel de registratie van query's waarmee meerdere taken worden gegenereerd uit (dat wil zeggen, meerdere Shards)
+-   **fout opsporing:** De instructie logs op de ernst van de fout opsporing.
+-   **logboek:** De instructie logs op het niveau van het logboek bestand. De logboek regel bevat de SQL-query die is uitgevoerd.
+-   **kennisgeving:** De instructie logs op Ernst niveau van de melding.
+-   **Waarschuwing:** De logboeken-instructie op waarschuwing Ernst niveau.
+-   **fout:** De instructie logs op het niveau van de fout code.
+
+Het kan nuttig zijn om te gebruiken `error` tijdens de ontwikkelings test en een lager logboek niveau, zoals `log` tijdens de werkelijke productie-implementatie.
+`log`Als u kiest, worden query's voor meerdere taken weer gegeven in de database logboeken met de query zelf weer gegeven na \" instructie.\"
+
+```
+LOG:  multi-task query about to be executed
+HINT:  Queries are split to multiple tasks if they have to be split into several queries on the workers.
+STATEMENT:  select * from foo;
+```
+
+#### <a name="citusenable_repartition_joins-boolean"></a>Citus. \_ Repartition- \_ samen voegingen inschakelen (Booleaans)
+
+Normaal gesp roken wordt geprobeerd om opnieuw Partition samen te voegen met de adaptieve uitvoerder, mislukt met een fout bericht.  Als deze optie is ingesteld `citus.enable_repartition_joins` op True, kan grootschalige (Citus) tijdelijk overschakelen naar de uitvoerder voor taak tracering om de koppeling uit te voeren.  De standaardwaarde is false.
+
+### <a name="task-tracker-executor-configuration"></a>Configuratie van de taak bijhouden-uitvoerder
+
+#### <a name="citustask_tracker_delay-integer"></a>Citus. taak \_ vastleggen \_ vertraging (geheel getal)
+
+Met deze para meter wordt de slaap tijd van taken bijhouden tussen taak beheer en de standaard waarde 200 MS. Het proces van taak tracering wordt regel matig geactiveerd, gaat over alle taken die hieraan zijn toegewezen, en plant en voert deze taken uit.  Vervolgens wordt de slaap stand geactiveerd voor een periode voordat deze taken opnieuw worden uitgevoerd.
+Deze configuratie waarde bepaalt de lengte van die slapende periode. Deze para meter is van toepassing op de werk nemers en moet worden gewijzigd in het bestand postgresql. conf. Na het bewerken van het configuratie bestand kunnen gebruikers een SIGHUP-signaal verzenden of de server opnieuw opstarten om de wijziging door te voeren.
+
+Deze para meter kan worden verkleind om de vertraging te verkorten die wordt veroorzaakt door de taak tracering uit te voeren door de tijd tussen het beheer af te korten.
+Het verminderen van de vertraging is handig in gevallen waarin de Shard query's korter zijn en daarom hun status regel matig bijwerken.
+
+#### <a name="citusmax_assign_task_batch_size-integer"></a>Citus. Max \_ . \_ taak \_ batch \_ grootte (geheel getal) toewijzen
+
+De taak tracker-uitvoerder van de coördinator wijst taken in batches synchroon toe aan de daemon van de werk rollen. Met deze para meter wordt het maximum aantal taken ingesteld dat in één batch kan worden toegewezen. Het kiezen van een grotere Batch grootte maakt de taak toewijzing sneller. Als het aantal werk rollen echter groot is, kan het langer duren voordat alle werk nemers taken hebben ontvangen.  Deze para meter kan tijdens runtime worden ingesteld en is van kracht op de coördinator.
+
+#### <a name="citusmax_running_tasks_per_node-integer"></a>Citus. maximum aantal \_ actieve \_ taken \_ per \_ knoop punt (geheel getal)
+
+Het proces voor taak tracering plant en voert de taken die hieraan zijn toegewezen, uit. Met deze configuratie waarde stelt u het maximum aantal taken in dat gelijktijdig op één knoop punt kan worden uitgevoerd en wordt standaard ingesteld op 8.
+
+De limiet zorgt ervoor dat u niet \' veel taken tegelijk op dezelfde tijd hoeft te doen en helpt bij het voor komen van schijf-I/O-conflicten. Als uw query's worden verwerkt vanuit het geheugen of Ssd's, kunt u het maximum aantal \_ actieve \_ taken \_ per \_ knoop punt verhogen zonder dat hiervoor veel aandacht wordt gevraagd.
+
+#### <a name="cituspartition_buffer_size-integer"></a>Citus. partition \_ buffer \_ grootte (geheel getal)
+
+Hiermee stelt u de buffer grootte in die moet worden gebruikt voor partitie bewerkingen en de standaard waarde is 8 MB.
+Met grootschalige (Citus) kunnen tabel gegevens opnieuw worden gepartitioneerd naar meerdere bestanden wanneer twee grote tabellen worden toegevoegd. Nadat deze partitie buffer vol is, worden de gepartitioneerde gegevens in de bestanden op de schijf leeg gemaakt.  Deze configuratie vermelding kan tijdens runtime worden ingesteld en is van kracht op de werk nemers.
+
+### <a name="explain-output"></a>Uitleg van uitvoer
+
+#### <a name="citusexplain_all_tasks-boolean"></a>Citus. \_ alle \_ taken uitleggen (Booleaanse waarde)
+
+Grootschalige (Citus) toont standaard de uitvoer van één wille keurige taak bij het uitvoeren van een [uitleg](http://www.postgresql.org/docs/current/static/sql-explain.html) over een gedistribueerde query. In de meeste gevallen lijkt de uitvoer van de uitleg op verschillende taken. Af en toe worden sommige taken anders gepland of hebben ze veel hogere uitvoerings tijden. In dergelijke gevallen kan het handig zijn om deze para meter in te scha kelen, waarna de uitleg uitvoer alle taken bevat. Als u alle taken uitlegt, kan dit ertoe leiden dat de uitleg langer duurt.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Een andere vorm van configuratie, behalve server parameters, zijn de resource [configuratie opties](concepts-hyperscale-configuration-options.md) in een grootschalige (Citus)-Server groep.
+* De onderliggende PostgreSQL-data base heeft ook [configuratie parameters](http://www.postgresql.org/docs/current/static/runtime-config.html).

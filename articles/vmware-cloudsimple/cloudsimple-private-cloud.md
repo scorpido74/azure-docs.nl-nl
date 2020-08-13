@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-oplossing door CloudSimple-private clouds
-description: Meer informatie over persoonlijke Clouds en concepten van CloudSimple.
+description: Meer informatie over CloudSimple-concepten en-voor delen, waaronder het volt ooien van de operationele continuïteit van VMware, de compatibiliteit met bestaande hulpprogram ma's, vaardig heden en processen.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024942"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140714"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Overzicht van CloudSimple Private Cloud
 
@@ -46,7 +46,7 @@ CloudSimple beheert de infra structuur en alle benodigde netwerk-en beheer Servi
 * Toepassingsinrichting
 * Bedrijfscontinuïteit
 * Ondersteuning
-* Afdwingen van beleid
+* Beleidsafdwinging
 
 ## <a name="private-cloud-environment-overview"></a>Overzicht van de privécloud-omgeving
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: 93ce3b02ef8963a33e485b6560516e1d2b9c1ef5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
-ms.translationtype: HT
+ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424014"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135807"
 ---
 # <a name="what-is-virtual-network-nat"></a>Wat is Azure Virtual Network NAT?
 
@@ -153,7 +153,6 @@ We willen graag weten hoe we de service kunnen verbeteren. Doe een voorstel en s
 
 * NAT is compatibel met een openbaar IP-adres van een standaard-SKU, openbaar IP-voorvoegsel en load balancer-resources. Basisresources, zoals load balancer van het type Basic, en alle producten die hiervan zijn afgeleid, zijn niet compatibel met NAT.  Basisresources moeten worden geplaatst op een subnet dat niet is geconfigureerd met NAT.
 * De IPv4-adresfamilie wordt ondersteund.  NAT communiceert niet met een IPv6-adresfamilie.  NAT kan niet worden geïmplementeerd op een subnet met een IPv6-voorvoegsel.
-* Logboekregistratie van de NSG-stroom wordt niet ondersteund bij gebruik van NAT.
 * NAT kan niet meerdere virtuele netwerken omvatten.
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -3,15 +3,15 @@ title: Problemen met Extern bureaublad client Windows virtueel bureau blad oplos
 description: Problemen oplossen bij het instellen van client verbindingen in een Windows Virtual Desktop-Tenant omgeving.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ac2eb2632ad96538e965e4d1057d7e4a116c05d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009389"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134476"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Problemen met de Extern bureaublad-client oplossen
 
@@ -41,13 +41,13 @@ nslookup rdweb.wvd.microsoft.com
 
 Probeer verbinding te maken met een andere client, bijvoorbeeld Extern bureaublad-client voor Windows 7 of Windows 10, en controleer of u de webclient kunt openen.
 
-### <a name="opening-another-site-fails"></a>Het openen van een andere site mislukt
+### <a name="cant-open-other-websites-while-connected-to-the-web-client"></a>Kan geen andere websites openen tijdens de verbinding met de webclient
 
-Dit wordt meestal veroorzaakt door problemen met de netwerk verbinding of door een netwerk storing. U wordt aangeraden contact op te nemen met netwerk ondersteuning.
+Als u geen andere websites kunt openen terwijl u verbonden bent met de webclient, kunnen er problemen met de netwerk verbinding of een netwerk storing optreden. U wordt aangeraden contact op te nemen met netwerk ondersteuning.
 
-### <a name="nslookup-cannot-resolve-the-name"></a>Nslookup kan de naam niet omzetten
+### <a name="nslookup-cant-resolve-the-name"></a>Nslookup kan de naam niet omzetten
 
-Dit wordt meestal veroorzaakt door problemen met de netwerk verbinding of door een netwerk storing. U wordt aangeraden contact op te nemen met netwerk ondersteuning.
+Als nslookup de naam niet kan omzetten, zijn er mogelijk problemen met de netwerk verbinding of een netwerk storing. U wordt aangeraden contact op te nemen met netwerk ondersteuning.
 
 ### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>De client kan geen verbinding maken, maar andere clients in uw netwerk kunnen verbinding maken
 
@@ -58,11 +58,13 @@ Als uw browser wordt gestart of niet meer werkt terwijl u de webclient gebruikt,
 3. Wis de browsercache. Zie [browser cache wissen voor uw browser](https://binged.it/2RKyfdU).
 4. Open de browser in de persoonlijke modus.
 
-## <a name="web-client-does-not-show-my-resources"></a>De webclient geeft geen resources weer
+## <a name="client-doesnt-show-my-resources"></a>De client geeft geen resources weer
 
-Controleer eerst het Azure Active Directory account dat u gebruikt. Als u zich al hebt aangemeld met een ander Azure Active Directory account dan dat u wilt gebruiken voor virtueel bureau blad van Windows, moet u ons ondertekenen of een persoonlijk browser venster gebruiken.
+Controleer eerst het Azure Active Directory account dat u gebruikt. Als u zich al hebt aangemeld met een ander Azure Active Directory account dan dat u wilt gebruiken voor virtueel bureau blad van Windows, moet u zich afmelden of een persoonlijk browser venster gebruiken.
 
-Als u het virtuele bureau blad van Windows (klassiek) gebruikt, gebruikt u de koppeling webclient in [dit artikel](./virtual-desktop-fall-2019/connect-web-2019.md) om verbinding te maken met uw resources.
+Als u Windows virtueel bureau blad (klassiek) gebruikt, gebruikt u de koppeling webclient in [dit artikel](./virtual-desktop-fall-2019/connect-web-2019.md) om verbinding te maken met uw resources.
+
+Als dat niet werkt, moet u ervoor zorgen dat uw app-groep is gekoppeld aan een werk ruimte.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Webclient reageert niet meer of de verbinding wordt verbroken
 

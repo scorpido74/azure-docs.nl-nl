@@ -4,17 +4,17 @@ description: Privé verbinden met een web-app met behulp van een persoonlijk Azu
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4fab75aef2a94ba7108085e9d5b5dbbf190342f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 773e63cb5eb2a9825975402f65439acd6ad192ae
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068305"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135382"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
 
@@ -128,6 +128,8 @@ De functie voor persoonlijke koppelingen en het persoonlijke eind punt worden re
 - Zie [een persoonlijke verbinding met een web-app maken met Azure CLI voor meer informatie over][howtoguide2] het implementeren van een persoonlijk eind punt voor uw web-app met behulp van Azure cli
 - Zie [een persoonlijke verbinding met een web-app maken met Power shell voor meer informatie over][howtoguide3] het implementeren van een persoonlijk eind punt voor uw web-app
 - Zie voor het implementeren van een persoonlijk eind punt voor uw web-app met behulp van Azure-sjabloon [een persoonlijke verbinding maken met een web-app met Azure-sjabloon][howtoguide4]
+- End-to-end-voor beeld: een front-end-web-app verbinden met een beveiligde back-end web-app met behulp van VNet-injectie en persoonlijk eind punt met ARM-sjabloon, zie deze [Snelstartgids][howtoguide5]
+- End-to-end-voor beeld: een front-end-web-app verbinden met een beveiligde back-end web-app met behulp van VNet-injectie en persoonlijk eind punt met terraform, zie dit voor [beeld][howtoguide6]
 
 
 <!--Links-->
@@ -144,3 +146,5 @@ De functie voor persoonlijke koppelingen en het persoonlijke eind punt worden re
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
 [howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide6]: https://docs.microsoft.com/azure/app-service/scripts/terraform-secure-backend-frontend

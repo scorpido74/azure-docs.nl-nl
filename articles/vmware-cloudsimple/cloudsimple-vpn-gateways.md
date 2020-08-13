@@ -1,6 +1,6 @@
 ---
 title: Azure VMware-oplossing door CloudSimple-VPN-gateways
-description: Meer informatie over CloudSimple voor site-naar-site VPN en punt-naar-site-VPN-concepten
+description: Meer informatie over CloudSimple site-naar-site-en punt-naar-site-VPN-gateways, die worden gebruikt voor het verzenden van versleuteld verkeer tussen een CloudSimple-regio en andere resources.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e013bb96990a8f3a0ef7d3a58529b200919e276
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024854"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140629"
 ---
 # <a name="vpn-gateways-overview"></a>Overzicht van VPN-gateways
 

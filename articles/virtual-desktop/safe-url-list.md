@@ -3,15 +3,15 @@ title: Lijst met veilige URL'S voor Windows-virtueel bureau blad-Azure
 description: Een lijst met Url's die u moet deblokkeren om ervoor te zorgen dat de implementatie van Windows virtueel bureau blad werkt zoals bedoeld.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067202"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135858"
 ---
 # <a name="safe-url-list"></a>Lijst met veilige URL's
 
@@ -27,11 +27,12 @@ De virtuele Azure-machine die u maakt voor Windows Virtual Desktop moet toegang 
 |mrsglobalsteus2prod.blob.core.windows.net|443|Updates van Agent- en SXS-stack|AzureCloud|
 |*.core.windows.net|443|Agent-verkeer|AzureCloud|
 |*.servicebus.windows.net|443|Agent-verkeer|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Agent-verkeer|AzureCloud|
+|gcs.prod.monitoring.core.windows.net|443|Agent-verkeer|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows-activering|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Ondersteuning Azure-portal|AzureCloud|
 | 169.254.169.254 | 80 | [Azure instance meta data service-eind punt](../virtual-machines/windows/instance-metadata-service.md) | N.v.t. |
+| 168.63.129.16 | 80 | [Status controle van sessie-host](../virtual-network/security-overview.md#azure-platform-considerations) | N.v.t. |
 
 >[!IMPORTANT]
 >Windows Virtual Desktop biedt nu ondersteuning voor de FQDN-tag. Zie [Azure Firewall gebruiken om Windows Virtual Desktop-implementaties te beveiligen](../firewall/protect-windows-virtual-desktop.md) voor meer informatie.

@@ -5,13 +5,13 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 73d5c3abb2edc940bee9727ce1f3b0c4e8e0a62e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/12/2020
+ms.openlocfilehash: d0a5b48e93e839b0a0adaf185700d7f60fec7948
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289946"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140680"
 ---
 # <a name="time-series-model-variables"></a>Variabelen voor time series-model
 
@@ -27,14 +27,14 @@ In de volgende tabel ziet u welke eigenschappen relevant zijn voor elk type vari
 
 [![Tabel met variabele Time Series-modellen](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
-#### <a name="numeric-variables"></a>Numerieke variabelen
+## <a name="numeric-variables"></a>Numerieke variabelen
 
 | Eigenschap variable | Beschrijving |
 | --- | ---|
 | Variabele filter | Filters zijn optionele voorwaardelijke componenten voor het beperken van het aantal rijen dat wordt overwogen voor berekening. |
 | Waarde van variabele | Telemetrie-waarden die worden gebruikt voor berekeningen die afkomstig zijn van het apparaat of Sens oren of worden getransformeerd met behulp van Time Series-expressies. De variabelen van een numeriek type moeten van het type *Double*zijn.|
 | Variabele interpolatie | Interpolatie Hiermee geeft u op hoe een signaal opnieuw moet worden samengesteld met behulp van bestaande gegevens. Opties voor *stap* -en *lineaire* interpolatie zijn beschikbaar voor numerieke variabelen. |
-| Variabele aggregatie | Voer berekeningen uit via de ondersteunde [aggregatie functies voor numerieke typen variabelen](https://docs.microsoft.com/rest/api/time-series-insights/preview#numeric-variable-kind-1). |
+| Variabele aggregatie | Voer berekeningen uit via de ondersteunde [aggregatie functies voor numerieke typen variabelen](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind). |
 
 Variabelen voldoen aan het volgende JSON-voor beeld:
 
@@ -57,7 +57,7 @@ Variabelen voldoen aan het volgende JSON-voor beeld:
 }
 ```
 
-#### <a name="categorical-variables"></a>Categorische variabelen
+## <a name="categorical-variables"></a>Categorische variabelen
 
 | Eigenschap variable | Beschrijving |
 | --- | ---|
@@ -73,7 +73,7 @@ Variabelen voldoen aan het volgende JSON-voor beeld:
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "$event.Status.Long" 
+     "tsx": "$event.Status.Long"
 },
   "interpolation": {
     "kind": "step",
@@ -97,12 +97,12 @@ Variabelen voldoen aan het volgende JSON-voor beeld:
 }
 ```
 
-#### <a name="aggregate-variables"></a>Aggregatie variabelen
+## <a name="aggregate-variables"></a>Aggregatie variabelen
 
 | Eigenschap variable | Beschrijving |
 | --- | ---|
 | Variabele filter | Filters zijn optionele voorwaardelijke componenten voor het beperken van het aantal rijen dat wordt overwogen voor berekening. |
-| Variabele aggregatie | Voer berekeningen uit via de ondersteunde [aggregatie functies voor aggregatie typen van variabelen](https://docs.microsoft.com/rest/api/time-series-insights/preview#aggregate-variable-kind-1). |
+| Variabele aggregatie | Voer berekeningen uit via de ondersteunde [aggregatie functies voor aggregatie typen van variabelen](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |
 
 Variabelen voldoen aan het volgende JSON-voor beeld:
 
@@ -123,4 +123,3 @@ Variabelen worden opgeslagen in de type definitie van een time series-model en k
 * Meer informatie over het [Time Series-model](./concepts-model-overview.md).
 
 * Meer informatie over het definiëren van variabelen inline met behulp van [query-api's](./concepts-query-overview.md).
-

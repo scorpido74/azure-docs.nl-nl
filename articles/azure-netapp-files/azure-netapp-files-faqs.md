@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: b-juche
-ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533135"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134493"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -177,6 +177,11 @@ Een volume met dubbele protocollen ondersteunt zowel de NFS-als de SMB-protocoll
 
 Om het probleem ' toestemming geweigerd ' te vermijden, moet u ervoor zorgen dat Windows Active Directory bevat `pcuser` voordat u toegang krijgt tot het koppel punt. Als u toevoegt `pcuser` nadat het probleem ' toestemming geweigerd ' is aangetroffen, wacht u 24 uur totdat de cache vermelding is gewist voordat u de toegang opnieuw probeert.
 
+### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Wanneer ik een volume met dubbele protocollen probeer te maken, mislukt het aanmaak proces met de fout ' kan de LDAP-configuratie niet valideren. Probeer het opnieuw nadat u de LDAP-configuratie hebt gecorrigeerd '?  
+
+De PTR-record (pointer) van de computer van de AD-host ontbreekt mogelijk op de DNS-server. U moet een zone voor reverse lookup maken op de DNS-server en vervolgens een PTR-record van de AD-hostcomputer toevoegen in de zone voor reverse lookup.
+
+Stel dat het IP-adres van de AD-machine is `1.1.1.1` , de hostnaam van de AD-machine (zoals gevonden met behulp van de `hostname` opdracht) `AD1` en de domein naam `myDomain.com` .  De PTR-record die is toegevoegd aan de zone voor reverse lookup moet zijn `1.1.1.1`  ->  `AD1.myDomain.com` .
 
 ## <a name="capacity-management-faqs"></a>Veelgestelde vragen over capaciteits beheer
 
