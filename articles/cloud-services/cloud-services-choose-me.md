@@ -1,18 +1,18 @@
 ---
 title: Wat is Azure Cloud Services | Microsoft Docs
-description: Meer informatie over wat Azure Cloud Services is.
+description: Meer informatie over wat Azure Cloud Services is, met name dat het is ontworpen voor de ondersteuning van toepassingen die schaalbaar, betrouwbaar en goed koop werken.
 services: cloud-services
 author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386847"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224285"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Overzicht van Azure Cloud Services
 Azure Cloud Services is een voor beeld van een [platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Net als [Azure app service](../app-service/overview.md)is deze technologie ontworpen voor de ondersteuning van toepassingen die schaalbaar, betrouwbaar en goed koop zijn om te kunnen worden gebruikt. Op dezelfde manier als App Service wordt gehost op virtuele machines (Vm's), is ook Azure Cloud Services. U hebt echter meer controle over de Vm's. U kunt uw eigen software installeren op Vm's die gebruikmaken van Azure Cloud Services en u kunt deze op afstand openen.

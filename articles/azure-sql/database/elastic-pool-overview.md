@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c36a8e6f2e104d91bd7738849918c46802cd0dca
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419713"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225917"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastische Pools helpen u bij het beheren en schalen van meerdere data bases in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,11 +113,11 @@ Aan de hand van de volgende stappen kunt u schatten of een pool rendabeler is da
 
 Voor op DTU gebaseerd inkoop model:
 
-MAX (<*Totaal aantal db's* x *gemiddeld DTU-gebruik per db*>, <*aantal gelijktijdig pieken db's* X piek-DTU- *gebruik per DB*)
+MAX (<*Totaal aantal db's* x *gemiddeld DTU-gebruik per DB* ->, <*aantal gelijktijdig pieken db's* X *piek-DTU-gebruik per DB*>)
 
 Voor op vCore gebaseerd inkoop model:
 
-MAX (<*totale aantal db's* x- *VCore gebruik per DB* ->, <*aantal gelijktijdig pieken db's* X *piek vCore gebruik per data base*)
+MAX (<*totale aantal db's* x- *VCore gebruik per DB* ->, <*aantal gelijktijdig pieken db's* X *piek vCore gebruik per DB*>)
 
 2. Schat hoeveel opslagruimte de groep nodig heeft door het aantal bytes op te tellen dat nodig is voor alle databases in de groep. Bepaal daarna hoe groot de eDTU-groep moet zijn om aan deze hoeveelheid opslag te voldoen.
 3. Neem voor het op DTU gebaseerde aankoop model meer van de eDTU-schattingen uit stap 1 en stap 2. Neem voor het op vCore gebaseerde aankoop model de vCore-schatting uit stap 1.

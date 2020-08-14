@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: fb265f8a8ab34972dac8529d267e41edaf0acb4c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4bf8f5d7bb8fd262fefc7cbf2f8ca906136509d5
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829285"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225271"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Beveiliging in azure Cognitive Search-overzicht
 
@@ -36,11 +36,11 @@ Bekijk deze video met snel tempo voor een overzicht van de beveiligings architec
 
 In azure Cognitive Search begint versleuteling met verbindingen en verzen dingen, en wordt uitgebreid naar inhoud die is opgeslagen op schijf. Voor zoek services op het open bare Internet luistert Azure Cognitive Search op HTTPS-poort 443. Alle client-naar-service-verbindingen gebruiken TLS 1,2-versleuteling. Eerdere versies (1,0 of 1,1) worden niet ondersteund.
 
-Voor gegevens die intern door de zoek service worden verwerkt, worden de [gegevens versleutelings modellen](../security/fundamentals/encryption-atrest.md#data-encryption-models)beschreven in de volgende tabel. Sommige functies, zoals kennis opslag, incrementele verrijking en indexering gebaseerd indexering, lezen van of schrijven naar gegevens structuren in andere Azure-Services. Deze services hebben hun eigen coderings niveaus gescheiden van Azure Cognitive Search.
+Voor gegevens die intern door de zoek service worden verwerkt, worden de [gegevens versleutelings modellen](../security/fundamentals/encryption-models.md)beschreven in de volgende tabel. Sommige functies, zoals kennis opslag, incrementele verrijking en indexering gebaseerd indexering, lezen van of schrijven naar gegevens structuren in andere Azure-Services. Deze services hebben hun eigen coderings niveaus gescheiden van Azure Cognitive Search.
 
 | Model | Subknooppuntsleutels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Vereiste&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Beperkingen | Van toepassing op |
 |------------------|-------|-------------|--------------|------------|
-| versleuteling aan de server zijde | Door micro soft beheerde sleutels | Geen (ingebouwd) | Geen, beschikbaar op alle lagen, in alle regio's, voor inhoud die is gemaakt na januari 24 2018. | Inhoud (indices en synoniemen kaarten) en definities (Indexeer functies, gegevens bronnen, vaardig heden) |
+| versleuteling aan de server zijde | Door Microsoft beheerde sleutels | Geen (ingebouwd) | Geen, beschikbaar op alle lagen, in alle regio's, voor inhoud die is gemaakt na januari 24 2018. | Inhoud (indices en synoniemen kaarten) en definities (Indexeer functies, gegevens bronnen, vaardig heden) |
 | versleuteling aan de server zijde | door de klant beheerde sleutels | Azure Key Vault | Beschikbaar op factureer bare lagen, in alle regio's, voor inhoud die is gemaakt na januari 2019. | Inhoud (indices en synoniemen toewijzingen) op gegevens schijven |
 | dubbele versleuteling aan de server zijde | door de klant beheerde sleutels | Azure Key Vault | Beschikbaar op factureer bare lagen, in geselecteerde regio's, op zoek Services na augustus 1 2020. | Inhoud (indexen en synoniemen) op gegevens schijven en tijdelijke schijven |
 
@@ -54,7 +54,7 @@ Voor door de klant beheerde sleutels is een extra factureer bare service vereist
 
 <a name="double-encryption"></a>
 
-### <a name="double-encryption"></a>Dubbele versleuteling 
+### <a name="double-encryption"></a>Dubbele versleuteling
 
 In azure Cognitive Search is dubbele versleuteling een uitbrei ding van CMK. Het is gezien als twee-fold versleuteling (eenmaal per CMK, en opnieuw door door de service beheerde sleutels) en uitgebreid in het bereik, met lange termijn opslag die is geschreven naar een gegevens schijf en opslag op korte termijn die naar tijdelijke schijven wordt geschreven. Het verschil tussen CMK vóór augustus 1 2020 en after, en wat CMK een functie met dubbele code ring maakt in azure Cognitive Search, is de extra versleuteling van gegevens op rest op tijdelijke schijven.
 
@@ -74,7 +74,7 @@ Binnenkomende beveiligings functies beveiligen het eind punt van de zoek service
 
 ### <a name="public-access-using-api-keys"></a>Open bare toegang met API-sleutels
 
-Een zoek service is standaard toegankelijk via de open bare Cloud, met behulp van verificatie op basis van sleutels voor beheer of toegang tot het eind punt van de zoek service. Een API-sleutel is een teken reeks die bestaat uit wille keurig gegenereerde cijfers en letters. Het type sleutel (beheerder of query) bepaalt het toegangs niveau. Het verzenden van een geldige sleutel wordt beschouwd als een bewijs dat de aanvraag afkomstig is van een vertrouwde entiteit. 
+Een zoek service is standaard toegankelijk via de open bare Cloud, met behulp van verificatie op basis van sleutels voor beheer of toegang tot het eind punt van de zoek service. Een API-sleutel is een teken reeks die bestaat uit wille keurig gegenereerde cijfers en letters. Het type sleutel (beheerder of query) bepaalt het toegangs niveau. Het verzenden van een geldige sleutel wordt beschouwd als een bewijs dat de aanvraag afkomstig is van een vertrouwde entiteit.
 
 Er zijn twee toegangs niveaus voor uw zoek service, ingeschakeld door de volgende API-sleutels:
 
@@ -92,15 +92,15 @@ Verificatie is vereist voor elke aanvraag, waarbij elke aanvraag bestaat uit een
 
 Als u de toegang tot uw zoek service verder wilt beheren, kunt u binnenkomende firewall regels maken die toegang tot een specifiek IP-adres of een bereik van IP-adressen toestaan. Alle client verbindingen moeten worden gemaakt via een toegestaan IP-adres of de verbinding wordt geweigerd.
 
-U kunt de portal gebruiken om [inkomende toegang te configureren](service-configure-firewall.md). 
+U kunt de portal gebruiken om [inkomende toegang te configureren](service-configure-firewall.md).
 
-U kunt ook de REST Api's voor beheer gebruiken. Met de para meter [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) van API-versie 2020-03-13 kunt u de toegang tot uw service beperken door IP-adressen, afzonderlijk of in een bereik, te identificeren die u toegang wilt verlenen tot uw zoek service. 
+U kunt ook de REST Api's voor beheer gebruiken. Met de para meter [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) van API-versie 2020-03-13 kunt u de toegang tot uw service beperken door IP-adressen, afzonderlijk of in een bereik, te identificeren die u toegang wilt verlenen tot uw zoek service.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Privé-eind punt (geen Internet verkeer)
 
-Een [persoonlijk eind punt](../private-link/private-endpoint-overview.md) voor Azure Cognitive Search staat een client in een [virtueel netwerk](../virtual-network/virtual-networks-overview.md) toe om veilig toegang te krijgen tot gegevens in een zoek index via een [persoonlijke koppeling](../private-link/private-link-overview.md). 
+Een [persoonlijk eind punt](../private-link/private-endpoint-overview.md) voor Azure Cognitive Search staat een client in een [virtueel netwerk](../virtual-network/virtual-networks-overview.md) toe om veilig toegang te krijgen tot gegevens in een zoek index via een [persoonlijke koppeling](../private-link/private-link-overview.md).
 
-Het persoonlijke eind punt gebruikt een IP-adres uit de adres ruimte van het virtuele netwerk voor verbindingen met uw zoek service. Netwerk verkeer tussen de client en de zoek service gaat over het virtuele netwerk en een privé koppeling op het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd. Met een VNET kan beveiligde communicatie tussen bronnen worden gewaarborgd, met uw on-premises netwerk en via internet. 
+Het persoonlijke eind punt gebruikt een IP-adres uit de adres ruimte van het virtuele netwerk voor verbindingen met uw zoek service. Netwerk verkeer tussen de client en de zoek service gaat over het virtuele netwerk en een privé koppeling op het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd. Met een VNET kan beveiligde communicatie tussen bronnen worden gewaarborgd, met uw on-premises netwerk en via internet.
 
 Hoewel deze oplossing het veiligst is, is het gebruik van aanvullende services een extra kost prijs. Zorg er dus voor dat u een duidelijk beeld hebt van de voor delen voordat u zich kunt voordoen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/private-link/)voor meer informatie over de kosten. Bekijk de video boven aan dit artikel voor meer informatie over hoe deze onderdelen samen werken. De optie dekking van het privé-eind punt begint bij 5:48 in de video. Zie [een persoonlijk eind punt maken voor Azure Cognitive Search](service-create-private-endpoint.md)voor instructies over het instellen van het eind punt.
 
@@ -140,7 +140,7 @@ Azure Cognitive Search is gecertificeerd voor meerdere globale, regionale en bra
 
 Voor naleving kunt u [Azure Policy](../governance/policy/overview.md) gebruiken om de aanbevolen procedures voor beveiliging van [Azure Security](../security/benchmarks/introduction.md)te implementeren. Azure Security Bench Mark is een verzameling beveiligings aanbevelingen die zijn samengevoegd in beveiligings mechanismen die worden toegewezen aan belang rijke acties die u moet uitvoeren om bedreigingen voor services en gegevens te beperken. Er zijn momenteel 11 beveiligings controles, waaronder [netwerk beveiliging](../security/benchmarks/security-control-network-security.md), [logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md), en [gegevens beveiliging](../security/benchmarks/security-control-data-protection.md) om een paar te noemen.
 
-Azure Policy is een functie die in Azure is ingebouwd en die u helpt bij het beheren van de naleving voor meerdere standaarden, inclusief die van Azure Security Bench Mark. Voor bekende benchmarks biedt Azure Policy ingebouwde definities die beide criteria bieden, evenals een actie die kan worden uitgevoerd en die niet compatibel is. 
+Azure Policy is een functie die in Azure is ingebouwd en die u helpt bij het beheren van de naleving voor meerdere standaarden, inclusief die van Azure Security Bench Mark. Voor bekende benchmarks biedt Azure Policy ingebouwde definities die beide criteria bieden, evenals een actie die kan worden uitgevoerd en die niet compatibel is.
 
 Voor Azure Cognitive Search is er momenteel één ingebouwde definitie. Het is voor diagnostische logboek registratie. Met deze ingebouwde kunt u een beleid toewijzen dat een wille keurige zoek service identificeert waarvoor diagnostische logboek registratie ontbreekt en vervolgens weer wordt ingeschakeld. Zie [Azure Policy regulerende nalevings controles voor Azure Cognitive Search](security-controls-policy.md)voor meer informatie.
 

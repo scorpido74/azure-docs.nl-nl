@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: f3c7420e1f33a7c25e7d3bfdffff14019d0b606a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 48d8b0519ca1b312909f8b48a7fd8a25d0f8b919
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542667"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225815"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Bronnen limieten voor elastische Pools met behulp van het DTU-aankoop model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In dit artikel vindt u gedetailleerde resource limieten voor data bases in Azure SQL Database die zich binnen een elastische pool bevinden met behulp van het DTU-aankoop model.
 
-* Zie [DTU-resource limieten-Azure SQL database](resource-limits-vcore-elastic-pools.md)voor Azure SQL database voor de resource limieten voor DTU-aankoop modellen.
+* Zie [DTU-resource limieten-Azure SQL database](resource-limits-dtu-single-databases.md)voor Azure SQL database voor de resource limieten voor DTU-aankoop modellen.
 * Zie [vCore resource limieten-Azure SQL database](resource-limits-vcore-single-databases.md) en vCore resource limieten [-elastische Pools](resource-limits-vcore-elastic-pools.md)voor vCore-resource limieten.
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastische pool: opslag grootten en reken grootten

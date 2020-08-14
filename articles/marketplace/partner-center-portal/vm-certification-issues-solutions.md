@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319895"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225365"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problemen en oplossingen tijdens de certificering van virtuele machines 
 
@@ -154,7 +154,7 @@ Verzend de aanvraag opnieuw met een grootte die kleiner is dan of gelijk is aan 
 
 Raadpleeg de volgende regels voor beperkingen op de schijf grootte van het besturings systeem. Wanneer u een aanvraag indient, controleert u of de grootte van de besturingssysteem schijf binnen de limiet voor Linux of Windows valt.
 
-|Besturingssysteem|Aanbevolen grootte voor VHD|
+|OS|Aanbevolen grootte voor VHD|
 |---|---|
 |Linux|30 GB tot 1023 GB|
 |Windows|30 GB tot 250 GB|
@@ -180,7 +180,7 @@ De versie van het installatie kopie bestand kan worden gecontroleerd vanuit `C:\
 > [!NOTE]
 > Windows Server 2019 heeft geen verplichte versie vereisten.
 
-|Besturingssysteem|Versie|
+|OS|Versie|
 |---|---|
 |Windows met 2008 R2|6.1.7601.23689|
 |Windows Server 2012|6.2.9200.22099|
@@ -210,12 +210,12 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-v
 ||18,10|4.18.0-1023|
 ||19,04|5.0.0-1010|
 ||19,04|5.3.0-1004|
-|RHEL en Cent OS|6,10|2.6.32-754.15.3|
+|RHEL en Cent OS|6.10|2.6.32-754.15.3|
 ||7.2|3.10.0-327.79.2|
 ||7.3|3.10.0-514.66.2|
 ||7.4|3.10.0-693.50.3|
-||7,5|3.10.0-862.34.2|
-||7,6|3.10.0-957.21.3|
+||7.5|3.10.0-862.34.2|
+||7.6|3.10.0-957.21.3|
 ||7,7|3.10.0-1062.1.1|
 ||8.0|4.18.0-80.4.2|
 ||8.1|4.18.0-147|
@@ -233,9 +233,9 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-v
 ||SLES15|4.12.14-5.30.1 (kernel-Azure)|
 ||SLES15 voor SAP|4.12.14-5.30.1 (kernel-Azure)|
 ||SLES15SP1|4.12.14-5.30.1 (kernel-Azure)|
-|Oracle|6,10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
+|Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0-7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK volgt RHEL hierboven|
-||7,6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
+||7.6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
 |CoreOS stabiele 2079.6.0|4.19.43*|
 ||Bèta 2135.3.1|4.19.50*|
 ||Alpha-2163.2.1|4.19.50*|
@@ -294,7 +294,7 @@ Als alle installatie kopieën die vanuit Azure Marketplace worden gemaakt, opnie
 
 * Voor **Linux**wordt met het volgende proces een virtuele Linux-machine gegeneraliseerd en opnieuw geïmplementeerd als een afzonderlijke VM.
 
-  Voer in het SSH-venster de volgende opdracht in:`sudo waagent -deprovision+user`
+  Voer in het SSH-venster de volgende opdracht in: `sudo waagent -deprovision+user`
 
 * Voor **Windows**kunt u Windows-installatie kopieën generaliseren met behulp van `sysreptool` .
 
@@ -314,6 +314,57 @@ Gebruik de volgende tabel voor oplossingen voor fouten die betrekking hebben op 
 Als de optie Remote Desktop Protocol (RDP) niet is ingeschakeld voor de Windows-installatie kopie, wordt deze fout weer gegeven. 
 
 Schakel RDP-toegang voor Windows-installatie kopieën in voordat u deze verzendt.
+
+## <a name="bash-history-failed"></a>Bash-geschiedenis is mislukt
+
+U ziet deze fout als de grootte van de bash-geschiedenis in uw verzonden afbeelding meer dan 1 kilo byte (KB) is. De grootte is beperkt tot 1 KB om ervoor te zorgen dat mogelijk gevoelige gegevens niet worden vastgelegd in uw bash-geschiedenis bestand.
+
+Hieronder vindt u de stappen voor het verwijderen van de ' bash-geschiedenis '.
+
+Stap 1. Implementeer de virtuele machine en klik op de optie opdracht uitvoeren op Azure Portal.
+![Opdracht uitvoeren op Azure Portal](./media/vm-certification-issues-solutions-3.png)
+
+Stap 2. Selecteer eerste optie ' RunShellScript ' en voer de onderstaande opdracht uit.
+
+Opdracht: "kat/dev/null > ~/. bash_history && geschiedenis-c" ![ bash-geschiedenis opdracht op Azure Portal](./media/vm-certification-issues-solutions-4.png)
+
+Stap 3. Nadat de opdracht is uitgevoerd, start u de VM opnieuw op.
+
+Stap 4. Generaliseer de virtuele machine, maak de VHD met installatie kopieën en stop de virtuele machine.
+
+Stap 5.     Verzend de gegeneraliseerde installatie kopie opnieuw.
+
+## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Uitzonde ringen aanvragen (aangepaste sjablonen) op VM-installatie kopieën voor selectieve tests
+
+Uitgevers kunnen bereiken voor het aanvragen van uitzonde ringen voor weinig testen die tijdens de VM-certificering worden uitgevoerd. Uitzonde ringen zijn in extreem zeldzame gevallen beschikbaar wanneer Publisher bewijs levert ter ondersteuning van de aanvraag.
+Het certificerings team behoudt zich het recht voor om uitzonde ringen op elk gewenst moment te weigeren of goed te keuren.
+
+In de volgende secties wordt gecommuniceerd over belang rijke scenario's waarin uitzonde ringen worden aangevraagd en hoe u een uitzonde ring kunt aanvragen.
+
+Scenario's voor uitzonde ring
+
+Er zijn drie scenario's/gevallen waarin uitgevers deze uitzonde ringen doorgaans aanvragen. 
+
+* **Uitzonde ring voor een of meer test cases:** Uitgevers kunnen contact uitzonde ringen voor [ondersteunings](https://aka.ms/marketplacepublishersupport) aanvragen voor de Marketplace vinden voor test cases. 
+
+* **Vergrendelde vm's/geen hoofd toegang:** Enkele uitgevers hebben scenario's waarbij Vm's moeten worden vergrendeld omdat ze software hebben, zoals firewalls die zijn geïnstalleerd op de virtuele machine. 
+       In dit geval kunnen uitgevers het [gecertificeerde test programma](https://aka.ms/AzureCertificationTestTool) hier downloaden en het rapport op Marketplace- [Uitgever ondersteuning](https://aka.ms/marketplacepublishersupport) bieden.
+
+
+* **Aangepaste sjablonen:** Sommige uitgevers publiceren VM-installatie kopieën waarvoor een aangepaste ARM-sjabloon is vereist voor het implementeren van de Vm's. In dit geval worden uitgevers gevraagd om de aangepaste sjablonen te bieden op [Marketplace-Uitgever ondersteuning](https://aka.ms/marketplacepublishersupport) , zodat dezelfde kan worden gebruikt door het certificerings team voor validatie. 
+
+### <a name="information-to-provide-for-exception-scenarios"></a>Informatie over uitzonderings scenario's
+
+Uitgevers moeten toegang krijgen tot de ondersteuning op [Marketplace-Uitgever ondersteuning](https://aka.ms/marketplacepublishersupport) voor het aanvragen van uitzonde ringen voor het bovenstaande scenario met de volgende informatie:
+
+   1.   Uitgevers-ID: de uitgevers-ID in het partner centrum-Portal
+   2.   Aanbiedings-ID/naam: de aanbiedings-ID/naam waarvoor een uitzonde ring is aangevraagd 
+   3.   SKU/plan-ID: de plan-ID/SKU van de VM-aanbieding waarvoor een uitzonde ring is aangevraagd
+   4.    Versie: de versie van de VM-aanbieding waarvoor een uitzonde ring is aangevraagd
+   5.   Uitzonderings type: tests, vergrendelde virtuele machine, aangepaste sjablonen
+   6.   Reden van aanvraag: reden voor deze uitzonde ring en informatie over de tests die moeten worden uitgesloten 
+   7.   Bijlage: Voeg documenten met een belang rijk bewijs toe. Voor vergrendelde Vm's koppelt u het test rapport en aangepaste sjablonen, geeft u de aangepaste ARM-sjabloon op als bijlage. Fout bij het koppelen van het rapport voor de vergrendelde Vm's en de aangepaste ARM-sjabloon voor aangepaste sjablonen, resulteert in een weigering van de aanvraag
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903847"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226040"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -74,7 +74,7 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
 
    - Selecteer **Nu proberen** in de rechterbovenhoek van een codeblok. **Probeer** het opnieuw Azure Cloud shell, maar de code wordt niet automatisch gekopieerd naar Cloud shell.
 
-   - Open Cloud Shell door naar te gaan[https://shell.azure.com](https://shell.azure.com)
+   - Open Cloud Shell door naar te gaan [https://shell.azure.com](https://shell.azure.com)
 
    - Selecteer de knop **Cloud shell** in de menu balk in de rechter bovenhoek van de [Azure Portal](https://portal.azure.com)
 
@@ -415,16 +415,19 @@ Voer in het deelvenster **Servereindpunt toevoegen** de volgende gegevens in om 
 - **Pad**: het pad naar de Windows-Server dat moet worden gesynchroniseerd als onderdeel van de synchronisatie groep.
 - **Cloud lagen**: een schakel optie om Cloud lagen in of uit te scha kelen. Met Cloud lagen kunnen zelden gebruikte of geopende bestanden worden getierd naar Azure Files.
 - **Beschik bare volume ruimte**: de hoeveelheid beschik bare ruimte die moet worden gereserveerd op het volume waarop het server eindpunt zich bevindt. Als volume beschik bare ruimte bijvoorbeeld is ingesteld op 50% op een volume met één server eindpunt, wordt er ongeveer de helft van de hoeveelheid gegevens gelaagd tot Azure Files. Ongeacht of Cloud lagen zijn ingeschakeld, heeft uw Azure-bestands share altijd een volledige kopie van de gegevens in de synchronisatie groep.
+- **Eerste download modus**: dit is een optionele selectie, te beginnen met Agent versie 11. Dit kan handig zijn wanneer er bestanden aanwezig zijn in de Azure-bestands share, maar niet op de server. Een dergelijke situatie kan bijvoorbeeld voor komen als u een server eindpunt maakt om een andere filiaal server toe te voegen aan een synchronisatie groep of wanneer u een mislukte Server herstelt. Als Cloud lagen zijn ingeschakeld, wordt standaard alleen de naam ruimte ingetrokken, maar geen bestands inhoud. Dit is handig als u van mening bent dat aanvragen voor gebruikers toegang moeten bepalen welke bestands inhoud wordt ingetrokken voor de server. Als Cloud lagen zijn uitgeschakeld, is de standaard instelling dat de naam ruimte eerst wordt gedownload. vervolgens worden de bestanden ingetrokken op basis van het tijds tempel laatst gewijzigd totdat de lokale capaciteit is bereikt. U kunt de eerste download modus echter alleen wijzigen in de naam ruimte. Een derde modus kan alleen worden gebruikt als Cloud lagen zijn uitgeschakeld voor dit server eindpunt. In deze modus wordt voor komen dat de naam ruimte eerst wordt ingetrokken. Bestanden worden alleen op de lokale server weer gegeven als ze volledig kunnen worden gedownload. Deze modus is handig als voor een exemplaar van een toepassing volledige bestanden moeten aanwezig zijn en geen gelaagde bestanden in de naam ruimte kunnen verdragen.
 
 Selecteer **maken**om het server eindpunt toe te voegen. Uw bestanden worden nu gesynchroniseerd op de Azure-bestands share en Windows-Server. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Voer de volgende Power shell-opdrachten uit om het server eindpunt te maken en vervang `<your-server-endpoint-path>` en `<your-volume-free-space>` door de gewenste waarden.
+Voer de volgende Power shell-opdrachten uit om het server-eind punt te maken, vervang `<your-server-endpoint-path>` , `<your-volume-free-space>` en de gewenste waarden en controleer de optionele instelling voor het optionele beleid voor eerste down loads.
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
+# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
+$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -441,14 +444,16 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
+        -InitialDownloadPolicy $initialDownloadPolicy
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath 
+        -ServerLocalPath $serverEndpointPath `
+        -InitialDownloadPolicy $initialDownloadPolicy
 }
 ```
 
@@ -460,23 +465,24 @@ Gebruik de opdracht [AZ storagesync Sync-Group server-endpoint](/cli/azure/ext/s
 # Create a new sync group server endpoint 
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
                                                  --name myNewServerEndpointName
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0
                                                  --server-local-path d:\myPath
                                                  --storage-sync-service myStorageSyncServiceNAme
                                                  --sync-group-name mySyncGroupName
 
 # Create a new sync group server endpoint with additional optional parameters
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --name myNewServerEndpointName \
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
-                                                 --server-local-path d:\myPath \
                                                  --storage-sync-service myStorageSyncServiceName \
                                                  --sync-group-name mySyncGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0 \
+                                                 --server-local-path d:\myPath \
                                                  --cloud-tiering on \
+                                                 --volume-free-space-percent 85 \
+                                                 --tier-files-older-than-days 15 \
+                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
                                                  --offline-data-transfer on \
                                                  --offline-data-transfer-share-name myfilesharename \
-                                                 --tier-files-older-than-days 15 \
-                                                 --volume-free-space-percent 85 \
 
 ```
 
@@ -567,6 +573,40 @@ Het standaard maximum aantal VSS-moment opnamen per volume (64) en het standaard
 
 Als Max. 64 VSS-moment opnamen per volume niet de juiste instelling voor u zijn. u kunt [deze waarde wijzigen via een register sleutel](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Om de nieuwe limiet van kracht te laten worden, moet u de cmdlet opnieuw uitvoeren om de compatibiliteit van eerdere versies in te scha kelen op elk volume waarop deze eerder was ingeschakeld, met de vlag-Force om het nieuwe maximum aantal VSS-moment opnamen per volume in rekening te brengen. Dit leidt tot een nieuw berekend aantal compatibele dagen. Houd er rekening mee dat deze wijziging alleen van kracht wordt op nieuwe gelaagde bestanden en eventuele aanpassingen van de VSS-planning die u hebt aangebracht, worden overschreven.
+
+<a id="proactive-recall"></a>
+## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>Proactief nieuwe en gewijzigde bestanden van een Azure-bestands share intrekken
+
+Met Agent versie 11 wordt een nieuwe modus beschikbaar op een server eindpunt. In deze modus kunnen wereld wijd gedistribueerde bedrijven de server cache in een externe regio vooraf invullen, zelfs voordat lokale gebruikers bestanden openen. Wanneer deze modus is ingeschakeld op een server eindpunt, zal deze server bestanden intrekken die zijn gemaakt of gewijzigd in de Azure-bestands share.
+
+### <a name="scenario"></a>Scenario
+
+Een wereld wijd gedistribueerd bedrijf heeft filialen in de Verenigde Staten en in India. In de ochtend (Amerikaanse tijd) informatie medewerkers maken we een nieuwe map en nieuwe bestanden voor een gloed nieuw project en werken ze allemaal op de hele dag. Azure File Sync synchroniseert de map en bestanden naar de Azure-bestands share (Cloud-eind punt). Informatie medewerkers in India blijven werken aan het project in hun tijd zone. Wanneer deze 's morgens arriveren, moeten de lokale Azure File Sync ingeschakelde server in India deze nieuwe bestanden lokaal beschikbaar stellen, zodat het India-team op een efficiënte manier op een lokale cache kan werken. Als u deze modus inschakelt, voor komt u dat de initiële bestands toegang langzamer is vanwege on-demand intrekken en kan de server de bestanden proactief terughalen zodra ze zijn gewijzigd of gemaakt in de Azure-bestands share.
+
+> [!IMPORTANT]
+> Het is belang rijk om te realiseren dat het bijhouden van wijzigingen in de Azure-bestands share die op de-server van toepassing is, uw uitgangs verkeer en de factuur van Azure kan verg Roten. Als bestanden die naar de server worden teruggeroepen, niet lokaal nodig zijn, kan het onnodig terughalen naar de server negatieve gevolgen hebben. Gebruik deze modus wanneer u de cache vooraf invult op een server met recente wijzigingen in de Cloud, een positieve invloed heeft op gebruikers of toepassingen die gebruikmaken van de bestanden op die server.
+
+### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>Een server eindpunt inschakelen om proactief te intrekken wat er is gewijzigd in een Azure-bestands share
+
+# <a name="portal"></a>[Portal](#tab/proactive-portal)
+
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de opslag synchronisatie service, selecteer de juiste synchronisatie groep en Identificeer vervolgens het server eindpunt waarvoor u de wijzigingen in de Azure-bestands share (Cloud eindpunt) nauw keurig wilt bijhouden.
+1. Zoek in de sectie Cloud-Tiering het onderwerp ' Azure file share downloaden '. De momenteel geselecteerde modus wordt weer geven en kan worden gewijzigd om de wijzigingen in de Azure-bestands share nauw keuriger op te sporen en deze proactief in te trekken op de server.
+
+:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="Een afbeelding met het Download gedrag van de Azure-bestands share voor een server eindpunt dat momenteel actief is en een knop om een menu te openen waarmee het kan worden gewijzigd.":::
+
+# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
+
+U kunt de eigenschappen van het server eindpunt wijzigen in Power shell via de cmdlet [set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) .
+
+```powershell
+# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
+$recallBehavior = "DownloadNewAndModifiedFiles"
+
+Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
+```
+
+---
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Een DSF-replicatie-implementatie (DFS-R) migreren naar Azure File Sync
 Een DFS-R-implementatie migreren naar Azure File Sync:

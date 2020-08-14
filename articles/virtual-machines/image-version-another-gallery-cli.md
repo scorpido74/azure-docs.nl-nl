@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f1e3598f2a805dfc2ebf92395db6b7bf6b0b147a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494680"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225832"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Een afbeelding uit een andere galerie kopiëren met behulp van de Azure CLI
 
@@ -84,7 +84,7 @@ az sig image-definition show \
    --gallery-image-definition myImageDefinition
 ```
 
-De uitvoer ziet er ongeveer als volgt uit:
+De uitvoer ziet er ongeveer uit zoals in dit voorbeeld:
 
 ```output
 {
@@ -154,7 +154,7 @@ az sig image-version create \
 > [!NOTE]
 > U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken.
 >
-> U kunt uw installatiekopie ook opslaan in Premium Storage door een `--storage-account-type  premium_lrs` toe te voegen, of in [Zone-redundante opslag](../storage/common/storage-redundancy.md) door `--storage-account-type  standard_zrs` toe te voegen wanneer u de installatiekopieversie maakt.
+> U kunt uw installatie kopie ook opslaan in Premium Storage door `--storage-account-type  premium_lrs` toe te voegen of [zone redundante opslag](../storage/common/storage-redundancy.md) te maken door toe te voegen `--storage-account-type  standard_zrs` Wanneer u de versie van de installatie kopie maakt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen

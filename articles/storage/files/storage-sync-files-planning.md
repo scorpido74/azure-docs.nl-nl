@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 17274c2b5308b1e5069370400895c001dc03e5bb
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030658"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224438"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 
@@ -147,7 +147,7 @@ Alleen NTFS-volumes worden ondersteund. ReFS, FAT, FAT32 en andere bestands syst
 
 De volgende tabel bevat de interop-status van NTFS-bestandssysteem functies: 
 
-| Functie | Ondersteuningsstatus | Opmerkingen |
+| Functie | Ondersteuningsstatus | Notities |
 |---------|----------------|-------|
 | ACL’s (toegangsbeheerlijsten) | Volledig ondersteund | Discretionaire toegangs beheer lijsten voor Windows-stijlen worden bewaard door Azure File Sync en worden afgedwongen door Windows Server op server-eind punten. U kunt ook Acl's afdwingen wanneer u de Azure-bestands share rechtstreeks koppelt, maar hiervoor is echter wel extra configuratie vereist. Zie de [sectie identiteit](#identity) voor meer informatie. |
 | Vaste koppelingen | Overgeslagen | |
@@ -314,7 +314,7 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | Europa | Europa -west | `westeurope` |
 | Openbaar | Frankrijk | Frankrijk - centraal | `francecentral` |
 | Openbaar | Frankrijk | Frankrijk-zuid * | `francesouth` |
-| Openbaar | India | India - centraal | `centralindia` |
+| Openbaar | India | Central India | `centralindia` |
 | Openbaar | India | India - zuid | `southindia` |
 | Openbaar | Japan | Japan East | `japaneast` |
 | Openbaar | Japan | Japan - west | `japanwest` |
@@ -326,14 +326,14 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | VAE | UAE - noord | `uaenorth` |
 | Openbaar | VK | Verenigd Koninkrijk Zuid | `uksouth` |
 | Openbaar | VK | Verenigd Koninkrijk West | `ukwest` |
-| Openbaar | VS | VS - centraal | `centralus` |
+| Openbaar | VS | Central US | `centralus` |
 | Openbaar | VS | VS - oost | `eastus` |
 | Openbaar | VS | VS - oost 2 | `eastus2` |
 | Openbaar | VS | VS - noord-centraal | `northcentralus` |
 | Openbaar | VS | South Central US | `southcentralus` |
 | Openbaar | VS | VS - west-centraal | `westcentralus` |
 | Openbaar | VS | VS - west | `westus` |
-| Openbaar | VS | VS - west 2 | `westus2` |
+| Openbaar | VS | West US 2 | `westus2` |
 | US Gov | VS | VS (overheid) - Arizona | `usgovarizona` |
 | US Gov | VS | VS (overheid) - Texas | `usgovtexas` |
 | US Gov | VS | VS (overheid) - Virginia | `usgovvirginia` |
@@ -376,7 +376,7 @@ Als u liever een on-premises back-upoplossing gebruikt, moeten back-ups worden u
 > Herstellen met Bare-Metal (BMR) kan leiden tot onverwachte resultaten en wordt op dit moment niet ondersteund.
 
 > [!Note]  
-> Met versie 9 van de Azure File Sync agent worden VSS-moment opnamen (inclusief het tabblad vorige versies) nu ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld. U moet echter compatibiliteit met eerdere versies inschakelen via Power shell. [Meer informatie](storage-files-deployment-guide.md).
+> Met versie 9 van de Azure File Sync agent worden VSS-moment opnamen (inclusief het tabblad vorige versies) nu ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld. U moet echter compatibiliteit met eerdere versies inschakelen via Power shell. [Meer informatie](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service).
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Updatebeleid Azure File Sync-agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

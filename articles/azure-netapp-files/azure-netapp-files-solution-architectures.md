@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 48e3f895fb123429f1bedd106bd92113533c84ae
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8ed9f6565da55d3ffbe522bbdf404265c487f67c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055799"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225611"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Oplossingsarchitecturen op basis van Azure NetApp Files
 Dit artikel bevat verwijzingen naar aanbevolen procedures waarmee u inzicht krijgt in de oplossings architecturen voor het gebruik van Azure NetApp Files.  
@@ -85,6 +85,7 @@ Deze sectie bevat verwijzingen naar oplossingen voor virtuele-bureaublad infrast
 
 ### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
 
+* [Virtuele Windows-bureau blad gebruiken met Azure NetApp Files](solutions-windows-virtual-desktop.md)
 * [Opslag opties voor FSLogix-profiel containers in virtueel bureau blad van Windows](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [Virtueel bureau blad van Windows op schaal van onderneming](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: a3a2474b491abd31b750a15aad7860666c7bd02e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84124360"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186374"
 ---
 In dit artikel wordt uitgelegd hoe u back-ups en herstel na noodgevallen van virtuele IaaS-machines en schijven in Azure kunt plannen. In dit document worden zowel beheerde als onbeheerde schijven beschreven.
 
@@ -257,9 +257,6 @@ Het belangrijkste verschil tussen geografisch redundante opslag en geografisch r
 Als het een aanzienlijke storing blijkt te zijn, kan het Azure-team een geo-failover activeren en de primaire DNS-vermeldingen wijzigen om naar de secundaire opslag te verwijzen. Als u op dit moment geografisch redundante opslag of geografisch redundante opslag met leestoegang hebt ingeschakeld, kunt u toegang tot de gegevens krijgen in de regio die vroeger de secundaire was. Met andere woorden, als uw opslagaccount geografisch redundante opslag is en er een probleem is, hebt u alleen toegang tot de secundaire opslag als er een geo-failover is.
 
 Zie voor meer informatie [Wat te doen in het geval van een Azure Storage-storing](../articles/storage/common/storage-disaster-recovery-guidance.md).
-
->[!NOTE] 
->Microsoft bepaalt of er een failover wordt uitgevoerd. Een failover wordt niet per opslagaccount beheerd en wordt dus niet bepaald door individuele klanten. Als u herstel na noodgevallen voor specifieke opslagaccounts of schijven van virtuele machines wilt implementeren, moet u de technieken gebruiken die eerder in dit artikel zijn beschreven.
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

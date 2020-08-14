@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: beea6f7472d6bc871b4a2df323445b05671a621f
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056275"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224557"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Over Azure Key Vault certificaat vernieuwen
 
@@ -60,8 +60,11 @@ Goed nieuws. Azure-sleutel kluizen zorgen er ook voor dat zelfondertekende certi
 Als het certificaat dat is uitgegeven de status uitgeschakeld heeft in de Azure Portal, gaat u door met het weer geven van de certificaat bewerking om het fout bericht voor dat certificaat weer te geven.
 
 ### <a name="frequently-asked-questions"></a>Veelgestelde vragen
-Worden de labels gerepliceerd nadat het certificaat automatisch is vernieuwd?
-Nee, tags worden alleen gerepliceerd als de gebruiker de labels zelf hand matig kopieert.
+* Hoe kan ik de functie voor het door draaien van het certificaat testen?
+  Maak een certificaat met een geldigheids duur van 1 maand en stel vervolgens de actie voor de levens duur voor rotatie in op 1%. Met deze instelling wordt het certificaat binnen 7,2 uur geroteerd.
+  
+* Worden de labels gerepliceerd nadat het certificaat automatisch is vernieuwd?
+  Nee, tags worden alleen gerepliceerd als de gebruiker de labels zelf hand matig kopieert.
 
 ### <a name="see-also"></a>Zie ook
 *   [Key Vault integreren met DigiCert-certificeringsinstantie](how-to-integrate-certificate-authority.md)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489789"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224914"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Azure Multi-Factor Authentication met verouderde toepassingen inschakelen en gebruiken met behulp van app-wacht woorden
 
@@ -41,6 +41,8 @@ Wanneer u app-wacht woorden gebruikt, zijn de volgende overwegingen van toepassi
 * Toepassingen die wacht woorden in de cache opslaan en gebruiken in on-premises scenario's, kunnen mislukken omdat het app-wacht woord niet bekend is buiten het werk-of school account. Een voor beeld van dit scenario is Exchange-e-mail berichten die on-premises zijn, maar de gearchiveerde e-mail bevindt zich in de Cloud. In dit scenario werkt hetzelfde wacht woord niet.
 * Nadat Azure Multi-Factor Authentication is ingeschakeld op het account van een gebruiker, kunnen app-wacht woorden worden gebruikt met de meeste niet-browser-clients, zoals Outlook en micro soft Skype voor bedrijven. Beheer acties kunnen echter niet worden uitgevoerd met behulp van app-wacht woorden via niet-browser toepassingen, zoals Windows Power shell. De acties kunnen niet worden uitgevoerd, zelfs niet wanneer de gebruiker een Administrator-account heeft.
     * Als u Power shell-scripts wilt uitvoeren, maakt u een service account met een sterk wacht woord en schakelt u het account niet in voor verificatie in twee stappen.
+* Als u vermoedt dat er is geknoeid met een gebruikers account en het wacht woord voor het account opnieuw in te trekken/opnieuw instellen, moeten ook app-wacht woorden worden bijgewerkt. App-wacht woorden worden niet automatisch ingetrokken wanneer een wacht woord voor een gebruikers account wordt ingetrokken/opnieuw ingesteld. De gebruiker moet bestaande app-wacht woorden verwijderen en nieuwe maken.
+   * Zie [app-wacht woorden maken en verwijderen op de pagina aanvullende beveiligings verificatie](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)voor meer informatie.
 
 >[!WARNING]
 > App-wacht woorden werken niet in hybride omgevingen waar clients communiceren met zowel lokale als Cloud-eind punten voor automatische detectie. Domein wachtwoorden zijn vereist voor de verificatie van on-premises. App-wacht woorden zijn vereist voor verificatie met de Cloud.
@@ -81,7 +83,7 @@ In dit scenario gebruikt u de volgende referenties:
 
 Standaard kunnen gebruikers geen app-wacht woorden maken. De functie voor het maken van app-wacht woorden moet zijn ingeschakeld voordat gebruikers deze kunnen gebruiken. Voer de volgende stappen uit om gebruikers de mogelijkheid te geven om app-wacht woorden te maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 2. Zoek en selecteer **Azure Active Directory**en kies vervolgens **gebruikers**.
 3. Selecteer **multi-factor Authentication** in de navigatie balk aan de bovenkant van het venster *gebruikers* .
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.

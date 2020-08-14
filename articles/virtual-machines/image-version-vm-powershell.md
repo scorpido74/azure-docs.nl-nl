@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 681bd0aff909552531d682186d5b22dce5ef33f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 757b297d3d74365928cda0934485c0018f28ffee
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010764"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225645"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Voor beeld: een installatie kopie maken op basis van een virtuele machine
 
@@ -133,7 +133,7 @@ $job.State
 > [!NOTE]
 > U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken.
 >
-> U kunt uw installatiekopie ook opslaan in Premium Storage door een `-StorageAccountType Premium_LRS` toe te voegen, of in [Zone-redundante opslag](../storage/common/storage-redundancy.md) door `-StorageAccountType Standard_ZRS` toe te voegen wanneer u de installatiekopieversie maakt.
+> U kunt uw installatie kopie ook opslaan in Premium Storage door `-StorageAccountType Premium_LRS` toe te voegen of [zone redundante opslag](../storage/common/storage-redundancy.md) te maken door toe te voegen `-StorageAccountType Standard_ZRS` Wanneer u de versie van de installatie kopie maakt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen

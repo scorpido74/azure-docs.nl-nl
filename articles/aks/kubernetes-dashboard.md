@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499861"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225985"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Toegang tot het Kubernetes Web dash board in azure Kubernetes service (AKS)
 
@@ -20,7 +20,7 @@ Kubernetes bevat een webdashboard dat kan worden gebruikt voor elementaire behee
 Voor meer informatie over het Kubernetes-dash board raadpleegt u [Kubernetes Web UI-dash board][kubernetes-dashboard]. AKS maakt gebruik van versie 2,0 en groter van het open-source dash board.
 
 > [!WARNING]
-> **De AKS-dashboard invoeg toepassing is ingesteld voor afschaffing.** 
+> **De AKS-dashboard invoeg toepassing is ingesteld voor afschaffing. Gebruik in plaats daarvan de [resource weergave Kubernetes in de Azure Portal (preview)][kubernetes-portal] .** 
 > * Het Kubernetes-dash board is standaard ingeschakeld voor clusters met een Kubernetes-versie van minder dan 1,18.
 > * De dash board-invoeg toepassing wordt standaard uitgeschakeld voor alle nieuwe clusters die zijn gemaakt op Kubernetes 1,18 of hoger. 
  > * Vanaf Kubernetes 1,19 in de preview-versie van AKS wordt de installatie van de invoeg toepassing Managed uitvoeren-dash board niet meer ondersteund. 
@@ -54,8 +54,8 @@ Met deze opdracht maakt u een proxy tussen uw ontwikkel systeem en de Kubernetes
 
 > [!NOTE]
 > Als u het dash board niet ziet, `http://127.0.0.1:8001` kunt u hand matig naar de volgende adressen omleiden. Clusters op 1,16 of meer gebruikmaken van HTTPS en vereisen een afzonderlijk eind punt.
-> * K8s 1,16 of hoger:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
-> * K8s 1,15 en lager:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
+> * K8s 1,16 of hoger: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+> * K8s 1,15 en lager: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -117,7 +117,7 @@ Het eerste scherm dat wordt weer gegeven, vereist een kubeconfig of token. Voor 
 
 Voor zowel Azure AD ingeschakelde als niet-Azure AD-clusters kan een kubeconfig worden door gegeven in. Controleer of de toegangs tokens geldig zijn. als uw tokens verlopen zijn, kunt u tokens vernieuwen via kubectl.
 
-1. De beheerder kubeconfig instellen met`az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
+1. De beheerder kubeconfig instellen met `az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
 1. Selecteer `Kubeconfig` en klik `Choose kubeconfig file` om bestands kiezer te openen
 1. Uw kubeconfig-bestand selecteren (de standaard instelling is $HOME/.Kube/config)
 1. Klik op `Sign In`
@@ -209,3 +209,4 @@ Meer informatie over het Kubernetes-dash board vindt u in het [dash board Kubern
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
+[kubernetes-portal]: ./kubernetes-portal.md

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c119ebc8d87c00608fc515099711463f47b8ed1a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901807"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225535"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migreren van een beheerde installatie kopie naar een afbeelding van de galerie met gedeelde afbeeldingen
 
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken. 
 >
-> U kunt uw installatiekopie ook opslaan in Premium Storage door een `-StorageAccountType Premium_LRS` toe te voegen, of in [Zone-redundante opslag](../storage/common/storage-redundancy.md) door `-StorageAccountType Standard_ZRS` toe te voegen wanneer u de installatiekopieversie maakt.
+> U kunt uw installatie kopie ook opslaan in Premium Storage door `-StorageAccountType Premium_LRS` toe te voegen of [zone redundante opslag](../storage/common/storage-redundancy.md) te maken door toe te voegen `-StorageAccountType Standard_ZRS` Wanneer u de versie van de installatie kopie maakt.
 >
 
 ## <a name="delete-the-managed-image"></a>De beheerde installatie kopie verwijderen

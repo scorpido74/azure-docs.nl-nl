@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: fd19b451638eacbf0d6174154a2688b3523ca4d2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ac9264ea8d6cc71d19d2c9bbd23b2123bdf1f924
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183867"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224353"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Toepassingen migreren naar micro soft Authentication Library (MSAL)
 
@@ -49,7 +49,7 @@ De volgende artikelen kunnen u helpen bij het migreren naar MSAL:
 - [Migreren naar MSAL Python](migrate-python-adal-msal.md)
 - [Xamarin-apps migreren met behulp van brokers naar MSAL.NET](msal-net-migration-ios-broker.md)
 
-## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ's)
+## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
 
 __V: wordt ADAL verouderd?__  
 A: Ja. Vanaf 30 juni 2020 worden nieuwe functies niet meer toegevoegd aan ADAL. We zullen tot en met 30 juni 2022 essentiële beveiligingsfixes blijven toevoegen aan ADAL. Na deze datum blijven uw apps die gebruikmaken van ADAL werken, maar wordt u aangeraden om een upgrade uit te voeren naar MSAL, zodat u kunt profiteren van de nieuwste functies en veilig kunt blijven.
@@ -62,6 +62,9 @@ A: als u de bron code voor de toepassing hebt, kunt u verwijzen naar de bovensta
 
 __V: Waarom moet ik investeren in overstappen op MSAL?__  
 A: MSAL bevat nieuwe functies die zich niet in ADAL bevinden, zoals incrementele toestemming, eenmalige aanmelding en Token cache beheer. Maar in tegens telling tot ADAL zal MSAL nog steeds beveiligings patches ontvangen van meer dan 30 juni 2022. [Meer informatie](msal-overview.md).
+
+__V: werkt micro soft zijn eigen apps bij naar MSAL?__  
+Ja. Micro soft is bezig met het migreren van de toepassingen naar MSAL door de deadline voor het einde van de ondersteuning, zodat ze profiteren van de voortdurende beveiligings-en functie verbeteringen van MSAL.
 
 __V: maakt u een hulp programma waarmee ik mijn apps kan verplaatsen van ADAL naar MSAL?__  
 A: Nee. Verschillen tussen de bibliotheken vereisen dat resources worden gebruikt voor het ontwikkelen en onderhouden van het hulp programma dat anders zou worden besteed aan het verbeteren van MSAL. We bieden echter de voor gaande set migratie handleidingen om u te helpen de vereiste wijzigingen in uw toepassing aan te brengen.

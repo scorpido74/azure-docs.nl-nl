@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119518"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225968"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Azure Cosmos Emulator gebruiken voor lokaal ontwikkelen en testen
 
@@ -114,12 +114,13 @@ Om voor de eerste keer toegang te krijgen tot het netwerk, moet de gebruiker de 
 
 ### <a name="sql-api"></a>SQL-API
 
-Wanneer Azure Cosmos Emulator wordt uitgevoerd op uw computer, kunt u elke ondersteunde [Azure Cosmos DB-SDK](sql-api-sdk-dotnet.md) of de [Azure Cosmos DB REST-API](/rest/api/cosmos-db/) gebruiken voor interactie met de emulator. Azure Cosmos Emulator bevat ook een ingebouwde Data Explorer. Hiermee kunt u containers maken voor de SQL-API of Cosmos DB voor MongoDB-API en kunt u items weergeven en bewerken zonder code te schrijven.
+Wanneer Azure Cosmos Emulator wordt uitgevoerd op uw computer, kunt u elke ondersteunde [Azure Cosmos DB-SDK](sql-api-sdk-dotnet-standard.md) of de [Azure Cosmos DB REST-API](/rest/api/cosmos-db/) gebruiken voor interactie met de emulator. Azure Cosmos Emulator bevat ook een ingebouwde Data Explorer. Hiermee kunt u containers maken voor de SQL-API of Cosmos DB voor MongoDB-API en kunt u items weergeven en bewerken zonder code te schrijven.
 
 ```csharp
 // Connect to the Azure Cosmos Emulator running locally
-DocumentClient client = new DocumentClient(
-   new Uri("https://localhost:8081"), "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
+CosmosClient client = new CosmosClient(
+   "https://localhost:8081", 
+    "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
 ```
 
@@ -274,7 +275,7 @@ Typ `Microsoft.Azure.Cosmos.Emulator.exe /?` bij de opdrachtprompt om een lijst 
 | NoUI | De gebruikersinterface van de emulator niet weergeven. | Microsoft.Azure.Cosmos.Emulator.exe /NoUI | |
 | NoExplorer | Geen Data Explorer weergeven bij het opstarten. |Microsoft.Azure.Cosmos.Emulator.exe /NoExplorer | | 
 | PartitionCount | Specificeert het maximum aantal gepartitioneerde containers. Zie [Het aantal containers wijzigen](#set-partitioncount) voor meer informatie. | Microsoft.Azure.Cosmos.Emulator.exe/PartitionCount =\<partitioncount\> | \<partitioncount\>: Maximum aantal toegestane containers met één partitie. De standaardwaarde is 25. Maximaal toegestaan is 250.|
-| DefaultPartitionCount| Specificeert het standaardaantal partities voor een gepartitioneerde container. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\>De standaard waarde is 25.|
+| DefaultPartitionCount| Specificeert het standaardaantal partities voor een gepartitioneerde container. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\> De standaard waarde is 25.|
 | AllowNetworkAccess | Geeft toegang tot de emulator via een netwerk. U moet ook/Key = \<key_string\> of/keyfile = door geven \<file_name\> om netwerk toegang in te scha kelen. | Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/Key = \<key_string\> of Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/keyfile =\<file_name\>| |
 | NoFirewall | Firewallregels niet aanpassen wanneer de optie /AllowNetworkAccess wordt gebruikt. |Microsoft.Azure.Cosmos.Emulator.exe /NoFirewall | |
 | GenKeyFile | Een nieuwe autorisatiesleutel genereren en opslaan in het opgegeven bestand. De gegenereerde sleutel kan worden gebruikt met de opties/Key of/KeyFile. | Microsoft.Azure.Cosmos.Emulator.exe/GenKeyFile =\<path to key file\> | |
@@ -428,7 +429,7 @@ Als er een .NET-clienttoepassing wordt uitgevoerd in een Linux-docker-container 
 
 ## <a name="running-on-mac-or-linux"></a>Uitvoeren op Mac of Linux<a id="mac"></a>
 
-De Cosmos-emulator kan momenteel alleen worden uitgevoerd in Windows. Gebruikers die werken met een Mac of Linux kunnen de emulator uitvoeren op een virtuele Windows-machine die wordt gehost door een hypervisor zoals Parallells of VirtualBox. Hieronder ziet u de stappen om dit te doen.
+De Cosmos-emulator kan momenteel alleen worden uitgevoerd in Windows. Gebruikers met Mac of Linux kunnen de emulator uitvoeren in een virtuele Windows-machine die wordt gehost in een Hyper Visor zoals Parallels of VirtualBox. Hieronder ziet u de stappen om dit te doen.
 
 Voer in de Windows-VM de onderstaande opdracht uit en noteer het IPv4-adres.
 
@@ -444,7 +445,36 @@ De volgende stap is om vanuit de Windows-VM de Cosmos-emulator te starten vanaf 
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-Ten slotte moeten we het CA-certificaat van de emulator importeren in de Linux- of Mac-omgeving.
+Ten slotte moeten we het certificaat vertrouwens proces oplossen tussen de toepassing die wordt uitgevoerd op de Linux-of Mac-omgeving en de emulator. We hebben twee opties:
+
+1. De SSL-validatie in de toepassing uitschakelen:
+
+# <a name="net-standard-21"></a>[.NET Standard 2.1 +](#tab/ssl-netstd21)
+
+   Voor elke toepassing die wordt uitgevoerd in een framework dat compatibel is met .NET Standard 2,1 of hoger, kunnen we gebruikmaken van het `CosmosClientOptions.HttpClientFactory` volgende:
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
+
+# <a name="net-standard-20"></a>[.NET Standard 2,0](#tab/ssl-netstd20)
+
+   Voor elke toepassing die wordt uitgevoerd in een framework dat compatibel is met .NET Standard 2,0, kunnen we gebruikmaken van het `CosmosClientOptions.HttpClientFactory` volgende:
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
+
+# <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs)
+
+   Voor Node.js toepassingen kunt u het bestand wijzigen `package.json` om het in te stellen `NODE_TLS_REJECT_UNAUTHORIZED` tijdens het starten van de toepassing:
+
+   ```json
+   "start": NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js
+   ```
+
+--- 
+
+> [!NOTE]
+> Het uitschakelen van SSL-validatie wordt alleen aanbevolen voor ontwikkelings doeleinden en moet niet worden uitgevoerd in een productie omgeving.
+
+2. Importeer het Emulator-CA-certificaat in de Linux-of Mac-omgeving:
 
 ### <a name="linux"></a>Linux
 

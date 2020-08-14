@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 546c21802d275fe99ed2acbf00e32d37db3603f2
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85448713"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225190"
 ---
 Voor nu hebben Ultra disks de volgende beperkingen:
 
@@ -27,22 +27,31 @@ De volgende tabel geeft een overzicht van de regio's Ultra disks zijn beschikbaa
 |Regio's  |Aantal beschikbaarheids zones dat ondersteuning biedt voor Ultra schijven  |
 |---------|---------|
 |VS (overheid) - Virginia     |Geen         |
-|VS - zuid-centraal     |Geen         |
-|VS - centraal     |Drie zones         |
+|VS (overheid) - Arizona     |Geen         |
+|South Central US     |Geen         |
+|Central US     |Drie zones         |
 |VS - west     |Geen         |
-|VS - west 2    |Drie zones         |
+|West US 2    |Drie zones         |
 |VS - oost     |Drie zones         |
-|VS - oost 2     |Twee zones         |
+|VS - oost 2     |Drie zones         |
 |Zuidoost-Azië     |Drie zones         |
+|Azië - oost     |Geen         |
 |Europa - noord     |Drie zones          |
 |Europa -west     |Drie zones          |
 |Verenigd Koninkrijk Zuid     |Drie zones          |
-|Japan - oost     |Twee zones         |
+|Japan East     |Drie zones         |
 |Frankrijk - centraal    |Twee zones        |
+|Brazil South    |Geen        |
+|Australië - oost    |Drie zones        |
+|Canada-centraal *    |Drie zones        |
 
+\* Neem contact op met de ondersteuning van Azure om toegang te krijgen tot Beschikbaarheidszones voor deze regio.
 
 - Worden alleen ondersteund in de volgende VM-reeks:
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [Easv4](../articles/virtual-machines/eav4-easv4-series.md#easv4-series)
+    - [Edsv4](../articles/virtual-machines/edv4-edsv4-series.md#edsv4-series)
+    - [Esv4](../articles/virtual-machines/ev4-esv4-series.md#esv4-series)
     - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)

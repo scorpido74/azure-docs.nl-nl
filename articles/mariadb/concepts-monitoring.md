@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 708b243d9db16ee8454b4bc0f5c136b9f4399916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/13/2020
+ms.openlocfilehash: 088d2c0a11f7d145f0c8a7ccb2c0aac5bd2d140d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413192"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224082"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Bewaking in Azure Database for MariaDB
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MariaDB biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
@@ -24,21 +24,23 @@ Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-
 ### <a name="list-of-metrics"></a>Lijst met metrische gegevens
 Deze metrische gegevens zijn beschikbaar voor Azure Database for MariaDB:
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Description|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Beschrijving|
 |---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Het percentage CPU-gebruik.|
 |memory_percent|Geheugen percentage|Percentage|Het percentage geheugen dat in gebruik is.|
-|io_consumption_percent|IO-percentage|Percentage|Het percentage i/o dat in gebruik is. (Niet van toepassing op de Basic-laag servers.)|
+|io_consumption_percent|IO-percentage|Percentage|Het percentage i/o dat in gebruik is. (Niet van toepassing op de servers van de Basic-laag)|
 |storage_percent|Opslag percentage|Percentage|Het percentage van de opslag ruimte dat uit het maximum van de server wordt gebruikt.|
 |storage_used|Gebruikte opslag|Bytes|De hoeveelheid opslag ruimte die wordt gebruikt. De opslag die door de service wordt gebruikt, kan de database bestanden, transactie logboeken en de server logboeken bevatten.|
 |serverlog_storage_percent|Percentage server logboek opslag|Percentage|Het percentage server logboek opslag dat is gebruikt voor de maximale server logboek opslag van de server.|
 |serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|De hoeveelheid server logboek opslag die in gebruik is.|
 |serverlog_storage_limit|Opslag limiet voor server logboek|Bytes|De maximale server logboek opslag voor deze server.|
 |storage_limit|Opslag limiet|Bytes|De maximale opslag voor deze server.|
-|active_connections|Actieve verbindingen|Count|Het aantal actieve verbindingen met de server.|
-|connections_failed|Mislukte verbindingen|Count|Het aantal mislukte verbindingen met de server.|
+|active_connections|Actieve verbindingen|Aantal|Het aantal actieve verbindingen met de server.|
+|connections_failed|Mislukte verbindingen|Aantal|Het aantal mislukte verbindingen met de server.|
+|seconds_behind_master|Replicatie vertraging in seconden|Aantal|Het aantal seconden dat de replica server bewaart tegen de hoofd server. (Niet van toepassing op de servers van de Basic-laag)|
 |network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
 |network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
+|backup_storage_used|Gebruikte back-upopslag|Bytes|De hoeveelheid back-upopslag die wordt gebruikt. Deze waarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups wordt beheerd door de service en uitgelegd in het [artikel concepten](concepts-backup.md). Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag.|
 
 ## <a name="server-logs"></a>Serverlogboeken
 

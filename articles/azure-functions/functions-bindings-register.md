@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: a045ef0fea70347f168e8ae0cc93e0c359f31dfa
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 43bc278ea3cbd14690f1a9ac9263872536b5b174
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031116"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224778"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions bindings uitbreidingen registreren
 
@@ -31,7 +31,7 @@ De volgende tabel geeft aan wanneer en hoe u bindingen registreert.
 |C# Class-bibliotheek met Visual Studio|[NuGet-hulpprogram ma's gebruiken](#vs)|[NuGet-hulpprogram ma's gebruiken](#vs)|
 |C#-klassen bibliotheek met Visual Studio code|N.v.t.|[.NET Core SLI gebruiken](#vs-code)|
 
-<sup>*</sup>Portal maakt gebruik van uitbreidings bundels.
+<sup>*</sup> Portal maakt gebruik van uitbreidings bundels.
 
 ## <a name="extension-bundles"></a><a name="extension-bundles"></a>Uitbreidings bundels
 
@@ -53,9 +53,9 @@ Als u uitbreidings bundels wilt gebruiken, moet u de *host.jsin* het bestand bij
 
 ## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet-pakketten
 
-Voor een project op basis van C#-klassen bibliotheek moet u uitbreidings bundels installeren die specifiek zijn ontworpen voor projecten die geen klasse zijn 
+Voor een project op basis van C#-klassen bibliotheek moet u de extensies rechtstreeks installeren. Uitbreidings bundels zijn speciaal ontworpen voor projecten die geen C#-klassen bibliotheek zijn.
 
-### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C \# Class-bibliotheek met Visual Studio
+### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a> C \# Class-bibliotheek met Visual Studio
 
 In **Visual Studio**kunt u pakketten installeren via de Package Manager-console met behulp van de opdracht [installeren-pakket](/nuget/tools/ps-ref-install-package) , zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -69,7 +69,7 @@ Vervang `<TARGET_VERSION>` in het voor beeld door een specifieke versie van het 
 
 Als u gebruikt `Install-Package` om te verwijzen naar een binding, hoeft u geen [uitbreidings bundels](#extension-bundles)te gebruiken. Deze benadering is specifiek voor klassen bibliotheken die zijn gemaakt in Visual Studio.
 
-## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a>C#-klassen bibliotheek met Visual Studio code
+## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> C#-klassen bibliotheek met Visual Studio code
 
 In **Visual Studio code**installeert u pakketten voor een C# Class Library-project vanaf de opdracht prompt met behulp van de [DotNet add package](/dotnet/core/tools/dotnet-add-package) opdracht in de .net core SLI. In het volgende voor beeld ziet u hoe u een binding toevoegt:
 

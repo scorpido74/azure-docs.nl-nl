@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/9/2020
-ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 8/13/2020
+ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954191"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225713"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB prijs Categorieën
 
 U kunt een Azure Database for MariaDB-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de MariaDB-server. Een server kan een of meer data bases bevatten.
 
-| Resource | **Standaard** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Resource | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Compute genereren | Gen 5 |Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -93,13 +93,11 @@ Houd er rekening mee dat opslag alleen omhoog kan worden geschaald.
 
 ## <a name="backup"></a>Backup
 
-De service maakt automatisch back-ups van uw server. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. Algemeen-servers en geoptimaliseerd voor geheugen kunnen ervoor kiezen om geografisch redundante opslag te hebben voor back-ups. Meer informatie over back-ups vindt u in het [artikel concepten](concepts-backup.md).
+Azure Database for MariaDB biedt Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Back-upopslag die u voor dit bedrag overschrijdt, wordt in GB per maand in rekening gebracht. Als u bijvoorbeeld een server met 250 GB opslag ruimte inricht, hebt u 250 GB extra opslag ruimte beschikbaar voor Server back-ups. Opslag voor back-ups die groter is dan 250 GB, wordt in rekening gebracht volgens het [prijs model](https://azure.microsoft.com/pricing/details/mariadb/). U kunt de [back-updocumentatie](concepts-backup.md)raadplegen voor meer informatie over factoren die van invloed zijn op het gebruik van back-ups, het bewaken en beheren van back-upopslag.
 
-## <a name="scale-resources"></a>Resources omhoog/omlaag schalen
+## <a name="scale-resources"></a>Resources schalen
 
 Nadat u de server hebt gemaakt, kunt u de vCores, de prijs categorie (met uitzonde ring van en van basis), de hoeveelheid opslag en de Bewaar periode voor back-ups afzonderlijk wijzigen. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Het aantal vCores kan omhoog of omlaag worden geschaald. De Bewaar periode van de back-up kan worden uitgebreid of omlaag van 7 tot 35 dagen. De opslag grootte kan alleen worden verhoogd. U kunt de resources verg Roten of verkleinen via de portal of Azure CLI. 
-
-<!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
 
 Wanneer u het aantal vCores of de prijs categorie wijzigt, wordt er een kopie van de oorspronkelijke server gemaakt met de nieuwe reken toewijzing. Wanneer de nieuwe server actief is, worden de verbindingen hiernaartoe overgeschakeld. Op het moment dat het systeem overschakelt naar de nieuwe server, kunnen er geen nieuwe verbindingen worden vastgelegd en worden alle niet-doorgevoerde transacties teruggedraaid. Dit tijdvenster is variabel, maar is in de meeste gevallen minder dan een minuut.
 
@@ -112,6 +110,3 @@ Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/mariadb/
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over de beperkingen van de [service](concepts-limits.md).
 - Meer informatie over [het maken van een MariaDB-server in de Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md).
-
-<!--
-- Learn how to [monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->

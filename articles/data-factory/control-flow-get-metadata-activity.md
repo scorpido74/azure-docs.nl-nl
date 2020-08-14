@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 08/14/2020
 ms.author: jingwang
-ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 26d52eed02c9d25ed2f18afa3a5262ba9224b0ba
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171254"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224863"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Activiteit van meta gegevens in Azure Data Factory ophalen
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 U kunt de activiteit meta gegevens ophalen gebruiken om de meta gegevens van alle gegevens in de Azure Data Factory op te halen. U kunt deze activiteit gebruiken in de volgende scenario's:
@@ -32,7 +33,7 @@ De volgende functionaliteit is beschikbaar in de controle stroom:
 - U kunt de uitvoer van de activiteit meta gegevens ophalen in voorwaardelijke expressies gebruiken om validatie uit te voeren.
 - U kunt een pijp lijn activeren wanneer aan een voor waarde wordt voldaan via do until-lus.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Functies
 
 De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourneert meta gegevens als uitvoer. Op dit moment worden de volgende connectors en de bijbehorende opgehaalde meta gegevens ondersteund. De maximale grootte van de geretourneerde meta gegevens is 2 MB.
 
@@ -58,9 +59,9 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 - Wanneer u activiteit voor het ophalen van meta gegevens voor een map gebruikt, moet u ervoor zorgen dat u beschikt over de machtiging lijst/uitvoeren voor de opgegeven map.
 - Voor Amazon S3 en Google Cloud Storage `lastModified` is van toepassing op de Bucket en de sleutel, maar niet op de virtuele map, en `exists` is van toepassing op de Bucket en de sleutel, maar niet op het voor voegsel of de virtuele map.
 - Voor Azure Blob Storage `lastModified` geldt voor de container en de blob, maar niet voor de virtuele map.
-- `lastModified`filter is momenteel van toepassing op het filteren van onderliggende items, maar niet voor de opgegeven map/bestand zelf.
+- `lastModified` filter is momenteel van toepassing op het filteren van onderliggende items, maar niet voor de opgegeven map/bestand zelf.
 - Het Joker teken filter voor mappen/bestanden wordt niet ondersteund voor de activiteit meta gegevens ophalen.
-- `structure`en `columnCount` worden niet ondersteund bij het ophalen van meta gegevens van binaire, JSON-of XML-bestanden.
+- `structure` en `columnCount` worden niet ondersteund bij het ophalen van meta gegevens van binaire, JSON-of XML-bestanden.
 
 **Relationele database**
 
@@ -100,13 +101,36 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 
 ```json
 {
-    "name": "MyActivity",
-    "type": "GetMetadata",
-    "typeProperties": {
-        "fieldList" : ["size", "lastModified", "structure"],
-        "dataset": {
-            "referenceName": "MyDataset",
-            "type": "DatasetReference"
+    "name":"MyActivity",
+    "type":"GetMetadata",
+    "dependsOn":[
+
+    ],
+    "policy":{
+        "timeout":"7.00:00:00",
+        "retry":0,
+        "retryIntervalInSeconds":30,
+        "secureOutput":false,
+        "secureInput":false
+    },
+    "userProperties":[
+
+    ],
+    "typeProperties":{
+        "dataset":{
+            "referenceName":"MyDataset",
+            "type":"DatasetReference"
+        },
+        "fieldList":[
+            "size",
+            "lastModified",
+            "structure"
+        ],
+        "storeSettings":{
+            "type":"AzureBlobStorageReadSettings"
+        },
+        "formatSettings":{
+            "type":"JsonReadSettings"
         }
     }
 }
@@ -116,18 +140,22 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 
 ```json
 {
-    "name": "MyDataset",
-    "properties": {
-    "type": "AzureBlob",
-        "linkedService": {
-            "referenceName": "StorageLinkedService",
-            "type": "LinkedServiceReference"
+    "name":"MyDataset",
+    "properties":{
+        "linkedServiceName":{
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "typeProperties": {
-            "folderPath":"container/folder",
-            "filename": "file.json",
-            "format":{
-                "type":"JsonFormat"
+        "annotations":[
+
+        ],
+        "type":"Json",
+        "typeProperties":{
+            "location":{
+                "type":"AzureBlobStorageLocation",
+                "fileName":"file.json",
+                "folderPath":"folder",
+                "container":"container"
             }
         }
     }
