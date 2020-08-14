@@ -6,13 +6,13 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 49bbc2199c7dc3040a24071b8eb5a91929d88e08
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 45f704afce28967237b2905ef068678ba05ae085
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849239"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206650"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Timer trigger voor Azure Functions 
 
@@ -168,7 +168,7 @@ public void keepAlive(
 
 Gebruik in [C# class libraries](functions-dotnet-class-library.md)het [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-De constructor van het kenmerk heeft een CRON-expressie of een `TimeSpan` . U kunt `TimeSpan` alleen gebruiken als de functie-app wordt uitgevoerd op een app service-abonnement. `TimeSpan`wordt niet ondersteund voor verbruiks-of elastische Premium-functies.
+De constructor van het kenmerk heeft een CRON-expressie of een `TimeSpan` . U kunt `TimeSpan` alleen gebruiken als de functie-app wordt uitgevoerd op een app service-abonnement. `TimeSpan` wordt niet ondersteund voor verbruiks-of elastische Premium-functies.
 
 In het volgende voor beeld ziet u een CRON-expressie:
 
@@ -314,8 +314,8 @@ Als u opslag accounts deelt in functie-apps die niet zijn geïmplementeerd op ap
 
 | Functie versie | Instelling                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2. x (en hoger)  | `AzureFunctionsWebHost__hostid`omgevings variabele |
-| 1.x               | `id`in *host.jsop*                                  |
+| 2. x (en hoger)  | `AzureFunctionsWebHost__hostid` omgevings variabele |
+| 1.x               | `id` in *host.jsop*                                  |
 
 U kunt de identificerende waarde weglaten of hand matig de identificerende configuratie van elke functie-app instellen op een andere waarde.
 

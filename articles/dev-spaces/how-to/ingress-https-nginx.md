@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste NGINX ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 1b4bc686d0795767c259a3e0407393d7b6ebf486
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 199b077f20f396919d26b69d3fea422a8d9b4358
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420920"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212486"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Een aangepaste NGINX ingangs controller gebruiken en HTTPS configureren
 
@@ -21,7 +21,7 @@ In dit artikel leest u hoe u Azure dev Spaces configureert voor het gebruik van 
 
 * Een Azure-abonnement. Als u nog geen account hebt, kunt u [een gratis account aanmaken][azure-account-create].
 * [Azure CLI geïnstalleerd][az-cli].
-* [Azure Kubernetes service (AKS)-cluster waarvoor Azure dev Spaces zijn ingeschakeld][qs-cli].
+* Azure Kubernetes service (AKS)-cluster waarvoor Azure dev Spaces zijn ingeschakeld.
 * [kubectl][kubectl] is geïnstalleerd.
 * [Helm 3 is geïnstalleerd][helm-installed].
 * [Een aangepast domein][custom-domain] met een [DNS-zone][dns-zone].  In dit artikel wordt ervan uitgegaan dat de aangepaste domein-en DNS-zone zich in dezelfde resource groep bevinden als uw AKS-cluster, maar het is wel mogelijk om een aangepast domein en een DNS-zone in een andere resource groep te gebruiken.
@@ -317,10 +317,10 @@ Ga naar de voorbeeld toepassing in de *azureuser1 voor ontwikkel aars/* onderlig
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ontdek hoe Azure Dev Spaces u kan helpen om complexere toepassingen te ontwikkelen binnen meerdere containers en hoe u ontwikkeling in samenwerkingsverband vereenvoudigt door in verschillende ruimten met verschillende versies of vertakkingen van uw code te werken.
+Meer informatie over de werking van Azure dev Spaces.
 
 > [!div class="nextstepaction"]
-> [Team ontwikkeling in azure dev Spaces][team-development-qs]
+> [Hoe Azure Dev Spaces werkt](../how-dev-spaces-works.md)
 
 
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
@@ -328,9 +328,6 @@ Ontdek hoe Azure Dev Spaces u kan helpen om complexere toepassingen te ontwikkel
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
 [custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
-[qs-cli]: ../quickstart-cli.md
-[team-development-qs]: ../quickstart-team-development.md
-
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
 [cert-manager]: https://cert-manager.io/

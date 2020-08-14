@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e2226f70ed3318bb370f0afee003fd9f91153a45
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9f9ebff77f54d86c3c4ed45fb5190de1900934e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167862"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207230"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische tekenherkenning (OCR)
 
@@ -28,7 +28,18 @@ De Computer Vision [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/
 
 ![Hoe OCR afbeeldingen en documenten converteert naar gestructureerde uitvoer met geëxtraheerde tekst](./Images/how-ocr-works.svg)
 
-De Lees-API biedt **OCR-mogelijkheden** via twee bewerkingen-Lees-en **Lees resultaten ophalen**.
+## <a name="input-requirements"></a>Vereisten voor invoer
+De **Lees** bewerking van de Lees-API neemt afbeeldingen en documenten op als invoer. Ze hebben de volgende vereisten:
+
+* Ondersteunde bestands indelingen: JPEG, PNG, BMP, PDF en TIFF
+* Voor PDF en TIFF worden Maxi maal 2000 pagina's verwerkt. Voor abonnees met een gratis laag worden alleen de eerste twee pagina's verwerkt.
+* De bestands grootte moet kleiner zijn dan 50 MB en de afmetingen zijn ten minste 50 x 50 pixels en Maxi maal 10000 x 10000 pixels.
+* De PDF-dimensies mogen Maxi maal 17 x 17 inch zijn, overeenkomen met de papier formaten Legal of a3 en kleiner.
+
+> [!NOTE]
+> **Taal invoer** 
+>
+> De [Lees bewerking](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) heeft een optionele aanvraag parameter voor de taal. Dit is de taal code BCP-47 van de tekst in het document. Lees ondersteuning voor automatische taal identificatie en meertalige documenten, zodat u alleen een taal code kunt opgeven als u wilt afdwingen dat het document wordt verwerkt als die specifieke taal.
 
 ## <a name="the-read-operation"></a>De Lees bewerking
 
@@ -36,7 +47,7 @@ De [Lees bewerking](https://westcentralus.dev.cognitive.microsoft.com/docs/servi
 
 |Reactie header| Resultaten-URL |
 |:-----|:----|
-|Bewerkings locatie | https://cognitiveservice/vision/v3.0-preview/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f |
+|Bewerkings locatie | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-read-results-operation"></a>De bewerking Lees resultaten ophalen
 
@@ -112,19 +123,6 @@ Zie het volgende voor beeld van een geslaagde JSON-reactie:
 
 Volg de Snelstartgids [gedrukte en handgeschreven tekst uitpakken](./QuickStarts/CSharp-hand-text.md) om OCR te implementeren met C# en de rest API.
 
-## <a name="input-requirements"></a>Vereisten voor invoer
-
-De invoer afbeeldingen en documenten hebben de volgende vereisten:
-* Ondersteunde bestands indelingen: JPEG, PNG, BMP, PDF en TIFF
-* Voor PDF en TIFF worden Maxi maal 2000 pagina's verwerkt. Voor abonnees met een gratis laag worden alleen de eerste twee pagina's verwerkt.
-* De bestands grootte moet kleiner zijn dan 50 MB en de afmetingen zijn ten minste 50 x 50 pixels en Maxi maal 10000 x 10000 pixels.
-* De PDF-dimensies mogen Maxi maal 17 x 17 inch zijn, overeenkomen met de papier formaten Legal of a3 en kleiner.
-
-> [!NOTE]
-> **Taal invoer** 
->
-> De [Lees bewerking](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) heeft een optionele aanvraag parameter voor de taal. Dit is de taal code BCP-47 van de tekst in het document. Lees ondersteuning voor automatische taal identificatie en meertalige documenten, zodat u alleen een taal code kunt opgeven als u wilt afdwingen dat het document wordt verwerkt als die specifieke taal.
-
 ## <a name="language-support"></a>Taalondersteuning
 
 ### <a name="printed-text"></a>Afgedrukte tekst
@@ -184,6 +182,9 @@ De [OCR-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815
 ## <a name="data-privacy-and-security"></a>Gegevensprivacy en -beveiliging
 
 Net als bij alle cognitieve services moeten ontwikkel aars die de Lees/OCR-Services gebruiken, op de hoogte zijn van het micro soft-beleid voor klant gegevens. Zie de pagina Cognitive Services in het [micro soft vertrouwens centrum](https://www.microsoft.com/trust-center/product-overview) voor meer informatie.
+
+> [!NOTE]
+> De computer Vison 2,0 RecognizeText bewerkingen worden afgeschaft in het voor deel van de nieuwe Lees-API die in dit artikel wordt besproken. Bestaande klanten moeten [overstappen op het gebruik van Lees bewerkingen](upgrade-api-versions.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83646303"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210375"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Een toetsen bord gebruiken om Azure Machine Learning Designer (preview) te gebruiken
 
@@ -53,7 +53,7 @@ De eigenschappen van een module aanpassen:
 
 ## <a name="navigation-shortcuts"></a>Navigatie snelkoppelingen
 
-| Toetsaanslag | Description |
+| Toetsaanslag | Beschrijving |
 |-|-|
 | Ctrl + F6 | Scha kelen tussen de focus op het canvas en de module structuur |
 | CTRL + F1   | De informatie kaart openen bij het richten op een knoop punt in de module structuur |
@@ -79,5 +79,5 @@ Gebruik de volgende sneltoetsen met de toegangs sleutel. Zie voor meer informati
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Hoog contrast inschakelen of het thema wijzigen](../azure-portal/azure-portal-change-theme-high-contrast.md)
+- [Hoog contrast inschakelen of het thema wijzigen](../azure-portal/set-preferences.md#choose-a-theme-or-enable-high-contrast)
 - [Toegankelijkheids hulpmiddelen van micro soft](https://www.microsoft.com/accessibility)

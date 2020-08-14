@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505343"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207802"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent
 
@@ -31,7 +31,7 @@ U kunt met behulp van Azure Monitor aangepaste metrische gegevens verzamelen via
 
 Voor deze zelf studie implementeren we een virtuele Linux-machine waarop het Ubuntu 16,04 LTS-besturings systeem wordt uitgevoerd. De telegrafie-agent wordt ondersteund voor de meeste Linux-besturings systemen. Zowel de Debian-als de RPM-pakketten zijn beschikbaar in combi natie met niet-verpakkende Linux-bestanden op de [InfluxData-Download Portal](https://portal.influxdata.com/downloads). Zie deze [telegrafi-installatie handleiding](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) voor aanvullende installatie-instructies en-opties. 
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 
 > [!NOTE]  
 > Als u de klassieke waarschuwings regels wilt migreren en een bestaande virtuele Linux-machine wilt gebruiken, moet u ervoor zorgen dat aan de virtueel-machine een **door**het systeem toegewezen identiteit is ingesteld op on.
@@ -127,7 +127,7 @@ De agent verzamelt nu metrische gegevens uit elk van de opgegeven invoer-invoeg 
 
 ## <a name="additional-configuration"></a>Aanvullende configuratie 
 
-De voor gaande procedure bevat informatie over het configureren van de telegrafie-agent voor het verzamelen van metrische gegevens van een aantal elementaire invoer-invoeg toepassingen. De Telegraf-agent biedt ondersteuning voor meer dan 150 invoer invoeg toepassingen, met een aantal aanvullende configuratie opties. InfluxData heeft een [lijst met ondersteunde invoeg toepassingen](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) gepubliceerd en instructies voor [het configureren ervan](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/).  
+De voor gaande procedure bevat informatie over het configureren van de telegrafie-agent voor het verzamelen van metrische gegevens van een aantal elementaire invoer-invoeg toepassingen. De Telegraf-agent biedt ondersteuning voor meer dan 150 invoer invoeg toepassingen, met een aantal aanvullende configuratie opties. InfluxData heeft een [lijst met ondersteunde invoeg toepassingen](https://docs.influxdata.com/telegraf/v1.15/plugins/inputs/) gepubliceerd en instructies voor [het configureren ervan](https://docs.influxdata.com/telegraf/v1.15/administration/configuration/).  
 
 Daarnaast hebt u in dit overzicht de telegrafa-agent gebruikt voor het verzenden van metrische gegevens over de virtuele machine waarop de agent is geïmplementeerd. De telegrafie-agent kan ook worden gebruikt als Collector en doorstuur server van metrische gegevens voor andere resources. Zie [Azure monitor aangepaste metrische uitvoer voor telegrafie voor](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md)meer informatie over het configureren van de agent voor het verzenden van metrische gegevens voor andere Azure-resources.  
 

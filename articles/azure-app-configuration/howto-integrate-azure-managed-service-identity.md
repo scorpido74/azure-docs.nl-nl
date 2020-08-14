@@ -1,26 +1,27 @@
 ---
-title: Beheerde identiteiten gebruiken om toegang te krijgen tot de app-configuratie
+title: Beheerde identiteiten gebruiken om App Configuration te openen
 titleSuffix: Azure App Configuration
 description: Verifiëren voor Azure-app configuratie met behulp van beheerde identiteiten
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135467"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206827"
 ---
-# <a name="use-managed-identities-to-access-app-configuration"></a>Beheerde identiteiten gebruiken om toegang te krijgen tot de app-configuratie
+# <a name="use-managed-identities-to-access-app-configuration"></a>Beheerde identiteiten gebruiken om App Configuration te openen
 
 Met Azure Active Directory [beheerde identiteiten](../active-directory/managed-identities-azure-resources/overview.md) wordt het beheer van geheimen voor uw Cloud toepassing vereenvoudigd. Met een beheerde identiteit kan uw code gebruikmaken van de service-principal die is gemaakt voor de Azure-service waarop deze wordt uitgevoerd. U gebruikt een beheerde identiteit in plaats van een afzonderlijke referentie die is opgeslagen in Azure Key Vault of een lokale connection string.
 
 Azure-app-configuratie en de .NET core-, .NET Framework-en Java lente-client bibliotheken hebben beheerde identiteits ondersteuning ingebouwd. Hoewel u deze niet hoeft te gebruiken, elimineert de beheerde identiteit geen toegangs token dat geheimen bevat. De code heeft toegang tot de app-configuratie opslag door alleen het service-eind punt te gebruiken. U kunt deze URL rechtstreeks insluiten in uw code zonder geheim weer te geven.
 
-In dit artikel wordt beschreven hoe u kunt profiteren van de beheerde identiteit om toegang te krijgen tot de app-configuratie. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u doorgaat, moet u eerst [een ASP.net core-app met app-configuratie maken](./quickstart-aspnet-core-app.md) .
+In dit artikel wordt beschreven hoe u kunt profiteren van de beheerde identiteit om toegang te krijgen tot de app-configuratie. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u doorgaat, moet u eerst  [een ASP.net core-app met app-configuratie maken](./quickstart-aspnet-core-app.md) .
 
 In dit artikel ziet u ook hoe u de beheerde identiteit kunt gebruiken in combi natie met de Key Vault verwijzingen van de app-configuratie. Met één beheerde identiteit kunt u probleemloos toegang krijgen tot beide geheimen van Key Vault en configuratie waarden van de app-configuratie. Als u deze functie wilt verkennen, kunt u het [gebruik van Key Vault verwijzingen met ASP.net core](./use-key-vault-references-dotnet-core.md) eerst volt ooien.
 
@@ -184,7 +185,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
     U hebt nu toegang tot Key Vault verwijzingen, net zoals elke andere app-configuratie sleutel. De configuratie provider gebruikt de `KeyVaultClient` die u hebt geconfigureerd om te verifiëren bij Key Vault en de waarde op te halen.
 
 > [!NOTE]
-> `ManagedIdentityCredential`ondersteunt alleen beheerde identiteits verificatie. Het werkt niet in lokale omgevingen. Als u de code lokaal wilt uitvoeren, kunt u overwegen om `DefaultAzureCredential` te gebruiken, die ook Service-Principal-verificatie ondersteunt. Controleer de [koppeling](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) voor meer informatie.
+> `ManagedIdentityCredential` ondersteunt alleen beheerde identiteits verificatie. Het werkt niet in lokale omgevingen. Als u de code lokaal wilt uitvoeren, kunt u overwegen om `DefaultAzureCredential` te gebruiken, die ook Service-Principal-verificatie ondersteunt. Controleer de [koppeling](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) voor meer informatie.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

@@ -3,15 +3,16 @@ title: De webjobs SDK gebruiken
 description: Meer informatie over het schrijven van code voor de webjobs SDK. Maak gebeurtenis gerichte achtergrond verwerkings taken die toegang hebben tot gegevens in Azure en services van derden.
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aaf49d32da29fe5fb082e6e4481cd9266f88e1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807975"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208637"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -73,7 +74,7 @@ U kunt de host uitvoeren in de ontwikkel modus om lokale ontwikkeling efficiënt
 
 | Eigenschap | Ontwikkelings instelling |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`om de logboek uitvoer te maximaliseren. |
+| `Tracing.ConsoleLevel` | `TraceLevel.Verbose` om de logboek uitvoer te maximaliseren. |
 | `Queues.MaxPollingInterval`  | Een lage waarde om ervoor te zorgen dat wachtrij methoden direct worden geactiveerd.  |
 | `Singleton.ListenerLockPeriod` | 15 seconden om te helpen bij snelle herhalings ontwikkeling. |
 
@@ -470,7 +471,7 @@ static void Main(string[] args)
 }
 ```
 
-Zie de [Naslag informatie overhost.jsvan v1. x](../azure-functions/functions-host-json-v1.md#queues)voor meer informatie.
+Zie de [ Naslag informatie overhost.jsvan v1. x](../azure-functions/functions-host-json-v1.md#queues)voor meer informatie.
 
 ### <a name="sendgrid-binding-configuration-version-3x"></a>Configuratie van SendGrid-binding (versie 3.* x*)
 
@@ -620,7 +621,7 @@ U kunt de resolver configureren met behulp van afhankelijkheids injectie. Deze v
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-U voegt de resolver toe door de [`ConfigureServices`] uitbreidings methode aan [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) te roepen, zoals in dit voor beeld:
+U voegt de resolver toe door de [`ConfigureServices`] uitbreidings methode aan  [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) te roepen, zoals in dit voor beeld:
 
 ```cs
 static async Task Main(string[] args)
@@ -822,7 +823,7 @@ We raden aan het Framework voor logboek registratie dat is ontwikkeld voor ASP.N
 
 ### <a name="log-filtering"></a>Logboek filtering
 
-Elk logboek dat door een `ILogger` exemplaar wordt gemaakt, heeft een bijbehorend `Category` en `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)is een opsomming, en de gehele code geeft het relatieve belang aan:
+Elk logboek dat door een `ILogger` exemplaar wordt gemaakt, heeft een bijbehorend `Category` en `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) is een opsomming, en de gehele code geeft het relatieve belang aan:
 
 |Logniveau    |Code|
 |------------|---|
@@ -840,7 +841,7 @@ U kunt elke categorie afzonderlijk filteren op een bepaald type [`LogLevel`](/do
 
 Versie 3. *x* van de SDK is afhankelijk van de filters die zijn ingebouwd in .net core. Met de- `LogCategories` klasse kunt u categorieën definiëren voor specifieke functies, triggers of gebruikers. Het definieert ook filters voor specifieke hostnamen, zoals `Startup` en `Results` . Zo kunt u de uitvoer van logboek registratie nauw keurig afstemmen. Als er geen overeenkomst wordt gevonden binnen de gedefinieerde categorieën, wordt het filter terugvallen op de `Default` waarde wanneer u beslist of het bericht moet worden gefilterd.
 
-`LogCategories`vereist de volgende using-instructie:
+`LogCategories` vereist de volgende using-instructie:
 
 ```cs
 using Microsoft.Azure.WebJobs.Logging; 
@@ -879,7 +880,7 @@ In versie 2. *x* van de SDK gebruikt u de `LogCategoryFilter` klasse om de filte
 
 Net als bij `LogCategories` versie 3.* x* `CategoryLevels` kunt u met de eigenschap logboek niveaus opgeven voor specifieke categorieën, zodat u de uitvoer van logboek registratie kunt aanpassen. Als er geen overeenkomst wordt gevonden in de `CategoryLevels` woorden lijst, wordt het filter terugvallen op de `Default` waarde wanneer u beslist of het bericht moet worden gefilterd.
 
-In het volgende voor beeld wordt een filter gemaakt dat standaard alle logboeken op het niveau filtert `Warning` . De `Function` `Host.Results` Categorieën en worden op het niveau gefilterd `Error` . De `LogCategoryFilter` huidige categorie vergelijkt met alle geregistreerde `CategoryLevels` en kiest de langste overeenkomst. Het `Debug` niveau dat is geregistreerd voor `Host.Triggers` zal overeenkomen met `Host.Triggers.Queue` of `Host.Triggers.Blob` . Zo kunt u grotere categorieën beheren zonder dat u deze hoeft toe te voegen.
+In het volgende voor beeld wordt een filter gemaakt dat standaard alle logboeken op het niveau filtert `Warning` . De  `Function` `Host.Results` Categorieën en worden op het niveau gefilterd `Error` . De `LogCategoryFilter` huidige categorie vergelijkt met alle geregistreerde `CategoryLevels` en kiest de langste overeenkomst. Het `Debug` niveau dat is geregistreerd voor `Host.Triggers` zal overeenkomen met `Host.Triggers.Queue` of `Host.Triggers.Blob` . Zo kunt u grotere categorieën beheren zonder dat u deze hoeft toe te voegen.
 
 ```csharp
 var filter = new LogCategoryFilter();
@@ -996,7 +997,7 @@ config.LoggerFactory = new LoggerFactory()
     .AddApplicationInsights(clientFactory);
 ```
 
-## <a name="next-steps"></a><a id="nextsteps"></a>Volgende stappen
+## <a name="next-steps"></a><a id="nextsteps"></a> Volgende stappen
 
 In dit artikel vindt u code fragmenten die laten zien hoe u veelvoorkomende scenario's kunt verwerken voor het werken met de webjobs SDK. Zie voor volledige voor beelden [Azure-webjobs-SDK-voor beelden](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 

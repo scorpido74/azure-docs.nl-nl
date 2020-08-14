@@ -1,19 +1,19 @@
 ---
 title: 'Architectuur: wereld wijde doorvoer netwerk architectuur'
 titleSuffix: Azure Virtual WAN
-description: Meer informatie over wereld wijde doorvoer netwerk architectuur voor virtuele WAN
+description: Meer informatie over hoe Azure Virtual WAN een wereld wijde doorvoer netwerk architectuur mogelijk maakt door alomtegenwoordige, een wille keurige connectiviteit tussen Cloud werkbelastingen in te scha kelen.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056887"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212715"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Wereld wijde doorvoer netwerk architectuur en virtueel WAN
 

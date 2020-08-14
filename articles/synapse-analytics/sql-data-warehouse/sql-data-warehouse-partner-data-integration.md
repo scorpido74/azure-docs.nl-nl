@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 354e51d529c504bd04ed40f64b3db14a06384c98
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296386"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210569"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics-gegevens integratie partners
 
@@ -24,7 +24,7 @@ Als u uw data warehouse-oplossing wilt maken met behulp van de Synapse-functie v
 
 ## <a name="data-integration-partners"></a>Gegevens integratie partners
 
-| Partner | Description | Website/product koppeling |
+| Partner | Beschrijving | Website/product koppeling |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma is een oplossing voor het uitpakken, transformeren en laden (ETL) waarmee gegevens teams gegevens van verschillende gegevens silo's kunnen integreren, verrijken en streamen naar een Azure Synapse-data warehouse in real-time. |[Product pagina](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer biedt een Herhaal bare werk stroom voor Self-service voor gegevens analyse die leidt tot meer inzicht in uren, en niet in de weken van traditionele benaderingen. Alteryx Designer helpt gegevens analisten door het combi neren van gegevens voorbereiding, gegevens overvloeiing en analyses – predictief, statistisch en ruimtelijke, met behulp van dezelfde intuïtieve gebruikers interface. |[Product pagina](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
@@ -43,7 +43,7 @@ Als u uw data warehouse-oplossing wilt maken met behulp van de Synapse-functie v
 | ![StreamSets](./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png) |**StreamSets**<br>StreamSets biedt een platform voor gegevens integratie voor DataOps. Het operationalizes is de volledige ontwerp-implementatie-levens cyclus van het integreren van gegevens in een Azure Synapse-Data Warehouse. U kunt snel gegevens opnemen en integreren in het magazijn, via streaming, batch of gewijzigde bezorgings methoden voor het vastleggen van gegevens. U kunt er ook voor zorgen dat doorlopende bewerkingen worden uitgevoerd met Smart Data-pijp lijnen die een end-to-end zicht baarheid van gegevens stromen en tolerantie bieden.|[Product pagina](https://streamsets.com/partners/microsoft)|
 | ![Talend](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Talend-Cloud**<br>Talend Cloud is een platform voor gegevens integratie voor ondernemingen waarmee u gegevens in de Cloud of on-premises kunt verbinden, benaderen en transformeren. Het is een integratie platform-as-a-Service (iPaaS) dat zorgt voor een brede connectiviteit, ingebouwde gegevens kwaliteit en systeem eigen ondersteuning voor de nieuwste big data-en Cloud technologieën. |[Product pagina](https://www.talend.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
 | ![TimeXtender](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**TimeXtender**<br>De detectie-hub van TimeXtender helpt bedrijven bij het bouwen van een modern gegevens systeem door een geïntegreerd platform voor gegevens beheer te bieden dat sneller tijd tot gegevens inzichten versnelt met Maxi maal tien keer. Het gaat verder dan dagelijks uitpakken, transformeren en laden (ETL) of extract, Load en Transform (ELT) door automatisering en mogelijkheden te bieden voor gegevens toegang, gegevens modellering en-naleving in één platform. Discovery hub biedt een samenhangende gegevens Fabric voor Cloud Scale Analytics, waarmee u verschillende gegevens silo's kunt verbinden en integreren, catalogi, model, verplaats en document gegevens voor analyse en AI. | [Product pagina](https://www.timextender.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
-| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta helpt individuen en organisaties om diverse gegevens te verkennen en samen te voegen voor analyse. Trifacta Wrangler is ontworpen voor het afhandelen van gegevens wrangling-workloads die gegevens moeten ondersteunen op schaal en een groot aantal eind gebruikers.|[Product pagina](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01?source=datamarket&tab=Overview) |
+| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta helpt individuen en organisaties om diverse gegevens te verkennen en samen te voegen voor analyse. Trifacta Wrangler is ontworpen voor het afhandelen van gegevens wrangling-workloads die gegevens moeten ondersteunen op schaal en een groot aantal eind gebruikers.|[Product pagina](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape rood**<br> WhereScape RED is een IDE die teams voorziet van hulpprogram ma's voor automatisering om ETL-werk stromen te stroom lijnen. De IDE biedt best practice, geoptimaliseerde systeem eigen code voor populaire gegevens doelen. Gebruik WhereScape RED om de tijd te verkorten om uw gegevens infrastructuur te ontwikkelen, implementeren en beheren.|[Product pagina](https://www.wherescape.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
 
 

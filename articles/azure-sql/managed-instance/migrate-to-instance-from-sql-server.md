@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 3ef109dc5fad73a19eabefb8eb872c02d62698ba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087568"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209484"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migratie van SQL Server-exemplaren naar Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Op hoog niveau ziet het database migratie proces er als volgt uit:
 
 Bepaal eerst of SQL Managed instance compatibel is met de database vereisten van uw toepassing. SQL Managed instance is ontworpen om eenvoudig lift-en Shift-migratie te bieden voor de meeste bestaande toepassingen die gebruikmaken van SQL Server. Het kan echter ook voor komen dat u functies of mogelijkheden nodig hebt die nog niet worden ondersteund en dat de kosten voor het implementeren van een tijdelijke oplossing te hoog zijn.
 
-Gebruik [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) om mogelijke compatibiliteits problemen te detecteren die invloed hebben op de database functionaliteit op Azure SQL database. Als er een aantal problemen met de blok kering zijn gerapporteerd, moet u mogelijk een alternatieve optie overwegen, zoals [SQL Server op de Azure-VM](https://azure.microsoft.com/services/virtual-machines/sql-server/). Enkele voorbeelden:
+Gebruik [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) om mogelijke compatibiliteits problemen te detecteren die invloed hebben op de database functionaliteit op Azure SQL database. Als er een aantal problemen met de blok kering zijn gerapporteerd, moet u mogelijk een alternatieve optie overwegen, zoals [SQL Server op de Azure-VM](https://azure.microsoft.com/services/virtual-machines/sql-server/). Hier volgen enkele voorbeelden:
 
 - Als u rechtstreeks toegang tot het besturings systeem of het bestands systeem nodig hebt, bijvoorbeeld voor het installeren van derden of aangepaste agents op dezelfde virtuele machine met SQL Server.
 - Als u strikte afhankelijkheid hebt voor functies die nog niet worden ondersteund, zoals FileStream/bestands tabel, poly base en trans acties met meerdere exemplaren.
@@ -162,7 +162,7 @@ Database migratie naar een beheerd exemplaar houdt de data base-instellingen en 
 Zorg ervoor dat u de volgende activiteiten hebt voltooid voor een vereiste:
 
 - Uw instellingen op het beheerde exemplaar uitlijnen met de instellingen van de bron SQL Server instantie door verschillende instanties, data bases, tempdb-instellingen en configuraties te onderzoeken. Zorg ervoor dat u geen instellingen hebt gewijzigd, zoals compatibiliteits niveaus of versleuteling voordat u de eerste prestatie vergelijking uitvoert. u kunt ook het risico accepteren dat sommige van de nieuwe functies die u hebt ingeschakeld, invloed hebben op sommige query's. Als u de migratie Risico's wilt verminderen, wijzigt u het database compatibiliteits niveau pas nadat de prestaties zijn gecontroleerd.
-- Implementeer [opslag best practice richt lijnen voor algemeen](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525), zoals het vooraf toewijzen van de grootte van de bestanden om betere prestaties te krijgen.
+- Implementeer [opslag best practice richt lijnen voor algemeen](https://techcommunity.microsoft.com), zoals het vooraf toewijzen van de grootte van de bestanden om betere prestaties te krijgen.
 - Meer informatie over de [belangrijkste omgevings verschillen die de prestatie verschillen kunnen veroorzaken tussen een beheerd exemplaar en SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)en de Risico's identificeren die van invloed kunnen zijn op de prestaties.
 - Zorg ervoor dat het ingeschakelde query archief en automatisch afstemmen op uw beheerde exemplaar blijven staan. Met deze functies kunt u de prestaties van de werk belasting meten en automatisch de mogelijke prestatie problemen oplossen. Informatie over het gebruik van query Store als een optimaal hulp programma voor het verkrijgen van informatie over de prestaties van de werk belasting vóór en na de wijziging van het compatibiliteits niveau van de data base, zoals wordt uitgelegd in [stabiliteit van prestaties bewaren tijdens de upgrade naar een nieuwere versie van SQL Server](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 Wanneer u de omgeving hebt voor bereid die vergelijkbaar is met uw on-premises omgeving, kunt u beginnen met het uitvoeren van de werk belasting en de prestaties meten. Het meet proces moet dezelfde para meters bevatten die u hebt gemeten [tijdens het maken van de basislijn prestaties van uw werkbelastingscapaciteit op het bron SQL Server exemplaar](#create-a-performance-baseline).

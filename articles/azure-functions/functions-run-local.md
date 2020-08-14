@@ -4,13 +4,13 @@ description: Leer hoe u Azure functions kunt coderen en testen vanaf de opdracht
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp, 80e4ff38-5174-43
+ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037028"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207438"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -189,7 +189,7 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 </pre>
 
-`func init`ondersteunt de volgende opties, versie 3. x/2. x-only, tenzij anders vermeld:
+`func init` ondersteunt de volgende opties, versie 3. x/2. x-only, tenzij anders vermeld:
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
@@ -363,7 +363,7 @@ npm start
 > func host start
 > ```
 
-`func start`biedt ondersteuning voor de volgende opties:
+`func start` biedt ondersteuning voor de volgende opties:
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
@@ -472,7 +472,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 In versie 1. x kunt u ook rechtstreeks een functie aanroepen met behulp `func run <FunctionName>` van en invoer gegevens opgeven voor de functie. Deze opdracht is vergelijkbaar met het uitvoeren van een functie met behulp van het tabblad **testen** in de Azure Portal.
 
-`func run`biedt ondersteuning voor de volgende opties:
+`func run` biedt ondersteuning voor de volgende opties:
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
@@ -547,7 +547,7 @@ De volgende opties voor de implementatie van de aangepaste container zijn beschi
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | De naam van een docker-REGI ster waarmee de huidige gebruiker zich heeft aangemeld. |
-| **`--platform`** | Hosting platform voor de functie-app. Geldige opties zijn`kubernetes` |
+| **`--platform`** | Hosting platform voor de functie-app. Geldige opties zijn `kubernetes` |
 | **`--name`** | Naam van de functie-app. |
 | **`--max`**  | Hiermee stelt u eventueel het maximum aantal functie-app-exemplaren in dat moet worden geïmplementeerd. |
 | **`--min`**  | Hiermee stelt u optioneel het minimum aantal functie-app-exemplaren in dat moet worden geïmplementeerd. |
@@ -582,7 +582,7 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure-portal]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

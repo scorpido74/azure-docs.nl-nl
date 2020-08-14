@@ -3,13 +3,14 @@ title: Naslag informatie over Power shell-ontwikkel aars voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met behulp van Power shell.
 author: eamonoreilly
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506125"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207408"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions PowerShell
 
@@ -113,7 +114,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding`gedraagt zich anders op basis van de waarde die is opgegeven voor `-Name` :
+`Push-OutputBinding` gedraagt zich anders op basis van de waarde die is opgegeven voor `-Name` :
 
 * Als de opgegeven naam niet kan worden omgezet in een geldige uitvoer binding, wordt een fout gegenereerd.
 
@@ -121,7 +122,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 * Wanneer de uitvoer binding alleen een singleton waarde accepteert en een tweede keer aanroept, treedt er een `Push-OutputBinding` fout op.
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding`syntaxis
+#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` syntaxis
 
 De volgende para meters zijn geldig voor het aanroepen van `Push-OutputBinding` :
 
@@ -175,7 +176,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Push-OutputBinding-voor beeld: wachtrij-uitvoer binding
 
-`Push-OutputBinding`wordt gebruikt voor het verzenden van gegevens naar uitvoer bindingen, zoals een [Azure Queue Storage-uitvoer binding](functions-bindings-storage-queue-output.md). In het volgende voor beeld heeft het bericht dat naar de wachtrij is geschreven de waarde "uitvoer #1":
+`Push-OutputBinding` wordt gebruikt voor het verzenden van gegevens naar uitvoer bindingen, zoals een [Azure Queue Storage-uitvoer binding](functions-bindings-storage-queue-output.md). In het volgende voor beeld heeft het bericht dat naar de wachtrij is geschreven de waarde "uitvoer #1":
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -195,7 +196,7 @@ PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 
 Wanneer het bericht naar de wachtrij wordt geschreven, bevat deze vier waarden: "uitvoer #1", "uitvoer #2", "uitvoer #3" en "uitvoer #4".
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding`cmdlet
+#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` cmdlet
 
 U kunt de `Get-OutputBinding` cmdlet gebruiken om de waarden op te halen die momenteel zijn ingesteld voor uw uitvoer bindingen. Met deze cmdlet wordt een hashtabel opgehaald die de namen van de uitvoer bindingen met hun respectieve waarden bevat. 
 
@@ -212,7 +213,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding`bevat ook een para meter met `-Name` de naam, die kan worden gebruikt voor het filteren van de geretourneerde binding, zoals in het volgende voor beeld:
+`Get-OutputBinding` bevat ook een para meter met `-Name` de naam, die kan worden gebruikt voor het filteren van de geretourneerde binding, zoals in het volgende voor beeld:
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -296,14 +297,14 @@ Het object Request dat is door gegeven aan het script, is van het type `HttpRequ
 
 | Eigenschap  | Beschrijving                                                    | Type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Een object dat de hoofd tekst van de aanvraag bevat. `Body`wordt geserialiseerd in het beste type op basis van de gegevens. Als de gegevens bijvoorbeeld JSON zijn, wordt deze als een hashtabel door gegeven. Als de gegevens een teken reeks is, wordt deze als een teken reeks door gegeven. | object |
+| **`Body`**    | Een object dat de hoofd tekst van de aanvraag bevat. `Body` wordt geserialiseerd in het beste type op basis van de gegevens. Als de gegevens bijvoorbeeld JSON zijn, wordt deze als een hashtabel door gegeven. Als de gegevens een teken reeks is, wordt deze als een teken reeks door gegeven. | object |
 | **`Headers`** | Een woorden lijst die de aanvraag headers bevat.                | Dictionary<teken reeks, teken reeks><sup>*</sup> |
 | **`Method`** | De HTTP-methode van de aanvraag.                                | tekenreeks                    |
 | **`Params`**  | Een object dat de routerings parameters van de aanvraag bevat. | Dictionary<teken reeks, teken reeks><sup>*</sup> |
 | **`Query`** | Een object dat de query parameters bevat.                  | Dictionary<teken reeks, teken reeks><sup>*</sup> |
 | **`Url`** | De URL van de aanvraag.                                        | tekenreeks                    |
 
-<sup>*</sup>Alle `Dictionary<string,string>` sleutels zijn niet hoofdletter gevoelig.
+<sup>*</sup> Alle `Dictionary<string,string>` sleutels zijn niet hoofdletter gevoelig.
 
 #### <a name="response-object"></a>Responsobject
 
@@ -422,9 +423,9 @@ De volgende toepassings instellingen kunnen worden gebruikt om te wijzigen hoe d
 
 | functie-app instelling              | Standaardwaarde             | Beschrijving                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`(7 dagen)     | Elk Power shell-werk proces initieert de controle van module-upgrades op de PowerShell Gallery bij het starten van het proces en op elke `MDMaxBackgroundUpgradePeriod` na dat. Wanneer een nieuwe module versie beschikbaar is in de PowerShell Gallery, wordt deze geïnstalleerd in het bestands systeem en beschikbaar gesteld voor Power shell-werk rollen. Als u deze waarde verlaagt, kan uw functie-app sneller nieuwe module versies krijgen, maar ook het resource gebruik van de app (netwerk-I/O, CPU, opslag) wordt verhoogd. Door deze waarde te verhogen, vermindert het resource gebruik van de app, maar kan er ook vertraging optreden bij het leveren van nieuwe module versies aan uw app. | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00`(1 uur)       | Nadat er nieuwe module versies in het bestands systeem zijn geïnstalleerd, moet elk Power shell-werk proces opnieuw worden gestart. Het opnieuw starten van Power shell-werk rollen heeft invloed op de beschik baarheid van de app, omdat de uitvoering van de huidige functie kan Totdat alle Power shell-werk processen opnieuw zijn gestart, kunnen functie aanroepen gebruikmaken van de oude of de nieuwe module versie. Het opnieuw starten van alle Power shell-werk rollen binnen is voltooid `MDNewSnapshotCheckPeriod` . Als u deze waarde verhoogt, wordt de frequentie van onderbrekingen verminderd, maar kan ook de periode worden verlengd wanneer de functie aanroepen de oude of de nieuwe module versies niet-deterministisch gebruiken. |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00`(1 dag)     | Om te voor komen dat er buitensporige module-upgrades worden uitgevoerd bij het opnieuw opstarten van werk nemers, wordt er niet gecontroleerd op module-upgrades, wanneer een werk nemer de laatste keer incheckt `MDMinBackgroundUpgradePeriod` . |
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 dagen)     | Elk Power shell-werk proces initieert de controle van module-upgrades op de PowerShell Gallery bij het starten van het proces en op elke `MDMaxBackgroundUpgradePeriod` na dat. Wanneer een nieuwe module versie beschikbaar is in de PowerShell Gallery, wordt deze geïnstalleerd in het bestands systeem en beschikbaar gesteld voor Power shell-werk rollen. Als u deze waarde verlaagt, kan uw functie-app sneller nieuwe module versies krijgen, maar ook het resource gebruik van de app (netwerk-I/O, CPU, opslag) wordt verhoogd. Door deze waarde te verhogen, vermindert het resource gebruik van de app, maar kan er ook vertraging optreden bij het leveren van nieuwe module versies aan uw app. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 uur)       | Nadat er nieuwe module versies in het bestands systeem zijn geïnstalleerd, moet elk Power shell-werk proces opnieuw worden gestart. Het opnieuw starten van Power shell-werk rollen heeft invloed op de beschik baarheid van de app, omdat de uitvoering van de huidige functie kan Totdat alle Power shell-werk processen opnieuw zijn gestart, kunnen functie aanroepen gebruikmaken van de oude of de nieuwe module versie. Het opnieuw starten van alle Power shell-werk rollen binnen is voltooid `MDNewSnapshotCheckPeriod` . Als u deze waarde verhoogt, wordt de frequentie van onderbrekingen verminderd, maar kan ook de periode worden verlengd wanneer de functie aanroepen de oude of de nieuwe module versies niet-deterministisch gebruiken. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 dag)     | Om te voor komen dat er buitensporige module-upgrades worden uitgevoerd bij het opnieuw opstarten van werk nemers, wordt er niet gecontroleerd op module-upgrades, wanneer een werk nemer de laatste keer incheckt `MDMinBackgroundUpgradePeriod` . |
 
 Het gebruik van uw eigen aangepaste modules wijkt af van de manier waarop u het normaal zou doen.
 
@@ -517,7 +518,7 @@ Azure PowerShell maakt gebruik van bepaalde contexten op _proces niveau_ en de s
 
 Er is een enorme waarde in gelijktijdigheid met Azure PowerShell, omdat sommige bewerkingen veel tijd in beslag kunnen nemen. U moet echter wel voorzichtig door gaan. Als u vermoedt dat u een race voorwaarde ondervindt, stelt u de PSWorkerInProcConcurrencyUpperBound-app-instelling in op `1` en gebruikt u in plaats daarvan [taal werk proces niveau isolatie](functions-app-settings.md#functions_worker_process_count) voor gelijktijdigheid.
 
-## <a name="configure-function-scriptfile"></a>Functie configureren`scriptFile`
+## <a name="configure-function-scriptfile"></a>Functie configureren `scriptFile`
 
 Standaard wordt een Power shell-functie uitgevoerd vanuit `run.ps1` , een bestand dat dezelfde bovenliggende map als de corresponderende directory deelt `function.json` .
 
@@ -595,7 +596,7 @@ Wanneer u werkt met Power shell-functies, moet u rekening houden met de overwegi
 
 Bij het ontwikkelen van Azure Functions in het [serverloze hosting model](functions-scale.md#consumption-plan)is koude start een werkelijkheid. *Koude start* verwijst naar de tijd die nodig is om de functie-app uit te voeren om een aanvraag te verwerken. Koude start treedt vaker op in het verbruiks abonnement, omdat uw functie-app wordt afgesloten tijdens peri Oden van inactiviteit.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>Bundel modules in plaats van gebruik te maken van`Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>Bundel modules in plaats van gebruik te maken van `Install-Module`
 
 Uw script wordt uitgevoerd op elke aanroep. Vermijd `Install-Module` het gebruik in uw script. Gebruik in plaats daarvan `Save-Module` vóór het publiceren zodat uw functie geen tijd verspilde bij het downloaden van de module. Als koude start invloed heeft op uw functies, kunt u overwegen om uw functie-app te implementeren in een [app service plan](functions-scale.md#app-service-plan) dat is ingesteld op *altijd* of op een [Premium-abonnement](functions-scale.md#premium-plan).
 

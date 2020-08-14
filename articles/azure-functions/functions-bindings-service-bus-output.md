@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: c377d9882b59731857641e1f593dd6b7b24ca7f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844079"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212149"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus uitvoer binding voor Azure Functions
 
@@ -300,12 +300,12 @@ In Azure Functions 1. x wordt de wachtrij door de runtime gemaakt als deze nog n
 
 Gebruik de volgende parameter typen voor de uitvoer binding:
 
-* `out T paramName` - `T`Dit kan elk type JSON-serialiseerbaar zijn. Als de waarde van de para meter null is wanneer de functie wordt afgesloten, worden met functies het bericht met een null-object gemaakt.
-* `out string`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
-* `out byte[]`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
-* `out BrokeredMessage`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 1. x)
-* `out Message`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 2. x en hoger)
-* `ICollector<T>`of `IAsyncCollector<T>` (voor asynchrone methoden): voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de-methode aanroept `Add` .
+* `out T paramName` - `T` Dit kan elk type JSON-serialiseerbaar zijn. Als de waarde van de para meter null is wanneer de functie wordt afgesloten, worden met functies het bericht met een null-object gemaakt.
+* `out string` -Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
+* `out byte[]` -Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
+* `out BrokeredMessage` -Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 1. x)
+* `out Message` -Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 2. x en hoger)
+* `ICollector<T>` of `IAsyncCollector<T>` (voor asynchrone methoden): voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de-methode aanroept `Add` .
 
 Wanneer u werkt met C#-functies:
 
@@ -317,12 +317,12 @@ Wanneer u werkt met C#-functies:
 
 Gebruik de volgende parameter typen voor de uitvoer binding:
 
-* `out T paramName` - `T`Dit kan elk type JSON-serialiseerbaar zijn. Als de waarde van de para meter null is wanneer de functie wordt afgesloten, worden met functies het bericht met een null-object gemaakt.
-* `out string`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
-* `out byte[]`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
-* `out BrokeredMessage`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 1. x)
-* `out Message`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 2. x en hoger)
-* `ICollector<T>`of `IAsyncCollector<T>` -voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de-methode aanroept `Add` .
+* `out T paramName` - `T` Dit kan elk type JSON-serialiseerbaar zijn. Als de waarde van de para meter null is wanneer de functie wordt afgesloten, worden met functies het bericht met een null-object gemaakt.
+* `out string` -Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
+* `out byte[]` -Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
+* `out BrokeredMessage` -Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 1. x)
+* `out Message` -Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 2. x en hoger)
+* `ICollector<T>` of `IAsyncCollector<T>` -voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de-methode aanroept `Add` .
 
 Wanneer u werkt met C#-functies:
 
@@ -346,7 +346,7 @@ Gebruik de [Azure service bus SDK](../service-bus-messaging/index.yml) in plaats
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Naslaginformatie |
+| Binding | Verwijzing |
 |---|---|
 | Service Bus | [Service Bus fout codes](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | Service Bus | [Service Bus limieten](../service-bus-messaging/service-bus-quotas.md) |
@@ -388,7 +388,7 @@ Als u hebt `isSessionsEnabled` ingesteld op `true` , `sessionHandlerOptions` wor
 |---------|---------|---------|
 |prefetchCount|0|Hiermee wordt het aantal berichten opgehaald of ingesteld dat de ontvanger van het bericht tegelijk kan aanvragen.|
 |maxAutoRenewDuration|00:05:00|De maximale duur waarbinnen de bericht vergrendeling automatisch wordt vernieuwd.|
-|Automatisch aanvullen|waar|Hiermee wordt aangegeven of de trigger automatisch moet worden voltooid na de verwerking, of dat de functie code hand matig wordt aangeroepen.<br><br>De instelling in `false` wordt alleen ondersteund in C#.<br><br>Als deze `true` optie is ingesteld op, wordt het bericht automatisch door de trigger voltooid als de uitvoering van de functie is voltooid en wordt het bericht anders afgebroken.<br><br>Wanneer dit is ingesteld op `false` , bent u verantwoordelijk voor het aanroepen van [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -methoden om het bericht te volt ooien, te annuleren of deadletter. Als er een uitzonde ring wordt gegenereerd (en geen van de `MessageReceiver` methoden worden genoemd), blijft de vergren deling. Zodra de vergren deling is verlopen, wordt het bericht opnieuw in de wachtrij geplaatst `DeliveryCount` en wordt de vergren deling automatisch verlengd.<br><br>In functies zonder C # worden uitzonde ringen in de functie uitgevoerd in de runtime-aanroepen `abandonAsync` op de achtergrond. Als er geen uitzonde ring optreedt, `completeAsync` wordt deze op de achtergrond aangeroepen. |
+|Automatisch aanvullen|true|Hiermee wordt aangegeven of de trigger automatisch moet worden voltooid na de verwerking, of dat de functie code hand matig wordt aangeroepen.<br><br>De instelling in `false` wordt alleen ondersteund in C#.<br><br>Als deze `true` optie is ingesteld op, wordt het bericht automatisch door de trigger voltooid als de uitvoering van de functie is voltooid en wordt het bericht anders afgebroken.<br><br>Wanneer dit is ingesteld op `false` , bent u verantwoordelijk voor het aanroepen van [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -methoden om het bericht te volt ooien, te annuleren of deadletter. Als er een uitzonde ring wordt gegenereerd (en geen van de `MessageReceiver` methoden worden genoemd), blijft de vergren deling. Zodra de vergren deling is verlopen, wordt het bericht opnieuw in de wachtrij geplaatst `DeliveryCount` en wordt de vergren deling automatisch verlengd.<br><br>In functies zonder C # worden uitzonde ringen in de functie uitgevoerd in de runtime-aanroepen `abandonAsync` op de achtergrond. Als er geen uitzonde ring optreedt, `completeAsync` wordt deze op de achtergrond aangeroepen. |
 |maxConcurrentCalls|16|Het maximum aantal gelijktijdige aanroepen naar de call back dat de bericht pomp moet initiëren per geschaald exemplaar. De functie runtime verwerkt standaard meerdere berichten tegelijk.|
 |maxConcurrentSessions|2000|Het maximum aantal sessies dat gelijktijdig kan worden verwerkt per geschaald exemplaar.|
 

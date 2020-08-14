@@ -6,36 +6,36 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.custom: references_regions
+ms.date: 08/12/2020
+ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475563"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212049"
 ---
-# <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
+# <a name="mapping-data-flows-in-azure-data-factory"></a>Gegevens stromen toewijzen in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Het toewijzen van gegevens stromen zijn visueel ontworpen gegevens transformaties in Azure Data Factory. Met gegevens stromen kunnen data engineers grafische gegevens transformatie logica ontwikkelen zonder code te schrijven. De resulterende gegevens stromen worden uitgevoerd als activiteiten binnen Azure Data Factory pijp lijnen die gebruikmaken van uitgeschaalde Apache Spark clusters. Gegevens stroom activiteiten kunnen worden ingeschakeld via bestaande Data Factory plannings-, beheer-, stroom-en bewakings mogelijkheden.
+## <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
 
-Het toewijzen van gegevens stromen biedt een volledig visuele ervaring zonder code ring vereist. Uw gegevens stromen worden uitgevoerd op uw uitvoerings cluster voor uitgeschaalde gegevens verwerking. Azure Data Factory verwerkt alle code omzetting, optimalisatie van paden en de uitvoering van uw gegevens stroom taken.
+Het toewijzen van gegevens stromen zijn visueel ontworpen gegevens transformaties in Azure Data Factory. Met gegevens stromen kunnen gegevens technici logica voor gegevens transformatie ontwikkelen zonder code te schrijven. De resulterende gegevens stromen worden uitgevoerd als activiteiten binnen Azure Data Factory pijp lijnen die gebruikmaken van uitgeschaalde Apache Spark clusters. Gegevens stroom activiteiten kunnen worden operationeel met bestaande Azure Data Factory plannings-, beheer-, stroom-en bewakings mogelijkheden.
 
-![Architectuur](media/data-flow/adf-data-flows.png "Architectuur")
+Het toewijzen van gegevens stromen biedt een volledig visuele ervaring zonder code ring vereist. Uw gegevens stromen worden uitgevoerd op ADF-beheerde uitvoerings clusters voor uitgeschaalde gegevens verwerking. Azure Data Factory verwerkt alle code omzetting, optimalisatie van paden en de uitvoering van uw gegevens stroom taken.
 
 ## <a name="getting-started"></a>Aan de slag
 
-Als u een gegevens stroom wilt maken, selecteert u het plus teken onder **Factory-resources**en selecteert u vervolgens **gegevens stroom**. 
+Gegevens stromen worden gemaakt op basis van het deel venster resources, zoals pijp lijnen en gegevens sets. Als u een gegevens stroom wilt maken, selecteert u het plus teken naast **Factory-resources**en selecteert u vervolgens **gegevens stroom**. 
 
-![Nieuwe gegevens stroom](media/data-flow/newdataflow2.png "nieuwe gegevens stroom")
+![Nieuwe gegevens stroom](media/data-flow/new-data-flow.png "nieuwe gegevens stroom")
 
 Met deze actie gaat u naar het canvas voor gegevens stromen, waar u uw transformatie logica kunt maken. Selecteer **bron toevoegen** om het configureren van de bron transformatie te starten. Zie [bron transformatie](data-flow-source.md)voor meer informatie.
 
-## <a name="data-flow-canvas"></a>Canvas voor gegevens stroom
+## <a name="authoring-data-flows"></a>Gegevens stromen ontwerpen
 
-Het canvas voor de gegevens stroom is onderverdeeld in drie delen: de bovenste balk, de grafiek en het configuratie paneel. 
+De toewijzing van gegevens stroom heeft een uniek ontwerp teken dat is ontworpen om het maken van transformatie logica eenvoudig te maken. Het canvas voor de gegevens stroom is onderverdeeld in drie delen: de bovenste balk, de grafiek en het configuratie paneel. 
 
 ![Canvas](media/data-flow/canvas1.png "Canvas")
 
@@ -44,40 +44,6 @@ Het canvas voor de gegevens stroom is onderverdeeld in drie delen: de bovenste b
 In de grafiek wordt de transformatie stroom weer gegeven. De afkomst van de bron gegevens worden weer gegeven terwijl deze in een of meer sinks worden stromen. Selecteer **bron toevoegen**om een nieuwe bron toe te voegen. Als u een nieuwe trans formatie wilt toevoegen, selecteert u het plus teken aan de rechter benedenhoek van een bestaande trans formatie.
 
 ![Canvas](media/data-flow/canvas2.png "Canvas")
-
-### <a name="azure-integration-runtime-data-flow-properties"></a>Eigenschappen van gegevens stroom voor Azure Integration runtime
-
-![Knop fout opsporing](media/data-flow/debugbutton.png "Knop fout opsporing")
-
-Wanneer u begint met het werken met gegevens stromen in ADF, wilt u de schakel optie voor fout opsporing inschakelen voor gegevens stromen boven aan de gebruikers interface van de browser. Dit draait om een Spark-cluster dat moet worden gebruikt voor interactieve fout opsporing, gegevens voorvertoningen en de uitvoering van de fout opsporing voor de pijp lijn. U kunt de grootte van het gebruikte cluster instellen door een aangepaste [Azure Integration runtime](concepts-integration-runtime.md)te kiezen. De foutopsporingssessie kan Maxi maal 60 minuten na de laatste gegevens preview of de laatste probleemoplossings pijplijn worden uitgevoerd.
-
-Wanneer u uw pijp lijnen operationeel maken met gegevens stroom activiteiten, gebruikt ADF het Azure Integration Runtime dat is gekoppeld aan de [activiteit](control-flow-execute-data-flow-activity.md) in de eigenschap ' uitvoeren op '.
-
-De standaard Azure Integration Runtime is een klein 4-core knoop punt cluster met één worker waarmee u gegevens kunt bekijken en snel probleemoplossings pijplijnen met minimale kosten. Stel een grotere Azure IR configuratie in als u bewerkingen uitvoert voor grote gegevens sets.
-
-U kunt de ADF de opdracht geven om een groep cluster resources (Vm's) te onderhouden door een TTL in te stellen in de Azure IR eigenschappen van de gegevens stroom. Deze actie resulteert in een snellere taak uitvoering voor volgende activiteiten.
-
-#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure Integration runtime en data flow-strategieën
-
-##### <a name="execute-data-flows-in-parallel"></a>Gegevens stromen parallel uitvoeren
-
-Als u gegevens stromen in een pijp lijn parallel uitvoert, worden met ADF afzonderlijke Spark-clusters voor elke uitvoering van de activiteit gespind op basis van de instellingen in uw Azure Integration Runtime die aan elke activiteit zijn gekoppeld. Als u parallelle uitvoeringen wilt ontwerpen in ADF-pijp lijnen, voegt u uw gegevens stroom activiteiten toe zonder prioriteits beperkingen in de gebruikers interface.
-
-Van deze drie opties wordt deze optie waarschijnlijk in de kortste tijd uitgevoerd. Elke parallelle gegevens stroom wordt echter op hetzelfde moment uitgevoerd op afzonderlijke clusters, zodat de volg orde van gebeurtenissen niet-deterministisch is.
-
-Als u uw gegevensstroom activiteiten parallel in uw pijp lijnen uitvoert, wordt aanbevolen geen TTL te gebruiken. Deze actie is omdat parallelle uitvoeringen van uw gegevens stroom gelijktijdig met dezelfde Azure Integration Runtime resulteert in meerdere warme groeps instanties voor uw data factory.
-
-##### <a name="overload-single-data-flow"></a>Overbelasting van één gegevens stroom
-
-Als u al uw logica in één gegevens stroom plaatst, voert ADF diezelfde taak uitvoerings context uit op één Spark-cluster exemplaar.
-
-Deze optie kan lastiger zijn om te volgen en problemen op te lossen, omdat uw bedrijfs regels en bedrijfs logica onsamenhangend kunnen zijn. Deze optie biedt ook veel herbruikbaarheid.
-
-##### <a name="execute-data-flows-sequentially"></a>Gegevens stromen sequentieel uitvoeren
-
-Als u de gegevens stroom activiteiten in volg orde van de pijp lijn uitvoert en u een TTL hebt ingesteld in de configuratie van de Azure IR, worden de reken resources (Vm's) door ADF opnieuw gebruikt, wat resulteert in snellere uitvoerings tijden. Er wordt nog steeds een nieuwe Spark-context voor elke uitvoering ontvangen.
-
-Van deze drie opties neemt deze actie waarschijnlijk de langste tijd om end-to-end uit te voeren. Dit biedt echter een duidelijke schei ding van logische bewerkingen in elke stap van de gegevens stroom.
 
 ### <a name="configuration-panel"></a>Configuratie paneel
 
@@ -111,13 +77,85 @@ Als de foutopsporingsmodus is ingeschakeld, biedt het tabblad **voor beeld van g
 
 ### <a name="top-bar"></a>Bovenste balk
 
-De bovenste balk bevat acties die van invloed zijn op de hele gegevens stroom, zoals opslaan en valideren. U kunt ook tussen grafiek-en configuratie modi scha kelen met behulp van de knoppen **diagram weer geven** en **grafiek verbergen** .
+De bovenste balk bevat acties die van invloed zijn op de hele gegevens stroom, zoals opslaan en valideren. U kunt ook de onderliggende JSON-code en het gegevensstroom script van uw transformatie logica weer geven. Meer informatie vindt u in het [script voor gegevens stromen](data-flow-script.md).
 
-![Grafiek verbergen](media/data-flow/hideg.png "Grafiek verbergen")
+## <a name="available-transformations"></a>Beschik bare trans formaties
 
-Als u uw grafiek verbergt, kunt u op een later tijdstip door uw transformatie knooppunten bladeren via de knoppen **vorige** en **volgende** .
+Bekijk het [overzicht van de toewijzings gegevens stroom transformatie](data-flow-transformation-overview.md) voor een lijst met beschik bare trans formaties.
 
-![Knoppen Vorige en volgende](media/data-flow/showhide.png "knoppen Vorige en volgende")
+## <a name="data-flow-activity"></a>Activiteit gegevens stroom
+
+Het toewijzen van gegevens stromen is operationeel in ADF-pijp lijnen met behulp van de [activiteit gegevens stroom](control-flow-execute-data-flow-activity.md). Alle een gebruiker heeft te maken met de Integration runtime die moet worden gebruikt en waarmee parameter waarden worden door gegeven. Meer informatie vindt u in de [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
+
+## <a name="debug-mode"></a>Foutopsporingsmodus
+
+Met de foutopsporingsmodus kunt u de resultaten van elke transformatie stap interactief bekijken terwijl u uw gegevens stromen bouwt en oplost. De foutopsporingssessie kan worden gebruikt bij het samen stellen van de logica van de gegevens stroom en het uitvoeren van de fout opsporing van pijp lijnen met gegevens stroom activiteiten. Zie de documentatie voor de [foutopsporingsmodus](concepts-data-flow-debug-mode.md)voor meer informatie.
+
+## <a name="monitoring-data-flows"></a>Gegevens stromen bewaken
+
+De stroom voor het toewijzen van gegevens kan worden geïntegreerd met bestaande Azure Data Factory bewakings mogelijkheden. Zie [toewijzings gegevens stroom controleren](concepts-data-flow-monitoring.md)voor meer informatie over het bewaken van de uitvoer van de bewaking van gegevens stromen.
+
+Het Azure Data Factory-team heeft een [hulp programma voor het afstemmen van prestaties](concepts-data-flow-performance.md) gemaakt om u te helpen bij het optimaliseren van de uitvoerings tijd van uw gegevens stromen na het maken van uw bedrijfs logica.
+
+## <a name="available-regions"></a>Beschikbare regio's
+
+Toewijzing van gegevens stromen is beschikbaar in de volgende regio's:
+
+| Azure-regio | Gegevens stromen in ADF | Gegevens stromen in Synapse Studio |
+| ------------ | ----------------- | ---------------------------- |
+|  Australië - centraal | | |  
+| Australië - centraal 2 | | |
+| Australië - oost | ✓ |  ✓ |
+| Australia Southeast   | ✓ | ✓ |
+| Brazil South  | ✓ |  |
+| Canada - midden | ✓ |  |
+| Central India | ✓ |   ✓ |
+| Central US    | ✓ |   ✓ |
+| China East |      | ✓ |
+| China-oost 2  |   |    |
+| China niet-regionaal | | |
+| China - noord |     | |
+| China-noord 2 | |  |
+| Azië - oost | ✓ | |
+| VS - oost   | ✓ | ✓ |
+| VS - oost 2 | ✓ | ✓ |
+| Frankrijk - centraal | ✓ | ✓ |
+| Frankrijk - zuid  | | |
+| Duitsland-centraal (soeverein) | | |
+| Duitsland-niet-regionaal (soeverein) | | |
+| Duitsland-noord (openbaar) | | |
+| Duitsland-noordoost (soeverein) | | |
+| Duitsland-west-centraal (openbaar) |  | ✓ |
+| Japan East | ✓ |  |
+| Japan - west |  | |
+| Korea - centraal | ✓ |  |
+| Korea - zuid | | |
+| VS - noord-centraal  | ✓ | ✓ |
+| Europa - noord  | ✓ |    |
+| Noorwegen - oost | | |
+| Noorwegen - west | | |
+| Zuid-Afrika - noord    | ✓ | |
+| Zuid-Afrika - west |  |    |
+| South Central US  | | ✓ |
+| India - zuid | | |
+| Azië - zuidoost    | ✓ | ✓ |
+| Zwitserland - noord |   |  |
+| Zwitserland - west | | |
+| UAE - centraal | | |
+| UAE - noord |  |    |
+| Verenigd Koninkrijk Zuid  | ✓ |   | ✓ |
+| Verenigd Koninkrijk West |     | ✓ |
+| US DoD Central | |  |
+| US DoD East | |  |
+| VS (overheid) - Arizona |      |  |
+| US Gov - niet-regionaal | |  |
+| VS (overheid) - Texas | |  |
+| VS (overheid) - Virginia |     |  |
+| VS - west-centraal |     | ✓ |
+| Europa -west   | ✓ |   ✓ |
+| India - west | | |
+| VS - west   | ✓ |   |
+| West US 2 | ✓ |   ✓ | 
 
 ## <a name="next-steps"></a>Volgende stappen
 

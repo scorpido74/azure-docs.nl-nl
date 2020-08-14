@@ -9,14 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 543644495a99bacd40edc3f2d9151e4c15808c50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038423"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208739"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Veld Toewijzingen en trans formaties met Azure Cognitive Search Indexeer functies
+
+![Indexerings fasen](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "indexerings fasen")
 
 Wanneer u Azure Cognitive Search-Indexeer functies gebruikt, merkt u soms dat de invoer gegevens niet echt overeenkomen met het schema van uw doel index. In dergelijke gevallen kunt u **veld Toewijzingen** gebruiken om de vorm van uw gegevens tijdens het indexerings proces te wijzigen.
 
@@ -275,9 +277,9 @@ Deze functie kan worden gebruikt om een teken reeks te coderen zodat deze ' URL 
 
 #### <a name="example---document-key-lookup"></a>Voor beeld-zoeken naar document sleutels
 
-`urlEncode`de functie kan worden gebruikt als alternatief voor de `base64Encode` functie als alleen onveilige URL-tekens moeten worden geconverteerd, terwijl andere tekens ongewijzigd blijven.
+`urlEncode` de functie kan worden gebruikt als alternatief voor de `base64Encode` functie als alleen onveilige URL-tekens moeten worden geconverteerd, terwijl andere tekens ongewijzigd blijven.
 
-De invoer teken reeks is `<hello>` -en vervolgens wordt het doel veld van `(Edm.String)` het type ingevuld met de waarde`%3chello%3e`
+De invoer teken reeks is `<hello>` -en vervolgens wordt het doel veld van `(Edm.String)` het type ingevuld met de waarde `%3chello%3e`
 
 Wanneer u de gecodeerde sleutel ophaalt tijdens de zoek tijd, kunt u de `urlDecode` functie gebruiken om de oorspronkelijke sleutel waarde op te halen en gebruiken om het bron document op te halen.
 

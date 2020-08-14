@@ -3,14 +3,15 @@ title: Naslag informatie voor ontwikkel aars van C#-scripts Azure Functions
 description: Meer informatie over het ontwikkelen van Azure Functions met behulp van een C#-script.
 author: craigshoemaker
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 177e9fcd872c594fbfb5f29077235113c6342860
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506142"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205435"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Naslag informatie voor ontwikkel aars van Azure Functions C#-script (. CSX)
 
@@ -210,9 +211,9 @@ public class Order
 
 U kunt een relatief pad gebruiken met de `#load` instructie:
 
-* `#load "mylogger.csx"`Hiermee wordt een bestand geladen dat zich in de map function bevindt.
-* `#load "loadedfiles\mylogger.csx"`Hiermee wordt een bestand geladen dat zich in een map in de map function bevindt.
-* `#load "..\shared\mylogger.csx"`Hiermee wordt een bestand geladen dat zich in een map op hetzelfde niveau bevindt als de map functie, dat zich direct onder *wwwroot*bevindt.
+* `#load "mylogger.csx"` Hiermee wordt een bestand geladen dat zich in de map function bevindt.
+* `#load "loadedfiles\mylogger.csx"` Hiermee wordt een bestand geladen dat zich in een map in de map function bevindt.
+* `#load "..\shared\mylogger.csx"` Hiermee wordt een bestand geladen dat zich in een map op hetzelfde niveau bevindt als de map functie, dat zich direct onder *wwwroot*bevindt.
 
 De `#load` -instructie werkt alleen met *. CSX* -bestanden, niet met *. cs* -bestanden.
 
@@ -459,7 +460,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`is het .NET-kenmerk dat uw binding definieert en `T` is een invoer-of uitvoer type dat wordt ondersteund door dat bindings type. `T`kan geen `out` parameter type zijn (zoals `out JObject` ). De Mobile Apps tabel uitvoer binding ondersteunt bijvoorbeeld [zes uitvoer typen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), maar u kunt alleen [ \<T> ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) voor gebruiken `T` .
+`BindingTypeAttribute` is het .NET-kenmerk dat uw binding definieert en `T` is een invoer-of uitvoer type dat wordt ondersteund door dat bindings type. `T` kan geen `out` parameter type zijn (zoals `out JObject` ). De Mobile Apps tabel uitvoer binding ondersteunt bijvoorbeeld [zes uitvoer typen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), maar u kunt alleen [ \<T> ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) voor gebruiken `T` .
 
 ### <a name="single-attribute-example"></a>Voor beeld van één kenmerk
 

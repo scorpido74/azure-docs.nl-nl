@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin worden de procedures beschreven voor het uitvoeren van uw code in azure Kubernetes service met Azure dev Spaces
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: c343c32f0817cc922784bb25283290dc9ed88d29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072954"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208692"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Hoe u uw code uitvoert met Azure dev Spaces werkt
 
@@ -130,7 +130,7 @@ Met de eigenschap *install. set* kunt u een of meer waarden configureren die u w
 
 In het bovenstaande voor beeld vertelt de eigenschap *install. set. replicaCount* aan de controller hoeveel exemplaren van uw toepassing moeten worden uitgevoerd in uw dev-ruimte. Afhankelijk van uw scenario kunt u deze waarde verg Roten, maar dit heeft gevolgen voor het koppelen van een fout opsporingsprogramma aan de pod van uw toepassing. Zie het [artikel over probleem oplossing][troubleshooting]voor meer informatie.
 
-In de gegenereerde helm-grafiek is de container installatie kopie ingesteld op *{{. Values. image. repository}}: {{. Values. image. tag}}*. In het bestand wordt de `azds.yaml` eigenschap *install. set. image. tag* gedefinieerd als *$ (tag)* standaard, die wordt gebruikt als de waarde voor *{{. Values. image. tag}}*. Door de eigenschap *install. set. image. tag* op deze manier in te stellen, kan de container installatie kopie voor uw toepassing op een unieke manier worden gelabeld wanneer Azure-ontwikkel ruimten worden uitgevoerd. In dit specifieke geval wordt de afbeelding gelabeld als * \<value from image.repository> : $ (tag)*. U moet de variabele *$ (tag)* gebruiken als de waarde *install. set. image. tag* , zodat ontwikkel ruimten de container herkennen en vinden in het AKS-cluster.
+In de gegenereerde helm-grafiek is de container installatie kopie ingesteld op *{{. Values. image. repository}}: {{. Values. image. tag}}*. In het bestand wordt de `azds.yaml` eigenschap *install. set. image. tag* gedefinieerd als *$ (tag)* standaard, die wordt gebruikt als de waarde voor *{{. Values. image. tag}}*. Door de eigenschap *install. set. image. tag* op deze manier in te stellen, kan de container installatie kopie voor uw toepassing op een unieke manier worden gelabeld wanneer Azure-ontwikkel ruimten worden uitgevoerd. In dit specifieke geval wordt de afbeelding gelabeld als * \<value from image.repository> : $ (tag)*. U moet de variabele *$ (tag)* gebruiken als de waarde   *install. set. image. tag* , zodat ontwikkel ruimten de container herkennen en vinden in het AKS-cluster.
 
 In het bovenstaande voor beeld `azds.yaml` definieert u *install. set. ingress. hosts*. De eigenschap *install. set. ingress. hosts* definieert een indeling voor de hostnaam voor open bare eind punten. Deze eigenschap gebruikt ook *$ (spacePrefix)*, *$ (rootSpacePrefix)* en *$ (hostSuffix)*. Dit zijn de waarden die door de controller worden verschaft.
 
@@ -201,14 +201,6 @@ Zie [hoe route ring werkt met Azure dev Spaces][how-it-works-routing]voor meer i
 
 Voor meer informatie over het gebruik van Azure dev Spaces voor het snel herhalen en ontwikkelen, Zie [hoe lokaal proces met Kubernetes werkt][how-it-works-local-process-kubernetes] en [hoe externe fout opsporing van uw code met Azure dev Spaces werkt][how-it-works-remote-debugging].
 
-Om aan de slag te gaan met Azure dev Spaces om uw project uit te voeren, raadpleegt u de volgende Quick starts:
-
-* [Snel herhalen en fouten opsporen met Visual Studio code en Java][quickstart-java]
-* [Snel herhalen en fouten opsporen met Visual Studio code en .NET][quickstart-netcore]
-* [Snel herhalen en fouten opsporen met Visual Studio code en Node.js][quickstart-node]
-* [Snel herhalen en fouten opsporen met Visual Studio en .NET core][quickstart-vs]
-* [De CLI gebruiken om een toepassing te ontwikkelen op Kubernetes][quickstart-cli]
-
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
@@ -216,10 +208,5 @@ Om aan de slag te gaan met Azure dev Spaces om uw project uit te voeren, raadple
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
 [sync-section]: #file-synchronization
 [troubleshooting]: troubleshooting.md

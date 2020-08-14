@@ -4,16 +4,16 @@ description: Meer informatie over het ontwikkelen van Azure WebJobs in Visual St
 author: ggailey777
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
 ms.topic: conceptual
-ms.custom: vs-azure
+ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: f6ebb20eb66e2449f6627b3c6ce45fd88b8640aa
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 14bb693ccaa1b1d16a1d07b7ee1cdeb4493960f5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009754"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212876"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Webjobs ontwikkelen en implementeren met behulp van Visual Studio
 
@@ -57,7 +57,7 @@ Implementeer een project zelf als Webtaak of koppel dit aan een webproject, zoda
 
 Installeer Visual Studio 2017 of Visual Studio 2019 met de [werk belasting van Azure Development](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
-### <a name="enable-webjobs-deployment-for-an-existing-console-app-project"></a><a id="convert"></a>De implementatie van webjobs inschakelen voor een bestaand console-app-project
+### <a name="enable-webjobs-deployment-for-an-existing-console-app-project"></a><a id="convert"></a> De implementatie van webjobs inschakelen voor een bestaand console-app-project
 
 U hebt hiervoor twee opties:
 
@@ -69,7 +69,7 @@ U hebt hiervoor twee opties:
 
   Een bestaand console-app-project configureren om te implementeren als een Webtaak zelf, zonder een koppeling naar een webproject. Gebruik deze optie als u een Webtaak zelf wilt uitvoeren in een web-app, zonder dat er een webtoepassing in de web-app wordt uitgevoerd. U kunt dit doen om de resources van uw webtoepassing onafhankelijk van uw webtoepassingsgegevens te schalen.
 
-#### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a>Automatische implementatie van webjobs met een webproject inschakelen
+#### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a> Automatische implementatie van webjobs met een webproject inschakelen
 
 1. Klik met de rechter muisknop op het webproject in **Solution Explorer**en **Add**Selecteer vervolgens  >  **bestaand project als Azure-Webtaak**toevoegen.
    
@@ -81,7 +81,7 @@ U hebt hiervoor twee opties:
     ![Project selecteren in het dialoog venster een Azure-Webtaak toevoegen](./media/webjobs-dotnet-deploy-vs/aaw1.png)
 3. Voltooi het dialoog venster [Azure-Webtaak toevoegen](#configure) en selecteer vervolgens **OK**. 
 
-#### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a>De implementatie van webjobs zonder een webproject inschakelen
+#### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a> De implementatie van webjobs zonder een webproject inschakelen
 1. Klik met de rechter muisknop op het console-app-project in **Solution Explorer**en selecteer vervolgens **publiceren als Azure-Webtaak**. 
    
     ![Publiceren als Azure-Webtaak](./media/webjobs-dotnet-deploy-vs/paw.png)
@@ -106,12 +106,12 @@ Als u een nieuw project met webjobs wilt maken, gebruikt u de sjabloon console-a
 > 
 > 
 
-#### <a name="use-the-webjobs-new-project-template-for-an-independent-webjob"></a><a id="createnolink"></a>De sjabloon webjobs New-Project gebruiken voor een onafhankelijke Webtaak
+#### <a name="use-the-webjobs-new-project-template-for-an-independent-webjob"></a><a id="createnolink"></a> De sjabloon webjobs New-Project gebruiken voor een onafhankelijke Webtaak
 1. Selecteer **Bestand** > **Nieuw** > **Project**. Zoek in het dialoog venster **Crete een nieuw project** naar en selecteer **Azure webtaak (.NET Framework)** voor C#.
    
 2. Volg de vorige instructies om [de console-app project een onafhankelijk Webjobs-project te maken](#convertnolink).
 
-#### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a>De sjabloon webjobs New-Project gebruiken voor een Webtaak die is gekoppeld aan een webproject
+#### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a> De sjabloon webjobs New-Project gebruiken voor een Webtaak die is gekoppeld aan een webproject
 1. Klik met de rechter muisknop op het webproject in **Solution Explorer**en **Add**Selecteer vervolgens  >  **Nieuw Azure-project voor Webtaak**toevoegen.
    
     ![Nieuw menu-item van Azure Webtaak-project](./media/webjobs-dotnet-deploy-vs/nawj.png)
@@ -218,10 +218,10 @@ De volgende instellingen worden ondersteund door webjobs:
 
 | **Instelling** | **Type**  | **Beschrijving** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Alle | Hiermee kan de Webtaak op locatie worden uitgevoerd zonder eerst naar een tijdelijke map te worden gekopieerd. Zie voor meer informatie [werk directory Webtaak](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Alles | Hiermee kan de Webtaak op locatie worden uitgevoerd zonder eerst naar een tijdelijke map te worden gekopieerd. Zie voor meer informatie [werk directory Webtaak](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Continu | Voer de Webtaak alleen uit op één instantie wanneer deze is uitgeschaald. Zie [een continue taak als Singleton instellen](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)voor meer informatie. |
 | `schedule` | Geactiveerd | Voer de Webtaak uit op basis van een CRON schema. Zie [NCRONTAB-expressies](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)voor meer informatie. |
-| `stopping_wait_time`| Alle | Hiermee staat u het beheer van het afsluit gedrag toe. Zie voor meer informatie [correct afsluiten](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Alles | Hiermee staat u het beheer van het afsluit gedrag toe. Zie voor meer informatie [correct afsluiten](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ### <a name="continuous-execution"></a>Doorlopende uitvoering
 

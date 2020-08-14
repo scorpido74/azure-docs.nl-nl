@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64b9176a16f4d8d2b7ee7f33e00714d811c5f070
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537607"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209085"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Een beveiligingsagent voor Azure Security Center for IoT op basis van C# implementeren voor Windows
 
@@ -30,7 +31,7 @@ In deze handleiding leert u het volgende:
 
 > [!div class="checklist"]
 > * Installeren
-> * Implementatie verifiëren
+> * Implementatie controleren
 > * Agent verwijderen
 > * Problemen oplossen
 
@@ -80,7 +81,7 @@ Met dit script worden de volgende acties uitgevoerd:
 
 Gebruik de opdracht Get-Help in Power shell voor meer informatie.
 
-Get-Help-voor beeld:```Get-Help .\InstallSecurityAgent.ps1```
+Get-Help-voor beeld:    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>Implementatie status controleren
 
@@ -137,7 +138,7 @@ Logboek registratie inschakelen:
 
 1. Raadpleeg het logboek bestand voor meer informatie over de fout. Het logboek bestand is aanwezig in de werkmap waarin het script wordt uitgevoerd. 
 
-   Locatie van logboek bestand:`.\IoTAgentLog.log`
+   Locatie van logboek bestand: `.\IoTAgentLog.log`
 
 ## <a name="next-steps"></a>Volgende stappen
 

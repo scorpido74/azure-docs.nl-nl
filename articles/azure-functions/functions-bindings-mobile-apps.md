@@ -3,14 +3,15 @@ title: Mobile Apps bindingen voor Azure Functions
 description: Meer informatie over het gebruik van Azure Mobile Apps-bindingen in Azure Functions.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6810ba76379e78d3cde4f3cd341d501be3725257
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506329"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212239"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps bindingen voor Azure Functions 
 
@@ -138,7 +139,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 | **type**| N.v.t. | Moet worden ingesteld op ' mobileTable '|
 | **direction**| N.v.t. |Moet worden ingesteld op ' in '|
-| **naam**| N.v.t. | Naam van invoer parameter in functie handtekening.|
+| **name**| N.v.t. | Naam van invoer parameter in functie handtekening.|
 |**tableName** |**TableName**|De naam van de gegevens tabel van de mobiele app|
 | **id**| **Id** | De id van de record die moet worden opgehaald. Kan statisch zijn of op basis van de trigger die de functie aanroept. Als u bijvoorbeeld een wachtrij trigger gebruikt voor uw functie, `"id": "{queueTrigger}"` gebruikt de teken reeks waarde van het wachtrij bericht als de record-id die moet worden opgehaald.|
 |**Combi**|**Verbinding**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam op van de app-instelling in de `connection` eigenschap in uw invoer binding. De URL ziet er als volgt uit `http://<appname>.azurewebsites.net` .
@@ -296,7 +297,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 | **type**| N.v.t. | Moet worden ingesteld op ' mobileTable '|
 | **direction**| N.v.t. |Moet worden ingesteld op out|
-| **naam**| N.v.t. | De naam van de uitvoer parameter in de functie handtekening.|
+| **name**| N.v.t. | De naam van de uitvoer parameter in de functie handtekening.|
 |**tableName** |**TableName**|De naam van de gegevens tabel van de mobiele app|
 |**Combi**|**MobileAppUriSetting**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam op van de app-instelling in de `connection` eigenschap in uw invoer binding. De URL ziet er als volgt uit `http://<appname>.azurewebsites.net` .
 |**apiKey**|**ApiKeySetting**|De naam van een app-instelling met de API-sleutel van uw mobiele app. Geef de API-sleutel op als u [een API-sleutel in de back-end van de mobiele app van uw Node.js implementeert](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)of [een API-sleutel in uw back-end van uw .net-app implementeert](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Als u de sleutel wilt opgeven, maakt u een app-instelling in de functie-app die de API-sleutel bevat en voegt u vervolgens de `apiKey` eigenschap in uw invoer binding toe met de naam van de app-instelling. |
@@ -310,9 +311,9 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 In C#-script functies gebruikt u een benoemde uitvoer parameter van `out object` het type om toegang tot de uitvoer record te krijgen. In C#-klassen bibliotheken `MobileTable` kan het kenmerk worden gebruikt met een van de volgende typen:
 
-* `ICollector<T>`of `IAsyncCollector<T>` , waarbij `T` `JObject` een van beide typen een eigenschap is `public string Id` .
+* `ICollector<T>` of `IAsyncCollector<T>` , waarbij `T` `JObject` een van beide typen een eigenschap is `public string Id` .
 * `out JObject`
-* `out T`of `out T[]` , waarbij `T` elk type is met een `public string Id` eigenschap.
+* `out T` of `out T[]` , waarbij `T` elk type is met een `public string Id` eigenschap.
 
 In Node.js functies gebruikt `context.bindings.<name>` u om toegang tot de uitvoer record te krijgen.
 

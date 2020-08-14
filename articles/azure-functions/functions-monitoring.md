@@ -4,13 +4,13 @@ description: Meer informatie over het gebruik van Azure-toepassing Insights met 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: a1e72fba4ece24afffba573d954c7627af46a6cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp, fasttrack-edit
+ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273370"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212994"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
 
@@ -69,7 +69,7 @@ De volgende gebieden van Application Insights kunnen nuttig zijn bij het evaluer
 | **[Fouten](../azure-monitor/app/asp-net-exceptions.md)** |  Grafieken en waarschuwingen maken op basis van functie fouten en server uitzonderingen. De **naam** van de bewerking is de naam van de functie. Storingen in afhankelijkheden worden niet weer gegeven, tenzij u aangepaste telemetrie implementeert voor afhankelijkheden. |
 | **[Prestaties](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen door het resource gebruik en de door Voer per **Cloud-rolinstanties**weer te geven. Deze gegevens kunnen nuttig zijn voor het opsporen van fouten in scenario's waarbij functies worden bogging van uw onderliggende resources. |
 | **[Metrische gegevens](../azure-monitor/platform/metrics-charts.md)** | Grafieken en waarschuwingen maken op basis van metrische gegevens. Metrische gegevens bevatten het aantal functie-aanroepen, uitvoerings tijd en succes percentages. |
-| **[Live Metrics](../azure-monitor/app/live-stream.md)** | Metrische gegevens weer geven die in bijna realtime worden gemaakt. |
+| **[Live Metrics    ](../azure-monitor/app/live-stream.md)** | Metrische gegevens weer geven die in bijna realtime worden gemaakt. |
 
 ## <a name="query-telemetry-data"></a>Telemetrie-gegevens opvragen
 
@@ -192,7 +192,7 @@ In dit voor beeld worden de volgende regels ingesteld:
 * Voor logboeken met categorie `Host.Aggregator` verzendt u alle logboeken naar Application Insights. Het `Trace` logboek niveau is hetzelfde als wat sommige logboeken aanroept `Verbose` , maar wel `Trace` in de [host.jsvoor] het bestand.
 * Voor alle andere logboeken moet `Information` u alleen het niveau en de bovenstaande berichten verzenden naar Application Insights.
 
-De categorie waarde in [host.js] de logboek registratie van besturings elementen voor alle categorieën die met dezelfde waarde beginnen. `Host`in [host.jsover] de logboek registratie voor `Host.General` ,,, enzovoort `Host.Executor` `Host.Results` .
+De categorie waarde in [host.js] de logboek registratie van besturings elementen voor alle categorieën die met dezelfde waarde beginnen. `Host` in [host.jsover] de logboek registratie voor `Host.General` ,,, enzovoort `Host.Executor` `Host.Results` .
 
 Als [host.jsop] meerdere categorieën bevat die met dezelfde teken reeks beginnen, worden de langere typen eerst vergeleken. Stel dat u wilt dat alles uit de runtime, met uitzonde ring van `Host.Aggregator` logboek op `Error` niveau, maar u wilt `Host.Aggregator` aanmelden op het `Information` niveau:
 

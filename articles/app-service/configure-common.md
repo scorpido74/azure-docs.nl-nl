@@ -5,13 +5,13 @@ keywords: Azure app service, Web-app, app-instellingen, omgevings variabelen
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077370"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213576"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in het Azure Portal
 
@@ -96,11 +96,11 @@ Voor andere taal stacks is het beter om de [app-instellingen](#configure-app-set
 
 In runtime zijn verbindings reeksen beschikbaar als omgevings variabelen, met als voor voegsel de volgende verbindings typen:
 
-* Server`SQLCONNSTR_`  
-* MySQL`MYSQLCONNSTR_` 
-* SQLAzure:`SQLAZURECONNSTR_` 
-* Instel`CUSTOMCONNSTR_`
-* PostgreSQL`POSTGRESQLCONNSTR_`  
+* Server `SQLCONNSTR_`  
+* MySQL `MYSQLCONNSTR_` 
+* SQLAzure: `SQLAZURECONNSTR_` 
+* Instel `CUSTOMCONNSTR_`
+* PostgreSQL `POSTGRESQLCONNSTR_`  
 
 Bijvoorbeeld, een MySql-connection string met de naam *connectionstring1* kan worden gebruikt als de omgevings variabele `MYSQLCONNSTR_connectionString1` . Zie voor taalspecifieke stappen voor de taal stack:
 

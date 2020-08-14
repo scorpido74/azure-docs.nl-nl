@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van Gpu's voor high performance Co
 services: container-service
 ms.topic: article
 ms.date: 03/27/2020
-ms.openlocfilehash: 30cbac0984236717581c994700483b85829c4571
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244290"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213191"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Gebruik Gpu's voor computerintensieve werk belastingen op Azure Kubernetes service (AKS)
 
@@ -52,7 +52,7 @@ Haal de referenties voor uw AKS-cluster op met de opdracht [AZ AKS Get-credentia
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>NVIDIA-Stuur Programma's installeren
+## <a name="install-nvidia-device-plugin"></a>De invoeg toepassing voor NVIDIA-apparaten installeren
 
 Voordat de Gpu's in de knoop punten kunnen worden gebruikt, moet u een Daemonset voor de invoeg toepassing voor NVIDIA-apparaten implementeren. Deze Daemonset voert een pod uit op elk knoop punt om de vereiste Stuur Programma's voor de Gpu's op te geven.
 
@@ -188,7 +188,7 @@ Als u de GPU in actie wilt zien, moet u een werk belasting met GPU plannen met d
 Maak een bestand met de naam *samples-TF-mnist-demo. yaml* en plak het volgende YAML-manifest. Het volgende taak manifest bevat een resource limiet van `nvidia.com/gpu: 1` :
 
 > [!NOTE]
-> Als er een fout is opgetreden die niet overeenkomt bij het aanroepen van Stuur Programma's, zoals de versie van het CUDA-stuur programma is niet voldoende voor de CUDA-runtime versie, raadpleegt u de compatibiliteits grafiek voor NVIDIA-Stuur[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Als er een fout is opgetreden die niet overeenkomt bij het aanroepen van Stuur Programma's, zoals de versie van het CUDA-stuur programma is niet voldoende voor de CUDA-runtime versie, raadpleegt u de compatibiliteits grafiek voor NVIDIA-Stuur [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1

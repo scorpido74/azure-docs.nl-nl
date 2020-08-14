@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053913"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214050"
 ---
 # <a name="what-is-batch-transcription"></a>Wat is batch-transcriptie?
 
@@ -63,7 +63,7 @@ Volg de stappen in [akoestische aanpassing](how-to-customize-acoustic-models.md)
 
 De batch transcriptie-API ondersteunt de volgende indelingen:
 
-| Indeling | Videocodec | Bitsnelheid | Sample frequentie                     |
+| Indeling | Videocodec | Bits per voor beeld | Sample frequentie             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16-bits  | 8 kHz of 16 kHz, mono of stereo |
 | MP3    | PCM   | 16-bits  | 8 kHz of 16 kHz, mono of stereo |
@@ -181,7 +181,7 @@ Gebruik deze optionele eigenschappen om transcriptie te configureren:
       Optionele URL met [service-sa's](../../storage/common/storage-sas-overview.md) naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container. Wanneer deze niet is opgegeven, slaat micro soft de resultaten op in een opslag container die door micro soft wordt beheerd. Wanneer de transcriptie wordt verwijderd door het aanroepen van [Delete transcriptie](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription), worden de resultaat gegevens ook verwijderd.
 :::row-end:::
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 
 Batch transcriptie ondersteunt [Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) voor het lezen van audio en schrijven van transcripties naar opslag.
 
@@ -333,7 +333,7 @@ De voorbeeld code stelt de-client in en verzendt de transcriptie-aanvraag. Vervo
 
 Zie het [Swagger-document](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)voor volledige informatie over de voor gaande aanroepen. Voor het volledige voor beeld dat hier wordt weer gegeven, gaat u naar [github](https://aka.ms/csspeech/samples) in de `samples/batch` submap.
 
-Noteer de asynchrone instellingen voor het posten van audio en het ontvangen van de transcriptie-status. De client die u maakt, is een .NET HTTP-client. Er is een `PostTranscriptions` methode voor het verzenden van de details van het audio bestand en een `GetTranscriptions` methode voor het ontvangen van de statussen. `PostTranscriptions`retourneert een ingang en `GetTranscriptions` gebruikt deze om een ingang te maken om de status van transcriptie op te halen.
+Noteer de asynchrone instellingen voor het posten van audio en het ontvangen van de transcriptie-status. De client die u maakt, is een .NET HTTP-client. Er is een `PostTranscriptions` methode voor het verzenden van de details van het audio bestand en een `GetTranscriptions` methode voor het ontvangen van de statussen. `PostTranscriptions` retourneert een ingang en `GetTranscriptions` gebruikt deze om een ingang te maken om de status van transcriptie op te halen.
 
 In de huidige voorbeeld code is geen aangepast model opgegeven. De service gebruikt het basis model voor het transcriberen van het bestand of de bestanden. Als u het model wilt opgeven, kunt u de model verwijzing voor het aangepaste model door geven aan dezelfde methode.
 

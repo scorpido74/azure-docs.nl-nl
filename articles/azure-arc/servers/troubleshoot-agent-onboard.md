@@ -1,18 +1,18 @@
 ---
-title: Problemen met Azure-Arc voor Server Agent-verbindings problemen oplossen
-description: In dit artikel wordt beschreven hoe u problemen oplost en oplost met de verbonden machine agent die zich voordoet met Azure Arc voor servers (preview) wanneer u probeert verbinding te maken met de service.
+title: Problemen met de verbinding van de agent voor Azure Arc-servers (preview) oplossen
+description: In dit artikel wordt beschreven hoe u problemen oplost en oplost met de verbonden machine agent die zich voordoet bij het maken van verbinding met de service met Azure Arc-servers (preview).
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cd2560279085485a8ac7b285e4f601060a924f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118005"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213541"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Problemen met de verbindings problemen van de verbonden computer agent oplossen
 
-Dit artikel bevat informatie over het oplossen van problemen die zich kunnen voordoen bij het configureren van de Azure-Arc voor servers (preview) verbonden machine agent voor Windows of Linux. Bij het configureren van de verbinding met de service, worden zowel de interactieve installatie als de schaal op de juiste wijze gebruikt. Zie [Arc for servers Overview](./overview.md)(Engelstalig) voor algemene informatie.
+Dit artikel bevat informatie over het oplossen van problemen die zich kunnen voordoen bij het configureren van de verbonden computer agent van Azure Arc (preview) voor Windows of Linux. Bij het configureren van de verbinding met de service, worden zowel de interactieve installatie als de schaal op de juiste wijze gebruikt. Zie overzicht van Arc- [Ingeschakelde servers](./overview.md)voor algemene informatie.
 
 ## <a name="agent-verbose-log"></a>Uitgebreid logboek van agent
 
@@ -22,13 +22,13 @@ Vóór het volgen van de stappen voor probleem oplossing die verderop in dit art
 
 Hier volgt een voor beeld van de opdracht om uitgebreide logboek registratie in te scha kelen met de verbonden machine agent voor Windows wanneer u een interactieve installatie uitvoert.
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 Hier volgt een voor beeld van de opdracht om uitgebreide logboek registratie in te scha kelen met de verbonden machine agent voor Windows wanneer u een installatie op schaal uitvoert met behulp van een service-principal.
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect `
   --service-principal-id "{serviceprincipalAppID}" `
   --service-principal-secret "{serviceprincipalPassword}" `
@@ -46,13 +46,13 @@ Hier volgt een voor beeld van de opdracht om uitgebreide logboek registratie in 
 >[!NOTE]
 >U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
 
-```
+```bash
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 Hier volgt een voor beeld van de opdracht om uitgebreide logboek registratie in te scha kelen met de verbonden machine agent voor Linux wanneer u een installatie op schaal uitvoert met behulp van een service-principal.
 
-```
+```bash
 azcmagent connect \
   --service-principal-id "{serviceprincipalAppID}" \
   --service-principal-secret "{serviceprincipalPassword}" \

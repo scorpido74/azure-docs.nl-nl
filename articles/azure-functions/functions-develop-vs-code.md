@@ -2,13 +2,14 @@
 title: Azure Functions ontwikkelen met Visual Studio code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: d8ccb93013b16fc919630251aa02edf48e30ce6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083120"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206737"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -186,7 +187,7 @@ Met Visual Studio code kunt u bindingen toevoegen aan uw function.jsop bestand d
 
 Hieronder volgen enkele voor beelden van prompts voor het definiëren van een nieuwe opslag-uitvoer binding:
 
-| Prompt | Waarde | Beschrijving |
+| Vraag | Waarde | Beschrijving |
 | -------- | ----- | ----------- |
 | **Bindings richting selecteren** | `out` | De binding is een uitvoer binding. |
 | **Binding met richting selecteren** | `Azure Queue Storage` | De binding is een Azure Storage wachtrij binding. |
@@ -250,7 +251,7 @@ Met de volgende stappen publiceert u uw project naar een nieuwe functie-app die 
 
 1. Voer de volgende gegevens in om deze informatie op te geven:
 
-    | Prompt | Waarde | Beschrijving |
+    | Vraag | Waarde | Beschrijving |
     | ------ | ----- | ----------- |
     | Functie-app in azure selecteren | Nieuwe functie-app in azure maken | Typ bij de volgende prompt een wereld wijd unieke naam die uw nieuwe functie-app identificeert en selecteer vervolgens ENTER. Geldige tekens voor de naam van en functie-app zijn `a-z`, `0-9` en `-`. |
     | Selecteer een besturings systeem | Windows | De functie-app wordt uitgevoerd in Windows. |
@@ -330,7 +331,7 @@ Zie [werken met Azure Functions Core Tools][Azure functions core tools]voor meer
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Deze instellingen worden standaard niet automatisch gemigreerd wanneer het project wordt gepubliceerd naar Azure. Nadat de publicatie is voltooid, krijgt u de mogelijkheid om instellingen te publiceren van local.settings.jsop uw functie-app in Azure. Zie [Toepassings instellingen publiceren](#publish-application-settings)voor meer informatie.
+Deze instellingen worden standaard niet automatisch gemigreerd wanneer het project wordt gepubliceerd naar Azure. Nadat de publicatie is voltooid, krijgt u de mogelijkheid om instellingen te publiceren van local.settings.jsop uw functie-app in Azure. Zie  [Toepassings instellingen publiceren](#publish-application-settings)voor meer informatie.
 
 Waarden in **Connections Tring** worden nooit gepubliceerd.
 

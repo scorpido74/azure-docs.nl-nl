@@ -1,18 +1,18 @@
 ---
-title: De Azure-Arc voor servers (preview)-agent beheren
-description: In dit artikel worden de verschillende beheer taken beschreven die u normaal gesp roken uitvoert tijdens de levens cyclus van de Azure-Arc voor servers aangesloten machine agent.
+title: De agent voor Azure Arc-servers (preview) beheren
+description: In dit artikel worden de verschillende beheer taken beschreven die u normaal gesp roken uitvoert tijdens de levens cyclus van de verbonden machine agent van Azure Arc ingeschakeld (preview).
 ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: b7fcaca2188ef0e1e3c8c65226f8b383576082ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121286"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213137"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>De verbonden machine agent beheren en onderhouden
 
-Na de eerste implementatie van de Azure-Arc voor servers (preview) verbonden computer agent voor Windows of Linux moet u de agent mogelijk opnieuw configureren, bijwerken of verwijderen van de computer als deze de buiten gebruiks telling van de levens fase heeft bereikt. U kunt deze routine onderhouds taken eenvoudig hand matig of via Automation beheren, waardoor zowel de operationele fout als de onkosten worden verminderd.
+Na de initiële implementatie van de met Azure Arc ingeschakelde servers (preview) verbonden computer agent voor Windows of Linux moet u de agent mogelijk opnieuw configureren, bijwerken of verwijderen van de computer als deze de buiten gebruiks telling heeft bereikt. U kunt deze routine onderhouds taken eenvoudig hand matig of via Automation beheren, waardoor zowel de operationele fout als de onkosten worden verminderd.
 
 ## <a name="upgrading-agent"></a>Agent bijwerken
 
@@ -120,7 +120,7 @@ Acties van de [Zypper](https://en.opensuse.org/Portal:Zypper) -opdracht, zoals h
 
 ## <a name="about-the-azcmagent-tool"></a>Over het hulp programma Azcmagent
 
-Het hulp programma Azcmagent (Azcmagent.exe) wordt gebruikt voor het configureren van de Azure-Arc voor servers (preview) verbonden machine agent tijdens de installatie, of wijzig de eerste configuratie van de agent na de installatie. Azcmagent.exe biedt opdracht regel parameters om de agent aan te passen en de status ervan weer te geven:
+Het hulp programma Azcmagent (Azcmagent.exe) wordt gebruikt voor het configureren van de verbonden computer agent van Azure Arc (preview) tijdens de installatie, of wijzig de eerste configuratie van de agent na de installatie. Azcmagent.exe biedt opdracht regel parameters om de agent aan te passen en de status ervan weer te geven:
 
 * **Connect** : de computer verbinden met Azure Arc
 
@@ -136,7 +136,7 @@ Het hulp programma Azcmagent (Azcmagent.exe) wordt gebruikt voor het configurere
 
 * **-v of-uitgebreid** -uitgebreide logboek registratie inschakelen
 
-U kunt een **verbinding maken**, de verbinding **verbreken**en hand matig **opnieuw verbinding maken** terwijl u zich interactief aanmeldt, of automatiseren met dezelfde service-principal die u hebt gebruikt om meerdere agents uit te voeren of met een [toegangs token](../../active-directory/develop/access-tokens.md)van het micro soft Identity platform. Raadpleeg het volgende [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) om een service-principal te maken als u geen Service-Principal hebt gebruikt om de machine te registreren met Azure Arc voor servers (preview).
+U kunt een **verbinding maken**, de verbinding **verbreken**en hand matig **opnieuw verbinding maken** terwijl u zich interactief aanmeldt, of automatiseren met dezelfde service-principal die u hebt gebruikt om meerdere agents uit te voeren of met een [toegangs token](../../active-directory/develop/access-tokens.md)van het micro soft Identity platform. Raadpleeg het volgende [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) om een service-principal te maken als u geen Service-Principal hebt gebruikt om de machine te registreren bij Azure Arc-servers (preview).
 
 >[!NOTE]
 >U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
@@ -145,7 +145,7 @@ U kunt een **verbinding maken**, de verbinding **verbreken**en hand matig **opni
 
 Met deze para meter geeft u een resource op in Azure Resource Manager waarmee de machine wordt gemaakt in Azure. De resource bevindt zich in het opgegeven abonnement en de resource groep en de gegevens over de machine worden opgeslagen in de Azure-regio die is opgegeven door de `--location` instelling. De standaard resource naam is de hostnaam van deze computer als deze niet is opgegeven.
 
-Een certificaat dat overeenkomt met de door het systeem toegewezen identiteit van de computer, wordt vervolgens lokaal gedownload en opgeslagen. Zodra deze stap is voltooid, beginnen de Azure Connected machine-Metadata Service en de gast configuratie agent te synchroniseren met Azure Arc voor servers (preview).
+Een certificaat dat overeenkomt met de door het systeem toegewezen identiteit van de computer, wordt vervolgens lokaal gedownload en opgeslagen. Zodra deze stap is voltooid, beginnen de Azure Connected machine-Metadata Service en de gast configuratie agent te synchroniseren met servers met Azure Arc-functionaliteit (preview).
 
 Als u verbinding wilt maken met behulp van een Service-Principal, voert u de volgende opdracht uit:
 
@@ -161,7 +161,7 @@ Voer de volgende opdracht uit om verbinding te maken met uw referenties met verh
 
 ### <a name="disconnect"></a>Verbinding verbreken
 
-Met deze para meter wordt een resource opgegeven in Azure Resource Manager die de machine vertegenwoordigt die wordt verwijderd in Azure. De agent wordt niet van de computer verwijderd. dit moet als een afzonderlijke stap worden uitgevoerd. Als u de computer opnieuw wilt registreren met Azure-Arc voor servers (preview), gebruikt u dit `azcmagent connect` zodat er een nieuwe resource wordt gemaakt in Azure.
+Met deze para meter wordt een resource opgegeven in Azure Resource Manager die de machine vertegenwoordigt die wordt verwijderd in Azure. De agent wordt niet van de computer verwijderd. dit moet als een afzonderlijke stap worden uitgevoerd. Als u de verbinding met de computer opnieuw wilt registreren met servers met Azure-Arc (preview), gebruikt u dit `azcmagent connect` zodat er een nieuwe resource wordt gemaakt in Azure.
 
 Voer de volgende opdracht uit om de verbinding met een service-principal te verbreken:
 
@@ -180,7 +180,7 @@ Voer de volgende opdracht uit als u de verbinding wilt verbreken met de referent
 > [!WARNING]
 > De `reconnect` opdracht is afgeschaft en mag niet worden gebruikt. De opdracht wordt verwijderd in een toekomstige agent versie en bestaande agents kunnen de aanvraag voor opnieuw verbinden niet volt ooien. Verbreek [disconnect](#disconnect) de verbinding met uw machine in plaats daarvan opnieuw [verbinding te maken](#connect) .
 
-Met deze para meter wordt de reeds geregistreerde of verbonden computer opnieuw verbonden met Azure Arc voor servers (preview-versie). Dit kan nodig zijn als de machine is uitgeschakeld, ten minste 45 dagen voordat het certificaat verloopt. Deze para meter gebruikt de beschik bare verificatie opties om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager bron van deze computer.
+Met deze para meter wordt de reeds geregistreerde of verbonden computer opnieuw verbonden met Azure Arc-servers (preview). Dit kan nodig zijn als de machine is uitgeschakeld, ten minste 45 dagen voordat het certificaat verloopt. Deze para meter gebruikt de beschik bare verificatie opties om nieuwe referenties op te halen die overeenkomen met de Azure Resource Manager bron van deze computer.
 
 Voor deze opdracht zijn hogere bevoegdheden vereist dan de [met Azure verbonden computer](agent-overview.md#required-permissions) voorbereidings functie.
 
@@ -198,7 +198,7 @@ Voer de volgende opdracht uit om opnieuw verbinding te maken met uw referenties 
 
 ## <a name="remove-the-agent"></a>De agent verwijderen
 
-Voer een van de volgende methoden uit om de met Windows of Linux verbonden machine agent te verwijderen van de computer. Als de agent wordt verwijderd, wordt de registratie van de computer bij ARC voor servers (preview) niet ongedaan gemaakt. Dit is een afzonderlijk proces dat u uitvoert wanneer u de computer niet meer hoeft te beheren in Azure.
+Voer een van de volgende methoden uit om de met Windows of Linux verbonden machine agent te verwijderen van de computer. Als de agent wordt verwijderd, wordt de registratie van de computer niet ongedaan gemaakt met servers met Arc-functionaliteit (preview). Dit is een afzonderlijk proces dat u uitvoert wanneer u de computer niet meer hoeft te beheren in Azure.
 
 ### <a name="windows-agent"></a>Windows-agent
 
@@ -267,9 +267,9 @@ Als u de Linux-agent wilt verwijderen, is de opdracht die moet worden gebruikt, 
 
 ## <a name="unregister-machine"></a>Registratie van machine ongedaan maken
 
-Als u van plan bent om het beheer van de machine met ondersteunende services in azure te stoppen, voert u de volgende stappen uit om de registratie van de computer bij te werken met Arc voor servers (preview). U kunt deze stappen uitvoeren vóór of na het verwijderen van de verbonden machine agent van de computer.
+Als u van plan bent om te stoppen met het beheer van de machine met ondersteunende services in azure, voert u de volgende stappen uit om de registratie van de computer bij te werken met servers waarop Arc is ingeschakeld (preview). U kunt deze stappen uitvoeren vóór of na het verwijderen van de verbonden machine agent van de computer.
 
-1. Open Azure-Arc voor servers (preview) door naar de [Azure Portal](https://aka.ms/hybridmachineportal)te gaan.
+1. Open Azure Arc enabled servers (preview) door naar de [Azure Portal](https://aka.ms/hybridmachineportal)te gaan.
 
 2. Selecteer de computer in de lijst, selecteer het beletsel teken (**...**) en selecteer vervolgens **verwijderen**.
 

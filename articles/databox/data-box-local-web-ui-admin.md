@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372002"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206133"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Gebruik de lokale web-UI voor het beheren van uw Data Box en Data Box Heavy
 
@@ -25,7 +25,7 @@ Dit artikel bevat de volgende zelfstudies:
 
 - Een ondersteuningspakket genereren
 - Apparaat uitschakelen of opnieuw opstarten
-- Stuklijst- of manifestbestanden downloaden
+- Materiaal lijst of manifest bestanden downloaden
 - Beschikbare capaciteit van het apparaat weergeven
 - De controlesomvalidatie overslaan
 
@@ -53,7 +53,7 @@ Als u problemen met het apparaat ondervindt, kunt u een ondersteuningspakket mak
 
 ## <a name="shut-down-or-restart-your-device"></a>Apparaat uitschakelen of opnieuw opstarten
 
-U kunt het apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. We raden u aan de shares vóór de herstart offline te zetten op de host en vervolgens op het apparaat. Dit minimaliseert de kans op beschadigde gegevens. Zorg ervoor dat er geen gegevens worden gekopieerd wanneer u het apparaat afsluit.
+U kunt het apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. We raden u aan de shares vóór de herstart offline te zetten op de host en vervolgens op het apparaat. Zo minimaliseert u de kans op beschadiging van gegevens. Zorg ervoor dat er geen gegevens worden gekopieerd wanneer u het apparaat afsluit.
 
 Voer de volgende stappen uit om uw apparaat af te sluiten.
 
@@ -62,7 +62,7 @@ Voer de volgende stappen uit om uw apparaat af te sluiten.
 
     ![Data Box afsluiten 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
-3. Klik op **OK** als u om bevestiging wordt gevraagd.
+3. Wanneer u om bevestiging wordt gevraagd, selecteert u **OK** om door te gaan.
 
     ![Data Box afsluiten 2](media/data-box-local-web-ui-admin/shut-down-local-web-ui-2.png)
 
@@ -81,33 +81,32 @@ Voer de volgende stappen uit om uw Data Box opnieuw op te starten.
 
 ## <a name="download-bom-or-manifest-files"></a>Stuklijst- of manifestbestanden downloaden
 
-De lijst met bestanden (stuk lijst) of de manifest bestanden bevatten de lijsten met de gekopieerde-Data Box of Data Box Heavy. Deze bestanden worden gegenereerd voor een import volgorde wanneer u het apparaat voorbereidt op verzen ding.
+De stuk lijst of de manifest bestanden bevatten de lijst met bestanden die zijn gekopieerd naar de Data Box of Data Box Heavy. Deze bestanden worden gegenereerd voor een import volgorde wanneer u het apparaat voorbereidt op verzen ding.
 
-Voordat u begint, moet u ervoor zorgen dat uw apparaat **voorbereiding voor verzending** stap is voltooid. Voer de volgende stappen uit om stuk lijst-of manifest bestanden voor uw import volgorde te downloaden:
+Voordat u begint, voert u de volgende stappen uit om stuk lijst-of manifest bestanden voor uw import volgorde te downloaden:
 
-1. Ga naar de lokale web-UI voor uw apparaat. U zult zien dat het apparaat klaar is met het verzenden van de verzen ding. Nadat de voorbereiding van het apparaat is voltooid, wordt de status van het apparaat bijgewerkt naar **Gereed voor verzending**.
+1. Ga naar de lokale web-UI voor uw apparaat. Controleer of het apparaat de **voorbereiding voor verzending** stap heeft voltooid. Nadat de voorbereiding van het apparaat is voltooid, wordt de status van het apparaat bijgewerkt naar **Gereed voor verzending**.
 
-    ![Apparaat gereed voor verzending](media/data-box-portal-admin/ready-to-ship.png)
+    ![Apparaat gereed voor verzending](media/data-box-local-web-ui-admin/prepare-to-ship-3.png)
 
 2. Selecteer **lijst met bestanden downloaden** om de lijst met bestanden te downloaden die op uw data box zijn gekopieerd.
 
-    ![Lijst met bestanden downloaden selecteren](media/data-box-portal-admin/download-list-of-files.png)
+    <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
 3. In Windows Verkenner ziet u dat er afzonderlijke lijsten met bestanden worden gegenereerd, afhankelijk van het protocol dat wordt gebruikt om verbinding te maken met het apparaat en het gebruikte type Azure Storage.
 
-    ![Bestanden voor opslagtype en verbindingsprotocol](media/data-box-portal-admin/files-storage-connection-type.png)
+    <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
+    ![Bestanden voor opslagtype en verbindingsprotocol](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
 
    In de volgende tabel ziet u welke bestandsnamen horen bij welk type Azure Storage en gebruikt verbindingsprotocol.
 
     |Bestandsnaam  |Azure Storage-type  |Gebruikt verbindingsprotocol |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob.txt     |Blok-blobs         |SMB/NFS         |
-    |databoxe2etest_PageBlob.txt     |Pagina-blobs         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM.txt     |Pagina-blobs         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blok-blobs         |REST         |
-    |mydbmdrg1_MDisk-BOM.txt    |Managed Disk         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM.txt     |Managed Disk         |SMB/NFS         |
+    |utSAC1_202006051000_BlockBlob-BOM.txt     |Blok-blobs         |SMB/NFS         |
+    |utSAC1_202006051000_PageBlob-BOM.txt     |Pagina-blobs         |SMB/NFS         |
+    |utSAC1_202006051000_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
+    |utsac1_PageBlock_Rest-BOM.txt     |Pagina-blobs         |REST        |
+    |utsac1_BlockBlock_Rest-BOM.txt    |Blok-blobs         |REST         |
 
 U kunt deze lijst gebruiken om de bestanden die zijn geüpload naar het Azure Storage-account te controleren nadat de Data Box is geretourneerd naar het Azure-datacenter. Hieronder ziet u een voorbeeld van een manifestbestand.
 

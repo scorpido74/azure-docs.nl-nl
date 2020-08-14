@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Hierin worden de netwerk vereisten beschreven voor het uitvoeren van Azure-ontwikkel ruimten in azure Kubernetes Services
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, CNI, kubenet, SDN, netwerk
-ms.openlocfilehash: c3ee84819172fe28aef779493d01e2433ccca336
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d9ebbec3e3c07a466acb58e88b67e6a32a20edb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300688"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214169"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Netwerken configureren voor Azure-ontwikkel ruimten in verschillende netwerk topologieën
 
@@ -28,7 +28,7 @@ Azure dev Spaces heeft bepaalde vereisten voor binnenkomend *en* uitgaand netwer
 
 Azure dev Spaces heeft ingangs-en uitgangs verkeer nodig voor de volgende FQDN-tekens:
 
-| FQDN                       | Poort       | Gebruiken      |
+| FQDN                       | Poort       | Gebruik      |
 |----------------------------|------------|----------|
 | cloudflare.docker.com      | HTTPS: 443 | Docker-installatie kopieën ophalen voor Azure dev Spaces |
 | gcr.io                     | HTTPS: 443 | Helm-installatie kopieën voor Azure-ontwikkel ruimten ophalen |
@@ -87,10 +87,10 @@ Azure dev Spaces maakt gebruik van Program ma's aan de client zijde, zoals de Az
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te ontwikkelen in meerdere containers en hoe u samenwerkings ontwikkeling kunt vereenvoudigen door te werken met verschillende versies of vertakkingen van uw code in verschillende ruimten.
+Meer informatie over de werking van Azure dev Spaces.
 
 > [!div class="nextstepaction"]
-> [Team ontwikkeling in azure dev Spaces][team-quickstart]
+> [Hoe Azure Dev Spaces werkt](how-dev-spaces-works.md)
 
 [aks-cni]: ../aks/configure-azure-cni.md
 [aks-cni-ip-planning]: ../aks/configure-azure-cni.md#plan-ip-addressing-for-your-cluster
@@ -111,4 +111,3 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 [nginx-ingress]: how-to/ingress-https-nginx.md
 [sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [service-tags]: ../virtual-network/service-tags-overview.md#available-service-tags
-[team-quickstart]: quickstart-team-development.md

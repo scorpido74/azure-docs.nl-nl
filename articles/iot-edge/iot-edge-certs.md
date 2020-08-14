@@ -4,34 +4,37 @@ description: Azure IoT Edge maakt gebruik van een certificaat om apparaten, modu
 author: stevebus
 manager: philmea
 ms.author: stevebus
-ms.date: 10/29/2019
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247010"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210585"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Meer informatie over het gebruik van Azure IoT Edge certificaten
 
 IoT Edge certificaten worden gebruikt door de modules en downstream IoT-apparaten om de identiteit en rechtmatigheid van de module [IOT Edge hub](iot-edge-runtime.md#iot-edge-hub) runtime te controleren. Deze verificaties zorgen ervoor dat een TLS-verbinding (trans port Layer Security) wordt beveiligd tussen de runtime, de modules en IoT-apparaten. Net als IoT Hub, vereist IoT Edge een beveiligde en versleutelde verbinding van IoT downstream-(of Leaf) apparaten en IoT Edge modules. Om een beveiligde TLS-verbinding tot stand te brengen, presenteert de IoT Edge hub-module een server certificaat keten om clients te verbinden, zodat ze hun identiteit kunnen verifiëren.
 
+>[!NOTE]
+>In dit artikel vindt u informatie over de certificaten die worden gebruikt voor het beveiligen van verbindingen tussen de verschillende onderdelen op een IoT Edge apparaat of tussen een IoT Edge apparaat en alle blad apparaten. U kunt ook certificaten gebruiken om uw IoT Edge-apparaat te verifiëren bij IoT Hub. Deze verificatie certificaten verschillen en worden niet in dit artikel besproken. Zie [een IOT edge apparaat maken en inrichten met X. 509-certificaten](how-to-auto-provision-x509-certs.md)voor meer informatie over het verifiëren van uw apparaat met certificaten.
+
 In dit artikel wordt uitgelegd hoe IoT Edge certificaten kunnen werken in productie-, ontwikkelings-en test scenario's. Terwijl de scripts verschillend zijn (Power shell versus bash), zijn de concepten hetzelfde tussen Linux en Windows.
 
 ## <a name="iot-edge-certificates"></a>IoT Edge-certificaten
 
-Meestal zijn fabrikanten niet de eind gebruikers van een IoT Edge apparaat. Soms is de enige relatie tussen de twee, wanneer de eind gebruiker of de operator, een algemeen apparaat koopt dat door de fabrikant is gemaakt. Andere keren werkt de fabrikant onder contract om een aangepast apparaat voor de operator te bouwen. Het IoT Edge certificaat ontwerp probeert beide scenario's in rekening te brengen.
-
-> [!NOTE]
-> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen. Deze beperking geldt voor het CA-certificaat van het apparaat, alle certificaten in de vertrouwens bundel en de apparaat-ID-certificaten die worden gebruikt voor X. 509-inrichtings methoden.
+Er zijn twee algemene scenario's voor het instellen van certificaten op een IoT Edge apparaat. Soms beheert de eind gebruiker, of de-operator, van een apparaat een algemeen apparaat dat door een fabrikant is gemaakt, vervolgens de certificaten zelf. Andere keren werkt de fabrikant onder contract om een aangepast apparaat voor de operator te bouwen en voert een eerste certificaat ondertekening uit voordat het apparaat wordt afgeleverd. Het IoT Edge certificaat ontwerp probeert beide scenario's in rekening te brengen.
 
 In de volgende afbeelding ziet u het gebruik van IoT Edge van certificaten. Er kunnen zich nul, één of veel tussenliggende handtekening certificaten bevinden tussen het basis-CA-certificaat en het CA-certificaat van het apparaat, afhankelijk van het aantal betrokken entiteiten. Hier zien we één geval.
 
 ![Diagram van typische certificaat relaties](./media/iot-edge-certs/edgeCerts-general.png)
+
+> [!NOTE]
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen. Deze beperking geldt voor het CA-certificaat van het apparaat, alle certificaten in de vertrouwens bundel en de apparaat-ID-certificaten die worden gebruikt voor X. 509-inrichtings methoden.
 
 ### <a name="certificate-authority"></a>Certificeringsinstantie
 

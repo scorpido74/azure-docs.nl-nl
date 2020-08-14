@@ -11,13 +11,13 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 08a65ff8d276cd27c9f8fa07393600bc24e7b17f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: d97626d5eed96a3debb41c86f6dab6fbaf1953cd
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500297"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206673"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Aanbevolen procedures voor Azure-app configuratie
 
@@ -42,7 +42,7 @@ Het is belang rijk om ervoor te zorgen dat sleutels uw toepassings code bevat om
 
 App-configuratie behandelt alle sleutels die ermee zijn opgeslagen als onafhankelijke entiteiten. App-configuratie probeert geen relatie tussen sleutels af te leiden of sleutel waarden over te nemen op basis van de hiërarchie. U kunt meerdere sets sleutels samen voegen, met behulp van labels die zijn gekoppeld aan de juiste configuratie stacks in uw toepassings code.
 
-We kijken naar een voorbeeld. Stel dat u een instelling hebt met de naam **Asset1**, waarvan de waarde kan variëren op basis van de ontwikkelings omgeving. U maakt een sleutel met de naam ' Asset1 ' met een leeg label en een label met de naam ' ontwikkeling '. In het eerste label plaatst u de standaard waarde voor **Asset1**en plaatst u een specifieke waarde voor ' ontwikkeling ' in de laatste.
+We bekijken een voorbeeld. Stel dat u een instelling hebt met de naam **Asset1**, waarvan de waarde kan variëren op basis van de ontwikkelings omgeving. U maakt een sleutel met de naam ' Asset1 ' met een leeg label en een label met de naam ' ontwikkeling '. In het eerste label plaatst u de standaard waarde voor **Asset1**en plaatst u een specifieke waarde voor ' ontwikkeling ' in de laatste.
 
 In uw code haalt u eerst de sleutel waarden zonder labels op en vervolgens haalt u dezelfde set sleutel waarden een tweede keer op met het label ' ontwikkeling '. Wanneer u de waarden de tweede keer ophaalt, worden de vorige waarden van de sleutels overschreven. Met het configuratie systeem van .NET Core kunt u meerdere sets configuratie gegevens boven op elkaar stapelen. Als een sleutel in meer dan één set bestaat, wordt de laatste set die deze bevat, gebruikt. Met een modern programmeer raamwerk, zoals .NET core, krijgt u deze gestapelde mogelijkheid gratis als u een systeem eigen configuratie provider gebruikt om toegang te krijgen tot de app-configuratie. Het volgende code fragment laat zien hoe u stacking in een .NET core-toepassing kunt implementeren:
 

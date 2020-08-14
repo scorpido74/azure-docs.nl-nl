@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 824520e04bd4a98b1a00c8369848163a38bcf54b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908511"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206289"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problemen oplossen Azure Active Directory B2B-samen werking
 
@@ -72,7 +72,7 @@ Externe gebruikers kunnen alleen worden toegevoegd aan groepen ' toegewezen ' of
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Mijn externe gebruiker heeft geen e-mail bericht ontvangen om in te wisselen
 
-De genodigde moet met hun ISP-of spam filter controleren om ervoor te zorgen dat het volgende adres is toegestaan:Invites@microsoft.com
+De genodigde moet met hun ISP-of spam filter controleren om ervoor te zorgen dat het volgende adres is toegestaan: Invites@microsoft.com
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Ik zie dat het aangepaste bericht niet op momenten wordt opgenomen in uitnodigings berichten
 
@@ -93,7 +93,7 @@ Een gebruiker met een gast account kan zich niet aanmelden en ontvangt het volge
 
 De gebruiker heeft een Azure-gebruikers account en is een virale Tenant die is verlaten of onbeheerd. Daarnaast zijn er geen globale of bedrijfs beheerders in de Tenant.
 
-Om dit probleem op te lossen, moet u de afgebroken Tenant overnemen. Raadpleeg een niet- [beheerde Directory als beheerder in azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). U moet ook toegang krijgen tot de Internet gerichte DNS voor het betreffende domein achtervoegsel om direct bewijs te geven dat u de controle hebt over de naam ruimte. Nadat de Tenant naar een beheerde status is geretourneerd, kunt u met de klant bespreken of de gebruikers-en geverifieerde domein naam de beste optie is voor hun organisatie.
+Om dit probleem op te lossen, moet u de afgebroken Tenant overnemen. Raadpleeg een niet-  [beheerde Directory als beheerder in azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). U moet ook toegang krijgen tot de Internet gerichte DNS voor het betreffende domein achtervoegsel om direct bewijs te geven dat u de controle hebt over de naam ruimte. Nadat de Tenant naar een beheerde status is geretourneerd, kunt u met de klant bespreken of de gebruikers-en geverifieerde domein naam de beste optie is voor hun organisatie.
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Een gast gebruiker met een just-in-time-of virus-Tenant kan het wacht woord niet opnieuw instellen
 
@@ -109,4 +109,4 @@ Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking momen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Ondersteuning voor B2B-samen werking verkrijgen](/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md)
+[Ondersteuning voor B2B-samen werking verkrijgen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto)

@@ -1,18 +1,18 @@
 ---
 title: Overzicht van de verbonden computer Windows-agent
-description: Dit artikel bevat een gedetailleerd overzicht van de agent die beschikbaar is voor Azure Arc voor servers (preview), die ondersteuning biedt voor het bewaken van virtuele machines die worden gehost in hybride omgevingen.
+description: Dit artikel bevat een gedetailleerd overzicht van de agent die beschikbaar is voor Azure Arc enabled-servers (preview), die ondersteuning biedt voor het bewaken van virtuele machines die worden gehost in hybride omgevingen.
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8e8abfcc3c6ec7b7893563c67dc6bb82ccdda850
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121830"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212977"
 ---
-# <a name="overview-of-azure-arc-for-servers-preview-agent"></a>Overzicht van Azure-Arc voor servers (preview)-agent
+# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>Overzicht van de agent voor Azure Arc-servers (preview-versie)
 
-Met de Azure-Arc voor servers (preview) verbonden machine-agent kunt u uw Windows-en Linux-machines beheren die buiten Azure worden gehost op uw bedrijfs netwerk of een andere Cloud provider. Dit artikel bevat een gedetailleerd overzicht van de agent-, systeem-en netwerk vereisten en de verschillende implementatie methoden.
+Met de met Azure Arc ingeschakelde server (preview) verbonden machine agent kunt u uw Windows-en Linux-machines beheren die buiten Azure worden gehost in uw bedrijfs netwerk of een andere Cloud provider. Dit artikel bevat een gedetailleerd overzicht van de agent-, systeem-en netwerk vereisten en de verschillende implementatie methoden.
 
 ## <a name="agent-component-details"></a>Details van agent onderdeel
 
@@ -65,7 +65,7 @@ De volgende versies van het Windows-en Linux-besturings systeem worden officieel
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
 
-Voordat u uw computers configureert met Azure Arc voor servers (preview), controleert u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) en de [limieten van de resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) om te plannen voor het aantal machines dat moet worden verbonden.
+Voordat u uw computers configureert met Azure Arc-servers (preview), controleert u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) en de [limieten van de resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) om te plannen voor het aantal machines dat moet worden verbonden.
 
 ### <a name="transport-layer-security-12-protocol"></a>Transport Layer Security 1,2-protocol
 
@@ -76,7 +76,7 @@ Om te zorgen voor de beveiliging van gegevens die onderweg zijn naar Azure, rade
 |Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning. | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
 | Windows Server 2012 R2 en hoger | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](/windows-server/security/tls/tls-registry-settings)gebruikt.|
 
-### <a name="networking-configuration"></a>Netwerk configuratie
+### <a name="networking-configuration"></a>Netwerkconfiguratie
 
 De verbonden machine agent voor Linux en Windows communiceert veilig uitgaande naar Azure Arc via TCP-poort 443. Als de computer verbinding maakt via een firewall of proxy server om via internet te communiceren, raadpleegt u de vereisten hieronder om inzicht te krijgen in de vereisten voor de netwerk configuratie.
 
@@ -105,7 +105,7 @@ De Url's in de vorige tabel zijn vereist naast de IP-adres bereik gegevens van d
 
 ### <a name="register-azure-resource-providers"></a>Azure-resource providers registreren
 
-Azure Arc voor servers (preview) is afhankelijk van de volgende Azure-resource providers in uw abonnement om deze service te kunnen gebruiken:
+Servers voor Azure-Arc (preview) zijn afhankelijk van de volgende Azure-resource providers in uw abonnement om deze service te kunnen gebruiken:
 
 * **Micro soft. HybridCompute**
 * **Micro soft. GuestConfiguration**
@@ -174,7 +174,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * De volgende omgevings variabelen worden tijdens de installatie van de agent gemaakt.
 
-    |Naam |Standaardwaarde |Beschrijving |
+    |Name |Standaardwaarde |Beschrijving |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -236,7 +236,7 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 * De volgende omgevings variabelen worden tijdens de installatie van de agent gemaakt. Deze variabelen worden ingesteld in `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Naam |Standaardwaarde |Beschrijving |
+    |Name |Standaardwaarde |Beschrijving |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -248,4 +248,4 @@ Na de installatie van de verbonden machine agent voor Linux worden de volgende a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u Azure-Arc voor servers (preview) wilt gaan evalueren, volgt u het artikel [verbinding maken met hybride computers met Azure via de Azure Portal](onboard-portal.md).
+Als u wilt beginnen met het evalueren van Azure Arc-servers (preview), volgt u het artikel [verbinding maken tussen hybride computers en Azure via de Azure Portal](onboard-portal.md).

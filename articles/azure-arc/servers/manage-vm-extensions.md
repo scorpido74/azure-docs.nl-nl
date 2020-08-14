@@ -1,24 +1,24 @@
 ---
-title: VM-extensie beheer met Azure Arc voor servers
-description: Azure Arc voor servers (preview) kan de implementatie van extensies van virtuele machines beheren die configuratie van de na de implementatie en Automation-taken bieden met niet-Azure Vm's.
+title: VM-extensie beheer met servers voor Azure Arc ingeschakeld (preview)
+description: Servers met Azure-Arc (preview) kunnen de implementatie van extensies van virtuele machines beheren die configuratie van de na de implementatie en Automation-taken bieden met niet-Azure Vm's.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121303"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213123"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Extensie beheer voor virtuele machines met Azure Arc voor servers (preview-versie)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Extensie beheer voor virtuele machines met Azure Arc-servers (preview-versie)
 
 Virtuele-machine-uitbrei dingen zijn kleine toepassingen die configuratie-en automatiserings taken na de implementatie leveren op Azure-Vm's. Als op een virtuele machine bijvoorbeeld software of antivirusbeveiliging moet worden geïnstalleerd of een script moet worden uitgevoerd, kan hiervoor een VM-extensie worden gebruikt.
 
-Met Azure Arc voor servers (preview) kunt u Azure VM-extensies implementeren op niet-Azure Windows-en Linux-Vm's, waardoor u het beheer van uw hybride machine on-premises, Edge en andere Cloud omgevingen kunt vereenvoudigen door hun levens cyclus.
+Met Azure Arc enabled servers (preview) kunt u Azure VM-extensies implementeren op niet-Azure Windows-en Linux-Vm's, waardoor u het beheer van uw hybride machine on-premises, Edge en andere Cloud omgevingen kunt vereenvoudigen door hun levens cyclus.
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
-Ondersteuning voor VM-extensies van Azure Arc voor servers (preview) biedt de volgende belang rijke voor delen:
+Ondersteuning voor de VM-extensie van Azure Arc is ingeschakeld (preview) biedt de volgende belang rijke voor delen:
 
 * Gebruik [Azure Automation status configuratie](../../automation/automation-dsc-overview.md) om configuraties centraal op te slaan en de gewenste status van hybride verbonden computers te onderhouden die zijn ingeschakeld via de DSC-extensie voor vm's.
 
@@ -36,7 +36,7 @@ De functionaliteit van de VM-extensie is alleen beschikbaar in de lijst met [ond
 
 In deze preview worden de volgende VM-extensies ondersteund op Windows-en Linux-computers.
 
-|Extensie |Besturingssysteem |Uitgever |Aanvullende informatie |
+|Extensie |Besturingssysteem |Publisher |Aanvullende informatie |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Aangepaste script extensie voor Windows](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Micro soft. Power shell|[Windows Power shell DSC-extensie](../../virtual-machines/extensions/dsc-windows.md)|
@@ -47,7 +47,7 @@ In deze preview worden de volgende VM-extensies ondersteund op Windows-en Linux-
 |Log Analytics-agent |Linux |Micro soft. EnterpriseCloud. monitoring |[VM-extensie Log Analytics voor Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Micro soft-afhankelijkheids agent | Linux |Microsoft.Compute | [Extensie van de virtuele machine van de afhankelijkheids agent voor Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM-extensies kunnen worden uitgevoerd met Azure Resource Manager sjablonen, van de Azure Portal of Azure PowerShell op hybride servers die worden beheerd door Arc voor servers (preview).
+VM-extensies kunnen worden uitgevoerd met Azure Resource Manager sjablonen, van de Azure Portal of Azure PowerShell op hybride servers die worden beheerd door servers waarop Arc is ingeschakeld (preview).
 
 Zie [overzicht van agents](agent-overview.md#agent-component-details)voor meer informatie over het Azure Connected machine agent-pakket en Details over het onderdeel van de extensie agent.
 
@@ -98,7 +98,7 @@ VM-extensies kunnen worden toegepast op uw Arc voor Server (preview) Managed mac
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
-VM-extensies kunnen worden toegevoegd aan een Azure Resource Manager sjabloon en worden uitgevoerd met de implementatie van de sjabloon. Met de VM-extensies die door Arc voor servers worden ondersteund (preview), kunt u de ondersteunde VM-extensie implementeren op Linux-of Windows-computers met behulp van Azure PowerShell. Elk voor beeld hieronder bevat een sjabloon bestand en een parameter bestand met voorbeeld waarden die aan de sjabloon kunnen worden door gegeven.
+VM-extensies kunnen worden toegevoegd aan een Azure Resource Manager sjabloon en worden uitgevoerd met de implementatie van de sjabloon. Met de VM-extensies die worden ondersteund door Arc-servers (preview), kunt u de ondersteunde VM-extensie implementeren op Linux-of Windows-computers met behulp van Azure PowerShell. Elk voor beeld hieronder bevat een sjabloon bestand en een parameter bestand met voorbeeld waarden die aan de sjabloon kunnen worden door gegeven.
 
 >[!NOTE]
 >Hoewel meerdere uitbrei dingen tegelijk kunnen worden gebatcheerd en verwerkt, worden ze serieel geïnstalleerd. Zodra de eerste installatie van de extensie is voltooid, wordt de installatie van de volgende uitbrei ding geprobeerd.
@@ -223,7 +223,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 Als u de aangepaste script extensie wilt gebruiken, is het volgende voor beeld van toepassing op Windows en Linux. Zie [aangepaste script extensie voor Windows](../../virtual-machines/extensions/custom-script-windows.md) of [aangepaste script extensie voor Linux](../../virtual-machines/extensions/custom-script-linux.md)als u niet bekend bent met de aangepaste script extensie. Er zijn een aantal verschillende kenmerken die u moet begrijpen wanneer u deze uitbrei ding met hybride computers gebruikt:
 
-* De lijst met ondersteunde besturings systemen met de aangepaste script extensie van Azure VM is niet van toepassing op Azure Arc voor servers. De lijst met ondersteunde OSs for Arc voor servers vindt u [hier](agent-overview.md#supported-operating-systems).
+* De lijst met ondersteunde besturings systemen met de aangepaste script extensie van Azure VM is niet van toepassing op servers met Azure-Arc. De lijst met ondersteunde OSs voor Arc ingeschakelde servers vindt u [hier](agent-overview.md#supported-operating-systems).
 
 * Configuratie gegevens met betrekking tot Azure-Virtual Machine Scale Sets of klassieke Vm's zijn niet van toepassing.
 
@@ -379,7 +379,7 @@ De configuratie van de aangepaste script extensie bevat dingen als de script loc
 
 Als u de Power shell DSC-uitbrei ding wilt gebruiken, is het volgende voor beeld in Windows en Linux opgenomen. Als u niet bekend bent met de Power shell DSC-uitbrei ding, raadpleegt u [overzicht van DSC-extensie-handler](../../virtual-machines/extensions/dsc-overview.md). Er zijn een aantal verschillende kenmerken die u moet begrijpen wanneer u deze uitbrei ding met hybride computers gebruikt:
 
-* De lijst met ondersteunde besturings systemen met de Azure VM Power shell DSC-extensie is niet van toepassing op Azure Arc voor servers. De lijst met ondersteunde OSs for Arc voor servers vindt u [hier](agent-overview.md#supported-operating-systems).
+* De lijst met ondersteunde besturings systemen met de Azure VM Power shell DSC-extensie is niet van toepassing op servers met Azure Arc. De lijst met ondersteunde OSs voor Arc ingeschakelde servers vindt u [hier](agent-overview.md#supported-operating-systems).
 
 * Als uw machines een script extern moeten downloaden en alleen via een proxy server kunnen communiceren, moet u [de verbonden machine agent configureren](manage-agent.md#update-or-remove-proxy-settings) om de omgevings variabele van de proxy server in te stellen.
 

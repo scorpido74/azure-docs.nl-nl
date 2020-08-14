@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067355"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214213"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route
 
@@ -71,7 +71,8 @@ Ter illustratie van de toepassing van een cluster met een uitgaand type met behu
 > [!IMPORTANT]
 > Uitgaand type UDR vereist dat er een route voor 0.0.0.0/0 en de volgende hop-bestemming van NVA (virtueel netwerk apparaat) in de route tabel is.
 > De route tabel heeft al een standaard 0.0.0.0/0 op internet, zonder een openbaar IP-adres voor SNAT. Als u deze route alleen wilt toevoegen, hoeft u niets te doen. AKS valideert dat u geen 0.0.0.0/0-route hebt gemaakt die verwijst naar het Internet, maar in plaats daarvan NVA of gateway, enzovoort.
-
+> 
+> Wanneer u een uitgaand type UDR gebruikt, wordt er geen load balancer open bare IP-adres gemaakt, tenzij een service van het type *Load Balancer* is geconfigureerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

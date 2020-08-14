@@ -2,13 +2,13 @@
 title: Entiteits typen-LUIS
 description: Een entiteit extraheert gegevens uit een utterance tijdens de Voorspellings runtime. Een _optioneel_, secundair doel is het verhogen van de voor spelling van de intentie of andere entiteiten door gebruik te maken van de entiteit als een functie.
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.date: 08/06/2020
+ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337616"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207730"
 ---
 # <a name="extract-data-with-entities"></a>Gegevens ophalen met entiteiten
 
@@ -140,9 +140,16 @@ Een patroon. alle zijn alleen beschikbaar in een [patroon](luis-concept-patterns
 
 Neem contact op met de ondersteuning als u meer nodig hebt dan de [limiet](luis-limits.md#model-limits). Als u dit wilt doen, verzamelt u gedetailleerde informatie over uw systeem, gaat u naar de [Luis](luis-reference-regions.md#luis-website) -website en selecteert u vervolgens **ondersteuning**. Als uw Azure-abonnement ondersteunings services bevat, neemt u contact op met de [technische ondersteuning van Azure](https://azure.microsoft.com/support/options/).
 
-## <a name="entity-prediction-status"></a>Status van de voor spelling van de entiteit
+## <a name="entity-prediction-status-and-errors"></a>Status en fouten van de voor spelling van de entiteit
 
-In de LUIS-portal wordt weer gegeven wanneer de entiteit een andere voor spelling heeft dan de entiteit die u hebt geselecteerd voor een voor beeld-utterance. Deze andere score is gebaseerd op het huidige getrainde model. Gebruik deze informatie om trainings fouten op te lossen met behulp van een of meer van de volgende:
+In de LUIS-portal wordt weer gegeven wanneer de entiteit een andere voor spelling heeft dan de entiteit die u hebt geselecteerd voor een voor beeld-utterance. Deze andere score is gebaseerd op het huidige getrainde model. 
+
+:::image type="content" source="./media/luis-concept-entities/portal-entity-prediction-error.png" alt-text="In de LUIS-portal wordt weer gegeven wanneer de entiteit een andere voor spelling heeft dan de entiteit die u hebt geselecteerd voor een voor beeld-utterance.":::
+
+De tekst die wordt weer gegeven, is gemarkeerd in het voor beeld utterance en de utterance-regel bevat een fout indicator aan de rechter kant, zoals in een rode drie hoek. 
+
+Gebruik deze informatie om entiteits fouten op te lossen met behulp van een of meer van de volgende:
+* De gemarkeerde tekst heeft een niet-label. Om het probleem op te lossen, te controleren, te corrigeren en opnieuw te trainen. 
 * Een [functie](luis-concept-feature.md) voor de entiteit maken om het concept van de entiteit te identificeren
 * Meer [voor beeld-uitingen](luis-concept-utterance.md) en-labels toevoegen aan de entiteit
 * [Bekijk actieve Learning-suggesties](luis-concept-review-endpoint-utterances.md) voor alle uitingen die zijn ontvangen op het Voorspellings eindpunt, waarmee u het concept van de entiteit kunt identificeren.

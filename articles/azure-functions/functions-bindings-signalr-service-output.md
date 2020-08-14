@@ -3,14 +3,15 @@ title: Uitvoer binding van Azure Functions signalerings service
 description: Meer informatie over het verzenden van signaal service berichten van Azure Functions.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b401ff20b553629341c5190deb4cfc54c474d789
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77530248"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212571"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Uitvoer binding van de signaal/service voor Azure Functions
 
@@ -153,7 +154,7 @@ public SignalRMessage sendMessage(
 
 ---
 
-## <a name="send-to-a-user"></a>Verzenden naar een gebruiker
+## <a name="send-to-a-user"></a>Naar een gebruiker verzenden
 
 U kunt alleen een bericht verzenden naar verbindingen die zijn geverifieerd voor een gebruiker door de *gebruikers-id* in te stellen in het signaal bericht.
 
@@ -727,24 +728,24 @@ public SignalRGroupAction removeFromGroup(
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `SignalRConnectionInfo` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**| N.v.t. | Moet worden ingesteld op `signalRConnectionInfo` .|
 |**direction**| N.v.t. | Moet worden ingesteld op `in` .|
-|**naam**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
+|**name**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
-|**Naam**|**Naam**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
+|**userId**|**Naam**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
 |**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
 
 ### <a name="signalr"></a>SignalR
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `SignalR` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**| N.v.t. | Moet worden ingesteld op `signalR` .|
 |**direction**| N.v.t. | Moet worden ingesteld op `out` .|
-|**naam**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
+|**name**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
 |**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
 

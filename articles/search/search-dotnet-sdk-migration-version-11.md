@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926668"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211516"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 11
 
@@ -26,14 +26,14 @@ Enkele belang rijke verschillen in de nieuwe versie zijn:
 
 + Eén pakket en bibliotheek, in tegens telling tot meerdere
 + Een nieuwe pakket naam: `Azure.Search.Documents` in plaats van `Microsoft.Azure.Search` .
-+ Drie clients in plaats van twee: `SearchClient` , `SearchIndexClient` ,`SearchIndexerClient`
++ Drie clients in plaats van twee: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Benoemt verschillen over een reeks Api's en kleine structurele verschillen die sommige taken vereenvoudigen
 
 ## <a name="package-and-library-consolidation"></a>Pakket-en bibliotheek consolidatie
 
 Met versie 11 worden meerdere pakketten en bibliotheken samengevoegd tot één. Na de migratie kunt u minder bibliotheken beheren.
 
-+ [Uments-pakketAzure.Search.Doc](https://www.nuget.org/packages/Azure.Search.Documents/)
++ [ Uments-pakketAzure.Search.Doc](https://www.nuget.org/packages/Azure.Search.Documents/)
 
 + [API-verwijzing voor de client bibliotheek](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
 
@@ -48,7 +48,7 @@ Indien van toepassing, wijst de volgende tabel de client bibliotheken toe tussen
 | Client die wordt gebruikt voor Indexeer functies, gegevens bronnen, vaardig heden | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**Nieuw**)](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> `SearchIndexClient`bestaat in beide versies, maar ondersteunt verschillende dingen. Maak in versie 10 `SearchIndexClient` indexen en andere objecten. In versie 11 `SearchIndexClient` werkt met bestaande indexen. Om Verwar ring te voor komen bij het bijwerken van code, moet u mindful van de volg orde waarin de client verwijzingen worden bijgewerkt. Als u de volg orde van de [stappen voor het uitvoeren](#UpgradeSteps) van een upgrade volgt, moet u problemen met de vervanging van teken reeksen oplossen.
+> `SearchIndexClient` bestaat in beide versies, maar ondersteunt verschillende dingen. Maak in versie 10 `SearchIndexClient` indexen en andere objecten. In versie 11 `SearchIndexClient` werkt met bestaande indexen. Om Verwar ring te voor komen bij het bijwerken van code, moet u mindful van de volg orde waarin de client verwijzingen worden bijgewerkt. Als u de volg orde van de [stappen voor het uitvoeren](#UpgradeSteps) van een upgrade volgt, moet u problemen met de vervanging van teken reeksen oplossen.
 
 <a name="naming-differences"></a>
 
@@ -61,7 +61,7 @@ Naast de verschillen tussen de client (eerder vermeld en daarom wegge laten), he
 | Versie 10 | Equivalent van versie 11 |
 |------------|-----------------------|
 | [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) | [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) |
-| `EncryptionKey`(bestond in de [Preview-SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) als een algemeen beschik bare functie) | [SearchResourceEncryptionKey](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
+| `EncryptionKey` (bestond in de [Preview-SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) als een algemeen beschik bare functie) | [SearchResourceEncryptionKey](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
 
 ### <a name="indexes-analyzers-synonym-maps"></a>Indexen, analyse functies, synoniemen kaarten
 
@@ -71,7 +71,7 @@ Naast de verschillen tussen de client (eerder vermeld en daarom wegge laten), he
 | [Veld](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [SearchField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [Param1](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [ItemError](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
-| [Analyse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyze) (ook `AnalyzerName` naar `LexicalAnalyzerName` ) |
+| [Analyse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (ook `AnalyzerName` naar `LexicalAnalyzerName` ) |
 | [AnalyzeRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzerequest) | [AnalyzeTextOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
 | [StandardAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
 | [StandardTokenizer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (ook `StandardTokenizerV2` naar `LuceneStandardTokenizerV2` ) |
@@ -88,7 +88,7 @@ Veld definities worden gestroomlijnd: [SearchableField](https://docs.microsoft.c
 | [Indexeerfunctie](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
 | [Bron](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
 | [Vaardigheid](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
-| [Vaardig heden](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskillse) |
+| [Vaardig heden](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [Data Source Type](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |
 
 ### <a name="data-import"></a>Gegevens importeren
@@ -127,7 +127,7 @@ De volgende versie 10-functies zijn nog niet beschikbaar in versie 11. Als u dez
 
 + georuimtelijke typen
 + [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (hoewel u [deze tijdelijke oplossing](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)kunt gebruiken).
-+ [Knowledge Store](knowledge-store-concept-intro.md)
++ [Kennisarchief](knowledge-store-concept-intro.md)
 
 <a name="UpgradeSteps"></a>
 
@@ -153,7 +153,7 @@ Met de volgende stappen kunt u aan de slag gaan met een code migratie door de ee
 
 1. Client Referenties bijwerken voor query's en gegevens import. Instanties van [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) moeten worden gewijzigd in [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient). Zorg ervoor dat u alle exemplaren onderschept voordat u verdergaat met de volgende stap om naam Verwar ring te voor komen.
 
-1. Update client verwijzingen voor index, Indexeer functie, synoniemen kaart en analyse-objecten. Instanties van [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) moeten worden gewijzigd in [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchindexclient). 
+1. Update client verwijzingen voor index, Indexeer functie, synoniemen kaart en analyse-objecten. Instanties van [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) moeten worden gewijzigd in [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient). 
 
 1. Werk zo veel mogelijk klassen, methoden en eigenschappen bij om de Api's van de nieuwe bibliotheek te gebruiken. De sectie [naam verschillen](#naming-differences) is een plek waar u begint, maar u kunt ook het [wijzigings logboek](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)controleren.
 
@@ -175,6 +175,6 @@ Bij de service versies van 10 naar 11 worden de volgende gedrags wijzigingen ge�
 
 ## <a name="next-steps"></a>Volgende stappen
 
-+ [Uments-pakketAzure.Search.Doc](https://www.nuget.org/packages/Azure.Search.Documents/)
++ [ Uments-pakketAzure.Search.Doc](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [Voorbeelden op GitHub](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
 + [Azure.Search.Document API-naslag informatie](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
