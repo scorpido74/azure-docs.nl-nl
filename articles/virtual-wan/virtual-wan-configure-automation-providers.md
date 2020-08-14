@@ -1,18 +1,18 @@
 ---
 title: Automatiserings richtlijnen voor Azure Virtual WAN partners | Microsoft Docs
-description: Dit artikel helpt partners bij het instellen van Azure Virtual WAN Automation.
+description: Stel een automatiserings omgeving in om verbinding te maken en een on-premises VPN-of SD-WAN-of-vertakkings apparaat te configureren voor Azure Virtual WAN.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 816e8843467588cbfaeb5eb6e531d2221d28656b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565947"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208346"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Richt lijnen voor automatisering voor virtuele WAN-partners
 

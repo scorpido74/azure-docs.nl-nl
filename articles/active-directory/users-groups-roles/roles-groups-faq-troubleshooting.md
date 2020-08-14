@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901815ba40459bd50562e557a0a766474c731ce0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476031"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208191"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Problemen met rollen die zijn toegewezen aan Cloud groepen oplossen
 
@@ -51,7 +51,7 @@ Hier volgen enkele veelgestelde vragen en tips voor probleem oplossing voor het 
 
 **A:** Ja, dat kunt u. Globale beheerder en gebruikers beheerder hebben de kracht om een groep in een toegangs pakket te plaatsen. Er zijn geen wijzigingen voor de globale beheerder, maar er is een kleine wijziging in de machtigingen voor de rol van gebruikers beheerder. Als u een door een functie toewijs bare groep wilt opnemen in een toegangs pakket, moet u een gebruikers beheerder zijn en ook eigenaar zijn van de groep die kan worden toegewezen. Hier is de volledige tabel waarin wordt weer gegeven wie een toegangs pakket kan maken in Enter prise License Management:
 
-Azure AD-adreslijst functie | Rol van rechten beheer | Kan beveiligings groep toevoegen\* | Kan Office 365-groep toevoegen\* | Kan app toevoegen | Kan de share point online-site toevoegen
+Azure AD-adreslijst functie | Rol van rechten beheer | Kan beveiligings groep toevoegen\* | Kan Microsoft 365 groep toevoegen\* | Kan app toevoegen | Kan de share point online-site toevoegen
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
 Globale beheerder | N.v.t. | ✔️ | ✔️ | ✔️  | ✔️
 Gebruikersbeheerder  | N.v.t.  | ✔️  | ✔️  | ✔️
@@ -101,4 +101,4 @@ Gebruiker | Catalogus eigenaar | Alleen als de groeps eigenaar | Alleen als de g
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Cloud groepen gebruiken om roltoewijzingen te beheren](roles-groups-concept.md)
-- [Een door een functie toewijs bare groep maken](roles-groups-create-eligible.md)
+- [Een roltoewijzbare groep maken](roles-groups-create-eligible.md)

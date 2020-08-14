@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 4ee489e8b596adf0767856e3358c9bdcb17fbb6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e2aee194d3c97655dd4ec5aaeea46fb607c4c5e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004359"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210960"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. json voor het maken van beheerde Azure-toepassingen
 
@@ -49,7 +49,7 @@ Inclusief `$schema` wordt aanbevolen, maar is optioneel. Indien opgegeven, moet 
 
 U kunt een JSON-editor gebruiken om uw createUiDefinition te maken en deze vervolgens te testen in de [createUiDefinition-sandbox](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) om deze te bekijken. Zie [uw portal-interface testen voor Azure Managed Applications](test-createuidefinition.md)voor meer informatie over de sandbox.
 
-## <a name="basics"></a>Basisbeginselen
+## <a name="basics"></a>Basisinstellingen
 
 De stap **basis beginselen** is de eerste stap die wordt gegenereerd wanneer de Azure Portal het bestand parseert. Met de stappen in de basis beginselen kunnen gebruikers standaard het abonnement, de resource groep en de locatie voor de implementatie kiezen.
 
@@ -77,49 +77,56 @@ In het volgende voor beeld wordt een tekstvak weer gegeven dat is toegevoegd aan
 U geeft het configuratie-element op wanneer u het standaard gedrag voor de basis stappen wilt onderdrukken. In het volgende voor beeld ziet u de beschik bare eigenschappen.
 
 ```json
-"config": {  
-    "basics": {  
-        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
-        "subscription": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
-                    },
+"config": {
+    "basics": {
+        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
+        "subscription": {
+            "constraints": {
+                "validations": [
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
-                    }
-                ]
-            },
-            "resourceProviders": [ "<Resource Provider>" ]
-        },
-        "resourceGroup": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
-                    }
-                ]
-            },
-            "allowExisting": true
-        },
-        "location": {  
-            "label": "Custom label for location",  
-            "toolTip": "provide a useful tooltip",  
-            "resourceTypes": [ "Microsoft.Compute/virtualMachines" ],
-            "allowedValues": [ "eastus", "westus2" ],  
-            "visible": true  
-        }  
-    }  
-},  
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid subscription."
+                    },
+                    {
+                        "permission": "<Resource Provider>/<Action>",
+                        "message": "Must have correct permission to complete this step."
+                    }
+                ]
+            },
+            "resourceProviders": [
+                "<Resource Provider>"
+            ]
+        },
+        "resourceGroup": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid resource group."
+                    }
+                ]
+            },
+            "allowExisting": true
+        },
+        "location": {
+            "label": "Custom label for location",
+            "toolTip": "provide a useful tooltip",
+            "resourceTypes": [
+                "Microsoft.Compute/virtualMachines"
+            ],
+            "allowedValues": [
+                "eastus",
+                "westus2"
+            ],
+            "visible": true
+        }
+    }
+},
 ```
 
 `description`Geef voor een teken reeks met kortings functionaliteit op waarmee uw resource wordt beschreven. Opmaak van meerdere regels en koppelingen worden ondersteund.
 
-Geef voor de `location` Eigenschappen op voor het locatie besturings element dat u wilt overschrijven. Alle eigenschappen die niet worden overschreven, worden ingesteld op hun standaard waarden. `resourceTypes`Hiermee wordt een matrix met teken reeksen geaccepteerd die volledige namen van resource typen bevatten. De locatie opties zijn beperkt tot alleen regio's die ondersteuning bieden voor de resource typen.  `allowedValues`   Hiermee wordt een matrix met de teken reeksen van regio's geaccepteerd. In de vervolg keuzelijst worden alleen de regio's weer gegeven.U kunt zowel `allowedValues`   als instellen  `resourceTypes` . Het resultaat is het snij punt van beide lijsten. De `visible` eigenschap kan ten slotte worden gebruikt om de vervolg keuzelijst locatie voorwaardelijk of volledig uit te scha kelen.  
+Geef voor de `location` Eigenschappen op voor het locatie besturings element dat u wilt overschrijven. Alle eigenschappen die niet worden overschreven, worden ingesteld op hun standaard waarden. `resourceTypes` Hiermee wordt een matrix met teken reeksen geaccepteerd die volledige namen van resource typen bevatten. De locatie opties zijn beperkt tot alleen regio's die ondersteuning bieden voor de resource typen.  `allowedValues`   Hiermee wordt een matrix met de teken reeksen van regio's geaccepteerd. In de vervolg keuzelijst worden alleen de regio's weer gegeven.U kunt zowel `allowedValues`   als instellen  `resourceTypes` . Het resultaat is het snij punt van beide lijsten. De `visible` eigenschap kan ten slotte worden gebruikt om de vervolg keuzelijst locatie voorwaardelijk of volledig uit te scha kelen.  
 
 `subscription`Met de `resourceGroup` elementen en kunt u aanvullende validaties opgeven. De syntaxis voor het opgeven van validaties is identiek aan de aangepaste validatie voor het [tekstvak](microsoft-common-textbox.md). U kunt ook `permission` validaties opgeven voor het abonnement of de resource groep.  
 

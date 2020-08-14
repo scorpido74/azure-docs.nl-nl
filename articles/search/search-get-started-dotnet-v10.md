@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 4d8a38666991760fbb133e617984ba23788034ca
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4a8a2455ea3e5889293cb8285f36699942a46437
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908885"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209329"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Snelstartgids: een zoek index maken met behulp van de client bibliotheek micro soft. Azure. Search V10 toevoegen
 
@@ -106,9 +106,9 @@ Deze stap is vereist om zinvolle uitvoer te maken in de console. Wanneer u de re
 
 1. Voeg twee lege klassedefinities toe aan uw project: Address.Methods.cs, Hotel.Methods.cs
 
-1. In Address.Methods.cs overschrijft u de standaardinhoud met de volgende code, [regels 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25).
+1. In Address.Methods.cs overschrijft u de standaardinhoud met de volgende code, [regels 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
 
-1. In Hotel.Methods.cs kopieert u [regels 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68).
+1. In Hotel.Methods.cs kopieert u [regels 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
 
 ## <a name="1---create-index"></a>1 - Index maken
 

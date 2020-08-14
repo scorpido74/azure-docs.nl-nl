@@ -3,12 +3,12 @@ title: De kosten van het verbruiks abonnement in Azure Functions schatten
 description: Meer informatie over hoe u de kosten die u kunt doen bij het uitvoeren van uw functie-app in een verbruiks abonnement in azure, beter kunt schatten.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083035"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207761"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Kosten schatten voor verbruiksplan
 
@@ -36,6 +36,8 @@ Omdat het geheugen gebruik na verloop van tijd verandert, is de berekening in fe
 
 > [!NOTE]
 > Hoewel het CPU-gebruik niet rechtstreeks wordt overwogen tijdens de uitvoerings kosten, kan dit gevolgen hebben voor de kosten wanneer dit van invloed is op de uitvoerings tijd van de functie.
+
+Als er een fout optreedt voordat de functie code wordt uitgevoerd, wordt er geen kosten in rekening gebracht voor een uitvoering van een door HTTP geactiveerde functie. Dit betekent dat 401 reacties van het platform als gevolg van de validatie van de API-sleutel of de App Service verificatie/autorisatie-functie niet meegerekend voor uw uitvoerings kosten. Evenzo worden 5xx-status code reacties niet meegeteld wanneer ze optreden in het platform voordat een functie de aanvraag verwerkt. Een 5xx-antwoord dat door het platform wordt gegenereerd nadat de functie code is gestart, wordt nog steeds beschouwd als een uitvoering, zelfs als de fout niet wordt veroorzaakt door uw functie code.
 
 ## <a name="other-related-costs"></a>Andere gerelateerde kosten
 
@@ -69,7 +71,7 @@ Voor een beter begrip van de kosten impact van uw functies kunt u Azure Monitor 
 
 Gebruik [Azure monitor Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) om kostengerelateerde gegevens weer te geven voor de functie-apps van uw verbruiks plan in een grafische indeling. 
 
-1. Klik boven aan de [Azure Portal] in **Zoek Services, resources en docs** zoeken naar `monitor` en selecteer **monitor** onder **Services**.
+1. Klik boven aan de [Azure Portal] in **Zoek Services, resources en docs**  zoeken naar `monitor` en selecteer **monitor** onder **Services**.
 
 1. Selecteer aan de linkerkant **metrische gegevens**  >  en**Selecteer een resource**en gebruik vervolgens de instellingen onder de afbeelding om uw functie-app te kiezen.
 
@@ -206,7 +208,7 @@ performanceCounters
 
 De resultaten zien eruit als in het volgende voor beeld:
 
-| UTC-tijds tempel \[\]          | name          | waarde       |
+| UTC-tijds tempel \[\]          | naam          | waarde       |
 |----------------------------|---------------|-------------|
 | 9/12/2019, 1:05:14 \. 947 uur | Privé-bytes | 209.932.288 |
 | 9/12/2019, 1:06:14 \. 994 uur | Privé-bytes | 212.189.184 |
@@ -226,7 +228,7 @@ customMetrics
 | summarize averageDurationMilliseconds=avg(averageDuration) by name
 ```
 
-| name                       | averageDurationMilliseconds |
+| naam                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
 | Queue trigger AvgDurationMs | 16 \. 087                     |
 | Queue trigger MaxDurationMs | 90 \. 249                     |

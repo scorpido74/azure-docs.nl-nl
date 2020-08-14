@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 6e38be4a97678ce749e32ca31c0703ed9d786d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046766"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209538"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Open bare gegevens sets voor testen en prototypen
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -33,7 +33,7 @@ Blader door deze lijst met open bare gegevens sets voor gegevens die u kunt gebr
 | [Vertragingen en andere transport gegevens voor de vliegtuig vlucht](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Het Amerikaanse ministerie van Trans Port-statistieken (BTS) houdt de prestaties bij van binnenlandse vluchten die worden beheerd door grote luchtvaart maatschappijen. Samenvattings informatie over het aantal weer gegeven tijd, vertraagd, geannuleerde en doorlopende vluchten verschijnt... in samenvattings tabellen die zijn gepost op deze website. " | Bestanden hebben de CSV-indeling. |
 | [Onherstelbare gegevens wegens het rapportage systeem voor onherstelbare FARS (ENGELSTALIG)](https://www.nhtsa.gov/FARS) | "FARS is een landelijke telling van NHTSA, Congres en de Amerikaanse gegevens over de buiten wereld, met betrekking tot fatale verwondingen die zijn geleden in het verkeer van het motor rijtuig." | "Maak uw eigen onherstelbare gegevens online met behulp van het FARS-query systeem. Of down load alle FARS-gegevens van 1975 zodat deze aanwezig zijn op de FTP-site. " |
 | [ToxCast-gegevens (toxische Chemical data EPA toxiciteit ForeCaster &trade; )](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "De meest bijgewerkte, openbaar beschik bare toxiciteits gegevens voor hoge door Voer van de EPA op duizenden chemicaliën. Deze gegevens worden gegenereerd via de ToxCast Research-inspanning van het EPA. " | Gegevens sets zijn beschikbaar in verschillende indelingen, waaronder spread sheets, R-pakketten en MySQL-database bestanden. |
-| [Toxische Chemical data-NIH Tox21 data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "De 2014 Tox21 gegevens uitdaging is ontworpen om wetenschappers inzicht te geven in het potentieel van de door de toxicology in het eenentwintig Century-initiatief te testen chemische en gebruikte verbindingen om biologische paden op manieren te verstoren die kunnen leiden tot toxische effecten." | Gegevens sets zijn beschikbaar in GLIM lach en SDF-indelingen. De gegevens bieden informatie over test activiteiten en chemische structuren op de Tox21-verzameling van ~ 10.000-verbindingen (Tox21 10K). " |
+| [Toxische Chemical data-NIH Tox21 data Challenge 2014](https://tripod.nih.gov/tox21) | "De 2014 Tox21 gegevens uitdaging is ontworpen om wetenschappers inzicht te geven in het potentieel van de door de toxicology in het eenentwintig Century-initiatief te testen chemische en gebruikte verbindingen om biologische paden op manieren te verstoren die kunnen leiden tot toxische effecten." | Gegevens sets zijn beschikbaar in GLIM lach en SDF-indelingen. De gegevens bieden informatie over test activiteiten en chemische structuren op de Tox21-verzameling van ~ 10.000-verbindingen (Tox21 10K). " |
 | [Biotechnologie en genoom gegevens van de NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Meerdere gegevens sets die betrekking hebben op genen, genoom en eiwitten. | Gegevens sets zijn in tekst, XML, HOOGOVEN en andere indelingen. Er is een HOOGOVEN-app beschikbaar. |
 
 ## <a name="other-statistical-and-scientific-data"></a>Andere statistische en weten schappelijke gegevens

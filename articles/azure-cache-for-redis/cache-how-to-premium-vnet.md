@@ -4,14 +4,15 @@ description: Meer informatie over het maken en beheren van Virtual Network onder
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: bf9ddc78caa1e19d35ad7e96af76dc0303a8a67c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004735"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205559"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. Een VNet is een privé netwerk in de Cloud. Wanneer een Azure-cache voor redis-exemplaar is geconfigureerd met een VNet, is het niet openbaar adresseerbaar en is deze alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtuele netwerken kunt configureren voor een Premium Azure-cache voor een redis-exemplaar.

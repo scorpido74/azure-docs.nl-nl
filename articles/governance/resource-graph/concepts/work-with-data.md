@@ -3,12 +3,12 @@ title: Werken met grote gegevenssets
 description: Meer informatie over het ophalen, opmaken, pagina's en overs laan van records in grote gegevens sets tijdens het werken met Azure resource Graph.
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2de62af5f7a59837876ed3348bc14de232fdee38
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056403"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206362"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
 
@@ -33,7 +33,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-In de [rest API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)is het besturings element **$Top** en maakt het deel uit van **QueryRequestOptions**.
+In de [rest API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)is het besturings element **$Top** en maakt het deel uit van **QueryRequestOptions**.
 
 Het besturings element dat het _meest beperkend_ is, wint. Als uw query bijvoorbeeld gebruikmaakt van de Opera tors **Top** of **Limit** en vervolgens meer records zou opleveren dan **eerst**, zijn de geretourneerde maximum records dus gelijk aan het **eerst**. Als **Top** of **Limit** kleiner is dan **eerst**, zou de opgehaalde recordset de kleinere waarde zijn die wordt geconfigureerd met **boven** of **limiet**.
 
@@ -59,11 +59,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-In de [rest API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)is het besturings element **$Skip** en maakt het deel uit van **QueryRequestOptions**.
+In de [rest API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)is het besturings element **$Skip** en maakt het deel uit van **QueryRequestOptions**.
 
 ## <a name="paging-results"></a>Resultaten pagineren
 
-Wanneer een resultaatset moet worden opgesplitst in kleinere sets records voor verwerking of omdat een resultaatset de Maxi maal toegestane waarde van _1000_ geretourneerde records zou overschrijden, gebruikt u paginering. De [rest API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 
+Wanneer een resultaatset moet worden opgesplitst in kleinere sets records voor verwerking of omdat een resultaatset de Maxi maal toegestane waarde van _1000_ geretourneerde records zou overschrijden, gebruikt u paginering. De [rest API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
  **QueryResponse** biedt waarden om aan te geven dat een resultatenset is opgesplitst: **resultTruncated** en **$skipToken**. **resultTruncated** is een Booleaanse waarde die de Consumer informeert als er geen aanvullende records worden geretourneerd in het antwoord. Deze voor waarde kan ook worden geïdentificeerd wanneer de eigenschap **Count** kleiner is dan de eigenschap **totalRecords** . **totalRecords** definieert het aantal records dat overeenkomt met de query.
 
  **resultTruncated** is **waar** als de paginerings optie is uitgeschakeld of niet mogelijk is omdat `id` er minder resources beschikbaar zijn dan een query vraagt. Wanneer **resultTruncated** **True**is, wordt de eigenschap **$skipToken** niet ingesteld.
@@ -81,7 +81,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > De query moet het veld **id** **projecteren** om de paginering te kunnen uitvoeren. Als deze ontbreekt in de query, bevat het antwoord niet de **$skipToken**.
 
-Zie de [query volgende pagina](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) in de documenten van de rest API voor een voor beeld.
+Zie de [query volgende pagina](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#next-page-query) in de documenten van de rest API voor een voor beeld.
 
 ## <a name="formatting-results"></a>Resultaten van de opmaak
 

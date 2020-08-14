@@ -4,13 +4,13 @@ description: Lees hoe u diagnostische logboek registratie kunt inschakelen en in
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: seodec18
-ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 1a6c109907c20e06796744d42feae20dc53f2b52
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261338"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207539"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -23,7 +23,7 @@ In dit artikel wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.c
 >
 >
 
-|Type|Platform|Locatie|Description|
+|Type|Platform|Locatie|Beschrijving|
 |-|-|-|-|
 | Toepassingslogboeken | Windows, Linux | App Service bestands systeem en/of Azure Storage-blobs | Registreert berichten die zijn gegenereerd door de toepassings code. De berichten kunnen worden gegenereerd door het webframework dat u kiest, of vanuit de code van uw toepassing rechtstreeks met het standaard logboek registratie patroon van uw taal. Aan elk bericht wordt een van de volgende categorieën toegewezen: **kritiek**, **fout**, **waarschuwing**, **info**, **fout opsporing**en **tracering**. U kunt selecteren hoe uitgebreid u de logboek registratie wilt maken door het Ernst niveau in te stellen wanneer u logboek registratie van toepassingen inschakelt.|
 | Logboek registratie van webserver| Windows | App Service bestands systeem of Azure Storage-blobs| Onbewerkte HTTP-aanvraag gegevens in de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Elk logboek bericht bevat gegevens zoals de HTTP-methode, bron-URI, client-IP, client poort, gebruikers agent, respons code, enzovoort. |
@@ -66,7 +66,7 @@ Selecteer het **niveau**of het niveau van de details die moeten worden vastgeleg
 |**Fout** | Fout, kritiek |
 |**Waarschuwing** | Waarschuwing, fout, kritiek|
 |**Informatie** | Info, waarschuwing, fout, kritiek|
-|**Uitgebreide** | Traceren, fouten opsporen, info, waarschuwing, fout, kritiek (alle categorieën) |
+|**Uitgebreid** | Traceren, fouten opsporen, info, waarschuwing, fout, kritiek (alle categorieën) |
 
 Wanneer u klaar bent, selecteert u **Opslaan**.
 
@@ -159,14 +159,14 @@ Als u de Azure Storage blobs-optie voor een logboek type configureert, hebt u ee
 
 Voor logboeken die zijn opgeslagen in het bestands systeem van App Service is de eenvoudigste manier om het ZIP-bestand te downloaden in de browser:
 
-- Linux/container-apps:`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
-- Windows-apps:`https://<app-name>.scm.azurewebsites.net/api/dump`
+- Linux/container-apps: `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
+- Windows-apps: `https://<app-name>.scm.azurewebsites.net/api/dump`
 
 Voor Linux/container-apps bevat het ZIP-bestand console-uitvoer logboeken voor de docker-host en de docker-container. Voor een uitgeschaalde app bevat het ZIP-bestand één set logboeken voor elk exemplaar. In het App Service bestands systeem zijn deze logboek bestanden de inhoud van de map */Home/logfiles* .
 
 Voor Windows-apps bevat het ZIP-bestand de inhoud van de *D:\Home\LogFiles* -map in het app service-Bestands systeem. Het heeft de volgende structuur:
 
-| Logboek type | Directory | Description |
+| Logboek type | Directory | Beschrijving |
 |-|-|-|
 | **Toepassings logboeken** |*/LogFiles/Application/* | Bevat een of meer tekst bestanden. De indeling van de logboek berichten is afhankelijk van de logboek registratie provider die u gebruikt. |
 | **Traceringen van mislukte aanvragen** | */LogFiles/W3SVC#########/* | Bevat XML-bestanden en een XSL-bestand. U kunt de opgemaakte XML-bestanden weer geven in de browser. |
@@ -185,18 +185,18 @@ Met de nieuwe [integratie van Azure monitor](https://aka.ms/appsvcblog-azmon)kun
 
 De volgende tabel bevat de ondersteunde logboek typen en beschrijvingen: 
 
-| Logboek type | Windows-ondersteuning | Linux-ondersteuning (docker) | Description |
+| Logboek type | Windows-ondersteuning | Linux-ondersteuning (docker) | Beschrijving |
 |-|-|-|
-| AppServiceConsoleLogs | TBA | Yes | Standaard uitvoer en standaard fout |
+| AppServiceConsoleLogs | TBA | Ja | Standaard uitvoer en standaard fout |
 | AppServiceHTTPLogs | Ja | Ja | Webserver logboeken |
 | AppServiceEnvironmentPlatformLogs | Ja | Ja | App Service Environment: schalen, configuratie wijzigingen en status logboeken|
 | AppServiceAuditLogs | Ja | Ja | Aanmeldings activiteiten via FTP en kudu |
-| AppServiceFileAuditLogs | Yes | NOG TE BEPALEN | Bestands wijzigingen via FTP en kudu |
+| AppServiceFileAuditLogs | Ja | NOG TE BEPALEN | Bestands wijzigingen via FTP en kudu |
 | AppServiceAppLogs | TBA | Java SE & Tomcat | Toepassings logboeken |
 | AppServiceIPSecAuditLogs  | Ja | Ja | Aanvragen van IP-regels |
-| AppServicePlatformLogs  | TBA | Yes | Container logboeken |
+| AppServicePlatformLogs  | TBA | Ja | Container logboeken |
 
-## <a name="next-steps"></a><a name="nextsteps"></a>Volgende stappen
+## <a name="next-steps"></a><a name="nextsteps"></a> Volgende stappen
 * [Query's uitvoeren op Logboeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [Azure App Service bewaken](web-sites-monitor.md)
 * [Problemen met Azure App Service oplossen in Visual Studio](troubleshoot-dotnet-visual-studio.md)

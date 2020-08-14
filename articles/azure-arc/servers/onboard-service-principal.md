@@ -1,18 +1,18 @@
 ---
 title: Hybride machines op schaal aansluiten op Azure
-description: In dit artikel leert u hoe u met behulp van een Service-Principal computers kunt verbinden met Azure met behulp van Azure Arc voor servers (preview).
+description: In dit artikel leert u hoe u met behulp van een Service-Principal computers kunt verbinden met Azure met behulp van Azure Arc-servers (preview).
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f599ae6bab8a2b1ce442df677ba5de206d11ab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121813"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211414"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hybride machines op schaal aansluiten op Azure
 
-U kunt Azure Arc voor servers (preview) inschakelen voor meerdere Windows-of Linux-computers in uw omgeving met verschillende flexibele opties, afhankelijk van uw vereisten. Met het sjabloon script dat we bieden, kunt u elke stap van de installatie automatiseren, met inbegrip van het tot stand brengen van de verbinding met Azure Arc. U moet dit script echter interactief uitvoeren met een account dat verhoogde machtigingen heeft op de doel computer en in Azure. Als u de computers wilt verbinden met Azure Arc voor servers, kunt u een Azure Active Directory [Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md) gebruiken in plaats van uw bevoorrechte identiteit te gebruiken om [interactief verbinding te maken met de computer](onboard-portal.md). Een Service-Principal is een speciale beperkt beheer identiteit die alleen de mini maal vereiste machtigingen krijgt om computers te verbinden met Azure met behulp van de `azcmagent` opdracht. Dit is veiliger dan het gebruik van een account met een hogere bevoegdheden, zoals een Tenant Administrator, gevolgd door de aanbevolen procedures voor het beheren van de toegangs beveiliging. De service-principal wordt alleen gebruikt tijdens onboarding en wordt niet voor andere doel einden gebruikt.  
+U kunt voor Azure Arc ingeschakelde servers (preview) inschakelen voor meerdere Windows-of Linux-computers in uw omgeving met verschillende flexibele opties, afhankelijk van uw vereisten. Met het sjabloon script dat we bieden, kunt u elke stap van de installatie automatiseren, met inbegrip van het tot stand brengen van de verbinding met Azure Arc. U moet dit script echter interactief uitvoeren met een account dat verhoogde machtigingen heeft op de doel computer en in Azure. Als u de computers wilt verbinden met Azure Arc-servers (preview), kunt u een Azure Active Directory [Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md) gebruiken in plaats van uw bevoorrechte identiteit te gebruiken om [interactief verbinding te maken met de computer](onboard-portal.md). Een Service-Principal is een speciale beperkt beheer identiteit die alleen de mini maal vereiste machtigingen krijgt om computers te verbinden met Azure met behulp van de `azcmagent` opdracht. Dit is veiliger dan het gebruik van een account met een hogere bevoegdheden, zoals een Tenant Administrator, gevolgd door de aanbevolen procedures voor het beheren van de toegangs beveiliging. De service-principal wordt alleen gebruikt tijdens onboarding en wordt niet voor andere doel einden gebruikt.  
 
 De installatie methoden voor het installeren en configureren van de verbonden machine agent vereist dat de geautomatiseerde methode die u gebruikt, beheerders rechten heeft op de computers. Op Linux, met behulp van het hoofd account en in Windows als lid van de lokale groep Administrators.
 
@@ -20,7 +20,7 @@ Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisite
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-Aan het einde van dit proces hebt u uw hybride computers verbonden met Azure Arc voor servers.
+Aan het einde van dit proces hebt u uw hybride computers verbonden met servers met Azure Arc-functionaliteit (preview).
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Een service-principal maken voor onboarding op schaal
 
@@ -61,7 +61,7 @@ Voer het volgende uit om de service-principal te maken met behulp van Power shel
 De waarden van de volgende eigenschappen worden gebruikt met para meters die worden door gegeven aan de `azcmagent` :
 
 * De waarde van de eigenschap **ApplicationId** wordt gebruikt voor de `--service-principal-id` parameter waarde
-* De waarde van de eigenschap **Password** wordt gebruikt voor de `--service-principal-secret` para meter die wordt gebruikt om verbinding te maken met de agent.
+* De waarde van de eigenschap **Password** wordt gebruikt voor de  `--service-principal-secret` para meter die wordt gebruikt om verbinding te maken met de agent.
 
 > [!NOTE]
 > Zorg ervoor dat u de Service Principal **ApplicationId** -eigenschap gebruikt, niet de eigenschap **id** .
@@ -75,11 +75,11 @@ Met de volgende stappen wordt de verbonden machine agent op uw hybride computers
 
 Hieronder vindt u de instellingen die u kunt configureren `azcmagent` om te gebruiken voor de Service-Principal.
 
-* `tenant-id`: De unieke id (GUID) die staat voor uw toegewezen exemplaar van Azure AD.
-* `subscription-id`: De abonnements-ID (GUID) van uw Azure-abonnement waarvoor u de computers wilt.
-* `resource-group`: De naam van de resource groep waaraan u de verbonden computers wilt koppelen.
-* `location`: Zie [ondersteunde Azure-regio's](overview.md#supported-regions). Deze locatie kan hetzelfde of hetzelfde zijn als de locatie van de resource groep.
-* `resource-name`: (*Optioneel*) gebruikt voor de Azure resource-representatie van uw on-premises machine. Als u deze waarde niet opgeeft, wordt de hostnaam van de computer gebruikt.
+* `tenant-id` : De unieke id (GUID) die staat voor uw toegewezen exemplaar van Azure AD.
+* `subscription-id` : De abonnements-ID (GUID) van uw Azure-abonnement waarvoor u de computers wilt.
+* `resource-group` : De naam van de resource groep waaraan u de verbonden computers wilt koppelen.
+* `location` : Zie [ondersteunde Azure-regio's](overview.md#supported-regions). Deze locatie kan hetzelfde of hetzelfde zijn als de locatie van de resource groep.
+* `resource-name` : (*Optioneel*) gebruikt voor de Azure resource-representatie van uw on-premises machine. Als u deze waarde niet opgeeft, wordt de hostnaam van de computer gebruikt.
 
 Meer informatie over het `azcmagent` opdracht regel programma vindt u in de Azcmagent- [verwijzing](./manage-agent.md).
 
@@ -133,7 +133,7 @@ azcmagent connect \
 >[!NOTE]
 >U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Een geslaagde server verbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

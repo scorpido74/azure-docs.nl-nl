@@ -6,15 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b06d38d69f331df2f48637c6cdee527090955a47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830120"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207136"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Automatisch back-ups maken van app-configuratie archieven
 
@@ -40,7 +41,7 @@ In deze zelf studie maakt u een secundair archief in de `centralus` regio en all
 
 - Azure-abonnement. [Maak er gratis een](https://azure.microsoft.com/free/). 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) met de werk belasting Azure Development.
-- [.Net core SDK](https://dotnet.microsoft.com/download).
+- [.NET Core SDK](https://dotnet.microsoft.com/download).
 - Nieuwste versie van de Azure CLI (2.3.1 of hoger). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI gebruikt, moet u zich eerst aanmelden met `az login` . U kunt eventueel Azure Cloud Shell gebruiken.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -236,7 +237,7 @@ az appconfig kv show --name $secondaryAppConfigName --key Foo
 }
 ```
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Als u de nieuwe instelling niet ziet in uw secundaire archief:
 

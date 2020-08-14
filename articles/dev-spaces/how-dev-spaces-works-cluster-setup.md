@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin wordt beschreven hoe u een Azure Kubernetes-service cluster instelt voor Azure dev Spaces werkt
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995884"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207963"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Hoe instellen van een cluster voor Azure dev Spaces werkt
 
@@ -19,8 +19,6 @@ Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing
 ## <a name="prepare-your-aks-cluster"></a>Uw AKS-cluster voorbereiden
 
 Als u uw AKS-cluster wilt voorbereiden op ontwikkel ruimten, controleert u of uw AKS-cluster zich in een regio bevindt [die wordt ondersteund door Azure dev Spaces][supported-regions] en of u Kubernetes 1.10.3 of hoger uitvoert. U kunt Azure dev-ruimten inschakelen vanuit de Azure CLI door uit te voeren `az aks use-dev-spaces` .
-
-Zie de [Snelstartgids voor team ontwikkeling][quickstart-team]voor een voor beeld van het instellen van een AKS-cluster voor dev Spaces.
 
 Wanneer Azure dev Spaces is ingeschakeld op uw AKS-cluster, wordt de controller voor het cluster geïnstalleerd. De controller bevindt zich buiten uw AKS-cluster. Hiermee worden het gedrag en de communicatie tussen het programma aan de client zijde en het AKS-cluster gestimuleerd. Zodra deze is ingeschakeld, kunt u met de controller communiceren met behulp van het programma aan de client zijde.
 
@@ -92,10 +90,8 @@ U kunt het hulp programma aan de client zijde vanaf de opdracht regel gebruiken 
 
 Voor meer informatie over het gebruik van het hulp programma aan de client zijde om uw code voor te bereiden en uit te voeren in uw ontwikkel ruimte, Zie [hoe u een project voor Azure dev Spaces gaat voorbereiden][how-it-works-prep].
 
-Als u aan de slag wilt gaan met Azure dev Spaces voor team ontwikkeling, raadpleegt u de [team ontwikkeling in azure dev Spaces][quickstart-team] Quick Start.
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[quickstart-team]: quickstart-team-development.md

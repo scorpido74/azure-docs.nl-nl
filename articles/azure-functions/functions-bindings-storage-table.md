@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7616f6c502f0b5402aa784f707d0dafa31268d78
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 2f4647f4e13677d9136ce7fdb090e809943cdf0d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853055"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206692"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-bindingen voor Azure Functions
 
@@ -33,7 +33,7 @@ De tabel opslag bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Ext
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="input"></a>Input
+## <a name="input"></a>Invoer
 
 Gebruik de Azure Table Storage-invoer binding om een tabel in een Azure Storage-account te lezen.
 
@@ -94,7 +94,7 @@ public class TableStorage
 
 ### <a name="cloudtable"></a>CloudTable
 
-`IQueryable`wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook een `CloudTable` methode parameter gebruiken om de tabel te lezen met behulp van de Azure Storage SDK. Hier volgt een voor beeld van een functie die een Azure Functions-logboek tabel opvraagt:
+`IQueryable` wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook een `CloudTable` methode parameter gebruiken om de tabel te lezen met behulp van de Azure Storage SDK. Hier volgt een voor beeld van een functie die een Azure Functions-logboek tabel opvraagt:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -249,7 +249,7 @@ public class Person : TableEntity
 
 ### <a name="cloudtable"></a>CloudTable
 
-`IQueryable`wordt niet ondersteund in de functions-runtime voor [versie 2. x en hoger)](functions-versions.md). U kunt ook een `CloudTable` methode parameter gebruiken om de tabel te lezen met behulp van de Azure Storage SDK. Hier volgt een voor beeld van een functie die een Azure Functions-logboek tabel opvraagt:
+`IQueryable` wordt niet ondersteund in de functions-runtime voor [versie 2. x en hoger)](functions-versions.md). U kunt ook een `CloudTable` methode parameter gebruiken om de tabel te lezen met behulp van de Azure Storage SDK. Hier volgt een voor beeld van een functie die een Azure Functions-logboek tabel opvraagt:
 
 ```json
 {
@@ -575,27 +575,27 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 * **Eén rij in**
 
-  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T`is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
+  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T` is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
 
 * **Een of meer rijen lezen**
 
-  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T`moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
+  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T` moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
 
   > [!NOTE]
-  > `IQueryable`wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook de [methode para meter CloudTable param gebruiken](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) om de tabel te lezen met behulp van de SDK van Azure Storage. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
+  > `IQueryable` wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook de [methode para meter CloudTable param gebruiken](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) om de tabel te lezen met behulp van de SDK van Azure Storage. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
 * **Eén rij in**
 
-  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T`is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
+  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T` is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
 
 * **Een of meer rijen lezen**
 
-  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T`moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
+  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T` moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
 
   > [!NOTE]
-  > `IQueryable`wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook de [methode para meter CloudTable param gebruiken](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) om de tabel te lezen met behulp van de SDK van Azure Storage. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
+  > `IQueryable` wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook de [methode para meter CloudTable param gebruiken](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) om de tabel te lezen met behulp van de SDK van Azure Storage. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -992,7 +992,7 @@ Er zijn twee opties voor het uitvoeren van een rij in een tabel opslag van een f
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Naslaginformatie |
+| Binding | Verwijzing |
 |---|---|
 | Tabel | [Fout codes voor tabellen](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | BLOB, tabel, wachtrij | [Opslag fout codes](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

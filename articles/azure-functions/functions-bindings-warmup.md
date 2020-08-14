@@ -7,14 +7,15 @@ manager: gwallace
 keywords: Azure functions, functies, gebeurtenis verwerking, opwarm, koude start, Premium, dynamische compute, serverloze architectuur
 ms.service: azure-functions
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: dade31fd9a5a75c875274ea45607fea81a2de027
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383712"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206583"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Opwarmende trigger Azure Functions
 
@@ -107,7 +108,7 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een opwarm-trigger in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer deze wordt toegevoegd aan uw app.
+In het volgende voor beeld ziet u een opwarm-trigger in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md)  die wordt uitgevoerd op elk nieuw exemplaar wanneer deze wordt toegevoegd aan uw app.
 
 De functie moet de naam ```warmup``` (niet hoofdletter gevoelig) hebben en er mag slechts één opwarm-functie per app zijn.
 
@@ -230,7 +231,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 | **type** | N.v.t.| Vereist: moet worden ingesteld op `warmupTrigger` . |
 | **direction** | N.v.t.| Vereist: moet worden ingesteld op `in` . |
-| **naam** | N.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
+| **name** | N.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
 
 ## <a name="trigger---usage"></a>Trigger-gebruik
 

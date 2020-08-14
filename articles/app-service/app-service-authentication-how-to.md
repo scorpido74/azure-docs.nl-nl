@@ -4,12 +4,12 @@ description: Meer informatie over het aanpassen van de functie voor verificatie 
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078390"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208028"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Geavanceerd gebruik van verificatie en autorisatie in Azure App Service
 
@@ -297,6 +297,9 @@ Uw verificatie-instellingen kunnen eventueel worden geconfigureerd via een besta
     1.  Ingesteld `enabled` op ' True '
     2.  Ingesteld `isAuthFromFile` op ' True '
     3.  Stel `authFilePath` in op de naam van het bestand (bijvoorbeeld ' auth.jsop ')
+
+> [!NOTE]
+> De notatie voor `authFilePath` varieert tussen platforms. In Windows worden zowel relatieve als absolute paden ondersteund. Relatief wordt aanbevolen. Voor Linux worden alleen absolute paden ondersteund. de waarde van de instelling moet dus '/Home/site/wwwroot/auth.jsop ' of vergelijkbaar zijn.
 
 Zodra u deze configuratie-update hebt gemaakt, wordt de inhoud van het bestand gebruikt voor het definiëren van het gedrag van App Service verificatie/autorisatie voor die site. Als u ooit wilt terugkeren naar Azure Resource Manager configuratie, kunt u dit doen door `isAuthFromFile` terug in te stellen op ' false '.
 

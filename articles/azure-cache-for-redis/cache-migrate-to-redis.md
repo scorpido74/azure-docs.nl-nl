@@ -4,15 +4,16 @@ description: Meer informatie over het migreren van Managed Cache Service en het 
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/23/2020
 ms.author: yegu
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4e867f28209230cf33b0f94e7cc8ca12d015ff15
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: beb6014a9b6d90d1bc9a3c3236877a720a44a0c4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008556"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211114"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>Migreren van Managed Cache Service naar Azure cache voor redis (afgeschaft)
 Het migreren van uw toepassingen die gebruikmaken van Azure Managed Cache Service naar Azure cache voor redis, kan worden uitgevoerd met minimale wijzigingen in uw toepassing, afhankelijk van de Managed Cache Service functies die worden gebruikt door uw cache toepassing. Hoewel de Api's niet precies hetzelfde zijn, zijn ze vergelijkbaar en zijn veel van de bestaande code die Managed Cache Service gebruikt voor toegang tot een cache, opnieuw met minimale wijzigingen. In dit artikel wordt uitgelegd hoe u de benodigde configuratie-en toepassings wijzigingen kunt aanbrengen om uw Managed Cache Service-toepassingen te migreren voor het gebruik van Azure cache voor redis, en wordt getoond hoe sommige functies van Azure cache voor redis kunnen worden gebruikt voor het implementeren van de functionaliteit van een Managed Cache Service cache.
@@ -166,7 +167,7 @@ int key2 = (int)cache.StringGet("key2");
 
 De stack Exchange. redis-client gebruikt de- `RedisKey` en- `RedisValue` typen voor het openen en opslaan van items in de cache. Deze typen worden toegewezen aan de meeste primitieve taal typen, met inbegrip van teken reeksen, en worden vaak niet rechtstreeks gebruikt. Redis-teken reeksen zijn de meest eenvoudige soort redis-waarde en kunnen veel soorten gegevens bevatten, met inbegrip van geserialiseerde binaire streams, en terwijl u het type niet rechtstreeks gebruikt, gebruikt u de methoden die `String` in de naam staan. Voor de meeste primitieve gegevens typen kunt u items opslaan en ophalen uit de cache met behulp van de `StringSet` `StringGet` -en-methoden, tenzij u verzamelingen opslaat of andere redis-gegevens typen in de cache. 
 
-`StringSet`en `StringGet` zijn vergelijkbaar met de Managed cache service `Put` en `Get` methoden, met één belang rijk verschil dat voordat u een .net-object in de cache instelt en ontvangt, het eerst moet worden geserialiseerd. 
+`StringSet` en `StringGet` zijn vergelijkbaar met de Managed cache service `Put` en `Get` methoden, met één belang rijk verschil dat voordat u een .net-object in de cache instelt en ontvangt, het eerst moet worden geserialiseerd. 
 
 Als `StringGet` het object bestaat, wordt dit geretourneerd, en als dit niet het geval is, wordt Null geretourneerd. In dit geval kunt u de waarde van de gewenste gegevens bron ophalen en deze in de cache opslaan voor later gebruik. Dit patroon wordt het cache-leggings patroon genoemd.
 

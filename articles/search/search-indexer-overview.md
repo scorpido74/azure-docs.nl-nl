@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d73782d9de7da2c5daacbff5397d9a365ff9ae03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f93df91f87f8119a503f2f7c452b61e3af5924f8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038406"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208811"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexeerfuncties in Azure Cognitive Search
 
@@ -38,7 +38,7 @@ Een nieuwe indexeerfunctie wordt in eerste instantie aangekondigd als preview-fu
 
 ## <a name="permissions"></a>Machtigingen
 
-Voor alle bewerkingen met betrekking tot Indexeer functies, waaronder GET-aanvragen voor status of definities, is een [admin API-sleutel](search-security-api-keys.md)vereist. 
+Voor alle bewerkingen met betrekking tot Indexeer functies, waaronder GET-aanvragen voor status of definities, is een [admin API-sleutel](search-security-api-keys.md)vereist.
 
 <a name="supported-data-sources"></a>
 
@@ -48,13 +48,50 @@ Indexeer functies verkennen gegevens archieven in Azure.
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (in preview-versie)
-* [Azure-tabelopslag](search-howto-indexing-azure-tables.md)
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Database en SQL Managed instance](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [SQL Server op virtuele machines in Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [SQL Server op Azure Virtual Machines](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
+## <a name="indexer-stages"></a>Indexerings fasen
+
+Bij een eerste uitvoering, wanneer de index leeg is, leest een Indexeer functie alle gegevens die zijn opgegeven in de tabel of container. Bij volgende uitvoeringen kan de Indexeer functie normaal gesp roken alleen de gewijzigde gegevens detecteren en ophalen. Voor BLOB-gegevens wordt de detectie van wijzigingen automatisch. Voor andere gegevens bronnen, zoals Azure SQL of Cosmos DB, moet u de functie voor het detecteren van wijzigingen inschakelen.
+
+Voor elk van de documenten die worden opgenomen in, implementeert een Indexeer functie meerdere stappen, van het ophalen van documenten naar een laatste zoek engine "besteld" voor het indexeren. Een Indexeer functie is optioneel ook een instrumentatie bij het aansturen van vaardig heden en uitvoer, ervan uitgaande dat er een kwalificatieset is gedefinieerd.
+
+![Indexerings fasen](./media/search-indexer-overview/indexer-stages.png "indexerings fasen")
+
+### <a name="stage-1-document-cracking"></a>Fase 1: document kraken
+
+Het kraken van documenten is het proces van het openen van bestanden en het uitpakken van inhoud. Afhankelijk van het type gegevens bron probeert de Indexeer functie verschillende bewerkingen uit te voeren om mogelijk Indexeer bare inhoud op te halen.  
+
+Voorbeelden:  
+
+* Wanneer het document een record in een [Azure SQL-gegevens bron](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)is, haalt de Indexeer functie elk van de velden voor de record op.
+* Wanneer het document een PDF-bestand is in een [Azure Blob Storage-gegevens bron](search-howto-indexing-azure-blob-storage.md), worden de tekst, afbeeldingen en meta gegevens voor het bestand geëxtraheerd door de Indexeer functie.
+* Wanneer het document een record in een [Cosmos DB gegevens bron](search-howto-index-cosmosdb.md)is, haalt de Indexeer functie de velden en subvelden uit het Cosmos DB document.
+
+### <a name="stage-2-field-mappings"></a>Fase 2: veld toewijzingen 
+
+Met een Indexeer functie wordt tekst uit een bron veld geëxtraheerd en naar een doel veld in een index of kennis archief verzonden. Als veld namen en typen samen vallen, wordt het pad gewist. Het is echter mogelijk dat u verschillende namen of typen in de uitvoer wilt hebben. in dat geval moet u de Indexeer functie vertellen hoe u het veld wilt toewijzen. Deze stap treedt op na het kraken van documenten, maar vóór trans formaties, wanneer de Indexeer functie van de bron documenten wordt gelezen. Wanneer u een [veld toewijzing](search-indexer-field-mappings.md)definieert, wordt de waarde van het Bron veld verzonden als-is naar het doel veld zonder wijzigingen. Veld Toewijzingen zijn optioneel.
+
+### <a name="stage-3-skillset-execution"></a>Fase 3: uitvoering van vaardig heden
+
+Het uitvoeren van vaardig heden is een optionele stap voor het aanroepen van ingebouwde of aangepaste AI-verwerking. U hebt deze mogelijk nodig voor optische teken herkenning (OCR) in de vorm van afbeeldings analyse, of u hebt mogelijk een vertaling van de taal nodig. Welke trans formatie, vaardig heden-uitvoering wordt uitgevoerd, waar verrijkingen plaatsvinden. Als een Indexeer functie een pijp lijn is, kunt u een [vaardig heden](cognitive-search-defining-skillset.md) beschouwen als een ' pijp lijn in de pijp lijn '. Een vaardig heden heeft zijn eigen volg orde van de stappen die vaardig heden worden genoemd.
+
+### <a name="stage-4-output-field-mappings"></a>Fase 4: uitvoer veld toewijzingen
+
+De uitvoer van een vaardig heden is in feite een structuur van gegevens die het verrijkte document worden genoemd. Met de toewijzingen van het uitvoer veld kunt u selecteren welke delen van deze boom structuur in de velden in uw index moeten worden toegewezen. Meer informatie over het [definiëren van uitvoer veld Toewijzingen](cognitive-search-output-field-mapping.md).
+
+Net als veld toewijzingen waarmee Verbatim waarden van bron-naar doel velden worden gekoppeld, geven uitvoer veld Toewijzingen de Indexeer functie aan hoe de getransformeerde waarden in het verrijkte document moeten worden gekoppeld aan doel velden in de index. In tegens telling tot veld toewijzingen, die als optioneel worden beschouwd, moet u altijd een toewijzing van een uitvoer veld definiëren voor getransformeerde inhoud die in een index moet worden opgeslagen.
+
+De volgende afbeelding toont een voor beeld van een debug-sessie voor het [opsporen van fouten](cognitive-search-debug-session.md) in de Indexeer fase: document kraken, veld toewijzingen, vaardigheidset-uitvoering en uitvoer veld toewijzingen.
+
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="voor beeld van foutopsporingssessie" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+
 ## <a name="basic-configuration-steps"></a>Basisconfiguratiestappen
+
 Indexeerfuncties kunnen functies bieden die uniek voor de gegevensbron zijn. In dit opzicht variëren bepaalde aspecten van de configuratie van de indexeerfunctie of de gegevensbron al naar gelang het type indexeerfunctie. Alle indexeerfuncties hebben echter dezelfde basissamenstelling en voor alle indexeerfuncties gelden dezelfde vereisten. Hieronder vindt u de stappen die voor alle indexeerfuncties gemeenschappelijk zijn.
 
 ### <a name="step-1-create-a-data-source"></a>Stap 1: Een gegevensbron maken
@@ -136,6 +173,6 @@ Nu u het uitgangspunt hebt begrepen, is de volgende stap de vereisten en taken t
 * [Azure SQL Database, SQL Managed instance of SQL Server op een virtuele machine van Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure-tabelopslag](search-howto-indexing-azure-tables.md)
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [CSV-blobs indexeren met de Azure Cognitive Search BLOB-Indexer](search-howto-index-csv-blobs.md)
 * [JSON-blobs indexeren met Azure Cognitive Search BLOB-Indexer](search-howto-index-json-blobs.md)

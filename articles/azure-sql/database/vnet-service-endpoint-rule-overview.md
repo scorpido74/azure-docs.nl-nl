@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 880ec24c377091173202098a3c54b5776bf69a98
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 76a31b10c15f2dff3d6d9304dcff6d0fb489ea7f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836612"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210384"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuele netwerk service-eind punten en-regels gebruiken voor servers in Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -106,15 +106,15 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 Azure Storage heeft dezelfde functie geïmplementeerd waarmee u de connectiviteit met uw Azure Storage-account kunt beperken. Als u ervoor kiest om deze functie te gebruiken met een Azure Storage-account dat wordt gebruikt door Azure SQL Database, kunt u problemen ondervinden. Hierna volgt een lijst en bespreking van Azure SQL Database-en Azure SQL Data Warehouse-functies die van invloed zijn op dit onderwerp.
 
-### <a name="azure-synapse-polybase"></a>Azure Synapse poly base
+### <a name="azure-synapse-polybase-and-copy-statement"></a>Azure Synapse poly base-en kopieer instructie
 
-PolyBase wordt vaak gebruikt voor het laden van gegevens in Azure Synapse Analytics vanaf Azure Storage-accounts. Als het Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten, wordt de connectiviteit van poly Base naar het account verbroken. Volg de onderstaande stappen voor het inschakelen van zowel poly base import-als export scenario's met Azure Synapse Analytics waarmee verbinding wordt gemaakt met Azure Storage dat is beveiligd met VNet:
+Poly base en de instructie COPY worden meestal gebruikt voor het laden van gegevens in azure Synapse Analytics van Azure Storage accounts voor gegevens opname met hoge door voer. Als de Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten, wordt de verbinding verbroken wanneer u poly base gebruikt en wordt de instructie COPY naar het opslag account onderbroken. Voor het inschakelen van scenario's voor importeren en exporteren met behulp van COPY en poly Base met Azure Synapse Analytics verbinding maken met Azure Storage dat is beveiligd met VNet, volgt u de stappen die hieronder worden beschreven:
 
 #### <a name="prerequisites"></a>Vereisten
 
 - Installeer Azure PowerShell met behulp van deze [gids](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u eerst een upgrade uitvoeren naar de v2 voor algemeen gebruik met behulp van deze [gids](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-- U moet **vertrouwde Microsoft-services toegang geven tot dit opslagaccount** ingeschakeld onder het instellingenmenu van uw Azure Storage-account **Firewalls en virtuele netwerken**. Raadpleeg deze [gids](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) voor meer informatie.
+- U moet **vertrouwde Microsoft-services toegang geven tot dit opslagaccount** ingeschakeld onder het instellingenmenu van uw Azure Storage-account **Firewalls en virtuele netwerken**. Als u deze configuratie inschakelt, kan poly base en de instructie COPY verbinding maken met het opslag account met behulp van sterke verificatie waarbij netwerk verkeer op de Azure-backbone blijft. Raadpleeg deze [gids](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) voor meer informatie.
 
 > [!IMPORTANT]
 > De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
@@ -238,7 +238,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
 ## <a name="azure-portal-steps"></a>Azure Portal stappen
 
-1. Meld u aan bij [Azure Portal][http-azure-portal-link-ref-477t].
+1. Meld u aan bij de [Microsoft Azure-portal][http-azure-portal-link-ref-477t].
 
 2. Zoek en selecteer **SQL-servers**en selecteer vervolgens uw server. Onder **beveiliging**selecteert u **firewalls en virtuele netwerken**.
 

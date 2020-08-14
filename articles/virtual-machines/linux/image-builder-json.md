@@ -3,17 +3,17 @@ title: Een Azure Image Builder-sjabloon maken (preview)
 description: Meer informatie over het maken van een sjabloon voor gebruik met Azure Image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/03/2020
+ms.date: 08/13/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 095aa4ddbdc9ceb04c65d8c896642a0f1a91e547
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830339"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205543"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -306,7 +306,7 @@ Eigenschappen aanpassen:
 - **scriptUri** -URI naar de locatie van het bestand 
 - **inline** -matrix van shell opdrachten, gescheiden door komma's.
 - **sha256Checksum** -waarde van de sha256-controlesom van het bestand, u genereert dit lokaal en vervolgens wordt de opbouw functie voor installatie kopieën gecontroleerd en gevalideerd.
-    * De sha256Checksum genereren met behulp van een Terminal op Mac/Linux-uitvoering:`sha256sum <fileName>`
+    * De sha256Checksum genereren met behulp van een Terminal op Mac/Linux-uitvoering: `sha256sum <fileName>`
 
 
 Om opdrachten uit te voeren met super gebruikers bevoegdheden, moeten ze worden voorafgegaan door `sudo` .
@@ -430,12 +430,13 @@ OS support: Windows
 ```
 
 Eigenschappen aanpassen:
-- **type** – windowsupdate.
+- **type**  – windowsupdate.
 - **searchCriteria** -optioneel, definieert welk type updates wordt geïnstalleerd (aanbevolen, belang rijk enz.), BrowseOnly = 0 en IsInstalled = 0 (aanbevolen) is de standaard instelling.
 - **filters** : optioneel, Hiermee kunt u een filter opgeven om updates op te nemen of uit te sluiten.
 - **updateLimit** – optioneel, definieert het aantal updates dat kan worden geïnstalleerd, standaard 1000.
  
- 
+> [!NOTE]
+> De Windows Update-aanpassings bewerking kan mislukken als er openstaande Windows-startingen of toepassings installaties nog steeds worden uitgevoerd. deze fout kan meestal worden weer geven in de aanpassingen. log, `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . U kunt het beste overwegen om in een Windows-computer opnieuw op te starten en/of toepassingen voldoende tijd te geven om de installatie te volt ooien met behulp van [slapen] of wacht opdrachten ( https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) in de inline-opdrachten of-scripts voordat u Windows Update uitvoert.
 
 ### <a name="generalize"></a>Generaliseren 
 Azure Image Builder voert standaard ook de code ' provisioning ' uit aan het einde van elke aanpassings fase van de installatie kopie tot ' generalize ' in de installatie kopie. Generalize is een proces waarbij de installatie kopie wordt ingesteld zodat deze opnieuw kan worden gebruikt om meerdere virtuele machines te maken. Voor virtuele Windows-machines maakt Azure Image Builder gebruik van Sysprep. Voor Linux voert Azure Image Builder ' waagent-deprovision ' uit. 
@@ -590,7 +591,7 @@ Eigenschappen voor gedeelde afbeeldings galerieën distribueren:
 - **type** -sharedImage  
 - **galleryImageId** : id van de galerie met gedeelde afbeeldingen kan in twee indelingen worden opgegeven:
     * Automatisch versie beheer: met de opbouw functie voor installatie kopieën wordt een monoton versie nummer voor u gegenereerd. Dit is handig als u wilt dat de installatie kopieën van dezelfde sjabloon opnieuw worden samengesteld: de volgende indeling: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` .
-    * Expliciete versie beheer: u kunt het versie nummer door geven dat door de opbouw functie voor installatie kopieën moet worden gebruikt. De indeling is:`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+    * Expliciete versie beheer: u kunt het versie nummer door geven dat door de opbouw functie voor installatie kopieën moet worden gebruikt. De indeling is: `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
 
 - **runOutputName** : een unieke naam voor het identificeren van de distributie.  
 - **artifactTags** -optionele door de gebruiker opgegeven sleutel waarde-paar tags.

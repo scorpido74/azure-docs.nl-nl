@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 6a8cc588ff7325242e7e010e9869eaa9a24f6fc2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033333"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205932"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Omleidings-URI (antwoord-URL) beperkingen en beperkingen
 
@@ -34,8 +34,8 @@ In deze tabel ziet u het maximum aantal omleidings-Uri's dat u kunt toevoegen aa
 
 | Accounts waarbij wordt aangemeld | Maximum aantal omleidings-Uri's | Beschrijving |
 |--------------------------|---------------------------------|-------------|
-| Micro soft-werk-of school accounts in de Tenant van de Azure Active Directory van een organisatie (Azure AD) | 256 | `signInAudience`het veld in het toepassings manifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs* |
-| Persoonlijke micro soft-accounts en werk-en school accounts | 100 | `signInAudience`het veld in het manifest van de toepassing is ingesteld op *AzureADandPersonalMicrosoftAccount* |
+| Micro soft-werk-of school accounts in de Tenant van de Azure Active Directory van een organisatie (Azure AD) | 256 | `signInAudience` het veld in het toepassings manifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs* |
+| Persoonlijke micro soft-accounts en werk-en school accounts | 100 | `signInAudience` het veld in het manifest van de toepassing is ingesteld op *AzureADandPersonalMicrosoftAccount* |
 
 ## <a name="maximum-uri-length"></a>Maximale URI-lengte
 
@@ -51,7 +51,7 @@ Als u omleidings-Uri's wilt toevoegen met een HTTP-schema naar app-registraties 
 
 Per [RFC 8252-secties 8,3](https://tools.ietf.org/html/rfc8252#section-8.3) en [7,3](https://tools.ietf.org/html/rfc8252#section-7.3), worden ' loop back-' of ' localhost ' omleidings-uri's geleverd met twee speciale overwegingen:
 
-1. `http`URI-schema's zijn acceptabel omdat de omleiding nooit het apparaat verlaat. Als zodanig zijn beide acceptabel:
+1. `http` URI-schema's zijn acceptabel omdat de omleiding nooit het apparaat verlaat. Als zodanig zijn beide acceptabel:
     - `http://127.0.0.1/myApp`
     - `https://127.0.0.1/myApp`
 1. Als gevolg van tijdelijke poortbereiken die vaak vereist zijn voor systeem eigen toepassingen, wordt het poort onderdeel (bijvoorbeeld `:5001` of `:443` ) genegeerd voor de doel einden van het afstemmen van een omleidings-URI. Als gevolg hiervan worden al deze als gelijkwaardig beschouwd:
@@ -62,9 +62,9 @@ Per [RFC 8252-secties 8,3](https://tools.ietf.org/html/rfc8252#section-8.3) en [
 
 Uit het oogpunt van ontwikkeling betekent dit een aantal dingen:
 
-1. Registreer niet meerdere omleidings-Uri's waarbij alleen de poort verschilt. Op de aanmeldings server wordt één wille keurig gekozen en wordt het gedrag gebruikt dat is gekoppeld aan die omleidings-URI (bijvoorbeeld of het een `web` -, `native` -,-of `spa` -type omleiding is).
-1. Als u meerdere omleidings-Uri's op localhost wilt registreren om verschillende stromen tijdens de ontwikkeling te testen, moet u deze onderscheiden met de *padcomponent* van de URI. `http://127.0.0.1/MyWebApp`Komt bijvoorbeeld niet overeen `http://127.0.0.1/MyNativeApp` .
-1. Per RFC-richt lijn moet u niet gebruiken `localhost` in de omleidings-URI. Gebruik in plaats daarvan het werkelijke loop back IP-adres, `127.0.0.1` . Hiermee wordt voor komen dat uw app wordt verbroken door onjuist geconfigureerde firewalls of de naam van netwerk interfaces.
+* Registreer niet meerdere omleidings-Uri's waarbij alleen de poort verschilt. Op de aanmeldings server wordt één wille keurig gekozen en wordt het gedrag gebruikt dat is gekoppeld aan die omleidings-URI (bijvoorbeeld of het een `web` -, `native` -,-of `spa` -type omleiding is).
+* Als u meerdere omleidings-Uri's op localhost wilt registreren om verschillende stromen tijdens de ontwikkeling te testen, moet u deze onderscheiden met de *padcomponent* van de URI. `http://127.0.0.1/MyWebApp`Komt bijvoorbeeld niet overeen `http://127.0.0.1/MyNativeApp` .
+* Per RFC-richt lijn moet u niet gebruiken `localhost` in de omleidings-URI. Gebruik in plaats daarvan het werkelijke loop back IP-adres, `127.0.0.1` . Hiermee wordt voor komen dat uw app wordt verbroken door onjuist geconfigureerde firewalls of de naam van netwerk interfaces.
 
     Het IPv6-loop back-adres ( `[::1]` ) wordt momenteel niet ondersteund.
 

@@ -1,27 +1,22 @@
 ---
-title: 'Azure AD-toepassingsproxy: release geschiedenis van de versie | Microsoft Docs'
+title: 'Azure AD-toepassingsproxy: release geschiedenis van versie'
 description: In dit artikel wordt een overzicht gegeven van alle versies van Azure AD-toepassingsproxy en worden nieuwe functies en opgeloste problemen beschreven
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-editor: ''
 ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019383"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210868"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-toepassingsproxy: release geschiedenis van versie
 In dit artikel vindt u een overzicht van de versies en functies van de toepassings proxy van Azure Active Directory (Azure AD) die is uitgebracht. Het Azure AD-team werkt de toepassings proxy regel matig bij met nieuwe functies en functionaliteit. Application proxy-connectors worden automatisch bijgewerkt wanneer een nieuwe versie wordt uitgebracht. 
@@ -68,7 +63,7 @@ Downloaden van Azure AD-toepassingsproxy-connector |  [Down load de nieuwste con
 7 april 2020: uitgebracht voor downloaden
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
--   Connectors gebruiken alleen TLS 1,2 voor alle verbindingen. Zie [vereisten voor connectors](application-proxy-add-on-premises-application.md#before-you-begin) voor meer informatie.
+-   Connectors gebruiken alleen TLS 1,2 voor alle verbindingen. Zie [vereisten voor connectors](application-proxy-add-on-premises-application.md#prerequisites) voor meer informatie.
 - Verbeterd Signa lering tussen de connector en Azure-Services. Dit omvat het ondersteunen van betrouw bare sessies voor WCF-communicatie tussen de connector en Azure-Services en verbeteringen in DNS-caching voor WebSocket-communicatie.
 - Ondersteuning voor het configureren van een proxy tussen de connector en de back-end-toepassing. Zie [werken met bestaande on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md)voor meer informatie.
 

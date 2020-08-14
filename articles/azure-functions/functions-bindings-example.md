@@ -3,14 +3,15 @@ title: Voorbeeld van trigger en binding met Azure Functions
 description: Meer informatie over het configureren van Azure function-bindingen
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c95524a5de6696bd0ffe7463451d152a9d3a19b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74227246"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205972"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Voorbeeld van trigger en binding met Azure Functions
 
@@ -52,7 +53,7 @@ Als u de inhoud van *function.js* wilt weer geven en bewerken in de Azure Portal
 
 ## <a name="c-script-example"></a>Voor beeld van C#-script
 
-Hier volgt een C#-script code die werkt met deze trigger en binding. U ziet dat de naam van de para meter die de inhoud van het wachtrij bericht levert `order` , is. deze naam is vereist omdat de waarde van de `name` eigenschap in *function.jsop* is`order` 
+Hier volgt een C#-script code die werkt met deze trigger en binding. U ziet dat de naam van de para meter die de inhoud van het wachtrij bericht levert `order` , is. deze naam is vereist omdat de waarde van de `name` eigenschap in *function.jsop* is `order` 
 
 ```cs
 #r "Newtonsoft.Json"

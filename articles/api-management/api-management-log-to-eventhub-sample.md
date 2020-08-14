@@ -12,15 +12,16 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: ace0ef2660a44af41d8942cfe4d225bc1a03228e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254585"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205504"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Bewaak uw Api's met Azure API Management, Event Hubs en Moesif
 De [API Management-service](api-management-key-concepts.md) biedt veel mogelijkheden voor het verbeteren van de verwerking van HTTP-aanvragen die worden verzonden naar uw HTTP-API. Het bestaan van de aanvragen en antwoorden is echter tijdelijk. De aanvraag wordt gemaakt en de API Management-service wordt door gegeven aan uw back-end-API. Uw API verwerkt de aanvraag en een antwoord loopt terug via de API-Consumer. De API Management-service houdt enkele belang rijke statistische gegevens over de Api's bij om weer te geven in het Azure Portal dash board, maar de details zijn verdwenen.
@@ -163,7 +164,7 @@ Het `set-variable` beleid maakt een waarde die toegankelijk is via het `log-to-e
 Gebeurtenissen van Azure Event hub worden ontvangen via het [AMQP-protocol](https://www.amqp.org/). Het micro soft Service Bus-team heeft client bibliotheken beschikbaar gemaakt om het verbruik van gebeurtenissen gemakkelijker te maken. Er worden twee verschillende benaderingen ondersteund, een is een *directe Consumer* en de andere is van de- `EventProcessorHost` klasse. Voor beelden van deze twee benaderingen vindt u in de [Event hubs-programmeer gids](../event-hubs/event-hubs-programming-guide.md). De korte versie van de verschillen is, `Direct Consumer` geeft u volledige controle en het `EventProcessorHost` biedt een deel van het sanitaire werk voor u, maar maakt bepaalde veronderstellingen over hoe u deze gebeurtenissen verwerkt.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-In dit voor beeld gebruiken we de `EventProcessorHost` voor-eenvoud, maar dit is mogelijk niet de beste keuze voor dit specifieke scenario. `EventProcessorHost`is het moeilijk om ervoor te zorgen dat u zich geen zorgen hoeft te maken over thread problemen binnen een bepaalde gebeurtenis verwerkings klasse. In ons scenario wordt het bericht echter geconverteerd naar een andere indeling en door gegeven aan een andere service met behulp van een async-methode. Het is niet nodig om de gedeelde status bij te werken en daarom geen risico voor threading-problemen. Voor de meeste scenario's `EventProcessorHost` is het waarschijnlijk de beste keuze en het is zeker de makkelijkste optie.
+In dit voor beeld gebruiken we de `EventProcessorHost` voor-eenvoud, maar dit is mogelijk niet de beste keuze voor dit specifieke scenario. `EventProcessorHost` is het moeilijk om ervoor te zorgen dat u zich geen zorgen hoeft te maken over thread problemen binnen een bepaalde gebeurtenis verwerkings klasse. In ons scenario wordt het bericht echter geconverteerd naar een andere indeling en door gegeven aan een andere service met behulp van een async-methode. Het is niet nodig om de gedeelde status bij te werken en daarom geen risico voor threading-problemen. Voor de meeste scenario's `EventProcessorHost` is het waarschijnlijk de beste keuze en het is zeker de makkelijkste optie.
 
 ### <a name="ieventprocessor"></a>IEventProcessor
 Het centrale concept bij het gebruik `EventProcessorHost` van is het maken van een implementatie van de `IEventProcessor` Interface, die de methode bevat `ProcessEventAsync` . De essentie van deze methode wordt hier weer gegeven:

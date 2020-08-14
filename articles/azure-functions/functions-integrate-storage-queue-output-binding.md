@@ -4,13 +4,13 @@ description: Gebruik Azure Functions om een functie zonder server te maken die w
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
-ms.custom: mvc
-ms.openlocfilehash: 5ae282750580ed5b4e53e78c52ca285e40365fd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 6c16aad9bb04ffb4cb4df52799d63f7ec2e19725
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121988"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210838"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functions
 

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727667"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209473"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory
 
@@ -130,7 +130,7 @@ U kunt een Power shell-script gebruiken om te controleren of gebruikers een lice
 
 1. Voer de `connect-msolservice` cmdlet uit om uw organisatie te verifiëren en er verbinding mee te maken.
 
-2. `Get-MsolAccountSku`kan worden gebruikt voor het detecteren van alle ingerichte product licenties in de Azure AD-organisatie.
+2. `Get-MsolAccountSku` kan worden gebruikt voor het detecteren van alle ingerichte product licenties in de Azure AD-organisatie.
 
    ![Scherm afbeelding van de cmdlet Get-Msolaccountsku](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -205,7 +205,7 @@ Als u gebruikmaakt van op groepen gebaseerde licentie verlening, is het een goed
 
 - Groepslicenties bieden op dit moment geen ondersteuning voor groepen die andere groepen bevatten (geneste groepen). Als u een licentie toepast op een geneste groep, wordt die licentie alleen toegepast op de gebruikers die lid direct zijn van de groep.
 
-- De functie kan alleen worden gebruikt met beveiligings groepen en Office 365-groepen met securityEnabled = TRUE.
+- De functie kan alleen worden gebruikt met beveiligings groepen en Microsoft 365 groepen met securityEnabled = TRUE.
 
 - Het [Microsoft 365-beheer centrum](https://admin.microsoft.com) biedt momenteel geen ondersteuning voor op groepen gebaseerde licentie verlening. Als een gebruiker een licentie van een groep overneemt, wordt deze licentie weer gegeven in de Office-beheer portal als een reguliere gebruikers licentie. Als u de licentie probeert te wijzigen of de licentie probeert te verwijderen, wordt een fout bericht door de portal weer gegeven. Overgenomen groeps licenties kunnen niet rechtstreeks op een gebruiker worden gewijzigd.
 

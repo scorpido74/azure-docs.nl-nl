@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Meer informatie over hoe u met Visual Studio code en Azure dev Spaces fouten oplost en snel uw Kubernetes-toepassingen kunt herhalen
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 73a2ae1f603626acf7ec4d42838b301c88ee21da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: decf61bd55ed15182f030bb02a2fe9c959749556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307347"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209879"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Hoe Visual Studio code werkt met Azure dev Spaces
 
@@ -43,19 +43,15 @@ Voor .NET core-projecten moet de C#- [extensie][csharp-extension] zijn geïnstal
 
 Nadat u uw project hebt gestart, kunt u fouten opsporen in uw Java-, Node.js-en .NET Core Services die rechtstreeks vanuit Visual Studio code worden uitgevoerd in een dev-ruimte. De start configuratie in de `.vscode` Directory biedt extra informatie over fout opsporing voor het uitvoeren van een service met fout opsporing ingeschakeld in een dev-ruimte. Visual Studio code wordt ook gekoppeld aan het debugproces in de container die wordt uitgevoerd in uw ontwikkel ruimten, zodat u Verbreek punten kunt instellen, variabelen kunt inspecteren en andere fout opsporing kunt uitvoeren.
 
-## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Visual Studio code gebruiken met Azure dev Spaces
+## <a name="next-steps"></a>Volgende stappen
 
-U kunt Visual Studio code en de Azure dev Spaces-extensie in de volgende Quick starts gebruiken met Azure dev Spaces:
+Meer informatie over de werking van Azure dev Spaces.
 
-* [Snel herhalen en fouten opsporen met Visual Studio code en Java][quickstart-java]
-* [Snel herhalen en fouten opsporen met Visual Studio code en .NET][quickstart-netcore]
-* [Snel herhalen en fouten opsporen met Visual Studio code en Node.js][quickstart-node]
+> [!div class="nextstepaction"]
+> [Hoe Azure Dev Spaces werkt](how-dev-spaces-works.md)
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works-prep.md#prepare-your-code
 [csharp-extension]: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
 [java-extension]: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds
 [maven]: https://maven.apache.org
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md

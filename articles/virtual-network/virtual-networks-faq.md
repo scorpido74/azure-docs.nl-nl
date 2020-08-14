@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924118"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205472"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
 
@@ -195,7 +195,7 @@ Ja. U kunt Web Apps implementeren in een VNet met behulp van een ASE (App Servic
 
 * [App Service-netwerk functies](../app-service/networking-features.md)
 * [Web Apps maken in een App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Een app integreren met een virtueel Azure-netwerk](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Uw app integreren met een Azure-Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Toegangs beperkingen App Service](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Kan ik Cloud Services implementeren met web-en werk rollen (PaaS) in een VNet?
@@ -356,7 +356,7 @@ Nee, er zijn geen extra kosten verbonden aan het gebruik van VNet-service-eind p
 Ja, dat is mogelijk. Virtuele netwerken en Azure-service resources kunnen zich in dezelfde of een andere abonnementen bevindt. De enige vereiste is dat zowel het virtuele netwerk als de Azure-service resources onder dezelfde Active Directory (AD)-Tenant moeten zijn.
 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Kan ik VNet-service-eind punten inschakelen en VNet-Acl's instellen als het virtuele netwerk en de Azure-service bronnen deel uitmaken van verschillende AD-tenants?
-Nee, VNet-service-eind punten en VNet-Acl's worden niet ondersteund in AD-tenants.
+Ja, het is mogelijk bij het gebruik van service-eind punten voor Azure Storage en Azure Key Vault. Voor rest van services worden VNet-service-eind punten en VNet-Acl's niet ondersteund in AD-tenants.
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Kan een on-premises IP-adres van het apparaat zijn dat is verbonden via Azure Virtual Network gateway (VPN) of ExpressRoute gateway toegang Azure PaaS service via VNet-service-eind punten?
 Standaard zijn Azure-serviceresources die zijn beveiligd naar virtuele netwerken, niet bereikbaar vanaf on-premises netwerken. Als u verkeer van on-premises wilt toestaan, moet u ook open bare (doorgaans NAT) IP-adressen van uw on-premises of ExpressRoute toestaan. Deze IP-adressen kunnen worden toegevoegd via de IP-firewall configuratie voor de Azure-service resources.

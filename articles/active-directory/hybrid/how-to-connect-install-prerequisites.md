@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a05636f8e673e08bfd390aa10069da0abd561d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b0754c8e2be62c0a5568e97e7e5cf4376fb3c593
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542056"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210915"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit artikel worden de vereisten en de hardwarevereisten voor Azure Active Directory (Azure AD)-verbinding beschreven.
@@ -72,7 +72,7 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
 - Behandel Azure AD Connect hetzelfde als een domein controller en andere resources van laag 0. Zie [Active Directory Administrative tier model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)(Engelstalig) voor meer informatie.
 - Beperk beheerders toegang tot de Azure AD Connect-server tot alleen domein Administrators of andere nauw keurig beheerde beveiligings groepen.
 - Maak een [speciaal account voor alle mede werkers met privileged Access](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). Beheerders moeten niet surfen op het web, hun e-mail adres controleren en dagelijkse productiviteits taken uitvoeren met accounts met veel bevoegdheden.
-- Volg de richt lijnen voor het [beveiligen van bevoegde toegang](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts). 
+- Volg de richt lijnen voor het [beveiligen van bevoegde toegang](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
 - Zorg ervoor dat elke computer een uniek wacht woord voor de lokale beheerder heeft. Zie [Local Administrator Password Solution (verval)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) voor meer informatie. kan unieke wille keurige wacht woorden configureren op elk werk station en de server slaat ze op Active Directory beveiligd door een ACL. Alleen in aanmerking komende geautoriseerde gebruikers kunnen de wacht woorden van deze lokale beheerders accounts lezen of aanvragen. U kunt het verval verkrijgen voor gebruik op werk stations en servers vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.). Aanvullende richt lijnen voor het gebruik van een omgeving met verval en privileged Access Workstation (Paw's) vindt u in [operationele standaarden op basis van het schone bron principe](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
 - Implementeer toegewezen [privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) voor alle mede werkers met uitgebreide toegang tot de gegevens systemen van uw organisatie. 
 - Volg deze [aanvullende richt lijnen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) om de kwets baarheid van uw Active Directory omgeving te verminderen.

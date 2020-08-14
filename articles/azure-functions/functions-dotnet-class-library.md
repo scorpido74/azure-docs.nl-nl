@@ -2,13 +2,14 @@
 title: Naslaginformatie over Azure Functions C# voor ontwikkelaars
 description: Meer informatie over het ontwikkelen van Azure Functions met C#.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 7c00dcd3648ef175d4e834fceef3444f7943e70b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288200"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206207"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Naslaginformatie over Azure Functions C# voor ontwikkelaars
 
@@ -371,7 +372,7 @@ Definieer als volgt een dwingende binding:
   }
   ```
 
-  `BindingTypeAttribute`is het .NET-kenmerk dat uw binding definieert en `T` is een invoer-of uitvoer type dat wordt ondersteund door dat bindings type. `T`kan geen `out` parameter type zijn (zoals `out JObject` ). De Mobile Apps tabel uitvoer binding ondersteunt bijvoorbeeld [zes uitvoer typen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), maar u kunt alleen [ \<T> ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [IAsyncCollector \<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) gebruiken met dwingende binding.
+  `BindingTypeAttribute` is het .NET-kenmerk dat uw binding definieert en `T` is een invoer-of uitvoer type dat wordt ondersteund door dat bindings type. `T` kan geen `out` parameter type zijn (zoals `out JObject` ). De Mobile Apps tabel uitvoer binding ondersteunt bijvoorbeeld [zes uitvoer typen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), maar u kunt alleen [ \<T> ICollector](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [IAsyncCollector \<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) gebruiken met dwingende binding.
 
 ### <a name="single-attribute-example"></a>Voor beeld van één kenmerk
 

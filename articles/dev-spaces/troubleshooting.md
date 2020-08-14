@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077030"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210836"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -55,8 +55,6 @@ Als u de CLI van Azure dev Spaces niet hebt geïnstalleerd, kunt u deze eerst in
 ```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
-
-Het opnieuw maken van de controller kan worden uitgevoerd vanuit CLI of Visual Studio. Bekijk de [team ontwikkeling](quickstart-team-development.md) of [ontwikkel met .net core](quickstart-netcore-visualstudio.md) Quick starts voor voor beelden.
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>De controller kan niet worden gemaakt vanwege een lengte van de naam van de controller
 
@@ -545,7 +543,7 @@ Dit probleem oplossen:
 1. Als de container wordt gebouwd/geïmplementeerd, kunt u 2-3 seconden wachten en de service opnieuw proberen toegang te krijgen. 
 1. Controleer de poort configuratie in de volgende assets:
     * ** [Helm grafiek](https://docs.helm.sh):** Opgegeven door de `service.port` en `deployment.containerPort` in values. yaml met de `azds prep` opdracht.
-    * Alle poorten die in de toepassings code worden geopend, bijvoorbeeld in Node.js:`var server = app.listen(80, function () {...}`
+    * Alle poorten die in de toepassings code worden geopend, bijvoorbeeld in Node.js: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Het type of de naam van de naam ruimte ' MyLibrary ' is niet gevonden
 
