@@ -1,6 +1,6 @@
 ---
 title: Groeps naamgevings beleid afdwingen in Azure Active Directory | Microsoft Docs
-description: Naamgevings beleid instellen voor Office 365-groepen in Azure Active Directory
+description: Naamgevings beleid instellen voor Microsoft 365 groepen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 08/13/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 380962b71d6829b8a217a5d3038e2ae4dd7264fd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497083"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213749"
 ---
-# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Een naamgevings beleid afdwingen voor Office 365-groepen in Azure Active Directory
+# <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Een naamgevings beleid afdwingen voor Microsoft 365 groepen in Azure Active Directory
 
-Voor het afdwingen van consistente naam conventies voor Office 365-groepen die door uw gebruikers zijn gemaakt of bewerkt, stelt u een groeps naamgevings beleid in voor uw organisatie in Azure Active Directory (Azure AD). U kunt bijvoorbeeld het naamgevings beleid gebruiken voor het communiceren van de functie van een groep, lidmaatschap, geografische regio of het maken van de groep. U kunt ook het naamgevings beleid gebruiken om groepen in het adres boek te categoriseren. U kunt het beleid gebruiken om te voor komen dat specifieke woorden worden gebruikt in groeps namen en aliassen.
+Als u consistente naam conventies wilt afdwingen voor Microsoft 365 groepen die door uw gebruikers zijn gemaakt of bewerkt, stelt u een groeps naamgevings beleid in voor uw organisaties in Azure Active Directory (Azure AD). U kunt bijvoorbeeld het naamgevings beleid gebruiken voor het communiceren van de functie van een groep, lidmaatschap, geografische regio of het maken van de groep. U kunt ook het naamgevings beleid gebruiken om groepen in het adres boek te categoriseren. U kunt het beleid gebruiken om te voor komen dat specifieke woorden worden gebruikt in groeps namen en aliassen.
 
 > [!IMPORTANT]
-> Voor het gebruik van Azure AD-naamgevings beleid voor Office 365-groepen moet u een Azure Active Directory Premium P1-licentie of Azure AD Basic EDU-licentie toewijzen voor elke unieke gebruiker die lid is van een of meer Office 365-groepen.
+> Voor het gebruik van Azure AD-naamgevings beleid voor Microsoft 365 groepen moet u een Azure Active Directory Premium P1-licentie of een Azure AD Basic EDU-licentie toewijzen voor elke unieke gebruiker die lid is van een of meer Microsoft 365 groepen.
 
 Het naamgevings beleid wordt toegepast voor het maken of bewerken van groepen die zijn gemaakt in werk belastingen (bijvoorbeeld Outlook, micro soft teams, share point, Exchange of planner). Deze wordt toegepast op zowel de groeps naam als de groeps alias. Als u uw naamgevings beleid instelt in azure AD en u een bestaand naamgevings beleid voor de Exchange-groep hebt, wordt het Azure AD-naamgevings beleid afgedwongen in uw organisatie.
 
-Wanneer groeps naamgevings beleid is geconfigureerd, wordt het beleid toegepast op nieuwe Office 365-groepen die door eind gebruikers worden gemaakt. Naamgevings beleid is niet van toepassing op bepaalde Directory rollen, zoals globale beheerder of gebruikers beheerder (zie hieronder voor de volledige lijst met functies die zijn uitgesloten van groeps naamgevings beleid). Voor bestaande Office 365-groepen wordt het beleid niet direct toegepast op het tijdstip van de configuratie. Nadat de groeps eigenaar de groeps naam voor deze groepen heeft bewerkt, wordt het naamgevings beleid afgedwongen.
+Wanneer groeps naamgevings beleid is geconfigureerd, wordt het beleid toegepast op nieuwe Microsoft 365 groepen die door eind gebruikers worden gemaakt. Naamgevings beleid is niet van toepassing op bepaalde Directory rollen, zoals globale beheerder of gebruikers beheerder (zie hieronder voor de volledige lijst met functies die zijn uitgesloten van groeps naamgevings beleid). Voor bestaande Microsoft 365 groepen wordt het beleid niet direct toegepast op het tijdstip van de configuratie. Nadat de groeps eigenaar de groeps naam voor deze groepen heeft bewerkt, wordt het naamgevings beleid afgedwongen.
 
 ## <a name="naming-policy-features"></a>Naamgeving van beleids functies
 
@@ -253,18 +253,18 @@ Outlook-klanten beheer (OCM) | Outlook klanten beheer is compatibel met het naam
 Klas lokale app | Groepen die zijn gemaakt in de app leslokaal, voldoen aan het naamgevings beleid, maar het naamgevings beleid wordt niet automatisch toegepast en de voor beeld van een naamgevings beleid wordt niet weer gegeven voor gebruikers bij het invoeren van de naam van een leslokaal groep. Gebruikers moeten de naam van de afgedwongen leslokaal groep invoeren met voor voegsels en achtervoegsels. Als dat niet het geval is, mislukt de bewerking voor het maken of bewerken van de leslokaal groep met fouten.
 Power BI | Power BI-werk ruimten voldoen aan het naamgevings beleid.    
 Yammer | Wanneer een gebruiker die is aangemeld bij Yammer met hun Azure Active Directory-account een groep maakt of een groeps naam bewerkt, wordt de groeps naam in overeenstemming met het naamgevings beleid. Dit geldt zowel voor Office 365-verbonden groepen als voor alle andere Yammer-groepen.<br>Als er een met Office 365 verbonden groep is gemaakt voordat het naamgevings beleid aanwezig is, volgt de groeps naam niet automatisch het naamgevings beleid. Wanneer een gebruiker de groeps naam bewerkt, wordt u gevraagd het voor voegsel en achtervoegsel toe te voegen.
-StaffHub  | StaffHub teams volgen het naamgevings beleid niet, maar de onderliggende Office 365-groep wel. De StaffHub-team naam past de voor voegsels en achtervoegsels niet toe en controleert niet op aangepaste geblokkeerde woorden. Maar StaffHub past de voor voegsels en achtervoegsels toe en verwijdert geblokkeerde woorden uit de onderliggende Office 365-groep.
+StaffHub  | StaffHub teams volgen het naamgevings beleid niet, maar de onderliggende Microsoft 365-groep wel. De StaffHub-team naam past de voor voegsels en achtervoegsels niet toe en controleert niet op aangepaste geblokkeerde woorden. Maar StaffHub past de voor voegsels en achtervoegsels toe en verwijdert geblokkeerde woorden uit de onderliggende Microsoft 365 groep.
 Exchange Power shell | Exchange Power shell-cmdlets zijn compatibel met het naamgevings beleid. Gebruikers ontvangen de juiste fout berichten met suggesties voor voegsels en achtervoegsels en voor aangepaste geblokkeerde woorden als ze het naamgevings beleid niet volgen in de groeps naam en groeps alias (mailnickname).
 Azure Active Directory Power shell-cmdlets | Azure Active Directory Power shell-cmdlets zijn compatibel met het naamgevings beleid. Gebruikers ontvangen de juiste fout berichten met suggesties voor voegsels en achtervoegsels en voor aangepaste geblokkeerde woorden als ze niet voldoen aan de naamgevings conventies in groeps namen en groeps aliassen.
 Exchange-beheer centrum | Exchange-beheer centrum is compatibel met het naamgevings beleid. Gebruikers ontvangen de juiste fout berichten met suggesties voor voegsels en achtervoegsels en voor aangepaste geblokkeerde woorden als ze niet voldoen aan de naamgevings conventies in de groeps naam en groeps alias.
-Microsoft 365-beheercentrum | Microsoft 365-beheer centrum is compatibel met het naamgevings beleid. Wanneer een gebruiker groeps namen maakt of bewerkt, wordt het naamgevings beleid automatisch toegepast en ontvangen gebruikers de juiste fouten wanneer ze aangepaste geblokkeerde woorden invoeren. Het Microsoft 365-beheer centrum toont nog geen voor beeld van het naamgevings beleid en retourneert geen aangepaste geblokkeerde Word-fouten wanneer de gebruiker de groeps naam invoert.
+Het Microsoft 365-beheercentrum | Microsoft 365-beheer centrum is compatibel met het naamgevings beleid. Wanneer een gebruiker groeps namen maakt of bewerkt, wordt het naamgevings beleid automatisch toegepast en ontvangen gebruikers de juiste fouten wanneer ze aangepaste geblokkeerde woorden invoeren. Het Microsoft 365-beheer centrum toont nog geen voor beeld van het naamgevings beleid en retourneert geen aangepaste geblokkeerde Word-fouten wanneer de gebruiker de groeps naam invoert.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Deze artikelen bevatten aanvullende informatie over Azure AD-groepen.
 
 - [Bestaande groepen weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Verloop beleid voor Office 365-groepen](groups-lifecycle.md)
+- [Verloop beleid voor Microsoft 365 groepen](groups-lifecycle.md)
 - [Instellingen van een groep beheren](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [Leden van een groep beheren](../fundamentals/active-directory-groups-members-azure-portal.md)
 - [Lidmaatschappen van een groep beheren](../fundamentals/active-directory-groups-membership-azure-portal.md)

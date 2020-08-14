@@ -3,12 +3,12 @@ title: Azure-beveiligings basislijn voor Azure DevTest Labs
 description: Azure-beveiligings basislijn voor Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761005"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212301"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-beveiligings basislijn voor Azure DevTest Labs
 
@@ -629,8 +629,8 @@ Azure Marketplace-installatie kopieën voor virtuele machines die zijn gepublice
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: de configuratie van Azure-resources veilig opslaan
 **Hulp:** Gebruik Azure DevOps om uw code veilig op te slaan en te beheren, zoals aangepaste Azure-beleids regels, Azure Resource Manager sjablonen en desired state Configuration-scripts. Als u toegang wilt krijgen tot de resources die u beheert in azure DevOps, kunt u machtigingen verlenen of weigeren aan specifieke gebruikers, ingebouwde beveiligings groepen of groepen die zijn gedefinieerd in Azure Active Directory (Azure AD) als deze zijn geïntegreerd met Azure DevOps.
 
-- [Azure opslag plaatsen Git-zelf studie](/devops/repos/git/gitworkflow?view=azure-devops)
-- [Over machtigingen en groepen](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure opslag plaatsen Git-zelf studie](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [Over machtigingen en groepen](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
 - [Integratie tussen Azure DevTest Labs en de Azure DevOps-werk stroom](devtest-lab-dev-ops.md)
 
 **Azure Security Center bewaking:** Niet van toepassing

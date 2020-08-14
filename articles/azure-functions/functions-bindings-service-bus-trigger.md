@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7738582ec2839a6fddaa01ff0f9921c276c9748d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 262a6612c50148232e814befc76707989befb18b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843110"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212146"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus trigger voor Azure Functions
 
@@ -299,7 +299,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |**subscriptionName**|**SubscriptionName**|De naam van het abonnement dat moet worden bewaakt. Stel deze waarde alleen in als u een onderwerp bewaken, niet voor een wachtrij.|
 |**Combi**|**Verbinding**|De naam van een app-instelling die de Service Bus connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met "AzureWebJobs", kunt u alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' MyServiceBus ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyServiceBus '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard Service Bus Connection String in de app-instelling met de naam ' AzureWebJobsServiceBus '.<br><br>Volg de stappen die worden weer gegeven in [de beheer referenties ophalen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)om een Connection String te verkrijgen. De connection string moet voor een Service Bus naam ruimte zijn, niet beperkt tot een specifieke wachtrij of een specifiek onderwerp. |
 |**accessRights**|**Toegang**|Toegangs rechten voor de connection string. Beschik bare waarden zijn `manage` en `listen` . De standaard waarde is `manage` , waarmee wordt aangegeven dat de de `connection` machtiging **beheren** heeft. Als u een connection string gebruikt dat niet de machtiging **beheren** heeft, stelt u `accessRights` in op ' Luis teren '. Anders kan het uitvoeren van de functions-runtime geen bewerkingen uitvoeren waarvoor het beheer van rechten nodig is. In Azure Functions versie 2. x en hoger is deze eigenschap niet beschikbaar omdat de meest recente versie van de Service Bus SDK geen ondersteuning biedt voor het beheren van bewerkingen.|
-|**isSessionsEnabled**|**IsSessionsEnabled**|`true`Als u verbinding maakt met een [sessie bewuste](../service-bus-messaging/message-sessions.md) wachtrij of een abonnement. `false`anders is dit de standaard waarde.|
+|**isSessionsEnabled**|**IsSessionsEnabled**|`true` Als u verbinding maakt met een [sessie bewuste](../service-bus-messaging/message-sessions.md) wachtrij of een abonnement. `false` anders is dit de standaard waarde.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -309,11 +309,11 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 De volgende parameter typen zijn beschikbaar voor het bericht in de wachtrij of het onderwerp:
 
-* `string`-Als het bericht tekst is.
-* `byte[]`-Nuttig voor binaire gegevens.
+* `string` -Als het bericht tekst is.
+* `byte[]` -Nuttig voor binaire gegevens.
 * Een aangepast type: als het bericht JSON bevat, probeert Azure Functions de JSON-gegevens te deserialiseren.
-* `BrokeredMessage`-Geeft u het gegedeserialiseerde bericht met de methode [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-Wordt gebruikt voor het ontvangen en bevestigen van berichten van de bericht container (vereist wanneer [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) is ingesteld op `false` )
+* `BrokeredMessage` -Geeft u het gegedeserialiseerde bericht met de methode [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -Wordt gebruikt voor het ontvangen en bevestigen van berichten van de bericht container (vereist wanneer [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) is ingesteld op `false` )
 
 Deze parameter typen zijn voor Azure Functions versie 1. x; voor 2. x en hoger gebruikt u [`Message`](/dotnet/api/microsoft.azure.servicebus.message) in plaats van `BrokeredMessage` .
 
@@ -321,10 +321,10 @@ Deze parameter typen zijn voor Azure Functions versie 1. x; voor 2. x en hoger g
 
 De volgende parameter typen zijn beschikbaar voor het bericht in de wachtrij of het onderwerp:
 
-* `string`-Als het bericht tekst is.
-* `byte[]`-Nuttig voor binaire gegevens.
+* `string` -Als het bericht tekst is.
+* `byte[]` -Nuttig voor binaire gegevens.
 * Een aangepast type: als het bericht JSON bevat, probeert Azure Functions de JSON-gegevens te deserialiseren.
-* `BrokeredMessage`-Geeft u het gegedeserialiseerde bericht met de methode [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+* `BrokeredMessage` -Geeft u het gegedeserialiseerde bericht met de methode [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
 
 Deze para meters zijn voor Azure Functions versie 1. x; voor 2. x en hoger gebruikt u [`Message`](/dotnet/api/microsoft.azure.servicebus.message) in plaats van `BrokeredMessage` .
 

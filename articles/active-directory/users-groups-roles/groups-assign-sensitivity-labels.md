@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 02/24/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63097ac520f1d49098054d64ceae614036f59df3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59f80b986a9d1a3b2be9aa413ce4175d8eb88bc4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807801"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213835"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory"></a>Gevoeligheids labels toewijzen aan Office 365-groepen in Azure Active Directory
+# <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Gevoeligheids labels toewijzen aan Microsoft 365 groepen in Azure Active Directory
 
-Azure Active Directory (Azure AD) ondersteunt het Toep assen van gevoelige labels die worden gepubliceerd door het [Microsoft 365 compliance Center](https://sip.protection.office.com/homepage) naar Office 365-groepen. Gevoeligheids labels zijn van toepassing op groepen in verschillende services, zoals Outlook, micro soft teams en share point. Deze functie is momenteel beschikbaar in open bare GA. Zie voor meer informatie over de ondersteuning van Office 365-apps [office 365-ondersteuning voor gevoeligheids labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD) ondersteunt het Toep assen van gevoelige labels die door het [Microsoft 365 compliance Center](https://sip.protection.office.com/homepage) worden gepubliceerd om groepen te Microsoft 365. Gevoeligheids labels zijn van toepassing op groepen in verschillende services, zoals Outlook, micro soft teams en share point. Deze functie is momenteel beschikbaar in open bare GA. Zie voor meer informatie over de ondersteuning van Office 365-apps [office 365-ondersteuning voor gevoeligheids labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Als u deze functie wilt configureren, moet er ten minste één actieve Azure Active Directory Premium P1-licentie in uw Azure AD-organisatie zijn.
@@ -85,7 +85,7 @@ De groep wordt gemaakt en de site-en groeps instellingen die zijn gekoppeld aan 
 ## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Een label toewijzen aan een bestaande groep in Azure Portal
 
 1. Meld u aan bij het [beheer centrum van Azure AD](https://aad.portal.azure.com) met een beheerders account voor groepen of als eigenaar van een groep.
-1. Selecteer **groepen**.
+1. Selecteer **Groepen**.
 1. Selecteer op de pagina **alle groepen** de groep die u wilt labelen.
 1. Selecteer op de pagina geselecteerde groep de optie **Eigenschappen** en selecteer een gevoeligheids label in de lijst.
 
@@ -96,10 +96,10 @@ De groep wordt gemaakt en de site-en groeps instellingen die zijn gekoppeld aan 
 ## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Een label verwijderen uit een bestaande groep in Azure Portal
 
 1. Meld u aan bij het [beheer centrum van Azure AD](https://aad.portal.azure.com) met een Administrator account voor globale beheerders of groepen, of als groeps eigenaar.
-1. Selecteer **groepen**.
+1. Selecteer **Groepen**.
 1. Selecteer op de pagina **alle groepen** de groep waarvan u het label wilt verwijderen.
 1. Selecteer op de pagina **groep** **Eigenschappen**.
-1. Selecteer **Verwijderen**.
+1. Selecteer **verwijderen**.
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 
 ## <a name="using-classic-azure-ad-classifications"></a>Klassieke Azure AD-classificaties gebruiken
@@ -114,7 +114,7 @@ De optie gevoeligheids label wordt alleen weer gegeven voor groepen wanneer aan 
 
 1. Labels worden gepubliceerd in het Microsoft 365 compliance Center voor deze Azure AD-organisatie.
 1. De functie is ingeschakeld, EnableMIPLabels is ingesteld op True in Power shell.
-1. De groep is een Office 365-groep.
+1. De groep is een Microsoft 365 groep.
 1. De organisatie heeft een actieve Azure Active Directory Premium P1-licentie.
 1. De huidige aangemelde gebruiker heeft voldoende bevoegdheden om labels toe te wijzen. De gebruiker moet een globale beheerder, groeps beheerder of de groeps eigenaar zijn.
 
@@ -132,7 +132,7 @@ Als het label dat u zoekt, zich niet in de lijst bevindt, kan dit een van de vol
 Labels kunnen op elk gewenst moment worden gewisseld met behulp van dezelfde stappen als wanneer u een label aan een bestaande groep toewijst:
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een globaal of groeps beheerders account of als groeps eigenaar.
-1. Selecteer **groepen**.
+1. Selecteer **Groepen**.
 1. Selecteer op de pagina **alle groepen** de groep die u wilt labelen.
 1. Op de pagina geselecteerde groep selecteert u **Eigenschappen** en selecteert u een nieuw gevoeligheids label in de lijst.
 1. Selecteer **Opslaan**.
@@ -145,7 +145,7 @@ Als u een wijziging wilt aanbrengen, moet u een [Azure AD Power shell-script](ht
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Gevoeligheids labels gebruiken met micro soft teams, Office 365-groepen en share point-sites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [Gevoeligheids labels gebruiken met micro soft-teams, Microsoft 365-groepen en share point-sites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [Groeps beleidsobjecten hand matig bijwerken met Azure AD Power shell-script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
 - [Instellingen van uw groep bewerken](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
 - [Groepen met behulp van PowerShell-opdrachten beheren](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)

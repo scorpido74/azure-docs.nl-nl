@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: e7199b6d54a0150845bfc09c38e002e6cc298ee7
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c7b4cf688d02ebbcb099f116c0eb7b4ebe7c6074
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066726"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212417"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -240,7 +240,7 @@ Als u Azure AD OAuth wilt inschakelen in de ARM-sjabloon voor het implementeren 
 ],
 ```
 
-Zie voor meer informatie over de `accessControl` sectie [binnenkomende IP-bereiken beperken in azure Resource Manager sjabloon](#restrict-inbound-ip-template) en [verwijzing naar sjablonen voor micro soft. Logic-werk stromen](/templates/microsoft.logic/2019-05-01/workflows).
+Zie voor meer informatie over de `accessControl` sectie [binnenkomende IP-bereiken beperken in azure Resource Manager sjabloon](#restrict-inbound-ip-template) en [verwijzing naar sjablonen voor micro soft. Logic-werk stromen](/azure/templates/microsoft.logic/2019-05-01/workflows).
 
 <a name="restrict-inbound-ip"></a>
 
@@ -786,8 +786,8 @@ HTTP-en HTTPS-eind punten ondersteunen verschillende soorten verificatie. Bij so
 
 Deze tabel bevat de verificatie typen die beschikbaar zijn voor de triggers en acties waarbij u een verificatie type kunt selecteren:
 
-| Verificatietype | Beschikbaarheid |
-|---------------------|--------------|
+| Verificatietype | Ondersteunde triggers en acties |
+|---------------------|--------------------------------|
 | [Basic](#basic-authentication) | Azure API Management, Azure-app Services, HTTP, HTTP + Swagger, HTTP-webhook |
 | [Client certificaat](#client-certificate-authentication) | Azure API Management, Azure-app Services, HTTP, HTTP + Swagger, HTTP-webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure-app Services, Azure Functions, HTTP, HTTP + Swagger, HTTP-webhook |
@@ -876,7 +876,7 @@ Op aanvraag triggers kunt u [Azure Active Directory open-verificatie](../active-
 | **Verificatie** | `type` | Ja | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatie type dat moet worden gebruikt. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
 | **Instantie** | `authority` | Nee | <*URL-voor-Authority-token-Uitgever*> | De URL voor de instantie die het verificatie token levert. Deze waarde is standaard ingesteld op `https://login.windows.net` . |
 | **Tenant** | `tenant` | Ja | <*Tenant-ID*> | De Tenant-ID voor de Azure AD-Tenant |
-| **Doelgroep** | `audience` | Ja | <*resource-naar-autoriseren*> | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld`https://management.core.windows.net/` |
+| **Doelgroep** | `audience` | Ja | <*resource-naar-autoriseren*> | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
 | **Client-id** | `clientId` | Ja | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |
 | **Referentie type** | `credentialType` | Ja | Certificaat <br>of <br>Geheim | Het referentie type dat door de client wordt gebruikt voor het aanvragen van autorisatie. Deze eigenschap en waarde worden niet weer gegeven in de onderliggende definitie van de logische app, maar bepaalt de eigenschappen die worden weer gegeven voor het geselecteerde referentie type. |
 | **Gescheiden** | `secret` | Ja, maar alleen voor het referentie type ' geheim ' | <*client-geheim*> | Het client geheim voor het aanvragen van autorisatie |
@@ -952,7 +952,7 @@ Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het 
 
 ### <a name="managed-identity-authentication"></a>Verificatie van beheerde identiteit
 
-Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) beschikbaar is, kan uw logische app gebruikmaken van de door het systeem toegewezen identiteit of een *enkele* hand matig gemaakte door de gebruiker toegewezen identiteit voor het verifiëren van toegang tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) zonder dat u zich hoeft aan te melden. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) beschikbaar is voor een [specifieke trigger of actie](#add-authentication-outbound), kan uw logische app gebruikmaken van de door het systeem toegewezen identiteit of een *enkele* hand matig gemaakte door de gebruiker toegewezen identiteit voor het verifiëren van toegang tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) zonder dat u zich hoeft aan te melden. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 1. Voordat uw logische app een beheerde identiteit kan gebruiken, volgt u de stappen in [toegang tot Azure-resources verifiëren door beheerde identiteiten te gebruiken in azure Logic apps](../logic-apps/create-managed-service-identity.md). Met deze stappen wordt de beheerde identiteit voor uw logische app ingeschakeld en wordt de toegang tot de Azure-doel bron ingesteld.
 

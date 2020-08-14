@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin wordt beschreven hoe u uw project voorbereidt met Azure dev Spaces werkt
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241632"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213418"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Hoe u een project voorbereidt voor Azure dev Spaces werkt
 
@@ -98,17 +98,4 @@ Het `azds.yaml` bestand dat door de `prep` opdracht wordt gegenereerd, is bedoel
 
 Voor meer informatie over het uitvoeren van uw code in uw ontwikkelings ruimte raadpleegt u [hoe u uw code uitvoert met Azure dev Spaces][how-it-works-up].
 
-Raadpleeg de volgende Quick starts om aan de slag te gaan met Azure dev Spaces om uw project voor te bereiden voor Azure-ontwikkel ruimte:
-
-* [Snel herhalen en fouten opsporen met Visual Studio code en Java][quickstart-java]
-* [Snel herhalen en fouten opsporen met Visual Studio code en .NET][quickstart-netcore]
-* [Snel herhalen en fouten opsporen met Visual Studio code en Node.js][quickstart-node]
-* [Snel herhalen en fouten opsporen met Visual Studio en .NET core][quickstart-vs]
-* [De CLI gebruiken om een toepassing te ontwikkelen op Kubernetes][quickstart-cli]
-
 [how-it-works-up]: how-dev-spaces-works-up.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md

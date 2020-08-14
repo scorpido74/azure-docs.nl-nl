@@ -1,6 +1,6 @@
 ---
 title: Selfservice voor groepsbeheer instellen - Azure Active Directory | Microsoft Docs
-description: Beveiligingsgroepen of Office 365-groepen maken en beheren in Azure Active Directory en lidmaatschap van een beveiligingsgroep of Office 365-groep aanvragen
+description: Beveiligings groepen of Microsoft 365 groepen maken en beheren in Azure Active Directory en beveiligings groep of Microsoft 365 groepslid maatschappen aanvragen
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,31 +10,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 03/10/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ce5d96d3ca65efb69bf322cf4a5f5563b83d8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a32874cebcd8335967eaf8a07a56346e8ad6460
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727871"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213630"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Self-service groeps beheer instellen in Azure Active Directory 
 
-U kunt gebruikers in staat stellen hun eigen beveiligings groepen of Office 365-groepen te maken en beheren in Azure Active Directory (Azure AD). De eigenaar van de groep kan lidmaatschaps aanvragen goed keuren of weigeren en kan het beheer van groepslid maatschap overdragen. Self-service groeps beheer functies zijn niet beschikbaar voor beveiligings groepen met e-mail functionaliteit of distributie lijsten.
+U kunt gebruikers in staat stellen om hun eigen beveiligings groepen of Microsoft 365 groepen te maken en te beheren in Azure Active Directory (Azure AD). De eigenaar van de groep kan lidmaatschaps aanvragen goed keuren of weigeren en kan het beheer van groepslid maatschap overdragen. Self-service groeps beheer functies zijn niet beschikbaar voor beveiligings groepen met e-mail functionaliteit of distributie lijsten.
 
 ## <a name="self-service-group-membership-defaults"></a>Standaard waarden voor groepslid maatschap van self-service
 
-Wanneer beveiligings groepen worden gemaakt in de Azure Portal of Azure AD Power shell gebruiken, kunnen alleen de eigen aren van de groep het lidmaatschap bijwerken. Beveiligings groepen die zijn gemaakt met selfservice in het [toegangs venster](https://account.activedirectory.windowsazure.com/r#/joinGroups) en alle Office 365-groepen, kunnen worden toegevoegd aan alle gebruikers, of een door de gebruiker goedgekeurde of automatisch goedgekeurde groep is. In het toegangs venster kunt u de lidmaatschaps opties wijzigen wanneer u de groep maakt.
+Wanneer beveiligings groepen worden gemaakt in de Azure Portal of Azure AD Power shell gebruiken, kunnen alleen de eigen aren van de groep het lidmaatschap bijwerken. Beveiligings groepen die zijn gemaakt door self-service in het [toegangs venster](https://account.activedirectory.windowsazure.com/r#/joinGroups) en alle Microsoft 365 groepen kunnen worden toegevoegd voor alle gebruikers, hetzij door een eigenaar goedgekeurd of automatisch goedgekeurd. In het toegangs venster kunt u de lidmaatschaps opties wijzigen wanneer u de groep maakt.
 
-Groepen die zijn gemaakt in | Standaard gedrag van beveiligings groep | Standaard gedrag van Office 365-groep
+Groepen die zijn gemaakt in | Standaard gedrag van beveiligings groep | Standaard gedrag van Microsoft 365-groep
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Alleen eigen aars kunnen leden toevoegen<br>Zichtbaar, maar niet beschikbaar voor deelname in het toegangs venster | Openen om lid te worden van alle gebruikers
-[Azure-portal](https://portal.azure.com) | Alleen eigen aars kunnen leden toevoegen<br>Zichtbaar, maar niet beschikbaar voor deelname in het toegangs venster<br>De eigenaar wordt niet automatisch toegewezen bij het maken van een groep | Openen om lid te worden van alle gebruikers
-[Toegangs venster](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Openen om lid te worden van alle gebruikers<br>Lidmaatschaps opties kunnen worden gewijzigd wanneer de groep wordt gemaakt | Openen om lid te worden van alle gebruikers<br>Lidmaatschaps opties kunnen worden gewijzigd wanneer de groep wordt gemaakt
+[Azure Portal](https://portal.azure.com) | Alleen eigen aars kunnen leden toevoegen<br>Zichtbaar, maar niet beschikbaar voor deelname in het toegangs venster<br>De eigenaar wordt niet automatisch toegewezen bij het maken van een groep | Openen om lid te worden van alle gebruikers
+[Toegangsvenster](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Openen om lid te worden van alle gebruikers<br>Lidmaatschaps opties kunnen worden gewijzigd wanneer de groep wordt gemaakt | Openen om lid te worden van alle gebruikers<br>Lidmaatschaps opties kunnen worden gewijzigd wanneer de groep wordt gemaakt
 
 ## <a name="self-service-group-management-scenarios"></a>Scenario's voor Self-service voor groeps beheer
 
@@ -47,7 +47,7 @@ Groepen die zijn gemaakt in | Standaard gedrag van beveiligings groep | Standaar
 1. Selecteer **groepen**en selecteer vervolgens **algemene** instellingen.
 1. Stel **eigen aren in het toegangs venster voor het beheren van groepslid maatschappen in** op **Ja**.
 1. Stel **toegang beperken tot groepen in het toegangs venster in** op **Nee**.
-1. Als u instelt dat **gebruikers beveiligings groepen kunnen maken in azure-portals** of **gebruikers kunnen Office 365-groepen maken in azure-portals** tot
+1. Als u instelt dat **gebruikers beveiligings groepen kunnen maken in azure-portals** of **gebruikers kunnen Microsoft 365 groepen maken in azure-portals**
 
     - **Ja**: alle gebruikers in uw Azure AD-organisatie mogen nieuwe beveiligings groepen maken en leden toevoegen aan deze groepen. Deze nieuwe groepen zullen ook verschijnen in het Toegangsvenster voor alle andere gebruikers. Als de beleids instelling voor de groep toestaat, kunnen andere gebruikers aanvragen maken om lid te worden van deze groepen
     - **Nee**: gebruikers kunnen geen groepen maken en kunnen bestaande groepen waarvan ze een eigenaar zijn, niet wijzigen. Ze kunnen echter nog steeds de lidmaatschappen van die groepen beheren en aanvragen van andere gebruikers om lid te worden van hun groep goedkeuren.
@@ -57,7 +57,7 @@ U kunt ook **eigen aren gebruiken die leden kunnen toewijzen als groeps eigenare
 Wanneer gebruikers groepen kunnen maken, mogen alle gebruikers in uw organisatie nieuwe groepen maken en kunnen ze als standaard eigenaar leden toevoegen aan deze groepen. U kunt geen personen opgeven die hun eigen groepen kunnen maken. U kunt alleen individuen opgeven om een groeps eigenaar te maken van een andere groep.
 
 > [!NOTE]
-> Een Azure Active Directory Premium-licentie (P1 of P2) is vereist voor gebruikers die zich willen aanmelden om lid te worden van een beveiligings groep of Office 365-groep en voor eigen aars om lidmaatschaps aanvragen goed te keuren of te weigeren. Zonder een Azure Active Directory Premium licentie kunnen gebruikers nog steeds hun groepen beheren in het toegangs paneel, maar ze kunnen geen groep maken waarvoor eigenaars goed keuring is vereist in het toegangs venster en ze kunnen niet aanvragen om lid te worden van een groep. 
+> Een Azure Active Directory Premium-licentie (P1 of P2) is vereist voor gebruikers om deel te nemen aan een beveiligings groep of Microsoft 365 groep en voor eigen aars om lidmaatschaps aanvragen goed te keuren of te weigeren. Zonder een Azure Active Directory Premium licentie kunnen gebruikers nog steeds hun groepen beheren in het toegangs paneel, maar ze kunnen geen groep maken waarvoor eigenaars goed keuring is vereist in het toegangs venster en ze kunnen niet aanvragen om lid te worden van een groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschrijft de processen voor externe fout opsporing op de Azure Kubernetes-service met Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: a9f303ea6f954285a319be137a594f7ce127f740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241398"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213386"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Hoe kan ik de code op afstand opsporen met Azure dev Spaces?
 
@@ -30,15 +30,7 @@ De afbeelding van het fout opsporingsprogramma wordt automatisch bepaald door he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende Snelstartgids om aan de slag te gaan met Azure dev Spaces voor het op afstand opsporen van fouten in uw project:
+Meer informatie over de werking van Azure dev Spaces.
 
-* [Snel herhalen en fouten opsporen met Visual Studio code en Java][quickstart-java]
-* [Snel herhalen en fouten opsporen met Visual Studio code en .NET][quickstart-netcore]
-* [Snel herhalen en fouten opsporen met Visual Studio code en Node.js][quickstart-node]
-* [Snel herhalen en fouten opsporen met Visual Studio en .NET core][quickstart-vs]
-
-
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
+> [!div class="nextstepaction"]
+> [Hoe Azure Dev Spaces werkt](how-dev-spaces-works.md)

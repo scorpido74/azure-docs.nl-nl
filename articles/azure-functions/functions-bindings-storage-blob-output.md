@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: d089cb1844356032b956110a7475d839031ef006
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 9596e6a6fd32994f782125c9bd4b8ca6d5a94b03
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849825"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213066"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Blob Storage-uitvoer binding voor Azure Functions
 
@@ -379,8 +379,8 @@ In Java script opent u de BLOB-gegevens met behulp van `context.bindings.<name f
 
 U kunt functie parameters declareren als de volgende typen om naar Blob Storage te schrijven:
 
-* Teken reeksen als`func.Out(str)`
-* Stromen als`func.Out(func.InputStream)`
+* Teken reeksen als `func.Out(str)`
+* Stromen als `func.Out(func.InputStream)`
 
 Raadpleeg het [uitvoer voorbeeld](#example) voor meer informatie.
 
@@ -392,7 +392,7 @@ Raadpleeg het [uitvoer voorbeeld](#example) voor meer informatie.
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding |  Naslaginformatie |
+| Binding |  Verwijzing |
 |---|---|
 | Blob | [BLOB-fout codes](/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | BLOB, tabel, wachtrij |  [Opslag fout codes](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

@@ -8,16 +8,20 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557450"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214085"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Een vakkennisset maken in een AI-pijp lijn in azure Cognitive Search 
 
-AI-verrijking extraheert en verrijkt gegevens om deze doorzoekbaar te maken in azure Cognitive Search. De stappen voor het ophalen en verrijken van informatie worden geadviseerd, gecombineerd tot een *vaardig* *heden waarnaar*wordt verwezen tijdens het indexeren. Een vaardig heden kan [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) of aangepaste vaardig heden gebruiken (Zie [bijvoorbeeld: een aangepaste vaardigheid maken in een AI-verrijkings pijplijn](cognitive-search-create-custom-skill-example.md) voor meer informatie).
+![indexerings fasen](media/cognitive-search-defining-skillset/indexer-stages-skillset.png "indexerings fasen")
+
+Een vaardig heden definieert de bewerkingen die gegevens uitpakken en verrijken om deze doorzoekbaar te maken. Een vaardig heden wordt uitgevoerd nadat tekst-en afbeeldings inhoud zijn geëxtraheerd uit bron documenten en nadat alle velden uit het bron document (optioneel) zijn toegewezen aan doel velden in een index of kennis opslag.
+
+Een kwalificatieset bevat een of meer *cognitieve vaardig heden* die een specifieke verrijkings bewerking vertegenwoordigen, zoals het vertalen van tekst, het extra heren van sleutel zinnen of het uitvoeren van optische teken herkenning vanuit een afbeeldings bestand. Als u een vaardig heden wilt maken, kunt u gebruikmaken van [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) van micro soft, of aangepaste vaardig heden die modellen of verwerkings logica bevatten (Zie [voor beeld: een aangepaste vaardigheid maken in een AI-verrijkings pijplijn](cognitive-search-create-custom-skill-example.md) voor meer informatie).
 
 In dit artikel leert u hoe u een verrijkings pijplijn kunt maken voor de vaardig heden die u wilt gebruiken. Een vakkennisset is gekoppeld aan een Azure Cognitive Search [indexer](search-indexer-overview.md). Een deel van het pijplijn ontwerp, dat in dit artikel wordt besproken, is de vaardig heden zelf maken. 
 
@@ -36,7 +40,7 @@ Een aanbevolen eerste stap is te bepalen welke gegevens moeten worden opgehaald 
 
 Stel dat u een set van financiële adviezen wilt verwerken. Voor elk bestand wilt u bedrijfs namen ophalen en de algemene sentiment van de opmerkingen. U kunt ook een aangepaste verrijker schrijven die gebruikmaakt van de Bing Entity Search-service om aanvullende informatie over het bedrijf te vinden, zoals het soort bedrijf waar het bedrijf mee wordt betrokken. In wezen wilt u informatie ophalen zoals de volgende, geïndexeerd voor elk document:
 
-| record-tekst | bedrijven | sentiment | bedrijfs beschrijvingen |
+| record-tekst | bedrijven | gevoel | bedrijfs beschrijvingen |
 |--------|-----|-----|-----|
 |voor beeld-record| ["Micro soft", "LinkedIn"] | 0.99 | ["Micro soft Corporation is een American Multi National Technology Company...", "LinkedIn is een zakelijk en werkend, arbeids gericht sociaal netwerk..."]
 
@@ -177,7 +181,7 @@ Laten we eens kijken naar de eerste vaardigheid, de ingebouwde [vaardigheid voor
   ["Microsoft", "LinkedIn"]
   ```
 
-In sommige situaties wordt een aanroep voor elk element van een matrix afzonderlijk bepaald. Stel bijvoorbeeld dat u elk element van afzonderlijk wilt door geven ```"/document/organizations"``` aan een andere vaardigheid (zoals de aangepaste Bing-entiteit Zoek verrijker). U kunt naar elk element van de matrix verwijzen door een asterisk toe te voegen aan het pad:```"/document/organizations/*"``` 
+In sommige situaties wordt een aanroep voor elk element van een matrix afzonderlijk bepaald. Stel bijvoorbeeld dat u elk element van afzonderlijk wilt door geven ```"/document/organizations"``` aan een andere vaardigheid (zoals de aangepaste Bing-entiteit Zoek verrijker). U kunt naar elk element van de matrix verwijzen door een asterisk toe te voegen aan het pad: ```"/document/organizations/*"``` 
 
 De tweede vaardigheid voor sentiment extractie volgt hetzelfde patroon als de eerste verrijker. Het duurt ```"/document/content"``` als invoer en retourneert een sentiment-score voor elk inhouds exemplaar. Omdat u het veld niet expliciet hebt ingesteld ```"context"``` , is de uitvoer (mySentiment) nu een onderliggend element van ```"/document"``` .
 

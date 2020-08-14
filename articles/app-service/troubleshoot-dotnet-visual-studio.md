@@ -5,13 +5,13 @@ ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.custom: seodec18
-ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 1ed7a6ebea12e5db37ec89c73db105dd7ce7e2ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079804"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211988"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problemen met een app in Azure App Service oplossen met Visual Studio
 ## <a name="overview"></a>Overzicht
@@ -165,7 +165,7 @@ In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project da
 
      ![Pagina over een nieuwe waarde](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a>Webjobs voor fout opsporing op afstand
+## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a> Webjobs voor fout opsporing op afstand
 In deze sectie wordt uitgelegd hoe u op afstand fouten oplost met het project en de app die u maakt in aan [de slag met de Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
 De functies die in deze sectie worden weer gegeven, zijn alleen beschikbaar in Visual Studio 2013 met update 4 of hoger.
@@ -556,7 +556,7 @@ Logboeken voor tracering van mislukte aanvragen zijn handig als u meer informati
 
 App Service-apps gebruiken dezelfde functionaliteit voor tracering van mislukte aanvragen die beschikbaar is in IIS 7,0 en hoger. U hebt geen toegang tot de IIS-instellingen die bepalen welke fouten worden vastgelegd. Wanneer u tracering van mislukte aanvragen inschakelt, worden alle fouten vastgelegd.
 
-U kunt het traceren van mislukte aanvragen inschakelen met behulp van Visual Studio, maar dit kan niet worden weer gegeven in Visual Studio. Deze logboeken zijn XML-bestanden. De streaming-logboek Service bewaakt alleen bestanden die als leesbaar worden beschouwd in de modus voor tekst zonder opmaak: *. txt*, *. html*en *. log* -bestanden.
+U kunt het traceren van mislukte aanvragen inschakelen met behulp van Visual Studio, maar dit kan niet worden weer gegeven in Visual Studio. Deze logboeken zijn XML-bestanden. De streaming-logboek Service bewaakt alleen bestanden die als leesbaar worden beschouwd in de modus voor tekst zonder opmaak:  *. txt*, *. html*en *. log* -bestanden.
 
 U kunt Logboeken voor tracering van mislukte aanvragen bekijken in een browser rechtstreeks via FTP of lokaal nadat u een FTP-programma hebt gebruikt om ze te downloaden naar uw lokale computer. In deze sectie bekijkt u deze rechtstreeks in een browser.
 

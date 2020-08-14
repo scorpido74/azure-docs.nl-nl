@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316078"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213298"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-sessiestatusprovider voor Azure Cache voor Redis
 
@@ -92,7 +93,7 @@ Configureer de kenmerken met de waarden van uw cache-Blade in de Microsoft Azure
 * **ApplicationName** : sleutels worden opgeslagen in redis als `{<Application Name>_<Session ID>}_Data` . Met dit naamgevings schema kunnen meerdere toepassingen hetzelfde redis-exemplaar delen. Deze para meter is optioneel en als u deze niet opgeeft, wordt de standaard waarde gebruikt.
 * **connectionTimeoutInMilliseconds** : met deze instelling kunt u de instelling voor connectTimeout in de stack Exchange. redis-client onderdrukken. Als deze niet is opgegeven, wordt de standaard instelling voor connectTimeout van 5000 gebruikt. Zie het [configuratie model stack Exchange. redis](https://go.microsoft.com/fwlink/?LinkId=398705)voor meer informatie.
 * **operationTimeoutInMilliseconds** : met deze instelling kunt u de instelling voor syncTimeout in de stack Exchange. redis-client onderdrukken. Als deze niet is opgegeven, wordt de standaard instelling voor syncTimeout van 1000 gebruikt. Zie het [configuratie model stack Exchange. redis](https://go.microsoft.com/fwlink/?LinkId=398705)voor meer informatie.
-* **redisSerializerType** : met deze instelling kunt u aangepaste serialisatie van sessie-inhoud opgeven die wordt verzonden naar redis. Het opgegeven type moet een `Microsoft.Web.Redis.ISerializer` open bare constructor zonder para meters implementeren en moet declareren. Wordt standaard `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` gebruikt.
+* **redisSerializerType** : met deze instelling kunt u aangepaste serialisatie van sessie-inhoud opgeven die wordt verzonden naar redis. Het opgegeven type moet een `Microsoft.Web.Redis.ISerializer` open bare constructor zonder para meters implementeren en moet declareren. Wordt standaard  `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` gebruikt.
 
 Zie voor meer informatie over deze eigenschappen de oorspronkelijke blog post-aankondiging bij het [aankondigen van de ASP.net-sessie status provider voor redis](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/).
 

@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-python
-ms.openlocfilehash: a33a739014b33303389b4f880da3687db852633e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850267"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211890"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -137,7 +137,7 @@ U kunt een bron van `Microsoft.Web/sites` het type maken met een identiteit door
 ```
 
 > [!NOTE]
-> Een toepassing kan gelijktijdig een door het systeem toegewezen en door de gebruiker toegewezen identiteiten hebben. In dit geval is de `type` eigenschap`SystemAssigned,UserAssigned`
+> Een toepassing kan gelijktijdig een door het systeem toegewezen en door de gebruiker toegewezen identiteiten hebben. In dit geval is de `type` eigenschap `SystemAssigned,UserAssigned`
 
 Door het door het systeem toegewezen type toe te voegen, vertelt Azure om de identiteit voor uw toepassing te maken en te beheren.
 
@@ -253,7 +253,7 @@ U kunt een bron van `Microsoft.Web/sites` het type maken met een identiteit door
 ```
 
 > [!NOTE]
-> Een toepassing kan gelijktijdig een door het systeem toegewezen en door de gebruiker toegewezen identiteiten hebben. In dit geval is de `type` eigenschap`SystemAssigned,UserAssigned`
+> Een toepassing kan gelijktijdig een door het systeem toegewezen en door de gebruiker toegewezen identiteiten hebben. In dit geval is de `type` eigenschap `SystemAssigned,UserAssigned`
 
 Als u het door de gebruiker toegewezen type toevoegt, krijgt Azure de door de gebruiker toegewezen identiteit te gebruiken die voor uw toepassing is opgegeven.
 
@@ -330,7 +330,7 @@ De **IDENTITY_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvrag
 > | api-versie       | Query’s uitvoeren  | De versie van de token-API die moet worden gebruikt. Gebruik ' 2019-08-01 ' of hoger (tenzij u Linux-verbruik gebruikt, dat momenteel alleen ' 2017-09-01 ' biedt).                                                                                                                                                                                                                                                                 |
 > | X-IDENTITEIT-HEADER | Koptekst | De waarde van de omgevings variabele IDENTITY_HEADER. Deze header wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen.                                                                                                                                                                                                    |
 > | client_id         | Query’s uitvoeren  | Beschrijving De client-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Kan niet worden gebruikt voor een aanvraag met `principal_id` , `mi_res_id` of `object_id` . Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt.                                             |
-> | principal_id      | Query’s uitvoeren  | Beschrijving De principal-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. `object_id`is een alias die in plaats daarvan kan worden gebruikt. Kan niet worden gebruikt voor een aanvraag die client_id, mi_res_id of object_id bevat. Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt. |
+> | principal_id      | Query’s uitvoeren  | Beschrijving De principal-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. `object_id` is een alias die in plaats daarvan kan worden gebruikt. Kan niet worden gebruikt voor een aanvraag die client_id, mi_res_id of object_id bevat. Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt. |
 > | mi_res_id         | Query’s uitvoeren  | Beschrijving De Azure-Resource-ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Kan niet worden gebruikt voor een aanvraag met `principal_id` , `client_id` of `object_id` . Als alle id-para meters ( `client_id` ,, `principal_id` `object_id` en `mi_res_id` ) worden wegge laten, wordt de door het systeem toegewezen identiteit gebruikt.                                      |
 
 > [!IMPORTANT]

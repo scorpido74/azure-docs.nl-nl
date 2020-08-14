@@ -2,15 +2,16 @@
 title: ASP.NET Core-Apps configureren
 description: Meer informatie over het configureren van een ASP.NET Core-app in de systeem eigen Windows-exemplaren of in een vooraf ontwikkelde Linux-container in Azure App Service. In dit artikel worden de meest algemene configuratietaken beschreven.
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 77bff369e2af09921a2065a031166c017128f008
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d6e85bad7705647164fb1010f6c782729e20596b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080161"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211925"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Een ASP.NET Core-app configureren voor Azure App Service
 
@@ -80,7 +81,7 @@ Als u uw app wilt implementeren met behulp van Git of zip-pakketten waarbij bouw
 1. Voer uit `dotnet publish` om een binair bestand te maken voor productie.
 1. Voer aangepast script uit als dit is opgegeven door `POST_BUILD_SCRIPT_PATH`.
 
-`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Als u vooraf gebouwde opdrachten wilt uitvoeren, definieert u `PRE_BUILD_COMMAND`. Als u achteraf gebouwde opdrachten wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
+`PRE_BUILD_COMMAND` en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Als u vooraf gebouwde opdrachten wilt uitvoeren, definieert u `PRE_BUILD_COMMAND`. Als u achteraf gebouwde opdrachten wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
 
 In het volgende voorbeeld worden de twee variabelen voor een reeks opdrachten opgegeven, gescheiden door komma's.
 
@@ -124,7 +125,7 @@ namespace SomeNamespace
 }
 ```
 
-Als u een app-instelling met dezelfde naam in App Service configureert en in *appsettings.jsop*bijvoorbeeld de app service-waarde heeft voor rang *op deappsettings.js* waarde. Met de lokale *appsettings.jsop* waarde kunt u de app lokaal fouten opsporen, maar met de app service waarde kunt u de app uitvoeren in het product met productie-instellingen. Verbindings reeksen werken op dezelfde manier. Op deze manier kunt u uw toepassings geheimen buiten uw code opslagplaats houden en toegang krijgen tot de juiste waarden zonder uw code te wijzigen.
+Als u een app-instelling met dezelfde naam in App Service configureert en in *appsettings.jsop*bijvoorbeeld de app service-waarde heeft voor rang * op deappsettings.js* waarde. Met de lokale *appsettings.jsop* waarde kunt u de app lokaal fouten opsporen, maar met de app service waarde kunt u de app uitvoeren in het product met productie-instellingen. Verbindings reeksen werken op dezelfde manier. Op deze manier kunt u uw toepassings geheimen buiten uw code opslagplaats houden en toegang krijgen tot de juiste waarden zonder uw code te wijzigen.
 
 > [!NOTE]
 > Houd rekening met de [hiërarchische configuratie gegevens](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) in *appsettings.jsop* wordt geopend met behulp `:` van het scheidings teken dat standaard is voor .net core. Als u een specifieke hiërarchische configuratie-instelling in App Service wilt overschrijven, stelt u de naam van de app-instelling in op dezelfde gescheiden indeling in de sleutel. u kunt het volgende voor beeld uitvoeren in de [Cloud shell](https://shell.azure.com):

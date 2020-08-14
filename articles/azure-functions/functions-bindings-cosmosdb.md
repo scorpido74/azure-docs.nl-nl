@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
-ms.custom: seodec18
-ms.openlocfilehash: 37c98ca2fbffddd064b55192e9b5d83c948d88e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 8ae7613eea4b952c079be90b05e615087ea80a32
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041970"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214151"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB bindingen voor Azure Functions 1. x
 
@@ -182,7 +182,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `cosmosDBTrigger` . |
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze para meter wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
-|**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de lijst met documenten met wijzigingen vertegenwoordigt. |
+|**name** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de lijst met documenten met wijzigingen vertegenwoordigt. |
 |**connectionStringSetting**|**ConnectionStringSetting** | De naam van een app-instelling die de connection string bevat die wordt gebruikt om verbinding te maken met het Azure Cosmos DB account dat wordt bewaakt. |
 |**databaseName**|**DatabaseName**  | De naam van de Azure Cosmos DB-Data Base met de verzameling die wordt bewaakt. |
 |**collectionName** |**NaamVerzameling** | De naam van de verzameling die wordt bewaakt. |
@@ -1117,7 +1117,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type**     | N.v.t. | Moet worden ingesteld op `documentdb` .        |
 |**direction**     | N.v.t. | Moet worden ingesteld op `in` .         |
-|**naam**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
+|**name**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** |**DatabaseName** |De data base met het document.        |
 |**collectionName** |**NaamVerzameling** | De naam van de verzameling die het document bevat. |
 |**id**    | **Id** | De ID van het document dat moet worden opgehaald. Deze eigenschap ondersteunt [bindings expressies](./functions-bindings-expressions-patterns.md). Stel de eigenschappen **id** en **sqlQuery** niet in. Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald. |
@@ -1152,7 +1152,7 @@ Met de Azure Cosmos DB uitvoer binding kunt u een nieuw document naar een Azure 
 Deze sectie bevat de volgende voor beelden:
 
 * Wachtrij trigger, een document schrijven
-* Wachtrij trigger, documenten schrijven met`IAsyncCollector`
+* Wachtrij trigger, documenten schrijven met `IAsyncCollector`
 
 De voor beelden verwijzen naar een eenvoudig `ToDoItem` type:
 
@@ -1238,7 +1238,7 @@ namespace CosmosDBSamplesV1
 Deze sectie bevat de volgende voor beelden:
 
 * Wachtrij trigger, een document schrijven
-* Wachtrij trigger, documenten schrijven met`IAsyncCollector`
+* Wachtrij trigger, documenten schrijven met `IAsyncCollector`
 
 ### <a name="queue-trigger-write-one-doc"></a>Wachtrij trigger, een document schrijven
 
@@ -1456,7 +1456,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type**     | N.v.t. | Moet worden ingesteld op `documentdb` .        |
 |**direction**     | N.v.t. | Moet worden ingesteld op `out` .         |
-|**naam**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
+|**name**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** | **DatabaseName**|De data base met de verzameling waarin het document is gemaakt.     |
 |**collectionName** |**NaamVerzameling**  | De naam van de verzameling waar het document wordt gemaakt. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Een Booleaanse waarde die aangeeft of de verzameling wordt gemaakt wanneer deze niet bestaat. De standaard waarde is *False* omdat nieuwe verzamelingen worden gemaakt met gereserveerde door Voer, wat gevolgen heeft voor de kosten. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/documentdb/) voor meer informatie.  |

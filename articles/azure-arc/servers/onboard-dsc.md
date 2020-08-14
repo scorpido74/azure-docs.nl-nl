@@ -1,18 +1,18 @@
 ---
 title: Aangesloten machine agent installeren met behulp van Windows Power shell DSC
-description: In dit artikel leert u hoe u met behulp van Windows Power shell DSC computers kunt verbinden met Azure met behulp van Azure Arc voor servers (preview).
+description: In dit artikel leert u hoe u met behulp van Windows Power shell DSC computers kunt verbinden met Azure met behulp van Azure Arc-servers (preview).
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdda3e6681d3e6912d031c45f5c6da9e92814e8f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120997"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213089"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>De verbonden machine agent installeren met behulp van Windows Power shell DSC
 
-Met [Windows Power shell desired state Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) kunt u software-installatie en-configuratie voor een Windows-computer automatiseren. In dit artikel wordt beschreven hoe u DSC kunt gebruiken om de Azure-Arc te installeren voor servers aangesloten machine agent op hybride Windows-computers.
+Met [Windows Power shell desired state Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) kunt u software-installatie en-configuratie voor een Windows-computer automatiseren. In dit artikel wordt beschreven hoe u DSC kunt gebruiken voor het installeren van de met Azure Arc ingeschakelde computer agent (preview) op hybride Windows-computers.
 
 ## <a name="requirements"></a>Vereisten
 
@@ -20,7 +20,7 @@ Met [Windows Power shell desired state Configuration](/powershell/scripting/dsc/
 
 - De DSC-module [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0)
 
-- Een Service-Principal om de computers te verbinden met Azure Arc voor servers die niet interactief zijn. Volg de stappen in de sectie [een service-principal voor onboarding op schaal maken](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) als u nog geen service-principal voor de Arc voor servers hebt gemaakt.
+- Een Service-Principal om de computers te koppelen aan Azure Arc-servers (preview) die niet interactief zijn. Volg de stappen in de sectie [een service-principal voor onboarding op schaal maken](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) als u al een Service-Principal hebt gemaakt voor het gebruik van Arc ingeschakelde servers (preview).
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>De ConnectedMachine DSC-module installeren
 
@@ -76,7 +76,7 @@ Hieronder vindt u de para meters die u aan het Power shell-script geeft.
 
 3. Hiermee maakt u een `localhost.mof file` in een nieuwe map met de naam `C:\dsc` .
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ## <a name="adding-to-existing-configurations"></a>Toevoegen aan bestaande configuraties
 

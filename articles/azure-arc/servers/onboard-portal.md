@@ -1,19 +1,19 @@
 ---
 title: Verbinding maken tussen hybride computers en Azure via de Azure Portal
-description: In dit artikel leert u hoe u de Agent installeert en computers verbindt met Azure met behulp van Azure Arc voor servers (preview) van de Azure Portal.
+description: In dit artikel leert u hoe u de agent kunt installeren en computers kunt verbinden met Azure met behulp van Azure Arc-servers (preview) van de Azure Portal.
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120980"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213514"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
-U kunt Azure Arc voor servers (preview) inschakelen voor een of meer Windows-of Linux-computers in uw omgeving door een reeks stappen hand matig uit te voeren. U kunt ook een geautomatiseerde methode gebruiken door een sjabloon script uit te voeren dat wij bieden. Met dit script wordt het downloaden en installeren van beide agents geautomatiseerd.
+U kunt Azure Arc-servers (preview) inschakelen voor een of meer Windows-of Linux-computers in uw omgeving door een reeks stappen hand matig uit te voeren. U kunt ook een geautomatiseerde methode gebruiken door een sjabloon script uit te voeren dat wij bieden. Met dit script wordt het downloaden en installeren van beide agents geautomatiseerd.
 
 Voor deze methode moet u beheerders rechten op de computer hebben om de agent te installeren en configureren. Op Linux, met behulp van het hoofd account en in Windows, bent u lid van de lokale groep Administrators.
 
@@ -34,7 +34,7 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
 1. Selecteer op de pagina **script genereren** het abonnement en de resource groep waar u de machine in azure wilt beheren. Selecteer een Azure-locatie waar de meta gegevens van de computer worden opgeslagen.
 
     >[!NOTE]
-    >Azure-Arc voor servers (preview) ondersteunt alleen de volgende regio's:
+    >Servers met Azure-Arc (preview) ondersteunen alleen de volgende regio's:
     >- EastUS
     >- WestUS2
     >- West-Europa
@@ -147,7 +147,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met servers met Azure-Arc (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Een geslaagde server verbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

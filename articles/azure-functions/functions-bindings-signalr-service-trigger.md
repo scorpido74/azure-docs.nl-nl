@@ -3,14 +3,15 @@ title: Binding van Azure Functions signalerings service activeren
 description: Meer informatie over het verzenden van signaal service berichten van Azure Functions.
 author: chenyl
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540227"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212589"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Binding van de signaal service-trigger voor Azure Functions
 
@@ -53,7 +54,7 @@ public static async Task Run([SignalRTrigger("SignalRTest", "messages", "SendMes
 }
 ```
 
-#### <a name="use-attribute-signalrparameter-to-simplify-parameternames"></a>Kenmerk gebruiken `[SignalRParameter]` om te vereenvoudigen`ParameterNames`
+#### <a name="use-attribute-signalrparameter-to-simplify-parameternames"></a>Kenmerk gebruiken `[SignalRParameter]` om te vereenvoudigen `ParameterNames`
 
 Omdat het lastig is om te gebruiken `ParameterNames` , `SignalRParameter` wordt het gebruik van hetzelfde doel gerealiseerd.
 
@@ -162,7 +163,7 @@ def main(invocation) -> None:
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
@@ -172,7 +173,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |---------|---------|----------------------|
 |**type**| N.v.t. | Moet worden ingesteld op `SignalRTrigger` .|
 |**direction**| N.v.t. | Moet worden ingesteld op `in` .|
-|**naam**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het aanroep context object voor de trigger. |
+|**name**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het aanroep context object voor de trigger. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub voor de functie die moet worden geactiveerd.|
 |**category**|**Categorie**| Deze waarde moet worden ingesteld als de berichten categorie voor de functie die moet worden geactiveerd. De categorie kan een van de volgende waarden hebben: <ul><li>**verbindingen**: inclusief *verbonden* en *verbroken* gebeurtenissen</li><li>**berichten**: inclusief alle andere gebeurtenissen behalve die in de categorie *verbindingen*</li></ul> |
 |**gebeurtenislog**|**Gebeurtenis**| Deze waarde moet worden ingesteld als gebeurtenis van berichten voor de functie die moeten worden geactiveerd. Voor *bericht* categorie is gebeurtenis het *doel* in het [aanroep bericht](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) dat clients verzenden. Voor de categorie *verbindingen* wordt alleen *verbinding* gemaakt met en de *verbinding is verbroken* . |
@@ -196,7 +197,7 @@ InvocationContext bevat alle inhoud in het bericht verzenden van de signalerings
 |Gebeurtenis| De gebeurtenis van het bericht.|
 |ConnectionId| De verbindings-ID van de client die het bericht verzendt.|
 |UserId| De gebruikers-id van de client die het bericht verzendt.|
-|Kopteksten| De headers van de aanvraag.|
+|Headers| De headers van de aanvraag.|
 |Query’s uitvoeren| De query van de aanvraag wanneer clients verbinding maken met de service.|
 |Claims| De claims van de client.|
 
@@ -216,7 +217,7 @@ U hebt toegang tot deze twee argumenten vanuit para meter en u kunt ook het type
 
 Voor de para meter binding is de volg orde van belang. Als u gebruikt `ParameterNames` , wordt de volg orde in `ParameterNames` overeenkomen met de volg orde van de argumenten die u aanroept in de client. Als u kenmerk `[SignalRParameter]` in C# gebruikt, komt de volg orde van de argumenten in functie methoden van Azure overeen met de volg orde van de argumenten in clients.
 
-`ParameterNames`en het kenmerk `[SignalRParameter]` **kan niet** tegelijkertijd worden gebruikt, of u krijgt een uitzonde ring.
+`ParameterNames` en het kenmerk `[SignalRParameter]` **kan niet** tegelijkertijd worden gebruikt, of u krijgt een uitzonde ring.
 
 ## <a name="send-messages-to-signalr-service-trigger-binding"></a>Berichten verzenden naar de trigger binding van de signaal service
 

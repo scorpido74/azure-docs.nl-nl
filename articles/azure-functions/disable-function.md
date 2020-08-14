@@ -3,13 +3,13 @@ title: Functies in Azure Functions uitschakelen
 description: Meer informatie over het uitschakelen en inschakelen van functies in Azure Functions.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 47fbd446937ea0cfd981cef2d5cdd4759f2583d4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497695"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213144"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Functies in Azure Functions uitschakelen
 
@@ -46,6 +46,21 @@ U kunt ook de knoppen **inschakelen** en **uitschakelen** op de **overzichts** p
 
 > [!NOTE]  
 > De door de portal geïntegreerde test functionaliteit negeert de `Disabled` instelling. Dit betekent dat een uitgeschakelde functie nog steeds wordt uitgevoerd wanneer deze wordt gestart vanuit het **test** venster in de portal. 
+
+## <a name="localsettingsjson"></a>local.settings.json
+
+Functies kunnen op dezelfde manier worden uitgeschakeld wanneer lokaal wordt uitgevoerd. Als u een functie met de naam wilt uitschakelen `HttpExample` , voegt u een vermelding toe aan de verzameling waarden in het local.settings.jsbestand. dit doet u als volgt:
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true", 
+    "AzureWebJobs.HttpExample.Disabled": "true"
+  }
+}
+``` 
 
 ## <a name="other-methods"></a>Andere methoden
 

@@ -3,14 +3,15 @@ title: Azure Functions SendGrid-bindingen
 description: Azure Functions SendGrid-bindings verwijzing.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32734ff9df2e55d24789742cd49984d8da212a17
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697354"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212184"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid-bindingen
 
@@ -352,18 +353,18 @@ Met de aantekening [SendGridOutput](https://github.com/Azure/azure-functions-jav
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel geeft een lijst van de bindings configuratie-eigenschappen die beschikbaar zijn in de *function.jsin* het bestand en het `SendGrid` kenmerk/aantekening.
+De volgende tabel geeft een lijst van de bindings configuratie-eigenschappen die beschikbaar zijn in de  *function.jsin* het bestand en het `SendGrid` kenmerk/aantekening.
 
-| *function.jsbij* eigenschap | Kenmerk/annotatie-eigenschap | Description | Optioneel |
+| *function.jsbij* eigenschap | Kenmerk/annotatie-eigenschap | Beschrijving | Optioneel |
 |--------------------------|-------------------------------|-------------|----------|
-| type |N.v.t.| Moet worden ingesteld op `sendGrid` .| No |
-| richting |N.v.t.| Moet worden ingesteld op `out` .| No |
-| naam |N.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` wanneer er slechts één retour waarde is. | No |
-| apiKey | ApiKey | De naam van een app-instelling die uw API-sleutel bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling *AzureWebJobsSendGridApiKey*.| No |
-| tot| Handeling | Het e-mail adres van de ontvanger. | Yes |
-| from| Van | Het e-mail adres van de afzender. |  Yes |
-| Onderwerp| Onderwerp | Het onderwerp van het e-mail bericht. | Yes |
-| tekst| Tekst | De inhoud van het e-mail bericht. | Yes |
+| type |N.v.t.| Moet worden ingesteld op `sendGrid` .| Nee |
+| richting |N.v.t.| Moet worden ingesteld op `out` .| Nee |
+| naam |N.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` wanneer er slechts één retour waarde is. | Nee |
+| apiKey | ApiKey | De naam van een app-instelling die uw API-sleutel bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling *AzureWebJobsSendGridApiKey*.| Nee |
+| in| Tot | Het e-mail adres van de ontvanger. | Ja |
+| from| Van | Het e-mail adres van de afzender. |  Ja |
+| Onderwerp| Onderwerp | Het onderwerp van het e-mail bericht. | Ja |
+| tekst| Tekst | De inhoud van het e-mail bericht. | Ja |
 
 Voor optionele eigenschappen zijn mogelijk standaard waarden in de binding gedefinieerd en worden ze programmatisch toegevoegd of genegeerd.
 
@@ -389,7 +390,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 }
 ```  
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |from|N.v.t.|Het e-mail adres van de afzender over alle functies.| 
 

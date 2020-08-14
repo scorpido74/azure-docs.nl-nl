@@ -3,15 +3,16 @@ title: Aan de slag met de webjobs SDK
 description: Inleiding tot de webjobs SDK voor gebeurtenis gerichte achtergrond verwerking. Meer informatie over toegang tot gegevens in Azure-Services en services van derden.
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a3b3e52b8386f212521f0fa1ca97cbd658374209
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 08cf736e533486b765f3b1a1173fcfe06c03306f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078305"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212854"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Aan de slag met de Azure WebJobs SDK voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -139,7 +140,7 @@ U kunt nu een functie toevoegen die wordt geactiveerd door berichten die in een 
 
 Vanaf versie 3. x moet u de opslag bindings extensie expliciet installeren die is vereist voor de webjobs SDK. In eerdere versies zijn de opslag bindingen opgenomen in de SDK.
 
-1. Installeer de nieuwste stabiele versie van het pakket [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet, versie 3. x. 
+1. Installeer de nieuwste stabiele versie van het pakket  [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet, versie 3. x. 
 
     Hier volgt de opdracht **Package Manager console** :
 
@@ -326,13 +327,13 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
 1. Voeg in het vak **verbindings reeksen** de volgende vermelding toe.
 
-   |Naam  |verbindings reeks  |Database type|
+   |Name  |verbindings reeks  |Database type|
    |---------|---------|------|
    |AzureWebJobsStorage | {de opslag connection string die u eerder hebt gekopieerd}|Aangepast telefoonnummer|
 
 1. Als het vak **Toepassings instellingen** geen Application Insights instrumentatie sleutel heeft, voegt u het toe dat u eerder hebt gekopieerd. (De instrumentatie sleutel is mogelijk al aanwezig, afhankelijk van hoe u de App Service-app hebt gemaakt.)
 
-   |Naam  |Waarde  |
+   |Name  |Waarde  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentatie sleutel} |
 
@@ -428,7 +429,7 @@ In deze sectie voert u lokaal opnieuw uit om te controleren of logboek gegevens 
 
 1. Sluit het console venster.
 
-## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Implementeren in Azure
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Implementeren op Azure
 
 Tijdens de implementatie maakt u een app service-exemplaar waarin u uw functies kunt uitvoeren. Wanneer u een .NET Core-Console-app publiceert naar App Service in azure, wordt deze automatisch uitgevoerd als Webtaak. Zie [Webjobs ontwikkelen en implementeren met Visual Studio](webjobs-dotnet-deploy-vs.md)voor meer informatie over publiceren.
 

@@ -3,14 +3,14 @@ title: Concepten-netwerk-interconnectiviteit
 description: Meer informatie over belang rijke aspecten en gebruiks voorbeelden van netwerken en interconnectiviteit in azure VMware-oplossing (AVS)
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: c0416da9c745ccf92970ff39f623a782d5784983
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f1f1f5a089781f1f7e882c9c8692f0c845ae485
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062834"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214105"
 ---
-# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware-oplossing (AVS) Preview-netwerken en interconnectiviteit-concepten
+# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>AVS-netwerken en interconnectiviteitsconcepten (Azure VMware Solution) (preview)
 
 Met netwerk interconnectiviteit tussen uw persoonlijke Clouds van Azure VMware (AVS) en on-premises omgevingen of virtuele netwerken in azure kunt u uw privécloud openen en gebruiken. In dit artikel worden enkele belang rijke concepten besproken die de basis vormen van netwerken en interconnectiviteit.
 
@@ -46,9 +46,9 @@ Het logische netwerk van de privécloud wordt geleverd met vooraf ingerichte NSX
 
 ## <a name="routing-and-subnet-requirements"></a>Routerings-en netwerk vereisten
 
-De route ring is op basis van Border Gateway Protocol (BGP), die automatisch wordt ingericht en ingeschakeld voor elke implementatie van een privécloud. Voor de persoonlijke Clouds van AVS bent u verplicht om particuliere cloud netwerk adres ruimten te plannen met een mini maal/22 prefix lengte CIDR-netwerk adres blokken voor subnetten, zoals in de onderstaande tabel wordt weer gegeven. Het adres blok mag niet overlappen met de adres blokken die worden gebruikt in andere virtuele netwerken die zich in uw abonnement en on-premises netwerken bevinden. Binnen dit adres blok worden beheer, inrichting en vMotion-netwerken automatisch ingericht.
+De route ring is op basis van Border Gateway Protocol (BGP), die automatisch wordt ingericht en ingeschakeld voor elke implementatie van een privécloud. Voor de persoonlijke Clouds van AVS bent u verplicht om particuliere cloud netwerk adres ruimten te plannen met een mini maal/22 prefix lengte CIDR-netwerk adres blokken voor subnetten, zoals in de onderstaande tabel wordt weer gegeven. Het adresblok mag geen overlap vertonen met de in andere virtuele netwerken gebruikte adresblokken die zich in uw abonnement en on-premises netwerken bevinden. Binnen dit adres blok worden beheer, inrichting en vMotion-netwerken automatisch ingericht.
 
-Voor beeld van een `/22` CIDR-netwerk adres blok:`10.10.0.0/22`
+Voor beeld van een `/22` CIDR-netwerk adres blok:  `10.10.0.0/22`
 
 De subnetten:
 
@@ -77,7 +77,7 @@ In het virtuele netwerk en on-premises naar de volledige implementatie van een p
 
 In het onderstaande diagram ziet u de interconnectiviteit on-premises naar de privécloud, waarmee de volgende gebruiks voorbeelden worden ingeschakeld:
 * Warme/koude cross-vCenter vMotion
-* On-premises toegang tot beheer van privé-Clouds
+* On-premises to AVS Private Cloud Management Access
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Virtuele netwerken en on-premises volledige particuliere cloud connectiviteit" border="false":::
 

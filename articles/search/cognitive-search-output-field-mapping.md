@@ -8,23 +8,34 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557264"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214018"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-verrijkte velden toewijzen aan een Doorzoek bare index
 
-In dit artikel leert u hoe u verrijkte invoer velden kunt toewijzen aan uitvoer velden in een Doorzoek bare index. Zodra u [een vaardig heden hebt gedefinieerd](cognitive-search-defining-skillset.md), moet u de uitvoer velden toewijzen van alle vaardig heden waarmee waarden rechtstreeks worden bijgedragen aan een bepaald veld in uw zoek index. 
+![Indexerings fasen](./media/cognitive-search-output-field-mapping/indexer-stages-output-field-mapping.png "indexerings fasen")
 
-Uitvoer veld Toewijzingen zijn vereist voor het verplaatsen van inhoud van verrijkte documenten naar de index.  Het verrijkte document is in feite een structuur van informatie en hoewel er wel sprake is van ondersteuning voor complexe typen in de index, wilt u mogelijk de gegevens van de uitgebreide boom structuur transformeren naar een eenvoudigere type (bijvoorbeeld een matrix met teken reeksen). Met de toewijzingen van het uitvoer veld kunt u gegevens vorm transformaties uitvoeren door gegevens af te vlakken.
+In dit artikel leert u hoe u verrijkte invoer velden kunt toewijzen aan uitvoer velden in een Doorzoek bare index. Zodra u [een vaardig heden hebt gedefinieerd](cognitive-search-defining-skillset.md), moet u de uitvoer velden toewijzen van alle vaardig heden waarmee waarden rechtstreeks worden bijgedragen aan een bepaald veld in uw zoek index.
+
+Uitvoer veld Toewijzingen zijn vereist voor het verplaatsen van inhoud van verrijkte documenten naar de index.  Het verrijkte document is in feite een structuur van informatie en hoewel er wel sprake is van ondersteuning voor complexe typen in de index, wilt u mogelijk de gegevens van de uitgebreide boom structuur transformeren naar een eenvoudigere type (bijvoorbeeld een matrix met teken reeksen). Met de toewijzingen van het uitvoer veld kunt u gegevens vorm transformaties uitvoeren door gegevens af te vlakken. Uitvoer veld toewijzingen worden altijd uitgevoerd na de uitvoering van de vaardigy, hoewel het mogelijk is dat deze fase wordt uitgevoerd zelfs als er geen vakkennisset is gedefinieerd.
+
+Voor beelden van uitvoer veld toewijzingen:
+
+* Als onderdeel van uw vaardig heden extraheert u de namen van de organisaties die worden vermeld op de pagina's van uw document. Nu wilt u elk van deze organisatie namen toewijzen aan een veld in uw index van het type EDM. Collection (EDM. String).
+
+* Als onderdeel van uw vaardig heden hebt u een nieuw knoop punt met de naam ' document/translated_text ' gemaakt. U wilt de informatie op dit knoop punt toewijzen aan een specifiek veld in uw index.
+
+* U hebt geen vaardig heden, maar u kunt wel een complex type indexeren vanuit een Cosmos DB-Data Base. U wilt een knoop punt op dat complexe type verkrijgen en toewijzen aan een veld in uw index.
 
 > [!NOTE]
 > We hebben onlangs de functionaliteit van toewijzings functies ingeschakeld voor uitvoer veld toewijzingen. Zie [veld toewijzings functies](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions) voor meer informatie over het toewijzen van functies
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings gebruiken
+
 Als u velden wilt toewijzen, voegt `outputFieldMappings` u deze toe aan de definitie van de Indexeer functie, zoals hieronder wordt weer gegeven:
 
 ```http

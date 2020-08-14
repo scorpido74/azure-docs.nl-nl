@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: efe175e4086d5273471c1b0451e4cfb28449c236
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008930"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213448"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problemen met time-outs voor Azure Cache voor Redis oplossen
 
@@ -44,7 +45,7 @@ Dit fout bericht bevat metrische gegevens die u kunnen helpen bij de oorzaak en 
 | beheer |De socket Manager wordt uitgevoerd `socket.select` , wat betekent dat het besturings systeem vraagt om een socket te geven die iets te doen heeft. De lezer is niet actief bij het lezen van het netwerk, omdat u niet kunt zien dat er iets te doen is |
 | wachtrij |Er zijn 73 totaal aantal bewerkingen in uitvoering |
 | qu |6 van de bewerkingen in uitvoering bevinden zich in de niet-verzonden wachtrij en zijn nog niet naar het uitgaande netwerk geschreven |
-| qs |67 van de bewerkingen die momenteel worden uitgevoerd, zijn verzonden naar de server, maar er is nog geen antwoord beschikbaar. Het antwoord kan `Not yet sent by the server` of`sent by the server but not yet processed by the client.` |
+| qs |67 van de bewerkingen die momenteel worden uitgevoerd, zijn verzonden naar de server, maar er is nog geen antwoord beschikbaar. Het antwoord kan `Not yet sent by the server` of `sent by the server but not yet processed by the client.` |
 | QC |0 van de bewerkingen die worden uitgevoerd, hebben geen antwoorden gezien, maar zijn nog niet als voltooid gemarkeerd, omdat ze wachten op de voltooiings lus |
 | WR |Er is een actieve schrijver (wat betekent dat de 6 niet-verzonden aanvragen niet worden genegeerd) bytes/activewriters |
 | in |Er zijn geen actieve lezers en er zijn geen null-bytes beschikbaar om te worden gelezen op het NIC-aantal bytes/activereaders |
@@ -91,7 +92,7 @@ U kunt de volgende stappen gebruiken om mogelijke hoofd oorzaken te onderzoeken.
 1. Hoge redis-server belasting kan time-outs veroorzaken. U kunt de belasting van de server bewaken door de `Redis Server Load` [metrische gegevens over de cache prestaties](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)te bewaken. Een server belasting van 100 (maximum waarde) geeft aan dat de redis-server bezet is, zonder niet-actieve tijd, aanvragen verwerkt. Voer de opdracht SlowLog uit, zoals beschreven in de vorige alinea om te controleren of bepaalde aanvragen alle server mogelijkheden innemen. Zie High CPU Usage/server load (Engelstalig) voor meer informatie.
 1. Was er een andere gebeurtenis aan de client zijde die mogelijk een netwerk Blip heeft veroorzaakt? Algemene gebeurtenissen zijn onder andere: het aantal client exemplaren omhoog of omlaag schalen, een nieuwe versie van de client implementeren of automatisch schalen ingeschakeld. In onze tests is geconstateerd dat automatisch schalen of omhoog/omlaag schalen kan ertoe leiden dat uitgaand netwerk connectiviteit enkele seconden verloren gaat. Stack Exchange. redis-code is robuust voor dergelijke gebeurtenissen en maakt opnieuw verbinding. Bij het opnieuw verbinden worden alle aanvragen in de wachtrij een time-out.
 1. Was er een grote aanvraag voorafgaand aan een aantal kleine aanvragen aan de cache waarvoor een time-out is opgetreden? De para meter `qs` in het fout bericht geeft aan hoeveel aanvragen er van de client naar de server zijn verzonden, maar er is nog geen antwoord verwerkt. Deze waarde kan toenemen omdat stack Exchange. redis een enkele TCP-verbinding gebruikt en slechts één antwoord tegelijk kan lezen. Zelfs als er een time-out optreedt voor de eerste bewerking, stopt het verzenden van meer gegevens naar of van de server. Andere aanvragen worden geblokkeerd tot de grote aanvraag is voltooid en kan time-outs veroorzaken. Eén oplossing is het minimaliseren van de kans op time-outs door ervoor te zorgen dat uw cache groot genoeg is voor uw werk belasting en het splitsen van grote waarden in kleinere segmenten. Een andere mogelijke oplossing is een groep `ConnectionMultiplexer` objecten in uw client te gebruiken en de minimale belasting te kiezen `ConnectionMultiplexer` bij het verzenden van een nieuwe aanvraag. Het laden tussen meerdere verbindings objecten moet voor komen dat er een time-out optreedt voor andere aanvragen om ook een time-out op te lossen.
-1. Als u gebruikt `RedisSessionStateProvider` , moet u ervoor zorgen dat u de time-out voor opnieuw proberen correct hebt ingesteld. `retryTimeoutInMilliseconds`moet groter zijn dan `operationTimeoutInMilliseconds` , anders worden er geen nieuwe pogingen ondervinden. In het volgende voor beeld `retryTimeoutInMilliseconds` is ingesteld op 3000. Zie [ASP.net-sessie status provider voor Azure cache voor redis](cache-aspnet-session-state-provider.md) en [hoe u de configuratie parameters van de sessie status provider en de uitvoer cache provider gebruikt](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration)voor meer informatie.
+1. Als u gebruikt `RedisSessionStateProvider` , moet u ervoor zorgen dat u de time-out voor opnieuw proberen correct hebt ingesteld. `retryTimeoutInMilliseconds` moet groter zijn dan `operationTimeoutInMilliseconds` , anders worden er geen nieuwe pogingen ondervinden. In het volgende voor beeld `retryTimeoutInMilliseconds` is ingesteld op 3000. Zie [ASP.net-sessie status provider voor Azure cache voor redis](cache-aspnet-session-state-provider.md) en [hoe u de configuratie parameters van de sessie status provider en de uitvoer cache provider gebruikt](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration)voor meer informatie.
 
     ```xml
     <add

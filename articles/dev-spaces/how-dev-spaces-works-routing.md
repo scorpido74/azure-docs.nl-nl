@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces en hoe route ring werkt
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: abdd8a573b7e120c5494b8878c2eb19813fc9507
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077662"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213405"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hoe route ring werkt met Azure dev Spaces
 
@@ -66,11 +66,9 @@ Wanneer *azureuser*wordt gebruikt, worden alle aanvragen naar *servicea* doorges
 
 Voor enkele voor beelden van hoe Azure dev Spaces route ring gebruiken om snel te kunnen iteratieen en te ontwikkelen, Zie [hoe lokaal proces met Kubernetes werkt][how-it-works-local-process-kubernetes], [hoe externe fout opsporing van uw code met Azure dev Spaces werkt][how-it-works-remote-debugging]en [github acties & Azure Kubernetes-service][pr-flow].
 
-Zie voor meer informatie over het gebruik van route ring met Azure dev Spaces voor team ontwikkeling het [team Development in azure dev Spaces][quickstart-team] Quick Start.
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 [how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
-[quickstart-team]: quickstart-team-development.md
 [troubleshooting]: troubleshooting.md

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 06/17/2020
+ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 390080fecefcc22decd8bec70d043b28311a725d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145623"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212617"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
@@ -34,6 +34,7 @@ Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels
 
 ## <a name="note-before-you-migrate"></a>Opmerking Voordat u migreert
 
+* U moet uw ontwerp ervaring migreren op basis van **november, 2, 2020**. 
 * Migratie is een eenrichtings proces. U kunt niet teruggaan nadat u hebt gemigreerd.
 * Toepassingen worden automatisch met u gemigreerd als u de eigenaar bent van de toepassing.
 * De eigenaar kan geen subset van te migreren apps kiezen en het proces kan niet onomkeerbaar zijn.
@@ -118,7 +119,7 @@ Als u een nieuwe ontwerp bron wilt maken, selecteert u **nieuwe ontwerp bron mak
 * **Tenant naam**: de Tenant waaraan uw Azure-abonnement is gekoppeld. Dit wordt standaard ingesteld voor de Tenant die u momenteel gebruikt. U kunt tenants overschakelen door de meest rechtse avatar te selecteren, die uw initialen bevat.
 * **Resource naam**: een aangepaste naam die u kiest. Deze wordt gebruikt als onderdeel van de URL voor uw ontwerp-en Voorspellings eindpunt query's.
 * **Abonnements naam**: het abonnement dat wordt gekoppeld aan de resource. Als u meer dan één abonnement bij uw Tenant hebt, selecteert u de gewenste versie in de vervolg keuzelijst.
-* **Naam van de Azure-resource groep**: een aangepaste naam voor de resource groep die u kiest in de vervolg keuzelijst. Met resource groepen kunt u Azure-resources groeperen voor toegang en beheer.
+* **Naam van de Azure-resource groep**: een aangepaste naam voor de resource groep die u kiest in de vervolg keuzelijst. Met resourcegroepen kunt u Azure-resources groeperen voor toegang en beheer.
 
 Houd er rekening mee dat u per abonnement 10 gratis ontwerp resources per regio kunt maken. Als uw abonnement meer dan 10 ontwerp bronnen heeft in dezelfde regio, kunt u geen nieuwe maken.
 

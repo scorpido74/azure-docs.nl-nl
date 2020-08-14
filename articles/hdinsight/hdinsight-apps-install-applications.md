@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: f9eb573573ef70c8e5336ea6cca5f247e9ec0041
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: fd0d425f00e001071f5c9021068ca2f038371a36
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086514"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212822"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Apache Hadoop-toepassingen van derden installeren op Azure HDInsight
 
@@ -23,7 +23,7 @@ An HDInsight toepassing is een toepassing die gebruikers kunnen installeren op e
 
 De volgende lijst bevat de gepubliceerde toepassingen:
 
-|Toepassing |Cluster type (n) | Description |
+|Toepassing |Cluster type (n) | Beschrijving |
 |---|---|---|
 |[AtScale intelligence-platform](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |Met AtScale wordt uw HDInsight-cluster omgezet in een scale-out OLAP-server, zodat u miljarden rijen gegevens interactief kunt opvragen met behulp van de BI-hulpprogram ma's die u al kent, eigenaar en liefde – van micro soft Excel, Power BI, tableau software naar QlikView. |
 |[CDAP voor HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP is het eerste geïntegreerde integratie platform voor big data dat de time-to-waarde voor Hadoop versnelt en de IT-service in staat stelt om selfservice gegevens te leveren. Open source en uitbreid bare, CDAP verwijdert belemmeringen voor innovatie. Vereisten: 4 regio knooppunten, min D3 v2. |
@@ -34,9 +34,9 @@ De volgende lijst bevat de gepubliceerde toepassingen:
 |[Realtimeplatform voor realtime gegevens integratie naar HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBase, Storm, Spark, Kafka |Realtimeplatform (uitgesp roken: ' stream ') is een end-to-end streaming Data Integration + intelligence-platform, waarmee u doorlopende opname, verwerking en analyse van verschillende gegevens stromen kunt maken. |
 |[Jumbune Enter prise-Versnel BigData Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Op hoog niveau helpt Jumbune ondernemingen met, 1. Versnellen van TEZ, MapReduce & op basis van Spark-engine, Java, scala workload-prestaties. 2. Proactieve Hadoop-cluster bewaking, 3. Het kwaliteits beheer van gegevens in een gedistribueerd bestands systeem vaststellen. |
 |[Kyligence Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence) |Hadoop, HBase, Spark |Kyligence Enter prise, dat is aangedreven door Apache Kylin, maakt BI op Big data mogelijk. Als een Enter prise OLAP-engine op Hadoop kan Kyligence Enter prise de bedrijfs analist op Hadoop bouwen op basis van de industrie standaard data warehouse en BI-methodologie. |
-|[Sterren explosie Presto voor Azure HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto is een snelle en schaal bare gedistribueerde SQL-query-engine. Presto is ontworpen voor de schei ding van opslag en Compute en is ideaal voor het opvragen van gegevens in Azure Data Lake Storage, Azure Blob Storage, SQL-en NoSQL-data bases en andere gegevens bronnen. |
+|[Sterren explosie Presto voor Azure HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1579800938563.starburst-presto?tab=Overview) |Hadoop |Presto is een snelle en schaal bare gedistribueerde SQL-query-engine. Presto is ontworpen voor de schei ding van opslag en Compute en is ideaal voor het opvragen van gegevens in Azure Data Lake Storage, Azure Blob Storage, SQL-en NoSQL-data bases en andere gegevens bronnen. |
 |[StreamSets gegevens verzamelaar voor HDInsight-Cloud](https://azuremarketplace.microsoft.com/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop, HBase, Spark, Kafka |StreamSets Data Collector is een licht gewicht krachtige engine waarmee gegevens in realtime worden gestreamd. Gebruik gegevens verzamelaar om gegevens in uw gegevens stromen te routeren en te verwerken. Het wordt geleverd met een proef licentie van 30 dagen. |
-|[Trifacta Wrangler Enter prise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01) |Hadoop, Spark, HBase |Trifacta Wrangler Enter prise voor HDInsight biedt ondersteuning voor zakelijke gegevens wrangling voor elke schaal van gegevens. De kosten voor het uitvoeren van Trifacta op Azure zijn een combi natie van kosten voor het Trifacta-abonnement plus de kosten van de Azure-infra structuur voor de virtuele machines. |
+|[Trifacta Wrangler Enter prise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.trifacta-db?tab=Overview) |Hadoop, Spark, HBase |Trifacta Wrangler Enter prise voor HDInsight biedt ondersteuning voor zakelijke gegevens wrangling voor elke schaal van gegevens. De kosten voor het uitvoeren van Trifacta op Azure zijn een combi natie van kosten voor het Trifacta-abonnement plus de kosten van de Azure-infra structuur voor de virtuele machines. |
 |[Unifi-gegevens platform](https://unifisoftware.com/platform/) |Hadoop, HBase, Storm, Spark |Het Unifi-gegevens platform is een naadloos geïntegreerde suite van self-service data tools, ontworpen om de zakelijke gebruiker in staat te stellen gegevens uitdagingen aan te pakken waarmee incrementele omzet wordt gestimuleerd, de kosten en de operationele complexiteit worden verminderd. |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |Unravel data-app voor HDInsight Spark-cluster. |
 |[AI-Data Catalog met water breedte](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |De water Raad catalogi, organiseert en bestuurt gegevens met behulp van AI om gegevens automatisch te labelen met bedrijfs voorwaarden. De Business-transcrib Catalog van de water lijn is een essentieel onderdeel van het succes van self-service analyses, naleving en governance en IT-beheer. |
@@ -51,7 +51,7 @@ De volgende procedure beschrijft hoe u HDInsight-toepassingen in een bestaand HD
 
 **Een HDInsight-toepassing installeren**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters**.
 3. Selecteer een HDInsight-cluster in de lijst.  Als u deze niet hebt, maakt u die eerst.  Zie [Clusters maken](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. Selecteer in de categorie **instellingen** de optie **toepassingen**. In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
@@ -75,7 +75,7 @@ De portal toont een lijst van de geïnstalleerde HDInsight-toepassingen voor een
 
 **Lijst met HDInsight-toepassingen en weer gave-eigenschappen**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com).
 2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters**.
 3. Selecteer een HDInsight-cluster in de lijst.
 4. Selecteer in de categorie **instellingen** de optie **toepassingen**. In het hoofd venster ziet u een lijst met geïnstalleerde toepassingen. 
@@ -85,11 +85,11 @@ De portal toont een lijst van de geïnstalleerde HDInsight-toepassingen voor een
 
     |Eigenschap | Beschrijving |
     |---|---|
-    |App-naam |Toepassings naam. |
+    |Naam van app |Toepassings naam. |
     |Status |Toepassings status. |
     |Webpagina |De URL van de webtoepassing die u hebt geïmplementeerd op het Edge-knoop punt. De referenties zijn dezelfde als de HTTP-gebruikersreferenties die u hebt geconfigureerd voor het cluster. |
     |SSH-eind punt |U kunt SSH gebruiken om verbinding te maken met het Edge-knoop punt. De SSH-referenties zijn dezelfde als de SSH-gebruikersreferenties die u hebt geconfigureerd voor het cluster. Zie [SSH-sleutels gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie. |
-    |Description | Beschrijving van toepassing. |
+    |Beschrijving | Beschrijving van toepassing. |
 
 6. Als u een toepassing wilt verwijderen, klikt u met de rechter muisknop op de toepassing en klikt u vervolgens op **verwijderen** in het context menu.
 

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 07/27/2020
-ms.openlocfilehash: 55483b93b770687703b381366d48edbc7d48f26e
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/12/2020
+ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475307"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212035"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -87,13 +87,13 @@ Als u een goed beeld hebt van de kardinaliteit van uw gegevens, is het mogelijk 
 > [!TIP]
 > Als u het partitie schema hand matig instelt, worden de gegevens in een andere volg orde gezet en kunnen de voor delen van de Spark-Optimizer worden verrekend. Een best practice moet de partitie pas hand matig instellen, tenzij u dat nodig hebt.
 
-## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a>De Azure Integration Runtime optimaliseren
+## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> De Azure Integration Runtime optimaliseren
 
 Gegevens stromen worden uitgevoerd op Spark-clusters die tijdens runtime actief zijn. De configuratie voor het gebruikte cluster wordt gedefinieerd in de Integration runtime (IR) van de activiteit. Er zijn drie prestatie overwegingen die u moet aanbrengen bij het definiëren van de Integration runtime: cluster type, cluster grootte en time to Live.
 
 Zie [Integration runtime in azure Data Factory](concepts-integration-runtime.md)voor meer informatie over het maken van een Integration runtime.
 
-### <a name="cluster-type"></a>Cluster type
+### <a name="cluster-type"></a>Clustertype
 
 Er zijn drie beschik bare opties voor het type Spark-cluster: algemeen gebruik, geoptimaliseerd voor geheugen en berekenings optimalisatie.
 
@@ -109,7 +109,7 @@ Gegevens stromen distribueren de gegevens verwerking over verschillende knoop pu
 
 De standaard cluster grootte is vier Stuur knooppunten en vier werk knooppunten.  Bij het verwerken van meer gegevens worden grotere clusters aanbevolen. Hieronder ziet u de mogelijke opties voor de grootte:
 
-| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Opmerkingen |
+| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Notities |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | Niet beschikbaar voor berekenings optimalisatie |
 | 8 | 8 | 16 | |
@@ -273,6 +273,29 @@ Als uw gegevens na een trans formatie niet gelijkmatig zijn gepartitioneerd, kun
 
 > [!TIP]
 > Als u uw gegevens opnieuw partitioneert, maar u downstream-trans formaties hebt waarmee uw gegevens in een andere volg orde worden ingedeeld, gebruikt u hash-partitionering op een kolom die wordt gebruikt als een koppelings sleutel.
+
+## <a name="using-data-flows-in-pipelines"></a>Gegevens stromen gebruiken in pijp lijnen 
+
+Wanneer u complexe pijp lijnen met meerdere gegevens stromen bouwt, kan uw logische stroom een grote invloed hebben op de timing en de kosten. In deze sectie wordt de impact van verschillende architectuur strategieën besproken.
+
+### <a name="executing-data-flows-in-parallel"></a>Gegevens stromen parallel uitvoeren
+
+Als u meerdere gegevens stromen parallel uitvoert, draait ADF om afzonderlijke Spark-clusters voor elke activiteit. Hierdoor kan elke taak worden geïsoleerd en parallel worden uitgevoerd, maar zal er meerdere clusters tegelijk worden uitgevoerd.
+
+Als uw gegevens stromen parallel worden uitgevoerd, wordt het aanbevolen om de eigenschap Azure IR time to Live niet in te scha kelen omdat deze wordt gebruikt om meerdere niet-gebruikte warme Pools te maken.
+
+> [!TIP]
+> In plaats van dezelfde gegevens stroom meerdere keren in een voor elke activiteit uit te voeren, moet u de gegevens in een Data Lake stage en Joker teken paden gebruiken om de gegevens in één gegevens stroom te verwerken.
+
+### <a name="execute-data-flows-sequentially"></a>Gegevens stromen sequentieel uitvoeren
+
+Als u de gegevens stroom activiteiten op volg orde uitvoert, is het raadzaam een TTL in te stellen in de Azure IR configuratie. De reken resources worden door ADF opnieuw gebruikt, wat resulteert in een snellere start tijd van het cluster. Elke activiteit zal nog steeds geïsoleerd een nieuwe Spark-context ontvangen voor elke uitvoering.
+
+Het uitvoeren van taken zal waarschijnlijk de langste tijd duren om end-to-end uit te voeren, maar biedt een schone schei ding van logische bewerkingen.
+
+### <a name="overloading-a-single-data-flow"></a>Eén gegevens stroom overbelasten
+
+Als u al uw logica in één gegevens stroom plaatst, wordt de volledige taak door ADF uitgevoerd op één Spark-exemplaar. Hoewel dit een manier is om de kosten te reduceren, worden verschillende logische stromen gecombineerd en kunnen ze moeilijk worden bewaakt en worden fouten opgespoord. Als een onderdeel mislukt, zullen alle andere delen van de taak ook mislukken. Het Azure Data Factory Team raadt aan om gegevens stromen te organiseren door onafhankelijke stromen van bedrijfs logica. Als uw gegevens stroom te groot wordt, kunt u deze opsplitsen in gescheiden onderdelen, waardoor bewaking en fout opsporing eenvoudiger zijn. Hoewel er geen vaste limiet is voor het aantal trans formaties in een gegevens stroom, wordt de taak met te veel complex gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

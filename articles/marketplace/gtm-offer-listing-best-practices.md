@@ -7,25 +7,26 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798117"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213878"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
-Dit artikel bevat suggesties voor het maken en aanbieden van commerciële Marketplace-aanbiedingen. De volgende tabellen bevatten de aanbevolen procedures voor het volt ooien van de aanbiedings gegevens in het partner centrum. Voor een analyse van hoe uw aanbiedingen worden uitgevoerd, gaat u naar het [Marketplace Insights-dash board](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) in Partner Center. 
+Dit artikel bevat suggesties voor het maken en aanbieden van micro soft-Commercial Marketplace-aanbiedingen. De volgende tabellen bevatten de aanbevolen procedures voor het volt ooien van de aanbiedings gegevens in het partner centrum. Voor een analyse van hoe uw aanbiedingen worden uitgevoerd, gaat u naar het [Marketplace Insights-dash board](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) in Partner Center. 
 
 ## <a name="storefront-offer-details"></a>Details van de winkel aanbieding
 
 | Winkel instelling | Best practice |
 |:--- |:--- |  
-| Naam van aanbieding | Geef voor apps een duidelijke titel op die Zoek woorden bevat waarmee klanten uw aanbieding kunnen ontdekken. <br> <br> Voor advies Services gaat u als volgt te werk: [naam aanbieding: [duration] [aanbiedings type] (bijvoorbeeld contoso: implementatie 2 weken) <br> <br> Voldoen aan de merk richtlijnen: Volg de [richt lijnen voor handels merken en merken van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante, productspecifieke richt lijnen bij het verwijzen naar handels merken van micro soft en de namen van micro soft-software,-producten en-services. |
+| Naam van aanbieding | Geef voor apps een duidelijke titel op die Zoek woorden bevat waarmee klanten uw aanbieding kunnen ontdekken. <br> <br> Voor advies Services gaat u als volgt te werk: [naam aanbieding: [duration] [aanbiedings type] (bijvoorbeeld contoso: implementatie 2 weken) |
 | Beschrijving van aanbieding | Geef een duidelijke beschrijving van de toegevoegde waarde van uw aanbieding in de eerste paar zinnen.  Houd er rekening mee dat deze zinnen kunnen worden gebruikt in resultaten van de zoek machine. De belangrijkste onderdelen van de toegevoegde waarde zijn: <ul> <li>Beschrijving van het product of de oplossing. </li> <li> Gebruikers die profiteren van het product of de oplossing. </li> <li> Klanten behoefte hebben of pijnen van de product-of oplossings adressen. </li> </ul> <br> Gebruik, indien mogelijk, terminologie op basis van de industrie norm of op voor delen.  Vertrouw niet op functies en functionaliteit om uw product te verkopen.  Richt u in plaats daarvan op de waarde die u levert. <br> <br> Voor advies Services moet u de professionele service die u levert duidelijk vermelden. |
 
-De tabellen in deze sectie bieden suggesties voor het maken en aanbieden van Marketplace-aanbiedingen. Als u uw marketing materiaal wilt schrijven en configureren, gaat u naar het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/). 
+> [!IMPORTANT]
+> Zorg ervoor dat de naam van uw aanbieding en de beschrijving van de aanbieding voldoen aan de merken- **[en merk richtlijnen van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** en andere relevante, productspecifieke richt lijnen bij het verwijzen naar handels merken van micro soft en de namen van micro soft-software,-producten en-services.
 
 ## <a name="storefront-listing-details"></a>Details van de winkel vermelding
 
@@ -119,19 +120,19 @@ Tref woorden kunnen klanten helpen bij het zoeken naar uw aanbieding. Bepaal de 
 ## <a name="storefront-marketing-details"></a>Marketing Details van winkel
 | Winkel instelling | Best practice |
 |:--- |:--- |  
-| Logo van aanbieding (PNG-indeling, tussen 216 × 216 en 350 x 350 pixels): app-details pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de pagina met details van de app van uw aanbieding. Het formaat van het partner centrum wordt gewijzigd in de vereiste logo grootten. |
-| Logo van aanbieding (PNG-indeling, 48 x 48 pixels): zoek pagina | Het partner centrum genereert dit logo van het grote logo dat u hebt geüpload. U kunt dit eventueel vervangen door een andere afbeelding. |
-| Documenten ' meer informatie ' | Ondersteunende verkoop-en marketing assets onder "meer informatie" bevatten enkele voor beelden:<ul><li>technische documenten</li><li> brochures</li><li>controle lijsten of</li><li> Power Point-presentaties</li></ul><br>Sla alle bestanden op in PDF-indeling. Het doel is hier om klanten te informeren en daar niet aan te verkopen.<br><br>Een koppeling naar uw app-landings pagina toevoegen aan al uw documenten en URL-para meters toevoegen om bezoekers en experimenten bij te houden. |
+| Logo van aanbieding (PNG-indeling, 48 &nbsp; &times; &nbsp; 48): zoek pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de zoek pagina van uw aanbieding. |
+| Logo van aanbieding (PNG-indeling, 216 &nbsp; &times; &nbsp; 216): app-details pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de pagina met details van de app van uw aanbieding. |
+| Documenten ' meer informatie ' | Ondersteunende verkoop-en marketing assets onder "meer informatie" bevatten enkele voor beelden: <ul> <li> technische documenten, </li> <li> brochures </li> <li> controle lijsten of </li> <li> Power Point-presentaties.</li> </ul>Sla alle bestanden op in PDF-indeling. Het doel is hier om klanten te informeren en daar niet aan te verkopen. <br><br>Een koppeling naar uw app-landings pagina toevoegen aan al uw documenten en URL-para meters toevoegen om bezoekers en experimenten bij te houden. |
 | Video's: AppSource, Consulting Services en SaaS biedt alleen | De krach tigste Video's communiceren de waarde van uw aanbieding in een verhalende vorm:<ul> <li> Maak uw klant, niet uw bedrijf, de held van het verhaal. </li> <li> Uw video moet de belangrijkste uitdagingen en doel stellingen van uw doel klant aanpakken. </li> <li> Aanbevolen lengte: 60-90 seconden.</li> <li> Belang rijke Zoek woorden opnemen die de naam van de Video's gebruiken. </li> <li> Overweeg extra Video's toe te voegen, zoals een procedure, aan de slag of klant ervaringen. </li> </ul> |
 | Scherm afbeeldingen (1280 &nbsp; &times; &nbsp; 720) | Maxi maal vijf scherm opnamen toevoegen:<br>Belang rijke Zoek woorden opnemen in de bestands namen. |
 
 ## <a name="link-to-your-offer-page-from-your-website"></a>Koppeling naar uw aanbiedings pagina van uw website
 
-Wanneer u vanuit de AppSource of de Azure Marketplace-badge op uw site een koppeling maakt naar uw vermelding in Marketplace, kunt u een sterke analyse en rapportage ondersteunen door de volgende query parameters aan het einde van de URL op te nemen:
+Wanneer u een koppeling maakt van de AppSource of Azure Marketplace-badge op uw site naar uw vermelding in de commerciële Marketplace, kunt u een sterke analyse en rapportage ondersteunen door de volgende query parameters aan het einde van de URL op te nemen:
 * **src**: Neem de bron op van waaruit het verkeer wordt doorgestuurd naar AppSource (bijvoorbeeld website, LinkedIn of Facebook).
 * **mktcmpid**: uw marketing campagne-id, die Maxi maal 16 tekens kan bevatten in een combi natie van letters, cijfers, onderstrepings teken en afbreek streepjes (bijvoorbeeld *blogpost_12*).
 
-De volgende voor beeld-URL bevat beide van de voor gaande query parameters:`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
+De volgende voor beeld-URL bevat beide van de voor gaande query parameters: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
 Door de para meters aan uw AppSource-URL toe te voegen, kunt u de effectiviteit van uw campagne controleren in het dash board Analytics in [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/).
 

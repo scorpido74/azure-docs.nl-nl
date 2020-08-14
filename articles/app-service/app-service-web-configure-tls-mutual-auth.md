@@ -4,13 +4,13 @@ description: Meer informatie over het verifiëren van client certificaten op TLS
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
-ms.custom: seodec18
-ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82592363"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213641"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Wederzijdse TLS-verificatie voor Azure App Service configureren
 
@@ -218,7 +218,7 @@ export class AuthorizationHandler {
 
 ## <a name="java-sample"></a>Java-voor beeld
 
-De volgende Java-klasse codeert het certificaat van `X-ARR-ClientCert` naar een `X509Certificate` exemplaar. `certificateIsValid()`Hiermee wordt gevalideerd of de vinger afdruk van het certificaat overeenkomt met een van de constructor en dat certificaat niet is verlopen.
+De volgende Java-klasse codeert het certificaat van `X-ARR-ClientCert` naar een `X509Certificate` exemplaar. `certificateIsValid()` Hiermee wordt gevalideerd of de vinger afdruk van het certificaat overeenkomt met een van de constructor en dat certificaat niet is verlopen.
 
 
 ```java
