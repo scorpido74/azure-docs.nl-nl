@@ -12,12 +12,12 @@ metadata:
   title: Documentatie voor Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Met de Language Understanding-service (LUIS) begrijpt uw toepassing wat een persoon in zijn eigen woorden wilt. Met behulp van machine learning geeft LUIS ontwikkelaars de mogelijkheid om toepassingen te ontwikkelen die gebruikersinvoer in een natuurlijke taal ontvangen en hieraan betekenis geven.
-  ms.openlocfilehash: 0d941872670a5bdd559a2760f73cda72773fc887
-  ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+  ms.openlocfilehash: 561f6ee161d2a697b8c143ee49209515f679c77b
+  ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 06/15/2020
-  ms.locfileid: "84791585"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88236519"
 landingContent:
 - title: Over Language Understanding (LUIS)
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'Portal: Een nieuwe LUIS-app maken'
       url: get-started-portal-build-app.md
     - text: Met C# SDK
-      url: sdk-authoring.md?pivots=programming-language-csharp
+      url: quickstart-sdk.md?pivots=programming-language-csharp
     - text: Met Python SDK
-      url: sdk-authoring.md?pivots=programming-language-python
+      url: quickstart-sdk.md?pivots=programming-language-python
   - linkListType: how-to-guide
     links:
     - text: Een nieuwe LUIS-app maken
@@ -88,7 +88,7 @@ landingContent:
     - text: 'Portal: App implementeren in voorspellingseindpunt'
       url: get-started-portal-deploy-app.md
     - text: SDK gebruiken
-      url: sdk-authoring.md
+      url: quickstart-sdk.md
   - linkListType: how-to-guide
     links:
     - text: Versiebeheer van uw app
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: SDK gebruiken
-      url: sdk-query-prediction-endpoint.md
+      url: quickstart-sdk.md
   - linkListType: quickstart
     links:
     - text: Met C# met REST

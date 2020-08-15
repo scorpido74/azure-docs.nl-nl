@@ -58,10 +58,8 @@
       href: remote-work-support.md
     - name: FQDN in netwerkregels
       href: fqdn-filtering-network-rules.md
-    - name: Concepten
-      items:
-        - name: Beveiligingsbasislijn
-          href: security-baseline.md
+    - name: Beveiligingsbasislijn
+      href: security-baseline.md
 - name: Instructiegidsen
   items:
     - name: Implementeren met Azure PowerShell
