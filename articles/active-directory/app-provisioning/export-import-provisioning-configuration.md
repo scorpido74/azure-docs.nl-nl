@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
-ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781719"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235814"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Instructies: inrichtings configuratie exporteren en terugdraaien naar een bekende goede staat
 
@@ -39,8 +39,8 @@ De configuratie exporteren:
 
 Door de configuratie te exporteren en op te slaan, kunt u teruggaan naar een eerdere versie van uw configuratie. We raden u aan uw inrichtings configuratie te exporteren en deze op te slaan voor later gebruik wanneer u een wijziging aanbrengt in de kenmerk toewijzingen of filters bereikt. U hoeft alleen maar het JSON-bestand te openen dat u in de bovenstaande stappen hebt gedownload, de volledige inhoud van het JSON-bestand te kopiëren, de volledige inhoud van de JSON-nettolading in de schema-editor te vervangen en vervolgens op te slaan. Als er een actieve inrichtings cyclus is, wordt deze voltooid en zal de volgende cyclus het bijgewerkte schema gebruiken. De volgende cyclus is ook een eerste cyclus, die elke gebruiker en groep opnieuw evalueert op basis van de nieuwe configuratie. Houd rekening met het volgende wanneer u terugkeert naar een eerdere configuratie:
 
-- Gebruikers worden opnieuw geëvalueerd om te bepalen of ze binnen het bereik moeten zijn. Als de bereik filters zijn gewijzigd, is een gebruiker niet meer in het bereik. deze worden uitgeschakeld. Hoewel dit in de meeste gevallen het gewenste gedrag is, is het mogelijk dat u dit wilt voor komen en dat u de functionaliteit voor het [verwijderen van verwijderde bereiken](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) kunt gebruiken. 
-- Als u de inrichtings configuratie wijzigt, wordt de service opnieuw gestart en wordt een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)geactiveerd.
+- Gebruikers worden opnieuw geëvalueerd om te bepalen of ze binnen het bereik moeten zijn. Als de bereik filters zijn gewijzigd, is een gebruiker niet meer in het bereik. deze worden uitgeschakeld. Hoewel dit in de meeste gevallen het gewenste gedrag is, is het mogelijk dat u dit wilt voor komen en dat u de functionaliteit voor het [verwijderen van verwijderde bereiken](./skip-out-of-scope-deletions.md) kunt gebruiken. 
+- Als u de inrichtings configuratie wijzigt, wordt de service opnieuw gestart en wordt een [eerste cyclus](./how-provisioning-works.md#provisioning-cycles-initial-and-incremental)geactiveerd.
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Uw inrichtings configuratie exporteren en importeren met behulp van de Microsoft Graph-API
 

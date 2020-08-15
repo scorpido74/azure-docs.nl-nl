@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a0c85226b5890fe0f5f2011110c1d7d20e3c2907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782004"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235074"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Zelf studie: rapportage over automatische toewijzing van gebruikers accounts
 
-Azure Active Directory (Azure AD) bevat een [service](user-provisioning.md) voor het inrichten van gebruikers accounts die helpt bij het automatiseren van het inrichten van gebruikers account in Saas-apps en andere systemen, met het oog op end-to-end identiteits levenscyclus beheer. Azure AD biedt ondersteuning voor vooraf geïntegreerde User Provisioning connectors voor alle toepassingen en systemen [met zelf studies](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)voor gebruikers inrichting.
+Azure Active Directory (Azure AD) bevat een [service](user-provisioning.md) voor het inrichten van gebruikers accounts die helpt bij het automatiseren van het inrichten van gebruikers account in Saas-apps en andere systemen, met het oog op end-to-end identiteits levenscyclus beheer. Azure AD biedt ondersteuning voor vooraf geïntegreerde User Provisioning connectors voor alle toepassingen en systemen [met zelf studies](../saas-apps/tutorial-list.md)voor gebruikers inrichting.
 
 In dit artikel wordt beschreven hoe u de status van inrichtings taken kunt controleren nadat deze zijn ingesteld en hoe u problemen met het inrichten van afzonderlijke gebruikers en groepen kunt oplossen.
 

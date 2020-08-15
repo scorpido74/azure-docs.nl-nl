@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: kenwith
-ms.openlocfilehash: 70795c703810212c3b46d06254a0c3ebdcb418f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782038"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235221"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -108,7 +108,7 @@ Toepassingen en systemen die ondersteuning bieden voor aanpassing van de lijst m
 - SalesForce
 - ServiceNow
 - Workday
-- Azure Active Directory ([standaard kenmerken van Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)
+- Azure Active Directory ([standaard kenmerken van Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)
 - Apps die ondersteuning bieden voor [SCIM 2,0](https://tools.ietf.org/html/rfc7643), waarbij kenmerken die zijn gedefinieerd in het [kern schema](https://tools.ietf.org/html/rfc7643) , moeten worden toegevoegd
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Bij het bewerken van de lijst met ondersteunde kenmerken, worden de volgende eig
   - *DateTime* -kenmerk bevat een datum teken reeks.
   - Het kenmerk *Integer* bevat een geheel getal.
   - Het *referentie* kenmerk bevat een id die verwijst naar een waarde die is opgeslagen in een andere tabel in de doel toepassing.
-  - *String* -kenmerk bevat een teken reeks.
+  - *String*  -kenmerk bevat een teken reeks.
 - **Primaire sleutel?** -Of het kenmerk wordt gedefinieerd als een primaire-sleutel veld in het schema van het doel object.
 - **Vereist?** -Of het kenmerk moet worden ingevuld in de doel toepassing of het systeem.
 - **Meerdere waarden?** -Of het kenmerk meerdere waarden ondersteunt.

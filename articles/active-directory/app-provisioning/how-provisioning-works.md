@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445615"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235720"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -44,7 +44,7 @@ Als u een automatische Azure AD-inrichtings connector wilt aanvragen voor een ap
 
 Er zijn referenties vereist voor Azure AD om verbinding te maken met de gebruikers beheer-API van de toepassing. Tijdens het configureren van het automatisch inrichten van gebruikers voor een toepassing, moet u geldige referenties invoeren. U kunt referentie typen en vereisten voor de toepassing vinden door te verwijzen naar de zelf studie over apps. In de Azure Portal kunt u de referenties testen door Azure AD te proberen verbinding te maken met de inrichtings-app van de app met behulp van de opgegeven referenties.
 
-Als op SAML gebaseerde eenmalige aanmelding ook voor de toepassing is geconfigureerd, is de interne opslag limiet voor Azure AD per toepassing 1024 bytes. Deze limiet omvat alle certificaten, geheime tokens, referenties en gerelateerde configuratie gegevens die zijn gekoppeld aan één exemplaar van een toepassing (ook wel een Service-Principal record genoemd in azure AD). Wanneer op SAML gebaseerde eenmalige aanmelding is geconfigureerd, verbruikt het certificaat dat wordt gebruikt voor het ondertekenen van de SAML-tokens vaak meer dan 50% van de ruimte. Eventuele aanvullende items (geheime tokens, Uri's, e-mail adressen, gebruikers namen en wacht woorden) die u tijdens het instellen van de gebruikers inrichting invoert, kunnen de opslag limiet overschrijden. Zie voor meer informatie [probleem bij het opslaan van beheerders referenties tijdens het configureren van gebruikers inrichting](../manage-apps/application-provisioning-config-problem-storage-limit.md).
+Als op SAML gebaseerde eenmalige aanmelding ook voor de toepassing is geconfigureerd, is de interne opslag limiet voor Azure AD per toepassing 1024 bytes. Deze limiet omvat alle certificaten, geheime tokens, referenties en gerelateerde configuratie gegevens die zijn gekoppeld aan één exemplaar van een toepassing (ook wel een Service-Principal record genoemd in azure AD). Wanneer op SAML gebaseerde eenmalige aanmelding is geconfigureerd, verbruikt het certificaat dat wordt gebruikt voor het ondertekenen van de SAML-tokens vaak meer dan 50% van de ruimte. Eventuele aanvullende items (geheime tokens, Uri's, e-mail adressen, gebruikers namen en wacht woorden) die u tijdens het instellen van de gebruikers inrichting invoert, kunnen de opslag limiet overschrijden. Zie voor meer informatie [probleem bij het opslaan van beheerders referenties tijdens het configureren van gebruikers inrichting](./application-provisioning-config-problem-storage-limit.md).
 
 ## <a name="mapping-attributes"></a>Kenmerken toewijzen
 
@@ -54,7 +54,7 @@ Er is een vooraf geconfigureerde set met kenmerken en kenmerk toewijzingen tusse
 
 Bij het instellen van de inrichting is het belang rijk om de kenmerk toewijzingen en werk stromen te controleren en te configureren waarmee wordt gedefinieerd welke gebruikers-(of groeps) eigenschappen stromen van Azure AD naar de toepassing. Bekijk en configureer de overeenkomende eigenschap (**objecten matchen met dit kenmerk**) die worden gebruikt om gebruikers/groepen op unieke wijze te identificeren en te vergelijken tussen de twee systemen.
 
-U kunt de standaard kenmerk toewijzingen aanpassen op basis van de behoeften van uw bedrijf. U kunt dus bestaande kenmerk toewijzingen wijzigen of verwijderen, of nieuwe kenmerk toewijzingen maken. Zie voor meer informatie [Gebruikers inrichten kenmerk toewijzingen voor SaaS-toepassingen aanpassen](../manage-apps/customize-application-attributes.md).
+U kunt de standaard kenmerk toewijzingen aanpassen op basis van de behoeften van uw bedrijf. U kunt dus bestaande kenmerk toewijzingen wijzigen of verwijderen, of nieuwe kenmerk toewijzingen maken. Zie voor meer informatie [Gebruikers inrichten kenmerk toewijzingen voor SaaS-toepassingen aanpassen](./customize-application-attributes.md).
 
 Wanneer u inrichting voor een SaaS-toepassing configureert, is een van de typen kenmerk toewijzingen die u kunt opgeven een expressie toewijzing. Voor deze toewijzingen moet u een script achtige expressie schrijven waarmee u de gegevens van uw gebruikers kunt transformeren naar indelingen die acceptabel zijn voor de SaaS-toepassing. Zie [expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)voor meer informatie.
 
@@ -81,13 +81,13 @@ U kunt bereik filters gebruiken om op kenmerken gebaseerde regels te definiëren
 
 ### <a name="b2b-guest-users"></a>B2B-gebruikers (gast)
 
-Het is mogelijk de Azure AD User Provisioning Service te gebruiken om B2B-gebruikers (of gast) in te richten in azure AD naar SaaS-toepassingen. Om B2B-gebruikers zich echter aan te melden bij de SaaS-toepassing met behulp van Azure AD, moet voor de SaaS-toepassing de mogelijkheid voor eenmalige aanmelding op basis van SAML op een specifieke manier zijn geconfigureerd. Zie voor meer informatie over het configureren van SaaS-toepassingen voor het ondersteunen van aanmeldingen van B2B-gebruikers [SaaS-apps configureren voor B2B-samen werking](../b2b/configure-saas-apps.md).
+Het is mogelijk de Azure AD User Provisioning Service te gebruiken om B2B-gebruikers (of gast) in te richten in azure AD naar SaaS-toepassingen. Om B2B-gebruikers zich echter aan te melden bij de SaaS-toepassing met behulp van Azure AD, moet voor de SaaS-toepassing de mogelijkheid voor eenmalige aanmelding op basis van SAML op een specifieke manier zijn geconfigureerd. Zie voor meer informatie over het configureren van SaaS-toepassingen voor het ondersteunen van aanmeldingen van B2B-gebruikers [SaaS-apps configureren voor B2B-samen werking](../external-identities/configure-saas-apps.md).
 
 Houd er rekening mee dat de userPrincipalName voor een gast gebruiker vaak wordt opgeslagen als ' alias # EXT # @domain.com '. Wanneer de userPrincipalName is opgenomen in uw kenmerk toewijzingen als bron kenmerk, wordt het #EXT # verwijderd uit de userPrincipalName. Als u wilt dat de #EXT # aanwezig is, vervangt u userPrincipalName door originalUserPrincipalName als bron kenmerk. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Inrichtings cycli: begin en incrementeel
 
-Wanneer Azure AD het bron systeem is, gebruikt de inrichtings service de [query voor het bijhouden van wijzigingen in Microsoft Graph gegevens](https://docs.microsoft.com/graph/delta-query-overview) voor het bewaken van gebruikers en groepen. De inrichtings service voert een eerste cyclus uit op het bron systeem en het doel systeem, gevolgd door periodieke incrementele cycli.
+Wanneer Azure AD het bron systeem is, gebruikt de inrichtings service de [query voor het bijhouden van wijzigingen in Microsoft Graph gegevens](/graph/delta-query-overview) voor het bewaken van gebruikers en groepen. De inrichtings service voert een eerste cyclus uit op het bron systeem en het doel systeem, gevolgd door periodieke incrementele cycli.
 
 ### <a name="initial-cycle"></a>Eerste cyclus
 
@@ -154,11 +154,11 @@ Los deze fouten op door de kenmerk waarden voor de betrokken gebruiker in het br
 
 ### <a name="quarantine"></a>Quarantaine
 
-Als de meeste of alle aanroepen die op het doel systeem worden uitgevoerd, consistent mislukken vanwege een fout (bijvoorbeeld ongeldige beheerders referenties), wordt de inrichtings taak de status ' quarantaine '. Deze status wordt aangegeven in het [overzichts rapport](../manage-apps/check-status-user-account-provisioning.md) van de inrichting en via e-mail als e-mail meldingen zijn geconfigureerd in de Azure Portal.
+Als de meeste of alle aanroepen die op het doel systeem worden uitgevoerd, consistent mislukken vanwege een fout (bijvoorbeeld ongeldige beheerders referenties), wordt de inrichtings taak de status ' quarantaine '. Deze status wordt aangegeven in het [overzichts rapport](./check-status-user-account-provisioning.md) van de inrichting en via e-mail als e-mail meldingen zijn geconfigureerd in de Azure Portal.
 
 In quarantaine wordt de frequentie van incrementele cycli geleidelijk per dag gereduceerd.
 
-De inrichtings taak verlaat quarantaine nadat alle foutieve fouten zijn opgelost en de volgende synchronisatie cyclus wordt gestart. Als de inrichtings taak langer dan vier weken in quarantaine blijft, wordt de inrichtings taak uitgeschakeld. Hier vindt u meer informatie over de [quarantaine status.](../manage-apps/application-provisioning-quarantine-status.md)
+De inrichtings taak verlaat quarantaine nadat alle foutieve fouten zijn opgelost en de volgende synchronisatie cyclus wordt gestart. Als de inrichtings taak langer dan vier weken in quarantaine blijft, wordt de inrichtings taak uitgeschakeld. Hier vindt u meer informatie over de [quarantaine status.](./application-provisioning-quarantine-status.md)
 
 ### <a name="how-long-provisioning-takes"></a>Hoelang inrichten duurt
 
@@ -166,7 +166,7 @@ De prestaties zijn afhankelijk van of uw inrichtings taak een initiële inrichti
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Hoe weet ik of gebruikers correct worden ingericht?
 
-Alle bewerkingen die worden uitgevoerd door de User Provisioning Service worden vastgelegd in de Azure AD [-inrichtings Logboeken (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). De logboeken bevatten alle Lees-en schrijf bewerkingen die zijn aangebracht op de bron-en doel systemen en de gebruikers gegevens die tijdens elke bewerking zijn gelezen of geschreven. Voor informatie over het lezen van de inrichtings Logboeken in de Azure Portal, raadpleegt u de [hand leiding](../manage-apps/check-status-user-account-provisioning.md)voor het inrichten van de rapportage.
+Alle bewerkingen die worden uitgevoerd door de User Provisioning Service worden vastgelegd in de Azure AD [-inrichtings Logboeken (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). De logboeken bevatten alle Lees-en schrijf bewerkingen die zijn aangebracht op de bron-en doel systemen en de gebruikers gegevens die tijdens elke bewerking zijn gelezen of geschreven. Voor informatie over het lezen van de inrichtings Logboeken in de Azure Portal, raadpleegt u de [hand leiding](./check-status-user-account-provisioning.md)voor het inrichten van de rapportage.
 
 ## <a name="de-provisioning"></a>De inrichting ongedaan maken
 
@@ -190,8 +190,8 @@ Als u een kenmerk IsSoftDeleted in uw kenmerk toewijzingen ziet, wordt dit gebru
 
 [Implementatie van een automatische gebruikersinrichting plannen](../app-provisioning/plan-auto-user-provisioning.md)
 
-[Inrichting configureren voor een galerie-app](../manage-apps/configure-automatic-user-provisioning-portal.md)
+[Inrichting configureren voor een galerie-app](./configure-automatic-user-provisioning-portal.md)
 
 [Een SCIM-eind punt bouwen en inrichten configureren bij het maken van uw eigen app](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[Problemen oplossen met het configureren en inrichten van gebruikers voor een toepassing](../manage-apps/application-provisioning-config-problem.md).
+[Problemen oplossen met het configureren en inrichten van gebruikers voor een toepassing](./application-provisioning-config-problem.md).

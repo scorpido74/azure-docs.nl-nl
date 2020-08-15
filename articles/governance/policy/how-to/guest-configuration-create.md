@@ -3,12 +3,12 @@ title: Beleidsregels voor gastconfiguratie voor Windows maken
 description: Meer informatie over het maken van een Azure Policy-gast configuratie beleid voor Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045124"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236536"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Beleidsregels voor gastconfiguratie voor Windows maken
 
@@ -16,7 +16,7 @@ Voordat u aangepaste beleids definities maakt, is het een goed idee om de concep
  
 Ga voor meer informatie over het maken van gast configuratie beleidsregels voor Linux naar de pagina [beleid voor gast configuratie maken voor Linux](./guest-configuration-create-linux.md)
 
-Bij het controleren van Windows gebruikt gast configuratie een resource module voor [desired state Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om het configuratie bestand te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevindt.
+Bij het controleren van Windows gebruikt gastconfiguratie de resourcemodule [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om het configuratiebestand te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevinden.
 Als de evaluatie van de configuratie mislukt, wordt het beleids effect **auditIfNotExists** geactiveerd en wordt de computer als **niet-compatibel**beschouwd.
 
 [Azure Policy-gast configuratie](../concepts/guest-configuration.md) kan alleen worden gebruikt voor het controleren van instellingen binnen machines. Herstel van instellingen binnen computers is nog niet beschikbaar.
@@ -26,7 +26,7 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 > [!IMPORTANT]
 > Aangepaste beleids regels met gast configuratie is een preview-functie.
 >
-> De gast configuratie-uitbrei ding is vereist voor het uitvoeren van controles op virtuele machines van Azure.
+> De gastconfiguratie-extensie is vereist voor het uitvoeren van controles op virtuele machines van Azure.
 > Als u de uitbrei ding op schaal op alle Windows-computers wilt implementeren, wijst u de volgende beleids definities toe:
 >   - [Vereisten voor het inschakelen van gastconfiguratiebeleid op Windows-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
@@ -106,9 +106,9 @@ De eigenschap redenen wordt door de service gebruikt om te standaardiseren hoe i
 De instellingen voor de eigenschappen **code** en de **term** worden verwacht door de service. Wanneer u een aangepaste resource ontwerpt, stelt u de tekst (meestal stdout) in die u wilt weer geven als de reden waarom de resource niet aan de voor waarden voor **woord groep**voldoet. **Code** heeft specifieke opmaak vereisten, zodat rapportage duidelijk informatie kan weer geven over de resource die wordt gebruikt om de controle uit te voeren. Met deze oplossing wordt de gast configuratie uitbreidbaar. Elke opdracht kan worden uitgevoerd zolang de uitvoer kan worden geretourneerd als een teken reeks waarde voor de eigenschap **phrase** .
 
 - **Code** (teken reeks): de naam van de resource, herhaald en vervolgens een korte naam zonder spaties als een id voor de reden. Deze drie waarden moeten door een dubbele punt worden gescheiden zonder spaties.
-  - Een voor beeld is`registry:registry:keynotpresent`
+  - Een voor beeld is `registry:registry:keynotpresent`
 - **Woordgroepen** (teken reeks): Lees bare tekst om uit te leggen waarom de instelling niet aan het beleid voldoet.
-  - Een voor beeld is`The registry key $key is not present on the machine.`
+  - Een voor beeld is `The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -307,6 +307,8 @@ Para meters van de `New-GuestConfigurationPolicy` cmdlet:
 - **Versie**: beleids versie.
 - **Pad**: doelpad voor het maken van beleids definities.
 - **Platform**: doel platform (Windows/Linux) voor gast configuratie beleid en inhouds pakket.
+- **Tag** voegt een of meer label filters toe aan de beleids definitie
+- **Categorie** stelt het veld meta gegevens van categorie in de beleids definitie in
 
 In het volgende voor beeld worden de beleids definities in een opgegeven pad van een aangepast beleids pakket gemaakt:
 
@@ -328,14 +330,6 @@ De volgende bestanden worden gemaakt door `New-GuestConfigurationPolicy` :
 - **Initiative.jsop**
 
 De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de beleids bestanden bevat.
-
-> [!Note]
-> De meest recente gast configuratie module bevat een nieuwe para meters:
-> - **Tag** voegt een of meer label filters toe aan de beleids definitie
->   - Zie de sectie [beleid voor gast configuratie filteren met behulp van Tags](#filtering-guest-configuration-policies-using-tags).
-> - **Categorie** stelt het veld meta gegevens van categorie in de beleids definitie in
->   - Als de para meter niet is opgenomen, wordt de gast configuratie standaard ingesteld op de categorie.
-> Deze functies zijn beschikbaar als preview-versie en vereisen 1.20.1 van de module gast configuratie, die kan worden geïnstalleerd met `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Ten slotte publiceert u de beleids definities met de `Publish-GuestConfigurationPolicy` cmdlet. De cmdlet heeft alleen de para meter **Path** die verwijst naar de locatie van de json-bestanden die zijn gemaakt door `New-GuestConfigurationPolicy` .
 
@@ -377,9 +371,6 @@ New-AzRoleDefinition -Role $role
 ```
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Beleid voor gast configuratie filteren met behulp van Tags
-
-> [!Note]
-> Deze functie is beschikbaar als preview-versie en vereist de 1.20.1 van de gast configuratie module, die kan worden geïnstalleerd met `Install-Module GuestConfiguration -AllowPrerelease` .
 
 De beleids definities die zijn gemaakt door cmdlets in de module gast configuratie kunnen eventueel een filter voor labels bevatten. De **tag** para meter van `New-GuestConfigurationPolicy` ondersteunt een matrix met hashtabellen die afzonderlijke tags bevatten. De tags worden toegevoegd aan de `If` sectie van de beleids definitie en kunnen niet worden gewijzigd door een beleids toewijzing.
 
@@ -439,10 +430,6 @@ New-GuestConfigurationPolicy
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>Gast configuratie uitbreiden met hulpprogram ma's van derden
-
-> [!Note]
-> Deze functie is beschikbaar als preview-versie en vereist de 1.20.3 van de gast configuratie module, die kan worden geïnstalleerd met `Install-Module GuestConfiguration -AllowPrerelease` .
-> In versie 1.20.3 is deze functie alleen beschikbaar voor beleids definities die Windows-computers controleren
 
 De artefact pakketten voor gast configuratie kunnen worden uitgebreid met hulpprogram ma's van derden.
 Het uitbreiden van de gast configuratie vereist het ontwikkelen van twee onderdelen.
@@ -574,11 +561,6 @@ Als u een update voor het beleid wilt vrijgeven, zijn er twee velden die aandach
 - **contentHash**: deze eigenschap wordt automatisch bijgewerkt door de `New-GuestConfigurationPolicy` cmdlet. Het is een hash-waarde van het pakket dat is gemaakt door `New-GuestConfigurationPackage` . De eigenschap moet correct zijn voor het `.zip` bestand dat u publiceert. Als alleen de eigenschap **contentUri** is bijgewerkt, wordt het inhouds pakket niet geaccepteerd door de extensie.
 
 De eenvoudigste manier om een bijgewerkt pakket vrij te geven, is het proces dat wordt beschreven in dit artikel herhalen en een bijgewerkt versie nummer opgeven. Dit proces garandeert dat alle eigenschappen correct zijn bijgewerkt.
-
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows-groepsbeleid inhoud converteren naar Azure Policy-gast configuratie
-
-Gast configuratie, bij het controleren van Windows-computers, is een implementatie van de desired state-configuratie syntaxis van Power shell. De DSC-Community heeft hulp middelen gepubliceerd voor het converteren van geëxporteerde groepsbeleid sjablonen naar de DSC-indeling. Als u dit hulp programma gebruikt in combi natie met de hierboven beschreven gast configuratie-cmdlets, kunt u Windows-groepsbeleid inhoud en-pakket converteren en publiceren voor Azure Policy naar controle. Voor meer informatie over het gebruik van het hulp programma raadpleegt u het artikel [Snelstartgids: Groepsbeleid converteren naar DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
-Nadat de inhoud is geconverteerd, zijn de bovenstaande stappen voor het maken van een pakket en het publiceren ervan als Azure Policy hetzelfde als de DSC-inhoud.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>Optioneel: gast configuratie pakketten ondertekenen
 

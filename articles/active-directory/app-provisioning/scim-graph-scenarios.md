@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 612663c2edc8aa7bc1eb3a2e4c8106b3e778a961
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781681"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235499"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>SCIM en Microsoft Graph samen gebruiken om gebruikers in te richten en uw toepassing te verrijken met de benodigde gegevens
 
-**Doel publiek:** Dit artikel is gericht op ontwikkel aars die toepassingen bouwen die moeten worden geïntegreerd met Azure Active Directory (Azure AD). Als u toepassingen wilt gebruiken die al zijn geïntegreerd met Azure AD, zoals zoomen, ServiceNow en DropBox, kunt u dit artikel overs Laan en de toepassingsspecifieke [zelf studies](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) controleren of nagaan [hoe de inrichtings service werkt](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
+**Doel publiek:** Dit artikel is gericht op ontwikkel aars die toepassingen bouwen die moeten worden geïntegreerd met Azure Active Directory (Azure AD). Als u toepassingen wilt gebruiken die al zijn geïntegreerd met Azure AD, zoals zoomen, ServiceNow en DropBox, kunt u dit artikel overs Laan en de toepassingsspecifieke [zelf studies](../saas-apps/tutorial-list.md) controleren of nagaan [hoe de inrichtings service werkt](./how-provisioning-works.md).
 
 **Algemene scenario's**
 
-Azure AD biedt een out-of-Box-Service voor het inrichten van en een uitbreidbaar platform voor het bouwen van uw toepassingen op. In de beslissings structuur wordt uitgelegd hoe een ontwikkelaar [scim](https://aka.ms/scimoverview) en de [Microsoft Graph](https://docs.microsoft.com/graph/overview) voor het automatiseren van de inrichting zou gebruiken. 
+Azure AD biedt een out-of-Box-Service voor het inrichten van en een uitbreidbaar platform voor het bouwen van uw toepassingen op. In de beslissings structuur wordt uitgelegd hoe een ontwikkelaar [scim](https://aka.ms/scimoverview) en de [Microsoft Graph](/graph/overview) voor het automatiseren van de inrichting zou gebruiken. 
 
 > [!div class="checklist"]
 > * Automatisch gebruikers in mijn toepassing maken
@@ -97,15 +97,15 @@ Mijn toepassing is afhankelijk van groepen voor toegang tot verschillende bronne
 ## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>Scenario 4: verrijken mijn app met gegevens van micro soft-Services, zoals teams, Outlook en OneDrive
 Mijn toepassing is in micro soft teams ingebouwd en is afhankelijk van bericht gegevens. Daarnaast slaan we bestanden voor gebruikers op in OneDrive. Hoe kan ik mijn toepassing verrijken met de gegevens van deze services en andere micro soft?
 
-**Aanbeveling:** De [Microsoft Graph](https://docs.microsoft.com/graph/) is uw toegangs punt voor toegang tot micro soft-gegevens. Elke werk belasting stelt Api's beschikbaar met de gegevens die u nodig hebt. De micro soft Graph kan worden gebruikt samen met [scim-inrichting](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) voor de bovenstaande scenario's. U kunt SCIM gebruiken om basis gebruikers kenmerken in uw toepassing in te richten terwijl u een grafiek aanroept om andere gegevens te verkrijgen die u nodig hebt. 
+**Aanbeveling:** De [Microsoft Graph](/graph/) is uw toegangs punt voor toegang tot micro soft-gegevens. Elke werk belasting stelt Api's beschikbaar met de gegevens die u nodig hebt. De micro soft Graph kan worden gebruikt samen met [scim-inrichting](./use-scim-to-provision-users-and-groups.md) voor de bovenstaande scenario's. U kunt SCIM gebruiken om basis gebruikers kenmerken in uw toepassing in te richten terwijl u een grafiek aanroept om andere gegevens te verkrijgen die u nodig hebt. 
 
 ## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>Scenario 5: wijzigingen bijhouden in micro soft-services zoals teams, Outlook en Azure AD
 Ik moet wijzigingen in teams en Outlook-berichten kunnen bijhouden en in real-time kunnen reageren. Hoe kan ik deze wijzigingen naar mijn toepassing laten pushen?
 
-**Aanbeveling:** De Microsoft Graph biedt [wijzigings meldingen](https://docs.microsoft.com/graph/webhooks) en het [bijhouden van wijzigingen](https://docs.microsoft.com/graph/delta-query-overview) voor verschillende resources. Houd rekening met de volgende beperkingen van wijzigings meldingen:
+**Aanbeveling:** De Microsoft Graph biedt [wijzigings meldingen](/graph/webhooks) en het [bijhouden van wijzigingen](/graph/delta-query-overview) voor verschillende resources. Houd rekening met de volgende beperkingen van wijzigings meldingen:
 - Als een gebeurtenis ontvanger een gebeurtenis erkent, maar om een bepaalde reden niet kan reageren, kan de gebeurtenis verloren gaan.
 - De volg orde waarin wijzigingen worden ontvangen, is niet gegarandeerd chronologisch.
-- Wijzigings meldingen bevatten niet altijd de [resource gegevens](https://docs.microsoft.com/graph/webhooks-with-resource-data) voor de bovenstaande redenen, ontwikkel aars gebruiken vaak wijzigings meldingen en wijzigingen bijhouden voor synchronisatie scenario's. 
+- Wijzigings meldingen bevatten niet altijd de [resource gegevens](/graph/webhooks-with-resource-data) voor de bovenstaande redenen, ontwikkel aars gebruiken vaak wijzigings meldingen en wijzigingen bijhouden voor synchronisatie scenario's. 
 
 ## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>Scenario 6: gebruikers en groepen in azure AD inrichten
 Mijn toepassing maakt informatie over een gebruiker die klanten nodig hebben in azure AD. Dit kan een HR-toepassing zijn dan het beheren van huren, een communicatie-app waarmee telefoon nummers voor gebruikers worden gemaakt, of een andere app die gegevens genereert die waardevol zouden zijn in azure AD. De gebruikers record in azure AD Hoe kan ik vullen met die gegevens? 
@@ -117,5 +117,5 @@ Mijn toepassing maakt informatie over een gebruiker die klanten nodig hebben in 
 
 ## <a name="related-articles"></a>Verwante artikelen:
 
-- [Raadpleeg de documentatie voor synchronisatie Microsoft Graph](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Raadpleeg de documentatie voor synchronisatie Microsoft Graph](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Een aangepaste SCIM-app integreren met Azure AD](use-scim-to-provision-users-and-groups.md)

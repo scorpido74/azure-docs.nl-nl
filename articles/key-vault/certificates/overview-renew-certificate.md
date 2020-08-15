@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: beea6f7472d6bc871b4a2df323445b05671a621f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: bbd65cdfc7c8ebbc08b914158577337cc49ec887
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224557"
+ms.locfileid: "88236060"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Over Azure Key Vault certificaat vernieuwen
 
@@ -64,7 +64,7 @@ Als het certificaat dat is uitgegeven de status uitgeschakeld heeft in de Azure 
   Maak een certificaat met een geldigheids duur van 1 maand en stel vervolgens de actie voor de levens duur voor rotatie in op 1%. Met deze instelling wordt het certificaat binnen 7,2 uur geroteerd.
   
 * Worden de labels gerepliceerd nadat het certificaat automatisch is vernieuwd?
-  Nee, tags worden alleen gerepliceerd als de gebruiker de labels zelf hand matig kopieert.
+  Ja, de tags worden gerepliceerd na het automatisch verlengen.
 
 ### <a name="see-also"></a>Zie ook
 *   [Key Vault integreren met DigiCert-certificeringsinstantie](how-to-integrate-certificate-authority.md)

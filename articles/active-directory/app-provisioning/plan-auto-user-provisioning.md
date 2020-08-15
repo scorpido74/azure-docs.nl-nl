@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445647"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235694"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -50,7 +50,7 @@ Azure AD biedt Self-Service-integratie van elke toepassing met behulp van sjablo
 
 U hebt de juiste licenties nodig voor de toepassing (en) die u automatisch wilt inrichten. Bespreek met de eigen aren van de toepassing of de gebruikers die zijn toegewezen aan de toepassing, over de juiste licenties beschikken voor hun toepassings rollen. Als Azure AD automatische inrichting beheert op basis van rollen, moeten de rollen die zijn toegewezen in azure AD worden uitgelijnd op toepassings licenties. Onjuiste licenties die eigendom zijn van de toepassing, kunnen leiden tot fouten tijdens het inrichten/bijwerken van een gebruiker.
 
-### <a name="terms"></a>Voorwaarden
+### <a name="terms"></a>Termen
 
 In dit artikel worden de volgende termen gebruikt:
 
@@ -70,7 +70,7 @@ In dit artikel worden de volgende termen gebruikt:
 | - | - |
 | Webinars op aanvraag| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
 | Video's| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
-| Online cursussen| SkillUp online: [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
+| Online cursussen| SkillUp online:  [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
 | Books| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
 | Zelfstudies| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md). |
 | Veelgestelde vragen| [Veelgestelde vragen](../app-provisioning/user-provisioning.md) over het automatisch inrichten van gebruikers |
@@ -157,7 +157,7 @@ De stappen die nodig zijn om automatische inrichting in te scha kelen en te conf
 
 Als dat niet het geval is, volgt u de onderstaande stappen:
 
-1. [Een aanvraag maken](../develop/howto-app-gallery-listing.md) voor een vooraf geïntegreerde User Provisioning connector. Ons team zal samen werken met u en met de ontwikkelaar van de toepassing om uw toepassing op ons platform uit te laten staan als SCIM wordt ondersteund.
+1. [Een aanvraag maken](../azuread-dev/howto-app-gallery-listing.md) voor een vooraf geïntegreerde User Provisioning connector. Ons team zal samen werken met u en met de ontwikkelaar van de toepassing om uw toepassing op ons platform uit te laten staan als SCIM wordt ondersteund.
 
 1. Gebruik de algemene ondersteuning voor het inrichten van [BYOA scim](../app-provisioning/use-scim-to-provision-users-and-groups.md) voor de app. Dit is een vereiste voor Azure AD om gebruikers in te richten op de app zonder vooraf geïntegreerde inrichtings connector.
 

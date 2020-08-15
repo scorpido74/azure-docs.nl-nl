@@ -3,12 +3,12 @@ title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554348"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235975"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -42,7 +42,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | Service/api's/problemen/bijlagen | name | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/problemen/opmerkingen | name | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/bewerkingen | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/bewerkingen/Tags | schijf | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
+> | Service/api's/bewerkingen/Tags | bewerking | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/releases | api | 1-80 | Alfanumeriek, onderstrepings tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumeriek of onderstrepings teken. |
 > | Service/api's/schema's | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/tagDescriptions | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
@@ -392,6 +392,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
+> | actionGroups | resourcegroep | 1-260 | Kan niet gebruiken:<br>`/` <br><br>Kan niet eindigen met een spatie of een punt.  |
 > | materialen | resourcegroep | 1-260 | Kan niet gebruiken:<br>`%&\?/` <br><br>Kan niet eindigen met een spatie of een punt.  |
 
 ## <a name="microsoftiotcentral"></a>Micro soft. IoTCentral
@@ -652,7 +653,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | Storage accounts/managementPolicies | opslagaccount |  | Moet zijn `default` . |
 > | blob | container | 1-1024 | Wille keurige URL-tekens, hoofdletter gevoelig |
 > | wachtrij | opslagaccount | 3-63 | Kleine letters, cijfers en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. Kan geen opeenvolgende afbreek streepjes gebruiken. |
-> | tabel | opslagaccount | 3-63 | Alfanumerieke tekens.<br><br>Begin met letter. |
+> | table | opslagaccount | 3-63 | Alfanumerieke tekens.<br><br>Begin met letter. |
 
 ## <a name="microsoftstoragesync"></a>Micro soft. StorageSync
 
@@ -695,6 +696,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
+> | certificaten | resourcegroep | 1-260 | Kan niet gebruiken:<br>`/` <br><br>Kan niet eindigen met een spatie of een punt.  | 
 > | server farms | resourcegroep | 1-40 | Alfanumerieke tekens en afbreek streepjes. |
 > | sites | internationaal | 2-60 | Bevat alfanumerieke tekens en afbreek streepjes.<br><br>Kan niet beginnen of eindigen met een afbreek streepje. |
 > | sites/sleuven | site | 2-59 | Alfanumerieke tekens en afbreek streepjes. |

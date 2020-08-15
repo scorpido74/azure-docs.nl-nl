@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40809fae312401cb62fabb10140b9bb7f60e3715
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743572"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234768"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Veelvoorkomende problemen met route ring oplossen
 
@@ -102,7 +102,7 @@ Er zijn verschillende mogelijke oorzaken voor dit symptoom:
          - Als de back-end alleen HTTP-aanvragen accepteert, zijn de volgende configuraties geldig:
             - _Geaccepteerde protocollen_ zijn http en HTTPS. _Protocol voor door sturen_ is http. De overeenkomst werkt niet, omdat HTTPS een toegestaan protocol is en als er een aanvraag is ontvangen als HTTPS, probeert de voor deur de aanvraag door te sturen via HTTPS.
 
-            - _Geaccepteerde protocollen_ zijn http. Het _doorstuur protocol_ komt overeen met de aanvraag of https.
+            - _Geaccepteerde protocollen_ zijn http. Het _doorstuur protocol_ komt overeen met de aanvraag of http.
 
     - Het opnieuw schrijven van de _URL_ is standaard uitgeschakeld en u moet dit veld alleen gebruiken als u het bereik van op back-gehoste bronnen wilt beperken dat u beschikbaar wilt maken. Als deze functie is uitgeschakeld, stuurt de voor deur hetzelfde aanvraag traject dat het ontvangt. Het is mogelijk dat dit veld onjuist is geconfigureerd en dat de voor deur een bron aanvraagt vanaf de back-end die niet beschikbaar is, waardoor een HTTP 404-status code wordt geretourneerd.
 

@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7e7f8ded24e71fec8ed6bfbc78f9057ddb98dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781987"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234836"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Het inrichten van gebruikers accounts voor zakelijke apps beheren in de Azure Portal
 
 In dit artikel worden de algemene stappen beschreven voor het beheren van het automatisch inrichten van gebruikers accounts en het ongedaan maken van de inrichting voor toepassingen die deze ondersteunen. Het inrichten van een *gebruikers account* is het maken, bijwerken en/of uitschakelen van gebruikers account records in het lokale gebruikers profiel archief van een toepassing. De meeste Cloud-en SaaS-toepassingen slaan de rollen en machtigingen van de gebruiker op in het eigen lokale gebruikers profiel archief en de aanwezigheid van een dergelijke gebruikers record in het lokale archief van de gebruiker is *vereist* voor eenmalige aanmelding en toegang tot het werk. Voor meer informatie over automatische toewijzing van gebruikers accounts raadpleegt [u het automatiseren van gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen met Azure Active Directory](user-provisioning.md).
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) bevat een galerie met duizenden vooraf geïntegreerde toepassingen die zijn ingeschakeld voor automatische inrichting met Azure AD. U moet beginnen met het vinden van de zelf studie voor het inrichten van de inrichting die specifiek is voor uw toepassing in de [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/). U vindt waarschijnlijk stapsgewijze richt lijnen voor het configureren van zowel de app als Azure AD om de inrichtings verbinding te maken.
+> Azure Active Directory (Azure AD) bevat een galerie met duizenden vooraf geïntegreerde toepassingen die zijn ingeschakeld voor automatische inrichting met Azure AD. U moet beginnen met het vinden van de zelf studie voor het inrichten van de inrichting die specifiek is voor uw toepassing in de [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](../saas-apps/tutorial-list.md). U vindt waarschijnlijk stapsgewijze richt lijnen voor het configureren van zowel de app als Azure AD om de inrichtings verbinding te maken.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Uw apps zoeken in de portal
 
@@ -83,6 +83,6 @@ U kunt de Azure AD-inrichtings service voor de geselecteerde toepassing starten 
 
 Als het inrichten voor de eerste keer voor een toepassing wordt ingeschakeld, schakelt u de service in door de **inrichtings status** te wijzigen in **op aan**. Deze wijziging zorgt ervoor dat de Azure AD-inrichtings service een eerste cyclus uitvoert. Het leest de gebruikers die zijn toegewezen in de sectie **gebruikers en groepen** , vraagt de doel toepassing voor ze en voert vervolgens de inrichtings acties uit die zijn gedefinieerd in de sectie Azure AD- **toewijzingen** . Tijdens dit proces slaat de inrichtings service gegevens op in het cache geheugen over de gebruikers accounts die worden beheerd. niet-beheerde accounts in de doel toepassingen die nooit binnen het bereik van de toewijzing vallen, worden niet beïnvloed door de inrichtings bewerkingen. Na de eerste cyclus synchroniseert de inrichtings service automatisch gebruikers-en groeps objecten met een interval van 40 minuten.
 
-Wijzig de **inrichtings status** in **uit** om de inrichtings service te onderbreken. In deze status wordt in azure geen gebruikers-of groeps objecten in de app gemaakt, bijgewerkt of verwijderd. Wijzig de status weer **in op** en de service wordt opgehaald waar deze is gestopt.
+Wijzig de **inrichtings status** in **uit**  om de inrichtings service te onderbreken. In deze status wordt in azure geen gebruikers-of groeps objecten in de app gemaakt, bijgewerkt of verwijderd. Wijzig de status weer **in op** en de service wordt opgehaald waar deze is gestopt.
 
-De **huidige status wissen en de synchronisatie opnieuw starten** genereert een eerste cyclus. De service evalueert vervolgens alle gebruikers in het bron systeem opnieuw en bepaalt of ze binnen het bereik van de inrichting vallen. Dit kan handig zijn als uw toepassing zich momenteel in quarantaine bevindt of als u een wijziging wilt aanbrengen in uw kenmerk toewijzingen. Houd er rekening mee dat de eerste cyclus langer duurt dan de typische incrementele cyclus als gevolg van het aantal objecten dat moet worden geëvalueerd. [Hier](application-provisioning-when-will-provisioning-finish-specific-user.md)vindt u meer informatie over de prestaties van de eerste en incrementele cycli. 
+De **huidige status wissen en de synchronisatie opnieuw starten** genereert een eerste cyclus. De service evalueert vervolgens alle gebruikers in het bron systeem opnieuw en bepaalt of ze binnen het bereik van de inrichting vallen. Dit kan handig zijn als uw toepassing zich momenteel in quarantaine bevindt of als u een wijziging wilt aanbrengen in uw kenmerk toewijzingen. Houd er rekening mee dat de eerste cyclus langer duurt dan de typische incrementele cyclus als gevolg van het aantal objecten dat moet worden geëvalueerd. [Hier](application-provisioning-when-will-provisioning-finish-specific-user.md)vindt u meer informatie over de prestaties van de eerste en incrementele cycli.

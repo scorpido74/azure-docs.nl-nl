@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533534"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236298"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -85,6 +85,9 @@ Nadat u de bestanden hebt geïdentificeerd en deze naar een lokale opslag locati
 Zodra de schijven zijn ontkoppeld, ontvangt u een bericht. Het kan enkele minuten duren voordat de verbinding is vernieuwd, zodat u de schijven kunt verwijderen.
 
 Nadat de verbinding met het herstel punt in Linux is verbroken, worden de bijbehorende koppel paden niet automatisch door het besturings systeem verwijderd. De koppel paden bestaan als ' zwevende ' volumes en zijn zichtbaar, maar er treedt een fout op wanneer u de bestanden opent/schrijft. Ze kunnen hand matig worden verwijderd. Het script, wanneer dit wordt uitgevoerd, identificeert alle volumes die bestaan uit eerdere herstel punten en ruimt deze op bij toestemming.
+
+> [!NOTE]
+> Zorg ervoor dat de verbinding is gesloten nadat de vereiste bestanden zijn hersteld. Dit is belang rijk, met name in het scenario waarin de computer waarop het script wordt uitgevoerd, ook is geconfigureerd voor back-up. Als de verbinding nog is geopend, kan de volgende back-up mislukken met de fout ' UserErrorUnableToOpenMount '. Dit gebeurt omdat de gekoppelde stations/volumes beschikbaar zijn en wanneer ze worden geopend. Dit kan mislukken omdat de onderliggende opslag, de iSCSI-doel server, mogelijk niet beschikbaar is. Als u de verbinding opschoont, worden deze stations/volumes verwijderd, waardoor deze niet beschikbaar zijn tijdens het maken van de back-up.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>De juiste computer selecteren om het script uit te voeren
 
@@ -242,7 +245,7 @@ De volgende opdracht geeft details weer over alle RAID-schijven:
 mdadm –detail –scan
 ```
 
- De relevante RAID-schijf wordt weer gegeven als`/dev/mdm/<RAID array name in the protected VM>`
+ De relevante RAID-schijf wordt weer gegeven als `/dev/mdm/<RAID array name in the protected VM>`
 
 Gebruik de opdracht mount als de RAID-schijf fysieke volumes heeft:
 
@@ -300,10 +303,10 @@ Als u het script uitvoert op een computer met beperkte toegang, moet u toegang h
 
 - `download.microsoft.com`
 - Url's van de Recovery service (geo-naam verwijst naar de regio waar de Recovery service-kluis zich bevindt)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Voor open bare Azure-regio's)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn`(Voor Azure China 21Vianet)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us`(Voor Azure Amerikaanse overheid)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de`(Voor Azure Duitsland)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Voor open bare Azure-regio's)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Voor Azure China 21Vianet)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Voor Azure Amerikaanse overheid)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Voor Azure Duitsland)
 - Uitgaande poorten 53 (DNS), 443, 3260
 
 > [!NOTE]

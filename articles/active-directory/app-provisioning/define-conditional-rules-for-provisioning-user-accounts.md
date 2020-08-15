@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781953"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235805"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
 In dit artikel wordt uitgelegd hoe u bereik filters gebruikt voor het definiëren van op kenmerken gebaseerde regels die bepalen welke gebruikers worden ingericht voor een toepassing.
@@ -86,7 +86,7 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 
    f. **is niet null**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet leeg is.
 
-   bijvoorbeeld **regex match**. -Component retourneert ' True ' als het geëvalueerde kenmerk overeenkomt met een reguliere-expressie patroon. Bijvoorbeeld: ([1-9] [0-9]) komt overeen met een getal tussen 10 en 99.
+   g. **regex match**. -Component retourneert ' True ' als het geëvalueerde kenmerk overeenkomt met een reguliere-expressie patroon. Bijvoorbeeld: ([1-9] [0-9]) komt overeen met een getal tussen 10 en 99.
 
    h. **geen regex-overeenkomst**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet overeenkomt met een reguliere-expressie patroon.
    
@@ -94,7 +94,7 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
    
    j. **Greater_Than_OR_EQUALS.** -Component retourneert ' True ' als het geëvalueerde kenmerk groter is dan of gelijk is aan de waarde. De waarde die is opgegeven voor het filter bereik moet een geheel getal zijn en het kenmerk van de gebruiker moet een geheel getal zijn [0, 1, 2,...]. 
    
-   k. **Neem.** -Component retourneert ' True ' als het geëvalueerde kenmerk de teken reeks waarde (hoofdletter gevoelig) bevat, zoals [hier](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)wordt beschreven. 
+   k. **Neem.** -Component retourneert ' True ' als het geëvalueerde kenmerk de teken reeks waarde (hoofdletter gevoelig) bevat, zoals [hier](/dotnet/api/system.string.contains?view=netframework-4.8)wordt beschreven. 
 
 
 >[!IMPORTANT] 
@@ -130,4 +130,3 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 * [Meldingen voor het inrichten van accounts](../app-provisioning/user-provisioning.md)
 * [Gebruik SCIM om automatische inrichting van gebruikers en groepen in te scha kelen van Azure Active Directory naar toepassingen](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
-

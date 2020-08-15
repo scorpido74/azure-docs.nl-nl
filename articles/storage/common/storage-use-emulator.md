@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: e50c1e3efc33fb761068b3009979079b2ba4b760
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 3bef3ba1e993d91fee8b6f6ef2734f008c91d1a1
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447153"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236825"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>De Azure-opslag emulator gebruiken voor ontwikkelen en testen
 
@@ -42,7 +42,7 @@ Er zijn enkele verschillen in functionaliteit tussen de opslag-emulator en Azure
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>De opslag emulator starten en initialiseren
 
-De Azure-opslag emulator starten:
+De Azure Storage-emulator starten:
 
 1. Selecteer de knop **Start** of druk op de **Windows** -toets.
 2. Begin met typen `Azure Storage Emulator` .
@@ -150,9 +150,9 @@ Het volgende adres kan bijvoorbeeld worden gebruikt om toegang te krijgen tot ee
 
 De service-eind punten voor de opslag emulator zijn:
 
-* Blob service:`http://127.0.0.1:10000/<account-name>/<resource-path>`
-* Queue-service:`http://127.0.0.1:10001/<account-name>/<resource-path>`
-* Table service:`http://127.0.0.1:10002/<account-name>/<resource-path>`
+* Blob service: `http://127.0.0.1:10000/<account-name>/<resource-path>`
+* Queue-service: `http://127.0.0.1:10001/<account-name>/<resource-path>`
+* Table service: `http://127.0.0.1:10002/<account-name>/<resource-path>`
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>Adresseren van het account secundair met RA-GRS
 
@@ -320,7 +320,7 @@ Er zijn geen verschillen die specifiek zijn voor de wachtrij opslag in de emulat
 
 * Geografisch redundante opslag met lees toegang (RA-GRS) wordt nu ondersteund in de-opslag emulator. De `Get Blob Service Stats` -, `Get Queue Service Stats` -en- `Get Table Service Stats` api's worden ondersteund voor het account secundair en retour neren altijd de waarde van het LastSyncTime-antwoord element als de huidige tijd volgens de onderliggende SQL database. Gebruik de Storage-client bibliotheek voor .NET versie 3,2 of hoger voor programmatische toegang tot de secundaire met de opslag emulator. Zie de Microsoft Azure Storage-client bibliotheek voor .NET-referentie voor meer informatie.
 
-### <a name="version-30"></a>Versie 3,0
+### <a name="version-30"></a>Versie 3.0
 
 * De Azure-opslag emulator wordt niet meer in hetzelfde pakket geleverd als de compute-emulator.
 * De Graphical User Interface van de opslag-emulator is afgeschaft. Het is vervangen door een script bare opdracht regel interface. Zie voor meer informatie over de opdracht regel interface Naslag informatie over het opdracht regel hulpprogramma van Storage emulator. De grafische interface blijft aanwezig in versie 3,0, maar kan alleen worden geopend wanneer de compute emulator wordt geïnstalleerd door met de rechter muisknop op het pictogram van het systeemvak te klikken en de gebruikers interface van de opslag emulator weer geven te selecteren.

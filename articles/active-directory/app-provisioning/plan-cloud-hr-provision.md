@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445561"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235688"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting
 
@@ -56,7 +56,7 @@ De integratie van Cloud-apps met Azure AD-gebruikers inrichten is in het ideale 
 
 Gebruikers inrichten maakt een basis voor de voortdurende identiteits bestuur. Het verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens.
 
-### <a name="terms"></a>Voorwaarden
+### <a name="terms"></a>Termen
 
 In dit artikel worden de volgende termen gebruikt:
 
@@ -81,7 +81,7 @@ U hebt ook een geldige licentie voor Azure AD Premium P1 of hoger nodig voor elk
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Azure AD [Hybrid Identity Administrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) to configure the Azure AD Connect inrichtings agent.
+- Azure AD [Hybrid Identity Administrator](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  to configure the Azure AD Connect inrichtings agent.
 - De rol van de Azure AD- [toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) voor het configureren van de inrichtings-app in de Azure Portal
 - Een test-en productie-exemplaar van de Cloud-HR-app.
 - Beheerders machtigingen in de Cloud HR-app om een systeem integratie gebruiker te maken en wijzigingen aan te brengen voor het testen van werknemers gegevens voor test doeleinden.
@@ -167,7 +167,7 @@ De inrichtings integratie tussen de Cloud HR-app en Active Directory vereist vie
 - Inrichtings agent Azure AD Connect
 - Active Directory-domein
 
-De implementatie topologie voor de Azure AD Connect-inrichtings agent is afhankelijk van het aantal tenants in de Cloud-app voor apps en Active Directory onderliggende domeinen die u wilt integreren. Als u meerdere Active Directory domeinen hebt, is het afhankelijk van het feit of de Active Directory domeinen aaneengesloten of [gescheiden](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)zijn.
+De implementatie topologie voor de Azure AD Connect-inrichtings agent is afhankelijk van het aantal tenants in de Cloud-app voor apps en Active Directory onderliggende domeinen die u wilt integreren. Als u meerdere Active Directory domeinen hebt, is het afhankelijk van het feit of de Active Directory domeinen aaneengesloten of [gescheiden](/windows-server/identity/ad-ds/plan/disjoint-namespace)zijn.
 
 Kies op basis van uw beslissing een van de implementatie scenario's:
 
@@ -313,7 +313,7 @@ Als de waarde voor de gemeente van Rotterdam, Austin, Amsterdam of Londen is ing
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Plannen voor het leveren van wacht woorden van nieuwe gebruikers accounts
 
-Wanneer u het proces voor samen voegers initieert, moet u een tijdelijk wacht woord voor nieuwe gebruikers accounts instellen en leveren. Met Cloud HR naar Azure AD-gebruikers inrichten kunt u de Azure AD selfservice-functie voor het [opnieuw instellen van wacht woorden](../authentication/quickstart-sspr.md) (SSPR) voor de gebruiker op de eerste dag implementeren.
+Wanneer u het proces voor samen voegers initieert, moet u een tijdelijk wacht woord voor nieuwe gebruikers accounts instellen en leveren. Met Cloud HR naar Azure AD-gebruikers inrichten kunt u de Azure AD selfservice-functie voor het [opnieuw instellen van wacht woorden](../authentication/tutorial-enable-sspr.md) (SSPR) voor de gebruiker op de eerste dag implementeren.
 
 SSPR is een eenvoudige manier om IT-beheerders in staat te stellen hun wacht woorden opnieuw in te stellen of hun accounts te ontgrendelen. U kunt het kenmerk **mobiele nummer** in de Cloud-app inrichten om Active Directory te maken en te synchroniseren met Azure AD. Nadat het **mobiele nummer** kenmerk in azure AD is gedefinieerd, kunt u SSPR inschakelen voor het account van de gebruiker. Vervolgens kan de nieuwe gebruiker op de eerste dag het geregistreerde en geverifieerde mobiele nummer voor verificatie gebruiken.
 

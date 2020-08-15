@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810000"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236094"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -166,7 +166,7 @@ Ja. U kunt de verbinding verbreken instellen om leden binnen een back-end-groep 
 
 Ja.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Wordt Application Gateway altijd geïmplementeerd in een virtueel netwerk?
 
@@ -259,7 +259,7 @@ Voor beeld van NSG-configuratie voor alleen persoonlijke IP-toegang: ![ Applicat
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Welke certificaten ondersteunt Application Gateway?
 
-Application Gateway ondersteunt zelfondertekende certificaten, certificaten van CERTIFICERINGs instanties, certificaten voor uitgebreide validatie (EV) en Joker certificaten.
+Application Gateway ondersteunt zelfondertekende certificaten, certificaten van certificerings instanties, certificaten voor uitgebreide validatie (EV), certificaten voor meerdere domeinen (SAN) en Joker certificaten.
 
 ### <a name="what-cipher-suites-does-application-gateway-support"></a>Welke coderings suites ondersteunt Application Gateway?
 
@@ -346,7 +346,7 @@ De browser van de certificerings instantie (CA) meldt recent rapporten die zijn 
 
 Conform de nalevings vereisten van de branche begon de leveranciers van de certificerings instantie niet-compatibele certificerings instanties aan te roepen en certificaten te verlenen die voldoen aan het beleid.Micro soft werkt nauw samen met deze leveranciers om de potentiële impact op Azure-Services te minimaliseren, **maar uw zelf verleende certificaten of certificaten die worden gebruikt in de scenario's ' uw eigen certificaat gebruiken ' (BYOC) zijn nog steeds kwetsbaar voor onverwacht gebruik**.
 
-Als u wilt controleren of de certificaten die door uw toepassing worden gebruikt, zijn ingetrokken, geeft u de [aankondiging van de DigiCert](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) en de [intrekkings tracering](https://misissued.com/#revoked)voor het certificaat op. Als uw certificaten zijn ingetrokken of worden ingetrokken, moet u nieuwe certificaten aanvragen bij de CA-leverancier die in uw toepassingen wordt gebruikt. Als u wilt voor komen dat de beschik baarheid van uw toepassing wordt onderbroken omdat de certificaten onverwacht zijn ingetrokken, of als u een ingetrokken certificaat wilt bijwerken, raadpleegt u de Azure updates post voor herstel koppelingen van verschillende Azure-Services die ondersteuning bieden voor BYOC:https://azure.microsoft.com/updates/certificateauthorityrevocation/
+Als u wilt controleren of de certificaten die door uw toepassing worden gebruikt, zijn ingetrokken, geeft u de [aankondiging van de DigiCert](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) en de [intrekkings tracering](https://misissued.com/#revoked)voor het certificaat op. Als uw certificaten zijn ingetrokken of worden ingetrokken, moet u nieuwe certificaten aanvragen bij de CA-leverancier die in uw toepassingen wordt gebruikt. Als u wilt voor komen dat de beschik baarheid van uw toepassing wordt onderbroken omdat de certificaten onverwacht zijn ingetrokken, of als u een ingetrokken certificaat wilt bijwerken, raadpleegt u de Azure updates post voor herstel koppelingen van verschillende Azure-Services die ondersteuning bieden voor BYOC: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
 Zie hieronder voor Application Gateway specifieke informatie.
 

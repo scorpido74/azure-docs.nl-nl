@@ -1,6 +1,6 @@
 ---
 title: Overzicht van SQL Server op virtuele Windows-machines in Azure | Microsoft Docs
-description: Meer informatie over het uitvoeren van volledige SQL Server-edities op Azure Virtual Machines.
+description: Meer informatie over het uitvoeren van volledige versies van SQL Server op Azure Virtual Machines in de Cloud, zonder dat u on-premises hardware hoeft te beheren.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 161722d1f80e4bada35548b4e2b4e903c56215ec
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926687"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236366"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Wat is SQL Server op Azure Virtual Machines (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +57,7 @@ Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine v
 > [!TIP]
 > Zie [prijs informatie voor SQL Server op Azure virtual machines](pricing-guidance.md)voor meer informatie over het begrijpen van de prijzen voor SQL Server installatie kopieën. 
 
-### <a name="pay-as-you-go"></a><a id="payasyougo"></a>Betalen naar gebruik
+### <a name="pay-as-you-go"></a><a id="payasyougo"></a> Betalen naar gebruik
 De volgende tabel bevat een matrix met SQL Server-installatiekopieën voor betalen naar gebruik.
 
 | Versie | Besturingssysteem | Editie |
@@ -74,7 +74,7 @@ Zie [overzicht van SQL Server op Azure virtual machines (Linux)](../linux/sql-se
 > [!NOTE]
 > Het is nu mogelijk om de licentie voor een SQL Server-VM waarbij per gebruik wordt betaald, te wijzigen in uw eigen licentie. Zie [How to Change the License model for a SQL Server VM](licensing-model-azure-hybrid-benefit-ahb-change.md)(Engelstalig) voor meer informatie. 
 
-### <a name="bring-your-own-license"></a><a id="BYOL"></a>Bring Your Own License
+### <a name="bring-your-own-license"></a><a id="BYOL"></a> Bring Your Own License
 U kunt ook uw eigen licentie gebruiken (Bring Your Own Licence, BYOL). In dit scenario betaalt u alleen voor de virtuele machine, zonder eventuele extra kosten voor SQL Server-licentieverlening.  Als u uw eigen licentie hebt, kan dit u in de loop van de tijd geld besparen voor doorlopende productieworkloads. Zie [Prijsinformatie voor Azure VM's van SQL Server](pricing-guidance.md#byol) voor de vereisten om van deze optie gebruik te maken.
 
 Als u uw eigen licentie wilt gebruiken, kunt u een bestaande met betalen per gebruik SQL Server virtuele machine converteren of kunt u een installatie kopie met de vooraf vastgestelde **{BYOL}** implementeren. Zie [How to Change the License model for a SQL Server VM](licensing-model-azure-hybrid-benefit-ahb-change.md)(Engelstalig) voor meer informatie over het overschakelen van uw licentie model tussen betalen per gebruik en BYOL. 
@@ -128,7 +128,7 @@ Zie deze artikelen voor meer informatie:
 - [Een beheerd exemplaar maken](../../managed-instance/instance-create-quickstart.md)
 - [Een SQL Server virtuele machine maken](sql-vm-create-portal-quickstart.md)
 
-## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a>Beleid voor vernieuwen van VM-installatie kopie SQL Server
+## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> Beleid voor vernieuwen van VM-installatie kopie SQL Server
 Azure onderhoudt slechts één installatiekopie van een virtuele machine voor elk ondersteunde combinatie van besturingssysteem, versie en editie. Dit betekent dat installatiekopieën na verloop van tijd worden vernieuwd en dat oudere installatiekopieën worden verwijderd. Zie de sectie **Installatiekopieën** in de [veelgestelde vragen over virtuele machines met SQL Server](frequently-asked-questions-faq.md#images) voor meer informatie.
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Programma voor kwaliteitsverbetering (CEIP)

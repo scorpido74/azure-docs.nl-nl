@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203013"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235057"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>De status van het inrichten van gebruikers controleren
 
@@ -30,7 +30,7 @@ Wanneer u voor het eerst automatische inrichting configureert, ziet u in de sect
 - Het type inrichtings cyclus (eerste of incrementeel) dat momenteel wordt uitgevoerd of de laatste keer is voltooid.
 - Een **voortgangs balk** met het percentage van de inrichtings cyclus dat is voltooid. Het percentage weerspiegelt het aantal pagina's dat is ingericht. Houd er rekening mee dat elke pagina meerdere gebruikers of groepen kan bevatten, zodat het percentage niet rechtstreeks overeenkomt met het aantal gebruikers, groepen of rollen dat is ingericht.
 - Een knop voor **vernieuwen** die u kunt gebruiken om de weer gave bijgewerkt te laten worden.
-- Het aantal **gebruikers** en **groepen** in het gegevens archief van de connector. De telling neemt toe wanneer een object wordt toegevoegd aan het bereik van de inrichting. Het aantal wordt niet weer gegeven als een gebruiker zacht wordt verwijderd of permanent wordt verwijderd omdat hiermee het object niet uit de gegevens opslag van de connector wordt verwijderd. De telling wordt opnieuw berekend op de eerste synchronisatie nadat de CD'S [opnieuw zijn ingesteld](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) 
+- Het aantal **gebruikers** en **groepen** in het gegevens archief van de connector. De telling neemt toe wanneer een object wordt toegevoegd aan het bereik van de inrichting. Het aantal wordt niet weer gegeven als een gebruiker zacht wordt verwijderd of permanent wordt verwijderd omdat hiermee het object niet uit de gegevens opslag van de connector wordt verwijderd. De telling wordt opnieuw berekend op de eerste synchronisatie nadat de CD'S [opnieuw zijn ingesteld](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta) 
 - Een koppeling **voor controle logboeken weer geven** waarmee de Azure AD-inrichtings logboeken worden geopend voor meer informatie over alle bewerkingen die worden uitgevoerd door de gebruikers Provisioning Service, inclusief de inrichtings status voor afzonderlijke gebruikers (Zie de sectie [inrichtings Logboeken gebruiken](#use-provisioning-logs-to-check-a-users-provisioning-status) ).
 
 Nadat een inrichtings cyclus is voltooid, toont de sectie **statistieken tot datum** de cumulatieve aantallen gebruikers en groepen die zijn ingericht tot datum, samen met de voltooiings datum en duur van de laatste cyclus. Met de **activiteit-ID** wordt de meest recente inrichtings cyclus uniek geïdentificeerd. De **taak-id** is een unieke id voor de inrichtings taak en is specifiek voor de app in uw Tenant.
@@ -99,4 +99,4 @@ Samen vatting van factoren die van invloed zijn op de tijd die nodig is om een *
 - Als de prestaties een probleem vormen en u probeert het meren deel van de gebruikers en groepen in uw Tenant in te richten, gebruikt u bereik filters. Met behulp van bereik filters kunt u de gegevens die door de inrichtings service worden geëxtraheerd, afstemmen op de gebruikers op basis van specifieke kenmerk waarden. Zie voor meer informatie over het bereik van filters [kenmerk toepassing inrichten met bereik filters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen met Azure Active Directory automatiseren](user-provisioning.md)
+[Automate user provisioning and deprovisioning to SaaS applications with Azure Active Directory](user-provisioning.md) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)

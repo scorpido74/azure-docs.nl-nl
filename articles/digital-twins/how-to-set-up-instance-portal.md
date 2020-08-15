@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009642"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234982"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie (Portal) instellen
 
@@ -69,7 +69,7 @@ U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan. Vervolge
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Open eerst de pagina voor uw Azure Digital Apparaatdubbels-exemplaar in het Azure Portal. Selecteer in het menu van de instantie *toegangs beheer (IAM)*. Selecteer de knop *toevoegen* onder *een roltoewijzing toevoegen*.
+Open eerst de pagina voor uw Azure Digital Apparaatdubbels-exemplaar in het Azure Portal. Selecteer in het menu van de instantie *toegangs beheer (IAM)*. Selecteer de knop  *toevoegen* onder *een roltoewijzing toevoegen*.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Selecteren om een roltoewijzing toe te voegen op de pagina toegangs beheer (IAM)":::
 
@@ -126,6 +126,9 @@ Selecteer vanuit de portal pagina voor de registratie van uw app *API-machtiging
 Schakel op de pagina *API-machtigingen voor aanvragen* de volgende opdracht uit naar de api's die *Mijn organisatie gebruikt* en zoek naar *Azure Digital apparaatdubbels*. Selecteer *Azure Digital apparaatdubbels* in de zoek resultaten om machtigingen toe te wijzen voor de Azure Digital Apparaatdubbels-api's.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Weer gave van het Zoek resultaat van de pagina API-machtigingen aanvragen met Azure Digital Apparaatdubbels":::
+
+>[!NOTE]
+> Als u een bestaand exemplaar van Azure Digital Apparaatdubbels hebt van de vorige open bare preview van de service (vóór 2020 juli) in uw abonnement, moet u in plaats daarvan naar de *Azure Smart Spaces-service* zoeken. Dit is een oudere naam voor dezelfde set Api's en zal uw ervaring buiten deze stap niet wijzigen.
 
 Vervolgens selecteert u de machtigingen die u voor deze Api's wilt verlenen. Vouw de machtiging **Read (1)** uit en schakel het selectie vakje *lezen. schrijven* in om deze app-registratie lezer en schrijf machtigingen te verlenen.
 

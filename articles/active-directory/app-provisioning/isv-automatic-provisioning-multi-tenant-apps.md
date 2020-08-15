@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 479bbe2dbef2d28a2744b667184c45e85faf9adc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283092"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235635"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatische gebruikers inrichting inschakelen voor uw toepassing met meerdere tenants
 
@@ -54,7 +54,7 @@ Azure AD biedt verschillende integratie paden om het automatisch inrichten van g
 
 * De [Azure AD-inrichtings service](../app-provisioning/user-provisioning.md) beheert het inrichten en ongedaan maken van de inrichting van gebruikers van Azure AD voor uw toepassing (uitgaande inrichting) en vanuit uw toepassing naar Azure AD (inkomend inrichten). De service maakt verbinding met het systeem voor SCIM-gebruikers beheer API-eind punten die zijn opgenomen in uw toepassing.
 
-* Wanneer u de [Microsoft Graph](https://docs.microsoft.com/graph/)gebruikt, beheert uw toepassing de inkomende en uitgaande toewijzing van gebruikers en groepen vanuit Azure AD naar uw toepassing door de Microsoft Graph API te doorzoeken.
+* Wanneer u de [Microsoft Graph](/graph/)gebruikt, beheert uw toepassing de inkomende en uitgaande toewijzing van gebruikers en groepen vanuit Azure AD naar uw toepassing door de Microsoft Graph API te doorzoeken.
 
 * De gebruikers inrichting van de just-in-time (SAML JIT)-Security Assertion Markup Language kan worden ingeschakeld als uw toepassing gebruikmaakt van SAML voor Federatie. Er worden claim gegevens gebruikt die in het SAML-token worden verzonden om gebruikers in te richten.
 
@@ -72,8 +72,8 @@ Raadpleeg de vergelijkings tabel op hoog niveau en zie de gedetailleerde informa
 | Gast accounts (B2B) ondersteunen| √| √| √ |
 | Niet-ondernemings accounts ondersteunen (B2C)| X| √| √ |
 
-<sup>*</sup>– Azure AD Connect Setup is vereist voor het synchroniseren van gebruikers van AD naar Azure AD.  
-<sup>+</sup >: Het gebruik van SCIM voor het inrichten verhindert niet dat u uw toepassing kunt integreren met micro soft Graph voor andere doel einden.
+<sup>*</sup> – Azure AD Connect Setup is vereist voor het synchroniseren van gebruikers van AD naar Azure AD.  
+<sup>+</sup >: Het gebruik van SCIM voor het inrichten verhindert niet dat u uw toepassing kunt integreren met Microsoft Graph voor andere doel einden.
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Azure AD-inrichtings service (SCIM)
 
@@ -89,7 +89,7 @@ Zie voor meer informatie over hoe de Azure AD Provisioning Service-gebruikers SC
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph voor inrichting
 
-Wanneer u Microsoft Graph gebruikt voor het inrichten, hebt u toegang tot alle uitgebreide gebruikers gegevens die beschikbaar zijn in Graph. Naast de details van gebruikers en groepen kunt u ook aanvullende informatie ophalen, zoals de rollen van de gebruiker, de Manager en de directe rapporten, het eigendom en de geregistreerde apparaten, en honderden andere gegevens die beschikbaar zijn in de [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
+Wanneer u Microsoft Graph gebruikt voor het inrichten, hebt u toegang tot alle uitgebreide gebruikers gegevens die beschikbaar zijn in Graph. Naast de details van gebruikers en groepen kunt u ook aanvullende informatie ophalen, zoals de rollen van de gebruiker, de Manager en de directe rapporten, het eigendom en de geregistreerde apparaten, en honderden andere gegevens die beschikbaar zijn in de [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0). 
 
 Meer dan 15.000.000 organisaties, en 90% van Fortune 500-bedrijven gebruiken Azure AD bij het abonneren op micro soft-Cloud Services zoals Office 365, Microsoft Azure, Enter prise Mobility Suite of Microsoft 365. U kunt Microsoft Graph gebruiken om uw app te integreren met beheer werk stromen, zoals het onboarden van werk nemers (en beëindiging), profiel onderhoud en meer. 
 
@@ -97,9 +97,9 @@ Meer informatie over het gebruik van Microsoft Graph voor het inrichten van:
 
 * [Start pagina van Microsoft Graph](https://developer.microsoft.com/graph)
 
-* [Overzicht van Microsoft Graph](https://docs.microsoft.com/graph/overview)
+* [Overzicht van Microsoft Graph](/graph/overview)
 
-* [Overzicht van Microsoft Graph auth](https://docs.microsoft.com/graph/auth/)
+* [Overzicht van Microsoft Graph auth](/graph/auth/)
 
 * [Aan de slag met Microsoft Graph](https://developer.microsoft.com/graph/get-started)
 

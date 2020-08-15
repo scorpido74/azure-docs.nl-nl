@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Apparaatdubbels gebruiken voor het bijwerken van een Azure Maps binnenste kaart
+title: Integreren met Azure Maps
 titleSuffix: Azure Digital Twins
-description: Bekijk hoe u een Azure-functie maakt die de dubbele Graph-en Azure Digital Apparaatdubbels-meldingen kan gebruiken voor het bijwerken van informatie die wordt weer gegeven in Azure Maps.
+description: Bekijk hoe u een Azure-functie maakt die de dubbele grafiek en Azure Digital Apparaatdubbels-meldingen kan gebruiken om een Azure Maps binnenste kaart bij te werken.
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a2dff1ea9c830fa48545dc25654cc3c5318c3415
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131409"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235907"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Apparaatdubbels gebruiken voor het bijwerken van een Azure Maps binnenste kaart
 

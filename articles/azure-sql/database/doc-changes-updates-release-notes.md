@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121456"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236570"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -84,11 +84,11 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 ### <a name="sql-managed-instance-h1-2019-updates"></a>SQL Managed instance H1 2019-updates
 
 De volgende functies zijn ingeschakeld in het implementatie model voor SQL-beheerde exemplaren in H1 2019:
-  - Ondersteuning voor abonnementen met een <a href="https://aka.ms/sql-mi-visual-studio-subscribers">maandelijks Azure-tegoed voor Visual Studio-abonnees</a> en verhoogde [regionale limieten](../managed-instance/resource-limits.md#regional-resource-limitations).
-  - Ondersteuning voor <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">share point 2016 en share point 2019</a> en <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central.</a>
+  - Ondersteuning voor abonnementen met een <a href="https://aka.ms/sql-mi-visual-studio-subscribers"> maandelijks Azure-tegoed voor Visual Studio-abonnees </a> en verhoogde [regionale limieten](../managed-instance/resource-limits.md#regional-resource-limitations).
+  - Ondersteuning voor <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> share point 2016 en share point 2019 </a> en <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central. </a>
   - Maak een beheerd exemplaar met <a href="https://aka.ms/managed-instance-collation">sortering op exemplaar niveau</a> en een <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">tijd zone</a> van uw keuze.
   - Beheerde exemplaren zijn nu beveiligd met [ingebouwde firewall](../managed-instance/management-endpoint-verify-built-in-firewall.md).
-  - Configureer SQL Managed instance voor het gebruik van [open bare eind punten](../managed-instance/public-endpoint-configure.md), een [proxy onderdrukkings](connectivity-architecture.md#connection-policy) verbinding voor betere netwerk prestaties, <a href="https://aka.ms/four-cores-sql-mi-update">4 VCores op het genereren van GEN5-hardware</a> of <a href="https://aka.ms/managed-instance-configurable-backup-retention">het configureren van back-ups tot 35 dagen</a> voor tijdstippen herstellen. [Lange termijn retentie van back-ups](long-term-retention-overview.md#sql-managed-instance-support) (Maxi maal 10 jaar) is momenteel een beperkte open bare preview.  
+  - Configureer SQL Managed instance voor het gebruik van [open bare eind punten](../managed-instance/public-endpoint-configure.md), een [proxy onderdrukkings](connectivity-architecture.md#connection-policy) verbinding voor betere netwerk prestaties, <a href="https://aka.ms/four-cores-sql-mi-update"> 4 VCores op het genereren van GEN5-hardware</a> of <a href="https://aka.ms/managed-instance-configurable-backup-retention">het configureren van back-ups tot 35 dagen</a> voor tijdstippen herstellen. [Lange termijn retentie van back-ups](long-term-retention-overview.md#sql-managed-instance-support) (Maxi maal 10 jaar) is momenteel een beperkte open bare preview.  
   - Dankzij nieuwe functies kunt u <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">uw data base met behulp van Power shell naar een ander Data Center herstellen, de</a> [naam van de data base wijzigen](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), het [virtuele cluster verwijderen](../managed-instance/virtual-cluster-delete.md).
   - Met de nieuwe [rol Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) voor ingebouwde instanties kunt u SoD-naleving met beveiligings principes en naleving van de bedrijfs normen.
   - SQL Managed instance is beschikbaar in de volgende Azure Government regio's voor GA (US Gov-Texas, US Gov-Arizona) en in China-noord 2 en China-oost 2. Het is ook beschikbaar in de volgende open bare regio's: Australië-centraal, Australië-centraal 2, Brazilië-zuid, Frankrijk-zuid, UAE-centraal, UAE-noord, Zuid-Afrika-noord, Zuid-Afrika-west.
@@ -97,6 +97,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 
 |Probleem  |Gedetecteerde datum  |Status  |Opgelost op  |
 |---------|---------|---------|---------|
+|[Service-Principal heeft geen toegang tot Azure AD en Azure](#service-principal-cannot-access-azure-ad-and-akv)|Aug 2020|Heeft tijdelijke oplossing||
 |[Hand matige back-up herstellen zonder CONTROLESOM kan mislukken](#restoring-manual-backup-without-checksum-might-fail)|Mei 2020|Opgelost|Juni 2020|
 |[Agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mei 2020|Opgelost|Juni 2020|
 |[Machtigingen voor de resource groep zijn niet toegepast op een SQL-beheerd exemplaar](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Feb 2020|Heeft tijdelijke oplossing||
@@ -110,7 +111,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 |[Resource Governor op Bedrijfskritiek servicelaag moet mogelijk opnieuw worden geconfigureerd na een failover](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Sep 2019|Heeft tijdelijke oplossing||
 |[Meerdere data base-Service Broker dialoog vensters moeten opnieuw worden geïnitialiseerd na een upgrade naar de servicelaag](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|Aug 2019|Heeft tijdelijke oplossing||
 |[Imitatie van Azure AD-aanmeldings typen wordt niet ondersteund](#impersonation-of-azure-ad-login-types-is-not-supported)|Jul 2019|Geen tijdelijke oplossing||
-|[@queryde para meter wordt niet ondersteund in sp_send_db_mail](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|Geen tijdelijke oplossing||
+|[@query de para meter wordt niet ondersteund in sp_send_db_mail](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|Geen tijdelijke oplossing||
 |[Transactionele replicatie moet opnieuw worden geconfigureerd na geo-failover](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mrt 2019|Geen tijdelijke oplossing||
 |[Er wordt een tijdelijke data base gebruikt tijdens de herstel bewerking](#temporary-database-is-used-during-restore-operation)||Heeft tijdelijke oplossing||
 |[TEMPDB-structuur en-inhoud worden opnieuw gemaakt](#tempdb-structure-and-content-is-re-created)||Geen tijdelijke oplossing||
@@ -124,6 +125,11 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 |Data base mail-functie met externe e-mail servers (niet-Azure) via een beveiligde verbinding||Opgelost|Okt 2019|
 |Inge sloten data bases worden niet ondersteund in een SQL-beheerd exemplaar||Opgelost|Aug 2019|
 
+### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Service-Principal heeft geen toegang tot Azure AD en Azure
+
+In sommige gevallen kan er sprake zijn van een probleem met een service-principal die wordt gebruikt voor toegang tot Azure AD en Azure Key Vault-Services (Azure). Als gevolg hiervan heeft dit probleem gevolgen voor het gebruik van Azure AD-verificatie en transparante database versleuteling (TDE) met SQL Managed instance. Dit kan worden veroorzaakt als een probleem met een onregelmatige verbinding of dat er geen instructies kunnen worden uitgevoerd, zoals aanmelden/gebruiker maken van externe PROVIDER of uitvoeren als aanmelding/gebruiker. Het instellen van TDE met door de klant beheerde sleutel op een nieuw exemplaar van Azure SQL Managed kan in sommige gevallen ook niet worden gebruikt.
+
+**Tijdelijke oplossing**: als u wilt voor komen dat dit probleem optreedt in uw SQL Managed instance voordat u update-opdrachten uitvoert, of als u dit probleem al hebt ondervonden na het bijwerken van opdrachten, gaat u naar Azure Portal en opent u SQL Managed instance [Active Directory-beheer Blade](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal). Controleer of het fout bericht ' beheerde exemplaar moet een Service-Principal hebben om toegang te krijgen tot Azure Active Directory. Klik hier om een service-principal te maken. Als dit fout bericht wordt weer gegeven, klikt u erop en volgt u de instructies voor stap voor stap, totdat deze fout is opgelost.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Hand matige back-up herstellen zonder CONTROLESOM kan mislukken
 
@@ -205,7 +211,7 @@ Imitatie met `EXECUTE AS USER` of `EXECUTE AS LOGIN` van de volgende Azure Activ
 -   Gebruikers met een alias van Azure AD. In dit geval wordt de volgende fout geretourneerd: `15517` .
 - Azure AD-aanmeldingen en-gebruikers op basis van Azure AD-toepassingen of service-principals. De volgende fouten worden in dit geval geretourneerd: `15517` en `15406` .
 
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryde para meter wordt niet ondersteund in sp_send_db_mail
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@query de para meter wordt niet ondersteund in sp_send_db_mail
 
 De `@query` para meter in de [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) procedure werkt niet.
 
@@ -229,7 +235,7 @@ In de eerste fase heeft een gebruiker toegang tot de lege data base en kan zelfs
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB-structuur en-inhoud worden opnieuw gemaakt
 
-De `tempdb` Data Base is altijd gesplitst in 12 gegevens bestanden en de bestands structuur kan niet worden gewijzigd. De maximale grootte per bestand kan niet worden gewijzigd en er kunnen geen nieuwe bestanden aan worden toegevoegd `tempdb` . `Tempdb`wordt altijd opnieuw gemaakt als een lege data base wanneer het exemplaar wordt gestart of een failover wordt uitgevoerd, en eventuele wijzigingen `tempdb` worden niet bewaard.
+De `tempdb` Data Base is altijd gesplitst in 12 gegevens bestanden en de bestands structuur kan niet worden gewijzigd. De maximale grootte per bestand kan niet worden gewijzigd en er kunnen geen nieuwe bestanden aan worden toegevoegd `tempdb` . `Tempdb` wordt altijd opnieuw gemaakt als een lege data base wanneer het exemplaar wordt gestart of een failover wordt uitgevoerd, en eventuele wijzigingen `tempdb` worden niet bewaard.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Opslag ruimte overschrijden met kleine database bestanden
 

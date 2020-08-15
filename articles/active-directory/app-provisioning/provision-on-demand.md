@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 3c3706cc3a15a8832cec3d799ea551810c849379
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313605"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235533"
 ---
 # <a name="on-demand-provisioning"></a>Inrichting op aanvraag
 Inrichting op aanvraag gebruiken om binnen enkele seconden een gebruiker in te richten in een toepassing. U kunt met behulp van deze mogelijkheid onder andere het volgende:
@@ -27,7 +27,7 @@ Inrichting op aanvraag gebruiken om binnen enkele seconden een gebruiker in te r
 
 ## <a name="how-to-use-on-demand-provisioning"></a>Inrichting op aanvraag gebruiken
 
-1. Meld u aan bij de **Azure-portal**.
+1. Meld u aan bij **Azure Portal**.
 2. Ga naar **alle services**  >  **bedrijfs toepassingen**.
 3. Selecteer uw toepassing en ga vervolgens naar de pagina inrichtings configuratie.
 4. Configureer inrichting door uw beheerders referenties op te geven.
@@ -47,9 +47,9 @@ De inrichtings service probeert toegang te verlenen tot de doel toepassing door 
 
 #### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
-* Zorg ervoor dat u geldige referenties hebt ingevoerd, zoals het geheime token en de Tenant-URL, naar de doel toepassing. De vereiste referenties variëren per toepassing. Zie de [lijst met zelf](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)studies voor gedetailleerde configuratie handleidingen. 
+* Zorg ervoor dat u geldige referenties hebt ingevoerd, zoals het geheime token en de Tenant-URL, naar de doel toepassing. De vereiste referenties variëren per toepassing. Zie de [lijst met zelf](../saas-apps/tutorial-list.md)studies voor gedetailleerde configuratie handleidingen. 
 * Zorg ervoor dat de doel toepassing filteren ondersteunt op de overeenkomende kenmerken die zijn gedefinieerd in het deel venster **kenmerk toewijzingen** . Mogelijk moet u de API-documentatie van de ontwikkelaar van de toepassing controleren om de ondersteunde filters te begrijpen.
-* Voor systeem voor SCIM-toepassingen (Cross-Domain Identity Management) kunt u een hulp programma zoals postman gebruiken. Met deze hulpprogram ma's kunt u ervoor zorgen dat de toepassing reageert op autorisatie aanvragen op de manier waarop de inrichtings service van Azure Active Directory (Azure AD) verwacht. Bekijk een [voor beeld](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3)van een aanvraag.
+* Voor systeem voor SCIM-toepassingen (Cross-Domain Identity Management) kunt u een hulp programma zoals postman gebruiken. Met deze hulpprogram ma's kunt u ervoor zorgen dat de toepassing reageert op autorisatie aanvragen op de manier waarop de inrichtings service van Azure Active Directory (Azure AD) verwacht. Bekijk een [voor beeld](./use-scim-to-provision-users-and-groups.md#request-3)van een aanvraag.
 
 ### <a name="step-2-import-user"></a>Stap 2: gebruiker importeren
 
@@ -76,7 +76,7 @@ In het gedeelte **weergave Details** worden de eigenschappen van de gebruiker we
 
 ### <a name="step-3-determine-if-user-is-in-scope"></a>Stap 3: bepalen of de gebruiker binnen het bereik ligt
 
-Vervolgens bepaalt de inrichtings service of de gebruiker binnen het [bereik](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping) van de inrichting valt. De service beschouwt aspecten als:
+Vervolgens bepaalt de inrichtings service of de gebruiker binnen het [bereik](./how-provisioning-works.md#scoping) van de inrichting valt. De service beschouwt aspecten als:
 
 * Hiermee wordt aangegeven of de gebruiker aan de toepassing is toegewezen.
 * Hiermee wordt aangegeven of het bereik is ingesteld op **synchroniseren** of **Alles synchroniseren**.
@@ -94,8 +94,8 @@ De sectie **Details weer geven** toont de scope voorwaarden die zijn geëvalueer
 
 #### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
-* Zorg ervoor dat u een geldige bereik functie hebt gedefinieerd. Vermijd het gebruik van de [operator Greater_Than](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter) met een niet-geheel getal.
-* Als de gebruiker niet de vereiste rol heeft, raadpleegt [u de tips voor het inrichten van gebruikers die zijn toegewezen aan de standaard-Access-rol](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role).
+* Zorg ervoor dat u een geldige bereik functie hebt gedefinieerd. Vermijd het gebruik van de [operator Greater_Than](./define-conditional-rules-for-provisioning-user-accounts.md#create-a-scoping-filter) met een niet-geheel getal.
+* Als de gebruiker niet de vereiste rol heeft, raadpleegt [u de tips voor het inrichten van gebruikers die zijn toegewezen aan de standaard-Access-rol](./application-provisioning-config-problem-no-users-provisioned.md#provisioning-users-assigned-to-the-default-access-role).
 
 ### <a name="step-4-match-user-between-source-and-target"></a>Stap 4: identieke gebruikers tussen de bron en het doel
 
@@ -129,7 +129,7 @@ In het gedeelte **weer gave Details** worden de kenmerken weer gegeven die zijn 
 
 #### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
-* Fouten voor het exporteren van wijzigingen kunnen aanzienlijk verschillen. Raadpleeg de [documentatie voor het inrichtings logboek](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes) voor veelvoorkomende fouten.
+* Fouten voor het exporteren van wijzigingen kunnen aanzienlijk verschillen. Raadpleeg de [documentatie voor het inrichtings logboek](../reports-monitoring/concept-provisioning-logs.md#error-codes) voor veelvoorkomende fouten.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -150,4 +150,4 @@ Er zijn momenteel enkele bekende beperkingen voor het inrichten op aanvraag. Pos
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Probleem oplossing voor het inrichten](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem)
+* [Probleem oplossing voor het inrichten](./application-provisioning-config-problem.md)

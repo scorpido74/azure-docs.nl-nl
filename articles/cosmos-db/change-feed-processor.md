@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119406"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236468"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB
 
@@ -95,11 +95,23 @@ Daarnaast kan de wijzigings processor van de feed dynamisch worden aangepast aan
 
 Er worden kosten in rekening gebracht voor het verbruikte RUs, omdat gegevens verplaatsing in en buiten Cosmos containers altijd RUs gebruikt. Er worden kosten in rekening gebracht voor RUs dat wordt gebruikt door de lease-container.
 
+## <a name="where-to-host-the-change-feed-processor"></a>De locatie van de feed-processor hosten
+
+De Change feed-processor kan worden gehost in elk platform dat ondersteuning biedt voor langlopende processen of taken:
+
+* Een continue uitvoering van [Azure-Webtaak](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/).
+* Een proces op een [virtuele machine van Azure](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines).
+* Een achtergrond taak in de [Azure Kubernetes-service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service).
+* Een [ASP.net-gehoste service](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
+
+Hoewel de feed-processor in korte Bewaar omgevingen kan worden uitgevoerd, omdat de lease-container de status behoudt, zullen de begin-en eind cyclus van deze omgevingen vertraging oplopen om de meldingen te ontvangen (als gevolg van de overhead van het starten van de processor telkens wanneer de omgeving wordt gestart).
+
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Voor beelden van gebruik op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [Aanvullende voor beelden op GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [De voorbeeld toepassing op GitHub volt ooien](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [Aanvullende gebruiks voorbeelden op GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [Cosmos DB workshop Labs voor Change feed processor](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## <a name="next-steps"></a>Volgende stappen
 

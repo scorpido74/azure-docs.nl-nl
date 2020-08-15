@@ -2,18 +2,18 @@
 title: Azure-tabel opslag ontwerpen voor query's | Microsoft Docs
 description: Ontwerp tabellen voor query's in azure-tabel opslag. Kies een geschikte partitie sleutel, Optimaliseer query's en sorteer gegevens voor de Table service.
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 28a15541b9d706095bcd3d6d361bd7c983f195df
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a15415ab7f5e01619a4a022d7254ef3995a825b0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926243"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236332"
 ---
 # <a name="design-for-querying"></a>Ontwerp voor query's
 Table service oplossingen kunnen intensieve, schrijf intensief of een combi natie van beide worden gelezen. In dit artikel vindt u informatie over de zaken die u moet overwegen wanneer u uw Table service ontwerpt om Lees bewerkingen efficiënt te ondersteunen. Normaal gesp roken is een ontwerp dat lees bewerkingen efficiënt ondersteunt ook efficiënt voor schrijf bewerkingen. Er zijn echter extra aandachtspunten bij het ontwerpen ter ondersteuning van schrijf bewerkingen, zoals beschreven in het artikel [ontwerp voor het wijzigen van gegevens](table-storage-design-for-modification.md).
@@ -39,8 +39,8 @@ In de volgende voor beelden wordt ervan uitgegaan dat de tabel service werk neme
 | --- | --- |
 | **PartitionKey** (afdelings naam) |Tekenreeks |
 | **RowKey** (werk nemer-id) |Tekenreeks |
-| **Voor** |Tekenreeks |
-| **Naam** |Tekenreeks |
+| **FirstName** |Tekenreeks |
+| **LastName** |Tekenreeks |
 | **Ouderdom** |Geheel getal |
 | **EmailAddress** |Tekenreeks |
 

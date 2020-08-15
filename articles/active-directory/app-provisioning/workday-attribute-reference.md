@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 8c508e65ef2c6d62716454af151feb0a1c80bba0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036b3af03dec2bdaa7feacc94abca930ebd9b317
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781105"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235380"
 ---
 # <a name="workday-attribute-reference"></a>Verwijzing naar Workday-kenmerk
 
@@ -211,7 +211,7 @@ Raadpleeg de sectie [zelf studie: uw configuratie beheren](../saas-apps/workday-
 ## <a name="custom-xpath-values"></a>Aangepaste XPATH-waarden
 De volgende tabel bevat een lijst met andere veelgebruikte aangepaste XPATH API-expressies bij het inrichten van werk nemers van workday tot Active Directory of Azure AD. Test de XPATH API-expressies die u hier opgeeft in uw versie van workday en Raadpleeg de instructies in de sectie [zelf studie: uw configuratie beheren](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration).
 
-Als u meer kenmerken aan de XPATH-tabel wilt toevoegen voor het voor deel van klanten die deze integratie implementeren, laat u hieronder een opmerking of een [bijdrage leveren](https://docs.microsoft.com/contribute) aan het artikel. 
+Als u meer kenmerken aan de XPATH-tabel wilt toevoegen voor het voor deel van klanten die deze integratie implementeren, laat u hieronder een opmerking of een [bijdrage leveren](/contribute) aan het artikel. 
 
 > [!div class="mx-tdBreakAll"]
 > | \# | Naam workday-kenmerk  | Workday API-versie | Workday XPATH API-expressie   |
@@ -224,7 +224,7 @@ Als u meer kenmerken aan de XPATH-tabel wilt toevoegen voor het voor deel van kl
 
 
 ## <a name="supported-xpath-functions"></a>Ondersteunde XPATH-functies
-Hieronder ziet u de lijst met XPATH-functies die worden ondersteund door [Microsoft .net XPath-bibliotheek](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) , die u kunt gebruiken tijdens het maken van de XPath API-expressie. 
+Hieronder ziet u de lijst met XPATH-functies die worden ondersteund door [Microsoft .net XPath-bibliotheek](/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) , die u kunt gebruiken tijdens het maken van de XPath API-expressie. 
 
 * naam
 * duren
@@ -235,11 +235,11 @@ Hieronder ziet u de lijst met XPATH-functies die worden ondersteund door [Micros
 * subtekenreeks-na
 * starts-with
 * teken reeks-lengte
-* bevat
+* contains
 * translate
 * normaliseren-ruimte
 * subtekenreeks-vóór
-* booleaans
+* boolean
 * true
 * not
 * false
@@ -248,4 +248,3 @@ Hieronder ziet u de lijst met XPATH-functies die worden ondersteund door [Micros
 * eind
 * round
 * Floor
-

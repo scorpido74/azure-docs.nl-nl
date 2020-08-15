@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: d1cd4a25a2a9f07c75976d5eb5c97ba450ffdabb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284639"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236604"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Een beheerde installatiekopie maken van een gegeneraliseerde VM in Azure
 
@@ -39,13 +39,15 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 1. Meld u aan bij uw Windows-VM.
    
-2. Open een opdracht prompt venster als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer uit `sysprep.exe` .
+2. Open een opdracht prompt venster als beheerder. 
+
+3. Verwijder de Panther-map (C:\Windows\Panther). Wijzig vervolgens de map in%windir%\system32\sysprep en voer vervolgens uit `sysprep.exe` .
    
-3. In het dialoog venster **hulp programma voor systeem voorbereiding** selecteert u **systeem out-of-Box Experience (OOBE) opgeven** en schakelt u het selectie vakje **generalize** in.
+4. In het dialoog venster **hulp programma voor systeem voorbereiding** selecteert u **systeem out-of-Box Experience (OOBE) opgeven** en schakelt u het selectie vakje **generalize** in.
    
-4. Selecteer voor **afsluit opties**de optie **Afsluiten**.
+5. Selecteer voor **afsluit opties**de optie **Afsluiten**.
    
-5. Selecteer **OK**.
+6. Selecteer **OK**.
    
     ![Sysprep starten](./media/upload-generalized-managed/sysprepgeneral.png)
 

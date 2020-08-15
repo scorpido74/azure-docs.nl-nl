@@ -1,22 +1,22 @@
 ---
-title: Gast configuratie beleidsregels maken voor Linux
+title: Beleidsregels voor gastconfiguratie voor Linux maken
 description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026709"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236587"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Gast configuratie beleidsregels maken voor Linux
+# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Beleidsregels voor gastconfiguratie voor Linux maken
 
 Lees de overzichts informatie op [Azure Policy-gast configuratie](../concepts/guest-configuration.md)voordat u een aangepast beleid maakt.
  
 Ga voor meer informatie over het maken van gast configuratie beleidsregels voor Windows naar de pagina [beleid voor gast configuratie maken voor Windows](./guest-configuration-create.md)
 
-Bij het controleren van Linux maakt gast configuratie gebruik van [chef-specificatie](https://www.inspec.io/). Het INSPEC-profiel definieert de toestand waarin de machine moet zijn. Als de evaluatie van de configuratie mislukt, wordt het beleids effect **auditIfNotExists** geactiveerd en wordt de computer als **niet-compatibel**beschouwd.
+Bij het controleren van Linux maakt gastconfiguratie gebruik van [Chef InSpec](https://www.inspec.io/). Het InSpec-profiel definieert de toestand waarin de machine zich moet bevinden. Als de evaluatie van de configuratie mislukt, wordt het beleids effect **auditIfNotExists** geactiveerd en wordt de computer als **niet-compatibel**beschouwd.
 
 [Azure Policy-gast configuratie](../concepts/guest-configuration.md) kan alleen worden gebruikt voor het controleren van instellingen binnen machines. Herstel van instellingen binnen computers is nog niet beschikbaar.
 
@@ -25,7 +25,7 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 > [!IMPORTANT]
 > Aangepaste beleids regels met gast configuratie is een preview-functie.
 >
-> De gast configuratie-uitbrei ding is vereist voor het uitvoeren van controles op virtuele machines van Azure.
+> De gastconfiguratie-extensie is vereist voor het uitvoeren van controles op virtuele machines van Azure.
 > Als u de uitbrei ding op schaal wilt implementeren op alle Linux-machines, wijst u de volgende beleids definitie toe:
 >   - [Vereisten voor het inschakelen van gastenconfiguratiebeleid op Linux-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
@@ -50,6 +50,10 @@ Besturings systemen waarop de module kan worden geïnstalleerd:
 - Linux
 - macOS
 - Windows
+
+> [!NOTE]
+> Voor de cmdlet test-GuestConfigurationPackage is OpenSSL-versie 1,0 vereist vanwege een afhankelijkheid van OMI.
+> Dit veroorzaakt een fout op een wille keurige omgeving met OpenSSL 1,1 of hoger.
 
 Voor de module gast configuratie resource is de volgende software vereist:
 
@@ -260,6 +264,8 @@ Para meters van de `New-GuestConfigurationPolicy` cmdlet:
 - **Versie**: beleids versie.
 - **Pad**: doelpad voor het maken van beleids definities.
 - **Platform**: doel platform (Windows/Linux) voor gast configuratie beleid en inhouds pakket.
+- **Tag** voegt een of meer label filters toe aan de beleids definitie
+- **Categorie** stelt het veld meta gegevens van categorie in de beleids definitie in
 
 In het volgende voor beeld worden de beleids definities in een opgegeven pad van een aangepast beleids pakket gemaakt:
 
@@ -281,14 +287,6 @@ De volgende bestanden worden gemaakt door `New-GuestConfigurationPolicy` :
 - **Initiative.jsop**
 
 De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de beleids bestanden bevat.
-
-> [!Note]
-> De meest recente gast configuratie module bevat een nieuwe para meters:
-> - **Tag** voegt een of meer label filters toe aan de beleids definitie
->   - Zie de sectie [beleid voor gast configuratie filteren met behulp van Tags](#filtering-guest-configuration-policies-using-tags).
-> - **Categorie** stelt het veld meta gegevens van categorie in de beleids definitie in
->   - Als de para meter niet is opgenomen, is de categorie standaard ingesteld op gast configuratie.
-> Deze functies zijn momenteel beschikbaar als preview-versie en vereisen 1.20.1 van de module gast configuratie, die kan worden geïnstalleerd met `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Ten slotte publiceert u de beleids definities met de `Publish-GuestConfigurationPolicy` cmdlet.
 De cmdlet heeft alleen de para meter **Path** die verwijst naar de locatie van de json-bestanden die zijn gemaakt door `New-GuestConfigurationPolicy` .
@@ -404,9 +402,6 @@ De eenvoudigste manier om een bijgewerkt pakket vrij te geven, is het proces dat
 
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Beleid voor gast configuratie filteren met behulp van Tags
-
-> [!Note]
-> Deze functie is momenteel beschikbaar als preview-versie en vereist 1.20.1, dat kan worden geïnstalleerd met `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Het beleid dat wordt gemaakt door cmdlets in de module gast configuratie kan optioneel een filter voor labels bevatten. De para meter **-tag** van `New-GuestConfigurationPolicy` ondersteunt een matrix met hashtabellen die afzonderlijke tags bevatten. De tags worden toegevoegd aan de `If` sectie van de beleids definitie en kunnen niet worden gewijzigd door een beleids toewijzing.
 

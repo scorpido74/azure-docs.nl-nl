@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ac5b1f72e4c70e15ccb12ea41e5f080ca0b8a505
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203020"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234734"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Toepassing inrichten in quarantaine status
 
@@ -34,7 +34,7 @@ Er zijn drie manieren om te controleren of een toepassing in quarantaine is gepl
 
 - Ga in het Azure Portal naar **Azure Active Directory**  >  **controle logboeken** > filter op **activiteit: quarantaine** en controleer de quarantaine geschiedenis. In de weer gave in de voortgangs balk zoals hierboven wordt aangegeven of het inrichten momenteel in quarantaine is geplaatst, kunt u in de audit Logboeken de quarantaine geschiedenis voor een toepassing weer geven. 
 
-- Gebruik de Microsoft Graph aanvraag [Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) om programmatisch de status van de inrichtings taak op te halen:
+- Gebruik de Microsoft Graph aanvraag [Get synchronizationJob](/graph/api/synchronization-synchronizationjob-get?tabs=http&view=graph-rest-beta) om programmatisch de status van de inrichtings taak op te halen:
 
 ```microsoft-graph
         GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
@@ -52,15 +52,15 @@ Er zijn drie manieren om te controleren of een toepassing in quarantaine is gepl
 |---|---|
 |**Probleem met scim-naleving:** Er is een antwoord HTTP/404 niet gevonden geretourneerd in plaats van het verwachte HTTP/200 OK-antwoord. In dit geval heeft de Azure AD-inrichtings service een aanvraag ingediend bij de doel toepassing en heeft deze een onverwacht antwoord ontvangen.|Controleer de sectie beheerders referenties om te zien of de toepassing de Tenant-URL moet opgeven en zorg ervoor dat de URL juist is. Als er geen probleem wordt weer geven, neemt u contact op met de ontwikkelaar van de toepassing om te controleren of hun service SCIM-compatibel is. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Ongeldige referenties:** Als er wordt geprobeerd toegang te verlenen tot de doel toepassing, is er een reactie ontvangen van de doel toepassing die aangeeft dat de ingevoerde referenties ongeldig zijn.|Ga naar de sectie beheerders referenties van de gebruikers interface van de inrichtings configuratie en autoriseer Access opnieuw met geldige referenties. Als de toepassing zich in de galerie bevindt, raadpleegt u de zelf studie over de configuratie van de toepassing voor aanvullende stappen die vereist zijn.|
-|**Dubbele rollen:** Rollen die zijn geïmporteerd uit bepaalde toepassingen, zoals Sales Force en Zendesk, moeten uniek zijn. |Navigeer naar het toepassings [manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) in het Azure Portal en verwijder de dubbele rol.|
+|**Dubbele rollen:** Rollen die zijn geïmporteerd uit bepaalde toepassingen, zoals Sales Force en Zendesk, moeten uniek zijn. |Navigeer naar het toepassings [manifest](../develop/reference-app-manifest.md) in het Azure Portal en verwijder de dubbele rol.|
 
  Een Microsoft Graph aanvraag voor het ophalen van de status van de inrichtings taak bevat de volgende reden voor quarantaine:
 
-- `EncounteredQuarantineException`geeft aan dat er ongeldige referenties zijn geleverd. De inrichtings service kan geen verbinding tot stand brengen tussen het bron systeem en het doel systeem.
+- `EncounteredQuarantineException` geeft aan dat er ongeldige referenties zijn geleverd. De inrichtings service kan geen verbinding tot stand brengen tussen het bron systeem en het doel systeem.
 
-- `EncounteredEscrowProportionThreshold`geeft aan dat het inrichten de borg drempel heeft overschreden. Dit probleem treedt op wanneer meer dan 60% van de inrichtings gebeurtenissen mislukt.
+- `EncounteredEscrowProportionThreshold` geeft aan dat het inrichten de borg drempel heeft overschreden. Dit probleem treedt op wanneer meer dan 60% van de inrichtings gebeurtenissen mislukt.
 
-- `QuarantineOnDemand`betekent dat we een probleem met uw toepassing hebben gedetecteerd en hand matig hebben ingesteld op quarantaine.
+- `QuarantineOnDemand` betekent dat we een probleem met uw toepassing hebben gedetecteerd en hand matig hebben ingesteld op quarantaine.
 
 ## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Hoe kan ik mijn toepassing uit quarantaine halen?
 
@@ -74,11 +74,10 @@ Nadat u het probleem hebt opgelost, start u de inrichtings taak opnieuw. Bepaald
 
 - Gebruik de Azure Portal om de inrichtings taak opnieuw te starten. Op de **inrichtings** pagina van de toepassing onder **instellingen**selecteert u **status wissen en start u de synchronisatie opnieuw** en stelt u de **inrichtings status** **in op aan**. Met deze actie wordt de inrichtings service volledig opnieuw gestart. Dit kan enige tijd duren. Er wordt opnieuw een volledige eerste cyclus uitgevoerd. Hiermee wist u de toepassing, worden de apps uit quarantaine verwijderd en worden eventuele water merken gewist.
 
-- Gebruik Microsoft Graph om [de inrichtings taak opnieuw te starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). U hebt volledige controle over wat u opnieuw opstart. U kunt ervoor kiezen om de borg te wissen (om de borg teller voor de quarantaine status opnieuw te starten), de quarantaine te wissen (de toepassing uit quarantaine te verwijderen) of door water merken te wissen. Gebruik de volgende aanvraag:
+- Gebruik Microsoft Graph om [de inrichtings taak opnieuw te starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). U hebt volledige controle over wat u opnieuw opstart. U kunt ervoor kiezen om de borg te wissen (om de borg teller voor de quarantaine status opnieuw te starten), de quarantaine te wissen (de toepassing uit quarantaine te verwijderen) of door water merken te wissen. Gebruik de volgende aanvraag:
  
 ```microsoft-graph
         POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
 ```
 
-Vervang {id} door de waarde van de toepassings-ID en vervang {jobId} door de [id van de synchronisatie taak](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal). 
-
+Vervang {id} door de waarde van de toepassings-ID en vervang {jobId} door de [id van de synchronisatie taak](/graph/api/resources/synchronization-configure-with-directory-extension-attributes?tabs=http&view=graph-rest-beta#list-synchronization-jobs-in-the-context-of-the-service-principal).

@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073861"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236740"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faseringsomgevingen in Azure App Service instellen
 <a name="Overview"></a>
@@ -423,7 +423,6 @@ Hier volgen enkele veelvoorkomende wissel fouten:
       ...
     </conditions>
     ```
-- Sommige [IP-beperkings regels](app-service-ip-restrictions.md) kunnen voor komen dat de wissel bewerking HTTP-aanvragen naar uw app verzendt. IPv4-adresbereiken die beginnen met `10.` en `100.` intern zijn voor uw implementatie. U moet hen toestaan om verbinding te maken met uw app.
 
 - Na het wisselen van sleuven kan de app onverwachte opnieuw opstarten ondervinden. Dit komt doordat de bindings configuratie van de hostnaam na een swap niet meer synchroon is, wat zelf niet tot gevolg heeft dat de computer opnieuw wordt opgestart. Bepaalde onderliggende opslag gebeurtenissen (zoals failovers van het opslag volume) kunnen deze verschillen echter detecteren en alle werk processen afdwingen om opnieuw op te starten. Als u deze typen opnieuw opstarten wilt minimaliseren, stelt u de [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app-instelling](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) in op *Alle sleuven*. Deze app-instelling werkt echter *niet* met Windows Communication Foundation WCF-apps.
 

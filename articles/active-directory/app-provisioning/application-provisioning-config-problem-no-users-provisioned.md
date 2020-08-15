@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d07450b61558814a99bf85668c55899c8cf9d389
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782276"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234785"
 ---
 # <a name="no-users-are-being-provisioned"></a>Er worden geen gebruikers ingericht 
 >[!NOTE]
@@ -58,13 +58,13 @@ Wanneer een gebruiker wordt weer gegeven als ' overgeslagen ' in de inrichtings 
 - **Een vereist kenmerk ontbreekt of is niet ingevuld voor een gebruiker.** Het is belang rijk om rekening mee te houden bij het instellen van inrichting door de kenmerk toewijzingen en werk stromen te controleren en te configureren die bepalen welke gebruikers-(of groeps) eigenschappen stromen van Azure AD naar de toepassing. Deze configuratie omvat het instellen van de ' overeenkomende eigenschap ' die wordt gebruikt om gebruikers/groepen tussen de twee systemen uniek te identificeren en te vergelijken. Zie voor meer informatie over dit belang rijke proces de [toewijzing van kenmerk toewijzingen van gebruikers aanpassen voor SaaS-toepassingen in azure Active Directory](customize-application-attributes.md).
 - **Kenmerk toewijzingen voor groepen:** Het inrichten van de groeps naam en groeps gegevens, naast de leden, als deze worden ondersteund voor sommige toepassingen. U kunt deze functie in-of uitschakelen door de **toewijzing** voor groeps objecten die op het tabblad **inrichten** wordt weer gegeven in of uit te scha kelen. Als inrichtings groepen is ingeschakeld, moet u de kenmerk toewijzingen controleren om ervoor te zorgen dat er een geschikt veld wordt gebruikt voor de ' overeenkomende ID '. De overeenkomende ID kan de weergave naam of e-mail alias zijn. De groep en de bijbehorende leden worden niet ingericht als de overeenkomende eigenschap leeg is of niet is ingevuld voor een groep in azure AD.
 ## <a name="provisioning-users-assigned-to-the-default-access-role"></a>Gebruikers inrichten die zijn toegewezen aan de standaard-Access-rol
-De standaardrol van een toepassing in de galerie wordt de rol ' standaard toegang ' genoemd. Gebruikers die zijn toegewezen aan deze rol, zijn in het verleden niet ingericht en zijn als overgeslagen gemarkeerd in de [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) vanwege ' niet effectief recht '. 
+De standaardrol van een toepassing in de galerie wordt de rol ' standaard toegang ' genoemd. Gebruikers die zijn toegewezen aan deze rol, zijn in het verleden niet ingericht en zijn als overgeslagen gemarkeerd in de [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md) vanwege ' niet effectief recht '. 
 
 **Gedrag voor het inrichten van configuraties die zijn gemaakt na 04/16/2020:** Gebruikers die zijn toegewezen aan de rol standaard toegang, worden op dezelfde as als alle andere functies geëvalueerd. Een gebruiker aan wie de standaard toegang is toegewezen, wordt niet overgeslagen als ' niet effectief in aanmerking komt '. 
 
 **Gedrag voor het inrichten van configuraties die zijn gemaakt vóór 04/16/2020:** Het gedrag wordt voor de volgende 3 maanden vandaag nog uitgevoerd. Gebruikers met de rol standaard toegang worden overgeslagen als niet effectief. Na 2020 juli is het gedrag uniform voor alle toepassingen. Het inrichten van gebruikers met de standaard toegangs functie wordt niet overgeslagen omdat het niet effectief recht heeft. Deze wijziging wordt gemaakt door micro soft, zonder actie van de klant vereist. Als u er zeker van wilt zijn dat deze gebruikers blijven worden overgeslagen, kunt u ook na deze wijziging de juiste bereik filters toep assen of de gebruiker uit de toepassing verwijderen om ervoor te zorgen dat ze buiten het bereik vallen.  
 
-Neem voor vragen over deze wijzigingen contact op metprovisioningfeedback@microsoft.com
+Neem voor vragen over deze wijzigingen contact op met provisioningfeedback@microsoft.com
 ## <a name="next-steps"></a>Volgende stappen
 
 [Azure AD Connect Sync: uitleg over declaratieve inrichting](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829693"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235465"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
 
@@ -156,7 +156,7 @@ Binnen de [SCIM 2,0-protocol specificatie](http://www.simplecloud.info/#Specific
 
 Volg deze algemene richt lijnen bij het implementeren van een SCIM-eind punt om te zorgen voor compatibiliteit met Azure AD:
 
-* `id`is een vereiste eigenschap voor alle resources. Elk antwoord dat een resource retourneert, moet ervoor zorgen dat elke resource deze eigenschap bevat, met uitzonde ring van `ListResponse` nul leden.
+* `id` is een vereiste eigenschap voor alle resources. Elk antwoord dat een resource retourneert, moet ervoor zorgen dat elke resource deze eigenschap bevat, met uitzonde ring van `ListResponse` nul leden.
 * Antwoord op een query/filter aanvraag moet altijd a zijn `ListResponse` .
 * Groepen zijn optioneel, maar worden alleen ondersteund als de implementatie van de SCIM PATCH aanvragen ondersteunt.
 * Het is niet nodig om de volledige resource op te neemen in de reactie van de PATCH.
@@ -252,7 +252,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
-##### <a name="response"></a>Reactie
+##### <a name="response"></a>Antwoord
 
 *HTTP/1.1 201 gemaakt*
 ```json
@@ -751,7 +751,7 @@ De Azure AD-inrichtings service werkt momenteel onder het IP-bereik voor AzureAc
 
 Nu u uw schema hebt ontworpen en de Azure AD SCIM-implementatie hebt begrepen, kunt u aan de slag met het ontwikkelen van uw SCIM-eind punt. In plaats van helemaal zelf te beginnen en de implementatie helemaal zelf te bouwen, kunt u vertrouwen op een aantal open source SCIM-bibliotheken die zijn gepubliceerd door de SCIM-community.
 
-De open-source .NET core- [referentie code](https://aka.ms/SCIMReferenceCode) die door het Azure AD-inrichtings team is gepubliceerd, is een van de bronnen waarmee u uw ontwikkeling kunt starten. Nadat u het SCIM-eind punt hebt gemaakt, moet u het testen. U kunt de verzameling [postman-testen](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gebruiken die deel uitmaakt van de referentie code of door loop de [hierboven](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)vermelde voorbeeld aanvragen/antwoorden.  
+De open-source .NET core- [referentie code](https://aka.ms/SCIMReferenceCode) die door het Azure AD-inrichtings team is gepubliceerd, is een van de bronnen waarmee u uw ontwikkeling kunt starten. Nadat u het SCIM-eind punt hebt gemaakt, moet u het testen. U kunt de verzameling [postman-testen](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) gebruiken die deel uitmaakt van de referentie code of door loop de [hierboven](#user-operations)vermelde voorbeeld aanvragen/antwoorden.  
 
    > [!Note]
    > De referentie code is bedoeld om u te helpen bij het bouwen van uw SCIM-eind punt en wordt ' AS IS ' weer gegeven. Bijdragen van de community zijn welkom bij het bouwen en onderhouden van de code.
@@ -796,10 +796,10 @@ De SCIM-service moet een HTTP-adres en Server verificatie certificaat hebben waa
 
 Het .NET Core SDK bevat een HTTPS-ontwikkelings certificaat dat kan worden gebruikt tijdens de ontwikkeling. het certificaat wordt geïnstalleerd als onderdeel van de eerste sessie. Afhankelijk van hoe u de ASP.NET Core-webtoepassing uitvoert, wordt deze naar een andere poort geluisterd:
 
-* Micro soft. SCIM. WebHostSample:https://localhost:5001
-* IIS Express:https://localhost:44359/
+* Micro soft. SCIM. WebHostSample: https://localhost:5001
+* IIS Express: https://localhost:44359/
 
-Gebruik de volgende koppeling voor meer informatie over HTTPS in ASP.NET Core: [https afdwingen in ASP.net core](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)
+Gebruik de volgende koppeling voor meer informatie over HTTPS in ASP.NET Core: [https afdwingen in ASP.net core](/aspnet/core/security/enforcing-ssl)
 
 ### <a name="handling-endpoint-authentication"></a>Verificatie van eind punten afhandelen
 
@@ -1168,12 +1168,12 @@ Zodra de eerste cyclus is gestart, kunt u **inrichtings logboeken** selecteren i
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>Stap 5: Publiceer uw toepassing in de Azure AD-toepassings galerie
 
-Als u een toepassing bouwt die wordt gebruikt door meer dan één Tenant, kunt u deze beschikbaar maken in de Azure AD-toepassings galerie. Dit maakt het eenvoudig voor organisaties om de toepassing te detecteren en inrichtingen te configureren. Het publiceren van uw app in de Azure AD-galerie en het beschikbaar maken van de inrichting voor anderen is eenvoudig. Bekijk de stappen die [hier](../develop/howto-app-gallery-listing.md)worden beschreven. Micro soft werkt samen met u om uw toepassing te integreren in onze galerie, uw eind punt te testen en onboarding- [documentatie](../saas-apps/tutorial-list.md) voor klanten te publiceren. 
+Als u een toepassing bouwt die wordt gebruikt door meer dan één Tenant, kunt u deze beschikbaar maken in de Azure AD-toepassings galerie. Dit maakt het eenvoudig voor organisaties om de toepassing te detecteren en inrichtingen te configureren. Het publiceren van uw app in de Azure AD-galerie en het beschikbaar maken van de inrichting voor anderen is eenvoudig. Bekijk de stappen die [hier](../azuread-dev/howto-app-gallery-listing.md)worden beschreven. Micro soft werkt samen met u om uw toepassing te integreren in onze galerie, uw eind punt te testen en onboarding- [documentatie](../saas-apps/tutorial-list.md) voor klanten te publiceren. 
 
 ### <a name="gallery-onboarding-checklist"></a>Controle lijst voor onboarding van galerie
 Volg de onderstaande controle lijst om ervoor te zorgen dat uw toepassing voorbereid snelle en klanten een soepele implementatie-ervaring hebben. De gegevens worden verzameld van u bij het onboarden naar de galerie. 
 > [!div class="checklist"]
-> * Een [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) -gebruikers-en-groeps eindpunt ondersteunen (er is slechts één vereist, maar beide worden aanbevolen)
+> * Een [SCIM 2,0 ](#step-2-understand-the-azure-ad-scim-implementation) -gebruikers-en-groeps eindpunt ondersteunen (er is slechts één vereist, maar beide worden aanbevolen)
 > * Ten minste 25 aanvragen per seconde per Tenant ondersteunen (vereist)
 > * Technische hulp en ondersteunings contacten tot stand brengen om klanten te begeleiden post galerie voorbereiden (vereist)
 > * 3 niet-verlopende test referenties voor uw toepassing (vereist)

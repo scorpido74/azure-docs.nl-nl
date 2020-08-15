@@ -2,18 +2,18 @@
 title: Ontwerp schaal bare en uitvoerende tabellen in azure Table Storage. | Microsoft Docs
 description: Meer informatie over het ontwerpen van schaal bare en uitvoerende tabellen in azure Table Storage. Bekijk tabel partities, entiteits groeps transacties en capaciteits-en kosten overwegingen.
 services: storage
-author: SnehaGunda
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 03/09/2020
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 59af13bcae14839a5b583ad7e063668b5305b30a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9fd274fb72c80475ca53d0f1bdedc1e09c10ea60
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824406"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236502"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Schaalbare en beter bruikbare tabellen ontwerpen
 
@@ -50,7 +50,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Ouderdom</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Ouderdom</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -107,7 +107,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Ouderdom</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>

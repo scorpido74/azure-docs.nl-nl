@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23f99dc5c648948ce07f1b40106667d24906328a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697340"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236791"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Wijzigingenfeed in Azure Cosmos DB lezen
 
-U kunt met de Azure Cosmos DB wijzigings feed werken met een push model of een pull-model. Met een push model werken client aanvragen van een server en heeft deze bedrijfs logica voor het verwerken van een wijziging. De complexiteit van het controleren op wijzigingen en de opslag status voor de laatst verwerkte wijzigingen wordt echter verwerkt op de server.
+U kunt met de Azure Cosmos DB wijzigings feed werken met een push model of een pull-model. Met een push model werkt een server (de wijzigings feed) pushes naar een client met bedrijfs logica voor de verwerking van dit werk. De complexiteit van het controleren op werk en het opslaan van de status voor het laatst verwerkte werk wordt echter verwerkt op de server.
 
-Een pull-model, een server vraagt een werk op en vraagt deze vaak aan bij een centrale werk wachtrij. In dit geval heeft de client niet alleen bedrijfs logica voor het verwerken van wijzigingen, maar wordt ook de status opgeslagen voor de laatste verwerkte wijziging, verwerking van de taak verdeling over meerdere clients waarbij wijzigingen parallel worden verwerkt en fouten worden verwerkt.
+Met een pull-model moet de client het werk ophalen van de-server. De client heeft in dit geval niet alleen bedrijfs logica voor de verwerking van werk, maar ook de status voor het laatst verwerkte werk, verwerking van de taak verdeling over meerdere verwerkte clients parallel en het afhandelen van fouten.
 
 Bij het lezen van de Azure Cosmos DB wijzigings feed raden wij u aan een push model te gebruiken omdat u zich geen zorgen hoeft te maken over:
 
