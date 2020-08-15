@@ -1,14 +1,9 @@
 ---
 title: 'SAP on Azure: hand leiding voor planning en implementatie'
 description: Azure Virtual Machines planning en implementatie voor SAP net-Weaver
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: MSSedusch
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
-ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
@@ -16,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cd335d34a67cc5a102bde11366813c53770266e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fdce2890de1594635e9302260dc4036cb7c58707
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036332"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245516"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -259,7 +254,7 @@ ms.locfileid: "87036332"
 [virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md
-[virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md
+[virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines/windows/index.yml
 [virtual-machines-linux-agent-user-guide]:../../extensions/agent-linux.md
 [virtual-machines-linux-agent-user-guide-command-line-options]:../../extensions/agent-windows.md#command-line-options
 [virtual-machines-linux-capture-image]:../../linux/capture-image.md
@@ -502,7 +497,7 @@ Daarnaast biedt Azure de concepten van een specifieke host. Het speciale host-co
 De Hyper Visor van micro soft kan twee verschillende generaties virtuele machines verwerken. Deze indelingen worden **generatie 1** en **generatie 2**genoemd. **Generatie 2** is geïntroduceerd in het jaar 2012 met Windows Server 2012 Hyper Visor. Azure is gestart met virtuele machines van de eerste generatie. Wanneer u virtuele machines van Azure implementeert, is de standaard nog steeds de indeling van de eerste generatie. Ondertussen kunt u ook VM-indelingen van de tweede generatie implementeren. In het artikel [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../windows/generation-2.md) worden de Azure VM-families weer gegeven die kunnen worden geïmplementeerd als virtuele machine van de tweede generatie. Dit artikel bevat ook een overzicht van de belangrijkste functionele verschillen van virtuele machines van de 2e generatie, zoals ze kunnen worden uitgevoerd op de privécloud van Hyper-V en Azure. Meer belang rijker dit artikel bevat ook functionele verschillen tussen virtuele machines van de eerste generatie en Vm's van de tweede generatie, omdat deze worden uitgevoerd in Azure. 
 
 > [!NOTE]
-> Er zijn functionele verschillen tussen virtuele machines van de eerste en tweede generatie die worden uitgevoerd in Azure. Lees de artikel [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../windows/generation-2.md) om een lijst met deze verschillen te bekijken.  
+> Er zijn functionele verschillen tussen virtuele machines van de eerste en tweede generatie die worden uitgevoerd in Azure. Lees de artikel  [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../windows/generation-2.md) om een lijst met deze verschillen te bekijken.  
  
 Het is niet mogelijk om een bestaande virtuele machine van de ene generatie naar de andere generatie te verplaatsen. Als u de generatie van virtuele machines wilt wijzigen, moet u een nieuwe VM van de gewenste generatie implementeren en de software die u uitvoert opnieuw installeren op de virtuele machine van de generatie. Deze wijziging is alleen van invloed op de VHD-basis installatie kopie van de virtuele machine en heeft geen invloed op de gegevens schijven of gekoppelde NFS-of SMB-shares. Gegevens schijven, NFS of SMB-shares die oorspronkelijk zijn toegewezen aan, bijvoorbeeld op een virtuele machine van de eerste generatie. 
 
@@ -550,7 +545,7 @@ De bovenstaande teken reeks moet een unieke identificatie hebben van de schijf/V
 
 
 #### <a name="azure-persisted-storage-types"></a>Persistente opslag typen van Azure
-Azure biedt een verscheidenheid aan permanente opslag optie die kan worden gebruikt voor SAP-workload en specifieke onderdelen van de SAP-stack. Lees voor meer informatie het document [Azure Storage voor SAP-workloads](./planning-guide-storage.md).
+Azure biedt een verscheidenheid aan permanente opslag optie die kan worden gebruikt voor SAP-workload en specifieke onderdelen van de SAP-stack. Lees voor meer informatie het document  [Azure Storage voor SAP-workloads](./planning-guide-storage.md).
 
 
 ### <a name="microsoft-azure-networking"></a><a name="61678387-8868-435d-9f8c-450b2424f5bd"></a>Microsoft Azure netwerken
@@ -657,7 +652,7 @@ Met Express route kunnen meerdere Azure-abonnementen via één ExpressRoute-circ
 #### <a name="forced-tunneling-in-case-of-cross-premises"></a>Geforceerde Tunneling in het geval van cross-premises
 Voor Vm's die on-premises domeinen toevoegen via site-naar-site-, punt-naar-site-of ExpressRoute, moet u ervoor zorgen dat de Internet proxy instellingen ook worden geïmplementeerd voor alle gebruikers in deze Vm's. Standaard worden software die wordt uitgevoerd in deze Vm's of gebruikers die een browser gebruiken voor toegang tot het Internet, niet via de bedrijfs proxy door lopen, maar direct via Azure verbinding maken met internet. Maar zelfs de proxy-instelling is geen 100%-oplossing om het verkeer via de bedrijfs proxy door te sturen, omdat het verantwoordelijk is voor de software en services om te controleren of er een proxy is. Als de software die in de virtuele machine wordt uitgevoerd, niet doet dat of een beheerder de instellingen manipuleert, kan verkeer naar Internet opnieuw worden uitgecheckt rechtstreeks via Azure naar Internet.
 
-Als u een dergelijke directe Internet verbinding wilt voor komen, kunt u geforceerde tunneling configureren met site-naar-site-connectiviteit tussen on-premises en Azure. De gedetailleerde beschrijving van de functie voor geforceerde tunneling wordt hier gepubliceerd<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+Als u een dergelijke directe Internet verbinding wilt voor komen, kunt u geforceerde tunneling configureren met site-naar-site-connectiviteit tussen on-premises en Azure. De gedetailleerde beschrijving van de functie voor geforceerde tunneling wordt hier gepubliceerd <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
 
 Geforceerde tunneling met ExpressRoute wordt ingeschakeld door klanten die een standaard route via de BGP-peering-sessies van ExpressRoute adverteren.
 
@@ -727,7 +722,7 @@ Meer gedetailleerde stappen voor het installeren, bijwerken en configureren van 
 
 De ervaring van de klant is tot nu toe dat Power shell (PS) het krachtige hulp middel is voor het implementeren van Vm's en het maken van aangepaste stappen in de implementatie van Vm's. Alle klanten die SAP-exemplaren in azure uitvoeren, maken gebruik van PS-cmdlets voor het aanvullen van beheer taken die worden uitgevoerd in de Azure Portal of die zelfs gebruik maken van PS-cmdlets om hun implementaties in azure te beheren. Omdat de Azure-specifieke cmdlets dezelfde naam Conventie delen als de meer dan 2000 Windows-gerelateerde cmdlets, is het een eenvoudige taak voor Windows-beheerders om deze cmdlets te gebruiken.
 
-Bekijk hier het voor beeld:<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+Bekijk hier het voor beeld: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
 De implementatie van de Azure-extensie voor SAP (zie hoofd stuk [Azure-extensie voor SAP][planning-guide-9.1] in dit document) is alleen mogelijk via Power shell of cli. Daarom is het verplicht om Power shell of CLI in te stellen en te configureren bij het implementeren of beheren van een SAP net-Weaver-systeem in Azure.  
@@ -886,19 +881,19 @@ In dit geval willen we een VHD uploaden, hetzij met ofwel zonder een besturings 
 **PowerShell**
 
 * Meld u aan bij uw abonnement met *Connect-AzAccount*
-* Stel het abonnement van uw context in met *set-AzContext* en para meter SubscriptionId of subscriptionname-Zie<https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
-* Upload de VHD met *add-AzVhd* naar een Azure Storage-account-Zie<https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
-* Beschrijving Een beheerde schijf maken op basis van de VHD met *New-AzDisk* -Zie<https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk>
-* De besturingssysteem schijf van een nieuwe VM-configuratie instellen op de VHD of beheerde schijf met *set-AzVMOSDisk* -Zie<https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
-* Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie<https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
-* Een gegevens schijf toevoegen aan een nieuwe virtuele machine met *add-AzVMDataDisk* -Zie<https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
+* Stel het abonnement van uw context in met *set-AzContext* en para meter SubscriptionId of subscriptionname-Zie <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
+* Upload de VHD met *add-AzVhd* naar een Azure Storage-account-Zie <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
+* Beschrijving Een beheerde schijf maken op basis van de VHD met *New-AzDisk*  -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk>
+* De besturingssysteem schijf van een nieuwe VM-configuratie instellen op de VHD of beheerde schijf met *set-AzVMOSDisk* -Zie <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
+* Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
+* Een gegevens schijf toevoegen aan een nieuwe virtuele machine met *add-AzVMDataDisk* -Zie <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
 
-**Azure CLI**
+**Azure-CLI**
 
 * Meld u aan bij uw abonnement met *AZ login*
 * Selecteer uw abonnement met *AZ account set--Subscription `<subscription name or id` > *
 * De VHD uploaden met *AZ Storage BLOB upload* -Zie [de Azure CLI gebruiken met Azure Storage][storage-azure-cli]
-* Beschrijving Een beheerde schijf maken op basis van de VHD met *AZ Disk Create* -Ziehttps://docs.microsoft.com/cli/azure/disk
+* Beschrijving Een beheerde schijf maken op basis van de VHD met *AZ Disk Create* -Zie https://docs.microsoft.com/cli/azure/disk
 * Een nieuwe VM maken met de geüploade VHD of Managed Disk als besturingssysteem schijf met *AZ VM Create* en para meter *--attach-OS-Disk*
 * Een gegevens schijf toevoegen aan een nieuwe virtuele machine met *AZ VM Disk attach* en para meter *--New*
 
@@ -913,21 +908,21 @@ Als u een bestaande virtuele machine of VHD vanuit het on-premises netwerk wilt 
 
 * Gebruik *Sysprep* op Windows of *waagent-deprovisioning* in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10)) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
 * Meld u aan bij uw abonnement met *Connect-AzAccount*
-* Stel het abonnement van uw context in met *set-AzContext* en para meter SubscriptionId of subscriptionname-Zie<https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
-* Upload de VHD met *add-AzVhd* naar een Azure Storage-account-Zie<https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
-* Beschrijving Een beheerde schijf installatie kopie maken van de VHD met *New-AzImage* -Zie<https://docs.microsoft.com/powershell/module/az.compute/new-Azimage>
+* Stel het abonnement van uw context in met *set-AzContext* en para meter SubscriptionId of subscriptionname-Zie <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
+* Upload de VHD met *add-AzVhd* naar een Azure Storage-account-Zie <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
+* Beschrijving Een beheerde schijf installatie kopie maken van de VHD met *New-AzImage*  -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azimage>
 * Stel de besturingssysteem schijf van een nieuwe VM-configuratie in op de
-  * VHD met *set-AzVMOSDisk-SourceImageUri-CreateOption fromImage* -Zie<https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
-  * Beheerde schijf installatie kopie *instellen-AzVMSourceImage* -Zie<https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
-* Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie<https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
+  * VHD met *set-AzVMOSDisk-SourceImageUri-CreateOption fromImage* -Zie <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
+  * Beheerde schijf installatie kopie *instellen-AzVMSourceImage* -Zie <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
+* Een nieuwe virtuele machine maken op basis van de configuratie van de virtuele machine met *New-AzVM* -Zie <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 
-**Azure CLI**
+**Azure-CLI**
 
 * Gebruik *Sysprep* op Windows of *waagent-deprovisioning* in Linux om uw VM te generaliseren: Zie [technische Naslag informatie over Sysprep](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10)) voor Windows of [hoe u een virtuele Linux-machine vastlegt voor gebruik als Resource Manager-sjabloon][capture-image-linux-step-2-create-vm-image] voor Linux
 * Meld u aan bij uw abonnement met *AZ login*
 * Selecteer uw abonnement met *AZ account set--Subscription `<subscription name or id` > *
 * De VHD uploaden met *AZ Storage BLOB upload* -Zie [de Azure CLI gebruiken met Azure Storage][storage-azure-cli]
-* Beschrijving Een beheerde schijf installatie kopie maken van de VHD met *AZ image Create* -Ziehttps://docs.microsoft.com/cli/azure/image
+* Beschrijving Een beheerde schijf installatie kopie maken van de VHD met *AZ image Create* -Zie https://docs.microsoft.com/cli/azure/image
 * Een nieuwe VM maken met de geüploade VHD of de beheerde schijf installatie kopie als besturingssysteem schijf met *AZ VM Create* and para meter *--Image*
 
 **Sjabloon**
@@ -1083,8 +1078,8 @@ U kunt ook Vhd's kopiëren tussen abonnementen. Lees [dit artikel][storage-power
 
 De basis stroom van de PS-cmdlet-logica ziet er als volgt uit:
 
-* Een opslag account context maken voor het **bron** opslag account met *New-AzStorageContext* -Zie<https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
-* Een opslag account context maken voor het **doel** -opslag account met *New-AzStorageContext* -Zie<https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* Een opslag account context maken voor het **bron** opslag account met *New-AzStorageContext* -Zie <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* Een opslag account context maken voor het **doel** -opslag account met *New-AzStorageContext* -Zie <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
 * De kopie starten met
 
 ```powershell
@@ -1262,7 +1257,7 @@ Bekijk het architectuur verschil tussen het klassieke model en de ARM zoals besc
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Configuratie van SAP-en SAP-GUI-connectiviteit via Internet
 
-Zie dit artikel, waarin de details van dit onderwerp worden beschreven:<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Zie dit artikel, waarin de details van dit onderwerp worden beschreven: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Firewall instellingen in VM wijzigen
 
@@ -1607,7 +1602,7 @@ Het instellen van uw on-premises netwerk printers op basis van TCP/IP in een Azu
 > ![Linux][Logo_Linux] Linux
 >
 > * net als bij Windows volgt u gewoon de standaard procedure voor het installeren van een netwerk printer
-> * Volg gewoon de open bare Linux-gidsen voor [SuSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) of [Red Hat en Oracle Linux](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/sec-Printer_Configuration.html) over het toevoegen van een printer.
+> * Volg gewoon de open bare Linux-gidsen voor [SuSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) of [Red Hat en Oracle Linux](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/sec-printer_configuration) over het toevoegen van een printer.
 >
 >
 
@@ -1638,8 +1633,8 @@ Procedure:
 >
 > Hier volgen enkele voor beelden van documentatie over het configureren van netwerk printers in Linux of het opnemen van een hoofd stuk over afdrukken in Linux. Het werkt op dezelfde manier als in een Azure Linux-VM zolang de VM deel uitmaakt van een VPN:
 >
-> * SLES<https://en.opensuse.org/SDB:Printing_via_SMB_(Samba)_Share_or_Windows_Share>
-> * RHEL of Oracle Linux<https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sec-Printer_Configuration.html#s1-printing-smb-printer>
+> * SLES <https://en.opensuse.org/SDB:Printing_via_SMB_(Samba)_Share_or_Windows_Share>
+> * RHEL of Oracle Linux <https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sec-Printer_Configuration.html#s1-printing-smb-printer>
 >
 >
 
@@ -1696,7 +1691,7 @@ Om een dergelijke latentie te omzeilen en de systemen snel te lezen of te schrij
 
 Procedure:
 
-* Een transport domein instellen op elke locatie (on-premises en Azure) met behulp van trans actie STMS<https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
+* Een transport domein instellen op elke locatie (on-premises en Azure) met behulp van trans actie STMS <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
 * Koppel de domeinen aan een domein koppeling en bevestig de koppeling tussen de twee domeinen.
   <https://help.sap.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/content.htm>
 * Distribueer de configuratie naar het gekoppelde systeem.
@@ -1807,10 +1802,10 @@ Zo
 
 Er zijn twee typen Azure-platform gebeurtenissen die van invloed kunnen zijn op de beschik baarheid van uw virtuele machines: gepland onderhoud en niet-gepland onderhoud.
 
-* Gepland onderhoud bestaat uit periodieke updates van het onderliggende Azure-platform die door Microsoft worden doorgevoerd ter verbetering van de algemene betrouwbaarheid, prestaties en beveiliging van de platform-infrastructuur waarop uw virtuele machines worden uitgevoerd.
+* Geplande onderhouds gebeurtenissen zijn periodieke updates die door micro soft zijn aangebracht in het onderliggende Azure-platform om de algehele betrouw baarheid, prestaties en beveiliging van de platform infrastructuur waarop uw virtuele machines worden uitgevoerd, te verbeteren.
 * Niet-gepland onderhoud vindt plaats wanneer de hardware of de fysieke infrastructuur die uw virtuele machine ondersteunt defect raakt. Voorbeelden hiervan zijn lokale netwerkproblemen, lokale schijfdefecten of andere defecten op rack-niveau. Wanneer een dergelijke fout wordt gedetecteerd, migreert het Azure-platform uw virtuele machine automatisch van de beschadigde fysieke server die als host fungeert voor uw virtuele machine naar een in orde zijnde fysieke server. Dergelijke gebeurtenissen zijn zeldzaam, maar kunnen er ook toe leiden dat uw virtuele machine opnieuw moet opstarten.
 
-Meer informatie vindt u in deze documentatie:<https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+Meer informatie vindt u in deze documentatie: <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
 #### <a name="azure-storage-redundancy"></a>Azure Storage-redundantie
 
@@ -1818,7 +1813,7 @@ De gegevens in uw Microsoft Azure Storage-account worden altijd gerepliceerd om 
 
 Omdat Azure Storage standaard drie installatie kopieën van de gegevens houdt, zijn er geen RAID5-of RAID1 meer nodig voor meerdere Azure-schijven.
 
-Meer informatie vindt u in dit artikel:<https://azure.microsoft.com/documentation/articles/storage-redundancy/>
+Meer informatie vindt u in dit artikel: <https://azure.microsoft.com/documentation/articles/storage-redundancy/>
 
 #### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>VM van Azure-infra structuur opnieuw opstarten voor een hogere Beschik baarheid van SAP-toepassingen
 
@@ -1877,7 +1872,7 @@ Implementatie van een paar SAP-toepassings server exemplaren in hun specifieke V
 
 ![HA van SAP-toepassings servers in azure][planning-guide-figure-3000]
 
-Meer informatie vindt u in deze documentatie:<https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+Meer informatie vindt u in deze documentatie: <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
 #### <a name="high-availability-for-sap-central-services-on-azure"></a>Hoge Beschik baarheid voor SAP Central-Services op Azure
 
@@ -1953,10 +1948,10 @@ In de loop van de afgelopen jaren hebben partners van data centers echter co-loc
 Afhankelijk van de gekozen SAP-configuratie (2 of 3 lagen) moet er een back-up worden gemaakt. De inhoud van de virtuele machine zelf plus een back-up van de data base. De DBMS-gerelateerde back-ups worden naar verwachting uitgevoerd met database methoden. Een gedetailleerde beschrijving van de verschillende data bases vindt u in de [DBMS-hand leiding][dbms-guide]. Aan de andere kant kunt u een back-up maken van de SAP-gegevens, zoals wordt beschreven in deze sectie of online, zoals wordt beschreven in de volgende sectie.
 
 De offline back-up vereist in principe dat de virtuele machine wordt afgesloten via de Azure Portal en een kopie van de basis-VM-schijf en alle gekoppelde schijven aan de virtuele machine. Hiermee wordt een punt in de tijd van de virtuele machine en de bijbehorende schijf bewaard. Het is raadzaam om de back-ups te kopiëren naar een ander Azure Storage-account. De procedure die wordt beschreven in het hoofd stuk [kopiëren van schijven tussen Azure Storage accounts][planning-guide-5.4.2] van dit document, is daarom ook van toepassing.
-Naast het afsluiten met behulp van de Azure Portal, kunt u dit ook doen via Power shell of CLI, zoals hier wordt beschreven:<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+
 
 Een herstel bewerking van die staat bestaat uit het verwijderen van de basis-VM, evenals de oorspronkelijke schijven van de basis-VM en gekoppelde schijven, waarbij de opgeslagen schijven naar het oorspronkelijke opslag account of de resource groep voor beheerde schijven worden gekopieerd en het systeem vervolgens opnieuw kan implementeren.
-In dit artikel wordt een voor beeld gegeven van het script voor dit proces in Power shell:<http://www.westerndevs.com/azure-snapshots/>
+In dit artikel wordt een voor beeld gegeven van het script voor dit proces in Power shell: <http://www.westerndevs.com/azure-snapshots/>
 
 Zorg ervoor dat u een nieuwe SAP-licentie installeert, omdat u een VM-back-up herstelt zoals hierboven is beschreven. Hiermee maakt u een nieuwe hardware-sleutel.
 
@@ -1980,7 +1975,7 @@ Er kan een back-up worden gemaakt van andere Vm's in het SAP-systeem met de back
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Er is geen equivalent voor Windows VSS in Linux. Daarom zijn alleen bestands consistente back-ups mogelijk, maar geen toepassings consistente back-ups. De back-up van de SAP-DBMS moet worden uitgevoerd met behulp van DBMS-functionaliteit. Het bestands systeem dat de SAP-gerelateerde gegevens bevat, kan worden opgeslagen, bijvoorbeeld met behulp van teer, zoals hier wordt beschreven:<https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Er is geen equivalent voor Windows VSS in Linux. Daarom zijn alleen bestands consistente back-ups mogelijk, maar geen toepassings consistente back-ups. De back-up van de SAP-DBMS moet worden uitgevoerd met behulp van DBMS-functionaliteit. Het bestands systeem dat de SAP-gerelateerde gegevens bevat, kan worden opgeslagen, bijvoorbeeld met behulp van teer, zoals hier wordt beschreven: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 

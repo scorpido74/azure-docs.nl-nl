@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 0bdc9451f0dbc32e14197cde48a3613196b864c0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e0670aeb3a41506ef302364c6eeaff332520abc5
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037130"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245431"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -77,13 +77,14 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     > [!NOTE]
     > U kunt geen Azure-bestands shares maken op basis van Blob Storage-accounts of *Premium* -opslag accounts voor algemeen gebruik (GPv1 of GPv2). Standaard-Azure-bestands shares moeten alleen worden gemaakt in *standaard* accounts voor algemeen gebruik en Premium Azure-bestands shares moeten alleen worden gemaakt in FileStorage-opslag accounts. *Premium* -opslag accounts voor algemeen gebruik (GPv1 en GPv2) zijn alleen voor Premium-pagina-blobs. 
 
+* <a id="file-locking"></a>
+  **Ondersteunt Azure Files het vergren delen van bestanden?**  
+    Ja, Azure Files volledig ondersteunt SMB/Windows-stijl bestands vergrendeling. [Zie de Details voor meer informatie](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks).
+
 * <a id="give-us-feedback"></a>
   **Ik wil een specifieke functie zien die is toegevoegd aan Azure Files. Kunt u deze toevoegen?**  
     Het Azure Files-team is geïnteresseerd bij het horen van alle feedback over onze service. Stem op de functie aanvragen op [Azure files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)! We hopen dat u met veel nieuwe functies op zoek bent.
 
-  **Ondersteunt Azure Files het vergren delen van bestanden?**  
-    Ja, Azure Files volledig ondersteunt SMB/Windows-stijl bestands vergrendeling. [Zie de Details voor meer informatie](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks). 
-    
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
@@ -208,6 +209,13 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 **Wat voor nalevings beleid voor gegevens Azure Files worden ondersteund?**  
 
    Azure Files wordt uitgevoerd boven op dezelfde opslag architectuur die wordt gebruikt in andere opslag Services in Azure Storage. Azure Files past hetzelfde beleid voor gegevens naleving toe dat in andere Azure Storage-services wordt gebruikt. Raadpleeg voor meer informatie over de naleving van Azure Storage gegevens [Azure Storage compliance-aanbiedingen](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)en ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/trustcenter/default.aspx).
+
+* <a id="file-auditing"></a>
+**Hoe kan ik de toegang tot bestanden en wijzigingen controleren in Azure Files?**
+
+  Er zijn twee opties voor het controleren van de controle functionaliteit voor Azure Files:
+  - Als gebruikers rechtstreeks toegang hebben tot de Azure-bestands share, kunnen [Azure Storage-Logboeken (preview)](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) worden gebruikt om bestands wijzigingen en gebruikers toegang bij te houden. Deze logboeken kunnen worden gebruikt voor het oplossen van problemen en de aanvragen worden aanbevolen.
+  - Als gebruikers toegang hebben tot de Azure-bestands share via een Windows-Server waarop de Azure File Sync-agent is geïnstalleerd, kunt u een [controle beleid](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) of een product van een derde partij gebruiken om bestands wijzigingen en gebruikers toegang op de Windows-Server bij te houden. 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS-verificatie
 * <a id="ad-support-devices"></a>
@@ -274,7 +282,6 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 **Zijn er REST-Api's ter ondersteuning van Get/set/Copy-Windows-Acl's voor mappen/bestanden?**
 
     Ja, we ondersteunen REST-Api's waarmee NTFS-Acl's voor mappen of bestanden worden opgehaald, ingesteld of gekopieerd wanneer de [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (of hoger) wordt gebruikt rest API. We bieden ook ondersteuning voor persistentie van Windows-Acl's in REST-hulpprogram ma's: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
-
 
 ## <a name="on-premises-access"></a>Lokale toegang
 
