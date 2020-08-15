@@ -5,16 +5,21 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836391"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245363"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
 In dit artikel worden veelgestelde vragen en bekende problemen met Azure Container Registry beschreven.
+
+Zie voor hulp bij het oplossen van problemen met:
+* [Problemen met register aanmelding oplossen](container-registry-troubleshoot-login.md)
+* [Problemen met het netwerk oplossen met het REGI ster](container-registry-troubleshoot-access.md)
+* [Problemen met het REGI ster oplossen](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Resourcebeheer
 
@@ -261,10 +266,10 @@ Het instellen van een Azure container Registry voor anonieme toegang (openbaar) 
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnose-en status controles
 
-- [Status controleren met`az acr check-health`](#check-health-with-az-acr-check-health)
+- [Status controleren met `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker-pull mislukt met fout: net/http: de aanvraag is geannuleerd tijdens het wachten op de verbinding (client. timeout is overschreden terwijl er wordt gewacht op headers)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker-Push is gelukt, maar docker-pull mislukt met fout: niet toegestaan: verificatie vereist](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
-- [`az acr login`geslaagd, maar docker-opdrachten mislukken met fout: niet toegestaan: verificatie vereist](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
+- [`az acr login` geslaagd, maar docker-opdrachten mislukken met fout: niet toegestaan: verificatie vereist](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 - [De logboeken voor fout opsporing van de docker-daemon inschakelen en ophalen](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Nieuwe gebruikers machtigingen worden mogelijk niet direct na het bijwerken van kracht](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Verificatie gegevens worden niet in de juiste indeling gegeven voor directe REST API-aanroepen](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
@@ -274,7 +279,7 @@ Het instellen van een Azure container Registry voor anonieme toegang (openbaar) 
 - [De indeling van de opslag plaats is ongeldig of wordt niet ondersteund](#repository-format-is-invalid-or-unsupported)
 - [Hoe kan ik u http-traceringen verzamelen in Windows?](#how-do-i-collect-http-traces-on-windows)
 
-### <a name="check-health-with-az-acr-check-health"></a>Status controleren met`az acr check-health`
+### <a name="check-health-with-az-acr-check-health"></a>Status controleren met `az acr check-health`
 
 Zie [de status van een Azure container Registry controleren](container-registry-check-health.md)voor informatie over het oplossen van veelvoorkomende problemen met de omgeving en het REGI ster.
 
@@ -453,8 +458,8 @@ Zie voor de volledige naamgevings regels voor opslag plaatsen de [specificatie o
 
 #### <a name="prerequisites"></a>Vereisten
 
-- Het ontsleutelen van HTTPS inschakelen in Fiddler:<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
-- Docker inschakelen voor het gebruik van een proxy via de docker-gebruikers interface:<https://docs.docker.com/docker-for-windows/#proxies>
+- Het ontsleutelen van HTTPS inschakelen in Fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Docker inschakelen voor het gebruik van een proxy via de docker-gebruikers interface: <https://docs.docker.com/docker-for-windows/#proxies>
 - Zorg ervoor dat u de herstel bewerking ongedaan uitvoert.  Docker werkt niet met deze ingeschakelde en Fiddler niet actief.
 
 #### <a name="windows-containers"></a>Windows-containers

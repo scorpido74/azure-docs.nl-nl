@@ -3,18 +3,23 @@ title: Register status controleren
 description: Meer informatie over het uitvoeren van een snelle diagnose opdracht voor het identificeren van veelvoorkomende problemen bij het gebruik van een Azure container Registry, met inbegrip van de lokale configuratie van docker en connectiviteit met het REGI ster
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456409"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245380"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>De status van een Azure container Registry controleren
 
 Wanneer u een Azure container Registry gebruikt, kunnen er af en toe problemen optreden. Het is bijvoorbeeld mogelijk dat u geen container installatie kopie kunt ophalen vanwege een probleem met docker in uw lokale omgeving. Het is ook mogelijk dat een netwerk probleem geen verbinding kan maken met het REGI ster. 
 
 Als eerste diagnostische stap voert u de opdracht [AZ ACR check-Health][az-acr-check-health] uit om informatie over de status van de omgeving en eventueel toegang tot een doel register te verkrijgen. Deze opdracht is beschikbaar in azure CLI-versie 2.0.67 of hoger. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+
+Zie voor aanvullende hulp bij het oplossen van problemen met het REGI ster:
+* [Problemen met register aanmelding oplossen](container-registry-troubleshoot-login.md)
+* [Problemen met het netwerk oplossen met het REGI ster](container-registry-troubleshoot-access.md)
+* [Problemen met het REGI ster oplossen](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Uitvoeren AZ ACR check-Health
 

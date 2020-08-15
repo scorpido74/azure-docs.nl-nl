@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 59566fc051b1e84d8e271b3c9d061f2481dcc58f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507893"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245312"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Micro Focus Enter prise Server 5,0 en Enter prise Developer 5,0 op Azure installeren
 
@@ -67,9 +67,9 @@ Bekijk de volgende vereisten voordat u aan de slag gaat:
 
 8.  Laad vanuit de RDP-sessie de volgende twee bestanden. Omdat u Windows gebruikt, kunt u de bestanden slepen en neerzetten in de RDP-sessie:
 
-    -   **es \_50.exe**, het installatie bestand van de Enter prise-server.
+    -   `es\_50.exe`, het installatie bestand van de Enter prise-server.
 
-    -   **mflic**, het bijbehorende licentie bestand — de Enter prise-server wordt niet geladen zonder dat.
+    -   `mflic`, het bijbehorende licentie bestand — de Enter prise-server wordt niet geladen zonder dat.
 
 9.  Dubbel klik op het bestand om de installatie te starten. Selecteer de installatie locatie in het eerste venster en accepteer de gebruiksrecht overeenkomst.
 
@@ -87,11 +87,11 @@ Controleer na de installatie of er aanvullende updates zijn als een aantal verei
 
 1.  Start het micro focus licentie beheer.
 
-2.  Selecteer **Start** \> licentie beheer voor Start **micro focus licentie beheer** \> **License Administration**en klik vervolgens op het tabblad **installeren** . Kies het type licentie-indeling dat u wilt uploaden: een licentie bestand of een licentie code van 16 tekens. Voor een bestand, in **licentie bestand**, bladert u bijvoorbeeld naar het **mflic** -bestand dat u eerder naar de virtuele machine hebt geüpload en selecteert u **Licenties installeren**.
+2.  Selecteer **Start** \> licentie beheer voor Start **micro focus licentie beheer** \> **License Administration**en klik vervolgens op het tabblad **installeren** . Kies het type licentie-indeling dat u wilt uploaden: een licentie bestand of een licentie code van 16 tekens. Bijvoorbeeld: voor een bestand, in **licentie bestand**, bladert u naar het *- `mflic` bestand dat u eerder hebt geüpload naar de virtuele machine en selecteert u **Licenties installeren**.
 
     ![Het dialoog venster micro focus licentie beheer](media/install-image-3.png)
 
-3.  Controleer of ENTER prise server wordt geladen. Probeer de Enter prise server-beheer site te starten vanuit een browser met behulp van deze URL: <http://localhost:86/> . De pagina Enter prise server-beheer wordt weer gegeven zoals weer gegeven.
+3.  Controleer of ENTER prise server wordt geladen. Probeer de Enter prise server-beheer site te starten vanuit een browser met behulp van deze URL: `http://localhost:86/` . De pagina Enter prise server-beheer wordt weer gegeven zoals weer gegeven.
 
     ![Beheer pagina voor Enter prise server](media/install-image-4.png)
 
@@ -103,9 +103,9 @@ Controleer na de installatie of er aanvullende updates zijn als een aantal verei
 
 3.  Laad vanuit de RDP-sessie de volgende twee bestanden (Sleep en zet deze indien gewenst):
 
-    -   Het installatie bestand van de Enter prise-server **edvs2017.exe**.
+    -   `edvs2017.exe`, het installatie bestand van de Enter prise-server.
 
-    -   **mflic**, het bijbehorende licentie bestand (Enter prise Developer wordt niet zonder IT) geladen.
+    -   `mflic`, het bijbehorende licentie bestand (Enter prise Developer wordt niet zonder IT) geladen.
 
 4.  Dubbel klik op het bestand **edvs2017.exe** om de installatie te starten. Selecteer de installatie locatie in het eerste venster en accepteer de gebruiksrecht overeenkomst. Als u wilt, kiest u **Rumba 9,5 installeren** om deze Terminal Emulator te installeren. dit hebt u waarschijnlijk nodig.
 
@@ -117,7 +117,7 @@ Controleer na de installatie of er aanvullende updates zijn als een aantal verei
 
 6.  Start de micro focus-licentie beheer net zoals u dat voor de Enter prise-server hebt gedaan. Kies **Start** \> licentie beheer starten met **micro focus licentie beheer** \> **License Administration**en klik op het tabblad **installeren** .
 
-7.  Kies het type licentie-indeling dat u wilt uploaden: een licentie bestand of een licentie code van 16 tekens. Voor een bestand, in **licentie bestand**, bladert u bijvoorbeeld naar het **mflic** -bestand dat u eerder naar de virtuele machine hebt geüpload en selecteert u **Licenties installeren**.
+7.  Kies het type licentie-indeling dat u wilt uploaden: een licentie bestand of een licentie code van 16 tekens. Bijvoorbeeld, voor een bestand, in **licentie bestand**, bladert u naar het `mflic` bestand dat eerder is geüpload naar de virtuele machine en selecteer  **Licenties installeren**.
 
     ![Het dialoog venster micro focus licentie beheer](media/install-image-7.png)
 

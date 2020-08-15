@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: 18ccec5332e3751a86225ab087a1f68b0577cf96
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 447b8a07f6bbda42be4def96ee8f1244fa752526
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406092"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245584"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Snelstartgids: QnA Maker REST-Api's voor Node.js
 
@@ -22,8 +22,8 @@ Gebruik de QnA Maker REST-Api's voor Node.js om:
 * Een kennis database vervangen
 * Een kennisdatabase publiceren
 * Een knowledge base verwijderen
-* Een Knowledge base downloaden
-* Status van een bewerking ophalen
+* Een Knowledge Base downloaden
+* De status van een bewerking ophalen
 
 [Referentie documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node.js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api) -voor beelden
 
@@ -31,7 +31,7 @@ Gebruik de QnA Maker REST-Api's voor Node.js om:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 * De huidige versie van [Node.js](https://nodejs.org).
 * U moet een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
 
@@ -71,8 +71,8 @@ Deze code fragmenten laten zien hoe u het volgende kunt doen met de QnA Maker RE
 * [Een kennis database vervangen](#replace-a-knowledge-base)
 * [Een kennisdatabase publiceren](#publish-a-knowledge-base)
 * [Een knowledge base verwijderen](#delete-a-knowledge-base)
-* [Een Knowledge base downloaden](#download-the-knowledge-base)
-* [Status van een bewerking ophalen](#get-status-of-an-operation)
+* [Een Knowledge Base downloaden](#download-the-knowledge-base)
+* [De status van een bewerking ophalen](#get-status-of-an-operation)
 
 ## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
@@ -88,8 +88,8 @@ Maak variabelen voor het Azure-eindpunt en de Azure-sleutel voor uw resource. Al
 
 Stel de volgende omgevings waarden in:
 
-* `QNAMAKER_RESOURCE_KEY`-De **sleutel** is een teken reeks van 32 en is beschikbaar in het Azure Portal op de QnA Maker-resource op de pagina **snel starten** . Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
-* `QNAMAKER_AUTHORING_ENDPOINT`-Uw ontwerp-eind punt in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` bevat de naam van uw **resource**. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
+* `QNAMAKER_RESOURCE_KEY` -De **sleutel** is een teken reeks van 32 en is beschikbaar in het Azure Portal op de QnA Maker-resource op de pagina **snel starten** . Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
+* `QNAMAKER_AUTHORING_ENDPOINT` -Uw ontwerp-eind punt in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` bevat de naam van uw **resource**. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
@@ -134,7 +134,7 @@ Gebruik de [rest API om een Knowledge Base te verwijderen](https://docs.microsof
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=deleteKb)]
 
-## <a name="get-status-of-an-operation"></a>Status van een bewerking ophalen
+## <a name="get-status-of-an-operation"></a>De status van een bewerking ophalen
 
 Langlopende processen, zoals het aanmaak proces, retourneert een bewerkings-ID, die moet worden gecontroleerd met een afzonderlijke REST API aanroep. Deze functie neemt de hoofd tekst van het antwoord Create. De belang rijke sleutel is de `operationState` , waarmee wordt bepaald of u wilt door gaan met polling.
 
@@ -146,7 +146,7 @@ Gebruik de [rest API om bewerkingen op een Knowledge Base te bewaken](https://do
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met de `node rest-apis.js` opdracht uit de toepassingsmap.
+Voer de toepassing uit vanuit uw toepassingsmap met de opdracht `node rest-apis.js`.
 
 ```console
 node rest-apis.js
@@ -165,6 +165,6 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 >[Zelf studie: een KB maken en beantwoorden](../tutorials/create-publish-query-in-portal.md)
 
 * [Wat is de QnA Maker-API?](../Overview/overview.md)
-* [Een knowledge base bewerken](../how-to/edit-knowledge-base.md)
-* [Gebruiks analyse ophalen](../how-to/get-analytics-knowledge-base.md)
+* [Een Knowledge Base bewerken](../how-to/edit-knowledge-base.md)
+* [Gebruiksanalyse ophalen](../how-to/get-analytics-knowledge-base.md)
 * De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/rest-api/rest-api.js).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 2bd38bc7a499aa9178d49f54e27a88a38206e521
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317566"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245669"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Downloads in Commerciële marketplace-analyses
 
@@ -25,9 +25,7 @@ Als u toegang wilt krijgen tot het dash board down loads, opent u het dash board
 
 ## <a name="downloads-dashboard"></a>Dashboard voor downloads
 
-In het dash board **down loads** van het menu **analyseren** worden aanvragen weer gegeven voor alle down loads die meer dan 1000 rijen met klant-of order gegevens bevatten.
-
-U ontvangt een pop-upmelding en een e-mail bericht met een koppeling naar het dash board **down loads** wanneer u een down load opvraagt met meer dan 1000 rijen met gegevens. Deze gegevens worden gedownload gedurende een periode van 30 dagen en vervolgens verwijderd.
+In het dash board **down loads** van het menu **analyseren** worden aanvragen weer gegeven voor alle down loads die meer dan 1000 rijen met klant-of order gegevens bevatten. Deze gegevens downloads worden 30 dagen beschikbaar en vervolgens verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

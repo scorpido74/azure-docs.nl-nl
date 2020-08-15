@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: c6964a28956230dabad007d60d84dcdd1cffab23
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b8432a54aa90b7d500898b2f6959d075ac89460
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319912"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245329"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Gebruiks dashboard in micro soft Commercial Marketplace Analytics
 
@@ -111,6 +111,8 @@ Op het tabblad **gebruik van facturering via data limiet** worden gebruiks gegev
 - **Overschrijding trend per plan**: vertegenwoordigt de trend van het gebruiks aantal van de geselecteerde meter dimensie per plannen. De weer gegeven abonnementen vertegenwoordigen de vijf beste plannen met de hoogste hoeveelheid gebruik voor de geselecteerde aanbieding.
 - **Overschrijding trend per top 50-klanten**: de Top 50 aanbiedingen met de hoogste gebruiks uren worden weer gegeven op een ***Leader Board*** en worden geclassificeerd op basis van het hoogste gebruik van de aangepaste meter. Selecteer een klant in de Leader Board om de gebruiks trend van een geselecteerde meter dimensie weer te geven.
 - **Overschrijding trend van belangrijkste klanten**: geeft de belangrijkste klant-percentiel (en) weer die bijdragen aan het percentage van het totale gebruik. Het bovenste klant percentiel wordt weer gegeven langs de X-as en wordt bepaald door de gebruiks hoeveelheid van de klant. Op de Y-as wordt het gebruiks aantal weer gegeven. U kunt details weer geven door boven punten in het lijn diagram te bewegen.
+
+Als u meerdere aanbiedingen hebt die gebruikmaken van aangepaste meters, worden in het gebruiks rapport van de gefactureerde facturering gebruiks gegevens voor al uw aanbiedingen weer gegeven volgens hun aangepaste meter dimensies.
 
 > [!NOTE]
 > De details van het gebruik en alle grafieken op deze pagina worden weer gegeven voor welke meter dimensie is geselecteerd voor het pagina filter.

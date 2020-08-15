@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 15204a081f001d421574daa7f5ec2bac40152a19
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995748"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244309"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Aanmelden voor Translator
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-- Hebt u geen account? U kunt een [gratis account](https://azure.microsoft.com/free/) maken als u kosteloos wilt experimenteren.
+- Hebt u geen account? U kunt een [gratis account](https://azure.microsoft.com/free/cognitive-services) maken als u kosteloos wilt experimenteren.
 - Hebt u al een account? [Aanmelden](https://ms.portal.azure.com/)
 
 ## <a name="create-a-subscription-for-translator"></a>Een abonnement voor Translator maken

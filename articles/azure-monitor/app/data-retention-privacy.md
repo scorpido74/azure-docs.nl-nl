@@ -4,12 +4,12 @@ description: Retentie en privacybeleid
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 772777c48c8d16197cd8a73586f6549837d7d080
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b1a1e370d55ad58bf1468c2e8b2381b62707b6a
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372396"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245941"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
 
@@ -94,9 +94,6 @@ Micro soft gebruikt de gegevens alleen om de service voor u te leveren.
 ## <a name="where-is-the-data-held"></a>Waar bevinden de gegevens zich?
 * U kunt de locatie selecteren wanneer u een nieuwe Application Insights resource maakt. Meer informatie over de beschik baarheid van Application Insights per regio [vindt u hier](https://azure.microsoft.com/global-infrastructure/services/?products=all).
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Betekent dit dat mijn app moet worden gehost in de VS, Europa of Zuidoost-Azië?
-* Nee. Uw toepassing kan overal worden uitgevoerd, hetzij in uw eigen on-premises hosts of in de Cloud.
-
 ## <a name="how-secure-is-my-data"></a>Hoe veilig zijn mijn gegevens?
 Application Insights is een Azure-service. Beveiligings beleid wordt beschreven in het [technische document over beveiliging, privacy en naleving van Azure](https://go.microsoft.com/fwlink/?linkid=392408).
 
@@ -129,7 +126,7 @@ Als een klant deze map moet configureren met specifieke beveiligings vereisten, 
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp`wordt gebruikt voor het persistent maken van gegevens. Deze locatie kan niet vanuit de map config worden geconfigureerd en de machtigingen voor toegang tot deze map zijn beperkt tot de specifieke gebruiker met de vereiste referenties. (Zie [implementatie](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)voor meer informatie.)
+`C:\Users\username\AppData\Local\Temp` wordt gebruikt voor het persistent maken van gegevens. Deze locatie kan niet vanuit de map config worden geconfigureerd en de machtigingen voor toegang tot deze map zijn beperkt tot de specifieke gebruiker met de vereiste referenties. (Zie [implementatie](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)voor meer informatie.)
 
 ###  <a name="net"></a>.Net
 
@@ -178,7 +175,7 @@ Het voor voegsel `appInsights-node` van de map kan worden overschreven door de r
 
 U kunt telemetrie buffers uitschakelen door [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) in te stellen op `false` . Wanneer sessie opslag is uitgeschakeld, wordt in plaats daarvan een lokale matrix gebruikt als permanente opslag. Omdat de Java script-SDK op een client apparaat wordt uitgevoerd, heeft de gebruiker toegang tot deze opslag locatie via de ontwikkel hulpprogramma's van de browser.
 
-### <a name="opencensus-python"></a>Opentellingen python
+### <a name="opencensus-python"></a>OpenCensus Python
 
 Standaard gebruikt de python-SDK voor opentellingen de huidige map gebruiker `%username%/.opencensus/.azure/` . Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie hier [implementatie](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) .) De map met de persistente gegevens krijgt de naam na het python-bestand dat de telemetrie heeft gegenereerd.
 
@@ -277,14 +274,14 @@ Voor [sdk's voor andere platforms][platforms]raadpleegt u hun documenten.
 | Ajax |HTTP-aanroepen van de webpagina naar de server |
 | Aanvragen |URL, duur, respons code |
 | Afhankelijkheden |Type (SQL, HTTP,...), connection string, of URI, synchronisatie/async, duur, geslaagd, SQL-instructie (met Status Monitor) |
-| **Uitzonderingen** |Type, **bericht**, oproep stacks, bron bestand, regel nummer,`thread id` |
+| **Uitzonderingen** |Type, **bericht**, oproep stacks, bron bestand, regel nummer, `thread id` |
 | Valt |`Process id`, `parent process id` , `crash thread id` ; toepassings patch, `id` , build;  type uitzonde ring, adres, reden; verborgen symbolen en registers, binaire begin-en eind adressen, binaire naam en pad, CPU-type |
 | Tracering |**Bericht** -en ernst niveau |
 | Prestatiemeteritems |Processor tijd, beschikbaar geheugen, aanvraag frequentie, uitzonderings frequentie, privé-bytes verwerken, i/o-frequentie, aanvraag duur, lengte van aanvraag wachtrij |
 | Beschikbaarheid |Reactie code van webtest, duur van elke test stap, test naam, tijds tempel, geslaagd, reactie tijd, test locatie |
 | SDK-diagnose |Bericht of uitzonde ring traceren |
 
-U kunt [een aantal gegevens uitschakelen door ApplicationInsights.configte bewerken][config]
+U kunt [een aantal gegevens uitschakelen door ApplicationInsights.configte bewerken ][config]
 
 > [!NOTE]
 > Client-IP wordt gebruikt om geografische locatie af te leiden, maar standaard worden IP-gegevens niet meer opgeslagen en worden alle nullen naar het gekoppelde veld geschreven. Voor meer informatie over het afhandelen van persoonlijke gegevens kunt u dit [artikel](../platform/personal-data-mgmt.md#application-data)aanbevelen. Als u IP-adres gegevens moet opslaan in het artikel over de [IP-adres verzameling](./ip-collection.md) , wordt u door de opties geleid.

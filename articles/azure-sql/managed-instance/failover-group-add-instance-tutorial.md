@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c898eeaf99b8a24b992f1daa82b9149327b7a457
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002996"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245776"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Zelf studie: een door SQL beheerd exemplaar toevoegen aan een failovergroep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooie
 ---
 
 
-## <a name="1---create-a-resource-group-and-primary-managed-instance"></a>1-een resource groep en primair beheerd exemplaar maken
+## <a name="create-a-resource-group-and-primary-managed-instance"></a>Een resource groep en primair beheerd exemplaar maken
 
 In deze stap maakt u de resource groep en het primaire beheerde exemplaar voor uw failover-groep met behulp van de Azure Portal of Power shell. 
 
@@ -404,7 +404,7 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 
 ---
 
-## <a name="2---create-secondary-virtual-network"></a>2-secundair virtueel netwerk maken
+## <a name="create-secondary-virtual-network"></a>Secundair virtueel netwerk maken
 
 Als u de Azure Portal gebruikt om uw beheerde exemplaar te maken, moet u het virtuele netwerk afzonderlijk maken, omdat er een vereiste is dat het subnet van het primaire en het secundaire beheerde exemplaar geen overlappende bereiken hebben. Als u Power shell gebruikt om uw beheerde exemplaar te configureren, gaat u verder met stap 3. 
 
@@ -432,7 +432,7 @@ Voer de volgende stappen uit om een virtueel netwerk te maken:
     | **Adresruimte** | De adres ruimte voor het virtuele netwerk, zoals `10.128.0.0/16` . | 
     | **Abonnement** | Het abonnement waar uw primaire beheerde instantie en resource groep zich bevinden. |
     | **Regio** | De locatie waar u uw secundaire beheerde exemplaar gaat implementeren. |
-    | **Subnet** | De naam voor het subnet. `default`is standaard voor u bestemd. |
+    | **Subnet** | De naam voor het subnet. `default` is standaard voor u bestemd. |
     | **Adresbereik**| Het adres bereik voor uw subnet. Dit moet verschillen van het adres bereik van het subnet dat wordt gebruikt door het virtuele netwerk van uw primaire beheerde instantie, zoals `10.128.0.0/24` .  |
     | &nbsp; | &nbsp; |
 
@@ -444,7 +444,7 @@ Deze stap is alleen nodig als u de Azure Portal gebruikt voor het implementeren 
 
 ---
 
-## <a name="3---create-a-secondary-managed-instance"></a>3-een secundair beheerd exemplaar maken
+## <a name="create-a-secondary-managed-instance"></a>Een secundair beheerd exemplaar maken
 In deze stap maakt u een tweede beheerde instantie in de Azure Portal, waarmee ook de netwerken tussen de twee beheerde instanties worden geconfigureerd. 
 
 Uw tweede beheerde exemplaar moet:
@@ -734,9 +734,9 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 
 ---
 
-## <a name="4---create-a-primary-gateway"></a>4-een primaire gateway maken 
+## <a name="create-a-primary-gateway"></a>Een primaire gateway maken 
 
-Voor twee beheerde instanties om deel te nemen aan een failovergroep moet er een ExpressRoute of een gateway zijn geconfigureerd tussen de virtuele netwerken van de twee beheerde instanties om netwerk communicatie toe te staan. Als u ervoor kiest om [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) te configureren in plaats van twee VPN-gateways te verbinden, gaat u verder met [stap 7](#7---create-a-failover-group).  
+Voor twee beheerde instanties om deel te nemen aan een failovergroep moet er een ExpressRoute of een gateway zijn geconfigureerd tussen de virtuele netwerken van de twee beheerde instanties om netwerk communicatie toe te staan. Als u ervoor kiest om [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) te configureren in plaats van twee VPN-gateways te verbinden, gaat u verder met [stap 7](#create-a-failover-group).  
 
 In dit artikel worden de stappen beschreven voor het maken van de twee VPN-gateways en het verbinden ervan, maar u kunt door gaan met het maken van de failovergroep als u in plaats daarvan ExpressRoute hebt geconfigureerd. 
 
@@ -767,7 +767,6 @@ Maak de gateway voor het virtuele netwerk van uw primaire beheerde exemplaar met
     | **Gatewaytype** | Selecteer **VPN**. |
     | **VPN-type** | Selecteer **Op route gebaseerd**. |
     | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
-    | **Locatie**| De locatie waar uw primaire beheerde instantie en primair virtuele netwerk zijn.   |
     | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-primary` . |
     | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
     | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `primary-gateway-IP` . |
@@ -831,7 +830,7 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 ---
 
 
-## <a name="5---create-secondary-gateway"></a>5-secundaire gateway maken 
+## <a name="create-secondary-gateway"></a>Secundaire gateway maken 
 In deze stap maakt u de gateway voor het virtuele netwerk van uw secundaire beheerde exemplaar met behulp van de Azure Portal. 
 
 
@@ -849,8 +848,7 @@ Herhaal de stappen in de vorige sectie om het subnet van het virtuele netwerk en
    | **Gatewaytype** | Selecteer **VPN**. |
    | **VPN-type** | Selecteer **Op route gebaseerd**. |
    | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
-   | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevinden.   |
-   | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-secondary` . |
+   | **Virtueel netwerk**| Selecteer het virtuele netwerk voor het secundaire beheerde exemplaar, zoals `vnet-sql-mi-secondary` . |
    | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
    | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
@@ -883,7 +881,7 @@ Maak de gateway voor het virtuele netwerk van het secundaire beheerde exemplaar 
                      -VirtualNetwork $secondaryVirtualNetwork
    $drLocation = $secondaryVirtualNetwork.Location
    
-   Write-host "Creating primary gateway..."
+   Write-host "Creating secondary gateway..."
    Write-host "This will take some time."
    $secondaryGWPublicIP = New-AzPublicIpAddress -Name $secondaryGWPublicIPAddress -ResourceGroupName $resourceGroupName `
             -Location $drLocation -AllocationMethod Dynamic
@@ -911,7 +909,7 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 ---
 
 
-## <a name="6---connect-the-gateways"></a>6-de gateways verbinden
+## <a name="connect-the-gateways"></a>De gateways verbinden
 In deze stap maakt u een bidirectionele verbinding tussen de twee gateways van de twee virtuele netwerken. 
 
 
@@ -923,21 +921,24 @@ Verbind de twee gateways met behulp van de Azure Portal.
 1. Selecteer **een resource maken** op basis van de [Azure Portal](https://portal.azure.com).
 1. Typ `connection` in het zoekvak en druk vervolgens op ENTER om te zoeken. Hiermee gaat u naar de **verbindings** bron, gepubliceerd door micro soft.
 1. Selecteer **maken** om uw verbinding te maken. 
-1. Selecteer op het tabblad **basis beginselen** de volgende waarden en selecteer vervolgens **OK**. 
+1. Selecteer op de pagina **basis beginselen** de volgende waarden en selecteer vervolgens **OK**. 
     1. Selecteer `VNet-to-VNet` voor het **verbindings type**. 
     1. Selecteer uw abonnement in de vervolgkeuzelijst. 
     1. Selecteer de resource groep voor SQL Managed instance in de vervolg keuzelijst. 
     1. Selecteer de locatie van uw primaire beheerde instantie in de vervolg keuzelijst. 
-1. Op het tabblad **instellingen** selecteert of voert u de volgende waarden in en selecteert u **OK**:
-    1. Kies de primaire netwerk gateway voor de **eerste virtuele netwerk gateway**, zoals `Primary-Gateway` .  
-    1. Kies de secundaire netwerk gateway voor de **tweede virtuele netwerk gateway**, zoals `Secondary-Gateway` . 
+1. Selecteer op de pagina **instellingen** de volgende waarden of voer deze in en selecteer **OK**:
+    1. Kies de primaire netwerk gateway voor de **eerste virtuele netwerk gateway**, zoals `primaryGateway` .  
+    1. Kies de secundaire netwerk gateway voor de **tweede virtuele netwerk gateway**, zoals `secondaryGateway` . 
     1. Schakel het selectie vakje in naast **bidirectionele connectiviteit instellen**. 
     1. Wijzig de standaard naam van de primaire verbinding of geef deze de gewenste waarde. 
     1. Geef een **gedeelde sleutel (PSK)** op voor de verbinding, zoals `mi1m2psk` . 
+    1. Selecteer **OK** om uw wijzigingen op te slaan. 
 
-   ![Gateway verbinding maken](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
+    ![Gateway verbinding maken](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
-1. Controleer op het tabblad **samen vatting** de instellingen voor uw bidirectionele verbinding en selecteer vervolgens **OK** om de verbinding te maken. 
+    
+
+1. Controleer op de pagina **controleren en maken** de instellingen voor uw bidirectionele verbinding en selecteer vervolgens **OK** om de verbinding te maken. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -970,7 +971,7 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 ---
 
 
-## <a name="7---create-a-failover-group"></a>7-een failovergroep maken
+## <a name="create-a-failover-group"></a>Een failovergroep maken
 In deze stap maakt u de failovergroep en voegt u beide beheerde exemplaren toe aan de groep. 
 
 
@@ -1013,7 +1014,7 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 ---
 
 
-## <a name="8---test-failover"></a>8-testfailover
+## <a name="test-failover"></a>Testfailover
 In deze stap wordt uw failover-groep overschreven naar de secundaire server en wordt er een failback uitgevoerd met behulp van de Azure Portal. 
 
 

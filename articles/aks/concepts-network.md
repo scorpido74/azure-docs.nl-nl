@@ -4,12 +4,12 @@ description: Meer informatie over netwerken in azure Kubernetes service (AKS), w
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387758"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243901"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netwerk concepten voor toepassingen in azure Kubernetes service (AKS)
 
@@ -73,6 +73,8 @@ Zie [kubenet Networking configureren voor een AKS-cluster][aks-configure-kubenet
 
 Met Azure CNI haalt elke pod een IP-adres uit het subnet en kan het rechtstreeks worden geopend. Deze IP-adressen moeten uniek zijn binnen uw netwerk ruimte en moeten vooraf worden gepland. Elk knoop punt heeft een configuratie parameter voor het maximum aantal peulen dat wordt ondersteund. Het equivalente aantal IP-adressen per knoop punt wordt vervolgens vóór dat knoop punt gereserveerd. Deze benadering vereist meer planning, zoals anders kan leiden tot een afzuig van IP-adressen of de nood zaak om clusters opnieuw te bouwen in een groter subnet naarmate uw toepassings vereisten groeien.
 
+In tegens telling tot kubenet, is verkeer naar eind punten in hetzelfde virtuele netwerk niet NAT volgens het primaire IP-adres van het knoop punt. Het bron adres voor verkeer in het virtuele netwerk is het Pod-IP. Verkeer dat buiten het virtuele netwerk is, is nog steeds Nat's voor het primaire IP-adres van het knoop punt.
+
 Knoop punten gebruiken de [Azure container Networking interface (cni) Kubernetes-][cni-networking] invoeg toepassing.
 
 ![Diagram met twee knoop punten met bruggen die elk met één Azure VNet verbinden][advanced-networking-diagram]
@@ -119,7 +121,7 @@ Hoewel functies, zoals service-eind punten of Udr's worden ondersteund met zowel
 * Als u de virtuele netwerk resources voor een AKS-cluster hand matig maakt, wordt u ondersteund bij het configureren van uw eigen Udr's of service-eind punten.
 * Als het Azure-platform automatisch de virtuele netwerk resources voor uw AKS-cluster maakt, wordt het niet ondersteund om deze AKS-beheerde resources hand matig te wijzigen om uw eigen Udr's of service-eind punten te configureren.
 
-## <a name="ingress-controllers"></a>controllers van inkomend verkeer
+## <a name="ingress-controllers"></a>Ingangs controllers
 
 Wanneer u een Load Balancer-type service maakt, wordt er een onderliggende Azure load balancer-resource gemaakt. De load balancer is zo geconfigureerd dat verkeer naar het Peul in uw service op een bepaalde poort wordt gedistribueerd. De LoadBalancer werkt alleen op laag 4: de service is niet op de hoogte van de daad werkelijke toepassingen en kan geen verdere routerings overwegingen nemen.
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 24e04e166c13f787f756c97716e2bf0143eecbdb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b53476bcb05d6e91b157c24795c963c04e6f4bb4
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128570"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244486"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>De Text Analytics taal detectie container implementeren naar de Azure Kubernetes-service
 
@@ -25,7 +25,7 @@ Meer informatie over het implementeren van de taal detectie container. In deze p
 
 Voor deze procedure zijn verschillende hulpprogram ma's vereist die moeten worden geïnstalleerd en lokaal worden uitgevoerd. Gebruik Azure Cloud shell niet.
 
-* Een Azure-abonnement gebruiken. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Een Azure-abonnement gebruiken. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/cognitive-services) voordat u begint.
 * [Git](https://git-scm.com/downloads) voor uw besturings systeem, zodat u het voor [beeld](https://github.com/Azure-Samples/cognitive-services-containers-samples) in deze procedure kunt klonen.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Docker-engine](https://www.docker.com/products/docker-engine) en controleer of de docker-cli in een console venster werkt.
@@ -313,17 +313,17 @@ In deze sectie wordt de **kubectl** cli gebruikt om te communiceren met de Azure
 
     Implementatie-instellingen voor taal-frontend|Doel|
     |--|--|
-    |Regel 32<br> `image`eigenschap|Afbeeldings locatie voor de front-end-installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |Regel 44<br> `name`eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt verwezen `<client-secret>` in een vorige sectie.|
+    |Regel 32<br> `image` eigenschap|Afbeeldings locatie voor de front-end-installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |Regel 44<br> `name` eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt verwezen `<client-secret>` in een vorige sectie.|
 
 1. Wijzig de taal implementatie regels op `language.yml` basis van de volgende tabel om uw eigen container register installatie kopie namen, client geheim en instellingen voor tekst analyse toe te voegen.
 
     |Instellingen voor taal implementatie|Doel|
     |--|--|
-    |Regel 78<br> `image`eigenschap|Afbeeldings locatie voor de taal installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |Regel 95<br> `name`eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt verwezen `<client-secret>` in een vorige sectie.|
-    |Regel 91<br> `apiKey`eigenschap|De bron sleutel voor tekst analyse|
-    |Regel 92<br> `billing`eigenschap|Het facturerings eindpunt voor uw tekst analyse resource.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |Regel 78<br> `image` eigenschap|Afbeeldings locatie voor de taal installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |Regel 95<br> `name` eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt verwezen `<client-secret>` in een vorige sectie.|
+    |Regel 91<br> `apiKey` eigenschap|De bron sleutel voor tekst analyse|
+    |Regel 92<br> `billing` eigenschap|Het facturerings eindpunt voor uw tekst analyse resource.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     Omdat het **apiKey** -en **facturerings eindpunt** zijn ingesteld als onderdeel van de Kubernetes-indelings definitie, hoeft de website container deze niet te kennen of door te geven als onderdeel van de aanvraag. De website container verwijst naar de taal detectie container met de naam van de Orchestrator `language` .
 
@@ -404,4 +404,4 @@ az group delete --name cogserv-container-rg
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Cognitive Services containers](../cognitive-services-container-support.md)
+> [Cognitive Services-containers](../cognitive-services-container-support.md)

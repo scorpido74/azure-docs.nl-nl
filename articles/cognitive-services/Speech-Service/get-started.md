@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7464d1788101eef7bdad95545056bb32e46c395
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167807"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245465"
 ---
 # <a name="try-the-speech-service-for-free"></a>Speech Service gratis uitproberen
 
@@ -29,7 +29,7 @@ In dit artikel kiest u een optie om de spraak service eenvoudig gratis te testen
 
 Voer de volgende stappen uit om een gratis proef versie van 30 dagen te activeren en de API-sleutels op te halen. De proef periode wordt onmiddellijk gestart zodra de volgende stappen zijn voltooid.
 
-1. Ga naar de [Probeer cognitieve service](https://azure.microsoft.com/try/cognitive-services/).
+1. Ga naar de [Probeer cognitieve service](https://azure.microsoft.com/free/cognitive-services).
 1. Selecteer het tabblad **spraak-api's** .
 1. Kies **API-sleutel ophalen**.
 

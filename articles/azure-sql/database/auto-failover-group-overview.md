@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826531"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245567"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Met groepen voor automatische failover kunt u de replicatie en failover van een groep data bases op een server of voor alle data bases in een beheerd exemplaar naar een andere regio beheren. Het is een declaratieve abstractie boven op de bestaande [actieve geo-replicatie](active-geo-replication-overview.md) functie, ontworpen om de implementatie en het beheer van geo-gerepliceerde data bases op schaal te vereenvoudigen. U kunt failover hand matig initiëren of u kunt deze overdragen aan de Azure-service op basis van een door de gebruiker gedefinieerd beleid. Met de laatste optie kunt u automatisch meerdere gerelateerde data bases in een secundaire regio herstellen na een onherstelbare fout of een andere niet-geplande gebeurtenis die het volledige of gedeeltelijke verlies van de beschik baarheid van de SQL Database of SQL Managed instance in de primaire regio tot gevolg heeft. Een failover-groep kan een of meer data bases bevatten, die meestal worden gebruikt door dezelfde toepassing. Daarnaast kunt u de Lees bare secundaire data bases gebruiken om werk belastingen met alleen-lezen query's te offloaden. Omdat voor groepen voor automatische failover meerdere data bases zijn vereist, moeten deze data bases worden geconfigureerd op de primaire server. Automatische failover-groepen ondersteunen replicatie van alle data bases in de groep naar slechts één secundaire server of exemplaar in een andere regio.
+Met de functie groepen voor automatische failover kunt u de replicatie en failover van een groep data bases op een server of voor alle data bases in een beheerd exemplaar naar een andere regio beheren. Het is een declaratieve abstractie boven op de bestaande [actieve geo-replicatie](active-geo-replication-overview.md) functie, ontworpen om de implementatie en het beheer van geo-gerepliceerde data bases op schaal te vereenvoudigen. U kunt failover hand matig initiëren of u kunt deze overdragen aan de Azure-service op basis van een door de gebruiker gedefinieerd beleid. Met de laatste optie kunt u automatisch meerdere gerelateerde data bases in een secundaire regio herstellen na een onherstelbare fout of een andere niet-geplande gebeurtenis die het volledige of gedeeltelijke verlies van de beschik baarheid van de SQL Database of SQL Managed instance in de primaire regio tot gevolg heeft. Een failover-groep kan een of meer data bases bevatten, die meestal worden gebruikt door dezelfde toepassing. Daarnaast kunt u de Lees bare secundaire data bases gebruiken om werk belastingen met alleen-lezen query's te offloaden. Omdat voor groepen voor automatische failover meerdere data bases zijn vereist, moeten deze data bases worden geconfigureerd op de primaire server. Automatische failover-groepen ondersteunen replicatie van alle data bases in de groep naar slechts één secundaire server of exemplaar in een andere regio.
 
 > [!NOTE]
 > Als u meerdere Azure SQL Database secundaire zones in dezelfde of verschillende regio's wilt, gebruikt u [actieve geo-replicatie](active-geo-replication-overview.md).
@@ -33,7 +33,7 @@ Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen list
 
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, wordt elke storing die invloed heeft op data bases op een server of een beheerd exemplaar, automatisch failover. U kunt de groep voor automatische failover beheren met:
 
-- [Azure-portal](geo-distributed-application-configure-tutorial.md)
+- [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: failover-groep](scripts/add-database-to-failover-group-cli.md)
 - [Power shell: failover-groep](scripts/add-database-to-failover-group-powershell.md)
 - [Rest API: failovergroep](/rest/api/sql/failovergroups).
@@ -203,7 +203,7 @@ Ter illustratie van de wijzigings volgorde gaan we ervan uit dat Server A de pri
 1. Voer een geplande failover uit om de primaire server over te scha kelen naar B. server A wordt de nieuwe secundaire server. De failover kan leiden tot enkele minuten uitval tijd. De werkelijke tijd is afhankelijk van de grootte van de failovergroep.
 2. Maak aanvullende secundaire zones van elke Data Base op server B naar server C met behulp van [actieve geo-replicatie](active-geo-replication-overview.md). Elke Data Base op server B heeft twee secundaire gegevens, één op server A en één op server C. Hiermee wordt gegarandeerd dat de primaire data bases beveiligd blijven tijdens de overgang.
 3. Verwijder de failovergroep. De aanmeldingen worden op dit moment niet uitgevoerd. Dit komt doordat de SQL-aliassen voor de listeners van de failovergroep zijn verwijderd en de gateway de naam van de failover-groep niet herkent.
-4. Maak de failovergroep opnieuw met dezelfde naam tussen de servers A en C. Op dit moment worden de aanmeldingen niet meer uitgevoerd.
+4. Maak de failovergroep opnieuw met dezelfde naam tussen de servers B en C. Op dit moment worden de aanmeldingen niet meer uitgevoerd.
 5. Voeg alle primaire data bases op B toe aan de nieuwe failovergroep.
 6. Voer een geplande failover van de failovergroep uit om tussen B en C te scha kelen. Nu wordt Server C de primaire en B-de secundaire. Alle secundaire data bases op server A worden automatisch gekoppeld aan de Primaries op C. Net als bij stap 1 kan de failover tot enkele minuten uitval tijd tot gevolg hebben.
 7. Verwijder de server A. Alle data bases op een worden automatisch verwijderd.
@@ -231,7 +231,7 @@ Om ervoor te zorgen dat de verbinding met het primaire SQL-beheerde exemplaar na
 > [!IMPORTANT]
 > Het eerste beheerde exemplaar dat in het subnet wordt gemaakt, bepaalt de DNS-zone voor alle volgende instanties in hetzelfde subnet. Dit betekent dat twee exemplaren van hetzelfde subnet geen deel kunnen uitmaken van verschillende DNS-zones.
 
-Zie [een secundaire beheerde instantie maken](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance)voor meer informatie over het maken van het secundaire SQL-beheerde exemplaar in dezelfde DNS-zone als het primaire exemplaar.
+Zie [een secundaire beheerde instantie maken](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance)voor meer informatie over het maken van het secundaire SQL-beheerde exemplaar in dezelfde DNS-zone als het primaire exemplaar.
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>Replicatie verkeer tussen twee instanties inschakelen
 
@@ -378,10 +378,10 @@ Deze volg orde wordt aangeraden om het probleem te voor komen waarbij de secunda
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Het verlies van kritieke gegevens voor komen
 
-Vanwege de hoge latentie van Wide Area Networks, gebruikt doorlopende kopieën een mechanisme voor asynchrone replicatie. Asynchrone replicatie maakt enkele gegevens verlies onvermijdbaar als er een fout optreedt. Voor sommige toepassingen is het echter mogelijk dat er geen gegevens verloren gaan. Een ontwikkelaar van een toepassing kan deze essentiële updates beveiligen door de [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) -systeem procedure onmiddellijk aan te roepen nadat de trans actie is doorgevoerd. Aanroepen `sp_wait_for_database_copy_sync` blokkeert de aanroepende thread totdat de laatste vastgelegde trans actie is verzonden naar de secundaire data base. Er wordt echter niet gewacht tot de verzonden trans acties moeten worden herhaald en op de secundaire moeten worden doorgevoerd. `sp_wait_for_database_copy_sync`ligt binnen het bereik van een specifieke koppeling voor doorlopende kopieën. Elke gebruiker met de verbindings rechten voor de primaire data base kan deze procedure aanroepen.
+Vanwege de hoge latentie van Wide Area Networks, gebruikt doorlopende kopieën een mechanisme voor asynchrone replicatie. Asynchrone replicatie maakt enkele gegevens verlies onvermijdbaar als er een fout optreedt. Voor sommige toepassingen is het echter mogelijk dat er geen gegevens verloren gaan. Een ontwikkelaar van een toepassing kan deze essentiële updates beveiligen door de [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) -systeem procedure onmiddellijk aan te roepen nadat de trans actie is doorgevoerd. Aanroepen `sp_wait_for_database_copy_sync` blokkeert de aanroepende thread totdat de laatste vastgelegde trans actie is verzonden naar de secundaire data base. Er wordt echter niet gewacht tot de verzonden trans acties moeten worden herhaald en op de secundaire moeten worden doorgevoerd. `sp_wait_for_database_copy_sync` ligt binnen het bereik van een specifieke koppeling voor doorlopende kopieën. Elke gebruiker met de verbindings rechten voor de primaire data base kan deze procedure aanroepen.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync`voor komt gegevens verlies na een failover, maar biedt geen volledige synchronisatie voor lees toegang. De vertraging die wordt veroorzaakt door een `sp_wait_for_database_copy_sync` procedure aanroep kan aanzienlijk zijn en is afhankelijk van de grootte van het transactie logboek op het moment van de aanroep.
+> `sp_wait_for_database_copy_sync` voor komt gegevens verlies na een failover, maar biedt geen volledige synchronisatie voor lees toegang. De vertraging die wordt veroorzaakt door een `sp_wait_for_database_copy_sync` procedure aanroep kan aanzienlijk zijn en is afhankelijk van de grootte van het transactie logboek op het moment van de aanroep.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Failover-groepen en herstel naar een bepaald tijdstip
 

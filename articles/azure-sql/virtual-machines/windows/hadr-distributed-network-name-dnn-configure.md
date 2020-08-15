@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 8eb9caf466148e43266c4be9cf1308da15fb67f2
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169813"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245533"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Een gedistribueerde netwerk naam voor een FCI configureren 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -156,6 +156,29 @@ Voer de volgende stappen uit om de failover te testen:
 Als u de verbinding wilt testen, meldt u zich aan bij een andere virtuele machine in hetzelfde virtuele netwerk. Open **SQL Server Management Studio** en maak verbinding met de SQL Server FCI door de DNS-naam van DNN te gebruiken.
 
 Als dat het geval is, kunt u [SQL Server Management Studio downloaden](/sql/ssms/download-sql-server-management-studio-ssms).
+
+## <a name="avoid-ip-conflict"></a>IP-conflict vermijden
+
+Dit is een optionele stap om te voor komen dat het VIP-adres (virtuele IP) dat door de FCI-resource wordt gebruikt, wordt toegewezen aan een andere resource in azure als een duplicaat. 
+
+Hoewel klanten nu de DNN gebruiken om verbinding te maken met de SQL Server FCI, kunnen de naam van het virtuele netwerk (VNN) en het virtuele IP-adres niet worden verwijderd omdat ze de vereiste onderdelen van de FCI-infra structuur zijn. Omdat er echter geen load balancer voor het reserveren van het virtuele IP-adres in azure, is er een risico dat een andere bron in het virtuele netwerk hetzelfde IP-adres krijgt als het virtuele IP-adres dat door de FCI wordt gebruikt. Dit kan mogelijk leiden tot een dubbel probleem met een IP-conflict. 
+
+Configureer een APIPA-adres of een speciale netwerk adapter om het IP-adres te reserveren. 
+
+### <a name="apipa-address"></a>APIPA-adres
+
+Om te voor komen dat dubbele IP-adressen worden gebruikt, configureert u een APIPA-adres (ook wel bekend als een link-local adres). Voer hiertoe de volgende opdrachten uit:
+
+```powershell
+Get-ClusterResource "virtual IP address" | Set-ClusterParameter 
+    –Multiple @{"Address”=”169.254.1.1”;”SubnetMask”=”255.255.0.0”;"OverrideAddressMatch"=1;”EnableDhcp”=0}
+```
+
+In deze opdracht staat ' virtueel IP-adres ' voor de naam van de geclusterde VIP-adres bron en ' 169.254.1.1 ' is het APIPA-adres dat is gekozen voor het VIP-adres. Kies het adres dat het beste bij uw bedrijf past. Stel in dat `OverrideAddressMatch=1` het IP-adres zich op elk netwerk bevindt, met inbegrip van de APIPA-adres ruimte. 
+
+### <a name="dedicated-network-adapter"></a>Speciale netwerk adapter
+
+U kunt ook een netwerk adapter in azure configureren om het IP-adres te reserveren dat door de bron van het virtuele IP-adres wordt gebruikt. Dit maakt echter gebruik van het adres in de adres ruimte van het subnet en de extra belasting van de netwerk adapter wordt niet gebruikt voor een ander doel.
 
 ## <a name="limitations"></a>Beperkingen
 

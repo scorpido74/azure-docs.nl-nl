@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc06f73aba216f37db570bb33b9f897fabb16cbf
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584668"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244122"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>CTF-rapportage (Collaborative Translation Framework) gebruiken
 
@@ -76,7 +76,7 @@ Met deze methode wordt het aantal vertalingen opgehaald dat door de gebruiker is
 | appId | **Vereist** Als de autorisatie-header wordt gebruikt, laat u het veld AppID leeg een teken reeks opgeven met ' Bearer ' + ' "+ toegangs token.|
 | uriPrefix | **Optioneel** Een teken reeks met het voor voegsel van de URI van de vertaling.|
 | from | **Optioneel** Een teken reeks die de taal code van de tekst van de vertaling aangeeft. |
-| tot | **Optioneel** Een teken reeks die de taal code vertegenwoordigt voor het vertalen van de tekst in.|
+| in op | **Optioneel** Een teken reeks die de taal code vertegenwoordigt voor het vertalen van de tekst in.|
 | minRating| **Optioneel** Een integer-waarde voor de minimale kwaliteits classificatie voor de vertaalde tekst. De geldige waarde is tussen-10 en 10. De standaardwaarde is 1.|
 | maxRating| **Optioneel** Een integer-waarde voor de maximale kwaliteits classificatie voor de vertaalde tekst. De geldige waarde is tussen-10 en 10. De standaardwaarde is 1.|
 | gebruiker | **Optioneel** Een teken reeks die wordt gebruikt om het resultaat te filteren op basis van de afzender van de verzen ding. |
@@ -84,7 +84,7 @@ Met deze methode wordt het aantal vertalingen opgehaald dat door de gebruiker is
 | minDateUtc| **Optioneel** De datum vanaf wanneer u de vertalingen wilt ophalen. De datum moet de UTC-notatie hebben. |
 | maxDateUtc| **Optioneel** De datum totdat u de vertalingen wilt ophalen. De datum moet de UTC-notatie hebben. |
 | skip| **Optioneel** Het aantal resultaten dat u wilt overs laan op een pagina. Als u bijvoorbeeld de eerste twintig rijen van de resultaten wilt overs Laan en wilt weer geven uit de 21e resultaten record, geeft u 20 op voor deze para meter. De standaard waarde voor deze para meter is 0.|
-| Houd | **Optioneel** Het aantal resultaten dat u wilt ophalen. Het maximum aantal van elke aanvraag is 100. De standaardwaarde is 100.|
+| take | **Optioneel** Het aantal resultaten dat u wilt ophalen. Het maximum aantal van elke aanvraag is 100. De standaardwaarde is 100.|
 
 > [!NOTE]
 > De para meters overs Laan en aanvraag volgen inschakelen paginering voor een groot aantal resultaat records.
@@ -95,10 +95,10 @@ De resultatenset bevat de matrix van de **UserTranslationCount**. Elke UserTrans
 
 | Veld | Beschrijving |
 |:---|:---|
-| Count| Het aantal resultaten dat wordt opgehaald|
+| Aantal| Het aantal resultaten dat wordt opgehaald|
 | Van | De bron taal|
 | Waardering| De classificatie die door de indiener wordt toegepast in de aanroep van de methode AddTranslation ()|
-| Handeling| De doel taal|
+| Tot| De doel taal|
 | URI| De URI die wordt toegepast in de aanroep van de methode AddTranslation ()|
 | Gebruiker| De gebruikers naam|
 
@@ -113,8 +113,8 @@ De resultatenset bevat de matrix van de **UserTranslationCount**. Elke UserTrans
 > [!NOTE]
 > Het quotum wordt aangepast om ervoor te zorgen dat verdeling over alle gebruikers van de service.
 
-**Code voorbeelden weer geven op GitHib**
-* [G #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+**Code voorbeelden weer geven op GitHub**
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
 ## <a name="getusertranslations-method"></a>Methode GetUserTranslations
@@ -147,7 +147,7 @@ Met deze methode worden de vertalingen opgehaald die door de gebruiker zijn gema
 | appId | **Vereist** Als de autorisatie-header wordt gebruikt, laat u het veld AppID leeg een teken reeks opgeven met ' Bearer ' + ' "+ toegangs token.|
 | uriPrefix| **Optioneel** Een teken reeks met het voor voegsel van de URI van de vertaling.|
 | from| **Optioneel** Een teken reeks die de taal code van de tekst van de vertaling aangeeft.|
-| tot| **Optioneel** Een teken reeks die de taal code vertegenwoordigt voor het vertalen van de tekst in.|
+| in op| **Optioneel** Een teken reeks die de taal code vertegenwoordigt voor het vertalen van de tekst in.|
 | minRating| **Optioneel** Een integer-waarde voor de minimale kwaliteits classificatie voor de vertaalde tekst. De geldige waarde is tussen-10 en 10. De standaardwaarde is 1.|
 | maxRating| **Optioneel** Een integer-waarde voor de maximale kwaliteits classificatie voor de vertaalde tekst. De geldige waarde is tussen-10 en 10. De standaardwaarde is 1.|
 | gebruiker| **Beschrijving. Een teken reeks die wordt gebruikt om het resultaat te filteren op basis van de afzender van de verzen ding**|
@@ -155,7 +155,7 @@ Met deze methode worden de vertalingen opgehaald die door de gebruiker zijn gema
 | minDateUtc| **Optioneel** De datum vanaf wanneer u de vertalingen wilt ophalen. De datum moet de UTC-notatie hebben.|
 | maxDateUtc| **Optioneel** De datum totdat u de vertalingen wilt ophalen. De datum moet de UTC-notatie hebben.|
 | skip| **Optioneel** Het aantal resultaten dat u wilt overs laan op een pagina. Als u bijvoorbeeld de eerste twintig rijen van de resultaten wilt overs Laan en wilt weer geven uit de 21e resultaten record, geeft u 20 op voor deze para meter. De standaard waarde voor deze para meter is 0.|
-| Houd| **Optioneel** Het aantal resultaten dat u wilt ophalen. Het maximum aantal van elke aanvraag is 100. De standaardwaarde is 50.|
+| take| **Optioneel** Het aantal resultaten dat u wilt ophalen. Het maximum aantal van elke aanvraag is 100. De standaardwaarde is 50.|
 
 > [!NOTE]
 > De para meters overs Laan en aanvraag volgen inschakelen paginering voor een groot aantal resultaat records.
@@ -170,7 +170,7 @@ De resultatenset bevat de matrix van de **UserTranslation**. Elke UserTranslatio
 | Van| De bron taal|
 | OriginalText| De tekst van de bron taal die wordt gebruikt bij het verzenden van de aanvraag|
 |Waardering |De classificatie die door de indiener wordt toegepast in de aanroep van de methode AddTranslation ()|
-|Handeling|    De doel taal|
+|Tot|    De doel taal|
 |TranslatedText|    De vertaling als verzonden in de aanroep van de methode AddTranslation ()|
 |URI|   De URI die wordt toegepast in de aanroep van de methode AddTranslation ()|
 |Gebruiker   |De gebruikers naam|
@@ -187,5 +187,5 @@ De resultatenset bevat de matrix van de **UserTranslation**. Elke UserTranslatio
 > Het quotum wordt aangepast om ervoor te zorgen dat verdeling over alle gebruikers van de service.
 
 **Code voorbeelden weer geven op GitHib**
-* [G #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)

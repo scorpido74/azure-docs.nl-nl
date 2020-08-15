@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985423"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245849"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Oplossingen op virtuele machines van Azure
 
 Dit artikel bevat informatie over het implementeren van Azure vertrouwelijk computing virtual machines (Vm's) met Intel-processors die worden ondersteund door de [Intel software Guard extension](https://software.intel.com/sgx) (Intel SGX). 
 
-## <a name="azure-confidential-computing-vm-sizes"></a>VM-grootten van Azure Confidential Computing
+## <a name="azure-confidential-computing-vm-sizes"></a>VM-grootten van Azure vertrouwelijk computing
 
 Azure vertrouwelijk computing virtual machines zijn ontworpen om de vertrouwelijkheid en integriteit van uw gegevens en code te beschermen tijdens de verwerking in de Cloud 
 
@@ -32,41 +32,18 @@ Begin met het implementeren van een virtuele machine uit de DCsv2-serie via de m
 Voer de volgende opdracht uit in de [Azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)om een lijst op te halen met alle algemeen beschik bare generatie-VM-grootten in de beschik bare regio's en beschikbaarheids zones:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
-    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" 
-    --all 
+az vm list-skus `
+    --size dc `
+    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" `
+    --all `
     --output table
-```
-
-Vanaf mei 2020 zijn deze Sku's beschikbaar in de volgende regio's en beschikbaarheids zones:
-
-```output
-Name              Locations      AZ_a
-----------------  -------------  ------
-Standard_DC8_v2   eastus         2
-Standard_DC1s_v2  eastus         2
-Standard_DC2s_v2  eastus         2
-Standard_DC4s_v2  eastus         2
-Standard_DC8_v2   CanadaCentral
-Standard_DC1s_v2  CanadaCentral
-Standard_DC2s_v2  CanadaCentral
-Standard_DC4s_v2  CanadaCentral
-Standard_DC8_v2   uksouth        3
-Standard_DC1s_v2  uksouth        3
-Standard_DC2s_v2  uksouth        3
-Standard_DC4s_v2  uksouth        3
-Standard_DC8_v2   CentralUSEUAP
-Standard_DC1s_v2  CentralUSEUAP
-Standard_DC2s_v2  CentralUSEUAP
-Standard_DC4s_v2  CentralUSEUAP
 ```
 
 Voer de volgende opdracht uit voor een gedetailleerde weer gave van de bovenstaande grootten:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
+az vm list-skus `
+    --size dc `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Vereisten voor speciale host
@@ -101,17 +78,17 @@ Wanneer u virtuele machines in azure gebruikt, bent u verantwoordelijk voor het 
 
 Azure vertrouwelijk computing ondersteunt momenteel geen zone-redundantie via Beschikbaarheidszones. Gebruik [beschikbaarheids sets](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)voor de hoogst mogelijke Beschik baarheid en redundantie voor vertrouwelijke computing. Vanwege de beperkingen van de hardware kunnen beschikbaarheids sets voor vertrouwelijke computing instanties slechts een maximum van 10 update domeinen hebben. 
 
-## <a name="deploying-via-an-azure-resource-manager-template"></a>Implementeren via een Azure Resource Manager sjabloon 
+## <a name="deployment-with-azure-resource-manager-arm-template"></a>De sjabloon implementatie met Azure Resource Manager (ARM)
 
 Azure Resource Manager is de implementatie- en beheersservice voor Azure. Er wordt een Management-laag geboden waarmee u resources in uw Azure-abonnement kunt maken, bijwerken en verwijderen. U kunt beheer functies, zoals toegangs beheer, vergren delingen en tags, gebruiken om uw resources na de implementatie te beveiligen en te organiseren.
 
-Zie [Sjabloonimlementatie Overview](../azure-resource-manager/templates/overview.md)voor meer informatie over Azure Resource Manager sjablonen.
+Zie [Sjabloonimlementatie Overview](../azure-resource-manager/templates/overview.md)(Engelstalig) voor meer informatie over arm-sjablonen.
 
-Als u een DCsv2-serie wilt implementeren in een Azure Resource Manager-sjabloon, gebruikt u de [resource van de virtuele machine](../virtual-machines/windows/template-description.md). Zorg ervoor dat u de juiste eigenschappen voor **vmSize** en voor uw **imageReference**opgeeft.
+Als u een DCsv2-serie in een ARM-sjabloon wilt implementeren, gebruikt u de [resource van de virtuele machine](../virtual-machines/windows/template-description.md). Zorg ervoor dat u de juiste eigenschappen voor **vmSize** en voor uw **imageReference**opgeeft.
 
 ### <a name="vm-size"></a>VM-grootte
 
-Geef een van de volgende grootten op in uw Azure Resource Manager sjabloon in de virtuele-machine bron. Deze teken reeks wordt in **Eigenschappen**als **vmSize** geplaatst.
+Geef een van de volgende grootten op in uw ARM-sjabloon in de virtuele-machine bron. Deze teken reeks wordt in **Eigenschappen**als **vmSize** geplaatst.
 
 ```json
   [

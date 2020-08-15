@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 08/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 366a302e4683c74e2ba62d76c066365a3c81b045
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ea95603ea630a1320db5698092f6748e36a9934
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051878"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245754"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor IBM Db2
 
@@ -30,8 +30,8 @@ De diverse artikelen over SAP-workloads op Azure zijn uitgebracht.  Het is raadz
 
 De volgende SAP-opmerkingen zijn gerelateerd aan SAP on Azure met betrekking tot het gebied dat in dit document wordt besproken:
 
-| Nummer van notitie | Titel |
-| --- | --- |
+| Nummer van notitie |Titel |
+| --- |--- |
 | [1928533] |SAP-toepassingen op Azure: ondersteunde producten en Azure VM-typen |
 | [2015553] |SAP op Microsoft Azure: vereisten voor ondersteuning |
 | [1999351] |Problemen met verbeterde Azure-bewaking voor SAP oplossen |
@@ -54,10 +54,10 @@ Raadpleeg SAP Note [1928533]voor informatie over ondersteunde SAP-producten en t
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM Db2 voor Linux-, UNIX-en Windows-configuratie richtlijnen voor SAP-installaties in azure-Vm's
 ### <a name="storage-configuration"></a>Opslagconfiguratie
-Alle database bestanden moeten worden opgeslagen in het NTFS-bestands systeem op basis van rechtstreeks gekoppelde schijven. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op Azure page BLOB Storage ( <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs> ) of Managed disks ( <https://docs.microsoft.com/azure/storage/storage-managed-disks-overview> ). Elk type netwerk station of externe shares zoals de volgende Azure File-Services worden **niet** ondersteund voor database bestanden: 
+Raadpleeg het artikel [Azure Storage typen voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) voor een overzicht van Azure Storage-typen voor SAP-werk belasting. alle database bestanden moeten worden opgeslagen op gekoppelde schijven van Azure Block Storage (Windows: NFFS, Linux: xfs, ext4 of ext3). Elk type netwerk station of externe shares zoals de volgende Azure-Services worden **niet** ondersteund voor database bestanden: 
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+* [Microsoft Azure-bestands service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 Door gebruik te maken van schijven op basis van de BLOB-opslag of Managed Disks van Azure-pagina's, zijn de instructies [voor de implementatie van azure virtual machines DBMS voor SAP-workload](dbms_guide_general.md) ook van toepassing op implementaties met de DB2-DBMS.
 
@@ -67,7 +67,7 @@ Zolang het huidige quotum voor IOPS per schijf voldoende is, is het mogelijk om 
 
 Raadpleeg het hoofd stuk ' overwegingen voor de veiligheid en prestaties van data bases voor database Directory's ' in SAP-installatie handleidingen voor informatie over prestaties.
 
-U kunt ook Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en hoger) gebruiken als beschreven [aandachtspunten voor de implementatie van Azure virtual machines DBMS voor SAP-workload](dbms_guide_general.md) om één groot logisch apparaat te maken op meerdere schijven.
+U kunt ook Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en hoger) gebruiken als beschreven [aandachtspunten voor de implementatie van Azure virtual machines DBMS voor SAP-workload](dbms_guide_general.md) of LVM of mdadm in Linux om een groot logisch apparaat te maken op meerdere schijven.
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
@@ -75,7 +75,59 @@ Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's m
 
 Voor virtuele machines uit de M-serie van Azure kan de latentie die in de transactie Logboeken wordt geschreven, worden verminderd met factoren, vergeleken met de prestaties van Azure Premium Storage, wanneer u Azure Write Accelerator gebruikt. Daarom moet u Azure Write Accelerator implementeren voor de VHD (s) die het volume vormen voor de Db2-transactie Logboeken. Details kunnen worden gelezen in het document [Write Accelerator](../../windows/how-to-enable-write-accelerator.md).
 
-### <a name="backuprestore"></a>Back-up en herstellen
+## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>Aanbeveling op de VM-en schijf structuur voor de implementatie van IBM Db2
+
+IBM Db2 voor SAP NetWeaver-toepassingen wordt ondersteund op elk VM-type dat wordt vermeld in de SAP-ondersteunings opmerking [1928533].  De aanbevolen VM-families voor het uitvoeren van een IBM Db2-Data Base zijn Esd_v4/Eas_v4/Es_v3 en M/M_v2-serie voor grote data bases met meerdere terabytes. De schrijf prestaties van de IBM Db2-transactie logboek schijf kunnen worden verbeterd door de Write Accelerator van de M-serie in te scha kelen. 
+
+Hieronder volgt een basislijn configuratie voor verschillende formaten en het gebruik van SAP op Db2-implementaties van kleine tot zeer grote:
+
+#### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>Extra klein SAP-systeem: data base-grootte 50-200 GB: voor beeld van oplossingen beheer
+| VM-naam/-grootte |Db2-koppel punt |Azure Premium Disk |Aantal schijven |IOPS |Door Voer [MB/s] |Grootte [GB] |Burst IOPS |Burst-Passthr [GB] | Stripe-grootte | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
+|vCPU: 4 |/DB2/ <SID> /sapdata |P6 |4 |960  |200  |256  |14,000  |680  |256 kB |ReadOnly |
+|RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 kB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
+
+#### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>Small SAP-systeem: data base grootte 200-750 GB: Small Business Suite
+| VM-naam/-grootte |Db2-koppel punt |Azure Premium Disk |Aantal schijven |IOPS |Door Voer [MB/s] |Grootte [GB] |Burst IOPS |Burst-Passthr [GB] | Stripe-grootte | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 16 |/DB2/ <SID> /sapdata |P15 |4 |4,400  |500  |1,024  |14,000  |680  |256 kB |ReadOnly |
+|RAM: 128 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 kB ||
+| |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
+
+#### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>Gemiddeld SAP-systeem: database grootte 500-1000 GB: Small Business Suite
+| VM-naam/-grootte |Db2-koppel punt |Azure Premium Disk |Aantal schijven |IOPS |Door Voer [MB/s] |Grootte [GB] |Burst IOPS |Burst-Passthr [GB] | Stripe-grootte | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 32 |/DB2/ <SID> /sapdata |P30 |2 |10,000  |400  |2,048  |10,000  |400  |256 kB |ReadOnly |
+|RAM: 256 GiB |/DB2/ <SID> /saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P20 |2 |4,600  |300  |1,024  |7,000  |340  |64 kB ||
+| |/DB2/ <SID> /offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
+
+#### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>Groot SAP-systeem: data base grootte 750-2000 GB: Business Suite
+| VM-naam/-grootte |Db2-koppel punt |Azure Premium Disk |Aantal schijven |IOPS |Door Voer [MB/s] |Grootte [GB] |Burst IOPS |Burst-Passthr [GB] | Stripe-grootte | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 64 |/DB2/ <SID> /sapdata |P30 |4 |20,000  |800  |4,096  |20,000  |800  |256 kB |ReadOnly |
+|RAM: 504 GiB |/DB2/ <SID> /saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P20 |4 |9,200  |600  |2,048  |14,000  |680  |64 kB ||
+| |/DB2/ <SID> /offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
+
+#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>Grote multi-terabyte SAP-systeem: data base grootte van 2 TB +: Global Business Suite-systeem
+| VM-naam/-grootte |Db2-koppel punt |Azure Premium Disk |Aantal schijven |IOPS |Door Voer [MB/s] |Grootte [GB] |Burst IOPS |Burst-Passthr [GB] | Stripe-grootte | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
+|vCPU: 128 |/DB2/ <SID> /sapdata |P40 |4 |30,000  |1,000  |8,192  |30,000  |1,000  |256 kB |ReadOnly |
+|RAM: 2048 GiB |/DB2/ <SID> /saptmp |P20 |2 |4,600  |300  |1,024  |7,000  |340  |128 kB ||
+| |/DB2/ <SID> /log_dir |P30 |4 |20,000  |800  |4,096  |20,000  |800  |64 kB |Write Accelerator |
+| |/DB2/ <SID> /offline_log_dir |P30 |1 |5,000  |200  |1,024  |5,000  |200  || |
+
+
+### <a name="backuprestore"></a>Back-up maken/herstellen
 De functionaliteit voor maken en herstellen van IBM Db2 voor LUW wordt ondersteund op dezelfde manier als bij de standaard Windows Server-besturings systemen en Hyper-V.
 
 U moet ervoor zorgen dat u een geldige database back-upstrategie hebt. 
@@ -95,6 +147,15 @@ Om het aantal doelen te verhogen waarnaar moet worden geschreven, kunnen twee op
 >Db2 in Windows biedt geen ondersteuning voor de Windows VSS-technologie. Als gevolg hiervan kan de toepassings consistente back-up van de virtuele machine van Azure Backup service niet worden gebruikt voor virtuele machines waarin de Db2-DBMS wordt geïmplementeerd.
 
 ### <a name="high-availability-and-disaster-recovery"></a>Hoge beschikbaarheid en herstel na noodgevallen
+
+#### <a name="linux-pacemaker"></a>Linux-pacemaker
+
+Een ' HADR-herstel bewerking met hoge Beschik baarheid met pacemaker wordt ondersteund. Zowel de SLES-als RHEL-besturings systemen worden ondersteund. Deze configuratie biedt een hoge Beschik baarheid van IBM Db2 voor SAP. Implementatie handleidingen:
+* SLES: [hoge Beschik baarheid van IBM DB2 LUW op Azure vm's op SuSE Linux Enterprise Server met pacemaker](dbms-guide-ha-ibm.md) 
+* RHEL: [hoge Beschik baarheid van IBM DB2 LUW op Azure-vm's op Red Hat Enterprise Linux server](high-availability-guide-rhel-ibm-db2-luw.md)
+
+#### <a name="windows-cluster-server"></a>Windows-cluster server
+
 Micro soft Cluster Server (MSCS) wordt niet ondersteund.
 
 Er wordt ondersteuning geboden voor een nood herstel met hoge Beschik baarheid van Db2 (HADR). Als de virtuele machines van de HA-configuratie werk naam omzetting hebben, is de installatie in azure niet van toepassing op de installatie die on-premises wordt uitgevoerd. Het is niet raadzaam om alleen te vertrouwen op de IP-omzetting.
@@ -114,7 +175,7 @@ Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's m
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overige
 Alle andere algemene gebieden, zoals Azure-beschikbaarheids sets of SAP-bewaking, zijn van toepassing zoals beschreven in de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) voor implementaties van vm's met de IBM-data base.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598

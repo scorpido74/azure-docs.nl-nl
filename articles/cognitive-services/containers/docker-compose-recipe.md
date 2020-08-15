@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 458cda927a6a123fcd9962efc6ab705e13f43286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878779"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244292"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose gebruiken om meerdere containers te implementeren
 
@@ -29,7 +29,7 @@ Het kan handig zijn om meerdere container installatie kopieën op één hostcomp
 
 Voor deze procedure zijn verschillende hulpprogram ma's vereist die moeten worden geïnstalleerd en lokaal worden uitgevoerd:
 
-* Een Azure-abonnement. Als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+* Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/cognitive-services) voordat u begint.
 * [Docker-engine](https://www.docker.com/products/docker-engine). Controleer of de docker CLI werkt in een console venster.
 * Een Azure-resource met de juiste prijs categorie. Alleen de volgende prijs categorieën werken met deze container:
   * **Computer Vision** resource alleen met de prijs categorie F0 of Standard.
@@ -46,7 +46,7 @@ Vul het [aanvraag formulier voor de Cognitive Services spraak containers](https:
 
 ## <a name="docker-compose-file"></a>Docker-bestand opstellen
 
-Het YAML-bestand definieert alle services die moeten worden geïmplementeerd. Deze services zijn afhankelijk van ofwel `DockerFile` een of een bestaande container installatie kopie. In dit geval gebruiken we twee Preview-voor beelden. Kopieer en plak het volgende YAML-bestand en sla het op als *docker-Samenstel. yaml*. Geef de juiste **apikey**-, **facturerings**-en **waarden endpointuri** -waarden op in het bestand.
+Het YAML-bestand definieert alle services die moeten worden geïmplementeerd. Deze services zijn afhankelijk van ofwel een `DockerFile` of een bestaande container installatie kopie. In dit geval gebruiken we twee Preview-voor beelden. Kopieer en plak het volgende YAML-bestand en sla het op als *docker-Samenstel. yaml*. Geef de juiste **apikey**-, **facturerings**-en **waarden endpointuri** -waarden op in het bestand.
 
 ```yaml
 version: '3.7'
@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>Test containers
 
-Open een browser op de hostmachine en ga naar **localhost** met behulp van de opgegeven poort in het *docker-yaml-* bestand, zoals http://localhost:5021/swagger/index.html. U kunt bijvoorbeeld de functie **try it** in de API gebruiken om het formulier Recognizer-eind punt te testen. De Swagger-pagina's van de containers moeten beschikbaar en testable zijn.
+Open een browser op de hostmachine en ga naar **localhost** met behulp van de opgegeven poort in het *docker-yaml-* bestand, zoals http://localhost:5021/swagger/index.html . U kunt bijvoorbeeld de functie **try it** in de API gebruiken om het formulier Recognizer-eind punt te testen. De Swagger-pagina's van de containers moeten beschikbaar en testable zijn.
 
 ![Container voor formulier herkenning](media/form-recognizer-swagger-page.png)
 

@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van Azure CNI (Advanced)-netw
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: b1bf459c530195b8855169123b8f496e4969403b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 93cbe6d2a682009ee883d11bdd99fd69b693c5c4
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872426"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246009"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure CNI-netwerken configureren in azure Kubernetes service (AKS)
 
@@ -50,7 +50,7 @@ Het IP-adres schema voor een AKS-cluster bestaat uit een virtueel netwerk, ten m
 | Adres bereik/Azure-resource | Limieten en grootte |
 | --------- | ------------- |
 | Virtueel netwerk | Het virtuele netwerk van Azure kan zo groot zijn als/8, maar is beperkt tot 65.536 geconfigureerde IP-adressen. |
-| Subnet | Moet groot genoeg zijn voor de knoop punten, peulen en alle Kubernetes en Azure-resources die in uw cluster kunnen worden ingericht. Als u bijvoorbeeld een interne Azure Load Balancer implementeert, worden de front-end Ip's toegewezen vanuit het subnet van het cluster, niet open bare Ip's. De grootte van het subnet moet ook worden toegepast op upgrades van het account of voor toekomstige schaal behoeften.<p />De *minimale* subnet grootte berekenen, inclusief een extra knoop punt voor upgrade bewerkingen:`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Voor beeld voor een 50-knooppunt cluster: `(51) + (51  * 30 (default)) = 1,581` (/21 of groter)<p/>Voor beeld voor een cluster met een 50-knoop punt dat ook voorziet in het opschalen van een extra 10 knoop punten: `(61) + (61 * 30 (default)) = 1,891` (/21 of groter)<p>Als u tijdens het maken van het cluster niet het maximum aantal peulen per knoop punt opgeeft, wordt het maximum aantal per knoop punt ingesteld op *30*. Het minimum aantal vereiste IP-adressen is gebaseerd op die waarde. Als u de minimum vereisten voor IP-adressen op een andere maximum waarde berekent, raadpleegt u [het maximum aantal per knoop punt configureren](#configure-maximum---new-clusters) om deze waarde in te stellen wanneer u uw cluster implementeert. |
+| Subnet | Moet groot genoeg zijn voor de knoop punten, peulen en alle Kubernetes en Azure-resources die in uw cluster kunnen worden ingericht. Als u bijvoorbeeld een interne Azure Load Balancer implementeert, worden de front-end Ip's toegewezen vanuit het subnet van het cluster, niet open bare Ip's. De grootte van het subnet moet ook worden toegepast op upgrades van het account of voor toekomstige schaal behoeften.<p />De *minimale* subnet grootte berekenen, inclusief een extra knoop punt voor upgrade bewerkingen: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Voor beeld voor een 50-knooppunt cluster: `(51) + (51  * 30 (default)) = 1,581` (/21 of groter)<p/>Voor beeld voor een cluster met een 50-knoop punt dat ook voorziet in het opschalen van een extra 10 knoop punten: `(61) + (61 * 30 (default)) = 1,891` (/21 of groter)<p>Als u tijdens het maken van het cluster niet het maximum aantal peulen per knoop punt opgeeft, wordt het maximum aantal per knoop punt ingesteld op *30*. Het minimum aantal vereiste IP-adressen is gebaseerd op die waarde. Als u de minimum vereisten voor IP-adressen op een andere maximum waarde berekent, raadpleegt u [het maximum aantal per knoop punt configureren](#configure-maximum---new-clusters) om deze waarde in te stellen wanneer u uw cluster implementeert. |
 | Adresbereik van Kubernetes Service | Dit bereik mag niet worden gebruikt door elk netwerk element op of er is geen verbinding met dit virtuele netwerk. Het service adres CIDR moet kleiner zijn dan/12. U kunt dit bereik opnieuw gebruiken in verschillende AKS-clusters. |
 | IP-adres van DNS-service van Kubernetes | IP-adres binnen het adres bereik van de Kubernetes-service dat wordt gebruikt door de Cluster-service detectie (uitvoeren-DNS). Gebruik niet het eerste IP-adres in uw adres bereik, zoals 1. Het eerste adres in het bereik van uw subnet wordt gebruikt voor het adres *kubernetes. default. SVC. cluster. local* . |
 | Docker Bridge-adres | Het netwerkadres van Docker Bridge vormt het standaardadres van het *docker0* bridge-netwerk dat in alle Docker-installaties aanwezig is. Hoewel de *docker0* -brug niet wordt gebruikt door aks-clusters of de peul zelf, moet u dit adres instellen om te blijven ondersteuning bieden voor scenario's zoals *docker build* in het AKS-cluster. U moet een CIDR voor het netwerk adres van de docker-brug selecteren, omdat in een andere docker automatisch een subnet wordt gekozen dat strijdig zou kunnen zijn met andere CIDR. U moet een adres ruimte kiezen die niet in conflict is met de rest van de CIDR-Services in uw netwerken, met inbegrip van de service-CIDR van het cluster en pod CIDR. Standaard waarde van 172.17.0.1/16. U kunt dit bereik opnieuw gebruiken in verschillende AKS-clusters. |
@@ -102,7 +102,7 @@ Wanneer u een AKS-cluster maakt, kunnen de volgende para meters worden geconfigu
 * Mag zich niet binnen het IP-adres bereik van het virtuele netwerk van uw cluster bevallen
 * Mag niet overlappen met andere virtuele netwerken waarmee de peers van het virtuele cluster netwerk
 * Mag niet overlappen met on-premises Ip's
-* Mag niet binnen het bereik `169.254.0.0/16` ,, `172.30.0.0/16` `172.31.0.0/16` , of`192.0.2.0/24`
+* Mag niet binnen het bereik `169.254.0.0/16` ,, `172.30.0.0/16` `172.31.0.0/16` , of `192.0.2.0/24`
 
 Hoewel het technisch mogelijk is om een service adres bereik op te geven binnen hetzelfde virtuele netwerk als uw cluster, wordt dit niet aanbevolen. Onvoorspelbaar gedrag kan resulteren in het gebruik van overlappende IP-bereiken. Zie de sectie [Veelgestelde vragen](#frequently-asked-questions) van dit artikel voor meer informatie. Zie [Services][services] in de Kubernetes-documentatie voor meer informatie over Kubernetes Services.
 
@@ -152,6 +152,10 @@ De volgende vragen en antwoorden zijn van toepassing op de **Azure cni** -netwer
 * *Kan ik Vm's in mijn cluster subnet implementeren?*
 
   Ja.
+
+* *Wat is het bron-IP-adres dat externe systemen zien voor verkeer dat afkomstig is van een pod met Azure CNI-functionaliteit?*
+
+  Systemen in hetzelfde virtuele netwerk als het AKS-cluster zien de pod-IP als bron adres voor elk verkeer van de pod. Systemen buiten het virtuele netwerk van het AKS-cluster zien het knoop punt-IP als het bron adres voor elk verkeer van de pod. 
 
 * *Kan ik een per-pod-netwerk beleid configureren?*
 

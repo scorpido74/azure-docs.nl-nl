@@ -9,18 +9,18 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 158715a312af5d368b6f1125a7f1acc36dbefe51
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ac65f1927aa890e5eaed757d7db054f2c2bbad3d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207519"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243731"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights Gen2-omgeving met C #
+# <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>Gegevens opvragen uit de Azure Time Series Insights Gen2-omgeving met C-Kruis
 
-Dit C#-voor beeld laat zien hoe u gegevens opvraagt uit de [api's voor Gen2 Data Access](https://docs.microsoft.com/rest/api/time-series-insights/preview) in azure time series Insights Gen2-omgevingen.
+Dit C#-voor beeld laat zien hoe u gegevens opvraagt uit de [api's voor Gen2 Data Access](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) in azure time series Insights Gen2-omgevingen.
 
 > [!TIP]
 > Gen2 C#-code voorbeelden weer geven op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
@@ -31,25 +31,25 @@ De voorbeeld code hieronder bevat de volgende functies:
 
 * Ondersteuning voor het automatisch genereren van de SDK vanuit [Azure auto rest](https://github.com/Azure/AutoRest).
 * Een toegangs token verkrijgen via Azure Active Directory met behulp van [micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
-* Het aangeschafte toegangs token door geven in de `Authorization` koptekst van volgende API-aanvragen voor Data Access. 
+* Het aangeschafte toegangs token door geven in de `Authorization` koptekst van volgende API-aanvragen voor Data Access.
 * Het voor beeld biedt een console interface waarin wordt uitgelegd hoe HTTP-aanvragen worden gedaan:
+  * [Gen2 environments-API](https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis)
+    * De API voor de [Beschik baarheid van omgevingen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability) en de [Event schema-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
+  * [Gen2-query-API](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)
+    * [Get Events API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents), [Get Series API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)en [Get Total Series API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+  * [Api's voor time series model](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+    * [Hiërarchieën ophalen API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) en [hiërarchieën batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
+    * [Typen API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) en [typen ophalen batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+    * [Instances-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) en [instances-batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch) ophalen
 
-    * [Gen2 environments-API](https://docs.microsoft.com/rest/api/time-series-insights/preview#preview-environments-apis)
-        * De API voor de [Beschik baarheid van omgevingen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability) en de [Event schema-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
-    * [Gen2-query-API](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
-        * [Get Events API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents), [Get Series API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)en [Get Total Series API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-    * [Api's voor time series model](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-        * [Hiërarchieën ophalen API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) en [hiërarchieën batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
-        * [Typen API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) en [typen ophalen batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-        * [Instances-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) en [instances-batch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch) ophalen
-* Geavanceerde [Zoek](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features) -en [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) -mogelijkheden.
+* Geavanceerde [Zoek](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#search-features) -en [TSX](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) -mogelijkheden.
 
 ## <a name="prerequisites-and-setup"></a>Vereisten en installatie
 
 Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
 1. [Richt een Gen2-Azure time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) omgeving in.
-1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md). 
+1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md).
 1. Voer de [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) uit zoals opgegeven in de [README.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) om de client afhankelijkheden van Azure time series Insights Gen2 te genereren.
 1. Open de `TSIPreviewDataPlaneclient.sln` oplossing en stel `DataPlaneClientSampleApp` deze in als het standaard project in Visual Studio.
 1. Installeer de vereiste project afhankelijkheden met behulp van de stappen die [hieronder](#project-dependencies) worden beschreven en compileer het voor beeld naar een uitvoerbaar `.exe` bestand.
@@ -63,7 +63,7 @@ Het is raadzaam om de nieuwste versie van Visual Studio te gebruiken:
 
 De voorbeeld code bevat verschillende vereiste afhankelijkheden die in het [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/packages.config) bestand kunnen worden weer gegeven.
 
-Down load de pakketten in Visual Studio 2019 **door de**  >  optie build**Build Solution** te selecteren. 
+Down load de pakketten in Visual Studio 2019 **door de**  >  optie build**Build Solution** te selecteren.
 
 U kunt ook elk pakket toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/). Bijvoorbeeld:
 
@@ -71,14 +71,15 @@ U kunt ook elk pakket toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.
 
 ## <a name="c-sample-code"></a>C#-voorbeeld code
 
-[!code-csharp[csharpquery-example](~/samples-tsi/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/Program.cs)]
+U kunt de C#-voorbeeld code vinden op [csharpquery-voor beeld](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample)
 
 > [!NOTE]
+>
 > * Het code voorbeeld kan worden uitgevoerd zonder de standaard omgevings variabelen te wijzigen.
 > * Het code voorbeeld wordt gecompileerd naar een .NET-uitvoer bare console-app.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees de [query-API-verwijzing](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)voor meer informatie over het uitvoeren van query's.
+* Lees de [query-API-verwijzing](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)voor meer informatie over het uitvoeren van query's.
 
-- Lees hoe u [met de client-SDK verbinding maakt met een Java script-app](https://github.com/microsoft/tsiclient) om te Azure time series Insights.
+* Lees hoe u [met de client-SDK verbinding maakt met een Java script-app](https://github.com/microsoft/tsiclient) om te Azure time series Insights.

@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: b77d69248059a494d823afcd149382dd52b0e49d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 36e21a131181831c2a87c0c6d2c24c9aa6e0acf7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317124"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245006"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
-Gebruik deze Quick Start om aan de slag te gaan met Azure Cognitive Services met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Cognitive Services worden vertegenwoordigd door Azure- [resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) die u in uw Azure-abonnement hebt gemaakt. Nadat u de resource hebt gemaakt, gebruikt u de sleutels en het eind punt dat u hebt gegenereerd voor het verifiëren van uw toepassingen. 
+Gebruik deze Quick Start om aan de slag te gaan met Azure Cognitive Services met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Cognitive Services worden vertegenwoordigd door Azure- [resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) die u in uw Azure-abonnement hebt gemaakt. Nadat u de resource hebt gemaakt, gebruikt u de sleutels en het eind punt dat u hebt gegenereerd voor het verifiëren van uw toepassingen.
 
 
 In deze Quick Start leert u hoe u zich kunt registreren voor Azure Cognitive Services en hoe u een account met een single-service of meerdere service-abonnement kunt maken met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Deze services worden vertegenwoordigd door Azure- [resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), waarmee u verbinding kunt maken met een of meer van de azure-Cognitive Services-API's.
@@ -27,10 +27,10 @@ In deze Quick Start leert u hoe u zich kunt registreren voor Azure Cognitive Ser
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een geldig Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/) .
+* Een geldig Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services) .
 * De [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="install-the-azure-cli-and-sign-in"></a>De Azure CLI installeren en aanmelden 
+## <a name="install-the-azure-cli-and-sign-in"></a>De Azure CLI installeren en aanmelden
 
 Installeer de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Als u zich wilt aanmelden bij de lokale installatie van de CLI, voert u de opdracht [AZ login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
 
@@ -39,7 +39,7 @@ az login
 ```
 
 U kunt ook de knop groene **try it** gebruiken om deze opdrachten uit te voeren in uw browser.
- 
+
 ## <a name="create-a-new-azure-cognitive-services-resource-group"></a>Een nieuwe Azure Cognitive Services-resource groep maken
 
 Voordat u een Cognitive Services resource maakt, moet u een Azure-resource groep hebben om de resource te kunnen bevatten. Wanneer u een nieuwe resource maakt, hebt u de optie om een nieuwe resource groep te maken of een bestaande te gebruiken. In dit artikel wordt beschreven hoe u een nieuwe resource groep maakt.
@@ -95,17 +95,17 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
-### <a name="search"></a>Search
+### <a name="search"></a>Zoeken
 
 | Service            | Soort                  |
 |--------------------|-----------------------|
 | Bing Automatische suggesties   | `Bing.Autosuggest.v7` |
 | Bing Aangepaste zoekopdrachten | `Bing.CustomSearch`   |
 | Bing Entiteiten zoeken | `Bing.EntitySearch`   |
-| Bing Zoeken        | `Bing.Search.v7`      |
+| Bing Search        | `Bing.Search.v7`      |
 | Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Speech
+### <a name="speech"></a>Spraak
 
 | Service            | Soort                 |
 |--------------------|----------------------|
@@ -192,7 +192,7 @@ az cognitiveservices account list-usage \
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services resource wilt opschonen en verwijderen, kunt u deze of de resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle resources in de groep verwijderd.
+Als u een Cognitive Services resource wilt opschonen en verwijderen, kunt u deze of de resource groep verwijderen. Als u de resourcegroep verwijdert, worden ook eventuele andere bijbehorende resources in de groep verwijderd.
 
 Als u de resource groep en de bijbehorende resources wilt verwijderen, gebruikt u de opdracht AZ Group Delete.
 
@@ -202,7 +202,7 @@ az group delete --name cognitive-services-resource-group
 
 ## <a name="see-also"></a>Zie ook
 
-* [Aanvragen verifiëren voor Azure Cognitive Services](authentication.md)
+* [Aanvragen verifiëren bij Azure Cognitive Services](authentication.md)
 * [Wat is Azure Cognitive Services?](Welcome.md)
 * [Ondersteuning voor natuurlijke taal](language-support.md)
-* [Ondersteuning voor docker-container](cognitive-services-container-support.md)
+* [Ondersteuning voor Docker-container](cognitive-services-container-support.md)

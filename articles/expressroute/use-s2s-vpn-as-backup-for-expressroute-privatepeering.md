@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
-ms.openlocfilehash: df4108604c656cd6383bd57b462c0f12f31bdd7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 68596b881ef1b62187bdb7194b364c9477b4e04d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206871"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244768"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>S2S VPN gebruiken als back-up voor ExpressRoute-persoonlijke peering
 
-In het artikel [over het ontwerpen van herstel na nood gevallen met persoonlijke ExpressRoute-peering][DR-PP]is de nood zaak van back-upconnectiviteits oplossing voor een persoonlijke peering-verbinding met ExpressRoute beschreven en wordt uitgelegd hoe u geo-redundante ExpressRoute-circuits kunt gebruiken voor het doel. In dit artikel kunt u overwegen hoe u site-naar-site (S2S) VPN kunt gebruiken en onderhouden als back-up voor ExpressRoute persoonlijke peering. 
+In het artikel [over het ontwerpen van herstel na nood gevallen met persoonlijke ExpressRoute-peering][DR-PP]is de nood zaak van back-upconnectiviteits oplossing voor een persoonlijke peering-verbinding met ExpressRoute beschreven en wordt uitgelegd hoe u geo-redundante ExpressRoute-circuits kunt gebruiken voor het doel. In dit artikel kunt u overwegen hoe u site-naar-site (S2S) VPN kunt gebruiken en onderhouden als back-up voor ExpressRoute-persoonlijke peering. 
 
 In tegens telling tot geo redundante ExpressRoute-circuits kunt u ExpressRoute-VPN-nood herstel alleen gebruiken in de modus actief-passief. Een grote uitdaging van het gebruik van back-upnetwerk verbindingen in de passieve modus is dat de passieve verbinding vaak naast de primaire verbinding zou mislukken. De gemeen schappelijke reden voor het mislukken van de passieve verbinding heeft geen actieve onderhouds werkzaamheden. In dit artikel wordt daarom aandacht besteed aan het controleren en actief onderhouden van S2S VPN-connectiviteit die een back-up maakt van een persoonlijke ExpressRoute-peering.
 
@@ -116,7 +116,7 @@ Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
 
 ### <a name="configuring-for-symmetric-traffic-flow"></a>Configureren voor symmetrische verkeers stroom
 
-Wanneer een bepaalde on-premises route wordt geadverteerd via zowel ExpressRoute als S2S VPN, geeft Azure de voor keur aan het pad ExpressRoute. Om Azure de voor keur te geven aan het S2S VPN-pad via de naast elkaar bestaande ExpressRoute, moet u specifieke routes (meer voor voegsel met een groter subnetmasker) adverteren via de VPN-verbinding. Het doel is om de VPN-verbindingen als alleen opnieuw te gebruiken. Daarom is het standaard gedrag voor het selectie patroon van Azure in overeenstemming met ons doel. 
+Wanneer een bepaalde on-premises route wordt geadverteerd via zowel ExpressRoute als S2S VPN, geeft Azure de voor keur aan het pad ExpressRoute. Om Azure de voor keur te geven aan het S2S VPN-pad via de naast elkaar bestaande ExpressRoute, moet u specifieke routes (meer voor voegsel met een groter subnetmasker) adverteren via de VPN-verbinding. Het doel is om de VPN-verbindingen alleen als back-up te gebruiken. Daarom is het standaard gedrag voor het selectie patroon van Azure in overeenstemming met ons doel. 
 
 Het is onze verantwoordelijkheid om ervoor te zorgen dat het verkeer dat is bestemd voor Azure van on-premises ook ExpressRoute Path over S2S VPN. De standaard lokale voor keur van de CE-routers en firewalls in onze on-premises installatie is 100. Daarom kunnen we door het configureren van de lokale voor keur van de routes die zijn ontvangen via de persoonlijke ExpressRoutes van meer dan 100 (bijvoorbeeld 150), het verkeer dat bestemd is voor Azure, het ExpressRoute-circuit in de stationaire status laten staan.
 

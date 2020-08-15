@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: b29fa17c21b2cdb2e764c905af3819142d8c341e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 823d61d94913122fc279e81698933b7e648dd114
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844062"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244343"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: voor speld onderhoud met de Cognitive Services voor Big Data
 
@@ -30,7 +30,7 @@ De gegevens kunnen in wille keurige frequentie uitbijten. In dat geval worden de
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/)
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services)
 * [Azure Synapse-werk ruimte](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) die is geconfigureerd met een [Spark-groep](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
 
 ## <a name="setup"></a>Instellen
@@ -39,7 +39,7 @@ De gegevens kunnen in wille keurige frequentie uitbijten. In dat geval worden de
 
 Azure Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Een resource voor Translator maken met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli). U kunt ook het volgende doen:
 
-- Bekijk een bestaande resource in de [Azure Portal](https://portal.azure.com/).
+- Bekijk een bestaande resource in de  [Azure Portal](https://portal.azure.com/).
 
 Noteer het eind punt en de sleutel voor deze resource. u hebt deze nodig in deze hand leiding.
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: 390080fecefcc22decd8bec70d043b28311a725d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4c9dc04770e5fadd72c5460a4b44c05ffda47cb7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212617"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245448"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
@@ -52,7 +52,7 @@ Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels
 
 ## <a name="migration-prerequisites"></a>Migratie vereisten
 
-* U moet zijn gekoppeld aan een geldig Azure-abonnement. Vraag uw Tenant beheerder om u toe te voegen aan het abonnement of Meld u aan [voor een gratis account](https://azure.microsoft.com/free/).
+* U moet zijn gekoppeld aan een geldig Azure-abonnement. Vraag uw Tenant beheerder om u toe te voegen aan het abonnement of Meld u aan [voor een gratis account](https://azure.microsoft.com/free/cognitive-services).
 * U moet een LUIS Azure-ontwerp bron maken via de LUIS-portal of van de Azure Portal. Het maken van een ontwerp bron vanuit de LUIS-Portal maakt deel uit van de migratie stroom die in de volgende sectie wordt besproken.
 * Als u een samen werker van toepassingen bent, worden de toepassingen niet automatisch gemigreerd. U wordt aangeraden een back-up te maken van deze toepassingen door deze te exporteren of door de [API export](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)te gebruiken. U kunt de app na de migratie weer in LUIS importeren. Het import proces maakt een nieuwe app met een nieuwe app-ID waarvoor u de eigenaar bent.
 * Als u de eigenaar van de toepassing bent, hoeft u uw apps niet te exporteren omdat deze automatisch worden gemigreerd. We raden u aan elke lijst van de samen werker van de app op te slaan. Een e-mail sjabloon met deze lijst wordt optioneel als onderdeel van het migratie proces aangeboden.
@@ -60,7 +60,7 @@ Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels
 
 |Portal|Doel|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)| Voorspellings-en ontwerp resources maken.<br> Mede werkers aan resources toewijzen.|
+|[Azure](https://azure.microsoft.com/free/cognitive-services)| Voorspellings-en ontwerp resources maken.<br> Mede werkers aan resources toewijzen.|
 |[LUIS](https://www.luis.ai)| Migreren naar nieuwe ontwerp resources.<br> Nieuwe ontwerp resources maken in de migratie stroom.<br> U kunt voor spellingen en het ontwerpen van resources voor apps toewijzen of verwijderen **Manage**via de  >  pagina**Azure-resources** beheren. <br> Verplaats toepassingen van de ene ontwerp bron naar een andere.  |
 
 > [!Note]

@@ -9,20 +9,70 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 08/14/2020
 ms.author: iainfou
-ms.openlocfilehash: ba4761a2b7893fd894f62b7e2252005d7afd1c91
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4cd6a37ad2d5081cdc587290c361fbc992c69bfb
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039973"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245159"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Veelvoorkomend gebruik: cases en scenario's voor Azure Active Directory Domain Services
 
 Azure Active Directory Domain Services (Azure AD DS) biedt beheerde domeinservices zoals domeindeelname, groepsbeleid, Lightweight Directory Access Protocol (LDAP) en Kerberos/NTLM-verificatie. Azure AD DS is geïntegreerd met uw bestaande Azure AD-Tenant, waardoor gebruikers zich kunnen aanmelden met hun bestaande referenties. U gebruikt deze domein Services zonder dat u domein controllers in de Cloud hoeft te implementeren, beheren en te patchen. Dit biedt een soepelere lift-en-verschuiving van on-premises resources naar Azure.
 
 In dit artikel vindt u een overzicht van een aantal algemene bedrijfs scenario's waarbij Azure AD DS een waarde biedt en aan die behoeften voldoet.
+
+## <a name="common-ways-to-provide-identity-solutions-in-the-cloud"></a>Algemene manieren om identiteitsoplossingen in de cloud te bieden
+
+Wanneer u bestaande workloads naar de cloud migreert, wordt voor toepassingen met een mappenstructuur mogelijk LDAP gebruikt voor lees- of schrijftoegang tot een on-premises AD DS-map. Toepassingen die op Windows Server worden uitgevoerd, worden doorgaans geïmplementeerd op met een domein samengevoegde virtuele machines (VM's) zodat ze veilig kunnen worden beheerd met behulp van groepsbeleid. Voor het verifiëren van eindgebruikers kunnen de toepassingen ook afhankelijk zijn van met Windows geïntegreerde verificatie, zoals Kerberos of NTLM-verificatie.
+
+IT-beheerders gebruiken vaak een van de volgende oplossingen om een identiteitsservice te bieden voor toepassingen die worden uitgevoerd in Azure:
+
+* Configureer een site-naar-site VPN-verbinding tussen workloads die worden uitgevoerd in Azure en een on-premises AD DS-omgeving.
+    * De on-premises domeincontrollers bieden vervolgens verificatie via de VPN-verbinding.
+* Maak replica's van domeincontrollers met behulp van virtuele Azure-machines (VM's) om het AD DS-domein/forest uit te breiden van on-premises.
+    * De domeincontrollers die worden uitgevoerd op virtuele Azure-machines bieden verificatie en repliceren mapgegevens tussen de on-premises AD DS-omgeving.
+* Implementeer een zelfstandige AD DS-omgeving in Azure met behulp van domeincontrollers die worden uitgevoerd op virtuele Azure-machines.
+    * De domeincontrollers die worden uitgevoerd op virtuele Azure-machines bieden verificatie, maar er worden geen mapgegevens gerepliceerd vanuit een on-premises AD DS-omgeving.
+
+Met deze methoden maken VPN-verbindingen met de on-premises map toepassingen kwetsbaar voor tijdelijke netwerkstoringen of uitval. Als u domeincontrollers implementeert met behulp van virtuele machines in Azure, moet het IT-team de virtuele machines beheren en deze vervolgens beveiligen, patchen en bewaken, er een back-up van maken en problemen oplossen.
+
+Azure AD DS biedt alternatieven voor het moeten maken van VPN-verbindingen met een on-premises AD DS-omgeving of het uitvoeren en beheren van virtuele machines in Azure om identiteitsservices te bieden. Als beheerde service zorgt Azure AD DS ervoor dat het maken van een geïntegreerde identiteitsoplossing voor zowel hybride omgevingen als omgevingen die alleen in de cloud bestaan minder complex is.
+
+> [!div class="nextstepaction"]
+> [Azure AD DS vergelijken met Azure AD en zelfbeheerde AD DS op virtuele Azure-machines of on-premises][compare]
+
+## <a name="azure-ad-ds-for-hybrid-organizations"></a>Azure AD DS voor hybride organisaties
+
+Veel organisaties voeren een hybride infrastructuur uit met toepassingsworkloads in zowel de cloud als on-premises. Voor verouderde toepassingen die naar Azure zijn gemigreerd als onderdeel van een lift-and-shift-strategie worden mogelijk traditionele LDAP-verbindingen gebruikt om identiteitsgegevens te bieden. Ter ondersteuning van deze hybride infrastructuur kunnen identiteitsgegevens van een on-premises AD DS-omgeving worden gesynchroniseerd naar een Azure AD-tenant. Azure AD DS biedt deze verouderde toepassingen vervolgens in Azure met een identiteitsbron, zonder toepassingsconnectiviteit weer naar on-premises mapservices te hoeven configureren en te beheren.
+
+Laten we eens kijken naar een voorbeeld voor Litware Corporation, een hybride organisatie die zowel on-premises resources als Azure-resources uitvoert:
+
+![Azure Active Directory Domain Services voor een hybride organisatie met on-premises synchronisatie](./media/overview/synced-tenant.png)
+
+* Toepassingen en serverworkloads waarvoor domeinservices moeten worden geïmplementeerd in een virtueel netwerk in Azure.
+    * Dit kunnen verouderde toepassingen zijn die naar Azure zijn gemigreerd als onderdeel van een lift-and-shift-strategie.
+* Voor het synchroniseren van identiteitsgegevens van hun on-premises map naar hun Azure AD-tenant implementeert Litware Corporation [Azure AD Connect][azure-ad-connect].
+    * Identiteitsgegevens die worden gesynchroniseerd, zijn onder andere gebruikersaccounts en groepslidmaatschappen.
+* Het IT-team van Litware schakelt Azure AD DS in voor hun Azure AD-tenant in dit, of in een gepeerd, virtueel netwerk.
+* Toepassingen en virtuele machines die in het virtuele Azure-netwerk zijn geïmplementeerd, kunnen vervolgens gebruik maken van Azure AD DS-functies zoals domeindeelname, LDAP-leesbewerkingen, LDAP-bindingen, NTLM- en Kerberos-verificatie en groepsbeleid.
+
+> [!IMPORTANT]
+> Azure AD Connect moet alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS-omgevingen. Het installeren van Azure AD Connect in een beheerd domein om objecten weer naar Azure AD te synchroniseren, wordt niet ondersteund.
+
+## <a name="azure-ad-ds-for-cloud-only-organizations"></a>Azure AD DS voor organisaties die alleen de cloud gebruiken
+
+Een Azure AD-tenant die alleen in de cloud bestaat, beschikt niet over een on-premises identiteitsbron. Gebruikersaccounts en groepslidmaatschappen worden bijvoorbeeld rechtstreeks in Azure AD gemaakt en beheerd.
+
+Laten we eens kijken naar een voorbeeld voor Contoso, een organisatie die alleen de cloud gebruikt en die Azure AD voor identiteiten gebruikt. Alle gebruikersidentiteiten, hun referenties en groepslidmaatschappen worden gemaakt en beheerd in Azure AD. Er is geen extra configuratie van Azure AD Connect nodig om identiteitsgegevens van een on-premises map te synchroniseren.
+
+![Azure Active Directory Domain Services voor een organisatie die alleen de cloud gebruikt zonder on-premises synchronisatie](./media/overview/cloud-only-tenant.png)
+
+* Toepassingen en serverworkloads waarvoor domeinservices moeten worden geïmplementeerd in een virtueel netwerk in Azure.
+* Het IT-team van Contoso schakelt Azure AD DS in voor hun Azure AD-tenant in dit, of in een gepeerd, virtueel netwerk.
+* Toepassingen en virtuele machines die in het virtuele Azure-netwerk zijn geïmplementeerd, kunnen vervolgens gebruik maken van Azure AD DS-functies zoals domeindeelname, LDAP-leesbewerkingen, LDAP-bindingen, NTLM- en Kerberos-verificatie en groepsbeleid.
 
 ## <a name="secure-administration-of-azure-virtual-machines"></a>Veilig beheer van virtuele Azure-machines
 
@@ -117,6 +167,8 @@ Zie [HDInsight-clusters die zijn gekoppeld aan een domein configureren][hdinsigh
 [custom-ou]: create-ou.md
 [create-gpo]: manage-group-policy.md
 [sspr]: ../active-directory/authentication/overview-authentication.md#self-service-password-reset
+[compare]: compare-identity-solutions.md
+[azure-ad-connect]: ../active-directory/hybrid/whatis-azure-ad-connect.md
 
 <!-- EXTERNAL LINKS -->
 [windows-rds]: /windows-server/remote/remote-desktop-services/rds-azure-adds
