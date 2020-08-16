@@ -3,12 +3,12 @@ title: 'Hoe kunt u uw Application Insights-implementatie ontwerpen: een VS veel 
 description: Telemetrie omleiden naar verschillende bronnen voor ontwikkelings-, test-en productie tempels.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420563"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258727"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hoeveel Application Insights resources moeten worden geïmplementeerd
 
@@ -39,9 +39,9 @@ Elke Application Insights resource wordt geleverd met metrische gegevens die bes
 - Voor Service Fabric toepassingen en klassieke Cloud Services leest de SDK automatisch van de Azure-functie omgeving en worden deze ingesteld. Voor alle andere typen apps moet u dit waarschijnlijk expliciet instellen.
 -   De Live Metrics-ervaring biedt geen ondersteuning voor het splitsen per rolnaam.
 
-## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamische instrumentatie sleutel
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamische instrumentatie sleutel
 
-Als u de iKey eenvoudiger wilt maken, moet u deze in code instellen in plaats van in het configuratie bestand.
+Om het eenvoudiger te maken om de iKey te wijzigen naarmate de code tussen stadia van de productie verloopt, kunt u de sleutel dynamisch in code raadplegen in plaats van een hardcoded/static-waarde.
 
 Stel de sleutel in een initialisatie methode in, zoals global.aspx.cs in een ASP.NET-service:
 

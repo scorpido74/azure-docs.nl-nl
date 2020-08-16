@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 95b514999d7c38140bd3dd275b8ba103ee9af20e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3055d8c31307cfacad575d892db0ed812a03a9e4
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519226"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258625"
 ---
 # <a name="feature-coverage-for-machines"></a>Functie dekking voor machines
 
 De twee tabbladen hieronder tonen de functies van Azure Security Center die beschikbaar zijn voor virtuele Windows-en Linux-machines en-servers.
 
-## <a name="supported-features-for-virtual-machines-and-servers"></a>Ondersteunde functies voor virtuele machines en servers<a name="vm-server-features"></a>
+## <a name="supported-features-for-virtual-machines-and-servers"></a>Ondersteunde functies voor virtuele machines en servers <a name="vm-server-features"></a>
 
 ### <a name="windows-machines"></a>[**Windows-machines**](#tab/features-windows)
 
@@ -37,9 +37,9 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[Adaptieve toepassingsregelaars](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Netwerk toewijzing](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[Adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|-|-|-|Standard|
 |Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Standard|
@@ -61,9 +61,9 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[Adaptieve toepassingsregelaars](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Netwerk toewijzing](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[Adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|✔|✔|✔|Standard|
 |Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Standard|
@@ -80,7 +80,7 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 >Als u wilt experimenteren met functies die alleen beschikbaar zijn in de prijs categorie Standard, kunnen gebruikers met een gratis laag een proef versie van 30 dagen registreren. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
 
 
-## <a name="supported-endpoint-protection-solutions"></a>Ondersteunde Endpoint Protection-oplossingen<a name="endpoint-supported"></a>
+## <a name="supported-endpoint-protection-solutions"></a>Ondersteunde Endpoint Protection-oplossingen <a name="endpoint-supported"></a>
 
 De volgende tabel bevat een matrix met:
 
@@ -91,13 +91,13 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 
 | Endpoint Protection| Platformen | Security Center-installatie | Security Center Discovery |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Antimalware)| Windows Server 2016| Nee, ingebouwd in besturingssysteem| Ja |
+| Windows Defender (Microsoft Antimalware)| Windows Server 2016 of hoger| Nee, ingebouwd in besturingssysteem| Ja |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (zie opmerking hieronder) | Via extensie | Ja |
 | Trend Micro – diepe beveiliging | Windows Server-familie  | Nee | Ja |
 | Symantec v12.1.1100+| Windows Server-familie  | Nee | Ja |
 | McAfee v10+ | Windows Server-familie  | Nee | Ja |
-| McAfee v10+ | Linux-Server familie  | Nee | Klikt**\*** |
-| Sophos v9 +| Linux-Server familie  | Nee | Klikt**\***  |
+| McAfee v10+ | Linux-Server familie  | Nee | Klikt **\*** |
+| Sophos v9 +| Linux-Server familie  | Nee | Klikt  **\***  |
 
  **\*** De status van de dekking en de ondersteunende gegevens zijn momenteel alleen beschikbaar in de werk ruimte Log Analytics die aan uw beveiligde abonnementen is gekoppeld. Het wordt niet weer gegeven in de Azure Security Center Portal.
 

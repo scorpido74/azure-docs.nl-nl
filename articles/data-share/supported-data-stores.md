@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 967b2dceab1f1702120cd3121ccd64b4e7286bc6
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511901"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258600"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Ondersteunde gegevens archieven in azure data share
 
@@ -30,7 +30,7 @@ De onderstaande tabel bevat een overzicht van de ondersteunde gegevens bronnen v
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL Database |Open bare preview | |
 | Azure Synapse Analytics (voorheen Azure SQL DW) |Open bare preview | |
-| Azure Data Explorer | |Open bare preview |
+| Azure Data Explorer | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Ondersteunings matrix voor gegevens opslag
 
@@ -62,9 +62,7 @@ Voor delen van bronnen op basis van SQL gelden vereisten voor firewall regels en
 ## <a name="share-from-azure-data-explorer"></a>Delen vanuit Azure Data Explorer
 Azure data share ondersteunt de mogelijkheid om data bases in-place te delen vanuit Azure Data Explorer-clusters. Gegevens provider kan delen op Data Base of cluster niveau. Wanneer gegevens worden gedeeld op database niveau, hebben gebruikers alleen toegang tot de specifieke data base (s) die worden gedeeld door de gegevens provider. Wanneer gegevens worden gedeeld op cluster niveau, heeft de gebruiker toegang tot alle data bases van het cluster van de provider, met inbegrip van toekomstige data bases die zijn gemaakt door de gegevens provider.
 
-Voor toegang tot gedeelde data bases moet de gegevens consument zijn eigen Azure Data Explorer-cluster hebben. Azure Data Explorer-cluster van de gegevens verbruiker moet in hetzelfde Azure-Data Center vinden als het Azure Data Explorer-cluster van de gegevens provider. Wanneer het delen van een relatie tot stand is gebracht, maakt Azure data share een symbolische koppeling tussen de Azure Data Explorer-clusters van de provider en de consumer.
-
-Azure Data Explorer ondersteunt twee modi voor gegevens opname: batch en streaming. De gegevens die worden ontvangen van de batch in de gedeelde data base, worden weer gegeven tussen enkele seconden en een paar minuten aan de kant van de gegevens gebruiker. De gegevens die van streaming worden ontvangen, kunnen tot wel 24 uur duren aan de kant van de gegevens gebruiker. 
+Voor toegang tot gedeelde data bases moet de gegevens consument zijn eigen Azure Data Explorer-cluster hebben. Azure Data Explorer-cluster van de gegevens verbruiker moet in hetzelfde Azure-Data Center vinden als het Azure Data Explorer-cluster van de gegevens provider. Wanneer het delen van een relatie tot stand is gebracht, maakt Azure data share een symbolische koppeling tussen de Azure Data Explorer-clusters van de provider en de consumer. Gegevens die worden opgenomen in de batch-modus in de bron-Azure-Data Explorer cluster worden binnen een paar seconden tot een paar minuten weer gegeven op het doel cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 

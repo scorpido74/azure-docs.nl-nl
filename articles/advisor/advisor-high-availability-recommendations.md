@@ -3,31 +3,16 @@ title: Verbeter de betrouw baarheid van uw toepassing met Advisor
 description: Gebruik Azure Advisor om de betrouw baarheid in uw bedrijfs kritieke Azure-implementaties te garanderen en te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057673"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258498"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbeter de betrouw baarheid van uw toepassing met behulp van Azure Advisor
 
 Azure Advisor helpt u de continuïteit van uw bedrijfs kritieke toepassingen te garanderen en te verbeteren. U kunt aanbevelingen voor betrouw baarheid ophalen van Advisor op het tabblad **betrouw baarheid** van het Advisor-dash board.
-
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Fout tolerantie voor virtuele machines garanderen
-
-Om redundantie voor uw toepassing te bieden, raden we u aan om twee of meer virtuele machines in een beschikbaarheidsset te groeperen. Advisor identificeert virtuele machines die geen deel uitmaken van een beschikbaarheidsset en raadt u aan deze te verplaatsen naar één. Deze configuratie zorgt ervoor dat tijdens gepland of niet-gepland onderhoud ten minste één virtuele machine beschikbaar is en voldoet aan de SLA van de virtuele Azure-machine. U kunt ervoor kiezen een beschikbaarheidsset voor de virtuele machine te maken of de virtuele machine toe te voegen aan een bestaande beschikbaarheidsset.
-
-> [!NOTE]
-> Als u een beschikbaarheidsset maakt, moet u er ten minste één virtuele machine aan toevoegen. We raden u aan twee of meer virtuele machines in een beschikbaarheidsset te groeperen om ervoor te zorgen dat er ten minste één computer beschikbaar is tijdens een storing.
-
-## <a name="ensure-availability-set-fault-tolerance"></a>Fout tolerantie voor beschikbaarheidsset garanderen
-
-Om redundantie voor uw toepassing te bieden, raden we u aan om twee of meer virtuele machines in een beschikbaarheidsset te groeperen. Advisor identificeert beschikbaarheids sets die één virtuele machine bevatten en raadt u aan om een of meer virtuele machines toe te voegen.Deze configuratie zorgt ervoor dat tijdens gepland of niet-gepland onderhoud ten minste één virtuele machine beschikbaar is en voldoet aan de SLA van de virtuele Azure-machine.U kunt ervoor kiezen om een virtuele machine te maken of een bestaande virtuele machine toe te voegen aan de beschikbaarheidsset.  
-
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Beheerde schijven gebruiken om de betrouw baarheid van gegevens te verbeteren
-
-Virtuele machines die deel uitmaken van een beschikbaarheidsset met schijven die opslag accounts of opslag schaal eenheden delen, zijn niet van kracht voor storingen in één opslag schaal eenheden tijdens storingen. Advisor identificeert deze beschikbaarheids sets en raadt u aan om te migreren naar Azure Managed disks. Deze migratie zorgt ervoor dat de schijven van de virtuele machines in de beschikbaarheidsset voldoende geïsoleerd zijn om een Single Point of Failure te voor komen. 
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>Controleer de versie van de installatie kopie van het virtuele netwerk apparaat van Check Point
 
@@ -73,6 +58,21 @@ Azure Advisor controleert op alle VPN-gateways die gebruikmaken van een basis-SK
 - Opties voor actief/actief-configuratie. 
 - Aangepast IPSec/IKE-beleid. 
 - Hogere stabiliteit en beschik baarheid.
+
+## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>Fout tolerantie voor virtuele machines garanderen (tijdelijk uitgeschakeld)
+
+Om redundantie voor uw toepassing te bieden, raden we u aan om twee of meer virtuele machines in een beschikbaarheidsset te groeperen. Advisor identificeert virtuele machines die geen deel uitmaken van een beschikbaarheidsset en raadt u aan deze te verplaatsen naar één. Deze configuratie zorgt ervoor dat tijdens gepland of niet-gepland onderhoud ten minste één virtuele machine beschikbaar is en voldoet aan de SLA van de virtuele Azure-machine. U kunt ervoor kiezen een beschikbaarheidsset voor de virtuele machine te maken of de virtuele machine toe te voegen aan een bestaande beschikbaarheidsset.
+
+> [!NOTE]
+> Als u een beschikbaarheidsset maakt, moet u er ten minste één virtuele machine aan toevoegen. We raden u aan twee of meer virtuele machines in een beschikbaarheidsset te groeperen om ervoor te zorgen dat er ten minste één computer beschikbaar is tijdens een storing.
+
+## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>Fout tolerantie voor beschikbaarheidsset garanderen (tijdelijk uitgeschakeld)
+
+Om redundantie voor uw toepassing te bieden, raden we u aan om twee of meer virtuele machines in een beschikbaarheidsset te groeperen. Advisor identificeert beschikbaarheids sets die één virtuele machine bevatten en raadt u aan om een of meer virtuele machines toe te voegen.Deze configuratie zorgt ervoor dat tijdens gepland of niet-gepland onderhoud ten minste één virtuele machine beschikbaar is en voldoet aan de SLA van de virtuele Azure-machine.U kunt ervoor kiezen om een virtuele machine te maken of een bestaande virtuele machine toe te voegen aan de beschikbaarheidsset.  
+
+## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Beheerde schijven gebruiken om de betrouw baarheid van gegevens te verbeteren (tijdelijk uitgeschakeld)
+
+Virtuele machines die deel uitmaken van een beschikbaarheidsset met schijven die opslag accounts of opslag schaal eenheden delen, zijn niet van kracht voor storingen in één opslag schaal eenheden tijdens storingen. Advisor identificeert deze beschikbaarheids sets en raadt u aan om te migreren naar Azure Managed disks. Deze migratie zorgt ervoor dat de schijven van de virtuele machines in de beschikbaarheidsset voldoende geïsoleerd zijn om een Single Point of Failure te voor komen. 
 
 ## <a name="repair-invalid-log-alert-rules"></a>Ongeldige regels voor logboek waarschuwingen herstellen
 

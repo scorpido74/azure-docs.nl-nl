@@ -4,12 +4,12 @@ description: Meer informatie over hoe u de cluster-automatische schaal functie k
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: af09d594dd745b64901965499df4245fa2e6a85f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130831"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257511"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Een cluster automatisch schalen om te voldoen aan de toepassingsvraag op Azure Kubernetes Service (AKS)
 
@@ -20,12 +20,6 @@ In dit artikel wordt beschreven hoe u de cluster-automatische schaal functie ins
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Voor dit artikel moet u de Azure CLI-versie 2.0.76 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
-
-## <a name="limitations"></a>Beperkingen
-
-De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die gebruikmaken van de cluster-automatische schaal functie:
-
-* De invoeg toepassing voor het routeren van HTTP-toepassingen kan niet worden gebruikt.
 
 ## <a name="about-the-cluster-autoscaler"></a>Over de automatische cluster schaal
 
@@ -44,7 +38,7 @@ Zowel de horizontale pod voor automatisch schalen als cluster automatisch schale
 
 Voor meer informatie over hoe het cluster automatisch schalen niet kan worden geschaald, raadpleegt u [welke typen van de cluster automatisch schalen een knoop punt niet kunnen verwijderen?][autoscaler-scaledown]
 
-De automatische schaal functie van het cluster maakt gebruik van opstart parameters voor dingen zoals tijds intervallen tussen schaal gebeurtenissen en resource drempels. Zie [Wat zijn de para meters voor cluster-automatische schalen?][autoscaler-parameters] voor meer informatie over de para meters die door het cluster worden gebruikt.
+De automatische schaal functie van het cluster maakt gebruik van opstart parameters voor dingen zoals tijds intervallen tussen schaal gebeurtenissen en resource drempels. Zie [het profiel voor automatisch schalen gebruiken](#using-the-autoscaler-profile)voor meer informatie over de para meters die door de cluster-automatische schaal functie worden gebruikt.
 
 Het cluster en de horizontale pod kunnen samen worden gebruikt en worden vaak geïmplementeerd in een cluster. In combi natie met de horizontale Pod is de automatische schaal aanpassing gericht op het uitvoeren van het aantal vereiste aantallen dat nodig is om te voldoen aan de vraag van de toepassing. De cluster automatisch schalen is gericht op het uitvoeren van het aantal knoop punten dat vereist is voor de ondersteuning van de geplande peulen.
 

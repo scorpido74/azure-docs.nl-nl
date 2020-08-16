@@ -3,12 +3,12 @@ title: Service kosten verminderen met behulp van Azure Advisor
 description: Gebruik Azure Advisor om de kosten van uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284367"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258525"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Service kosten verminderen met behulp van Azure Advisor
 
@@ -96,10 +96,12 @@ Met de [tijdelijke besturingssysteem schijf](../virtual-machines/ephemeral-os-di
 
 Het is aan te raden tijdelijke besturingssysteem schijven te gebruiken voor IaaS Vm's of Vm's met stateless werk belastingen. Advisor biedt aanbevelingen voor bronnen die kunnen profiteren van kortstondige besturingssysteem schijf.
 
+## <a name="reduce-azure-data-explorer-table-cache-period-policy-for-cluster-cost-optimization-preview"></a>Azure Data Explorer-tabel cache-periode (beleid) verminderen voor optimalisatie van cluster kosten (preview-versie)
+Advisor identificeert bronnen voor het verkleinen van het Table cache-beleid Azure Data Explorer cluster knooppunten met weinig CPU-gebruik, geheugen en een configuratie met een hoge cache grootte.
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Toegang tot kosten aanbevelingen in Azure Advisor
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Zoek en selecteer [**Advisor**](https://aka.ms/azureadvisordashboard) op elke pagina.
 

@@ -4,16 +4,16 @@ description: Gebruik omgevings variabelen en maak opties voor het inschakelen va
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/18/2019
+ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe24cc79d749761b697a8d1a162ec2867da9a649
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434523"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257472"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Modules toegang geven tot de lokale opslag van een apparaat
 
@@ -82,6 +82,12 @@ sudo chmod 700 <HostStoragePath>
 ```
 
 Meer informatie over de opties voor het maken van [docker-documenten](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)vindt u in.
+
+## <a name="encrypted-data-in-module-storage"></a>Versleutelde gegevens in module opslag
+
+Wanneer modules de workload API van IoT Edge daemon aanroepen om gegevens te versleutelen, wordt de versleutelings sleutel afgeleid met behulp van de module-ID en de generatie-ID van de module. Een generatie-ID wordt gebruikt om geheimen te beveiligen als een module uit de implementatie wordt verwijderd en er later een andere module met dezelfde module-ID wordt geïmplementeerd op hetzelfde apparaat. U kunt de generatie-id van een module weer geven met behulp van de Azure CLI [-opdracht AZ IOT hub module-identiteits weergave](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show).
+
+Als u bestanden wilt delen tussen verschillende modules, moeten ze geen geheimen bevatten of niet worden ontsleuteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

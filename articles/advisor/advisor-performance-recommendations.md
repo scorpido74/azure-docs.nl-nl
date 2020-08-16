@@ -3,12 +3,12 @@ title: Verbeter de prestaties van Azure-apps met Advisor
 description: Gebruik aanbevelingen voor prestaties in Azure Advisor om de snelheid en reactie tijd van uw bedrijfskritische toepassingen te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057578"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257455"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met behulp van Azure Advisor
 
@@ -20,7 +20,7 @@ U kunt [TTL-instellingen (time-to-Live)](../traffic-manager/traffic-manager-perf
 
 Azure Advisor identificeert Traffic Manager profielen met een langere TTL-configuratie. U kunt het beste de TTL-waarde instellen op 20 seconden of 60 seconden, afhankelijk van het feit of het profiel is geconfigureerd voor [snelle failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
 
-## <a name="improve-database-performance-by-using-sql-database-advisor"></a>Verbeter de prestaties van de data base met behulp van SQL Database Advisor
+## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>Prestaties van de data base verbeteren met behulp van SQL Database Advisor (tijdelijk uitgeschakeld)
 
 Azure Advisor biedt een consistente, geconsolideerde weer gave van aanbevelingen voor al uw Azure-resources. Het integreert met SQL Database Advisor om u aanbevelingen te doen voor het verbeteren van de prestaties van uw data bases.SQL Database Advisor evalueert de prestaties van uw data bases door de gebruiks geschiedenis te analyseren. Vervolgens worden aanbevelingen geboden die het meest geschikt zijn voor het uitvoeren van de normale werk belasting van de data base.
 
@@ -151,6 +151,22 @@ Advisor identificeert Azure Cosmos DB containers die gebruikmaken van het standa
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Stel het pagina formaat van uw Azure Cosmos DB-query (MaxItemCount) in op-1 
 
 Azure Advisor identificeert Azure Cosmos DB containers die gebruikmaken van een query pagina grootte van 100. Het wordt aanbevolen een pagina grootte van-1 te gebruiken voor snellere scans. [Meer informatie over MaxItemCount.](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+
+## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>U kunt de functie versneld schrijven gebruiken in uw HBase-cluster om de prestaties van het cluster te verbeteren
+Azure Advisor analyseert de systeem Logboeken in de afgelopen 7 dagen en identificeert of uw cluster de volgende scenario's heeft aangetroffen:
+1. Hoge latentie voor WAL-synchronisatietijd 
+2. Hoog aantal schrijfaanvragen (minstens drie periodes van één uur met meer dan 1000 avg_write_requests/second/node)
+
+Deze kenmerken geven aan dat uw cluster een hoge latentie voor schrijven heeft. Dit kan worden veroorzaakt door een zware werk belasting die op uw cluster wordt uitgevoerd. Als u de prestaties van uw cluster wilt verbeteren, kunt u overwegen om gebruik te maken van de functie voor versneld schrijven van Azure HDInsight HBase. Met de functie Versnelde schrijfbewerkingen voor HDInsight Apache HBase-clusters worden Premium SSD-beheerde schijven gekoppeld aan elke RegionServer (werkknooppunt) in plaats van dat er cloudopslag wordt gebruikt. Het gevolg hiervan is een lage latentie voor schrijven en een hogere tolerantie voor uw toepassingen. Meer informatie over deze functie vindt u [hier](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
+
+## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>De cache-periode (beleid) van de Azure Data Explorer-tabel controleren voor betere prestaties (preview-versie)
+Deze aanbeveling heeft betrekking op Azure Data Explorer-tabellen die een groot aantal query's hebben die verder dan de geconfigureerde cacheperiode (beleid) zoeken (u ziet de top 10 van tabellen op querypercentage dat toegang heeft tot de gegevens buiten de cache). De aanbevolen actie voor het verbeteren van de prestaties van het cluster: Beperk query's voor deze tabel tot het minimale tijdsbereik dat nodig is (binnen het gedefinieerde beleid). Als er gegevens uit het hele tijdsbereik vereist zijn, verhoogt u de cacheperiode tot de aanbevolen waarde.
+
+## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>Prestaties verbeteren door grootteaanpassing van tijdelijke tabel van MySQL te optimaliseren
+Advisor-analyse geeft aan dat uw MySQL-server mogelijk niet langer I/O-overhead mag zijn als gevolg van instellingen met een lage tijdelijke-tabel parameter. Dit kan leiden tot onnodige schijftransacties en verminderde prestaties. We raden u aan de waarden voor de parameter 'tmp_table_size' en 'max_heap_table_size' te verhogen om het aantal schijftransacties te verminderen. [Meer informatie](https://aka.ms/azure_mysql_tmp_table)
+
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Gegevens in Server groep distribueren om de werk belasting tussen knoop punten te verdelen
+Advisor identificeert de Server groepen waar de gegevens niet zijn gedistribueerd, maar blijven op de coördinator. Op basis hiervan adviseert Advisor dat voor volledige grootschalige-voor delen (Citus) gegevens worden gedistribueerd op worker-knoop punten voor uw server groepen. Hierdoor worden de prestaties van de query verbeterd door gebruik te maken van resource van elk knoop punt in de Server groep. [Meer informatie](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Aanbevelingen voor toegang tot prestatie verbeteringen in Advisor
 

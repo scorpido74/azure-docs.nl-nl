@@ -3,12 +3,12 @@ title: Verbeter de operationele Excellency met Advisor
 description: Gebruik Azure Advisor om uw operationele uitmuntendheid voor uw Azure-abonnementen te optimaliseren en verouderd.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 2b4c4726400134e4eec3868e155da47cb8c515b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057632"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258488"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Behaal de operationele uitmuntendheid met behulp van Azure Advisor
 
@@ -53,6 +53,16 @@ Azure Policy is een service in azure die u kunt gebruiken om beleid te maken, to
 **Controle-Vm's afdwingen *die geen beheerde schijven gebruiken*.**
 
 **Schakel *een tag overnemen van resource groepen*in.** Met dit beleid kunt u de opgegeven tag en waarde van de bovenliggende resourcegroep toevoegen of vervangen wanneer een resource wordt gemaakt of bijgewerkt. U kunt bestaande resources herstellen door een herstel taak te activeren.
+
+## <a name="no-validation-environment-enabled"></a>Geen validatieomgeving ingeschakeld
+Azure Advisor bepaalt dat er geen validatie omgeving is ingeschakeld in het huidige abonnement. Wanneer u uw hostgroepen maakt, hebt u \" Nee \" voor \" validatie omgeving geselecteerd \" op het tabblad Eigenschappen. Als er ten minste één hostgroep is waarvoor een validatie omgeving is ingeschakeld, zorgt u ervoor dat de bedrijfs continuïteit via Windows Virtual Desktop service-implementaties met vroegtijdige detectie van potentiële problemen. [Meer informatie](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+
+## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Zorg ervoor dat de productie omgeving (niet-validatie) afneemt van stabiele functionaliteit
+Azure Advisor detecteert dat er voor een of meer hostgroepen een validatie omgeving is ingeschakeld. Om validatie omgevingen het beste te kunnen gebruiken, moet u ten minste één, maar nooit meer dan de helft van uw hostgroepen in de validatie omgeving hebben. Als u een goede balans hebt tussen uw hostgroepen waarvoor de validatie omgeving is ingeschakeld en de groepen waarvoor deze functie is uitgeschakeld, kunt u het beste profiteren van de voor delen van de implementaties met meerdere fases die door Windows Virtual Desktop worden aangeboden met bepaalde updates. Om dit probleem op te lossen, opent u de eigenschappen van uw hostgroep en selecteert \" \" u niet naast de \" instelling validatie omgeving \" .
+
+## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Traffic Analytics inzicht geven in verkeerspatronen in Azure-resources
+Traffic Analytics, een cloudoplossing die inzicht biedt in gebruikers- en toepassingsactiviteit in Azure. Traffic Analytics analyseert stroomlogboeken van de Network Watcher-netwerkbeveiligingsgroep (NSG) om inzicht te krijgen in de verkeersstroom. Dankzij verkeersanalyse kunt u belangrijke sprekers zien in Azure- en niet-Azure-implementaties, openstaande poorten, protocollen en kwaadaardige stromen in uw omgeving onderzoeken en de prestaties van uw netwerkimplementatie optimaliseren. U kunt stroomlogboeken verwerken met een interval van tien en zestig minuten, zodat u snellere analyses hebt van uw verkeer. Het is een goed idee om Traffic Analytics in te scha kelen voor uw Azure-resources. 
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

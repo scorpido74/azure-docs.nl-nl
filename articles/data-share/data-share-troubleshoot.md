@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 07/30/2020
-ms.openlocfilehash: 0fb2f9dd156d18705308b41ef8d6b015b3b6d71b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/14/2020
+ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534444"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257809"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Veelvoorkomende problemen in azure data share oplossen 
 
@@ -34,7 +34,7 @@ Dit kan de volgende oorzaken hebben:
     1. Zoeken naar **micro soft. DataShare**
     1. Klik op **Registreren** 
 
-    U moet de [rol bijdrager Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) hebben om deze stappen uit te voeren. 
+    U moet de [rol Azure Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) hebben voor het Azure-abonnement om deze stappen uit te voeren. 
 
 * **Er wordt een uitnodiging verzonden naar uw e-mail alias in plaats van uw Azure-aanmeldings-e-mail.** Als u de Azure data share-service hebt geregistreerd of al een gegevens share bron hebt gemaakt in de Azure-Tenant, maar de uitnodiging nog steeds niet ziet, kan het zijn dat de provider uw e-mail alias heeft ingevoerd als ontvanger in plaats van uw e-mail adres voor aanmelding bij Azure. Neem contact op met uw gegevens provider en zorg ervoor dat ze de uitnodiging hebben verzonden naar uw e-mail adres voor Azure-aanmelding en niet uw e-mail alias.
 
@@ -78,7 +78,7 @@ Als deze fout optreedt bij het toewijzen van dataset aan een op SQL gebaseerd do
     exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
     exec sp_addrolemember db_ddladmin, "<share_acc_name>";
 ```
-Houd er rekening mee dat de *<share_acc_name>* de naam van uw gegevens share bron is.      
+U ziet dat *<share_acc_name>* de naam is van uw Data Share-resource.      
 
 Zorg ervoor dat u alle vereisten hebt gevolgd die worden vermeld in [uw gegevens delen](share-your-data.md) en zelf studie voor [gegevens accepteren en ontvangen](subscribe-to-data-share.md) .
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: c6c1b30716b52554afebe39562692de181dd7d1a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3e15adcac184a0609de3197181cb8c475a962e8d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921224"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258371"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tips voor betere prestaties voor Azure Cosmos DB en .NET SDK v2
 
@@ -41,7 +41,7 @@ De [.net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) wordt uitgebra
 
 U wordt aangeraden Windows 64-bits host te verwerken voor betere prestaties. De SQL SDK bevat een systeem eigen ServiceInterop.dll om query's lokaal te parseren en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop.dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen. De volgende typen toepassingen gebruiken standaard 32-bits host verwerking. Voer de volgende stappen uit op basis van het type van uw toepassing om de verwerking van de host te wijzigen in 64-bits verwerking:
 
-- Voor uitvoer bare toepassingen kunt u de verwerking van een host wijzigen door het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) in te stellen op **x64** in het venster **project eigenschappen** op het tabblad **opbouwen** .
+- Voor uitvoer bare toepassingen kunt u de verwerking van een host wijzigen door het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) in te stellen op **x64**  in het venster **project eigenschappen** op het tabblad **opbouwen** .
 
 - Voor VSTest test projecten kunt u de verwerking van de host wijzigen door test **Test**  >  **instellingen**testen  >  **standaard processor architectuur als x64** te selecteren in het menu van Visual Studio **testen** .
 
@@ -64,7 +64,7 @@ Als u test met hoge doorvoer niveaus (meer dan 50.000 RU/s), kan de client toepa
 > [!NOTE] 
 > Hoog CPU-gebruik kan leiden tot grotere latentie en time-outuitzonderingen voor aanvragen.
 
-## <a name="networking"></a><a id="networking"></a>Inbel
+## <a name="networking"></a><a id="networking"></a> Inbel
 
 **Verbindings beleid: modus directe verbinding gebruiken**
 
@@ -79,14 +79,12 @@ Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen 
   * Directe modus
 
     Directe modus ondersteunt connectiviteit via een TCP-protocol.
-
-In de gateway modus maakt Azure Cosmos DB gebruik van poort 443 en poorten 10250, 10255 en 10256 wanneer u de Azure Cosmos DB-API voor MongoDB gebruikt. Poort 10250 wordt toegewezen aan een standaard MongoDB-instantie zonder geo-replicatie. Poorten 10255 en 10256 worden toegewezen aan het MongoDB-exemplaar met geo-replicatie.
      
-Wanneer u TCP in directe modus gebruikt, moet u, naast de gateway poorten, ervoor zorgen dat het poort bereik tussen 10000 en 20000 open is omdat Azure Cosmos DB dynamische TCP-poorten gebruikt (wanneer directe modus op [privé-eind punten](./how-to-configure-private-endpoints.md)is ingeschakeld, moet het volledige bereik van de TCP-poorten van 0 tot 65535 zijn geopend). Als deze poorten niet zijn geopend en u TCP probeert te gebruiken, ontvangt u een fout bericht van de 503-Service die niet beschikbaar is. In deze tabel ziet u de connectiviteits modi die beschikbaar zijn voor verschillende Api's en de service poorten die worden gebruikt voor elke API:
+Wanneer u de TCP gebruikt in de directe modus, naast de gateway poorten, moet u ervoor zorgen dat het poort bereik tussen 10000 en 20000 open is, omdat Azure Cosmos DB dynamische TCP-poorten gebruikt. Wanneer u directe modus op [particuliere eind punten](./how-to-configure-private-endpoints.md)gebruikt, moet u het volledige bereik van TCP-poorten van 0 tot 65535 openen. Als deze poorten niet zijn geopend en u het TCP-protocol wilt gebruiken, ontvangt u een fout bericht van de 503-Service die niet beschikbaar is. In de volgende tabel ziet u de beschik bare connectiviteits modi voor verschillende Api's en de service poorten die voor elke API worden gebruikt:
 
 |Verbindingsmodus  |Ondersteund protocol  |Ondersteunde Sdk's  |API/service poort  |
 |---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  Alle Sdk's    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
+|Gateway  |   HTTPS    |  Alle Sdk's    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443) <br> Poort 10250 wordt toegewezen aan een standaard Azure Cosmos DB-API voor MongoDB-instantie zonder geo-replicatie. Terwijl de poorten 10255 en 10256 worden toegewezen aan het exemplaar met geo-replicatie.   |
 |Direct    |     TCP    |  .NET SDK    | Bij gebruik van open bare/service-eind punten: poorten in het 10000 tot en met 20000-bereik<br>Bij het gebruik van privé-eind punten: poorten in het bereik 0 tot en met 65535 |
 
 Azure Cosmos DB biedt een eenvoudig open, REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. TCP-protocol gebruikt TLS voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
@@ -121,10 +119,10 @@ In scenario's waarin u over sparse-toegang beschikt en als u een hoger aantal ve
 
 **Open async aanroepen om opstart latentie bij eerste aanvraag te voor komen**
 
-De eerste aanvraag heeft standaard een hogere latentie omdat de routerings tabel van het adres moet worden opgehaald. Wanneer u [SDK v2](sql-api-sdk-dotnet.md)gebruikt, roept u `OpenAsync()` eenmaal aan tijdens de initialisatie om te voor komen dat deze opstart latentie bij de eerste aanvraag. De aanroep ziet er als volgt uit:`await client.OpenAsync();`
+De eerste aanvraag heeft standaard een hogere latentie omdat de routerings tabel van het adres moet worden opgehaald. Wanneer u [SDK v2](sql-api-sdk-dotnet.md)gebruikt, roept u `OpenAsync()` eenmaal aan tijdens de initialisatie om te voor komen dat deze opstart latentie bij de eerste aanvraag. De aanroep ziet er als volgt uit: `await client.OpenAsync();`
 
 > [!NOTE]
-> `OpenAsync`genereert aanvragen voor het verkrijgen van de routerings tabel van het adres voor alle containers in het account. Voor accounts met veel containers, maar waarvan de toepassing toegang heeft tot een subset hiervan, `OpenAsync` zou een onnodige hoeveelheid verkeer genereren, waardoor de initialisatie traag wordt. Het gebruik hiervan `OpenAsync` is mogelijk niet nuttig in dit scenario, omdat het opstarten van toepassingen wordt vertraagd.
+> `OpenAsync` genereert aanvragen voor het verkrijgen van de routerings tabel van het adres voor alle containers in het account. Voor accounts met veel containers, maar waarvan de toepassing toegang heeft tot een subset hiervan, `OpenAsync` zou een onnodige hoeveelheid verkeer genereren, waardoor de initialisatie traag wordt. Het gebruik hiervan `OpenAsync` is mogelijk niet nuttig in dit scenario, omdat het opstarten van toepassingen wordt vertraagd.
 
 **Voor prestaties, termijnen-clients in dezelfde Azure-regio**
 
@@ -158,8 +156,8 @@ Azure Cosmos DB aanvragen worden gedaan via HTTPS/REST wanneer u de gateway modu
 **Parallelle query's voor gepartitioneerde verzamelingen afstemmen**
 
 SQL .NET SDK 1.9.0 en hoger ondersteunen parallelle query's, waarmee u parallel een gepartitioneerde verzameling kunt uitvoeren. Zie [code voorbeelden](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) met betrekking tot het werken met de sdk's voor meer informatie. Parallelle query's zijn ontworpen om betere latentie en door Voer van query's te bieden dan hun seriële tegen hanger. Parallelle query's bieden twee para meters die u aan uw vereisten kunt aanpassen: 
-- `MaxDegreeOfParallelism`Hiermee bepaalt u het maximum aantal partities waarmee gelijktijdig query's kunnen worden uitgevoerd. 
-- `MaxBufferedItemCount`Hiermee bepaalt u het aantal vooraf opgehaalde resultaten.
+- `MaxDegreeOfParallelism` Hiermee bepaalt u het maximum aantal partities waarmee gelijktijdig query's kunnen worden uitgevoerd. 
+- `MaxBufferedItemCount` Hiermee bepaalt u het aantal vooraf opgehaalde resultaten.
 
 ***Afstemmings graad van parallelle uitvoering***
 
@@ -231,7 +229,7 @@ collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabas
 
 Zie [Azure Cosmos DB Indexing policies](index-policy.md)(Engelstalig) voor meer informatie.
 
-## <a name="throughput"></a><a id="measure-rus"></a>Vracht
+## <a name="throughput"></a><a id="measure-rus"></a> Vracht
 
 **Meten en afstemmen voor lagere aanvraag eenheden/tweede gebruik**
 

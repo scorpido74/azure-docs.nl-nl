@@ -3,12 +3,12 @@ title: Een Microsoft Azure Recovery Services kluis verwijderen
 description: In dit artikel leert u hoe u afhankelijkheden kunt verwijderen en vervolgens een Azure Backup Recovery Services kluis kunt verwijderen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055203"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257948"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Een Azure Backup Recovery Services kluis verwijderen
 
@@ -43,8 +43,9 @@ Als u een kluis goed wilt verwijderen, moet u de stappen in deze volg orde volge
 - **Stap 3**: u moet de volgende drie locaties controleren om te controleren of er beveiligde items zijn:
 
   - In de **Cloud beveiligde items**: Ga naar het menu van het kluis dashboard > **Back-upitems**. Alle items die hier worden vermeld, moeten worden verwijderd met **back-up stoppen** of **back-upgegevens verwijderen** samen met de back-upgegevens.  [Volg deze stappen](#delete-protected-items-in-the-cloud) om deze items te verwijderen.
+  - **SQL Server-exemplaar**: Ga naar het menu van het kluis dashboard > beveiligde **-infrastructuur**  >  **servers**. Selecteer in beveiligde servers de server die u wilt verwijderen. Als u de kluis wilt verwijderen, moet u de registratie van alle servers ongedaan maken. Klik met de rechter muisknop op de beveiligde server en selecteer **verwijderen ongedaan maken**.
   - **Mars-beveiligde servers**: Ga naar het menu van het kluis dashboard > beveiligde servers met **back-upinfrastructuur**  >  **Protected Servers**. Als u MARS-beveiligde servers hebt, moeten alle items die hier worden vermeld, samen met de bijbehorende back-upgegevens worden verwijderd. [Volg deze stappen om de](#delete-protected-items-on-premises) Mars-beveiligde servers te verwijderen.
-  - **MABS-of DPM-beheerser vers**: Ga naar het menu van het kluis dashboard > **Backup-infrastructuur**  >  **beheer servers**. Als u DPM of Azure Backup Server (MABS) hebt, moeten alle items die hier worden vermeld, worden verwijderd of geregistreerd samen met hun back-upgegevens. [Volg deze stappen](#delete-protected-items-on-premises) voor het verwijderen van de beheerser vers.
+   - **MABS-of DPM-beheerser vers**: Ga naar het menu van het kluis dashboard > **Backup-infrastructuur**  >  **beheer servers**. Als u DPM of Azure Backup Server (MABS) hebt, moeten alle items die hier worden vermeld, worden verwijderd of geregistreerd samen met hun back-upgegevens. [Volg deze stappen](#delete-protected-items-on-premises) voor het verwijderen van de beheerser vers.
 
 - **Stap 4**: u moet ervoor zorgen dat alle geregistreerde opslag accounts worden verwijderd. Ga naar het menu van het kluis dashboard > opslag accounts voor **back-upinfrastructuur**  >  **Storage Accounts**. Als u hier opslag accounts hebt die hier worden vermeld, moet u de registratie ervan ongedaan maken. Zie [registratie van een opslag account ongedaan maken](manage-afs-backup.md#unregister-a-storage-account)voor meer informatie over het ongedaan maken van de registratie van het account.
 
@@ -84,7 +85,7 @@ Lees eerst de sectie **[voordat u begint](#before-you-start)** om inzicht te kri
 1. Selecteer in het menu van het kluis dashboard **back-upinfrastructuur**.
 2. Afhankelijk van uw on-premises scenario kiest u een van de volgende opties:
 
-      - Voor MARS selecteert u **beveiligde servers** en vervolgens **Azure backup agent**. Selecteer vervolgens de server die u wilt verwijderen.
+      - Voor MARS selecteert u **beveiligde servers** en vervolgens  **Azure backup agent**. Selecteer vervolgens de server die u wilt verwijderen.
 
         ![Selecteer uw kluis voor MARS om het dash board ervan te openen.](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
@@ -171,7 +172,7 @@ Voer de volgende stappen uit om de beveiliging te stoppen en de back-upgegevens 
 
 #### <a name="method-2"></a>Methode 2
 
-Open de beheer console van **MABS-beheer** of **DPM** . Schakel onder **methode voor gegevens beveiliging selecteren**het selectie vakje **Ik wil online beveiliging** uit.
+Open de beheer console van **MABS-beheer** of **DPM** . Schakel onder **methode voor gegevens beveiliging selecteren**het selectie vakje  **Ik wil online beveiliging** uit.
 
   ![Selecteer de methode voor gegevens beveiliging.](./media/backup-azure-delete-vault/data-protection-method.png)
 
@@ -235,7 +236,7 @@ De beveiliging stoppen en de back-upgegevens verwijderen:
 
     Post waar de volgende prompt wordt weer gegeven:
 
-    *Microsoft Azure Backup weet u zeker dat u dit back-upbeleid wilt verwijderen? Verwijderde back-upgegevens worden 14 dagen bewaard. Na die tijd worden de back-upgegevens permanent verwijderd. <br/>[Y] Ja [A] Ja op alle [N] Nee [L] geen naar alle [S] Suspend [?] Help (standaard is ' Y '):*
+    *Microsoft Azure Backup weet u zeker dat u dit back-upbeleid wilt verwijderen? Verwijderde back-upgegevens worden 14 dagen bewaard. Na die tijd worden de back-upgegevens permanent verwijderd. <br/> [Y] Ja [A] Ja op alle [N] Nee [L] geen naar alle [S] Suspend [?] Help (standaard is ' Y '):*
 
 - Gebruik de volgende opdracht voor het verwijderen van de back-upgegevens in azure voor on-premises machines die zijn beveiligd met MABS (Microsoft Azure Backup Server) of DPM (System Center Data Protection Manager) naar Azure.
 

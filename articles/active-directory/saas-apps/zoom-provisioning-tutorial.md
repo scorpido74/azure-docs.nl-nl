@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3a2e4bbff1274a2473ac961b8355ca4193dcc69f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 52700df5c2977f33c988fcb34cdc3d67844d1d49
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924900"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257566"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Zelf studie: zoomen configureren voor automatische gebruikers inrichting
 
@@ -50,7 +50,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 ## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>Stap 2. Inzoomen configureren voor ondersteuning van inrichting met Azure AD
 
-1. Meld u aan bij de [Zoom-beheer console](https://zoom.us/signin). Navigeer naar **geavanceerd > zoomen voor ontwikkel aars** in het navigatie deel venster links.
+1. Meld u aan bij de [Zoom-beheer console](https://zoom.us/signin). Navigeer naar **Advanced > app Marketplace** in het navigatie deel venster links.
 
     ![Zoom integraties](media/zoom-provisioning-tutorial/zoom01.png)
 
@@ -89,7 +89,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor inzoomen in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -122,7 +122,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |Kenmerk|Type|
    |---|---|
    |userName|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |e-mail berichten [type EQ "werk]|Tekenreeks|

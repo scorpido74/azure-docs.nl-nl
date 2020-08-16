@@ -10,17 +10,73 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/11/2020
+ms.date: 8/15/2020
 ms.author: yohaddad
-ms.openlocfilehash: 3fb9c863b94c65d7a4333d734648d308a904e355
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 21dcc10be255c0795058886188b4380266679963
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142346"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258297"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
+
+## <a name="august-2020-guest-os"></a>Augustus 2020-gast besturingssysteem
+>[!NOTE]
+>Het gast besturingssysteem van augustus wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het gast besturingssysteem van augustus. Deze lijst is onderhevig aan wijzigingen.
+
+
+| Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
+| --- | --- | --- | --- | --- |
+|  Rel 20-08 |  [4571687]  |  Cumulatieve update voor IE | 2,101, 3,88, 4,81 | 11 augustus 2020 |
+|  Rel 20-08 |  [4561600]  |  Flash-Update | 3,88, 4,81, 5,46, 6,22 | 9 juni 2020 |
+|  Rel 20-08 |  [4571694]  |  Meest recente cumulatieve update | 6,22 | 11 augustus 2020 |
+|  Rel 20-08 |  [4565349]  |  Meest recente cumulatieve update | 5,46 | 11 augustus 2020 |
+|  Rel 20-08 |  [4570673]  |  Onderhouds stack-update | 2,101 | 11 augustus 2020 |
+|  Rel 20-08 |  [4571729]  |  Maandelijks samen vouwen | 2,101 | 11 augustus 2020 |
+|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1-beveiliging en-kwaliteit samen vouwen | 2,101 | 11 augustus 2020 |
+|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 2,101 | 11 augustus 2020 |
+|  Rel 20-08 |  [4569765]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 3,88 | 11 augustus 2020 |
+|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 3,88 | 11 augustus 2020 |
+|  Rel 20-08 |  [4566426]  |  Onderhouds stack-update | 3,88 | Jul 14, 2020 |
+|  Rel 20-08 |  [4571736]  |  Maandelijks samen vouwen | 3,88 | 11 augustus 2020 |
+|  Rel 20-08 |  [4566425]  |  Onderhouds stack-update | 4,81 | Jul 14, 2020 |
+|  Rel 20-08 |  [4571703]  |  Maandelijks samen vouwen | 4,81 | 11 augustus 2020 |
+|  Rel 20-08 |  [4569768]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 4,81 | 11 augustus 2020 |
+|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 4,81 | 11 augustus 2020 |
+|  Rel 20-08 |  [4494175]  |  Micro | 5,46 | 25 februari 2020 |
+|  Rel 20-08 |  [4565912]  |  Onderhouds stack-update | 5,46 | Jul 14, 2020 |
+|  Rel 20-08 |  [4569746]  |  .NET Framework 4,8-beveiliging en-kwaliteit samen vouwen | 5,46 | 11 augustus 2020 |
+|  Rel 20-08 |  [4569776]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | 6,22 | 11 augustus 2020 |
+|  Rel 20-08 |  [4569750]  |  Cumulatieve update van .NET Framework 3,5 en 4,8 | 6,22 | 11 augustus 2020 |
+|  Rel 20-08 |  [4566424]  |  Onderhouds stack-update | 6,22 | 11 augustus 2020 |
+
+
+
+[4571687]: https://support.microsoft.com/kb/4571687
+[4561600]: https://support.microsoft.com/kb/4561600
+[4571694]: https://support.microsoft.com/kb/4571694
+[4565349]: https://support.microsoft.com/kb/4565349
+[4570673]: https://support.microsoft.com/kb/4570673
+[4571729]: https://support.microsoft.com/kb/4571729
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566426]: https://support.microsoft.com/kb/4566426
+[4571736]: https://support.microsoft.com/kb/4571736
+[4566425]: https://support.microsoft.com/kb/4566425
+[4571703]: https://support.microsoft.com/kb/4571703
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565912]: https://support.microsoft.com/kb/4565912
+[4569746]: https://support.microsoft.com/kb/4569746
+[4569776]: https://support.microsoft.com/kb/4569776
+[4569750]: https://support.microsoft.com/kb/4569750
+[4566424]: https://support.microsoft.com/kb/4566424
+
 
 ## <a name="july-2020-guest-os"></a>2020 juli-gast besturingssysteem
 >[!NOTE]
@@ -119,7 +175,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  12 mei 2020  |
+|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2,98],  [3,85], [4,78]  |  12 mei 2020  |
 |  Rel 20-05  |  [4556813]  |  Meest recente cumulatieve update (LCU)   |  [5,43]  |  12 mei 2020  |
 |  Rel 20-05  |  [4551853]  |  Meest recente cumulatieve update (LCU)   |  [6,19]  |  12 mei 2020  |
 |  Rel 20-05  |  [4552940]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |

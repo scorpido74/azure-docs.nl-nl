@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835983"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258550"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parameters in Azure Database for MySQL
 
@@ -98,7 +98,7 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/innodb
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`kan alleen worden bijgewerkt in de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen.
+> `innodb_file_per_table` kan alleen worden bijgewerkt in de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen.
 
 MySQL slaat de tabel InnoDB op in verschillende tablespaces op basis van de configuratie die u hebt ingevoerd tijdens het maken van de tabel. De [systeem-tabel ruimte](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) is het opslag gebied voor de InnoDB-data dictionary. Een [bestand-per-tabel tabel ruimte](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) bevat gegevens en indexen voor één InnoDB-tabel en wordt opgeslagen in het bestands systeem in een eigen gegevens bestand. Dit gedrag wordt bepaald door de `innodb_file_per_table` para meter server. Instelling `innodb_file_per_table` om `OFF` ervoor te zorgen dat InnoDB tabellen maakt in de ruimte van het systeem. Anders maakt InnoDB tabellen in file-per-tabel tablespaces.
 
@@ -212,6 +212,9 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/server
 Als er een fout bericht wordt weer gegeven dat vergelijkbaar is met het ' Rijgrootte is te groot (> 8126) ', kunt u de para meter **INNODB_STRICT_MODE**uitschakelen. De **innodb_strict_mode** van de server parameter mag niet globaal worden gewijzigd op server niveau omdat de grootte van de gegevensrij groter is dan 8k, worden de gegevens afgekapt zonder dat er een fout optreedt bij mogelijk gegevens verlies. Het is raadzaam om het schema aan te passen aan de limiet voor de pagina grootte. 
 
 Deze para meter kan worden ingesteld op sessie niveau met `init_connect` . Als u **innodb_strict_mode** wilt instellen op sessie niveau, raadpleegt u de [instellings parameter wordt niet weer gegeven](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
+
+> [!NOTE]
+> Als u een server voor het lezen van replica's hebt, wordt het instellen van **innodb_strict_mode** op het sessie niveau van een hoofd server als de replicatie wordt verbroken. U wordt aangeraden de para meter in te stellen op uit als u replica's hebt gelezen.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

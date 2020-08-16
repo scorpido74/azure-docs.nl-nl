@@ -5,37 +5,37 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/30/2020
-ms.openlocfilehash: 82de05e7169c5803dd999521f61a33b9dd17b567
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: eed3e8275400a3e677df53b9d62cf0e0bc70271c
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511952"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257835"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Een toewijzing van een gegevensset configureren voor een ontvangen share in de Azure-gegevens share
 
-In dit artikel wordt uitgelegd hoe u een toewijzing van een gegevensset configureert voor een ontvangen share met behulp van de Azure-gegevens share. U kunt dit doen als u een uitnodiging voor gegevens delen hebt geaccepteerd, maar u hebt gekozen voor accepteren en configureren, of als de gegevens in-place worden gedeeld. U kunt een toewijzing van een gegevensset configureren als u de bestemming wilt wijzigen voor gegevens die met u worden gedeeld, of als u gegevens wilt ontvangen in een SQL Server. 
+In dit artikel wordt uitgelegd hoe u een toewijzing van een gegevensset configureert voor een ontvangen share met behulp van de Azure-gegevens share. U kunt een gegevensset-toewijzing configureren om een doel gegevens archief op te geven waar u gegevens wilt ontvangen, of als u de doel gegevens opslag wilt wijzigen.
 
 ## <a name="navigate-to-a-received-data-share"></a>Navigeer naar een ontvangen gegevens share
 
-Navigeer in de Azure data share-service naar de share die u hebt ontvangen en selecteer het tabblad **Details** . 
+Navigeer in de Azure data share-service naar de share die u hebt ontvangen en selecteer het tabblad **gegevens sets** . 
 
 ![Toewijzing van gegevensset](./media/dataset-mapping.png "Toewijzing van gegevensset") 
 
-Schakel het selectie vakje in naast de gegevensset waaraan u een bestemming wilt toewijzen. Selecteer **toewijzing** opheffen om de bestaande toewijzing te ontkoppelen. Selecteer **+ toewijzen aan doel** om een nieuw doel archief te kiezen. 
+Schakel het selectie vakje in naast de gegevensset waaraan u een bestemming wilt toewijzen. Selecteer **+ toewijzen aan doel** om een nieuw doel archief te kiezen. Selecteer eerst **toewijzing** afwijzen als de gegevensset al is toegewezen en u het doel gegevens archief wilt wijzigen.
 
 ![Toewijzen aan doel](./media/dataset-map-target.png "Toewijzen aan doel") 
 
-## <a name="select-a-new-target-store"></a>Een nieuw doel archief selecteren
+## <a name="select-a-target-store"></a>Selecteer een doel archief
 
-Selecteer een doel gegevens type waarvan u wilt dat de gegevens binnenkomen. Voor het delen op basis van moment opnamen worden alle gegevens die al in een eerder toegewezen opslag account bestaan, niet automatisch verplaatst naar het nieuwe doel archief. Selecteer voor in-place delen een gegevens archief op de opgegeven locatie. De locatie is het Azure Data Center waar de bron gegevens opslag van de gegevens provider zich bevindt.
+Selecteer een doel gegevens archief type waarvoor u wilt dat de gegevens binnenkomen. Voor het delen op basis van moment opnamen worden alle gegevens die al in een eerder toegewezen opslag account bestaan, niet automatisch verplaatst naar het nieuwe doel archief. Selecteer voor in-place delen een gegevens archief op de opgegeven locatie. De locatie is het Azure Data Center waar de bron gegevens opslag van de gegevens provider zich bevindt.
 
-![Doel opslag account](./media/dataset-map-target-sql.png "Doel opslag") 
+![Doel opslag account](./media/dataset-map-target-sql.png "Doelopslag") 
 
 ## <a name="select-a-file-format-sql-sources-only"></a>Selecteer een bestands indeling (alleen SQL-bronnen)
 
-Als de bron gegevens afkomstig zijn uit een bron op basis van SQL, kunt u kiezen in welke indeling deze wordt ontvangen. 
+Als de bron gegevens afkomstig zijn van een bron op basis van SQL en u deze als een bestand wilt ontvangen, kunt u kiezen in welke indeling deze wordt ontvangen. 
 
 ![Indeling kiezen](./media/sql-file-formats.png "SQL-bestands indelingen")
 

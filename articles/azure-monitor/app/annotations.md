@@ -2,13 +2,13 @@
 title: Release aantekeningen voor Application Insights | Microsoft Docs
 description: Voeg implementatie-of build markeringen toe aan uw grafieken met metrische gegevens Verkenner in Application Insights.
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320660"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258413"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Aantekeningen op metrische grafieken in Application Insights
 
@@ -68,6 +68,10 @@ Maak een afzonderlijke API-sleutel voor elk van de release sjablonen van Azure p
    ![Ga naar het tabblad Azure DevOps-variabelen, selecteer toevoegen, noem de variabele ApiKey en plak de API-sleutel onder waarde.](./media/annotations/7-paste-api-key.png)
    
 1. Selecteer **Opslaan** in het venster hoofd release sjabloon om de sjabloon op te slaan.
+
+
+   > [!NOTE]
+   > Limieten voor API-sleutels worden beschreven in de documentatie voor de [rest API frequentie limieten](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits).
 
 ## <a name="view-annotations"></a>Aantekeningen weer geven
 
