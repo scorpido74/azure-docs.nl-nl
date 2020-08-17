@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: azure-monitor
 author: rboucher
 tags: azure-service-management
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 6979ce65022f350a93f533951d634b8e436283bc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186222"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226189"
 ---
 **Volume gegevensverzameling en gegevensretentie** 
 
@@ -47,7 +47,7 @@ ms.locfileid: "88186222"
 | Maximumgrootte voor een enkel bericht | 30 MB | Grotere volumes splitsen in meerdere berichten. |
 | Maximumgrootte voor veldwaarden  | 32 kB | Velden die langer zijn dan 32 KB worden afgebroken. |
 
-**API voor zoeken**
+**Search API**
 
 | Categorie | Limiet | Opmerkingen |
 |:---|:---|:---|
@@ -64,7 +64,7 @@ ms.locfileid: "88186222"
 | Maximum aantal tekens voor de kolomnaam | 500 | |
 | Gegevensexport | Momenteel niet beschikbaar | Gebruik Azure-functie of logische app om gegevens samen te voegen en te exporteren. | 
 
-**Gegevensopnamevolume**
+**<a name="data-ingestion-volume-rate">Gegevensopnamevolume</a>**
 
 Azure Monitor is een grootschalige gegevensservice die elke maand een groeiend aantal terabytes aan gegevens van duizenden klanten verwerkt. De limiet voor het opnamevolume moet de klanten van Azure Monitor beschermen tegen plotselinge opnamepieken in een multitenancy-omgeving. Er is een standaarddrempel van 500 MB (gecomprimeerd) voor het opnamevolume van toepassing op werkruimtes. Dit staat gelijk aan een niet-gecomprimeerd volume van ongeveer **6 GB/min**. De werkelijke grootte kan per gegevenstype variëren afhankelijk van de logboeklengte en de compressieratio ervan. Deze drempel geldt voor elke gegevensopname, ongeacht of deze is verzonden vanuit Azure-resources met behulp van [Diagnostische instellingen](../articles/azure-monitor/platform/diagnostic-settings.md), [Gegevensverzamelaar-API](../articles/azure-monitor/platform/data-collector-api.md) of agents.
 

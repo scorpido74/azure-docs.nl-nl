@@ -3,18 +3,18 @@ title: Documentatie voor Azure CDN
 summary: Azure Content Delivery Network (CDN) is een wereldwijde CDN-oplossing voor het leveren van inhoud met een hoge bandbreedte. Deze oplossing kan worden gehost in Azure of op een andere locatie. Met Azure CDN kunt u statische objecten die zijn geladen uit Azure Blob-opslag, een webtoepassing of een openbaar toegankelijke webserver, in de cache opslaan met behulp van de dichtstbijzijnde POP-server (Point of Presence-server). Azure CDN kan ook dynamische inhoud versnellen die niet in de cache kan worden opgeslagen. Hiervoor wordt gebruikgemaakt van diverse netwerk- en routeringsoptimalisaties.
 metadata:
   title: Documentatie voor Azure CDN - zelfstudies, API-verwijzing
-  description: Azure Content Delivery Network (CDN) is een wereldwijde CDN-oplossing voor het leveren van inhoud met een hoge bandbreedte. Deze oplossing kan worden gehost in Azure of op een andere locatie. Met Azure CDN kunt u statische objecten die zijn geladen uit Azure Blob-opslag, een webtoepassing of een openbaar toegankelijke webserver, in de cache opslaan met behulp van de dichtstbijzijnde POP-server (Point of Presence-server). Azure CDN kan ook dynamische inhoud versnellen die niet in de cache kan worden opgeslagen. Hiervoor wordt gebruikgemaakt van diverse netwerk- en routeringsoptimalisaties.
+  description: Meer informatie over Azure Content Delivery Network, een oplossing om inhoud te bieden met een hoge bandbreedte, die kan worden gehost in Azure of op een andere locatie.
   ms.service: azure-cdn
   ms.topic: landing-page
   author: asudbring
   ms.author: allensu
   ms.date: 02/24/2020
-  ms.openlocfilehash: c3c9cd72a85744ac6b609b178ac4e7c2413b4080
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.openlocfilehash: ed3c4f1794407ccdb841ea3c6ca35ff4d8e1a808
+  ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85554305"
+  ms.lasthandoff: 08/13/2020
+  ms.locfileid: "88192446"
 landingContent:
 - title: Over Azure CDN
   linkLists:

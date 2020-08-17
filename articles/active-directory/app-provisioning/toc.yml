@@ -57,7 +57,9 @@
           href: export-import-provisioning-configuration.md
     - name: Problemen met toepassingsinrichting oplossen
       items:
-        - name: Problemen met app-inrichting oplossen
+        - name: Bekende problemen
+          href: known-issues.md
+        - name: Configuratieproblemen oplossen
           href: application-provisioning-config-problem.md
         - name: Quarantinestatus
           href: application-provisioning-quarantine-status.md

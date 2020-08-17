@@ -78,12 +78,16 @@
   items:
     - name: Gegevensbeveiliging en -versleuteling
       href: encryption-overview.md
+    - name: Dubbele versleuteling
+      href: double-encryption.md
     - name: Schijfversleuteling
       items:
         - name: Aanbevolen procedures
           href: data-encryption-best-practices.md
-        - name: Gegevensversleuteling in rust
+        - name: Versleuteling van inactieve gegevens
           href: encryption-atrest.md
+        - name: Gegevensversleutelingmodellen
+          href: encryption-models.md
         - name: Azure Disk Encryption voor virtuele machines
           href: azure-disk-encryption-vms-vmss.md
     - name: Databasebeveiliging

@@ -3,12 +3,12 @@ title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533594"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261936"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -76,11 +76,11 @@ Configureer een back-upbeleid voor de kluis.
 
     * Als u het standaard beleid niet wilt gebruiken, selecteert u **nieuwe maken**en maakt u een aangepast beleid zoals beschreven in de volgende procedure.
 
-1. Selecteer onder **virtual machines** **toevoegen**.
+1. Selecteer onder **Virtuele machines** de optie **Toevoegen**.
 
       ![Virtuele machines toevoegen](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
 
-1. Het deel venster **virtuele machines selecteren** wordt geopend. Selecteer de virtuele machines waarvan u een back-up wilt maken met behulp van het beleid. Selecteer vervolgens **OK**.
+1. Het deelvenster **Virtuele machines selecteren** wordt geopend. Selecteer de virtuele machines waarvan u een back-up wilt maken met behulp van het beleid. Selecteer vervolgens **OK**.
 
    * De geselecteerde Vm's worden gevalideerd.
    * U kunt alleen Vm's in dezelfde regio als de kluis selecteren.
@@ -140,7 +140,7 @@ De momentopname fase garandeert de beschik baarheid van een herstel punt dat is 
 
 Er worden twee **subtaken** uitgevoerd op de back-end, een voor front-end back-uptaak die kan worden gecontroleerd in het detail venster met de **back-uptaak** , zoals hieronder wordt vermeld:
 
-  ![Status van back-uptaak](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
+  ![Subtaken status van back-uptaak](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 
 De **overdracht van gegevens naar de kluis** fase kan meerdere dagen duren, afhankelijk van de grootte van de schijven, het verloop per schijf en verschillende andere factoren.
 

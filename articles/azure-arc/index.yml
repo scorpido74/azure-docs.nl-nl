@@ -7,20 +7,20 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
+  ms.date: 08/13/2020
   ms.author: magoedte
-  ms.openlocfilehash: f9d4da85185d3a8541c165b407d276af0a25ccc6
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87008486"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88212775"
 landingContent:
-- title: Overzicht van Azure Arc
+- title: Over Azure Arc
   linkLists:
   - linkListType: overview
     links:
-    - text: Meer informatie over Azure Arc
+    - text: Wat is Azure Arc?
       url: https://aka.ms/Azure-Arc-Info
 - title: Computers verbinden met Azure met behulp van Azure Arc voor ingeschakelde servers
   linkLists:
@@ -30,12 +30,18 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
+    - text: Servers met Arc-agent inschakelen
+      url: ./servers/learn/quick-enable-hybrid-vm.md
+  - linkListType: how-to-guide
+    links:
     - text: Machines verbinden met Azure Arc vanuit de Azure-portal
       url: ./servers/onboard-portal.md
     - text: Machines op schaal verbinden met een service-principal
       url: ./servers/onboard-service-principal.md
     - text: Machines verbinden met Azure met PowerShell DSC
       url: ./servers/onboard-dsc.md
+    - text: Azure VM-extensies beheren en gebruiken
+      url: ./servers/manage-vm-extensions.md
 - title: Kubernetes-clusters verbinden met Azure met behulp van Azure Arc
   linkLists:
   - linkListType: overview

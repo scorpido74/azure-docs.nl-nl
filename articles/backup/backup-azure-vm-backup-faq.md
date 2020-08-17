@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 268146430a71cca4e620381ec4ce8666f808fefd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190890"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262769"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
@@ -100,6 +100,10 @@ Als u het hoofdletter gebruik (in boven of beneden) van uw virtuele machine of V
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>Kan ik back-ups maken of herstellen van selectieve schijven die zijn gekoppeld aan een VM?
 
 Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine. Zie [selectief schijf back-ups maken en herstellen voor Azure-vm's](selective-disk-backup-restore.md)voor meer informatie.
+
+### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Worden beheerde identiteiten behouden als er een Tenant wijziging optreedt tijdens het maken van een back-up?
+
+Als er wijzigingen in de [Tenant](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) optreden, moet u [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) uitschakelen en opnieuw inschakelen om back-ups opnieuw te laten werken.
 
 ## <a name="restore"></a>Herstellen
 

@@ -19,15 +19,15 @@
       href: advisor-get-started.md
 - name: Instructiegidsen
   items:
-    - name: Beschikbaarheid van Azure-toepassingen verbeteren
+    - name: Betrouwbaarheid
       href: advisor-high-availability-recommendations.md
-    - name: Resources beter beveiligen
+    - name: Beveiliging
       href: advisor-security-recommendations.md
-    - name: Verbeterde prestaties van Azure-toepassingen
+    - name: Prestatie-efficiëntie
       href: advisor-performance-recommendations.md
-    - name: Verlaag servicekosten
+    - name: Kostenoptimalisatie
       href: advisor-cost-recommendations.md
-    - name: Operationele topprestaties realiseren
+    - name: Operationele uitmuntendheid
       href: advisor-operational-excellence-recommendations.md
     - name: Aanbevelingen configureren
       href: view-recommendations.md
@@ -35,6 +35,8 @@
       href: permissions.md
     - name: Waarschuwingen voor aanbevelingen configureren
       href: advisor-alerts-portal.md
+    - name: Aanbevelingenoverzicht configureren
+      href: advisor-recommendations-digest.md
     - name: Bulkherstel voor aanbevelingen
       href: advisor-quick-fix.md
     - name: Advisor-gegevens in Azure Resource Graph

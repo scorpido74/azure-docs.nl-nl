@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236298"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262667"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -32,7 +32,7 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 
 3. Selecteer in het menu back-updashboard **File Recovery**.
 
-    ![Knop voor bestands herstel](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Bestands herstel selecteren](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
     Het menu **bestands herstel** wordt geopend.
 
@@ -42,7 +42,7 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 
 5. Als u de software wilt downloaden die wordt gebruikt voor het kopiëren van bestanden van het herstel punt, selecteert u **uitvoerbaar bestand downloaden** (voor Windows Azure-vm's) of **Download script** (voor virtuele Linux Azure-machines wordt een python-script gegenereerd).
 
-    ![Gegenereerd wacht woord](./media/backup-azure-restore-files-from-vm/download-executable.png)
+    ![Uitvoerbaar bestand downloaden](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
     Azure downloadt het uitvoer bare bestand of script naar de lokale computer.
 
@@ -56,7 +56,7 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 
 7. Zorg ervoor dat [u de juiste computer hebt](#selecting-the-right-machine-to-run-the-script) om het script uit te voeren. Als de juiste computer dezelfde computer is waarop u het script hebt gedownload, kunt u door gaan naar de download sectie. Klik vanaf de download locatie (meestal de map *down loads* ) met de rechter muisknop op het uitvoer bare bestand of script en voer dit uit met beheerders referenties. Wanneer u hierom wordt gevraagd, typt u het wacht woord of plakt u het wacht woord uit het geheugen en drukt u op **Enter**. Zodra het geldige wacht woord is ingevoerd, maakt het script verbinding met het herstel punt.
 
-    ![Menu bestands herstel](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![Uitvoer van uitvoer bare bestanden](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
 8. Voor Linux-machines wordt een python-script gegenereerd. Eén moet het script downloaden en kopiëren naar de relevante/compatibele Linux-server. Mogelijk moet u de machtigingen wijzigen om deze uit te voeren met ```chmod +x <python file name>``` . Voer vervolgens het python-bestand uit met ```./<python file name>``` .
 

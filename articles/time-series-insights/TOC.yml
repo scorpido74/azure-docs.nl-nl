@@ -67,7 +67,9 @@
       items:
         - name: Verifiëren en autoriseren
           href: time-series-insights-authentication-and-authorization.md
-        - name: Gegevens opvragen met C#
+        - name: Query uitvoeren op gegevens met C# - Gen2
+          href: time-series-insights-update-query-data-csharp.md
+        - name: Query uitvoeren op gegevens met C# - Gen1
           href: time-series-insights-query-data-csharp.md
         - name: Referentiegegevens beheren in C#
           href: time-series-insights-manage-reference-data-csharp.md

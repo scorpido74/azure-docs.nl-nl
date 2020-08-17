@@ -148,6 +148,12 @@
         - name: Problemen oplossen
           expanded: false
           items:
+            - name: Problemen met aanmelden oplossen
+              href: container-registry-troubleshoot-login.md
+            - name: Netwerkproblemen oplossen
+              href: container-registry-troubleshoot-access.md
+            - name: Problemen met registerprestaties oplossen
+              href: container-registry-troubleshoot-performance.md
             - name: Algemene problemen detecteren
               href: container-registry-check-health.md
             - name: Veelgestelde vragen

@@ -44,6 +44,8 @@
           items:
             - name: Azure Portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure CLI
+              href: service-bus-tutorial-topics-subscriptions-cli.md
             - name: ARM-sjabloon
               href: service-bus-resource-manager-namespace-topic.md
         - name: Publiceren en abonneren op berichten
@@ -62,12 +64,8 @@
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
 - name: Zelfstudies
   items:
-    - name: Inventaris bijwerken - PowerShell
-      href: service-bus-tutorial-topics-subscriptions-powershell.md
-    - name: Inventaris bijwerken - Portal
+    - name: Inventaris bijwerken
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: Inventaris bijwerken - CLI
-      href: service-bus-tutorial-topics-subscriptions-cli.md
     - name: Reageren op gebeurtenissen via Event Grid
       href: service-bus-to-event-grid-integration-example.md
 - name: Voorbeelden

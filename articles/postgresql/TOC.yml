@@ -1,4 +1,4 @@
-- name: Documentatie voor Azure DB voor PostgreSQL
+- name: Documentatie voor Azure DB for PostgreSQL
   href: index.yml
 - name: Overzicht
   items:
@@ -163,10 +163,6 @@
               href: concepts-read-replicas.md
             - name: Logische decodering
               href: concepts-logical.md
-        - name: Schakelen tussen regio's
-          items:
-            - name: Azure Portal
-              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: Gedistribueerde gegevens
@@ -339,6 +335,10 @@
               href: howto-read-replicas-cli.md
             - name: Leesreplica's beheren in Azure PowerShell
               href: howto-read-replicas-powershell.md
+        - name: Schakelen tussen regio's
+          items:
+            - name: Azure Portal
+              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: Gebruikers maken
