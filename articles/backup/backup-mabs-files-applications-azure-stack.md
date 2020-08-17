@@ -3,12 +3,12 @@ title: Back-ups maken van bestanden in Azure Stack Vm's
 description: Gebruik Azure Backup voor het maken van back-ups en het herstellen van Azure Stack bestanden en toepassingen naar uw Azure Stack omgeving.
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b45e3a0916f46f247503ea336105646f5538246c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032762"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263126"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Back-ups maken van bestanden en toepassingen op Azure Stack
 
@@ -18,51 +18,51 @@ U kunt Azure Backup gebruiken om bestanden en toepassingen op Azure Stack te bev
 > Hoewel Azure Backup Server en System Center Data Protection Manager (DPM) vergelijkbaar zijn, wordt DPM niet ondersteund voor gebruik met Azure Stack.
 >
 
-In dit artikel wordt niet beschreven hoe u Azure Backup Server installeert in de Azure Stack omgeving. Zie het artikel Installing [Azure backup server](backup-mabs-install-azure-stack.md)om Azure Backup Server op Azure stack te installeren.
+Dit artikel heeft geen betrekking op de installatie van Azure Backup Server in de Azure Stack omgeving. Zie het artikel Installing [Azure backup server](backup-mabs-install-azure-stack.md)om Azure Backup Server op Azure stack te installeren.
 
 ## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Back-ups maken van bestanden en mappen in Azure Stack Vm's naar Azure
 
 Als u Azure Backup Server wilt configureren voor het beveiligen van bestanden in Azure Stack virtuele machines, opent u de Azure Backup Server-console. U gebruikt de-console om beveiligings groepen te configureren en om de gegevens op uw virtuele machines te beveiligen.
 
-1. Klik in de Azure Backup Server-console op **beveiliging** en klik op de werk balk op **Nieuw** om de wizard **nieuwe beveiligings groep maken** te openen.
+1. Selecteer in de Azure Backup Server-console de optie **beveiliging** en selecteer op de werk balk de optie **Nieuw** om de wizard **nieuwe beveiligings groep maken** te openen.
 
    ![Beveiliging configureren in Azure Backup Server-console](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
 
-    Het kan een paar seconden duren voordat de wizard wordt geopend. Zodra de wizard is geopend, klikt u op **volgende** om door te gaan naar het scherm **type beveiligings groep selecteren** .
+    Het kan een paar seconden duren voordat de wizard wordt geopend. Zodra de wizard is geopend, selecteert u **volgende** om door te gaan naar het scherm **type beveiligings groep selecteren** .
 
    ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
 
-2. Kies op het scherm **type beveiligings groep selecteren** de optie **servers** en klik op **volgende**.
+2. Kies op het scherm **type beveiligings groep selecteren** de optie **servers** en selecteer **volgende**.
 
-    ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
+    ![Type beveiligings groep selecteren](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
     Het scherm **groeps leden selecteren** wordt geopend.
 
-    ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
+    ![Groeps leden selecteren](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. Klik in het scherm **groeps leden selecteren** **+** om de lijst met subitems uit te vouwen. Voor alle items die u wilt beveiligen, schakelt u het selectie vakje in. Wanneer alle items zijn geselecteerd, klikt u op **volgende**.
+3. Selecteer in het scherm **groeps leden selecteren** **+** om de lijst met subitems uit te vouwen. Voor alle items die u wilt beveiligen, schakelt u het selectie vakje in. Als alle items zijn geselecteerd, selecteert u **volgende**.
 
-    ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
+    ![Selecteer elk item dat u wilt beveiligen](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
     Micro soft raadt aan om alle gegevens die een beveiligings beleid zullen delen, in één beveiligings groep te plaatsen. Voor volledige informatie over het plannen en implementeren van beveiligings groepen raadpleegt u het artikel over System Center DPM en [implementeert u beveiligings groepen](/system-center/dpm/create-dpm-protection-groups).
 
-4. Typ in het scherm **methode voor gegevens beveiliging selecteren** een naam voor de beveiligings groep. Schakel het selectie vakje in **die ik op kortetermijnbeveiliging wil gebruiken met:** en **Ik wil online beveiliging**. Klik op **Volgende**.
+4. Typ in het scherm **methode voor gegevens beveiliging selecteren** een naam voor de beveiligings groep. Schakel het selectie vakje in **die ik op kortetermijnbeveiliging wil gebruiken met:** en **Ik wil online beveiliging**. Selecteer **Volgende**.
 
-    ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
+    ![Methode voor gegevens beveiliging selecteren](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Als u **wilt selecteren wat ik wil online beveiliging**, moet u eerst kiezen voor **kortetermijnbeveiliging op basis van:** schijf. Azure Backup Server is niet beveiligd op tape, dus schijf is de enige keuze voor beveiliging op korte termijn.
+    Als u **wilt selecteren wat ik wil online beveiliging**, moet u eerst kiezen voor **kortetermijnbeveiliging op basis van:** schijf. Azure Backup Server beschermt niet op tape, dus de enige keuze voor beveiliging op korte termijn.
 
-5. Geef in het scherm **doel stellingen voor de korte termijn** op hoe lang de herstel punten die op schijf moeten worden bewaard en wanneer u incrementele back-ups wilt opslaan. Klik op **Volgende**.
+5. Geef in het scherm **doel stellingen voor de korte termijn** op hoe lang de herstel punten die op schijf moeten worden bewaard en wanneer u incrementele back-ups wilt opslaan. Selecteer **Volgende**.
 
     > [!IMPORTANT]
     > Bewaar op Azure Backup Server gekoppelde schijven meer dan vijf dagen **geen** back-upgegevens.
     >
 
-    ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
+    ![Doelen voor de korte termijn opgeven](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
-    In plaats van het selecteren van een interval voor incrementele back-ups, voor het uitvoeren van een snelle volledige back-up, net vóór elk gepland herstel punt, klikt u op **net vóór een herstel punt**. Als u toepassings werkbelastingen beveiligt, maakt Azure Backup Server herstel punten op basis van het schema voor de synchronisatie frequentie (mits de toepassing incrementele back-ups ondersteunt). Als de toepassing geen incrementele back-ups ondersteunt, voert Azure Backup Server een snelle volledige back-up uit.
+    In plaats van het selecteren van een interval voor incrementele back-ups, voor het uitvoeren van een snelle volledige back-up, net vóór elk gepland herstel punt, selecteert u **net vóór een herstel punt**. Als u toepassings werkbelastingen beveiligt, maakt Azure Backup Server herstel punten op basis van het schema voor de synchronisatie frequentie (mits de toepassing incrementele back-ups ondersteunt). Als de toepassing geen incrementele back-ups ondersteunt, voert Azure Backup Server een snelle volledige back-up uit.
 
-    Geef voor **bestands herstel punten**op wanneer u herstel punten wilt maken. Klik op **wijzigen** om de tijden en dagen van de week in te stellen wanneer er herstel punten worden gemaakt.
+    Geef voor **bestands herstel punten**op wanneer u herstel punten wilt maken. Selecteer **wijzigen** om de tijden en dagen van de week in te stellen wanneer er herstel punten worden gemaakt.
 
 6. Controleer in het scherm **schijf toewijzing controleren** de schijf ruimte van de opslag groep die is toegewezen aan de beveiligings groep.
 
@@ -83,19 +83,19 @@ Als u Azure Backup Server wilt configureren voor het beveiligen van bestanden in
 
 12. In **Kies online replicatie**, geeft u op hoe de eerste volledige replicatie van gegevens wordt uitgevoerd.
 
-13. Controleer uw instellingen op **samen vatting**. Wanneer u op **groep maken**klikt, vindt de initiële gegevens replicatie plaats. Wanneer de gegevens replicatie is voltooid, wordt op de pagina **status** de status van de beveiligings groep weer gegeven als **OK**. De eerste back-uptaak vindt plaats in overeenstemming met de instellingen van de beveiligings groep.
+13. Controleer uw instellingen op **samen vatting**. Wanneer u **groep maken**selecteert, vindt de initiële gegevens replicatie plaats. Wanneer de gegevens replicatie is voltooid, wordt op de pagina **status** de status van de beveiligings groep weer gegeven als **OK**. De eerste back-uptaak vindt plaats in overeenstemming met de instellingen van de beveiligings groep.
 
 ## <a name="recover-file-data"></a>Bestands gegevens herstellen
 
 Gebruik Azure Backup Server-console om gegevens op uw virtuele machine te herstellen.
 
-1. Klik in de Azure Backup Server-console op de navigatie balk op **herstel** en blader naar de gegevens die u wilt herstellen. Selecteer de gewenste gegevens in het resultatenvenster.
+1. Selecteer in de Azure Backup Server-console op de navigatie balk de optie **herstel** en blader naar de gegevens die u wilt herstellen. Selecteer de gewenste gegevens in het resultatenvenster.
 
 2. In de kalender in het gedeelte herstel punten geven de vetgedrukte datums een beschik bare herstel punten weer. Selecteer de datum die u wilt herstellen.
 
 3. Selecteer in het deel venster **herstelbaar item** het item dat u wilt herstellen.
 
-4. Klik in het deelvenster **Acties** op **Herstellen** om de wizard Herstellen te openen.
+4. Selecteer in het deel venster **acties** de optie **herstellen** om de wizard herstellen te openen.
 
 5. U kunt gegevens als volgt herstellen:
 
@@ -106,11 +106,11 @@ Gebruik Azure Backup Server-console om gegevens op uw virtuele machine te herste
 
     * Selecteer voor **herstel van bestaande versie**de optie **kopie maken**, **overs Laan**of **overschrijven**. Overschrijven is alleen beschikbaar bij het herstellen naar de oorspronkelijke locatie.
     * Voor **herstel beveiliging**kiest u **instellingen van de doel computer Toep assen** of **de beveiligings instellingen van de herstel punt versie Toep assen**.
-    * Klik voor **beperking van netwerk bandbreedte gebruik**op **wijzigen** om beperking van netwerk bandbreedte gebruik in te scha kelen.
-    * **Melding** Klik op **een E-mail verzenden wanneer het herstel is voltooid**en geef de ontvangers op die de melding ontvangen. Scheid de e-mailadressen met komma's.
-    * Nadat u de selecties hebt gemaakt, klikt u op **volgende**
+    * Selecteer voor **beperking van netwerk bandbreedte gebruik** **wijzigen** om beperking van netwerk bandbreedte gebruik in te scha kelen.
+    * **Melding** Selecteer **een e-mail bericht verzenden wanneer het herstel is voltooid**en geef de ontvangers op die de melding moeten ontvangen. Scheid de e-mailadressen met komma's.
+    * Nadat u de selecties hebt gemaakt, selecteert u **volgende**
 
-7. Controleer uw herstelinstellingen en klik op **Herstellen**.
+7. Controleer uw herstel instellingen en selecteer **herstellen**.
 
     >[!Note]
     >Terwijl de herstel taak wordt uitgevoerd, worden alle synchronisatie taken voor de geselecteerde herstel items geannuleerd.
@@ -119,14 +119,14 @@ Als u Modern Backup Storage (MBS) gebruikt, wordt de herstel bewerking door de e
 
 1. Navigeer naar de beveiligde bestanden, klik met de rechter muisknop op de bestands naam en selecteer **Eigenschappen**.
 
-2. Klik in het menu **Eigenschappen** op **vorige versies** en kies de versie die u wilt herstellen.
+2. Selecteer in het menu **Eigenschappen** **vorige versies** en kies de versie die u wilt herstellen.
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>Azure Backup Server met een kluis weer geven
 
 U kunt de volgende stappen volgen om Azure Backup Server entiteiten in de Azure Portal te bekijken:
 
 1. Open Recovery Services kluis.
-2. Klik op back-upinfrastructuur.
+2. Selecteer back-upinfrastructuur.
 3. Servers voor back-upbeheer weer geven.
 
 ## <a name="next-steps"></a>Volgende stappen

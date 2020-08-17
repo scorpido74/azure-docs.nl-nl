@@ -4,12 +4,12 @@ description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met bet
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 99982af7f16431ac5b1c2c4a0e419d647d3d2ca0
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167926"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262854"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -23,7 +23,7 @@ De meest voorkomende back-upfouten kunnen automatisch worden opgelost door de vo
 
 ### <a name="step-1-check-azure-vm-health"></a>Stap 1: de status van de Azure VM controleren
 
-- **Zorg ervoor dat de inrichtings status van de Azure-VM wordt uitgevoerd**: als de [inrichtings status](../virtual-machines/states-lifecycle.md#provisioning-states) van de VM de status **gestopt/** ongedaan maken/bijwerken heeft, wordt de back-upbewerking verstoord. Open *Azure Portal > vm > overzicht >* en controleer de status van de virtuele machine om ervoor te zorgen dat deze **wordt uitgevoerd** en voer de back-upbewerking opnieuw uit.
+- **Zorg ervoor dat de inrichtings status van de Azure-VM wordt uitgevoerd**: als de [inrichtings status](../virtual-machines/states-lifecycle.md#provisioning-states) van de VM de status **gestopt/** ongedaan maken/bijwerken heeft, wordt de back-upbewerking verstoord. Open *Azure Portal > vm > overzicht >* en controleer de status van de virtuele machine om ervoor te zorgen dat deze **wordt uitgevoerd**  en voer de back-upbewerking opnieuw uit.
 - **In behandeling zijnde besturingssysteem updates controleren of opnieuw opstarten**: Controleer of er geen besturingssysteem update in behandeling is of moet opnieuw worden opgestart op de VM.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>Stap 2: de status van de Azure VM Guest Agent-service controleren
@@ -96,7 +96,7 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 
 **Oorzaak 5: de [oplossing voor toepassings beheer blokkeert IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
-## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed: de virtuele machine heeft een mislukte inrichtings status
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed: de VM bevindt zich in een mislukte inrichtingsstatus
 
 **Fout code**: UserErrorVmProvisioningStateFailed<br>
 **Fout bericht**: de inrichtings status van de virtuele machine is mislukt<br>
@@ -105,9 +105,9 @@ Deze fout treedt op wanneer een van de uitbrei dingen de virtuele machine inrich
 
 - Als de extensie VMSnapshot de status Mislukt heeft, klikt u met de rechter muisknop op de uitbrei ding die is mislukt en verwijdert u deze. Activeer een back-up op aanvraag. Met deze actie worden de uitbrei dingen opnieuw geïnstalleerd en wordt de back-uptaak uitgevoerd.  <br>
 - Als een andere uitbrei ding een mislukte status heeft, kan deze de back-up verstoren. Zorg ervoor dat de problemen met de extensie zijn opgelost en voer de back-upbewerking opnieuw uit.
-- Als de inrichtings status van de virtuele machine een update status heeft, kan deze de back-up verstoren. Zorg ervoor dat deze in orde is en probeer de back-upbewerking opnieuw uit te voeren.
+- Als de inrichtings status van de virtuele machine een update status heeft, kan deze de back-up verstoren. Zorg ervoor dat deze in orde is en voer de back-upbewerking opnieuw uit.
 
-## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - De limiet voor de verzameling herstelpunten is bereikt
+## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached: de limiet voor de verzameling herstelpunten is bereikt
 
 **Fout code**: UserErrorRpCollectionLimitReached <br>
 **Fout bericht**: de maximale limiet voor de verzameling met herstel punten is bereikt. <br>
@@ -140,7 +140,7 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 
 **[De status van de moment opname kan niet worden opgehaald, of een moment opname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 
-## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>Bewerking voor ExtensionOperationFailedForManagedDisks-VMSnapshot-extensie is mislukt
+## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks: VMSnapshot-extensiebewerking mislukt
 
 **Fout code**: ExtensionOperationFailedForManagedDisks <br>
 **Fout bericht**: de VMSnapshot-extensie bewerking is mislukt<br>
@@ -175,36 +175,36 @@ De back-upbewerking kan mislukken bij het maken van een back-up van een virtuele
 
 De recente back-uptaak is mislukt, omdat er een bestaande back-uptaak wordt uitgevoerd. U kunt pas een nieuwe back-uptaak starten als de huidige taak is voltooid. Controleer of de back-upbewerking die momenteel wordt uitgevoerd, is voltooid voordat u een andere back-up maakt of plant. Als u de status van de back-uptaken wilt controleren, voert u de volgende stappen uit:
 
-1. Meld u aan bij de Azure Portal en klik op **alle services**. Typ Recovery Services en klik op **Recovery Services-kluizen**. De lijst met Recovery Services-kluizen wordt weergegeven.
+1. Meld u aan bij de Azure Portal en selecteer **alle services**. Typ Recovery Services en selecteer **Recovery Services kluizen**. De lijst met Recovery Services-kluizen wordt weergegeven.
 2. Selecteer in de lijst met Recovery Services-kluizen een kluis waarin de back-up is geconfigureerd.
-3. Klik in het menu van het kluis dashboard op **back-uptaken** . alle back-uptaken worden weer gegeven.
+3. Selecteer in het menu van het kluis dashboard **back-uptaken** . alle back-uptaken worden weer gegeven.
    - Als er een back-uptaak wordt uitgevoerd, wacht u totdat deze klaar is of annuleert u de back-uptaak.
-     - Als u de back-uptaak wilt annuleren, klikt u met de rechter muisknop op de back-uptaak en klikt u op **Annuleren** of [Power shell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)gebruiken.
+     - Als u de back-uptaak wilt annuleren, klikt u met de rechter muisknop op de back-uptaak en selecteert u **Annuleren** of [Power shell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)gebruiken.
    - Als u de back-up opnieuw hebt geconfigureerd in een andere kluis, controleert u of er geen back-uptaken worden uitgevoerd in de oude kluis. Als deze bestaat, annuleert u de back-uptaak.
-     - Als u de back-uptaak wilt annuleren, klikt u met de rechtermuisknop op de back-uptaak en klikt u op **Annuleren**, of gebruikt u [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)
+     - Als u de back-uptaak wilt annuleren, klikt u met de rechter muisknop op de back-uptaak en selecteert u **Annuleren** of [Power shell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) gebruiken
 4. Voer de back-upbewerking opnieuw uit.
 
 Als de geplande back-upbewerking langer duurt, conflicteert met de volgende back-upconfiguratie, raadpleegt u de [Aanbevolen procedures](backup-azure-vms-introduction.md#best-practices), [back-upprestaties](backup-azure-vms-introduction.md#backup-performance)en [Restore-overwegingen](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
-## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError-back-up is mislukt vanwege een fout. Zie voor meer informatie taak fout bericht Details
+## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError: de back-up is mislukt vanwege een fout. Zie de details in het bericht met de taakfout voor meer informatie
 
 **Fout code**: UserErrorCrpReportedUserError <br>
 **Fout bericht**: het maken van de back-up is mislukt vanwege een fout. Zie Details van het taak fout bericht voor meer informatie.
 
-Deze fout wordt gerapporteerd vanuit de IaaS-VM. Als u de hoofd oorzaak van het probleem wilt vaststellen, gaat u naar de Recovery Services kluis instellingen. Selecteer in de sectie **controle** de optie **back-uptaken** om de status te filteren en weer te geven. Klik op **fouten** om de details van het onderliggende fout bericht weer te geven. Onderneem verdere acties op basis van de aanbevelingen op de pagina met fout Details.
+Deze fout wordt gerapporteerd vanuit de IaaS-VM. Als u de hoofd oorzaak van het probleem wilt vaststellen, gaat u naar de Recovery Services kluis instellingen. Selecteer in de sectie **controle** de optie **back-uptaken** om de status te filteren en weer te geven. Selecteer **fouten** om de details van het onderliggende fout bericht te controleren. Onderneem verdere acties op basis van de aanbevelingen op de pagina met fout Details.
 
 ## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent-back-up is mislukt: deze virtuele machine is niet (actief) beveiligd door Azure Backup
 
 **Fout code**: UserErrorBcmDatasourceNotPresent <br>
 **Fout bericht**: het maken van de back-up is mislukt: deze virtuele machine wordt niet (actief) beveiligd door Azure backup.
 
-Controleer of de opgegeven virtuele machine actief is (niet de status onderbreken) die wordt beveiligd door Azure Backup. Als u dit probleem wilt verholpen, controleert u of de virtuele machine actief is en voert u de bewerking opnieuw uit.
+Controleer of de opgegeven virtuele machine actief is (niet de status PAUSE) die wordt beveiligd door Azure Backup. Als u dit probleem wilt verholpen, controleert u of de virtuele machine actief is en voert u de bewerking opnieuw uit.
 
 ## <a name="causes-and-solutions"></a>Oorzaken en oplossingen
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>De agent is geïnstalleerd op de VM, maar reageert niet (voor Windows-Vm's)
 
-#### <a name="solution"></a>Oplossing
+#### <a name="solution-for-this-error"></a>Oplossing voor deze fout
 
 De VM-agent is mogelijk beschadigd of de service is gestopt. Het opnieuw installeren van de VM-agent helpt de meest recente versie op te halen. Het helpt ook om communicatie met de service opnieuw te starten.
 
@@ -229,12 +229,12 @@ De meeste fout-en extensie-gerelateerde storingen voor Linux-Vm's worden veroorz
    > [!NOTE]
    > We *raden u ten zeerste* aan de agent alleen bij te werken via een distributie opslagplaats. Het is niet raadzaam de agent code rechtstreeks vanuit GitHub te downloaden en bij te werken. Als de meest recente agent voor uw distributie niet beschikbaar is, neemt u contact op met de distributie ondersteuning voor instructies over het installeren ervan. Als u de meest recente agent wilt controleren, gaat u naar de pagina van de [Windows Azure Linux-agent](https://github.com/Azure/WALinuxAgent/releases) in de GitHub-opslag plaats.
 
-2. Zorg ervoor dat de Azure-agent op de virtuele machine wordt uitgevoerd door de volgende opdracht uit te voeren:`ps -e`
+2. Zorg ervoor dat de Azure-agent op de virtuele machine wordt uitgevoerd door de volgende opdracht uit te voeren: `ps -e`
 
    Als het proces niet wordt uitgevoerd, start u het opnieuw met behulp van de volgende opdrachten:
 
-   - Voor Ubuntu:`service walinuxagent start`
-   - Voor andere distributies:`service waagent start`
+   - Voor Ubuntu: `service walinuxagent start`
+   - Voor andere distributies: `service waagent start`
 
 3. [Configureer de agent voor automatisch opnieuw opstarten](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Voer een nieuwe test back-up uit. Als de fout zich blijft voordoen, verzamelt u de volgende logboeken van de VM:
@@ -252,13 +252,13 @@ Als u uitgebreide logboek registratie voor waagent nodig hebt, voert u de volgen
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-agent configuratie opties zijn niet ingesteld (voor Linux-Vm's)
 
 Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Opties voor configuratie bestand **extensies. enable** moet zijn ingesteld op **y** en **inrichting.** voor het werken moet de agent worden ingesteld op **auto** .
-Zie voor een volledige lijst met opties voor het configuratie bestand van de VM-agent<https://github.com/Azure/WALinuxAgent#configuration-file-options>
+Zie voor een volledige lijst met opties voor het configuratie bestand van de VM-agent <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>De oplossing voor toepassings beheer blokkeert IaaSBcdrExtension.exe
 
 Als u [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (of een andere oplossing voor toepassings beheer) uitvoert en de regels zijn gebaseerd op een uitgever of pad, kunnen ze ervoor zorgen dat het uitvoer bare bestand van **IaaSBcdrExtension.exe** niet kan worden uitgevoerd.
 
-#### <a name="solution"></a>Oplossing
+#### <a name="solution-to-this-issue"></a>Oplossing voor dit probleem
 
 Sluit het `/var/lib` pad of het uitvoer bare **IaaSBcdrExtension.exe** uit van AppLocker (of andere software voor toepassings beheer).
 
@@ -266,7 +266,7 @@ Sluit het `/var/lib` pad of het uitvoer bare **IaaSBcdrExtension.exe** uit van A
 
 De back-up van de virtuele machine is afhankelijk van het uitgeven van een momentopname opdracht aan het onderliggende opslag account. Het maken van een back-up kan mislukken omdat deze geen toegang heeft tot het opslag account, of omdat de uitvoering van de momentopname taak is vertraagd.
 
-#### <a name="solution"></a>Oplossing
+#### <a name="solution-for-this-issue"></a>Oplossing voor dit probleem
 
 De volgende voor waarden kunnen ertoe leiden dat de momentopname taak mislukt:
 
@@ -277,14 +277,14 @@ De volgende voor waarden kunnen ertoe leiden dat de momentopname taak mislukt:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Ga naar de **optie alle resources**en selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` .
 3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
-4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en klikt u op **verwijderen**.
+4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en selecteert u **verwijderen**.
 
     ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
-### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a>Herstel punt verzameling opruimen
+### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a> Herstel punt verzameling opruimen
 
 Na het verwijderen van de vergren deling, moeten de herstel punten worden opgeruimd.
 
@@ -306,17 +306,17 @@ Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starte
 
 Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, wat niet wordt gewist vanwege de vergren deling van de resource groep:
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
-2. Klik in het menu **hub** op **alle resources**en selecteer de resource groep met de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` waar de virtuele machine zich bevindt.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2. Selecteer **alle resources**in het menu **hub** , selecteer de resource groep met de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` waar de virtuele machine zich bevindt.
 
-    ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![De resource groep selecteren](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
-3. Klik op resource groep, het deel venster **overzicht** wordt weer gegeven.
+3. Selecteer resource groep, het deel venster **overzicht** wordt weer gegeven.
 4. Selecteer de optie **verborgen typen weer geven** om alle verborgen resources weer te geven. Selecteer de herstel punt verzamelingen met de volgende indeling AzureBackupRG_ `<VMName>` _ `<number>` .
 
-    ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![De verzameling herstel punten selecteren](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
-5. Klik op **verwijderen** om de verzameling met herstel punten op te schonen.
+5. Selecteer **verwijderen** om de verzameling met herstel punten op te schonen.
 6. Voer de back-upbewerking opnieuw uit.
 
 > [!NOTE]

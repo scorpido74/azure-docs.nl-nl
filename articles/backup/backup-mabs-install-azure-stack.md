@@ -3,12 +3,12 @@ title: Azure Backup Server installeren op Azure Stack
 description: In dit artikel vindt u informatie over het gebruik van Azure Backup Server voor het beveiligen of maken van een back-up van werk belastingen in Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 634f560174413dd75bebdee6513160a3700df9a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5b6ae97f30bf704e5bc495cc8020e8bcb0e30ce3
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513894"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263058"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server installeren op Azure Stack
 
@@ -111,8 +111,8 @@ Met de optie voor opslag replicatie van Recovery Services kluis kunt u kiezen tu
 
 De instelling voor opslagreplicatie bewerken:
 
-1. Selecteer uw kluis om het dash board kluis en het menu instellingen te openen. Als het menu **instellingen** niet wordt geopend, klikt u op **alle instellingen** in het kluis dashboard.
-2. Klik in het menu **instellingen** op back-upconfiguratie **Backup-infra structuur**  >  **Backup Configuration** om het menu **back-upconfiguratie** te openen. Kies in het menu **back-upconfiguratie** de optie voor opslag replicatie voor uw kluis.
+1. Selecteer uw kluis om het dash board kluis en het menu instellingen te openen. Als het menu **instellingen** niet wordt geopend, selecteert u **alle instellingen** in het kluis dashboard.
+2. Selecteer in het menu **instellingen** de optie back-up van **infra structuur**backup  >  **configureren** om het menu **back-up configuratie** te openen. Kies in het menu **back-upconfiguratie** de optie voor opslag replicatie voor uw kluis.
 
     ![Lijst met back-upkluizen](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -133,9 +133,9 @@ Er zijn twee manieren om het Azure Backup Server-installatie programma te downlo
 
 4. Selecteer uw kluis in de lijst met Recovery Services kluizen om het dash board ervan te openen.
 
-    ![Typ Recovery Services in het dialoog venster alle services](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
+    ![Selecteer uw kluis om het dash board te openen](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
 
-5. Klik in het menu aan de kluis aan de slag op **back-up** om de wizard aan de slag te openen.
+5. Selecteer in het menu aan de slag de optie **back-up** om de wizard aan de slag te openen.
 
     ![Back-up aan de slag](./media/backup-mabs-install-azure-stack/getting-started-backup.png)
 
@@ -143,25 +143,25 @@ Er zijn twee manieren om het Azure Backup Server-installatie programma te downlo
 
     ![Back-up-doel stellingen-standaard-geopend](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
-6. Selecteer in het menu back-up in het menu **waar wordt uw werk belasting uitgevoerd** de optie **on-premises**. Selecteer in de vervolg keuzelijst **waarover wilt u een back-up maken?** de workloads die u wilt beveiligen met Azure backup server. Als u niet zeker weet welke workloads u wilt selecteren, kiest u **Hyper-V virtual machines** en klikt u vervolgens op **infra structuur voorbereiden**.
+6. Selecteer in het menu back-up in het menu **waar wordt uw werk belasting uitgevoerd** de optie **on-premises**. Selecteer in de vervolg keuzelijst **waarover wilt u een back-up maken?** de workloads die u wilt beveiligen met Azure backup server. Als u niet zeker weet welke workloads u wilt selecteren, kiest u **Hyper-V virtual machines** en selecteert u vervolgens **infra structuur voorbereiden**.
 
     ![on-premises en workloads als doel stellingen](./media/backup-mabs-install-azure-stack/getting-started-menu-onprem-hyperv.png)
 
     Het menu **infra structuur voorbereiden** wordt geopend.
 
-7. Klik in het menu **infra structuur voorbereiden** op **downloaden** om een webpagina te openen om Azure backup server installatie bestanden te downloaden.
+7. Selecteer in het menu **infra structuur voorbereiden** de optie **downloaden** om een webpagina te openen om Azure backup server installatie bestanden te downloaden.
 
     ![Wizard aan de slag](./media/backup-mabs-install-azure-stack/prepare-infrastructure.png)
 
     De webpagina van micro soft die als host fungeert voor de Download bare bestanden voor Azure Backup Server, wordt geopend.
 
-8. Selecteer op de pagina Microsoft Azure Backup Server downloaden een taal en klik op **downloaden**.
+8. Kies op de pagina Microsoft Azure Backup Server downloaden een taal en selecteer **downloaden**.
 
     ![Download centrum wordt geopend](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. Het installatie programma van Azure Backup Server bestaat uit acht bestanden: een installatie programma en zeven. bin-bestanden. Controleer de **Bestands naam** om alle vereiste bestanden te selecteren en klik op **volgende**. Down load alle bestanden naar dezelfde map.
+9. Het installatie programma van Azure Backup Server bestaat uit acht bestanden: een installatie programma en zeven. bin-bestanden. Controleer de **Bestands naam** om alle vereiste bestanden te selecteren en selecteer **volgende**. Down load alle bestanden naar dezelfde map.
 
-    ![Down load Center 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
+    ![Download centrum, geselecteerde bestanden](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
     De download grootte van alle installatie bestanden is groter dan 3 GB. Bij een download koppeling van 10 Mbps kan het downloaden van alle installatie bestanden tot 60 minuten duren. De bestanden worden gedownload naar de opgegeven Download locatie.
 
@@ -169,141 +169,141 @@ Er zijn twee manieren om het Azure Backup Server-installatie programma te downlo
 
 Nadat u alle bestanden naar uw Azure Stack virtuele machine hebt gedownload, gaat u naar de download locatie. De eerste fase van de installatie van Azure Backup Server bestaat uit het extra heren van de bestanden.
 
-![Down load Center 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
+![MABS-installatie programma downloaden](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. Als u de installatie wilt starten, klikt u in de lijst met gedownloade bestanden op **MicrosoftAzureBackupserverInstaller.exe**.
+1. Als u de installatie wilt starten, selecteert u **MicrosoftAzureBackupserverInstaller.exe**in de lijst met gedownloade bestanden.
 
     > [!WARNING]
     > Er is ten minste 4 GB beschik bare ruimte nodig om de Setup-bestanden uit te pakken.
     >
 
-2. Klik in de wizard Azure Backup Server op **volgende** om door te gaan.
+2. Selecteer in de wizard Azure Backup Server **volgende** om door te gaan.
 
     ![Wizard Microsoft Azure Backup-installatie](./media/backup-mabs-install-azure-stack/mabs-install-wiz-1.png)
 
-3. Kies het pad voor de Azure Backup Server bestanden en klik op **volgende**.
+3. Kies het pad voor de Azure Backup Server bestanden en selecteer **volgende**.
 
-   ![Wizard Microsoft Azure Backup-installatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
+   ![Doel selecteren voor bestanden](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. Controleer de uitpak locatie en klik op **extra heren**.
+4. Controleer de uitpak locatie en selecteer **extract**.
 
-   ![Wizard Microsoft Azure Backup-installatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
+   ![Extractie locatie controleren](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
 5. De wizard pakt de bestanden uit en leest het installatie proces.
 
-   ![Wizard Microsoft Azure Backup-installatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
+   ![Wizard bestanden ophalen](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. Zodra het uitpak proces is voltooid, klikt u op **volt ooien**. **setup.exe** is standaard ingeschakeld. Wanneer u op **volt ooien**klikt, installeert Setup.exe Microsoft Azure backup-server op de opgegeven locatie.
+6. Zodra het uitpak proces is voltooid, selecteert u **volt ooien**. **setup.exe** is standaard ingeschakeld. Wanneer u **volt ooien**selecteert, installeert Setup.exe Microsoft Azure backup-server op de opgegeven locatie.
 
-   ![Wizard Microsoft Azure Backup-installatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
+   ![Setup extraheert Microsoft Azure Backup Server bestanden](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
 ## <a name="install-the-software-package"></a>Het software pakket installeren
 
-In de vorige stap klikt u op **volt ooien** om de uitpak fase af te sluiten en start u de wizard Azure backup server Setup.
+In de vorige stap selecteert u **volt ooien** om de extractie fase af te sluiten en start u de wizard Azure backup server Setup.
 
-![Wizard Microsoft Azure Backup-installatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
+![De wizard Microsoft Azure Backup Setup wordt gestart](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Azure Backup Server deelt code met Data Protection Manager. Verwijzingen naar Data Protection Manager en DPM vindt u in het installatie programma van Azure Backup Server. Hoewel Azure Backup Server en Data Protection Manager afzonderlijke producten zijn, zijn deze producten nauw verwant.
+Azure Backup Server deelt code met Data Protection Manager. U ziet verwijzingen naar Data Protection Manager en DPM in het Azure Backup Server installatie programma. Hoewel Azure Backup Server en Data Protection Manager afzonderlijke producten zijn, zijn deze producten nauw verwant.
 
-1. Klik op **Microsoft Azure backup server**om de installatie wizard te starten.
+1. Selecteer **Microsoft Azure backup server**om de installatie wizard te starten.
 
-   ![Wizard Microsoft Azure Backup-installatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
+   ![Microsoft Azure Backup Server selecteren](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
 
-2. Klik in het scherm **Welkom** op **Volgende**.
+2. Selecteer **volgende**in het **welkomst** scherm.
 
-    ![Azure Backup Server-welkom en vereisten controleren](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
+    ![Azure Backup Server-Welkom](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
 
-3. Klik op het scherm **vereisten controles** op **controleren** om te bepalen of aan de hardware-en software vereisten voor Azure backup server is voldaan.
+3. Selecteer op het scherm **vereisten controles** **controleren** om te bepalen of aan de hardware-en software vereisten voor Azure backup server is voldaan.
 
-    ![Azure Backup Server-welkom en vereisten controleren](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
+    ![Azure Backup Server-vereisten controleren](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    Als uw omgeving voldoet aan de vereisten, wordt er een bericht weer gegeven waarin staat dat de computer aan de eisen voldoet. Klik op **Volgende**.  
+    Als uw omgeving aan de vereisten voldoet, wordt er een bericht weer gegeven waarin staat dat de computer aan de eisen voldoet. Selecteer **Volgende**.  
 
     ![Controle van vereisten voor Azure Backup Server](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
-    Als uw omgeving niet voldoet aan de vereiste vereisten, worden de problemen opgegeven. De vereisten die niet worden voldaan, worden ook vermeld in het DpmSetup. log. Los de fouten van de vereisten op en voer de **controle opnieuw**uit. De installatie kan pas worden voortgezet als aan alle vereisten wordt voldaan.
+    Als uw omgeving niet voldoet aan de vereiste vereisten, worden de problemen opgegeven. De vereisten waaraan niet is voldaan, worden ook vermeld in het DpmSetup. log. Los de fouten van de vereisten op en voer de **controle opnieuw**uit. De installatie kan niet worden voortgezet totdat aan alle vereisten wordt voldaan.
 
     ![Azure Backup Server niet voldaan aan de vereisten voor installatie](./media/backup-mabs-install-azure-stack/installation-errors.png)
 
-4. Microsoft Azure Backup-Server vereist SQL Server. Het Azure Backup Server-installatie pakket wordt geleverd met de juiste SQL Server binaire bestanden. Als u uw eigen SQL-installatie wilt gebruiken, kunt u. Met de aanbevolen optie kan het installatie programma echter een nieuw exemplaar van SQL Server toevoegen. Klik op **controleren en installeren**om ervoor te zorgen dat uw keuze werkt met uw omgeving.
+4. Microsoft Azure Backup-Server vereist SQL Server. Het Azure Backup Server-installatie pakket wordt geleverd met de juiste SQL Server binaire bestanden. Als u uw eigen SQL-installatie wilt gebruiken, kunt u. Met de aanbevolen optie kan het installatie programma echter een nieuw exemplaar van SQL Server toevoegen. Selecteer **controleren en installeren**om ervoor te zorgen dat uw keuze werkt in combi natie met uw omgeving.
 
    > [!NOTE]
    > Azure Backup Server werkt niet met een extern SQL Server exemplaar. Het exemplaar dat door Azure Backup Server wordt gebruikt, moet lokaal zijn.
    >
 
-    ![Azure Backup Server-welkom en vereisten controleren](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
+    ![Azure Backup Server-SQL-instellingen](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
 
-    Nadat u hebt gecontroleerd of de virtuele machine de benodigde vereisten heeft om Azure Backup Server te installeren, klikt u op **volgende**.
+    Nadat u hebt gecontroleerd of de virtuele machine de benodigde vereisten heeft om Azure Backup Server te installeren, selecteert u **volgende**.
 
-    ![Azure Backup Server-welkom en vereisten controleren](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
+    ![Azure Backup Server-vereisten voldaan](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
 
-    Als er een fout optreedt met een aanbeveling om de computer opnieuw op te starten, start u de computer opnieuw op. Nadat de computer opnieuw is opgestart, start u het installatie programma opnieuw en klikt u op **opnieuw controleren**wanneer u het scherm **SQL-instellingen** weer gegeven.
+    Als er een fout optreedt met een aanbeveling om de computer opnieuw op te starten, start u de computer opnieuw op. Nadat u de computer opnieuw hebt opgestart, start u het installatie programma opnieuw en selecteert u **opnieuw controleren**wanneer u het scherm **SQL-instellingen** weer gegeven.
 
-5. Geef in de **installatie-instellingen**een locatie op voor de installatie van Microsoft Azure backup server-bestanden en klik op **volgende**.
+5. Geef in de **installatie-instellingen**een locatie op voor de installatie van Microsoft Azure backup server-bestanden en selecteer **volgende**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
+    ![Locatie opgeven voor installatie van bestanden](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
     De Scratch locatie is vereist voor het maken van een back-up naar Azure. Zorg ervoor dat de grootte van de Scratch locatie gelijk is aan ten minste 5% van de gegevens die zijn gepland om een back-up te maken naar Azure. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie voor meer informatie over opslag groepen voorbereiden van [gegevens opslag](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 
-6. Geef in het scherm **beveiligings instellingen** een sterk wacht woord op voor beperkte lokale gebruikers accounts en klik op **volgende**.
+6. Geef in het scherm **beveiligings instellingen** een sterk wacht woord op voor beperkte lokale gebruikers accounts en selecteer **volgende**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
+    ![Scherm beveiligings instellingen](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
 
-7. Selecteer op het scherm **opt-In Microsoft Update** of u *Microsoft Update* wilt gebruiken om te controleren of er updates zijn en klik op **volgende**.
+7. Selecteer op het scherm **opt-In Microsoft Update** of u *Microsoft Update* wilt gebruiken om te controleren of er updates zijn en selecteer **volgende**.
 
    > [!NOTE]
    > U kunt het beste Windows Update omleiden naar Microsoft Update, waarmee beveiligings-en belang rijke updates voor Windows en andere producten zoals Microsoft Azure Backup Server worden geboden.
    >
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Aanmeldings scherm Microsoft Update](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
-8. Bekijk het *overzicht van instellingen* en klik op **installeren**.
+8. Bekijk het *samen vatting van instellingen* en selecteer **installeren**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
+    ![Samen vatting van instellingen](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
 
     Wanneer de installatie van Azure Backup Server is voltooid, wordt het installatie programma van Microsoft Azure Recovery Services agent direct gestart.
 
-9. Het installatie programma van Microsoft Azure Recovery Services agent wordt geopend en controleert op Internet connectiviteit. Als er verbinding met internet beschikbaar is, gaat u verder met de installatie. Als er geen verbinding is, geeft u proxy gegevens op om verbinding te maken met internet. Klik op **volgende**nadat u de proxy instellingen hebt opgegeven.
+9. Het installatie programma van Microsoft Azure Recovery Services agent wordt geopend en controleert op Internet connectiviteit. Als Internet connectiviteit beschikbaar is, gaat u door met de installatie. Als er geen verbinding is, geeft u proxy gegevens op om verbinding te maken met internet. Wanneer u de proxy-instellingen hebt opgegeven, selecteert u **volgende**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
+    ![Proxyconfiguratie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
 
-10. Klik op **installeren**om de Microsoft Azure Recovery Services-agent te installeren.
+10. Als u de Microsoft Azure Recovery Services-agent wilt installeren, selecteert u **installeren**.
 
-    ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
+    ![Agentinstallatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
 
-    De Microsoft Azure Recovery Services-agent, ook wel de Azure Backup-Agent genoemd, configureert de Azure Backup Server voor de Recovery Services kluis. Zodra de gegevens zijn geconfigureerd, worden er door Azure Backup Server altijd back-ups gemaakt van de Recovery Services kluis.
+    De Microsoft Azure Recovery Services-agent, ook wel de Azure Backup-Agent genoemd, configureert de Azure Backup Server voor de Recovery Services kluis. Als Azure Backup Server eenmaal is geconfigureerd, wordt er altijd een back-up van gegevens gemaakt op dezelfde Recovery Services kluis.
 
-11. Zodra de Microsoft Azure Recovery Services-agent is geïnstalleerd, klikt u op **volgende** om de volgende fase te starten: Azure backup server registreren bij de Recovery Services kluis.
+11. Zodra de Microsoft Azure Recovery Services-agent is geïnstalleerd, selecteert u **volgende** om de volgende fase te starten: Azure backup server registreren bij de Recovery Services kluis.
 
-    ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
+    ![De agent installatie is voltooid](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
 
     Het installatie programma start de **wizard Server registreren**.
 
-12. Schakel over naar uw Azure-abonnement en uw Recovery Services kluis. Klik in het menu **infra structuur voorbereiden** op **downloaden** om de kluis referenties te downloaden. Als de knop **downloaden** in stap 2 niet actief is, selecteert u **al gedownload of gebruikt u de nieuwste Azure backup server-installatie** om de knop te activeren. De kluis referenties worden gedownload naar de locatie waar u down loads opslaat. Let op deze locatie, want u hebt deze nodig voor de volgende stap.
+12. Schakel over naar uw Azure-abonnement en uw Recovery Services kluis. Selecteer in het menu **infra structuur voorbereiden** de optie **downloaden** om de kluis referenties te downloaden. Als de knop **downloaden** in stap 2 niet actief is, selecteert u **al gedownload of gebruikt u de nieuwste Azure backup server-installatie** om de knop te activeren. De kluis referenties worden gedownload naar de locatie waar u down loads opslaat. Let op deze locatie, want u hebt deze nodig voor de volgende stap.
 
-    ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/download-mars-credentials-17.png)
+    ![Kluisreferenties downloaden](./media/backup-mabs-install-azure-stack/download-mars-credentials-17.png)
 
-13. Klik in het menu **kluis identificatie** op **bladeren** om de Recovery Services kluis referenties te vinden.
+13. Selecteer in het menu **kluis identificatie** de optie **bladeren** om de Recovery Services kluis referenties te vinden.
 
-    ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
+    ![Menu kluis identificatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
 
-    Ga in het dialoog venster **kluis referenties selecteren** naar de download locatie, selecteer uw kluis referenties en klik op **openen**.
+    Ga in het dialoog venster **kluis referenties selecteren** naar de download locatie, selecteer uw kluis referenties en selecteer **openen**.
 
-    Het pad naar de referenties wordt weer gegeven in het menu kluis identificatie. Klik op **volgende** om door te gaan naar de versleutelings instelling.
+    Het pad naar de referenties wordt weer gegeven in het menu kluis identificatie. Selecteer **volgende** om door te gaan naar de **versleutelings instellingen**.
 
-14. Geef in het dialoog venster **versleutelings instelling** een wachtwoordzin op voor de versleuteling van de back-up en een locatie voor het opslaan van de wachtwoordzin en klik op **volgende**.
+14. Geef in het dialoog venster **versleutelings instelling** een wachtwoordzin op voor de versleuteling van de back-up en een locatie voor het opslaan van de wachtwoordzin en selecteer **volgende**.
 
-    ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
+    ![Versleutelings instellingen](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
 
     U kunt uw eigen wachtwoordzin opgeven, of de wachtwoordzin gebruiken om er een te maken. De wachtwoordzin is u en micro soft slaat deze wachtwoordzin niet op of beheert deze. Sla uw wachtwoordzin op een toegankelijke locatie op om u voor te bereiden op een nood geval.
 
-    Nadat u op **volgende**hebt geklikt, wordt de Azure backup server geregistreerd bij de Recovery Services kluis. Het installatie programma gaat door met het installeren van SQL Server en de Azure Backup Server.
+    Zodra u **volgende**selecteert, wordt de Azure backup server geregistreerd bij de Recovery Services kluis. Het installatie programma gaat door met het installeren van SQL Server en de Azure Backup Server.
 
-    ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-still-installing-20.png)
+    ![Setup installeert SQL en Azure Backup Server](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-still-installing-20.png)
 
-15. Wanneer het installatie programma is voltooid, ziet u in de status dat alle software is geïnstalleerd.
+15. Wanneer het installatie programma is voltooid, ziet u in de **status** dat alle software is geïnstalleerd.
 
-    ![Azure Backup Server PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-done-22.png)
+    ![De software is geïnstalleerd](./media/backup-mabs-install-azure-stack/mabs-install-wizard-done-22.png)
 
     Wanneer de installatie is voltooid, worden de Azure Backup Server-console en de Azure Backup Server Power shell-pictogrammen op het bureau blad van de server gemaakt.
 
@@ -318,7 +318,7 @@ De eerste back-upkopie wordt opgeslagen op de opslag die is gekoppeld aan de Azu
 
 ## <a name="network-connectivity"></a>Netwerkconnectiviteit
 
-Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, gebruikt u de ```Get-DPMCloudConnection``` cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
+Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, gebruikt u de ```Get-DPMCloudConnection``` cmdlet in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet waar is, bestaat de verbinding, anders is er geen verbinding.
 
 Op hetzelfde moment moet het Azure-abonnement de status in orde hebben. Als u de status van uw abonnement wilt weten en wilt beheren, meldt u zich aan bij de [Portal voor abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 

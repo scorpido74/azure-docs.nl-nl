@@ -4,12 +4,12 @@ description: In dit artikel worden populaire algemene vragen over Azure Site Rec
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083732"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263376"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -121,7 +121,7 @@ U kunt overschakelen op de beheerde identiteit van de Recovery Services-kluis do
 
 - Op Resource Manager gebaseerde opslag accounts (standaard type):
   - [Inzender](../role-based-access-control/built-in-roles.md#contributor)
-  - [Inzender voor Storage BLOB-gegevens](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+  - [Inzender voor Storage Blob-gegevens](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Op Resource Manager gebaseerde opslag accounts (Premium-type):
   - [Inzender](../role-based-access-control/built-in-roles.md#contributor)
   - [Eigenaar van gegevens van opslag-BLOB](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
@@ -247,6 +247,75 @@ Ja. Azure Site Recovery voor Linux-besturings systeem ondersteunt aangepaste scr
 
 >[!Note]
 >De versie van de Site Recovery-agent moet 9,24 of hoger zijn om aangepaste scripts te kunnen ondersteunen.
+
+## <a name="replication-policy"></a>Beleid voor replicatie
+
+### <a name="what-is-a-replication-policy"></a>Wat is een replicatie beleid?
+
+Een replicatie beleid definieert de instellingen voor de Bewaar geschiedenis van herstel punten. Het beleid definieert ook de frequentie van app-consistente moment opnamen. Azure Site Recovery maakt standaard een nieuw replicatie beleid met de standaard instellingen van:
+
+- 24 uur voor de Bewaar geschiedenis van herstel punten.
+- 4 uur voor de frequentie van app-consistente moment opnamen.
+
+Meer [informatie over replicatie-instellingen](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>Wat is een crash-consistent herstel punt?
+
+Een crash consistent herstel punt heeft de gegevens op de schijf alsof u tijdens de moment opname het netsnoer van de server hebt opgehaald. Het crash-consistente herstel punt bevat geen items die zich in het geheugen bevonden toen de moment opname werd gemaakt.
+
+Vandaag kunnen de meeste toepassingen goed worden hersteld met crash-consistente moment opnamen. Een crash-consistent herstel punt is doorgaans voldoende voor geen database besturingssystemen en-toepassingen, zoals bestands servers, DHCP-servers en afdruk servers.
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Wat is de frequentie van crash-consistente herstel punten genereren?
+
+Site Recovery maakt om de vijf minuten een crash-consistent herstel punt.
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>Wat is een toepassings consistent herstel punt?
+
+Toepassings consistente herstel punten worden gemaakt op basis van toepassings consistente moment opnamen. Toepassings consistente herstel punten nemen dezelfde gegevens op als crash-consistente moment opnamen terwijl ook gegevens worden vastgelegd in het geheugen en alle trans acties die worden uitgevoerd.
+
+Vanwege hun extra inhoud zijn toepassings consistente moment opnamen het meest betrokken en nemen ze het langst mee. We raden toepassings consistente herstel punten aan voor database besturingssystemen en-toepassingen, zoals SQL Server.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Wat is de impact van toepassings consistente herstel punten op de prestaties van toepassingen?
+
+Met toepassings consistente herstel punten worden alle gegevens in het geheugen en in verwerking vastgelegd. Omdat herstel punten die gegevens vastleggen, vereisen ze Framework als Volume Shadow Copy Service in Windows om de toepassing stil te leggen. Als het vastleggen veelvuldig is, kan dit van invloed zijn op de prestaties wanneer de werk belasting al bezet is. Het is niet raadzaam om lage frequentie te gebruiken voor app-consistente herstel punten voor niet-data base-workloads. Zelfs voor de werk belasting van de data base is 1 uur voldoende.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Wat is de minimale frequentie voor het genereren van toepassings consistente herstel punten?
+
+Site Recovery kunt een toepassings consistent herstel punt maken met een minimale frequentie van 1 uur.
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>Hoe worden herstel punten gegenereerd en opgeslagen?
+
+Laten we een voor beeld van een replicatie beleid zien om te begrijpen hoe Site Recovery herstel punten genereert. Dit replicatie beleid heeft een herstel punt met een Bewaar periode van 24 uur en een app-consistente frequentie momentopname van 1 uur.
+
+Site Recovery maakt om de vijf minuten een crash-consistent herstel punt. U kunt deze frequentie niet wijzigen. Voor het afgelopen uur kunt u kiezen uit 12 crash-consistente punten en één app-consistent punt. Na verloop van tijd worden Site Recovery alle herstel punten na het laatste uur verwijderd en wordt er slechts één herstel punt per uur opgeslagen.
+
+De volgende scherm afbeelding illustreert het voor beeld. In de scherm afbeelding:
+
+- In het afgelopen uur zijn er herstel punten met een frequentie van 5 minuten.
+- Voorbij het afgelopen uur Site Recovery slechts één herstel punt behouden.
+
+   ![Lijst met gegenereerde herstel punten](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>Hoe ver terug kan ik herstellen?
+
+Het oudste herstel punt dat u kunt gebruiken, is 72 uur.
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Ik heb een replicatie beleid van 24 uur. Wat gebeurt er als een probleem verhindert dat Site Recovery meer dan 24 uur herstel punten genereert? Gaan mijn vorige herstel punten verloren?
+
+Nee, Site Recovery blijven al uw vorige herstel punten bewaard. Afhankelijk van het retentie venster voor herstel punten wordt Site Recovery het oudste punt alleen vervangen als nieuwe punten worden gegenereerd. Vanwege het probleem kunnen Site Recovery geen nieuwe herstel punten genereren. Totdat er nieuwe herstel punten zijn, blijven alle oude punten aanwezig nadat u het venster van bewaren hebt bereikt.
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Hoe kan ik het replicatie beleid wijzigen nadat de replicatie is ingeschakeld op een VM?
+
+Ga naar **site Recovery kluis**  >  **site Recovery infrastructuur**  >  **beleid voor replicatie**. Selecteer het beleid dat u wilt bewerken en sla de wijzigingen op. Elke wijziging is ook van toepassing op alle bestaande replicaties.
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Zijn alle herstel punten een volledige kopie van de virtuele machine of een differentieel exemplaar?
+
+Het eerste herstel punt dat wordt gegenereerd, heeft de volledige kopie. Eventuele opeenvolgende herstel punten bevatten Delta wijzigingen.
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Verhoogt de Bewaar periode van herstel punten de opslag kosten?
+
+Ja, als u de retentie periode van 24 uur tot 72 uur verhoogt, worden de herstel punten door Site Recovery voor een extra 48 uur opgeslagen. De toegevoegde tijd maakt kosten voor opslag. Eén herstel punt kan bijvoorbeeld Delta wijzigingen van 10 GB hebben, met een kosten per GB van $0,16 per maand. Meer kosten zijn $1,60 × 48 per maand.
+
 
 ## <a name="failover"></a>Failover
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Als ik een failover naar Azure krijg, krijg ik dan na een failover toegang tot de Azure-Vm's?

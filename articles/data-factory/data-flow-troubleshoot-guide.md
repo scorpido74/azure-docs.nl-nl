@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/16/2020
+ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829117"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263466"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problemen met gegevens stromen in Azure Data Factory oplossen
 
@@ -70,6 +70,13 @@ In dit artikel worden algemene probleemoplossings methoden voor gegevens stromen
 - **Oorzaken**: dit is een fout in de back-end-service. U kunt de bewerking opnieuw proberen en ook de foutopsporingssessie opnieuw opstarten.
 - **Aanbeveling**: als het probleem niet wordt opgelost door opnieuw op te starten, neemt u contact op met de klant ondersteuning.
 
+### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>Fout code: debug data preview zonder uitvoer gegevens bij samen voegen
+
+- **Bericht**: er zijn een groot aantal null-waarden of ontbrekende waarden die kunnen worden veroorzaakt doordat er te weinig rijen worden steek proeven. Probeer de limiet voor het aantal foutopsporingslogboeken bij te werken en de gegevens te vernieuwen.
+- **Oorzaken**: de samenvoegings voorwaarde komt niet overeen met rijen of resulteert in een groot aantal null-waarden tijdens de preview van de gegevens.
+- **Aanbeveling**: Ga naar instellingen voor fout opsporing en verhoog het aantal rijen in de limiet voor de bron rijen. Zorg ervoor dat u hebt geselecteerd en Azure IR met een groot voldoende gegevens stroom cluster om meer gegevens te verwerken.
+
+
 ## <a name="general-troubleshooting-guidance"></a>Algemene richt lijnen voor probleem oplossing
 
 1. Controleer de status van uw gegevensset-verbindingen. Ga in elke bron-en Sink-trans formatie naar de gekoppelde service voor elke gegevensset die u gebruikt en test verbindingen.
@@ -79,9 +86,9 @@ In dit artikel worden algemene probleemoplossings methoden voor gegevens stromen
 ## <a name="next-steps"></a>Volgende stappen
 
 Probeer deze bronnen voor meer informatie over probleem oplossing:
-*  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory Blog](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure-video's](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack Overflow forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)

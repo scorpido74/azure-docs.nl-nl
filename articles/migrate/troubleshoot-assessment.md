@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460980"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263024"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -28,7 +28,7 @@ Los problemen met de voorbereidings voorbereiding op als volgt:
 Niet-ondersteund opstart type | Azure biedt geen ondersteuning voor Vm's met een EFI-opstart type. U wordt aangeraden het opstart type te converteren naar BIOS voordat u een migratie uitvoert. <br/><br/>U kunt Azure Migrate server migratie gebruiken om de migratie van dergelijke Vm's te verwerken. Tijdens de migratie wordt het opstart type van de VM naar het BIOS geconverteerd.
 Voorwaardelijk ondersteund Windows-besturings systeem | Het besturings systeem heeft de eind datum van de ondersteuning door gegeven en heeft een aangepaste ondersteunings overeenkomst (CSA) nodig voor [ondersteuning in azure](https://aka.ms/WSosstatement). Overweeg om te upgraden voordat u naar Azure migreert.
 Niet-ondersteund Windows-besturings systeem | Azure ondersteunt alleen [geselecteerde versies van Windows-besturings systemen](https://aka.ms/WSosstatement). U kunt de machine upgraden voordat u naar Azure migreert.
-Voorwaardelijk goedgekeurd Linux-besturings systeem | Azure bevestigt alleen [geselecteerde Linux-besturingssysteem versies](../virtual-machines/linux/endorsed-distros.md). U kunt de machine upgraden voordat u naar Azure migreert.
+Voorwaardelijk goedgekeurd Linux-besturings systeem | Azure bevestigt alleen [geselecteerde Linux-besturingssysteem versies](../virtual-machines/linux/endorsed-distros.md). U kunt de machine upgraden voordat u naar Azure migreert. Raadpleeg ook [hier](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) voor meer informatie.
 Niet-goedgekeurd Linux-besturings systeem | De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. U kunt een upgrade uitvoeren naar een [officiële versie van Linux](../virtual-machines/linux/endorsed-distros.md) voordat u naar Azure migreert.
 Onbekend besturings systeem | Het besturings systeem van de virtuele machine is opgegeven als ' andere ' in vCenter Server. Dit gedrag blokkeert Azure Migrate van het controleren van de Azure-gereedheid van de virtuele machine. Zorg ervoor dat het besturings systeem wordt [ondersteund](https://aka.ms/azureoslist) door Azure voordat u de computer migreert.
 Niet-ondersteunde bits versie | Vm's met een 32-bits besturings systeem kunnen worden opgestart in azure, maar het wordt aanbevolen dat u een upgrade uitvoert naar 64-bits voordat u naar Azure migreert.
@@ -64,7 +64,7 @@ In het geval van VMware-en Hyper-V-Vm's, markeert server Assessment Linux-Vm's a
 - U kunt bepalen of het Linux-besturings systeem dat wordt uitgevoerd op de on-premises VM, wordt goedgekeurd in azure door [Azure Linux-ondersteuning](https://aka.ms/migrate/selfhost/azureendorseddistros)te controleren.
 -  Nadat u de geviseerde distributie hebt gecontroleerd, kunt u deze waarschuwing negeren.
 
-Dit gat kan worden opgelost door [toepassings detectie](./how-to-discover-applications.md) in te scha kelen op de virtuele VMware-machines. Server assessment maakt gebruik van het besturings systeem dat is gedetecteerd van de virtuele machine met behulp van de gast referenties. Deze besturingssysteem gegevens identificeren de juiste besturingssysteem gegevens in het geval van zowel Windows-als Linux-Vm's.
+Dit gat kan worden opgelost door [toepassings detectie](./how-to-discover-applications.md) in te scha kelen op de virtuele VMware-machines. Server-evaluatie maakt gebruik van het besturingssysteem dat is gedetecteerd op de virtuele machine met behulp van de verstrekte gastreferenties. Deze besturingssysteem gegevens identificeren de juiste besturingssysteem gegevens in het geval van zowel Windows-als Linux-Vm's.
 
 ## <a name="operating-system-version-not-available"></a>De versie van het besturings systeem is niet beschikbaar
 
@@ -74,10 +74,9 @@ Voor fysieke servers moet de informatie over de secundaire versie van het bestur
 
 Azure Migrate server-evaluatie kan Azure VM Sku's aanbevelen met meer kernen en geheugen dan de huidige on-premises toewijzing op basis van het type evaluatie:
 
-
 - De aanbeveling van de VM-SKU is afhankelijk van de evaluatie-eigenschappen.
 - Dit wordt beïnvloed door het type beoordeling dat u uitvoert in Server beoordeling: op *basis van prestaties*of *als on-premises*.
-- Voor evaluaties op basis van prestaties worden de gebruiks gegevens van de on-premises Vm's (CPU, geheugen, schijf en netwerk gebruik) beschouwd om de juiste doel-VM-SKU voor uw on-premises Vm's te bepalen. Er wordt ook een comfort factor toegevoegd bij het bepalen van effectief gebruik.
+- Voor evaluaties op basis van prestaties worden de gebruiks gegevens van de on-premises Vm's (CPU, geheugen, schijf en netwerk gebruik) beschouwd om de juiste doel-VM-SKU voor uw on-premises Vm's te bepalen. Er wordt ook een comfortfactor toegevoegd bij het bepalen van effectief gebruik.
 - Voor on-premises grootte worden de prestatie gegevens niet in overweging genomen en wordt de doel-SKU aanbevolen op basis van on-premises toewijzing.
 
 Om te laten zien hoe dit kan invloed hebben op aanbevelingen, gaan we een voor beeld doen:
@@ -88,7 +87,7 @@ We hebben een on-premises VM met vier kernen en acht GB geheugen, met een CPU-ge
 - Als de evaluatie op basis van prestaties is gebaseerd op een effectief CPU-en geheugen gebruik (50% van 4 kernen * 1,3 = 2,6 kernen en 50% van 8 GB geheugen * 1,3 = 5,3-GB geheugen), wordt de goedkoopste VM-SKU van vier kernen (dichtstbijgelegen ondersteunde kernen) en acht GB aan geheugen (dichtstbijgelegen ondersteunde geheugen grootte) aanbevolen.
 - Meer [informatie](concepts-assessment-calculation.md#types-of-assessments) over de beoordelings grootte.
 
-## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure Disk Sku's groter dan on-premises in een Azure VM-evaluatie
+## <a name="why-is-the-recommended-azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Waarom is de aanbevolen Azure Disk-Sku's groter dan on-premises in een Azure VM-evaluatie?
 
 Azure Migrate server beoordeling kan een grotere schijf aanbevelen op basis van het type evaluatie.
 - De schijf grootte in Server analyse is afhankelijk van twee evaluatie-eigenschappen: grootte criteria en opslag type.
@@ -97,14 +96,26 @@ Azure Migrate server beoordeling kan een grotere schijf aanbevelen op basis van 
 
 Als u bijvoorbeeld een on-premises schijf met 32 GB geheugen hebt, maar de geaggregeerde Lees-en schrijf-IOPS voor de schijf 800 IOPS is, raadt de server bepaling een Premium-schijf aan (vanwege de hogere IOPS-vereisten). vervolgens wordt een schijf-SKU aanbevolen die de vereiste IOPS en grootte kan ondersteunen. In dit voorbeeld komen we dan uit bij P15 (256 GB, 1100 IOPS). Hoewel de grootte die de on-premises schijf vereist, 32 GB was, raadt server evaluatie een grotere schijf aan vanwege de hoge IOPS-vereiste van de on-premises schijf.
 
-## <a name="utilized-corememory-percentage-missing"></a>Het gebruikte kern/geheugen percentage ontbreekt
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Waarom ontbreken er prestatiegegevens voor sommige/alle VM's in mijn evaluatierapport?
 
-Server Assessment rapporteert "PercentageOfCoresUtilizedMissing" of "PercentageOfMemoryUtilizedMissing" wanneer het Azure Migrate apparaat geen prestatie gegevens kan verzamelen voor de relevante on-premises Vm's.
+Voor evaluaties Op basis van prestaties staat in de export van het evaluatierapport PercentageOfCoresUtilizedMissing of PercentageOfMemoryUtilizedMissing, wanneer er geen prestatiegegevens voor de on-premises VM's kunnen worden verzameld op het Azure Migrate-apparaat. Controleer het volgende:
 
-- Dit kan gebeuren als de virtuele machines tijdens de evaluatie duur zijn uitgeschakeld. Het apparaat kan geen prestatie gegevens voor een virtuele machine verzamelen wanneer deze is uitgeschakeld.
-- Als alleen de geheugen items ontbreken en u probeert virtuele Hyper-V-machines te evalueren, controleert u of u dynamisch geheugen hebt ingeschakeld op deze virtuele machines. Er is alleen een bekend probleem voor virtuele Hyper-V-machines, waarin een Azure Migrate apparaat geen geheugen gebruiks gegevens kan verzamelen voor Vm's waarvoor geen dynamisch geheugen is ingeschakeld.
-- Als een van de prestatie meter items ontbreekt, wordt de analyse van Azure Migrate server terugvallen op de toegewezen kernen en het geheugen en wordt een bijbehorende VM-grootte aanbevolen.
+- Of de VM's zijn ingeschakeld gedurende de periode waarvoor u de evaluatie maakt
+- Als er alleen geheugenitems ontbreken en u virtuele Hyper-V-machines probeert te evalueren, controleert u of er dynamisch geheugen is ingeschakeld op deze virtuele machines. Er is momenteel een bekend probleem als gevolg waarvan het Azure Migrate-apparaat geen geheugengebruik kan verzamelen voor dergelijke VM's.
 - Als alle prestatie meter items ontbreken, controleert u of aan de toegangs vereisten voor de poort voor evaluatie is voldaan. Meer informatie over de toegangs vereisten voor de poort voor [VMware](./migrate-support-matrix-vmware.md#port-access-requirements), [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access) en [fysieke](./migrate-support-matrix-physical.md#port-access) server beoordeling.
+Opmerking: als een van de prestatiemeteritems ontbreekt, gebeurt het volgende in Azure Migrate: Server-evaluatie valt terug op de toegewezen on-premises kernen/geheugen en raadt een relevante VM-grootte aan.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Waarom is de betrouwbaarheidsclassificatie van mijn evaluatie laag?
+
+De betrouwbaarheidsclassificatie wordt berekend voor evaluaties Op basis van prestaties, op basis van het percentage [beschikbare gegevenspunten](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) dat nodig is om de evaluatie te berekenen. Hieronder ziet u de redenen waarom een evaluatie een lage betrouwbaarheidsclassificatie kan krijgen:
+
+- U hebt uw omgeving niet geprofileerd gedurende de periode waarvoor u de evaluatie maakt. Als u bijvoorbeeld een evaluatie maakt waarbij de duur van de prestaties is ingesteld op één week, moet u na het starten van de detectie minstens een week wachten voordat alle gegevenspunten zijn verzameld. Als u niet kunt wachten op de duur, wijzigt u de duur van de prestaties in een kortere periode en berekent u de evaluatie opnieuw.
+ 
+- Server-evaluatie kan de prestatiegegevens voor sommige of alle virtuele machines in de evaluatieperiode niet verzamelen. Controleer of de virtuele machines zijn ingeschakeld voor de duur van de evaluatie en of uitgaande verbindingen op poort 443 zijn toegestaan. Als dynamisch geheugen is ingeschakeld voor virtuele Hyper-VM's, ontbreken er geheugenitems, wat tot een lage betrouwbaarheidsclassificatie leidt. Bereken de evaluatie opnieuw om de meest recente wijzigingen in de betrouwbaarheidsclassificatie weer te geven. 
+
+- Er zijn enkele VM’s gemaakt nadat detectie in Server-evaluatie al was gestart. Als u bijvoorbeeld een evaluatie maakt voor de prestatiegeschiedenis van de laatste maand, maar er een week geleden enkele VM's in de omgeving zijn gemaakt. In dit geval zijn er voor de hele periode geen prestatiegegevens van de nieuwe VM’s beschikbaar, waardoor de betrouwbaarheidsclassificatie laag is.
+
+[Meer informatie](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) over betrouwbaarheidsclassificaties.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Is de licentie voor het besturings systeem opgenomen in een Azure VM-evaluatie?
 
@@ -133,10 +144,6 @@ De gereedheids categorie kan onjuist zijn gemarkeerd als ' niet gereed ' in het 
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Aantal gedetecteerde Nic's hoger dan werkelijk voor fysieke servers
 
 Dit kan gebeuren als Hyper-V-virtualisatie is ingeschakeld op de fysieke server. Op deze servers detecteert Azure Migrate momenteel zowel de fysieke als de virtuele adapters. Daarom is het nr. van gedetecteerde Nic's is hoger dan werkelijk.
-
-
-## <a name="low-confidence-rating-on-physical-server-assessments"></a>Beoordeling van lage betrouw baarheid bij fysieke server evaluaties
-De classificatie wordt toegewezen op basis van de beschik baarheid van gegevens punten die nodig zijn om de evaluatie te berekenen. In het geval van fysieke servers waarop Hyper-V-virtualisatie is ingeschakeld, is er sprake van een bekende product hiaat, omdat classificatie met lage betrouw baarheid mogelijk onjuist is toegewezen aan fysieke server evaluaties. Op deze servers detecteert Azure Migrate momenteel zowel de fysieke als de virtuele adapters. De netwerk doorvoer wordt vastgelegd op de gedetecteerde virtuele netwerk adapters, maar niet op de fysieke netwerk adapters. Als gevolg van het ontbreken van gegevens punten op de fysieke netwerk adapters, kan de betrouwbaarheids classificatie worden beïnvloed door een lage beoordeling. Dit is een product hiaat dat vooruit gaat.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Afhankelijkheids visualisatie in Azure Government
 
@@ -192,8 +199,8 @@ Azure Migrate biedt momenteel ondersteuning voor het maken van OMS-werkruimte in
 
 Verzamel logboeken voor netwerk verkeer als volgt:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Druk op F12 om Ontwikkelhulpprogramma's te starten. Als dat nodig is, schakelt u de instelling **vermeldingen wissen bij navigatie** uit.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Druk op F12 om Ontwikkelhulpprogramma's te starten. Als dat nodig is, schakelt u de instelling  **vermeldingen wissen bij navigatie** uit.
 3. Selecteer het tabblad **netwerk** en begin met het vastleggen van netwerk verkeer:
    - In Chrome selecteert u **logboek behouden**. De opname moet automatisch worden gestart. Een rode cirkel geeft aan dat verkeer wordt vastgelegd. Als de rode cirkel niet wordt weer gegeven, selecteert u de zwarte cirkel om te starten.
    - In micro soft Edge en Internet Explorer moet de opname automatisch worden gestart. Als dat niet het geval is, selecteert u de groene knop afspelen.

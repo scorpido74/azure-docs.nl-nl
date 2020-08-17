@@ -4,12 +4,12 @@ description: Een virtuele Azure-machine herstellen vanaf een herstel punt met be
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006329"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263007"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure VM-gegevens herstellen in Azure Portal
 
@@ -53,7 +53,7 @@ Als u geen machtigingen hebt, kunt u [een schijf herstellen](#restore-disks)en n
 
 1. Selecteer **Back-upitems**  >  **Azure virtual machine**in de kluis die is gekoppeld aan de virtuele machine die u wilt herstellen.
 1. Selecteer een virtuele machine. Standaard worden in het VM-dash board herstel punten van de afgelopen 30 dagen weer gegeven. U kunt herstel punten ouder dan 30 dagen weer geven of filteren om herstel punten te vinden op basis van datums, peri Oden en verschillende soorten consistentie van moment opnamen.
-1. Als u de virtuele machine wilt herstellen, klikt u op **VM herstellen**.
+1. Als u de virtuele machine wilt herstellen, selecteert u **VM herstellen**.
 
     ![Herstelpunt](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -85,7 +85,7 @@ Als een van de [Opties voor terugzetten](#restore-options)kunt u snel een virtue
 
 ## <a name="restore-disks"></a>Schijven herstellen
 
-Als een van de [Opties voor terugzetten](#restore-options)kunt u een schijf maken op basis van een herstel punt. Vervolgens kunt u met de schijf een van de volgende handelingen uitvoeren:
+Als een van de [Opties voor terugzetten](#restore-options)kunt u een schijf maken op basis van een herstel punt. Vervolgens kunt u met de schijf een van de volgende acties uitvoeren:
 
 - Gebruik de sjabloon die tijdens de herstel bewerking is gegenereerd om de instellingen aan te passen en VM-implementatie te activeren. U bewerkt de standaard sjabloon instellingen en verzendt de sjabloon voor de implementatie van de virtuele machine.
 - De [herstelde schijven koppelen](../virtual-machines/windows/attach-managed-disk-portal.md) aan een bestaande virtuele machine.
@@ -95,7 +95,7 @@ Als een van de [Opties voor terugzetten](#restore-options)kunt u een schijf make
 1. Selecteer in **resource groep**een bestaande resource groep voor de herstelde schijven of maak een nieuw item met een wereld wijd unieke naam.
 1. Geef bij **faserings locatie**het opslag account op waarnaar de vhd's moeten worden gekopieerd. [Meer informatie](#storage-accounts).
 
-    ![Herstel configuratie is voltooid](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+    ![Resource groep en Faserings locatie selecteren](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. Selecteer **herstellen** om de herstel bewerking te activeren.
 

@@ -3,12 +3,12 @@ title: De DPM-server voorbereiden op het maken van back-ups van workloads
 description: In dit artikel wordt beschreven hoe u back-ups van System Center-Data Protection Manager (DPM) kunt voorbereiden op Azure met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 9891be5eded94c64a6cc256b99510a9c0c673daf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a61112f04d3faef83a80395a7d316c63130e7758
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514166"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263262"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Voorbereiden op back-ups van workloads naar Azure met System Center DPM
 
@@ -26,8 +26,8 @@ Het artikel bevat het volgende:
 
 [System Center DPM](/system-center/dpm/dpm-overview) maakt back-ups van bestands-en toepassings gegevens. DPM communiceert als volgt met Azure Backup:
 
-- **DPM uitgevoerd op een fysieke server of op een on-premises virtuele machine** : u kunt een back-up maken van gegevens naar een back-upkluis in azure, naast schijf-en tape back-ups.
-- **DPM uitgevoerd op een virtuele machine van Azure** : van System Center 2012 R2 met update 3 of hoger, kunt u DPM implementeren op een Azure VM. U kunt een back-up maken van gegevens op Azure-schijven die zijn gekoppeld aan de virtuele machine of Azure Backup gebruiken om een back-up te maken van de gegevens in een back-upkluis.
+- **DPM uitgevoerd op een fysieke server of op een on-premises VM** : u kunt een back-up maken van gegevens naar een back-upkluis in azure, naast schijf-en tape back-ups.
+- **DPM uitgevoerd op een virtuele machine van Azure** : van System Center 2012 R2 met update 3 of hoger, kunt u DPM implementeren op een virtuele Azure-machine. U kunt een back-up maken van gegevens op Azure-schijven die zijn gekoppeld aan de virtuele machine of Azure Backup gebruiken om een back-up te maken van de gegevens in een back-upkluis.
 
 De zakelijke voor delen van het maken van back-ups van DPM-servers naar Azure zijn:
 
@@ -44,8 +44,8 @@ DPM op een Hyper-V-VM | System Center 2012 SP1 of hoger; System Center 2012 R2.
 DPM op een virtuele VMware-machine | System Center 2012 R2 met update pakket 5 of hoger.
 Onderdelen | Op de DPM-server moet Windows Power shell en .NET Framework 4,5 zijn geïnstalleerd.
 Ondersteunde apps | [Ontdek](/system-center/dpm/dpm-protection-matrix) waar DPM een back-up van kan maken.
-Ondersteunde bestandstypen | Er kan een back-up van deze bestands typen worden gemaakt met Azure Backup: versleuteld (alleen volledige back-ups); Gecomprimeerd (incrementele back-ups worden ondersteund); Sparse (incrementele back-ups worden ondersteund); Gecomprimeerd en verspreid (behandeld als sparse).
-Niet-ondersteunde bestands typen | Servers op hoofdletter gevoelige bestands systemen; vaste koppelingen (overgeslagen); reparsepunten (overgeslagen); versleuteld en gecomprimeerd (overgeslagen); versleuteld en verspreid (overgeslagen); Gecomprimeerde stroom; de stroom wordt geparseerd.
+Ondersteunde bestandstypen | U kunt een back-up van deze bestands typen maken met Azure Backup:<br> <li>Versleuteld (alleen volledige back-ups)<li> Gecomprimeerd (incrementele back-ups worden ondersteund) <li> Sparse (incrementele back-ups worden ondersteund)<li> Gecomprimeerd en verspreid (behandeld als sparse)
+Niet-ondersteunde bestands typen | <li>Servers op hoofdletter gevoelige bestands systemen<li> vaste koppelingen (overgeslagen)<li> reparsepunten (overgeslagen)<li> versleuteld en gecomprimeerd (overgeslagen)<li> versleuteld en verspreid (overgeslagen)<li> Gecomprimeerde stroom<li> stroom parseren
 Lokale opslag | Elke machine waarvan u een back-up wilt maken, moet over lokale vrije opslag beschikken die ten minste 5% van de grootte van de gegevens waarvan een back-up wordt gemaakt. Voor het maken van een back-up van 100 GB aan gegevens is bijvoorbeeld mini maal 5 GB beschik bare ruimte op de Scratch locatie vereist.
 Kluis opslag | Er is geen limiet voor de hoeveelheid gegevens waarvan u een back-up kunt maken naar een Azure Backup kluis, maar de grootte van een gegevens bron (bijvoorbeeld een virtuele machine of data base) mag niet groter zijn dan 54.400 GB.
 Azure ExpressRoute | U kunt een back-up maken van uw gegevens via Azure ExpressRoute met open bare peering (beschikbaar voor oude circuits) en micro soft-peering. Back-up via privé-peering wordt niet ondersteund.<br/><br/> **Met open bare peering**: Zorg ervoor dat u toegang hebt tot de volgende domeinen/adressen:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> Selecteer **bij micro soft-peering**de volgende services/regio's en relevante Community-waarden:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)<br/><br/>-Azure Storage (op basis van de locatie van uw Recovery Services kluis)<br/><br/>Zie [ExpressRoute Routing requirements](../expressroute/expressroute-routing.md)(Engelstalig) voor meer informatie.<br/><br/>**Opmerking**: open bare peering is afgeschaft voor nieuwe circuits.
@@ -68,7 +68,7 @@ De instelling voor opslagreplicatie bewerken:
 
 1. Open het kluis dashboard.
 
-2. Klik in **beheren**op **back-upinfrastructuur**.
+2. Selecteer in **beheren**de optie **back-upinfrastructuur**.
 
 3. Selecteer in het menu **back-upconfiguratie** een opslag optie voor de kluis.
 
@@ -91,32 +91,32 @@ Down load het kluis referentie bestand via een beveiligd kanaal van de Azure Por
 - Het is uw verantwoordelijkheid om ervoor te zorgen dat het kluis referentie bestand veilig is en niet is aangetast.
   - Als het beheer van de referenties is verbroken, kunnen de kluis referenties worden gebruikt om andere machines bij de kluis te registreren.
   - Back-upgegevens worden echter versleuteld met een wachtwoordzin die bij de klant hoort, zodat de bestaande back-upgegevens niet kunnen worden aangetast.
-- Zorg ervoor dat het bestand wordt opgeslagen op een locatie die toegankelijk is vanaf de DPM-server. Als de service is opgeslagen in een bestands share/SMB, controleert u op de toegangs machtigingen.
+- Zorg ervoor dat het bestand wordt opgeslagen op een locatie die toegankelijk is vanaf de DPM-server. Als de app wordt opgeslagen in een bestands share/SMB, controleert u op de toegangs machtigingen.
 - De kluis referenties verlopen na 48 uur. U kunt zo vaak als nodig nieuwe kluis referenties downloaden. Alleen het meest recente kluis referentie bestand kan echter worden gebruikt tijdens de registratie werk stroom.
 - De Azure Backup-service is niet op de hoogte van de persoonlijke sleutel van het certificaat en de persoonlijke sleutel is niet beschikbaar in de portal of de service.
 
 Down load het kluis referentie bestand als volgt naar een lokale computer:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Open de kluis waarin u de DPM-server wilt registreren.
-3. Klik in **instellingen**op **Eigenschappen**.
+3. Selecteer in **instellingen**de optie **Eigenschappen**.
 
     ![Het menu Kluis openen](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 
-4. Klik in **Eigenschappen**  >  **back-upreferenties**op **downloaden**. De portal genereert het kluis referentie bestand met behulp van een combi natie van de kluis naam en de huidige datum, en maakt deze beschikbaar voor downloaden.
+4. Selecteer in **Eigenschappen**  >  **back-upreferenties**de optie **downloaden**. De portal genereert het kluis referentie bestand met behulp van een combi natie van de kluis naam en de huidige datum, en maakt deze beschikbaar voor downloaden.
 
-    ![Downloaden](./media/backup-azure-dpm-introduction/vault-credentials.png)
+    ![Referenties downloaden](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
-5. Klik op **Opslaan** om de kluis referenties naar de map te downloaden of op te **slaan als** en een locatie op te geven. Het duurt Maxi maal een minuut voordat het bestand is gegenereerd.
+5. Selecteer **Opslaan** om de kluis referenties te downloaden naar de map of **Sla** het bestand op en geef een locatie op. Het duurt Maxi maal een minuut voordat het bestand is gegenereerd.
 
 ## <a name="install-the-backup-agent"></a>De back-upagent installeren
 
 Op elke machine waarvan een back-up wordt gemaakt door Azure Backup moet de back-upagent (ook wel de MARS-agent (Microsoft Azure Recovery Service) worden geïnstalleerd). Installeer de agent op de DPM-server als volgt:
 
 1. Open de kluis waarvoor u de DPM-server wilt registreren.
-2. Klik in **instellingen**op **Eigenschappen**.
+2. Selecteer in **instellingen**de optie **Eigenschappen**.
 
-    ![Het menu Kluis openen](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+    ![Kluis instellingen openen](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. Down load de Azure Backup-Agent op de pagina **Eigenschappen** .
 
     ![Downloaden](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
@@ -131,7 +131,7 @@ Op elke machine waarvan een back-up wordt gemaakt door Azure Backup moet de back
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>De DPM-server registreren in de kluis
 
-1. Klik in de DPM Administrator-console > **beheer**op **online**. Selecteer **Registreren**. De wizard Server registreren wordt geopend.
+1. Selecteer **online**in de DPM Administrator-console > **beheer**. Selecteer **Registreren**. De wizard Server registreren wordt geopend.
 2. Geef in **proxy configuratie**de proxy-instellingen op zoals vereist.
 
     ![Proxyconfiguratie](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
@@ -147,7 +147,7 @@ Op elke machine waarvan een back-up wordt gemaakt door Azure Backup moet de back
 
     - Azure Backup gebruikt deze locatie als een tijdelijk Holding gebied voor herstelde gegevens.
     - Na het volt ooien van het herstel van gegevens, worden de gegevens op dit gebied door Azure Backup opgeschoond.
-    - De locatie moet voldoende ruimte hebben voor de items die u in de regel parallel wilt herstellen.
+    - De locatie moet voldoende ruimte hebben om items te bevatten waarvan u verwacht dat deze parallel worden hersteld.
 
     ![Instelling van herstelmap](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 
@@ -163,9 +163,9 @@ Op elke machine waarvan een back-up wordt gemaakt door Azure Backup moet de back
     > U bent eigenaar van de coderings wachtwoordzin en micro soft heeft er geen zicht op.
     > Als de wachtwoordzin verloren is gegaan of is verg eten. Micro soft kan niet helpen bij het herstellen van de back-upgegevens.
 
-7. Klik op **registreren** om de DPM-server te registreren bij de kluis.
+7. Selecteer **registreren** om de DPM-server te registreren bij de kluis.
 
-Nadat de server is geregistreerd bij de kluis en u bent nu klaar om te beginnen met een back-up van Microsoft Azure. U moet de beveiligings groep in de DPM-console configureren om de werk belasting van een back-up te maken naar Azure. [Meer informatie over het](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) implementeren van beveiligings groepen.
+Nadat de server is geregistreerd in de kluis, bent u nu klaar om een back-up te maken van Microsoft Azure. U moet de beveiligings groep configureren in de DPM-console om een back-up te maken van werk belastingen naar Azure. [Meer informatie over het](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) implementeren van beveiligings groepen.
 
 ## <a name="troubleshoot-vault-credentials"></a>Problemen met kluis referenties oplossen
 
@@ -179,7 +179,7 @@ Zorg ervoor dat het kluis referentie bestand beschikbaar is op een locatie die t
 
 ### <a name="invalid-credentials-error"></a>Fout vanwege ongeldige referenties
 
-Als er een fout is met een ongeldige kluis Referentie (bijvoorbeeld ' ongeldige kluis referenties meegeleverd '), is het bestand beschadigd of heeft het niet de meest recente referenties die aan de herstel service zijn gekoppeld.
+Als er een fout is met een ongeldige kluis Referentie (bijvoorbeeld ' ongeldige kluis referenties meegeleverd '), is het bestand beschadigd of beschikt u niet over de meest recente referenties die zijn gekoppeld aan de herstel service.
 
 - Voer de bewerking opnieuw uit nadat u een nieuw kluis referentie bestand hebt gedownload van de portal.
-- Deze fout wordt doorgaans weer gegeven wanneer u op de optie **kluis referentie downloaden** klikt in de Azure Portal, twee keer snel achter elkaar. In dit geval is alleen het tweede kluis referentie bestand geldig.
+- Deze fout wordt doorgaans weer gegeven wanneer u de optie **kluis referentie downloaden** selecteert in de Azure Portal, twee keer snel achter elkaar. In dit geval is alleen het tweede kluis referentie bestand geldig.

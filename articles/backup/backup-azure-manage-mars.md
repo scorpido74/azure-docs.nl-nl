@@ -4,12 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 581141ea5ffaecf774d292f66a05da5e40c8dc54
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317345"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263296"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
@@ -29,60 +29,60 @@ Wanneer u het back-upbeleid wijzigt, kunt u nieuwe items toevoegen, bestaande it
 
 ### <a name="add-new-items-to-existing-policy"></a>Nieuwe items toevoegen aan het bestaande beleid
 
-1. Klik in **acties**op **back-up plannen**.
+1. Selecteer in **acties**de optie **back-up plannen**.
 
     ![Een back-up van de Windows Server plannen](./media/backup-configure-vault/schedule-first-backup.png)
 
-2. Selecteer in het tabblad **beleids item selecteren** **de optie back-upschema voor uw bestanden en mappen wijzigen** en klik op **volgende**.
+2. Selecteer in het tabblad **beleids item selecteren** **de optie back-upschema voor uw bestanden en mappen wijzigen** en selecteer **volgende**.
 
     ![Beleids items selecteren](./media/backup-azure-manage-mars/select-policy-items.png)
 
-3. Selecteer **wijzigingen in back-upitems of tijden** **wijzigen of stoppen** in het tabblad planning maken en klik op **volgende**.
+3. Selecteer **wijzigingen in back-upitems of tijden** **wijzigen of stoppen** in het tabblad planning maken en selecteer **volgende**.
 
     ![Back-up wijzigen of plannen](./media/backup-azure-manage-mars/modify-schedule-backup.png)
 
-4. Klik in het tabblad **items selecteren voor back-up** op **items toevoegen** om de items toe te voegen waarvan u een back-up wilt maken.
+4. Selecteer in het tabblad **items selecteren voor back-up** de optie **items toevoegen** om de items waarvan u een back-up wilt maken toe te voegen.
 
     ![Back-upitems wijzigen of plannen](./media/backup-azure-manage-mars/modify-schedule-backup-add-items.png)
 
-5. Selecteer in het venster **items selecteren** de optie vliegt of mappen die u wilt toevoegen en klik op **OK**.
+5. Selecteer in het venster **items selecteren** de optie bestanden of mappen die u wilt toevoegen en selecteer **OK**.
 
     ![De items selecteren](./media/backup-azure-manage-mars/select-item.png)
 
-6. Voer de volgende stappen uit en klik op **volt ooien** om de bewerking te volt ooien.
+6. Voer de volgende stappen uit en selecteer **volt ooien** om de bewerking te volt ooien.
 
 ### <a name="add-exclusion-rules-to-existing-policy"></a>Uitsluitings regels toevoegen aan het bestaande beleid
 
 U kunt uitsluitings regels toevoegen om bestanden en mappen over te slaan waarvan u geen back-up wilt maken. U kunt dit doen wanneer u een nieuw beleid definieert of een bestaand beleid wijzigt.
 
-1. Klik in het deel venster acties op **back-up plannen**. Ga naar **items selecteren waarvan u een back-up wilt maken** en klik op **uitsluitings instellingen**.
+1. Selecteer in het deel venster acties de optie **back-up plannen**. Ga naar **Selecteer items om een back-up te maken** en selecteer **uitsluitings instellingen**.
 
-    ![De items selecteren](./media/backup-azure-manage-mars/select-exclusion-settings.png)
+    ![Uitsluitings instellingen](./media/backup-azure-manage-mars/select-exclusion-settings.png)
 
-2. Klik in **uitsluitings instellingen**op **uitsluiting toevoegen**.
+2. Selecteer in **uitsluitings instellingen**de optie **uitsluiting toevoegen**.
 
-    ![De items selecteren](./media/backup-azure-manage-mars/add-exclusion.png)
+    ![Uitsluiting toevoegen](./media/backup-azure-manage-mars/add-exclusion.png)
 
-3. In **items selecteren**die u wilt uitsluiten, bladert u naar de bestanden en mappen en selecteert u de items die u wilt uitsluiten en klikt u op **OK**.
+3. In **items selecteren**die u wilt uitsluiten, bladert u naar de bestanden en mappen en selecteert u de items die u wilt uitsluiten en selecteert u **OK**.
 
-    ![De items selecteren](./media/backup-azure-manage-mars/select-items-exclude.png)
+    ![Selecteer de items die u wilt uitsluiten](./media/backup-azure-manage-mars/select-items-exclude.png)
 
 4. Standaard worden alle **submappen** in de geselecteerde mappen uitgesloten. U kunt dit wijzigen door **Ja** of **Nee**te selecteren. U kunt de bestands typen die moeten worden uitgesloten, bewerken en opgeven, zoals hieronder wordt weer gegeven:
 
-    ![De items selecteren](./media/backup-azure-manage-mars/subfolders-type.png)
+    ![Selecteer typen submappen](./media/backup-azure-manage-mars/subfolders-type.png)
 
-5. Voer de volgende stappen uit en klik op **volt ooien** om de bewerking te volt ooien.
+5. Voer de volgende stappen uit en selecteer **volt ooien** om de bewerking te volt ooien.
 
 ### <a name="remove-items-from-existing-policy"></a>Items uit bestaand beleid verwijderen
 
-1. Klik in het deel venster acties op **back-up plannen**. Ga naar **items selecteren waarvan u een back-up wilt maken**. Selecteer in de lijst de bestanden en mappen die u wilt verwijderen uit het back-upschema en klik op **items verwijderen**.
+1. Selecteer in het deel venster acties de optie **back-up plannen**. Ga naar **items selecteren waarvan u een back-up wilt maken**. Selecteer in de lijst de bestanden en mappen die u wilt verwijderen uit het back-upschema en selecteer **items verwijderen**.
 
-    ![De items selecteren](./media/backup-azure-manage-mars/select-items-remove.png)
+    ![Selecteer de items die u wilt verwijderen](./media/backup-azure-manage-mars/select-items-remove.png)
 
     > [!NOTE]
     > Ga voorzichtig te werk wanneer u een volume volledig uit het beleid verwijdert.  Als u het opnieuw wilt toevoegen, wordt het beschouwd als een nieuw volume. Bij de volgende geplande back-up wordt een eerste back-up (volledige back-up) in plaats van incrementele back-up uitgevoerd. Als u later tijdelijk items moet verwijderen en toevoegen, kunt u het beste **uitsluitings instellingen** gebruiken in plaats van **items verwijderen** om een incrementele back-up te garanderen in plaats van een volledige back-up.
 
-2. Voer de volgende stappen uit en klik op **volt ooien** om de bewerking te volt ooien.
+2. Voer de volgende stappen uit en selecteer **volt ooien** om de bewerking te volt ooien.
 
 ## <a name="stop-protecting-files-and-folder-backup"></a>De beveiliging van bestanden en mappen stoppen
 
@@ -102,17 +102,17 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 
 1. Open de MARS-beheer console, ga naar het **deel venster acties**en **Selecteer back-up plannen**.
 
-    ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/mars-actions.png)
-1. Selecteer op de pagina **beleids item selecteren** de optie **een back-upschema voor uw bestanden en mappen wijzigen** en klik op **volgende**.
+    ![Back-up plannen selecteren](./media/backup-azure-manage-mars/mars-actions.png)
+1. Selecteer op de pagina **beleids item selecteren** de optie **een back-upschema voor uw bestanden en mappen wijzigen** en selecteer **volgende**.
 
-    ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
+    ![Selecteer een beleids item](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema, maar behoud de opgeslagen back-ups totdat een schema opnieuw wordt geactiveerd**. Selecteer vervolgens **Volgende**.
 
-    ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. Controleer de gegevens in **geplande back-ups onderbreken**en klik op **volt ooien**.
+    ![Een geplande back-up stoppen.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
+1. Controleer de gegevens in **geplande back-ups onderbreken**en selecteer **volt ooien**.
 
-    ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. Controleer in de voortgang van het wijzigen van de **back-up**de optie back-up plannen onderbreken in geslaagd en klik op **sluiten** om te volt ooien.
+    ![Een geplande back-up onderbreken.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. Controleer in voortgang van het maken van de **back-up**de optie voor het plannen van back-ups met de status geslaagd en selecteer **sluiten** om te volt ooien.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Beveiliging stoppen en back-upgegevens verwijderen
 
@@ -123,7 +123,7 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 
 3. Selecteer **volt ooien**op de pagina **een geplande back-up stoppen** .
 
-    ![Een geplande back-up stoppen.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
+    ![Een geplande back-up stoppen en volt ooien selecteren](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. U wordt gevraagd om een beveiligings pincode (persoonlijk identificatie nummer) in te voeren, die u hand matig moet genereren. Als u dit wilt doen, meldt u zich eerst aan bij de Azure Portal.
 5. Ga naar **Recovery Services**eigenschappen van de kluis  >  **instellingen**  >  **Properties**.
 6. Onder **BEVEILIGINGS pincode**selecteert u **genereren**. Deze pincode kopiëren. De pincode is slechts vijf minuten geldig.
@@ -133,7 +133,7 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 
 8. Op de pagina **voortgang van back-up wijzigen** wordt het volgende bericht weer gegeven: *verwijderde back-upgegevens worden 14 dagen bewaard. Na die tijd worden de back-upgegevens permanent verwijderd.*  
 
-    ![Verwijder de back-upinfrastructuur.](./media/backup-azure-delete-vault/deleted-backup-data.png)
+    ![Voortgang van back-up wijzigen](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
 Nadat u de on-premises back-upitems hebt verwijderd, voert u de volgende stappen uit in de portal.
 
@@ -142,15 +142,15 @@ Nadat u de on-premises back-upitems hebt verwijderd, voert u de volgende stappen
 Als u de beveiliging hebt gestopt terwijl u de gegevens behoudt en hebt besloten om de beveiliging te hervatten, kunt u het back-upschema opnieuw inschakelen met behulp van het back-upbeleid wijzigen.
 
 1. Selecteer bij **acties** de optie **back-up plannen**.
-1. Selecteer **back-upschema opnieuw inschakelen. U kunt ook back-upitems of tijden wijzigen** en op **volgende**klikken.<br>
+1. Selecteer **back-upschema opnieuw inschakelen. U kunt ook back-upitems of tijden wijzigen** en **volgende**selecteren.<br>
 
-    ![Verwijder de back-upinfrastructuur.](./media/backup-azure-manage-mars/re-enable-policy-next.png)
-1. Klik in **items selecteren om een back-up te maken**op **volgende**.
+    ![Back-upschema opnieuw inschakelen](./media/backup-azure-manage-mars/re-enable-policy-next.png)
+1. Selecteer **volgende**in **items selecteren waarvan u een back-up wilt maken**.
 
-    ![Verwijder de back-upinfrastructuur.](./media/backup-azure-manage-mars/re-enable-next.png)
-1. In **back-upschema opgeven**geeft u het back-upschema op en klikt u op **volgende**.
-1. Geef in **Bewaar beleid selecteren**de Bewaar duur op en klik op **volgende**.
-1. Controleer ten slotte de details van het beleid in het **bevestigings** scherm en klik op **volt ooien**.
+    ![Items selecteren waarvan een back-up moet worden gemaakt](./media/backup-azure-manage-mars/re-enable-next.png)
+1. In **back-upschema opgeven**geeft u het back-upschema op en selecteert u **volgende**.
+1. Geef in **Bewaar beleid selecteren**de Bewaar duur op en selecteer **volgende**.
+1. Controleer ten slotte de details van het beleid in het **bevestigings** scherm en selecteer **volt ooien**.
 
 ## <a name="re-generate-passphrase"></a>Wachtwoordzin opnieuw genereren
 
@@ -158,15 +158,15 @@ Een wachtwoordzin wordt gebruikt voor het versleutelen en ontsleutelen van gegev
 
 1. Ga in de Mars agent-console naar het **deel venster acties**en  >  **Wijzig de eigenschappen** >. Ga vervolgens naar het **tabblad versleuteling**.<br>
 1. Selecteer selectie vakje **wachtwoordzin wijzigen** .<br>
-1. Voer een nieuwe wachtwoordzin in of klik op **wachtwoordzin genereren**.
-1. Klik op **Bladeren** om de nieuwe wachtwoordzin op te slaan.
+1. Voer een nieuwe wachtwoordzin in of selecteer **wachtwoordzin genereren**.
+1. Selecteer **Bladeren** om de nieuwe wachtwoordzin op te slaan.
 
     ![Wachtwoordzin genereren.](./media/backup-azure-manage-mars/passphrase.png)
 
-1. Klik op **OK** om de wijzigingen toe te passen.  Als de [beveiligings functie](./backup-azure-security-feature.md#enable-security-features) is ingeschakeld op de Azure portal voor de Recovery Services kluis, wordt u gevraagd om de beveiligings pincode in te voeren. Volg de stappen in dit [artikel](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)om de pincode te ontvangen.<br>
-1. Plak de beveiligings pincode uit de portal en klik op **OK** om de wijzigingen toe te passen.<br>
+1. Selecteer **OK** om wijzigingen toe te passen.  Als de [beveiligings functie](./backup-azure-security-feature.md#enable-security-features) is ingeschakeld op de Azure portal voor de Recovery Services kluis, wordt u gevraagd om de beveiligings pincode in te voeren. Volg de stappen in dit [artikel](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)om de pincode te ontvangen.<br>
+1. Plak de beveiligings pincode vanuit de portal en selecteer **OK** om de wijzigingen toe te passen.<br>
 
-    ![Wachtwoordzin genereren.](./media/backup-azure-manage-mars/passphrase2.png)
+    ![De beveiligings pincode plakken](./media/backup-azure-manage-mars/passphrase2.png)
 1. Zorg ervoor dat de wachtwoordzin veilig wordt opgeslagen op een andere locatie (anders dan de bron machine), bij voor keur in het Azure Key Vault. Houd alle wachtwoordzin bij als er een back-up van meerdere machines met de MARS-agents wordt gemaakt.
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>Back-upgegevens beheren voor niet-beschik bare computers

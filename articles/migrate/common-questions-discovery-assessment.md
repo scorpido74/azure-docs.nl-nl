@@ -3,12 +3,12 @@ title: Vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migr
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829880"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263500"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Detectie, beoordeling en afhankelijkheids analyse-Veelgestelde vragen
 
@@ -36,23 +36,34 @@ U kunt Maxi maal 10.000 VMware-Vm's, Maxi maal 5.000 virtuele Hyper-V-machines e
 - Gebruik de evaluaties van de **Azure VMware-oplossing (AVS)** als u uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) wilt controleren op migratie naar [Azure VMware-oplossing (AVS)](../azure-vmware/introduction.md) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - U kunt een algemene groep met VMware-machines alleen gebruiken om beide typen evaluaties uit te voeren. Let op: als u AVS-evaluaties in Azure Migrate voor het eerst uitvoert, is het raadzaam om een nieuwe groep VMware-machines te maken.
+ 
+
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Waarom ontbreken er prestatiegegevens voor sommige/alle VM's in mijn evaluatierapport?
+
+Voor evaluaties Op basis van prestaties staat in de export van het evaluatierapport PercentageOfCoresUtilizedMissing of PercentageOfMemoryUtilizedMissing, wanneer er geen prestatiegegevens voor de on-premises VM's kunnen worden verzameld op het Azure Migrate-apparaat. Controleer het volgende:
+
+- Of de VM's zijn ingeschakeld gedurende de periode waarvoor u de evaluatie maakt
+- Als er alleen geheugenitems ontbreken en u virtuele Hyper-V-machines probeert te evalueren, controleert u of er dynamisch geheugen is ingeschakeld op deze virtuele machines. Er is momenteel een bekend probleem als gevolg waarvan het Azure Migrate-apparaat geen geheugengebruik kan verzamelen voor dergelijke VM's.
+- Als alle prestatiemeteritems ontbreken, moet u ervoor zorgen dat uitgaande verbindingen op poort 443 (HTTPS) zijn toegestaan.
+
+Opmerking: als een van de prestatiemeteritems ontbreekt, gebeurt het volgende in Azure Migrate: Server-evaluatie valt terug op de toegewezen on-premises kernen/geheugen en raadt een relevante VM-grootte aan.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Waarom is de betrouwbaarheidsclassificatie van mijn evaluatie laag?
+
+De betrouwbaarheidsclassificatie wordt berekend voor evaluaties Op basis van prestaties, op basis van het percentage [beschikbare gegevenspunten](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) dat nodig is om de evaluatie te berekenen. Hieronder ziet u de redenen waarom een evaluatie een lage betrouwbaarheidsclassificatie kan krijgen:
+
+- U hebt uw omgeving niet geprofileerd gedurende de periode waarvoor u de evaluatie maakt. Als u bijvoorbeeld een evaluatie maakt waarbij de duur van de prestaties is ingesteld op één week, moet u na het starten van de detectie minstens een week wachten voordat alle gegevenspunten zijn verzameld. Als u niet kunt wachten op de duur, wijzigt u de duur van de prestaties in een kortere periode en berekent u de evaluatie opnieuw.
+ 
+- Server-evaluatie kan de prestatiegegevens voor sommige of alle virtuele machines in de evaluatieperiode niet verzamelen. Controleer of de virtuele machines zijn ingeschakeld voor de duur van de evaluatie en of uitgaande verbindingen op poort 443 zijn toegestaan. Als dynamisch geheugen is ingeschakeld voor virtuele Hyper-VM's, ontbreken er geheugenitems, wat tot een lage betrouwbaarheidsclassificatie leidt. Bereken de evaluatie opnieuw om de meest recente wijzigingen in de betrouwbaarheidsclassificatie weer te geven. 
+
+- Er zijn enkele VM’s gemaakt nadat detectie in Server-evaluatie al was gestart. Als u bijvoorbeeld een evaluatie maakt voor de prestatiegeschiedenis van de laatste maand, maar er een week geleden enkele VM's in de omgeving zijn gemaakt. In dit geval zijn er voor de hele periode geen prestatiegegevens van de nieuwe VM’s beschikbaar, waardoor de betrouwbaarheidsclassificatie laag is.
+
+[Meer informatie](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) over betrouwbaarheidsclassificaties.
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Ik zie sommige groepen niet bij het maken van een evaluatie van een Azure VMware-oplossing (AVS)
 
 - Een AVS-evaluatie kan worden uitgevoerd voor groepen die alleen VMware-machines hebben. Verwijder alle niet-VMware-machines uit de groep als u van plan bent om een AVS-evaluatie uit te voeren.
 - Als u AVS-evaluaties in Azure Migrate de eerste keer uitvoert, is het raadzaam om een nieuwe groep VMware-machines te maken.
-
-## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Hoe kan ik selecteert u FTT-RAID-niveau in AVS-evaluatie?
-
-De opslag-engine die in AVS wordt gebruikt, is vSAN. vSAN-opslagbeleid definieert de opslagvereisten voor virtuele machines. Deze beleidsregels garanderen het vereiste serviceniveau voor VM’s, omdat ze bepalen hoe opslag wordt toegewezen aan de VM. Dit zijn de beschikbare FTT-RAID-combinaties: 
-
-**FTT (te tolereren fouten)** | **RAID-configuratie** | **Minimumaantal vereiste hosts** | **Overwegingen voor de grootte**
---- | --- | --- | --- 
-1 | RAID-1 (spiegelen) | 3 | Een VM van 100 GB verbruikt 200 GB.
-1 | RAID-5 (verwijdering coderen) | 4 | Een VM van 100 GB verbruikt 133,33 GB
-2 | RAID-1 (spiegelen) | 5 | Een VM van 100 GB verbruikt 300 GB.
-2 | RAID-6 (verwijdering coderen) | 6 | Een VM van 100 GB verbruikt 150 GB.
-3 | RAID-1 (spiegelen) | 7 | Een VM van 100 GB verbruikt 400 GB.
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Ik zie geen enkele VM-typen in Azure Government
 
@@ -133,7 +144,7 @@ Ondersteuning | Deze optie is momenteel in Preview en is alleen beschikbaar voor
 Agent | U hoeft geen agents te installeren op computers die u wilt cross-checken. | Agents die moeten worden geïnstalleerd op elke on-premises computer die u wilt analyseren: [micro soft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)en de [dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent). 
 Vereisten | [Bekijk](concepts-dependency-visualization.md#agentless-analysis) de vereisten en implementatie behoeften. | [Bekijk](concepts-dependency-visualization.md#agent-based-analysis) de vereisten en implementatie behoeften.
 Log Analytics | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](../azure-monitor/insights/service-map.md) oplossing in [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) voor de visualisatie van afhankelijkheden. [Meer informatie](concepts-dependency-visualization.md#agent-based-analysis).
-Hoe werkt het? | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
+Hoe het werkt | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
 Gegevens | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
 Visualisatie | Afhankelijkheids toewijzing van één server kan worden weer gegeven gedurende een periode van één uur tot 30 dagen. | Afhankelijkheids toewijzing van één server.<br/><br/> De kaart kan alleen over een uur worden weer gegeven.<br/><br/> Afhankelijkheids toewijzing van een groep servers.<br/><br/> Servers in een groep toevoegen aan en verwijderen uit de kaart weergave.
 Gegevensexport | Gegevens van de afgelopen 30 dagen kunnen worden gedownload in een CSV-indeling. | Gegevens kunnen worden opgevraagd met Log Analytics.

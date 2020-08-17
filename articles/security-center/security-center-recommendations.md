@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791381"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263206"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Aanbevelingen voor beveiliging in Azure Security Center 
 In dit onderwerp wordt uitgelegd hoe u de aanbevelingen in Azure Security Center kunt bekijken en begrijpen om u te helpen uw Azure-resources te beveiligen.
@@ -31,16 +31,15 @@ In dit onderwerp wordt uitgelegd hoe u de aanbevelingen in Azure Security Center
 
 Aanbevelingen zijn acties die u kunt uitvoeren om uw resources te beveiligen.
 
-Security Center regel matig de beveiligings status van uw Azure-resources analyseren om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen over hoe u deze kunt verwijderen.
+Security Center regel matig de beveiligings status van uw Azure-resources analyseren om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen voor het oplossen van deze beveiligings problemen.
 
 Elke aanbeveling biedt u het volgende:
 
-- Een korte beschrijving van wat wordt aanbevolen.
-- De herstels tappen die u moet uitvoeren om de aanbeveling te implementeren. <!-- In some cases, Quick Fix remediation is available. -->
-- Aan welke resources moet u de aanbevolen actie uitvoeren.
-- De **impact van de beveiligde Score**, de mate waarin uw beveiligde Score meegaat als u deze aanbeveling implementeert.
+- Een korte beschrijving van het probleem.
+- De herstels tappen die u moet uitvoeren om de aanbeveling te implementeren.
+- De betrokken resources.
 
-## <a name="monitor-recommendations"></a>Aanbevelingen controleren<a name="monitor-recommendations"></a>
+## <a name="monitor-recommendations"></a>Aanbevelingen controleren <a name="monitor-recommendations"></a>
 
 Security Center analyseert de beveiligings status van uw resources om mogelijke beveiligings problemen te identificeren. De tegel **aanbevelingen** onder **overzicht** toont het totale aantal aanbevelingen dat is geïdentificeerd door Security Center.
 
@@ -48,26 +47,28 @@ Security Center analyseert de beveiligings status van uw resources om mogelijke 
 
 1. Selecteer de **tegel aanbevelingen** onder **overzicht**. De lijst met **aanbevelingen** wordt geopend.
 
-      ![Aanbevelingen bekijken](./media/security-center-recommendations/view-recommendations.png)
+1. Aanbevelingen zijn onderverdeeld in beveiligings controles.
 
-    U kunt de aanbevelingen filteren. Als u de aanbevelingen wilt filteren, selecteert u **filter** op de Blade **aanbevelingen** . De Blade **filter** wordt geopend en u selecteert de ernst en de status waarden die u wilt zien.
+      ![Aanbevelingen gegroepeerd op beveiligings beheer](./media/security-center-recommendations/view-recommendations.png)
 
-   * **Aanbevelingen**: de aanbeveling.
-   * **Effect op beveiligde Score**: een score die wordt gegenereerd door Security Center met behulp van uw beveiligings aanbevelingen en het Toep assen van geavanceerde algoritmen om te bepalen hoe belang rijk elke aanbeveling is. Zie [Secure Score Calculation](secure-score-security-controls.md#how-your-secure-score-is-calculated)(Engelstalig) voor meer informatie.
-   * **Resource**: geeft een lijst van de resources waarop deze aanbeveling van toepassing is.
-   * **Status balken**: beschrijft de ernst van de betreffende aanbeveling:
-       * **Hoog (rood)**: er bestaat een beveiligings probleem met een zinvolle bron (zoals een toepassing, een virtuele machine of een netwerk beveiligings groep) en vereist aandacht.
-       * **Gemiddeld (oranje)**: er bestaat een beveiligings probleem en er zijn niet-kritieke of extra stappen vereist om het te elimineren of om een proces te volt ooien.
-       * **Laag (blauw)**: er is een beveiligings probleem dat moet worden opgelost, maar dit vereist geen onmiddellijke aandacht. (Standaard worden er geen minimale aanbevelingen gepresenteerd, maar u kunt filteren op lage aanbevelingen als u deze wilt zien.) 
-       * **In orde (groen)**:
-       * **Niet beschikbaar (grijs)**:
+1. Vouw een besturings element uit en selecteer een specifieke aanbeveling om de pagina aanbeveling weer te geven.
 
-1. Klik op de aanbeveling om de details van elke aanbeveling weer te geven.
+    :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="Pagina aanbevelings Details." lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
-    ![Details van aanbeveling](./media/security-center-recommendations/recommendation-details.png)
+    De pagina bevat:
 
->[!NOTE] 
-> Zie [klassieke en Resource Manager-implementatie modellen](../azure-classic-rm.md) voor Azure-resources.
+    - **Ernst indicator**
+    - **Interval voor versheid**  (indien van toepassing) 
+    - **Beschrijving** : een korte beschrijving van het probleem
+    - Herstels **tappen** : een beschrijving van de hand matige stappen die nodig zijn om het beveiligings probleem op de betrokken resources op te lossen. Voor aanbevelingen met snelle oplossing kunt u **herstel logica weer geven** selecteren voordat u de voorgestelde oplossing toepast op uw resources. 
+    - **Betrokken resources** : uw resources worden in tabbladen gegroepeerd.
+        - **Goede resources** : relevante bronnen die niet van invloed zijn op of waarop u het probleem al hebt opgelost.
+        - **Slechte bronnen** : bronnen die nog steeds worden beïnvloed door het geïdentificeerde probleem.
+        - **Niet-toepasselijke resources** : resources waarvoor de aanbeveling geen definitief antwoord kan geven. Het tabblad niet van toepassing bevat ook de redenen voor elke resource. 
+
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Er zijn geen toepasselijke resources om redenen.":::
+
+
  
 ## <a name="next-steps"></a>Volgende stappen
 

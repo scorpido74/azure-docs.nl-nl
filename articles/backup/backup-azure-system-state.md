@@ -1,14 +1,14 @@
 ---
 title: Back-up van Windows-systeem status maken in azure
-description: Meer informatie over het maken van een back-up van de systeem status van Windows Server-en/of Windows-computers naar Azure.
+description: Meer informatie over het maken van een back-up van de systeem status van Windows Server-computers naar Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003732"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263041"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Back-up van Windows-systeem status maken in azure
 
@@ -24,21 +24,21 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Wanneer u een Recovery Services-kluis maakt, zorg er dan voor dat de opslagredundantie op de gewenste manier is geconfigureerd.
 
-1. Klik op de blade **Recovery Services-kluizen** op de nieuwe kluis.
+1. Selecteer in het deel venster **Recovery Services kluizen** de nieuwe kluis.
 
     ![De nieuwe kluis in de lijst met Recovery Services-kluizen selecteren](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    Wanneer u de kluis selecteert, wordt de blade **Recovery Services-kluis** smaller en worden de blade Instellingen (*met bovenaan de kluisnaam*) en de blade met kluisdetails geopend.
+    Wanneer u de kluis selecteert, wordt het deel venster **Recovery Services kluis** beperkt en het deel venster instellingen (*met de naam van de kluis bovenaan*) en het deel venster kluis Details geopend.
 
     ![De opslagconfiguratie voor nieuwe kluis bekijken](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. Schuif op de blade Instellingen van de nieuwe kluis omlaag naar het gedeelte Beheren en klik op **Back-upinfrastructuur**.
-    De blade Back-up maken van infrastructuur wordt geopend.
-3. Klik op de blade Back-up maken van infrastructuur op **Back-up maken van configuratie** om de blade **Back-up maken van configuratie** te openen.
+2. In het deel venster instellingen van de nieuwe kluis gebruikt u de verticale schuif balk om naar het gedeelte beheren te gaan en selecteert u **back-upinfrastructuur**.
+    Het deel venster back-upinfrastructuur wordt geopend.
+3. Selecteer in het deel venster back-upinfrastructuur de optie **back-up configureren** om het deel venster **back-upconfiguratie** te openen.
 
     ![De opslagconfiguratie voor nieuwe kluis instellen](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. Kies het type opslagreplicatie dat geschikt is voor uw kluis.
 
-    ![keuzes bij opslagconfiguratie](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![Opties voor opslag configuratie](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
     Uw kluis heeft standaard geografisch redundante opslag. Als Azure uw primaire eindpunt is voor back-upopslag, blijf dan **Geografisch redundant** gebruiken. Als Azure niet uw primaire eindpunt is voor back-upopslag, kiest u **Lokaal redundant**, zodat u de kosten voor Azure-opslag verlaagt. U vindt meer informatie over de opties voor [geografisch redundante](../storage/common/storage-redundancy.md) en [lokaal redundante ](../storage/common/storage-redundancy.md) opslag in dit [overzicht van opslagredundantie](../storage/common/storage-redundancy.md).
 
@@ -46,47 +46,47 @@ Nu u een kluis hebt gemaakt, configureert u deze voor het maken van een back-up 
 
 ## <a name="configure-the-vault"></a>De kluis configureren
 
-1. Klik in het gedeelte Aan de slag van de blade van de Recovery Services-kluis (voor de kluis die u zojuist hebt gemaakt) op **Back-up** en dan op de blade **Aan de slag met black-ups**. Selecteer vervolgens **Doel van de back-up**.
+1. Selecteer in het deel venster Recovery Services kluis (voor de kluis die u zojuist hebt gemaakt) de optie **back-up**in de sectie aan de slag en selecteer in het deel venster aan de slag **met back-up** de optie **back-up van doel**.
 
-    ![Open de blade back-updoelstelling](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
+    ![Back-upinstellingen openen](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-    De blade **Back-updoelstelling** wordt geopend.
+    Het deel venster doel van de **back-up** wordt geopend.
 
-    ![Open de blade back-updoelstelling](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
+    ![Deel venster back-updoel openen](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
 2. Selecteer **On-premises** in het menu **Waar wordt uw workload uitgevoerd?**.
 
-    U kiest **On-premises** omdat uw Windows Server of Windows-computer een fysieke machine is die zich niet in Azure bevindt.
+    U kiest **on-premises** omdat uw Windows-Server of Windows-computer een fysieke machine is die zich niet in azure bevindt.
 
-3. Selecteer in het menu **waarvan wilt u een back-up maken?** de optie **systeem status**en klik op **OK**.
+3. Selecteer in het menu **waarvan wilt u een back-up maken?** de optie **systeem status**en selecteer **OK**.
 
     ![Bestanden en mappen configureren](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Nadat u op OK hebt geklikt, wordt er een vinkje weergegeven naast **Back-updoelstelling** en wordt de blade **Infrastructuur voorbereiden** geopend.
+    Nadat u op OK hebt geklikt, wordt er een vinkje weer gegeven naast **back-updoel**en wordt het deel venster **infra structuur voorbereiden** geopend.
 
     ![Nu de back-updoelstelling is geconfigureerd, gaat u de infrastructuur voorbereiden](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. Klik op de blade **Infrastructuur voorbereiden** op **Agent voor Windows Server of Windows Client downloaden**.
+4. Selecteer **agent voor Windows Server of Windows-client downloaden**in het deel venster **infra structuur voorbereiden** .
 
-    ![infrastructuur voorbereiden](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
+    ![Infra structuur voorbereiden](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
-    Als u Windows Server Essential gebruikt, kiest u voor het downloaden van de agent voor Windows Server Essential. In een pop-upmenu wordt gevraagd of u MARSAgentInstaller.exe wilt uitvoeren of opslaan.
+    Als u Windows Server Essential gebruikt, kunt u ervoor kiezen om de agent voor Windows Server Essential te downloaden. In een pop-upmenu wordt gevraagd of u MARSAgentInstaller.exe wilt uitvoeren of opslaan.
 
     ![Dialoogvenster MARSAgentInstaller](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. Klik in het downloadpop-upvenster op **Opslaan**.
+5. Selecteer in het pop-upmenu downloaden de optie **Opslaan**.
 
-    Standaard wordt het bestand **MARSagentinstaller.exe** opgeslagen in de map Downloads. Wanneer het installatieprogramma is voltooid, ziet u een pop-upvenster waarin wordt gevraagd of u het installatieprogramma wilt uitvoeren of de map wilt openen.
+    Standaard wordt het bestand **MARSagentinstaller.exe** opgeslagen in de map Downloads. Wanneer het installatie programma is voltooid, wordt er een pop-upvenster weer gegeven waarin u wordt gevraagd of u het installatie programma wilt uitvoeren of de map wilt openen.
 
-    ![infrastructuur voorbereiden](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
+    ![MARS-installatie programma is voltooid](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
     U hoeft de agent nog niet te installeren. U kunt de agent installeren nadat u de kluisreferenties hebt gedownload.
 
-6. Klik op de blade **Infrastructuur voorbereiden** op **Downloaden**.
+6. Selecteer **downloaden**in het deel venster **infra structuur voorbereiden** .
 
     ![kluisreferenties downloaden](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    De kluisreferenties worden naar de map Downloads gedownload. Nadat de kluisreferenties zijn gedownload, ziet u een pop-upvenster waarin u wordt gevraagd of u de referenties wilt openen of opslaan. Klik op **Opslaan**. Als u per ongeluk klikt op **Openen**, kunt u het dialoogvenster waarmee wordt geprobeerd de kluisreferenties te openen, laten mislukken. U kunt de kluisreferenties niet openen. Ga door naar de volgende stap. De kluisreferenties bevinden zich in de map Downloads.
+    De kluis referenties worden gedownload naar de map **down loads** . Nadat de kluis referenties zijn gedownload, ziet u een pop-upvenster waarin u wordt gevraagd of u de referenties wilt openen of opslaan. Selecteer **Opslaan**. Als u per ongeluk **openen**selecteert, laat het dialoog venster dat de kluis referenties probeert te openen, mislukken. U kunt de kluis referenties niet meer openen. Ga door naar de volgende stap. De kluis referenties bevinden zich in de map **down loads** .
 
     ![kluisreferenties downloaden is voltooid](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -142,39 +142,39 @@ Gebruik de Microsoft Azure Recovery Services-agent om de eerste back-up uit te v
 
     ![De Azure Recovery Services-agent starten](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-2. Klik in de Recovery Services-agent op **Back-up plannen**.
+2. Selecteer in de Recovery Services-agent de optie **back-up plannen**.
 
     ![Een back-up van de Windows Server plannen](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
-3. Op de pagina Aan de slag van de wizard Back-up plannen klikt u op **Volgende**.
+3. Selecteer **volgende**op de pagina **aan de slag** van de wizard Back-up plannen.
 
-4. Op de pagina Items selecteren voor back-up klikt u op **Items toevoegen**.
+4. Selecteer op de pagina **items selecteren voor back-up** de optie **items toevoegen**.
 
-5. Selecteer **systeem status** en klik vervolgens op **OK**.
+5. Selecteer **systeem status** en selecteer vervolgens **OK**.
 
-6. Klik op **Volgende**.
+6. Selecteer **Volgende**.
 
 7. Selecteer de vereiste back-upfrequentie en het Bewaar beleid voor uw systeem status back-ups op de volgende pagina's.
 
-8. Lees de informatie op de pagina Bevestiging en klik vervolgens op **Voltooien**.
+8. Controleer de informatie op de pagina Bevestiging en selecteer vervolgens **volt ooien**.
 
-9. Nadat u de wizard voor het maken van een back-upschema hebt doorlopen, klikt u op **Sluiten**.
+9. Nadat de wizard het back-upschema heeft gemaakt, selecteert u **sluiten**.
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>Voor de eerste keer een back-up maken van de Windows Server-systeem status
 
 1. Zorg ervoor dat er geen updates in behandeling zijn voor Windows Server waarvoor opnieuw opstarten is vereist.
 
-2. Klik in de Recovery Services-agent op **Nu een back-up maken** om de eerste seeding via het netwerk te voltooien.
+2. Selecteer in de Recovery Services-agent **Nu back-up maken** om de eerste seeding via het netwerk te volt ooien.
 
     ![Windows Server maakt nu een back-up](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. Selecteer **systeem status** in het scherm **back-upitem selecteren** dat wordt weer gegeven en klik op **volgende**.
+3. Selecteer **systeem status** in het scherm **back-upitem selecteren** dat wordt weer gegeven en selecteer **volgende**.
 
-4. Controleer op de pagina Bevestiging de instellingen die de wizard Nu back-up maken gebruikt om een back-up te maken van de machine. Klik vervolgens op **Back-up maken**.
+4. Controleer op de pagina Bevestiging de instellingen die de wizard Nu back-up maken gebruikt om een back-up te maken van de machine. Selecteer vervolgens **back-up**.
 
-5. Klik op **Sluiten** om de wizard te sluiten. Als u de wizard sluit voordat het back-upproces is voltooid, blijft de wizard op de achtergrond aanwezig.
+5. Selecteer **sluiten** om de wizard te sluiten. Als u de wizard sluit voordat het back-upproces is voltooid, blijft de wizard op de achtergrond aanwezig.
     > [!NOTE]
-    > De MARS-agent activeert SFC/verifyonly als onderdeel van de voor controle voor elke systeem status back-up. Dit is om ervoor te zorgen dat bestanden waarvan een back-up is gemaakt als onderdeel van de systeem status, de juiste versies hebben die overeenkomen met de Windows-versie. Meer informatie over System File Checker (SFC) vindt u in [dit artikel](/windows-server/administration/windows-commands/sfc).
+    > De MARS-agent wordt geactiveerd `SFC /verifyonly` als onderdeel van de voor controle voor elke systeem status back-up. Dit is om ervoor te zorgen dat bestanden waarvan een back-up is gemaakt als onderdeel van de systeem status, de juiste versies hebben die overeenkomen met de Windows-versie. Meer informatie over System File Checker (SFC) vindt u in [dit artikel](/windows-server/administration/windows-commands/sfc).
     >
 
 Nadat de eerste back-up is voltooid, wordt de status **Taak voltooid** weergegeven in de back-upconsole.
@@ -183,7 +183,7 @@ Nadat de eerste back-up is voltooid, wordt de status **Taak voltooid** weergegev
 
 ## <a name="questions"></a>Vragen?
 
-Als u vragen hebt of als er een functie is die u graag opgenomen ziet worden, [stuur ons dan uw feedback](https://feedback.azure.com/forums/258995-azure-backup).
+Als u vragen hebt, kunt u [ons feedback sturen](https://feedback.azure.com/forums/258995-azure-backup).
 
 ## <a name="next-steps"></a>Volgende stappen
 
