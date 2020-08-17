@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8038ace4469123e50d98d9296a1aecf0107efbf2
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1609fc720474f92b3a3fa8c0631452164a7e4d0f
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262548"
+ms.locfileid: "88272023"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Aanbevelingen voor beveiliging: een referentie gids
 
@@ -181,6 +181,7 @@ Uw beveiligde Score is gebaseerd op het aantal Security Center aanbevelingen dat
 |**Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement**|Stel minder dan drie abonnements eigenaren in om de kans op schending door een verzwakte eigenaar te verminderen.<br>(Gerelateerd beleid: er moeten Maxi maal drie eigen aren worden opgegeven voor uw abonnement)|Hoog|N|Abonnement|
 |**Advanced Threat Protection moet zijn ingeschakeld voor Azure Key Vault-kluizen**|Azure Security Center omvat Azure-systeem eigen, geavanceerde beveiliging tegen bedreigingen voor Azure Key Vault, waarmee u een extra laag van beveiligings informatie kunt leveren.<br>Belang rijk: als u deze aanbeveling herstelt, worden er kosten in rekening gebracht voor het beveiligen van uw Azure-kluizen. Als u geen Azure-kluizen in dit abonnement hebt, worden er geen kosten in rekening gebracht. Als u in de toekomst Azure-kluizen maakt voor dit abonnement, worden deze automatisch beveiligd en worden de kosten op dat moment gestart.<br>(Gerelateerd beleid: [geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Azure Key Vault kluizen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047))|Hoog|**Y**|Abonnement|
 |**Diagnostische logboeken in Key Vault moeten zijn ingeschakeld**|Logboeken inschakelen en ze tot een jaar bewaren. Zo kunt u een activiteiten spoor voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast.<br>(Gerelateerd beleid: Diagnostische logboeken in Key Vault moeten worden ingeschakeld)|Laag|**Y**|Key Vault|
+|**Service-principals moeten worden gebruikt voor het beveiligen van uw abonnementen in plaats van beheer certificaten**|Met beheer certificaten kunnen gebruikers die met hen worden geverifieerd, de bijbehorende abonnementen beheren. Voor het veiliger beheren van abonnementen, het gebruik van service-principals met Resource Manager, wordt aanbevolen om de hoogoven RADIUS in het geval van inbreuk op certificaten te beperken. Ook wordt het resource beheer geautomatiseerd.|Middelgroot|Nee|Abonnement|
 ||||||
 
 

@@ -1,14 +1,14 @@
 ---
 title: Een VM toevoegen aan een lab in Azure DevTest Labs | Microsoft Docs
-description: Meer informatie over het toevoegen van een virtuele machine aan een lab in Azure DevTest Labs
+description: Meer informatie over het gebruik van de Azure Portal om een virtuele machine toe te voegen aan een lab in Azure DevTest Labs. U kunt een basis kiezen die een aangepaste installatie kopie of een formule is.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a872fdaa3d7d5b2cf5aff17ea15d07604dc287b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e6e685a52ac3658cb9b9ca37f64fc51f3ce1e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483955"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270713"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Een VM toevoegen aan een lab in Azure DevTest Labs
 Als u [uw eerste virtuele machine](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)al hebt gemaakt, hebt u waarschijnlijk een vooraf geladen [installatie kopie](devtest-lab-configure-marketplace-images.md)van de Marketplace. Als u nu de volgende Vm's wilt toevoegen aan uw Lab, kunt u ook een *basis* kiezen die een [aangepaste installatie kopie](devtest-lab-create-template.md) of een [formule](devtest-lab-manage-formulas.md)is. In deze zelf studie wordt u begeleid bij het gebruik van de Azure Portal om een virtuele machine toe te voegen aan een lab in DevTest Labs.

@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a7316bc60ea26968e30bb11ef97d63bddb33895a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235958"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271189"
 ---
 # <a name="modeling-relationships"></a>Relaties modelleren
 In dit artikel wordt het modelleer proces beschreven om u te helpen bij het ontwerpen van uw Azure Table Storage-oplossingen.
@@ -51,7 +51,7 @@ De volgende tabel bevat een overzicht van de voor-en nadelen van elk van de bena
 <td>
 <ul>
 <li>U kunt een afdelings entiteit bijwerken met één bewerking.</li>
-<li>U kunt een EGT gebruiken om de consistentie te behouden als u een vereiste hebt om een afdelings entiteit te wijzigen wanneer u een werknemers entiteit bijwerkt of invoegt of verwijdert. Als u bijvoorbeeld het aantal werk nemers per afdeling beheert.</li>
+<li>U kunt een trans actie voor entiteits groepen * (EGT) gebruiken om de consistentie te behouden als u een vereiste hebt om een afdelings entiteit te wijzigen wanneer u een werknemers entiteit bijwerkt of invoegt of verwijdert. Als u bijvoorbeeld het aantal werk nemers per afdeling beheert.</li>
 </ul>
 </td>
 <td>
@@ -92,6 +92,9 @@ De volgende tabel bevat een overzicht van de voor-en nadelen van elk van de bena
 </td>
 </tr>
 </table>
+
+* Zie [trans acties voor entiteits groepen](table-storage-design.md#entity-group-transactions) voor meer informatie.  
+
 
 Hoe u kiest tussen deze opties en welke van de voor-en nadelen het belangrijkst zijn, is afhankelijk van uw specifieke toepassings scenario's. Hoe vaak u bijvoorbeeld afdelings entiteiten wijzigt. moeten al uw werknemers query's de aanvullende informatie over de afdeling hebben. hoe dicht zijn de schaalbaarheids limieten voor uw partities of uw opslag account?  
 

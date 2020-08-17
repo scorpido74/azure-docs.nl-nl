@@ -1,17 +1,17 @@
 ---
 title: Aanvullende koppelingen over avere vFXT voor Azure
-description: Koppelingen naar aanvullende informatie over avere vFXT voor Azure
+description: Gebruik deze bronnen voor aanvullende informatie over avere vFXT voor Azure, waaronder avere-cluster documentatie en documentatie voor vFXT-beheer.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9a9f8e6d2a279871ded3dff614be99dd2901df
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153765"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271087"
 ---
 # <a name="additional-documentation"></a>Aanvullende documentatie
 

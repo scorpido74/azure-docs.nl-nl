@@ -1,7 +1,7 @@
 ---
 title: Azure NSG-stroom logboeken visualiseren-Power BI
 titleSuffix: Azure Network Watcher
-description: Op deze pagina wordt beschreven hoe u NSG-stroom logboeken visualiseren met Power BI.
+description: Informatie over het gebruik van Power BI om stroom logboeken van netwerk beveiligings groepen te visualiseren zodat u informatie kunt bekijken over IP-verkeer in azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738546"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272634"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Stroom logboeken van netwerk beveiligings groepen visualiseren met Power BI
 
@@ -109,9 +109,9 @@ We hebben in dit scenario geleerd dat met behulp van stroom logboeken voor netwe
 
 U kunt deze sjabloon gratis aanpassen aan uw behoeften. Er zijn veel verschillende manieren waarop u Power BI kunt gebruiken met stroom logboeken voor netwerk beveiligings groepen. 
 
-## <a name="notes"></a>Notities
+## <a name="notes"></a>Opmerkingen
 
-* Logboeken worden standaard opgeslagen in`https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
+* Logboeken worden standaard opgeslagen in `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 
     * Als er andere gegevens in een andere Directory aanwezig zijn, moeten de query's die worden opgehaald en verwerkt de gegevens worden gewijzigd.
 

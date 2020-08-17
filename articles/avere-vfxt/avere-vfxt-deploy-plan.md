@@ -1,17 +1,17 @@
 ---
 title: Uw avere vFXT-systeem plannen-Azure
-description: Geeft een uitleg over het plannen van voordat avere vFXT voor Azure wordt geïmplementeerd
+description: Plan een avere-vFXT voor Azure-cluster dat geschikt is voor uw behoeften. U kunt vragen stellen voordat u naar de Azure Marketplace gaat of virtuele machines maakt.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922673"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272787"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Uw Avere vFXT-systeem plannen
 

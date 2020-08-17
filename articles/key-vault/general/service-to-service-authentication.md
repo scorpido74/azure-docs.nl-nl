@@ -9,17 +9,17 @@ ms.date: 08/08/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d48e9ac71ba12ecd2eaadb8ba333f5440c68af4b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 56ada47e46d788ca77f65e354836e19f4d3969d2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034784"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272753"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Service-naar-service-verificatie voor het Azure Key Vault met behulp van .NET
 
 > [!NOTE]
-> **Micro soft. Azure. Services. AppAuthentication** wordt niet meer aanbevolen voor gebruik met een nieuwe Key Vault-SDK. Het wordt vervangen door de nieuwe Azure Identity Library **DefaultAzureCredentials** die beschikbaar is voor .net, Java, type script en Python, en moet worden gebruikt voor alle nieuwe ontwikkel aars. Meer informatie vindt u hier: [verificatie en de Azure SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/).
+> **Micro soft. Azure. Services. AppAuthentication** wordt niet meer aanbevolen voor gebruik met een nieuwe Key Vault-SDK. Het wordt vervangen door de nieuwe Azure-identiteits bibliotheek **DefaultAzureCredentials** beschikbaar voor .net, Java, type script en python en moet worden gebruikt voor alle nieuwe ontwikkel aars. Meer informatie vindt u hier: [verificatie en de Azure SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/).
 
 Als u zich wilt verifiëren bij Azure Key Vault, hebt u een Azure Active Directory (Azure AD)-referentie nodig, ofwel een gedeeld geheim of een certificaat.
 
@@ -92,7 +92,7 @@ Azure CLI gebruiken:
 
 1. Controleer de toegang door *AZ account Get-access-token--resource https: \/ /Vault.Azure.net*in te voeren. Als er een fout bericht wordt weer gegeven, controleert u of de juiste versie van Azure CLI correct is geïnstalleerd.
 
-   Als Azure CLI niet in de standaard directory is geïnstalleerd, kan er een fout melding worden weer gegeven dat `AzureServiceTokenProvider` het pad voor Azure CLI niet kan worden gevonden. Gebruik de omgevings variabele **AzureCLIPath** om de map voor de Azure cli-installatie te definiëren. `AzureServiceTokenProvider`voegt de map die is opgegeven in de omgevings variabele **AzureCLIPath** toe aan de omgevings variabele **Path** als dat nodig is.
+   Als Azure CLI niet in de standaard directory is geïnstalleerd, kan er een fout melding worden weer gegeven dat `AzureServiceTokenProvider` het pad voor Azure CLI niet kan worden gevonden. Gebruik de omgevings variabele **AzureCLIPath** om de map voor de Azure cli-installatie te definiëren. `AzureServiceTokenProvider` voegt de map die is opgegeven in de omgevings variabele **AzureCLIPath** toe aan de omgevings variabele **Path** als dat nodig is.
 
 1. Als u bent aangemeld bij Azure CLI met behulp van meerdere accounts of als uw account toegang heeft tot meerdere abonnementen, moet u het te gebruiken abonnement opgeven. Voer de opdracht *AZ account set--subscription <Subscription-id>* in.
 
@@ -190,7 +190,7 @@ Er zijn drie primaire methoden voor het gebruik van een Service-Principal om uw 
 
 1. Voer de toepassing uit.
 
-Als alles goed is ingesteld, zijn er geen verdere code wijzigingen nodig. `AzureServiceTokenProvider`maakt gebruik van de omgevings variabele en het certificaat om te verifiëren bij Azure AD.
+Als alles goed is ingesteld, zijn er geen verdere code wijzigingen nodig. `AzureServiceTokenProvider` maakt gebruik van de omgevings variabele en het certificaat om te verifiëren bij Azure AD.
 
 ### <a name="use-a-certificate-in-key-vault-to-sign-into-azure-ad"></a>Een certificaat in Key Vault gebruiken om u aan te melden bij Azure AD
 
@@ -210,7 +210,7 @@ Een client certificaat voor Service-Principal-verificatie gebruiken:
     az ad sp create-for-rbac --keyvault <keyvaultname> --cert <certificatename> --create-cert --skip-assignment
     ```
 
-    De certificaat-id is een URL in de indeling`https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
+    De certificaat-id is een URL in de indeling `https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
 
 1. Vervang `{KeyVaultCertificateSecretIdentifier}` in dit connection string door de certificaat-id:
 
@@ -237,15 +237,15 @@ Als u het proces wilt beheren, gebruikt u een connection string dat is door gege
 
 | Verbindings reeks optie | Scenario | Opmerkingen|
 |:--------------------------------|:------------------------|:----------------------------|
-| `RunAs=Developer; DeveloperTool=AzureCli` | Lokale ontwikkeling | `AzureServiceTokenProvider`maakt gebruik van AzureCli om token op te halen. |
-| `RunAs=Developer; DeveloperTool=VisualStudio` | Lokale ontwikkeling | `AzureServiceTokenProvider`maakt gebruik van Visual Studio om token op te halen. |
-| `RunAs=CurrentUser` | Lokale ontwikkeling | Niet ondersteund in .NET core. `AzureServiceTokenProvider`maakt gebruik van Azure AD Integrated-verificatie om token op te halen. |
-| `RunAs=App` | [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider`maakt gebruik van een beheerde identiteit voor het ophalen van token. |
-| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Door de gebruiker toegewezen identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider`maakt gebruik van een door de gebruiker toegewezen identiteit voor het ophalen van token. |
-| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Verificatie van aangepaste services | `KeyVaultCertificateSecretIdentifier`is de geheime id van het certificaat. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Service-principal | `AzureServiceTokenProvider`maakt gebruik van een certificaat om een token van Azure AD op te halen. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Service-principal | `AzureServiceTokenProvider`gebruikt certificaat om token op te halen van Azure AD|
-| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Service-principal |`AzureServiceTokenProvider`maakt gebruik van een geheim om token van Azure AD op te halen. |
+| `RunAs=Developer; DeveloperTool=AzureCli` | Lokale ontwikkeling | `AzureServiceTokenProvider` maakt gebruik van AzureCli om token op te halen. |
+| `RunAs=Developer; DeveloperTool=VisualStudio` | Lokale ontwikkeling | `AzureServiceTokenProvider` maakt gebruik van Visual Studio om token op te halen. |
+| `RunAs=CurrentUser` | Lokale ontwikkeling | Niet ondersteund in .NET core. `AzureServiceTokenProvider` maakt gebruik van Azure AD Integrated-verificatie om token op te halen. |
+| `RunAs=App` | [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` maakt gebruik van een beheerde identiteit voor het ophalen van token. |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Door de gebruiker toegewezen identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider` maakt gebruik van een door de gebruiker toegewezen identiteit voor het ophalen van token. |
+| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Verificatie van aangepaste services | `KeyVaultCertificateSecretIdentifier` is de geheime id van het certificaat. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Service-principal | `AzureServiceTokenProvider` maakt gebruik van een certificaat om een token van Azure AD op te halen. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Service-principal | `AzureServiceTokenProvider` gebruikt certificaat om token op te halen van Azure AD|
+| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Service-principal |`AzureServiceTokenProvider` maakt gebruik van een geheim om token van Azure AD op te halen. |
 
 ## <a name="samples"></a>Voorbeelden
 

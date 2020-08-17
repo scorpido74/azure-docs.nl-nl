@@ -3,22 +3,22 @@ title: Gebeurtenis tellers in Application Insights | Microsoft Docs
 description: Bewaak systeem-en aangepaste .NET/.NET core-EventCounters in Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 000486ecd4fddd5749e4c7cc9f9210a1f0f8666c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324400"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272362"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters-Inleiding
 
-`EventCounter`is .NET/.NET core-mechanisme voor het publiceren en gebruiken van tellers of statistieken. [Dit](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) document bevat een overzicht van `EventCounters` en voor beelden voor het publiceren en gebruiken van deze. EventCounters worden ondersteund in alle OS-platformen-Windows, Linux en macOS. Het kan worden beschouwd als een platform dat gelijkwaardig is aan de [Performance Counters](/dotnet/api/system.diagnostics.performancecounter) die alleen wordt ondersteund in Windows-systemen.
+`EventCounter` is .NET/.NET core-mechanisme voor het publiceren en gebruiken van tellers of statistieken. [Dit](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) document bevat een overzicht van `EventCounters` en voor beelden voor het publiceren en gebruiken van deze. EventCounters worden ondersteund in alle OS-platformen-Windows, Linux en macOS. Het kan worden beschouwd als een platform dat gelijkwaardig is aan de [Performance Counters](/dotnet/api/system.diagnostics.performancecounter) die alleen wordt ondersteund in Windows-systemen.
 
 Hoewel gebruikers aangepaste kunnen publiceren `EventCounters` om aan hun behoeften te voldoen, publiceert de .net Core 3,0-runtime standaard een set van deze prestatie meter items. Het document doorloopt de stappen die nodig zijn voor het verzamelen en weer geven (door het `EventCounters` systeem gedefinieerde of door de gebruiker gedefinieerde definitie) in azure-toepassing Insights.
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>EventCounters verzamelen met behulp van Application Insights
 
-Application Insights ondersteunt `EventCounters` het verzamelen met de `EventCounterCollectionModule` , die deel uitmaakt van het zojuist gepubliceerde nuget-pakket [micro soft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule`wordt automatisch ingeschakeld wanneer [AspNetCore](asp-net-core.md) of [WorkerService](worker-service.md)wordt gebruikt. `EventCounterCollectionModule`verzamelt tellers met een niet-Configureer bare verzamelings frequentie van 60 seconden. Er zijn geen speciale machtigingen vereist voor het verzamelen van EventCounters.
+Application Insights ondersteunt `EventCounters` het verzamelen met de `EventCounterCollectionModule` , die deel uitmaakt van het zojuist gepubliceerde nuget-pakket [micro soft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule` wordt automatisch ingeschakeld wanneer [AspNetCore](asp-net-core.md) of [WorkerService](worker-service.md)wordt gebruikt. `EventCounterCollectionModule` verzamelt tellers met een niet-Configureer bare verzamelings frequentie van 60 seconden. Er zijn geen speciale machtigingen vereist voor het verzamelen van EventCounters.
 
 ## <a name="default-counters-collected"></a>Verzamelde standaard items
 
@@ -45,10 +45,6 @@ Voor apps die worden uitgevoerd in .NET Core 3,0 worden de volgende prestatie me
 |`System.Runtime` | `threadpool-queue-length` |
 |`System.Runtime` | `threadpool-completed-items-count` |
 |`System.Runtime` | `active-timer-count` |
-|`Microsoft.AspNetCore.Hosting` | `requests-per-second` |
-|`Microsoft.AspNetCore.Hosting` | `total-requests` |
-|`Microsoft.AspNetCore.Hosting` | `current-requests` |
-|`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
 > Tellers van de categorie micro soft. AspNetCore. hosting worden alleen toegevoegd in ASP.NET Core toepassingen.

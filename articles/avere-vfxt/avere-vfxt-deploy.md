@@ -1,17 +1,17 @@
 ---
 title: AVERE vFXT voor Azure implementeren
-description: Stappen voor het implementeren van het avere vFXT-cluster in azure
+description: Meer informatie over het gebruik van de implementatie wizard die beschikbaar is via Azure Marketplace voor het implementeren van een cluster met avere vFXT voor Azure.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 4c42abdbfaf5c867a9d8d4cbc6b4519a86adaac0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505644"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272770"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Het vFXT-cluster implementeren
 
@@ -58,7 +58,7 @@ De eerste pagina van de implementatie sjabloon is gericht op de cluster controll
 
 ![Eerste pagina van de implementatie sjabloon](media/avere-vfxt-deploy-1.png)
 
-Vul de volgende gegevens in:
+Vul de volgende informatie in:
 
 * **Naam van de cluster controller** : Stel de naam in voor de virtuele machine van de cluster controller.
 

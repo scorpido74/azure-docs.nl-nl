@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b6984e16d1ddcee7d3f276ddcdf8c89609f14fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080725"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271019"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure Functions
 
@@ -33,7 +33,7 @@ Voor beveiligde verificatie en autorisatie is grondige inzichten van beveiliging
 
 Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](../app-service-mobile/app-service-mobile-auth.md)voor meer informatie over systeem eigen mobiele apps.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 ### <a name="on-windows"></a>In Windows
 
@@ -77,7 +77,7 @@ Normaal gesp roken moet u code schrijven om deze tokens in uw toepassing te verz
 
 De ID-tokens, toegangs tokens en vernieuwings tokens worden in de cache opgeslagen voor de geauthenticeerde sessie en ze zijn alleen toegankelijk voor de bijbehorende gebruiker.  
 
-Als u niet met tokens in uw app hoeft te werken, kunt u de token opslag uitschakelen.
+Als u niet met tokens in uw app hoeft te werken, kunt u de token opslag uitschakelen op de pagina **verificatie/autorisatie** van uw app.
 
 ### <a name="logging-and-tracing"></a>Logboek registratie en tracering
 

@@ -1,18 +1,18 @@
 ---
 title: Veelgestelde vragen-avere vFXT voor Azure
-description: Veelgestelde vragen over avere vFXT voor Azure
+description: Gebruik deze veelgestelde vragen om te bepalen of avere vFXT voor Azure aan uw behoeften voldoet. Meer informatie over hoe avere vFXT voor Azure werkt met andere Azure-onderdelen.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: 55423119e55401d5176e228eba784f2eb498bfef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196350"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272688"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Veelgestelde vragen over Avere vFXT for Azure
 
@@ -288,7 +288,7 @@ Nee, avere vFXT-clusters vereisen de service ' always on '. De clusters kunnen w
 Lees deze artikelen voor meer informatie over het plannen en implementeren van uw eigen systeem om aan de slag te gaan met avere vFXT voor Azure:
 
 * [Uw Avere vFXT-systeem plannen](avere-vfxt-deploy-plan.md)
-* [Implementatieoverzicht](avere-vfxt-deploy-overview.md)
+* [Implementatie-overzicht](avere-vfxt-deploy-overview.md)
 * [Voorbereiden op het maken van een avere vFXT-cluster](avere-vfxt-prereqs.md)
 * [Het Avere vFXT-cluster implementeren](avere-vfxt-deploy.md)
 

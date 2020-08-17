@@ -7,32 +7,32 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/29/2020
+ms.date: 08/16/2020
 ms.custom: generated
-ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 44b4134404d5af3a8dde7028ffa1b43258df7558
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448893"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271988"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde Azure-rollen
 
-[Toegangs beheer op basis van rollen (Azure RBAC) van](overview.md) Azure heeft verschillende ingebouwde rollen van Azure die u kunt toewijzen aan gebruikers, groepen, service-principals en beheerde identiteiten. Roltoewijzingen zijn de manier waarop u de toegang tot Azure-resources beheert. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen [aangepaste Azure-rollen](custom-roles.md)maken.
+[Toegangs beheer op basis van rollen (Azure RBAC) van](overview.md) Azure heeft verschillende ingebouwde rollen van Azure die u kunt toewijzen aan gebruikers, groepen, service-principals en beheerde identiteiten. Roltoewijzingen zijn de manier waarop u de toegang tot Azure-resources beheert. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen [aangepaste Azure-rollen](custom-roles.md) maken.
 
 Dit artikel bevat een overzicht van de ingebouwde rollen van Azure, die altijd in ontwikkeling zijn. Gebruik de lijst met [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) of [AZ Role definition](/cli/azure/role/definition#az-role-definition-list)om de nieuwste rollen op te halen. Als u op zoek bent naar beheerders rollen voor Azure Active Directory (Azure AD), raadpleegt u [machtigingen voor beheerdersrol in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouwde rol. Klik op de naam van de rol om de lijst met `Actions` ,, `NotActions` `DataActions` en `NotDataActions` voor elke rol weer te geven. Zie [begrippen van Azure-functies begrijpen](role-definitions.md)voor informatie over wat deze acties betekenen en hoe deze van toepassing zijn op het beheer-en gegevens abonnement.
 
-## <a name="all"></a>Alle
+## <a name="all"></a>Alles
 
 > [!div class="mx-tableFixed"]
 > | Ingebouwde rol | Beschrijving | Id |
 > | --- | --- | --- |
 > | **Algemeen** |  |  |
-> | [Inzender](#contributor) | Hiermee beheert u alles behalve het verlenen van toegang tot resources. | b24988ac-6180-42a0-ab88-20f7382dd24c |
-> | [Eigenaar](#owner) | Hiermee kunt u alles beheren, inclusief toegang tot resources. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
-> | [Lezer](#reader) | Hiermee kunt u alles weer geven, maar geen wijzigingen aanbrengen. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | [Inzender](#contributor) | Hiermee wordt volledige toegang verleend voor het beheren van alle resources, maar u kunt geen rollen toewijzen in azure RBAC. | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [Eigenaar](#owner) | Hiermee wordt volledige toegang verleend voor het beheren van alle resources, inclusief de mogelijkheid om rollen toe te wijzen in azure RBAC. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [Lezer](#reader) | Bekijk alle resources, maar u kunt geen wijzigingen aanbrengen. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [Beheerder van gebruikerstoegang](#user-access-administrator) | Hiermee beheert u de gebruikers toegang tot Azure-resources. | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Compute** |  |  |
 > | [Inzender voor klassieke virtuele machines](#classic-virtual-machine-contributor) | Hiermee beheert u klassieke virtuele machines, maar kunt u niet de toegang tot ze en niet het virtuele netwerk of opslag account waarmee ze zijn verbonden. | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
@@ -63,7 +63,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Lezer en gegevens toegang](#reader-and-data-access) | Hiermee kunt u alles weer geven, maar kunt u geen opslag account of opgenomen resource verwijderen of maken. Ook wordt lees-/schrijftoegang tot alle gegevens in een opslag account toegestaan via toegang tot de sleutel van het opslag account. | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | [Inzender voor opslagaccounts](#storage-account-contributor) | Hiermee staat u het beheer van opslag accounts toe. Biedt toegang tot de account sleutel, die kan worden gebruikt om toegang te krijgen tot gegevens via een gedeelde sleutel autorisatie. | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [Functie Service-sleutel operator van opslag account](#storage-account-key-operator-service-role) | Kan de toegangs sleutels voor het opslag account weer geven en opnieuw genereren. | 81a9662b-bebf-436f-a333-f67b29880f12 |
-> | [Inzender voor Storage BLOB-gegevens](#storage-blob-data-contributor) | Azure Storage containers en blobs lezen, schrijven en verwijderen. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | [Inzender voor Storage Blob-gegevens](#storage-blob-data-contributor) | Azure Storage containers en blobs lezen, schrijven en verwijderen. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | [Eigenaar van gegevens van opslag-BLOB](#storage-blob-data-owner) | Biedt volledige toegang tot Azure Storage BLOB-containers en-gegevens, met inbegrip van het toewijzen van POSIX-toegangs beheer. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [Gegevens lezer van BLOB voor opslag](#storage-blob-data-reader) | Azure Storage containers en blobs lezen en weer geven. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Delegering van opslag-BLOB](#storage-blob-delegator) | Een sleutel voor gebruikers overdracht ophalen, die vervolgens kan worden gebruikt om een gedeelde toegangs handtekening te maken voor een container of BLOB die is ondertekend met Azure AD-referenties. Zie [een gebruiker delegering Sa's maken](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)voor meer informatie. | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
@@ -161,7 +161,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | **DevOps** |  |  |
 > | [DevTest Labs-gebruiker](#devtest-labs-user) | Met kunt u verbinding maken met uw virtuele machines in uw Azure DevTest Labs, deze starten, opnieuw opstarten en afsluiten. | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | [Lab-Maker](#lab-creator) | Met kunt u nieuwe Labs maken onder uw Azure Lab-accounts. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
-> | **Monitor** |  |  |
+> | **Controle** |  |  |
 > | [Inzender voor Application Insights onderdelen](#application-insights-component-contributor) | Kan Application Insights onderdelen beheren | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Geeft gebruikers machtigingen voor het weer geven en downloaden van moment opnamen van fout opsporing die zijn verzameld met de Application Insights Snapshot Debugger. Houd er rekening mee dat deze machtigingen niet zijn opgenomen in de rollen [eigenaar](#owner) of [Inzender](#contributor) . Wanneer gebruikers de Application Insights Snapshot Debugger rol geven, moet u de rol rechtstreeks aan de gebruiker toekennen. De rol wordt niet herkend wanneer deze wordt toegevoegd aan een aangepaste rol. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Inzender bewaken](#monitoring-contributor) | Kan alle bewakings gegevens lezen en controle-instellingen bewerken. Zie ook aan de [slag met rollen, machtigingen en beveiliging met Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
@@ -207,7 +207,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 
 ### <a name="contributor"></a>Inzender
 
-Hiermee beheert u alles behalve het verlenen van toegang tot resources. [Meer informatie](rbac-and-directory-admin-roles.md)
+Hiermee wordt volledige toegang verleend voor het beheren van alle resources, maar u kunt geen rollen toewijzen in azure RBAC. [Meer informatie](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -229,7 +229,7 @@ Hiermee beheert u alles behalve het verlenen van toegang tot resources. [Meer in
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything except access to resources.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -256,7 +256,7 @@ Hiermee beheert u alles behalve het verlenen van toegang tot resources. [Meer in
 
 ### <a name="owner"></a>Eigenaar
 
-Hiermee kunt u alles beheren, inclusief toegang tot resources. [Meer informatie](rbac-and-directory-admin-roles.md)
+Hiermee wordt volledige toegang verleend voor het beheren van alle resources, inclusief de mogelijkheid om rollen toe te wijzen in azure RBAC. [Meer informatie](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -274,7 +274,7 @@ Hiermee kunt u alles beheren, inclusief toegang tot resources. [Meer informatie]
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything, including access to resources.",
+  "description": "Grants full access to manage all resources, including the ability to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "name": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "permissions": [
@@ -295,7 +295,7 @@ Hiermee kunt u alles beheren, inclusief toegang tot resources. [Meer informatie]
 
 ### <a name="reader"></a>Lezer
 
-Hiermee kunt u alles weer geven, maar geen wijzigingen aanbrengen. [Meer informatie](rbac-and-directory-admin-roles.md)
+Bekijk alle resources, maar u kunt geen wijzigingen aanbrengen. [Meer informatie](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Acties | Beschrijving |
@@ -313,7 +313,7 @@ Hiermee kunt u alles weer geven, maar geen wijzigingen aanbrengen. [Meer informa
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you view everything, but not make any changes.",
+  "description": "View all resources, but does not allow you to make any changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "permissions": [
@@ -2094,7 +2094,7 @@ Kan de toegangs sleutels voor het opslag account weer geven en opnieuw genereren
 }
 ```
 
-### <a name="storage-blob-data-contributor"></a>Inzender voor Storage BLOB-gegevens
+### <a name="storage-blob-data-contributor"></a>Inzender voor Storage Blob-gegevens
 
 Azure Storage containers en blobs lezen, schrijven en verwijderen. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. [Meer informatie](../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -3026,6 +3026,7 @@ Lijst met actie voor cluster beheer referenties. [Meer informatie](../aks/contro
 > | --- | --- |
 > | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/Action | De clusterAdmin-referentie van een beheerd cluster weer geven |
 > | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/Action | Een beheerd cluster toegangs profiel verkrijgen met een rolnaam met behulp van de lijst referentie |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Read | Een beheerd cluster ophalen |
 > | **NotActions** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -3045,7 +3046,8 @@ Lijst met actie voor cluster beheer referenties. [Meer informatie](../aks/contro
     {
       "actions": [
         "Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action",
-        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action"
+        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3066,6 +3068,7 @@ Geef een lijst actie voor de gebruikers referenties van het cluster op. [Meer in
 > | Acties | Beschrijving |
 > | --- | --- |
 > | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | De clusterUser-referentie van een beheerd cluster weer geven |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Read | Een beheerd cluster ophalen |
 > | **NotActions** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -3084,7 +3087,8 @@ Geef een lijst actie voor de gebruikers referenties van het cluster op. [Meer in
   "permissions": [
     {
       "actions": [
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6811,6 +6815,8 @@ Kan alle bewakings gegevens lezen en controle-instellingen bewerken. Zie ook aan
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/activityLogAlerts/* |  |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/AlertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Insights-onderdelen maken en beheren |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRules/* |  |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRuleAssociations/* |  |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | Hiermee wordt de diagnostische instelling voor Analyseserver gemaakt, bijgewerkt of gelezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/eventtypes/* | Lijst activiteiten logboek gebeurtenissen (beheer gebeurtenissen) in een abonnement. Deze machtiging is van toepassing op zowel toegang via het programma als de portal tot het activiteiten logboek. |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/LogDefinitions/* | Deze machtiging is nodig voor gebruikers die toegang moeten hebben tot activiteiten logboeken via de portal. Lijst met logboek categorieën in het activiteiten logboek. |
@@ -6860,6 +6866,8 @@ Kan alle bewakings gegevens lezen en controle-instellingen bewerken. Zie ook aan
         "Microsoft.Insights/activityLogAlerts/*",
         "Microsoft.Insights/AlertRules/*",
         "Microsoft.Insights/components/*",
+        "Microsoft.Insights/dataCollectionRules/*",
+        "Microsoft.Insights/dataCollectionRuleAssociations/*",
         "Microsoft.Insights/DiagnosticSettings/*",
         "Microsoft.Insights/eventtypes/*",
         "Microsoft.Insights/LogDefinitions/*",
@@ -8557,7 +8565,7 @@ Hiermee kunt u tags op entiteiten beheren zonder dat u toegang hebt tot de entit
 }
 ```
 
-## <a name="other"></a>Overig
+## <a name="other"></a>Overige
 
 
 ### <a name="biztalk-contributor"></a>BizTalk-bijdrager

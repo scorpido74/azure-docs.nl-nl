@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185618"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271053"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync bewaken
 
@@ -63,7 +63,7 @@ Waarschuwingen geven u proactief op de hoogte wanneer er belang rijke voor waard
 - Klik op **voor waarde selecteren** en geef de volgende informatie op voor de waarschuwing: 
     - **Meting**
     - **Dimensie naam**
-    - **Waarschuwings logica**
+    - **Waarschuwingslogica**
 - Klik op **actie groep selecteren** en voeg een actie groep (E-mail, SMS, enzovoort) toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
 - Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
 - Klik op **waarschuwings regel maken** om de waarschuwing te maken.  
@@ -135,7 +135,7 @@ Gebruik het telemetrie-gebeurtenis logboek op de server om de geregistreerde ser
 
 Synchronisatie status
 
-- Gebeurtenis-ID 9102 wordt vastgelegd zodra een synchronisatie sessie is voltooid. Gebruik deze gebeurtenis om te bepalen of synchronisatie sessies zijn geslaagd (**HResult = 0**) en of er synchronisatie fouten per item zijn. Zie de documentatie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [fouten per artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) voor meer informatie.
+- Gebeurtenis-ID 9102 wordt vastgelegd zodra een synchronisatie sessie is voltooid. Gebruik deze gebeurtenis om te bepalen of synchronisatie sessies zijn geslaagd (**HResult = 0**) en of er synchronisatie fouten per item zijn (**PerItemErrorCount**). Zie de documentatie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en  [fouten per artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) voor meer informatie.
 
   > [!Note]  
   > Soms mislukken synchronisatie sessies volledig of hebben ze een niet-nul-PerItemErrorCount. Ze maken echter nog steeds een voortgang en sommige bestanden zijn gesynchroniseerd. U kunt dit zien in de velden toegepast zoals AppliedFileCount, AppliedDirCount, AppliedTombstoneCount en AppliedSizeBytes. In deze velden kunt u zien hoeveel van de sessie is geslaagd. Als er meerdere synchronisatie sessies mislukken in een rij en deze een toenemend aantal toegewezen aantallen hebben, geeft u de synchronisatie tijd om het opnieuw te proberen voordat u een ondersteunings ticket opent.
@@ -196,7 +196,7 @@ Deze sectie bevat enkele voor beelden van waarschuwingen voor Azure File Sync.
 5. Klik in de Blade **signaal logica configureren** op **synchronisatie sessie resultaat** onder signaal naam.  
 6. Selecteer de volgende dimensie configuratie: 
     - Dimensie naam: **naam van server eindpunt**  
-    - And**=** 
+    - And **=** 
     - Dimensie waarden: **alle huidige en toekomstige waarden**  
 7. Navigeer naar **waarschuwings logica** en voer de volgende handelingen uit: 
     - Drempel ingesteld op **statisch** 
@@ -218,7 +218,7 @@ Deze sectie bevat enkele voor beelden van waarschuwingen voor Azure File Sync.
 5. Klik in de Blade **signaal logica configureren** op **bestanden niet synchroniseren** onder signaal naam.  
 6. Selecteer de volgende dimensie configuratie: 
      - Dimensie naam: **naam van server eindpunt**  
-     - And**=** 
+     - And **=** 
      - Dimensie waarden: **alle huidige en toekomstige waarden**  
 7. Navigeer naar **waarschuwings logica** en voer de volgende handelingen uit: 
      - Drempel ingesteld op **statisch** 
@@ -240,7 +240,7 @@ Deze sectie bevat enkele voor beelden van waarschuwingen voor Azure File Sync.
 5. Klik in de Blade **signaal logica configureren** op **server online status** onder signaal naam.  
 6. Selecteer de volgende dimensie configuratie: 
      - Dimensie naam: **Server naam**  
-     - And**=** 
+     - And **=** 
      - Dimensie waarden: **alle huidige en toekomstige waarden**  
 7. Navigeer naar **waarschuwings logica** en voer de volgende handelingen uit: 
      - Drempel ingesteld op **statisch** 
@@ -262,7 +262,7 @@ Deze sectie bevat enkele voor beelden van waarschuwingen voor Azure File Sync.
 5. Klik in de Blade **signaal logica configureren** op **Cloud lagen terughalen grootte** onder signaal naam.  
 6. Selecteer de volgende dimensie configuratie: 
      - Dimensie naam: **Server naam**  
-     - And**=** 
+     - And **=** 
      - Dimensie waarden: **alle huidige en toekomstige waarden**  
 7. Navigeer naar **waarschuwings logica** en voer de volgende handelingen uit: 
      - Drempel ingesteld op **statisch** 

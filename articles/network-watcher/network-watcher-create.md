@@ -1,6 +1,6 @@
 ---
 title: Een Azure Network Watcher-exemplaar maken | Microsoft Docs
-description: Meer informatie over het inschakelen van Network Watcher in een Azure-regio.
+description: Meer informatie over het maken van een Azure-Network Watcher in een Azure-regio met behulp van de Azure Portal of andere technologieën en hoe u een Network Watcher kunt verwijderen.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 03fe71855c43ba831f4b7a4ab746f05bd3bbb4a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6809e8a44120eddbae4965bff30f80b617bdd024
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846850"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272158"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Een Azure Network Watcher-exemplaar maken
 

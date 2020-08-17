@@ -1,14 +1,14 @@
 ---
 title: Een opslag plaats voor artefacten toevoegen aan uw Lab in Azure DevTest Labs | Microsoft Docs
-description: Meer informatie over het toevoegen van een artefact opslagplaats aan uw Lab in azure DevTest Labs.
+description: Meer informatie over het opgeven van uw eigen artefact opslagplaats voor uw Lab in Azure DevTest Labs om hulpprogram ma's op te slaan die niet beschikbaar zijn in de open bare artefact opslagplaats.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013434"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270968"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Een opslag plaats voor artefacten toevoegen aan uw Lab in DevTest Labs
 Met DevTest Labs kunt u een artefact opgeven die moet worden toegevoegd aan een virtuele machine op het moment dat de virtuele machine wordt gemaakt of nadat de virtuele machine is aangemaakt. Dit artefact kan een hulp programma of een toepassing zijn die u wilt installeren op de VM. Artefacten worden gedefinieerd in een JSON-bestand dat is geladen vanuit een GitHub-of Azure DevOps Git-opslag plaats.

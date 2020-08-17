@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: caad034c2cc3403bc88ee5f50d101702ec692c35
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: a635f32c5e5f1132d70fb503058267c8b33beb7c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192243"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272057"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -31,6 +31,30 @@ Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u 
 
 
 ## <a name="august-2020"></a>Augustus 2020
+
+De updates in augustus zijn onder andere:
+
+- [Inventaris van activa-krachtige nieuwe weer gave van de beveiligings postuur van uw assets](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [Aanbeveling voor service-principals toegevoegd](#service-principals-recommendation-added)
+- [Evaluatie van beveiligings problemen op Vm's-aanbevelingen en beleids regels geconsolideerd](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
+
+
+### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>Inventaris van activa-krachtige nieuwe weer gave van de beveiligings postuur van uw assets
+
+De Asset Inventory van Security Center biedt een manier om de beveiligings postuur weer te geven van de resources waarmee u verbinding hebt gemaakt met Security Center.
+
+Security Center regel matig de beveiligings status van uw Azure-resources analyseren om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen voor het oplossen van deze beveiligings problemen. Wanneer een resource openstaande aanbevelingen heeft, worden deze weer gegeven in de inventarisatie.
+
+U kunt de weer gave en de filters gebruiken om uw beveiligings postuur te verkennen en verdere acties uit te voeren op basis van uw bevindingen.
+
+Meer informatie over [inventarisatie van activa](asset-inventory.md).
+
+
+### <a name="service-principals-recommendation-added"></a>Aanbeveling voor service-principals toegevoegd
+
+Nieuwe aanbeveling voor Security Center klanten die beheer certificaten gebruiken voor het beheren van hun abonnementen.
+
+De aanbeveling, **service-principals moeten worden gebruikt voor het beveiligen van uw abonnementen in plaats van beheer certificaten** , adviseert u service-principals of Azure Resource Manager te gebruiken om uw abonnementen veiliger te beheren. 
 
 ### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Evaluatie van beveiligings problemen op Vm's-aanbevelingen en beleids regels geconsolideerd
 

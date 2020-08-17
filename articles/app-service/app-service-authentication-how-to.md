@@ -4,12 +4,12 @@ description: Meer informatie over het aanpassen van de functie voor verificatie 
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208028"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272311"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Geavanceerd gebruik van verificatie en autorisatie in Azure App Service
 
@@ -146,7 +146,7 @@ App Service gebruikers claims door gegeven aan uw toepassing met behulp van spec
 
 Code die is geschreven in een wille keurige taal of elk Framework, kan de informatie die nodig is van deze headers ophalen. Voor ASP.NET 4,6-apps wordt de **claimsprincipal is** automatisch ingesteld met de juiste waarden. ASP.NET Core biedt echter geen middleware voor authenticatie die kan worden geïntegreerd met App Service gebruikers claims. Zie [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)voor een tijdelijke oplossing.
 
-Uw toepassing kan ook aanvullende details over de geverifieerde gebruiker verkrijgen door aan te roepen `/.auth/me` . De Sdk's van de Mobile Apps server bieden hulp methoden om met deze gegevens te werken. Zie [How to use the Azure Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)(Engelstalig) voor meer informatie en [samen werken met de .net back-end-server-sdk voor Azure Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Als de [token opslag](overview-authentication-authorization.md#token-store) is ingeschakeld voor uw app, kunt u ook aanvullende details over de geverifieerde gebruiker verkrijgen door aan te roepen `/.auth/me` . De Sdk's van de Mobile Apps server bieden hulp methoden om met deze gegevens te werken. Zie [How to use the Azure Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)(Engelstalig) voor meer informatie en [samen werken met de .net back-end-server-sdk voor Azure Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Tokens ophalen in app-code
 
@@ -161,14 +161,14 @@ Vanuit uw server code worden de providerspecifieke tokens in de aanvraag header 
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-Verzend vanuit uw client code (zoals een mobiele app of een Java script in de browser) een HTTP- `GET` aanvraag naar `/.auth/me` . De geretourneerde JSON heeft de providerspecifieke tokens.
+Verzend vanuit uw client code (zoals een mobiele app of een Java script in de browser) een HTTP- `GET` aanvraag naar `/.auth/me` ([token archief](overview-authentication-authorization.md#token-store) moet zijn ingeschakeld). De geretourneerde JSON heeft de providerspecifieke tokens.
 
 > [!NOTE]
 > Toegangs tokens zijn voor toegang tot bronnen van de provider, zodat ze alleen aanwezig zijn als u uw provider configureert met een client geheim. Zie toegangs tokens vernieuwen voor meer informatie over het verkrijgen van vernieuwings tokens.
 
 ## <a name="refresh-identity-provider-tokens"></a>ID-provider tokens vernieuwen
 
-Wanneer het toegangs token van uw provider (niet het [sessie token](#extend-session-token-expiration-grace-period)) verloopt, moet u de gebruiker opnieuw verifiëren voordat u het token opnieuw gebruikt. U kunt de verval datum van tokens voor komen door een `GET` aanroep naar het `/.auth/refresh` eind punt van uw toepassing te maken. Wanneer wordt aangeroepen App Service de toegangs tokens in de token opslag voor de geverifieerde gebruiker automatisch vernieuwd. Bij volgende aanvragen voor tokens door uw app-code worden de vernieuwde tokens opgehaald. Het vernieuwen van tokens werkt echter alleen als de token opslag [vernieuwings tokens](https://auth0.com/learn/refresh-tokens/) voor uw provider bevat. De manier om vernieuwings tokens op te halen, wordt door elke provider gedocumenteerd, maar de volgende lijst is een korte samen vatting:
+Wanneer het toegangs token van uw provider (niet het [sessie token](#extend-session-token-expiration-grace-period)) verloopt, moet u de gebruiker opnieuw verifiëren voordat u het token opnieuw gebruikt. U kunt de verval datum van tokens voor komen door een `GET` aanroep naar het `/.auth/refresh` eind punt van uw toepassing te maken. Wanneer wordt aangeroepen App Service de toegangs tokens in de [token opslag](overview-authentication-authorization.md#token-store) voor de geverifieerde gebruiker automatisch vernieuwd. Bij volgende aanvragen voor tokens door uw app-code worden de vernieuwde tokens opgehaald. Het vernieuwen van tokens werkt echter alleen als de token opslag [vernieuwings tokens](https://auth0.com/learn/refresh-tokens/) voor uw provider bevat. De manier om vernieuwings tokens op te halen, wordt door elke provider gedocumenteerd, maar de volgende lijst is een korte samen vatting:
 
 - **Google**: een `access_type=offline` query reeks parameter toevoegen aan de `/.auth/login/google` API-aanroep. Als u de Mobile Apps SDK gebruikt, kunt u de para meter toevoegen aan een van de `LogicAsync` Overloads (Zie [tokens voor Google-vernieuwing](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: biedt geen vernieuwings tokens. Tokens met een lange levens duur verlopen over 60 dagen (Zie het [verloop van Facebook en de uitbrei ding van toegangs tokens](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).

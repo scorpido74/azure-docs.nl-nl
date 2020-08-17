@@ -3,12 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f4d622ac6d37059731b51a679e13f824670b9dc8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6420283f3d3c07182faa2cb2a82ba7b2d784055
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071295"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272651"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -42,6 +42,11 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |Controles uitgevoerd|
 |---|
 |<ul><li>Wordt de hostserver actief?</li><li>Is de opstart van het hostbesturingssysteem voltooid?</li><li>Is de virtuele-machine container ingericht en ingeschakeld?</li><li>Is er netwerk verbinding tussen de host en het opslag account?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li><li>Is de host-hardware gedegradeerd en wordt de voor speld binnenkort uitgevoerd?</li></ul>|
+
+## <a name="microsoftclassiccomputedomainnames"></a>Micro soft. classiccompute/domainname
+|Controles uitgevoerd|
+|---|
+|<ul><li>Is de door de Cloud service gehoste naam actief?</li><li>Is de opstart van het hostbesturingssysteem voltooid?</li><li>Is de virtuele-machine container ingericht en ingeschakeld?</li><li>Is er netwerk verbinding tussen de host en het opslag account?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li><li>Is de host-hardware gedegradeerd en wordt de voor speld binnenkort uitgevoerd?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Micro soft. cognitiveservices/accounts
 |Controles uitgevoerd|

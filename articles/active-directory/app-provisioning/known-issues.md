@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 08/12/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 127629cb0102c2736995364db9202cd837d99a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214279"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271002"
 ---
 # <a name="known-issues-application-provisioning"></a>Bekende problemen: toepassings inrichting
 Bekende problemen waarvan u rekening moet houden wanneer u werkt met het inrichten van apps. U kunt feedback geven over de Application Provisioning-Service op UserVoice, de [Azure AD-toepassing inrichten UserVoice](https://aka.ms/appprovisioningfeaturerequest). We kijken naar UserVoice zodat we de service kunnen verbeteren. 
@@ -66,9 +66,11 @@ Expressies voor kenmerk toewijzing mogen Maxi maal 10.000 tekens bevatten.
 - Het inrichten van geneste groepen wordt niet ondersteund. 
 - Het inrichten van B2C-tenants wordt niet ondersteund vanwege de grootte van de tenants. 
 
+**Het inrichtings interval is vast** De [tijd](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) tussen de inrichtings cycli kan momenteel niet worden geconfigureerd. 
+
 **Wijzigingen die niet worden verplaatst van de doel-app naar Azure AD**
 
-De app Provisioning Service is niet op de hoogte van wijzigingen die zijn aangebracht in externe apps. Er wordt dus geen actie ondernomen om terug te draaien. De app Provisioning Service is afhankelijk van de wijzigingen die zijn aangebracht in azure AD.  
+De app Provisioning Service is niet op de hoogte van wijzigingen die zijn aangebracht in externe apps. Er wordt dus geen actie ondernomen om terug te draaien. De app Provisioning Service is afhankelijk van de wijzigingen die zijn aangebracht in azure AD. 
 
 **De inrichtings cyclus gaat verder tot de voltooiing**
 

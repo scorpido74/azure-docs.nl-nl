@@ -1,17 +1,17 @@
 ---
 title: Ondersteuning voor avere vFXT-Azure inschakelen
-description: Ondersteuning voor het inschakelen van AVERE vFXT voor Azure
+description: Meer informatie over het inschakelen van automatische upload van ondersteunings gegevens over uw cluster vanuit avere vFXT voor Azure om ondersteuning te bieden aan de klanten service.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: fc86cca1b73eb58a038a0a6da109e86b995709c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93b99aa624a21d9312297e4279b1dcf053c79ae3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505474"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272725"
 ---
 # <a name="enable-support-uploads"></a>Ondersteuningsuploads inschakelen
 

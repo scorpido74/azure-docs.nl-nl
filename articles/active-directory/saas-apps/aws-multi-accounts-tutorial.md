@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 08/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6857fba86aebbcfd7b20326e4a4a268467e4fc3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81603826"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272464"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Zelf studie: integratie Azure Active Directory met Amazon Web Services (AWS) (verouderde zelf studie)
 
@@ -69,7 +69,7 @@ Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Amazon Web Services (AWS) ondersteunt door **SP en IDP** gestarte SSO
-* Nadat u Amazon Web Services (AWS) hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Nadat u Amazon Web Services (AWS) hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in real-time worden beschermd. Sessie beheer wordt uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Amazon Web Services (AWS) toevoegen uit de galerie
 
@@ -86,7 +86,7 @@ Om de integratie van Amazon Web Services (AWS) met Azure AD te configureren, moe
 
     ![Amazon Web Services (AWS) in de resultatenlijst](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-properties.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO configureren en testen
 
 In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Amazon Web Services (AWS) op basis van een test gebruiker met de naam ' Julia Simon '.
 
@@ -273,17 +273,17 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Als u meerdere mappen gebruikt, kunt u het volgende patroon gebruiken dat uw primaire domein bevat.`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Als u meerdere mappen gebruikt, kunt u het volgende patroon gebruiken dat uw primaire domein bevat.  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Dialoog venster Microsoft Graph Verkenner](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    f. In de lijst met Service-principals die zijn opgehaald, moet u het account ophalen dat u wilt wijzigen. U kunt ook de CTRL + F gebruiken om de toepassing te doorzoeken vanuit alle vermelde ServicePrincipals. U kunt de volgende query gebruiken met behulp van de **object-id** die u hebt gekopieerd uit de Azure AD-eigenschappen pagina om naar de betreffende service-principal te gaan.
+    f. In de lijst met Service-principals die zijn opgehaald, moet u het account ophalen dat u wilt wijzigen. U kunt ook de CTRL + F gebruiken om de toepassing te doorzoeken vanuit alle vermelde ServicePrincipals. U kunt de volgende query gebruiken met behulp van de **object-id van de Service-Principal** die u hebt gekopieerd uit de Azure AD-eigenschappen pagina om naar de betreffende service-principal te gaan.
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
     ![Dialoog venster Microsoft Graph Verkenner](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    bijvoorbeeld Extraheer de eigenschap appRoles uit het object Service-Principal.
+    g. Extraheer de eigenschap appRoles uit het object Service-Principal.
 
     ![Dialoog venster Microsoft Graph Verkenner](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 

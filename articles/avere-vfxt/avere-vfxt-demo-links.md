@@ -1,17 +1,17 @@
 ---
 title: AVERE vFXT voor Azure-demo projecten
-description: koppelingen naar zelf studies voor code demonstratie voor avere vFXT
+description: 'In deze voor beelden worden de belangrijkste functies en use cases voor avere vFXT voor Azure weer gegeven: video weergave, High-Performance Computing, vFXT-prestaties en client installatie.'
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31e32bfc0a2c3279375148bdf3da7d4a4829af1c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153697"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271070"
 ---
 # <a name="avere-vfxt-demo-projects"></a>AVERE vFXT-demo projecten
 
@@ -23,7 +23,7 @@ Voor beelden van zelf studies vindt u op [github](https://github.com/Azure/Avere
 
 * [Waarom de avere vFXT voor Rendering gebruiken?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -Een demonstratie waarmee rendering-tijden worden vergeleken van network-attached storage met en zonder een avere vFXT-cluster
 
-## <a name="high-performance-computing"></a>High-Performance Computing
+## <a name="high-performance-computing"></a>High Performance Computing
 
 * [Aanbevolen procedures voor het verbeteren van de opstart tijd van de Azure virtual machine (VM)](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) -een reproduceer bare test die gebruikmaakt van AVERE VFXT voor Azure om de opstart tijden te verbeteren wanneer u snel duizenden Compute-clients draait
 

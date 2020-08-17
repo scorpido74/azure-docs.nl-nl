@@ -1,17 +1,17 @@
 ---
 title: AVERE vFXT-opslag configureren-Azure
-description: Een back-end-opslag systeem toevoegen aan uw avere vFXT voor Azure
+description: Meer informatie over het toevoegen van een back-end-opslag systeem voor een cluster in avere vFXT voor Azure. Als u een Azure Blob-container met het cluster hebt gemaakt, kunt u deze gebruiken.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505746"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271138"
 ---
 # <a name="configure-storage"></a>Opslag configureren
 

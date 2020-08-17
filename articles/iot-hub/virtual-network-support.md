@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534478"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272896"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
@@ -182,7 +182,7 @@ IoT Hub kunt berichten routeren naar een opslag account van de klant. Uw IoT Hub
 
 5. Navigeer naar het gedeelte **aangepaste eind punten** en klik op **toevoegen**. Selecteer **opslag** als het type eind punt.
 
-6. Op de pagina die wordt weer gegeven, geeft u een naam voor het eind punt op, selecteert u de container die u wilt gebruiken in uw Blob-opslag, geeft u code ring en indeling van de bestands naam op. Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**.
+6. Op de pagina die wordt weer gegeven, geeft u een naam voor het eind punt op, selecteert u de container die u wilt gebruiken in uw Blob-opslag, geeft u code ring en indeling van de bestands naam op. Selecteer **identiteit gebaseerd** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**.
 
 Nu is uw aangepaste opslag eindpunt ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en heeft deze toegang tot uw opslag Resource ondanks de firewall beperkingen. U kunt dit eind punt nu gebruiken om een routerings regel in te stellen.
 
@@ -234,7 +234,7 @@ Met de functie voor het uploaden van bestanden van IoT Hub kunnen apparaten best
 
 4. Ga op de pagina resource van uw IoT Hub naar het tabblad **bestand uploaden** .
 
-5. Op de pagina die wordt weer gegeven, selecteert u de container die u wilt gebruiken in uw Blob-opslag, configureert u de **instellingen voor bestands meldingen**, de **SAS TTL**, de **standaard-TTL**en het **maximum aantal leverings aantallen** naar wens. Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**.
+5. Op de pagina die wordt weer gegeven, selecteert u de container die u wilt gebruiken in uw Blob-opslag, configureert u de **instellingen voor bestands meldingen**, de **SAS TTL**, de **standaard-TTL**en het **maximum aantal leverings aantallen** naar wens. Selecteer **identiteit gebaseerd** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**.
 
 Nu uw opslag eindpunt voor het uploaden van bestanden is ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en de toegang heeft tot uw opslag Resource ondanks de firewall beperkingen.
 
