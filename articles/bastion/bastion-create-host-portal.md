@@ -1,18 +1,18 @@
 ---
 title: 'Een Azure bastion-host maken: Portal'
-description: In dit artikel leest u hoe u een Azure bastion-host maakt met behulp van de portal
+description: In dit artikel leert u hoe u een Azure bastion-host maakt, die RDP/SSH-connectiviteit biedt voor alle virtuele machines in een virtueel netwerk.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: d18d520419e77a225431d9c2a395f62411656537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744269"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270747"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>Een Azure bastion-host maken met behulp van de portal
 
@@ -30,7 +30,7 @@ Bastion is beschikbaar in de volgende open bare Azure-regio's:
 
 In deze sectie kunt u een nieuwe Azure Bastion-resource maken op basis van de Azure Portal.
 
-1. Selecteer in het menu [Azure Portal](https://portal.azure.com) of op de **Start** pagina de optie **een resource maken**.
+1. Selecteer in het menu van [Azure Portal](https://portal.azure.com) of op de **startpagina** de optie **Een resource maken**.
 
 1. Typ **Bastion**in het veld *Marketplace doorzoeken* op de pagina **Nieuw** en klik vervolgens op **Enter** om naar de zoek resultaten te gaan.
 

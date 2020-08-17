@@ -1,18 +1,18 @@
 ---
 title: 'Azure Bastion: de sessie van de virtuele machine weer geven: volledig scherm'
-description: In dit artikel leest u hoe u de weer gave op het volledige scherm kunt wijzigen.
+description: Meer informatie over hoe u de weer gave van de virtuele machine kunt wijzigen in volledig scherm en weer terug in uw browser voor een RDP-of SSH-verbinding in azure Bastion.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: f4aa2c5aa3f40802db7be64eeb778866819bfe67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa795d7b066733aba54f8612bbabecf264a11c70
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744218"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270288"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Overschakelen naar weer gave volledig scherm voor een VM-sessie: Azure Bastion
 

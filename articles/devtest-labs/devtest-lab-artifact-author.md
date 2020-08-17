@@ -1,14 +1,14 @@
 ---
 title: Aangepaste artefacten maken voor uw virtuele machine van DevTest Labs | Microsoft Docs
-description: Meer informatie over het ontwerpen van uw eigen artefacten voor gebruik met Azure DevTest Labs.
+description: Meer informatie over het maken van artefacten voor gebruik met Azure DevTest Labs om toepassingen te implementeren en in te stellen na het inrichten van een virtuele machine.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857015"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270679"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Aangepaste artefacten maken voor uw virtuele machine van DevTest Labs
 
@@ -44,15 +44,15 @@ In het volgende voor beeld ziet u de secties waaruit de basis structuur van een 
   }
 ```
 
-| Elementnaam | Vereist? | Description |
+| Elementnaam | Vereist? | Beschrijving |
 | --- | --- | --- |
-| $schema |No |Locatie van het JSON-schema bestand. Het JSON-schema bestand kan u helpen de geldigheid van het definitie bestand te testen. |
-| titel |Yes |De naam van het artefact dat wordt weer gegeven in het lab. |
-| description |Yes |Beschrijving van het artefact dat wordt weer gegeven in het lab. |
-| iconUri |No |De URI van het pictogram dat wordt weer gegeven in het lab. |
-| targetOsType |Yes |Het besturings systeem van de virtuele machine waarop het artefact is geïnstalleerd. Ondersteunde opties zijn Windows en Linux. |
-| parameters |No |Waarden die worden gegeven wanneer de opdracht voor artefact installatie wordt uitgevoerd op een computer. Zo kunt u uw artefact aanpassen. |
-| Opdracht |Yes |Installatie opdracht voor artefact die op een virtuele machine wordt uitgevoerd. |
+| $schema |Nee |Locatie van het JSON-schema bestand. Het JSON-schema bestand kan u helpen de geldigheid van het definitie bestand te testen. |
+| titel |Ja |De naam van het artefact dat wordt weer gegeven in het lab. |
+| beschrijving |Ja |Beschrijving van het artefact dat wordt weer gegeven in het lab. |
+| iconUri |Nee |De URI van het pictogram dat wordt weer gegeven in het lab. |
+| targetOsType |Ja |Het besturings systeem van de virtuele machine waarop het artefact is geïnstalleerd. Ondersteunde opties zijn Windows en Linux. |
+| parameters |Nee |Waarden die worden gegeven wanneer de opdracht voor artefact installatie wordt uitgevoerd op een computer. Zo kunt u uw artefact aanpassen. |
+| Opdracht |Ja |Installatie opdracht voor artefact die op een virtuele machine wordt uitgevoerd. |
 
 ### <a name="artifact-parameters"></a>Artefactparameters
 Geef in de sectie para meters van het definitie bestand op welke waarden een gebruiker kan invoeren wanneer een artefact wordt geïnstalleerd. U kunt naar deze waarden verwijzen in de opdracht voor artefact installatie.
@@ -71,9 +71,9 @@ Gebruik de volgende structuur om para meters te definiëren:
 
 | Elementnaam | Vereist? | Beschrijving |
 | --- | --- | --- |
-| type |Yes |Type parameter waarde. Zie de volgende lijst voor de toegestane typen. |
-| displayName |Yes |De naam van de para meter die wordt weer gegeven voor een gebruiker in het lab. |
-| description |Yes |Beschrijving van de para meter die wordt weer gegeven in het lab. |
+| type |Ja |Type parameter waarde. Zie de volgende lijst voor de toegestane typen. |
+| displayName |Ja |De naam van de para meter die wordt weer gegeven voor een gebruiker in het lab. |
+| beschrijving |Ja |Beschrijving van de para meter die wordt weer gegeven in het lab. |
 
 Toegestane typen zijn:
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84297901"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270662"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: veelgestelde vragen (FAQ)
 
@@ -134,7 +134,7 @@ Momenteel niet. Deze functie is op ons plan. Als u uw domein verifieert op het t
 
 Volg deze stappen om uw Azure AD B2C-Tenant te verwijderen.
 
-U kunt onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere **toepassingen (verouderd)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
+U kunt onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere  **toepassingen (verouderd)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[App-registraties](#tab/app-reg-ga/)
 
@@ -145,16 +145,16 @@ U kunt onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere *
 1. Selecteer **app-registraties**en selecteer vervolgens het tabblad **alle toepassingen** .
 1. Alle toepassingen verwijderen die u hebt geregistreerd.
 1. Verwijder de **B2C-Extensions-app**.
-1. Selecteer onder **Beheren** de optie **Gebruikers**.
+1. Onder **Beheren**, selecteer **Gebruikers**.
 1. Selecteer elke gebruiker op zijn beurt (sluit de gebruikers van de *abonnements beheerder* die u momenteel bent aangemeld als). Selecteer **verwijderen** onder aan de pagina en selecteer **Ja** wanneer u hierom wordt gevraagd.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
 1. Indien aanwezig selecteert u onder **LinkedIn-account verbindingen**de optie **Nee**en selecteert u vervolgens **Opslaan**.
 1. Selecteer onder **beheren**de optie **Eigenschappen**
-1. Selecteer onder **Toegangsbeheer voor Azure-resources****Ja** en selecteer vervolgens **Opslaan**.
+1. Selecteer onder **Toegangsbeheer voor Azure-resources** **Ja** en selecteer vervolgens **Opslaan**.
 1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
-1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.
+1. Selecteer op de pagina **overzicht** de optie **Tenant verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.
 
 #### <a name="applications-legacy"></a>[Toepassingen (verouderd)](#tab/applications-legacy/)
 
@@ -164,7 +164,7 @@ U kunt onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere *
 1. Verwijder alle **gebruikers stromen (beleids regels)** in uw Azure AD B2C-Tenant.
 1. Verwijder alle **toepassingen (verouderd)** die u hebt geregistreerd in uw Azure AD B2C-Tenant.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
-1. Selecteer onder **Beheren** de optie **Gebruikers**.
+1. Onder **Beheren**, selecteer **Gebruikers**.
 1. Selecteer elke gebruiker op zijn beurt (sluit de gebruikers van de *abonnements beheerder* die u momenteel bent aangemeld als). Selecteer **verwijderen** onder aan de pagina en selecteer **Ja** wanneer u hierom wordt gevraagd.
 1. Selecteer **App-registraties** onder **Beheren**.
 1. Selecteer **alle toepassingen weer geven**
@@ -172,7 +172,7 @@ U kunt onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere *
 1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
 1. Indien aanwezig selecteert u onder **LinkedIn-account verbindingen**de optie **Nee**en selecteert u vervolgens **Opslaan**.
 1. Selecteer onder **beheren**de optie **Eigenschappen**
-1. Selecteer onder **Toegangsbeheer voor Azure-resources****Ja** en selecteer vervolgens **Opslaan**.
+1. Selecteer onder **Toegangsbeheer voor Azure-resources** **Ja** en selecteer vervolgens **Opslaan**.
 1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.
