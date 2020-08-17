@@ -1,23 +1,23 @@
 ---
-title: 'Azure-portal: de toegang voor importeren/exporteren naar beheerde schijven beperken met privékoppelingen (preview)'
-description: Schakel privékoppelingen (preview) in voor uw beheerde schijven met de Azure-portal. U kunt alleen in uw virtuele netwerk schijven veilig exporteren en importeren.
+title: 'Azure Portal: de toegang voor importeren/exporteren naar beheerde schijven beperken met privékoppelingen'
+description: Schakel privékoppelingen in voor uw beheerde schijven met de Azure Portal (momenteel beschikbaar als preview-versie). U kunt in uw virtuele netwerk schijven veilig exporteren en importeren.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 75b5ba995ff87649ec8a7a96a7c816bf2bec7e44
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535531"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135841"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure-portal: de toegang voor importeren/exporteren voor beheerde schijven beperken met privékoppelingen (preview)
+# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure Portal: de toegang voor importeren/exporteren voor beheerde schijven beperken met privékoppelingen
 
-U kunt een tijdsgebonden Shared Access Signature-URI (SAS) genereren voor niet-gekoppelde beheerde schijven en momentopnamen voor het exporteren van de gegevens naar een andere regio voor regionale expansie, herstel na noodgevallen en voor het lezen van de gegevens voor forensische analyse. U kunt ook de SAS-URI gebruiken om de VHD rechtstreeks naar een lege schijf van uw on-premises te uploaden.  U kunt nu [privékoppelingen](../private-link/private-link-overview.md) (preview) gebruiken om de export- en importbewerking te beperken tot Managed Disks alleen vanuit uw virtuele Azure-netwerk. Bovendien weet u zeker dat de gegevens nooit over het openbare internet gaan en zich altijd binnen het beveiligde fundamentele Microsoft-netwerk bevinden wanneer u privékoppelingen gebruikt. 
+Ondersteuning van privékoppelingen voor beheerde schijven is momenteel beschikbaar als preview-versie. U kunt het exporteren en importeren van beheerde schijven beperken zodat dit alleen plaatsvindt in uw virtuele Azure-netwerk. U kunt een tijdsgebonden Shared Access Signature-URI (SAS) genereren voor niet-gekoppelde beheerde schijven en momentopnamen voor het exporteren van de gegevens naar een andere regio voor regionale expansie, herstel na noodgevallen en voor het lezen van de gegevens voor forensische analyse. U kunt ook de SAS-URI gebruiken om de VHD rechtstreeks naar een lege schijf van uw on-premises te uploaden. Netwerkverkeer tussen clients in het virtuele netwerk en beheerde schijven gaat alleen over het virtuele netwerk en een persoonlijke koppeling in het fundamentele Microsoft-netwerk, waardoor de blootstelling naar het openbare internet wordt voorkomen.
 
 U kunt een bron voor schijftoegang maken en deze koppelen aan uw virtuele netwerk in hetzelfde abonnement door een privé-eindpunt te maken. U moet een schijf of een momentopname koppelen aan een schijftoegang voor het exporteren en importeren van de gegevens via privékoppelingen. U moet ook de eigenschap NetworkAccessPolicy van de schijf of de momentopname instellen op `AllowPrivate`. 
 
