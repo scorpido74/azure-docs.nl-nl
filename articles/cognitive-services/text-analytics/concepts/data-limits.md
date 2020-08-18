@@ -1,7 +1,7 @@
 ---
-title: Gegevens limieten voor de Text Analytics-API
+title: Gegevenslimieten voor de Text Analytics-API
 titleSuffix: Azure Cognitive Services
-description: De gegevens beperkingen voor de Text Analytics-API van Azure Cognitive Services.
+description: Gegevenslimieten voor de Text Analytics-API van Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,40 +11,37 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142364"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986811"
 ---
-# <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Gegevens en frequentie limieten voor de Text Analytics-API
+# <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Gegevens- en frequentielimieten voor de Text Analytics-API
 <a name="data-limits"></a>
 
-In dit artikel vindt u informatie over de limieten voor de grootte en de snelheid waarmee u gegevens kunt verzenden naar Text Analytics-API. 
+Lees dit artikel voor informatie over de limieten voor de grootte en de frequenties waarmee u gegevens naar de Text Analytics-API kunt verzenden. 
 
 ## <a name="data-limits"></a>Gegevenslimieten
 
 > [!NOTE]
-> * Als u grotere documenten wilt analyseren dan de limiet toestaat, kunt u de tekst opsplitsen in kleinere stukken tekst voordat u deze naar de API verzendt. 
-> * Een document is een enkele teken reeks met tekst tekens.  
+> * Als u grotere documenten moet analyseren dan volgens de limiet is toegestaan, kunt u de tekst opdelen in kleinere tekstfragmenten voordat u ze naar de API kunt verzenden. 
+> * Een document bestaat uit één tekenreeks van teksttekens.  
 
 | Limiet | Waarde |
 |------------------------|---------------|
-| Maximale grootte van één document | 5.120 tekens zoals gemeten door [StringInfo. LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
+| Maximale grootte van één document | 5\.120 tekens, gemeten volgens [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maximale grootte van de hele aanvraag | 1 MB |
 
-Het maximum aantal documenten dat u in één aanvraag kunt verzenden, is afhankelijk van de API-versie en de functie die u gebruikt.
+Het maximumaantal documenten dat u in één aanvraag kunt verzenden, is afhankelijk van de API-versie en functie die u gebruikt.
 
 #### <a name="version-3"></a>[Versie 3](#tab/version-3)
 
-> [!NOTE]
-> Als uw v3 API-aanvraag deze limiet overschrijdt, maar binnen de v2-limieten valt, wordt er een waarschuwing weer gegeven in de API-reactie. In plaats van 7/15/2020 wordt een 400-fout code geretourneerd. 
-
-De volgende limieten zijn gewijzigd in v3 van de API. Als u de onderstaande limieten overschrijdt, wordt er een waarschuwing gegenereerd in de API-reactie.
+De volgende limieten zijn in v3 van de API gewijzigd. Als u de onderstaande limieten overschrijdt, wordt een HTTP 400-foutcode gegenereerd.
 
 
-| Functie | Maximum aantal documenten per aanvraag | 
+| Functie | Max. aantal documenten per aanvraag | 
 |----------|-----------|
 | Taaldetectie | 1000 |
 | Sentimentanalyse | 10 |
@@ -54,7 +51,7 @@ De volgende limieten zijn gewijzigd in v3 van de API. Als u de onderstaande limi
 
 #### <a name="version-2"></a>[Versie 2](#tab/version-2)
 
-| Functie | Maximum aantal documenten per aanvraag | 
+| Functie | Max. aantal documenten per aanvraag | 
 |----------|-----------|
 | Taaldetectie | 1000 |
 | Sentimentanalyse | 1000 |
@@ -64,23 +61,23 @@ De volgende limieten zijn gewijzigd in v3 van de API. Als u de onderstaande limi
 
 ---
 
-## <a name="rate-limits"></a>Frequentie limieten
+## <a name="rate-limits"></a>Frequentielimieten
 
-De frequentie limiet is afhankelijk van uw [prijs categorie](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Deze limieten zijn hetzelfde voor beide versies van de API.
+Uw frequentielimiet hangt af van uw [prijscategorie](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Deze limieten gelden voor beide versies van de API.
 
 | Laag          | Aanvragen per seconde | Aanvragen per minuut |
 |---------------|---------------------|---------------------|
-| S/meerdere services | 1000                | 1000                |
+| S/multi-service | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 
-Aanvragen worden afzonderlijk gemeten voor elke Text Analytics-functie. U kunt bijvoorbeeld tegelijkertijd het maximum aantal aanvragen voor uw prijs categorie verzenden naar elke functie.  
+Aanvragen worden afzonderlijk voor elke Text Analytics-functie gemeten. U kunt bijvoorbeeld het maximumaantal aanvragen voor uw prijscategorie tegelijkertijd naar elke functie verzenden.  
 
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat is het Text Analytics-API](../overview.md)
-* [Prijs informatie](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)
+* [Wat is de Text Analytics-API?](../overview.md)
+* [Prijsdetails](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)

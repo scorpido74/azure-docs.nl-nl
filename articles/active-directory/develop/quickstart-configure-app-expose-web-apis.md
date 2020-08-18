@@ -1,6 +1,7 @@
 ---
-title: Een app configureren om web-API's beschikbaar te maken - Microsoft identity platform | Azure
-description: Leer hoe u een toepassing kunt configureren voor het beschikbaar maken van een nieuwe machtiging/nieuw bereik en een nieuwe rol, om de toepassing beschikbaar te maken voor clienttoepassingen.
+title: 'Quickstart: Een app configureren om een web-API beschikbaar te maken | Azure'
+titleSuffix: Microsoft identity platform
+description: In deze quickstart leert u hoe u een toepassing kunt configureren voor het beschikbaar maken van een nieuwe machtiging/nieuw bereik en een nieuwe rol, om de toepassing beschikbaar te maken voor clienttoepassingen.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,30 +9,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/14/2019
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 263eb531466e26ed6069dc889c17e2632aa9ed20
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 93b0c3392a32a6ff18a285d34fdaede6ceea6528
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799409"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830288"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Quickstart: Een toepassing configureren om web-API's beschikbaar te maken
+# <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Quickstart: Een toepassing configureren om een web-API beschikbaar te maken
 
 U kunt een web-API ontwikkelen en deze beschikbaar maken voor clienttoepassingen door [machtigingen/bereiken](developer-glossary.md#scopes) en [rollen](developer-glossary.md#roles) beschikbaar te maken. Een correct geconfigureerde web-API wordt net als de andere Microsoft web-API's beschikbaar gesteld, met inbegrip van de Graph API en de Office 365-API's.
 
-In deze snelstart leert u hoe u een toepassing kunt configureren voor het beschikbaar maken van een nieuw bereik, om de toepassing beschikbaar te maken voor clienttoepassingen.
+In deze quickstart leert u hoe u een toepassing kunt configureren voor het beschikbaar maken van een nieuw bereik, om de toepassing beschikbaar te maken voor clienttoepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u, voordat u aan de slag gaat, aan deze vereisten voldoet:
-
-* Lees de informatie over de ondersteunde [machtigingen en toestemming](v2-permissions-and-consent.md). Een goed begrip hiervan is belangrijk bij het bouwen van toepassingen die moeten worden gebruikt door andere gebruikers of met andere toepassingen.
-* U moet een tenant hebben waarvoor toepassingen zijn geregistreerd.
-  * Als u uw apps niet hebt geregistreerd, [kunt u hier lezen hoe u toepassingen registreert bij het Microsoft Identity Platform](quickstart-register-app.md).
+* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Voltooiing van [quickstart: Een toepassing registreren bij het Microsoft-identiteitsplatform](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Aanmelden bij de Azure-portal en de app selecteren
 
@@ -86,13 +84,17 @@ Een nieuw bereik beschikbaar maken via de gebruikersinterface:
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Een nieuw bereik of nieuwe rol beschikbaar maken via het toepassingsmanifest
 
+Het toepassingsmanifest fungeert als een mechanisme voor het bijwerken van de toepassingsentiteit, dat de kenmerken van een Azure AD-app-registratie definieert.
+
 [![Een nieuw bereik beschikbaar maken met behulp van de verzameling oauth2Permissions in het manifest](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
 
-Een nieuw bereik beschikbaar maken via het toepassingsmanifest:
+Een nieuw bereik beschikbaar maken door het toepassingsmanifest te bewerken:
 
 1. Selecteer op de pagina **Overzicht** van de app de sectie **Manifest**. Er wordt een webgebaseerde manifesteditor geopend, zodat u het manifest binnen de portal kunt **bewerken**. U kunt optioneel ook op **Downloaden** klikken en het manifest lokaal bewerken. Gebruik vervolgens **Uploaden** om het opnieuw toe te passen op de toepassing.
 
     In het volgende voorbeeld ziet u hoe u een nieuw bereik met de naam `Employees.Read.All` beschikbaar kunt maken in de resource/API door het volgende JSON-element toe te voegen aan de verzameling `oauth2Permissions`.
+
+    Genereer de waarde `id` programmatisch of door een hulpprogramma voor het genereren van een GUID, zoals [guidgen](https://www.microsoft.com/download/details.aspx?id=55984), te gebruiken.
 
       ```json
       {
@@ -107,13 +109,12 @@ Een nieuw bereik beschikbaar maken via het toepassingsmanifest:
       }
       ```
 
-   > [!NOTE]
-   > De waarde `id` moet worden gegenereerd via een programma of met behulp van een hulpprogramma voor het genereren van een GUID zoals [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). De `id` staat voor een unieke id voor het bereik zoals het wordt weergegeven door de web-API. Nadat een client op de juiste wijze is geconfigureerd met machtigingen voor toegang tot de web-API, wordt er een OAuth 2.0-toegangstoken voor uitgegeven via Azure AD. Wanneer de client de web-API aanroept, presenteert deze het toegangstoken waarvan de bereikclaim (scp is) is ingesteld op de machtigingen die zijn aangevraagd in de registratie van de toepassing.
-   >
-   > U kunt aanvullende bereiken indien nodig later weergeven. Houd er rekening mee dat uw web-API mogelijk meerdere bereiken weergeeft die zijn gekoppeld aan een verscheidenheid van verschillende functies. Via de resource kan toegang tot de web-API tijdens runtime worden beheerd, door het evalueren van de bereikclaim(s) (`scp`) in het ontvangen OAuth 2.0-toegangstoken.
-
 1. Klik op **Opslaan** als u klaar bent. Uw web-API is nu geconfigureerd voor gebruik door andere toepassingen in uw directory.
 1. Volg de stappen om te [controleren of de web-API beschikbaar is gemaakt voor andere toepassingen](#verify-the-web-api-is-exposed-to-other-applications).
+
+Zie de documentatie over het resourcetype [Toepassing][ms-graph-application] van Microsoft Graph voor meer informatie over de toepassingsentiteit en het bijbehorende schema.
+
+Zie [Informatie over het Azure AD-app-manifest](reference-app-manifest.md) voor meer informatie over het toepassingsmanifest en het bijbehorende schema.
 
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Controleren of de web-API beschikbaar is gemaakt voor andere toepassingen
 
@@ -125,24 +126,24 @@ Een nieuw bereik beschikbaar maken via het toepassingsmanifest:
 
 Wanneer u de web-API-resource hebt geselecteerd, zou moeten worden weergegeven dat het nieuwe bereik beschikbaar is voor machtigingsaanvragen voor clients.
 
-## <a name="more-on-the-application-manifest"></a>Meer informatie over het toepassingsmanifest
+## <a name="using-the-exposed-scopes"></a>De beschikbaar gemaakte bereiken gebruiken
 
-Het toepassingsmanifest fungeert als een mechanisme voor het bijwerken van de toepassingsentiteit, dat alle kenmerken van de configuratie van een Azure Active Directory-toepassings-id definieert. Zie de [documentatie over de toepassingsidentiteit van de Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity) voor meer informatie over de toepassingentiteit en het bijbehorende schema. Het artikel bevat volledige naslaginformatie over de toepassingsentiteitsleden die worden gebruikt voor het opgeven van machtigingen voor uw API, met inbegrip van:
+Nadat een client op de juiste wijze is geconfigureerd met machtigingen voor toegang tot de web-API, kan er een OAuth 2.0-toegangstoken voor worden uitgegeven via Azure AD. Wanneer de client de web-API aanroept, presenteert deze het toegangstoken waarvan de bereikclaim (`scp`) is ingesteld op de machtigingen die zijn aangevraagd in de registratie van de toepassing.
 
-* Het lid appRoles, dat een verzameling van [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type)-entiteiten is, dat wordt gebruikt voor het definiëren van [toepassingsmachtigingen](developer-glossary.md#permissions) voor een web-API.
-* Het lid oauth2Permissions, dat een verzameling van [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type)-entiteiten is, dat wordt gebruikt voor het definiëren van [gedelegeerde machtigingen](developer-glossary.md#permissions) voor een web-API.
+U kunt aanvullende bereiken indien nodig later weergeven. Houd er rekening mee dat uw web-API mogelijk meerdere bereiken weergeeft die zijn gekoppeld aan een verscheidenheid van verschillende functies. Via de resource kan toegang tot de web-API tijdens runtime worden beheerd, door het evalueren van de bereikclaim(s) (`scp`) in het ontvangen OAuth 2.0-toegangstoken.
 
-Zie [Het Azure Active Directory-toepassingsmanifest begrijpen](reference-app-manifest.md) voor meer informatie over toepassingsmanifestconcepten in het algemeen.
+In uw toepassingen is de volledige bereikwaarde een samenvoeging van de **URI voor de toepassings-id** van uw web-API (de resource) en de **bereiknaam**.
+
+Als de URI voor de toepassings-id van uw web-API bijvoorbeeld `https://contoso.com/api` is en uw bereiknaam `Employees.Read.All` is, is het volledige bereik:
+
+`https://contoso.com/api/Employees.Read.All`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees meer in deze andere gerelateerde snelstarts voor app-beheer:
+Nu u uw web-API beschikbaar hebt gemaakt door de bereiken ervan te configureren, configureert u de registratie van uw client-app met machtigingen voor toegang tot die bereiken.
 
-* [Een toepassing registreren bij het Microsoft Identity Platform](quickstart-register-app.md)
-* [Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md)
-* [De accounts wijzigen die worden ondersteund in een toepassing](quickstart-modify-supported-accounts.md)
-* [Een geregistreerde toepassing verwijderen uit het Microsoft Identity Platform](quickstart-remove-app.md)
+> [!div class="nextstepaction"]
+> [Een app-registratie configureren voor toegang tot de web-API](quickstart-configure-app-access-web-apis.md)
 
-Zie [Toepassingsobjecten en service-principal-objecten](app-objects-and-service-principals.md) voor meer informatie over de twee Azure Active Directory-objecten die een geregistreerde toepassing vertegenwoordigen en de relatie ertussen.
-
-Zie [Huisstijlrichtlijnen voor apps](howto-add-branding-in-azure-ad-apps.md) voor meer informatie over de huisstijlrichtlijnen die u moet gebruiken bij het ontwikkelen van toepassingen met Azure Active Directory.
+<!-- REF LINKS -->
+[ms-graph-application]: /graph/api/resources/application

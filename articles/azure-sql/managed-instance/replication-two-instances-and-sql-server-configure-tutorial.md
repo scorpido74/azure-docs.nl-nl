@@ -10,15 +10,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532523"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920140"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Zelfstudie: Transactionele replicatie tussen Azure SQL Managed Instance en SQL Server configureren
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+
+Met transactionele replicatie kunt u gegevens van de ene database repliceren naar een andere database die op ofwel SQL Server of op een [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) wordt gehost. Een SQL Managed Instance kan een uitgever, distributeur of abonnee zijn in de replicatietopologie. Zie [configuraties voor transactionele replicatie](replication-transactional-overview.md#common-configurations) voor de beschikbare configuraties. 
+
+Transactionele replicatie is momenteel beschikbaar als openbare preview-versie voor SQL Managed Instance. 
 
 In deze zelfstudie leert u het volgende:
 
@@ -30,11 +34,11 @@ In deze zelfstudie leert u het volgende:
 
 ![Replicatie tussen een uitgever voor een beheerde exemplaar, een distributeur voor een beheerd exemplaar en de SQL Server-abonnee](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
 
-Deze zelfstudie is bedoeld voor een ervaren doelgroep en er wordt verondersteld dat de gebruiker bekend is met het implementeren van en het verbinding maken met zowel beheerde exemplaren als SQL Server-VM's in Azure. Bepaalde stappen worden daarom in deze zelfstudie weggelaten.
+Deze zelfstudie is bedoeld voor een ervaren doelgroep en er wordt verondersteld dat de gebruiker bekend is met het implementeren van en het verbinding maken met zowel beheerde exemplaren als SQL Server-VM's in Azure. 
 
-Zie de artikelen [Overzicht van Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) en [Transactionele replicatie in SQL](replication-transactional-overview.md) voor meer informatie.
 
-Als u de replicatie tussen een uitgever voor een beheerd exemplaar en een abonnee voor een beheerd exemplaar wilt configureren, raadpleegt u [Transactionele replicatie tussen twee beheerde exemplaren configureren](replication-between-two-instances-configure-tutorial.md).
+> [!NOTE]
+> In dit artikel wordt het gebruik van [transactionele replicatie](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL Managed Instance beschreven. Dit is niet verwant aan [failovergroepen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), een functie van Azure SQL Managed Instance waarmee u volledige, leesbare replica's van afzonderlijke instanties kunt maken. Er zijn zaken waarmee u extra rekening moet houden wanneer u [transactionele replicatie met failovergroepen](replication-transactional-overview.md#with-failover-groups) configureert.
 
 ## <a name="prerequisites"></a>Vereisten
 

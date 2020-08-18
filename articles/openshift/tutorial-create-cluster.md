@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9a393e29c4b5b2faa48cbcd273c7bc7a46169ba3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475648"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904187"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Zelfstudie: Een Azure Red Hat OpenShift 4-cluster maken
 
@@ -49,9 +49,9 @@ Met een pull-geheim van Red Hat kan uw cluster toegang krijgen tot Red Hat-conta
 
    U moet zich aanmelden bij uw Red Hat-account of een nieuw Red Hat-account maken met uw zakelijke e-mailadres en de algemene voorwaarden accepteren.
 
-2. **Klik op pull-geheim downloaden.**
+2. Ga naar de [**OpenShift-productpagina**](https://developers.redhat.com/products/codeready-containers) als dit de eerste keer is dat u een cluster maakt. Ga na de registratie naar de [**beheerpagina van uw Red Hat OpenShift-cluster**](https://cloud.redhat.com/openshift/), waar u op **Pull-geheim downloaden** kunt klikken om een pull-geheim te downloaden voor gebruik met uw ARO-cluster.
 
-Bewaar het opgeslagen `pull-secret.txt`-bestand op een veilige plek; het wordt gebruikt bij het maken van elk cluster.
+Bewaar het opgeslagen bestand `pull-secret.txt` op een veilige plek. Het bestand wordt gebruikt bij elke clusteraanmaak als u een cluster moet maken dat voorbeelden of operators voor Red Hat of gecertificeerde partners bevat.
 
 Wanneer u de opdracht `az aro create` uitvoert, kunt u verwijzen naar uw pull-geheim met behulp van de parameter `--pull-secret @pull-secret.txt`. Voer `az aro create` uit vanuit de map waarin u het `pull-secret.txt`-bestand hebt opgeslagen. Vervang anders `@pull-secret.txt` door `@<path-to-my-pull-secret-file>`.
 

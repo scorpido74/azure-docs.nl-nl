@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de905c61642c36a07c7f87e0be910b0f035bffc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555264"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507430"
 ---
 # <a name="what-is-risk"></a>Wat is risico?
 
@@ -30,24 +30,24 @@ Identiteits beveiliging biedt organisaties toegang tot krachtige bronnen om snel
 
 Er zijn twee soorten risico **gebruiker** en **aanmelding** , en twee typen detectie of berekeningen in **realtime** en **offline**.
 
-### <a name="user-risk"></a>Gebruikers risico
+### <a name="user-risk"></a>Gebruikersrisico
 
 Een gebruikers risico vertegenwoordigt de waarschijnlijkheid dat een bepaalde identiteit of een bepaald account is aangetast. 
 
 Deze Risico's worden offline berekend met de interne en externe Threat Intelligence-bronnen van micro soft, waaronder beveiligings onderzoekers, politie professionals, beveiligings teams bij micro soft en andere vertrouwde bronnen.
 
-| Risico detectie | Description |
+| Risico detectie | Beschrijving |
 | --- | --- |
 | Gelekte referenties | Dit type risico detectie geeft aan dat de geldige referenties van de gebruiker zijn gelekt. Wanneer Cybercriminals geldige wacht woorden van legitieme gebruikers beveiligt, delen ze deze referenties vaak. Dit delen geschiedt doorgaans door op het donkere web te plaatsen, sites te plakken of door de referenties op de zwarte markt te verhandelen en te verkopen. Wanneer de micro soft lekkende referentie Service gebruikers referenties ophaalt van de donkere websites, plak sites of andere bronnen, worden ze gecontroleerd op basis van de huidige geldige referenties van de Azure AD-gebruikers om geldige overeenkomsten te vinden. Zie [Veelgestelde vragen](#common-questions)voor meer informatie over gelekte referenties. |
 | Azure AD-bedreigingsinformatie | Dit type risico detectie duidt op de activiteit van de gebruiker die ongebruikelijk is voor de gegeven gebruiker of is consistent met bekende aanvals patronen op basis van de interne en externe informatie bronnen van micro soft. |
 
-### <a name="sign-in-risk"></a>Aanmeldings risico
+### <a name="sign-in-risk"></a>Aanmeldingsrisico
 
 Een aanmeldings risico duidt op de kans dat een bepaalde verificatie aanvraag niet is geautoriseerd door de eigenaar van de identiteit. 
 
 Deze Risico's kunnen in realtime worden berekend of offline worden berekend met behulp van de interne en externe Threat Intelligence-bronnen van micro soft, waaronder beveiligings onderzoekers, politie professionals, beveiligings teams bij micro soft en andere vertrouwde bronnen.
 
-| Risico detectie | Detectie type | Description |
+| Risico detectie | Detectie type | Beschrijving |
 | --- | --- | --- |
 | Anoniem IP-adres | Real-time | Dit type risico detectie duidt op aanmeldingen vanaf een anoniem IP-adres (bijvoorbeeld Tor browser of anoniem VPN). Deze IP-adressen worden meestal gebruikt door Actors die hun aanmeld telemetrie (IP-adres, locatie, apparaat enzovoort) willen verbergen voor mogelijk schadelijk doel. |
 | Ongewoon traject | Offline | Dit type risico detectie identificeert twee aanmeldingen die afkomstig zijn van geografische locaties, waarbij ten minste één van de locaties mogelijk ook ongewoon kan zijn voor de gebruiker, gezien het gedrag van het verleden. Deze machine learning-algoritme houdt onder andere rekening met de tijd tussen de twee aanmeldingen en de tijd die nodig zou zijn voor de gebruiker om van de eerste locatie naar de tweede te gaan, wat aangeeft dat een andere gebruiker dezelfde referenties gebruikt. <br><br> Het algoritme negeert duidelijke ' fout-positieven ' die bijdragen aan de niet-bewaarde reis omstandigheden, zoals Vpn's en locaties die regel matig door andere gebruikers in de organisatie worden gebruikt. Het systeem heeft een initiële leer periode van het eerste aantal van 14 dagen of 10 aanmeldingen, waarbij het een nieuwe gebruiker aanmeldt. |
@@ -60,11 +60,17 @@ Deze Risico's kunnen in realtime worden berekend of offline worden berekend met 
 
 ### <a name="other-risk-detections"></a>Andere risico detecties
 
-| Risico detectie | Detectie type | Description |
+| Risico detectie | Detectie type | Beschrijving |
 | --- | --- | --- |
 | Er is extra risico gedetecteerd | Realtime of offline | Deze detectie geeft aan dat een van de bovenstaande Premium-detecties is gedetecteerd. Aangezien de Premium-detecties alleen zichtbaar zijn voor Azure AD Premium P2-klanten, hebben ze de titel ' extra risico gedetecteerd ' voor klanten zonder Azure AD Premium P2-licenties. |
 
 ## <a name="common-questions"></a>Veelgestelde vragen
+
+### <a name="risk-levels"></a>Risico niveaus
+
+Identiteits beveiliging categoriseert het risico in drie lagen: laag, gemiddeld en hoog. 
+
+Micro soft biedt geen specifieke details over de manier waarop Risico's worden berekend, maar op elk niveau is er meer betrouw baarheid dat de gebruiker of het aanmelden is aangetast. Een voor beeld: een exemplaar van onbekende aanmeldings eigenschappen voor een gebruiker is mogelijk niet zo onveilig als gelekte referenties voor een andere gebruiker.
 
 ### <a name="leaked-credentials"></a>Gelekte referenties
 
@@ -78,7 +84,7 @@ Micro soft vindt gelekte referenties op verschillende plaatsen, waaronder:
 
 #### <a name="why-arent-i-seeing-any-leaked-credentials"></a>Waarom zie ik geen gelekte referenties?
 
-Gelekte referenties worden verwerkt wanneer micro soft een nieuwe, openbaar beschik bare batch vindt. Vanwege de gevoelige aard worden de gelekte referenties kort na de verwerking verwijderd. Alleen nieuwe gelekte referenties die zijn gevonden nadat u wachtwoord hash synchronisatie (PHS) inschakelt, worden verwerkt voor uw Tenant. Verificatie van eerder gevonden referentie paren wordt niet uitgevoerd. 
+Gelekte referenties worden verwerkt wanneer micro soft een nieuwe, openbaar beschik bare batch vindt. Vanwege de gevoelige aard worden de gelekte referenties kort na de verwerking verwijderd. Alleen nieuwe gelekte referenties die zijn gevonden nadat u wachtwoord hash synchronisatie (PHS) inschakelt, worden verwerkt voor uw Tenant. Er wordt geen verificatie uitgevoerd van eerder gevonden referentieparen. 
 
 #### <a name="i-havent-seen-any-leaked-credential-risk-events-for-quite-some-time"></a>Ik heb enige tijd geen gelekte referentie risico gebeurtenissen gedetecteerd?
 

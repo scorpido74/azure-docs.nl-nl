@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927416"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508599"
 ---
-# <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Enter prise-en Basic-edities van Azure Machine Learning 
+# <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>Enter prise (preview) en basis versies van Azure Machine Learning 
 
 Azure Machine Learning biedt twee edities die zijn afgestemd op uw machine learning behoeften. Deze edities bepalen welke tools voor machine learning beschikbaar zijn voor ontwikkelaars en gegevenswetenschappers in hun werkruimte.
 
@@ -23,7 +23,7 @@ Azure Machine Learning biedt twee edities die zijn afgestemd op uw machine learn
 
 U wijst de gewenste editie toe wanneer u een werkruimte maakt. Klanten zijn verantwoordelijk voor kosten die gedurende deze periode zijn gemaakt voor rekenresources en andere Azure-resources. Meer informatie over het [beheren van de kosten voor Azure machine learning](concept-plan-manage-cost.md).
 
-Lees hier meer over het [upgraden van een Basic-werkruimte naar de Enterprise-editie](how-to-manage-workspace.md#upgrade). 
+Meer informatie over het [upgraden van een Basic-werk ruimte naar Enter prise (preview) Edition](how-to-manage-workspace.md#upgrade). 
 
 ## <a name="whats-in-each-edition"></a>Wat zit er in elke editie?
 
@@ -31,13 +31,13 @@ Lees hier meer over het [upgraden van een Basic-werkruimte naar de Enterprise-ed
 
 | Functies                     | Editie                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| Labelen: [projecten labelen maken en beheren](tutorial-labeling.md) in Studio (web)                                                | Alle                     |
-| Labelen: Labeler in Studio (web)                                    | Alle                     |
-| Labelen: privé personeel gebruiken                               | Alle                     |
+| Labelen: [projecten labelen maken en beheren](tutorial-labeling.md) in Studio (web)                                                | Alles                     |
+| Labelen: Labeler in Studio (web)                                    | Alles                     |
+| Labelen: privé personeel gebruiken                               | Alles                     |
 | Labelen: [ml gesteunde afbeeldings classificatie en object detectie](how-to-label-images.md)                  | Alleen Enter prise Edition |
-| Gegevens sets + gegevens opslag: maken en beheren in python                       | Alle                     |
-| Gegevens sets + gegevens opslag: maken en beheren in Studio (web)                         | Alle                     |
-| Drift: gegevensset-monitors in python weer geven en beheren                           | Alle                     |
+| Gegevens sets + gegevens opslag: maken en beheren in python                       | Alles                     |
+| Gegevens sets + gegevens opslag: maken en beheren in Studio (web)                         | Alles                     |
+| Drift: gegevensset-monitors in python weer geven en beheren                           | Alles                     |
 | Drift: gegevensset-monitors weer geven en beheren in Studio (web)                            | Alleen Enter prise Edition |
 
 
@@ -48,8 +48,8 @@ Lees hier meer over het [upgraden van een Basic-werkruimte naar de Enterprise-ed
 
 | Functies    | Editie                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| AutoML experimenten maken en uitvoeren [in notitie blokken](how-to-configure-auto-train.md)               | Alle                     |
-| AutoML experimenten maken en uitvoeren [in Studio (web)](how-to-use-automated-ml-for-ml-models.md)   | Alleen Enter prise Edition |
+| AutoML experimenten maken en uitvoeren [in notitie blokken](how-to-configure-auto-train.md)               | Alles                     |
+| AutoML experimenten maken en uitvoeren  [in Studio (web)](how-to-use-automated-ml-for-ml-models.md)   | Alleen Enter prise Edition |
 | Toonaangevende AutoML-prognose mogelijkheden             | Alleen Enter prise Edition |
 | Ondersteuning voor diep gaande lessen en andere geavanceerde kennissen | Alleen Enter prise Edition |
 | Grote gegevens ondersteuning classificatie en regressie taken (Maxi maal 100 GB)                     | Alleen Enter prise Edition |
@@ -62,10 +62,10 @@ Lees hier meer over het [upgraden van een Basic-werkruimte naar de Enterprise-ed
 
 | Functies    | Editie                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| [Model uitleg](how-to-machine-learning-interpretability-automl.md)                                              | Alle                     |
-| [Differentiële privacy](how-to-differential-privacy.md)                          | Alle                     |
-| Aangepaste labels voor het implementeren van gegevens bladen    | Alle                     |
-| Verdeling AzureML-integratie                                      | Alle                     |
+| [Model uitleg](how-to-machine-learning-interpretability-automl.md)                                              | Alles                     |
+| [Differentiële privacy](how-to-differential-privacy.md)                          | Alles                     |
+| Aangepaste labels voor het implementeren van gegevens bladen    | Alles                     |
+| Verdeling AzureML-integratie                                      | Alles                     |
 
 <br/>
 <br/>
@@ -75,19 +75,19 @@ Lees hier meer over het [upgraden van een Basic-werkruimte naar de Enterprise-ed
 
 | Functies    | Editie                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| Integratie van Visual Studio code                                                     | Alle                     |
-| Leer versterking                                                             | Alle                     |
-| Gebruikers interface voor experimenten                                                                 | Alle                     |
-| Jupyter, Jjupyterlab-integratie                                                    | Alle                     |
-| Ondersteuning voor python-SDK                                                                 | Alle                     |
-| R SDK-ondersteuning                                                                      | Alle                     |
-| ML pijp lijnen: maken, uitvoeren en publiceren in python                           | Alle                     |
-| ML pijp lijnen: geplande uitvoeringen van pijp lijnen maken, bewerken en verwijderen in python| Alle                     |
-| ML pijp lijnen: pijplijn eindpunten maken in python SDK                                   | Alle                     |
-| ML van pijp lijnen: uitvoerings details weer geven in Studio (web)                                              | Alle                     |
+| Integratie van Visual Studio code                                                     | Alles                     |
+| Leer versterking                                                             | Alles                     |
+| Gebruikers interface voor experimenten                                                                 | Alles                     |
+| Jupyter, Jjupyterlab-integratie                                                    | Alles                     |
+| Ondersteuning voor python-SDK                                                                 | Alles                     |
+| R SDK-ondersteuning                                                                      | Alles                     |
+| ML pijp lijnen: maken, uitvoeren en publiceren in python                           | Alles                     |
+| ML pijp lijnen: geplande uitvoeringen van pijp lijnen maken, bewerken en verwijderen in python| Alles                     |
+| ML pijp lijnen: pijplijn eindpunten maken in python SDK                                   | Alles                     |
+| ML van pijp lijnen: uitvoerings details weer geven in Studio (web)                                              | Alles                     |
 | ML pijp lijnen: maken, uitvoeren, visualiseren en publiceren in Designer                  | Alleen Enter prise Edition |
 | ML pijp lijnen: pijplijn eindpunten maken in Designer | Alleen Enter prise Edition |
-| Beheerde Compute-instanties voor geïntegreerde notebooks                                 | Alle                     |
+| Beheerde Compute-instanties voor geïntegreerde notebooks                                 | Alles                     |
 
 
 <br/>
@@ -97,13 +97,13 @@ Lees hier meer over het [upgraden van een Basic-werkruimte naar de Enterprise-ed
 
 | Functies                            | Editie                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| De Azure DevOps-extensie voor Machine Learning en de Azure ML CLI                 | Alle                     |
-| [Event Grid-integratie](how-to-use-event-grid.md)                                                             | Alle                     |
-| Azure Stream Analytics integreren met Azure Machine Learning                       | Alle                     |
-| ML-pijp lijnen maken in SDK                                                         | Alle                     |
-| Batch-deinterferentie                                                                  | Alle                     |
-| Op FPGA gebaseerd Modellen met hardwareversnelling                                             | Alle                     |
-| Model profilering                                                                    | Alle                     |
+| De Azure DevOps-extensie voor Machine Learning en de Azure ML CLI                 | Alles                     |
+| [Event Grid-integratie](how-to-use-event-grid.md)                                                             | Alles                     |
+| Azure Stream Analytics integreren met Azure Machine Learning                       | Alles                     |
+| ML-pijp lijnen maken in SDK                                                         | Alles                     |
+| Batch-deinterferentie                                                                  | Alles                     |
+| Op FPGA gebaseerd Modellen met hardwareversnelling                                             | Alles                     |
+| Model profilering                                                                    | Alles                     |
 
 <br/>
 <br/>
@@ -112,10 +112,10 @@ Lees hier meer over het [upgraden van een Basic-werkruimte naar de Enterprise-ed
 
 | Functies     | Editie                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| [Azure RBAC-ondersteuning (op rollen gebaseerd toegangs beheer)](how-to-assign-roles.md)                                           | Alle                     |
-| [Virtual Network-ondersteuning (VNet)](how-to-enable-virtual-network.md) voor compute                                         | Alle                     |
-| Score endpoint-verificatie                                                    | Alle                     |
-| [Persoonlijke werkruimte koppeling](how-to-configure-private-link.md)                                                            | Alle                     |
+| [Azure RBAC-ondersteuning (op rollen gebaseerd toegangs beheer)](how-to-assign-roles.md)                                           | Alles                     |
+| [Virtual Network-ondersteuning (VNet)](how-to-enable-virtual-network.md) voor compute                                         | Alles                     |
+| Score endpoint-verificatie                                                    | Alles                     |
+| [Persoonlijke werkruimte koppeling](how-to-configure-private-link.md)                                                            | Alles                     |
 | [Quota beheer](how-to-manage-quotas.md) in werk ruimten                                                 | Alleen Enter prise Edition |
 
 ## <a name="next-steps"></a>Volgende stappen

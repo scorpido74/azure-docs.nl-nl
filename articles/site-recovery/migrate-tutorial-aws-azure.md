@@ -1,6 +1,6 @@
 ---
-title: AWS-VM's migreren naar Azure met de Azure Site Recovery-service | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u virtuele Windows-machines die worden uitgevoerd op Amazon Web Services (AWS) naar Azure migreert met behulp van Azure Site Recovery.
+title: AWS-VM's naar Azure migreren met Azure Migrate
+description: Dit artikel biedt een beschrijving van de opties voor het migreren van AWS-exemplaren naar Azure en doet een aanbeveling voor Azure Migrate.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/27/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: dd91e99b45405cca10b9ddc2982674e72ad6bf86
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83d8106b9f206da9095c37b6179bdda8001b439c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281290"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852766"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>AWS-VM’s (Amazon Web Services) migreren naar Azure
 
@@ -22,7 +22,7 @@ In dit artikel worden de opties voor het migreren van Amazon Web Services-exempl
 
 ## <a name="migrate-with-azure-migrate"></a>Migreren met Azure Migrate
 
-We raden aan dat u AWS-exemplaren naar Azure migreert met behulp van de service [Azure Migrate](../migrate/migrate-services-overview.md). Azure Migrate biedt een gecentraliseerde hub voor de evaluatie en migratie van on-premises machines naar Azure met behulp van Azure Migrate, andere Azure-services en hulpprogramma’s van derden.
+Het wordt aanbevolen AWS EC2-exemplaren naar Azure te migreren met behulp van de service [Azure Migrate](../migrate/migrate-services-overview.md). Azure Migrate is speciaal ontworpen voor servermigratie. Azure Migrate biedt een centrale hub voor detectie, evaluatie en migratie van on-premises machines naar Azure.
 
 [Meer informatie](../migrate/tutorial-migrate-aws-virtual-machines.md) over het migreren van AWS-exemplaren met Azure Migrate. 
 

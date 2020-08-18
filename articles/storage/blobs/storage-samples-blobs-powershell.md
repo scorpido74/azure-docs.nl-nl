@@ -1,18 +1,18 @@
 ---
 title: Voorbeelden van Azure PowerShell voor Azure Blob Storage | Microsoft Docs
-description: Voorbeelden van Azure PowerShell voor het werken met Azure Blob Storage
+description: Zie koppelingen naar Azure PowerShell-voorbeeldscripts voor het werken met Azure Blob Storage, zoals het maken van een opslagaccount, het migreren van blobs tussen accounts, en meer.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/07/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: f66c188186c81e5a4d15c417a31ab096ba7ef598
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05f02fe5bd6d106e7187eea7600ffe0c7fc7e955
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020896"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828163"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Voorbeelden van Azure PowerShell voor Azure Blob Storage
 

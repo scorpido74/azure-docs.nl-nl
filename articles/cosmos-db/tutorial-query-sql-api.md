@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921129"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135994"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Zelfstudie: Query's uitvoeren in Azure Cosmos DB met behulp van de SQL-API
 
@@ -113,7 +113,7 @@ Op basis van het bovenstaand voorbeelddocument van een familie retourneert de vo
 
 ## <a name="example-query-2"></a>Voorbeeldquery 2
 
-De volgende query retourneert alle opgegeven namen van kinderen in de familie waarvan de id overeenkomt met `WakefieldFamily`, gesorteerd op leerjaar.
+In de volgende query worden alle opgegeven namen geretourneerd van kinderen in de familie van wie de id overeenkomt met `WakefieldFamily`.
 
 **Query**
 

@@ -10,25 +10,25 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018, tracking-python
-ms.openlocfilehash: c4dd2de53f0222b687a05690727f0aa9e25c7d53
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.custom: seodec2018, devx-track-python
+ms.openlocfilehash: 1adb273cfedd2342a1429f0d21cd00e9a5e602a8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608669"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851168"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Snelstartgids: Python gebruiken voor het aanroepen van de Bing Webzoekopdrachten-API  
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Webzoekopdrachten-API te maken. Met deze python-toepassing wordt een zoek opdracht naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Gebruik deze quickstart om de Bing Web Search API voor de eerste keer aan te roepen. Deze Python-app verzendt een zoekaanvraag naar de API en geeft het JSON-antwoord weer. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-Dit voorbeeld wordt uitgevoerd als een Jupyter-notitieblok in [MyBinder](https://mybinder.org). Als u deze wilt uitvoeren, selecteert u de badge met het starten van de binder:
+Dit voorbeeld wordt uitgevoerd als een Jupyter-notitieblok in [MyBinder](https://mybinder.org). Als u deze wilt uitvoeren, selecteert u de badge Binder starten:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python 2. x of 3. x](https://www.python.org/)
+* [Python 2.x of 3.x](https://www.python.org/)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -41,13 +41,13 @@ Dit voorbeeld wordt uitgevoerd als een Jupyter-notitieblok in [MyBinder](https:/
    assert subscription_key
    ```
 
-2. Declareer het eindpunt voor de Bing Webzoekopdrachten-API. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Declareer het eindpunt voor de Bing Webzoekopdrachten-API. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
    ```python
    search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
    ```
 
-3. U kunt de zoek query eventueel aanpassen door de waarde voor te vervangen `search_term` .
+3. U kunt de zoekquery eventueel aanpassen door de waarde voor `search_term` te vervangen.
 
    ```python
    search_term = "Azure Cognitive Services"
@@ -55,9 +55,9 @@ Dit voorbeeld wordt uitgevoerd als een Jupyter-notitieblok in [MyBinder](https:/
 
 ## <a name="make-a-request"></a>Een aanvraag maken
 
-Deze code gebruikt de `requests` bibliotheek om de Bing webzoekopdrachten-API aan te roepen en de resultaten te retour neren als een JSON-object. De API-sleutel wordt doorgegeven in de `headers`-woordenlijst, en de zoekterm en queryparameters worden doorgegeven in de `params`-woordenlijst. 
+Deze code maakt gebruik van de `requests`-bibliotheek om de Bing Web Search-API aan te roepen en de resultaten als een JSON-object te retourneren. De API-sleutel wordt doorgegeven in de `headers`-woordenlijst, en de zoekterm en queryparameters worden doorgegeven in de `params`-woordenlijst. 
 
-Zie [Bing webzoekopdrachten-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)voor een volledige lijst met opties en para meters.
+Raadpleeg [Bing Web Search-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) voor een volledige lijst met opties en parameters.
 
 ```python
 import requests
@@ -71,7 +71,7 @@ search_results = response.json()
 
 ## <a name="format-and-display-the-response"></a>Het antwoord opmaken en weergeven
 
-Het `search_results` object bevat de zoek resultaten en dergelijke meta gegevens als gerelateerde query's en pagina's. Deze code maakt gebruikt van de `IPython.display`-bibliotheek om het antwoord in uw browser op te maken en weer te geven.
+Het object `search_results` bevat de zoekresultaten en metagegevens als gerelateerde query's en pagina's. Deze code maakt gebruikt van de `IPython.display`-bibliotheek om het antwoord in uw browser op te maken en weer te geven.
 
 ```python
 from IPython.display import HTML
@@ -86,11 +86,11 @@ HTML("<table>{0}</table>".format(rows))
 
 ## <a name="sample-code-on-github"></a>Voorbeeldcode in GitHub
 
-Als u deze code lokaal wilt uitvoeren, raadpleegt u het volledige [voor beeld dat beschikbaar is op github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingWebSearchv7.py).
+Als u deze code lokaal wilt uitvoeren, raadpleegt u het volledige [voorbeeld op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingWebSearchv7.py).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Bing Webzoekopdrachten-API zelf studie voor een app met één pagina](../tutorial-bing-web-search-single-page-app.md)
+> [Zelfstudie voor de app met één pagina voor de Bing Web Search API](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

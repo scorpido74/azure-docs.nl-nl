@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-voorbeeldscript - Containers verwijderen op basis van voorvoegsel | Microsoft Docs
-description: Verwijder Azure Storage-blobcontainers op basis van het voorvoegsel van een containernaam.
+description: Verwijder Azure Storage-blobcontainers op basis van het voorvoegsel van een containernaam, en schoon de implementatie vervolgens op. Zie Help-koppelingen voor opdrachten die worden gebruikt in het voorbeeldscript.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 66869b7dc38e11b614ebc89538c2c195122b5bb3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aeccf255004cd4512fbc591942324341504b20f7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479554"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901875"
 ---
 # <a name="use-an-azure-cli-script-to-delete-containers-based-on-container-name-prefix"></a>Een Azure CLI-script gebruiken om containers te verwijderen op basis van het containernaamvoorvoegsel
 

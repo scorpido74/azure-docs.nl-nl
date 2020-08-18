@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76939105"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079447"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Zelfstudie: DNS-records voor een web-app in een aangepast domein maken 
 
-U kunt Azure DNS configureren voor het hosten van een aangepast domein voor uw web-apps. U kunt bijvoorbeeld een Azure-web-app maken en uw gebruikers toegang geven met www\.-contoso.com of contoso.com als een Fully QUALIFIED domain name (FQDN).
+U kunt Azure DNS configureren voor het hosten van een aangepast domein voor uw web-apps. U kunt bijvoorbeeld een web-app in Azure maken en uw gebruikers toegang geven via www\.contoso.com of contoso.com als een volledig gekwalificeerde domeinnaam (FQDN).
 
 > [!NOTE]
 > Contoso.com wordt in de hele zelfstudie als voorbeeld gebruikt. Vervang uw eigen domeinnaam door contoso.com.
@@ -39,7 +39,7 @@ In deze zelfstudie leert u het volgende:
 > * De aangepaste hostnamen testen
 
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,8 +47,8 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* U moet een domein naam hebben om te kunnen testen met die u in Azure DNS kunt hosten. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
-* [Maak een App Service-app](../app-service/app-service-web-get-started-html.md), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
+* U moet een domeinnaam beschikbaar hebben voor testen die u in Azure DNS kunt hosten. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
+* [Maak een App Service-app](../app-service/quickstart-html.md), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
 
 * Maak een DNS-zone in Azure DNS en delegeer de zone in uw registrar naar Azure DNS.
 
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 App Services gebruikt dit record alleen tijdens de configuratie, om te controleren of u de eigenaar bent van het aangepaste domein. Nadat uw aangepaste domein is gevalideerd en geconfigureerd in App Service, kunt u dit TXT-record verwijderen.
 
 > [!NOTE]
-> Als u de domein naam wilt controleren, maar geen productie verkeer naar de Web-App wilt door sturen, hoeft u alleen de TXT-record voor de verificatie stap op te geven.  Voor verificatie is naast de TXT-record geen CNAME-record vereist.
+> Als u de domeinnaam wilt verifiëren, maar productieverkeer niet naar de web-app wilt routeren, hoeft u alleen de TXT-record op te geven voor de verificatiestap.  Voor verificatie is naast de TXT-record geen A- of CNAME-record nodig.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,7 +173,7 @@ set-AzWebApp `
 Open een browser en browse naar `http://www.<your domainname>` en `http://<you domain name>`.
 
 > [!NOTE]
-> Zorg ervoor dat u het `http://` voor voegsel opneemt, anders kan uw browser proberen een URL voor te voors pellen.
+> Zorg ervoor dat u het voorvoegsel `http://` toevoegt, anders probeert de browser een URL voor u te voorspellen.
 
 U zou voor beide URL's dezelfde pagina moeten zien. Bijvoorbeeld:
 

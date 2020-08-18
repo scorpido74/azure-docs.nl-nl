@@ -1,21 +1,21 @@
 ---
-title: 'Zelf studie: REST-API hosten met CORS'
-description: Informatie over hoe u met Azure App Service uw RESTful API's met CORS-ondersteuning kunt hosten. App Service kunnen zowel front-end web-apps als back-end-Api's hosten.
+title: 'Zelfstudie: RESTful API hosten met CORS'
+description: Informatie over hoe u met Azure App Service uw RESTful API's met CORS-ondersteuning kunt hosten. App Service kan zowel front-end-web-apps als back-end-API’s hosten.
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: c59ff344cc3e24387c764ba2f23bc3fe0065b371
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 78d44310420558d2f57d2b652f8453028b20c433
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559808"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077651"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Zelfstudie: een RESTful API hosten met CORS in Azure App Service
 
-[Azure app service](overview.md) biedt een uiterst schaal bare webhostingservice met self-patch functie. Daarnaast bevat App Service ingebouwde ondersteuning voor [CORS (Cross-Origin Resource Sharing)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) voor RESTful API's. In deze zelfstudie leert u hoe u een ASP.NET Core API-app in App Service met CORS-ondersteuning implementeert. U configureert de app met opdrachtregelprogramma's en implementeert de app met behulp van Git. 
+[Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie. Daarnaast bevat App Service ingebouwde ondersteuning voor [CORS (Cross-Origin Resource Sharing)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) voor RESTful API's. In deze zelfstudie leert u hoe u een ASP.NET Core API-app in App Service met CORS-ondersteuning implementeert. U configureert de app met opdrachtregelprogramma's en implementeert de app met behulp van Git. 
 
 In deze zelfstudie leert u het volgende:
 
@@ -30,10 +30,10 @@ U kunt de stappen in deze zelfstudie volgen voor macOS, Linux en Windows.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 * <a href="https://git-scm.com/" target="_blank">Git installeren</a>
- * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">De nieuwste versie van .NET Core 3,1 SDK installeren</a>
+ * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">De nieuwste versie van .NET Core 3.1 SDK installeren</a>
 
 ## <a name="create-local-aspnet-core-app"></a>Lokale ASP.NET Core-app maken
 
@@ -142,7 +142,7 @@ Schakel vervolgens de ingebouwde CORS-ondersteuning in App Service voor uw API i
 
 Open _wwwroot/index.html_ in uw lokale opslagplaats.
 
-Stel in regel 51 de variabele `apiEndpoint` in op de URL van uw geïmplementeerde API (`http://<app_name>.azurewebsites.net`). Vervang _ \<appName>_ door de naam van uw app in app service.
+Stel in regel 51 de variabele `apiEndpoint` in op de URL van uw geïmplementeerde API (`http://<app_name>.azurewebsites.net`). Vervang _\<appname>_ door de naam van de app in App Service.
 
 Voor de voorbeeld-app opnieuw uit in het lokale terminalvenster.
 
@@ -150,7 +150,7 @@ Voor de voorbeeld-app opnieuw uit in het lokale terminalvenster.
 dotnet run
 ```
 
-Ga naar de browser-app op `http://localhost:5000`. Open het venster ontwikkel hulpprogramma's in uw browser (`Ctrl` + `Shift` + `i` in Chrome voor Windows) en controleer het tabblad **console** . U ziet nu het fout bericht, `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Ga naar de browser-app op `http://localhost:5000`. Open het venster van de hulpprogramma's voor ontwikkelaars in uw browser (`Ctrl`+`Shift`+`i` in Chrome voor Windows) en controleer het tabblad **Console**. U ziet nu het foutbericht, `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
 ![CORS-fout in de browserclient](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -160,7 +160,7 @@ In productie zou de browser-app een openbare URL hebben in plaats van de localho
 
 ### <a name="enable-cors"></a>CORS inschakelen 
 
-In de Cloud Shell schakelt u CORS in voor de URL van uw client met [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) behulp van de opdracht. Vervang de tijdelijke aanduiding voor de _ &lt;app-naam>_ .
+Schakel in Cloud Shell CORS in voor de URL van de client met de opdracht [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add). Vervang de tijdelijke aanduiding _&lt;app-naam>_ .
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
@@ -169,7 +169,7 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 U kunt in `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) meer dan één client-URL instellen. Met `"['*']"` kunt u ook alle client-URL's instellen.
 
 > [!NOTE]
-> Als er voor uw app referenties, zoals cookies of verificatietokens, moeten worden verzonden, is het mogelijk dat de browser de header `ACCESS-CONTROL-ALLOW-CREDENTIALS` van het antwoord vereist. Als u dit in App Service wilt inschakelen `properties.cors.supportCredentials` , `true` moet u deze instellen in de configuratie van CORS. Dit kan niet worden ingeschakeld `allowedOrigins` wanneer `'*'`het bevat.
+> Als er voor uw app referenties, zoals cookies of verificatietokens, moeten worden verzonden, is het mogelijk dat de browser de header `ACCESS-CONTROL-ALLOW-CREDENTIALS` van het antwoord vereist. Als u dit wilt inschakelen in App Service, stelt u `properties.cors.supportCredentials` in uw CORS-configuratie in op `true`. Dit kan niet worden ingeschakeld als `allowedOrigins``'*'` bevat.
 
 ### <a name="test-cors-again"></a>CORS opnieuw testen
 
@@ -203,4 +203,4 @@ Wat u hebt geleerd:
 Ga naar de volgende zelfstudie voor informatie over het verifiëren en autoriseren van gebruikers.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: gebruikers eind-tot-eind verifiëren en autoriseren](app-service-web-tutorial-auth-aad.md)
+> [Zelfstudie: gebruikers eind-tot-eind verifiëren en autoriseren](tutorial-auth-aad.md)

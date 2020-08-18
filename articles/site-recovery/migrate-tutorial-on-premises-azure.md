@@ -1,18 +1,17 @@
 ---
-title: On-premises machines migreren met Azure Site Recovery
-description: In dit artikel wordt beschreven hoe u on-premises VM en fysieke machines naar Azure migreert met behulp van Azure Site Recovery.
-author: rayne-wiselman
+title: On-premises machines migreren met Azure Migrate
+description: Dit artikel bevat een overzicht van het migreren van on-premises machines naar Azure en doet een aanbeveling voor Azure Migrate.
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: 3c421845d4e15ef13ce98d0de111270159f564fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0e60ee346d20113b2ec7970390d9874522cc770
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285353"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847309"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>On-premises machines migreren naar Azure
 
@@ -20,7 +19,7 @@ In dit artikel worden opties voor het migreren van on-premises machines naar Azu
 
 ## <a name="migrate-with-azure-migrate"></a>Migreren met Azure Migrate
 
-We raden aan dat u machines naar Azure migreert met behulp van de service [Azure Migrate](../migrate/migrate-services-overview.md). Azure Migrate biedt een gecentraliseerde hub voor de evaluatie en migratie van on-premises machines naar Azure met behulp van Azure Migrate, andere Azure-services en hulpprogramma’s van derden.
+We raden aan dat u machines naar Azure migreert met behulp van de service [Azure Migrate](../migrate/migrate-services-overview.md). Azure Migrate is speciaal ontworpen voor servermigratie. Azure Migrate biedt een centrale hub voor detectie, evaluatie en migratie van on-premises machines naar Azure.
 
 Volg deze koppelingen om te migreren met Azure Migrate:
 

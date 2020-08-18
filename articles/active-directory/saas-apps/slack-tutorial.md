@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 07/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffc9d3f4feb003d537b52cde15356e756aa11c0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd5e3e2a0e6d50340954600c5a452b6d026e5afc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500103"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987439"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Slack
 
@@ -159,15 +159,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Navigeer naar **Microsoft Azure AD** en ga naar **Teaminstellingen**.
 
-     ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-001.png)
+     ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. Klik in het gedeelte **Teaminstellingen** op het tabblad **Verificatie** en klik op **Instellingen wijzigen**.
 
-    ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-002.png)
+    ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. Voer in het dialoogvenster **SAML-verificatie-instellingen** de volgende stappen uit:
 
-    ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-003.png)
+    ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  Plak de waarde van **Aanmeldings-URL**, die u hebt gekopieerd vanuit Azure Portal, in het tekstvak **SAML 2.0-eindpunt (HTTP)** .
 
@@ -177,7 +177,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
     d. Configureer de bovenstaande drie instellingen in overeenstemming met uw Slack-team. Raadpleeg hier de **Configuratiehandleiding voor eenmalige aanmelding van Slack** voor meer informatie over de instellingen. `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-004.png)
+    ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-expand.png)
 
     e. Klik op **Uitvouwen** en typ `https://slack.com` in het tekstvak **Verlener serviceprovider**.
 

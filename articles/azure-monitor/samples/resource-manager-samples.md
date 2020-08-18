@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 4446eef481e8370f7457311f6eae6ce40f9e6727
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab869fc8577d4d1934be96404ded5a2051237bbf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539258"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922725"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Resource Manager-voorbeeldsjablonen voor Azure Monitor
 
@@ -49,7 +49,7 @@ az deployment group create \
 - Waarschuwingen
   - [Waarschuwingsregels van logboek](resource-manager-alerts-log.md): waarschuwingen van logboekquery's en Azure-activiteitenlogboek.
   - [Metrische waarschuwingsregels](resource-manager-alerts-metric.md): waarschuwingen van metrische gegevens die gebruikmaken van verschillende soorten logica.
-- Application Insights: binnenkort beschikbaar.
+- [Application Insights](resource-manager-app-resource.md)
 - [Diagnostische instellingen](resource-manager-diagnostic-settings.md): diagnostische instellingen maken om logboeken en metrische gegevens van verschillende resourcetypen door te sturen.
 - [Logboekquery's](resource-manager-log-queries.md): opgeslagen logboekquery's maken in een Log Analytics-werkruimte.
 - [Log Analytics-werkruimte](resource-manager-workspace.md): Log Analytics-werkruimte maken en verzameling van verschillende gegevensbronnen van Log Analytics-agent configureren.

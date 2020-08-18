@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: a0ec14448df91aa49e7140e608c65e216773c57d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: fea75e94e6a96e3fc223670536e7c05e271fa901
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987025"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833824"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Snelstart: Gezichten in een afbeelding detecteren met de Face REST API en cURL
 
-In deze Quick Start gebruikt u de Azure face REST API met krul om menselijke gezichten in een installatie kopie te detecteren.
+In deze quickstart gebruikt u de Azure Face REST API met cURL om menselijke gezichten in een afbeelding te detecteren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Een Face-resource maken"  target="_blank">maakt u een Face-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Face-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="write-the-command"></a>De opdracht schrijven
  
-U gebruikt een opdracht als de volgende om de Face-API aan te roepen en face-kenmerk gegevens op te halen uit een installatie kopie. Kopieer eerst de code in een teksteditor&mdash;u moet wijzigingen aanbrengen in bepaalde gedeelten van de opdracht voordat u deze kunt uitvoeren.
+U gebruikt een opdracht zoals de volgende om de Face-API aan te roepen en kenmerkgegevens voor gezichten op te halen uit een afbeelding. Kopieer eerst de code in een teksteditor&mdash;u moet wijzigingen aanbrengen in bepaalde gedeelten van de opdracht voordat u deze kunt uitvoeren.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
@@ -43,7 +43,7 @@ Vervang `<Subscription Key>` door een geldige Face-abonnementssleutel.
 
 ### <a name="face-endpoint-url"></a>Eindpunt-URL voor Face
 
-De URL `https://<My Endpoint String>.com/face/v1.0/detect` geeft het Azure Face-eindpunt aan waarvoor een query moet worden uitgevoerd. Mogelijk moet u het eerste deel van deze URL wijzigen zodat deze overeenkomt met het eind punt dat overeenkomt met uw abonnements sleutel.
+De URL `https://<My Endpoint String>.com/face/v1.0/detect` geeft het Azure Face-eindpunt aan waarvoor een query moet worden uitgevoerd. U moet het eerste gedeelte van deze URL mogelijk wijzigen zodat deze overeenkomt met het eindpunt dat bij uw abonnementssleutel hoort.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -56,7 +56,7 @@ De queryreeks van de Face-eindpunt-URL geeft op welke gezichtskenmerken moeten w
 ```
 
 ### <a name="image-source-url"></a>Bron-URL van afbeelding
-De bron-URL geeft aan welke afbeelding moet worden gebruikt als invoer. U kunt dit wijzigen zodat deze verwijst naar een wille keurige afbeelding die u wilt analyseren.
+De bron-URL geeft aan welke afbeelding moet worden gebruikt als invoer. U kunt de URL wijzigen zodat deze verwijst naar de afbeelding die u wilt analyseren.
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
@@ -160,7 +160,7 @@ Nadat u de wijzigingen hebt aangebracht, opent u een opdrachtprompt en voert u d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een krul opdracht geschreven waarmee de Azure face-service wordt aangeroepen om gezichten in een installatie kopie te detecteren en hun kenmerken te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
+In deze quickstart hebt u een cURL-opdracht geschreven waarmee de Azure Face-service wordt aangeroepen om gezichten in een afbeelding te detecteren en de gezichtskenmerken te retourneren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
 
 > [!div class="nextstepaction"]
 > [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

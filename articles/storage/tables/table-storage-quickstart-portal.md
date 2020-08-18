@@ -1,6 +1,6 @@
 ---
-title: 'Quick Start: een Azure Storage tabel maken in de Azure Portal'
-description: In deze Quick Start maakt u een Azure Storage Table service-tabel in de Azure Portal.
+title: 'Quickstart: een Azure Storage-tabel maken in Azure Portal'
+description: In deze quickstart gebruikt u de Table service in Azure Portal om een Azure Storage-tabel te maken. U ziet ook hoe u een Azure-opslagaccount kunt maken.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 63495206ffffc57a895a9ec1efc88410a02ea097
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 3117a1ff24dd0a2a91768844bea41670ced8ff90
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75979952"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033526"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Snelstartgids: Een Azure Storage-tabel maken in de Azure-portal 
 

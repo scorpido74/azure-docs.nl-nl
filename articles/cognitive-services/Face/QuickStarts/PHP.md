@@ -1,35 +1,35 @@
 ---
 title: 'Snelstart: Gezichten in een afbeelding detecteren met de REST API en PHP'
 titleSuffix: Azure Cognitive Services
-description: In deze Snelstartgids detecteert u gezichten van een afbeelding met behulp van het gezichts REST API met PHP.
+description: In deze quickstart detecteert u gezichten in een afbeelding met behulp van de Face REST API met PHP.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: f4d848eae23023d55ad41b7893610f246eddefd9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: 7ae54d1d1c649da510c9653acbd7f118069d366c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987810"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833909"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en PHP
 
-In deze Quick Start gebruikt u de Azure face REST API met PHP om menselijke gezichten in een installatie kopie te detecteren.
+In deze quickstart gebruikt u de Azure Face REST API met PHP om menselijke gezichten in een afbeelding te detecteren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
-* Een code-editor, zoals [Visual Studio code](https://code.visualstudio.com/download).
-* Het PHP- [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) pakket.
-* Een webbrowser met PHP-functionaliteit. Als u dit niet hebt ingesteld, kunt u dit doen door [XAMPP](https://www.apachefriends.org/) op uw computer te installeren en in te stellen.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Een Face-resource maken"  target="_blank">maakt u een Face-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Face-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+* Een code-editor zoals [Visual Studio Code](https://code.visualstudio.com/download).
+* Het PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2)-pakket.
+* Een webbrowser waarvoor PHP is ingeschakeld. Als dit niet is ingesteld, kunt u dat doen door [XAMPP](https://www.apachefriends.org/) op uw computer te installeren en in te stellen.
 
 ## <a name="initialize-the-html-file"></a>Het HTML-bestand initialiseren
 
@@ -46,7 +46,7 @@ Maak een nieuw HTML-bestand, *detectFaces.html*, en voeg de volgende code toe.
 
 ## <a name="write-the-php-script"></a>Het PHP-script schrijven
 
-Voeg de volgende code toe in het element `body` van het document. Met deze code wordt een basis gebruikers interface ingesteld met een URL-veld, een knop **vlak analyseren** , een antwoord venster en een afbeeldings weergave deel venster.
+Voeg de volgende code toe in het element `body` van het document. Met deze code wordt een eenvoudige gebruikersinterface ingesteld met een URL-veld, een knop **Gezicht analyseren**, een antwoordvenster en een venster voor de weergave van afbeeldingen.
 
 ```php
 <?php
@@ -102,7 +102,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet de `uriBase` teken reeks wijzigen zodat deze de juiste eindpunt teken reeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
+U moet het veld `subscriptionKey` bijwerken met de waarde van uw abonnementssleutel en de tekenreeks `uriBase` zo wijzigen dat deze de juiste eindpunttekenreeks bevat. Het veld `returnFaceAttributes` geeft op welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -291,7 +291,7 @@ Open het bestand in een webbrowser waarvoor PHP is ingeschakeld. U zou een JSON-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken de Face-API die worden gebruikt voor het detecteren van menselijke gezichten in een afbeelding, afbaken de gezichten met rechthoeken en retour neer kenmerken zoals leeftijd en geslacht.
+Verken de Face-API die wordt gebruikt om menselijke gezichten in een afbeelding te detecteren, de gezichten af ​​te bakenen met rechthoeken en kenmerken zoals leeftijd en geslacht te retourneren.
 
 > [!div class="nextstepaction"]
 > [Face-API's](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

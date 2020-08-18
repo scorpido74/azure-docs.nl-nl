@@ -1,7 +1,7 @@
 ---
-title: "Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en python"
+title: "Quickstart: Zoekquery's voorstellen met de Bing Automatische suggesties-API en Python"
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe u snel zoek termen in realtime kunt bekijken met de Automatische suggestie-API voor Bing.
+description: Meer informatie over hoe u snel zoektermen in realtime kunt voorstellen met de Automatische suggestie-API voor Bing.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,33 +10,33 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.custom: tracking-python
-ms.openlocfilehash: ea2605258b37c8dd706c5ff82d060d1a14770f63
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.custom: devx-track-python
+ms.openlocfilehash: 2106b36d1b769f0bb207d77eb2395623c14a4a17
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608992"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848057"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en python
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Quickstart: Zoekquery's voorstellen met de Bing Automatische suggesties-API en Python
 
-Volg deze Quick start voor meer informatie over het aanroepen van de Automatische suggestie-API voor Bing en het lezen van de JSON-reactie. Met deze eenvoudige python-toepassing wordt een gedeeltelijke Zoek query naar de API verzonden en worden suggesties voor Zoek opdrachten geretourneerd. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)
+Volg deze quickstart voor meer informatie over het aanroepen van de Automatische suggestie-API voor Bing en het lezen van de JSON-reactie. Met deze eenvoudige Python-toepassing wordt een gedeeltelijke zoekquery naar de API verzonden en worden suggesties voor zoekopdrachten geretourneerd. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python 3. x](https://www.python.org/downloads/) 
+* [Python 3.x](https://www.python.org/downloads/) 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ## <a name="create-a-new-application"></a>Een nieuwe toepassing maken
 
-1. Maak een nieuw python-bestand in uw favoriete IDE of editor. Voeg de volgende invoer toe:
+1. Maak een nieuw Python-bestand in uw favoriete IDE of editor. Voeg de volgende imports toe:
 
     ```python
     import http.client, urllib.parse, json
     ```
 
-2. Maak variabelen voor uw API-host en-pad, een [markt code](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)en een gedeeltelijke Zoek query. Gebruik het globale eind punt in de volgende code of gebruik het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor uw API-host en -pad, [marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) en gedeeltelijke zoekquery. Gebruik het globale eindpunt in de volgende code of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in Azure Portal voor uw resource.
 
     ```python
     subscriptionKey = 'enter key here'
@@ -46,7 +46,7 @@ Volg deze Quick start voor meer informatie over het aanroepen van de Automatisch
     query = 'sail'
     ```
 
-3. Maak een para meter string door uw markt code toe te voegen aan de `mkt=` para meter en de query toe te voegen aan de `q=` para meter.
+3. Maak een parameterstring door uw marktcode aan de parameter `mkt=` en uw query aan de parameter `q=` toe te voegen.
 
     ```python
     params = '?mkt=' + mkt + '&q=' + query
@@ -54,13 +54,13 @@ Volg deze Quick start voor meer informatie over het aanroepen van de Automatisch
 
 ## <a name="create-and-send-an-api-request"></a>Een API-aanvraag maken en verzenden
 
-1. Voeg uw abonnements sleutel toe aan een `Ocp-Apim-Subscription-Key` koptekst.
+1. Voeg uw abonnementssleutel toe aan een `Ocp-Apim-Subscription-Key`-header.
     
     ```python
     headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
     ```
 
-2. Maak verbinding met de API met behulp van `HTTPSConnection()` en verzend de `GET` aanvraag met uw aanvraag parameters.
+2. Maak verbinding met de API met behulp van `HTTPSConnection()` en verzend de `GET`-aanvraag met uw aanvraagparameters.
     
     ```python
     conn = http.client.HTTPSConnection(host)
@@ -69,7 +69,7 @@ Volg deze Quick start voor meer informatie over het aanroepen van de Automatisch
     return response.read ()
     ```
 
-3. De JSON-reactie ophalen en afdrukken.
+3. Haal het JSON-antwoord op en druk het af.
 
     ```python
     result = get_suggestions ()

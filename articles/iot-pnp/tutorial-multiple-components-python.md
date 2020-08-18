@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0cde9caa2f2b68b1e75eac635a81865cc4b6b33c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 571f0e0ceff0adfbf1814abc627fcab6b23acbe1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351767"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905853"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-python"></a>Zelfstudie: Een voorbeeld van een IoT Plug and Play Preview-apparaattoepassing met verschillende onderdelen verbinden met IoT Hub (Python)
 
@@ -86,26 +86,26 @@ Open het bestand *pnp_temp_controller_with_thermostats.py* in een editor naar ke
 
 1. Importeert `pnp_helper_preview_refresh.py` om toegang te krijgen tot de hulpmethoden.
 
-1. Definieert twee DTMI's (digital twin model identifiers) die twee verschillende interfaces vertegenwoordigen, zoals gedefinieerd in het DTDL-model. De onderdelen van een echte temperatuurregeling moeten deze twee interfaces implementeren. Deze twee interfaces zijn al gepubliceerd in een centrale opslagplaats. Deze DTMI's moeten bekend zijn bij de gebruiker, en variëren in functie van het scenario van de apparaatimplementatie. Voor het huidige voorbeeld vertegenwoordigen deze twee interfaces:
+2. Definieert twee DTMI's (digital twin model identifiers) die twee verschillende interfaces vertegenwoordigen, zoals gedefinieerd in het DTDL-model. De onderdelen van een echte temperatuurregeling moeten deze twee interfaces implementeren. Deze twee interfaces zijn al gepubliceerd in een centrale opslagplaats. Deze DTMI's moeten bekend zijn bij de gebruiker, en variëren in functie van het scenario van de apparaatimplementatie. Voor het huidige voorbeeld vertegenwoordigen deze twee interfaces:
 
   - Een thermostaat
   - Apparaatgegevens ontwikkeld door Azure.
 
-. Definieert de DTMI `model_id`voor het apparaat dat geïmplementeerd wordt. De DTMI is gebruikersgedefinieerd en moet overeenkomen met de DTMI in het DTDL-modelbestand.
+3. Definieert de DTMI `model_id` voor het apparaat dat wordt geïmplementeerd. De DTMI is gebruikersgedefinieerd en moet overeenkomen met de DTMI in het DTDL-modelbestand.
 
-1. Definieert de namen voor de onderdelen in het DTDL-bestand. De DTDL bevat twee thermostaten en één onderdeel met apparaatgegevens. Er wordt ook een constante met de naam `serial_number` gedefinieerd in de hoofdinterface. Een `serial_number` kan niet veranderen voor apparaat.
+4. Definieert de namen voor de onderdelen in het DTDL-bestand. De DTDL bevat twee thermostaten en één onderdeel met apparaatgegevens. Er wordt ook een constante met de naam `serial_number` gedefinieerd in de hoofdinterface. Een `serial_number` kan niet veranderen voor apparaat.
 
-1. Definieert de implementaties van opdrachthandlers. Deze bepalen wat het apparaat doet wanneer het opdrachtaanvragen ontvangt.
+5. Definieert de implementaties van opdrachthandlers. Deze bepalen wat het apparaat doet wanneer het opdrachtaanvragen ontvangt.
 
-1. Definieert functies om een opdrachtreactie te maken. Deze bepalen hoe het apparaat reageert op opdrachtaanvragen. U maakt functies voor opdrachtreacties als een opdracht een aangepaste reactie moet terugsturen naar de IoT-hub. Als er geen antwoordfunctie is opgegeven voor een opdracht, wordt een algemeen antwoord verzonden. In dit voorbeeld heeft alleen de **getMaxMinReport**-opdracht een aangepast antwoord.
+6. Definieert functies om een opdrachtreactie te maken. Deze bepalen hoe het apparaat reageert op opdrachtaanvragen. U maakt functies voor opdrachtreacties als een opdracht een aangepaste reactie moet terugsturen naar de IoT-hub. Als er geen antwoordfunctie is opgegeven voor een opdracht, wordt een algemeen antwoord verzonden. In dit voorbeeld heeft alleen de **getMaxMinReport**-opdracht een aangepast antwoord.
 
-1. Definieert een functie om telemetrie te verzenden vanaf dit apparaat. Zowel de thermostaten als de hoofdinterface verzenden telemetrie. Deze functie bevat een optionele parameter voor de onderdeelnaam om te kunnen bepalen welk onderdeel de telemetrie heeft verzonden.
+7. Definieert een functie om telemetrie te verzenden vanaf dit apparaat. Zowel de thermostaten als de hoofdinterface verzenden telemetrie. Deze functie bevat een optionele parameter voor de onderdeelnaam om te kunnen bepalen welk onderdeel de telemetrie heeft verzonden.
 
-1. Definieert een listener voor opdrachtverzoeken.
+8. Definieert een listener voor opdrachtverzoeken.
 
-1. Definieert een listener voor gewenste updates van eigenschappen.
+9. Definieert een listener voor gewenste updates van eigenschappen.
 
-1. Heeft een `main`-functie die:
+10. Heeft een `main`-functie die:
 
     1. De apparaat-SDK gebruikt om een apparaatclient te maken en verbinding te maken met uw IoT-hub. Het apparaat verzendt de `model_id` zodat de IoT-hub het apparaat kan identificeren als een IoT Plug en Play-apparaat.
 
@@ -151,4 +151,4 @@ Nadat het voorbeeld van de apparaatclient is gestart, gebruikt u het hulpprogram
 In deze zelfstudie hebt u geleerd hoe u een IoT Plug and Play-apparaat met onderdelen kunt verbinden met een IoT-hub. Voor meer informatie over IoT Plug and Play-apparaatmodellen raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [Handleiding voor ontwikkelaars van IoT Plug and Play Preview-modellen](concepts-developer-guide.md)
+> [Handleiding voor ontwikkelaars van IoT Plug en Play-previewmodellen](concepts-developer-guide.md)

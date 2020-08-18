@@ -236,7 +236,7 @@
       items:
         - name: Privé-eindpunten configureren
           href: configure-private-endpoints.md
-        - name: IP-firewall configureren (preview)
+        - name: IP-firewall configureren
           href: configure-firewall.md
         - name: Webhook beveiligen met AAD
           href: secure-webhook-delivery.md

@@ -1,6 +1,6 @@
 ---
-title: Zelf studie voor het overdragen van gegevens naar shares met Azure Stack Edge | Microsoft Docs
-description: Meer informatie over het toevoegen en verbinden met shares op Azure Stack edge-apparaat.
+title: Zelfstudie voor het overdragen van gegevens naar shares met Azure Stack Edge | Microsoft Docs
+description: In deze zelfstudie leert u hoe u gegevens aan shares op uw Azure Stack Edge-apparaat toevoegt en hoe u hiermee verbinding maakt, zodat gegevens vanuit Azure Stack Edge naar Azure kunnen worden overgedragen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e62d746be92583abead1c3edb93900068b123838
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: fc47497eeceff20e8357195226c2d44cea64fa88
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82571075"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926107"
 ---
-# <a name="tutorial-transfer-data-with-azure-stack-edge"></a>Zelf studie: gegevens overdragen met Azure Stack Edge
+# <a name="tutorial-transfer-data-with-azure-stack-edge"></a>Zelfstudie: Gegevens overdragen met Azure Stack Edge
 
-In deze zelf studie wordt beschreven hoe u shares toevoegt aan en verbindt met uw Azure Stack edge-apparaat. Nadat u de shares hebt toegevoegd, kan Azure Stack Edge gegevens overdragen naar Azure.
+In deze zelfstudie wordt beschreven hoe u shares toevoegt aan een Azure Stack Edge-apparaat en er verbinding mee maakt. Nadat u de shares hebt toegevoegd, kunnen via Azure Stack Edge gegevens worden overgedragen naar Azure.
 
 Deze procedure neemt in totaal ongeveer tien minuten in beslag.
 
@@ -31,59 +31,59 @@ In deze zelfstudie leert u het volgende:
  
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u shares toevoegt aan Azure Stack Edge, moet u ervoor zorgen dat:
+Voordat u shares aan Azure Stack Edge gaat toevoegen, controleert u het volgende:
 
-- U hebt uw fysieke apparaat geïnstalleerd zoals beschreven in [Azure stack Edge installeren](azure-stack-edge-deploy-install.md).
+- U hebt uw fysieke apparaat geïnstalleerd zoals beschreven in [Azure Stack Edge installeren](azure-stack-edge-deploy-install.md).
 
-- U hebt het fysieke apparaat geactiveerd zoals beschreven in [verbinding maken, instellen en Azure stack Edge activeren](azure-stack-edge-deploy-connect-setup-activate.md).
+- U hebt het fysieke apparaat geactiveerd zoals beschreven in [Azure Stack Edge aansluiten, instellen en activeren](azure-stack-edge-deploy-connect-setup-activate.md).
 
 
 ## <a name="add-a-share"></a>Een share toevoegen
 
 Ga als volgt te werk om een share te maken:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)uw Azure stack Edge-resource en ga vervolgens naar het **overzicht**. Uw apparaat moet online zijn.
+1. Selecteer in [Azure Portal](https://portal.azure.com/) uw Azure Stack Edge-resource en ga naar het **Overzicht**. Als het goed is, is uw apparaat online.
 
-   ![Apparaat online](./media/azure-stack-edge-deploy-add-shares/device-online-1.png)
+   ![Apparaat is online](./media/azure-stack-edge-deploy-add-shares/device-online-1.png)
 
-2. Selecteer **+ share toevoegen** op de opdracht balk van het apparaat.
+2. Selecteer **+ Share toevoegen** op de opdrachtbalk van het apparaat.
 
    ![Een share toevoegen](./media/azure-stack-edge-deploy-add-shares/select-add-share-1.png)
 
 3. Ga als volgt te werk in het deelvenster **Share delen**:
 
     a. Geef in het vak **Naam** een unieke naam op voor de share.  
-    De naam van de share mag alleen bestaan uit kleine letters, cijfers en afbreekstreepjes. De waarde moet tussen de 3 en 63 tekens lang zijn en met een letter of cijfer beginnen. Afbreekstreepjes moeten worden voorafgegaan door een letter of cijfer.
+    De naam van de share mag alleen bestaan uit kleine letters, cijfers en afbreekstreepjes. De naam moet tussen de 3 en 63 tekens lang zijn en beginnen met een letter of cijfer. Afbreekstreepjes moeten worden voorafgegaan door een letter of cijfer.
     
     b. Selecteer een **Type** voor de share.  
     Het type kan **SMB** of **NFS** zijn. SMB is het standaardtype. SMB is het standaardtype voor Windows-clients; NFS wordt gebruikt voor Linux-clients.  
     De andere opties verschillen enigszins, afhankelijk van of u kiest voor SMB- of NFS-shares. 
 
-    c. Geef een opslag account op waarop de share wordt opgeslagen. 
+    c. Geef een opslagaccount op waaronder de share wordt opgeslagen. 
 
     > [!IMPORTANT]
-    > Zorg ervoor dat voor het Azure Storage account dat u gebruikt geen Onveranderbaarheid-beleid is ingesteld als u dit gebruikt met een Azure Stack Edge-of Data Box Gateway-apparaat. Zie [Onveranderbaarheid-beleid instellen en beheren voor Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)voor meer informatie.
+    > Controleer of er op het Azure Storage-account dat u gebruikt geen onveranderbaarheidsbeleid is ingesteld als u het account gebruikt in combinatie met een Azure Stack Edge- of Data Box Gateway-apparaat. Zie [Beleid voor onveranderbaarheid instellen en beheren voor blobopslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage) voor meer informatie.
     
     d. Selecteer in de vervolgkeuzelijst **Storage-service** de optie **Blok-blob**, **Pagina-blob** of **Bestanden**.  
-    Het type service dat u selecteert, is afhankelijk van de gewenste indeling voor de gegevens in Azure. In dit voor beeld selecteren we de gegevens als blok-blobs in azure, maar **blok-BLOB**. Als u **pagina-BLOB**selecteert, moet u ervoor zorgen dat uw gegevens 512 bytes zijn uitgelijnd. VHDX is bijvoorbeeld altijd op 512 bytes uitgelijnd.
+    Het type service dat u selecteert, is afhankelijk van de gewenste indeling voor de gegevens in Azure. In dit voorbeeld selecteren we **Blok-blob** omdat we de gegevens in Azure willen opslaan als blob-blokken. Als u **Pagina-blob** selecteert, moet u ervoor zorgen dat uw gegevens zijn uitgelijnd op 512 bytes. VHDX is bijvoorbeeld altijd op 512 bytes uitgelijnd.
 
-    e. Een nieuwe BLOB-container maken of een bestaande uit de vervolg keuzelijst gebruiken. Als u een BLOB-container maakt, geeft u de naam van een container op. Als er nog geen container bestaat, wordt in het opslagaccount een container gemaakt met de naam van de zojuist gemaakte share.
+    e. Maak een nieuwe blobcontainer of gebruik een bestaande container in de vervolgkeuzelijst. Als u een blobcontainer maakt, moet u ook een naam voor die container opgeven. Als er nog geen container bestaat, wordt in het opslagaccount een container gemaakt met de naam van de zojuist gemaakte share.
    
     f. Voer een van de volgende stappen uit, afhankelijk van of u een SMB-share of een NFS-share hebt gemaakt: 
      
-    - **SMB-share**: Selecteer onder **alle bevoegdheden lokale gebruiker de**optie **nieuwe maken** of **bestaande gebruiken**. Als u een nieuwe lokale gebruiker maakt, voert u een gebruikersnaam en wachtwoord in. Vervolgens bevestigt u het wachtwoord. Met deze actie worden machtigingen toegewezen aan de lokale gebruiker. Nadat u de machtigingen hier hebt toegewezen, kunt u Verkenner gebruiken om ze aan te passen.
+    - **SMB-share**: Selecteer onder **Lokale gebruiker met Alle machtigingen** de optie **Nieuwe maken** of **Bestaande gebruiken**. Als u een nieuwe lokale gebruiker maakt, voert u een gebruikersnaam en wachtwoord in. Vervolgens bevestigt u het wachtwoord. Met deze actie worden machtigingen toegewezen aan de lokale gebruiker. Nadat u de machtigingen hier hebt toegewezen, kunt u Verkenner gebruiken om ze aan te passen.
 
-        Als u het selectie vakje **alleen lees bewerkingen toestaan** voor deze share gegevens inschakelt, kunt u alleen-lezen gebruikers opgeven.
+        Als u het selectievakje **Alleen leesbewerkingen toestaan** selecteert voor deze sharegegevens, kunt u gebruikers met het kenmerk Alleen-lezen opgeven.
 
         ![SMB-share toevoegen](./media/azure-stack-edge-deploy-add-shares/add-share-smb-1.png)
    
-    - **NFS-share**: Voer de IP-adressen in van de toegestane clients die toegang hebben tot de share.
+    - **NFS-share**: Voer de IP-adressen van de clients in die toegang hebben tot de share.
 
         ![NFS-share toevoegen](./media/azure-stack-edge-deploy-add-shares/add-share-nfs-1.png)
    
 4. Selecteer **Maken** om de share te maken.
     
-    U ontvangt een melding als wordt begonnen met het maken van de share. Nadat de share is gemaakt met de opgegeven instellingen, wordt de tegel **shares** bijgewerkt om de nieuwe share weer te geven.
+    U ontvangt een melding als wordt begonnen met het maken van de share. Zodra de share met de opgegeven instellingen is gemaakt, wordt de tegel **Shares** bijgewerkt in overeenstemming met de nieuwe share.
     
 
 ## <a name="connect-to-the-share"></a>Verbinding maken met de share
@@ -92,7 +92,7 @@ U kunt nu verbinding maken met een of meer shares die u hebt gemaakt in de laats
 
 ### <a name="connect-to-an-smb-share"></a>Verbinding maken met een SMB-share
 
-Maak verbinding met een SMB-share op uw Windows Server-client die is verbonden met uw Azure Stack edge-apparaat en voer de volgende opdrachten in:
+Maak op de Windows Server-client die met uw Azure Stack Edge-apparaat is verbonden, verbinding met een SMB-share door deze opdrachten in te voeren:
 
 
 1. Typ in een opdrachtvenster:
@@ -125,7 +125,7 @@ Maak verbinding met een SMB-share op uw Windows Server-client die is verbonden m
 
 ### <a name="connect-to-an-nfs-share"></a>Verbinding maken met een NFS-share
 
-Voer de volgende procedure uit op de Linux-client die is verbonden met uw Azure Stack edge-apparaat:
+Ga als volgt te werk in de Linux-client die is verbonden met het Azure Stack Edge-apparaat:
 
 1. Zorg ervoor dat de NFSv4-client is geïnstalleerd op de client. Als u de NFS-client wilt installeren, gebruikt u de volgende opdracht:
 
@@ -133,34 +133,34 @@ Voer de volgende procedure uit op de Linux-client die is verbonden met uw Azure 
 
     Ga naar [Install NFSv4 client](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client) (NFSv4-client installeren) voor meer informatie.
 
-2. Nadat de NFS-client is geïnstalleerd, koppelt u de NFS-share die u hebt gemaakt op uw Azure Stack edge-apparaat met behulp van de volgende opdracht:
+2. Nadat de NFS-client is geïnstalleerd, koppelt u de NFS-share die u hebt gemaakt, aan het Azure Stack Edge-apparaat met behulp van de volgende opdracht:
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     > [!IMPORTANT]
-    > Gebruik van `sync` de optie bij het koppelen van shares verbetert de overdrachts snelheid van grote bestanden.
+    > Als u de `sync`-optie gebruikt wanneer u shares koppelt, verbetert u de overdrachtssnelheden van grote bestanden.
     > Voordat u de share koppelt, controleert u of de mappen die zullen fungeren als koppelpunten op de lokale computer, al zijn gemaakt. Deze mappen mogen geen bestanden of submappen bevatten.
 
-    In het volgende voor beeld ziet u hoe u verbinding maakt via NFS met een share op uw Azure Stack edge-apparaat. Het IP-adres van het apparaat is `10.10.10.60`. De share `mylinuxshare2` is gekoppeld aan de ubuntuVM. Het koppelpunt van de share is `/home/databoxubuntuhost/edge`.
+    Het volgende voorbeeld toont hoe u via NFS verbinding maakt met een share op een Azure Stack Edge-apparaat. Het IP-adres van het apparaat is `10.10.10.60`. De share `mylinuxshare2` is gekoppeld aan de ubuntuVM. Het koppelpunt van de share is `/home/databoxubuntuhost/edge`.
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
 > [!NOTE] 
-> De volgende opmerkingen zijn van toepassing op deze release:
-> - Wanneer een bestand is gemaakt in de share, wordt de naam van het bestand niet meer ondersteund. 
+> De volgende beperkingen zijn van toepassing op deze release:
+> - Nadat een bestand in de share is gemaakt, kan de naam van het bestand niet meer worden gewijzigd. 
 > - Als een bestand uit een share wordt verwijderd, wordt de vermelding in het opslagaccount niet verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u de volgende Azure Stack Edge-onderwerpen geleerd:
+In deze zelfstudie bent u meer te weten gekomen over de volgende Azure Stack Edge-onderwerpen:
 
 > [!div class="checklist"]
 > * Een share toevoegen
 > * Verbinding maken met een share
 
-Ga verder met de volgende zelf studie als u wilt weten hoe u uw gegevens kunt transformeren met behulp van Azure Stack Edge:
+Als u wilt leren hoe u gegevens kunt transformeren met behulp van Azure Stack Edge, gaat u verder met de volgende zelfstudie:
 
 > [!div class="nextstepaction"]
-> [Gegevens transformeren met Azure Stack rand](./azure-stack-edge-deploy-configure-compute.md)
+> [Gegevens transformeren met Azure Stack Edge](./azure-stack-edge-deploy-configure-compute.md)
 
 

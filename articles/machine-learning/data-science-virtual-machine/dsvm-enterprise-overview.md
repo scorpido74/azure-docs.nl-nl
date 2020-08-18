@@ -1,8 +1,8 @@
 ---
-title: Team analyse en AI-omgeving
+title: Teamanalyse en AI-omgeving
 titleSuffix: Azure Data Science Virtual Machine
-description: Patronen voor het implementeren van de Data Science VM in een bedrijfs omgeving.
-keywords: diep leren, AI, data Science tools, data Science virtual machine, georuimtelijke analyse, team data Science process
+description: Patronen voor het implementeren van de Data Science VM in een bedrijfsteamomgeving.
+keywords: deep learning, AI, data science tools, data science virtual machine, geospatial analytics, team data science process
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,40 +10,40 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 03fdbf6979db3249d1322a3025b48de81b953ae1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856209"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919936"
 ---
-# <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Team analyse en AI-omgeving op basis van Data Science Virtual Machine 
-De [Data Science virtual machine](overview.md) (DSVM) biedt een uitgebreide omgeving op het Azure-platform, met vooraf ontwikkelde software voor kunst matige intelligentie (AI) en gegevens analyse.
+# <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Teamanalyse en AI-omgeving op basis van de Data Science Virtual Machine 
+De [Data Science Virtual Machine](overview.md) (DSVM) biedt een uitgebreide omgeving op het Azure-platform, met vooraf ontwikkelde software voor kunstmatige intelligentie (AI) en gegevensanalyse.
 
-De DSVM is traditioneel als afzonderlijke Analytics Desktop gebruikt. Individuele gegevens wetenschappers winnen productiviteit met deze gedeelde, vooraf ontwikkelde analyse omgeving. Als grote analyse teams plannen omgevingen voor hun gegevens wetenschappers en AI-ontwikkel aars, is een van de terugkerende Thema's een gedeelde analyse-infra structuur voor ontwikkeling en experimenten. Deze infra structuur wordt beheerd in overeenstemming met de IT-beleids regels van ondernemingen, waarmee de samen werking en consistentie van de gegevens wetenschap en analyse teams worden vereenvoudigd.
+De DSVM werd oorspronkelijk als afzonderlijk analysebureaublad gebruikt. Individuele gegevenswetenschappers komen tot een grotere productiviteit met deze gedeelde, vooraf ontwikkelde analyseomgeving. Wanneer grote analyseteams omgevingen plannen voor hun gegevenswetenschappers en AI-ontwikkelaars, is een van de terugkerende thema's een gedeelde analyse-infrastructuur voor ontwikkeling en experimenten. Deze infrastructuur wordt beheerd in overeenstemming met het IT-bedrijfsbeleid, waarmee de samenwerking en consistentie voor de gegevenswetenschap en binnen analyseteams worden vereenvoudigd.
 
-Een gedeelde infra structuur maakt het gebruik van de analyse omgeving beter. Sommige organisaties bellen de op het team gebaseerde data Science/Analytics-infra structuur van een *analytische sandbox*. Hiermee kunnen gegevens wetenschappers toegang krijgen tot verschillende gegevensassets om gegevens snel te begrijpen. Deze sandbox-omgeving helpt gegevens wetenschappers ook bij het uitvoeren van experimenten, het valideren van hypo thesen en het bouwen van voorspellende modellen zonder dat dit van invloed is op de productie omgeving.
+Een gedeelde infrastructuur zorgt voor een beter IT-gebruik van de analyseomgeving. Sommige organisaties noemen de op het team gebaseerde gegevenswetenschap/analyse-infrastructuur een *analysesandbox*. Hiermee kunnen gegevenswetenschappers toegang krijgen tot verschillende gegevensassets voor een snel inzicht in gegevens. In deze sandbox-omgeving kunnen gegevenswetenschappers ook experimenten uitvoeren, hypothesen valideren en voorspellende modellen maken zonder dat dit van invloed is op de productieomgeving.
 
-Omdat de DSVM werkt op het niveau van de Azure-infra structuur, kunnen IT-beheerders de DSVM gemakkelijk configureren om te voldoen aan het IT-beleid van de onderneming. De DSVM biedt volledige flexibiliteit bij het implementeren van verschillende architecturen voor delen, terwijl ook toegang tot zakelijke gegevensassets op een gecontroleerde manier wordt geboden.
+Omdat de DSVM werkt op het niveau van de Azure-infrastructuur, kunnen IT-beheerders de DSVM gemakkelijk zo configureren dat deze conform het IT-bedrijfsbeleid werkt. De DSVM biedt volledige flexibiliteit bij het implementeren van verschillende architecturen voor delen, waarbij deze ook op een gecontroleerde manier toegang biedt tot zakelijke gegevensassets.
 
-In deze sectie worden enkele patronen en richt lijnen besproken die u kunt gebruiken om de DSVM te implementeren als een op een team gebaseerde data Science-infra structuur. Omdat de bouw stenen voor deze patronen afkomstig zijn van Azure Infrastructure as a Service (IaaS), zijn deze van toepassing op alle virtuele machines van Azure. Deze reeks artikelen richt zich op het Toep assen van deze standaard Azure-infrastructuur mogelijkheden op het DSVM.
+In deze sectie worden enkele patronen en richtlijnen besproken die u kunt gebruiken om de DSVM te implementeren als een op een team gebaseerde infrastructuur voor gegevenswetenschap. Omdat de bouwstenen voor deze patronen afkomstig zijn van de Azure-infrastructuur als een dienst (IaaS), zijn deze van toepassing op alle virtuele machines van Azure. Deze reeks artikelen richt zich op het toepassen van deze standaardfuncties van de Azure-infrastructuur op de DSVM.
 
-De belangrijkste bouw stenen van een Enter prise team Analytics-omgeving zijn:
+De belangrijkste bouwstenen van een zakelijke teamanalyse-omgeving zijn onder meer:
 
-* [Een automatisch geschaalde pool met Dsvm](dsvm-pools.md)
-* [Algemene identiteit en toegang tot een werk ruimte vanuit een van de Dsvm in de groep](dsvm-common-identity.md)
-* [Beveiligde toegang tot gegevens bronnen](dsvm-secure-access-keys.md)
+* [Een automatisch geschaalde pool met DSVM's](dsvm-pools.md)
+* [Algemene identiteit en toegang tot een werkruimte vanuit elke DSVM in de pool](dsvm-common-identity.md)
+* [Toegang tot de gegevensbronnen beveiligen](dsvm-secure-access-keys.md)
 
 
-Deze reeks bevat richt lijnen en verwijzingen voor elk van de voor gaande onderwerpen. Dit geldt niet voor alle overwegingen en vereisten voor het implementeren van Dsvm in grote bedrijfs configuraties. Hier volgen enkele andere Azure-bronnen die u kunt gebruiken tijdens het implementeren van DSVM-exemplaren in uw onderneming:
+Deze reeks bevat richtlijnen voor en verwijzingen naar alle voorgaande onderwerpen. Dit geldt niet voor alle overwegingen en vereisten voor het implementeren van DSVM's in grote bedrijfsconfiguraties. Hier volgen enkele andere Azure-resources die u kunt gebruiken tijdens het implementeren van DSVM-exemplaren in uw onderneming:
 
 * [Netwerkbeveiliging](https://docs.microsoft.com/azure/security/fundamentals/network-security)
-* [Bewaking](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) en [beheer](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
+* [Controle](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) en [beheer](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Logboekregistratie en bewaking](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [Op rollen gebaseerd toegangsbeheer](https://docs.microsoft.com/azure/role-based-access-control/overview)
-* [Beleids instelling en afdwinging](../../governance/policy/overview.md)
+* [Azure RBAC (op rollen gebaseerd toegangsbeheer)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Beleidsinstelling en -afdwinging](../../governance/policy/overview.md)
 * [Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [Versleuteling](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
-* [Gegevens detectie en-beheer](https://docs.microsoft.com/azure/data-catalog/)
+* [Gegevensdetectie en -beheer](https://docs.microsoft.com/azure/data-catalog/)
 
-Ten slotte biedt de [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/) een uitgebreide end-to-end architectuur en modellen voor het maken en beheren van uw Cloud infrastructuur.
+Ten slotte biedt het [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/) een uitgebreide end-to-end architectuur en modellen voor het maken en beheren van uw infrastructuur voor analyses in de cloud.

@@ -4,15 +4,15 @@ description: Leer hoe u Service Bus-onderwerpen en -abonnementen in Azure kunt g
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 08/09/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9d4a3a66d967bd003534c7931091979d1667526c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 8a86a1bd9a312f3b1c6d94914d426422687b25a6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432794"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077013"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Quickstart: Service Bus-onderwerpen en-abonnementen gebruiken met Node. js en het pakket azure-sb
 In deze zelfstudie leert u hoe u Node.js toepassingen kunt maken om berichten te versturen naar een Service Bus-onderwerp en berichten te ontvangen van een Service Bus-abonnement met behulp van het [azure-sb](https://www.npmjs.com/package/azure-sb)-pakket. De voorbeelden zijn geschreven in JavaScript en maken gebruik van de [Azure-module](https://www.npmjs.com/package/azure) Node.js, die intern het `azure-sb`-pakket gebruikt.
@@ -20,7 +20,7 @@ In deze zelfstudie leert u hoe u Node.js toepassingen kunt maken om berichten te
 > [!IMPORTANT]
 > Het [azure-sb](https://www.npmjs.com/package/azure-sb)-pakket maakt gebruik van [Service Bus REST runtime-API's](/rest/api/servicebus/service-bus-runtime-rest). U kunt een snellere ervaring verkrijgen met het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-pakket, dat gebruikmaakt van het snellere [AMQP 1.0-protocol](service-bus-amqp-overview.md). 
 > 
-> Zie [Service Bus-onderwerpen en-abonnementen gebruiken met Node.js en @azure/service-bus-pakket](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)als u meer wilt weten over het nieuwe pakket, of blijf lezen om te zien hoe u het [azure](https://www.npmjs.com/package/azure)-pakket kunt gebruiken.
+> Zie [Service Bus-onderwerpen en-abonnementen gebruiken met Node.js en @azure/service-bus-pakket](./service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)als u meer wilt weten over het nieuwe pakket, of blijf lezen om te zien hoe u het [azure](https://www.npmjs.com/package/azure)-pakket kunt gebruiken.
 
 De hier behandelde scenario's zijn:
 
@@ -142,7 +142,7 @@ Er worden ook onderwerpabonnementen gemaakt met het object **ServiceBusService**
 > [!NOTE]
 > Standaard zijn abonnementen persistent totdat zij, of het onderwerp waaraan ze zijn gekoppeld, worden verwijderd. Als uw toepassing logica bevat om een abonnement te maken, moet deze eerst de `getSubscription`-methode gebruiken om te controleren of het abonnement bestaat.
 >
-> U kunt de abonnementen automatisch laten verwijderen door de [eigenschap AutoDeleteOnIdle](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)in te stellen.
+> U kunt de abonnementen automatisch laten verwijderen door de [eigenschap AutoDeleteOnIdle](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)in te stellen.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Een abonnement maken met het standaardfilter (MatchAll)
 Het **MatchAll**-filter is het standaardfilter dat wordt gebruikt wanneer een abonnement wordt gemaakt. Bij gebruik van het **MatchAll**-filter worden alle berichten die naar het onderwerp worden gepubliceerd, in de virtuele wachtrij van het abonnement geplaatst. Met het volgende voorbeeld maakt u een abonnement met de naam AllMessages en wordt het standaardfilter **MatchAll** gebruikt.
@@ -254,7 +254,7 @@ var message = {
     }
 }
 
-for (i = 0;i < 5;i++) {
+for (var i = 0; i < 5; i++) {
     message.customProperties.messagenumber=i;
     message.body='This is Message #'+i;
     serviceBusService.sendTopicMessage(topic, message, function(error) {
@@ -306,7 +306,7 @@ Er is ook een time-out gekoppeld aan een bericht dat in het abonnement is vergre
 Als de toepassing vastloopt na het verwerken van het bericht, maar voordat de methode `deleteMessage` wordt aangeroepen, wordt het bericht opnieuw bij de app bezorgd wanneer deze opnieuw wordt gestart. Dit gedrag wordt wel *Ten minste één keer verwerken* genoemd. Dat wil zeggen, elk bericht wordt minstens één keer verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als in het scenario dubbele verwerking niet wordt getolereerd, moet u logica toevoegen aan uw toepassing om dubbele berichtbezorging af te handelen. U kunt gebruikmaken van de **MessageId**-eigenschap van het bericht, die gelijk blijft bij alle bezorgingspogingen.
 
 ## <a name="delete-topics-and-subscriptions"></a>Onderwerpen en abonnementen verwijderen
-Onderwerpen en abonnementen zijn persistent, tenzij de [eigenschap autoDeleteOnIdle](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) is ingesteld, en moeten expliciet via de [Azure-portal][Azure portal] of programmatisch worden verwijderd.
+Onderwerpen en abonnementen zijn persistent, tenzij de [eigenschap AutoDeleteOnIdle](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) is ingesteld, en moeten expliciet via de [Azure-portal][Azure portal] of programmatisch worden verwijderd.
 In het volgende voorbeeld ziet u hoe u het onderwerp met de naam `MyTopic` kunt verwijderen:
 
 ```javascript
@@ -343,6 +343,6 @@ Nu u de basisprincipes van Service Bus-onderwerpen hebt geleerd, kunt u deze kop
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Een Node.js-toepassing maken en implementeren op een Azure-website]: ../app-service/app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application to Azure App Service]: ../app-service/quickstart-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

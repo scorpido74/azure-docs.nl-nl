@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: a6805fc686d0bc5bd0e2357828d59d40ba05f248
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "84870385"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852919"
 ---
 # <a name="testing-the-fhir-api"></a>De FHIR-API testen
 In de vorige twee stappen hebt u de Azure API for FHIR geïmplementeerd en uw clienttoepassing geregistreerd. U bent nu klaar om te testen of uw Azure API for FHIR is ingesteld met uw clienttoepassing. 
@@ -41,8 +41,8 @@ Als u toegang wilt krijgen, hebt u een toegangstoken nodig.
 |Tokennaam           |Een naam voor uw token                                               |
 |Toekenningstype           |Autorisatiecode                                                  |
 |URL voor aanroep         |https://www.getpostman.com/oauth2/callback                          |
-|URL van autorisatie             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
-|URL van toegangstoken     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/token|
+|URL van autorisatie             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
+|URL van toegangstoken     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/token|
 |Client-id            |De client-id die u tijdens de vorige stappen hebt gekopieerd             |
 |Clientgeheim        |\<BLANK>                                                            |
 |Bereik                |\<BLANK>                                                            |

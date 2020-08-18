@@ -1,23 +1,23 @@
 ---
-title: 'Azure CLI: de toegang voor importeren/exporteren naar beheerde schijven beperken met privékoppelingen (preview)'
-description: Schakel privékoppelingen (preview) in voor uw beheerde schijven met Azure CLI. U kunt alleen in uw virtuele netwerk schijven veilig exporteren en importeren.
+title: 'Azure CLI: de toegang voor importeren/exporteren naar beheerde schijven beperken met privékoppelingen'
+description: Schakel privékoppelingen in voor uw beheerde schijven met Azure CLI. U kunt alleen in uw virtuele netwerk schijven veilig exporteren en importeren.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5df11e704987098d61ced7afbff5e6234d4d5f04
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 009f8ec69261103faaa4de1e27ae7383257a13ca
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420278"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136402"
 ---
-# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure CLI: de toegang voor importeren/exporteren voor beheerde schijven beperken met privékoppelingen (preview)
+# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI: de toegang voor importeren/exporteren voor beheerde schijven beperken met privékoppelingen
 
-U kunt [privé-eindpunten](../../private-link/private-endpoint-overview.md) (preview) gebruiken om het exporteren en importeren van beheerde schijven te beperken en om veilig toegang te krijgen tot gegevens via een [privékoppeling](../../private-link/private-link-overview.md) van clients in uw virtuele Azure-netwerk. Het privé-eindpunt gebruikt een IP-adres uit de adresruimte van het virtuele netwerk voor uw service voor beheerde schijven. Netwerkverkeer tussen de clients in het virtuele netwerk en beheerde schijven gaat over het virtuele netwerk en een persoonlijke koppeling in het fundamentele Microsoft-netwerk, waardoor de blootstelling van het openbare internet wordt voorkomen. 
+Ondersteuning voor privékoppelingen voor beheerde schijven is momenteel beschikbaar als preview-versie. U kunt [privé-eindpunten](../../private-link/private-endpoint-overview.md) gebruiken om het exporteren en importeren van beheerde schijven te beperken en om veilig toegang te krijgen tot gegevens via een [privékoppeling](../../private-link/private-link-overview.md) van clients in uw virtuele Azure-netwerk. Het privé-eindpunt gebruikt een IP-adres uit de adresruimte van het virtuele netwerk voor uw service voor beheerde schijven. Netwerkverkeer tussen de clients in het virtuele netwerk en beheerde schijven gaat over het virtuele netwerk en een persoonlijke koppeling in het fundamentele Microsoft-netwerk, waardoor de blootstelling van het openbare internet wordt voorkomen.
 
 Om privékoppelingen te gebruiken voor het exporteren/importeren van beheerde schijf, maakt u eerst een resource voor schijftoegang en koppelt u deze aan uw virtuele netwerk in hetzelfde abonnement door een privé-eindpunt te maken. Vervolgens koppelt u een schijf of een momentopname aan een exemplaar van schijftoegang. Als laatste moet u ook de eigenschap NetworkAccessPolicy van de schijf of de momentopname instellen op `AllowPrivate`. Hiermee wordt de toegang tot het virtuele netwerk beperkt. 
 

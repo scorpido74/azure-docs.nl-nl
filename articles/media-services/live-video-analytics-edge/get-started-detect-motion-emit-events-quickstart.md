@@ -3,12 +3,12 @@ title: Aan de slag met Live Video Analytics in IoT Edge - Azure
 description: Deze quickstart laat zien hoe u aan de slag kunt met Live Video Analytics in IoT Edge. Leer hoe u beweging kunt detecteren in een live-videostream.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090073"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067669"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Quickstart: Over Live Video Analytics in IoT Edge
 
@@ -84,7 +84,7 @@ Als er verbinding is gemaakt, wordt de lijst met edge-apparaten weergegeven. U z
 
 ![Knooppunt lva-sample-device](./media/quickstarts/lva-sample-device-node.png)
 
-## <a name="use-direct-methods"></a>Directe methoden gebruiken
+## <a name="use-direct-method-calls"></a>Aanroepen van directe methoden gebruiken
 
 U kunt de module gebruiken om live-videostreams te analyseren door directe methoden aan te roepen. Bekijk [Directe methodes voor Live Video Analytics op IoT Edge](direct-methods.md) voor meer informatie. 
 

@@ -1,17 +1,17 @@
 ---
 title: 'Quickstart: Register maken in de portal'
-description: Leer snel een privé-Docker-register maken in Azure Container Registry met Azure Portal.
+description: Leer snel een persoonlijk Azure-containerregister maken met de Azure-portal.
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 08/04/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82f9a6b02832b718d5b4e7b662c590f1992af595
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752801"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031780"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Quickstart: Een privé-containerregister maken met Azure Portal
+# <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Quickstart: Een Azure-containerregister maken met de Azure-portal
 
 Een Azure-containerregister is een persoonlijk Docker-register in Azure waar u uw persoonlijke installatiekopieën van de Docker-container en verwante artefacten kunt opslaan en beheren. In deze quickstart maakt u een containerregister in Azure Portal. Gebruik vervolgens Docker-opdrachten om een containerinstallatiekopie naar het register pushen, waarna u de installatiekopie ophaalt en uitvoert vanuit het register.
 
@@ -41,14 +41,20 @@ Als het bericht **Implementatie voltooid** wordt weergegeven, selecteert u het c
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Overzicht van containerregisters in de portal":::
 
-Noteer de waarde van de **aanmeldingsserver**. U gebruikt deze waarde in de volgende stappen wanneer u installatiekopieën pusht en pullt met Docker.
+Noteer de registernaam en de waarde van de **aanmeldingsserver**. U gebruikt deze waarden in de volgende stappen wanneer u installatiekopieën pusht en pullt met Docker.
 
 ## <a name="log-in-to-registry"></a>Aanmelden bij register
 
-Voordat u push- en pull-bewerkingen voor containerinstallatiekopieën kunt gebruiken, moet u zich aanmelden bij de registerinstantie. [Meld u aan bij Azure CLI][get-started-with-azure-cli] op uw lokale computer en voer vervolgens de opdracht [az acr login][az-acr-login] uit. (Geef alleen de registernaam op wanneer u zich aanmeldt bij Azure CLI. Neem het achtervoegsel azurecr.io niet op.)
+Voordat u push- en pull-bewerkingen voor containerinstallatiekopieën kunt gebruiken, moet u zich aanmelden bij de registerinstantie. [Meld u aan bij Azure CLI][get-started-with-azure-cli] op uw lokale computer en voer vervolgens de opdracht [az acr login][az-acr-login] uit. (Geef alleen de registernaam op wanneer u zich aanmeldt bij Azure CLI. Neem het domeinachtervoegsel ‘azurecr.io’ niet op.)
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+Voorbeeld:
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 De opdracht retourneert `Login Succeeded` nadat deze is voltooid. 

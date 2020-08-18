@@ -3,12 +3,12 @@ title: Livevideo analyseren met uw eigen model - Azure
 description: In deze quickstart gebruikt u computer vision om de livevideofeed van een (gesimuleerde) IP-camera te analyseren.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 75e18917b0d44dc33999d17360cd66a538c83d2b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170619"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065196"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Quickstart: Livevideo analyseren met uw eigen model
 
@@ -31,7 +31,7 @@ In deze quickstart wordt gebruikgemaakt van een Azure-VM als een IoT Edge-appara
 ## <a name="review-the-sample-video"></a>De voorbeeldvideo bekijken
 Bij het instellen van de Azure-resources wordt een korte video van wegverkeer gekopieerd naar de virtuele Linux-machine in Azure die u als IoT Edge-apparaat gebruikt. In deze quickstart wordt het videobestand gebruikt voor het simuleren van een livestream.
 
-Open een toepassing als [VLC Media Player](https://www.videolan.org/vlc/). Selecteer CTRL + N en plak vervolgens een link naar [de video](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) om het afspelen te starten. U ziet beelden van veel voertuigen die over de snelweg rijden.
+Open een toepassing als [VLC Media Player](https://www.videolan.org/vlc/). Selecteer `Ctrl+N` en plak een koppeling naar [de voorbeeldvideo met de kruising van wegen](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) om het afspelen te starten. U ziet beelden van veel voertuigen die over de snelweg rijden.
 
 In deze quickstart gebruikt u Live Video Analytics in IoT Edge om objecten, zoals auto's en personen, te detecteren. U publiceert gekoppelde deductiegebeurtenissen naar IoT Edge-hub.
 
@@ -107,9 +107,18 @@ Als onderdeel van de vereisten hebt u de voorbeeldcode naar een map gedownload. 
 1. Wanneer u wordt gevraagd om een IoT Hub-apparaat te selecteren, selecteert u **lva-sample-device**.
 1. Vernieuw Azure IoT Hub na ongeveer 30 seconden in de linkerbenedenhoek van het venster. Op het edge-apparaat worden nu de volgende geïmplementeerde modules weergegeven:
 
-    * De Live Video Analytics-module met de naam **lvaEdge**
-    * De **rtspsim**-module, die een RTSP-server simuleert en fungeert als de bron van een livevideofeed
-    * De **yolov3**-module, het YOLOv3-objectdetectiemodel dat computer vision toepast op de afbeeldingen en meerdere klassen objecttypen retourneert
+    * De Live Video Analytics-module met de naam `lvaEdge`
+    * De `rtspsim`-module, die een RTSP-server simuleert en fungeert als de bron van een livevideofeed
+    > [!NOTE]
+    > Als u uw eigen Edge-apparaat gebruikt in plaats van een van de apparaten die via ons installatiescript is ingericht, gaat u naar uw Edge-apparaat en voert u de volgende opdrachten uit met **beheerdersrechten** om het voorbeeld van het videobestand dat voor deze quickstart is gebruikt, op te halen en op te slaan:  
+
+    ```
+    mkdir /home/lvaadmin/samples
+    mkdir /home/lvaadmin/samples/input    
+    curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+    chown -R lvaadmin /home/lvaadmin/samples/  
+    ```
+    * De `yolov3`-module, het YoloV3--objectdetectiemodel dat computer vision toepast op de afbeeldingen en meerdere klassen objecttypen retourneert
  
       ![Modules die zijn geïmplementeerd op het edge-apparaat](./media/quickstarts/yolov3.png)
 
@@ -284,7 +293,7 @@ Als u andere quickstarts wilt proberen, moet u de resources die u hebt gemaakt, 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Probeer een [beveiligde versie van het YOLOv3-model](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) en implementeer deze naar het IoT-edge-apparaat. 
+* Probeer een [beveiligde versie van het YoloV3-model](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) en implementeer deze naar het IoT-edge-apparaat. 
 
 Bekijk extra uitdagingen voor gevorderde gebruikers:
 

@@ -423,7 +423,7 @@
         - name: Migratieoverzicht
           href: migration-classic-resource-manager-overview.md
         - name: Gedetailleerde informatie over migratie
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md
         - name: Plan voor migratie
           href: migration-classic-resource-manager-plan.md
         - name: Migreren met PowerShell
@@ -433,7 +433,7 @@
         - name: Community-hulpprogramma's voor migratie
           href: migration-classic-resource-manager-community-tools.md
         - name: Veelgestelde vragen
-          href: migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md
     - name: Installatiekopieën gebruiken
       displayName: 'SIG, AMI, image'
       items:
@@ -853,7 +853,7 @@
           href: detach-disk.md
         - name: Schijven implementeren met ARM-sjabloon
           displayName: Azure Resource Manager
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md
         - name: Gedeelde schijven inschakelen
           href: disks-shared-enable.md
         - name: Een VHD uploaden naar een schijf - PowerShell
@@ -901,7 +901,7 @@
         - name: Prestaties
           items:
             - name: Write Accelerator inschakelen
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md
             - name: Ultraschijven gebruiken
               href: disks-enable-ultra-ssd.md
             - name: Een benchmark-test uitvoeren op een schijf

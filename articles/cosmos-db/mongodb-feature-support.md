@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5d525824039c276d0bc8a63256b32afa9cb25445
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7c5164a032e77d85c995384473935b134ff528e5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851821"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009304"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>De API van Azure Cosmos DB voor MongoDB (versie 3.2): ondersteunde functies en syntaxis
 
@@ -342,7 +342,7 @@ Cosmos DB biedt ondersteuning voor een TTL (time-to-live) op basis van de tijdst
 
 ## <a name="user-and-role-management"></a>Gebruikers- en rolbeheer
 
-Cosmos DB biedt nog geen ondersteuning voor gebruikers en rollen. Cosmos DB biedt echter op rollen gebaseerd toegangsbeheer (RBAC), wachtwoorden voor lezen/schrijven en wachtwoorden met het kenmerk Alleen-lezen die kunnen worden verkregen via [Azure Portal](https://portal.azure.com) (pagina Verbindingsreeks).
+Cosmos DB biedt nog geen ondersteuning voor gebruikers en rollen. Cosmos DB biedt echter Azure RBAC (op rollen gebaseerd toegangsbeheer), wachtwoorden/sleutels voor lezen/schrijven en wachtwoorden/sleutels met het kenmerk alleen-lezen die kunnen worden verkregen via de [Azure-portal](https://portal.azure.com) (pagina Verbindingsreeks).
 
 ## <a name="replication"></a>Replicatie
 

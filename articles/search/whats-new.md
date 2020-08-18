@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 60efc645b1b5824306c1d4aa3e763eb9d2bc745d
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c5990faab1e06961a2c3d577a4677d2e1d504699
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553921"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904061"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Nieuwe functies in Azure Cognitive Search
 
@@ -31,7 +31,7 @@ Meer informatie over nieuwe functies in de service. Voeg een bladwijzer toe aan 
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents-clientbibliotheek](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure-SDK voor .NET | E.NET-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere .NET-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30, maar biedt nog geen ondersteuning voor het kennisarchief, geo-filters of [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). | Algemeen verkrijgbaar. </br> Installeer het [Azure.Search.Documents-pakket](https://www.nuget.org/packages/Azure.Search.Documents/) van NuGet. |
+| [Azure.Search.Documents-clientbibliotheek](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure-SDK voor .NET | E.NET-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere .NET-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30, maar biedt nog geen ondersteuning voor het kennisarchief, georuimtelijke typen of [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). <br/><br/>Zie voor meer informatie [Quickstart: Een index maken](search-get-started-dotnet.md) en [Upgraden naar Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md). | Algemeen verkrijgbaar. </br> Installeer het [Azure.Search.Documents-pakket](https://www.nuget.org/packages/Azure.Search.Documents/) van NuGet. |
 | [azure.search.documents-clientbibliotheek](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure-SDK voor Python| Python-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere Python-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30. | Algemeen verkrijgbaar. </br> Installeer het [azure-search-documents-pakket](https://pypi.org/project/azure-search-documents/) van PyPI. |
 | [@azure/search-documents clientbibliotheek](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure-SDK voor JavaScript | JavaScript-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere JavaScript-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30. | Algemeen verkrijgbaar. </br> Installeer het [@azure/search-documents-pakket](https://www.npmjs.com/package/@azure/search-documents) van npm. |
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 16869ab3a1961879cfcda1eaa383073cd2309a01
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433350"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003357"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Zelfstudie: Een app voor het verwerken van formulieren maken met AI Builder
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 * Een set van ten minste vijf formulieren van hetzelfde type voor het trainen en testen van gegevens. Zie [Een set met trainingsgegevens samenstellen](./build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2128080) gebruiken.
-* Een licentie voor Power Apps of Power Automate - zie de [licentiehandleiding](https://go.microsoft.com/fwlink/?linkid=2085130). De licentie moet [Dataflex Pro](https://powerplatform.microsoft.com/en-us/common-data-service/) omvatten.
+* Een licentie voor Power Apps of Power Automate - zie de [licentiehandleiding](https://go.microsoft.com/fwlink/?linkid=2085130). De licentie moet [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/) bevatten.
 * Een [invoegtoepassing of proefversie](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409) van AI Builder.
 
 

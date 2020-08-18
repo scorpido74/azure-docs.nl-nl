@@ -1,22 +1,22 @@
 ---
-title: 'Zelf studie: een gateway maken en beheren met Azure VPN Gateway'
-description: 'Zelfstudie: Een Azure VPN-gateway maken en beheren met behulp van Microsoft Azure PowerShell'
+title: 'Zelfstudie: Een gateway maken en beheren met behulp van Azure VPN Gateway'
+description: Volg deze zelfstudie om te leren hoe u een Azure VPN Gateway maakt, implementeert en beheert door PowerShell te gebruiken.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 66efa0f2922e70908616c7c447d782efee8f6b1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 38b13ddc08b08ce080f1cc9e9b30caeea3b4efdf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79137174"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031521"
 ---
-# <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Zelf studie: een VPN-gateway maken en beheren met Power shell
+# <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Zelfstudie: Een VPN-gateway maken en beheren met behulp van PowerShell
 
-Azure VPN-gateways bieden veilige, cross-premises connectiviteit tussen de klanten-premises en Azure. Deze zelfstudie bevat informatie over implementatie-basiselementen voor Azure VPN-gateways, zoals het maken en beheren van een VPN-gateway. Procedures voor:
+Azure VPN-gateways bieden veilige, cross-premises connectiviteit tussen de klanten-premises en Azure. Deze zelfstudie bevat informatie over implementatie-basiselementen voor Azure VPN-gateways, zoals het maken en beheren van een VPN-gateway. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een VPN-gateway maken
@@ -34,7 +34,7 @@ Het volgende diagram toont het virtuele netwerk en de VPN-gateway die zijn gemaa
 
 ## <a name="common-network-parameter-values"></a>Algemene parameterwaarden van het netwerk
 
-Hieronder vindt u de parameter waarden die voor deze zelf studie worden gebruikt. In de voor beelden vertalen de variabelen naar het volgende:
+Hieronder staan de parameterwaarden die worden gebruikt voor deze zelfstudie. In de voorbeelden betekenen de variabelen het volgende:
 
 ```
 #$RG1         = The name of the resource group
@@ -82,7 +82,7 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Azure VPN-gateway biedt cross-premises connectiviteit en P2S-VPN-server-functionaliteit voor uw virtuele netwerk. Voeg de VPN-gateway toe aan een bestaand virtueel netwerk of maak een nieuw virtueel netwerk en de gateway. U ziet dat in het voor beeld de naam van het gateway-subnet specifiek wordt opgegeven. U moet altijd de naam van het gateway-subnet opgeven als ' GatewaySubnet ', zodat deze correct werkt. In dit voor beeld wordt een nieuw virtueel netwerk met drie subnetten gemaakt: front-end, back-end en GatewaySubnet met behulp van [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) en [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
+Azure VPN-gateway biedt cross-premises connectiviteit en P2S-VPN-server-functionaliteit voor uw virtuele netwerk. Voeg de VPN-gateway toe aan een bestaand virtueel netwerk of maak een nieuw virtueel netwerk en de gateway. Merk op dat het voorbeeld specifiek de naam van het gatewaysubnet opgeeft. U moet de naam van het gatewaysubnet altijd als ‘GatewaySubnet’ opgeven om het goed te laten werken. In dit voorbeeld wordt een nieuw virtueel netwerk met drie subnetten gemaakt: front-end, back-end en GatewaySubnet met behulp van [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) en [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
@@ -125,9 +125,9 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 Sleutelparameterwaarden:
 * GatewayType: Gebruik **Vpn** voor site-naar-site- en VNet-naar-VNet-verbindingen
 * VpnType: Gebruik **RouteBased** om te communiceren met meer verschillende VPN-apparaten en meer routeringsfuncties
-* GatewaySku: **VpnGw1** is de standaard instelling. Wijzig deze in een andere VpnGw-SKU als u hogere door Voer of meer verbindingen nodig hebt. Zie [Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie.
+* GatewaySku: **VpnGw1** is de standaardinstelling; wijzig deze in een andere VpnGw-SKU als u hogere doorvoercapaciteit of meer verbindingen nodig hebt. Zie [Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie.
 
-Als u de TryIt gebruikt, is er mogelijk een time-out opgetreden voor uw sessie. Is goed zo. De gateway wordt alsnog gemaakt.
+Als u de TryIt gebruikt, is het mogelijk dat de sessie een time-out geeft. Dat is niet erg. De gateway wordt alsnog gemaakt.
 
 Nadat het maken van de gateway is voltooid, kunt u een verbinding maken tussen uw virtuele netwerk en een ander VNet of een verbinding maken tussen uw virtuele netwerk en een on-premises locatie. U kunt ook een P2S-verbinding configureren voor uw VNet vanaf een clientcomputer.
 
@@ -144,7 +144,7 @@ $myGwIp.IpAddress
 
 ## <a name="resize-a-gateway"></a>Het formaat van een gateway wijzigen
 
-U kunt de VPN-gateway-SKU wijzigen nadat de gateway is gemaakt. Verschillende gateway-Sku's ondersteunen verschillende specificaties, zoals door Voer, aantal verbindingen, enzovoort. In het volgende voor beeld wordt de grootte van de gateway [AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) gewijzigd van VpnGw1 naar VpnGw2. Zie [Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie.
+U kunt de VPN-gateway-SKU wijzigen nadat de gateway is gemaakt. Verschillende gateway-SKU's ondersteunen verschillende specificaties zoals doorvoercapaciteit, aantal verbindingen, enzovoort. In het volgende voorbeeld wordt [Resize-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) gebruikt om het formaat van uw gateway te wijzigen van VpnGw1 in VpnGw2. Zie [Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie.
 
 ```azurepowershell-interactive
 $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
@@ -166,7 +166,7 @@ Zie [Reset a VPN gateway](vpn-gateway-resetgw-classic.md) (Een VPN-gateway opnie
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u [overstapt naar de volgende zelf studie](vpn-gateway-tutorial-vpnconnection-powershell.md), wilt u deze resources blijven gebruiken omdat dit de vereisten zijn.
+Als u verder gaat naar de [volgende zelfstudie](vpn-gateway-tutorial-vpnconnection-powershell.md), moet u deze resources behouden, want ze zijn daarvoor vereist.
 
 Als de gateway echter deel uitmaakt van een prototype, test of 'proof of concept'-implementatie, kunt u de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resourcegroep, de VPN-gateway en alle bijbehorende resources te verwijderen.
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146422"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987168"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Een TLS/SSL-certificaat toevoegen in Azure App Service
 
@@ -64,6 +64,7 @@ Het gratis door App Service beheerde certificaat is een gebruiksklare oplossing 
 - Het biedt geen ondersteuning voor wildcard-certificaten.
 - Het biedt geen ondersteuning voor domeinen zonder voorvoegsel.
 - Het kan niet worden geëxporteerd.
+- Het wordt niet ondersteund door App Service Environment (ASE).
 - Het biedt geen ondersteuning voor A-records. Automatische verlenging werkt bijvoorbeeld niet met A-records.
 
 > [!NOTE]

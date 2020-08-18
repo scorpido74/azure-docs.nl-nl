@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 707b432a4cb3918aa2dfbe460fc3cdcd53761bf1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497077"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508784"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
@@ -62,19 +62,19 @@ Volg de onderstaande stappen om de bovenstaande gegevens te genereren:
 
 5. Ga naar de basismap.
 
-    ```azurepowershell-interactive 
-    cd  
+    ```azurepowershell-interactive
+    cd
     ```
 
 6. Voer de volgende opdracht uit. Hiermee wordt een geverifieerde account verbonden voor Azure AD-aanvragen
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     Connect-AzureAD
     ```
-    
+
 7. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw basismap.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
@@ -82,9 +82,9 @@ Volg de onderstaande stappen om de bovenstaande gegevens te genereren:
 
 8. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory**  >  **overzichts** pagina.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -138,7 +138,7 @@ Volg deze stappen:
 
     ![Pagina Sens oren](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
-## <a name="assign-devices"></a>Apparaten toewijzen  
+## <a name="assign-devices"></a>Apparaten toewijzen
 
 Nadat de sensor gegevens in zijn stromen, kunt u deze toewijzen aan de farm waar u de Sens oren hebt geïmplementeerd.
 

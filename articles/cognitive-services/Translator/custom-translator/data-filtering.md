@@ -6,22 +6,22 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 67807e18559006b7d7eb6089a30370d614aefca3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1076a4fe3a460fa07e061e9ec0ec41b088ec7eca
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992833"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507260"
 ---
 # <a name="data-filtering"></a>Gegevens filteren
 
 Wanneer u documenten indient die moeten worden gebruikt voor het trainen van een aangepast systeem, worden de documenten een reeks verwerkings-en filter stappen voor het voorbereiden op training. Deze stappen worden hier beschreven. De kennis van het filteren kan u helpen inzicht te krijgen in het aantal zinnen dat wordt weer gegeven in aangepaste Vertaler en de stappen die u kunt nemen om de documenten voor te bereiden voor de training met aangepaste vertaler.
 
 ## <a name="sentence-alignment"></a>Uitlijning van zinnen
-Als uw document zich niet in een XLIFF-, TMX-of ALIGN-vorm bevindt, worden de zinnen van de bron-en doel documenten door aangepaste vertalers op zin uitgelijnd. Het conversie programma voert geen document uitlijning uit. het volgt de naam van de documenten om het overeenkomende document van de andere taal te vinden. In het document probeert aangepaste vertaler de overeenkomstige zin in de andere taal te vinden. Het maakt gebruik van document aantekeningen zoals Inge sloten HTML-tags om u te helpen bij het uitlijnen.  
+Als uw document zich niet in een XLIFF-, TMX-of ALIGN-vorm bevindt, worden de zinnen van de bron-en doel documenten door aangepaste vertalers op zin uitgelijnd. Het aangepaste conversie programma voert geen document uitlijning uit. het volgt de naam van de documenten om het overeenkomende document van de andere taal te vinden. In het document probeert aangepaste vertaler de overeenkomstige zin in de andere taal te vinden. Het maakt gebruik van document aantekeningen zoals Inge sloten HTML-tags om u te helpen bij het uitlijnen.  
 
 Als u een grote discrepantie ziet tussen het aantal zinnen in de bron-en doel documenten, is het mogelijk dat uw document niet parallel is in de eerste plaats of om andere redenen niet kan worden uitgelijnd. De document paren met een groot verschil (>10%) van de zinnen aan elke zijde geven een tweede blik om er zeker van te zijn dat ze inderdaad parallel zijn. Er wordt een waarschuwing weer gegeven naast het document als het aantal zinnen verdacht is.  
 
@@ -49,9 +49,9 @@ Letters en cijfers met volledige breedte converteren naar tekens met halve breed
 
 ## <a name="unescaped-xml-tags"></a>XML-tags zonder escape-teken
 Met filters worden niet-verescapede Tags getransformeerd in Tags met escape-teken:
-* `&lt;`steeds`&amp;lt;`
-* `&gt;`steeds`&amp;gt;`
-* `&amp;`steeds`&amp;amp;`
+* `&lt;` steeds `&amp;lt;`
+* `&gt;` steeds `&amp;gt;`
+* `&amp;` steeds `&amp;amp;`
 
 ## <a name="invalid-characters"></a>Ongeldige tekens
 Aangepaste Translator verwijdert zinnen die Unicode-teken U en FFFD bevatten. Het teken U + FFFD geeft aan dat de conversie is mislukt.

@@ -2,19 +2,19 @@
 title: 'Azure Key Vault: voorlopig verwijderen gebruiken met CLI'
 description: Gebruiksvoorbeelden van voorlopig verwijderen met CLI-codefragmenten
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 7023a2301b6b6137f7a0485523c68f21d72d67a9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 8f32fcc319c3bffd9089d894c5376268227a0151
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385735"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135926"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>De Key Vault-functie voor voorlopig verwijderen gebruiken met CLI
 
@@ -58,11 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>Nieuwe sleutelkluis
 
-Voorlopig verwijderen kan voor een nieuwe sleutelkluis worden ingeschakeld tijdens de aanmaak door de vlag voor voorlopig verwijderen toe te voegen aan de maakopdracht.
-
-```azurecli
-az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
-```
+Voorlopig verwijderen wordt standaard automatisch ingeschakeld voor alle sleutelkluizen. Vanaf 31 december 2020 is het niet meer mogelijk om een nieuwe sleutelkluis te maken zonder dat hiervoor voorlopig verwijderen is ingeschakeld.
 
 ### <a name="verify-soft-delete-enablement"></a>Activering van voorlopig verwijderen controleren
 

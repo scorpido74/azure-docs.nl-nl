@@ -1,37 +1,37 @@
 ---
 title: 'Snelstart: Gezichten in een afbeelding detecteren met de REST-API en Ruby'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start detecteert u gezichten van een afbeelding met behulp van het gezichts REST API met Ruby.
+description: In deze quickstart detecteert u gezichten in een afbeelding met behulp van de Face REST API met Ruby.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: e355ccdaf89d7f0ff63e3137def50792b171a4cc
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: c44be63e4d69f6603df76147329981bd82e6e50d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84985602"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833841"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST-API en Ruby
 
-In deze Quick Start gebruikt u de Azure face REST API met Ruby om menselijke gezichten in een installatie kopie te detecteren.
+In deze quickstart gebruikt u de Azure Face REST API met Ruby om menselijke gezichten in een afbeelding te detecteren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Een Face-resource maken"  target="_blank">maakt u een Face-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Face-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 * Een code-editor zoals [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>Het script schrijven
 
-Maak een nieuw bestand _faceDetection.rb_, en voeg de volgende code toe. Deze code roept de Face-API op voor een opgegeven afbeeldings-URL.
+Maak een nieuw bestand _faceDetection.rb_, en voeg de volgende code toe. Met deze code wordt de Face-API voor een bepaalde afbeeldings-URL aangeroepen.
 
 ```ruby
 require 'net/http'
@@ -63,11 +63,11 @@ end
 puts response.body
 ```
 
-U moet de `request['Ocp-Apim-Subscription-Key']` waarde bijwerken met de abonnements sleutel en de `uri` teken reeks wijzigen zodat deze het juiste eind punt bevat.
+U moet de `request['Ocp-Apim-Subscription-Key']`-waarde bijwerken met uw abonnementssleutel en de `uri`-tekenreeks zo wijzigen dat deze het juiste eindpunt bevat.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Desgewenst kunt u ook het veld `imageUri` zo wijzigen dat het verwijst naar uw eigen invoerafbeelding. Het is ook mogelijk dat u het `returnFaceAttributes` veld wilt wijzigen, waarmee wordt aangegeven welke gezichts kenmerken moeten worden opgehaald.
+Desgewenst kunt u ook het veld `imageUri` zo wijzigen dat het verwijst naar uw eigen invoerafbeelding. Ook kunt ook het veld `returnFaceAttributes` wijzigen, dat aangeeft welke gezichtskenmerken moeten worden opgehaald.
 
 ## <a name="run-the-script"></a>Het script uitvoeren
 
@@ -77,7 +77,7 @@ Voer het Ruby-script uit met de volgende opdracht:
 ruby faceDetection.rb
 ```
 
-Er wordt een JSON-tekenreeks van gedetecteerde gezichtsgegevens weergegeven op de console. De volgende tekst is een voor beeld van een geslaagde JSON-reactie.
+Er wordt een JSON-tekenreeks van gedetecteerde gezichtsgegevens weergegeven op de console. De volgende tekst is een voorbeeld van een geslaagd JSON-antwoord.
 
 ```json
 [
@@ -260,7 +260,7 @@ Er wordt een JSON-tekenreeks van gedetecteerde gezichtsgegevens weergegeven op d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een ruby-script geschreven dat de Azure face-service aanroept om gezichten te detecteren in een installatie kopie en de kenmerken ervan te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
+In deze quickstart hebt u een Ruby-script geschreven waarmee de Azure Face-service wordt aangeroepen om gezichten in een afbeelding te detecteren en de gezichtskenmerken te retourneren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
 
 > [!div class="nextstepaction"]
 > [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

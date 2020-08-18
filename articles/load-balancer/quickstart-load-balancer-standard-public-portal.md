@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1864ce5a3c1b5b0b2e0cfe757e66fca2074b764c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 44c43505bb779c3e00af19bed3a3fd3844c16bfe
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475802"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923829"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Quickstart: Een openbare load balancer maken om taken van VM's te verdelen via Azure Portal
 
@@ -152,26 +152,60 @@ In deze sectie doet u het volgende:
 * Maak drie virtuele machines voor de back-endpool van de load balancer.
 * Installeer IIS op de virtuele machines om de load balancer te testen.
 
-## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en parameters
+## <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
-In deze sectie gaat u de parameters in de stappen vervangen door onderstaande informatie:
+In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
-| Parameter                   | Waarde                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Europa -west      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtuele netwerk** of zoek in het zoekvak naar **Virtueel netwerk**.
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens in het tabblad **Basisinstellingen**:
+
+    | **Instelling**          | **Waarde**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Projectgegevens**  |                                                                 |
+    | Abonnement     | Selecteer uw Azure-abonnement                                  |
+    | Resourcegroep   | Selecteer **myResourceGroupLB** |
+    | **Exemplaardetails** |                                                                 |
+    | Naam             | Voer **myVNet** in                                    |
+    | Regio           | Selecteer **Europa - west** |
+
+3. Selecteer het tabblad **IP-adressen** of selecteer de knop **Volgende: IP-adressen** onderaan de pagina.
+
+4. Voer op het tabblad **IP-adressen** deze gegevens in:
+
+    | Instelling            | Waarde                      |
+    |--------------------|----------------------------|
+    | IPv4-adresruimte | Voer **10.1.0.0/16** in |
+
+5. Onder **Subnetnaam** selecteert u het woord **standaard**.
+
+6. Voer in **Subnet bewerken** deze gegevens in:
+
+    | Instelling            | Waarde                      |
+    |--------------------|----------------------------|
+    | Subnetnaam | Voer **myBackendSubnet** in |
+    | Subnetadresbereik | Voer **10.1.0.0/24** in |
+
+7. Selecteer **Opslaan**.
+
+8. Selecteer het tabblad **Beveiliging**.
+
+9. Selecteer onder **BastionHost** **Inschakelen**. Voer deze gegevens in:
+
+    | Instelling            | Waarde                      |
+    |--------------------|----------------------------|
+    | Bastion-naam | Voer **myBastionHost** in |
+    | AzureBastionSubnet-adresruimte | Voer **10.1.1.0/24** in |
+    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **Naam** **myBastionIP** in. </br> Selecteer **OK**. |
+
+
+8. Selecteer het tabblad **Controleren + maken** of selecteer de knop **Controleren + maken**.
+
+9. Selecteer **Maken**.
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
-SKU's voor openbare IP-adressen en SKU's voor load balancers moeten overeenkomen. Gebruik voor standaard load balancer VM's met standaard IP-adressen in de back-endpool. 
-
-In deze sectie maakt u drie VM's (**myVM1**, **myVM2** en **myVM3**) met een standaard openbaar IP-adres in drie verschillende zones (**Zone 1**, **Zone 2** en **Zone 3**). 
+In deze sectie maakt u drie VM's (**myVM1**, **myVM2** en **myVM3**) in drie verschillende zones (**Zone 1**, **Zone 2** en **Zone 3**). 
 
 Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder is gemaakt.
 
@@ -196,6 +230,8 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
     | Gebruikersnaam | Voer een gebruikersnaam in |
     | Wachtwoord | Voer een wachtwoord in |
     | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in |
+    | **Regels voor binnenkomende poort** |  |
+    | Openbare poorten voor inkomend verkeer | Selecteer **Geen** |
 
 3. Selecteer het tabblad **Netwerken** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken**.
   
@@ -206,7 +242,7 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
     | **Netwerkinterface** |  |
     | Virtueel netwerk | **myVNet** |
     | Subnet | **myBackendSubnet** |
-    | Openbare IP | Accepteer de standaardwaarde **myVM-ip**. </br> Het IP-adres wordt automatisch een IP-adres met standaard-SKU in Zone 1. |
+    | Openbare IP | Selecteer **Geen**. |
     | NIC-netwerkbeveiligingsgroep | Selecteer **Geavanceerd**|
     | Netwerkbeveiligingsgroep configureren | Selecteer **Nieuw maken**. </br> Voer in **Netwerkbeveiligingsgroep maken** bij **Naam** **myNSG** in. </br> Selecteer onder **Inkomende regels** de optie **+ Een inkomende regel toevoegen**. </br> Voer bij **Poortbereiken van doel** **80** in. </br> Voer bij **Prioriteit** **100** in. </br> Voer bij **Naam** **myHTTPRule** in. </br> Selecteer **Toevoegen** </br> Selecteer **OK** |
     | **Taakverdeling**  |
@@ -253,7 +289,7 @@ Zie [Uitgaande verbindingen in Azure](load-balancer-outbound-connections.md) voo
     | Instelling | Waarde |
     | ------- | ----- |
     | Naam | Voer **myOutboundRule** in. |
-    | IP-adres voor front-end | Selecteer **Nieuw maken**. </br> Voer bij **Naam** de waarde **LoadBalancerFrontEndOutbound** in. </br> Selecteer **IP-adres** of **IP-voorvoegsel**. </br> Selecteer **Nieuw maken** bij **Openbaar IP-adres** of **Openbaar IP-voorvoegsel**. </br> Voer als naam **myPublicIPOutbound** of **myPublicIPPrefixOutbound** in. </br> Selecteer **OK**. </br> Selecteer **Toevoegen**.|
+    | IP-adres voor front-end | Selecteer **Nieuw maken**. </br> Voer bij **Naam** de waarde **LoadBalancerFrontEndOutbound** in. </br> Selecteer **IP-adres** of **IP-voorvoegsel**. </br> Selecteer **Nieuw maken** bij **Openbaar IP-adres** of **Openbaar IP-voorvoegsel**. </br> Voer als naam **myPublicIPOutbound** of **myPublicIPPrefixOutbound** in. </br> Selecteer **Toevoegen**.|
     | Time-out voor inactiviteit (minuten) | Verplaats de schuifregelaar naar **15 minuten**.|
     | TCP opnieuw instellen | Selecteer **Ingeschakeld**.|
     | Back-end-pool | Selecteer **Nieuw maken**. </br> Voer **myBackendPoolOutbound** in bij **Naam**. </br> Selecteer **Toevoegen**. |
@@ -324,21 +360,56 @@ In deze sectie configureert u het volgende:
 * Een statustest.
 * Een load balancer-regel.
 
-## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en parameters
+## <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
-In deze sectie gaat u de parameters in de stappen vervangen door onderstaande informatie:
+In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
-| Parameter                   | Waarde                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Europa -west      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtuele netwerk** of zoek in het zoekvak naar **Virtueel netwerk**.
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens in het tabblad **Basisinstellingen**:
 
+    | **Instelling**          | **Waarde**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Projectgegevens**  |                                                                 |
+    | Abonnement     | Selecteer uw Azure-abonnement                                  |
+    | Resourcegroep   | Selecteer **myResourceGroupLB** |
+    | **Exemplaardetails** |                                                                 |
+    | Naam             | Voer **myVNet** in                                    |
+    | Regio           | Selecteer **Europa - west** |
+
+3. Selecteer het tabblad **IP-adressen** of selecteer de knop **Volgende: IP-adressen** onderaan de pagina.
+
+4. Voer op het tabblad **IP-adressen** deze gegevens in:
+
+    | Instelling            | Waarde                      |
+    |--------------------|----------------------------|
+    | IPv4-adresruimte | Voer **10.1.0.0/16** in |
+
+5. Onder **Subnetnaam** selecteert u het woord **standaard**.
+
+6. Voer in **Subnet bewerken** deze gegevens in:
+
+    | Instelling            | Waarde                      |
+    |--------------------|----------------------------|
+    | Subnetnaam | Voer **myBackendSubnet** in |
+    | Subnetadresbereik | Voer **10.1.0.0/24** in |
+
+7. Selecteer **Opslaan**.
+
+8. Selecteer het tabblad **Beveiliging**.
+
+9. Selecteer onder **BastionHost** **Inschakelen**. Voer deze gegevens in:
+
+    | Instelling            | Waarde                      |
+    |--------------------|----------------------------|
+    | Bastion-naam | Voer **myBastionHost** in |
+    | AzureBastionSubnet-adresruimte | Voer **10.1.1.0/24** in |
+    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **Naam** **myBastionIP** in. </br> Selecteer **OK**. |
+
+
+8. Selecteer het tabblad **Controleren + maken** of selecteer de knop **Controleren + maken**.
+
+9. Selecteer **Maken**.
 ### <a name="create-a-backend-pool"></a>Een back-endpool maken
 
 De back-endadresgroep bevat de IP-adressen van de virtuele netwerkinterfacekaarten (NIC's) die zijn verbonden met de load balancer. 
@@ -420,8 +491,6 @@ In deze sectie doet u het volgende:
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
-SKU's voor openbare IP-adressen en SKU's voor load balancers moeten overeenkomen. Gebruik voor Basic load balancer VM's met Basic IP-adressen in de back-endpool. 
-
 In deze sectie maakt u drie VM's(**myVM1**, **myVM2** en **myVM3**) met een basic openbaar IP-adres.  
 
 De drie VM's worden toegevoegd aan een beschikbaarheidsset met de naam **myAvailabilitySet**.
@@ -459,7 +528,7 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
     | **Netwerkinterface** |  |
     | Virtueel netwerk | **myVNet** selecteren |
     | Subnet | **myBackendSubnet** selecteren |
-    | Openbare IP | **Nieuw maken** selecteren </br> Voer bij de naam **myVM-ip** in. </br> Selecteer **OK** |
+    | Openbare IP | Selecteer **Geen** |
     | NIC-netwerkbeveiligingsgroep | Selecteer **Geavanceerd**|
     | Netwerkbeveiligingsgroep configureren | Selecteer **Nieuw maken**. </br> Voer in **Netwerkbeveiligingsgroep maken** bij **Naam** **myNSG** in. </br> Selecteer onder **Inkomende regels** de optie **+ Een inkomende regel toevoegen**. </br> Voer bij **Poortbereiken van doel** **80** in. </br> Voer bij **Prioriteit** **100** in. </br> Voer bij **Naam** **myHTTPRule** in. </br> Selecteer **Toevoegen** </br> Selecteer **OK** |
     | **Taakverdeling**  |
@@ -510,15 +579,15 @@ De virtuele machines die in de vorige stappen zijn gemaakt, moeten worden toegev
 
 1. Selecteer in het linkermenu **Alle services**, selecteer vervolgens **Alle resources** en selecteer daarna in de lijst met resources **myVM1**, die zich in de resourcegroep **myResourceGroupLB** bevindt.
 
-2. Op de **overzichtspagina** selecteert u **Verbinding maken** om het RDP-bestand voor de VM te downloaden.
+2. Selecteer op de pagina **Overzicht** de optie **Verbinding maken** en daarna **Bastion**.
 
-3. Open het RDP-bestand.
+4. Voer de gebruikersnaam en het wachtwoord in die zijn ingevoerd tijdens het maken van de VM.
 
-4. Meld u aan bij de virtuele machine met de referenties die u hebt opgegeven tijdens het maken van deze virtuele machine.
+5. Selecteer **Verbinding maken**.
 
-5. Ga op de serverdesktop naar **Windows Systeembeheer**>**Windows Powershell**.
+6. Ga op de serverdesktop naar **Windows Systeembeheer** > **Windows Powershell**.
 
-6. In het venster PowerShell voert u de volgende opdrachten uit om het volgende te doen:
+7. In het venster PowerShell voert u de volgende opdrachten uit om het volgende te doen:
 
     * De IIS-server installeren
     * Het standaard iisstart.htm-bestand verwijderen
@@ -535,9 +604,9 @@ De virtuele machines die in de vorige stappen zijn gemaakt, moeten worden toegev
     # Add a new htm file that displays server name
      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
    ```
-7. Sluit de RDP-sessie met **myVM1**.
+8. Sluit de Bastion-sessie met **myVM1**.
 
-8. Herhaal stappen 1 tot en met 6 om IIS en het bijgewerkte bestand iisstart.htm te installeren op **myVM2** en **myVM3**.
+9. Herhaal stappen 1 tot en met 6 om IIS en het bijgewerkte bestand iisstart.htm te installeren op **myVM2** en **myVM3**.
 
 ## <a name="test-the-load-balancer"></a>Load balancer testen
 

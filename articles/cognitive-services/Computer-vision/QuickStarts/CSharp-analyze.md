@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een lokale installatie kopie analyseren-REST, C #'
+title: 'Quickstart: Een lokale afbeelding analyseren - REST C#'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart analyseert u een lokale afbeelding met behulp van de Computer Vision-API met C#.
 services: cognitive-services
@@ -8,40 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1ece80ce5337304d1b0d51e5e334cd64cc133619
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: dc6ec5f440efef153273f8678bd1a55400a1235b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84984418"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835422"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Snelstartgids: een lokale installatie kopie analyseren met behulp van de Computer Vision REST API en C #
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Quickstart: Een lokale afbeelding analyseren met behulp van de Computer Vision REST API en C#
 
-In deze Quick start gaat u een lokaal opgeslagen afbeelding analyseren om visuele functies te extra heren met behulp van de Computer Vision REST API. Met de methode voor het [analyseren van afbeeldingen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) kunt u informatie over de visuele onderdelen uit de afbeeldings inhoud extra heren.
+In deze quickstart analyseert u een lokaal opgeslagen afbeelding om visuele kenmerken te verkrijgen met behulp van de REST-API van Computer Vision. Met de methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) (Afbeelding analyseren) kunt u visuele kenmerkgegevens extraheren uit de afbeeldingsinhoud.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* U moet beschikken over [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) of hoger
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
-* [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/cognitive-services/)
+* U moet [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) of hoger hebben
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Een Computer Vision-resource maken"  target="_blank">maakt u een Computer Vision-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+* [Maak omgevingsvariabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel- en eindpunt-URL, met respectievelijk de namen `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample-application"></a>De voorbeeldtoepassing maken en uitvoeren
 
 Voer de volgende stappen uit om het voorbeeld in Visual Studio te maken:
 
-1. Maak een nieuwe Visual Studio-oplossing/-project in Visual Studio met behulp van de sjabloon Visual C# console app (.NET core Framework).
+1. Maak een nieuwe Visual Studio-oplossing/nieuw project in Visual Studio met behulp van het Visual C# Console App-sjabloon (.NET Core Framework).
 1. Installeer het pakket Newtonsoft.Json NuGet.
     1. Klik in het menu op **Extra**, selecteer **NuGet Package Manager** en vervolgens **NuGet-pakketten voor oplossing beheren**.
-    1. Klik **op het tabblad** **Bladeren** en typ ' Newtonsoft.Jsop ' (als dit nog niet wordt weer gegeven).
-    1. Selecteer **Newtonsoft.Jsop**en klik vervolgens op het selectie vakje naast de project naam en **Installeer**.
-1. Kopieer/plak het onderstaande voorbeeld code fragment in uw Program.cs-bestand. Pas de naam van de naam ruimte aan als deze niet overeenkomt met het bestand dat u hebt gemaakt.
-1. Voeg een afbeelding van uw keuze toe aan de map bin/debug/netcoreappX. X en voeg de naam van de installatie kopie (met de extensie) toe aan de variabele ' imageFilePath '.
+    1. Klik op het tabblad **Bladeren** en typ 'Newtonsoft.Json' in het vak **Zoeken** (als dit nog niet is weergegeven).
+    1. Selecteer **Newtonsoft.Json** en klik vervolgens op het selectievakje naast uw projectnaam en op **Installeren**.
+1. Kopieer/plak het onderstaande voorbeeldcodefragment in uw Program.cs-bestand. Pas de naam van de naamruimte aan als deze niet overeenkomt met de naam die u hebt gemaakt.
+1. Voeg een afbeelding van uw keuze toe aan de map bin/debug/netcoreappX.X en voeg dan de naam van de afbeelding (met extensie) toe aan de variabele 'imageFilePath'.
 1. Voer het programma uit.
 
 ```csharp
@@ -162,7 +162,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>Het antwoord bekijken
 
-Er wordt een geslaagde reactie geretourneerd in JSON (op basis van uw eigen gebruikte installatie kopie) in het console venster, vergelijkbaar met het volgende voor beeld:
+In het consolevenster wordt een geslaagd antwoord geretourneerd in JSON (op basis van uw gebruikte eigen afbeelding), vergelijkbaar met het volgende voorbeeld:
 
 ```json
 {

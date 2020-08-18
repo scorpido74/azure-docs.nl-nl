@@ -1,81 +1,81 @@
 ---
 title: Wat is privé-DNS in Azure?
-description: In dit artikel gaat u aan de slag met een overzicht van de privé-DNS-hosting service op Microsoft Azure.
+description: In dit artikel gaat u aan de slag met een overzicht van de privé-DNS-hostingservice op Microsoft Azure.
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: rohink
-ms.openlocfilehash: 97b266398b3ea46d09b04524dad34922f21b1a95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 540c4d6f2dde64cef9b5795d635ac6259bfc69c3
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76939292"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985628"
 ---
 # <a name="what-is-azure-private-dns"></a>Wat is privé-DNS in Azure?
 
-De Domain Name System, of DNS, is verantwoordelijk voor het vertalen van een service naam naar het IP-adres.  Azure DNS is een hosting service voor DNS-domeinen die naam omzetting biedt met behulp van de Microsoft Azure-infra structuur. Naast de ondersteuning van Internet gerichte DNS-domeinen, ondersteunt Azure DNS ook persoonlijke DNS-zones.
+Het Domain Name System, of DNS, is verantwoordelijk voor het omzetten van een servicenaam naar het bijbehorende IP-adres.  Azure DNS is een service voor het hosten van DNS-domeinen die naamomzetting verzorgt met behulp van de Microsoft Azure-infrastructuur. Naast de ondersteuning van internetgerichte DNS-domeinen ondersteunt Azure DNS ook privé-DNS-zones.
 
-Azure Privé-DNS biedt een betrouw bare, veilige DNS-service voor het beheren en omzetten van domein namen in een virtueel netwerk zonder dat u een aangepaste DNS-oplossing hoeft toe te voegen. Met behulp van privé-DNS-zones kunt u uw eigen aangepaste domein namen gebruiken in plaats van de door Azure meegeleverde namen die vandaag beschikbaar zijn. Met aangepaste domein namen kunt u uw virtuele netwerk architectuur aanpassen aan de behoeften van uw organisatie. Het biedt naam omzetting voor virtuele machines (Vm's) in een virtueel netwerk en tussen virtuele netwerken. Daarnaast kunt u zone namen configureren met een split-horizon-weer gave, waardoor een persoonlijke en een open bare DNS-zone de naam kunnen delen.
+Azure Privé-DNS biedt een betrouwbare, veilige DNS-service voor het beheren en omzetten van domeinnamen in een virtueel netwerk zonder dat u een aangepaste DNS-oplossing hoeft toe te voegen. Met behulp van privé-DNS-zones kunt u uw eigen aangepaste domeinnamen gebruiken in plaats van de door Azure geleverde namen die momenteel beschikbaar zijn. Met aangepaste domeinnamen kunt u uw virtuele netwerkarchitectuur aanpassen aan de behoeften van uw organisatie. Het biedt naamomzetting voor virtuele machines (VM's) binnen één of verschillende virtuele netwerken. Daarnaast kunt u zonenamen configureren met een split-horizon-weergave, waardoor u de naam kunt delen in een privé-DNS-zone en een openbare DNS-zone.
 
-Als u de records van een privé-DNS-zone wilt omzetten vanuit uw virtuele netwerk, moet u het virtuele netwerk koppelen aan de zone. Gekoppelde virtuele netwerken hebben volledige toegang en kunnen alle DNS-records die in de privé zone worden gepubliceerd, omzetten. Daarnaast kunt u ook de optie voor het inschakelen van de registratie op een virtueel netwerk. Als u registratie op een virtueel netwerk inschakelt, worden de DNS-records voor de virtuele machines in het virtuele netwerk geregistreerd in de privé zone. Als automatische registratie is ingeschakeld, werkt Azure DNS ook de zone records bij wanneer een virtuele machine wordt gemaakt, wordt het IP-adres gewijzigd of wordt dit verwijderd.
+Als u de records van een privé-DNS-zone wilt omzetten vanuit uw virtuele netwerk, moet u het virtuele netwerk koppelen aan de zone. Gekoppelde virtuele netwerken hebben volledige toegang en kunnen alle in de privézone gepubliceerde DNS-records omzetten. Daarnaast kunt u ook de optie voor automatische registratie inschakelen op een koppeling met een virtueel netwerk. Als u automatische registratie voor een koppeling met een virtueel netwerk inschakelt, worden de DNS-records voor de virtuele machines in dat virtuele netwerk geregistreerd in de privézone. Als automatische registratie is ingeschakeld, werkt Azure DNS ook de zonerecords bij wanneer er een virtuele machine wordt gemaakt, het IP-adres ervan wordt gewijzigd of deze wordt verwijderd.
 
 ![Overzicht van DNS](./media/private-dns-overview/scenario.png)
 
 > [!NOTE]
-> Gebruik als best practice geen *. lokaal* domein voor uw privé-DNS-zone. Niet alle besturings systemen ondersteunen dit.
+> Gebruik als best practice geen *.local*-domein voor uw privé-DNS-zone. Niet alle besturingssystemen ondersteunen dit.
 
 ## <a name="benefits"></a>Voordelen
 
-Azure Privé-DNS biedt de volgende voor delen:
+Azure Privé-DNS biedt de volgende voordelen:
 
-* **Hiermee verwijdert u de nood zaak van aangepaste DNS-oplossingen**. Voorheen hebben veel klanten aangepaste DNS-oplossingen gemaakt voor het beheren van DNS-zones in hun virtuele netwerk. U kunt nu DNS-zones beheren met behulp van de systeem eigen Azure-infra structuur, waardoor de belasting van het maken en beheren van aangepaste DNS-oplossingen wordt verwijderd.
+* **Hiermee zijn aangepaste DNS-oplossingen niet meer nodig**. Voorheen hebben veel klanten aangepaste DNS-oplossingen gemaakt voor het beheren van DNS-zones in hun virtuele netwerk. U kunt nu DNS-zones beheren met behulp van de systeemeigen Azure-infrastructuur, waardoor u niet meer de belasting van het maken en beheren van aangepaste DNS-oplossingen hebt.
 
-* **Alle algemene DNS-record typen gebruiken**. Azure DNS ondersteunt A-, AAAA-, CNAME-en MX-, PTR-, SOA-, SRV-en TXT-records.
+* **U kunt alle algemene DNS-recordtypen gebruiken**. Azure DNS biedt ondersteuning voor A-, AAAA-, CNAME-, MX-, PTR-, SOA-, SRV- en TXT-records.
 
-* **Automatische hostname-record beheer**. Naast het hosten van uw aangepaste DNS-records, onderhoudt Azure automatisch hostname-records voor de virtuele machines in de opgegeven virtuele netwerken. In dit scenario kunt u de domein namen die u gebruikt, optimaliseren zonder dat u aangepaste DNS-oplossingen hoeft te maken of toepassingen hoeft te wijzigen.
+* **Automatisch beheer van hostnaamrecords**. Naast het hosten van uw aangepaste DNS-records, onderhoudt Azure automatisch hostnaamrecords voor de virtuele machines in de opgegeven virtuele netwerken. In dit scenario kunt u de domeinnamen die u gebruikt, optimaliseren zonder dat u aangepaste DNS-oplossingen hoeft te maken of toepassingen hoeft te wijzigen.
 
-* **Omzetting van hostname tussen virtuele netwerken**. In tegens telling tot door Azure verschafte hostnamen kunnen persoonlijke DNS-zones worden gedeeld tussen virtuele netwerken. Deze mogelijkheid vereenvoudigt scenario's voor meerdere netwerken en service detectie, zoals peering op het virtuele netwerk.
+* **Hostnaamomzetting binnen virtuele netwerken**. In tegenstelling tot door Azure verschafte hostnamen kunnen privé-DNS-zones worden gedeeld binnen virtuele netwerken. Deze mogelijkheid vereenvoudigt scenario's met meerdere netwerken en servicedetectie, zoals peering van virtuele netwerken.
 
-* **Vertrouwde hulpprogram ma's en gebruikers ervaring**. Voor een kortere leer curve gebruikt deze service goed gedefinieerde Azure DNS-hulpprogram ma's (Azure Portal, Azure PowerShell, Azure CLI, Azure Resource Manager sjablonen en de REST API).
+* **Vertrouwde hulpprogramma's en gebruikerservaring**. Voor een kortere leercurve gebruikt deze service genoegzaam bekende Azure DNS-hulpprogramma's (Azure Portal, Azure PowerShell, Azure CLI, Azure Resource Manager-sjablonen en de REST API).
 
-* **Split-horizon-ondersteuning voor DNS**. Met Azure DNS kunt u zones maken met dezelfde naam die worden omgezet in verschillende antwoorden vanuit een virtueel netwerk en via het open bare Internet. Een typisch scenario voor Split-horizon DNS is het leveren van een speciale versie van een service voor gebruik in uw virtuele netwerk.
+* **Split-horizon-ondersteuning voor DNS**. Met Azure DNS kunt u zones maken met dezelfde naam die worden omgezet in verschillende antwoorden vanuit een virtueel netwerk en het openbare internet. Een typisch scenario voor split-horizon DNS is het leveren van een speciale versie van een service voor gebruik in uw virtuele netwerk.
 
-* **Beschikbaar in alle Azure-regio's**. De functie Azure DNS persoonlijke zones is beschikbaar in alle Azure-regio's in de open bare Azure-Cloud.
+* **Verkrijgbaar in alle Azure-regio's**. De functie Azure DNS Private Zones is beschikbaar in alle Azure-regio's in de openbare cloud van Azure.
 
 ## <a name="capabilities"></a>Functionaliteit
 
-Azure DNS biedt de volgende mogelijkheden:
+Azure DNS biedt de volgende functionaliteit:
 
-* **Automatische registratie van virtuele machines van een virtueel netwerk dat is gekoppeld aan een privé zone waarvoor automatische registratie is ingeschakeld**. De virtuele machines worden geregistreerd (toegevoegd) aan de privé zone als een record die verwijst naar hun privé-IP-adressen. Wanneer een virtuele machine in een virtuele netwerk koppeling waarvoor automatische registratie is ingeschakeld, wordt verwijderd, verwijdert Azure DNS ook automatisch de bijbehorende DNS-record uit de gekoppelde persoonlijke zone.
+* **Automatische registratie van virtuele machines vanuit een virtueel netwerk dat is gekoppeld aan een privézone waarvoor automatische registratie is ingeschakeld**. De virtuele machines worden geregistreerd (toegevoegd) aan de privézone als A-records die verwijzen naar hun privé-IP-adressen. Wanneer een virtuele machine wordt verwijderd uit een koppeling met een virtueel netwerk waarvoor automatische registratie is ingeschakeld, wordt in Azure DNS ook automatisch de bijbehorende DNS-record uit de gekoppelde privézone verwijderd.
 
-* **Forward DNS-omzetting wordt ondersteund voor virtuele netwerken die zijn gekoppeld aan de privé zone**. Voor de DNS-omzetting tussen virtuele netwerken is er geen expliciete afhankelijkheid, zodat de virtuele netwerken met elkaar worden gekoppeld. Het is echter mogelijk dat u virtuele netwerken wilt peeren voor andere scenario's (bijvoorbeeld HTTP-verkeer).
+* **Forward DNS-omzetting wordt ondersteund in virtuele netwerken die zijn gekoppeld aan de privézone**. Voor de DNS-omzetting binnen virtuele netwerken is er geen expliciete afhankelijkheid, zodat de virtuele netwerken met elkaar worden gekoppeld. Het is echter mogelijk dat u virtuele netwerken wilt koppelen voor andere scenario's (bijvoorbeeld HTTP-verkeer).
 
-* **Achterwaartse DNS-Zoek opdrachten worden ondersteund binnen het bereik van het virtuele netwerk**. Omgekeerde DNS-zoek opdracht voor een persoonlijk IP-adres in het virtuele netwerk dat is toegewezen aan een privé zone, wordt de FQDN-naam van de host/recordnaam en de zone naam als achtervoegsel geretourneerd.
+* **Omgekeerde DNS-zoekacties worden ondersteund binnen het bereik van het virtuele netwerk**. In omgekeerde DNS-zoekacties voor een privé-IP-adres in het virtuele netwerk dat is toegewezen aan een privézone, wordt de FQDN-naam geretourneerd waarin de host-/recordnaam en de zonenaam als achtervoegsel is opgenomen.
 
 ## <a name="other-considerations"></a>Andere overwegingen
 
 Azure DNS heeft de volgende beperkingen:
 
-* Een specifiek virtueel netwerk kan aan slechts één privé zone worden gekoppeld als automatische registratie van VM-DNS-records is ingeschakeld. U kunt echter meerdere virtuele netwerken koppelen aan één DNS-zone.
-* Omgekeerde DNS werkt alleen voor particuliere IP-ruimte in het gekoppelde virtuele netwerk
-* Omgekeerde DNS voor een persoonlijk IP-adres voor een gekoppeld virtueel netwerk retourneert *Internal.cloudapp.net* als het standaard achtervoegsel voor de virtuele machine. Voor virtuele netwerken die zijn gekoppeld aan een privé zone waarvoor registratie is ingeschakeld, retourneert reverse DNS voor een persoonlijk IP-adres twee FQDN-namen: een met standaard het achtervoegsel *Internal.cloudapp.net* en een andere met het achtervoegsel van de privé zone.
-* Voorwaardelijk door sturen wordt momenteel niet ondersteund. Om omzetting tussen Azure-en on-premises netwerken mogelijk te maken. Zie [naam omzetting voor vm's en rolinstanties](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* Een specifiek virtueel netwerk kan aan slechts één privézone worden gekoppeld als automatische registratie van DNS-records van VM's is ingeschakeld. U kunt echter meerdere virtuele netwerken koppelen aan één DNS-zone.
+* Een omgekeerd DNS werkt alleen voor privé-IP-ruimte in het gekoppelde virtuele netwerk
+* In een omgekeerd DNS voor een privé-IP-adres voor een gekoppeld virtueel netwerk wordt *internal.cloudapp.net* geretourneerd als het standaardachtervoegsel voor de virtuele machine. Voor virtuele netwerken die zijn gekoppeld aan een privézone waarvoor automatische registratie is ingeschakeld, worden in een omgekeerd DNS voor een privé-IP-adres twee FQDN-namen geretourneerd: een met standaard het achtervoegsel *internal.cloudapp.net* en een ander met het achtervoegsel van de privézone.
+* Voorwaardelijk doorsturen wordt in het eigen systeem momenteel niet ondersteund. Zie [Naamomzetting voor VM's en rolinstanties](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) voor het inschakelen van omzetting tussen Azure-netwerken en on-premises netwerken.
  
 ## <a name="pricing"></a>Prijzen
 
-Zie [Azure DNS prijzen](https://azure.microsoft.com/pricing/details/dns/)voor prijs informatie.
+Zie [Prijzen van Azure DNS](https://azure.microsoft.com/pricing/details/dns/) voor informatie over prijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het maken van een privé zone in Azure DNS met behulp van [Azure PowerShell](./private-dns-getstarted-powershell.md) of [Azure cli](./private-dns-getstarted-cli.md).
+* Meer informatie over het maken van een privézone in Azure DNS met behulp van [Azure PowerShell](./private-dns-getstarted-powershell.md) of [Azure CLI](./private-dns-getstarted-cli.md).
 
-* Meer informatie over enkele veelvoorkomende [scenario's voor particuliere zones](./private-dns-scenarios.md) die kunnen worden gerealiseerd met persoonlijke zones in azure DNS.
+* Lees meer over een aantal veelvoorkomende [scenario's voor privézones](./private-dns-scenarios.md) die u kunt realiseren met privézones in Azure DNS.
 
-* Voor veelgestelde vragen en antwoorden over persoonlijke zones in Azure DNS, met inbegrip van specifieke gedrag dat u kunt verwachten voor bepaalde soorten bewerkingen, raadpleegt u [privé-DNS Veelgestelde vragen](./dns-faq-private.md).
+* Zie [Veelgestelde vragen over Privé-DNS](./dns-faq-private.md) voor veelgestelde vragen en antwoorden over privézones in Azure DNS, waaronder specifiek gedrag dat u kunt verwachten voor bepaalde soorten bewerkingen.
 
-* Ga voor meer informatie over DNS-zones en-records naar [overzicht van DNS-zones en-records](dns-zones-records.md).
+* Ga naar [Overzicht van DNS-zones en -records](dns-zones-records.md) voor meer informatie over DNS-zones en records.
 
 * Informatie over enkele van de andere belangrijke [netwerkmogelijkheden](../networking/networking-overview.md) van Azure.

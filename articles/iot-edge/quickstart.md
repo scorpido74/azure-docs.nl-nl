@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117247"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061486"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren in een virtueel Windows-apparaat
 
@@ -65,7 +65,9 @@ IoT Edge-apparaat:
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
   ```
 
-  Het maken en starten van de nieuwe virtuele machine kan een paar minuten duren. U kunt vervolgens een RDP-bestand downloaden dat moet worden gebruikt om verbinding te maken met uw virtuele machine:
+  Het maken en starten van de nieuwe virtuele machine kan een paar minuten duren.
+
+  Zodra uw virtuele machine start, kunt u vervolgens een RDP-bestand downloaden dat moet worden gebruikt om verbinding te maken met uw virtuele machine:
 
   1. Navigeer naar uw nieuwe Windows VM in Azure Portal.
   1. Selecteer **Verbinden**.
@@ -74,6 +76,8 @@ IoT Edge-apparaat:
   Open dit bestand met Verbinding met extern bureaublad om verbinding te maken met uw virtuele Windows-machine. Gebruik de beheerdersnaam en het beheerderswachtwoord die u hebt opgegeven met de opdracht `az vm create`.
 
 > [!NOTE]
+> Uw virtuele Windows-machine wordt gestart met Windows versie 1809 (build 17763). Dit is de nieuwste [Windows-build met langetermijnondersteuning](https://docs.microsoft.com/windows/release-information/). In Windows wordt standaard elke 22 uur automatisch op updates gecontroleerd. Na een controle op uw virtuele machine wordt door Windows een versie-update gepusht die niet compatibel is met IoT Edge voor Windows, waardoor IoT Edge voor Windows-functies niet meer kunnen worden gebruikt. U wordt aangeraden om uw virtuele machine niet langer dan 22 uur te gebruiken of [Windows-updates tijdelijk te onderbreken](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
+>
 > Voor het gemak wordt in deze quickstart gebruikgemaakt van een Windows VM. Zie [Systemen met ondersteuning voor Azure IoT Edge](support.md) voor meer informatie over welke Windows-besturingssystemen algemeen beschikbaar zijn voor productiescenario's.
 >
 > Als u klaar bent om uw eigen Windows-apparaat te configureren voor IoT Edge, met inbegrip van apparaten met IoT Core, volgt u de stappen in [De Azure IoT Edge-runtime op Windows installeren](how-to-install-iot-edge-windows.md).

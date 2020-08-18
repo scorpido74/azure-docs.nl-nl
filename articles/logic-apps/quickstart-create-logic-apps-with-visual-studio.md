@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/22/2020
-ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/07/2020
+ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132361"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008879"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Quickstart: Geautomatiseerde taken, processen en werkstromen maken met Azure Logic Apps - Visual Studio
 
@@ -28,7 +28,7 @@ In deze quickstart maakt u met Visual Studio dezelfde logische app als in de qui
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-account en -abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/). Als u een Azure Government-abonnement hebt, volgt u deze extra stappen om [Visual Studio in te stellen voor Azure Government Cloud](#azure-government).
 
 * Download en installeer deze hulpprogramma's als u ze nog niet hebt:
 
@@ -51,12 +51,6 @@ In deze quickstart maakt u met Visual Studio dezelfde logische app als in de qui
   
     U kunt hulpprogramma's van Azure Logic Apps ofwel rechtstreeks vanuit Visual Studio Marketplace downloaden en installeren, of leer [deze extensie te installeren vanuit Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions). Zorg ervoor dat u Visual Studio opnieuw opstart na de installatie.
 
-  * Lees de volgende onderwerpen voor aanvullende installatiegegevens als u Azure Government-abonnementen met Visual Studio wilt gebruiken:
-
-    * Visual Studio 2019: [Snelstart: Verbinding maken met Azure Government met Visual Studio](../azure-government/documentation-government-connect-vs.md)
-
-    * Visual Studio 2017: [Introductie van de Visual Studio-extensie Azure Environment-selector ](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), die u kunt downloaden en installeren via de [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector).
-
 * Toegang tot het web tijdens het gebruik van de ingebouwde ontwerpfunctie van Logic App
 
   De ontwerpfunctie vereist een internetverbinding om resources te maken in Azure en eigenschappen en gegevens van connectors in uw logische app te lezen.
@@ -65,6 +59,34 @@ In deze quickstart maakt u met Visual Studio dezelfde logische app als in de qui
 
   > [!IMPORTANT]
   > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
+
+<a name="azure-government"></a>
+
+## <a name="set-up-visual-studio-for-azure-government"></a>Visual Studio instellen voor Azure Government
+
+### <a name="visual-studio-2017"></a>Visual Studio 2017
+
+U kunt de [Visual Studio-extensie Azure Environment-selector](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/) gebruiken, die u kunt downloaden en installeren via de [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector).
+
+### <a name="visual-studio-2019"></a>Visual Studio 2019
+
+Om te kunnen werken met Azure Government-abonnementen in Azure Logic Apps, moet u [een detectie-eindpunt voor Azure Government Cloud toevoegen aan Visual Studio](../azure-government/documentation-government-connect-vs.md). *Voordat u zich bij Visual Studio aanmeldt met uw Azure Government-account*, moet u echter de naam wijzigen van het JSON-bestand dat wordt gegenereerd nadat u het detectie-eindpunt toevoegt, door deze stappen te volgen:
+
+1. Sluit Visual Studio.
+
+1. Zoek het gegenereerde JSON-bestand genaamd `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` op deze locatie:
+
+   `%localappdata%\.IdentityService\AadConfigurations`
+ 
+1. Geef het JSON-bestand de naam `AadProvider.Configuration.json`.
+
+1. Start Visual Studio opnieuw op.
+
+1. Ga verder met de stappen om u aan te melden met uw Azure Government-account.
+
+Als u deze instelling wilt terugdraaien, verwijdert u het JSON-bestand op de volgende locatie en start u Visual Studio opnieuw op:
+
+`%localappdata%\.IdentityService\AadConfigurations\AadProvider.Configuration.json`
 
 <a name="create-resource-group-project"></a>
 

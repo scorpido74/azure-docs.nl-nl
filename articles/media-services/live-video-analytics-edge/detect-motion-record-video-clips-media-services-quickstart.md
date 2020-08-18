@@ -3,12 +3,12 @@ title: Beweging detecteren, video opnemen in Azure Media Services
 description: In deze quickstart ziet u hoe u Live Video Analytics kunt gebruiken in IoT Edge om beweging in een live-videostream te detecteren en videoclips op te nemen in Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074407"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067648"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Quickstart: Beweging detecteren, video opnemen in Media Services
 
@@ -29,13 +29,13 @@ Dit artikel is gebaseerd op de [Quickstart Aan de slag](get-started-detect-motio
 
 Als onderdeel van de bovenstaande stappen voor het instellen van de Azure-resources, wordt een (korte) video van een parkeerplaats gekopieerd naar de virtuele Linux-machine in Azure die wordt gebruikt als het IoT Edge-apparaat. Dit videobestand wordt gebruikt voor het simuleren van een livestream voor deze zelfstudie.
 
-U kunt een toepassing als [VLC Player](https://www.videolan.org/vlc/) gebruiken, deze starten, op Control+N drukken en [deze](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) koppeling naar de video over de parkeerplaats plakken om met afspelen te beginnen. Na ongeveer 5 seconden ziet u een witte auto over de parkeerplaats rijden.
+U kunt een toepassing als [VLC Player](https://www.videolan.org/vlc/) gebruiken, deze starten, op `Ctrl+N` drukken en de koppeling naar [de voorbeeldvideo over de parkeerplaats](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) plakken om met afspelen te beginnen. Na ongeveer 5 seconden ziet u een witte auto over de parkeerplaats rijden.
 
 Wanneer u de onderstaande stappen hebt uitgevoerd, hebt u Live Video Analytics in IoT Edge gebruikt om de beweging van de auto te detecteren en een videoclip op te nemen die na ongeveer vijf seconden begint. In het onderstaande diagram ziet u de visuele weergave van de totale stroom.
 
 ![Op gebeurtenissen gebaseerde video-opname naar assets op basis van bewegingsgebeurtenissen](./media/quickstarts/topology.png)
 
-## <a name="use-direct-methods"></a>Directe methoden gebruiken
+## <a name="use-direct-method-calls"></a>Aanroepen van directe methoden gebruiken
 
 U kunt de module gebruiken om live-videostreams te analyseren door directe methoden aan te roepen. Lees [Directe methoden voor Live Video Analytics in IoT Edge](direct-methods.md) om inzicht te krijgen in alle directe methoden van de module. 
 
@@ -46,35 +46,35 @@ In deze stap worden alle [graaftopologieën](media-graph-concept.md#media-graph-
 1. Er verschijnt een bewerkingsvak middenin het bovenste deel van het Visual Studio Code-venster. Voer GraphTopologyList in het invoervak in en druk op Enter.
 1. Kopieer vervolgens de onderstaande JSON-nettolading, plak deze in het bewerkingsvak en druk op Enter.
     
-    ```
-    {
-        "@apiVersion" : "1.0"
-    }
-    ```
+```
+{
+    "@apiVersion" : "1.0"
+}
+```
 
-    Binnen een paar seconden ziet u het venster Uitvoer in Visual Studio Code verschijnen met het volgende antwoord
+Binnen een paar seconden ziet u het venster Uitvoer in Visual Studio Code verschijnen met het volgende antwoord
     
-    ```
-    [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
-    [DirectMethod] Response from [lva-sample-device/lvaEdge]:
-    {
-      "status": 200,
-      "payload": {
-        "value": []
-      }
-    }
-    ```
+```
+[DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
+[DirectMethod] Response from [lva-sample-device/lvaEdge]:
+{
+  "status": 200,
+  "payload": {
+    "value": []
+  }
+}
+```
     
-    Het bovenstaande antwoord wordt verwacht omdat er geen graaftopologieën zijn gemaakt.
+Het bovenstaande antwoord wordt verwacht omdat er geen graaftopologieën zijn gemaakt.
 
 ### <a name="invoke-graphtopologyset"></a>GraphTopologySet aanroepen
 
-Als u dezelfde stappen gebruikt als voor het aanroepen van GraphTopologyList, kunt u GraphTopologySet aanroepen om een [graaftopologie](media-graph-concept.md#media-graph-topologies-and-instances) in te stellen met behulp van de volgende JSON als nettolading. U maakt een graaftopologie met de naam EVRtoAssetsOnMotionDetecion.
+Als u dezelfde stappen gebruikt als voor het aanroepen van GraphTopologyList, kunt u GraphTopologySet aanroepen om een [graaftopologie](media-graph-concept.md#media-graph-topologies-and-instances) in te stellen met behulp van de volgende JSON als nettolading. U maakt een graaftopologie met de naam EVRtoAssetsOnMotionDetection.
 
 ```
 {
     "@apiVersion": "1.0",
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -195,7 +195,7 @@ Binnen een paar seconden ziet u in het venster Uitvoer het volgende antwoord ver
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to assets based on motion events",
       "parameters": [
@@ -312,7 +312,7 @@ De geretourneerde status is 201, wat aangeeft dat er een nieuwe graaftopologie i
 
 * Roep GraphTopologySet opnieuw aan en controleer of de geretourneerde statuscode 200 is. Statuscode 200 geeft aan dat een bestaande graaftopologie is bijgewerkt.
 * Roep GraphTopologySet opnieuw aan, maar wijzig de tekenreeks voor de beschrijving. Controleer of de statuscode in het antwoord 200 is en of de beschrijving is bijgewerkt naar de nieuwe waarde.
-* Roep GraphTopologyList aan zoals beschreven in de vorige sectie en controleer of de graaftopologie EVRtoAssetsOnMotionDetecion nu in de geretourneerde nettolading wordt weergegeven.
+* Roep GraphTopologyList aan zoals beschreven in de vorige sectie en controleer of de graaftopologie EVRtoAssetsOnMotionDetection nu in de geretourneerde nettolading wordt weergegeven.
 
 ### <a name="invoke-graphtopologyget"></a>GraphTopologyGet aanroepen
 
@@ -321,7 +321,7 @@ Roep nu GraphTopologyGet aan met de volgende nettolading
 
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 
@@ -337,7 +337,7 @@ Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord versc
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -466,7 +466,7 @@ Roep nu de directe methode voor GraphInstanceSet aan met de volgende nettolading
     "@apiVersion" : "1.0",
     "name" : "Sample-Graph-2",
     "properties" : {
-        "topologyName" : "EVRtoAssetsOnMotionDetecion",
+        "topologyName" : "EVRtoAssetsOnMotionDetection",
         "description" : "Sample graph description",
         "parameters" : [
             { "name" : "rtspUrl", "value" : "rtsp://rtspsim:554/media/lots_015.mkv" }
@@ -477,7 +477,7 @@ Roep nu de directe methode voor GraphInstanceSet aan met de volgende nettolading
 
 Houd rekening met het volgende:
 
-* In de bovenstaande nettolading wordt de naam van de graaftopologie (EVRtoAssetsOnMotionDetecion) opgegeven waarvoor het graafexemplaar moet worden gemaakt.
+* In de bovenstaande nettolading wordt de naam van de graaftopologie (EVRtoAssetsOnMotionDetection) opgegeven waarvoor het graafexemplaar moet worden gemaakt.
 * De nettolading bevat een parameterwaarde voor rtspUrl, die geen standaardwaarde heeft in de nettolading van de topologie.
 
 Binnen een paar seconden ziet u in het venster Uitvoer het volgende antwoord verschijnen:
@@ -496,7 +496,7 @@ Binnen een paar seconden ziet u in het venster Uitvoer het volgende antwoord ver
     "properties": {
       "state": "Inactive",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -531,13 +531,13 @@ De mediagraaf die u hebt gemaakt, maakt gebruik van het knooppunt van de bewegin
     
     Binnen een paar seconden ziet u in het venster Uitvoer de volgende berichten:
 
-    ```
-    [IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
-    [IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
-    ```
+```
+[IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
+[IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
+```
 
 ### <a name="invoke-graphinstanceactivate"></a>GraphInstanceActivate aanroepen
 
@@ -590,7 +590,7 @@ Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord versc
     "properties": {
       "state": "Active",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -738,7 +738,7 @@ Als u het graafexemplaar blijft uitvoeren, ziet u het volgende bericht.
 
 Als u het graafexemplaar blijft uitvoeren, bereikt de TRSP-simulator het eind van het videobestand en stopt (of de verbinding wordt verbroken). Het knooppunt van de RTSP-bron maakt vervolgens opnieuw verbinding met de simulator, waarna het proces zich herhaalt.
     
-## <a name="invoke-additional-direct-methods-to-clean-up"></a>Aanvullende directe methoden aanroepen om op te schonen
+## <a name="invoke-additional-direct-method-calls-to-clean-up"></a>Aanvullende directe methodeaanroepen aanroepen om op te schonen
 
 Roep nu directe methoden aan voor het deactiveren en verwijderen van het graafexemplaar (in die volgorde).
 
@@ -801,7 +801,7 @@ Roep de directe methode voor GraphTopologyDelete aan met de volgende nettolading
 ```
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 

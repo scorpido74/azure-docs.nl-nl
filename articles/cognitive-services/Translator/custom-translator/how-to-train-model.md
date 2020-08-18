@@ -6,72 +6,71 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: c29a0b8b429705bb0315c37fc6fe63eb8d77511f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 824516a327d45feb5b6a084a113633bd3a486abe
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996700"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508342"
 ---
 # <a name="train-a-model"></a>Een model trainen
 
-Training a model is de belang rijke stap bij het bouwen van een Vertaal model, omdat zonder trainingen geen training kan worden gebouwd. De training vindt plaats op basis van documenten die u voor de trainingen selecteert.
+De training van een model is de eerste en belangrijkste stap voor het bouwen van een Vertaal model, anders kan het model niet worden samengesteld. De training vindt plaats op basis van documenten die u voor de trainingen selecteert. Wanneer u documenten van het document type training selecteert, moet u mindful van de minimum vereiste voor de 10.000-parallelle zinnen. Wanneer u documenten selecteert, wordt het totale aantal trainings zinnen weer gegeven om u te helpen. Deze vereiste is niet van toepassing wanneer u alleen documenten van het woordenlijst document type selecteert om een model te trainen.
 
 Een model trainen:
 
-1.  Selecteer het project waar u een model wilt bouwen.
+1. Selecteer het project waar u een model wilt bouwen.
 
-2.  Op het tabblad gegevens voor het project worden alle relevante documenten voor het taal paar van het project weer gegeven. Selecteer hand matig de documenten die u wilt gebruiken voor het trainen van uw model. U kunt in dit scherm trainings-, afstemmings-en test documenten selecteren. U hoeft alleen de Trainingsset te selecteren en aangepaste Translator te hebben om de afstemmings-en test sets voor u te maken.
+2. Op het tabblad gegevens voor het project worden alle relevante documenten voor het taal paar van het project weer gegeven. Selecteer hand matig de documenten die u wilt gebruiken voor het trainen van uw model. U kunt in dit scherm trainings-, afstemmings-en test documenten selecteren. U hoeft alleen de Trainingsset te selecteren en aangepaste Translator te hebben om de afstemmings-en test sets voor u te maken.
 
-    -  Document naam: naam van het document.
+    - Document naam: naam van het document.
 
-    -  Koppelen: als dit document een parallel-of Monolingual-document is. Monolingual documenten worden momenteel niet ondersteund voor training.
+    - Koppelen: als dit document een parallel-of Monolingual-document is. Monolingual documenten worden momenteel niet ondersteund voor training.
 
-    -  Document type: kan training, afstemming, testen of woorden lijst zijn.
+    - Document type: kan training, afstemming, testen of woorden lijst zijn.
 
-    -  Taal paar: hier worden de bron-en doel taal voor het project weer gegeven.
+    - Taal paar: hier worden de bron-en doel taal voor het project weer gegeven.
 
-    -  Bron zinnen: toont het aantal zinnen dat is geëxtraheerd uit het bron bestand.
+    - Bron zinnen: toont het aantal zinnen dat is geëxtraheerd uit het bron bestand.
 
-    -  Doel zinnen: toont het aantal zinnen dat is geëxtraheerd uit het doel bestand.
+    - Doel zinnen: toont het aantal zinnen dat is geëxtraheerd uit het doel bestand.
 
     ![Model trainen](media/how-to/how-to-train-model.png)
 
-3.  Klik op de knop trainen.
+3. Klik op de knop model maken.
 
-4.  Geef in het dialoog venster een naam op voor uw model.
+4. Geef in het dialoog venster de naam op voor uw model. Standaard wordt ' Train onmiddellijk ' geselecteerd om de trainings pijplijn te starten wanneer u op de knop model maken klikt. U kunt ' opslaan als concept ' selecteren om de meta gegevens van het model te maken en het model in een concept status te plaatsen, maar model training zou niet starten. U moet op een later tijdstip hand matig modellen in concept status selecteren om te trainen.
 
-5.  Klik op model trainen.
+5. Klik op de knop model maken.
 
     ![Dialoog venster voor Train model](media/how-to/how-to-train-model-2.png)
 
-6.  De training wordt door aangepast Translator verzonden en de status van de training wordt weer gegeven op het tabblad modellen.
+6. De training wordt door aangepast Translator verzonden en de status van de training wordt weer gegeven op het tabblad modellen.
 
     ![Model pagina Train](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
 >Custom Translator ondersteunt tien gelijktijdige trainingen binnen een werk ruimte op elk gewenst moment.
 
+## <a name="modify-a-model-name"></a>Een model naam wijzigen
 
-## <a name="edit-a-model"></a>Een model bewerken
+U kunt een model naam wijzigen op de pagina model Details.
 
-U kunt een model bewerken met behulp van de koppeling bewerken op de pagina model Details.
-
-1.  Klik op het potlood pictogram.
+1. Klik op de pagina projecten op de naam van het project waarin het model zich bevindt.
+2. Klik op het tabblad model.
+3. Klik op de naam van het model om de details van het model weer te geven.
+4. Klik op het potlood pictogram.
 
     ![Model bewerken](media/how-to/how-to-edit-model.png)
 
-2.  In het dialoog venster wijzigen,
+5. Wijzig in het dialoog venster de naam van het model en geef uw model een zinvolle naam.
 
-    1.  Model naam (vereist): Geef uw model een zinvolle naam.
+    ![Meer dialoog venster bewerken](media/how-to/how-to-edit-model-dialog.png)
 
-        ![Meer dialoog venster bewerken](media/how-to/how-to-edit-model-dialog.png)
-
-3.  Klik op Opslaan.
-
+6. Klik op Opslaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

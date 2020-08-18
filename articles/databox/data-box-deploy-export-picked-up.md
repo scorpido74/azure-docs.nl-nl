@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7023d29bcb559f4edf11b374b9bfb959e968f626
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208765"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845796"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Zelfstudie: Azure Data Box retourneren (preview)
-
 
 In deze zelfstudie wordt beschreven hoe u uw Azure Data Box retourneert en hoe de gegevens worden gewist zodra het apparaat is ontvangen door het Azure-datacenter.
 
 In deze zelfstudie vindt u informatie over onderwerpen als:
 
 > [!div class="checklist"]
+>
 > * Vereisten
 > * Voorbereiding voor verzending
 > * De Data Box naar Microsoft verzenden
@@ -34,8 +34,8 @@ In deze zelfstudie vindt u informatie over onderwerpen als:
 
 Zorg voordat u begint voor het volgende:
 
-- U hebt de [Zelfstudie: Gegevens kopiëren uit Azure Data Box](data-box-deploy-export-copy-data.md) voltooid. 
-- Kopieertaken zijn voltooid. Voorbereiding voor verzending kan niet worden uitgevoerd als er nog kopieertaken worden uitgevoerd.
+* U hebt de [Zelfstudie: Gegevens kopiëren uit Azure Data Box](data-box-deploy-export-copy-data.md) voltooid.
+* Kopieertaken zijn voltooid. Voorbereiding voor verzending kan niet worden uitgevoerd als er nog kopieertaken worden uitgevoerd.
 
 ## <a name="prepare-to-ship"></a>Voorbereiding voor verzending
 
@@ -47,7 +47,7 @@ De volgende stappen zijn afhankelijk van de locatie waarvandaan u het apparaat r
 
 Zorg ervoor dat het kopiëren van gegevens van het apparaat is voltooid en dat de stappen in **Voorbereiding voor verzending** zijn uitgevoerd. De procedure is afhankelijk van de regio waaruit u het apparaat verzendt.
 
-## <a name="in-us-canada-europe"></a>[In de VS, Canada, Europa](#tab/in-us-canada-europe)
+## <a name="us-canada-europe"></a>[VS, Canada, Europa](#tab/in-us-canada-europe)
 
 Voer de volgende stappen uit als u het apparaat vanuit de VS, Canada of Europa retourneert.
 
@@ -63,19 +63,17 @@ Voer de volgende stappen uit als u het apparaat vanuit de VS, Canada of Europa r
     In plaats van het ophalen te plannen, kunt u de Data Box ook zelf naar de dichtstbijzijnde inleverlocatie brengen.
 4. Nadat de Data Box door de vervoerder is opgehaald en gescand, verandert de orderstatus in de portal in **Opgehaald**. Er wordt ook een tracerings-id weergegeven.
 
-
-## <a name="in-australia"></a>[In Australië](#tab/in-australia)
+## <a name="australia"></a>[Australië](#tab/in-australia)
 
 Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle inkomende verzendingen moeten vooraf worden gemeld. Voer de volgende stappen uit voor verzenden vanuit Australië.
-
 
 1. Bewaar de oorspronkelijke doos om het apparaat terug te sturen.
 2. Zorg ervoor dat het kopiëren van gegevens naar het apparaat is voltooid en dat de stappen in **Voorbereiding voor verzending** zijn uitgevoerd.
 3. Schakel het apparaat uit en verwijder de kabels.
 4. Rol het meegeleverde netsnoer op en plaats het in de opberglade aan de achterkant van het apparaat.
-5. Boek via de [DHL-koppeling](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)  online een afspraak voor de retourzending.
+5. Boek via de [DHL-koppeling](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference) online een afspraak voor de retourzending.
 
-## <a name="in-japan"></a>[In Japan](#tab/in-japan) 
+## <a name="japan"></a>[Japan](#tab/in-japan)
 
 1. Bewaar de oorspronkelijke doos om het apparaat terug te sturen.
 2. Schakel het apparaat uit en verwijder de kabels.
@@ -83,8 +81,8 @@ Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle
 4. Schrijf als gegevens van de afzender uw bedrijfsnaam en adresgegevens op de vrachtbrief.
 5. Stuur een e-mail naar Quantium Solutions met behulp van de volgende e-mailsjabloon.
 
-    - Als er geen vrachtbrief van Japan Post Chakubarai is meegeleverd of ontbreekt, vermeldt u dit in het e-mailbericht. Quantium Solutions Japan zal Japan Post verzoeken om de vrachtbrief mee te nemen als het pakket wordt opgehaald.
-    - Als u meerdere orders hebt, moet u een e-mail verzenden om afzonderlijke pakketten te laten ophalen.
+    * Als er geen vrachtbrief van Japan Post Chakubarai is meegeleverd of ontbreekt, vermeldt u dit in het e-mailbericht. Quantium Solutions Japan zal Japan Post verzoeken om de vrachtbrief mee te nemen als het pakket wordt opgehaald.
+    * Als u meerdere orders hebt, moet u een e-mail verzenden om afzonderlijke pakketten te laten ophalen.
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -98,25 +96,24 @@ Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle
     d. 17：00-19：00 
     ```
 
-3. U ontvangt per e-mail een bevestiging van Quantium Solutions nadat u het ophalen hebt afgesproken. De e-mailbevestiging bevat ook informatie over de Chakubarai-vrachtbrief.
+6. U ontvangt per e-mail een bevestiging van Quantium Solutions nadat u het ophalen hebt afgesproken. De e-mailbevestiging bevat ook informatie over de Chakubarai-vrachtbrief.
 
 Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in het Japans) via: 
 
-- E-mail：Customerservice.JP@quantiumsolutions.com 
-- Telefoon: 03-5755-0150 
+* E-mail：Customerservice.JP@quantiumsolutions.com
+* Telefoon: 03-5755-0150
 
-
-## <a name="in-singapore"></a>[In Singapore](#tab/in-singapore) 
+## <a name="singapore"></a>[Singapore](#tab/in-singapore)
 
 1. Bewaar de oorspronkelijke doos om het apparaat terug te sturen.
-2. Noteer het volgnummer (weergegeven als referentienummer op de pagina Voorbereiden voor verzending van de lokale web-UI van Data Box). Dit is beschikbaar nadat de stap voor het voorbereiden van de verzending is voltooid. Download het verzendlabel vanaf deze pagina en plak het op de doos. 
+2. Noteer het volgnummer (weergegeven als referentienummer op de pagina Voorbereiden voor verzending van de lokale web-UI van Data Box). Dit is beschikbaar nadat de stap voor het voorbereiden van de verzending is voltooid. Download het verzendlabel vanaf deze pagina en plak het op de doos.
 3. Schakel het apparaat uit en verwijder de kabels.
 4. Rol het meegeleverde netsnoer op en plaats het in de opberglade aan de achterkant van het apparaat. 
 5. Stuur een e-mail naar SingPost Customer Service met behulp van de volgende e-mailsjabloon met het volgnummer.
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - OrderName 
+    Subject: Microsoft Azure Pickup - OrderName 
     Body: 
         1. Requestor name  
         2. Requestor contact number
@@ -126,13 +123,60 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
 
    > [!NOTE]
    > Voor boekingsaanvragen op een werkdag:
-   > - Vóór 15.00 uur is de ophaaltijd op de volgende werkdag tussen 09.00 en 13.00.
-   > - Na 15.00 uur is de ophaaltijd op de volgende werkdag tussen 14.00 en 18.00.  
+   >
+   > * Vóór 15.00 uur is de ophaaltijd op de volgende werkdag tussen 09.00 en 13.00.
+   > * Na 15.00 uur is de ophaaltijd op de volgende werkdag tussen 14.00 en 18.00.  
 
+## <a name="south-africa"></a>[Zuid-Afrika](#tab/in-sa)
 
-## <a name="self-managed"></a>[Zelfbeheerd](#tab/in-selfmanaged) 
+1. Bewaar de oorspronkelijke doos om het apparaat terug te sturen.
+2. Noteer het referentienummer (vrachtnummer) dat in de lokale webinterface van het apparaat wordt weergegeven. Dit nummer wordt weergegeven zodra **Voorbereiding voor verzending** is voltooid.
+3. Download het verzendlabel uit de lokale webinterface van het apparaat. Druk het label af en plak het op het te verzenden pakket.
+4. Kies een van de volgende opties om het pakket door DHL te laten ophalen:
 
-Als u Data Box gebruikt in Japan, Singapore, Korea en West-Europa en de bezorgoptie Zelfbeheerde verzending hebt geselecteerd tijdens een bestelling, volgt u deze instructies. 
+    * Bel het contactcentrum van de klantenservice vóór 14.00 uur op nummer **+27(0) 11 9213600**. Kies optie 1 en geef het vrachtnummer op.
+    * Stuur een e-mail naar [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) met behulp van de volgende sjabloon:
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject: Pickup request for Microsoft Azure
+    Body: Need pick up for the below shipment
+      *  DHL tracking number (reference number/waybill number)
+      *  Requested pickup date: yyyy/mm/dd;time:HH MM
+    ```
+
+    * Een andere optie is het pakket af te leveren bij het dichtstbijzijnde DHL-servicepunt.
+
+5. Als u problemen hebt, stuurt u een e-mail naar [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) met details van de problemen die zich hebben voorgedaan. Vermeld het vrachtnummer in de onderwerpregel. U kunt ook bellen naar +27(0)119213902.
+
+## <a name="hong-kong"></a>[Hongkong](#tab/in-hk)
+
+1. Verpak het apparaat in de oorspronkelijke doos om het apparaat terug te sturen.
+2. Noteer het referentienummer (het volgnummer voor terugzending) dat in de lokale webinterface van het apparaat wordt weergegeven. Dit nummer wordt weergegeven zodra **Voorbereiding voor verzending** is voltooid.
+3. Download het verzendlabel uit de lokale webinterface van het apparaat. Druk het label af en plak het op het te verzenden pakket.
+4. Rol het meegeleverde netsnoer op en plaats het in de opberglade aan de achterkant van het apparaat.
+5. Bel de hotline van **Quantium Solutions** op **(852) 2318 1213** tijdens kantooruren (van 9.00 tot 18.00 uur, maandag t/m vrijdag).  
+6. Vermeld Microsoft Azure pickup en het referentie- en trackingnummer (bovenstaande streepjescode) op het retourlabel om een ophaalafspraak te maken.
+7. U krijgt een mondelinge bevestiging over de ophaalafspraak. Als de koerier niet komt om het pakket op te halen, belt u de hotline van Quantium Solutions voor een alternatieve oplossing.
+8. Als u bij Quantium een afspraak boekt om het apparaat op te laten halen, gebruikt u de volgende sjabloon om de bevestiging te delen met [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com):
+
+    ```output
+    To: adbo@microsoft.com
+    Subject: Microsoft Data Box Job: [order name] has completed copy
+    Body:
+    We have confirmed the pickup details with Quantium.
+
+       * Requestor name:
+       * Requestor contact number:
+       * Pickup Date:  
+       * Pickup time:
+    ```
+
+Indien u een probleem ondervindt, stuurt u een e-mail naar Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com) en vermeldt u de taaknaam in de onderwerpregel en het probleem dat u hebt ondervonden.
+
+## <a name="self-managed"></a>[Zelfbeheerd](#tab/in-selfmanaged)
+
+Als u Data Box gebruikt in Japan, Singapore, Korea en West-Europa en de bezorgoptie Zelfbeheerde verzending hebt geselecteerd tijdens een bestelling, volgt u deze instructies.
 
 1. Noteer de autorisatiecode die wordt weergegeven op de pagina Voorbereiden voor verzending van de lokale web-UI van Data Box nadat deze stap is voltooid.
 2. Schakel het apparaat uit en verwijder de kabels. Rol het meegeleverde netsnoer op en plaats het in de opberglade aan de achterkant van het apparaat.
@@ -146,6 +190,7 @@ Als u Data Box gebruikt in Japan, Singapore, Korea en West-Europa en de bezorgop
         2. Authorization code available after Prepare to Ship has completed [Yes/No]  
         3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
     ```
+
 ---
 
 ## <a name="erasure-of-data-from-data-box"></a>Gegevens verwijderen uit de Data Box

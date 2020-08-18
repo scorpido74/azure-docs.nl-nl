@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 79ecb801e1b4d0fa96ca7ae06223fc231cbf12e6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 86e2d54cfe7559675e5e878cbc8a0df4b4eb3d0b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129875"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834283"
 ---
 # <a name="what-is-custom-vision"></a>Wat is Custom Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Custom Vision is een cognitieve service waarmee u uw eigen classificaties voor afbeeldingen kunt bouwen, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die _klassen_ vertegenwoordigen) op afbeeldingen toepast. In tegens telling tot de [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) -service kunt u met Custom Vision de labels opgeven die moeten worden toegepast.
+Azure Custom Vision is een cognitieve service waarmee u uw eigen classificaties voor afbeeldingen kunt bouwen, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die _klassen_ vertegenwoordigen) op afbeeldingen toepast. Anders dan bij de [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)-service kunt u met Custom Vision opgeven welke labels u wilt toepassen.
 
 ## <a name="what-it-does"></a>Wat het doet
 
@@ -33,9 +33,9 @@ Custom Vision-functionaliteit kan worden onderverdeeld in twee functies. Met **a
 
 ### <a name="optimization"></a>Optimalisatie
 
-De Custom Vision-service is geoptimaliseerd voor het snel herkennen van belang rijke verschillen tussen installatie kopieën, zodat u met een kleine hoeveelheid gegevens kunt beginnen met het prototypen van uw model. 50 afbeeldingen per label is meestal al een goed begin. De service is echter niet optimaal voor het detecteren van subtiele verschillen in afbeeldingen (bijvoorbeeld het detecteren van kleine barsten of inspringing in scenario's met kwaliteits bewaking).
+De Custom Vision-service is geoptimaliseerd om grote verschillen tussen afbeeldingen snel te herkennen, zodat u uw model kunt gaan prototypen met een kleine hoeveelheid gegevens. 50 afbeeldingen per label is meestal al een goed begin. De service is echter niet optimaal geschikt voor het detecteren van subtiele verschillen in afbeeldingen (bijvoorbeeld het detecteren van kleine fouten in scenario’s voor kwaliteitscontrole).
 
-Daarnaast kunt u kiezen uit verschillende Custom Vision-algoritmen die zijn geoptimaliseerd voor afbeeldingen met bepaalde onderwerpen&mdash;bijvoorbeeld oriëntatiepunten of detailhandelsartikelen. Zie voor meer informatie de hand leiding [een classificatie bouwen](getting-started-build-a-classifier.md) .
+Daarnaast kunt u kiezen uit verschillende Custom Vision-algoritmen die zijn geoptimaliseerd voor afbeeldingen met bepaalde onderwerpen&mdash;bijvoorbeeld oriëntatiepunten of detailhandelsartikelen. Zie de handleiding [Een classificatie maken](getting-started-build-a-classifier.md) voor meer informatie.
 
 ## <a name="what-it-includes"></a>Samenstelling van Content Moderator
 

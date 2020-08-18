@@ -11,13 +11,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 497de36d63a909d2c53374482dfe09d1f19dfded
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/10/2020
+ms.openlocfilehash: ed0ad6c5597d63c411eeb323cf00dcb7f044f667
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033106"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067814"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: .NET (C#) en C# in Visual Studio gebruiken om verbinding te maken met en query's uit te voeren op een database in Azure SQL Database of Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community-, Professional- of Enterprise-editie.
 
-## <a name="get-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
+## <a name="get-server-connection-information"></a>Serververbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
@@ -62,17 +62,17 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Code maken om query's uit te voeren op de database in Azure SQL Database
 
-1. Selecteer in Visual Studio **Bestand** > **Nieuw** > **Project**. 
+1. Maak een nieuw project in Visual Studio. 
    
-1. Selecteer in het dialoogvenster **Nieuw project** achtereenvolgens **Visual C#** en **Consoletoepassing (.NET Framework)** .
+1. Selecteer in het dialoogvenster **Nieuw project** **Visual C#** en vervolgens **Consoletoepassing (.NET Framework)** .
    
 1. Voer *sqltest* in voor de projectnaam en selecteer vervolgens **OK**. Het nieuwe project wordt gemaakt. 
    
 1. Selecteer **Project** > **NuGet-pakketten beheren**. 
    
-1. Selecteer in **NuGet Package Manager** het tabblad **Bladeren** en zoek en selecteer **System.Data.SqlClient**.
+1. Selecteer in **NuGet Package Manager** het tabblad **Bladeren** en zoek en selecteer **Microsoft.Data.SqlClient**.
    
-1. Selecteer op de pagina **System.Data.SqlClient** de optie **Installeren**. 
+1. Selecteer op de pagina **Microsoft.Data.SqlClient** de optie **Installeren**. 
    - Selecteer **OK** om door te gaan met de installatie. 
    - Als een venster voor **akkoord gaan met de licentie** wordt weergegeven, selecteert u **Ik ga akkoord**.
    
@@ -85,7 +85,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
    
    ```csharp
    using System;
-   using System.Data.SqlClient;
+   using Microsoft.Data.SqlClient;
    using System.Text;
    
    namespace sqltest

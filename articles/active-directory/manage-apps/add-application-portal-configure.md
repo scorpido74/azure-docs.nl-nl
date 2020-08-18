@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808402"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135484"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Eigenschappen configureren voor een toepassing in uw Azure Active Directory-tenant (Azure AD)
 
@@ -48,37 +48,24 @@ Ga als volgt te werk om de eigenschappen van de toepassing bewerken:
     - Met **Ingeschakeld voor gebruikers voor aanmelden?** wordt bepaald of gebruikers die zijn toegewezen aan de toepassing, zich kunnen aanmelden.
     - Met **Gebruikerstoewijzing vereist?** wordt bepaald of gebruikers die niet zijn toegewezen aan de toepassing, zich kunnen aanmelden.
     - Met **Zichtbaar voor gebruikers?** wordt bepaald of gebruikers die zijn toegewezen aan een app, deze kunnen zien in het [toegangsvenster](https://myapps.microsoft.com) en het startprogramma voor de Office 365-app. (Bekijk het manu in de linkerbovenhoek van een Office 365- of Microsoft 365-website.)
-4. Gebruik de volgende tabellen als hulp bij het kiezen van de beste opties voor uw behoeften.
+    
+    > [!TIP]
+    > U kunt gebruikers toewijzen in de sectie **Gebruikers en groepen** in het navigatiegedeelte.
 
-   - Gedrag voor *toegewezen* gebruikers:
+    U kunt onafhankelijk schakelen tussen de drie opties; het resulterende gedrag is niet altijd even duidelijk. Deze tabel is wellicht nuttig:
+    
+    | Ingeschakeld voor gebruikers voor aanmelden? | Gebruikerstoewijzing vereist? | Zichtbaar voor gebruiker? | Gedrag voor gebruikers die al dan niet aan de app zijn toegewezen. |
+    |---|---|---|---|
+    | Ja | Ja | Ja | Toegewezen gebruikers kunnen de app zien en zich aanmelden.<br>Niet-toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden. |
+    | Ja | Ja | Nee  | Toegewezen gebruikers kunnen de app niet zien maar zich wel aanmelden.<br>Niet-toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden. |
+    | Ja | Nee  | Ja | Toegewezen gebruikers kunnen de app zien en zich aanmelden.<br>Niet-toegewezen gebruikers kunnen de app niet zien maar zich wel aanmelden. |
+    | Ja | Nee  | Nee  | Toegewezen gebruikers kunnen de app niet zien maar zich wel aanmelden.<br>Niet-toegewezen gebruikers kunnen de app niet zien maar zich wel aanmelden. |
+    | Nee  | Ja | Ja | Toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden.<br>Niet-toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden. |
+    | Nee  | Ja | Nee  | Toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden.<br>Niet-toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden. |
+    | Nee  | Nee  | Ja | Toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden.<br>Niet-toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden. |
+    | Nee  | Nee  | Nee  | Toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden.<br>Niet-toegewezen gebruikers kunnen de app niet zien en zich niet aanmelden. |
 
-       | Toepassingseigenschap | Toepassingseigenschap | Toepassingseigenschap | Toegewezen gebruikerservaring | Toegewezen gebruikerservaring |
-       |---|---|---|---|---|
-       | Ingeschakeld voor gebruikers voor aanmelden? | Gebruikerstoewijzing vereist? | Zichtbaar voor gebruiker? | Kunnen toegewezen gebruikers zich aanmelden? | Kunnen toegewezen gebruikers de toepassing zien?* |
-       | Ja | Ja | Ja | Ja | Ja  |
-       | Ja | Ja | Nee  | Ja | Nee   |
-       | Ja | Nee  | Ja | Ja | Ja  |
-       | Ja | Nee  | Nee  | Ja | Nee   |
-       | Nee  | Ja | Ja | Nee  | Nee   |
-       | Nee  | Ja | Nee  | Nee  | Nee   |
-       | Nee  | Nee  | Ja | Nee  | Nee   |
-       | Nee  | Nee  | Nee  | Nee  | Nee   |
-
-   - Gedrag voor *niet-toegewezen* gebruikers:
-
-       | Toepassingseigenschap | Toepassingseigenschap | Toepassingseigenschap | Niet-toegewezen gebruikerservaring | Niet-toegewezen gebruikerservaring |
-       |---|---|---|---|---|
-       | Ingeschakeld voor gebruikers voor aanmelden? | Gebruikerstoewijzing vereist? | Zichtbaar voor gebruiker? | Kunnen niet-toegewezen gebruikers zich aanmelden? | Kunnen niet-toegewezen gebruikers de toepassing zien?* |
-       | Ja | Ja | Ja | Nee  | Nee   |
-       | Ja | Ja | Nee  | Nee  | Nee   |
-       | Ja | Nee  | Ja | Ja | Nee   |
-       | Ja | Nee  | Nee  | Ja | Nee   |
-       | Nee  | Ja | Ja | Nee  | Nee   |
-       | Nee  | Ja | Nee  | Nee  | Nee   |
-       | Nee  | Nee  | Ja | Nee  | Nee   |
-       | Nee  | Nee  | Nee  | Nee  | Nee   |
-
-     *Kan de gebruiker de toepassing zien in het toegangsvenster en het startprogramma voor Office 365-apps?
+4. Selecteer **Opslaan** wanneer u klaar bent.
 
 ## <a name="use-a-custom-logo"></a>Een aangepast logo gebruiken
 
