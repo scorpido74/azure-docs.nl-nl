@@ -8,7 +8,7 @@
       href: ./servers/overview.md
 - name: Snelstartgidsen
   items:
-    - name: Arc inschakelen voor servers-agent
+    - name: Servers met Arc-agent inschakelen
       href: ./servers/learn/quick-enable-hybrid-vm.md
 - name: Zelfstudies
   items:

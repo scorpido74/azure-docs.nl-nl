@@ -494,6 +494,8 @@
               href: platform/alerts-metric.md
             - name: Dynamische drempels gebruiken
               href: platform/alerts-dynamic-thresholds.md
+            - name: Enkele waarschuwingen voor veel tijdreeksen
+              href: platform/alerts-metric-multiple-time-series-single-rule.md
             - name: Metrische waarschuwingen voor logboeken
               href: platform/alerts-metric-logs.md
             - name: Een Resource Manager-sjabloon gebruiken

@@ -43,6 +43,8 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: Voordelen van het gebruik van Azure NetApp Files voor electronic design automation
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+            - name: Windows Virtual Desktop gebruiken met Azure NetApp Files
+              href: solutions-windows-virtual-desktop.md
     - name: Veelgestelde vragen over Azure NetApp Files
       href: azure-netapp-files-faqs.md
 - name: Instructiegidsen
@@ -61,16 +63,24 @@
           href: azure-netapp-files-create-volumes.md
         - name: NFSv4.1-standaarddomein configureren
           href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: NFSv4.1 Kerberos-versleuteling configureren
+          href: configure-kerberos-encryption.md
+        - name: Een NFS-client voor Azure NetApp Files configureren
+          href: configure-nfs-clients.md
         - name: Exportbeleid voor een NFS-volume configureren
           href: azure-netapp-files-configure-export-policy.md
     - name: Een SMB-volume maken
       href: azure-netapp-files-create-volumes-smb.md
+    - name: Een volume met dubbele protocollen maken
+      href: create-volumes-dual-protocol.md
     - name: Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Momentopnamen beheren
       href: azure-netapp-files-manage-snapshots.md
     - name: Het formaat van een capaciteitspool of volume wijzigen
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Het serviceniveau van een volume dynamisch wijzigen
+      href: dynamic-change-volume-service-level.md
     - name: Ontwikkelen
       items:
         - name: REST-API
