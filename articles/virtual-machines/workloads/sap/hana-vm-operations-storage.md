@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080521"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506393"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -42,11 +42,11 @@ Raadpleeg de [Azure-documentatie voor beheerde schijven](https://azure.microsoft
 
 De minimale SAP HANA gecertificeerde voor waarden voor de verschillende opslag typen zijn: 
 
-- Azure Premium Storage- **/Hana/log** moet worden ondersteund door Azure [Write Accelerator](../../linux/how-to-enable-write-accelerator.md). Het **/Hana/data** -volume kan in Premium Storage worden geplaatst zonder Azure write Accelerator of op een ultra schijf
+- Azure Premium Storage- **/Hana/log** moet worden ondersteund door Azure [Write Accelerator](../../how-to-enable-write-accelerator.md). Het **/Hana/data** -volume kan in Premium Storage worden geplaatst zonder Azure write Accelerator of op een ultra schijf
 - Azure Ultra Disk ten minste voor het **/Hana/log** -volume. Het **/Hana/data** -volume kan worden geplaatst in Premium Storage zonder Azure write Accelerator of om sneller opnieuw opstarten te krijgen met een hoge schijf
 - **NFS v 4.1** -volumes boven op Azure NetApp files voor **/Hana/log en/Hana/data**. Het volume van/Hana/Shared kan NFS v3 of NFS v 4.1-protocol gebruiken
 
-Sommige opslag typen kunnen worden gecombineerd. Het is bijvoorbeeld mogelijk om **/Hana/data** in te stellen op Premium Storage en **/Hana/log** kunnen op ultra Disk Storage worden geplaatst om de vereiste lage latentie te verkrijgen. Als u een volume gebruikt op basis van ANF voor **/Hana/data**, moet **/Hana/log** -volume ook worden gebaseerd op NFS op ANF. Het gebruik van NFS op ANF voor een van de volumes (zoals/Hana/data) en Azure Premium Storage of Ultra disk voor het andere volume (zoals **/Hana/log**) wordt **niet ondersteund**.
+Sommige opslag typen kunnen worden gecombineerd. Het is bijvoorbeeld mogelijk om **/Hana/data** in te stellen op Premium Storage en **/Hana/log** kunnen op ultra Disk Storage worden geplaatst om de vereiste lage latentie te verkrijgen. Als u een volume gebruikt op basis van ANF voor **/Hana/data**, moet  **/Hana/log** -volume ook worden gebaseerd op NFS op ANF. Het gebruik van NFS op ANF voor een van de volumes (zoals/Hana/data) en Azure Premium Storage of Ultra disk voor het andere volume (zoals **/Hana/log**) wordt **niet ondersteund**.
 
 In de on-premises wereld moest u zelden aandacht houden met de I/O-subsystemen en de mogelijkheden ervan. Daarom moest de leverancier van het apparaat controleren of aan de minimale opslag vereisten wordt voldaan voor de SAP HANA. Wanneer u zelf de Azure-infra structuur bouwt, moet u rekening houden met een aantal van deze SAP-vereisten. Enkele van de minimale doorvoer kenmerken die door SAP worden aanbevolen, zijn:
 
@@ -75,7 +75,7 @@ Linux heeft verschillende I/O-plannings modi. Algemene aanbeveling via Linux-lev
 Azure Write Accelerator is een functionaliteit die alleen beschikbaar is voor virtuele machines uit de M-serie van Azure. Als de naam statussen is het doel van de functionaliteit om de I/O-latentie van schrijf bewerkingen te verbeteren voor de Azure Premium-opslag. Voor SAP HANA moet Write Accelerator alleen worden gebruikt voor het **/Hana/log** -volume. Daarom zijn de **/Hana/data** en **/Hana/log** afzonderlijke volumes met Azure write Accelerator alleen het **/Hana/log** -volume ondersteunen. 
 
 > [!IMPORTANT]
-> Als Azure Premium Storage wordt gebruikt, is het gebruik van Azure [Write Accelerator](../../linux/how-to-enable-write-accelerator.md) voor het **/Hana/log** -volume verplicht. Write Accelerator is alleen beschikbaar voor Premium-opslag en alleen Vm's uit de M-serie en Mv2-serie. Write Accelerator werkt niet in combi natie met andere Azure VM-families, zoals Esv3 of Edsv4.
+> Als Azure Premium Storage wordt gebruikt, is het gebruik van Azure [Write Accelerator](../../how-to-enable-write-accelerator.md) voor het **/Hana/log** -volume verplicht. Write Accelerator is alleen beschikbaar voor Premium-opslag en alleen Vm's uit de M-serie en Mv2-serie. Write Accelerator werkt niet in combi natie met andere Azure VM-families, zoals Esv3 of Edsv4.
 
 In de onderstaande cache aanbevelingen voor Azure Premium-schijven worden de I/O-kenmerken voor SAP HANA deze lijst als volgt aangenomen:
 
@@ -194,7 +194,7 @@ Voor de andere volumes ziet de configuratie er als volgt uit:
 
 Controleer of de opslag doorvoer voor de verschillende voorgestelde volumes voldoet aan de werk belasting die u wilt uitvoeren. Als voor de werk belasting hogere volumes zijn vereist voor **/Hana/data** en **/Hana/log**, moet u het aantal Azure Premium-opslag-vhd's verhogen. Het formaat van een volume met meer Vhd's dan wordt weer gegeven, verhoogt de IOPS en I/O-door Voer binnen de limieten van het type virtuele machine van Azure.
 
-Azure Write Accelerator werkt alleen in combi natie met [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Ten minste de Azure Premium-opslag schijven die het **/Hana/log** -volume vormen, moeten worden geïmplementeerd als managed disks. Meer gedetailleerde instructies en beperkingen van Azure Write Accelerator vindt u in het artikel [Write Accelerator](../../linux/how-to-enable-write-accelerator.md).
+Azure Write Accelerator werkt alleen in combi natie met [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Ten minste de Azure Premium-opslag schijven die het **/Hana/log** -volume vormen, moeten worden geïmplementeerd als managed disks. Meer gedetailleerde instructies en beperkingen van Azure Write Accelerator vindt u in het artikel [Write Accelerator](../../how-to-enable-write-accelerator.md).
 
 Voor de HANA-gecertificeerde Vm's van de Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) -familie en de [EDSV4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)moet u ANF voor het **/Hana/data** -en **/Hana/log** -volume. U moet ook gebruikmaken van de ultra schijf opslag van Azure in plaats van Azure Premium Storage voor het **/Hana/log** -volume. Als gevolg hiervan kunnen de configuraties voor het **/Hana/data** -volume in azure Premium Storage er als volgt uitzien:
 
@@ -352,9 +352,9 @@ Een kostenbesparend alternatief voor dergelijke configuraties kan er als volgt u
 | M416ms_v2 | 11400 GiB | 2.000 MB/s | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | Als u Write Accelerator gebruikt voor gecombineerde gegevens en het logboek volume, wordt de IOPS-frequentie beperkt tot 20.000<sup>2</sup> |
 
 
-<sup>1</sup> [Azure write Accelerator](../../linux/how-to-enable-write-accelerator.md) kan niet worden gebruikt met de VM-families Ev4 en Ev4. Als gevolg van het gebruik van Azure Premium Storage is de I/O-latentie niet kleiner dan 1ms
+<sup>1</sup> [Azure write Accelerator](../../how-to-enable-write-accelerator.md) kan niet worden gebruikt met de VM-families Ev4 en Ev4. Als gevolg van het gebruik van Azure Premium Storage is de I/O-latentie niet kleiner dan 1ms
 
-<sup>2</sup> de VM-serie ondersteunt [Azure write Accelerator](../../linux/how-to-enable-write-accelerator.md), maar er is een kans dat de limiet voor IOPS van de schrijf versnelling de schijf configuraties kan beperken de IOPS-mogelijkheden
+<sup>2</sup> de VM-serie ondersteunt [Azure write Accelerator](../../how-to-enable-write-accelerator.md), maar er is een kans dat de limiet voor IOPS van de schrijf versnelling de schijf configuraties kan beperken de IOPS-mogelijkheden
 
 In het geval van het combi neren van het gegevens-en logboek volume voor SAP HANA, mag de schijven waarop het striped volume wordt gebouwd geen lees-of lees-en schrijf cache hebben ingeschakeld.
 

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957593"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507226"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Veelgestelde vragen over aangepaste vertalers
 
@@ -41,14 +41,15 @@ De implementatie duurt over het algemeen minder dan een uur.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Hoe krijgt u toegang tot een geïmplementeerd systeem?
 
-Geïmplementeerde systemen kunnen via Translator worden geopend door het CategoryID op te geven. Meer informatie over Translator vindt u in de [API Reference](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) -webpagina.
+Via de micro soft Translator Text-API v3 kunnen geïmplementeerde systemen worden geopend door het CategoryID op te geven. Meer informatie over de Translator Text-API vindt u in de [API Reference](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) -webpagina.
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Hoe kan ik de uitlijning en de zin niet overs Laan als er al een zin van mijn gegevens is uitgelijnd?
 
-De aangepaste vertaler slaat de uitlijning van de zin en de zin van zinnen voor TMX-bestanden en tekst bestanden met de `.align` extensie over. `.align`bestanden geven gebruikers een optie voor het overs laan van het afbreken en uitlijn proces van zinnen van de aangepaste vertaler voor de bestanden die perfect zijn uitgelijnd en waarvoor geen verdere verwerking nodig is. U wordt aangeraden `.align` alleen extensie te gebruiken voor bestanden die perfect zijn uitgelijnd.
+De aangepaste vertaler slaat de uitlijning van de zin en de zin van zinnen voor TMX-bestanden en tekst bestanden met de `.align` extensie over. `.align` bestanden geven gebruikers een optie voor het overs laan van het afbreken en uitlijn proces van zinnen van de aangepaste vertaler voor de bestanden die perfect zijn uitgelijnd en waarvoor geen verdere verwerking nodig is. U wordt aangeraden `.align` alleen extensie te gebruiken voor bestanden die perfect zijn uitgelijnd.
 
 Als het aantal geëxtraheerde zinnen niet overeenkomt met de twee bestanden met dezelfde basis naam, wordt de zin door aangepaste vertaler nog steeds uitgevoerd op `.align` bestanden.
 
-## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Ik heb geprobeerd mijn TMX te uploaden, maar dit betekent dat de verwerking van documenten is mislukt.
+## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Ik heb geprobeerd mijn TMX te uploaden, maar de melding ' document verwerking is mislukt '
+
 
 Zorg ervoor dat de TMX voldoet aan de TMX 1.4 b-specificatie op <https://www.gala-global.org/tmx-14b> .

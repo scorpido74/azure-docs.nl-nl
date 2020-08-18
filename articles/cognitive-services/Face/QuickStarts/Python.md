@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: tracking-python
-ms.openlocfilehash: d13d349978df30b3e2aa7a8646223c37ba272241
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.custom: devx-track-python
+ms.openlocfilehash: 4fa0603868f1cc8bb2c879dbac7811ebbe6bf0dd
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84985631"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875112"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Snelstart: Gezichten in een afbeelding detecteren met de Face-REST API en Python
 
-In deze Quick Start gebruikt u de Azure face REST API met python om menselijke gezichten in een installatie kopie te detecteren. Er worden kaders rond de gezichten getekend en informatie over geslacht en leeftijd over de afbeelding heen weergegeven.
+In deze quickstart gebruikt u de Azure Face REST API met Python om menselijke gezichten in een afbeelding te detecteren. Er worden kaders rond de gezichten getekend en informatie over geslacht en leeftijd over de afbeelding heen weergegeven.
 
 ![Een vrouw en een man, elk met rechthoeken getekend rond de gezichten, en met de leeftijd en het geslacht op de afbeelding weergegeven](../images/labelled-faces-python.png)
 
@@ -29,10 +29,10 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Een Face-resource maken"  target="_blank">maakt u een Face-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Face-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="run-the-jupyter-notebook"></a>Jupyter Notebook uitvoeren
 
@@ -42,12 +42,12 @@ U kunt deze snelstart als Jupyter-notebook uitvoeren op [MyBinder](https://mybin
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
-U kunt deze Snelstartgids ook uitvoeren vanaf de opdracht regel met de volgende stappen:
+U kunt deze quickstart ook vanaf de opdrachtregel uitvoeren met de volgende stappen:
 
 1. Kopieer de volgende code naar een teksteditor.
 1. Breng waar nodig de volgende wijzigingen in code aan:
     1. Vervang de waarde van `subscription_key` door uw abonnementssleutel.
-    1. Bewerk de waarde van `face_api_url` om de eind punt-URL voor uw face-API-resource op te neemt.
+    1. Bewerk de waarde van `face_api_url` zodat deze de eindpunt-URL voor uw Face API-resource bevat.
     1. Vervang eventueel de waarde van `image_url` door de URL van een andere afbeelding die u wilt analyseren.
 1. Sla de code op als een bestand met de extensie `.py`. Bijvoorbeeld `detect-face.py`.
 1. Open een opdrachtpromptvenster.

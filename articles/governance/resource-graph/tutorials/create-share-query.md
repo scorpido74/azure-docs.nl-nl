@@ -3,16 +3,16 @@ title: "Zelfstudie: Query's beheren in Azure-portal"
 description: In deze zelfstudie maakt u een Resource Graph-query en deelt u de nieuwe query met anderen in het Azure-portal.
 ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970583"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005177"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Zelfstudie: Een Azure Resource Graph-query maken en delen in het Azure-portal
 
-Met Azure Resource Graph Explorer kunt u uw Resource Graph-query's rechtstreeks in de Azure-portal opslaan. Er zijn twee soorten query's: _Persoonlijke_ en _gedeelde_. Een persoonlijke query wordt opgeslagen in de instellingen van uw Azure-portal. Een gedeelde query is een resource voor Azure Resource Manager die kan worden beheerd met op rollen gebaseerd toegangsbeheer (RBAC) en beveiligd met resourcevergrendelingen. Beide typen query's zijn versleuteld als ze inactief zijn.
+Met Azure Resource Graph Explorer kunt u uw Resource Graph-query's rechtstreeks in de Azure-portal opslaan. Er zijn twee soorten query's: _Persoonlijke_ en _gedeelde_. Een persoonlijke query wordt opgeslagen in de instellingen van uw Azure-portal. Een gedeelde query is een resource voor Azure Resource Manager die kan worden beheerd met Azure RBAC (op rollen gebaseerd toegangsbeheer) en beveiligd met resourcevergrendelingen. Beide typen query's zijn versleuteld als ze inactief zijn.
 
 Door query's op te slaan in de Azure-portal bespaart u de tijd die u anders mogelijk kwijt bent met het zoeken naar uw favoriete of veelgebruikte query's. Wanneer u query's deelt, helpt u uw team doelstellingen van consistentie en efficiëntie te halen door middel van herhaling.
 
@@ -60,7 +60,7 @@ Persoonlijke query's zijn alleen toegankelijk en zichtbaar voor het account dat 
 
 ## <a name="create-a-shared-query"></a>Een gedeelde query maken
 
-In tegenstelling tot een persoonlijke query is een gedeelde query een resource voor Resource Manager. Dit betekent dat de query wordt opgeslagen in een resourcegroep, kan worden beheerd met RBAC en zelfs worden beveiligd met resourcevergrendelingen. Omdat het een resource is, kan iedereen met de juiste machtigingen de query zien en gebruiken.
+In tegenstelling tot een persoonlijke query is een gedeelde query een resource voor Resource Manager. Dit betekent dat de query wordt opgeslagen in een resourcegroep, kan worden beheerd met Azure RBAC en zelfs kan worden beveiligd met resourcevergrendelingen. Omdat het een resource is, kan iedereen met de juiste machtigingen de query zien en gebruiken.
 Om een nieuwe gedeelde query te maken, volgt u deze stappen:
 
 1. Selecteer in het portalmenu **Alle services** of gebruik het Azure-zoekvak bovenaan alle pagina's om **Resource Graph Explorer** te zoeken en te selecteren.

@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa18b55884a22f6c64f1c08bd5be8a71b265029a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a01f945496d2f0bc81a108c5e58c89587c1c4e38
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034380"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505475"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Overdracht en rollen in het beheer van rechten van Azure AD
 
@@ -116,7 +116,7 @@ De volgende tabel geeft een lijst van de taken die de rechten voor het beheer ku
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Vereiste rollen om resources toe te voegen aan een catalogus
 
-Een globale beheerder kan elke groep (in de Cloud gemaakte beveiligings groepen of in de Cloud gemaakte Office 365-groepen), toepassing of share point online-site toevoegen aan of verwijderen uit een catalogus. Een gebruikers beheerder kan een wille keurige groep of toepassing toevoegen aan of verwijderen uit een catalogus.
+Een globale beheerder kan elke groep (in de Cloud gemaakte beveiligings groepen of in de Cloud gemaakte Office 365-groepen), toepassing of share point online-site toevoegen aan of verwijderen uit een catalogus. Een gebruikers beheerder kan een wille keurige groep of toepassing toevoegen aan of verwijderen uit een catalogus, met uitzonde ring van een groep die is geconfigureerd als toegewezen aan een directory-rol.
 
 Voor een gebruiker die geen globale beheerder of gebruikers beheerder is, om groepen, toepassingen of share point online-sites toe te voegen aan een catalogus, moet die gebruiker *zowel* de vereiste beheer functie voor Azure AD-adreslijst functies als de bevoegdheid van de catalogus eigenaar hebben. De volgende tabel geeft een lijst van de functie combinaties die nodig zijn om resources toe te voegen aan een catalogus. Als u resources uit een catalogus wilt verwijderen, moet u dezelfde rollen hebben.
 
@@ -131,6 +131,9 @@ Voor een gebruiker die geen globale beheerder of gebruikers beheerder is, om gro
 | [Toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
 | [Beheerder van de Cloud toepassing](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
 | Gebruiker | Catalogus eigenaar | Alleen als de groeps eigenaar | Alleen als de groeps eigenaar | Alleen als de eigenaar van de app |  |
+
+> [!NOTE]
+> Als een gebruiker een beveiligings groep of een Office 365-groep toevoegt, kan de groep niet door een rol worden toegewezen. Als de gebruiker een groep toevoegt die door de rol kan worden toegewezen bij het maken van het toegangs pakket, moet deze ook de eigenaar zijn van de groep die kan worden toegewezen. Raadpleeg voor meer informatie [het artikel een door een functie toewijs bare groep maken in azure Active Directory](../users-groups-roles/roles-groups-create-eligible.md).
 
 Als u de minst bevoorrechte rol voor een taak wilt bepalen, kunt u ook verwijzen naar [beheerders rollen per beheer taak in azure Active Directory](../users-groups-roles/roles-delegate-by-task.md#entitlement-management).
 

@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 86c2bc86a4eeea8b04c4f22c20edade2eac2a811
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439032"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829982"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Zelfstudie: Een Java IoT Edge-module ontwikkelen voor Linux-apparaten
 
@@ -62,7 +62,7 @@ Om een IoT Edge-module te ontwikkelen in Java, installeert u de volgende aanvull
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
-   >Omgevingsvariabelen voor Java en Maven worden toegevoegd tijdens de hun installatie. Het is raadzaam om alle exemplaren van de Visual Studio Code-terminal, PowerShell of opdrachtprompts die geopend waren tijdens het toevoegen van deze omgevingsvariabelen, opnieuw te starten. Dit zorgt ervoor dat de Java- en Maven-opdrachten daarna worden herkend door deze hulpprogramma's.
+   >Met de Java- en Maven-installatieprocedure worden omgevingsvariabelen aan uw systeem toegevoegd. Start alle exemplaren van de Visual Studio Code-terminal, Powershell of opdrachtprompts die geopend waren opnieuw nadat u de installatie hebt voltooid. Deze stap zorgt ervoor dat deze hulpprogramma's de Java- en Maven-opdrachten daarna kunnen herkennen.
 
 ## <a name="create-a-module-project"></a>Een moduleproject maken
 

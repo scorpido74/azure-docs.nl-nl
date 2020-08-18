@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a74fae74a2d0ebbb71d65420475e5772e44a8d84
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758857"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507090"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-sessies
 
@@ -40,10 +40,10 @@ Elke sessie ondergaat meerdere fasen.
 
 Wanneer u ARR vraagt om [een nieuwe sessie te maken](../how-tos/session-rest-api.md#create-a-session), is het voor de eerste keer dat u een sessie- [uuid](https://en.wikipedia.org/wiki/Universally_unique_identifier)retourneert. Met deze UUID kunt u informatie opvragen over de sessie. De UUID en enkele basis informatie over de sessie worden gedurende 30 dagen bewaard, zodat u deze gegevens zelfs nadat de sessie is gestopt, kunt opvragen. Op dit moment wordt de **sessie status** gerapporteerd als **starten**.
 
-Vervolgens probeert de externe rendering van Azure een server te vinden die uw sessie kan hosten. Er zijn twee para meters voor deze zoek opdracht. Eerst worden alleen servers in uw [regio](../reference/regions.md)gereserveerd. Dat komt doordat de netwerk latentie voor verschillende regio's te hoog is om een goede ervaring te garanderen. De tweede factor is de gewenste *grootte* die u hebt opgegeven. In elke regio is er een beperkt aantal servers dat kan voldoen aan de aanvraag voor de *standaard* -of *Premium* -grootte. Als alle servers van de gevraagde grootte momenteel worden gebruikt in uw regio, mislukt het maken van de sessie. De reden voor de fout [kan worden opgevraagd](../how-tos/session-rest-api.md#get-sessions-properties).
+Vervolgens probeert de externe rendering van Azure een server te vinden die uw sessie kan hosten. Er zijn twee para meters voor deze zoek opdracht. Eerst worden alleen servers in uw [regio](../reference/regions.md)gereserveerd. Dat komt doordat de netwerk latentie voor verschillende regio's te hoog is om een goede ervaring te garanderen. De tweede factor is de gewenste *grootte* die u hebt opgegeven. In elke regio is er een beperkt aantal servers dat kan voldoen aan de aanvraag voor de [*standaard*](../reference/vm-sizes.md) -of [*Premium*](../reference/vm-sizes.md) -grootte. Als alle servers van de gevraagde grootte momenteel worden gebruikt in uw regio, mislukt het maken van de sessie. De reden voor de fout [kan worden opgevraagd](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
-> Als u een *standaard* -VM-grootte aanvraagt en de aanvraag mislukt als gevolg van een hoge vraag, betekent dat niet dat er een *Premium* -server kan worden aangevraagd. Als dit een optie voor u is, kunt u proberen terug te gaan naar een *Premium* -VM.
+> Als u een *standaard* server grootte aanvraagt en de aanvraag mislukt als gevolg van een hoge vraag, is dat niet het geval dat het aanvragen van een *Premium* -server mislukt. Als dit een optie voor u is, kunt u proberen terug te gaan naar een *Premium* -server grootte.
 
 Wanneer de service een geschikte server vindt, moet de juiste virtuele machine (VM) ernaar worden gekopieerd om deze in te scha kelen op een externe rendering-host van Azure. Dit proces duurt enkele minuten. Daarna wordt de virtuele machine opgestart en verandert de **sessie status** in **gereed**.
 
@@ -72,7 +72,7 @@ Een sessie kan ook worden gestopt wegens een storing.
 In alle gevallen wordt u niet meer gefactureerd wanneer een sessie wordt gestopt.
 
 > [!WARNING]
-> Hiermee wordt aangegeven of u verbinding maakt met een sessie en hoe lang dit geen invloed heeft op de facturering. Wat u betaalt voor de service is afhankelijk van de *sessie duur*, dat wil zeggen de tijd dat een server uitsluitend voor u is gereserveerd en de aangevraagde hardware-mogelijkheden (de VM-grootte). Als u een sessie start, maakt u vijf minuten verbinding en stopt u de sessie, zodat deze actief blijft totdat de lease verloopt, wordt u gefactureerd voor de volledige sessie lease tijd. De *maximale lease tijd* is daarentegen doorgaans een veiligheids-net. Het maakt niet uit of u een sessie met een lease tijd van acht uur aanvraagt en deze vervolgens vijf minuten gebruikt, als u de sessie later hand matig stopt.
+> Hiermee wordt aangegeven of u verbinding maakt met een sessie en hoe lang dit geen invloed heeft op de facturering. Wat u betaalt voor de service is afhankelijk van de *sessie duur*, dat wil zeggen de tijd dat een server uitsluitend voor u is gereserveerd en de aangevraagde hardware-mogelijkheden (de [toegewezen grootte](../reference/vm-sizes.md)). Als u een sessie start, maakt u vijf minuten verbinding en stopt u de sessie, zodat deze actief blijft totdat de lease verloopt, wordt u gefactureerd voor de volledige sessie lease tijd. De *maximale lease tijd* is daarentegen doorgaans een veiligheids-net. Het maakt niet uit of u een sessie met een lease tijd van acht uur aanvraagt en deze vervolgens vijf minuten gebruikt, als u de sessie later hand matig stopt.
 
 #### <a name="extend-a-sessions-lease-time"></a>De lease tijd van een sessie verlengen
 
@@ -138,7 +138,7 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 Meerdere `AzureFrontend` en `AzureSession` exemplaren kunnen worden onderhouden, gemanipuleerd en uit code worden opgevraagd. Maar er kan slechts één apparaat tegelijk verbinding maken `AzureSession` .
 
-De levens duur van een virtuele machine is niet gekoppeld aan het `AzureFrontend` exemplaar of het `AzureSession` exemplaar. `AzureSession.StopAsync`moet worden aangeroepen om een sessie te stoppen.
+De levens duur van een virtuele machine is niet gekoppeld aan het `AzureFrontend` exemplaar of het `AzureSession` exemplaar. `AzureSession.StopAsync` moet worden aangeroepen om een sessie te stoppen.
 
 De permanente sessie-ID kan worden opgevraagd `AzureSession.SessionUUID()` en lokaal in de cache worden opgeslagen. Met deze ID kan een toepassing een `AzureFrontend.OpenSession` binding met die sessie aanroepen.
 

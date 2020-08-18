@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831053"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505555"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS-implementatie voor SAP net-Weaver
 
@@ -314,7 +314,7 @@ In dit document worden verschillende gebieden besproken waarmee u rekening moet 
 
 
 > [!IMPORTANT]
-> Het bereik van dit document is de Windows-versie op SQL Server. SAP biedt geen ondersteuning voor de Linux-versie van SQL Server met een van de SAP-software. Het document bespreekt niet Microsoft Azure SQL Database, een platform als een service aanbod van het Microsoft Azure platform. De discussie in dit artikel is van toepassing op het uitvoeren van het SQL Server product omdat het bekend is voor on-premises implementaties in azure Virtual Machines, waarbij de infra structuur als een service mogelijkheid van Azure wordt gebruikt. De mogelijkheden en functionaliteiten van de data base tussen deze twee aanbiedingen zijn verschillend en mogen niet met elkaar worden gecombineerd. Zie ook:<https://azure.microsoft.com/services/sql-database/>
+> Het bereik van dit document is de Windows-versie op SQL Server. SAP biedt geen ondersteuning voor de Linux-versie van SQL Server met een van de SAP-software. Het document bespreekt niet Microsoft Azure SQL Database, een platform als een service aanbod van het Microsoft Azure platform. De discussie in dit artikel is van toepassing op het uitvoeren van het SQL Server product omdat het bekend is voor on-premises implementaties in azure Virtual Machines, waarbij de infra structuur als een service mogelijkheid van Azure wordt gebruikt. De mogelijkheden en functionaliteiten van de data base tussen deze twee aanbiedingen zijn verschillend en mogen niet met elkaar worden gecombineerd. Zie ook: <https://azure.microsoft.com/services/sql-database/>
 > 
 >
 
@@ -355,13 +355,13 @@ In het bovenstaande diagram wordt een eenvoudige Case weer gegeven. Als eluded i
 
 
 ### <a name="special-for-m-series-vms"></a>Speciaal voor Vm's uit de M-serie
-Voor virtuele machines uit de M-serie van Azure kan de latentie die in het transactie logboek wordt geschreven, worden verminderd met factoren, vergeleken met de prestaties van Azure Premium Storage, wanneer u Azure Write Accelerator gebruikt. Daarom moet u Azure Write Accelerator implementeren voor de VHD (s) die het volume vormen voor het SQL Server transactie logboek. Details kunnen worden gelezen in het document [Write Accelerator](../../windows/how-to-enable-write-accelerator.md).
+Voor virtuele machines uit de M-serie van Azure kan de latentie die in het transactie logboek wordt geschreven, worden verminderd met factoren, vergeleken met de prestaties van Azure Premium Storage, wanneer u Azure Write Accelerator gebruikt. Daarom moet u Azure Write Accelerator implementeren voor de VHD (s) die het volume vormen voor het SQL Server transactie logboek. Details kunnen worden gelezen in het document [Write Accelerator](../../how-to-enable-write-accelerator.md).
   
 
 ### <a name="formatting-the-disks"></a>Schijven Format teren
 Voor SQL Server moet de NTFS-blok grootte voor schijven met SQL Server gegevens en logboek bestanden 64 KB zijn. Het is niet nodig om de D:\ te Format teren stationsletter. Dit station wordt vooraf geformatteerd.
 
-Om ervoor te zorgen dat het terugzetten of het maken van data bases de gegevens bestanden niet initialiseert door de inhoud van de bestanden op te nul te zetten, moet u ervoor zorgen dat de gebruikers context waarin de SQL Server-service wordt uitgevoerd, een bepaalde machtiging heeft. Meestal hebben gebruikers in de groep Windows-beheerders deze machtigingen. Als de SQL Server-service wordt uitgevoerd in de gebruikers context van niet-Windows-beheerder, moet u deze gebruiker het gebruikers recht het **volume onderhouds taken uitvoeren**.  Zie de details in dit micro soft Knowledge Base-artikel:<https://support.microsoft.com/kb/2574695>
+Om ervoor te zorgen dat het terugzetten of het maken van data bases de gegevens bestanden niet initialiseert door de inhoud van de bestanden op te nul te zetten, moet u ervoor zorgen dat de gebruikers context waarin de SQL Server-service wordt uitgevoerd, een bepaalde machtiging heeft. Meestal hebben gebruikers in de groep Windows-beheerders deze machtigingen. Als de SQL Server-service wordt uitgevoerd in de gebruikers context van niet-Windows-beheerder, moet u deze gebruiker het gebruikers recht het **volume onderhouds taken uitvoeren**.  Zie de details in dit micro soft Knowledge Base-artikel: <https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>Impact van database compressie
 Bij configuraties waarbij de I/O-band breedte een beperkende factor kan worden, kan elke meting, die het aantal IOPS reduceert, de werk belasting die in een IaaS-scenario zoals Azure kan worden uitgevoerd, worden uitgerekt. Als u dit nog niet hebt gedaan, wordt het Toep assen van SQL Server-pagina compressie aanbevolen door SAP en micro soft voordat u een bestaande SAP-data base naar Azure uploadt.
@@ -487,16 +487,16 @@ Het spie gelen van data bases zoals ondersteund door SAP (Zie SAP Note [965908])
 
 Net als bij implementaties in de Cloud, is de eenvoudigste methode om een andere domein instelling in azure te hebben om deze DBMS-Vm's (en idea-specifieke SAP-Vm's) binnen één domein te hebben.
 
-Als een domein niet mogelijk is, kan één ook certificaten voor de data base mirroring-eind punten gebruiken zoals hier wordt beschreven:<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+Als een domein niet mogelijk is, kan één ook certificaten voor de data base mirroring-eind punten gebruiken zoals hier wordt beschreven: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 
-Een zelf studie voor het instellen van het spie gelen van data bases in azure vindt u hier:<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+Een zelf studie voor het instellen van het spie gelen van data bases in azure vindt u hier: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
 ### <a name="sql-server-always-on"></a>SQL Server Always On
 Zoals always on wordt ondersteund voor SAP on-premises (Zie SAP Note [1772688]), wordt dit ondersteund in combi natie met SAP in Azure. Er zijn enkele belang rijke aandachtspunten voor het implementeren van de SQL Server beschikbaarheids groep-listener (niet te verwarren met de Azure-Beschikbaarheidsset), omdat Azure op dit moment niet toestaat dat er een AD/DNS-object wordt gemaakt omdat het on-premises mogelijk is. Daarom zijn sommige verschillende installatie stappen nodig om het specifieke gedrag van Azure te overwinnen.
 
 Enkele overwegingen bij het gebruik van een beschikbaarheids groep-listener zijn:
 
-* Het gebruik van een beschikbaarheids groep-listener is alleen mogelijk met Windows Server 2012 of hoger als gast besturingssysteem van de virtuele machine. Voor Windows Server 2012 moet u er zeker van zijn dat deze patch wordt toegepast:<https://support.microsoft.com/kb/2854082> 
+* Het gebruik van een beschikbaarheids groep-listener is alleen mogelijk met Windows Server 2012 of hoger als gast besturingssysteem van de virtuele machine. Voor Windows Server 2012 moet u er zeker van zijn dat deze patch wordt toegepast: <https://support.microsoft.com/kb/2854082> 
 * Voor Windows Server 2008 R2 bestaat deze patch niet en moet always altijd op dezelfde manier worden gebruikt als het spie gelen van data bases door een failover-partner op te geven in de verbindings reeks (uitgevoerd via de SAP-standaard waarde. PFL para meter db's/MSS/server-Zie SAP-opmerking [965908]).
 * Wanneer u een beschikbaarheids groep-listener gebruikt, moeten de data base-Vm's zijn verbonden met een toegewezen Load Balancer. Om te voor komen dat Azure nieuwe IP-adressen toewijst in gevallen waarbij beide Vm's incidenteel worden afgesloten, moet een statisch IP-adres worden toegewezen aan de netwerk interfaces van deze virtuele machines in de always-configuratie (het definiëren van een statisch IP-adres wordt beschreven in [Dit][virtual-networks-reserved-private-ip] artikel).
 * Er zijn speciale stappen vereist bij het bouwen van de WSFC-cluster configuratie waarbij een speciaal IP-adres aan het cluster moet worden toegewezen, omdat Azure met de huidige functionaliteit de cluster naam zou toewijzen aan hetzelfde IP-adres als het knoop punt waarop het cluster is gemaakt. Dit betekent dat er een hand matige stap moet worden uitgevoerd om een ander IP-adres toe te wijzen aan het cluster.

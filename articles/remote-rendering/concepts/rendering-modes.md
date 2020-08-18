@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 385086bd46145be717ee5a14a10f889ec811e17e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681699"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505648"
 ---
 # <a name="rendering-modes"></a>Weergavemodellen
 
@@ -50,7 +50,7 @@ De prestatie kenmerken voor beide modi variëren op basis van de use-case en zij
 
 ## <a name="setting-the-render-mode"></a>De weergave modus instellen
 
-De weergave modus die wordt gebruikt op een externe rendering-VM wordt opgegeven tijdens `AzureSession.ConnectToRuntime` via de `ConnectToRuntimeParams` .
+De weergave modus die wordt gebruikt op een externe rendering-server, wordt opgegeven tijdens `AzureSession.ConnectToRuntime` via de `ConnectToRuntimeParams` .
 
 ```cs
 async void ExampleConnect(AzureSession session)

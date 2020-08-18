@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689767"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272447"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Micro soft Identity platform en de OAuth 2,0-autorisatie voor het weigeren van apparaten
 
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u direct kunt Program meren met het protocol
 
 De gehele apparaatcode stroom ziet er ongeveer uit als in het volgende diagram. Verderop in dit artikel worden de stappen beschreven.
 
-![Toestel code stroom](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
+![Stroom voor apparaatcode](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>Autorisatie aanvraag voor apparaat
 
@@ -55,7 +55,7 @@ scope=user.read%20openid%20profile
 | --- | --- | --- |
 | `tenant` | Vereist | Kan/veelvoorkomende,/consumers of/organizations. zijn  Het kan ook de Directory Tenant zijn waarvoor u een machtiging wilt aanvragen in de indeling GUID of beschrijvende naam.  |
 | `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
-| `scope` | Aanbevolen | Een lijst met door spaties gescheiden [bereiken](v2-permissions-and-consent.md) waarvan u wilt dat de gebruiker toestemming geeft.  |
+| `scope` | Vereist | Een lijst met door spaties gescheiden [bereiken](v2-permissions-and-consent.md) waarvan u wilt dat de gebruiker toestemming geeft.  |
 
 ### <a name="device-authorization-response"></a>Reactie van het apparaat autorisatie
 
@@ -93,7 +93,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | Parameter | Vereist | Beschrijving|
 | -------- | -------- | ---------- |
 | `tenant`  | Vereist | Dezelfde Tenant of Tenant alias die in de eerste aanvraag wordt gebruikt. |
-| `grant_type` | Vereist | Moet`urn:ietf:params:oauth:grant-type:device_code`|
+| `grant_type` | Vereist | Moet `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | Vereist | Moet overeenkomen met het `client_id` gebruik in de eerste aanvraag. |
 | `device_code`| Vereist | De `device_code` geretourneerde in de autorisatie aanvraag voor het apparaat.  |
 

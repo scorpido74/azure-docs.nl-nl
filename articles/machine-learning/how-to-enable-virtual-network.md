@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192402"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506495"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag type
 
 Voeg uw werk ruimte en opslag account toe aan hetzelfde virtuele netwerk, zodat ze toegang hebben tot elkaar.
 
-1. Als u uw werk ruimte wilt verbinden met het virtuele netwerk, schakelt u de [persoonlijke Azure-koppeling](how-to-configure-private-link.md)in. Deze functie is momenteel beschikbaar als preview-versie en is verkrijgbaar in de regio VS Oost, VS West 2, VS Zuid-Centraal.
+1. Als u uw werk ruimte wilt verbinden met het virtuele netwerk, schakelt u de [persoonlijke Azure-koppeling](how-to-configure-private-link.md)in. Deze functie is momenteel beschikbaar als preview-versie en is verkrijgbaar in de regio's VS-Oost en VS-West 2.
 
 1. Als u uw opslag account wilt verbinden met het virtuele netwerk, [configureert u de firewalls en de instellingen voor virtuele netwerken](#use-a-storage-account-for-your-workspace).
 
@@ -235,7 +235,7 @@ De syntaxis voor het overs laan van de validatie van de gegevensset is vergelijk
 - JSON 
 - Parquet
 - SQL
-- File
+- Bestand
 
 Met de volgende code wordt een nieuwe JSON-gegevensset en-sets gemaakt `validate=False` .
 

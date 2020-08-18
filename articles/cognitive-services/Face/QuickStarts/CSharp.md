@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: ed64ae799dab570b168a91b236b1c4be8be8bee1
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: 050ff882e70d162749e1c4e913b523e79c81a7a2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986640"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834096"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Snelstart: Gezichten in een afbeelding detecteren met de Face REST API en C#
 
-In deze Quick Start gebruikt u de Azure face REST API met C# om menselijke gezichten in een installatie kopie te detecteren.
+In deze quickstart gebruikt u de Azure Face REST API met C# om menselijke gezichten in een afbeelding te detecteren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
-- Elke versie van [Visual Studio](https://www.visualstudio.com/downloads/).
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Een Face-resource maken"  target="_blank">maakt u een Face-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Ga naar resource**.
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Face-API. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
+    * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
+- Een versie van [Visual Studio](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Het Visual Studio-project maken
 
@@ -55,7 +55,7 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>Essentiële velden toevoegen
 
-Voeg de **programma** klasse met de volgende velden toe. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet mogelijk de `uriBase` teken reeks wijzigen zodat deze de teken reeks voor het resource-eind punt bevat.
+Voeg de klasse **Program** toe, die de volgende velden bevat. Met deze gegevens wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het veld `subscriptionKey` bijwerken met de waarde van uw abonnementssleutel en u moet mogelijk de tekenreeks `uriBase` zo wijzigen dat deze de eindpunttekenreeks van uw resource bevat.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -75,7 +75,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>Invoer van de afbeelding ontvangen
 
-Voeg de volgende code toe aan de methode **Main** in de klasse **Program**. Deze code schrijft een prompt naar de console waarin de gebruiker wordt gevraagd een afbeeldings-URL in te voeren. Vervolgens wordt een andere methode, **MakeAnalysisRequest**, aangeroepen om de afbeelding op die locatie te verwerken.
+Voeg de volgende code toe aan de methode **Main** in de klasse **Program**. Met deze code wordt een prompt naar de console geschreven waarin de gebruiker wordt gevraagd een afbeeldings-URL in te voeren. Vervolgens wordt een andere methode, **MakeAnalysisRequest**, aangeroepen om de afbeelding op die locatie te verwerken.
 
 ```csharp
         static void Main(string[] args)
@@ -108,7 +108,7 @@ Voeg de volgende code toe aan de methode **Main** in de klasse **Program**. Deze
 
 ### <a name="call-the-face-detection-rest-api"></a>De REST API voor de gezichtsdetectie aanroepen
 
-Voeg de volgende methode toe aan de klasse **Program** . Hiermee wordt een REST-aanroep naar de Face-API gemaakt om informatie over het gezicht te detecteren in de externe afbeelding (de tekenreeks `requestParameters` geeft aan welke gezichtskenmerken moeten worden opgehaald). Vervolgens worden de uitvoergegevens naar een JSON-tekenreeks geschreven.
+Voeg de volgende methode toe aan de klasse **Program**. Hiermee wordt een REST-aanroep naar de Face-API gemaakt om informatie over het gezicht te detecteren in de externe afbeelding (de tekenreeks `requestParameters` geeft aan welke gezichtskenmerken moeten worden opgehaald). Vervolgens worden de uitvoergegevens naar een JSON-tekenreeks geschreven.
 
 In de volgende stappen definieert u de hulpmethoden.
 
@@ -159,7 +159,7 @@ In de volgende stappen definieert u de hulpmethoden.
 
 ### <a name="process-the-input-image-data"></a>De invoergegevens van de afbeelding verwerken
 
-Voeg de volgende methode toe aan de klasse **Program** . Met deze methode wordt de installatie kopie op de opgegeven URL naar een byte matrix geconverteerd.
+Voeg de volgende methode toe aan de klasse **Program**. Met deze methode wordt de afbeelding op de opgegeven URL geconverteerd naar een bytematrix.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -176,7 +176,7 @@ Voeg de volgende methode toe aan de klasse **Program** . Met deze methode wordt 
 
 ### <a name="parse-the-json-response"></a>Het JSON-antwoord parseren
 
-Voeg de volgende methode toe aan de klasse **Program** . Met deze methode wordt de JSON-invoer zodanig opgemaakt dat deze eenvoudiger leesbaar is. Met uw app worden deze tekenreeksgegevens naar de console geschreven. Vervolgens kunt u de klasse en de naam ruimte sluiten.
+Voeg de volgende methode toe aan de klasse **Program**. Met deze methode wordt de JSON-invoer gemakkelijker leesbaar gemaakt. Met uw app worden deze tekenreeksgegevens naar de console geschreven. U kunt de klasse en naamruimte vervolgens sluiten.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -345,7 +345,7 @@ Bij een geslaagd antwoord worden de Face-gegevens weergegeven in een makkelijk l
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een eenvoudige .NET-console toepassing gemaakt die REST-aanroepen gebruikt met de Azure face-service om gezichten in een installatie kopie te detecteren en hun kenmerken te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie over de ondersteunde scenario's.
+In deze quickstart hebt u een eenvoudige .NET-consoletoepassing gemaakt die gebruikmaakt van REST-aanroepen met de Azure Face-service voor het detecteren van gezichten in een afbeelding en het retourneren van de kenmerken. Lees het naslagmateriaal bij de Face-API voor meer informatie over de ondersteunde scenario's.
 
 > [!div class="nextstepaction"]
 > [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

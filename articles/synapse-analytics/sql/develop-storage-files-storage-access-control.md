@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534767"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987134"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Toegang tot opslagaccounts beheren voor SQL on-demand (preview)
 
@@ -81,12 +81,13 @@ In de onderstaande tabel vindt u de beschikbare autorisatietypen:
 
 U kunt de volgende combinaties van autorisatie- en Azure Storage-typen gebruiken:
 
-|                     | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
+| Autorisatietype  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| *SAS*               | Ondersteund      | Niet ondersteund   | Ondersteund     |
-| *Beheerde identiteit* | Ondersteund      | Ondersteund        | Ondersteund     |
-| *Gebruikersidentiteit*    | Ondersteund      | Ondersteund        | Ondersteund     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Ondersteund\*      | Niet ondersteund   | Ondersteund\*     |
+| [Beheerde identiteit](?tabs=managed-identity#supported-storage-authorization-types) | Ondersteund      | Ondersteund        | Ondersteund     |
+| [Gebruikersidentiteit](?tabs=user-identity#supported-storage-authorization-types)    | Ondersteund\*      | Ondersteund\*        | Ondersteund\*     |
 
+\* SAS-token en Azure AD Identity kunnen worden gebruikt om toegang te krijgen tot opslag die niet wordt beveiligd door de firewall.
 
 > [!IMPORTANT]
 > Wanneer u toegang krijgt tot opslag die wordt beveiligd door de firewall, kan alleen Beheerde identiteit worden gebruikt. U moet de instelling [Vertrouwde Microsoft-services toestaan](../../storage/common/storage-network-security.md#trusted-microsoft-services) inschakelen en expliciet [een Azure-rol toewijzen](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) aan de [door het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor dat resource-exemplaar. In dit geval komt het toegangsbereik voor het exemplaar overeen met de Azure-rol die aan de beheerde identiteit is toegewezen.
@@ -177,27 +178,46 @@ Met de referenties binnen databasebereik wordt toegang tot Azure-opslag verleend
 
 Azure AD-gebruikers kunnen toegang krijgen tot elk bestand als ze minimaal de rol `Storage Blob Data Owner`, `Storage Blob Data Contributor` of `Storage Blob Data Reader` hebben. Azure AD-gebruikers hebben geen referenties nodig om toegang te krijgen tot opslag.
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
+)
+```
+
 SQL-gebruikers kunnen niet gebruikmaken van Azure AD-verificatie voor toegang tot de opslag.
 
 ### <a name="shared-access-signature"></a>[Shared Access Signature](#tab/shared-access-signature)
 
-Met het volgende script maakt u een referentie die wordt gebruikt voor toegang tot bestanden in opslag met behulp van een SAS-token dat is opgegeven in de referentie.
+Met het volgende script maakt u een referentie die wordt gebruikt voor toegang tot bestanden in opslag met behulp van een SAS-token dat is opgegeven in de referentie. Met het script wordt een voorbeeld van een externe gegevensbron gemaakt die gebruikmaakt van dit SAS-token om toegang te krijgen tot opslag.
 
 ```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>'
+GO
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SasToken
+)
 ```
 
 ### <a name="managed-identity"></a>[Beheerde identiteit](#tab/managed-identity)
 
-Met het volgende script maakt u een referentie in het databasebereik die kan worden gebruikt om de huidige Azure AD-gebruiker te imiteren als een beheerde identiteit van de service. 
+Met het volgende script maakt u een referentie in het databasebereik die kan worden gebruikt om de huidige Azure AD-gebruiker te imiteren als een beheerde identiteit van de service. Met het script wordt een voorbeeld van een externe gegevensbron gemaakt die gebruikmaakt van de werkruimte-id om toegang te krijgen tot opslag.
 
 ```sql
-CREATE DATABASE SCOPED CREDENTIAL [SynapseIdentity]
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+CREATE DATABASE SCOPED CREDENTIAL SynapseIdentity
 WITH IDENTITY = 'Managed Identity';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SynapseIdentity
+)
 ```
 
 De referentie in het databasebereik hoeft niet overeen te komen met de naam van het opslagaccount, omdat deze expliciet wordt gebruikt in de gegevensbron (DATA SOURCE) die de locatie van de opslag definieert.
@@ -206,6 +226,11 @@ De referentie in het databasebereik hoeft niet overeen te komen met de naam van 
 
 Referenties in het databasebereik zijn niet vereist om toegang te geven tot openbaar beschikbare bestanden. Maak [een gegevensbron zonder referenties in het databasebereik](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source) om toegang te krijgen tot openbaar beschikbare bestanden in Azure Storage.
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<container>/<path>'
+)
+```
 ---
 
 Referenties in het databasebereik worden gebruikt in externe gegevensbronnen om op te geven welke verificatiemethode er wordt gebruikt voor toegang tot deze opslag:

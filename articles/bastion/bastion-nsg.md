@@ -1,18 +1,18 @@
 ---
 title: Werken met Vm's en Nsg's in azure Bastion
-description: In dit artikel wordt beschreven hoe u NSG Access integreert met Azure Bastion
+description: U kunt netwerk beveiligings groepen gebruiken met Azure Bastion. Meer informatie over de subnetten die zijn vereist voor deze configuratie.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: 1fc261c31a1190536f3128ed6472d9ca76dfce7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 563c12f91e9553f802d4cf26519da0550880dfcd
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112192"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270526"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Werken met NSG-toegang en Azure Bastion
 
@@ -28,7 +28,7 @@ In dit diagram:
 * Connect Integration-een RDP/SSH-sessie met één klik binnen de browser
 * Op de Azure-VM is geen openbaar IP-adres vereist.
 
-## <a name="network-security-groups"></a><a name="nsg"></a>Netwerk beveiligings groepen
+## <a name="network-security-groups"></a><a name="nsg"></a>Netwerkbeveiligingsgroepen
 
 In deze sectie ziet u het netwerk verkeer tussen de gebruiker en Azure Bastion, en tot doel-Vm's in uw virtuele netwerk:
 
@@ -42,7 +42,7 @@ Azure Bastion wordt specifiek geïmplementeerd voor ***AzureBastionSubnet***.
    * **Binnenkomend verkeer vanuit het Azure Bastion-besturings vlak:** Schakel voor de connectiviteit van het besturings element het argument poort 443 binnenkomend van de **GatewayManager** -service in. Hiermee wordt het besturings vlak ingeschakeld, dat wil zeggen dat gateway beheer met Azure Bastion kan communiceren.
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Inkomend":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Inkomend verkeer":::
 
 * **Uitgaand verkeer:**
 

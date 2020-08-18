@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876713"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505577"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (micro soft. OSTCExtensions. DSCForLinux)
 
@@ -40,10 +40,11 @@ De DSCForLinux-extensie wordt gepubliceerd en ondersteund door micro soft. Met d
 ### <a name="operating-system"></a>Besturingssysteem
 
 Voor knoop punten waarop Linux wordt uitgevoerd, ondersteunt de DSC Linux-extensie alle Linux-distributies die worden vermeld in de [Power shell DSC-documentatie](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
- 
+
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-Voor de DSCForLinux-extensie moet de virtuele doel machine zijn verbonden met internet. De registratie-uitbrei ding vereist bijvoorbeeld connectiviteit met de Automation-Service. Voor andere acties, zoals pull, pull, moet de installatie verbinding hebben met Azure Storage en GitHub. Dit is afhankelijk van de instellingen van de klant.
+Voor de DSCForLinux-extensie moet de virtuele doel machine zijn verbonden met internet. De registratie-uitbrei ding vereist bijvoorbeeld connectiviteit met de Automation-Service.
+Voor andere acties, zoals pull, pull, moet de installatie verbinding hebben met Azure Storage en GitHub. Dit is afhankelijk van de instellingen van de klant.
 
 ## <a name="extension-schema"></a>Extensieschema
 
@@ -55,13 +56,13 @@ Hier vindt u alle ondersteunde para meters voor de open bare configuratie:
 * `ResourceName`: (optioneel, String) de naam van de aangepaste resource module.
 * `ExtensionAction`: (optioneel, String) geeft aan wat een extensie doet. Geldige waarden zijn registreren, pushen, pull, installeren en verwijderen. Als deze niet wordt opgegeven, wordt standaard een push-actie beschouwd.
 * `NodeConfigurationName`: (optioneel, String) de naam van een knooppunt configuratie die moet worden toegepast.
-* `RefreshFrequencyMins`: (optioneel, int) Hiermee geeft u op hoe vaak (in minuten) DSC probeert de configuratie van de pull-server op te halen. 
+* `RefreshFrequencyMins`: (optioneel, int) Hiermee geeft u op hoe vaak (in minuten) DSC probeert de configuratie van de pull-server op te halen.
        Als de configuratie op de pull-server afwijkt van het huidige op het doel knooppunt, wordt deze gekopieerd naar de in behandeling zijnde Store en toegepast.
 * `ConfigurationMode`: (optioneel, teken reeks) Hiermee geeft u op hoe DSC de configuratie moet Toep assen. Geldige waarden zijn ApplyOnly, ApplyAndMonitor en ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (optioneel, int) Hiermee geeft u op hoe vaak (in minuten) DSC ervoor zorgt dat de configuratie de gewenste status heeft.
 
 > [!NOTE]
-> Als u een eerdere versie dan 2,3 gebruikt, is de modus parameter hetzelfde als ExtensionAction. De modus lijkt een overbelaste term te zijn. Om Verwar ring te voor komen, wordt ExtensionAction vanaf versie 2,3 gebruikt. Voor achterwaartse compatibiliteit ondersteunt de uitbrei ding zowel de modus als de ExtensionAction. 
+> Als u een eerdere versie dan 2,3 gebruikt, is de modus parameter hetzelfde als ExtensionAction. De modus lijkt een overbelaste term te zijn. Om Verwar ring te voor komen, wordt ExtensionAction vanaf versie 2,3 gebruikt. Voor achterwaartse compatibiliteit ondersteunt de uitbrei ding zowel de modus als de ExtensionAction.
 >
 
 ### <a name="protected-configuration"></a>Beveiligde configuratie
@@ -269,7 +270,7 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Sjablonen zijn ideaal wanneer u een of meer virtuele machines implementeert waarvoor de configuratie na implementatie vereist is, zoals het onboarden van Azure Automation. 
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Sjablonen zijn ideaal wanneer u een of meer virtuele machines implementeert waarvoor de configuratie na implementatie vereist is, zoals het onboarden van Azure Automation.
 
 Het voor beeld van een resource manager-sjabloon is [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) en [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
@@ -323,13 +324,13 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 U kunt zich aanmelden bij uw Azure-account in de Azure Service Management-modus door het volgende uit te voeren:
 
-```powershell>
+```powershell
 Add-AzureAccount
 ```
 
 En implementeer de DSCForLinux-extensie door het volgende uit te voeren:
 
-```powershell>
+```powershell
 $vmname = '<vm-name>'
 $vm = Get-AzureVM -ServiceName $vmname -Name $vmname
 $extensionName = 'DSCForLinux'
@@ -362,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 
 U kunt u aanmelden bij uw Azure-account in Azure Resource Manager modus door uit te voeren:
 
-```powershell>
+```powershell
 Login-AzAccount
 ```
 
@@ -370,7 +371,7 @@ Zie [Azure-resources beheren met behulp van Azure PowerShell](../../azure-resour
 
 U kunt de DSCForLinux-extensie implementeren door het volgende uit te voeren:
 
-```powershell>
+```powershell
 $rgName = '<resource-group-name>'
 $vmName = '<vm-name>'
 $location = '< location>'

@@ -1,6 +1,6 @@
 ---
 title: Inleiding tot Azure Queues - Azure Storage
-description: Inleiding tot Azure Queues
+description: Bekijk een inleiding tot Azure Queues, een service om grote aantallen berichten op te slaan. Een wachtrijservice bevat een URL-indeling, opslagaccount, wachtrij en bericht.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/18/2020
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: dineshm
-ms.openlocfilehash: 678ab8a3f3dace17671c242939c20cb5499b2e39
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: c16f02922b2e815ddd4986ab07bf260b20d871ee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805131"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826497"
 ---
 # <a name="what-are-azure-queues"></a>Wat zijn Azure-wachtrijen?
 

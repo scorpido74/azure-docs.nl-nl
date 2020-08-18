@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563922"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506529"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -173,13 +173,15 @@ foreach (string prop in twin.CustomProperties.Keys)
 
 Meer informatie over de hulp klassen voor serialisatie vindt u in [*How to: gebruik de Azure Digital Apparaatdubbels api's en sdk's*](how-to-use-apis-sdks.md).
 
-## <a name="update-a-digital-twin"></a>Een digitale dubbele
+## <a name="update-a-digital-twin"></a>Een digital twin bijwerken
 
 Als u de eigenschappen van een digitale dubbele eigenschap wilt bijwerken, schrijft u de gegevens die u wilt vervangen in de indeling van de [JSON-patch](http://jsonpatch.com/) . Op deze manier kunt u meerdere eigenschappen tegelijk vervangen. Vervolgens geeft u het JSON-patch document door aan een `Update` methode:
 
 ```csharp
 await client.UpdateDigitalTwin(id, patch);
 ```
+
+Een patch-oproep kan zoveel eigenschappen op een enkele dubbele manier bijwerken als u wilt (zelfs al deze). Als u eigenschappen voor meerdere apparaatdubbels wilt bijwerken, hebt u een afzonderlijke update aanroep voor elke dubbele taak nodig.
 
 > [!TIP]
 > Na het maken of bijwerken van een dubbele, kan er een latentie van Maxi maal 10 seconden zijn voordat de wijzigingen in [query's](how-to-query-graph.md)worden weer gegeven. De `GetDigitalTwin` API ( [eerder in dit artikel](#get-data-for-a-digital-twin)beschreven) heeft deze vertraging niet. Gebruik daarom de API-aanroep in plaats van een query uit te voeren om de zojuist bijgewerkte apparaatdubbels te zien als u een direct antwoord nodig hebt. 
@@ -204,6 +206,7 @@ Hier volgt een voor beeld van de JSON-patch code. Dit document vervangt de *mass
 U kunt patches hand matig maken, of met behulp van een serialisatie helper-klasse in de [SDK](how-to-use-apis-sdks.md). Hier volgt een voor beeld van elk.
 
 #### <a name="create-patches-manually"></a>Hand matig patches maken
+
 ```csharp
 List<object> twinData = new List<object>();
 twinData.Add(new Dictionary<string, object>() {
@@ -278,6 +281,19 @@ Voor de patch voor deze situatie moet het model en de eigenschap Tempe ratuur va
   }
 ]
 ```
+
+### <a name="handle-conflicting-update-calls"></a>Conflicterende Update aanroepen verwerken
+
+Azure Digital Apparaatdubbels zorgt ervoor dat alle inkomende aanvragen na elkaar worden verwerkt. Dit betekent dat zelfs als meerdere functies dezelfde eigenschap op een twee keer proberen bij te werken, u geen expliciete vergrendelings code **hoeft** te schrijven om het conflict af te handelen.
+
+Dit gedrag bevindt zich op twee afzonderlijke basis. 
+
+Stel dat er een scenario is waarin deze drie aanroepen gelijktijdig aankomen: 
+*   Eigenschap A op *Twin1* schrijven
+*   Schrijf eigenschap B op *Twin1*
+*   Eigenschap A op *Twin2* schrijven
+
+De twee aanroepen die *Twin1* wijzigen, worden na elkaar uitgevoerd en er worden wijzigings berichten voor elke wijziging gegenereerd. De aanroep om *Twin2* te wijzigen kan gelijktijdig zonder conflict worden uitgevoerd, zodra deze is binnengekomen.
 
 ## <a name="delete-a-digital-twin"></a>Een digitale dubbele
 

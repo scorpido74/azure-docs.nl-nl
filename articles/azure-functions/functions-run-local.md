@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207438"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505713"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -164,6 +164,9 @@ Voer in het Terminal venster of vanaf een opdracht prompt de volgende opdracht u
 ```
 func init MyFunctionProj
 ```
+
+>[!IMPORTANT]
+> Java maakt gebruik van een Maven-archetype om het lokale functions-project te maken, samen met uw eerste HTTP-geactiveerde functie. Gebruik de volgende opdracht om uw Java-project te maken: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Zie de [opdracht regel Quick](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)start voor een voor beeld van het gebruik van de Maven-archetype.  
 
 Wanneer u een project naam opgeeft, wordt een nieuwe map met die naam gemaakt en geïnitialiseerd. Anders wordt de huidige map geïnitialiseerd.  
 In versie 3. x/2. x, wanneer u de opdracht uitvoert, moet u een runtime voor uw project kiezen. 
@@ -334,6 +337,14 @@ Als u een functions-project wilt uitvoeren, voert u de host functions uit. De ho
 ```
 func start --build
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```
+mvn clean package 
+mvn azure-functions:run
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/node)
 
 ```
@@ -504,6 +515,9 @@ Als u uw lokale code wilt publiceren in een functie-app in Azure, gebruikt u de 
 ```
 func azure functionapp publish <FunctionAppName>
 ```
+
+>[!IMPORTANT]
+> Java maakt gebruik van Maven om uw lokale project naar Azure te publiceren. Gebruik de volgende opdracht om te publiceren naar Azure: `mvn azure-functions:deploy` . Azure-resources worden gemaakt tijdens de eerste implementatie.
 
 Met deze opdracht wordt gepubliceerd naar een bestaande functie-app in Azure. U krijgt een fout melding als u probeert te publiceren naar een `<FunctionAppName>` die niet voor komt in uw abonnement. Zie [een functie-app maken voor serverloze uitvoering voor](./scripts/functions-cli-create-serverless.md)meer informatie over het maken van een functie-app vanuit de opdracht prompt of het Terminal venster met behulp van de Azure cli. Deze opdracht maakt standaard gebruik van [externe build](functions-deployment-technologies.md#remote-build) en implementeert uw app voor [uitvoering vanuit het implementatie pakket](run-functions-from-deployment-package.md). Als u deze aanbevolen implementatie modus wilt uitschakelen, gebruikt u de `--nozip` optie.
 

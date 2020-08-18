@@ -1,6 +1,6 @@
 ---
 title: Een API bewerken met Azure Portal | Microsoft Docs
-description: Deze zelfstudie laat u zien hoe u een API Management (APIM) moet gebruiken om een API te bewerken.
+description: Leer hoe u API Management (APIM) gebruikt om een API te bewerken. U kunt bewerkingen in het APIM-exemplaar toevoegen, verwijderen of hernoemen, of de swagger van de API bewerken.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8d3f476f4a6ecf05d63223f3ba2c2b5173e1d0bf
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70072155"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905156"
 ---
 # <a name="edit-an-api"></a>Een API bewerken
 
@@ -64,5 +64,5 @@ U kunt uw back-end-API van Azure Portal bijwerken met de volgende stappen:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Voor beelden](policy-samples.md)
-> van APIM-beleid[transformeren en een gepubliceerde API beveiligen](transform-api.md)
+> [Voorbeelden van APIM beleid](policy-samples.md)
+> [Een gepubliceerde API beveiligen transformeren en beveiligen](transform-api.md)

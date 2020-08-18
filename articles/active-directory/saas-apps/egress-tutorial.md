@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce816b74c12333477203cce690c955d5aaf1cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a197c879e4c091c9b421c194e1f6a50b91d24bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093418"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007361"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Egress
 
@@ -130,7 +130,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Voer de volgende stappen uit op de volgende pagina.
 
-    ![Egress-configuratie](./media/egress-tutorial/configure1.PNG)
+    ![Egress-configuratie](./media/egress-tutorial/configure-1.PNG)
 
     a. Klik in het menu aan de linkerkant op **SSO Configuration**.
 
@@ -150,11 +150,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op **Invite Users** in het menu aan de linkerkant en klik op **Invite Single User** om de gebruiker toe te voegen.
 
-    ![Testgebruiker voor Egress maken](./media/egress-tutorial/createuser1.PNG)
+    ![Testgebruiker voor Egress maken](./media/egress-tutorial/create-user-1.PNG)
 
 1. Vul de vereiste velden in en klik op **Invite**.
 
-    ![Testgebruiker voor Egress maken](./media/egress-tutorial/createuser2.PNG)
+    ![Testgebruiker voor Egress maken](./media/egress-tutorial/create-user-2.PNG)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 

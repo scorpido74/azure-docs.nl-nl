@@ -1,6 +1,6 @@
 ---
 title: Een OpenAPI-specificatie importeren met Azure Portal | Microsoft Docs
-description: Informatie over het importeren van een OpenAPI-specificatie met API Management.
+description: Leer hoe u een OpenAPI-specificatie importeert met API Management en de API vervolgens test in de Azure- en ontwikkelaarsportal.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 2e4dee74eb0c50e8e12d3f9ff0dccdd83271ea65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 346156c624a4c8b1c1d6cc490fc0559f364b4b9d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202907"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905564"
 ---
 # <a name="import-an-openapi-specification"></a>Een OpenAPI-specificatie importeren
 
@@ -32,21 +32,21 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Een back-end-API importeren en publiceren
 
-1. Navigeer naar uw API Management-service in de Azure Portal en selecteer **api's** in het menu.
+1. Navigeer naar uw API Management-service in de Azure Portal en selecteer **API's** in het menu.
 2. Selecteer **OpenAPI-specificatie** in de lijst **Een nieuwe API toevoegen**.
 
     ![OpenAPI-specificatie](./media/import-api-from-oas/oas-api.png)
-3. Voer de API-instellingen in. U kunt de waarden instellen tijdens het maken of deze later configureren door naar het tabblad **instellingen** te gaan. De instellingen worden beschreven in de zelf studie [uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api) .
+3. Voer API-instellingen in. U kunt de waarden instellen tijdens het maken of later configureren door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api).
 4. Selecteer **Maken**.
 
 > [!NOTE]
-> De beperkingen voor het importeren van API'S worden beschreven in [een ander artikel](api-management-api-import-restrictions.md).
+> De API-importbeperkingen staan in [een ander artikel](api-management-api-import-restrictions.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

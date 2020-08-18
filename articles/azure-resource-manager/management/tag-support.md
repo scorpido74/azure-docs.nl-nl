@@ -3,12 +3,12 @@ title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 2ebf55a15233c401904460d459a118fc46142ac3
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e3a51bb7c21b6ea2e8baa86fe2981184c41d7d69
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337990"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272430"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](tag-resources.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport. U kunt kosten op labels weer geven in de [Cost Management kosten analyse](../../cost-management-billing/costs/group-filter.md) en de gegevens voor de [factuur en dagelijks gebruik van Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -902,7 +902,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | werkruimten | Ja | Nee |
+> | workspaces | Ja | Ja |
 > | werk ruimten/dbWorkspaces | Nee | Nee |
 > | werk ruimten/storageEncryption | Nee | Nee |
 > | werk ruimten/virtualNetworkPeerings | Nee | Nee |
@@ -1062,7 +1062,7 @@ Ga naar de naam ruimte van een resource provider:
 > | hostpools / sessionhosts | Nee | Nee |
 > | hostpools / sessionhosts / usersessions | Nee | Nee |
 > | hostpools / usersessions | Nee | Nee |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -1448,7 +1448,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 > | werk ruimten/reken bewerkingen | Nee | Nee |
 > | werk ruimten/eventGridFilters | Nee | Nee |
 
@@ -1746,7 +1746,7 @@ Ga naar de naam ruimte van een resource provider:
 > | deletedWorkspaces | Nee | Nee |
 > | linkTargets | Nee | Nee |
 > | storageInsightConfigs | Nee | Nee |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 > | werk ruimten/dataExports | Nee | Nee |
 > | werk ruimten/gegevens bronnen | Nee | Nee |
 > | werk ruimten/linkedServices | Nee | Nee |
@@ -2240,7 +2240,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | privateLinkHubs | Ja | Ja |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 > | werk ruimten/bigDataPools | Ja | Ja |
 > | werk ruimten/operationStatuses | Nee | Nee |
 > | werk ruimten/sqlPools | Ja | Ja |

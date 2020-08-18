@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848714"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507175"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Uw VPN-infra structuur integreren met Azure MFA met behulp van de Network Policy Server-extensie voor Azure
 
@@ -167,7 +167,7 @@ U kunt een standaard instelling (op basis van een wizard) of een geavanceerde co
 
     ![Een nieuw RADIUS-client venster maken](./media/howto-mfa-nps-extension-vpn/image5.png)
 
-6. Selecteer **OK**en selecteer vervolgens **volgende**.
+6. Selecteer **OK**, en selecteer vervolgens **Volgende**.
 
 7. Accepteer in het venster **verificatie methoden configureren** de standaard selectie (**micro soft Encrypted Authentication versie 2 [MS-CHAPv2])** of kies een andere optie en selecteer **volgende**.
 
@@ -308,6 +308,10 @@ Voor hulp bij het configureren van gebruikers voor Multi-Factor Authentication r
 
 In deze sectie vindt u instructies voor het configureren van VPN voor het gebruik van MFA voor client verificatie met de VPN-server.
 
+> [!NOTE]
+> De register sleutel REQUIRE_USER_MATCH is hoofdletter gevoelig. Alle waarden moeten worden ingesteld in een hoofd letters.
+>
+
 Nadat u de NPS-uitbrei ding hebt geïnstalleerd en geconfigureerd, is alle op RADIUS gebaseerde client verificatie die door deze server wordt verwerkt, vereist voor het gebruik van MFA. Als al uw VPN-gebruikers niet zijn Inge schreven in azure Multi-Factor Authentication, kunt u een van de volgende handelingen uitvoeren:
 
 * Stel een andere RADIUS-server in voor het verifiëren van gebruikers die niet zijn geconfigureerd voor het gebruik van MFA.
@@ -319,6 +323,8 @@ Maak een nieuwe teken reeks waarde met de naam _REQUIRE_USER_MATCH in HKLM\SOFTW
 ![De instelling gebruikers overeenkomst vereisen](./media/howto-mfa-nps-extension-vpn/image34.png)
 
 Als de waarde is ingesteld op *True* of leeg is, gelden voor alle verificatie aanvragen een MFA-Challenge. Als de waarde is ingesteld op *Onwaar*, worden MFA-uitdagingen alleen verleend aan gebruikers die zijn Inge schreven in azure multi-factor Authentication. Gebruik de instelling *Onwaar* alleen in tests of productie omgevingen tijdens een voorbereidings periode.
+
+
 
 ### <a name="obtain-the-azure-active-directory-tenant-id"></a>De Tenant-ID van Azure Active Directory ophalen
 

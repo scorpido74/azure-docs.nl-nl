@@ -3,12 +3,12 @@ title: Azure-toepassing inzichten voor ASP.NET Core toepassingen | Microsoft Doc
 description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestaties en gebruik.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 99d2a85e96aff650573e142368a136886945dcb0
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475512"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270917"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
@@ -109,12 +109,16 @@ Met de [Application INSIGHTS SDK voor ASP.net core](https://nuget.org/packages/M
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    * `APPINSIGHTS_INSTRUMENTATIONKEY`wordt doorgaans gebruikt in [Azure web apps](./azure-web-apps.md?tabs=net), maar kan ook worden gebruikt op alle plaatsen waar deze SDK wordt ondersteund. (Als u de bewaking van web-apps met code uitvoert, is deze indeling vereist als u geen verbindings reeksen gebruikt.)
+    * `APPINSIGHTS_INSTRUMENTATIONKEY` wordt doorgaans gebruikt in [Azure web apps](./azure-web-apps.md?tabs=net), maar kan ook worden gebruikt op alle plaatsen waar deze SDK wordt ondersteund. (Als u de bewaking van web-apps met code uitvoert, is deze indeling vereist als u geen verbindings reeksen gebruikt.)
 
     In plaats van het instellen van instrumentatie sleutels kunt u nu ook [verbindings reeksen](./sdk-connection-string.md?tabs=net)gebruiken.
 
     > [!NOTE]
     > Een instrumentatie sleutel die is opgegeven in code WINS via de omgevings variabele `APPINSIGHTS_INSTRUMENTATIONKEY` , die WINS over andere opties overneemt.
+
+### <a name="user-secrets-and-other-configuration-providers"></a>Gebruikers geheimen en andere configuratie providers
+
+Als u de instrumentatie sleutel in ASP.NET Core gebruikers geheimen wilt opslaan of van een andere configuratie provider wilt ophalen, kunt u de overbelasting met een `Microsoft.Extensions.Configuration.IConfiguration` para meter gebruiken. Bijvoorbeeld `services.AddApplicationInsightsTelemetry(Configuration);`.
 
 ## <a name="run-your-application"></a>Uw toepassing uitvoeren
 
@@ -143,7 +147,7 @@ De ondersteuning voor [prestatie meter items](./web-monitor-performance.md) in A
 
 ### <a name="eventcounter"></a>Event Counter
 
-`EventCounterCollectionModule`is standaard ingeschakeld en er wordt een standaardset tellers van .NET Core 3. X-apps verzameld. De [Event Counter](eventcounters.md) zelf studie bevat de standaardset met verzamelde items. Het bevat ook instructies voor het aanpassen van de lijst.
+`EventCounterCollectionModule` is standaard ingeschakeld en er wordt een standaardset tellers van .NET Core 3. X-apps verzameld. De [Event Counter](eventcounters.md) zelf studie bevat de standaardset met verzamelde items. Het bevat ook instructies voor het aanpassen van de lijst.
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>Telemetrie aan de client zijde inschakelen voor webtoepassingen
 
@@ -199,20 +203,20 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Volledige lijst met instellingen in`ApplicationInsightsServiceOptions`
+Volledige lijst met instellingen in `ApplicationInsightsServiceOptions`
 
 |Instelling | Beschrijving | Standaard
 |---------------|-------|-------
-|EnablePerformanceCounterCollectionModule  | Inschakelen/uitschakelen`PerformanceCounterCollectionModule` | waar
-|EnableRequestTrackingTelemetryModule   | Inschakelen/uitschakelen`RequestTrackingTelemetryModule` | waar
-|EnableEventCounterCollectionModule   | Inschakelen/uitschakelen`EventCounterCollectionModule` | waar
-|EnableDependencyTrackingTelemetryModule   | Inschakelen/uitschakelen`DependencyTrackingTelemetryModule` | waar
-|EnableAppServicesHeartbeatTelemetryModule  |  Inschakelen/uitschakelen`AppServicesHeartbeatTelemetryModule` | waar
-|EnableAzureInstanceMetadataTelemetryModule   |  Inschakelen/uitschakelen`AzureInstanceMetadataTelemetryModule` | waar
-|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | waar
-|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | waar
-|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartbeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | waar
-|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | waar
+|EnablePerformanceCounterCollectionModule  | Inschakelen/uitschakelen `PerformanceCounterCollectionModule` | true
+|EnableRequestTrackingTelemetryModule   | Inschakelen/uitschakelen `RequestTrackingTelemetryModule` | true
+|EnableEventCounterCollectionModule   | Inschakelen/uitschakelen `EventCounterCollectionModule` | true
+|EnableDependencyTrackingTelemetryModule   | Inschakelen/uitschakelen `DependencyTrackingTelemetryModule` | true
+|EnableAppServicesHeartbeatTelemetryModule  |  Inschakelen/uitschakelen `AppServicesHeartbeatTelemetryModule` | true
+|EnableAzureInstanceMetadataTelemetryModule   |  Inschakelen/uitschakelen `AzureInstanceMetadataTelemetryModule` | true
+|EnableQuickPulseMetricStream | Functie LiveMetrics in-of uitschakelen | true
+|EnableAdaptiveSampling | Adaptieve steek proeven in-/uitschakelen | true
+|EnableHeartbeat | De functie heartbeats inschakelen/uitschakelen, die periodiek (standaard 15-minuten) een aangepaste metriek met de naam ' HeartbeatState ' verzendt met informatie over de runtime, zoals .NET-versie, informatie over de Azure-omgeving, indien van toepassing, enzovoort. | true
+|AddAutoCollectedMetricExtractor | Schakel AutoCollectedMetrics extractor in/uit. Dit is een TelemetryProcessor die vooraf geaggregeerde metrische gegevens over aanvragen/afhankelijkheden verzendt voordat steek proeven worden uitgevoerd. | true
 |RequestCollectionOptions.TrackExceptions | Rapportage van niet-verwerkte uitzonderings tracering door de verzamelings module voor aanvragen in-of uitschakelen. | False in netstandard 2.0 (omdat uitzonde ringen worden bijgehouden met ApplicationInsightsLoggerProvider), anders waar.
 
 Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions` ](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) voor de meest recente lijst.
@@ -281,13 +285,13 @@ Application Insights maakt gebruik van telemetrie-modules om automatisch nuttige
 
 De volgende automatische verzamelings modules zijn standaard ingeschakeld. Deze modules zijn verantwoordelijk voor het automatisch verzamelen van telemetrie. U kunt ze uitschakelen of configureren om het standaard gedrag te wijzigen.
 
-* `RequestTrackingTelemetryModule`-Verzamelt RequestTelemetry van inkomende webaanvragen.
-* `DependencyTrackingTelemetryModule`-Verzamelt [DependencyTelemetry](./asp-net-dependencies.md) van uitgaande HTTP-aanroepen en SQL-aanroepen.
-* `PerformanceCollectorModule`-Verzamelt Windows Performance Counters.
-* `QuickPulseTelemetryModule`-Verzamelt telemetrie voor weer gave in de portal voor Live Metrics.
-* `AppServicesHeartbeatTelemetryModule`-Hiermee worden kern maten (die worden verzonden als aangepaste metrische gegevens) verzameld over Azure App Service omgeving waarin de toepassing wordt gehost.
-* `AzureInstanceMetadataTelemetryModule`-Hiermee worden kern maten (die worden verzonden als aangepaste metrische gegevens) verzameld over de Azure VM-omgeving waarin de toepassing wordt gehost.
-* `EventCounterCollectionModule`-Verzamelt [EventCounters.](eventcounters.md) Deze module is een nieuwe functie die beschikbaar is in SDK-versie 2.8.0 en hoger.
+* `RequestTrackingTelemetryModule` -Verzamelt RequestTelemetry van inkomende webaanvragen.
+* `DependencyTrackingTelemetryModule` -Verzamelt [DependencyTelemetry](./asp-net-dependencies.md) van uitgaande HTTP-aanroepen en SQL-aanroepen.
+* `PerformanceCollectorModule` -Verzamelt Windows Performance Counters.
+* `QuickPulseTelemetryModule` -Verzamelt telemetrie voor weer gave in de portal voor Live Metrics.
+* `AppServicesHeartbeatTelemetryModule` -Hiermee worden kern maten (die worden verzonden als aangepaste metrische gegevens) verzameld over Azure App Service omgeving waarin de toepassing wordt gehost.
+* `AzureInstanceMetadataTelemetryModule` -Hiermee worden kern maten (die worden verzonden als aangepaste metrische gegevens) verzameld over de Azure VM-omgeving waarin de toepassing wordt gehost.
+* `EventCounterCollectionModule` -Verzamelt [EventCounters.](eventcounters.md) Deze module is een nieuwe functie die beschikbaar is in SDK-versie 2.8.0 en hoger.
 
 Als u een standaard instelling wilt configureren `TelemetryModule` , gebruikt u de uitbreidings methode `ConfigureTelemetryModule<T>` op `IServiceCollection` , zoals wordt weer gegeven in het volgende voor beeld.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 9bbb4ee4a2fd41ca0605d7dd5d8c66c83d475744
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042272"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506465"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>E-mail meldingen instellen voor beveiligings waarschuwingen 
 
@@ -32,6 +32,9 @@ Security Center beperkt het volume van uitgaande mails om waarschuwings intensie
 - Maxi maal **twee** e-mails per dag voor waarschuwingen met **gemiddelde urgentie**
 - Maxi maal **één** e-mail adres per dag voor waarschuwingen met **lage urgentie**
 
+
+:::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="Het configureren van de details van de contact persoon die e-mail berichten over beveiligings waarschuwingen ontvangt." :::
+
 ## <a name="availability"></a>Beschikbaarheid
 
 |Aspect|Details|
@@ -43,9 +46,7 @@ Security Center beperkt het volume van uitgaande mails om waarschuwings intensie
 |||
 
 
-
-
-## <a name="set-up-email-notifications-for-alerts"></a>E-mail meldingen voor waarschuwingen instellen<a name="email"></a>
+## <a name="set-up-email-notifications-for-alerts"></a>E-mail meldingen voor waarschuwingen instellen <a name="email"></a>
 
 U kunt e-mail meldingen verzenden naar personen of naar alle gebruikers met specifieke Azure-rollen.
 
@@ -64,3 +65,4 @@ Zie het volgende voor meer informatie over beveiligings waarschuwingen:
 
 * [Beveiligings waarschuwingen-een referentie handleiding](alerts-reference.md) --meer informatie over de beveiligings waarschuwingen die u kunt zien in de module Threat Protection van Azure Security Center
 * [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md) --meer informatie over het beheren van en reageren op beveiligings waarschuwingen
+- [Werk stroom automatisering](workflow-automation.md) : Automatiseer reacties op waarschuwingen met aangepaste meldings logica

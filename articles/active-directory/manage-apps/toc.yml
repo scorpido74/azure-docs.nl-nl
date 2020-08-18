@@ -91,16 +91,6 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Vergelijking van toegangsoplossingen op afstand
           href: application-proxy-migration.md
-    - name: Een app op de markt brengen
-      items:
-        - name: SSO inschakelen voor uw toepassing met meerdere tenants
-          href: isv-sso-content.md
-        - name: Een Azure-tenant maken voor een toepassing met meerdere tenants
-          href: isv-tenant-multi-tenant-app.md
-        - name: Federatie met meerdere tenants kiezen
-          href: isv-choose-multi-tenant-federation.md
-        - name: Documentatie maken voor toepassing met meerdere tenants
-          href: isv-create-sso-documentation.md
 - name: Instructiegidsen
   expanded: false
   items:

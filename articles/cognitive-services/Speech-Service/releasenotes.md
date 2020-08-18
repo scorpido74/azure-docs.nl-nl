@@ -11,17 +11,63 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: ac4b0c59cfad3d435858e094cbcb8c9f855a0041
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185312"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505802"
 ---
 # <a name="speech-service-release-notes"></a>Release opmerkingen bij de spraak service
 
+## <a name="text-to-speech-2020-august-release"></a>Tekst-naar-spraak 2020-augustus-release
+
+### <a name="new-features"></a>Nieuwe functies
+
+* **NEURAL TTS: nieuwe spreek stijl voor `en-US` Aria-stem**. AriaNeural kan klinken als een Newscaster bij het lezen van nieuws. De stijl ' Newscast-formeel ' klinkt meer ernstig, terwijl de stijl ' Newscast-inform ' meer besoepelder en informeel is. Zie [de gesp roken stijlen gebruiken in SSML](speech-synthesis-markup.md).
+
+* **Aangepaste spraak: er wordt een nieuwe functie uitgebracht om de kwaliteit van de trainings gegevens automatisch te controleren**. Wanneer u uw gegevens uploadt, worden verschillende aspecten van uw audio en Transcripten door de gegevens controlefunctie onderzocht en worden de gegevens automatisch opgelost of gefilterd op basis van problemen, zodat de kwaliteit van het getrainde spraak model wordt verbeterd. Dit heeft betrekking op het volume van uw audio, het geluids niveau, de nauw keurigheid van de uitspraak van de spraak, de uitlijning van spraak met de genormaliseerde tekst, de stilte in de audio, naast de audio-en script indeling. 
+
+* **Audio-inhoud maken: een aantal nieuwe functies om krachtigere mogelijkheden voor spraak afstemming en audio beheer mogelijk te**maken.
+
+    * Uitspraak: de functie voor het afstemmen van de uitspraak wordt bijgewerkt naar de meest recente foneem-set. U kunt het juiste foneem-element kiezen uit de bibliotheek en de uitspraak verfijnen van de woorden die u hebt geselecteerd. 
+
+    * Downloaden: de audio ' downloaden '/' exporteren ' is verbeterd ter ondersteuning van het genereren van audio per alinea. U kunt verschillende inhoud in dezelfde bestands-SSML bewerken tijdens het genereren van meerdere audio-uitvoer. De bestands structuur van ' downloaden ' is ook verfijnd. U kunt nu eenvoudig alle audio in één map ophalen. 
+
+    * Taak status: de ervaring voor het exporteren van meerdere bestanden is verbeterd. Wanneer u meerdere bestanden in het verleden exporteert en een van de bestanden is mislukt, mislukt de volledige taak. Maar nu worden alle andere bestanden geëxporteerd. Het taak rapport is verrijkt met gedetailleerde en gestructureerde informatie. U kunt de logboeken voor alle mislukte bestanden en zinnen nu met het rapport controleren. 
+
+    * SSML-documentatie: gekoppeld aan SSML-document om u te helpen bij het controleren van de regels voor het gebruik van alle afstemmings functies.
+
+* **De Voice List-API is bijgewerkt met een gebruiks vriendelijke weergave naam en de spraak stijlen die voor Neural stemmen worden ondersteund**.
+
+### <a name="general-tts-voice-quality-improvements"></a>Algemene verbeteringen voor spraak kwaliteit van TTS
+
+* Minder uitspraak fout in woord niveau% voor `ru-RU` (fout verminderd door 56%) en `sv-SE` (fout kleiner dan 49%)
+
+* Verbeterd polyphony-woord voor het lezen van `en-US` Neural stemmen met 40%. Voor beelden van polyphony-woorden zijn ' read ', ' live ', ' content ', ' record ', ' object ', enzovoort. 
+
+* De natuurlijkeheid van de vraag Toon is verbeterd in `fr-FR` . MOS (gemiddelde opinie Score): + 0,28
+
+* De vocoders is bijgewerkt voor de volgende stemmen, met betrouw baarheid en een totale prestatie snelheid van 40%.
+
+    | Landinstelling | Spraak |
+    |---|---|    
+    | `en-GB` | Quote |
+    | `es-MX` | Dalia |
+    | `fr-CA` | Sylvie |
+    | `fr-FR` | Dick |
+    | `ja-JP` | Nanami |
+    | `ko-KR` | Sun-Hi |
+
+### <a name="bug-fixes"></a>Opgeloste fouten
+
+* Een aantal bugs opgelost met het hulp programma voor het maken van de audio-inhoud 
+    * Het probleem is opgelost met automatisch vernieuwen. 
+    * Opgeloste problemen met stijl stemmen in zh-CN in de regio Zuid-Azië-oost
+    * Het probleem is opgelost met de stabiliteit, met inbegrip van de export fout met het label ' onderbreken ', fouten in Lees tekens    
+
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Nieuwe land instellingen voor spraak naar tekst: 2020-augustus release
-Spraak-naar-tekst vrijgegeven 26 nieuwe land instellingen in augustus: 2 Europese talen CS-CZ en hu-HU, 5-Engelse land instellingen en 19-Spaanse land instellingen die betrekking hebben op de meeste Zuid-Amerikaanse landen. Hieronder ziet u een lijst met de nieuwe land instellingen. Raadpleeg de volledige taal lijst [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
+Spraak-naar-tekst vrijgegeven 26 nieuwe land instellingen in augustus: 2 Europese talen `cs-CZ` en `hu-HU` , 5 Engelse land instellingen en 19 Spaanse land instellingen die betrekking hebben op de meeste Zuid-Amerikaanse landen. Hieronder ziet u een lijst met de nieuwe land instellingen. Raadpleeg de volledige taal lijst [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 | Landinstelling  | Taal                          |
 |---------|-----------------------------------|
@@ -129,7 +175,7 @@ Blijf op de hoogte.
 ### <a name="bug-fixes"></a>Opgeloste fouten
 
 * Valuta lezen
-    * Het probleem opgelost met valuta-lezen voor `es-ES` en`es-MX`
+    * Het probleem opgelost met valuta-lezen voor `es-ES` en `es-MX`
      
     | Taal | Invoer | Na verbetering aflezing |
     |---|---|---|
@@ -279,11 +325,11 @@ Blijf op de hoogte.
 - Java script: er is ondersteuning toegevoegd voor `FromHost API` om gebruik te vereenvoudigen met on-premises containers en soevereine Clouds. Raadpleeg [hier](speech-container-howto.md)de documentatie.
 - Java script: we gaan nu `NODE_TLS_REJECT_UNAUTHORIZED` door met een bijdrage van [orgads](https://github.com/orgads). Bekijk [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)meer informatie.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
-- `OpenSSL`is bijgewerkt naar versie 1.1.1 b en is statisch gekoppeld aan de Speech SDK core-bibliotheek voor Linux. Dit kan een storing veroorzaken als uw postvak in `OpenSSL` niet is geïnstalleerd in de `/usr/lib/ssl` map in het systeem. Raadpleeg [onze documentatie](how-to-configure-openssl-linux.md) onder documenten voor spraak-SDK om het probleem te omzeilen.
+- `OpenSSL` is bijgewerkt naar versie 1.1.1 b en is statisch gekoppeld aan de Speech SDK core-bibliotheek voor Linux. Dit kan een storing veroorzaken als uw postvak in `OpenSSL` niet is geïnstalleerd in de `/usr/lib/ssl` map in het systeem. Raadpleeg [onze documentatie](how-to-configure-openssl-linux.md) onder documenten voor spraak-SDK om het probleem te omzeilen.
 - Het geretourneerde gegevens type voor C# is gewijzigd in om `WordLevelTimingResult.Offset` `int` `long` toegang te krijgen tot `WordLevelTimingResults` wanneer spraak gegevens langer dan twee minuten zijn.
-- `PushAudioInputStream`en `PullAudioInputStream` verzenden nu WAV-header gegevens naar de spraak service op basis van `AudioStreamFormat` , eventueel opgegeven wanneer ze zijn gemaakt. Klanten moeten nu de [ondersteunde audio-invoer indeling](how-to-use-audio-input-streams.md)gebruiken. Andere indelingen krijgen de meest optimale herkennings resultaten of kunnen andere problemen veroorzaken. 
+- `PushAudioInputStream` en `PullAudioInputStream` verzenden nu WAV-header gegevens naar de spraak service op basis van `AudioStreamFormat` , eventueel opgegeven wanneer ze zijn gemaakt. Klanten moeten nu de [ondersteunde audio-invoer indeling](how-to-use-audio-input-streams.md)gebruiken. Andere indelingen krijgen de meest optimale herkennings resultaten of kunnen andere problemen veroorzaken. 
 
 **Oplossingen voor oplossingen**
 
@@ -320,7 +366,7 @@ Blijf op de hoogte.
 - `KeywordRecognizer`Er is ondersteuning toegevoegd voor Windows (UWP), Android en IOS via de NuGet-en Unity-pakketten
 - De Java-API voor externe conversaties is toegevoegd aan de conversatie transcriptie in asynchrone batches.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - De functie voor het verzetten van conversaties in gesprek onder naam ruimte is verplaatst `Microsoft.CognitiveServices.Speech.Transcription` .
 - Een deel van de audio transcriber-methoden worden verplaatst naar een nieuwe `Conversation` klasse.
@@ -332,8 +378,8 @@ Blijf op de hoogte.
 
 **Voorbeelden**
 
-- Xamarin-voor beeld voor`KeywordRecognizer`
-- Unit-voor beeld voor`KeywordRecognizer`
+- Xamarin-voor beeld voor `KeywordRecognizer`
+- Unit-voor beeld voor `KeywordRecognizer`
 - Voor beelden van C++ en Java voor automatische bron Taaldetectie.
 
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0:2019-release van september
@@ -356,9 +402,9 @@ Blijf op de hoogte.
 - Er is een probleem opgelost met UUIDs die niet uniek zijn in sommige verbindings eigenschappen
 - Enkele waarschuwingen over de specificaties van nulwaarden in de SWIFT-bindingen zijn opgelost (hiervoor zijn mogelijk kleine code wijzigingen vereist)
 - Er is een fout opgelost waardoor WebSocket-verbindingen zonder problemen kunnen worden gesloten onder netwerk belasting
-- Er is een probleem opgelost in Android dat soms resulteert in dubbele indruk-Id's die worden gebruikt door`DialogServiceConnector`
-- Verbeteringen in de stabiliteit van verbindingen tussen multi-turn-interacties en de rapportage van fouten (via `Canceled` gebeurtenissen) wanneer deze optreden in`DialogServiceConnector`
-- `DialogServiceConnector`sessie start nu op juiste wijze gebeurtenissen, zoals wanneer wordt aangeroepen `ListenOnceAsync()` tijdens een actieve`StartKeywordRecognitionAsync()`
+- Er is een probleem opgelost in Android dat soms resulteert in dubbele indruk-Id's die worden gebruikt door `DialogServiceConnector`
+- Verbeteringen in de stabiliteit van verbindingen tussen multi-turn-interacties en de rapportage van fouten (via `Canceled` gebeurtenissen) wanneer deze optreden in `DialogServiceConnector`
+- `DialogServiceConnector` sessie start nu op juiste wijze gebeurtenissen, zoals wanneer wordt aangeroepen `ListenOnceAsync()` tijdens een actieve `StartKeywordRecognitionAsync()`
 - Een crash gericht op het `DialogServiceConnector` Ontvangen van activiteiten
 
 **Voorbeelden**
@@ -374,14 +420,14 @@ Blijf op de hoogte.
 - Quick start-voor beelden voor tekst-naar-spraak op UWP en eenheid
 - Voor beeld van Quick start voor Swift op iOS
 - Unit-voor beelden voor spraak & Intentieherkenning en omzetting
-- Bijgewerkte Quick start-voor beelden voor`DialogServiceConnector`
+- Bijgewerkte Quick start-voor beelden voor `DialogServiceConnector`
 
 **Verbeteringen/wijzigingen**
 
 - Naam ruimte dialoog venster:
   - De naam van `SpeechBotConnector` is gewijzigd in `DialogServiceConnector`
   - De naam van `BotConfig` is gewijzigd in `DialogServiceConfig`
-  - `BotConfig::FromChannelSecret()`is opnieuw toegewezen aan`DialogServiceConfig::FromBotSecret()`
+  - `BotConfig::FromChannelSecret()` is opnieuw toegewezen aan `DialogServiceConfig::FromBotSecret()`
   - Alle bestaande clients met directe spraak blijven worden ondersteund na de naamswijziging
 - TTS REST-Adapter bijwerken ter ondersteuning van proxy, permanente verbinding
 - Fout bericht verbeteren wanneer een ongeldige regio is door gegeven
@@ -544,7 +590,7 @@ Dit is een alleen-Java script-versie. Er zijn geen functies toegevoegd. De volge
   - De Speech SDK voor Java script is open source. De bron code is beschikbaar op [github](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   - We bieden nu ondersteuning voor Node.js. u kunt [hier](quickstart-js-node.md)meer informatie vinden.
   - De lengte beperking voor audio sessies is verwijderd. de verbinding wordt automatisch hersteld onder de dekking.
-- `Connection`object
+- `Connection` object
   - Vanuit de `Recognizer` kunt u toegang krijgen tot een `Connection` object. Met dit object kunt u de service verbinding expliciet initiëren en zich abonneren op verbinding maken en verbreken van gebeurtenissen.
     (Deze functie is nog niet beschikbaar vanuit Java script en python.)
 - Ondersteuning voor Ubuntu 18,04.
@@ -627,7 +673,7 @@ In onze [voorbeeld opslagplaats](https://aka.ms/csspeech/samples)is een nieuw vo
 - Ondersteuning voor objectief-C op iOS. Bekijk onze [doel stelling-C Quick start voor IOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md).
 - Ondersteuning voor Java script in browser. Bekijk onze [Snelstartgids voor Java script](quickstart-js-browser.md).
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - In deze versie wordt een aantal belang rijke wijzigingen geïntroduceerd.
   Raadpleeg [Deze pagina](https://aka.ms/csspeech/breakingchanges_1_0_0) voor meer informatie.
@@ -646,7 +692,7 @@ In onze [voorbeeld opslagplaats](https://aka.ms/csspeech/samples)is een nieuw vo
 
 - Meer informatie over fout details beschikbaar maken voor verbindings fouten.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - Op Java (Android) heeft de `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` functie geen para meter Path meer nodig. Nu wordt het pad automatisch gedetecteerd op alle ondersteunde platforms.
 - De Get-accessor van de eigenschap `EndpointUrl` in Java en C# is verwijderd.
@@ -671,11 +717,11 @@ In onze [voorbeeld opslagplaats](https://aka.ms/csspeech/samples)is een nieuw vo
 
 **Functionele wijzigingen**
 
-- `StartContinuousRecognitionAsync()`ondersteunt langlopende herkenning.
+- `StartContinuousRecognitionAsync()` ondersteunt langlopende herkenning.
 - Het herkennings resultaat bevat meer velden. Ze worden gecompenseerd vanaf het begin en de duur van de audio (zowel in Ticks) van de herkende tekst als aanvullende waarden die de herkennings status vertegenwoordigen, bijvoorbeeld `InitialSilenceTimeout` en `InitialBabbleTimeout` .
 - AuthorizationToken ondersteunen voor het maken van fabrieks instanties.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - Herkennings gebeurtenissen: `NoMatch` gebeurtenis type is samengevoegd in de `Error` gebeurtenis.
 - De naam van SpeechOutputFormat in C# is gewijzigd in `OutputFormat` om te blijven uitgelijnd met C++.

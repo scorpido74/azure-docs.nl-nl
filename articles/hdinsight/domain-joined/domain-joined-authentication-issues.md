@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218850feea8b0e22b8e11695a3aa3c69173f1ab7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75896126"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504922"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Verificatie problemen in azure HDInsight
 
@@ -148,7 +148,7 @@ Hangt.
 
 ### <a name="resolution"></a>Oplossing
 
-Om kinit te laten slagen, moet u weten dat u uw `sAMAccountName` (dit is de korte account naam zonder de realm). `sAMAccountName`is doorgaans het account voorvoegsel (zoals Bob in `bob@contoso.com` ). Voor sommige gebruikers kan het verschillend zijn. U hebt de mogelijkheid om door de map te bladeren/te zoeken om uw te leren `sAMAccountName` .
+Om kinit te laten slagen, moet u weten dat u uw `sAMAccountName` (dit is de korte account naam zonder de realm). `sAMAccountName` is doorgaans het account voorvoegsel (zoals Bob in `bob@contoso.com` ). Voor sommige gebruikers kan het verschillend zijn. U hebt de mogelijkheid om door de map te bladeren/te zoeken om uw te leren `sAMAccountName` .
 
 Manieren om te zoeken `sAMAccountName` :
 
@@ -208,7 +208,7 @@ Deze fout treedt af en toe op wanneer gebruikers toegang proberen te krijgen tot
 
 * Voor Azure Data Lake Storage Gen1 moet u de cache van de browser opschonen en opnieuw aanmelden bij Ambari.
 
-* Voor Azure Data Lake Storage Gen2 voert `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` u uit voor de gebruiker waarmee de gebruiker zich probeert aan te melden.
+* Voor Azure Data Lake Storage Gen2 voert `/usr/lib/hdinsight-common/scripts/RegisterKerbTicketAndOAuth.sh <upn>` u uit voor de gebruiker waarmee de gebruiker zich probeert aan te melden.
 
 ---
 

@@ -9,16 +9,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921993"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506325"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Een Azure Active Directory Domain Services resource-forest en een uitgaand forest-vertrouwens relatie met een on-premises domein maken met behulp van Azure PowerShell
 
-In omgevingen waarin u geen wachtwoordhashes kunt synchroniseren, of waarin gebruikers werken die zich alleen aanmelden via een smartcard (zodat ze hun wachtwoord niet kennen), kunt u een resourceforest gebruiken in Azure AD DS (Azure Active Directory Domain Services). Een resourceforest maakt gebruik van een uitgaande vertrouwensrelatie in één richting van Azure AD DS naar één of meer on-premises AD DS-omgevingen. Met deze vertrouwensrelatie kunnen gebruikers, toepassingen en computers worden geverifieerd in een on-premises domein vanuit het met Azure AD DS beheerde domein. In een resource-forest worden on-premises wacht woord-hashes nooit gesynchroniseerd.
+In omgevingen waarin u geen wachtwoordhashes kunt synchroniseren, of waarin gebruikers werken die zich alleen aanmelden via een smartcard (zodat ze hun wachtwoord niet kennen), kunt u een resourceforest gebruiken in Azure AD DS (Azure Active Directory Domain Services). Een resourceforest maakt gebruik van een uitgaande vertrouwensrelatie in één richting van Azure AD DS naar één of meer on-premises AD DS-omgevingen. Met deze vertrouwensrelatie kunnen gebruikers, toepassingen en computers worden geverifieerd in een on-premises domein vanuit het met Azure AD DS beheerde domein. Bij gebruik van een resourceforest worden hashes van on-premises wachtwoorden nooit gesynchroniseerd.
 
 ![Diagram van forestvertrouwensrelatie van Azure AD DS naar on-premises AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -56,7 +56,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-In dit artikel maakt en configureert u de uitgaande forestvertrouwensrelatie vanuit een beheerd domein met behulp van de Azure Portal. Meld u eerst aan bij [Azure Portal](https://portal.azure.com) om aan de slag te gaan.
+In dit artikel maakt en configureert u de uitgaande forestvertrouwensrelatie vanuit een beheerd domein met behulp van de Azure Portal. Meld u eerst aan bij de [Azure-portal](https://portal.azure.com) om aan de slag te gaan.
 
 ## <a name="deployment-process"></a>Implementatieproces
 
@@ -88,7 +88,7 @@ Gebruik het script om een resource forest voor een beheerd domein te maken `New-
 
 1. Maak eerst een resource groep met behulp van de cmdlet [New-AzResourceGroup][New-AzResourceGroup] . De resourcegroep in het volgende voorbeeld heet *myResourceGroup* en is gemaakt in de regio *westus*. Gebruik uw eigen naam en gewenste regio:
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzResourceGroup `
       -Name "myResourceGroup" `
       -Location "WestUS"
@@ -123,7 +123,7 @@ Gebruik het script om een resource forest voor een beheerd domein te maken `New-
 
 1. Maak nu een forest met een beheerd domein resource met behulp van het `New-AzureAaaddsForest` script. In het volgende voor beeld wordt een forest gemaakt met de naam *addscontoso.com* en wordt een workload-subnet gemaakt. Geef uw eigen parameter namen en IP-adresbereiken of bestaande virtuele netwerken op.
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzureAaddsForest `
         -azureSubscriptionId <subscriptionId> `
         -aaddsResourceGroupName "myResourceGroup" `
@@ -163,7 +163,7 @@ Voordat u begint, moet u ervoor zorgen dat u inzicht krijgt in de [overwegingen 
     * Controleer of de on-premises domein controller bijvoorbeeld verbinding kan maken met de beheerde VM met `ping` of extern bureau blad.
     * Controleer of de virtuele machine van het beheer verbinding kan maken met uw on-premises domein controllers, met een hulp programma zoals `ping` .
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com* , en wacht totdat de status is gerapporteerd als **actief**.
+1. Zoek en selecteer **Azure AD Domain Services** in de Azure-portal. Kies uw beheerde domein, bijvoorbeeld *aaddscontoso.com* , en wacht totdat de status is gerapporteerd als **actief**.
 
     Bij uitvoering werkt u de [DNS-instellingen voor het virtuele Azure-netwerk](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network) bij en schakelt u vervolgens [gebruikers accounts voor Azure AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) in om de configuraties voor het forest met het beheerde domein resource te volt ooien.
 
@@ -204,7 +204,7 @@ Geef het script nu de volgende informatie:
 
 In het volgende voor beeld wordt een vertrouwens relatie met de naam *myAzureADDSTrust* naar *onprem.contoso.com*gemaakt. Gebruik uw eigen parameter namen en wacht woorden:.
 
-```azure-powershell
+```azurepowershell
 Add-AaddsResourceForestTrust `
     -ManagedDomainFqdn "aaddscontoso.com" `
     -TrustFqdn "onprem.contoso.com" `

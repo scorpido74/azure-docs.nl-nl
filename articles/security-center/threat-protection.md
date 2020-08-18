@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041983"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272498"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
@@ -43,7 +43,7 @@ Of een waarschuwing wordt gegenereerd door Security Center, of door Security Cen
 
 
 
-## <a name="threat-protection-for-windows-machines"></a>Bedreigings beveiliging voor Windows-computers<a name="windows-machines"></a>
+## <a name="threat-protection-for-windows-machines"></a>Bedreigings beveiliging voor Windows-computers <a name="windows-machines"></a>
 
 Azure Security Center integreert met Azure-Services om uw op Windows gebaseerde computers te controleren en te beveiligen. Security Center toont de waarschuwingen en suggesties voor herstel van al deze services in een gemakkelijk te gebruiken indeling.
 
@@ -74,7 +74,7 @@ Azure Security Center integreert met Azure-Services om uw op Windows gebaseerde 
 
 
 
-## <a name="threat-protection-for-linux-machines"></a>Bedreigings beveiliging voor Linux-machines<a name="linux-machines"></a>
+## <a name="threat-protection-for-linux-machines"></a>Bedreigings beveiliging voor Linux-machines <a name="linux-machines"></a>
 
 Security Center controleert controle records van Linux-machines met behulp van **controle**, een van de meest voorkomende Linux-controle raamwerken. de levens duur van de mainline-kernel wordt gecontroleerd. 
 
@@ -91,7 +91,7 @@ Security Center controleert controle records van Linux-machines met behulp van *
 
 
 
-## <a name="threat-protection-for-azure-app-service"></a>Bedreigings beveiliging voor Azure App Service<a name="app-services"></a>
+## <a name="threat-protection-for-azure-app-service"></a>Bedreigings beveiliging voor Azure App Service <a name="app-services"></a>
 
 > [!NOTE]
 > Deze service is momenteel niet beschikbaar in azure Government en soevereine Cloud regio's.
@@ -110,7 +110,7 @@ Zie [app service-plannen](https://azure.microsoft.com/pricing/details/app-servic
 
 
 
-## <a name="threat-protection-for-containers"></a>Bedreigings beveiliging voor containers<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Bedreigings beveiliging voor containers <a name="azure-containers"></a>
 
 ### <a name="availability"></a>Beschikbaarheid
 
@@ -131,7 +131,7 @@ Zie [app service-plannen](https://azure.microsoft.com/pricing/details/app-servic
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Bedreigings beveiliging voor SQL Database en SQL Data Warehouse<a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Bedreigings beveiliging voor SQL Database en SQL Data Warehouse <a name="data-sql"></a>
 
 Advanced Threat Protection voor Azure SQL Database detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot of misbruik te maken van data bases.
 
@@ -147,7 +147,7 @@ Zie voor meer informatie:
 
 
 
-## <a name="threat-protection-for-azure-storage"></a>Bedreigings beveiliging voor Azure Storage<a name="azure-storage"></a>
+## <a name="threat-protection-for-azure-storage"></a>Bedreigings beveiliging voor Azure Storage <a name="azure-storage"></a>
 
 ### <a name="availability"></a>Beschikbaarheid
 
@@ -204,7 +204,7 @@ Zie voor meer informatie:
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>Bedreigings beveiliging voor Azure Cosmos DB<a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db"></a>Bedreigings beveiliging voor Azure Cosmos DB <a name="cosmos-db"></a>
 
 De Azure Cosmos DB waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om Azure Cosmos DB accounts te openen of misbruik te maken.
 
@@ -216,7 +216,7 @@ Zie voor meer informatie:
 
 
 
-## <a name="threat-protection-for-azure-network-layer"></a>Bedreigings beveiliging voor Azure Network Layer<a name="network-layer"></a>
+## <a name="threat-protection-for-azure-network-layer"></a>Bedreigings beveiliging voor Azure Network Layer <a name="network-layer"></a>
 
 Security Center Network-laag analyse zijn gebaseerd op voorbeeld [gegevens van IPFIX](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), die pakket headers zijn die worden verzameld door Azure core-routers. Op basis van deze gegevensfeed gebruikt Security Center machine learning modellen om kwaad aardige verkeers activiteiten te identificeren en te markeren. Security Center gebruikt de micro soft Threat Intelligence-data base ook om IP-adressen te verrijken.
 
@@ -230,7 +230,6 @@ Sommige netwerk configuraties kunnen Security Center beperken van het genereren 
 
 Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-azurenetlayer)voor een overzicht van de waarschuwingen van de Azure-netwerklaag.
 
-Zie voor meer informatie over hoe Security Center netwerk signalen kunt gebruiken voor het Toep assen van bedreigings beveiliging de [heuristische DNS-detecties in Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 
 
 
@@ -281,9 +280,9 @@ Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-azurekv)voor
 
 
 
-## <a name="threat-protection-for-other-microsoft-services"></a>Bedreigings beveiliging voor andere micro soft-Services<a name="alerts-other"></a>
+## <a name="threat-protection-for-other-microsoft-services"></a>Bedreigings beveiliging voor andere micro soft-Services <a name="alerts-other"></a>
 
-### <a name="threat-protection-for-azure-waf"></a>Bedreigings beveiliging voor Azure WAF<a name="azure-waf"></a>
+### <a name="threat-protection-for-azure-waf"></a>Bedreigings beveiliging voor Azure WAF <a name="azure-waf"></a>
 
 Azure Application Gateway biedt de functie Web Application Firewall (WAF) voor de gecentraliseerde beveiliging van uw webtoepassingen tegen bekende aanvallen en beveiligingsproblemen.
 
@@ -292,7 +291,7 @@ Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken 
 Als u een licentie voor Azure WAF hebt, worden uw WAF-waarschuwingen gestreamd naar Security Center zonder dat er aanvullende configuratie nodig is. Zie voor meer informatie over de waarschuwingen die door WAF worden gegenereerd, [CRS-regel groepen en-regels voor Web Application firewall](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
 
 
-### <a name="threat-protection-for-azure-ddos-protection"></a>Bedreigings beveiliging voor Azure DDoS Protection<a name="azure-ddos"></a>
+### <a name="threat-protection-for-azure-ddos-protection"></a>Bedreigings beveiliging voor Azure DDoS Protection <a name="azure-ddos"></a>
 
 DDoS-aanvallen (Distributed Denial of service) zijn bekend om eenvoudig te worden uitgevoerd. Ze zijn een geweldig beveiligings probleem, met name als u uw toepassingen naar de Cloud verplaatst. 
 
