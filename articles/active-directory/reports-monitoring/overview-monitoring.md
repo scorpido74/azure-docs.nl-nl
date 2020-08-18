@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 84353dd3c8b803f27073d113d6946152f059d9be
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68988213"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873412"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Wat is bewaking van Azure Active Directory?
 
@@ -33,6 +33,8 @@ Op dit moment kunt u de logboeken routeren naar:
 - Een Azure Storage-account.
 - Een Azure Event Hub, zodat u deze kunt integreren met uw Splunk en Sumologic-exemplaren.
 - Azure Log Analytics-werkruimte, waarin u de gegevens kunt analyseren en een dashboard en waarschuwingen voor specifieke gebeurtenissen kunt maken
+
+**Vereiste rol**: Hoofdbeheerder
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 

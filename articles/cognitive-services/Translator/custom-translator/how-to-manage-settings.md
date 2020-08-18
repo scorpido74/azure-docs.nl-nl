@@ -6,19 +6,19 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: af46b48d47a53d5a8a19db7c50a9356824607a5d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962948"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510472"
 ---
 # <a name="how-to-manage-settings"></a>Instellingen beheren
 
-U kunt op de pagina aangepaste Vertaal instellingen een nieuwe werk ruimte maken, uw werk ruimte delen en uw micro soft-Vertaal abonnements sleutel toevoegen of wijzigen.
+U kunt op de pagina aangepaste Translator-instellingen uw werk ruimte delen, uw abonnements sleutel voor Translator wijzigen en de werk ruimte verwijderen.
 
 Toegang krijgen tot de pagina instellingen:
 
@@ -33,23 +33,35 @@ U moet beschikken over een Translator-abonnements sleutel die is gekoppeld aan u
 
 Als u geen abonnement hebt, volgt u de onderstaande stappen:
 
-1. Abonneer u op het conversie programma. In dit artikel wordt beschreven hoe u zich kunt abonneren op het conversie programma.
+1. Abonneer u om een Translator-resource te maken. Volg [hoe u zich kunt registreren voor Translator](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) om u te abonneren en een Translator-sleutel te verkrijgen.
 2. Let op de sleutel voor uw Vertaal abonnement. Een van de Key1 of Key2 is acceptabel.
 3. Ga terug naar de portal voor aangepaste vertalers.
 
-### <a name="add-existing-key"></a>Bestaande sleutel toevoegen
+## <a name="create-a-new-workspace"></a>Een nieuwe werkruimte maken
 
-1.    Ga naar de pagina instellingen voor uw werk ruimte.
-2.    Klik op sleutel toevoegen
+1. Klik op de knop + werk ruimte maken in de zijbalk aangepaste vertaler.
 
-   ![Abonnements sleutel toevoegen](media/how-to/how-to-add-subscription-key.png)
+    ![Nieuwe werk ruimte maken](media/how-to/create-new-workspace.png)
 
-3. Voer in het dialoog venster de sleutel voor uw Vertaal abonnement in en klik vervolgens op de knop toevoegen.
+2. Voer in het dialoog venster de naam van de nieuwe werk ruimte in.
+3. Klik op volgende.
+4. Kies het type abonnement.
+5. Selecteer de regio abonnement. De regio moet overeenkomen met de geselecteerde regio wanneer de Translator-resource sleutel is gemaakt.
+6. Voer de sleutel voor uw Vertaal abonnement in en klik vervolgens op de knop Opslaan.
+
+    ![Dialoog venster nieuwe werk ruimte maken](media/how-to/create-new-workspace-dialog.png)
+
+
+### <a name="modify-existing-key"></a>Bestaande sleutel wijzigen
+
+1. Ga naar de pagina instellingen voor uw werk ruimte.
+2. Klik op sleutel wijzigen
+
+    ![Abonnements sleutel toevoegen](media/how-to/how-to-add-subscription-key.png)
+
+3. Voer in het dialoog venster de sleutel voor uw Vertaal abonnement in en klik vervolgens op de knop Opslaan.
 
     ![Abonnements sleutel toevoegen](media/how-to/how-to-add-subscription-key-dialog.png)
-4.    Nadat u een sleutel hebt toegevoegd, kunt u de sleutel op elk gewenst moment wijzigen of verwijderen.
-
-   ![Abonnements sleutel na toevoegen](media/how-to/subscription-key-after-add.png)
 
 ## <a name="manage-your-workspace"></a>Uw werkruimte beheren
 
@@ -57,50 +69,50 @@ Een werk ruimte is een werk ruimte voor het opstellen en bouwen van uw aangepast
 
 Als een ander deel van uw werk moet worden gedeeld met andere personen, kan het handig zijn om meerdere werk ruimten te maken.
 
-## <a name="create-a-new-workspace"></a>Een nieuwe werkruimte maken
-
-1.    Navigeer naar de pagina instellingen van de werk ruimte.
-2.    Klik op de knop nieuwe werk ruimte in de sectie ' nieuwe werk ruimte maken '.
-
-   ![Nieuwe werk ruimte maken](media/how-to/create-new-workspace.png)
-
-4.    Voer in het dialoog venster de naam van de nieuwe werk ruimte in.
-5.    Klik op maken.
-
-   ![Dialoog venster nieuwe werk ruimte maken](media/how-to/create-new-workspace-dialog.png)
-
 ## <a name="share-your-workspace"></a>Uw werk ruimte delen
 
 In aangepaste vertaler kunt u uw werk ruimte delen met anderen, als een ander deel van uw werk moet worden gedeeld met andere personen.
 
-1.    Navigeer naar de pagina instellingen van de werk ruimte.
-2.    Klik op de knop delen in de sectie instellingen voor delen.
+1. Navigeer naar de pagina instellingen van de werk ruimte.
+2. Klik op de knop personen toevoegen in de sectie instellingen voor delen.
 
-   ![Werk ruimte delen](media/how-to/share-workspace.png)
+    ![Werk ruimte delen](media/how-to/share-workspace.png)
 
-3.    Voer in het dialoog venster een door komma's gescheiden lijst met e-mail adressen in die met deze werk ruimte moeten worden gedeeld. Zorg ervoor dat u deelt met het e-mail adres dat wordt gebruikt om u aan te melden bij een aangepaste vertaler met. Selecteer vervolgens het juiste niveau van de machtiging voor delen.
+3. Voer in het dialoog venster een door komma's gescheiden lijst met e-mail adressen in die met deze werk ruimte moeten worden gedeeld. Zorg ervoor dat u deelt met het e-mail adres dat wordt gebruikt om u aan te melden bij een aangepaste vertaler met. Selecteer vervolgens het juiste niveau van de machtiging voor delen en klik op de knop Opslaan.
 
-4.    Als uw werk ruimte nog steeds de standaard naam mijn werk ruimte heeft, moet u deze wijzigen voordat u uw werk ruimte deelt.
-5.    Klik op opslaan.
+    ![Dialoog venster voor delen van werk ruimte](media/how-to/share-workspace-dialog.png)
+
+4. Als uw werk ruimte nog steeds de standaard naam mijn werk ruimte heeft, moet u deze wijzigen voordat u uw werk ruimte deelt.
+5. Klik op opslaan.
 
 ## <a name="sharing-permissions"></a>Machtigingen voor delen
 
-1.    **Lezer:** Met een lezer in de werk ruimte kunnen alle gegevens in de werk ruimte worden weer gegeven.
+1. **Lezer:** Met een lezer in de werk ruimte kunnen alle gegevens in de werk ruimte worden weer gegeven.
 
-2.    **Redacteur:** Met een editor in de werk ruimte kunnen documenten worden toegevoegd, modellen worden getraind en documenten en projecten worden verwijderd. Ze kunnen een abonnements sleutel toevoegen, maar kunnen niet wijzigen met wie de werk ruimte wordt gedeeld, de werk ruimte verwijderen of de naam van de werk ruimte wijzigen.
+2. **Redacteur:** Met een editor in de werk ruimte kunnen documenten worden toegevoegd, modellen worden getraind en documenten en projecten worden verwijderd. Ze kunnen een abonnements sleutel toevoegen, maar kunnen niet wijzigen met wie de werk ruimte wordt gedeeld, de werk ruimte verwijderen of de naam van de werk ruimte wijzigen.
 
-3.    **Eigenaar:** Een eigenaar heeft volledige machtigingen voor de werk ruimte.
+3. **Eigenaar:** Een eigenaar heeft volledige machtigingen voor de werk ruimte.
 
 ## <a name="change-sharing-permission"></a>Machtiging voor delen wijzigen
 
 Wanneer een werk ruimte wordt gedeeld, worden in de sectie instellingen delen alle e-mail adressen weer gegeven waarop deze werk ruimte is gedeeld. U kunt de bestaande machtiging voor delen voor elk e-mail adres wijzigen als u de eigenaar toegang tot de werk ruimte hebt.
 
-1.    In de sectie instellingen voor delen voor elk e-mail bericht wordt het huidige machtigings niveau weer gegeven.
+1. In de sectie instellingen voor delen voor elk e-mail bericht wordt het huidige machtigings niveau weer gegeven.
 
-2.    Klik op het vervolg keuzemenu en selecteer het nieuwe machtigings niveau dat u wilt toewijzen aan het e-mail adres.
+2. Klik op het vervolg keuzemenu en selecteer het nieuwe machtigings niveau dat u wilt toewijzen aan het e-mail adres.
 
-   ![Instellingen voor delen van machtigingen](media/how-to/sharing-permission-settings.png)
+    ![Instellingen voor delen van machtigingen](media/how-to/sharing-permission-settings.png)
+
+## <a name="pin-your-workspace"></a>Uw werk ruimte vastmaken
+
+Uw eerste gemaakte werk ruimte is standaard vastgemaakt. Telkens wanneer u zich aanmeldt, wordt uw vastgemaakte werk ruimte weer gegeven op site belasting. Als u veel werk ruimten hebt gemaakt en u er een van wilt maken wanneer u zich aanmeldt, moet u deze vastmaken.
+
+1. Klik in de zijbalk op de naam van de werk ruimte die u wilt vastmaken.
+2. Ga naar de pagina instellingen voor uw werk ruimte.
+3. Klik op het speld pictogram.
+
+    ![Werk ruimte vastmaken](media/how-to/how-to-pin-workspace.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie [over het migreren van uw werk ruimte en project](how-to-migrate.md) van [micro soft Translator hub](https://hub.microsofttranslator.com)
+- Meer informatie [over het maken van uw werk ruimte en projecten](workspace-and-project.md)

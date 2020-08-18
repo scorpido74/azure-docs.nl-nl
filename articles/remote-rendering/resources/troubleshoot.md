@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563274"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509277"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -105,7 +105,7 @@ Als deze twee stappen niet helpen, is het nodig om erachter te komen of video fr
 
 **Het model overschrijdt de limieten van de geselecteerde virtuele machine, met name het maximum aantal veelhoeken:**
 
-Zie specifieke [limieten](../reference/limits.md#overall-number-of-polygons)voor de VM-grootte.
+Zie specifieke [limieten voor Server grootte](../reference/limits.md#overall-number-of-polygons).
 
 **Het model bevindt zich niet in de camera frustum:**
 
@@ -148,7 +148,7 @@ Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stelle
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Dambord patroon wordt weer gegeven na laden van model
 
-Als de gerenderde afbeelding er als volgt uitziet: Dambord, komt ![ ](../reference/media/checkerboard.png) de renderer overeen met de [grenzen van de polygoon voor de standaard VM-grootte](../reference/vm-sizes.md). U kunt dit oplossen door over te scha kelen naar de grootte van de **Premium-VM** of het aantal zicht bare veelhoeken te verlagen.
+Als de gerenderde afbeelding er als volgt uitziet: Dambord, worden ![ ](../reference/media/checkerboard.png) de [veelhoek limieten voor de standaard configuratie grootte](../reference/vm-sizes.md)in de renderer weer gegeven. U kunt dit oplossen door over te scha kelen naar de grootte van **Premium** -configuraties of het aantal zicht bare veelhoeken te verlagen.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>De gerenderde afbeelding in unit is ondersteboven
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3bb4d70b4c4f3f9edc525ffe5973bca633ddd1be
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: d32ad29bf652cad62a5950859ebff0366e09fc6f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800412"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510025"
 ---
 # <a name="understand-event-data"></a>Informatie over gebeurtenis gegevens
 
@@ -105,9 +105,9 @@ Dit zijn de velden in de hoofd tekst van een melding voor levens cyclus.
 
 | Naam | Waarde |
 | --- | --- |
-| `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis. |
+| `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id` is uniek voor elke afzonderlijke gebeurtenis. |
 | `source` | Naam van het IoT hub-of Azure Digital Apparaatdubbels-exemplaar, zoals *myhub.Azure-devices.net* of *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | 1.0 |
+| `specversion` | *1.0*<br>Het bericht voldoet aan deze versie van de CloudEvents-specificatie. |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID van de digitale dubbele |
@@ -191,12 +191,12 @@ Dit zijn de velden in de hoofd tekst van een melding voor een wijziging van de r
 
 | Naam    | Waarde |
 | --- | --- |
-| `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis |
+| `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id` is uniek voor elke afzonderlijke gebeurtenis |
 | `source` | De naam van het Azure Digital Apparaatdubbels-exemplaar, zoals *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | 1.0 |
+| `specversion` | *1.0*<br>Het bericht voldoet aan deze versie van de CloudEvents-specificatie. |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
-| `subject` | ID van de relatie, zoals`<twinID>/relationships/<relationshipID>` |
+| `subject` | ID van de relatie, zoals `<twinID>/relationships/<relationshipID>` |
 | `time` | Tijds tempel voor wanneer de bewerking is opgetreden op de relatie |
 | `traceparent` | Een W3C-tracerings context voor de gebeurtenis |
 
@@ -247,9 +247,9 @@ Dit zijn de velden in de hoofd tekst van een digitale, dubbele wijzigings meldin
 
 | Naam    | Waarde |
 | --- | --- |
-| `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis |
+| `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id` is uniek voor elke afzonderlijke gebeurtenis |
 | `source` | Naam van het IoT hub-of Azure Digital Apparaatdubbels-exemplaar, zoals *myhub.Azure-devices.net* of *mydigitaltwins.westus2.azuredigitaltwins.net*
-| `specversion` | 1.0 |
+| `specversion` | *1.0*<br>Het bericht voldoet aan deze versie van de CloudEvents-specificatie. |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID van de digitale dubbele |

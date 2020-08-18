@@ -1,6 +1,6 @@
 ---
 title: Zelfstudie voor het kopiëren van gegevens naar Azure Data Box Heavy via NFS | Microsoft Docs
-description: Lees hoe u gegevens naar Azure Data Box Heavy kopieert via NFS
+description: In deze zelfstudie leert u hoe u verbinding kunt maken met en gegevens kunt kopiëren van uw hostcomputer naar Azure Data Box Heavy door gebruik te maken van NFS met de lokale web UI.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 047c4649da298e1dcb74ec1910a49353d8be534a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8199039ea803d5919e168edccaaa03c18985725
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206652"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921024"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box Heavy via NFS
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 32809c33e1c365d8d333bb89a5c2f773b311c2ff
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438905"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511079"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -38,11 +38,13 @@ Een toepassings gateway is een speciale implementatie in uw virtuele netwerk. In
 
 Application Gateway maakt gebruik van een privé-IP-adres per exemplaar, plus een ander privé-IP-adres als er een privé-front-end-IP is geconfigureerd.
 
-Azure reserveert ook vijf IP-adressen in elk subnet voor intern gebruik: de eerste vier en het laatste IP-adres. Denk bijvoorbeeld aan 15 Application Gateway-instanties zonder persoonlijk front-end IP-adres. U hebt ten minste 20 IP-adressen voor dit subnet nodig: vijf voor intern gebruik en 15 voor de Application Gateway-exemplaren. U hebt dus een/27-subnet groter of groter.
+Azure reserveert ook vijf IP-adressen in elk subnet voor intern gebruik: de eerste vier en het laatste IP-adres. Denk bijvoorbeeld aan 15 Application Gateway-instanties zonder persoonlijk front-end IP-adres. U hebt ten minste 20 IP-adressen voor dit subnet nodig: vijf voor intern gebruik en 15 voor de Application Gateway-exemplaren.
 
-Overweeg een subnet met 27 Application Gateway-instanties en een IP-adres voor een privé-front-end-IP. In dit geval hebt u 33 IP-adressen nodig: 27 voor de Application Gateway-instanties, één voor de privé-front-end en vijf voor intern gebruik. U hebt dus een/26-subnet groter of groter.
+Overweeg een subnet met 27 Application Gateway-instanties en een IP-adres voor een privé-front-end-IP. In dit geval hebt u 33 IP-adressen nodig: 27 voor de Application Gateway-instanties, één voor de privé-front-end en vijf voor intern gebruik.
 
-U wordt aangeraden een subnet-grootte van Mini maal/28 te gebruiken. Met deze grootte beschikt u over elf bruikbare IP-adressen. Als het laden van de toepassing meer dan tien Application Gateway exemplaren vereist, moet u rekening houden met de grootte van een/27-of/26-subnet.
+Application Gateway-SKU (Standard of WAF) kan Maxi maal 32 instanties ondersteunen (32 instantie-IP-adressen + 1 privé front-end IP + 5 Azure-gereserveerde). de minimale subnet grootte/26 wordt daarom aanbevolen
+
+Application Gateway (Standard_v2 of WAF_v2 SKU) kan Maxi maal 125 instanties ondersteunen (125 instantie-IP-adressen + 1 privé front-end IP + 5 Azure-gereserveerde). de minimale grootte van het subnet van/24 wordt aanbevolen
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Netwerk beveiligings groepen op het Application Gateway subnet
 

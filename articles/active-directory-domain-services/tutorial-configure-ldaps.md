@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404171"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054337"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Secure LDAP configureren voor een door Azure Active Directory Domain Services beheerd domein
 
@@ -265,7 +265,7 @@ Als u verbinding en binding wilt maken met uw beheerde domein, en LDAP wilt door
 Maak vervolgens een binding met het beheerde domein. Gebruikers (en serviceaccounts) kunnen geen eenvoudige bindingen voor LDAP uitvoeren als NTLM-wachtwoordhashsynchronisatie is uitgeschakeld voor uw beheerde domein. Zie [Uw beheerde domein beveiligen][secure-domain] voor meer informatie over het uitschakelen van NTLM-wachtwoordhashsynchronisatie.
 
 1. Selecteer de menuoptie **Verbinding** en kies vervolgens **Binden...** .
-1. Geef de referenties op van een gebruikersaccount dat tot de groep *AAD DC Administrators* behoort, bijvoorbeeld *contosoadmin*. Voer het wachtwoord van het gebruikersaccount in en voer vervolgens uw domein in, bijvoorbeeld *aaddscontoso.com*.
+1. Geef de aanmeldingsgegevens van een gebruikersaccount op dat bij het beheerde domein hoort. Voer het wachtwoord van het gebruikersaccount in en voer vervolgens uw domein in, bijvoorbeeld *aaddscontoso.com*.
 1. Kies voor **Bindingstype** de optie *Binden met referenties*.
 1. Selecteer **OK** om het account aan het beheerde domein te binden.
 

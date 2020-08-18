@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: eecfebc90c28b650af0cef4ee0e4ddc227af0e8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac79e1eb5c4f7448dc17804cd8aac3cba582497e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711490"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509940"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Voor voegsel van een openbaar IPv6-adres reserveren
 Met IPv6 voor Azure Virtual Network (VNet) kunt u toepassingen in azure hosten met IPv6-en IPv4-connectiviteit, zowel binnen een virtueel netwerk als vanaf het internet. Naast het reserveren van afzonderlijke IPv6-adressen, kunt u aaneengesloten bereiken van Azure IPv6-adressen (IP-voor voegsel) voor uw gebruik behouden. In deze artikelen wordt beschreven hoe u open bare IPv6-IP-adressen en adresbereiken maakt met behulp van Azure PowerShell en CLI.
@@ -29,7 +29,7 @@ Met IPv6 voor Azure Virtual Network (VNet) kunt u toepassingen in azure hosten m
 
 U kunt een enkel gereserveerd (statisch) IPv6-openbaar IP-adres maken met behulp van Azure PowerShell met [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) als volgt:
 
-```azurepowershell  
+```azurepowershell
  $myOwnIPv6Address = New-AzPublicIpAddress `
  -name PIPv6_WestUS `
  -ResourceGroup MyRG `
@@ -42,7 +42,7 @@ U kunt een enkel gereserveerd (statisch) IPv6-openbaar IP-adres maken met behulp
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
  U kunt een enkel gereserveerd (statisch) IPv6 openbaar IP-adres maken Azure CLI met [AZ Network Public-IP Create](/cli/azure/network/public-ip) als volgt:
-  
+
 ```azurecli
  az network public-ip create \
  --name dsPublicIP_v6 \
@@ -55,12 +55,12 @@ U kunt een enkel gereserveerd (statisch) IPv6-openbaar IP-adres maken met behulp
 
 ## <a name="create-a-reserved-ipv6-prefix-range"></a>Een gereserveerde IPv6-voor voegsel maken (bereik)
 
-Als u een IPv6-voor voegsel wilt reserveren, voegt u de IP-adres groep van IPv6 toe aan dezelfde opdracht die wordt gebruikt voor het maken van IPv4-voor voegsels. Met de volgende opdrachten maakt u een voor voegsel van grootte/125 (8 IPv6-adressen).  
+Als u een IPv6-voor voegsel wilt reserveren, voegt u de IP-adres groep van IPv6 toe aan dezelfde opdracht die wordt gebruikt voor het maken van IPv4-voor voegsels. Met de volgende opdrachten maakt u een voor voegsel van grootte/125 (8 IPv6-adressen).
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
 
 U kunt als volgt een openbaar IPv6-adres maken met behulp van de Azure CLI met [AZ Network Public-IP Create](/powershell/module/az.network/new-azpublicipprefix) :
-```azurepowershell  
+```azurepowershell
  $myOwnIPv6Prefix = New-AzPublicIpPrefix `
  -name IPv6PrefixWestUS `
  -ResourceGroupName MyRG `
@@ -74,7 +74,7 @@ U kunt als volgt een openbaar IPv6-adres maken met behulp van de Azure CLI met [
 
 U kunt als volgt een openbaar IPv6-adres maken met behulp van Azure CLI:
 
-```azurecli  
+```azurecli
 az network public-ip prefix create \
 --name IPv6PrefixWestUS \
 --resource-group MyRG \
@@ -89,7 +89,7 @@ az network public-ip prefix create \
 
  U maakt een statisch IPv6-openbaar IP-adres van een gereserveerd voor voegsel door het argument toe te voegen `-PublicIpPrefix` bij het maken van het open bare IP-adres met Azure PowerShell. In het volgende voor beeld wordt ervan uitgegaan dat er een voor voegsel is gemaakt en opgeslagen in een Power shell-variabele met de naam: *$MyOwnIPv 6prefix*.
 
-```azurepowershell:  
+```azurepowershell
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \
  -name PIPv6_fromPrefix `
  -ResourceGroup DsStdLb04 `
@@ -101,10 +101,10 @@ az network public-ip prefix create \
 ```
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
- 
+
 In het volgende voor beeld wordt ervan uitgegaan dat er een voor voegsel is gemaakt en opgeslagen in een CLI-variabele met de naam: *IPv6PrefixWestUS*.
 
-```azurecli 
+```azurecli
 az network public-ip create \
 --name dsPublicIP_v6 \
 --resource-group UpgradeInPlace_CLI_RG1 \

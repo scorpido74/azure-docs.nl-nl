@@ -1,6 +1,6 @@
 ---
 title: Gebruikers-en beheerders machtigingen beheren-Azure Active Directory | Microsoft Docs
-description: Meer informatie over het controleren en beheren van machtigingen voor de toepassing in azure AD. Bijvoorbeeld, als u alle machtigingen wilt intrekken die aan een toepassing zijn verleend.
+description: Meer informatie over het controleren en beheren van machtigingen voor de toepassing in azure AD. U kunt bijvoorbeeld alle machtigingen intrekken die aan een toepassing zijn verleend.
 services: active-directory
 author: mimart
 manager: CelesteDG
@@ -12,22 +12,22 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d878c7b2f78d037e89235f3bb30c02fd11a7ae
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 95e13cedc0cdbaedc8c00b9d855057da7e631c19
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277631"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510875"
 ---
-# <a name="take-action-on-overpriviledged-or-suspicious-application-in-azure-active-directory"></a>Actie ondernemen op overpriviledged of verdachte toepassing in Azure Active Directory
+# <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Actie onderneemt over overbevoegd of verdachte toepassingen in Azure Active Directory
 
-Meer informatie over het controleren en beheren van toepassings machtigingen. Op basis van het scenario biedt dit artikel verschillende acties die u kunt uitvoeren om uw toepassing te beveiligen. Dit geldt voor alle toepassingen die zijn toegevoegd aan uw Azure Active Directory-Tenant (Azure AD) via toestemming van de gebruiker of beheerder.
+Meer informatie over het controleren en beheren van toepassings machtigingen. Dit artikel bevat verschillende acties die u kunt uitvoeren om uw toepassing te beveiligen op basis van het scenario. Deze acties zijn van toepassing op alle toepassingen die zijn toegevoegd aan uw Azure Active Directory-Tenant (Azure AD) via toestemming van de gebruiker of beheerder.
 
 Zie [Azure Active Directory instemming-Framework](../develop/consent-framework.md)voor meer informatie over het inzenden van toepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de onderstaande acties wilt uitvoeren, moet u zich aanmelden als globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
+Als u de volgende acties wilt uitvoeren, moet u zich aanmelden als een globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
 
 Als u de toegang tot toepassingen wilt beperken, moet u de gebruikers toewijzing vereisen en vervolgens gebruikers of groepen toewijzen aan de toepassing.  Zie [methoden voor het toewijzen van gebruikers en groepen](methods-for-assigning-users-and-groups.md)voor meer informatie.
 
@@ -38,71 +38,73 @@ U kunt toegang krijgen tot de Azure AD-Portal om context afhankelijke Power shel
 3. Selecteer de toepassing waarvoor u de toegang wilt beperken.
 4. Selecteer **Machtigingen**. Selecteer in de opdracht balk de optie **Controleer machtigingen**.
 
-![Machtigingen controleren](./media/manage-application-permissions/review-permissions.png)
+![Scherm opname van het venster machtigingen controleren.](./media/manage-application-permissions/review-permissions.png)
 
-## <a name="i-want-to-control-access-to-an-application"></a>Ik wil de toegang tot een toepassing beheren
 
-U kunt het beste de toegang tot deze toepassing beperken door de instelling gebruikers toewijzing in te scha kelen.
+## <a name="control-access-to-an-application"></a>Toegang tot een toepassing beheren
+
+U kunt het beste de toegang tot de toepassing beperken door de instelling **gebruikers toewijzing** in te scha kelen.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
 2. Selecteer **Azure Active Directory**  >  **bedrijfs toepassingen**.
 3. Selecteer de toepassing waarvoor u de toegang wilt beperken.
-4. Selecteer **Eigenschappen** en stel de vereiste optie voor gebruikers vereisten in op Ja.
-5. Selecteer **gebruikers en groepen** en verwijder ongewenste gebruikers die zijn toegewezen aan de toepassing.
-6. Gebruiker (s) of groep (en) toewijzen aan de toepassing.
+4. Selecteer **Eigenschappen**en stel vervolgens de **vereiste gebruiker** in op **Ja**.
+5. Selecteer **gebruikers en groepen**en verwijder de ongewenste gebruikers die zijn toegewezen aan de toepassing.
+6. Gebruikers of groepen toewijzen aan de toepassing.
 
-Optioneel, u kunt alle gebruikers die zijn toegewezen aan de toepassing, verwijderen met behulp van Power shell.
+U kunt eventueel alle gebruikers verwijderen die aan de toepassing zijn toegewezen met behulp van Power shell.
 
-## <a name="i-want-to-revoke-all-permissions-for-an-application"></a>Ik wil alle machtigingen voor een toepassing intrekken
+## <a name="revoke-all-permissions-for-an-application"></a>Alle machtigingen voor een toepassing intrekken
 
-Met behulp van de Power shell worden alle machtigingen ingetrokken die aan deze toepassing zijn verleend.
+Als u het Power shell-script gebruikt, worden alle machtigingen ingetrokken die aan deze toepassing zijn verleend.
 
 > [!NOTE]
-> Als de huidige verleende machtiging wordt ingetrokken, worden gebruikers niet meer voor reconseing voor de toepassingen. Als u wilt voor komen dat gebruikers worden geblokkeerd voor de toepassing, lees dan [configureren hoe eind gebruikers toestemming geven voor toepassingen](configure-user-consent.md).
+> Als u de huidige verleende machtiging intrekt, worden gebruikers niet meer gestemd op de toepassing. Als u wilt voor komen dat gebruikers worden gestemd, lees dan [configureren hoe gebruikers toestemming geven voor toepassingen](configure-user-consent.md).
 
-Optioneel kunt u de toepassing uitschakelen om te voor komen dat gebruikers toegang krijgen tot de app en de toepassing heeft geen toegang tot uw gegevens.
+U kunt de toepassing eventueel uitschakelen om te voor komen dat gebruikers toegang krijgen tot de app en om ervoor te zorgen dat de toepassing geen toegang kan krijgen tot uw gegevens.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
 2. Selecteer **Azure Active Directory**  >  **bedrijfs toepassingen**.
 3. Selecteer de toepassing waarvoor u de toegang wilt beperken.
-4. **Eigenschappen** selecteren en vervolgens ingeschakeld instellen dat gebruikers zich kunnen aanmelden? op Nee.
+4. **Eigenschappen**selecteren en vervolgens ingeschakeld instellen **dat gebruikers zich kunnen aanmelden?** **No**
 
-## <a name="application-is-suspicious-and-i-want-to-investigate"></a>Toepassing is verdacht en ik wil onderzoek doen
+## <a name="investigate-a-suspicious-application"></a>Een verdachte toepassing onderzoeken
 
-U kunt het beste de toegang tot deze toepassing beperken door de instelling gebruikers toewijzing in te scha kelen en de machtigingen te controleren die gebruikers en beheerders hebben verleend aan de toepassing.
+U kunt het beste de toegang tot de toepassing beperken door de instelling **gebruikers toewijzing** in te scha kelen. Controleer vervolgens de machtigingen die gebruikers en beheerders hebben verleend aan de toepassing.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
 3. Selecteer **Azure Active Directory**  >  **bedrijfs toepassingen**.
 5. Selecteer de toepassing waarvoor u de toegang wilt beperken.
-6. Selecteer **Eigenschappen** en stel de vereiste optie voor gebruikers vereisten in op Ja.
-7. Selecteer **machtigingen** en controleer de machtigingen beheerder en gebruiker gemachtigd.
+6. Selecteer **Eigenschappen**en stel vervolgens de **vereiste gebruiker** in op **Ja**.
+7. Selecteer **machtigingen**en controleer de machtigingen beheerder en gebruiker gemachtigd.
 
-Optioneel kunt u het volgende doen:
+U kunt ook met behulp van Power shell het volgende doen:
 
-- Gebruik Power shell om alle gebruikers te verwijderen die zijn toegewezen om het aanmelden bij de toepassing te stoppen.
-- Met behulp van Power shell kunnen vernieuwings tokens voor gebruikers die toegang hebben tot de toepassing, ongeldig worden gemaakt.
-- Alle machtigingen voor deze toepassing intrekken met behulp van Power shell
-- Schakel de toepassing uit om gebruikers toegang te blok keren en stop deze toepassingen toegang tot uw gegevens.
+- Verwijder alle toegewezen gebruikers om zich aan te melden bij de toepassing.
+- Vernieuwings tokens ongeldig maken voor gebruikers die toegang hebben tot de toepassing.
+- Alle machtigingen voor de toepassing intrekken.
+
+U kunt de toepassing ook uitschakelen om de toegang van gebruikers te blok keren en de toegang tot uw gegevens van de toepassing te stoppen.
 
 
-## <a name="application-is-malicious-and-im-compromised"></a>Toepassing is kwaad aardig en er is inbreuk
+## <a name="disable-a-malicious-application"></a>Een schadelijke toepassing uitschakelen 
 
-U kunt de toepassing het beste uitschakelen om te voor komen dat gebruikers toegang krijgen tot de app en de toepassing heeft geen toegang tot uw gegevens. Als u in plaats daarvan de toepassing verwijdert, kunnen eind gebruikers de toepassing opnieuw ingeven en toegang verlenen tot uw gegevens.
+We raden u aan de toepassing uit te scha kelen om de toegang van gebruikers te blok keren en om te voor komen dat de toepassing toegang heeft tot uw gegevens. Als u in plaats daarvan de toepassing verwijdert, kunnen gebruikers de toepassing opnieuw toestemming geven en toegang verlenen tot uw gegevens.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
 2. Selecteer **Azure Active Directory**  >  **bedrijfs toepassingen**.
 3. Selecteer de toepassing waarvoor u de toegang wilt beperken.
-4. Selecteer **Eigenschappen** en kopieer vervolgens de object-id.
+4. Selecteer **Eigenschappen**en kopieer vervolgens de object-id.
 
 ### <a name="powershell-commands"></a>PowerShell-opdrachten
 
 
-Object-ID van Service-Principal ophalen
+De object-ID van de Service-Principal ophalen.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een globale beheerder, een toepassings beheerder of een Cloud toepassings beheerder.
 2. Selecteer **Azure Active Directory**  >  **bedrijfs toepassingen**.
 3. Selecteer de toepassing waarvoor u de toegang wilt beperken.
-4. Selecteer **Eigenschappen** en kopieer vervolgens de object-id.
+4. Selecteer **Eigenschappen**en kopieer vervolgens de object-id.
 
 ```powershell
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
@@ -128,7 +130,7 @@ Verwijder alle gebruikers die zijn toegewezen aan de toepassing.
     }
  ```
 
-Machtigingen die zijn verleend aan de toepassing intrekken
+Machtigingen intrekken die aan de toepassing worden verleend.
 
 ```powershell
     Connect-AzureAD
@@ -152,7 +154,7 @@ Machtigingen die zijn verleend aan de toepassing intrekken
         Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
     }
 ```
-Vernieuwings tokens ongeldig maken
+De vernieuwings tokens ongeldig maken.
 ```powershell
         Connect-AzureAD
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525259"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510892"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor SAP ASE
 
@@ -59,7 +59,7 @@ De pagina grootte is doorgaans 2048 KB. Zie het artikel [enorme pagina's op Linu
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>Aanbevelingen voor de VM-en schijf structuur voor SAP ASE-implementaties
 
-SAP-ASE voor SAP NetWeaver-toepassingen worden ondersteund in een VM-type dat wordt vermeld in de [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533) typische VM-typen die worden gebruikt voor de middel grote, SAP ASE-database servers in de Data Base zijn  Grote multi-terabyte-data bases kunnen gebruikmaken van VM-typen uit de M-serie. De SAP ASE-transactie logboek schrijf prestaties kunnen worden verbeterd door de Write Accelerator uit de M-serie in te scha kelen. Write Accelerator moet zorgvuldig worden getest met SAP ASE, omdat SAP ASE logboek schrijf bewerkingen uitvoert.  Bekijk de [SAP-ondersteunings opmerking #2816580](../../windows/how-to-enable-write-accelerator.md) en overweeg een prestatie test uit te voeren.  
+SAP-ASE voor SAP NetWeaver-toepassingen worden ondersteund in een VM-type dat wordt vermeld in de [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533) typische VM-typen die worden gebruikt voor de middel grote, SAP ASE-database servers in de Data Base zijn  Grote multi-terabyte-data bases kunnen gebruikmaken van VM-typen uit de M-serie. De SAP ASE-transactie logboek schrijf prestaties kunnen worden verbeterd door de Write Accelerator uit de M-serie in te scha kelen. Write Accelerator moet zorgvuldig worden getest met SAP ASE, omdat SAP ASE logboek schrijf bewerkingen uitvoert.  Bekijk de [SAP-ondersteunings opmerking #2816580](../../how-to-enable-write-accelerator.md) en overweeg een prestatie test uit te voeren.  
 Write Accelerator is alleen bedoeld voor de transactie logboek schijf. De cache op schijf niveau moet worden ingesteld op geen. Het is niet versteld als Azure Write Accelerator vergelijk bare verbeteringen niet met andere DBMS weergeeft. Op basis van de manier waarop SAP ASE naar het transactie logboek schrijft, kan het zijn dat er weinig voor geen versnelling door Azure Write Accelerator is.
 Afzonderlijke schijven worden aanbevolen voor gegevens apparaten en logboek apparaten.  De systeem databases sybsecurity en `saptools` vereisen geen toegewezen schijven en kunnen worden geplaatst op de schijven met de SAP-database gegevens en-logboek apparaten 
 
@@ -68,7 +68,7 @@ Afzonderlijke schijven worden aanbevolen voor gegevens apparaten en logboek appa
 ### <a name="file-systems-stripe-size--io-balancing"></a>Bestands systemen, Stripe-grootte & IO-verdeling 
 SAP ASE schrijft gegevens opeenvolgend naar schijf opslag apparaten, tenzij anders geconfigureerd. Dit betekent dat een lege SAP ASE-data base met vier apparaten gegevens alleen naar het eerste apparaat schrijft.  De andere schijf apparaten worden alleen naar geschreven wanneer het eerste apparaat vol is.  De hoeveelheid Lees-en schrijf bewerkingen voor elk SAP ASE-apparaat is waarschijnlijk niet hetzelfde. Om schijf-IO te verdelen over alle beschik bare Azure-schijven, moeten Windows-opslag ruimten of Linux LVM2 worden gebruikt. In Linux is het raadzaam om XFS-bestands systeem te gebruiken voor het format teren van de schijven. De grootte van de LVM-Stripe moet worden getest met een prestatie test. 128 KB-Stripe-grootte is een goed uitgangs punt. In Windows moet de grootte van de NTFS-toewijzings eenheid (AUS) worden getest. 64 KB kan worden gebruikt als een begin waarde. 
 
-U kunt het beste een automatische database uitbreiding configureren, zoals wordt beschreven in het artikel een [Automatische database ruimte uitbreiding configureren in SAP Adaptive Server Enter prise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) en [SAP-ondersteunings Opmerking #1815695](https://launchpad.support.sap.com/#/notes/1815695). 
+U kunt het beste een automatische database uitbreiding configureren, zoals wordt beschreven in het artikel een [Automatische database ruimte uitbreiding configureren in SAP Adaptive Server Enter prise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)  en [SAP-ondersteunings Opmerking #1815695](https://launchpad.support.sap.com/#/notes/1815695). 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Voor beeld van SAP-ASE op virtuele machines van Azure, schijf-en bestandssysteem configuraties 
 In de onderstaande sjablonen ziet u voor beelden van configuraties voor Linux en Windows. Voordat u de configuratie van de virtuele machine en schijf bevestigt, moet u ervoor zorgen dat de netwerk-en opslag bandbreedte quota van de afzonderlijke virtuele machine voldoende zijn om te voldoen aan de zakelijke vereisten. Houd er ook rekening mee dat verschillende Azure VM-typen verschillende maximum aantallen schijven hebben die kunnen worden gekoppeld aan de virtuele machine. Een E4s_v3 VM heeft bijvoorbeeld een limiet van 48 MB/sec. opslag-i/o-door voer. Als de door Voer van de back-upactiviteit van de data base meer dan 48 MB per seconde vereist, is een groter VM-type met meer opslag bandbreedte door Voer niet te voor komen. Bij het configureren van Azure Storage moet u er ook voor zorgen dat met name met [Azure Premium Storage](../../windows/premium-storage-performance.md) de door Voer en IOPS per GB aan capaciteit worden gewijzigd. Meer informatie over dit onderwerp vindt u in het artikel [welke schijf typen beschikbaar zijn in azure?](../../windows/disks-types.md). De quota's voor specifieke Azure VM-typen worden beschreven in het artikel [geheugen geoptimaliseerde grootte van virtuele machines](../../sizes-memory.md) en de artikelen die eraan zijn gekoppeld. 
@@ -80,7 +80,7 @@ De onderstaande voor beelden zijn bedoeld ter illustratie en kunnen worden gewij
 
 Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een database grootte van 50 GB – 250 GB, zoals SAP Solution Manager, kan er als volgt uitzien
 
-| Configuration | Windows | Linux | Opmerkingen |
+| Configuratie | Windows | Linux | Opmerkingen |
 | --- | --- | --- | --- |
 | VM-type | E4s_v3 (4 vCPU/32 GB RAM-geheugen) | E4s_v3 (4 vCPU/32 GB RAM-geheugen) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
@@ -101,7 +101,7 @@ Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een dat
 
 Een voor beeld van een configuratie voor een middel grote SAP ASE DB-server met een database grootte van 250 GB tot 750 GB, zoals een kleiner SAP Business Suite-systeem, kan er als volgt uitzien:
 
-| Configuration | Windows | Linux | Opmerkingen |
+| Configuratie | Windows | Linux | Opmerkingen |
 | --- | --- | --- | --- |
 | VM-type | E16s_v3 (16 vCPU/128 GB RAM-geheugen) | E16s_v3 (16 vCPU/128 GB RAM-geheugen) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
@@ -121,7 +121,7 @@ Een voor beeld van een configuratie voor een middel grote SAP ASE DB-server met 
 
 Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een database grootte van 750 GB tot 2000 GB, zoals een groter SAP Business Suite-systeem, kan er als volgt uitzien:
 
-| Configuration | Windows | Linux | Opmerkingen |
+| Configuratie | Windows | Linux | Opmerkingen |
 | --- | --- | --- | --- |
 | VM-type | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
@@ -142,7 +142,7 @@ Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een dat
 
 Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een database grootte van 2 TB +, zoals een groter, wereld wijd gebruikt SAP Business Suite-systeem, kan er als volgt uitzien:
 
-| Configuration | Windows | Linux | Opmerkingen |
+| Configuratie | Windows | Linux | Opmerkingen |
 | --- | --- | --- | --- |
 | VM-type | M-serie (1,0 tot 4,0 TB RAM)  | M-serie (1,0 tot 4,0 TB RAM) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|

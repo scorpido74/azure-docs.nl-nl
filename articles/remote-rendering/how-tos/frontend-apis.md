@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcff550b5411ac00dc54d2103278812f32f56543
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552690"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509974"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>De Azure-frontend-API's gebruiken voor verificatie
 
@@ -60,11 +60,11 @@ De account gegevens kunnen worden opgehaald uit de portal, zoals wordt beschreve
 
 ## <a name="azure-frontend"></a>Azure-front-end
 
-De relevante klassen zijn ```AzureFrontend``` en ```AzureSession``` . ```AzureFrontend```wordt gebruikt voor account beheer en functionaliteit op account niveau, waaronder: activa conversie en rendering-sessie maken. ```AzureSession```wordt gebruikt voor de functionaliteit op sessie niveau en bevat: sessie-update, query's, vernieuwen en buiten gebruik stellen.
+De relevante klassen zijn ```AzureFrontend``` en ```AzureSession``` . ```AzureFrontend``` wordt gebruikt voor account beheer en functionaliteit op account niveau, waaronder: activa conversie en rendering-sessie maken. ```AzureSession``` wordt gebruikt voor de functionaliteit op sessie niveau en bevat: sessie-update, query's, vernieuwen en buiten gebruik stellen.
 
 Elk geopend/gemaakt ```AzureSession``` bevat een verwijzing naar het front-end dat het heeft gemaakt. Als u wilt opschonen, moeten alle sessies worden verwijderd voordat de toewijzing van de front-end wordt opgeheven.
 
-Bij het ongedaan maken van de toewijzing van een sessie wordt de VM in azure niet gestopt `AzureSession.StopAsync` . deze moet expliciet worden aangeroepen.
+Bij het ongedaan maken van de toewijzing van een sessie wordt de server op Azure niet gestopt `AzureSession.StopAsync` . deze moet expliciet worden aangeroepen.
 
 Zodra een sessie is gemaakt en de status ervan is gemarkeerd als gereed, kan deze verbinding maken met de externe rendering runtime met `AzureSession.ConnectToRuntime` .
 

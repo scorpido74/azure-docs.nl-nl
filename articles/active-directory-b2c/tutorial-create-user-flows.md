@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Gebruikersstromen maken - Azure Active Directory B2C'
-description: Meer informatie over het maken van gebruikersstromen in de Azure-portal voor het registreren, aanmelden en bewerken van gebruikersprofielen voor uw toepassingen in Azure Active Directory B2C.
+description: Volg deze zelfstudie voor meer informatie over het maken van gebruikersstromen in Azure Portal voor het registreren, aanmelden en bewerken van gebruikersprofielen voor uw toepassingen in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b13decc142328525376ca8b3a93c74b95c90dae6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 041b1766ae6a64f51d922de128ef316cc0ed8260
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87481866"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922166"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelfstudie: Gebruikersstromen maken in Azure Active Directory B2C
 

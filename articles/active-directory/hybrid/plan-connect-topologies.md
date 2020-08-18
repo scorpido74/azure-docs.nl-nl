@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698764"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509077"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologieën voor Azure AD Connect
 In dit artikel worden verschillende topologieën voor on-premises en Azure Active Directory (Azure AD) beschreven die gebruikmaken van Azure AD Connect Sync als de oplossing voor sleutel integratie. Dit artikel bevat zowel ondersteunde als niet-ondersteunde configuraties.
@@ -29,7 +29,7 @@ In dit artikel worden verschillende topologieën voor on-premises en Azure Activ
 
 Hier ziet u de legenda voor afbeeldingen in het artikel:
 
-| Description | Symbool |
+| Beschrijving | Symbool |
 | --- | --- |
 | On-premises Active Directory-forest |![On-premises Active Directory-forest](./media/plan-connect-topologies/LegendAD1.png) |
 | On-premises Active Directory met gefilterde import |![Active Directory met gefilterde import](./media/plan-connect-topologies/LegendAD2.png) |
@@ -165,7 +165,7 @@ Deze topologie heeft de volgende beperkingen op andere ondersteunde scenario's:
 * Windows 10-apparaten kunnen worden gekoppeld aan één Azure AD-Tenant.
 * De optie voor eenmalige aanmelding (SSO) voor wachtwoord hash-synchronisatie en Pass Through-verificatie kan worden gebruikt met slechts één Azure AD-Tenant.
 
-De vereiste voor een wederzijds exclusieve verzameling objecten is ook van toepassing op write-back. Sommige write-functies worden niet ondersteund met deze topologie omdat ze uitgaan van één on-premises configuratie. Het gaat om de volgende functies:
+De vereiste voor een wederzijds exclusieve verzameling objecten is ook van toepassing op write-back. Sommige write-functies worden niet ondersteund met deze topologie omdat ze uitgaan van één on-premises configuratie. Deze functies omvatten onder andere:
 
 * Terugschrijven van groep met standaard configuratie.
 * Write-back van apparaat.
@@ -191,6 +191,11 @@ Azure AD-tenants worden door het ontwerp geïsoleerd. Deze taken worden niet ond
 ![GALSync in een topologie voor meerdere forests en meerdere directory's](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
 
 U kunt FIM 2010 of MIM 2016 on-premises gebruiken voor het synchroniseren van gebruikers (via GALSync) tussen twee Exchange-organisaties. De gebruikers in de ene organisatie worden weer gegeven als vreemde gebruikers/contact personen in de andere organisatie. Deze verschillende on-premises Active Directory instanties kunnen vervolgens worden gesynchroniseerd met hun eigen Azure AD-tenants.
+
+### <a name="using-unauthorized-clients-to-access-the-azure-ad-connect-backend"></a>Onbevoegde clients gebruiken om toegang te krijgen tot de Azure AD Connect back-end
+![Onbevoegde clients gebruiken om toegang te krijgen tot de Azure AD Connect back-end](./media/plan-connect-topologies/other-client-unsupported.png)
+
+De Azure Active Directory Connect-server communiceert met Azure Active Directory via de Azure Active Directory Connect back-end. De enige software die kan worden gebruikt om met deze back-end te communiceren, is Azure Active Directory Connect. Het is niet mogelijk om te communiceren met de Azure Active Directory Connect back-end met andere software of methode. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md)voor meer informatie over het installeren van Azure AD Connect voor deze scenario's.

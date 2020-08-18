@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: 5bc6ca30b9dff3686b16fe5237f815f16f849e9e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85558469"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053487"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Zelfstudie: Geautomatiseerde bedreigingsreacties instellen in Azure Sentinel
 
@@ -60,7 +60,7 @@ Beveiligingsplaybooks kunnen handmatig of automatisch worden uitgevoerd. Als u z
 Volg deze stappen om een nieuw beveiligingsplaybook te maken in Azure Sentinel:
 
 1. Open het **Azure Sentinel**-dashboard.
-2. Selecteer **Playbooks**onder **Beheer**.
+2. Selecteer onder **Configuratie** de optie **Playbooks**.
 
    ![Logische apps](./media/tutorial-respond-threats-playbook/playbookimg.png)
 

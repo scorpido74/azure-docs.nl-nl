@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 8ba6141bddd60c2bdc2fdf17845e8f470dd6ef55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520524"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852715"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelfstudie: Ga aan de slag met het maken van uw eerste ML-experiment met de Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,7 +97,7 @@ U doorloopt de volgende stappen voor het voorbereiden en uitvoeren van het exper
         + De naam moet met een letter beginnen (niet met een cijfer of streepje).
         + Als er een streepje wordt gebruikt, moet dit worden gevolgd door ten minste één letter. Voorbeeld: Test-, test-0 en test-01 zijn ongeldig, maar test-a0 en test-0a zijn geldig.
 
-    1.  Selecteer de Virtual Machine-grootte in de beschikbare keuzes.
+    1.  Selecteer de Virtual Machine-grootte in de beschikbare keuzes. Voor de zelfstudies is de standaard-VM een goede keuze.
 
     1. Selecteer vervolgens **Maken**. Het kan ongeveer 5 minuten duren voordat uw VM is voorbereid.
 

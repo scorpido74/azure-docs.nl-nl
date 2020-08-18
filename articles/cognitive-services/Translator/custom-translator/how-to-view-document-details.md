@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 22c982babbed1322e97127379be75e7b070ed81f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 87b999069ef9088a731a4e972c5d548cac0b917c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994239"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509557"
 ---
 # <a name="view-document-details"></a>Documentgegevens weergeven
 
@@ -22,7 +22,7 @@ Op de pagina document lijst wordt het eerste 10 document in uw werk ruimte weer 
 
 Klik op een afzonderlijk document om de pagina met document gegevens weer te geven. Op de pagina document Details wordt de lijst met geëxtraheerde zinnen uit het document weer gegeven.
 
-- Standaard is de ' bron taal ' geselecteerd in het vervolg keuzemenu, maar u kunt de weer gave van zinnen in de doel taal in-of uitschakelen.
+- Standaard is de weer gave van de bron-en doel taal naast elkaar in het veld vervolg keuzelijst geselecteerd, maar u kunt in-of uitschakelen om zinnen in de bron-of doel taal weer te geven.
 - 20 zinnen worden standaard per pagina weer gegeven. U kunt het besturings element paginering gebruiken om te bladeren tussen pagina's.
 
 ![Details van document](media/how-to/how-to-view-document-details.png)
@@ -32,11 +32,11 @@ Klik op een afzonderlijk document om de pagina met document gegevens weer te gev
 De gebruiker moet een werkruimte eigenaar zijn om het document te verwijderen om een document te kunnen verwijderen. Daarnaast kan het document niet worden verwijderd als een document wordt gebruikt door een model dat deel uitmaakt van het trainings proces of een deel van het implementatie proces.
 
 1. Ga naar document pagina
-2.  Plaats de muis aanwijzer op een document record en klik op het prullenbak pictogram.
+2. Plaats de muis aanwijzer op een document record en klik op het prullenbak pictogram.
 
     ![Document verwijderen](media/how-to/how-to-delete-document-1.png)
 
-3.  Verwijderen bevestigen.
+3. Verwijderen bevestigen.
 
     ![Verwijderen bevestigen](media/how-to/how-to-delete-document-confirm.png)
 

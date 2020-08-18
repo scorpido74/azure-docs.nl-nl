@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8cca982e291d5d4caf7856e0d807515511c41dc8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372362"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055034"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Overzicht van de implementatie van Azure Firewall Manager
 
@@ -65,6 +65,8 @@ U kunt Azure Firewall Manager om meerdere manieren implementeren, maar het volge
 > - U mag niet meer dan één hub per virtuele WAN per regio hebben. Maar u kunt wel meerdere virtuele WAN's in de regio toevoegen om dit voor elkaar te krijgen.
 > - U mag geen overlappende IP-ruimten voor hubs in een vWAN hebben.
 > - De VNet-verbindingen voor uw hub moeten zich in dezelfde regio bevinden als de hub.
+>
+> Zie voor meer bekende problemen [Wat is Azure Firewall Manager?](overview.md#known-issues)
 
 ## <a name="convert-virtual-networks"></a>Virtuele netwerken converteren
 

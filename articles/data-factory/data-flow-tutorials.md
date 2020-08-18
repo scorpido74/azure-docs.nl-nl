@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 05/25/2020
-ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 08/11/2020
+ms.openlocfilehash: 809011df3c8cd6dbc1ee2a2129a261102adb43c0
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848869"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067848"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videozelfstudies om gegevens toe te wijzen
 
@@ -36,6 +36,8 @@ Aangezien het product steeds wordt bijgewerkt, hebben sommige functies in de hui
 [Prestaties van toewijzingsgegevensstromen controleren en beheren](https://www.youtube.com/watch?v=fktIWdJiqTk)
 
 [Benchmark-timings](http://youtu.be/6CSbWm4lRhw?hd=1)
+
+[Fouten opsporen in werkstromen voor gegevensstromen](https://youtu.be/y3suL7UsWVw)
 
 ## <a name="transformation-overviews"></a>Transformatieoverzichten
 
@@ -118,6 +120,8 @@ Aangezien het product steeds wordt bijgewerkt, hebben sommige functies in de hui
 [Clustergrootte van gegevensstroom dynamisch optimaliseren tijdens runtime](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
 [Starttijden voor gegevensstroom optimaliseren](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
+[Azure Integration Runtimes voor gegevensstromen](https://mssqldude.wordpress.com/)
 
 ## <a name="mapping-data-flow-scenarios"></a>Scenario's van toewijzingsgegevensstromen
 

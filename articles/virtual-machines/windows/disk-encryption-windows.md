@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 10e306d26ebfd5ffafe65d7aa52753e993b085bf
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291969"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509158"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-scenario's voor Windows-VM's
 
@@ -132,7 +132,7 @@ De volgende tabel bevat de para meters voor de Resource Manager-sjabloon voor be
 | Parameter | Beschrijving |
 | --- | --- |
 | vmName | De naam van de virtuele machine om de versleutelings bewerking uit te voeren. |
-| keyVaultName | De naam van de sleutel kluis waarnaar de BitLocker-sleutel moet worden geüpload. U kunt deze ophalen met behulp van de cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` of de Azure cli-opdracht`az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
+| keyVaultName | De naam van de sleutel kluis waarnaar de BitLocker-sleutel moet worden geüpload. U kunt deze ophalen met behulp van de cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` of de Azure cli-opdracht `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | De naam van de resource groep die de sleutel kluis bevat|
 |  keyEncryptionKeyURL | De URL van de Key Encryption Key, in de indeling https:// &lt; sleutel kluis-name &gt; . Vault.Azure.net/key/ &lt; key-name &gt; . Als u geen KEK wilt gebruiken, laat u dit veld leeg. |
 | volumeType | Type volume waarop de versleutelings bewerking wordt uitgevoerd. Geldige waarden zijn _besturings systeem_, _gegevens_en _alle_. 
@@ -264,7 +264,7 @@ Azure Disk Encryption werkt niet voor de volgende scenario's, functies en techno
 - Een installatie kopie of moment opname van een versleutelde virtuele machine maken en deze gebruiken voor het implementeren van extra Vm's.
 - Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
 - Vm's uit de M-serie met Write Accelerator-schijven.
-- Het Toep assen van ADE op een virtuele machine met een gegevens schijf die is versleuteld met versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md) (SSE + CMK), of om SSE + CMK toe te passen op een gegevens schijf op een virtuele machine die is versleuteld met ade.
+- ADE Toep assen op een virtuele machine met, of *ooit* , schijven die zijn versleuteld met versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md) (SSE + CMK). Het Toep assen van SSE en CMK op een gegevens schijf op een virtuele machine die is versleuteld met ADE, is ook een niet-ondersteund scenario.
 - Een virtuele machine die is versleuteld met ADE migreren naar versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md).
 
 

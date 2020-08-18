@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805015"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509294"
 ---
 # <a name="get-information-about-a-converted-model"></a>Informatie ophalen over een geconverteerd model
 
@@ -100,7 +100,7 @@ In deze sectie vindt u informatie over de indeling van het bron bestand.
 Deze sectie bevat informatie over de bron scène. Er zijn vaak verschillen tussen de waarden in deze sectie en de equivalente waarden in het hulp programma waarmee het bron model is gemaakt. Dergelijke verschillen worden verwacht, omdat het model tijdens de export-en conversie stappen wordt gewijzigd.
 
 * `numMeshes`: Het aantal netonderdelen, waarbij elk deel naar één enkel materiaal kan verwijzen.
-* `numFaces`: Het totale aantal _drie hoeken_ in het hele model. Houd er rekening mee dat het net wordt getriangulatie tijdens de conversie. Dit aantal draagt bij aan de grens van de veelhoek in de [standaard weergave VM-grootte](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons).
+* `numFaces`: Het totale aantal _drie hoeken_ in het hele model. Houd er rekening mee dat het net wordt getriangulatie tijdens de conversie. Dit aantal draagt bij aan de grens van de polygoon in de [standaard weergave server grootte](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons).
 * `numVertices`: Het totale aantal hoek punten in het hele model.
 * `numMaterial`: Het totale aantal materialen in het hele model.
 * `numFacesSmallestMesh`: Het aantal drie hoeken in het kleinste Maas van het model.

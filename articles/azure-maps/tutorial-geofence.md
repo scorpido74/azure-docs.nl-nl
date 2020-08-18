@@ -1,20 +1,20 @@
 ---
 title: 'Zelfstudie: Een geofence maken en apparaten bijhouden op een Microsoft Azure-kaart'
-description: Meer informatie over het instellen van een geofence en het bijhouden van apparaten ten opzichte van de geofence met behulp van Microsoft Azure Maps Spatial Service.
+description: Meer informatie over hoe u een geofence kunt instellen. Zie hoe u apparaten ten opzichte van de geofence kunt volgen met behulp van de Azure Maps Spatial-service.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 7/15/2020
+ms.date: 8/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 775d98b992f2bca4441c868873ceaeb2389db81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517346"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121235"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Zelfstudie: Een geofence instellen met behulp van Azure Maps
 
@@ -25,7 +25,7 @@ In deze zelfstudie leert u de basisbeginselen van het maken en gebruiken van Azu
 Azure Maps biedt een aantal services ter ondersteuning van het bijhouden van apparatuur die in het bovenstaande scenario het bouwterrein binnengaat en verlaat. In deze zelfstudie behandelen we het volgende:
 
 > [!div class="checklist"]
-> * Het uploaden van [Geofencing GeoJSON-gegevens](geofence-geojson.md) die de bouwterreinen definiëren die we willen bewaken. We gebruiken de [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) om geofences als veelhoekcoördinaten te uploaden naar uw Azure Maps-account.
+> * Upload [Geofencing GeoJSON-gegevens](geofence-geojson.md) waarmee de bouwterreinen worden gedefinieerd die we willen bewaken. We gebruiken de [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) om geofences als veelhoekcoördinaten te uploaden naar uw Azure Maps-account.
 > * Het instellen van twee [logische apps](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) die, wanneer ze worden geactiveerd, e-mailmeldingen sturen naar de Operations Manager van het bouwterrein wanneer er apparatuur het geofence-gebied binnenkomt of verlaat.
 > * Het gebruiken van de [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) om een abonnement te nemen op Enter- en Exit-gebeurtenissen van Azure Maps geofence. We stellen twee Webhook-gebeurtenisabonnementen in die de HTTP-eindpunten aanroepen die in uw twee logische apps zijn gedefinieerd. De logische apps sturen vervolgens de juiste e-mailmeldingen over apparatuur die de geofence verlaat of binnenkomt.
 > * Gebruik [Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) om meldingen te krijgen wanneer een apparaat de geofence-gebieden binnenkomt of verlaat.

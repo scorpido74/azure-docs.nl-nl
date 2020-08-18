@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281919"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921670"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technisch overzicht en functieoverzicht van Azure Active Directory B2C
 
@@ -262,7 +262,4 @@ Meer informatie over gebruiksanalyse vindt u in [Track user behavior in Azure Ac
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u meer weet over de functies en technische aspecten van Azure Active Directory B2C, kunt u aan de slag met de service door eerst een B2C-tenant te maken:
-
-> [!div class="nextstepaction"]
-> [Zelfstudie: Een Azure Active Directory B2C-tenant maken >](tutorial-create-tenant.md)
+Nu u meer inzicht hebt in de functies en technische aspecten van Azure Active Directory B2C, kunt u beginnen met onze [zelfstudie voor het maken van een Azure Active Directory B2C-tenant](tutorial-create-tenant.md).

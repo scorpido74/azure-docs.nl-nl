@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8bbdf984311883006fcd6af16f42d7f7972cc169
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8c97710202a448c613ab685932cb335bbaed4953
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323312"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832651"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelfstudie: Pushmeldingen naar Android-apparaten met Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
+# <a name="tutorial-send-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelfstudie: Pushmeldingen naar Android-apparaten verzenden met Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -98,6 +98,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
+
 2. Voeg de volgende opslagplaats toe na het gedeelte **afhankelijkheden**.
 
     ```gradle
@@ -121,6 +122,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         </intent-filter>
     </service>
     ```
+
 2. Nadat de toepassing het GCM-registratietoken van de API voor exemplaar-id’s heeft ontvangen, gebruikt het token voor [registratie bij de Azure Notification Hub](notification-hubs-push-notification-registration-management.md). De registratie op de achtergrond wordt uitgevoerd met een `IntentService` met de naam `RegistrationIntentService`. Deze service is ook verantwoordelijk voor [het vernieuwen van het GCM-registratietoken](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens).
 
     Voeg de volgende servicedefinitie toe aan het bestand AndroidManifest.xml in de `<application>`-tag. Vervang de tijdelijke aanduiding `<your package>` door de werkelijke pakketnaam die bovenaan het bestand `AndroidManifest.xml` wordt weergegeven.
@@ -131,6 +133,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         android:exported="false">
     </service>
     ```
+
 3. Definieer een ontvanger voor het ontvangen van meldingen. Voeg de volgende ontvangerdefinitie toe aan het bestand AndroidManifest.xml in de `<application>`-tag. Vervang de tijdelijke aanduiding `<your package>` door de werkelijke pakketnaam die bovenaan het bestand `AndroidManifest.xml` wordt weergegeven.
 
     ```xml
@@ -142,7 +145,8 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         </intent-filter>
     </receiver>
     ```
-4. Voeg de volgende vereiste GCM-machtigingen toe onder de `</application>`-tag. Vervang `<your package>` door de pakketnaam die boven in het bestand `AndroidManifest.xml` wordt weergegeven.
+
+4. Voeg de volgende vereiste GCM-machtigingen toe onder de `<application>`-tag. Vervang `<your package>` door de pakketnaam die boven in het bestand `AndroidManifest.xml` wordt weergegeven.
 
     Zie [Een GCM Client-app instellen voor Android](https://developers.google.com/cloud-messaging/) voor meer informatie over deze machtigingen.
 
@@ -165,7 +169,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
     Werk de drie tijdelijke aanduidingen in de volgende code bij voor de klasse `NotificationSettings`:
 
    * `SenderId`: Het projectnummer dat u eerder in de [Google Cloud Console](https://cloud.google.com/console) hebt verkregen.
-   * `HubListenConnectionString`: De verbindingsreeks `DefaultListenAccessSignature` voor de hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** op de hubpagina **Instellingen** in [Azure-portal].
+   * `HubListenConnectionString`: De verbindingsreeks **DefaultListenAccessSignature** voor de hub. Kopieer deze verbindingsreeks door te klikken op **Toegangsbeleid** op de hubpagina **Instellingen** in [Azure-portal].
    * `HubName`: Gebruik de naam van uw Notification Hub die wordt weergegeven op de hubpagina in de [Azure-portal].
 
      `NotificationSettings`-code:
@@ -177,6 +181,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         public static String HubListenConnectionString = "<Your default listen connection string>";
      }
      ```
+
 2. Voeg een andere nieuwe klasse toe met de naam `MyInstanceIDService`. Deze klasse is de implementatie van uw exemplaar-id listenerservice.
 
     Met de code voor deze klasse roept u `IntentService` aan voor het op de achtergrond [vernieuwen van het GCM-token](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens).
@@ -200,7 +205,8 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         }
     };
     ```
-3. Voeg een andere nieuwe klasse toe aan uw project met de naam `RegistrationIntentService`. Met deze klasse implementeert u `IntentService` die zorgt voor [het vernieuwen van het GCM-token](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) en [de registratie bij de Notification Hub](notification-hubs-push-notification-registration-management.md).
+
+3. Voeg een andere nieuwe klasse aan uw project toe met de naam `RegistrationIntentService`. Met deze klasse implementeert u `IntentService` die zorgt voor [het vernieuwen van het GCM-token](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) en [de registratie bij de Notification Hub](notification-hubs-push-notification-registration-management.md).
 
     Gebruik de volgende code voor deze klasse.
 
@@ -270,6 +276,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         }
     }
     ```
+
 4. Voeg in uw klasse `MainActivity` de volgende instructies voor `import` toe aan het begin van de klasse.
 
     ```java
@@ -282,6 +289,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
     import android.widget.Toast;
     import android.content.Intent;
     ```
+
 5. Voeg de volgende privé-leden toe aan de bovenkant van de klasse. Deze code [controleert de beschikbaarheid van Google Play Services, zoals aanbevolen door Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
 
     ```java
@@ -291,6 +299,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "MainActivity";
     ```
+
 6. Voeg in uw klasse `MainActivity` de volgende methode toe om de beschikbaarheid van Google Play Services te controleren.
 
     ```java
@@ -316,6 +325,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         return true;
     }
     ```
+
 7. Voeg in uw klasse `MainActivity` de volgende code toe waarmee Google Play Services wordt gecontroleerd voordat u uw `IntentService` aanroept om uw GCM-registratietoken op te halen en te registreren met de Notification Hub.
 
     ```java
@@ -330,6 +340,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         }
     }
     ```
+
 8. In de methode `OnCreate` van de klasse `MainActivity` voegt u de volgende code toe om het registratieproces te starten wanneer de activiteit wordt gemaakt.
 
     ```java
@@ -343,6 +354,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         registerWithNotificationHubs();
     }
     ```
+
 9. Voeg deze extra methoden toe aan de `MainActivity` om de status van de app te controleren en een rapport van de status in uw app op te nemen.
 
     ```java
@@ -381,12 +393,15 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         });
     }
     ```
+
 10. Voor de methode `ToastNotify` wordt het besturingselement *Hallo wereld* `TextView` gebruikt om de status en kennisgevingen permanent in de app te melden. In de indeling activity_main.xml voegt u de volgende id toe voor het besturingselement.
 
     ```xml
     android:id="@+id/text_hello"
     ```
+
 11. Voeg een subklasse toe voor de ontvanger die is gedefinieerd in AndroidManifest.xml. Voeg een andere nieuwe klasse toe aan uw project met de naam `MyHandler`.
+
 12. Voeg boven in `MyHandler.java` de volgende importinstructie toe:
 
     ```java
@@ -400,6 +415,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
     import android.net.Uri;
     import android.media.RingtoneManager;
     ```
+
 13. Voeg de volgende code toe voor de klasse `MyHandler`, zodat dit een subklasse van `com.microsoft.windowsazure.notifications.NotificationsHandler` wordt.
 
     Deze code overschrijft de `OnReceive`-methode, zodat de handler de ontvangen meldingen rapporteert. De handler verzendt ook de pushmelding naar Android Notification Manager met de methode `sendNotification()`. De methode `sendNotification()` moet worden uitgevoerd wanneer de app niet actief is en een melding is ontvangen.
@@ -447,6 +463,7 @@ De Notification Hub is nu geconfigureerd voor GCM en u hebt de verbindingsreekse
         }
     }
     ```
+
 14. Klik in Android Studio in de menubalk op **Bouwen** > **Project opnieuw opbouwen** om ervoor te zorgen dat uw code geen fouten bevat.
 
 ## <a name="testing-your-app"></a>Uw app testen
@@ -508,12 +525,14 @@ Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u p
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
+
 2. Vouw in de Project-weergave van Android Studio-Project **App** > **src** > **main** > **res** > **values** uit. Open het bestand `strings.xml` en voeg de tekenreekswaarden toe waarnaar wordt verwezen door de nieuwe besturingselementen `Button` en `EditText`. Voeg de volgende regels onder in het bestand toe, net voor `</resources>`.
 
     ```xml
     <string name="send_button">Send Notification</string>
     <string name="notification_message_hint">Enter notification message text</string>
     ```
+
 3. Voeg in het bestand `NotificationSetting.java` de volgende instelling toe voor de klasse `NotificationSettings`.
 
     Werk `HubFullAccess` bij met de verbindingsreeks **DefaultFullSharedAccessSignature** voor uw hub. U kunt deze verbindingsreeks kopiëren vanuit [Azure-portal] door te klikken op **Toegangsbeleid** op de pagina **Instellingen** voor uw Notification Hub.
@@ -521,6 +540,7 @@ Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u p
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
     ```
+
 4. Voeg in uw bestand `MainActivity.java` de volgende instructies voor `import` toe aan het begin van het bestand.
 
     ```java
@@ -537,6 +557,7 @@ Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u p
     import android.view.View;
     import android.widget.EditText;
     ```
+
 5. Voeg in uw bestand `MainActivity.java` de volgende leden toe boven de klasse `MainActivity`.
 
     ```java
@@ -544,7 +565,8 @@ Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u p
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. Maak een SaS-token (Software Access Signature) om een POST-aanvraag te verifiëren om berichten naar uw Notification Hub te kunnen verzenden. Parseer de belangrijkste gegevens uit de verbindingsreeks en maak vervolgens het SaS-token, zoals vermeld in [Algemene concepten](/previous-versions/azure/reference/dn495627(v=azure.100)) REST API-verwijzing. De volgende code is een voorbeeldimplementatie.
+
+6. Maak een SAS-token (Shared Access Signature) om een POST-aanvraag te verifiëren om berichten naar uw Notification Hub te kunnen verzenden. Parseer de belangrijkste gegevens uit de verbindingsreeks en maak vervolgens het SaS-token, zoals vermeld in [Algemene concepten](/previous-versions/azure/reference/dn495627(v=azure.100)) REST API-verwijzing. De volgende code is een voorbeeldimplementatie.
 
     Voeg in `MainActivity.java` de volgende methode toe aan de klasse `MainActivity` om uw verbindingsreeks te parseren.
 
@@ -575,6 +597,7 @@ Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u p
         }
     }
     ```
+
 7. Voeg in `MainActivity.java` de volgende methode toe aan de klasse `MainActivity` om een SAS-verificatietoken te maken.
 
     ```java
@@ -630,6 +653,7 @@ Normaal gesproken verzendt u meldingen via een back-endserver. Mogelijk wilt u p
         return token;
     }
     ```
+
 8. Voeg in `MainActivity.java` de volgende methode toe aan de klasse `MainActivity` om het klikken op de knop **Melding verzenden** te activeren en de pushmelding naar de hub te verzenden met de ingebouwde REST-API.
 
     ```java
@@ -738,7 +762,7 @@ In deze zelfstudie hebt u meldingen uitgezonden naar al uw Android-apparaten die
 [31]: ./media/notification-hubs-android-get-started/notification-hubs-android-studio-add-ui.png
 
 <!-- URLs. -->
-[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

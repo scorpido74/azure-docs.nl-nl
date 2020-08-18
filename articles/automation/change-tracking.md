@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Wijzigingen bijhouden en inventaris
 description: In dit artikel wordt de functie Wijzigingen bijhouden en inventaris beschreven, waarmee u de wijzigingen in de software en micro soft-Services in uw omgeving kunt identificeren.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/08/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2fe92942e263cf53b9827ccbcb13a2d7bafc367c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447921"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511045"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
 
@@ -26,10 +26,10 @@ In dit artikel wordt beschreven hoe u Wijzigingen bijhouden en inventariseert in
 > [!NOTE]
 > Zie de [wijzigings geschiedenis](../governance/resource-graph/how-to/get-resource-changes.md)van de Azure-resource grafiek voor het bijhouden van wijzigingen in de eigenschappen van Azure Resource Manager.
 
-Wijzigingen bijhouden en de inventarisatie verkrijgen de gegevens van Azure Monitor. Virtuele machines die zijn verbonden met Log Analytics-werk ruimten, gebruiken Log Analytics agents om gegevens te verzamelen over wijzigingen in geïnstalleerde software, micro soft-Services, Windows-REGI ster en-bestanden en Linux-daemons op bewaakte servers. Wanneer de gegevens beschikbaar zijn, sturen de agents deze naar Azure Monitor voor verwerking. Azure Monitor past logica toe op de ontvangen gegevens, registreert deze en maakt deze beschikbaar. 
+Wijzigingen bijhouden en de inventarisatie verkrijgen de gegevens van Azure Monitor. Virtuele machines die zijn verbonden met Log Analytics-werk ruimten gebruiken de Log Analytics-agent voor het verzamelen van gegevens over wijzigingen in geïnstalleerde software, micro soft-Services, Windows-REGI ster en-bestanden en Linux-daemons op bewaakte servers. Wanneer de gegevens beschikbaar zijn, verzendt de agent deze naar Azure Monitor voor verwerking. Azure Monitor past logica toe op de ontvangen gegevens, registreert deze en maakt deze beschikbaar.
 
 > [!NOTE]
-> Als u de functie voor Wijzigingen bijhouden en inventaris wilt gebruiken, moet u alle virtuele machines in hetzelfde abonnement en dezelfde regio van het Automation-account zoeken.
+> Voor Wijzigingen bijhouden en inventarisatie moet u een Log Analytics werkruimte koppelen aan uw Automation-account. Zie [Azure Workspace-toewijzingen](./how-to/region-mappings.md)voor een definitieve lijst met ondersteunde regio's. De regio toewijzingen hebben geen invloed op de mogelijkheid om Vm's te beheren in een andere regio dan uw Automation-account.
 
 Wijzigingen bijhouden en inventaris bieden momenteel geen ondersteuning voor de volgende items:
 
@@ -53,7 +53,7 @@ Wijzigingen bijhouden en inventaris ondervindt momenteel de volgende problemen:
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-Wijzigingen bijhouden en inventarisatie wordt ondersteund op alle besturings systemen die voldoen aan de vereisten van Log Analytics agent. De officiële versies van het besturings systeem zijn Windows Server 2008 SP1 of hoger en Windows 7 SP1 of hoger. De functie wordt ook ondersteund op een aantal Linux-besturings systemen. Zie [overzicht van log Analytics agent](../azure-monitor/platform/log-analytics-agent.md)voor besturings systemen die log Analytics ondersteunen.
+Wijzigingen bijhouden en inventarisatie wordt ondersteund op alle besturings systemen die voldoen aan de vereisten van Log Analytics agent. De officiële versies van het besturings systeem zijn Windows Server 2008 SP1 of hoger en Windows 7 SP1 of hoger. De functie wordt ook ondersteund op een aantal Linux-besturings systemen. Zie [log Analytics agent Overview](../azure-monitor/platform/log-analytics-agent.md)(Engelstalig) voor een lijst met ondersteunde besturings systemen.
 
 Zie [TLS 1,2 Enforcement voor Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2.
 
@@ -80,7 +80,7 @@ U kunt op een wijziging of gebeurtenis klikken om de details ervan weer te geven
 
 - Gebeurtenissen
 - Daemons
-- Bestanden
+- Files
 - Register
 - Software
 - Micro soft-Services

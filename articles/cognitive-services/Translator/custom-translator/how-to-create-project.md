@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 03f6f045e0809f79117518a22abfd74520b6d0a6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 3043ec0600f802a409387f0114aae5f56151da16
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992773"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510970"
 ---
 # <a name="create-a-project"></a>Een project maken
 
@@ -52,7 +52,7 @@ De landings pagina van het aangepaste conversie programma toont de eerste 10 pro
 
 Nadat u een project hebt geselecteerd, ziet u het volgende op de pagina project:
 
-- CategoryID: er wordt een categorie nummer gemaakt door het samen voegen van het WorkspaceID, het project label en de categorie code. U gebruikt de CategoryID met de Text Translator om aangepaste vertalingen op te halen.
+- CategoryID: er wordt een categorie nummer gemaakt door het samen voegen van het WorkspaceID, het project label en de categorie code. U gebruikt de CategoryID met de Text Translator API om aangepaste vertalingen op te halen. Klik op het pictogram kopiëren om het te kopiëren.
 
 - Trein knop: gebruik deze knop om een [trainings model](how-to-train-model.md)te starten.
 

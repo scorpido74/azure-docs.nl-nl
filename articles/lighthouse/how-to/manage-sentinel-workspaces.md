@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel-werk ruimten op schaal beheren
 description: Meer informatie over het effectief beheren van Azure Sentinel op gedelegeerde klant resources.
-ms.date: 06/17/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163234"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511249"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-werk ruimten op schaal beheren
 
@@ -69,9 +69,9 @@ U kunt werkmappen implementeren in uw Tenant beheren en op schaal Dash boards ma
 
 U kunt werkmappen ook rechtstreeks implementeren in een afzonderlijke Tenant die u beheert voor scenario's die specifiek zijn voor die klant.
 
-## <a name="run-queries-across-azure-sentinel-workspaces"></a>Query's uitvoeren in de onderverklikker-werk ruimten van Azure
+## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Voer Log Analytics en zoek query's uit in azure Sentinel-werk ruimten
 
-U kunt Log Analytics query's voor bedreigingen detectie centraal maken en opslaan in de beheer Tenant. Deze query's kunnen vervolgens worden uitgevoerd in al uw Azure Sentinel-werk ruimten van uw klanten met behulp van de operator Union en de werk ruimte ()-expressie. Zie [query's in meerdere werk ruimten](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)voor meer informatie.
+U kunt Log Analytics query's voor bedreigingen detectie centraal maken en opslaan in de beheer Tenant, met inbegrip van [jacht-query's](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting). Deze query's kunnen vervolgens worden uitgevoerd in al uw Azure Sentinel-werk ruimten van uw klanten met behulp van de operator Union en de werk ruimte ()-expressie. Zie [query's in meerdere werk ruimten](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)voor meer informatie.
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Automatisering gebruiken voor beheer van meerdere werk ruimten
 

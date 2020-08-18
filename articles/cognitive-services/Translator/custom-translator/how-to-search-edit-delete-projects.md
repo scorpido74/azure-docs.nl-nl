@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 40a0429c4296426042e5baa58c9575ddb195cd7c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4c48a8a18a3ad0487b4c3840847c7f5edbb6d29f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996734"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510336"
 ---
 # <a name="search-edit-and-delete-projects"></a>Projecten zoeken, bewerken en verwijderen
 
@@ -24,36 +24,35 @@ Aangepaste Translator biedt meerdere manieren om uw projecten op efficiënte wij
 
 Met het filter tool kunt u projecten doorzoeken op verschillende filter voorwaarden. Het filtert zoals de project naam, de status, de bron-en doel taal en de categorie van het project.
 
-1.  Klik op de knop Filter.
+1. Klik op de knop Filter.
 
     ![Project zoeken](media/how-to/how-to-search-project.png)
 
-1.  U kunt filteren op elke (of alle) van de volgende velden: project naam, status, bron taal, doel taal en categorie.
+2. U kunt filteren op elke (of alle) van de volgende velden: project naam, bron taal, doel taal, categorie en project beschikbaarheid.
 
-2.  Klik op Toep assen.
+3. Klik op Toep assen.
 
     ![Filter opties voor zoek projecten](media/how-to/how-to-search-project-filters.png)
 
-3.  Schakel het filter uit om al uw projecten weer te geven door op wissen te tikken.
-
+4. Schakel het filter uit om al uw projecten weer te geven door op wissen te tikken.
 
 ## <a name="edit-a-project"></a>Een project bewerken
 
 Met het aangepaste conversie programma kunt u de naam en beschrijving van een project bewerken. Andere meta gegevens van het project, zoals de categorie, de bron taal en de doel taal, zijn niet beschikbaar om te bewerken. In de onderstaande stappen wordt beschreven hoe u een project bewerkt.
 
-1.  Klik op het potlood pictogram dat wordt weer gegeven wanneer u de muis aanwijzer op een project houdt.
+1. Klik op het potlood pictogram dat wordt weer gegeven wanneer u de muis aanwijzer op een project houdt.
 
     ![Project bewerken](media/how-to/how-to-edit-project.png)
 
-2.  In het dialoog venster kunt u de project naam of de beschrijving van het project wijzigen, maar het project label, de categorie of het taal paar kan niet worden gewijzigd.
+2. In het dialoog venster kunt u de project naam, de beschrijving van het project, de categorie beschrijving en het project label wijzigen als er geen model is geïmplementeerd. U kunt de categorie of het taal paar niet wijzigen wanneer het project is gemaakt.
 
     ![Dialoog venster project bewerken](media/how-to/how-to-edit-project-dialog.png)
 
-3.  Klik op de knop Filter.
+3. Klik op de knop Opslaan.
 
 ## <a name="delete-a-project"></a>Een project verwijderen
 
-U kunt een project verwijderen wanneer u het niet meer nodig hebt. In de onderstaande stappen wordt beschreven hoe u een project verwijdert.
+U kunt een project verwijderen wanneer u het niet meer nodig hebt. Zorg ervoor dat het project geen modellen heeft in de actieve status, zoals geïmplementeerd, training verzonden, gegevens verwerking, implementeren, enzovoort, anders mislukt de verwijderings bewerking. In de onderstaande stappen wordt beschreven hoe u een project verwijdert.
 
 1. Plaats de muis aanwijzer op een project record en klik op het prullenbak pictogram.
 

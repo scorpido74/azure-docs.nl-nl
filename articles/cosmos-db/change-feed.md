@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119372"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510280"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Wijzigingenfeed in Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Meer informatie over [ontwerp patronen voor veranderingen in feeds](change-feed-
 
 Deze functie wordt momenteel ondersteund door de volgende Azure Cosmos DB-Api's en client-Sdk's.
 
-| **Clientstuurprogramma's** | **SQL-API** | **API van Azure Cosmos DB voor Cassandra** | **Azure Cosmos DB-API voor MongoDB** | **Gremlin-API**|**Tabel-API** |
+| **Clientstuurprogramma's** | **SQL-API** | **API van Azure Cosmos DB voor Cassandra** | **Azure Cosmos DB-API voor MongoDB** | **Gremlin-API**|**Table-API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | Ja | Ja | Ja | Ja | Nee |
 |Java|Ja|Ja|Ja|Ja|Nee|
@@ -42,7 +42,7 @@ Wijzigingen in de feed worden niet in het logboek geregistreerd. Net als in het 
 
 De wijzigings items worden in de volg orde van de wijzigings tijd van kracht. Deze sorteer volgorde wordt gegarandeerd per logische partitie sleutel.
 
-### <a name="consistency-level"></a>Consistentie niveau
+### <a name="consistency-level"></a>Consistentieniveau
 
 Bij het gebruik van de wijzigings feed in een mogelijk consistentie niveau, kunnen er dubbele gebeurtenissen optreden in de volgende Lees bewerkingen voor de invoer van wijzigingen (de laatste gebeurtenis van één Lees bewerking wordt weer gegeven als de eerste van de volgende).
 
@@ -56,7 +56,7 @@ Als een TTL-eigenschap (Time to Live) is ingesteld voor een item op-1, blijft de
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Feed en _etag, _lsn of _ts wijzigen
 
-De indeling van de _etag is intern en u moet er geen afhankelijkheid van maken, omdat deze op elk gewenst moment kan worden gewijzigd. _ts is een wijziging of een tijds tempel voor het maken. U kunt _ts gebruiken voor chronologische vergelijking. _lsn is een batch-ID die alleen is toegevoegd voor wijzigings invoer. het vertegenwoordigt de trans actie-ID. Veel items hebben mogelijk hetzelfde _lsn. ETag op FeedResponse wijkt af van de _etag die u op het item ziet. _etag is een interne id en wordt gebruikt voor gelijktijdigheids beheer en geeft de versie van het item aan, terwijl ETag wordt gebruikt voor het sequentiëren van de feed.
+De indeling van de _etag is intern en u moet er geen afhankelijkheid van maken, omdat deze op elk gewenst moment kan worden gewijzigd. _ts is een wijziging of een tijds tempel voor het maken. U kunt _ts gebruiken voor chronologische vergelijking. _lsn is een batch-ID die alleen is toegevoegd voor wijzigings invoer. het vertegenwoordigt de trans actie-ID. Veel items hebben mogelijk hetzelfde _lsn. ETag op FeedResponse wijkt af van de _etag die u op het item ziet. _etag is een interne id die wordt gebruikt voor gelijktijdigheids beheer. De eigenschap _etag vertelt de versie van het item, terwijl de ETag-eigenschap wordt gebruikt voor het sequentiëren van de feed.
 
 ## <a name="working-with-change-feed"></a>Werken met wijzigings feed
 

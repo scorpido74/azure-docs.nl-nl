@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055236"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509753"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sjablonen ontwikkelen voor Cloud consistentie
 
@@ -570,7 +570,7 @@ Als u daarentegen een configuratie van een beheerde schijf in een sjabloon wilt 
 }
 ```
 
-Met dezelfde wijzigingen worden ook [gegevens schijven](../../virtual-machines/windows/using-managed-disks-template-deployments.md)toegepast.
+Met dezelfde wijzigingen worden ook [gegevens schijven](../../virtual-machines/using-managed-disks-template-deployments.md)toegepast.
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Controleer of er VM-extensies beschikbaar zijn in Azure Stack
 

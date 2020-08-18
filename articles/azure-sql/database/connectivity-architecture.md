@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 1676815e1b5614a1e9aa33a1dc5ce471601bde76
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 22eb43e7249214e4184abe723c8348c726979fa6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759322"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511062"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database-en Azure Synapse Analytics-connectiviteits architectuur
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -79,10 +79,10 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Australië - centraal    | 20.36.105.0 |
 | Australië-Central2   | 20.36.113.0 |
 | Australië - oost       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
-| Australië - zuidoost | 191.239.192.109, 13.73.109.251 |
+| Australië - zuidoost | 191.239.192.109, 13.73.109.251, 13.77.48.10 |
 | Brazil South         | 104.41.11.5, 191.233.200.14 |
 | Canada - midden       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
-| Canada - oost          | 40.86.226.166      |
+| Canada - oost          | 40.86.226.166, 40.86.226.166, 52.242.30.154 |
 | Central US           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | China East           | 139.219.130.35     |
 | China-oost 2         | 40.73.82.1         |
@@ -113,7 +113,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Zwitserland - west     | 51.107.152.0, 51.107.153.0 |
 | UAE - centraal          | 20.37.72.64        |
 | UAE - noord            | 65.52.248.0        |
-| Verenigd Koninkrijk Zuid             | 51.140.184.11      |
+| Verenigd Koninkrijk Zuid             | 51.140.184.11,51.140.184.11, 51.105.64.0 |
 | Verenigd Koninkrijk West              | 51.141.8.11        |
 | VS - west-centraal      | 13.78.145.25, 13.78.248.43        |
 | Europa -west          | 40.68.37.158, 191.237.232.75, 104.40.168.105, 52.236.184.163  |

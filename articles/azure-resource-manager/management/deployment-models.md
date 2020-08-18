@@ -3,12 +3,12 @@ title: Resource Manager en klassieke implementatie
 description: Lees hier wat de verschillen zijn tussen het implementatiemodel van Resource Manager en het klassieke implementatiemodel (of Service Management).
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057565"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511402"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vergeleken met klassieke implementatie: implementatiemodellen en de status van uw resources begrijpen
 
@@ -122,7 +122,7 @@ Zie [Verschillende implementatiemodellen gebruiken om vanuit de portal verbindin
 
 Als u klaar bent om uw resources te migreren van de klassieke implementatie naar de Resource Manager-implementatie, raadpleegt u:
 
-1. [Technische details over door platforms ondersteunde migratie van klassiek naar Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+1. [Technische details over door platforms ondersteunde migratie van klassiek naar Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-deep-dive.md)
 2. [Platformondersteunde migratie van IaaS-resources van het klassieke implementatiemodel naar Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [IaaS-resources migreren van klassiek naar Azure Resource Manager met behulp van Azure PowerShell](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
 4. [IaaS-resources migreren van klassiek naar Azure Resource Manager met behulp van Azure CLI](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)

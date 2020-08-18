@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888307"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510790"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Ondersteuning van talen en regio's voor tekst-en spraak omzetting
 
-Gebruik Translator voor het vertalen van en naar een van de talen van 60 en tekst vertalingen. Neural machine translation (NMT) is de nieuwe standaard voor automatische vertalingen van een hoge kwaliteit en is beschikbaar als de standaard waarde met behulp van v3 van Translator wanneer er een Neural-systeem beschikbaar is.
+Gebruik Translator voor het vertalen van en naar een van de talen voor 70 en tekst vertalingen. Neural machine translation (NMT) is de nieuwe standaard voor automatische vertalingen van een hoge kwaliteit en is beschikbaar als de standaard waarde met behulp van v3 van Translator wanneer er een Neural-systeem beschikbaar is.
 
 U kunt Translator ook gebruiken in combi natie met aangepaste vertaler voor het bouwen van Neural-Vertaal systemen die inzicht hebben in de terminologie die wordt gebruikt in uw eigen bedrijf en branche, en met micro soft Speech Service om spraak omzetting toe te voegen aan uw app.
 
@@ -47,6 +47,7 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Traditioneel Chinees|   `zh-Hant`       |
 |Kroatisch|  `hr`    |
 |Tsjechisch| `cs`    |
+|Dari|  `prs`   |
 |Deens|    `da`        |
 |Nederlands| `nl`|
 |Engels|   `en`    |
@@ -83,6 +84,8 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Maori| `mi`  |
 |Marathi| `mr`  |
 |Noors| `nb`    |
+|Odia|  `or`    |
+|Pashto|    `ps`    |
 |Perzisch|   `fa`    |
 |Pools|    `pl`    |
 |Portugees (Brazilië)|   `pt-br` |
@@ -185,26 +188,26 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 
 | Taal    | Taalcode | Script | Naar/van | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabisch | `ar` | Arabisch`Arab` | <--> | Latijnse`Latn` |
-| Bengalese  | `bn` | Bengaals`Beng` | <--> | Latijnse`Latn` |
-| Chinees (Vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees`Hans`| <--> | Latijnse`Latn` |
-| Chinees (Vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees`Hans`| <--> | Traditioneel Chinees`Hant`|
-| Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees`Hant`| <--> | Latijnse`Latn` |
-| Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees`Hant`| <--> | Vereenvoudigd Chinees`Hans` |
-| Gujarati | `gu`  | Gujarati`Gujr` | --> | Latijnse`Latn` |
-| Hebreeuws | `he` | Hebreeuws`Hebr` | <--> | Latijnse`Latn` |
-| Hindi | `hi` | Devanagari`Deva` | <--> | Latijnse`Latn` |
-| Japans | `ja` | Japans`Jpan` | <--> | Latijnse`Latn` |
-| Kannada | `kn` | Kannada`Knda` | --> | Latijnse`Latn` |
-| Malajalam | `ml` | Malajalam`Mlym` | --> | Latijnse`Latn` |
-| Marathi | `mr` | Devanagari`Deva` | --> | Latijnse`Latn` |
-| Odia | `or` | Odia`Orya` | <--> | Latijnse`Latn` |
-| Punjabi | `pa` | Gurmukhi`Guru`  | <--> | Latijnse`Latn`  |
-| Servisch (Cyrillisch) | `sr-Cyrl` | Cyrillisch`Cyrl`  | --> | Latijnse`Latn` |
-| Servisch (Latijns) | `sr-Latn` | Latijnse`Latn` | --> | Cyrillisch`Cyrl`|
-| Tamil | `ta` | Tamil`Taml` | --> | Latijnse`Latn` |
-| Telugu | `te` | Telugu`Telu` | --> | Latijnse`Latn` |
-| Thai | `th` | Thais`Thai` | --> | Latijnse`Latn` |
+| Arabisch | `ar` | Arabisch `Arab` | <--> | Latijnse `Latn` |
+| Bengalese  | `bn` | Bengaals `Beng` | <--> | Latijnse `Latn` |
+| Chinees (Vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Latijnse `Latn` |
+| Chinees (Vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Traditioneel Chinees `Hant`|
+| Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Latijnse `Latn` |
+| Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Vereenvoudigd Chinees `Hans` |
+| Gujarati | `gu`  | Gujarati `Gujr` | --> | Latijnse `Latn` |
+| Hebreeuws | `he` | Hebreeuws `Hebr` | <--> | Latijnse `Latn` |
+| Hindi | `hi` | Devanagari `Deva` | <--> | Latijnse `Latn` |
+| Japans | `ja` | Japans `Jpan` | <--> | Latijnse `Latn` |
+| Kannada | `kn` | Kannada `Knda` | --> | Latijnse `Latn` |
+| Malajalam | `ml` | Malajalam `Mlym` | --> | Latijnse `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | --> | Latijnse `Latn` |
+| Odia | `or` | Odia `Orya` | <--> | Latijnse `Latn` |
+| Punjabi | `pa` | Gurmukhi `Guru`  | <--> | Latijnse `Latn`  |
+| Servisch (Cyrillisch) | `sr-Cyrl` | Cyrillisch `Cyrl`  | --> | Latijnse `Latn` |
+| Servisch (Latijns) | `sr-Latn` | Latijnse `Latn` | --> | Cyrillisch `Cyrl`|
+| Tamil | `ta` | Tamil `Taml` | --> | Latijnse `Latn` |
+| Telugu | `te` | Telugu `Telu` | --> | Latijnse `Latn` |
+| Thai | `th` | Thais `Thai` | --> | Latijnse `Latn` |
 
 ### <a name="dictionary"></a>Woordenlijst
 
@@ -325,7 +328,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Vietnamees      | `vi`          |
 | Welsh | `cy` |
 
-## <a name="speech-translation"></a>Spraakomzetting
+## <a name="speech-translation"></a>Speech Translation
 Spraak omzetting is beschikbaar via Translator met Cognitive Services Speech Service. Raadpleeg de documentatie van de [Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) voor meer informatie over het gebruik van spraak omzetting en voor het weer geven van alle [beschik bare taal opties](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 ### <a name="speech-to-text"></a>Spraak naar tekst

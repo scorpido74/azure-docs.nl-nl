@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6fd20819d17861ed5171bf61e4c485fcceba7985
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006108"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509600"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
@@ -36,7 +36,7 @@ Voordat u micro soft teams kunt gebruiken op het virtuele bureau blad van Window
 
 ## <a name="install-the-teams-desktop-app"></a>De teams bureau blad-app installeren
 
-In deze sectie wordt uitgelegd hoe u de teams bureau blad-app kunt installeren op uw Windows 10-VM-installatie kopie voor meerdere sessies of Windows 10 Enter prise. Ga voor meer informatie naar [de teams bureau blad-app installeren of bijwerken op VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi/).
+In deze sectie wordt uitgelegd hoe u de teams bureau blad-app kunt installeren op uw Windows 10-VM-installatie kopie voor meerdere sessies of Windows 10 Enter prise. Ga voor meer informatie naar [de teams bureau blad-app installeren of bijwerken op VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi).
 
 ### <a name="prepare-your-image-for-teams"></a>Uw installatie kopie voorbereiden voor teams
 
@@ -71,17 +71,17 @@ De volgende tabel bevat de nieuwste versies van de WebSocket-service:
 
 U kunt de teams bureau blad-app implementeren met behulp van een installatie per machine of per gebruiker. Micro soft teams installeren in uw virtueel-bureaublad omgeving van Windows:
 
-1. Down load het [MSI-pakket voor teams](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) dat overeenkomt met uw omgeving. Het is raadzaam om het 64-bits installatie programma te gebruiken op een 64-bits besturings systeem.
+1. Down load het [MSI-pakket voor teams](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) dat overeenkomt met uw omgeving. Het is raadzaam om het 64-bits installatie programma te gebruiken op een 64-bits besturings systeem.
 
-      > [!NOTE]
-      > Voor media optimalisatie voor micro soft-teams is teams 1.3.00.4461 of hoger vereist.
+      > [!IMPORTANT]
+      > De meest recente update van de bureau blad-client versie 1.3.00.21759 heeft een probleem opgelost waarbij teams de UTC-tijd zone in chat, channels en Calendar hebben getoond. De nieuwe versie van de client geeft de tijd zone van de externe sessie weer.
 
 2. Voer een van de volgende opdrachten uit om de MSI te installeren op de host-VM:
 
     - Installatie per gebruiker
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name>
         ```
 
         Dit proces is de standaard installatie, waarmee teams worden geïnstalleerd in de map **% AppData%** gebruiker. Teams werken niet goed met installatie per gebruiker op een niet-permanente configuratie.
@@ -89,13 +89,13 @@ U kunt de teams bureau blad-app implementeren met behulp van een installatie per
     - Installatie per computer
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
         Hiermee worden teams geïnstalleerd in de map Program Files (x86) op een 64-bits besturings systeem en in de map Program Files op een 32-bits besturings systeem. Op dit moment is de installatie van de gouden installatie kopie voltooid. Het installeren van teams per computer is vereist voor niet-permanente Setup.
 
-        De volgende keer dat u teams in een sessie opent, wordt u gevraagd om uw referenties op te vragen.
-
+        Er zijn twee vlaggen die kunnen worden ingesteld bij het installeren van teams, **ALLUSER = 1** en **ALLUSERS = 1**. Het is belang rijk dat u begrijpt wat het verschil is tussen deze para meters. De para meter **ALLUSER = 1** wordt alleen gebruikt in VDI-omgevingen om een installatie per computer op te geven. De para meter **ALLUSERS = 1** kan worden gebruikt in niet-VDI-en VDI-omgevingen. Wanneer u deze para meter instelt, wordt het installatie programma voor het hele team van de computer weer gegeven in Program Ma's en onderdelen in het configuratie scherm, evenals apps & functies in Windows-instellingen. Alle gebruikers met beheerders referenties op de computer kunnen teams verwijderen. 
+       
         > [!NOTE]
         > Gebruikers en beheerders kunnen de functie voor het automatisch starten van teams tijdens het aanmelden op dit moment niet uitschakelen.
 
@@ -125,12 +125,11 @@ Na de installatie van de WebSocket-service en de bureau blad-app teams, voert u 
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 
-Het gebruik van teams in een gevirtualiseerde omgeving verschilt van het gebruik van teams in een niet-gevirtualiseerde omgeving. Raadpleeg [teams voor gevirtualiseerde desktop infrastructuur](/microsoftteams/teams-for-vdi#known-issues-and-limitations/)voor meer informatie over de beperkingen van teams in gevirtualiseerde omgevingen.
+Het gebruik van teams in een gevirtualiseerde omgeving verschilt van het gebruik van teams in een niet-gevirtualiseerde omgeving. Raadpleeg [teams voor gevirtualiseerde desktop infrastructuur](/microsoftteams/teams-for-vdi#known-issues-and-limitations)voor meer informatie over de beperkingen van teams in gevirtualiseerde omgevingen.
 
 ### <a name="client-deployment-installation-and-setup"></a>Client implementatie, installatie en installatie
 
 - Met installatie per computer worden teams op VDI niet automatisch bijgewerkt op dezelfde manier als niet-VDI-teams. Als u de client wilt bijwerken, moet u de VM-installatie kopie bijwerken door een nieuwe MSI te installeren.
-- Teams tonen momenteel alleen de UTC-tijd zone in chat, kanalen en agenda.
 - Media optimalisatie voor teams wordt alleen ondersteund voor de Windows desktop-client op computers met Windows 10.
 - Het gebruik van expliciete HTTP-proxy's die zijn gedefinieerd voor een eind punt, wordt niet ondersteund.
 
@@ -143,7 +142,7 @@ Het gebruik van teams in een gevirtualiseerde omgeving verschilt van het gebruik
 - Vanwege WebRTC-beperkingen is de omzetting van inkomende en uitgaande video stromen beperkt tot 720p.
 - De app teams ondersteunt geen HID-knoppen of LED-besturings elementen met andere apparaten.
 
-Voor teams bekende problemen die niet zijn gerelateerd aan gevirtualiseerde omgevingen raadpleegt [u ondersteunings teams in uw organisatie](/microsoftteams/known-issues/)
+Voor teams bekende problemen die niet zijn gerelateerd aan gevirtualiseerde omgevingen raadpleegt [u ondersteunings teams in uw organisatie](/microsoftteams/known-issues)
 
 ## <a name="uservoice-site"></a>UserVoice-site
 
@@ -165,8 +164,8 @@ Als u de eigenschappen van de Remote Desktop Protocol (RDP) van een hostgroep wi
 
 Het inschakelen van apparaatomleiding is niet vereist wanneer teams met media optimalisatie gebruiken. Als u teams zonder media optimalisatie gebruikt, stelt u de volgende RDP-eigenschappen in om de omleiding van de microfoon en camera in te scha kelen:
 
-- `audiocapturemode:i:1`Hiermee wordt audio-opname van het lokale apparaat ingeschakeld en worden audio toepassingen omgeleid naar de externe sessie.
-- `audiomode:i:0`Audio afspelen op de lokale computer.
-- `camerastoredirect:s:*`alle camera's worden omgeleid.
+- `audiocapturemode:i:1` Hiermee wordt audio-opname van het lokale apparaat ingeschakeld en worden audio toepassingen omgeleid naar de externe sessie.
+- `audiomode:i:0` Audio afspelen op de lokale computer.
+- `camerastoredirect:s:*` alle camera's worden omgeleid.
 
 Ga voor meer informatie naar [aanpassen Remote Desktop Protocol eigenschappen voor een hostgroep](customize-rdp-properties.md).

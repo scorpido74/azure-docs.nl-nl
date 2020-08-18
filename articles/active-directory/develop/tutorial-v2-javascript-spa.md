@@ -1,6 +1,7 @@
 ---
-title: Zelfstudie voor een app met één pagina -Microsoft-identiteitsplatform | Azure
-description: Hoe met JavaScript-toepassingen met één pagina een API kan worden aangeroepen die toegangstokens nodig heeft van Azure Active Directory v2.0-eindpunt
+title: Zelfstudie voor JavaScript-apps met één pagina | Azure
+titleSuffix: Microsoft identity platform
+description: In deze zelfstudie leert u hoe in JavaScript-apps met één pagina (SPA's) een API kan worden aangeroepen waarvoor toegangstokens zijn vereist die zijn uitgegeven door het Microsoft Identity Platform.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 745132284ee48270b46b6bd2f785d8bec19404fb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129675"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118192"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-toepassing met één pagina (SPA)
 
@@ -25,8 +26,8 @@ In deze gids leert u hoe u het volgende kunt doen met een JavaScript-toepassing 
 - Een toegangstoken verkrijgen
 - De Microsoft Graph API of andere API's aanroepen die toegangstokens nodig hebben van het *Microsoft identity platform-eindpunt*
 
->[!NOTE]
-> Als u niet bekend bent met het Microsoft identity platform, raden we u aan om eerst de [quickstart Gebruikers aanmelden en een toegangstoken ophalen in een JavaScript-toepassing met één pagina](quickstart-v2-javascript.md) te raadplegen.
+>[!TIP]
+> In deze zelfstudie wordt gebruikgemaakt van MSAL.js v1.x. Dit is beperkt tot het gebruik van de impliciete toekenningsstroom voor toepassingen met één pagina. Het is raadzaam in plaats daarvan voor alle nieuwe toepassingen [MSAL.js 2.x en de autorisatiecodestroom met PKCE- en CORS-ondersteuning](tutorial-v2-javascript-auth-code.md) te gebruiken.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Hoe de voorbeeld-app werkt die wordt gegenereerd in deze gids
 
@@ -322,7 +323,7 @@ Maak een nieuw bestand met de naam `authConfig.js` om uw configuratieparameters 
 
  Waar:
  - *\<Enter_the_Application_Id_Here>* is de **Toepassings-id (client-id)** voor de toepassing die u hebt geregistreerd.
- - *\<Enter_the_Cloud_Instance_Id_Here>* is de instantie van de Azure-cloud. Voer *https://login.microsoftonline.com* in voor de hoofd- (of globale) Azure-cloud. Zie [Nationale clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) voor **nationale** clouds (bijvoorbeeld China).
+ - *\<Enter_the_Cloud_Instance_Id_Here>* is de instantie van de Azure-cloud. Voer *https://login.microsoftonline.com* in voor de hoofd- (of globale) Azure-cloud. Zie [Nationale clouds](./authentication-national-cloud.md) voor **nationale** clouds (bijvoorbeeld China).
  - *\<Enter_the_Tenant_info_here>* is ingesteld op een van de volgende opties:
    - Als uw toepassing *accounts in deze organisatiemap* ondersteunt, vervangt u deze waarde door de **tenant-id** of **tenantnaam** (bijvoorbeeld *contoso.microsoft.com*).
    - Als uw toepassing *accounts in elke organisatiemap* ondersteunt, vervang deze waarde dan door **organisaties**.
@@ -446,7 +447,7 @@ Met de methode `acquireTokenSilent` wordt het verkrijgen en vernieuwen van token
    ```
 
    Waar:
-   - *\<Enter_the_Graph_Endpoint_Here>* is het exemplaar van Microsoft Graph API. Voor het globale Microsoft Graph API-eindpunt vervangt u deze tekenreeks door `https://graph.microsoft.com`. Raadpleeg de [documentatie voor Graph API](https://docs.microsoft.com/graph/deployments) voor implementaties in nationale clouds.
+   - *\<Enter_the_Graph_Endpoint_Here>* is het exemplaar van Microsoft Graph API. Voor het globale Microsoft Graph API-eindpunt vervangt u deze tekenreeks door `https://graph.microsoft.com`. Raadpleeg de [documentatie voor Graph API](/graph/deployments) voor implementaties in nationale clouds.
 
 1. Maak vervolgens een JS-bestand met de naam `graph.js`, waarmee een REST-aanroep naar Graph API van Microsoft wordt gemaakt, en voeg de volgende code toe:
 

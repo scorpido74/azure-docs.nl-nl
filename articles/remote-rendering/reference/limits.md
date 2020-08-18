@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c4c6be7c8a6287c5a8ec6a60121751ff9fc0dc9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808546"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509224"
 ---
 # <a name="limitations"></a>Beperkingen
 
@@ -35,12 +35,12 @@ Een aantal functies hebben een grootte, aantal of andere beperkingen.
 
 Het toegestane aantal veelhoeken voor alle geladen modellen is afhankelijk van de grootte van de virtuele machine die wordt door gegeven aan [de rest API voor sessie beheer](../how-tos/session-rest-api.md#create-a-session):
 
-| VM-grootte | Maximum aantal veelhoeken |
+| Server grootte | Maximum aantal veelhoeken |
 |:--------|:------------------|
 |standaard| 20.000.000 |
 |ultieme| geen limiet |
 
-Zie hoofd stuk [VM-grootte](../reference/vm-sizes.md) voor meer gedetailleerde informatie over deze beperking.
+Zie het hoofd stuk [Server grootte](../reference/vm-sizes.md) voor meer gedetailleerde informatie over deze beperking.
 
 ## <a name="platform-limitations"></a>Platform beperkingen
 

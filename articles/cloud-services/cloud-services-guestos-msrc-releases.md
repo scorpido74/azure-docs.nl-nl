@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/15/2020
+ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 21dcc10be255c0795058886188b4380266679963
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258297"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510161"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
@@ -79,33 +79,30 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 
 
 ## <a name="july-2020-guest-os"></a>2020 juli-gast besturingssysteem
->[!NOTE]
->Het besturings systeem van juli wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het gast besturingssysteem van juli. Deze lijst is onderhevig aan wijzigingen.
-
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-07 |  [4565479]  |  Internet Explorer | 2,100, 3,87, 4,80 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565511]  |  Meest recente cumulatieve update (LCU) | 5,45 | Jul 14, 2020 |
-|  Rel 20-07 |  [4558998]  |  Meest recente cumulatieve update (LCU) | 6,21 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565524]  |  Maandelijks samen vouwen | 2,100 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565616]  |  Maandelijks samen vouwen | 2,100 | Jul 16, 2020 |
-|  Rel 20-07 |  [4565354]  |  Onderhouds stack-update | 2,100 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565612]  |  Maandelijks samen vouwen | 2,100 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565615]  |  Maandelijks samen vouwen | 3,87 | Jul 14, 2020 |
-|  Rel 20-07 |  [4566426]  |  Onderhouds stack-update | 3,87 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565537]  |  Maandelijks samen vouwen | 3,87 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565610]  |  Maandelijks samen vouwen | 3,87 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565541]  |  Maandelijks samen vouwen | 4,80 | Jul 14, 2020 |
-|  Rel 20-07 |  [4566425]  |  Onderhouds stack-update | 4,80 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565614]  |  Maandelijks samen vouwen | 4,80 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565613]  |  Maandelijks samen vouwen | 4,80 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565912]  |  Onderhouds stack-update | 5,45 | Jul 14, 2020 |
-|  Rel 20-07 |  [4565628]  |  Maandelijks samen vouwen | 5,45 | Jul 14, 2020 |
-|  Rel 20-07 |  [4494175]  |  Micro | 5,45 | 25 februari 2020 |
-|  Rel 20-07 |  [4565632]  |  Maandelijks samen vouwen | 6,21 | Jul 14, 2020 |
-|  Rel 20-07 |  [4558997]  |  Onderhouds stack-update | 6,21 | Jul 14, 2020 |
-|  Rel 20-07 |  [4494174]  |  Micro | 6,21 | 25 februari 2020 |
+|  Rel 20-07 |  [4565479]  |  Internet Explorer | [2,100], [3,87], [4,80] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565511]  |  Meest recente cumulatieve update (LCU) | [5,45] | Jul 14, 2020 |
+|  Rel 20-07 |  [4558998]  |  Meest recente cumulatieve update (LCU) | [6,21] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565524]  |  Maandelijks samen vouwen | [2,100] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565616]  |  Maandelijks samen vouwen | [2,100] | Jul 16, 2020 |
+|  Rel 20-07 |  [4565354]  |  Onderhouds stack-update | [2,100] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565612]  |  Maandelijks samen vouwen | [2,100] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565615]  |  Maandelijks samen vouwen | [3,87] | Jul 14, 2020 |
+|  Rel 20-07 |  [4566426]  |  Onderhouds stack-update | [3,87] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565537]  |  Maandelijks samen vouwen | [3,87] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565610]  |  Maandelijks samen vouwen | [3,87] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565541]  |  Maandelijks samen vouwen | [4,80] | Jul 14, 2020 |
+|  Rel 20-07 |  [4566425]  |  Onderhouds stack-update | [4,80] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565614]  |  Maandelijks samen vouwen | [4,80] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565613]  |  Maandelijks samen vouwen | [4,80] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565912]  |  Onderhouds stack-update | [5,45] | Jul 14, 2020 |
+|  Rel 20-07 |  [4565628]  |  Maandelijks samen vouwen | [5,45] | Jul 14, 2020 |
+|  Rel 20-07 |  [4494175]  |  Micro | [5,45] | 25 februari 2020 |
+|  Rel 20-07 |  [4565632]  |  Maandelijks samen vouwen | [6,21] | Jul 14, 2020 |
+|  Rel 20-07 |  [4558997]  |  Onderhouds stack-update | [6,21] | Jul 14, 2020 |
+|  Rel 20-07 |  [4494174]  |  Micro | [6,21] | 25 februari 2020 |
 
 
 [4565479]: https://support.microsoft.com/kb/4565479
@@ -129,6 +126,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4565632]: https://support.microsoft.com/kb/4565632
 [4558997]: https://support.microsoft.com/kb/4558997
 [4494174]: https://support.microsoft.com/kb/4494174
+[2,100]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,87]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,45]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,21]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="june-2020-guest-os"></a>Juni 2020-gast besturingssysteem

@@ -6,18 +6,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76932404"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924271"
 ---
 # <a name="what-is-azure-dns"></a>Wat is Azure DNS?
 
-Azure DNS is een service voor het hosten van DNS-domeinen die naamomzetting verzorgt met behulp van de Microsoft Azure-infrastructuur. Door uw domeinen in Azure te hosten, kunt u uw DNS-records met dezelfde referenties, API's, hulpprogramma's en facturering beheren als voor uw andere Azure-services.
+Azure DNS is een hostingservice voor DNS-domeinen die naamomzetting biedt met behulp van Microsoft Azure-infrastructuur. Door uw domeinen in Azure te hosten, kunt u uw DNS-records met dezelfde referenties, API's, hulpprogramma's en facturering beheren als voor uw andere Azure-services.
 
-U kunt Azure DNS niet gebruiken om een ​​domeinnaam te kopen. Tegen een jaarlijkse vergoeding kunt u een domeinnaam kopen met behulp van [App Service-domeinen](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) of bij een externe domeinnaamregistrar. Uw domeinen kunnen vervolgens worden gehost in Azure DNS voor recordbeheer. Zie [een domein delegeren voor Azure DNS](dns-domain-delegation.md)voor meer informatie.
+U kunt Azure DNS niet gebruiken om een ​​domeinnaam te kopen. Tegen een jaarlijkse vergoeding kunt u een domeinnaam kopen met behulp van [App Service-domeinen](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) of bij een externe domeinnaamregistrar. Uw domeinen kunnen vervolgens worden gehost in Azure DNS voor recordbeheer. Zie [Delegate a domain to Azure DNS](dns-domain-delegation.md) (Een domein aan Azure DNS overdragen) voor meer informatie.
 
 De volgende functies zijn opgenomen in Azure DNS.
 
@@ -29,7 +29,7 @@ DNS-domeinen in Azure DNS worden gehost op het wereldwijde netwerk van Azure DNS
 
  Azure DNS is gebaseerd op Azure Resource Manager, die onder meer de volgende functies biedt:
 
-* [op rollen gebaseerd toegangsbeheer](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) om te bepalen wie er toegang heeft tot bepaalde acties voor uw organisatie.
+* [Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) om te bepalen wie er toegang heeft tot bepaalde acties voor uw organisatie.
 
 * [Activiteitenlogboeken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) om te controleren hoe een gebruiker in uw organisatie een resource heeft gewijzigd, of te gebruiken bij het opsporen van fouten.
 
@@ -39,7 +39,7 @@ Zie voor meer informatie [DNS-zones en -records beschermen](dns-protect-zones-re
 
 ## <a name="dnssec"></a>DNSSEC
 
-Azure DNS ondersteunt momenteel geen DNSSEC. In de meeste gevallen kunt u de behoefte aan DNSSEC verminderen door consistentie van HTTPS/TLS in uw toepassingen te gebruiken. Als DNSSEC een essentiële vereiste is voor uw DNS-zones, kunt u deze zones hosten met DNS-hosting providers van derden.
+Azure DNS ondersteunt momenteel geen DNSSEC. In de meeste gevallen kunt u de behoefte aan DNSSEC verminderen door steeds HTTPS/TLS te gebruiken in uw toepassingen. Als DNSSEC een essentiële vereiste is voor uw DNS-zones, kunt u deze zones hosten met externe DNS-hostingproviders.
 
 ## <a name="ease-of-use"></a>Gebruiksgemak
 
@@ -47,7 +47,7 @@ Azure DNS ondersteunt momenteel geen DNSSEC. In de meeste gevallen kunt u de beh
 
 De facturering van DNS vindt plaats op basis van het aantal DNS-zones dat in Azure wordt gehost en het aantal DNS-query's dat wordt ontvangen. Zie [Prijzen voor Azure DNS](https://azure.microsoft.com/pricing/details/dns/) voor meer informatie over prijzen.
 
-Uw domeinen en records kunnen worden beheerd met behulp van de Azure-portal, Azure PowerShell-cmdlets en de platformoverschrijdende Azure CLI. Toepassingen waarvoor automatisch DNS-beheer is vereist, kunnen met de service worden geïntegreerd met behulp van de REST-API en SDK's.
+Uw domeinen en records kunnen worden beheerd met behulp van de Azure-portal, Azure PowerShell-cmdlets en de platformoverschrijdende Azure CLI. Toepassingen waarvoor geautomatiseerd DNS-beheer is vereist, kunnen met de-service worden geïntegreerd met behulp van de REST API en SDK's.
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>Aanpasbare virtuele netwerken met privédomeinen
 
@@ -57,9 +57,9 @@ Zie [Azure DNS gebruiken voor privédomeinen](private-dns-overview.md) voor meer
 
 ## <a name="alias-records"></a>Aliasrecords
 
-Azure DNS ondersteunt alias-recordsets. U kunt een alias recordset gebruiken om te verwijzen naar een Azure-resource, zoals een openbaar IP-adres van Azure, een Azure Traffic Manager-profiel of een Azure Content Delivery Network (CDN)-eind punt. Als het IP-adres van de onderliggende resource verandert, wordt de alias-recordset automatisch bijgewerkt tijdens DNS-omzetting. De alias-record set verwijst naar het service-exemplaar en het service-exemplaar is gekoppeld aan een IP-adres.
+Azure DNS ondersteunt alias-recordsets. U kunt een alias-recordset gebruiken om te verwijzen naar een Azure-resource, zoals een openbaar IP-adres van Azure, een Azure Traffic Manager-profiel of een Azure CDN-eindpunt (CDN: Content Delivery Network). Als het IP-adres van de onderliggende resource verandert, wordt de alias-recordset automatisch bijgewerkt tijdens DNS-omzetting. De alias-record set verwijst naar het service-exemplaar en het service-exemplaar is gekoppeld aan een IP-adres.
 
-U kunt nu ook uw Apex-of Blot-domein naar een Traffic Manager profiel of CDN-eind punt wijzen met behulp van een alias record. Bijvoorbeeld: contoso.com.
+U kunt nu ook uw apex of domein zonder voorvoegsel laten verwijzen naar een Traffic Manager-profiel of CDN-eindpunt met behulp van een alias-record. Bijvoorbeeld: contoso.com.
 
 Zie [Overzicht van Azure DNS-aliasrecords](dns-alias.md) voor meer informatie.
 
@@ -70,4 +70,3 @@ Zie [Overzicht van Azure DNS-aliasrecords](dns-alias.md) voor meer informatie.
 * Zie [Een DNS-zone maken](./dns-getstarted-create-dnszone-portal.md) voor meer informatie over het maken van een zone in Azure DNS.
 
 * Zie voor veelgestelde vragen over Azure DNS de [Veelgestelde vragen over Azure DNS](dns-faq.md).
-

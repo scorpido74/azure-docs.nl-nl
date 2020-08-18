@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u fysieke machines naar Azure m
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 16145c5d8b2414750b6eff9669fa7cd61eb482f5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ff8ac55f129e7579b12e2102c0c6292e9030021c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165393"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066624"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Machines als fysieke servers migreren naar Azure
 
@@ -103,10 +103,13 @@ Azure Migrate:Server Migration gebruikt het replicatieapparaat om machines naar 
 
 Bereid de implementatie van het apparaat als volgt voor:
 
-- U bereidt een machine voor die het replicatieapparaat gaat hosten. [Bekijk](migrate-replication-appliance.md#appliance-requirements) de machinevereisten. Het apparaat mag niet worden geïnstalleerd op een bronmachine die u wilt repliceren.
+- U bereidt een machine voor die het replicatieapparaat gaat hosten. [Bekijk](migrate-replication-appliance.md#appliance-requirements) de machinevereisten.
 - Het replicatieapparaat maakt gebruik van MySQL. Bekijk de [opties](migrate-replication-appliance.md#mysql-installation) voor het installeren van MySQL op het apparaat.
 - Controleer de vereiste Azure-URL's voor het replicatieapparaat om toegang te krijgen tot [openbare](migrate-replication-appliance.md#url-access) clouds en [overheidsclouds](migrate-replication-appliance.md#azure-government-url-access).
 - Controleer de toegangsvereisten [poort] (migrate-replication-appliance.md#port-access) voor het replicatieapparaat.
+
+> [!NOTE]
+> Het replicatieapparaat mag niet worden geïnstalleerd op een bronmachine die u wilt repliceren of op het detectie- en beoordelingsapparaat voor Azure Migrate dat u eerder hebt geïnstalleerd.
 
 ## <a name="add-the-server-migration-tool"></a>Het hulpprogramma Server Migration toevoegen
 
@@ -155,7 +158,7 @@ De eerste stap van de migratie is het instellen van het replicatieapparaat. Als 
     ![Provider downloaden](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
 10. Kopieer het installatiebestand voor het apparaat en het sleutelbestand naar de Windows Server 2016-machine die u hebt gemaakt voor het apparaat.
-11. Voer het installatiebestand voor het replicatieapparaat uit, zoals is beschreven in de volgende procedure. Nadat de installatie is voltooid, wordt de wizard Apparaat configureren automatisch gestart (u kunt de wizard ook handmatig starten met behulp van de cspsconfigtool-snelkoppeling die op het bureaublad van het apparaat is gemaakt). Gebruik het tabblad Accounts beheren van de wizard om accountgegevens toe te voegen die moeten worden gebruikt voor de push-installatie van de Mobility-service. In deze zelfstudie wordt de Mobility-service handmatig geïnstalleerd op de te repliceren machines. Daarom moet u in deze stap een dummyaccount maken en doorgaan.
+11. Wanneer de installatie is voltooid, wordt de wizard Apparaat configureren automatisch gestart (u kunt de wizard ook handmatig starten met behulp van de cspsconfigtool-snelkoppeling die op het bureaublad van het apparaat is gemaakt). Gebruik het tabblad Accounts beheren van de wizard om accountgegevens toe te voegen die moeten worden gebruikt voor de push-installatie van de Mobility-service. In deze zelfstudie wordt de Mobility-service handmatig geïnstalleerd op de te repliceren bron-VM's. Daarom moet u in deze stap een dummyaccount maken en doorgaan. U kunt de volgende gegevens opgeven voor het maken van het dummy-account: 'guest' als de beschrijvende naam, 'username' als de gebruikersnaam en 'password' als het wachtwoord voor het account. U gebruikt dit dummy-account in de fase waarin u de replicatie gaat inschakelen. 
 
 12. Nadat het apparaat na de installatie opnieuw is opgestart in **Machines detecteren**, selecteert u het nieuwe apparaat in **Configuratieserver selecteren** en klikt u op **Registratie voltooien**. Bij het voltooien van de registratie worden enkele laatste taken uitgevoerd om het replicatieapparaat voor te bereiden.
 
@@ -230,7 +233,7 @@ Selecteer nu machines voor de migratie.
 2. Selecteer in **Repliceren** > **Broninstellingen** > **Zijn uw machines gevirtualiseerd?** **Niet gevirtualiseerd/Overige**.
 3. In **On-premises apparaat** selecteert u de naam van het Azure Migrate-apparaat dat u instelt.
 4. Selecteer in **Processerver** de naam van het replicatieapparaat.
-6. In **Gastreferenties** geeft u een dummyaccount op dat wordt gebruikt voor het handmatig installeren van de Mobility-service (push installatie wordt niet ondersteund in Fysiek). Klik vervolgens op **Volgende: Virtuele machines**.
+6. Selecteer bij **Gastreferenties** het dummy-account dat eerder is gemaakt tijdens het [configureren van het installatieprogramma voor de replicatiefunctie](#download-the-replication-appliance-installer) om de Mobility-service handmatig te installeren (push-installatie wordt niet ondersteund). Klik vervolgens op **Volgende: Virtuele machines**.   
 
     ![VM's repliceren](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 

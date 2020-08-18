@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681244"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509838"
 ---
 # <a name="use-the-session-management-rest-api"></a>De REST API voor sessiebeheer gebruiken
 
@@ -71,9 +71,9 @@ Met deze opdracht maakt u een sessie. Hiermee wordt de ID van de nieuwe sessie g
 
 **Hoofd tekst van aanvraag:**
 
-* maxLeaseTime (time span): een time-outwaarde wanneer de virtuele machine automatisch buiten gebruik wordt gesteld
+* maxLeaseTime (time span): een time-outwaarde wanneer de sessie automatisch wordt buiten gebruik gesteld
 * modellen (matrix): URL van de Asset-container om vooraf te laden
-* grootte (teken reeks): de VM-grootte (**' standaard '** of **' Premium '**). Zie specifieke [beperkingen](../reference/limits.md#overall-number-of-polygons)voor de VM-grootte.
+* grootte (teken reeks): de te configureren server grootte ([**"Standard"**](../reference/vm-sizes.md) of [**"Premium"**](../reference/vm-sizes.md)). Bekijk de specifieke beperkingen voor de [grootte](../reference/limits.md#overall-number-of-polygons).
 
 **Rapporten**
 
@@ -130,7 +130,7 @@ Met deze opdracht worden de para meters van een sessie bijgewerkt. Op dit moment
 
 **Hoofd tekst van aanvraag:**
 
-* maxLeaseTime (time span): een time-outwaarde wanneer de virtuele machine automatisch buiten gebruik wordt gesteld
+* maxLeaseTime (time span): een time-outwaarde wanneer de sessie automatisch wordt buiten gebruik gesteld
 
 **Rapporten**
 

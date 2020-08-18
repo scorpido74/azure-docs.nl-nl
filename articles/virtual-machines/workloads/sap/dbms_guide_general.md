@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827415"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510229"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -221,7 +221,7 @@ Voor Premium Storage bestaan de volgende cache opties:
 
 Voor Premium Storage wordt u aangeraden de **Lees cache voor gegevens bestanden** van de SAP-data base te gebruiken en **geen cache te kiezen voor de schijven van logboek bestanden**.
 
-Voor implementaties met een M-serie raden we u aan Azure Write Accelerator te gebruiken voor uw DBMS-implementatie. Zie [Write Accelerator inschakelen](../../windows/how-to-enable-write-accelerator.md)voor meer informatie, beperkingen en implementatie van Azure write Accelerator.
+Voor implementaties met een M-serie raden we u aan Azure Write Accelerator te gebruiken voor uw DBMS-implementatie. Zie [Write Accelerator inschakelen](../../how-to-enable-write-accelerator.md)voor meer informatie, beperkingen en implementatie van Azure write Accelerator.
 
 
 ### <a name="azure-nonpersistent-disks"></a>Niet-permanente Azure-schijven

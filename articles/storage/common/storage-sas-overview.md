@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b9882168cd063cb4448269cc6a4949778fe93fb1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502168"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509855"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
 
@@ -29,7 +29,7 @@ Azure Storage ondersteunt drie typen hand tekeningen voor gedeelde toegang:
 
     Zie [een gebruiker delegering sa's (rest API) maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie over de sa's van de gebruikers overdracht.
 
-- **Service-SA'S.** Een service-SAS is beveiligd met de sleutel van het opslag account. Een service-SAS delegeert toegang tot een bron in slechts een van de Azure Storage services: Blob-opslag, wachtrij opslag, tabel opslag of Azure Files. 
+- **Service-SA'S.** Een service-SAS is beveiligd met de sleutel van het opslag account. Een service-SAS delegeert toegang tot een bron in slechts een van de Azure Storage services: Blob-opslag, wachtrij opslag, tabel opslag of Azure Files.
 
     Zie [Create a Service SAS (rest API) (Engelstalig)](/rest/api/storageservices/create-service-sas)voor meer informatie over de service-sa's.
 
@@ -38,7 +38,7 @@ Azure Storage ondersteunt drie typen hand tekeningen voor gedeelde toegang:
     [Maak een account SAS (rest API)](/rest/api/storageservices/create-account-sas)voor meer informatie over de account-SAS.
 
 > [!NOTE]
-> Micro soft raadt u aan om Azure AD-referenties, indien mogelijk, te gebruiken als een beveiligings best practice, in plaats van de account sleutel te gebruiken, wat eenvoudiger kan worden aangetast. Wanneer het ontwerp van uw toepassing gedeelde toegangs handtekeningen vereist voor toegang tot Blob Storage, gebruikt u Azure AD-referenties om een gebruikers delegering SA'S te maken indien mogelijk voor superieure beveiliging.
+> Micro soft raadt u aan om Azure AD-referenties, indien mogelijk, te gebruiken als een beveiligings best practice, in plaats van de account sleutel te gebruiken, wat eenvoudiger kan worden aangetast. Wanneer het ontwerp van uw toepassing gedeelde toegangs handtekeningen vereist voor toegang tot Blob Storage, gebruikt u Azure AD-referenties om een gebruikers delegering SA'S te maken indien mogelijk voor superieure beveiliging. Zie [toegang tot blobs en wacht rijen toestaan met Azure Active Directory](storage-auth-aad.md)voor meer informatie.
 
 Een Shared Access Signature kan een van de twee volgende vormen hebben:
 
@@ -52,15 +52,27 @@ Een Shared Access Signature kan een van de twee volgende vormen hebben:
 
 Een Shared Access Signature is een ondertekende URI die verwijst naar een of meer opslag resources en een token bevat dat een speciale set query parameters bevat. Het token geeft aan hoe de bronnen kunnen worden gebruikt door de client. Een van de query parameters, de hand tekening, wordt samengesteld op basis van de SAS-para meters en ondertekend met de sleutel die is gebruikt voor het maken van de SAS. Deze hand tekening wordt door Azure Storage gebruikt om toegang tot de opslag bron te verlenen.
 
-### <a name="sas-signature"></a>SAS-hand tekening
+### <a name="sas-signature-and-authorization"></a>SAS-hand tekening en autorisatie
 
-U kunt op een van de volgende twee manieren een SAS ondertekenen:
+U kunt op een van de volgende twee manieren een SAS-token ondertekenen:
 
 - Met een *gebruikers overdrachts sleutel* die is gemaakt met behulp van de referenties van Azure Active Directory (Azure AD). Een SAS voor gebruikers overdracht is ondertekend met de sleutel gebruikers overdracht.
 
     Als u de sleutel voor gebruikers overdracht wilt ophalen en de SA'S wilt maken, moet aan een Azure AD-beveiligingsprincipal een Azure-rol worden toegewezen die de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** bevat. Zie [een gebruiker delegering sa's (rest API) maken](/rest/api/storageservices/create-user-delegation-sas)voor gedetailleerde informatie over Azure-rollen met machtigingen voor het ophalen van de sleutel voor gebruikers overdracht.
 
-- Met de sleutel van het opslag account. Zowel een service-SAS als een account-SAS zijn ondertekend met de sleutel van het opslag account. Een toepassing moet toegang hebben tot de account sleutel om een SAS te maken die is ondertekend met de account sleutel.
+- Met de sleutel van het opslag account (gedeelde sleutel). Zowel een service-SAS als een account-SAS zijn ondertekend met de sleutel van het opslag account. Een toepassing moet toegang hebben tot de account sleutel om een SAS te maken die is ondertekend met de account sleutel.
+
+Wanneer een aanvraag een SAS-token bevat, wordt die aanvraag geautoriseerd op basis van de manier waarop dat SAS-token is ondertekend. De toegangs sleutel of referenties die u gebruikt om een SAS-token te maken, worden ook door Azure Storage gebruikt om toegang te verlenen aan een client die de SAS bezit.
+
+De volgende tabel bevat een overzicht van de manier waarop elk type SAS-token wordt toegestaan wanneer het is opgenomen in een aanvraag om Azure Storage:
+
+| Type SAS | Type autorisatie |
+|-|-|
+| SAS voor gebruikers overdracht (alleen Blob-opslag) | Azure AD |
+| Service-SA'S | Gedeelde sleutel |
+| Account-SAS | Gedeelde sleutel |
+
+Micro soft raadt u aan om de SAS voor gebruikers te gebruiken wanneer dat mogelijk is voor een superieure beveiliging.
 
 ### <a name="sas-token"></a>SAS-token
 

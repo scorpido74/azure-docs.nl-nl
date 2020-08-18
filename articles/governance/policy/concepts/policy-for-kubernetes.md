@@ -3,12 +3,12 @@ title: Voor beeld-Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises. Dit is een preview-functie.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003504"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509872"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
 
@@ -73,19 +73,19 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Kubernetes Service provider
      az provider register --namespace Microsoft.ContainerService
-   
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-   
+
      # Feature register: enables installing the add-on
      az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-     
+
      # Use the following to confirm the feature has registered
      az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-     
+
      # Once the above shows 'Registered' run the following to propagate the update
      az provider register -n Microsoft.ContainerService
      ```
@@ -135,7 +135,7 @@ Zodra de bovenstaande vereiste stappen zijn voltooid, installeert u de Azure Pol
      <a name="migrate-from-v1"></a>
      > [!NOTE]
      > Als de knop **invoeg toepassing inschakelen** grijs wordt weer gegeven, is het abonnement nog niet toegevoegd aan de preview-versie. Als de knop **invoeg toepassing uitschakelen** is ingeschakeld en er een bericht over een migratie waarschuwing v2 wordt weer gegeven, wordt v1 add-on geïnstalleerd en moet het worden verwijderd voordat u v2-beleids definities toewijst. De _afgeschafte_ v1-invoeg toepassing wordt automatisch vervangen door de v2-invoeg toepassing vanaf 24 augustus 2020. Nieuwe v2-versies van de beleids definities moeten vervolgens worden toegewezen. Voer de volgende stappen uit om nu een upgrade uit te voeren:
-     > 
+     >
      > 1. Voor het valideren van uw AKS-cluster is de V1-invoeg toepassing geïnstalleerd door de pagina **beleids regels (preview)** op uw AKS-cluster te bezoeken en de ' het huidige cluster maakt gebruik van Azure Policy add-on v1... ' Bericht.
      > 1. [Verwijder de invoeg toepassing](#remove-the-add-on-from-aks).
      > 1. Selecteer de knop **invoeg toepassing inschakelen** om de v2-versie van de invoeg toepassing te installeren.
@@ -185,16 +185,16 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -205,11 +205,11 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
 1. Uw Kubernetes-cluster is ingeschakeld voor Azure Arc. Zie voor meer informatie [een onboarding van een Kubernetes-cluster naar Azure Arc](../../../azure-arc/kubernetes/connect-cluster.md).
 
-1. Hebben de volledig gekwalificeerde Azure-Resource-ID van het Kubernetes-cluster met Azure Arc enabled. 
+1. Hebben de volledig gekwalificeerde Azure-Resource-ID van het Kubernetes-cluster met Azure Arc enabled.
 
 1. Open poorten voor de invoeg toepassing. De invoeg toepassing Azure Policy gebruikt deze domeinen en poorten om beleids definities en toewijzingen op te halen en de compatibiliteit van het cluster weer te geven aan Azure Policy.
 
-   |Domein |Poort |
+   |Domain |Poort |
    |---|---|
    |`gov-prod-policy-data.trafficmanager.net` |`443` |
    |`raw.githubusercontent.com` |`443` |
@@ -226,7 +226,7 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
    - Azure PowerShell
 
-     ```azure powershell-interactive
+     ```azurepowershell-interactive
      $sp = New-AzADServicePrincipal -Role "Policy Insights Data Writer (Preview)" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
 
      @{ appId=$sp.ApplicationId;password=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret));tenant=(Get-AzContext).Tenant.Id } | ConvertTo-Json
@@ -289,16 +289,16 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -310,7 +310,7 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
      ```bash
      # Get the kube-apiserver pod name
      kubectl get pods -n kube-system
-   
+
      # Find the aadClientID value
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
@@ -393,21 +393,20 @@ Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp
 
 1. Stel het **bereik** in op de beheer groep, het abonnement of de resource groep van het Kubernetes-cluster waarop de beleids toewijzing van toepassing is.
 
-   > [!NOTE]    
+   > [!NOTE]
    > Bij het toewijzen van de Azure Policy voor Kubernetes definitie moet het **bereik** de cluster bron bevatten. De **Scope** moet de resource groep van het cluster zijn voor een AKS engine-cluster.
 
-1. Geef de beleids toewijzing een **naam** en **Beschrijving** die u kunt gebruiken om deze gemakkelijk te identificeren.    
+1. Geef de beleids toewijzing een **naam** en **Beschrijving** die u kunt gebruiken om deze gemakkelijk te identificeren.
 
-1. Het [afdwingen van beleid](./assignment-structure.md#enforcement-mode) instellen op een van de waarden    
-   hieronder.   
+1. Stel het [afdwingen](./assignment-structure.md#enforcement-mode) van het beleid in op een van de onderstaande waarden.
 
-   - **Ingeschakeld** : dwing het beleid af op het cluster. Kubernetes-toegangs aanvragen met schendingen worden geweigerd.    
+   - **Ingeschakeld** : dwing het beleid af op het cluster. Kubernetes-toegangs aanvragen met schendingen worden geweigerd.
 
    - **Uitgeschakeld** : dwing het beleid niet af op het cluster. Kubernetes-toegangs aanvragen met schendingen worden niet geweigerd. De resultaten van de nalevings beoordeling zijn nog steeds beschikbaar. Bij het implementeren van nieuwe beleids definities voor het uitvoeren van clusters, is de optie _uitgeschakeld_ handig voor het testen van de beleids definitie als toegangs aanvragen met schendingen niet worden geweigerd.
 
-1. Selecteer **Volgende**. 
+1. Selecteer **Volgende**.
 
-1. **Parameter waarden** instellen 
+1. **Parameter waarden** instellen
 
    - Als u Kubernetes-naam ruimten van beleids evaluatie wilt uitsluiten, geeft u de lijst met naam ruimten in de para meters van de **naam ruimte**op. Het wordt aanbevolen om: _uitvoeren-System_, _gate keeper-System_en _Azure-Arc_uit te sluiten.
 

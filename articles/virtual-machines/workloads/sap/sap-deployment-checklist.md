@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067253"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511139"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -114,7 +114,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
         - In het algemeen wordt het gebruik van [Azure Standard-HDD-schijven](../../windows/disks-types.md#standard-hdd)niet aangeraden.
         - Gebruik [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) voor alle DBMS-vm's die op afstand gevoelig zijn.
         - Gebruik [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/).
-        - Gebruik Azure Write Accelerator voor DBMS-logboek stations met een M-serie. Houd rekening met Write Accelerator limieten en het gebruik, zoals wordt beschreven in [Write Accelerator](../../linux/how-to-enable-write-accelerator.md).
+        - Gebruik Azure Write Accelerator voor DBMS-logboek stations met een M-serie. Houd rekening met Write Accelerator limieten en het gebruik, zoals wordt beschreven in [Write Accelerator](../../how-to-enable-write-accelerator.md).
         - Voor de verschillende DBMS-typen raadpleegt u de [algemene SAP-gerelateerde DBMS-documentatie](./dbms_guide_general.md) en de DBMS-specifieke documentatie waarnaar het algemene document verwijst.
         - Zie [SAP Hana Infrastructure-configuraties en-bewerkingen op Azure](./hana-vm-operations.md)voor meer informatie over SAP Hana.
         - Koppel nooit Azure-gegevens schijven aan een Azure Linux-VM met behulp van de apparaat-ID. Gebruik in plaats daarvan de UUID (Universally Unique Identifier). Wees voorzichtig wanneer u grafische hulpprogram ma's gebruikt om Azure-gegevens schijven te koppelen. Controleer de vermeldingen in bestand/etc/fstab om te controleren of de UUID wordt gebruikt om de schijven te koppelen. In [dit artikel](../../linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk)vindt u meer informatie.

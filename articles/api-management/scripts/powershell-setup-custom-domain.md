@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van PowerShell-script - aangepast domein instellen | Microsoft Docs
-description: Voorbeeld van PowerShell-script - aangepast domein instellen
+description: Ontdek hoe u een aangepast domein instelt op proxy- en portaleindpunten van de API Management-service. Bekijk voorbeeldscripts en extra beschikbare resources.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 12/14/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: fedeb9fd1b2dd3bd47f3d950d506e2b2854bfd82
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16da7891b5321006708dc59ec8d482754beb7d9e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008778"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853259"
 ---
 # <a name="set-up-custom-domain"></a>Aangepast domein instellen
 

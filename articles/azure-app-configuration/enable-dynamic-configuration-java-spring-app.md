@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: a2864d610d71c6b3a86c131dabb3c0b9ed138bec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 653fcb6f6590fd503a97800ec8196025cf14a3b9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327919"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121558"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Zelfstudie: Dynamische configuratie in een Java Spring-app gebruiken
 
@@ -36,7 +36,7 @@ Open vervolgens bestand *pom.xml* in een teksteditor en voeg een `<dependency>` 
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.5</version>
 </dependency>
 ```
 
@@ -46,11 +46,33 @@ Open vervolgens bestand *pom.xml* in een teksteditor en voeg een `<dependency>` 
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
-Sla het bestand op, compileer de toepassing en voer deze daarna op de gebruikelijke manier uit.
+## <a name="run-and-test-the-app-locally"></a>De app lokaal uitvoeren en testen
+
+1. Maak uw Spring Boot-app met Maven en voer deze uit.
+
+    ```shell
+    mvn clean package
+    mvn spring-boot:run
+    ```
+
+1. Open een browservenster en ga naar de URL: `http://localhost:8080`.  U ziet het bericht dat bij uw sleutel hoort. 
+
+    U kunt ook *curl* gebruiken om uw toepassing te testen, bijvoorbeeld: 
+    
+    ```cmd
+    curl -X GET http://localhost:8080/
+    ```
+
+1. Als u de dynamische configuratie wilt testen, opent u de Azure App Configuration-portal die bij uw toepassing hoort. Selecteer **Configuratie Explorer** en werk de waarde van uw weergegeven sleutel bij, bijvoorbeeld:
+    | Sleutel | Waarde |
+    |---|---|
+    | application/config.message | Hallo - bijgewerkt |
+
+1. Vernieuw de browserpagina om het nieuwe bericht te zien.
 
 ## <a name="next-steps"></a>Volgende stappen
 

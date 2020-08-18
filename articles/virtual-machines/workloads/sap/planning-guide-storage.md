@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825001"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510858"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typen voor SAP-workload
 Azure heeft talloze opslag typen die in de mogelijkheden, door Voer, latentie en prijzen aanzienlijk verschillen. Sommige opslag typen zijn niet of zijn beperkt bruikbaar voor SAP-scenario's. Dat zijn verschillende Azure Storage-typen goed geschikt of geoptimaliseerd voor specifieke SAP-werkbelasting scenario's. Met name voor SAP HANA hebben sommige Azure Storage-typen gecertificeerd voor het gebruik met SAP HANA. In dit document gaan we de verschillende soorten opslag door lopen en de mogelijkheden en bruikbaarheid van SAP-workloads en SAP-onderdelen beschrijven.
@@ -84,7 +84,7 @@ Voordat u naar de details gaat, worden de samen vatting en aanbevelingen aan het
 | DBMS-logboek volume niet-HANA niet-M/Mv2 VM-families | niet ondersteund | beperkt geschikt (niet-productie) | geschikt voor een gemiddelde werk belasting | aanbevelingen | niet ondersteund |
 
 
-<sup>1</sup> met het gebruik van [Azure write Accelerator](../../windows/how-to-enable-write-accelerator.md) voor Mv2 VM-families voor logboek-en opnieuw uitvoeren op logboek volumes <sup>2</sup> met ANF zijn/Hana/data en/Hana/log vereist voor ANF 
+<sup>1</sup> met het gebruik van [Azure write Accelerator](../../how-to-enable-write-accelerator.md) voor Mv2 VM-families voor logboek-en opnieuw uitvoeren op logboek volumes <sup>2</sup> met ANF zijn/Hana/data en/Hana/log vereist voor ANF 
 
 Eigenschappen die u kunt verwachten van de lijst met verschillende soorten opslag, zoals:
 
@@ -101,7 +101,7 @@ Eigenschappen die u kunt verwachten van de lijst met verschillende soorten opsla
 | Geo-redundantie | niet voor beheerde schijven | niet voor beheerde schijven | nee | nee | nee |
 
 
-<sup>1</sup> met gebruik van [Azure write Accelerator](../../windows/how-to-enable-write-accelerator.md) voor Mv2 VM-families voor logboeken/opnieuw uitvoeren van logboek volumes
+<sup>1</sup> met gebruik van [Azure write Accelerator](../../how-to-enable-write-accelerator.md) voor Mv2 VM-families voor logboeken/opnieuw uitvoeren van logboek volumes
 
 <sup>2</sup> kosten zijn afhankelijk van ingerichte IOPS en door Voer
 
@@ -137,7 +137,7 @@ De functie matrix voor SAP-werk belasting ziet er als volgt uit:
 | Mogelijkheid| Opmerking| Opmerkingen/koppelingen | 
 | --- | --- | --- | 
 | VHD-basis versie van het besturings systeem | oplos | alle systemen |
-| Gegevensschijf | oplos | alle systemen- [speciaal voor SAP Hana](../../windows/how-to-enable-write-accelerator.md) |
+| Gegevensschijf | oplos | alle systemen- [speciaal voor SAP Hana](../../how-to-enable-write-accelerator.md) |
 | SAP Global Trans Port-map | JA | [Ondersteund](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-sapmnt | oplos | alle systemen |
 | Back-upopslag | oplos | voor opslag van back-ups op korte termijn |
@@ -149,12 +149,12 @@ De functie matrix voor SAP-werk belasting ziet er als volgt uit:
 | Maximum aantal IOPS per schijf | 20.000 [afhankelijk van de schijf grootte](https://azure.microsoft.com/pricing/details/managed-disks/) | VM- [limieten](../../sizes.md) ook overwegen |
 | SLA voor door Voer | JA | - |
 | Door Voer lineair naar capaciteit | halve lineaire tussen haakjes | [Prijzen beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA-gecertificeerd | JA | [speciaal voor SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| HANA-gecertificeerd | JA | [speciaal voor SAP HANA](../../how-to-enable-write-accelerator.md) |
 | Schijf momentopnamen mogelijk | JA | - |
-| Azure Backup mogelijke VM-moment opnamen | JA | met uitzonde ring van [Write Accelerator](../../windows/how-to-enable-write-accelerator.md) schijven in de cache  |
+| Azure Backup mogelijke VM-moment opnamen | JA | met uitzonde ring van [Write Accelerator](../../how-to-enable-write-accelerator.md) schijven in de cache  |
 | Kosten | DRAGER | - |
 
-Azure Premium Storage voldoet niet aan de SAP HANA opslag latentie-Kpi's met de algemene typen caching die worden aangeboden met Azure Premium Storage. Als u wilt voldoen aan de opslag latentie-Kpi's voor het schrijven van SAP HANA logboeken, moet u Azure Write Accelerator cache gebruiken, zoals beschreven in het artikel [enable write Accelerator](../../windows/how-to-enable-write-accelerator.md). Azure Write Accelerator voor delen van alle andere DBMS-systemen voor het schrijven van transactie logboeken en het opnieuw registreren van Logboeken. Daarom is het raadzaam om het te gebruiken in alle SAP-DBMS-implementaties. Voor SAP HANA is het gebruik van Azure Write Accelerator in combi natie met Azure Premium Storage verplicht.
+Azure Premium Storage voldoet niet aan de SAP HANA opslag latentie-Kpi's met de algemene typen caching die worden aangeboden met Azure Premium Storage. Als u wilt voldoen aan de opslag latentie-Kpi's voor het schrijven van SAP HANA logboeken, moet u Azure Write Accelerator cache gebruiken, zoals beschreven in het artikel [enable write Accelerator](../../how-to-enable-write-accelerator.md). Azure Write Accelerator voor delen van alle andere DBMS-systemen voor het schrijven van transactie logboeken en het opnieuw registreren van Logboeken. Daarom is het raadzaam om het te gebruiken in alle SAP-DBMS-implementaties. Voor SAP HANA is het gebruik van Azure Write Accelerator in combi natie met Azure Premium Storage verplicht.
 
 
 

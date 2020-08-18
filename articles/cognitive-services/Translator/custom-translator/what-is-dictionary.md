@@ -6,27 +6,27 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962259"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510756"
 ---
 # <a name="what-is-a-dictionary"></a>Wat is een woorden lijst?
 
-Een woorden lijst is een uitgelijnd paar documenten waarin een lijst met zinsdelen of zinnen en de bijbehorende vertalingen wordt opgegeven. Gebruik een woorden lijst in uw training, wanneer u wilt dat vertaler altijd alle exemplaren van de bron frase of zin vertaalt met behulp van de vertaling die u in de woorden lijst hebt gegeven. Woorden lijsten worden soms Glossaries of term bases genoemd. U kunt de woorden lijst beschouwen als een brute kracht ' kopiëren en vervangen ' voor alle termen die u vermeldt. Daarnaast bouwt de functie Custom Translator en maakt gebruik van een eigen woorden boek voor algemene doel einden om de kwaliteit van de vertaling te verbeteren. Een door de klant verschafte woorden lijst heeft echter een broncel en zal eerst zoeken naar woorden of zinnen.
+Een woorden lijst is een uitgelijnd paar documenten waarin een lijst met zinsdelen of zinnen en de bijbehorende vertalingen wordt opgegeven. Gebruik een woorden lijst in uw training als u wilt dat micro soft Translator altijd alle exemplaren van de bron woord groep of zin moet vertalen met behulp van de vertaling die u in de woorden lijst hebt gegeven. Woorden lijsten worden soms Glossaries of term bases genoemd. U kunt de woorden lijst beschouwen als een brute kracht ' kopiëren en vervangen ' voor alle termen die u vermeldt. Daarnaast bouwt micro soft Custom Translator service samen met een eigen woorden boek voor algemeen gebruik om de kwaliteit van de vertaling te verbeteren. Een door de klant verschafte woorden lijst heeft echter een broncel en zal eerst zoeken naar woorden of zinnen.
 
 Woorden boeken werken alleen voor projecten in taal paren met een volledig ondersteund micro soft General Neural-netwerk model achter de computers. [Bekijk de volledige lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="phrase-dictionary"></a>Woordgroepen lijst
-Wanneer u een woordgroepen lijst in uw model hebt opgenomen, wordt een wille keurig woord of zinsdeel omgezet in de manier die u hebt opgegeven. De rest van de zin wordt op de gebruikelijke manier vertaald. U kunt een woordgroepen woordenlijst gebruiken om woord groepen op te geven die niet moeten worden vertaald door dezelfde niet-vertaalde woord groep te bieden in het bron-en doel bestand in de woorden lijst.
+Woordgroepen woordenlijst is hoofdletter gevoelig. Het is een exacte Zoek-en vervang bewerking. Wanneer u een woordgroepen lijst in uw model hebt opgenomen, wordt een wille keurig woord of zinsdeel omgezet in de manier die u hebt opgegeven. De rest van de zin wordt op de gebruikelijke manier vertaald. U kunt een woordgroepen woordenlijst gebruiken om woord groepen op te geven die niet moeten worden vertaald door dezelfde niet-vertaalde woord groep te bieden in het bron-en doel bestand in de woorden lijst.
 
 ## <a name="sentence-dictionary"></a>Woorden lijst voor zinnen
-Met de woorden lijst voor zinnen kunt u een exacte doel omzetting voor een bron zin opgeven. Voor een zin die overeenkomt met de woorden lijst, moet de gehele verzonden zin overeenkomen met de vermelding van de bron woordenlijst.  Als slechts een deel van de zin overeenkomt, komt de invoer niet overeen.  Wanneer een overeenkomst wordt gedetecteerd, wordt de doel vermelding van de woorden lijst geretourneerd.
+De woorden lijst voor zinnen is hoofdletter gevoelig. Met de woorden lijst voor zinnen kunt u een exacte doel omzetting voor een bron zin opgeven. Voor een zin die overeenkomt met de woorden lijst, moet de gehele verzonden zin overeenkomen met de vermelding van de bron woordenlijst. Als de vermelding van de bron woordenlijst eindigt op interpunctie, wordt deze genegeerd tijdens de overeenkomst. Als slechts een deel van de zin overeenkomt, komt de invoer niet overeen.  Wanneer een overeenkomst wordt gedetecteerd, wordt de doel vermelding van de woorden lijst geretourneerd.
 
 ## <a name="dictionary-only-trainings"></a>Alleen-woordenlijst trainingen
 U kunt een model trainen met alleen woordenlijst gegevens. Als u dit wilt doen, selecteert u alleen het woordenlijst document (of meerdere woordenlijst documenten) die u wilt opnemen en tikt u op model maken. Aangezien dit een alleen-woordenlijst training is, is er geen minimum aantal trainings zinnen vereist. Het model voert doorgaans veel sneller training uit dan een standaard training.  De resulterende modellen gebruiken de micro soft Baseline-modellen voor vertaling, waarbij de toegevoegde woorden lijsten worden toegevoegd.  Het is niet mogelijk om een test rapport op te halen.
@@ -40,6 +40,7 @@ U kunt een model trainen met alleen woordenlijst gegevens. Als u dit wilt doen, 
 - De woorden lijst woordgroepen moet spaarzaam worden gebruikt. Houd er dus rekening mee dat wanneer een zin binnen een zin wordt vervangen, de context binnen die zin verloren gaat of beperkt is voor het vertalen van de rest van de zin. Het resultaat is dat als de woord groep of het woord in de zin wordt vertaald volgens de meegeleverde woorden lijst, de algehele Vertaal kwaliteit van de zin vaak in orde is.
 - De woorden lijst woordgroepen werkt goed voor samengestelde naam woorden, zoals product namen ("Microsoft SQL Server"), juiste namen ("City of Hamburg") of functies van het product ("Pivot Table"). Deze werkt niet gelijk aan woorden of bijvoegingen, omdat deze doorgaans zeer verbuigd zijn in de bron of in de doel taal. De aanbevolen procedures zijn om te voor komen dat vermeldingen voor de woorden lijst in combi natie met samen woorden worden samengesteld.
 - Wanneer u een woordgroepen woordenlijst gebruikt, zijn hoofdletter gebruik en interpunctie belang rijk. Woordenboek vermeldingen komen alleen overeen met woorden en zinsdelen in de invoer zin die exact hetzelfde hoofdletter gebruik en lees tekens bevatten zoals opgegeven in het bestand van de bron woordenlijst. De vertalingen hebben ook betrekking op het hoofdletter gebruik en interpunctie die zijn opgenomen in het woordenlijst bestand van de doel groep. Als u bijvoorbeeld een Engels hebt getraind voor het Spaanse systeem dat gebruikmaakt van een woordgroepen woordenlijst waarin ' US ' is opgegeven in het bron bestand en ' EE '. UU. " in het doel bestand. Wanneer u een vertaling aanvraagt van een zin die het woord ' US ' bevat (niet gekapitaliseerd), komt dit niet overeen met de woorden lijst. Als u echter een vertaling aanvraagt van een zin die het woord ' US ' bevat (gekapitaliseerd), zou dit overeenkomen met de woorden lijst en de vertaling zou ' EE ' bevatten. UU. " Houd er rekening mee dat het hoofdletter gebruik en interpunctie in de vertaling kan afwijken van het doel bestand van de woorden lijst en kan afwijken van het hoofdletter gebruik en interpunctie in de bron. De regels van de doel taal worden gevolgd.
+- Wanneer u een zin-woorden lijst gebruikt, wordt het einde van de teken interpunctie genegeerd. Als uw bron woordenlijst bijvoorbeeld ' deze zin eindigt op interpunctie ' bevat, komt er een overeenkomst voor vertaal aanvragen met de tekst ' deze zin eindigt op interpunctie '.
 - Als een woord meermaals wordt weer gegeven in een woordenlijst bestand, gebruikt het systeem altijd de laatste vermelding die is opgegeven. De woorden lijst moet daarom niet meerdere vertalingen van hetzelfde woord bevatten.
 
 ## <a name="next-steps"></a>Volgende stappen
