@@ -1,17 +1,17 @@
 ---
-title: Gegevensassets registreren in Azure Data Catalog
+title: 'Zelfstudie: Gegevensassets registreren in Azure Data Catalog'
 description: In deze zelfstudie wordt beschreven hoe u gegevensassets registreert in uw Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255191"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135875"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Zelfstudie: Gegevensassets registreren in Azure Data Catalog
 
@@ -49,7 +49,7 @@ U kunt nu gegevensassets uit de databasesample registreren met behulp van Azure 
 
    ![Azure Data Catalog - de knop Gegevens publiceren](media/register-data-assets-tutorial/data-catalog-publish-data.png)
 
-2. selecteer **Toepassing starten** om het hulpprogramma voor registratie te downloaden, te installeren en uit te voeren op uw computer.
+2. Selecteer **Toepassing starten** om het hulpprogramma voor registratie te downloaden, te installeren en uit te voeren op uw computer.
 
    ![Azure Data Catalog - de knop Starten](media/register-data-assets-tutorial/data-catalog-launch-application.png)
 
@@ -67,31 +67,31 @@ U kunt nu gegevensassets uit de databasesample registreren met behulp van Azure 
 
 6. Registreer de metagegevens van uw gegevensasset. In dit voorbeeld registreert u **Product**-objecten van de naamruimte van de databasesample:
 
-    1. Vouw in de structuur **Serverhiërarchie** uw databasesample uit en selecteer **SalesLT**.
+   1. Vouw in de structuur **Serverhiërarchie** uw databasesample uit en selecteer **SalesLT**.
 
-    2. Selecteer **Product**, **ProductCategory**, **ProductDescription** en **ProductModel** door Ctrl+selecteren te gebruiken.
+   2. Selecteer **Product**, **ProductCategory**, **ProductDescription** en **ProductModel** door Ctrl+selecteren te gebruiken.
 
-    3. Selecteer de **pijl voor het verplaatsen van geselecteerde items** ( **>** ). Met deze actie worden alle geselecteerde objecten verplaatst naar de lijst **Te registreren objecten**.
+   3. Selecteer de **pijl voor het verplaatsen van geselecteerde items** ( **>** ). Met deze actie worden alle geselecteerde objecten verplaatst naar de lijst **Te registreren objecten**.
 
-          ![Zelfstudie voor Azure Data Catalog - bladeren door objecten en objecten selecteren](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
+      ![Zelfstudie voor Azure Data Catalog - bladeren door objecten en objecten selecteren](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 
-    4. Selecteer **Preview opnemen** om een snapshotvoorbeeld van de gegevens op te nemen. De momentopname bevat maximaal 20 records uit elke tabel en wordt gekopieerd in de catalogus.
+   4. Selecteer **Preview opnemen** om een snapshotvoorbeeld van de gegevens op te nemen. De momentopname bevat maximaal 20 records uit elke tabel en wordt gekopieerd in de catalogus.
 
-    5. Selecteer **Gegevensprofiel opnemen** om een snapshot van de objectstatistieken op te nemen voor het gegevensprofiel (bijvoorbeeld: minimale, maximale en gemiddelde waarden voor een kolom, het aantal rijen).
+   5. Selecteer **Gegevensprofiel opnemen** om een snapshot van de objectstatistieken op te nemen voor het gegevensprofiel (bijvoorbeeld: minimale, maximale en gemiddelde waarden voor een kolom, het aantal rijen).
 
-    6. In het veld **Tags toevoegen** voert u **sales, product, azure sql** in. Met deze actie worden zoektags voor deze gegevensassets toegevoegd. Tags zijn voor gebruikers een uitstekende manier om een geregistreerde gegevensbron te zoeken.
+   6. In het veld **Tags toevoegen** voert u **sales, product, azure sql** in. Met deze actie worden zoektags voor deze gegevensassets toegevoegd. Tags zijn voor gebruikers een uitstekende manier om een geregistreerde gegevensbron te zoeken.
 
-    7. Geef de naam op van een **expert** met betrekking tot deze gegevens (optioneel).
+   7. Geef de naam op van een **expert** met betrekking tot deze gegevens (optioneel).
 
-          ![Zelfstudie voor Azure Data Catalog - te registreren objecten](media/register-data-assets-tutorial/data-catalog-objects-register.png)
+      ![Zelfstudie voor Azure Data Catalog - te registreren objecten](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. Selecteer **REGISTREREN**. Azure Data Catalog registreert uw geselecteerde objecten. In deze oefening worden de geselecteerde objecten van uw databasesample geregistreerd. Het hulpprogramma voor registratie extraheert metagegevens uit de gegevensasset en kopieert deze gegevens naar de Azure Data Catalog-catalogus. De gegevens blijven waar deze zich op dat moment bevinden. De gegevens blijven in beheer bij de beheerders en blijven vallen onder de beleidsregels van het oorspronkelijke systeem.
+   8. Selecteer **REGISTREREN**. Azure Data Catalog registreert uw geselecteerde objecten. In deze oefening worden de geselecteerde objecten van uw databasesample geregistreerd. Het hulpprogramma voor registratie extraheert metagegevens uit de gegevensasset en kopieert deze gegevens naar de Azure Data Catalog-catalogus. De gegevens blijven waar deze zich op dat moment bevinden. De gegevens blijven in beheer bij de beheerders en blijven vallen onder de beleidsregels van het oorspronkelijke systeem.
 
-          ![Azure Data Catalog - geregistreerde objecten](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
+      ![Azure Data Catalog - geregistreerde objecten](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
     9. Als u uw geregistreerde gegevensbronobjecten wilt zien, selecteert u **Portal weergeven**. Controleer in de Azure Data Catalog-portal of u alle vier de tabellen en de database in de rasterweergave ziet (controleer of de zoekbalk leeg is).
 
-        ![Objecten in de Azure Data Catalog-portal](media/register-data-assets-tutorial/data-catalog-view-portal.png)
+       ![Objecten in de Azure Data Catalog-portal](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
 In deze oefening hebt u objecten uit de databasesample voor Azure SQL Database geregistreerd, zodat deze eenvoudig kunnen worden gevonden door gebruikers in uw organisatie.
 
@@ -119,19 +119,20 @@ Met een basiszoekopdracht kunt u in een catalogus zoeken met behulp van een of m
 
 2. Typ `product` in het zoekvak en druk op **ENTER**.
 
-    ![Azure Data Catalog - basiszoekopdracht naar tekst](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
+   ![Azure Data Catalog - basiszoekopdracht naar tekst](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
 
 3. Controleer of u alle vier de tabellen en de database in de resultaten ziet. U kunt schakelen tussen **rasterweergave** en **lijstweergave** door knoppen op de werkbalk te selecteren, zoals weergegeven in de volgende afbeelding. U ziet dat het zoekwoord wordt gemarkeerd in de zoekresultaten. Dit gebeurt omdat de optie **Markeren** is **ingeschakeld**. U kunt ook het aantal **resultaten per pagina** in zoekresultaten opgeven.
 
-    ![Azure Data Catalog - resultaten van basiszoekopdracht naar tekst](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
+   ![Azure Data Catalog - resultaten van basiszoekopdracht naar tekst](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
 
-    Het deelvenster **Zoekopdrachten** bevindt zich aan de linkerkant. Het deelvenster **Eigenschappen** bevindt zich aan de rechterkant. In het deelvenster **Zoekopdrachten** kunt u zoekcriteria wijzigen en resultaten filteren. In het deelvenster **Eigenschappen** worden de eigenschappen van een geselecteerd object weergegeven in het raster of de lijst.
+   Het deelvenster **Zoekopdrachten** bevindt zich aan de linkerkant. Het deelvenster **Eigenschappen** bevindt zich aan de rechterkant. In het deelvenster **Zoekopdrachten** kunt u zoekcriteria wijzigen en resultaten filteren. In het deelvenster **Eigenschappen** worden de eigenschappen van een geselecteerd object weergegeven in het raster of de lijst.
 
 4. Selecteer **Product** in de zoekresultaten. Selecteer de tabbladen **Preview**, **Kolommen**, **Gegevensprofiel** en **Documentatie** of selecteer de pijl om het onderste deelvenster uit te vouwen.  
 
-    ![Azure Data Catalog - onderste deelvenster](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
+   ![Azure Data Catalog - onderste deelvenster](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
 
-    Op het tabblad **Preview** ziet u een voorbeeld van de gegevens in de tabel **Product**.  
+   Op het tabblad **Preview** ziet u een voorbeeld van de gegevens in de tabel **Product**.
+
 5. Selecteer het tabblad **Kolommen** voor meer informatie over kolommen (zoals **naam** en **gegevenstype**) in de gegevensasset.
 
 6. Selecteer het tabblad **Gegevensprofiel** om de profielsamenstelling van gegevens te bekijken (bijvoorbeeld het aantal rijen, de grootte van gegevens of de minimumwaarde in een kolom) in de gegevensasset.
@@ -146,13 +147,13 @@ Door het bereik van eigenschappen te definiëren, kunt u gegevensassets detecter
 
 3. Bevestig dat u alle tabellen en de database in de resultaten ziet.  
 
-    ![Data Catalog - resultaten van het definiëren van het bereik van eigenschappen](media/register-data-assets-tutorial/data-catalog-property-scoping-results.png)
+   ![Data Catalog - resultaten van het definiëren van het bereik van eigenschappen](media/register-data-assets-tutorial/data-catalog-property-scoping-results.png)
 
 ### <a name="save-the-search"></a>De zoekopdracht opslaan
 
 1. Voer in het deelvenster **Zoekopdrachten** in de sectie **Huidige zoekopdracht** een naam voor de zoekopdracht in en selecteer **Opslaan**.
 
-    ![Azure Data Catalog - zoekopdracht opslaan](media/register-data-assets-tutorial/data-catalog-save-search.png)
+   ![Azure Data Catalog - zoekopdracht opslaan](media/register-data-assets-tutorial/data-catalog-save-search.png)
 
 2. Bevestig dat de opgeslagen zoekopdracht wordt weergegeven onder **Opgeslagen zoekopdrachten**.
 
@@ -166,7 +167,7 @@ Door te groeperen met behulp van haakjes, kunt u delen van de query groeperen vo
 
 2. Bevestig dat u alleen de tabel **Product** in de zoekresultaten ziet.
 
-    ![Azure Data Catalog - zoekopdracht groeperen](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
+   ![Azure Data Catalog - zoekopdracht groeperen](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
 
 ### <a name="comparison-operators"></a>Vergelijkingsoperators
 
@@ -180,7 +181,7 @@ Met vergelijkingsoperators kunt u andere vergelijkingen dan gelijkheid gebruiken
 
 4. Bevestig dat u in de zoekresultaten de tabellen **Product**, **ProductCategory** en **ProductDescription** en de geregistreerde SQL-database ziet.
 
-    ![Azure Data Catalog - vergelijking van zoekresultaten](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
+   ![Azure Data Catalog - vergelijking van zoekresultaten](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
 Zie [Gegevensassets detecteren](data-catalog-how-to-discover.md) voor gedetailleerde informatie over het detecteren van gegevensassets. Zie [Verwijzing naar de zoeksyntaxis van Data Catalog](/rest/api/datacatalog/#search-syntax-reference) voor meer informatie over de zoeksyntaxis.
 
@@ -192,7 +193,7 @@ In deze oefening maakt u aantekeningen voor een enkele gegevensasset (ProductPho
 
 1. Ga naar de [startpagina van Azure Data Catalog](https://www.azuredatacatalog.com) en zoek met `tags:product` naar de gegevensassets die u hebt geregistreerd.
 
-2. Selecteer **Product** in de zoekresultaten.  
+2. Selecteer **ProductModel** in de zoekresultaten.  
 
 3. Voer **Productafbeeldingen** in voor **Beschrijvende naam** en **Productfoto’s voor marketingmateriaal** voor de **Beschrijving**.
 
@@ -233,21 +234,21 @@ In deze oefening opent u gegevensassets in geïntegreerde clienthulpprogramma's 
 
 1. Selecteer in de zoekresultaten de optie **Product**. Selecteer **Openen in** op de werkbalk en selecteer **Excel**.
 
-    ![Azure Data Catalog - verbinding maken met gegevensasset](media/register-data-assets-tutorial/data-catalog-connect1.png)
+   ![Azure Data Catalog - verbinding maken met gegevensasset](media/register-data-assets-tutorial/data-catalog-connect1.png)
 
 2. Selecteer **Openen** in het downloadpop-upvenster. Deze ervaring kan variëren afhankelijk van de browser.
 
 3. Selecteer **Inschakelen** in het venster **Beveiligingsbericht Microsoft Excel**.
 
-    ![Azure Data Catalog - beveiligingspop-upvenster van Excel](media/register-data-assets-tutorial/data-catalog-excel-security-popup.png)
+   ![Azure Data Catalog - beveiligingspop-upvenster van Excel](media/register-data-assets-tutorial/data-catalog-excel-security-popup.png)
 
 4. Behoud de standaardinstellingen in het dialoogvenster **Gegevens importeren** en selecteer **OK**.
 
-    ![Azure Data Catalog - Excel-gegevens importeren](media/register-data-assets-tutorial/data-catalog-excel-import-data.png)
+   ![Azure Data Catalog - Excel-gegevens importeren](media/register-data-assets-tutorial/data-catalog-excel-import-data.png)
 
 5. Bekijk de gegevensbron in Excel.
 
-    ![Azure Data Catalog - producttabel in Excel](media/register-data-assets-tutorial/data-catalog-connect2.png)
+   ![Azure Data Catalog - producttabel in Excel](media/register-data-assets-tutorial/data-catalog-connect2.png)
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
@@ -259,7 +260,7 @@ In deze oefening hebt u verbinding gemaakt met gegevensasssets die zijn gedetect
 
 3. Gebruik de juiste verificatieprocedure en aanmeldingsgegevens voor toegang tot de gegevensasset. Gebruik de informatie in het veld **Verzoeken tot toegang** als u geen toegang hebt.
 
-    ![Azure Data Catalog - verzoeken tot toegang](media/register-data-assets-tutorial/data-catalog-request-access.png)
+   ![Azure Data Catalog - verzoeken tot toegang](media/register-data-assets-tutorial/data-catalog-request-access.png)
 
 Selecteer **Verbindingsreeksen weergeven** om ADO.NET-, ODBC- en OLEDB-verbindingsreeksen te bekijken en te kopiëren naar het klembord voor gebruik in uw toepassing.
 
@@ -299,18 +300,22 @@ In Azure Data Catalog kunt u een individuele asset of meerdere assets verwijdere
 
 3. Selecteer een item in de lijst met resultaten en selecteer op de werkbalk **Verwijderen**, zoals weergegeven in de volgende afbeelding:
 
-    ![Azure Data Catalog - rasteritem verwijderen](media/register-data-assets-tutorial/data-catalog-delete-grid-item.png)
+   ![Azure Data Catalog - rasteritem verwijderen](media/register-data-assets-tutorial/data-catalog-delete-grid-item.png)
 
-    Als u de lijstweergave gebruikt, wordt het selectievakje aan de linkerkant van het item weergegeven, zoals weergegeven in de volgende afbeelding:
+   Als u de lijstweergave gebruikt, wordt het selectievakje aan de linkerkant van het item weergegeven, zoals weergegeven in de volgende afbeelding:
 
-    ![Azure Data Catalog - lijstitem verwijderen](media/register-data-assets-tutorial/data-catalog-delete-list-item.png)
+   ![Azure Data Catalog - lijstitem verwijderen](media/register-data-assets-tutorial/data-catalog-delete-list-item.png)
 
-    U kunt ook meerdere gegevensassets selecteren en deze verwijderen zoals op de volgende afbeelding wordt aangegeven:
+   U kunt ook meerdere gegevensassets selecteren en deze verwijderen zoals op de volgende afbeelding wordt aangegeven:
 
-    ![Azure Data Catalog - meerdere gegevensassets verwijderen](media/register-data-assets-tutorial/data-catalog-delete-assets.png)
+   ![Azure Data Catalog - meerdere gegevensassets verwijderen](media/register-data-assets-tutorial/data-catalog-delete-assets.png)
 
 > [!NOTE]
 > Het standaardgedrag van de catalogus is om elke gebruiker toe te staan een gegevensbron te registreren en om elke gebruiker toe te staan een geregistreerde gegevensasset te verwijderen. De beheermogelijkheden die in de Standard-editie van Azure Data Catalog zijn opgenomen, bieden aanvullende opties om eigenaar te worden van assets, te beperken wie er assets kunnen detecteren en te beperken wie er assets kunnen verwijderen.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Volg de stappen voor [Gegevensassets verwijderen](#remove-data-assets) om eventuele assets op te schonen die u hebt gebruikt tijdens het volgen van deze zelfstudie.
 
 ## <a name="summary"></a>Samenvatting
 
