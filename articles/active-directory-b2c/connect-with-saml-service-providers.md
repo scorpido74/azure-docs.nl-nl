@@ -12,18 +12,18 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020063"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520206"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
 In dit artikel leert u hoe u Azure Active Directory B2C (Azure AD B2C) kunt configureren om te fungeren als een Security Assertion Markup Language (SAML)-ID-provider (IdP) voor uw toepassingen.
 
-## <a name="scenario-overview"></a>Scenario-overzicht
+## <a name="scenario-overview"></a>Overzicht van scenario's
 
 Organisaties die Azure AD B2C als klant identiteits-en toegangs beheer oplossing gebruiken, kunnen interactie vereisen met id-providers of toepassingen die zijn geconfigureerd voor verificatie met behulp van het SAML-protocol.
 
@@ -334,7 +334,7 @@ De laatste stap is het inschakelen van Azure AD B2C als een SAML-IdP in uw SAML-
 
 Enkele of alle volgende zijn doorgaans vereist:
 
-* **Meta gegevens**:`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Meta gegevens**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 * **Verlener**: gebruik de entityID in het meta gegevensbestand
 * **Aanmeldings-URL/SAML-eind punt/SAML-URL**: Controleer de waarde in het bestand met meta gegevens
 * **Certificaat**: dit is *B2C_1A_SamlIdpCert*, maar zonder de persoonlijke sleutel. De open bare sleutel van het certificaat ophalen:
@@ -350,7 +350,7 @@ Als u deze zelf studie wilt volt ooien, gebruikt u de [SAML-test toepassing][sam
 
 * De Tenant naam bijwerken
 * Update de naam van het beleid, bijvoorbeeld *B2C_1A_signup_signin_saml*
-* Geef de URI voor de verlener op:`https://contoso.onmicrosoft.com/app-name`
+* Geef de URI voor de verlener op: `https://contoso.onmicrosoft.com/app-name`
 
 Selecteer **Aanmelden** en u moet een aanmeldings scherm van de gebruiker weer gegeven. Bij het aanmelden wordt een SAML-bevestiging weer gegeven aan de voorbeeld toepassing.
 
@@ -414,6 +414,10 @@ De volgende opties voor SAML-Relying Party (RP) worden ondersteund via uw eigen 
 * Meerdere afmeldings-Url's of POST-binding voor afmeldings-URL in het object Application/Service Principal.
 * Geef de handtekening sleutel op voor het verifiëren van RP-aanvragen in het object Application/Service Principal.
 * Geef een token versleutelings sleutel op in het object Application/Service Principal.
+* De ID-provider heeft zich aangemeld, waarbij de ID-provider is Azure AD B2C.
+
+De volgende opties voor SAML-Relying Party (RP) worden momenteel niet ondersteund:
+* De ID-provider heeft zich aangemeld, waarbij de ID-provider een externe ID-provider is, bijvoorbeeld ADFS.
 
 ## <a name="next-steps"></a>Volgende stappen
 

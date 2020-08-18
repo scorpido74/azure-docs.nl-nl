@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 37cbc3737b826060e96524528b065bc8d711bd8b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0fcf1c8a3800a52e8fa8659fe4bf97e83103c79d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384766"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056989"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Wat is Azure Firewall Manager?
 
@@ -78,10 +78,12 @@ Azure Firewall Manager heeft de volgende bekende problemen:
 
 |Probleem  |Beschrijving  |Oplossing  |
 |---------|---------|---------|
-|Het opsplitsen van verkeer wordt momenteel niet ondersteund.|Het opsplitsen van verkeer met Office 365 en Azure Public PaaS wordt momenteel niet ondersteund. Als u een externe provider voor V2I of B2I selecteert, wordt daardoor ook al het Azure Public PaaS- en Office 365-verkeer via de partnerservice verzonden.|Het opsplitsen van verkeer bij de hub wordt momenteel onderzocht.
-|Eén beveiligde virtuele hub per regio.|U mag niet meer dan één beveiligde virtuele hub per regio hebben.|Maak meerdere virtuele WAN's in een regio.|
-|Basisbeleidsregels moeten zich in dezelfde regio als het lokale beleid bevinden.|Maak al uw lokale beleidsregels in dezelfde regio als het basisbeleid. U kunt nog steeds een beleid toepassen dat in een regio is gemaakt op een beveiligde hub vanuit een andere regio.|Wordt onderzocht|
-|Onderlinge communicatie tussen hubs verloopt niet via beveiligde virtuele hub|Communicatie tussen een beveiligde virtuele hub en een andere beveiligde virtuele hub wordt nog niet ondersteund, maar communicatie tussen hubs werkt nog steeds.|Wordt onderzocht|
+|Opsplitsen van verkeer|Het opsplitsen van verkeer met Office 365 en Azure Public PaaS wordt momenteel niet ondersteund. Als u een externe provider voor V2I of B2I selecteert, wordt daardoor ook al het Azure Public PaaS- en Office 365-verkeer via de partnerservice verzonden.|Het opsplitsen van verkeer bij de hub wordt momenteel onderzocht.
+|Eén beveiligde virtuele hub per regio|U mag niet meer dan één beveiligde virtuele hub per regio hebben.|Maak meerdere virtuele WAN's in een regio.|
+|Basisbeleidsregels moeten zich in dezelfde regio als het lokale beleid bevinden|Maak al uw lokale beleidsregels in dezelfde regio als het basisbeleid. U kunt nog steeds een beleid toepassen dat in een regio is gemaakt op een beveiligde hub vanuit een andere regio.|Wordt onderzocht|
+|Verkeer tussen hubs filteren bij implementaties in een beveiligde virtuele hub|Het filteren van communicatie tussen een beveiligde virtuele hub en een andere beveiligde virtuele hub wordt nog niet ondersteund. Hub-naar-hub-communicatie werkt echter nog steeds als filteren van privéverkeer via Azure Firewall niet is ingeschakeld.|Wordt onderzocht|
+|Spaken in een andere regio dan de virtuele hub|Spaken in een andere regio dan de virtuele hub worden niet ondersteund.|Wordt onderzocht<br><br>Maak een hub per regio en maak peer-VNets in dezelfde regio als de hub.|
+|Verkeer tussen vertakkingen met filteren van privéverkeer ingeschakeld|Verkeer tussen vertakkingen wordt niet ondersteund als het filteren van privéverkeer is ingeschakeld. |Wordt onderzocht.<br><br>Beveilig geen privéverkeer als de connectiviteit tussen vertakkingen essentieel is.|
 |Alle beveiligde virtuele hubs die dezelfde virtuele WAN delen, moeten zich in dezelfde resourcegroep bevinden.|Dit gedrag wordt vandaag afgestemd met andere virtuele WAN-hubs.|Maak meerdere virtuele WAN's om ervoor te zorgen dat beveiligde virtuele hubs kunnen worden gemaakt in andere resourcegroepen.|
 
 ## <a name="next-steps"></a>Volgende stappen

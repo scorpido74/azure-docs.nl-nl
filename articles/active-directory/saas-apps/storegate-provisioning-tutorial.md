@@ -2,25 +2,21 @@
 title: 'Zelf studie: Storegate configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Storegate.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 628fa804-c0e6-4db1-ab6b-46ee9aab4d41
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: Zhchia
-ms.openlocfilehash: 72903a36f88f9092ce1d203b557003083407320b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c889b2c7b11c5e649045e34cdac9e50a3a242b6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064254"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524446"
 ---
 # <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Zelf studie: Storegate configureren voor automatische gebruikers inrichting
 
@@ -124,7 +120,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-storegate-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Storegate in azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 

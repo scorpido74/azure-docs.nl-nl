@@ -6,13 +6,14 @@ ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
+ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975071"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520653"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Registratie van apparaten beheren met de Sdk's van Azure Device Provisioning Service
 Een *apparaatregistratie* maakt een record van één apparaat of een groep apparaten die op een bepaald moment bij de Device Provisioning-Service kunnen worden geregistreerd. De registratie record bevat de eerste gewenste configuratie voor de apparaten die deel uitmaken van deze inschrijving, inclusief de gewenste IoT-hub. In dit artikel leest u hoe u de registratie van apparaten voor uw inrichtings service programmatisch beheert met de Azure IoT Provisioning Service Sdk's.  De Sdk's zijn beschikbaar op GitHub in dezelfde opslag plaats als Azure IoT-Sdk's.
@@ -28,10 +29,10 @@ Een *apparaatregistratie* maakt een record van één apparaat of een groep appar
         * Registratie groep: het [CA/basis certificaat](/azure/iot-dps/concepts-security#root-certificate) of het [tussenliggende certificaat](/azure/iot-dps/concepts-security#intermediate-certificate), dat wordt gebruikt om een apparaat certificaat te maken op een fysiek apparaat.  Het kan ook worden gegenereerd met de SDK-codec-emulator.
 * Exacte API-aanroepen kunnen verschillen vanwege taal verschillen. Bekijk de voor beelden die worden weer gegeven op GitHub voor meer informatie:
    * [Voor beelden van Java Provisioning Service-client](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
-   * [Voor beelden vanNode.js inrichten service-clients](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+   * [ Voor beelden vanNode.js inrichten service-clients](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
    * [Voor beelden van .NET Provisioning Service-client](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
-## <a name="create-a-device-enrollment"></a>Een apparaatregistratie maken
+## <a name="create-a-device-enrollment"></a>Een apparaatinschrijving maken
 Er zijn twee manieren waarop u uw apparaten kunt inschrijven bij de inrichtings service:
 
 * Een **registratie groep** is een vermelding voor een groep apparaten die een gemeen schappelijk Attestation-mechanisme van X. 509-certificaten delen, ondertekend door het [basis certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) of het [tussenliggende certificaat](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate). U kunt het beste een registratie groep gebruiken voor een groot aantal apparaten die een gewenste initiële configuratie delen, of voor apparaten die allemaal naar dezelfde Tenant gaan. Houd er rekening mee dat u alleen apparaten kunt inschrijven die gebruikmaken van het 509 Attestation-mechanisme van *X.* 
@@ -39,7 +40,7 @@ Er zijn twee manieren waarop u uw apparaten kunt inschrijven bij de inrichtings 
     U kunt een registratie groep maken met de Sdk's die volgen op deze werk stroom:
 
     1. Voor de registratie groep gebruikt het Attestation-mechanisme X. 509-basis certificaat.  Roep Service SDK API ```X509Attestation.createFromRootCertificate``` met basis certificaat om Attestation voor registratie te maken.  X. 509-basis certificaat is opgenomen in een PEM-bestand of als een teken reeks.
-    1. Maak een nieuwe ```EnrollmentGroup``` variabele met behulp van de maakt ```attestation``` en een unieke ```enrollmentGroupId``` .  U kunt eventueel ook para meters instellen, zoals ```Device ID``` , ```IoTHubHostName``` , ```ProvisioningStatus``` .
+    1. Maak een nieuwe ```EnrollmentGroup``` variabele met behulp van de maakt ```attestation``` en een unieke ```enrollmentGroupId``` .  U kunt eventueel ook para meters instellen ```IoTHubHostName``` , zoals, ```ProvisioningStatus``` .
     2. Roep Service SDK API aan ```createOrUpdateEnrollmentGroup``` in uw back-end-toepassing met ```EnrollmentGroup``` om een registratie groep te maken.
 
 * Een **afzonderlijke inschrijving** is een vermelding voor één apparaat dat kan worden geregistreerd. Individuele inschrijvingen kunnen X. 509-certificaten of SAS-tokens (van een fysieke of virtuele TPM) gebruiken als Attestation-mechanismen. We raden u aan om afzonderlijke inschrijvingen te gebruiken voor apparaten die unieke initiële configuraties vereisen, of voor apparaten die alleen SAS-tokens via TPM of virtuele TPM kunnen gebruiken als Attestation-mechanisme. Afzonderlijke inschrijvingen hebben mogelijk de gewenste apparaat-id voor IoT Hub die is opgegeven.

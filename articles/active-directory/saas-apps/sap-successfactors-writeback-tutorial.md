@@ -3,23 +3,19 @@ title: 'Zelf studie: Configure SAP SuccessFactors write-back in Azure Active Dir
 description: Meer informatie over het configureren van een kenmerk write-back naar SAP SuccessFactors vanuit Azure AD
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215868b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: f150d6abf2ac6a423a99d3347df9bf0adc9b294b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809928"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533993"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Zelf studie: kenmerk write-back van Azure AD naar SAP SuccessFactors configureren
 Het doel van deze zelf studie is het weer geven van de stappen voor het terugschrijven van kenmerken van Azure AD naar SAP SuccessFactors Employee Central. 
@@ -151,7 +147,7 @@ De SuccessFactors write inrichtings-app gebruikt bepaalde *code* waarden voor he
 1. Klik in postman op het weglatings teken (...) dat is gekoppeld aan de verzameling SuccessFactors en voeg een ' nieuwe aanvraag ' met de naam ' e-mail typen ophalen ' toe, zoals hieronder wordt weer gegeven. 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-e-mail aanvraag](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![Postman-e-mail aanvraag ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
 
 1. Open het aanvraag paneel ' e-mail type ophalen '. 
 1. Voeg in de GET-URL de volgende URL toe en vervang deze door `successFactorsAPITenantName` de API-Tenant voor uw SuccessFactors-exemplaar. 
@@ -255,16 +251,16 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van SuccessFactors
    | 1 | employeeId | personIdExternal | Dit kenmerk is standaard de overeenkomende id. In plaats van werk nemers kunt u elk ander Azure AD-kenmerk gebruiken dat de waarde kan opslaan die gelijk is aan personIdExternal in SuccessFactors.    |
    | 2 | mail | e-mail | Bron van e-mail kenmerk toewijzen. Voor test doeleinden kunt u userPrincipalName toewijzen aan e-mail. |
    | 3 | 8448 | emailType | Deze constante waarde is de SuccessFactors ID-waarde die aan zakelijke e-mail is gekoppeld. Werk deze waarde bij zodat deze overeenkomt met uw SuccessFactors-omgeving. Zie de sectie [constante waarde ophalen voor emailType](#retrieve-constant-value-for-emailtype) voor de stappen om deze waarde in te stellen. |
-   | 4 | waar | emailIsPrimary | Gebruik dit kenmerk om zakelijke e-mail in te stellen als primair in SuccessFactors. Als zakelijk e-mail adres niet primair is, stelt u deze vlag in op ONWAAR. |
+   | 4 | true | emailIsPrimary | Gebruik dit kenmerk om zakelijke e-mail in te stellen als primair in SuccessFactors. Als zakelijk e-mail adres niet primair is, stelt u deze vlag in op ONWAAR. |
    | 5 | userPrincipalName | [custom01 – custom15] | Met een **nieuwe toewijzing toevoegen**kunt u optioneel userPrincipalName of een Azure AD-kenmerk schrijven naar een aangepast kenmerk dat beschikbaar is in het SuccessFactors-gebruikers object.  |
    | 6 | on-premises-samAccountName | gebruikersnaam | Met een **nieuwe toewijzing toevoegen**kunt u optioneel een on-premises sAMAccountName toewijzen aan het kenmerk SuccessFactors username. |
    | 7 | Eenmalige aanmelding | loginMethod | Als SuccessFactors-Tenant is ingesteld voor [gedeeltelijke SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)en vervolgens nieuwe toewijzing toevoegen gebruikt, kunt u eventueel loginMethod instellen op een constante waarde van ' SSO ' of ' pwd '. |
    | 8 | telephoneNumber | businessPhoneNumber | Gebruik deze toewijzing om *telephoneNumber* uit te stromen van Azure AD naar SuccessFactors Business/Work-telefoon nummer. |
    | 9 | 10605 | businessPhoneType | Deze constante waarde is de SuccessFactors ID-waarde gekoppeld aan de zakelijke telefoon. Werk deze waarde bij zodat deze overeenkomt met uw SuccessFactors-omgeving. Zie de sectie [constante waarde ophalen voor phoneType](#retrieve-constant-value-for-phonetype) voor de stappen om deze waarde in te stellen. |
-   | 10 | waar | businessPhoneIsPrimary | Gebruik dit kenmerk om de primaire vlag voor het zakelijke telefoon nummer in te stellen. Geldige waarden zijn True of false. |
+   | 10 | true | businessPhoneIsPrimary | Gebruik dit kenmerk om de primaire vlag voor het zakelijke telefoon nummer in te stellen. Geldige waarden zijn True of false. |
    | 11 | mobiel | cellPhoneNumber | Gebruik deze toewijzing om *telephoneNumber* uit te stromen van Azure AD naar SuccessFactors Business/Work-telefoon nummer. |
    | 12 | 10606 | cellPhoneType | Deze constante waarde is de SuccessFactors ID-waarde die is gekoppeld aan de mobiele telefoon. Werk deze waarde bij zodat deze overeenkomt met uw SuccessFactors-omgeving. Zie de sectie [constante waarde ophalen voor phoneType](#retrieve-constant-value-for-phonetype) voor de stappen om deze waarde in te stellen. |
-   | 13 | onjuist | cellPhoneIsPrimary | Gebruik dit kenmerk om de primaire vlag voor het mobiele telefoon nummer in te stellen. Geldige waarden zijn True of false. |
+   | 13 | false | cellPhoneIsPrimary | Gebruik dit kenmerk om de primaire vlag voor het mobiele telefoon nummer in te stellen. Geldige waarden zijn True of false. |
  
 1. Valideer en controleer uw kenmerk toewijzingen. 
  

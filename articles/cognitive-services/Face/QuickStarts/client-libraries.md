@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: de face-client bibliotheek gebruiken'
+title: 'Quickstart: De Face-clientbibliotheek gebruiken'
 titleSuffix: Azure Cognitive Services
-description: De Face-API biedt client bibliotheken waarmee u gemakkelijk kunt detecteren, vergelijk bare, geïdentificeerd, controleren en meer kunt vinden.
+description: De Face-API bevat clientbibliotheken waarmee u gemakkelijk gezichten kunt detecteren, identificeren, verifiëren, vergelijkbare gezichten kunt vinden en meer.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/24/2020
 ms.author: pafarley
-ms.custom: tracking-python
-ms.openlocfilehash: 84d998226bad8a015f3cc319e6e0fddaab9c37c5
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.custom: devx-track-python
+ms.openlocfilehash: dca93d21fc6dc76289ed82139b6da9ff91ac395c
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610923"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875078"
 ---
-# <a name="quickstart-use-the-face-client-library"></a>Snelstartgids: de face-client bibliotheek gebruiken
+# <a name="quickstart-use-the-face-client-library"></a>Quickstart: De Face-clientbibliotheek gebruiken
 
 ::: zone pivot="programming-language-csharp"
 

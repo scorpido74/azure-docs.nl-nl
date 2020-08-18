@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e8a2030acd4297ab3032e8f1e3bde5b6df66659
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: references_regions
+ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037164"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520517"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 [Azure files](storage-files-introduction.md) kunnen op twee manieren worden geïmplementeerd: door de Serverloze Azure-bestands shares rechtstreeks te koppelen of door Azure-bestands shares on-premises in de cache op te maken met behulp van Azure file sync. Welke implementatie optie u kiest, wijzigt de dingen die u moet overwegen bij het plannen van uw implementatie. 
@@ -103,7 +104,7 @@ Zie [Advanced Threat Protection voor Azure Storage](https://docs.microsoft.com/a
 ## <a name="storage-tiers"></a>Opslaglagen
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-Over het algemeen zijn Azure Files functies en interoperabiliteit met andere services hetzelfde als voor Premium-bestands shares en standaard bestands shares, maar er zijn echter enkele belang rijke verschillen:
+Over het algemeen zijn Azure Files functies en interoperabiliteit met andere services hetzelfde als die van Premium-bestands shares en standaard bestands shares (inclusief geoptimaliseerde, hot en coole bestands shares). er zijn echter enkele belang rijke verschillen:
 - **Factureringsmodel**
     - Premium-bestands shares worden gefactureerd met behulp van een ingericht facturerings model. Dit betekent dat u betaalt voor de hoeveelheid opslag ruimte die u in plaats van de hoeveelheid opslag die u daad werkelijk vraagt. 
     - Standaard bestands shares worden gefactureerd op basis van een betalen per gebruik-model, dat een basis kosten voor opslag bevat voor de hoeveelheid opslag die u daad werkelijk verbruikt en vervolgens een extra transactie kosten op basis van hoe u de share gebruikt. Bij standaard bestands shares neemt uw factuur toe als u de Azure-bestands share gebruikt (lezen/schrijven/koppelen).

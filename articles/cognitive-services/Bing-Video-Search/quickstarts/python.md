@@ -1,5 +1,5 @@
 ---
-title: "Snelstartgids: zoeken naar Video's met behulp van de REST API en python-Bing Video Search"
+title: "Quickstart: Video's zoeken met de REST-API en Python - Bing Video's zoeken"
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST-API te verzenden via Python.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: tracking-python
-ms.openlocfilehash: 33a4e31be04e5a205322bb3040d3694525c4515c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.custom: devx-track-python
+ms.openlocfilehash: e6f132db9b4c0f0310496b2e22579e18359e1573
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605983"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847224"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Snelstartgids: zoeken naar Video's met behulp van de Bing Video Search REST API en python
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Quickstart: Video's zoeken met de Bing Video's zoeken-REST-API en Python
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Video's zoeken-API te maken. Met deze eenvoudige python-toepassing wordt een HTTP-Zoek query naar de API verzonden en wordt het JSON-antwoord weer gegeven. Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen. 
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Video’s zoeken-API te maken. Deze eenvoudige Python-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het JSON-antwoord weer. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. 
 
 De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) met extra foutafhandeling en codeaantekeningen.
 
-U kunt dit voor beeld als een Jupyter-notebook in [MyBinder](https://mybinder.org) uitvoeren door de badge van de **Binder starten** te selecteren: 
+U kunt dit voorbeeld uitvoeren als een Jupyter-notebook op [MyBinder](https://mybinder.org) door de badge **launch binder** te selecteren: 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
@@ -37,13 +37,13 @@ U kunt dit voor beeld als een Jupyter-notebook in [MyBinder](https://mybinder.or
 
 ## <a name="initialize-the-application"></a>De toepassing initialiseren
 
-1. Maak een nieuw python-bestand in uw favoriete IDE of editor en importeer de volgende bibliotheken:
+1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en importeer de volgende bibliotheken:
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  Maak variabelen voor uw abonnements sleutel, zoek eindpunt en zoek term. Voor de `search_url` waarde kunt u het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2.  Maak variabelen voor uw abonnementssleutel, zoekeindpunt en zoekterm. Voor de `search_url`-waarde kunt u het globale eindpunt in de volgende code gebruiken of het eindpunt voor het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat voor uw resource wordt weergegeven in Azure Portal.
     
     ```python
     subscription_key = None
@@ -60,7 +60,7 @@ U kunt dit voor beeld als een Jupyter-notebook in [MyBinder](https://mybinder.or
 
 ## <a name="send-your-request"></a>Uw aanvraag verzenden
 
-1. Voeg de parameters toe aan uw aanvraag door het maken van een woordenlijst met de naam `params`. Voeg uw zoek termen toe aan de `q` para meter: een video-aantal van 5, `free` de prijs van geretourneerde Video's en `short` de video lengte.
+1. Voeg de parameters toe aan uw aanvraag door het maken van een woordenlijst met de naam `params`. Voeg uw zoektermen toe aan de parameter `q`: stel het aantal video's in op 5, geef `free` op als de prijs van geretourneerde video's en `short` voor de lengte van de video's.
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}
@@ -194,7 +194,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md)
+> [Een web-app van één pagina maken](../tutorial-bing-video-search-single-page-app.md).
 
 ## <a name="see-also"></a>Zie ook 
 

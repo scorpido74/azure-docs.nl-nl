@@ -4,18 +4,19 @@ description: Een overzicht van de netwerkopties voor Azure Files.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 3/19/2020
+ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cef1aab42eea84c737d5c0173bd4d0e0aa509fe4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
-ms.translationtype: HT
+ms.openlocfilehash: c144442ecd93ca87683179adef496a5d68cce98e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497763"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525894"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files-netwerkeindpunten configureren
+
 Azure Files biedt twee hoofdtypen eindpunten voor toegang tot Azure-bestandsshares: 
 - Openbare eindpunten, die een openbaar IP-adres hebben en overal ter wereld toegankelijk zijn.
 - Privé-eindpunten, die zich binnen een virtueel netwerk bevinden en een privé-IP-adres hebben in de adresruimte van het virtuele netwerk.
@@ -27,12 +28,21 @@ Dit artikel richt zich op het configureren van de eindpunten van een opslagaccou
 Het is raadzaam om [Azure Files networking considerations](storage-files-networking-overview.md) (Aandachtspunten voor Azure Files-netwerken) te lezen voordat u dit artikel verder leest.
 
 ## <a name="prerequisites"></a>Vereisten
+
 - In dit artikel wordt ervan uitgegaan dat u al een Azure-abonnement hebt gemaakt. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
-- In dit artikel wordt ervan uitgegaan dat u al een Azure-bestandsshare hebt gemaakt in een opslagaccount waarmee u on-premises verbinding wilt maken. Zie [Een Azure-bestandsshare maken](storage-how-to-create-file-share.md) als u wilt lezen hoe u een Azure-bestandsshare maakt.
+- In dit artikel wordt ervan uitgegaan dat u al een Azure-bestands share hebt gemaakt in een opslag account waarmee u vanuit on-premises verbinding wilt maken. Zie [Een Azure-bestandsshare maken](storage-how-to-create-file-share.md) als u wilt lezen hoe u een Azure-bestandsshare maakt.
 - Als u van plan bent om Azure PowerShell te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
+## <a name="endpoint-configurations"></a>Eindpunt configuraties
+
+U kunt uw eind punten zo configureren dat de netwerk toegang tot uw opslag account wordt beperkt. Er zijn twee benaderingen voor het beperken van de toegang van een opslagaccount tot een virtueel netwerk:
+
+- [Een of meer privé-eindpunten maken voor het opslagaccount](#create-a-private-endpoint) en alle toegang tot het openbare eindpunt beperken. Hierdoor heeft alleen verkeer dat afkomstig is uit de gewenste virtuele netwerken toegang tot de Azure-bestandsshares binnen het opslagaccount.
+- [Beperk het open bare eind punt tot een of meer virtuele netwerken](#restrict-public-endpoint-access). Hiervoor wordt een voorziening van het virtuele netwerk gebruikt met de naam *service-eindpunten*. Wanneer u het verkeer beperkt tot een opslag account via een service-eind punt, hebt u nog steeds toegang tot het opslag account via het open bare IP-adres, maar is toegang alleen mogelijk vanaf de locaties die u opgeeft in uw configuratie.
+
+### <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
+
 Als u een privé-eindpunt maakt voor uw opslagaccount, worden de volgende Azure-resources geïmplementeerd:
 
 - **Een privé-eindpunt**: Een Azure-resource die het privé-eindpunt van het opslagaccount voorstelt. U kunt dit zien als een resource die een verbinding opzet tussen een opslagaccount en een netwerkinterface.
@@ -106,7 +116,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-Als alles in orde is, ziet u de volgende uitvoer, waarbij `192.168.0.5` het privé-IP-adres is van het privé-eindpunt in uw virtuele netwerk. U moet nog steeds storageaccount.file.core.windows.net gebruiken om uw bestandsshare te koppelen en niet het `privatelink`-pad.
+Als alles in orde is, ziet u de volgende uitvoer, waarbij `192.168.0.5` het privé-IP-adres is van het privé-eindpunt in uw virtuele netwerk. U moet nog steeds storageaccount.file.core.windows.net gebruiken om uw bestands share te koppelen in plaats van het `privatelink` pad.
 
 ```Output
 Server:         127.0.0.53
@@ -120,13 +130,12 @@ Address: 192.168.0.5
 
 ---
 
-## <a name="restrict-access-to-the-public-endpoint"></a>Toegang tot het openbare eindpunt beperken
-U kunt de toegang tot het openbare eindpunt beperken via de firewallinstellingen voor het opslagaccount. Over het algemeen beperken de meeste beleidsregels van firewalls voor een opslagaccount de netwerktoegang tot een of meer virtuele netwerken. Er zijn twee benaderingen voor het beperken van de toegang van een opslagaccount tot een virtueel netwerk:
+### <a name="restrict-public-endpoint-access"></a>Toegang tot open bare eind punten beperken
 
-- [Een of meer privé-eindpunten maken voor het opslagaccount](#create-a-private-endpoint) en alle toegang tot het openbare eindpunt beperken. Hierdoor heeft alleen verkeer dat afkomstig is uit de gewenste virtuele netwerken toegang tot de Azure-bestandsshares binnen het opslagaccount.
-- Het openbare eindpunt beperken tot een of meer virtuele netwerken. Hiervoor wordt een voorziening van het virtuele netwerk gebruikt met de naam *service-eindpunten*. Wanneer u het verkeer naar een opslagaccount beperkt via een service-eindpunt, krijgt u nog steeds toegang tot het opslagaccount via het openbare IP-adres.
+Voor het beperken van toegang tot open bare eind punten moet u eerst algemene toegang tot het open bare eind punt uitschakelen. Het uitschakelen van de toegang tot het open bare eind punt heeft geen invloed op privé-eind punten. Nadat het open bare eind punt is uitgeschakeld, kunt u specifieke netwerken of IP-adressen selecteren die er toegang toe hebben. Over het algemeen beperken de meeste firewall-beleids regels voor een opslag account netwerk toegang tot een of meer virtuele netwerken.
 
-### <a name="disable-access-to-the-public-endpoint"></a>Toegang tot het openbare eindpunt uitschakelen
+#### <a name="disable-access-to-the-public-endpoint"></a>Toegang tot het openbare eindpunt uitschakelen
+
 Wanneer alle toegang tot het openbare eindpunt wordt uitgeschakeld, is het opslagaccount nog toegankelijk via de privé-eindpunten van het account. Anderszins geldige aanvragen naar het openbare eindpunt van het opslagaccount worden geweigerd. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -140,7 +149,8 @@ Wanneer alle toegang tot het openbare eindpunt wordt uitgeschakeld, is het opsla
 
 ---
 
-### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Toegang tot het openbare eindpunt beperken tot specifieke virtuele netwerken
+#### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Toegang tot het openbare eindpunt beperken tot specifieke virtuele netwerken
+
 Wanneer u de toegang tot het opslagaccount beperkt tot bepaalde virtuele netwerken, staat u aanvragen naar het openbare eindpunt toe vanuit de opgegeven virtuele netwerken. Hiervoor wordt een voorziening van het virtuele netwerk gebruikt met de naam *service-eindpunten*. Deze voorziening kan worden gebruikt met of zonder privé-eindpunten.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -155,6 +165,7 @@ Wanneer u de toegang tot het opslagaccount beperkt tot bepaalde virtuele netwerk
 ---
 
 ## <a name="see-also"></a>Zie ook
+
 - [Azure Files networking considerations](storage-files-networking-overview.md) (Aandachtspunten voor Azure Files-netwerken)
 - [Configuring DNS forwarding for Azure Files](storage-files-networking-dns.md) (DNS doorsturen configureren voor Azure Files)
 - [Configuring S2S VPN for Azure Files](storage-files-configure-s2s-vpn.md) (S2S-VPN configureren voor Azure Files)

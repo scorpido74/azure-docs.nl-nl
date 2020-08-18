@@ -2,25 +2,21 @@
 title: 'Zelf studie: Workgrid configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Workgrid.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: 94d70447117c73a309959ddf66972c921aa5e687
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28efbb605221b9f613b39c2a72d47c7606afb67e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062804"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526782"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Zelf studie: Workgrid configureren voor automatische gebruikers inrichting
 
@@ -100,7 +96,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-workgrid--in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Workgrid in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 

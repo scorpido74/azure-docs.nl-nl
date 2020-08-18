@@ -1,6 +1,6 @@
 ---
 title: Het hulp programma Azure import/export instellen v1 | Microsoft Docs
-description: Meer informatie over het instellen van het hulp programma voor het voorbereiden en repareren van stations voor de Azure import/export-service. Dit verwijst naar v1 van het import/export-hulp programma.
+description: Meer informatie over het instellen van het hulp programma voor het voorbereiden en repareren van stations voor de Azure import/export-service. Dit artikel verwijst naar versie 1 van het hulp programma voor importeren/exporteren.
 author: twooley
 services: storage
 ms.service: storage
@@ -8,28 +8,28 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077812"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530797"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Het hulp programma Azure import/export instellen v1
 Het hulp programma Microsoft Azure Import/Export is het hulp programma voor het voorbereiden en repareren van stations dat u kunt gebruiken met de Microsoft Azure Import/Export-service. U kunt het hulp programma gebruiken voor de volgende functies:  
 
--   Voordat u een import taak maakt, kunt u dit hulp programma gebruiken om gegevens te kopiëren naar de harde schijven die u gaat verzenden naar een Windows Azure-Data Center.  
+-   Voordat u een import taak maakt, kunt u dit hulp programma gebruiken om gegevens te kopiëren naar de harde schijven die u naar een Windows Azure Data Center verzendt.  
 
 -   Nadat een import taak is voltooid, kunt u dit hulp programma gebruiken om blobs te herstellen die zijn beschadigd, ontbreken of conflicteren met andere blobs.  
 
 -   Nadat u de stations van een voltooide export taak hebt ontvangen, kunt u dit hulp programma gebruiken om bestanden te herstellen die op de stations zijn beschadigd of ontbreken.  
 
 ## <a name="prerequisites"></a>Vereisten  
-Als u stations voor een import taak voorbereidt, moet aan de volgende vereisten worden voldaan:  
+Als u stations voorbereidt voor een import taak, moet u aan de volgende vereisten voldoen:  
 
 -   U hebt een actief Azure-abonnement nodig.  
 
--   Uw abonnement moet een opslag account bevatten met voldoende beschik bare ruimte voor het opslaan van de bestanden die u gaat importeren.  
+-   Uw abonnement moet een opslag account bevatten met voldoende beschik bare ruimte voor het opslaan van de bestanden die u wilt importeren.  
 
 -   U hebt ten minste één van de account sleutels voor het opslag account nodig.  
 
@@ -253,5 +253,4 @@ Examples:
 * [Een voor beeld van een schijf gebruik voor een export taak bekijken](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [De taakstatus controleren met kopielogboekbestanden](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Een importtaak herstellen](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Een exporttaak herstellen](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Problemen met het hulpprogramma Azure Import/Export oplossen](storage-import-export-tool-troubleshooting-v1.md)
+* [Een exporttaak herstellen](../storage-import-export-tool-repairing-an-export-job-v1.md)

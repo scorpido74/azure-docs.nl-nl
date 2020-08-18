@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e1054edbece83804b8e49394f979dbaaf0b99917
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685305"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516585"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Video-inhoud voor aanstootgevend materiaal in C analyseren #
 
 In dit artikel vindt u informatie en code voorbeelden waarmee u aan de slag kunt met de [Content moderator SDK voor .net](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) voor het scannen van video-inhoud voor inhoud voor volwassenen of ongepaste.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 - Een versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/)
@@ -120,7 +120,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Als u een lokaal video bestand (het eenvoudigste geval) wilt gebruiken, voegt u het toe aan het project en voert u het pad in als de `INPUT_FILE` waarde (relatieve paden zijn relatief ten opzichte van de uitvoerings Directory).
 
-U moet ook het bestand voor de _vooraf ingestelde. json_ in de huidige map maken en gebruiken om een versie nummer op te geven. Bijvoorbeeld:
+U moet ook de _preset.jsvoor_ het bestand in de huidige map maken en gebruiken om een versie nummer op te geven. Bijvoorbeeld:
 
 ```JSON
 {
@@ -158,7 +158,7 @@ RunContentModeratorJob(asset);
 
 ### <a name="create-an-azure-media-context"></a>Een Azure-media context maken
 
-Voeg de volgende methode toe aan de klasse **Program** . Dit maakt gebruik van uw AMS-referenties om communicatie met AMS toe te staan.
+Voeg de volgende methode toe aan de klasse **Program**. Dit maakt gebruik van uw AMS-referenties om communicatie met AMS toe te staan.
 
 ```csharp
 // Creates a media context from azure credentials
@@ -179,7 +179,7 @@ static void CreateMediaContext()
 
 ### <a name="add-the-code-to-create-an-azure-storage-context"></a>De code toevoegen om een Azure Storage context te maken
 
-Voeg de volgende methode toe aan de klasse **Program** . U gebruikt de opslag context, die u hebt gemaakt op basis van uw opslag referenties, om toegang te krijgen tot de Blob-opslag.
+Voeg de volgende methode toe aan de klasse **Program**. U gebruikt de opslag context, die u hebt gemaakt op basis van uw opslag referenties, om toegang te krijgen tot de Blob-opslag.
 
 ```csharp
 // Creates a storage context from the AMS associated storage name and key
@@ -369,10 +369,10 @@ Analyseer het JSON-antwoord nadat de taak voor inhouds toezicht is voltooid. Dez
 - **Start**, **duration**, **totalDuration**en **Time Stamp** bevinden zich in ' Ticks '. Delen door **tijd schaal** om het getal in seconden op te halen.
  
 > [!NOTE]
-> - `adultScore`vertegenwoordigt de potentiële aanwezigheids-en voorspellende Score van inhoud die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
-> - `racyScore`vertegenwoordigt de potentiële aanwezigheids-en voorspellende Score van inhoud die in bepaalde situaties als seksueel voor stel of rijp kan worden beschouwd.
-> - `adultScore`en `racyScore` tussen 0 en 1 liggen. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Dit voor beeld is afhankelijk van een statistisch model in plaats van hand matige gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
-> - `reviewRecommended`is waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
+> - `adultScore` vertegenwoordigt de potentiële aanwezigheids-en voorspellende Score van inhoud die in bepaalde situaties als seksueel expliciet of volwassen kan worden beschouwd.
+> - `racyScore` vertegenwoordigt de potentiële aanwezigheids-en voorspellende Score van inhoud die in bepaalde situaties als seksueel voor stel of rijp kan worden beschouwd.
+> - `adultScore` en `racyScore` tussen 0 en 1 liggen. Hoe hoger de score, hoe hoger het model is om te voors pellen dat de categorie van toepassing kan zijn. Dit voor beeld is afhankelijk van een statistisch model in plaats van hand matige gecodeerde resultaten. We raden u aan om te testen met uw eigen inhoud om te bepalen hoe elke categorie wordt uitgelijnd op uw vereisten.
+> - `reviewRecommended` is waar of onwaar, afhankelijk van de drempel waarden van de interne Score. Klanten moeten beoordelen of u deze waarde moet gebruiken of besluiten over aangepaste drempel waarden op basis van hun inhouds beleid.
 
 ```json
 {

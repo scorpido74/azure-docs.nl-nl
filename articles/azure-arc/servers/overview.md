@@ -1,20 +1,16 @@
 ---
 title: Overzicht van Azure Arc voor servers (preview)
 description: Meer informatie over het gebruik van Azure Arc voor servers om machines te beheren die buiten Azure worden gehost alsof ze een Azure-resource zijn.
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 keywords: azure automation, DSC, powershell, configuratie van gewenste status, updatebeheer, bijhouden van wijzigingen, inventaris, runbooks, python, grafisch, hybride
-ms.date: 03/24/2020
+ms.custom: references_regions
+ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: f11eedaf5f70cb24fa6c1588b7f26b2eed4734ce
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482187"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121796"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Wat is Azure Arc voor servers (preview)?
 
@@ -28,10 +24,15 @@ Om deze ervaring te bieden voor hybride machines die buiten Azure worden gehost,
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-Azure Arc voor servers (preview) ondersteunt de volgende scenario's met gekoppelde machines:
+Wanneer u uw machine verbindt met Azure Arc voor servers (preview), kunt u de volgende configuratiebeheertaken uitvoeren:
 
 - [Azure Policy-gastconfiguraties](../../governance/policy/concepts/guest-configuration.md) toewijzen met dezelfde ervaring als beleidstoewijzing voor virtuele Azure-machines.
-- Gegevens vastleggen die worden verzameld door de Log Analytics-agent en opgeslagen in de Log Analytics-werkruimte waarin de computer is geregistreerd. De logboekgegevens van de hybride machine bevatten nu eigenschappen die specifiek zijn voor de machine, zoals een resource-id, die kunnen worden gebruikt ter ondersteuning van toegang tot het [resource-context](../../azure-monitor/platform/design-logs-deployment.md#access-mode)-logboek.
+
+- Controleer de prestaties van het gastbesturingssysteem van uw verbonden computer en ontdek toepassingscomponenten om hun processen en afhankelijkheden te controleren met andere resources die de door de toepassing worden gecommuniceerd met behulp van [Azure Monitor voor VM's](../../azure-monitor/insights/vminsights-overview.md).
+
+- Vereenvoudig de implementatie met andere Azure-services zoals Azure Automation State Configuration en Azure Monitor Log Analytics-werkruimte door gebruik te maken van de ondersteunde [Azure VM-extensies](manage-vm-extensions.md) voor uw niet-Azure Windows- of Linux-machines. Dit omvat het uitvoeren van configuratie na de implementatie of software-installatie met behulp van de aangepaste scriptextensie.
+
+Aanmeldingsgegevens die zijn verzameld en opgeslagen in een Log Analytics-werkruimte van de hybride machine bevatten nu eigenschappen die specifiek zijn voor de machine, zoals een resource-id. Dit kan worden gebruikt ter ondersteuning van toegang tot het logboek met [resource-context](../../azure-monitor/platform/design-logs-deployment.md#access-mode).
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 

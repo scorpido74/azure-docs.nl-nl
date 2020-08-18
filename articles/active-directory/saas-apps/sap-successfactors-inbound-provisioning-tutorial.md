@@ -3,23 +3,19 @@ title: 'Zelf studie: SuccessFactors inkomend inrichten configureren in AD en Azu
 description: Meer informatie over het configureren van binnenkomende Provisioning vanuit SuccessFactors
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: 1ff90231-1312-463e-8949-7d976e433fc3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 95c46550570d579af7ab8107686ad20838a3a62e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c03459a86f521cafd792b9bf86b2b6b46bf3da9c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809949"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534099"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Zelf studie: SAP SuccessFactors configureren voor Active Directory gebruikers inrichting 
 Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om gebruikers in te richten vanuit SuccessFactors Employee Central in Active Directory (AD) en Azure AD, met een optionele write-back van e-mail adres naar SuccessFactors. 

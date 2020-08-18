@@ -2,25 +2,21 @@
 title: 'Zelf studie: Miro configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Miro.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 81eecaff-d888-472b-a1c2-0b7b0c9ccd8d
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: Zhchia
-ms.openlocfilehash: b7e1907e3fa1eb9d775fb7662445b08d5671e0b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99ddbd7a197a6f9a4cb8c50b0643b159dd2d1a1e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063407"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518497"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>Zelf studie: Miro configureren voor automatische gebruikers inrichting
 
@@ -90,7 +86,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-miro-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor miro in azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 

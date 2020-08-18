@@ -1,14 +1,14 @@
 ---
 title: Details van de structuur van de beleids toewijzing
 description: Beschrijft de beleids toewijzings definitie die door Azure Policy wordt gebruikt om beleids definities en-para meters te koppelen aan resources voor evaluatie.
-ms.date: 04/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205038"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520710"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
 
@@ -17,7 +17,7 @@ Beleids toewijzingen worden gebruikt door Azure Policy om te definiëren welke r
 U gebruikt JSON om een beleids toewijzing te maken. De beleids toewijzing bevat elementen voor:
 
 - weergave naam
-- description
+- beschrijving
 - metagegevens
 - Afdwingings modus
 - uitgesloten bereiken
@@ -64,7 +64,7 @@ Deze eigenschap heeft de volgende waarden:
 |Modus |JSON-waarde |Type |Hand matig herstellen |Vermelding in het activiteiten logboek |Beschrijving |
 |-|-|-|-|-|-|
 |Ingeschakeld |Standaard |tekenreeks |Ja |Ja |Het beleids effect wordt afgedwongen tijdens het maken of bijwerken van de resource. |
-|Uitgeschakeld |DoNotEnforce |tekenreeks |Yes |Nee | Het beleids effect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
+|Uitgeschakeld |DoNotEnforce |tekenreeks |Ja |Nee | Het beleids effect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
 
 Als **enforcementMode** niet is opgegeven in een beleids-of initiatief definitie, wordt de _standaard_ waarde gebruikt. [Herstel taken](../how-to/remediate-resources.md) kunnen worden gestart voor [deployIfNotExists](./effects.md#deployifnotexists) -beleid, zelfs wanneer **enforcementMode** is ingesteld op _DoNotEnforce_.
 
@@ -75,12 +75,11 @@ Het **bereik** van de toewijzing bevat alle onderliggende resource containers en
 ## <a name="policy-definition-id"></a>Beleids definitie-ID
 
 Dit veld moet de volledige padnaam zijn van ofwel een beleids definitie of een initiatief definitie.
-`policyDefinitionId`is een teken reeks en geen matrix. Het is raadzaam om in plaats daarvan een [initiatief](./initiative-definition-structure.md) te gebruiken als er vaak meerdere beleids regels aan elkaar worden toegewezen.
+`policyDefinitionId` is een teken reeks en geen matrix. Het is raadzaam om in plaats daarvan een [initiatief](./initiative-definition-structure.md) te gebruiken als er vaak meerdere beleids regels aan elkaar worden toegewezen.
 
 ## <a name="parameters"></a>Parameters
 
-Dit segment van de beleids toewijzing bevat de waarden voor de para meters die zijn gedefinieerd in de [beleids definitie of initiatief definitie](./definition-structure.md#parameters).
-Dit ontwerp maakt het mogelijk om een beleid of initiatief definitie met verschillende resources te hergebruiken, maar te controleren op verschillende bedrijfs waarden of-resultaten.
+Dit segment van de beleids toewijzing bevat de waarden voor de para meters die zijn gedefinieerd in de [beleids definitie of initiatief definitie](./definition-structure.md#parameters). Dit ontwerp maakt het mogelijk om een beleid of initiatief definitie met verschillende resources te hergebruiken, maar te controleren op verschillende bedrijfs waarden of-resultaten.
 
 ```json
 "parameters": {

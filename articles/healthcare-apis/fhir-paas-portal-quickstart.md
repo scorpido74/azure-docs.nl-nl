@@ -2,18 +2,18 @@
 title: 'Quickstart: De Azure-API voor FHIR implementeren met de Azure-portal'
 description: In deze quickstart leert u hoe u de Azure-API voor FHIR implementeert en instellingen configureert met behulp van de Azure-portal.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: e729597e9d83c4e6096fe52b577b052d94ca4799
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 03/15/2020
+ms.author: matjazl
+ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "84820017"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851933"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Quickstart: De Azure-API voor FHIR implementeren met de Azure-portal
 
@@ -31,34 +31,31 @@ Open de [Azure-portal](https://portal.azure.com) en klik op **Een resource maken
 
 U kunt de Azure-API voor FHIR vinden door ‘FHIR’ in het zoekvak te typen:
 
-![Zoek naar Healthcare API’s](media/quickstart-paas-portal/portal-search-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-search-healthcare-apis.png" alt-text="Zoek naar Healthcare API’s":::
 
 ## <a name="create-azure-api-for-fhir-account"></a>Maak een ‘Azure-API voor FHIR’-account
 
 Selecteer **Maken** om een nieuw ‘Azure-API voor FHIR’-account te maken:
 
-![Maak een ‘Azure-API voor FHIR’-account](media/quickstart-paas-portal/portal-create-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Maak een ‘Azure-API voor FHIR’-account":::
 
 ## <a name="enter-account-details"></a>Voer accountgegevens in
 
 Selecteer een bestaande resourcegroep of maak een nieuwe, kies een naam voor het account en klik tot slot op **Controleren en maken**:
 
-![Nieuwe Healthcare API-gegevens](media/quickstart-paas-portal/portal-new-healthcareapi-details.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Nieuwe Healthcare API-gegevens":::
 
 Bevestig de aanmaak en wacht tot de FHIR-API is geïmplementeerd.
 
-## <a name="additional-settings"></a>Aanvullende instellingen
+## <a name="additional-settings-optional"></a>Aanvullende instellingen (optioneel)
 
-Klik op **Next: Aanvullende instellingen** om de ID’s van instanties, doelgroepen en identiteitsobjecten te configureren die toegang moeten kunnen krijgen tot deze Azure-API voor FHIR, schakel indien nodig ‘SMART on FHIR’ in en configureer databasedoorvoer:
+U kunt klikken op **Volgende: Aanvullende instellingen** om de verificatie-instellingen weer te geven. De standaardconfiguratie voor de Azure API voor FHIR is om [Azure RBAC te gebruiken voor het toewijzen van gegevensvlakrollen](configure-azure-rbac.md). In deze modus wordt de Autoriteit voor de FHIR-service ingesteld op de Azure Active Directory-tenant van het abonnement:
 
-- **Instantie:** U kunt een andere Azure AD-tenant dan degene waarbij u bent aangemeld opgeven als verificatie-instantie voor de service.
-- **Doelgroep:** De aanbevolen en standaardinstelling is dat de doelgroep is ingesteld op de URL van de FHIR-server. U kunt dat hier wijzigen. De doelgroep identificeert de ontvanger waar het token voor is bedoeld. In deze context moet deze worden ingesteld op iets dat de FHIR-API zelf vertegenwoordigt.
-- **Toegestane object-ID’s:** U kunt ID’s van identiteitsobjecten opgeven die toegang moeten kunnen krijgen tot deze Azure-API voor FHIR. Meer informatie over het vinden van de object-ID voor gebruikers en service-principals vindt u in de instructiegids [ID's van identiteitsobjecten vinden](find-identity-object-ids.md).  
-- **SMART on FHIR-proxy:** U kunt de SMART on FHIR-proxy inschakelen. Zie de zelfstudie [De SMART on FHIR-proxy van de Azure-API voor FHIR](https://docs.microsoft.com/azure/healthcare-apis/use-smart-on-fhir-proxy) voor meer informatie over hoe u de SMART on FHIR-proxy configureert.  
-- **Ingerichte doorvoer (RU/s):** Hier kunt u doorvoerinstellingen opgeven voor de onderliggende database van uw Azure-API voor FHIR. U kunt deze instelling later wijzigen op de blade Database. Zie de pagina [Database-instellingen configureren](configure-database.md) voor meer informatie.
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Instellingen Standaardverificatie":::
 
+Het invoerveld voor toegestane object-id's wordt grijs weergegeven, aangezien we in dit geval Azure RBAC gebruiken voor het configureren van roltoewijzingen.
 
-![Toegestane object-ID’s configureren](media/quickstart-paas-portal/configure-audience.png)
+Als u de FHIR-service wilt configureren om een externe of secundaire Azure Active Directory-tenant te gebruiken, kunt u de Autoriteit wijzigen en object-id's invoeren voor gebruikers en groepen die toegang tot de server moeten krijgen. Zie de handleiding voor [lokale RBAC-configuratie](configure-local-rbac.md) voor meer informatie.
 
 ## <a name="fetch-fhir-api-capability-statement"></a>FHIR API-mogelijkheidsinstructie ophalen
 

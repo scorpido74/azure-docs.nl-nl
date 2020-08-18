@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773276"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835813"
 ---
 # <a name="confidential-computing-on-azure"></a>Confidential Computing op Azure
 
@@ -52,7 +52,7 @@ Enclaves zijn beveiligde delen van de processor en het geheugen van een hardware
 
 Bij het ontwikkelen van toepassingen kunt u [softwarehulpprogramma's](#oe-sdk) gebruiken om delen van uw code en gegevens in de enclave af te schermen. Met deze hulpprogramma's kunt u ervoor zorgen dat uw code en gegevens niet kunnen worden weergegeven of gewijzigd door iemand buiten de vertrouwde omgeving. 
 
-Eigenlijk kunt u een enclave beschouwen als een soort zwarte doos. U plaatst versleutelde code en gegevens in de doos. Vanaf de buitenkant ziet u niets. U geeft de enclave een sleutel waarmee de gegevens kunnen worden ontsleuteld, waarna de gegevens worden verwerkt en opnieuw worden versleuteld voordat ze vanuit de enclave worden verzonden.
+Eigenlijk kunt u een enclave beschouwen als een soort beveiligde doos. U plaatst versleutelde code en gegevens in de doos. Vanaf de buitenkant ziet u niets. U geeft de enclave een sleutel waarmee de gegevens kunnen worden ontsleuteld, waarna de gegevens worden verwerkt en opnieuw worden versleuteld voordat ze vanuit de enclave worden verzonden.
 
 ### <a name="attestation"></a>Attestation
 

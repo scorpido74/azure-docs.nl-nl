@@ -1,6 +1,6 @@
 ---
-title: Code voorbeelden voor Azure Active Directory v 1.0 | Microsoft Docs
-description: Biedt een index van code voorbeelden van Azure Active Directory (v 1.0-eind punt), geordend op scenario.
+title: Codevoorbeelden voor Azure Active Directory v1.0 | Microsoft Docs
+description: Biedt een index van codevoorbeelden voor Azure Active Directory (v1.0-eindpunt), geordend op scenario.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,114 +14,114 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387606"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116203"
 ---
-# <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory code voorbeelden (v 1.0-eind punt)
+# <a name="azure-active-directory-code-samples-v10-endpoint"></a>Codevoorbeelden voor Azure Active Directory (v1.0-eindpunt)
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-U kunt Microsoft Azure Active Directory (Azure AD) gebruiken om verificatie en autorisatie toe te voegen aan uw webtoepassingen en Web-Api's.
+U kunt Microsoft Azure Active Directory (Azure AD) gebruiken om functionaliteit voor verificatie en autorisatie aan uw webtoepassingen en web-API's toe te voegen.
 
-In deze sectie vindt u koppelingen naar voor beelden die u kunt gebruiken voor meer informatie over het Azure AD v 1.0-eind punt. In deze voor beelden ziet u hoe deze worden uitgevoerd, samen met code fragmenten die u in uw toepassingen kunt gebruiken. Op de pagina code voorbeeld vindt u gedetailleerde onderwerpen over lees mijzelf die u helpen bij vereisten, installatie en configuratie. En de code is een opmerking waarmee u de essentiële secties kunt begrijpen.
+In deze sectie vindt u koppelingen naar voorbeelden die u kunt gebruiken voor meer informatie over het Azure AD v1.0-eindpunt. Deze voorbeelden laten zien hoe het werkt en bevatten ook codefragmenten die u kunt gebruiken in uw toepassingen. Op de pagina met codevoorbeelden vindt u gedetailleerde leesmij-onderwerpen om u te helpen bij de vereisten, installatie en configuratie. De code bevat ook opmerkingen om u te helpen de kritieke secties te begrijpen.
 
 > [!NOTE]
-> Als u geïnteresseerd bent in azure AD v2-code voorbeelden, raadpleegt u [v 2.0-code voorbeelden per scenario](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+> Als u geïnteresseerd bent in codevoorbeelden voor Azure AD v2, raadpleegt u [v2.0-codevoorbeelden per scenario](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-Zie [verificatie scenario's voor Azure AD](v1-authentication-scenarios.md)voor meer informatie over het basis scenario voor elk type sample.
+Zie [Verificatiescenario's voor Azure AD](v1-authentication-scenarios.md) voor meer informatie over het basisscenario voor elk type voorbeeld.
 
-U kunt ook bijdragen aan onze voor beelden op GitHub. Zie Microsoft Azure Active Directory-voor [beelden en-documentatie](https://github.com/Azure-Samples?page=3&query=active-directory)voor meer informatie.
+U kunt ook bijdragen aan onze voorbeelden op GitHub. Zie [Voorbeelden en documentatie voor Microsoft Azure Active Directory](https://github.com/Azure-Samples?page=3&query=active-directory) voor meer informatie.
 
 ## <a name="single-page-applications"></a>Toepassingen met één pagina
 
-In dit voor beeld ziet u hoe u een toepassing met één pagina schrijft die is beveiligd met Azure AD.
+In dit voorbeeld ziet u hoe u een toepassing met één pagina schrijft die wordt beveiligd met Azure AD.
 
- Platform | Roept een eigen API aan | Hiermee wordt een andere web-API aangeroepen
+ Platform | Roept een eigen API aan | Roept een andere web-API aan
  -------- |  --------------------- | ------------------ 
-![Deze afbeelding toont het Java script-logo](media/sample-v2-code/logo-js.png) | [Java script-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
-![Deze afbeelding toont het hoek JS-logo](media/sample-v2-code/logo-angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
+![In deze afbeelding ziet u het JavaScript-logo](media/sample-v2-code/logo-js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+![In deze afbeelding ziet u het AngularJS-logo](media/sample-v2-code/logo-angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
 ## <a name="web-applications"></a>Webtoepassingen
 
-### <a name="web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity"></a>Webtoepassingen voor het aanmelden van gebruikers, het aanroepen van Microsoft Graph of een web-API met de identiteit van de gebruiker
+### <a name="web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity"></a>Webtoepassingen voor het aanmelden van gebruikers, het aanroepen van Microsoft Graph of een web-API met de id van de gebruiker
 
-De volgende voor beelden illustreren webtoepassingen die gebruikers ondertekenen. Sommige van deze toepassingen roepen ook de Microsoft Graph of uw eigen web-API aan, in de naam van de aangemelde gebruiker.
+De volgende voorbeelden illustreren webtoepassingen waarmee gebruikers worden aangemeld. Sommige van deze toepassingen roepen ook Microsoft Graph of uw eigen web-API aan namens de aangemelde gebruiker.
 
- Platform | Alleen tekenen in gebruikers | Aanroepen Microsoft Graph | Hiermee wordt een andere ASP.NET-of ASP.NET Core 2,0-Web-API aangeroepen
+ Platform | Meldt alleen gebruikers aan | Roept Microsoft Graph aan | Roept een andere ASP.NET- of ASP.NET Core 2.0-web-API aan
  -------- | ------------------- | --------------------- | -------------------------
-![In deze afbeelding wordt het ASP.NET-logo weer gegeven](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multi tenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD-grafiek) | [DotNet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![In deze afbeelding wordt het ASP.NET-logo weer gegeven](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-webapp-multi tenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD-grafiek) |
-![Deze afbeelding toont het python-logo](media/sample-v2-code/logo-python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
-![In deze afbeelding wordt het Java-logboek weer gegeven](media/sample-v2-code/logo-java.png)  | | [Java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
-![Deze afbeelding toont het PHP-logo](media/sample-v2-code/logo-php.png) | | [PHP-graphapi-Web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
+![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(Microsoft Azure AD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
+![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (Microsoft Azure AD Graph) |
+![In deze afbeelding ziet u het Python-logo](media/sample-v2-code/logo-python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
+![In deze afbeelding ziet u het Java-logo](media/sample-v2-code/logo-java.png)  | | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
+![In deze afbeelding ziet u het PHP-logo](media/sample-v2-code/logo-php.png) | | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
 
-### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Webtoepassingen die op rollen gebaseerd toegangs beheer (autorisatie) demonstreren
+### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Webtoepassingen die op rollen gebaseerd toegangsbeheer (autorisatie) demonstreren
 
-De volgende voor beelden laten zien hoe u op rollen gebaseerd toegangs beheer (RBAC) implementeert. RBAC wordt gebruikt om de machtigingen van bepaalde functies in een webtoepassing te beperken tot bepaalde gebruikers. De gebruikers zijn gemachtigd, afhankelijk van of ze deel uitmaken van een **Azure AD-groep** of een **bepaalde toepassingsrol hebben.**
+De volgende voorbeelden laten zien hoe u op rollen gebaseerd toegangsbeheer (RBAC) implementeert. RBAC wordt gebruikt om de machtigingen van bepaalde functies in een webtoepassing te beperken tot bepaalde gebruikers. De gebruikers zijn gemachtigd, als ze behoren tot een **Azure AD-groep** of een bepaalde **toepassingsrol** hebben.
 
 Platform | Voorbeeld |
  -------- | ------------------- |
-![In deze afbeelding wordt het ASP.NET-logo weer gegeven](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [DotNet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Een .NET 4,5 MVC-Web-app die gebruikmaakt van Azure AD- **rollen** voor autorisatie
+![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Een .NET 4.5 MVC-web-app die gebruikmaakt van Azure AD-**rollen** voor autorisatie
 
-## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Desktop-en Mobile Public client-toepassingen die Microsoft Graph of een web-API aanroepen
+## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Openbare bureaublad- en mobiele clienttoepassingen die Microsoft Graph of een web-API aanroepen
 
-De volgende voor beelden illustreren open bare client toepassingen (deskto/pmobile-toepassingen) die toegang hebben tot de Microsoft Graph of een web-API in de naam van een gebruiker. Afhankelijk van de apparaten en platformen kunnen toepassingen zich op verschillende manieren aanmelden (stromen/subsidies):
+In de volgende voorbeelden ziet u openbare clienttoepassingen (bureaublad- of mobiele toepassingen) die Microsoft Graph of een web-API aanroepen namens een gebruiker. Afhankelijk van de apparaten en platformen, kunnen gebruikers door toepassingen op verschillende manieren worden aangemeld (stromen/toekenningen):
 
 - Interactief
-- Op de achtergrond (met geïntegreerde Windows-verificatie in Windows of gebruikers naam/wacht woord)
-- Door de interactieve aanmelding te delegeren naar een ander apparaat (apparaatcode stroom op apparaten die geen Webbe sturings elementen bieden)
+- Op de achtergrond (met geïntegreerde Windows-verificatie in Windows, of met een gebruikersnaam en wachtwoord)
+- Door de interactieve aanmelding te delegeren naar een ander apparaat (apparaatcodestroom op apparaten zonder webbesturingselementen)
 
-Client toepassing | Platform | Stroom/verlenen | Aanroepen Microsoft Graph | Hiermee wordt een ASP.NET-of ASP.NET Core 2. x-Web-API aangeroepen
+Clienttoepassing | Platform | Stroom/Toekenning | Roept Microsoft Graph aan | Roept een ASP.NET- of ASP.NET Core 2.x-web-API aan
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-Bureau blad (WPF)           | ![In deze afbeelding wordt het .NET/C#-logo weer gegeven](media/sample-v2-code/logo-net.png)  | Interactief | Onderdeel van [DotNet-systeem eigen doel](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [DotNet-systeem eigen-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-webapi-hand matige-JWT-validatie](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-Mobiel (UWP)            | .![In deze afbeelding wordt de .NET/C#-/UWP weer gegeven](media/sample-v2-code/logo-windows.png)   | Interactief | [DotNet-systeem eigen-UWP-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Dit voor beeld maakt gebruik van [WAM](/windows/uwp/security/web-account-manager), niet [ADAL.net](https://aka.ms/adalnet)|  [DotNet-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (UWP-toepassing met behulp van ADAL.net om één Tenant Web-API aan te roepen) </p> [DotNet-webapi-multi tenant-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (UWP-toepassing met ADAL.net voor het aanroepen van een web-API met meerdere tenants)|
-Mobiel (Android, iOS, UWP)   | ![In deze afbeelding wordt .NET/C# (Xamarin) weer gegeven](media/sample-v2-code/logo-xamarin.png) | Interactief | [DotNet-systeem eigen doel](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
-Mobiel (Android)           | ![Deze afbeelding toont het Android-logo](media/sample-v2-code/logo-android.png) | Interactief |   [Android](https://github.com/Azure-Samples/active-directory-android) |
-Mobiel (iOS)           | ![Deze afbeelding toont iOS/objectief C of SWIFT](media/sample-v2-code/logo-ios.png) | Interactief |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
-Bureau blad (console)          | ![In deze afbeelding wordt het .NET/C#-logo weer gegeven](media/sample-v2-code/logo-net.png) | Gebruikers naam/wacht woord </p>  Geïntegreerde Windows-authenticatie | | [DotNet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
-Bureau blad (console)          | ![In deze afbeelding wordt het Java-logo weer gegeven](media/sample-v2-code/logo-java.png) | Gebruikers naam/wacht woord | | [Java-Native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
-Bureau blad (console)           | ![In deze afbeelding wordt het .NET core/C#-logo weer gegeven](media/sample-v2-code/logo-netcore.png) | Toestel code stroom | | [DotNet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
+Bureaublad (WPF)           | ![In deze afbeelding ziet u het .NET/C#-logo](media/sample-v2-code/logo-net.png)  | Interactief | Onderdeel van [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+Mobiel (UWP)            | .![In deze afbeelding ziet u het .NET/C#/UWP-logo](media/sample-v2-code/logo-windows.png)   | Interactief | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> In dit voorbeeld wordt [WAM](/windows/uwp/security/web-account-manager) gebruikt, niet [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (UWP-toepassing die ADAL.NET gebruikt voor het aanroepen van een web-API met één tenant) </p> [dotnet-webapi-multitenant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (UWP-toepassing die ADAL.NET gebruikt voor het aanroepen van een web-API met meerdere tenants)|
+Mobiel (Android, iOS, UWP)   | ![In deze afbeelding ziet u het .NET/C#-logo (Xamarin)](media/sample-v2-code/logo-xamarin.png) | Interactief | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
+Mobiel (Android)           | ![In deze afbeelding ziet u het Android-logo](media/sample-v2-code/logo-android.png) | Interactief |   [android](https://github.com/Azure-Samples/active-directory-android) |
+Mobiel (iOS)           | ![In deze afbeelding ziet u iOS/Objective C of Swift](media/sample-v2-code/logo-ios.png) | Interactief |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
+Bureaublad (console)          | ![In deze afbeelding ziet u het .NET/C#-logo](media/sample-v2-code/logo-net.png) | Gebruikersnaam en wachtwoord </p>  Geïntegreerde Windows-authenticatie | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
+Bureaublad (console)          | ![In deze afbeelding ziet u het Java-logo](media/sample-v2-code/logo-java.png) | Gebruikersnaam en wachtwoord | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
+Bureaublad (console)           | ![In deze afbeelding ziet u het .NET Core/C#-logo](media/sample-v2-code/logo-netcore.png) | Stroom voor apparaatcode | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
-## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Daemon-toepassingen (toegang tot Web-Api's met de identiteit van de toepassing)
+## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Daemon-toepassingen (toegang tot web-API's met de id van de toepassing)
 
-De volgende voor beelden tonen bureau blad-of webtoepassingen die toegang hebben tot de Microsoft Graph of een web-API zonder gebruiker (met de toepassings-id).
+In de volgende voorbeelden ziet u bureaublad- of webtoepassingen die Microsoft Graph of een web-API aanroepen zonder gebruiker (met de toepassings-id).
 
-Client toepassing | Platform | Stroom/verlenen | Hiermee wordt een ASP.NET-of ASP.NET Core 2,0-Web-API aangeroepen
+Clienttoepassing | Platform | Stroom/Toekenning | Roept een ASP.NET- of ASP.NET Core 2.0-web-API aan
 ------------------ | -------- | ---------- | -------------------- 
-Daemon-app (console)          | ![In deze afbeelding wordt het .NET-logo weer gegeven](media/sample-v2-code/logo-netframework.png) | Client referenties met geheim of certificaat van app | [DotNet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [DotNet-daemon-certificaat-referentie](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
-Daemon-app (console)         | ![In deze afbeelding wordt het .NET-logo weer gegeven](media/sample-v2-code/logo-netcore.png) | Client referenties met certificaat| [dotnetcore-daemon-certificaat-referentie](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
-ASP.NET-Web-app  | ![In deze afbeelding wordt het .NET-logo weer gegeven](media/sample-v2-code/logo-netframework.png) | Clientreferenties | [DotNet-webapp-webapi-oauth2-APPIDENTITY](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
+Daemon-app (console)          | ![In deze afbeelding ziet u het .NET-logo](media/sample-v2-code/logo-netframework.png) | Clientreferenties met app-geheim of app-certificaat | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
+Daemon-app (console)         | ![In deze afbeelding ziet u het .NET-logo](media/sample-v2-code/logo-netcore.png) | Clientreferenties met certificaat| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
+ASP.NET-web-app  | ![In deze afbeelding ziet u het .NET-logo](media/sample-v2-code/logo-netframework.png) | Clientreferenties | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
 
 ## <a name="web-apis"></a>Web-API's
 
-### <a name="web-api-protected-by-azure-active-directory"></a>Web-API beveiligd door Azure Active Directory
+### <a name="web-api-protected-by-azure-active-directory"></a>Web-API beveiligd met Azure Active Directory
 
-In het volgende voor beeld ziet u hoe u een node.js Web-API met Azure AD kunt beveiligen.
+In het volgende voorbeeld ziet u hoe u een Node.js-web-API beveiligt met Azure AD.
 
-In de vorige secties van dit artikel vindt u ook andere voor beelden van een client toepassing die een ASP.NET of ASP.NET Core web- **API** **aanroept** . Deze voor beelden worden niet opnieuw vermeld in deze sectie, maar u vindt ze in de laatste kolom van de bovenstaande tabellen of onder
+In de vorige secties van dit artikel vindt u ook andere voorbeelden van een clienttoepassing die een ASP.NET- of ASP.NET Core-**web-API** **aanroept**. Deze voorbeelden worden niet opnieuw vermeld in deze sectie, maar u vindt ze in de laatste kolom van de boven- of onderstaande tabellen
 
 | Platform | Voorbeeld |
 |--------|-------------------|
-| ![Deze afbeelding toont het Node.js logo](media/sample-v2-code/logo-nodejs.png)  | [knoop punt-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |
+| ![In deze afbeelding ziet u het Node.js-logo](media/sample-v2-code/logo-nodejs.png)  | [node-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |
 
 ### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>Web-API die Microsoft Graph of een andere web-API aanroept
 
-In de volgende voor beelden ziet u een web-API die een andere web-API aanroept. Het tweede voor beeld laat zien hoe u voorwaardelijke toegang kunt verwerken.
+In de volgende voorbeelden ziet u een web-API die een andere web-API aanroept. Het tweede voorbeeld laat zien hoe u voorwaardelijke toegang kunt verwerken.
 
-| Platform |  Aanroepen Microsoft Graph | Hiermee wordt een andere ASP.NET-of ASP.NET Core 2,0-Web-API aangeroepen |
+| Platform |  Roept Microsoft Graph aan | Roept een andere ASP.NET- of ASP.NET Core 2.0-web-API aan |
 | -------- |  --------------------- | ------------------------- |
-| ![In deze afbeelding wordt het ASP.NET-logo weer gegeven](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [DotNet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [DotNet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
+| ![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
 
-## <a name="other-microsoft-graph-samples"></a>Andere Microsoft Graph-voor beelden
+## <a name="other-microsoft-graph-samples"></a>Overige Microsoft Graph-voorbeelden
 
-Zie [Microsoft Graph Community-voor beelden & zelf studies](https://github.com/microsoftgraph/msgraph-community-samples)voor voor beelden en zelf studies die verschillende gebruiks patronen demonstreren voor de Microsoft Graph-API, inclusief verificatie met Azure AD.
+Zie de [voorbeelden en zelfstudies van de Microsoft Graph-community](https://github.com/microsoftgraph/msgraph-community-samples) voor voorbeelden en zelfstudies die verschillende gebruikspatronen voor de Microsoft Graph-API demonstreren, met inbegrip van verificatie met Azure AD.
 
 ## <a name="see-also"></a>Zie ook
 
-- [Ontwikkelaars handleiding Azure Active Directory](v1-overview.md)
-- [Verificatie bibliotheken Azure Active Directory](active-directory-authentication-libraries.md)
-- [Conceptuele en naslag informatie over Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api)
+- [Ontwikkelaarshandleiding voor Azure Active Directory](v1-overview.md)
+- [Azure Active Directory Authentication Libraries (ADAL)](active-directory-authentication-libraries.md)
+- [Conceptuele en naslaginformatie over de Microsoft Graph API](/graph/use-the-api)

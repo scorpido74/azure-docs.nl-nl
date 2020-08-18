@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/27/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d709bf02f1cb504121e52f88385d0f6c074b24a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203585"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521209"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor een SAML-token Uitgever definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -56,7 +56,8 @@ De **InputClaims**-, **OutputClaims**-en **PersistClaims** -elementen zijn leeg 
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| IssuerUri | No | De naam van de verlener die wordt weer gegeven in het SAML-antwoord. De waarde moet overeenkomen met de naam die is geconfigureerd in de Relying Party-toepassing. |
+| IssuerUri | Nee | De naam van de verlener die wordt weer gegeven in het SAML-antwoord. De waarde moet overeenkomen met de naam die is geconfigureerd in de Relying Party-toepassing. |
+| XmlSignatureAlgorithm | Nee | De methode die Azure AD B2C gebruikt om de SAML-bevestigingen te ondertekenen. Mogelijke waarden: `Sha256` , `Sha384` , `Sha512` of `Sha1` . Zorg ervoor dat u het handtekening algoritme aan beide zijden met dezelfde waarde configureert. Gebruik alleen de algoritme die door uw certificaat wordt ondersteund. Zie [SAML-meta gegevens voor relying](relyingparty.md#metadata) Party voor informatie over het configureren van het SAML-antwoord|
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
@@ -64,8 +65,8 @@ Het CryptographicKeys-element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| MetadataSigning | Yes | Het x509-certificaat (RSA key set) dat wordt gebruikt voor het ondertekenen van SAML-meta gegevens. Azure AD B2C gebruikt deze sleutel om de meta gegevens te ondertekenen. |
-| SamlMessageSigning| Yes| Geef het x509-certificaat (RSA key set) op dat moet worden gebruikt voor het ondertekenen van SAML-berichten. Azure AD B2C gebruikt deze sleutel om het antwoord `<samlp:Response>` te ondertekenen dat naar de Relying Party wordt verzonden.|
+| MetadataSigning | Ja | Het x509-certificaat (RSA key set) dat wordt gebruikt voor het ondertekenen van SAML-meta gegevens. Azure AD B2C gebruikt deze sleutel om de meta gegevens te ondertekenen. |
+| SamlMessageSigning| Ja| Geef het x509-certificaat (RSA key set) op dat moet worden gebruikt voor het ondertekenen van SAML-berichten. Azure AD B2C gebruikt deze sleutel om het antwoord `<samlp:Response>` te ondertekenen dat naar de Relying Party wordt verzonden.|
 
 ## <a name="session-management"></a>Sessiebeheer
 
@@ -76,15 +77,4 @@ Voor het configureren van de Azure AD B2C SAML-sessies tussen een Relying Party 
 Zie het volgende artikel voor een voor beeld van het gebruik van een SAML-Uitgever technisch profiel:
 
 - [Een SAML-toepassing registreren in Azure AD B2C](connect-with-saml-service-providers.md)
-
-
-
-
-
-
-
-
-
-
-
 

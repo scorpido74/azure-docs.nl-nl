@@ -2,15 +2,15 @@
 title: Sjabloon maken - Visual Studio Code
 description: Gebruik Visual Studio Code en de Azure Resource Manager-extensie voor hulpprogramma's om te werken met Resource Manager-sjablonen.
 author: neilpeterson
-ms.date: 04/17/2020
+ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040511"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034975"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Quickstart: Azure Resource Manager-sjablonen maken met Visual Studio Code
 
@@ -26,7 +26,7 @@ Maak en open met Visual Studio Code een nieuw bestand met de naam *azuredeploy.j
 
 Selecteer `arm!` om een sjabloon te maken voor een implementatie van een Azure-resourcegroep.
 
-![Afbeelding van een Azure Resource Manager-opbouw](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![Afbeelding van Azure Resource Manager-opbouwfragmenten](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
 Met dit fragment maakt u de basisbouwstenen voor een ARM-sjabloon.
 
@@ -68,7 +68,7 @@ Als u de voltooiingsmogelijkheden wilt gebruiken, verwijdert u `megaStorage`, pl
 
 Maak nu een parameter en gebruik deze om de naam van het opslagaccount op te geven.
 
-Plaats de cursor in het parameterblok, voeg een regelterugloop toe, typ `par` en selecteer het `arm-param-value`-fragment. Met deze actie wordt een algemene parameter aan de sjabloon toegevoegd.
+Plaats de cursor in het parameterblok, voeg een regelterugloop toe, typ `"` en selecteer het `new-parameter`-fragment. Met deze actie wordt een algemene parameter aan de sjabloon toegevoegd.
 
 ![Afbeelding van een parameter die wordt toegevoegd aan de ARM-sjabloon](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 

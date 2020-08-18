@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2deb59b5a10177b1a6e57046c013ec9dac0fb06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010798"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522288"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
@@ -73,9 +73,9 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 > 
 > Dit komt doordat het `/secrets` pad het volledige certificaat retourneert, inclusief de persoonlijke sleutel, terwijl het `/certificates` pad niet. Meer informatie over certificaten vindt u hier: [Key Vault certificaten](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> De eigenschap authenticationSettings is optioneel voor scenario's waarbij een VM meerdere toegewezen identiteiten heeft.
-> Hiermee kan specifing identiteit worden gebruikt voor verificatie Key Vault.
+> [!IMPORTANT]
+> De eigenschap authenticationSettings is alleen **vereist** voor vm's met door de **gebruiker toegewezen identiteiten**.
+> Hiermee wordt de identiteit opgegeven die moet worden gebruikt voor de verificatie van Key Vault.
 
 
 ### <a name="property-values"></a>Eigenschaps waarden

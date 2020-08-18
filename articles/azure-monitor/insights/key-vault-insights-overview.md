@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498947"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531256"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Bewaken van uw sleutel kluis service met Azure Monitor voor Key Vault (preview-versie)
 Azure Monitor voor Key Vault (preview) biedt uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave te bieden van uw Key Vault-aanvragen, prestaties, fouten en latentie.
@@ -45,7 +45,7 @@ Azure Monitor voor Key Vault worden logboeken en metrische gegevens gecombineerd
 
 Vanuit Azure Monitor kunt u de aanvraag, latentie en fout gegevens van meerdere sleutel kluizen in uw abonnement bekijken en prestatie problemen en beperkings scenario's identificeren.
 
-Voer de volgende stappen uit om het gebruik en de bewerkingen van uw opslag accounts in al uw abonnementen weer te geven:
+Voer de volgende stappen uit om het gebruik en de bewerkingen van uw sleutel kluizen in al uw abonnementen weer te geven:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/)
 

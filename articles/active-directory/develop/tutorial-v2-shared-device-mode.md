@@ -1,6 +1,6 @@
 ---
-title: Modus gedeeld apparaat gebruiken met MSAL Android | Azure
-description: Meer informatie over het voorbereiden van een Android-apparaat voor uitvoering in de gedeelde modus en het uitvoeren van een firstline worker-app.
+title: Modus voor gedeelde apparaten gebruiken met MSAL Android | Azure
+description: Meer informatie over het voorbereiden van een Android-apparaat voor de gedeelde modus en het uitvoeren van een app voor eerstelijnswerknemers.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,31 +12,31 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f49a5703b19a76095c8eafe358742b442725d3d0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886429"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118243"
 ---
-# <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Zelf studie: modus gedeeld apparaat gebruiken in uw Android-toepassing
+# <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Zelfstudie: Modus voor gedeelde apparaten gebruiken in een Android-toepassing
 
 > [!NOTE]
 > Deze functie is beschikbaar voor openbare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="developer-guide"></a>Ontwikkelaarsgids
 
-Deze hand leiding bevat ontwikkelaars richtlijnen voor het implementeren van de modus gedeeld apparaat in een Android-toepassing met behulp van de micro soft Authentication Library (MSAL). Zie de [MSAL Android-zelf studie](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android) voor informatie over het integreren van MSAL met uw Android-app, het aanmelden van een gebruiker, het aanroepen van micro soft Graph en het afmelden van een gebruiker.
+Deze handleiding biedt ontwikkelrichtlijnen voor het implementeren van de modus voor gedeelde apparaten in een Android-toepassing die gebruikmaakt van MSAL (Microsoft Authentication Library). Raadpleeg de [Android-zelfstudie voor MSAL](./tutorial-v2-android.md) om te zien hoe u MSAL integreert met een Android-app, een gebruiker aanmeldt, Microsoft Graph aanroept, en een gebruiker afmeldt.
 
 ### <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-De [voorbeeld toepassing](https://github.com/Azure-Samples/ms-identity-android-java/) klonen vanuit github. Het voor beeld heeft de mogelijkheid om te werken in de [modus voor één of meerdere accounts](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account).
+Kloon de [voorbeeldtoepassing](https://github.com/Azure-Samples/ms-identity-android-java/) vanuit GitHub. Het voorbeeld biedt de mogelijkheid om te werken in de [modus voor één of meerdere accounts](./single-multi-account.md).
 
-### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>De MSAL-SDK toevoegen aan uw lokale maven-opslag plaats
+### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>De MSAL SDK toevoegen aan uw lokale Maven-opslagplaats
 
-Als u de voor beeld-app niet gebruikt, voegt u de MSAL-bibliotheek als afhankelijkheid toe in uw build. gradle-bestand, bijvoorbeeld:
+Als u de voorbeeld-app niet gebruikt, voegt u als volgt de MSAL-bibliotheek als afhankelijkheid toe aan het build.gradle-bestand:
 
 ```gradle
 dependencies{
@@ -44,15 +44,15 @@ dependencies{
 }
 ```
 
-### <a name="configure-your-app-to-use-shared-device-mode"></a>Uw app configureren voor het gebruik van de modus gedeeld apparaat
+### <a name="configure-your-app-to-use-shared-device-mode"></a>Uw app configureren om de modus voor gedeelde apparaten te gebruiken
 
-Raadpleeg de [configuratie documentatie](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) voor meer informatie over het instellen van het configuratie bestand.
+Raadpleeg de [configuratiedocumentatie](./msal-configuration.md) voor meer informatie over het instellen van het configuratiebestand.
 
-Ingesteld `"shared_device_mode_supported"` `true` in het configuratie bestand van uw MSAL.
+Stel in het MSAL-configuratiebestand `"shared_device_mode_supported"` in op `true`.
 
-Mogelijk bent u niet van plan om de modus voor meerdere accounts te ondersteunen. Als u geen gedeeld apparaat gebruikt, kan de gebruiker zich bij de app aanmelden met meer dan één account tegelijk. Als dit het geval `"account_mode"` is `"SINGLE"`, stelt u in op. Dit zorgt ervoor dat uw app altijd wordt `ISingleAccountPublicClientApplication`opgehaald en uw MSAL-integratie aanzienlijk eenvoudiger maakt. De standaard waarde `"account_mode"` is `"MULTIPLE"`. het is dus belang rijk dat u deze waarde wijzigt in het configuratie bestand als u modus `"single account"` gebruikt.
+Mogelijk bent u niet van plan om ondersteuning te bieden voor de modus voor meerdere accounts. Bijvoorbeeld omdat u geen gedeeld apparaat gebruikt, en de gebruiker zich met meer dan één account tegelijk kan aanmelden bij de app. Als dit het geval is, stelt u `"account_mode"` in op `"SINGLE"`. Dit zorgt ervoor dat de app altijd `ISingleAccountPublicClientApplication` ontvangt, en vereenvoudigt uw MSAL-integratie aanzienlijk. De standaardwaarde van `"account_mode"` is `"MULTIPLE"`. Het is dus belangrijk om deze waarde in het configuratiebestand te wijzigen als u de modus `"single account"` gebruikt.
 
-Hier volgt een voor beeld van het bestand auth_config. json dat is opgenomen in**de map** **hoofd**>**resource res**>van de **app**>van de voor beeld-app:
+Hier volgt een voorbeeld van het auth_config.json-bestand dat is opgenomen in de map **app**>**main**>**res**>**raw** van de voorbeeld-app:
 
 ```json
 {
@@ -74,13 +74,13 @@ Hier volgt een voor beeld van het bestand auth_config. json dat is opgenomen in*
 }
 ```
 
-### <a name="detect-shared-device-mode"></a>Modus gedeelde apparaten detecteren
+### <a name="detect-shared-device-mode"></a>Modus voor gedeelde apparaten detecteren
 
-Met de modus voor gedeelde apparaten kunt u Android-apparaten configureren die worden gedeeld door meerdere werk nemers, terwijl u een micro soft-identiteits beheer van het apparaat verstrekt. Werk nemers kunnen zich snel aanmelden bij hun apparaten en de klant gegevens bekijken. Wanneer de taken zijn voltooid met hun verschuiving of taak, kunnen ze zich met één klik afmelden bij alle apps op het gedeelde apparaat. het apparaat zal onmiddellijk gereed zijn voor gebruik door de volgende werk nemer.
+De modus voor gedeelde apparaten stelt u in staat Android-apparaten te configureren zodat ze kunnen worden gedeeld door meerdere werknemers, terwijl u ook beheer op basis van Microsoft Identity voor het apparaat biedt. Werknemers kunnen zich aanmelden bij hun apparaten en snel toegang krijgen tot klantgegevens. Wanneer hun dienst of taken erop zitten, kunnen ze zich met slechts één klik afmelden bij alle apps op het gedeelde apparaat, en is het apparaat onmiddellijk gereed voor gebruik door de volgende werknemer.
 
-Gebruiken `isSharedDevice()` om te bepalen of een app wordt uitgevoerd op een apparaat dat zich in de modus voor gedeeld apparaat bevindt. Uw app kan deze vlag gebruiken om te bepalen of de UX dienovereenkomstig moet worden gewijzigd.
+Gebruik `isSharedDevice()` om te bepalen of een app actief is op een apparaat dat zich in de modus voor gedeeld apparaten bevindt. Uw app kan deze vlag gebruiken om te bepalen of UX dienovereenkomstig moet worden gewijzigd.
 
-Hier volgt een code fragment dat laat zien hoe u kunt `isSharedDevice()`gebruiken.  Het is afkomstig uit `SingleAccountModeFragment` de-klasse in de voor beeld-app:
+Hier volgt een codefragment waarin wordt weergegeven hoe u `isSharedDevice()` kunt gebruiken.  Het is afkomstig uit de klasse `SingleAccountModeFragment` in de voorbeeld-app:
 
 ```Java
 deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Shared");
@@ -88,7 +88,7 @@ deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Sh
 
 ### <a name="initialize-the-publicclientapplication-object"></a>Het PublicClientApplication-object initialiseren
 
-Als u in `"account_mode":"SINGLE"` het MSAL-configuratie bestand instelt, kunt u het geretourneerde toepassings object veilig als `ISingleAccountPublicCLientApplication`een.
+Als u `"account_mode":"SINGLE"` instelt in het MSAL-configuratiebestand, kunt u het geretourneerde toepassingsobject veilig casten als een `ISingleAccountPublicCLientApplication`.
 
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -109,11 +109,11 @@ PublicClientApplication.create(this.getApplicationCOntext(),
 });
 ```
 
-### <a name="detect-single-vs-multiple-account-mode"></a>Enkelvoudige versus meerdere account modus detecteren
+### <a name="detect-single-vs-multiple-account-mode"></a>Modus voor één account versus modus voor meerdere accounts detecteren
 
-Als u een app schrijft die alleen wordt gebruikt voor firstline-werk rollen op een gedeeld apparaat, raden we u aan om uw app te schrijven zodat deze alleen ondersteuning biedt voor de modus met één account. Dit omvat de meeste toepassingen die op de taak zijn gericht, zoals medische record-apps, factuur-apps en de meeste line-of-Business-Apps. Dit vereenvoudigt de ontwikkeling, omdat veel functies van de SDK niet hoeven te worden aangepast.
+Als u een app schrijft die alleen gebruikt gaat worden door eerstelijnswerknemers op een gedeeld apparaat, raden we u aan de app zo te schrijven dat deze alleen ondersteuning biedt voor de modus voor één account. Dit omvat de meeste toepassingen die zijn gericht op taken, zoals apps voor medische dossiers of voor facturen, en de meeste Line-Of-Business-apps. Dit vereenvoudigt de ontwikkeling, omdat veel functies van de SDK niet hoeven te worden aangepast.
 
-Als uw app meerdere accounts en een modus voor gedeelde apparaten ondersteunt, moet u een type controle en cast-conversie uitvoeren naar de juiste interface, zoals hieronder wordt weer gegeven.
+Als uw app ondersteuning biedt voor meerdere accounts en voor de modus voor gedeelde apparaten, moet u een typecontrole uitvoeren en naar de juiste interface casten zoals hieronder wordt weergegeven.
 
 ```java
 private IPublicClientApplication mApplication;
@@ -127,9 +127,9 @@ private IPublicClientApplication mApplication;
         }
 ```
 
-### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>De aangemelde gebruiker ophalen en bepalen of een gebruiker op het apparaat is gewijzigd
+### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>Ga naar de aangemelde gebruiker en stel vast of een gebruiker op het apparaat is gewijzigd.
 
-De `loadAccount` methode haalt het account van de aangemelde gebruiker op. De `onAccountChanged` methode bepaalt of de aangemelde gebruiker is gewijzigd en zo ja, opschonen:
+Met de methode `loadAccount` wordt het account opgehaald bij de aangemelde gebruiker. Met de methode `onAccountChanged` wordt bepaald of de aangemelde gebruiker is gewijzigd, en zo ja, dan wordt er opgeschoond:
 
 ```java
 private void loadAccount()
@@ -162,9 +162,9 @@ private void loadAccount()
 }
 ```
 
-### <a name="globally-sign-in-a-user"></a>Wereld wijd aanmelden bij een gebruiker
+### <a name="globally-sign-in-a-user"></a>Globaal aanmelden als een gebruiker
 
-De volgende tekens in een gebruiker op het apparaat naar andere apps die gebruikmaken van MSAL met de verificator-app:
+Hieronder wordt een gebruiker op het apparaat aangemeld bij andere apps die gebruikmaken van MSAL met de Authenticator-app:
 
 ```java
 private void onSignInClicked()
@@ -173,9 +173,9 @@ private void onSignInClicked()
 }
 ```
 
-### <a name="globally-sign-out-a-user"></a>Een gebruiker wereld wijd afmelden
+### <a name="globally-sign-out-a-user"></a>Globaal afmelden als een gebruiker
 
-Het volgende wordt het aangemelde account verwijderd en de tokens in de cache gewist van niet alleen de app, maar ook van het apparaat dat zich in de modus voor gedeeld apparaat bevindt:
+Hieronder wordt het aangemelde account verwijderd en worden de tokens opgeschoond die zijn opgeslagen in de cache, niet alleen van de app maar ook van het apparaat dat zich in de modus voor gedeelde apparaten bevindt:
 
 ```java
 private void onSignOutClicked()
@@ -198,69 +198,69 @@ private void onSignOutClicked()
 
 ## <a name="administrator-guide"></a>Beheerdershandleiding
 
-In de volgende stappen wordt beschreven hoe u uw toepassing instelt in de Azure Portal en hoe u uw apparaat in de modus voor gedeeld apparaat plaatst.
+In de volgende stappen wordt beschreven hoe u de toepassing instelt in Azure Portal, en hoe u de modus voor gedeelde apparaten inschakelt voor uw apparaat.
 
-### <a name="register-your-application-in-azure-active-directory"></a>Uw toepassing registreren in Azure Active Directory
+### <a name="register-your-application-in-azure-active-directory"></a>De toepassing registreren in Azure Active Directory
 
-Registreer eerst uw toepassing in de Tenant van uw organisatie. Geef deze waarden hieronder op in auth_config. json zodat uw toepassing correct kan worden uitgevoerd.
+Registreer de toepassing eerst in de organisatietenant. Geef vervolgens onderstaande waarden op in het auth_config.json-bestand om ervoor te zorgen dat de toepassing juist wordt uitgevoerd.
 
-Raadpleeg [uw toepassing registreren](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application)voor meer informatie over hoe u dit doet.
+Raadpleeg [Uw toepassing registreren](./tutorial-v2-android.md#register-your-application) voor meer informatie over hoe u dit doet.
 
 > [!NOTE]
-> Wanneer u uw app registreert, gebruikt u de Snelstartgids aan de linkerkant en selecteert u **Android**. Hiermee wordt u naar een pagina geleid waar u wordt gevraagd de **pakket naam** en **hand tekening-hash** voor uw app op te geven. Dit is zeer belang rijk om ervoor te zorgen dat uw app-configuratie werkt. U ontvangt vervolgens een configuratie object dat u kunt gebruiken voor uw app en die u wilt knippen en plakken in uw auth_config. JSON-bestand.
+> Gebruik de quickstart aan de linkerkant en selecteer vervolgens **Android** wanneer u de app registreert. U komt nu bij een pagina waar u wordt gevraagd om de **Pakketnaam** en de **Hash voor ondertekening** op te geven voor de app. Dit is heel belangrijk om ervoor te zorgen dat de app-configuratie werkt. U ontvangt vervolgens een configuratie-object dat u kunt gebruiken voor de app, dat u kunt knippen en plakken in het auth_config.json-bestand.
 
-![App-registratie](media/tutorial-v2-shared-device-mode/register-app.png) scherm Selecteer **deze wijziging voor mij** en geef vervolgens de waarden op die door de Snelstartgids worden gevraagd in de Azure Portal. Als dat is gebeurd, worden alle configuratie bestanden gegenereerd die u nodig hebt.
+![App-registratiescherm](media/tutorial-v2-shared-device-mode/register-app.png) Selecteer **Dit voor mij wijzigen** en geef vervolgens in Azure Portal de waarden op waarom in de quickstart wordt gevraagd. Als dit is gebeurd, worden alle configuratiebestanden gegenereerd die u nodig hebt.
 
-![Venster app-configuratie gegevens](media/tutorial-v2-shared-device-mode/config-info.png)
+![Informatiescherm voor app-configuratie](media/tutorial-v2-shared-device-mode/config-info.png)
 
 ## <a name="set-up-a-tenant"></a>Een tenant instellen
 
-Voor test doeleinden stelt u het volgende in uw Tenant in: ten minste twee werk nemers, een Cloud apparaat beheerder en één globale beheerder. Stel in de Azure Portal de beheerder van de Cloud apparaat in door de organisatie rollen te wijzigen. Open in de Azure Portal uw organisatie rollen door **Azure Active Directory** > **rollen en Administrators** > van de**Cloud apparaat-beheerder**te selecteren. Voeg de gebruikers toe die een apparaat in de gedeelde modus kunnen plaatsen.
+Stel voor testdoeleinden het volgende in de tenant in: minstens twee werknemers, één cloudapparaatbeheerder, en één globale beheerder. Stel in Azure Portal de cloudapparaatbeheerder in door de organisatierollen te wijzigen. Ga in Azure Portal naar uw organisatierollen door het volgende te selecteren: **Azure Active Directory** > **Rollen en beheerders** > **Cloudapparaatbeheerder**. Voeg de gebruikers toe die een apparaat in de gedeelde modus kunnen plaatsen.
 
 ## <a name="set-up-an-android-device-in-shared-mode"></a>Een Android-apparaat instellen in de gedeelde modus
 
-### <a name="download-the-authenticator-app"></a>De verificator-app downloaden
+### <a name="download-the-authenticator-app"></a>De Authenticator-app downloaden
 
-Down load de Microsoft Authenticator-app uit de Google Play Store. Als u de app al hebt gedownload, controleert u of dit de meest recente versie is.
+Download de Microsoft Authenticator-app uit de Google Play Store. Als u de app al hebt gedownload, controleert u of dit de meest recente versie is.
 
-### <a name="authenticator-app-settings--registering-the-device-in-the-cloud"></a>Verificator-app-instellingen & het apparaat in de Cloud registreren
+### <a name="authenticator-app-settings--registering-the-device-in-the-cloud"></a>Authenticator-app-instellingen en het apparaat registreren in de cloud
 
-Start de verificator-app en navigeer naar de pagina met het hoofd account. Zodra u de pagina **account toevoegen** ziet, bent u klaar om het apparaat te delen.
+Start de Authenticator-app en ga naar de hoofdaccountpagina. Zodra u de pagina **Account toevoegen** ziet, kunt u het apparaat gaan delen.
 
-![Account scherm verificator toevoegen](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
+![Scherm Account toevoegen in Authenticator](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
- Ga naar het deel venster **instellingen** en gebruik de rechter menu balk. Selecteer **apparaatregistratie** onder **werk & school accounts**.
+ Ga naar het deelvenster **Instellingen** met behulp van de menubalk aan de rechterkant. Selecteer **Apparaatregistratie** onder **Werk- en schoolaccounts**.
 
- ![Account scherm verificator toevoegen](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
+ ![Scherm Account toevoegen in Authenticator](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
- Wanneer u op deze knop klikt, wordt u gevraagd toegang te verlenen tot contact personen van het apparaat. Dit wordt veroorzaakt door de account integratie van Android op het apparaat. Kies **toestaan**.
+ Wanneer u op deze knop klikt, wordt u gevraagd toegang te verlenen tot contactpersonen van het apparaat. Dit komt door de accountintegratie van Android op het apparaat. Kies **Toestaan**.
 
- ![Account scherm verificator toevoegen](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
+ ![Scherm Account toevoegen in Authenticator](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
 
-De beheerder van het Cloud apparaat moet hun e-mail adres van de organisatie invoeren onder **of registreren als een gedeeld apparaat**. Klik vervolgens op de knop **registreren als gedeeld apparaat** en voer de referenties in.
+De cloudapparaatbeheerder moet het e-mailadres van de organisatie invoeren onder **Of registreren als een gedeeld apparaat**. Vervolgens moet de beheerder op de knop **Registreren als gedeeld apparaat** klikken en de referenties invoeren.
 
-![scherm van apparaat registreren](media/tutorial-v2-shared-device-mode/register-device.png)
+![scherm voor apparaatregistratie](media/tutorial-v2-shared-device-mode/register-device.png)
 
 ![aanmelden](media/tutorial-v2-shared-device-mode/sign-in.png)
 
 Het apparaat bevindt zich nu in de gedeelde modus.
 
-![scherm van apparaat registreren](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
+![scherm voor apparaatregistratie](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
 
- Eventuele aanmeldingen en aanmeldingen op het apparaat zijn globaal, wat betekent dat ze van toepassing zijn op alle apps die zijn geïntegreerd met MSAL en Microsoft Authenticator op het apparaat. U kunt nu toepassingen implementeren op het apparaat waarop functies van de modus gedeelde apparaten worden gebruikt.
+ Alle aanmeldingen en afmeldingen op het apparaat zijn globaal. Dit betekent dat ze van toepassing zijn op alle apps die zijn geïntegreerd met MSAL en Microsoft Authenticator op het apparaat. U kunt nu toepassingen implementeren op het apparaat waarop functies worden gebruikt van de modus voor gedeelde apparaten.
 
-## <a name="view-the-shared-device-in-the-azure-portal"></a>Het gedeelde apparaat in de Azure Portal weer geven
+## <a name="view-the-shared-device-in-the-azure-portal"></a>Het gedeelde apparaat bekijken in Azure Portal
 
-Zodra u een apparaat in de gedeelde modus hebt geplaatst, wordt dit in uw organisatie bekend en wordt het in de Tenant van uw organisatie bijgehouden. U kunt uw gedeelde apparaten weer geven door te kijken naar het **jointype** op de blade Azure Active Directory van uw Azure Portal.
+Zodra u een apparaat in de gedeelde modus hebt geplaatst, is het bekend in de organisatie en wordt het bijgehouden in de organisatietenant. U kunt uw gedeelde apparaten bekijken door naar **Join-type** te gaan op de blade Azure Active Directory van Azure Portal.
 
-![De Blade alle apparaten in de Azure Portal](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
+![De blade Alle apparaten in Azure Portal](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
 
-## <a name="running-the-sample-app"></a>De voor beeld-app uitvoeren
+## <a name="running-the-sample-app"></a>De voorbeeld-app uitvoeren
 
-De voorbeeld toepassing is een eenvoudige app waarmee de Graph API van uw organisatie wordt gebeld. Bij de eerste keer dat u wordt gevraagd om toestemming te geven, omdat de toepassing nieuw is voor uw werknemers account.
+De voorbeeldtoepassing is een eenvoudige app waarmee de Graph API van uw organisatie wordt aangeroepen. Bij de eerste uitvoering wordt u gevraagd om toestemming omdat de toepassing nieuw is bij uw werknemersaccount.
 
-![Venster app-configuratie gegevens](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
+![Informatiescherm voor app-configuratie](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over gedeelde modus op de [modus gedeeld apparaat voor Android-apparaten](msal-android-shared-devices.md)
+U kunt meer informatie over de gedeelde modus vinden in [Modus voor gedeelde apparaten voor Android-apparaten](msal-android-shared-devices.md)

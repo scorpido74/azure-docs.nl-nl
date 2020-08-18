@@ -2,25 +2,21 @@
 title: 'Zelf studie: configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en inrichten van gebruikers accounts.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15031a3e139265410179baa13db9ed3f1b41cf17
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063153"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531800"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Zelf studie: voor het automatisch inrichten van gebruikers naar een andere configuratie
 
@@ -100,7 +96,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Automatisch gebruikers inrichten configureren voor bezoek aan Azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen**in bedrijfs toepassingen.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **Enterprise Applications**  >  **alle toepassingen**in bedrijfs toepassingen.
 
     ![Alle toepassingen](common/enterprise-applications.png)
 

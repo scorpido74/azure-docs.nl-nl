@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131732"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827316"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Een end-to-end-oplossing bouwen
 
@@ -95,6 +95,20 @@ De volgende stap is het instellen van een [Azure Functions-app-](../azure-functi
 
 In deze sectie publiceert u de vooraf geschreven functie-app en zorgt u ervoor dat de functie-app toegang kan krijgen tot Azure Digital Twins door hieraan een AAD-identiteit (Azure Active Directory) toe te wijzen. Door deze stappen uit te voeren, kan de rest van de zelfstudie gebruikmaken van de functies in de functie-app. 
 
+Terug in het Visual Studio-venster waarin het _**AdtE2ESample**_-project is geopend, staat de functie-app in het projectbestand _**SampleFunctionsApp**_. U kunt deze weergeven in het deelvenster *Solution Explorer*.
+
+### <a name="update-dependencies"></a>Afhankelijkheden bijwerken
+
+Voordat u de app publiceert, is het handig om ervoor te zorgen dat uw afhankelijkheden zijn bijgewerkt en dat u over de nieuwste versie van alle meegeleverde pakketten beschikt.
+
+Vouw in het deelvenster *Solution Explorer* *SampleFunctionsApp > afhankelijkheden* uit. Klik met de rechter muisknop op *Pakketten* en kies *NuGet-pakketten beheren...* .
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: NuGet Packages beheren voor het SampleFunctionsApp-project" border="false":::
+
+Hiermee opent u de NuGet Package Manager. Selecteer het tabblad *Updates* en als er pakketten moeten worden bijgewerkt, selecteert u het vakje *Alle pakketten selecteren*. Druk vervolgens op *Bijwerken*.
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: Selecteren om alle pakketten in de NuGet Package Manager bij te werken":::
+
 ### <a name="publish-the-app"></a>De app publiceren
 
 Ga terug naar het Visual Studio-venster waarin het _**AdtE2ESample**_ project is geopend. Klik in het deelvenster *Solution Explorer* met de rechtermuisknop op het projectbestand _**SampleFunctionsApp**_ en klik op **Publish** (publiceren).
@@ -134,19 +148,21 @@ Controleer in het deelvenster *Publish* dat wordt geopend in het hoofdvenster va
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Azure-functie publiceren in Visual Studio: publiceren":::
 
 > [!NOTE]
-> Mogelijk ziet u een pop-up als deze: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Publish Azure function in Visual Studio: publish credentials" border="false"::: (Azure-functie in Visual Studio publiceren: referenties publiceren)
-> Als dat het geval is, selecteert u **Attempt to retrieve credentials from Azure** (probeer referenties op te halen uit Azure) en **Save** (opslaan).
+> Als u een pop-up als deze ziet: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Publish Azure function in Visual Studio: publish credentials" border="false"::: (Azure-functie in Visual Studio publiceren: referenties publiceren)
+> U selecteert **Attempt to retrieve credentials from Azure** (probeer referenties op te halen uit Azure) en **Save** (opslaan).
 >
-> Als er een waarschuwing wordt weergegeven dat *uw versie van de Functions-runtime niet overeenkomt met de versie die wordt uitgevoerd in Azure*, volgt u de aanwijzingen om een upgrade uit te voeren naar de recentste versie van de Azure Functions-runtime. Dit probleem kan optreden als u werkt met een oudere versie van Visual Studio dan de versie die wordt vermeld in de sectie *Vereisten* aan het begin van deze zelfstudie.
+> Als er een waarschuwing wordt weergegeven dat *u de versie van Functions moet bijwerken op Azure* of dat *uw versie van de Functions-runtime niet overeenkomt met de versie die wordt uitgevoerd in Azure*:
+>
+> Volg de prompts om een upgrade uit te voeren naar de meest recente runtime-versie van Azure Functions. Dit probleem kan optreden als u werkt met een oudere versie van Visual Studio dan de versie die wordt vermeld in de sectie *Vereisten* aan het begin van deze zelfstudie.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Machtigingen toewijzen aan de functie-app
 
-De volgende stap is de functie-app toegang te geven tot Azure Digital Twins door een app-instelling te configureren, de app een door het systeem beheerde Azure AD-identiteit toe te wijzen, en deze identiteit *eigenaarsrechten* te geven in de Azure Digital Twins-instantie.
+De volgende stap is de functie-app toegang te geven tot Azure Digital Twins door een app-instelling te configureren, de app een door het systeem beheerde Microsoft Azure AD-identiteit toe te wijzen, en deze identiteit de rol *Azure Digital Twins-eigenaar (preview)* te geven in het Azure Digital Twins-exemplaar. Deze rol is vereist voor alle gebruikers of functies die veel gegevensvlakactiviteiten op het exemplaar willen uitvoeren. Meer informatie over beveiliging en roltoewijzingen vindt u in [*Concepten: Beveiliging voor Azure Digital Twins-oplossingen*](concepts-security.md).
 
-Gebruik in Azure Cloud Shell de volgende opdracht om een toepassingsinstelling in te stellen die door uw functie-app wordt gebruikt om te verwijzen naar uw digitale-tweelinginstantie.
+Gebruik in Azure Cloud Shell de volgende opdracht om een toepassingsinstelling in te stellen die door uw functie-app wordt gebruikt om te verwijzen naar uw exemplaar van Azure Digital Twins.
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-digital-twin-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 Gebruik de volgende opdracht om de door het systeem beheerde identiteit te maken. Noteer het veld *principalId* in de uitvoer.
@@ -155,7 +171,7 @@ Gebruik de volgende opdracht om de door het systeem beheerde identiteit te maken
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Gebruik de waarde van *principalId* in de volgende opdracht om de functie-app-id toe te wijzen aan de *eigenaar*srol voor uw Azure Digital Twins-instantie:
+Gebruik de waarde van *principalId* uit de uitvoer in de volgende opdracht om de identiteit van de functie-app toe te wijzen aan de rol van *Azure Digital Twins-eigenaar (preview)* voor uw exemplaar van Azure Digital Twins:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
@@ -339,7 +355,7 @@ U kunt ook verifiëren dat het eindpunt met succes is gemaakt, door de volgende 
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
-Zoek naar het veld `provisioningState` in de uitvoer en controleer of de waarde 'Geslaagd' is.
+Zoek naar het veld `provisioningState` in de uitvoer en controleer of de waarde 'Geslaagd' is. Het kan ook zijn dat er 'Inrichten' staat, wat betekent dat het eindpunt nog wordt gemaakt. In dat geval wacht u een paar seconden en voert u de opdracht opnieuw uit om te controleren of de bewerking is voltooid.
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Resultaat van de eindpuntquery, dat laat zien dat het eindpunt de provisioningState Geslaagd heeft":::
 
@@ -354,6 +370,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ```
 
 De uitvoer van deze opdracht is informatie over de route die u hebt gemaakt.
+
+>[!NOTE]
+>Eindpunten (uit de vorige stap) moeten klaar zijn met inrichten voordat u een gebeurtenisroute kunt instellen die deze gebruikt. Als de route niet kan worden gemaakt omdat de eindpunten niet klaar zijn, dan wacht u een paar minuten en probeert u het opnieuw.
 
 #### <a name="connect-the-function-to-event-grid"></a>De functie verbinden met Event Grid
 

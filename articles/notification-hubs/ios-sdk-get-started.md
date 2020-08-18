@@ -3,17 +3,17 @@ title: Pushmeldingen verzenden naar iOS met Azure Notification Hubs en de iOS-SD
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en de Apple-service voor pushmeldingen verzendt naar iOS-apparaten.
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/19/2020
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022426"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042442"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar iOS-apps met Azure Notification Hubs
 
@@ -102,6 +102,9 @@ Registreer uw app bij Apple en registreer u voor pushmeldingen om pushmeldingen 
 4. Ga op de pagina  **Certificaten, id's en profielen**  onder  **Id's** naar het regelitem App-id dat u zojuist hebt gemaakt en selecteer de bijbehorende rij om het scherm  **De configuratie van uw app-id bewerken**  weer te geven.
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>Een certificaat maken voor Notification Hubs
+
+> [!NOTE]
+> Sinds de release van iOS 13 kunt u nu alleen stille meldingen ontvangen met op tokens gebaseerde verificatie. Als u op certificaat gebaseerde verificatie gebruikt voor uw APNS-referenties, moet u overschakelen naar op tokens gebaseerde verificatie.
 
 Er is een certificaat vereist om de meldingshub in te schakelen voor gebruik met  **APNS**. Dit kan op een van de volgende twee manieren worden gedaan:
 

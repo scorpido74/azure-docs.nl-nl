@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 31aaa0134ffe34d0424868221f01b68b64e4b088
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5977aced8354694a631cce05bf6d6b913ea79118
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371155"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121592"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Zelfstudie: Key Vault-referenties gebruiken in een Java Spring-app
 
@@ -102,7 +102,7 @@ Als u een geheim wilt toevoegen aan de Key Vault, hoeft u maar een paar extra st
 
     Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd:
 
-    ```console
+    ```json
     {
     "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
     "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
@@ -118,31 +118,51 @@ Als u een geheim wilt toevoegen aan de Key Vault, hoeft u maar een paar extra st
 
 1. Voer de volgende opdracht uit om de service-principal toegang te geven tot uw Key Vault:
 
-    ```console
+    ```azurecli
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
 
 1. Voer de volgende opdracht uit om de object-id op te halen en vervolgens toe te voegen aan App Configuration.
 
-    ```console
+    ```azurecli
     az ad sp show --id <clientId-of-your-service-principal>
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Maak de volgende omgevingsvariabelen met behulp van de waarden voor de service-principal die in de vorige stap zijn weergegeven:
+1. Maak de omgevingsvariabelen **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET** en **AZURE_TENANT_ID**. Gebruik de waarden voor de service-principal die in de vorige stap zijn weergegeven. Voer op de opdrachtregel de volgende opdrachten uit en start de opdrachtprompt opnieuw om de wijziging door te voeren:
 
-    * **AZURE_CLIENT_ID**: *clientId*
-    * **AZURE_CLIENT_SECRET**: *clientSecret*
-    * **AZURE_TENANT_ID**: *tenantId*
+    ```cmd
+    setx AZURE_CLIENT_ID "clientId"
+    setx AZURE_CLIENT_SECRET "clientSecret"
+    setx AZURE_TENANT_ID "tenantId"
+    ```
+
+    Als u Windows PowerShell gebruikt, voert u de volgende opdracht uit:
+
+    ```azurepowershell
+    $Env:AZURE_CLIENT_ID = "clientId"
+    $Env:AZURE_CLIENT_SECRET = "clientSecret"
+    $Env:AZURE_TENANT_ID = "tenantId"
+    ```
+
+    Als u macOS of Linux gebruikt, voert u de volgende opdracht uit:
+
+    ```cmd
+    export AZURE_CLIENT_ID ='clientId'
+    export AZURE_CLIENT_SECRET ='clientSecret'
+    export AZURE_TENANT_ID ='tenantId'
+    ```
+
 
 > [!NOTE]
 > Deze Key Vault-referenties worden alleen in uw toepassing gebruikt.  Uw toepassing verifieert rechtstreeks met Key Vault met behulp van deze referenties zonder de App Configuration-service te gebruiken.  De Key Vault biedt verificatie voor zowel uw toepassing als uw App Configuration-service zonder sleutels te delen of weer te geven.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uw code bijwerken om een Key Vault-referentie te gebruiken
 
-1. Maak een omgevingsvariabele met de naam **APP_CONFIGURATION_ENDPOINT**. Stel de waarde ervan in op het eindpunt voor de App Configuration-opslag. U kunt het eindpunt vinden op de blade **Toegangssleutels** in Azure Portal.
+1. Maak een omgevingsvariabele met de naam **APP_CONFIGURATION_ENDPOINT**. Stel de waarde ervan in op het eindpunt van uw App Configuration-opslag. U kunt het eindpunt vinden op de blade **Toegangssleutels** in Azure Portal. Start de opdrachtprompt opnieuw op om de wijziging door te voeren. 
 
-1. Open *bootstrap.properties* in de map *resources*. Werk dit bestand bij om het App Configuration-eindpunt van de app te gebruiken in plaats van een verbindingsreeks.
+
+1. Open *bootstrap.properties* in de map *resources*. Werk dit bestand bij om de waarde **APP_CONFIGURATION_ENDPOINT** te gebruiken. Verwijder alle verwijzingen naar een verbindingstekenreeks in dit bestand. 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
@@ -218,7 +238,7 @@ Als u een geheim wilt toevoegen aan de Key Vault, hoeft u maar een paar extra st
     }
     ```
 
-1. Maak een nieuw bestand in uw resources META-INF-map met de naam *spring.factories* en voeg deze toe.
+1. Maak een nieuw bestand in uw resources META-INF-map met de naam *spring.factories* en voeg de onderstaande code toe.
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\

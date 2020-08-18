@@ -6,16 +6,74 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: b36469a89c7bae39ae3c2d62792c2ccde0fcfda9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799324"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827738"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw de documentatie van Azure Monitor?
 
 In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzienlijk bijgewerkt zijn. Elke eerste week van de maand wordt de lijst bijgewerkt met artikelupdates van de vorige maand.
+
+## <a name="july-2020"></a>Juli 2020
+
+### <a name="general"></a>Algemeen
+- [Azure Monitor implementeren](deploy-scale.md) - Opnieuw indelen van onboarding-inhoud van Azure Monitor voor VM's.
+- [Azure Private Link gebruiken om netwerken veilig te verbinden met Azure Monitor](platform/private-link-security.md) - Sectie toegevoegd over limieten.
+
+### <a name="alerts"></a>Waarschuwingen
+- [Actieregels voor Azure Monitor-waarschuwingen](platform/alerts-action-rules.md) - CLI-processen toegevoegd.
+- [Actiegroepen maken en beheren in Azure Portal](platform/action-groups.md) - Bijgewerkt in overeenstemming met wijzigingen in UI.
+- [Opgeslagen query's in Azure Monitor Logboekanalyse](log-query/saved-queries.md) - Nieuw artikel.
+- [Problemen met logboekwaarschuwingen oplossen in Azure Monitor](platform/alerts-troubleshoot-log.md) - Sectie toegevoegd over het quotum voor waarschuwingsregels.
+- [Het oplossen van problemen met Azure waarschuwingen voor metrische gegevens](platform/alerts-troubleshoot-metric.md) - Sectie toegevoegd over een waarschuwingsregel voor een aangepaste metrische waarde die nog niet is verzonden.
+- [Begrijpen hoe waarschuwingen voor metrische gegevens werken in Azure Monitor](platform/alerts-metric-overview.md): Aanbeveling toegevoegd voor het selecteren van de granulariteit van aggregatie.
+
+### <a name="application-insights"></a>Application Insights
+- [Opmerkingen bij de release voor de Azure web-appextensie - Application Insights](app/web-app-extension-release-notes.md) - Nieuw artikel.
+- [Voorbeelden van Resource Manager-sjablonen voor Application Insights-resources](samples/resource-manager-app-resource.md) - Nieuw artikel.
+- [Problemen oplossen met de Azure Application Insights Profiler](app/profiler-troubleshooting.md) - Opmerking toegevoegd over een fout bij het uitvoeren van de profiler voor ASP.NET Core Apps op Azure App Service. 
+
+### <a name="containers"></a>Containers
+- [Waarschuwingen bijhouden van Azure Monitor voor containers](insights/container-insights-log-alerts.md) - Nieuw artikel.
+- [Metrische waarschuwingen van Azure Monitor voor containers](insights/container-insights-metric-alerts.md) - Nieuw artikel.
+
+### <a name="logs"></a>Logboeken
+- [Door klant beheerde sleutel van Azure Monitor](platform/customer-managed-keys.md) - Er is een foutbericht en sectie over CMK-configuratie voor query's toegevoegd.
+- [Azure Monitor HTTP Data Collector API](platform/data-collector-api.md) - Python 3-voorbeeld toegevoegd.
+- [Het bijhouden van query's optimaliseren in Azure Monitor](log-query/query-optimization.md) - Sectie toegevoegd over het voorkomen van meerdere datascans bij het gebruik van subquery's.
+- [Zelfstudie: Aan de slag met de Log Analytics-query's](log-query/get-started-portal.md) - Video toegevoegd.
+
+### <a name="platform-logs"></a>Platformlogboeken
+- [Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen](platform/diagnostic-settings.md) - Video toegevoegd.
+- [Voorbeelden van Resource Manager-sjablonen voor Azure Monitor](samples/resource-manager-samples.md) - ARM-voorbeeld met gebruik van het doeltype van het logboek toegevoegd. 
+
+### <a name="solutions"></a>Oplossingen
+- [Bewakingsoplossingen in Azure Monitor](insights/solutions.md) - CLI-processen toegevoegd.
+- [Office 365-beheeroplossing in Azure](insights/solution-office-365.md) - Datum buiten gebruik stellen gewijzigd.
+
+### <a name="virtual-machines"></a>Virtuele machines
+
+Nieuwe en bijgewerkte artikelen van het opnieuw indelen van de inhoud van Azure Monitor voor VM's
+
+- [ Wat is Azure Monitor voor VM's?](insights/vminsights-overview.md)
+- [Log Analytics-werkruimte voor Azure Monitor voor VM's configureren](insights/vminsights-configure-workspace.md)
+- [Linux-computers verbinden met Azure Monitor](platform/agent-linux.md)
+- [Azure Monitor inschakelen voor een hybride omgeving](insights/vminsights-enable-hybrid.md)
+- [Azure Monitor inschakelen voor een enkele virtuele-machine of een virtuele-machineschaalset in Azure Portal](insights/vminsights-enable-portal.md)
+- [Azure Monitor voor VM's inschakelen met Azure Policy](insights/vminsights-enable-at-scale-policy.md)
+- [Overzicht Azure Monitor voor VM's inschakelen](insights/vminsights-enable-overview.md)
+- [Azure Monitor voor VM's inschakelen met behulp van PowerShell](insights/vminsights-enable-powershell.md)
+- [Azure Monitor voor VM's inschakelen met behulp van Resource Manager-sjablonen](insights/vminsights-enable-resource-manager.md)
+- [Azure Monitor voor VM's inschakelen met PowerShell of sjablonen](insights/vminsights-enable-at-scale-powershell.md)
+
+
+### <a name="visualizations"></a>Visualisaties
+- [Visualisaties in uw Log Analytics-dashboard bijwerken](log-query/dashboard-upgrade.md) - Bijgewerkte vernieuwingssnelheid.
+- [Gegevens visualiseren van Azure Monitor](visualizations.md) - Video toegevoegd.
+
 
 ## <a name="june-2020"></a>Juni 2020
 
@@ -66,7 +124,8 @@ In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzie
 - [Azure-activiteitenlogboek verzenden naar Log Analytics-werkruimte met behulp van een Azure-portal](learn/quick-collect-activity-log-portal.md) - Nieuw artikel.
 - [Azure-activiteitenlogboek verzenden naar Log Analytics-werkruimte met behulp van Azure Resource Manager-sjabloon](learn/quick-collect-activity-log-arm.md) - Nieuw artikel.
 
-#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>Nieuwe en bijgewerkte artikelen over de herstructurering en consolidatie van de logboekinhoud van het platform
+Nieuwe en bijgewerkte artikelen over de herstructurering en consolidatie van de logboekinhoud van het platform
+
 - [Azure-resourcelogboeken archiveren naar opslagaccount](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure-gebeurtenisschema in het activiteitenlogboek](platform/activity-log-schema.md)
 - [Azure-activiteitenlogboek](platform/activity-log.md)
@@ -84,7 +143,7 @@ In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzie
 - [Azure Activity-logboekgebeurtenissen weergeven in Azure Monitor](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>Virtuele machines
-- [Azure Monitor inschakelen voor VM's in het Azure-portal](insights/vminsights-enable-single-vm.md) - Bijgewerkt met Azure Arc.
+- [Azure Monitor inschakelen voor VM's in het Azure-portal](./insights/vminsights-enable-portal.md) - Bijgewerkt met Azure Arc.
 - [Overzicht Azure Monitor voor VM's inschakelen](insights/vminsights-enable-overview.md) - Bijgewerkt met Azure Arc.
 - [ Wat is Azure Monitor voor VM's?](insights/vminsights-overview.md) - Bijgewerkt met Azure-Arc.
 
@@ -293,7 +352,7 @@ Algemene updates voor algemene beschikbaarheid van Azure Monitor voor VM's
 
 - [ Wat is Azure Monitor voor VM's?](insights/vminsights-overview.md)
 - [Veelgestelde vragen over Azure Monitor voor VM's (GA)](insights/vminsights-ga-release-faq.md) 
-- [Azure Monitor voor VM's inschakelen met Azure Policy](insights/vminsights-enable-at-scale-policy.md) 
+- [Azure Monitor voor VM's inschakelen met Azure Policy](./insights/vminsights-enable-policy.md) 
 - [Prestaties in kaart brengen met Azure Monitor voor VM's](insights/vminsights-performance.md)
 - [Query's uitvoeren op logboeken van Azure Monitor voor VM's](insights/vminsights-log-search.md)
 - [App-afhankelijkheden weergeven met Azure Monitor voor VM's](insights/vminsights-maps.md) 

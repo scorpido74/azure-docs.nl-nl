@@ -3,12 +3,12 @@ title: Azure-toepassing inzichten voor ASP.NET Core toepassingen | Microsoft Doc
 description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestaties en gebruik.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 99d2a85e96aff650573e142368a136886945dcb0
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270917"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518081"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
@@ -36,6 +36,8 @@ Met de [Application INSIGHTS SDK voor ASP.net core](https://nuget.org/packages/M
 - Een geldige Application Insights instrumentatie sleutel. Deze sleutel is vereist voor het verzenden van telemetrie naar Application Insights. Als u een nieuwe Application Insights resource moet maken om een instrumentatie sleutel op te halen, raadpleegt u [een Application Insights resource maken](./create-new-resource.md).
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Telemetrie van Application Insights server inschakelen (Visual Studio)
+
+Gebruik de [hand matige richt lijnen](#enable-application-insights-server-side-telemetry-no-visual-studio)voor Visual Studio voor Mac. Deze procedure wordt alleen ondersteund door de Windows-versie van Visual Studio.
 
 1. Open uw project in Visual Studio.
 

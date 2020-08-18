@@ -1,5 +1,5 @@
 ---
-title: Limieten voor het maken van app-registraties verwijderen-Azure AD | Microsoft Docs
+title: Limieten voor het maken van app-registraties verwijderen - Azure AD | Microsoft Docs
 description: Een aangepaste rol toewijzen voor het verlenen van onbeperkte app-registraties in de Azure AD-Active Directory
 services: active-directory
 author: curtand
@@ -8,92 +8,65 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 11/08/2019
+ms.date: 08/07/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5acfa98636f54f87facf9771beb7d94dbd2b324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdaf80f7b493c0979f1d353b7d740a41035a87bc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731729"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003303"
 ---
-# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Snelstartgids: machtiging verlenen voor het maken van onbeperkte app-registraties
+# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Quickstart: Machtigingen verlenen voor onbeperkte app-registraties
 
-In deze Quick Start maakt u een aangepaste rol met machtigingen voor het maken van een onbeperkt aantal app-registraties en vervolgens wijst u die rol toe aan een gebruiker. De toegewezen gebruiker kan vervolgens de Azure AD-Portal, Azure AD Power shell of de Microsoft Graph-API gebruiken om toepassings registraties te maken. In tegens telling tot de ingebouwde rol ontwikkelaar van de toepassing verleent deze aangepaste rol de mogelijkheid om een onbeperkt aantal toepassings registraties te maken. De ontwikkelaar van de toepassing verleent de mogelijkheid, maar het totale aantal gemaakte objecten is beperkt tot 250 om te voor komen dat [het object quotum voor het hele directory](directory-service-limits-restrictions.md)wordt bereikt.
+In deze quickstart maakt u een aangepaste rol met machtigingen voor het maken van een onbeperkt aantal app-registraties en vervolgens wijst u die rol toe aan een gebruiker. De toegewezen gebruiker kan vervolgens de Azure AD Portal, Azure AD PowerShell of de Microsoft Graph-API gebruiken om toepassingsregistraties te maken. In tegenstelling tot de ingebouwde rol van toepassingsontwikkelaar verleent deze aangepaste rol de mogelijkheid om een onbeperkt aantal toepassingsregistraties te maken. De rol van toepassingsontwikkelaar biedt de mogelijkheid, maar het totale aantal gemaakte objecten is beperkt tot 250 om te voorkomen dat [het objectquotum voor de directory wordt overschreden](directory-service-limits-restrictions.md). De minst bevoorrechte rol die vereist is voor het maken en toewijzen van aangepaste Azure AD-rollen, is Beheerder voor bevoorrechte rollen.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="prerequisite"></a>Vereiste
+## <a name="create-a-custom-role-using-the-azure-ad-portal"></a>Een aangepaste rol maken met behulp van de Azure AD-Portal
 
-De rol van de meest bevoegde rol is vereist voor het maken en toewijzen van aangepaste rollen van Azure AD.
+1. Meld u aan bij het  [Azure AD-beheercentrum](https://aad.portal.azure.com)  met de machtigingen Beheerder voor bevoorrechte rollen of Globale beheerder in de Azure AD-organisatie.
+1. Selecteer **Azure Active Directory**, selecteer **Rollen en beheerders**en selecteer vervolgens **Nieuwe aangepaste rol**.
 
-## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Een nieuwe aangepaste rol maken met behulp van de Azure AD-Portal
+    ![Rollen maken of bewerken op de pagina Rollen en beheerders](./media/roles-create-custom/new-custom-role.png)
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com)   met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
-1. Selecteer **Azure Active Directory**, selecteer **rollen en beheerders**en selecteer vervolgens **nieuwe aangepaste rol**.
+1. Geef op het tabblad **Basis** de optie 'Application Registration Creator' op als de naam van de rol en 'Can create an unlimited number of application registrations' als de beschrijving van de functie en selecteer vervolgens **Volgende**.
 
-    ![Rollen maken of bewerken op de pagina rollen en beheerders](./media/roles-create-custom/new-custom-role.png)
+    ![Geef een naam en beschrijving op voor een aangepaste rol op het tabblad Basis](./media/roles-quickstart-app-registration-limits/basics-tab.png)
 
-1. Geef op het tabblad **basis beginselen** "toepassings registratie Maker" op voor de naam van de rol en "kan een onbeperkt aantal toepassings registraties maken" voor de beschrijving van de functie en selecteer vervolgens **volgende**.
-
-    ![Geef een naam en beschrijving op voor een aangepaste rol op het tabblad basis beginselen](./media/roles-quickstart-app-registration-limits/basics-tab.png)
-
-1. Voer op het tabblad **machtigingen** het volgende in: ' micro soft. Directory/toepassingen/maken ' in het zoekvak en selecteer vervolgens de selectie vakjes naast de gewenste machtigingen en selecteer **volgende**.
+1. Voer op het tabblad **Machtigingen** de optie microsoft.directory/applications/create in het zoekvak in, selecteer de selectievakjes naast de gewenste machtigingen en selecteer vervolgens **Volgende**.
 
     ![De machtigingen voor een aangepaste rol selecteren op het tabblad Machtigingen](./media/roles-quickstart-app-registration-limits/permissions-tab.png)
 
-1. Controleer op het tabblad **controleren en maken** de machtigingen en selecteer **maken**.
+1. Controleer op het tabblad **Beoordelen en maken** de machtigingen en selecteer **Maken**.
 
-### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>De rol toewijzen aan een gebruiker met behulp van de Azure AD-Portal
+### <a name="assign-the-role-in-the-azure-ad-portal"></a>De rol toewijzen in de Azure AD-Portal
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com)   met privileged Role Administrator of Global Administrator Permissions in uw Azure AD-organisatie.
-1. Selecteer **Azure Active Directory** en selecteer vervolgens **rollen en beheerders**.
-1. Selecteer de rol maker van de toepassing registreren en selecteer **toewijzing toevoegen**.
-1. Selecteer de gewenste gebruiker en klik op **selecteren** om de gebruiker aan de rol toe te voegen.
+1. Meld u aan bij het [Azure AD-beheercentrum](https://aad.portal.azure.com) met de machtigingen Beheerder voor bevoorrechte rollen of Globale beheerder in uw Azure AD-organisatie.
+1. Selecteer **Azure Active Directory** en selecteer vervolgens **Rollen en beheerders**.
+1. Selecteer de rol Application Registration Creator en selecteer **Toewijzing toevoegen**.
+1. Selecteer de gewenste gebruiker en klik op **Selecteren** om de gebruiker aan de rol toe te voegen.
 
-Klaar! In deze Quick Start hebt u een aangepaste rol gemaakt met de machtiging om een onbeperkt aantal app-registraties te maken en vervolgens die rol toe te wijzen aan een gebruiker.
+Klaar! In deze quickstart hebt u een aangepaste rol gemaakt met machtigingen om een onbeperkt aantal app-registraties te maken en vervolgens die rol toe te wijzen aan een gebruiker.
 
 > [!TIP]
-> Als u de rol wilt toewijzen aan een toepassing met behulp van de Azure AD-Portal, voert u de naam van de toepassing in het zoekvak van de pagina toewijzing in. Toepassingen worden standaard niet weer gegeven in de lijst, maar worden geretourneerd in Zoek resultaten.
+> Als u de rol wilt toewijzen aan een toepassing met behulp van de Azure AD-Portal, voert u de naam van de toepassing in het zoekvak van de toewijzingspagina in. Toepassingen worden niet standaard weergegeven in de lijst, maar worden geretourneerd als zoekresultaten.
 
 ### <a name="app-registration-permissions"></a>Machtigingen voor app-registratie
 
-Er zijn twee machtigingen beschikbaar voor het verlenen van de mogelijkheid om toepassings registraties te maken, elk met verschillende gedragingen.
+Er zijn twee machtigingen beschikbaar voor het verlenen van de mogelijkheid om toepassingsregistraties te maken, elk met verschillende gedragingen.
 
-- micro soft. Directory/Applications/createAsOwner: als u deze machtigingen toewijst, wordt de maker toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie geteld voor het quotum van 250 gemaakte objecten van de maker.
-- micro soft. Directory/applicationPolicies/create: als u deze machtiging toewijst, wordt de maker niet toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie niet meegeteld voor het 250 gemaakte object quota van de maker. Gebruik deze machtiging aandachtig door, omdat er niets is dat de toegewezen persoon app-registraties kan maken totdat de quotum op Directory niveau is bereikt. Als beide machtigingen zijn toegewezen, heeft deze machtiging voor rang.
+- microsoft.directory/applications/createAsOwner: Als u deze machtiging toewijst, wordt de maker toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie meegeteld in het quotum van 250 gemaakte objecten van de maker.
+- microsoft.directory/applicationPolicies/create: Als u deze machtigingen toewijst, wordt de maker niet toegevoegd als de eerste eigenaar van de gemaakte app-registratie en wordt de gemaakte app-registratie niet meegeteld in het quotum van 250 gemaakte objecten van de maker. Gebruik deze machtiging op een verantwoorde manier, omdat de toegewezen persoon app-registraties kan maken totdat de quotum op directoryniveau wordt bereikt. Als beide machtigingen zijn toegewezen, heeft deze machtiging voorrang.
 
-## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Een aangepaste rol maken met behulp van Azure AD Power shell
+## <a name="create-a-custom-role-in-azure-ad-powershell"></a>Een aangepaste rol maken in Azure AD PowerShell
 
-Maak een nieuwe rol met behulp van het volgende Power shell-script:
+### <a name="prepare-powershell"></a>PowerShell voorbereiden
 
-``` PowerShell
-# Basic role information
-$description = "Application Registration Creator"
-$displayName = "Can create an unlimited number of application registrations."
-$templateId = (New-Guid).Guid
-
-# Set of permissions to grant
-$allowedResourceAction =
-@(
-    "microsoft.directory/applications/createAsOwner"
-)
-$resourceActions = @{'allowedResourceActions'= $allowedResourceAction}
-$rolePermission = @{'resourceActions' = $resourceActions}
-$rolePermissions = $rolePermission
-
-# Create new custom admin role
-$customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
-```
-
-### <a name="assign-the-custom-role-using-azure-ad-powershell"></a>De aangepaste rol toewijzen met behulp van Azure AD Power shell
-
-#### <a name="prepare-powershell"></a>Power shell voorbereiden
-
-Installeer eerst de Azure AD Power shell-module van de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Importeer vervolgens de Azure AD Power shell preview-module met de volgende opdracht:
+Installeer eerst de Azure AD PowerShell-module van de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Importeer vervolgens de Azure AD PowerShell preview-module met de volgende opdracht:
 
 ```powershell
 import-module azureadpreview
@@ -108,30 +81,46 @@ get-module azureadpreview
   Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...}
 ```
 
-#### <a name="assign-the-custom-role"></a>De aangepaste rol toewijzen
+### <a name="create-the-custom-role-in-azure-ad-powershell"></a>De aangepaste rol maken in Azure AD Power shell
 
-Wijs de rol toe met behulp van het onderstaande Power shell-script:
+Maak een nieuwe rol met behulp van het volgende PowerShell-script:
 
-``` PowerShell
+```powershell
+
 # Basic role information
-$description = "Application Registration Creator"
-$displayName = "Can create an unlimited number of application registrations."
+$displayName = "Application Registration Creator"
+$description = "Can create an unlimited number of application registrations."
 $templateId = (New-Guid).Guid
 
 # Set of permissions to grant
 $allowedResourceAction =
 @(
     "microsoft.directory/applications/create"
+    "microsoft.directory/applications/createAsOwner"
 )
-$resourceActions = @{'allowedResourceActions'= $allowedResourceAction}
-$rolePermission = @{'resourceActions' = $resourceActions}
-$rolePermissions = $rolePermission
+$rolePermissions = @{'allowedResourceActions'= $allowedResourceAction}
 
 # Create new custom admin role
-$customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+$customRole = New-AzureAdMSRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
 ```
 
-### <a name="create-a-custom-role-using-microsoft-graph-api"></a>Een aangepaste rol maken met behulp van Microsoft Graph-API
+### <a name="assign-the-role-in-azure-ad-powershell"></a>De rol toewijzen in Azure AD PowerShell
+
+Wijs de rol toe met behulp van het volgende PowerShell-script:
+
+```powershell
+# Get the user and role definition you want to link
+$user = Get-AzureADUser -Filter "userPrincipalName eq 'Adam@contoso.com'"
+$roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Application Registration Creator'"
+
+# Get resource scope for assignment
+$resourceScope = '/'
+
+# Create a scoped role assignment
+$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
+```
+
+## <a name="create-a-custom-role-in-the-microsoft-graph-api"></a>Een aangepaste rol maken in de Microsoft Graph-API
 
 HTTP-aanvraag voor het maken van de aangepaste rol.
 
@@ -156,6 +145,7 @@ Hoofdtekst
                 "allowedResourceActions":
                 [
                     "microsoft.directory/applications/create"
+                    "microsoft.directory/applications/createAsOwner"
                 ]
             },
             "condition":null
@@ -166,9 +156,9 @@ Hoofdtekst
 }
 ```
 
-### <a name="assign-the-custom-role-using-microsoft-graph-api"></a>De aangepaste rol toewijzen met behulp van Microsoft Graph-API
+### <a name="assign-the-role-in-the-microsoft-graph-api"></a>De rol toewijzen in de Microsoft Graph-API
 
-De roltoewijzing combineert een beveiligings-principal-ID (die een gebruiker of service-principal kan zijn), een roldefinitie-ID (rol) en een Azure AD-resource bereik.
+De roltoewijzing combineert een beveiligingsprincipal-ID (die een gebruiker of serviceprincipal kan zijn), een roldefinitie-ID (rol) en een Azure AD-resourcebereik.
 
 HTTP-aanvraag om een aangepaste rol toe te wijzen.
 
@@ -190,6 +180,6 @@ Hoofdtekst
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U kunt graag delen met ons op het [forum van Azure AD-beheerders](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-- Zie [beheerders rollen toewijzen](directory-assign-admin-roles.md)voor meer informatie over functies en de toewijzing van beheerdersrol.
-- Zie voor standaard gebruikers machtigingen een [vergelijking van de standaard machtigingen voor gast-en gebruikers rechten](../fundamentals/users-default-permissions.md).
+- U kunt dit met ons delen op het forum voor [Azure AD-beheerders](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+- Zie [beheerdersrollen toewijzen voor meer informatie over Azure AD-roltoewijzingen](directory-assign-admin-roles.md).
+- Zie [vergelijking van standaardmachtigingen voor gasten en gebruikers](../fundamentals/users-default-permissions.md)voor meer informatie over standaard gebruikersmachtigingen.

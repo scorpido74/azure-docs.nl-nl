@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: spelling controleren met de REST API en python-Bing Spellingcontrole'
+title: 'Quickstart: Controleer de spelling met de REST API en Python - Bing Spellingcontrole'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Bing Spellingcontrole REST API om de spelling en grammatica te controleren met deze Snelstartgids.
+description: Ga in deze quickstart aan de slag met de REST API voor Bing Spellingcontrole om de spelling en grammatica te controleren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.custom: tracking-python
-ms.openlocfilehash: 65994313549c1744da58c5d63a70e803777f7f53
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.custom: devx-track-python
+ms.openlocfilehash: e121aaf6725c179189b25dff6534b019c5de730c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611083"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852732"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en python
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Quickstart: Spellingcontrole met de Bing Spellingcontrole-REST API en Python
 
 Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige Python-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. 
 
-Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen. De broncode voor deze toepassing is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
+Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,14 +32,14 @@ Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice di
 
 ## <a name="initialize-the-application"></a>De toepassing initialiseren
 
-1. Maak een nieuw python-bestand in uw favoriete IDE of editor en voeg de volgende import instructies toe:
+1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en voeg de volgende importinstructies toe:
 
    ```python
    import requests
    import json
    ```
 
-2. Maak variabelen voor de tekst waarvan u de spelling wilt controleren, maak de abonnementssleutel en het Bing Spellingcontrole-eindpunt. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor de tekst waarvan u de spelling wilt controleren, maak de abonnementssleutel en het Bing Spellingcontrole-eindpunt. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
     ```python
     api_key = "<ENTER-KEY-HERE>"
@@ -55,11 +55,11 @@ Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice di
     data = {'text': example_text}
     ```
 
-2. Voeg de para meters voor uw aanvraag toe: 
+2. Voeg de parameters voor uw aanvraag toe: 
 
-   1. Wijs uw markt code toe aan de `mkt` para meter met de `=` operator. De markt code is de code van het land of de regio waarvan u de aanvraag maakt. 
+   1. Wijs uw marktcode toe aan de parameter `mkt` met de operator `=`. De marktcode is de code van het land of de regio van waaruit u de aanvraag indient. 
 
-   1. Voeg de `mode` para meter met de `&` operator toe en wijs vervolgens de spelling controle modus toe. De modus kan ofwel `proof` (de meeste spelling-en grammatica fouten) of `spell` (de meeste spel fouten worden onderschept, maar niet zo veel grammatica fouten). 
+   1. Voeg de parameter `mode` met de `&` operator toe en wijs vervolgens de spellingcontrolemodus toe. De modus kan de waarde `proof` (de meeste spelling- en grammaticafouten worden onderschept) of de waarde `spell` (de meeste spellingfouten worden onderschept, maar niet zo veel grammaticafouten) zijn. 
  
     ```python
     params = {
@@ -68,7 +68,7 @@ Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice di
         }
     ```
 
-3. Voeg een `Content-Type` koptekst en uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` koptekst.
+3. Voeg een `Content-Type`-header en uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
 
     ```python
     headers = {
@@ -79,7 +79,7 @@ Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice di
 
 ## <a name="send-the-request-and-read-the-response"></a>De aanvraag verzenden en het antwoord lezen
 
-1. Verzend de POST-aanvraag via de bibliotheek aanvragen.
+1. Verzend de POST-aanvraag met behulp van de aanvraagbibliotheek.
 
     ```python
     response = requests.post(endpoint, headers=headers, params=params, data=data)
@@ -95,7 +95,7 @@ Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice di
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Als u de opdracht regel gebruikt, gebruikt u de volgende opdracht om de toepassing uit te voeren:
+Als u gebruikmaakt van de opdrachtregel, gebruikt u de volgende opdracht om de toepassing uit te voeren:
 
 ```bash
 python <FILE_NAME>.py
@@ -149,4 +149,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [Een web-app met één pagina maken](../tutorials/spellcheck.md)
 
 - [Wat is de Bing Spellingcontrole-API?](../overview.md)
-- [Naslag informatie over Bing Spellingcontrole-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Referentie voor de Bing Spellingcontrole-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

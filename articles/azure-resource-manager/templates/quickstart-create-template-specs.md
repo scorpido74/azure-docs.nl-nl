@@ -2,15 +2,15 @@
 title: Sjabloonspecificatie maken en implementeren
 description: Meer informatie over het maken van ene sjabloonspecificatie op basis van een ARM-sjabloon. Implementeer de sjabloonspecificatie vervolgens naar een resourcegroep in uw abonnement.
 author: tfitzmac
-ms.date: 07/20/2020
+ms.date: 08/06/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: b2667e63f7cac5d1e3ad8475501ff909e8f6f3c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8fe9ec46050ad831430239b960a7f528af7f4dc2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101022"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924322"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Quickstart: Sjabloonspecificatie maken en implementeren (preview)
 
@@ -53,7 +53,7 @@ Deze opties worden hieronder weergegeven.
    New-AzTemplateSpec `
      -ResourceGroupName templateSpecRG `
      -Name storageSpec `
-     -Version "1.0.0.0" `
+     -Version "1.0" `
      -Location westus2 `
      -TemplateJsonFile "c:\Templates\azuredeploy.json"
    ```
@@ -86,7 +86,7 @@ Deze opties worden hieronder weergegeven.
                    {
                        "type": "versions",
                        "apiVersion": "2019-06-01-preview",
-                       "name": "1.0.0.1",
+                       "name": "1.0",
                        "location": "westus2",
                        "dependsOn": [ "storageSpec" ],
                        "properties": {
@@ -195,7 +195,7 @@ U kunt nu de sjabloonspecificatie implementeren. De sjabloonspecificatie wordt o
 1. Haal de resource-id op van de sjabloonspecificatie.
 
    ```azurepowershell
-   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0.0.0").Version.Id
+   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
    ```
 
 1. Implementeer de sjabloonspecificatie.
@@ -203,7 +203,16 @@ U kunt nu de sjabloonspecificatie implementeren. De sjabloonspecificatie wordt o
    ```azurepowershell
    New-AzResourceGroupDeployment `
      -TemplateSpecId $id `
-     -ResourceGroupName demoRG
+     -ResourceGroupName storageRG
+   ```
+
+1. U moet de parameters opgeven op precies dezelfde manier als voor een ARM-sjabloon. Implementeer de sjabloonspecificatie opnieuw met een parameter voor het type opslagaccount.
+
+   ```azurepowershell
+   New-AzResourceGroupDeployment `
+     -TemplateSpecId $id `
+     -ResourceGroupName storageRG `
+     -StorageAccountType Standard_GRS
    ```
 
 # <a name="arm-template"></a>[Azure VPN-gateway](#tab/azure-resource-manager)
@@ -224,7 +233,7 @@ U kunt nu de sjabloonspecificatie implementeren. De sjabloonspecificatie wordt o
                "name": "demo",
                "properties": {
                    "templateLink": {
-                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0.0.0')]"
+                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
                    },
                    "parameters": {
                    },

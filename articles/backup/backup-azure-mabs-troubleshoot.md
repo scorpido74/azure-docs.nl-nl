@@ -4,12 +4,12 @@ description: Problemen met de installatie, registratie van Azure Backup Server e
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: a4882867f9bbe5123df275b8d1c69fe4e163f294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054830"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522841"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
 
@@ -20,13 +20,46 @@ Gebruik de informatie in de volgende tabellen om fouten op te lossen die optrede
 U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met het oplossen van problemen Microsoft Azure Backup Server (MABS):
 
 - [Controleren of de MARS-agent (Microsoft Azure Recovery Services) up-to-date is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Zorg ervoor dat er netwerkverbinding is tussen de MARS-agent en Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [Zorg ervoor dat er een netwerk verbinding is tussen MARS-agent en Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Controleer of Microsoft Azure Recovery Services wordt uitgevoerd (in Service-console). Start indien nodig opnieuw op en voer de bewerking opnieuw uit
 - [Zorg ervoor dat er 5-10% ruimte vrij is op de locatie van de scratch-map](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - Als de registratie mislukt, controleert u of de server waarop u wilt installeren Azure Backup Server nog niet is geregistreerd bij een andere kluis
 - Als een push-installatie mislukt, controleert u of de DPM-agent al aanwezig is. Zo ja, verwijdert u de agent en start u de installatie opnieuw
 - [Controleer of er geen ander proces of antivirussoftware conflicten veroorzaakt met Azure Backup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - Zorg ervoor dat de SQL Agent-service wordt uitgevoerd en is ingesteld op automatisch in de MABS-server<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>Anti virus voor MABS-server configureren
+
+MABS is compatibel met de populairste antivirus software producten. We raden u aan de volgende stappen uit te voeren om conflicten te voor komen:
+
+1. **Real-time bewaking uitschakelen** : Schakel realtime-bewaking door de antivirus software uit voor het volgende
+    - `C:\Program Files<MABS Installation path>\XSD` map
+    - `C:\Program Files<MABS Installation path>\Temp` map
+    - Stationsletter van Modern Backup Storage volume
+    - Replica-en overdrachts logboeken: Hiervoor schakelt u real-time bewaking van **dpmra.exe**uit, dat zich in de map bevindt `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` . Real-time bewaking vermindert de prestaties omdat de antivirus software elke keer dat MABS synchroniseert met de beveiligde server scant en alle betrokken bestanden telkens scant wanneer MABS wijzigingen in de replica's toepast.
+    - Administrator-console: Schakel real-time bewaking van het **csc.exe** proces uit om de prestaties te voor komen. Het **csc.exe** proces is de C- \# compiler en realtime-bewaking kan de prestaties verslechteren omdat de antivirus software bestanden scant die het **csc.exe** proces verzendt bij het genereren van XML-berichten. **CSC.exe** bevindt zich in de volgende paden:
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - Voor de MARS-agent die is geïnstalleerd op de MABS-server, wordt u aangeraden de volgende bestanden en locaties uit te sluiten:
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` Als een proces
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - Scratch locatie (als u geen gebruik maakt van de standaard locatie)
+2. **Realtime-bewaking uitschakelen op de beveiligde server**: Schakel de real-time bewaking van **dpmra.exe**, dat zich in de map bevindt `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` , uit op de beveiligde server.
+3. Antivirus **software configureren om de geïnfecteerde bestanden op beveiligde servers en de MABS-server te verwijderen**: als u gegevens beschadiging van replica's en herstel punten wilt voor komen, configureert u de antivirus software zo dat geïnfecteerde bestanden worden verwijderd en niet automatisch worden gereinigd of in quarantaine. Automatisch opschonen en in quarantaine kan ervoor zorgen dat de antivirus software bestanden wijzigt, waardoor wijzigingen die MABS niet kunnen detecteren.
+
+U moet een hand matige synchronisatie uitvoeren met een consistentie. Controleer de taak elke keer dat de antivirus software een bestand uit de replica verwijdert, zelfs als de replica is gemarkeerd als inconsistent.
+
+### <a name="mabs-installation-folders"></a>MABS-installatie mappen
+
+De standaard installatie mappen voor DPM zijn als volgt:
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+U kunt ook de volgende opdracht uitvoeren om het pad naar de installatiemap te vinden:
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>Er zijn ongeldige kluisreferenties ingevoerd
 

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: 4f14a5cf21a372c66378521fd293b7569b181653
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808657"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518319"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech Service-containers installeren en uitvoeren (preview-versie)
 
-Met containers kunt u enkele Api's van de speech-service uitvoeren in uw eigen omgeving. Containers zijn geweldig voor specifieke vereisten voor beveiliging en gegevens beheer. In dit artikel leert u hoe u een spraak container downloadt, installeert en uitvoert.
+Met containers kunt u enkele van de Speech Service-API's uitvoeren in uw eigen omgeving. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer. In dit artikel leert u hoe u een spraakcontainer downloadt, installeert en uitvoert.
 
-Met spraak containers kunnen klanten een spraak toepassings architectuur maken die is geoptimaliseerd voor zowel robuuste Cloud mogelijkheden als Edge-locatie. Er zijn vier verschillende containers beschikbaar. De twee standaard containers zijn **spraak-naar-tekst** en **tekst-naar-spraak**. De twee aangepaste containers zijn **Custom speech-naar-tekst** -en **aangepaste tekst-naar-spraak**. Spraak containers hebben dezelfde [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) als de op de cloud gebaseerde Azure speech Services.
+Met spraakcontainers kunnen klanten een spraaktoepassingsarchitectuur maken die is geoptimaliseerd voor zowel robuuste cloudmogelijkheden als edge-locaties. Er zijn vier verschillende containers beschikbaar. De twee standaard containers zijn **spraak-naar-tekst** en **tekst-naar-spraak**. De twee aangepaste containers zijn **Custom speech-naar-tekst** -en **aangepaste tekst-naar-spraak**. Spraak containers hebben dezelfde [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) als de op de cloud gebaseerde Azure speech Services.
 
 > [!IMPORTANT]
 > Alle spraak containers worden momenteel aangeboden als onderdeel van een [open bare preview-versie](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services). Er wordt een aankondiging gedaan wanneer de voortgang van de spraak containers op algemene Beschik baarheid (GA) wordt weer gegeven.
@@ -33,7 +33,7 @@ Met spraak containers kunnen klanten een spraak toepassings architectuur maken d
 | Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.5.0 |
 | Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.5.0 |
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -107,7 +107,7 @@ Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die w
 > [!NOTE]
 > De minimale en aanbevolen waarde zijn gebaseerd op de limieten van docker, *niet* op de hostcomputer. Bijvoorbeeld: spraak naar tekst containers delen van een groot taal model en het wordt *Aanbevolen* dat het hele bestand in het geheugen past, wat een extra 4-6 GB is. Het is ook mogelijk dat de eerste uitvoering van een van de containers langer duurt, omdat modellen in het geheugen worden gewisseld.
 
-## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met `docker pull`
 
 Container installatie kopieën voor spraak zijn beschikbaar in de volgende Container Registry.
 
@@ -237,7 +237,7 @@ Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebru
 1. [Voer de container uit](#run-the-container-with-docker-run)met de vereiste facturerings instellingen. Er zijn meer [voor beelden](speech-container-configuration.md#example-docker-run-commands) van de `docker run` opdracht beschikbaar.
 1. [Zoek het Voorspellings eindpunt van de container](#query-the-containers-prediction-endpoint)op.
 
-## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
+## <a name="run-the-container-with-docker-run"></a>Voer de container uit met `docker run`
 
 Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het ophalen van de `{Endpoint_URI}` `{API_Key}` waarden en. Er zijn ook aanvullende [voor beelden](speech-container-configuration.md#example-docker-run-commands) van de `docker run` opdracht beschikbaar.
 
@@ -441,7 +441,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Simple.Extensions`retourneert het sentiment-resultaat in de hoofdlaag van het antwoord.
+`Simple.Extensions` retourneert het sentiment-resultaat in de hoofdlaag van het antwoord.
 
 ```json
 {
@@ -480,7 +480,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Detailed.Extensions`biedt sentiment-resultaat in de hoofdlaag van het antwoord. `Detailed.Options`Hiermee geeft u het resultaat in `NBest` de laag van het antwoord. Ze kunnen afzonderlijk of samen worden gebruikt.
+`Detailed.Extensions` biedt sentiment-resultaat in de hoofdlaag van het antwoord. `Detailed.Options` Hiermee geeft u het resultaat in `NBest` de laag van het antwoord. Ze kunnen afzonderlijk of samen worden gebruikt.
 
 ```json
 {
@@ -551,7 +551,7 @@ U kunt deze container en een andere Azure Cognitive Services-container die samen
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Wanneer u de container start of uitvoert, kunnen er problemen optreden. Gebruik een uitvoer [koppeling](speech-container-configuration.md#mount-settings) en schakel logboek registratie in. Als u dit doet, kan de container logboek bestanden genereren die handig zijn bij het oplossen van problemen.
 

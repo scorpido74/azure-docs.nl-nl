@@ -2,25 +2,21 @@
 title: 'Zelf studie: een belonings gateway configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts voor een belonings gateway.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 928d48907e43de5e65ca5604ff878bfb83d5e95b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 298ca69a659bec2d5262b344c274fac7371390f1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77060988"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534350"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>Zelf studie: belonings gateway voor automatische gebruikers inrichting configureren
 
@@ -87,7 +83,7 @@ Als u een belonings gateway wilt configureren voor het automatisch inrichten van
 
 4. Voer in het zoekvak de prijs van de **lonen**in, Selecteer in het deel venster resultaten **belonings gateway** en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Belonings gateway in de lijst met resultaten](common/search-new-app.png)
+    ![Reward Gateway in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configuring-automatic-user-provisioning-to-reward-gateway"></a>Automatische gebruikers inrichting configureren voor de beloning van Gateway  
 
@@ -98,13 +94,13 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-reward-gateway-in-azure-ad"></a>Automatische gebruikers inrichting voor belonings gateway in azure AD configureren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **beloning gateway**.
+2. Selecteer **Reward Gateway** in de lijst met toepassingen.
 
-    ![De koppeling van de belonings gateway in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Reward Gateway in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer het tabblad **inrichten** .
 

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 08/10/2020
 ms.author: banders
-ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 592a5d9573cb4e475c5d1ca6b4f06002f949e197
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039746"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136249"
 ---
 # <a name="cancel-your-azure-subscription"></a>Uw Azure-abonnement opzeggen
 
@@ -32,10 +32,10 @@ Als u een betaald Azure-ondersteuningsplan annuleert, wordt u gefactureerd voor 
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Abonnement annuleren in de Azure-portal
 
 1. Selecteer uw abonnement op de [pagina Abonnementen in de Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-2. Selecteer het abonnement dat u wilt opzeggen.
-3. Selecteer **Overzicht** en selecteer vervolgens **Abonnement annuleren**.
+1. Selecteer het abonnement dat u wilt opzeggen.
+1. Selecteer **Overzicht** en selecteer vervolgens **Abonnement annuleren**.
     ![Schermopname waarin de knop ‘Abonnement annuleren’ wordt weergegeven](./media/cancel-azure-subscription/cancel_ibiza.png)
-3. Volg de aanwijzingen om de opzegging te voltooien.
+1. Volg de aanwijzingen om de opzegging te voltooien.
 
 ## <a name="who-can-cancel-a-subscription"></a>Wie kan een abonnement annuleren?
 
@@ -49,11 +49,20 @@ In de onderstaande tabel worden de machtigingen beschreven die zijn vereist voor
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Wat gebeurt er nadat ik mijn abonnement heb opgezegd?
 
-Nadat u uw abonnement hebt opgezegd, wordt de facturering onmiddellijk stopgezet. Het kan echter wel maximaal 10 minuten duren voordat de opzegging in de portal wordt weergegeven. Als u uw abonnement halverwege een factureringsperiode opzegt, verzenden we de laatste factuur op de gebruikelijke factuurdatum, na afloop van de periode. 
+Nadat u uw abonnement hebt opgezegd, wordt de facturering onmiddellijk stopgezet. Het kan echter wel maximaal 10 minuten duren voordat de opzegging in de portal wordt weergegeven. Als u uw abonnement halverwege een factureringsperiode opzegt, verzenden we de laatste factuur op de gebruikelijke factuurdatum, na afloop van de periode.
 
 Nadat u het abonnement hebt opgezegd, worden uw services uitgeschakeld. Dit betekent dat de toewijzing uw virtuele machines ongedaan wordt gemaakt, dat uw tijdelijke IP-adressen worden vrijgemaakt en dat uw opslag het kenmerk Alleen-lezen heeft.
 
-Microsoft wacht 30 tot 90 dagen voordat uw gegevens permanent worden verwijderd, voor het geval u er toegang toe moet hebben of u van gedachten verandert. Wij brengen u niets in rekening voor het bewaren van de gegevens. Zie [Vertrouwenscentrum van Microsoft - Hoe we uw gegevens beheren](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409) voor meer informatie.
+Nadat uw abonnement is geannuleerd, wacht Microsoft 30 tot 90 dagen voordat uw gegevens permanent worden verwijderd, voor het geval u er toegang toe moet hebben of u van gedachten verandert. Wij brengen u niets in rekening voor het bewaren van de gegevens. Zie [Vertrouwenscentrum van Microsoft - Hoe we uw gegevens beheren](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409) voor meer informatie.
+
+## <a name="delete-free-trial-subscription"></a>Gratis proefabonnement verwijderen
+
+Als u een gratis proefabonnement hebt, hoeft u niet 30 dagen te wachten tot het abonnement automatisch wordt verwijderd. U kunt uw abonnement *drie dagen* nadat u het hebt geannuleerd verwijderen. De optie **Abonnement verwijderen** is pas drie dagen nadat u uw abonnement hebt opgezegd beschikbaar.
+
+1. Wacht tot drie dagen na de datum waarop u het abonnement hebt geannuleerd.
+1. Selecteer uw abonnement op de pagina [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in Azure Portal.
+1. Selecteer het abonnement dat u wilt verwijderen.
+1. Selecteer **Overzicht** en **Abonnement verwijderen**.
 
 ## <a name="reactivate-subscription"></a>Abonnement opnieuw activeren
 

@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over de Mi
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2994e250c37d707eee5428e83c151728f83a1ab
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173165"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522926"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server en DPM: veelgestelde vragen
 
@@ -36,6 +36,10 @@ Ja. U moet eerst DPM instellen en vervolgens de Azure Backup-Agent installeren. 
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Waarom kan ik geen externe DPM-server toevoegen na de installatie van UR7 en de nieuwste Azure Backup-Agent?
 
 Voor de DPM-servers met gegevens bronnen die zijn beveiligd met de Cloud (met behulp van een update pakket dat ouder is dan update pakket 7), moet u ten minste één dag na de installatie van de UR7 en de nieuwste Azure Backup-Agent wachten om een **externe DPM-server toe te voegen**. De periode van één dag is nodig voor het uploaden van de meta gegevens van de DPM-beveiligings groepen naar Azure. Meta gegevens van beveiligings groepen worden de eerste keer geüpload met een nacht taak.
+
+### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Zijn er aanbevelingen voor het configureren van uitsluitingen voor antivirus software?
+
+Ja, u kunt het beste antivirus uitsluiting configureren. Zie [antivirus software uitvoeren op de DPM-server](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)voor uitsluitingen voor dpm. Zie [Configure Anti Virus for MABS server](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)(Engelstalig) voor uitsluitingen voor MABS.
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware en Hyper-V-back-up
 

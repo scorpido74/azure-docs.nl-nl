@@ -2,25 +2,20 @@
 title: 'Zelf studie: gebruikers inrichten voor CERN-centraal-Azure AD'
 description: Meer informatie over het configureren van Azure Active Directory om automatisch gebruikers in te richten op een schema in CERN-centraal.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058313"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529862"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Zelf studie: configureren van CERN-centraal voor het automatisch inrichten van gebruikers
 
@@ -65,29 +60,29 @@ Als u gebruikers accounts wilt inrichten voor CERN-centraal, moet u een CERN-cen
 
 1. De eerste stap is om ervoor te zorgen dat de mensen die de CERN en Azure AD-integratie beheren, een CernerCare-account hebben dat is vereist voor toegang tot de documentatie die nodig is om de instructies te volt ooien. Gebruik, indien nodig, de onderstaande Url's voor het maken van CernerCare-accounts in elke toepasselijke omgeving.
 
-   * Vastgelegdhttps://sandboxcernercare.com/accounts/create
+   * Vastgelegd  https://sandboxcernercare.com/accounts/create
 
-   * Geproduceerdhttps://cernercare.com/accounts/create  
+   * Geproduceerd  https://cernercare.com/accounts/create  
 
 2. Vervolgens moet er een systeem account worden gemaakt voor Azure AD. Gebruik de onderstaande instructies om een systeem account aan te vragen voor uw sandbox-en productie omgeving.
 
-   * Schriftenhttps://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Schriften  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Vastgelegdhttps://sandboxcernercentral.com/system-accounts/
+   * Vastgelegd https://sandboxcernercentral.com/system-accounts/
 
-   * Geproduceerdhttps://cernercentral.com/system-accounts/
+   * Geproduceerd  https://cernercentral.com/system-accounts/
 
 3. Genereer vervolgens een OAuth Bearer-token voor elk van uw systeem accounts. Volg hiervoor de onderstaande instructies.
 
-   * Schriftenhttps://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Schriften  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Vastgelegdhttps://sandboxcernercentral.com/system-accounts/
+   * Vastgelegd https://sandboxcernercentral.com/system-accounts/
 
-   * Geproduceerdhttps://cernercentral.com/system-accounts/
+   * Geproduceerd  https://cernercentral.com/system-accounts/
 
 4. Ten slotte moet u gebruikers rooster-Id's voor de sandbox-en productie omgeving ophalen om de configuratie te volt ooien. Zie voor informatie over hoe u dit kunt verkrijgen: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM . 
 
-5. Nu kunt u Azure AD configureren om gebruikers accounts in te richten op CERN. Meld u aan bij de [Azure Portal](https://portal.azure.com)en blader naar de sectie **Azure Active Directory > Enter prise-apps > alle toepassingen** .
+5. Nu kunt u Azure AD configureren om gebruikers accounts in te richten op CERN. Meld u aan bij de [Azure Portal](https://portal.azure.com)en blader naar de sectie **Azure Active Directory > Enter prise-apps > alle toepassingen**  .
 
 6. Als u de CERN-centrale voor eenmalige aanmelding al hebt geconfigureerd, zoekt u naar uw exemplaar van CERN-centrale met behulp van het zoek veld. Selecteer anders **toevoegen** en zoeken naar **CERN-centraal** in de toepassings galerie. Selecteer CERN-centraal in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
@@ -101,9 +96,9 @@ Als u gebruikers accounts wilt inrichten voor CERN-centraal, moet u een CERN-cen
 
    * Voer in het veld **Tenant-URL** een URL in de onderstaande notatie in, waarbij ' User-rooster-id ' wordt vervangen door de realm-id die u hebt verkregen in stap #4.
 
-    > Vastgelegdhttps://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Vastgelegd https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
     > 
-    > Geproduceerdhttps://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Geproduceerd https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * Voer in het veld **geheim token** het OAuth Bearer-token in dat u in stap #3 hebt gegenereerd en klik op **verbinding testen**.
 

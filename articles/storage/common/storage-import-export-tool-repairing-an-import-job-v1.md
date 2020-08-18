@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: a5c0e9bf94a9953e107de148792af2e39f8bac24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3ba9844bf8412e169322fd4953cbc259a94e174
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512288"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525772"
 ---
 # <a name="repairing-an-import-job"></a>Een importtaak herstellen
 De Microsoft Azure Import/Export-service kan een aantal van uw bestanden of delen van een bestand niet kopiëren naar de Windows Azure Blob-service. Enkele mogelijke oorzaken:  
@@ -24,7 +24,7 @@ De Microsoft Azure Import/Export-service kan een aantal van uw bestanden of dele
   
 -   De sleutel van het opslag account is gewijzigd terwijl het bestand werd overgedragen.  
   
-Voer het Microsoft Azure Import/Export-hulpprogramma uit met de logboekbestanden van de importtaak en het hulpprogramma zal de ontbrekende bestanden (of delen van een bestand) uploaden naar uw Windows Azure-opslagaccount om de importtaak te voltooien.  
+U kunt het Microsoft Azure Import/Export-hulp programma uitvoeren met de Kopieer logboek bestanden van de import taak. Het hulp programma uploadt de ontbrekende bestanden, of delen van een bestand, naar uw Windows Azure-opslag account om de import taak te volt ooien.  
   
 ## <a name="repairimport-parameters"></a>RepairImport-para meters
 
@@ -32,24 +32,24 @@ De volgende para meters kunnen worden opgegeven met **RepairImport**:
   
 |||  
 |-|-|  
-|**/r:**<RepairFile\>|**Vereist.** Het pad naar het reparatie bestand, dat de voortgang van de reparatie bijhoudt en u kunt een onderbroken reparatie hervatten. Elk station moet één en slechts één herstel bestand hebben. Wanneer u een herstel start voor een bepaald station, geeft u het pad door aan een herstel bestand dat nog niet bestaat. Als u een onderbroken reparatie wilt hervatten, moet u de naam van een bestaand herstel bestand door geven. Het herstel bestand dat overeenkomt met het doel station moet altijd worden opgegeven.|  
+|**/r:**<RepairFile\>|**Vereist.** Het pad naar het reparatie bestand, dat de voortgang van de reparatie bijhoudt en u kunt een onderbroken reparatie hervatten. Elk station moet één en slechts één herstel bestand hebben. Wanneer u een herstel start voor een bepaald station, geeft u het pad door aan een herstel bestand dat nog niet bestaat. Als u een onderbroken reparatie wilt hervatten, moet u de naam van een bestaand herstel bestand door geven. Geef altijd het herstel bestand op dat overeenkomt met het doel station.|  
 |**/logdir:**<LogDirectory\>|**Beschrijving.** De logboekmap. Uitgebreide logboek bestanden worden naar deze map geschreven. Als er geen Logboekmap is opgegeven, wordt de huidige map gebruikt als Logboekmap.|  
 |**/d:**<TargetDirectories\>|**Vereist.** Een of meer met punt komma's gescheiden directory's die de oorspronkelijke bestanden bevatten die zijn geïmporteerd. Het import station kan ook worden gebruikt, maar is niet vereist als er alternatieve locaties van de oorspronkelijke bestanden beschikbaar zijn.|  
-|**/BK:**<BitLockerKey\>|**Beschrijving.** U moet de BitLocker-sleutel opgeven als u wilt dat het hulp programma een versleuteld station ontgrendelt waar de oorspronkelijke bestanden beschikbaar zijn.|  
+|**/BK:**<BitLockerKey\>|**Beschrijving.** Geef de BitLocker-sleutel op als u wilt dat het hulp programma een versleuteld station ontgrendelt waar de oorspronkelijke bestanden beschikbaar zijn.|  
 |**/sn:**<StorageAccountName\>|**Vereist.** De naam van het opslag account voor de import taak.|  
 |**/SK:**<StorageAccountKey\>|**Vereist** als en alleen als er geen container-SAS is opgegeven. De account sleutel voor het opslag account voor de import taak.|  
 |**/csas:**<ContainerSas\>|**Vereist** als en alleen als de sleutel voor het opslag account niet is opgegeven. De container-SAS voor toegang tot de blobs die zijn gekoppeld aan de import taak.|  
 |**/CopyLogFile:**<DriveCopyLogFile\>|**Vereist.** Pad naar het kopie logboek bestand (uitgebreid logboek of fouten logboek). Het bestand wordt gegenereerd door de service Windows Azure import/export en kan worden gedownload van de Blob-opslag die aan de taak is gekoppeld. Het kopie logboek bestand bevat informatie over de mislukte blobs of bestanden, die moeten worden hersteld.|  
-|**/PathMapFile:**<DrivePathMapFile\>|**Beschrijving.** Pad naar een tekst bestand dat kan worden gebruikt om ambiguïteiten op te lossen als u meerdere bestanden hebt met dezelfde naam die u in dezelfde taak hebt geïmporteerd. De eerste keer dat het hulp programma wordt uitgevoerd, kan dit bestand vullen met alle ambigue namen. De volgende keer dat het hulp programma wordt uitgevoerd, wordt dit bestand gebruikt om de dubbel zinnigheid op te lossen.|  
+|**/PathMapFile:**<DrivePathMapFile\>|**Beschrijving.** Pad naar een tekst bestand dat wordt gebruikt om ambiguïteiten op te lossen als u meerdere bestanden hebt met dezelfde naam die u in dezelfde taak hebt geïmporteerd. De eerste keer dat het hulp programma wordt uitgevoerd, kan dit bestand vullen met alle ambigue namen. Als u het hulp programma later uitvoert, gebruikt u dit bestand om de dubbel zinnigheid op te lossen.|  
   
 ## <a name="using-the-repairimport-command"></a>De opdracht RepairImport gebruiken  
-Als u gegevens wilt herstellen door de gegevens over het netwerk te streamen, moet u de mappen opgeven die de oorspronkelijke bestanden bevatten die u hebt geïmporteerd met behulp van de `/d` para meter. U moet ook het kopie logboek bestand opgeven dat u hebt gedownload uit uw opslag account. Een typische opdracht regel voor het herstellen van een import taak met gedeeltelijke fouten ziet er als volgt uit:  
+Als u gegevens wilt herstellen door de gegevens over het netwerk te streamen, moet u de mappen opgeven die de oorspronkelijke bestanden bevatten die u hebt geïmporteerd met behulp van de `/d` para meter. Geef ook het kopie logboek bestand op dat u hebt gedownload uit uw opslag account. Een typische opdracht regel voor het herstellen van een import taak met gedeeltelijke fouten ziet er als volgt uit:  
   
 ```  
 WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bob\Pictures;X:\BobBackup\photos /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C2V.log  
 ```  
   
-In het volgende voor beeld van een kopie logboek bestand is 1 64-K-gedeelte van een bestand beschadigd op het station dat voor de import taak werd verzonden. Aangezien dit de enige fout is, is de rest van de blobs in de taak geïmporteerd.  
+In het volgende voor beeld van een kopie logboek bestand is 1 64-K-gedeelte van een bestand beschadigd op het station dat voor de import taak werd verzonden. Omdat deze fout de enige is die wordt aangegeven, zijn de rest van de blobs in de taak met succes geïmporteerd.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -71,9 +71,9 @@ In het volgende voor beeld van een kopie logboek bestand is 1 64-K-gedeelte van 
 Wanneer dit Kopieer logboek wordt door gegeven aan het Azure-hulp programma voor importeren/exporteren, probeert het hulp programma de import bewerking voor dit bestand te volt ooien door de ontbrekende inhoud over het netwerk te kopiëren. Na het bovenstaande voor beeld zoekt het hulp programma naar het oorspronkelijke bestand `\animals\koala.jpg` binnen de twee directory's `C:\Users\bob\Pictures` en `X:\BobBackup\photos` . Als het bestand `C:\Users\bob\Pictures\animals\koala.jpg` bestaat, kopieert het Azure import/export-hulp programma het ontbrekende gegevens bereik naar de bijbehorende BLOB `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg` .  
   
 ## <a name="resolving-conflicts-when-using-repairimport"></a>Conflicten oplossen bij het gebruik van RepairImport  
-In sommige gevallen is het mogelijk dat het hulp programma het vereiste bestand niet kan vinden of openen om een van de volgende redenen: het bestand kan niet worden gevonden, het bestand is niet toegankelijk, de bestands naam is niet meer duidelijk of de inhoud van het bestand is niet meer juist.  
+In sommige gevallen is het mogelijk dat het hulp programma het vereiste bestand niet kan vinden of openen om een van de volgende redenen: het bestand is niet gevonden, het bestand is niet toegankelijk, de bestands naam is onduidelijk of de inhoud van het bestand is niet meer correct.  
   
-Een onduidelijke fout kan optreden als het hulp programma probeert te vinden `\animals\koala.jpg` en er een bestand is met die naam onder beide `C:\Users\bob\pictures` en `X:\BobBackup\photos` . Dat wil zeggen, beide `C:\Users\bob\pictures\animals\koala.jpg` en `X:\BobBackup\photos\animals\koala.jpg` bestaan op de stations voor het importeren van taken.  
+Een onduidelijke fout kan optreden als het hulp programma probeert te vinden `\animals\koala.jpg` en er een bestand is met die naam onder zowel `C:\Users\bob\pictures` en `X:\BobBackup\photos` . Dat wil zeggen, beide `C:\Users\bob\pictures\animals\koala.jpg` en `X:\BobBackup\photos\animals\koala.jpg` bestaan op de stations voor het importeren van taken.  
   
 `/PathMapFile`Met deze optie kunt u deze fouten oplossen. U kunt de naam opgeven van het bestand dat de lijst met bestanden bevat die het hulp programma niet juist kan identificeren. Het volgende opdracht regel voorbeeld vult `9WM35C2V_pathmap.txt` :  
   
@@ -88,7 +88,7 @@ Het hulp programma schrijft vervolgens de problematische bestands paden naar `9W
 \animals\kangaroo.jpg  
 ```
   
- Voor elk bestand in de lijst moet u proberen het bestand te zoeken en te openen om te controleren of het beschikbaar is voor het hulp programma. Als u het hulp programma expliciet wilt laten weten waar een bestand moet worden gevonden, kunt u het pad naar de map wijzigen en het pad toevoegen aan elk bestand op dezelfde regel, gescheiden door een tabteken:  
+ Voor elk bestand in de lijst moet u proberen het bestand te zoeken en te openen om ervoor te zorgen dat het beschikbaar is voor het hulp programma. Als u het hulp programma expliciet wilt laten weten waar een bestand moet worden gevonden, wijzigt u het pad naar de map en voegt u het pad toe aan elk bestand op dezelfde regel, gescheiden door een tabteken:  
   
 ```
 \animals\koala.jpg           C:\Users\bob\Pictures\animals\koala.jpg  
@@ -102,5 +102,4 @@ Nadat u de benodigde bestanden hebt gemaakt voor het hulp programma of het pad n
 * [Het Azure-hulp programma voor importeren/exporteren instellen](storage-import-export-tool-setup-v1.md)   
 * [Harde schijven voorbereiden voor een importtaak](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [De taakstatus controleren met kopielogboekbestanden](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [Een exporttaak herstellen](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Problemen met het hulpprogramma Azure Import/Export oplossen](storage-import-export-tool-troubleshooting-v1.md)
+* [Een exporttaak herstellen](../storage-import-export-tool-repairing-an-export-job-v1.md)

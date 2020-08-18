@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 669c5f1ae6b667073e885a0077e9f3130ba3c4f0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 3df1ccadb69f02272c44a0ba574805c816151dc7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405973"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520937"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Een LUIS-app bouwen via een programma met Node.js
 
@@ -27,7 +27,7 @@ LUIS biedt een programmatische API die alles doet wat de [Luis](luis-reference-r
 ## <a name="prerequisites"></a>Vereisten
 
 * Meld u aan bij de [Luis](luis-reference-regions.md) -website en zoek uw [ontwerp sleutel](luis-how-to-azure-subscription.md#authoring-key) in de account instellingen. U gebruikt deze sleutel om de ontwerp-Api's aan te roepen.
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 * Dit artikel begint met een CSV voor een hypothetische logboek bestanden van gebruikers aanvragen van een bedrijf. Down load deze [hier](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * Installeer de nieuwste Node.js met NPM. U kunt het [hier](https://nodejs.org/en/download/) downloaden.
 * **[Aanbevolen]** Visual Studio [code voor IntelliSense](https://code.visualstudio.com/) en fout opsporing kunt u deze gratis downloaden.

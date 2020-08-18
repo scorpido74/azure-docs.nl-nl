@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe AWS-VM's naar Azure migreert me
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534823"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066641"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-VM's (AWS) ontdekken, beoordelen en migreren naar Azure
 
@@ -99,7 +99,7 @@ Azure Migrate: Server Migration gebruikt het replicatieapparaat om machines naar
 Bereid de implementatie van het apparaat als volgt voor:
 
 - Stel een afzonderlijke EC2-VM in om het replicatieapparaat te hosten. Op deze instantie moet Windows Server 2012 R2 of Windows Server 2016 worden uitgevoerd. [Bekijk](./migrate-replication-appliance.md#appliance-requirements) de hardware-, software- en netwerkvereisten voor het apparaat.
-- Het apparaat mag niet worden geïnstalleerd op een bron-VM die u wilt repliceren. Het moet op een andere VM worden geïmplementeerd.
+- Het apparaat mag niet worden geïnstalleerd op een bron-VM die u wilt repliceren of op het detectie- en beoordelingsapparaat voor Azure Migrate dat u eerder hebt geïnstalleerd. Het moet op een andere VM worden geïmplementeerd.
 - De bron-AWS-VM's die u wilt migreren, moeten een netwerkregel hebben die is gericht op het replicatieapparaat. Configureer de noodzakelijke beveiligingsgroepsregels om dit in te schakelen. Het is raadzaam dat het replicatieapparaat wordt geïmplementeerd in dezelfde VPC als de bron-VM's die moeten worden gemigreerd. Als het replicatie apparaat zich in een andere VPC moet bevinden, moeten de VPC's worden verbonden via VPC-peering.
 - De bron-AWS-VM's communiceren met het replicatieapparaat via de poorten HTTPS 443 (indeling van controlekanaal) en TCP 9443 (gegevenstransport) inkomend voor replicatiebeheer en de gegevensoverdracht voor replicatie. Het replicatieapparaat organiseert en verzendt replicatiegegevens naar Azure via poort HTTPS 443 uitgaand. Als u deze regels wilt configureren, bewerkt u de regels voor inkomende/uitgaande regels van de beveiligingsgroep met de juiste poorten en de bron-IP-gegevens.
 

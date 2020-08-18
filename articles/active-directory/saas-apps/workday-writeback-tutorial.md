@@ -3,23 +3,19 @@ title: 'Zelf studie: het terugschrijven van werk dagen configureren in Azure Act
 description: Meer informatie over het configureren van kenmerk terugschrijven van Azure AD naar workday
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215867b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 1d76fb96676ad49ce28ff4ef0d6c4fbc84636638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041790"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526827"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Zelf studie: kenmerk terugschrijven van Azure AD naar workday configureren
 Het doel van deze zelf studie is om de stappen weer te geven die u moet uitvoeren om kenmerken van Azure AD naar workday te schrijven. De werk-app voor het terugschrijven van werk dagen ondersteunt het toewijzen van waarden aan de volgende workday-kenmerken:

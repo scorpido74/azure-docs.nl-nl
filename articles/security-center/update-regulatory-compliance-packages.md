@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873323"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522603"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>De set normen aanpassen in uw nalevings dashboard voor regelgeving
 
@@ -73,6 +73,8 @@ In de volgende stappen wordt uitgelegd hoe u een pakket kunt toevoegen om te con
     - **Canada PBMM**
     
     ![Regulerende pakketten toevoegen aan het dash board nalevings beleid van de Azure Security Center](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+
+1. Selecteer **toevoegen** en voer alle benodigde gegevens in voor het specifieke initiatief, zoals Scope, para meters en herstel.
 
 1. Selecteer op de zijbalk van Security Center opnieuw **regelgevende naleving** om terug te gaan naar het dash board voor nalevings vereisten.
     * Uw nieuwe standaard wordt weer gegeven in uw lijst met industrie & reglementaire normen. 

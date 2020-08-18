@@ -2,25 +2,20 @@
 title: 'Zelf studie: werk plek configureren via Facebook voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Workplace by Facebook configureert.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 6341e67e-8ce6-42dc-a4ea-7295904a53ef
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e014ddda212689b00d646e861025d6a4fef1898b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920582"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526377"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
 
@@ -76,7 +71,7 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
 
 * Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -112,8 +107,8 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
    |---|---|
    |userName|Tekenreeks|
    |displayName|Tekenreeks|
-   |actief|Booleaans|
-   |titel|Booleaans|
+   |actief|Boolean-waarde|
+   |titel|Boolean-waarde|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|

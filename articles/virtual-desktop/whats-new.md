@@ -1,20 +1,18 @@
 ---
 title: Nieuwe functies in Windows Virtual Desktop - Azure
 description: Nieuwe functies en productupdates voor Windows Virtual Desktop.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 06/15/2020
+ms.date: 08/07/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 9be1053600ab89a7879a04a7c08a44ddf3bc862a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8663fc3f016fadcd4f4c99acd800cd0ccf8844f8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291243"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003531"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Nieuwe functies in Windows Virtual Desktop
 
@@ -27,13 +25,48 @@ Windows Virtual Desktop wordt regelmatig bijgewerkt. In dit artikel vindt u meer
 
 Dit artikel wordt maandelijks bijgewerkt. Controleer hier regelmatig of er nieuwe updates beschikbaar zijn.
 
+## <a name="july-2020"></a>Juli 2020  
+
+In juli werd de integratie van Windows Virtual Desktop met Azure Resource Management algemeen beschikbaar gesteld.
+
+Met deze nieuwe release is het volgende gewijzigd: 
+
+- De 'release najaar 2019' is nu bekend als 'Windows Virtual Desktop (klassiek)', terwijl 'release voorjaar 2020' nu gewoon 'Windows Virtual Desktop' heet. Lees [deze blogpost](https://azure.microsoft.com/blog/new-windows-virtual-desktop-capabilities-now-generally-available/) voor meer informatie. 
+
+Lees [deze blogpost](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245) voor meer informatie over de nieuwe functies. 
+
+### <a name="autoscaling-tool-update"></a>Update voor hulpprogramma voor automatisch schaal aanpassen
+
+De meest recente versie van het hulpprogramma voor automatisch schaal aanpassen dat in preview was, is nu algemeen beschikbaar. Dit hulpprogramma maakt gebruik van een Azure Automation-account en de Azure Logic-app voor het automatisch afsluiten en opnieuw opstarten van virtual machines (VM's) binnen een hostgroep, waardoor de infrastructuurkosten worden verminderd. Meer informatie over [Schaalsessiehosts die gebruikmaken van Azure Automation](set-up-scaling-script.md).
+
+### <a name="azure-portal"></a>Azure Portal
+
+U kunt nu met Azure Portal het volgende doen in Windows Virtual Desktop: 
+
+- Gebruikers rechtstreeks toewijzen aan persoonlijke desktopsessiehosts  
+- De instelling voor de validatieomgeving voor hostgroepen wijzigen 
+
+### <a name="diagnostics"></a>Diagnostiek
+
+We hebben een aantal nieuwe vooraf samengestelde query's uitgebracht voor de Log Analytics-werkruimte. Als u toegang wilt krijgen tot de query's, gaat u naar **Logboeken** en selecteert u onder **Categorie** de optie **Windows Virtual Desktop**. Meer informatie vindt u onder [Log Analytics gebruiken voor de diagnostische functie](diagnostics-log-analytics.md).
+
+### <a name="update-for-remote-desktop-client-for-android"></a>Update voor Extern bureaublad-client voor Android
+
+De [Extern bureaublad-client voor Android](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) ondersteunt nu virtuele Windows Virtual Desktop-verbindingen. Vanaf versie 10.0.7 bevat de Android-client een nieuwe gebruikersinterface voor een verbeterde gebruikerservaring. De client integreert ook met Microsoft Authenticator op Android-apparaten om voorwaardelijke toegang in te schakelen wanneer u zich abonneert op Windows Virtual Desktop-werkruimten.  
+
+De vorige versie van Extern bureaublad-client heet nu 'Extern bureaublad 8'. Alle bestaande verbindingen uit de eerdere versie van de client, worden naadloos overgebracht naar de nieuwe client. De nieuwe client is herschreven met dezelfde onderliggende RDP-kernengine als de iOS- en macOS-clients, met een snellere release van nieuwe functies op alle platforms. 
+
+### <a name="teams-update"></a>Update van teams
+
+We hebben verbeteringen aangebracht in Microsoft Teams voor Windows Virtual Desktop. Het belangrijkste is dat Windows Virtual Desktop nu ondersteuning biedt voor optimalisatie van audio en visualisatie voor de Windows Virtual Desktop-client. Omleiding verbetert de latentie door directe paden te maken tussen gebruikers wanneer ze audio of video in telefoongesprekken en vergaderingen gebruiken. Minder afstand betekent ook minder hops, waardoor oproepen een helderder beeld en beter geluid hebben. Zie [Teams gebruiken in Windows Virtual Desktop](teams-on-wvd.md) voor meer informatie.
+
 ## <a name="june-2020"></a>Juni 2020
 
 Vorige maand hebben we Windows Virtual Desktop met Azure Resource Manager-integratie geïntroduceerd in de preview-versie. Deze update bevat veel geweldige nieuwe functies waar we graag meer over vertellen. Hieronder ziet u wat nieuw is in deze versie van Windows Virtual Desktop.
 
-### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager-preview"></a>Windows Virtual Desktop is nu geïntegreerd met Azure Resource Manager (preview)
+### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager"></a>Windows Virtual Desktop is nu geïntegreerd met Azure Resource Manager
 
-Windows Virtual Desktop is nu geïntegreerd in Azure Resource Manager. In de meest recente update zijn alle Windows Virtual Desktop-objecten omgezet naar Azure Resource Manager-resources. Deze update is ook geïntegreerd met op rollen gebaseerd toegangsbeheer (RBAC) van Azure. Raadpleeg [Wat is Azure Resource Manager?](../azure-resource-manager/management/overview.md) voor meer informatie.
+Windows Virtual Desktop is nu geïntegreerd in Azure Resource Manager. In de meest recente update zijn alle Windows Virtual Desktop-objecten omgezet naar Azure Resource Manager-resources. Deze update is ook geïntegreerd met op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC). Raadpleeg [Wat is Azure Resource Manager?](../azure-resource-manager/management/overview.md) voor meer informatie.
 
 Dit is wat deze wijziging betekent voor u:
 
@@ -41,7 +74,7 @@ Dit is wat deze wijziging betekent voor u:
 
 - Vóór deze update kon u RemoteApps en Desktops alleen publiceren voor individuele gebruikers. Met Azure Resource Manager kunt u resources nu publiceren in Azure Active Directory-groepen.
 
-- De eerdere versie van Windows Virtual Desktop beschikte over vier ingebouwde beheerdersrollen die u kon toewijzen aan een tenant of hostpool. Deze rollen vallen in Azure nu onder [op rollen gebaseerd toegangsbeheer](../role-based-access-control/overview.md). U kunt deze rollen toepassen op elk Azure Resource Manager-object in Windows Virtual Desktop, waardoor u beschikt over een compleet en uitgebreid delegatiemodel.
+- De eerdere versie van Windows Virtual Desktop beschikte over vier ingebouwde beheerdersrollen die u kon toewijzen aan een tenant of hostpool. Deze rollen vallen in Azure nu onder [op rollen gebaseerd toegangsbeheer (Azure RBAC)](../role-based-access-control/overview.md). U kunt deze rollen toepassen op elk Azure Resource Manager-object in Windows Virtual Desktop, waardoor u beschikt over een compleet en uitgebreid delegatiemodel.
 
 - In deze update hoeft u Azure Marketplace of de GitHub-sjabloon niet meer herhaaldelijk uit te voeren om een hostpool uit te breiden. Het enige wat u hoeft te doen om een hostpool uit te breiden, is naar de hostpool gaan in de Azure-portal en **+ Toevoegen** selecteren om extra sessiehosts te implementeren.
 
@@ -49,7 +82,7 @@ Dit is wat deze wijziging betekent voor u:
 
 - Bewakingsfuncties die voorheen werden uitgevoerd via PowerShell of met de web-app voor de Diagnostische service, zijn nu verplaatst naar Log Analytics in de Azure-portal. U hebt nu ook twee opties om uw rapporten te visualiseren. U kunt Kusto-query's uitvoeren en werkmappen gebruiken om visuele rapporten te maken.
 
-- U hebt geen Azure AD-toestemming (Azure Active Directory) meer nodig om Windows Virtual Desktop te gebruiken. In deze update worden met de Azure AD-tenant in uw Azure-abonnement uw gebruikers geverifieerd en wordt RBAC geboden voor de beheerders.
+- U hebt geen Azure AD-toestemming (Azure Active Directory) meer nodig om Windows Virtual Desktop te gebruiken. In deze update worden met de Azure AD-tenant in uw Azure-abonnement uw gebruikers geverifieerd en wordt Azure RBAC geboden voor de beheerders.
 
 
 ### <a name="powershell-support"></a>PowerShell-ondersteuning
@@ -60,7 +93,7 @@ Volg de instructies in [De PowerShell-module instellen voor Windows Virtual Desk
 
 U kunt ook een lijst met beschikbare opdrachten bekijken in de [AzWvd PowerShell-referentie](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization).
 
-Lees [onze blogpost](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245) voor meer informatie over de nieuwe functies. 
+Lees [onze blogpost](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245) voor meer informatie over de nieuwe functies.
 
 ### <a name="additional-gateways"></a>Aanvullende gateways
 

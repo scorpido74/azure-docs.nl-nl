@@ -2,26 +2,21 @@
 title: 'Zelf studie: tableau online configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op tableau online.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 0be9c435-f9a1-484d-8059-e578d5797d8e
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fae770950810899f7c6583fa401110c3e85022b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064209"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533417"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Zelf studie: tableau online configureren voor het automatisch inrichten van gebruikers
 
@@ -83,7 +78,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Automatische gebruikers inrichting voor tableau online configureren in azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer alle toepassingen in **bedrijfs toepassingen**  >  **All applications**  >  **tableau online**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer alle toepassingen in **bedrijfs toepassingen**  >  **All applications**  >  **tableau online**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
