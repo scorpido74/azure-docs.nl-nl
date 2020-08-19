@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bfc18332553d1aee713ccb8fc269ba63d2b5af12
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540593"
+ms.locfileid: "88566060"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs configureren (preview-versie)
 
@@ -45,7 +45,7 @@ Voer de volgende stappen uit om een replicatie beleid te maken in de Azure Porta
 
 1. Navigeer naar het bron opslag account in de Azure Portal.
 1. Selecteer onder **BLOB service** **object replicatie**.
-1. Selecteer **replicatie instellen**.
+1. Selecteer **replicatie regels instellen**.
 1. Selecteer het doel abonnement en het opslag account.
 1. Selecteer in de sectie **container paren** een bron container van het bron account en een doel container van het doel account. U kunt Maxi maal 10 container paren per replicatie beleid maken.
 

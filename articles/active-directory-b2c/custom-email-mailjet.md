@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 91360776c50ce514985ad36242606223becbd933
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 29e82a67b85356cfc15e806bb331330b3f272a04
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230873"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584961"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Aangepaste e-mail verificatie met Mailjet
 
@@ -38,7 +38,7 @@ Als u er nog geen hebt, moet u eerst een Mailjet-account instellen (Azure-klante
 
 Sla vervolgens de Mailjet API-sleutel op in een Azure AD B2C-beleids sleutel voor uw beleids regels waarnaar moet worden verwezen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C Directory.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina **overzicht** **identiteits ervaring-Framework**.
@@ -235,6 +235,9 @@ Voeg onder de claim transformaties binnen de `<BuildingBlocks>` volgende [Conten
  <ContentDefinition Id="api.localaccountsignup">
     <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
   </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+  </ContentDefinition>
 </ContentDefinitions>
 ```
 
@@ -360,7 +363,7 @@ Net als bij de technische profielen voor OTP, voegt u de volgende technische pro
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Een verwijzing naar de DisplayControl maken
 
-In de laatste stap voegt u een verwijzing toe naar het DisplayControl dat u hebt gemaakt. Vervang uw bestaande, `LocalAccountSignUpWithLogonEmail` zelfondertekende technische profiel met het volgende als u een eerdere versie van Azure AD B2C-beleid hebt gebruikt. Dit technische profiel wordt gebruikt `DisplayClaims` met een verwijzing naar de DisplayControl.
+In de laatste stap voegt u een verwijzing toe naar het DisplayControl dat u hebt gemaakt. Vervang uw bestaande `LocalAccountSignUpWithLogonEmail` en `LocalAccountDiscoveryUsingEmailAddress` zelfondertekende technische profielen door de volgende. Als u een eerdere versie van Azure AD B2C-beleid hebt gebruikt. Deze technische profielen `DisplayClaims` worden gebruikt met een verwijzing naar de DisplayControl..
 
 Zie voor meer informatie [het zelf beweringen technisch profiel](restful-technical-profile.md) en weer [gave](display-controls.md).
 
@@ -369,22 +372,13 @@ Zie voor meer informatie [het zelf beweringen technisch profiel](restful-technic
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <DisplayName>Email signup</DisplayName>
-      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
-        <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-        <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
-        <Item Key="language.button_continue">Create</Item>
-        
         <!--OTP validation error messages-->
         <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
         <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="email" />
-      </InputClaims>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
         <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
@@ -393,17 +387,18 @@ Zie voor meer informatie [het zelf beweringen technisch profiel](restful-technic
         <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
         <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
       </DisplayClaims>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="email" Required="true" />
-        <OutputClaim ClaimTypeReferenceId="objectId" />
-        <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" />
-        <OutputClaim ClaimTypeReferenceId="newUser" />
-      </OutputClaims>
-      <ValidationTechnicalProfiles>
-        <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
-      </ValidationTechnicalProfiles>
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+    </TechnicalProfile>
+    <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
+      <Metadata>
+        <!--OTP validation error messages-->
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
+        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
+      </Metadata>
+      <DisplayClaims>
+        <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+      </DisplayClaims>
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
@@ -459,7 +454,7 @@ Als u het e-mail bericht wilt lokaliseren, moet u gelokaliseerde teken reeksen v
         <SupportedLanguage>en</SupportedLanguage>
         <SupportedLanguage>es</SupportedLanguage>
       </SupportedLanguages>
-      <LocalizedResources Id="api.localaccountsignup.en">
+      <LocalizedResources Id="api.custom-email.en">
         <LocalizedStrings>
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for validating the account</LocalizedString>
@@ -468,7 +463,7 @@ Als u het e-mail bericht wilt lokaliseren, moet u gelokaliseerde teken reeksen v
         </LocalizedStrings>
         </LocalizedStrings>
       </LocalizedResources>
-      <LocalizedResources Id="api.localaccountsignup.es">
+      <LocalizedResources Id="api.custom-email.es">
         <LocalizedStrings>
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Código de verificación del correo electrónico de la cuenta de Contoso</LocalizedString>
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Gracias por comprobar la cuenta de </LocalizedString>
@@ -482,16 +477,25 @@ Als u het e-mail bericht wilt lokaliseren, moet u gelokaliseerde teken reeksen v
 1. Voeg referenties toe aan de LocalizedResources-elementen door het element [ContentDefinitions](contentdefinitions.md) bij te werken.
 
     ```xml
-    <ContentDefinition Id="api.localaccountsignup">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
-      <LocalizedResourcesReferences MergeBehavior="Prepend">
-        <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-        <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-      </LocalizedResourcesReferences>
-    </ContentDefinition>
+    <ContentDefinitions>
+      <ContentDefinition Id="api.localaccountsignup">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
+          <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+      <ContentDefinition Id="api.localaccountpasswordreset">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
+          <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+    </ContentDefinitions>
     ```
 
-1. Voeg ten slotte de volgende invoer claims-trans formatie toe aan het technische profiel LocalAccountSignUpWithLogonEmail.
+1. Voeg ten slotte de volgende invoer claims-trans formatie toe aan de `LocalAccountSignUpWithLogonEmail` `LocalAccountDiscoveryUsingEmailAddress` technische profielen en.
 
     ```xml
     <InputClaimsTransformations>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 832bf1dd06d550f82090a336bc4cceac8cd8a9be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7d7c7b7236841835866ccb7786e7e4eab767c1f
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038185"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565584"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Stap 1: de logboek-doorstuur server implementeren
 
@@ -48,6 +48,16 @@ In deze stap wijst en configureert u de Linux-computer waarmee de logboeken word
      `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
 
 1. Zorg ervoor dat het script wordt uitgevoerd en controleer of er geen fout-of waarschuwings berichten worden weer gegeven.
+
+> [!NOTE]
+> **Dezelfde computer gebruiken voor het door sturen van zowel normale syslog- *als* CEF-berichten**
+>
+> Als u van plan bent deze doorstuur server voor logboeken te gebruiken voor het door sturen van [syslog-berichten](connect-syslog.md) en CEF, kunt u het dupliceren van gebeurtenissen naar de tabellen syslog en CommonSecurityLog vermijden:
+>
+> 1. Op elke bron machine die logboeken naar de doorstuur server verzendt in CEF-indeling, moet u het syslog-configuratie bestand bewerken om de faciliteiten te verwijderen die worden gebruikt om CEF-berichten te verzenden. Op deze manier worden de functies die in CEF worden verzonden, ook niet in syslog verzonden. Zie [syslog op Linux-agent configureren](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent) voor gedetailleerde instructies over hoe u dit doet.
+>
+> 1. U moet de volgende opdracht uitvoeren op die computers om de synchronisatie van de agent met de syslog-configuratie in azure Sentinel uit te scha kelen. Dit zorgt ervoor dat de configuratie wijziging die u in de vorige stap hebt aangebracht, niet wordt overschreven.<br>
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 Ga verder met [stap 2: uw beveiligings oplossing configureren voor het door sturen van CEF-berichten](connect-cef-solution-config.md) .
 

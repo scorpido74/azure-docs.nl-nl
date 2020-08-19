@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322836"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566145"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Gegevens verzamelen van op Linux gebaseerde bronnen met behulp van syslog
 
@@ -86,6 +86,8 @@ Zie [syslog-gegevens bronnen in azure monitor](../azure-monitor/platform/data-so
 1. U kunt de query parameters die worden beschreven in [functies gebruiken in azure monitor logboek query's](../azure-monitor/log-query/functions.md) gebruiken om uw syslog-berichten te parseren. U kunt de query vervolgens opslaan als een nieuwe Log Analytics functie en deze gebruiken als een nieuw gegevens type.
 
 > [!NOTE]
+> **Dezelfde computer gebruiken voor het door sturen van zowel normale syslog- *als* CEF-berichten**
+>
 >
 > U kunt uw bestaande [CEF-logboek-doorstuur machine](connect-cef-agent.md) gebruiken voor het verzamelen en door sturen van logboeken van normale syslog-bronnen. U moet echter wel de volgende stappen uitvoeren om te voor komen dat gebeurtenissen in beide indelingen naar Azure Sentinel worden verzonden. Dit leidt ertoe dat gebeurtenissen worden gedupliceerd.
 >

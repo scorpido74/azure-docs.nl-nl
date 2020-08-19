@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 564041da0be6874acae1bec69e4ab2d744d89323
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565233"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566332"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelf studie: incidenten onderzoeken met Azure Sentinel
 
@@ -37,10 +37,12 @@ In dit artikel komen de volgende onderwerpen aan bod:
 > * De onderzoek grafiek gebruiken
 > * Op bedreigingen reageren
 
-Een incident kan meerdere waarschuwingen bevatten. Het is een aggregatie van alle relevante bewijzen voor een specifiek onderzoek. Er wordt een incident gemaakt op basis van analytische regels die u hebt gemaakt op de **Analytics** -pagina. De eigenschappen die betrekking hebben op de waarschuwingen, zoals ernst en status, worden ingesteld op incident niveau. Nadat u Azure-Sentinel weet wat voor soort bedreigingen u zoekt en hoe u deze kunt vinden, kun u gedetecteerde bedreigingen bewaken door incidenten te onderzoeken.
+Een incident kan meerdere waarschuwingen bevatten. Het is een aggregatie van alle relevante bewijzen voor een specifiek onderzoek. Er wordt een incident gemaakt op basis van de analyse regels die u hebt gemaakt op de **Analytics** -pagina. De eigenschappen die betrekking hebben op de waarschuwingen, zoals ernst en status, worden ingesteld op incident niveau. Nadat u Azure-Sentinel weet wat voor soort bedreigingen u zoekt en hoe u deze kunt vinden, kun u gedetecteerde bedreigingen bewaken door incidenten te onderzoeken.
 
 ## <a name="prerequisites"></a>Vereisten
-U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analytische regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
+- U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analyse regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
+
+- Als u een gast gebruiker hebt die incidenten moet toewijzen, moet aan de gebruiker de rol van [Directory Reader](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) worden toegewezen in uw Azure AD-Tenant. Normale gebruikers (niet-gast) hebben deze rol standaard toegewezen.
 
 ## <a name="how-to-investigate-incidents"></a>Incidenten onderzoeken
 
@@ -81,7 +83,7 @@ De onderzoek grafiek gebruiken:
 1. Selecteer een incident en selecteer vervolgens **onderzoeken**. Hiermee gaat u naar het onderzoek diagram. De grafiek bevat een illustrerende kaart van de entiteiten die rechtstreeks zijn verbonden met de waarschuwing en elke resource die u hebt verbonden.
 
    > [!IMPORTANT] 
-   > U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analytische regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
+   > U kunt het incident alleen onderzoeken als u de velden voor entiteits toewijzing hebt gebruikt bij het instellen van de analyse regel. Het onderzoek diagram vereist dat uw oorspronkelijke incident entiteiten bevat.
 
    ![Kaart weergeven](media/tutorial-investigate-cases/map1.png)
 

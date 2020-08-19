@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0d1845c06c1f0373ffd4be43c104889a7327c3ac
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035770"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586212"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for core (SQL) API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "88035770"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
+> * [Lente gegevens v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -143,10 +144,10 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 * De naam van de API is gewijzigd `preferredLocations`  &  `multipleWriteLocations` in `preferredRegions`  &  `multipleWriteRegions` . 
 * `reactor-core`Is bijgewerkt naar 3.3.5. release, `reactor-netty` naar 0.9.7. release & `netty` naar 4.1.49. Final verse. 
 * Er is ondersteuning toegevoegd voor `analyticalStoreTimeToLive` in SDK.     
-* `CosmosClientException`wordt uitgebreid `AzureException` . 
+* `CosmosClientException` wordt uitgebreid `AzureException` . 
 * `maxItemCount`  &  `requestContinuationToken` Api's zijn uit `FeedOptions` plaats daarvan verwijderd met behulp `byPage()` van api's van `CosmosPagedFlux`  &  `CosmosPagedIterable` .
 * Geïntroduceerd `CosmosPermissionProperties` in het open bare Opper vlak voor `Permission` api's.
-* Verwijderd `SqlParameterList` type & vervangen door`List`
+* Verwijderd `SqlParameterList` type & vervangen door `List`
 * Opgelost meerdere geheugen lekken in directe TCP-client. 
 * Er is ondersteuning toegevoegd voor `DISTINCT` query's. 
 * Externe afhankelijkheden zijn verwijderd op `fasterxml.uuid, guava, commons-io, commons-collection4, commons-text` .  
@@ -154,14 +155,14 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 * De Netty is bijgewerkt naar 4.1.45. Final & project-reactor naar 3.3.3-versie.
 * De open bare rest-contracten worden bijgewerkt naar `Final` klassen.
 * Er is ondersteuning toegevoegd voor geavanceerde diagnostische gegevens voor punt bewerkingen.
-* Pakket bijgewerkt naar`com.azure.cosmos`
+* Pakket bijgewerkt naar `com.azure.cosmos`
 * `models`Pakket toegevoegd voor model/rest-contracten
 * `utils`Pakket toegevoegd voor `CosmosPagedFlux`  &  `CosmosPagedIterable` typen. 
 * Bijgewerkte open bare Api's voor gebruik `Duration` in de SDK.
 * Alle rest contracten aan het `models` pakket zijn toegevoegd.
-* `RetryOptions`de naam is gewijzigd in `ThrottlingRetryOptions` .
+* `RetryOptions` de naam is gewijzigd in `ThrottlingRetryOptions` .
 * `CosmosPagedFlux`  &  `CosmosPagedIterable` Paginerings typen zijn toegevoegd voor query-api's. 
-* Er is ondersteuning toegevoegd voor het delen van TransportClient over meerdere exemplaren van CosmosClients met een nieuwe API in de`CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
+* Er is ondersteuning toegevoegd voor het delen van TransportClient over meerdere exemplaren van CosmosClients met een nieuwe API in de `CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
 * Query optimalisatie door dubbele serialisatie/deserialisatie te verwijderen. 
 * De antwoord headers worden geoptimaliseerd door onnodig kopiëren terug en heen te verwijderen. 
 * Geoptimaliseerde `ByteBuffer` serialisatie/deserialisatie door tussenliggende teken reeks-exemplaren te verwijderen.
@@ -171,8 +172,8 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 * Probleem opgelost bij het parseren van de query resultaten in het geval van een waarde in de volg orde van query's. 
 * Problemen met opgeloste socket lekkage met directe TCP-client.
 * Opgelost `orderByQuery` met vervolg token fout.
-* `ChangeFeedProcessor`fout oplossing voor het afsplitsen van partities & wanneer de partitie niet is gevonden.
-* `ChangeFeedProcessor`fout oplossing bij het synchroniseren van lease-updates tussen verschillende threads.
+* `ChangeFeedProcessor` fout oplossing voor het afsplitsen van partities & wanneer de partitie niet is gevonden.
+* `ChangeFeedProcessor` fout oplossing bij het synchroniseren van lease-updates tussen verschillende threads.
 * Er is een `ArrayIndexOutOfBound` uitzonde ring opgetreden in StoreReader vanwege een vaste race
 
 ## <a name="faq"></a>Veelgestelde vragen

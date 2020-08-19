@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 34091e0c9f18cb87a240054f534f474710eb421d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7f03c11b53c6dc61fad6b916e7c08086917b416
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563931"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565737"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
 
@@ -33,7 +33,7 @@ In dit artikel wordt beschreven hoe de verbinding werkt, aan de hand van vereist
 > [!NOTE] 
 > Gegevens worden opgeslagen op de geografische locatie van de werk ruimte waarop u Azure Sentinel uitvoert.
 
-Als u deze verbinding wilt maken, moet u een agent implementeren op een toegewezen Linux-machine (VM of on-premises) om de communicatie tussen het apparaat en de Azure-Sentinel te ondersteunen. In het volgende diagram worden de instellingen in het geval van een virtuele Linux-machine in azure beschreven.
+Als u deze verbinding wilt maken, moet u een agent implementeren op een toegewezen Linux-machine (VM of on-premises) ter ondersteuning van de communicatie tussen het apparaat en de Azure-Sentinel. In het volgende diagram worden de instellingen in het geval van een virtuele Linux-machine in azure beschreven.
 
  ![CEF in azure](./media/connect-cef/cef-syslog-azure.png)
 

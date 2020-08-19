@@ -2,25 +2,21 @@
 title: 'Zelf studie: Figma automatisch inrichten van gebruikers configureren met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Figma.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: a50f1c81f5eda78ee6834aba3085f685c197b4dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0f0d61788d7ac9b242dbc176a125b45753d2578
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057951"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555118"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Zelf studie: Figma configureren voor automatische gebruikers inrichting
 
@@ -71,7 +67,7 @@ Voordat u Figma configureert voor het automatisch inrichten van gebruikers met A
 
     ![Figma-token maken](media/Figma-provisioning-tutorial/token.png)
 
-5. Kopieer de waarde van het **API-token** . Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw Figma-toepassing in de Azure Portal. 
+5. Kopieer de waarde van het  **API-token** . Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw Figma-toepassing in de Azure Portal. 
 
     ![Figma-token maken](media/Figma-provisioning-tutorial/figma04.png)
 
@@ -104,7 +100,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-figma--in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Figma in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 

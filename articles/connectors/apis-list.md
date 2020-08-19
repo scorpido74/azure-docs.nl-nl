@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 3a628a70d8ce62827f79c1f7e16d2826be8d80f5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1dd38f0360a4471124497d8357481283cd98383c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827245"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566298"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors voor Azure Logic Apps
 
@@ -407,6 +407,10 @@ Als u Api's wilt aanroepen waarmee aangepaste code wordt uitgevoerd of die niet 
 ## <a name="block-creating-connections"></a>Maken van verbindingen blok keren
 
 Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp van hun connectors in Azure Logic Apps, kunt u [de mogelijkheid blok keren om deze verbindingen](../logic-apps/block-connections-connectors.md) voor specifieke connectors in de werk stromen van logische apps te gebruiken met behulp van [Azure Policy](../governance/policy/overview.md). Zie voor meer informatie [blok keren verbindingen die zijn gemaakt door specifieke connectors in azure Logic apps](../logic-apps/block-connections-connectors.md).
+
+## <a name="get-ready-for-deployment"></a>Bereid u voor op implementatie
+
+Hoewel u verbindingen maakt vanuit een logische app, zijn de verbindingen afzonderlijke Azure-resources met hun eigen resource definities. Als u deze verbindings bron definities wilt controleren, kunt u [de resource groep voor uw logische app inspecteren met behulp van de Azure Portal](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#view-resource-definitions) of [uw logische app downloaden van Azure in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md). Dit is de eenvoudigste manier om een geldige sjabloon voor logische sjablonen met para meters te maken die het meest geschikt is voor implementatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 54408b20ebba60de2e1a696e5bd9b06f55e860ba
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513161"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584876"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Machine Learning gegevens sets maken op basis van Azure open gegevens sets
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,7 +75,7 @@ tabular_dataset = MNIST.get_tabular_dataset()
 file_dataset = MNIST.get_file_dataset()
 ```
 
-In dit voor beeld is de `opendatasets` klasse diabetes alleen beschikbaar als een `TabularDataset` , dus het gebruik van `get_tabular_dataset()`
+In dit voor beeld is de `opendatasets` klasse diabetes alleen beschikbaar als een `TabularDataset` , dus het gebruik van `get_tabular_dataset()` .
 
 ```python
 
@@ -98,7 +98,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-with-the-studio"></a>Gegevens sets maken met de Studio
 
-U kunt ook gegevens sets maken op basis van open gegevens sets met de [Azure machine learning Studio](https://ml.azure.com), een geconsolideerde webinterface met machine learning-hulpprogram ma's voor het uitvoeren van data Science-scenario's voor data Wetenschappen van alle vaardigheids niveaus.
+U kunt ook Azure Machine Learning gegevens sets maken op basis van Azure open gegevens sets met de [Azure machine learning Studio](https://ml.azure.com), een geconsolideerde webinterface die machine learning hulpprogram ma's bevat voor het uitvoeren van data Science-scenario's voor data Wetenschappen van alle vaardigheids niveaus.
 
 > [!Note]
 > Gegevens sets die zijn gemaakt via Azure Machine Learning Studio, worden automatisch geregistreerd bij de werk ruimte.
@@ -111,7 +111,7 @@ U kunt ook gegevens sets maken op basis van open gegevens sets met de [Azure mac
 
     ![Gegevensset kiezen](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. Kies een naam waaronder u de gegevensset wilt registreren en de gegevens eventueel kunt filteren met behulp van de beschik bare filters. In dit geval filtert u voor de gegevensset van de **open bare feest dagen** de periode tot één jaar en de land code naar alleen de Verenigde Staten. Selecteer **Maken**.
+1. Kies een naam waaronder u de gegevensset wilt registreren en de gegevens eventueel kunt filteren met behulp van de beschik bare filters. In dit geval filtert u voor de gegevensset van de **open bare feest dagen** de periode tot één jaar en de land code naar alleen de Verenigde Staten. Zie de [catalogus Azure open data sets](https://azure.microsoft.com/services/op[en-datasets/catalog/) voor gegevens details, zoals veld beschrijvingen en datumbereiken. Selecteer **Maken**.
 
     ![Gegevensset-para meters instellen en gegevensset maken](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

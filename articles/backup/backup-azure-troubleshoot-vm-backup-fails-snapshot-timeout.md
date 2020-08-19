@@ -4,12 +4,12 @@ description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met bet
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 99982af7f16431ac5b1c2c4a0e419d647d3d2ca0
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262854"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585557"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -65,7 +65,7 @@ Azure Backup maakt gebruik van de extensie van de VM-moment opname om een toepas
 
 - **Zorg ervoor dat de VSS Writer-service actief is**: Volg deze stappen om [VSS Writer problemen op te lossen](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
 - **Volg de richt lijnen voor back-upbest practice**: Bekijk de [Aanbevolen procedures voor het inschakelen van back-ups van Azure VM](backup-azure-vms-introduction.md#best-practices).
-- **Lees de richt lijnen voor versleutelde schijven**: als u back-up voor virtuele machines met versleutelde schijf inschakelt, moet u alle vereiste machtigingen hebben opgegeven. Zie [back-up en herstel van versleutelde virtuele Azure-machines](backup-azure-vms-encryption.md#encryption-support)voor meer informatie.
+- **Lees de richt lijnen voor versleutelde schijven**: als u back-up voor virtuele machines met versleutelde schijf inschakelt, moet u alle vereiste machtigingen hebben opgegeven. Zie [back-up en herstel van versleutelde virtuele Azure-machines](backup-azure-vms-encryption.md)voor meer informatie.
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable: VM-agent kan niet communiceren met Azure Backup
 
@@ -277,7 +277,7 @@ De volgende voor waarden kunnen ertoe leiden dat de momentopname taak mislukt:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Ga naar de **optie alle resources**en selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` .
 3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
 4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en selecteert u **verwijderen**.
@@ -306,7 +306,7 @@ Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starte
 
 Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, wat niet wordt gewist vanwege de vergren deling van de resource groep:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **alle resources**in het menu **hub** , selecteer de resource groep met de volgende indeling AzureBackupRG_ `<Geo>` _ `<number>` waar de virtuele machine zich bevindt.
 
     ![De resource groep selecteren](./media/backup-azure-arm-vms-prepare/resource-group.png)

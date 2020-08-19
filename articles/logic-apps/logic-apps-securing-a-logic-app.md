@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c7b4cf688d02ebbcb099f116c0eb7b4ebe7c6074
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a53ac9387664aafc218f13834e0499fde417d87d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212417"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566077"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -159,7 +159,7 @@ Stel bijvoorbeeld dat uw logische app een autorisatie beleid heeft dat twee clai
 
 Lees de volgende overwegingen voordat u deze verificatie inschakelt:
 
-* Een inkomende oproep naar uw logische app kan slechts één autorisatie schema, ofwel Azure AD OAuth of [Shared Access signatures (SAS)](#sas), gebruiken. Alleen autorisatie schema's van [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) worden ondersteund voor OAuth-tokens, die alleen voor de aanvraag trigger worden ondersteund.
+* Een inkomende oproep naar uw logische app kan slechts één autorisatie schema, ofwel Azure AD OAuth of [Shared Access signatures (SAS)](#sas), gebruiken. Als u één schema gebruikt, wordt de andere niet uitgeschakeld, maar als beide tegelijkertijd worden gebruikt, treedt er een fout op omdat de service niet weet welk schema u moet kiezen. Alleen autorisatie schema's van [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) worden ondersteund voor OAuth-tokens, die alleen voor de aanvraag trigger worden ondersteund.
 
 * Uw logische app is beperkt tot een maximum aantal autorisatie beleidsregels. Elk autorisatie beleid heeft ook een maximum aantal [claims](../active-directory/develop/developer-glossary.md#claim). Zie [Informatie over limieten en configuratie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits) voor meer informatie.
 

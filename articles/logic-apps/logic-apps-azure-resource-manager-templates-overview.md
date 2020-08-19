@@ -3,15 +3,15 @@ title: 'Overzicht: implementatie voor Azure Logic Apps automatiseren'
 description: Meer informatie over Azure Resource Manager sjablonen voor het automatiseren van de implementatie voor Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 07/25/2019
-ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520966"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565550"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen
 
@@ -175,7 +175,7 @@ Hier volgen enkele aanbevolen procedures voor het definiëren van para meters:
 
   * [Beveiligde parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-* Als u de namen van sjabloon parameters wilt onderscheiden van para meters van werk stroom definities, kunt u beschrijvende sjabloon parameter namen gebruiken, bijvoorbeeld:`TemplateFabrikamPassword`
+* Als u de namen van sjabloon parameters wilt onderscheiden van para meters van werk stroom definities, kunt u beschrijvende sjabloon parameter namen gebruiken, bijvoorbeeld: `TemplateFabrikamPassword`
 
 Zie [Aanbevolen procedures voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)voor meer aanbevolen procedures voor sjablonen.
 
@@ -237,7 +237,7 @@ In dit voorbeeld parameter bestand worden de waarden opgegeven voor de sjabloon 
 
 ## <a name="template-resources"></a>Sjabloonresources
 
-Uw sjabloon heeft een `resources` -object. Dit is een matrix die definities bevat voor elke resource die u wilt maken en implementeren in azure, zoals de [resource definitie van de logische app](#logic-app-resource-definition), eventuele [verbindings bron definities](#connection-resource-definitions)en andere bronnen die uw logische app nodig heeft voor de implementatie.
+Uw sjabloon heeft een `resources` -object, een matrix die definities bevat voor elke resource die u wilt maken en implementeren in azure, zoals de [resource definitie van de logische app](#logic-app-resource-definition), de [definities van verbindings bronnen](#connection-resource-definitions)en andere bronnen die uw logische app nodig heeft voor implementatie.
 
 ```json
 {
@@ -264,6 +264,22 @@ Uw sjabloon heeft een `resources` -object. Dit is een matrix die definities beva
 
 > [!NOTE]
 > Sjablonen kunnen resource definities bevatten voor meerdere Logic apps. Zorg er dus voor dat alle logische app-resources dezelfde Azure-resource groep opgeven. Wanneer u de sjabloon implementeert in een Azure-resource groep met behulp van Visual Studio, wordt u gevraagd welke logische app u wilt openen. Het is ook mogelijk dat uw Azure-resource groep-project meer dan één sjabloon bevat. Zorg er dus voor dat u het juiste parameter bestand selecteert wanneer u hierom wordt gevraagd.
+
+<a name="view-resource-definitions"></a>
+
+### <a name="view-resource-definitions"></a>Resource definities weer geven
+
+Als u de resource definities voor alle resources in een Azure-resource groep wilt weer geven, downloadt u de [logische app van Azure in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md). Dit is de eenvoudigste manier om een geldige sjabloon voor een logische app met para meters te maken die het meest geschikt is voor implementatie, of volg deze stappen in de Azure portal:
+
+1. Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Portal](https://portal.azure.com).
+
+1. Zoek de Azure-resource groep die uw logische app, verbindingen en andere resources bevat.
+
+1. Selecteer **overzicht**op de werk balk van de resource groep en selecteer vervolgens alle resources in de resource groep.
+
+1. Selecteer op de werk balk van de resource groep onder **instellingen**de optie **sjabloon exporteren**.
+
+   In de portal worden de definities weer gegeven voor de resources die u hebt geselecteerd. Zie voor meer informatie [het exporteren van één en meerdere resources naar een sjabloon in azure Portal](../azure-resource-manager/templates/export-template-portal.md).
 
 Zie de volgende onderwerpen voor algemene informatie over sjabloon bronnen en hun kenmerken:
 
@@ -514,7 +530,7 @@ In deze voorbeeld sjabloon ziet u hoe u deze taken kunt volt ooien door zo nodig
 }
 ```
 
-**Parameter bestand**
+**Parameterbestand**
 
 ```json
 {
@@ -750,7 +766,7 @@ Voor een verbindings parameter die gevoelige informatie, wacht woorden, toegangs
 
 Hier volgt een voor beeld waarin de account naam en toegangs sleutel voor een Azure Blob Storage-verbinding worden geboden:
 
-**Parameter bestand**
+**Parameterbestand**
 
 ```json
 {

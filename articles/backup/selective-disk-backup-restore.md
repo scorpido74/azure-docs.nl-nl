@@ -3,16 +3,20 @@ title: Back-up en herstel van selectieve schijven voor virtuele Azure-machines
 description: In dit artikel vindt u informatie over selectieve back-ups en herstel met behulp van de back-upoplossing van Azure virtual machine.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: e61014a4fde7bfce316671ff0b081ff7bc2205a5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: references_regions
+ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535367"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566230"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Back-up en herstel van selectieve schijven voor virtuele Azure-machines
 
 Azure Backup biedt ondersteuning voor het maken van een back-up van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing voor VM'S. Nu kunt u, met behulp van de functies voor het maken en herstellen van selectieve schijven, een back-up maken van een subset van de gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat alleen de schijven die zijn opgenomen in de back-upbewerking. Hierdoor kunt u tijdens de herstel bewerking een subset van schijven herstellen die zijn hersteld vanaf het opgegeven herstel punt. Dit is van toepassing op beide herstel bewerkingen van moment opnamen en de kluis.
+
+>[!NOTE]
+>Het maken van back-ups en herstellen van selectieve schijven voor virtuele Azure-machines is in alle regio's open bare preview.
 
 ## <a name="scenarios"></a>Scenario's
 

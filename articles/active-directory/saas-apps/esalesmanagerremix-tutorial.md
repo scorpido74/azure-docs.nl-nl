@@ -2,26 +2,21 @@
 title: 'Zelf studie: integratie Azure Active Directory met E Sales Manager Remix | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en E Sales Manager Remix.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202393"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555386"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integreren met E Sales Manager Remix
 
@@ -33,7 +28,7 @@ Door Azure AD te integreren met E Sales Manager Remix, profiteert u van de volge
 - U kunt uw gebruikers in staat stellen om automatisch te worden aangemeld bij E Sales Manager Remix (eenmalige aanmelding of SSO) met hun Azure AD-accounts.
 - U kunt uw accounts vanaf één locatie beheren, de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](../manage-apps/what-is-single-sign-on.md) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -61,7 +56,7 @@ Het scenario dat in deze zelf studie wordt beschreven, bestaat uit twee belang r
 ## <a name="add-e-sales-manager-remix-from-the-gallery"></a>E Sales Manager Remix toevoegen vanuit de galerie
 Als u de integratie van Azure AD wilt configureren met E Sales Manager Remix, voegt u E Sales Manager Remix van de galerie toe aan uw lijst met beheerde SaaS-apps door het volgende te doen:
 
-1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster **Azure Active Directory**. 
+1. Selecteer **Azure Active Directory**in het linkerdeel venster van de [Azure Portal](https://portal.azure.com). 
 
     ![De knop Azure Active Directory][1]
 
@@ -166,7 +161,7 @@ Schakel eenmalige aanmelding voor Azure AD in het Azure Portal en configureer ee
 
     f. Plak in het vak **ID-provider aanmeldings-URL** de service-URL voor eenmalige SAML-aanmelding die u eerder hebt gekopieerd in de Azure Portal.
 
-    bijvoorbeeld Plak in het vak **Afmeldings-URL van de identiteits provider** de waarde voor de afmeldings-URL die u eerder hebt gekopieerd in de Azure Portal.
+    g. Plak in het vak **Afmeldings-URL van de identiteits provider** de waarde voor de afmeldings-URL die u eerder hebt gekopieerd in de Azure Portal.
 
     h. Selecteer **instelling voltooid**.
 

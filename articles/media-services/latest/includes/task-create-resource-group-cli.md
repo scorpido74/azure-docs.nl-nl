@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI
-ms.openlocfilehash: f42509390c3ca850162c804b45f132bfe30bde22
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
-ms.translationtype: HT
+ms.openlocfilehash: d567a4f7d9b9429887d6396cb2b03dfc34c6ac93
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539112"
+ms.locfileid: "88602570"
 ---
 <!-- Create a resource group -->
 
-Geef in de volgende opdracht de id van het Azure-abonnement op dat u wilt gebruiken voor het Media Services-account. U kunt een lijst met abonnementen bekijken waartoe u toegang hebt door naar [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) te gaan.
+Gebruik de volgende opdracht om een resource groep te maken. Selecteer de geografische regio die wordt gebruikt om de media-en meta gegevens records voor uw Media Services-account op te slaan. Deze regio wordt gebruikt om uw media te verwerken en te streamen.
 
 ```azurecli
-az account set --subscription mySubscriptionId
+az group create --name amsResourceGroup --location westus2
 ```

@@ -2,24 +2,29 @@
 title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
 ms.topic: conceptual
-ms.date: 07/29/2020
-ms.openlocfilehash: a5c12f9f9177c4495a82ced2b3c7d0c5edcdd78e
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 08/18/2020
+ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262786"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585322"
 ---
-# <a name="back-up-and-restore-encrypted-azure-vm"></a>Back-up en herstel van versleutelde Azure VM
+# <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Back-up en herstel van versleutelde virtuele Azure-machines
 
-In dit artikel wordt beschreven hoe u back-ups maakt van Windows of Linux Azure virtual machines (Vm's) met versleutelde schijven met behulp van de [Azure backup](backup-overview.md) -service.
+In dit artikel wordt beschreven hoe u back-ups maakt van Windows of Linux Azure virtual machines (Vm's) met versleutelde schijven met behulp van de [Azure backup](backup-overview.md) -service. Zie [versleuteling van back-ups van virtuele Azure-machines](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups)voor meer informatie.
 
-Als u meer wilt weten over de werking van Azure Backup interactie met Azure-Vm's voordat u begint, controleert u deze bronnen:
+## <a name="encryption-using-platform-managed-keys"></a>Versleuteling met door het platform beheerde sleutels
 
-- [Bekijk](backup-architecture.md#architecture-built-in-azure-vm-backup) de Azure VM-back-uparchitectuur.
-- [Meer informatie over](backup-azure-vms-introduction.md) Azure VM-back-up en de uitbrei ding Azure Backup.
+Standaard worden alle schijven in uw virtuele machines automatisch versleuteld met behulp van door het systeem beheerde sleutels (PMK) die gebruikmaken van [opslag service versleuteling](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). U kunt een back-up maken van deze virtuele machines met behulp van Azure Backup zonder specifieke acties die nodig zijn om versleuteling aan uw end te ondersteunen. [Zie dit artikel](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)voor meer informatie over versleuteling met door het platform beheerde sleutels.
 
-## <a name="encryption-support"></a>Ondersteuning voor versleuteling
+![Versleutelde schijven](./media/backup-encryption/encrypted-disks.png)
+
+## <a name="encryption-using-customer-managed-keys"></a>Versleuteling met door de klant beheerde sleutels
+
+Wanneer u schijven versleutelt met aangepaste sleutels (CMK), wordt de sleutel die wordt gebruikt voor het versleutelen van de schijven opgeslagen in de Azure Key Vault en door u beheerd. Storage Service Encryption (SSE) met CMK wijkt af van de versleuteling van Azure Disk Encryption (ADE). ADE maakt gebruik van de versleutelings hulpprogramma's van het besturings systeem. Met SSE worden gegevens in de opslag service versleuteld, zodat u elk besturings systeem of installatie kopieën voor uw virtuele machines kunt gebruiken. Zie [dit artikel](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)voor meer informatie over het versleutelen van Managed disks met door de klant beheerde sleutels.
+
+## <a name="encryption-support-using-ade"></a>Ondersteuning voor versleuteling met behulp van ADE
 
 Azure Backup ondersteunt back-ups van virtuele Azure-machines waarvan het besturings systeem/de gegevens schijven zijn versleuteld met Azure Disk Encryption (ADE). ADE gebruikt BitLocker voor versleuteling van Windows-Vm's en de DM-cryptografie functie voor Linux Vm's. ADE kan worden geïntegreerd met Azure Key Vault voor het beheren van sleutels en geheimen voor het versleutelen van schijven. Key Vault Key Encryption Keys (KEKs) kunnen worden gebruikt om een extra beveiligingslaag toe te voegen, versleuteling van versleutelings geheimen te versleutelen voordat u ze naar Key Vault schrijft.
 
@@ -119,11 +124,6 @@ Machtigingen instellen:
 1. Selecteer **toegangs**beleid toegangs  >  **beleid toevoegen**.
 
     ![Toegangs beleid toevoegen](./media/backup-azure-vms-encryption/add-access-policy.png)
-
-1. Selecteer **Principal selecteren**en typ **back-upbeheer**.
-1. Selecteer **back-upbeheer service**  >  **selecteren**.
-
-    ![Back-upservice selecteren](./media/backup-azure-vms-encryption/select-backup-service.png)
 
 1. Selecteer in **toegangs beleid**  >  **configureren via sjabloon (optioneel)** **Azure backup**.
     - De vereiste machtigingen zijn vooraf ingevuld voor **sleutel machtigingen** en **geheime machtigingen**.
