@@ -1,6 +1,6 @@
 ---
 title: 'Azure PowerShell-voorbeeldscript: een back-up maken van een service en deze herstellen | Microsoft Docs'
-description: 'Azure PowerShell-voorbeeldscript: een back-up maken van een service en deze herstellen'
+description: Ontdek hoe u een back-up kunt maken van het service-exemplaar van API Management en dit kunt herstellen. Bekijk een voorbeeldscript en extra beschikbare resources.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 1c56aefb7b30026d1676e8a782fe2f6d394bd1ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d80a63b1a52d1ed7750d1a025eb8f4cd9f254a94
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008974"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851066"
 ---
 # <a name="backup-and-restore-service"></a>Een back-up maken van een service en deze herstellen
 
-Dit voorbeeld laat in dit artikel zien hoe u een back-up maakt van het service-exemplaar van API Management en deze herstelt. 
+Het voorbeeldscript in dit artikel laat zien hoe u een back-up kunt maken van het service-exemplaar van API Management en dit kunt herstellen. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van Azure PowerShell-script - VPN Gateway maken | Microsoft Docs
-description: Maak een VPN-gateway met PowerShell.
+description: Meer informatie over het gebruik van een PowerShell-script voor het maken van een virtueel netwerk, een netwerksubnet en van een op route gebaseerde VPN-gateway.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 1531bf7fdb2ec23be49f5a31145e3d8c2487aedc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1fc8339b3d5d5f02611c750e8016c2fc3df1d8a3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086992"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035345"
 ---
 # <a name="create-a-vpn-gateway-with-powershell"></a>Een VPN-gateway maken met PowerShell
 

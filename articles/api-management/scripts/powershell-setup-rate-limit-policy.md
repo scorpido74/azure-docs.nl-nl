@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van PowerShell-script - beleid voor frequentielimiet instellen | Microsoft Docs
-description: Azure PowerShell-voorbeeldscript - beleid voor frequentielimiet instellen
+description: Ontdek hoe u met Azure PowerShell beleid voor frequentielimieten instelt. Bekijk een voorbeeldscript en extra beschikbare resources.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,22 +12,22 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 991a9fd9fa0717c97a549d371ca47c5b389d1a27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40bbd520eb265b70f95c6b365b590727af8ea144
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008724"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851287"
 ---
 # <a name="set-up-rate-limit-policy"></a>Beleid voor frequentielimiet instellen
 
-Met dit voorbeeldscript stelt u het beleid in voor frequentielimiet. 
+Met dit voorbeeldscript stelt u het beleid in voor frequentielimieten. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u PowerShell lokaal wilt installeren en gebruiken, is voor deze zelfstudie versie 1.0 of hoger van de Azure PowerShell-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u PowerShell lokaal wilt installeren en gebruiken, wordt voor deze zelfstudie moduleversie 1.0 of hoger van Azure PowerShell vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 

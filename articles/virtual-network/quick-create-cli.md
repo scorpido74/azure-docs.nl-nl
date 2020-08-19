@@ -14,17 +14,17 @@ ms.workload: infrastructure
 ms.date: 01/22/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5421ea73d13683948baa1cff828cb8422668ed6d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1feae201738a560c4cdb56f703c4af9a38af86d1
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489551"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056785"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Quickstart: Een virtueel netwerk maken met Azure CLI
 
 Met een virtueel netwerk kunnen Azure-resources, zoals virtuele machines, privé met elkaar en met internet communiceren. In deze snelstart leert u hoe u een virtueel netwerk maakt. Nadat u een virtueel netwerk hebt gemaakt, implementeert u twee virtuele machines in het virtuele netwerk. Vervolgens maakt u verbinding met de virtuele machines via internet en is er privécommunicatie via het nieuwe virtuele netwerk mogelijk.
-
+## <a name="prerequisites"></a>Vereisten
 Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -127,6 +127,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een standaard virtueel netwerk en twee virtuele machines gemaakt. U hebt met één virtuele machine verbinding gemaakt via internet en er is er privécommunicatie tussen de twee virtuele machines geweest. Zie [Een virtueel netwerk beheren](manage-virtual-network.md) voor meer informatie over instellingen voor virtuele netwerken.
-
-Azure staat onbeperkte privécommunicatie tussen virtuele machines toe. Daarentegen zijn standaard alleen inkomende verbindingen met extern bureaublad met Windows-VM's via internet toegestaan. Ga naar de zelfstudie [Netwerkverkeer filteren](tutorial-filter-network-traffic.md) voor meer informatie over het configureren van verschillende typen VM-netwerkcommunicatie.
+In deze snelstart hebt u een standaard virtueel netwerk en twee virtuele machines gemaakt. U hebt met één virtuele machine verbinding gemaakt via internet en er is er privécommunicatie tussen de twee virtuele machines geweest.
+Azure staat onbeperkte privécommunicatie tussen virtuele machines toe. Daarentegen zijn standaard alleen inkomende verbindingen met extern bureaublad met Windows-VM's via internet toegestaan. Ga verder naar het volgende artikel voor meer informatie over het configureren van verschillende typen VM-netwerkcommunicatie:
+> [!div class="nextstepaction"]
+> [Netwerkverkeer filteren](tutorial-filter-network-traffic.md)

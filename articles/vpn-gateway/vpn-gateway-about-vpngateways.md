@@ -1,6 +1,6 @@
 ---
 title: Over Azure VPN Gateway
-description: Meer informatie over wat een VPN-gateway is en de manieren waarop u een VPN-gateway kunt gebruiken om verbinding te maken met virtuele netwerken in Azure. Inclusief IPsec/IKE-site-naar-site cross-premises- en VNet-naar-VNet-oplossingen, alsmede punt-naar-site-VPN.
+description: Meer informatie over wat een VPN Gateway is en hoe u een VPN Gateway kunt gebruiken om verbinding te maken met de virtuele VPN-netwerken Site-naar-site (IPsec IKE), VNet-naar-VNet en Punt-naar-site.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ec008fa97c75f5ae7c79e2b98efc9005df1014f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c195fd3c6d3de518a70070327de5c12d5d210b6a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300044"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036875"
 ---
 # <a name="what-is-vpn-gateway"></a>Wat is VPN Gateway?
 

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: een CI/CD-pijp lijn maken voor python met Azure DevOps starter'
-description: DevOps Starter maakt het eenvoudig om aan de slag te gaan met Azure. Hiermee kunt u een web-app voor een Azure-service van uw keuze starten in slechts enkele stappen.
+title: 'Quickstart: Een CI/CD-pijplijn voor Python maken met Azure DevOps Starter'
+description: Met DevOps Starter kunt u eenvoudig aan de slag met Azure. Hiermee kunt u een web-app voor een Azure-service van uw keuze starten in slechts enkele stappen.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -12,40 +12,40 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: e148d50af39e69750c3024d98abc833e40654705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 891b8a5a844691d46c121c254e04b73f2b8c2d62
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558743"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872732"
 ---
-# <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Een CI/CD-pijp lijn maken voor python met Azure DevOps starter
+# <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Een CI/CD-pijplijn voor Python maken met Azure DevOps Starter
 
-In deze Quick Start gebruikt u de vereenvoudigde Azure DevOps starter-ervaring voor het instellen van een doorlopende integratie (CI) en een continue levering (CD)-pijp lijn voor uw python-app in azure-pijp lijnen. U kunt Azure DevOps starter gebruiken voor het instellen van alles wat u nodig hebt voor het ontwikkelen, implementeren en bewaken van uw app. 
+In deze quickstart gebruikt u de vereenvoudigde Azure DevOps Starter-ervaring om een pijplijn voor continue integratie (CI) en continue levering (CD) voor uw Python-app in te stellen in Azure Pipelines. Gebruik Azure DevOps Starter om alles in te stellen wat u nodig hebt voor de ontwikkeling, implementatie en bewaking van uw app. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 
-- Een [Azure DevOps](https://azure.microsoft.com/services/devops/) -account en-organisatie.
+- Een [Azure DevOps](https://azure.microsoft.com/services/devops/)-account en organisatie.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. DevOps Starter maakt ook Azure-resources in het Azure-abonnement van uw keuze.
+In DevOps Starter wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Met DevOps Starter worden ook Azure-resources gemaakt in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
-1. Typ **DevOps starter**in het zoekvak en selecteer. Klik op **toevoegen** om een nieuw item te maken.
+1. Typ **DevOps Starter** in het zoekvak en selecteer dit vervolgens. Klik op **Toevoegen** om een nieuw exemplaar te maken.
 
-    ![Het DevOps-starter dash board](_img/azure-devops-starter-aks/search-devops-starter.png) 
+    ![Het DevOps Starter-dashboard](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Een voorbeeldtoepassing en Azure-service selecteren
 
 1. Selecteer de Python-voorbeeldtoepassing. De Python-voorbeelden omvatten een keuze uit verschillende toepassingsframeworks.
 
-1. Het standaardvoorbeeldframework is Django. Laat de standaardinstelling ongewijzigd en selecteer vervolgens **Volgende**. Web App for Containers is het standaardimplementatiedoel. Het toepassingsframework dat u eerder hebt gekozen, bepaalt welk type implementatiedoel hier beschikbaar is voor de Azure-service. 
+1. Het standaardvoorbeeldframework is Django. Laat de standaardinstelling ongewijzigd en selecteer **Volgende**. Web App for Containers is het standaardimplementatiedoel. Het toepassingsframework, dat u eerder hebt gekozen, bepaalt welk type implementatiedoel hier beschikbaar is voor de Azure-service. 
 
-3. Laat de standaardservice ongewijzigd en selecteer vervolgens **Volgende**.
+3. Laat de standaardservice ongewijzigd en selecteer **Volgende**.
  
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps en een Azure-abonnement configureren 
 
@@ -55,7 +55,7 @@ DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe
 
     1. Selecteer uw Azure-abonnement en locatie, voer een naam in voor de toepassing en selecteer **Gereed**.  
     
-     Na enkele minuten wordt het start dashboard weer gegeven in de Azure Portal. Er wordt een voorbeeldtoepassing ingesteld in een opslagplaats in uw Azure DevOps-organisatie, er wordt een build uitgevoerd en de toepassing wordt geïmplementeerd in Azure. Dit dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en toepassing in Azure.  
+     Na enkele minuten wordt het Starter-dashboard weergegeven in Azure Portal. Er wordt een voorbeeldtoepassing ingesteld in een opslagplaats in uw Azure DevOps-organisatie, er wordt een build uitgevoerd en de toepassing wordt geïmplementeerd in Azure. Dit dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en toepassing in Azure.  
     
 2. Selecteer **Bladeren** om de actieve toepassing weer te geven.
 
@@ -65,9 +65,9 @@ DevOps Starter maakt een CI/CD-pijp lijn in azure-pijp lijnen. U kunt een nieuwe
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Codewijzigingen doorvoeren en CI/CD uitvoeren
 
-DevOps Starter maakt een Git-opslag plaats in azure opslag plaatsen of GitHub. Ga als volgt te werk om de opslagplaats weer te geven en codewijzigingen aan de brengen in de toepassing: 
+Met DevOps Starter wordt een Git-opslagplaats gemaakt in Azure Repos of in GitHub. Ga als volgt te werk om de opslagplaats weer te geven en codewijzigingen aan de brengen in de toepassing: 
 
-1. Selecteer aan de linkerkant van het DevOps starter-dash board de koppeling voor uw hoofd vertakking. Met deze koppeling opent u een weergave in de zojuist gemaakte Git-opslagplaats.
+1. Selecteer aan de linkerkant van het DevOps Starter-dashboard de koppeling voor uw hoofdvertakking. Met deze koppeling opent u een weergave in de zojuist gemaakte Git-opslagplaats.
 
 1. Als u de kloon-URL van de opslagplaats wilt weergeven, selecteert u **Klonen** in de rechterbovenhoek van de browser. U kunt uw Git-opslagplaats klonen in uw favoriete IDE. In de volgende stappen kunt u de webbrowser gebruiken om codewijzigingen rechtstreeks aan te brengen en door te voeren in de master branch.
 
@@ -75,17 +75,17 @@ DevOps Starter maakt een Git-opslag plaats in azure opslag plaatsen of GitHub. G
 
 1. Selecteer **Bewerken** en breng een wijziging aan in de tekst. Wijzig bijvoorbeeld een stuk tekst voor een van de div-tags.
 
-1. Selecteer **Doorvoeren** en sla vervolgens de wijzigingen op.
+1. Selecteer **Doorvoeren** en sla de wijzigingen op.
 
-1. Ga in uw browser naar het DevOps-starter-dash board. Als het goed is, ziet u nu dat er een build wordt gemaakt. De zojuist aangebrachte wijzigingen worden automatisch gebouwd en geïmplementeerd via een CI/CD-pijplijn.
+1. Ga in de browser naar het DevOps Starter-dashboard. Als het goed is, ziet u nu dat er een build wordt gemaakt. De zojuist aangebrachte wijzigingen worden automatisch gebouwd en geïmplementeerd via een CI/CD-pijplijn.
 
 ## <a name="examine-the-cicd-pipeline"></a>De CI/CD-pijplijn onderzoeken
 
-In de vorige stap heeft DevOps starter automatisch een volledige CI/CD-pijp lijn geconfigureerd. U kunt de pijplijn verkennen en zo nodig aanpassen. Ga als volgt te werk om vertrouwd te raken met de build- en release-pijplijnen:
+In de vorige stap werd in DevOps Starter automatisch een volledige CI/CD-pijplijn geconfigureerd. U kunt de pijplijn verkennen en zo nodig aanpassen. Ga als volgt te werk om vertrouwd te raken met de build- en release-pijplijnen:
 
-1. Selecteer boven aan het DevOps-starter-dash board **Build pijp lijnen**. Op een tabblad in de browser wordt de build-pijplijn voor het nieuwe project weergegeven.
+1. Selecteer boven in het DevOps Starter-dashboard de optie **Build-pijplijnen**. Op een tabblad in de browser wordt de build-pijplijn voor het nieuwe project weergegeven.
 
-1. Wijs het veld **status** aan en selecteer vervolgens het **weglatings teken** (...). In een menu worden verschillende opties weer gegeven, zoals het in de wachtrij plaatsen van een nieuwe build, het onderbreken van een build en het bewerken van de build-pijp lijn.
+1. Wijs het veld **Status** aan en selecteer het **beletselteken** (...). Er wordt een menu met verschillende opties weergegeven, bijvoorbeeld om een nieuwe build in de wachtrij te plaatsen, een build te onderbreken of de build-pijplijn te bewerken.
 
 1. Selecteer **Bewerken**.
 
@@ -93,11 +93,11 @@ In de vorige stap heeft DevOps starter automatisch een volledige CI/CD-pijp lijn
 
 1. Selecteer bovenaan de build-pijplijn de naam van de build-pijplijn.
 
-1. Wijzig de naam van de build-pijplijn in een meer beschrijvende naam. Selecteer **Opslaan en wachtrij** en selecteer vervolgens **Opslaan**.
+1. Wijzig de naam van de build-pijplijn in een gebruiksvriendelijkere naam. Selecteer **Opslaan en wachtrij** en selecteer **Opslaan**.
 
-1. Selecteer onder de naam van de build-pipeline de optie **Geschiedenis**. U ziet een audittrail van recente wijzigingen voor de build. In Azure DevOps worden alle wijzigingen in de build-pijplijn bijgehouden en krijgt u de mogelijkheid om versies te vergelijken.
+1. Selecteer onder de naam van de build-pijplijn de optie **Geschiedenis**. U ziet een audittrail van recente wijzigingen voor de build. In Azure DevOps worden alle wijzigingen in de build-pijplijn bijgehouden en krijgt u de mogelijkheid om versies te vergelijken.
 
-1. Selecteer **Triggers**. DevOps Starter maakt automatisch een CI-trigger en elke door voering aan de opslag plaats start een nieuwe build. U kunt desgewenst kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
+1. Selecteer **Triggers**. In DevOps Starter wordt automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart. U kunt desgewenst kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
 
 1. Selecteer **Retentie**. Afhankelijk van het scenario kunt u beleidsregels opgeven om een bepaald aantal builds te behouden of te verwijderen.
 
@@ -122,11 +122,11 @@ In de vorige stap heeft DevOps starter automatisch een volledige CI/CD-pijp lijn
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt Azure App Service en gerelateerde resources verwijderen wanneer u ze niet meer nodig hebt. Gebruik de **verwijderings** functionaliteit op het DevOps-starter-dash board.
+U kunt Azure App Service en gerelateerde resources verwijderen wanneer u ze niet meer nodig hebt. Gebruik hiervoor de functionaliteit **Verwijderen** op het DevOps Starter-dashboard.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De build en pijplijnen zijn automatisch gemaakt toen u het CI/CD-proces configureerde. U kunt deze build- en release-pipelines desgewenst wijzigen in overeenstemming met de behoeften van uw team. Voor meer informatie over de CI/CD-pijplijn, zie:
+De build en pijplijnen zijn automatisch gemaakt toen u het CI/CD-proces configureerde. U kunt deze build- en release-pipelines desgewenst wijzigen in overeenstemming met de behoeften van uw team. Voor meer informatie over de CI/CD-pijplijn raadpleegt u:
 
 > [!div class="nextstepaction"]
 > [CD-proces aanpassen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

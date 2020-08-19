@@ -146,7 +146,11 @@
         - name: Overzicht
           href: backup-azure-sql-database.md
         - name: Backup
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: Back-up maken van meerdere SQL Server-VM's uit de kluis
+              href: backup-sql-server-database-azure-vms.md
+            - name: Back-up maken van een SQL Server-VM uit het VM-deelvenster
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: Herstellen
           href: restore-sql-database-azure-vm.md
         - name: Beheren

@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Een toepassing registreren'
 titleSuffix: Azure AD B2C
-description: Meer informatie over het registreren van een webtoepassing in Azure Active Directory B2C met behulp van de Azure-portal.
+description: Volg deze zelfstudie voor meer informatie over het registreren van een webtoepassing in Azure Active Directory B2C met behulp van Azure Portal.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0f3ecb918aa1f830edeafbe57b365441e1e534f4
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 0fd062bd0e58ecc714e4f450c93384e47e743b65
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169326"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922010"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Zelfstudie: Een webtoepassing registreren in Azure Active Directory B2C
 

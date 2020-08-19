@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht verzenden naar de REST API met behulp van python-Bing Entity Search'
+title: 'Quickstart: Een zoekaanvraag verzenden naar de REST API met behulp van Python - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om met Python een aanvraag te verzenden naar de REST-API van Bing Entiteiten zoeken en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -10,29 +10,29 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: tracking-python
-ms.openlocfilehash: c535683323428dadedeaefd5f76f4387569f9427
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.custom: devx-track-python
+ms.openlocfilehash: 53f9badbb15c788606390921cb8ef62495c19839
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604130"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852749"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Snelstartgids: een zoek opdracht verzenden naar het Bing Entity Search REST API met behulp van python
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Quickstart: Een zoekaanvraag verzenden naar de REST-API van Bing Entiteiten zoeken met behulp van Python
 
-Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De bron code voor dit voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
+Gebruik deze quickstart om voor het eerst de Bing Entiteiten zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py).
 
-Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python](https://www.python.org/downloads/) 2. x of 3. x
+* [Python](https://www.python.org/downloads/) 2.x of 3.x
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en voeg de volgende importinstructies toe. Maak variabelen voor uw abonnements sleutel, eind punt, markt en zoek query. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+1. Maak een nieuw Python-bestand in uw favoriete IDE of editor en voeg de volgende importinstructies toe. Maak variabelen voor uw abonnementssleutel, eindpunt, markt en zoekquery. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
     ```python
     import http.client, urllib.parse
@@ -45,7 +45,7 @@ Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice di
     query = 'italian restaurants near me'
     ```
 
-2. Maak een aanvraag-URL door uw marktvariabele toe te voegen aan de parameter `?mkt=`. URL: Codeer uw query en voeg deze toe aan de `&q=` para meter. 
+2. Maak een aanvraag-URL door uw marktvariabele toe te voegen aan de parameter `?mkt=`. Codeer uw query als URL en voeg deze toe aan de parameter `&q=`. 
     
     ```python
     params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
@@ -55,9 +55,9 @@ Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice di
 
 1. Maak de functie `get_suggestions()`. 
 
-2. In deze functie voegt u uw abonnements sleutel toe aan een woorden lijst met `Ocp-Apim-Subscription-Key` als sleutel.
+2. Voeg in deze functie uw abonnementssleutel toe aan een woordenlijst met `Ocp-Apim-Subscription-Key` als sleutel.
 
-3. Gebruiken `http.client.HTTPSConnection()` om een HTTPS-client object te maken. Verstuur een `GET`-aanvraag met `request()`, met daarin het pad en de parameters en de headergegevens.
+3. Gebruik `http.client.HTTPSConnection()` om een HTTPS-clientobject te maken. Verstuur een `GET`-aanvraag met `request()`, met daarin het pad en de parameters en de headergegevens.
 
 4. Sla het antwoord op met `getresponse()` en retourneer `response.read()`.
 
@@ -70,7 +70,7 @@ Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice di
     return response.read()
    ```
 
-5. Roep `get_suggestions()` het JSON-antwoord aan en druk het af.
+5. Roep `get_suggestions()` aan en druk het JSON-antwoord af.
 
     ```python
     result = get_suggestions ()
@@ -145,7 +145,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md)
+> [Een web-app van één pagina maken](../tutorial-bing-entities-search-single-page-app.md).
 
 * [Wat is de Bing Entiteiten zoeken-API?](../search-the-web.md)
-* [Bing entiteiten zoeken-API verwijzing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Naslaghandleiding Bing Entiteiten zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

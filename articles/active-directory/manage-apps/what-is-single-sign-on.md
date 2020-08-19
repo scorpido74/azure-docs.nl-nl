@@ -1,6 +1,6 @@
 ---
 title: Wat is eenmalige aanmelding van Azure?
-description: Lees hoe u een methode voor eenmalige aanmelding kiest bij het configureren van toepassingen in Azure Active Directory (Azure AD). Gebruik eenmalige aanmelding zodat gebruikers geen wachtwoorden hoeven te onthouden voor elke toepassing en om het accountbeheer te vereenvoudigen.
+description: Meer informatie over de werking van eenmalige aanmelding (SSO) met Azure Active Directory. Wanneer u SSO gebruikt, hoeven gebruikers geen wachtwoorden te onthouden voor elke toepassing. Wanneer u SSO gebruikt, kunt u tevens het accountbeheer vereenvoudigen.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,23 +11,39 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b641437b7e15334d59c544b95d5be0f20f2a8df
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6f3c6351a7bcd87ae25dfae53cb17f634bbef146
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387537"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121507"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Wat is eenmalige aanmelding?
 
-Eenmalige aanmelding zorgt voor een betere beveiliging en meer gebruiksgemak wanneer gebruikers zich aanmelden bij toepassingen in Azure Active Directory (Azure AD). In dit artikel worden de methoden voor eenmalige aanmelding beschreven en op basis daarvan kunt u de geschiktste methode kiezen wanneer u uw toepassingen configureert.
+Eenmalige aanmelding betekent dat een gebruiker zich niet hoeft aan te melden bij elke toepassing die deze gebruikt. De gebruiker meldt zich eenmaal aan en deze referenties worden ook gebruikt voor andere apps.
+
+Als u een eindgebruiker bent, geeft u waarschijnlijk niet veel om SSO-gegevens. U wilt alleen de apps gebruiken waarmee u productief kunt zijn zonder steeds uw wachtwoord te hoeven invoeren. U kunt uw apps vinden op: https://myapps.microsoft.com.
+ 
+Als u een beheerder of IT-professional bent, leest u verder voor meer informatie over de implementatie van SSO in Azure.
+
+## <a name="single-sign-on-basics"></a>Basisbeginselen voor eenmalige aanmelding
+Eenmalige aanmelding biedt een grote stap vooruit in de manier waarop gebruikers zich aanmelden en toepassingen gebruiken. Verificatiesystemen op basis van eenmalige aanmelding worden vaak 'moderne verificatie' genoemd. Bekijk deze video als u wilt weten waarmee u eenmalige aanmelding mogelijk maakt.
+> [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
+
+## <a name="understanding-where-an-app-is-hosted"></a>Meer informatie over waar een app wordt gehost
+De wijze waarop u eenmalige aanmelding voor een app implementeert, heeft veel te maken met de locatie waar de app wordt gehost. Het hosten is van belang vanwege de manier waarop netwerkverkeer wordt doorgestuurd om toegang te krijgen tot de app. Als een app wordt gehost en geopend via uw lokale netwerk, een zogeheten on-premises app, is het niet nodig dat gebruikers toegang hebben tot internet om de app te gebruiken. Als de app ergens anders wordt gehost, een zogeheten in de cloud gehoste app, moeten gebruikers toegang hebben tot internet om de app te kunnen gebruiken.
+
+> [!TIP]
+> Cloud-apps worden ook wel SaaS-apps (Software as a Service) genoemd. 
+
+> [!TIP]
+> De termen 'cloud' en 'internet' worden vaak door elkaar gebruikt. De reden hiervoor heeft te maken met netwerkdiagrammen. Het is gebruikelijk om grote computernetwerken in een diagram aan te duiden met een cloudvorm, omdat het niet haalbaar is om elk onderdeel te tekenen. Internet is het meest bekende netwerk en daarom is het eenvoudig om de termen door elkaar te gebruiken. Elk computernetwerk kan echter een cloud worden genoemd.
+
+## <a name="choosing-a-single-sign-on-method"></a>Een methode voor eenmalige aanmelding kiezen
 
 - **Bij eenmalige aanmelding** melden gebruikers zich eenmaal aan met één account om toegang te krijgen tot apparaten die lid zijn van een domein, bedrijfsresources, SaaS-toepassingen (Software as a Service) en web-toepassingen. Nadat de gebruiker zich heeft aangemeld, kan deze toepassingen starten vanuit de Office 365-portal of het MyApps-toegangsvenster van Azure AD. Beheerders kunnen het beheer van gebruikersaccounts centraal regelen en automatisch gebruikerstoegang tot toepassingen toevoegen of verwijderen op basis van groepslidmaatschap.
 
 - **Zonder eenmalige aanmelding** moeten gebruikers toepassingsspecifieke wachtwoorden onthouden en zich bij elke toepassing aanmelden. IT-medewerkers moeten gebruikersaccounts maken en bijwerken voor elke toepassing, zoals Office 365, Box en Salesforce. Gebruikers moeten hun wachtwoorden onthouden en zijn meer tijd kwijt omdat ze zich bij elke toepassing moeten aanmelden.
-
-## <a name="choosing-a-single-sign-on-method"></a>Een methode voor eenmalige aanmelding kiezen
 
 Er zijn verschillende manieren om een toepassing te configureren voor eenmalige aanmelding. Het kiezen van een methode voor eenmalige aanmelding is afhankelijk van de wijze waarop de toepassing is geconfigureerd voor verificatie.
 
@@ -42,7 +58,7 @@ In de volgende tabel vindt u een overzicht van de methoden voor eenmalige aanmel
 
 | Methode voor eenmalige aanmelding | Toepassingstypen | Wanneer gebruikt u dit? |
 | :------ | :------- | :----- |
-| [OpenID Connect en OAuth](#openid-connect-and-oauth) | alleen cloud | Gebruik OpenID Connect en OAuth bij het ontwikkelen van een nieuwe toepassing. Dit protocol vereenvoudigt de configuratie van toepassingen, biedt gebruiksvriendelijke SDK's en stelt uw toepassing in staat om MS Graph te gebruiken.
+| [OpenID Connect en OAuth](#openid-connect-and-oauth) | cloud en on-premises | Gebruik OpenID Connect en OAuth bij het ontwikkelen van een nieuwe toepassing. Dit protocol vereenvoudigt de configuratie van toepassingen, biedt gebruiksvriendelijke SDK's en stelt uw toepassing in staat om MS Graph te gebruiken.
 | [SAML](#saml-sso) | cloud en on-premises | Kies indien mogelijk SAML voor bestaande toepassingen die niet gebruikmaken van OpenID Connect of OAuth. SAML kan worden gebruikt voor toepassingen waarbij de verificatie wordt uitgevoerd aan de hand van een van de SAML-protocollen.|
 | [Op basis van een wachtwoord](#password-based-sso) | cloud en on-premises | Kies voor eenmalige aanmelding op basis van een wachtwoord wanneer de verificatie voor de toepassing wordt uitgevoerd met een gebruikersnaam en wachtwoord. Bij eenmalige aanmelding op basis van een wachtwoord is beveiligde toepassingswachtwoordopslag en -herhaling mogelijk door middel van een webbrowserextensie of mobiele app. Deze methode maakt gebruik van de bestaande aanmeldingsprocedure van de toepassing, maar stelt een beheerder in staat om de wachtwoorden te beheren. |
 | [Gekoppeld](#linked-sign-on) | cloud en on-premises | Kies voor een gekoppelde aanmelding wanneer de toepassing is geconfigureerd voor eenmalige aanmelding in een andere id-providerservice. Bij deze optie wordt geen eenmalige aanmelding toegevoegd aan de toepassing. Voor de toepassing is echter mogelijk al een eenmalige aanmelding geïmplementeerd met behulp van een andere service, zoals Active Directory Federation Services.|
@@ -197,10 +213,5 @@ Omdat deze werkwijze mogelijk wordt gemaakt door een samenwerking tussen Azure A
 
 Zie [Azure Active Directory-edities](../fundamentals/active-directory-whatis.md) voor meer informatie.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="next-steps"></a>Volgende stappen
 * [Quickstartreeks over toepassingsbeheer](view-applications-portal.md)
-* [Tutorials for integrating SaaS applications with Azure Active Directory](../saas-apps/tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
-* [Eenmalige aanmelding op basis van een wachtwoord configureren](configure-password-single-sign-on-non-gallery-applications.md)
-* [Een gekoppelde aanmelding configureren](configure-linked-sign-on.md)
-* [Inleiding tot het beheren van de toegang tot toepassingen](what-is-access-management.md)
-* Downloadkoppeling: [Een implementatieplan voor eenmalige aanmelding](https://aka.ms/SSODeploymentPlan).
