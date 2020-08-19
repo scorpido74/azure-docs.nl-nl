@@ -2,25 +2,21 @@
 title: 'Zelf studie: uw wervings software configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts om te voldoen aan de wervings software.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f427fb75cfaeda79b037c327992e4ad482a7e689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5165c3f03d51403a978ad3574306bc27d931e1d7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058328"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536879"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Zelf studie: coontmoeting software configureren voor het automatisch inrichten van gebruikers
 
@@ -84,7 +80,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Voor het configureren van automatische gebruikers inrichting voor het ontmoeten van wervings software in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -102,7 +98,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. In het gedeelte **beheerders referenties** voert u de **Tenant-URL** en het **geheime token** in van uw mede ontmoet het account van de wervings software, zoals beschreven in stap 6.
 
-6. Navigeer in de [beheer console van de wervings software](https://app.comeet.co/)op basis van **>-instellingen > verificatie > Microsoft Azure**en kopieer het **geheime token voor de waarde van het bedrijf** naar het veld **geheime token** in azure AD.
+6. Navigeer in de [beheer console van de wervings software](https://app.comeet.co/)op basis van  **>-instellingen > verificatie > Microsoft Azure**en kopieer het **geheime token voor de waarde van het bedrijf** naar het veld **geheime token** in azure AD.
 
     ![Tegemoetkomen aan wervings software inrichten](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
