@@ -1,27 +1,26 @@
 ---
-title: 'Power shell-voor beeld: uitgebreide informatie voor Application proxy-apps weer geven'
-description: Power shell-voor beeld met een lijst met alle Azure Active Directory (Azure AD) toepassings proxy toepassingen, samen met de toepassings-ID (AppId), de naam (DisplayName), de externe URL (ExternalUrl), de interne URL (InternalUrl) en het verificatie type (ExternalAuthenticationType).
+title: 'PowerShell-voorbeeld: uitgebreide informatie voor toepassingsproxy-apps vermelden'
+description: PowerShell-voorbeeld waarin alle Azure Active Directory (Azure AD)-toepassingsproxytoepassingen worden vermeld, samen met de toepassings-id (AppId), de naam (DisplayName), de externe URL (ExternalUrl), de interne URL (InternalUrl) en het verificatietype (ExternalAuthenticationType).
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58de8c081dbb0323a2d9638777e29d879172072
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 8994abc61e27a9d7c7097aacab92282f0c47c989
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482138"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506888"
 ---
-# <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Alle toepassings proxy-apps en lijst uitgebreide informatie ophalen
+# <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Alle toepassingsproxy-apps ophalen en uitgebreide informatie vermelden
 
-In dit voor beeld van een Power shell-script wordt informatie weer gegeven over alle Azure Active Directory-toepassings proxy toepassingen (Azure AD), waaronder de toepassings-ID (AppId), de naam (DisplayName), de externe URL (ExternalUrl), de interne URL (InternalUrl) en het verificatie type (ExternalAuthenticationType).
+In dit PowerShell-voorbeeld wordt informatie over alle Azure Active Directory (Azure AD)-toepassingsproxytoepassingen vermeld, inclusief de toepassings-id (AppId), de naam (DisplayName), de externe URL (ExternalUrl), de interne URL (InternalUrl) en het verificatietype (ExternalAuthenticationType).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +28,7 @@ In dit voor beeld van een Power shell-script wordt informatie weer gegeven over 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [Preview-versie van de AzureAD v2 Power shell voor Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
+Voor dit voorbeeld is de [AzureAD V2 PowerShell voor Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [AzureAD V2 PowerShell voor Graph-module (preview)](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -39,12 +38,12 @@ Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://doc
 
 | Opdracht | Opmerkingen |
 |---|---|
-|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hiermee wordt een Service-Principal opgehaald. |
-|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Hiermee haalt u een Azure AD-toepassing op. |
-|[Get-AzureADApplicationProxyApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Hiermee haalt u een toepassing op die is geconfigureerd voor toepassings proxy in azure AD. |
+|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hiermee wordt een service-principal opgehaald. |
+|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Hiermee wordt een Azure AD-toepassing opgehaald. |
+|[Get-AzureADApplicationProxyApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Hiermee wordt een toepassing opgehaald die is geconfigureerd voor een toepassingsproxy in Azure AD. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van Azure AD Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)voor meer informatie over de Azure AD Power shell-module.
+Zie het [overzicht van de Azure PowerShell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0) voor meer informatie over de Azure AD PowerShell-module.
 
-Raadpleeg voor andere Power shell-voor beelden voor toepassings proxy [Azure AD Power shell-voor beelden voor azure AD-toepassingsproxy](../application-proxy-powershell-samples.md).
+Zie [Azure AD PowerShell-voorbeelden voor de Azure AD-toepassingsproxy](../application-proxy-powershell-samples.md) voor andere PowerShell-voorbeelden voor de toepassingsproxy.

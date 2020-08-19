@@ -1,6 +1,6 @@
 ---
-title: Windows Server 2008-servers migreren naar Azure met Azure Site Recovery
-description: In dit artikel wordt beschreven hoe u on-premises Windows Server 2008-machines naar Azure migreert met behulp van Azure Site Recovery.
+title: Windows Server 2008-servers migreren naar Azure met Azure Migrate/Site Recovery
+description: In dit artikel wordt beschreven hoe u on-premises Windows Server 2008-machines naar Azure migreert en wordt Azure Migrate aanbevolen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503817"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845558"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Servers waarop Windows Server 2008 wordt uitgevoerd, naar Azure migreren
 
@@ -31,9 +31,11 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="migrate-with-azure-migrate"></a>Migreren met Azure Migrate
 
-We raden aan dat u machines naar Azure migreert met behulp van de service [Azure Migrate](../migrate/migrate-services-overview.md). Azure Migrate biedt een gecentraliseerde hub voor de evaluatie en migratie van on-premises machines naar Azure met behulp van Azure Migrate, andere Azure-services en hulpprogramma’s van derden. Azure Site Recovery moet alleen worden gebruikt voor herstel na noodgevallen, niet voor migratie.
+We raden aan dat u machines naar Azure migreert met behulp van de service [Azure Migrate](../migrate/migrate-services-overview.md). 
 
-Azure Migrate ondersteunt de migratie van servers met Windows Server 2008.
+- Azure Migrate is speciaal ontworpen voor servermigratie.
+- Azure Migrate biedt een centrale hub voor detectie, evaluatie en migratie van on-premises machines naar Azure. Azure Site Recovery moet alleen worden gebruikt voor herstel na noodgevallen, niet voor migratie.
+- Azure Migrate ondersteunt de migratie van servers met Windows Server 2008.
 
 
 ## <a name="migrate-with-site-recovery"></a>Migreren met Site Recovery

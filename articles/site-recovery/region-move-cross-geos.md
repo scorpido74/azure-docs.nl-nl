@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ca6e7fa6e02ff6c5e49185c2fb02f9bc5a16d9c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134019"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927297"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure-VM's verplaatsen tussen Azure Government-regio's en openbare regio's 
 
@@ -53,7 +53,7 @@ In deze zelfstudie leert u hoe u virtuele Azure-machines tussen Azure Government
 Zorg ervoor dat uw Azure-account machtigingen heeft voor de replicatie van virtuele machines naar Azure.
 
 - Bekijk de [machtigingen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) die u nodig hebt om machines naar Azure te repliceren.
-- Controleer en wijzig [op rollen gebaseerde toegangsmachtigingen](../role-based-access-control/role-assignments-portal.md). 
+- Controleer en wijzig de machtigingen voor [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). 
 
 ### <a name="set-up-an-azure-network"></a>Een Azure-netwerk instellen
 

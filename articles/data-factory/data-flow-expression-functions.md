@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 43623e6841c3776e6e83453ad9cb47549fc16021
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b48fc6ad448b829bb399c151d3f1507c804ad471
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170289"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605105"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Gegevens transformatie expressies in gegevens stroom toewijzen
 
@@ -101,21 +101,13 @@ ___
 <code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
 Selecteer een matrix met kolommen op naam in de stroom. U kunt een optionele naam van een stream door geven als het tweede argument. Als er meerdere overeenkomsten zijn, wordt de eerste overeenkomst geretourneerd. Als er geen overeenkomsten zijn voor een kolom, is de gehele uitvoer een NULL-waarde. De geretourneerde waarde vereist een type conversie functies (ToDate, toString,...).  Kolom namen die bekend zijn tijdens de ontwerp fase moeten worden geadresseerd op basis van de naam. Berekende invoer waarden worden niet ondersteund, maar u kunt parameter vervangingen gebruiken.
 * ``toString(byNames(['parent', 'child']))``
-* ````
 * ``byNames(['parent']) ? string``
-* ````
 * ``toLong(byNames(['income']))``
-* ````
 * ``byNames(['income']) ? long``
-* ````
 * ``toBoolean(byNames(['foster']))``
-* ````
 * ``toLong(byNames($debtCols))``
-* ````
 * ``toString(byNames(['a Column']))``
-* ````
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
-* ````
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
 ### <code>byPosition</code>
@@ -354,7 +346,7 @@ De duur in milliseconden voor het aantal uren.
 ___
 ### <code>iif</code>
 <code><b>iif(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, [<i>&lt;false_expression&gt;</i> : any]) => any</b></code><br/><br/>
-Op basis van een voor waarde geldt één waarde of de andere. Als de andere waarde niet wordt opgegeven, wordt deze als NULL beschouwd. Beide waarden moeten compatibel zijn (numeriek, teken reeks...).* ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
+Op basis van een voor waarde geldt één waarde of de andere. Als de andere waarde niet wordt opgegeven, wordt deze als NULL beschouwd. Beide waarden moeten compatibel zijn (numeriek, teken reeks...). * ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
 * ``iif(10 > 30, 'dumbo', 'gumbo') -> 'gumbo'``  
 * ``iif(month(toDate('2018-12-01')) == 12, 345.12, 102.67) -> 345.12``  
 ___
@@ -505,7 +497,7 @@ ___
 Links wordt de teken reeks met de opgegeven opvulling gematteerd tot deze een bepaalde lengte heeft. Als de teken reeks gelijk is aan of groter is dan de lengte, wordt deze met de lengte bijgesneden.  
 * ``lpad('dumbo', 10, '-') -> '-----dumbo'``  
 * ``lpad('dumbo', 4, '-') -> 'dumb'``  
-*' ' lpad (' Dumbo ', 8, ' <> ')-> ' <><dumbo'``  
+* ' ' lpad (' Dumbo ', 8, ' <> ')-> ' <><dumbo'``  
 ___
 ### <code> LTrim</code>
 <code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
@@ -968,7 +960,7 @@ ___
 <code><b>year(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 Hiermee wordt de jaar waarde van een datum opgehaald.  
 * ``year(toDate('2012-8-8')) -> 2012``  
-##Statistische functies de volgende functies zijn alleen beschikbaar voor aggregatie, draaiing, UNPIVOT en Window-trans formaties.
+## Statistische functies de volgende functies zijn alleen beschikbaar voor aggregatie, draaiing, UNPIVOT en Window-trans formaties.
 ___
 ### <code>avg</code>
 <code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -1161,7 +1153,7 @@ ___
 <code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 Op basis van een criterium haalt de onzuivere variantie van een kolom op.  
 * ``varianceSampleIf(region == 'West', sales)``  
-##Venster functies de volgende functies zijn alleen beschikbaar in Window-trans formaties.
+## Venster functies de volgende functies zijn alleen beschikbaar in Window-trans formaties.
 ___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>

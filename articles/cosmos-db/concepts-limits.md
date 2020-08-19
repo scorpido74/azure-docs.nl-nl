@@ -5,37 +5,40 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: 296f212e26d066613c54f7d69802654e5f7b5090
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/19/2020
+ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391839"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605764"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
 Dit artikel bevat een overzicht van de standaardquota's die worden aangeboden aan verschillende resources in de Azure Cosmos DB.
 
-## <a name="storage-and-throughput"></a>Opslag en door Voer
+## <a name="storage-and-database-operations"></a>Opslag-en database bewerkingen
 
-Nadat u in uw abonnement een Azure Cosmos-account hebt gemaakt, kunt u gegevens in uw account beheren door [data bases, containers en items te maken](databases-containers-items.md). U kunt de door Voer inrichten op container niveau of op database niveau in termen van [aanvraag eenheden (ru/s of RUs)](request-units.md). De volgende tabel bevat de limieten voor opslag en door Voer per container/data base.
+Nadat u in uw abonnement een Azure Cosmos-account hebt gemaakt, kunt u gegevens in uw account beheren door [data bases, containers en items te maken](databases-containers-items.md).
+
+### <a name="provisioned-throughput"></a>Ingerichte doorvoer
+
+U kunt de door Voer inrichten op container niveau of op database niveau in termen van [aanvraag eenheden (ru/s of RUs)](request-units.md). De volgende tabel bevat de limieten voor opslag en door Voer per container/data base.
 
 | Resource | Standaardlimiet |
 | --- | --- |
 | Maximum RUs per container ([ingerichte modus toegewezen door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
 | Maximum RUs per data base ([ingerichte modus voor gedeelde door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
-| Maximum-RUs per (logische) partitie sleutel | 10.000 |
-| Maximale opslag ruimte in alle items per (logische) partitie sleutel| 20 GB |
+| Maximum RUs per (logische) partitie | 10.000 |
+| Maximale opslag ruimte in alle items per (logische) partitie | 20 GB |
 | Maximum aantal afzonderlijke (logische) partitie sleutels | Onbeperkt |
 | Maximale opslag per container | Onbeperkt |
 | Maximale opslag per data base | Onbeperkt |
-| Maximale grootte van bijlagen per account (bijlage functie wordt afgeschreven) | 2 GB |
+| Maximale grootte van bijlagen per account (bijlage functie wordt afgeschaft) | 2 GB |
 | Mini maal RUs vereist per 1 GB | 10 RU/s |
 
 > [!NOTE]
 > Zie [een synthetische partitie sleutel maken](synthetic-partition-keys.md)voor meer informatie over aanbevolen procedures voor het beheren van werk belastingen met partitie sleutels waarvoor hogere limieten vereist zijn voor opslag of door voer.
->
 
 Een Cosmos-container (of een gedeelde doorvoer database) moet een minimale door Voer van 400 RU/s hebben. Naarmate de container groeit, is de mini maal ondersteunde door Voer ook afhankelijk van de volgende factoren:
 
@@ -47,7 +50,6 @@ De huidige en minimale door Voer van een container of een Data Base kunnen worde
 
 > [!NOTE]
 > In sommige gevallen kunt u de door Voer verlagen tot minder dan 10%. Gebruik de API om het exacte minimale RUs per container op te halen.
->
 
 In samen vatting vindt u de minimale ingerichte RU-limieten. 
 
@@ -58,6 +60,18 @@ In samen vatting vindt u de minimale ingerichte RU-limieten.
 | Mini maal RUs per container in een gedeelde doorvoer database | 100 |
 
 Cosmos DB ondersteunt elastisch schalen van door Voer (RUs) per container of Data Base via de Sdk's of portal. Elke container kan synchroon en direct binnen een schaal bereik van 10 tot 100 keer worden geschaald, tussen de minimum-en maximum waarden. Als de aangevraagde doorvoer waarde zich buiten het bereik bevindt, wordt de schaal asynchroon uitgevoerd. Het volt ooien van asynchrone schaling kan minuten tot uren duren, afhankelijk van de gevraagde grootte van door Voer en gegevens opslag in de container.  
+
+### <a name="serverless"></a>Serverloos
+
+Zonder [Server](serverless.md) kunt u uw Azure Cosmos DB-resources op basis van verbruik gebruiken. De volgende tabel geeft een lijst van de limieten voor opslag en door Voer voor maximale snelheid per container/data base.
+
+| Resource | Limiet |
+| --- | --- |
+| Maximum aantal RU/s per container | 5\.000 |
+| Maxi maal aantal RU/s per (logische) partitie | 5\.000 |
+| Maximale opslag ruimte in alle items per (logische) partitie | 20 GB |
+| Maximum aantal afzonderlijke (logische) partitie sleutels | Onbeperkt |
+| Maximale opslag per container | 50 GB |
 
 ## <a name="control-plane-operations"></a>Bewerkingen voor het beheer vlak
 
@@ -75,12 +89,22 @@ Cosmos DB maakt met regel matige tussen pozen automatisch back-ups van uw gegeve
 
 ## <a name="per-account-limits"></a>Limieten per account
 
+### <a name="provisioned-throughput"></a>Ingerichte doorvoer
+
 | Resource | Standaardlimiet |
 | --- | --- |
 | Maximum aantal data bases | Onbeperkt |
 | Maximum aantal containers per data base met gedeelde door Voer |25 |
 | Maximum aantal containers per data base of account met toegewezen door Voer  |onbeperkt |
 | Maximum aantal regio's | Geen limiet (alle Azure-regio's) |
+
+### <a name="serverless"></a>Serverloos
+
+| Resource | Limiet |
+| --- | --- |
+| Maximum aantal data bases | Onbeperkt |
+| Maximum aantal containers per account  | 100 |
+| Maximum aantal regio's | 1 (wille keurige Azure-regio) |
 
 ## <a name="per-container-limits"></a>Limieten per container
 
@@ -89,13 +113,13 @@ Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-container een verzam
 | Resource | Standaardlimiet |
 | --- | --- |
 | Maximale lengte van de data base of container naam | 255 |
-| Maximum aantal opgeslagen procedures per container | 100<sup>*</sup>|
-| Maximum aantal Udf's per container | 1,25<sup>*</sup>|
-| Maximum aantal paden in het indexerings beleid| 100<sup>*</sup>|
-| Maximum aantal unieke sleutels per container|6<sup>*</sup>|
-| Maximum aantal paden per beperking van de unieke sleutel|18<sup>*</sup>|
+| Maximum aantal opgeslagen procedures per container | 100 <sup>*</sup>|
+| Maximum aantal Udf's per container | 1,25 <sup>*</sup>|
+| Maximum aantal paden in het indexerings beleid| 100 <sup>*</sup>|
+| Maximum aantal unieke sleutels per container|6 <sup>*</sup>|
+| Maximum aantal paden per beperking van de unieke sleutel|18 <sup>*</sup>|
 
-<sup>*</sup>U kunt deze limieten per container verhogen door contact op te nemen met de ondersteuning van Azure.
+<sup>*</sup> U kunt deze limieten per container verhogen door contact op te nemen met de ondersteuning van Azure.
 
 ## <a name="per-item-limits"></a>Limieten per item
 
@@ -132,10 +156,10 @@ Cosmos DB gebruikt HMAC voor autorisatie. U kunt een hoofd sleutel of een [bron 
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Maximale verloop tijd van Master token | 15 minuten  |
+| Maximale verloop tijd van Master token | 15 min  |
 | Minimale verloop tijd van bron token | 10 minuten  |
 | Maximale verloop tijd van bron token | standaard 24 uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)|
-| Maximale klok scheefheid voor token autorisatie| 15 minuten |
+| Maximale klok scheefheid voor token autorisatie| 15 min |
 
 Cosmos DB ondersteunt de uitvoering van triggers tijdens het schrijven. De service ondersteunt Maxi maal één pretrigger en één post-trigger per schrijf bewerking. 
 
@@ -149,7 +173,7 @@ Zie het artikel [automatisch schalen](provision-throughput-autoscale.md#autoscal
 | Minimale RU/s waarop het systeem kan worden geschaald | `0.1 * Tmax`|
 | Huidige RU/s waarop het systeem is geschaald  |  `0.1*Tmax <= T <= Tmax`, op basis van gebruik|
 | Mini maal aantal factureer bare RU/s per uur| `0.1 * Tmax` <br></br>Facturering geschiedt per uur, waarbij u wordt gefactureerd voor de hoogste RU/s waarop het systeem is geschaald naar in het uur of, afhankelijk van wat er `0.1*Tmax` hoger is. |
-| Mini maal automatisch schalen Max RU/s voor een container  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)`afgerond op de dichtstbijzijnde 1000 RU/s |
+| Mini maal automatisch schalen Max RU/s voor een container  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` afgerond op de dichtstbijzijnde 1000 RU/s |
 | Mini maal automatisch schalen Max RU/s voor een Data Base  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))`, afgerond op de dichtstbijzijnde 1000 RU/s. <br></br>Opmerking Als uw data base meer dan 25 containers heeft, verhoogt het systeem het minimale automatisch schalen van Maxi maal RU/s met 1000 RU/s per extra container. Als u bijvoorbeeld 30 containers hebt, is de laagste automatisch schaal bare grootte van RU/s die u kunt instellen 9000 RU/s (schalen tussen 900-9000 RU/s).
 
 ## <a name="sql-query-limits"></a>SQL-query limieten
@@ -159,14 +183,14 @@ Cosmos DB biedt ondersteuning voor het uitvoeren van query's op items met [SQL](
 | Resource | Standaardlimiet |
 | --- | --- |
 | Maximale lengte van SQL-query| 256 kB |
-| Maximum aantal JOIN'S per query| 5,0<sup>*</sup>|
-| Maximum aantal Udf's per query| 6<sup>*</sup>|
+| Maximum aantal JOIN'S per query| 5,0 <sup>*</sup>|
+| Maximum aantal Udf's per query| 6 <sup>*</sup>|
 | Maximum aantal punten per veelhoek| 4096 |
 | Maximum aantal opgenomen paden per container| 500 |
 | Maximum aantal uitgesloten paden per container| 500 |
 | Maximum aantal eigenschappen in een samengestelde index| 8 |
 
-<sup>*</sup>U kunt deze limieten voor SQL-query's verhogen door contact op te nemen met de ondersteuning van Azure.
+<sup>*</sup> U kunt deze limieten voor SQL-query's verhogen door contact op te nemen met de ondersteuning van Azure.
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB-API-specifieke limieten
 
@@ -180,7 +204,7 @@ De volgende tabel bevat de limieten die specifiek zijn voor de ondersteuning van
 | Maximale uitvoerings tijd voor MongoDB-bewerkingen| 30s |
 | Time-out voor niet-actieve verbinding voor sluiting verbinding aan server zijde * | 30 minuten |
 
-\*Het is raadzaam dat client toepassingen de time-out voor niet-actieve verbindingen in de stuur programma-instellingen instellen op 2-3 minuten omdat de [standaardtime-out voor Azure LoadBalancer 4 minuten is](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout).  Met deze time-out wordt voor komen dat niet-actieve verbindingen worden gesloten door een tussenliggende load balancer tussen de client computer en Azure Cosmos DB.
+\* Het is raadzaam dat client toepassingen de time-out voor niet-actieve verbindingen in de stuur programma-instellingen instellen op 2-3 minuten omdat de [standaardtime-out voor Azure LoadBalancer 4 minuten is](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout).  Met deze time-out wordt voor komen dat niet-actieve verbindingen worden gesloten door een tussenliggende load balancer tussen de client computer en Azure Cosmos DB.
 
 ## <a name="try-cosmos-db-free-limits"></a>Probeer Cosmos DB gratis limieten
 

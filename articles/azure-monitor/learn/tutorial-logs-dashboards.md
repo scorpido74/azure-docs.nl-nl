@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d38a4ba04529e70ecfd772eef7f60179041f0273
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148256"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927365"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Dashboards van Log Analytics-gegevens maken en delen
 
@@ -54,7 +54,7 @@ Wanneer u een dashboard maakt, is het standaard persoonlijk. Dat betekent dat u 
 
 ![Een nieuw dashboard in Azure-portal delen](media/tutorial-logs-dashboards/log-analytics-share-dashboard.png) 
 
-U wordt gevraagd een abonnement en resourcegroep te kiezen waarnaar uw dashboard zal worden gepubliceerd. Voor het gemak helpt de publicatie-ervaring van de portal u naar een patroon waar u dashboards kunt plaatsen in een resourcegroep die **dashboards** wordt genoemd.  Controleer het geselecteerde abonnement en klik op **Publiceren**.  Toegang tot de informatie die wordt weergegeven in het dashboard wordt geregeld met op [Azure-resources gebaseerd toegangsbeheer](../../role-based-access-control/role-assignments-portal.md).   
+U wordt gevraagd een abonnement en resourcegroep te kiezen waarnaar uw dashboard zal worden gepubliceerd. Voor het gemak helpt de publicatie-ervaring van de portal u naar een patroon waar u dashboards kunt plaatsen in een resourcegroep die **dashboards** wordt genoemd.  Controleer het geselecteerde abonnement en klik op **Publiceren**.  Toegang tot de informatie die wordt weergegeven in het dashboard wordt geregeld met [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).   
 
 ## <a name="visualize-a-log-query"></a>Een logboekquery visualiseren
 [Log Analytics](../log-query/get-started-portal.md) is een speciale portal die wordt gebruikt voor het werken met logboekquery's en de bijbehorende resultaten. Voorbeelden van functies zijn de mogelijkheid om een query van meerdere regels te bewerken, code selectief uit te voeren, contextafhankelijke Intellisense en slimme analyse. In deze zelfstudie gebruikt u Log Analytics om een grafische prestatieweergave te maken, slaat u deze op voor gebruik in een toekomstige query en maakt u de weergave vast aan het gedeelde dashboard dat u eerder hebt gemaakt.

@@ -4,15 +4,15 @@ description: Meer informatie over de functies datum en tijd van SQL-systeem in A
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/09/2020
+ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 460abbc0b2a2f277aaeed57c5b938de530696776
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 1ea838224f9d91b000100d5fa9308289619fd963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224948"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605190"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Datum-en tijd functies (Azure Cosmos DB)
 
@@ -20,7 +20,7 @@ Met de functies datum en tijd kunt u datum-en tijds tempel bewerkingen uitvoeren
 
 ## <a name="functions-to-obtain-the-date-and-time"></a>Functies voor het verkrijgen van de datum en tijd
 
-Met de volgende scalaire functies kunt u de huidige UTC-datum en-tijd in twee formulieren ophalen: een teken reeks die voldoet aan de ISO 8601-notatie of een numerieke tijds tempel waarvan de waarde de UNIX-epoche is in milliseconden:
+Met de volgende scalaire functies kunt u de huidige UTC-datum en-tijd in drie formulieren ophalen: een teken reeks die voldoet aan de ISO 8601-indeling, een numerieke tijds tempel waarvan de waarde het aantal milliseconden is verstreken sinds de UNIX-epoche, of numerieke maat streepjes waarvan de waarde het aantal 100 nano seconden Ticks is dat is verstreken sinds de UNIX-epoche :
 
 * [GetCurrentDateTime](sql-query-getcurrentdatetime.md)
 * [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)
@@ -28,13 +28,16 @@ Met de volgende scalaire functies kunt u de huidige UTC-datum en-tijd in twee fo
 
 ## <a name="functions-to-work-with-datetime-values"></a>Functies voor het werken met datum/tijd-waarden
 
-Met de volgende functies kunt u eenvoudig datum-en tijd waarden bewerken:
+Met de volgende functies kunt u eenvoudig waarden voor DateTime, Time Stamp en Ticks bewerken:
 
 * [DateTimeAdd](sql-query-datetimeadd.md)
 * [DateTimeDiff](sql-query-datetimediff.md)
 * [DateTimeFromParts](sql-query-datetimefromparts.md)
 * [DateTimePart](sql-query-datetimepart.md)
 * [DateTimeToTicks](sql-query-datetimetoticks.md)
+* [DateTimeToTimestamp](sql-query-datetimetotimestamp.md)
+* [TicksToDateTime](sql-query-tickstodatetime.md)
+* [TimestampToDateTime](sql-query-timestamptodatetime.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

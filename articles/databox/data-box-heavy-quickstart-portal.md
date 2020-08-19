@@ -1,6 +1,6 @@
 ---
 title: Quickstart voor Microsoft Azure Data Box Heavy| Microsoft Docs
-description: Leer hoe u uw Azure Data Box Heavy snel kunt implementeren in de Azure-portal
+description: In deze quickstart leert u hoe u de Azure Data Box Heavy implementeert met behulp van de Azure-portal, met inbegrip van het bekabelen en configureren van de Data Box Heavy en het kopiëren van gegevens die u naar Azure wilt uploaden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9d007f4fa8721214a7c97595fa297ef44199119f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199131"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920786"
 ---
 ::: zone target = "docs"
 

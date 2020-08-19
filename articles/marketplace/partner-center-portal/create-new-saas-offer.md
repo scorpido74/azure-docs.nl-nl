@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166719"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604741"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Een SaaS-aanbieding maken in de commerciële Marketplace
 
@@ -30,7 +30,7 @@ Als u wilt beginnen met het maken van SaaS-aanbiedingen (Software as a Service) 
    ![Illustreert het navigatie menu.](./media/new-offer-saas.png)
 
 > [!NOTE]
-> Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
+> Nadat een aanbieding is gepubliceerd, worden wijzigingen die zijn aangebracht in het partner centrum alleen weer gegeven in online winkels na het opnieuw publiceren van de aanbieding. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
 
 ## <a name="new-offer"></a>Nieuwe aanbieding
 
@@ -185,7 +185,7 @@ Uw aanbieding wordt gepubliceerd op AppSource of Azure Marketplace, afhankelijk 
 - Ten minste één en Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
 - Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie van toepassing is op uw aanbieding, selecteert u **niet van toepassing**.
 
-Bekijk de volledige lijst met categorieën en subcategorieën die van toepassing zijn op elke winkel in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md).
+Bekijk de volledige lijst met categorieën en subcategorieën die van toepassing zijn op elke online winkel in [Aanbevolen procedures](../gtm-offer-listing-best-practices.md)voor aanbiedingen.
 
 ### <a name="industries"></a>Branches
 
@@ -269,11 +269,11 @@ Dit veld is vereist.
 
 - **Privacybeleid** (vereist): koppeling naar het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw app voldoet aan de wetten en voor schriften van de privacy en voor het bieden van een geldig privacybeleid
 - **Software** voor het CSP-programma (optioneel): Geef een koppeling op naar marketing materiaal als u ervoor kiest uw aanbieding uit te breiden naar het [CSP-programma (Cloud Solution Provider)](../cloud-solution-providers.md) . CSP breidt uw aanbieding uit naar een breder scala aan gekwalificeerde klanten door CSP-partners in staat te stellen om uw aanbieding te bundelen, te verhandelen en te verkopen. Deze wederverkopers moeten toegang hebben tot materialen om uw aanbieding in de handel te brengen. Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie.
-- **Nuttige koppelingen** (optioneel): optionele aanvullende online documenten over uw app of gerelateerde services die worden vermeld door een **titel** en **URL**op te geven. Voeg extra nuttige koppelingen toe door op **+ een URL toevoegen**te klikken.
+- **Nuttige koppelingen** (optioneel): optionele aanvullende online documenten over uw app of gerelateerde services die worden vermeld door een **titel**  en  **URL**op te geven. Voeg extra nuttige koppelingen toe door op  **+ een URL toevoegen**te klikken.
 
 #### <a name="contact-information"></a>Contactgegevens
 
-- **Contact personen** : voor elke contact persoon van de klant geeft u de **naam**, het **telefoon nummer**en het **e-mail** adres van de werk nemer op (deze worden *niet* openbaar weer gegeven). Een **ondersteunings-URL** is vereist voor de **contact persoon van de ondersteunings** groep (dit *wordt* openbaar weer gegeven).
+- **Contact personen** : voor elke contact persoon van de klant geeft u de  **naam**, het  **telefoon nummer**en het **e-mail** adres van de werk nemer op (deze worden *niet* openbaar weer gegeven). Een **ondersteunings-URL**  is vereist voor de **contact persoon van de ondersteunings** groep (dit *wordt* openbaar weer gegeven).
 
   - **Ondersteunings contact** (vereist) – voor algemene ondersteunings vragen.
   - Technisch **contact** (vereist) – voor technische vragen.
@@ -282,14 +282,14 @@ Dit veld is vereist.
 #### <a name="files-and-images"></a>Bestanden en installatie kopieën
 
 - **Documenten** (vereist): Voeg gerelateerde marketing documenten toe voor uw aanbieding, in PDF-indeling, van ten minste één en Maxi maal drie documenten per aanbieding.
-- **Afbeeldingen** : logo afbeeldingen uploaden in PNG-indeling:
+- **Afbeeldingen**  : logo afbeeldingen uploaden in PNG-indeling:
 
   - **Klein** (48 x 48 pixels, vereist)
   - **Gemiddeld** (90 x 90 pixels, vereist)
   - **Groot** (216 x 216 pixels, vereist)
   - **Breed** (255 x 115 pixels) (optioneel)
 
-   Deze drie logo grootten worden op verschillende locaties in de winkel gebruikt:
+   Deze drie logo grootten worden op verschillende plaatsen in de online winkels gebruikt:
 
    -   Het kleine logo (48 x 48 pixels) wordt weer gegeven in de zoek resultaten voor Azure Marketplace en op de pagina Microsoft AppSource hoofd pagina en zoek resultaten. 
    -   Het gemiddelde logo (90 x 90 pixels) wordt weer gegeven wanneer u een nieuwe resource maakt in Microsoft Azure.

@@ -1,6 +1,6 @@
 ---
 title: Zelfstudie voor het terugsturen van de Azure Data Box Heavy | Microsoft Docs
-description: Lees hoe u uw Azure Data Box Heavy Microsoft verzendt
+description: In deze zelfstudie leert u hoe u de Azure Data Box Heavy kunt retourneren, inclusief het voorbereiden op verzending, het verzenden van de Data Box Heavy, het verifiëren van gegevensupload en het wissen van gegevens.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3aedfed980a61ea6718a02a188ff88d4941026d9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa4df7119763e835cf62e67512105b748c7e2265
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199181"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921007"
 ---
 ::: zone target = "docs"
 

@@ -1,20 +1,20 @@
 ---
 title: 'Zelfstudie: Een winkelzoekertoepassing maken met behulp van Azure Maps | Microsoft Azure Maps'
-description: In deze zelfstudie leert u hoe u een winkelzoekerwebtoepassing maakt met behulp van Microsoft Azure Maps Web SDK.
+description: Informatie over het maken van web-apps voor winkelzoekers. Gebruik de Azure Maps Web SDK om een webpagina te maken, een query op de zoekservice uit te voeren en de resultaten op een kaart weer te geven.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/14/2020
+ms.date: 08/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4bb0a4a0a621881fe1d9a59585476baa2ce05f8e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1ec4dbb1ce55919fda6c73d198100db34f5f57ea
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289558"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121252"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Zelfstudie: Een winkelzoeker maken met behulp van Azure Maps
 
@@ -31,25 +31,24 @@ Deze zelfstudie leidt u door het proces voor het maken van een eenvoudige winkel
 
 <a id="Intro"></a>
 
-Spring vooruit naar het [live-winkelzoekervoorbeeld](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) of de [broncode](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator). 
+Spring vooruit naar het [live-winkelzoekervoorbeeld](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) of de [broncode](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor u de stappen in deze zelfstudie uitvoert, moet u eerst een Azure Maps-account maken en uw primaire sleutel (abonnementssleutel) ophalen. Volg de instructies in [Een account maken](quick-demo-map-app.md#create-an-azure-maps-account) om een abonnement voor een Azure Maps-account te maken met prijscategorie S1, en volg de stappen in [Primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
+1. [Een Azure Maps-account met de prijscategorie S1 maken](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel.
+
+Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 ## <a name="design"></a>Ontwerp
 
 Voordat u in de code duikt, is het een goed idee om met een ontwerp te beginnen. Uw winkelzoeker kan zo eenvoudig of zo ingewikkeld zijn als u wilt. In deze zelfstudie maken we een eenvoudige winkelzoeker. We nemen onderweg enkele tips op om u te helpen sommige functies uit te breiden als u dat wilt. We maken een winkelzoeker voor het fictieve bedrijf Contoso Coffee. De volgende afbeelding toont een draadmodel van de algemene indeling van de winkelzoeker die we in deze zelfstudie bouwen:
 
-<center>
-
-![Draadmodel van een winkelzoekertoepassing voor locaties van Contoso Coffee-bars](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![Draadmodel van een winkelzoekertoepassing voor locaties van Contoso Coffee-bars](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)
 
 Om de bruikbaarheid van deze winkelzoeker te maximaliseren, gebruiken we een responsieve lay-out die wordt aangepast wanneer de schermbreedte van een gebruiker kleiner is dan 700 pixels. Een responsieve lay-out maakt het gemakkelijk om de winkelzoeker op een klein scherm te gebruiken, zoals op een mobiel apparaat. Hier volgt een draadmodel van een lay-out voor een klein scherm:  
 
-<center>
-
-![Draadmodel van de Contoso Coffee-winkelzoekertoepassing op een mobiel apparaat](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![Draadmodel van de Contoso Coffee-winkelzoekertoepassing op een mobiel apparaat](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</
 
 De draadmodellen tonen een redelijk eenvoudige toepassing. De toepassing heeft een zoekvak, een lijst met winkels in de buurt en een kaart met een aantal markeringen, zoals symbolen. En er wordt een pop-upvenster weergegeven met aanvullende informatie wanneer de gebruiker een markering selecteert. Meer specifiek zijn hier de functies die we in deze zelfstudie inbouwen in de winkelzoeker:
 
@@ -71,45 +70,36 @@ De draadmodellen tonen een redelijk eenvoudige toepassing. De toepassing heeft e
 
 Voordat we een winkelzoektoepassing ontwikkelen, moeten we een gegevensset maken van de winkels die we willen weergeven op de kaart. In deze zelfstudie gebruiken we een gegevensset voor een fictieve koffiebar met de naam Contoso Coffee. De gegevensset voor deze eenvoudige winkelzoeker wordt beheerd in een Excel-werkmap. De gegevensset bevat 10.213 locaties van Contoso Coffee-koffiebars, verdeeld over negen landen/regio's: de Verenigde Staten, Canada, het Verenigd Koninkrijk, Frankrijk, Duitsland, Italië, Nederland, Denemarken en Spanje. Hier volgt een schermopname van hoe de gegevens eruitzien:
 
-<center>
+![Schermopname van de gegevens voor de winkelzoeker in een Excel-werkmap](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)
 
-![Schermopname van de gegevens voor de winkelzoeker in een Excel-werkmap](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
-
-U kunt [de Excel-werkmap downloaden](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
+U kunt [de Excel-werkmap downloaden](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data).
 
 Als we de schermopname van de gegevens bekijken, zien we het volgende:
-    
+
 * Locatiegegevens worden opgeslagen in de kolommen **AddressLine** (adresregel), **City** (plaats), **Municipality** (gemeente), **AdminDivision** (staat/provincie), **PostCode** (postcode) en **Country** (land).  
 * De kolommen **Latitude** (breedtegraad) en **Longitude** (lengtegraad) bevatten de coördinaten van elke locatie van een Contoso Coffee-koffiebar. Als u geen coördinatengegevens hebt, kunt u de zoekservices van Azure Maps gebruiken om de coördinaten van de locaties te bepalen.
 * Enkele extra kolommen bevatten metagegevens met betrekking tot de koffiebars: een telefoonnummer, booleaanse kolommen en winkelopenings- en sluitingstijden in 24-uurs notatie. De Booleaanse kolommen zijn voor WiFi-beschikbaarheid en toegankelijkheid voor rolstoelgebruikers. U kunt uw eigen kolommen maken met metagegevens die relevanter zijn voor uw locatiegegevens.
 
-> [!Note]
-> In Azure Maps worden gegevens weergegeven in de sferische Mercator-projectie EPSG:3857, maar worden de gegevens gelezen in EPSG:4325 dat gebruikmaakt van de datum WGS84. 
+> [!NOTE]
+> In Azure Maps worden gegevens weergegeven in de sferische Mercator-projectie EPSG:3857, maar worden de gegevens gelezen in EPSG:4325 dat gebruikmaakt van de datum WGS84.
 
-Er zijn veel manieren om de gegevensset in de toepassing beschikbaar te maken. Eén aanpak is om de gegevens in een database te laden en een webservice beschikbaar te maken die de gegevens opvraagt. U kunt de resultaten vervolgens naar de browser van de gebruiker verzenden. Deze optie is ideaal voor grote gegevenssets of voor gegevenssets die regelmatig worden bijgewerkt. Voor deze optie is echter meer ontwikkelingswerk vereist en heeft hogere kosten. 
+Er zijn veel manieren om de gegevensset in de toepassing beschikbaar te maken. Eén aanpak is om de gegevens in een database te laden en een webservice beschikbaar te maken die de gegevens opvraagt. U kunt de resultaten vervolgens naar de browser van de gebruiker verzenden. Deze optie is ideaal voor grote gegevenssets of voor gegevenssets die regelmatig worden bijgewerkt. Voor deze optie is echter meer ontwikkelingswerk vereist en heeft hogere kosten.
 
 Een andere benadering is om deze dataset om te zetten in een bestand met platte tekst dat de browser gemakkelijk kan parseren. Het bestand zelf kan worden gehost bij de rest van de toepassing. Deze optie houdt het eenvoudig, maar het is alleen een goede optie voor kleinere gegevenssets, omdat de gebruiker alle gegevens downloadt. We gebruiken het platte-tekstbestand voor deze gegevensset, omdat de bestandsgrootte kleiner is dan 1 MB.  
 
-Als u de werkmap wilt converteren naar een platte-tekstbestand, slaat u de werkmap op als een door tabs gescheiden bestand. De kolommen worden gescheiden door tabtekens, zodat de kolommen gemakkelijk te parseren zijn in onze code. U zou de CSV-indeling kunnen gebruiken (bestand met door komma's gescheiden waarden), maar voor die optie is meer parseringslogica nodig. Elk veld dat door komma's wordt gescheiden, zou dan worden omgeven door aanhalingstekens. Om deze gegevens in Excel te exporteren als een door tabs gescheiden bestand, selecteert u **Opslaan als**. Selecteer in de vervolgkeuzelijst **Opslaan als** de optie **Tekst (tab is scheidingsteken) (*.txt)** . Noem het bestand *ContosoCoffee.txt*. 
+Als u de werkmap wilt converteren naar een platte-tekstbestand, slaat u de werkmap op als een door tabs gescheiden bestand. De kolommen worden gescheiden door tabtekens, zodat de kolommen gemakkelijk te parseren zijn in onze code. U zou de CSV-indeling kunnen gebruiken (bestand met door komma's gescheiden waarden), maar voor die optie is meer parseringslogica nodig. Elk veld dat door komma's wordt gescheiden, zou dan worden omgeven door aanhalingstekens. Om deze gegevens in Excel te exporteren als een door tabs gescheiden bestand, selecteert u **Opslaan als**. Selecteer in de vervolgkeuzelijst **Opslaan als** de optie **Tekst (tab is scheidingsteken) (*.txt)** . Noem het bestand *ContosoCoffee.txt*.
 
-<center>
-
-![Schermopname van het dialoogvenster Opslaan als](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+![Schermopname van het dialoogvenster Opslaan als](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
 Als u het bestand in Kladblok opent, ziet dit eruit als in de volgende afbeelding:
 
-<center>
-
-![Schermafbeelding van een Kladblok-bestand met een door tabs gescheiden gegevensset](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
-
+![Schermafbeelding van een Kladblok-bestand met een door tabs gescheiden gegevensset](./media/tutorial-create-store-locator/StoreDataTabFile.png)
 
 ## <a name="set-up-the-project"></a>Het project instellen
 
 Voor het maken van het project kunt u [Visual Studio](https://visualstudio.microsoft.com) of de code-editor van uw keuze gebruiken. Maak in de projectmap drie bestanden: *index.html*, *index.css* en *index.js*. Deze bestanden definiëren de lay-out, stijl en logica voor de toepassing. Maak een map met de naam *data* en voeg *ContosoCoffee.txt* toe aan deze map. Maak een andere map met de naam *images* (afbeeldingen). We gebruiken 10 afbeeldingen in deze toepassing, voor pictogrammen, knoppen en markeringen op de kaart. U kunt [deze afbeeldingen downloaden](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Uw projectmap zou er nu uit moeten zien als in de volgende afbeelding:
 
-<center>
-
-![Schermafbeelding van de projectmap Simple Store Locator](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+![Schermafbeelding van de projectmap Simple Store Locator](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>De gebruikersinterface maken
 
@@ -922,23 +912,17 @@ Nu is alles ingesteld in de gebruikersinterface. We moeten nog steeds JavaScript
 
 Nu hebt u een volledig functionele winkelzoeker. Open het *index.html*-bestand van de winkelzoeker in een webbrowser. Wanneer de clusters op de kaart worden weergegeven, kunt u naar een locatie zoeken met behulp van het zoekvak, door de knop Mijn locatie te selecteren, door een cluster te selecteren of door in te zoomen op de kaart om afzonderlijke locaties te bekijken.
 
-De eerste keer dat een gebruiker de knop Mijn locatie selecteert, geeft de browser een beveiligingswaarschuwing weer die om toestemming vraagt ​​voor toegang tot de locatie van de gebruiker. Als de gebruiker ermee instemt om zijn/haar locatie te delen, zoomt de kaart in op de locatie van de gebruiker en worden nabijgelegen koffiebars getoond. 
+De eerste keer dat een gebruiker de knop Mijn locatie selecteert, geeft de browser een beveiligingswaarschuwing weer die om toestemming vraagt ​​voor toegang tot de locatie van de gebruiker. Als de gebruiker ermee instemt om zijn/haar locatie te delen, zoomt de kaart in op de locatie van de gebruiker en worden nabijgelegen koffiebars getoond.
 
-<center>
-
-![Schermafbeelding van de vraag van de browser om toegang tot de locatie van de gebruiker](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+![Schermafbeelding van de vraag van de browser om toegang tot de locatie van de gebruiker](./media/tutorial-create-store-locator/GeolocationApiWarning.png)
 
 Wanneer u sterk genoeg inzoomt op een gebied met koffiebarlocaties, worden de clusters gescheiden in afzonderlijke locaties. Selecteer een van de pictogrammen op de kaart of selecteer een item in het zijpaneel om een ​​pop-upvenster te bekijken. In het pop-upvenster wordt informatie weergegeven voor de geselecteerde locatie.
 
-<center>
+![Schermopname van de voltooide winkelzoeker](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)
 
-![Schermopname van de voltooide winkelzoeker](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+Als u het formaat van het browservenster verkleint tot minder dan 700 pixels breed of de toepassing op een mobiel apparaat opent, verandert de lay-out zodat deze beter geschikt is voor kleinere schermen.
 
-Als u het formaat van het browservenster verkleint tot minder dan 700 pixels breed of de toepassing op een mobiel apparaat opent, verandert de lay-out zodat deze beter geschikt is voor kleinere schermen. 
-
-<center>
-
-![Schermopname van de versie van de winkelzoeker voor kleine schermen](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+![Schermopname van de versie van de winkelzoeker voor kleine schermen](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -950,7 +934,7 @@ In dit zelfstudie leert u hoe u een eenvoudige winkelzoeker kunt maken met behul
 > * Geef de gebruiker de mogelijkheid [locaties langs een route te filteren](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
 > * Voeg de mogelijkheid toe om [filters in te stellen](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
 > * Voeg ondersteuning toe voor het opgeven van een aanvankelijke zoekwaarde door een queryreeks te gebruiken. Wanneer u deze optie in uw winkelzoeker opneemt, kunnen gebruikers zoekopdrachten markeren met een bladwijzer en delen. Dit biedt ook een eenvoudige methode waarmee u zoekopdrachten naar deze pagina kunt doorgeven vanaf een andere pagina.  
-> * Implementeer uw winkelzoeker als een [Azure App Service-web-app](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html). 
+> * Implementeer uw winkelzoeker als een [Azure App Service-web-app](https://docs.microsoft.com/azure/app-service/quickstart-html). 
 > * Sla uw gegevens op in een database en zoek naar nabijgelegen locaties. Zie voor meer informatie [SQL Server spatial data types overview](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) (overzicht van ruimtelijke gegevenstypen in SQL Server) en [Query spatial data for the nearest neighbor](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017) (ruimtelijke gegevens opvragen voor de dichtstbijzijnde buren).
 
 > [!div class="nextstepaction"]

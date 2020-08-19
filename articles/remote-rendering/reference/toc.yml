@@ -1,4 +1,4 @@
-- name: Formaten van virtuele machines
+- name: Servergrootten
   href: vm-sizes.md
 - name: Materiaaltoewijzing voor modelindelingen
   href: material-mapping.md

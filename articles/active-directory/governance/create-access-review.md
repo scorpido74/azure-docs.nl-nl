@@ -11,20 +11,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/09/2020
+ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb290106c5ceafe8c636bbeeab38b74ea475eb4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1be8a714d57d0f84b195c9f3846964aa2bf2525b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056187"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605088"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
 De toegang tot groepen en toepassingen voor werk nemers en gasten verandert in de loop van de tijd. Beheerders kunnen Azure Active Directory (Azure AD) gebruiken voor het maken van toegangs Beoordelingen voor groeps leden of toegang tot toepassingen om het risico te verminderen dat is gekoppeld aan verouderde toegangs toewijzingen. Als u de toegang regel matig wilt controleren, kunt u ook terugkerende toegangs beoordelingen maken. Zie [gebruikers toegang beheren](manage-user-access-with-access-reviews.md) en [gast toegang beheren](manage-guest-access-with-access-reviews.md)voor meer informatie over deze scenario's.
+
+U kunt een snel video gesprek bekijken over het inschakelen van toegangs beoordelingen:
+
+>[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
 In dit artikel wordt beschreven hoe u een of meer toegangs Beoordelingen voor groeps leden of toegang tot toepassingen maakt.
 
@@ -55,7 +59,12 @@ Zie [Licentievereisten](access-reviews-overview.md#license-requirements) voor me
 
 1. Als u de toegangs beoordeling wilt herhalen, wijzigt u de **frequentie** -instelling van **één keer** in **wekelijks**, **maandelijks**, **per kwar taal**, **half jaar**of **per jaar**. Gebruik de schuif regelaar **duur** of het tekstvak om te bepalen hoeveel dagen elke beoordeling van de terugkerende serie wordt geopend voor de invoer van revisors. De maximale duur die u voor een maandelijkse beoordeling kunt instellen is bijvoorbeeld 27 dagen, om overlappende beoordelingen te voor komen.
 
-1. Gebruik de **eind** instelling om op te geven hoe de terugkerende toegangs beoordelings reeks moet worden beëindigd. De reeks kan op drie manieren eindigen: de serie wordt continu uitgevoerd om te beginnen met beoordelingen, tot een bepaalde datum, of nadat een gedefinieerd aantal exemplaren is voltooid. U, een andere gebruikers beheerder of een andere globale beheerder kunnen de serie na het maken stoppen door de datum in de **instellingen**te wijzigen, zodat deze op die datum eindigt.
+1. Gebruik de **eind** instelling om op te geven hoe de terugkerende toegangs beoordelings reeks moet worden beëindigd. De reeks kan op drie manieren eindigen: 
+    1. Het wordt continu uitgevoerd om voor onbepaalde tijd beoordelingen te starten
+    1. Tot een bepaalde datum,
+    1. Tot nadat een gedefinieerd aantal exemplaren is voltooid. 
+  
+    U, een andere gebruikers beheerder of een andere globale beheerder kunnen de serie na het maken stoppen door de datum in de **instellingen**te wijzigen, zodat deze op die datum eindigt.
 
 1. Geef in de sectie **gebruikers** de gebruikers op waarop de toegangs beoordeling van toepassing is. Toegangs beoordelingen kunnen gelden voor de leden van een groep of voor gebruikers die zijn toegewezen aan een toepassing. U kunt de toegangs beoordeling verder beperken om alleen de gast gebruikers te bekijken die lid zijn van (of toegewezen aan de toepassing), in plaats van alle gebruikers te controleren die lid zijn van de app of toegang hebben tot de toepassing.
 
@@ -83,9 +92,9 @@ Zie [Licentievereisten](access-reviews-overview.md#license-requirements) voor me
 
     ![Een toegangs beoordeling maken-Program Ma's](./media/create-access-review/programs.png)
 
-    U kunt het bijhouden en verzamelen van toegangs Beoordelingen voor verschillende doel einden vereenvoudigen door ze in Program ma's te organiseren. Elke toegangs beoordeling kan worden gekoppeld aan een programma. Wanneer u vervolgens rapporten voorbereidt voor een auditor, kunt u zich richten op de toegangs beoordelingen binnen het bereik van een bepaald initiatief. Program ma's en toegangs beoordelings resultaten zijn zichtbaar voor gebruikers in de rol globale beheerder, gebruikers beheerder, beveiligings beheerder of beveiligings lezer.
+    U kunt het verzamelen en bijhouden van toegangs beoordelingen vereenvoudigen door ze in te delen in Program ma's. Elke toegangs beoordeling kan worden gekoppeld aan een programma. Wanneer u vervolgens rapporten voorbereidt voor een auditor, kunt u zich richten op de toegangs beoordelingen binnen het bereik van een bepaald initiatief. Program ma's en toegangs beoordelings resultaten zijn zichtbaar voor gebruikers in de rol globale beheerder, gebruikers beheerder, beveiligings beheerder of beveiligings lezer.
 
-    Als u een lijst met Program ma's wilt weer geven, gaat u naar de pagina toegangs beoordelingen en selecteert u **Program ma's**. Als u een globale beheerder of beheerderrol hebt, kunt u extra Program ma's maken. U kunt bijvoorbeeld kiezen voor een programma voor elk nalevings initiatief of zakelijk doel. Als u een programma niet meer nodig hebt en er geen besturings elementen meer aan zijn gekoppeld, kunt u deze verwijderen.
+    Als u een lijst met Program ma's wilt weer geven, gaat u naar de pagina toegangs beoordelingen en selecteert u **Program ma's**. Als u een globale beheerder of beheerderrol hebt, kunt u extra Program ma's maken. U kunt bijvoorbeeld kiezen voor een programma voor elk nalevings initiatief of zakelijk doel. Wanneer u een programma niet meer nodig hebt en er geen besturings elementen aan zijn gekoppeld, kunt u dit verwijderen.
 
 ### <a name="upon-completion-settings"></a>Bij voltooiings instellingen
 
@@ -93,7 +102,7 @@ Zie [Licentievereisten](access-reviews-overview.md#license-requirements) voor me
 
     ![Instellingen voor een toegangs beoordeling maken-bij voltooiing](./media/create-access-review/upon-completion-settings.png)
 
-1. Als u automatisch de toegang wilt verwijderen voor gebruikers die zijn geweigerd, stelt u **automatisch Toep assen resultaten in op resource** om in te **scha kelen**. Als u de resultaten hand matig wilt Toep assen wanneer de controle is voltooid, stelt u de switch in op **uitschakelen**.
+1. Als u de toegang voor geweigerde gebruikers automatisch wilt verwijderen, stelt u **automatisch Toep assen resultaten in op resource** om in te **scha kelen**. Als u de resultaten hand matig wilt Toep assen wanneer de controle is voltooid, stelt u de switch in op **uitschakelen**.
 
 1. Gebruik de lijst als **revisor niet reageert** om op te geven wat er gebeurt voor gebruikers die niet worden gecontroleerd door de revisor binnen de beoordelings periode. Deze instelling heeft geen invloed op gebruikers die hand matig door de controleurs zijn gecontroleerd. Als de laatste beslissing van de revisor weigert, wordt de toegang van de gebruiker verwijderd.
 
@@ -119,7 +128,7 @@ Zie [Licentievereisten](access-reviews-overview.md#license-requirements) voor me
     >[!NOTE]
     > Standaard verzendt Azure AD automatisch een herinnering halverwege de eind datum naar revisors die nog niet hebben gereageerd
 
-1. Evaluatie De inhoud van het e-mail bericht dat naar revisoren wordt verzonden, wordt automatisch gegenereerd op basis van de details van de beoordeling, zoals de naam van de beoordeling, de resource naam, de verval datum, enzovoort. Als u aanvullende informatie wilt communiceren, zoals aanvullende instructies of contact gegevens, kunt u deze gegevens opgeven in de aanvullende inhoud voor de e-mail van de revisor, die wordt opgenomen in de uitnodiging en herinneringen die zijn verzonden aan toegewezen revisoren. Deze informatie wordt weer gegeven in de gemarkeerde sectie hieronder.
+1. Evaluatie De inhoud van het e-mail bericht dat naar revisoren wordt verzonden, wordt automatisch gegenereerd op basis van de details van de beoordeling, zoals de naam van de beoordeling, de resource naam, de verval datum, enzovoort. Als u aanvullende informatie wilt communiceren, zoals aanvullende instructies of contact gegevens, kunt u deze gegevens opgeven in de **aanvullende inhoud voor de e-mail van de revisor** , die wordt opgenomen in de uitnodiging en herinneringen die zijn verzonden aan toegewezen revisoren. Deze informatie wordt weer gegeven in de gemarkeerde sectie hieronder.
 
     ![Gebruikers toegang tot een groep controleren](./media/create-access-review/review-users-access-group.png)
 
@@ -142,8 +151,8 @@ Als gasten als revisoren zijn toegewezen en ze de uitnodiging niet hebben geacce
 |Starten | De beoordeling wordt gestart. Als e-mail meldingen zijn ingeschakeld, worden e-mails naar revisoren verzonden. |
 |Wordt uitgevoerd | De beoordeling is gestart. Als e-mail meldingen zijn ingeschakeld, worden e-mails naar revisoren verzonden. Revisoren kunnen beslissingen verzenden tot de verval datum. |
 |Invullen | De beoordeling wordt voltooid en e-mail berichten worden verzonden naar de eigenaar van de beoordeling. |
-|Autobeoordeling | Beoordeling bevindt zich in een systeem revisie fase. Het systeem is bezig met het vastleggen van beslissingen voor gebruikers die niet zijn gecontroleerd op basis van aanbevelingen of vooraf geconfigureerde beslissingen. |
-|Autobeoordeling | Er zijn beslissingen vastgelegd door het systeem voor alle gebruikers die niet zijn gecontroleerd. Beoordeling is gereed om verder te gaan met het **Toep assen van de toepassing** als automatisch Toep assen is ingeschakeld. |
+|Automatisch controleren | Beoordeling bevindt zich in een systeem revisie fase. Het systeem is bezig met het vastleggen van beslissingen voor gebruikers die niet zijn gecontroleerd op basis van aanbevelingen of vooraf geconfigureerde beslissingen. |
+|Automatisch gecontroleerd | Er zijn beslissingen vastgelegd door het systeem voor alle gebruikers die niet zijn gecontroleerd. Beoordeling is gereed om verder te gaan met het **Toep assen van de toepassing** als automatisch Toep assen is ingeschakeld. |
 |Aanvragen | Er is geen wijziging in de toegang voor gebruikers die zijn goedgekeurd. |
 |Toegepast | Geweigerde gebruikers, indien van toepassing, zijn verwijderd uit de resource of map. |
 

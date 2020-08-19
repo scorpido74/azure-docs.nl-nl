@@ -3,12 +3,12 @@ title: Automatisch afsluiten van Vm's in Azure Lab Services configureren
 description: In dit artikel wordt beschreven hoe u automatisch afsluiten van Vm's in het lab-account configureert.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9fd93d383ba6a2d57057a3b45f8b517c84990043
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8dbc54ad14530006b56bf336d9d78e7d59843485
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589793"
+ms.locfileid: "88603904"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Automatisch afsluiten van Vm's voor een Lab-account configureren
 
@@ -35,4 +35,4 @@ Bekijk meer informatie over de functies voor automatisch afsluiten in het gedeel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over hoe een Lab-eigenaar deze instelling kan configureren of onderdrukken op het niveau van het lab, raadpleegt u [automatisch afsluiten van Vm's inschakelen bij het verbreken](how-to-enable-shutdown-disconnect.md) van de verbinding
+Zie [automatisch afsluiten van vm's voor een lab configureren](how-to-enable-shutdown-disconnect.md) voor meer informatie over hoe een Lab-eigenaar deze instelling kan configureren of negeren op het niveau van de Lab

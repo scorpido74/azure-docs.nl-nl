@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439128"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056224"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Zelfstudie: IoT Edge-modules ontwikkelen voor Linux-apparaten
 
@@ -151,6 +151,9 @@ Zodra de nieuwe oplossing in het Visual Studio Code-venster is geladen, neemt u 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Uw registerreferenties voor de IoT Edge-agent opgeven
 
 In het omgevingsbestand worden de referenties voor het containerregister opgeslagen. Deze referenties worden gedeeld met de IoT Edge-runtime. De runtime heeft deze referenties nodig om uw containerinstallatiekopieën naar het IoT Edge-apparaat te halen.
+
+>[!NOTE]
+>Als u de waarde **localhost:5000** niet hebt vervangen door de waarde voor de aanmeldingsserver van uw Azure-containerregister, ontbreken in de stap [**Een projectsjabloon maken**](#create-a-project-template) het **. env**-bestand en de sectie registryCredentials van het implementatiemanifest. 
 
 De IoT Edge-extensie probeert uw containerregisterreferenties van Azure op te halen en deze in het omgevingsbestand in te vullen. Controleer of uw referenties al zijn toegevoegd. Als dat niet het geval is, voegt u ze nu toe:
 

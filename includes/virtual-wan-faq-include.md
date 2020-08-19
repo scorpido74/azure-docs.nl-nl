@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375542"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507571"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker over hub en spoke beschikken met SD-WAN/VPN-apparaten om Azure Virtual WAN te kunnen gebruiken?
 
@@ -187,7 +187,7 @@ Nee. Voor Virtual WAN is niet vanaf elke locatie ExpressRoute nodig. Uw sites ku
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Is er een netwerkdoorvoer- of verbindingslimiet bij gebruik van Azure Virtual WAN?
 
-Netwerkdoorvoer vindt per service in een virtuele WAN-hub plaats. Hoewel u zoveel virtuele WAN's kunt hebben als u wilt, staat elke virtuele WAN één hub per regio toe. In elke hub is de geaggregeerde VPN-doorvoer maximaal 20 Gbps. De geaggregeerde ExpressRoute-doorvoer is maximaal 20 Gbps en de geaggregeerde gebruikers-VPN-/punt-naar-sitedoorvoer is maximaal 20 Gbps. De router in een virtuele hub ondersteunt maximaal 50 Gbps voor VNet-naar-VNet-verkeersstromen en gaat uit van een totale belasting van 2000 VM's voor alle VNets in Virtual WAN-hubs.
+Netwerkdoorvoer vindt per service in een virtuele WAN-hub plaats. Hoewel u zoveel virtuele WAN's kunt hebben als u wilt, staat elke virtuele WAN één hub per regio toe. In elke hub is de geaggregeerde VPN-doorvoer maximaal 20 Gbps. De geaggregeerde ExpressRoute-doorvoer is maximaal 20 Gbps en de geaggregeerde gebruikers-VPN-/punt-naar-sitedoorvoer is maximaal 20 Gbps. De router in een virtuele hub ondersteunt maximaal 50 Gbps voor VNet-naar-VNet-verkeersstromen en gaat uit van een totale belasting van 2000 VM's voor alle VNets die zijn verbonden met één virtuele hub.
 
 Wanneer VPN-sites verbinding maken met een hub, doen ze dit via verbindingen. Virtual WAN ondersteunt maximaal 1000 verbindingen of 2000 IPsec-tunnels per virtuele hub. Wanneer externe gebruikers verbinding maken met de virtuele hub, maken ze verbinding met de P2S VPN-gateway. Deze biedt ondersteuning voor maximaal 10.000 gebruikers, afhankelijk van de schaaleenheid (bandbreedte) die voor de P2S VPN-gateway in de virtuele hub is gekozen.
 

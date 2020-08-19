@@ -1,20 +1,20 @@
 ---
 title: Zelfstudie voor het terugsturen van Azure Data Box Disk | Microsoft Docs
-description: In deze zelfstudie leest u hoe u uw Azure Data Box Disk terugstuurt naar Microsoft
+description: In deze zelfstudie wordt beschreven hoe u de Azure Data Box Disk retourneert. De instructies voor het retourneren zijn afhankelijk van waarvandaan u het apparaat retourneert.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 62ab110a24bbf6b93f7f019c829222ca666ecfaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039460"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923778"
 ---
 ::: zone target="docs"
 
@@ -85,7 +85,7 @@ Voor Azure-datacenters in Australië geldt een extra beveiligingsmaatregel. Alle
 
 1. Gebruik het meegeleverde retourlabel en controleer of de TAU-code (het referentienummer) erop staat. Als het retourlabel ontbreekt of als u andere problemen hebt, kunt u een e-mail sturen naar [Data Box Asia Operations](mailto:adbo@microsoft.com). Geef de ordernaam en details over het probleem op in de onderwerpregel.
 2. Bevestig het label op de doos.
-3. Boek via de koppeling https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference online een afspraak voor de retourzending. 
+3. Boek online een afspraak voor de retourzending via de link https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference.
 
 ### <a name="japan"></a>[Japan](#tab/in-japan)
 
@@ -138,7 +138,7 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - XZ00001234567
+    Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
      b.    Requestor contact number
@@ -155,6 +155,32 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
    Als u problemen ondervindt, neemt u contact op met Data Box Operations Asia via adbo@microsoft.com. Geef de naam van de taak op in het onderwerp en het probleem dat is opgetreden.
 
 3. Overhandig het pakket aan de koerier.
+
+### <a name="south-africa"></a>[Zuid-Afrika](#tab/in-sa)
+
+Voer de volgende stappen uit als u het apparaat vanuit Zuid-Afrika retourneert.
+
+1. Plak het meegeleverde verzendlabel op de verpakking. Dit label bevat het traceringsnummer. Als het verzendlabel ontbreekt, kunt u een nieuw label downloaden via **Overzicht > Verzendlabel downloaden**.
+
+2. Verzegel de verpakking en zorg ervoor dat het retourlabel zichtbaar is.
+
+3. Ophalen door DHL inplannen:
+
+    * Bel met het klantenservicecentrum op + 27(0) 11 9213600, selecteer optie 1 en geef het nummer van de vrachtbrief op.
+    * U moet vóór 14:00 uur Zuid-Afrikaanse standaardtijd (ZA) bellen om het ophalen te plannen.  
+    * Stuur een e-mail naar [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) om het afhalen in te plannen met behulp van de volgende e-mailsjabloon:
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject:Pickup request for Microsoft Azure
+    Body:  Need pick up for the below shipment
+    *  DHL tracking number (reference number/waybill number)
+    *  Requested pickup date：yyyy/mm/dd; time: HH MM
+    ```
+
+    * Een andere optie is het pakket af te leveren bij het dichtstbijzijnde DHL-servicepunt.
+
+4. Als u problemen hebt, stuurt u een e-mail naar [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) met details van de problemen die zich hebben voorgedaan. Vermeld het vrachtnummer in de onderwerpregel. U kunt ook bellen naar +27(0)119213902.
 
 ### <a name="china"></a>[China](#tab/in-china)
 
@@ -231,7 +257,3 @@ Ga naar de volgende procedure om te leren hoe u het uploaden van gegevens vanuit
 > [Gegevens uploaden vanuit Azure Data Box Disk controleren](./data-box-disk-deploy-upload-verify.md)
 
 ::: zone-end
-
-
-
-

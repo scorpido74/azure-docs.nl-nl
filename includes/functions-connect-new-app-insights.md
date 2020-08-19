@@ -10,20 +10,20 @@ ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 87af50c5b5e5b69fd175ac4a570c4b6f659b97e6
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84730989"
 ---
-Met Azure Functions kunt u eenvoudig Application Insights integratie toevoegen aan een functie-app vanuit de [Azure Portal].
+Met Azure Functions kunt u vanuit de [Azure Portal] eenvoudig de Application Insights-integratie aan een functie-app toevoegen.
 
 1. Zoek in de [Azure] [Portal] naar de **functie-app** en selecteer deze en kies vervolgens uw functie-app. 
 
-1. Selecteer bovenaan het venster de banner **Application Insights is not configured** (Application Insights is niet geconfigureerd). Als u deze banner niet ziet, is Application Insights mogelijk al ingeschakeld voor uw app.
+1. Selecteer bovenaan het venster de banner **Application Insights is not configured** (Application Insights is niet geconfigureerd). Als u deze banner niet ziet staan, is Application Insights al ingeschakeld voor uw app.
 
     :::image type="content" source="media/functions-connect-new-app-insights/enable-application-insights.png" alt-text="Enable Application Insights from the portal"::: (Application Insights vanuit de portal inschakelen)
 
-1. Vouw **uw resource wijzigen** uit en maak een Application Insights resource met de instellingen die zijn opgegeven in de volgende tabel.  
+1. Klap **Uw resource wijzigen** uit en maak een Application Insights-resource met de instellingen in de volgende tabel.  
 
     | Instelling      | Voorgestelde waarde  | Beschrijving                                        |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -36,6 +36,6 @@ Met Azure Functions kunt u eenvoudig Application Insights integratie toevoegen a
 
    De Application Insights-resource wordt gemaakt in dezelfde resourcegroep en hetzelfde abonnement als uw functie-app. Nadat de resource is gemaakt, sluit u het venster Application Insights.
 
-1. Selecteer in de functie-app **configuratie** onder **instellingen**en selecteer vervolgens **Toepassings instellingen**. Als u een instelling met de naam `APPINSIGHTS_INSTRUMENTATIONKEY` ziet, wordt de Application Insights-integratie ingeschakeld voor de functie-app die in Azure wordt uitgevoerd.
+1. Selecteer **Configuratie** onder **Instellingen** in uw functie-app en selecteer vervolgens **Toepassingsinstellingen**. Als u een instelling met de naam `APPINSIGHTS_INSTRUMENTATIONKEY` ziet, wordt de Application Insights-integratie ingeschakeld voor de functie-app die in Azure wordt uitgevoerd.
 
 [Azure Portal]: https://portal.azure.com

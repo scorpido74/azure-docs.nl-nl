@@ -136,6 +136,10 @@
       items:
         - name: Logboeken en metrische gegevens
           href: logs-metrics.md
+    - name: Private Link
+      items:
+        - name: Private Link-connectiviteit configureren
+          href: howto-private-link.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell

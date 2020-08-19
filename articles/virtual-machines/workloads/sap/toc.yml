@@ -108,6 +108,8 @@
           href: sap-hana-high-availability.md
         - name: SAP HANA-systeemreplicatie instellen in RHEL
           href: sap-hana-high-availability-rhel.md
+        - name: SAP HANA-systeemreplicatie instellen met ANF in RHEL
+          href: sap-hana-high-availability-netapp-files-red-hat.md
         - name: Problemen oplossen met vergroten van SAP HANA-schaal en Pacemaker in SLES
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
         - name: SAP HANA uitschalen met stand-by-knooppunt met Azure NetApp Files op SLES

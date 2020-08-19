@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98ce4d5e82d65d911984dc45615253ddcae33ae1
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0aaa454df05cd8981b314abe238163caced7864c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589852"
+ms.locfileid: "88604591"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Kosten beheer voor Azure Lab Services
 
@@ -129,8 +129,8 @@ Deze instellingen kunnen worden geconfigureerd op het niveau van het lab-account
     
 Raadpleeg de volgende artikelen voor meer informatie over het configureren en inschakelen van automatisch afsluiten van Vm's bij het verbreken van de verbinding:
 
-* [Automatisch afsluiten van Vm's configureren bij het verbreken van de instelling voor een Lab-account](how-to-configure-lab-accounts.md)
-* [Automatisch afsluiten van Vm's inschakelen bij het verbreken van de verbinding](how-to-enable-shutdown-disconnect.md)
+* [Automatisch afsluiten van Vm's voor een Lab-account configureren](how-to-configure-lab-accounts.md)
+* [Automatisch afsluiten van Vm's voor een lab configureren](how-to-enable-shutdown-disconnect.md)
 
 ### <a name="quota-vs-scheduled-time"></a>Quotum versus geplande tijd
 

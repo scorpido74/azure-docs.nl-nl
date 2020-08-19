@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7061a178a3f5a9d126afab3fc1f9aa77d5cc050
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257794"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927025"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Wat is Service Fabric?
 
@@ -42,7 +42,7 @@ Met Service Fabric Mesh kunt u het volgende:
 
 - Implementeren en beheren van toepassingen zonder expliciete inrichting en beheer van de infrastructuur.  Door Service Fabric Mesh wordt de onderliggende infrastructuur voor u ingericht, bijgewerkt en van patches voorzien.
 - Continue integratie instellen met behulp van de geïntegreerde hulpprogramma's om toepassingen gemakkelijk te verpakken en te implementeren.
-- Gebruik alle functies van Azure Resource Manager-resources. Voorbeelden van deze functies zijn onder meer audittrail en [op rollen gebaseerd toegangsbeheer](../role-based-access-control/overview.md)). Alle resources die u in Azure implementeert voor de Service Fabric Mesh-service, zijn Azure Resource Manager-resources. Deze resources zijn onder andere toepassingen, services, geheimen enzovoort.
+- Gebruik alle functies van Azure Resource Manager-resources. Voorbeelden van deze functies zijn onder meer audittrail en [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](../role-based-access-control/overview.md). Alle resources die u in Azure implementeert voor de Service Fabric Mesh-service, zijn Azure Resource Manager-resources. Deze resources zijn onder andere toepassingen, services, geheimen enzovoort.
 - Implementeren en beheren van resources met behulp van [Azure Portal](https://portal.azure.com), Resource Manager-sjablonen of Azure CLI/PowerShell-bibliotheken.
 - Instellen van operationele bewaking en waarschuwingen met behulp van [Application Insights](/azure/application-insights/) (of een hulpprogramma naar keuze) om de operationele en diagnostische traceringen van het platform vast te leggen.
 - Toegang krijgen tot diagnostische gegevens van de toepassing die afkomstig zijn uit het toepassingmodel via [Application Insights](/azure/application-insights/) of een hulpprogramma naar keuze.

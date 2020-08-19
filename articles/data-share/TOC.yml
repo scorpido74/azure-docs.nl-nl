@@ -6,6 +6,11 @@
       href: overview.md
     - name: Ondersteunde gegevensarchieven
       href: supported-data-stores.md
+- name: Snelstartgidsen
+  items:
+    - name: Gegevensshare maken - ARM-sjabloon
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: Zelfstudies
   expanded: true
   items:

@@ -47,6 +47,8 @@
       href: ./policy-samples.md
 - name: Concepten
   items:
+    - name: App en implementatie begrijpen
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: Quota en limieten begrijpen
       href: spring-cloud-quotas.md
     - name: Metrische gegevens begrijpen

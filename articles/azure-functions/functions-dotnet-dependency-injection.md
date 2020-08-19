@@ -4,15 +4,15 @@ description: Meer informatie over het gebruik van afhankelijkheids injectie voor
 author: craigshoemaker
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 09/05/2019
+ms.date: 08/15/2020
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: ee3caef30c573763db56f89aa4900aa62b8a436a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4919dc8f08a745a029eb6c3755f8cfc9c39f827f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206112"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603872"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 
@@ -226,10 +226,10 @@ Vanuit de `Startup.Configure` methode kunt u waarden uit het `IConfiguration` ex
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                                           {
-                                                configuration.GetSection("MyOptions").Bind(settings);
-                                           });
+    .Configure<IConfiguration>((settings, configuration) =>
+    {
+        configuration.GetSection("MyOptions").Bind(settings);
+    });
 ```
 
 Het aanroepen `Bind` van kopieën waarden die overeenkomende eigenschapnamen van eigenschappen van de configuratie in het aangepaste exemplaar hebben. Het optie-exemplaar is nu beschikbaar in de IoC-container om in een functie te injecteren.
@@ -253,8 +253,57 @@ public class HttpTrigger
 
 Raadpleeg het [Opties patroon in ASP.net core](/aspnet/core/fundamentals/configuration/options) voor meer informatie over het werken met opties.
 
-> [!WARNING]
-> Vermijd het lezen van waarden uit bestanden zoals *local.settings.jsop* of *appSettings. { Environment}. json* op het verbruiks plan. Waarden die zijn gelezen van deze bestanden met betrekking tot trigger verbindingen zijn niet beschikbaar als de app wordt geschaald omdat de hosting-infra structuur geen toegang heeft tot de configuratie gegevens omdat de schaal controller nieuwe exemplaren van de app maakt.
+### <a name="customizing-configuration-sources"></a>Configuratie bronnen aanpassen
+
+> [!NOTE]
+> Het aanpassen van de configuratie bron is beschikbaar vanaf Azure Functions host-versies 2.0.14192.0 en 3.0.14191.0.
+
+Als u aanvullende configuratie bronnen wilt opgeven, overschrijft u de `ConfigureAppConfiguration` methode in de klasse van de functie-app `StartUp` .
+
+In het volgende voor beeld worden configuratie waarden van een basis en een optionele omgeving-specifieke app-instellingen bestanden toegevoegd.
+
+```csharp
+using System.IO;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
+
+namespace MyNamespace
+{
+    public class Startup : FunctionsStartup
+    {
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            FunctionsHostBuilderContext context = builder.GetContext();
+
+            builder.ConfigurationBuilder
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
+        }
+    }
+}
+```
+
+Configuratie providers toevoegen aan de `ConfigurationBuilder` eigenschap van `IFunctionsConfigurationBuilder` . Zie [configuratie in ASP.net core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)voor meer informatie over het gebruik van configuratie providers.
+
+A `FunctionsHostBuilderContext` wordt verkregen van `IFunctionsConfigurationBuilder.GetContext()` . Gebruik deze context om de huidige omgevings naam op te halen en de locatie van de configuratie bestanden in de map van de functie-app op te lossen.
+
+Standaard worden configuratie bestanden zoals *appsettings.jsop* niet automatisch gekopieerd naar de uitvoermap van de functie-app. Werk het *. csproj* -bestand bij zodat het overeenkomt met het volgende voor beeld om te controleren of de bestanden zijn gekopieerd.
+
+```xml
+<None Update="appsettings.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>      
+</None>
+<None Update="appsettings.Development.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+</None>
+```
+
+> [!IMPORTANT]
+> Voor functie-apps die worden uitgevoerd in de verbruiks-of Premium-abonnementen, kunnen wijzigingen in configuratie waarden die worden gebruikt in triggers, schaal fouten veroorzaken. Wijzigingen in deze eigenschappen door de klasse worden veroorzaakt door het `FunctionsStartup` opstarten van een functie-app.
 
 ## <a name="next-steps"></a>Volgende stappen
 

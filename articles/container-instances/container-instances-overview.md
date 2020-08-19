@@ -2,14 +2,14 @@
 title: Serverloze containers in Azure
 description: De Azure Container Instances-service is de snelste en eenvoudigste methode voor het uitvoeren van geïsoleerde containers in Azure. Hierbij hoeft u geen virtuele machines te beheren of een orchestrator op een hoger niveau te gebruiken.
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498681"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121660"
 ---
 # <a name="what-is-azure-container-instances"></a>Wat is Azure Container Instances?
 
@@ -35,10 +35,15 @@ Azure Container Instances biedt ook ondersteuning voor het uitvoeren van een opd
 > [!IMPORTANT]
 > Vanaf 13 januari 2020 moeten voor Azure Container Instances alle beveiligde verbindingen van servers en toepassingen TLS 1.2 gebruiken. Ondersteuning voor TLS 1.0 en 1.1 wordt buiten gebruik gesteld.
 
-## <a name="hypervisor-level-security"></a>Beveiliging op hypervisorniveau
+## <a name="compliant-deployments"></a>Compatibele implementaties
+
+### <a name="hypervisor-level-security"></a>Beveiliging op hypervisorniveau
 
 In het verleden boden containers toepassingsafhankelijke isolatie en resourcebesturing, maar werden ze niet voldoende veilig beschouwd voor onveilig multitenant gebruik. Met Azure Container Instances is uw toepassing gegarandeerd even geïsoleerd in een container als deze op een VM zou zijn.
 
+### <a name="customer-data"></a>Klantgegevens
+
+De ACI-service slaat de klantgegevens op die minimaal nodig zijn om ervoor te zorgen dat de containergroepen zoals verwacht worden uitgevoerd. Het opslaan van klantgegevens in één regio is momenteel alleen beschikbaar in de regio Azië - zuidoost (Singapore) van het geografisch gebied Azië en Stille Oceaan. Voor alle andere regio's worden klantgegevens opgeslagen in [Geo](https://azure.microsoft.com/global-infrastructure/geographies/). Neem contact op met de ondersteuning voor Azure voor meer informatie.
 
 ## <a name="custom-sizes"></a>Aangepaste grootten
 

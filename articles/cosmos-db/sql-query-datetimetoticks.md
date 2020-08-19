@@ -4,20 +4,20 @@ description: Meer informatie over de SQL-functie DateTimeToTicks in Azure Cosmos
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: a6fcff691ee5278ed0a9e1c132f8ecebbee9431c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2e2c9e8f2bf0d4760bf030fb19a90737cdb54525
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227114"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605132"
 ---
 # <a name="datetimetoticks-azure-cosmos-db"></a>DateTimeToTicks (Azure Cosmos DB)
 
-Hiermee wordt de opgegeven datum/tijd geconverteerd naar Ticks. Eén tick vertegenwoordigt 100 nano seconden of 1 10-millionth van een seconde.
-  
+Hiermee wordt de opgegeven datum/tijd geconverteerd naar Ticks. Eén tick vertegenwoordigt 100 nano seconden of 1 10-millionth van een seconde. 
+
 ## <a name="syntax"></a>Syntaxis
   
 ```sql
@@ -31,7 +31,7 @@ DateTimeToTicks (<DateTime>)
 
 ## <a name="return-types"></a>Retour typen
 
-Retourneert een positieve integerwaarde.
+Retourneert een ondertekende numerieke waarde, het huidige aantal 100-nano seconden Ticks dat is verstreken sinds de UNIX-epoche. Met andere woorden, DateTimeToTicks retourneert het aantal 100-nano seconden-tikken dat sinds 00:00:00 donderdag, 1 januari 1970, is verstreken.
 
 ## <a name="remarks"></a>Opmerkingen
 

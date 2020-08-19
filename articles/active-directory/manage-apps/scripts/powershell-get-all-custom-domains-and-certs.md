@@ -1,27 +1,26 @@
 ---
-title: Power shell-voor beeld-toepassings proxy-apps met aangepaste domeinen
-description: Power shell-voor beeld met een lijst met alle Azure Active Directory (Azure AD) toepassings proxy toepassingen die gebruikmaken van aangepaste domeinen en certificaat gegevens.
+title: 'PowerShell-voorbeeld: toepassingsproxy-apps die gebruikmaken van aangepaste domeinen'
+description: PowerShell-voorbeeld waarin alle Azure Active Directory (Azure AD)-toepassingsproxytoepassingen worden vermeld die gebruikmaken van aangepaste domeinen en certificaatgegevens.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9722178011c3c0411f2e0e888dd9ab5962b933b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 3e6f300126da0eeffe9d1c752102ab9ded81ff5b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482047"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506733"
 ---
-# <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>Alle toepassings proxy-apps ophalen met aangepaste domeinen en certificaat gegevens
+# <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>Alle toepassingsproxy-apps ophalen die gebruikmaken van aangepaste domeinen en certificaatgegevens
 
-In dit Power shell-voorbeeld script wordt een lijst weer gegeven met alle Azure Active Directory-toepassings proxy toepassingen (Azure AD) die gebruikmaken van aangepaste domeinen en een lijst met de certificaat gegevens die aan de aangepaste domeinen zijn gekoppeld.
+In dit PowerShell-voorbeeldscript worden alle Azure Active Directory (Azure AD)-toepassingsproxytoepassingen vermeld die gebruikmaken van aangepaste domeinen en de certificaatgegevens die aan de aangepaste domeinen zijn gekoppeld.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +28,7 @@ In dit Power shell-voorbeeld script wordt een lijst weer gegeven met alle Azure 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [Preview-versie van de AzureAD v2 Power shell voor Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
+Voor dit voorbeeld is de [AzureAD V2 PowerShell voor Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [AzureAD V2 PowerShell voor Graph-module (preview)](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -39,12 +38,12 @@ Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://doc
 
 | Opdracht | Opmerkingen |
 |---|---|
-|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hiermee wordt een Service-Principal opgehaald. |
-|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Hiermee haalt u een Azure AD-toepassing op. |
-|[Get-AzureADApplicationProxyApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Hiermee haalt u een toepassing op die is geconfigureerd voor toepassings proxy in azure AD. |
+|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hiermee wordt een service-principal opgehaald. |
+|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Hiermee wordt een Azure AD-toepassing opgehaald. |
+|[Get-AzureADApplicationProxyApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Hiermee wordt een toepassing opgehaald die is geconfigureerd voor een toepassingsproxy in Azure AD. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van Azure AD Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)voor meer informatie over de Azure AD Power shell-module.
+Zie het [overzicht van de Azure PowerShell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0) voor meer informatie over de Azure AD PowerShell-module.
 
-Raadpleeg voor andere Power shell-voor beelden voor toepassings proxy [Azure AD Power shell-voor beelden voor azure AD-toepassingsproxy](../application-proxy-powershell-samples.md).
+Zie [Azure AD PowerShell-voorbeelden voor de Azure AD-toepassingsproxy](../application-proxy-powershell-samples.md) voor andere PowerShell-voorbeelden voor de toepassingsproxy.

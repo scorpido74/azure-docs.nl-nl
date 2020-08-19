@@ -9,11 +9,11 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 11/04/2019
-ms.openlocfilehash: bfe67acf1e1bb84c7700615155ba82db1ccd114d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ad852db66b481f4b84826846cf701c332f6645b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75527056"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506206"
 ---
-**VAN TOEPASSING OP:** ![ja](media/aml-applies-to-skus/yes.png)Basic-editie ![ja](media/aml-applies-to-skus/yes.png)Enterprise-editie &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; ([Upgrade naar Enterprise-editie](../articles/machine-learning/how-to-manage-workspace.md#upgrade))
+**VAN TOEPASSING OP:** ![ja](media/aml-applies-to-skus/yes.png)Basic-editie ![ja](media/aml-applies-to-skus/yes.png)Enterprise-editie (preview) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; ([Upgrade uitvoeren naar Enterprise-editie](../articles/machine-learning/how-to-manage-workspace.md#upgrade))

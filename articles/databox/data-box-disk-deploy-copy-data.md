@@ -1,6 +1,6 @@
 ---
 title: Zelfstudie voor het kopiëren van gegevens naar Azure Data Box Disk | Microsoft Docs
-description: In deze zelfstudie leest u hoe u gegevens kopieert naar uw Azure Data Box-schijf
+description: In deze zelfstudie leer u hoe u vanaf uw hostcomputer gegevens naar Azure Data Box Disk kopieert en vervolgens controlesommen genereert om de gegevensintegriteit te controleren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d33f53ef3d6ea0ef6a3040a82ec17b3089075949
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231536"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927110"
 ---
 ::: zone target="docs"
 

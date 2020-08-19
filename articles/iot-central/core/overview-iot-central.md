@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 1af549feb551eca02bb1ef8df6481eceb959f6d1
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337174"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042714"
 ---
 # <a name="what-is-azure-iot-central"></a>Wat is Azure IoT Central?
 
@@ -34,10 +34,10 @@ In dit artikel worden de volgende onderwerpen besproken voor IoT Central:
 
 In de documentatie over IoT Central wordt verwezen naar vier persona's die interactie hebben met een IoT Central-toepassing:
 
-- Een _bouwer van oplossingen_ is verantwoordelijk voor het definiëren van de typen apparaten die verbinding maken met de toepassing en voor het aanpassen van de toepassing voor de operator.
-- Een _operator_ beheert de apparaten die met de toepassing zijn verbonden.
+- Een _bouwer van oplossingen_ is verantwoordelijk voor het [definiëren van de typen apparaten](howto-set-up-template.md) die verbinding maken met de toepassing en voor het aanpassen van de toepassing voor de operator.
+- Een _operator_ [beheert de apparaten](howto-manage-devices.md) die met de toepassing zijn verbonden.
 - Een _beheerder_ is verantwoordelijk voor beheertaken zoals het beheer van [gebruikersrollen en -machtigingen](howto-administer.md) binnen de toepassing.
-- Een _apparaatontwikkelaar_ maakt de code die wordt uitgevoerd op een apparaat of in een IoT Edge-module die met uw toepassing is verbonden.
+- Een _apparaatontwikkelaar_ [maakt de code die wordt uitgevoerd op een apparaat](concepts-telemetry-properties-commands.md) of in een [IoT Edge-module](concepts-iot-edge.md) die met uw toepassing is verbonden.
 
 ## <a name="create-your-iot-central-application"></a>Een IoT Central-toepassing maken
 
@@ -55,7 +55,7 @@ Als bouwer van oplossingen gebruikt u de webgebaseerde hulpprogramma's om een _a
 - Apparaateigenschappen die zijn ingesteld door een apparaat en die het kenmerk alleen-lezen hebben in de toepassing.
 - Eigenschappen, die door een operator worden ingesteld, waarmee het gedrag van het apparaat wordt bepaald.
 
-Deze apparaatsjabloon omvat:
+Deze [apparaatsjabloon](howto-set-up-template.md) omvat:
 
 - Een _apparaatfunctiemodel_ dat de mogelijkheden beschrijft die een apparaat moet implementeren, zoals de telemetriegegevens die worden verzonden en de eigenschappen die worden gerapporteerd.
 - Cloudeigenschappen die niet op het apparaat zijn opgeslagen.
@@ -83,13 +83,13 @@ Als bouwer van oplossingen kunt u de gebruikersinterface van de IoT Central-toep
 
 ## <a name="manage-your-devices"></a>Uw apparaten beheren
 
-Als operator gebruikt u de IoT Central-toepassing om de apparaten in uw IoT Central-oplossing te beheren. Operators voeren taken uit zoals:
+Als operator gebruikt u de IoT Central-toepassing om [de apparaten te beheren](howto-manage-devices.md) in uw IoT Central-oplossing. Operators voeren taken uit zoals:
 
 - Het controleren van de apparaten die met de toepassing zijn verbonden.
 - Het oplossen en verhelpen van problemen met apparaten.
 - Het inrichten van nieuwe apparaten.
 
-Als bouwer van oplossingen kunt u aangepaste regels en acties definiëren die worden toegepast voor het streamen van gegevens vanaf verbonden apparaten. Een operator kan deze regels op apparaatniveau in- of uitschakelen om taken binnen de toepassing te beheren en automatiseren.
+Als bouwer van oplossingen kunt u [aangepaste regels en acties definiëren](howto-configure-rules.md) die worden toegepast voor het streamen van gegevens vanaf verbonden apparaten. Een operator kan deze regels op apparaatniveau in- of uitschakelen om taken binnen de toepassing te beheren en automatiseren.
 
 Voor elke IoT-oplossing die is ontworpen voor gebruik op schaal, is een gestructureerde aanpak van apparaatbeheer belangrijk. Het is niet voldoende om uw apparaten alleen maar te verbinden met de cloud. U moet ervoor zorgen dat uw apparaten verbonden blijven en goed blijven werken. Een operator kan de volgende mogelijkheden van IoT Central gebruiken om uw apparaten te beheren gedurende de levenscyclus van de toepassing:
 

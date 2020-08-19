@@ -5,39 +5,32 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: d36b4fd433af716ebd97d88d05922d94bd74c309
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/19/2020
+ms.openlocfilehash: a992d240955f42ec030a84c887ba086ce92f9790
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523533"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605266"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Prijsmodel in Azure Cosmos DB
 
-Met het prijsmodel van Azure Cosmos DB wordt beheren en plannen van de kosten vereenvoudigd. Met Azure Cosmos DB betaalt u voor de ingerichte doorvoer en voor de opslag die u verbruikt.
+Met het prijsmodel van Azure Cosmos DB wordt beheren en plannen van de kosten vereenvoudigd. Met Azure Cosmos DB betaalt u voor de bewerkingen die u uitvoert op de data base en voor de opslag die wordt gebruikt door uw gegevens.
 
-* **Ingerichte door Voer**: [ingerichte door Voer](how-to-choose-offer.md) (ook wel gereserveerde door Voer genoemd) garandeert hoge prestaties op elke schaal. U geeft de door Voer (RU/s) op die u nodig hebt, en Azure Cosmos DB exclusief de benodigde resources om de geconfigureerde door voer te garanderen. U wordt per uur gefactureerd voor de maximale ingerichte door Voer voor een bepaald uur. U kunt de door Voer hand matig inrichten of [automatisch schalen](provision-throughput-autoscale.md)gebruiken.
+- **Database bewerkingen**: de manier waarop u uw database bewerkingen in rekening brengt, is afhankelijk van het type Azure Cosmos-account dat u gebruikt.
+
+  - **Ingerichte door Voer**: [ingerichte door Voer](set-throughput.md) (ook wel gereserveerde door Voer genoemd) garandeert hoge prestaties op elke schaal. U geeft de door Voer op die u nodig hebt in [aanvraag eenheden](request-units.md) per seconde (ru/s), en Azure Cosmos DB exclusief de benodigde resources om de geconfigureerde door voer te garanderen. U kunt de [door Voer voor een Data Base of container inrichten](set-throughput.md). Op basis van de behoeften van uw werk belasting kunt u de door Voer op elk gewenst moment omhoog/omlaag schalen of [automatisch schalen](provision-throughput-autoscale.md) gebruiken (hoewel er een minimale door Voer is vereist voor een Data Base of een container om de sla's te garanderen). U wordt per uur gefactureerd voor de maximale ingerichte door Voer voor een bepaald uur.
 
    > [!NOTE]
-   > Omdat het ingerichte doorvoer model resources toekent aan uw container of Data Base, worden er kosten in rekening gebracht voor de ingerichte door Voer, zelfs als u geen workloads uitvoert.
+   > Omdat het ingerichte doorvoer model resources toekent aan uw container of Data Base, worden er kosten in rekening gebracht voor de door u ingerichte door Voer, zelfs als u geen workloads uitvoert.
 
-* **Verbruikte opslag**: er wordt een vast bedrag in rekening gebracht voor de totale hoeveelheid opslag ruimte (GB) die wordt verbruikt voor gegevens en de indexen voor een bepaald uur.
+  - **Serverloze**: in [serverloze](serverless.md) modus hoeft u geen door Voer in te richten bij het maken van resources in uw Azure Cosmos-account. Aan het einde van de facturerings periode wordt u gefactureerd voor de hoeveelheid aanvraag eenheden die is verbruikt door uw database bewerkingen.
 
-Door de ingerichte door Voer, opgegeven als [aanvraag eenheden](request-units.md) per seconde (ru/s), kunt u gegevens lezen van of schrijven naar containers of data bases. U kunt de [door Voer voor een Data Base of container inrichten](set-throughput.md). Op basis van de behoeften van uw werk belasting kunt u de door Voer op elk gewenst moment omhoog/omlaag schalen. Azure Cosmos DB prijs is elastisch en is evenredig met de door Voer die u configureert in een Data Base of container. De minimale doorvoer-en opslag waarden en de schaal verhogingen bieden een breed scala aan prijzen versus elasticiteits spectrum voor alle segmenten van klanten, van kleinschalige schaal tot grootschalige containers. Elke Data Base of container wordt per uur gefactureerd voor de door Voer die is ingericht in de eenheden van 100 RU/s, met een minimum van 400 RU/s en opslag verbruikt in GB. In tegens telling tot ingerichte door Voer wordt opslag gefactureerd op basis van verbruik. Dat wil zeggen dat u geen enkele opslag vooraf hoeft te reserveren. U wordt alleen gefactureerd voor de opslag die u gebruikt.
+- **Opslag**: er wordt een vast bedrag in rekening gebracht voor de totale hoeveelheid opslag ruimte (in GB) die door uw gegevens en indexen voor een bepaald uur wordt verbruikt. Opslag wordt gefactureerd op basis van verbruik, dus u hoeft geen opslag vooraf te reserveren. U wordt alleen gefactureerd voor de opslag die u gebruikt.
 
-Zie voor meer informatie de [pagina met Azure Cosmos DB prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en [informatie over uw Azure Cosmos DB factuur](understand-your-bill.md).
+Het prijs model in Azure Cosmos DB is consistent voor alle Api's. Zie de [pagina met Azure Cosmos DB prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)voor meer informatie over [uw Azure Cosmos DB factuur](understand-your-bill.md) en [hoe Azure Cosmos DB prijs model rendabel is voor klanten](total-cost-ownership.md).
 
-Het prijs model in Azure Cosmos DB is consistent voor alle Api's. Zie [hoe Azure Cosmos DB prijs model rendabel is voor klanten voor](total-cost-ownership.md)meer informatie. Er is een minimale door Voer vereist voor een Data Base of container om de service overeenkomsten te controleren en u kunt de ingerichte door Voer voor elke 100 RU/s verg Roten of verkleinen.
-
-Als u uw Azure Cosmos DB-account implementeert in een niet-overheids regio in de VS, is momenteel de minimum prijs voor zowel de Data Base als de op de container gebaseerde door Voer ongeveer $24/maand. De prijzen zijn afhankelijk van de regio die u gebruikt. Zie de [pagina met prijzen voor Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente prijs informatie. Als uw werk belasting meerdere containers gebruikt, kan deze worden geoptimaliseerd voor kosten met behulp van de door Voer van het data base-niveau, omdat door Voer via database niveau een wille keurig aantal containers in een Data Base met de door Voer tussen de containers kan worden gedeeld. De volgende tabel bevat een overzicht van de ingerichte door Voer en de kosten voor verschillende entiteiten:
-
-|**Entiteit**  | **Minimale door Voer** |**Schaal verhogingen** |**Inrichtings bereik** |
-|---------|---------|---------|-------|
-|Database    | 400 RU/s    | 100 RU/s   |De door Voer is gereserveerd voor de data base en wordt gedeeld door containers in de data base |
-|Container     | 400 RU/s   | 100 RU/s  |De door Voer is gereserveerd voor een specifieke container |
-
-Zoals u in de voor gaande tabel ziet, begint de minimale door Voer in Azure Cosmos DB met een prijs van ongeveer $24/maand. Als u begint met de minimale door Voer en omhoog schaalt om uw productie workloads te ondersteunen, worden uw kosten probleemloos verhoogd, in de stappen van ongeveer $6/maand. De prijzen zijn afhankelijk van de regio die u gebruikt. Zie de [pagina met prijzen voor Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente prijs informatie. Het prijs model in Azure Cosmos DB is elastisch en er is een soepele of afname van de prijs bij het omhoog of omlaag schalen.
+Als u uw Azure Cosmos DB-account implementeert in een niet-overheids regio in de VS, is er een minimum prijs voor zowel de Data Base als de opslag op basis van een container in de ingerichte doorvoer modus. Er is geen minimale prijs in de serverloze modus. De prijzen zijn afhankelijk van de regio die u gebruikt. Zie de [pagina met prijzen voor Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente prijs informatie.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Probeer Azure Cosmos DB gratis uit
 
@@ -53,7 +46,7 @@ Azure Cosmos DB biedt gratis een groot aantal opties voor ontwikkel aars. Het ga
 
 ## <a name="pricing-with-reserved-capacity"></a>Prijzen met gereserveerde capaciteit
 
-Azure Cosmos DB [gereserveerde capaciteit](cosmos-db-reserved-capacity.md) helpt u geld te besparen door voor Azure Cosmos DB resources voor een jaar of drie jaar vooraf te betalen. U kunt uw kosten aanzienlijk verlagen met één jaar of drie jaar vooraf-toezeg gingen en besparen tussen 20-65% kortingen in vergelijking met de reguliere prijzen. Azure Cosmos DB gereserveerde capaciteit helpt u kosten te verlagen door vooraf te betalen voor de ingerichte door Voer (RU/s) gedurende een periode van één of drie jaar en u krijgt een korting op de ingerichte door voer. 
+Azure Cosmos DB [gereserveerde capaciteit](cosmos-db-reserved-capacity.md) helpt u geld te besparen wanneer u de ingerichte doorvoer modus gebruikt door voor Azure Cosmos DB bronnen vooraf te betalen voor een jaar of drie jaar. U kunt uw kosten aanzienlijk verlagen met één jaar of drie jaar vooraf-toezeg gingen en besparen tussen 20-65% kortingen in vergelijking met de reguliere prijzen. Azure Cosmos DB gereserveerde capaciteit helpt u kosten te verlagen door vooraf te betalen voor de ingerichte door Voer (RU/s) gedurende een periode van één of drie jaar en u krijgt een korting op de ingerichte door voer. 
 
 RU biedt een factureringskorting en heeft geen invloed op de runtimestatus van Azure Cosmos DB-resources. Gereserveerde capaciteit is consistent beschikbaar voor alle Api's, waaronder MongoDB-, Cassandra-, SQL-, Gremlin-en Azure-tabellen en alle regio's over de hele wereld. Meer informatie over gereserveerde capaciteit in vooruitbetalen vindt u [voor Azure Cosmos DB resources met een gereserveerde-capaciteits](cosmos-db-reserved-capacity.md) artikel en het kopen van gereserveerde capaciteit van de [Azure Portal](https://portal.azure.com/).
 

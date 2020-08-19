@@ -116,6 +116,14 @@
       href: faq.md
     - name: Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
       href: windows-10-multisession-faq.md
+    - name: MSIX-app-koppeling
+      items:
+        - name: Wat is een MSIX-app-koppeling?
+          href: what-is-app-attach.md
+        - name: Woordenlijst
+          href: app-attach-glossary.md
+        - name: Veelgestelde vragen
+          href: app-attach-faq.md
     - name: Gegevenslocaties
       href: data-locations.md
 - name: Problemen oplossen
@@ -150,6 +158,8 @@
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure-opdrachtregelinterface (CLI)
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Azure-voorbeeldscenario's
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
 - name: Resources
   items:
     - name: PowerShell

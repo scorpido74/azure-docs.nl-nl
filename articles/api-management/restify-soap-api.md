@@ -1,6 +1,6 @@
 ---
 title: Importeren van een SOAP API en deze naar REST converteren met Azure Portal | Microsoft Docs
-description: Informatie over het importeren van een SOAP API en deze naar REST converteren met API Management.
+description: Leer hoe u een SOAP API importeert, deze naar REST converteert met API Management en de API vervolgens test in de Azure- en ontwikkelaarsportal.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a87f4d0748d14ab995f75279b6a192f350165d6f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74108097"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843824"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Een SOAP-API importeren en deze converteren naar REST
 
@@ -32,7 +32,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -61,7 +61,7 @@ Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](g
     * **Onbeperkt**   
 10. Selecteer **Maken**.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API in het Azure Portal testen
+## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API testen in de Azure-portal
 
 Bewerkingen kunnen rechtstreeks vanuit Azure Portal worden aangeroepen. Dit is een handige manier om de bewerkingen van een API te bekijken en te testen.  
 

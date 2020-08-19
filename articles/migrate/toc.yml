@@ -86,9 +86,9 @@
       href: hyper-v-migration-architecture.md
     - name: Migratiearchitectuur op basis van een VMware-agent
       href: agent-based-migration-architecture.md
-    - name: Overzicht van Azure VM-evaluaties
+    - name: Overzicht van evaluatie (migreren naar Azure-VM's)
       href: concepts-assessment-calculation.md
-    - name: Overzicht van AVS-evaluaties
+    - name: Overzicht van evaluaties (migreren naar AVS)
       href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: Best practices voor evaluaties
       href: best-practices-assessment.md

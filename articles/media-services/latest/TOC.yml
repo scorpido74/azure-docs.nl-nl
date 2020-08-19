@@ -71,9 +71,6 @@
       items:
         - name: Assets
           href: assets-concept.md
-        - name: Assets beheren
-          href: manage-asset-concept.md
-          displayName: 'name, naming, file name, upload, output, download'
     - name: Bestanden worden verwerkt
       items:
         - name: Transformaties en taken
@@ -222,20 +219,14 @@
   items:
     - name: Aan de slag
       items:
-        - name: Een account maken
+        - name: Uw Azure-abonnement vinden
+          href: how-to-set-azure-subscription.md
+        - name: Een Media Services-account kunt maken
           href: create-account-howto.md
           displayName: 'portal, cli, storage'
-        - name: De referenties voor het account opnieuw instellen
-          href: cli-reset-account-credentials.md
         - name: Toegang tot API
           displayName: 'portal, cli'
           href: access-api-howto.md
-        - name: Gereserveerde media-eenheden schalen
-          href: media-reserved-units-cli-how-to.md
-        - name: Een asset maken
-          href: cli-create-asset.md
-    - name: Handleidingen voor ontwikkelaars
-      items:
         - name: Ontwikkelen met REST
           items:
             - name: Verbinding maken met Postman
@@ -250,6 +241,15 @@
               href: configure-connect-nodejs-howto.md
             - name: Verbinding maken met Python
               href: configure-connect-python-howto.md
+        - name: Accountreferenties opnieuw instellen
+          href: cli-reset-account-credentials.md
+    - name: Assets maken en beheren
+      items:
+        - name: Een asset maken
+          href: cli-create-asset.md
+        - name: Assets beheren
+          href: manage-asset-concept.md
+          displayName: 'name, naming, file name, upload, output, download'
     - name: Inhoud uploaden
       items:
         - name: Uit HTTPS
@@ -282,6 +282,8 @@
           displayName: 'encode, encoding'
           href: job-input-from-local-file-how-to.md
         - name: Coderen met een aangepaste transformatie
+        - name: Gereserveerde media-eenheden schalen
+          href: media-reserved-units-cli-how-to.md
           items:
             - name: Met .NET
               displayName: 'encode, encoding, custom, transform'
@@ -390,7 +392,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Aan de slag
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.media/allversions

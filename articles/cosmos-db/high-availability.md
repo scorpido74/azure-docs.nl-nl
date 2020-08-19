@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 2f464a0b519dd7f378790c135a05d04e02704ac8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8bae89e68e5a016dbdc10c763f1ea2daedece3c8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027729"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605319"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hoge beschikbaarheid met Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Als een wereld wijd gedistribueerde data base biedt Azure Cosmos DB uitgebreide 
 
 |Het type bewerking  | Enkele regio |Meerdere regio's (schrijf bewerkingen in één regio)|Meerdere regio's (schrijf bewerkingen met meerdere regio's) |
 |---------|---------|---------|-------|
-|Schrijfopdrachten    | 99,99    |99,99   |99,999|
-|Titel     | 99,99    |99,999  |99,999|
+|Schrijfbewerkingen    | 99,99    |99,99   |99,999|
+|Leesbewerkingen     | 99,99    |99,999  |99,999|
 
 > [!NOTE]
 > In de praktijk is de daad werkelijke schrijf Beschik baarheid voor gebonden veroudering, sessie, consistent voor voegsel en uiteindelijke consistentie modellen aanzienlijk hoger dan de gepubliceerde Sla's. De werkelijke Lees Beschik baarheid voor alle consistentie niveaus is aanzienlijk hoger dan de gepubliceerde Sla's.
@@ -79,7 +79,7 @@ Zone redundantie is een *extra mogelijkheid* voor de replicatie in de functie vo
 
 Bij het configureren van schrijf bewerkingen met meerdere regio's voor uw Azure Cosmos-account, kunt u zonder extra kosten voor zone redundantie kiezen. In andere gevallen raadpleegt u de onderstaande opmerking over de prijzen voor ondersteuning voor zone redundantie. U kunt zone redundantie inschakelen voor een bestaande regio van uw Azure Cosmos-account door de regio te verwijderen en opnieuw toe te voegen als u de zone redundantie hebt ingeschakeld.
 
-Deze functie is beschikbaar in: *UK-Zuid, Zuidoost-Azië, VS-Oost, VS-Oost 2, VS-midden, Europa-West, VS-West 2, Japan-Oost, Europa-Noord, Frankrijk-centraal* regio's.
+Deze functie is beschikbaar in: *UK-Zuid, Zuidoost-Azië, VS Oost, VS-Oost 2, VS centraal, Europa-West, VS-West 2, Japan-Oost, Europa-Noord, Frankrijk-centraal, Australië-Oost* regio's.
 
 > [!NOTE]
 > Als u Beschikbaarheidszones inschakelt voor een Azure Cosmos-account in één regio, worden er kosten in rekening gebracht die gelijk zijn aan het toevoegen van een extra regio aan uw account. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en de [kosten voor meerdere regio's in azure Cosmos DB](optimize-cost-regions.md) artikelen voor meer informatie over prijzen.

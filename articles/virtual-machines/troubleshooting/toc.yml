@@ -232,6 +232,8 @@
       href: ../extensions/troubleshoot.md
     - name: VM-agent voor Windows offline installeren
       href: install-vm-agent-offline.md
+    - name: Problemen met Windows-VM-agent oplossen
+      href: windows-azure-guest-agent.md
 - name: Back-ups en herstellen
   items:
     - name: Back-upfouten in Azure-VM oplossen

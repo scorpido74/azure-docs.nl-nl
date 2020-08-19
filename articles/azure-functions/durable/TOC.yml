@@ -22,6 +22,9 @@
     - name: Een duurzame functie maken - Python
       displayName: 'get started, chaining'
       href: quickstart-python-vscode.md
+    - name: Een duurzame functie maken - PowerShell
+      displayName: 'get started, chaining'
+      href: quickstart-powershell-vscode.md
 - name: Zelfstudies
   items:
     - name: Functiekoppeling

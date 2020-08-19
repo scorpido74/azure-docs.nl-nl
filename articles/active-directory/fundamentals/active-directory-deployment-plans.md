@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d839fc71992802e9ee2b6a66d0bc407c5caaecf
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 1f85d4203c0fe3978f776b418ab6d7850061416c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799052"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605375"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Zoekt u end-to-end-richt lijnen voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden? Met Azure AD-implementatie plannen kunt u de bedrijfs waarde, plannings overwegingen en operationele procedures door lopen die nodig zijn om algemene Azure AD-mogelijkheden te implementeren.
@@ -97,3 +97,4 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 | -| -|
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PIM) helpt u bij het beheren van geprivilegieerde beheerders rollen in azure AD, Azure-resources en andere online services van micro soft. PIM biedt oplossingen zoals just-in-time-toegang, werk stromen voor het aanvragen van goed keuring en volledig geïntegreerde toegangs beoordelingen, zodat u schadelijke activiteiten van geprivilegieerde rollen in realtime kunt identificeren, detecteren en voor komen. |
 | [Rapportage en bewaking](../reports-monitoring/plan-monitoring-and-reporting.md)| Het ontwerp van uw Azure AD-oplossing voor rapportage en bewaking is afhankelijk van uw wettelijke, beveiligings-en operationele vereisten, evenals uw bestaande omgeving en processen. In dit artikel vindt u de verschillende ontwerp opties en wordt u begeleid bij de juiste implementatie strategie. |
+| [Toegangs beoordelingen](../governance/deploy-access-reviews.md) | Toegangs beoordelingen zijn een belang rijk onderdeel van uw strategie voor beheer, zodat u weet en beheert wie toegang heeft en wat ze toegang hebben. Dit artikel helpt u bij het plannen en implementeren van toegangs beoordelingen om uw gewenste Postures voor beveiliging en samen werking te verkrijgen. |

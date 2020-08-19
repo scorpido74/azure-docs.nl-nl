@@ -1,27 +1,26 @@
 ---
-title: 'Power shell-voor beeld: gebruikers & groepen voor de toepassings proxy-app weer geven'
-description: Power shell-voor beeld met een lijst met alle gebruikers en groepen die zijn toegewezen aan een specifieke Azure Active Directory-toepassings proxy toepassing (Azure AD).
+title: 'PowerShell-voorbeeld: gebruikers en groepen voor toepassingsproxy-app vermelden'
+description: PowerShell-voorbeeld waarin alle gebruikers en groepen worden vermeld die aan een bepaalde Azure Active Directory (Azure AD)-toepassingsproxytoepassing zijn gekoppeld.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab5ac5d4712dd9e72fc0b9665d740859b5a6775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 236850684ce479c2356943aea4fb0af570843f1f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75483386"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506950"
 ---
-# <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>Gebruikers en groepen weer geven die zijn toegewezen aan een toepassings proxy toepassing
+# <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>Gebruikers en groepen weergeven die zijn toegewezen aan een toepassingsproxytoepassing
 
-In dit voor beeld van een Power shell-script vindt u de gebruikers en groepen die zijn toegewezen aan een specifieke Azure Active Directory-toepassings proxy toepassing (Azure AD).
+In dit PowerShell-voorbeeld worden alle gebruikers en groepen vermeld die aan een bepaalde Azure Active Directory (Azure AD)-toepassingsproxytoepassing zijn gekoppeld.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +28,7 @@ In dit voor beeld van een Power shell-script vindt u de gebruikers en groepen di
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [Preview-versie van de AzureAD v2 Power shell voor Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
+Voor dit voorbeeld is de [AzureAD V2 PowerShell voor Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [AzureAD V2 PowerShell voor Graph-module (preview)](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -41,12 +40,12 @@ Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://doc
 |---|---|
 | [Get-AzureADUser](https://docs.microsoft.com/powershell/module/AzureAD/get-azureaduser?view=azureadps-2.0)| Hiermee wordt een gebruiker opgehaald. |
 | [Get-AzureADGroup](https://docs.microsoft.com/powershell/module/AzureAD/get-azureadgroup?view=azureadps-2.0)| Hiermee wordt een groep opgehaald. |
-| [Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hiermee wordt een Service-Principal opgehaald. |
-| [Get-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/get-azureaduserapproleassignment?view=azureadps-2.0) | Een roltoewijzing voor een gebruikers toepassing ophalen. |
-| [Get-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/get-azureadgroupapproleassignment?view=azureadps-2.0) | Een roltoewijzing voor een groeps toepassing ophalen. |
+| [Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hiermee wordt een service-principal opgehaald. |
+| [Get-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/get-azureaduserapproleassignment?view=azureadps-2.0) | Hiermee wordt een roltoewijzing voor een gebruikerstoepassing opgehaald. |
+| [Get-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/AzureAD/get-azureadgroupapproleassignment?view=azureadps-2.0) | Hiermee wordt een roltoewijzing voor een groepstoepassing opgehaald. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van Azure AD Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)voor meer informatie over de Azure AD Power shell-module.
+Zie het [overzicht van de Azure PowerShell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0) voor meer informatie over de Azure AD PowerShell-module.
 
-Raadpleeg voor andere Power shell-voor beelden voor toepassings proxy [Azure AD Power shell-voor beelden voor azure AD-toepassingsproxy](../application-proxy-powershell-samples.md).
+Zie [Azure AD PowerShell-voorbeelden voor de Azure AD-toepassingsproxy](../application-proxy-powershell-samples.md) voor andere PowerShell-voorbeelden voor de toepassingsproxy.

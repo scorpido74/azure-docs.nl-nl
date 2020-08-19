@@ -8,46 +8,61 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 08/10/2020
 ms.author: juliako
-ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656576"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604786"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-api"></a>Bekijk de Video Indexer uitvoer die door de API is geproduceerd
+# <a name="examine-the-video-indexer-output"></a>De Video Indexer uitvoer controleren
 
-Wanneer u de API **Get video-index** aanroept en de reactie status OK is, krijgt u een gedetailleerde JSON-uitvoer als de antwoord inhoud. De JSON-inhoud bevat details van de opgegeven video inzichten. De inzichten zijn onder andere: transcripten, OCRs, gezichten, onderwerpen, blokken, enzovoort. Elk inzicht type bevat exemplaren van peri Oden die laten zien wanneer het inzicht in de video wordt weer gegeven. 
+Wanneer een video wordt geïndexeerd, Video Indexer poduces de JSON-inhoud die de details van de opgegeven video inzichten bevat. De inzichten zijn onder andere: transcripten, OCRs, gezichten, onderwerpen, blokken, enzovoort. Elk inzicht type bevat exemplaren van peri Oden die laten zien wanneer het inzicht in de video wordt weer gegeven. 
+
+U kunt de samen vatting van de video visueel bekijken door op de knop **afspelen** op de video op de [video indexer](https://www.videoindexer.ai/) website te drukken. 
+
+U kunt ook de API gebruiken door de API **Get video-index** op te roepen en de antwoord status is OK, u krijgt een gedetailleerde JSON-uitvoer als de antwoord inhoud.
+
+![Inzichten](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+
+In dit artikel wordt de Video Indexer uitvoer (JSON-inhoud) onderzocht. Zie [video indexer Insights](video-indexer-overview.md#video-insights)voor meer informatie over de functies en inzichten die voor u beschikbaar zijn.
+
+> [!NOTE]
+> Het verlopen van alle toegangs tokens in Video Indexer is een uur.
+
+## <a name="get-the-insights"></a>Inzichten verkrijgen
+
+### <a name="insightsoutput-produced-in-the-websiteportal"></a>Inzichten/uitvoer geproduceerd in de website/portal
+
+1. Ga naar de [Video Indexer](https://www.videoindexer.ai/)-website en meld u aan.
+1. Zoek een video waarvan u de resultaten wilt bekijken.
+1. Druk op **Afspelen**.
+1. Selecteer het tabblad **inzichten** (samen vatting van inzichten) of het tabblad **tijd lijn** (Hiermee staat u toe dat de relevante inzichten worden gefilterd).
+1. Down load artefacten en waar ze zich bevinden.
+
+Zie [video Insights weer geven en bewerken](video-indexer-view-edit.md)voor meer informatie.
+
+## <a name="insightsoutput-produced-by-api"></a>Inzichten/uitvoer gegenereerd door API
 
 1. Als u het JSON-bestand wilt ophalen, roept u [video-index ophalen](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) op
 1. Als u ook specifieke artefacten wilt ontvangen, roept u [video artefact downloaden URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) op
 
     Geef in de API-aanroep het aangevraagde artefact type op (OCR, gezichten, keyframes, enzovoort)
 
-U kunt de samen vatting van de video ook visueel bekijken door op de knop **afspelen** op de video op de [video indexer](https://www.videoindexer.ai/) website te drukken. Zie [video Insights weer geven en bewerken](video-indexer-view-edit.md)voor meer informatie.
+## <a name="root-elements-of-the-insights"></a>Basis elementen van de inzichten
 
-![Inzichten](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
-
-In dit artikel wordt de JSON-inhoud onderzocht die wordt geretourneerd door de API **video-index ophalen** . 
-
-> [!NOTE]
-> Het verlopen van alle toegangs tokens in Video Indexer is een uur.
-
-
-## <a name="root-elements"></a>Hoofd elementen
-
-|Naam|Description|
+|Naam|Beschrijving|
 |---|---|
 |accountId|De VI-account-ID van de afspeel lijst.|
 |id|De ID van de afspeel lijst.|
 |naam|De naam van de afspeel lijst.|
-|description|De beschrijving van de afspeel lijst.|
+|beschrijving|De beschrijving van de afspeel lijst.|
 |userName|De naam van de gebruiker die de afspeel lijst heeft gemaakt.|
 |toegevoegd|De aanmaak tijd van de afspeel lijst.|
 |privacyMode|De privacy-modus van de afspeel lijst (privé/openbaar).|
-|state|De afspeel lijst (geüpload, verwerking, verwerkt, mislukt, in quarantaine geplaatst).|
+|staat|De afspeel lijst (geüpload, verwerking, verwerkt, mislukt, in quarantaine geplaatst).|
 |isOwned|Hiermee wordt aangegeven of de afspeel lijst is gemaakt door de huidige gebruiker.|
 |isEditable|Hiermee wordt aangegeven of de huidige gebruiker gemachtigd is om de afspeel lijst te bewerken.|
 |isBase|Hiermee wordt aangegeven of de afspeel lijst een basis-afspeel lijst (een video) of een afspeel lijst is gemaakt van andere Video's (afgeleid).|
@@ -86,7 +101,7 @@ In deze sectie vindt u een overzicht van de inzichten.
 |duur|Bevat één duur die aangeeft hoe lang een inzicht heeft plaatsgevonden. De duur is in seconden.|
 |thumbnailVideoId|De ID van de video waarvan de miniatuur is gemaakt.
 |thumbnailId|De miniatuur-ID van de video. Als u de daad werkelijke miniatuur wilt ophalen, roept u [Get-thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) aan en geeft u deze ThumbnailVideoId en thumbnailId door.|
-|aanhoudende|Kan nul of meer gezichten bevatten. Zie [gezichten](#faces)voor meer gedetailleerde informatie.|
+|gezichten/animatedCharacters|Kan nul of meer gezichten bevatten. Zie [gezichten/animatedCharacters](#facesanimatedcharacters)voor meer gedetailleerde informatie.|
 |trefwoorden|Kan nul of meer tref woorden bevatten. Zie [tref woorden](#keywords)voor meer gedetailleerde informatie.|
 |gevoel|Kan nul of meer gevoel bevatten. Zie [gevoel](#sentiments)voor meer gedetailleerde informatie.|
 |audioEffects| Kan nul of meer audioEffects bevatten. Zie [audioEffects](#audioeffects)voor meer gedetailleerde informatie.|
@@ -98,12 +113,12 @@ In deze sectie vindt u een overzicht van de inzichten.
 
 ## <a name="videos"></a>video's
 
-|Naam|Description|
+|Naam|Beschrijving|
 |---|---|
 |accountId|De VI-account-ID van de video.|
 |id|De ID van de video.|
 |naam|De naam van de video.
-|state|De status van de video (geüpload, verwerkt, verwerkt, mislukt, in quarantaine geplaatst).|
+|staat|De status van de video (geüpload, verwerkt, verwerkt, mislukt, in quarantaine geplaatst).|
 |processingProgress|De verwerkings voortgang tijdens de verwerking (bijvoorbeeld 20%).|
 |failureCode|De fout code als de verwerking is mislukt (bijvoorbeeld ' UnsupportedFileType ').|
 |failureMessage|Het fout bericht als de verwerking is mislukt.|
@@ -162,7 +177,7 @@ Een gezicht kan een ID, een naam, een miniatuur, andere meta gegevens en een lij
 |optische|Het [OCR](#ocr) -inzicht.|
 |trefwoorden|De [Zoek woorden](#keywords) begrijpen.|
 |blokken|Kan een of meer [blokken](#blocks) bevatten|
-|aanhoudende|De [gezichten](#faces) begrijpen.|
+|gezichten/animatedCharacters|De [gezichten/animatedCharacters](#facesanimatedcharacters) Insight.|
 |Labels|De [labels](#labels) begrijpen.|
 |afzonderlijke|De [Foto's](#shots) begrijpen.|
 |merken|De [Brands](#brands) begrijpen.|
@@ -203,7 +218,7 @@ vaak|Een lijst met tijds bereiken van dit blok.|
 
 #### <a name="transcript"></a>verslag
 
-|Naam|Description|
+|Naam|Beschrijving|
 |---|---|
 |id|De regel-ID.|
 |tekst|De transcriptie zelf.|
@@ -305,14 +320,18 @@ Voorbeeld:
 }
 ```
 
-#### <a name="faces"></a>aanhoudende
+#### <a name="facesanimatedcharacters"></a>gezichten/animatedCharacters
+
+`animatedCharacters` het element `faces` wordt vervangen als de video is geïndexeerd met een model met animatie-tekens. Dit wordt gedaan met behulp van een aangepast model in Custom Vision Video Indexer wordt uitgevoerd op keyframes.
+
+Als gezichten (zonder animatie tekens) aanwezig zijn, gebruikt Video Indexer Face-API in alle frames van de video om gezichten en beroemdheden te detecteren.
 
 |Naam|Beschrijving|
 |---|---|
 |id|De face-ID.|
 |naam|De naam van het gezicht. Dit kan ' onbekend #0, een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
 |betrouwbaarheid|De gezichts-id-betrouw baarheid.|
-|description|Een beschrijving van de beroemdheden. |
+|beschrijving|Een beschrijving van de beroemdheden. |
 |thumbnailId|De ID van de miniatuur van het gezicht.|
 |knownPersonId|De interne ID van een bekende persoon.|
 |referenceId|Als het een Bing-beroemdheden is, is dit de Bing-ID.|
@@ -500,7 +519,7 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 |naam|De naam van het merk.|
 |referenceId | Het achtervoegsel van de brand Wikipedia-URL. "Target_Corporation" is bijvoorbeeld het achtervoegsel van [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
 |referenceUrl | De Wikipedia-URL van het merk, indien aanwezig. Bijvoorbeeld [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
-|description|De beschrijving van de Brands.|
+|beschrijving|De beschrijving van de Brands.|
 |tags|Een lijst met vooraf gedefinieerde labels die aan dit merk zijn gekoppeld.|
 |betrouwbaarheid|De betrouw bare waarde van de Video Indexer merk detector (0-1).|
 |vaak|Een lijst met tijds bereiken van dit merk. Elk exemplaar heeft een brandType, waarmee wordt aangegeven of dit merk zich in het transcript of in de OCR bevindt.|

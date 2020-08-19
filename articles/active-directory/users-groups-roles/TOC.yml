@@ -42,6 +42,8 @@
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Gebruikers bulksgewijs maken
           href: users-bulk-add.md
+        - name: Gastgebruikersmachtigingen beperken
+          href: users-restrict-guest-permissions.md
         - name: Gebruikersprofielen beheren
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 'Mijn personeel: delegering'
@@ -68,19 +70,19 @@
           href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Dynamische groepen en B2B
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: Uw directory beheren
+    - name: Meerdere tenants beheren
       items:
-        - name: Azure AD-organisaties
+        - name: Azure AD-tenantbeheer
           href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Domeinnamen beheren
           href: domains-manage.md
-        - name: Een map verwijderen
+        - name: Een tenant verwijderen
           href: directory-delete-howto.md
         - name: Meerdere directory’s
           href: licensing-directory-independence.md
         - name: Selfservice registreren
           href: directory-self-service-signup.md
-        - name: Een directory overnemen
+        - name: Een tenant overnemen
           href: domains-admin-takeover.md
         - name: Azure AD Connect
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context

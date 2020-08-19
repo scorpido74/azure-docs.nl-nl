@@ -121,6 +121,8 @@
           href: howto-create-custom-analytics.md
         - name: Uw gegevens visualiseren in Power BI
           href: howto-connect-powerbi.md
+        - name: Bestandsuploads configureren en gebruiken
+          href: howto-configure-file-uploads.md
     - name: Beheer
       items:
         - name: Uw toepassing beheren

@@ -4,14 +4,14 @@ description: Meer informatie over het kiezen van een standaard (hand matige) ing
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116805"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605203"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Kiezen tussen standaard (hand matig) en ingerichte door Voer voor automatisch schalen 
 
@@ -26,10 +26,10 @@ Wanneer u de ingerichte door Voer gebruikt, stelt u de door Voer in, gemeten in 
 
 In de volgende tabel ziet u een vergelijking op hoog niveau tussen standaard (hand matig) en automatisch schalen.
 
-|Description|Standaard (hand matig)|Automatisch schalen|
+|Beschrijving|Standaard (hand matig)|Automatisch schalen|
 |-------------|------|-------|
 |Geschikt voor|Workloads met constant of voorspelbaar verkeer|Werk belastingen met variabele of onvoorspelbaar verkeer. Zie [use cases of automatisch schalen](provision-throughput-autoscale.md#use-cases-of-autoscale).|
-|Uitleg|U voorziet in een vaste hoeveelheid RU/s `T` die gedurende een bepaalde periode statisch is, tenzij u deze hand matig wijzigt. Elke seconde kunt u de `T` door Voer tot ru/s gebruiken. <br/><br/>Als u bijvoorbeeld standaard (hand matig) 400 RU/s instelt, blijft de door Voer op 400 RU/s.|U stelt het hoogste of maximum aantal RU/s `Tmax` in dat u niet meer wilt voor het systeem. Het systeem schaalt de door Voer `T` zo automatisch `0.1* Tmax <= T <= Tmax` . <br/><br/>Als u bijvoorbeeld automatisch schalen instelt voor het maximum aantal RU/s 4000 RU/s, wordt het systeem geschaald tussen 400-4000 RU/s.|
+|Hoe het werkt|U voorziet in een vaste hoeveelheid RU/s `T` die gedurende een bepaalde periode statisch is, tenzij u deze hand matig wijzigt. Elke seconde kunt u de `T` door Voer tot ru/s gebruiken. <br/><br/>Als u bijvoorbeeld standaard (hand matig) 400 RU/s instelt, blijft de door Voer op 400 RU/s.|U stelt het hoogste of maximum aantal RU/s `Tmax` in dat u niet meer wilt voor het systeem. Het systeem schaalt de door Voer `T` zo automatisch `0.1* Tmax <= T <= Tmax` . <br/><br/>Als u bijvoorbeeld automatisch schalen instelt voor het maximum aantal RU/s 4000 RU/s, wordt het systeem geschaald tussen 400-4000 RU/s.|
 |Wanneer te gebruiken|U wilt uw doorvoer capaciteit (RU/s) hand matig beheren en zelf schalen.<br/><br/>U hebt een hoog, consistent gebruik van ingerichte RU/s. Als u de ingerichte RU/s hebt ingesteld `T` en het volledige bedrag voor 66% van de uren of meer wilt gebruiken, kunt u het beste besparen met standaard (hand matig) ingerichte ru/s.<br/><br/>Dit is gebaseerd op een vergelijking tussen instelling `T` in standaard (hand matig) en hetzelfde bedrag `Tmax` in automatisch schalen. |U wilt dat Azure Cosmos DB uw doorvoer capaciteit (RU/s) en schalen op basis van gebruik beheert.<br/><br/>U hebt RU/s-gebruik dat variabel of moeilijk te voors pellen is. Als u het maximum aantal RU/s hebt ingesteld voor automatisch schalen `Tmax` en het volledige bedrag `Tmax` voor 66% van de uren gebruikt, kunt u het beste besparen met automatisch schalen.<br/><br/>Dit is gebaseerd op een vergelijking tussen het instellen van automatisch schalen `Tmax` en dezelfde hoeveelheid `T` in de standaard doorvoer (hand matig).|
 |Factureringsmodel|Facturering geschiedt per uur voor de ingerichte RU/s, ongeacht het aantal verbruikte i/o's.<br/><br/>Voorbeeld: <li>400 RU/s inrichten</li><li>Uur 1: geen aanvragen</li><li>Aantal uur 2:400 RU/s aanvragen</li><br/><br/>Voor zowel uur 1 als 2 wordt 400 RU/s gefactureerd voor beide uren met de [standaard tarieven (hand matig)](https://azure.microsoft.com/pricing/details/cosmos-db/).|Facturering geschiedt per uur voor de hoogste RU/s waarmee het systeem in het uur is geschaald. <br/><br/>Voorbeeld: <li>Automatisch schalen inrichten Max. RU/s van 4000 RU/s (schalen tussen 400-4000 RU/s)</li><li>Uur 1: systeem geschaald tot hoogste waarde van 3500 RU/s</li><li>Uur 2: systeem omlaag geschaald naar mini maal 400 RU/s (altijd 10% van `Tmax` ), omdat er geen gebruik is</li><br/><br/>Er worden kosten in rekening gebracht voor 3500 RU/s in uur 1 en 400 RU/s in uur 2 bij de [ingerichte doorvoer tarieven voor automatisch schalen](https://azure.microsoft.com/pricing/details/cosmos-db/). Het automatisch schalen per RU/s is 1,5 * de standaard tarieven (hand matig).
 |Wat gebeurt er als u de ingerichte RU/s overschrijdt|De RU/s blijven statisch bij wat is ingericht. Alle aanvragen die in een seconde buiten het ingerichte RUs worden gebruikt, zijn beperkt tot een bepaald aantal, met een reactie die een tijd moet wachten voordat het opnieuw wordt geprobeerd. U kunt de RU/s hand matig Verg Roten of verkleinen als dat nodig is.| Het systeem schaalt de RU/s tot het maximum aantal RU/s voor automatisch schalen. Aanvragen die buiten het automatisch schalen worden gebruikt, zijn in een tweede beperkt tot een bepaald aantal, met een reactie die een wacht tijd moet wachten voordat het opnieuw wordt geprobeerd.|
@@ -37,7 +37,10 @@ In de volgende tabel ziet u een vergelijking op hoog niveau tussen standaard (ha
 ## <a name="understand-your-traffic-patterns"></a>Inzicht in uw verkeers patronen
 
 ### <a name="new-applications"></a>Nieuwe toepassingen ###
-Als u een nieuwe toepassing bouwt en uw verkeers patroon nog niet kent, kunt u beginnen bij het ingangs punt RU/s (of de mini maal RU/s) om te voor komen dat de inrichting in het begin begint. Als u een kleine toepassing hebt waarvoor geen hoge schaal nodig is, kunt u het beste alleen het minimale invoer punt RU/s inrichten om de kosten te optimaliseren. In beide gevallen zijn standaard (hand matig) of automatisch schalen geschikt. U moet rekening houden met het volgende:
+
+Als u een nieuwe toepassing bouwt en uw verkeers patroon nog niet kent, kunt u beginnen bij het ingangs punt RU/s (of de mini maal RU/s) om te voor komen dat de inrichting in het begin begint. Als u een kleine toepassing hebt waarvoor geen hoge schaal nodig is, kunt u het beste alleen het minimale invoer punt RU/s inrichten om de kosten te optimaliseren. Voor kleine toepassingen met een laag verwacht verkeer kunt u ook de modus voor [serverloze](throughput-serverless.md) capaciteit overwegen.
+
+Of u nu standaard (hand matig) of automatisch schalen wilt gebruiken, wat u moet overwegen:
 
 Als u standaard (hand matig) RU/s inricht op het ingangs punt van 400 RU/s, kunt u niet meer dan 400 RU/s gebruiken, tenzij u de door Voer hand matig wijzigt. Er worden kosten in rekening gebracht voor 400 RU/s bij de standaard (hand matig) ingerichte doorvoer snelheid per uur.
 

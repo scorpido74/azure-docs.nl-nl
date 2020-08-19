@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439734"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042799"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Zelfstudie: Custom Vision Service gebruiken om afbeeldingsclassificatie uit te voeren aan de rand
 
@@ -433,9 +433,9 @@ Bekijk op uw apparaat de logboeken van de module cameraCapture om de berichten t
 Klik in de Visual Studio Code Explorer met de rechtermuisknop op de naam van uw IoT Edge-apparaat en selecteer **Bewaking van ingebouwd gebeurteniseindpunt starten**. 
 
 > [!NOTE]
-> Mogelijk ziet u in eerste instantie enkele verbindingsfouten in de uitvoer van de cameraCapture-module. Dit komt door de vertraging tussen het implementeren en starten van de modules.
+> Mogelijk ziet u in eerste instantie verbindingsfouten in de uitvoer van de cameraCapture-module. Dit komt door de vertraging tussen het implementeren en starten van de modules.
 >
-> De cameraCapture-module zal de verbinding automatisch opnieuw proberen tot stand te brengen totdat dit is gelukt. Daarna moet u de verwachte berichten voor afbeeldingsclassificatie gaan zien die hieronder worden beschreven.
+> De cameraCapture-module probeert de verbinding automatisch opnieuw tot stand te brengen totdat dit is gelukt. Nadat de verbinding is geslaagd, ziet u de verwachte afbeeldingsclassificatieberichten die hieronder worden beschreven.
 
 De resultaten van de Custom Vision-module, die als berichten vanuit de module cameraCapture zijn verzonden, geven de waarschijnlijkheid aan dat de afbeelding een Canadese den of een Japanse kers is. Omdat het een afbeelding van een Canadese den is, moet u de waarschijnlijkheid 1.0 zien.
 

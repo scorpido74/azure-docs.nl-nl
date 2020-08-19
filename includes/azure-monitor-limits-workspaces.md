@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c8868cd6f5c50b84f263155518ee553145afcfa9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226189"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602418"
 ---
 **Volume gegevensverzameling en gegevensretentie** 
 
@@ -66,11 +66,11 @@ ms.locfileid: "88226189"
 
 **<a name="data-ingestion-volume-rate">Gegevensopnamevolume</a>**
 
-Azure Monitor is een grootschalige gegevensservice die elke maand een groeiend aantal terabytes aan gegevens van duizenden klanten verwerkt. De limiet voor het opnamevolume moet de klanten van Azure Monitor beschermen tegen plotselinge opnamepieken in een multitenancy-omgeving. Er is een standaarddrempel van 500 MB (gecomprimeerd) voor het opnamevolume van toepassing op werkruimtes. Dit staat gelijk aan een niet-gecomprimeerd volume van ongeveer **6 GB/min**. De werkelijke grootte kan per gegevenstype variëren afhankelijk van de logboeklengte en de compressieratio ervan. Deze drempel geldt voor elke gegevensopname, ongeacht of deze is verzonden vanuit Azure-resources met behulp van [Diagnostische instellingen](../articles/azure-monitor/platform/diagnostic-settings.md), [Gegevensverzamelaar-API](../articles/azure-monitor/platform/data-collector-api.md) of agents.
+Azure Monitor is een grootschalige gegevensservice die elke maand een groeiend aantal terabytes aan gegevens van duizenden klanten verwerkt. De limiet voor het opnamevolume moet de klanten van Azure Monitor isoleren tegen plotselinge opnamepieken in een multitenancy-omgeving. Er is een standaarddrempel van 500 MB (gecomprimeerd) voor het opnamevolume gedefenieerd in werkruimtes. Dit staat gelijk aan een niet-gecomprimeerd volume van ongeveer **6 GB/min**. De werkelijke grootte kan per gegevenstype variëren afhankelijk van de logboeklengte en de compressieratio ervan. Deze volumebeperking geldt voor elke gegevensopname, ongeacht of deze is verzonden vanuit Azure-resources met behulp van [Diagnostische instellingen](../articles/azure-monitor/platform/diagnostic-settings.md), [Gegevensverzamelaar-API](../articles/azure-monitor/platform/data-collector-api.md) of agents.
 
-Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is dan 80 % van de drempel die in uw werkruimte is geconfigureerd, wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel nog steeds wordt overschreden. Als het opnamevolume hoger is dan de drempel, worden sommige gegevens verwijderd en wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel wordt overschreden. Als uw opnamevolume de drempel blijft overschrijden of als u verwacht de drempel binnenkort te bereiken, kunt u een verhoging in uw werkruimte aanvragen door een ondersteuningsaanvraag te openen. 
+Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is dan 80 % van de drempel die in uw werkruimte is geconfigureerd, wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel nog steeds wordt overschreden. Als het opnamevolume hoger is dan de drempel, worden sommige gegevens verwijderd en wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel wordt overschreden. Als uw opnamevolume de drempel blijft overschrijden of als u verwacht de drempel binnenkort te bereiken, kunt u een verhoging aanvragen door een ondersteuningsaanvraag te openen. 
 
-Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werkruimte, maakt u een [waarschuwingsregel voor het logboek](../articles/azure-monitor/platform/alerts-log.md) met behulp van de volgende query met waarschuwingslogica op basis van het aantal resultaten hoger dan nul, evaluatieperiode van 5 minuten en frequentie van 5 minuten.
+Als u een melding wilt ontvangen over een het bereiken van het volumelimiet in uw werkruimte, maakt u een [waarschuwingsregel voor het logboek](../articles/azure-monitor/platform/alerts-log.md) met behulp van de volgende query met waarschuwingslogica op basis van het aantal resultaten hoger dan nul, evaluatieperiode van 5 minuten en frequentie van 5 minuten.
 
 Het opnamevolume heeft 80 % van de drempel bereikt:
 ```Kusto

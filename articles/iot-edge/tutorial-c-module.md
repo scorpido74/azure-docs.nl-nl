@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4bed27654b3482300d3d102d545b44373c53dde0
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: cf9fb8a95be9a5ba025534508139a0e300036542
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439799"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064839"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Zelfstudie: C-module ontwikkelen voor Linux-apparaten met IoT Edge
 
@@ -57,6 +57,8 @@ Voordat u met deze zelfstudie begint, moet u de vorige zelfstudie hebben doorlop
 Om een IoT Edge-module te ontwikkelen in C, installeert u de volgende aanvullende vereisten op uw ontwikkelcomputer:
 
 * [C/C++-extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) voor Visual Studio Code (Engelstalig).
+
+U hoeft de Azure IoT C SDK niet te installeren voor deze zelfstudie, maar deze kan wel handige functionaliteit bieden, zoals IntelliSense en het lezen van programmadefinities. Zie [Azure IoT C-SDK's en -bibliotheken](https://github.com/Azure/azure-iot-sdk-c) voor informatie over de installatie.
 
 ## <a name="create-a-module-project"></a>Een moduleproject maken
 

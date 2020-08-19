@@ -24,6 +24,8 @@
       href: classroom-labs-fundamentals.md
     - name: Capaciteitslimieten
       href: capacity-limits.md
+    - name: Kostenbeheer voor labs
+      href: cost-management-guide.md
     - name: Scenario's
       items:
         - name: Labservices gebruiken om les te geven
@@ -66,7 +68,7 @@
           href: how-to-manage-lab-accounts.md
         - name: Labs beheren in een labaccount
           href: manage-labs.md
-        - name: Automatisch afsluiten configureren voor VM's
+        - name: Automatisch afsluiten configureren voor VM's in een labaccount
           href: how-to-configure-lab-accounts.md
         - name: Een labmaker toevoegen
           href: add-lab-creator.md
@@ -86,8 +88,6 @@
           href: specify-marketplace-images.md
         - name: Ondersteuningsinformatie opgeven (labaccounteigenaar)
           href: lab-account-owner-support-information.md
-        - name: Kostenbeheer voor labs
-          href: cost-management-guide.md
     - name: Leslokaallabs maken en configureren (onderwijzer)
       items:
         - name: Leslokaallabs maken en beheren
@@ -106,7 +106,7 @@
           href: how-to-use-shared-image-gallery.md
         - name: Verbinding met Extern bureaublad inschakelen voor Linux
           href: how-to-enable-remote-desktop-linux.md
-        - name: De functie Automatisch afsluiten wanneer de verbinding is verbroken inschakelen
+        - name: Automatisch afsluiten configureren voor VM's in een lab
           href: how-to-enable-shutdown-disconnect.md
         - name: Geneste virtualisatie inschakelen in een sjabloon-VM
           items:

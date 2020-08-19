@@ -138,6 +138,8 @@
           href: concepts-server-parameters.md
     - name: Ontwikkeling
       items:
+        - name: Best practices voor toepassingen
+          href: app-development-best-practices.md
         - name: Compatibiliteit van stuurprogramma's en hulpprogramma's
           href: concepts-compatibility.md
         - name: Toepassingen ontwikkelen

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een zoek opdracht voor nieuws met python en de Bing News Search uitvoeren REST API'
+title: 'Quickstart: Nieuws zoeken met Python en de REST API voor Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om een aanvraag naar de REST API van Bing News Search te verzenden via Python en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 06/16/2020
 ms.author: aahi
-ms.custom: seodec2018, tracking-python
-ms.openlocfilehash: 534310609b1d2f375feef81fe45147485216d5ec
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.custom: seodec2018, devx-track-python
+ms.openlocfilehash: 115d0204b4e1a05e5d4c655efb52b3fc3123bebe
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84883730"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851831"
 ---
-# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Snelstartgids: een zoek opdracht uitvoeren met behulp van python en de Bing News Search REST API
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Quickstart: Nieuws zoeken met behulp van Python en de REST API voor Bing News Search
 
-Gebruik deze Quick Start om uw eerste oproep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige python-toepassing wordt een zoek query naar de API verzonden en wordt het JSON-resultaat verwerkt. 
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Nieuws zoeken-API te maken. Met deze eenvoudige Python-toepassing wordt een zoekquery naar de API verzonden en wordt het JSON-resultaat verwerkt. 
 
-Hoewel deze toepassing is geschreven in Python, is de API een REST-webservice die compatibel is met de meeste programmeer talen.
+Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-Als u dit code voorbeeld wilt uitvoeren als een Jupyter-notebook op [MyBinder](https://mybinder.org), selecteert u de badge met het starten van de **Binder** : 
+Als u dit voorbeeld als een Jupyter-notebook op [MyBinder](https://mybinder.org) wilt uitvoeren, selecteert u de badge **Binder starten**: 
 
 [![Binder starten](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
 
@@ -34,7 +34,7 @@ De broncode voor dit voorbeeld is ook beschikbaar op [GitHub](https://github.com
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-Maak een nieuw Python-bestand in uw favoriete IDE of editor en importeer de aanvraagmodule. Maak variabelen voor uw abonnements sleutel, eind punt en zoek term. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+Maak een nieuw Python-bestand in uw favoriete IDE of editor en importeer de aanvraagmodule. Maak variabelen voor uw abonnementssleutel, eindpunt en zoekterm. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
 ```python
 import requests
@@ -55,7 +55,7 @@ params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
 
 ## <a name="send-a-request-and-get-a-response"></a>Een aanvraag verzenden en een antwoord ontvangen
 
-1. Gebruik de bibliotheek aanvragen om de Bing Visual Search-API aan te roepen met uw abonnements sleutel en de woordenlijst objecten die u in de vorige stap hebt gemaakt.
+1. Gebruik de aanvraagbibliotheek om de Bing Visual Search-API aan te roepen met uw abonnementssleutel, net als de woordenlijstobjecten die u in de vorige stap hebt gemaakt.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -63,13 +63,13 @@ params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
     search_results = json.dumps(response.json())
     ```
 
-2. De beschrijvingen van de artikelen die zijn opgenomen in het antwoord van de API, die zijn opgeslagen in `search_results` als een JSON-object, worden geopend. 
+2. Bekijk de beschrijvingen van de artikelen die zijn opgenomen in het antwoord van de API, die is opgeslagen in `search_results` als een JSON-object. 
     
     ```python
     descriptions = [article["description"] for article in search_results["value"]]
     ```
 
-## <a name="display-the-results"></a>De resultaten weer geven
+## <a name="display-the-results"></a>De resultaten weergeven
 
 Deze beschrijvingen kunnen vervolgens worden weergegeven als een tabel met het zoekwoord vet gemarkeerd.
 

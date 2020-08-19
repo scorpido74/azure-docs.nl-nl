@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030747"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604644"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding maken
 
@@ -29,7 +29,7 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
    ![Illustreert het navigatie menu.](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
-> Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
+> Nadat een aanbieding is gepubliceerd, worden wijzigingen die zijn aangebracht in het partner centrum alleen weer gegeven in online winkels na het opnieuw publiceren van de aanbieding. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
 
 > [!IMPORTANT]
 > Als **Power bi service-app** niet wordt weer gegeven of ingeschakeld, is uw account niet gemachtigd om dit aanbiedings type te maken. Controleer of u voldoet aan alle [vereisten](create-power-bi-app-overview.md) voor dit aanbiedings type, inclusief registratie voor een ontwikkelaars account.

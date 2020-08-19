@@ -1,6 +1,6 @@
 ---
 title: Zelfstudie voor het via SMB kopiëren van gegevens naar Azure Data Box Heavy | Microsoft Docs
-description: Leer hoe u via SMB gegevens kopieert naar uw Azure Data Box Heavy
+description: In deze zelfstudie leert u hoe u verbinding kunt maken met en gegevens kunt kopiëren van uw hostcomputer naar de Azure Data Box Heavy door gebruik te maken van SMB met de lokale webinterface.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b02345ded6f519981db03795678802107f9cfb1f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6c88a1eaee50676cfe6bb9589779d7156b805e30
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206691"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920973"
 ---
 ::: zone target = "docs"
 

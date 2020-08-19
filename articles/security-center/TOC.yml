@@ -151,6 +151,8 @@
           href: workflow-automation.md
         - name: Aanbevelingen exporteren
           href: continuous-export.md
+    - name: Beheer uw resources met assetinventarissen
+      href: asset-inventory.md
     - name: Integreren met andere hulpprogramma's en services
       items:
         - name: Integreren met Windows Admin Center

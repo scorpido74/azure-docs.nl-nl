@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 08/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: a7e81b636690ced9baafc79de110f78c7258c36e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509369"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056296"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Zelfstudie: Sage Intacct integreren met Azure Active Directory
 
@@ -45,6 +44,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Sage Intacct biedt ondersteuning voor met **IDP** geïnitieerde eenmalige aanmelding
+* Zodra u Sage Intacct hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>Sage Intacct toevoegen vanuit de galerie
 
@@ -57,7 +57,7 @@ Als u de integratie van Sage Intacct met Azure AD wilt configureren, moet u Sage
 1. Typ **Sage Intacct** in het zoekvak in het gedeelte **Toevoegen uit de galerie**.
 1. Selecteer **Sage Intacct** in de zoekresultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sage-intacct"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Sage Intacct
+## <a name="configure-and-test-azure-ad-sso-for-sage-intacct"></a>Eenmalige aanmelding van Azure AD voor Sage Intacct configureren en testen
 
 Configureer en test eenmalige aanmelding van Azure AD met Sage Intacct met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Sage Intacct.
 
@@ -227,3 +227,4 @@ Wanneer u in het toegangsvenster op de tegel van Sage Intacct klikt, zou u autom
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

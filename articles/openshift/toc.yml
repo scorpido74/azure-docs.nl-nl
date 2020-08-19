@@ -79,6 +79,8 @@
   items:
     - name: Netwerken in Azure Red Hat OpenShift 4-clusters
       href: concepts-networking.md
+    - name: Migreren van een Azure Red Hat OpenShift 3.11 naar Azure Red Hat OpenShift 4
+      href: migration.md
 - name: Naslaginformatie
   items:
     - name: CLI voor Azure Red Hat OpenShift

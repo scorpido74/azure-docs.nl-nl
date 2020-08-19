@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 757f729caa7ea8a038a29f8e0a56465848b774ad
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 69be4118aca45582c38bb49a996782d661d8084f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035107"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604401"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Verkoop richtlijnen voor Azure Marketplace
 
@@ -31,7 +31,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | 7 | Video's | <ul><li>Er is geen video vereist, maar indien opgegeven, moet deze zonder fouten worden afgespeeld.</li><li>Indien dit niet het geval is, kan deze niet verwijzen naar leveranciers van de concurrent, *tenzij* er een migratie oplossing wordt gedemonstreerd. |<ul><li>In het ideale geval is de lengte 3 min. of meer.</li><li>De aanbieding van de oplossing is eenvoudig te begrijpen via video-inhoud.</li><li>Biedt een demo van oplossings mogelijkheden. |
 | 8 | Status weer geven (aanroepen naar actie) | <ul><li>Moet worden aangeduid als een van de volgende typen: <ul><li>*Contact opnemen*</li><li>*Proef versie* / Nu proef versie *ophalen* / *Proef versie starten* / *Station testen*</li><li>*Nu kopen* / *Nu downloaden*</li></ul></ul> | De klant kan gemakkelijk begrijpen wat de volgende stappen zijn: <ol><li>Probeer de proef versie.</li><li>Nu kopen.</li><li>Neem contact op via e-mail adres of telefoon nummer om te bepalen of het concept (haalbaarheids test), de evaluatie of de informatie moet worden genoteerd.</li></ol> | 
 | 9 | Prijzen van oplossingen | Moet het tabblad met prijs stellingen voor de oplossing of details hebben en de prijzen moeten zich in de lokale valuta van de aanbieding van de partner oplossing bezoeken. | Er moeten meerdere facturerings opties beschikbaar zijn met prijs categorieën om klant opties te bieden. |
-| 10 | Lees meer | Koppelingen onderaan (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en kunnen goed worden weer gegeven. |    Koppelingen naar specifieke items (bijvoorbeeld spec Pages op de partner site) en niet alleen de start pagina van de partner. | 
+| 10 | Meer informatie | Koppelingen onderaan (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en kunnen goed worden weer gegeven. |    Koppelingen naar specifieke items (bijvoorbeeld spec Pages op de partner site) en niet alleen de start pagina van de partner. | 
 | 11 | Ondersteuning en Help voor oplossingen | Een koppeling maken naar ten minste één van de volgende: <ul><li>Telefoon nummers</li><li>E-mail ondersteuning</li><li>Chat-agents</li><li>Communautaire forums |<ul><li>Alle ondersteunings methoden worden weer gegeven.</li><li>Betaalde ondersteuning wordt gratis aangeboden tijdens de *proef* -of *test drive* -periode. |
 | 12 | Juridisch | Beleids regels of voor waarden zijn beschikbaar via een open bare URL. |  |
 |||
@@ -50,8 +50,8 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | 1 | Titel van aanbieding |<ul><li>Mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. De titel kan niet worden gewijzigd nadat deze is gepubliceerd.</li><li>Hierin wordt een beschrijving van de oplossing beschreven.</li><li>Komt overeen met de online promotie van de oplossing op de website van de partner. | Bevat tref woorden voor de sleutel. |
 | 2 | Technische informatie: Configuratie |<ul><li>Voor software as a Service (SaaS)-apps kiest u of u alleen uw app wilt vermelden of dat klanten uw app kunnen kopen via Azure.</li><li>Selecteer de gewenste tekst op de knop aanschaf van uw aanbieding: *gratis*, *gratis proef versie*of *Neem contact met mij*op.</li><li>Selecteer in het pop-upvenster slechts één toepasselijk product als uw app gebruikmaakt van de technologie: Cortana Intelligence, Power BI oplossings sjablonen of Power apps. |  |
 | 3 | Station testen | Selecteer *Ja* of *Nee* | De klant kan gemakkelijk begrijpen wat de volgende stappen zijn: <ol><li>Probeer de proef versie.</li><li>Nu kopen.</li><li>Neem contact op via e-mail adres of telefoon nummer om de HAALBAARHEIDs-, evaluatie-of-informatie te rangschikken.</li></ol> |
-| 4 | Details van de winkel: overzicht van aanbieding | Wordt op de zoek pagina van de app weer gegeven en heeft een maximum van 100 tekens. | |
-| 5 | Details van de winkel: industrieën | Industries (max. 2): Selecteer de branches die uw app het beste is uitgelijnd en van toepassing is op. | |
+| 4 | Details van online winkel: overzicht van aanbieding | Wordt op de zoek pagina van de app weer gegeven en heeft een maximum van 100 tekens. | |
+| 5 | Details van online winkel: industrieën | Industries (max. 2): Selecteer de branches die uw app het beste is uitgelijnd en van toepassing is op. | |
 | 6 | Beschrijving van aanbieding | <ul><li>Eenvoudige HTML is toegestaan, inclusief \<p> , \<em> , \<ul> , \<li> , \<ol> en header-tags. Met maximaal 3000 tekens.</li><li>Bevat 2-3 alinea's.</li><li>De aanbieding van oplossingen kan in één oogopslag worden begrepen.</li><li>Beschrijving is uitgebreid en legt doel publiek, type gebruiker en waarom het waardevol is (toegevoegde waarde).</li><li>Bevindt zich in de vorm van een alinea, met korte zinnen die eenvoudig te begrijpen zijn. | <ul><li>De doel branche wordt beschreven (indien van toepassing).</li><li>Een goede stijl opmaak, waarbij elke kop van een alinea een enkele zin of woord groep bevat waarmee de inhoud wordt samenvatten die volgt, en waar nodig, indien van toepassing, voor het benadrukken van belang rijke voor delen. Het doel is dat de lezer de aanbieding in één oogopslag in een overzichtelijke indeling kan zien en dat u geen alinea's hoeft te lezen.</li><li>Er is ruimte tussen elke alinea. Het wordt als een auto brochure gelezen. Dat wil zeggen dat het uitgebreid is en beschrijft de aanbieding gewoon, zonder technisch jargon. | 
 | 7 | Marketing artefacten | Logo's worden correct weer gegeven. | <ul><li>Logo's: klein (48 x 48 pixels), gemiddeld (90 x 90 pixels) en groot (tussen 216 x 216 en 350 x 350 pixels) zijn vereist.</li><li>Scherm afbeelding (max. 5): vereist een. PNG-afbeelding met een resolutie van 1280x720 pixels. |
 | 8 | Categorieën en industrieën | <ul><li>Categorieën komen overeen met de mogelijkheden van oplossingen.</li><li>Selecteer ten minste één item in het pop-upvenster.</li><li>Selecteer geen categorieën die niet geschikt zijn voor de oplossing.</li><li>Optimale industrie of alle geselecteerde branches (als dit niet de beste branches zijn). | Met maximaal 3 categorieën geselecteerd, indien van toepassing. |
@@ -85,7 +85,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | 9 | Competenties | Moet competentie hebben in ten minste één van de volgende:<ul><li>Ontwikkeling van toepassingen</li><li>Integratie van toepassingen</li><li>Beheer van toepassingslevenscyclus</li><li>Cloud platform<li>Data Analytics</li><li>Datacentrum</li><li>Gegevens platform</li><li>DevOps |
 | 10 | Producten | Azure-producten moeten zijn. | |
 | 11 | Land/regio | Zorg ervoor dat het land/de regio overeenkomt met de geselecteerde valuta. | |
-| 12 | Lees meer  | <ul><li>Koppelingen aan de onderkant (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en worden correct weer gegeven.</li><li>Koppelingen moeten een beschrijvende naam hebben en worden niet weer gegeven als de bestands naam van een down load. | |
+| 12 | Meer informatie  | <ul><li>Koppelingen aan de onderkant (onder de beschrijving, niet de koppelingen van Azure Marketplace aan de linkerkant) leiden tot meer informatie over de oplossing en zijn openbaar en worden correct weer gegeven.</li><li>Koppelingen moeten een beschrijvende naam hebben en worden niet weer gegeven als de bestands naam van een down load. | |
 ||||
 
 ## <a name="next-steps"></a>Volgende stappen

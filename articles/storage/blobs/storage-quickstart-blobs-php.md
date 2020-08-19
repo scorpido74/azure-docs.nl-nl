@@ -1,18 +1,18 @@
 ---
 title: 'Azure-snelstart: een blob maken in objectopslag met PHP | Microsoft Docs'
-description: Snel leren om objecten over te dragen naar/van Azure Blob-opslag met PHP
+description: Leer snel objecten over te dragen naar/van Azure Blob-opslag met PHP. Upload, download en vermeld blok-blobs in een container in Azure Blob-opslag.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68726396"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835745"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objecten overdragen naar/van Azure Blob-opslag met PHP
 In deze snelstart leert u hoe u PHP kunt gebruiken om blok-bobs te uploaden, te downloaden en weer te geven in een container in Azure Blob-opslag. 
@@ -207,7 +207,7 @@ Zie de volgende aanvullende bronnen voor PHP-ontwikkeling met Blob-opslag:
 In deze snelstart hebt u geleerd hoe u bestanden overbrengt tussen een lokale schijf en Azure Blob-opslag met behulp van PHP. Ga naar ons PHP-ontwikkelaarscentrum voor meer informatie over werken met PHP.
 
 > [!div class="nextstepaction"]
-> [PHP-ontwikkelaars centrum](https://azure.microsoft.com/develop/php/)
+> [PHP-ontwikkelaarscentrum](https://azure.microsoft.com/develop/php/)
 
 
 Zie [Azure Blob-opslagresources beheren met Storage Explorer](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor meer informatie over Storage Explorer en blobs.

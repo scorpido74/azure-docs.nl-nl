@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 431f1da463e4bd9970bc92b0842393f2de882220
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131798"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604727"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Over de Mobility-service voor VMware-Vm's en fysieke servers
 
@@ -37,6 +37,7 @@ Push installatie is een integraal onderdeel van de taak die wordt uitgevoerd van
 
 - Zorg ervoor dat aan alle [vereisten](vmware-azure-install-mobility-service.md) voor de push-installatie is voldaan.
 - Zorg ervoor dat alle server configuraties voldoen aan de criteria in de [ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure](vmware-physical-azure-support-matrix.md).
+- Van, [9,36-versie](https://support.microsoft.com/help/4578241/) tot en met SuSE Linux Enterprise Server 11 SP4, Controleer of het meest recente installatie programma [beschikbaar is op de configuratie server en de scale-out proces server](#download-latest-mobility-agent-installer-for-suse-11-sp3-server)
 
 De push-installatie werk stroom wordt beschreven in de volgende secties:
 
@@ -142,7 +143,7 @@ Instelling | Details
 --- | ---
 Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 Agent configuratie logboeken | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
-`/CSEndPoint` | Verplichte para meter. `<CSIP>`Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
+`/CSEndPoint` | Verplichte para meter. `<CSIP>` Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
 `/PassphraseFilePath` |  Verplicht. Locatie van de wachtwoordzin. Gebruik een geldig UNC-pad of een lokaal bestandspad.
 
 ### <a name="linux-machine"></a>Linux-computer
@@ -181,13 +182,13 @@ Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 Instelling | Details
 --- | ---
 Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
-`-i` | Verplichte para meter. `<CSIP>`Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
+`-i` | Verplichte para meter. `<CSIP>` Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
 `-P` |  Verplicht. Volledig bestandspad van het bestand waarin de wachtwoordzin wordt opgeslagen. Gebruik een geldige map.
 
 ## <a name="azure-virtual-machine-agent"></a>Agent van de virtuele machine van Azure
 
 - **Windows-vm's**: van versie 9.7.0.0 van de Mobility-service wordt de [Azure VM-agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) geïnstalleerd door het installatie programma van de Mobility-service. Op deze manier zorgt u ervoor dat wanneer de computer failover naar Azure wordt uitgevoerd, de Azure VM voldoet aan de installatie vereisten van de agent voor het gebruik van een VM-extensie.
-- **Virtuele Linux-machines**: de [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) moet hand matig worden geïnstalleerd op de virtuele Azure-machine na een failover.
+- **Virtuele Linux-machines**: de  [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) moet hand matig worden geïnstalleerd op de virtuele Azure-machine na een failover.
 
 ## <a name="locate-installer-files"></a>Installatie bestanden zoeken
 
@@ -204,13 +205,27 @@ Installatie bestand | Besturings systeem (alleen 64-bits)
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> Inclusief SP2 en SP3.
-`Microsoft-ASR_UA_version_SLES11-SP3-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP3
+[Moeten worden gedownload en hand matig in deze map worden geplaatst](#download-latest-mobility-agent-installer-for-suse-11-sp3-server). | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enter prise Linux 6,4 </br> Oracle Enter prise Linux 6,5
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14,04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16,04 LTS-server
 `Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+
+### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>Nieuwste installatie programma van de Mobility-agent voor SUSE 11 SP3-server downloaden
+
+Als een **vereiste voor het bijwerken of beveiligen van SuSE Linux Enterprise Server 11 SP3-machines** vanaf [9,36-versie](https://support.microsoft.com/help/4578241/) :
+
+1. Zorg ervoor dat het nieuwste installatie programma van de Mobility-agent is gedownload van het micro soft Download centrum en in de push-installatie opslagplaats op de configuratie server en alle scale-out proces servers wordt geplaatst
+2. [Down load](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz) het installatie programma van de SuSE Linux Enterprise Server 11 SP3-agent.
+3. Ga naar configuratie server, kopieer het installatie programma van de SUSE Linux Enterprise Server 11 SP3-agent op de volgende paden
+    1. INSTALL_DIR \home\svsystems\pushinstallsvc\repository
+    1.  \Home\svsystems\admin\web\sw mappen INSTALL_DIR
+4. Ga nu naar de bijbehorende scale-out proces servers & Kopieer het installatie programma in beide paden die in de derde stap worden genoemd.
+5. Als installatiepad **bijvoorbeeld**C:\Program Files (x86) \Microsoft Azure site Recovery, worden de hierboven genoemde directory's
+    1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\pushinstallsvc\repository
+    1. C:\Program Files (x86) \Microsoft Azure site Recovery\home\svsystems\admin\web\sw pad
 
 ## <a name="next-steps"></a>Volgende stappen
 
