@@ -1,18 +1,18 @@
 ---
 title: Reageren op Azure-app configuratie sleutel-waarden gebeurtenissen
-description: Gebruik Azure Event Grid om u te abonneren op app-configuratie gebeurtenissen.
+description: Gebruik Azure Event Grid om u te abonneren op app-configuratie gebeurtenissen, waardoor toepassingen kunnen reageren op wijzigingen in sleutel waarden zonder gecompliceerde code.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523795"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590027"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reageren op Azure-app configuratie gebeurtenissen
 
@@ -29,7 +29,7 @@ Bekijk de [Route Azure-app configuratie gebeurtenissen naar een aangepast webein
 ## <a name="available-azure-app-configuration-events"></a>Beschik bare Azure-app configuratie gebeurtenissen
 Event grid gebruikt [gebeurtenis abonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Azure-app configuratie gebeurtenis abonnementen kunnen twee typen gebeurtenissen bevatten:  
 
-> |Gebeurtenisnaam|Description|
+> |Gebeurtenisnaam|Beschrijving|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Wordt geactiveerd wanneer een sleutel waarde wordt gemaakt of vervangen|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Wordt geactiveerd wanneer een sleutel waarde wordt verwijderd|
@@ -37,12 +37,12 @@ Event grid gebruikt [gebeurtenis abonnementen](../event-grid/concepts.md#event-s
 ## <a name="event-schema"></a>Gebeurtenisschema
 Azure-app configuratie gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op wijzigingen in uw gegevens. U kunt een gebeurtenis voor de configuratie van een app identificeren omdat de eigenschap Event type begint met ' micro soft. AppConfiguration '. Meer informatie over het gebruik van Event Grid gebeurtenis eigenschappen wordt beschreven in [Event grid-gebeurtenis schema](../event-grid/event-schema.md).  
 
-> |Eigenschap|Type|Description|
+> |Eigenschap|Type|Beschrijving|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |onderwerp|tekenreeks|Volledige Azure Resource Manager-id van de app-configuratie waarmee de gebeurtenis wordt verzonden.|
-> |Onderwerp|tekenreeks|De URI van de sleutel waarde die het onderwerp van de gebeurtenis is.|
+> |onderwerp|tekenreeks|De URI van de sleutel waarde die het onderwerp van de gebeurtenis is.|
 > |eventTime|tekenreeks|De datum/tijd waarop de gebeurtenis is gegenereerd, in ISO 8601-indeling.|
-> |Type|tekenreeks|"Micro soft. AppConfiguration. KeyValueModified" of "micro soft. AppConfiguration. KeyValueDeleted".|
+> |eventType|tekenreeks|"Micro soft. AppConfiguration. KeyValueModified" of "micro soft. AppConfiguration. KeyValueDeleted".|
 > |Id|tekenreeks|Een unieke id van deze gebeurtenis.|
 > |dataVersion|tekenreeks|De schemaversie van het gegevensobject.|
 > |metadataVersion|tekenreeks|De schema versie van de eigenschappen op het hoogste niveau.|

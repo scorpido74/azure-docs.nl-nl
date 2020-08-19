@@ -1,27 +1,22 @@
 ---
-title: Aangepaste domeinen in azure AD-toepassingsproxy | Microsoft Docs
+title: Aangepaste domeinen in azure AD-toepassingsproxy
 description: Aangepaste domeinen configureren en beheren in azure AD-toepassingsproxy.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764907"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587766"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Aangepaste domeinen configureren met Azure AD-toepassingsproxy
 
@@ -91,11 +86,11 @@ Uw app publiceren via een toepassings proxy met een aangepast domein:
    
    ![Aangepast domein selecteren](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. Als het domein al een certificaat heeft, wordt in het veld **certificaat** de gegevens van het certificaat weer gegeven. Als dat niet het geval is, selecteert u het veld **certificaat** . 
+6. Als het domein al een certificaat heeft, wordt in het veld **certificaat** de gegevens van het certificaat weer gegeven. Als dat niet het geval is, selecteert u het veld **certificaat** .
    
    ![Klik om een certificaat te uploaden](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. Blader op de pagina **SSL-certificaat** naar het pfx-certificaat bestand en selecteer dit. Voer het wacht woord voor het certificaat in en selecteer **certificaat uploaden**. Zie de sectie [certificaten voor aangepaste domeinen](#certificates-for-custom-domains) voor meer informatie over certificaten.
+7. Blader op de pagina **SSL-certificaat** naar het pfx-certificaat bestand en selecteer dit. Voer het wacht woord voor het certificaat in en selecteer **certificaat uploaden**. Zie de sectie [certificaten voor aangepaste domeinen](#certificates-for-custom-domains) voor meer informatie over certificaten. Als het certificaat ongeldig is of als er een probleem is met het wacht woord, wordt een fout bericht weer gegeven. De [Veelgestelde vragen over Application proxy](application-proxy-faq.md#application-configuration) bevat enkele stappen voor probleem oplossing die u kunt proberen.
    
    ![Certificaat uploaden](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ Met een certificaat maakt u de beveiligde TLS-verbinding voor uw aangepaste dome
 
 U moet een PFX-certificaat gebruiken om ervoor te zorgen dat alle vereiste tussenliggende certificaten zijn opgenomen. Het certificaat moet de persoonlijke sleutel bevatten.
 
-Er is geen beperking voor de handtekening methoden van het certificaat. Elliptische curve cryptography (ECC), alternatieve naam voor onderwerp (SAN) en andere algemene certificaat typen worden ondersteund. 
+De meest voorkomende methoden voor certificaat handtekeningen worden ondersteund, zoals een alternatieve naam voor het onderwerp (SAN). 
 
 U kunt Joker certificaten gebruiken zolang het Joker teken overeenkomt met de externe URL. U moet joker tekens gebruiken voor [toepassingen met Joker](application-proxy-wildcard.md)tekens. Als u het certificaat wilt gebruiken om ook toegang te krijgen tot subdomeinen, moet u de joker tekens subdomein toevoegen als alternatieve namen voor het onderwerp in hetzelfde certificaat. Een certificaat voor * \* . Adventure-Works.com* werkt bijvoorbeeld niet voor * \* . apps.Adventure-Works.com* tenzij u * \* . apps.Adventure-Works.com* toevoegt als alternatieve naam voor het onderwerp. 
 

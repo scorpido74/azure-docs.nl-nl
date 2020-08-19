@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 176aa925e4662731342ec3269e61ce9c7f71cf30
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 16f2bc2cc22fa38ece78b4a07298235abd7d629d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003833"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587086"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>Power shell: met behulp van de module Packer kunt u installatie kopieën voor virtuele machines maken in azure
 Elke virtuele machine (VM) in azure wordt gemaakt op basis van een installatie kopie die de Windows-distributie-en besturingssysteem versie definieert. Installatie kopieën kunnen vooraf geïnstalleerde toepassingen en configuraties bevatten. De Azure Marketplace biedt veel kopieën van de eerste en derde partij voor het meest voorkomende besturings systeem en de toepassingen omgevingen, of u kunt uw eigen aangepaste installatie kopieën maken die zijn afgestemd op uw behoeften. In dit artikel wordt beschreven hoe u met behulp van de open source tool [Packer](https://www.packer.io/) aangepaste installatie kopieën in azure kunt definiëren en bouwen.
@@ -67,8 +67,8 @@ Maak een bestand met de naam *windows.jsop* en plak de volgende inhoud. Voer uw 
 
 | Parameter                           | Waar u kunt verkrijgen |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Service-Principal-ID weer geven met`$sp.applicationId` |
-| *client_secret*                     | Het automatisch gegenereerde wacht woord weer geven met`$plainPassword` |
+| *client_id*                         | Service-Principal-ID weer geven met `$sp.applicationId` |
+| *client_secret*                     | Het automatisch gegenereerde wacht woord weer geven met `$plainPassword` |
 | *tenant_id*                         | Uitvoer van `$sub.TenantId` opdracht |
 | *subscription_id*                   | Uitvoer van `$sub.SubscriptionId` opdracht |
 | *managed_image_resource_group_name* | De naam van de resource groep die u in de eerste stap hebt gemaakt |
@@ -84,7 +84,7 @@ Maak een bestand met de naam *windows.jsop* en plak de volgende inhoud. Voer uw 
     "tenant_id": "zzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz",
     "subscription_id": "yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy",
 
-    "managed_image_resource_group_name": "myResourceGroup",
+    "managed_image_resource_group_name": "myPackerGroup",
     "managed_image_name": "myPackerImage",
 
     "os_type": "Windows",

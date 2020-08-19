@@ -3,12 +3,12 @@ title: Overzicht van Recovery Services-kluizen
 description: Een overzicht en vergelijking tussen Recovery Services kluizen en Azure Backup kluizen.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b292a39e38ef5e298f45c2babbee9fbd20c39ea
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261868"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587749"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
 
@@ -32,10 +32,19 @@ Een Recovery Service-kluis is een entiteit waarin de back-ups en herstelpunten w
 
 - Zie deze artikelen over [geo](../storage/common/storage-redundancy.md) en [lokale](../storage/common/storage-redundancy.md) redundantie voor meer informatie over opslag redundantie.
 
-### <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="encryption-settings-in-the-recovery-services-vault"></a>Versleutelings instellingen in de Recovery Services kluis
 
-- [Door de kluis ondersteunde en niet-ondersteunde scenario's](backup-support-matrix.md#vault-support)
-- [Veelgestelde vragen over de kluis](backup-azure-backup-faq.md)
+In deze sectie worden de opties beschreven die beschikbaar zijn voor het versleutelen van uw back-upgegevens die zijn opgeslagen in de Recovery Services kluis.
+
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Versleuteling van back-upgegevens met door het platform beheerde sleutels
+
+Standaard worden al uw gegevens versleuteld met sleutels die door het platform worden beheerd. U hoeft geen expliciete actie van uw end uit te voeren om deze versleuteling in te scha kelen. Dit is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.
+
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Versleuteling van back-upgegevens met door de klant beheerde sleutels
+
+U kunt ervoor kiezen om uw gegevens te versleutelen met versleutelings sleutels die eigendom zijn van en worden beheerd door u. Met Azure Backup kunt u uw RSA-sleutels gebruiken die zijn opgeslagen in de Azure Key Vault voor het versleutelen van uw back-ups. De versleutelings sleutel die wordt gebruikt voor het versleutelen van back-ups is mogelijk anders dan die voor de bron. De gegevens worden beveiligd met behulp van een AES 256-gegevens versleutelings sleutel (DEK), die op zijn beurt wordt beveiligd met uw sleutels. Hiermee krijgt u volledige controle over de gegevens en de sleutels. Als u versleuteling wilt toestaan, moet de Recovery Services kluis toegang krijgen tot de versleutelings sleutel in de Azure Key Vault. U kunt de sleutel uitschakelen of toegang intrekken wanneer dit nodig is. U moet echter versleuteling inschakelen met behulp van uw sleutels voordat u de items in de kluis probeert te beveiligen.
+
+Meer informatie over het versleutelen van uw back-upgegevens [met door de klant beheerde sleutels](encryption-at-rest-with-cmk.md).
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
@@ -45,9 +54,15 @@ Azure Advisor voorziet in elk uur [aanbevelingen](../advisor/advisor-high-availa
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
+## <a name="additional-resources"></a>Aanvullende bronnen
+
+- [Door de kluis ondersteunde en niet-ondersteunde scenario's](backup-support-matrix.md#vault-support)
+- [Veelgestelde vragen over de kluis](backup-azure-backup-faq.md)
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de volgende artikelen om:</br>
-[Back-up maken van een IaaS-VM](backup-azure-arm-vms-prepare.md)</br>
-[Een back-up maken van een Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
-[Back-up maken van een Windows-Server](backup-windows-with-mars-agent.md)
+Gebruik de volgende artikelen om:
+
+- [Back-up maken van een IaaS-VM](backup-azure-arm-vms-prepare.md)
+- [Een back-up maken van een Azure Backup Server](backup-azure-microsoft-azure-backup.md)
+- [Back-up maken van een Windows-Server](backup-windows-with-mars-agent.md)

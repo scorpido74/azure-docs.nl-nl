@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d0a6b6561b5d0995d7794993608a4991b1da2718
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 72c038bda88ecc9b7518f1f764a41bd4c49f52c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810136"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589415"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
 
@@ -350,7 +350,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 - [Azure Backup configureren voor het gebruik van Azure AD-aanmelding](../app-service/configure-authentication-provider-aad.md)
 
-- [Een AAD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Een Azure AD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -902,7 +902,7 @@ Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
 - [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Informatie over versleuteling in Azure Backup](./backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)
+- [Informatie over versleuteling in Azure Backup](./backup-encryption.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 

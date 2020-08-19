@@ -3,12 +3,12 @@ title: Naslaginformatie over app-instellingen voor Azure Functions
 description: Referentie documentatie voor de Azure Functions app-instellingen of omgevings variabelen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242760"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589297"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Naslaginformatie over app-instellingen voor Azure Functions
 
@@ -94,7 +94,7 @@ Optioneel opslag account connection string voor het opslaan van Logboeken en wee
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true`betekent dat de standaard landings pagina wordt uitgeschakeld die wordt weer gegeven voor de basis-URL van een functie-app. De standaardwaarde is `false`.
+`true` betekent dat de standaard landings pagina wordt uitgeschakeld die wordt weer gegeven voor de basis-URL van een functie-app. De standaardinstelling is `false`.
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
@@ -106,7 +106,7 @@ Als deze app-instelling wordt wegge laten of is ingesteld op `false` , wordt een
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`betekent release modus gebruiken bij het compileren van .NET-code. `false`betekent de foutopsporingsmodus gebruiken. De standaardwaarde is `true`.
+`true` betekent release modus gebruiken bij het compileren van .NET-code. `false` betekent de foutopsporingsmodus gebruiken. De standaardinstelling is `true`.
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
@@ -234,8 +234,8 @@ Alleen voor verbruik & Premium-abonnementen. Het bestandspad naar de code en con
 
 Het maximum aantal exemplaren waarmee de functie-app kan worden uitgeschaald. De standaard waarde is geen limiet.
 
-> [!NOTE]
-> Deze instelling is een preview-functie, en alleen betrouwbaar als deze is ingesteld op een waarde <= 5
+> [!IMPORTANT]
+> Deze instelling is beschikbaar als preview-versie.  Een [app-eigenschap voor de functie Max scale-out](./functions-scale.md#limit-scale-out) is toegevoegd en is de aanbevolen manier om uitschalen te beperken.
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
@@ -264,7 +264,7 @@ Geldige waarden zijn ofwel een URL die wordt omgezet in de locatie van een imple
 
 Hiermee stelt u de tijd zone voor de functie-app in. 
 
-|Sleutel|Besturingssysteem|Voorbeeldwaarde|
+|Sleutel|OS|Voorbeeldwaarde|
 |---|--|------------|
 |\_tijd \_ zone van website|Windows|Eastern (standaard tijd)|
 |\_tijd \_ zone van website|Linux|America/New_York|

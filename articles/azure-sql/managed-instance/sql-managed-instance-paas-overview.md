@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 06/25/2020
-ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 08/14/2020
+ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055199"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590061"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Wat is Azure SQL Managed instance?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -73,8 +73,8 @@ Het [op vCore gebaseerde aankoop model](../database/service-tiers-vcore.md) voor
 
 In het vCore-model kunt u kiezen tussen generaties van hardware.
 
-- **Gen4** logische cpu's zijn gebaseerd op Intel E5-2673 v3-processors (Haswell 2,4), gekoppelde SSD, fysieke kernen, 7 GB RAM per kern, en reken grootten tussen 8 en 24 vCores.
-- **GEN5** logische cpu's zijn gebaseerd op Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake)-processors, snelle NVME-SSD, Hyper-Threaded logische kern en reken grootten tussen 4 en 80 kernen.
+- **Gen4** logische cpu's zijn gebaseerd op Intel® E5-2673 v3 (Haswell) 2,4 GHz-processors, gekoppelde SSD, fysieke kernen, 7 GB RAM per kern en reken grootten tussen 8 en 24 vCores.
+- **GEN5** logische cpu's zijn gebaseerd op Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) en Intel® 8272CL (trapsgewijze Lake) 2,5 GHz processors, Fast NVMe SSD, Hyper-Threaded logische core en reken grootten tussen 4 en 80 kernen.
 
 Meer informatie over het verschil tussen hardware-generaties in [SQL Managed instance resource limieten](resource-limits.md#hardware-generation-characteristics).
 
@@ -131,7 +131,7 @@ SQL Managed instance biedt extra beveiligings isolatie van andere tenants op het
 
 Het volgende diagram geeft een overzicht van de verschillende connectiviteits opties voor uw toepassingen:
 
-![Maximale beschikbaarheid](./media/sql-managed-instance-paas-overview/application-deployment-topologies.png)  
+![Hoge beschikbaarheid](./media/sql-managed-instance-paas-overview/application-deployment-topologies.png)  
 
 Zie voor meer informatie over VNet-integratie en het afdwingen van het netwerk beleid op subnetniveau [vnet-architectuur voor beheerde instanties](connectivity-architecture-overview.md) en [Verbind uw toepassing met een beheerd exemplaar](connect-application-instance.md).
 

@@ -1,14 +1,14 @@
 ---
 title: Een beheerde service aanbieding naar Azure Marketplace publiceren
 description: Meer informatie over het publiceren van een Managed Service-aanbod waarmee klanten naar Azure Lighthouse worden geleid.
-ms.date: 07/28/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ab12238bac7e479766b3e328c02f73521d08ad96
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167213"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589721"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Een beheerde service aanbieding naar Azure Marketplace publiceren
 
@@ -22,8 +22,19 @@ Op basis van de [certificerings vereisten voor het beheerde service aanbod](/leg
 
 Uw Microsoft Partner Network-ID (MPN) wordt [automatisch gekoppeld](../../cost-management-billing/manage/link-partner-id.md) aan de aanbiedingen die u publiceert voor het bijhouden van invloed op de klant afspraken.
 
-> [!NOTE]
-> Als u een aanbieding niet wilt publiceren naar Azure Marketplace, kunt u klanten hand matig voorbereiden door Azure Resource Manager sjablonen te gebruiken. Zie voor meer informatie [onboarding van een klant naar Azure Lighthouse](onboard-customer.md).
+Als u geen aanbieding naar Azure Marketplace wilt publiceren, of als u niet aan alle vereisten voldoet, kunt u klanten hand matig voorbereiden door Azure Resource Manager sjablonen te gebruiken. Zie voor meer informatie [onboarding van een klant naar Azure Lighthouse](onboard-customer.md).
+
+Aan de hand van de volgende tabel kunt u bepalen of u klanten wilt vrijgeven door een beheerde service aanbieding te publiceren of door Azure Resource Manager sjablonen te gebruiken.
+
+|**Overweging**  |**Beheerde service aanbieding**  |**ARM-sjablonen**  |
+|---------|---------|---------|
+|Vereist [partner centrum-account](../../marketplace/partner-center-portal/create-account.md)   |Ja         |Nee        |
+|Vereist [zilver of Gold-competentie niveau van het Cloud platform](/partner-center/learn-about-competencies) of [Azure expert msp](https://partner.microsoft.com/membership/azure-expert-msp)      |Ja         |Nee         |
+|Beschikbaar voor nieuwe klanten via Azure Marketplace     |Ja     |Nee       |
+|Aanbieding kan worden beperkt tot specifieke klanten     |Ja (alleen met privé aanbiedingen, die niet kan worden gebruikt met abonnementen die zijn vastgesteld via een wederverkoper van het programma voor Cloud Solution Provider (CSP))         |Ja         |
+|Vereist acceptatie van klant in Azure Portal     |Ja     |Nee   |
+|Kan Automation gebruiken om meerdere abonnementen, resource groepen of klanten uit te boarden |Nee     |Ja    |
+|Directe toegang tot nieuwe ingebouwde rollen en Azure Lighthouse-functies     |Niet altijd (algemeen beschikbaar na enige vertraging)         |Ja         |
 
 ## <a name="create-your-offer"></a>Uw aanbieding maken
 

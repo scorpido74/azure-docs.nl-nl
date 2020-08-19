@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f48b30e0e4e76a4cf4c855008776f6b7541ad5a2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850645"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589347"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Scenario: Azure Firewall-aangepast
 
 Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare scenario's. In dit scenario is het doel om verkeer tussen VNets rechtstreeks te routeren, maar Azure Firewall voor VNet-naar-Internet/Branch-en vertakking-naar-VNet-verkeer.
 
-## <a name="design"></a><a name="design"></a>Ontwerpen
+## <a name="design"></a><a name="design"></a>Ontwerp
 
 Als u wilt weten hoeveel route tabellen er nodig zijn, kunt u een verbindings matrix maken waarbij elke cel aangeeft of een bron (rij) kan communiceren met een doel (kolom). De connectiviteits matrix in dit scenario is trivial, maar is consistent met andere scenario's, maar we kunnen er nog steeds kijken.
 
@@ -40,6 +40,8 @@ In de vorige tabel vertegenwoordigt een ' X ' een rechtstreekse verbinding tusse
   * Gekoppelde route tabel: **standaard**
   * Door geven aan route tabellen: **standaard**
 
+> [!NOTE]
+> U kunt een afzonderlijk virtueel WAN-exemplaar maken met één beveiligde virtuele hub in elke regio, en vervolgens kunt u elk virtueel WAN met elkaar verbinden via site-naar-site-VPN.
 
 Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over route ring van virtuele hub.
 

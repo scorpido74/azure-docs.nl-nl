@@ -2,28 +2,37 @@
 title: Automatisch afsluiten van Vm's in Azure Lab Services configureren
 description: In dit artikel wordt beschreven hoe u automatisch afsluiten van Vm's in het lab-account configureert.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 783e3b310b3ad06f637453f0e1b11f6a78beec3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/17/2020
+ms.openlocfilehash: 9fd93d383ba6a2d57057a3b45f8b517c84990043
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445811"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589793"
 ---
-# <a name="configure-automatic-shutdown-of-vms-on-disconnect-setting-for-a-lab-account"></a>Automatisch afsluiten van Vm's configureren bij het verbreken van de instelling voor een Lab-account
-U kunt automatisch afsluiten van Windows Lab-Vm's (sjabloon of student) in-of uitschakelen nadat de verbinding met een extern bureau blad is verbroken. U kunt ook opgeven hoe lang Lab-services moeten wachten totdat de gebruiker opnieuw verbinding maakt voordat automatisch wordt afgesloten.
+# <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Automatisch afsluiten van Vm's voor een Lab-account configureren
+
+U kunt verschillende functies voor het automatisch afsluiten van kosten beheer inschakelen om extra kosten te voor komen wanneer de virtuele machines niet actief worden gebruikt. De combi natie van de volgende drie functies voor automatisch afsluiten en verbreken van de meeste gevallen, waarbij gebruikers per ongeluk hun virtuele machines verlaten:
+ 
+- Automatisch de verbinding van gebruikers met virtuele machines die het besturings systeem inactief acht (alleen Windows) verbreken.
+- Virtuele machines automatisch uitschakelen wanneer gebruikers de verbinding verbreken (Windows & Linux).
+- Virtuele machines die zijn gestart automatisch afsluiten, maar gebruikers maken geen verbinding.
+
+Bekijk meer informatie over de functies voor automatisch afsluiten in het gedeelte [kosten beheer maximaliseren met instellingen voor automatisch afsluiten](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) .
 
 ## <a name="enable-automatic-shutdown"></a>Automatisch afsluiten inschakelen
 
-1. Selecteer op de pagina **Lab-account** de optie **Labs-instellingen** in het menu links.
-2. Selecteer de optie **virtuele machines automatisch afsluiten wanneer gebruikers de verbinding verbreken** .
-3. Geef op hoe lang Lab-services moeten wachten totdat de gebruiker opnieuw verbinding maakt voordat de virtuele machines automatisch worden afgesloten.
+1. Ga in het [Azure Portal](https://portal.azure.com/) naar de pagina **Lab-account** .
+1. Selecteer **Labs-instellingen** in het menu links.
+1. Selecteer de instelling (en) voor automatisch afsluiten die geschikt is voor uw scenario.  
 
-    ![Instelling voor automatisch afsluiten bij Lab-account](./media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+    > [!div class="mx-imgBorder"]
+    > ![Instelling voor automatisch afsluiten bij Lab-account](./media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+    
+    De instelling (en) zijn van toepassing op alle Labs die in het lab-account zijn gemaakt. Een Lab Creator (docenten) kan deze instelling onderdrukken op het niveau van de test omgeving. De wijziging van deze instelling op het lab-account is alleen van invloed op de Labs die zijn gemaakt nadat de wijziging is aangebracht.
 
-    Deze instelling is van toepassing op alle Labs die in het lab-account is gemaakt. Een Lab Creator (docenten) kan deze instelling onderdrukken op het niveau van de test omgeving. De wijziging van deze instelling op het lab-account is alleen van invloed op de Labs die zijn gemaakt nadat de wijziging is aangebracht.
-
-    Als u deze instelling wilt uitschakelen, schakelt u het selectie vakje voor de **virtuele machines automatisch afsluiten wanneer gebruikers de verbinding verbreken** op deze pagina uit. 
+    Schakel de selectie vakjes op deze pagina uit om de instelling (en) uit te scha kelen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [dit artikel](how-to-enable-shutdown-disconnect.md) voor meer informatie over hoe een Lab-eigenaar deze instelling kan configureren of negeren op het niveau van de test omgeving
+
+Voor meer informatie over hoe een Lab-eigenaar deze instelling kan configureren of onderdrukken op het niveau van het lab, raadpleegt u [automatisch afsluiten van Vm's inschakelen bij het verbreken](how-to-enable-shutdown-disconnect.md) van de verbinding

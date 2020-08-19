@@ -7,22 +7,22 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: cc0d969ff6eb76732768dfed2826762920ae9e62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b179dd2662bf6fa545ea44b723671f1499b9e35
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81726941"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589007"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Bewaking en waarschuwingen voor Azure Key Vault
 
 ## <a name="overview"></a>Overzicht
 
-Zodra u de sleutel kluis hebt gestart om uw productie geheimen op te slaan, is het belang rijk om de status van uw sleutel kluis te controleren om er zeker van te zijn dat uw service goed werkt. Wanneer u begint met het schalen van uw service, neemt het aantal aanvragen dat naar uw sleutel kluis wordt verzonden, toe. Dit kan de latentie van uw aanvragen verhogen en in uitzonderlijke gevallen zorgen dat uw aanvragen worden beperkt, waardoor de prestaties van uw service worden beïnvloed. U moet ook een waarschuwing ontvangen als uw sleutel kluis een ongebruikelijk aantal fout codes verzendt, zodat u snel kunt worden geïnformeerd over problemen met toegangs beleid of firewall configuratie. In dit document worden de volgende onderwerpen behandeld:
+Zodra u de sleutel kluis hebt gestart om uw productie geheimen op te slaan, is het belang rijk om de status van uw sleutel kluis te controleren om er zeker van te zijn dat uw service goed werkt. Wanneer u begint met het schalen van uw service, neemt het aantal aanvragen toe dat naar uw sleutelkluis wordt verzonden. Dit kan de latentie van uw aanvragen verhogen en er in uitzonderlijke gevallen voor zorgen dat uw aanvragen worden beperkt, waardoor de prestaties van uw service worden beïnvloed. U moet ook een waarschuwing ontvangen als uw sleutel kluis een ongebruikelijk aantal fout codes verzendt, zodat u snel kunt worden geïnformeerd over problemen met toegangs beleid of firewall configuratie. In dit document worden de volgende onderwerpen behandeld:
 
 + Basis Key Vault metrische gegevens die moeten worden bewaakt
 + Metrische gegevens configureren en een dash board maken 
@@ -165,7 +165,7 @@ Raadpleeg de volgende configuratie parameters.
 + Stel de drempel waarde in op **500**
 + Aggregatie periode instellen op **5 minuten**
 + Stel de evaluatie frequentie in op **1 minuut**
-+ Selecteer **gereed**  
++ Selecteer **Gereed**  
 
 > [!div class="mx-imgBorder"]
 > ![Scherm opname van Azure Portal](../media/alert-15.png)
@@ -186,7 +186,7 @@ Raadpleeg de volgende configuratie parameters.
 + Aggregatie periode instellen op **5 minuten**
 + Stel de evaluatie frequentie in op **1 minuut**
 + **Optioneel** Geavanceerde instellingen configureren 
-+ Selecteer **gereed**
++ Selecteer **Gereed**
 
 > [!div class="mx-imgBorder"]
 > ![Scherm opname van Azure Portal](../media/alert-17.png)

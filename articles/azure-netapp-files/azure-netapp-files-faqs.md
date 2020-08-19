@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134493"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590367"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -54,7 +54,9 @@ Nee. De IP-toewijzing aan Azure NetApp Files volumes is dynamisch. Toewijzing va
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Kan het netwerk verkeer tussen de virtuele machine van Azure en de opslag worden versleuteld?
 
-Gegevens verkeer (verkeer van de NFSv3-, NFSv 4.1-of SMBv3-client naar Azure NetApp Files volumes) is niet versleuteld. Het verkeer van een Azure-VM (waarop een NFS-of SMB-client wordt uitgevoerd) moet echter worden Azure NetApp Files net zo veilig zijn als andere verkeer van Azure-VM-naar-VM. Dit verkeer is lokaal voor het Azure Data Center-netwerk. 
+Gegevens verkeer tussen NFSv 4.1-clients en Azure NetApp Files volumes kan worden versleuteld met Kerberos met AES-256-versleuteling. Zie [Configure nfsv 4.1 Kerberos encryption for Azure NetApp files](configure-kerberos-encryption.md) voor meer informatie.   
+
+Gegevens verkeer tussen NFSv3-of SMBv3-clients naar Azure NetApp Files volumes is niet versleuteld. Het verkeer van een Azure-VM (waarop een NFS-of SMB-client wordt uitgevoerd) moet echter worden Azure NetApp Files net zo veilig zijn als andere verkeer van Azure-VM-naar-VM. Dit verkeer is lokaal voor het Azure Data Center-netwerk. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Kan de opslag in rust worden versleuteld?
 
@@ -125,7 +127,7 @@ Azure NetApp Files ondersteunt NFSv3 en NFSv 4.1. U kunt [een volume maken](azur
 
 ### <a name="how-do-i-enable-root-squashing"></a>Hoe kan ik root Squashing inschakelen?
 
-De hoofdmap Squashing wordt momenteel niet ondersteund.
+U kunt opgeven of het hoofd account toegang heeft tot het volume of niet met behulp van het export beleid van het volume. Zie [export beleid voor een NFS-volume configureren](azure-netapp-files-configure-export-policy.md) voor meer informatie.
 
 ## <a name="smb-faqs"></a>Veelgestelde vragen over SMB
 

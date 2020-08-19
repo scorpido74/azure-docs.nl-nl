@@ -1,7 +1,7 @@
 ---
 title: Taal ondersteuning-LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS heeft diverse functies binnen de service. Niet alle functies bevinden zich in dezelfde taal pariteit. Zorg ervoor dat de functies die u interesseen, worden ondersteund in de taal cultuur die u wilt richten. Een LUIS-app is specifiek voor een cultuur en kan niet meer worden gewijzigd nadat deze is ingesteld.
+description: LUIS heeft diverse functies binnen de service. Niet alle functies bevinden zich in dezelfde taalpariteit. Zorg ervoor dat de functies die u interesseren, worden ondersteund in de taalcultuur die u als doel heeft. Een LUIS-app is specifiek voor een cultuur en kan niet meer worden gewijzigd nadat deze is ingesteld.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 43858015857303d404b1abc0fe410aa462671587
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340195"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588019"
 ---
 # <a name="language-and-region-support-for-luis"></a>Taal-en regio ondersteuning voor LUIS
 
-LUIS heeft diverse functies binnen de service. Niet alle functies bevinden zich in dezelfde taal pariteit. Zorg ervoor dat de functies die u interesseen, worden ondersteund in de taal cultuur die u wilt richten. Een LUIS-app is specifiek voor een cultuur en kan niet meer worden gewijzigd nadat deze is ingesteld.
+LUIS heeft diverse functies binnen de service. Niet alle functies bevinden zich in dezelfde taalpariteit. Zorg ervoor dat de functies die u interesseren, worden ondersteund in de taalcultuur die u als doel heeft. Een LUIS-app is specifiek voor een cultuur en kan niet meer worden gewijzigd nadat deze is ingesteld.
 
 ## <a name="multi-language-luis-apps"></a>LUIS-apps met meerdere talen
 
@@ -111,12 +111,12 @@ Om machine learning uit te voeren, breekt LUIS een utterance in [tokens](luis-gl
 
 De volgende cult uren hebben aangepaste tokenizer-versies:
 
-|Cultuur|Versie|Functie|
+|Cultuur|Versie|Doel|
 |--|--|--|
 |Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ich fahre einen krankenwagen` als een utterance wordt ingevoerd, wordt deze ingeschakeld `Ich fahre einen kranken wagen` . Het markeren van `kranken` en `wagen` onafhankelijk van verschillende entiteiten toestaan.|
 |Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ich fahre einen krankenwagen` als een utterance wordt ingevoerd, blijft het één token. `krankenwagen`Is daarom gemarkeerd als één entiteit. |
-|Nederlands<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ik ga naar de kleuterschool` als een utterance wordt ingevoerd, wordt deze ingeschakeld `Ik ga naar de kleuter school` . Het markeren van `kleuter` en `school` onafhankelijk van verschillende entiteiten toestaan.|
-|Nederlands<br>`de-de`|1.0.1|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ik ga naar de kleuterschool` als een utterance wordt ingevoerd, blijft het één token. `kleuterschool`Is daarom gemarkeerd als één entiteit. |
+|Nederlands<br>`nl-nl`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ik ga naar de kleuterschool` als een utterance wordt ingevoerd, wordt deze ingeschakeld `Ik ga naar de kleuter school` . Het markeren van `kleuter` en `school` onafhankelijk van verschillende entiteiten toestaan.|
+|Nederlands<br>`nl-nl`|1.0.1|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ik ga naar de kleuterschool` als een utterance wordt ingevoerd, blijft het één token. `kleuterschool`Is daarom gemarkeerd als één entiteit. |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migreren tussen tokenizer-versies

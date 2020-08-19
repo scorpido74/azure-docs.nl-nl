@@ -3,12 +3,12 @@ title: Back-up inschakelen wanneer u een Azure-VM maakt
 description: Hierin wordt beschreven hoe u back-ups inschakelt wanneer u een Azure VM maakt met Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032847"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586695"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Back-up inschakelen wanneer u een Azure-VM maakt
 
@@ -28,7 +28,7 @@ Als u nog niet bent aangemeld bij uw account, meldt u zich aan bij de [Azure Por
 
 1. Klik in Azure Portal op **een resource maken**.
 
-2. Klik in de Azure Marketplace op **Compute**en selecteer vervolgens een VM-installatie kopie.
+2. Klik in azure Marketplace op **Compute**en selecteer vervolgens een VM-installatie kopie.
 
 3. Stel de virtuele machine in volgens de instructies voor [Windows](../virtual-machines/windows/quick-create-portal.md) of [Linux](../virtual-machines/linux/quick-create-portal.md) .
 
@@ -47,6 +47,9 @@ Als u nog niet bent aangemeld bij uw account, meldt u zich aan bij de [Azure Por
     - Meer [informatie](backup-instant-restore-capability.md) over de functionaliteit voor direct terugzetten.
 
       ![Standaard back-upbeleid](./media/backup-during-vm-creation/daily-policy.png)
+
+>[!NOTE]
+>[SSE en PMK zijn de standaard versleutelings methoden](backup-encryption.md) voor virtuele Azure-machines. Azure Backup ondersteunt back-ups en herstel bewerkingen van deze Azure-Vm's.
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup resource groep voor Virtual Machines
 
@@ -76,7 +79,7 @@ Nadat de VM is gemaakt, gaat u als volgt te werk:
 1. Klik in de VM-eigenschappen op **back-up**. Voor de VM-status is de eerste back-up in behandeling totdat de eerste back-up wordt uitgevoerd
 2. Klik op **Nu back** -up maken om een back-up op aanvraag uit te voeren.
 
-    ![Een back-up op aanvraag uitvoeren](./media/backup-during-vm-creation/run-backup.png)
+    ![Een on-demand back-up uitvoeren](./media/backup-during-vm-creation/run-backup.png)
 
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Een resource manager-sjabloon gebruiken om een beveiligde virtuele machine te implementeren
 

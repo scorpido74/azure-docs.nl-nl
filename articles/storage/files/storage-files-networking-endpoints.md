@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c144442ecd93ca87683179adef496a5d68cce98e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c48c48ef438f99f3b144c3300cb2415e4d387e7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525894"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586678"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files-netwerkeindpunten configureren
 
@@ -136,7 +136,7 @@ Voor het beperken van toegang tot open bare eind punten moet u eerst algemene to
 
 #### <a name="disable-access-to-the-public-endpoint"></a>Toegang tot het openbare eindpunt uitschakelen
 
-Wanneer alle toegang tot het openbare eindpunt wordt uitgeschakeld, is het opslagaccount nog toegankelijk via de privé-eindpunten van het account. Anderszins geldige aanvragen naar het openbare eindpunt van het opslagaccount worden geweigerd. 
+Wanneer alle toegang tot het openbare eindpunt wordt uitgeschakeld, is het opslagaccount nog toegankelijk via de privé-eindpunten van het account. Anders worden geldige aanvragen voor het open bare eind punt van het opslag account geweigerd, tenzij ze afkomstig zijn van [een specifiek toegestane bron](#restrict-access-to-the-public-endpoint-to-specific-virtual-networks). 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-disable-portal](../../../includes/storage-files-networking-endpoints-public-disable-portal.md)]

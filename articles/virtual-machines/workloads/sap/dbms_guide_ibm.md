@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/13/2020
+ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3db8ece7cd1d3ef57b51b164fad3340b80882369
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 947f50c1a92985c057f39a5efb1be250bf8ef06c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510195"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587154"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor IBM Db2
 
@@ -85,8 +85,8 @@ Hieronder volgt een basislijn configuratie voor verschillende formaten en het ge
 | VM-naam/-grootte |Db2-koppel punt |Azure Premium Disk |Aantal schijven |IOPS |Door Voer [MB/s] |Grootte [GB] |Burst IOPS |Burst-Passthr [GB] | Stripe-grootte | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
-|vCPU: 4 |/DB2/ <SID> /sapdata |P6 |4 |960  |200  |256  |14,000  |680  |256 kB |ReadOnly |
-|RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 kB ||
+|vCPU: 4 |/DB2/ <SID> /sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 kB |ReadOnly |
+|RAM: 32 GiB |/DB2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
 | |/DB2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 kB ||
 | |/DB2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
 
@@ -175,7 +175,7 @@ Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's m
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 Alle andere algemene gebieden, zoals Azure-beschikbaarheids sets of SAP-bewaking, zijn van toepassing zoals beschreven in de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) voor implementaties van vm's met de IBM-data base.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598

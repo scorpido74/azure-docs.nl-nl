@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124549"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827313"
 ---
 ## <a name="configure-the-sample-project"></a>Het voorbeeldproject configureren
 
@@ -18,7 +18,7 @@ Stel vervolgens een voorbeeldclienttoepassing in die gaat communiceren met uw in
 
 Navigeer naar het gedownloade bestand op uw computer en pak het uit.
 
-Navigeer in de uitgepakte map naar _AdtSampleApp/_ . Open _**AdtE2ESample.sln**_ in Visual Studio 2019. 
+Ga in de uitgepakte map naar _AdtSampleApp_. Open _**AdtE2ESample.sln**_ in Visual Studio 2019. 
 
 Gebruik in Visual Studio het deelvenster *Solution Explorer* om een kopie te maken van het bestand _SampleClientApp > **serviceConfig.json.TEMPLATE**_ (gebruik de menu's onder de rechtermuisknop om te kopiëren en plakken). Wijzig de naam van de kopie in *serviceConfig.json*. Dit bestand fungeert als een vooraf ingesteld JSON-bestand met de benodigde configuratievariabelen om het project uit te voeren.
 
@@ -31,6 +31,8 @@ Selecteer het bestand *serviceConfig.json* om dit te openen in het bewerkingsven
   "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
 }
 ```
+
+
 
 Sla het bestand op en sluit het. 
 

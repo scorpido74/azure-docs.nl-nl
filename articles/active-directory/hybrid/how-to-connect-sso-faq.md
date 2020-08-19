@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019728"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589041"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory naadloze eenmalige aanmelding: veelgestelde vragen
 
@@ -104,7 +104,7 @@ Volg deze stappen op de on-premises server waarop u Azure AD Connect:
    2. Aanroep `Update-AzureADSSOForest -OnPremCredentials $creds` . Met deze opdracht wordt de Kerberos-ontsleutelings sleutel voor het `AZUREADSSO` computer account in dit specifieke AD-forest bijgewerkt en bijgewerkt in azure AD.
    
    >[!NOTE]
-   >Als u geen domein beheerder bent en u machtigingen hebt toegewezen door de domein beheerder, moet u`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   >Als u geen domein beheerder bent en u machtigingen hebt toegewezen door de domein beheerder, moet u `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. Herhaal de voor gaande stappen voor elk AD-forest waarop u de functie hebt ingesteld.
 
@@ -135,6 +135,8 @@ Volg deze stappen op de on-premises server waarop u Azure AD Connect:
    3. Importeer de naadloze SSO Power shell-module met de volgende opdracht: `Import-Module .\AzureADSSO.psd1` .
    4. Voer Power shell uit als beheerder. Bel in Power shell `New-AzureADSSOAuthenticationContext` . Met deze opdracht geeft u een pop-up om de globale beheerders referenties van uw Tenant in te voeren.
    5. Aanroep `Enable-AzureADSSO -Enable $false` .
+   
+   Op dit punt is naadloze SSO uitgeschakeld, maar de domeinen blijven geconfigureerd voor het geval u naadloze eenmalige aanmelding mogelijk wilt maken. Als u de domeinen volledig wilt verwijderen uit de naadloze SSO-configuratie, roept u de volgende cmdlet aan nadat u stap 5 hebt uitgevoerd: `Disable-AzureADSSOForest -DomainFqdn <fqdn>` .
 
    >[!IMPORTANT]
    >Door naadloze SSO uit te scha kelen met behulp van Power shell, wordt de status in Azure AD Connect niet gewijzigd. Naadloze SSO wordt weer gegeven als ingeschakeld op de aanmeldings pagina van de **gebruiker wijzigen** .

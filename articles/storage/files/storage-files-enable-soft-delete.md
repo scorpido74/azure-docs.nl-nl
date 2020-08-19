@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528380"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590112"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Zacht verwijderen inschakelen op Azure-bestands shares
 
@@ -22,6 +22,8 @@ Azure Storage biedt zacht verwijderen voor bestands shares (preview), zodat u uw
 In de volgende secties ziet u hoe u met voorlopig verwijderen voor Azure-bestands shares kunt inschakelen en gebruiken voor een bestaand opslag account:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
+
+## <a name="getting-started"></a>Aan de slag
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Navigeer naar uw opslag account en selecteer **voorlopig verwijderen** onder **Bestands service**.
@@ -33,7 +35,13 @@ In de volgende secties ziet u hoe u met voorlopig verwijderen voor Azure-bestand
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Tijdelijke Verwijder-cmdlets zijn beschikbaar in de versie 2.1.1-Preview van de module AZ. storage. Als u zacht verwijderen wilt inschakelen, moet u de service-eigenschappen van een bestands client bijwerken. In het volgende voor beeld wordt zacht verwijderen ingeschakeld voor alle bestands shares in een opslag account:
+## <a name="prerequisite"></a>Vereiste
+
+Voorlopig verwijderen cmdlets zijn momenteel alleen beschikbaar in de versies [2.1.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) en [2.3.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.3.1-preview) van de module AZ. storage. 
+
+## <a name="getting-started"></a>Aan de slag
+
+Als u zacht verwijderen wilt inschakelen, moet u de service-eigenschappen van een bestands client bijwerken. In het volgende voor beeld wordt zacht verwijderen ingeschakeld voor alle bestands shares in een opslag account:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"

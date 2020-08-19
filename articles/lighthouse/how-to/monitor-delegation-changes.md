@@ -1,14 +1,14 @@
 ---
 title: Overdrachts wijzigingen in uw beheer Tenant bewaken
 description: Meer informatie over het bewaken van overdrachts activiteiten van klant tenants naar uw beheer Tenant.
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 63b8ec60ecf2f2e5655e3253db7aef01c003fc63
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163336"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589738"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Overdrachts wijzigingen in uw beheer Tenant bewaken
 
@@ -66,9 +66,6 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
-
-> [!NOTE]
-> U kunt ook de ingebouwde rol voor controle van Azure in het hoofd bereik toewijzen aan afzonderlijke gebruikers of aan gebruikers groepen. Dit kan handig zijn als u wilt dat een gebruiker [overdrachts gegevens rechtstreeks in het Azure Portal kan weer geven](#view-delegation-changes-in-the-azure-portal). Als u dit doet, moet u er rekening mee houden dat dit een breed toegangs niveau is dat moet worden beperkt tot het minste aantal gebruikers dat mogelijk is.
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Verhoogde toegang voor het account van de globale beheerder verwijderen
 
@@ -164,15 +161,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Wijzigingen in de delegatie weer geven in de Azure Portal
-
-Gebruikers aan wie de bewakings lezer Azure ingebouwde rol in het hoofd bereik is toegewezen, kunnen wijzigingen in de overdracht rechtstreeks in het Azure Portal weer geven.
-
-1. Ga naar de pagina **mijn klanten** en selecteer vervolgens **activiteiten logboek** in het navigatie menu aan de linkerkant.
-1. Zorg ervoor dat **Directory-activiteit** is geselecteerd in het filter aan de bovenkant van het scherm.
-
-Er wordt een lijst met overdrachts wijzigingen weer gegeven. U kunt **kolommen bewerken** selecteren om de **status**, **gebeurtenis categorie**, **tijd**, **tijds tempel**, **abonnement**en gebeurtenis te tonen of te verbergen, **geïnitieerd door**, **resource groep**, **resource type**en **resource** waarden.
 
 > [!TIP]
 > Hoewel we in dit onderwerp naar service providers en klanten verwijzen, kunnen [bedrijven die meerdere tenants beheren](../concepts/enterprise.md) , dezelfde processen gebruiken.

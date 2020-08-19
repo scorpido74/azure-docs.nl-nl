@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/12/2020
-ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 08/18/2020
+ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191201"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589500"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Door de gebruiker geïnitieerde hand matige failover op een SQL-beheerd exemplaar
 
@@ -126,9 +126,12 @@ Voordat de failover wordt gestart, wordt in de uitvoer de huidige primaire repli
 
 Het is niet mogelijk om dezelfde uitvoer te zien met de categorie GP als hierboven wordt weer gegeven voor BC. Dit komt omdat de servicelaag van de groeps BELEIDS eenheid alleen is gebaseerd op één knoop punt. T-SQL-query uitvoer voor de GP-servicelaag toont één knoop punt alleen voor en na de failover. Het verlies van de connectiviteit van uw client tijdens de failover, doorgaans gedurende een minuut, is de indicatie van de uitvoering van de failover.
 
+> [!NOTE]
+> Het volt ooien van het failoverproces (niet de werkelijke korte niet-beschik baarheid) kan enkele minuten in beslag nemen in het geval van werk belastingen met een **hoge intensiteit** . Dit komt doordat de exemplaar-engine alle huidige trans acties op de primaire en op het secundaire knoop punt wordt uitgevoerd voordat failover kan worden uitgevoerd.
+
 > [!IMPORTANT]
 > Functionele beperkingen van door de gebruiker gestarte hand matige failover zijn:
-> - Er kan één (1) failover worden gestart op hetzelfde beheerde exemplaar om de 30 minuten.
+> - Er kan één (1) failover worden gestart op hetzelfde beheerde exemplaar om de **30 minuten**.
 > - Voor BC-instanties moet er een quorum van replica's bestaan voor het accepteren van de failover-aanvraag.
 > - Voor BC-instanties is het niet mogelijk om op te geven welke secundaire replica moet worden gelezen om de failover te initiëren.
 

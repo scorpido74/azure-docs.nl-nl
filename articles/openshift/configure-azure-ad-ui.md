@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 6b6248aac35c22b9ffd2cd95df41e84986356259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a7dc662993327b71d43c27f44d22166a3f3611
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205311"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590316"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Active Directory authenticatie configureren voor een Azure Red Hat open Shift 4-cluster (Portal)
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.75 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.6.0 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -89,7 +89,7 @@ In de volgende voorbeeld uitvoer ziet u dat het wacht woord in wordt weer gegeve
 }
 ```
 
-U kunt de URL van de cluster console vinden door de volgende opdracht uit te voeren, die er als volgt uitziet:`https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
+U kunt de URL van de cluster console vinden door de volgende opdracht uit te voeren, die er als volgt uitziet: `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`
 
 ```azurecli-interactive
  az aro show \

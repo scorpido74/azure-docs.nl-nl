@@ -2,25 +2,21 @@
 title: Veelgestelde vragen over Azure AD-toepassingsproxy | Microsoft Docs
 description: Hier vindt u antwoorden op veelgestelde vragen over het gebruik van Azure AD-toepassingsproxy voor het publiceren van interne, on-premises toepassingen naar externe gebruikers.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042102"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589160"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -90,6 +86,15 @@ Toepassings proxy vereist Windows Server 2012 R2 of hoger. Er is momenteel een b
 
 
 ## <a name="application-configuration"></a>Toepassingsconfiguratie
+
+### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>Ik ontvang een fout bericht over een ongeldig certificaat of mogelijk een onjuist wacht woord
+
+Nadat u het SSL-certificaat hebt geüpload, ontvangt u het bericht ' ongeldig certificaat, mogelijk onjuist wacht woord ' in de portal.
+
+Hier volgen enkele tips voor het oplossen van deze fout:
+- Controleren op problemen met het certificaat. Installeer het op uw lokale computer. Als u geen problemen ondervindt, is het certificaat goed.
+- Zorg ervoor dat het wacht woord geen speciale tekens bevat. Voor het testen moet het wacht woord alleen de tekens 0-9, A-Z en a-z bevatten.
+- Als het certificaat is gemaakt met micro soft software Key Storage Provider, moet de RSA-algoritme worden gebruikt.
 
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>Wat is de lengte van de standaard waarde en ' lange ' time-out voor back-end? Kan de time-out worden verlengd?
 

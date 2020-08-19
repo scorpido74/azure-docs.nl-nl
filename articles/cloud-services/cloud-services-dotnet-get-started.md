@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac843ec2084cd019ec9d3bc90f6c8bbcb5c34279
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255225"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590350"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Aan de slag met Azure Cloud Services en ASP.NET
 
@@ -37,7 +37,7 @@ Deze zelfstudie laat zien hoe u de front-end en back-end uitvoert in een cloudse
 ## <a name="what-youll-learn"></a>Wat u leert
 * De computer klaarmaken voor het ontwikkelen van Azure door de Azure SDK te installeren.
 * Een Visual Studio-cloudserviceproject maken met een ASP.NET MVC-webrol en -werkrol.
-* Het cloudserviceproject lokaal testen met behulp van de Azure-opslagemulator.
+* Het Cloud service project lokaal testen met behulp van de Azure Storage-emulator.
 * Het cloudproject publiceren naar een Azure-cloudservice en het project testen met behulp van een Azure-opslagaccount.
 * Bestanden uploaden en deze opslaan in de Azure Blob-service.
 * De Azure Queue-service gebruiken voor communicatie tussen lagen.
@@ -100,7 +100,7 @@ U hebt de toepassing volledig op uw lokale computer uitgevoerd, zonder verbindin
 
 In de volgende sectie configureert u de oplossing voor het gebruik van Azure-cloudbronnen voor wachtrijen, blobs en de toepassingsdatabase wanneer deze wordt uitgevoerd in de cloud. U kunt eventueel lokaal blijven uitvoeren maar wel cloudopslag en databaseresources gebruiken. Het is alleen een kwestie van verbindingsreeksen instellen. We leggen u uit hoe u dit doet.
 
-## <a name="deploy-the-application-to-azure"></a>De toepassing implementeren in Azure
+## <a name="deploy-the-application-to-azure"></a>De app implementeren in Azure
 U voert de volgende stappen uit voor het uitvoeren van de toepassing in de cloud:
 
 * Een Azure-cloudservice maken.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: a635f32c5e5f1132d70fb503058267c8b33beb7c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: dbd040bf7caf3dbe9ed9820bf189bc1f74475c09
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272057"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586891"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -35,6 +35,7 @@ Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u 
 De updates in augustus zijn onder andere:
 
 - [Inventaris van activa-krachtige nieuwe weer gave van de beveiligings postuur van uw assets](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [Ondersteuning toegevoegd voor Azure Active Directory standaard instellingen voor beveiliging (voor multi-factor Authentication)](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
 - [Aanbeveling voor service-principals toegevoegd](#service-principals-recommendation-added)
 - [Evaluatie van beveiligings problemen op Vm's-aanbevelingen en beleids regels geconsolideerd](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
 
@@ -50,11 +51,27 @@ U kunt de weer gave en de filters gebruiken om uw beveiligings postuur te verken
 Meer informatie over [inventarisatie van activa](asset-inventory.md).
 
 
+### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>Ondersteuning toegevoegd voor Azure Active Directory standaard instellingen voor beveiliging (voor multi-factor Authentication)
+
+Security Center heeft volledige ondersteuning toegevoegd voor de [standaard instellingen](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)van de beveiliging, de gratis identiteits beveiliging van micro soft.
+
+Standaard waarden voor beveiliging bieden vooraf geconfigureerde identiteits beveiligings instellingen om uw organisatie te beschermen tegen algemene identiteits-gerelateerde aanvallen. Beveiligings standaards beveiligen al meer dan 5.000.000 tenants in het algemeen; 50.000-tenants worden ook beveiligd door Security Center.
+
+Security Center biedt nu een beveiligings aanbeveling wanneer een Azure-abonnement wordt geïdentificeerd zonder dat de standaard instellingen voor beveiliging zijn ingeschakeld. Tot nu toe Security Center aanbevolen multi-factor Authentication in te scha kelen met behulp van voorwaardelijke toegang, dat onderdeel is van de Azure Active Directory (AD) Premium-licentie. Voor klanten die Azure AD gratis gebruiken, raden we u aan om de standaard instellingen voor beveiliging in te scha kelen. 
+
+Ons doel is om meer klanten te stimuleren om hun Cloud omgevingen met MFA te beveiligen en om een van de grootste Risico's te beperken die ook de meest impact op hun [beveiligde Score](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)zijn.
+
+Meer informatie over de [standaard instellingen](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)van de beveiliging.
+
+
 ### <a name="service-principals-recommendation-added"></a>Aanbeveling voor service-principals toegevoegd
 
-Nieuwe aanbeveling voor Security Center klanten die beheer certificaten gebruiken voor het beheren van hun abonnementen.
+Er is een nieuwe aanbeveling toegevoegd waarmee Security Center klanten die beheer certificaten gebruiken om hun abonnementen switch te beheren naar service-principals.
 
 De aanbeveling, **service-principals moeten worden gebruikt voor het beveiligen van uw abonnementen in plaats van beheer certificaten** , adviseert u service-principals of Azure Resource Manager te gebruiken om uw abonnementen veiliger te beheren. 
+
+Meer informatie over [toepassings-en Service-Principal-objecten in azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object).
+
 
 ### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Evaluatie van beveiligings problemen op Vm's-aanbevelingen en beleids regels geconsolideerd
 

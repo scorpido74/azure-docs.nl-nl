@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/25/2020
-ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/14/2020
+ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086826"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587307"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Overzicht van resource limieten voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ SQL Managed instance heeft kenmerken en resource limieten die afhankelijk zijn v
 
 |   | **Gen4** | **GEN5** |
 | --- | --- | --- |
-| **Hardware** | Intel E5-2673 v3 (Haswell) 2,4-GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake)-processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
+| **Hardware** | Intel® E5-2673 v3 (Haswell) 2,4 GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) en Intel® 8272CL (trapsgewijze Lake) 2,5 GHz processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
 | **Aantal vCores** | 8, 16, 24 vCores | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
 | **Maxi maal geheugen (geheugen/kern percentage)** | 7 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | 5,1 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
 | **Maxi maal in-Memory OLTP-geheugen** | Limiet voor instanties: 1-1,5 GB per vCore| Limiet voor instanties: 0,8-1,65 GB per vCore |
@@ -110,7 +110,7 @@ Als u een hoge IO-latentie krijgt bij een bepaald database bestand of als u ziet
 
 Er is ook een limiet op exemplaar niveau voor de maximale schrijf doorvoer in het logboek (22 MB/s), zodat u het Maxi maal toegestane bestand niet in het logboek bestand kunt bereiken omdat u de limiet voor de door Voer van het exemplaar bereikt.
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 Een SQL Managed instance kan alleen worden gemaakt in [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een SQL Managed instance wilt maken in een regio die momenteel niet wordt ondersteund, kunt u [via de Azure Portal een ondersteunings aanvraag verzenden](../database/quota-increase-request.md).
 
@@ -142,7 +142,7 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 
 |Abonnementstype| Maximum aantal subnetten voor SQL-beheerde exemplaren | Maximum aantal vCore-eenheden * |
 | :---| :--- | :--- |
-|Betalen per gebruik|3|320|
+|Betalen naar gebruik|3|320|
 |CSP |8 (15 inch in sommige regio's * *)|960 (1440 in sommige regio's * *)|
 |Dev/test met betalen per gebruik|3|320|
 |Enterprise Dev/Test|3|320|
@@ -150,9 +150,9 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional en MSDN Platforms|2|32|
 
-\*In het plannen van implementaties moet u rekening houden dat de service tier van Bedrijfskritiek (BC) vier (4) keer zoveel vCore capaciteit nodig heeft dan de servicelaag van Algemeen (GP). Bijvoorbeeld: 1 GP vCore = 1 vCore-eenheid en 1 BC vCore = 4 vCore-eenheden. Als u de verbruiks analyse wilt vereenvoudigen met de standaard limieten, samenvatten we de vCore-eenheden in alle subnetten in de regio waar SQL Managed instance wordt geïmplementeerd en vergelijkt u de resultaten met de limieten van de exemplaar eenheid voor uw abonnements type. De limiet voor het **maximum aantal vCore-eenheden** is van toepassing op elk abonnement in een regio. Er is geen limiet per afzonderlijke subnetten, behalve dat de som van alle vCores die in meerdere subnetten zijn geïmplementeerd, kleiner of gelijk moet zijn aan het **maximum aantal vCore-eenheden**.
+\* In het plannen van implementaties moet u rekening houden dat de service tier van Bedrijfskritiek (BC) vier (4) keer zoveel vCore capaciteit nodig heeft dan de servicelaag van Algemeen (GP). Bijvoorbeeld: 1 GP vCore = 1 vCore-eenheid en 1 BC vCore = 4 vCore-eenheden. Als u de verbruiks analyse wilt vereenvoudigen met de standaard limieten, samenvatten we de vCore-eenheden in alle subnetten in de regio waar SQL Managed instance wordt geïmplementeerd en vergelijkt u de resultaten met de limieten van de exemplaar eenheid voor uw abonnements type. De limiet voor het **maximum aantal vCore-eenheden** is van toepassing op elk abonnement in een regio. Er is geen limiet per afzonderlijke subnetten, behalve dat de som van alle vCores die in meerdere subnetten zijn geïmplementeerd, kleiner of gelijk moet zijn aan het **maximum aantal vCore-eenheden**.
 
-\*\*Grotere subnet-en vCore-limieten zijn beschikbaar in de volgende regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2.
+\*\* Grotere subnet-en vCore-limieten zijn beschikbaar in de volgende regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2.
 
 > [!IMPORTANT]
 > Als uw vCore-en subnet-limiet 0 is, betekent dit dat de standaard regionale limiet voor uw abonnements type niet is ingesteld. U kunt ook de aanvraag quotum verhogen gebruiken voor het verkrijgen van toegang tot het abonnement in een specifieke regio volgens dezelfde procedure: de vereiste vCore-en subnet-waarden opgeven.

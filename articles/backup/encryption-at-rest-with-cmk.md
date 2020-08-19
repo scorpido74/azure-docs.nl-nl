@@ -3,12 +3,12 @@ title: Versleuteling van back-upgegevens met door de klant beheerde sleutels
 description: Meer informatie over hoe u met Azure Backup uw back-upgegevens kunt versleutelen met behulp van door de klant beheerde sleutels (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: dfed3f983867568befc77d7dbc81cdde70eef9ed
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387996"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589602"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Versleuteling van back-upgegevens met door de klant beheerde sleutels
 
@@ -39,7 +39,7 @@ In dit artikel komen de volgende onderwerpen aan bod:
 
 - Deze functie is momenteel alleen te configureren vanaf het Azure Portal.
 
-[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+Als u uw Recovery Services kluis niet hebt gemaakt en geconfigureerd, kunt u [hier lezen hoe](backup-create-rs-vault.md)u dit doet.
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Een kluis configureren om te versleutelen met door de klant beheerde sleutels
 

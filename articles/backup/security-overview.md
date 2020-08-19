@@ -3,12 +3,12 @@ title: Overzicht van beveiligings functies
 description: Meer informatie over de beveiligings mogelijkheden in Azure Backup waarmee u uw back-upgegevens kunt beschermen en voldoen aan de beveiligings behoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319300"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589381"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Overzicht van beveiligings functies in Azure Backup
 
@@ -40,7 +40,7 @@ Voor het maken van een back-up van virtuele Azure-machines is het verplaatsen va
 
 U kunt nu [persoonlijke eind punten](../private-link/private-endpoint-overview.md) gebruiken om een back-up te maken van uw gegevens op een veilige manier van servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-schijf ruimte voor uw kluis. u hoeft uw virtuele netwerken dus niet beschikbaar te maken voor open bare Ip's. Privé-eind punten kunnen worden gebruikt voor het maken van back-ups en het herstellen van uw SQL-en SAP HANA-data bases die worden uitgevoerd in uw Azure-Vm's. Het kan ook worden gebruikt voor uw on-premises servers met behulp van de MARS-agent.
 
-Lees [hier](./private-endpoints.md)meer over privé-eind punten voor Azure backup.
+Meer informatie over privé-eindpunten voor Azure Backup vindt u [hier](./private-endpoints.md).
 
 ## <a name="encryption-of-data"></a>Versleuteling van gegevens
 
@@ -48,9 +48,9 @@ Versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings
 
 * Binnen Azure worden gegevens in transit tussen Azure Storage en de kluis [beveiligd door https](backup-support-matrix.md#network-traffic-to-azure). Deze gegevens blijven op het Azure-backbone-netwerk.
 
-* Back-upgegevens worden automatisch versleuteld met door [micro soft beheerde sleutels](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)en u hoeft geen expliciete actie uit te voeren om deze in te scha kelen. U kunt ook uw back-upgegevens versleutelen met door de [klant beheerde sleutels](encryption-at-rest-with-cmk.md) die zijn opgeslagen in de Azure Key Vault. Dit is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.
+* Back-upgegevens worden automatisch versleuteld met sleutels die door het [platform worden beheerd](backup-encryption.md)en u hoeft geen expliciete actie uit te voeren om het bestand in te scha kelen. U kunt ook uw back-upgegevens versleutelen met door de [klant beheerde sleutels](encryption-at-rest-with-cmk.md) die zijn opgeslagen in de Azure Key Vault. Dit is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.
 
-* Azure Backup ondersteunt back-ups en herstel bewerkingen van Azure-Vm's waarvan het besturings systeem/de gegevens schijven zijn versleuteld met [Azure Disk Encryption (ADE)](backup-encryption.md#backup-of-vms-encrypted-using-ade) en [vm's met CMK versleutelde schijven](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys). Meer informatie vindt u in de [versleutelde Azure vm's en Azure backup](./backup-azure-vms-encryption.md).
+* Azure Backup ondersteunt back-ups en herstel bewerkingen van Azure-Vm's waarvan het besturings systeem/de gegevens schijven zijn versleuteld met [Azure Disk Encryption (ADE)](backup-azure-vms-encryption.md#encryption-support-using-ade) en [vm's met CMK versleutelde schijven](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys). Meer informatie vindt u in de [versleutelde Azure vm's en Azure backup](./backup-azure-vms-encryption.md).
 
 * Wanneer er een back-up van gegevens van on-premises servers met de MARS-agent wordt gemaakt, worden gegevens versleuteld met een wachtwoordzin voordat ze worden geüpload naar Azure Backup en ontsleuteld nadat deze is gedownload van Azure Backup. Meer informatie over [beveiligings functies voor het beveiligen van hybride back-ups](#security-features-to-help-protect-hybrid-backups).
 
@@ -64,7 +64,7 @@ Azure Backup biedt [ingebouwde mogelijkheden voor bewaking en waarschuwingen](./
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Beveiligings functies voor het beveiligen van hybride back-ups
 
-Azure Backup-Service gebruikt de Microsoft Azure Recovery Services-agent (MARS) om back-ups te maken van bestanden, mappen en het volume of de systeem status van een on-premises computer naar Azure. MARS biedt nu beveiligings functies waarmee hybride back-ups kunnen worden beveiligd. Het gaat om de volgende functies:
+Azure Backup-Service gebruikt de Microsoft Azure Recovery Services-agent (MARS) om back-ups te maken van bestanden, mappen en het volume of de systeem status van een on-premises computer naar Azure. MARS biedt nu beveiligings functies waarmee hybride back-ups kunnen worden beveiligd. Deze functies omvatten onder andere:
 
 * Er wordt een extra beveiligingslaag toegevoegd wanneer een kritieke bewerking wordt uitgevoerd, zoals het wijzigen van een wachtwoordzin. Deze validatie is om ervoor te zorgen dat dergelijke bewerkingen alleen kunnen worden uitgevoerd door gebruikers die geldige Azure-referenties hebben. Meer [informatie over de functies die aanvallen verhinderen](./backup-azure-security-feature.md#prevent-attacks).
 

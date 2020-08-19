@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276427"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590180"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Aan de slag met Azure Metrics Explorer
 
@@ -41,16 +41,19 @@ Als u een metrische grafiek wilt maken, vanuit uw resource, resource groep, abon
 
 4. U kunt desgewenst [de metrische aggregatie wijzigen](metrics-charts.md#changing-aggregation). U kunt bijvoorbeeld aangeven dat de grafiek minimum-, maximum-of gemiddelde waarden van de metriek moet weer geven.
 
-> [!NOTE]
+> [!TIP]
 > Gebruik de knop **metriek toevoegen** en herhaal deze stappen als u meerdere metrische gegevens wilt zien die in dezelfde grafiek zijn getekend. Voor meerdere grafieken in één weer gave selecteert u de knop **grafiek toevoegen** bovenaan.
 
 ## <a name="select-a-time-range"></a>Een tijds bereik selecteren
+
+> [!WARNING]
+> [De meeste metrische gegevens in Azure worden gedurende 93 dagen opgeslagen](data-platform-metrics.md#retention-of-metrics). U kunt echter niet meer dan 30 dagen aan gegevens in één grafiek opvragen. Deze beperking geldt niet voor [metrische gegevens op basis van een logboek](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
 In de grafiek worden standaard de meest recente 24 uur aan metrische gegevens weer gegeven. Gebruik het deel venster **tijd kiezer** om het tijds bereik te wijzigen, in te zoomen of uit te zoomen op de grafiek. 
 
 ![Deel venster tijds bereik wijzigen](./media/metrics-getting-started/time-picker.png)
 
-> [!NOTE]
+> [!TIP]
 > Gebruik het **tijd penseel** om een interessant gebied van de grafiek (Prikker of een DIP) te onderzoeken. Plaats de muis aanwijzer aan het begin van het gebied, klik op de linkermuisknop en houd de muis knop ingedrukt, sleep naar de andere kant van het gebied en laat de knop los. De grafiek wordt in dat tijds bereik ingezoomd. 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Dimensie filters toep assen en splitsen

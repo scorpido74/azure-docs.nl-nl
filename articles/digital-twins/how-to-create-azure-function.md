@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124303"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589398"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
 
@@ -83,8 +83,8 @@ Zie [*Debug Event grid trigger lokaal*](../azure-functions/functions-debug-event
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>De Azure Digital Apparaatdubbels SDK toevoegen aan uw Azure-functie-app
 
 De functie-app communiceert met Azure Digital Apparaatdubbels met behulp [van de Azure IOT Digital-client bibliotheek voor .net (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Als u de SDK wilt gebruiken, moet u de volgende pakketten in uw project toevoegen:
-* `Azure.DigitalTwins.Core`(versie `1.0.0-preview.2` )
-* `Azure.Identity`
+* `Azure.DigitalTwins.Core` (versie `1.0.0-preview.2` )
+* `Azure.Identity` (versie `1.1.1` )
 
 Als u de Azure SDK-pijp lijn zo wilt configureren dat deze correct wordt ingesteld voor Azure Functions, hebt u het volgende nodig:
 * `Azure.Net.Http`

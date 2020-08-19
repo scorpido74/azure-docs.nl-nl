@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 57e13f3ed619fa88f29397fe44b783bd3650f636
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 313f10c77da499f4c405134028b975900d2d2a9e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83759163"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590231"
 ---
 # <a name="monitor-identity-and-access"></a>Identiteit en toegang bewaken
 
@@ -60,7 +60,7 @@ Voor het inschakelen van MFA zijn [Tenant machtigingen voor Azure Active Directo
 
 - Als u een Premium-editie van AD hebt, schakelt u MFA in met behulp van [voorwaardelijke toegang](../active-directory/conditional-access/concept-conditional-access-policy-common.md).
 
-- Gebruikers van de AD Free Edition kunnen **standaard instellingen voor beveiliging** inschakelen in azure Active Directory, zoals beschreven in de [ad-documentatie](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) , maar de Security Center aanbeveling om MFA in te scha kelen, wordt nog steeds weer gegeven.
+- Als u de gratis versie van AD gebruikt, schakelt u **standaard instellingen voor beveiliging** in azure Active Directory, zoals beschreven in de [ad-documentatie](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
 
 
 ## <a name="next-steps"></a>Volgende stappen

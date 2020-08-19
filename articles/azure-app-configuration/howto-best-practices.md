@@ -1,6 +1,6 @@
 ---
 title: Aanbevolen procedures voor Azure-app-configuratie | Microsoft Docs
-description: Meer informatie over het beste gebruik van Azure-app configuratie
+description: Leer de aanbevolen procedures voor het gebruik van Azure-app configuratie. Onderwerpen zijn onder andere belang rijke groeperingen, sleutel waarde-samen stellingen, Boots trap van de app-configuratie en meer.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d97626d5eed96a3debb41c86f6dab6fbaf1953cd
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d532b8aab87840f4b6ad90daedba743597f4fe43
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206673"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588055"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Aanbevolen procedures voor Azure-app configuratie
 

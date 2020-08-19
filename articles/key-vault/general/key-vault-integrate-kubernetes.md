@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e70ee75344a939ea1632df3549d796617c7596af
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921575"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901994"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Zelfstudie: De Azure Key Vault-provider voor het stuurprogramma voor het Secrets Store CSI-stuurprogramma configureren en uitvoeren op Kubernetes
 
@@ -71,7 +71,7 @@ Voltooi de secties 'Een resource groep maken', 'AKS-cluster maken' en 'Verbindin
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. Gebruik de volgende opdracht om de metagegevens weer te geven van het AKS-cluster dat u hebt gemaakt. Kopieer de waarden van **principalId**, **clientId**, **subscriptionId** en **nodeResourceGroup** voor later gebruik.
+1. Gebruik de volgende opdracht om de metagegevens weer te geven van het AKS-cluster dat u hebt gemaakt. Kopieer de waarden van **principalId**, **clientId**, **subscriptionId** en **nodeResourceGroup** voor later gebruik. Als het ASK-cluster niet is gemaakt met beheerde identiteiten ingeschakeld, zijn **principalId** en **clientId** null. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -166,7 +166,7 @@ In de volgende afbeelding ziet u de uitvoer van de console voor **az keyvault sh
 
 ### <a name="assign-a-service-principal"></a>Een service-principal toewijzen
 
-Als u een service-principal gebruikt, verleent u deze machtigingen om uw sleutelkluis te openen en geheimen op te halen. Wijs de rol *Lezer* toe en geef de service-principal toestemming om geheimen *op te halen* uit uw sleutelkluis door het volgende te doen:
+Als u een service-principal gebruikt, verleent u deze machtigingen om uw sleutelkluis te openen en geheimen op te halen. Wijs de rol *Lezer* toe en geef de service-principal toestemming om geheimen *op te halen* uit uw sleutelkluis met behulp van de volgende opdracht:
 
 1. Wijs uw service-principal toe aan uw bestaande sleutelkluis. De parameter **$AZURE_CLIENT_ID** is de **appId** die u hebt gekopieerd na het maken van uw service-principal.
     ```azurecli
@@ -204,10 +204,10 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 Als u beheerde identiteiten gebruikt, wijst u specifieke rollen toe aan het AKS-cluster dat u hebt gemaakt. 
 
-1. Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, vermelden of lezen, moet aan uw AKS-cluster de rol [Inzender beheerde identiteit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor) worden toegewezen. Zorg ervoor dat de **$clientId** de client-id van het Kubernetes-cluster is.
+1. Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, vermelden of lezen, moet aan uw AKS-cluster de rol [Operator beheerde identiteit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) worden toegewezen. Zorg ervoor dat de **$clientId** de client-id van het Kubernetes-cluster is. Het bereik valt onder uw Azure-abonnementsservice, met name de knooppuntresourcegroep die is gemaakt toen het AKS-cluster werd gemaakt. Met dit bereik worden alleen resources in deze groep beïnvloed door de rollen die hieronder worden toegewezen. 
 
     ```azurecli
-    az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```
