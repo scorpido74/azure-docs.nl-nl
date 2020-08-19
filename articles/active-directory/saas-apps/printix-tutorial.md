@@ -2,25 +2,20 @@
 title: 'Zelf studie: integratie Azure Active Directory met Printix | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Printix.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 4aea7320-b2d5-49e0-9b63-aeaff0f6fe66
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "62111446"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Zelf studie: integratie Azure Active Directory met Printix
 
@@ -113,7 +108,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     ![Eenmalige aanmelding configureren](./media/printix-tutorial/tutorial_printix_url.png)
 
-    Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`https://<subdomain>.printix.net`
+    Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon: `https://<subdomain>.printix.net`
 
     > [!NOTE] 
     > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van Printix](mailto:support@printix.net) om de waarde op te halen. 

@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559928"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553135"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding instellen met Azure SQL Database met behulp van een beheerde identiteit (preview)
 
 > [!IMPORTANT] 
-> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit bevindt zich momenteel in een open bare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
-> U kunt toegang tot de preview aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/mi-preview-request)in te vullen.
+> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
 
 Op deze pagina wordt beschreven hoe u een Indexeer functie verbinding kunt instellen met Azure SQL Database met behulp van een beheerde identiteit in plaats van referenties op te geven in het gegevens bron object connection string.
 
@@ -57,7 +56,7 @@ Volg de onderstaande stappen om de machtiging Search service toe te wijzen om de
 
 2. Verifiëren met uw Azure AD-account
 
-    ![Verifiëren](./media/search-managed-identities/visual-studio-authentication.png "Verifiëren")
+    ![Verifieer](./media/search-managed-identities/visual-studio-authentication.png "Verifiëren")
 
 3. Voer de volgende opdrachten uit:
 
@@ -98,10 +97,12 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens v
 
 ### <a name="5---create-the-data-source"></a>5: de gegevens bron maken
 
-Bij het indexeren van een SQL database moet de gegevens bron de volgende vereiste eigenschappen hebben:
+De [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens van een Azure SQL Database met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
+
+Wanneer u een gegevens bron maakt met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), moet de gegevens bron de volgende vereiste eigenschappen hebben:
 
 * **naam** is de unieke naam van de gegevens bron in uw zoek service.
-* **type** is`azuresql`
+* **type** is `azuresql`
 * **aanmeldings**
     * Wanneer u een beheerde identiteit gebruikt om te verifiëren, is de notatie van de **referenties** anders dan wanneer u geen beheerd-identiteit gebruikt. Hier geeft u een initiële catalogus-of database naam en een ResourceId op die geen account sleutel of wacht woord heeft. De ResourceId moet de abonnements-ID van Azure SQL Database, de resource groep van SQL Database en de naam van de SQL database bevatten. 
     * Connection string indeling beheerde identiteit:
@@ -122,8 +123,6 @@ api-key: [admin key]
     "container" : { "name" : "my-table" }
 } 
 ```
-
-De Azure Portal en de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen ook de beheerde identiteiten Connection String. De Azure Portal vereist een functie vlag die aan u wordt gegeven wanneer u zich aanmeldt voor de preview met behulp van de koppeling boven aan deze pagina. 
 
 ### <a name="6---create-the-index"></a>6-de index maken
 
@@ -178,7 +177,7 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 
 Als er een fout optreedt wanneer de Indexeer functie probeert verbinding te maken met de gegevens bron die aangeeft dat de client geen toegang heeft tot de server, bekijkt u [veelvoorkomende fouten in Indexeer functie](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting).
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Meer informatie over de Azure SQL-Indexer:
 * [Indexeerfunctie voor Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

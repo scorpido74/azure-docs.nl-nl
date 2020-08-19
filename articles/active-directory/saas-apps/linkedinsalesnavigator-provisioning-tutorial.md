@@ -2,25 +2,20 @@
 title: 'Zelf studie: gebruikers inrichten-LinkedIn Sales Navigator, Azure AD'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op de LinkedIn-verkoop Navigator.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869748"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549701"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Zelf studie: LinkedIn Sales Navigator configureren voor automatische gebruikers inrichting
 
@@ -87,7 +82,7 @@ De eerste stap bestaat uit het ophalen van uw LinkedIn-toegangs token. Als u een
 
 6. Sla uw toegangs token op uw klem bord of computer op voordat u de pagina verlaat.
 
-7. Meld u vervolgens aan bij de [Azure Portal](https://portal.azure.com)en blader naar de sectie **Azure Active Directory > enter prise apps > alle toepassingen** .
+7. Meld u vervolgens aan bij de [Azure Portal](https://portal.azure.com)en blader naar de sectie **Azure Active Directory > enter prise apps > alle toepassingen**  .
 
 8. Als u de LinkedIn Sales Navigator al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw exemplaar van LinkedIn Sales Navigator met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **LinkedIn Sales Navigator** in de toepassings galerie. Selecteer LinkedIn Sales navigator in de zoek resultaten en voeg dit toe aan uw lijst met toepassingen.
 

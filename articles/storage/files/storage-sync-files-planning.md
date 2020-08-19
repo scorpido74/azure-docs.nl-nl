@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 17274c2b5308b1e5069370400895c001dc03e5bb
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: references_regions
+ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224438"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553104"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 
@@ -147,7 +148,7 @@ Alleen NTFS-volumes worden ondersteund. ReFS, FAT, FAT32 en andere bestands syst
 
 De volgende tabel bevat de interop-status van NTFS-bestandssysteem functies: 
 
-| Functie | Ondersteuningsstatus | Notities |
+| Functie | Ondersteuningsstatus | Opmerkingen |
 |---------|----------------|-------|
 | ACL’s (toegangsbeheerlijsten) | Volledig ondersteund | Discretionaire toegangs beheer lijsten voor Windows-stijlen worden bewaard door Azure File Sync en worden afgedwongen door Windows Server op server-eind punten. U kunt ook Acl's afdwingen wanneer u de Azure-bestands share rechtstreeks koppelt, maar hiervoor is echter wel extra configuratie vereist. Zie de [sectie identiteit](#identity) voor meer informatie. |
 | Vaste koppelingen | Overgeslagen | |
@@ -314,7 +315,7 @@ Azure File Sync is beschikbaar in de volgende regio's:
 | Openbaar | Europa | Europa -west | `westeurope` |
 | Openbaar | Frankrijk | Frankrijk - centraal | `francecentral` |
 | Openbaar | Frankrijk | Frankrijk-zuid * | `francesouth` |
-| Openbaar | India | Central India | `centralindia` |
+| Openbaar | India | India - centraal | `centralindia` |
 | Openbaar | India | India - zuid | `southindia` |
 | Openbaar | Japan | Japan East | `japaneast` |
 | Openbaar | Japan | Japan - west | `japanwest` |

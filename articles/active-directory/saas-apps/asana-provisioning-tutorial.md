@@ -2,26 +2,21 @@
 title: 'Zelf studie: gebruikers inrichten voor asana-Azure AD'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op asana.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.reviewer: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: celested
+ms.openlocfilehash: 11e0606568fdaad20f996a7ae20a622576acea15
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058904"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549463"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Zelf studie: asana configureren voor automatische gebruikers inrichting
 
@@ -69,7 +64,7 @@ In deze sectie wordt u begeleid bij het verbinden van uw Azure AD to asana user 
 
     ![Asana-inrichting](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
 
-1. Volg de instructies in de sectie **beheerders referenties** om het token te genereren en in te voeren in een **geheim token**:
+1. Volg de instructies in de sectie **beheerders referenties** om het token te genereren en in te voeren in een  **geheim token**:
 
     a. Meld u aan bij [asana](https://app.asana.com) met uw beheerders account.
 
@@ -83,7 +78,7 @@ In deze sectie wordt u begeleid bij het verbinden van uw Azure AD to asana user 
 
 1. In de Azure Portal selecteert u **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw asana-app. Als de verbinding mislukt, zorgt u ervoor dat uw asana-account beheerders machtigingen heeft en voert u de stap **verbinding testen** opnieuw uit.
 
-1. Voer het e-mail adres in van een persoon of groep die u wilt ontvangen van de inrichtings fout meldingen in de **e-mail melding**. Schakel het selectie vakje eronder in.
+1. Voer het e-mail adres in van een persoon of groep die u wilt ontvangen van de inrichtings fout meldingen in de  **e-mail melding**. Schakel het selectie vakje eronder in.
 
 1. Selecteer **Opslaan**.
 

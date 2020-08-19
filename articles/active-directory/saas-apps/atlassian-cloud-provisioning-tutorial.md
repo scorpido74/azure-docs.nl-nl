@@ -2,24 +2,21 @@
 title: 'Zelf studie: atlassian Cloud configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts in Atlassian Cloud.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 12e94cfd576ced8c0e2768dd508e7f6f1a0056eb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14418d4d280f4da629aecd5a95b5a49e6856e2c1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927467"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549384"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Zelf studie: atlassian-Cloud configureren voor het automatisch inrichten van gebruikers
 
@@ -111,7 +108,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |Kenmerk|Type|
    |---|---|
    |userName|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |naam. familielid|Tekenreeks|
    |name. naam|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|   

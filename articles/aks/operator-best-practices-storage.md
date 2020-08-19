@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor de cluster opera
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: c683cbf7802fbf5420ec95d49e2dfda624ce093f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562835"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551792"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor opslag en back-ups in azure Kubernetes service (AKS)
 
@@ -32,7 +32,7 @@ Toepassingen vereisen vaak verschillende typen en snelheden van opslag. Zijn er 
 
 De volgende tabel bevat een overzicht van de beschik bare opslag typen en hun mogelijkheden:
 
-| Toepassing | Volume-invoeg toepassing | Eenmaal lezen/schrijven | Alleen-lezen veel | Veel lezen/schrijven | Ondersteuning voor Windows Server-container |
+| Gebruiksvoorbeeld | Volume-invoeg toepassing | Eenmaal lezen/schrijven | Alleen-lezen veel | Veel lezen/schrijven | Ondersteuning voor Windows Server-container |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Gedeelde configuratie       | Azure Files   | Ja | Ja | Ja | Ja |
 | Gestructureerde app-gegevens        | Azure-schijven   | Ja | Nee  | Nee  | Ja |
@@ -88,7 +88,7 @@ Zie [opslag beleid][reclaim-policy]voor meer informatie over opties voor opslag 
 
 ## <a name="secure-and-back-up-your-data"></a>Beveilig en maak een back-up van uw gegevens
 
-**Richt lijnen voor best practices** : Maak een back-up van uw gegevens met behulp van een geschikt hulp programma voor uw opslag type, zoals Velero of Azure site Recovery. Controleer de integriteit en de beveiliging van deze back-ups.
+**Richt lijnen voor best practices** : Maak een back-up van uw gegevens met behulp van een geschikt hulp programma voor uw opslag type, zoals Velero of Azure backup. Controleer de integriteit en de beveiliging van deze back-ups.
 
 Wanneer uw toepassingen gegevens opslaan en gebruiken die zijn opgeslagen op schijven of in bestanden, moet u regel matig back-ups of moment opnamen van die gegevens maken. Azure-schijven kunnen ingebouwde momentopname technologieën gebruiken. Mogelijk moet u uw toepassingen controleren om schrijf bewerkingen naar de schijf leeg te maken voordat u de momentopname bewerking uitvoert. [Velero][velero] kan back-ups maken van permanente volumes, samen met aanvullende cluster bronnen en-configuraties. Als u de [status van uw toepassingen][remove-state]niet kunt verwijderen, maakt u een back-up van de gegevens van permanente volumes en test u de herstel bewerkingen regel matig om de integriteit van gegevens en de vereiste processen te controleren.
 

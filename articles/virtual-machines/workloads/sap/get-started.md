@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/14/2020
+ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1152eb11d3452743daa5bcb39fb593dddf94452
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 5cee26f9c1674030903e8be6dac80f6615317a67
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245924"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551664"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -88,6 +88,7 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 08/17/2020: informatie over het gebruik van Azure Site Recovery voor het verplaatsen van SAP NetWeaver-systemen van on-premises naar Azure in artikel [azure virtual machines planning en implementatie van SAP NetWeaver](./planning-guide.md)
 - 08/14/2020: het toevoegen van een schijf configuratie advies voor Db2 in artikel [IBM Db2 Azure virtual machines DBMS-implementatie voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)
 - 08/11/2020: RHEL 7,6 toevoegen aan [compatibele besturings systemen voor Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) als beschikbaar besturings systeem voor HLI-eenheden van het type I
 - 08/10/2020: introductie van kosten bewuste SAP HANA opslag configuratie in [SAP Hana Azure virtual machine-opslag configuraties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) en het maken van updates voor [SAP-workloads op Azure: controle lijst voor planning en implementatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)

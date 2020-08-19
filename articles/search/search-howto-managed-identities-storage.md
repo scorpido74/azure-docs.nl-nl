@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084072"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553077"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Een verbinding met een Azure Storage account instellen met behulp van een beheerde identiteit (preview)
 
 > [!IMPORTANT] 
-> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit bevindt zich momenteel in een open bare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
-> U kunt toegang tot de preview aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/mi-preview-request)in te vullen.
+> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
 
 Op deze pagina wordt beschreven hoe u een Indexeer functie verbinding kunt instellen met een Azure-opslag account met behulp van een beheerde identiteit in plaats van referenties op te geven in het gegevens bron object connection string.
 
@@ -69,12 +68,14 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens u
 
 ### <a name="3---create-the-data-source"></a>3: de gegevens bron maken
 
+De [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van het maken van een gegevens bron voor het indexeren van gegevens uit een opslag account met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
+
 Bij het indexeren van een opslag account moet de gegevens bron de volgende vereiste eigenschappen hebben:
 
 * **naam** is de unieke naam van de gegevens bron in uw zoek service.
 * **type**
-    * Azure Blob-opslag:`azureblob`
-    * Azure-tabel opslag:`azuretable`
+    * Azure Blob-opslag: `azureblob`
+    * Azure-tabel opslag: `azuretable`
     * Azure Data Lake Storage Gen2: het **type** wordt gegeven nadat u zich hebt aangemeld voor het voor beeld met behulp van [dit formulier](https://aka.ms/azure-cognitive-search/mi-preview-request).
 * **aanmeldings**
     * Wanneer u een beheerde identiteit gebruikt om te verifiëren, is de notatie van de **referenties** anders dan wanneer u geen beheerde identiteit gebruikt. Hier geeft u een ResourceId op die geen account sleutel of wacht woord heeft. De ResourceId moet de abonnements-ID van het opslag account, de resource groep van het opslag account en de naam van het opslag account bevatten.
@@ -96,8 +97,6 @@ api-key: [admin key]
     "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
 }   
 ```
-
-De Azure Portal en de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen ook de beheerde identiteiten Connection String. De Azure Portal vereist een functie vlag die aan u wordt gegeven wanneer u zich aanmeldt voor de preview met behulp van de koppeling boven aan deze pagina. 
 
 ### <a name="4---create-the-index"></a>4-de index maken
 
@@ -148,7 +147,7 @@ Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservic
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Meer informatie over Azure Storage Indexeer functies:
 * [Indexer van Azure Blob](search-howto-indexing-azure-blob-storage.md)

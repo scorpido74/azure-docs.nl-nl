@@ -2,25 +2,21 @@
 title: 'Zelf studie: infor CloudSuite configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op infor CloudSuite.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 3ea430bb-86a7-4bb4-8315-95434a660e88
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7b91b8418580717afaf8ddf176f934b3ff1d0c60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b96166b789471e746e2a6434c5e0aa9b9a945ab3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057538"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550547"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Zelf studie: infor CloudSuite configureren voor automatische gebruikers inrichting
 
@@ -114,13 +110,13 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor infor CloudSuite in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **infor CloudSuite**.
+2. Selecteer **Infor CloudSuite** in de lijst met toepassingen.
 
-    ![De koppeling infor CloudSuite in de lijst met toepassingen](common/all-applications.png)
+    ![De Infor CloudSuite-koppeling in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer het tabblad **inrichten** .
 

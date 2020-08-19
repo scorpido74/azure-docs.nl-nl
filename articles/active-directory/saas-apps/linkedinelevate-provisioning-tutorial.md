@@ -2,25 +2,20 @@
 title: 'Zelf studie: gebruikers inrichten voor LinkedIn-uitbrei ding-Azure AD'
 description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op LinkedIn-bevoegdheden.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49b35de5cce914edbd8db2ac0c0c8cccd5f811b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057410"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549769"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Zelf studie: LinkedIn-verhoging configureren voor automatische gebruikers inrichting
 
@@ -86,7 +81,7 @@ De eerste stap bestaat uit het ophalen van uw LinkedIn-toegangs token. Als u een
 
 6. Sla uw toegangs token op uw klem bord of computer op voordat u de pagina verlaat.
 
-7. Meld u vervolgens aan bij de [Azure Portal](https://portal.azure.com)en blader naar de sectie **Azure Active Directory > enter prise apps > alle toepassingen** .
+7. Meld u vervolgens aan bij de [Azure Portal](https://portal.azure.com)en blader naar de sectie **Azure Active Directory > enter prise apps > alle toepassingen**  .
 
 8. Als u LinkedIn-verhoging al hebt geconfigureerd voor eenmalige aanmelding, zoekt u met het zoek veld naar uw exemplaar van LinkedIn-verhoging. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **LinkedIn-verhoging** in de toepassings galerie. Selecteer een uitbrei ding op LinkedIn in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 

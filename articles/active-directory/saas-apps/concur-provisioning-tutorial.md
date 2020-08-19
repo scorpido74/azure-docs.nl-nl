@@ -2,25 +2,20 @@
 title: 'Zelf studie: concur configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Concur configureert.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: df47f55f-a894-4e01-a82e-0dbf55fc8af1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60280403"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551163"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Zelf studie: concur configureren voor automatische gebruikers inrichting
 
@@ -73,7 +68,7 @@ Om de volgende redenen mag deze actie niet worden uitgevoerd met het profiel dat
 
 * Als een beheerder het bedrijf verlaat, kan de naam die aan het profiel voor de WS-beheerder is gekoppeld, indien gewenst zonder dat dit van invloed is op de ingeschakelde app, worden gewijzigd in de vervangende beheerder omdat dat profiel niet hoeft te worden geactiveerd.
 
-**Voer de volgende stappen uit om de inrichting van gebruikers te configureren:**
+**Voer de volgende stappen uit om de gebruikersinrichting te configureren:**
 
 1. Meld u aan bij uw **concur** -Tenant.
 
@@ -121,7 +116,7 @@ Om de volgende redenen mag deze actie niet worden uitgevoerd met het profiel dat
 
 U kunt nu een test account maken. Wacht Maxi maal 20 minuten om te controleren of het account is gesynchroniseerd met concur.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

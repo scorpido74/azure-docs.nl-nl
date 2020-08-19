@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/17/2020
+ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499174"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551837"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-verificatie configureren en beheren met Azure SQL
 
@@ -71,7 +71,9 @@ Bij het gebruik van Azure Active Directory met geo-replicatie moet de Azure Acti
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>Een Azure AD-beheerder (SQL Managed instance) inrichten
 
 > [!IMPORTANT]
-> Volg deze stappen alleen als u een door Azure SQL beheerd exemplaar inricht. Deze bewerking kan alleen worden uitgevoerd door de beheerder globaal/bedrijf of een bevoegde beheerdersrol in azure AD. In de volgende stappen wordt het proces voor het verlenen van machtigingen voor gebruikers met verschillende bevoegdheden in de directory beschreven.
+> Volg deze stappen alleen als u een door Azure SQL beheerd exemplaar inricht. Deze bewerking kan alleen worden uitgevoerd door de beheerder globaal/bedrijf of een bevoegde beheerdersrol in azure AD.
+>
+> In de **open bare preview**kunt u de rol van de **Directory lezers** toewijzen aan een groep in azure AD. De groeps eigenaren kunnen de identiteit van het beheerde exemplaar vervolgens toevoegen als lid van deze groep, zodat u een Azure AD-beheerder kunt inrichten voor het SQL Managed instance. Zie voor meer informatie over deze functie [Directory lezers Role in azure Active Directory voor Azure SQL](authentication-aad-directory-readers-role.md).
 
 Uw SQL Managed instance heeft machtigingen nodig voor het lezen van Azure AD om taken zoals de verificatie van gebruikers via lidmaatschap van een beveiligings groep of het maken van nieuwe gebruikers te kunnen uitvoeren. Om dit te laten werken, moet u de SQL Managed instance machtigen om Azure AD te lezen. U kunt dit doen met behulp van de Azure Portal of Power shell.
 
@@ -188,7 +190,7 @@ Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te
 
 De cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder voor uw SQL Managed instance worden weer gegeven in de volgende tabel:
 
-| Naam van cmdlet | Description |
+| Naam van cmdlet | Beschrijving |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Richt een Azure AD-beheerder in voor het beheerde exemplaar van SQL in het huidige abonnement. (Moet afkomstig zijn van het huidige abonnement)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Hiermee verwijdert u een Azure AD-beheerder voor het beheerde exemplaar van SQL in het huidige abonnement. |
@@ -277,7 +279,7 @@ Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalle
 
 Cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder voor SQL Database en Azure Synapse:
 
-| Naam van cmdlet | Description |
+| Naam van cmdlet | Beschrijving |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Richt een Azure Active Directory beheerder in voor de server die als host fungeert voor SQL Database of Azure Synapse. (Moet afkomstig zijn van het huidige abonnement) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Hiermee verwijdert u een Azure Active Directory beheerder voor de server die als host fungeert voor SQL Database of Azure Synapse.|
@@ -519,7 +521,7 @@ Zie [SQL Server Security Blog](https://blogs.msdn.microsoft.com/sqlsecurity/20..
 De volgende instructies zijn een verbinding met versie 13,1 van Sqlcmd, die beschikbaar is via het [Download centrum](https://www.microsoft.com/download/details.aspx?id=53591).
 
 > [!NOTE]
-> `sqlcmd`met de `-G` opdracht werkt niet met systeem identiteiten en is een gebruikers-principal-aanmelding vereist.
+> `sqlcmd` met de `-G` opdracht werkt niet met systeem identiteiten en is een gebruikers-principal-aanmelding vereist.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
@@ -528,7 +530,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 ## <a name="troubleshoot-azure-ad-authentication"></a>Problemen met Azure AD-verificatie oplossen
 
-Meer informatie over het oplossen van problemen met Azure AD-verificatie vindt u in de volgende blog:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
+Meer informatie over het oplossen van problemen met Azure AD-verificatie vindt u in de volgende blog: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Volgende stappen
 

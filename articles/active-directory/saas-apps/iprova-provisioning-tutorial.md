@@ -2,25 +2,21 @@
 title: 'Zelf studie: iProva configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op iProva.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 4edba747-242d-4795-9539-649f33af4c13
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 799713c237d8a528b7e458da1e26695484ca1080
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 1d0f5c974b19b83cdd2fdab832ae0cac0dab9d9a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923166"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552860"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>Zelf studie: iProva configureren voor automatische gebruikers inrichting
 
@@ -90,7 +86,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-iprova-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor iProva in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -122,7 +118,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
    |Kenmerk|Type|
    |---|---|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |displayName|Tekenreeks|
    |titel|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|

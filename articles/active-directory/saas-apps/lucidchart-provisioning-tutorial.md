@@ -2,25 +2,21 @@
 title: 'Zelf studie: Lucidchart configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts van Azure AD naar Lucidchart.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 25fe315e7d1af2e301e761c755470d2e3c24db1c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 88c14ef916847b84f881e8da2deda7835df37ffb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927008"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550279"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Zelf studie: Lucidchart configureren voor automatische gebruikers inrichting
 
@@ -82,7 +78,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-lucidchart-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Lucidchart in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -98,7 +94,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. In het gedeelte **beheerders referenties** voert u de waarde van het **Bearer-token** in dat eerder is opgehaald in het veld **geheim token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Lucidchart. Als de verbinding mislukt, zorg er dan voor dat uw Lucidchart-account beheerders machtigingen heeft en probeer het opnieuw.
+5. In het gedeelte **beheerders referenties** voert u de waarde van het **Bearer-token**  in dat eerder is opgehaald in het veld **geheim token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Lucidchart. Als de verbinding mislukt, zorg er dan voor dat uw Lucidchart-account beheerders machtigingen heeft en probeer het opnieuw.
 
       ![inrichtings](./media/Lucidchart-provisioning-tutorial/lucidchart1.png)
 
@@ -116,7 +112,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |---|---|
    |userName|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|Tekenreeks|
@@ -125,7 +121,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: organisatie|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
-   |urn: IETF: params: scim: schemas: extensie: lucidchart: 1.0: gebruiker: canEdit|Booleaans|
+   |urn: IETF: params: scim: schemas: extensie: lucidchart: 1.0: gebruiker: canEdit|Boolean-waarde|
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Lucidchart**.
 

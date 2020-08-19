@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4a618b00b211ce65b170379cc14d6b83a1183d28
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460351"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549562"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
@@ -187,6 +187,8 @@ Gebruik extensie methoden van `TelemetryProcessorChainBuilder` zoals hieronder w
 > Als u deze methode gebruikt om steek proeven te configureren, moet u ervoor zorgen dat u de `aiOptions.EnableAdaptiveSampling` eigenschap instelt op `false` Wanneer u aanroept `AddApplicationInsightsTelemetry()` .
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility
+
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
 {
     var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -448,7 +450,7 @@ Net als bij andere soorten steek proeven blijven de verwante telemetrie-items be
 
 Gegevens punten die worden verwijderd door middel van steek proeven zijn niet beschikbaar in een Application Insights functie, zoals [continue export](./export-telemetry.md).
 
-De steek proeven voor opname worden niet uitgevoerd terwijl er een adaptieve of vaste sampling bewerking is. Adaptieve steek proeven zijn standaard ingeschakeld wanneer de ASP.NET SDK of de ASP.NET Core SDK wordt gebruikt, of wanneer Application Insights is ingeschakeld in [Azure app service](azure-web-apps.md) of door status monitor te gebruiken. Wanneer telemetrie wordt ontvangen door het Application Insights service-eind punt, wordt de telemetrie onderzocht en wordt aangegeven dat de sampling frequentie kleiner dan 100% is (wat aangeeft dat de telemetrie wordt gesampled), wordt de door u ingestelde opname frequentie genegeerd.
+De steek proeven voor opname worden niet uitgevoerd terwijl er een adaptieve of vaste sampling bewerking is. Adaptieve steek proeven zijn standaard ingeschakeld wanneer de ASP.NET SDK of de ASP.NET Core SDK wordt gebruikt, of wanneer Application Insights is ingeschakeld in [Azure app service ](azure-web-apps.md) of door status monitor te gebruiken. Wanneer telemetrie wordt ontvangen door het Application Insights service-eind punt, wordt de telemetrie onderzocht en wordt aangegeven dat de sampling frequentie kleiner dan 100% is (wat aangeeft dat de telemetrie wordt gesampled), wordt de door u ingestelde opname frequentie genegeerd.
 
 > [!WARNING]
 > De waarde die wordt weer gegeven op de portal tegel geeft de waarde aan die u hebt ingesteld voor steek proeven van opname. Het bevat niet de werkelijke sampling frequentie als er een soort bewerking wordt uitgevoerd voor de controle van de SDK-steek proeven (adaptieve of vaste gemiddelde steek proeven).

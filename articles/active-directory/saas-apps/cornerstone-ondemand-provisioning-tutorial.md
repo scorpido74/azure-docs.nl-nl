@@ -2,26 +2,21 @@
 title: 'Zelf studie: hoek steen configureren voor automatische gebruikers inrichten met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van gebruikers accounts op de hoek van de OnDemand.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6aaed8d56bb254e5a6385c770f97b5238a5747b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4200bc9879aba5e18282123be03576cc617a5e14
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83647433"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549225"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Zelf studie: hoek steen configureren voor automatische gebruikers inrichting
 
@@ -81,11 +76,11 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 Ga als volgt te werk om het automatisch inrichten van gebruikers te configureren voor de OnDemand van een hoek steen in azure AD.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). **Bedrijfs toepassingen**selecteren  >  **alle toepassingen op de**  >  **OnDemand**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). **Bedrijfs toepassingen**selecteren  >  **alle toepassingen op de**  >  **OnDemand**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **hoek steen**.
+2. Selecteer **Cornerstone OnDemand** in de lijst met toepassingen.
 
     ![De koppeling van de hoek steen in de lijst toepassingen](common/all-applications.png)
 

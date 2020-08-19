@@ -3,12 +3,12 @@ title: Knowledge bases beheren-QnA Maker
 description: Met QnA Maker kunt u uw kennis slagen beheren door toegang te bieden tot de instellingen en inhoud van de kennis basis.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756798"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551775"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Knowledge Base maken en instellingen beheren
 
@@ -17,7 +17,7 @@ Met QnA Maker kunt u uw kennis grondslagen beheren door toegang te bieden tot de
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
-> * Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+> * Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/cognitive-services/) voordat u begint.
 > * Een [QnA Maker resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) die in de Azure Portal is gemaakt. Onthoud de Azure Active Directory-ID, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
 
 ## <a name="create-a-knowledge-base"></a>Een kennisdatabase maken
@@ -36,16 +36,16 @@ Met QnA Maker kunt u uw kennis grondslagen beheren door toegang te bieden tot de
 
    ![Scherm opname van het selecteren van een QnA Maker service Knowledge Base](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. In **stap 3**moet u de naam van `My Sample QnA KB`uw kennis database noemen.
+1. In **stap 3**moet u de naam van uw kennis database noemen `My Sample QnA KB` .
 
 1. Configureer in **stap 4**de instellingen met de volgende tabel:
 
     |Instelling|Waarde|
     |--|--|
-    |**Schakel het ophalen van meerdere schakelingen uit vanuit Url's, PDF-of DOCX-bestanden.**|Geselecteerd|
+    |**Schakel het ophalen van meerdere schakelingen uit vanuit Url's, PDF-of DOCX-bestanden.**|Ingeschakeld|
     |**Standaard antwoord tekst**| `Quickstart - default answer not found.`|
     |**+ URL toevoegen**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**Chit-Chat**|**Professionele** selecteren|
+    |**Chit-chat**|**Professionele** selecteren|
 
 1. Selecteer in **stap 5** **de optie uw KB maken**.
 
@@ -63,7 +63,7 @@ Met QnA Maker kunt u uw kennis grondslagen beheren door toegang te bieden tot de
 
 1. Selecteer een specifieke Knowledge Base om er wijzigingen aan te brengen.
 
-1.  **Instellingen**selecteren. De volgende lijst bevat velden die u kunt wijzigen.
+1.  Selecteer **Instellingen**. De volgende lijst bevat velden die u kunt wijzigen.
 
        |Doel|Bewerking|
        |--|--|

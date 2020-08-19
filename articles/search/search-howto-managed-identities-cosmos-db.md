@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 107cd113645a2cbd4b452f9350fa67d734ee6df8
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f65aa4b307108682fa6e190a229e9d82b6efdec0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143656"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553198"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding met een Cosmos DB-Data Base instellen met behulp van een beheerde identiteit (preview)
 
 > [!IMPORTANT] 
-> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit bevindt zich momenteel in een open bare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
-> U kunt toegang tot de preview aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/mi-preview-request)in te vullen.
+> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
 
 Op deze pagina wordt beschreven hoe u een Indexeer functie verbinding kunt instellen met een Azure Cosmos DB-Data Base met behulp van een beheerde identiteit in plaats van referenties op te geven in het gegevens bron object connection string.
 
@@ -58,11 +57,9 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens u
 
 ### <a name="3---create-the-data-source"></a>3: de gegevens bron maken
 
-Een **gegevens bron** geeft de gegevens aan die moeten worden geïndexeerd, referenties en beleid voor het identificeren van wijzigingen in de gegevens (zoals gewijzigde of verwijderde documenten in uw verzameling). De gegevens bron wordt gedefinieerd als een onafhankelijke resource, zodat deze kan worden gebruikt door meerdere Indexeer functies.
+De [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), Azure Portal en de [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen de beheerde identiteits Connection String. Hieronder ziet u een voor beeld van hoe u een gegevens bron maakt om gegevens te indexeren van Cosmos DB met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) en een beheerde identiteit Connection String. De indeling van de beheerde identiteits connection string is hetzelfde voor de REST API, de .NET-SDK en de Azure Portal.
 
-Wanneer beheerde identiteiten worden gebruikt voor verificatie bij de gegevens bron, bevatten de **referenties** geen account sleutel.
-
-Voor beeld van het maken van een Cosmos DB gegevens bron object met behulp van de [rest API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
+Wanneer beheerde identiteiten worden gebruikt voor verificatie, bevat de **referenties** geen account sleutel.
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -87,14 +84,12 @@ De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de v
 
 | Veld   | Beschrijving |
 |---------|-------------|
-| **naam** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
+| **name** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
 |**type**| Vereist. Moet zijn `cosmosdb` . |
 |**aanmeldings** | Vereist. <br/><br/>Wanneer u verbinding maakt met behulp van een beheerde identiteit, moet de indeling van de **referenties** zijn: *Data base = [database naam]; ResourceId = [resource-id-String];(soort = [API-kind];)*<br/> <br/>De ResourceId-indeling: *ResourceID =/Subscriptions/**uw abonnements-id**/resourceGroups/**de naam van de resource groep**/providers/Microsoft.DocumentDB/databaseAccounts/**uw Cosmos DB-account naam**/;*<br/><br/>Voor SQL-verzamelingen is voor de connection string geen soort vereist.<br/><br/>Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan de Connection String. <br/><br/>Voor Gremlin-grafieken en Cassandra-tabellen meldt u zich aan voor de preview-versie van de [Indexeer functie](https://aka.ms/azure-cognitive-search/indexer-preview) om toegang te krijgen tot de preview-versie en informatie over het format teren van de referenties.<br/>|
 | **verpakking** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor de MongoDB-API, de Gremlin-API en de Cassandra-API. |
 | **dataChangeDetectionPolicy** | Aanbevolen |
 |**dataDeletionDetectionPolicy** | Optioneel |
-
-De Azure Portal en de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) ondersteunen ook de beheerde identiteiten Connection String. De Azure Portal vereist een functie vlag die aan u wordt gegeven wanneer u zich aanmeldt voor de preview met behulp van de koppeling boven aan deze pagina. 
 
 ### <a name="4---create-the-index"></a>4-de index maken
 

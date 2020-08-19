@@ -2,25 +2,20 @@
 title: 'Zelf studie: gebruikers inrichten voor GitHub-Azure AD'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op GitHub.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcf68b1e00e9f3333a8cd1fdb21ec71712f0e95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057648"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550667"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Zelf studie: GitHub configureren voor automatische gebruikers inrichting
 
@@ -61,7 +56,7 @@ In deze sectie vindt u instructies voor het verbinden van uw Azure AD-GitHub en 
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor GitHub in azure AD
 
-1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory > Enter prise-apps > alle toepassingen** .
+1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory > Enter prise-apps > alle toepassingen**  .
 
 2. Als u GitHub al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van GitHub met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **github** in de toepassings galerie. Selecteer GitHub in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 

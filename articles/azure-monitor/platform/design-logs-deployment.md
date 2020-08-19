@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 8b74fa39c47f9032e57d2b6630be1a3ef45990a3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185176"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551319"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -127,20 +127,20 @@ Zie de [modus toegangs beheer configureren](manage-access.md#configure-access-co
 
 ## <a name="ingestion-volume-rate-limit"></a>Frequentie limiet opname volume
 
-Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. De limiet voor de volume frequentie is om Azure Monitor klanten te beschermen tegen onverwachte opname pieken in een multitenancy. Een standaard frequentie van 500 MB (gecomprimeerd) voor de opname volume is van toepassing op werk ruimten, wat ongeveer **6 GB/min** niet-gecomprimeerd is. de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. Deze drempel waarde is van toepassing op alle opgenomen gegevens, ongeacht of deze zijn verzonden vanuit Azure-resources met [Diagnostische instellingen](diagnostic-settings.md), [Data Collector API](data-collector-api.md) of agents.
+Azure Monitor is een grootschalige gegevensservice die elke maand een groeiend aantal terabytes aan gegevens van duizenden klanten verwerkt. De limiet voor de volume frequentie is om Azure Monitor klanten te isoleren van onverwachte opname pieken in een multitenancy. Een standaard waarde voor opname volume snelheid van 500 MB (gecomprimeerd) wordt gedefinieerd in werk ruimten. dit wordt omgezet in ongeveer **6 GB/min** ongecomprimeerd. de werkelijke grootte kan variëren, afhankelijk van de logboek lengte en de compressie ratio van de gegevens typen. De limiet voor volume frequentie is van toepassing op alle opgenomen gegevens, ongeacht of deze zijn verzonden vanuit Azure-resources met [Diagnostische instellingen](diagnostic-settings.md), [Data Collector API](data-collector-api.md) of agents.
 
-Wanneer u gegevens naar een werk ruimte verzendt met een volume snelheid van meer dan 80% van de drempel waarde die in uw werk ruimte is geconfigureerd, wordt er elke 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte terwijl de drempel waarde blijft overschreden. Wanneer de hoeveelheid opgenomen volume hoger is dan de drempel waarde, worden sommige gegevens verwijderd en wordt er om de 6 uur een gebeurtenis verzonden naar de *bewerkings* tabel in uw werk ruimte, terwijl de drempel waarde blijft overschreden. Als de frequentie van het opname volume de drempel waarde blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een aanvraag indienen om deze in uw werk ruimte te verg Roten door een ondersteunings aanvraag te openen. 
+Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is dan 80 % van de drempel die in uw werkruimte is geconfigureerd, wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel nog steeds wordt overschreden. Als het opnamevolume hoger is dan de drempel, worden sommige gegevens verwijderd en wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel wordt overschreden. Als de frequentie van het opname volume de drempel waarde blijft overschrijden of als u verwacht dat deze kort te bereiken, kunt u een aanvraag indienen om deze te verg Roten door een ondersteunings aanvraag te openen. 
 
-Als u een melding wilt ontvangen over een dergelijke gebeurtenis in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met de logica van een waarschuwing op basis van het aantal resultaten dat is gelukt dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten.
+Als u op de hoogte wilt worden gesteld van de limiet voor de snelheid van het opname volume in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met een waarschuwing Logic Base op basis van het aantal resultaten dat beslag is dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten.
 
-Percentage van opname volume bereikt 80% van de drempel waarde:
+Het opnamevolume heeft 80 % van de drempel bereikt:
 ```Kusto
 Operation
 |where OperationCategory == "Ingestion"
 |where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
 ```
 
-Drempel waarde voor inslikken volume bereikt:
+Opnamevolume heeft drempel bereikt:
 ```Kusto
 Operation
 |where OperationCategory == "Ingestion"
