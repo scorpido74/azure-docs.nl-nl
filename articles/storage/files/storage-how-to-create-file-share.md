@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: a642aa9735c4360c11d50cf475e5de63259c55df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, references_regions
+ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495706"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525646"
 ---
 # <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
 Als u een Azure-bestands share wilt maken, moet u drie vragen beantwoorden over hoe u deze gaat gebruiken:
@@ -37,7 +37,7 @@ Zie [planning voor een Azure files-implementatie](storage-files-planning.md)voor
 - Als u van plan bent om Azure PowerShell te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 Azure-bestands shares worden geïmplementeerd in *opslag accounts*. Dit zijn objecten op het hoogste niveau die een gedeelde opslag groep vertegenwoordigen. Deze opslag groep kan worden gebruikt voor het implementeren van meerdere bestands shares. 
 
 Azure ondersteunt meerdere typen opslag accounts voor verschillende opslag scenario's die klanten kunnen hebben, maar er zijn twee hoofd typen opslag accounts voor Azure Files. Welk type opslag account u moet maken, is afhankelijk van of u een standaard bestands share of een Premium-bestands share wilt maken: 
@@ -229,6 +229,60 @@ Deze opdracht mislukt als het opslag account zich in een virtueel netwerk bevind
 
 > [!Note]  
 > De naam van de bestandsshare mag alleen uit kleine letters bestaan. Zie [shares, directory's, bestanden en meta gegevens benoemen en hiernaar verwijzen](https://msdn.microsoft.com/library/azure/dn167011.aspx)voor meer informatie over de naamgeving van bestands shares en bestanden.
+
+### <a name="create-a-hot-or-cool-file-share"></a>Een hot of coole bestands share maken
+Een bestands share in een **opslag account voor algemeen gebruik v2 (GPv2)** kan trans acties geoptimaliseerde, Hot of coole bestands shares (of een combi natie daarvan) bevatten. Geoptimaliseerde trans actie-shares zijn beschikbaar in alle Azure-regio's, maar warme en cool-bestands shares zijn alleen beschikbaar [in een subset van regio's](storage-files-planning.md#storage-tiers). U kunt een hot of een coole bestands share maken met behulp van de module Azure PowerShell preview of de Azure CLI. 
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+De Azure Portal biedt nog geen ondersteuning voor het maken van warme en coole bestands shares of het verplaatsen van bestaande door een trans actie geoptimaliseerde bestands shares naar warme of koud. Raadpleeg de instructies voor het maken van een bestands share met Power shell of de Azure CLI.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+```PowerShell
+# Update the Azure storage module to use the preview version. You may need to close and 
+# reopen PowerShell before running this command. If you are running PowerShell 5.1, ensure 
+# the following:
+# - Run the below cmdlets as an administrator.
+# - Have PowerShellGet 2.2.3 or later. Uncomment the following line to check.
+# Get-Module -ListAvailable -Name PowerShellGet
+Remove-Module -Name Az.Storage -ErrorAction SilentlyContinue
+Uninstall-Module -Name Az.Storage
+Install-Module -Name Az.Storage -RequiredVersion "2.1.1-preview" -AllowClobber -AllowPrerelease 
+
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2 
+# storage accounts. Standard tiers are only available in standard storage accounts. 
+$shareName = "myhotshare"
+
+New-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Hot
+
+# You can also change an existing share's tier.
+Update-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Cool
+```
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+De functionaliteit voor het maken of verplaatsen van een bestands share naar een specifieke laag is beschikbaar in de meest recente update voor Azure CLI. Het bijwerken van Azure CLI is specifiek voor het besturings systeem/Linux-distributie dat u gebruikt. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)voor instructies over het bijwerken van Azure CLI op uw systeem.
+
+```bash
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2
+# storage accounts. Standard tiers are only available in standard storage accounts.
+shareName="myhotshare"
+
+az storage share-rm create \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
+    --name $shareName \
+    --access-tier "Hot"
+```
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Plan voor een implementatie van Azure files](storage-files-planning.md) of [plan een implementatie van Azure file sync](storage-sync-files-planning.md). 

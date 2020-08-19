@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505802"
+ms.locfileid: "88525918"
 ---
 # <a name="speech-service-release-notes"></a>Release opmerkingen bij de spraak service
 
@@ -26,13 +26,13 @@ ms.locfileid: "88505802"
 
 * **NEURAL TTS: nieuwe spreek stijl voor `en-US` Aria-stem**. AriaNeural kan klinken als een Newscaster bij het lezen van nieuws. De stijl ' Newscast-formeel ' klinkt meer ernstig, terwijl de stijl ' Newscast-inform ' meer besoepelder en informeel is. Zie [de gesp roken stijlen gebruiken in SSML](speech-synthesis-markup.md).
 
-* **Aangepaste spraak: er wordt een nieuwe functie uitgebracht om de kwaliteit van de trainings gegevens automatisch te controleren**. Wanneer u uw gegevens uploadt, worden verschillende aspecten van uw audio en Transcripten door de gegevens controlefunctie onderzocht en worden de gegevens automatisch opgelost of gefilterd op basis van problemen, zodat de kwaliteit van het getrainde spraak model wordt verbeterd. Dit heeft betrekking op het volume van uw audio, het geluids niveau, de nauw keurigheid van de uitspraak van de spraak, de uitlijning van spraak met de genormaliseerde tekst, de stilte in de audio, naast de audio-en script indeling. 
+* **Aangepaste spraak: er wordt een nieuwe functie uitgebracht om de kwaliteit van de trainings gegevens automatisch te controleren**. Wanneer u uw gegevens uploadt, onderzoekt het systeem diverse aspecten van uw audio-en transcript gegevens, en worden automatisch problemen opgelost of gefilterd om de kwaliteit van het spraak model te verbeteren. Dit heeft betrekking op het volume van uw audio, het geluids niveau, de nauw keurigheid van de uitspraak van spraak, de uitlijning van spraak met de genormaliseerde tekst, stilte in de audio, naast de audio-en script indeling. 
 
 * **Audio-inhoud maken: een aantal nieuwe functies om krachtigere mogelijkheden voor spraak afstemming en audio beheer mogelijk te**maken.
 
     * Uitspraak: de functie voor het afstemmen van de uitspraak wordt bijgewerkt naar de meest recente foneem-set. U kunt het juiste foneem-element kiezen uit de bibliotheek en de uitspraak verfijnen van de woorden die u hebt geselecteerd. 
 
-    * Downloaden: de audio ' downloaden '/' exporteren ' is verbeterd ter ondersteuning van het genereren van audio per alinea. U kunt verschillende inhoud in dezelfde bestands-SSML bewerken tijdens het genereren van meerdere audio-uitvoer. De bestands structuur van ' downloaden ' is ook verfijnd. U kunt nu eenvoudig alle audio in één map ophalen. 
+    * Downloaden: de audio-functie voor downloaden/exporteren is verbeterd ter ondersteuning van het genereren van audio per alinea. U kunt inhoud in dezelfde bestands-SSML bewerken tijdens het genereren van meerdere audio-uitvoer. De bestands structuur van ' downloaden ' is ook verfijnd. U kunt nu eenvoudig alle audio in één map ophalen. 
 
     * Taak status: de ervaring voor het exporteren van meerdere bestanden is verbeterd. Wanneer u meerdere bestanden in het verleden exporteert en een van de bestanden is mislukt, mislukt de volledige taak. Maar nu worden alle andere bestanden geëxporteerd. Het taak rapport is verrijkt met gedetailleerde en gestructureerde informatie. U kunt de logboeken voor alle mislukte bestanden en zinnen nu met het rapport controleren. 
 
@@ -42,7 +42,7 @@ ms.locfileid: "88505802"
 
 ### <a name="general-tts-voice-quality-improvements"></a>Algemene verbeteringen voor spraak kwaliteit van TTS
 
-* Minder uitspraak fout in woord niveau% voor `ru-RU` (fout verminderd door 56%) en `sv-SE` (fout kleiner dan 49%)
+* Er is een minder uitspraak van woord niveau% voor `ru-RU` (fouten verminderd door 56%) en `sv-SE` (fouten verminderd door 49%)
 
 * Verbeterd polyphony-woord voor het lezen van `en-US` Neural stemmen met 40%. Voor beelden van polyphony-woorden zijn ' read ', ' live ', ' content ', ' record ', ' object ', enzovoort. 
 
@@ -62,9 +62,9 @@ ms.locfileid: "88505802"
 ### <a name="bug-fixes"></a>Opgeloste fouten
 
 * Een aantal bugs opgelost met het hulp programma voor het maken van de audio-inhoud 
-    * Het probleem is opgelost met automatisch vernieuwen. 
-    * Opgeloste problemen met stijl stemmen in zh-CN in de regio Zuid-Azië-oost
-    * Het probleem is opgelost met de stabiliteit, met inbegrip van de export fout met het label ' onderbreken ', fouten in Lees tekens    
+    * Probleem opgelost met automatisch vernieuwen. 
+    * Opgeloste problemen met spraak stijlen in zh-CN in de regio Zuid-Azië-oost.
+    * Probleem met vaste stabiliteit, met inbegrip van een export fout met het label ' onderbreken ' en fouten in Lees tekens.    
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Nieuwe land instellingen voor spraak naar tekst: 2020-augustus release
 Spraak-naar-tekst vrijgegeven 26 nieuwe land instellingen in augustus: 2 Europese talen `cs-CZ` en `hu-HU` , 5 Engelse land instellingen en 19 Spaanse land instellingen die betrekking hebben op de meeste Zuid-Amerikaanse landen. Hieronder ziet u een lijst met de nieuwe land instellingen. Raadpleeg de volledige taal lijst [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
@@ -554,7 +554,7 @@ De volgende nieuwe inhoud is beschikbaar in onze [voorbeeld opslagplaats](https:
   - De SDK is nu gebouwd op basis van de iOS SDK-versie 12,1.
   - De SDK ondersteunt nu iOS-versies 9,2 en hoger.
   - Verbeter de referentie documentatie en los diverse eigenschapnamen op.
-- Javascript
+- JavaScript
   - Voeg ondersteuning toe voor het `Connection` object.
   - Type definitie bestanden voor gebundelde java script toevoegen
   - Eerste ondersteuning en implementatie voor woordgroepen hints.
@@ -586,7 +586,7 @@ Dit is een alleen-Java script-versie. Er zijn geen functies toegevoegd. De volge
 
 - Python
   - De bèta versie van python-ondersteuning (3,5 en hoger) is beschikbaar in deze release. Zie hier] (Quick Start-python.md) voor meer informatie.
-- Javascript
+- JavaScript
   - De Speech SDK voor Java script is open source. De bron code is beschikbaar op [github](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   - We bieden nu ondersteuning voor Node.js. u kunt [hier](quickstart-js-node.md)meer informatie vinden.
   - De lengte beperking voor audio sessies is verwijderd. de verbinding wordt automatisch hersteld onder de dekking.

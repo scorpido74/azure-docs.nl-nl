@@ -3,24 +3,19 @@ title: 'Zelf studie: werk dagen configureren voor het automatisch inrichten van 
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en het ongedaan maken van de inrichting van gebruikers accounts op workday.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bbd461072a137bf32874805e5c6171d1102ef0c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 51ab05a995ba5b620b759f419fb5b4594873d2f5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245344"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527805"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -238,7 +233,7 @@ In deze stap geeft u de beleids machtigingen ' beveiliging van bedrijfs processe
 
 1. Voer activate in het zoekvak in en klik op de koppeling **wijzigingen in behandeling van beveiligings beleid activeren**.
    >[!div class="mx-imgBorder"]
-   >![Inschakelen](./media/workday-inbound-tutorial/wd_isu_16.png "Activeren")
+   >![Inschakelen](./media/workday-inbound-tutorial/wd_isu_16.png "Activate")
 
 1. Start de taak wijzigingen in wachtend op beveiligings beleid activeren door een opmerking in te voeren voor controle doeleinden en klik vervolgens op **OK**.
 1. Voltooi de taak op het volgende scherm door het selectie vakje **bevestigen**te controleren en klik vervolgens op **OK**.
@@ -499,7 +494,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ja** | Geschreven bij alleen maken |
 | **PreferredNameData**    |  genoemd    |   |   Geschreven bij alleen maken |
-| **SelectUniqueValue (toevoegen (" \@ ", samen voegen (".", voor \[ naam \] , \[ achternaam \] ), "contoso.com"), samen voegen (" \@ ", samen voegen (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), deel nemen (" \@ ", lid (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com"**   | userPrincipalName     |     | Geschreven bij alleen maken 
+| **SelectUniqueValue (toevoegen (" \@ ", samen voegen (".", voor  \[ naam \] , \[ achternaam \] ), "contoso.com"), samen voegen (" \@ ", samen voegen (".", Mid ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), deel nemen (" \@ ", lid (".", Mid ( \[ FirstName \] , 1, 2), \[ LastName \] ), "contoso.com"**   | userPrincipalName     |     | Geschreven bij alleen maken 
 | `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Geschreven bij alleen maken |
 | **Switch ( \[ actief \] ,, "0", "True", "1", "false")** |  accountDisabled      |     | + Update maken |
 | **Voor**   | givenName       |     |    + Update maken |
@@ -776,7 +771,7 @@ Het is een algemene vereiste voor het configureren van het kenmerk *DisplayName*
 
 Hier vindt u informatie over het afhandelen van zulke vereisten voor het samen stellen van *CN* of *DisplayName* om kenmerken zoals bedrijf, bedrijfs eenheid, plaats of land/regio op te geven.
 
-* Elk workday-kenmerk wordt opgehaald met behulp van een onderliggende XPATH API-expressie, die kan worden geconfigureerd in **kenmerk toewijzing-> geavanceerde sectie-> kenmerk lijst bewerken voor werkdag**. Hier volgt de standaard XPATH API-expressie voor *PreferredFirstName*-, *PreferredLastName*-, *Company-* en *SupervisoryOrganization* -kenmerken.
+* Elk workday-kenmerk wordt opgehaald met behulp van een onderliggende XPATH API-expressie, die kan worden geconfigureerd in  **kenmerk toewijzing-> geavanceerde sectie-> kenmerk lijst bewerken voor werkdag**. Hier volgt de standaard XPATH API-expressie voor *PreferredFirstName*-, *PreferredLastName*-, *Company-* en *SupervisoryOrganization* -kenmerken.
 
      | Kenmerk workday | API XPATH-expressie |
      | ----------------- | -------------------- |
@@ -806,7 +801,7 @@ Hier vindt u informatie over het afhandelen van zulke vereisten voor het samen s
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
-    Als u de juiste expressie hebt, bewerkt u de tabel kenmerk toewijzingen en wijzigt u de kenmerk toewijzing *DisplayName* , zoals hieronder wordt weer gegeven: ![ DisplayName toewijzen](./media/workday-inbound-tutorial/wd_displayname_map.png)
+    Als u de juiste expressie hebt, bewerkt u de tabel kenmerk toewijzingen en wijzigt u de kenmerk toewijzing *DisplayName* , zoals hieronder wordt weer gegeven:   ![ DisplayName toewijzen](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
 * Als u het bovenstaande voor beeld uitbreidt, kunt u plaatsnamen van de werkdag omzetten in steno waarden en deze vervolgens gebruiken om weergave namen te maken, zoals *Smit, John (Chi)* of *Jansen, Jane (NYC)*. dit resultaat kan worden bereikt met behulp van een switch-expressie met het workday-kenmerk *gemeente* als de determinant-variabele.
 
@@ -988,7 +983,7 @@ In deze sectie worden veelvoorkomende fouten behandeld met het inrichten van wer
 
 |#|Foutscenario |Mogelijke oorzaken|Aanbevolen oplossing|
 |--|---|---|---|
-|1.| Fout bij het installeren van de inrichtings agent met het volgende fout bericht: *service ' Microsoft Azure AD Connect inrichtings agent ' (AADConnectProvisioningAgent) is niet gestart. Controleer of u voldoende rechten hebt om het systeem te starten.* | Deze fout wordt meestal weer gegeven als u probeert de inrichtings agent te installeren op een domein controller en groeps beleid voor komt dat de service wordt gestart.  Het wordt ook weer gegeven als er een eerdere versie van de agent wordt uitgevoerd en u deze nog niet hebt verwijderd voordat u een nieuwe installatie start.| Installeer de inrichtings agent op een niet-domein controller. Zorg ervoor dat vorige versies van de agent zijn verwijderd voordat u de nieuwe agent installeert.|
+|1.| Fout bij het installeren van de inrichtings agent met het volgende fout bericht:  *service ' Microsoft Azure AD Connect inrichtings agent ' (AADConnectProvisioningAgent) is niet gestart. Controleer of u voldoende rechten hebt om het systeem te starten.* | Deze fout wordt meestal weer gegeven als u probeert de inrichtings agent te installeren op een domein controller en groeps beleid voor komt dat de service wordt gestart.  Het wordt ook weer gegeven als er een eerdere versie van de agent wordt uitgevoerd en u deze nog niet hebt verwijderd voordat u een nieuwe installatie start.| Installeer de inrichtings agent op een niet-domein controller. Zorg ervoor dat vorige versies van de agent zijn verwijderd voordat u de nieuwe agent installeert.|
 |2.| De Windows-service ' Microsoft Azure AD Connect inrichtings agent ' bevindt zich in de *Start* status en schakelt niet over naar de *actieve* status. | Als onderdeel van de installatie maakt de wizard agent een lokaal account (**NT service \\ AADConnectProvisioningAgent**) op de server. Dit is het aanmeldings account dat wordt gebruikt voor het starten van de service. Als een beveiligings beleid op uw Windows-Server verhindert dat lokale accounts de services uitvoeren, wordt deze fout weer gestuit. | Open de *console Services*. Klik met de rechter muisknop op de Windows-service ' Microsoft Azure AD Connect inrichtings agent ' en geef op het tabblad Logon het account van een domein beheerder op om de service uit te voeren. Start de service opnieuw. |
 |3.| Bij het configureren van de inrichtings agent met uw AD-domein in de stap *Connect Active Directory*, neemt de wizard lange tijd in beslag bij het laden van het AD-schema en uiteindelijk een time-out. | Deze fout komt meestal voor als de wizard geen contact kan maken met de controllerserver van het AD-domein door firewallproblemen. | Wanneer u de referenties voor uw AD-domein opgeeft in het scherm *verbinding maken met* de wizard Active Directory, is de optie *domein controller selecteren prioriteit*. Gebruik deze optie om een domein controller te selecteren die zich op dezelfde site bevindt als de agent server en ervoor te zorgen dat er geen firewall regels zijn die de communicatie blok keren. |
 
@@ -1041,7 +1036,7 @@ Als u deze wijziging wilt uitvoeren, moet u [werkdag Studio](https://community.w
 
 3. Start workday Studio.
 
-4. Selecteer op de opdracht balk de optie **Workday > test webservice in tester** .
+4. Selecteer op de opdracht balk de optie  **Workday > test webservice in tester** .
 
 5. Selecteer **extern**en selecteer het Human_Resources WSDL-bestand dat u hebt gedownload in stap 2.
 
