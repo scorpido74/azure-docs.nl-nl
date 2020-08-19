@@ -7,12 +7,12 @@ ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: a0e27927c91c8b8ed1cfca410e08a5eb90117f58
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84f89b9def3fc5d98ebb669b9f5b86523854f7a8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076719"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185720"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Quickstart: Azure Key Vault-clientbibliotheek voor .NET (SDK v4)
 
@@ -240,7 +240,6 @@ In deze quickstart hebt u een sleutelkluis gemaakt, een geheim opgeslagen en dat
 
 Ga verder met de volgende artikelen als u meer wilt weten over Key Vault en hoe u het integreert met uw toepassingen.
 
-- [Service-to-service verificatie naar Azure Key Vault implementeren met behulp van .NET](../general/service-to-service-authentication.md)
 - Lees een [Overzicht van Azure Key Vault](../general/overview.md)
 - Zie de [Gids voor Azure Key Vault-ontwikkelaars](../general/developers-guide.md)
 - Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)

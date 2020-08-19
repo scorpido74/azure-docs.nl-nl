@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/30/2020
 ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 480e860952c2659d053f8a5659e312feacff2d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 76504da214a3777dba7b2356bea160e86999bb45
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874483"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207547"
 ---
 # <a name="quickstart-personalizer-client-library"></a>Quickstart: Personalizer-clientbibliotheek
 
@@ -48,4 +48,4 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 * [Wat is Personalizer?](what-is-personalizer.md)
 * [Waar kunt u Personalizer gebruiken?](where-can-you-use-personalizer.md)
 * [Problemen oplossen](troubleshooting.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py).
+* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer).

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845796"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142108"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Zelfstudie: Azure Data Box retourneren (preview)
 
@@ -176,7 +176,7 @@ Indien u een probleem ondervindt, stuurt u een e-mail naar Data Box Operations A
 
 ## <a name="self-managed"></a>[Zelfbeheerd](#tab/in-selfmanaged)
 
-Als u Data Box gebruikt in Japan, Singapore, Korea en West-Europa en de bezorgoptie Zelfbeheerde verzending hebt geselecteerd tijdens een bestelling, volgt u deze instructies.
+Als u de Data Box gebruikt in Japan, Singapore, Korea, India, Zuid-Afrika of West-Europa en voor zelf verzenden hebt gekozen tijdens het maken van de bestelling, volgt u deze instructies.
 
 1. Noteer de autorisatiecode die wordt weergegeven op de pagina Voorbereiden voor verzending van de lokale web-UI van Data Box nadat deze stap is voltooid.
 2. Schakel het apparaat uit en verwijder de kabels. Rol het meegeleverde netsnoer op en plaats het in de opberglade aan de achterkant van het apparaat.

@@ -1,14 +1,14 @@
 ---
 title: Blauwdrukvoorbeeld voor Media implementeren
 description: Implementeer stappen voor het blauwdrukvoorbeeld voor Media, inclusief de parametergegevens voor blauwdrukartefacten.
-ms.date: 02/25/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: 7c107c49a5ab5ec8c64b2d2deadb2531e8a67f3a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c8ac1726bc5007c1790f5efbc45c72f9712fcdf2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042795"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208425"
 ---
 # <a name="deploy-the-media-blueprint-sample"></a>Het blauwdrukvoorbeeld voor Media implementeren
 
@@ -93,7 +93,7 @@ In de volgende tabel ziet u een lijst met de blauwdrukartefactparameters:
 
 Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Log Analytics-werkruimte voor virtuele Linux-machines |Raadpleeg [Een Log Analytics-werkruimte maken in de Azure-portal](../../../../azure-monitor/learn/quick-create-workspace.md) voor meer informatie. |
+|\[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Log Analytics-werkruimte voor virtuele Linux-machines |Raadpleeg [Een Log Analytics-werkruimte maken in Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md) voor meer informatie. |
 |\[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Linux-besturingssysteem die aan het bereik kunnen worden toegevoegd |Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: `[]` |
 |\[Preview\]: Log Analytics-agent voor Windows-VM's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Windows-besturingssysteem die aan het bereik kunnen worden toegevoegd |Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: `[]` |
 |\[Preview\]: Log Analytics-agent voor Windows-VM's implementeren |Beleidstoewijzing |Log Analytics-werkruimte voor Windows-VM's |Raadpleeg [Een Log Analytics-werkruimte maken in de Azure-portal](../../../../azure-monitor/learn/quick-create-workspace.md) voor meer informatie. |
@@ -103,7 +103,7 @@ Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |\[Preview\]: Media-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten controleren |Beleidstoewijzing |Lijst met gebruikers die moeten worden opgenomen in de groep Beheerders voor Windows-VM's |Een lijst met leden die moeten worden opgenomen in de lokale groep beheerders, gescheiden door puntkomma's. Voorbeeld: `Administrator; myUser1; myUser2` |
 |Advanced Threat Protection implementeren voor opslagaccounts |Beleidstoewijzing |Effect |Informatie over de effecten van het beleid vindt u bij [Inzicht in de effecten van Azure Policy](../../../policy/concepts/effects.md). |
 |Controle op SQL-servers implementeren |Beleidstoewijzing |De waarde in dagen van de bewaarperiode (0 betekent een onbeperkte bewaarperiode) |Bewaarperiode in dagen (optioneel, _180_ dagen als u niets opgeeft) |
-|Controle op SQL-servers implementeren |Beleidstoewijzing |De resourcegroepnaam voor het opslagaccount voor SQL Server-controles |De controle schrijft databasegebeurtenissen naar een auditlogboek in uw Azure Storage-account (er wordt een opslagaccount gemaakt in elke regio waarin een SQL Server wordt gemaakt die wordt gedeeld door alle servers in die regio). Belangrijk: voor de juiste werking van de controle mag u geen resourcegroepen of opslagaccounts verwijderen of hernoemen. |
+|Controle op SQL-servers implementeren |Beleidstoewijzing |De resourcegroepnaam voor het opslagaccount voor SQL Server-controles |De controle schrijft databasegebeurtenissen naar een auditlogboek in uw Azure Storage-account (er wordt een opslagaccount aangemaakt in elke regio waarin een SQL Server wordt gemaakt die wordt gedeeld door alle servers in die regio). Belangrijk: voor de juiste werking van de controle mag u geen resourcegroepen of opslagaccounts verwijderen of hernoemen. |
 |Diagnostische instellingen voor netwerkbeveiligingsgroepen implementeren |Beleidstoewijzing |Het voorvoegsel van het opslagaccount voor netwerkbeveiligingsgroepdiagnoses |Dit voorvoegsel vormt in combinatie met de locatie van de netwerkbeveiligingsgroep de naam van het gemaakte opslagaccount. |
 |Diagnostische instellingen voor netwerkbeveiligingsgroepen implementeren |Beleidstoewijzing |De resourcegroepnaam voor het opslagaccount voor netwerkbeveiligingsgroepdiagnoses (moet bestaan) |De resourcegroep waarin het opslagaccount wordt gemaakt. Deze resourcegroep moet al bestaan. |
 

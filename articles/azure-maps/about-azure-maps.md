@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6933321ad402104fa5529af2b7fdf38e329e0168
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830924"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212746"
 ---
 # <a name="what-is-azure-maps"></a>Wat is Azure Maps?
 
@@ -76,7 +76,7 @@ Zie de [Mobility-documentatie](https://docs.microsoft.com/rest/api/maps/mobility
 
 ### <a name="render-service"></a>Service voor rendering
 
-De [Render-Service v2](https://docs.microsoft.com/est/api/maps/renderv2) waarvan nu een preview-versie beschikbaar is, introduceert een nieuwe versie van de [Get Map Tile V2-API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). Met de Get Map Tile V2-API kunnen klanten nu Azure Maps wegtegels, weertegels of kaarttegels aanvragen die zijn gemaakt met behulp van Azure Maps Maker. Het is raadzaam om de nieuwe Get Map Tile V2-API te gebruiken.  
+De [Render-Service v2](https://docs.microsoft.com/rest/api/maps/renderv2) waarvan nu een preview-versie beschikbaar is, introduceert een nieuwe versie van de [Get Map Tile V2-API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). Met de Get Map Tile V2-API kunnen klanten nu Azure Maps wegtegels, weertegels of kaarttegels aanvragen die zijn gemaakt met behulp van Azure Maps Maker. Het is raadzaam om de nieuwe Get Map Tile V2-API te gebruiken.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Voorbeeld van een kaart uit de Render-service V2":::
 

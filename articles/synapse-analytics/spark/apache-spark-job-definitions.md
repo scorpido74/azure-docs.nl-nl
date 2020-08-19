@@ -1,20 +1,19 @@
 ---
 title: 'Zelfstudie: Apache Spark-taakdefinitie maken in Synapse Studio'
 description: Zelfstudie - gebruik de Azure Synapse Analytics om Spark-taakdefinities te maken en verzend deze naar een Apache Spark voor de Azure Synapse Analytics-pool.
-author: hrasheed-msft
+author: Jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
-ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: ac3e163ffefcb7b164860b0c4fa42edc866227e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38678c795b0ce7534de0ca8602c1198bc35f0e05
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065629"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206180"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Zelfstudie: Apache Spark-taakdefinitie maken in Synapse Studio
 

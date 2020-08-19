@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120861"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140799"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Quickstart: Een clienttoepassing configureren voor toegang tot een web-API
 
@@ -148,7 +148,7 @@ Een clientgeheim toevoegen:
 
 ## <a name="add-permissions-to-access-web-apis"></a>Machtigingen toevoegen voor toegang tot web-API's
 
-De [Graph API-machtiging: Aanmelden en gebruikersprofiel lezen](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions) is standaard geselecteerd. U kunt kiezen uit twee [typen machtigingen](developer-glossary.md#permissions) voor elke web-API:
+De [Graph API-machtiging: Aanmelden en gebruikersprofiel lezen](/graph/permissions-reference#user-permissions) is standaard geselecteerd. U kunt kiezen uit twee [typen machtigingen](developer-glossary.md#permissions) voor elke web-API:
 
 * **Toepassingsmachtigingen**. De clienttoepassing heeft rechtstreeks als zichzelf (zonder gebruikerscontext) toegang nodig tot de web-API. Voor dit type machtiging is toestemming van de beheerder vereist. Deze machtiging is niet beschikbaar voor clienttoepassingen voor de desktop of voor mobiele clienttoepassingen.
 * **Gedelegeerde machtigingen**. de clienttoepassing heeft toegang tot de web-API als de aangemelde gebruiker nodig, maar met toegang die wordt beperkt door de geselecteerde machtiging. Dit type machtiging kan worden verleend door een gebruiker tenzij de machtiging toestemming van de beheerder vereist.

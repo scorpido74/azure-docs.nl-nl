@@ -1,14 +1,14 @@
 ---
 title: Blauwdrukvoorbeeld HIPAA HITRUST implementeren
 description: Implementatiestappen voor het blauwdrukvoorbeeld HIPAA HITRUST, waaronder de parametergegevens voor blauwdrukartefacten.
-ms.date: 12/03/2019
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: b3101d67e281f3b613b95e3f3ef5f620ae44cec7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f41827d687beb583ea6402d517e88b8cf69903a0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044835"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211526"
 ---
 # <a name="deploy-the-hipaa-hitrust-blueprint-sample"></a>Het blauwdrukvoorbeeld HIPAA HITRUST implementeren
 
@@ -93,7 +93,7 @@ In de volgende tabel ziet u een lijst met de blauwdrukartefactparameters:
 
 Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Log Analytics-werkruimte voor virtuele Linux-machines |Raadpleeg [Een Log Analytics-werkruimte maken in de Azure-portal](../../../../azure-monitor/learn/quick-create-workspace.md) voor meer informatie. |
+|\[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Log Analytics-werkruimte voor virtuele Linux-machines |Raadpleeg [Een Log Analytics-werkruimte maken in Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md) voor meer informatie. |
 |\[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Linux-besturingssysteem die aan het bereik kunnen worden toegevoegd |Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: `[]` |
 |\[Preview\]: Log Analytics-agent voor Windows-VM's implementeren |Beleidstoewijzing |Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Windows-besturingssysteem die aan het bereik kunnen worden toegevoegd |Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: `[]` |
 |\[Preview\]: Log Analytics-agent voor Windows-VM's implementeren |Beleidstoewijzing |Log Analytics-werkruimte voor Windows-VM's |Raadpleeg [Een Log Analytics-werkruimte maken in de Azure-portal](../../../../azure-monitor/learn/quick-create-workspace.md) voor meer informatie. |
@@ -103,9 +103,11 @@ Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |\[Preview\]: HITRUST HIPAA-besturingselementen controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten |Beleidstoewijzing |Lijst met gebruikers die moeten worden opgenomen in de groep Beheerders voor Windows-VM's |Een lijst met leden die moeten worden opgenomen in de lokale groep beheerders, gescheiden door puntkomma's. Voorbeeld: `Administrator; myUser1; myUser2` |
 |Advanced Threat Protection implementeren voor opslagaccounts |Beleidstoewijzing |Effect |Informatie over de effecten van het beleid vindt u bij [Inzicht in de effecten van Azure Policy](../../../policy/concepts/effects.md). |
 |Controle op SQL-servers implementeren |Beleidstoewijzing |De waarde in dagen van de bewaarperiode (0 betekent een onbeperkte bewaarperiode) |Bewaarperiode in dagen (optioneel, _180_ dagen als u niets opgeeft) |
-|Controle op SQL-servers implementeren |Beleidstoewijzing |De resourcegroepnaam voor het opslagaccount voor SQL Server-controles |De controle schrijft databasegebeurtenissen naar een auditlogboek in uw Azure Storage-account (er wordt een opslagaccount gemaakt in elke regio waarin een SQL Server wordt gemaakt die wordt gedeeld door alle servers in die regio). Belangrijk: voor de juiste werking van de controle mag u geen resourcegroepen of opslagaccounts verwijderen of hernoemen. |
+|Controle op SQL-servers implementeren |Beleidstoewijzing |De resourcegroepnaam voor het opslagaccount voor SQL Server-controles |De controle schrijft databasegebeurtenissen naar een auditlogboek in uw Azure Storage-account (er wordt een opslagaccount aangemaakt in elke regio waarin een SQL Server wordt gemaakt die wordt gedeeld door alle servers in die regio). Belangrijk: voor de juiste werking van de controle mag u geen resourcegroepen of opslagaccounts verwijderen of hernoemen. |
 |Diagnostische instellingen voor netwerkbeveiligingsgroepen implementeren |Beleidstoewijzing |Het voorvoegsel van het opslagaccount voor netwerkbeveiligingsgroepdiagnoses |Dit voorvoegsel vormt in combinatie met de locatie van de netwerkbeveiligingsgroep de naam van het gemaakte opslagaccount. |
 |Diagnostische instellingen voor netwerkbeveiligingsgroepen implementeren |Beleidstoewijzing |De resourcegroepnaam voor het opslagaccount voor netwerkbeveiligingsgroepdiagnoses (moet bestaan) |De resourcegroep waarin het opslagaccount wordt gemaakt. Deze resourcegroep moet al bestaan. |
+|\[Preview\]: Log Analytics-agent voor Linux VM Scale Sets (VMSS) implementeren |Beleidstoewijzing |Log Analytics-werkruimte voor Linux-VM-schaalsets (VMSS) |Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen. |
+|\[Preview\]: Log Analytics-agent voor Windows-VM-schaalsets (VMSS) implementeren |Beleidstoewijzing |Log Analytics-werkruimte voor Linux-VM-schaalsets (VMSS) |Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

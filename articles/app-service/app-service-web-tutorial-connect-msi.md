@@ -4,13 +4,13 @@ description: Informatie over hoe u databaseverbindingen veiliger kunt maken met 
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.custom: mvc, cli-validate
-ms.openlocfilehash: 206da4e7fe92846352120d604cd8bee578eb45dc
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, mvc, cli-validate
+ms.openlocfilehash: bb1c947a388811efb5d161b7739664bea9fc85c8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077727"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213706"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
