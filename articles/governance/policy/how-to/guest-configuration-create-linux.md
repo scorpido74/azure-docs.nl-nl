@@ -1,14 +1,14 @@
 ---
 title: Beleidsregels voor gastconfiguratie voor Linux maken
 description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Linux.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236587"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547717"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Beleidsregels voor gastconfiguratie voor Linux maken
 
@@ -25,9 +25,8 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 > [!IMPORTANT]
 > Aangepaste beleids regels met gast configuratie is een preview-functie.
 >
-> De gastconfiguratie-extensie is vereist voor het uitvoeren van controles op virtuele machines van Azure.
-> Als u de uitbrei ding op schaal wilt implementeren op alle Linux-machines, wijst u de volgende beleids definitie toe:
->   - [Vereisten voor het inschakelen van gastenconfiguratiebeleid op Linux-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> De gastconfiguratie-extensie is vereist voor het uitvoeren van controles op virtuele machines van Azure. Als u de uitbrei ding op schaal wilt implementeren op alle Linux-machines, wijst u de volgende beleids definitie toe:
+> - [Vereisten voor het inschakelen van gastenconfiguratiebeleid op Linux-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>De Power shell-module installeren
 
@@ -52,8 +51,7 @@ Besturings systemen waarop de module kan worden geïnstalleerd:
 - Windows
 
 > [!NOTE]
-> Voor de cmdlet test-GuestConfigurationPackage is OpenSSL-versie 1,0 vereist vanwege een afhankelijkheid van OMI.
-> Dit veroorzaakt een fout op een wille keurige omgeving met OpenSSL 1,1 of hoger.
+> Voor de cmdlet test-GuestConfigurationPackage is OpenSSL-versie 1,0 vereist vanwege een afhankelijkheid van OMI. Dit veroorzaakt een fout op een wille keurige omgeving met OpenSSL 1,1 of hoger.
 
 Voor de module gast configuratie resource is de volgende software vereist:
 
@@ -81,7 +79,8 @@ De **GuestConfiguration** -module installeren in Power shell:
 
 ## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Gast configuratie artefacten en beleid voor Linux
 
-Zelfs in Linux-omgevingen gebruikt de gast configuratie de gewenste status configuratie als een taal abstractie. De implementatie is gebaseerd op systeem eigen code (C++) zodat Power shell niet hoeft te worden geladen. Er is echter wel een configuratie-MOF vereist waarin de details van de omgeving worden beschreven. DSC fungeert als wrapper voor inspecers om te standaardiseren hoe het wordt uitgevoerd, hoe para meters worden opgegeven en hoe uitvoer wordt geretourneerd naar de service. Er is weinig kennis van DSC vereist bij het werken met aangepaste Inspec-inhoud.
+Zelfs in Linux-omgevingen gebruikt de gast configuratie de gewenste status configuratie als een taal abstractie. De implementatie is gebaseerd op systeem eigen code (C++) zodat Power shell niet hoeft te worden geladen. Er is echter wel een configuratie-MOF vereist waarin de details van de omgeving worden beschreven.
+DSC fungeert als wrapper voor inspecers om te standaardiseren hoe het wordt uitgevoerd, hoe para meters worden opgegeven en hoe uitvoer wordt geretourneerd naar de service. Er is weinig kennis van DSC vereist bij het werken met aangepaste Inspec-inhoud.
 
 #### <a name="configuration-requirements"></a>Configuratie vereisten
 
@@ -141,8 +140,6 @@ AuditFilePathExists -out ./Config
 Sla het bestand op met `config.ps1` de naam in de projectmap. Voer deze uit in Power shell door `./config.ps1` uit te voeren in de Terminal. Er wordt een nieuw MOF-bestand gemaakt.
 
 De `Node AuditFilePathExists` opdracht is niet technisch vereist, maar er wordt een bestand gemaakt met de naam `AuditFilePathExists.mof` in plaats van de standaard waarde `localhost.mof` . Als u de bestands naam. MOF volgt, is het eenvoudig om veel bestanden te organiseren wanneer deze op schaal worden uitgevoerd.
-
-
 
 U hebt nu een project structuur als volgt:
 
@@ -288,8 +285,7 @@ De volgende bestanden worden gemaakt door `New-GuestConfigurationPolicy` :
 
 De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de beleids bestanden bevat.
 
-Ten slotte publiceert u de beleids definities met de `Publish-GuestConfigurationPolicy` cmdlet.
-De cmdlet heeft alleen de para meter **Path** die verwijst naar de locatie van de json-bestanden die zijn gemaakt door `New-GuestConfigurationPolicy` .
+Ten slotte publiceert u de beleids definities met de `Publish-GuestConfigurationPolicy` cmdlet. De cmdlet heeft alleen de para meter **Path** die verwijst naar de locatie van de json-bestanden die zijn gemaakt door `New-GuestConfigurationPolicy` .
 
 Als u de opdracht publiceren wilt uitvoeren, moet u toegang hebben tot beleids regels maken in Azure. De specifieke autorisatie vereisten worden beschreven op de pagina [overzicht van Azure Policy](../overview.md) . De beste ingebouwde rol is Inzender voor **resource beleid**.
 
@@ -459,5 +455,5 @@ Voor meer informatie over de cmdlets in dit hulp programma gebruikt u de opdrach
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het controleren van Vm's met [gast configuratie](../concepts/guest-configuration.md).
-- Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](get-compliance-data.md).
+- Meer informatie over het [programmatisch maken van beleids regels](./programmatically-create.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](./get-compliance-data.md).

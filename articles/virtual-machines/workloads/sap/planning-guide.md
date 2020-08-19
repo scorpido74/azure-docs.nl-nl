@@ -8,15 +8,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61401fc15f6f1003f6969787854fad65bfb6a5ab
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 87c8b160a0b8791d13976be975090d16e68ea82f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511232"
+ms.locfileid: "88547406"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -766,6 +766,8 @@ Microsoft Azure biedt meerdere manieren om Vm's en gekoppelde schijven te implem
 #### <a name="moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a><a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Een virtuele machine verplaatsen van on-premises naar Azure met een niet-gegeneraliseerde schijf
 
 U bent van plan een specifiek SAP-systeem van on-premises naar Azure te verplaatsen. Dit kan worden gedaan door het uploaden van de VHD, die het besturings systeem, de binaire bestanden van SAP en de binaire DBMS-bestanden bevat, plus de Vhd's met de gegevens en logbestanden van het DBMS naar Azure. In tegens telling tot [scenario #2 hieronder][planning-guide-5.1.2], de HOSTNAAM, SAP sid en SAP-gebruikers accounts in de virtuele Azure-machine blijven zoals ze zijn geconfigureerd in de on-premises omgeving. Daarom is het niet nodig om de installatie kopie te generaliseren. Zie hoofd stukken [voor bereiding voor het verplaatsen van een virtuele machine van on-premises naar Azure met een niet-algemene schijf][planning-guide-5.2.1] van dit document voor on-premises voorbereidende stappen en het uploaden van niet-gegeneraliseerde Vm's of Vhd's naar Azure. Lees hoofd stuk [3: een virtuele machine verplaatsen van on-premises met behulp van een niet-gegeneraliseerde Azure VHD met SAP][deployment-guide-3.4] in de [implementatie handleiding][deployment-guide] voor gedetailleerde stappen voor het implementeren van een dergelijke installatie kopie in Azure.
+
+Een andere optie die niet meer in deze hand leiding wordt beschreven, maakt gebruik van Azure Site Recovery om SAP NetWeaver-toepassings servers en SAP NetWeaver-centrale Services naar Azure te repliceren. Het is niet raadzaam om Azure Site Recovery te gebruiken voor de data base-laag en liever data base-specifieke replicatie mechanismen te gebruiken, zoals HANA-systeem replicatie. Zie voor meer informatie hoofd stuk [beveiligen SAP](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload#protect-sap) van de hand leiding [over nood herstel voor on-premises apps](https://docs.microsoft.com/azure/site-recovery/site-recovery-workload) .
 
 #### <a name="deploying-a-vm-with-a-customer-specific-image"></a><a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Een VM implementeren met een klantspecifieke installatie kopie
 

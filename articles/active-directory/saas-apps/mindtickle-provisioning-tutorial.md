@@ -2,25 +2,21 @@
 title: 'Zelf studie: MindTickle configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op MindTickle.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ae7b6ac9c6feb539e4da3627ebbabd3c5b628fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cac57e0f205da7a39447ddd48810b8fd120ab58
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77061216"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549057"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Zelf studie: MindTickle configureren voor automatische gebruikers inrichting
 
@@ -57,7 +53,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 Voordat u MindTickle configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op MindTickle.
 
 
-1.  Neem contact op met het [ondersteunings team van MindTickle](mailto:help@mindtickle.com) om het JWT-token op te halen dat nodig is voor het configureren van scim-inrichting.
+1.  Neem contact op met het  [ondersteunings team van MindTickle](mailto:help@mindtickle.com) om het JWT-token op te halen dat nodig is voor het configureren van scim-inrichting.
 
 
 ## <a name="add-mindtickle-from-the-gallery"></a>MindTickle toevoegen vanuit de galerie
@@ -91,7 +87,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-mindtickle-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor MindTickle in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 

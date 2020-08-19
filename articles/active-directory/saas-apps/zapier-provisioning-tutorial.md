@@ -2,25 +2,21 @@
 title: 'Zelf studie: Zapier configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts van Azure AD naar Zapier.
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: 66e224f9-2311-4564-bb84-99fce59a398f
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: 015325fe213c8cc1de347282752211750339cd65
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4a6b4698a873d6bdba0c4145b5bf7bb486b5e1c5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927229"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546142"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>Zelf studie: Zapier configureren voor automatische gebruikers inrichting
 
@@ -81,7 +77,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-zapier-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Zapier in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -114,7 +110,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |Variabele|Type|
    |---|---|
    |userName|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |externalId|Tekenreeks|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|

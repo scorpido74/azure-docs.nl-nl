@@ -11,23 +11,23 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108916"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545655"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>De Text Analytics-containers installeren en uitvoeren
 
 > [!NOTE]
-> * De container voor Sentimentanalyse v3 is nu algemeen beschikbaar. De sleutel woorden extractie en taal detectie containers zijn beschikbaar als een open bare preview-versie.
+> * De container voor Sentimentanalyse v3 is nu algemeen beschikbaar. De containers voor sleuteltermextractie en taaldetectie zijn beschikbaar als een openbare preview-versie.
 > * Entiteits koppelingen en NER zijn momenteel niet beschikbaar als container.
-> * Er wordt momenteel geen kosten in rekening gebracht voor Text Analytics voor het gebruik van de status container.
+> * Er worden momenteel geen kosten in rekening gebracht voor het gebruik van de container Text Analytics voor de status.
 
-Met containers kunt u de tekst analyse-Api's in uw eigen omgeving uitvoeren en zijn geweldig voor uw specifieke vereisten voor beveiliging en gegevens beheer. De Text Analytics-containers bieden geavanceerde verwerking van natuurlijke taal via onbewerkte tekst en bevatten drie belang rijke functies: sentiment analyse, extractie van sleutel zinnen en taal detectie. 
+Containers bieden u de mogelijkheid de Text Analytics-API's in uw eigen omgeving uit te voeren en zijn ideaal voor uw specifieke vereisten voor beveiliging en gegevensbeheer. De Text Analytics-containers bieden geavanceerde verwerking van natuurlijke taal via onbewerkte tekst en bevatten drie belang rijke functies: sentiment analyse, extractie van sleutel zinnen en taal detectie. 
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 > [!IMPORTANT]
 > Het gratis account is beperkt tot 5.000 trans acties per maand en alleen de <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">prijs categorieën <span class="docon docon-navigate-external x-hidden-focus"></span> </a> **gratis** en **standaard** zijn geldig voor containers. Zie [gegevens limieten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)voor meer informatie over de tarieven voor transactie aanvragen.
@@ -40,7 +40,7 @@ Als u een van de Text Analytics containers wilt uitvoeren, moet u beschikken ove
 
 U moet voldoen aan de volgende vereisten voordat u Text Analytics containers gebruikt:
 
-|Vereist|Functie|
+|Vereist|Doel|
 |--|--|
 |Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten.| 
@@ -65,7 +65,7 @@ In de volgende tabel worden de minimale en aanbevolen specificaties voor de Text
 
 De CPU-kern en het geheugen komen overeen met de `--cpus` `--memory` instellingen en, die worden gebruikt als onderdeel van de `docker run` opdracht.
 
-## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met `docker pull`
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -96,7 +96,7 @@ Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebru
 1. [Voer de container uit](#run-the-container-with-docker-run)met de vereiste facturerings instellingen.
 1. [Zoek het Voorspellings eindpunt van de container](#query-the-containers-prediction-endpoint)op.
 
-## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
+## <a name="run-the-container-with-docker-run"></a>Voer de container uit met `docker run`
 
 Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de containers uit te voeren. De container blijft actief totdat u deze stopt.
 
@@ -125,11 +125,11 @@ Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/comman
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
+## <a name="query-the-containers-prediction-endpoint"></a>Een query uitvoeren op het voorspellingseindpunt van de container
 
-De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's.
+De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling.
 
-Gebruik de host, `http://localhost:5000` voor container-api's.
+Gebruik de host, `http://localhost:5000`, voor container-API's.
 
 <!--  ## Validate container is running -->
 
@@ -139,7 +139,7 @@ Gebruik de host, `http://localhost:5000` voor container-api's.
 
 [!INCLUDE [How to stop the container](../../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Als u de container uitvoert met een uitvoer [koppeling](../text-analytics-resource-container-config.md#mount-settings) en logboek registratie ingeschakeld, genereert de container logboek bestanden die handig zijn om problemen op te lossen die optreden tijdens het starten of uitvoeren van de container.
 

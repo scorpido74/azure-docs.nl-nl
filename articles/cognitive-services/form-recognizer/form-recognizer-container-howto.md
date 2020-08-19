@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: 6190653934dede1fa042beca8dbd2d7c06f43cfc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cdcf4182f098affba0a18be5846ae6f6e52d7229
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538017"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547355"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Containers voor formulier herkenning installeren en uitvoeren (preview-versie)
 
@@ -28,7 +28,7 @@ Als u de complexiteit wilt reduceren en eenvoudig een aangepast model wilt integ
 |----------|----------|
 | Form Recognizer | <li>Verwerkt PDF-, PNG-en JPG-bestanden<li>Aangepaste modellen met mini maal vijf formulieren van dezelfde indeling <li>Haalt sleutel-waardeparen en tabel gegevens op <li>Maakt gebruik van de functie Azure Cognitive Services Computer Vision-API Tekst herkennen voor het detecteren en extra heren van afgedrukte tekst uit afbeeldingen in formulieren<li>Vereist geen aantekening of labeling |
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,13 +49,13 @@ Voordat u de formulieren Recognizer-containers gebruikt, moet aan de volgende ve
 
 Er zijn drie primaire para meters voor alle vereiste containers van Cognitive Services. De gebruiksrecht overeenkomst (EULA) moet aanwezig zijn met een waarde van `accept` . Daarnaast zijn zowel een eind punt-URL als een API-sleutel nodig.
 
-### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Eind punt-URI `{COMPUTER_VISION_ENDPOINT_URI}` en`{FORM_RECOGNIZER_ENDPOINT_URI}`
+### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Eind punt-URI `{COMPUTER_VISION_ENDPOINT_URI}` en `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
 De URI-waarde van het **eind punt** is beschikbaar op de pagina *overzicht* van Azure portal van de bijbehorende cognitieve service resource. Ga naar de *overzichts* pagina, beweeg de muis aanwijzer over het eind punt en er `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> wordt een pictogram weer gegeven. Kopieer en gebruik waar nodig.
 
 ![De URI van het eind punt verzamelen voor later gebruik](../containers/media/overview-endpoint-uri.png)
 
-### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Sleutels `{COMPUTER_VISION_API_KEY}` en`{FORM_RECOGNIZER_API_KEY}`
+### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Sleutels `{COMPUTER_VISION_API_KEY}` en `{FORM_RECOGNIZER_API_KEY}`
 
 Deze sleutel wordt gebruikt om de container te starten en is beschikbaar op de pagina sleutels van de Azure Portal van de bijbehorende cognitieve service resource. Ga naar de pagina *sleutels* en klik op het `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> pictogram.
 

@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 75b71fe9a15b05679ab1b71b13bb0b1f51b7d1d1
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 70cbb21430253dc9683cd3803f2a09ef8bb858cb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816145"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545638"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Lees containers installeren en uitvoeren (preview-versie)
 
-Met containers kunt u de Computer Vision-Api's uitvoeren in uw eigen omgeving. Containers zijn geweldig voor specifieke vereisten voor beveiliging en gegevens beheer. In dit artikel leert u hoe u een Computer Vision-container downloadt, installeert en uitvoert.
+Met containers kunt u de Computer Vision-API's uitvoeren in uw eigen omgeving. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer. In dit artikel leert u hoe u een Computer Vision-container downloadt, installeert en uitvoert.
 
 Er is een afzonderlijke docker-container, *gelezen*, beschikbaar voor computer vision. De *Lees* container stelt u in staat om *gedrukte tekst* te detecteren en uit te pakken van afbeeldingen van verschillende objecten met verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters en visite kaartjes. Daarnaast detecteert de *Lees* container *handgeschreven tekst* in afbeeldingen en biedt PDF, TIFF en ondersteuning voor meerdere pagina's. Zie de [Lees](concept-recognizing-text.md#read-api) API-documentatie voor meer informatie.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -62,7 +62,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met `docker pull`
 
 Er zijn container installatie kopieën voor lezen beschikbaar.
 
@@ -87,7 +87,7 @@ Wanneer de container zich op de [hostcomputer](#the-host-computer)bevindt, gebru
 1. [Voer de container uit](#run-the-container-with-docker-run)met de vereiste facturerings instellingen. Er zijn meer [voor beelden](computer-vision-resource-container-config.md) van de `docker run` opdracht beschikbaar. 
 1. [Zoek het Voorspellings eindpunt van de container](#query-the-containers-prediction-endpoint)op. 
 
-## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
+## <a name="run-the-container-with-docker-run"></a>Voer de container uit met `docker run`
 
 Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het ophalen van de `{ENDPOINT_URI}` `{API_KEY}` waarden en.
 
@@ -119,11 +119,11 @@ Er zijn meer [voor beelden](./computer-vision-resource-container-config.md#examp
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
+## <a name="query-the-containers-prediction-endpoint"></a>Een query uitvoeren op het voorspellingseindpunt van de container
 
-De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's. 
+De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling. 
 
-Gebruik de host, `http://localhost:5000` voor container-api's.
+Gebruik de host, `http://localhost:5000`, voor container-API's.
 
 ### <a name="asynchronous-read"></a>Asynchroon lezen
 

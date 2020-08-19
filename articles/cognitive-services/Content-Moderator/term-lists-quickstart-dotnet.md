@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a9c64d1a5c4c7ada666b5fe3a8bcc70b39871850
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72935945"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545621"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Tekst controleren aan de hand van een aangepaste termenlijst in C#
 
@@ -32,7 +32,7 @@ In dit artikel vindt u informatie en codevoorbeelden om aan de slag te gaan met 
 - Lijstgegevens bewerken.
 - De index vernieuwen zodat wijzigingen in de lijst worden gebruikt in een nieuwe scan.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registreren voor de Content Moderator-services
 
@@ -69,7 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>De Content Moderator-client maken
 
-Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken. Werk de `AzureEndpoint` velden `CMSubscriptionKey` en bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
+Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken. Werk de `AzureEndpoint` `CMSubscriptionKey` velden en bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
 
 ```csharp
 /// <summary>

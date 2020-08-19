@@ -2,25 +2,21 @@
 title: 'Zelf studie: Medius flow configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts van Azure AD naar Medius flow.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: c6c65170-c5cb-44f6-81f8-25d972759e2c
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 724068950153e6bc4687679892edf55ab89f3bf2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e8a64b3f42e52363f70d536963594bb6083a0992
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927399"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548069"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Zelf studie: Medius flow configureren voor automatische gebruikers inrichting
 
@@ -129,7 +125,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-mediusflow-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Medius flow in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -164,7 +160,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |userName|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
    |naam. displayName|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |naam. opgemaakt|Tekenreeks|

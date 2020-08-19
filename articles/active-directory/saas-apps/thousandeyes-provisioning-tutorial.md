@@ -2,25 +2,20 @@
 title: 'Zelf studie: gebruikers inrichten voor ThousandEyes-Azure AD'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op ThousandEyes.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87cffce636146eac3e557670ffc4fb2fc34ae38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a009361267a364f04237716f3623921c892e2708
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062877"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546420"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Zelf studie: ThousandEyes configureren voor automatische gebruikers inrichting
 
@@ -60,7 +55,7 @@ In deze sectie vindt u instructies voor het verbinden van uw Azure AD-ThousandEy
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor ThousandEyes in azure AD
 
-1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory > Enter prise-apps > alle toepassingen** .
+1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory > Enter prise-apps > alle toepassingen**  .
 
 2. Als u ThousandEyes al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van ThousandEyes met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **ThousandEyes** in de toepassings galerie. Selecteer ThousandEyes in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
@@ -70,7 +65,7 @@ In deze sectie vindt u instructies voor het verbinden van uw Azure AD-ThousandEy
 
     ![ThousandEyes-inrichting](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. Voer in het gedeelte **beheerders referenties** het **OAuth Bearer-token** in dat is gegenereerd door het account van uw ThousandEyes (u kunt een token vinden en genereren onder uw ThousandEyes-account **profiel** sectie).
+5. Voer in het gedeelte **beheerders referenties**  het **OAuth Bearer-token** in dat is gegenereerd door het account van uw ThousandEyes (u kunt een token vinden en genereren onder uw ThousandEyes-account **profiel** sectie).
 
     ![ThousandEyes-inrichting](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 

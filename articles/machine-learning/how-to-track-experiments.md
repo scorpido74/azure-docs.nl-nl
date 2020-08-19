@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d0c6488f9a75bbf9ba6775138edeed9c4a397abf
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552217"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547321"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Logboek registratie inschakelen in azure ML-trainings uitvoeringen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,12 +42,6 @@ U kunt meerdere gegevens typen vastleggen, waaronder scalaire waarden, lijsten, 
 ## <a name="interactive-logging-session"></a>Interactieve logboek registratie sessie
 
 Interactieve logboek registratie sessies worden doorgaans gebruikt in notebook omgevingen. De methode [experiment. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) start een interactieve logboek registratie sessie. Alle metrische gegevens die tijdens de sessie zijn geregistreerd, worden toegevoegd aan het uitvoerings record in het experiment. De methode [Run. complete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) beëindigt de sessies en markeert de uitvoering als voltooid.
-
-In het volgende code fragment wordt een interactieve logboek registratie gebruikt om trainings parameters en prestatie gegevens vast te leggen met de methode [Run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) . Ook wordt het getrainde model geüpload naar een opgegeven uitvoer locatie.
-
-[! notebook-python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb? name = create_experiment)]
-
-Zie [een model trainen in een notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)voor een volledig voor beeld van een notebook dat interactieve logboek registratie gebruikt.
 
 ## <a name="scriptrunconfig-logs"></a>ScriptRunConfig-logboeken
 

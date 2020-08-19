@@ -1,14 +1,14 @@
 ---
 title: Beleidsregels voor gastconfiguratie voor Windows maken
 description: Meer informatie over het maken van een Azure Policy-gast configuratie beleid voor Windows.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4ee0c9d1912338235e53eb287bfc86a14b75cc97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236536"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547661"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Beleidsregels voor gastconfiguratie voor Windows maken
 
@@ -16,8 +16,7 @@ Voordat u aangepaste beleids definities maakt, is het een goed idee om de concep
  
 Ga voor meer informatie over het maken van gast configuratie beleidsregels voor Linux naar de pagina [beleid voor gast configuratie maken voor Linux](./guest-configuration-create-linux.md)
 
-Bij het controleren van Windows gebruikt gastconfiguratie de resourcemodule [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om het configuratiebestand te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevinden.
-Als de evaluatie van de configuratie mislukt, wordt het beleids effect **auditIfNotExists** geactiveerd en wordt de computer als **niet-compatibel**beschouwd.
+Bij het controleren van Windows gebruikt gastconfiguratie de resourcemodule [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om het configuratiebestand te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevinden. Als de evaluatie van de configuratie mislukt, wordt het beleids effect **auditIfNotExists** geactiveerd en wordt de computer als **niet-compatibel**beschouwd.
 
 [Azure Policy-gast configuratie](../concepts/guest-configuration.md) kan alleen worden gebruikt voor het controleren van instellingen binnen machines. Herstel van instellingen binnen computers is nog niet beschikbaar.
 
@@ -90,8 +89,7 @@ Wanneer een gast configuratie een computer controleert, is de volg orde van de g
 1. De Booleaanse waarde die door de functie wordt geretourneerd, bepaalt of de Azure Resource Manager status voor de gast toewijzing compatibel/niet-compatibel moet zijn.
 1. De provider wordt uitgevoerd `Get-TargetResource` om de huidige status van elke instelling te retour neren, zodat er informatie beschikbaar is over waarom een machine niet aan het beleid voldoet en om te bevestigen dat de huidige status compatibel is.
 
-Para meters in Azure Policy die waarden door geven aan gast configuratie toewijzingen moeten een _teken reeks_ type zijn.
-Het is niet mogelijk matrices door te geven via para meters, zelfs als de DSC-resource matrices ondersteunt.
+Para meters in Azure Policy die waarden door geven aan gast configuratie toewijzingen moeten een _teken reeks_ type zijn. Het is niet mogelijk matrices door te geven via para meters, zelfs als de DSC-resource matrices ondersteunt.
 
 ### <a name="get-targetresource-requirements"></a>Vereisten voor Get-TargetResource
 
@@ -121,7 +119,7 @@ return @{
 }
 ```
 
-De eigenschap redenen moet ook worden toegevoegd aan de schema-MOF voor de resource als een Inge sloten klasse.
+De eigenschap redenen moet worden toegevoegd aan de schema-MOF voor de resource als een Inge sloten klasse.
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -166,8 +164,7 @@ De pakket indeling moet een zip-bestand zijn.
 ### <a name="storing-guest-configuration-artifacts"></a>Gast configuratie artefacten opslaan
 
 Het zip-pakket moet worden opgeslagen op een locatie die toegankelijk is voor de beheerde virtuele machines.
-Voor beelden zijn GitHub-opslag plaatsen, een Azure-opslag plaats of Azure-opslag. Als u het pakket liever niet openbaar wilt maken, kunt u een [SAS-token](../../../storage/common/storage-sas-overview.md) in de URL toevoegen.
-U kunt ook [service-eind punten](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) implementeren voor computers in een particulier netwerk, hoewel deze configuratie alleen van toepassing is op toegang tot het pakket en niet communiceert met de service.
+Voor beelden zijn GitHub-opslag plaatsen, een Azure-opslag plaats of Azure-opslag. Als u het pakket liever niet openbaar wilt maken, kunt u een [SAS-token](../../../storage/common/storage-sas-overview.md) in de URL toevoegen. U kunt ook [service-eind punten](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) implementeren voor computers in een particulier netwerk, hoewel deze configuratie alleen van toepassing is op toegang tot het pakket en niet communiceert met de service.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Stapsgewijze procedure, het maken van een aangepaste gast configuratie-controle beleid voor Windows
 
@@ -536,7 +533,7 @@ U hebt nu een project structuur als volgt:
 
 De ondersteunende bestanden moeten samen worden verpakt. Het voltooide pakket wordt gebruikt door de gast configuratie om de Azure Policy definities te maken.
 
-Met de `New-GuestConfigurationPackage` cmdlet maakt u het pakket. Voor inhoud van derden gebruikt u de para meter **FilesToInclude** om de Inspec-inhoud toe te voegen aan het pakket. U hoeft het **ChefProfilePath** niet op te geven als voor Linux-pakketten.
+Met de `New-GuestConfigurationPackage` cmdlet maakt u het pakket. Voor inhoud van derden gebruikt u de para meter **FilesToInclude** om de Inspec-inhoud toe te voegen aan het pakket. U hoeft de **ChefProfilePath** niet op te geven als voor Linux-pakketten.
 
 - **Naam**: naam van het gast configuratie pakket.
 - **Configuratie**: gecompileerd configuratie document volledig pad.
@@ -602,5 +599,5 @@ Voor meer informatie over de cmdlets in dit hulp programma gebruikt u de opdrach
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het controleren van Vm's met [gast configuratie](../concepts/guest-configuration.md).
-- Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](get-compliance-data.md).
+- Meer informatie over het [programmatisch maken van beleids regels](./programmatically-create.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](./get-compliance-data.md).

@@ -2,25 +2,20 @@
 title: 'Zelf studie: integratie Azure Active Directory met Jobscience | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Jobscience.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 77282dcc-bbe2-4728-953d-adb4ab6a713b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0de47cc12c461e47d8703861a99d11e7ee72d581
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870545"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Zelf studie: integratie Azure Active Directory met Jobscience
 
@@ -105,7 +100,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     ![Eenmalige aanmelding configureren][4]
 
-1. Selecteer in het dialoog venster **eenmalige aanmelding** de optie **modus** als op **SAML gebaseerde aanmelding** om eenmalige aanmelding in te scha kelen.
+1. Selecteer in het dialoog venster **eenmalige aanmelding** de optie **modus** als op    **SAML gebaseerde aanmelding** om eenmalige aanmelding in te scha kelen.
  
     ![Eenmalige aanmelding configureren](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
@@ -113,7 +108,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     ![Eenmalige aanmelding configureren](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
-    Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`http://<company name>.my.salesforce.com`
+    Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:  `http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
     > Deze waarde is niet echt. Werk deze waarde bij met de werkelijke aanmeldings-URL. Haal deze waarde op door [Jobscience-client ondersteunings team](http://www.jobscience.com/support) of van het SSO-profiel dat u hebt gemaakt. dit wordt verderop in de zelf studie uitgelegd. 
@@ -146,7 +141,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
 1. Klik op de Jobscience-bedrijfs site op **beveiligings controles**en klik vervolgens op **instellingen voor eenmalige aanmelding**.
     
-    ![Beveiligingsmaatregelen](./media/jobscience-tutorial/ic784364.png "Beveiligingsmaatregelen")
+    ![Beveiligings controles](./media/jobscience-tutorial/ic784364.png "Beveiligingsmaatregelen")
 
 1. Voer de volgende stappen uit in de sectie **instellingen voor eenmalige aanmelding** :
     
@@ -172,7 +167,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     f. Als **SAML-identiteits locatie**selecteert u **identiteit in het NameIdentfier-element van de instructie subject**.
 
-    bijvoorbeeld Plak in het tekstvak **ID-provider aanmeld-URL** de waarde van de **service-URL voor eenmalige SAML-aanmelding**die u van Azure Portal hebt gekopieerd.
+    g. Plak in het tekstvak **ID-provider aanmeld-URL** de waarde van de **service-URL voor eenmalige SAML-aanmelding**die u van Azure Portal hebt gekopieerd.
 
     h. Plak in het tekstvak voor de **Afmeldings-URL van de identiteits provider** de waarde van de **afmeldings-URL**, die u van Azure Portal hebt gekopieerd.
 
@@ -192,7 +187,7 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
 1. Als u de aanmeldings-URL voor de door SP geïnitieerde aanmelding wilt ophalen, klikt u op de **instellingen voor eenmalige aanmelding** in de menu sectie **beveiligings besturings elementen** .
 
-    ![Beveiligingsmaatregelen](./media/jobscience-tutorial/ic784368.png "Beveiligingsmaatregelen")
+    ![Beveiligings controles](./media/jobscience-tutorial/ic784368.png "Beveiligingsmaatregelen")
     
     Klik in de bovenstaande stap op het SSO-profiel dat u hebt gemaakt. Op deze pagina wordt de URL voor eenmalige aanmelding voor uw bedrijf weer gegeven (bijvoorbeeld `https://companyname.my.salesforce.com?so=companyid` .    
 
@@ -239,7 +234,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij Jobscience
 >U kunt alle andere hulpprogram ma's voor het maken van Jobscience-gebruikers accounts of Api's die worden geleverd door Jobscience, gebruiken om Azure Active Directory gebruikers accounts in te richten.
 >  
         
-**Voer de volgende stappen uit om de inrichting van gebruikers te configureren:**
+**Voer de volgende stappen uit om de gebruikersinrichting te configureren:**
 
 1. Meld u als beheerder aan bij de **Jobscience** -bedrijfs site.
 

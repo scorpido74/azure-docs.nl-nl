@@ -2,25 +2,21 @@
 title: 'Zelf studie: BitaBIZ configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op BitaBIZ.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: d0d38abe-c041-482a-9d3f-ca340678c226
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ad9176614c4a5235e5138444d4197286204a747f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3e01147e44b495a666d11a3927eabbbe0dec0e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77059195"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547272"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Zelf studie: BitaBIZ configureren voor automatische gebruikers inrichting
 
@@ -64,7 +60,7 @@ Voordat u BitaBIZ configureert voor het automatisch inrichten van gebruikers met
 
     ![BitaBIZ-beheer console](media/bitabiz-provisioning-tutorial/integration.png)
 
-2.  Navigeer naar **Microsoft Azure AD inrichting**.  Selecteer **ingeschakeld** bij automatische gebruikers inrichting. Kopieer de waarden voor **scim-inrichtings eind punt-URL** en **Bearer-token**. Deze waarden worden ingevoerd in de velden Tenant-URL en geheim-token op het tabblad inrichten van uw BitaBIZ-toepassing in de Azure Portal.
+2.  Navigeer naar **Microsoft Azure AD inrichting**.  Selecteer **ingeschakeld** bij automatische gebruikers inrichting. Kopieer de waarden voor **scim-inrichtings eind punt-URL** en  **Bearer-token**. Deze waarden worden ingevoerd in de velden Tenant-URL en geheim-token op het tabblad inrichten van uw BitaBIZ-toepassing in de Azure Portal.
 
     ![SCIM BitaBIZ toevoegen](media/bitabiz-provisioning-tutorial/authentication.png)
 
@@ -100,7 +96,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-bitabiz-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor BitaBIZ in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 

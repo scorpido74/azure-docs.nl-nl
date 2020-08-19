@@ -1,17 +1,17 @@
 ---
 title: Hoge Beschik baarheid-Azure Database for PostgreSQL-één server
 description: In dit artikel vindt u informatie over hoge Beschik baarheid in Azure Database for PostgreSQL-één server
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 33c66fff681b0458d1cff1ff6176c34f4771b38e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508461"
+ms.locfileid: "88547678"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Hoge Beschik baarheid in Azure Database for PostgreSQL-één server
 De Azure Database for PostgreSQL-service met één server biedt een gegarandeerd hoog niveau van Beschik baarheid met de SLA (financieel ondersteunde service level agreement) van [99,99%](https://azure.microsoft.com/support/legal/sla/postgresql) uptime. Azure Database for PostgreSQL biedt een hoge Beschik baarheid tijdens geplande gebeurtenissen, zoals de initated van de gebruiker en ook wanneer niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten, optreden. Azure Database for PostgreSQL kan snel van de meeste kritieke omstandigheden worden hersteld, waardoor er bijna geen toepassings tijd meer is bij het gebruik van deze service.
@@ -61,7 +61,7 @@ Hier volgen enkele fout scenario's en hoe Azure Database for PostgreSQL automati
 
 | **Scenario** | **Automatisch herstel** |
 | ---------- | ---------- |
-| <B>Fout in database server | Als de database server niet beschikbaar is vanwege een bepaalde onderliggende hardwarefout, worden actieve verbindingen verwijderd en worden eventuele trans acties van de vlucht afgebroken. Er wordt automatisch een nieuwe database server geïmplementeerd en de externe gegevens opslag is gekoppeld aan de nieuwe database server. Nadat het herstel van de data base is voltooid, kunnen clients via de gateway verbinding maken met de nieuwe database server. <br /> <br /> De herstel tijd (RTO) is afhankelijk van verschillende factoren, waaronder de activiteit op het moment van de fout, zoals een grote trans actie en de hoeveelheid herstel die moet worden uitgevoerd tijdens het opstarten van de database server. <br /> <br /> Toepassingen die gebruikmaken van de PostgreSQL-data bases, moeten worden gebouwd op een manier die ze detecteert en de verwijderde verbindingen en mislukte trans acties opnieuw proberen.  Wanneer de toepassing opnieuw probeert, wordt de verbinding met de zojuist gemaakte database server op transparante wijze door de gateway omgeleid. |
+| <B>Fout in database server | Als de database server niet beschikbaar is vanwege een bepaalde onderliggende hardwarefout, worden actieve verbindingen verwijderd en worden eventuele trans acties van de vlucht afgebroken. Er wordt automatisch een nieuwe database server geïmplementeerd en de externe gegevens opslag is gekoppeld aan de nieuwe database server. Nadat het herstel van de data base is voltooid, kunnen clients via de gateway verbinding maken met de nieuwe database server. <br /> <br /> De herstel tijd (RTO) is afhankelijk van verschillende factoren, waaronder de activiteit op het moment van de fout, zoals grote trans acties en de hoeveelheid herstel die moet worden uitgevoerd tijdens het opstart proces van de database server. <br /> <br /> Toepassingen die gebruikmaken van de PostgreSQL-data bases, moeten worden gebouwd op een manier die ze detecteert en de verwijderde verbindingen en mislukte trans acties opnieuw proberen.  Wanneer de toepassing opnieuw probeert, wordt de verbinding met de zojuist gemaakte database server op transparante wijze door de gateway omgeleid. |
 | <B>Opslag fout | Toepassingen zien geen gevolgen voor eventuele problemen met betrekking tot de opslag, zoals een schijf storing of een fysieke blok beschadiging. Wanneer de gegevens worden opgeslagen in 3 kopieën, wordt de kopie van de gegevens geleverd door de overgebleven opslag. Blok beschadigingen worden automatisch gecorrigeerd. Als er een kopie van gegevens verloren is gegaan, wordt er automatisch een nieuwe kopie van de gegevens gemaakt. |
 
 Hier volgen enkele fout scenario's waarvoor gebruikers actie moet worden hersteld:

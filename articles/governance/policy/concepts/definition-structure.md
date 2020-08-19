@@ -1,14 +1,14 @@
 ---
 title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
-ms.date: 06/12/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 87cdca414a04d287f02fec5b3510c4f561cab8c0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116997"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547797"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -17,12 +17,12 @@ Meer informatie over [voor waarden](#conditions).
 
 Als u conventies definieert, kunt u kosten besparen en uw resources eenvoudiger beheren. U kunt bijvoorbeeld opgeven dat alleen bepaalde typen virtuele machines zijn toegestaan. Of u kunt vereisen dat resources een bepaalde tag hebben. Beleids toewijzingen worden overgenomen door onderliggende resources. Als een beleids toewijzing wordt toegepast op een resource groep, is deze van toepassing op alle resources in die resource groep.
 
-Het definitie schema voor het beleid vindt u hier:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+Het definitie schema voor het beleid vindt u hier: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 U gebruikt JSON om een beleids definitie te maken. De beleids definitie bevat elementen voor:
 
 - weergave naam
-- description
+- beschrijving
 - mode
 - metagegevens
 - parameters
@@ -100,15 +100,15 @@ Resource `Microsoft.Network/routeTables` ondersteunt bijvoorbeeld tags en locati
 
 U wordt aangeraden de **modus** `all` in de meeste gevallen in te stellen. Alle beleids definities die via de portal zijn gemaakt, maken gebruik van de `all` modus. Als u Power shell of Azure CLI gebruikt, kunt u de para meter **mode** hand matig opgeven. Als de beleids definitie geen **modus** waarde bevat, wordt standaard `all` in azure PowerShell en naar `null` in azure cli. Een `null` modus is dezelfde als die gebruikt `indexed` om achterwaartse compatibiliteit te ondersteunen.
 
-`indexed`moet worden gebruikt bij het maken van beleids regels voor het afdwingen van tags of locaties. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzonde ring is **resource groepen** en **abonnementen**. Met beleids definities die locatie of tags voor een resource groep of-abonnement afdwingen, moet u de **modus** instellen op `all` en het doel `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` opgeven. Zie voor een voor beeld [patroon: Labels-voor beeld #1](../samples/pattern-tags.md). Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/management/tag-support.md)voor een lijst met resources die Tags ondersteunen.
+`indexed` moet worden gebruikt bij het maken van beleids regels voor het afdwingen van tags of locaties. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzonde ring is **resource groepen** en **abonnementen**. Met beleids definities die locatie of tags voor een resource groep of-abonnement afdwingen, moet u de **modus** instellen op `all` en het doel `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` opgeven. Zie voor een voor beeld [patroon: Labels-voor beeld #1](../samples/pattern-tags.md). Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/management/tag-support.md)voor een lijst met resources die Tags ondersteunen.
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Resource provider modi (preview-versie)
 
 De volgende resource provider modi worden momenteel ondersteund tijdens de preview-versie:
 
-- `Microsoft.ContainerService.Data`voor het beheren van regels voor toegangs beheer in de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md). Definities die gebruikmaken van deze resource provider modus **moeten** het [EnforceRegoPolicy](./effects.md#enforceregopolicy) -effect gebruiken. Deze modus wordt _afgeschaft_.
-- `Microsoft.Kubernetes.Data`voor het beheren van uw Kubernetes-clusters in of uit Azure. Definities die gebruikmaken van deze resource provider modus, gebruiken effecten _controleren_, _weigeren_en _uitgeschakeld_. Het gebruik van het [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effect wordt _afgeschaft_.
-- `Microsoft.KeyVault.Data`voor het beheren van kluizen en certificaten in [Azure Key Vault](../../../key-vault/general/overview.md).
+- `Microsoft.ContainerService.Data` voor het beheren van regels voor toegangs beheer in de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md). Definities die gebruikmaken van deze resource provider modus **moeten** het [EnforceRegoPolicy](./effects.md#enforceregopolicy) -effect gebruiken. Deze modus wordt _afgeschaft_.
+- `Microsoft.Kubernetes.Data` voor het beheren van uw Kubernetes-clusters in of uit Azure. Definities die gebruikmaken van deze resource provider modus, gebruiken effecten _controleren_, _weigeren_en _uitgeschakeld_. Het gebruik van het [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effect wordt _afgeschaft_.
+- `Microsoft.KeyVault.Data` voor het beheren van kluizen en certificaten in [Azure Key Vault](../../../key-vault/general/overview.md).
 
 > [!NOTE]
 > De resource provider modi bieden alleen ondersteuning voor ingebouwde beleids definities en bieden geen ondersteuning voor initiatieven als er een preview-versie beschikbaar is.
@@ -119,10 +119,10 @@ De optionele `metadata` eigenschap bevat informatie over de beleids definitie. K
 
 ### <a name="common-metadata-properties"></a>Algemene eigenschappen van meta gegevens
 
-- `version`(teken reeks): houdt informatie bij over de versie van de inhoud van een beleids definitie.
-- `category`(teken reeks): bepaalt onder welke categorie in Azure Portal de beleids definitie wordt weer gegeven.
-- `preview`(Booleaans): de vlag True of False voor als de beleids definitie _Preview_is.
-- `deprecated`(Booleaans): de vlag True of False voor als de beleids definitie is gemarkeerd als _afgeschaft_.
+- `version` (teken reeks): houdt informatie bij over de versie van de inhoud van een beleids definitie.
+- `category` (teken reeks): bepaalt onder welke categorie in Azure Portal de beleids definitie wordt weer gegeven.
+- `preview` (Booleaans): de vlag True of False voor als de beleids definitie _Preview_is.
+- `deprecated` (Booleaans): de vlag True of False voor als de beleids definitie is gemarkeerd als _afgeschaft_.
 
 > [!NOTE]
 > De Azure Policy-service gebruikt `version` , `preview` en `deprecated` Eigenschappen om het niveau van de wijziging in een ingebouwde beleids definitie of-initiatief en-status over te brengen. De indeling van `version` is: `{Major}.{Minor}.{Patch}` . Specifieke statussen, zoals _afgeschaft_ of _Preview_, worden toegevoegd aan de `version` eigenschap of een andere eigenschap als een **Booleaanse waarde**. Zie [ingebouwde versie beheer](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md)voor meer informatie over de manier waarop Azure Policy ingebouwde versies.
@@ -188,7 +188,7 @@ Dit voor beeld verwijst naar de **allowedLocations** -para meter die is gedemons
 
 Binnen de `metadata` eigenschap kunt u **strongType** gebruiken om een multi-select lijst met opties in de Azure Portal op te geven. **strongType** kan een ondersteund _resource type_ of een toegestane waarde zijn. Als u wilt bepalen of een _resource type_ geldig is voor **strongType**, gebruikt u [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). De indeling voor een _resource type_ **strongType** is `<Resource Provider>/<Resource Type>` . Bijvoorbeeld `Microsoft.Network/virtualNetworks/subnets`.
 
-Sommige _resource typen_ die niet worden geretourneerd door **Get-AzResourceProvider** worden ondersteund. Dit zijn:
+Sommige _resource typen_ die niet worden geretourneerd door **Get-AzResourceProvider** worden ondersteund. Deze typen zijn:
 
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -226,7 +226,7 @@ In de **blok kering** definieert u het effect dat optreedt wanneer aan de voor w
 }
 ```
 
-### <a name="logical-operators"></a>Logische operatoren
+### <a name="logical-operators"></a>Logische operators
 
 Ondersteunde logische Opera tors zijn:
 
@@ -275,7 +275,8 @@ In een voor waarde wordt geëvalueerd of een **veld** of de **waarde** -accessor
 - `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
 - `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
 - `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
-- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` |
+  `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
 Voor **minder**, **lessOrEquals**, **meer**en **greaterOrEquals**als het eigenschaps type niet overeenkomt met het type voor waarde, wordt een fout gegenereerd. Teken reeks vergelijkingen worden gemaakt met `InvariantCultureIgnoreCase` .
@@ -346,8 +347,7 @@ In het volgende voor beeld `concat` wordt gebruikt om een label veld te maken vo
 
 ### <a name="value"></a>Waarde
 
-Voor waarden kunnen ook worden gevormd met behulp van een **waarde**. **waarde** controleert de voor waarden op basis van [para meters](#parameters), [ondersteunde sjabloon functies](#policy-functions)of letterlijke tekens.
-**waarde** wordt gekoppeld aan elke ondersteunde [voor waarde](#conditions).
+Voor waarden kunnen ook worden gevormd met behulp van een **waarde**. **waarde** controleert de voor waarden op basis van [para meters](#parameters), [ondersteunde sjabloon functies](#policy-functions)of letterlijke tekens. **waarde** wordt gekoppeld aan elke ondersteunde [voor waarde](#conditions).
 
 > [!WARNING]
 > Als het resultaat van een _sjabloonfunctie_ een fout is, mislukt de beleidsevaluatie. Een mislukte evaluatie is een impliciete **weigering**. Zie [sjabloonfouten vermijden](#avoiding-template-failures) voor meer informatie. Gebruik [enforcementMode](./assignment-structure.md#enforcement-mode) van **DoNotEnforce** om de impact van een mislukte evaluatie op nieuwe of bijgewerkte resources te voor komen tijdens het testen en valideren van een nieuwe beleids definitie.
@@ -453,7 +453,7 @@ De volgende eigenschappen worden gebruikt met **aantal**:
 - **Count. Field** (vereist): bevat het pad naar de matrix en moet een matrix alias zijn. Als de matrix ontbreekt, wordt de expressie geëvalueerd naar _False_ zonder rekening te houden met de voor waarde-expressie.
 - **Count. where** (optioneel): de voor waarde-expressie voor het afzonderlijk evalueren van elke [ \[ \* \] alias](#understanding-the--alias) matrix lid van het **veld Count.**. Als deze eigenschap niet is ingevuld, worden alle matrix leden met het pad van ' Field ' geëvalueerd als _waar_. Elke [voor waarde](../concepts/definition-structure.md#conditions) kan worden gebruikt in deze eigenschap.
   [Logische Opera tors](#logical-operators) kunnen worden gebruikt in deze eigenschap om complexe evaluatie vereisten te maken.
-- **\<condition\>**(vereist): de waarde wordt vergeleken met het aantal items dat aan het aantal is voldaan **. where** -voor waarde-expressie. Er moet een numerieke [voor waarde](../concepts/definition-structure.md#conditions) worden gebruikt.
+- **\<condition\>** (vereist): de waarde wordt vergeleken met het aantal items dat aan het aantal is voldaan **. where** -voor waarde-expressie. Er moet een numerieke [voor waarde](../concepts/definition-structure.md#conditions) worden gebruikt.
 
 #### <a name="count-examples"></a>Aantal voor beelden
 
@@ -575,7 +575,7 @@ Alle [Resource Manager-sjabloon functies](../../../azure-resource-manager/templa
 
 De volgende functie is beschikbaar voor gebruik in een beleids regel, maar verschilt van gebruik in een Azure Resource Manager sjabloon (ARM-sjabloon):
 
-- `utcNow()`-In tegens telling tot een ARM-sjabloon kan deze eigenschap buiten de _standaard waarde_worden gebruikt.
+- `utcNow()` -In tegens telling tot een ARM-sjabloon kan deze eigenschap buiten de _standaard waarde_worden gebruikt.
   - Retourneert een teken reeks die is ingesteld op de huidige datum en tijd 8601 in de indeling JJJJ-MM-DDTuu: mm: SS. fffffffZ
 
 De volgende functies zijn alleen beschikbaar in beleids regels:
@@ -586,7 +586,7 @@ De volgende functies zijn alleen beschikbaar in beleids regels:
 - `field(fieldName)`
   - **FieldName**: [required] string: naam van het [veld](#fields) dat moet worden opgehaald
   - Retourneert de waarde van het veld van de resource die wordt geëvalueerd door de if-voor waarde
-  - `field`wordt hoofd zakelijk gebruikt in combi natie met **AuditIfNotExists** en **DeployIfNotExists** om te verwijzen naar velden in de resource die worden geëvalueerd. Een voor beeld van dit gebruik is te zien in het [DeployIfNotExists-voor beeld](effects.md#deployifnotexists-example).
+  - `field` wordt hoofd zakelijk gebruikt in combi natie met **AuditIfNotExists** en **DeployIfNotExists** om te verwijzen naar velden in de resource die worden geëvalueerd. Een voor beeld van dit gebruik is te zien in het [DeployIfNotExists-voor beeld](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
   - Retourneert de API-versie van de aanvraag waarvoor beleids evaluatie is geactiveerd (bijvoorbeeld: `2019-09-01` ).
     Deze waarde is de API-versie die is gebruikt in de PUT/PATCH-aanvraag voor evaluaties bij het maken of bijwerken van de resource. De nieuwste API-versie wordt altijd gebruikt tijdens de evaluatie van de naleving van bestaande resources.

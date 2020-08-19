@@ -3,24 +3,23 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987100"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544669"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
-Azure Policy kunt instellingen in een computer controleren, zowel voor machines die worden uitgevoerd in azure als [met Arc verbonden computers](../../../azure-arc/servers/overview.md).
-De validatie wordt uitgevoerd door de extensie en client voor gastconfiguratie. De extensie valideert, via de client, instellingen zoals:
+Azure Policy kunt instellingen in een computer controleren, zowel voor machines die worden uitgevoerd in azure als [met Arc verbonden computers](../../../azure-arc/servers/overview.md). De validatie wordt uitgevoerd door de extensie en client voor gastconfiguratie. De extensie valideert, via de client, instellingen zoals:
 
-- De configuratie van het besturings systeem
+- De configuratie van het besturingssysteem
 - Configuratie of aanwezigheid van toepassingen
 - Omgevingsinstellingen
 
-Op dit moment worden in de meeste Azure Policy-gast configuratie beleid alleen instellingen in de machine gecontroleerd.
-Er worden geen configuraties toegepast. De uitzonde ring hierop is één ingebouwd beleid [waarnaar hieronder wordt verwezen](#applying-configurations-using-guest-configuration).
+Op dit moment controleren het beleid voor gastconfiguratie van Azure Policy alleen instellingen van de machine.
+U kunt ze niet om configuraties toepassen. De uitzonde ring hierop is één ingebouwd beleid [waarnaar hieronder wordt verwezen](#applying-configurations-using-guest-configuration).
 
 ## <a name="enable-guest-configuration"></a>Gast configuratie inschakelen
 
@@ -32,7 +31,7 @@ Voordat u de gast configuratie kunt gebruiken, moet u de resource provider regis
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Vereisten voor Azure virtual machines implementeren
 
-Voor het controleren van instellingen op een machine is de extensie van de [virtuele machine](../../../virtual-machines/extensions/overview.md) ingeschakeld en moet de computer een door het systeem beheerde identiteit hebben. De uitbrei ding downloadt de toepasselijke beleids toewijzing en de bijbehorende configuratie definitie. De identiteit wordt gebruikt om de computer te verifiëren tijdens het lezen en schrijven naar de gast configuratie service. De uitbrei ding is niet vereist voor met Arc verbonden computers, omdat deze is opgenomen in de Arc Connected machine agent.
+Voor het controleren van instellingen op een machine is de extensie van de [virtuele machine](../../../virtual-machines/extensions/overview.md) ingeschakeld en moet de computer een door het systeem beheerde identiteit hebben. De extensie downloadt de toepasselijke beleidstoewijzing en de bijbehorende configuratiedefinitie. De identiteit wordt gebruikt om de computer te verifiëren tijdens het lezen en schrijven naar de gast configuratie service. De uitbrei ding is niet vereist voor met Arc verbonden computers, omdat deze is opgenomen in de Arc Connected machine agent.
 
 > [!IMPORTANT]
 > De gast configuratie-extensie en een beheerde identiteit zijn vereist voor het controleren van virtuele Azure-machines. Wijs het volgende beleids initiatief toe om de uitbrei ding op schaal te implementeren:
@@ -93,8 +92,7 @@ Verkeer wordt gerouteerd met behulp van het [virtuele openbaar IP-adres](../../.
 
 ### <a name="azure-arc-connected-machines"></a>Verbonden Azure Arc-machines
 
-Knoop punten die zich buiten Azure bevinden en die zijn verbonden met Azure Arc, vereisen connectiviteit met de gast configuratie service.
-Details over netwerk-en proxy vereisten in de [documentatie van Azure Arc](../../../azure-arc/servers/overview.md).
+Knoop punten die zich buiten Azure bevinden en die zijn verbonden met Azure Arc, vereisen connectiviteit met de gast configuratie service. Details over netwerk-en proxy vereisten in de [documentatie van Azure Arc](../../../azure-arc/servers/overview.md).
 
 Voor de communicatie met de provider van de gast configuratie resource in azure, hebben computers uitgaande toegang tot Azure-data centers op poort **443**. Als een netwerk in azure geen uitgaand verkeer toestaat, moet u uitzonde ringen configureren met de regels voor de [netwerk beveiligings groep](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . De [servicetag ' GuestAndHybridManagement ' kan](../../../virtual-network/service-tags-overview.md) worden gebruikt om te verwijzen naar de gast configuratie service.
 
@@ -157,9 +155,9 @@ Gast configuratie beleid biedt momenteel alleen ondersteuning voor het toewijzen
 
 De gast configuratie-extensie schrijft logboek bestanden naar de volgende locaties:
 
-Windows`C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Windows `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Spreek`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Spreek `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 Waar `<version>` verwijst naar het huidige versie nummer.
 

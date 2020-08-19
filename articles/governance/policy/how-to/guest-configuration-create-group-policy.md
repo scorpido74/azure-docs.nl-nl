@@ -1,29 +1,29 @@
 ---
 title: Beleids definities voor gast configuratie maken van groepsbeleid basis lijn voor Windows
 description: Meer informatie over het converteren van groepsbeleid van de Windows Server 2019-beveiligings basislijn naar een beleids definitie.
-ms.date: 06/05/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080666"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547765"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Beleids definities voor gast configuratie maken van groepsbeleid basis lijn voor Windows
 
-Voordat u aangepaste beleids definities maakt, is het een goed idee om de conceptuele overzichts informatie te lezen op [Azure Policy-gast configuratie](../concepts/guest-configuration.md). Zie [gast configuratie beleidsregels voor Linux maken](./guest-configuration-create-linux.md)voor meer informatie over het maken van aangepaste gast configuratie beleids definities voor Linux. Zie [gast configuratie beleidsregels voor Windows maken](./guest-configuration-create.md)voor meer informatie over het maken van aangepaste gast configuratie beleids definities voor Windows. 
+Voordat u aangepaste beleids definities maakt, is het een goed idee om de conceptuele overzichts informatie te lezen op [Azure Policy-gast configuratie](../concepts/guest-configuration.md). Zie [gast configuratie beleidsregels voor Linux maken](./guest-configuration-create-linux.md)voor meer informatie over het maken van aangepaste gast configuratie beleids definities voor Linux. Zie [gast configuratie beleidsregels voor Windows maken](./guest-configuration-create.md)voor meer informatie over het maken van aangepaste gast configuratie beleids definities voor Windows.
 
-Bij het controleren van Windows gebruikt gast configuratie een resource module voor [desired state Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om het configuratie bestand te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevindt. Als de evaluatie van de configuratie **niet-compatibel**is, wordt het beleids effect *auditIfNotExists* geactiveerd. [Azure Policy-gast configuratie](../concepts/guest-configuration.md) controleert alleen de instellingen binnen machines.
+Bij het controleren van Windows gebruikt gastconfiguratie de resourcemodule [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om het configuratiebestand te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevinden. Als de evaluatie van de configuratie **niet-compatibel**is, wordt het beleids effect *auditIfNotExists* geactiveerd.
+[Azure Policy-gast configuratie](../concepts/guest-configuration.md) controleert alleen de instellingen binnen machines.
 
 > [!IMPORTANT]
 > Aangepaste beleids definities met gast configuratie is een preview-functie.
 >
-> De gast configuratie-uitbrei ding is vereist voor het uitvoeren van controles op virtuele machines van Azure.
-> Als u de uitbrei ding op schaal op alle Windows-computers wilt implementeren, wijst u de volgende beleids definities toe:
->   - [Vereisten voor het inschakelen van gastconfiguratiebeleid op Windows-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> De gastconfiguratie-extensie is vereist voor het uitvoeren van controles op virtuele machines van Azure. Als u de uitbrei ding op schaal op alle Windows-computers wilt implementeren, wijst u de volgende beleids definities toe:
+> - [Vereisten voor het inschakelen van gastconfiguratiebeleid op Windows-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
-De DSC-Community heeft de [BaselineManagement-module](https://github.com/microsoft/BaselineManagement) gepubliceerd voor het converteren van geëxporteerde Groepsbeleid sjablonen naar de DSC-indeling. In combi natie met de GuestConfiguration-cmdlet maakt de BaselineManagement-module Azure Policy-gast configuratie pakket voor Windows van groepsbeleid inhoud. Meer informatie over het gebruik van de BaselineManagement-module vindt u in het artikel [Snelstartgids: Groepsbeleid converteren naar DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart). 
+De DSC-Community heeft de [BaselineManagement-module](https://github.com/microsoft/BaselineManagement) gepubliceerd voor het converteren van geëxporteerde Groepsbeleid sjablonen naar de DSC-indeling. In combi natie met de GuestConfiguration-cmdlet maakt de BaselineManagement-module Azure Policy-gast configuratie pakket voor Windows van groepsbeleid inhoud. Meer informatie over het gebruik van de BaselineManagement-module vindt u in het artikel [Snelstartgids: Groepsbeleid converteren naar DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 
 In deze hand leiding wordt het proces door lopen om een Azure Policy-gast configuratie pakket te maken op basis van een groepsbeleid object (GPO). Tijdens de walkthrough wordt de conversie van de beveiligings basislijn van Windows Server 2019 beschreven. hetzelfde proces kan worden toegepast op andere groeps beleidsobjecten.  
 
@@ -62,7 +62,7 @@ De **DSC**-, **GuestConfiguration**-, **baseline Management**-en gerelateerde Az
 
 ## <a name="convert-from-group-policy-to-azure-policy-guest-configuration"></a>Converteren van groepsbeleid naar Azure Policy gast configuratie
 
-Vervolgens wordt de gedownloade server 2019-basis lijn geconverteerd naar een gast configuratie pakket met behulp van de gast configuratie-en baseline management-modules. 
+Vervolgens wordt de gedownloade server 2019-basis lijn geconverteerd naar een gast configuratie pakket met behulp van de gast configuratie-en baseline management-modules.
 
 1. Converteer het groepsbeleid naar de gewenste status configuratie met behulp van de module voor basislijn beheer.
 
@@ -203,5 +203,5 @@ Voor het toewijzen van een beleids definitie met _DeployIfNotExists_ -effect is 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het controleren van Vm's met [gast configuratie](../concepts/guest-configuration.md).
-- Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](get-compliance-data.md).
+- Meer informatie over het [programmatisch maken van beleids regels](./programmatically-create.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](./get-compliance-data.md).

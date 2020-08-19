@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524502"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547389"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
 
@@ -26,7 +26,7 @@ In de volgende video ziet u hoe u deze container gebruikt.
 
 [![Container demonstratie voor Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -64,7 +64,7 @@ In de onderstaande tabel worden de minimum-en aanbevolen waarden voor de contain
 
 Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van de `docker run` opdracht.
 
-## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met `docker pull`
 
 Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden uit de `mcr.microsoft.com/azure-cognitive-services/luis` opslag plaats:
 
@@ -171,7 +171,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | De toepassings-ID van de gepubliceerde LUIS-app. |
 | **{SLOT_NAME}** | De omgeving van de gepubliceerde LUIS-app. Gebruik een van de volgende waarden:<br/>`PRODUCTION`<br/>`STAGING` |
 | **{AUTHORING_KEY}** | De ontwerp sleutel van het LUIS-account voor de gepubliceerde LUIS-app.<br/>U kunt uw ontwerp sleutel verkrijgen via de pagina **gebruikers instellingen** op de Luis-Portal. |
-| **{AZURE_REGION}** | De juiste Azure-regio:<br/><br/>`westus`-VS-West<br/>`westeurope`-Europa-west<br/>`australiaeast`-Australië-oost |
+| **{AZURE_REGION}** | De juiste Azure-regio:<br/><br/>`westus` -VS-West<br/>`westeurope` -Europa-west<br/>`australiaeast` -Australië-oost |
 
 Als u het gepubliceerde pakket wilt downloaden, raadpleegt u de [API-documentatie hier][download-published-package]. Als het downloaden is voltooid, is het antwoord een LUIS-pakket bestand. Sla het bestand op in de opslag locatie die is opgegeven voor de invoer koppeling van de container.
 
@@ -190,11 +190,11 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | De toepassings-ID van de getrainde LUIS-app. |
 | **{APP_VERSION}** | De toepassings versie van de getrainde LUIS-app. |
 | **{AUTHORING_KEY}** | De ontwerp sleutel van het LUIS-account voor de gepubliceerde LUIS-app.<br/>U kunt uw ontwerp sleutel verkrijgen via de pagina **gebruikers instellingen** op de Luis-Portal. |
-| **{AZURE_REGION}** | De juiste Azure-regio:<br/><br/>`westus`-VS-West<br/>`westeurope`-Europa-west<br/>`australiaeast`-Australië-oost |
+| **{AZURE_REGION}** | De juiste Azure-regio:<br/><br/>`westus` -VS-West<br/>`westeurope` -Europa-west<br/>`australiaeast` -Australië-oost |
 
 Raadpleeg de [API-documentatie][download-versioned-package]om het pakket met versies te downloaden. Als het downloaden is voltooid, is het antwoord een LUIS-pakket bestand. Sla het bestand op in de opslag locatie die is opgegeven voor de invoer koppeling van de container.
 
-## <a name="run-the-container-with-docker-run"></a>Voer de container uit met`docker run`
+## <a name="run-the-container-with-docker-run"></a>Voer de container uit met `docker run`
 
 Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) om de container uit te voeren. Raadpleeg de [vereiste para meters verzamelen](#gathering-required-parameters) voor meer informatie over het ophalen van de `{ENDPOINT_URI}` `{API_KEY}` waarden en.
 

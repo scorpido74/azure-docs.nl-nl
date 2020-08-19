@@ -1,14 +1,14 @@
 ---
 title: Details van de definitie structuur van het initiatief
 description: Hierin wordt beschreven hoe beleids initiatieven worden gebruikt voor het groeperen van beleids definities voor implementatie naar Azure-resources in uw organisatie.
-ms.date: 05/29/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80fa90765caa25d6995220134b9a5b4225133219
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205958"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544635"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Definitie structuur van Azure Policy initiatief
 
@@ -17,7 +17,7 @@ Met initiatieven kunt u verschillende gerelateerde beleids definities groeperen 
 U gebruikt JSON om een beleids initiatief definitie te maken. De beleids initiatief definitie bevat elementen voor:
 
 - weergave naam
-- description
+- beschrijving
 - metagegevens
 - parameters
 - beleids definities
@@ -109,14 +109,14 @@ Klanten kunnen alle eigenschappen en waarden definiëren die van toepassing zijn
 
 ### <a name="common-metadata-properties"></a>Algemene eigenschappen van meta gegevens
 
-- `version`(teken reeks): houdt informatie bij over de versie van de inhoud van een beleids initiatief definitie.
-- `category`(teken reeks): bepaalt onder welke categorie in Azure Portal de beleids definitie wordt weer gegeven.
+- `version` (teken reeks): houdt informatie bij over de versie van de inhoud van een beleids initiatief definitie.
+- `category` (teken reeks): bepaalt onder welke categorie in Azure Portal de beleids definitie wordt weer gegeven.
 
   > [!NOTE]
   > Voor een [regelgevings nalevings](./regulatory-compliance.md) initiatief moet de naleving van de `category` **regelgeving**worden vastgesteld.
 
-- `preview`(Booleaans): de vlag True of False voor als de beleids initiatief definitie _Preview_is.
-- `deprecated`(Booleaans): de vlag True of False voor als de beleids initiatief definitie is gemarkeerd als _afgeschaft_.
+- `preview` (Booleaans): de vlag True of False voor als de beleids initiatief definitie _Preview_is.
+- `deprecated` (Booleaans): de vlag True of False voor als de beleids initiatief definitie is gemarkeerd als _afgeschaft_.
 
 > [!NOTE]
 > De Azure Policy-service gebruikt `version` , `preview` en `deprecated` Eigenschappen om het niveau van de wijziging in een ingebouwde beleids definitie of-initiatief en-status over te brengen. De indeling van `version` is: `{Major}.{Minor}.{Patch}` . Specifieke statussen, zoals _afgeschaft_ of _Preview_, worden toegevoegd aan de `version` eigenschap of een andere eigenschap als een **Booleaanse waarde**. Zie [ingebouwde versie beheer](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md)voor meer informatie over de manier waarop Azure Policy ingebouwde versies.
@@ -218,10 +218,10 @@ Het `policyDefinitions` gedeelte van de initiatief definitie is een _matrix_ waa
 
 Elk _matrix_ element dat een beleids definitie vertegenwoordigt, heeft de volgende eigenschappen:
 
-- `policyDefinitionId`(teken reeks): de ID van de aangepaste of ingebouwde beleids definitie die moet worden opgenomen.
-- `policyDefinitionReferenceId`(teken reeks): een korte naam voor de opgenomen beleids definitie.
+- `policyDefinitionId` (teken reeks): de ID van de aangepaste of ingebouwde beleids definitie die moet worden opgenomen.
+- `policyDefinitionReferenceId` (teken reeks): een korte naam voor de opgenomen beleids definitie.
 - `parameters`: (Optioneel) de naam/waarde-paren voor het door geven van een initiatief parameter naar de opgenomen beleids definitie als een eigenschap in die beleids definitie. Zie [para meters](#parameters)voor meer informatie.
-- `groupNames`(matrix met teken reeksen): (optioneel) de groep waarvan de beleids definitie lid is. Zie [beleids groepen](#policy-definition-groups)voor meer informatie.
+- `groupNames` (matrix met teken reeksen): (optioneel) de groep waarvan de beleids definitie lid is. Zie [beleids groepen](#policy-definition-groups)voor meer informatie.
 
 Hier volgt een voor beeld van `policyDefinitions` met twee opgenomen beleids definities die elk zijn door gegeven aan dezelfde initiatief parameter:
 
@@ -257,11 +257,11 @@ Meer informatie over de groepering vindt u in een **policyMetadata** -object dat
 
 Elk _matrix_ element in `policyDefinitionGroups` moet de volgende eigenschappen hebben:
 
-- `name`(teken reeks) \[ vereist \] : de korte naam voor het **besturings element**. De waarde van deze eigenschap wordt gebruikt door `groupNames` in `policyDefinitions` .
-- `category`(teken reeks): het **domein van naleving** van het besturings element.
-- `displayName`(teken reeks): de beschrijvende naam voor het **besturings element**. Gebruikt door de portal.
-- `description`(teken reeks): een beschrijving van wat het **besturings element** doet.
-- `additionalMetadataId`(teken reeks): de locatie van het [policyMetadata](#metadata-objects) -object met aanvullende details over het **besturings element** en het **nalevings domein**.
+- `name` (teken reeks) \[ vereist \] : de korte naam voor het **besturings element**. De waarde van deze eigenschap wordt gebruikt door `groupNames` in `policyDefinitions` .
+- `category` (teken reeks): het **domein van naleving** van het besturings element.
+- `displayName` (teken reeks): de beschrijvende naam voor het **besturings element**. Gebruikt door de portal.
+- `description` (teken reeks): een beschrijving van wat het **besturings element** doet.
+- `additionalMetadataId` (teken reeks): de locatie van het [policyMetadata](#metadata-objects) -object met aanvullende details over het **besturings element** en het **nalevings domein**.
 
   > [!NOTE]
   > Klanten kunnen verwijzen naar een bestaand [policyMetadata](#metadata-objects) -object. Deze objecten zijn echter alleen _-lezen_ en worden alleen gemaakt door micro soft.
@@ -292,9 +292,9 @@ Deze informatie is:
 De meta gegevens voor een beleids groepering hebben de volgende informatie in het `properties` knoop punt:
 
 - `metadataId`: De **besturings element-id** waarop de groepering betrekking heeft.
-- `category`(vereist): het **nalevings domein** waartoe het **besturings element** behoort.
-- `title`(vereist): de beschrijvende naam van de **besturings element-id**.
-- `owner`(vereist): identificeert wie verantwoordelijk is voor het besturings element in Azure: _klant_, _micro soft_, _gedeeld_.
+- `category` (vereist): het **nalevings domein** waartoe het **besturings element** behoort.
+- `title` (vereist): de beschrijvende naam van de **besturings element-id**.
+- `owner` (vereist): identificeert wie verantwoordelijk is voor het besturings element in Azure: _klant_, _micro soft_, _gedeeld_.
 - `description`: Aanvullende informatie over het besturings element.
 - `requirements`: Details over de verantwoordelijkheid van de implementatie van het besturings element.
 - `additionalContentUrl`: Een koppeling naar meer informatie over het besturings element. Deze eigenschap is doorgaans een koppeling naar de documentatie sectie waarin dit besturings element wordt behandeld in de nalevings standaard.

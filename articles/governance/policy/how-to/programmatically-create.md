@@ -1,14 +1,14 @@
 ---
 title: Programmatisch beleid maken
 description: Dit artikel helpt u bij het programmatisch maken en beheren van beleids regels voor Azure Policy met Azure CLI, Azure PowerShell en REST API.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969886"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548308"
 ---
 # <a name="programmatically-create-policies"></a>Programmatisch beleid maken
 
@@ -32,7 +32,7 @@ Voordat u begint, moet u ervoor zorgen dat aan de volgende vereisten wordt volda
 
    Zie [Resourceproviders en -typen](../../../azure-resource-manager/management/resource-providers-and-types.md) voor meer informatie over het registreren en weergeven van resourceproviders.
 
-1. Als u dat nog niet hebt gedaan, installeert u Azure CLI. U kunt de nieuwste versie downloaden bij de [installatie van Azure cli in Windows](/cli/azure/install-azure-cli-windows).
+1. Installeer Azure CLI als u dat nog niet hebt gedaan. U kunt de nieuwste versie downloaden bij de [installatie van Azure cli in Windows](/cli/azure/install-azure-cli-windows).
 
 ## <a name="create-and-assign-a-policy-definition"></a>Een beleidsdefinitie maken en toewijzen
 
@@ -88,12 +88,12 @@ De eerste stap voor een betere zicht baarheid van uw resources is het maken en t
    Vervang _ContosoRG_ door de naam van de gewenste resource groep.
 
    De **bereik** parameter voor `New-AzPolicyAssignment` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad, die de eigenschap **ResourceID** bij `Get-AzResourceGroup` retourneert. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}` , `{rgName}` , `{subId}` , en `{mgName}` met de naam van de resource, de naam van de resource groep, de abonnements-id en de beheer groep, respectievelijk.
-   `{rType}`wordt vervangen door het **resource type** van de resource, bijvoorbeeld `Microsoft.Compute/virtualMachines` voor een virtuele machine.
+   `{rType}` wordt vervangen door het **resource type** van de resource, bijvoorbeeld `Microsoft.Compute/virtualMachines` voor een virtuele machine.
 
-   - Resource`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Resource groep-`/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Abonnees`/subscriptions/{subId}/`
-   - Beheer groep-`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Resource `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Resource groep- `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Abonnees `/subscriptions/{subId}/`
+   - Beheer groep- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Zie [AZ. resources](/powershell/module/az.resources/#policies)(Engelstalig) voor meer informatie over het beheren van bron beleid met behulp van de Resource Manager Power shell-module.
 
@@ -216,12 +216,12 @@ Als u een beleids definitie wilt maken, gebruikt u de volgende procedure:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   De **bereik** parameter voor `az policy assignment create` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}` , `{rgName}` , `{subId}` , en `{mgName}` met de naam van de resource, de naam van de resource groep, de abonnements-id en de beheer groep, respectievelijk. `{rType}`wordt vervangen door het **resource type** van de resource, bijvoorbeeld `Microsoft.Compute/virtualMachines` voor een virtuele machine.
+   De **bereik** parameter voor `az policy assignment create` werkt met de beheer groep, het abonnement, de resource groep of een enkele resource. De para meter gebruikt een volledig bronpad. Het patroon voor de **Scope** voor elke container is als volgt. Vervang `{rName}` , `{rgName}` , `{subId}` , en `{mgName}` met de naam van de resource, de naam van de resource groep, de abonnements-id en de beheer groep, respectievelijk. `{rType}` wordt vervangen door het **resource type** van de resource, bijvoorbeeld `Microsoft.Compute/virtualMachines` voor een virtuele machine.
 
-   - Resource`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Resource groep-`/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Abonnees`/subscriptions/{subID}`
-   - Beheer groep-`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Resource `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Resource groep- `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Abonnees `/subscriptions/{subID}`
+   - Beheer groep- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 U kunt de Azure Policy definitie-ID ophalen met behulp van Power shell met de volgende opdracht:
 

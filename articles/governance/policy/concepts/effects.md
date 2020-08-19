@@ -1,14 +1,14 @@
 ---
 title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
-ms.date: 06/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791415"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544720"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -17,7 +17,7 @@ Elke beleidsdefinitie in Azure Policy heeft één effect. Dit effect bepaalt wat
 Deze effecten worden momenteel ondersteund in een beleids definitie:
 
 - [Toevoegen](#append)
-- [Audit](#audit)
+- [Controleren](#audit)
 - [AuditIfNotExists](#auditifnotexists)
 - [Weigeren](#deny)
 - [DeployIfNotExists](#deployifnotexists)

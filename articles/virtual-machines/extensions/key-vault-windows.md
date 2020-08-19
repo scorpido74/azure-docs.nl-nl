@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d66ef8f142a72bfdea2dcf3eeb996b18173de04d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 18ca9244f818fa745725f13d79a23c1a232e01ed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502959"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545383"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine Key Vault voor Windows
 
@@ -73,9 +73,9 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 > 
 > Dit komt doordat het `/secrets` pad het volledige certificaat retourneert, inclusief de persoonlijke sleutel, terwijl het `/certificates` pad niet. Meer informatie over certificaten vindt u hier: [Key Vault certificaten](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> De eigenschap authenticationSettings is optioneel voor scenario's waarbij een VM meerdere toegewezen identiteiten heeft.
-> Hiermee kan specifing identiteit worden gebruikt voor verificatie Key Vault.
+> [!IMPORTANT]
+> De eigenschap authenticationSettings is alleen **vereist** voor vm's met door de **gebruiker toegewezen identiteiten**.
+> Hiermee wordt de identiteit opgegeven die moet worden gebruikt voor de verificatie van Key Vault.
 
 
 ### <a name="property-values"></a>Eigenschaps waarden

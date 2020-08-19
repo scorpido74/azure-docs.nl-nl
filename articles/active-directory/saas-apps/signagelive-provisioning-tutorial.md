@@ -2,25 +2,21 @@
 title: 'Zelf studie: Signagelive configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Signagelive.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: bbd0d3c60c5cc4056d5cbadfc7c6d90ae2a37ca6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7bf9e7a4c17134a47cbaafbc2bde25d467c6a978
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063234"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548545"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Zelf studie: Signagelive configureren voor automatische gebruikers inrichting
 
@@ -56,7 +52,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 Voordat u Signagelive configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op Signagelive.
 
-  Neem contact op met [Signagelive](mailto:development@signagelive.com) om het geheime token te verkrijgen dat nodig is voor het configureren van scim-inrichting.
+  Neem contact op met  [Signagelive](mailto:development@signagelive.com) om het geheime token te verkrijgen dat nodig is voor het configureren van scim-inrichting.
 
 ## <a name="add-signagelive-from-the-gallery"></a>Signagelive toevoegen vanuit de galerie
 
@@ -89,7 +85,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-signagelive--in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Signagelive in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
