@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: daee5a921e25dc74d6e869ca3feb6c66d8c4ce7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 38c2b3cdf40f1924a36ffd84d9dc5f9b2f7f319d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851028"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245703"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Quickstart: Anomalieën in uw tijdreeksgegevens detecteren met behulp van de Anomaly Detector REST API en Python
 
@@ -31,7 +31,7 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+- Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 - Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector-resource maken"  target="_blank">, maakt u een Anomaly Detector-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
     - U hebt de sleutel en het eindpunt nodig van de resource die u maakt om de toepassing te verbinden met de Anomaly Detector-API. Verderop in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
@@ -85,7 +85,7 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>De anomaliestatus van het laatste gegevenspunt detecteren
 
-1. Maak een methode met de naam `detect_latest()` om te bepalen of het meest recente gegevenspunt in de tijdreeks een anomalie is. Roep de bovenstaande `send_request()`-methode aan met uw eindpunt, URL, abonnementssleutel en JSON-gegevens. 
+1. Maak een methode met de naam `detect_latest()` om te bepalen of het meest recente gegevenspunt in de tijdreeks een anomalie is. Roep de bovenstaande `send_request()`-methode aan met uw eindpunt, URL, abonnementssleutel en JSON-gegevens.
 
 2. Roep `json.dumps()` aan op het resultaat om dit te formatteren en af te drukken naar de console.
 

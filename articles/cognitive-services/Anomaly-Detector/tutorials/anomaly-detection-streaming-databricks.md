@@ -11,16 +11,16 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027845"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245601"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Zelfstudie: Detectie van afwijkingen in streaming-gegevens met behulp van Azure Databricks
 
-[Azure Databricks](https://azure.microsoft.com/services/databricks/) is een snel, eenvoudig en op Apache Spark gebaseerde analyseservice voor samenwerking. De Anomaly Detector-API, onderdeel van Azure Cognitive Services, biedt een manier om uw tijdreeksgegevens te volgen. Gebruik deze zelfstudie om afwijkingsdetectie uit te voeren in een gegevensstroom in bijna realtime met behulp van Azure Databricks. U kunt Twitter-gegevens opnemen met Azure Event Hubs en deze importeren in Azure Databricks met behulp van de Spark Event Hubs-connector. Daarna gebruikt u de API om afwijkingen in de gestreamde gegevens te detecteren. 
+[Azure Databricks](https://azure.microsoft.com/services/databricks/) is een snel, eenvoudig en op Apache Spark gebaseerde analyseservice voor samenwerking. De Anomaly Detector-API, onderdeel van Azure Cognitive Services, biedt een manier om uw tijdreeksgegevens te volgen. Gebruik deze zelfstudie om afwijkingsdetectie uit te voeren in een gegevensstroom in bijna realtime met behulp van Azure Databricks. U kunt Twitter-gegevens opnemen met Azure Event Hubs en deze importeren in Azure Databricks met behulp van de Spark Event Hubs-connector. Daarna gebruikt u de API om afwijkingen in de gestreamde gegevens te detecteren.
 
 In de volgende afbeelding wordt de stroom van de toepassing weergegeven:
 
@@ -41,9 +41,9 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 > [!Note]
 > * In deze zelfstudie wordt een benadering geïntroduceerd voor het implementeren van de aanbevolen [oplossingsarchitectuur](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) voor de Anomaly Detector-API.
-> * Deze zelfstudie kan niet worden voltooid met een gratis (`F0`) proefversie voor de Anomaly Detector-API of Azure Databricks. 
+> * Deze zelfstudie kan niet worden voltooid met een gratis (`F0`) proefversie voor de Anomaly Detector-API of Azure Databricks.
 
-Maak een [Azure-abonnement](https://azure.microsoft.com/free/) als u er nog geen hebt.
+Maak een [Azure-abonnement](https://azure.microsoft.com/free/cognitive-services) als u er nog geen hebt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -51,7 +51,7 @@ Maak een [Azure-abonnement](https://azure.microsoft.com/free/) als u er nog geen
 
 - De [verbindingsreeks](../../../event-hubs/event-hubs-get-connection-string.md) voor toegang tot de Event Hubs-naamruimte. De verbindingsreeks moet een vergelijkbare indeling hebben als:
 
-    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`. 
+    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`.
 
 - Het beleid voor gedeelde toegang en de beleidssleutel voor Event Hubs.
 
@@ -78,7 +78,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van [Azur
 
     Selecteer **Maken**.
 
-4. Het maken van de werkruimte duurt enkele minuten. 
+4. Het maken van de werkruimte duurt enkele minuten.
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Een Spark-cluster maken in Databricks
 
@@ -98,7 +98,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van [Azur
    * Maak voor dit artikel een cluster met de **5.2**-runtime. Selecteer NIET de **5.3**-runtime.
    * Zorg ervoor dat het selectievakje **Beëindigen na\_\_ minuten van inactiviteit** is geselecteerd. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het cluster niet wordt gebruikt.
 
-     Selecteer **Cluster maken**. 
+     Selecteer **Cluster maken**.
 4. Het maken van het cluster duurt enkele minuten. Zodra het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Spark-taken uitvoeren.
 
 ## <a name="create-a-twitter-application"></a>Een Twitter-toepassing maken
@@ -285,7 +285,7 @@ while (!finished) {
       maxStatusId = Math.max(status.getId(), maxStatusId)
     }
   }
-  
+
   if (lowestStatusId == Long.MaxValue) {
     preMaxStatusId = maxStatusId
   }
@@ -325,7 +325,7 @@ Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgend
 
 Plak in het notitieblok **AnalyzeTweetsFromEventHub** de volgende code en vervang de tijdelijke aanduiding door waarden voor uw Anomaly Detector-resource die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder hebt gestreamd naar Event Hubs met behulp van het **SendTweetsToEventHub**-notitieblok.
 
-Schrijf eerst een client om de Anomaly Detector aan te roepen. 
+Schrijf eerst een client om de Anomaly Detector aan te roepen.
 ```scala
 
 //
@@ -451,25 +451,25 @@ import scala.collection.immutable.ListMap
 
 class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
   override def inputSchema: StructType = new StructType().add("timestamp", TimestampType).add("value", FloatType)
-  
+
   override def bufferSchema: StructType = new StructType().add("point", MapType(TimestampType, FloatType))
-  
+
   override def dataType: DataType = BooleanType
-  
+
   override def deterministic: Boolean = false
-  
+
   override def initialize(buffer: MutableAggregationBuffer): Unit = {
     buffer(0) = Map()
   }
-  
+
   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {
     buffer(0) = buffer.getAs[Map[java.sql.Timestamp, Float]](0) + (input.getTimestamp(0) -> input.getFloat(1))
   }
-  
+
   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {
     buffer1(0) = buffer1.getAs[Map[java.sql.Timestamp, Float]](0) ++ buffer2.getAs[Map[java.sql.Timestamp, Float]](0)
   }
-  
+
   override def evaluate(buffer: Row): Any = {
     val points = buffer.getAs[Map[java.sql.Timestamp, Float]](0)
     if (points.size > 12) {
@@ -478,19 +478,19 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
       sorted_points.keys.foreach {
         key => detect_points = detect_points :+ new Point(key, sorted_points(key))
       }
-      
-      
+
+
       // 0.25 is maxAnomalyRatio. It represents 25%, max anomaly ratio in a time series.
       // 95 is the sensitivity of the algorithms.
       // Check Anomaly detector API reference (https://aka.ms/anomaly-detector-rest-api-ref)
-      
+
       val series: Series = new Series(detect_points.toArray, 0.25, 95, "hourly")
       val response: Option[AnomalySingleResponse] = AnomalyDetector.detectLatestPoint(series)
       if (!response.isEmpty) {
         return response.get.isAnomaly
       }
     }
-    
+
     return None
   }
 }
@@ -562,7 +562,7 @@ Als u afwijkingsdetectie wilt uitvoeren, moet u eerst het aantal metrische gegev
 // Aggregate Metric Count by Hour
 //
 
-// If you want to change granularity, change the groupBy window. 
+// If you want to change granularity, change the groupBy window.
 val groupStream = msgStream.groupBy(window($"timestamp", "1 hour"))
   .agg(avg("favorite").alias("average"))
   .withColumn("groupTime", $"window.start")
@@ -584,7 +584,8 @@ groupTime                       average
 
 ```
 
-Haal vervolgens het cumulatieve uitvoerresultaat op naar Delta. Omdat voor afwijkingsdetectie een langere geschiedenis vereist is, gebruiken we Delta om de geschiedenisgegevens te bewaren voor het punt dat u wilt detecteren. Vervang de "[Tijdelijke aanduiding: tabelnaam]" door de naam van een gekwalificeerde Delta-tabel die moet worden gemaakt (bijvoorbeeld "tweets"). Vervang "[Tijdelijke aanduiding: mapnaam voor controle punten]" door een tekenreekswaarde die uniek is telkens wanneer u deze code uitvoert (bijvoorbeeld "etl-from-eventhub-20190605").
+Haal vervolgens het cumulatieve uitvoerresultaat op naar Delta. Omdat voor afwijkingsdetectie een langere geschiedenis vereist is, gebruiken we Delta om de geschiedenisgegevens te bewaren voor het punt dat u wilt detecteren.
+Vervang de "[Tijdelijke aanduiding: tabelnaam]" door de naam van een gekwalificeerde Delta-tabel die moet worden gemaakt (bijvoorbeeld "tweets"). Vervang "[Tijdelijke aanduiding: mapnaam voor controle punten]" door een tekenreekswaarde die uniek is telkens wanneer u deze code uitvoert (bijvoorbeeld "etl-from-eventhub-20190605").
 Raadpleeg de [handleiding voor Delta Lake](https://docs.azuredatabricks.net/delta/index.html) voor meer informatie over Delta Lake in Azure Databricks
 
 
@@ -615,7 +616,7 @@ twitterData.show(200, false)
 
 display(twitterData)
 ```
-De uitvoer ziet eruit zoals hieronder: 
+De uitvoer ziet eruit zoals hieronder:
 ```
 groupTime                       average
 2019-04-08T01:00:00.000+0000    25.6
@@ -628,7 +629,8 @@ groupTime                       average
 
 ```
 
-De geaggregeerde tijdreeksgegevens worden nu voortdurend opgenomen in de Delta. Vervolgens kunt u een taak plannen om de afwijking van het laatste punt te detecteren. Vervang de "[Tijdelijke aanduiding: tabelnaam]" door de naam van de Delta-tabel die u hierboven hebt geselecteerd.
+De geaggregeerde tijdreeksgegevens worden nu voortdurend opgenomen in de Delta. Vervolgens kunt u een taak plannen om de afwijking van het laatste punt te detecteren.
+Vervang de "[Tijdelijke aanduiding: tabelnaam]" door de naam van de Delta-tabel die u hierboven hebt geselecteerd.
 
 ```scala
 //
@@ -667,7 +669,7 @@ spark.udf.register("anomalydetect", new AnomalyDetectorAggregationFunction)
 val adResult = spark.sql("SELECT '" + endTime.toString + "' as datetime, anomalydetect(groupTime, average) as anomaly FROM series")
 adResult.show()
 ```
-Het resultaat ziet eruit zoals hieronder: 
+Het resultaat ziet eruit zoals hieronder:
 
 ```
 +--------------------+-------+
@@ -678,7 +680,7 @@ Het resultaat ziet eruit zoals hieronder:
 ```
 
 Dat is alles. Met behulp van Azure Databricks hebt u gegevens gestreamd naar Azure Event Hubs, de streaming-gegevens gebruikt met behulp van de Event Hubs-connector en vervolgens afwijkingsdetectie uitgevoerd op streaminggegevens in bijna-realtime.
-In deze zelfstudie is de granulariteit elk uur, maar u kunt de granulariteit op elk gewenst moment wijzigen om aan uw behoeften te voldoen. 
+In deze zelfstudie is de granulariteit elk uur, maar u kunt de granulariteit op elk gewenst moment wijzigen om aan uw behoeften te voldoen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -690,7 +692,7 @@ Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u Azure Databricks kunt gebruiken om gegevens naar Azure Event Hubs te streamen, waarna u de streaming-gegevens vanuit Event Hubs in realtime hebt gelezen. Ga naar de volgende zelfstudie voor meer informatie over het aanroepen van de Anomaly Detector-API en het visualiseren van afwijkingen met Power BI Desktop. 
+In deze zelfstudie hebt u geleerd hoe u Azure Databricks kunt gebruiken om gegevens naar Azure Event Hubs te streamen, waarna u de streaming-gegevens vanuit Event Hubs in realtime hebt gelezen. Ga naar de volgende zelfstudie voor meer informatie over het aanroepen van de Anomaly Detector-API en het visualiseren van afwijkingen met Power BI Desktop.
 
 > [!div class="nextstepaction"]
 >[Batchgewijze afwijkingsdetectie met Power BI Desktop](batch-anomaly-detection-powerbi.md)

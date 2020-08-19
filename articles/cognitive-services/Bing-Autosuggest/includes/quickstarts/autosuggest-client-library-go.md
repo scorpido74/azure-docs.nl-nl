@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: ee897a22ceda4378ea9dba4579d5108a2ddf0b0d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156570"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246542"
 ---
-Ga aan de slag met de Bing Autosuggest-clientbibliotheek voor Go. Volg deze stappen om de bibliotheek te installeren en onze voorbeelden voor basistaken uit te proberen. 
+Ga aan de slag met de Bing Autosuggest-clientbibliotheek voor Go. Volg deze stappen om de bibliotheek te installeren en onze voorbeelden voor basistaken uit te proberen.
 
 Gebruik de Bing Autosuggest-clientbibliotheek voor Go om zoeksuggesties te krijgen op onvolledige queryreeksen.
 
@@ -23,7 +23,7 @@ Gebruik de Bing Autosuggest-clientbibliotheek voor Go om zoeksuggesties te krijg
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [kunt u er gratis een aanmaken](https://azure.microsoft.com/free/).
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [kunt u er gratis een aanmaken](https://azure.microsoft.com/free/cognitive-services).
 * Nieuwste versie van [Go](https://golang.org/dl/).
 
 Begin de Bing Autosuggest-clientbibliotheek te gebruiken door een Azure-resource te maken. Kies hieronder het resourcetype dat bij u past:
@@ -33,12 +33,12 @@ Begin de Bing Autosuggest-clientbibliotheek te gebruiken door een Azure-resource
 ## <a name="create-environment-variables"></a>Omgevingsvariabelen maken
 
 >[!NOTE]
-> De eindpunten voor resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weergegeven. Zie [Aangepaste subdomeinnamen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) voor meer informatie en een volledige lijst met regionale eindpunten. 
+> De eindpunten voor resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weergegeven. Zie [Aangepaste subdomeinnamen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) voor meer informatie en een volledige lijst met regionale eindpunten.
 
 Maak met uw sleutel en eindpunt van de resource die u hebt gemaakt, twee omgevingsvariabelen voor verificatie:
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`: De resourcesleutel voor het verifiëren van uw aanvragen.
-* `AUTOSUGGEST_ENDPOINT`: Het resource-eindpunt voor het verzenden van API-aanvragen. Dit ziet er als volgt uit: `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `AUTOSUGGEST_ENDPOINT`: Het resource-eindpunt voor het verzenden van API-aanvragen. Dit ziet er als volgt uit: `https://<your-custom-subdomain>.api.cognitive.microsoft.com`
 
 Volg de instructies voor uw besturingssysteem.
 <!-- replace the below endpoint and key examples -->
@@ -74,7 +74,7 @@ Nadat u de omgevingsvariabele toevoegt, voert u `source .bash_profile` uit vanui
 
 ## <a name="create-a-new-go-project"></a>Een nieuw Go-project maken
 
-Maak in een consolevenster (cmd, PowerShell, Terminal, Bash) een nieuwe werkruimte voor uw Go-project en navigeer er naartoe. Uw werkruimte bevat drie mappen: 
+Maak in een consolevenster (cmd, PowerShell, Terminal, Bash) een nieuwe werkruimte voor uw Go-project en navigeer er naartoe. Uw werkruimte bevat drie mappen:
 
 * **src**: Deze map bevat broncode en pakketten. Alle pakketten geïnstalleerd met de `go get`-opdracht bevinden zich hier.
 * **pkg**: Deze map bevat de gecompileerde Go-pakketobjecten. Deze bestanden hebben allemaal een `.a`-extensie.
@@ -92,7 +92,7 @@ $ cd my-app
 
 ## <a name="install-the-client-library-for-go"></a>De clientbibliotheek installeren voor Go
 
-Laten we nu de clientbibliotheek installeren voor Go: 
+Laten we nu de clientbibliotheek installeren voor Go:
 
 ```bash
 $ go get -u <library-location-or-url>
@@ -154,10 +154,10 @@ Deze codevoorbeelden laten zien hoe u basistaken kunt uitvoeren met de Bing Auto
 
 ### <a name="authenticate-the-client"></a>De client verifiëren
 
-> [!NOTE] 
+> [!NOTE]
 > In deze quickstart wordt ervan uitgegaan dat u [een omgevingsvariabele hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw Bing Autosuggest-sleutel met de naam `BING_AUTOSUGGEST_SUBSCRIPTION_KEY`, en een voor uw eindpunt met de naam `BING_AUTOSUGGEST_ENDPOINT`.
 
-Instantieer ub de `main()`-functie een client met uw eindpunt en sleutel. 
+Instantieer ub de `main()`-functie een client met uw eindpunt en sleutel.
 
 ```go
 // Get the context, which is required by the SDK methods.

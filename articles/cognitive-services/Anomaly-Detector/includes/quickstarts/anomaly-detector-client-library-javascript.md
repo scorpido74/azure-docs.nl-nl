@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/30/2020
 ms.author: aahi
 ms.custom: devx-track-javascript
-ms.openlocfilehash: cb9a674890330ba83b6e7fe754ecd83eda4031bb
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 836582003c4b4bd47d2b90b845ae414210d16edd
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405995"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246157"
 ---
 Aan de slag met de Anomaly Detector-clientbibliotheek voor JavaScript. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. Met de Anomaly Detector-service kunt u afwijkingen in uw tijdreeksgegevens vinden door automatisch de best passende modellen erop uit te voeren, onafhankelijk van bedrijfstak, scenario of gegevensvolume.
 
@@ -27,7 +27,7 @@ Gebruik de Anomaly Detector-clientbibliotheek voor JavaScript om:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 * De huidige versie van [Node.js](https://nodejs.org/)
 * Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="maakt u een Anomaly Detector-resource "  target="_blank">Een Anomaly Detector-resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
     * U hebt de sleutel en het eindpunt nodig van de resource die u maakt om de toepassing te verbinden met de Anomaly Detector-API. Verderop in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.

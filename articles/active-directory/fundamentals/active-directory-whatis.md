@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd63e82788856624c3babe078de52e698f190ce0
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 91e89f274615e75fec818ec9e3ecf785aa6e804f
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796622"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262955"
 ---
 # <a name="what-is-azure-active-directory"></a>What is Azure Active Directory? (Engelstalig)
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) is de identiteits- en toegangsbeheerservice in
 
 - Interne resources, zoals apps op het bedrijfsnetwerk en intranet, samen met cloud-apps die door uw eigen organisatie zijn ontwikkeld. Voor meer informatie over het maken van een tenant voor uw organisatie leest u [Quickstart: Een nieuwe tenant maken in Azure Active Directory](active-directory-access-create-new-tenant.md).
 
-Zie [Active Directory vergelijken met Azure Active Directory](active-directory-compare-azure-ad-to-ad.md) om te ontdekken wat het verschil is tussen Azure AD en Active Directory Domain Services. U kunt ook gebruikmaken van de diverse posters van [Microsoft Cloud for Enterprise Architects Series](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) voor een beter begrip van de kernidentiteitsservices in Azure, Azure AD en Office 365.
+Zie [Active Directory vergelijken met Azure Active Directory](active-directory-compare-azure-ad-to-ad.md) om te ontdekken wat het verschil is tussen Azure AD en Active Directory Domain Services. U kunt ook gebruikmaken van de diverse posters van [Microsoft Cloud for Enterprise Architects Series](https://docs.microsoft.com/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) voor een beter begrip van de kernidentiteitsservices in Azure, Azure AD en Office 365.
 
 ## <a name="who-uses-azure-ad"></a>Wie gebruikt Azure AD?
 

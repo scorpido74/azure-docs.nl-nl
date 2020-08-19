@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/30/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 42edf9cd1687314f2ef168969791cb39f43851d3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e8fdc703b094ace83e70b736c1eb0d15c461adba
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323686"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243867"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Quickstart: Afwijkingen in uw tijdreeksgegevens detecteren met behulp van de Anomaly Detector REST API en Java
 
@@ -31,7 +31,7 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+- Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 - Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector-resource maken"  target="_blank">, maakt u een Anomaly Detector-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
     - U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Anomaly Detector-API. Verderop in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde categorie voor productie.
@@ -47,7 +47,7 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 ## <a name="create-a-new-application"></a>Een nieuwe toepassing maken
 
 1. Maak een nieuw Java-project en importeer de volgende bibliotheken.
-    
+
     [!code-java[Import statements](~/samples-anomaly-detector/quickstarts/java-detect-anomalies.java?name=imports)]
 
 2. Maak variabelen voor uw abonnementssleutel en eindpunt. Hieronder vindt u de URI's die u voor anomaliedetectie kunt gebruiken. Deze worden later toegevoegd aan uw service-eindpunt om de API-aanvraag-URL's te maken.

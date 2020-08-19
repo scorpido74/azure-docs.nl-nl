@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5016191bb4f647c0bbfa71144bb4b4b554b080f4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834334"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244666"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Zelfstudie: Gebruik Custom Vision met een IoT-apparaat om visuele toestanden te melden
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u hoe u het volgende kunt doen:
 > * Gebruik de app voor het trainen van uw Custom Vision-project.
 > * Gebruik de app om nieuwe afbeeldingen in realtime te scoren en de resultaten naar Azure te verzenden.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 

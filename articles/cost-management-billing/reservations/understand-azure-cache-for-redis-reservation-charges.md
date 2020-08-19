@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 4ad28bd65fe9bc240e963f103ca5bd658e90fdfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77529616"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213269"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Het toepassen van de reserveringskorting op Azure Cache for Redis
 
-Nadat u gereserveerde capaciteit voor Azure Cache for Redis hebt gekocht, wordt de reserveringskorting automatisch toegepast op cache-exemplaren die overeenkomen met de kenmerken en hoeveelheid van de reservering. Een reservering dekt alleen de rekenkosten van uw Azure Cache for Redis. Er worden tegen de normale tarieven opslag- en netwerkkosten in rekening gebracht. Gereserveerde capaciteit is alleen beschikbaar voor caches in de [Premium-laag](/azure/azure-cache-for-redis/cache-premium-tier-intro).
+Nadat u gereserveerde capaciteit voor Azure Cache for Redis hebt gekocht, wordt de reserveringskorting automatisch toegepast op cache-exemplaren die overeenkomen met de kenmerken en hoeveelheid van de reservering. Een reservering dekt alleen de rekenkosten van uw Azure Cache for Redis. Er worden tegen de normale tarieven opslag- en netwerkkosten in rekening gebracht. Gereserveerde capaciteit is alleen beschikbaar voor caches in de [Premium-laag](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis).
 
 ## <a name="how-reservation-discount-is-applied"></a>De manier waarop reserveringskorting wordt toegepast
 

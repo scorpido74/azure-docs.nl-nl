@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Node.js - Azure Database for MySQL
+title: 'Quickstart: Verbinding maken met Node.js - Azure Database for MySQL'
 description: Deze snelstartgids bevat enkele voorbeelden van Node.js-code die u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit Azure Database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-t
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 9d3e2d744c4800c06503483c6e7270ad1ca60e2c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1f8f4dee2ed1e6dc5cdf6985c1149db0dcaed7c2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423181"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185924"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: Node.js gebruiken om verbinding te maken en query's uit te voeren op gegevens in Azure Database for MySQL
 
@@ -33,7 +33,7 @@ In dit onderwerp wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met
 
 Afhankelijk van uw platform volgt u de instructies in het bijbehorende gedeelte voor het installeren van [Node.js](https://nodejs.org). Gebruik NPM om het [mysql](https://www.npmjs.com/package/mysql)-pakket en de bijbehorende afhankelijkheden in de projectmap te installeren.
 
-### <a name="windows"></a>**Windows**
+### <a name="windows"></a>Windows
 
 1. Ga naar de [downloadpagina van Node.js](https://nodejs.org/en/download/) en selecteer het gewenste Windows-installatieprogramma.
 2. Maak een lokale projectmap, zoals `nodejsmysql`. 
@@ -48,7 +48,7 @@ Afhankelijk van uw platform volgt u de instructies in het bijbehorende gedeelte 
 
 5. Controleer de installatie door de `npm list`-uitvoertekst te controleren. Het versienummer kan variëren als nieuwe patches worden vrijgegeven.
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
 1. Voer de volgende opdrachten uit om **Node.js** en **NPM**, het pakketbeheerprogramma voor Node.js, te installeren.
 
@@ -66,7 +66,7 @@ Afhankelijk van uw platform volgt u de instructies in het bijbehorende gedeelte 
    ```
 3. Controleer de installatie door de uitvoertekst van de npm-lijst te controleren. Het versienummer kan variëren als nieuwe patches worden vrijgegeven.
 
-### <a name="mac-os"></a>**Mac OS**
+### <a name="mac-os"></a>Mac OS
 
 1. Voer de volgende opdrachten in om **brew** te installeren, een gebruiksvriendelijk pakketbeheerprogramma voor Mac OS X en **Node.js**.
 

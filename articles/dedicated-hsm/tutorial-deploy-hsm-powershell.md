@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
 ms.author: johndaw
-ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93333f2f0a2ef4aaf44884aa30afaa959459aaad
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512500"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257431"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Zelfstudie: PowerShell gebruiken om HSM's te implementeren in een bestaand virtueel netwerk
 
@@ -40,7 +40,7 @@ Deze zelfstudie richt zich op twee HSM's en de vereiste ExpressRoute-gateway (zi
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Toegewezen HSM is momenteel niet beschikbaar in de Azure-portal, dus alle interactie met de service loopt via de opdrachtregel of PowerShell. In deze zelfstudie wordt PowerShell in de Azure Cloud Shell gebruikt. Als u niet bekend bent met PowerShell, volg dan de instructies in: [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Azure Toegewezen HSM is momenteel niet beschikbaar in de Azure-portal, dus alle interactie met de service loopt via de opdrachtregel of PowerShell. In deze zelfstudie wordt PowerShell in de Azure Cloud Shell gebruikt. Als u niet bekend bent met PowerShell, volg dan de instructies in: [Aan de slag met Azure PowerShell](/powershell/azure/get-started-azureps).
 
 Veronderstellingen:
 

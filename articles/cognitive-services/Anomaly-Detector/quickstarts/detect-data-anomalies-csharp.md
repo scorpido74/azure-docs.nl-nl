@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 585731212fa31be2757d5b5d4c4e0a2ef1212ca8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 86742568d8f0c7c951d872e7df23b8ce1cb0920f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980210"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244224"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Quickstart: Anomalieën detecteren in uw tijdreeksgegevens met behulp van de Anomaly Detector-REST API en C# 
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Quickstart: Anomalieën detecteren in uw tijdreeksgegevens met behulp van de Anomaly Detector-REST API en C#
 
 Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee detectiemodi van de Anomaly Detector API's om anomalieën in uw tijdreeksgegevens te detecteren. Met deze C#-toepassing worden twee API-aanvragen met tijdreeksgegevens in JSON-indeling verzonden en worden de antwoorden opgehaald.
 
@@ -30,13 +30,13 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+- Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 - Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector-resource maken"  target="_blank">, maakt u een Anomaly Detector-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Wacht tot deze is geïmplementeerd en klik op de knop **Naar de resource gaan**.
     - U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Anomaly Detector-API. Verderop in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 - Een versie van [Visual Studio 2017 of hoger](https://visualstudio.microsoft.com/downloads/)
 - Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket. Newtonsoft.json installeren als een NuGet-pakket in Visual Studio:
-    
+
     1. Klik met de rechtermuisknop op uw project in **Solution Explorer**.
     2. Selecteer **NuGet-pakketten beheren**.
     3. Zoek vervolgens naar *Newtonsoft.Json* en installeer het pakket.
@@ -49,7 +49,7 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 
 ## <a name="create-a-new-application"></a>Een nieuwe toepassing maken
 
-1. Maak in Visual Studio een nieuwe consoleoplossing en voeg de volgende pakketten toe. 
+1. Maak in Visual Studio een nieuwe consoleoplossing en voeg de volgende pakketten toe.
 
     [!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=usingStatements)]
 
@@ -60,7 +60,7 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
     |------------------------------------|--------------------------------------------------|
     | Batchdetectie                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | Detectie op het laatste gegevenspunt | `/anomalydetector/v1.0/timeseries/last/detect`   |
-        
+
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Een functie maken voor het verzenden van aanvragen
@@ -79,7 +79,7 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 
 2. Deserialiseer het JSON-object en schrijf het naar de console.
 
-3. Als het antwoord het veld `code` bevat, drukt u de foutcode en het foutbericht af. 
+3. Als het antwoord het veld `code` bevat, drukt u de foutcode en het foutbericht af.
 
 4. Als dat niet het geval is, zoekt u de positie van anomalieën in de gegevensset. Het veld `isAnomaly` van het antwoord bevat een matrix met booleaanse waarden, waarvan elke waarde aangeeft of een gegevenspunt een anomalie is. Converteer deze naar een tekenreeksmatrix met de `ToObject<bool[]>()`-functie van het antwoordobject. Herhaal de matrix en druk de index van alle `true`-waarden af. Deze waarden komen overeen met de index van afwijkende gegevenspunten, als die zijn gevonden.
 
@@ -93,10 +93,10 @@ Gebruik deze quickstart om aan de slag te gaan met het gebruiken van de twee det
 2. Deserialiseer het JSON-object en schrijf het naar de console.
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
- 
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>De gegevens van uw tijdreeks laden en de aanvraag verzenden
 
-1. In de hoofdmethode van uw toepassing laadt u uw JSON-tijdreeksgegevens met `File.ReadAllText()`. 
+1. In de hoofdmethode van uw toepassing laadt u uw JSON-tijdreeksgegevens met `File.ReadAllText()`.
 
 2. Roep de hierboven gemaakte anomaliedetectiefuncties aan. Gebruik `System.Console.ReadKey()` om het consolevenster geopend te houden nadat de toepassing is uitgevoerd.
 

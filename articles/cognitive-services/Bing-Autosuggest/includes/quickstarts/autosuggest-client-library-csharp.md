@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5d325ac8da43f020f4ab39244d2e6a7dc6ed72b7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156655"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246278"
 ---
 Ga aan de slag met de Bing Autosuggest-clientbibliotheek voor .NET. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen.
 
@@ -23,7 +23,7 @@ Gebruik de Bing Autosuggest-clientbibliotheek voor .NET om zoeksuggesties te kri
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [kunt u er gratis een aanmaken](https://azure.microsoft.com/free/).
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [kunt u er gratis een aanmaken](https://azure.microsoft.com/free/cognitive-services).
 * De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
@@ -31,12 +31,12 @@ Gebruik de Bing Autosuggest-clientbibliotheek voor .NET om zoeksuggesties te kri
 ## <a name="create-environment-variables"></a>Omgevingsvariabelen maken
 
 >[!NOTE]
-> De eindpunten voor resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weergegeven. Zie [Aangepaste subdomeinnamen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) voor meer informatie en een volledige lijst met regionale eindpunten. 
+> De eindpunten voor resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weergegeven. Zie [Aangepaste subdomeinnamen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) voor meer informatie en een volledige lijst met regionale eindpunten.
 
 Maak met uw sleutel en eindpunt van de resource die u hebt gemaakt, twee omgevingsvariabelen voor verificatie:
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`: De resourcesleutel voor het verifiëren van uw aanvragen.
-* `AUTOSUGGEST_ENDPOINT`: Het resource-eindpunt voor het verzenden van API-aanvragen. Dit ziet er als volgt uit: `https://<your-custom-subdomain>.api.cognitive.microsoft.com`. 
+* `AUTOSUGGEST_ENDPOINT`: Het resource-eindpunt voor het verzenden van API-aanvragen. Dit ziet er als volgt uit: `https://<your-custom-subdomain>.api.cognitive.microsoft.com`.
 
 Volg de instructies voor uw besturingssysteem.
 <!-- replace the below endpoint and key examples -->
@@ -72,9 +72,9 @@ Nadat u de omgevingsvariabele toevoegt, voert u `source .bash_profile` uit vanui
 
 ## <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
-Maak een nieuwe .NET Core-toepassing in uw favoriete editor of IDE. 
+Maak een nieuwe .NET Core-toepassing in uw favoriete editor of IDE.
 
-Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `bing-autosuggest-quickstart`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *program.cs*. 
+Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `bing-autosuggest-quickstart`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *program.cs*.
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
@@ -86,7 +86,7 @@ Wijzig uw map in de zojuist gemaakte app-map. U kunt de toepassing maken met:
 dotnet build
 ```
 
-De build-uitvoer mag geen waarschuwingen of fouten bevatten. 
+De build-uitvoer mag geen waarschuwingen of fouten bevatten.
 
 ```console
 ...

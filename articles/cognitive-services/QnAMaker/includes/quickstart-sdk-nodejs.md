@@ -4,12 +4,12 @@ description: In deze quickstart ziet u hoe u aan de slag gaat met de QnA Maker-c
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 76d0587c68ac46253dbd937c661b06bdb8c495c8
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 4085ec5aaff75f33fc7a87708693084831ff5d8d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404074"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246176"
 ---
 Gebruik de QnA Maker-clientbibliotheek voor Node.js voor het volgende:
 
@@ -28,7 +28,7 @@ Gebruik de QnA Maker-clientbibliotheek voor Node.js voor het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 * De huidige versie van [Node.js](https://nodejs.org).
 * Zodra u een Azure-abonnement hebt, maakt u een [QnA Maker-resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) in Azure Portal om uw auteurssleutel en resource op te halen. Nadat de app is geïmplementeerd, selecteert u **Ga naar resource**.
     * U hebt de sleutel en de resourcenaam nodig van de resource die u maakt, om de toepassing te verbinden met de QnA Maker-API. Later in de quickstart plakt u uw sleutel en resourcenaam in de onderstaande code.

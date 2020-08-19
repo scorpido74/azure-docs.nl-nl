@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9f20f4cced74c5607fbfea2119e22cface0a8e03
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7fe68e7b1a56c22e8c0d9638408982518105888e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499055"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185142"
 ---
-# <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Een Azure Database for MariaDB-server maken met behulp van de Azure CLI
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Quickstart: Een Azure Database for MariaDB-server maken met behulp van de Azure CLI
 
 U kunt de Azure CLI gebruiken voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In deze snelstartgids wordt beschreven hoe u Azure CLI gebruikt om binnen ongeveer vijf minuten een Azure Database for MariaDB-server te maken in een Azure-resourcegroep.
 

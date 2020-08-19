@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 2af0d0eb2411c5ffe9f80498a3e93d48fe0a769b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0434ddb1e90789628d14d4782eccb6514fccf8d8
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057791"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226092"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,7 +43,7 @@ Voeg nu de XAML-code toe die de gebruikersinterface van de toepassing definieert
 
 1. Zoek de tekenreeks `YourSubscriptionKey` in de handler `SpeechTranslationFromMicrophone_ButtonClicked` in dit bestand en vervang deze door uw abonnementssleutel.
 
-1. Zoek de tekenreeks `YourServiceRegion` in de handler `SpeechTranslationFromMicrophone_ButtonClicked` en vervang deze door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. (Gebruik bijvoorbeeld `westus` voor het gratis proefabonnement.)
+1. Zoek de tekenreeks `YourServiceRegion` in de handler `SpeechTranslationFromMicrophone_ButtonClicked` en vervang deze door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld.
 
 1. Kies in de menubalk **File** > **Save All** om de wijzigingen op te slaan.
 
