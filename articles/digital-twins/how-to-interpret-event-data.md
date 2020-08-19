@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d32ad29bf652cad62a5950859ebff0366e09fc6f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510025"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587630"
 ---
 # <a name="understand-event-data"></a>Informatie over gebeurtenis gegevens
 
@@ -30,7 +30,7 @@ Over het algemeen bestaan er meldingen uit twee delen: de koptekst en de hoofd t
 
 Kopteksten van meldings berichten worden weer gegeven met sleutel-waardeparen. Afhankelijk van het protocol dat wordt gebruikt (MQTT, AMQP, of HTTP), worden bericht headers op een andere manier geserialiseerd. In deze sectie worden algemene header-informatie voor meldings berichten besproken, ongeacht het gekozen protocol en de geselecteerde serialisatie.
 
-Sommige meldingen voldoen aan de CloudEvents-standaard. CloudEvents-conformiteit is als volgt.
+Sommige meldingen voldoen aan de [CloudEvents](https://cloudevents.io/) -standaard. CloudEvents-conformiteit is als volgt.
 * Meldingen die worden verzonden vanaf apparaten blijven de bestaande specificaties voor meldingen volgen
 * De meldingen die worden verwerkt en verzonden door IoT Hub blijven de bestaande specificaties voor de melding volgen, behalve wanneer IoT Hub kiest voor de ondersteuning van CloudEvents, zoals via Event Grid
 * Meldingen die worden verzonden vanuit [digitale apparaatdubbels](concepts-twins-graph.md) met een [model](concepts-models.md) dat overeenkomt met CloudEvents
@@ -107,7 +107,7 @@ Dit zijn de velden in de hoofd tekst van een melding voor levens cyclus.
 | --- | --- |
 | `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id` is uniek voor elke afzonderlijke gebeurtenis. |
 | `source` | Naam van het IoT hub-of Azure Digital Apparaatdubbels-exemplaar, zoals *myhub.Azure-devices.net* of *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | *1.0*<br>Het bericht voldoet aan deze versie van de CloudEvents-specificatie. |
+| `specversion` | *1.0*<br>Het bericht voldoet aan deze versie van de [CloudEvents-specificatie](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID van de digitale dubbele |
@@ -193,7 +193,7 @@ Dit zijn de velden in de hoofd tekst van een melding voor een wijziging van de r
 | --- | --- |
 | `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id` is uniek voor elke afzonderlijke gebeurtenis |
 | `source` | De naam van het Azure Digital Apparaatdubbels-exemplaar, zoals *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | *1.0*<br>Het bericht voldoet aan deze versie van de CloudEvents-specificatie. |
+| `specversion` | *1.0*<br>Het bericht voldoet aan deze versie van de [CloudEvents-specificatie](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
 | `subject` | ID van de relatie, zoals `<twinID>/relationships/<relationshipID>` |
@@ -249,7 +249,7 @@ Dit zijn de velden in de hoofd tekst van een digitale, dubbele wijzigings meldin
 | --- | --- |
 | `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id` is uniek voor elke afzonderlijke gebeurtenis |
 | `source` | Naam van het IoT hub-of Azure Digital Apparaatdubbels-exemplaar, zoals *myhub.Azure-devices.net* of *mydigitaltwins.westus2.azuredigitaltwins.net*
-| `specversion` | *1.0*<br>Het bericht voldoet aan deze versie van de CloudEvents-specificatie. |
+| `specversion` | *1.0*<br>Het bericht voldoet aan deze versie van de [CloudEvents-specificatie](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID van de digitale dubbele |

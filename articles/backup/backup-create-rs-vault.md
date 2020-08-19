@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het maken en configureren va
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032949"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586185"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Een Recovery Services kluis maken en configureren
 
@@ -25,10 +25,10 @@ Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die
 >- Als u de back-up nog niet hebt geconfigureerd, [volgt u deze stappen](#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
 >- Als u de back-up al hebt geconfigureerd en van GRS naar LRS moet verplaatsen, [raadpleegt u deze oplossingen](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-1. Klik op de blade **Recovery Services-kluizen** op de nieuwe kluis. Klik onder de sectie **instellingen** op **Eigenschappen**.
-1. In **Eigenschappen**, onder **back-upconfiguratie**, klikt u op **bijwerken**.
+1. Selecteer in het deel venster **Recovery Services kluizen** de nieuwe kluis. Selecteer in de sectie **instellingen** de optie  **Eigenschappen**.
+1. In **Eigenschappen**, onder **back-upconfiguratie**, selecteert u **bijwerken**.
 
-1. Selecteer het type opslag replicatie en klik op **Opslaan**.
+1. Selecteer het type opslag replicatie en selecteer **Opslaan**.
 
      ![De opslagconfiguratie voor nieuwe kluis instellen](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -46,7 +46,7 @@ Als een van de opties voor terugzetten met behulp van cross Region Restore (CRR)
 - oefeningen uitvoeren als er een controle-of nalevings vereiste is
 - herstel de virtuele machine of de schijf als er sprake is van een nood geval in de primaire regio.
 
-Als u deze functie wilt kiezen, selecteert u **herstel van meerdere regio's inschakelen** op de Blade van de **back-upconfiguratie** .
+Als u deze functie wilt kiezen, selecteert u de optie voor het **terugzetten van meerdere regio's inschakelen** in het deel venster **back-upconfiguratie** .
 
 Voor dit proces gelden de prijs implicaties voor het opslag niveau.
 
@@ -62,16 +62,16 @@ Voor dit proces gelden de prijs implicaties voor het opslag niveau.
 
 ### <a name="configure-cross-region-restore"></a>Herstel van meerdere regio's configureren
 
-Een kluis die is gemaakt met GRS-redundantie bevat de optie voor het configureren van de functie voor het terugzetten van meerdere regio's. Elke GRS-kluis heeft een banner dat een koppeling naar de documentatie bevat. Als u CRR voor de kluis wilt configureren, gaat u naar de Blade back-upconfiguratie. Deze bevat de optie om deze functie in te scha kelen.
+Een kluis die is gemaakt met GRS-redundantie bevat de optie voor het configureren van de functie voor het terugzetten van meerdere regio's. Elke GRS-kluis heeft een banner dat een koppeling naar de documentatie bevat. Als u CRR voor de kluis wilt configureren, gaat u naar het deel venster Back-upconfiguratie. Dit bevat de optie om deze functie in te scha kelen.
 
  ![Banner back-upconfiguratie](./media/backup-azure-arm-restore-vms/banner.png)
 
 1. Ga in de portal naar Recovery Services kluis > instellingen > eigenschappen.
-2. Klik op **Restore voor meerdere regio's inschakelen in deze kluis** om de functionaliteit in te scha kelen.
+2. Selecteer de optie **voor het terugzetten van meerdere regio's in deze kluis inschakelen** om de functionaliteit in te scha kelen.
 
-   ![Voordat u op Restore voor meerdere regio's inschakelen in deze kluis klikt](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Voordat u Restore voor meerdere regio's inschakelen inschakelt in deze kluis](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
 
-   ![Nadat u op de optie voor het herstellen van meerdere regio's in deze kluis hebt geklikt](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+   ![Nadat u het terugzetten van meerdere regio's inschakelen hebt geselecteerd in deze kluis](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
 
 Meer informatie over het [weer geven van back-upitems in de secundaire regio](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
 
@@ -79,9 +79,27 @@ Meer informatie over [het herstellen van de secundaire regio](backup-azure-arm-r
 
 Meer informatie over het [bewaken van herstel taken van secundaire regio's](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
 
+## <a name="set-encryption-settings"></a>Versleutelings instellingen instellen
+
+Standaard worden de gegevens in de Recovery Services kluis versleuteld met sleutels die door het platform worden beheerd. Er zijn geen expliciete acties vereist van uw einde om deze versleuteling in te scha kelen en is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.  U kunt ervoor kiezen uw eigen sleutel te nemen om de back-upgegevens te versleutelen in deze kluis. Dit wordt door de klant beheerde sleutels genoemd. Als u de back-upgegevens wilt versleutelen met behulp van uw eigen sleutel, moet de versleutelings sleutel worden opgegeven voordat een item in deze kluis wordt beveiligd. Wanneer u versleuteling met uw sleutel inschakelt, kan dit niet worden omgekeerd.
+
+### <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Een kluis configureren om te versleutelen met door de klant beheerde sleutels
+
+Als u uw kluis wilt configureren voor versleuteling met door de klant beheerde sleutels, moet u deze stappen in deze volg orde volgen:
+
+1. Beheerde identiteit inschakelen voor uw Recovery Services kluis
+
+1. Machtigingen toewijzen aan de kluis om toegang te krijgen tot de versleutelings sleutel in de Azure Key Vault
+
+1. Zacht verwijderen inschakelen en beveiliging opschonen op de Azure Key Vault
+
+1. De versleutelings sleutel toewijzen aan de Recovery Services kluis
+
+Instructies voor elk van deze stappen vindt u [in dit artikel](encryption-at-rest-with-cmk.md#configuring-a-vault-to-encrypt-using-customer-managed-keys).
+
 ## <a name="modifying-default-settings"></a>Standaard instellingen wijzigen
 
-We raden u ten zeerste aan de standaard instellingen voor het **type opslag replicatie** en de **beveiligings instellingen** te controleren voordat u back-ups in de kluis configureert.
+We raden u ten zeerste aan de standaardinstellingen voor **Type opslagreplicatie** en **Beveiligingsinstellingen** te controleren voordat u back-ups in de kluis configureert.
 
 - **Type opslag replicatie** is standaard ingesteld op **geo-redundant** (GRS). Zodra u de back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld.
   - Als u de back-up nog niet hebt geconfigureerd, [volgt u deze stappen](#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
@@ -132,7 +150,6 @@ Als u de huidige beveiligde gegevens in de GRS-kluis wilt behouden en de beveili
   - U moet betalen om de herstel punten in de GRS-kluis te blijven (Zie [Azure backup prijzen](azure-backup-pricing.md) voor meer informatie).
   - U kunt de virtuele machine, indien nodig, herstellen vanuit de GRS-kluis.
   - De eerste back-up op de LRS-kluis van de virtuele machine in de nieuwe resource is een initiële replica.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

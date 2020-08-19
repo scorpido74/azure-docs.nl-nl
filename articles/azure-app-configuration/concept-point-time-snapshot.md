@@ -1,19 +1,19 @@
 ---
 title: Sleutel-waardeparen ophalen van een bepaald tijdstip
 titleSuffix: Azure App Configuration
-description: Oude sleutel-waardeparen ophalen met behulp van punt-in-time moment opnamen in Azure-app configuratie
+description: Verouderde sleutel-waardeparen ophalen met behulp van punt-in-time moment opnamen in Azure-app configuratie, waarmee een record met wijzigingen in sleutel waarden wordt bijgehouden.
 services: azure-app-configuration
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b706b5d5ec68daa10fd6eac237b7b7416764167b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b1d559d82cb22d8a787785c6d8c6a5101d89793a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830101"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586559"
 ---
 # <a name="point-in-time-snapshot"></a>Point-in-time-snapshot
 

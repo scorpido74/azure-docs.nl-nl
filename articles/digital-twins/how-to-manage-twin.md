@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506529"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587596"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -37,18 +37,22 @@ Als u een digitale dubbele wilt maken, moet u het volgende opgeven:
 
 U kunt desgewenst initiële waarden opgeven voor alle eigenschappen van de digitale twee. 
 
-De waarden van het model en de oorspronkelijke eigenschap worden gegeven via de `initData` para meter, een JSON-teken reeks met de relevante gegevens.
+De waarden van het model en de oorspronkelijke eigenschap worden gegeven via de `initData` para meter, een JSON-teken reeks met de relevante gegevens. Ga verder naar de volgende sectie voor meer informatie over het structureren van dit object.
 
 > [!TIP]
 > Na het maken of bijwerken van een dubbele, kan er een latentie van Maxi maal 10 seconden zijn voordat de wijzigingen in [query's](how-to-query-graph.md)worden weer gegeven. De `GetDigitalTwin` API ( [verderop in dit artikel](#get-data-for-a-digital-twin)) heeft deze vertraging niet. Gebruik daarom de API-aanroep in plaats van een query uit te voeren om de zojuist gemaakte apparaatdubbels te zien als u een direct antwoord nodig hebt. 
 
-### <a name="initialize-properties"></a>Eigenschappen initialiseren
+### <a name="initialize-model-and-properties"></a>Model en eigenschappen initialiseren
 
-De twee keer dat er een API wordt gemaakt, accepteert een object dat kan worden geserialiseerd in een geldige JSON-beschrijving van de dubbele eigenschappen. Zie [*concepten: Digital apparaatdubbels en de dubbele grafiek*](concepts-twins-graph.md) voor een beschrijving van de JSON-indeling voor een dubbele.
+De twee keer dat er een API wordt gemaakt, accepteert een object dat is geserialiseerd in een geldige JSON-beschrijving van de dubbele eigenschappen. Zie [*concepten: Digital apparaatdubbels en de dubbele grafiek*](concepts-twins-graph.md) voor een beschrijving van de JSON-indeling voor een dubbele. 
+
+Eerst maakt u een gegevens object dat de dubbele en de bijbehorende eigenschaps gegevens vertegenwoordigt. Vervolgens kunt u gebruiken `JsonSerializer` om een geserialiseerde versie van dit door te geven aan de API-aanroep voor de `initdata` para meter.
 
 U kunt een parameter object hand matig of via een beschik bare helper-klasse maken. Hier volgt een voor beeld van elk.
 
 #### <a name="create-twins-using-manually-created-data"></a>Apparaatdubbels maken met hand matig gemaakte gegevens
+
+Als u geen aangepaste helper-klassen wilt gebruiken, kunt u de eigenschappen van een twee voor `Dictionary<string, object>` waarden in een, waarbij de de `string` naam van de eigenschap is en de `object` is een-object dat de eigenschap en de waarde vertegenwoordigt.
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>Apparaatdubbels maken met de helper-klasse
 
+Met de Help-klasse van `BasicDigitalTwin` kunt u eigenschaps velden rechtstreeks in een ' twee ' object opslaan. Het is mogelijk dat u de lijst met eigenschappen wilt maken met behulp van een `Dictionary<string, object>` , die vervolgens rechtstreeks aan het dubbele object kan worden toegevoegd `CustomProperties` .
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -80,6 +86,13 @@ twin.CustomProperties = props;
 
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
+
+>[!NOTE]
+> `BasicDigitalTwin` objecten worden geleverd met een `Id` veld. U kunt dit veld leeg laten, maar als u een ID-waarde toevoegt, moet deze overeenkomen met de ID-para meter die is door gegeven aan de `CreateDigitalTwin` aanroep. In het bovenstaande voor beeld ziet dit er als volgt uit:
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
 
 ## <a name="get-data-for-a-digital-twin"></a>Gegevens ophalen voor een digitale dubbele
 

@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0989c31611b2f42c0219324fa517adc5c216c6c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048556"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586602"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Implementatiearchitectuur van Azure Dedicated HSM
 
@@ -32,7 +32,7 @@ De Hsm's worden gedistribueerd in de data centers van micro soft en kunnen eenvo
 * VS - oost
 * VS - oost 2
 * VS - west
-* VS - zuid-centraal
+* South Central US
 * Azië - zuidoost
 * Azië - oost
 * India - centraal
@@ -48,7 +48,7 @@ De Hsm's worden gedistribueerd in de data centers van micro soft en kunnen eenvo
 * Australië - oost
 * Australië - zuidoost
 
-Elk van deze regio's heeft HSM-racks die zijn geïmplementeerd in twee onafhankelijke data centers of ten minste twee onafhankelijke beschikbaarheids zones. Zuid-Azië-oost heeft drie beschikbaarheids zones en VS-Oost 2 heeft twee. Er zijn in totaal acht regio's in Europa, Azië en de Verenigde Staten die de toegewezen HSM-service bieden. Zie de officiële [informatie over Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/)voor meer informatie over Azure-regio's.
+Elk van deze regio's heeft HSM-racks die zijn geïmplementeerd in twee onafhankelijke data centers of ten minste twee onafhankelijke beschikbaarheids zones. Zuid-Azië-oost heeft drie beschikbaarheids zones en VS-Oost 2 heeft twee. Er zijn in totaal acht regio's in Europa, Azië en de Verenigde Staten die de toegewezen HSM-service bieden. Zie de officiële  [informatie over Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/)voor meer informatie over Azure-regio's.
 Enkele ontwerp factoren voor een specifieke op HSM gebaseerde oplossing zijn locatie/latentie, hoge Beschik baarheid en ondersteuning voor andere gedistribueerde toepassingen.
 
 ## <a name="device-location"></a>Locatie apparaat
@@ -69,7 +69,7 @@ Zodra de implementatie architectuur is vastgesteld, worden de meeste configurati
 Het wordt aanbevolen om alle belang rijke concepten van de service, zoals hoge Beschik baarheid en beveiliging, bijvoorbeeld goed te begrijpen vóór het inrichten van apparaten of het ontwerpen en implementeren van toepassingen.
 Meer onderwerpen over het concept niveau:
 
-* [Hoge Beschik baarheid](high-availability.md)
+* [Hoge beschikbaarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
 * [Netwerken](networking.md)
 * [Ondersteuning](supportability.md)

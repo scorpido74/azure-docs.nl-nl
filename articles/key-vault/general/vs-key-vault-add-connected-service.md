@@ -6,15 +6,15 @@ author: ghogen
 manager: jillfra
 ms.service: key-vault
 ms.custom: vs-azure
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: e8c452ffb40b27ed84061e93c1758b3d403052fe
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 52c9584ca94117db58a5427c46269d7f2612861a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054413"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588480"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault toevoegen aan uw web-app met behulp van Visual Studio Connected Services
 
@@ -154,7 +154,7 @@ Van invloed op het project bestand .NET-verwijzingen en NuGet-pakket verwijzinge
 
 ### <a name="added-files-for-aspnet-core"></a>Toegevoegde bestanden voor ASP.NET Core
 
-- `ConnectedService.json`toegevoegd, waarmee een aantal informatie over de verbonden service provider, de versie en een koppeling naar de documentatie worden vastgelegd.
+- `ConnectedService.json` toegevoegd, waarmee een aantal informatie over de verbonden service provider, de versie en een koppeling naar de documentatie worden vastgelegd.
 
 ### <a name="project-file-changes-for-aspnet-core"></a>Wijzigingen in het project bestand voor ASP.NET Core
 
@@ -192,7 +192,7 @@ Heeft betrekking op het project bestand .NET `packages.config` -verwijzingen en 
 
 ### <a name="added-files-for-aspnet-framework"></a>Bestanden toegevoegd voor ASP.NET Framework
 
-- `ConnectedService.json`toegevoegd, waarmee een aantal informatie over de verbonden service provider, de versie en een koppeling naar de documentatie wordt vastgelegd.
+- `ConnectedService.json` toegevoegd, waarmee een aantal informatie over de verbonden service provider, de versie en een koppeling naar de documentatie wordt vastgelegd.
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>Wijzigingen in het project bestand voor ASP.NET Framework
 

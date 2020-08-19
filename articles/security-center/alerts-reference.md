@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 40485014d819026c6fbc1f82da57c494f7a6a182
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: dd0a9bf69a3b5a6a17d91f0521bebd0fc78f606f
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272589"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566213"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Beveiligings waarschuwingen-een referentie gids
 
@@ -283,7 +283,6 @@ Onder aan deze pagina bevindt zich een tabel met een beschrijving van de Azure S
 | **Aanmelden vanaf een ongewone locatie**             | Er is een wijziging in het toegangs patroon SQL Server, waarbij iemand zich vanaf een ongebruikelijke geografische locatie heeft aangemeld bij de server. In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (een voormalige werk nemer of externe aanvaller).                                                                                             | Beveiliging                       | Middelgroot   |
 | **Mogelijke SQL-brute kracht poging**           | Een abnormaal groot aantal mislukte aanmeldings pogingen met andere referenties heeft plaatsgevonden. In sommige gevallen detecteert de waarschuwing het uitvoeren van testen om binnen te dringen. In andere gevallen detecteert de waarschuwing een beveiligings aanval.                                                                                                                                                                                                                      | Scannen                            | Hoog     |
 | **Mogelijke SQL-injectie**                     | Er is een actieve crack opgetreden op basis van een geïdentificeerde toepassing die kwetsbaar is voor SQL-injectie. Dit betekent dat een aanvaller schadelijke SQL-instructies wil injecteren door gebruik te maken van de code of opgeslagen procedures voor een kwets bare toepassing.                                                                                                                                                                                                            | -                                  | Hoog     |
-| **Mogelijk onveilige actie**                   | De uitgebreide SQL-opdracht die vaak wordt gebruikt in schadelijke sessies, is uitgevoerd in een SQL Server. U wordt aangeraden deze opdrachten standaard uit te scha kelen. In sommige gevallen detecteert de waarschuwing een legitieme actie (beheer script dat wordt uitgevoerd). In andere gevallen detecteert de waarschuwing een schadelijke actie (aanvaller die gebruikmaakt van SQL-vertrouwens relaties met een schending van Windows-laag).                                                                               | Uitvoering                          | Hoog     |
 | **Ongebruikelijke export locatie**                     | Er is een wijziging aangebracht in de opslag bestemming voor het exporteren van een SQL-import-en-export bewerking. In sommige gevallen detecteert de waarschuwing een rechtmatige wijziging (nieuwe back-upbestemming). In andere gevallen detecteert de waarschuwing een schadelijke actie (kwaadwillende gebruiker kan eenvoudig gegevens naar een bestand exfiltrated).                                                                                                                                                          | Exfiltration                       | Hoog     |
 |                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                             |                                    |          |
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836765"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565839"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in azure Sentinel
 
@@ -59,6 +59,10 @@ Gebruikers met bepaalde taak vereisten moeten mogelijk aanvullende rollen of spe
 - Gegevens bronnen verbinden met Azure Sentinel
 
     Als een gebruiker **gegevensconnectors**wilt toevoegen, moet u de schrijf machtigingen van de gebruiker toewijzen aan de Azure Sentinel-werk ruimte. Let ook op de vereiste extra machtigingen voor elke connector, zoals vermeld op de relevante connector pagina.
+
+- Gast gebruikers die incidenten toewijzen
+
+    Als een gast gebruiker incidenten moet kunnen toewijzen, moet aan de gebruiker naast de rol van Azure Sentinel responder ook de rol van [Directory Reader](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)worden toegewezen. Houd er rekening mee dat deze rol *geen* Azure RBAC-rol heeft, maar een **Azure Active Directory** rol, en dat reguliere (niet-gast) gebruikers standaard deze rol kunnen toewijzen. 
 
 Zie de [onderstaande tabel](#roles-and-allowed-actions)voor een vergelijking naast elkaar.
 

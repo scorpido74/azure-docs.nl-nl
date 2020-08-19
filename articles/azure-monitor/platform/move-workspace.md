@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: e0ecfd3acb6a8a1d40e006aef1bbf63eae0e1ff4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770795"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566281"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Een Log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep
 
@@ -34,12 +34,15 @@ Beheerde oplossingen die in de werk ruimte zijn geïnstalleerd, worden verplaats
 Oplossingen die moeten worden verwijderd voordat u uw Automation-account kunt ontkoppelen:
 
 - Updatebeheer
-- Tracering wijzigen
+- Wijzigingen bijhouden
 - VM's starten/stoppen buiten kantooruren
 - Azure Security Center
 
 >[!IMPORTANT]
-> - Eenmaal ingeschakeld in een werk ruimte, biedt Azure Sentinel **momenteel geen ondersteuning** voor het verplaatsen van die werk ruimte naar andere resource groepen of abonnementen. Neem contact op met [Azure Sentinel](mailto:AzureSentinel@microsoft.com) als u de werkruimte moet verplaatsen.
+> **Azure Sentinel-klanten:**
+> - Zodra Azure Sentinel is geïmplementeerd op een werk ruimte, wordt de verplaatsing van die werk ruimte op **dit moment niet ondersteund** voor andere resource groepen of abonnementen. 
+>
+>   Als u de werk ruimte al hebt verplaatst, schakelt u alle actieve regels onder **Analytics** uit en schakelt u deze na vijf minuten weer in. Dit moet in de meeste gevallen effectief zijn, hoewel het niet wordt ondersteund en niet wordt uitgevoerd op uw eigen risico.
 
 ### <a name="delete-solutions-in-azure-portal"></a>Oplossingen in Azure Portal verwijderen
 Gebruik de volgende procedure om de oplossingen te verwijderen met behulp van de Azure Portal:

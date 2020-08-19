@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL python API, SDK & resources
 description: Meer informatie over de SQL python-API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB python SDK.
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876254"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585981"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
 
@@ -27,7 +27,8 @@ ms.locfileid: "87876254"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Lente gegevens v2](sql-api-sdk-java-spring-v2.md)
+> * [Lente gegevens v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,6 +46,20 @@ ms.locfileid: "87876254"
 |**Huidig ondersteund platform**|[Python 2,7](https://www.python.org/downloads/) en [python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Release geschiedenis
+
+### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+
+- Er is een waarschuwing voor afschaffing toegevoegd voor de indexerings modus ' Lazy '. Met de back-end kunnen geen containers meer worden gemaakt in deze modus en worden ze in plaats daarvan consistent ingesteld.
+
+**Nieuwe functies**
+- De mogelijkheid om de TTL voor de analytische opslag in te stellen bij het maken van een nieuwe container is toegevoegd.
+
+**Opgeloste fouten**
+- Ondersteuning voor dicteer functies als invoer voor get_client-Api's.
+- Vaste python 2/3-compatibiliteit in query-iterators.
+- Fout in Hint voor vast type (probleem #12570).
+- Er is een fout opgelost waarbij opties niet zijn toegevoegd aan upsert_item functie. Probleem #11791: Hartelijk dank @aalapatirvbd .
+- Er treedt een fout op wanneer een niet-teken reeks-ID in een item wordt gebruikt. Het activeert nu TypeError in plaats van AttributeError (probleem #11793).
 
 ### <a name="400"></a>4.0.0
 
@@ -81,14 +96,14 @@ ms.locfileid: "87876254"
 
 * Nieuwe constructor en argumenten voor configuratie trefwoord per bewerking toegevoegd:
 
-  * `retry_total`-Maximum aantal nieuwe pogingen.
-  * `retry_backoff_max`-Maximale wacht tijd voor opnieuw proberen in seconden.
-  * `retry_fixed_interval`-Vast interval voor opnieuw proberen in milliseconden.
-  * `retry_read`-Maximum aantal sockets voor het lezen van nieuwe pogingen.
-  * `retry_connect`-Maximum aantal nieuwe pogingen voor verbindings fouten.
-  * `retry_status`-Maximum aantal nieuwe pogingen voor fout status codes.
-  * `retry_on_status_codes`-Een lijst met specifieke status codes die u opnieuw wilt proberen.
-  * `retry_backoff_factor`-Factor voor het berekenen van de wacht tijd tussen nieuwe pogingen.
+  * `retry_total` -Maximum aantal nieuwe pogingen.
+  * `retry_backoff_max` -Maximale wacht tijd voor opnieuw proberen in seconden.
+  * `retry_fixed_interval` -Vast interval voor opnieuw proberen in milliseconden.
+  * `retry_read` -Maximum aantal sockets voor het lezen van nieuwe pogingen.
+  * `retry_connect` -Maximum aantal nieuwe pogingen voor verbindings fouten.
+  * `retry_status` -Maximum aantal nieuwe pogingen voor fout status codes.
+  * `retry_on_status_codes` -Een lijst met specifieke status codes die u opnieuw wilt proberen.
+  * `retry_backoff_factor` -Factor voor het berekenen van de wacht tijd tussen nieuwe pogingen.
 
 ### <a name="400b3"></a>4.0.0 B3
 
@@ -98,7 +113,7 @@ ms.locfileid: "87876254"
 
 * Versie 4.0.0 B2 is de tweede iteratie in onze inspanningen voor het bouwen van een client bibliotheek die aansluit bij de aanbevolen procedures voor python-taal.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 * De client verbinding is aangepast om de HTTP-pijp lijn te gebruiken die is gedefinieerd in `azure.core.pipeline` .
 
@@ -139,13 +154,13 @@ ms.locfileid: "87876254"
 * De fout hiërarchie is nu overgenomen van `azure.core.AzureError` :
 
   * De naam van `HTTPFailure` is gewijzigd in `CosmosHttpResponseError`
-  * `JSONParseFailure`is verwijderd en vervangen door`azure.core.DecodeError`
+  * `JSONParseFailure` is verwijderd en vervangen door `azure.core.DecodeError`
   * Extra fouten toegevoegd voor specifieke antwoord codes:
-    * `CosmosResourceNotFoundError`voor status 404
-    * `CosmosResourceExistsError`voor status 409
-    * `CosmosAccessConditionFailedError`voor status 412
+    * `CosmosResourceNotFoundError` voor status 404
+    * `CosmosResourceExistsError` voor status 409
+    * `CosmosAccessConditionFailedError` voor status 412
 
-* `CosmosClient`kan nu worden uitgevoerd in een context beheerder om het sluiten van de client verbinding te verwerken.
+* `CosmosClient` kan nu worden uitgevoerd in een context beheerder om het sluiten van de client verbinding te verwerken.
 
 * Itereer Reacties (bijvoorbeeld query Responses en lijst reacties) zijn nu van het type `azure.core.paging.ItemPaged` . De methode `fetch_next_block` is vervangen door een secundaire iterator, waartoe de methode toegang heeft `by_page` .
 

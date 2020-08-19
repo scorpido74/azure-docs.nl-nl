@@ -3,14 +3,14 @@ title: Schaal en hosting van Azure Functions
 description: Meer informatie over hoe u kunt kiezen tussen het Azure Functions verbruiks abonnement en het Premium-abonnement.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025825"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587222"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Schaal en hosting van Azure Functions
 
@@ -86,7 +86,7 @@ Wanneer u Java script-functies uitvoert op een App Service-abonnement, moet u ee
 
 Met een [app service Environment](../app-service/environment/intro.md) (ASE) kunt u uw functies volledig isoleren en profiteren van hoge schaal.
 
-### <a name="always-on"></a><a name="always-on"></a>Altijd aan
+### <a name="always-on"></a><a name="always-on"></a> Altijd aan
 
 Als u uitvoert met een App Service-abonnement, moet u de instelling **altijd aan** inschakelen, zodat de functie-app correct wordt uitgevoerd. Bij een App Service-abonnement wordt de runtime van functions na een paar minuten inactiviteit niet-actief, zodat alleen HTTP-triggers uw functies kunnen activeren. Always on is alleen beschikbaar voor een App Service plan. In een verbruiks abonnement activeert het platform automatisch functie-apps.
 
@@ -144,11 +144,19 @@ Nadat de functie-app gedurende een aantal minuten inactief is, kan het platform 
 
 Schalen kan variëren op basis van een aantal factoren en op verschillende manieren schalen, afhankelijk van de geselecteerde trigger en taal. Er zijn een aantal complexiteit waarmee u rekening moet houden:
 
-* Een app met één functie wordt alleen geschaald naar Maxi maal 200 exemplaren. Eén exemplaar kan echter meer dan één bericht of aanvraag tegelijk verwerken, dus er is geen limiet ingesteld voor het aantal gelijktijdige uitvoeringen.
+* Een app met één functie wordt alleen geschaald naar Maxi maal 200 exemplaren. Eén exemplaar kan echter meer dan één bericht of aanvraag tegelijk verwerken, dus er is geen limiet ingesteld voor het aantal gelijktijdige uitvoeringen.  U kunt zo nodig [een lagere maximum schaal opgeven](#limit-scale-out) .
 * Voor HTTP-triggers worden er Maxi maal één keer per seconde een nieuwe instantie toegewezen.
 * Voor niet-HTTP-triggers worden nieuwe instanties Maxi maal één keer per 30 seconden toegewezen. Het schalen verloopt sneller bij het uitvoeren van een [Premium-abonnement](#premium-plan).
 * Gebruik voor Service Bus triggers _beheer_ rechten voor bronnen voor de meest efficiënte schaal aanpassing. Met _Luister_ rechten is schalen niet zo nauw keurig omdat de lengte van de wachtrij niet kan worden gebruikt om beslissingen over het schalen te melden. Zie [beleid voor gedeelde toegang](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)voor meer informatie over het instellen van rechten in service bus toegangs beleid.
 * Zie de [richt lijnen voor schalen](functions-bindings-event-hubs-trigger.md#scaling) in het naslag artikel voor Event hub-triggers. 
+
+### <a name="limit-scale-out"></a>Uitschalen beperken
+
+U kunt het aantal instanties dat een app inschaalt beperken tot.  Dit komt het meest voor wanneer een stroomafwaarts onderdeel, zoals een Data Base, een beperkte door Voer heeft.  De functies van het verbruiks plan worden standaard uitgebreid naar Maxi maal 200 exemplaren en de functies van Premium-abonnementen worden uitgebreid tot Maxi maal 100 exemplaren.  U kunt een lager maximum opgeven voor een specifieke app door de waarde te wijzigen `functionAppScaleLimit` .  De `functionAppScaleLimit` kan worden ingesteld op 0 of null voor onbeperkte, of een geldige waarde tussen 1 en het maximum van de app.
+
+```azurecli
+az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <function_app_name>/config/web --set properties.functionAppScaleLimit=<scale_limit>
+```
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Aanbevolen procedures en patronen voor schaal bare apps
 

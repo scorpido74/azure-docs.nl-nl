@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: f9c5de4fb4e38d3f9ccb79c89be988fe0bbebc3c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760291"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565924"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Toegang tot Azure-bronnen verifiëren door beheerde identiteiten te gebruiken in Azure Logic Apps
 
@@ -28,12 +28,12 @@ In dit artikel wordt beschreven hoe u beide soorten beheerde identiteiten instel
 
 * [Triggers en acties die beheerde identiteiten ondersteunen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
 * [Ondersteunde verificatie typen voor uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [Beheerde identiteits limieten voor Logic apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
+* [Limieten voor beheerde identiteiten voor Logic apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Azure-Services die ondersteuning bieden voor Azure AD-verificatie met beheerde identiteiten](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/). Zowel de beheerde identiteit als de Azure-doel resource waarvoor u toegang nodig hebt, moeten hetzelfde Azure-abonnement gebruiken.
+* Een Azure-account en -abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/). Zowel de beheerde identiteit als de Azure-doel resource waarvoor u toegang nodig hebt, moeten hetzelfde Azure-abonnement gebruiken.
 
 * Als u een beheerde identiteit toegang wilt geven tot een Azure-resource, moet u een rol toevoegen aan de doel resource voor die identiteit. Om rollen toe te voegen, hebt u [Azure AD-beheerders machtigingen](../active-directory/users-groups-roles/directory-assign-admin-roles.md) nodig waarmee rollen kunnen worden toegewezen aan identiteiten in de bijbehorende Azure AD-Tenant.
 
@@ -55,7 +55,7 @@ Als u de beheerde identiteit die u wilt gebruiken, wilt instellen, volgt u de ko
 In tegens telling tot door de gebruiker toegewezen identiteiten hoeft u de door het systeem toegewezen identiteit niet hand matig te maken. Als u de door het systeem toegewezen identiteit voor uw logische app wilt instellen, kunt u de volgende opties gebruiken:
 
 * [Azure-portal](#azure-portal-system-logic-app)
-* [Azure Resource Manager-sjablonen](#template-system-logic-app)
+* [Azure Resource Manager sjablonen](#template-system-logic-app)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -133,7 +133,7 @@ Wanneer Azure de resource definitie van de logische app maakt, `identity` krijgt
 Als u een door de gebruiker toegewezen beheerde identiteit voor uw logische app wilt instellen, moet u deze identiteit eerst als afzonderlijke zelfstandige Azure-resource maken. Dit zijn de opties die u kunt gebruiken:
 
 * [Azure-portal](#azure-portal-user-identity)
-* [Azure Resource Manager-sjablonen](#template-user-identity)
+* [Azure Resource Manager sjablonen](#template-user-identity)
 * Azure PowerShell
   * [Door de gebruiker toegewezen identiteit maken](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [Roltoewijzing toevoegen](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
@@ -195,7 +195,7 @@ Als u een door de gebruiker toegewezen beheerde identiteit voor uw logische app 
 
 Voor het automatiseren van het maken en implementeren van Azure-resources, zoals Logic apps, kunt u [Azure Resource Manager sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)gebruiken die door de [gebruiker toegewezen identiteiten voor verificatie](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)ondersteunen. In de sectie van uw sjabloon `resources` zijn de resource definitie van de logische app vereist voor de volgende items:
 
-* Een `identity` object waarvan de `type` eigenschap is ingesteld op`UserAssigned`
+* Een `identity` object waarvan de `type` eigenschap is ingesteld op `UserAssigned`
 
 * Een onderliggend `userAssignedIdentities` object dat de door de gebruiker toegewezen resource en naam specificeert
 
@@ -432,7 +432,7 @@ Deze stappen laten zien hoe u de beheerde identiteit met een trigger of actie ku
 Als u een beheerde identiteit voor uw logische app niet meer wilt gebruiken, hebt u de volgende opties:
 
 * [Azure-portal](#azure-portal-disable)
-* [Azure Resource Manager-sjablonen](#template-disable)
+* [Azure Resource Manager sjablonen](#template-disable)
 * Azure PowerShell
   * [Roltoewijzing verwijderen](../role-based-access-control/role-assignments-powershell.md)
   * [Door de gebruiker toegewezen identiteit verwijderen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
