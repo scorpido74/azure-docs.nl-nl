@@ -2,25 +2,21 @@
 title: 'Zelf studie: 4me configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op 4me.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c83d43fe1a2068fa4c9f24a10c0975610142a84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: beb580a02e1db80cf2d74f8167a98c9ead170810
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018686"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538753"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Zelf studie: 4me configureren voor automatische gebruikers inrichting
 
@@ -84,7 +80,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-4me-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor 4me in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -164,7 +160,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-p
 * 4me gegenereerde geheime tokens hebben een verval datum van de generatie van een maand.
 * 4me biedt geen ondersteuning voor **Verwijder** bewerkingen
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

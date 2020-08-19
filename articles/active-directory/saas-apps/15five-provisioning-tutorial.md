@@ -2,25 +2,21 @@
 title: 'Zelf studie: 15Five configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op 15Five.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: a276c004-9f71-4efc-8cca-1f615760249f
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: dbed26bc6175b464b59fc48c733b15e6fecc7fc1
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b42833056d6c9c0e6053dbf34c7de17b4136a797
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924917"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539178"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Zelf studie: 15Five configureren voor automatische gebruikers inrichting
 
@@ -123,7 +119,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
    |Kenmerk|Type|
    |---|---|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |titel|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
    |userName|Tekenreeks|
