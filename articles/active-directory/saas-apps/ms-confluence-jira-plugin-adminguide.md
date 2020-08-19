@@ -2,25 +2,21 @@
 title: Atlassian Jira/confluence-beheer handleiding-Azure Active Directory | Microsoft Docs
 description: Beheerders handleiding voor het gebruik van Atlassian Jira en confluence met Azure Active Directory (Azure AD)..
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016782"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543979"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira en confluence-beheer handleiding voor Azure Active Directory
 
@@ -28,7 +24,7 @@ ms.locfileid: "87016782"
 
 Met de Azure Active Directory-invoeg toepassing (Azure AD) eenmalige aanmelding (SSO) kunnen Microsoft Azure AD klanten hun werk-of school account gebruiken om zich aan te melden bij Atlassian Jira en confluence server-gebaseerde producten. Het implementeert SSO op basis van SAML 2,0.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 Wanneer gebruikers zich willen aanmelden bij de Atlassian Jira of confluence-toepassing, zien ze de knop **Aanmelden met Azure AD** op de aanmeldings pagina. Wanneer deze optie is geselecteerd, moeten ze zich aanmelden met behulp van de aanmeldings pagina van de Azure AD-organisatie (dat wil zeggen, hun werk-of school account).
 
@@ -147,7 +143,7 @@ In de volgende afbeelding ziet u het configuratie scherm in zowel Jira als confl
 
 * **U wilt WebSudo uitschakelen (de beveiligde beheer sessie uitschakelen)**:
 
-  * Voor Jira zijn beveiligde beheerders sessies (dat wil zeggen, wacht woord bevestigen vóór toegang tot beheer functies) standaard ingeschakeld. Als u deze mogelijkheid in uw Jira-exemplaar wilt verwijderen, geeft u de volgende regel op in het bestand Jira-config. Properties:`jira.websudo.is.disabled = true`
+  * Voor Jira zijn beveiligde beheerders sessies (dat wil zeggen, wacht woord bevestigen vóór toegang tot beheer functies) standaard ingeschakeld. Als u deze mogelijkheid in uw Jira-exemplaar wilt verwijderen, geeft u de volgende regel op in het bestand Jira-config. Properties: `jira.websudo.is.disabled = true`
 
   * Volg voor confluence de stappen op de [ondersteunings site van confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
 

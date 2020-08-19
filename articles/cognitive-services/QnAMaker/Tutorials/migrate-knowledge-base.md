@@ -3,12 +3,12 @@ title: Knowledge bases migreren-QnA Maker
 description: Voor het migreren van een Knowledge Base moet u vanuit één kennis database exporteren en vervolgens importeren in een andere.
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: e2d6c1795b816d3b7ac046ea4055402b9107e20b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4148431ebb4de288ac517c7c006a925e36c5f460
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343085"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542918"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Een Knowledge Base migreren met behulp van exporteren/importeren
 
@@ -22,7 +22,7 @@ Voor het migreren van een Knowledge Base moet u vanuit een bestaande Knowledge B
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Maak een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+* Maak een [gratis account](https://azure.microsoft.com/free/cognitive-services/) voordat u begint.
 * Een nieuwe QnA Maker- [service](../How-To/set-up-qnamaker-service-azure.md) instellen
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Een Knowledge Base migreren uit QnA Maker
@@ -70,4 +70,4 @@ Het is niet mogelijk om chat-logboeken te migreren omdat de nieuwe Knowledge Bas
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een knowledge base bewerken](../How-To/edit-knowledge-base.md)
+> [Een Knowledge Base bewerken](../How-To/edit-knowledge-base.md)

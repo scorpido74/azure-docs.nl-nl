@@ -2,25 +2,21 @@
 title: 'Zelf studie: een team viewer configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts vanuit Azure AD naar Team Viewer.
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: 73dd5494-f572-42bb-9071-d599361b9bd7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: cd455f3149fea4240d393d69b2e39b9247edc0a3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7cb83b53b6516de58c99859f3a0d4c9122b78322
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920276"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542170"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Zelf studie: team viewer configureren voor automatische gebruikers inrichting
 
@@ -85,7 +81,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-teamviewer-in-azure-ad"></a>Automatische gebruikers inrichting voor team viewer configureren in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -101,7 +97,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer in het gedeelte **beheerders referenties** `ttps://webapi.teamviewer.com/scim/v2` het veld **tenterende URL** in en voer het script token in dat eerder in het **geheim token**is gemaakt. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Team Viewer. Als de verbinding mislukt, zorg er dan voor dat uw team viewer-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer in het gedeelte **beheerders referenties** `ttps://webapi.teamviewer.com/scim/v2`  het veld **tenterende URL** in en voer het script token in dat eerder in het **geheim token**is gemaakt. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Team Viewer. Als de verbinding mislukt, zorg er dan voor dat uw team viewer-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![inrichtings](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -119,7 +115,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |---|---|
    |userName|Tekenreeks|
    |displayName|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
 
 10. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 

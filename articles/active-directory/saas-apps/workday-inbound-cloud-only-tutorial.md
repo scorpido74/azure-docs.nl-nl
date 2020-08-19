@@ -3,23 +3,19 @@ title: 'Zelf studie: inkomend inrichtings werk dagen configureren in Azure Activ
 description: Meer informatie over het configureren van binnenkomende inrichting van workday naar Azure AD
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: fac4f61e-d942-4429-a297-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041811"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540963"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Zelf studie: workday configureren voor Azure AD-gebruikers inrichten
 Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om werk nemers van workday in te richten in Azure Active Directory. 
@@ -111,7 +107,7 @@ In de volgende secties worden de stappen beschreven voor het configureren van ge
 
 8. Voer de sectie **beheerders referenties** als volgt uit:
 
-   * **Workday-gebruikers naam** : Voer de gebruikers naam in van het werk account van het workday-integratie systeem, waarbij de domein naam van de Tenant is toegevoegd. Moet er ongeveer als volgt uitzien:username@contoso4
+   * **Workday-gebruikers naam** : Voer de gebruikers naam in van het werk account van het workday-integratie systeem, waarbij de domein naam van de Tenant is toegevoegd. Moet er ongeveer als volgt uitzien: username@contoso4
 
    * **Wacht woord voor werk dagen –** Voer het wacht woord in voor het workday-integratie systeem account
 
@@ -119,9 +115,9 @@ In de volgende secties worden de stappen beschreven voor het configureren van ge
    
      | URL-indeling | WWS API-versie gebruikt | XPATH-wijzigingen vereist |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nee |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nee |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ja |
 
       > [!NOTE]
      > Als er geen versie gegevens zijn opgegeven in de URL, gebruikt de app workday Web Services (WWS) v 21.1 en zijn er geen wijzigingen vereist voor de standaard XPATH API-expressies die worden geleverd bij de app. Als u een specifieke API-versie van WWS wilt gebruiken, geeft u het versie nummer op in de URL <br>
@@ -156,7 +152,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 
       * Operator: IS niet NULL
 
-3. In het veld **acties doel object** kunt u globaal filteren welke acties er worden uitgevoerd op Azure AD. **Create** en **Update** worden het meest gebruikt.
+3. In het veld **acties doel object** kunt u globaal filteren welke acties er worden uitgevoerd op Azure AD. **Create**  en **Update** worden het meest gebruikt.
 
 4. In de sectie **kenmerk toewijzingen** kunt u definiëren hoe afzonderlijke workday-kenmerken worden toegewezen aan Active Directory kenmerken.
 

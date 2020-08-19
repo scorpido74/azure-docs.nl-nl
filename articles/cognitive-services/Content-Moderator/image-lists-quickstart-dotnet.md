@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a020163347babfc68ac9aab0514352a35f5831c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72931760"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542935"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>Inhoud beheren met aangepaste afbeeldingslijsten in C#
 
@@ -34,7 +34,7 @@ In dit artikel vindt u informatie en codevoorbeelden om aan de slag te gaan met 
 
 De console toepassing voor deze hand leiding simuleert enkele van de taken die u kunt uitvoeren met de installatie kopie lijst-API.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registreren voor de Content Moderator-services
 
@@ -72,7 +72,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>De Content Moderator-client maken
 
-Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken. Werk de `AzureEndpoint` velden `CMSubscriptionKey` en bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
+Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken. Werk de `AzureEndpoint` `CMSubscriptionKey` velden en bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
 
 ```csharp
 /// <summary>
@@ -242,7 +242,7 @@ private static Body listDetails;
 
 ## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Een methode definiëren voor het schrijven van berichten naar het logboekbestand
 
-Voeg de volgende methode toe aan de klasse **Program** . 
+Voeg de volgende methode toe aan de klasse **Program**. 
 
 ```csharp
 /// <summary>
@@ -263,7 +263,7 @@ private static void WriteLine(string message = null, bool echo = false)
 
 ## <a name="create-a-method-to-create-the-custom-list"></a>Een methode maken voor het maken van de aangepaste lijst
 
-Voeg de volgende methode toe aan de klasse **Program** . 
+Voeg de volgende methode toe aan de klasse **Program**. 
 
 ```csharp
 /// <summary>
@@ -292,7 +292,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Een methode maken om een verzameling afbeeldingen toe te voegen aan de lijst
 
-Voeg de volgende methode toe aan de klasse **Program** . Deze hand leiding laat zien hoe u Tags toepast op installatie kopieën in de lijst. 
+Voeg de volgende methode toe aan de klasse **Program**. Deze hand leiding laat zien hoe u Tags toepast op installatie kopieën in de lijst. 
 
 ```csharp
 /// <summary>
@@ -336,7 +336,7 @@ IEnumerable<string> imagesToAdd, string label)
 
 ## <a name="create-a-method-to-remove-images-from-the-list"></a>Een methode maken om afbeeldingen uit de lijst te verwijderen
 
-Voeg de volgende methode toe aan de klasse **Program** . 
+Voeg de volgende methode toe aan de klasse **Program**. 
 
 ```csharp
 /// <summary>
@@ -373,7 +373,7 @@ private static void RemoveImages(
 
 ## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Een methode maken om alle inhoud-id's van afbeeldingen uit de lijst op te halen
 
-Voeg de volgende methode toe aan de klasse **Program** . 
+Voeg de volgende methode toe aan de klasse **Program**. 
 
 ```csharp
 /// <summary>
@@ -400,7 +400,7 @@ private static ImageIds GetAllImageIds(
 
 ## <a name="create-a-method-to-update-the-details-of-the-list"></a>Een methode maken om de lijstdetails bij te werken
 
-Voeg de volgende methode toe aan de klasse **Program** . 
+Voeg de volgende methode toe aan de klasse **Program**. 
 
 ```csharp
 /// <summary>
@@ -430,7 +430,7 @@ private static ImageList UpdateListDetails(
 
 ## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Een methode maken om de lijstdetails op te halen
 
-Voeg de volgende methode toe aan de klasse **Program** .
+Voeg de volgende methode toe aan de klasse **Program**.
 
 ```csharp
 /// <summary>
@@ -457,7 +457,7 @@ private static ImageList GetListDetails(
 
 ## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Een methode maken om de zoekindex van de lijst te vernieuwen
 
-Voeg de volgende methode toe aan de klasse **Program** . Telkens wanneer u een lijst bijwerkt, moet u de zoekindex vernieuwen voordat u de lijst gebruikt om afbeeldingen te screenen.
+Voeg de volgende methode toe aan de klasse **Program**. Telkens wanneer u een lijst bijwerkt, moet u de zoekindex vernieuwen voordat u de lijst gebruikt om afbeeldingen te screenen.
 
 ```csharp
 /// <summary>
@@ -484,7 +484,7 @@ private static RefreshIndex RefreshSearchIndex(
 
 ## <a name="create-a-method-to-match-images-against-the-list"></a>Een methode maken om afbeeldingen te koppelen aan items uit de lijst
 
-Voeg de volgende methode toe aan de klasse **Program** . 
+Voeg de volgende methode toe aan de klasse **Program**. 
 
 ```csharp
 /// <summary>
@@ -514,7 +514,7 @@ private static void MatchImages(
 
 ## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Een methode maken om alle afbeeldingen uit de lijst te verwijderen
 
-Voeg de volgende methode toe aan de klasse **Program** . 
+Voeg de volgende methode toe aan de klasse **Program**. 
 
 ```csharp
 /// <summary>
@@ -538,7 +538,7 @@ private static void DeleteAllImages(
 
 ## <a name="create-a-method-to-delete-the-list"></a>Een methode maken om de lijst te verwijderen
 
-Voeg de volgende methode toe aan de klasse **Program** . 
+Voeg de volgende methode toe aan de klasse **Program**. 
 
 ```csharp
 /// <summary>
@@ -562,7 +562,7 @@ private static void DeleteCustomList(
 
 ## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Een methode maken om de id's van alle afbeeldingslijsten op te halen
 
-Voeg de volgende methode toe aan de klasse **Program** . 
+Voeg de volgende methode toe aan de klasse **Program**. 
 
 ```csharp
 /// <summary>
