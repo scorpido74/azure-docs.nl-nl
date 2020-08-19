@@ -9,59 +9,59 @@ ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: d7ac494edfb9b1deeceafcac523ac58bccde96b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/17/2020
 ms.locfileid: "85365329"
 ---
 In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure-portal](https://portal.azure.com).
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-1. Selecteer in de Azure-start pagina de knop **+ een resource maken** en voer *IOT hub* in het veld **Marketplace doorzoeken** in.
+1. Selecteer in de Azure-startpagina de knop **+ Een resource maken** en voer vervolgens *IoT Hub* in het veld **Marketplace doorzoeken** in.
 
-1. Selecteer **IOT hub** in de zoek resultaten en selecteer vervolgens **maken**.
+1. Selecteer **IoT Hub** in de zoekresultaten en selecteer vervolgens **Maken**.
 
-1. Vul op het tabblad **basis beginselen** de volgende velden in:
+1. Vul de velden in het tabblad **Basis** als volgt in:
 
-   - **Abonnement**: Selecteer het abonnement dat u wilt gebruiken voor uw hub.
+   - **Abonnement**: Selecteer het abonnement dat u voor de hub wilt gebruiken.
 
-   - **Resource groep**: Selecteer een resource groep of maak een nieuwe. Als u een nieuw item wilt maken, selecteert u **nieuwe maken** en vult u de naam in die u wilt gebruiken. Als u een bestaande resource groep wilt gebruiken, selecteert u die resource groep. Zie [Azure Resource Manager-resourcegroepen beheren](../articles/azure-resource-manager/management/manage-resource-groups-portal.md) voor meer informatie.
+   - **Resourcegroep**: Selecteer een Resourcegroep of maak een nieuwe. Als u een nieuwe wilt maken, selecteert u **Nieuwe maken** en vult u de gewenste naam in. Als u een bestaande resourcegroep wilt gebruiken, selecteert u die resourcegroep. Zie [Azure Resource Manager-resourcegroepen beheren](../articles/azure-resource-manager/management/manage-resource-groups-portal.md) voor meer informatie.
 
-   - **Regio**: Selecteer de regio waarin u de hub wilt plaatsen. Selecteer de locatie die het dichtst bij u ligt. Sommige functies, zoals [streams van IOT Hub apparaten](../articles/iot-hub/iot-hub-device-streams-overview.md), zijn alleen beschikbaar in bepaalde regio's. Voor deze beperkte functies moet u een van de ondersteunde regio's selecteren.
+   - **Regio**: Selecteer de regio waarin u wilt dat uw hub zich bevindt. Selecteer de locatie die het dichtst bij u in de buurt is. Sommige functies, bijvoorbeeld [IoT Hub-apparaatstreams](../articles/iot-hub/iot-hub-device-streams-overview.md) zijn alleen beschikbaar in specifieke regio's. Voor deze beperkte functies moet u een van de ondersteunde regio's selecteren.
 
-   - **IOT hub naam**: Voer een naam in voor uw hub. Deze naam moet wereldwijd uniek zijn. Als de door u opgegeven naam beschikbaar is, verschijnt er een groen vinkje.
+   - **Naam van de IoT Hub**: Voer een naam in voor uw hub. Deze naam moet wereldwijd uniek zijn. Als de door u opgegeven naam beschikbaar is, verschijnt er een groen vinkje.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Een hub maken in de Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+   ![Een hub maken in Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
-1. Selecteer **volgende: grootte en schaal** om door te gaan met het maken van de hub.
+1. Selecteer **Volgende: Grootte en schaal** om verder te gaan met het maken van uw hub.
 
-   ![De grootte en schaal instellen voor een nieuwe hub met behulp van de Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
+   ![De grootte en schaal instellen voor een nieuwe hub met Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
-   U kunt hier de standaard instellingen accepteren. Desgewenst kunt u een van de volgende velden wijzigen: 
+   U kunt de standaardinstellingen accepteren. Indien gewenst kunt u de volgende velden bewerken: 
 
-    - **Prijs-en schaal niveau**: de geselecteerde laag. U kunt kiezen uit verschillende lagen, afhankelijk van het aantal gewenste onderdelen en hoeveel berichten u per dag via uw oplossing verzendt. De gratis optie is bedoeld voor testen en evalueren. Hiermee kunnen 500-apparaten worden verbonden met de hub en Maxi maal 8.000 berichten per dag. Elk Azure-abonnement kan één IoT-hub maken in de gratis laag. 
+    - **Prijs- en schaalniveau**: De geselecteerde laag. U kunt kiezen uit diverse lagen, afhankelijk van hoeveel functies u wilt en hoeveel berichten u per dag wilt verzenden. De gratis optie is bedoeld voor testen en evalueren. Hiermee kunnen 500 apparaten met de hub worden verbonden en maximaal 8000 berichten per dag verzonden. Met de gratis optie kunt u voor elk Azure-abonnement één IoT-hub maken. 
 
-      Als u werkt met een Snelstartgids voor IoT Hub streams, selecteert u de laag gratis.
+      Als u werkt met een quickstart voor IoT Hub-apparaatstreams, selecteert u de gratis laag.
 
-    - **IoT Hub-eenheden**: het aantal toegestane berichten per eenheid is afhankelijk van de prijscategorie van uw hub. Als u bijvoorbeeld wilt dat de hub ingangs-en 700.000-berichten ondersteunt, kiest u twee laag eenheden van S1.
+    - **IoT Hub-eenheden**: het aantal toegestane berichten per eenheid is afhankelijk van de prijscategorie van uw hub. Als u bijvoorbeeld wilt dat de hub de invoer van 700.000 berichten moet kunnen ondersteunen, dan kiest u twee S1-laageenheden.
     Zie [De juiste laag kiezen voor uw IoT-hub](../articles/iot-hub/iot-hub-scaling.md) voor informatie over andere opties.
 
-    - **Azure Security Center**: Schakel dit in om een extra beveiligingslaag van dreigingen toe te voegen aan IOT en uw apparaten. Deze optie is niet beschikbaar voor hubs in de gratis laag. Zie [Azure Security Center voor IOT voor](https://docs.microsoft.com/azure/asc-for-iot/)meer informatie over deze functie.
+    - **Azure Security Center**: Schakel dit in om een extra laag beveiligingsbescherming toe te voegen aan IoT en uw apparaten. Deze optie is niet beschikbaar voor hubs in de gratis laag. Raadpleeg [Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/) voor meer informatie over deze functie.
 
-    - **Geavanceerde instellingen**  >  **Apparaat-naar-Cloud-partities**: met deze eigenschap worden de apparaat-naar-Cloud-berichten gekoppeld aan het aantal gelijktijdige lezers van de berichten. De meeste hubs hebben slechts vier partities nodig.
+    - **Geavanceerde instellingen** > **Partities voor apparaat-naar-cloud**: met deze eigenschap worden de apparaat-naar-cloud-berichten gerelateerd met het aantal gelijktijdige lezers van de berichten. De meeste hubs hebben maar vier partities nodig.
 
-1.  Selecteer **volgende: Tags** om door te gaan naar het volgende scherm.
+1.  Selecteer **Volgende: Tags** om naar het volgende scherm te gaan.
 
-    Labels zijn naam/waarde-paren. U kunt dezelfde tag toewijzen aan meerdere resources en resource groepen om resources te categoriseren en facturering te consolideren. Zie [Tags gebruiken om uw Azure-resources te organiseren](../articles/azure-resource-manager/management/tag-resources.md)voor meer informatie.
+    Tags zijn naam/waarde-paren. U kunt dezelfde tag aan meerdere resources en resourcegroepen toevoegen om resources te categoriseren en facturering te consolideren. Raadpleeg [Tags gebruiken om uw Azure-resources te organiseren](../articles/azure-resource-manager/management/tag-resources.md) voor meer informatie.
 
-    ![Labels toewijzen voor de hub met behulp van de Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+    ![Tags toewijzen voor de hub met Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
 
-1.  Selecteer **volgende: controleren + maken** om uw keuzes te controleren. U ziet iets dat lijkt op dit scherm, maar met de waarden die u hebt geselecteerd bij het maken van de hub. 
+1.  Selecteer **Volgende: Beoordelen + maken** om uw keuzes te beoordelen. U ziet iets soortgelijks op dit scherm, maar met de waarden die u hebt geselecteerd toen u de hub maakte. 
 
-    ![Informatie over het maken van de nieuwe hub bekijken](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+    ![Informatie raadplegen om de nieuwe hub te maken](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
-1.  Selecteer **maken** om uw nieuwe hub te maken. De hub wordt binnen enkele minuten gemaakt.
+1.  Selecteer **Maken** om de nieuwe hub te maken. De hub wordt binnen enkele minuten gemaakt.
