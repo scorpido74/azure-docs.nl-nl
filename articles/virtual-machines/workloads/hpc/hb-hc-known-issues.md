@@ -10,18 +10,19 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/19/2020
 ms.author: amverma
-ms.openlocfilehash: e85ae50321b9aa034f6a6d2cadcc329a24dafa62
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.reviewer: cynthn
+ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500015"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652862"
 ---
-# <a name="known-issues-with-hb-series-and-hc-series-vms"></a>Bekende problemen met VM's uit de HB-serie en HC-serie
+# <a name="known-issues-with-h-series-and-n-series-vms"></a>Bekende problemen met VM's uit de H-serie en N-serie
 
-In dit artikel vindt u de meest voorkomende problemen en oplossingen bij het gebruik van Vm's uit de HB-serie en HC-serie.
+In dit artikel vindt u de meest voorkomende problemen en oplossingen wanneer u de virtuele machines uit de [H-serie](../../sizes-hpc.md) en [N-serie](../../sizes-gpu.md) gebruikt.
 
 ## <a name="dram-on-hb-series"></a>DRAM on HB-serie
 
@@ -87,6 +88,15 @@ Mogelijk worden de volgende kernel-waarschuwings berichten weer gegeven wanneer 
 
 U kunt deze waarschuwing negeren. Dit wordt veroorzaakt door een bekende beperking van de Azure-Hyper Visor die na verloop van tijd wordt opgelost.
 
+
+## <a name="infiniband-driver-installation-on-infiniband-enabled-n-series-vm-sizes"></a>Installatie van InfiniBand-stuur programma op met InfiniBand ingeschakelde VM-groottes van N-serie
+
+NC24r_v3 en ND40r_v2 zijn SR-IOV ingeschakeld terwijl er geen SR-IOV is ingeschakeld voor NC24r en NC24r_v2. [Hier vindt](../../sizes-hpc.md#rdma-capable-instances)u enkele details over de bifurcation.
+InfiniBand (IB) kan worden geconfigureerd op de VM-grootten met SR-IOV ingeschakeld met de OFED-Stuur Programma's terwijl voor de VM-grootten van niet-SR-IOV ND-Stuur Programma's zijn vereist. Deze IB-ondersteuning is op de juiste wijze beschikbaar op [CentOS-HPC VMIs](configure.md). Voor Ubuntu raadpleegt u de [volgende instructie](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) voor het installeren van de OFED-en ND-Stuur Programma's, zoals beschreven in de [docs](enable-infiniband.md#vm-images-with-infiniband-drivers).
+
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [High-Performance Computing](/azure/architecture/topics/high-performance-computing/) in Azure.
+- Bekijk [Overzicht HB-serie](hb-series-overview.md) en [Overzicht HC-serie](hc-series-overview.md) voor meer informatie over het optimaal configureren van workloads ten behoeve van de prestaties en schaalbaarheid.
+- Lees over de laatste aankondigingen en enkele HPC-voorbeelden en -resultaten in de [Azure Compute Tech Community-blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Zie [High Performance Computing (HPC) op Azure](/azure/architecture/topics/high-performance-computing/) voor een gedetailleerdere architectuurweergave van HPC-workloads die worden uitgevoerd.

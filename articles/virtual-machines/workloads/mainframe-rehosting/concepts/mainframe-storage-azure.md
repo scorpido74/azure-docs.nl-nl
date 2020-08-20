@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 7f83d798bbffeb232b45701beee828114ad3db7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042590"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652845"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Mainframe-opslag verplaatsen naar Azure
 
@@ -45,7 +45,7 @@ Azure Infrastructure-as-a-Service ([IaaS](https://azure.microsoft.com/overview/w
 
 Micro soft biedt PETA bytes opslag voor toepassingen die worden gehost in azure, en u hebt verschillende opslag opties. Dit bereik van SSD-opslag voor hoge prestaties tot een goedkope Blob-opslag voor massa opslag en archieven. Daarnaast biedt Azure een optie voor gegevens redundantie voor opslag: iets wat meer inspanning in beslag neemt bij het instellen van een mainframe omgeving.
 
-Azure Storage is beschikbaar als [Azure-schijven](../../../windows/managed-disks-overview.md), [Azure files](../../../../storage/files/storage-files-introduction.md)en [Azure-blobs](../../../../storage/blobs/storage-blobs-overview.md) , zoals in de volgende tabel wordt weer gegeven. Meer informatie over [Wanneer u deze gebruikt](../../../../storage/common/storage-introduction.md).
+Azure Storage is beschikbaar als [Azure-schijven](../../../managed-disks-overview.md), [Azure files](../../../../storage/files/storage-files-introduction.md)en [Azure-blobs](../../../../storage/blobs/storage-blobs-overview.md) , zoals in de volgende tabel wordt weer gegeven. Meer informatie over [Wanneer u deze gebruikt](../../../../storage/common/storage-introduction.md).
 
 <!-- markdownlint-disable MD033 -->
 
@@ -108,7 +108,7 @@ Blob-opslag biedt de grootste hoeveelheid opslag ruimte op Azure. Naast de opsla
 - [Mainframe herhosten op Azure Virtual Machines](../overview.md)
 - [Mainframe Compute verplaatsen naar Azure](mainframe-compute-Azure.md)
 - [Bepalen wanneer u Azure-blobs, Azure Files of Azure-schijven wilt gebruiken](../../../../storage/common/storage-introduction.md)
-- [Standard-SSD Managed Disks voor Azure VM-workloads](../../../windows/disks-types.md#standard-ssd)
+- [Standard-SSD Managed Disks voor Azure VM-workloads](../../../disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM-bronnen
 
