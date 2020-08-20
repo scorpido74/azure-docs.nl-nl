@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met AlertMedia | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding configureert tussen Azure Active Directory en AlertMedia.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5c77f6fc-807c-47e8-8e49-eece5ebd7f09
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/17/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc8a416ac930de24e694107bec4f7ac287e15437
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: dce72b7a39d1e729ea9739abbc354fa93c338529
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608888"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522259"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alertmedia"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met AlertMedia
 
