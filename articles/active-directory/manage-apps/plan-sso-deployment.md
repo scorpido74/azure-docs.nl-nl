@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 85ec94ccf853d4f8b02a14ba08e9515170b36b5e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054797"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642381"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Een implementatie van eenmalige aanmelding plannen
 
@@ -60,7 +60,7 @@ Er zijn twee primaire manieren waarop u uw gebruikers in staat kunt stellen om e
 
 ### <a name="considerations-for-password-based-sso"></a>Overwegingen voor SSO op basis van wacht woorden
 
-Voor het gebruik van Azure AD voor SSO op basis van een wacht woord moet een browser extensie worden geïmplementeerd waarmee de referenties veilig worden opgehaald en de aanmeldings formulieren worden ingevuld. Definieer een mechanisme voor het implementeren van de uitbrei ding op schaal met [ondersteunde browsers](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Een aantal opties:
+Voor het gebruik van Azure AD voor SSO op basis van een wacht woord moet een browser extensie worden geïmplementeerd waarmee de referenties veilig worden opgehaald en de aanmeldings formulieren worden ingevuld. Definieer een mechanisme voor het implementeren van de uitbrei ding op schaal met [ondersteunde browsers](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Opties zijn onder andere:
 
 - [groepsbeleid voor Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 - [Configuration Manager voor Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
@@ -285,7 +285,7 @@ De volgende koppelingen geven scenario's voor het oplossen van problemen. U kunt
 
 - [Problemen bij het aanmelden vanuit een aangepaste portal](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
-- [Problemen met aanmelden vanaf toegangsvenster](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [Problemen met aanmelden vanuit mijn apps](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [Fout bij de aanmeldingspagina van toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 

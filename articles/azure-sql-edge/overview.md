@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 1c70950426b2f34d94bd66d2287550e19253874c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233152"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642466"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Wat is Azure SQL Edge (preview)?
 
 Azure SQL Edge (preview) is een geoptimaliseerde relationele data base-engine die is toegespitst op IoT en IoT Edge implementaties. Het biedt mogelijkheden voor het maken van een hoogwaardige gegevens opslag en verwerkings laag voor IoT-toepassingen en-oplossingen. Azure SQL Edge biedt mogelijkheden voor het streamen, verwerken en analyseren van relationele en niet-relationele gegevens, zoals JSON, Graph en time-series, waardoor deze de juiste keuze is voor een groot aantal moderne IoT-toepassingen.
 
-Azure SQL Edge is gebaseerd op de nieuwste versies van de [Microsoft SQL server data base-engine](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json), waarmee toonaangevende prestaties, beveiligings-en query verwerkings mogelijkheden worden geboden. Omdat Azure SQL Edge is gebouwd op dezelfde engine als SQL Server en Azure SQL Database, biedt het dezelfde surface area voor het Program meren van de T-SQL, waardoor het ontwikkelen van toepassingen of oplossingen eenvoudiger en sneller is, en tegelijkertijd de toepassings portabiliteit tussen IoT Edge apparaten, data centers en de Cloud direct kunt door lopen.
+Azure SQL Edge is gebaseerd op de nieuwste versies van de micro soft SQL Database Engine (/SQL/SQL-Server/SQL-Server-Technical-documentation? TOC =/Azure/Azure-SQL-Edge/toc.json), waarmee toonaangevende prestaties, beveiligings-en query verwerkings mogelijkheden worden geboden. Omdat Azure SQL Edge is gebouwd op dezelfde engine als [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) en [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), beschikt u over dezelfde T-SQL-programmeer Surface Area die het ontwikkelen van toepassingen of oplossingen eenvoudiger en sneller maakt, en tegelijkertijd de toepassings portabiliteit tussen IOT edge apparaten, data centers en de Cloud direct kunt door lopen.
 
 > [!NOTE]
 > Azure SQL Edge is momenteel beschikbaar als preview-versie en kan niet worden gebruikt in productie omgevingen.

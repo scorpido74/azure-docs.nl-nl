@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45124862fffa3a1ef6f601733407fbbea4eb5e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 516bffa7057f8fee3b8e38d46f3b2da905880044
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762952"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639933"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Gebruikers toewijzen aan toepassingen
 
@@ -44,9 +44,9 @@ Een gebruiker kan alleen toegang krijgen tot een toepassing als deze eerst op ee
 
     * De groep [alle gebruikers](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)
 
-3.  Een beheerder maakt [toegang van selfservice toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) mogelijk om een gebruiker toe te staan een toepassing toe te voegen met behulp van het [toegangs venster](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **app toevoegen** **zonder zakelijke goed keuring** .
+3.  Een beheerder maakt [toegang van selfservice toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) mogelijk om een gebruiker toe te staan een toepassing toe te voegen met [mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **app** -functie toevoegen **zonder zakelijke goed keuring**
 
-4.  Een beheerder maakt [toegang van selfservice toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) mogelijk om een gebruiker toe te staan een toepassing toe te voegen met behulp van het [toegangs venster](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **app toevoegen** van de toepassing, maar alleen**de voorafgaande goed keuring van een geselecteerde set van zakelijke goed keurders**
+4.  Een beheerder maakt [toegang van self-service toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) mogelijk om een gebruiker toe te staan een toepassing toe te voegen met behulp van [mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **app** -functie toevoegen, maar alleen de**voorafgaande goed keuring van een geselecteerde set van zakelijke goed keurders**
 
 5.  Een beheerder kan [self-service groeps beheer](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) toestaan een gebruiker toe te voegen aan een groep waaraan een toepassing **zonder zakelijke goed keuring** is toegewezen.
 

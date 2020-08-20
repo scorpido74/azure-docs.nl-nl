@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367781"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642415"
 ---
-# <a name="plan-an-azure-ad-application-proxy-deployment"></a>Een Azure AD-toepassingsproxy-implementatie plannen
+# <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plan een implementatie voor de Azure AD-toepassingsproxy
 
 Azure Active Directory-toepassings proxy (Azure AD) is een veilige en voordelige oplossing voor externe toegang voor on-premises toepassingen. Het biedt een direct overgangs traject voor organisaties ' Cloud First ' om de toegang te beheren tot oudere on-premises toepassingen die nog geen gebruik kunnen maken van moderne protocollen. Zie [Wat is toepassings proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)? voor aanvullende inleidende informatie.
 
@@ -170,7 +170,7 @@ Voer na het publiceren van een toepassing elementaire functionele tests uit om e
 
 ### <a name="deploy-application-proxy"></a>Toepassings proxy implementeren
 
-De stappen voor het implementeren van uw toepassings proxy worden behandeld in deze [zelf studie voor het toevoegen van een lokale toepassing voor externe toegang](application-proxy-add-on-premises-application.md). Als de installatie niet is geslaagd, selecteert u problemen met de **toepassings proxy** in de portal oplossen of gebruikt u de hand leiding voor het oplossen [van problemen met het installeren van de connector voor de toepassings Proxy agent](application-proxy-connector-installation-problem.md).
+De stappen voor het implementeren van uw toepassings proxy worden behandeld in deze [zelf studie voor het toevoegen van een lokale toepassing voor externe toegang](application-proxy-add-on-premises-application.md). Als de installatie niet is geslaagd, selecteert u problemen met de  **toepassings proxy**  in de portal oplossen of gebruikt u de hand leiding voor het oplossen [van problemen met het installeren van de connector voor de toepassings Proxy agent](application-proxy-connector-installation-problem.md).
 
 ### <a name="publish-applications-via-application-proxy"></a>Toepassingen publiceren via een toepassings proxy
 
@@ -271,7 +271,7 @@ De volgende mogelijkheden kunnen worden gebruikt voor de ondersteuning van Azure
 
 * Voorwaardelijke toegang op basis van Risico's: Beveilig uw gegevens tegen kwaadwillende hackers met een op [risico gebaseerd beleid voor voorwaardelijke toegang](https://www.microsoft.com/cloud-platform/conditional-access) dat kan worden toegepast op alle apps en alle gebruikers, zowel on-premises als in de Cloud.
 
-* Azure AD-toegangs venster: met uw toepassings proxy service geïmplementeerd en toepassingen die veilig zijn gepubliceerd, kunt u uw gebruikers een eenvoudige hub bieden om al hun toepassingen te detecteren en toegang te krijgen. Verhoog de productiviteit met selfservice mogelijkheden, zoals de mogelijkheid om toegang aan te vragen bij nieuwe apps en groepen, of de toegang tot deze resources te beheren namens anderen, via het [toegangs venster](https://aka.ms/AccessPanelDPDownload).
+* Azure AD mijn apps: als uw Application proxy-service is geïmplementeerd en toepassingen die veilig zijn gepubliceerd, kunt u uw gebruikers een eenvoudige hub bieden om al hun toepassingen te detecteren en gebruiken. Verhoog de productiviteit met selfservice mogelijkheden, zoals de mogelijkheid om toegang aan te vragen bij nieuwe apps en groepen, of de toegang tot deze resources te beheren namens anderen, via [mijn apps](https://aka.ms/AccessPanelDPDownload).
 
 ## <a name="manage-your-implementation"></a>Uw implementatie beheren
 

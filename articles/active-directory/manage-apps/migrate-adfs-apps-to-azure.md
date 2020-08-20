@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b67c836be3395061e33b5988a4bb06fa5ee20f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608548"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641361"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Toepassings verificatie van Active Directory Federation Services naar Azure Active Directory verplaatsen
 
@@ -100,7 +100,7 @@ LOB-apps die gebruikmaken van OAuth 2,0, OpenID Connect Connect of WS-Federation
 
 Apps die gebruikmaken van SAML 2,0 voor authenticatie kunnen worden geconfigureerd voor [eenmalige aanmelding op basis van SAML](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (op SAML gebaseerde SSO). Met [SSO op basis van SAML](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)kunt u gebruikers toewijzen aan specifieke toepassings rollen op basis van regels die u in uw SAML-claims definieert. 
 
-Als u een SaaS-toepassing wilt configureren voor eenmalige aanmelding op basis van SAML, raadpleegt u [eenmalige aanmelding op basis van SAML configureren](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications). 
+Zie [Eenmalige aanmelding op basis van SAML configureren](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) als u een SaaS-toepassing wilt configureren voor eenmalige aanmelding op basis van SAML. 
 
 ![SSO SAML-gebruikers afbeeldingen ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
@@ -127,7 +127,7 @@ Houd bij het toewijzen van kenmerken de volgende beperkingen in acht:
 
 Als uw gebruiker zich aanmeldt bij SaaS-apps zoals Sales Force, ServiceNow of workday, en is geïntegreerd met AD FS, gebruikt u federatieve aanmelding voor SaaS-apps. 
 
-De meeste SaaS-toepassingen kunnen al worden geconfigureerd in azure AD. Micro soft heeft veel vooraf geconfigureerde verbindingen met SaaS-apps in de [Azure AD-App-galerie](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps), waardoor uw overgang eenvoudiger wordt. SAML 2,0-toepassingen kunnen worden geïntegreerd met Azure AD via de Azure AD-App-galerie of als [niet-galerie toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app). 
+De meeste SaaS-toepassingen kunnen al worden geconfigureerd in azure AD. Micro soft heeft veel vooraf geconfigureerde verbindingen met SaaS-apps in de  [Azure AD-App-galerie](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps), waardoor uw overgang eenvoudiger wordt. SAML 2,0-toepassingen kunnen worden geïntegreerd met Azure AD via de Azure AD-App-galerie of als [niet-galerie toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app). 
 
 Apps die gebruikmaken van OAuth 2.0 of OpenID Connect, kunnen op gelijksoortige wijze worden geïntegreerd met Azure AD als [app-registraties](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users). Apps die gebruikmaken van verouderde protocollen kunnen [azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) gebruiken om te verifiëren met Azure AD.
 
@@ -237,8 +237,8 @@ SaaS-apps moeten weten waar verificatie aanvragen moeten worden verzonden en hoe
 
 | Configuratie-instelling| AD FS| Configureren in azure AD |
 | - | - | - |
-| **URL voor IdP-aanmelding** <p>Aanmeldings-URL van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid voor aanmelding).| De aanmeldings-URL van AD FS is de naam van het AD FS Federation-service gevolgd door '/adfs/ls/. ' <p>Bijvoorbeeld: `https://fs.contoso.com/adfs/ls/`| Vervang {Tenant-id} door uw Tenant-ID. <p> Voor apps die gebruikmaken van het SAML-P-protocol:[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>Voor apps die gebruikmaken van het WS-Federation-Protocol:[https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
-| **IdP-afmeldings-URL**<p>De afmeldings-URL van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid wanneer ze zich afmelden bij de app).| De afmeldings-URL is hetzelfde als de aanmeldings-URL of de URL waaraan ' wa = wsignout 1.0 ' is toegevoegd. Bijvoorbeeld: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| Vervang {Tenant-id} door uw Tenant-ID.<p>Voor apps die gebruikmaken van het SAML-P-protocol:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> Voor apps die gebruikmaken van het WS-Federation-Protocol:[https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
+| **URL voor IdP-aanmelding** <p>Aanmeldings-URL van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid voor aanmelding).| De aanmeldings-URL van AD FS is de naam van het AD FS Federation-service gevolgd door '/adfs/ls/. ' <p>Bijvoorbeeld: `https://fs.contoso.com/adfs/ls/`| Vervang {Tenant-id} door uw Tenant-ID. <p> Voor apps die gebruikmaken van het SAML-P-protocol: [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>Voor apps die gebruikmaken van het WS-Federation-Protocol: [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
+| **IdP-afmeldings-URL**<p>De afmeldings-URL van de IdP vanuit het perspectief van de app (waarnaar de gebruiker wordt omgeleid wanneer ze zich afmelden bij de app).| De afmeldings-URL is hetzelfde als de aanmeldings-URL of de URL waaraan ' wa = wsignout 1.0 ' is toegevoegd. Bijvoorbeeld: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| Vervang {Tenant-id} door uw Tenant-ID.<p>Voor apps die gebruikmaken van het SAML-P-protocol:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> Voor apps die gebruikmaken van het WS-Federation-Protocol: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **Certificaat voor token-ondertekening**<p>De IdP maakt gebruik van de persoonlijke sleutel van het certificaat voor het ondertekenen van uitgegeven tokens. Er wordt gecontroleerd of het token afkomstig is van de dezelfde IdP die de app is geconfigureerd om te vertrouwen.| U vindt het AD FS-certificaat voor token-ondertekening in AD FS-beheer onder **Certificaten**.| Zoek het in de Azure Portal in de eigenschappen voor **eenmalige aanmelding** van de toepassing onder het **SAML-handtekening certificaat**voor koptekst. Daar kunt u het certificaat downloaden om het te uploaden naar de app.  <p>Als de toepassing meer dan één certificaat heeft, kunt u alle certificaten vinden in het XML-bestand met federatieve meta gegevens. |
 | **ID/"verlener"**<p>De id van de IdP vanuit het perspectief van de app (ook wel de ' uitgevers-ID ' genoemd).<p>In het SAML-token wordt de waarde weer gegeven als het element van de verlener.| De id voor AD FS is doorgaans de Federation service-id in AD FS beheer onder **service > Federation service-eigenschappen bewerken**. Bijvoorbeeld: `http://fs.contoso.com/adfs/services/trust`| Vervang {Tenant-id} door uw Tenant-ID.<p>https: \/ /STS.Windows.net/{Tenant-id}/ |
 | **IdP federatieve meta gegevens**<p>Locatie van de openbaar beschik bare federatieve meta gegevens van de IdP. (Sommige apps gebruiken federatiemetagegevens als alternatief voor het afzonderlijk door de beheerder configureren van URL's, id en tokenhandtekeningcertificaat.)| Zoek de URL van de AD FS federatieve meta gegevens in AD FS beheer onder **Service >-eind punten > meta gegevens > type: federatieve meta gegevens**. Bijvoorbeeld: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| De overeenkomstige waarde voor Azure AD volgt het patroon [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Vervang {Tenant domainname} door de naam van uw Tenant in de notatie ' contoso.onmicrosoft.com '.   <p>Zie voor meer informatie [Federatiemetagegevens](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
@@ -483,7 +483,7 @@ Hoewel het venster voor de geplande onderbreking zelf mini maal kan zijn, moet u
 
 Zodra de implementatie is voltooid, kunt u communicatie verzenden die de gebruikers van de geslaagde implementatie informeert en ze eraan herinneren dat er nieuwe stappen moeten worden uitgevoerd.
 
-* Geef gebruikers de opdracht om het [toegangs venster](https://myapps.microsoft.com) te gebruiken voor toegang tot alle gemigreerde toepassingen. 
+* Geef gebruikers de opdracht [mijn apps](https://myapps.microsoft.com) te gebruiken voor toegang tot alle gemigreerde toepassingen. 
 
 * Herinner gebruikers die ze nodig hebben om hun MFA-instellingen bij te werken. 
 

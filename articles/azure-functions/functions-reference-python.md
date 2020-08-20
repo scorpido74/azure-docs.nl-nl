@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 776355ce981ba5cc2a24bfe473da2f55427eadf6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850743"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642194"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
 
@@ -21,7 +21,7 @@ Zie de voor [beelden van python-functies](/samples/browse/?products=azure-functi
 
 Azure Functions verwacht dat een functie een stateless methode is in uw python-script dat invoer verwerkt en uitvoer produceert. Standaard verwacht de runtime dat de methode wordt geïmplementeerd als globale methode met `main()` de naam in het `__init__.py` bestand. U kunt ook [een alternatief invoer punt opgeven](#alternate-entry-point).
 
-Gegevens van triggers en bindingen zijn gekoppeld aan de functie via methode kenmerken, met behulp van de eigenschap die is `name` gedefinieerd in de *function.jsvoor* het bestand. Zo wordt in de _function.js_ hieronder een eenvoudige functie beschreven die wordt geactiveerd door een HTTP-aanvraag met de naam `req` :
+Gegevens van triggers en bindingen zijn gekoppeld aan de functie via methode kenmerken, met behulp van de eigenschap die is `name` gedefinieerd in de *function.jsvoor* het bestand. Zo wordt in de  _function.js_ hieronder een eenvoudige functie beschreven die wordt geactiveerd door een HTTP-aanvraag met de naam `req` :
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
@@ -87,7 +87,6 @@ De hoofdmap van het project ( \_ \_ app \_ \_ ) kan de volgende bestanden bevatt
 * *requirements.txt*: bevat de lijst met pakketten die door het systeem worden geïnstalleerd bij het publiceren naar Azure.
 * *host.jsop*: bevat globale configuratie opties die van invloed zijn op alle functies in een functie-app. Dit bestand wordt gepubliceerd naar Azure. Niet alle opties worden ondersteund bij het lokaal uitvoeren. Zie [host.jsvoor](functions-host-json.md)meer informatie.
 * *. funcignore*: (optioneel) declareert bestanden die niet naar Azure mogen worden gepubliceerd.
-* *. gitignore*: (optioneel) declareert bestanden die zijn uitgesloten van een Git-opslag plaats, zoals local.settings.jsop.
 * *Dockerfile*: (optioneel) gebruikt bij het publiceren van uw project in een [aangepaste container](functions-create-function-linux-custom-image.md).
 
 Elke functie heeft een eigen code bestand en een bindings configuratie bestand (function.jsaan).
@@ -351,11 +350,11 @@ def main(req: azure.functions.HttpRequest,
 
 De [**context**](/python/api/azure-functions/azure.functions.context?view=azure-python) klasse heeft de volgende teken reeks kenmerken:
 
-`function_directory`De map waarin de functie wordt uitgevoerd.
+`function_directory` De map waarin de functie wordt uitgevoerd.
 
-`function_name`De naam van de functie.
+`function_name` De naam van de functie.
 
-`invocation_id`ID van de huidige functie aanroep.
+`invocation_id` ID van de huidige functie aanroep.
 
 ## <a name="global-variables"></a>Globale variabelen
 
@@ -677,7 +676,7 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 
 Volg de onderstaande koppelingen voor een lijst met vooraf geïnstalleerde systeem bibliotheken in python worker-installatie kopieën:
 
-|  Functions runtime  | Debian-versie | Python-versies |
+|  Functions-runtime  | Debian-versie | Python-versies |
 |------------|------------|------------|
 | Versie 2. x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
 | Versie 3. x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |

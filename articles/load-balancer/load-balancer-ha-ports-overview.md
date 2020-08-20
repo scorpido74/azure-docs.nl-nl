@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 62c3dad980b65c3e8cfc64c98ba173f667e0b5fe
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447068"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639848"
 ---
 # <a name="high-availability-ports-overview"></a>Overzicht van poorten met hoge Beschik baarheid
 
@@ -92,7 +92,7 @@ U kunt *één* open bare Standard Load Balancer bron configureren voor de back-e
 ## <a name="limitations"></a>Beperkingen
 
 - De taakverdelings regels voor HA-poorten zijn alleen beschikbaar voor interne Standard Load Balancer.
-- De combi natie van een regel voor taak verdeling van HA-poorten en een niet-HA-poort regel voor taak verdeling die verwijst naar dezelfde backend (s) voor de back-end, wordt alleen ondersteund als voor beide zwevende IP-adressen zijn ingeschakeld.
+- De combi natie van een regel voor taak verdeling van HA-poorten en een niet-HA-poort regel voor taak verdeling die verwijst naar dezelfde backend (s) voor de back-end, wordt **niet** ondersteund op een configuratie met één frontend-IP, tenzij voor beide zwevende IP-adressen zijn ingeschakeld.
 - Bestaande IP-fragmenten worden doorgestuurd door HA-poorten taakverdelings regels naar hetzelfde doel als eerste pakket.  IP-fragmentatie van een UDP-of TCP-pakket wordt niet ondersteund.
 - Flow-symmetrie (voornamelijk voor NVA-scenario's) wordt ondersteund met een back-end-exemplaar en één NIC (en één IP-configuratie) alleen wanneer deze worden gebruikt zoals weer gegeven in het diagram hierboven en met behulp van de taakverdelings regels voor HA-poorten. Het is in geen enkel ander scenario opgenomen. Dit betekent dat twee of meer Load Balancer resources en de bijbehorende regels onafhankelijke beslissingen nemen en nooit gecoördineerd zijn. Bekijk de beschrijving en het diagram voor [virtuele netwerk apparaten](#nva). Wanneer u meerdere Nic's gebruikt of de NVA tussen een open bare en interne Load Balancer, is de stroom symmetrie niet beschikbaar.  U kunt dit mogelijk omzeilen door middel van de bron NAT'ing de ingangs stroom naar het IP-adres van het apparaat zodat antwoorden op dezelfde NVA kunnen worden ontvangen.  We raden u echter ten zeerste aan om één NIC te gebruiken en de referentie architectuur te gebruiken die wordt weer gegeven in het bovenstaande diagram.
 

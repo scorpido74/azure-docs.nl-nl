@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121738"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640957"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Handmatig een niet door HTTP geactiveerde functie uitvoeren
 
@@ -37,7 +37,7 @@ Gebruik de aanvraaglocatie in Postman in combinatie met de hoofdsleutel van de f
 
 ## <a name="get-the-functions-master-key"></a>De hoofdsleutel van de functie ophalen
 
-1. Navigeer naar uw functie in de Azure Portal en selecteer **functie toetsen**. Selecteer vervolgens de functie sleutel die u wilt kopiëren. 
+1. Navigeer naar uw functie-app in het [Azure Portal](https://portal.azure.com), selecteer **app-sleutels**en vervolgens de `_master` sleutel. 
 
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="Zoek de hoofd sleutel die u wilt kopiëren." border="true":::
 
@@ -50,7 +50,7 @@ Gebruik de aanvraaglocatie in Postman in combinatie met de hoofdsleutel van de f
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Bekijk de logboeken om de resultaten van de hoofd sleutel test weer te geven." border="true":::
 
 > [!CAUTION]  
-> Vanwege verhoogde machtigingen in de functie-app die door de hoofdsleutel zijn verleend, dient u deze sleutel niet te delen met derden of in een toepassing te distribueren.
+> Vanwege verhoogde machtigingen in de functie-app die door de hoofdsleutel zijn verleend, dient u deze sleutel niet te delen met derden of in een toepassing te distribueren. De sleutel mag alleen naar een HTTPS-eind punt worden verzonden.
 
 ## <a name="call-the-function"></a>Functie aanroepen
 

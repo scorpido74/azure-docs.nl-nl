@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc5bfacf470980a5d38832ec6299c8ff1426ee05
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082984"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642228"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Power shell-Azure Functions lokaal debuggen
 
@@ -235,13 +235,23 @@ U kunt dezelfde functie opnieuw aanroepen (door `Invoke-RestMethod` bijvoorbeeld
 
 Houd de volgende problemen bij het opsporen van fouten in uw functions-code.
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`kan ertoe leiden dat uw fout opsporingsprogramma op een onverwachte plaats breekt
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` kan ertoe leiden dat uw fout opsporingsprogramma op een onverwachte plaats breekt
 
 De Power shell-extensie gebruikt `Debug-Runspace` , die op zijn beurt gebruikmaakt van de functie van Power shell `BreakAll` . Deze functie geeft aan dat Power shell stopt bij de eerste opdracht die wordt uitgevoerd. Dit gedrag biedt u de mogelijkheid om onderbrekings punten in te stellen in de runs Pace met fout opsporing.
 
 De Azure Functions runtime voert enkele opdrachten uit voordat u het script daad werkelijk aanroept `run.ps1` . het is dus mogelijk dat het fout opsporingsprogramma eindigt op de `Microsoft.Azure.Functions.PowerShellWorker.psm1` of `Microsoft.Azure.Functions.PowerShellWorker.psd1` .
 
 Als deze onderbreking plaatsvindt, voert `continue` u de `c` opdracht of uit om dit onderbrekings punt over te slaan. Vervolgens stopt u bij het verwachte onderbrekings punt.
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+Als u problemen ondervindt tijdens het opsporen van fouten, moet u het volgende controleren:
+
+| Selecteren | Bewerking |
+|------|------|
+| Voer `func --version` uit vanaf de Terminal. Als er een fout optreedt die `func` niet kan worden gevonden, zijn de kern hulpprogramma's (func.exe) mogelijk niet aanwezig in de lokale `path` variabele.| [Installeer kern Hulpprogramma's opnieuw](functions-run-local.md#v2).|  
+| In Visual Studio code moet de standaard terminal toegang hebben tot func.exe. Zorg ervoor dat u geen standaard terminal gebruikt waarvoor geen kern Hulpprogramma's zijn geïnstalleerd, zoals Windows-subsysteem voor Linux (WSL).  | Stel de standaard shell in Visual Studio code in op Power shell 7 (aanbevolen) of Windows Power shell 5,1.|
+  
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3626a29bb828c9fbc353b11858d42fecd4bb129d
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009115"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641021"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Procedure: beveiligings beleid voor apps en een goedgekeurde client-app vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -55,9 +55,9 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
    1. Voeg **Android** en **IOS**toe.
-1. Onder **voor waarden**selecteert u **client-apps (preview-versie)**.
+1. Selecteer onder **voor waarden** **client-apps**.
    1. Stel **configureren** in op **Ja**.
-   1. Selecteer **Mobiele apps en bureaubladclients** en **Clients met moderne verificatie**.
+   1. Selecteer **mobiele apps en desktop-clients** en schakel de selectie van alle andere items uit.
 1. Selecteer onder **toegangs beheer**  >  **verlenen**de volgende opties:
    - **Goedgekeurde client-apps vereisen**
    - **Beleid voor app-beveiliging vereisen (preview)**
@@ -76,10 +76,9 @@ Configureer voor het beleid voor voorwaardelijke toegang in deze stap de volgend
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
    1. Selecteer **Gereed**.
 1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
-1. Onder **voor waarden**:
-   1. **Client-apps (preview-versie)**:
-      1. Stel **configureren** in op **Ja**.
-      1. Selecteer **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
+1. Onder **voor waarden**selecteert u **client-apps**:
+   1. Stel **configureren** in op **Ja**.
+   1. Selecteer **Exchange ActiveSync-clients** en schakel de selectie van alle andere items uit.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **beveiligings beleid voor apps vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
@@ -107,9 +106,9 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
    1. Voeg **Android** en **IOS**toe.
-1. Onder **voor waarden**selecteert u **client-apps (preview-versie)**.
+1. Selecteer onder **voor waarden** **client-apps**.
    1. Stel **configureren** in op **Ja**.
-   1. Selecteer **browser**.
+   1. Selecteer **browser** en schakel alle andere opties uit.
 1. Selecteer onder **toegangs beheer**  >  **verlenen**de volgende opties:
    - **Goedgekeurde client-apps vereisen**
    - **Beleid voor app-beveiliging vereisen (preview)**
@@ -140,9 +139,9 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
    1. Voeg **Android** en **IOS**toe.
-1. Onder **voor waarden**selecteert u **client-apps (preview-versie)**.
+1. Selecteer onder **voor waarden** **client-apps**.
    1. Stel **configureren** in op **Ja**.
-   1. Selecteer **Mobiele apps en bureaubladclients** en **Clients met moderne verificatie**.
+   1. Selecteer **mobiele apps en desktop-clients** en schakel de selectie van alle andere items uit.
 1. Selecteer onder **toegangs beheer**  >  **verlenen**de volgende opties:
    - **Goedgekeurde client-apps vereisen**
    - **Beleid voor app-beveiliging vereisen (preview)**
@@ -159,10 +158,9 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
    1. Selecteer **Gereed**.
 1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
-1. Onder **voor waarden**:
-   1. **Client-apps (preview-versie)**:
-      1. Stel **configureren** in op **Ja**.
-      1. Selecteer **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
+1. Onder **voor waarden**selecteert u **client-apps**:
+   1. Stel **configureren** in op **Ja**.
+   1. Selecteer **Exchange ActiveSync-clients** en schakel de selectie van alle andere items uit.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **beveiligings beleid voor apps vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.

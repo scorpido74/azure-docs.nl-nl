@@ -3,12 +3,12 @@ title: Ondersteuning voor de beoordeling van fysieke servers in Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 97da09fa88cc3e69965237cb5b4326b8b59739bd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423776"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640120"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
@@ -34,7 +34,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
 | **Fysieke server implementatie**       | De fysieke server kan zelfstandig of in een cluster worden geïmplementeerd. |
-| **Machtigingen**           | **Windows:** Gebruik een domein account voor computers die lid zijn van een domein en een lokaal account voor computers die geen lid zijn van een domein. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken. <br/><br/> **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren. |
+| **Machtigingen**           | **Windows:** Gebruik een domein account voor computers die lid zijn van een domein en een lokaal account voor computers die geen lid zijn van een domein. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken. <br/><br/> **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren. <br/> U kunt er ook voor zorgen dat de vereiste mogelijkheden zijn ingesteld met behulp van de volgende opdrachten. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (als/usr/sbin/fdisk niet aanwezig is) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r/sys/class/DMI/id/product_uuid
 | **Besturingssysteem** | Alle besturings systemen behalve Windows Server 2003 en SUSE Linux kunnen worden geëvalueerd voor migratie. |
 
 
@@ -53,7 +53,7 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
 **Apparaat** | **Verbinding**
 --- | ---
-**Apparaat** | Binnenkomende verbindingen op TCP-poort 3389, om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368, om op afstand toegang te krijgen tot de app voor het beheren van het apparaat met behulp van de URL:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Uitgaande verbindingen op poort 443 (HTTPS) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
+**Apparaat** | Binnenkomende verbindingen op TCP-poort 3389, om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368, om op afstand toegang te krijgen tot de app voor het beheren van het apparaat met behulp van de URL: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Uitgaande verbindingen op poort 443 (HTTPS) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 **Fysieke servers** | **Windows:** Binnenkomende verbinding op WinRM-poort 5985 (HTTP) voor het ophalen van meta gegevens van de configuratie en prestaties van Windows-servers. <br/><br/> **Linux:**  Binnenkomende verbindingen op poort 22 (TCP), voor het ophalen van meta gegevens van de configuratie en prestaties van Linux-servers. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Vereisten voor afhankelijkheids analyse op basis van een agent

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 972eb3f9983004ec7dbb3cb0df7bb3c59bdc9122
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 66a2fde47f71536661431959b957246e28c81d6a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042011"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639801"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Een resource voor insluitende lezer maken en Azure Active Directory authenticatie configureren
 
@@ -44,7 +44,8 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
         [Parameter(Mandatory=$true)] [String] $ResourceGroupLocation,
         [Parameter(Mandatory=$true)] [String] $AADAppDisplayName="ImmersiveReaderAAD",
         [Parameter(Mandatory=$true)] [String] $AADAppIdentifierUri,
-        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret,
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecretExpiration
     )
     {
         $unused = ''
@@ -93,12 +94,13 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
         $clientId = az ad app show --id $AADAppIdentifierUri --query "appId" -o tsv
         if (-not $clientId) {
             Write-Host "Creating new Azure Active Directory app"
-            $clientId = az ad app create --password $AADAppClientSecret --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
+            $clientId = az ad app create --password $AADAppClientSecret --end-date "$AADAppClientSecretExpiration" --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
 
             if (-not $clientId) {
                 throw "Error: Failed to create Azure Active Directory app"
             }
-            Write-Host "Azure Active Directory app created successfully"
+            Write-Host "Azure Active Directory app created successfully."
+            Write-Host "NOTE: To manage your Active Directory app client secrets after this Immersive Reader Resource has been created please visit https://portal.azure.com and go to Home -> Azure Active Directory -> App Registrations -> $AADAppDisplayName -> Certificates and Secrets blade -> Client Secrets section" -ForegroundColor Yellow
         }
 
         # Create a service principal if it doesn't already exist
@@ -155,6 +157,7 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
       -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
       -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
+      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_Expiration>'
     ```
 
     | Parameter | Opmerkingen |
@@ -168,7 +171,12 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
     | ResourceGroupLocation |Als uw resource groep niet bestaat, moet u een locatie opgeven voor het maken van de groep. Voer uit om een lijst met locaties te vinden `az account list-locations` . Gebruik de eigenschap *name* (zonder spaties) van het geretourneerde resultaat. Deze para meter is optioneel als uw resource groep al bestaat. |
     | AADAppDisplayName |De weergave naam van de Azure Active Directory-toepassing. Als een bestaande Azure AD-toepassing niet wordt gevonden, wordt er een nieuw item met deze naam gemaakt. Deze para meter is optioneel als de Azure AD-toepassing al bestaat. |
     | AADAppIdentifierUri |De URI voor de Azure AD-app. Als een bestaande Azure AD-app niet wordt gevonden, wordt er een nieuw item met deze URI gemaakt. Bijvoorbeeld `https://immersivereaderaad-mycompany`. |
-    | AADAppClientSecret |Een wacht woord dat u maakt, wordt later gebruikt voor verificatie bij het ophalen van een token om de insluitende lezer te starten. Het wacht woord moet ten minste 16 tekens lang zijn, ten minste één speciaal teken bevatten en ten minste één numeriek teken bevatten. |
+    | AADAppClientSecret |Een wacht woord dat u maakt, wordt later gebruikt voor verificatie bij het ophalen van een token om de insluitende lezer te starten. Het wacht woord moet ten minste 16 tekens lang zijn, ten minste één speciaal teken bevatten en ten minste één numeriek teken bevatten. Als u Azure AD-client geheimen wilt beheren nadat u deze resource hebt gemaakt, gaat u naar en gaat u naar de https://portal.azure.com Start-> Azure Active Directory-> app-registraties-> `[AADAppDisplayName]` -> certificaten en geheimen Blade-> client geheimen sectie (zoals weer gegeven in de scherm afbeelding uw Azure AD-toepassings geheimen beheren). |
+    | AADAppClientSecretExpiration |De datum of tijd waarna uw `[AADAppClientSecret]` verloopt (bijvoorbeeld ' 2020-12-31T11:59:59 + 00:00 ' of ' 2020-12-31 '). |
+
+    Uw Azure AD-toepassings geheimen beheren
+
+    ![Blade certificaten en geheimen van Azure Portal](./media/client-secrets-blade.png)
 
 1. Kopieer de JSON-uitvoer naar een tekst bestand voor later gebruik. De uitvoer moet er als volgt uitzien.
 
@@ -184,10 +192,10 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
 ## <a name="next-steps"></a>Volgende stappen
 
 * Bekijk de [Node.js Snelstartgids](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van Node.js
-* Bekijk de [Android-zelf studie](./tutorial-android.md) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met Java of Kotlin voor Android
-* Bekijk de [IOS-zelf studie](./tutorial-ios.md) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van SWIFT voor IOS
+* Bekijk de zelfstudie over [Android](./tutorial-android.md) om te zien wat u nog meer kunt doen met de Insluitende lezer-SDK met Java of Kotlin voor Android
+* Bekijk de [iOS-zelfstudie](./tutorial-ios.md) om te zien wat u nog meer kunt doen met de Insluitende lezer-SDK met behulp van Swift voor iOS
 * Bekijk de [python-zelf studie](./tutorial-python.md) om te zien wat u nog meer kunt doen met de insluitende Reader SDK met behulp van python
-* Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](./reference.md)
+* De [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor Insluitende lezer](./reference.md) verkennen
 
 
 

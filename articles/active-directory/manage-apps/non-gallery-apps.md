@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: d4f00061664340681b365eddfa1a742795f96d99
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 262c3a7c8a668ef25d092b5d523743e0ece89cc3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164679"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641140"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>Azure AD gebruiken voor toepassingen die niet worden vermeld in de app-galerie
 
@@ -31,7 +31,7 @@ U kunt elke toepassing toevoegen die al bestaat in uw organisatie of een toepass
 - Selfservice-integratie van elke toepassing die ondersteuning biedt voor services van [Security Assertion Markup Language (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) (door SP geïnitieerd of IDP)
 - Self-Service-integratie van elke webtoepassing met een op een HTML gebaseerde aanmeldings pagina met [SSO op basis van wacht woorden](sso-options.md#password-based-sso)
 - Selfservice verbinding van toepassingen die gebruikmaken van het [systeem voor het scim-Protocol (Cross-Domain Identity Management) voor het inrichten van gebruikers](../app-provisioning/use-scim-to-provision-users-and-groups.md)
-- Mogelijkheid om koppelingen toe te voegen aan een toepassing in het [Start programma voor Office 365-apps](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) of het [Azure AD-toegangs venster](sso-options.md#linked-sign-on)
+- Mogelijkheid om koppelingen toe te voegen aan een toepassing in het [Start programma voor Office 365-apps](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) of [mijn apps](sso-options.md#linked-sign-on)
 
 Zie [verificatie scenario's voor Azure AD](../develop/authentication-scenarios.md)als u hulp nodig hebt bij het integreren van aangepaste apps met Azure AD. Wanneer u een App ontwikkelt die gebruikmaakt van een modern protocol zoals [OpenID Connect Connect/OAuth](../develop/active-directory-v2-protocols.md) om gebruikers te verifiëren, kunt u dit registreren bij het micro soft Identity-platform met behulp van de [app-registraties](../develop/quickstart-register-app.md) -ervaring in de Azure Portal.
 

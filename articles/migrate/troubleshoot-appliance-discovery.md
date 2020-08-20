@@ -6,19 +6,19 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171868"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640579"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
 Dit artikel helpt u bij het oplossen van problemen bij het implementeren van het [Azure migrate](migrate-services-overview.md) apparaat en het gebruik van het apparaat om on-premises machines te detecteren.
 
 
-## <a name="whats-supported"></a>Wat wordt er ondersteund?
+## <a name="whats-supported"></a>Wat wordt ondersteund
 
 [Bekijk](migrate-appliance.md) de vereisten voor het ondersteunings team voor apparaten.
 
@@ -117,6 +117,28 @@ Fout 50004: ' kan geen verbinding maken met een host of cluster omdat de server 
     3. Voeg het IP-adres en de hostnaam toe aan een rij. Herhaal deze stap voor elke host of elk cluster waar u deze fout ziet.
     4. Sla het hosts-bestand op en sluit het bestand.
     5. Controleer of het apparaat verbinding kan maken met de hosts met behulp van de app voor het beheren van het apparaat. Na 30 minuten ziet u de meest recente informatie voor deze hosts in de Azure Portal.
+
+
+## <a name="error-60001-unable-to-connect-to-server"></a>Fout 60001: kan geen verbinding maken met de server 
+
+- Zorg ervoor dat er verbinding is tussen het apparaat en de server
+- Als het een Linux-server is, moet u verificatie op basis van wacht woorden inschakelen met behulp van de volgende stappen:
+    1. Meld u aan bij de Linux-computer en open het SSH-configuratie bestand met behulp van de opdracht ' vi/etc/ssh/sshd_config '
+    2. Stel de optie PasswordAuthentication in op Ja. Sla het bestand op.
+    3. De SSH-service opnieuw starten door ' service sshd restart ' uit te voeren
+- Als het een Windows-Server is, moet u ervoor zorgen dat poort 5985 is geopend om externe WMI-aanroepen mogelijk te maken.
+- Als u een GCP Linux-server detecteert en een hoofd gebruiker gebruikt, gebruikt u de volgende opdrachten om de standaard instelling voor basis aanmelding te wijzigen
+    1. Meld u aan bij de Linux-computer en open het SSH-configuratie bestand met behulp van de opdracht ' vi/etc/ssh/sshd_config '
+    2. Stel de optie PermitRootLogin in op Ja.
+    3. De SSH-service opnieuw starten door ' service sshd restart ' uit te voeren
+
+## <a name="error-no-suitable-authentication-method-found"></a>Fout: er is geen geschikte verificatie methode gevonden
+
+Zorg ervoor dat verificatie op basis van wacht woorden is ingeschakeld op de Linux-server door de volgende stappen uit te voeren:
+    1. Meld u aan bij de Linux-computer en open het SSH-configuratie bestand met behulp van de opdracht ' vi/etc/ssh/sshd_config '
+    2. Stel de optie PasswordAuthentication in op Ja. Sla het bestand op.
+    3. De SSH-service opnieuw starten door ' service sshd restart ' uit te voeren
+
 
 ## <a name="discovered-vms-not-in-portal"></a>Gedetecteerde Vm's niet in Portal
 

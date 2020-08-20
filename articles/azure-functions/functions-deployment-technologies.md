@@ -4,20 +4,20 @@ description: Meer informatie over de verschillende manieren waarop u code kunt i
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905122"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641956"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
-U kunt een aantal verschillende technologieën gebruiken om uw Azure Functions project code te implementeren in Azure. Dit artikel bevat een overzicht van de implementatie methoden die voor u beschikbaar zijn en aanbevelingen voor de beste manier om te gebruiken in verschillende scenario's. Het bevat ook een volledig overzicht van de essentiële informatie over de implementatie technologieën van underlyng. 
+U kunt een aantal verschillende technologieën gebruiken om uw Azure Functions project code te implementeren in Azure. Dit artikel bevat een overzicht van de implementatie methoden die voor u beschikbaar zijn en aanbevelingen voor de beste manier om te gebruiken in verschillende scenario's. Het bevat ook een uitgebreide lijst met en belang rijke details over de onderliggende implementatie technologieën. 
 
 ## <a name="deployment-methods"></a>Implementatie methoden
 
-De implementatie technologie die u gebruikt om code naar Azure te publiceren, wordt doorgaans bepaald door de manier waarop u uw app publiceert. De juiste implementatie methode wordt bepaald aan de hand van specifieke behoeften en het punt in de ontwikkelings cyclus. Tijdens het ontwikkelen en testen kunt u bijvoorbeeld rechtstreeks vanuit uw ontwikkel programma implementeren, zoals Visual Studio code. Wanneer uw app in productie is genomen, is het waarschijnlijker dat u niet doorlopend publiceert vanuit broncode beheer of met behulp van een automatische publicatie pijplijn, die aanvullende validatie en tests bevat.  
+De implementatie technologie die u gebruikt om code naar Azure te publiceren, wordt doorgaans bepaald door de manier waarop u uw app publiceert. De juiste implementatie methode wordt bepaald aan de hand van specifieke behoeften en het punt in de ontwikkelings cyclus. Tijdens het ontwikkelen en testen kunt u bijvoorbeeld rechtstreeks vanuit uw ontwikkel programma implementeren, zoals Visual Studio code. Wanneer uw app in productie is, is het waarschijnlijker dat u continu publiceert vanuit broncode beheer of met behulp van een geautomatiseerde publicatie pijplijn, die aanvullende validatie en tests bevat.  
 
 In de volgende tabel worden de beschik bare implementatie methoden voor uw functie project beschreven.
 
@@ -202,7 +202,13 @@ In de volgende tabel ziet u de besturings systemen en talen die ondersteuning bi
 | PowerShell (Preview) |✔|✔|✔| | | |
 | Type script (Node.js) | | | | | | |
 
-<sup>*</sup>Het bewerken van de portal is alleen ingeschakeld voor HTTP-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
+<sup>*</sup> Het bewerken van de portal is alleen ingeschakeld voor HTTP-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
+
+## <a name="deployment-behaviors"></a>Implementatie gedrag
+
+Wanneer u een implementatie uitvoert, zijn alle bestaande uitvoeringen toegestaan of zijn er een time-out, waarna de nieuwe code wordt geladen om te beginnen met het verwerken van aanvragen.
+
+Als u meer controle over deze overgang wilt, moet u implementatie sleuven gebruiken.
 
 ## <a name="deployment-slots"></a>Implementatiesites
 

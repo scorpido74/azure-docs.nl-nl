@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 1193e6f9ed637f6bd28b2fef6488b2d4902ec67b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459382"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640545"
 ---
 # <a name="configure-password-based-single-sign-on"></a>Eenmalige aanmelding op basis van wacht woorden configureren
 
@@ -29,7 +29,7 @@ SSO op basis van wacht woorden is een uitstekende manier om snel toepassingen te
 
 - Ondersteunings toepassingen waarvoor meerdere aanmeldings velden zijn vereist voor toepassingen waarvoor meer dan alleen gebruikers naam en wacht woord zijn vereist om zich aan te melden
 
-- De labels van de gebruikers naam en het wacht woord aanpassen die uw gebruikers zien op het [toegangs venster](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) van de toepassing wanneer ze hun referenties invoeren
+- De labels van de gebruikers naam en het wacht woord aanpassen die uw gebruikers zien op [mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) wanneer ze hun referenties invoeren
 
 - Stel uw gebruikers in staat om hun eigen gebruikers namen en wacht woorden op te geven voor bestaande toepassings accounts die ze hand matig invoeren.
 
@@ -71,7 +71,7 @@ Als het parseren van de Azure AD-poging mislukt, kunt u hand matig aanmelden con
    ![Hand matige configuratie van op wacht woord gebaseerde eenmalige aanmelding](./media/configure-password-single-sign-on/password-configure-sign-on.png)
 3. Selecteer **aanmeldings velden voor vastleggen**. De pagina vastleg status wordt geopend op een nieuw tabblad, waarin wordt weer gegeven **dat het vastleggen van meta gegevens op het bericht wordt uitgevoerd**.
 
-4. Als het vak **uitbrei ding van het toegangs paneel vereist** wordt weer gegeven op een nieuw tabblad, selecteert u **nu installeren** om de extensie browser extensies voor **beveiligde aanmelding van mijn apps** te installeren. (Voor de browser extensie is micro soft Edge, Chrome of Firefox vereist.) Vervolgens installeert, start en activeert u de extensie en vernieuwt u de pagina vastleg status.
+4. Als het selectie vakje ' **mijn apps vereist** ' wordt weer gegeven op een nieuw tabblad, selecteert u **nu installeren** om de extensie browser voor **beveiligde aanmelding van mijn apps** te installeren. (Voor de browser extensie is micro soft Edge, Chrome of Firefox vereist.) Vervolgens installeert, start en activeert u de extensie en vernieuwt u de pagina vastleg status.
 
    De browser uitbreiding opent vervolgens een ander tabblad met de ingevoerde URL.
 5. Ga op het tabblad met de ingevoerde URL naar het aanmeldings proces. Vul de velden gebruikers naam en wacht woord in en probeer u aan te melden. (U hoeft het juiste wacht woord niet op te geven.)

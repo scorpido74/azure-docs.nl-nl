@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 1b19f4aae7bf7477dbe5950f2d4df31e2de81372
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562562"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639916"
 ---
 # <a name="managing-access-to-apps"></a>Toegang tot apps beheren
 
@@ -45,7 +45,7 @@ Met bepaalde typen toepassingen hebt u de mogelijkheid [om gebruikers toe te sta
 * Toepassings proxy toepassingen die gebruikmaken van Azure Active Directory verificatie vooraf
 * Toepassingen die zijn gebouwd op het Azure AD-toepassings platform die gebruikmaken van OAuth 2,0/OpenID Connect Connect-verificatie nadat een gebruiker of beheerder heeft ingestemd met die toepassing. Bepaalde zakelijke toepassingen bieden extra controle over wie zich mag aanmelden.
 
-Wanneer de gebruikers toewijzing *niet is vereist*, worden niet-toegewezen gebruikers de app niet weer geven in het toegangs venster van mijn apps, maar kunnen ze zich wel aanmelden bij de toepassing zelf (ook wel door SP geïnitieerde aanmelding genoemd) of ze kunnen de **gebruikers toegangs-URL** gebruiken op de **Eigenschappen** pagina van de toepassing (ook wel bekend als IDP-started sign on).
+Wanneer de gebruikers toewijzing *niet is vereist*, worden niet-toegewezen gebruikers de app niet weer geven voor hun apps, maar kunnen ze zich wel aanmelden bij de toepassing zelf (ook wel met SP-started sign-on) of ze kunnen de **gebruikers toegangs-URL** gebruiken op de **Eigenschappen** pagina van de toepassing (ook wel bekend als IDP-started sign on).
 
 Voor sommige toepassingen is de optie voor het vereisen van gebruikers toewijzing niet beschikbaar in de eigenschappen van de toepassing. In dergelijke gevallen kunt u Power shell gebruiken om de eigenschap appRoleAssignmentRequired in te stellen voor de Service-Principal.
 
@@ -53,12 +53,12 @@ Voor sommige toepassingen is de optie voor het vereisen van gebruikers toewijzin
 
 Azure AD biedt [verschillende aanpas bare manieren om toepassingen te implementeren](end-user-experiences.md) voor eind gebruikers in uw organisatie:
 
-* Azure AD-toegangs venster voor mijn apps
+* Mijn apps in azure AD
 * Office 365-start programma voor toepassingen
 * Directe aanmelding bij federatieve apps (Service-PR)
 * Dieptekoppelingen naar federatieve apps, op basis van wachtwoorden, of bestaande apps
 
-U kunt bepalen of gebruikers die zijn toegewezen aan een zakelijke app deze kunnen zien in het toegangs venster en het start programma voor Office 365 Application.
+U kunt bepalen of gebruikers die zijn toegewezen aan een zakelijke app deze kunnen zien in mijn apps en Office 365-start programma voor toepassingen.
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>Voor beeld: complexe toepassings toewijzing met Azure AD
 Overweeg een toepassing zoals Sales Force. In veel organisaties wordt Sales Force voornamelijk gebruikt door de marketing-en verkoop teams. Vaak hebben leden van het marketing team zeer uitgebreide toegang tot Sales Force, terwijl leden van het verkoop team beperkte toegang hebben. In veel gevallen heeft een brede populatie aan informatie medewerkers de toegang tot de toepassing beperkt. Uitzonde ringen op deze regels zijn belang rijk voor het bemoeilijken. Het is vaak de prerogative van de marketing-of verkoop leiders om een gebruiker toegang te verlenen of hun rollen onafhankelijk van deze algemene regels te wijzigen.
@@ -72,7 +72,7 @@ Met Azure AD kunnen toepassingen zoals Sales Force vooraf worden geconfigureerd 
 
 * Om het uitzonderings mechanisme in te scha kelen, kan voor elke rol een self-service groep worden gemaakt. Bijvoorbeeld, de groep ' Sales Force marketing Exception ' kan worden gemaakt als een self-service groep. De groep kan worden toegewezen aan de marketing functie van Sales Force en het marketing leiderschaps team kan eigenaar zijn. Leden van het marketing leiderschaps team kunnen gebruikers toevoegen of verwijderen, een lidmaatschaps beleid instellen of zelfs aanvragen voor individuele gebruikers goed keuren of weigeren om lid te worden. Dit mechanisme wordt ondersteund door een informatie medewerker die de juiste ervaring heeft die geen gespecialiseerde training vereist voor eigen aren of leden.
 
-In dit geval worden alle toegewezen gebruikers automatisch ingericht voor Sales Force, omdat ze worden toegevoegd aan verschillende groepen hun roltoewijzing wordt bijgewerkt in Sales Force. Gebruikers zouden Sales Force kunnen ontdekken en openen via het toegangs venster van micro soft-toepassingen, Office-webclients of zelfs door te navigeren naar de aanmeldings pagina van de organisatie Sales Force. Beheerders kunnen de gebruiks-en toewijzings status eenvoudig weer geven met Azure AD-rapportage.
+In dit geval worden alle toegewezen gebruikers automatisch ingericht voor Sales Force, omdat ze worden toegevoegd aan verschillende groepen hun roltoewijzing wordt bijgewerkt in Sales Force. Gebruikers kunnen Sales Force ontdekken en openen via mijn apps, Office-webclients of zelfs door te navigeren naar de aanmeldings pagina van de organisatie Sales Force. Beheerders kunnen de gebruiks-en toewijzings status eenvoudig weer geven met Azure AD-rapportage.
 
 Beheerders kunnen [voorwaardelijke toegang tot Azure AD](../conditional-access/concept-conditional-access-users-groups.md) gebruiken om toegangs beleid in te stellen voor specifieke rollen. Deze beleids regels kunnen omvatten of toegang is toegestaan buiten de bedrijfs omgeving en zelfs Multi-Factor Authentication-of apparaats vereisten om in verschillende gevallen toegang te verkrijgen.
 
@@ -88,7 +88,7 @@ Er zijn drie belang rijke manieren waarop een gebruiker toegang kan krijgen tot 
 
 Sommige toepassingen combi neren deze methoden. Bepaalde micro soft-toepassingen maken bijvoorbeeld deel uit van een Office 365-abonnement, maar vereisen nog wel toestemming.
 
-Gebruikers hebben toegang tot Office 365-toepassingen via hun Office 365-portals. U kunt ook Office 365-toepassingen weer geven of verbergen in het toegangs venster mijn apps met behulp van de [office 365-zicht baarheid](hide-application-from-user-portal.md) in-/uitschakelen in de **gebruikers instellingen**van uw Directory. 
+Gebruikers hebben toegang tot Office 365-toepassingen via hun Office 365-portals. U kunt ook Office 365-toepassingen weer geven of verbergen in de mijn apps met de [zicht baarheid van office 365](hide-application-from-user-portal.md) in de **gebruikers instellingen**van uw Directory. 
 
 Net als bij zakelijke apps kunt u [gebruikers toewijzen](assign-user-or-group-access-portal.md) aan bepaalde micro soft-toepassingen via de Azure portal of, als de portal optie niet beschikbaar is, met behulp van Power shell.
 

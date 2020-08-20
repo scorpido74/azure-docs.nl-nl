@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: af5324373359cea643a3e31b6bb94e614ddb7e36
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 32993ba41a612ccf0f02a242ed610feab2fac78f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082975"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640732"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Regels voor het verzamelen van gegevens in Azure Monitor (preview-versie)
 Met regels voor gegevens verzameling (DCR) worden gegevens in Azure Monitor gedefinieerd en wordt aangegeven waar de gegevens moeten worden verzonden of opgeslagen. Dit artikel bevat een overzicht van regels voor het verzamelen van gegevens, inclusief de inhoud en structuur en hoe u deze kunt maken en gebruiken.
@@ -68,7 +68,7 @@ De volgende tabel bevat de limieten die momenteel van toepassing zijn op elke re
 Er zijn momenteel twee beschik bare methoden voor het maken van een DCR:
 
 - [Gebruik de Azure Portal](data-collection-rule-azure-monitor-agent.md) om een regel voor het verzamelen van gegevens te maken en deze te koppelen aan een of meer virtuele machines.
-- Bewerk de regel voor het verzamelen van gegevens rechtstreeks in JSON en verzend deze met behulp van de REST API.
+- Bewerk de regel voor het verzamelen van gegevens rechtstreeks in JSON en [Verzend deze met behulp van de rest API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules).
 
 ## <a name="sample-data-collection-rule"></a>Regel voor het verzamelen van voorbeeld gegevens
 De onderstaande regel voor het verzamelen van gegevens is voor virtuele machines met Azure Management Agent en bevat de volgende details:

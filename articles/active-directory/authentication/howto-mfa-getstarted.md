@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757598"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641072"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie plannen
 
@@ -108,6 +108,9 @@ Het is raadzaam dat organisaties voorwaardelijke toegang gebruiken om hun netwer
 ## <a name="plan-authentication-methods"></a>Verificatie methoden plannen
 
 Beheerders kunnen de [verificatie methoden](../authentication/concept-authentication-methods.md) kiezen die ze beschikbaar willen maken voor gebruikers. Het is belang rijk om meer dan één verificatie methode toe te staan, zodat gebruikers een back-upmethode beschikbaar hebben als de primaire methode niet beschikbaar is. De volgende methoden zijn beschikbaar voor beheerders om in te scha kelen:
+
+> [!TIP]
+> Micro soft raadt u aan de mobiele app te gebruiken als de primaire methode voor Azure Multi-Factor Authentication voor de beste beveiliging en gebruikers ervaring.
 
 ### <a name="notification-through-mobile-app"></a>Melding via mobiele app
 
@@ -246,7 +249,7 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
     * Schakel het selectie vakje voor **multi-factor Authentication vereisen**in.
     * Klik op **Selecteren**.
 1. Sla de **sessie** sectie over.
-1. Stel de **Schakel** optie voor het inschakelen van beleid in **op aan**.
+1. Stel de wisselknop **Beleid inschakelen** in op **Aan**.
 1. Klik op **Create**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Integratie met on-premises systemen plannen
@@ -342,11 +345,11 @@ Nu u uw oplossing hebt gepland, kunt u deze implementeren door de volgende stapp
 1. Configureer uw MFA-registratie beleid
    1. [Gecombineerde MFA en SSPR](howto-registration-mfa-sspr-combined.md)
    1. Met [identiteits beveiliging](../identity-protection/howto-mfa-policy.md)
-1. Gebruikers communicatie verzenden en gebruikers ontvangen om te registreren op[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. Gebruikers communicatie verzenden en gebruikers ontvangen om te registreren op [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [Bijhouden wie is inge schreven](#identify-non-registered-users)
 
 > [!TIP]
-> Government Cloud-gebruikers kunnen zich inschrijven op[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+> Government Cloud-gebruikers kunnen zich inschrijven op [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>Uw oplossing beheren
 
@@ -354,7 +357,7 @@ Rapporten voor Azure MFA
 
 Azure Multi-Factor Authentication biedt rapporten via de Azure Portal:
 
-| Rapport | Locatie | Description |
+| Rapport | Locatie | Beschrijving |
 | --- | --- | --- |
 | Gebruiks-en fraude waarschuwingen | Aanmeldingen bij Azure AD-> | Bevat informatie over het algehele gebruik, de gebruikers samenvatting en de gebruikers gegevens. en een geschiedenis van fraude waarschuwingen die zijn ingediend tijdens het opgegeven datum bereik. |
 

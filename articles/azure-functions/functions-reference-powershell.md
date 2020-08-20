@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207408"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642211"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions PowerShell
 
@@ -382,14 +382,14 @@ Wanneer u een functie-app maakt met behulp van hulpprogram ma's, zoals Visual St
 * Automatische MSI-verificatie naar Azure.
 * De mogelijkheid om de Azure PowerShell Power shell-aliassen in te scha kelen `AzureRM` Als u dat wilt.
 
-## <a name="powershell-version"></a>Power shell-versie
+## <a name="powershell-versions"></a>Power shell-versies
 
-In de volgende tabel ziet u de Power shell-versie die wordt gebruikt door elke primaire versie van de functions runtime:
+In de volgende tabel ziet u de Power shell-versies die worden ondersteund door elke primaire versie van de functions-runtime en de .NET-versie die is vereist:
 
-| Functie versie | Power shell-versie                             |
-|-------------------|------------------------------------------------|
-| 1.x               | Windows Power shell 5,1 (vergrendeld door de runtime) |
-| 2.x               | Power shell Core 6                              |
+| Functie versie | Power shell-versie                               | .NET-versie  | 
+|-------------------|--------------------------------------------------|---------------|
+| 3. x (aanbevolen) | Power shell 7 (aanbevolen)<br/>Power shell Core 6 | .NET Core 3,1<br/>.NET Core 3,1 |
+| 2.x               | Power shell Core 6                                | .NET Core 2.2 |
 
 U kunt de huidige versie bekijken door af te drukken `$PSVersionTable` vanuit een functie.
 

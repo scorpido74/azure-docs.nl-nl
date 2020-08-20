@@ -12,16 +12,16 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799499"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642024"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Een gebruiker of groep toewijzen aan een bedrijfs-app in Azure Active Directory
 
-In dit artikel wordt beschreven hoe u gebruikers of groepen toewijst aan bedrijfs toepassingen in Azure Active Directory (Azure AD), hetzij vanuit de Azure Portal of met behulp van Power shell. Wanneer u een gebruiker toewijst aan een toepassing, wordt de toepassing weer gegeven in het [toegangs venster voor mijn apps](https://myapps.microsoft.com/) van de gebruiker voor eenvoudige toegang. Als de toepassing rollen beschikbaar maakt, kunt u ook een specifieke rol aan de gebruiker toewijzen.
+In dit artikel wordt beschreven hoe u gebruikers of groepen toewijst aan bedrijfs toepassingen in Azure Active Directory (Azure AD), hetzij vanuit de Azure Portal of met behulp van Power shell. Wanneer u een gebruiker toewijst aan een toepassing, wordt de toepassing weer gegeven in [mijn apps](https://myapps.microsoft.com/) van de gebruiker voor eenvoudige toegang. Als de toepassing rollen beschikbaar maakt, kunt u ook een specifieke rol aan de gebruiker toewijzen.
 
 Voor meer controle kunnen bepaalde typen bedrijfs toepassingen worden geconfigureerd voor het vereisen van een [gebruikers toewijzing](#configure-an-application-to-require-user-assignment). 
 
@@ -45,7 +45,7 @@ Wanneer de gebruikers toewijzing is vereist, kunnen alleen gebruikers die u expl
 
 Wanneer de toewijzing *niet is vereist*, omdat u deze optie hebt ingesteld op **Nee** of omdat de toepassing een andere SSO-modus gebruikt, kan elke gebruiker toegang krijgen tot de toepassing als deze een rechtstreekse koppeling naar de toepassing of de **gebruikers toegangs-URL** hebben op de **Eigenschappen** pagina van de toepassing. 
 
-Deze instelling heeft geen invloed op de vraag of een toepassing wordt weer gegeven in het toegangs venster mijn apps. Toepassingen worden weer gegeven op de toegangs Vensters van mijn apps van gebruikers zodra u een gebruiker of groep aan de toepassing hebt toegewezen. Zie [toegang tot apps beheren](what-is-access-management.md)voor achtergrond informatie.
+Deze instelling heeft geen invloed op de vraag of een toepassing al dan niet wordt weer gegeven in mijn apps. Toepassingen worden weer gegeven op de toegangs Vensters van mijn apps van gebruikers zodra u een gebruiker of groep aan de toepassing hebt toegewezen. Zie [toegang tot apps beheren](what-is-access-management.md)voor achtergrond informatie.
 
 
 Gebruikers toewijzing voor een toepassing vereisen:
@@ -161,7 +161,7 @@ In dit voor beeld wordt de gebruiker Julia Simon toegewezen aan de [micro soft W
 ## <a name="related-articles"></a>Verwante artikelen:
 
 - [Meer informatie over toegang door eind gebruikers tot toepassingen](end-user-experiences.md)
-- [Een Azure AD-toegangs venster implementatie plannen](access-panel-deployment-plan.md)
+- [Een Azure AD-implementatie van mijn apps plannen](access-panel-deployment-plan.md)
 - [Toegang tot apps beheren](what-is-access-management.md)
  
 ## <a name="next-steps"></a>Volgende stappen

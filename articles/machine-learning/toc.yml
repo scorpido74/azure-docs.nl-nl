@@ -153,6 +153,8 @@
       href: concept-ml-pipelines.md
     - name: Gereedheid en beveiliging voor bedrijven
       items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
         - name: Enterprisebeveiliging en governance
           items:
             - name: Overzicht van Enterprise-beveiliging

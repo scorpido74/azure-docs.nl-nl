@@ -1,5 +1,5 @@
 ---
-title: Wat is batch transcriptie-Speech Service
+title: Batch transcriptie-Speech Service gebruiken
 titleSuffix: Azure Cognitive Services
 description: Batch transcriptie is ideaal als u een grote hoeveelheid audio in de opslag ruimte wilt transcriberen, zoals Azure-blobs. U kunt met behulp van de toegewezen REST API naar audio bestanden verwijzen met een SAS-URI (Shared Access Signature) en transcripties asynchroon ontvangen.
 services: cognitive-services
@@ -10,20 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df1266070e9fb69ec94811a3120412d9b238e470
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214050"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640154"
 ---
-# <a name="what-is-batch-transcription"></a>Wat is batch-transcriptie?
+# <a name="how-to-use-batch-transcription"></a>Batch-transcriptie gebruiken
 
 Batch-transcriptie is een reeks REST API bewerkingen waarmee u een grote hoeveelheid audio in de opslag kunt transcriberen. U kunt naar audio bestanden met een SAS-URI (Shared Access Signature) verwijzen en transcriptie-resultaten asynchroon ontvangen. Met de nieuwe v 3.0 API hebt u de keuze om een of meer audio bestanden te transcriberen of een hele opslag container te verwerken.
 
 Asynchrone spraak-naar-tekst transcriptie is slechts een van de functies. U kunt batch-transcriptie REST-Api's gebruiken om de volgende methoden aan te roepen:
-
-
 
 |    Batch transcriptie-bewerking                                             |    Methode    |    REST API-aanroep                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
@@ -46,20 +44,14 @@ Naast de gebruiks vriendelijke API hoeft u geen aangepaste eind punten te implem
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="subscription-key"></a>Abonnementssleutel
-
 Net als bij alle functies van de speech-service maakt u een abonnements sleutel van de [Azure Portal](https://portal.azure.com) door de [aan de slag-hand leiding](get-started.md)te volgen.
 
 >[!NOTE]
 > Voor de speech-service is een Standard-abonnement (S0) vereist om batch-transcriptie te gebruiken. Sleutels voor gratis abonnementen (F0) werken niet. Zie [prijzen en limieten](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)voor meer informatie.
 
-### <a name="custom-models"></a>Aangepaste modellen
-
 Volg de stappen in [akoestische aanpassing](how-to-customize-acoustic-models.md) en [taal aanpassing](how-to-customize-language-model.md)als u van plan bent om modellen aan te passen. Als u de gemaakte modellen in batch transcriptie wilt gebruiken, hebt u hun model locatie nodig. U kunt de model locatie ophalen wanneer u de details van het model ( `self` eigenschap) inspecteert. Een geïmplementeerd aangepast eind punt is *niet nodig* voor de batch transcriptie-service.
 
-## <a name="the-batch-transcription-api"></a>De batch-transcriptie-API
-
-### <a name="supported-formats"></a>Ondersteunde indelingen
+## <a name="batch-transcription-api"></a>Transcriptie-API voor batch
 
 De batch transcriptie-API ondersteunt de volgende indelingen:
 
@@ -181,11 +173,11 @@ Gebruik deze optionele eigenschappen om transcriptie te configureren:
       Optionele URL met [service-sa's](../../storage/common/storage-sas-overview.md) naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container. Wanneer deze niet is opgegeven, slaat micro soft de resultaten op in een opslag container die door micro soft wordt beheerd. Wanneer de transcriptie wordt verwijderd door het aanroepen van [Delete transcriptie](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription), worden de resultaat gegevens ook verwijderd.
 :::row-end:::
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 
 Batch transcriptie ondersteunt [Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) voor het lezen van audio en schrijven van transcripties naar opslag.
 
-## <a name="the-batch-transcription-result"></a>Het batch-transcriptie resultaat
+## <a name="batch-transcription-result"></a>Resultaten batch-transcriptie
 
 Voor elke audio-invoer wordt één transcriptie-resultaat bestand gemaakt. U kunt de lijst met resultaten bestanden ophalen door [Get transcripties-bestanden aan](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)te roepen. Deze methode retourneert een lijst met resultaten bestanden voor deze transcriptie. Als u het transcriptie-bestand voor een specifiek invoer bestand wilt zoeken, filtert u alle geretourneerde bestanden met `kind`  ==  `Transcription` en `name`  ==  `{originalInputName.suffix}.json` .
 
@@ -289,9 +281,9 @@ Het resultaat bevat de volgende formulieren:
       De weergave vorm van de herkende tekst. Er zijn toegevoegde interpunctie en hoofdletter gebruik opgenomen.
 :::row-end:::
 
-## <a name="speaker-separation-diarization"></a>Schei ding van de spreker (Diarization)
+## <a name="speaker-separation-diarization"></a>Schei ding van de spreker (diarization)
 
-Diarization is het proces waarbij de luid sprekers in een audio fragment worden gescheiden. Onze batch pijplijn ondersteunt diarization en kan twee luid sprekers herkennen aan mono-kanaal opnamen. De functie is niet beschikbaar op stereo-opnamen.
+Diarization is het proces waarbij de luid sprekers in een audio fragment worden gescheiden. De batch pijplijn ondersteunt diarization en kan twee luid sprekers herkennen aan mono-kanaal opnamen. De functie is niet beschikbaar op stereo-opnamen.
 
 De uitvoer van transcriptie met diarization ingeschakeld bevat een `Speaker` vermelding voor elke getranscribeerde woord groep. Als diarization niet wordt gebruikt, is de eigenschap `Speaker` niet aanwezig in de JSON-uitvoer. Voor diarization ondersteunen we twee stemmen, waardoor de luid sprekers worden aangeduid als `1` of `2` .
 
@@ -317,7 +309,7 @@ Tijds tempels op woord niveau moeten zijn ingeschakeld als de para meters in de 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-De transcriptie-service kan een groot aantal verzonden transcripties verwerken. U kunt de status van uw transcripties opvragen via a `GET` op [Get transcripties](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions). Roep het [verwijderen van transcriptie](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) regel matig aan bij de service zodra u de resultaten hebt opgehaald. Stel `timeToLive` de eigenschap ook in op een redelijke waarde om te zorgen dat de resultaten uiteindelijk worden verwijderd.
+De batch transcriptie-service kan een groot aantal verzonden transcripties verwerken. U kunt de status van uw transcripties opvragen via a `GET` op [Get transcripties](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions). Roep het [verwijderen van transcriptie](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) regel matig aan bij de service zodra u de resultaten hebt opgehaald. Stel `timeToLive` de eigenschap ook in op een redelijke waarde om te zorgen dat de resultaten uiteindelijk worden verwijderd.
 
 ## <a name="sample-code"></a>Voorbeeldcode
 

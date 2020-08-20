@@ -6,34 +6,36 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: 8709389208ba1320685b1834b20893f08ef33ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7005a3786bb2d538450b076c113e159c766d72e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482901"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642075"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Genormaliseerde RU/s voor een Azure Cosmos-container of-account bewaken
 
 Azure Monitor voor Azure Cosmos DB biedt een weer gave van metrische gegevens voor het bewaken van uw account en het maken van Dash boards. De Azure Cosmos DB metrische gegevens worden standaard verzameld. voor deze functie hoeft u niets expliciet in te scha kelen of te configureren.
 
-De **genormaliseerde** metrische gegevens over het gebruik van ru worden gebruikt om te zien hoe goed verzadigde replica's zijn met betrekking tot het verbruik van aanvraag eenheden in de partitie sleutel bereik. Azure Cosmos DB distribueert de door Voer gelijkmatig over alle fysieke partities. Deze metrische gegevens bieden een per seconde weer gave van het maximale doorvoer gebruik binnen een replicaset. Gebruik deze metrische gegevens voor het berekenen van het gebruik van de RU/s in partities voor de opgegeven container. Als u deze metrische gegevens ziet, moet u de door Voer verhogen om te voldoen aan de behoeften van uw werk belasting.
+De **genormaliseerde** metrische gegevens over het gebruik van ru worden gebruikt om te zien hoe goed verzadigd de partitie sleutel bereiken ten opzichte van het verkeer zijn. Azure Cosmos DB distribueert de door Voer gelijkmatig over alle partitie sleutel reeksen. Deze metrische gegevens bieden een per seconde weer gave van het maximale doorvoer gebruik voor partitie sleutel bereik. Gebruik deze metrische gegevens voor het berekenen van het gebruik van de RU/s voor het partitie sleutel bereik voor de opgegeven container. Als u deze metrische gegevens ziet, kunt u de door Voer verhogen om te voldoen aan de behoeften van uw werk belasting als u hoog percentage van het gebruik van aanvraag eenheden voor alle partitie sleutel reeksen in azure monitor hebt. 
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Wat u kunt verwachten en wanneer genormaliseerde RU/s hoger is
 
-Wanneer het genormaliseerde RU/s-verbruik 100% bereikt, ontvangt de client frequentie limiet fouten. De client moet de wacht tijd respecteren en opnieuw proberen. Als er een korte piek is die 100% gebruikt, betekent dit dat de door Voer van de replica de maximale prestatie limiet heeft bereikt. Een enkele bewerking zoals een opgeslagen procedure die alle RU/s op een replica verbruikt, leidt bijvoorbeeld tot een korte piek in genormaliseerd RU/s-verbruik. In dergelijke gevallen zijn er geen directe tarieven voor het beperken van fouten als de aanvraag frequentie laag is. Dat komt omdat bij Azure Cosmos DB aanvragen voor meer dan de ingerichte RU/s voor de specifieke aanvraag en andere aanvragen binnen die periode een tarief beperkt zijn.
+Wanneer het genormaliseerde RU/s-verbruik 100% voor het opgegeven partitie sleutel bereik bereikt en als een client nog steeds aanvragen in dat tijd venster van 1 seconde in het desbetreffende partitie sleutel bereik ontvangt, wordt er een beperkte fout weer gegeven. De client moet de voorgestelde wacht tijd respecteren en de aanvraag opnieuw proberen. Met de SDK kunt u deze situatie eenvoudig afhandelen door vooraf geconfigureerde tijden opnieuw te proberen door op de juiste manier te wachten.  Het is niet nodig dat u de fout waarde voor het beperken van de RU-frequentie alleen ziet omdat de genormaliseerde RU 100% heeft bereikt. Dat komt doordat de genormaliseerde RU een enkele waarde is die het maximale gebruik voor alle partitie sleutel reeksen vertegenwoordigt, een partitie sleutel bereik mogelijk kan worden gebruikt, maar de andere partitie sleutel bereiken kunnen de aanvragen zonder problemen verwerken. Eén bewerking zoals een opgeslagen procedure die alle RU/s op een partitie sleutel bereik gebruikt, zal bijvoorbeeld leiden tot een korte piek in het genormaliseerde RU/s-verbruik. In dergelijke gevallen zijn er geen problemen met de onmiddellijke frequentie beperking als de aanvraag frequentie laag is of aanvragen worden gedaan voor andere partities op verschillende partitie sleutel bereiken. 
 
-Met de Azure Monitor metrische gegevens kunt u de bewerkingen per status code vinden met behulp van het **totale aantal aanvragen** . Later kunt u filteren op deze aanvragen met de status code 429 en deze vervolgens splitsen op **bewerkings type**.
+Met de Azure Monitor metrische gegevens kunt u de bewerkingen per status code voor SQL API vinden met behulp van het **totale aantal aanvragen** . Later kunt u filteren op deze aanvragen met de status code 429 en deze vervolgens splitsen op **bewerkings type**.  
 
 Voor het vinden van de aanvragen die beperkt zijn, is de aanbevolen manier om deze informatie op te halen via Diagnostische logboeken.
 
-Als er sprake is van een doorlopende piek van 100% genormaliseerd RU/s-verbruik of dicht bij 100%, is het raadzaam de door voer te verg Roten. U kunt nagaan welke bewerkingen zwaar en het piek gebruik zijn door gebruik te maken van de Azure monitor-metrische gegevens en logboeken van Azure monitor.
+Als er sprake is van een voortdurende piek van 100% genormaliseerd RU/s-verbruik of dicht bij 100% voor meerdere partitie sleutel reeksen, wordt het aanbevolen om de door voer te verhogen. U kunt nagaan welke bewerkingen zwaar en het piek gebruik zijn door gebruik te maken van de Azure monitor-metrische gegevens en Diagnostische logboeken van Azure monitor.
 
-De **genormaliseerde** metrische gegevens over het gebruik van ru worden ook gebruikt om te zien welk partitie sleutel bereik beter is in de gebruiks voorwaarden. Zo krijgt u de scheefheid van de door voer naar een partitie sleutel bereik. U kunt later aan de slag om het **PartitionKeyRUConsumption** -logboek in azure monitor logboeken te bekijken voor informatie over welke logische partitie sleutels worden gebruikt in termen van gebruik.
+Kortom, de **genormaliseerde** metrische gegevens over het gebruik van ru worden gebruikt om te zien welk partitie sleutel bereik beter is in de gebruiks voorwaarden. Hiermee krijgt u de scheefheid van de door voer naar een partitie sleutel bereik. U kunt later aan de slag om het **PartitionKeyRUConsumption** -logboek in azure monitor logboeken te bekijken voor informatie over welke logische partitie sleutels worden gebruikt in termen van gebruik. Hiermee wordt de wijziging in de partitie sleutel gekozen of de wijziging in de toepassings logica. Als u de frequentie beperking wilt verhelpen, distribueert u de belasting van gegevens over meerdere partities of neemt u alleen de door Voer op als dat echt nodig is. 
+
+
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>De metrische gegevens over het verbruik van de genormaliseerde aanvraag eenheden weer geven
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
 

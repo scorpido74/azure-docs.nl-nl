@@ -16,16 +16,16 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e7e3a6666d467045b733b5401476fd83c93be19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764873"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642058"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Een aangepaste start pagina instellen voor gepubliceerde apps met behulp van Azure AD-toepassingsproxy
 
-In dit artikel wordt beschreven hoe u een app kunt configureren om een gebruiker naar een aangepaste start pagina te sturen. Wanneer u een app met toepassings proxy publiceert, stelt u een interne URL in, maar soms is dat niet de pagina die een gebruiker eerst moet zien. Stel een aangepaste start pagina zo in dat een gebruiker de juiste pagina krijgt wanneer hij of zij toegang tot de app heeft. Een gebruiker ziet de aangepaste start pagina die u hebt ingesteld, ongeacht of ze toegang hebben tot de app vanuit het Azure Active Directory toegangs venster of het start programma voor de Office 365-app.
+In dit artikel wordt beschreven hoe u een app kunt configureren om een gebruiker naar een aangepaste start pagina te sturen. Wanneer u een app met toepassings proxy publiceert, stelt u een interne URL in, maar soms is dat niet de pagina die een gebruiker eerst moet zien. Stel een aangepaste start pagina zo in dat een gebruiker de juiste pagina krijgt wanneer hij of zij toegang tot de app heeft. Een gebruiker ziet de aangepaste start pagina die u hebt ingesteld, ongeacht of ze toegang hebben tot de app vanuit de Azure Active Directory mijn apps of het start programma voor apps van Microsoft 365.
 
 Wanneer een gebruiker de app start, wordt deze standaard omgeleid naar de hoofd domein-URL voor de gepubliceerde app. De landings pagina wordt doorgaans ingesteld als de URL van de start pagina. Gebruik de Azure AD Power shell-module om een aangepaste URL voor de start pagina te definiëren wanneer u wilt dat een app-gebruiker op een specifieke pagina in de app terechtkomt.
 
@@ -37,7 +37,7 @@ Hier volgt een scenario waarin wordt uitgelegd waarom uw bedrijf een aangepaste 
 - U wilt `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` in plaats daarvan instellen als de URL van de start pagina, zodat een externe gebruiker de aanmeldings pagina eerst ziet.
 
 > [!NOTE]
-> Wanneer u gebruikers toegang geeft tot gepubliceerde apps, worden de apps weer gegeven in het [Azure AD-toegangs venster](../user-help/my-apps-portal-end-user-access.md) en het [Start programma voor de Office 365-app](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
+> Wanneer u gebruikers toegang geeft tot gepubliceerde apps, worden de apps weer gegeven in [mijn apps](../user-help/my-apps-portal-end-user-access.md) en het [Start programma voor de Office 365-app](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -59,7 +59,7 @@ Als u de URL van de start pagina van uw app wilt wijzigen via de Azure AD-Portal
 1. Selecteer **Azure Active Directory**en klik vervolgens **app-registraties**. De lijst met geregistreerde apps wordt weer gegeven.
 1. Kies uw app in de lijst. Er wordt een pagina weer gegeven met de details van de geregistreerde app.
 1. Selecteer onder **beheren**de optie **huis stijl**.
-1. Werk de **URL van de start pagina** bij met het nieuwe pad.
+1. Werk de **URL van de start pagina**  bij met het nieuwe pad.
 
    ![Huisstijl pagina voor een geregistreerde app waarin het URL-veld van de start pagina wordt weer gegeven](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
 
@@ -127,7 +127,7 @@ U krijgt de ObjectId van de app door te zoeken naar de app op de weer gegeven na
 
 ### <a name="update-the-home-page-url"></a>De URL van de start pagina bijwerken
 
-Maak de URL van de start pagina en werk uw app bij met die waarde. Ga verder met hetzelfde Power shell-venster, of Meld u opnieuw aan bij de Azure AD-module met als u een nieuw Power shell-venster gebruikt `Connect-AzureAD` . Volg dan deze stappen:
+Maak de URL van de start pagina en werk uw app bij met die waarde. Ga verder met hetzelfde Power shell-venster, of Meld u opnieuw aan bij de Azure AD-module met als u een nieuw Power shell-venster gebruikt `Connect-AzureAD` . Volg nu deze stappen:
 
 1. Maak een variabele voor de ObjectId-waarde die u in de vorige sectie hebt gekopieerd. (Vervang de ObjectId-waarde voor in dit share point-voor beeld met de waarde van de ObjectId van uw app.)
 

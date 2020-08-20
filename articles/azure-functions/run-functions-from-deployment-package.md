@@ -3,12 +3,12 @@ title: Uw Azure Functions uitvoeren vanuit een pakket
 description: Laat de Azure Functions runtime uw functies uitvoeren door een implementatie pakket bestand te koppelen dat de project bestanden van de functie-app bevat.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 6a2633550c9bcbdc59baf99f79559655afbb9b74
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214238"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639882"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Uw Azure Functions uitvoeren vanuit een pakket bestand
 
@@ -50,6 +50,9 @@ Hieronder ziet u een functie-app die is geconfigureerd om te worden uitgevoerd v
 ## <a name="integration-with-zip-deployment"></a>Integratie met zip-implementatie
 
 Een [zip-implementatie][Zip deployment for Azure Functions] is een functie van Azure app service waarmee u uw functie-app-project kunt implementeren in de `wwwroot` Directory. Het project wordt verpakt als een zip-implementatie bestand. Dezelfde Api's kunnen worden gebruikt voor het implementeren van uw pakket naar de `d:\home\data\SitePackages` map. Met de `WEBSITE_RUN_FROM_PACKAGE` app-instellings waarde van `1` worden de zip-implementatie-api's uw pakket naar de `d:\home\data\SitePackages` map gekopieerd in plaats van de bestanden uit te pakken naar `d:\home\site\wwwroot` . Het bestand wordt ook gemaakt `packagename.txt` . Na het opnieuw opstarten wordt het pakket gekoppeld `wwwroot` als een alleen-lezen bestands systeem. Zie voor meer informatie over de implementatie van zip-implementatie [voor Azure functions](deployment-zip-push.md).
+
+> [!NOTE]
+> Wanneer een implementatie plaatsvindt, wordt de functie-app opnieuw gestart. Voordat de computer opnieuw wordt opgestart, is het mogelijk om alle bestaande functies uit te voeren of te time-out. Zie [implementatie gedrag](functions-deployment-technologies.md#deployment-behaviors)voor meer informatie.
 
 ## <a name="adding-the-website_run_from_package-setting"></a>De instelling WEBSITE_RUN_FROM_PACKAGE toevoegen
 

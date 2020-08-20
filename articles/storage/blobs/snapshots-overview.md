@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 08/19/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055765"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640596"
 ---
 # <a name="blob-snapshots"></a>BLOB-moment opnamen
 
 Een moment opname is een alleen-lezen versie van een blob die op een bepaald moment wordt uitgevoerd.
 
 > [!NOTE]
-> BLOB-versie beheer (preview) biedt een alternatieve manier om historische kopieën van een BLOB te onderhouden. Zie voor meer informatie [BLOB-versie beheer (preview)](versioning-overview.md).
+> BLOB-versie beheer (preview) biedt een alternatieve manier om eerdere versies van een BLOB te onderhouden. Zie voor meer informatie [BLOB-versie beheer (preview)](versioning-overview.md).
 
 ## <a name="about-blob-snapshots"></a>Over blob-moment opnamen
 
@@ -33,7 +33,7 @@ Een moment opname van een blob is identiek aan de basis-blob, behalve dat de BLO
 > Alle moment opnamen delen de URI van de basis-blob. Het enige verschil tussen de basis-Blob en de moment opname is de toegevoegde **DateTime** -waarde.
 >
 
-Een BLOB kan een wille keurig aantal moment opnamen hebben. Moment opnamen blijven behouden totdat ze expliciet worden verwijderd, hetzij onafhankelijk of als onderdeel van de bewerking BLOB verwijderen voor de basis-blob. U kunt de moment opnamen die zijn gekoppeld aan de basis-BLOB opsommen om uw huidige moment opnamen bij te houden.
+Een BLOB kan een wille keurig aantal moment opnamen hebben. Moment opnamen blijven behouden totdat ze expliciet worden verwijderd, hetzij onafhankelijk of als onderdeel van een bewerking voor het verwijderen van een [BLOB](/rest/api/storageservices/delete-blob) voor de basis-blob. U kunt de moment opnamen die zijn gekoppeld aan de basis-BLOB opsommen om uw huidige moment opnamen bij te houden.
 
 Wanneer u een moment opname van een BLOB maakt, worden de systeem eigenschappen van de BLOB gekopieerd naar de moment opname met dezelfde waarden. De meta gegevens van de basis-BLOB worden ook gekopieerd naar de moment opname, tenzij u afzonderlijke meta gegevens voor de moment opname opgeeft wanneer u deze maakt. Nadat u een moment opname hebt gemaakt, kunt u deze lezen, kopiëren of verwijderen, maar u kunt deze niet wijzigen.
 
@@ -51,15 +51,15 @@ De volgende lijst bevat belang rijke punten waarmee u rekening moet houden bij h
 
 - In uw opslag account worden kosten in rekening gebracht voor unieke blokken of pagina's, ongeacht of deze zich in de BLOB of in de moment opname bevinden. Voor uw account worden geen extra kosten in rekening gebracht voor moment opnamen die zijn gekoppeld aan een BLOB totdat u de BLOB bijwerkt waarop ze zijn gebaseerd. Nadat u de basis-BLOB hebt bijgewerkt, is deze afwijkend van de moment opnamen. Als dit gebeurt, worden er kosten in rekening gebracht voor de unieke blokken of pagina's in elke BLOB of moment opname.
 - Wanneer u een blok in een blok-BLOB vervangt, wordt dat blok vervolgens als een uniek blok in rekening gebracht. Dit geldt ook als het blok dezelfde blok-ID en dezelfde gegevens bevat als in de moment opname. Nadat het blok opnieuw is doorgevoerd, is het afwijkend van de tegen hanger in een moment opname en worden de gegevens in rekening gebracht. Hetzelfde geldt voor een pagina in een pagina-blob die wordt bijgewerkt met identieke gegevens.
-- Het vervangen van een blok-BLOB door het aanroepen van de methode [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] of [UploadFromByteArray] [dotnet_UploadFromByteArray] vervangt alle blokken in de blob. Als u een moment opname hebt die is gekoppeld aan die blob, zijn alle blokken in de basis-Blob en snap shot nu afwijkend en worden er kosten in rekening gebracht voor alle blokken in beide blobs. Dit geldt ook als de gegevens in de basis-Blob en de moment opname identiek blijven.
+- Als u een blok-BLOB bijwerkt door een methode aan te roepen die de volledige inhoud van de BLOB overschrijft, worden alle blokken in de BLOB vervangen. Als u een moment opname hebt die is gekoppeld aan die blob, zijn alle blokken in de basis-Blob en snap shot nu afwijkend en worden er kosten in rekening gebracht voor alle blokken in beide blobs. Dit geldt ook als de gegevens in de basis-Blob en de moment opname identiek blijven.
 - De Azure-Blob service heeft geen manier om te bepalen of twee blokken identieke gegevens bevatten. Elk blok dat wordt geüpload en doorgevoerd, wordt behandeld als uniek, zelfs als het dezelfde gegevens en dezelfde blok-ID heeft. Omdat kosten toenemen voor unieke blokken, is het belang rijk om te overwegen dat het bijwerken van een blob met een moment opname resulteert in extra unieke blokken en extra kosten.
 
-### <a name="minimize-cost-with-snapshot-management"></a>Kosten minimaliseren met snap shot Management
+### <a name="minimize-costs-with-snapshot-management"></a>Kosten minimaliseren met snap shot Management
 
 We raden u aan uw moment opnamen zorgvuldig te beheren om extra kosten te voor komen. U kunt deze aanbevolen procedures volgen om de kosten te minimaliseren die worden gemaakt door de opslag van uw moment opnamen:
 
 - U kunt moment opnamen die zijn gekoppeld aan een blob, verwijderen en opnieuw maken wanneer u de BLOB bijwerkt, zelfs als u een update uitvoert met identieke gegevens, tenzij uw toepassings ontwerp vereist dat u moment opnamen bijhoudt. Door de moment opnamen van de BLOB te verwijderen en opnieuw te maken, kunt u ervoor zorgen dat de BLOB en de moment opnamen niet afwijken.
-- Als u moment opnamen voor een BLOB onderhoudt, moet u [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] of [UploadFromByteArray] [dotnet_UploadFromByteArray] niet aanroepen om de BLOB bij te werken. Deze methoden vervangen alle blokken in de blob, waardoor uw basis-Blob en de bijbehorende moment opnamen aanzienlijk afwijken. Werk in plaats daarvan het minste mogelijke aantal blokken bij met behulp van de methoden [PutBlock] [dotnet_PutBlock] en [Putblock list] [dotnet_PutBlockList].
+- Als u moment opnamen voor een BLOB beheert, vermijdt u het aanroepen van methoden die de hele BLOB overschrijven wanneer u de BLOB bijwerkt. Werk in plaats daarvan het zo weinig mogelijk aantal blokken bij om de kosten te laag te blijven.
 
 ### <a name="snapshot-billing-scenarios"></a>Facturerings scenario's voor moment opnamen
 
@@ -85,9 +85,12 @@ In scenario 3 is de basis-BLOB bijgewerkt, maar niet de moment opname. Blok 3 is
 
 #### <a name="scenario-4"></a>Scenario 4
 
-In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oorspronkelijke blokken. Als gevolg hiervan wordt het account in rekening gebracht voor alle acht unieke blokken. Dit scenario kan zich voordoen als u een update methode gebruikt zoals [UploadFromFile] [dotnet_UploadFromFile], [UploadText] [dotnet_UploadText], [UploadFromStream] [dotnet_UploadFromStream] of [UploadFromByteArray] [dotnet_UploadFromByteArray], omdat deze methoden alle inhoud van een BLOB vervangen.
+In scenario 4 is de basis-BLOB volledig bijgewerkt en bevat deze geen van de oorspronkelijke blokken. Als gevolg hiervan wordt het account in rekening gebracht voor alle acht unieke blokken.
 
 ![Azure Storage resources](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+
+> [!TIP]
+> Vermijd het aanroepen van methoden waarbij de gehele BLOB wordt overschreven. in plaats daarvan worden afzonderlijke blokken bijgewerkt zodat de kosten laag blijven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

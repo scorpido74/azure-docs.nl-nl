@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de173d6dc25610cd397cd719fe4c1c9db33a02f6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168196"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641837"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: Download-en release-opmerkingen
 > [!div class="op_single_selector"]
@@ -36,11 +36,19 @@ ms.locfileid: "84168196"
 ## <a name="release-notes-for-200-series"></a>Release opmerkingen voor de 2.0.0-serie
 de 2.0.0-serie neemt de afhankelijkheid van [micro soft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/), met prestatie verbeteringen en naam ruimte consolidatie op Cosmos DB eind punt.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-Preview
+### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-preview
 * eerste preview van 2.0.0 Table SDK die afhankelijk is van [micro soft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/), met prestatie verbeteringen en naam ruimte consolidatie op Cosmos DB eind punt. De open bare API blijft hetzelfde.
 
 ## <a name="release-notes-for-100-series"></a>Release opmerkingen voor de 1.0.0-serie
 de 1.0.0-serie neemt de afhankelijkheid op [Microsoft.Azure.DocumentDB. core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+
+### <a name="108"></a><a name="1.0.8"></a>1.0.8
+* Ondersteuning voor het instellen van de eigenschap TTL toevoegen als het cosmosdb-eind punt is 
+* Beleid voor opnieuw proberen naleven na time-out en taak geannuleerd uitzonde ring
+* Een uitzonde ring die wordt weer gegeven in ASP .NET-toepassingen herstellen is geannuleerd
+* Het ophalen van Azure Table Storage herstellen vanuit de locatie modus alleen secundair eind punt
+* De `Microsoft.Azure.DocumentDB.Core` afhankelijkheids versie bijwerken naar 2.11.2 die een onregelmatige null-referentie-uitzonde ring oplost
+* De `Odata.Core` afhankelijkheids versie bijwerken naar 7.6.4, waarmee compatibiliteits conflicten met Azure shell worden opgelost
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * Prestaties verbeteren door het standaard tracerings niveau van de tabel-SDK in te stellen op SourceLevels. off, dat kan worden gekozen via app.config
@@ -115,5 +123,5 @@ In deze platformoverschrijdende .NET Standard-bibliotheek [micro soft. Azure. Co
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 Zie [Inleiding tot Azure Cosmos DB Table-API](table-introduction.md)voor meer informatie over de Azure Cosmos db table-API.

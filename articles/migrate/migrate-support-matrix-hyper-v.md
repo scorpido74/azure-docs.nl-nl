@@ -3,12 +3,12 @@ title: Ondersteuning voor Hyper-V-evaluatie in Azure Migrate
 description: Meer informatie over ondersteuning voor Hyper-V-evaluatie met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 563a98162a2453ac1c96baf9f04500ee880e0ce5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3d55d71fc4e9551fa19afe8c3f37d31107e4d2e7
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420954"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641820"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Ondersteunings matrix voor Hyper-V-evaluatie
 
@@ -34,7 +34,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
-| **Hyper-V-host**       | De Hyper-V-host kan zelfstandig zijn of in een cluster worden geïmplementeerd.<br/><br/> Op de Hyper-V-host kan Windows Server 2019, Windows Server 2016 of Windows Server 2012 R2 worden uitgevoerd. De Server Core-installatie van Windows Server 2016 en Windows Server 2012 R2 worden ook ondersteund. <br/>U kunt geen VM's beoordelen die zich bevinden op Hyper-V-hosts waarop Windows Server 2012 wordt uitgevoerd.
+| **Hyper-V-host**       | De Hyper-V-host kan zelfstandig zijn of in een cluster worden geïmplementeerd.<br/><br/> Op de Hyper-V-host kan Windows Server 2019, Windows Server 2016 of Windows Server 2012 R2 worden uitgevoerd. De Server Core-installatie van deze besturings systemen wordt ook ondersteund. <br/>U kunt geen VM's beoordelen die zich bevinden op Hyper-V-hosts waarop Windows Server 2012 wordt uitgevoerd.
 | **Machtigingen**           | U hebt beheerders machtigingen nodig op de Hyper-V-host. <br/> Als u geen beheerders machtigingen wilt toewijzen, maakt u een lokaal of domein gebruikers account en voegt u het gebruikers account toe aan deze groepen: gebruikers van extern beheer, Hyper-V-Administrators en prestatie meter gebruikers. |
 | **Externe communicatie van powershell**   | [Externe toegang via Power shell](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) moet zijn ingeschakeld op elke Hyper-V-host. |
 | **Hyper-V Replica**       | Als u Hyper-V replica gebruikt (of als u meerdere virtuele machines met dezelfde VM-id's hebt), en u de oorspronkelijke en gerepliceerde Vm's detecteert met Azure Migrate, is de door Azure Migrate gegenereerde evaluatie mogelijk niet nauw keurig. |
@@ -62,7 +62,7 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
 **Apparaat** | **Verbinding**
 --- | ---
-**Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Uitgaande verbindingen op poort 443 (HTTPS) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
+**Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Uitgaande verbindingen op poort 443 (HTTPS) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 **Hyper-V-host/cluster** | Binnenkomende verbinding op WinRM-poort 5985 (HTTP) om meta gegevens en prestatie gegevens voor Hyper-V-Vm's te halen met behulp van een Common Information Model (CIM)-sessie.
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Vereisten voor afhankelijkheids analyse op basis van een agent

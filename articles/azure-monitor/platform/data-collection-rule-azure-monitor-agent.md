@@ -4,13 +4,13 @@ description: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 3cd2ed692f3a34223675da69efd92e78c2ba9504
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082986"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640834"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Gegevens verzameling configureren voor de Azure Monitor-agent (preview)
 Met regels voor gegevens verzameling (DCR) kunt u gegevens in Azure Monitor definiëren en opgeven waar deze moeten worden verzonden. In dit artikel wordt beschreven hoe u een regel voor het verzamelen van gegevens maakt voor het verzamelen van gegevens van virtuele machines met behulp van de Azure Monitor-agent.
@@ -48,7 +48,7 @@ Klik op het tabblad **verzamelen en leveren** op **gegevens bron toevoegen** om 
 [![Basis gegevens bron](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Selecteer **aangepast**om andere logboeken en prestatie meter items op te geven. U kunt vervolgens een [XPath](https://www.w3schools.com/xml/xpath_syntax.asp) opgeven voor alle specifieke waarden die moeten worden verzameld. Zie voor beelden van [DCR](data-collection-rule-overview.md#sample-data-collection-rule) voor.
+Selecteer **aangepast**om andere logboeken en prestatie meter items op te geven. U kunt vervolgens een [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) opgeven voor alle specifieke waarden die moeten worden verzameld. Zie voor beelden van [DCR](data-collection-rule-overview.md#sample-data-collection-rule) voor.
 
 [![Aangepaste gegevens bron](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 
@@ -61,6 +61,11 @@ Klik op **gegevens bron toevoegen** en vervolgens op **+ maken** om de details t
 > [!NOTE]
 > Zodra de regels voor gegevens verzameling en-koppelingen zijn gemaakt, kan het tot vijf minuten duren voordat gegevens naar de doelen worden verzonden.
 
+## <a name="createusingrestapi"></a>Maken met REST-API
+Volg de onderstaande stappen om een DCR en koppelingen te maken met behulp van de REST API. 
+1.Maak het DCR-bestand hand matig met de JSON-indeling die wordt weer gegeven in voor [beeld van DCR](data-collection-rule-overview.md#sample-data-collection-rule).
+2.Maak de regel met behulp van de [rest API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples).
+3.Maak een koppeling voor elke virtuele machine met de gegevens verzamelings regel met behulp van de [rest API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples).
 
 ## <a name="next-steps"></a>Volgende stappen
 

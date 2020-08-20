@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321272"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639899"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Aangepaste metrische gegevens in Azure Monitor (preview-versie)
 
@@ -26,6 +26,7 @@ Azure Monitor aangepaste metrische gegevens zijn actueel in open bare preview.
 
 Aangepaste metrische gegevens kunnen via verschillende methoden naar Azure Monitor worden verzonden:
 - Instrumenteer uw toepassing met behulp van de Azure-toepassing Insights-SDK en verzend aangepaste telemetrie naar Azure Monitor. 
+- Installeer de Azure Monitor agent (preview) op uw [Windows-of Linux Azure-VM](azure-monitor-agent-overview.md) en gebruik een [regel voor gegevens verzameling](data-collection-rule-azure-monitor-agent.md) om prestatie meter items te verzenden naar Azure monitor metrieken.
 - Installeer de Windows Azure Diagnostics (WAD)-extensie op [uw Azure-VM](collect-custom-metrics-guestos-resource-manager-vm.md), [schaalset voor virtuele machines](collect-custom-metrics-guestos-resource-manager-vmss.md), [klassieke virtuele](collect-custom-metrics-guestos-vm-classic.md)machine of [klassieke Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) en verzend prestatie meter items naar Azure monitor. 
 - Installeer de [InfluxData-telegrafa-agent](collect-custom-metrics-linux-telegraf.md) op uw virtuele Azure Linux-machine en verzend metrische gegevens met behulp van de invoeg toepassing Azure monitor-uitvoer.
 - Aangepaste metrische gegevens [rechtstreeks naar de Azure Monitor rest API](./metrics-store-custom-rest-api.md)verzenden `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
@@ -68,7 +69,7 @@ Met deze eigenschap wordt vastgelegd in welke Azure-regio de resource waarvoor u
 >
 >
 
-### <a name="timestamp"></a>Timestamp
+### <a name="timestamp"></a>Tijdstempel
 Elk gegevens punt dat naar Azure Monitor wordt verzonden, moet worden gemarkeerd met een tijds tempel. Deze tijds tempel legt de datum/tijd vast waarop de metrische waarde wordt gemeten of verzameld. Azure Monitor worden metrische gegevens met tijds tempels geaccepteerd tot 20 minuten in het verleden en vijf minuten in de toekomst. De tijds tempel moet de ISO 8601-indeling hebben.
 
 ### <a name="namespace"></a>Naamruimte
@@ -176,27 +177,27 @@ Nadat aangepaste metrische gegevens zijn verzonden naar Azure Monitor, kunt u ze
 > U moet een rol lezer of Inzender zijn om aangepaste metrische gegevens weer te geven.
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Door uw aangepaste metrische gegevens bladeren via de Azure Portal
-1.    Ga naar de [Azure Portal](https://portal.azure.com).
+1.    Ga naar [Azure Portal](https://portal.azure.com).
 2.    Selecteer het deel venster **monitor** .
 3.    Selecteer **Metrische gegevens**.
 4.    Selecteer een resource waarvoor u aangepaste metrische gegevens hebt verzonden.
 5.    Selecteer de metrische naam ruimte voor uw aangepaste metrische gegevens.
 6.    Selecteer de aangepaste metriek.
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische gegevens te publiceren alleen beschikbaar in een subset van Azure-regio's. Deze beperking betekent dat metrische gegevens alleen voor resources in een van de ondersteunde regio's kunnen worden gepubliceerd. De volgende tabel bevat de set ondersteunde Azure-regio's voor aangepaste metrische gegevens. Ook worden de bijbehorende eind punten vermeld waarvoor metrische gegevens voor resources in deze regio's moeten worden gepubliceerd:
 
 |Azure-regio |Voor voegsel regionale eind punt|
 |---|---|
 | **VS en Canada** | |
 |VS - west-centraal | https: \/ /westcentralus.monitoring.Azure.com |
-|West US 2       | https: \/ /westus2.monitoring.Azure.com |
+|VS - west 2       | https: \/ /westus2.monitoring.Azure.com |
 |VS - noord-centraal | https: \/ /northcentralus.monitoring.Azure.com
 |VS - zuid-centraal| https: \/ /southcentralus.monitoring.Azure.com |
-|Central US      | https: \/ /centralus.monitoring.Azure.com |
+|VS - centraal      | https: \/ /centralus.monitoring.Azure.com |
 |Canada - midden | https: \/ /canadacentral.monitoring.Azure.com |
 |VS - oost| https: \/ /eastus.monitoring.Azure.com |
-|US - oost 2 | https: \/ /eastus2.monitoring.Azure.com |
+|VS - oost 2 | https: \/ /eastus2.monitoring.Azure.com |
 | **Europa** | |
 |Europa - noord    | https: \/ /northeurope.monitoring.Azure.com |
 |Europa -west     | https: \/ /westeurope.monitoring.Azure.com |
@@ -207,7 +208,7 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 | **Azië** | |
 |India - centraal | https: \/ /centralindia.monitoring.Azure.com |
 |Australië - oost | https: \/ /australiaeast.monitoring.Azure.com |
-|Japan East | https: \/ /japaneast.monitoring.Azure.com |
+|Japan - oost | https: \/ /japaneast.monitoring.Azure.com |
 |Azië - zuidoost  | https: \/ /southeastasia.monitoring.Azure.com |
 |Azië - oost | https: \/ /EastAsia.monitoring.Azure.com |
 |Korea - centraal   | https: \/ /koreacentral.monitoring.Azure.com |

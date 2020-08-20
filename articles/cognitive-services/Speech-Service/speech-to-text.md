@@ -10,16 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: b1e84f9acb439324317ed2f0d11ed06eb3e43ad8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 90a5ec8c58865c3aa1b210db51b9ffeb7169d641
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678060"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640409"
 ---
 # <a name="what-is-speech-to-text"></a>Wat is spraak-naar-tekst?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Spraak-naar-tekst van de speech-service, ook wel spraak herkenning genoemd, biedt realtime transcriptie van audio-streams in tekst. Uw toepassingen, hulpprogram ma's of apparaten kunnen deze tekst gebruiken, weer geven en actie ondernemen als invoer van de opdracht. Deze service wordt aangestuurd door dezelfde herkennings technologie die door micro soft wordt gebruikt voor Cortana en Office-producten. Het werkt probleemloos met de <a href="./speech-translation.md" target="_blank">Vertaal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> -en <a href="./text-to-speech.md" target="_blank">tekst-naar- <span class="docon docon-navigate-external x-hidden-focus"></span> spraak-</a> service aanbiedingen. Zie [ondersteunde talen](language-support.md#speech-to-text)voor een volledige lijst met beschik bare spraak-naar-tekst talen.
 
@@ -31,13 +29,15 @@ Met aanvullende referentie tekst als invoer, biedt spraak-naar-tekst-service ook
 > Bing Speech is uit bedrijf genomen op 15 oktober 2019. Als uw toepassingen, hulpprogram ma's of producten gebruikmaken van de Bing Speech Api's, hebben we gidsen gemaakt om u te helpen migreren naar de spraak service.
 > - [Migreren van Bing Speech naar de speech-service](how-to-migrate-from-bing-speech.md)
 
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
 ## <a name="get-started-with-speech-to-text"></a>Aan de slag met spraak naar tekst
 
 De spraak-naar-tekst-service is beschikbaar via de [Speech-SDK](speech-sdk.md). Er zijn verschillende algemene scenario's beschikbaar als Quick starts in verschillende talen en platformen:
 
  - [Snelstartgids: spraak herkennen met microfoon invoer](quickstarts/speech-to-text-from-microphone.md)
  - [Quick Start: spraak herkennen vanuit een bestand](quickstarts/speech-to-text-from-file.md)
- - [Quick Start: spraak herkennen die zijn opgeslagen in Blob Storage](quickstarts/from-blob.md)
+ - [Quickstart: Spraak herkennen die is opgeslagen in blobopslag](quickstarts/from-blob.md)
 
 Zie [rest api's](rest-speech-to-text.md)als u de spraak-naar-tekst rest-service wilt gebruiken.
 
@@ -58,6 +58,10 @@ Voorbeeld code voor de Speech SDK is beschikbaar op GitHub. Deze voor beelden he
 ## <a name="customization"></a>Aanpassing
 
 Naast het standaard spraak service model kunt u aangepaste modellen maken. Aanpassing helpt de obstakels voor spraak herkenning, zoals spreek stijl, vocabulaire en achtergrond ruis, te overwinnen [Custom speech](how-to-custom-speech.md). Aanpassings opties variëren per taal/land instelling. Zie [ondersteunde talen](supported-languages.md) voor het controleren van de ondersteuning.
+
+## <a name="batch-transcription"></a>Batchtranscriptie
+
+Batch-transcriptie is een reeks REST API bewerkingen waarmee u een grote hoeveelheid audio in de opslag kunt transcriberen. U kunt naar audio bestanden met een SAS-URI (Shared Access Signature) verwijzen en transcriptie-resultaten asynchroon ontvangen. Zie de [procedure](batch-transcription.md) voor meer informatie over het gebruik van de batch transcriptie API.
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 

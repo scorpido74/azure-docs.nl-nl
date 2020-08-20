@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 2269a8f7f58d35fee5e2ca30a77af5e8cba83678
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bad4fe7f0cf090e5d61506e775fccf677df45fa5
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459331"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641973"
 ---
 # <a name="configure-linked-sign-on"></a>Gekoppelde aanmelding configureren
 
 In de [Quick](view-applications-portal.md) start-serie op toepassings beheer hebt u geleerd hoe u Azure AD als id-provider (IDP) gebruikt voor een toepassing. In de Snelstartgids kunt u op SAML gebaseerde SSO instellen. Een andere optie is **gekoppeld**. In dit artikel vindt u meer informatie over de gekoppelde optie.
 
-Met de optie **gekoppeld** kunt u de doel locatie configureren wanneer een gebruiker de app selecteert in [mijn Apps](https://myapplications.microsoft.com/) of Office 365-portal van uw organisatie.
+Met de optie **gekoppeld** kunt u de doel locatie configureren wanneer een gebruiker de app selecteert in [mijn Apps](https://myapps.microsoft.com/) of Office 365-portal van uw organisatie.
 
 Enkele veelvoorkomende scenario's waarbij de koppelings optie waardevol is:
 - Voeg een koppeling toe naar een aangepaste webtoepassing die momenteel gebruikmaakt van Federatie, zoals Active Directory Federation Services (AD FS).
@@ -35,7 +35,7 @@ Enkele veelvoorkomende scenario's waarbij de koppelings optie waardevol is:
 
 Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. In de Quick Start, waar u eenmalige aanmelding configureert, vindt u ook de optie **gekoppeld** . 
 
-De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD. Met deze optie stelt u alleen de locatie gebruikers worden verzonden naar wanneer ze de app selecteren in [mijn apps](https://myapplications.microsoft.com/) of het start programma voor apps van de Microsoft 365.
+De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD. Met deze optie stelt u alleen de locatie gebruikers worden verzonden naar wanneer ze de app selecteren in [mijn apps](https://myapps.microsoft.com/) of het start programma voor apps van de Microsoft 365.
 
 > [!IMPORTANT] 
 > Er zijn enkele scenario's waarbij de optie voor **eenmalige aanmelding** niet voor komt in de navigatie voor een toepassing in **bedrijfs toepassingen**. 
@@ -48,7 +48,7 @@ De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD. Met 
 
 Als u een koppeling voor een app wilt instellen, selecteert u **gekoppeld** op de pagina voor **eenmalige aanmelding** . Vervolgens voert u de koppeling in en selecteert u **Opslaan**. Hebt u een herinnering nodig om deze opties te vinden? Bekijk de Quick Start- [serie](view-applications-portal.md).
  
-Nadat u een app hebt geconfigureerd, kunt u er gebruikers en groepen aan toewijzen. Wanneer u gebruikers toewijst, kunt u bepalen wanneer de toepassing wordt weer gegeven in [mijn apps](https://myapplications.microsoft.com/) of het start programma voor apps van Microsoft 365.
+Nadat u een app hebt geconfigureerd, kunt u er gebruikers en groepen aan toewijzen. Wanneer u gebruikers toewijst, kunt u bepalen wanneer de toepassing wordt weer gegeven in [mijn apps](https://myapps.microsoft.com/) of het start programma voor apps van Microsoft 365.
 
 ## <a name="next-steps"></a>Volgende stappen
 

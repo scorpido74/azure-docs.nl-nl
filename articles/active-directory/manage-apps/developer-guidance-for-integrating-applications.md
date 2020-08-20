@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c66c1fc9a9b93d5b4d3af0440ec3fdc276a9b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763411"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640443"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Line-of-Business-Apps ontwikkelen voor Azure Active Directory
 Deze hand leiding bevat een overzicht van het ontwikkelen van LoB-toepassingen (line-of-Business) voor Azure Active Directory (AD). De beoogde doel groep is Active Directory/Office 365 Global Administrators.
@@ -58,7 +58,7 @@ Dit is wat u, de globale beheerder, nodig hebt om ontwikkel aars te helpen hun t
 Toegangs regels per toepassing configureren voor uw SaaS-apps. U kunt bijvoorbeeld MFA vereisen of alleen toegang verlenen aan gebruikers op vertrouwde netwerken. De Details voor deze informatie zijn beschikbaar in het document [toegangs regels configureren](../conditional-access/app-based-mfa.md).
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>De app configureren om gebruikers toewijzing te vereisen en gebruikers toe te wijzen
-Standaard hebben gebruikers toegang tot toepassingen zonder te worden toegewezen. Als de toepassing echter rollen beschikbaar maakt of als u wilt dat de toepassing wordt weer gegeven op het toegangs venster van een gebruiker, moet u de gebruikers toewijzing vereisen.
+Standaard hebben gebruikers toegang tot toepassingen zonder te worden toegewezen. Als de toepassing echter rollen beschikbaar maakt of als u wilt dat de toepassing wordt weer gegeven in mijn apps van een gebruiker, moet u de gebruikers toewijzing vereisen.
 
 Als u een Azure AD Premium of een Enter prise Mobility Suite (EMS)-abonnee bent, raden we u ten zeerste aan groepen te gebruiken. Door groepen toe te wijzen aan de toepassing, kunt u doorlopend toegangs beheer delegeren aan de eigenaar van de groep. U kunt de groep maken of de verantwoordelijke partij in uw organisatie vragen de groep te maken met behulp van de groeps beheer faciliteit.
 

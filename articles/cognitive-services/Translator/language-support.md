@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a0ea0a7580bbb7a6106880d2733f36f5ab7a7690
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510790"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639780"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Ondersteuning van talen en regio's voor tekst-en spraak omzetting
 
@@ -296,6 +296,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Frans      | `fr`          |
 | Duits      | `de`          |
 | Grieks      | `el`          |
+| Gujarati| `gu`    |
 | Hebreeuws      | `he`          |
 | Hindi      | `hi`          |
 | Hongaars      | `hu`          |
@@ -309,11 +310,14 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Lets      | `lv`          |
 | Litouws      | `lt`          |
 | Malagassische| `mg`    |
+| Maleisisch|    `ms`        |
 | Maori| `mi`  |
+| Marathi| `mr`  |
 | Noors      | `nb`          |
 | Perzisch      | `fa`          |
 | Pools      | `pl`          |
 | Portugees (Brazilië) | `pt-br` |
+| Punjabi|`pa`|
 | Roemeens      | `ro`          |
 | Russisch      | `ru`          |
 | Samoan|   `sm`    |
@@ -325,6 +329,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Thai      | `th`          |
 | Turks      | `tr`          |
 | Oekraïens      | `uk`          |
+| Urdu| `ur`    |
 | Vietnamees      | `vi`          |
 | Welsh | `cy` |
 

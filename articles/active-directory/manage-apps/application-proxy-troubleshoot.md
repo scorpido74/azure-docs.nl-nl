@@ -2,26 +2,21 @@
 title: Problemen met toepassings proxy oplossen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u fouten in azure AD-toepassingsproxy oplost.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848461"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640851"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Problemen en foutberichten met Application Proxy oplossen
 
@@ -84,12 +79,13 @@ In deze lijst worden fouten behandeld die uw eind gebruikers kunnen tegen komen 
 | Deze zakelijke app kan momenteel niet worden geopend. Probeer het later opnieuw... Time-out van de connector. | Uw gebruiker krijgt deze fout mogelijk bij het openen van de app die u hebt gepubliceerd als deze niet op de juiste wijze is gedefinieerd voor deze toepassing. Zorg ervoor dat uw gebruikers over de juiste machtigingen beschikken die zijn gedefinieerd voor deze back-end-toepassing op de on-premises computer. |
 | Deze zakelijke app is niet toegankelijk. U bent niet gemachtigd om toegang te krijgen tot deze toepassing. Autorisatie is mislukt. Zorg ervoor dat de gebruiker een licentie voor Azure Active Directory Premium heeft. | De gebruiker krijgt deze fout mogelijk bij het openen van de app die u hebt gepubliceerd als deze niet expliciet is toegewezen aan een Premium-licentie door de beheerder van de abonnee. Ga naar het tabblad Active Directory **licenties** van de abonnee en controleer of aan deze gebruiker of gebruikers groep een Premium-licentie is toegewezen. |
 | Een server met de opgegeven hostnaam is niet gevonden. | De gebruiker krijgt deze fout mogelijk bij het openen van de app die u hebt gepubliceerd als het aangepaste domein van de toepassing niet juist is geconfigureerd. Zorg ervoor dat u een certificaat voor het domein hebt geüpload en de DNS-record correct hebt geconfigureerd door de stappen te volgen in [werken met aangepaste domeinen in Azure AD-toepassingsproxy](application-proxy-configure-custom-domain.md) |
+|Verboden: deze zakelijke app is niet toegankelijk of de gebruiker kan niet worden geautoriseerd. Zorg ervoor dat de gebruiker is gedefinieerd in uw on-premises AD en dat de gebruiker toegang heeft tot de app in uw on-premises AD. | Dit kan een probleem zijn met de toegang tot autorisatie-informatie, Zie [sommige toepassingen en api's hebben toegang tot autorisatie gegevens voor account objecten nodig]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information). Voeg in een kort gezegd het account van de app proxy connector machine toe aan de groep ' Windows-autorisatie toegangsgroep ' Builtin domein groep om op te lossen. |
 
 ## <a name="my-error-wasnt-listed-here"></a>Mijn fout is hier niet vermeld
 
 Als u een fout of probleem ondervindt met Azure AD-toepassingsproxy dat niet wordt vermeld in deze probleemoplossings handleiding, willen we het graag hierover horen. Stuur een e-mail naar ons [feedback team](mailto:aadapfeedback@microsoft.com) met de details van de fout die u hebt aangetroffen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Toepassings proxy inschakelen voor Azure Active Directory](application-proxy-add-on-premises-application.md)
 * [Toepassingen publiceren met toepassingsproxy (Engelstalig artikel)](application-proxy-add-on-premises-application.md)
 * [Eenmalige aanmelding inschakelen](application-proxy-configure-single-sign-on-with-kcd.md)

@@ -15,22 +15,22 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a59343d4eafaa0e11f56636daa7471e748abf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763139"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640749"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Toewijzing van self-service toepassingen configureren
 
-Voordat uw gebruikers toepassingen zelf kunnen detecteren vanuit hun toegangs venster voor mijn apps, moet u de **toegang van selfservice toepassingen** inschakelen voor alle toepassingen waarvoor u gebruikers de mogelijkheid wilt bieden om zelf toegang te krijgen tot. Deze functionaliteit is beschikbaar voor toepassingen die zijn toegevoegd vanuit de [Azure AD-galerie](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), [Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) of die zijn toegevoegd via toestemming van de [gebruiker of beheerder](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience). 
+Voordat uw gebruikers zelf toepassingen van hun apps kunnen detecteren, moet u de **toegang van selfservice toepassingen** inschakelen voor alle toepassingen waarvoor u gebruikers de mogelijkheid wilt bieden om zelf toegang te krijgen tot en om deze te vragen. Deze functionaliteit is beschikbaar voor toepassingen die zijn toegevoegd vanuit de [Azure AD-galerie](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app), [Azure AD-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) of die zijn toegevoegd via toestemming van de [gebruiker of beheerder](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience). 
 
 Deze functie is een uitstekende manier om tijd en geld te besparen als een IT-groep en wordt ten zeerste aanbevolen als onderdeel van een moderne implementatie van toepassingen met Azure Active Directory.
 
 Met deze functie kunt u het volgende doen:
 
--   Laat gebruikers zelf toepassingen detecteren via het [deel venster mijn apps toegang](https://myapps.microsoft.com/) zonder dat ze de IT-groep hoeven te gebruiken.
+-   Laat gebruikers zelf toepassingen van [mijn apps](https://myapps.microsoft.com/) detecteren zonder de IT-groep te hoeven verkennen.
 
 -   Voeg deze gebruikers toe aan een vooraf geconfigureerde groep, zodat u kunt zien wie toegang heeft aangevraagd, de toegang moet verwijderen en de functies die eraan zijn toegewezen, moeten beheren.
 
@@ -38,7 +38,7 @@ Met deze functie kunt u het volgende doen:
 
 -   U kunt Maxi maal 10 personen configureren die de toegang tot deze toepassing goed keuren.
 
--   Zo kunt u een zakelijke goed keurder toestaan om de wacht woorden in te stellen die gebruikers kunnen gebruiken om zich aan te melden bij de toepassing, rechtstreeks vanuit het [toepassings toegangs paneel](https://myapps.microsoft.com/)van de bedrijfs fiatteur.
+-   Zo kunt u een zakelijke goed keurder toestaan om de wacht woorden in te stellen die gebruikers kunnen gebruiken om zich aan te melden bij de toepassing, rechtstreeks vanuit de [mijn apps](https://myapps.microsoft.com/)van de zakelijke goed keurder.
 
 -   Automatisch toegewezen Self-Service gebruikers aan een toepassingsrol rechtstreeks toewijzen.
 
@@ -79,7 +79,7 @@ Volg de onderstaande stappen om de toegang van selfservice toepassingen voor een
 
 11. Klik boven aan het deel venster op de knop **Opslaan** om de bewerking te volt ooien.
 
-Zodra u de configuratie van de selfservice toepassing hebt voltooid, kunnen gebruikers naar het [toegangs paneel van mijn apps](https://myapps.microsoft.com/) navigeren en op de knop **self-service apps toevoegen** klikken om de apps te vinden die geschikt zijn voor selfservice toegang. Zakelijke goed keurders zien ook een melding in hun [toegangs venster voor mijn apps](https://myapps.microsoft.com/). U kunt een e-mail bericht ontvangen wanneer een gebruiker toegang tot een toepassing heeft aangevraagd waarvoor de goed keuring is vereist.
+Zodra u de configuratie van de selfservice toepassing hebt voltooid, kunnen gebruikers naar hun [apps](https://myapps.microsoft.com/) navigeren en op de knop **self-service apps toevoegen** klikken om de apps te vinden die geschikt zijn voor selfservice toegang. Zakelijke goed keurders zien ook een melding in hun [apps](https://myapps.microsoft.com/). U kunt een e-mail bericht ontvangen wanneer een gebruiker toegang tot een toepassing heeft aangevraagd waarvoor de goed keuring is vereist.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Azure Active Directory instellen voor groepsbeheer met self-service](../users-groups-roles/groups-self-service-management.md)

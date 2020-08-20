@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164577"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640511"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Een toegangsproxy van Azure AD gebruiken om on-premises apps te publiceren voor externe gebruikers
 
@@ -76,7 +76,7 @@ Een toepassingsproxy is een Azure AD-service die u configureert in het Azure-por
 
 Onderdelen van deze functie omvatten de toepassingsproxy-service, die wordt uitgevoerd in de cloud, de connector van de toepassingsproxy, een lichtgewicht agent die wordt uitgevoerd op een on-premises server en Azure AD, de id-provider. Alle drie de onderdelen werken samen om de gebruiker te voorzien van een eenmalige aanmelding om toegang te krijgen tot on-premises webtoepassingen.
 
-Nadat u zich hebt aangemeld, hebben externe gebruikers toegang tot on-premises webtoepassingen met behulp van een vertrouwde URL of het [MyApps-toegangsvenster](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) van hun desktop- of iOS/MAC-apparaten. Een app-proxy kan bijvoorbeeld externe toegang en eenmalige aanmelding bieden voor extern bureaublad, SharePoint-sites, Tableau, Qlik, Outlook op internet en LOB-toepassingen (line-of-business).
+Nadat u zich hebt aangemeld, hebben externe gebruikers toegang tot on-premises webtoepassingen met behulp van een vertrouwde URL of [mijn apps](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) vanaf hun desktop-of IOS/Mac-apparaten. Een app-proxy kan bijvoorbeeld externe toegang en eenmalige aanmelding bieden voor extern bureaublad, SharePoint-sites, Tableau, Qlik, Outlook op internet en LOB-toepassingen (line-of-business).
 
 ![Azure AD-toepassingsproxy en Qlik Sense](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 

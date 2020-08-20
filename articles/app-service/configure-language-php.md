@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 306afb2bfba7c222798bbfd1bef334387b6f9771
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 440815d7d24cde9708c214bf407a2dd9206a1706
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080076"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642041"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Een PHP-app configureren voor Azure App Service
 
@@ -206,7 +206,7 @@ Als u uw app wilt implementeren met behulp van Git of zip-pakketten waarbij bouw
 1. Voer `php composer.phar install` uit.
 1. Voer aangepast script uit als dit is opgegeven door `POST_BUILD_SCRIPT_PATH`.
 
-`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Als u vooraf gebouwde opdrachten wilt uitvoeren, definieert u `PRE_BUILD_COMMAND`. Als u achteraf gebouwde opdrachten wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
+`PRE_BUILD_COMMAND` en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Als u vooraf gebouwde opdrachten wilt uitvoeren, definieert u `PRE_BUILD_COMMAND`. Als u achteraf gebouwde opdrachten wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
 
 In het volgende voorbeeld worden de twee variabelen voor een reeks opdrachten opgegeven, gescheiden door komma's.
 
@@ -276,8 +276,8 @@ Als u echter liever niet *.htaccess* herschrijft, kunt u uw Laravel-toepassing i
 In App Service vindt [SSL-beëindiging](https://wikipedia.org/wiki/TLS_termination_proxy) plaats in de load balancers voor het netwerk, zodat alle HTTPS-aanvragen uw app bereiken als niet-versleutelde HTTP-aanvragen. Inspecteer de header `X-Forwarded-Proto` als de app-logica moet controleren of de aanvragen van gebruikers al dan niet zijn versleuteld.
 
 ```php
-if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
-  // Do something when HTTPS is used
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+// Do something when HTTPS is used
 }
 ```
 
@@ -374,7 +374,7 @@ Voer eerst de volgende opdracht uit in het [Cloud shell](https://shell.azure.com
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`is de standaardmap waarin *php.ini* bestaat. `/home/site/ini`is de aangepaste map waarin u een aangepast *. ini* -bestand toevoegt. U scheidt de waarden met een `:` .
+`/usr/local/etc/php/conf.d` is de standaardmap waarin *php.ini* bestaat. `/home/site/ini` is de aangepaste map waarin u een aangepast *. ini* -bestand toevoegt. U scheidt de waarden met een `:` .
 
 Ga naar de Web SSH-sessie met uw Linux-container ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
