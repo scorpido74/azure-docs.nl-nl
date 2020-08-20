@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: c6aa5200220c55407ade5910b4232fffed3ffe19
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141581"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611446"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service-plan
 
@@ -65,11 +65,11 @@ Zie [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diag
 
 In deze sectie wordt beschreven hoe App Service-apps worden gefactureerd. Zie [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/)voor gedetailleerde, specifieke prijs informatie.
 
-Met uitzonde ring van de laag **gratis** geldt een app service plan een uurtarief op basis van de reken resources die worden gebruikt.
+Met uitzonde ring van de **gratis** laag wordt een app service plan een kosten voor de reken resources die worden gebruikt.
 
-- In de **gedeelde** laag ontvangt elke app een QUOTUM van CPU-minuten, zodat _elke app elk_ uur in rekening wordt gebracht voor het CPU-quotum.
-- In de toegewezen reken lagen (**Basic**, **Standard**, **Premium**, **PremiumV2**) wordt met het app service plan het aantal VM-exemplaren gedefinieerd waarmee de apps worden geschaald, zodat _elk VM-exemplaar_ in het app service plan over een uurtarief in rekening wordt gebracht. Deze VM-exemplaren worden op dezelfde manier in rekening gebracht, ongeacht het aantal apps dat erop wordt uitgevoerd. Zie [een app service plan opschonen](app-service-plan-manage.md#delete)om onverwachte kosten te voor komen.
-- In de **geïsoleerde** laag definieert het app service Environment het aantal geïsoleerde werk rollen waarop uw apps worden uitgevoerd, en _elke werk nemer_ wordt per uur in rekening gebracht. Daarnaast zijn er kosten per uur voor het uitvoeren van de App Service Environment zelf.
+- In de **gedeelde** laag ontvangt elke app een QUOTUM van CPU-minuten, zodat _elke app_ in rekening wordt gebracht voor het CPU-quotum.
+- In de toegewezen reken lagen (**Basic**, **Standard**, **Premium**, **PremiumV2**) definieert het app service plan het aantal VM-exemplaren waarmee de apps worden geschaald, zodat _elk VM-exemplaar_ in het app service plan wordt gefactureerd. Deze VM-exemplaren worden op dezelfde manier in rekening gebracht, ongeacht het aantal apps dat erop wordt uitgevoerd. Zie [een app service plan opschonen](app-service-plan-manage.md#delete)om onverwachte kosten te voor komen.
+- In de **geïsoleerde** laag definieert het app service Environment het aantal geïsoleerde werk rollen waarop uw apps worden uitgevoerd, en _elke werk nemer_ wordt in rekening gebracht. Daarnaast is er een vast stempel tarief voor het uitvoeren van de App Service Environment zelf.
 
 Er worden geen kosten in rekening gebracht voor het gebruik van de App Service functies die voor u beschikbaar zijn (aangepaste domeinen, TLS/SSL-certificaten, implementatie sleuven, back-ups, enzovoort). De uitzonde ringen zijn:
 

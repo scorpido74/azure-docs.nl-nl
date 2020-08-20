@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 00a4f7f6de207d5e8ad1bcd448cc587e3106d3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a28a8f22a8aa20612a177d88fd99a66660c74618
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87316968"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607551"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Een Cognitive Services resource maken met behulp van de Azure Portal
 
@@ -110,15 +110,16 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resource groep verwijdert, worden ook alle resources in de groep verwijderd.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook eventuele andere bijbehorende resources in de groep verwijderd.
 
 1. Vouw het menu aan de linkerkant in Azure Portal uit om het menu met services te openen en kies **Resourcegroepen** om de lijst met resourcegroepen weer te geven.
-2. Zoek de resource groep met de resource die u wilt verwijderen
-3. Klik met de rechter muisknop op de vermelding van de resource groep. Selecteer **Resourcegroep verwijderen** en bevestig dit.
+2. Zoek de resourcegroep die de resource bevat die u wilt verwijderen
+3. Klik met de rechtermuisknop op de vermelding van de resourcegroep. Selecteer **Resourcegroep verwijderen** en bevestig dit.
 
 ## <a name="see-also"></a>Zie ook
 
-* [Aanvragen verifiëren voor Azure Cognitive Services](authentication.md)
+* [Aanvragen verifiëren bij Azure Cognitive Services](authentication.md)
 * [Wat is Azure Cognitive Services?](Welcome.md)
+* [Een nieuwe resource maken met behulp van de Azure Management-client bibliotheek](.\cognitive-services-apis-create-account-client-library.md)
 * [Ondersteuning voor natuurlijke taal](language-support.md)
-* [Ondersteuning voor docker-container](cognitive-services-container-support.md)
+* [Ondersteuning voor Docker-container](cognitive-services-container-support.md)

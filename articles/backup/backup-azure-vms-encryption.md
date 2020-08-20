@@ -3,12 +3,12 @@ title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585322"
+ms.locfileid: "88611293"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Back-up en herstel van versleutelde virtuele Azure-machines
 
@@ -69,7 +69,7 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 1. **Backup goal**  >  **Waar wordt uw werk belasting uitgevoerd?** Selecteer **Azure**.
 1. In **waarvan wilt u een back-up maken? Selecteer een** **virtuele machine**. Selecteer vervolgens **back-up**.
 
-      ![Blade scenario](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
+      ![Scenario venster](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
 1. Kies in **back-upbeleid**  >  **back-upbeleid**, selecteer het beleid dat u aan de kluis wilt koppelen. Selecteer vervolgens **OK**.
     - Een back-upbeleid geeft aan wanneer er back-ups worden gemaakt en hoe lang ze worden opgeslagen.

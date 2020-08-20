@@ -13,12 +13,12 @@ ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6cf9f7a005a80ab34e05ee293c20209e9d0b3f01
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258587"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612313"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Micro soft Identity platform en OAuth 2,0-autorisatie code stroom
 
@@ -233,6 +233,7 @@ Fout reacties zien er als volgt uit:
 | `interaction_required` | Niet-standaard, aangezien de OIDC-specificatie dit alleen op het `/authorize` eind punt aanroept. De aanvraag vereist een gebruikers interactie. Zo is een extra verificatie stap vereist. | Voer de `/authorize` aanvraag opnieuw uit met dezelfde bereiken. |
 | `temporarily_unavailable` | De server is tijdelijk niet actief om de aanvraag af te handelen. | Probeer de aanvraag opnieuw uit te voeren na een kleine vertraging. De client toepassing kan bijvoorbeeld verklaren dat de reactie van de gebruiker is vertraagd vanwege een tijdelijke voor waarde. |
 |`consent_required` | De aanvraag vereist toestemming van de gebruiker. Deze fout is niet-standaard, omdat deze doorgaans alleen wordt geretourneerd op het `/authorize` eind punt per OIDC-specificatie. Retourneert wanneer een `scope` para meter is gebruikt op de inwissel stroom van de code die de client-app niet mag aanvragen.  | De client moet de gebruiker terugsturen naar het `/authorize` eind punt met het juiste bereik om toestemming te activeren. |
+|`invalid_scope` | Het bereik dat door de app is aangevraagd, is ongeldig.  | Werk de waarde van de bereik parameter in de verificatie aanvraag bij naar een geldige waarde. |
 
 > [!NOTE]
 > Apps met één pagina ontvangen mogelijk een `invalid_request` fout melding die aangeeft dat het cross-Origin-token alleen is toegestaan voor de client-type toepassing met één pagina.  Dit geeft aan dat de omleidings-URI die wordt gebruikt om het token aan te vragen, niet is gemarkeerd als `spa` omleidings-URI.  Bekijk de [stappen](#redirect-uri-setup-required-for-single-page-apps) voor het registreren van de toepassing voor informatie over het inschakelen van deze stroom.

@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor MABS & System Center DPM
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wanneer u Microsoft Azure Backup Server (MABS) of System Center DPM gebruikt om back-ups te maken van on-premises en Azure VM-resources.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4ed4452cf8f1f44e90cfc991c2b1d13d30dddcd2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810425"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612772"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
 
@@ -146,7 +146,7 @@ Zie de [routerings vereisten voor ExpressRoute](../expressroute/expressroute-rou
 
 De verbinding met de Azure Backup-service is vereist voor een juiste werking van back-ups en het Azure-abonnement moet actief zijn. In de volgende tabel ziet u het gedrag als deze twee dingen zich niet voordoen.
 
-**MABS naar Azure** | **Abonnement** | **Back-up en herstellen**
+**MABS naar Azure** | **Abonnement** | **Back-up maken/herstellen**
 --- | --- | ---
 Verbonden | Actief | Maak een back-up naar de DPM-MABS-schijf.<br/><br/> Maak een back-up naar Azure.<br/><br/> Herstellen vanaf schijf.<br/><br/> Herstellen vanuit Azure.
 Verbonden | Verlopen/niet-ingericht | Geen back-up naar schijf of Azure.<br/><br/> Als het abonnement is verlopen, kunt u het herstellen vanaf schijf of Azure.<br/><br/> Als het abonnement uit bedrijf is genomen, kunt u niet meer herstellen vanaf schijf of Azure. De Azure-herstel punten worden verwijderd.
@@ -157,7 +157,7 @@ Geen connectiviteit langer dan 15 dagen | Verlopen/niet-ingericht | Geen back-up
 
 |Vereiste |Details |
 |---------|---------|
-|Domein    | De DPM-MABS-server moet zich in een Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 domein.        |
+|Domain    | De DPM-MABS-server moet zich in een Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 domein.        |
 |Domeinvertrouwen   |  DPM/MABS ondersteunt gegevens beveiliging tussen forests, zolang u een twee richtings vertrouwensrelatie op forestniveau tot stand brengt tussen de afzonderlijke forests.   <BR><BR>   DPM/MABS kan servers en werk stations in domeinen beveiligen binnen een forest met een twee richtings vertrouwensrelatie met het DPM/MABS-Server domein. Zie [back-ups maken en herstellen in werk groepen en niet-vertrouwde domeinen](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) voor het beveiligen van computers in werk groepen of niet-vertrouwde domeinen.  |
 
 ## <a name="dpmmabs-storage-support"></a>Ondersteuning voor DPM/MABS-opslag

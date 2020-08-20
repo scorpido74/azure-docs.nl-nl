@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007773"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612636"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>GPU-versnelling (graphics processing unit) configureren voor virtuele Windows-Bureau bladen
 
@@ -51,7 +51,7 @@ Apps en Desk tops die worden uitgevoerd in configuraties met meerdere sessies wo
 1. Maak verbinding met het bureau blad van de virtuele machine met een account met lokale Administrator bevoegdheden.
 2. Open het menu Start en typ ' gpedit. msc ' om de groepsbeleid editor te openen.
 3. Navigeer in de structuur naar **computer configuratie**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **extern bureaublad-services**  >  **extern bureaublad Session Host**  >  **externe sessie omgeving**.
-4. Beleid selecteren **Gebruik de standaard grafische hardware-adapter voor alle extern bureaublad-services sessies** en stel dit beleid in op **ingeschakeld** om GPU-rendering in de externe sessie in te scha kelen.
+4. Selecteer beleid **hardware grafische adapters gebruiken voor alle extern bureaublad-services-sessies** en stel dit beleid in op **ingeschakeld** om GPU-rendering in de externe sessie in te scha kelen.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU-versnelde frame codering configureren
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 08/10/2020
+ms.openlocfilehash: 608740ea52cf82485bae073d9679107ac52baa28
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276648"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611123"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -126,7 +126,7 @@ Meer informatie over het [stoppen van replicatie naar een replica](howto-read-re
 ## <a name="failover"></a>Failover
 Er is geen automatische failover tussen hoofd-en replica servers. 
 
-Omdat replicatie asynchroon is, is er sprake van een vertraging tussen de Master en de replica. De hoeveelheid vertraging kan worden beïnvloed door een aantal factoren, zoals hoe zwaar de werk belasting die wordt uitgevoerd op de master server en de latentie tussen data centers. In de meeste gevallen variëren de replica vertraging tussen enkele seconden en een paar minuten. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging*, die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
+Omdat replicatie asynchroon is, is er sprake van een vertraging tussen de Master en de replica. De hoeveelheid vertraging kan worden beïnvloed door een aantal factoren, zoals hoe zwaar de werk belasting die wordt uitgevoerd op de master server en de latentie tussen data centers. In de meeste gevallen varieert replicavertraging tussen enkele seconden en een paar minuten. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging*, die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
 
 > [!Tip]
 > Als u een failover naar de replica doorzoekt, geeft de vertraging op het moment dat u de replica loskoppelt van de Master aan hoeveel gegevens er verloren zijn gegaan.
@@ -142,7 +142,7 @@ Zodra u hebt vastgesteld dat u een failover naar een replica wilt uitvoeren,
 Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failover voltooid. De uitval tijd van uw toepassings ervaring is afhankelijk van wanneer u een probleem detecteert en de stappen 1 en 2 hierboven uitvoert.
 
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 
 In deze sectie vindt u een overzicht van de overwegingen voor de functie replica lezen.
 
@@ -163,16 +163,19 @@ Er wordt een lees replica gemaakt als een nieuwe Azure Database for PostgreSQL-s
 ### <a name="replica-configuration"></a>Replica configuratie
 Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen worden gewijzigd, waaronder opslag en back-up van de Bewaar periode.
 
-de vCores en de prijs categorie kunnen ook worden gewijzigd op de replica onder de volgende voor waarden:
-* PostgreSQL vereist dat de waarde van de `max_connections` para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. In Azure Database for PostgreSQL is de `max_connections` waarde van de para meter gebaseerd op de SKU (vCores en prijs categorie). Zie [limieten in azure database for PostgreSQL](concepts-limits.md)voor meer informatie. 
-* Schalen naar of van de basis prijs categorie wordt niet ondersteund
-
-> [!IMPORTANT]
-> Voordat een Master-instelling wordt bijgewerkt naar een nieuwe waarde, moet u de replica configuratie bijwerken naar een gelijke of hogere waarde. Met deze actie wordt ervoor gezorgd dat in de replica alle wijzigingen worden doorgevoerd die in de hoofdserver zijn aangebracht.
-
-Als u de hierboven beschreven server waarden wilt bijwerken, maar niet aan de limieten wilt voldoen, treedt er een fout op.
-
 Firewall regels, regels voor virtuele netwerken en parameter instellingen worden niet overgenomen van de hoofd server naar de replica wanneer de replica wordt gemaakt of daarna.
+
+### <a name="scaling"></a>Schalen
+VCores schalen of tussen Algemeen en geoptimaliseerd voor geheugen:
+* PostgreSQL vereist `max_connections` dat de instelling op een secundaire server [groter is dan of gelijk is aan de instelling op de primaire](https://www.postgresql.org/docs/current/hot-standby.html), anders kan het secundaire niet worden gestart.
+* In Azure Database for PostgreSQL wordt het Maxi maal toegestane aantal verbindingen voor elke server vastgesteld op de reken-SKU sinds de verbindingen van het geheugen bezet zijn. U vindt meer informatie over de [toewijzing tussen max_connections en Compute-sku's](concepts-limits.md).
+* **Omhoog schalen**: u kunt de berekening van een replica eerst opschalen en vervolgens omhoog schalen. Deze volg orde zorgt ervoor dat fouten de vereiste niet schenden `max_connections` .
+* **Omlaag schalen**: schaal eerst de primaire Compute en schaal vervolgens omlaag in de replica. Als u de replica lager wilt schalen dan de primaire, treedt er een fout op omdat dit de vereiste schendt `max_connections` .
+
+Opslag ruimte schalen:
+* Voor alle replica's is opslag automatisch verg Roten ingeschakeld om replicatie problemen vanuit een opslag-volledige replica te voor komen. Deze instelling kan niet worden uitgeschakeld.
+* U kunt de opslag ook hand matig schalen, op dezelfde manier als op een andere server
+
 
 ### <a name="basic-tier"></a>Basislaag
 Basic-laag servers ondersteunen alleen replicatie met dezelfde regio.

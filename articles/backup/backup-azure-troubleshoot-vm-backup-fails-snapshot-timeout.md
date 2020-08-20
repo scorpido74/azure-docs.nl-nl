@@ -4,12 +4,12 @@ description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met bet
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585557"
+ms.locfileid: "88611854"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -31,7 +31,7 @@ De meest voorkomende back-upfouten kunnen automatisch worden opgelost door de vo
 - **Controleer of de Azure VM Guest Agent-service is gestart en up-to-date is**:
   - Op een Windows-VM:
     - Navigeer naar **Services. msc** en zorg ervoor dat de **Windows Azure VM Guest Agent-service** actief is. Zorg er ook voor dat de [meest recente versie](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) is geïnstalleerd. Zie problemen met de [Windows VM-gast agent](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)voor meer informatie.
-    - De Azure VM-agent wordt standaard geïnstalleerd op een virtuele Windows-machine die is geïmplementeerd vanuit de Azure Marketplace-installatie kopie vanuit de portal, Power shell, de opdracht regel interface of een Azure Resource Manager sjabloon. Een [hand matige installatie van de agent](../virtual-machines/extensions/agent-windows.md#manual-installation) kan nodig zijn wanneer u een aangepaste VM-installatie kopie maakt die is geïmplementeerd in Azure.
+    - De Azure VM-agent wordt standaard geïnstalleerd op een virtuele Windows-machine die is geïmplementeerd vanuit een Azure Marketplace-installatie kopie vanuit de portal, Power shell, de opdracht regel interface of een Azure Resource Manager sjabloon. Een [hand matige installatie van de agent](../virtual-machines/extensions/agent-windows.md#manual-installation) kan nodig zijn wanneer u een aangepaste VM-installatie kopie maakt die is geïmplementeerd in Azure.
     - Bekijk de ondersteunings matrix om te controleren of de VM wordt uitgevoerd op het [ondersteunde Windows-besturings systeem](backup-support-matrix-iaas.md#operating-system-support-windows).
   - Op Linux VM,
     - Zorg ervoor dat de Azure VM Guest Agent-service wordt uitgevoerd door de opdracht uit te voeren `ps-e` . Zorg er ook voor dat de [meest recente versie](../virtual-machines/extensions/update-linux-agent.md) is geïnstalleerd. Zie problemen met de [gast agent van Linux VM](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)voor meer informatie.

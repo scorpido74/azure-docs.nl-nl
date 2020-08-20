@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284282"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612551"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Een load balancer configureren voor een SQL Server AlwaysOn-beschikbaarheids groep in azure Virtual Machines
 
@@ -71,6 +71,7 @@ Maak eerst de load balancer.
    | --- | --- |
    | **Naam** |Een tekstnaam voor de taakverdeler. Bijvoorbeeld: **sqlLB**. |
    | **Type** |**Intern**: de meeste implementaties gebruiken een interne Load Balancer, waarmee toepassingen binnen hetzelfde virtuele netwerk verbinding kunnen maken met de beschikbaarheids groep.  </br> **Extern**: Hiermee kunnen toepassingen verbinding maken met de beschikbaarheids groep via een open bare Internet verbinding. |
+   | **SKU** |**Standaard**: vereist als uw SQL-exemplaren zich in een andere beschikbaarheidsset bevinden dan de Load Balancer. </br> **Basis**: standaard optie. |
    | **Virtueel netwerk** |Selecteer het virtuele netwerk waarin de SQL Server exemplaren zich bevinden. |
    | **Subnet** |Selecteer het subnet waarin de SQL Server-exemplaren zich bevinden. |
    | **IP-adrestoewijzing** |**Statisch** |

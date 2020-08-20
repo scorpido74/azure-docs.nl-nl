@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022715"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612109"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteunings matrix Azure Migrate
 
@@ -45,7 +45,7 @@ Migratie van Azure Migrate server | N.v.t. | Migreer [VMware-vm's](tutorial-migr
 [DMA](/sql/dma/dma-overview?view=sql-server-2017) | Beoordeel SQL Server data bases. | N.v.t.
 [DMS](../dms/dms-overview.md) | N.v.t. | Migrate SQL Server, Oracle, MySQL, PostgreSQL, MongoDB. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Virtual Desktop Infrastructure (VDI) evalueren | N.v.t.
-[Movere](https://www.movere.io/) | Bewaak virtuele VMWare-machines, Hyper-V-Vm's, xen-Vm's, fysieke machines, werk stations (inclusief VDI), open bare Cloud werkbelastingen | N.v.t.
+[Movere](https://www.movere.io/) | Bewaak virtuele VMware-machines, Hyper-V-Vm's, xen-Vm's, fysieke machines, werk stations (inclusief VDI), open bare Cloud werkbelastingen | N.v.t.
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | N.v.t. | Virtuele VMWare-machines migreren, virtuele Hyper-V-machines, xen-Vm's, KVM-Vm's, fysieke machines, open bare Cloud werkbelastingen 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud. | N.v.t.
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Evalueer virtuele VMware-machines, Hyper-V-Vm's, fysieke servers, open bare Cloud werkbelastingen en SQL Server data bases. | N.v.t.
@@ -85,7 +85,7 @@ U kunt een Azure Migrate-project maken in een aantal geographs in de open bare C
 --- | ---
 Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
 Australië | Australië-oost of Australië-zuidoost
-Brazilië | Brazil South
+Brazilië | Brazilië - zuid
 Canada | Canada-centraal of Canada-oost
 Europa | Europa - noord of Europa - west
 Frankrijk | Frankrijk - centraal

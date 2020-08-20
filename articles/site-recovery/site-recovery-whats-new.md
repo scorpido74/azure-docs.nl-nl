@@ -2,13 +2,13 @@
 title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 28bdf902ab74bf4bb94a6bc02a558bf200b25e52
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/20/2020
+ms.openlocfilehash: d7e3a8e29800943b28c64848fc66f27f888d439f
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836629"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611735"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -22,17 +22,25 @@ Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest re
 
 **Bijwerken** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
 --- | --- | --- | --- | --- | ---
+[Pakket 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 [Pakket 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
 [Pakket 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | Hyper-v-machines-2.0.9183.0 <br> VMware-machines-2.0.9177.0
 [Pakket 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [Pakket 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
-[Pakket 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
-[Pakket 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 
 Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning van de update.
 
-> [!NOTE]
-> Update pakket 44 wordt niet weer gegeven in de tabel omdat het geen updates bevat voor de Site Recovery providers en agents.
+
+## <a name="updates-august-2020"></a>Updates (augustus 2020)
+
+### <a name="update-rollup-49"></a>Update pakket 49
+
+[Update pakket 49](https://support.microsoft.com/help/4578241/update-rollup-49-for-azure-site-recovery) bevat de volgende updates:
+
+**Bijwerken** | **Details**
+--- | ---
+**Providers en agents** | Updates van Site Recovery agents en providers zoals beschreven in het pakket.
+**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in de samen telling.
 
 ## <a name="updates-july-2020"></a>Updates (juli 2020)
 
@@ -437,7 +445,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 --- | ---
 **Linux Support** |  Er is ondersteuning toegevoegd voor Oracle Linux 6,8, Oracle Linux 6,9 en Oracle Linux 7,0 met de Red Hat compatible kernel en voor de onbreekbare UEK-versie (Enter prise kernel) 5.
 **LVM** | Ondersteuning toegevoegd voor LVM-en LVM2-volumes.<br/><br/> De/boot-map op een schijf partitie en op LVM-volumes wordt nu ondersteund.
-**Mappen** | Er is ondersteuning toegevoegd voor deze mappen die zijn ingesteld als afzonderlijke partities of bestands systemen die zich niet op dezelfde systeem schijf bevinden:<br/><br/> /(root),/boot,/usr,/usr/local,/var,/etc.
+**Adressen** | Er is ondersteuning toegevoegd voor deze mappen die zijn ingesteld als afzonderlijke partities of bestands systemen die zich niet op dezelfde systeem schijf bevinden:<br/><br/> /(root),/boot,/usr,/usr/local,/var,/etc.
 **Windows Server 2008** | Ondersteuning voor dynamische schijven is toegevoegd.
 **Failover** | Verbeterde failover-tijd voor VMware-Vm's waarbij storvsc en vsbus geen stuur Programma's worden opgestart.
 **UEFI-ondersteuning** | Azure-Vm's ondersteunen boot type UEFI niet. U kunt nu on-premises fysieke servers met UEFI migreren naar Azure met Site Recovery. Site Recovery migreert de server door het opstart type te converteren naar BIOS vóór de migratie. Site Recovery eerder deze conversie alleen voor Vm's ondersteund. Ondersteuning is beschikbaar voor fysieke servers met Windows Server 2012 of hoger.

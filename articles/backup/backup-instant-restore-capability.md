@@ -4,12 +4,12 @@ description: Azure direct Restore-mogelijkheid en veelgestelde vragen over VM-ba
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 6ea4c3757da4e24ae0455cf35f119bf57ed644a6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: bb9a7a32306fc76ea8852787601f3b3b3828daf8
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531826"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611802"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Profiteer van verbeterde prestaties voor back-up en herstel met Azure Backup functie voor direct terugzetten
 
@@ -42,10 +42,10 @@ Moment opnamen worden standaard twee dagen bewaard. Met deze functie kan de hers
 ## <a name="feature-considerations"></a>Functie overwegingen
 
 * Moment opnamen worden samen met de schijven opgeslagen om het maken van herstel punten te verhogen en herstel bewerkingen sneller uit te voeren. Als gevolg hiervan worden opslag kosten weer gegeven die overeenkomen met moment opnamen die zijn gemaakt tijdens deze periode.
-* Incrementele moment opnamen worden opgeslagen als pagina-blobs. Alle gebruikers die gebruikmaken van niet-beheerde schijven, worden in rekening gebracht voor de moment opnamen die zijn opgeslagen in hun lokale opslag account. Omdat de herstel punt verzamelingen die door beheerde VM-back-ups worden gebruikt, Blob-moment opnamen op het onderliggende opslag niveau gebruiken, worden voor beheerde schijven kosten weer geven die overeenkomen met de prijzen van BLOB-moment opnamen en ze incrementeel.
+* Incrementele moment opnamen worden opgeslagen als pagina-blobs. Alle gebruikers die gebruikmaken van niet-beheerde schijven, worden in rekening gebracht voor de moment opnamen die zijn opgeslagen in hun lokale opslag account. Omdat de herstel punt verzamelingen die worden gebruikt door beheerde VM-back-ups BLOB-moment opnamen op het onderliggende opslag niveau gebruiken, voor beheerde schijven, worden de kosten weer geven die overeenkomen met de prijzen van BLOB-moment opnamen en ze incrementeel.
 * Voor Premium Storage-accounts worden de moment opnamen die zijn gemaakt voor onmiddellijke herstel punten, meegeteld bij de limiet van 10 TB aan toegewezen ruimte.
-* U krijgt de mogelijkheid om de Bewaar periode voor moment opnamen te configureren op basis van de herstel behoeften. Afhankelijk van de vereiste kunt u de retentie van de moment opname instellen op mini maal één dag op de Blade back-upbeleid, zoals hieronder wordt uitgelegd. Dit helpt u kosten voor het bewaren van moment opnamen op te slaan als u de herstel bewerking niet regel matig uitvoert.
-* Het is een upgrade van één richting, wanneer u een upgrade hebt uitgevoerd naar instant Restore, kunt u niet meer teruggaan.
+* U krijgt de mogelijkheid om de Bewaar periode voor moment opnamen te configureren op basis van de herstel behoeften. Afhankelijk van de vereiste kunt u de retentie van de moment opname instellen op mini maal één dag in het deel venster back-upbeleid, zoals hieronder wordt uitgelegd. Dit helpt u kosten voor het bewaren van moment opnamen op te slaan als u de herstel bewerking niet regel matig uitvoert.
+* Het is een upgrade met één richting. Nadat de upgrade is uitgevoerd naar direct herstellen, kunt u niet meer teruggaan.
 
 >[!NOTE]
 >Met deze onmiddellijke terugzet upgrade wordt de duur van de moment opname van alle klanten (**Nieuw en bestaand al inbegrepen**) ingesteld op een standaard waarde van twee dagen. U kunt de duur echter instellen op basis van uw vereiste tot een waarde tussen 1 en 5 dagen.
@@ -61,7 +61,7 @@ De incrementele moment opnamen worden opgeslagen in het opslag account van de vi
 
 ### <a name="using-azure-portal"></a>Azure Portal gebruiken
 
-In de Azure Portal ziet u een veld dat is toegevoegd op de Blade **back-upbeleid** van de VM onder de sectie **direct terugzetten** . U kunt de Bewaar periode voor de moment opname wijzigen van de Blade **back-upbeleid voor virtuele** machines voor alle vm's die zijn gekoppeld aan het specifieke back-upbeleid.
+In de Azure Portal ziet u een veld dat is toegevoegd in het deel venster **VM-back-upbeleid** in de sectie **direct terugzetten** . U kunt de Bewaar duur van de moment opname wijzigen via het deel venster **back-upbeleid** voor vm's voor alle virtuele machines die aan het specifieke back-upbeleid zijn gekoppeld.
 
 ![Mogelijkheid tot direct terugzetten](./media/backup-azure-vms/instant-restore-capability.png)
 
@@ -110,7 +110,7 @@ Het nieuwe model staat het verwijderen van het herstel punt (Tier2) niet toe, te
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Waarom is mijn moment opname na de ingestelde Bewaar periode in back-upbeleid al aanwezig?
 
-Als het herstel punt een moment opname heeft en de meest recente RP beschikbaar is, wordt deze bewaard tot het moment dat er een volgende geslaagde back-up is gemaakt. Dit is gebaseerd op het ontworpen beleid voor garbage collection (GC), dat ten minste één laatste RP vereist om altijd aanwezig te zijn in het geval dat alle back-ups verder mislukken als gevolg van een probleem in de virtuele machine. In normale scenario's worden RPs Maxi maal 24 uur na verloop van tijd opgeruimd.
+Als het herstel punt moment opname heeft en de meest recente RP beschikbaar is, wordt het behouden tot de volgende geslaagde back-up. Dit is gebaseerd op het ontworpen beleid voor garbage collection (GC), dat ten minste één laatste RP vereist om altijd aanwezig te zijn in het geval dat alle back-ups verder mislukken als gevolg van een probleem in de virtuele machine. In normale scenario's worden RPs Maxi maal 24 uur na verloop van tijd opgeruimd.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Ik heb niet de functionaliteit voor direct terugzetten nodig. Kan deze worden uitgeschakeld?
 

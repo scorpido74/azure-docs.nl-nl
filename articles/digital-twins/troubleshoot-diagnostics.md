@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: d47bb7cc868c5733c6e36290f097fec783764cd3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003575"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612398"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problemen oplossen met Azure Digital Apparaatdubbels: logboek registratie van diagnostische gegevens
 
@@ -71,7 +71,7 @@ Elke logboek categorie bestaat uit bewerkingen van schrijven, lezen, verwijderen
 | Schrijven | PUT and PATCH |
 | Lezen | GET |
 | Verwijderen | DELETE |
-| Actie | POST |
+| Bewerking | POST |
 
 Hier volgt een uitgebreide lijst met de bewerkingen en bijbehorende [Azure Digital apparaatdubbels rest API-aanroepen](https://docs.microsoft.com/rest/api/azure-digitaltwins/) die in elke categorie zijn geregistreerd. 
 
@@ -88,7 +88,7 @@ Hier volgt een uitgebreide lijst met de bewerkingen en bijbehorende [Azure Digit
 | ADTEventRoutesOperation | Micro soft. DigitalTwins/eventroutes/schrijven | Gebeurtenis routes toevoegen API |
 |  | Micro soft. DigitalTwins/eventroutes/lezen | Gebeurtenis routes ophalen op basis van id en lijst-Api's |
 |  | Micro soft. DigitalTwins/eventroutes/verwijderen | Gebeurtenis routes verwijderen API |
-|  | Micro soft. DigitalTwins/eventroutes/actie | Uitgaand van een gebeurtenis naar een end-punt service (geen API-aanroep) |
+|  | Micro soft. DigitalTwins/eventroutes/actie | Fout bij het publiceren van gebeurtenissen naar een eindpunt service (geen API-aanroep) |
 | ADTDigitalTwinsOperation | Micro soft. DigitalTwins/DigitalTwins/schrijven | Digitale Apparaatdubbels toevoegen, relatie toevoegen, bijwerken, onderdeel bijwerken |
 |  | Micro soft. DigitalTwins/DigitalTwins/lezen | Digital Apparaatdubbels get by id, component ophalen, relatie ophalen op id, binnenkomende relaties weer geven, lijst relaties |
 |  | Micro soft. DigitalTwins/DigitalTwins/verwijderen | Digitale Apparaatdubbels verwijderen, relatie verwijderen |

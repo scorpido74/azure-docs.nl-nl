@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3a23e0c2546da55f977d589eb38607994d3902b
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80133166"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611786"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Gebruik IoT Edge in Windows om Linux-containers uit te voeren
 
@@ -34,7 +34,7 @@ Gebruik deze sectie om te controleren of uw Windows-apparaat IoT Edge kan onders
 
 Azure IoT Edge met Linux-containers kan worden uitgevoerd op elke versie van Windows die voldoet aan de [vereisten voor docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)
 
-Als u IoT Edge wilt installeren op een virtuele machine, schakelt u geneste virtualisatie in en wijst u ten minste 2 GB geheugen toe. Het inschakelen van geneste virtualisatie verschilt afhankelijk van de Hyper Visor die u gebruikt. Voor virtuele machines van de 2e generatie is geneste virtualisatie standaard ingeschakeld. Voor VMWare is er een wissel knop om de functie op uw virtuele machine in te scha kelen.
+Als u IoT Edge wilt installeren op een virtuele machine, schakelt u geneste virtualisatie in en wijst u ten minste 2 GB geheugen toe. Het inschakelen van geneste virtualisatie verschilt afhankelijk van de Hyper Visor die u gebruikt. Voor virtuele machines van de 2e generatie is geneste virtualisatie standaard ingeschakeld. Voor VMware is er een wissel knop om de functie op uw virtuele machine in te scha kelen.
 
 ### <a name="prepare-the-container-engine"></a>De container engine voorbereiden
 
@@ -57,14 +57,14 @@ U vindt meer informatie over de verschillende installatie opties en-para meters 
 
 1. Als u dit nog niet hebt gedaan, registreert u een nieuw IoT Edge apparaat en haalt u het apparaat connection string op. Kopieer de connection string voor gebruik verderop in deze sectie. U kunt deze stap volt ooien met behulp van de volgende hulpprogram ma's:
 
-   * [Azure-portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure-CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. Voer PowerShell uit als beheerder.
 
    >[!NOTE]
-   >Gebruik een AMD64-sessie van Power shell om IoT Edge, niet Power shell (x86), te installeren. Als u niet zeker weet welk sessie type u gebruikt, voert u de volgende opdracht uit:
+   >Gebruik een AMD64-sessie van PowerShell om IoT Edge, niet PowerShell (x86), te installeren. Als u niet zeker weet welk sessietype u gebruikt, voert u de volgende opdracht uit:
    >
    >```powershell
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
@@ -79,7 +79,7 @@ U vindt meer informatie over de verschillende installatie opties en-para meters 
 
 4. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Op andere Windows 10-of Windows Server-apparaten wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op. Zodra het apparaat klaar is, voert u Power shell als beheerder opnieuw uit.
 
-5. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten met een apparaat connection string. Declareer Linux als het gewenste container besturingssysteem.
+5. Met de opdracht **Initialize-IoTEdge** configureert u de IoT Edge-runtime op uw machine. De opdracht wordt standaard ingesteld op hand matig inrichten met een apparaat connection string. Declareer Linux als het gewenste container besturingssysteem.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -88,7 +88,7 @@ U vindt meer informatie over de verschillende installatie opties en-para meters 
 
 6. Wanneer u hierom wordt gevraagd, geeft u de connection string op van het apparaat dat u in stap 1 hebt opgehaald. Het apparaat connection string het fysieke apparaat koppelt aan een apparaat-ID in IoT Hub.
 
-   De connection string van het apparaat heeft de volgende indeling en mag geen aanhalings tekens bevatten:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   De connection string van het apparaat heeft de volgende indeling en mag geen aanhalings tekens bevatten: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
 ## <a name="verify-successful-installation"></a>Geslaagde installatie controleren
 

@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 76f212875c7f48d9436295f523660b7a298ce7f0
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 9ae8fd824144c70edeb1e084155e8cdff95cd8b9
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263313"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612330"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -95,7 +95,7 @@ De instelling voor opslagreplicatie bewerken:
 
 ### <a name="downloading-the-software-package"></a>Het software pakket downloaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Als er al een Recovery Services kluis is geopend, gaat u verder met stap 3. Als u nog geen Recovery Services kluis hebt geopend, maar wel in de Azure Portal, klikt u op **Bladeren**in het hoofd menu.
 
    * Typ in de lijst met resources **Recovery Services**.
@@ -156,7 +156,7 @@ Nadat u alle bestanden hebt gedownload, selecteert u **MicrosoftAzureBackupInsta
 
 ![Setup uitpakken van bestanden voor installatie](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de volledig geëxtraheerde *setup.exe* te starten om te beginnen met de installatie van Microsoft Azure backup server en selecteert u op de knop **volt ooien** .
+Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de volledig geëxtraheerde *setup.exe* te starten om te beginnen met de installatie van Microsoft Azure backup server en selecteert u de knop **volt ooien** .
 
 ### <a name="installing-the-software-package"></a>Het software pakket installeren
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: cc294eb1bdfd4a6a8c6ad001c007f83a10983644
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 730df91d922c4bd6187748654f8184cfb7dc6ea0
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185805"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612704"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters automatisch schalen
 
 Met de gratis functie voor automatisch schalen van Azure HDInsight kunt u het aantal worker-knoop punten in uw cluster, op basis van eerder ingestelde criteria, verg Roten of verkleinen. U stelt een minimum-en maximum aantal knoop punten in tijdens het maken van het cluster, waarbij u de schaal criteria instelt met behulp van een dag-tijd schema of specifieke prestatie gegevens en het HDInsight-platform de rest.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Hoe het werkt
 
 De functie voor automatisch schalen maakt gebruik van twee soorten voor waarden voor het activeren van schaal gebeurtenissen: drempel waarden voor diverse metrische gegevens voor cluster prestaties (zogenaamde *op belasting gebaseerd schalen*) en activering op basis van tijd (genoemd *op schema gebaseerd*). Schalen op basis van een belasting wijzigt het aantal knoop punten in het cluster, binnen een bereik dat u instelt, om ervoor te zorgen dat het CPU-gebruik optimaal werkt en de uitgevoerde kosten tot een minimum worden beperkt. Schalen op basis van een schema wijzigt het aantal knoop punten in uw cluster op basis van bewerkingen die u koppelt aan specifieke datums en tijden.
 
@@ -79,7 +79,7 @@ In de volgende tabel worden de cluster typen en versies beschreven die compatibe
 | HDInsight 3,6 met ESP | Ja | Ja | Ja | Ja* | Nee | Nee | Nee |
 | HDInsight 4,0 met ESP | Ja | Ja | Ja | Ja* | Nee | Nee | Nee |
 
-\*HBase-clusters kunnen alleen worden geconfigureerd voor schalen op basis van een planning, niet op basis van de belasting.
+\* HBase-clusters kunnen alleen worden geconfigureerd voor schalen op basis van een planning, niet op basis van de belasting.
 
 ## <a name="get-started"></a>Aan de slag
 
@@ -258,6 +258,26 @@ De actieve taken worden voortgezet. De in behandeling zijnde taken wachten op pl
 ### <a name="minimum-cluster-size"></a>Minimale cluster grootte
 
 Schaal uw cluster niet naar minder dan drie knoop punten. Het schalen van uw cluster naar minder dan drie knoop punten kan ertoe leiden dat de veilige modus vastloopt vanwege onvoldoende bestands replicatie.  Zie voor meer informatie [ophalen in de veilige modus](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+
+### <a name="llap-daemons-count"></a>Aantal LLAP-daemons
+
+In het geval van automatisch schalen ingeschakelde LLAP-clusters, wordt het aantal actieve worker-knoop punten ook omhoog/omlaag geschaald. Maar deze wijziging in het aantal daemons wordt niet opgeslagen in de **num_llap_nodes** configuratie in Ambari. Als Hive-Services hand matig opnieuw worden gestart, wordt het aantal LLAP-daemons opnieuw ingesteld volgens de configuratie in Ambari.
+
+We gaan nu het onderstaande scenario volgen:
+1. Een LLAP-cluster met automatisch schalen wordt gemaakt met drie werk knooppunten en automatisch schalen op basis van een werk belasting wordt ingeschakeld met mini maal drie worker-knoop punten als 3 en maximum aantal werk knooppunten als 10.
+2. De configuratie van het aantal LLAP-daemons op basis van LLAP-configuraties en Ambari is 3, omdat het cluster is gemaakt met 3 worker-knoop punten.
+3. Vervolgens wordt automatisch omhoog schalen geactiveerd als gevolg van het laden van het cluster, wordt het cluster nu geschaald naar 10 knoop punten.
+4. Het selectie vakje voor automatisch schalen met regel matige tussen pozen geeft aan dat het aantal LLAP-daemons 3 is, maar het aantal actieve worker-knoop punten is 10, het proces voor automatisch schalen verhoogt het aantal van de LLAP-daemon tot 10, maar deze wijziging wordt niet doorgevoerd in de Ambari config-num_llap_nodes.
+5. Automatisch schalen is nu uitgeschakeld.
+6. Het cluster heeft nu 10 werk knooppunten en 10 LLAP-daemons.
+7. De LLAP-service wordt hand matig opnieuw gestart.
+8. Tijdens het opnieuw opstarten wordt de num_llap_nodes configuratie in de LLAP-configuratie gecontroleerd en wordt de waarde als 3 genoteerd, zodat er drie exemplaren van daemons worden gerug, maar het aantal worker-knoop punten is 10. Er is nu een verschil tussen de twee.
+
+Als dit het geval is, moet u de **configuratie van de num_llap_node (aantal knoop punten voor het uitvoeren van de Hive llap-daemon) onder Geavanceerde Hive-Interactive-env** hand matig wijzigen zodat deze overeenkomt met het huidige aantal actieve worker-knoop punten.
+
+**Opmerking**
+
+Met de functie voor automatisch schalen kunt u het **maximum aantal gelijktijdige query's** in het Hive-configuratie bestand in Ambari niet wijzigen. Dit betekent dat de service component server 2 interactief **alleen het opgegeven aantal gelijktijdige query's op elk gewenst moment kan verwerken, zelfs als het aantal LLAP-daemons omhoog en omlaag wordt geschaald op basis van de belasting/het schema**. De algemene aanbeveling is om deze configuratie in te stellen voor het scenario voor piek gebruik, zodat de hand matige tussen komst kan worden vermeden. Er moet echter wel rekening mee worden gehouden dat het **instellen van een hoge waarde voor het maximum aantal gelijktijdige query's configuratie kan mislukken van Hive Server 2 Interactive service restart als het minimum aantal worker-knoop punten het opgegeven aantal TEZ AMS niet kan bevatten (gelijk aan het maximum aantal gelijktijdige query configuraties)**
 
 ## <a name="next-steps"></a>Volgende stappen
 

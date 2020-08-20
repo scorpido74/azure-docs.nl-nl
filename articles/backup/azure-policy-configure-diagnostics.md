@@ -3,12 +3,12 @@ title: Diagnostische instellingen voor de kluis op schaal configureren
 description: Log Analytics Diagnostische instellingen configureren voor alle kluizen in een bepaald bereik met behulp van Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 2400be15dcd46084e9a605076c00cf5c5ac92463
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 58ef8af56bb3f44664ffaec6a17bab5f5e92808e
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498046"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612500"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Diagnostische instellingen voor de kluis op schaal configureren
 
@@ -36,15 +36,15 @@ Volg de onderstaande stappen om het beleid voor kluizen toe te wijzen in het ver
 2. Selecteer **definities** in het linkermenu om een lijst op te halen met alle ingebouwde beleids regels voor Azure-resources.
 3. De lijst filteren op **categorie = bewaking**. Zoek het beleid met de naam **[Preview]: Diagnostische instellingen voor Recovery Services kluis implementeren in log Analytics werk ruimte voor resource-specifieke categorieën**.
 
-    ![Blade beleids definitie](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
+    ![Deel venster beleids definitie](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
-4. Klik op de naam van het beleid. U wordt omgeleid naar de gedetailleerde definitie van dit beleid.
+4. Selecteer de naam van het beleid. U wordt omgeleid naar de gedetailleerde definitie van dit beleid.
 
     ![Gedetailleerde beleids definitie](./media/backup-azure-policy-configure-diagnostics/detailed-policy-definition.png)
 
-5. Klik boven aan de Blade op de knop **toewijzen** . Hiermee wordt u omgeleid naar de Blade **beleid toewijzen** .
+5. Selecteer de knop **toewijzen** boven aan het deel venster. Hiermee wordt u omgeleid naar het deel venster **beleid toewijzen** .
 
-6. Klik onder **basis principes**op de drie puntjes naast het veld **bereik** . Hiermee opent u een rechter context-Blade waar u het abonnement kunt selecteren waarop het beleid moet worden toegepast. U kunt desgewenst ook een resource groep selecteren, zodat het beleid alleen wordt toegepast op kluizen in een bepaalde resource groep.
+6. Selecteer onder **basis beginselen**de drie punten naast het veld **bereik** . Hiermee opent u een context paneel met de rechter muisknop waarin u het abonnement kunt selecteren waarop het beleid moet worden toegepast. U kunt desgewenst ook een resource groep selecteren, zodat het beleid alleen wordt toegepast op kluizen in een bepaalde resource groep.
 
     ![Basis principes van beleids toewijzing](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
@@ -53,7 +53,7 @@ Volg de onderstaande stappen om het beleid voor kluizen toe te wijzen in het ver
     * **Profiel naam** : de naam die wordt toegewezen aan de diagnostische instellingen die door het beleid zijn gemaakt.
     * **Log Analytics-werk ruimte** : de log Analytics werk ruimte waaraan de diagnostische instelling moet worden gekoppeld. Diagnostische gegevens van alle kluizen in het bereik van de beleids toewijzing worden gepusht naar de opgegeven LA-werk ruimte.
 
-    * **Naam van het uitsluitings label (optioneel) en de uitzonderings label waarde (optioneel)** : u kunt ervoor kiezen om de kluizen uit te sluiten van een bepaalde label naam en-waarde uit de beleids toewijzing. Als u bijvoorbeeld **niet** wilt dat een diagnostische instelling wordt toegevoegd aan de kluizen die een tag ' isTest ' hebben ingesteld op ' ja ', moet u ' isTest ' invoeren in het veld met de naam van het **uitsluitings label** en ' ja ' in het veld met de uitzonderings **label waarde** . Als een (of beide) van deze twee velden leeg blijven, wordt het beleid toegepast op alle relevante kluizen, onafhankelijk van de tags die ze bevatten.
+    * **Naam van het uitsluitings label (optioneel) en de uitzonderings label waarde (optioneel)** : u kunt ervoor kiezen om de kluizen uit te sluiten van een bepaalde label naam en-waarde uit de beleids toewijzing. Als u bijvoorbeeld **niet** wilt dat een diagnostische instelling wordt toegevoegd aan de kluizen waarvan de tag ' isTest ' is ingesteld op de waarde ' ja ', moet u ' isTest ' invoeren in het veld met de naam van het **uitsluitings label** en ' ja ' in het veld met de uitzonderings **label waarde** . Als een (of beide) van deze twee velden leeg blijven, wordt het beleid toegepast op alle relevante kluizen, ongeacht de tags die ze bevatten.
 
     ![Beleids toewijzings parameters](./media/backup-azure-policy-configure-diagnostics/policy-assignment-parameters.png)
 
@@ -61,18 +61,18 @@ Volg de onderstaande stappen om het beleid voor kluizen toe te wijzen in het ver
 
     ![Herstel van beleids toewijzing](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
 
-9. Ga naar het tabblad **controleren + maken** en klik op **maken**.
+9. Ga naar het tabblad **controleren + maken** en selecteer **maken**.
 
 ## <a name="under-what-conditions-will-the-remediation-task-apply-to-a-vault"></a>Onder welke voor waarden is de herstel taak van toepassing op een kluis?
 
 De herstel taak wordt toegepast op kluizen die niet-compatibel zijn volgens de definitie van het beleid. Een kluis is niet-compatibel als deze voldoet aan een van de volgende voor waarden:
 
 * Voor de kluis is geen diagnostische instelling aanwezig.
-* Diagnostische instellingen zijn aanwezig voor de kluis, maar voor geen van de instellingen zijn **alle** resource-specifieke gebeurtenissen ingeschakeld met La as Destination en de **resource** die is geselecteerd in de wissel knop.
+* Er zijn Diagnostische instellingen voor de kluis aanwezig, maar voor geen van de instellingen zijn **alle** resource-specifieke gebeurtenissen ingeschakeld met La as Destination en de **resource-specifiek** geselecteerd in de wissel knop.
 
 Zelfs als een gebruiker een kluis heeft waarvoor de gebeurtenis AzureBackupReport is ingeschakeld in de AzureDiagnostics-modus (die wordt ondersteund door de back-uprapporten), is de herstel taak nog steeds van toepassing op deze [kluis, omdat](./backup-azure-diagnostic-events.md#legacy-event)de resource-specifieke modus de aanbevolen manier is om Diagnostische instellingen te maken.
 
-Als een gebruiker een kluis heeft met slechts een subset van de zes resource-specifieke gebeurtenissen ingeschakeld, is de herstel taak voor deze kluis van toepassing, omdat back-uprapporten alleen zoals verwacht worden uitgevoerd als alle zes specifieke resource gebeurtenissen zijn ingeschakeld.
+Als een gebruiker echter een kluis heeft met slechts een subset van de zes resource-specifieke gebeurtenissen ingeschakeld, is de herstel taak van toepassing op deze kluis, omdat back-uprapporten alleen zoals verwacht werken als alle zes specifieke gebeurtenissen voor de resource zijn ingeschakeld.
 
 > [!NOTE]
 >

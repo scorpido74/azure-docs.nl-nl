@@ -3,12 +3,12 @@ title: De DPM-server voorbereiden op het maken van back-ups van workloads
 description: In dit artikel wordt beschreven hoe u back-ups van System Center-Data Protection Manager (DPM) kunt voorbereiden op Azure met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: a61112f04d3faef83a80395a7d316c63130e7758
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263262"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612653"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Voorbereiden op back-ups van workloads naar Azure met System Center DPM
 
@@ -92,12 +92,12 @@ Down load het kluis referentie bestand via een beveiligd kanaal van de Azure Por
   - Als het beheer van de referenties is verbroken, kunnen de kluis referenties worden gebruikt om andere machines bij de kluis te registreren.
   - Back-upgegevens worden echter versleuteld met een wachtwoordzin die bij de klant hoort, zodat de bestaande back-upgegevens niet kunnen worden aangetast.
 - Zorg ervoor dat het bestand wordt opgeslagen op een locatie die toegankelijk is vanaf de DPM-server. Als de app wordt opgeslagen in een bestands share/SMB, controleert u op de toegangs machtigingen.
-- De kluis referenties verlopen na 48 uur. U kunt zo vaak als nodig nieuwe kluis referenties downloaden. Alleen het meest recente kluis referentie bestand kan echter worden gebruikt tijdens de registratie werk stroom.
+- De kluisreferenties verlopen na 48 uur. U kunt zo vaak als nodig nieuwe kluis referenties downloaden. Alleen het meest recente kluis referentie bestand kan echter worden gebruikt tijdens de registratie werk stroom.
 - De Azure Backup-service is niet op de hoogte van de persoonlijke sleutel van het certificaat en de persoonlijke sleutel is niet beschikbaar in de portal of de service.
 
 Down load het kluis referentie bestand als volgt naar een lokale computer:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de kluis waarin u de DPM-server wilt registreren.
 3. Selecteer in **instellingen**de optie **Eigenschappen**.
 

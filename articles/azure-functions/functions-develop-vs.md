@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen en testen van Azure Functions 
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 81de0af335e0a233ac568921b298c9bb168eb174
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209984"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612806"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions ontwikkelen met Visual Studio  
 
@@ -88,7 +88,7 @@ Uw code kan ook de waarden van de functie-app-instellingen lezen als omgevings v
 
 ## <a name="configure-the-project-for-local-development"></a>Het project voor lokale ontwikkeling configureren
 
-De functions runtime maakt intern gebruik van een Azure Storage-account. Voor alle trigger typen behalve HTTP en webhooks, stelt u de `Values.AzureWebJobsStorage` sleutel in op een geldige Azure Storage-account Connection String. De functie-app kan ook de [Azure-opslag emulator](../storage/common/storage-use-emulator.md) gebruiken voor de `AzureWebJobsStorage` verbindings instelling die door het project wordt vereist. Als u de emulator wilt gebruiken, stelt u de waarde `AzureWebJobsStorage` in op `UseDevelopmentStorage=true` . Wijzig deze instelling in een werkelijk opslag account connection string vóór de implementatie.
+De functions runtime maakt intern gebruik van een Azure Storage-account. Voor alle trigger typen behalve HTTP en webhooks, stelt u de `Values.AzureWebJobsStorage` sleutel in op een geldige Azure Storage-account Connection String. De functie-app kan ook de [Azure Storage-emulator](../storage/common/storage-use-emulator.md) gebruiken voor de `AzureWebJobsStorage` verbindings instelling die door het project wordt vereist. Als u de emulator wilt gebruiken, stelt u de waarde `AzureWebJobsStorage` in op `UseDevelopmentStorage=true` . Wijzig deze instelling in een werkelijk opslag account connection string vóór de implementatie.
 
 Het opslag account connection string instellen:
 

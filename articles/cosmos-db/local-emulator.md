@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 01/31/2020
-ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 08/19/2020
+ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225968"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607540"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Azure Cosmos Emulator gebruiken voor lokaal ontwikkelen en testen
 
@@ -35,12 +35,13 @@ Omdat Azure Cosmos Emulator een geëmuleerde omgeving biedt op de lokale compute
 
 * Op dit moment biedt Data Explorer in de emulator alleen ondersteuning voor clients voor de SQL-API. De Data Explorer-weergave en bewerkingen voor Azure Cosmos DB-API's, zoals MongoDB-, Table-, Graph-en Cassandra-API's, worden niet volledig ondersteund.
 * Azure Cosmos Emulator ondersteunt slechts één vast account en een bekende hoofdsleutel. Het opnieuw genereren van sleutels is niet mogelijk in Azure Cosmos Emulator, maar de standaardsleutel kan worden gewijzigd via de opdrachtregel.
+* De Azure Cosmos-emulator ondersteunt een Azure Cosmos-account in de [ingerichte doorvoer](set-throughput.md) modus; een Azure Cosmos-account wordt momenteel niet ondersteund in de [serverloze](serverless.md) modus.
 * Azure Cosmos Emulator is geen schaalbare service en biedt geen ondersteuning voor een groot aantal containers.
 * Azure Cosmos Emulator biedt geen verschillende [Azure Cosmos DB-consistentieniveaus](consistency-levels.md).
 * Azure Cosmos Emulator biedt geen [replicatie in meerdere regio's](distribute-data-globally.md).
 * Aangezien uw exemplaar van Azure Cosmos Emulator mogelijk niet altijd is bijgewerkt met de meest recente wijzigingen via de Azure Cosmos DB-service, is het belangrijk om de [Azure Cosmos DB-capaciteitsplanner](https://www.documentdb.com/capacityplanner) te raadplegen om een nauwkeurige schatting te maken van de productiedoorvoerbehoeften van uw toepassing.
 * Wanneer u Azure Cosmos Emulator gebruikt, kunt u standaard maximaal 25 containers met een vaste grootte maken (alleen ondersteund bij gebruik van Azure Cosmos DB-SDK's) of vijf containers van onbeperkte grootte met behulp van Azure Cosmos Emulator. Zie [De PartitionCount-waarde instellen](#set-partitioncount) voor meer informatie over het wijzigen van deze waarde.
-* De emulator ondersteunt maximaal 254 tekens voor de eigenschap id.
+* Emulator ondersteunt de maximale ID-eigenschaps grootte van 254 tekens.
 
 ## <a name="system-requirements"></a>Systeemvereisten
 

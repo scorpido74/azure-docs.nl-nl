@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: bbb42643e23020742cab66812f58f78f4529fe07
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 94298c5826f7158655367ae1dd6b7dd54cb88d24
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192846"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612432"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -71,17 +71,20 @@ Selecteer deze koppeling om de werkmap van het back-uprapport te openen.
 Het rapport bevat verschillende tabbladen:
 
 ##### <a name="summary"></a>Samenvatting
+
 Gebruik dit tabblad om een overzicht te krijgen van uw back-ups op hoog niveau. U kunt een kort overzicht krijgen van het totale aantal back-upitems, het totale verbruikte Cloud opslag, het aantal beveiligde instanties en het percentage van de taak geslaagd per type werk belasting. Voor meer informatie over een specifiek type back-upartefact gaat u naar de desbetreffende tabbladen.
 
    ![Het tabblad Samenvatting](./media/backup-azure-configure-backup-reports/summary.png)
 
 ##### <a name="backup-items"></a>Back-upitems
+
 Gebruik dit tabblad om informatie en trends te bekijken over Cloud opslag die op een back-upitemniveau wordt verbruikt. Als u bijvoorbeeld SQL gebruikt in een back-up van een Azure-VM, ziet u de gebruikte Cloud opslag voor elke SQL database waarvan een back-up wordt gemaakt. U kunt er ook voor kiezen om gegevens te bekijken voor back-upitems van een bepaalde beveiligings status. Als u bijvoorbeeld de tegel **beveiliging gestopt** selecteert boven aan het tabblad, filtert u alle onderliggende objecten zodanig dat alleen gegevens worden weer gegeven voor back-upitems met de status gestopt voor beveiliging.
 
    ![Tabblad Back-upitems](./media/backup-azure-configure-backup-reports/backup-items.png)
 
 ##### <a name="usage"></a>Gebruik
-Gebruik dit tabblad om de para meters voor de sleutel facturering voor uw back-ups weer te geven. De informatie die op dit tabblad wordt weer gegeven, bevindt zich op het niveau van een facturerings entiteit (beveiligde container). Als er bijvoorbeeld een back-up van een DPM-server wordt gemaakt naar Azure, kunt u de trend van beveiligde exemplaren en Cloud opslag die is verbruikt voor de DPM-server weer geven. Op dezelfde manier kunt u, als u SQL gebruikt in Azure Backup of SAP HANA in Azure Backup, op dit tabblad informatie over het gebruik weer geven op het niveau van de virtuele machine waarin deze data bases zich bevinden.
+
+Gebruik dit tabblad om de para meters voor de sleutel facturering voor uw back-ups weer te geven. De informatie die op dit tabblad wordt weer gegeven, bevindt zich op het niveau van een facturerings entiteit (beveiligde container). Als er bijvoorbeeld een back-up van een DPM-server wordt gemaakt naar Azure, kunt u de trend van beveiligde exemplaren en Cloud opslag weer geven die zijn gebruikt voor de DPM-server. Op dezelfde manier kunt u, als u SQL gebruikt in Azure Backup of SAP HANA in Azure Backup, op dit tabblad informatie over het gebruik weer geven op het niveau van de virtuele machine waarin deze data bases zich bevinden.
 
    ![Tabblad gebruik](./media/backup-azure-configure-backup-reports/usage.png)
 
@@ -89,42 +92,48 @@ Gebruik dit tabblad om de para meters voor de sleutel facturering voor uw back-u
 > Voor DPM-werk belastingen zien gebruikers mogelijk een enigszins verschil (van de volg orde van 20 MB per DPM-server) tussen de gebruiks waarden die worden weer gegeven in de rapporten, vergeleken met de waarde voor aggregatie gebruik zoals weer gegeven op het tabblad Overzicht van Recovery Services-kluis. Dit verschil wordt verwerkt door het feit dat elke DPM-server die voor back-up wordt geregistreerd, een gekoppelde meta gegevens bron heeft die niet wordt opgehaald als een artefact voor rapportage.
 
 ##### <a name="jobs"></a>Taken
+
 Gebruik dit tabblad om langlopende trends voor taken weer te geven, zoals het aantal mislukte taken per dag en de belangrijkste oorzaken van een mislukte taak. U kunt deze informatie zowel op het niveau van een geaggregeerde als op een back-upitem weer geven. Selecteer een bepaald back-upitem in een raster om gedetailleerde informatie weer te geven over elke taak die is geactiveerd op het back-upitem in het geselecteerde tijds bereik.
 
    ![Tabblad taken](./media/backup-azure-configure-backup-reports/jobs.png)
 
 ##### <a name="policies"></a>Beleidsregels
+
 Gebruik dit tabblad om informatie weer te geven over al uw actieve beleids regels, zoals het aantal gekoppelde items en de totale opslag ruimte in de cloud die wordt gebruikt door items waarvan een back-up is gemaakt onder een bepaald beleid. Selecteer een bepaald beleid om informatie weer te geven over elk van de bijbehorende back-upitems.
 
    ![Tabblad beleid](./media/backup-azure-configure-backup-reports/policies.png)
 
 ##### <a name="optimize"></a>Optimaliseren
+
 Gebruik dit tabblad om inzicht te krijgen in potentiële mogelijkheden voor kosten optimalisatie voor uw back-ups. Hieronder vindt u de scenario's waarvoor het tabblad Optimize momenteel inzichten bevat:
 
 ###### <a name="inactive-resources"></a>Inactieve resources
-In deze weer gave kunt u de back-upitems identificeren waarvoor geen back-up is gemaakt gedurende een belang rijke periode. Dit kan betekenen dat de onderliggende computer waarvan een back-up wordt gemaakt, niet meer bestaat (en dat dit resulteert in mislukte back-ups), of er is een probleem met de computer waardoor back-ups niet betrouwbaar kunnen worden uitgevoerd. 
 
-Als u inactieve resources wilt weer geven, gaat u naar het tabblad **optimaliseren** en klikt u op de tegel **inactieve resources** . Als u op deze tegel klikt, wordt een raster weer gegeven met details van alle inactieve resources die in het geselecteerde bereik bestaan. Het raster toont standaard items die geen herstel punt hebben in de afgelopen 7 dagen. Als u inactieve resources wilt zoeken voor een ander tijds bereik, kunt u het filter **tijd bereik** aanpassen boven aan het tabblad.
+In deze weer gave kunt u de back-upitems identificeren waarvan de back-up gedurende een aanzienlijke duur niet is geslaagd. Dit kan betekenen dat de onderliggende computer waarvan een back-up wordt gemaakt, niet meer bestaat (en dus wat resulteert in mislukte back-ups), of er is een probleem met de computer waardoor back-ups niet betrouwbaar kunnen worden uitgevoerd.
 
-Als u een inactieve resource hebt geïdentificeerd, kunt u het probleem verder onderzoeken door te navigeren naar het dash board back-upitem of de Blade Azure-resource voor die resource (waar van toepassing). Afhankelijk van uw scenario kunt u ervoor kiezen om de back-up voor de machine te stoppen (als deze nog niet bestaat) en overbodige back-ups te verwijderen, waardoor de kosten worden bespaard, of u kunt problemen op de machine oplossen om ervoor te zorgen dat back-ups betrouwbaar worden gemaakt.
+Als u inactieve resources wilt weer geven, gaat u naar het tabblad **optimaliseren** en selecteert u de tegel **inactieve resources** . Selecteer deze tegel bevat een raster met details van alle inactieve resources die in het geselecteerde bereik bestaan. Het raster toont standaard items die geen herstel punt hebben in de afgelopen zeven dagen. Als u inactieve resources wilt zoeken voor een ander tijds bereik, kunt u het filter **tijd bereik** aanpassen boven aan het tabblad.
+
+Als u een inactieve resource hebt geïdentificeerd, kunt u het probleem verder onderzoeken door te navigeren naar het dash board back-upitem of het deel venster Azure-resource voor die resource (waar van toepassing). Afhankelijk van uw scenario kunt u ervoor kiezen om de back-up voor de machine te stoppen (als deze niet meer bestaat) en overbodige back-ups te verwijderen, waarmee kosten worden bespaard, of u kunt problemen op de machine oplossen om ervoor te zorgen dat back-ups betrouwbaar worden gemaakt.
 
 ![Tabblad optimaliseren: inactieve resources](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
 
 ###### <a name="backup-items-with-a-large-retention-duration"></a>Back-upitems met een lange bewaarperiode
-In deze weer gave kunt u de items identificeren die back-ups gedurende een langere periode hebben bewaard dan is vereist voor uw organisatie. 
 
-Door te klikken op de tegel **beleids optimalisaties** gevolgd door de tegel **optimalisaties voor retentie** wordt een raster met alle back-upitems weer gegeven waarvoor het bewaren van de dagelijkse, wekelijkse, maandelijkse of jaarlijkse retentie punt (RP) groter is dan een opgegeven waarde. Standaard worden in het raster alle back-upitems in de geselecteerde scope weer gegeven. U kunt de filters voor dagelijkse, wekelijkse, maandelijkse en jaarlijkse RP-retentie gebruiken om het raster verder te filteren en de items te identificeren waarvoor bewaren mogelijk kan worden gereduceerd om de opslag kosten voor back-ups op te slaan.
+In deze weer gave kunt u de items identificeren die back-ups gedurende een langere duur hebben bewaard dan is vereist door uw organisatie.
 
-Houd er rekening mee dat voor werk belasting van de data base, zoals SQL en SAP HANA, de Bewaar perioden die in het raster worden weer gegeven, overeenkomen met de Bewaar perioden van de volledige back-uppunten en niet de differentiële back-uppunten. Dit geldt ook voor de retentie filters.  
+Als u de tegel **beleids optimalisatie** selecteert, gevolgd door de tegel **optimalisaties voor retentie** , wordt een raster weer gegeven met alle back-upitems waarvoor het dagelijks, wekelijks, maandelijks of jaarlijkse bewaar punt (RP) groter is dan een opgegeven waarde. Standaard worden in het raster alle back-upitems in de geselecteerde scope weer gegeven. U kunt de filters voor dagelijkse, wekelijkse, maandelijkse en jaarlijkse RP-retentie gebruiken om het raster verder te filteren en de items te identificeren waarvoor bewaren mogelijk kan worden gereduceerd om de opslag kosten voor back-ups op te slaan.
+
+Voor database werkbelastingen, zoals SQL en SAP HANA, komen de Bewaar perioden die worden weer gegeven in het raster overeen met de Bewaar perioden van de volledige back-uppunten en niet van de differentiële back-uppunten. Dit geldt ook voor de retentie filters.  
 
 ![Optimalisaties voor tabblad behoud optimaliseren](./media/backup-azure-configure-backup-reports/optimize-retention.png)
 
 ###### <a name="databases-configured-for-daily-full-backup"></a>Databases geconfigureerd voor dagelijkse volledige back-up 
-In deze weer gave kunt u de data base-workloads identificeren die zijn geconfigureerd voor dagelijkse volledige back-up. Vaak is het gebruik van dagelijkse differentiële back-ups en wekelijkse volledige back-ups rendabeler. 
 
-Als u op de tegel **beleids optimalisatie** klikt, gevolgd door de tegel **optimalisatie van back-upschema** , wordt een raster met alle data bases met een dagelijks volledig back-upbeleid weer gegeven. U kunt ervoor kiezen om naar een bepaald back-upitem te gaan en het beleid te wijzigen voor het gebruik van dagelijkse differentiële back-ups met een wekelijkse volledige back-up.
+In deze weer gave kunt u de data base-workloads identificeren die zijn geconfigureerd voor dagelijkse volledige back-up. Vaak is het gebruik van dagelijkse differentiële back-ups en wekelijkse volledige back-ups rendabeler.
 
-Houd er rekening mee dat het filter **type back-upbeheer** boven aan het tabblad de items SQL moet hebben **in azure VM** en **SAP Hana in azure VM** geselecteerd, zodat het raster de data base-workloads zoals verwacht kan weer geven.
+Als u de tegel **beleids optimalisatie** selecteert, gevolgd door de tegel **optimalisatie van back-upschema** , wordt een raster met alle data bases met een dagelijks volledig back-upbeleid weer gegeven. U kunt ervoor kiezen om naar een bepaald back-upitem te gaan en het beleid te wijzigen voor het gebruik van dagelijkse differentiële back-ups met een wekelijkse volledige back-up.
+
+Het filter **type back-upbeheer** boven aan het tabblad moet de items **SQL hebben in azure VM** en **SAP Hana in azure VM** geselecteerd, zodat het raster de data bases op de verwachte manier kan weer geven.
 
 ![Optimalisatie van het tabblad optimaliseren](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
 
@@ -144,7 +153,7 @@ Als u [Azure Lighthouse](../lighthouse/index.yml) gebruikt met gedelegeerde toeg
 
 - Filters werken van links naar rechts en van boven naar beneden op elk tabblad. Dat wil zeggen dat alle filters alleen van toepassing zijn op alle widgets die aan de rechter kant van het filter of onder dat filter worden geplaatst.
 - Als u een gekleurde tegel selecteert, worden de objecten onder de tegel gefilterd op records die betrekking hebben op de waarde van die tegel. Als u bijvoorbeeld de tegel **beveiliging gestopt** selecteert op het tabblad **Back-upitems** , worden de rasters en de onderstaande grafieken gefilterd om gegevens weer te geven voor back-upitems met de status gestopt voor beveiliging.
-- Tegels die niet zijn gekleurd, worden niet geklikt.
+- Tegels die niet zijn gekleurd, zijn niet te selecteren.
 - De gegevens voor de huidige gedeeltelijke dag worden niet weer gegeven in de rapporten. Dus als de geselecteerde waarde van het **tijds bereik** de **laatste 7 dagen**is, worden in het rapport records weer gegeven voor de afgelopen zeven voltooide dagen. De huidige dag is niet opgenomen.
 - Het rapport bevat details van taken (naast logboek taken) die zijn *geactiveerd* in het geselecteerde tijds bereik.
 - De waarden die worden weer gegeven voor **Cloud opslag** en **beveiligde instanties** bevinden zich aan het *einde* van het geselecteerde tijds bereik.

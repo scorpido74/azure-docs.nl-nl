@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 08cf736e533486b765f3b1a1173fcfe06c03306f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ded612fb79001adf2ada1a289603bc8a7561d38f
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212854"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612483"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Aan de slag met de Azure WebJobs SDK voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -186,7 +186,7 @@ Vanaf versie 3. x moet u de opslag bindings extensie expliciet installeren die i
 
    De `message` para meter moet geen teken reeks zijn. U kunt ook binden aan een JSON-object, een byte matrix of een [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) -object. [Zie het gebruik van wachtrij Triggers](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Elk bindings type (zoals wacht rijen, blobs of tabellen) heeft een andere set parameter typen waarmee u verbinding kunt maken.
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
 
 De Azure Storage-emulator die lokaal wordt uitgevoerd, beschikt niet over alle functies die nodig zijn voor de webjobs SDK. In dit gedeelte maakt u een opslag account in Azure en configureert u het project om het te gebruiken. Als u al een opslag account hebt, gaat u verder met stap 6.
 
@@ -327,13 +327,13 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
 1. Voeg in het vak **verbindings reeksen** de volgende vermelding toe.
 
-   |Name  |verbindings reeks  |Database type|
+   |Naam  |verbindings reeks  |Database type|
    |---------|---------|------|
    |AzureWebJobsStorage | {de opslag connection string die u eerder hebt gekopieerd}|Aangepast telefoonnummer|
 
 1. Als het vak **Toepassings instellingen** geen Application Insights instrumentatie sleutel heeft, voegt u het toe dat u eerder hebt gekopieerd. (De instrumentatie sleutel is mogelijk al aanwezig, afhankelijk van hoe u de App Service-app hebt gemaakt.)
 
-   |Name  |Waarde  |
+   |Naam  |Waarde  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentatie sleutel} |
 
@@ -429,7 +429,7 @@ In deze sectie voert u lokaal opnieuw uit om te controleren of logboek gegevens 
 
 1. Sluit het console venster.
 
-## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Implementeren op Azure
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Implementeren in Azure
 
 Tijdens de implementatie maakt u een app service-exemplaar waarin u uw functies kunt uitvoeren. Wanneer u een .NET Core-Console-app publiceert naar App Service in azure, wordt deze automatisch uitgevoerd als Webtaak. Zie [Webjobs ontwikkelen en implementeren met Visual Studio](webjobs-dotnet-deploy-vs.md)voor meer informatie over publiceren.
 

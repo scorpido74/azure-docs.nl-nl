@@ -4,14 +4,14 @@ description: Meer informatie over het configureren en wijzigen van het standaard
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: e1254b31bffa72918b46c550e8354bd1c2195dfb
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077591"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607517"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB
 
@@ -30,15 +30,15 @@ Azure Cosmos DB ondersteunt twee indexerings modi:
 - **Geen**: indexeren is uitgeschakeld op de container. Dit wordt meestal gebruikt wanneer een container wordt gebruikt als een pure sleutel waarde Store zonder dat hiervoor secundaire indexen nodig zijn. Het kan ook worden gebruikt om de prestaties van bulk bewerkingen te verbeteren. Nadat de bulk bewerkingen zijn voltooid, kan de index modus worden ingesteld op consistent en vervolgens worden bewaakt met behulp van de [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) totdat de bewerking is voltooid.
 
 > [!NOTE]
-> Azure Cosmos DB ondersteunt ook een vertraagde indexerings modus. Lazy-indexering voert updates op een veel lagere prioriteits niveau uit als de engine geen andere werkzaamheden uitvoert. Dit kan leiden tot **inconsistente of onvolledige** query resultaten. Als u van plan bent om een query uit te zoeken op een Cosmos-container, moet u geen luie indexering selecteren. In juni 2020 hebben we een wijziging aangebracht waarbij nieuwe containers niet langer kunnen worden ingesteld op de vertraagde indexerings modus. Als uw Azure Cosmos DB-account al ten minste één container met een luie index bevat, wordt dit account automatisch uitgesloten van de wijziging. U kunt ook een uitzonde ring aanvragen door contact op te nemen met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> Azure Cosmos DB ondersteunt ook een vertraagde indexerings modus. Lazy-indexering voert updates op een veel lagere prioriteits niveau uit als de engine geen andere werkzaamheden uitvoert. Dit kan leiden tot **inconsistente of onvolledige** query resultaten. Als u van plan bent om een query uit te zoeken op een Cosmos-container, moet u geen luie indexering selecteren. In juni 2020 hebben we een wijziging aangebracht waarbij nieuwe containers niet langer kunnen worden ingesteld op de vertraagde indexerings modus. Als uw Azure Cosmos DB-account al ten minste één container met een luie index bevat, wordt dit account automatisch uitgesloten van de wijziging. U kunt ook een uitzonde ring aanvragen door contact op te nemen met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (behalve als u een Azure Cosmos-account gebruikt in de [serverloze](serverless.md) modus die geen ondersteuning biedt voor Lazy indexering).
 
 Indexerings beleid is standaard ingesteld op `automatic` . Het wordt bereikt door de `automatic` eigenschap in het indexerings beleid in te stellen op `true` . Als u deze eigenschap instelt op, `true` kan Azure CosmosDB documenten automatisch indexeren wanneer ze zijn geschreven.
 
-## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Eigenschaps paden opnemen en uitsluiten
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> Eigenschaps paden opnemen en uitsluiten
 
 Een aangepast indexerings beleid kan eigenschaps paden opgeven die expliciet worden opgenomen of uitgesloten van indexeren. Door het aantal geïndexeerde paden te optimaliseren, kunt u de latentie en de RU-kosten van schrijf bewerkingen aanzienlijk verminderen. Deze paden worden gedefinieerd volgens [de methode die wordt beschreven in de sectie Overzicht indexering](index-overview.md#from-trees-to-property-paths) met de volgende toevoegingen:
 
-- een pad dat leidt naar een scalaire waarde (teken reeks of getal) eindigt op`/?`
+- een pad dat leidt naar een scalaire waarde (teken reeks of getal) eindigt op `/?`
 - elementen uit een matrix worden samen met de `/[]` notatie (in plaats van `/0` , `/1` enzovoort) beschreven.
 - het `/*` Joker teken kan worden gebruikt om alle elementen onder het knoop punt te vergelijken
 
@@ -58,11 +58,11 @@ Hetzelfde voor beeld opnieuw uitvoeren:
     }
 ```
 
-- het `headquarters` `employees` pad is`/headquarters/employees/?`
+- het `headquarters` `employees` pad is `/headquarters/employees/?`
 
-- het `locations` `country` pad is`/locations/[]/country/?`
+- het `locations` `country` pad is `/locations/[]/country/?`
 
-- het pad naar iets onder `headquarters` is`/headquarters/*`
+- het pad naar iets onder `headquarters` is `/headquarters/*`
 
 We kunnen bijvoorbeeld het `/headquarters/employees/?` pad toevoegen. Dit pad zorgt ervoor dat de eigenschap Employees wordt geïndexeerd, maar dat er geen extra geneste JSON binnen deze eigenschap zou worden geïndexeerd.
 
@@ -81,15 +81,15 @@ Elk indexerings beleid moet het basispad bevatten `/*` als een opgenomen of uitg
 
 Bij het opnemen en uitsluiten van paden kunnen de volgende kenmerken optreden:
 
-- `kind`Dit kan ofwel `range` of zijn `hash` . De functionaliteit van bereik index biedt alle functionaliteit van een hash-index. Daarom raden we u aan een bereik index te gebruiken.
+- `kind` Dit kan ofwel `range` of zijn `hash` . De functionaliteit van bereik index biedt alle functionaliteit van een hash-index. Daarom raden we u aan een bereik index te gebruiken.
 
-- `precision`is een getal dat is gedefinieerd op index niveau voor opgenomen paden. Een waarde die de `-1` maximale nauw keurigheid aangeeft. We raden u aan deze waarde altijd in te stellen op `-1` .
+- `precision` is een getal dat is gedefinieerd op index niveau voor opgenomen paden. Een waarde die de `-1` maximale nauw keurigheid aangeeft. We raden u aan deze waarde altijd in te stellen op `-1` .
 
-- `dataType`Dit kan ofwel `String` of zijn `Number` . Hiermee worden de typen JSON-eigenschappen aangegeven die worden geïndexeerd.
+- `dataType` Dit kan ofwel `String` of zijn `Number` . Hiermee worden de typen JSON-eigenschappen aangegeven die worden geïndexeerd.
 
 Als deze eigenschap niet is opgegeven, hebben deze eigenschappen de volgende standaard waarden:
 
-| **Eigenschaps naam**     | **Standaard waarde** |
+| **Eigenschaps naam**     | **Standaardwaarde** |
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |
@@ -103,9 +103,9 @@ Als uw opgenomen paden en uitgesloten paden een conflict veroorzaken, heeft het 
 
 Hier volgt een voorbeeld:
 
-**Opgenomen pad**:`/food/ingredients/nutrition/*`
+**Opgenomen pad**: `/food/ingredients/nutrition/*`
 
-**Uitgesloten pad**:`/food/ingredients/*`
+**Uitgesloten pad**: `/food/ingredients/*`
 
 In dit geval heeft het opgenomen pad voor rang op het uitgesloten pad, omdat dit nauw keuriger is. Op basis van deze paden worden alle gegevens in het `food/ingredients` pad, of genest binnen, uitgesloten van de index. De uitzonde ring hiervan zijn gegevens in het opgenomen pad: `/food/ingredients/nutrition/*` , dat wordt geïndexeerd.
 
@@ -261,6 +261,9 @@ De volgende overwegingen worden gebruikt bij het maken van samengestelde indexen
 
 Het indexerings beleid van een container kan op elk gewenst moment worden bijgewerkt [met behulp van de Azure portal of een van de ondersteunde sdk's](how-to-manage-indexing-policy.md). Een update voor het indexerings beleid activeert een trans formatie van de oude index naar de nieuwe, die online en in-place wordt uitgevoerd (zodat er geen extra opslag ruimte wordt verbruikt tijdens de bewerking). De oude beleids index is efficiënt getransformeerd naar het nieuwe beleid, zonder dat dit van invloed is op de beschik baarheid voor schrijven, lees Beschik baarheid of de door Voer die is ingericht op de container. Index transformatie is een asynchrone bewerking en de tijd die nodig is om te volt ooien, is afhankelijk van de ingerichte door Voer, het aantal items en de grootte ervan.
 
+> [!IMPORTANT]
+> Index transformatie is een bewerking waarbij [aanvraag eenheden](request-units.md)worden verbruikt. Aanvraag eenheden die worden gebruikt door een index transformatie worden momenteel niet gefactureerd als u [serverloze](serverless.md) containers gebruikt. Deze aanvraag eenheden worden gefactureerd als serverloos algemeen beschikbaar is.
+
 > [!NOTE]
 > Het is mogelijk om de voortgang van de index transformatie [te volgen met behulp van een van de sdk's](how-to-manage-indexing-policy.md).
 
@@ -284,7 +287,7 @@ Voor scenario's waarin geen eigenschapspad moet worden geïndexeerd, maar TTL ve
 
 - een indexerings modus is ingesteld op consistent en
 - geen opgenomen pad en
-- `/*`alleen als het uitgesloten pad.
+- `/*` alleen als het uitgesloten pad.
 
 ## <a name="next-steps"></a>Volgende stappen
 

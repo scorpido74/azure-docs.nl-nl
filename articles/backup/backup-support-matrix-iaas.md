@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: c7cd3ed863153762e42a0b6420623fec52e779e1
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: cfa8a6c7cb2da35929151dfce09c0bc31ee69bb2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566315"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611531"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -141,7 +141,7 @@ VM-grootte |Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM-gehe
 Back-ups maken van Vm's in [beschikbaarheids sets](../virtual-machines/availability.md#availability-sets) | Ondersteund.<br/><br/> U kunt een virtuele machine niet herstellen in een beschik bare set met behulp van de optie om snel een virtuele machine te maken. In plaats daarvan moet u, wanneer u de virtuele machine herstelt, de schijf herstellen en gebruiken om een virtuele machine te implementeren, of een schijf herstellen en gebruiken om een bestaande schijf te vervangen.
 Back-ups maken van Vm's die zijn geïmplementeerd met het [voor deel voor hybride gebruik (hub)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | Ondersteund.
 Back-ups maken van virtuele machines die zijn geïmplementeerd in een [schaalset](../virtual-machine-scale-sets/overview.md) |Ondersteund. De [Orchestration-modus](../virtual-machine-scale-sets/orchestration-modes.md) moet worden ingesteld op 2 voor het fout domein. De beschikbaarheidsset wordt niet ondersteund.
-Back-ups maken van Vm's die zijn geïmplementeerd vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Gepubliceerd door micro soft, derden) |Ondersteund.<br/><br/> Op de VM moet een ondersteund besturings systeem worden uitgevoerd.<br/><br/> Bij het herstellen van bestanden op de VM kunt u alleen herstellen naar een compatibel besturings systeem (geen besturings systeem dat ouder of later is). De Azure Marketplace-Vm's die worden ondersteund als Vm's, worden niet hersteld, omdat deze behoefte hebben aan aanschaf gegevens. Ze worden alleen teruggezet als schijven.
+Back-ups maken van Vm's die zijn geïmplementeerd vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Gepubliceerd door micro soft, derden) |Ondersteund.<br/><br/> Op de VM moet een ondersteund besturings systeem worden uitgevoerd.<br/><br/> Bij het herstellen van bestanden op de VM kunt u alleen herstellen naar een compatibel besturings systeem (geen besturings systeem dat ouder of later is). Azure Marketplace-Vm's die worden ondersteund als Vm's, worden niet hersteld, omdat deze behoefte hebben aan inkoop gegevens. Ze worden alleen teruggezet als schijven.
 Back-ups maken van Vm's die zijn geïmplementeerd vanuit een aangepaste installatie kopie (derden) |Ondersteund.<br/><br/> Op de VM moet een ondersteund besturings systeem worden uitgevoerd.<br/><br/> Bij het herstellen van bestanden op de VM kunt u alleen herstellen naar een compatibel besturings systeem (geen besturings systeem dat ouder of later is).
 Back-ups maken van virtuele machines die zijn gemigreerd naar Azure| Ondersteund.<br/><br/> Als u een back-up wilt maken van de VM, moet de VM-agent op de gemigreerde computer zijn geïnstalleerd.
 Back-up van multi-VM-consistentie | Azure Backup biedt geen consistentie van gegevens en toepassingen op meerdere Vm's.

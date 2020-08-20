@@ -5,18 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 08/19/2020
 ms.author: victorh
-ms.openlocfilehash: a467aa60b131e47e9251366369b3fae8dd95c004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da2b206bf24cb33180305e32e270b989eb64dfa3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267695"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612589"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Geforceerde tunneling Azure Firewall
 
-Wanneer u een nieuw Azure Firewall configureert, kunt u alle Internet-gebonden verkeer routeren naar een aangewezen volgende hop in plaats van rechtstreeks naar Internet te gaan. U kunt bijvoorbeeld een on-premises edge-firewall of een ander virtueel netwerkapparaat (NVA) hebben om netwerkverkeer te verwerken voordat het wordt doorgegeven aan internet. U kunt echter geen bestaande firewall configureren voor geforceerde tunneling.
+Wanneer u een nieuwe Azure-firewall configureert, kunt u al het internetverkeer routeren naar een aangewezen volgende hop in plaats van rechtstreeks naar internet. U kunt bijvoorbeeld een on-premises edge-firewall of een ander virtueel netwerkapparaat (NVA) hebben om netwerkverkeer te verwerken voordat het wordt doorgegeven aan internet. U kunt echter geen bestaande firewall configureren voor geforceerde tunneling.
 
 Geforceerde tunneling is standaard niet toegestaan op Azure Firewall om ervoor te zorgen dat aan alle uitgaande Azure-afhankelijkheden wordt voldaan. UDR-configuraties (door de gebruiker gedefinieerde route) op de *AzureFirewallSubnet* die een standaard route hebben die niet rechtstreeks naar Internet gaat, worden uitgeschakeld.
 
@@ -24,13 +24,13 @@ Geforceerde tunneling is standaard niet toegestaan op Azure Firewall om ervoor t
 
 Voor de ondersteuning van geforceerde tunneling wordt Service Management-verkeer gescheiden van het verkeer van de klant. Een extra toegewezen subnet met de naam *AzureFirewallManagementSubnet* (minimale subnet-grootte/26) is vereist met een eigen gekoppeld openbaar IP-adres. De enige route die op dit subnet is toegestaan, is een standaard route naar Internet en de doorgifte van BGP-routes moet worden uitgeschakeld.
 
-Als u een standaard route hebt geadverteerd via BGP om verkeer naar de on-premises af te dwingen, moet u de *AzureFirewallSubnet* en *AzureFirewallManagementSubnet* maken voordat u uw firewall implementeert en een UDR met een standaard route naar het Internet hebt en de **gateway route doorgifte van het virtuele netwerk** is uitgeschakeld.
+Als u een standaard route hebt geadverteerd via BGP om verkeer naar on-premises af te dwingen, moet u de *AzureFirewallSubnet* en *AzureFirewallManagementSubnet* maken voordat u uw firewall implementeert en een UDR met een standaard route naar Internet hebt, en **Gateway routes door geven** die zijn uitgeschakeld.
 
-Binnen deze configuratie kan de *AzureFirewallSubnet* nu routes naar een on-premises firewall of NVA bevatten om verkeer te verwerken voordat het wordt door gegeven aan Internet. U kunt deze routes ook via BGP naar *AzureFirewallSubnet* publiceren als de **route doorgifte van de virtuele netwerk gateway** is ingeschakeld op dit subnet.
+Binnen deze configuratie kan de *AzureFirewallSubnet* nu routes naar een on-premises firewall of NVA bevatten om verkeer te verwerken voordat het wordt door gegeven aan Internet. U kunt deze routes ook publiceren via BGP naar *AzureFirewallSubnet* als het **door sturen van Gateway routes** is ingeschakeld op dit subnet.
 
-U kunt bijvoorbeeld een standaard route maken op het *AzureFirewallSubnet* met uw VPN-gateway als de volgende hop om naar uw on-premises apparaat te gaan. U kunt ook de **route doorgifte van de virtuele netwerk gateway** inschakelen om de juiste routes naar het on-premises netwerk op te halen.
+U kunt bijvoorbeeld een standaard route maken op het *AzureFirewallSubnet* met uw VPN-gateway als de volgende hop om naar uw on-premises apparaat te gaan. U kunt ook **Gateway routes door geven** inschakelen om de juiste routes naar het on-premises netwerk op te halen.
 
-![Route doorgifte van virtuele netwerk gateway](media/forced-tunneling/route-propagation.png)
+:::image type="content" source="media/forced-tunneling/route-propagation.png" alt-text="Doorgifte van route van virtuele netwerkgateway":::
 
 Als u geforceerde tunneling inschakelt, wordt het Internet-gebonden verkeer omgezet naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet, waardoor de bron wordt verborgen via uw on-premises firewall.
 
@@ -40,4 +40,4 @@ Zodra u Azure Firewall configureert om geforceerde tunneling te ondersteunen, ku
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met Azure Portal](tutorial-hybrid-portal.md)
+- [Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure-portal](tutorial-hybrid-portal.md)

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: d101acd3e72e68efd9198cb273fd352967a0cd54
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192366"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612381"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Beveiligingswaarschuwingen en aanbevelingen exporteren
 
@@ -57,7 +57,29 @@ De onderstaande stappen zijn nodig om een doorlopende export naar Log Analytics 
 
 1. Kies in het gebied export doel de locatie waar u de gegevens wilt opslaan. Gegevens kunnen worden opgeslagen in een doel voor een ander abonnement (bijvoorbeeld op een centraal Event hub-exemplaar of een centrale Log Analytics-werk ruimte).
 
-1. Klik op **Opslaan**.
+1. Selecteer **Opslaan**.
+
+
+## <a name="setting-up-continuous-export-via-the-rest-api"></a>Continue export instellen via de REST API
+
+De functie continue export kan worden geconfigureerd en beheerd via de API voor Azure Security Center [Automation](https://docs.microsoft.com/rest/api/securitycenter/automations). Gebruik deze API om Automation voor het exporteren naar een van de volgende mogelijke bestemmingen te maken of bij te werken:
+
+- Azure Event Hub
+- Log Analytics-werkruimte
+- Azure Logic Apps 
+
+De API biedt extra functionaliteit die niet beschikbaar is via de Azure Portal, bijvoorbeeld:
+
+* **Groter volume** : met de API kunt u meerdere export configuraties maken voor één abonnement. De pagina **doorlopend exporteren** in de portal-gebruikers interface van Security Center ondersteunt slechts één export configuratie per abonnement.
+
+* **Aanvullende functies** : de API biedt aanvullende para meters die niet worden weer gegeven in de gebruikers interface. U kunt bijvoorbeeld labels toevoegen aan uw Automation-resource en uw export definiëren op basis van een breder aantal waarschuwings-en aanbevelings eigenschappen dan die worden weer geven op de pagina **doorlopend exporteren** in de gebruikers interface van de portal van Security Center.
+
+* **Meer gericht bereik** : de API biedt een gedetailleerder niveau voor het bereik van uw export configuraties. Wanneer u een export met de API definieert, kunt u dit doen op het niveau van de resource groep. Als u de pagina **doorlopend exporteren** gebruikt in de gebruikers interface van de portal van Security Center, moet u deze definiëren op abonnements niveau.
+
+    > [!TIP]
+    > Als u meerdere export configuraties hebt ingesteld met behulp van de API of als u alleen API-only-para meters hebt gebruikt, worden deze extra functies niet weer gegeven in de gebruikers interface van Security Center. In plaats daarvan wordt er een banner met de melding dat er andere configuraties bestaan.
+
+Meer informatie over de automatiserings-API vindt u in de [documentatie van rest API](https://docs.microsoft.com/rest/api/securitycenter/automations).
 
 
 
@@ -109,7 +131,7 @@ Azure Monitor biedt een uniforme waarschuwings ervaring voor verschillende Azure
 
 Als u waarschuwingen en aanbevelingen van Security Center in Azure Monitor wilt weer geven, configureert u een waarschuwings regel op basis van Log Analytics query's (logboek waarschuwing):
 
-1. Klik op de pagina **waarschuwingen** van Azure monitor op **nieuwe waarschuwings regel**.
+1. Selecteer op de pagina **waarschuwingen** van Azure monitor **nieuwe waarschuwings regel**.
 
     ![Pagina waarschuwingen van Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
@@ -126,12 +148,25 @@ U ziet nu nieuwe Azure Security Center waarschuwingen of aanbevelingen (afhankel
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>Hand matige eenmalige export van beveiligings waarschuwingen
 
-Als u een CSV-rapport voor waarschuwingen of aanbevelingen wilt downloaden, opent u de pagina **beveiligings waarschuwingen** of **aanbevelingen** en klikt u op de knop **CSV-rapport downloaden** .
+Als u een CSV-rapport voor waarschuwingen of aanbevelingen wilt downloaden, opent u de pagina **beveiligings waarschuwingen** of **aanbevelingen** en selecteert u de knop **CSV-rapport downloaden** .
 
 [![Waarschuwings gegevens downloaden als een CSV-bestand](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
 > Deze rapporten bevatten waarschuwingen en aanbevelingen voor resources van de momenteel geselecteerde abonnementen.
+
+
+
+## <a name="faq---continuous-export"></a>Veelgestelde vragen-continue export
+
+### <a name="what-are-the-costs-involved-in-exporting-data"></a>Wat zijn de kosten voor het exporteren van gegevens?
+
+Er zijn geen kosten verbonden aan het inschakelen van continue export. Er kunnen kosten in rekening worden gebracht voor opname en retentie van gegevens in uw Log Analytics-werk ruimte, afhankelijk van uw configuratie. 
+
+Meer informatie over de [prijzen van log Analytics werk ruimte](https://azure.microsoft.com/pricing/details/monitor/).
+
+Meer informatie over de [prijzen van Azure Event hub](https://azure.microsoft.com/pricing/details/event-hubs/).
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

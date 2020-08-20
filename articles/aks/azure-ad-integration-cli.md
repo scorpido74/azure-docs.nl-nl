@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfcbf214c374f449a04139ce7bf4fbb6853ed524
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006856"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612415"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure Active Directory integreren met de Azure Kubernetes-service met behulp van de Azure CLI (verouderd)
 
@@ -27,6 +27,7 @@ Zie [Azure CLI-voor beelden-AKS-integratie met Azure AD][complete-script]voor he
 ## <a name="the-following-limitations-apply"></a>De volgende beperkingen zijn van toepassing:
 
 - Azure AD kan alleen worden ingeschakeld op een RBAC-cluster.
+- Azure AD legacy-integratie kan alleen worden ingeschakeld tijdens het maken van het cluster.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -176,7 +177,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > Als de gebruiker aan wie u de RBAC-binding hebt verleend, zich in dezelfde Azure AD-Tenant bevindt, wijst u machtigingen toe op basis van de *userPrincipalName*. Als de gebruiker zich in een andere Azure AD-Tenant bevindt, kunt u in plaats daarvan de eigenschap *objectId* opvragen en gebruiken.
 
-Maak een YAML-manifest `basic-azure-ad-binding.yaml` met de naam en plak de volgende inhoud. Vervang op de laatste regel *userPrincipalName_or_objectId* door de UPN-of object-id-uitvoer van de vorige opdracht:
+Maak een YAML-manifest `basic-azure-ad-binding.yaml` met de naam en plak de volgende inhoud. Vervang op de laatste regel *userPrincipalName_or_objectId*  door de UPN-of object-id-uitvoer van de vorige opdracht:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -244,7 +245,7 @@ error: You must be logged in to the server (Unauthorized)
 
 * U hebt de juiste object-ID of UPN-naam gedefinieerd, afhankelijk van of het gebruikers account zich in dezelfde Azure AD-Tenant bevindt of niet.
 * De gebruiker is geen lid van meer dan 200 groepen.
-* Het geheim dat is gedefinieerd in de registratie van de toepassing voor de server komt overeen met de waarde die is geconfigureerd met`--aad-server-app-secret`
+* Het geheim dat is gedefinieerd in de registratie van de toepassing voor de server komt overeen met de waarde die is geconfigureerd met `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>Volgende stappen
 

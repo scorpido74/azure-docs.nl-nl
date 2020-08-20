@@ -4,12 +4,12 @@ description: Instructies voor het verplaatsen van de Recovery Services-kluis in 
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 40ef55fa3b86856051b840c5d88ab8fadae3b7c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbbe914b3e567a1a136d735fc52965524bc17b67
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514098"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612568"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Een Recovery Services kluis verplaatsen over Azure-abonnementen en-resource groepen
 
@@ -57,23 +57,23 @@ Een Recovery Services-kluis en de bijbehorende resources verplaatsen naar een an
 
    ![Service kluis herstellen openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-   Als u de **essentiële** informatie voor uw kluis niet ziet, klikt u op het pictogram vervolg keuzelijst. U ziet nu de essentiële informatie voor uw kluis.
+   Als u de **essentiële** informatie voor uw kluis niet ziet, selecteert u het pictogram vervolg keuzelijst. U ziet nu de essentiële informatie voor uw kluis.
 
    ![Het tabblad informatie over Essentials](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. Klik in het menu kluis overzicht op **wijzigen** naast de **resource groep**om de Blade **resources verplaatsen** te openen.
+3. Selecteer in het menu kluis overzicht de optie **wijzigen** naast de **resource groep**om het deel venster **resources verplaatsen** te openen.
 
    ![Resource groep wijzigen](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
-4. In de Blade **resources verplaatsen** kunt u voor de geselecteerde kluis het beste de optionele gerelateerde resources verplaatsen door het selectie vakje te selecteren, zoals in de volgende afbeelding wordt weer gegeven.
+4. In het deel venster **resources verplaatsen** kunt u voor de geselecteerde kluis het beste de optionele gerelateerde resources verplaatsen door het selectie vakje te selecteren, zoals in de volgende afbeelding wordt weer gegeven.
 
    ![Abonnement verplaatsen](./media/backup-azure-move-recovery-services/move-resource.png)
 
-5. Als u de doel resource groep wilt toevoegen, selecteert u in de vervolg keuzelijst **resource groep** een bestaande resource groep of klikt u op **een nieuwe groep maken** optie.
+5. Als u de doel resource groep wilt toevoegen, selecteert u in de vervolg keuzelijst **resource groep** een bestaande resource groep of selecteert u **een nieuwe groep maken** .
 
    ![Resource maken](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
-6. Nadat u de resource groep hebt toegevoegd, **moet u weten dat de hulpprogram ma's en scripts die zijn gekoppeld aan verplaatste resources, niet werken totdat ze zijn bijgewerkt** met de optie nieuwe resource-id's en klik vervolgens op **OK** om het verplaatsen van de kluis te volt ooien.
+6. Nadat u de resource groep hebt toegevoegd, **moet u weten dat de hulpprogram ma's en scripts die zijn gekoppeld aan verplaatste resources, niet werken totdat ze zijn bijgewerkt** met de optie nieuwe resource-id's en vervolgens **OK** selecteren om de kluis te volt ooien.
 
    ![Bevestigings bericht](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
@@ -86,11 +86,11 @@ U kunt een Recovery Services kluis en de bijbehorende resources naar een ander a
 
     ![Service kluis herstellen openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-    Als u de **essentiële** informatie voor uw kluis niet ziet, klikt u op het pictogram vervolg keuzelijst. U ziet nu de essentiële informatie voor uw kluis.
+    Als u de **essentiële** informatie voor uw kluis niet ziet, selecteert u het pictogram vervolg keuzelijst. U ziet nu de essentiële informatie voor uw kluis.
 
     ![Het tabblad informatie over Essentials](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. Klik in het menu overzicht van de kluis op **wijzigen** naast **abonnement**om de Blade **resources verplaatsen** te openen.
+3. Selecteer in het menu kluis overzicht de optie **wijzigen** naast **abonnement**om het deel venster **resources verplaatsen** te openen.
 
    ![Abonnement wijzigen](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
@@ -99,11 +99,11 @@ U kunt een Recovery Services kluis en de bijbehorende resources naar een ander a
    ![resource verplaatsen](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. Selecteer het doel abonnement in de vervolg keuzelijst **abonnement** , waar u de kluis wilt verplaatsen.
-6. Als u de doel resource groep wilt toevoegen, selecteert u in de vervolg keuzelijst **resource groep** een bestaande resource groep of klikt u op **een nieuwe groep maken** optie.
+6. Als u de doel resource groep wilt toevoegen, selecteert u in de vervolg keuzelijst **resource groep** een bestaande resource groep of selecteert u **een nieuwe groep maken** .
 
    ![Abonnement toevoegen](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. Klik op **Ik begrijp dat hulp middelen en scripts die zijn gekoppeld aan verplaatste resources, niet werken totdat ze de optie nieuwe resource-id's gebruiken** om te bevestigen en klik vervolgens op **OK**.
+7. Selecteer **Ik begrijp dat hulp middelen en scripts die zijn gekoppeld aan verplaatste resources, niet werken totdat ze de optie nieuwe resource-id's gebruiken** om te bevestigen, en selecteer vervolgens **OK**.
 
 > [!NOTE]
 > Back-up tussen meerdere abonnementen (RS-kluis en beveiligde Vm's bevinden zich in verschillende abonnementen) is geen ondersteund scenario. Daarnaast kan de optie voor opslag redundantie van lokale redundante opslag (LRS) naar globale redundante opslag (GRS) en vice versa niet worden gewijzigd tijdens de bewerking voor het verplaatsen van de kluis.
@@ -112,7 +112,7 @@ U kunt een Recovery Services kluis en de bijbehorende resources naar een ander a
 
 ## <a name="use-powershell-to-move-recovery-services-vault"></a>Power shell gebruiken om Recovery Services kluis te verplaatsen
 
-Als u een Recovery Services kluis wilt verplaatsen naar een andere resource groep, gebruikt u de `Move-AzureRMResource` cmdlet. `Move-AzureRMResource`vereist de resource naam en het resource type. U kunt beide van de `Get-AzureRmRecoveryServicesVault` cmdlet ophalen.
+Als u een Recovery Services kluis wilt verplaatsen naar een andere resource groep, gebruikt u de `Move-AzureRMResource` cmdlet. `Move-AzureRMResource` vereist de resource naam en het resource type. U kunt beide van de `Get-AzureRmRecoveryServicesVault` cmdlet ophalen.
 
 ```powershell
 $destinationRG = "<destinationResourceGroupName>"

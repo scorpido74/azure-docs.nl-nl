@@ -3,12 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: b6420283f3d3c07182faa2cb2a82ba7b2d784055
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272651"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611939"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -46,7 +46,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 ## <a name="microsoftclassiccomputedomainnames"></a>Micro soft. classiccompute/domainname
 |Controles uitgevoerd|
 |---|
-|<ul><li>Is de door de Cloud service gehoste naam actief?</li><li>Is de opstart van het hostbesturingssysteem voltooid?</li><li>Is de virtuele-machine container ingericht en ingeschakeld?</li><li>Is er netwerk verbinding tussen de host en het opslag account?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li><li>Is de host-hardware gedegradeerd en wordt de voor speld binnenkort uitgevoerd?</li></ul>|
+|<ul><li>Is implementatie van productie sleuven in orde voor alle rolinstanties?</li><li>Is de rol in orde voor alle VM-exemplaren?</li><li>Wat is de status van elke virtuele machine binnen een rol van een Cloud service?</li><li>Is de VM-status gewijzigd vanwege een door het platform of door de klant geïnitieerde bewerking?</li><li>Is het starten van het gast besturingssysteem voltooid?</li><li>Is er voortdurend gepland onderhoud?</li><li>Is de host-hardware gedegradeerd en wordt de voor speld binnenkort uitgevoerd?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Micro soft. cognitiveservices/accounts
 |Controles uitgevoerd|

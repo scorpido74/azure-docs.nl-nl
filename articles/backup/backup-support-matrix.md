@@ -4,12 +4,12 @@ description: Bevat een samenvatting van ondersteuningsinstellingen en -beperking
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922313"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612517"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -77,11 +77,11 @@ Dit wordt what's ondersteund als u een back-up wilt maken van Linux-machines:
 
 **Back-uptype** | **Linux (goedgekeurd door Azure)**
 --- | ---
-**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
+**Directe back-up van on-premises machine waarop Linux wordt uitgevoerd** | Wordt niet ondersteund. De MARS-agent kan alleen worden geïnstalleerd op Windows-computers.
 **Agent-extensie gebruiken om een back-up te maken van Azure VM waarop Linux wordt uitgevoerd** | App-consistente back-up met [aangepaste scripts](backup-azure-linux-app-consistent.md).<br/><br/> Herstel op bestandsniveau.<br/><br/> Herstellen door het maken van een VM vanaf een herstelpunt of schijf.
-**DPM gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.
-**MABS gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMWare.<br/><br/> VM-herstel van Hyper-V-en VMWare Linux-gast-Vm's.
-**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Niet ondersteund.
+**DPM gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMware.<br/><br/> VM-herstel van Hyper-V-en VMware Linux-gast-Vm's.
+**MABS gebruiken om back-ups te maken van on-premises machines waarop Linux wordt uitgevoerd** | Bestands consistente back-up van Linux-gast-Vm's op Hyper-V en VMware.<br/><br/> VM-herstel van Hyper-V-en VMware Linux-gast-Vm's.
+**MABS of DPM gebruiken om een back-up te maken van virtuele Linux Azure-machines** | Wordt niet ondersteund.
 
 ## <a name="daylight-saving-time-support"></a>Ondersteuning voor zomer tijd
 

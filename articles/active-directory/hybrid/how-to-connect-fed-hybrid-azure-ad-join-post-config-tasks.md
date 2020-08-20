@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807584"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612466"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Taken na configuratie voor hybride Azure AD-koppeling
 
@@ -63,7 +63,7 @@ Als uw organisatie een Federation-service gebruikt om u aan te melden bij Azure 
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Schakel Azure AD naadloze SSO in voor Windows-apparaten op lagere niveaus
 
-Als uw organisatie gebruikmaakt van hash-synchronisatie van wacht woorden of Pass-Through-verificatie om zich aan te melden bij Azure AD, schakelt u de naadloze SSO van Azure AD in met die aanmeldings methode om Windows-apparaten op lagere niveaus te verifiëren: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
+Als uw organisatie gebruikmaakt van hash-synchronisatie van wacht woorden of Pass-Through-verificatie om zich aan te melden bij Azure AD, schakelt u de naadloze SSO van Azure AD in met die aanmeldings methode om Windows-apparaten op lagere niveaus te verifiëren:  https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Stel het Azure AD-beleid voor Windows-apparaten op lagere niveaus in
 
@@ -76,9 +76,9 @@ Als u Windows-apparaten op een lager niveau wilt registreren, moet u ervoor zorg
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Azure AD-eind punt toevoegen aan Windows-apparaten op lager niveau
 
-Voeg het Azure AD-eind punt voor verificatie van apparaten toe aan de lokale intranet zones op uw Windows-apparaten op het lagere niveau om certificaat prompts te voor komen bij het verifiëren van de apparaten:`https://device.login.microsoftonline.com` 
+Voeg het Azure AD-eind punt voor verificatie van apparaten toe aan de lokale intranet zones op uw Windows-apparaten op het lagere niveau om certificaat prompts te voor komen bij het verifiëren van de apparaten: `https://device.login.microsoftonline.com` 
 
-Als u [naadloze SSO](how-to-connect-sso.md)gebruikt, schakelt u ook de optie updates op status balk toestaan via script in op die zone en voegt u het volgende eind punt toe:`https://autologon.microsoftazuread-sso.com` 
+Als u [naadloze SSO](how-to-connect-sso.md)gebruikt, schakelt u ook de optie updates op status balk toestaan via script in op die zone en voegt u het volgende eind punt toe: `https://autologon.microsoftazuread-sso.com` 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Installeer micro soft-Workplace Join op Windows-apparaten op een lager niveau
 
@@ -87,9 +87,6 @@ Dit installatie programma maakt een geplande taak op het apparaatsysteem dat wor
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. groeps beleid zo configureren dat apparaatregistratie is toegestaan
 
 Zie [gecontroleerde validatie van hybride Azure AD-deelname](../devices/hybrid-azuread-join-control.md)voor meer informatie over het toestaan van hybride Azure AD-deelname voor afzonderlijke apparaten.
-
-> [!NOTE]
-> Beleids instellingen voor 2012 R2 bevinden zich in **computer configuratie > beleid > Beheersjablonen > Windows-onderdelen > Workplace join de client computers automatisch kunnen worden toegevoegd aan de werk plek**.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Write-back van apparaat configureren](how-to-connect-device-writeback.md)

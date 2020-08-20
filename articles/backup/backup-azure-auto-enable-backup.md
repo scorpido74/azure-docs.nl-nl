@@ -3,12 +3,12 @@ title: Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
 description: Een artikel met informatie over het gebruik van Azure Policy om back-up automatisch in te scha kelen voor alle Vm's die in een bepaald bereik zijn gemaakt
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19985ebc51fe713ee0392800e2791ea1891ff3cd
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514217"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612670"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
 
@@ -32,19 +32,19 @@ Momenteel biedt Azure Backup een ingebouwd beleid (met behulp van Azure Policy) 
 
 Volg de onderstaande stappen om het beleid toe te wijzen aan het vereiste bereik:
 
-1. Meld u aan bij Azure Portal en navigeer naar het **beleids** dashboard.
-2. Selecteer **definities** in het linkermenu om een lijst op te halen met alle ingebouwde beleids regels voor Azure-resources.
-3. Filter de lijst voor **Category = backup**. U ziet dat de lijst wordt gefilterd op één beleid met de naam ' back-up configureren op Vm's van een locatie naar een bestaande centrale kluis op dezelfde locatie '.
+1. Meld u aan bij de Azure Portal en navigeer naar het **beleids** dashboard.
+1. Selecteer **definities** in het linkermenu om een lijst op te halen met alle ingebouwde beleids regels voor Azure-resources.
+1. Filter de lijst voor **Category = backup**. U ziet dat de lijst wordt gefilterd op één beleid met de naam ' back-up configureren op Vm's van een locatie naar een bestaande centrale kluis op dezelfde locatie '.
 ![Beleids dashboard](./media/backup-azure-auto-enable-backup/policy-dashboard.png)
-4. Klik op de naam van het beleid. U wordt omgeleid naar de gedetailleerde definitie van dit beleid.
-![Blade beleids definitie](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
-5. Klik boven aan de Blade op de knop **toewijzen** . Hiermee wordt u omgeleid naar de Blade **beleid toewijzen** .
-6. Klik onder **basis principes**op de drie puntjes naast het veld **bereik** . Hiermee opent u een rechter context-Blade waar u het abonnement kunt selecteren waarop het beleid moet worden toegepast. U kunt desgewenst ook een resource groep selecteren, zodat het beleid alleen wordt toegepast op virtuele machines in een bepaalde resource groep.
+1. Selecteer de naam van het beleid. U wordt omgeleid naar de gedetailleerde definitie van dit beleid.
+![Deel venster beleids definitie](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
+1. Selecteer de knop **toewijzen** boven aan het deel venster. Hiermee wordt u omgeleid naar het deel venster **beleid toewijzen** .
+1. Selecteer onder **basis beginselen**de drie punten naast het veld **bereik** . Hiermee opent u een context paneel met de rechter muisknop waarin u het abonnement kunt selecteren waarop het beleid moet worden toegepast. U kunt desgewenst ook een resource groep selecteren, zodat het beleid alleen wordt toegepast op virtuele machines in een bepaalde resource groep.
 ![Basis principes van beleids toewijzing](./media/backup-azure-auto-enable-backup/policy-assignment-basics.png)
-7. Kies op het tabblad **para meters** een locatie in de vervolg keuzelijst en selecteer de kluis en het back-upbeleid waaraan de vm's in het bereik moeten worden gekoppeld.
+1. Kies op het tabblad **para meters** een locatie in de vervolg keuzelijst en selecteer de kluis en het back-upbeleid waaraan de vm's in het bereik moeten worden gekoppeld.
 ![Beleids toewijzings parameters](./media/backup-azure-auto-enable-backup/policy-assignment-parameters.png)
-8. Zorg ervoor dat het **effect** is ingesteld op deployIfNotExists.
-9. Ga naar **controleren en maken** en klik op **maken**.
+1. Zorg ervoor dat het **effect** is ingesteld op deployIfNotExists.
+1. Ga naar **controleren en maken** en selecteer **maken**.
 
 > [!NOTE]
 >

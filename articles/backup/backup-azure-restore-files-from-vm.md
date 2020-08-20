@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262667"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611837"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -87,7 +87,7 @@ Zodra de schijven zijn ontkoppeld, ontvangt u een bericht. Het kan enkele minute
 Nadat de verbinding met het herstel punt in Linux is verbroken, worden de bijbehorende koppel paden niet automatisch door het besturings systeem verwijderd. De koppel paden bestaan als ' zwevende ' volumes en zijn zichtbaar, maar er treedt een fout op wanneer u de bestanden opent/schrijft. Ze kunnen hand matig worden verwijderd. Het script, wanneer dit wordt uitgevoerd, identificeert alle volumes die bestaan uit eerdere herstel punten en ruimt deze op bij toestemming.
 
 > [!NOTE]
-> Zorg ervoor dat de verbinding is gesloten nadat de vereiste bestanden zijn hersteld. Dit is belang rijk, met name in het scenario waarin de computer waarop het script wordt uitgevoerd, ook is geconfigureerd voor back-up. Als de verbinding nog is geopend, kan de volgende back-up mislukken met de fout ' UserErrorUnableToOpenMount '. Dit gebeurt omdat de gekoppelde stations/volumes beschikbaar zijn en wanneer ze worden geopend. Dit kan mislukken omdat de onderliggende opslag, de iSCSI-doel server, mogelijk niet beschikbaar is. Als u de verbinding opschoont, worden deze stations/volumes verwijderd, waardoor deze niet beschikbaar zijn tijdens het maken van de back-up.
+> Zorg ervoor dat de verbinding is gesloten nadat de vereiste bestanden zijn hersteld. Dit is belang rijk, met name in het scenario waarin de computer waarop het script wordt uitgevoerd, ook is geconfigureerd voor back-up. Als de verbinding nog is geopend, kan de volgende back-up mislukken met de fout ' UserErrorUnableToOpenMount '. Dit gebeurt omdat de gekoppelde stations/volumes beschikbaar zijn en wanneer ze worden geopend. Dit kan mislukken omdat de onderliggende opslag, de iSCSI-doel server, mogelijk niet beschikbaar is. Als u de verbinding opschoont, worden deze stations/volumes verwijderd en zijn ze niet beschikbaar tijdens het maken van de back-up.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>De juiste computer selecteren om het script uit te voeren
 
@@ -234,7 +234,7 @@ mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 > [!WARNING]
-> Gebruik niet ' mount-a '. Met deze opdracht worden alle apparaten gekoppeld die worden beschreven in ' bestand/etc/fstab '. Dit kan betekenen dat dubbele apparaten kunnen worden gekoppeld. Gegevens kunnen worden omgeleid naar apparaten die zijn gemaakt met een script, die de gegevens niet behouden, en kan dus leiden tot verlies van gegevens.
+> Gebruik niet ' mount-a '. Met deze opdracht worden alle apparaten gekoppeld die worden beschreven in ' bestand/etc/fstab '. Dit kan betekenen dat dubbele apparaten kunnen worden gekoppeld. Gegevens kunnen worden omgeleid naar apparaten die zijn gemaakt door het script, die de gegevens niet behouden, en kunnen leiden tot gegevens verlies.
 
 #### <a name="for-raid-arrays"></a>Voor RAID-matrices
 
