@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Azure Active Directory-integratie met Nomadic | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Nomadic.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 13d02b1c-d98a-40b1-824f-afa45a2deb6a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 07e6e0d1a7d358deebba7b4857b6afebcfb3be1c
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5e710e8df594f6792a150fa1ffbd7779e96bb744
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800118"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>Zelfstudie: Azure Active Directory-integratie met Nomadic
 
