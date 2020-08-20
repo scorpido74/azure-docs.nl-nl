@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080502"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648561"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ontwerp overwegingen voor schaal sets
 In dit artikel worden ontwerp overwegingen voor Virtual Machine Scale Sets beschreven. Raadpleeg [Virtual Machine Scale sets Overview](./overview.md)voor meer informatie over wat virtual machine Scale sets zijn.
@@ -42,7 +42,7 @@ Sommige functies zijn momenteel alleen beschikbaar in Vm's:
 ## <a name="storage"></a>Storage
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Schaal sets met Azure Managed Disks
-Schaal sets kunnen worden gemaakt met [Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) in plaats van traditionele Azure-opslag accounts. Managed Disks bieden de volgende voor delen:
+Schaal sets kunnen worden gemaakt met [Azure Managed disks](../virtual-machines/managed-disks-overview.md) in plaats van traditionele Azure-opslag accounts. Managed Disks bieden de volgende voor delen:
 - U hoeft geen set van Azure Storage-accounts vooraf te maken voor de virtuele machines met schaal sets.
 - U kunt [gekoppelde gegevens schijven](virtual-machine-scale-sets-attached-disks.md) definiëren voor de virtuele machines in uw schaalset.
 - Schaal sets kunnen worden geconfigureerd voor [ondersteuning van Maxi maal 1.000 vm's in een set](virtual-machine-scale-sets-placement-groups.md). 

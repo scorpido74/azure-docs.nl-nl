@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0a043bf79818480e045fb1f82640639fd7dcb232
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847632"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650822"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Educatief leren (preview) met Azure Machine Learning
 
@@ -34,7 +34,7 @@ In dit artikel leert u het volgende:
 > * Een experiment verzenden om een uitvoering te starten
 > * Resultaten weergeven
 
-Dit artikel is gebaseerd op het [RLlib Pong-voor beeld](https://aka.ms/azureml-rl-pong) dat u kunt vinden in de [github-opslag plaats](https://aka.ms/azureml-rl-notebooks)van Azure machine learning notebook.
+Dit artikel is gebaseerd op het [RLlib Pong-voor beeld](https://aka.ms/azureml-rl-pong) dat u kunt vinden in de [github-opslag plaats](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)van Azure machine learning notebook.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,12 +45,12 @@ Voer deze code uit in een van de volgende omgevingen. U wordt aangeraden om Azur
      - Meer informatie over het klonen van voorbeeld notitieblokken in [zelf studie: installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md).
          - De map **How-to-use-azureml** klonen in plaats van **zelf studies**
      - Voer de installatie notitieblok van het virtuele netwerk dat zich bevindt bij `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` om netwerk poorten te openen die worden gebruikt voor gedistribueerde versterking van het onderwijs.
-     - Het voorbeeld notitieblok uitvoeren`/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb`
+     - Het voorbeeld notitieblok uitvoeren `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb`
  
  - Uw eigen Jupyter Notebook-server
 
     - Installeer de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-    - Installeer de [Azure machine learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py):`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Installeer de [Azure machine learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`
     - Maak een [configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
     - Voer de [installatie notitieblok](https://aka.ms/azure-rl-env-setup) van het virtuele netwerk uit om de netwerk poorten te openen die worden gebruikt voor Distributed versterking learning.
 
@@ -433,4 +433,4 @@ Kortom, u hebt geleerd hoe u meerdere reken resources kunt configureren om een v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een versterkende Learning agent kunt trainen met behulp van een IMPALA Learning-agent. Als u meer voor beelden wilt bekijken, gaat u naar de [Azure machine learning-github-opslag plaats voor versterking](https://aka.ms/azureml-rl-notebooks).
+In dit artikel hebt u geleerd hoe u een versterkende Learning agent kunt trainen met behulp van een IMPALA Learning-agent. Als u meer voor beelden wilt bekijken, gaat u naar de [Azure machine learning-github-opslag plaats voor versterking](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md).

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510229"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650612"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -111,10 +111,7 @@ In het algemeen zijn de installatie en configuratie van Windows, Linux en DBMS i
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Opslag structuur van een virtuele machine voor RDBMS-implementaties
 Als u dit hoofd stuk wilt volgen, leest en begrijpt u de informatie die wordt weer gegeven in [dit hoofd stuk][deployment-guide-3] van de [implementatie handleiding][deployment-guide]. Voordat u dit hoofd stuk leest, moet u weten wat de verschillende VM-series zijn en wat de verschillen zijn tussen Standard en Premium Storage. 
 
-Zie voor meer informatie over Azure Storage voor virtuele Azure-machines:
-
-- [Inleiding tot beheerde schijven voor Azure Windows-vm's](../../windows/managed-disks-overview.md).
-- [Inleiding tot beheerde schijven voor Azure Linux-vm's](../../linux/managed-disks-overview.md).
+Zie [Introduction to Managed disks for Azure vm's](../../managed-disks-overview.md)(Engelstalig) voor meer informatie over Azure Storage voor virtuele Azure-machines.
 
 In een basis configuratie raden wij doorgaans een implementatie structuur aan waarbij het besturings systeem, DBMS en mogelijke SAP binaire bestanden van de database bestanden gescheiden zijn. We raden aan dat SAP-systemen die worden uitgevoerd op virtuele Azure-machines, de basis-VHD, of de schijf, moeten worden geïnstalleerd met het besturings systeem, Database Management System uitvoer bare bestanden en uitvoer bare SAP-bestanden. 
 

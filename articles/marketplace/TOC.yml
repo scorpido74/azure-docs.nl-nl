@@ -8,7 +8,7 @@
     - name: Overzicht en voordelen van de commerciële marketplace
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 'Een marketplace, twee webwinkels'
+        - name: 'Een marketplace, twee onlinewinkels'
           href: ./comparing-appsource-azure-marketplace.md
         - name: Publicatie-opties en -overwegingen
           href: ./determine-your-listing-type.md

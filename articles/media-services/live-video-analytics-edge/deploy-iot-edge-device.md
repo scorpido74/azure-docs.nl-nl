@@ -3,12 +3,12 @@ title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 26be76a46fa514917ee1c89cab7d1f112ee85431
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067885"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652454"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
@@ -51,7 +51,7 @@ U kunt deze opdracht gebruiken om het streaming-eind punt te starten
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 
-Volg de stappen in dit artikel om referenties op te halen voor toegang tot de media service-Api's: [toegang tot de media service-api's](../latest/access-api-howto.md#use-the-azure-portal).
+Volg de stappen in dit artikel om referenties op te halen voor toegang tot de media service-Api's: [Open de media service-api's](../latest/access-api-howto.md?tabs=portal) en selecteer het tabblad Portal.
 
 ## <a name="create-and-use-local-user-account-for-deployment"></a>Een lokaal gebruikers account maken en gebruiken voor implementatie
 Als u de live video Analytics op IoT Edge module wilt uitvoeren, maakt u een lokale gebruikers account met zo min mogelijk bevoegdheden. Voer bijvoorbeeld de volgende opdrachten uit op uw Linux-computer:
@@ -168,7 +168,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
     * {resourceGroupName}: dit is de resource groep waartoe uw media service-account behoort
     * {AMS-account-name}-dit is de naam van uw Media Services-account
     
-    Als u de andere waarden wilt ophalen, raadpleegt u de [Access Azure Media Services-API](../latest/access-api-howto.md#use-the-azure-portal).  
+    Als u de andere waarden wilt ophalen, raadpleegt u [Access Azure Media Services API](../latest/access-api-howto.md?tabs=portal) en selecteert u het tabblad Portal.  
     * aadTenantId: dit is de ID van uw Tenant en is hetzelfde als de AadTenantId van de bovenstaande koppeling.
     * aadServicePrincipalAppId: dit is de App-ID van de service-principal voor uw media service-account en is hetzelfde als de AadClientId van de bovenstaande koppeling.
     * aadServicePrincipalSecret: dit is het wacht woord van de Service-Principal en is hetzelfde als de AadSecret van de bovenstaande koppeling.

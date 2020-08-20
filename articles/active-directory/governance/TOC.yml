@@ -86,6 +86,8 @@
               href: entitlement-management-request-access.md
     - name: Toegangsbeoordelingen
       items:
+        - name: Implementatie van toegangsbeoordeling plannen
+          href: deploy-access-reviews.md
         - name: Toegangspakketten
           items:
             - name: Een toegangsbeoordeling maken

@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: acd030d8108ef3983be29fe85de6d7b3caf620af
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b20612756050ae2e9d39f59d049b8c097e3b8010
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849332"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651213"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Train met gegevens sets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -90,7 +90,7 @@ Deze code maakt een Gene riek Estimator-object, `est` dat aangeeft
 
 * Een script Directory voor uw scripts. Alle bestanden in deze map worden naar de clusterknooppunten geüpload voor uitvoering.
 * Het trainings script, *train_titanic. py*.
-* De invoer gegevensset voor training, `titanic_ds` . `as_named_input()`is vereist zodat naar de gegevensset van de invoer kan worden verwezen door de toegewezen naam `titanic` in uw trainings script. 
+* De invoer gegevensset voor training, `titanic_ds` . `as_named_input()` is vereist zodat naar de gegevensset van de invoer kan worden verwezen door de toegewezen naam `titanic` in uw trainings script. 
 * Het reken doel voor het experiment.
 * De omgevings definitie voor het experiment.
 
@@ -115,7 +115,7 @@ In het volgende voor beeld wordt een FileDataset gemaakt en wordt de gegevensset
 
 ### <a name="create-a-filedataset"></a>Een FileDataset maken
 
-In het volgende voor beeld wordt een niet-geregistreerde FileDataset gemaakt op basis van web-url's. Meer informatie over [het maken van gegevens sets](https://aka.ms/azureml/howto/createdatasets) van andere bronnen.
+In het volgende voor beeld wordt een niet-geregistreerde FileDataset gemaakt op basis van web-url's. Meer informatie over [het maken van gegevens sets](how-to-create-register-datasets.md) van andere bronnen.
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -201,7 +201,7 @@ Wanneer u een gegevensset **downloadt** , worden alle bestanden waarnaar wordt v
 
 Als uw script alle bestanden verwerkt waarnaar wordt verwezen door de gegevensset, en uw berekenings schijf kan overeenkomen met uw volledige gegevensset, wordt het downloaden aanbevolen om de overhead van streaming-gegevens van opslag services te voor komen. Als uw gegevens grootte de grootte van de berekenings schijf overschrijdt, is downloaden niet mogelijk. Voor dit scenario wordt u aangeraden te koppelen, omdat alleen de gegevens bestanden die door het script worden gebruikt, worden geladen op het moment van verwerking.
 
-De volgende code wordt gekoppeld `dataset` aan de tijdelijke directory op`mounted_path`
+De volgende code wordt gekoppeld `dataset` aan de tijdelijke directory op `mounted_path`
 
 ```python
 import tempfile

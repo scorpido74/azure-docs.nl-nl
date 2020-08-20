@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508784"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649156"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
@@ -66,13 +66,13 @@ Volg de onderstaande stappen om de bovenstaande gegevens te genereren:
     cd
     ```
 
-6. Voer de volgende opdracht uit. Hiermee wordt een geverifieerde account verbonden voor Azure AD-aanvragen
+6. Voer de volgende opdracht uit: Hiermee wordt een geverifieerde account verbonden voor Azure AD-aanvragen
 
     ```azurepowershell-interactive
     Connect-AzureAD
     ```
 
-7. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw basismap.
+7. Voer de volgende opdracht uit: Hiermee wordt een script gedownload naar uw basismap.
 
     ```azurepowershell-interactive
 
@@ -87,6 +87,10 @@ Volg de onderstaande stappen om de bovenstaande gegevens te genereren:
     ./generatePartnerCredentials.ps1
 
     ```
+
+> [!NOTE]
+> 1. De naam van het Datahub-API-eind punt moet in kleine letters worden beschouwd.
+> 2. Als u de naam-URL van de farmbeats-website voor Datahub API-eind punt kopieert, moet u ervoor zorgen dat er geen afsluitende slash (/) is.
 
 9. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
 

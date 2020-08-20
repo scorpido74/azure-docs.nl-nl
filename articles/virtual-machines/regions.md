@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284724"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650550"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Regio's voor virtuele machines in Azure
 
@@ -79,7 +79,7 @@ De volgende tabel geeft een overzicht van de verschillen tussen de typen opslagr
 | Gegevens kunnen worden gelezen vanaf de secundaire locatie en vanaf de primaire locatie. |Nee |Nee |Nee |Ja |
 | Het aantal exemplaren van de gegevens op afzonderlijke knooppunten. |3 |3 |6 |6 |
 
-Meer informatie over [Azure Storage-replicatieopties vindt u hier](../storage/common/storage-redundancy.md). Zie voor meer informatie over beheerde schijven [overzicht Azure Managed Disks](./windows/managed-disks-overview.md).
+Meer informatie over [Azure Storage-replicatieopties vindt u hier](../storage/common/storage-redundancy.md). Zie voor meer informatie over beheerde schijven [overzicht Azure Managed Disks](./managed-disks-overview.md).
 
 ### <a name="storage-costs"></a>Opslagkosten
 De kosten zijn afhankelijk van het opslagtype en de beschikbaarheid die u selecteert.

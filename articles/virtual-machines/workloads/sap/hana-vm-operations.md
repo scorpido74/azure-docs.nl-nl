@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93587c6bbed20982bd96d04f58106ec1617542d3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506427"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649683"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure
 Dit document bevat richt lijnen voor het configureren van Azure-infra structuur en-besturings SAP HANA systemen die zijn geïmplementeerd op Azure native virtual machines (Vm's). Het document bevat ook configuratie-informatie voor SAP HANA scale-out voor de M128s VM-SKU. Dit document is niet bedoeld als vervanging van de Standard SAP-documentatie, die de volgende inhoud bevat:
@@ -243,7 +243,7 @@ Volgens de best practice richt lijnen voor DT 2,0 moet de i/o-door Voer van de s
 
 Het is verplicht om meerdere Azure-schijven aan de DT 2,0-VM te koppelen en een software matige RAID (striping) te maken op het niveau van het besturings systeem om de maximale limiet van de schijf doorvoer per virtuele machine te krijgen. Eén Azure-schijf kan de door Voer niet bieden om de maximale VM-limiet in dit opzicht te bereiken. Azure Premium Storage is verplicht om DT 2,0 uit te voeren. 
 
-- Meer informatie over beschik bare typen Azure-schijven vindt u [hier](../../windows/disks-types.md)
+- Meer informatie over beschik bare typen Azure-schijven vindt u [hier](../../disks-types.md)
 - Meer informatie over het maken van software-RAID via mdadm vindt u [hier](../../linux/configure-raid.md)
 - Meer informatie over het configureren van LVM voor het maken van een striped volume voor de maximale door Voer, vindt u [hier](../../linux/configure-lvm.md)
 

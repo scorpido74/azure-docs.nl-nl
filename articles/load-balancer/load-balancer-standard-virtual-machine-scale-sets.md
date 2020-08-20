@@ -13,25 +13,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: irenehua
-ms.openlocfilehash: f5a8453f84854108facb4da4616a7d362e0fb38c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41f1d6c18eab35bd1a41d4cfa98d0cbda69b35ac
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531723"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650329"
 ---
 # <a name="azure-load-balancer-with-azure-virtual-machine-scale-sets"></a>Azure Load Balancer met schaal sets voor virtuele Azure-machines
 
 Wanneer u werkt met schaal sets voor virtuele machines en load balancer, moet u rekening houden met de volgende richt lijnen:
 
-## <a name="multiple-virtual-machine-scale-sets-cant-use-the-same-load-balancer"></a>Meerdere virtuele-machine schaal sets kunnen niet dezelfde load balancer gebruiken
 ## <a name="port-forwarding-and-inbound-nat-rules"></a>Poort door sturen en binnenkomende NAT-regels:
   * Nadat de schaalset is gemaakt, kan de backend-poort niet worden gewijzigd voor een taakverdelings regel die wordt gebruikt door een status test van de load balancer. Als u de poort wilt wijzigen, kunt u de status test verwijderen door de schaalset voor virtuele Azure-machines bij te werken, de poort bij te werken en de status test vervolgens opnieuw te configureren.
   * Wanneer u de schaalset voor virtuele machines in de back-endadresgroep van de load balancer gebruikt, worden de standaard binnenkomende NAT-regels automatisch gemaakt.
 ## <a name="inbound-nat-pool"></a>Binnenkomende NAT-groep:
   * Elke schaalset voor virtuele machines moet ten minste één binnenkomende NAT-groep hebben. 
   * De binnenkomende NAT-pool is een verzameling van binnenkomende NAT-regels. Eén binnenkomende NAT-groep kan geen ondersteuning bieden voor meerdere schaal sets voor virtuele machines.
-  
+  * Als u een NAT-groep wilt verwijderen uit een bestaande schaalset voor virtuele machines, moet u eerst de NAT-groep verwijderen uit de schaalset. Hieronder ziet u een volledig voor beeld van het gebruik van CLI:
+```azurecli-interactive
+  az vmss update
+     --resource-group MyResourceGroup
+     --name MyVMSS
+     --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools
+  az vmss update-instances
+     -–instance-ids *
+     --resource-group MyResourceGroup
+     --name MyVMSS
+  az network lb inbound-nat-pool delete
+     --resource-group MyResourceGroup
+     -–lb-name MyLoadBalancer
+     --name MyNatPool
+```
 ## <a name="load-balancing-rules"></a>Taakverdelings regels:
   * Wanneer u de schaalset voor virtuele machines in de back-endadresgroep van de load balancer gebruikt, wordt de standaard regel voor taak verdeling automatisch gemaakt.
 ## <a name="outbound-rules"></a>Uitgaande regels:

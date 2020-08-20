@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 0c78245a64fa9bcb7faef2c07973d1d7b5080e76
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843093"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648782"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
 
@@ -69,7 +69,7 @@ Fpga's zijn beschikbaar in deze Azure-regio's:
   - VS - oost
   - Azië - zuidoost
   - Europa -west
-  - West US 2
+  - VS - west 2
 
 Om de latentie en door voer te optimaliseren, moet uw client gegevens verzenden naar het FPGA-model in een van de bovenstaande regio's (het model dat u hebt geïmplementeerd.)
 
@@ -163,7 +163,7 @@ Gebruik de [Azure machine learning SDK voor python](https://docs.microsoft.com/p
    print(feature_tensor.shape)
    ```
 
-1. Voeg een classificatie toe. Deze classificatie is getraind op de ImageNet-gegevensset.  Voor beelden voor de overdracht van learning en training uw aangepaste gewichten zijn beschikbaar in de set voor [beeld-notebooks](https://aka.ms/aml-notebooks).
+1. Voeg een classificatie toe. Deze classificatie is getraind op de ImageNet-gegevensset.  Voor beelden voor de overdracht van learning en training uw aangepaste gewichten zijn beschikbaar in de set voor [beeld-notebooks](https://github.com/Azure/MachineLearningNotebooks).
 
    ```python
    classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -405,7 +405,7 @@ converted_model.delete()
 
 Bekijk deze notitie blokken, Video's en blogs:
 
-+ Verschillende voor [beelden van notitie blokken](https://aka.ms/aml-accel-models-notebooks)
++ Verschillende voor [beelden van notitie blokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/accelerated-models)
 + Als u uw FPGA-webservices wilt beveiligen, raadpleegt u het document [beveiligde webservices](how-to-secure-web-service.md) .
 + [Grootschalige-hardware: ML op schaal boven op Azure + FPGA: Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 + [In de op micro soft FPGA Configureer bare Cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)

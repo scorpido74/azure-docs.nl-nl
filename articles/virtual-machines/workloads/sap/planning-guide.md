@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87c8b160a0b8791d13976be975090d16e68ea82f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: de3b0ed309863a09003b1ff7709481d763163e07
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547406"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652199"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -242,7 +242,7 @@ ms.locfileid: "88547406"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -533,7 +533,7 @@ Bij het implementeren van services of Vm's in azure, worden de implementatie van
 
 speelt een belang rijke rol bij het plannen van een SAP-implementatie in Azure. U kunt het aantal permanente schijven in een opslag account beheren. U moet de opslag accounts beheren en uiteindelijk nieuwe opslag accounts maken om meer persistente schijven te maken.
 
-In de afgelopen jaren heeft de introductie van [Azure Managed disks](../../windows/managed-disks-overview.md) u van deze taken ontheven. De aanbeveling voor SAP-implementaties is om gebruik te maken van Azure Managed disks in plaats van Azure Storage-accounts zelf te beheren. Met Azure Managed disks worden schijven verdeeld over verschillende opslag accounts, zodat de limieten van de afzonderlijke opslag accounts niet worden overschreden.
+In de afgelopen jaren heeft de introductie van [Azure Managed disks](../../managed-disks-overview.md) u van deze taken ontheven. De aanbeveling voor SAP-implementaties is om gebruik te maken van Azure Managed disks in plaats van Azure Storage-accounts zelf te beheren. Met Azure Managed disks worden schijven verdeeld over verschillende opslag accounts, zodat de limieten van de afzonderlijke opslag accounts niet worden overschreden.
 
 Binnen een opslag account hebt u een type map met de naam containers die kan worden gebruikt om bepaalde schijven te groeperen in specifieke containers.
 
@@ -804,7 +804,7 @@ De vereisten voor het voorbereiden van uw eigen Azure VM-schijf zijn:
 
 * Oorspronkelijk kan de VHD met het besturings systeem een maximum grootte hebben van 127 GB. Deze beperking is eind maart 2015. De VHD met het besturings systeem kan nu Maxi maal 1 TB groot zijn als andere Azure Storage gehoste VHD.
 * Deze moet de vaste VHD-indeling hebben. Dynamische Vhd's of Vhd's in VHDx-indeling worden nog niet ondersteund in Azure. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
-* Vhd's die zijn gekoppeld aan de virtuele machine en in azure opnieuw moeten worden gekoppeld aan de virtuele machine moeten ook een vaste VHD-indeling hebben. Lees [dit artikel (Linux)](../../linux/managed-disks-overview.md) en [dit artikel (Windows)](../../windows/managed-disks-overview.md)) voor maximale grootte van gegevens schijven. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
+* Vhd's die zijn gekoppeld aan de virtuele machine en in azure opnieuw moeten worden gekoppeld aan de virtuele machine moeten ook een vaste VHD-indeling hebben. Lees [dit artikel](../../managed-disks-overview.md) voor maximale grootte van gegevens schijven. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
 * Voeg nog een lokaal account met beheerders bevoegdheden toe, dat kan worden gebruikt door micro soft-ondersteuning of dat kan worden toegewezen als context voor services en toepassingen om uit te voeren totdat de virtuele machine wordt geïmplementeerd en er meer geschikte gebruikers kunnen worden gebruikt.
 * Voeg andere lokale accounts toe, omdat deze mogelijk nodig zijn voor het specifieke implementatie scenario.
 
@@ -831,7 +831,7 @@ De vereisten voor het voorbereiden van uw eigen Azure VM-installatie kopie zijn:
 
 * Oorspronkelijk kan de VHD met het besturings systeem een maximum grootte hebben van 127 GB. Deze beperking is eind maart 2015. De VHD met het besturings systeem kan nu Maxi maal 1 TB groot zijn als andere Azure Storage gehoste VHD.
 * Deze moet de vaste VHD-indeling hebben. Dynamische Vhd's of Vhd's in VHDx-indeling worden nog niet ondersteund in Azure. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
-* Vhd's die zijn gekoppeld aan de virtuele machine en in azure opnieuw moeten worden gekoppeld aan de virtuele machine moeten ook een vaste VHD-indeling hebben. Lees [dit artikel (Linux)](../../windows/managed-disks-overview.md) en [dit artikel (Windows)](../../linux/managed-disks-overview.md) voor maximale grootte van gegevens schijven. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
+* Vhd's die zijn gekoppeld aan de virtuele machine en in azure opnieuw moeten worden gekoppeld aan de virtuele machine moeten ook een vaste VHD-indeling hebben. Lees [dit artikel](../../managed-disks-overview.md) voor maximale grootte van gegevens schijven. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
 * Voeg andere lokale accounts toe, omdat deze mogelijk nodig zijn voor het specifieke implementatie scenario.
 * Als de installatie kopie een SAP net-computer bevat en de naam van de hostnaam van de oorspronkelijke naam op het punt van de Azure-implementatie wordt gewijzigd, wordt het aanbevolen om de nieuwste versies van de SAP software Provisioning manager-DVD naar de sjabloon te kopiëren. Zo kunt u eenvoudig de SAP-functie naamswijziging gebruiken om de gewijzigde hostnaam en/of de SID van het SAP-systeem binnen de geïmplementeerde VM-installatie kopie aan te passen zodra er een nieuwe kopie wordt gestart.
 

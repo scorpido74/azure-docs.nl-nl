@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 881fa116b1a44d4714002f71e6ebd163279d8c70
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8e62d2d1955b5b323ad31cc5d45106210e3e22c6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284299"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651179"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Vereisten voor het maken van AlwaysOn-beschikbaarheids groepen op SQL Server op Azure Virtual Machines
 
@@ -152,7 +152,7 @@ Configureer twee beschikbaarheids sets volgens de para meters in de volgende tab
 
 | **Veld** | Beschikbaarheidsset van domein controller | Beschikbaarheidsset SQL Server |
 | --- | --- | --- |
-| **Naam** |adavailabilityset |sqlavailabilityset |
+| **Name** |adavailabilityset |sqlavailabilityset |
 | **Resourcegroep** |SQL-HA-RG |SQL-HA-RG |
 | **Foutdomeinen** |3 |3 |
 | **Updatedomeinen** |5 |3 |
@@ -320,7 +320,7 @@ Nadat de primaire domein controller opnieuw is opgestart, kunt u de tweede domei
     >Op de pagina **DNS-opties** wordt mogelijk gewaarschuwd dat er geen delegering voor deze DNS-server kan worden gemaakt. U kunt deze waarschuwing negeren in niet-productie omgevingen.
     >
 
-22. Selecteer **volgende** totdat het dialoog venster de controle van **vereisten** bereikt. Selecteer vervolgens **installeren**.
+22. Selecteer **volgende** totdat het dialoog venster de controle van **vereisten** bereikt. Selecteer vervolgens **Installeren**.
 
 Nadat de configuratie wijzigingen door de server zijn voltooid, start u de server opnieuw op.
 
@@ -328,7 +328,7 @@ Nadat de configuratie wijzigingen door de server zijn voltooid, start u de serve
 
 Wijzig in de Azure Portal onder virtueel netwerk de DNS-server zodanig dat het IP-adres van de secundaire domein controller bevat. Met deze instelling wordt de DNS-service redundantie toegestaan.
 
-### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a>Domein accounts configureren
+### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a> Domein accounts configureren
 
 In de volgende stappen configureert u de Active Directory accounts. De volgende tabel bevat de accounts:
 
@@ -380,7 +380,7 @@ Voordat u verdergaat, moet u rekening houden met de volgende ontwerp beslissinge
 
 * **Opslag-Azure-Managed Disks**
 
-   Gebruik Azure Managed Disks voor de opslag van de virtuele machine. Micro soft adviseert Managed Disks voor SQL Server virtuele machines. Managed Disks verwerken de opslag achter de schermen. Bovendien distribueert Azure de opslagresources zodat voldoende redundantie wordt geboden wanneer virtuele machines met Managed Disks zich in dezelfde beschikbaarheidsset bevinden. Zie [Azure Managed Disks overview](../../../virtual-machines/linux/managed-disks-overview.md) (Overzicht van Azure Managed Disks) voor meer informatie. Zie [Managed disks voor virtuele machines in een beschikbaarheidsset gebruiken](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)voor meer informatie over beheerde schijven in een beschikbaarheidsset.
+   Gebruik Azure Managed Disks voor de opslag van de virtuele machine. Micro soft adviseert Managed Disks voor SQL Server virtuele machines. Managed Disks verwerken de opslag achter de schermen. Bovendien distribueert Azure de opslagresources zodat voldoende redundantie wordt geboden wanneer virtuele machines met Managed Disks zich in dezelfde beschikbaarheidsset bevinden. Zie [Azure Managed Disks overview](../../../virtual-machines/managed-disks-overview.md) (Overzicht van Azure Managed Disks) voor meer informatie. Zie [Managed disks voor virtuele machines in een beschikbaarheidsset gebruiken](../../../virtual-machines/linux/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)voor meer informatie over beheerde schijven in een beschikbaarheidsset.
 
 * **Netwerk-privé-IP-adressen in productie**
 
@@ -496,7 +496,7 @@ Herhaal de stappen op de andere SQL Server VM.
   >
 
 
-## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a>De firewall op elke SQL Server VM configureren
+## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> De firewall op elke SQL Server VM configureren
 
 Voor de oplossing moeten de volgende TCP-poorten in de firewall zijn geopend:
 

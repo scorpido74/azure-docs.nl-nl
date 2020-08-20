@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319487"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650414"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Toepassingen, processen of CI/CD-werk stromen activeren op basis van Azure Machine Learning gebeurtenissen (preview)
 
@@ -199,7 +199,7 @@ In dit voor beeld ziet u hoe u Event grid gebruikt met een Azure Logic-app om de
 
 Voordat u begint, moet u de volgende acties uitvoeren:
 
-* Een gegevensset-monitor instellen voor het [detecteren van gegevens drift]( https://aka.ms/datadrift) in een werk ruimte
+* Een gegevensset-monitor instellen voor het [detecteren van gegevens drift](how-to-monitor-datasets.md) in een werk ruimte
 * Een gepubliceerde [Azure Data Factory pijp lijn](https://docs.microsoft.com/azure/data-factory/)maken.
 
 In dit voor beeld wordt een eenvoudige Data Factory-pijp lijn gebruikt om bestanden te kopiëren naar een BLOB Store en een gepubliceerde Machine Learning-pijp lijn uit te voeren. Zie een [Machine Learning stap instellen in azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service) voor meer informatie over dit scenario.

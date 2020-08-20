@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833331"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648986"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-workload in scenario's met virtuele Azure-machines
 Het ontwerpen van de architectuur van SAP NetWeaver, Business One `Hybris` of S/4HANA Systems in azure opent een groot aantal verschillende mogelijkheden voor verschillende architecturen en hulpprogram ma's die u kunt gebruiken om een schaal bare, efficiënte en Maxi maal beschik bare implementatie te verkrijgen. Afhankelijk van het gebruikte besturings systeem of DBMS, zijn er beperkingen. Daarnaast worden niet alle scenario's die on-premises worden ondersteund, op dezelfde manier ondersteund in Azure. In dit document wordt gebruikgemaakt van de ondersteunde configuraties voor niet-hoge Beschik baarheid en configuraties met hoge Beschik baarheid en architecturen met alleen Azure Vm's. Raadpleeg het artikel [ondersteunde scenario's voor Hana grote instanties](./hana-supported-scenario.md)voor scenario's die worden ondersteund met een [grote hoeveelheid Hana-exemplaren](./hana-overview-architecture.md). 
@@ -160,7 +160,7 @@ SAP Central Services is een tweede Single Point of Failure van uw SAP-configurat
     - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen](./high-availability-guide-suse-netapp-files.md)
 - Pacemaker op een Red Hat-besturings systeem met NFS-share gehost op een `glusterfs` cluster. Meer informatie vindt u in de artikelen
     - [Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux](./high-availability-guide-rhel.md)
-    - [`GlusterFS`op virtuele machines van Azure op Red Hat Enterprise Linux voor SAP net-Weaver](./high-availability-guide-rhel-glusterfs.md)
+    - [`GlusterFS` op virtuele machines van Azure op Red Hat Enterprise Linux voor SAP net-Weaver](./high-availability-guide-rhel-glusterfs.md)
 - Pacemaker op het Red Hat-besturings systeem met de NFS-share gehost op [Azure NetApp files](https://azure.microsoft.com/services/netapp/). Details worden beschreven in het artikel
     - [Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files voor SAP-toepassingen](./high-availability-guide-rhel-netapp-files.md)
 
@@ -215,7 +215,7 @@ Een multi-SID-cluster met schematische voors telling van replicatie server ziet 
 SAP HANA scale-out-scenario's worden ondersteund voor een subset van de HANA-gecertificeerde Azure-Vm's, zoals vermeld in de [Hardware-map van SAP Hana](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Alle Vm's die zijn gemarkeerd met ja in de kolom Clustering kunnen worden gebruikt voor de scale-out van OLAP of S/4HANA. Configuraties zonder stand-by worden ondersteund met de Azure Storage typen: 
 
 - Azure Premium Storage, inclusief Azure write Accelerator voor het/Hana/log-volume
-- [Ultraschijven](../../linux/disks-enable-ultra-ssd.md)
+- [Ultraschijven](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
 SAP HANA scale-out-configuraties voor OLAP-of S/4HANA met stand-by-knoop punt (en) worden exclusief ondersteund door de door NFS gedeelde host op Azure NetApp Files.

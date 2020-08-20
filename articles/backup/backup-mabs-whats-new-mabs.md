@@ -3,12 +3,12 @@ title: Nieuw in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server biedt uitgebreide back-upmogelijkheden voor het beveiligen van Vm's, bestanden en mappen, werk belastingen en nog veel meer.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: a88b2926141092a9a1aeca988646aa3b69330f90
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190846"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648748"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Wat is er nieuw in Microsoft Azure Backup Server (MABS)
 
@@ -114,7 +114,7 @@ MABS v3 kan worden geïnstalleerd met SQL 2017 als de MABS-data base. U kunt de 
 
 ### <a name="windows-server-2019-support"></a>Ondersteuning voor Windows Server 2019
 
-MABS v3 kan worden geïnstalleerd op Windows Server 2019. Als u MABS v3 wilt gebruiken met WS2019, kunt u uw besturings systeem upgraden naar WS2019 voordat u installeert/bijwerkt naar MABS v3 of u kunt een upgrade uitvoeren van uw besturings systeem na het installeren/upgraden van v3 op WS2016.
+MABS v3 kan worden geïnstalleerd op Windows Server 2019. Als u MABS V3 met WS2019 wilt gebruiken, kunt u uw besturings systeem upgraden naar WS2019 voordat u installeert/bijwerkt naar MABS v3 of u kunt een upgrade uitvoeren van uw besturings systeem na het installeren/upgraden van v3 op WS2016.
 
 MABS v3 is een volledige versie en kan rechtstreeks worden geïnstalleerd op Windows Server 2016, Windows Server 2019 of worden bijgewerkt vanaf MABS v2. Lees over de installatie vereisten voordat u een upgrade uitvoert naar of een back-upserver v3 installeert.
 Meer informatie over de installatie-en upgrade stappen voor MABS vindt u [hier](./backup-azure-microsoft-azure-backup.md#software-package).

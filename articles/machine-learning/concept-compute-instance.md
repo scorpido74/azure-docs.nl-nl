@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f4938d517d9a5c244045798a79f31b96bacd03f5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829438"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651912"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -145,7 +145,7 @@ Maak in uw werk ruimte in Azure Machine Learning Studio een nieuw reken exemplaa
 
 |Veld  |Beschrijving  |
 |---------|---------|
-|Naam berekening     |  <li>De naam is vereist en moet tussen de 3 en 24 tekens lang zijn.</li><li>Geldige tekens zijn onder andere hoofd letters, cijfers en het **-** teken.</li><li>De naam moet beginnen met een letter</li><li>De naam moet uniek zijn voor alle bestaande berekeningen binnen een Azure-regio. U ziet een waarschuwing als de naam die u kiest, niet uniek is</li><li>Als het **-** teken wordt gebruikt, moet dit worden gevolgd door ten minste één letter later in de naam</li>     |
+|Naam berekening     |  <li>De naam is vereist en moet tussen de 3 en 24 tekens lang zijn.</li><li>Geldige tekens zijn onder andere hoofd letters, cijfers en het  **-** teken.</li><li>De naam moet beginnen met een letter</li><li>De naam moet uniek zijn voor alle bestaande berekeningen binnen een Azure-regio. U ziet een waarschuwing als de naam die u kiest, niet uniek is</li><li>Als het **-**  teken wordt gebruikt, moet dit worden gevolgd door ten minste één letter later in de naam</li>     |
 |Type virtuele machine |  Kies CPU of GPU. Dit type kan niet worden gewijzigd nadat het is gemaakt     |
 |Grootte van de virtuele machine     |  Ondersteunde grootten voor virtuele machines kunnen worden beperkt in uw regio. De [beschikbaarheids lijst](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) controleren     |
 |SSH-toegang inschakelen/uitschakelen     |   SSH-toegang is standaard uitgeschakeld.  SSH-toegang kan niet. gewijzigd na het maken. Zorg ervoor dat u toegang inschakelt als u van plan bent om interactief fouten op te lossen met [versus externe code](how-to-set-up-vs-code-remote.md)   |
@@ -155,26 +155,22 @@ U kunt ook een exemplaar maken
 * Rechtstreeks vanuit de [ervaring met geïntegreerde notebooks](tutorial-1st-experiment-sdk-setup.md#azure)
 * In Azure Portal
 * Van Azure Resource Manager sjabloon. Zie de [sjabloon Create a Azure machine learning Compute instance](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)voor een voorbeeld sjabloon.
-* Met [Azure machine learning SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
+* Met Azure Machine Learning SDK
 * Vanuit de [cli-uitbrei ding voor Azure machine learning](reference-azure-machine-learning-cli.md#computeinstance)
 
 De toegewezen kernen per regio per VM-serie quota en het totale regionale quotum, die van toepassing zijn op het maken van een reken instantie. is Unified en gedeeld met Azure Machine Learning-quotum voor het trainings berekenings cluster. Wanneer het reken exemplaar wordt gestopt, wordt er geen quotum vrijgegeven om ervoor te zorgen dat u het reken exemplaar opnieuw kunt starten.
 
 ## <a name="compute-target"></a>Rekendoel
 
-Reken instanties kunnen worden gebruikt als een [trainings berekenings doel](concept-compute-target.md#train) vergelijkbaar met Azure machine learning Compute-trainings clusters. 
+Reken instanties kunnen worden gebruikt als een [trainings berekenings doel](concept-compute-target.md#train) vergelijkbaar met Azure machine learning reken clusters. 
 
 Een reken instantie:
 * Bevat een taak wachtrij.
 * Voert taken veilig uit in een virtuele netwerk omgeving, zonder dat ondernemingen de SSH-poort hoeven te openen. De taak wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een docker-container.
 * Kan meerdere kleine taken parallel uitvoeren (preview).  Twee taken per kernen kunnen parallel worden uitgevoerd terwijl de rest van de taken in de wachtrij worden geplaatst.
+* Ondersteunt multi-GPU gedistribueerde trainings taken met één knoop punt
 
 U kunt reken instantie gebruiken als een lokaal doel voor het afwijzen van de implementatie voor scenario's voor testen en fout opsporing.
-
-> [!NOTE]
-> Gedistribueerde trainings taken worden niet ondersteund voor reken instanties.  Gebruik (reken clusters] (How-to-set-up-training-targets. MD # amlcompute) voor gedistribueerde training.
-
-Zie voor meer informatie de notebook [Train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Dit notitie blok is ook beschikbaar in de map Studio **samples** in *training/Train-on-computeinstance*.
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Wat is er gebeurd met de VM van de notebook?
 

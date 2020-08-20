@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 093f86f0373791326cf4658bdab7179fbca1307d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e0cb9492f6e0b52cb0816d16be5d67d3b92cfe56
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849655"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651400"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -127,7 +127,7 @@ Azure Machine Learning Compute kan worden hergebruikt in uitvoeringen. De comput
 
 Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering](#submit).
 
- ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a>De kosten voor reken clusters verlagen
+ ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> De kosten voor reken clusters verlagen
 
 U kunt ook [virtuele machines met lage prioriteit](concept-plan-manage-cost.md#low-pri-vm) gebruiken om enkele of alle werk belastingen uit te voeren. Deze Vm's hebben geen gegarandeerde Beschik baarheid en kunnen worden afgebroken tijdens het gebruik. Een afgebroken taak wordt opnieuw gestart, niet hervat. 
 
@@ -181,8 +181,6 @@ Reken instanties kunnen taken veilig uitvoeren in een [virtuele netwerk omgeving
     run = experiment.submit(config=src)
     ```
 
-Voor meer opdrachten die nuttig zijn voor het reken proces, raadpleegt u het notebook [Train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Dit notitie blok is ook beschikbaar in de map Studio **samples** in *training/Train-on-computeinstance*.
-
 Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering](#submit) .
 
 
@@ -201,7 +199,7 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
     > 
     > Azure Machine Learning moet de virtuele machine ook een __openbaar IP-adres__hebben.
 
-1. **Bijvoegen**: als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de resource-id, gebruikers naam en het wacht woord voor de virtuele machine opgeven. De resource-ID van de virtuele machine kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en de naam van de virtuele machine met de volgende teken reeks notatie:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
+1. **Bijvoegen**: als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de resource-id, gebruikers naam en het wacht woord voor de virtuele machine opgeven. De resource-ID van de virtuele machine kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en de naam van de virtuele machine met de volgende teken reeks notatie: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
  
    ```python
@@ -243,7 +241,7 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
     
     Nadat het cluster is gemaakt, maakt u een verbinding met de hostnaam \<clustername> -SSH.azurehdinsight.net, waarbij \<clustername> de naam is die u voor het cluster hebt ingesteld. 
 
-1. **Bijvoegen**: als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de resource-id, gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. De resource-ID van het HDInsight-cluster kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en het HDInsight-cluster met de volgende teken reeks indeling:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
+1. **Bijvoegen**: als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de resource-id, gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. De resource-ID van het HDInsight-cluster kan worden samengesteld met behulp van de abonnements-ID, naam van de resource groep en het HDInsight-cluster met de volgende teken reeks indeling: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute

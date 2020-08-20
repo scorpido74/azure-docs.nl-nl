@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f49a66fc6e233658b228b7ad9bacdaa23917afef
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547321"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648731"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Logboek registratie inschakelen in azure ML-trainings uitvoeringen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,8 +70,6 @@ U kunt ook dezelfde para meter in de `wait_for_completion` functie gebruiken bij
 run.wait_for_completion(show_output=True)
 ```
 
-Voor een volledig voor beeld van een notebook dat gebruikmaakt van ScriptRunConfigs-logboeken, raadpleegt u [een model lokaal trainen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local/train-on-local.ipynb).
-
 ## <a name="native-python-logging"></a>Systeem eigen python-logboek registratie
 
 Sommige Logboeken in de SDK bevatten mogelijk een fout die aangeeft dat u het logboek registratie niveau wilt instellen op fout opsporing. Als u het logboek registratie niveau wilt instellen, voegt u de volgende code toe aan het script.
@@ -88,9 +86,7 @@ Azure Machine Learning kunnen ook gegevens van andere bronnen tijdens de trainin
 Voor informatie over het vastleggen van metrische gegevens in Azure Machine Learning Designer (preview), Zie [metrische gegevens vastleggen in de ontwerp functie (preview-versie)](how-to-track-designer-experiments.md)
 
 ## <a name="example-notebooks"></a>Voorbeeldnotebooks
-In de volgende notitie blokken worden concepten in dit artikel gedemonstreerd:
-* [instructies-to-use-azureml/training/training-binnen-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [instructies-to-use-azureml/training/trein-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+In het volgende notitie blok ziet u concepten in dit artikel:
 * [instructies voor het gebruik van azureml/track-and-monitor-experimenten/logging-API](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]

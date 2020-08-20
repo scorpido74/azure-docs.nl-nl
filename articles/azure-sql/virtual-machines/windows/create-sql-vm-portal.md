@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8b16551abf5b52a9b848988a50fe556d364907b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669287"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652013"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>De Azure Portal gebruiken om een virtuele Windows-machine in te richten met SQL Server
 
@@ -34,7 +34,7 @@ Gebruik deze hand leiding om uw eigen SQL Server-VM te maken. Of gebruik deze al
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a>Installatie kopieën van de galerie met virtuele machines SQL Server
+## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> Installatie kopieën van de galerie met virtuele machines SQL Server
 
 Wanneer u een SQL Server virtuele machine maakt, kunt u een van de verschillende vooraf geconfigureerde installatie kopieën selecteren in de galerie met virtuele machines. De volgende stappen laten zien hoe u een van de SQL Server 2017-installatie kopieën kunt selecteren.
 
@@ -69,7 +69,7 @@ Geef op het tabblad **Basisbeginselen** u de volgende gegevens op:
   ![Abonnement](./media/create-sql-vm-portal/basics-project-details.png)
 
   > [!NOTE]
-  > Het is een goed idee om een nieuwe resourcegroep te maken als u het gebruik van SQL Server in Azure alleen wilt testen of hier meer over te weten wilt komen. Als u klaar bent met testen, verwijdert u gewoon de resourcegroep. De virtuele machine en alle resources die aan de resourcegroep zijn gekoppeld, worden dan automatisch verwijderd. Zie voor meer informatie over resourcegroepen [Overzicht van Azure Resource Manager](../../../active-directory-b2c/overview.md).
+  > Het is een goed idee om een nieuwe resourcegroep te maken als u het gebruik van SQL Server in Azure alleen wilt testen of hier meer over te weten wilt komen. Als u klaar bent met testen, verwijdert u gewoon de resourcegroep. De virtuele machine en alle resources die aan de resourcegroep zijn gekoppeld, worden dan automatisch verwijderd. Zie [Azure Resource Manager Overview](../../../active-directory-b2c/overview.md)voor meer informatie over resource groepen.
 
 
 * Geef onder **Exemplaardetails** het volgende op:
@@ -104,7 +104,7 @@ Configureer uw schijf opties op het tabblad **schijven** .
 * Onder **Geavanceerd**selecteert u **ja** onder gebruik **Managed disks**.
 
    > [!NOTE]
-   > Microsoft raadt Managed Disks aan voor SQL Server. Managed Disks verwerken de opslag achter de schermen. Bovendien distribueert Azure de opslagresources zodat voldoende redundantie wordt geboden wanneer virtuele machines met Managed Disks zich in dezelfde beschikbaarheidsset bevinden. Zie [overzicht van Azure Managed disks](../../../virtual-machines/windows/managed-disks-overview.md)voor meer informatie. Zie [Managed Disks gebruiken schijven voor virtuele machines in een beschikbaarheidsset](../../../virtual-machines/windows/manage-availability.md) voor meer informatie over Managed Disks in een beschikbaarheidsset.
+   > Microsoft raadt Managed Disks aan voor SQL Server. Managed Disks verwerken de opslag achter de schermen. Bovendien distribueert Azure de opslagresources zodat voldoende redundantie wordt geboden wanneer virtuele machines met Managed Disks zich in dezelfde beschikbaarheidsset bevinden. Zie [overzicht van Azure Managed disks](../../../virtual-machines/managed-disks-overview.md)voor meer informatie. Zie [Managed Disks gebruiken schijven voor virtuele machines in een beschikbaarheidsset](../../../virtual-machines/windows/manage-availability.md) voor meer informatie over Managed Disks in een beschikbaarheidsset.
 
 ![SQL-VM-schijf instellingen](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   
@@ -137,9 +137,9 @@ Configureer op het tabblad **SQL Server instellingen** specifieke instellingen e
 
 - [Connectiviteit](#connectivity)
 - [Verificatie](#authentication)
-- [Integratie van Azure Sleutelkluis](#azure-key-vault-integration)
+- [Integratie van Azure Key Vault](#azure-key-vault-integration)
 - [Opslag configuratie](#storage-configuration)
-- [Automatische patching](#automated-patching)
+- [Automatisch patchen](#automated-patching)
 - [Automatische back-up](#automated-backup)
 - [Machine Learning Services](#machine-learning-services)
 
@@ -177,7 +177,7 @@ Als u geen SQL Server-verificatie wilt inschakelen, kunt u het lokale Administra
 
 ### <a name="azure-key-vault-integration"></a>Integratie van Azure Sleutelkluis
 
-Als u beveiligings geheimen wilt opslaan in azure voor versleuteling, selecteert u **SQL Server instellingen**en schuift u omlaag naar **Azure Key kluis-integratie**. Selecteer **inschakelen** en vul de aangevraagde informatie in. 
+Als u beveiligings geheimen wilt opslaan in azure voor versleuteling, selecteert u **SQL Server instellingen**en schuift u omlaag naar  **Azure Key kluis-integratie**. Selecteer **inschakelen** en vul de aangevraagde informatie in. 
 
 ![Integratie van Azure Sleutelkluis](./media/create-sql-vm-portal/azure-sqlvm-akv.png)
 
@@ -257,7 +257,7 @@ U kunt de implementatie bewaken vanuit Azure Portal. Met de knop **Meldingen** b
 > [!NOTE]
 > Een voor beeld van een periode voor Azure om een SQL Server virtuele machine te implementeren: een test SQL Server VM die is ingericht voor de regio VS Oost met de standaard instellingen duurt ongeveer 12 minuten. U kunt snellere of langzamere implementatie tijden ondervinden op basis van uw regio en geselecteerde instellingen.
 
-## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a>Open de virtuele machine met Extern bureaublad
+## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a> Open de virtuele machine met Extern bureaublad
 
 Gebruik de volgende stappen om verbinding te maken met de SQL Server virtuele machine met Remote Desktop Protocol (RDP):
 
@@ -267,7 +267,7 @@ Nadat u verbinding hebt gemaakt met de virtuele SQL Server-machine, kunt u SQL S
 
 Met toegang tot de machine kunt u rechtstreeks de instellingen voor de machine en de SQL Server wijzigen op basis van uw vereisten. U kunt bijvoorbeeld de firewallinstellingen configureren of de SQL Server-configuratie-instellingen wijzigen.
 
-## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a>Extern verbinding maken met SQL Server
+## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a> Extern verbinding maken met SQL Server
 
 In dit scenario hebt u **open bare** toegang geselecteerd voor de virtuele machine en **SQL Server-verificatie**. Door deze instellingen is de virtuele machine automatisch geconfigureerd voor het toestaan van SQL Server-verbindingen vanaf elke client via internet (ervan uitgaande dat deze beschikken over de juiste SQL-aanmeldgegevens).
 

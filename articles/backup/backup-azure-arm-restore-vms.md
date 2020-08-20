@@ -4,12 +4,12 @@ description: Een virtuele Azure-machine herstellen vanaf een herstel punt met be
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4aca863dd4e9c418872cd67bdf54df616a7a0c5b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263007"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651145"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure VM-gegevens herstellen in Azure Portal
 
@@ -184,7 +184,7 @@ De gebruikers ervaring voor het herstellen van de secundaire regio is vergelijkb
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>Onbeheerde Vm's en schijven herstellen als beheerd
 
-U hebt de mogelijkheid om [onbeheerde schijven](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) te herstellen als [beheerde schijven](../virtual-machines/windows/managed-disks-overview.md) tijdens het herstellen. Standaard worden de niet-beheerde Vm's/schijven teruggezet als onbeheerde Vm's/schijven. Als u echter kiest voor het herstellen als beheerde Vm's/schijven, is dit nu mogelijk. Deze herstel bewerkingen worden niet geactiveerd vanuit de momentopname fase, maar alleen vanuit de kluis fase. Deze functie is niet beschikbaar voor niet-beheerde versleutelde Vm's.
+U hebt de mogelijkheid om [onbeheerde schijven](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) te herstellen als [beheerde schijven](../virtual-machines/managed-disks-overview.md) tijdens het herstellen. Standaard worden de niet-beheerde Vm's/schijven teruggezet als onbeheerde Vm's/schijven. Als u echter kiest voor het herstellen als beheerde Vm's/schijven, is dit nu mogelijk. Deze herstel bewerkingen worden niet geactiveerd vanuit de momentopname fase, maar alleen vanuit de kluis fase. Deze functie is niet beschikbaar voor niet-beheerde versleutelde Vm's.
 
 ![Herstellen als beheerde schijven](./media/backup-azure-arm-restore-vms/restore-as-managed-disks.png)
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 27c9a7c2e526a33875402827e2eee2c63943e058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdc5f56d4500581b36f366663dc3db915070ee2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659741"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649842"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuele harde schijven op een Linux VM uitbreiden met de Azure CLI
 
@@ -56,7 +56,7 @@ Vervang in de volgende voor beelden voorbeeld parameter namen zoals *myResourceG
     ```
 
     > [!NOTE]
-    > Wanneer u een beheerde schijf uitbreidt, wordt de bijgewerkte grootte naar boven afgerond naar de dichtstbijzijnde beheerde schijf grootte. Zie [overzicht van Azure Managed disks-prijzen en facturering](../windows/managed-disks-overview.md)voor een tabel met de beschik bare grootten en-lagen voor beheerde schijven.
+    > Wanneer u een beheerde schijf uitbreidt, wordt de bijgewerkte grootte naar boven afgerond naar de dichtstbijzijnde beheerde schijf grootte. Zie [overzicht van Azure Managed disks-prijzen en facturering](../managed-disks-overview.md)voor een tabel met de beschik bare grootten en-lagen voor beheerde schijven.
 
 1. Start uw VM met [AZ VM start](/cli/azure/vm#az-vm-start). In het volgende voor beeld wordt de virtuele machine met de naam *myVM* in de resource groep met de naam *myResourceGroup*gestart:
 

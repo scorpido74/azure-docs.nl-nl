@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9f63b4215e9b4a67a439e47501876d237a6d3c3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fe7210ad52c756f140144f04e3b747c0bfcd00c3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320915"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650312"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellen trainen met Azure Machine Learning met behulp van estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ print(run.get_portal_url())
 >
 > Op dezelfde manier kunt u de logboeken van uw trainings uitvoering naar de `./logs` map schrijven. Als u de TensorBoard- [integratie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) van Azure machine learning wilt gebruiken, moet u ervoor zorgen dat u uw TensorBoard-logboeken naar deze map schrijft. Tijdens het uitvoeren van de uitvoering kunt u TensorBoard starten en deze logboeken streamen.  Later kunt u de logboeken ook herstellen vanuit een van de vorige uitvoeringen.
 >
-> Als u bijvoorbeeld een bestand wilt downloaden naar de map *uitvoer* naar de lokale computer nadat de externe training is uitgevoerd:`run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
+> Als u bijvoorbeeld een bestand wilt downloaden naar de map *uitvoer* naar de lokale computer nadat de externe training is uitgevoerd: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
 ### <a name="distributed-training-and-custom-docker-images"></a>Gedistribueerde training en aangepaste docker-installatie kopieën
 
@@ -113,10 +113,10 @@ Met de bovenstaande code worden de volgende nieuwe para meters voor de `Estimato
 
 Parameter | Beschrijving | Standaard
 --|--|--
-`custom_docker_image`| De naam van de installatie kopie die u wilt gebruiken. Bied alleen installatie kopieën beschikbaar in open bare docker-opslag plaatsen (in dit geval docker hub). Als u een afbeelding uit een privé-docker-opslag plaats wilt gebruiken, gebruikt u `environment_definition` in plaats daarvan de constructor-para meter. [Zie voor beeld](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
+`custom_docker_image`| De naam van de installatie kopie die u wilt gebruiken. Bied alleen installatie kopieën beschikbaar in open bare docker-opslag plaatsen (in dit geval docker hub). Als u een afbeelding uit een privé-docker-opslag plaats wilt gebruiken, gebruikt u `environment_definition` in plaats daarvan de constructor-para meter.| `None`
 `node_count`| Het aantal knoop punten dat voor uw trainings taak moet worden gebruikt. | `1`
 `process_count_per_node`| Het aantal processen (of werk nemers) dat op elk knoop punt moet worden uitgevoerd. In dit geval gebruikt u de `2` gpu's die op elk knoop punt beschikbaar zijn.| `1`
-`distributed_training`| [MPIConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) -object voor het starten van gedistribueerde training met MPI-back-end.  | `None`
+`distributed_training`| [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) -object voor het starten van gedistribueerde training met MPI-back-end.  | `None`
 
 
 Dien ten slotte de trainings taak in:
@@ -140,8 +140,6 @@ model = run.register_model(model_name='sklearn-sample', model_path=None)
 Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokale Git-opslag plaats is, wordt informatie over de opslag plaats opgeslagen in de uitvoerings geschiedenis. Zie [Git-integratie voor Azure machine learning](concept-train-model-git-integration.md)voor meer informatie.
 
 ## <a name="examples"></a>Voorbeelden
-Voor een notitie blok waarin de basis beginselen van een Estimator patroon worden weer gegeven, raadpleegt u:
-* [procedures voor het gebruik van azureml/training-met-diep leren/How-to-use-estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
 Voor een notebook die een scikit-leer model traint met behulp van Estimator, zie:
 * [zelf studies/img-Classification-part1-training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)

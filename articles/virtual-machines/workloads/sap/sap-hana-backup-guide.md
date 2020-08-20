@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507825"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652182"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Back-upgids voor SAP HANA op Azure Virtual Machines
 
@@ -45,7 +45,7 @@ Het eerste scenario dat wordt weer gegeven, is een scenario waarbij Azure Backup
 
 Azure Backup integreert en is gecertificeerd als back-upoplossing voor SAP HANA met behulp van de eigen SAP HANA-interface met de naam [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5). Lees voor meer informatie over de oplossing, de mogelijkheden en de Azure-regio's waar deze beschikbaar is, het artikel [support matrix voor het maken van back-ups van SAP Hana-data bases op Azure-vm's](../../../backup/sap-hana-backup-support-matrix.md#scenario-support). Lees het artikel [over SAP Hana-database back-up in azure vm's](../../../backup/sap-hana-db-about.md)voor meer informatie en principes over Azure backup service voor Hana. 
 
-De tweede mogelijkheid voor het gebruik van Azure Backup service is het maken van een toepassings consistente back-up met behulp van schijf momentopnamen van Azure Premium Storage. Andere HANA-gecertificeerde Azure-opslag, zoals [Azure Ultra Disk](../../linux/disks-enable-ultra-ssd.md) en [Azure NetApp files](https://azure.microsoft.com/services/netapp/) , bieden geen ondersteuning voor dit soort moment opnamen via Azure backup-service. Lees deze artikelen:
+De tweede mogelijkheid voor het gebruik van Azure Backup service is het maken van een toepassings consistente back-up met behulp van schijf momentopnamen van Azure Premium Storage. Andere HANA-gecertificeerde Azure-opslag, zoals [Azure Ultra Disk](../../disks-enable-ultra-ssd.md) en [Azure NetApp files](https://azure.microsoft.com/services/netapp/) , bieden geen ondersteuning voor dit soort moment opnamen via Azure backup-service. Lees deze artikelen:
 
 - [De infrastructuur voor back-ups van virtuele Azure-machines plannen](../../../backup/backup-azure-vms-introduction.md)
 - [Toepassingsconsistente back-up van Azure Linux-VM’s](../../../backup/backup-azure-linux-app-consistent.md) 

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290031"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652097"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -76,7 +76,7 @@ Met **Azure machine learning**kunt u uw automatische ml-experimenten ontwerpen e
 
 1. **Kies of u de python-SDK of de web-ervaring van Studio wilt gebruiken**: meer informatie over de pariteit tussen de [python-SDK en Studio Web Experience](#parity).
 
-   * Voor een beperkte of geen code-ervaring kunt u de Azure Machine Learning Studio Web Experience op[https://ml.azure.com](https://ml.azure.com/)  
+   * Voor een beperkte of geen code-ervaring kunt u de Azure Machine Learning Studio Web Experience op [https://ml.azure.com](https://ml.azure.com/)  
    * Bekijk voor python-ontwikkel aars de [Azure machine learning PYTHON SDK](how-to-configure-auto-train.md) 
 
     [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
@@ -138,7 +138,7 @@ Schakel deze instelling in met:
 
 + Python-SDK: Geef `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` in uw [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) -object op. Meer informatie over het [inschakelen van parametrisatie](how-to-configure-auto-features.md). 
 
-## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble-modellen
+## <a name="ensemble-models"></a><a name="ensemble"></a> Ensemble-modellen
 
 Automatische machine learning ondersteunt ensemble-modellen die standaard zijn ingeschakeld. Ensemble Learning verbetert de machine learning resultaten en voorspellende prestaties door het combi neren van meerdere modellen, in tegens telling tot het gebruik van één model. De ensembles herhalingen worden weer gegeven als de laatste herhalingen van de uitvoering. Automatische machine learning maakt gebruik van zowel stem-als gestapelde ensemble-methoden voor het combi neren van modellen:
 
@@ -202,15 +202,13 @@ Het bouwen van een model __voor elk exemplaar of individu__ in de volgende scena
 * Voor speld onderhoud voor honderden olie putjes
 * Het aanpassen van een ervaring voor individuele gebruikers.
 
-Zie de [oplossing voor veel modellen van oplossingen](https://aka.ms/many-models) op github voor meer informatie.
-
 ## <a name="automl-in-azure-machine-learning"></a>AutoML in Azure Machine Learning
 
 Azure Machine Learning biedt twee ervaring voor het werken met automatische ML
 
 * Voor code ervaring klanten [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
 
-* Voor klanten met een beperkte of geen code ervaring Azure Machine Learning Studio op[https://ml.azure.com](https://ml.azure.com/)  
+* Voor klanten met een beperkte of geen code ervaring Azure Machine Learning Studio op [https://ml.azure.com](https://ml.azure.com/)  
 
 <a name="parity"></a>
 
@@ -218,7 +216,7 @@ Azure Machine Learning biedt twee ervaring voor het werken met automatische ML
 
 Met de volgende instellingen kunt u uw geautomatiseerde ML experiment configureren. 
 
-| |De python-SDK|De web-ervaring van Studio|
+| |De Python-SDK|De web-ervaring van Studio|
 ----|:----:|:----:
 |**Gegevens in Train/validatie sets splitsen**| ✓|✓
 |**Ondersteunt ML-taken: classificatie, regressie en prognose**| ✓| ✓
@@ -240,7 +238,7 @@ Met de volgende instellingen kunt u uw geautomatiseerde ML experiment configurer
 
 Deze instellingen kunnen worden toegepast op het beste model als resultaat van uw geautomatiseerde ML-experiment.
 
-| |De python-SDK|De web-ervaring van Studio|
+| |De Python-SDK|De web-ervaring van Studio|
 |----|:----:|:----:|
 |**Beste model registratie, implementatie, uitleg**| ✓|✓|
 |**Stem ensemble inschakelen & stack-ensembles modellen**| ✓|✓|
@@ -252,7 +250,7 @@ Deze instellingen kunnen worden toegepast op het beste model als resultaat van u
 
 Met deze instellingen kunt u de uitvoeringen van uw experiment en de onderliggende uitvoeringen controleren en beheren. 
 
-| |De python-SDK|De web-ervaring van Studio|
+| |De Python-SDK|De web-ervaring van Studio|
 |----|:----:|:----:|
 |**Samenvattings tabel uitvoeren**| ✓|✓|
 |**Uitvoeringen annuleren & onderliggende uitvoeringen**| ✓|✓|

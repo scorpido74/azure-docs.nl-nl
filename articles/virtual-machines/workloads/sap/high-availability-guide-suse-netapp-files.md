@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 75573cb49bcc0aca206ad8f13f060121e70a0621
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: dd245ddfa7f6be90e37bacc0797a3af4adc8bb96
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760614"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650431"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen
 
@@ -163,7 +163,7 @@ De SAP NetWeaver-architectuur die in dit artikel wordt gepresenteerd, maakt gebr
    7. volume SAP<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>aas)
 
    
-In dit voor beeld hebben we Azure NetApp Files voor alle SAP NetWeaver-bestands systemen gebruikt om te laten zien hoe Azure NetApp Files kunnen worden gebruikt. SAP-bestands systemen die niet via NFS moeten worden gekoppeld, kunnen ook worden geïmplementeerd als [Azure-schijf opslag](../../windows/disks-types.md#premium-ssd) . In dit voor beeld moet <b>a-e</b> zich bevindt op Azure NetApp files en <b>f-g</b> (dat wil zeggen,/usr/sap/<b>QAS</b>/d<b>02</b>,/usr/sap/<b>QAS</b>/d<b>03</b>) kan worden geïmplementeerd als Azure-schijf opslag. 
+In dit voor beeld hebben we Azure NetApp Files voor alle SAP NetWeaver-bestands systemen gebruikt om te laten zien hoe Azure NetApp Files kunnen worden gebruikt. SAP-bestands systemen die niet via NFS moeten worden gekoppeld, kunnen ook worden geïmplementeerd als [Azure-schijf opslag](../../disks-types.md#premium-ssd) . In dit voor beeld moet <b>a-e</b> zich bevindt op Azure NetApp files en <b>f-g</b> (dat wil zeggen,/usr/sap/<b>QAS</b>/d<b>02</b>,/usr/sap/<b>QAS</b>/d<b>03</b>) kan worden geïmplementeerd als Azure-schijf opslag. 
 
 ### <a name="important-considerations"></a>Belangrijke overwegingen
 
@@ -439,7 +439,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    sudo chattr +i /usr/sap/<b>QAS</b>/ERS<b>01</b>
    </code></pre>
 
-2. **[A]** configureren`autofs`
+2. **[A]** configureren `autofs`
 
    <pre><code>
    sudo vi /etc/auto.master
@@ -556,7 +556,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
 
-   Als de installatie geen submap kan maken in/usr/sap/**QAS**/ASCS**00**, probeert u de eigenaar en groep van de ASCS**00** -map in te stellen en het opnieuw te proberen. 
+   Als de installatie geen submap kan maken in/usr/sap/**QAS**/ASCS**00**, probeert u de eigenaar en groep van de ASCS**00**  -map in te stellen en het opnieuw te proberen. 
 
    <pre><code>
    chown <b>qas</b>adm /usr/sap/<b>QAS</b>/ASCS<b>00</b>

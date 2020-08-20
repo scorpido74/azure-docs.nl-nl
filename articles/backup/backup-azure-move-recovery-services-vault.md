@@ -4,12 +4,12 @@ description: Instructies voor het verplaatsen van de Recovery Services-kluis in 
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: fbbe914b3e567a1a136d735fc52965524bc17b67
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4751a6068904ef03a4d30d322a285e4074476b70
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612568"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650910"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Een Recovery Services kluis verplaatsen over Azure-abonnementen en-resource groepen
 
@@ -141,7 +141,7 @@ Als u wilt overstappen op een nieuw abonnement, geeft u de `--destination-subscr
 ## <a name="post-migration"></a>Na de migratie
 
 1. De toegangs controle voor de resource groepen instellen/controleren.  
-2. De functie voor het maken van een back-up en controle moet opnieuw worden geconfigureerd voor de kluis die de verplaatsing heeft voltooid. De vorige configuratie gaat verloren tijdens de verplaatsings bewerking.
+2. De functie voor het rapporteren en controleren van back-ups moet opnieuw worden geconfigureerd voor de kluis nadat de verplaatsing is voltooid. De vorige configuratie gaat verloren tijdens de verplaatsings bewerking.
 
 ## <a name="next-steps"></a>Volgende stappen
 

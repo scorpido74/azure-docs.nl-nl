@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511139"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651723"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -110,9 +110,9 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
            -  [Grootten voor virtuele Linux-machines in azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Het is belang rijk dat u rekening houdt met de Maxi maal beschik bare *schijf doorvoer* in de cache voor grootte.
    2. Opslag.
         - Controleer het document [Azure Storage typen voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
-        - Gebruik ten minste [Azure Standard-SSD Storage](../../windows/disks-types.md#standard-ssd) voor virtuele machines die een SAP-toepassings lagen vertegenwoordigen en voor de implementatie van DBMSs die geen prestatie gevoelig zijn.
-        - In het algemeen wordt het gebruik van [Azure Standard-HDD-schijven](../../windows/disks-types.md#standard-hdd)niet aangeraden.
-        - Gebruik [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) voor alle DBMS-vm's die op afstand gevoelig zijn.
+        - Gebruik ten minste [Azure Standard-SSD Storage](../../disks-types.md#standard-ssd) voor virtuele machines die een SAP-toepassings lagen vertegenwoordigen en voor de implementatie van DBMSs die geen prestatie gevoelig zijn.
+        - In het algemeen wordt het gebruik van [Azure Standard-HDD-schijven](../../disks-types.md#standard-hdd)niet aangeraden.
+        - Gebruik [Azure Premium Storage](../../disks-types.md#premium-ssd) voor alle DBMS-vm's die op afstand gevoelig zijn.
         - Gebruik [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/).
         - Gebruik Azure Write Accelerator voor DBMS-logboek stations met een M-serie. Houd rekening met Write Accelerator limieten en het gebruik, zoals wordt beschreven in [Write Accelerator](../../how-to-enable-write-accelerator.md).
         - Voor de verschillende DBMS-typen raadpleegt u de [algemene SAP-gerelateerde DBMS-documentatie](./dbms_guide_general.md) en de DBMS-specifieke documentatie waarnaar het algemene document verwijst.

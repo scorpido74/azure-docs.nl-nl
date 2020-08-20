@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 947f50c1a92985c057f39a5efb1be250bf8ef06c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587154"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649609"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor IBM Db2
 
@@ -175,7 +175,7 @@ Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's m
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overige
 Alle andere algemene gebieden, zoals Azure-beschikbaarheids sets of SAP-bewaking, zijn van toepassing zoals beschreven in de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) voor implementaties van vm's met de IBM-data base.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -402,7 +402,7 @@ Alle andere algemene gebieden, zoals Azure-beschikbaarheids sets of SAP-bewaking
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md

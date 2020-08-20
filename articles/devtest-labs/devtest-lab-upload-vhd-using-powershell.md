@@ -3,24 +3,24 @@ title: VHD-bestand uploaden naar Azure DevTest Labs met behulp van Power shell |
 description: Dit artikel bevat een overzicht waarin wordt uitgelegd hoe u een VHD-bestand uploadt naar Azure DevTest Labs met behulp van Power shell.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ff8ee15f35765027db1407f05c108739bd97433e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b393b886a50f60a918690ee2a5583f9623dbe39
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480776"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650754"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>VHD-bestand uploaden naar het opslag account van de Lab met behulp van Power shell
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-In Azure DevTest Labs kunnen VHD-bestanden worden gebruikt om aangepaste installatie kopieën te maken die worden gebruikt om virtuele machines in te richten. De volgende stappen helpen u bij het gebruik van Power shell om een VHD-bestand te uploaden naar een opslag account van een lab. Zodra u uw VHD-bestand hebt geüpload, worden in de [sectie volgende stappen](#next-steps) een aantal artikelen weer gegeven waarin wordt uitgelegd hoe u een aangepaste installatie kopie maakt op basis van het GEÜPLOADe VHD-bestand. Zie [Introduction to Managed disks](../virtual-machines/linux/managed-disks-overview.md) (Engelstalig) voor meer informatie over schijven en Vhd's in azure
+In Azure DevTest Labs kunnen VHD-bestanden worden gebruikt om aangepaste installatie kopieën te maken die worden gebruikt om virtuele machines in te richten. De volgende stappen helpen u bij het gebruik van Power shell om een VHD-bestand te uploaden naar een opslag account van een lab. Zodra u uw VHD-bestand hebt geüpload, worden in de [sectie volgende stappen](#next-steps) een aantal artikelen weer gegeven waarin wordt uitgelegd hoe u een aangepaste installatie kopie maakt op basis van het GEÜPLOADe VHD-bestand. Zie [Introduction to Managed disks](../virtual-machines/managed-disks-overview.md) (Engelstalig) voor meer informatie over schijven en Vhd's in azure
 
 ## <a name="step-by-step-instructions"></a>Stapsgewijze instructies
 
 De volgende stappen begeleiden u bij het uploaden van een VHD-bestand naar Azure DevTest Labs met behulp van Power shell. 
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 

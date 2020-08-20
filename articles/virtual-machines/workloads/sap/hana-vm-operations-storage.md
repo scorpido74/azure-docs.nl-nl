@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506393"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650465"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
 Azure biedt verschillende soorten opslag die geschikt zijn voor Azure-Vm's met SAP HANA. De **SAP Hana gecertificeerde Azure-opslag typen** die kunnen worden overwogen voor SAP Hana implementaties lijst zoals: 
 
 - Azure Premium SSD-of Premium-opslag 
-- [Ultraschijven](../../linux/disks-enable-ultra-ssd.md)
+- [Ultraschijven](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-Voor meer informatie over deze schijf typen raadpleegt u het artikel [Azure Storage typen voor SAP-werk belasting](./planning-guide-storage.md) en [selecteert u een schijf type](../../linux/disks-types.md)
+Voor meer informatie over deze schijf typen raadpleegt u het artikel [Azure Storage typen voor SAP-werk belasting](./planning-guide-storage.md) en [selecteert u een schijf type](../../disks-types.md)
 
 Azure biedt twee implementatie methoden voor Vhd's in azure Standard en Premium Storage. U wordt verwacht te profiteren van [Azure Managed Disk](https://azure.microsoft.com/services/managed-disks/) voor Azure Block Storage-implementaties. 
 
@@ -59,7 +59,7 @@ Gezien de minimale opslag latentie is essentieel voor de DBMS-systemen, zelfs al
 
 Sommige richt lijnen voor het selecteren van de opslag configuratie voor HANA kunnen als volgt worden weer gegeven:
 
-- Bepaal het type opslag op basis van [Azure Storage typen voor SAP-werk belasting](./planning-guide-storage.md) en [Selecteer een schijf type](../../linux/disks-types.md)
+- Bepaal het type opslag op basis van [Azure Storage typen voor SAP-werk belasting](./planning-guide-storage.md) en [Selecteer een schijf type](../../disks-types.md)
 - De totale I/O-door Voer van de virtuele machine en IOPS beperken bij het verg Roten/verkleinen of bepalen van een virtuele machine. De totale VM-opslag doorvoer wordt beschreven in de grootte van het door het artikel [geoptimaliseerde virtuele machines](../../sizes-memory.md)
 - Bij het bepalen van de opslag configuratie kunt u de algemene door Voer van de virtuele machine blijven vervangen door de **/Hana/data** -volume configuratie. Het schrijven van opslag punten, SAP HANA kan agressief uitgeven I/O's zijn. Het is eenvoudig om te pushen naar de doorvoer limieten van uw **/Hana/data** -volume tijdens het schrijven van een opslag punt. Als uw schijven die het **/Hana/data** -volume bouwen een hogere door voer hebben dan uw virtuele machine toestaat, kunt u in situaties optreden waarbij de door Voer die wordt gebruikt door de schrijf bewerking voor het opslag punt, de doorvoer vereisten van de logboeken voor het opnieuw registreren van het opnieuw schrijven verstoort. Een situatie die de door Voer van de toepassing kan beïnvloeden
 - Als u Azure Premium Storage gebruikt, is de minst dure configuratie het gebruik van logische volume managers om stripesets te bouwen om de **/Hana/data** -en **/Hana/log** -volumes te bouwen.
@@ -218,7 +218,7 @@ Voor de andere volumes, met inbegrip van **/Hana/log** op ultra disk, kan de con
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>Configuratie van de Azure Ultra Disk-opslag voor SAP HANA
-Een ander Azure-opslag type heet [Azure Ultra Disk](../../windows/disks-types.md#ultra-disk). Het aanzienlijke verschil tussen Azure Storage dat tot nu toe wordt aangeboden en ultra disk is dat de schijf mogelijkheden niet meer zijn gebonden aan de schijf grootte. Als klant kunt u deze mogelijkheden voor Ultra Disk definiëren:
+Een ander Azure-opslag type heet [Azure Ultra Disk](../../disks-types.md#ultra-disk). Het aanzienlijke verschil tussen Azure Storage dat tot nu toe wordt aangeboden en ultra disk is dat de schijf mogelijkheden niet meer zijn gebonden aan de schijf grootte. Als klant kunt u deze mogelijkheden voor Ultra Disk definiëren:
 
 - De grootte van een schijf, variërend van 4 GiB tot 65.536 GiB
 - IOPS variëren van 100 IOPS tot 160K IOPS (maximum is ook afhankelijk van VM-typen)

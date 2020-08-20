@@ -3,12 +3,12 @@ title: Richtlijnen en aanbevolen procedures
 description: Ontdek de aanbevolen procedures en richt lijnen voor het maken van een back-up van de Cloud en on-premises werk belasting naar de Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 2571fcc31a0ea6a548ec764d7a15d6d976ae4822
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1e2680c5fbcdb685e13b6ad990aaf98b013c98bb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808624"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650873"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Back-ups in de Cloud en on-premises naar de Cloud
 
@@ -175,7 +175,7 @@ Azure Backup moet gegevens van uw werk belasting naar de Recovery Services kluis
 
 * *Back-up van Azure VM* : alle vereiste communicatie-en gegevens overdracht tussen de opslag en de Azure backup service vindt binnen het Azure-netwerk plaats zonder dat u toegang nodig hebt tot het virtuele netwerk. Het maken van een back-up van virtuele Azure-machines in beveiligde netwerken vereist dus niet dat u toegang verleent tot IP-adressen of FQDN-namen.
 
-* *SAP Hana data bases op Azure VM, SQL server data bases op Azure VM* : vereist connectiviteit met de Azure backup-service, Azure Storage en Azure Active Directory. Dit kan worden bereikt door gebruik te maken van privé-eind punten of door toegang te verlenen tot de vereiste open bare IP-adressen of FQDN. De juiste connectiviteit met de vereiste Azure-Services kan leiden tot fouten in bewerkingen als database detectie, het configureren van back-ups, het uitvoeren van back-ups en het herstellen van gegevens. Raadpleeg deze [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) -en [SAP Hana](./backup-azure-sap-hana-database.md#establish-network-connectivity) -artikelen voor volledige netwerk richtlijnen tijdens het gebruik van NSG-Tags, Azure firewall en http-proxy.
+* *SAP Hana data bases op Azure VM, SQL server data bases op Azure VM* : vereist connectiviteit met de Azure backup-service, Azure Storage en Azure Active Directory. Dit kan worden bereikt door gebruik te maken van privé-eindpunten of door toegang te verlenen tot de vereiste openbare IP-adressen of FQDN's. Zonder de juiste connectiviteit met de vereiste Azure-services kunnen bewerkingen zoals het detecteren van databases, het configureren van back-ups, het uitvoeren van back-ups en het herstellen van gegevens mislukken. Raadpleeg de volgende [SQL](backup-sql-server-database-azure-vms.md#establish-network-connectivity) -en [SAP Hana](./backup-azure-sap-hana-database.md#establish-network-connectivity) -artikelen voor volledige netwerk richtlijnen tijdens het gebruik van NSG-Tags, Azure firewall en http-proxy.
 
 * *Hybride* -de Mars-agent (Microsoft Azure Recovery Services) vereist netwerk toegang voor alle kritieke bewerkingen-installeren, configureren, back-ups maken en herstellen. De MARS-agent kan verbinding maken met de Azure Backup-service via [Azure ExpressRoute](install-mars-agent.md#use-azure-expressroute) met behulp van open bare peering (beschikbaar voor oude circuits) en micro soft-peering, met behulp van [privé-eind punten](install-mars-agent.md#private-endpoints) of via [Proxy/Firewall met de juiste besturings elementen voor toegang](install-mars-agent.md#verify-internet-access).
 
@@ -189,7 +189,7 @@ Persoonlijk Azure- [eind punt](../private-link/private-endpoint-overview.md) is 
 
 ## <a name="governance-considerations"></a>Overwegingen voor governance
 
-Governance in azure wordt voornamelijk geïmplementeerd met [Azure Policy](../governance/policy/overview.md) en [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md). Met [Azure Policy](../governance/policy/overview.md) kunt u beleidsdefinities maken, toewijzen en beheren om regels voor uw resources af te dwingen. Deze functie zorgt voor de naleving van de bedrijfsstandaarden door deze resources. Met [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) kunt u het gebruik van de cloud en de uitgaven voor uw Azure-resources en andere cloudproviders bijhouden. De volgende hulpprogram ma's, zoals [Azure prijs calculator](https://azure.microsoft.com/pricing/calculator/) en [Azure Advisor](../advisor/advisor-overview.md) , spelen ook een belang rijke rol in het kosten beheerproces.
+Governance in azure wordt voornamelijk geïmplementeerd met [Azure Policy](../governance/policy/overview.md) en [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md). Met [Azure Policy](../governance/policy/overview.md) kunt u beleidsdefinities maken, toewijzen en beheren om regels voor uw resources af te dwingen. Deze functie zorgt voor de naleving van de bedrijfsstandaarden door deze resources. Met [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) kunt u het gebruik van de cloud en de uitgaven voor uw Azure-resources en andere cloudproviders bijhouden. De volgende hulpprogram ma's, zoals [Azure prijs calculator](https://azure.microsoft.com/pricing/calculator/) en [Azure Advisor](../advisor/advisor-overview.md)  , spelen ook een belang rijke rol in het kosten beheerproces.
 
 ### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure Backup ondersteunen twee belang rijke scenario's via ingebouwde Azure Policy
 
