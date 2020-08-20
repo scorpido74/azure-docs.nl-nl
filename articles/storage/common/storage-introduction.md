@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133784"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653797"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Inleiding tot de kern Azure Storage services
 
@@ -30,14 +30,14 @@ Het Azure Storage platform is de oplossing voor de Cloud opslag van micro soft v
 Het Azure Storage-platform bevat de volgende gegevens Services:
 
 - [Azure Blobs](../blobs/storage-blobs-introduction.md): een in hoge mate schaalbaar objectarchief voor tekst en binaire gegevens. Biedt ook ondersteuning voor big data Analytics via Data Lake Storage Gen2.
-- [Azure Files](../files/storage-files-introduction.md): beheerde bestandsshares voor implementaties in de cloud of on-premises.
+- [Azure files](../files/storage-files-introduction.md): beheerde bestands shares voor Cloud-en on-premises implementaties.
 - [Azure Queues](../queues/storage-queues-introduction.md): een berichtenarchief voor betrouwbare uitwisseling van berichten tussen toepassingsonderdelen.
 - [Azure Tables](../tables/table-storage-overview.md): een NoSQL-archief voor schemaloze opslag van gestructureerde gegevens.
-- [Azure-schijven](../../virtual-machines/windows/managed-disks-overview.md): opslag volumes op blok niveau voor Azure-vm's.
+- [Azure-schijven](../../virtual-machines/managed-disks-overview.md): opslag volumes op blok niveau voor Azure-vm's.
 
 Elke service kan worden geopend via een opslagaccount. Zie [Een opslagaccount maken](storage-account-create.md) om aan de slag te gaan.
 
-## <a name="example-scenarios"></a>Voorbeeldscenario 's
+## <a name="example-scenarios"></a>Voorbeeldscenario's
 
 In de volgende tabel worden de bestanden, blobs, schijven, wacht rijen en tabellen vergeleken en worden voorbeeld scenario's voor elke weer gegeven.
 
@@ -51,7 +51,7 @@ In de volgende tabel worden de bestanden, blobs, schijven, wacht rijen en tabell
 
 ## <a name="blob-storage"></a>Blob Storage
 
-Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens, zoals tekst of binaire gegevens.
+Azure Blob Storage is Microsoft's oplossing voor de opslag van objecten in de cloud. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens, zoals tekst of binaire gegevens.
 
 Blob-opslag is ideaal voor:
 
@@ -67,7 +67,7 @@ Zie [Inleiding tot blob-opslag](../blobs/storage-blobs-introduction.md) voor mee
 
 ## <a name="azure-files"></a>Azure Files
 
-Met [Azure Files](../files/storage-files-introduction.md) kunt u zeer netwerkbestandsshares met een hoge beschikbaarheid instellen die toegankelijk zijn via het standaard SMB-protocol (Server Message Block). Dit betekent dat meerdere VM's dezelfde bestanden kunnen delen met zowel lees- als schrijftoegang. U kunt de bestanden ook lezen met behulp van de REST-interface of de opslagclientbibliotheken.
+Met [Azure files](../files/storage-files-introduction.md) kunt u Maxi maal beschik bare netwerk bestands shares instellen die toegankelijk zijn via het standaard SMB-protocol (Server Message Block). Dit betekent dat meerdere VM's dezelfde bestanden kunnen delen met zowel lees- als schrijftoegang. U kunt de bestanden ook lezen met behulp van de REST-interface of de opslagclientbibliotheken.
 
 Eén ding dat Azure Files onderscheidt van bestanden in een zakelijke bestandsshare is het feit dat u overal ter wereld toegang hebt tot de bestanden via een URL die verwijst naar het bestand en een SAS-token (Shared Access Signature) bevat. U kunt SAS-tokens genereren. Met deze tokens hebt u gedurende een opgegeven tijdperiode toegang tot een specifiek privéasset.
 
@@ -85,7 +85,7 @@ Sommige SMB-functies zijn niet van toepassing op de Cloud. Zie [functies die nie
 
 ## <a name="queue-storage"></a>Queue Storage
 
-De Azure Queue-service wordt gebruikt voor het opslaan en ophalen van berichten. Berichten in de wachtrij kunnen maximaal 64 kB groot zijn, en een wachtrij kan miljoenen berichten bevatten. Wachtrijen worden meestal gebruikt voor het opslaan van lijsten met berichten die asynchroon moeten worden verwerkt.
+De Azure Queue-service wordt gebruikt voor het opslaan en ophalen van berichten. Berichten in de wachtrij kunnen maximaal 64 kB groot zijn, en een wachtrij kan miljoenen berichten bevatten. Wachtrijen worden doorgaans gebruikt voor het opslaan van lijsten met berichten die asynchroon moeten worden verwerkt.
 
 Stel dat u uw klanten in de gelegenheid wilt stellen om afbeeldingen te uploaden en dat u voor elke afbeelding miniaturen wilt maken. U kunt uw klant dan laten wachten totdat u tijdens het uploaden van de afbeeldingen de miniaturen hebt gemaakt. Een alternatief is het inzetten van een wachtrij. Wanneer de klant klaar is met uploaden, schrijft u een bericht naar de wachtrij. Vervolgens gebruikt u Azure Function om het bericht op te halen uit de wachtrij en de miniaturen te maken. Al deze verwerkingsstappen kunnen afzonderlijk worden geschaald, waardoor u meer controle hebt bij het afstemmen van de procedure op uw specifieke scenario.
 
@@ -101,7 +101,7 @@ Zie [Overzicht van Azure Table Storage](../tables/table-storage-overview.md) voo
 
 Een Azure Managed disk is een virtuele harde schijf (VHD). U kunt dit beschouwen als een fysieke schijf op een on-premises server, maar is gevirtualiseerd. Azure Managed disks worden opgeslagen als pagina-blobs, die een wille keurig i/o-opslag object in azure zijn. Er wordt een beheerde schijf ' beheerd ' aangeroepen omdat het een abstractie is boven pagina-blobs, Blob-containers en Azure Storage-accounts. Met Managed disks hoeft u alleen maar de schijf in te richten en Azure zorgt voor de rest.
 
-Zie [Introduction to Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md)(Engelstalig) voor meer informatie over beheerde schijven.
+Zie [Introduction to Azure Managed disks](../../virtual-machines/managed-disks-overview.md)(Engelstalig) voor meer informatie over beheerde schijven.
 
 ## <a name="types-of-storage-accounts"></a>Typen opslagaccounts
 

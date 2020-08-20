@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 49e5acb7fc0cfe947d846f2943fb5071d6554ea5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: b3c42901b4ef503a6099b49db84012521a7eba9f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192464"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654562"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
@@ -33,8 +33,10 @@ Zodra een metriek is geselecteerd, wordt de standaard aggregatie toegepast. U ku
 | --- | --- | --- | --- |
 |ARP-Beschik baarheid|Beschikbaarheid|<ui><li>Peer (primaire/secundaire ExpressRoute-router)</ui></li><ui><li> Peering-type (privé/openbaar/micro soft)</ui></li>|ExpressRoute|
 |BGP-Beschik baarheid|Beschikbaarheid|<ui><li> Peer (primaire/secundaire ExpressRoute-router)</ui></li><ui><li> Peering-type</ui></li>|ExpressRoute|
-|BitsInPerSecond|Verkeer|<ui><li> Peering-type (ExpressRoute)</ui></li><ui><li>Koppeling (ExpressRoute direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|Verkeer| <ui><li>Peering-type (ExpressRoute)</ui></li><ui><li> Koppeling (ExpressRoute direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|BitsInPerSecond|Verkeer|<ui><li> Peering-type (ExpressRoute)</ui></li><ui><li>Koppeling (ExpressRoute direct)</ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|Verkeer| <ui><li>Peering-type (ExpressRoute)</ui></li><ui><li> Koppeling (ExpressRoute direct) |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|CPU-gebruik|Prestaties| <ui><li>Exemplaar</ui></li>|Virtual Network gateway ExpressRoute|
+|Pakketten per seconde|Prestaties| <ui><li>Exemplaar</ui></li>|Virtual Network gateway ExpressRoute|
 |GlobalReachBitsInPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Global Reach|
 |GlobalReachBitsOutPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Global Reach|
 |AdminState|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
@@ -102,6 +104,14 @@ U kunt het RX-licht niveau (het licht niveau dat de ExpressRoute directe poort *
 U kunt het TX licht niveau (het licht niveau dat de ExpressRoute directe poort **verzendt**) weer geven voor elke poort. Gezonde TX Light-niveaus vallen doorgaans binnen een bereik van-10 tot 0 dBm
 
 ![Lampje directe lijn RX licht niveau](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+
+## <a name="expressroute-virtual-network-gateway-metrics"></a>Metrische gegevens voor ExpressRoute-Virtual Network gateway
+
+### <a name="cpu-utilization---split-instance"></a>CPU-gebruik-exemplaar splitsen
+U kunt het CPU-gebruik van de gateway-exemplaren weer geven.
+
+### <a name="packets-per-second---split-by-instance"></a>Pakketten per seconde-splitsen op exemplaar
+U kunt pakketten per seconde weer geven die de gateway door lopen.
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute-gateway verbindingen in bits/seconden
 

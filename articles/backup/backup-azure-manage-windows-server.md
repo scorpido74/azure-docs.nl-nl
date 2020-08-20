@@ -3,12 +3,12 @@ title: Azure Recovery Services-kluizen en-servers beheren
 description: In dit artikel leert u hoe u het overzichts Dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 68c6354fa15ee2a6873b57e5c1622afb108b9a10
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ee96acf624f1c313c85b21840c142e1e2d6f40d8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263324"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654205"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-kluizen beheren en controleren
 
@@ -70,7 +70,7 @@ Back-ups vooraf controles Controleer de configuratie van uw Vm's op problemen di
 Voorafgaande controles van back-ups worden uitgevoerd als onderdeel van de geplande back-upbewerkingen voor uw virtuele Azure-machines. Ze worden afgesloten met een van de volgende statussen:
 
 * **Geslaagd**: deze status geeft aan dat de configuratie van uw virtuele machine moet leiden tot geslaagde back-ups en er geen corrigerende actie moet worden ondernomen.
-* **Waarschuwing**: deze status geeft een of meer problemen aan in de configuratie van de virtuele machine die *kunnen* leiden tot back-upfouten. Het biedt de *Aanbevolen* stappen om geslaagde back-ups te maken. Als u bijvoorbeeld niet de nieuwste VM-agent hebt geïnstalleerd, kan het maken van back-ups af en toe mislukken. Deze situatie heeft een waarschuwings status.
+* **Waarschuwing**: deze status geeft een of meer problemen aan in de configuratie van de virtuele machine die *kunnen* leiden tot back-upfouten. Het biedt de *Aanbevolen* stappen om geslaagde back-ups te maken. Als u bijvoorbeeld niet de nieuwste VM-agent hebt geïnstalleerd, kan het maken van back-ups af en toe mislukken. In deze situatie wordt een waarschuwings status weer gegeven.
 * **Kritiek**: deze status geeft een of meer kritieke problemen aan in de configuratie van de virtuele machine *die leiden tot* back-upfouten en de *vereiste* stappen biedt om geslaagde back-ups te maken. Als er bijvoorbeeld sprake is van een netwerk probleem dat wordt veroorzaakt door een update naar de NSG-regels van een virtuele machine, zullen back-ups mislukken, omdat het voor komt dat de virtuele machine communiceert met de Azure Backup-service. Deze situatie heeft een kritieke status.
 
 Volg de onderstaande stappen om te beginnen met het oplossen van problemen die worden gerapporteerd door prechecks van back-ups voor back-ups van VM'S op uw Recovery Services kluis.
@@ -96,7 +96,7 @@ In de lijst met waarschuwingen voor back-ups worden de geselecteerde gegevens vo
 | Waarschuwingsniveau | Gebeurtenissen die waarschuwingen genereren |
 | ----------- | ----------- |
 | Kritiek | U ontvangt kritieke waarschuwingen wanneer: back-uptaken mislukken, herstel taken mislukken en wanneer u de beveiliging op een server stopt, maar de gegevens behouden.|
-| Waarschuwing | U ontvangt waarschuwings meldingen wanneer: back-uptaken worden voltooid met waarschuwingen, bijvoorbeeld wanneer minder dan 100 bestanden geen back-up worden gemaakt als gevolg van beschadiging of als er een back-up van meer dan 1.000.000 bestanden wordt gemaakt. |
+| Waarschuwing | U ontvangt waarschuwings meldingen wanneer: back-uptaken zijn voltooid met waarschuwingen. Als er bijvoorbeeld niet een back-up van minder dan 100 bestanden wordt gemaakt als gevolg van beschadigde problemen of als er een back-up van meer dan 1.000.000 bestanden wordt gemaakt. |
 | Informatief | Er zijn momenteel geen informatieve waarschuwingen in gebruik. |
 
 ### <a name="viewing-alert-details"></a>Waarschuwingsdetails weergeven

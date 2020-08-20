@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e0670aeb3a41506ef302364c6eeaff332520abc5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: eca9596666b318b71bb1deec64e3a7d037e8fa0d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245431"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654324"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -54,7 +54,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
     Een manier om het beste van zowel Azure Files als een bestands server op te halen die wordt gehost in azure Virtual Machines (naast het gebruik van Azure-schijven als back-end-opslag) is om Azure File Sync te installeren op een bestands server die wordt gehost op een virtuele machine in de Cloud. Als de Azure-bestands share zich in dezelfde regio bevindt als de bestands server, kunt u Cloud lagen inschakelen en het volume vrije ruimte percentage instellen op Maxi maal (99%). Dit zorgt voor minimale duplicatie van gegevens. U kunt ook alle gewenste toepassingen gebruiken met uw bestands servers, zoals toepassingen waarvoor NFS-protocol ondersteuning nodig is.
 
-    Zie [IaaS VM-gast clusters implementeren in Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)voor meer informatie over een optie voor het instellen van een bestands server met hoge prestaties en Maxi maal Beschik baarheid in Azure. Zie [Introduction to the core Azure Storage services](../common/storage-introduction.md)(Engelstalig) voor een gedetailleerde beschrijving van de verschillen tussen Azure files en Azure-schijven. Zie [overzicht van azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md)voor meer informatie over Azure-schijven.
+    Zie [IaaS VM-gast clusters implementeren in Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)voor meer informatie over een optie voor het instellen van een bestands server met hoge prestaties en Maxi maal Beschik baarheid in Azure. Zie [Introduction to the core Azure Storage services](../common/storage-introduction.md)(Engelstalig) voor een gedetailleerde beschrijving van de verschillen tussen Azure files en Azure-schijven. Zie [overzicht van azure Managed disks](../../virtual-machines/managed-disks-overview.md)voor meer informatie over Azure-schijven.
 
 * <a id="get-started"></a>
   **Hoe kan ik aan de slag met Azure Files?**  

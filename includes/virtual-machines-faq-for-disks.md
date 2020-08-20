@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: efec7656675b649d365a479c184de06a67d33db0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5994e9741340c6fef662f7037efa142c5684b6cb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86545124"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655154"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
@@ -21,7 +21,7 @@ In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Manag
 
 **Wat is Azure Managed Disks?**
 
-Managed Disks is een functie die schijf beheer voor Azure IaaS-Vm's vereenvoudigt door het beheer van opslag accounts voor u te verwerken. Zie [Managed disks-overzicht](../articles/virtual-machines/windows/managed-disks-overview.md)voor meer informatie.
+Managed Disks is een functie die schijf beheer voor Azure IaaS-Vm's vereenvoudigt door het beheer van opslag accounts voor u te verwerken. Zie [Managed disks-overzicht](../articles/virtual-machines/managed-disks-overview.md)voor meer informatie.
 
 **Als ik een standaard beheerde schijf Maak op basis van een bestaande VHD van 80 GB, hoeveel krijg ik dan de kosten?**
 
@@ -212,7 +212,7 @@ Naast de schijf beperking is er sprake van een IO-beperking die wordt opgelegd o
 Nee, Ultra disks bieden geen ondersteuning voor de verschillende cache methoden die op andere schijf typen worden ondersteund. Stel de schijf cache in op **geen**.
 
 **Kan ik een ultra schijf koppelen aan mijn bestaande VM?**
-Misschien moet uw virtuele machine zich in een regio-en beschikbaarheids zone paar bevinden dat ondersteuning biedt voor Ultra schijven. Zie [aan de slag met ultra disks](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) voor meer informatie.
+Misschien moet uw virtuele machine zich in een regio-en beschikbaarheids zone paar bevinden dat ondersteuning biedt voor Ultra schijven. Zie [aan de slag met ultra disks](../articles/virtual-machines/disks-enable-ultra-ssd.md) voor meer informatie.
 
 **Kan ik een ultra schijf gebruiken als de besturingssysteem schijf voor mijn VM?**
 Nee, ultradraagbare schijven worden alleen ondersteund als gegevens schijven en worden alleen ondersteund als systeem eigen schijven van 4.000 kB.

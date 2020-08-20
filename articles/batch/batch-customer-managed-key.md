@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a89d0182f6a659cee65ebc1de7d97d40418b4b20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053742"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654885"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Door de klant beheerde sleutels voor uw Azure Batch account configureren met Azure Key Vault en beheerde identiteit
 
@@ -19,7 +19,7 @@ Standaard Azure Batch gebruikt door het platform beheerde sleutels voor het vers
 De sleutels die u opgeeft, moeten worden gegenereerd in [Azure Key Vault](../key-vault/general/basic-concepts.md)en de batch-accounts die u wilt configureren met door de klant beheerde sleutels moeten worden ingeschakeld met [Azure Managed Identity](../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!IMPORTANT]
-> Ondersteuning voor door de klant beheerde sleutels in Azure Batch is momenteel beschikbaar als open bare Preview voor de West-Centraal VS, VS-Oost, Zuid-Centraal VS, VS-West 2, US Gov-Virginia en US Gov-Arizona regio's.
+> Ondersteuning voor door de klant beheerde sleutels in Azure Batch is momenteel beschikbaar als open bare Preview voor de Europa-west, Europa-noord, Zwitserland-noord, VS-centraal, Zuid-Centraal VS, West-Centraal VS, VS-Oost, VS-Oost 2, VS-West 2, US Gov-Virginia en US Gov-Arizona regio's.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
@@ -82,7 +82,7 @@ Vul in het veld **selecteren** onder **Principal**de in `principalId` die u eerd
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Een sleutel in Azure Key Vault genereren
 
-In de Azure Portal gaat u naar de Key Vault instantie in de sectie **sleutel** en selecteert u **genereren/importeren**. Selecteer het **sleutel type** en de `RSA` **RSA-sleutel grootte** moet ten minste `2048` bits zijn. `EC`sleutel typen worden momenteel niet ondersteund als een door de klant beheerde sleutel voor een batch-account.
+In de Azure Portal gaat u naar de Key Vault instantie in de sectie **sleutel** en selecteert u **genereren/importeren**. Selecteer het **sleutel type** en de `RSA` **RSA-sleutel grootte** moet ten minste `2048` bits zijn. `EC` sleutel typen worden momenteel niet ondersteund als een door de klant beheerde sleutel voor een batch-account.
 
 ![Een sleutel maken](./media/batch-customer-managed-key/create-key.png)
 

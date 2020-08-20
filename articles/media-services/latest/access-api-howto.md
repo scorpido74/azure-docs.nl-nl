@@ -3,7 +3,7 @@ title: Aan de slag met Azure AD-verificatie
 description: Meer informatie over toegang tot Azure Active Directory-verificatie (Azure AD) om de Azure Media Services-API te gebruiken.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.author: juliako
-ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.author: inhenkel
+ms.openlocfilehash: 9528efb0ce7dd9df57db21ccdcf19e54a969d2e4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035789"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654834"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Referenties voor toegang tot Media Services-API ophalen  
 
@@ -38,9 +38,9 @@ In dit artikel worden de stappen beschreven voor het verkrijgen van referenties 
 - Een Azure-account. Als u geen account hebt, kunt u beginnen met een [gratis proef versie van Azure](https://azure.microsoft.com/pricing/free-trial/). 
 - Een Media Services-account. Zie [een Azure Media Services-account maken met behulp van de Azure Portal](create-account-howto.md)voor meer informatie.
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="portal"></a>[Portal](#tab/portal/)
 
-### <a name="api-access"></a>API-toegang 
+### <a name="api-access"></a>API-toegang
 
 Op de pagina **API-toegang** kunt u de verificatie methode selecteren die u wilt gebruiken om verbinding te maken met de API. De pagina bevat ook de waarden die u nodig hebt om verbinding te maken met de API.
 
@@ -70,7 +70,7 @@ Deze optie kan worden gebruikt voor het verifiëren van een werk nemer of lid va
 
 Kopieer uw referenties om uw gebruikers toepassing te verbinden via de sectie **verbinding maken met Media Services-API** . U kunt tekst waarden ophalen of de JSON-of XML-blokken kopiëren.
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
+## <a name="cli"></a>[CLI](#tab/cli/)
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 

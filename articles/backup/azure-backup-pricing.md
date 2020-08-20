@@ -3,12 +3,12 @@ title: Prijzen van Azure Backup
 description: Meer informatie over het schatten van de kosten voor budget tering Azure Backup prijzen.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: cdb3dc756e1ee7e32453acd7246952c84abebaf7
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 03ec0076d3089562ddaace6db413fb3f1ba949a6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035753"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654528"
 ---
 # <a name="azure-backup-pricing"></a>Prijzen van Azure Backup
 
@@ -100,7 +100,7 @@ Voor een schatting van de kosten voor het maken van een back-up van SQL-servers 
 
   - Type back-up
 
-    - Het meest effectief beleid dat u kunt kiezen, is een **dagelijkse onderscheiding** van wekelijkse/maandelijkse/jaarlijkse volledige back-ups. Azure Backup kunt met behulp van een enkele keer klikken herstellen uit verschillen.
+    - Het meest effectief beleid dat u kunt kiezen, is een **dagelijkse onderscheiding** van wekelijkse/maandelijkse/jaarlijkse volledige back-ups. Azure Backup kunt het herstellen van verschillen met één klik ook.
 
     - U kunt er ook voor kiezen om een beleid te hebben met dagelijkse/wekelijkse/maandelijkse/jaarlijkse volledige back-ups. Met deze optie wordt iets meer opslag verbruikt dan de eerste optie.
 
@@ -137,7 +137,7 @@ Voor een schatting van de kosten voor het maken van een back-up van SAP HANA ser
   - Als u het **verloop percentage**weet, kunt u de optie **uw eigen% opgeven** gebruiken
 - Het back-upbeleid kiezen
   - Type back-up
-    - Het meest effectief beleid dat u kunt kiezen, is een **dagelijkse onderscheiding** van **wekelijkse/maandelijkse/jaarlijkse** volledige back-ups. Azure Backup kunt met behulp van een enkele keer klikken herstellen uit verschillen.
+    - Het meest effectief beleid dat u kunt kiezen, is een **dagelijkse onderscheiding** van **wekelijkse/maandelijkse/jaarlijkse** volledige back-ups. Azure Backup kunt het herstellen van verschillen met één klik ook.
     - U kunt er ook voor kiezen om een beleid te hebben met **dagelijkse/wekelijkse/maandelijkse/jaarlijkse** volledige back-ups. Met deze optie wordt iets meer opslag verbruikt dan de eerste optie.
   - Hoe lang verwacht u de back-ups van het logboek te bewaren? (in dagen) [7-35]
   - Hoe lang wilt u ' dagelijks ' back-ups behouden? (in dagen)
@@ -160,7 +160,7 @@ Voor een schatting van de kosten voor het maken van een back-up van Azure-bestan
 - Als u een back-up van bestands shares wilt verspreiden over meerdere opslag accounts, geeft u het aantal opslag accounts op dat als host fungeert voor de bestands shares met de bovenstaande grootte.
 
 - Verwachte hoeveelheid gegevens verloop op de bestands shares waarvan u een back-up wilt maken. <br>Verloop verwijst naar de hoeveelheid wijziging in gegevens en is rechtstreeks van invloed op de opslag grootte van de moment opname. Als u bijvoorbeeld een bestands share hebt met 200 GB aan gegevens waarvan u een back-up wilt maken, en 10 GB aan het bestand elke dag wordt gewijzigd, is het dagelijkse verloop 5%.
-  - Een hoger verloop betekent dat de hoeveelheid gegevens in de bestands share elke dag hoog is en dat de incrementele moment opname (waarbij alleen de gegevens wijzigingen worden vastgelegd) ook groter zou zijn.
+  - Hogere verloop: de hoeveelheid gegevens wijziging in de inhoud van de bestands share elke dag is hoog, en dus incrementele moment opname (alleen de gegevens wijzigingen vastleggen) zou ook groter zijn.
   - Selecteer laag (1%), gemiddeld (3%) of hoog (5%) op basis van de kenmerken en het gebruik van de bestands share.
   - Als u het exacte **verloop%** voor uw bestands share weet, kunt u de optie **uw eigen% opgeven** selecteren in de vervolg keuzelijst. Geef de waarden op (in%) dagelijks, wekelijks, maandelijks en jaarlijks verloop.
 

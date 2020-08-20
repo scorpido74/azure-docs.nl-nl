@@ -3,16 +3,16 @@ title: Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 description: U kunt als volgt een upgrade uitvoeren van een bestaand Service Fabric cluster om Azure Managed disks te gebruiken met weinig of geen uitval tijd van uw cluster.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 74b4ec803229ceb0168da6540fcbda685f0df16e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192301"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653695"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 
-[Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) is de aanbevolen schijf opslag voor gebruik met Azure virtual machines voor permanente opslag van gegevens. U kunt de tolerantie van uw Service Fabric-workloads verbeteren door de schaal sets voor virtuele machines te upgraden waarmee underlie uw knooppunt typen worden gebruikt voor het gebruik van beheerde schijven. U kunt als volgt een upgrade uitvoeren van een bestaand Service Fabric cluster om Azure Managed disks te gebruiken met weinig of geen uitval tijd van uw cluster.
+[Azure Managed disks](../virtual-machines/managed-disks-overview.md) is de aanbevolen schijf opslag voor gebruik met Azure virtual machines voor permanente opslag van gegevens. U kunt de tolerantie van uw Service Fabric-workloads verbeteren door de schaal sets voor virtuele machines te upgraden waarmee underlie uw knooppunt typen worden gebruikt voor het gebruik van beheerde schijven. U kunt als volgt een upgrade uitvoeren van een bestaand Service Fabric cluster om Azure Managed disks te gebruiken met weinig of geen uitval tijd van uw cluster.
 
 De algemene strategie voor het upgraden van een Service Fabric cluster knooppunt voor het gebruik van beheerde schijven is:
 
@@ -191,7 +191,7 @@ Voeg para meters toe voor de exemplaar naam, het aantal en de grootte van de nie
 },
 ```
 
-**Parameter bestand**
+**Parameterbestand**
 
 ```json
 "vmNodeType1Name": {

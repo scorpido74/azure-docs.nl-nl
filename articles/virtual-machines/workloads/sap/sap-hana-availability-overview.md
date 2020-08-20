@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e44edff9ac81588e4f861b7a1d1ae1a1628d5e04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035635"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653542"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA hoge Beschik baarheid voor virtuele machines van Azure
 
@@ -60,7 +60,7 @@ Azure heeft verschillende beschik baarheids overeenkomsten voor verschillende on
 
 In de [Sla voor virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) worden drie verschillende sla's beschreven, voor drie verschillende configuraties:
 
-- Eén virtuele machine die gebruikmaakt van [Azure Premium ssd's](../../windows/managed-disks-overview.md) voor de besturingssysteem schijf en alle gegevens schijven. Deze optie biedt een maandelijkse uptime van 99,9 procent.
+- Eén virtuele machine die gebruikmaakt van [Azure Premium ssd's](../../managed-disks-overview.md) voor de besturingssysteem schijf en alle gegevens schijven. Deze optie biedt een maandelijkse uptime van 99,9 procent.
 - Meerdere virtuele machines (ten minste twee) die zijn georganiseerd in een [Azure-beschikbaarheidsset](../../windows/tutorial-availability-sets.md). Deze optie biedt een maandelijkse uptime van 99,95 procent.
 - Meerdere virtuele machines (ten minste twee) die zijn georganiseerd in een [Beschik baarheid zone](../../../availability-zones/az-overview.md). Met deze optie wordt een maandelijkse uptime van 99,99 procent gegeven.
 

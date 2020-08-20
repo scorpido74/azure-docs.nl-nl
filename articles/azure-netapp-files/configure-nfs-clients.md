@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 08/19/2020
 ms.author: b-juche
-ms.openlocfilehash: bdcffcea8d695b6a3d49272ffa135187d77aae1e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 4a54858f4a09cd62bb555a6df2c12efa2290dd69
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535391"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653168"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Een NFS-client voor Azure NetApp Files configureren
 
-Er zijn een groot aantal Linux-distributies beschikbaar voor gebruik met Azure NetApp Files. In dit artikel worden configuraties beschreven voor twee van de vaker gebruikte omgevingen: RHEL 8 en Ubuntu 18,04.
+Er zijn een groot aantal Linux-distributies beschikbaar voor gebruik met Azure NetApp Files. In dit artikel worden configuraties beschreven voor twee van de vaker gebruikte omgevingen: RHEL 8 en Ubuntu 18,04. De configuratie van de NFS-client die in dit artikel wordt beschreven, maakt deel uit van de installatie wanneer u [nfsv 4.1 Kerberos Encryption configureert](configure-kerberos-encryption.md) of [een Dual-protocol volume maakt](create-volumes-dual-protocol.md).  
 
 Ongeacht de Linux-smaak die u gebruikt, zijn de volgende configuraties vereist:
 * Configureer een NTP-client om problemen met tijd verschil te voor komen.

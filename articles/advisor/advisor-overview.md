@@ -3,12 +3,12 @@ title: Inleiding tot Azure Advisor
 description: Gebruik Azure Advisor om uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057698"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654018"
 ---
 # <a name="introduction-to-azure-advisor"></a>Inleiding tot Azure Advisor
 
@@ -55,7 +55,7 @@ U kunt aanbevelingen van Advisor openen als *eigenaar*, *bijdrager*of *lezer* va
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Welke resources biedt Advisor aanbevelingen voor?
 
-Advisor biedt aanbevelingen voor Application Gateway, App Services, beschikbaarheids sets, Azure-cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, open bare IP-adressen van Azure, SQL Data Warehouse, SQL-servers, opslag accounts, Traffic Manager profielen en virtuele machines.
+Advisor biedt aanbevelingen voor Application Gateway, App Services, beschikbaarheids sets, Azure-cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, open bare IP-adressen van Azure, Azure Synapse Analytics, SQL-servers, opslag accounts, Traffic Manager profielen en virtuele machines.
 
 Azure Advisor bevat ook uw aanbevelingen van [Azure Security Center](../security-center/security-center-recommendations.md) die aanbevelingen kunnen bevatten voor aanvullende resource typen.
 

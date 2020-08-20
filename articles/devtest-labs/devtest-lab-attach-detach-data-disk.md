@@ -3,15 +3,15 @@ title: Een gegevens schijf koppelen aan of loskoppelen van een virtuele machine 
 description: Meer informatie over het koppelen of ontkoppelen van een gegevens schijf aan een virtuele machine in Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a5faae56307639e369130ec7443c8bceab2f794d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 222bf06dc07cc2538bc0512b4a41b7bd91bc1ebf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287561"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653916"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Een gegevens schijf koppelen aan of loskoppelen van een virtuele machine in Azure DevTest Labs
-[Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) beheert de opslag accounts die zijn gekoppeld aan gegevens schijven van virtuele machines. Een gebruiker koppelt een nieuwe gegevens schijf aan een virtuele machine, geeft het type en de grootte van de schijf op die nodig is, en Azure maakt en beheert de schijf automatisch. De gegevens schijf kan vervolgens worden losgekoppeld van de virtuele machine en later opnieuw worden gekoppeld aan dezelfde virtuele machine, of zijn gekoppeld aan een andere VM die tot dezelfde gebruiker behoort.
+[Azure Managed disks](../virtual-machines/managed-disks-overview.md) beheert de opslag accounts die zijn gekoppeld aan gegevens schijven van virtuele machines. Een gebruiker koppelt een nieuwe gegevens schijf aan een virtuele machine, geeft het type en de grootte van de schijf op die nodig is, en Azure maakt en beheert de schijf automatisch. De gegevens schijf kan vervolgens worden losgekoppeld van de virtuele machine en later opnieuw worden gekoppeld aan dezelfde virtuele machine, of zijn gekoppeld aan een andere VM die tot dezelfde gebruiker behoort.
 
 Deze functie is handig voor het beheren van opslag of software buiten elke afzonderlijke virtuele machine. Als de opslag of software al aanwezig is in een gegevens schijf, kan deze eenvoudig worden gekoppeld, losgekoppeld en opnieuw worden gekoppeld aan een VM die eigendom is van de gebruiker die eigenaar is van die gegevens schijf.
 

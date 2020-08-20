@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035788"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653593"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-werkbelastingconfiguraties met Azure-beschikbaarheidszones
 [Azure-beschikbaarheidszones](../../../availability-zones/az-overview.md) is een van de functies voor hoge Beschik baarheid die Azure biedt. Met Beschikbaarheidszones verbetert u de algehele Beschik baarheid van SAP-workloads op Azure. Deze functie is al beschikbaar in sommige [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). In de toekomst is het beschikbaar in meer regio's.
@@ -109,7 +109,7 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
 - Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
 - Het virtuele Azure-netwerk dat u hebt geïmplementeerd om het SAP-systeem te hosten, samen met de bijbehorende subnetten, is uitgerekt over zones. U hebt geen afzonderlijke virtuele netwerken nodig voor elke zone.
 - Voor alle virtuele machines die u implementeert, moet u [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/)gebruiken. Niet-beheerde schijven worden niet ondersteund voor zonegebonden-implementaties.
-- Azure Premium Storage en [Ultra-SSD opslag](../../windows/disks-types.md#ultra-disk) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
+- Azure Premium Storage en [Ultra-SSD opslag](../../disks-types.md#ultra-disk) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
 - Hetzelfde geldt voor de gedeelde sapmnt-map, een gedeelde schijf (Windows), een CIFS-share (Windows) of een NFS-share (Linux). U moet een technologie gebruiken waarmee deze gedeelde schijven of shares tussen de zones worden gerepliceerd. Deze technologieën worden ondersteund:
   - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md).
   - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
@@ -137,7 +137,7 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
 - Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
 - Het virtuele Azure-netwerk dat u hebt geïmplementeerd om het SAP-systeem te hosten, samen met de bijbehorende subnetten, is uitgerekt over zones. U hebt geen afzonderlijke virtuele netwerken nodig voor elke zone.
 - Voor alle virtuele machines die u implementeert, moet u [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/)gebruiken. Niet-beheerde schijven worden niet ondersteund voor zonegebonden-implementaties.
-- Azure Premium Storage en [Ultra-SSD opslag](../../windows/disks-types.md#ultra-disk) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
+- Azure Premium Storage en [Ultra-SSD opslag](../../disks-types.md#ultra-disk) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
 - Hetzelfde geldt voor de gedeelde sapmnt-map, een gedeelde schijf (Windows), een CIFS-share (Windows) of een NFS-share (Linux). U moet een technologie gebruiken waarmee deze gedeelde schijven of shares tussen de zones worden gerepliceerd. Deze technologieën worden ondersteund:
     - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md).
     - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
@@ -167,7 +167,7 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
 - Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
 - Het virtuele Azure-netwerk dat u hebt geïmplementeerd om het SAP-systeem te hosten, samen met de bijbehorende subnetten, is uitgerekt over zones. U hebt geen afzonderlijke virtuele netwerken nodig voor elke zone.
 - Voor alle virtuele machines die u implementeert, moet u [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/)gebruiken. Niet-beheerde schijven worden niet ondersteund voor zonegebonden-implementaties.
-- Azure Premium Storage en [Ultra-SSD opslag](../../windows/disks-types.md#ultra-disk) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
+- Azure Premium Storage en [Ultra-SSD opslag](../../disks-types.md#ultra-disk) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
 - Hetzelfde geldt voor de gedeelde sapmnt-map, een gedeelde schijf (Windows), een CIFS-share (Windows) of een NFS-share (Linux). U moet een technologie gebruiken waarmee deze gedeelde schijven of shares tussen de zones worden gerepliceerd. Deze technologieën worden ondersteund:
     - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md).
     - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).

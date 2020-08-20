@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4d30cdb931d6523eba3aac003caeee38a8c024d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504310"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653525"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Veelvoorkomende problemen tijdens het maken van VHD
 
@@ -20,7 +20,7 @@ Deze veelgestelde vragen zijn van belang voor veelvoorkomende problemen die kunn
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Hoe kan ik een virtuele machine maken op basis van de Azure Portal met behulp van een VHD in Premium Storage?
 
-Azure Marketplace biedt momenteel geen ondersteuning voor het maken van VM-aanbiedingen van installatie kopieën op beheerde opslag of Azure Premium Storage. Zie [overzicht van Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md)voor meer informatie.
+Azure Marketplace biedt momenteel geen ondersteuning voor het maken van VM-aanbiedingen van installatie kopieën op beheerde opslag of Azure Premium Storage. Zie [overzicht van Azure Managed disks](../../virtual-machines/managed-disks-overview.md)voor meer informatie.
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>Kan ik virtuele machines van de tweede generatie voor aanbiedingen gebruiken?
 
@@ -28,7 +28,7 @@ Nee, alleen Vhd's van de eerste generatie worden ondersteund. We werken momentee
 
 ## <a name="how-do-i-change-the-name-of-the-host"></a>De naam van de host Hoe kan ik wijzigen?
 
-U kunt dit niet doen. Nadat een virtuele machine is gemaakt, kunnen gebruikers (inclusief eigen aren) de hostnaam niet bijwerken.
+Dit is niet mogelijk. Nadat een virtuele machine is gemaakt, kunnen gebruikers (inclusief eigen aren) de hostnaam niet bijwerken.
 
 ## <a name="how-do-i-reset-the-remote-desktop-service-or-its-sign-in-password"></a>De Extern bureaublad-service of het aanmeldings wachtwoord Hoe kan ik opnieuw instellen?
 

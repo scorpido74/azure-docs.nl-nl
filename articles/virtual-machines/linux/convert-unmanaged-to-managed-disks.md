@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 072b0e3bcf4da8e2c71082a549d42d105c06ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e866b0b6182d7b46b3206a7d8e672d49ab5c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659812"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654426"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Een virtuele Linux-machine van niet-beheerde schijven converteren naar beheerde schijven
 
-Als u bestaande virtuele Linux-machines (Vm's) hebt die gebruikmaken van niet-beheerde schijven, kunt u de Vm's converteren voor het gebruik van [Azure Managed disks](../linux/managed-disks-overview.md). Dit proces converteert zowel de besturingssysteem schijf als eventuele gekoppelde gegevens schijven.
+Als u bestaande virtuele Linux-machines (Vm's) hebt die gebruikmaken van niet-beheerde schijven, kunt u de Vm's converteren voor het gebruik van [Azure Managed disks](../managed-disks-overview.md). Dit proces converteert zowel de besturingssysteem schijf als eventuele gekoppelde gegevens schijven.
 
 In dit artikel wordt beschreven hoe u Vm's kunt converteren met behulp van de Azure CLI. Als u deze wilt installeren of upgraden, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli). 
 
@@ -94,7 +94,7 @@ U moet de toewijzing van alle virtuele machines in de beschikbaarheidsset ongeda
 
 U kunt ook niet-beheerde schijven converteren naar Managed disks met behulp van de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de virtuele machine in de lijst met virtuele machines in de portal.
 3. Selecteer in de Blade voor de virtuele machine **schijven** in het menu.
 4. Selecteer boven aan de Blade **schijven** **migreren naar Managed disks**.
@@ -104,4 +104,4 @@ De virtuele machine wordt gestopt en opnieuw opgestart nadat de migratie is volt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van Azure Managed disks](../windows/managed-disks-overview.md)voor meer informatie over opslag opties.
+Zie [overzicht van Azure Managed disks](../managed-disks-overview.md)voor meer informatie over opslag opties.

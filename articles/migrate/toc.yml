@@ -168,6 +168,8 @@
       href: troubleshoot-appliance-discovery.md
     - name: Problemen met de evaluatie/afhankelijkheid oplossen
       href: troubleshoot-assessment.md
+    - name: Replicatieproblemen oplossen in agentloze VMware-migratie
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: Resources
   items:
     - name: Migratie in het Cloud Adoption Framework

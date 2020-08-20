@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: dbd040bf7caf3dbe9ed9820bf189bc1f74475c09
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 7bec65867373293ff06a2295f08a05db6ffaa480
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586891"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653831"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -38,6 +38,7 @@ De updates in augustus zijn onder andere:
 - [Ondersteuning toegevoegd voor Azure Active Directory standaard instellingen voor beveiliging (voor multi-factor Authentication)](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
 - [Aanbeveling voor service-principals toegevoegd](#service-principals-recommendation-added)
 - [Evaluatie van beveiligings problemen op Vm's-aanbevelingen en beleids regels geconsolideerd](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
+- [Nieuwe beveiligings beleidsregels voor AKS toegevoegd aan ASC_default Initiative: alleen voor gebruik door privé preview-klanten](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
 
 
 ### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>Inventaris van activa-krachtige nieuwe weer gave van de beveiligings postuur van uw assets
@@ -59,7 +60,7 @@ Standaard waarden voor beveiliging bieden vooraf geconfigureerde identiteits bev
 
 Security Center biedt nu een beveiligings aanbeveling wanneer een Azure-abonnement wordt geïdentificeerd zonder dat de standaard instellingen voor beveiliging zijn ingeschakeld. Tot nu toe Security Center aanbevolen multi-factor Authentication in te scha kelen met behulp van voorwaardelijke toegang, dat onderdeel is van de Azure Active Directory (AD) Premium-licentie. Voor klanten die Azure AD gratis gebruiken, raden we u aan om de standaard instellingen voor beveiliging in te scha kelen. 
 
-Ons doel is om meer klanten te stimuleren om hun Cloud omgevingen met MFA te beveiligen en om een van de grootste Risico's te beperken die ook de meest impact op hun [beveiligde Score](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)zijn.
+Ons doel is om meer klanten te stimuleren om hun Cloud omgevingen met MFA te beveiligen en een van de grootste Risico's te beperken die ook het meest van invloed zijn op uw [beveiligde Score](https://docs.microsoft.com/azure/security-center/secure-score-security-controls).
 
 Meer informatie over de [standaard instellingen](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)van de beveiliging.
 
@@ -126,6 +127,17 @@ Als u scripts, query's of Automatiseringen hebt die verwijzen naar de vorige aan
 |[**De evaluatie van beveiligings problemen moet worden ingeschakeld op virtuele machines**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>Beleids-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Ingebouwde en BYOL|
 ||||
 
+
+### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>Nieuwe beveiligings beleidsregels voor AKS toegevoegd aan ASC_default Initiative: alleen voor gebruik door privé preview-klanten
+
+Om ervoor te zorgen dat Kubernetes-werk belastingen standaard veilig zijn, voegt Security Center beleids regels op Kubernetes niveau toe en aanbevelingen voor beveiliging, met inbegrip van handhavings opties met Kubernetes Admission Control.
+
+De vroege fase van dit project bevat een persoonlijke preview en het toevoegen van nieuwe beleids regels (uitgeschakeld door standaard) aan het ASC_default-initiatief.
+
+U kunt dit beleid negeren en er is geen invloed op uw omgeving. Als u deze wilt inschakelen, meldt u zich aan voor de preview-versie https://aka.ms/SecurityPrP en selecteert u een van de volgende opties:
+
+1. **Eén preview** – alleen toevoegen aan deze persoonlijke preview. Vermeld expliciet ' ASC doorlopende scan ' als het voor beeld dat u wilt toevoegen.
+1. **Doorlopend programma** : dit wordt toegevoegd aan deze en toekomstige persoonlijke voor beelden. U moet een profiel en een privacyverklaring volt ooien.
 
 
 ## <a name="july-2020"></a>Juli 2020

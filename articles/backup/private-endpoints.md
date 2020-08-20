@@ -3,12 +3,12 @@ title: Privé-eindpunten
 description: Meer informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9a50a655af02bc2bfa188225209024cfbaa82a7c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 789aab1174f599a2ae484c7b0d91ddba15bd4fd6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432867"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654698"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
@@ -25,11 +25,11 @@ In dit artikel vindt u informatie over het proces van het maken van privé-eind 
 - Hoewel een Recovery Services kluis wordt gebruikt door (beide) Azure Backup en Azure Site Recovery, wordt in dit artikel alleen het gebruik van privé-eind punten voor Azure Backup besproken.
 - Azure Active Directory biedt momenteel geen ondersteuning voor persoonlijke eind punten. IP-adressen en FQDN-namen die vereist zijn voor de Azure Active Directory om in een regio te werken, moeten dus uitgaande toegang hebben tot het beveiligde netwerk wanneer ze back-ups maken van data bases in azure-Vm's en-back-ups met behulp van de MARS-agent. U kunt ook NSG Tags en Azure Firewall Tags gebruiken om toegang te verlenen tot Azure AD, zoals van toepassing.
 - Virtuele netwerken met netwerk beleidsregels worden niet ondersteund voor privé-eind punten. U moet netwerk beleid uitschakelen voordat u doorgaat.
-- U moet de Recovery Services resource provider bij het abonnement opnieuw registreren als u deze vóór 1 2020 mei hebt geregistreerd. Als u de provider opnieuw wilt registreren, gaat u naar uw abonnement in het Azure Portal, gaat u naar **resource provider** in de linkernavigatiebalk en selecteert u vervolgens **micro soft. Recovery Services** en klikt u op **opnieuw registreren**.
+- U moet de Recovery Services resource provider bij het abonnement opnieuw registreren als u deze vóór 1 2020 mei hebt geregistreerd. Als u de provider opnieuw wilt registreren, gaat u naar uw abonnement in het Azure Portal, navigeert u naar **resource provider** in de linkernavigatiebalk en selecteert u vervolgens **micro soft. Recovery Services** en selecteert u **opnieuw registreren**.
 
 ## <a name="recommended-and-supported-scenarios"></a>Aanbevolen en ondersteunde scenario's
 
-Hoewel persoonlijke eind punten zijn ingeschakeld voor de kluis, worden ze gebruikt voor het maken van back-ups en het herstellen van SQL-en SAP HANA-workloads in een Azure-VM en alleen back-ups van de MARS-agent. U kunt ook de kluis gebruiken voor het maken van back-ups van andere werk belastingen (er zijn echter geen persoonlijke eind punten nodig). Naast het maken van een back-up van SQL-en SAP HANA-workloads en-back-ups met behulp van de MARS-agent worden persoonlijke eind punten ook gebruikt voor het herstellen van bestanden in het geval van back-ups van Azure-VM'S. Zie de volgende tabel voor meer informatie:
+Hoewel persoonlijke eind punten zijn ingeschakeld voor de kluis, worden ze gebruikt voor het maken van back-ups en het herstellen van SQL-en SAP HANA-workloads in een Azure-VM en alleen back-ups van de MARS-agent. U kunt ook de kluis gebruiken voor het maken van back-ups van andere werk belastingen (er zijn echter geen persoonlijke eind punten nodig). Naast het maken van een back-up van SQL-en SAP HANA-workloads en-back-ups met behulp van de MARS-agent worden persoonlijke eind punten ook gebruikt voor het herstellen van bestanden voor Azure VM-back-ups. Zie de volgende tabel voor meer informatie:
 
 | Back-ups van werk belastingen in azure VM (SQL, SAP HANA), back-up maken met MARS agent | Het gebruik van privé-eind punten wordt aanbevolen om back-ups te maken en te herstellen zonder dat u alle IP-adressen/FQDN-namen voor Azure Backup of Azure Storage van uw virtuele netwerken hoeft te vermelden. |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -55,7 +55,7 @@ Met beheerde identiteiten kan de kluis privé-eind punten maken en gebruiken. In
 
     ![Identiteits status wijzigen in aan](./media/private-endpoints/identity-status-on.png)
 
-1. Wijzig de **status** in **on** en klik op **Opslaan**.
+1. Wijzig de **status** in **op aan** en selecteer **Opslaan**.
 
 1. Er wordt een **object-id** gegenereerd. Dit is de beheerde identiteit van de kluis.
 
@@ -72,14 +72,14 @@ U kunt ook uw aangepaste DNS-servers gebruiken. Raadpleeg [DNS-wijzigingen voor 
 
 Er zijn twee verplichte DNS-zones die moeten worden gemaakt:
 
-- `privatelink.blob.core.windows.net`(voor back-up/herstel gegevens)
-- `privatelink.queue.core.windows.net`(voor service communicatie)
+- `privatelink.blob.core.windows.net` (voor back-up/herstel gegevens)
+- `privatelink.queue.core.windows.net` (voor service communicatie)
 
 1. Zoek in de zoek balk **alle services** naar **privé-DNS zone** en selecteer **privé-DNS zone** in de vervolg keuzelijst.
 
     ![Privé-DNS zone selecteren](./media/private-endpoints/private-dns-zone.png)
 
-1. Klik in het deel venster **privé-DNS zone** op de knop **+ toevoegen** om te beginnen met het maken van een nieuwe zone.
+1. Selecteer in het deel venster **privé-DNS zone** de knop **+ toevoegen** om te beginnen met het maken van een nieuwe zone.
 
 1. Vul in het deel venster **privé-DNS-zone maken** de benodigde gegevens in. Het abonnement moet hetzelfde zijn als waar het persoonlijke eind punt wordt gemaakt.
 
@@ -90,7 +90,7 @@ Er zijn twee verplichte DNS-zones die moeten worden gemaakt:
 
     | **Zone**                           | **Service** | **Details van het abonnement en de resource groep (RG)**                  |
     | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **Abonnement**: hetzelfde als het persoonlijke eind punt dat moet worden gemaakt **RG**: ofwel de RG van het VNET of het persoonlijke eind punt |
+    | `privatelink.blob.core.windows.net`  | Blob        | **Abonnement**: hetzelfde als het persoonlijke eind punt dat moet worden gemaakt  **RG**: ofwel de RG van het VNET of het persoonlijke eind punt |
     | `privatelink.queue.core.windows.net` | Wachtrij       | **RG**: de RG van het VNET of van het persoonlijke eind punt |
 
     ![Privé-DNS zone maken](./media/private-endpoints/create-private-dns-zone.png)
@@ -105,7 +105,7 @@ Als u een afzonderlijke privé-DNS-zone wilt maken in azure, kunt u hetzelfde do
 
 | **Zone**                                                     | **Service** | **Details van het abonnement en de resource groep**                  |
 | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Opmerking**: *geografische* hier verwijst naar de regio code. Bijvoorbeeld *wcus* en *ne* voor West-Centraal VS en Europa-Noord respectievelijk. | Backup      | **Abonnement**: hetzelfde als waar het persoonlijke eind punt moet worden gemaakt **RG**: elke rg in het abonnement |
+| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Opmerking**: *geografische* hier verwijst naar de regio code. Bijvoorbeeld *wcus* en *ne* voor West-Centraal VS en Europa-Noord respectievelijk. | Backup      | **Abonnement**: hetzelfde als waar het persoonlijke eind punt moet worden gemaakt  **RG**: elke rg in het abonnement |
 
 Raadpleeg [deze lijst](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) voor regio codes.
 
@@ -119,7 +119,7 @@ Voor URL-naamgevings conventies in nationale regio's:
 
 De hierboven gemaakte DNS-zones moeten nu zijn gekoppeld aan het virtuele netwerk waarvan de servers waarvan u een back-up wilt maken, zich bevinden. Dit moet worden gedaan voor alle DNS-zones die u hebt gemaakt.
 
-1. Ga naar de DNS-zone (die u in de vorige stap hebt gemaakt) en navigeer naar **virtuele netwerk koppelingen** op de balk aan de linkerkant. Klik vervolgens op de knop **toevoegen** .
+1. Ga naar de DNS-zone (die u in de vorige stap hebt gemaakt) en navigeer naar **virtuele netwerk koppelingen** op de balk aan de linkerkant. Selecteer vervolgens de knop **+ toevoegen**
 1. Vul de vereiste gegevens in. De velden **abonnement** en **virtueel netwerk** moeten worden ingevuld met de overeenkomende gegevens van het virtuele netwerk waarin uw servers zijn opgenomen. De andere velden moeten blijven staan.
 
     ![Koppeling van virtueel netwerk toevoegen](./media/private-endpoints/add-virtual-network-link.png)
@@ -139,7 +139,7 @@ We raden u aan de rol **Inzender** voor deze drie resource groepen toe te kennen
 
     ![Een roltoewijzing toevoegen](./media/private-endpoints/add-role-assignment.png)
 
-1. Kies in het deel venster **roltoewijzing toevoegen** de optie **Inzender** als **rol**en gebruik de **naam** van de kluis als de **Principal**. Selecteer uw kluis en klik op **Opslaan** wanneer u klaar bent.
+1. Kies in het deel venster **roltoewijzing toevoegen** de optie **Inzender** als **rol**en gebruik de **naam** van de kluis als de **Principal**. Selecteer uw kluis en selecteer **Opslaan** wanneer u klaar bent.
 
     ![Rol en Principal kiezen](./media/private-endpoints/choose-role-and-principal.png)
 
@@ -155,7 +155,7 @@ In deze sectie wordt het proces voor het maken van een persoonlijk eind punt voo
 
     ![Zoeken naar persoonlijke koppeling](./media/private-endpoints/search-for-private-link.png)
 
-1. Klik in de linkernavigatiebalk op **persoonlijke eind punten**. Klik in het deel venster **privé-eind punten** op **+ toevoegen** om te beginnen met het maken van een persoonlijk eind punt voor uw kluis.
+1. Selecteer **privé-eind punten**op de navigatie balk aan de linkerkant. Selecteer in het deel venster **privé-eind punten** **+ toevoegen** om te beginnen met het maken van een persoonlijk eind punt voor uw kluis.
 
     ![Persoonlijk eind punt toevoegen in persoonlijk koppelings centrum](./media/private-endpoints/add-private-endpoint.png)
 
@@ -169,13 +169,13 @@ In deze sectie wordt het proces voor het maken van een persoonlijk eind punt voo
 
         ![Het tabblad resource invullen](./media/private-endpoints/resource-tab.png)
 
-    1. **Configuratie**: Geef in configuratie het virtuele netwerk en het subnet op waar u het persoonlijke eind punt wilt maken. Dit is het Vnet waar de virtuele machine aanwezig is. U kunt ervoor kiezen om **uw persoonlijke eind punt te integreren** met een privé-DNS-zone. U kunt ook uw aangepaste DNS-server gebruiken of een privé-DNS-zone maken.
+    1. **Configuratie**: Geef in configuratie het virtuele netwerk en het subnet op waar u het persoonlijke eind punt wilt maken. Dit is het Vnet waar de virtuele machine zich bevindt. U kunt ervoor kiezen om **uw persoonlijke eind punt te integreren** met een privé-DNS-zone. U kunt ook uw aangepaste DNS-server gebruiken of een privé-DNS-zone maken.
 
         ![Tabblad Configuratie invullen](./media/private-endpoints/configuration-tab.png)
 
     1. U kunt eventueel **labels** voor uw persoonlijke eind punt toevoegen.
 
-    1. Ga verder met **bekijken + maken** zodra u de gegevens hebt ingevoerd. Wanneer de validatie is voltooid, klikt u op **maken** om het persoonlijke eind punt te maken.
+    1. Ga door met het invoeren van gegevens en het eenmaal **maken** is voltooid. Wanneer de validatie is voltooid, selecteert u **maken** om het persoonlijke eind punt te maken.
 
 ## <a name="approving-private-endpoints"></a>Persoonlijke eind punten goed keuren
 
@@ -200,7 +200,7 @@ Wanneer u de optionele privé-DNS-zone en de persoonlijke eind punten voor uw kl
 
 Hiervoor moet u vermeldingen voor elke FQDN in uw privé-eind punt in uw Privé-DNS zone maken.
 
-1. Ga naar uw **privé-DNS-zone** en navigeer naar de optie **overzicht** op de balk aan de linkerkant. Klik vervolgens op **+ record set** om records toe te voegen.
+1. Ga naar uw **privé-DNS-zone** en navigeer naar de optie **overzicht** op de balk aan de linkerkant. Selecteer vervolgens **+ Recordset** om records toe te voegen.
 
     ![Selecteer + Recordset om records toe te voegen](./media/private-endpoints/select-record-set.png)
 
@@ -332,9 +332,9 @@ Reactie JSON:
 
 De beheerde identiteit voor de kluis moet de volgende machtigingen hebben in de resource groep en het virtuele netwerk waar de persoonlijke eind punten worden gemaakt:
 
-- `Microsoft.Network/privateEndpoints/*`Dit is vereist voor het uitvoeren van ruw op privé-eind punten in de resource groep. Deze moet worden toegewezen aan de resource groep.
-- `Microsoft.Network/virtualNetworks/subnets/join/action`Dit is vereist in het virtuele netwerk waar het privé-IP-adres aan het persoonlijke eind punt wordt gekoppeld.
-- `Microsoft.Network/networkInterfaces/read`Dit is vereist voor de resource groep om de netwerk interface op te halen die voor het persoonlijke eind punt is gemaakt.
+- `Microsoft.Network/privateEndpoints/*` Dit is vereist voor het uitvoeren van ruw op privé-eind punten in de resource groep. Deze moet worden toegewezen aan de resource groep.
+- `Microsoft.Network/virtualNetworks/subnets/join/action` Dit is vereist in het virtuele netwerk waar het privé-IP-adres aan het persoonlijke eind punt wordt gekoppeld.
+- `Microsoft.Network/networkInterfaces/read` Dit is vereist voor de resource groep om de netwerk interface op te halen die voor het persoonlijke eind punt is gemaakt.
 - Privé-DNS rol zone bijdrager deze rol bestaat al en kan worden gebruikt om machtigingen op te geven `Microsoft.Network/privateDnsZones/A/*` `Microsoft.Network/privateDnsZones/virtualNetworkLinks/read` .
 
 U kunt een van de volgende methoden gebruiken om rollen met de vereiste machtigingen te maken:

@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 520754c08fc9bf89949739987b41974eccdcd29d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292144"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654766"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie
+# <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie Linux
 
 Virtuele machines uit de Lsv2-serie ondersteunen diverse werk belastingen die hoge I/O en door Voer op lokale opslag voor een breed scala aan toepassingen en branches nodig hebben.  De Lsv2-serie is ideaal voor Big Data-, SQL-, NoSQL-data bases, gegevens-en opslag databases, waaronder Cassandra, MongoDB, Cloudera en redis.
 
@@ -83,7 +83,7 @@ Scenario's voor het veilig wissen van gegevens om de klant te beschermen, zijn:
 - De virtuele machine wordt niet meer in orde en moet op een ander knoop punt herstellen vanwege een hardwareprobleem.
 - Een klein aantal geplande onderhouds bewerkingen voor onderhoud waarvoor de VM opnieuw moet worden toegewezen aan een andere host voor onderhoud.
 
-Zie [back-up en herstel na nood gevallen voor Azure IaaS-schijven](backup-and-disaster-recovery-for-azure-iaas-disks.md)voor meer informatie over de opties voor het maken van back-ups van gegevens in lokale opslag.
+Zie [back-up en herstel na nood gevallen voor Azure IaaS-schijven](../backup-and-disaster-recovery-for-azure-iaas-disks.md)voor meer informatie over de opties voor het maken van back-ups van gegevens in lokale opslag.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 

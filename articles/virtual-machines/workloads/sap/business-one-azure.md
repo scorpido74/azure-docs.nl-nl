@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831104"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654647"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in virtuele Azure-machines
 Dit document bevat richt lijnen voor het implementeren van SAP Business One in azure Virtual Machines. De documentatie is geen vervanging voor de installatie documentatie van Business One voor SAP. De documentatie moet betrekking hebben op elementaire plannings-en implementatie richtlijnen voor de Azure-infra structuur voor het uitvoeren van één toepassing op.
@@ -118,7 +118,7 @@ Deze documenten moeten u helpen bij het bepalen van de selectie van opslag typen
 
 In principe moet u het volgende doen:
 
-- Gebruik Premium Ssd's via standaard Hdd's. Voor meer informatie over de beschik bare schijf typen raadpleegt u ons artikel [een schijf type selecteren](../../windows/disks-types.md)
+- Gebruik Premium Ssd's via standaard Hdd's. Voor meer informatie over de beschik bare schijf typen raadpleegt u ons artikel [een schijf type selecteren](../../disks-types.md)
 - Met Azure beheerde schijven over niet-beheerde schijven gebruiken
 - Zorg ervoor dat u voldoende IOPS en I/O-door Voer hebt geconfigureerd met de schijf configuratie
 - Combi neer/Hana/data-en/Hana/log-volume om een rendabele opslag configuratie te hebben

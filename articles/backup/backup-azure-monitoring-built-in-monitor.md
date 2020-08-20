@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over de bewakings-en meldings mog
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054537"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654120"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 
@@ -52,7 +52,7 @@ De volgende scenario's worden door de service gedefinieerd als scenario's met wa
 - Back-ups van Azure-VM's
 - Azure-bestandsback-ups
 - Back-ups van Azure-workloads, zoals SQL, SAP HANA
-- Microsoft Azure Recovery Services-agent (MARS) 
+- Microsoft Azure Recovery Services-agent (MARS)
 
 > [!NOTE]
 > Waarschuwingen van System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup-Server (MABS) worden hier niet weer gegeven.
@@ -83,7 +83,7 @@ Waarschuwingen zijn gebaseerd op ernst van waarschuwingen en kunnen worden gedef
 ## <a name="notification-for-backup-alerts"></a>Melding voor back-upwaarschuwingen
 
 > [!NOTE]
-> De configuratie van de melding kan alleen worden gedaan via Azure Portal. Ondersteuning voor PS/CLI/REST API/Azure Resource Manager-sjablonen wordt niet ondersteund.
+> De configuratie van de melding kan alleen worden gedaan via de Azure Portal. Ondersteuning voor PS/CLI/REST API/Azure Resource Manager-sjablonen wordt niet ondersteund.
 
 Zodra een waarschuwing is gegenereerd, worden gebruikers hiervan op de hoogte gebracht. Azure Backup biedt een ingebouwd meldings mechanisme via e-mail. Een kan afzonderlijke e-mail adressen of distributie lijsten opgeven die moeten worden gewaarschuwd wanneer er een waarschuwing wordt gegenereerd. U kunt ook kiezen of u wilt worden gewaarschuwd voor elke afzonderlijke waarschuwing of ze wilt groeperen in een samen vatting per uur en vervolgens een melding ontvangen.
 
@@ -100,7 +100,7 @@ Als de frequentie is ingesteld op een samen vatting per uur en er binnen een uur
 
 ## <a name="inactivating-alerts"></a>Waarschuwingen inactiveren
 
-Als u een actieve waarschuwing wilt inactief maken/oplossen, klikt u op het lijst item dat overeenkomt met de waarschuwing die u wilt deactiveren. Hiermee opent u een scherm waarin gedetailleerde informatie over de waarschuwing wordt weer gegeven, met de knop ' inactief ' bovenaan. Als u op deze knop klikt, wordt de status van de waarschuwing gewijzigd in inactief. U kunt ook een waarschuwing inactief maken door met de rechter muisknop te klikken op het item in de lijst dat overeenkomt met die waarschuwing en ' inactief ' te selecteren.
+Als u een actieve waarschuwing wilt inactief maken/oplossen, kunt u het lijst item selecteren dat overeenkomt met de waarschuwing die u wilt deactiveren. Hiermee opent u een scherm waarin gedetailleerde informatie over de waarschuwing wordt weer gegeven, met een knop **actief** aan de bovenkant. Als u op deze knop klikt, wordt de status van de waarschuwing gewijzigd in **inactief**. U kunt ook een waarschuwing inactief maken door met de rechter muisknop te klikken op het item in de lijst dat overeenkomt met die waarschuwing en **inactief**te selecteren.
 
 ![Waarschuwing voor RS-kluis inactivering](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

@@ -3,12 +3,12 @@ title: Kosten analyse en budget
 description: Meer informatie over het ophalen van een kosten analyse en het instellen van een budget voor de onderliggende reken resources en software licenties die worden gebruikt voor het uitvoeren van uw batch-workloads.
 ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725768"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654239"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Kosten analyse en budgetten voor Azure Batch
 
@@ -68,7 +68,7 @@ Meer informatie over het instellen van Vm's met lage prioriteit voor uw workload
 
 ### <a name="virtual-machine-os-disk-type"></a>Schijf type van het besturings systeem van de virtuele machine
 
-Er zijn meerdere [schijf typen voor VM-besturings systemen](../virtual-machines/windows/disks-types.md). De meeste VM-Series hebben grootten die ondersteuning bieden voor zowel Premium als standaard opslag. Wanneer de VM-grootte voor een groep is geselecteerd, worden met de batch Premium SSD-besturingssysteem schijven geconfigureerd. Wanneer de VM-grootte ' niet-s ' is geselecteerd, wordt het type goed koper, standaard HDD-schijf gebruikt. Premium SSD-besturingssysteem schijven worden bijvoorbeeld gebruikt voor `Standard_D2s_v3` en standaard schijven voor harde schijven worden gebruikt voor `Standard_D2_v3` .
+Er zijn meerdere [schijf typen voor VM-besturings systemen](../virtual-machines/disks-types.md). De meeste VM-Series hebben grootten die ondersteuning bieden voor zowel Premium als standaard opslag. Wanneer de VM-grootte voor een groep is geselecteerd, worden met de batch Premium SSD-besturingssysteem schijven geconfigureerd. Wanneer de VM-grootte ' niet-s ' is geselecteerd, wordt het type goed koper, standaard HDD-schijf gebruikt. Premium SSD-besturingssysteem schijven worden bijvoorbeeld gebruikt voor `Standard_D2s_v3` en standaard schijven voor harde schijven worden gebruikt voor `Standard_D2_v3` .
 
 Premium-SSD-schijven van het besturings systeem zijn duurder, maar ze hebben hogere prestaties en virtuele machines met Premium-schijven kunnen iets sneller beginnen dan Vm's met standaard schijven voor harde schijven. Met batch wordt de besturingssysteem schijf vaak niet gebruikt, omdat de toepassingen en taak bestanden zich op de tijdelijke schijf van de virtuele machine bevinden. In veel gevallen is het niet nodig om de verhoogde kosten te betalen voor de Premium-SSD die is ingericht wanneer de VM-grootte van een is opgegeven.
 

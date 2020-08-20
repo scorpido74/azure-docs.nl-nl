@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510892"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654596"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor SAP ASE
 
@@ -71,7 +71,7 @@ SAP ASE schrijft gegevens opeenvolgend naar schijf opslag apparaten, tenzij ande
 U kunt het beste een automatische database uitbreiding configureren, zoals wordt beschreven in het artikel een [Automatische database ruimte uitbreiding configureren in SAP Adaptive Server Enter prise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)  en [SAP-ondersteunings Opmerking #1815695](https://launchpad.support.sap.com/#/notes/1815695). 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Voor beeld van SAP-ASE op virtuele machines van Azure, schijf-en bestandssysteem configuraties 
-In de onderstaande sjablonen ziet u voor beelden van configuraties voor Linux en Windows. Voordat u de configuratie van de virtuele machine en schijf bevestigt, moet u ervoor zorgen dat de netwerk-en opslag bandbreedte quota van de afzonderlijke virtuele machine voldoende zijn om te voldoen aan de zakelijke vereisten. Houd er ook rekening mee dat verschillende Azure VM-typen verschillende maximum aantallen schijven hebben die kunnen worden gekoppeld aan de virtuele machine. Een E4s_v3 VM heeft bijvoorbeeld een limiet van 48 MB/sec. opslag-i/o-door voer. Als de door Voer van de back-upactiviteit van de data base meer dan 48 MB per seconde vereist, is een groter VM-type met meer opslag bandbreedte door Voer niet te voor komen. Bij het configureren van Azure Storage moet u er ook voor zorgen dat met name met [Azure Premium Storage](../../windows/premium-storage-performance.md) de door Voer en IOPS per GB aan capaciteit worden gewijzigd. Meer informatie over dit onderwerp vindt u in het artikel [welke schijf typen beschikbaar zijn in azure?](../../windows/disks-types.md). De quota's voor specifieke Azure VM-typen worden beschreven in het artikel [geheugen geoptimaliseerde grootte van virtuele machines](../../sizes-memory.md) en de artikelen die eraan zijn gekoppeld. 
+In de onderstaande sjablonen ziet u voor beelden van configuraties voor Linux en Windows. Voordat u de configuratie van de virtuele machine en schijf bevestigt, moet u ervoor zorgen dat de netwerk-en opslag bandbreedte quota van de afzonderlijke virtuele machine voldoende zijn om te voldoen aan de zakelijke vereisten. Houd er ook rekening mee dat verschillende Azure VM-typen verschillende maximum aantallen schijven hebben die kunnen worden gekoppeld aan de virtuele machine. Een E4s_v3 VM heeft bijvoorbeeld een limiet van 48 MB/sec. opslag-i/o-door voer. Als de door Voer van de back-upactiviteit van de data base meer dan 48 MB per seconde vereist, is een groter VM-type met meer opslag bandbreedte door Voer niet te voor komen. Bij het configureren van Azure Storage moet u er ook voor zorgen dat met name met [Azure Premium Storage](../../windows/premium-storage-performance.md) de door Voer en IOPS per GB aan capaciteit worden gewijzigd. Meer informatie over dit onderwerp vindt u in het artikel [welke schijf typen beschikbaar zijn in azure?](../../disks-types.md). De quota's voor specifieke Azure VM-typen worden beschreven in het artikel [geheugen geoptimaliseerde grootte van virtuele machines](../../sizes-memory.md) en de artikelen die eraan zijn gekoppeld. 
 
 > [!NOTE]
 >  Als een DBMS-systeem van on-premises naar Azure wordt verplaatst, is het raadzaam om bewaking uit te voeren op de virtuele machine en de CPU, het geheugen, de IOPS en de opslag doorvoer te beoordelen. Vergelijk de piek waarden die worden waargenomen met de VM-quota limieten die zijn gedocumenteerd in de hierboven genoemde artikelen

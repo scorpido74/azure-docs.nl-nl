@@ -3,12 +3,12 @@ title: Back-ups maken van Azure-bestands shares met REST API
 description: Meer informatie over het gebruik van REST API voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: bf737dfa366796c4a392ec3d00609134978057ac
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036739"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654137"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Back-up maken van Azure-bestands share met Azure Backup via rest API
 
@@ -40,11 +40,11 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 De post-URI heeft de `{subscriptionId}` `{vaultName}` `{vaultresourceGroupName}` `{fabricName}` para meters,, en. In ons voor beeld is de waarde voor de verschillende para meters als volgt:
 
-- `{fabricName}`is *Azure*
+- `{fabricName}` is *Azure*
 
-- `{vaultName}`is *azurefilesvault*
+- `{vaultName}` is *azurefilesvault*
 
-- `{vaultresourceGroupName}`is *Azure files*
+- `{vaultresourceGroupName}` is *Azure files*
 
 - $filter = backupManagementType EQ ' opslag '
 
@@ -54,13 +54,13 @@ Aangezien alle vereiste para meters in de URI zijn opgegeven, is er geen afzonde
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-#### <a name="responses"></a>Antwoorden
+#### <a name="responses-to-the-refresh-operation"></a>Reacties op de vernieuwings bewerking
 
 De bewerking vernieuwen is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer de bewerking is voltooid.
 
-##### <a name="example-responses"></a>Voorbeeld reacties
+##### <a name="example-responses-to-the-refresh-operation"></a>Voorbeeld reacties op de vernieuwings bewerking
 
 Zodra de *post* -aanvraag is verzonden, wordt een antwoord van 202 (geaccepteerd) geretourneerd.
 
@@ -421,7 +421,7 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105412Z:b55527fa-f473-4f09-b16
 Date : Mon, 27 Jan 2020 10:54:12 GMT
 ```
 
-Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een *Get* -opdracht.
+Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een  *Get* -opdracht.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/c3a52d1d-0853-4211-8141-477c65740264?api-version=2016-12-01
@@ -487,13 +487,13 @@ Voor beeld van aanvraag tekst
 }
 ```
 
-### <a name="responses"></a>Antwoorden
+### <a name="responses-to-the-on-demand-backup-operation"></a>Antwoorden op een back-upbewerking op aanvraag
 
 Het activeren van een back-up op aanvraag is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer de bewerking is voltooid.
 
-### <a name="example-responses"></a>Voorbeeld reacties
+### <a name="example-responses-to-the-on-demand-backup-operation"></a>Voor beelden van antwoorden op back-upbewerking op aanvraag
 
 Zodra u de *post* -aanvraag voor een back-up op aanvraag hebt verzonden, is het eerste antwoord 202 (geaccepteerd) met een locatie header of Azure-async-header.
 
@@ -516,7 +516,7 @@ Zodra u de *post* -aanvraag voor een back-up op aanvraag hebt verzonden, is het 
 'Content-Length': '0'
 ```
 
-Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een *Get* -opdracht.
+Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een  *Get* -opdracht.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/dc62d524-427a-4093-968d-e951c0a0726e?api-version=2016-12-01

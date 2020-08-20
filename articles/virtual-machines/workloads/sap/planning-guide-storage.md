@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510858"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653610"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typen voor SAP-workload
 Azure heeft talloze opslag typen die in de mogelijkheden, door Voer, latentie en prijzen aanzienlijk verschillen. Sommige opslag typen zijn niet of zijn beperkt bruikbaar voor SAP-scenario's. Dat zijn verschillende Azure Storage-typen goed geschikt of geoptimaliseerd voor specifieke SAP-werkbelasting scenario's. Met name voor SAP HANA hebben sommige Azure Storage-typen gecertificeerd voor het gebruik met SAP HANA. In dit document gaan we de verschillende soorten opslag door lopen en de mogelijkheden en bruikbaarheid van SAP-workloads en SAP-onderdelen beschrijven.
@@ -36,7 +36,7 @@ Er zijn diverse redundante methoden, die allemaal worden beschreven in het artik
 
 ### <a name="azure-managed-disks"></a>Azure Managed disks
 
-Managed disks is een resource type in Azure Resource Manager dat kan worden gebruikt in plaats van Vhd's die zijn opgeslagen in Azure Storage accounts. Managed Disks automatisch uitgelijnd met de [Availability set] [virtual-machines-Manage-Availability] van de virtuele machine waaraan ze zijn gekoppeld, waardoor de beschik baarheid van uw virtuele machine en de services die op de virtuele machine worden uitgevoerd, worden verhoogd. Lees het [artikel overzicht](../../windows/managed-disks-overview.md)voor meer informatie.
+Managed disks is een resource type in Azure Resource Manager dat kan worden gebruikt in plaats van Vhd's die zijn opgeslagen in Azure Storage accounts. Managed Disks automatisch uitgelijnd met de [Availability set] [virtual-machines-Manage-Availability] van de virtuele machine waaraan ze zijn gekoppeld, waardoor de beschik baarheid van uw virtuele machine en de services die op de virtuele machine worden uitgevoerd, worden verhoogd. Lees het [artikel overzicht](../../managed-disks-overview.md)voor meer informatie.
 
 In dit voor beeld wordt gebruikgemaakt van de flexibiliteit van Managed disks:
 
@@ -61,7 +61,7 @@ Er is persistente opslag nodig in de SAP-werk belasting in verschillende onderde
 - Bestands shares of gedeelde schijven die uw globale transport Directory bevatten voor NetWeaver of S/4HANA. De inhoud van deze shares wordt geconsumeerd door software die wordt uitgevoerd op meerdere Vm's of wordt gebruikt voor het bouwen van failover cluster scenario's met hoge Beschik baarheid
 - De/sapmnt-map of algemene bestands shares voor EDI-processen of dergelijke. De inhoud van deze shares wordt geconsumeerd door software die wordt uitgevoerd op meerdere Vm's of wordt gebruikt voor het bouwen van failover cluster scenario's met hoge Beschik baarheid
 
-In de volgende secties worden de verschillende typen Azure-opslag en de gebruiks vriendelijkheid voor SAP-werk belasting besproken die van toepassing zijn op de vier bovenstaande scenario's. Een algemene categorisatie van de manier waarop de verschillende typen Azure-opslag moeten worden gebruikt, wordt beschreven in het artikel [welke schijf typen beschikbaar zijn in azure?](../../linux/disks-types.md). De aanbevelingen voor het gebruik van de verschillende typen Azure-opslag voor SAP-workloads zijn niet aanzienlijk anders.
+In de volgende secties worden de verschillende typen Azure-opslag en de gebruiks vriendelijkheid voor SAP-werk belasting besproken die van toepassing zijn op de vier bovenstaande scenario's. Een algemene categorisatie van de manier waarop de verschillende typen Azure-opslag moeten worden gebruikt, wordt beschreven in het artikel [welke schijf typen beschikbaar zijn in azure?](../../disks-types.md). De aanbevelingen voor het gebruik van de verschillende typen Azure-opslag voor SAP-workloads zijn niet aanzienlijk anders.
 
 Lees voor ondersteunings beperkingen voor Azure Storage-typen voor SAP NetWeaver/Application Layer of S/4HANA de [SAP-ondersteunings opmerking 2015553](https://launchpad.support.sap.com/#/notes/2015553) voor SAP Hana gecertificeerde en ondersteunde Azure-opslag typen raadpleegt u het artikel [SAP Hana opslag configuraties voor virtuele Azure-machines](./hana-vm-operations-storage.md).
 
@@ -123,7 +123,7 @@ Azure Premium SSD-opslag is geïntroduceerd met het doel om het volgende te bied
 * Sla's voor IOPS en door Voer
 * Minder variabiliteit in I/O-latentie
 
-Dit type opslag is gericht op DBMS-workloads, opslag verkeer waarvoor een lage latentie vertraging van één cijfer en de kosten voor de door Voer in het geval van Azure Premium Storage niet het daad werkelijke gegevens volume is dat op dergelijke schijven is opgeslagen, maar de grootte categorie van een dergelijke schijf, onafhankelijk van de hoeveelheid gegevens die op de schijf is opgeslagen. U kunt ook schijven maken op Premium-opslag die niet rechtstreeks worden toegewezen in de grootte categorieën die in het artikel [Premium-SSD](../../linux/disks-types.md#premium-ssd)worden weer gegeven. De conclusies in dit artikel zijn:
+Dit type opslag is gericht op DBMS-workloads, opslag verkeer waarvoor een lage latentie vertraging van één cijfer en de kosten voor de door Voer in het geval van Azure Premium Storage niet het daad werkelijke gegevens volume is dat op dergelijke schijven is opgeslagen, maar de grootte categorie van een dergelijke schijf, onafhankelijk van de hoeveelheid gegevens die op de schijf is opgeslagen. U kunt ook schijven maken op Premium-opslag die niet rechtstreeks worden toegewezen in de grootte categorieën die in het artikel [Premium-SSD](../../disks-types.md#premium-ssd)worden weer gegeven. De conclusies in dit artikel zijn:
 
 - De opslag is ingedeeld in bereiken. Bijvoorbeeld, een schijf in het bereik 513 GiB tot 1024 GiB capaciteit delen dezelfde mogelijkheden en dezelfde maandelijkse kosten
 - De IOPS per GiB volgen geen lineair over de grootte categorieën. Kleinere schijven onder 32 GiB hebben hogere IOPS-tarieven per GiB. Voor schijven van meer dan 32 GiB tot 1024 GiB ligt het aantal IOPS per GiB tussen 4-5 IOPS per GiB. Voor grotere schijven tot 32.767 GiB is de IOPS-frequentie per GiB lager dan 1
@@ -184,8 +184,8 @@ Azure-ultraschijven leveren een hoge doorvoer, hoge IOPS en een consistente schi
 Wanneer u een ultra schijf maakt, hebt u drie dimensies die u kunt definiëren:
 
 - De capaciteit van de schijf. Bereiken zijn van 4 GiB tot 65.536 GiB
-- Ingerichte IOPS voor de schijf. Verschillende maximum waarden zijn van toepassing op de capaciteit van de schijf. Lees het artikel [Ultra Disk](../../linux/disks-types.md#ultra-disk) voor meer informatie
-- Ingerichte band breedte voor opslag. De maximale band breedte is afhankelijk van de capaciteit van de schijf. Lees het artikel [Ultra Disk](../../linux/disks-types.md#ultra-disk) voor meer informatie
+- Ingerichte IOPS voor de schijf. Verschillende maximum waarden zijn van toepassing op de capaciteit van de schijf. Lees het artikel [Ultra Disk](../../disks-types.md#ultra-disk) voor meer informatie
+- Ingerichte band breedte voor opslag. De maximale band breedte is afhankelijk van de capaciteit van de schijf. Lees het artikel [Ultra Disk](../../disks-types.md#ultra-disk) voor meer informatie
 
 De kosten van één schijf worden bepaald door de drie dimensies die u afzonderlijk kunt definiëren voor de specifieke schijven. 
 

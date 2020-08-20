@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: dbcb39641f35ad0f997db30b320826764a08bff1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082253"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653508"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
 
@@ -133,7 +133,7 @@ ms.locfileid: "87082253"
 [deployment-guide-contact-support]:deployment-guide.md#3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2 (Problemen met Azure-extensie voor SAP oplossen-contact opnemen met ondersteuning)
 [deployment-guide-run-the-script]:deployment-guide.md#0d2847ad-865d-4a4c-a405-f9b7baaa00c7 (Problemen met Azure-extensie voor SAP oplossen-het installatie script uitvoeren)
 [deployment-guide-redeploy-after-sysprep]:deployment-guide.md#2cd61f22-187d-42ed-bb8c-def0c983d756 (Problemen met Azure-extensie voor SAP oplossen na Sysprep)
-[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 (Problemen met de Azure-extensie voor SAP oplossen Internet verbinding)
+[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 ( Problemen met de Azure-extensie voor SAP oplossen Internet verbinding)
 
 
 [deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (VM-extensie configureren)
@@ -256,7 +256,7 @@ ms.locfileid: "87082253"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -368,7 +368,7 @@ Ken de volgende informatie toe voor SAP-grootte:
 
 ### <a name="resource-groups"></a>Resourcegroepen
 
-In Azure Resource Manager kunt u resource groepen gebruiken om alle toepassings resources in uw Azure-abonnement te beheren. Zie voor meer informatie [Overzicht van Azure Resource Manager][resource-group-overview].
+In Azure Resource Manager kunt u resource groepen gebruiken om alle toepassings resources in uw Azure-abonnement te beheren. Zie [Overzicht van Azure Resource Manager][resource-group-overview] voor meer informatie.
 
 ## <a name="resources"></a>Resources
 
@@ -549,7 +549,7 @@ U kunt verschillende stappen gebruiken om een persoonlijke installatie kopie voo
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Om een Linux-installatie kopie voor te bereiden die u kunt gebruiken om meerdere virtuele machines te implementeren, moeten bepaalde Linux-instellingen worden abstracted of gegeneraliseerd op de on-premises VM. U kunt `waagent -deprovision` dit gebruiken om dit te doen. Zie [een virtuele Linux-machine vastleggen die wordt uitgevoerd op Azure][virtual-machines-linux-capture-image] en de [Gebruikers handleiding voor de Azure Linux-agent][virtual-machines-linux-agent-user-guide-command-line-options]voor meer informatie.
+> Om een Linux-installatie kopie voor te bereiden die u kunt gebruiken om meerdere virtuele machines te implementeren, moeten bepaalde Linux-instellingen worden abstracted of gegeneraliseerd op de on-premises VM. U kunt `waagent -deprovision`  dit gebruiken om dit te doen. Zie [een virtuele Linux-machine vastleggen die wordt uitgevoerd op Azure][virtual-machines-linux-capture-image] en de [Gebruikers handleiding voor de Azure Linux-agent][virtual-machines-linux-agent-user-guide-command-line-options]voor meer informatie.
 >
 >
 
@@ -1147,15 +1147,15 @@ Als de **status** waarde niet **OK**is, volgt u de instructies in [status contro
 
 1. Controleer de uitvoer van de Azure-extensie voor SAP.
 
-   a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters` uitvoeren
+   a.  Voer `more /var/lib/AzureEnhancedMonitor/PerfCounters` uit.
 
    **Verwacht resultaat**: retourneert een lijst met prestatie meter items. Het bestand mag niet leeg zijn.
 
-   b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` uitvoeren
+   b. Voer `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` uit.
 
    **Verwacht resultaat**: retourneert één regel waarbij de fout **geen**is, bijvoorbeeld **3; config; Fout;; 0; 0; geen; 0; 1456416792; TST-servercs;**
 
-   c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` uitvoeren
+   c. Voer `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` uit.
 
    **Verwacht resultaat**: retourneert als leeg of bestaat niet.
 
@@ -1163,29 +1163,29 @@ Als de voor gaande controle niet is geslaagd, voert u de volgende extra controle
 
 1. Zorg ervoor dat de waagent is geïnstalleerd en ingeschakeld.
 
-   a.  `sudo ls -al /var/lib/waagent/` uitvoeren
+   a.  Voer `sudo ls -al /var/lib/waagent/` uit.
 
      **Verwacht resultaat**: hier wordt de inhoud van de waagent-map weer gegeven.
 
-   b.  `ps -ax | grep waagent` uitvoeren
+   b.  Voer `ps -ax | grep waagent` uit.
 
-   **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet:`python /usr/sbin/waagent -daemon`
+   **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet: `python /usr/sbin/waagent -daemon`
 
 1. Zorg ervoor dat de Azure-extensie voor SAP is geïnstalleerd en wordt uitgevoerd.
 
-   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` uitvoeren
+   a.  Voer `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` uit.
 
    **Verwacht resultaat**: hier wordt de inhoud van de Azure-extensie voor SAP-Directory weer gegeven.
 
-   b. `ps -ax | grep AzureEnhanced` uitvoeren
+   b. Voer `ps -ax | grep AzureEnhanced` uit.
 
-   **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
+   **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. Installeer de SAP host agent zoals beschreven in SAP Note [1031096]en controleer de uitvoer van `saposcol` .
 
-   a.  `/usr/sap/hostctrl/exe/saposcol -d` uitvoeren
+   a.  Voer `/usr/sap/hostctrl/exe/saposcol -d` uit.
 
-   b.  `dump ccm` uitvoeren
+   b.  Voer `dump ccm` uit.
 
    c.  Controleer of de **Virtualization_Configuration** meet waarde voor \Enhanced-controle **waar**is.
 
@@ -1203,7 +1203,7 @@ Met deze controle wordt ervoor gezorgd dat alle prestatie gegevens die in uw SAP
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>De gereedheids controle uitvoeren op een Windows-VM
 
 1. Meld u aan bij de virtuele machine van Azure (met een beheerders account is niet nodig).
-1. Open een webbrowser en ga naarhttp://127.0.0.1:11812/azure4sap/metrics
+1. Open een webbrowser en ga naar http://127.0.0.1:11812/azure4sap/metrics
 1. De browser moet een XML-bestand met de bewakings gegevens van uw virtuele machine weer geven of downloaden. Als dat niet het geval is, moet u ervoor zorgen dat de Azure-extensie voor SAP is geïnstalleerd.
 
 ##### <a name="check-the-content-of-the-xml-file"></a>De inhoud van het XML-bestand controleren
@@ -1228,29 +1228,29 @@ Als de voor gaande controle niet is geslaagd, voert u de volgende extra controle
 
 1. Zorg ervoor dat de waagent is geïnstalleerd en ingeschakeld.
 
-   a.  `sudo ls -al /var/lib/waagent/` uitvoeren
+   a.  Voer `sudo ls -al /var/lib/waagent/` uit.
 
      **Verwacht resultaat**: hier wordt de inhoud van de waagent-map weer gegeven.
 
-   b.  `ps -ax | grep waagent` uitvoeren
+   b.  Voer `ps -ax | grep waagent` uit.
 
-   **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet:`python /usr/sbin/waagent -daemon`
+   **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet: `python /usr/sbin/waagent -daemon`
 
 1. Zorg ervoor dat de Azure-extensie voor SAP is geïnstalleerd en wordt uitgevoerd.
 
-   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'` uitvoeren
+   a.  Voer `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'` uit.
 
    **Verwacht resultaat**: hier wordt de inhoud van de Azure-extensie voor SAP-Directory weer gegeven.
 
-   b. `ps -ax | grep AzureEnhanced` uitvoeren
+   b. Voer `ps -ax | grep AzureEnhanced` uit.
 
-   **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet:`/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
+   **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet: `/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
 
 1. Installeer de SAP host agent zoals beschreven in SAP Note [1031096]en controleer de uitvoer van `saposcol` .
 
-   a.  `/usr/sap/hostctrl/exe/saposcol -d` uitvoeren
+   a.  Voer `/usr/sap/hostctrl/exe/saposcol -d` uit.
 
-   b.  `dump ccm` uitvoeren
+   b.  Voer `dump ccm` uit.
 
    c.  Controleer of de **Virtualization_Configuration** meet waarde voor \Enhanced-controle **waar**is.
 

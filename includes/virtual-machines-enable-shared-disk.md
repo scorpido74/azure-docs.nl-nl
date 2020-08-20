@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 37d9cf0b0ac7145e389f9fc768ff0b593b27ae1a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 93c97c70a65be40b5801b202ba277b8f86ad1566
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88515203"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655279"
 ---
 ## <a name="limitations"></a>Beperkingen
 
@@ -137,7 +137,7 @@ Vervang,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[para
 Wanneer u een gedeelde schijf met hebt geïmplementeerd `maxShares>1` , kunt u de schijf koppelen aan een of meer van uw virtuele machines.
 
 > [!NOTE]
-> Als u een ultra schijf implementeert, moet u ervoor zorgen dat deze overeenkomt met de benodigde vereisten. Zie de sectie [Power shell](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) of [cli](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) van het artikel over de ultra disk voor meer informatie.
+> Als u een ultra schijf implementeert, moet u ervoor zorgen dat deze overeenkomt met de benodigde vereisten. Zie de sectie [Power shell](../articles/virtual-machines/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) of [cli](../articles/virtual-machines/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) van het artikel over de ultra disk voor meer informatie.
 
 ```azurepowershell-interactive
 

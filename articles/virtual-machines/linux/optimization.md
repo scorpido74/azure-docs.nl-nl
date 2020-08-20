@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 662475bdcb6b1ea9809f4501d144fb94e21e945e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659474"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654188"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Uw Linux-VM optimaliseren voor Azure
 Het maken van een virtuele Linux-machine (VM) is eenvoudig vanuit de opdracht regel of vanuit de portal. In deze zelf studie ziet u hoe u ervoor kunt zorgen dat u deze hebt ingesteld om de prestaties van het Microsoft Azure platform te optimaliseren. In dit onderwerp wordt een Ubuntu-Server-VM gebruikt, maar u kunt ook virtuele Linux-machine maken met behulp van [uw eigen installatie kopieën als sjablonen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -34,7 +34,7 @@ Als u de hoogste IOps wilt benutten op Premium Storage schijven waarop de cache-
 * Als u **xfs**gebruikt, schakelt u belemmeringen uit met de optie voor het koppelen `nobarrier` (voor het inschakelen van barrières gebruikt u de optie `barrier` )
 
 ## <a name="unmanaged-storage-account-considerations"></a>Overwegingen voor onbeheerd opslag account
-De standaard actie bij het maken van een virtuele machine met Azure CLI is het gebruik van Azure Managed Disks.  Deze schijven worden verwerkt door het Azure-platform en vereisen geen voor bereiding of locatie om ze op te slaan.  Voor niet-beheerde schijven is een opslag account vereist en er zijn een aantal extra prestatie overwegingen.  Zie voor meer informatie over beheerde schijven [overzicht Azure Managed Disks](../windows/managed-disks-overview.md).  De volgende sectie geeft een overzicht van de prestatie overwegingen alleen wanneer u niet-beheerde schijven gebruikt.  De standaard en Aanbevolen opslag oplossing is om beheerde schijven te gebruiken.
+De standaard actie bij het maken van een virtuele machine met Azure CLI is het gebruik van Azure Managed Disks.  Deze schijven worden verwerkt door het Azure-platform en vereisen geen voor bereiding of locatie om ze op te slaan.  Voor niet-beheerde schijven is een opslag account vereist en er zijn een aantal extra prestatie overwegingen.  Zie voor meer informatie over beheerde schijven [overzicht Azure Managed Disks](../managed-disks-overview.md).  De volgende sectie geeft een overzicht van de prestatie overwegingen alleen wanneer u niet-beheerde schijven gebruikt.  De standaard en Aanbevolen opslag oplossing is om beheerde schijven te gebruiken.
 
 Als u een virtuele machine met niet-beheerde schijven maakt, moet u ervoor zorgen dat u schijven koppelt van opslag accounts die zich in dezelfde regio bevinden als uw virtuele machine om te zorgen voor dicht nabijheid en netwerk latentie te minimaliseren.  Elk standaard opslag account heeft een maximum van 20.000 IOps en een grootte capaciteit van 500 TB.  Deze limiet werkt op ongeveer 40 intensief gebruikte schijven, inclusief de besturingssysteem schijf en alle gegevens schijven die u maakt. Voor Premium Storage accounts is er geen maximale IOps-limiet, maar er is een grootte limiet van 32 TB. 
 
@@ -51,7 +51,7 @@ In Ubuntu-Cloud installatie kopieën moet u Cloud-init gebruiken om de swap-part
 
 Voor installatie kopieën die geen ondersteuning voor Cloud-init hebben, hebben VM-installatie kopieën die zijn geïmplementeerd vanuit Azure Marketplace een Linux-VM-agent geïntegreerd met het besturings systeem. Met deze agent kan de virtuele machine communiceren met verschillende Azure-Services. Als u een standaard installatie kopie van Azure Marketplace hebt geïmplementeerd, moet u het volgende doen om de instellingen voor Linux-wissel bestand correct te configureren:
 
-Zoek en wijzig twee vermeldingen in het **/etc/waagent.conf** -bestand. Ze bepalen het bestaan van een toegewezen wissel bestand en grootte van het wissel bestand. De para meters die u moet controleren, zijn `ResourceDisk.EnableSwap` en`ResourceDisk.SwapSizeMB` 
+Zoek en wijzig twee vermeldingen in het **/etc/waagent.conf** -bestand. Ze bepalen het bestaan van een toegewezen wissel bestand en grootte van het wissel bestand. De para meters die u moet controleren, zijn `ResourceDisk.EnableSwap` en `ResourceDisk.SwapSizeMB` 
 
 Zorg ervoor dat de para meters de volgende instellingen hebben om een geschikt schijf en een gekoppeld wissel bestand in te scha kelen:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827857"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654256"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migreren naar Azure-bestandsshares
 
@@ -26,7 +26,7 @@ Azure heeft meerdere beschik bare typen Cloud opslag. Een fundamenteel aspect va
 
 [Azure-bestands shares](storage-files-introduction.md) zijn geschikt voor bestands gegevens voor algemene doel einden. Deze gegevens bevatten alles wat u gebruikt voor een on-premises SMB-of NFS-share voor. Met [Azure file sync](storage-sync-files-planning.md)kunt u de inhoud van verschillende Azure-bestands shares in de cache opslaan op servers waarop Windows Server on-premises wordt uitgevoerd.
 
-Voor een app die momenteel op een on-premises server wordt uitgevoerd, kan het opslaan van bestanden in een Azure-bestands share een goede keuze zijn. U kunt de app naar Azure verplaatsen en Azure-bestands shares als gedeelde opslag gebruiken. U kunt ook rekening houden met [Azure-schijven](../../virtual-machines/windows/managed-disks-overview.md) voor dit scenario.
+Voor een app die momenteel op een on-premises server wordt uitgevoerd, kan het opslaan van bestanden in een Azure-bestands share een goede keuze zijn. U kunt de app naar Azure verplaatsen en Azure-bestands shares als gedeelde opslag gebruiken. U kunt ook rekening houden met [Azure-schijven](../../virtual-machines/managed-disks-overview.md) voor dit scenario.
 
 Sommige Cloud-apps zijn niet afhankelijk van SMB of op machine-lokale gegevens toegang of gedeelde toegang. Voor die apps is object opslag, zoals [Azure-blobs](../blobs/storage-blobs-overview.md) , vaak de beste keuze.
 
@@ -126,7 +126,7 @@ De volgende tabel classificeert micro soft-hulpprogram ma's en hun huidige gesch
 |![Niet aanbevolen](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Ondersteund. | Meta gegevens worden niet gekopieerd. |
 |||||
 
-*\*Volledige kwaliteit: voldoet aan of overschrijdt de mogelijkheden van Azure file-share.*
+*\* Volledige kwaliteit: voldoet aan of overschrijdt de mogelijkheden van Azure file-share.*
 
 ### <a name="migration-helper-tools"></a>Hulpprogram ma's voor migratie hulp
 

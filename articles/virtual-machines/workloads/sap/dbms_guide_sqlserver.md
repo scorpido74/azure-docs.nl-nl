@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0fc7d62cc89e240d931f3d0f255a917a73a4114c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505555"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654579"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS-implementatie voor SAP net-Weaver
 
@@ -247,7 +247,7 @@ ms.locfileid: "88505555"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -381,7 +381,7 @@ SQL Server 2014 en hoger geeft u de mogelijkheid om database bestanden rechtstre
 * De eerder vermelde overwegingen met betrekking tot de verdeling van Vhd's via verschillende Azure Storage-accounts zijn ook van toepassing op deze implementatie methode. Betekent dat het aantal I/O-bewerkingen overeenkomt met de limieten van het Azure Storage-account.
 * In plaats van rekening houdend met de opslag-I/O-quota van de virtuele machine, wordt het verkeer voor opslag-blobs die de SQL Server gegevens en logboek bestanden vertegenwoordigen, verwerkt in de netwerk bandbreedte van de virtuele machine van het specifieke VM-type. Voor netwerk-en opslag bandbreedte van een bepaald VM-type raadpleegt u de artikel [grootten voor virtuele Windows-machines in azure](../../sizes.md).
 * Als gevolg van het pushen van bestands-I/O via het netwerk quotum, bent u de opslag quota voornamelijk en met die de totale band breedte van de virtuele machine slechts gedeeltelijk gebruiken.
-* De prestatie doelen IOPS en I/O-doorvoer snelheid die Azure Premium Storage heeft voor de verschillende schijf grootten, zijn niet meer van toepassing. Zelfs als de blobs die u hebt gemaakt, zich bevinden op Azure Premium Storage. De doelen zijn een documentatie van het artikel [high-performance Premium Storage en Managed disks voor vm's](../../windows/disks-types.md#premium-ssd). Als gevolg van het plaatsen van SQL Server gegevens bestanden en logboek bestanden rechtstreeks op blobs die zijn opgeslagen in azure Premium Storage, kunnen de prestatie kenmerken verschillen ten opzichte van Vhd's in azure Premium Storage.
+* De prestatie doelen IOPS en I/O-doorvoer snelheid die Azure Premium Storage heeft voor de verschillende schijf grootten, zijn niet meer van toepassing. Zelfs als de blobs die u hebt gemaakt, zich bevinden op Azure Premium Storage. De doelen zijn een documentatie van het artikel [high-performance Premium Storage en Managed disks voor vm's](../../disks-types.md#premium-ssd). Als gevolg van het plaatsen van SQL Server gegevens bestanden en logboek bestanden rechtstreeks op blobs die zijn opgeslagen in azure Premium Storage, kunnen de prestatie kenmerken verschillen ten opzichte van Vhd's in azure Premium Storage.
 * Op de host gebaseerde caching als beschikbaar voor Azure Premium Storage schijven is niet beschikbaar wanneer u SQL Server gegevens bestanden rechtstreeks op Azure-blobs plaatst.
 * Op virtuele machines uit de M-serie kan Azure Write Accelerator niet worden gebruikt voor de ondersteuning van submilliseconde schrijf bewerkingen voor het SQL Server transactie logboek bestand. 
 

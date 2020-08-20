@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46db5f7d3e5d3844fb297e512d8d701e6da79de9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700882"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654307"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute met Azure Site Recovery
 
-Met Microsoft Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en Dynamics 365.
+Met Microsoft Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en Dynamics 365.
 
 In dit artikel wordt beschreven hoe u Azure ExpressRoute kunt gebruiken met Azure Site Recovery voor herstel na nood gevallen en migratie.
 
@@ -50,7 +50,7 @@ Het gecombineerde scenario wordt in het volgende diagram weer gegeven: ![ on-pre
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Replicatie van Azure naar Azure met ExpressRoute
 
-Azure Site Recovery kunnen nood herstel van [virtuele machines van Azure](azure-to-azure-architecture.md)worden hersteld. Afhankelijk van of uw virtuele Azure-machines [azure Managed disks](../virtual-machines/windows/managed-disks-overview.md)gebruiken, worden de replicatie gegevens verzonden naar een Azure Storage account of een door de replica beheerde schijf in de Azure-doel regio. Hoewel de replicatie-eind punten openbaar zijn, wordt het replicatie verkeer voor Azure VM-replicatie standaard niet door lopen via internet, ongeacht de Azure-regio waarin het virtuele bron netwerk zich bevindt. U kunt de standaard systeem route van Azure voor het adres voorvoegsel 0.0.0.0/0 vervangen door een aangepaste route en VM-verkeer [omleiden](../virtual-network/virtual-networks-udr-overview.md#custom-routes) naar een on-premises netwerk virtueel apparaat (NVA), maar deze configuratie wordt niet aanbevolen voor replicatie van site Recovery. Als u aangepaste routes gebruikt, moet u [een service-eind punt voor een virtueel netwerk maken](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in het virtuele netwerk voor "opslag" zodat het replicatie verkeer de Azure-grens niet verlaat.
+Azure Site Recovery kunnen nood herstel van [virtuele machines van Azure](azure-to-azure-architecture.md)worden hersteld. Afhankelijk van of uw virtuele Azure-machines [azure Managed disks](../virtual-machines/managed-disks-overview.md)gebruiken, worden de replicatie gegevens verzonden naar een Azure Storage account of een door de replica beheerde schijf in de Azure-doel regio. Hoewel de replicatie-eind punten openbaar zijn, wordt het replicatie verkeer voor Azure VM-replicatie standaard niet door lopen via internet, ongeacht de Azure-regio waarin het virtuele bron netwerk zich bevindt. U kunt de standaard systeem route van Azure voor het adres voorvoegsel 0.0.0.0/0 vervangen door een aangepaste route en VM-verkeer [omleiden](../virtual-network/virtual-networks-udr-overview.md#custom-routes) naar een on-premises netwerk virtueel apparaat (NVA), maar deze configuratie wordt niet aanbevolen voor replicatie van site Recovery. Als u aangepaste routes gebruikt, moet u [een service-eind punt voor een virtueel netwerk maken](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in het virtuele netwerk voor "opslag" zodat het replicatie verkeer de Azure-grens niet verlaat.
 
 Voor Azure VM-nood herstel is ExpressRoute standaard niet vereist voor replicatie. Nadat de failover van virtuele machines naar de Azure-doel regio is uitgevoerd, kunt u deze openen met behulp van [privé-peering](../expressroute/expressroute-circuit-peerings.md#privatepeering). Houd er rekening mee dat tarieven voor gegevens overdracht van toepassing zijn onafhankelijk van de modus voor gegevens replicatie tussen Azure-regio's.
 

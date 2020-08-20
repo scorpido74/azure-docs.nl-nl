@@ -4,12 +4,12 @@ description: Meer informatie over het beheren van certificaten in een Service Fa
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246704"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653661"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Certificaat beheer in Service Fabric clusters
 
@@ -91,7 +91,7 @@ Op dit punt bevindt zich in de kluis een certificaat dat gereed is voor gebruik.
 We hebben een ' inrichtings agent ' genoemd, de entiteit die het certificaat ophaalt, inclusief de persoonlijke sleutel, van de kluis en installeert op elk van de hosts van het cluster. (Intrekken dat Service Fabric geen certificaten inricht.) In onze context wordt het cluster gehost op een verzameling Azure Vm's en/of virtuele-machine schaal sets. In azure kan het inrichten van een certificaat van een kluis naar een VM-VMSS worden gerealiseerd met de volgende mechanismen: ervan uitgaande dat de inrichtings agent eerder ' Get '-machtigingen heeft verleend aan de kluis door de eigenaar van de kluis: 
   - ad-hoc: een operator haalt het certificaat op uit de kluis (als pfx/PKCS #12 of PEM) en installeert dit op elk knoop punt
   - Als een ' geheim ' van een virtuele-machine schaalset tijdens de implementatie: de compute-service haalt met behulp van de identiteit van de eerste partij namens de operator, het certificaat uit een kluis met implementatie van een sjabloon en installeert dit op elk knoop punt van de virtuele-machine schaalset ([zoals u dat](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates)). Houd er rekening mee dat het inrichten van alleen versie-geheimen alleen mogelijk is
-  - de [Key Vault VM-extensie](../virtual-machines/extensions/key-vault-windows.md)gebruiken; Hierdoor kunnen certificaten worden ingericht met behulp van versie-less-declaraties, waarbij de waargenomen certificaten periodiek worden vernieuwd. In dit geval wordt naar verwachting dat de VM-VMSS een [beheerde identiteit](../virtual-machines/windows/security-policy.md#managed-identities-for-azure-resources)heeft, een identiteit waaraan toegang is verleend tot de kluis (s) die de geobserveerde certificaten bevatten.
+  - de [Key Vault VM-extensie](../virtual-machines/extensions/key-vault-windows.md)gebruiken; Hierdoor kunnen certificaten worden ingericht met behulp van versie-less-declaraties, waarbij de waargenomen certificaten periodiek worden vernieuwd. In dit geval wordt naar verwachting dat de VM-VMSS een [beheerde identiteit](../virtual-machines/security-policy.md#managed-identities-for-azure-resources)heeft, een identiteit waaraan toegang is verleend tot de kluis (s) die de geobserveerde certificaten bevatten.
 
 Het ad-hoc mechanisme wordt niet aanbevolen om meerdere redenen, variërend van beveiliging tot Beschik baarheid en wordt hier niet verder besproken. Raadpleeg [certificaten in virtuele-machine schaal sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates)voor meer informatie.
 

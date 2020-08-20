@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 75f8a1f42c5d5702fdb4a588b0829636c30f80a6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504939"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654613"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines DBMS-implementatie voor SAP-workload
 
@@ -247,7 +247,7 @@ ms.locfileid: "88504939"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -353,9 +353,9 @@ Als er onvoldoende vrije ruimte beschikbaar is, kan de grootte van de schijf wor
 Als u de juiste hoeveelheid ruimte wilt bepalen voor de Temp files, kunt u de grootte van de Temp files op bestaande systemen controleren.
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
-Alleen Oracle met één instantie die NTFS-geformatteerde schijven gebruikt, wordt ondersteund. Alle database bestanden moeten worden opgeslagen in het NTFS-bestands systeem op Managed Disks (aanbevolen) of op Vhd's. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) of [Azure Managed disks](../../windows/managed-disks-overview.md). 
+Alleen Oracle met één instantie die NTFS-geformatteerde schijven gebruikt, wordt ondersteund. Alle database bestanden moeten worden opgeslagen in het NTFS-bestands systeem op Managed Disks (aanbevolen) of op Vhd's. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) of [Azure Managed disks](../../managed-disks-overview.md). 
 
-Het is raadzaam [Azure Managed disks](../../windows/managed-disks-overview.md)te gebruiken. We raden u ook ten zeerste aan om [Premium ssd's](../../windows/disks-types.md) te gebruiken voor uw Oracle database-implementaties.
+Het is raadzaam [Azure Managed disks](../../managed-disks-overview.md)te gebruiken. We raden u ook ten zeerste aan om [Premium ssd's](../../disks-types.md) te gebruiken voor uw Oracle database-implementaties.
 
 Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Zie voor meer informatie:
 
@@ -442,11 +442,11 @@ In dit geval kunt u het beste de installatie/locatie van Oracle Home, stage, sap
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
 
-De bestands systemen van ext4, xfs of Oracle ASM worden ondersteund voor Oracle Database-bestanden in Azure. Alle database bestanden moeten worden opgeslagen op deze bestands systemen op basis van Vhd's of Managed Disks. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) of [Azure Managed disks](../../windows/managed-disks-overview.md).
+De bestands systemen van ext4, xfs of Oracle ASM worden ondersteund voor Oracle Database-bestanden in Azure. Alle database bestanden moeten worden opgeslagen op deze bestands systemen op basis van Vhd's of Managed Disks. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) of [Azure Managed disks](../../managed-disks-overview.md).
 
 Voor Oracle Linux UEK-kernels is mini maal UEK versie 4 vereist voor de ondersteuning van [Azure Premium ssd's](../../windows/premium-storage-performance.md#disk-caching).
 
-Het wordt sterk aanbevolen om [Azure Managed disks](../../windows/managed-disks-overview.md)te gebruiken. Het wordt ook nadrukkelijk aanbevolen [Azure Premium ssd's](../../windows/disks-types.md) te gebruiken voor uw Oracle database-implementaties.
+Het wordt sterk aanbevolen om [Azure Managed disks](../../managed-disks-overview.md)te gebruiken. Het wordt ook nadrukkelijk aanbevolen [Azure Premium ssd's](../../disks-types.md) te gebruiken voor uw Oracle database-implementaties.
 
 Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Raadpleeg de volgende artikelen voor meer informatie: 
 

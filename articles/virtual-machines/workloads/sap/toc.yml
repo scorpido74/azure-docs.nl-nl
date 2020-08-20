@@ -291,6 +291,8 @@
       href: azure-monitor-overview.md
     - name: Providers van Azure Monitor voor SAP-oplossingen
       href: azure-monitor-providers.md
+    - name: Azure Monitor voor SAP-oplossingen configureren
+      href: azure-monitor-sap-quickstart.md
     - name: FAQ voor Azure Monitor voor SAP-oplossingen
       href: azure-monitor-faq.md
 - name: Naslaginformatie

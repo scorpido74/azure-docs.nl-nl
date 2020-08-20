@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611837"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654154"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -169,7 +169,7 @@ In de eerste kolom (PV) wordt het fysieke volume weer gegeven, de volgende kolom
 
 ###### <a name="duplicate-volume-groups"></a>Dubbele volume groepen
 
-Er zijn scenario's waarin namen van volume groepen 2 UUIDs kunnen hebben nadat het script is uitgevoerd. Dit betekent dat de namen van de volume groepen op de computer waarop het script wordt uitgevoerd en de back-upvm hetzelfde zijn. Vervolgens moet u de naam van de back-ups van de VM-volume groepen wijzigen. Bekijk het onderstaande voor beeld.
+Er zijn scenario's waarin namen van volume groepen 2 UUIDs kunnen hebben nadat het script is uitgevoerd. Dit betekent dat de namen van de volume groepen op de computer waarop het script wordt uitgevoerd en de back-upvm hetzelfde zijn. Vervolgens moet u de naam van de back-ups van de VM-volume groepen wijzigen. Bekijk het voor beeld hieronder.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -398,7 +398,7 @@ De gegevens stroom tussen de Recovery-service en de machine wordt beveiligd door
 
 Een bestands Access Control lijst (ACL) die aanwezig is in de bovenliggende/back-up van de VM, blijft ook behouden in het gekoppelde bestands systeem.
 
-Het script geeft alleen-lezen toegang tot een herstel punt en is slechts 12 uur geldig. Als u de toegang eerder wilt verwijderen, meldt u zich aan bij Azure Portal/Power shell/CLI en voert u de **ontkoppelde schijven** uit voor dat specifieke herstel punt. Het script wordt onmiddellijk ongeldig gemaakt.
+Het script geeft alleen-lezen toegang tot een herstel punt en is slechts 12 uur geldig. Als u de toegang eerder wilt verwijderen, meldt u zich aan Azure Portal/Power shell/CLI en voert u de **ontkoppelde schijven** uit voor dat specifieke herstel punt. Het script wordt onmiddellijk ongeldig gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

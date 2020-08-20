@@ -5,15 +5,15 @@ author: laurenhughes
 ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 040f4378e01c3696b9a74bfcc27230503828f19a
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.date: 08/17/2020
+ms.openlocfilehash: 154558a2aa679dddad395225088ea891ecea8ebc
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562784"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654273"
 ---
-# <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>Preview-upgrade van installatie kopie van knoop punt van Azure Kubernetes service (AKS)
+# <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade van installatie kopie van knoop punt Azure Kubernetes service (AKS)
 
 AKS biedt ondersteuning voor het upgraden van installatie kopieën op een knoop punt zodat u up-to-date bent met de nieuwste besturings systemen en runtime-updates. AKS biedt een nieuwe installatie kopie per week met de nieuwste updates. het is dus handig om de installatie kopieën van uw knoop punt regel matig bij te werken voor de nieuwste functies, waaronder Linux-of Windows-patches. In dit artikel wordt beschreven hoe u installatie kopieën van AKS-cluster knooppunten bijwerkt en hoe u installatie kopieën van groeps knooppunten bijwerkt zonder de versie van Kubernetes bij te werken.
 
@@ -21,23 +21,9 @@ Als u wilt weten over de nieuwste installatie kopieën van AKS, raadpleegt u de 
 
 Zie [een AKS-cluster upgraden][upgrade-cluster]voor informatie over het bijwerken van de Kubernetes-versie voor uw cluster.
 
-## <a name="register-the-node-image-upgrade-preview-feature"></a>De preview-functie voor de upgrade van de knooppunt installatie kopie registreren
+## <a name="install-the-aks-cli-extension"></a>De AKS CLI-extensie installeren
 
-Als u de upgrade functie voor de knooppunt installatie kopie wilt gebruiken tijdens de preview-periode, moet u de functie registreren.
-
-```azurecli
-# Register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "NodeImageUpgradePreview"
-```
-
-Het duurt enkele minuten voordat de registratie is voltooid. Gebruik de volgende opdracht om te controleren of de functie is geregistreerd:
-
-```azurecli
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodeImageUpgradePreview')].{Name:name,State:properties.state}"
-```
-
-Tijdens de preview-versie hebt u de *AKS-preview cli-* extensie nodig om de upgrade van de knooppunt installatie kopie te gebruiken. Gebruik de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
+Voordat de volgende kern CLI-versie wordt uitgebracht, hebt u de *AKS-preview cli-* extensie nodig om de upgrade van de knooppunt installatie kopie te gebruiken. Gebruik de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
 
 ```azurecli
 # Install the aks-preview extension
@@ -46,12 +32,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
-
-Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```  
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>Alle knoop punten in alle knooppunt groepen upgraden
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de0402febe94e50877367dc37d448a4a13893f93
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667366"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653338"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Opslagconfiguratie voor SQL Server-VM's
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Als u de configuratie-instellingen voor automatische opslag wilt gebruiken, zijn
 
 * Ingericht met een [SQL Server galerie-afbeelding](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
 * Maakt gebruik van het [Resource Manager-implementatie model](../../../azure-resource-manager/management/deployment-models.md).
-* Maakt gebruik van [Premium-ssd's](../../../virtual-machines/windows/disks-types.md).
+* Maakt gebruik van [Premium-ssd's](../../../virtual-machines/disks-types.md).
 
 ## <a name="new-vms"></a>Nieuwe Vm's
 
@@ -115,7 +115,7 @@ U kunt de schijf instellingen wijzigen voor de stations die zijn geconfigureerd 
 Deze sectie bevat een verwijzing naar de opslag configuratie wijzigingen die Azure automatisch uitvoert tijdens SQL Server VM-inrichting of-configuratie in de Azure Portal.
 
 * Azure configureert een opslag groep van opslag die is geselecteerd op de VM. In de volgende sectie van dit onderwerp vindt u meer informatie over de configuratie van de opslag groep.
-* Automatische opslag configuratie maakt altijd gebruik van [Premium ssd's](../../../virtual-machines/windows/disks-types.md) P30-gegevens schijven. Daarom is er een 1:1-toewijzing tussen het geselecteerde aantal terabytes en het aantal gegevens schijven dat aan uw virtuele machine is gekoppeld.
+* Automatische opslag configuratie maakt altijd gebruik van [Premium ssd's](../../../virtual-machines/disks-types.md) P30-gegevens schijven. Daarom is er een 1:1-toewijzing tussen het geselecteerde aantal terabytes en het aantal gegevens schijven dat aan uw virtuele machine is gekoppeld.
 
 Zie de pagina [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage) op het tabblad **Disk Storage** voor prijs informatie.
 
@@ -140,7 +140,7 @@ Azure gebruikt de volgende instellingen voor het maken van de opslag groep op SQ
 
 In de volgende tabel worden de drie beschik bare opties voor werkbelasting typen en de bijbehorende optimalisaties beschreven:
 
-| Type werk belasting | Description | Optimalisaties |
+| Type werk belasting | Beschrijving | Optimalisaties |
 | --- | --- | --- |
 | **Algemeen** |Standaard instelling die de meeste werk belastingen ondersteunt |Geen |
 | **Transactionele verwerking** |Optimaliseert de opslag voor traditionele OLTP-workloads van data bases |Tracerings vlag 1117<br/>Tracerings vlag 1118 |

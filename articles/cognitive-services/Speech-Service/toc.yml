@@ -20,10 +20,8 @@
       href: index-speech-to-text.yml
     - name: Overzicht
       items:
-        - name: Wat is spraak naar tekst in realtime?
+        - name: Wat is spraak-naar-tekst?
           href: speech-to-text.md
-        - name: Wat is batchgewijze spraak naar tekst?
-          href: batch-transcription.md
         - name: Basisbeginselen van spraakherkenning
           href: speech-to-text-basics.md
     - name: Snelstartgidsen
@@ -53,6 +51,8 @@
           href: how-to-select-audio-input-devices.md
         - name: Automatische detectie van de brontaal gebruiken
           href: how-to-automatic-language-detection.md
+        - name: De API voor transcriptie in batch gebruiken
+          href: batch-transcription.md
     - name: Zelfstudies
       items:
         - name: Nauwkeurigheid verbeteren met tenantmodellen

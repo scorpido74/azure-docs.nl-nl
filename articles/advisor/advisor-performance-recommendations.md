@@ -3,12 +3,12 @@ title: Verbeter de prestaties van Azure-apps met Advisor
 description: Gebruik aanbevelingen voor prestaties in Azure Advisor om de snelheid en reactie tijd van uw bedrijfskritische toepassingen te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257455"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653304"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met behulp van Azure Advisor
 
@@ -51,32 +51,32 @@ Advisor identificeert virtuele machines met standaard schijven met een groot aan
 
 Azure Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor virtuele machines die I/O-intensieve workloads uitvoeren. Virtuele-machine schijven die gebruikmaken van Premium Storage accounts slaan gegevens op Ssd's (Solid-state drives) op. Voor de beste prestaties van uw toepassing wordt u aangeraden alle schijven voor virtuele machines te migreren die hoge IOPS vereisen om te Premium Storage.
 
-## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Verscheefing van gegevens in uw SQL Data Warehouse tabellen verwijderen om de query prestaties te verbeteren
+## <a name="remove-data-skew-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Verscheefing van gegevens verwijderen uit uw Azure Synapse Analytics-tabellen om de query prestaties te verbeteren
 
 Gegevens scheefheid kan leiden tot onnodige gegevens verplaatsing of bron knelpunten wanneer u uw workload uitvoert. Advisor detecteert distributie gegevens scheefheid van meer dan 15%. U wordt aangeraden uw gegevens opnieuw te distribueren en uw tabel distributie sleutel selecties opnieuw te bezoeken. Zie [problemen met scheef trekken oplossen](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)voor meer informatie over het identificeren en verwijderen van scheefheid.
 
-## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Verouderde tabel statistieken in uw SQL Data Warehouse tabellen maken of bijwerken om de query prestaties te verbeteren
+## <a name="create-or-update-outdated-table-statistics-in-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Verouderde tabel statistieken maken of bijwerken in uw Azure Synapse Analytics-tabellen om de query prestaties te verbeteren
 
-Advisor identificeert tabellen die geen actuele [tabel statistieken](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) hebben en raadt u aan om de statistieken te maken of bij te werken. De query Optimizer in Azure SQL Data Warehouse maakt gebruik van actuele statistieken om de kardinaliteit of het aantal rijen in query resultaten te schatten. Met deze schattingen kan het query optimalisatie programma een query plan maken om de snelste prestaties te bieden.
+Advisor identificeert tabellen die geen actuele [tabel statistieken](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) hebben en raadt u aan om de statistieken te maken of bij te werken. De query Optimizer in azure Synapse Analytics maakt gebruik van actuele statistieken voor het schatten van de kardinaliteit of het aantal rijen in query resultaten. Met deze schattingen kan het query optimalisatie programma een query plan maken om de snelste prestaties te bieden.
 
 ## <a name="improve-mysql-connection-management"></a>MySQL-verbindingsbeheer verbeteren
 
 Advisor-analyse kan erop wijzen dat de toepassing die verbinding maakt met een MySQL-server mogelijk niet efficiënt beheert. Dit probleem kan leiden tot onnodig Resource verbruik en een totale latentie van een hogere toepassing. We raden u aan om het aantal kortdurende verbindingen te beperken en onnodige niet-actieve verbindingen te elimineren om verbindingsbeheer te verbeteren. U kunt deze verbeteringen aanbrengen door een verbindings groep aan de server zijde te configureren, zoals ProxySQL.
 
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Schaal omhoog om het cache gebruik op uw SQL Data Warehouse tabellen te optimaliseren om de query prestaties te verbeteren
+## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Schaal omhoog om het cache gebruik in uw Azure Synapse Analytics-tabellen te optimaliseren om de query prestaties te verbeteren
 
-Azure Advisor detecteert of uw SQL Data Warehouse tabellen een hoog percentage voor cache gebruik en een lage treffer percentage hebben. Deze voor waarde duidt op hoge cache verwijdering, wat van invloed kan zijn op de prestaties van uw SQL Data Warehouse-exemplaar. Advisor raadt u aan om uw SQL Data Warehouse-exemplaar te schalen, zodat u voldoende cache capaciteit toewijst voor uw werk belasting.
+Azure Advisor detecteert of uw Azure Synapse Analytics-tabellen een hoog percentage voor cache gebruik en een lage treffer percentage hebben. Deze voor waarde duidt op hoge cache verwijdering, wat van invloed kan zijn op de prestaties van uw Azure Synapse Analytics-exemplaar. Advisor raadt u aan uw Azure Synapse Analytics-exemplaar te schalen om ervoor te zorgen dat u voldoende cache capaciteit toewijst voor uw werk belasting.
 
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>SQL Data Warehouse tabellen converteren naar gerepliceerde tabellen om de query prestaties te verbeteren
+## <a name="convert-azure-synapse-analytics-tables-to-replicated-tables-to-increase-query-performance"></a>Azure Synapse Analytics-tabellen converteren naar gerepliceerde tabellen om de query prestaties te verbeteren
 
 Advisor identificeert tabellen die geen gerepliceerde tabellen zijn, maar die zouden kunnen worden geconverteerd. U wordt aangeraden deze tabellen te converteren. Aanbevelingen zijn gebaseerd op:
 - De grootte van de gerepliceerde tabel. 
 - Het aantal kolommen. 
 - Het distributie type van de tabel. 
-- Het aantal partities op de SQL Data Warehouse tabel. 
+- Het aantal partities in de Azure Synapse Analytics-tabel. 
 
-Extra heuristiek kan worden gegeven in de aanbeveling voor context. Zie [SQL Data Warehouse aanbevelingen](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)voor meer informatie over hoe deze aanbeveling wordt bepaald. 
+Extra heuristiek kan worden gegeven in de aanbeveling voor context. Zie [aanbevelingen voor Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)voor meer informatie over hoe deze aanbeveling wordt bepaald. 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>Uw opslag account migreren naar Azure Resource Manager om de nieuwste Azure-functies op te halen
 

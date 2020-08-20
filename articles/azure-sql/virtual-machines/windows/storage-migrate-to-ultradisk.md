@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5a2205ec835fb630933dd85b4b0e5846ae864cb
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236017"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653241"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Logboek schijf migreren naar ultra Disk
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Voltooi een [volledige back-up](backup-restore.md) van uw data base.
 
 Koppel de Ultra-SSD aan uw virtuele machine wanneer u ultradisk-compatibiliteit hebt ingeschakeld op de VM. 
 
-Ultra disk wordt ondersteund op een subset van VM-grootten en-regio's. Controleer voordat u doorgaat of uw virtuele machine zich in een regio, zone en grootte bevindt die ondersteuning biedt voor Ultra disk. U kunt de [grootte en regio van de virtuele machine bepalen en valideren](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) met behulp van Azure CLI of Power shell. 
+Ultra disk wordt ondersteund op een subset van VM-grootten en-regio's. Controleer voordat u doorgaat of uw virtuele machine zich in een regio, zone en grootte bevindt die ondersteuning biedt voor Ultra disk. U kunt de [grootte en regio van de virtuele machine bepalen en valideren](../../../virtual-machines/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) met behulp van Azure CLI of Power shell. 
 
 ### <a name="enable-compatibility"></a>Compatibiliteit inschakelen
 
@@ -50,7 +50,7 @@ Voer de volgende stappen uit om de compatibiliteit in te scha kelen:
 
 1. Selecteer **Ja** om **compatibiliteit met ultra disk in te scha kelen**. 
 
-   :::image type="content" source="../../../../includes/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Selecteer extra instellingen voor schijven onder instellingen in het Azure Portal":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Selecteer extra instellingen voor schijven onder instellingen in het Azure Portal":::
 
 1. Selecteer **Opslaan**. 
 
@@ -58,7 +58,7 @@ Voer de volgende stappen uit om de compatibiliteit in te scha kelen:
 
 ### <a name="attach-disk"></a>Schijf koppelen
 
-Gebruik de Azure Portal om een ultra schijf aan uw virtuele machine toe te voegen. Zie [een ultra schijf koppelen](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal) voor meer informatie.
+Gebruik de Azure Portal om een ultra schijf aan uw virtuele machine toe te voegen. Zie [een ultra schijf koppelen](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal) voor meer informatie.
 
 Zodra de schijf is gekoppeld, start u de VM opnieuw op met behulp van de Azure Portal. 
 
@@ -85,7 +85,7 @@ Configureer SQL Server om het nieuwe logboek station te gebruiken. U kunt dit do
 1. Maak een map (of meerdere mappen) die moet worden gebruikt voor het logboek bestand. 
 1. Klik met de rechter muisknop op de map en selecteer **Eigenschappen**.
 1. Geef op het tabblad **beveiliging** volledige controle toegang tot het SQL Server-service account. 
-1. Selecteer **OK** om uw instellingen op te slaan. 
+1. Selecteer **OK**  om uw instellingen op te slaan. 
 1. Herhaal dit voor elke hoofdmap van het hoofd niveau waar u SQL-gegevens wilt hebben. 
 
 ### <a name="use-new-log-drive"></a>Nieuw logboek station gebruiken 
