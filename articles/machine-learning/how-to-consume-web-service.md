@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e5fb19b0d8d94b5ccc07c465c3e9f3bf0de50ab7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843043"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652590"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,10 +41,10 @@ De algemene werk stroom voor het maken van een client die gebruikmaakt van een m
 
 De klasse [azureml. core. webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) bevat de informatie die u nodig hebt voor het maken van een-client. De volgende `Webservice` eigenschappen zijn handig voor het maken van een client toepassing:
 
-* `auth_enabled`-Als de sleutel verificatie is ingeschakeld, `True` anders, `False` .
-* `token_auth_enabled`-Als token verificatie is ingeschakeld, `True` anders, `False` .
-* `scoring_uri`-Het REST API adres.
-* `swagger_uri`-Het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
+* `auth_enabled` -Als de sleutel verificatie is ingeschakeld, `True` anders, `False` .
+* `token_auth_enabled` -Als token verificatie is ingeschakeld, `True` anders, `False` .
+* `scoring_uri` -Het REST API adres.
+* `swagger_uri` -Het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
 
 Er zijn drie manieren om deze informatie op te halen voor geïmplementeerde webservices:
 
@@ -157,30 +157,6 @@ De REST API verwacht dat de hoofd tekst van de aanvraag een JSON-document is met
 
 > [!IMPORTANT]
 > De structuur van de gegevens moet overeenkomen met het Score script en het model in de service. Het Score script kan de gegevens wijzigen voordat deze aan het model worden door gegeven.
-
-Het model in het voor beeld van de [trein in notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) verwacht bijvoorbeeld een matrix van 10 getallen. Met het Score script voor dit voor beeld wordt een numpy-matrix gemaakt op basis van de aanvraag en door gegeven aan het model. In het volgende voor beeld ziet u de gegevens die deze service verwacht:
-
-```json
-{
-    "data": 
-        [
-            [
-                0.0199132141783263, 
-                0.0506801187398187, 
-                0.104808689473925, 
-                0.0700725447072635, 
-                -0.0359677812752396, 
-                -0.0266789028311707, 
-                -0.0249926566315915, 
-                -0.00259226199818282, 
-                0.00371173823343597, 
-                0.0403433716478807
-            ]
-        ]
-}
-```
-
-De webservice kan meerdere gegevens sets in één aanvraag accepteren. Er wordt een JSON-document geretourneerd met een matrix van antwoorden.
 
 ### <a name="binary-data"></a>Binaire gegevens
 

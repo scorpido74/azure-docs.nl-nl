@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3024c79b6295762636518e3f77d506ad45f73682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d300252893a72ef6296e941f5a573a67807779f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090753"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652573"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
 
@@ -56,6 +56,18 @@ A.  Voor informatie over welke landen/regio's de Data Box beschikbaar is, gaat u
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>V. In welke regio's kan ik gegevens opslaan met Data Box?
 A. Data Box wordt ondersteund voor alle regio's in VS, Europa-west, Europa-noord, Frank rijk, UK, Japan, Australië en Canada. Ga naar [beschik bare regio](data-box-overview.md#region-availability)voor meer informatie.
+
+### <a name="q-how-can-i-import-my-on-premises-source-data-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>V. Hoe kan ik mijn on-premises bron gegevens importeren naar een Azure-regio in een ander land of een andere regio of gegevens uit een Azure-regio in één land exporteren naar een ander land/dezelfde regio?
+
+Data Box ondersteunt opname van gegevens of uitgaand verkeer binnen hetzelfde land/dezelfde regio als de bestemming en snijdt geen internationale grenzen. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar gegevens vakken kunnen worden verzonden naar en van een EU-land/regio.
+
+Als u bijvoorbeeld in het import scenario een on-premises gegevens in Canada had die u wilt verplaatsen naar een Azure-account voor een West-opslag, kunt u dit op de volgende manier belopen:
+
+1. Volg de orde van Data Box in Canada door een opslag account te kiezen in Cananda. Het apparaat wordt verzonden vanuit een Azure-Data Center in Canada naar het verzend adres (in Canada) dat wordt gegeven tijdens het maken van de order.
+
+2. Als de on-premises gegevens kopie naar de Data Box is voltooid, gaat u terug naar het Azure-Data Center in Canada. De gegevens die aanwezig zijn op de Data Box, worden vervolgens geüpload naar het doel opslag account in de Canada Azure-regio die u hebt gekozen tijdens het maken van de order.
+
+3. U kunt vervolgens een hulp programma als AzCopy gebruiken om de gegevens naar een opslag account in Westus te kopiëren. Met deze stap worden [standaard](https://azure.microsoft.com/pricing/details/storage/) kosten voor opslag en [band breedte](https://azure.microsoft.com/pricing/details/bandwidth/) in rekening gebracht die niet zijn opgenomen in de facturering van data box.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>V. Met wie moet ik contact opnemen als ik een probleem krijg met Data Box?
 A. Neem bij problemen met Data Box contact op met [Microsoft Ondersteuning](data-box-disk-contact-microsoft-support.md).

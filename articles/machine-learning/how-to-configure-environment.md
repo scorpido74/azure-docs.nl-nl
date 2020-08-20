@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 09d82c4834e50e0dff74edb5ccd14287736b937e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1753373b360a78918682b5f6102dcc896e2d90c3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844470"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652635"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelingsomgeving voor Azure Machine Learning configureren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -215,7 +215,7 @@ Deze onderdelen in uw Jupyter Notebook omgeving inschakelen:
     conda activate myenv
     ```
 
-1. Kloon [de GitHub-opslag plaats](https://aka.ms/aml-notebooks) voor een aantal voorbeeld notitieblokken.
+1. Kloon [de GitHub-opslag plaats](https://github.com/Azure/MachineLearningNotebooks) voor een aantal voorbeeld notitieblokken.
 
     ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
@@ -312,7 +312,7 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
    > Er kunnen geen andere SDK-extra's worden geïnstalleerd. Kies slechts een van de voor gaande opties [databricks] of [automl].
 
    * Selecteer niet **automatisch koppelen aan alle clusters**.
-   * Selecteer **koppelen** naast de naam van uw cluster.
+   * Selecteer  **koppelen** naast de naam van uw cluster.
 
 1. Controleer op fouten totdat de status is gewijzigd in **bijgevoegd**. Dit kan enkele minuten duren.  Als deze stap mislukt:
 
@@ -323,8 +323,8 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
 
    Houd ook rekening met het volgende:
    + Bij het gebruik van Azure Databricks de volgende para meters toevoegen in AutoML config:
-       1. ```max_concurrent_iterations```is gebaseerd op het aantal worker-knoop punten in uw cluster.
-        2. ```spark_context=sc```is gebaseerd op de standaard Spark-context.
+       1. ```max_concurrent_iterations``` is gebaseerd op het aantal worker-knoop punten in uw cluster.
+        2. ```spark_context=sc``` is gebaseerd op de standaard Spark-context.
    + Als u een oude SDK-versie hebt, kunt u deze opheffen door de geïnstalleerde bibliotheken van het cluster te verwijderen en naar de Prullenbak te gaan. Installeer de nieuwe SDK-versie en start het cluster opnieuw op. Als er een probleem is nadat de computer opnieuw is opgestart, ontkoppelt u het cluster en koppelt u het opnieuw.
 
 Als de installatie is voltooid, moet de geïmporteerde bibliotheek er ongeveer als volgt uitzien:
@@ -361,9 +361,9 @@ Gebruik om dit bestand uit uw code te gebruiken `ws=Workspace.from_config()` . M
 
 U kunt het configuratie bestand op drie manieren maken:
 
-* **Gebruik [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: om een *config.jsin* het bestand te schrijven. Het bestand bevat de configuratie gegevens voor uw werk ruimte. U kunt de *config.jsin* naar andere ontwikkel omgevingen downloaden of kopiëren.
+* **Gebruik  [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: om een *config.jsin* het bestand te schrijven. Het bestand bevat de configuratie gegevens voor uw werk ruimte. U kunt de *config.jsin* naar andere ontwikkel omgevingen downloaden of kopiëren.
 
-* **Down load het bestand**: In de [Azure Portal](https://ms.portal.azure.com)selecteert u **config.jsdownloaden** in het gedeelte **overzicht** van uw werk ruimte.
+* **Down load het bestand**: In de [Azure Portal](https://ms.portal.azure.com)selecteert u  **config.jsdownloaden** in het gedeelte **overzicht** van uw werk ruimte.
 
      ![Azure Portal](./media/how-to-configure-environment/configure.png)
 

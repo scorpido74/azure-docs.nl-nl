@@ -3,12 +3,12 @@ title: Een Microsoft Azure Recovery Services kluis verwijderen
 description: In dit artikel leert u hoe u afhankelijkheden kunt verwijderen en vervolgens een Azure Backup Recovery Services kluis kunt verwijderen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: ffe8005ed6c2583763a10ba515ff19f0ef62ae0d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257948"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652825"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Een Azure Backup Recovery Services kluis verwijderen
 
@@ -18,7 +18,7 @@ In dit artikel wordt beschreven hoe u een [Azure Backup](backup-overview.md) Rec
 
 U kunt een Recovery Services-kluis met een van de volgende afhankelijkheden niet verwijderen:
 
-- U kunt geen kluis verwijderen die beveiligde gegevens bronnen bevat (bijvoorbeeld IaaS Vm's, SQL-data bases, Azure-bestands shares, enz.)  
+- U kunt geen kluis verwijderen die beveiligde gegevens bronnen bevat (bijvoorbeeld IaaS Vm's, SQL-data bases, Azure-bestands shares).
 - U kunt geen kluis verwijderen die back-upgegevens bevat. Zodra de back-upgegevens zijn verwijderd, krijgt deze de status Voorlopig verwijderd.
 - U kunt geen kluis verwijderen die back-upgegevens bevat in de modus voorlopig verwijderd.
 - U kunt geen kluis verwijderen die geregistreerde opslag accounts heeft.
@@ -45,7 +45,7 @@ Als u een kluis goed wilt verwijderen, moet u de stappen in deze volg orde volge
   - In de **Cloud beveiligde items**: Ga naar het menu van het kluis dashboard > **Back-upitems**. Alle items die hier worden vermeld, moeten worden verwijderd met **back-up stoppen** of **back-upgegevens verwijderen** samen met de back-upgegevens.  [Volg deze stappen](#delete-protected-items-in-the-cloud) om deze items te verwijderen.
   - **SQL Server-exemplaar**: Ga naar het menu van het kluis dashboard > beveiligde **-infrastructuur**  >  **servers**. Selecteer in beveiligde servers de server die u wilt verwijderen. Als u de kluis wilt verwijderen, moet u de registratie van alle servers ongedaan maken. Klik met de rechter muisknop op de beveiligde server en selecteer **verwijderen ongedaan maken**.
   - **Mars-beveiligde servers**: Ga naar het menu van het kluis dashboard > beveiligde servers met **back-upinfrastructuur**  >  **Protected Servers**. Als u MARS-beveiligde servers hebt, moeten alle items die hier worden vermeld, samen met de bijbehorende back-upgegevens worden verwijderd. [Volg deze stappen om de](#delete-protected-items-on-premises) Mars-beveiligde servers te verwijderen.
-   - **MABS-of DPM-beheerser vers**: Ga naar het menu van het kluis dashboard > **Backup-infrastructuur**  >  **beheer servers**. Als u DPM of Azure Backup Server (MABS) hebt, moeten alle items die hier worden vermeld, worden verwijderd of geregistreerd samen met hun back-upgegevens. [Volg deze stappen](#delete-protected-items-on-premises) voor het verwijderen van de beheerser vers.
+  - **MABS-of DPM-beheerser vers**: Ga naar het menu van het kluis dashboard > **Backup-infrastructuur**  >  **beheer servers**. Als u DPM of Azure Backup Server (MABS) hebt, moeten alle items die hier worden vermeld, worden verwijderd of geregistreerd samen met hun back-upgegevens. [Volg deze stappen](#delete-protected-items-on-premises) voor het verwijderen van de beheerser vers.
 
 - **Stap 4**: u moet ervoor zorgen dat alle geregistreerde opslag accounts worden verwijderd. Ga naar het menu van het kluis dashboard > opslag accounts voor **back-upinfrastructuur**  >  **Storage Accounts**. Als u hier opslag accounts hebt die hier worden vermeld, moet u de registratie ervan ongedaan maken. Zie [registratie van een opslag account ongedaan maken](manage-afs-backup.md#unregister-a-storage-account)voor meer informatie over het ongedaan maken van de registratie van het account.
 
@@ -130,7 +130,7 @@ Nadat dit proces is voltooid, kunt u de back-upitems uit de beheer console verwi
 3. Selecteer **volt ooien**op de pagina **een geplande back-up stoppen** .
 
     ![Een geplande back-up stoppen.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
-4. U wordt gevraagd een beveiligings pincode (persoonlijk identificatie nummer) in te voeren, die u hand matig moet genereren. Als u dit wilt doen, meldt u zich eerst aan bij de Azure Portal.
+4. U wordt gevraagd om een beveiligings pincode (persoonlijk identificatie nummer) in te voeren, die u hand matig moet genereren. Als u dit wilt doen, meldt u zich eerst aan bij de Azure Portal.
 5. Ga naar **Recovery Services**eigenschappen van de kluis  >  **instellingen**  >  **Properties**.
 6. Onder **BEVEILIGINGS pincode**selecteert u **genereren**. Deze pincode kopiëren. De pincode is slechts vijf minuten geldig.
 7. Plak de pincode in de beheer console en selecteer **OK**.
@@ -234,7 +234,7 @@ De beveiliging stoppen en de back-upgegevens verwijderen:
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    Post waar de volgende prompt wordt weer gegeven:
+    Daarna wordt de volgende prompt weer gegeven:
 
     *Microsoft Azure Backup weet u zeker dat u dit back-upbeleid wilt verwijderen? Verwijderde back-upgegevens worden 14 dagen bewaard. Na die tijd worden de back-upgegevens permanent verwijderd. <br/> [Y] Ja [A] Ja op alle [N] Nee [L] geen naar alle [S] Suspend [?] Help (standaard is ' Y '):*
 
@@ -244,7 +244,7 @@ De beveiliging stoppen en de back-upgegevens verwijderen:
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    Post waar de volgende prompt wordt weer gegeven:
+    Daarna wordt de volgende prompt weer gegeven:
 
    *Microsoft Azure backup* Weet u zeker dat u dit back-upbeleid wilt verwijderen? Verwijderde back-upgegevens worden 14 dagen bewaard. Na die periode worden de back-upgegevens permanent verwijderd. <br/>
    [Y] Ja [A] Ja op alle [N] Nee [L] geen naar alle [S] Suspend [?] Help (standaard is ' Y '):*

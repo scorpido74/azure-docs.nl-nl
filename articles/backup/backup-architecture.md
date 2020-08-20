@@ -3,12 +3,12 @@ title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835728"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652777"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -120,7 +120,7 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
 - Wanneer een kluis wordt gemaakt, wordt er ook een ' Defaultpolicy bij ' gemaakt en kan deze worden gebruikt voor het maken van een back-up van bronnen.
 - Alle wijzigingen die zijn aangebracht in de Bewaar periode van een back-upbeleid, worden met terugwerkende kracht toegepast op alle oudere herstel punten, van de nieuwe.
 
-### <a name="additional-reference"></a>Aanvullende Naslag informatie
+### <a name="additional-reference"></a>Aanvullende naslaginformatie
 
 - Azure VM-machine: beleid [maken](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) en [wijzigen](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) .
 - SQL Server data base in azure VM-machine: beleid [maken](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) en [wijzigen](./manage-monitor-sql-database-backup.md#modify-policy) .
@@ -193,9 +193,8 @@ Azure-Vm's gebruiken schijven voor het opslaan van hun besturings systeem, apps 
 
 Zie de volgende artikelen voor meer informatie over schijf ruimte en de beschik bare schijf typen voor Vm's:
 
-- [Azure Managed disks voor Windows-Vm's](../virtual-machines/windows/managed-disks-overview.md)
-- [Azure Managed disks voor Linux Vm's](../virtual-machines/linux/managed-disks-overview.md)
-- [Beschik bare schijf typen voor Vm's](../virtual-machines/windows/disks-types.md)
+- [Azure Managed disks voor Linux Vm's](../virtual-machines/managed-disks-overview.md)
+- [Beschik bare schijf typen voor Vm's](../virtual-machines/disks-types.md)
 
 ### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Back-ups van virtuele Azure-machines maken en herstellen met Premium Storage
 
@@ -204,7 +203,7 @@ U kunt back-ups van virtuele Azure-machines maken met behulp van Premium Storage
 - Tijdens het proces van het maken van back-ups van virtuele machines met Premium Storage maakt de back-upservice een tijdelijke faserings locatie met de naam *AzureBackup-* in het opslag account. De grootte van de faserings locatie is gelijk aan de grootte van de moment opname van het herstel punt.
 - Zorg ervoor dat het Premium-opslag account voldoende vrije ruimte heeft voor de tijdelijke faserings locatie. Zie [schaalbaarheids doelen voor Premium-pagina-Blob Storage-accounts](../storage/blobs/scalability-targets-premium-page-blobs.md)voor meer informatie. Wijzig de faserings locatie niet.
 - Nadat de back-uptaak is voltooid, wordt de faserings locatie verwijderd.
-- De prijs van de opslag die wordt gebruikt voor de faserings locatie is consistent met de [prijzen voor Premium Storage](../virtual-machines/windows/disks-types.md#billing).
+- De prijs van de opslag die wordt gebruikt voor de faserings locatie is consistent met de [prijzen voor Premium Storage](../virtual-machines/disks-types.md#billing).
 
 Wanneer u Azure-Vm's herstelt met behulp van Premium-opslag, kunt u ze herstellen naar de Premium-of Standard-opslag. Normaal gesp roken herstelt u ze naar Premium Storage. Maar als u slechts een subset van bestanden van de virtuele machine nodig hebt, is het mogelijk rendabel om ze te herstellen naar de standaard opslag.
 

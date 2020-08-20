@@ -3,12 +3,12 @@ title: Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 description: Hierin wordt beschreven hoe u back-ups van virtuele Azure-machines maakt en herstelt met Azure Backup met Power shell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7957253565658ca387502acb413bc3e6f9a1a3a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e695fae087ca4e10a1d900a45cb02947bd5afa0b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538799"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652743"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -18,10 +18,10 @@ In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 >
-> * Maak een Recovery Services kluis en stel de kluis context in.
+> * Een Recovery Services-kluis maken en de kluiscontext instellen.
 > * Een back-upbeleid definiëren
 > * Het back-upbeleid toepassen voor de beveiliging van meerdere virtuele machines
-> * Een back-uptaak op aanvraag activeren voor de beveiligde virtuele machines voordat u een back-up van een virtuele machine kunt maken (of beveiligen), moet u de [vereisten](backup-azure-arm-vms-prepare.md) volt ooien om uw omgeving voor te bereiden voor het beveiligen van uw vm's.
+> * Een back-uptaak op aanvraag activeren voor de beveiligde virtuele machines. Voordat u een back-up kunt maken van een virtuele machine (of deze kunt beveiligen), moet u de [vereisten](backup-azure-arm-vms-prepare.md) voltooien voor het voorbereiden van uw omgeving voor het beveiligen van uw VM's.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -58,7 +58,7 @@ U gaat als volgt aan de slag:
 3. Meld u aan bij uw Azure-account met **Connect-AzAccount**. Met deze cmdlet wordt een webpagina gevraagd om uw account referenties:
 
     * U kunt ook uw account referenties als een para meter in de cmdlet **Connect-AzAccount** toevoegen met behulp van de para meter **-Credential** .
-    * Als u een CSP-partner werkt namens een Tenant, geeft u de klant op als Tenant met behulp van hun tenantID of Tenant primaire domein naam. Bijvoorbeeld: **Connect-AzAccount-Tenant "fabrikam.com"**
+    * Als u een CSP-partner bent die namens een Tenant werkt, geeft u de klant op als een Tenant met behulp van de naam van een tenantID of Tenant primaire domein. Bijvoorbeeld: **Connect-AzAccount-Tenant "fabrikam.com"**
 
 4. Koppel het abonnement dat u wilt gebruiken met het account, omdat een account meerdere abonnementen kan hebben:
 
@@ -164,7 +164,7 @@ Set-AzRecoveryServicesBackupProperty -Vault $targetVault -BackupStorageRedundanc
 ```
 
 > [!NOTE]
-> Opslag redundantie kan alleen worden gewijzigd als er geen back-upitems zijn die zijn beveiligd met de kluis.
+> Opslagredundantie kan alleen worden gewijzigd als er geen back-upitems zijn die zijn beveiligd met de kluis.
 
 ### <a name="create-a-protection-policy"></a>Een beveiligings beleid maken
 
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 Zodra u het beveiligings beleid hebt gedefinieerd, moet u het beleid voor een item nog steeds inschakelen. Gebruik [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) om de beveiliging in te scha kelen. Voor het inschakelen van beveiliging zijn twee objecten vereist: het item en het beleid. Zodra het beleid is gekoppeld aan de kluis, wordt de werk stroom voor het maken van de back-up geactiveerd op het tijdstip dat is gedefinieerd in het beleids schema.
 
 > [!IMPORTANT]
-> Wanneer u PS gebruikt om back-ups in meerdere Vm's tegelijk in te scha kelen, moet u ervoor zorgen dat aan één beleid niet meer dan 100 Vm's zijn gekoppeld. Dit is een [aanbevolen best practice](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Op dit moment blokkeert de PS-client niet expliciet of er meer dan 100 Vm's zijn, maar is de controle gepland om in de toekomst te worden toegevoegd.
+> Wanneer u PS gebruikt om back-ups in meerdere Vm's tegelijk in te scha kelen, moet u ervoor zorgen dat aan één beleid niet meer dan 100 Vm's zijn gekoppeld. Dit is een [aanbevolen best practice](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Op dit moment blokkeert de PS-client niet expliciet als er meer dan 100 VM's zijn, maar deze controle wordt in de toekomst toegevoegd.
 
 In de volgende voor beelden wordt de beveiliging voor het item V2VM ingeschakeld, met behulp van het beleid NewPolicy. De voor beelden zijn afhankelijk van het feit of de virtuele machine is versleuteld en welk type versleuteling.
 
@@ -394,7 +394,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="delete-backup-data"></a>Back-upgegevens verwijderen
 
-Als u de opgeslagen back-upgegevens in de kluis volledig wilt verwijderen, voegt u '-RemoveRecoveryPoints ' vlag/switch toe aan de [opdracht beveiliging uitschakelen](#retain-data).
+Als u de opgeslagen back-upgegevens in de kluis volledig wilt verwijderen, voegt u de vlag '-RemoveRecoveryPoints ' toe en schakelt u de [beveiligings opdracht uit](#retain-data).
 
 ````powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
@@ -422,7 +422,7 @@ De basis stappen voor het herstellen van een Azure VM zijn:
 * Herstel de schijven.
 * Maak de virtuele machine op basis van opgeslagen schijven.
 
-### <a name="select-the-vm"></a>De VM selecteren
+### <a name="select-the-vm-when-restoring-files"></a>De virtuele machine selecteren (bij het herstellen van bestanden)
 
 Als u het Power shell-object wilt ophalen waarmee het juiste back-upitem wordt geïdentificeerd, start u vanuit de container in de kluis en werkt u op een manier omlaag in de object hiërarchie. Als u de container wilt selecteren die de virtuele machine vertegenwoordigt, gebruikt u de cmdlet [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) en de pipe voor de cmdlet [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) .
 
@@ -431,7 +431,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Een herstel punt kiezen
+### <a name="choose-a-recovery-point-when-restoring-files"></a>Een herstel punt kiezen (bij het herstellen van bestanden)
 
 Gebruik de cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) om alle herstel punten voor het back-upitem weer te geven. Kies vervolgens het herstel punt dat u wilt herstellen. Als u niet zeker weet welk herstel punt u moet gebruiken, is het een goed idee om het meest recente RecoveryPointType = AppConsistent-punt in de lijst te kiezen.
 
@@ -535,7 +535,7 @@ Nadat u de schijven hebt hersteld, gebruikt u de volgende stappen om de virtuele
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>Een virtuele machine maken met behulp van de implementatie sjabloon
 
-De resulterende taak details geven de sjabloon-URI die kan worden opgevraagd en geïmplementeerd.
+De resulterende taakdetails bevatten de sjabloon-URI die kan worden opgevraagd en geïmplementeerd.
 
 ```powershell
    $properties = $details.properties
@@ -544,7 +544,7 @@ De resulterende taak details geven de sjabloon-URI die kan worden opgevraagd en 
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-De sjabloon is niet direct toegankelijk omdat deze zich onder het opslag account van de klant bevindt en de opgegeven container. U hebt de volledige URL (samen met een tijdelijk SAS-token) nodig om toegang te krijgen tot deze sjabloon.
+De sjabloon is niet rechtstreeks toegankelijk omdat deze zich onder het opslag account van de klant bevindt en de opgegeven container. We hebben de volledige URL nodig (samen met een tijdelijk SAS-token) om toegang te krijgen tot deze sjabloon.
 
 1. Haal eerst de sjabloon naam op uit de templateBlobURI. De indeling wordt hieronder vermeld. U kunt de Splits bewerking in Power shell gebruiken om de definitieve sjabloon naam te extra heren uit deze URL.
 
@@ -636,7 +636,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
         }
     ```
 
-    * **Niet-beheerde en versleutelde vm's zonder Azure AD (alleen bek)** : voor niet-beheerde, versleutelde virtuele machines zonder Azure AD (alleen versleuteld met bek), als de bron sleutel **kluis/het geheim niet beschikbaar is** , herstelt u de geheimen naar de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md) Voer vervolgens de volgende scripts uit om versleutelings Details in te stellen op de teruggezette OS-BLOB (deze stap is niet vereist voor de gegevens-blob). De $dekurl kan worden opgehaald uit de herstelde sleutel kluis.
+    * **Niet-beheerde en versleutelde vm's zonder Azure AD (alleen bek)** : voor niet-beheerde, versleutelde virtuele machines zonder Azure AD (alleen versleuteld met bek), als de bron sleutel **kluis/het geheim niet beschikbaar is** , herstelt u de geheimen naar de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md) Voer vervolgens de volgende scripts uit om versleutelings Details in te stellen op de teruggezette OS-BLOB (deze stap is niet vereist voor een gegevens-blob). De $dekurl kan worden opgehaald uit de herstelde sleutel kluis.
 
     Het onderstaande script moet alleen worden uitgevoerd als de bron sleutel kluis/het geheim niet beschikbaar is.
 
@@ -663,9 +663,9 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
         }
     ```
 
-    * **Niet-beheerde en versleutelde vm's zonder Azure AD (bek en KEK)** -voor niet-beheerde, versleutelde virtuele machines zonder Azure AD (versleuteld met bek & KEK), als de bron **sleutel kluis/-geheim niet beschikbaar is** , herstelt u de sleutel en geheimen in de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf Azure Backup een](backup-azure-restore-key-secret.md) Voer vervolgens de volgende scripts uit om versleutelings Details in te stellen op de teruggezette OS-BLOB (deze stap is niet vereist voor de gegevens-blob). De $dekurl en $kekurl kunnen worden opgehaald uit de herstelde sleutel kluis.
+    * **Niet-beheerde en versleutelde vm's zonder Azure AD (bek en KEK)** -voor niet-beheerde, versleutelde virtuele machines zonder Azure AD (versleuteld met bek & KEK), als de bron **sleutel kluis/-geheim niet beschikbaar is** , herstelt u de sleutel en geheimen in de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf Azure Backup een](backup-azure-restore-key-secret.md) Voer vervolgens de volgende scripts uit om versleutelings Details in te stellen op de teruggezette OS-BLOB (deze stap is niet vereist voor een gegevens-blob). De $dekurl en $kekurl kunnen worden opgehaald uit de herstelde sleutel kluis.
 
-    Het onderstaande script hoeft alleen te worden uitgevoerd als de bron sleutel kluis/-geheim niet beschikbaar is.
+    Het onderstaande script moet alleen worden uitgevoerd als de source-sleutel kluis/het-geheim niet beschikbaar is.
 
     ```powershell
         $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -697,7 +697,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
 
     * **Beheerde en versleutelde vm's met Azure AD (bek en KEK)** : voor beheerde versleutelde Vm's met Azure AD (versleuteld met bek en KEK), koppelt u de herstelde beheerde schijven. Zie [een gegevens schijf koppelen aan een Windows-VM met behulp van Power shell](../virtual-machines/windows/attach-disk-ps.md)voor gedetailleerde informatie.
 
-    * **Beheerde en versleutelde vm's zonder Azure AD (alleen bek)** : voor beheerde, versleutelde virtuele machines zonder Azure AD (alleen versleuteld met bek), als de bron sleutel **kluis/het geheim niet beschikbaar is** , herstelt u de geheimen in de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md). Voer vervolgens de volgende scripts uit om de versleutelings gegevens op de teruggezette besturingssysteem schijf in te stellen (deze stap is niet vereist voor de gegevens schijf). De $dekurl kan worden opgehaald uit de herstelde sleutel kluis.
+    * **Beheerde en versleutelde vm's zonder Azure AD (alleen bek)** : voor beheerde, versleutelde virtuele machines zonder Azure AD (alleen versleuteld met bek), als de bron sleutel **kluis/het geheim niet beschikbaar is** , herstelt u de geheimen in de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md). Voer vervolgens de volgende scripts uit om de versleutelings gegevens op de teruggezette besturingssysteem schijf in te stellen (deze stap is niet vereist voor een gegevens schijf). De $dekurl kan worden opgehaald uit de herstelde sleutel kluis.
 
     Het onderstaande script moet alleen worden uitgevoerd als de bron sleutel kluis/het geheim niet beschikbaar is.  
 
@@ -720,7 +720,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
 
     * **Beheerde en versleutelde vm's zonder Azure AD (bek en KEK)** -voor beheerde, versleutelde virtuele machines zonder Azure AD (versleuteld met bek & KEK), als de source **-kluis/sleutel/geheim niet beschikbaar is** , herstelt u de sleutel en geheimen in de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md) Voer vervolgens de volgende scripts uit om de versleutelings gegevens op de teruggezette besturingssysteem schijf in te stellen (deze stap is niet vereist voor gegevens schijven). De $dekurl en $kekurl kunnen worden opgehaald uit de herstelde sleutel kluis.
 
-    Het volgende script moet alleen worden uitgevoerd als de bron sleutel kluis/-geheim niet beschikbaar is.
+    Het volgende script hoeft alleen te worden uitgevoerd als de bron sleutel kluis/-geheim niet beschikbaar is.
 
     ```powershell
     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -764,7 +764,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
     ```
 
 7. Extensie van ADE-push.
-   Als de ADE-extensies niet worden gepusht, worden de gegevens schijven gemarkeerd als niet-versleuteld, zodat het verplicht is om de volgende stappen uit te voeren:
+   Als de ADE-extensies niet worden pusht, worden de gegevens schijven gemarkeerd als niet-versleuteld, zodat het verplicht is om de volgende stappen uit te voeren:
 
    * **Voor VM met Azure AD** : gebruik de volgende opdracht om versleuteling hand matig in te scha kelen voor de gegevens schijven  
 
@@ -811,7 +811,7 @@ De basis stappen voor het herstellen van een bestand vanuit een Azure VM-back-up
 * De vereiste bestanden kopiëren
 * De schijf ontkoppelen
 
-### <a name="select-the-vm"></a>De VM selecteren
+### <a name="select-the-vm-when-restoring-the-vm"></a>Selecteer de virtuele machine (bij het herstellen van de virtuele machine)
 
 Als u het Power shell-object wilt ophalen waarmee het juiste back-upitem wordt geïdentificeerd, start u vanuit de container in de kluis en werkt u op een manier omlaag in de object hiërarchie. Als u de container wilt selecteren die de virtuele machine vertegenwoordigt, gebruikt u de cmdlet [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) en de pipe voor de cmdlet [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) .
 
@@ -820,7 +820,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Een herstel punt kiezen
+### <a name="choose-a-recovery-point-when-restoring-the-vm"></a>Een herstel punt kiezen (bij het herstellen van de virtuele machine)
 
 Gebruik de cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) om alle herstel punten voor het back-upitem weer te geven. Kies vervolgens het herstel punt dat u wilt herstellen. Als u niet zeker weet welk herstel punt u moet gebruiken, is het een goed idee om het meest recente RecoveryPointType = AppConsistent-punt in de lijst te kiezen.
 

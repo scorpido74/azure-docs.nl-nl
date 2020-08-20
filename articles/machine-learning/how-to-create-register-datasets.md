@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 51e31977a5f31777252920f9cd18bf069bad6d1e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8bc99be12b4bd4e56163150f939e5d9ace4b59bd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507192"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652556"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-gegevenssets maken
 
@@ -257,5 +257,5 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie [over het trainen van gegevens sets](how-to-train-with-datasets.md).
-* Gebruik automatische machine learning om [met TabularDatasets te trainen](https://aka.ms/automl-dataset).
-* Zie de voor beelden van [notitie blokken](https://aka.ms/dataset-tutorial)voor meer informatie over het trainen van gegevensset.
+* Gebruik automatische machine learning om [met TabularDatasets te trainen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb).
+* Zie de voor beelden van [notitie blokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)voor meer informatie over het trainen van gegevensset.
