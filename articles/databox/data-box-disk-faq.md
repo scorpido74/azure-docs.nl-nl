@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745802"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649411"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: veelgestelde vragen
 
@@ -58,6 +58,23 @@ A. Data Box Disk wordt ondersteund voor alle regio's binnen de Verenigde Staten,
 
 ### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>V. Maakt mijn Data Box Disk tijdens de verzen ding deel uit van de land-en regio grenzen?
 A. Data Box Disk worden verzonden vanuit hetzelfde land/dezelfde regio als de bestemming en er worden geen internationale grenzen in rekening gebracht. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waarbij schijven kunnen worden verzonden naar en vanuit elk land/regio in de EU.
+
+### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>V. Hoe kan ik mijn on-premises bron gegevens in een land/regio importeren in een Azure-regio in een ander land/dezelfde regio?
+A. Data Box Disk ondersteunt alleen gegevens opname binnen dezelfde regio (Commerce boundary). In alle andere gevallen moet u mogelijk extra actie ondernemen. 
+
+Als u bijvoorbeeld on-premises gegevens in Canada hebt die u wilt verplaatsen naar een Azure Westus-opslag account, kunt u deze op de volgende manier belopen:
+
+### <a name="option-1"></a>Optie 1: 
+
+Een [ondersteunde schijf](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks) met gegevens verzenden met de [Azure import/export-service](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) van de bron locatie in Canada naar het Azure westus Data Center.
+
+### <a name="option-2"></a>Optie 2:
+
+1. Volg Data Box Disk in Canada door een opslag account te kiezen in Cananda Central. De SSD-schijven worden verzonden vanuit het Azure-Data Center in Canada-centraal naar het verzend adres (in Canada) dat wordt gegeven tijdens het maken van de order.
+
+2. Nadat de gegevens van uw on-premises server naar de schijven zijn gekopieerd, gaat u terug naar het Azure-Data Center in Canada met behulp van de micro soft-retour labels. De gegevens die aanwezig zijn op de Data Box Disk, worden vervolgens geüpload naar het doel-opslag account in de Canada Azure-regio die u hebt gekozen tijdens het maken van de order.
+
+3. U kunt vervolgens een hulp programma als AzCopy gebruiken om de gegevens naar een opslag account in Westus te kopiëren. Met deze stap worden [standaard](https://azure.microsoft.com/pricing/details/storage/) kosten voor opslag en [band breedte](https://azure.microsoft.com/pricing/details/bandwidth/) in rekening gebracht die niet zijn opgenomen in de facturering van data Box disk.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>V. Met wie moet ik contact opnemen als ik een probleem krijg met Data Box-schijven?
 A. Neem bij problemen met Data Box-schijven contact op met [Microsoft Ondersteuning](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).

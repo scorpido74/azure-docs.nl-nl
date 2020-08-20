@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e7469f0d53a154f605480b811d36937e3d4ad6c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77915034"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649836"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Fouten bij het verwijderen van klassieke opslag resources oplossen
 Dit artikel bevat richt lijnen voor probleem oplossing wanneer een van de volgende fouten optreedt bij het verwijderen van het klassieke Azure-opslag account, de container of de VHD-pagina blob-bestand. 
@@ -21,7 +21,7 @@ Dit artikel bevat richt lijnen voor probleem oplossing wanneer een van de volgen
 
 Dit artikel behandelt alleen problemen met klassieke opslag resources. Als een gebruiker een klassieke virtuele machine verwijdert met behulp van de Azure Portal, Power shell of CLI, worden de schijven niet automatisch verwijderd. De gebruiker krijgt de mogelijkheid om de schijf bron te verwijderen. Als de optie niet is geselecteerd, wordt voor komen dat het opslag account, de container en de daad werkelijke VHD-pagina blob-bestand worden verwijderd.
 
-Meer informatie over Azure-schijven vindt u [hier](../../virtual-machines/windows/managed-disks-overview.md). Azure voor komt dat een schijf die is gekoppeld aan een virtuele machine wordt verwijderd om beschadiging te voor komen. Er wordt ook voor komen dat containers en opslag accounts worden verwijderd, die een pagina-BLOB hebben die is gekoppeld aan een virtuele machine. 
+Meer informatie over Azure-schijven vindt u [hier](../../virtual-machines/managed-disks-overview.md). Azure voor komt dat een schijf die is gekoppeld aan een virtuele machine wordt verwijderd om beschadiging te voor komen. Er wordt ook voor komen dat containers en opslag accounts worden verwijderd, die een pagina-BLOB hebben die is gekoppeld aan een virtuele machine. 
 
 ## <a name="what-is-a-disk"></a>Wat is een ' schijf '?
 Een ' schijf ' bron wordt gebruikt voor het koppelen van een VHD-bestand van het type *. vhd's aan een virtuele machine, als een besturingssysteem schijf of gegevens schijf. Een besturingssysteem schijf of gegevens schijf bron, totdat deze is verwijderd, blijft een lease in het VHD-bestand. Een opslag resource in het pad dat wordt weer gegeven in de onderstaande afbeelding, kan niet worden verwijderd als een ' schijf ' bron naar deze resource verwijst.

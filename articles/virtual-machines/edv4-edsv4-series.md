@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 0fa4fb1fa55d5d3fa61c923bc024e6536b43c87a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6e87d32de2d8139a768100ccecec7529ddcacf33
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829183"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648391"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- en Edsv4-serie
 
@@ -87,7 +87,7 @@ Er zijn <sup>1</sup> [beperkte core-grootten beschikbaar](./windows/constrained-
 
 Prijs calculator: [prijs calculator](https://azure.microsoft.com/pricing/calculator/)
 
-Meer informatie over schijven typen: [schijf typen](./linux/disks-types.md#ultra-disk)
+Meer informatie over schijven typen: [schijf typen](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Volgende stappen

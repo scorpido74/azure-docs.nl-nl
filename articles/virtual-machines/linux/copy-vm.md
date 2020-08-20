@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: ec8fd91dc768b44b027c96efead6924782eb0f75
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c7d93ee928653cc1656e3e9a7cdb0d2fd6d7094b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368605"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654409"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Een kopie van een virtuele Linux-machine maken met behulp van Azure CLI en Managed Disks
 
@@ -43,7 +43,7 @@ az vm deallocate \
 
 Als u een virtuele machine wilt kopiëren, maakt u een kopie van de onderliggende virtuele harde schijf. Met dit proces wordt een gespecialiseerde virtuele harde schijf (VHD) gemaakt als beheerde schijf met dezelfde configuratie en instellingen als de bron-VM.
 
-Zie [Overzicht van Azure Managed Disks](../windows/managed-disks-overview.md) voor meer informatie over Azure Managed Disks. 
+Zie [Overzicht van Azure Managed Disks](../managed-disks-overview.md) voor meer informatie over Azure Managed Disks. 
 
 1.  Vermeld elke virtuele machine en de naam van de besturingssysteem schijf met [AZ VM List](/cli/azure/vm#az-vm-list). In het volgende voor beeld worden alle virtuele machines in de resource groep met de naam *myResourceGroup*weer gegeven:
     

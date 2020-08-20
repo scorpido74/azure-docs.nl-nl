@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: d5417bfcfbaa183c34808d9017d5863506429a81
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642279"
+ms.locfileid: "88649054"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>SparkCruise op Azure HDInsight
 
@@ -58,7 +58,7 @@ Het volgende voorbeeld scenario laat zien hoe u *SparkCruise* kunt gebruiken om 
     sudo /opt/peregrine/analyze/peregrine.sh show
     ```
 
-De `analyze` opdracht parseert de query plannen en maakt een tabel weergave van de werk belasting. De `views` opdracht identificeert algemene subplan expressies en selecteert interessante subplan expressies voor toekomstige materialisatie en hergebruik. De uitvoer is een feedback bestand met aantekeningen voor toekomstige Spark SQL-query's. 
+De `analyze` opdracht parseert de query plannen en maakt een tabel weergave van de werk belasting. U kunt een query uitvoeren op de werkbelasting tabel met behulp van het *WorkloadInsights* -notitie blok dat is opgenomen in de opslag plaats voor SparkCruise-voor [beelden](https://github.com/Azure-Samples/azure-sparkcruise-samples) De `views` opdracht identificeert algemene subplan expressies en selecteert interessante subplan expressies voor toekomstige materialisatie en hergebruik. De uitvoer is een feedback bestand met aantekeningen voor toekomstige Spark SQL-query's. 
 
 De `show` opdracht geeft een uitvoer als de volgende tekst:
 

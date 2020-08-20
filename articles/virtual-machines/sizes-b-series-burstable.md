@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832583"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654732"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Grootte van de B-serie bebreekbaar virtuele machines
 
@@ -88,7 +88,7 @@ Basis lijn: 270%
 
 <sup>1</sup> crediteringen die in een uur worden gebruikt, zijn gelijk aan: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` .  
 
-Voor een D16s_v3 met 16 Vcpu's en 64 GiB geheugen is het uurtarief $0,936 per uur (maandelijks $673,92) en voor B16ms met 16 Vcpu's en 64 GiB geheugen de rente per uur $0,794 (maandelijks $547,86). <b>Dit resulteert in een besparing van 15%.</b>
+Voor een D16s_v3 met 16 Vcpu's en 64 GiB geheugen is het uurtarief $0,936 per uur (maandelijks $673,92) en voor B16ms met 16 Vcpu's en 64 GiB geheugen de rente per uur $0,794 (maandelijks $547,86). <b> Dit resulteert in een besparing van 15%.</b>
 
 ## <a name="q--a"></a>Vragenronde
 
@@ -149,7 +149,7 @@ bijvoorbeeld: in het bovenstaande exemplaar is uw basis lijn 20%. Als u 10% van 
 
 Prijs calculator: [prijs calculator](https://azure.microsoft.com/pricing/calculator/)
 
-Meer informatie over schijven typen: [schijf typen](./linux/disks-types.md#ultra-disk)
+Meer informatie over schijven typen: [schijf typen](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>Volgende stappen
 

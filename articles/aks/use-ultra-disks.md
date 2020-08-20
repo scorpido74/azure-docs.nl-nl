@@ -4,23 +4,23 @@ description: Meer informatie over het inschakelen en configureren van ultra schi
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986828"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650176"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Gebruik Azure Ultra disks in azure Kubernetes service (preview)
 
-[Azure Ultra disks](../virtual-machines/linux/disks-enable-ultra-ssd.md) biedt hoge door Voer, hoge IOPS en een consistente schijf opslag met lage latentie voor uw stateful toepassingen. Een belang rijk voor deel van ultra schijven is de mogelijkheid om de prestaties van de SSD in combi natie met uw workloads dynamisch te wijzigen zonder dat u de agent knooppunten opnieuw hoeft op te starten. Ultra disks zijn geschikt voor gegevensintensieve workloads.
+[Azure Ultra disks](../virtual-machines/disks-enable-ultra-ssd.md) biedt hoge door Voer, hoge IOPS en een consistente schijf opslag met lage latentie voor uw stateful toepassingen. Een belang rijk voor deel van ultra schijven is de mogelijkheid om de prestaties van de SSD in combi natie met uw workloads dynamisch te wijzigen zonder dat u de agent knooppunten opnieuw hoeft op te starten. Ultra disks zijn geschikt voor gegevensintensieve workloads.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Deze functie kan alleen worden ingesteld tijdens het maken van het cluster of het maken van een knooppunt groep.
 
 > [!IMPORTANT]
-> Voor Azure Ultra disks is nodepools geïmplementeerd in beschikbaarheids zones en regio's die ondersteuning bieden voor deze schijven en alleen specifieke VM-reeksen. Bekijk het [**bereik en de beperkingen van ultra disks**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
+> Voor Azure Ultra disks is nodepools geïmplementeerd in beschikbaarheids zones en regio's die ondersteuning bieden voor deze schijven en alleen specifieke VM-reeksen. Bekijk het [**bereik en de beperkingen van ultra disks**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -64,7 +64,7 @@ az extension update --name aks-preview
 ``` 
 
 ### <a name="limitations"></a>Beperkingen
-- Bekijk het [ **bereik en de beperkingen van ultra disks** .](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
+- Bekijk het [ **bereik en de beperkingen van ultra disks** .](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
 - Het ondersteunde grootte bereik voor een ultra schijven ligt tussen 100 en 1500
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>Een nieuw cluster maken dat ultra schijven kan gebruiken
@@ -226,7 +226,7 @@ Events:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure Ultra Disk gebruiken](../virtual-machines/linux/disks-enable-ultra-ssd.md)voor meer informatie over Ultra disks.
+- Zie [Azure Ultra Disk gebruiken](../virtual-machines/disks-enable-ultra-ssd.md)voor meer informatie over Ultra disks.
 - Zie [Aanbevolen procedures voor opslag en back-ups in azure Kubernetes service (AKS)][operator-best-practices-storage] voor meer informatie over aanbevolen procedures voor opslag.
 
 <!-- LINKS - external -->
@@ -240,7 +240,7 @@ Events:
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create
