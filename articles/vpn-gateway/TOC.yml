@@ -2,7 +2,7 @@
   href: index.yml
 - name: Overzicht
   items:
-    - name: Informatie over VPN-gateway
+    - name: Wat is VPN Gateway?
       href: vpn-gateway-about-vpngateways.md
 - name: Zelfstudies
   items:

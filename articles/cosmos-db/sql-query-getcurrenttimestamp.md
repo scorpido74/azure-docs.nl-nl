@@ -4,15 +4,15 @@ description: Meer informatie over de SQL-functie GetCurrentTimestamp in Azure Co
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 08/19/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9c35f83ce7a9a478f706e9ed560d884d9bf5e508
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c1e0a8d69edab0c01005268ee49c23625236f03a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261291"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606928"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
 
@@ -26,13 +26,13 @@ GetCurrentTimestamp ()
   
 ## <a name="return-types"></a>Retour typen
   
-  Retourneert een numerieke waarde, het huidige aantal milliseconden dat is verstreken sinds de UNIX-epoche, dat wil zeggen het aantal milliseconden dat is verstreken sinds 00:00:00 donderdag, 1 januari 1970.
+Retourneert een ondertekende numerieke waarde, het huidige aantal milliseconden dat is verstreken sinds de UNIX-epoche, dat wil zeggen het aantal milliseconden dat is verstreken sinds 00:00:00 donderdag, 1 januari 1970.
 
 ## <a name="remarks"></a>Opmerkingen
 
-  GetCurrentTimestamp () is een niet-deterministische functie.
-  
-  Het geretourneerde resultaat is UTC (Coordinated Universal Time).
+GetCurrentTimestamp () is een niet-deterministische functie. Het geretourneerde resultaat is UTC (Coordinated Universal Time).
+
+Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="examples"></a>Voorbeelden
   

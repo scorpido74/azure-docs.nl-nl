@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035175"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606894"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>Lead beheer voor de commerciële Marketplace
 
@@ -44,7 +44,7 @@ Zodra u uw lead doel correct hebt geconfigureerd en op uw aanbieding hebt geklik
 
 Zodra de technische installatie is uitgevoerd, moet u deze leads opnemen in uw huidige verkoop & marketing strategie en operationele processen. We zijn geïnteresseerd in een beter inzicht in uw algehele verkoop proces en willen nauw keurig samen werken op het leveren van leads van hoge kwaliteit en voldoende gegevens om u te laten slagen. We stellen uw feedback op de manier waarop we u kunnen helpen bij het optimaliseren en verbeteren van de leads die wij u met aanvullende gegevens sturen om deze klanten succesvol te maken. Laat het ons weten als u geïnteresseerd bent in feedback en suggesties zodat uw verkoop team succes voller kan maken met leads in de Marketplace.
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>Veelvoorkomende fouten bij de configuratie van de potentiële klant tijdens het publiceren in het partner centrum
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a> Veelvoorkomende fouten bij de configuratie van de potentiële klant tijdens het publiceren in het partner centrum
 
 **Kan de lead niet opslaan in Dynamics CRM. Controleer de instellingen van het Dynamics CRM-account. LastCRMError: kan niet aanmelden bij Dynamics CRM, LastCRMException:** 
 
@@ -170,7 +170,7 @@ De lead wordt alleen geschreven wanneer u Azure BLOB-opslag als uw lead bestemmi
 
 **Ik heb een e-mail ontvangen van Marketplace, waarom kan ik de lead niet vinden in mijn CRM?**  
 
-Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Ter bescherming van de privacy geven we geen persoonlijke Identificeer bare gegevens uit het domein. edu door. Dien een ondersteunings ticket in bij [Help en ondersteuning](https://aka.ms/marketplacepublishersupport).
+Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Uit het oogpunt van privacy geven we geen persoonlijke gegevens door van het domein. edu. Dien een ondersteunings ticket in bij [Help en ondersteuning](https://aka.ms/marketplacepublishersupport).
 
 **Ik heb Azure Table/Azure-BLOB geconfigureerd als mijn lead doel, hoe kan ik de leads weer geven?** 
 

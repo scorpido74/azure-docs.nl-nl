@@ -4,12 +4,12 @@ description: Leer hoe u on-premises machines kunt voorbereiden voor migratie met
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: b92a26732f59235dac4c03f4e648d36dadd6c4ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8acbb867d98a547787e207c410d4e1a852aa68f3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077972"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606821"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>On-premises machines voorbereiden voor migratie naar Azure
 
@@ -129,6 +129,7 @@ Bereid voor andere versies de machines voor zoals samengevat in de tabel.
 **SSH inschakelen** | Zorg ervoor dat SSH is ingeschakeld en dat de SSHD-service is ingesteld om automatisch te worden gestart bij opnieuw opstarten.<br/><br/> Zorg ervoor dat inkomende SSH-verbindingsaanvragen niet worden geblokkeerd door de firewall van het besturingssysteem of door scriptregels.| Schakel handmatig in voor alle versies behalve de hierboven genoemde.
 
 De volgende tabel bevat een samenvatting van de stappen die automatisch worden uitgevoerd voor de hierboven vermelde besturingssystemen.
+
 
 | Bewerking                                      | VMware\-migratie met agents | VMware-migratie zonder agents | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|

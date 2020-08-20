@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: ea5d975b73afcf03ad97bafd1c6f68f2b55263c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/19/2020
+ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084718"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606266"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Ontwikkelings- en testkosten optimaliseren in Azure Cosmos DB
 
@@ -25,6 +25,9 @@ In dit artikel worden de verschillende opties beschreven voor het gebruik van Az
 
 Azure Cosmos DB gratis laag maakt het eenvoudig om aan de slag te gaan, uw toepassingen te ontwikkelen en te testen, of zelfs kleine productie werkbelastingen gratis uit te voeren. Wanneer de laag gratis is ingeschakeld voor een account, worden de eerste 400 RU/s en 5 GB aan opslag ruimte gratis in het account weer geven. U kunt ook een gedeelde doorvoer database maken met 25 containers die 400 RU/s op database niveau delen, allemaal in de laag gratis (Maxi maal 5 gedeelde doorvoer databases in een gratis laag account). Als u de gratis laag gebruikt en u een gedeelde data base inricht met een minimale door Voer van 400 RU/s, kunnen alle containers in die data base de door Voer delen. Nieuwe data bases met gedeelde door Voer of containers met een speciale door voer worden gefactureerd tegen de normale prijzen.
 
+> [!NOTE]
+> De laag gratis is alleen beschikbaar in de ingerichte doorvoer modus.
+
 De gratis laag is voor onbepaalde tijd voor de levens duur van het account en wordt geleverd met alle [voor delen en functies](introduction.md#key-benefits) van een gewoon Azure Cosmos DB account, waaronder onbeperkte opslag en door Voer (ru/s), sla's, hoge Beschik baarheid, kant-en-klare wereld wijde distributie in alle Azure-regio's, en meer. U kunt Maxi maal één gratis laag account per Azure-abonnement hebben en u moet zich aanmelden wanneer u het account maakt. Als u aan de slag wilt gaan, [maakt u een nieuw account in azure Portal met gratis laag ingeschakeld](create-cosmosdb-resources-portal.md) of gebruikt u een [arm-sjabloon](manage-sql-with-resource-manager.md#free-tier). Bekijk de [prijzenpagina](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Probeer Azure Cosmos DB gratis uit
@@ -34,6 +37,10 @@ De gratis laag is voor onbepaalde tijd voor de levens duur van het account en wo
 ## <a name="azure-free-account"></a>Gratis Azure-account
 
 Azure Cosmos DB is opgenomen in het [gratis Azure-account](https://azure.microsoft.com/free), waarmee Azure-tegoeden en-bronnen gratis voor een bepaalde periode worden aangeboden. Met name voor Azure Cosmos DB biedt deze gratis account 5 GB opslag ruimte en 400 RUs van ingerichte door Voer voor het hele jaar. Met deze ervaring kunnen ontwikkel aars eenvoudig de functies van Azure Cosmos DB testen of deze integreren met andere Azure-Services tegen nul kosten. Met een gratis Azure-account krijgt u een tegoed van $200 van de eerste 30 dagen. Er worden geen kosten in rekening gebracht, zelfs als u begint met het gebruik van de services totdat u ervoor kiest om te upgraden. Ga naar de pagina met [gratis Azure-account](https://azure.microsoft.com/free) om aan de slag te gaan.
+
+## <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB serverloos
+
+[Azure Cosmos DB serverloos](serverless.md) kunt u uw Azure Cosmos-account gebruiken op basis van verbruik, waarbij alleen kosten worden berekend voor de aanvraag eenheden die worden verbruikt door uw database bewerkingen en de opslag die wordt gebruikt door uw gegevens. Er worden geen minimale kosten in rekening gebracht bij het gebruik van Azure Cosmos DB in de serverloze modus. Omdat het concept van ingerichte capaciteit wordt geëlimineerd, is het het meest geschikt voor ontwikkelings-en test activiteiten, met name wanneer uw data base de meeste tijd niet actief is.
 
 ## <a name="use-shared-throughput-databases"></a>Gedeelde doorvoer databases gebruiken
 
@@ -45,8 +52,8 @@ Stel bijvoorbeeld dat uw ontwikkel-of test account vier containers heeft. Als u 
 
 U kunt aan de slag met het gebruik van de emulator of de gratis Azure Cosmos DB accounts met de volgende artikelen:
 
-* Meer informatie over het [optimaliseren voor ontwikkeling en testen](optimize-dev-test.md)
 * Meer informatie over [uw Azure Cosmos DB factuur](understand-your-bill.md)
+* Meer informatie over [Azure Cosmos DB serverloos](serverless.md)
 * Meer informatie over het [optimaliseren van doorvoer kosten](optimize-cost-throughput.md)
 * Meer informatie over het [optimaliseren van opslag kosten](optimize-cost-storage.md)
 * Meer informatie over [het optimaliseren van de kosten van lees-en schrijf bewerkingen](optimize-cost-reads-writes.md)

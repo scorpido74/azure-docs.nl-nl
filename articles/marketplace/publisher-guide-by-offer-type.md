@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 72acd5c3c5fbab08b2e97421689b4f562b2ae2e8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9b23fbe55589bbbe6d560967119206fb1ea1d85c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119715"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607263"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Publicatiehandleiding op type aanbieding
 
@@ -22,7 +22,7 @@ Voordat u een aanbieding kunt maken en nadat u [een publicatie optie](determine-
 
 Eén type aanbieding kan op verschillende manieren worden geconfigureerd om verschillende publicatie opties, aanroepen naar actie, inrichting of prijzen in te scha kelen. De publicatie optie en configuratie van het aanbiedings type worden ook afgestemd op de beschik baarheid van de aanbieding en technische vereisten.
 
-Controleer de vereisten voor de winkel en het aanbiedings type en de technische publicatie vereisten voordat u uw aanbieding maakt.
+Controleer de vereisten voor de online winkel en de vereisten voor de technische publicatie voordat u uw aanbieding maakt.
 
 ## <a name="list-of-offer-types"></a>Lijst met aanbiedings typen
 
@@ -45,4 +45,4 @@ Zie [**vereisten voor Azure AD**](./enable-appsource-marketplace-using-azure-ad.
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk de geschiktheids vereisten in het bijbehorende artikel voor uw aanbiedings type (volgende secties) om de selectie en configuratie van uw aanbieding te volt ooien.
-- Bekijk de publicatie patronen per winkel voor voor beelden van hoe uw oplossing is gekoppeld aan een type en configuratie van een aanbieding.
+- Bekijk de publicatie patronen in de online winkel voor beelden van hoe uw oplossing is gekoppeld aan een type en configuratie van een aanbieding.

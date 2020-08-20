@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056547"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607495"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Veelgestelde vragen over overgang van de Cloud Partner-portal naar het partner centrum
 
@@ -20,7 +20,7 @@ De Cloud Partner-portal is overgegaan naar het partner centrum. Partner centrum 
 
 ## <a name="what-does-the-transition-to-partner-center-mean-for-me"></a>Wat betekent de overgang naar het partner centrum voor mij?
 
-U kunt de bedrijfs activiteiten gewoon voortzetten zoals gebruikelijk in het partner centrum:
+U kunt nu door gaan met zakendoen in Partner Center:
 
 | Gebied<img src="" width=200px> | Wijzigingen |
 | --- | --- |
@@ -30,7 +30,7 @@ U kunt de bedrijfs activiteiten gewoon voortzetten zoals gebruikelijk in het par
 | Nieuwe aankopen en implementaties | Er zijn geen wijzigingen. Uw klanten kunnen uw aanbiedingen blijven kopen en implementeren zonder onderbrekingen. |
 | Uitbetalingen | Alle aankopen en implementaties blijven als normaal worden betaald. Meer informatie over hoe u [in de commerciële Marketplace betaalt](partner-center-portal/get-paid.md). |
 | API-integraties met bestaande [Cloud Partner-Portal-api's](cloud-partner-portal-api-overview.md) | Bestaande Cloud Partner-portal Api's worden nog steeds ondersteund en uw bestaande integraties werken nog steeds. Meer informatie over [worden de Cloud Partner-Portal rest api's ondersteund?](#are-the-cloud-partner-portal-rest-apis-still-supported) |
-| Analyse | U kunt door gaan met het bewaken van de verkoop, het evalueren van prestaties en het optimaliseren van uw aanbiedingen in de commerciële Marketplace door analyses in het partner centrum te bekijken. Er zijn verschillen tussen hoe analyse rapporten worden weer gegeven in CPP en partner Center. Bijvoorbeeld: de **verkoop inzichten** in cpp hebben het tabblad **Orders & gebruik** waarmee gegevens worden weer gegeven voor aanbiedingen op basis van gebruik en niet-gebruiks basis. in het partner centrum heeft de pagina **Orders** een afzonderlijk tabblad voor SaaS-aanbiedingen. Meer informatie over [Access analytic-rapporten voor de commerciële Marketplace in Partner Center](partner-center-portal/analytics.md). |
+| Analyse | U kunt door gaan met het bewaken van de verkoop, het evalueren van prestaties en het optimaliseren van uw aanbiedingen in de commerciële Marketplace door analyses in het partner centrum te bekijken. Er zijn verschillen tussen hoe analyse rapporten worden weer gegeven in CPP en partner Center. Bijvoorbeeld: de **verkoop inzichten** in cpp hebben het tabblad **Orders & gebruik** waarin gegevens worden weer gegeven voor aanbiedingen op basis van gebruik en niet-gebruiks basis. in het partner centrum heeft de pagina **Orders** een afzonderlijk tabblad voor SaaS-aanbiedingen. Meer informatie over [Access analytic-rapporten voor de commerciële Marketplace in Partner Center](partner-center-portal/analytics.md). |
 |||
 
 ## <a name="do-i-need-to-create-a-new-account-to-manage-my-offers-in-partner-center"></a>Moet ik een nieuw account maken voor het beheren van mijn aanbiedingen in Partner Center?
@@ -58,7 +58,7 @@ Dit zijn de verschillen in het uitbetalings rapport tussen de buiten gebruik ges
 
 | Cloud Partner-portal | Partner centrum |
 | --- | --- |
-| **Koppeling**:https://cloudpartner.azure.com/ | **Koppeling**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory enhttps://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Koppeling**: https://cloudpartner.azure.com/ | **Koppeling**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory en https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
 | **Navigatie**: uitbetalings rapportage die is opgenomen in Insights-uitbetaling | **Navigatie**: uitbetalings rapportage die is opgenomen in het partner centrum-pictogram voor uitbetaling |
 | **Bereik**:<ul><li>Trans actie per regel item is zichtbaar voor de verzameling die wordt uitgevoerd, verzameld en betaald.</li><li>Rapportage: geeft alle regel items weer zodra de aankoop order is gemaakt, inclusief de verzameling die wordt uitgevoerd en de facturering wordt uitgevoerd, en de verzamelings status en regel items die nog niet kunnen worden betaald.</li></ul> | **Bereik**:<ul><li>De regel items worden weer gegeven nadat deze als in aanmerking komende winst worden beschouwd.</li><li>Klanten betalen eerst aan micro soft en vervolgens kunnen Isv's het rapport voor uitbetaling starten.</li><li>De verzameling wordt niet weer gegeven in het uitbetalings rapport en de facturering wordt momenteel uitgevoerd.</li></ul> |
 | **Trans actie niet gereed voor uitbetaling**: facturering wordt uitgevoerd | **Trans actie niet gereed voor uitbetaling**: volgende geschatte betaling: de status van de uitbetaling is in de niet-verwerkte staat. |
@@ -135,7 +135,7 @@ Hier volgen enkele verschillen tussen de Cloud Partner-portal en het partner cen
 
 ### <a name="modular-publishing-capabilities"></a>Modulaire publicatie mogelijkheden
 
-Het partner centrum biedt een modulaire publicatie optie waarmee u de wijzigingen kunt selecteren die u wilt publiceren in plaats van alle updates altijd tegelijk te publiceren. In het volgende scherm ziet u bijvoorbeeld dat de gegevens die zijn geselecteerd om te worden gepubliceerd, de wijzigingen in **Eigenschappen** en **aanbiedings vermelding**zijn. De wijzigingen die u in de voorbeeld pagina aanbrengt, worden niet gepubliceerd.
+Het partner centrum biedt een modulaire publicatie optie waarmee u de wijzigingen kunt selecteren die u wilt publiceren in plaats van alle updates altijd tegelijk te publiceren. In het volgende scherm ziet u bijvoorbeeld dat de gegevens die zijn geselecteerd om te worden gepubliceerd, de wijzigingen in **Eigenschappen** en  **aanbiedings vermelding**zijn. De wijzigingen die u in de voorbeeld pagina aanbrengt, worden niet gepubliceerd.
 
 [![Scherm afbeelding toont de pagina bekijken en publiceren van het partner centrum.](media/cpp-pc-faq/review-page.png "Toont de pagina voor het bekijken en publiceren van het partner centrum")](media/cpp-pc-faq/review-page.png#lightbox)
 
@@ -153,7 +153,7 @@ U ziet enkele huismerk wijzigingen. *Sku's* worden bijvoorbeeld aangemerkt als *
 
 [![Scherm afbeelding toont de pagina partner centrum plannen.](media/cpp-pc-faq/plans.png "Hiermee wordt de pagina partner centrum plannen weer gegeven")](media/cpp-pc-faq/plans.png#lightbox)
 
-Daarnaast worden de informatie die u eerder hebt verstrekt in de pagina's **Marketplace** of Details van de **winkel** (Consulting Service, Power bi app) in de Cloud partner-portal nu verzameld op de **aanbiedings** pagina in Partner Center:
+Daarnaast worden de informatie die u eerder hebt verstrekt in de pagina's **Marketplace** of Details van de **winkel**  (Consulting Service, Power bi app) in de Cloud partner-portal nu verzameld op de **aanbiedings** pagina in Partner Center:
 
 [![Scherm afbeelding toont de aanbiedings pagina van het partner centrum.](media/cpp-pc-faq/offer-listing.png "Hiermee wordt de pagina aanbieding van het partner centrum weer gegeven")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
@@ -181,6 +181,6 @@ De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven 
 
 | API <img src="" width=100px>| Beschrijving wijzigen | Impact |
 | --- | --- | --- |
-| POST publiceren, GoLive, annuleren | Voor gemigreerde aanbiedingen heeft de reactie header een andere indeling, maar blijft op dezelfde manier werken, waarbij een relatief pad wordt opgegeven om de bewerkings status op te halen. | Bij het verzenden van een van de bijbehorende POST-aanvragen voor een aanbieding, heeft de locatie header een van de twee indelingen, afhankelijk van de migratie status van de aanbieding: <ul><li>Niet-gemigreerde aanbiedingen:`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Gemigreerde aanbiedingen:`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
+| POST publiceren, GoLive, annuleren | Voor gemigreerde aanbiedingen heeft de reactie header een andere indeling, maar blijft op dezelfde manier werken, waarbij een relatief pad wordt opgegeven om de bewerkings status op te halen. | Bij het verzenden van een van de bijbehorende POST-aanvragen voor een aanbieding, heeft de locatie header een van de twee indelingen, afhankelijk van de migratie status van de aanbieding: <ul><li>Niet-gemigreerde aanbiedingen: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Gemigreerde aanbiedingen: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
 | GET-bewerking | Voor aanbiedingen waarvoor eerder een veld met de meldings-e in het antwoord wordt ondersteund, wordt dit veld afgeschaft en wordt het niet langer geretourneerd voor gemigreerde aanbiedingen. | Voor gemigreerde aanbiedingen worden er geen meldingen meer verzonden naar de lijst met e-mail berichten die in de aanvragen zijn opgegeven. In plaats daarvan wordt de API-service uitgelijnd met het e-mail proces voor meldingen in het partner centrum om e-mail berichten te verzenden. In het bijzonder worden meldingen van de voortgang van de bewerking verzonden naar het e-mail adres dat is ingesteld in het gedeelte contact gegevens van de verkoper van uw account instellingen in partner centrum.<br><br>Zorg ervoor dat het e-mail adres dat is ingesteld in het gedeelte contact gegevens van de verkoper in de [account instellingen](https://partner.microsoft.com/dashboard/account/management) in Partner Center juist is voor het ontvangen van meldingen. |
 |||

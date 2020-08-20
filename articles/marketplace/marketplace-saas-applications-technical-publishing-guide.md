@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 20d14d656132b2809fe5a79d909c27799438a247
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9f488675e4f2437982e2426da73b4db1a713905d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280933"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607305"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Publicatiehandleiding voor SaaS-toepassingen
 
@@ -21,10 +21,10 @@ U kunt SaaS-toepassingen in de commerciële Marketplace publiceren met drie vers
 
 ## <a name="offer-overview"></a>Overzicht van aanbieding  
 
-SaaS-toepassingen zijn beschikbaar in Microsoft AppSource en Azure Marketplace.  Zowel de lijst met ondersteunings aanbiedingen van de winkel, de proef versie en het trans acties.
+SaaS-toepassingen zijn beschikbaar in Microsoft AppSource en Azure Marketplace.  On-line aanbiedingen voor online winkels, proef versie en trans acties.
 
 **Lijst:**  De optie voor het publiceren van aanbiedingen bestaat uit een aanbiedings type voor contact personen en wordt gebruikt wanneer een proef abonnement of een deelname op transactie niveau niet haalbaar is. Het voor deel van deze benadering is dat uitgevers met een oplossing in de markt direct leads ontvangen die kunnen worden omgezet in deals om uw bedrijf te verg Roten.  
-**Proef versie/trans actie:**  De klant heeft de mogelijkheid om rechtstreeks een proef versie voor uw oplossing te kopen of aan te vragen. Het bieden van een proef ervaring verhoogt het engagement niveau voor klanten en stelt klanten in staat om uw oplossing te verkennen voordat u deze koopt. Als u een proef ervaring hebt, hebt u een betere kans op promotie in de-winkel en verwacht u meer en uitgebreidere leads van klant afspraken. Tests moeten ten minste voor de duur van de proef periode gratis ondersteuning bevatten.  
+**Proef versie/trans actie:**  De klant heeft de mogelijkheid om rechtstreeks een proef versie voor uw oplossing te kopen of aan te vragen. Het bieden van een proef ervaring verhoogt het engagement niveau voor klanten en stelt klanten in staat om uw oplossing te verkennen voordat u deze koopt. Met een proef ervaring hebt u een betere kans op promotie in de online winkels en verwacht u meer en uitgebreidere leads van klant afspraken. Tests moeten ten minste voor de duur van de proef periode gratis ondersteuning bevatten.  
 
 | SaaS-apps bieden | Zakelijke vereisten | Technische vereisten |  
 | --- | --- | --- |  
@@ -62,7 +62,7 @@ We raden u aan om te beginnen een abonnement dat speciaal is afgestemd op uw Azu
 
 De beste Azure Active Directory documentatie, voor beelden en richt lijnen bevinden zich op de volgende sites: 
 
-* [Ontwikkelaars handleiding Azure Active Directory](../active-directory/develop/index.yml)
+* [Ontwikkelaarshandleiding voor Azure Active Directory](../active-directory/develop/index.yml)
 
 * [Integreren met Azure Active Directory](../active-directory/develop/active-directory-how-to-integrate.md)
 

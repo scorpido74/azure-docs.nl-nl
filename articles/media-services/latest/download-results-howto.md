@@ -3,30 +3,26 @@ title: De resultaten van een taak downloaden-Azure Media Services
 description: In dit artikel wordt beschreven hoe u de resultaten van een taak kunt downloaden.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
-ms.author: juliako
-ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: inhenkel
+ms.openlocfilehash: 0a2e4d1ac5cf0945ab75e58bb42d23d10d6c89aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80346303"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607243"
 ---
 # <a name="download-the-results-of-a-job"></a>De resultaten van een taak downloaden
 
 In Azure Media Services moet u bij het verwerken van uw Video's (bijvoorbeeld code ring of analyse) een uitvoer [activum](assets-concept.md) maken om het resultaat van uw [taak](transforms-jobs-concept.md)op te slaan. U kunt deze resultaten vervolgens downloaden naar een lokale map met behulp van media service en opslag-Api's. 
 
 In dit artikel wordt beschreven hoe u de resultaten kunt downloaden met behulp van Java-en .NET-Sdk's.
-
-## <a name="prerequisites"></a>Vereisten 
-
-[Beheer assets](manage-asset-concept.md)controleren.
 
 ## <a name="java"></a>Java
 

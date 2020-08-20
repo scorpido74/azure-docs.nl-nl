@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6b3cd5ab5849c33172e4a629c79fb792b82f1255
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2ca76d75edba6688dbe93f11a51a0ad67942677a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227177"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606944"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB)
 
-Retourneert de huidige datum en tijd, gemeten in Ticks.
+Retourneert het aantal 100 nano seconden-maat streepjes dat sinds 00:00:00 donderdag, 1 januari 1970, is verstreken.
   
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentTicks ()
@@ -26,9 +26,11 @@ GetCurrentTicks ()
 
 ## <a name="return-types"></a>Retour typen
 
-Retourneert een positieve integerwaarde.
+Retourneert een ondertekende numerieke waarde, het huidige aantal 100-nano seconden Ticks dat is verstreken sinds de UNIX-epoche. Met andere woorden, GetCurrentTicks retourneert het aantal nano seconden-maat streepjes van 100 die zijn verstreken sinds 00:00:00 donderdag, 1 januari 1970.
 
 ## <a name="remarks"></a>Opmerkingen
+
+GetCurrentTicks () is een niet-deterministische functie. Het geretourneerde resultaat is UTC (Coordinated Universal Time).
 
 Deze systeem functie maakt geen gebruik van de index.
 

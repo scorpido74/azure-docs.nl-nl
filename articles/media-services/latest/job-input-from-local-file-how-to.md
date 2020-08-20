@@ -3,20 +3,20 @@ title: Een Azure Media Services-taak invoer maken op basis van een lokaal bestan
 description: In dit artikel wordt beschreven hoe u een Azure Media Services taak invoer maakt op basis van een lokaal bestand.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/26/2020
-ms.author: juliako
-ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4d7e6d9daa5d30c5cbf5b198a147564d0c05c074
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001125"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607229"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Een taak invoer maken op basis van een lokaal bestand
 
@@ -25,7 +25,6 @@ Wanneer u in Media Services v3 taken verzendt voor het verwerken van uw video's,
 ## <a name="prerequisites"></a>Vereisten 
 
 * [Een Azure Media Services-account maken](./create-account-howto.md).
-* [Beheer assets](manage-asset-concept.md)controleren.
 
 ## <a name="net-sample"></a>.NET-voor beeld
 

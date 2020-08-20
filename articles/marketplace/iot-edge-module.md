@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2020
-ms.openlocfilehash: 0b707b2aed68359f8c04f6cd6bee6c95b495178b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119477"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607371"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modules
 
@@ -38,9 +38,9 @@ Het IoT Edge-module aanbod type is een specifiek type container dat wordt uitgev
 
 ## <a name="publishing-your-iot-edge-module"></a>Uw IoT Edge-module publiceren
 
-**De juiste winkel selecteren**
+**De online winkel rechts selecteren**
 
-IoT Edge-modules worden alleen gepubliceerd naar Azure Marketplace. AppSource is niet van toepassing.  Zie [de publicatie optie voor uw oplossing bepalen](determine-your-listing-type.md)voor meer informatie over de verschillen en doel publiek op diverse winkels.
+IoT Edge-modules worden alleen gepubliceerd naar Azure Marketplace. AppSource is niet van toepassing.  Zie [uw publicatie optie bepalen](determine-your-listing-type.md)voor meer informatie over de verschillen en doel groepen in online winkels.
  
 **Facturerings opties**
 
@@ -73,17 +73,9 @@ Als u een IoT Edge module naar Azure Marketplace wilt publiceren, moet u aan de 
 
 De belangrijkste technische vereisten voor een IoT Edge module, zodat IT kan worden gecertificeerd en gepubliceerd op de Azure Marketplace, worden beschreven in de [technische activa van uw IOT Edge module voorbereiden](./partner-center-portal/create-iot-edge-module-asset.md).
 
-## <a name="documentation-and-resources"></a>Documentatie en bronnen
-
-[Maak een IOT Edge module-aanbod](./partner-center-portal/azure-iot-edge-module-creation.md) : de stappen voor het publiceren van een nieuwe IOT Edge module-aanbieding in het partner centrum.
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u dit nog niet hebt gedaan,
-
-- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over Marketplace.
-
-Als u zich wilt registreren in Partner Center en wilt beginnen met het maken van een nieuwe aanbieding of het werken met een bestaand aanbod,
-
+- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over de commerciële Marketplace.
+- [Maak een IoT Edge module-aanbod] in partner centrum.
 - Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken of te volt ooien.
 - Zie [een IOT Edge module maken](./partner-center-portal/azure-iot-edge-module-creation.md) voor meer informatie over het publiceren van een IOT Edge module-aanbod.

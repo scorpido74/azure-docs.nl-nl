@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036569"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607325"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
@@ -120,11 +120,11 @@ Commerciële Marketplace-uitgevers zijn verantwoordelijk voor de ondersteuning v
 
 Tijdens het publicatie proces krijgt u toegang tot een preview van uw aanbieding. De toegang is beperkt tot gebruikers die u opgeeft op het tabblad **voor beeld** en de aanbieding kan niet worden weer gegeven door iemand anders. U kunt een preview kopen en het proces testen, maar u wordt het volledige bedrag in rekening gebracht volgens de instellingen van uw aanbieding.
 
-Als u een aankoop tegen een zeer lage prijs wilt volt ooien, kunt u het beste een privé-abonnement publiceren dat alleen kan worden bekeken door u en tegen een prijs die u als de kosten van testen aanvaardt. Een prijs van $0,00 wordt ondersteund, maar komt niet overeen met de volledige ervaring. Daarom raden we u aan om de prijs op $1,00 in te stellen.
+Als u een aankoop tegen een lage prijs wilt volt ooien, kunt u het beste een privé-plan publiceren dat alleen kan worden bekeken door u en met een prijs die u als de kosten van testen aanvaardt. Een prijs van $0,00 wordt ondersteund, maar komt niet overeen met de volledige ervaring. Daarom raden we u aan om de prijs op $1,00 in te stellen.
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Wat zijn leads van de commerciële Marketplace en wat moet ik ermee doen?
 
-Als klanten uw aanbiedingen gebruiken op de Microsoft AppSource-en Azure Marketplace-winkel, worden er gegevens vastgelegd. Nadat klanten voldoende interesse hebben bewezen, wordt een lead gemaakt en wordt er een verkoop kans naar het systeem van uw keuze verzonden. Uitgevers die succesvol zijn voor de commerciële Marketplace, streven vaak naar leads, ontwikkelen relaties en scha kelen rente in deals.
+Als klanten uw aanbiedingen gebruiken op de online winkels van Microsoft AppSource en Azure Marketplace, worden er gegevens vastgelegd. Nadat klanten voldoende interesse hebben bewezen, wordt een lead gemaakt en wordt er een verkoop kans naar het systeem van uw keuze verzonden. Uitgevers die succesvol zijn voor de commerciële Marketplace, streven vaak naar leads, ontwikkelen relaties en scha kelen rente in deals.
 
 Zie [leads van klanten in uw Marketplace-aanbieding](partner-center-portal/commercial-marketplace-get-customer-leads.md)voor meer informatie.
 
@@ -140,7 +140,7 @@ Aanbiedingen worden aangeboden aan klanten via productervaringen, websites, wede
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Kan mijn aanbieding worden weer gegeven in zowel Microsoft AppSource als Azure Marketplace?
 
-Microsoft AppSource is het doel voor zakelijke en industriële oplossingen en Azure Marketplace is ontworpen voor IT-en ontwikkel oplossingen. Aanbiedingen zijn beschikbaar in elk van de-winkels op basis van categorieën en branches die u hebt geselecteerd tijdens het maken van de aanbieding. In het zeldzame geval dat de aanbieding relevant is voor de gebruikers van beide winkels, kan deze worden weer gegeven in beide.
+Microsoft AppSource is het doel voor zakelijke en industriële oplossingen en Azure Marketplace is ontworpen voor IT-en ontwikkel oplossingen. Aanbiedingen zijn beschikbaar in elk van de online winkels op basis van categorieën en branches die u hebt geselecteerd tijdens het maken van de aanbieding. In het zeldzame geval dat de aanbieding relevant is voor de gebruikers van beide online winkels, kan deze worden weer gegeven in beide.
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>Wat is het Cloud Solution Provider-programma?
 

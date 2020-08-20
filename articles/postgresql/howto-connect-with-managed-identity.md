@@ -6,22 +6,22 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: ec9e53ecaa95f6407a00c149abb6ed7e4a671d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 173633e16648bce262051947ec2bc9c1f61fbb9c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102290"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606769"
 ---
-# <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Verbinding maken met beheerde identiteit voor Azure Database for PostgreSQL
+# <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Een beheerde identiteit verbinden met Azure Database for PostgreSQL
 
-In dit artikel leest u hoe u een door de gebruiker toegewezen identiteit voor een virtuele Azure-machine (VM) gebruikt om toegang te krijgen tot een Azure Database for PostgreSQL-server. Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. In deze zelfstudie leert u procedures om het volgende te doen:
+In dit artikel leest u hoe u een door de gebruiker toegewezen identiteit voor een virtuele Azure-machine (VM) gebruikt om toegang te krijgen tot een Azure Database for PostgreSQL-server. Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. 
 
-> [!div class="checklist"]
-> * Uw VM toegang verlenen tot een Azure Database for PostgreSQL server
-> * Maak een gebruiker in de data base die de door de gebruiker toegewezen identiteit van de virtuele machine vertegenwoordigt
-> * Een toegangs Token ophalen met behulp van de VM-identiteit en dit gebruiken om een Azure Database for PostgreSQL server op te vragen
-> * Het ophalen van tokens implementeren in een C#-voorbeeld toepassing
+In deze zelfstudie leert u procedures om het volgende te doen:
+- Uw VM toegang verlenen tot een Azure Database for PostgreSQL server
+- Maak een gebruiker in de data base die de door de gebruiker toegewezen identiteit van de virtuele machine vertegenwoordigt
+- Een toegangs Token ophalen met behulp van de VM-identiteit en dit gebruiken om een Azure Database for PostgreSQL server op te vragen
+- Het ophalen van tokens implementeren in een C#-voorbeeld toepassing
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -80,7 +80,7 @@ Het ophalen van het token wordt uitgevoerd door een HTTP-aanvraag in te stellen 
 
 * `api-version` = `2018-02-01`
 * `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID`(die u eerder hebt opgehaald)
+* `client_id` = `CLIENT_ID` (die u eerder hebt opgehaald)
 
 U krijgt een JSON-resultaat dat een veld bevat `access_token` -deze lange tekst waarde is het token Managed Identity Access dat u als het wacht woord moet gebruiken wanneer u verbinding maakt met de data base.
 

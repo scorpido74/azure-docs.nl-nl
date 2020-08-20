@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323278"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607137"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Marketplace Insights-dash board in partner centrum
 
-Dit artikel bevat informatie over het Marketplace Insights-dash board in het partner centrum. In dit dash board wordt een samen vatting weer gegeven van Marketplace Web Analytics waarmee uitgevers klant betrokkenheid kunnen meten voor hun respectievelijke product detail pagina's die worden vermeld op de Commercial Marketplace-winkels: Microsoft AppSource en Azure Marketplace.
+Dit artikel bevat informatie over het Marketplace Insights-dash board in het partner centrum. In dit dash board wordt een samen vatting weer gegeven van Marketplace Web Analytics waarmee uitgevers klant betrokkenheid kunnen meten voor hun respectievelijke product detail pagina's die worden vermeld op de online winkels voor commerciële Marketplace: Microsoft AppSource en Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Dashboard voor Marketplace-inzichten
 
@@ -42,11 +42,11 @@ De maximale latentie tussen gebruikers die aanbiedingen bezoeken op Azure Market
 
 Bekijk de metrische gegevens voor commerciële Marketplace op verschillende manieren:
 
-- Tabbladen van de winkel
+- Tabbladen voor online winkels
 - Pagina filters
 - Datumfilters
 
-**Tabbladen**voor de winkel: u kunt de metrische gegevens van uw aanbiedingen afzonderlijk bekijken via de AppSource & Azure Marketplace-tabbladen. Selecteer de aanbieding (en) in de vervolg keuzelijst aanbieding aan de rechter kant om een visualisatie van de metrische gegevens voor de geselecteerde aanbieding (en) weer te geven. Standaard zijn alle aanbiedingen geselecteerd.
+**Tabbladen voor online winkels**: u kunt de metrische gegevens van uw aanbiedingen afzonderlijk bekijken via de AppSource & Azure Marketplace-tabbladen. Selecteer de aanbieding (en) in de vervolg keuzelijst aanbieding aan de rechter kant om een visualisatie van de metrische gegevens voor de geselecteerde aanbieding (en) weer te geven. Standaard zijn alle aanbiedingen geselecteerd.
 
 ![Vervolg keuzelijst voor de lijst met Dash boards van partner Center Insights](./media/insights-offer-dropdown.png)
 
@@ -96,7 +96,7 @@ De heatmap omvat de volgende mogelijkheden:
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Pagina bezoeken tegenover unieke bezoekers trend
 
-De kolommen hieronder vertegenwoordigen het aantal maandelijkse pagina bezoekers dat wordt weer gegeven op de Y-as (as aan de linkerkant van de grafiek). De trend lijn vertegenwoordigt de maandelijkse trend van unieke bezoekers, die worden weer gegeven op de secundaire Y-as (as aan de rechter kant van de grafiek), voor uw aanbiedingen die in de winkel worden gepubliceerd: Azure Marketplace en AppSource.
+De kolommen hieronder vertegenwoordigen het aantal maandelijkse pagina bezoekers dat wordt weer gegeven op de Y-as (as aan de linkerkant van de grafiek). De trend lijn vertegenwoordigt de maandelijkse trend van unieke bezoekers, die worden weer gegeven op de secundaire Y-as (as aan de rechter kant van de grafiek), voor uw aanbiedingen die zijn gepubliceerd in de online winkels: Azure Marketplace en AppSource.
 
 ![Bezoeken pagina met partner Center Insights versus unieke bezoekers trend](./media/insights-page-vists-unique-visitors.png)
 

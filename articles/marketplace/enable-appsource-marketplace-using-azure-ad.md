@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
-ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323261"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607409"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integreer uw commerciële Marketplace-vermelding met Azure Active Directory
 
@@ -20,7 +20,7 @@ ms.locfileid: "87323261"
 
 ## <a name="azure-ad-benefits"></a>Voor delen van Azure AD
 
-Microsoft AppSource-en Azure Marketplace-klanten gebruiken in-product ervaringen om te zoeken in de catalogus met winkel aanbiedingen. Voor deze acties moeten klanten zich aanmelden bij het product. Azure AD-integratie biedt de volgende voor delen:
+Microsoft AppSource-en Azure Marketplace-klanten gebruiken in-product ervaringen om catalogussen voor online winkels te doorzoeken. Voor deze acties moeten klanten zich aanmelden bij het product. Azure AD-integratie biedt de volgende voor delen:
 
 - Snellere betrokkenheid en een geoptimaliseerde klant ervaring
 - Eenmalige aanmelding (SSO) voor miljoenen zakelijke gebruikers
@@ -56,8 +56,8 @@ Tijdens de verificatie verzendt Azure AD een token naar uw app of aanbieding. Me
 
 Wanneer u Azure AD gebruikt om verificatie met één klik in te scha kelen in uw app of proef versie, kunt u het volgende doen:
 
-- Stroom lijn de klant ervaring van de Marketplace met uw proef versie.
-- Zorg ervoor dat u een in-product ervaring hebt, zelfs wanneer de gebruiker wordt omgeleid van de Marketplace naar uw domein of test omgeving.
+- Stroom lijn de klant ervaring van de commerciële Marketplace naar uw proef versie.
+- Houd het gevoel van een in-product ervaring, zelfs wanneer de gebruiker wordt omgeleid van de commerciële Marketplace naar uw domein of test omgeving.
 - Verminder de kans op onbreken wanneer gebruikers worden omgeleid omdat er geen aanvullende aanmeldings stappen zijn.
 - Verminder implementatie barrières voor de grote populatie van Azure AD-gebruikers.
 
@@ -67,12 +67,12 @@ Wanneer u Azure AD gebruikt om verificatie met één klik in te scha kelen in uw
 
 Gebruik Azure AD om de volgende acties te ondersteunen:
 
-- Registreer uw app in een van de Marketplace-winkels. Bekijk de [app-registratie](../active-directory/develop/quickstart-register-app.md) of AppSource- [certificering](../active-directory/azuread-dev/howto-get-appsource-certified.md) voor meer informatie.
+- Registreer uw app in een van de online winkels voor commerciële Marketplace. Bekijk de [app-registratie](../active-directory/develop/quickstart-register-app.md) of AppSource- [certificering](../active-directory/azuread-dev/howto-get-appsource-certified.md) voor meer informatie.
 - Schakel de functie ondersteuning voor multitenancy in azure AD in om een proef ervaring met één klik te krijgen.
 
 Voer de volgende stappen uit als u geen ervaring hebt met het gebruik van Azure AD federatieve eenmalige aanmelding:
 
-1. Registreer uw app in Marketplace.
+1. Registreer uw app in de commerciële Marketplace.
 1. Ontwikkel SSO met Azure AD met behulp van [OAuth 2,0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) of [OpenID Connect Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md).
 1. Schakel de functie ondersteuning voor multitenancy in azure AD in om een proef ervaring met één klik te bieden.
 
@@ -89,7 +89,7 @@ Gebruik Azure AD om een van de volgende acties te ondersteunen:
 
 Als u dit nog niet hebt gedaan, 
 
-- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over Marketplace.
+- [Meer informatie](https://azuremarketplace.microsoft.com/sell) over de commerciële Marketplace.
 
 Als u zich wilt registreren in het partner centrum, begint u met het maken van een nieuwe aanbieding of het werken met een bestaand abonnement:
 

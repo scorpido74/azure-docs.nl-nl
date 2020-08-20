@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 3055d8c31307cfacad575d892db0ed812a03a9e4
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258625"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607120"
 ---
 # <a name="feature-coverage-for-machines"></a>Functie dekking voor machines
 
@@ -91,7 +91,7 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 
 | Endpoint Protection| Platformen | Security Center-installatie | Security Center Discovery |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Antimalware)| Windows Server 2016 of hoger| Nee, ingebouwd in besturingssysteem| Ja |
+| Microsoft Defender Antivirus| Windows Server 2016 of hoger| Nee, ingebouwd in besturingssysteem| Ja |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (zie opmerking hieronder) | Via extensie | Ja |
 | Trend Micro – diepe beveiliging | Windows Server-familie  | Nee | Ja |
 | Symantec v12.1.1100+| Windows Server-familie  | Nee | Ja |

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 312f04ff4b1d860724640dfc9e5ea9d75bb76bae
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 71d8961af372f927fab909073daa715766542f87
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189977"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606661"
 ---
 # <a name="certificate-creation-methods"></a>Methoden voor het maken van certificaten
 
@@ -82,7 +82,7 @@ Het maken van een certificaat kan hand matig worden voltooid of met een ' zelf-'
 
 |Provider|Certificaattype|Configuratie-instellingen  
 |--------------|----------------------|------------------|  
-|DigiCert|Key Vault biedt OV-of EV SSL-certificaten met DigiCert| [Integratie handleiding](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|DigiCert|Key Vault biedt OV-of EV SSL-certificaten met DigiCert| [Integratie handleiding](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
 |GlobalSign|Key Vault biedt OV-of EV SSL-certificaten met GlobalSign| [Integratie handleiding](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  Een certificaat Uitgever is een entiteit die wordt weer gegeven in Azure Key Vault (KV) als een CertificateIssuer-resource. Het wordt gebruikt om informatie op te geven over de bron van een KV-certificaat; naam van de verlener, provider, referenties en andere administratieve gegevens.

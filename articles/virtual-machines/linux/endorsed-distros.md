@@ -13,24 +13,24 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184989"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607012"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Officiële Linux-distributies op Azure
 
-Partners bieden Linux-installatie kopieën in de Azure Marketplace. Micro soft werkt samen met verschillende Linux-community's om nog meer versies toe te voegen aan de gekeurde distributie lijst. Voor distributies die niet beschikbaar zijn via Marketplace, kunt u altijd uw eigen Linux gebruiken door de richt lijnen te volgen bij het [maken en uploaden van een virtuele harde schijf die het Linux-besturings systeem bevat](./create-upload-generic.md).
+Partners bieden Linux-installatie kopieën in azure Marketplace. Micro soft werkt samen met verschillende Linux-community's om nog meer versies toe te voegen aan de gekeurde distributie lijst. Voor distributies die niet beschikbaar zijn via Marketplace, kunt u altijd uw eigen Linux gebruiken door de richt lijnen te volgen bij het [maken en uploaden van een virtuele harde schijf die het Linux-besturings systeem bevat](./create-upload-generic.md).
 
 ## <a name="supported-distributions-and-versions"></a>Ondersteunde distributies en versies
 
-De volgende tabel geeft een lijst van de Linux-distributies en-versies die worden ondersteund in Azure. Raadpleeg de [ondersteuning voor Linux-installatie kopieën in Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) voor meer gedetailleerde informatie over ondersteuning voor Linux en open-source technologie in Azure.
+De volgende tabel geeft een lijst van de Linux-distributies en-versies die worden ondersteund in Azure. Zie [ondersteuning voor Linux-installatie kopieën in Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)voor meer informatie.
 
-De LIS-Stuur programma's (Linux Integration Services) voor Hyper-V en Azure zijn kernel-modules die micro soft rechtstreeks bijdraagt aan de upstream Linux-kernel. Sommige LIS-Stuur Programma's zijn standaard ingebouwd in de kernel van de distributie. Oudere distributies die zijn gebaseerd op Red Hat Enter prise (RHEL)/CentOS zijn verkrijgbaar als afzonderlijke down load bij [Linux Integration Services versie 4,2 voor Hyper-V en Azure](https://www.microsoft.com/download/details.aspx?id=55106). Zie [vereisten voor Linux-kernel](create-upload-generic.md#linux-kernel-requirements) voor meer informatie over de Lis-Stuur Programma's.
+De LIS-Stuur programma's (Linux Integration Services) voor Hyper-V en Azure zijn kernel-modules die micro soft rechtstreeks bijdraagt aan de upstream Linux-kernel. Sommige LIS-Stuur Programma's zijn standaard ingebouwd in de kernel van de distributie. Oudere distributies die zijn gebaseerd op Red Hat Enter prise (RHEL)/CentOS zijn verkrijgbaar als afzonderlijke down load bij [Linux Integration Services versie 4,2 voor Hyper-V en Azure](https://www.microsoft.com/download/details.aspx?id=55106). Zie vereisten voor Linux- [kernel](create-upload-generic.md#linux-kernel-requirements)voor meer informatie.
 
-De Azure Linux-agent is al vooraf geïnstalleerd op de installatie kopieën van Azure Marketplace en is doorgaans beschikbaar vanuit de opslag plaats van het distributie pakket. U vindt de bron code op [github](https://github.com/azure/walinuxagent).
+De Azure Linux-agent is al vooraf geïnstalleerd op Azure Marketplace-installatie kopieën en is doorgaans beschikbaar vanuit de opslag plaats van het distributie pakket. U vindt de bron code op [github](https://github.com/azure/walinuxagent).
 
 | Distributie | Versie | Stuurprogramma's | Agent |
 | --- | --- | --- | --- |
@@ -39,20 +39,20 @@ De Azure Linux-agent is al vooraf geïnstalleerd op de installatie kopieën van 
 | Debian door credativ |8.x, 9.x |In kernel |Pakket: in opslag plaats onder waagent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 |Flatcar container Linux door Kinvolk| Stable, Edge| | |
 | Oracle Linux door Oracle |6.x, 7.x, 8.x |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux door Red Hat |6.x, 7.x, 8.x |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat Enterprise Linux door Red Hat](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enter prise door SUSE |SLES/SLES voor SAP 11. x, 12. x, 15. x <br/> [Levenscyclus van de open bare Cloud installatie kopie van SUSE](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |In kernel |Pakket<p> voor 11 in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats<br>voor 12 opgenomen in de module ' Public Cloud ' onder ' python-Azure-agent '<br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE door SUSE |openSUSE Leap 15.x |In kernel |Pakket: in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats onder ' python-Azure-agent ' <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu op canonieke |Ubuntu Server en Pro. 16. x, 18. x, 20. x<p>Informatie over uitgebreide ondersteuning voor Ubuntu 12,04 en 14,04 vindt u hier: [Ubuntu Extended Security Maintenance](https://www.ubuntu.com/esm). |In kernel |Pakket: in opslag plaats onder walinuxagent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>Uitgebracht installatie kopie-update
 
-Azure vereist dat de uitgevers van de getekende Linux-distributies hun installatie kopieën regel matig bijwerken in de Azure Marketplace met de nieuwste patches en beveiligings oplossingen, op een driemaandelijkse of snellere uitgebracht. Bijgewerkte installatie kopieën in azure Marketplace zijn automatisch beschikbaar voor klanten als nieuwe versies van een image SKU. Meer informatie over het zoeken naar Linux-installatie kopieën: [Linux VM-installatie kopieën zoeken in azure Marketplace](./cli-ps-findimage.md).
+Azure vereist dat de uitgevers van de getekende Linux-distributies hun afbeeldingen in azure Marketplace regel matig bijwerken met de nieuwste patches en beveiligings oplossingen, op een driemaandelijkse of snellere uitgebracht. Bijgewerkte installatie kopieën in de Marketplace zijn automatisch beschikbaar voor klanten als nieuwe versies van een image SKU. Meer informatie over het zoeken naar Linux-installatie kopieën: [Linux VM-installatie kopieën zoeken in azure Marketplace](./cli-ps-findimage.md).
 
 ## <a name="azure-tuned-kernels"></a>Door Azure afgestemde kernels
 
 Azure werkt nauw samen met verschillende geplaatste Linux-distributies om de installatie kopieën te optimaliseren die ze naar Azure Marketplace hebben gepubliceerd. Eén aspect van deze samen werking is de ontwikkeling van ' afgestemde ' Linux-kernels die zijn geoptimaliseerd voor het Azure-platform en geleverd als volledig ondersteunde onderdelen van de Linux-distributie. De door Azure afgestemde kernels bevatten nieuwe functies en prestatie verbeteringen en sneller (meestal driemaandelijks) uitgebracht vergeleken met de standaard-of algemene kernels die beschikbaar zijn via de distributie.
 
-In de meeste gevallen vindt u deze kernels die vooraf zijn geïnstalleerd op de standaard installatie kopieën in de Azure Marketplace, zodat klanten direct profiteren van de voor delen van deze geoptimaliseerde kernels. Meer informatie over deze kernels die zijn afgestemd op Azure, vindt u in de volgende koppelingen:
+In de meeste gevallen vindt u deze kernels die vooraf zijn geïnstalleerd op de standaard installatie kopieën in azure Marketplace, zodat klanten direct profiteren van de voor delen van deze geoptimaliseerde kernels. Meer informatie over deze kernels die zijn afgestemd op Azure, vindt u in de volgende koppelingen:
 
 - [CentOS Azure-afgestemde kernel-beschikbaar via de CentOS-virtualisatie-SIG](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Debian Cloud kernel-beschikbaar met de installatie kopie van Debian 10 en Debian 9 op Azure](https://wiki.debian.org/Cloud/MicrosoftAzure)
@@ -80,7 +80,7 @@ Credativ is een onafhankelijke Consulting-en service maatschappij die is gespeci
 
 Kinvolk is het bedrijf achter Flatcar container Linux, waarbij de oorspronkelijke CoreOS Vision wordt voortgezet voor een minimale, onveranderlijke en automatisch bijgewerkte basis voor container toepassingen. Als minimale distributie bevat Flatcar alleen de pakketten die vereist zijn voor het implementeren van containers. Het onveranderbare bestands systeem garandeert consistentie en beveiliging, terwijl de functies voor automatisch bijwerken u in staat stellen altijd up-to-date te zijn met de nieuwste beveiligingsfixes. 
 
-Flatcar-container Linux is een back-up van het wereld wijde team van Linux-en container technologie-experts van Kinvolk die een optioneel commercieel ondersteunings abonnement bieden dat 24 uur per dag reageert, beveiligings-en technische waarschuwingen en exclusieve door Azure geoptimaliseerde installatie kopieën, inclusief een ondersteunings kanaal voor de lange termijn.
+Flatcar-container Linux is een back-up van het wereld wijde team van Linux-en container technologie experts van Kinvolk die een optioneel commercieel ondersteunings abonnement bieden dat 24 uur per dag reageert, beveiligings-en technische waarschuwingen en exclusieve, geoptimaliseerde installatie kopieën van Azure, inclusief een ondersteunings kanaal voor de lange termijn.
 
 
 ### <a name="oracle"></a>Oracle
@@ -93,7 +93,7 @@ De strategie van Oracle is om een breed assortiment oplossingen te bieden voor o
 
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-Dankzij de wereld wijde provider van open source-oplossingen biedt Red Hat meer dan 90% van de Fortune 500-bedrijven om zakelijke uitdagingen op te lossen, hun IT-en bedrijfs strategieën uit te lijnen en de toekomst van technologie voor te bereiden. Red Hat doet dit door veilige oplossingen te bieden met behulp van een open bedrijfs model en een betaalbaar, voorspelbaar abonnement model.
+Dankzij de wereld wijde provider van open source-oplossingen biedt Red Hat meer dan 90% van de Fortune 500-bedrijven om zakelijke uitdagingen op te lossen, hun IT-en bedrijfs strategieën uit te lijnen en de toekomst van technologie voor te bereiden. Red Hat behaalt dit door veilige oplossingen te bieden met behulp van een open bedrijfs model en een betaalbaar, voorspelbaar abonnements model.
 
 ### <a name="suse"></a>SUSE
 

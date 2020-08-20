@@ -1,32 +1,38 @@
 ---
-title: GetCurrentDateTime in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie GetCurrentDateTime in Azure Cosmos DB.
-author: ginamr
+title: TicksToDateTime in Azure Cosmos DB-query taal
+description: Meer informatie over de SQL-functie TicksToDateTime in Azure Cosmos DB.
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.author: girobins
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
+ms.openlocfilehash: 89a8dba97725049b86fc6b38c09e0dd125bb48d1
 ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606950"
+ms.locfileid: "88608772"
 ---
-# <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
+# <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB)
 
-Retourneert de huidige UTC-datum en-tijd (Coordinated Universal Time) als een ISO 8601-teken reeks.
+Converteert de opgegeven waarde voor Ticks naar een datum/tijd.
   
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxis
   
 ```sql
-GetCurrentDateTime ()
+TicksToDateTime (<Ticks>)
 ```
 
+## <a name="arguments"></a>Argumenten
+
+*Ticks*  
+
+Een ondertekende numerieke waarde, het huidige aantal 100 nano seconden-maat streepjes dat is verstreken sinds de UNIX-epoche. Met andere woorden: het is het aantal 100 nano seconden-maat streepjes dat sinds 00:00:00 donderdag, 1 januari 1970, is verstreken.
+
 ## <a name="return-types"></a>Retour typen
-  
-  Retourneert de huidige UTC-datum en-8601 tijd in de notatie `YYYY-MM-DDThh:mm:ss.fffffffZ` waar:
+
+Retourneert de UTC-datum en-8601 tijd teken reeks waarde in de notatie `YYYY-MM-DDThh:mm:ss.fffffffZ` waar:
   
   |Indeling|Beschrijving|
   |-|-|
@@ -44,24 +50,22 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>Opmerkingen
 
-GetCurrentDateTime () is een niet-deterministische functie. Het geretourneerde resultaat is UTC. Nauw keurigheid is 7 cijfers, met een nauw keurigheid van 100 nano seconden.
-
-Deze systeem functie maakt geen gebruik van de index.
+TicksToDateTime wordt geretourneerd `undefined` als de opgegeven waarde voor de tickas ongeldig is.
 
 ## <a name="examples"></a>Voorbeelden
   
-In het volgende voor beeld ziet u hoe u de huidige UTC-datum tijd kunt ophalen met behulp van de ingebouwde functie GetCurrentDateTime ().
-  
+In het volgende voor beeld worden de maat streepjes geconverteerd naar een datum/tijd:
+
 ```sql
-SELECT GetCurrentDateTime() AS currentUtcDateTime
-```  
-  
- Hier volgt een voor beeld van een resultatenset.
-  
+SELECT TicksToDateTime(15943368134575530) AS DateTime
+```
+
 ```json
-[{
-  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
-}]  
+[
+    {
+        "DateTime": "2020-07-09T23:20:13.4575530Z"
+    }
+]
 ```  
 
 ## <a name="next-steps"></a>Volgende stappen

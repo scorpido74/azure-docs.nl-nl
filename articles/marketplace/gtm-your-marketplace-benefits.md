@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c2481ca9894a1af3b363db8d5043b7fcd4eefc3d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e9fe02903d2dc76c931e58682a0d632d5e492963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498018"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607375"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -32,7 +32,7 @@ U wordt contact opgenomen met een lid van het team voor beloningen wanneer uw aa
 
 Voor Transact-partners, wanneer u uw gefactureerde verkoop via het commerciële Marketplace-platform hebt uitgebreid, kunt u meer voor delen per laag ontgrendelen.
 
-De minimale vereiste voor het publiceren op de winkel is een MPNID. deze voor delen zijn daarom beschikbaar voor alle partners, ongeacht de MPN-competentie status of het partner type. Elke partner is gemachtigd om hun bedrijf te laten groeien door de commerciële Marketplace als een platform.
+De minimale vereiste voor het publiceren in de online winkels is een MPNID, zodat deze voor delen beschikbaar zijn voor alle partners, ongeacht de status van de MPN-competentie of het partner type. Elke partner is gemachtigd om hun bedrijf te laten groeien door de commerciële Marketplace als een platform.
 
 U krijgt ondersteuning bij het goed keuren van de beschik bare bronnen en in de implementatie van de best practices, die u ook zelf kunt [controleren](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
@@ -87,7 +87,7 @@ Alle partners die een live-aanbieding hebben, gaan werken met een toegewezen eng
 
 ![Technische voordelen](./media/marketplace-publishers-guide/technical-benefit.png)
 
-\*De drempel voor de verkochte seat is alleen van toepassing op Microsoft 365-apps (SaaS-toepassingen met integraties met micro soft teams, Office, Outlook of share point) en de voor delen moeten worden voltooid op 30 juni 2021.
+\* De drempel voor de verkochte seat is alleen van toepassing op Microsoft 365-apps (SaaS-toepassingen met integraties met micro soft teams, Office, Outlook of share point) en de voor delen moeten worden voltooid op 30 juni 2021.
 
 Gedetailleerde beschrijvingen voor al deze voor delen vindt u in het [Marketplace-programma voor markt beloningen](https://aka.ms/marketplacerewards).
 

@@ -1,32 +1,32 @@
 ---
 title: Microsoft AppSource en Azure Marketplace vergelijken
-description: In dit artikel worden de verschillen beschreven tussen de micro soft Commercial Marketplace-winkels-Microsoft AppSource en Azure Marketplace.
+description: In dit artikel worden de verschillen beschreven tussen de online winkels van micro soft Commercial Marketplace-Microsoft AppSource en Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: fc0a03871ee3191f24a886cc1b9d7f90e8d54b62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 10560d1407d4e9f899578d6d4eb9cdf9b7fe7dc9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121806"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607466"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource en Azure Marketplace vergelijken
 
-Micro soft Commercial Marketplace bevat [Microsoft AppSource](https://appsource.microsoft.com) en [Azure Marketplace](https://azuremarketplace.microsoft.com). Elke winkel biedt unieke klant vereisten en verschillende doel groepen, zodat u zeker weet dat uw oplossing of service beschikbaar is voor de juiste klanten.
+Micro soft Commercial Marketplace bevat [Microsoft AppSource](https://appsource.microsoft.com) en [Azure Marketplace](https://azuremarketplace.microsoft.com). Elke online winkel biedt unieke klant vereisten en verschillende doel groepen, zodat u zeker weet dat uw oplossing of service beschikbaar is voor de juiste klanten.
 
-## <a name="understanding-the-differences-between-storefronts"></a>Meer informatie over de verschillen tussen de winkel
+## <a name="understanding-the-differences-between-online-stores"></a>Meer informatie over de verschillen tussen online winkels
 
-Als u een winkel wilt kiezen, moet u eerst de doel groep voor uw aanbieding identificeren. Als u doel groepen in meerdere winkels hebt, kunt u één keer publiceren om te verkopen in meerdere winkels.
+Als u een online winkel wilt kiezen, identificeert u eerst de doel groep voor uw aanbieding. Als u doel groepen in meerdere online winkels wilt maken, kunt u één keer publiceren om te verkopen in meerdere winkels.
 
 | Azure Marketplace | AppSource |
 |:--- |:--- |
 | IT-professionals en-ontwikkel aars | Zakelijke gebruikers en besluit vormers |
 
-In de volgende tabel worden de voor delen van het gebruik van een winkel beschreven:
+In de volgende tabel worden de voor delen van het gebruik van een online winkel beschreven:
 
 | Voordelen | Azure Marketplace | AppSource |
 |:--- |:--- | :--- |

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74186458"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606518"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Bron machine voorbereiden voor de push-installatie van de Mobility-agent
 
@@ -59,6 +59,7 @@ Ga als volgt te werk op elke Linux-computer die u wilt beveiligen:
 11. Klik op het tabblad **accounts beheren** op **account toevoegen**.
 12. Voeg het account toe dat u hebt gemaakt.
 13. Voer de referenties in die u gebruikt wanneer u replicatie voor een computer inschakelt.
+1. Extra stap voor het bijwerken of beveiligen van SUSE Linux Enterprise Server 11 SP3-machines. [Zorg ervoor dat de meest recente versie beschikbaar is op de configuratie server](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
 
 ## <a name="anti-virus-on-replicated-machines"></a>Anti-virus op gerepliceerde computers
 

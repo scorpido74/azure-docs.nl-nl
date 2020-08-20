@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797862"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607448"
 ---
 # <a name="consulting-service-offers"></a>Aanbiedingen voor advies service
 
@@ -22,7 +22,7 @@ Aanbiedingen voor Consulting-Services zijn klant gerichte afspraken. Uitgevers h
 
 ## <a name="compare-consulting-services"></a>Consulting Services vergelijken
 
-De commerciële Marketplace-winkel, Microsoft AppSource en Azure Marketplace, zijn afgestemd op doel groepen en Cloud producten om klanten te helpen bij het vinden van wat ze nodig hebben. Elke winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie investeringen. Zie [Microsoft AppSource en Azure Marketplace vergelijken](comparing-appsource-azure-marketplace.md)voor meer informatie over het verschil tussen de twee winkeljes.
+De online winkels voor commerciële Marketplace, Microsoft AppSource en Azure Marketplace zijn afgestemd op doel groepen en Cloud producten om klanten te helpen bij het vinden van wat ze nodig hebben. Elke online winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie-investering. Zie [Microsoft AppSource en Azure Marketplace vergelijken](comparing-appsource-azure-marketplace.md)voor meer informatie over het verschil tussen de twee online winkels.
 
 Consulting Services-aanbiedingen die zijn gebaseerd op Dynamics 365, Power apps en Power BI, komen in aanmerking voor de lijst op AppSource. Down load het PDF-bestand met de [Microsoft AppSource Consulting Services-overzichts richtlijnen](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) voor meer informatie.
 
@@ -34,7 +34,7 @@ Advies Services en Managed Services-aanbiedingen die zijn gebaseerd op Microsoft
 > Advies Services in AppSource moeten zich richten op aanbiedingen voor gebruikers met expertise bij het leveren van kwaliteits oplossingen voor Dynamics 365, Power BI of Power apps.
  
 > [!TIP]
-> Als u wilt publiceren naar de Azure Marketplace-winkel, selecteert u in de vervolg keuzelijst Partner Center voor het **primaire product** **Azure**.
+> Als u wilt publiceren naar Azure Marketplace, selecteert u **Azure**in de vervolg keuzelijst voor het **primaire product** van partner Center.
 >
 > Als u wilt publiceren naar AppSource, selecteert u in de vervolg keuzelijst Partner Center een **primair product** de optie **Dynamics 365**, **Power bi**of **Power apps**.
 
@@ -86,12 +86,12 @@ Systeem-integrator-partners kunnen advies-service aanbiedingen voor de volgende 
 Begin met het [registreren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) van uw bedrijfs gegevens in de Marketplace. Zie [een uitgever in de Marketplace worden](become-publisher.md)voor een volledige controle lijst met registratie vereisten. 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Uw publicatie artefacten voorbereiden
-Voordat u zich registreert, kunt u beginnen met het verzamelen en voorbereiden van de inhoud die uw vermelding helpt de waarde van uw service en oplossing voor uw doel klant te vermelden.
+Voordat u zich registreert, kunt u beginnen met het verzamelen en voorbereiden van de inhoud die uw vermelding helpt de waarde van uw service en oplossing voor uw doel klant te vermelden. 
 
 |Installatie voor nieuwe uitgevers  |
 |---------|
 |MPN-id     |
-|Bedrijfs logo's: 48 x 48 pixels (optioneel), 216 x 216 pixels-350 x 350 pixels (vereist)  |
+|Bedrijfs logo's (48 x 48, 216 x 216 pixels)     |
 |Doel van de lead     |
 ||
 

@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213878"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607400"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
 Dit artikel bevat suggesties voor het maken en aanbieden van micro soft-Commercial Marketplace-aanbiedingen. De volgende tabellen bevatten de aanbevolen procedures voor het volt ooien van de aanbiedings gegevens in het partner centrum. Voor een analyse van hoe uw aanbiedingen worden uitgevoerd, gaat u naar het [Marketplace Insights-dash board](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) in Partner Center. 
 
-## <a name="storefront-offer-details"></a>Details van de winkel aanbieding
+## <a name="online-store-offer-details"></a>Details van aanbieding voor online winkel
 
-| Winkel instelling | Best practice |
+| Instelling | Best practice |
 |:--- |:--- |  
 | Naam van aanbieding | Geef voor apps een duidelijke titel op die Zoek woorden bevat waarmee klanten uw aanbieding kunnen ontdekken. <br> <br> Voor advies Services gaat u als volgt te werk: [naam aanbieding: [duration] [aanbiedings type] (bijvoorbeeld contoso: implementatie 2 weken) |
 | Beschrijving van aanbieding | Geef een duidelijke beschrijving van de toegevoegde waarde van uw aanbieding in de eerste paar zinnen.  Houd er rekening mee dat deze zinnen kunnen worden gebruikt in resultaten van de zoek machine. De belangrijkste onderdelen van de toegevoegde waarde zijn: <ul> <li>Beschrijving van het product of de oplossing. </li> <li> Gebruikers die profiteren van het product of de oplossing. </li> <li> Klanten behoefte hebben of pijnen van de product-of oplossings adressen. </li> </ul> <br> Gebruik, indien mogelijk, terminologie op basis van de industrie norm of op voor delen.  Vertrouw niet op functies en functionaliteit om uw product te verkopen.  Richt u in plaats daarvan op de waarde die u levert. <br> <br> Voor advies Services moet u de professionele service die u levert duidelijk vermelden. |
@@ -28,11 +28,11 @@ Dit artikel bevat suggesties voor het maken en aanbieden van micro soft-Commerci
 > [!IMPORTANT]
 > Zorg ervoor dat de naam van uw aanbieding en de beschrijving van de aanbieding voldoen aan de merken- **[en merk richtlijnen van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** en andere relevante, productspecifieke richt lijnen bij het verwijzen naar handels merken van micro soft en de namen van micro soft-software,-producten en-services.
 
-## <a name="storefront-listing-details"></a>Details van de winkel vermelding
+## <a name="online-store-listing-details"></a>Details van aanbieding voor online winkels
 
-Categorieën en branches voor een andere winkel zijn van toepassing op verschillende typen aanbiedingen.
+Categorieën en branches voor een andere online winkel zijn van toepassing op verschillende typen aanbiedingen.
 
-| Webwinkel | Categorieën <br>per winkel | Categorieën <br>per winkel | Branches <br> voor AppSource |
+| Online winkel | Categorieën <br>per online winkel | Categorieën <br>per online winkel | Branches <br> voor AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Aanbiedings type**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure-app | X | |
@@ -48,9 +48,9 @@ Categorieën en branches voor een andere winkel zijn van toepassing op verschill
 
 ### <a name="categories"></a>Categorieën
 
-Microsoft AppSource en Azure Marketplace zijn twee verschillende winkels die unieke klant vereisten bieden. Azure Marketplace streeft ernaar IT-professionals en ontwikkel aars bij het bouwen van oplossingen op Azure.  Microsoft AppSource streeft naar zakelijke gebruikers die op zoek zijn naar zakelijke en/of hoogopgeleide SaaS-toepassingen, een Dynamics 365-invoeg toepassing, Microsoft 365-invoeg toepassingen en Power platform-apps.
+Microsoft AppSource en Azure Marketplace zijn twee verschillende online winkels die voldoen aan unieke klant vereisten. Azure Marketplace streeft ernaar IT-professionals en ontwikkel aars bij het bouwen van oplossingen op Azure.  Microsoft AppSource streeft naar zakelijke gebruikers die op zoek zijn naar zakelijke en/of hoogopgeleide SaaS-toepassingen, een Dynamics 365-invoeg toepassing, Microsoft 365-invoeg toepassingen en Power platform-apps.
 
-Categorieën en subcategorieën worden toegewezen aan elke winkel op basis van de doel groep. Uw aanbieding wordt gepubliceerd op Microsoft AppSource of Azure Marketplace, afhankelijk van het type aanbieding, de transactie mogelijkheden van de aanbieding en categorie/subcategorie. 
+Categorieën en subcategorieën worden toegewezen aan elke online winkel op basis van de doel groep. Uw aanbieding wordt gepubliceerd op Microsoft AppSource of Azure Marketplace, afhankelijk van het type aanbieding, de transactie mogelijkheden van de aanbieding en categorie/subcategorie. 
 
 Selecteer categorieën en subcategorieën die het beste aansluiten bij uw aanbieding en uw beoogde doel groep. U kunt het volgende selecteren:
 
@@ -61,9 +61,9 @@ Selecteer categorieën en subcategorieën die het beste aansluiten bij uw aanbie
 
 **BELANG rijk: SaaS-aanbiedingen en Microsoft 365-invoeg toepassingen**
 
-Raadpleeg de [hand leiding van het aanbiedings type](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) voor specifieke informatie over hoe de Transact-mogelijkheden kunnen beïnvloeden hoe uw aanbieding kan worden weer gegeven en gekocht door klanten van Marketplace. Voor SaaS-aanbiedingen is de transactie capaciteit van de aanbieding en de categorie selectie bepaalt de winkel waar uw aanbieding wordt gepubliceerd:
+Raadpleeg de [hand leiding van het aanbiedings type](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) voor specifieke informatie over hoe de Transact-mogelijkheden kunnen beïnvloeden hoe uw aanbieding kan worden weer gegeven en gekocht door klanten van Marketplace. Voor SaaS-aanbiedingen wordt de transactie capaciteit van de aanbieding en de categorie selectie bepaald door de online winkel waar uw aanbieding wordt gepubliceerd:
 
-| SaaS-aanbieding    | SaaS-aanbieding   | SaaS-aanbieding  | SaaS-aanbieding   | SaaS-aanbieding   | SaaS-aanbieding   | SaaS-aanbieding    | Toepasselijke winkel | Toepasselijke winkel |
+| Aanbieding voor SaaS    | Aanbieding voor SaaS   | Aanbieding voor SaaS  | Aanbieding voor SaaS   | Aanbieding voor SaaS   | Aanbieding voor SaaS   | Aanbieding voor SaaS    | Toepas bare online winkel| Toepas bare online winkel |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | Factuur met data limiet | Microsoft 365-invoeg toepassingen | Contact opnemen | Transact (ten minste 1 abonnement) | Persoonlijk abonnement | Alleen openbaar abonnement | Privé-abonnementen openbaar & | AppSource | Azure Marketplace |
 |  | X |  |  |  |  |  | X |  |
@@ -117,8 +117,8 @@ Selecteer de producten die van toepassing zijn op uw app voor de aanbieding om w
 
 Tref woorden kunnen klanten helpen bij het zoeken naar uw aanbieding. Bepaal de belangrijkste Zoek woorden voor uw aanbieding, neem deze op in de samen vatting en beschrijving van uw aanbieding, evenals in het gedeelte tref woorden van de sectie met details van de aanbieding.
 
-## <a name="storefront-marketing-details"></a>Marketing Details van winkel
-| Winkel instelling | Best practice |
+## <a name="online-store-marketing-details"></a>Marketing Details voor online winkels
+| Instelling | Best practice |
 |:--- |:--- |  
 | Logo van aanbieding (PNG-indeling, 48 &nbsp; &times; &nbsp; 48): zoek pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de zoek pagina van uw aanbieding. |
 | Logo van aanbieding (PNG-indeling, 216 &nbsp; &times; &nbsp; 216): app-details pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de pagina met details van de app van uw aanbieding. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 164a0e295179bb0c1e8d7da6b43d8e07a4e9f4e9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304408"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606802"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Veelgestelde vragen over Api's voor SaaS-uitvoering
 
@@ -63,13 +63,13 @@ De reactie op de `Resolve` API omvat de aanbieding en plan informatie die is gek
 >[!Note]
 >U kunt downgrades blok keren als u geen specifieke conversie paden wilt ondersteunen.
 
-In de onderstaande volg orde wordt de stroom vastgelegd wanneer een Azure-klant het abonnement wijzigt in de SaaS-ervaring:
+In de onderstaande volg orde wordt de stroom vastgelegd wanneer een Azure-klant een abonnement in de SaaS-ervaring wijzigt:
 
 ![Wijzigings stroom van klant abonnement](media/saas-metering-service-integration-flow-b.png)
 
-In de onderstaande volg orde wordt de stroom vastgelegd wanneer een Azure-klant verandert in het abonnement van micro soft
+In de onderstaande volg orde wordt de stroom vastgelegd wanneer een Azure-klant een abonnement in de online winkel van micro soft wijzigt:
 
-![Wijzigings stroom klant-winkel abonnement](media/saas-metering-service-integration-flow-c.png)
+![Wijzigings stroom klant Online Store-plan](media/saas-metering-service-integration-flow-c.png)
 
 ### <a name="how-can-the-azure-user-unsubscribe-from-the-plan-associated-with-azure-subscription"></a>Hoe kan de Azure-gebruiker zich afmelden voor het plan dat is gekoppeld aan het Azure-abonnement?
 
@@ -79,9 +79,9 @@ In de onderstaande volg orde wordt de stroom vastgelegd wanneer een Azure-klant 
 
 ![Klant heeft zich afgemeld bij de SaaS-ervaring](media/saas-metering-service-integration-flow-d.png)
 
-In de onderstaande volg orde wordt de stroom vastgelegd wanneer de Azure-gebruiker zich afmeldt op de winkel van micro soft:
+In de onderstaande volg orde wordt de stroom vastgelegd wanneer de Azure-gebruiker zich afmeldt in de online winkel van micro soft:
 
-![Klant heeft zich afgemeld op de winkel van micro soft](media/saas-metering-service-integration-flow-e.png)
+![Klant heeft zich afgemeld in de online winkel van micro soft](media/saas-metering-service-integration-flow-e.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

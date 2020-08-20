@@ -6,22 +6,23 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: af63ef6f33cc0e3dfe7f186ad2e36b854a728c6b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3c13d37e62da8abfa860d5fdbdf186302519c93e
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120573"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606492"
 ---
-# <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Verbinding maken met beheerde identiteit voor Azure Database for MySQL
+# <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Een beheerde identiteit verbinden met Azure Database for MySQL
 
-In dit artikel leest u hoe u een door de gebruiker toegewezen identiteit voor een virtuele Azure-machine (VM) gebruikt om toegang te krijgen tot een Azure Database for MySQL-server. Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. In deze zelfstudie leert u procedures om het volgende te doen:
+In dit artikel leest u hoe u een door de gebruiker toegewezen identiteit voor een virtuele Azure-machine (VM) gebruikt om toegang te krijgen tot een Azure Database for MySQL-server. Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. 
 
-> [!div class="checklist"]
-> * Uw VM toegang verlenen tot een Azure Database for MySQL server
-> * Maak een gebruiker in de data base die de door de gebruiker toegewezen identiteit van de virtuele machine vertegenwoordigt
-> * Een toegangs Token ophalen met behulp van de VM-identiteit en dit gebruiken om een Azure Database for MySQL server op te vragen
-> * Het ophalen van tokens implementeren in een C#-voorbeeld toepassing
+In deze zelfstudie leert u procedures om het volgende te doen:
+
+- Uw VM toegang verlenen tot een Azure Database for MySQL server
+- Maak een gebruiker in de data base die de door de gebruiker toegewezen identiteit van de virtuele machine vertegenwoordigt
+- Een toegangs Token ophalen met behulp van de VM-identiteit en dit gebruiken om een Azure Database for MySQL server op te vragen
+- Het ophalen van tokens implementeren in een C#-voorbeeld toepassing
 
 > [!IMPORTANT]
 > Verbinding maken met een beheerde identiteit is alleen beschikbaar voor MySQL 5,7 en hoger.
@@ -83,7 +84,7 @@ Het ophalen van het token wordt uitgevoerd door een HTTP-aanvraag in te stellen 
 
 * `api-version` = `2018-02-01`
 * `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID`(die u eerder hebt opgehaald)
+* `client_id` = `CLIENT_ID` (die u eerder hebt opgehaald)
 
 U krijgt een JSON-resultaat dat een veld bevat `access_token` -deze lange tekst waarde is het token Managed Identity Access dat u als het wacht woord moet gebruiken wanneer u verbinding maakt met de data base.
 

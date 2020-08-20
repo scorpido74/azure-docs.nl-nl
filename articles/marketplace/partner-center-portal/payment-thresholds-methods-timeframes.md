@@ -1,22 +1,22 @@
 ---
 title: Details van uitbetaling per regio-micro soft Commercial Marketplace
-description: Meer informatie over hoe de geschatte tijd voor het overdragen van betalingen en de micro soft-winkelen van waaruit u betalingen kunt ontvangen, variëren, afhankelijk van uw land/regio en het account type voor de betaling.
+description: Meer informatie over hoe de geschatte tijd voor het overdragen van betalingen en de micro soft online winkels van waaruit u betalingen kunt ontvangen, variëren, afhankelijk van uw land/regio en het account type voor de betaling.
 author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 44246fa122b7c602e47c44e48c43c2a42d01de77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327324"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607286"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Betalingsdrempels, methoden en tijdsbestek
 
-De geschatte tijd voor het overdragen van betalingen en de winkelen waarvoor u betalingen kunt ontvangen, kunnen variëren, afhankelijk van uw land/regio en het account type voor de betaling. In dit artikel vindt u een overzicht van de betalings methoden die in elk land en elke regio worden ondersteund.
+De geschatte tijd voor het overdragen van betalingen en de online winkels waarvoor u betalingen kunt ontvangen, kunnen variëren, afhankelijk van uw land/regio en het account type voor de betaling. In dit artikel vindt u een overzicht van de betalings methoden die in elk land en elke regio worden ondersteund.
 
 Voor een bepaald land en elke regio betalen we met ACH/SEPA of Wired overschrijving. Sommige landen en regio's ondersteunen ook PayPal als betalings methode.
 
@@ -38,7 +38,7 @@ We sturen doorgaans elke betaling die in een bepaalde maand verschuldigd is door
 
 Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden gebruikt voor elke Marketplace. De drempel waarde voor betaling in alle gevallen is $50 USD.
 
-| Land/regio | Azure Marketplace | Store, Advertising, mixer en Minecraft | Kantoor | PayPal-betalingen  |
+| Land/regio | Azure Marketplace | Store, Advertising, mixer en Minecraft | Office | PayPal-betalingen  |
 | --- | --- | --- | --- | --- |
 | Afghanistan | Ja | Ja | Nee | Nee |
 | Albanië | Ja | Ja | Ja | Ja |

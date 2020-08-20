@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: f62483880d2572b6487c87bbd73e0dd7033238d3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166685"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606178"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -92,7 +92,7 @@ Er zijn twee soorten Azure-toepassings abonnementen: oplossings sjablonen en beh
 
 Alle Azure-toepassingen bevatten ten minste twee bestanden in de hoofdmap van een `.zip` Archief:
 
-* Een resource manager-sjabloon bestand [met de naammainTemplate.jsop](../../azure-resource-manager/resource-group-overview.md).  Met deze sjabloon worden de resources gedefinieerd die moeten worden geïmplementeerd in het Azure-abonnement van de klant. Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/resources/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
+* Een resource manager-sjabloon bestand [ met de naammainTemplate.jsop](../../azure-resource-manager/resource-group-overview.md).  Met deze sjabloon worden de resources gedefinieerd die moeten worden geïmplementeerd in het Azure-abonnement van de klant. Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/resources/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
 
 * Een definitie van de gebruikers interface voor de Azure-toepassing voor het maken van toepassingen met de naam [createUiDefinition.jsop](../../managed-applications/create-uidefinition-overview.md).  In de gebruikersinterface geeft u elementen op waarmee consumenten parameterwaarden kunnen opgeven.
 
@@ -103,7 +103,7 @@ Zie voor meer informatie over publicatie vereisten voor elk toepassings plan [op
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
 >[!NOTE]
->Nadat u een aanbieding hebt gepubliceerd, worden wijzigingen die u aanbrengt in het partner centrum pas weer gegeven in de winkel als u de aanbieding opnieuw publiceert. Zorg ervoor dat u de aanbieding altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
+>Nadat u een aanbieding hebt gepubliceerd, worden wijzigingen die u aanbrengt in het partner centrum pas in online winkels weer gegeven wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u de aanbieding altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/home).
 
@@ -464,7 +464,7 @@ Op dit tabblad kunt u de concept versie van uw technische configuratie bewerken.
 
 Alle Azure Application plan-pakketten moeten deze twee bestanden in de hoofdmap van een `.zip` Archief bevatten:
 
-* Een resource manager-sjabloon bestand [met de naammainTemplate.jsop](../../azure-resource-manager/resource-group-overview.md). Met deze sjabloon wordt de implementatie van resources in het Azure-abonnement van klanten geautomatiseerd.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/documentation/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
+* Een resource manager-sjabloon bestand [ met de naammainTemplate.jsop](../../azure-resource-manager/resource-group-overview.md). Met deze sjabloon wordt de implementatie van resources in het Azure-abonnement van klanten geautomatiseerd.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/documentation/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
 * Een definitie van de gebruikers interface voor de Azure-toepassing voor het maken van toepassingen met de naam [createUiDefinition.jsop](../../azure-resource-manager/managed-application-createuidefinition-overview.md).
 
 De maximale bestands grootte die wordt ondersteund zijn:
@@ -555,7 +555,7 @@ Als u een test drive wilt inschakelen, schakelt u het selectie vakje **een test 
 Als u wilt dat het test station namens u kan worden geïmplementeerd, maakt en geeft u een afzonderlijk, uniek Azure-abonnement (niet vereist voor Power BI test stations).
 
 * **Azure-abonnements-id** (vereist voor Azure Resource Manager en Logic apps): Voer de abonnements-id in om toegang te verlenen tot uw Azure-account services voor rapportage en facturering van resource gebruik. Het is raadzaam om [een afzonderlijk Azure-abonnement te maken](../../billing/billing-create-subscription.md) dat u voor test stations kunt gebruiken als u er nog geen hebt. U kunt uw Azure-abonnements-ID vinden door u aan te melden bij de [Azure Portal](https://portal.azure.com/) en te navigeren naar het tabblad **abonnementen** van het menu aan de linkerkant. Als u het tabblad selecteert, wordt uw abonnements-ID weer gegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
-* **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL op: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+* **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL op:  [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Naam van Azure AD-Tenant** (vereist voor dynamische 365): Voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). in de rechter bovenhoek wordt de naam van de Tenant vermeld onder uw account naam.
 * **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links Navigator, selecteert u **app-registraties**en zoekt u naar het **toepassings-id** -nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 * **Azure Active Directory toepassings client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het menu links het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert voordat u deze pagina verlaat.)

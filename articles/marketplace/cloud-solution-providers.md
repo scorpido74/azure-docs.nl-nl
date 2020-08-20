@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082799"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607482"
 ---
 # <a name="cloud-solution-provider-program"></a>Programma Cloud Solution Provider
 
-In dit artikel wordt uitgelegd hoe u uw aanbieding zo configureert dat deze beschikbaar is voor het programma Cloud Solution Provider (CSP). Naast het publiceren van uw aanbiedingen via de [webwinkels voor commerciële Marketplace](comparing-appsource-azure-marketplace.md), kunt u ook via het CSP-programma verkopen om miljoenen micro soft-klanten te bereiken die het programma gebruikt.
+In dit artikel wordt uitgelegd hoe u uw aanbieding zo configureert dat deze beschikbaar is voor het programma Cloud Solution Provider (CSP). Naast het publiceren van uw aanbiedingen via [online winkels voor commerciële Marketplace](comparing-appsource-azure-marketplace.md)kunt u ook via het CSP-programma verkopen om miljoenen micro soft-klanten te bereiken die het programma gebruikt.
 
 U kunt nieuwe of bestaande aanbiedingen voor Beschik baarheid configureren in het CSP-programma, zodat CSP-partners uw producten kunnen verkopen en gebundelde oplossingen voor klanten kunnen maken.
 
@@ -166,7 +166,7 @@ Als uw aanbieding momenteel is ingesteld op **3: geen partners in het CSP-progra
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Verkoop-en ondersteunings materialen delen met partners in het CSP-programma
 
-Om ervoor te zorgen dat partners in het Cloud Solution Provider-programma het meest effectief vertegenwoordigen en samen werken met uw organisatie, moet u verkoop-en ondersteunings materialen verzenden die beschikbaar zijn voor de wederverkopers. Deze resources worden niet blootgesteld aan klanten in de Marketplace-winkel.
+Om ervoor te zorgen dat partners in het Cloud Solution Provider-programma het meest effectief vertegenwoordigen en samen werken met uw organisatie, moet u verkoop-en ondersteunings materialen verzenden die beschikbaar zijn voor de wederverkopers. Deze resources worden niet blootgesteld aan klanten in de online winkels.
 
 ### <a name="partner-center-csp-channel"></a>Partner centrum CSP-kanaal
 
