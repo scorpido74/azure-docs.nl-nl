@@ -1,14 +1,14 @@
 ---
 title: 'Patroon: Tags gebruiken in een beleidsdefinitie'
 description: Dit Azure Policy-patroon biedt voorbeelden van hoe u tags met een parameter kunt toevoegen aan, of tags kunt overnemen van een resourcegroep in een beleidsdefinitie.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: b71a21fadfc8dec3da2feabbce127303174a95d3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3016fc7889f68fd13e993c67ca645a4af055c651
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83704342"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545553"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy-patroon: tags
 
