@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 6000bffb80c83ffce58605bcc7e5bfaf404329da
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: d063418bb8e78bf306dda8fc558bb0e3005dbd0a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986675"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584893"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Coderen met de Azure Digital Twins-API's
 
@@ -48,7 +48,7 @@ Voeg vervolgens twee vereiste afhankelijkheden toe voor het werken met Azure Dig
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
+dotnet add package Azure.identity --version 1.1.1
 ```
 
 De eerste afhankelijkheid is de [Azure IoT Digital-clientbibliotheek voor .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). De tweede afhankelijkheid biedt hulpprogramma's voor de verificatie bij Azure.

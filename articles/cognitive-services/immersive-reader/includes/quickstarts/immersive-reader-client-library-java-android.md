@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 06/10/2020
 ms.custom: devx-track-java, devx-track-javascript
 ms.author: dylankil
-ms.openlocfilehash: 5ea35d6da2e76d5eacc76829c9da93f82a842271
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 63a7e7756eee80b8d57c168890ba3613bbd11f01
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424956"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602300"
 ---
 De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om leesvaardigheid te verbeteren.
 
 In deze Quickstart maakt u een nieuwe Android-app en integreert u de insluitende lezer. U vindt [op GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) een volledig werkend voorbeeld van deze quickstart.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 68009797e48ab15c1c8df983b3413d7b7dac54b0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fdcffeda1c57cdb043c51c8a3640006be8ae7418
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425037"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602504"
 ---
 De [Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma waarmee bewezen technieken worden geïmplementeerd om de leesvaardigheid te verbeteren.
 
 In deze Quickstart maakt u een nieuwe web-app en integreert u de Insluitende lezer door de clientbibliotheek voor de insluitende lezer te gebruiken. U vindt [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp) een volledig werkend voorbeeld van deze quickstart.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 

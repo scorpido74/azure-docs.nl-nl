@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 2b389b71e15edcf0558b2ce60290c1ad7b171eab
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50414d48c3368ddf409630422d3316cdc45a63fe
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030537"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587392"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>De API van Azure Cosmos DB voor MongoDB (versie 3.6): ondersteunde functies en syntaxis
 
@@ -137,7 +137,7 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 |$lookup    |    Ja|
 |$out        |Ja|
 |$indexStats|        Nee|
-|$facet    |Nee|
+|$facet    |Ja|
 |$bucket|    Nee|
 |$bucketAuto|    Nee|
 |$sortByCount|    Ja|

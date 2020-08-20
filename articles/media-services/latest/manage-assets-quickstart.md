@@ -3,12 +3,15 @@ title: De portal gebruiken om inhoud te uploaden, coderen en streamen - Azure
 description: In deze quickstart ziet u hoe u de portal kunt gebruiken om inhoud te uploaden, coderen en streamen met Azure Media Services.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: IngridAtMicrosoft
+ms.author: inhenkel
+manager: femila
+ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053348"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605674"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Quickstart: Inhoud uploaden, coderen en streamen met de portal
 
@@ -28,7 +31,6 @@ In deze quickstart ziet u hoe u Azure Portal kunt gebruiken om inhoud te uploade
 
   * [Uploaden naar en opslaan in de cloud](storage-account-concept.md)
   * [Het concept van assets](assets-concept.md)
-  * [Assets beheren](manage-asset-concept.md)
 * Wanneer u uw digitale mediabestand van hoge kwaliteit hebt geüpload naar een asset (een invoerasset), kunt u het verwerken (coderen of analyseren). De verwerkte inhoud gaat naar een andere asset (uitvoerasset). 
     * [Codeer](encoding-concept.md) uw geüploade bestand in indelingen die kunnen worden afgespeeld via een groot aantal verschillende browsers en apparaten.
     * [Analyseer](analyzing-video-audio-files-concept.md) uw geüploade bestand. 

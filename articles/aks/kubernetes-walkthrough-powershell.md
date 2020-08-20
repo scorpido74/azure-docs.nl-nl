@@ -3,14 +3,14 @@ title: 'Quickstart: Een AKS-cluster implementeren met behulp van PowerShell'
 description: Informatie over hoe u snel een Kubernetes-cluster kunt maken, een toepassing kunt implementeren en de prestaties in Azure Kubernetes Service (AKS) kunt bewaken met behulp van PowerShell.
 services: container-service
 ms.topic: quickstart
-ms.date: 05/26/2020
+ms.date: 08/18/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 219772fd81617dc3e69b452057e0122eedef69f9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4dde1dcd131a497b60a314513df44cc0443d28ed
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499854"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589970"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Quickstart: een Azure Kubernetes Service-cluster met behulp van PowerShell
 
@@ -101,10 +101,6 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.15.10
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
 In een Kubernetes-manifestbestand wordt een gewenste status voor het cluster gedefinieerd, zoals welke containerinstallatiekopieën moeten worden uitgevoerd. In deze snelstart worden met behulp van een manifest alle objecten gemaakt die nodig zijn om de Azure Vote-toepassing uit te voeren. Dit manifest bevat twee [Kubernetes-implementaties][kubernetes-deployment], een voor de Azure Vote Python-voorbeeldtoepassingen en een voor een instantie van Redis. Er worden bovendien twee Kubernetes-services gemaakt: een interne service voor de Redis-instantie en een externe service voor toegang tot de Azure Vote-toepassing vanaf internet.
-
-> [!TIP]
-> In deze snelstart maakt en implementeert u handmatig uw toepassingsmanifesten in het AKS-cluster.
-> In meer praktijkgerichte scenario’s kunt u [Azure Dev Spaces][azure-dev-spaces] gebruiken om uw code snel te herhalen en fouten op te sporen, rechtstreeks in het AKS-cluster. U kunt Dev Spaces gebruiken op alle OS-platformen en in alle ontwikkelomgevingen, en u kunt samenwerken met andere leden van uw team.
 
 Maak een bestand met de naam `azure-vote.yaml` en kopieer de volgende YAML-definitie naar het bestand. Als u Azure Cloud Shell gebruikt, kan dit bestand worden gemaakt met behulp van `vi` of `nano`, zoals bij een virtueel of fysiek systeem:
 

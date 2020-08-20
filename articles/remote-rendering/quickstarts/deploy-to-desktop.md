@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e1a6cb583c0d310cc7ce73995224c42bb84784d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557067"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566162"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Quickstart: Unity-voorbeeld implementeren in Desktop
 
@@ -58,9 +58,6 @@ Alleen platte bureaublad-apps worden momenteel op het bureaublad ondersteund, du
 1. Schakel de foutopsporingsmodus in op **Lokale machine**.\
   ![Configuratie van de oplossing](./media/unity-deploy-config-pc.png)
 1. Bouw de oplossing (F7).
-
-> [!WARNING]
-> Zorg ervoor dat u **x86**selecteert. **UWP/x64** wordt momenteel niet ondersteund, zie [platformbeperkingen](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>Het voorbeeldproject openen
 

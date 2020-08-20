@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 212aa3613335fe60bab2fa3d4f632577418a7d41
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038190"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602436"
 ---
 De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma waarmee bewezen technieken worden geïmplementeerd om de leesvaardigheid te verbeteren.
 
 In deze quickstart maakt u een nieuwe iOS-app en integreert u de insluitende lezer. U vindt [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios) een volledig werkend voorbeeld van deze quickstart.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 

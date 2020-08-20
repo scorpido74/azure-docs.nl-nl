@@ -8,18 +8,18 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
 ms.date: 07/30/2020
-ms.openlocfilehash: 55bc13caec8a48ed058ea38bdc0ebe487839eef3
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: fdae79912e6fe3bf2f7d55b7405cb7883e484c47
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461099"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602241"
 ---
 [Referentiedocumentatie](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 * De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
 ## <a name="using-this-quickstart"></a>Het gebruik van deze quickstart
@@ -143,7 +143,7 @@ Voeg de volgende methoden toe, waarmee [de inhoudskeuzes worden opgehaald](#get-
 
 ## <a name="request-the-best-action"></a>De beste actie aanvragen
 
-Als u de Positie-aanvraag wilt voltooien, wordt naar de voorkeuren van de gebruiker gevraagd om een `currentContent` van de inhoudskeuzes te maken. Het proces kan inhoud maken die van de acties wordt uitgesloten, weergegeven als `excludeActions`. De Positie-aanvraag heeft de acties en hun kenmerken, currentcontext-kenmerken, excludeActions en een unieke gebeurtenis-id nodig om de reactie te kunnen ontvangen.
+Als u de Positie-aanvraag wilt voltooien, wordt naar de voorkeuren van de gebruiker gevraagd om een `currentContext` van de inhoudskeuzes te maken. Het proces kan inhoud maken die van de acties wordt uitgesloten, weergegeven als `excludeActions`. De Positie-aanvraag heeft de acties en hun kenmerken, currentcontext-kenmerken, excludeActions en een unieke gebeurtenis-id nodig om de reactie te kunnen ontvangen.
 
 Deze quickstart bevat eenvoudige contextkenmerken over het tijdstip van de dag en de voedselvoorkeur van de gebruiker. In productiesystemen kan het bepalen en [evalueren](../concept-feature-evaluation.md) van [acties en kenmerken](../concepts-features.md) een ingewikkelde zaak zijn.
 
