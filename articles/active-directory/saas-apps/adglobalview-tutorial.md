@@ -2,26 +2,21 @@
 title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding en ADP Globalview | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding configureert tussen Azure Active Directory en ADP Globalview.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ffb6464f-714d-41a9-869a-2b7e5ae9f125
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dddb07d394dfd3ec15b6377d283420112233a5e
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: e9f3cbb26e728e4572d48175ca0e2ec08a3878b6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608905"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537614"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding en ADP Globalview
 
