@@ -1,15 +1,15 @@
 ---
 title: 'Quickstart: Nieuwe beleidstoewijzing met sjablonen'
 description: In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een beleidstoewijzing te maken om niet-compatibele resources te identificeren.
-ms.date: 05/21/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: f4cb4cb1fc56d06ab1e061b2d0e9a031e0e511dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 93c8e907190a3e87c3c0ce3392ccfd7fd4d2e515
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242046"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520869"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Quickstart: Een beleidstoewijzing maken met behulp van een ARM-sjabloon om niet-compatibele resources te identificeren
 
@@ -54,7 +54,7 @@ De resource die is gedefinieerd in de sjabloon:
    | Abonnement | Selecteer uw Azure-abonnement. |
    | Resourcegroep | Selecteer **Nieuwe maken**, geef een naam op en selecteer vervolgens **OK**. In de schermopname is de naam van de resource groep _mypolicyquickstart\<Date in MMDD\>rg_. |
    | Locatie | Selecteer een regio. Bijvoorbeeld **VS - centraal**. |
-   | Naam voor beleidstoewijzing | Geef een naam op voor de beleidstoewijzing. U kunt de weergave voor de beleidsdefinitie gebruiken, als u wilt. Bijvoorbeeld **Controleer virtuele machines die niet gebruikmaken van beheerde schijven**. |
+   | Naam voor beleidstoewijzing | Geef een naam op voor de beleidstoewijzing. U kunt de weergave voor de beleidsdefinitie gebruiken, als u wilt. Bijvoorbeeld _Controleer virtuele machines die niet gebruikmaken van beheerde schijven_. |
    | Rg-naam | Geef een naam op voor de resourcegroep waaraan u het beleid wilt toewijzen. In deze quickstart gebruikt u de standaardwaarde **[resourceGroup ().name]** . **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** is een sjabloonfunctie waarmee de resourcegroep wordt opgehaald. |
    | Beleidsdefinitie-id | Geef **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a** op. |
    | Ik ga akkoord met de bovenstaande voorwaarden | (Selecteren) |
@@ -70,7 +70,7 @@ Een aantal aanvullende bronnen:
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-Selecteer **Naleving** links op de pagina. Zoek dan de beleidstoewijzing **Virtuele machines zonder beheerde schijven controleren** die u hebt gemaakt.
+Selecteer **Naleving** links op de pagina. Zoek dan de beleidstoewijzing _Virtuele machines zonder beheerde schijven controleren_ die u hebt gemaakt.
 
 :::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Overzichtspagina van Policy-naleving" border="false":::
 
@@ -82,9 +82,9 @@ Zie [Hoe naleving werkt](./how-to/get-compliance-data.md#how-compliance-works) v
 
 Als u de gemaakte toewijzing wilt verwijderen, volgt u deze stappen:
 
-1. Selecteer **Naleving** (of **Toewijzingen**) aan de linkerkant van de pagina Azure Policy en zoek de beleidstoewijzing **Controleren van virtuele machines die geen beheerde schijven gebruiken** die u hebt gemaakt.
+1. Selecteer **Naleving** (of **Toewijzingen**) aan de linkerkant van de pagina Azure Policy en zoek de beleidstoewijzing _Controleren van virtuele machines die geen beheerde schijven gebruiken_ die u hebt gemaakt.
 
-1. Klik met de rechtermuisknop op de beleidstoewijzing **Controleer virtuele machines die niet gebruikmaken van beheerde schijven** en selecteer **Toewijzing verwijderen**.
+1. Klik met de rechtermuisknop op de beleidstoewijzing _Controleer virtuele machines die niet gebruikmaken van beheerde schijven_ en selecteer **Toewijzing verwijderen**.
 
    :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Een toewijzing verwijderen van de overzichtspagina voor naleving" border="false":::
 
