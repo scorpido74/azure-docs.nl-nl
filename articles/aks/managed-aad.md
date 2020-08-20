@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: fd13fbc3b1ada0a9e974742d36bd231e3caf6ef6
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799854"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661058"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-beheerde Azure Active Directory-integratie
 
@@ -20,7 +20,7 @@ Azure AD-integratie met AKS is ontworpen om de Azure AD-integratie ervaring te v
 
 Cluster beheerders kunnen op rollen gebaseerd toegangs beheer (RBAC) Kubernetes configureren op basis van de identiteit van een gebruiker of het lidmaatschap van de Directory groep. Azure AD-verificatie wordt geleverd voor AKS-clusters met OpenID Connect Connect. OpenID Connect Connect is een id-laag die boven op het OAuth 2,0-protocol is gebouwd. Voor meer informatie over OpenID Connect Connect raadpleegt u de [Open-ID Connect-documentatie][open-id-connect].
 
-Meer informatie over de AAD-integratie stroom vindt u in de [documentatie over integratie concepten van Azure Active Directory](concepts-identity.md#azure-active-directory-integration).
+Meer informatie over de Azure AD-integratie stroom vindt u in de [documentatie over integratie concepten van Azure Active Directory](concepts-identity.md#azure-active-directory-integration).
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
@@ -32,8 +32,8 @@ AKS-beheerde Azure Active Directory integratie is beschikbaar in open bare regio
 ## <a name="limitations"></a>Beperkingen 
 
 * AKS-beheerde Azure AD-integratie kan niet worden uitgeschakeld
-* niet-RBAC ingeschakelde clusters worden niet ondersteund voor door AKS beheerde AAD-integratie
-* Het wijzigen van de Azure AD-Tenant die is gekoppeld aan AKS beheerde AAD-integratie wordt niet ondersteund
+* niet-RBAC ingeschakelde clusters worden niet ondersteund voor door AKS beheerde Azure AD-integratie
+* Het wijzigen van de Azure AD-Tenant die is gekoppeld aan AKS beheerde Azure AD-integratie, wordt niet ondersteund
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -139,6 +139,31 @@ Als u deze stappen wilt uitvoeren, moet u toegang hebben tot de ingebouwde rol [
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster --admin
 ```
 
+## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>Door AKS beheerde Azure AD-integratie inschakelen op uw bestaande cluster
+
+U kunt AKS-beheerde Azure AD-integratie inschakelen op uw bestaande RBAC-cluster. Zorg ervoor dat u uw beheerders groep instelt om toegang te houden tot uw cluster.
+
+```azurecli-interactive
+az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]
+```
+
+Een geslaagde activering van een Azure AD-cluster dat door AKS wordt beheerd, heeft de volgende sectie in de antwoord tekst
+
+```output
+"AADProfile": {
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
+    "clientAppId": null,
+    "managed": true,
+    "serverAppId": null,
+    "serverAppSecret": null,
+    "tenantId": "72f9****-****-****-****-****d011db47"
+  }
+```
+
+Down load de gebruikers referenties opnieuw om toegang te krijgen tot uw cluster door de stappen [hier][access-cluster]te volgen.
+
 ## <a name="upgrading-to-aks-managed-azure-ad-integration"></a>Upgrade uitvoeren naar AKS-beheerde Azure AD-integratie
 
 Als uw cluster gebruikmaakt van verouderde Azure AD-integratie, kunt u een upgrade uitvoeren naar AKS-beheerde Azure AD-integratie.
@@ -174,7 +199,7 @@ Er zijn een aantal niet-interactieve scenario's, zoals continue integratie pijpl
 * Meer informatie over [Azure AD-integratie met KUBERNETES RBAC][azure-ad-rbac].
 * Gebruik [kubelogin](https://github.com/Azure/kubelogin) om toegang te krijgen tot functies voor Azure-verificatie die niet beschikbaar zijn in kubectl.
 * Meer informatie over [AKS-en Kubernetes-identiteits concepten][aks-concepts-identity].
-* Gebruik [Azure Resource Manager (arm)-Sjablonen][aks-arm-template] voor het maken van met AKS beheerde Azure AD-clusters.
+* Gebruik [Azure Resource Manager (arm)-Sjablonen ][aks-arm-template] voor het maken van met AKS beheerde Azure AD-clusters.
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

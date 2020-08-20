@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 5f42079d271a933cb9a722c7e33e6f646f7c4d1b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210514"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661415"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -223,12 +223,15 @@ Zie [Aanbevolen procedures voor opslag in algemeen](https://techcommunity.micros
 Nee, back-upopslag wordt niet afgetrokken van de opslag ruimte voor uw beheerde exemplaar. De back-upopslag is onafhankelijk van de opslag ruimte van het exemplaar en is niet beperkt. Back-upopslag wordt beperkt door de tijds periode voor het bewaren van de back-up van uw exemplaar databases en kan Maxi maal 35 dagen worden geconfigureerd. Zie [automatische back-ups](../database/automated-backups-overview.md)voor meer informatie.
 
 **Hoe kan ik zien wanneer automatische back-ups worden gemaakt op mijn beheerde exemplaar?**
+
 Zie [de geautomatiseerde back-up voor een Azure SQL Managed instance volgen](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355)om bij te houden wanneer geautomatiseerde back-ups zijn uitgevoerd op een beheerd exemplaar.
 
 **Wordt back-up op aanvraag ondersteund?**
+
 Ja, u kunt een volledige back-up in hun Azure-Blob Storage maken, maar deze kan alleen worden vrijgemaakt in een beheerd exemplaar. Zie [kopie-only backup](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)voor meer informatie. Alleen back-ups kopiëren is niet mogelijk als de data base is versleuteld met TDE die door de service worden beheerd, omdat het certificaat dat voor versleuteling wordt gebruikt, niet toegankelijk is. In dat geval kunt u de functie voor het herstellen van een punt gebruiken om de data base te verplaatsen naar een ander SQL-beheerd exemplaar of over te scha kelen naar een door de klant beheerde sleutel.
 
 **Wordt systeem eigen herstel (van. bak-bestanden) naar een beheerd exemplaar ondersteund?**
+
 Ja, het wordt ondersteund en is beschikbaar voor SQL Server 2005 en versies.  Als u systeem eigen herstel wilt gebruiken, uploadt u uw. bak-bestand naar Azure Blob-opslag en voert u T-SQL-opdrachten uit. Zie [systeem eigen herstel van URL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)voor meer informatie.
 
 ## <a name="business-continuity"></a>Bedrijfscontinuïteit
@@ -503,6 +506,14 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
 (Vervang ' test ' door de gewenste aanmeldings naam en pas het beleid en de verval waarden aan)
+
+
+## <a name="service-updates"></a>Service-updates
+
+**Wat is een gepland onderhouds gebeurtenis voor een SQL Managed instance?**
+
+Zie [Azure-onderhouds gebeurtenissen plannen in SQL Managed instance](https://docs.microsoft.com/azure/azure-sql/database/planned-maintenance). 
+
 
 ## <a name="azure-feedback-and-support"></a>Feedback en ondersteuning van Azure
 

@@ -2,13 +2,13 @@
 title: Toegang tot openbare register configureren
 description: Configureer IP-regels voor toegang tot een Azure container Registry vanuit geselecteerde open bare IP-adressen of adresbereiken.
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523822"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660922"
 ---
 # <a name="configure-public-ip-network-rules"></a>Open bare IP-netwerk regels configureren
 
@@ -61,12 +61,12 @@ az acr network-rule add \
 
 U kunt het open bare eind punt ook uitschakelen in het REGI ster. Als u het open bare eind punt uitschakelt, worden alle firewall configuraties overschreven. U kunt bijvoorbeeld open bare toegang tot een REGI ster uitschakelen dat is beveiligd in een virtueel netwerk met behulp van een [persoonlijke koppeling](container-registry-private-link.md).
 
+> [!NOTE]
+> Als het REGI ster is ingesteld in een virtueel netwerk met een [service-eind punt](container-registry-vnet.md)en de toegang tot het open bare eind punt van het REGI ster wordt uitgeschakeld, wordt de toegang tot het REGI ster in het virtuele netwerk uitgeschakeld.
+
 ### <a name="disable-public-access---cli"></a>Open bare toegang uitschakelen-CLI
 
-Als u open bare toegang wilt uitschakelen met behulp van de Azure CLI, voert u [AZ ACR update][az-acr-update] uit en stelt `--public-network-enabled` u in op `false` . 
-
-> [!NOTE]
-> Het `public-network-enabled` argument vereist Azure CLI 2.6.0 of hoger. 
+Als u open bare toegang wilt uitschakelen met behulp van de Azure CLI, voert u [AZ ACR update][az-acr-update] uit en stelt `--public-network-enabled` u in op `false` . Het `public-network-enabled` argument vereist Azure CLI 2.6.0 of hoger. 
 
 ```azurecli
 az acr update --name myContainerRegistry --public-network-enabled false

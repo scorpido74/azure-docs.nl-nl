@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/05/2020
-ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/20/2020
+ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211516"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660966"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 11
 
@@ -147,9 +147,18 @@ Met de volgende stappen kunt u aan de slag gaan met een code migratie door de ee
    using Azure.Search.Documents.Models;
    ```
 
-1. Vervang [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) door [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential).
+1. Client verificatie code wijzigen. In vorige versies zou u eigenschappen op het client object gebruiken om de API-sleutel in te stellen (bijvoorbeeld de eigenschap [SearchServiceClient. credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) ). Gebruik in de huidige versie de [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) -klasse om de sleutel als referentie door te geven, zodat u, indien nodig, de API-sleutel kunt bijwerken zonder nieuwe client objecten te maken.
 
-1. Client Referenties bijwerken voor Indexeer functie-gerelateerde objecten. Als u Indexeer functies, gegevens bronnen of vaardig heden gebruikt, wijzigt u de client verwijzingen naar [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient). Deze client is nieuw in versie 11 en heeft geen ante cedent.
+   Client eigenschappen zijn gestroomlijnd tot alleen `Endpoint` , `ServiceName` en `IndexName` (indien van toepassing). In het volgende voor beeld wordt de systeem- [URI](https://docs.microsoft.com/dotnet/api/system.uri) -klasse gebruikt om het eind punt en de [omgevings](https://docs.microsoft.com//dotnet/api/system.environment) klasse op te geven voor het lezen van de sleutel waarde:
+
+   ```csharp
+   Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+   AzureKeyCredential credential = new AzureKeyCredential(
+      Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+   SearchIndexClient indexClient = new SearchIndexClient(endpoint, credential);
+   ```
+
+1. Voeg nieuwe client referenties toe voor Indexeer functie-gerelateerde objecten. Als u Indexeer functies, gegevens bronnen of vaardig heden gebruikt, wijzigt u de client verwijzingen naar [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient). Deze client is nieuw in versie 11 en heeft geen ante cedent.
 
 1. Client Referenties bijwerken voor query's en gegevens import. Instanties van [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) moeten worden gewijzigd in [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient). Zorg ervoor dat u alle exemplaren onderschept voordat u verdergaat met de volgende stap om naam Verwar ring te voor komen.
 

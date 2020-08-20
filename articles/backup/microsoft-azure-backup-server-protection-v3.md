@@ -3,12 +3,12 @@ title: Wat Azure Backup Server v3 RTM back-ups kan maken?
 description: Dit artikel bevat een beveiligings matrix met alle werk belastingen, gegevens typen en installaties die Azure Backup voor v3 RTM beveiligt.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86e192e13b49b89e8d66c5f912ef88f02a1b21b4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611973"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661279"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server v3 RTM-beveiligings matrix
 
@@ -32,9 +32,9 @@ In de volgende matrix ziet u wat kan worden beveiligd met Azure Backup Server v3
 |Servers (32-bit en 64-bit)|Windows Server 2012/2012 met SP1: Datacenter en Standard|Fysieke server<br /><br />Lokale Hyper-V virtuele machine<br /> <br /> Azure Stack|V3, V2|Volume, share, map, bestand, systeemstatus/bare metal<br /><br />Azure Backup Server moet worden uitgevoerd op mini maal Windows Server 2012 R2 om ontdubbelde volumes van Windows Server 2012 te beveiligen.|
 |Servers (32-bit en 64-bit)|Windows Server 2012/2012 met SP1: Datacenter en Standard|Azure virtuele machine (indien de werkbelasting wordt uitgevoerd als Azure virtuele machine)<br /> <br /> Azure Stack|V3, V2|Volume, share, map, bestand<br /><br />Azure Backup Server moet worden uitgevoerd op mini maal Windows Server 2012 R2 om ontdubbelde volumes van Windows Server 2012 te beveiligen.|
 |Servers (32-bit en 64-bit)|Windows Server 2012/2012 met SP1: Datacenter en Standard|Virtuele Windows-machine in VMware (beveiligt workloads die worden uitgevoerd in de virtuele Windows-machine in VMware)<br /> <br /> Azure Stack|V3, V2|Volume, share, map, bestand, systeemstatus/bare metal<br /><br />Azure Backup Server moet worden uitgevoerd op mini maal Windows Server 2012 R2 om ontdubbelde volumes van Windows Server 2012 te beveiligen.|
-|Servers (32-bit en 64-bit)|Windows Server 2008 R2 SP1: Standard en Enterprise|Fysieke server<br /><br />Lokale Hyper-V virtuele machine<br /> <br /> Azure Stack|V3, V2<br />U moet SP1 gebruiken en [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) installeren|Volume, share, map, bestand, systeemstatus/bare metal|
-|Servers (32-bit en 64-bit)|Windows Server 2008 R2 SP1: Standard en Enterprise|Azure virtuele machine (indien de werkbelasting wordt uitgevoerd als Azure virtuele machine)<br /> <br /> Azure Stack|V3, V2<br />U moet SP1 gebruiken en [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) installeren|Volume, share, map, bestand|
-|Servers (32-bit en 64-bit)|Windows Server 2008 R2 SP1: Standard en Enterprise|Virtuele Windows-machine in VMware (beveiligt workloads die worden uitgevoerd in de virtuele Windows-machine in VMWare)<br /> <br /> Azure Stack|V3, V2<br />U moet SP1 gebruiken en [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) installeren|Volume, share, map, bestand, systeemstatus/bare metal|
+|Servers (32-bit en 64-bit)|Windows Server 2008 R2 SP1: Standard en Enterprise|Fysieke server<br /><br />Lokale Hyper-V virtuele machine<br /> <br /> Azure Stack|V3, V2<br />U moet SP1 uitvoeren en [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) installeren|Volume, share, map, bestand, systeemstatus/bare metal|
+|Servers (32-bit en 64-bit)|Windows Server 2008 R2 SP1: Standard en Enterprise|Azure virtuele machine (indien de werkbelasting wordt uitgevoerd als Azure virtuele machine)<br /> <br /> Azure Stack|V3, V2<br />U moet SP1 uitvoeren en [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) installeren|Volume, share, map, bestand|
+|Servers (32-bit en 64-bit)|Windows Server 2008 R2 SP1: Standard en Enterprise|Virtuele Windows-machine in VMware (beveiligt workloads die worden uitgevoerd in de virtuele Windows-machine in VMWare)<br /> <br /> Azure Stack|V3, V2<br />U moet SP1 uitvoeren en [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) installeren|Volume, share, map, bestand, systeemstatus/bare metal|
 |Servers (32-bit en 64-bit)|Windows Server 2008 SP2|Fysieke server<br /><br />Lokale Hyper-V virtuele machine<br /> <br /> Azure Stack|Niet ondersteund|Volume, share, map, bestand, systeemstatus/bare metal|
 |Servers (32-bit en 64-bit)|Windows Server 2008 SP2|Virtuele Windows-machine in VMware (beveiligt workloads die worden uitgevoerd in de virtuele Windows-machine in VMware)<br /> <br /> Azure Stack|V3, V2|Volume, share, map, bestand, systeemstatus/bare metal|
 |Servers (32-bit en 64-bit)|Windows Storage Server 2008|Fysieke server<br /><br />Lokale Hyper-V virtuele machine<br /> <br /> Azure Stack|V3, V2|Volume, share, map, bestand, systeemstatus/bare metal|

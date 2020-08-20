@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/4/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921028"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661517"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Veelgestelde vragen over spraak naar tekst
 
@@ -75,7 +75,7 @@ Als u een model hebt aangepast en geïmplementeerd met basis lijn V 1.0, blijft 
 
 **V: mijn aanvragen worden beperkt?**
 
-**A**: de rest API beperkt aanvragen tot 25 per 5 seconden. Meer informatie vindt u op onze pagina's voor [spraak op tekst](speech-to-text.md).
+**A**: Zie de [quota en limieten voor spraak Services](speech-services-quotas-and-limits.md).
 
 **V: hoe worden er kosten in rekening gebracht voor Dual Channel audio?**
 
@@ -85,52 +85,14 @@ Als u een model hebt aangepast en geïmplementeerd met basis lijn V 1.0, blijft 
 > Neem contact op met een van de ondersteunings kanalen als u meer privacy-problemen hebt die verhinderen dat u de aangepaste spraak service kunt gebruiken.
 
 ## <a name="increasing-concurrency"></a>Gelijktijdige gelijktijdigheid
+Zie de [quota en limieten voor spraak Services](speech-services-quotas-and-limits.md).
 
-**V: wat moet ik doen als ik een hogere gelijktijdigheid nodig heb voor mijn geïmplementeerde model dan in de portal wordt aangeboden?**
-
-**A**: u kunt uw model omhoog schalen in stappen van 20 gelijktijdige aanvragen.
-
-Maak met de vereiste informatie een ondersteunings aanvraag in de [ondersteunings portal van Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Plaats de gegevens niet op een van de open bare kanalen (GitHub, stack overflow,...) die worden vermeld op de [ondersteunings pagina](support.md).
-
-We hebben de volgende informatie nodig om de gelijktijdigheid voor een ***aangepast model***te verg Roten:
-
-- De regio waar het model is geïmplementeerd,
-- de eind punt-ID van het geïmplementeerde model:
-  - Ontvangen naar de [Custom speech Portal](https://aka.ms/customspeech),
-  - aanmelden (indien nodig)
-  - Selecteer uw project en implementatie,
-  - Selecteer het eind punt waarvoor u de gelijktijdigheids toename wilt verhogen,
-  - Kopieer de `Endpoint ID` .
-
-We hebben de volgende informatie nodig om de gelijktijdigheid van een ***basis model***te verg Roten:
-
-- De regio van uw service,
-
-en ofwel
-
-- een toegangs token voor uw abonnement (Zie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token))
-
-of
-
-- de resource-ID voor uw abonnement:
-  - Ga naar de [Azure Portal](https://portal.azure.com),
-  - Selecteer `Cognitive Services` in het zoekvak,
-  - Kies in de weer gegeven Services de spraak service waarvoor u de gelijktijdigheid wilt verhogen,
-  - de `Properties` voor deze service weer geven
-  - Kopieer de volledige `Resource ID` .
-  
-**V: de limiet voor gelijktijdige overschrijdingen verhogen mijn kosten?**
-
-**A**: Nee, de kosten zijn gebaseerd op het gebruik. Het verg Roten van gelijktijdigheid leidt niet tot hogere kosten. Bekijk onze [pagina met prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) voor meer informatie over de kosten. 
-  
->[!NOTE]
->Voor [containers](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) zijn geen verhogingen van gelijktijdigheids limieten vereist, omdat containers alleen worden beperkt door de cpu's van de hardware waarop ze worden gehost.
 
 ## <a name="importing-data"></a>Gegevens importeren
 
 **V: wat is de limiet voor de grootte van een gegevensset en waarom is het de limiet?**
 
-**A**: de huidige limiet voor een gegevensset is 2 GB. De limiet wordt veroorzaakt door de beperking van de grootte van een bestand voor HTTP-upload.
+**A**: de limiet wordt veroorzaakt door de beperking van de grootte van een bestand voor http-upload. Zie de [quota en limieten voor spraak Services](speech-services-quotas-and-limits.md) voor de daad werkelijke limiet.
 
 **V: kan ik mijn tekst bestanden opzip zodat ik een groter tekst bestand kan uploaden?**
 
@@ -198,11 +160,11 @@ of
 
 **V: welke spraak ervaring zijn verbeterd door het Tenant model?**
 
-**A:** Wanneer het Tenant model is ingeschakeld, gemaakt en gepubliceerd, wordt het gebruikt voor het verbeteren van de herkenning van bedrijfs toepassingen die zijn gebouwd met behulp van de spraak service; Er wordt ook een AAD-token van de gebruiker door gegeven dat het lidmaatschap van de onderneming aangeeft.
+**A:** Wanneer het Tenant model is ingeschakeld, gemaakt en gepubliceerd, wordt het gebruikt voor het verbeteren van de herkenning van bedrijfs toepassingen die zijn gebouwd met behulp van de spraak service; Dit geeft ook een Azure AD-token van de gebruiker door dat het lidmaatschap van de onderneming aangeeft.
 
 De spraak ervaring die is ingebouwd in Office 365, zoals dicteer-en Power Point-ondertiteling, wordt niet gewijzigd wanneer u een Tenant model maakt voor uw speech service-toepassingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Problemen oplossen](troubleshooting.md)
-- [Releaseopmerkingen](releasenotes.md)
+- [Opmerkingen bij de release](releasenotes.md)

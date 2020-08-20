@@ -2,13 +2,13 @@
 title: Containerinstallatiekopieën importeren
 description: Container installatie kopieën importeren in een Azure container Registry met behulp van Azure Api's, zonder dat u docker-opdrachten hoeft uit te voeren.
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: a7a6566540880d027b1dc3428d394b352f34318d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 08/17/2020
+ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023513"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660492"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Container installatie kopieën importeren in een container register
 
@@ -28,6 +28,8 @@ Het importeren van afbeeldingen in een Azure container Registry heeft de volgend
 
 * Bij het importeren van installatie kopieën met meerdere architecturen (zoals officiële docker-installatie kopieën), worden installatie kopieën voor alle architecturen en platformen die zijn opgegeven in de manifest lijst gekopieerd.
 
+* Voor toegang tot de bron-en doel registers hoeven de open bare eind punten van de registers niet te worden gebruikt.
+
 Als u container installatie kopieën wilt importeren, moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 > [!NOTE]
@@ -38,7 +40,7 @@ Als u container installatie kopieën wilt importeren, moet u de Azure CLI in Azu
 
 Als u nog geen Azure container Registry hebt, maakt u een REGI ster. Zie [Quick Start: een persoonlijk container register maken met behulp van de Azure cli](container-registry-get-started-azure-cli.md)voor stappen.
 
-Als u een installatie kopie naar een Azure container Registry wilt importeren, moet uw identiteit schrijf machtigingen hebben voor het doel register (ten minste de rol van bijdrager). Zie [Azure container Registry-rollen en-machtigingen](container-registry-roles.md). 
+Voor het importeren van een installatie kopie naar een Azure container Registry moet uw identiteit schrijf machtigingen hebben voor het doel register (ten minste de rol van Inzender) of een aangepaste rol die de actie importImage toestaat). Zie [Azure container Registry-rollen en-machtigingen](container-registry-roles.md#custom-roles). 
 
 ## <a name="import-from-a-public-registry"></a>Importeren uit een openbaar REGI ster
 
@@ -85,9 +87,11 @@ az acr import \
 
 U kunt een installatie kopie vanuit een ander Azure container Registry importeren met behulp van geïntegreerde Azure Active Directory-machtigingen.
 
-* Uw identiteit moet Azure Active Directory machtigingen hebben voor het lezen van het bron register (rol van lezer) en voor het schrijven naar het doel register (rol Inzender).
+* Uw identiteit moet Azure Active Directory machtigingen hebben voor het lezen van het bron register (rol van lezer) en voor het importeren naar het doel register (rol Inzender of een [aangepaste rol](container-registry-roles.md#custom-roles) die de actie importImage toestaat).
 
 * Het REGI ster kan zich in hetzelfde of een ander Azure-abonnement bevindt als de Tenant van hetzelfde Active Directory.
+
+* [Open bare toegang](container-registry-access-selected-networks.md#disable-public-network-access) tot het bron register is mogelijk uitgeschakeld. Als open bare toegang is uitgeschakeld, geeft u het bron register op Resource-ID op in plaats van de naam van de aanmeldings server van het REGI ster.
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Importeren uit een REGI ster in hetzelfde abonnement
 
@@ -98,6 +102,16 @@ az acr import \
   --name myregistry \
   --source mysourceregistry.azurecr.io/aci-helloworld:latest \
   --image aci-helloworld:latest
+```
+
+In het volgende voor beeld `aci-helloworld:latest` wordt de installatie kopie geïmporteerd naar *myregistry* vanuit een bron register *mysourceregistry* waarin toegang tot het open bare eind punt van het REGI ster is uitgeschakeld. Geef de bron-ID van het bron register op met de `--registry` para meter. U ziet dat de `--source` para meter alleen de bron opslagplaats en-tag opgeeft, niet de naam van de aanmeldings server van het REGI ster.
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source aci-helloworld:latest \
+  --image aci-helloworld:latest \
+  --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 In het volgende voor beeld wordt een installatie kopie geïmporteerd door de manifest Digest (SHA-256-Hash, weer gegeven als `sha256:...` ) in plaats van op label:

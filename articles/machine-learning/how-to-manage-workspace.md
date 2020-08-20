@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c852d416b73ba29b22efe63996835deac3a5277d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e1f97fddb07e56946e37c04d9b9685412782c560
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167671"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659752"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werkruimten maken en beheren in de Azure-portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,8 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u geen 
    ---|---
    Werkruimtenaam |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt. De naam van de werk ruimte is niet hoofdletter gevoelig.
    Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
-   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
+   Resourcegroep | Gebruik een bestaande resourcegroep in uw abonnement of voer een naam in om een nieuwe resourcegroep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. U hebt de rol *Inzender* of *eigenaar* nodig voor het gebruik van een bestaande resource groep.  Zie [toegang tot een Azure machine learning-werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over toegang.
+   Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
    Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
    Werkruimte editie | Selecteer **Basic** of **Enter prise**.  Deze werk ruimte-editie bepaalt de functies waartoe u toegang hebt en de prijzen. Meer informatie over de [Basic-en Enter prise Edition-aanbiedingen](overview-what-is-azure-ml.md#sku). 
 
@@ -64,7 +65,7 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u geen 
 
 1. Als u een [reken instantie](tutorial-1st-experiment-sdk-setup.md#azure)wilt maken, slaat u deze stap over.
 
-1. Als u van plan bent om code te gebruiken in uw lokale omgeving die verwijst naar deze werk ruimte, selecteert u **config.jsdownloaden in** het gedeelte **overzicht** van de werk ruimte.  
+1. Als u van plan bent om code te gebruiken in uw lokale omgeving die verwijst naar deze werk ruimte, selecteert u  **config.jsdownloaden in** het gedeelte **overzicht** van de werk ruimte.  
 
    ![Down load config.jsop](./media/how-to-manage-workspace/configure.png)
    
@@ -78,7 +79,7 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
 
 1. Selecteer de werk ruimte die u wilt bijwerken.
 
-1. Selecteer in de rechter bovenhoek van de pagina **meer informatie** .
+1. Selecteer in de rechter bovenhoek van de pagina **meer informatie**  .
 
    [![Een werk ruimte ](./media/how-to-manage-workspace/upgrade.png) bijwerken](./media/how-to-manage-workspace/upgrade.png#lightbox)
 
@@ -90,7 +91,7 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Een werk ruimte zoeken
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Typ **machine learning**in het bovenste zoek veld.  
 
@@ -104,7 +105,7 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
 
 ## <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
-Selecteer in de [Azure Portal](https://portal.azure.com/) **verwijderen** boven aan de werk ruimte die u wilt verwijderen.
+Selecteer in de [Azure Portal](https://portal.azure.com/) **verwijderen**  boven aan de werk ruimte die u wilt verwijderen.
 
 :::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Werk ruimte verwijderen":::
 

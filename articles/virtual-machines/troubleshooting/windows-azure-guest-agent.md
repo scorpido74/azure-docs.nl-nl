@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/07/2020
 ms.author: genli
-ms.openlocfilehash: c3295365859ad3291a95b616cccc6fa265237a01
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 38bf652ccefe98c2bd0fb28e8018d41df21651dc
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263964"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659463"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>Problemen met Windows Azure Guest agent oplossen
 
@@ -102,7 +102,7 @@ De Windows Azure Guest-agent bevat een functie voor automatisch bijwerken. Er wo
 
 1. Verplaats mappen met de naam packages of werken naar de map OLD.
 
-1. Down load en Installeer [hier](https://go.microsoft.comfwlink/?linkid=394789&clcid=0x409)de nieuwste versie van het installatie pakket voor de agent. U moet over beheerders rechten beschikken om de installatie te volt ooien.
+1. Down load en Installeer [hier](https://go.microsoft.com/fwlink/?linkid=394789&clcid=0x409)de nieuwste versie van het installatie pakket voor de agent. U moet over beheerders rechten beschikken om de installatie te volt ooien.
 
 1. Installeer de gast agent met behulp van de volgende opdracht:
 

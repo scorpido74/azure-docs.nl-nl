@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/16/2020
+ms.date: 8/20/2020
 ms.subservice: alerts
-ms.openlocfilehash: 877134fb1d4417c04da3bf6a96267b413389ecb2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 05586f95de03b09b95eb589812935970126b12f2
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258455"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661313"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 
@@ -44,8 +44,8 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. ClassicStorage/Storage accounts/queueServices | Ja | Nee | |
 |Micro soft. ClassicStorage/Storage accounts/tableServices | Ja | Nee | |
 |Micro soft. CognitiveServices/accounts | Ja | Nee | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | Ja | Ja | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | Ja | Nee |[Schaal sets voor virtuele machines](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft.Compute/virtualMachines | Ja | Ja<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachineScaleSets | Ja | Nee |[Virtuele-machineschaalsets](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Micro soft. ContainerInstance/containerGroups | Ja| Nee | [Containergroepen](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Micro soft. ContainerRegistry/registers | Nee | Nee | [Container registers](./metrics-supported.md#microsoftcontainerregistryregistries) |
 |Micro soft. container service/managedClusters | Ja | Nee | [Beheerde clusters](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
@@ -100,7 +100,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. SQL/managedInstances | Nee | Ja | [Beheerde SQL-exemplaren](./metrics-supported.md#microsoftsqlmanagedinstances) |
 |Microsoft.Sql/servers/databases | Nee | Ja | [SQL Databases](./metrics-supported.md#microsoftsqlserversdatabases) |
 |Micro soft. SQL/servers/elasticPools | Nee | Ja | [Elastische SQL-Pools](./metrics-supported.md#microsoftsqlserverselasticpools) |
-|Microsoft.Storage/storageAccounts |Ja | Nee | [Storage Accounts](./metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts |Ja | Nee | [Opslag accounts](./metrics-supported.md#microsoftstoragestorageaccounts)|
 |Micro soft. Storage/Storage accounts/Services | Ja| Nee | [BLOB Services](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Bestands Services](./metrics-supported.md#microsoftstoragestorageaccountsfileservices), [wachtrij Services](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) en [tabel Services](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Micro soft. StorageCache/caches | Ja | Nee | |
 |Micro soft. StorageSync/storageSyncServices | Ja | Nee | [Opslag synchronisatie Services](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
@@ -111,6 +111,8 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. web/server farms | Ja | Nee | [App Service plannen](./metrics-supported.md#microsoftwebserverfarms)|
 |Micro soft. web/sites | Ja | Nee | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) en [functions](./metrics-supported.md#microsoftwebsites-functions)|
 |Micro soft. web/sites/sleuven | Ja | Nee | [App Service sleuven](./metrics-supported.md#microsoftwebsitesslots)|
+
+<sup>1</sup> alleen ondersteund voor platform metrieken (geen aangepaste metrische gegevens)
 
 ## <a name="payload-schema"></a>Payload-schema
 

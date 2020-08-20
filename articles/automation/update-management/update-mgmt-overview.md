@@ -5,14 +5,14 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea568acdf356064dc603d30ffba7df3c02bde621
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0fd416c844ac93ffb77eded98448b2e93e9acd30
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450152"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660905"
 ---
-# <a name="update-management-overview"></a>Overzicht van Updatebeheer
+# <a name="update-management-overview"></a>Overzicht van updatebeheer
 
 U kunt Updatebeheer in Azure Automation gebruiken om updates van besturings systemen te beheren voor uw Windows-en Linux-machines in azure, in on-premises omgevingen en in andere Cloud omgevingen. U kunt snel de status van beschik bare updates op alle agent computers beoordelen en het proces voor het installeren van vereiste updates voor servers beheren.
 
@@ -99,8 +99,8 @@ De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
 |Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.<br> Voor Azure Windows virtueel bureau blad (WVD), de aanbevolen methode<br> voor het beheren van updates is [micro soft Endpoint Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) voor patch beheer voor Windows 10-client computers. |
-|Windows Server 2016 Nano Server     | Niet ondersteund.       |
-|Azure Kubernetes-service knooppunten | Niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../../aks/node-updates-kured.md)|
+|Windows Server 2016 Nano Server     | Wordt niet ondersteund.       |
+|Azure Kubernetes-service knooppunten | Wordt niet ondersteund. Gebruik het patch proces dat wordt beschreven in [beveiligings-en kernel-updates Toep assen op Linux-knoop punten in azure Kubernetes service (AKS)](../../aks/node-updates-kured.md)|
 
 ### <a name="client-requirements"></a>Clientvereisten
 
@@ -160,7 +160,7 @@ Zie [Connect Operations Manager to Azure monitor logs](../../azure-monitor/platf
 > [!NOTE]
 > Updatebeheer om computers met de Log Analytics agent volledig te beheren, moet u bijwerken naar de Log Analytics agent voor Windows of de Log Analytics-agent voor Linux. Zie [een Operations Manager-agent bijwerken](/system-center/scom/deploy-upgrade-agents)voor meer informatie over het bijwerken van de agent. In omgevingen waarin Operations Manager wordt gebruikt, moet u System Center Operations Manager 2012 R2 UR 14 of hoger uitvoeren.
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 
 ### <a name="supported-sources"></a>Ondersteunde bronnen
 
@@ -180,7 +180,7 @@ Updatebeheer scant beheerde machines op gegevens aan de hand van de volgende reg
 
 * Elke Linux-machine-Updatebeheer voert een scan elk uur uit.
 
-Het gemiddelde gegevens gebruik door Azure Monitor logboeken voor een machine met behulp van Updatebeheer is ongeveer 25 MB per maand. Deze waarde is alleen een benadering en is onderhevig aan wijzigingen, afhankelijk van uw omgeving. U wordt aangeraden uw omgeving te bewaken om uw exacte gebruik bij te houden. Zie [verbruik en kosten beheren](../../azure-monitor/platform/manage-cost-storage.md)voor meer informatie over het analyseren van het gegevens gebruik.
+Het gemiddelde gegevens gebruik door Azure Monitor logboeken voor een machine met behulp van Updatebeheer is ongeveer 25 MB per maand. Deze waarde is alleen een benadering en is onderhevig aan wijzigingen, afhankelijk van uw omgeving. U wordt aangeraden uw omgeving te bewaken om uw exacte gebruik bij te houden. Zie [verbruik en kosten beheren](../../azure-monitor/platform/manage-cost-storage.md)voor meer informatie over het analyseren van het gegevens gebruik van Azure monitor Logboeken.
 
 ## <a name="network-planning"></a><a name="ports"></a>Netwerk planning
 

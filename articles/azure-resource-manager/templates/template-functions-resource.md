@@ -3,12 +3,12 @@ title: 'Sjabloon functies: bronnen'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 89241558164505573e098bdf580af6542c6095c5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7f485d258074959c4a0a17449c65c38fa9648502
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372379"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661398"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resource functies voor ARM-sjablonen
 
@@ -166,8 +166,8 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Micro soft. DevTestLab/Labs/planningen | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Micro soft. DevTestLab/Labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Micro soft. DevTestLab/Labs/informatie | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [Listkeys ophalen](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseAccounts | [Listkeys ophalen](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
 | Micro soft. DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Micro soft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Micro soft. EventGrid/domeinen | [Listkeys ophalen](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -458,7 +458,7 @@ De functie Reference kan alleen worden gebruikt in de eigenschappen van een reso
 
 U kunt de functie Reference niet gebruiken om de waarde van de `count` eigenschap in een copy-lus in te stellen. U kunt gebruiken om andere eigenschappen in de lus in te stellen. De verwijzing is geblokkeerd voor de eigenschap Count omdat die eigenschap moet worden bepaald voordat de verwijzings functie wordt opgelost.
 
-Als u de functie Reference of een lijst * wilt gebruiken in het gedeelte outputs van een geneste sjabloon, moet u instellen dat de evaluatie van de ```expressionEvaluationOptions``` [binnenste Scope](linked-templates.md#expression-evaluation-scope-in-nested-templates) wordt gebruikt of dat u een gekoppeld gebruik maakt in plaats van een geneste sjabloon.
+Als u de functie Reference of een lijst * wilt gebruiken in het gedeelte outputs van een geneste sjabloon, moet u instellen dat de evaluatie van de  ```expressionEvaluationOptions``` [binnenste Scope](linked-templates.md#expression-evaluation-scope-in-nested-templates) wordt gebruikt of dat u een gekoppeld gebruik maakt in plaats van een geneste sjabloon.
 
 Als u de functie **Reference** gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd.  Er wordt een fout bericht weer geven als de **verwijzings** functie verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en verwijst naar een voorwaardelijk geïmplementeerde resource.
 
@@ -492,7 +492,7 @@ Bij het samen stellen van een volledig gekwalificeerde verwijzing naar een resou
 
 Bijvoorbeeld:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`is correct `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` is niet juist
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` is correct `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` is niet juist
 
 Gebruik de `resourceId()` functies die in dit document worden beschreven in plaats van de functie om het maken van een resource-id te vereenvoudigen `concat()` .
 

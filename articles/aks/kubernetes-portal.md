@@ -6,18 +6,21 @@ author: laurenhughes
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: lahugh
-ms.openlocfilehash: 109192efa19605af003dcfb30592c865ce7495b5
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136786"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661347"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Toegang tot Kubernetes-resources via de Azure Portal (preview-versie)
 
 De Azure Portal bevat een Kubernetes resource Viewer (preview) voor eenvoudige toegang tot de Kubernetes-resources in uw Azure Kubernetes service (AKS)-cluster. Het weer geven van Kubernetes-resources in de Azure Portal reduceert de context wisseling tussen de Azure Portal en het `kubectl` opdracht regel programma, waarmee u de ervaring voor het weer geven en bewerken van uw Kubernetes-resources kunt stroom lijnen. De resource Viewer bevat momenteel meerdere resource typen, zoals implementaties, peulen en replica sets.
 
 De resource weergave Kubernetes van de Azure Portal vervangt de [AKS dashboard-invoeg toepassing][kubernetes-dashboard], die is ingesteld voor afschaffing.
+
+>[!NOTE]
+>De capabilty wordt momenteel niet ondersteund in [particuliere Azure Kubernetes-Service clusters](https://docs.microsoft.com/azure/aks/private-clusters).
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Planning voor Azure-onderhouds gebeurtenissen
+title: Plannen voor Azure-onderhouds gebeurtenissen
 description: Meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in Azure SQL Database en Azure SQL Managed instance.
 services: sql-database
 ms.service: sql-db-mi
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 5bdc3eb8c118c19f90ce1fd92ac5ee156719dacd
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f0bda1f4b9894b1ea5a68f44a728f715676d500e
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987205"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661143"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure-onderhouds gebeurtenissen plannen in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ Opnieuw configureren/failovers worden over het algemeen binnen 30 seconden volto
 
 Bij elke client productie toepassing die verbinding maakt met een Cloud database service, moet een robuuste logica voor verbinding [opnieuw](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)worden geïmplementeerd. Dit helpt u deze situaties te verhelpen en de fouten doorgaans transparant te maken voor de eind gebruiker.
 
-## <a name="frequency"></a>Frequentie
+## <a name="frequency"></a>Frequency
 
 Gemiddeld worden de 1,7 geplande onderhouds gebeurtenissen elke maand uitgevoerd.
 

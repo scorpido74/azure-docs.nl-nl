@@ -2,17 +2,17 @@
 title: Azure-rollen en-machtigingen
 description: Gebruik op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC) en de functie voor identiteits-en toegangs beheer (IAM) om nauw keurige machtigingen te bieden aan bronnen in een Azure container Registry.
 ms.topic: article
-ms.date: 12/02/2019
-ms.openlocfilehash: 23a9c08162c03d4b34ed289d650fddcd7413ed08
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 08/17/2020
+ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920072"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661381"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Rollen en machtigingen Azure Container Registry
 
-De Azure Container Registry-service ondersteunt een aantal [ingebouwde Azure-rollen](../role-based-access-control/built-in-roles.md) die verschillende machtigings niveaus bieden voor een Azure container Registry. Gebruik [Azure RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/index.yml) om specifieke machtigingen toe te wijzen aan gebruikers, service-principals of andere identiteiten die moeten communiceren met een REGI ster. 
+De Azure Container Registry-service ondersteunt een aantal [ingebouwde Azure-rollen](../role-based-access-control/built-in-roles.md) die verschillende machtigings niveaus bieden voor een Azure container Registry. Gebruik [Azure RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/index.yml) om specifieke machtigingen toe te wijzen aan gebruikers, service-principals of andere identiteiten die moeten communiceren met een REGI ster. U kunt ook [aangepaste rollen](#custom-roles) met verfijnde machtigingen definiëren voor verschillende bewerkingen in een REGI ster.
 
 | Rol/machtiging       | [Toegang tot Resource Manager](#access-resource-manager) | [REGI ster maken/verwijderen](#create-and-delete-registry) | [Push-installatie kopie](#push-image) | [Pull-afbeelding](#pull-image) | [Afbeeldings gegevens verwijderen](#delete-image-data) | [Beleid wijzigen](#change-policies) |   [Installatie kopieën ondertekenen](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -70,7 +70,7 @@ De mogelijkheid om installatie kopieën te ondertekenen, die meestal worden toeg
 
 ## <a name="custom-roles"></a>Aangepaste rollen
 
-Net als bij andere Azure-resources kunt u uw eigen [aangepaste rollen](../role-based-access-control/custom-roles.md) maken met verfijnde machtigingen voor Azure container Registry. Wijs vervolgens de aangepaste rollen toe aan gebruikers, service-principals of andere identiteiten die moeten communiceren met een REGI ster. 
+Net als bij andere Azure-resources kunt u [aangepaste rollen](../role-based-access-control/custom-roles.md) maken met verfijnde machtigingen voor Azure container Registry. Wijs vervolgens de aangepaste rollen toe aan gebruikers, service-principals of andere identiteiten die moeten communiceren met een REGI ster. 
 
 Als u wilt bepalen welke machtigingen u wilt Toep assen op een aangepaste rol, raadpleegt u de lijst met micro soft. ContainerRegistry- [acties](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry), controleert u de toegestane acties van de [ingebouwde ACR-rollen](../role-based-access-control/built-in-roles.md)of voert u de volgende opdracht uit:
 
@@ -82,6 +82,36 @@ Zie [stappen voor het maken](../role-based-access-control/custom-roles.md#steps-
 
 > [!IMPORTANT]
 > In een aangepaste rol ondersteunt Azure Container Registry momenteel geen joker tekens zoals `Microsoft.ContainerRegistry/*` of `Microsoft.ContainerRegistry/registries/*` waarmee toegang wordt verleend aan alle overeenkomende acties. Geef elke vereiste actie afzonderlijk op in de rol.
+
+### <a name="example-custom-role-to-import-images"></a>Voor beeld: aangepaste rol voor het importeren van installatie kopieën
+
+De volgende JSON definieert bijvoorbeeld de minimale acties voor een aangepaste rol die het importeren van [installatie kopieën](container-registry-import-images.md) in een REGI ster toestaat.
+
+```json
+{
+   "assignableScopes": [
+     "/subscriptions/<optional, but you can limit the visibility to one or more subscriptions>"
+   ],
+   "description": "Can import images to registry",
+   "Name": "AcrImport",
+   "permissions": [
+     {
+       "actions": [
+         "Microsoft.ContainerRegistry/registries/push/write",
+         "Microsoft.ContainerRegistry/registries/pull/read",
+         "Microsoft.ContainerRegistry/registries/read",
+         "Microsoft.ContainerRegistry/registries/importImage/action"
+       ],
+       "dataActions": [],
+       "notActions": [],
+       "notDataActions": []
+     }
+   ],
+   "roleType": "CustomRole"
+ }
+```
+
+Als u een aangepaste rol wilt maken of bijwerken met behulp van de JSON-beschrijving, gebruikt u de [Azure cli](../role-based-access-control/custom-roles-cli.md), [Azure Resource Manager sjabloon](../role-based-access-control/custom-roles-template.md), [Azure PowerShell](../role-based-access-control/custom-roles-powershell.md)of andere Azure-hulpprogram ma's. Roltoewijzingen toevoegen aan of verwijderen uit een aangepaste rol op dezelfde manier als u roltoewijzingen beheert voor ingebouwde Azure-rollen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

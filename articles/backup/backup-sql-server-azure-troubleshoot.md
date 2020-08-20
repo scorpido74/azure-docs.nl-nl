@@ -3,12 +3,12 @@ title: Problemen met SQL Server database back-up oplossen
 description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f4049cca317d254bd5ee120e47cedc4cd42300e8
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 1d692d0bacbcb26090d17bf905b959f870eed3f8
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926481"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660126"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -30,7 +30,7 @@ Als de SQL-VM en de exemplaren ervan tijdens de back-upconfiguratie niet zichtba
 
 ### <a name="step-1-discovery-dbs-in-vms"></a>Stap 1: detectie Db's in Vm's
 
-- Als de virtuele machine niet wordt weer gegeven in de lijst met gedetecteerde VM'S en ook niet is geregistreerd voor SQL-back-ups in een andere kluis, voert u de stappen voor [detectie SQL Server back-up](./backup-sql-server-database-azure-vms.md#discover-sql-server-databases) uit.
+- Als de virtuele machine niet wordt vermeld in de lijst met gedetecteerde VM'S en ook niet is geregistreerd voor SQL-back-ups in een andere kluis, voert u de stappen voor [detectie SQL Server back-up](./backup-sql-server-database-azure-vms.md#discover-sql-server-databases) uit.
 
 ### <a name="step-2-configure-backup"></a>Stap 2: back-up configureren
 
@@ -62,7 +62,7 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 
 | Ernst | Beschrijving | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|---|
-| Waarschuwing | De huidige instellingen voor deze data base bieden geen ondersteuning voor bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid. | <li>Alleen een volledige database back-upbewerking kan worden uitgevoerd op de hoofd database. U kunt geen differentiële back-up of transactie logboek back-up maken. </li> <li>Voor alle data bases in het eenvoudige herstel model is het maken van back-ups van transactie logboeken niet toegestaan.</li> | Wijzig de data base-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Of wijzig het huidige beleid zodat alleen de ondersteunde back-uptypen worden vermeld. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens de geplande back-up of mislukt de back-uptaak voor back-ups op aanvraag.
+| Waarschuwing | De huidige instellingen voor deze data base bieden geen ondersteuning voor bepaalde back-uptypen die aanwezig zijn in het bijbehorende beleid. | <li>Alleen een volledige database back-upbewerking kan worden uitgevoerd op de hoofd database. Differentiële back-up en transactie logboek back-up zijn niet mogelijk. </li> <li>Voor elke data base in het eenvoudige herstel model is geen back-up van transactie logboeken toegestaan.</li> | Wijzig de data base-instellingen zodanig dat alle back-uptypen in het beleid worden ondersteund. Of wijzig het huidige beleid zodat alleen de ondersteunde back-uptypen worden vermeld. Anders worden de niet-ondersteunde back-uptypen overgeslagen tijdens de geplande back-up of mislukt de back-uptaak voor back-ups op aanvraag.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -113,6 +113,13 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 |---|---|---|
 | Herstellen is mislukt, omdat de database niet offline kan worden gezet. | Wanneer u een herstel bewerking uitvoert, moet de doel database offline worden gezet. Azure Backup kunt deze gegevens niet offline zetten. | Gebruik de aanvullende details in het menu Azure Portal fouten om de hoofd oorzaken te beperken. Raadpleeg de [SQL Server-documentatie](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) voor meer informatie. |
 
+### <a name="wlextgenericiofaultusererror"></a>WlExtGenericIOFaultUserError
+
+|Foutbericht |Mogelijke oorzaken  |Aanbevolen actie  |
+|---------|---------|---------|
+|Er is een i/o-fout opgetreden tijdens de bewerking. Controleer op de algemene IO-fouten op de virtuele machine.   |   Toegangs machtigingen of ruimte beperkingen op het doel.       |  Controleer op de algemene IO-fouten op de virtuele machine. Zorg ervoor dat het doel station/de netwerk share op de computer: <li> heeft lees-en schrijf machtigingen voor het account NT AUTHORITY\SYSTEM op de computer. <li> voldoende ruimte heeft om de bewerking te kunnen volt ooien.<br> Zie [herstellen als bestanden](restore-sql-database-azure-vm.md#restore-as-files)voor meer informatie.
+       |
+
 ### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
@@ -153,19 +160,19 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-De bewerking is geblokkeerd omdat u de limiet hebt bereikt van het aantal bewerkingen dat binnen 24 uur is toegestaan. | Wanneer u de Maxi maal toegestane limiet hebt bereikt voor een bewerking binnen een periode van 24 uur, wordt deze fout weer geleverd. <br> Bijvoorbeeld: als u de limiet hebt bereikt van het aantal back-uptaken configureren dat per dag kan worden geactiveerd en u een back-up wilt configureren voor een nieuw item, wordt deze fout weer geven. | Normaal gesp roken wordt de bewerking na 24 uur opnieuw geprobeerd om dit probleem op te lossen. Als het probleem zich blijft voordoen, kunt u contact opnemen met micro soft ondersteuning voor hulp.
+De bewerking is geblokkeerd omdat u de limiet hebt bereikt van het aantal bewerkingen dat binnen 24 uur is toegestaan. | Wanneer u de Maxi maal toegestane limiet voor een bewerking in een periode van 24 uur hebt bereikt, wordt deze fout weer gegeven. <br> Bijvoorbeeld: als u de limiet hebt bereikt van het aantal back-uptaken configureren dat per dag kan worden geactiveerd en u een back-up wilt configureren voor een nieuw item, wordt deze fout weer geven. | Normaal gesp roken wordt de bewerking na 24 uur opnieuw geprobeerd om dit probleem op te lossen. Als het probleem zich blijft voordoen, kunt u contact opnemen met micro soft ondersteuning voor hulp.
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-De bewerking is geblokkeerd omdat de kluis de maximum limiet heeft bereikt voor dergelijke bewerkingen die zijn toegestaan in een periode van 24 uur. | Wanneer u de Maxi maal toegestane limiet hebt bereikt voor een bewerking binnen een periode van 24 uur, wordt deze fout weer geleverd. Deze fout treedt meestal op wanneer er op schaal bewerkingen worden uitgevoerd, zoals het wijzigen van beleid of automatische beveiliging. In tegens telling tot in het geval van CloudDosAbsoluteLimitReached is het niet veel wat u kunt doen om deze status op te lossen, Azure Backup service de bewerkingen intern opnieuw probeert uit te voeren voor alle betreffende items.<br> Als er bijvoorbeeld sprake is van een groot aantal gegevens bronnen dat wordt beveiligd met een beleid en u het beleid probeert te wijzigen, worden de beveiligings taken voor elk van de beveiligde items geactiveerd en kan de maximum limiet voor dergelijke bewerkingen per dag worden bereikt.| Azure Backup service wordt deze bewerking na 24 uur automatisch opnieuw uitgevoerd.
+De bewerking is geblokkeerd omdat de kluis de maximum limiet heeft bereikt voor dergelijke bewerkingen die zijn toegestaan in een periode van 24 uur. | Wanneer u de Maxi maal toegestane limiet voor een bewerking in een periode van 24 uur hebt bereikt, wordt deze fout weer gegeven. Deze fout wordt meestal weer gegeven wanneer er op schaal bewerkingen worden uitgevoerd, zoals het wijzigen van beleid of automatische beveiliging. In tegens telling tot het geval van CloudDosAbsoluteLimitReached is het niet veel mogelijk om deze status op te lossen. Azure Backup service voert de bewerkingen in feite intern uit voor alle betreffende items.<br> Als er bijvoorbeeld sprake is van een groot aantal gegevens bronnen dat wordt beveiligd met een beleid en u het beleid probeert te wijzigen, worden de beveiligings taken voor elk van de beveiligde items geactiveerd en kan de maximum limiet voor dergelijke bewerkingen per dag worden bereikt.| Azure Backup service wordt deze bewerking na 24 uur automatisch opnieuw uitgevoerd.
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-De virtuele machine kan geen verbinding maken met Azure Backup service vanwege problemen met de Internet verbinding. | De virtuele machine heeft uitgaande verbindingen met Azure Backup Service, Azure Storage of Azure Active Directory Services nodig.| -Als u NSG gebruikt om de connectiviteit te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang toe te staan Azure Backup Azure Backup-Service, Azure Storage of Azure Active Directory Services. Volg deze [stappen](./backup-sql-server-database-azure-vms.md#nsg-tags) om toegang te verlenen.<br>-Zorg ervoor dat DNS Azure-eind punten omzet.<br>-Controleer of de virtuele machine zich achter een load balancer Internet toegang blokkeert. Wanneer u een openbaar IP-adres toewijst aan de Vm's, werkt de detectie.<br>-Controleer of er geen firewall/anti virus/proxy is die aanroepen naar de bovenstaande drie doel Services blokkeert.
+De virtuele machine kan geen verbinding maken met Azure Backup service vanwege problemen met de Internet verbinding. | De virtuele machine heeft een uitgaande verbinding nodig voor Azure Backup Service, Azure Storage of Azure Active Directory Services.| -Als u NSG gebruikt om de verbinding te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang tot Azure Backup Service, Azure Storage of Azure Active Directory Services toe te staan. Volg deze [stappen](./backup-sql-server-database-azure-vms.md#nsg-tags) om toegang te verlenen.<br>-Zorg ervoor dat DNS Azure-eind punten omzet.<br>-Controleer of de virtuele machine zich achter een load balancer Internet toegang blokkeert. Wanneer u een openbaar IP-adres toewijst aan de Vm's, werkt de detectie.<br>-Controleer of er geen firewall/anti virus/proxy is die aanroepen naar de bovenstaande drie doel Services blokkeert.
 
 ## <a name="re-registration-failures"></a>Fouten bij opnieuw registreren
 
@@ -261,7 +268,7 @@ In de voor gaande inhoud kunt u de logische naam van het database bestand ophale
 SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"
-  ```
+```
 
 Dit bestand moet worden geplaatst voordat u de herstel bewerking kunt activeren.
 

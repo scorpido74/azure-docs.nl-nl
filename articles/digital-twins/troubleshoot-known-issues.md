@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 9130a3248e881c9d4e2c9bfe9017f43198d50f51
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590163"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661483"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Bekende problemen in azure Digital Apparaatdubbels
 
@@ -69,9 +69,9 @@ Als u dit wilt oplossen, moet u uw toepassingen expliciet gebruiken voor Azure. 
 
 ### <a name="possible-causes"></a>Mogelijke oorzaken
 
-Dit is een incompatibiliteit tussen Azure Digital Apparaatdubbels en de nieuwste versie van de Azure. Identity-bibliotheek, versie **1.2.0**. 
+Dit is gerelateerd aan een openstaand probleem met de nieuwste versie van de Azure. Identity Library (versie **1.2.0**): er [*kan niet worden geverifieerd wanneer InteractiveBrowserCredential wordt gebruikt*](https://github.com/Azure/azure-sdk-for-net/issues/13940).
 
-U ziet dit probleem als u versie **1.2.0** in uw toepassing gebruikt, of als u de bibliotheek toevoegt aan uw project zonder een versie op te geven (zoals dat ook de meest recente versie is).
+U ziet dit probleem als u versie **1.2.0** in uw Azure Digital apparaatdubbels-toepassing gebruikt, of als u de bibliotheek toevoegt aan uw project zonder een versie op te geven (zoals dat ook de nieuwste versie is).
 
 ## <a name="next-steps"></a>Volgende stappen
 

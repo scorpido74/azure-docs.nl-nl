@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ab013a310997f43d1019d849e87c0cf1b0d151ee
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589398"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661092"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
 
@@ -95,8 +95,8 @@ Afhankelijk van uw hulp middelen kunt u dit doen met behulp van Visual Studio pa
 Voeg de volgende using-instructies toe aan uw Azure-functie.
 
 ```csharp
-using Azure.Identity;
 using Azure.DigitalTwins.Core;
+using Azure.Identity;
 using System.Net.Http;
 using Azure.Core.Pipeline;
 ```
@@ -157,7 +157,7 @@ Gebruik de volgende opdracht om de door het systeem beheerde identiteit te maken
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Gebruik de waarde van *principalId* in de volgende opdracht om de functie-app-id toe te wijzen aan de *eigenaar*srol voor uw Azure Digital Twins-instantie:
+Gebruik de waarde *principalId* in de volgende opdracht om de identiteit van de functie-app toe te wijzen aan de rol *Azure Digital Apparaatdubbels Owner (preview)* voor uw Azure Digital apparaatdubbels-exemplaar. Hiermee geeft u de functie-app toestemming in het exemplaar voor het uitvoeren van activiteiten voor gegevens vlak.
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"

@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
-ms.date: 07/28/2020
-ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/18/2020
+ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386177"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661194"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevensbronnen vanuit Azure Logic Apps
 
-Nadat u [de *on-premises gegevens gateway* op een lokale computer hebt geïnstalleerd](../logic-apps/logic-apps-gateway-install.md) en voordat u toegang hebt tot gegevens bronnen on-premises vanuit uw Logic apps, moet u een gateway bron maken in azure voor de installatie van de gateway. U kunt deze gateway bron vervolgens selecteren in de triggers en acties die u wilt gebruiken voor [on-premises Connect oren](../connectors/apis-list.md#on-premises-connectors) die beschikbaar zijn in azure Logic apps.
+Nadat u [de *on-premises gegevens gateway* op een lokale computer hebt geïnstalleerd](../logic-apps/logic-apps-gateway-install.md) en voordat u toegang hebt tot gegevens bronnen on-premises vanuit uw Logic apps, moet u een gateway bron maken in azure voor de installatie van de gateway. U kunt deze gateway bron vervolgens selecteren in de triggers en acties die u wilt gebruiken voor [on-premises Connect oren](../connectors/apis-list.md#on-premises-connectors) die beschikbaar zijn in azure Logic apps. Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gegevens gateway. Deze bewerkingen hebben echter [limieten voor de grootte van de nettolading](/data-integration/gateway/service-gateway-onprem#considerations).
 
 In dit artikel wordt beschreven hoe u een Azure gateway-resource maakt voor een eerder [geïnstalleerde gateway op uw lokale computer](../logic-apps/logic-apps-gateway-install.md). Zie [hoe de gateway werkt](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)voor meer informatie over de gateway.
 
@@ -48,7 +48,7 @@ De on-premises gegevens gateway in Azure Logic Apps ondersteunt de [on-premises 
 * SQL Server
 * Teradata
 
-Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gegevens gateway. Deze bewerkingen hebben echter [limieten voor de grootte van de nettolading](/data-integration/gateway/service-gateway-onprem#considerations). Hoewel de gateway zelf geen extra kosten in rekening brengt, is het [Logic apps prijs model](../logic-apps/logic-apps-pricing.md) van toepassing op deze connectors en andere bewerkingen in azure Logic apps.
+U kunt ook [aangepaste connectors](../logic-apps/custom-connector-overview.md) maken die via http of HTTPS verbinding maken met gegevens bronnen met behulp van rest of SOAP. Hoewel de gateway zelf geen extra kosten in rekening brengt, is het [Logic apps prijs model](../logic-apps/logic-apps-pricing.md) van toepassing op deze connectors en andere bewerkingen in azure Logic apps.
 
 ## <a name="prerequisites"></a>Vereisten
 

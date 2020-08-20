@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6316bcc91bb381facb4f77b2d8dbd8b22f9ed387
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652862"
+ms.locfileid: "88660092"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Bekende problemen met VM's uit de H-serie en N-serie
 
@@ -35,10 +35,6 @@ Versneld netwerken van Azure is op dit moment niet ingeschakeld, maar tijdens he
 ## <a name="qp0-access-restriction"></a>qp0-toegangs beperking
 
 Om te voor komen dat hardware-toegang op laag niveau kan leiden tot beveiligings problemen, is de wachtrij koppeling 0 niet toegankelijk voor gast-Vm's. Dit geldt alleen voor acties die doorgaans zijn gekoppeld aan het beheer van de verbinding met de Connectx-5-NIC, en voor het uitvoeren van een paar InfiniBand Diagnostics zoals ibdiagnet, maar niet voor eindgebruikers toepassingen zelf.
-
-## <a name="ud-transport"></a>UD transport
-
-Bij het starten biedt de HB-en HC-serie geen ondersteuning voor dynamisch verbonden Trans Port (DCT). Ondersteuning voor DCT zal na verloop van tijd worden geïmplementeerd. De trans porten betrouw bare verbinding (RC) en onbetrouwbare data gram (UD) worden ondersteund.
 
 ## <a name="gss-proxy"></a>GSS-proxy
 

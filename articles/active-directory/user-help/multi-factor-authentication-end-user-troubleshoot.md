@@ -9,15 +9,16 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/04/2020
+ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 754d456f557b6c9500cdb64ee01a42124a18ab9c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+metadata ms.custom: contperfq1
+ms.openlocfilehash: b21b2a9f2d2bd483ed48a4c30b504908bb54a101
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036671"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661434"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen met verificatie in twee stappen en uw werk- of schoolaccount
 
@@ -31,14 +32,10 @@ Als 2FV is ingeschakeld, is voor uw account aanmelding een combi natie van de vo
 
 2FV is veiliger dan alleen een wacht woord, omdat 2FV iets vereist wat u al _kent_ en wat u _hebt_. Geen hackers hebben uw fysieke telefoon.
 
-<center>
-
-![Afbeelding van de conceptuele verificatie methoden](../authentication/media/concept-mfa-howitworks/methods.png)</center>
-
 >[!Important]
 >Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Azure AD-omgeving in de [Azure AD-documentatie](https://docs.microsoft.com/azure/active-directory).
->
->Deze inhoud is ook alleen bedoeld voor gebruik met uw werk-of school account. Dit is het account dat u hebt ontvangen van uw organisatie (bijvoorbeeld alain@contoso.com ). Als u problemen ondervindt met twee ledige verificatie en uw persoonlijke Microsoft-account, wat een account is dat u zelf hebt ingesteld (bijvoorbeeld danielle@outlook.com ), raadpleegt u [twee ledige verificatie inschakelen of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+
+Deze inhoud is bedoeld om u te helpen bij uw werk-of school account. Dit is het account dat u hebt ontvangen van uw organisatie (bijvoorbeeld dritan@contoso.com ). Als u problemen ondervindt met twee ledige verificatie voor een persoonlijk Microsoft-account, een account dat u zelf hebt ingesteld (bijvoorbeeld danielle@outlook.com ), raadpleegt u [twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Ik heb mijn mobiele apparaat niet met mij
 
@@ -71,7 +68,7 @@ Probeer dit | Informatie over begeleiding
 --------- | ------------
 Uw mobiele apparaat opnieuw opstarten | Soms moet uw apparaat gewoon worden vernieuwd. Wanneer u uw apparaat opnieuw opstart, worden alle achtergrond processen en-services beëindigd. Bij het opnieuw opstarten worden ook de kern onderdelen van het apparaat afgesloten. Elke service of elk onderdeel wordt vernieuwd wanneer u het apparaat opnieuw opstart.
 Controleer of uw beveiligings gegevens juist zijn | Zorg ervoor dat de gegevens van de beveiligings verificatie methode nauw keurig zijn, met name uw telefoon nummers. Als u het verkeerde telefoon nummer plaatst, wordt al uw waarschuwingen naar een onjuist nummer gegaan. Gelukkig kan deze gebruiker niets doen met de waarschuwingen, maar ook niet om u aan te melden bij uw account. Zie de instructies in het artikel [uw twee ledige verificatie methode-instellingen beheren](multi-factor-authentication-end-user-manage-settings.md) om ervoor te zorgen dat uw gegevens correct zijn.
-Controleren of uw meldingen zijn ingeschakeld | Controleer of er meldingen zijn ingeschakeld op het mobiele apparaat. Zorg ervoor dat de volgende meldings modi zijn toegestaan: <br/><br/> &bull;Telefoon gesprekken <br/> &bull;Uw verificatie-app <br/> &bull;Uw app voor tekst berichten <br/><br/> Zorg ervoor dat deze modi een waarschuwing maken die _zichtbaar_ is op het apparaat.
+Controleren of uw meldingen zijn ingeschakeld | Controleer of er meldingen zijn ingeschakeld op het mobiele apparaat. Zorg ervoor dat de volgende meldings modi zijn toegestaan: <br/><br/> &bull; Telefoon gesprekken <br/> &bull; Uw verificatie-app <br/> &bull; Uw app voor tekst berichten <br/><br/> Zorg ervoor dat deze modi een waarschuwing maken die _zichtbaar_ is op het apparaat.
 Zorg ervoor dat u een signaal voor een apparaat en een Internet verbinding hebt | Zorg ervoor dat uw telefoon gesprekken en SMS-berichten op uw mobiele apparaat terechtkomen. Laat een vriend u bellen en u een SMS-bericht sturen om er zeker van te zijn dat u beide ontvangt. Als u de oproep of tekst niet ontvangt, controleert u eerst of het mobiele apparaat is ingeschakeld. Als uw apparaat is ingeschakeld, maar u nog steeds geen gesprek of tekst ontvangt, is er waarschijnlijk een probleem met uw netwerk. U moet contact opnemen met uw provider. Als u vaak signaal problemen ondervindt, raden we u aan om de [Microsoft Authenticator-app](user-help-auth-app-download-install.md) op uw mobiele apparaat te installeren en te gebruiken. De verificator-app kan wille keurige beveiligings codes genereren voor aanmelden, zonder dat er een celpictogram of Internet verbinding vereist is.
 Niet storen uitschakelen | Zorg ervoor dat u de functie **niet Stores** voor uw mobiele apparaat niet hebt ingeschakeld. Als deze functie is ingeschakeld, kunnen meldingen niet worden gewaarschuwd op uw mobiele apparaat. Raadpleeg de hand leiding van uw mobiele apparaat voor instructies over het uitschakelen van deze functie.
 Telefoon nummers blok keren | In de Verenigde Staten zijn telefoon aanroepen van micro soft afkomstig van de volgende nummers: + 1 (866) 539 4191, + 1 (855) 330 8653 en + 1 (877) 668 6536.

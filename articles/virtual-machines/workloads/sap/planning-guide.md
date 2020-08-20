@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de3b0ed309863a09003b1ff7709481d763163e07
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f2bf360d9b09be4db84d0ff00b1a777fe8b188ea
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652199"
+ms.locfileid: "88661330"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -1803,7 +1803,7 @@ Er zijn twee typen Azure-platform gebeurtenissen die van invloed kunnen zijn op 
 * Geplande onderhouds gebeurtenissen zijn periodieke updates die door micro soft zijn aangebracht in het onderliggende Azure-platform om de algehele betrouw baarheid, prestaties en beveiliging van de platform infrastructuur waarop uw virtuele machines worden uitgevoerd, te verbeteren.
 * Niet-gepland onderhoud vindt plaats wanneer de hardware of de fysieke infrastructuur die uw virtuele machine ondersteunt defect raakt. Voorbeelden hiervan zijn lokale netwerkproblemen, lokale schijfdefecten of andere defecten op rack-niveau. Wanneer een dergelijke fout wordt gedetecteerd, migreert het Azure-platform uw virtuele machine automatisch van de beschadigde fysieke server die als host fungeert voor uw virtuele machine naar een in orde zijnde fysieke server. Dergelijke gebeurtenissen zijn zeldzaam, maar kunnen er ook toe leiden dat uw virtuele machine opnieuw moet opstarten.
 
-Meer informatie vindt u in deze documentatie: <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+Zie [Beschik baarheid van virtuele Windows-machines in azure](../../windows/manage-availability.md) en [Beschik baarheid van virtuele Linux-machines in azure](../../linux/manage-availability.md)voor meer informatie.
 
 #### <a name="azure-storage-redundancy"></a>Azure Storage-redundantie
 
@@ -1811,7 +1811,7 @@ De gegevens in uw Microsoft Azure Storage-account worden altijd gerepliceerd om 
 
 Omdat Azure Storage standaard drie installatie kopieën van de gegevens houdt, zijn er geen RAID5-of RAID1 meer nodig voor meerdere Azure-schijven.
 
-Meer informatie vindt u in dit artikel: <https://azure.microsoft.com/documentation/articles/storage-redundancy/>
+Zie [Azure Storage redundantie](../../../storage/common/storage-redundancy.md)voor meer informatie.
 
 #### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>VM van Azure-infra structuur opnieuw opstarten voor een hogere Beschik baarheid van SAP-toepassingen
 
