@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Integratie van eenmalige aanmelding (SSO) bij Azure Active Directory met Trelica | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Trelica.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 577bdae2-dbab-4445-a07e-de0119b65d76
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 733e7529af5de453462efb1a13c21203681e442c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: dcc304febe6fcebe3aba3047d1773e695b80f9e2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994257"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551934"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) bij Azure Active Directory met Trelica
 

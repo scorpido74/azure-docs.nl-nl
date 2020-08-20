@@ -2,25 +2,21 @@
 title: 'Zelfstudie: Azure Active Directory-integratie met Insignia SAML SSO | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Insignia SAML SSO.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 828c981c-c3dd-4eb2-8699-0f732baa43f6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: c7b62a65d3f0b3b4006c55f5323b1feb69cca9f1
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 9d3463e04f06e02f8d27e633a10c22069ad9b57f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799844"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Zelfstudie: Azure Active Directory-integratie met Insignia SAML SSO
 
@@ -116,7 +112,7 @@ Voor de configuratie van eenmalige aanmelding bij Azure Active Directory met Ins
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [klantenondersteuningsteam van Insignia SAML SSO](https://www.insigniasoftware.com/insignia/Techsupport.aspx) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [klantenondersteuningsteam van Insignia SAML SSO](http://www.insigniasoftware.com/insignia/Techsupport.aspx) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -134,7 +130,7 @@ Voor de configuratie van eenmalige aanmelding bij Azure Active Directory met Ins
 
 ### <a name="configure-insignia-saml-sso-single-sign-on"></a>Eenmalige aanmelding voor Insignia SAML SSO configureren
 
-Als u eenmalige aanmelding aan de zijde van **Insignia SAML SSO** wilt configureren, moet u het gedownloade **Certificaat (Base64)** en de juiste uit de Azure Portal gekopieerde URL's verzenden naar het [ondersteuningsteam voor Insignia SAML SSO](https://www.insigniasoftware.com/insignia/Techsupport.aspx). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **Insignia SAML SSO** wilt configureren, moet u het gedownloade **Certificaat (Base64)** en de juiste uit de Azure Portal gekopieerde URL's verzenden naar het [ondersteuningsteam voor Insignia SAML SSO](http://www.insigniasoftware.com/insignia/Techsupport.aspx). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -189,7 +185,7 @@ In deze sectie maakt u het mogelijk voor Britta Simon om eenmalige aanmelding vo
 
 ### <a name="create-insignia-saml-sso-test-user"></a>Insignia SAML SSO-testgebruiker maken
 
-In deze sectie maakt u in Insignia SAML SSO een gebruiker met de naam Britta Simon. Werk samen met het  [ondersteuningsteam van Insignia SAML SSO](https://www.insigniasoftware.com/insignia/Techsupport.aspx) om gebruikers toe te voegen op het Insignia SAML SSO-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u in Insignia SAML SSO een gebruiker met de naam Britta Simon. Werk samen met het  [ondersteuningsteam van Insignia SAML SSO](http://www.insigniasoftware.com/insignia/Techsupport.aspx) om gebruikers toe te voegen op het Insignia SAML SSO-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
