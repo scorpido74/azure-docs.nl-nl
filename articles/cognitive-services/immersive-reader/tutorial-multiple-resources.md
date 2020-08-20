@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 214d6d614fcc54a532766854f2e72ac45dbfa8ad
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1abd1052c33346d949809d7c35a99ef97bde2c03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407197"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516279"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Zelfstudie: Meerdere resources voor Insluitende lezer integreren
 
@@ -25,7 +25,7 @@ In het [overzicht](./overview.md) hebt u geleerd wat de Insluitende lezer is en 
 > * Meerdere resources voor Insluitende lezer maken onder een bestaande resourcegroep
 > * Insluitende lezer met meerdere resources starten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 

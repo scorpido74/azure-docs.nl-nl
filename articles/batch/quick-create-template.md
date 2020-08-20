@@ -2,14 +2,14 @@
 title: 'Quickstart voor Azure: een Batch-account maken met een Azure Resource Manager-sjabloon'
 description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure CLI. U maakt en beheert Azure-resources vanaf de opdrachtregel of in scripts.
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c59e8891678d9fc1af7c4fe78e4ee2d267ec99b4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086123"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511385"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Quickstart: Een Batch-account maken met een ARM-sjabloon
 
