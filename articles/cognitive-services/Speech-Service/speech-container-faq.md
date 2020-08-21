@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 10a75d19b7fb134b8e7498c422742e00f6475da5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289027"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690201"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Veelgestelde vragen over Speech-Service containers
 
@@ -305,7 +305,7 @@ Helpt u bij het invullen van de volgende metrische test gegevens, waaronder welk
 - Kool waarbij de bevestigingen in de release worden geactiveerd (het proces wordt gedoden).
 
 De tijdelijke oplossing is overschakelen naar het gebruik van doorlopende herkenning in uw code of (sneller) verbinding maken met de interactieve of doorlopende eind punten in de container.
-Voor uw code stelt u het eind punt in op <host: poort>/Speech/Recognition/Interactive/cognitiveservices/v1
+Voor uw code stelt u het eind punt in op `host:port` /Speech/Recognition/Interactive/cognitiveservices/v1
 
 Zie voor de verschillende modi spraak modi-Zie hieronder:
 
@@ -559,7 +559,7 @@ Python-voor [beelden](https://github.com/Azure-Samples/cognitive-services-speech
 
 In C# moet u de functie aanroepen `SpeechConfig.EnableDictation()` .
 
-### <a name="fromendpoint-apis"></a>`FromEndpoint`APIs
+### <a name="fromendpoint-apis"></a>`FromEndpoint` APIs
 | Taal | API-details |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -579,7 +579,7 @@ In C# moet u de functie aanroepen `SpeechConfig.EnableDictation()` .
 
 **Antwoord:** Er is een nieuwe `FromHost` API. Hiermee worden bestaande Api's niet vervangen of gewijzigd. Er wordt alleen een alternatieve manier toegevoegd om een spraak configuratie te maken met behulp van een aangepaste host.
 
-### <a name="fromhost-apis"></a>`FromHost`APIs
+### <a name="fromhost-apis"></a>`FromHost` APIs
 
 | Taal | API-details |
 |--|:-|
@@ -597,8 +597,8 @@ De indeling voor de host is `protocol://hostname:port` `:port` optioneel (zie hi
 - Als de container wordt uitgevoerd op een externe server, gebruikt u de hostnaam of het IPv4-adres van die server.
 
 Voor beelden van host-para meters voor spraak naar tekst:
-- `ws://localhost:5000`-niet-beveiligde verbinding met een lokale container via poort 5000
-- `ws://some.host.com:5000`-niet-beveiligde verbinding met een container die wordt uitgevoerd op een externe server
+- `ws://localhost:5000` -niet-beveiligde verbinding met een lokale container via poort 5000
+- `ws://some.host.com:5000` -niet-beveiligde verbinding met een container die wordt uitgevoerd op een externe server
 
 Python-voor beelden van bovenstaande, maar gebruik de `host` para meter in plaats van `endpoint` :
 

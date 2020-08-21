@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431206"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691255"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Resources delen en ontdekken in de Azure AI Gallery
 
-**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 **[Azure AI Gallery](https://gallery.azure.ai)** is een door de community gerichte site voor het detecteren en delen van oplossingen die zijn gebouwd met Azure AI.
 De galerie bevat een aantal bronnen die u kunt gebruiken om uw eigen analyse oplossingen te ontwikkelen.
@@ -34,7 +34,6 @@ Het Azure AI Gallery bevat een aantal verschillende resources die door micro sof
 * **Zelf studies** : er zijn een aantal zelf studies beschikbaar om u te helpen bij machine learning technologieën en concepten, of om geavanceerde methoden te beschrijven voor het oplossen van verschillende machine learning problemen.
 * **Verzamelingen** : met een verzameling kunt u experimenten, api's en andere galerie resources groeperen die een specifieke oplossing of concept verpakken.
 * **Aangepaste modules** : u kunt aangepaste modules downloaden naar uw studio-werk ruimte (klassiek) om in uw eigen experimenten te gebruiken.
-* **Jupyter-notebooks** : Jupyter-notebooks bevatten code, gegevens visualisaties en documentatie in één, interactief canvas. Notebooks in de galerie bieden zelf studies en gedetailleerde uitleg van geavanceerde machine learning technieken en oplossingen.
 
 ## <a name="discover-and-contribute"></a>Ontdekken en bijdragen
 
@@ -49,12 +48,12 @@ U kunt zelfs een belang rijke resource delen met vrienden of collega's met behul
 
 Wanneer u zich aanmeldt, wordt u lid van de galerie-community. Zo kunt u bronnen downloaden of uw eigen galerie-items bijdragen zodat anderen kunnen profiteren van de oplossingen die u hebt gedetecteerd.
 
-U kunt **experimenten**, **aangepaste modules**en Jupyter- **notebooks** downloaden om te gebruiken bij het ontwikkelen van uw eigen analyse oplossingen.
+U kunt **experimenten**, **aangepaste modules** downloaden om te gebruiken bij het ontwikkelen van uw eigen analyse oplossingen.
 U kunt **experimenten**, **zelf studies**en **verzamelingen** bijdragen aan de galerie.
 
-## <a name="download-experiments-modules-notebooks"></a>Experimenten, modules, notebooks downloaden
+## <a name="download-experiments-modules"></a>Experimenten, modules downloaden
 
-U kunt **experimenten**, **aangepaste modules**en Jupyter- **notebooks** downloaden in uw eigen machine learning Studio (klassieke) werk ruimte om te gebruiken bij het ontwikkelen van uw eigen oplossingen.
+U kunt **experimenten**, **aangepaste modules** downloaden in uw eigen machine learning Studio (klassieke) werk ruimte om te gebruiken bij het ontwikkelen van uw eigen oplossingen.
 
 Een resource downloaden vanuit de AI-galerie:
 

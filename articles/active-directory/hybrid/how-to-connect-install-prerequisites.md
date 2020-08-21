@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0754c8e2be62c0a5568e97e7e5cf4376fb3c593
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1f77d6189e5b32ca771d17ae9902341bcaa1871
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210915"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688127"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit artikel worden de vereisten en de hardwarevereisten voor Azure Active Directory (Azure AD)-verbinding beschreven.
@@ -73,6 +73,7 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
 - Beperk beheerders toegang tot de Azure AD Connect-server tot alleen domein Administrators of andere nauw keurig beheerde beveiligings groepen.
 - Maak een [speciaal account voor alle mede werkers met privileged Access](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). Beheerders moeten niet surfen op het web, hun e-mail adres controleren en dagelijkse productiviteits taken uitvoeren met accounts met veel bevoegdheden.
 - Volg de richt lijnen voor het [beveiligen van bevoegde toegang](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
+- Het gebruik van NTLM-verificatie met de AADConnect-server weigeren. Hier volgen enkele manieren om dit te doen: [NTLM beperken op de AADConnect-server](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) en [NTLM beperken op een domein](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
 - Zorg ervoor dat elke computer een uniek wacht woord voor de lokale beheerder heeft. Zie [Local Administrator Password Solution (verval)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) voor meer informatie. kan unieke wille keurige wacht woorden configureren op elk werk station en de server slaat ze op Active Directory beveiligd door een ACL. Alleen in aanmerking komende geautoriseerde gebruikers kunnen de wacht woorden van deze lokale beheerders accounts lezen of aanvragen. U kunt het verval verkrijgen voor gebruik op werk stations en servers vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.). Aanvullende richt lijnen voor het gebruik van een omgeving met verval en privileged Access Workstation (Paw's) vindt u in [operationele standaarden op basis van het schone bron principe](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
 - Implementeer toegewezen [privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) voor alle mede werkers met uitgebreide toegang tot de gegevens systemen van uw organisatie. 
 - Volg deze [aanvullende richt lijnen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) om de kwets baarheid van uw Active Directory omgeving te verminderen.
@@ -131,7 +132,7 @@ We raden u aan uw Azure AD Connect-server te beveiligen om het beveiligings risi
 Raadpleeg MSDN over het [standaard proxy-element](https://msdn.microsoft.com/library/kd3cf2ex.aspx)voor meer informatie.
 Zie [verbindings problemen oplossen](tshoot-connect-connectivity.md)voor meer informatie over problemen met de connectiviteit.
 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overig
 Optioneel: gebruik een test gebruikers account om de synchronisatie te controleren.
 
 ## <a name="component-prerequisites"></a>Onderdeel vereisten

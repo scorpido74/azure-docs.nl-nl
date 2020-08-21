@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: b-juche
-ms.openlocfilehash: 79ad95179f4ad6d332a848e59ca341b8a9f90b1f
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: e7bdf6ce35e2649a068de234b4b52e13efe72c44
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258231"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690541"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Oplossingsarchitecturen op basis van Azure NetApp Files
 Dit artikel bevat verwijzingen naar aanbevolen procedures waarmee u inzicht krijgt in de oplossings architecturen voor het gebruik van Azure NetApp Files.  
@@ -68,6 +68,7 @@ Deze sectie bevat Naslag informatie over SAP on Azure oplossingen.
 ### <a name="sap-hana"></a>SAP HANA 
 
 * [Configuraties van SAP HANA in virtuele Azure-machineopslag](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+* [Hoge Beschik baarheid van SAP HANA omhoog schalen met Azure NetApp Files op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat)
 * [SAP HANA uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp Files op SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
 * [SAP HANA uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp Files op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
 
@@ -85,7 +86,7 @@ Deze sectie bevat verwijzingen naar oplossingen voor virtuele-bureaublad infrast
 
 ### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
 
-* [Voor delen van het gebruik van Azure NetApp Files met virtueel bureau blad van Windows](solutions-windows-virtual-desktop.md)
+* [Voordelen van het gebruik van Azure NetApp Files met Windows Virtual Desktop](solutions-windows-virtual-desktop.md)
 * [Opslag opties voor FSLogix-profiel containers in virtueel bureau blad van Windows](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [Virtueel bureau blad van Windows op schaal van onderneming](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)

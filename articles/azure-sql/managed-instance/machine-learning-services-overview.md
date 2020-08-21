@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad25a9a62757e1e031ce8b93a44e6f2ada4d9964
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708736"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689504"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services in Azure SQL Managed instance (preview-versie)
 
@@ -52,7 +52,23 @@ Basis distributies van python en R zijn opgenomen in Machine Learning Services. 
 
 Deze beperkte open bare preview is onderhevig aan de voor [waarden van Azure preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-Als u geïnteresseerd bent in het toevoegen van het preview-programma en deze voor waarden accepteert, kunt u de inschrijving aanvragen door een ondersteunings ticket voor Azure te maken op [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . Voor ' probleem type ' selecteert u ' Technical ' voor ' service ' selecteert u ' SQL Database Managed instance ' en selecteert u ' Overig '. In uw aanvraag vermeldt u dat u zich wilt inschrijven voor een beperkte openbare preview van Machine Learning voor SQL Managed Instance. Geef de volgende details op: naam van logische server, regio en abonnements-id.
+Als u geïnteresseerd bent in het toevoegen van het preview-programma en deze voor waarden accepteert, kunt u de inschrijving aanvragen door een ondersteunings ticket voor Azure te maken op [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) . 
+
+1. Selecteer de volgende opties:
+   - Probleem type- **technisch**
+   - Abonnement: *Selecteer uw abonnement*
+   - **Beheerd exemplaar** van Service-SQL database
+   - Samen vatting: *Voer een korte beschrijving van uw aanvraag in*
+   - Probleem type- **Machine Learning Services voor een SQL-beheerd exemplaar (preview-versie)**
+   - Subtype van probleem: **ander probleem of ' How to '-vragen**
+
+1. Klik op **volgende: oplossingen**.
+
+1. Lees de informatie over de preview-versie en klik vervolgens op **Details**.
+
+1. In **Beschrijving**voert u de specifieke kenmerken van uw aanvraag in, waaronder de naam van de logische server, de regio en de abonnements-id die u wilt inschrijven in de preview-versie. Voer indien nodig nog meer details in.
+
+1. Wanneer u klaar bent, klikt u op **volgende: bekijken en maken**en klikt u vervolgens op **maken**.
 
 Zodra u voor het programma staat ingeschreven, vindt onboarding plaats voor de openbare preview en wordt Machine Learning Services voor uw bestaande of nieuwe database ingeschakeld.
 

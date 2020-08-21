@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: cea08022b992395862fcf75e0592efd54c805a98
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bbec605f25c2e74178bdb5c28d0a7995e4e265f1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649122"
+ms.locfileid: "88690388"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -157,7 +157,7 @@ Optionele URL-query teken reeks parameters zijn onder andere het instellen van e
 
 | Optionele query parameter | Beschrijving | Versie |
 | --- |  --- | --- |
-| `timeout=<timeout>` | Server-side-time-out voor het uitvoeren van HTTP-aanvragen. Alleen van toepassing op de api's [Get Environment Events](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) en [Get Environment aggregaties](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) . De time-outwaarde moet de ISO 8601-duur notatie hebben, bijvoorbeeld `"PT20S"` en moet in het bereik liggen `1-30 s` . De standaardwaarde is `30 s`. | Gen1 |
+| `timeout=<timeout>` | Server-side-time-out voor het uitvoeren van HTTP-aanvragen. Alleen van toepassing op de api's [Get Environment Events](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) en [Get Environment aggregaties](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) . De time-outwaarde moet de ISO 8601-duur notatie hebben, bijvoorbeeld `"PT20S"` en moet in het bereik liggen `1-30 s` . De standaardwaarde is `30 s`. | Gen1 |
 | `storeType=<storeType>` | Voor Gen2 omgevingen waarin warme opslag is ingeschakeld, kan de query worden uitgevoerd op de `WarmStore` of `ColdStore` . Met deze para meter in de query wordt gedefinieerd in welk archief de query moet worden uitgevoerd. Als deze niet is gedefinieerd, wordt de query uitgevoerd in de koude opslag. Als u een query wilt uitvoeren voor de warme Store, moet **storeType** worden ingesteld op `WarmStore` . Als deze niet is gedefinieerd, wordt de query uitgevoerd op basis van de koude opslag. | Gen2 |
 
 ## <a name="next-steps"></a>Volgende stappen

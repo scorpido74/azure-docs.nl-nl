@@ -3,12 +3,12 @@ title: Media Graph-concept-Azure
 description: Met een media grafiek kunt u definiëren waar media moeten worden vastgelegd, hoe deze moeten worden verwerkt en waar de resultaten moeten worden bezorgd. Dit artikel bevat een gedetailleerde beschrijving van het concept van media Graph.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300804"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690677"
 ---
 # <a name="media-graph"></a>Mediagrafiek
 
@@ -80,6 +80,10 @@ Met het knoop punt filter voor frame snelheid kunt u frames uit de inkomende vid
 #### <a name="http-extension-processor"></a>HTTP-extensie processor
 
 Met het knoop punt voor de HTTP-extensie processor kunt u uw eigen IoT Edge-module verbinden met een media grafiek. Met dit knoop punt worden video frames gedecodeerd als invoer en worden deze frames doorgestuurd naar een HTTP REST-eind punt dat wordt weer gegeven door uw module. Dit knoop punt kan, indien nodig, worden geverifieerd met het REST-eind punt. Daarnaast heeft het knoop punt een ingebouwde afbeeldings indeling voor het schalen en coderen van video frames voordat ze worden doorgestuurd naar het REST-eind punt. De schaalset bevat opties voor de hoogte-breedte verhouding van de afbeelding die moet worden behouden, aangevuld of uitgerekt. De afbeeldings encoder ondersteunt de indelingen JPEG, PNG of bmp.
+
+#### <a name="grpc-extension-processor"></a>gRPC-extensie processor
+
+Het gRPC extension-processor knooppunt gebruikt gedecodeerde video frames als invoer en stuurt deze frames door naar een gRPC-eind punt dat door uw module wordt weer gegeven. Daarnaast heeft het knoop punt een ingebouwde afbeeldings indeling voor het schalen en coderen van video frames voordat ze worden doorgestuurd naar het gRPC-eind punt. De schaalset bevat opties voor de hoogte-breedte verhouding van de afbeelding die moet worden behouden, aangevuld of uitgerekt. De afbeeldings encoder ondersteunt de indelingen JPEG, PNG of bmp.
 
 #### <a name="signal-gate-processor"></a>Signal Gate-processor  
 

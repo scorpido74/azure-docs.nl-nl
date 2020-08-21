@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: be33841206fa30a5b4975a604af1b5d9e38551a8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235465"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690252"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
 
@@ -153,6 +153,7 @@ Binnen de [SCIM 2,0-protocol specificatie](http://www.simplecloud.info/#Specific
 * Biedt ondersteuning voor het uitvoeren van query's op de gebruiker door de ID en per Manager, zoals wordt bepaald door de sectie 3.4.2 van het SCIM-protocol.  
 * Ondersteunt het opvragen van groepen op ID en op lid, zoals wordt bepaald door de sectie 3.4.2 van het SCIM-protocol.  
 * Hiermee wordt één Bearer-token geaccepteerd voor verificatie en autorisatie van Azure AD voor uw toepassing.
+* Ondersteunt het voorlopig verwijderen van een gebruiker `active=false` en het herstellen van de gebruiker `active=true` .
 
 Volg deze algemene richt lijnen bij het implementeren van een SCIM-eind punt om te zorgen voor compatibiliteit met Azure AD:
 

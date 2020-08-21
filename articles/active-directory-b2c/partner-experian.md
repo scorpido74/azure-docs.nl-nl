@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2a69bc40090e74ad5885c2576c040693f90d5d03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096708"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683875"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van Experian met Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ In deze voorbeeld zelfstudie bieden we richt lijnen voor het integreren van Azur
 
 In dit voor beeld wordt het geïntegreerde digitale identiteits-Experian en het fraude risico platform **CrossCore** gebruikt. CrossCore is een ID-verificatie service die wordt gebruikt om de gebruikers identificatie te controleren. Er wordt een risico analyse uitgevoerd op basis van verschillende gegevens die door de gebruiker tijdens de registratie worden verstrekt. CrossCore wordt gebruikt om te bepalen of de gebruiker zich moet blijven aanmelden of niet. De volgende kenmerken kunnen worden gebruikt in de CrossCore-risico analyse:
 
-- E-mail
+- Email
 - IP-adres
 - Voornaam
 - Middelste naam
@@ -129,7 +129,7 @@ Zoek in het meegeleverde aangepaste beleid de volgende tijdelijke aanduidingen e
 | {your_tenant_extensions_app_objectid}                  | Object-ID van de opslag toepassing van uw Tenant                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_api_username_key_name}                           | De naam van de sleutel van de gebruikers naam die u [hier](#part-4---create-api-policy-keys) hebt gemaakt             | B2C \_ 1a \_ RestApiUsername                     |
 | {your_api_password_key_name}                           | De naam van de wachtwoord sleutel die u [hier](#part-4---create-api-policy-keys) hebt gemaakt             | B2C \_ 1a \_ RestApiPassword                     |
-| {your_app_service_URL}                                 | URL van de app service die u hebt ingesteld                                             | <https://yourapp.azurewebsites.net>          |
+| {your_app_service_URL}                                 | URL van de app service die u hebt ingesteld                                             | `https://yourapp.azurewebsites.net`          |
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>Deel 6: het Azure AD B2C-beleid configureren
 
@@ -141,7 +141,7 @@ Raadpleeg dit [document](https://docs.microsoft.com/azure/active-directory-b2c/c
 >[!NOTE]
 > Als best practice, raden we aan dat klanten toestemming berichten toevoegen op de pagina met kenmerk verzameling. Informeer gebruikers dat er informatie wordt verzonden naar services van derden voor identiteits verificatie.
 
-## <a name="test-the-user-flow"></a>De gebruikers stroom testen
+## <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
 1. Open de Azure AD B2C Tenant en selecteer onder beleids regels **gebruikers stromen**.
 

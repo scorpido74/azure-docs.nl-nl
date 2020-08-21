@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367747"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690269"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fout bericht ' kan geen toegang krijgen tot deze bedrijfs toepassing ' wanneer u een toepassings proxy toepassing gebruikt
 
@@ -50,7 +50,7 @@ Er treedt een time-out voor de gateway op wanneer de service de connector probee
 Een ongeldige gateway fout geeft aan dat de connector de back-end-toepassing niet kan bereiken. Zorg ervoor dat u de juiste toepassing hebt gepubliceerd. Veelvoorkomende fouten die deze fout veroorzaken, zijn:
 
 - Een type of fout in de interne URL
-- De hoofdmap van de toepassing niet publiceren. Bijvoorbeeld publiceren, <http://expenses/reimbursement> maar toegang proberen<http://expenses>
+- De hoofdmap van de toepassing niet publiceren. Bijvoorbeeld publiceren, `http://expenses/reimbursement` maar toegang proberen `http://expenses`
 - Problemen met de configuratie van de Kerberos-beperkte overdracht (KCD)
 - Problemen met de back-end-toepassing
 

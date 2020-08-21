@@ -3,12 +3,12 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21034aaae42aa4abfa6848ce22db5fa4c21a11ce
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544669"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685762"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
@@ -36,7 +36,7 @@ Voor het controleren van instellingen op een machine is de extensie van de [virt
 > [!IMPORTANT]
 > De gast configuratie-extensie en een beheerde identiteit zijn vereist voor het controleren van virtuele Azure-machines. Wijs het volgende beleids initiatief toe om de uitbrei ding op schaal te implementeren:
 > 
-> - [Vereisten implementeren om beleidsregels voor gastconfiguraties op virtuele machines in te schakelen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> `Deploy prerequisites to enable Guest Configuration policies on virtual machines`
 
 ### <a name="limits-set-on-the-extension"></a>Limieten die zijn ingesteld voor de uitbrei ding
 
@@ -66,8 +66,8 @@ In de volgende tabel ziet u een lijst met ondersteunde besturings systemen in az
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 en hoger|
 |Credativ|Debian|8 en hoger|
-|Microsoft|Windows Server|2012 en hoger|
-|Microsoft|Windows-client|Windows 10|
+|Microsoft-peering|Windows Server|2012 en hoger|
+|Microsoft-peering|Windows-client|Windows 10|
 |OpenLogic|CentOS|7,3 en hoger|
 |Red Hat|Red Hat Enterprise Linux|7,4-7,8|
 |SuSE|SLES|12 SP3 en hoger|

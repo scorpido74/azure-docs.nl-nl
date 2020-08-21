@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: alexeyo
-ms.openlocfilehash: 86182130daf5cbb61df7a751aaeff392dd608a67
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88662585"
+ms.locfileid: "88690133"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Quota en limieten voor spraak Services
 
@@ -132,7 +132,7 @@ Begin met het verhogen van de limiet voor gelijktijdige aanvragen voor uw resour
   - Validatie van quotum of gebruik om de bestaande limiet te controleren
 - Klik op *volgende: oplossingen*
 - Ga verder met het maken van de aanvraag
-- Wanneer in *Details* velden in het veld *Beschrijving* typt u:
+- Typ in het veld *Beschrijving* op het tabblad *Details* :
   - een opmerking: de aanvraag is over het quotum **voor spraak naar tekst**
   - **Basis** -of **aangepast** model
   - Azure-resource gegevens die u hebt [verzameld vóór](#have-the-required-information-ready) 
@@ -184,7 +184,7 @@ Begin met het verhogen van de limiet voor gelijktijdige aanvragen voor uw resour
   - Validatie van quotum of gebruik om de bestaande limiet te controleren
 - Klik op *volgende: oplossingen*
 - Ga verder met het maken van de aanvraag
-- Wanneer in *Details* velden in het veld *Beschrijving* typt u:
+- Typ in het veld *Beschrijving* op het tabblad *Details* :
   - een opmerking: de aanvraag is een quotum **voor tekst naar spraak**
   - Azure-resource gegevens die u hebt [verzameld vóór](#prepare-the-required-information) 
   - Voer de vereiste gegevens in en klik op de knop *maken* op het tabblad *controleren en maken*

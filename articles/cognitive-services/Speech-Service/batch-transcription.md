@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/20/2020
 ms.author: wolfma
-ms.openlocfilehash: 519a9cdac678e8852bef9bd66e3fbb98278cbb3b
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: b30a314977755b94bdcfdf7526d1b9ae61fcf100
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660871"
+ms.locfileid: "88689742"
 ---
 # <a name="how-to-use-batch-transcription"></a>Batch-transcriptie gebruiken
 
@@ -174,7 +174,7 @@ Gebruik deze optionele eigenschappen om transcriptie te configureren:
 
 ### <a name="storage"></a>Storage
 
-Batch transcriptie kan audio lezen van een Internet-URI en kan audio lezen of transcripties schrijven met behulp van [Azure Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview).
+Batch transcriptie kan audio lezen van een open bare Internet-URI en kan audio lezen of transcripties schrijven met behulp van een SAS-URI met [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview).
 
 ## <a name="batch-transcription-result"></a>Resultaten batch-transcriptie
 
@@ -243,7 +243,7 @@ Elk transcriptie-resultaat bestand heeft de volgende indeling:
 }
 ```
 
-Het resultaat bevat de volgende formulieren:
+Het resultaat bevat de volgende velden:
 
 :::row:::
    :::column span="1":::
@@ -309,7 +309,8 @@ Tijds tempels op woord niveau moeten zijn ingeschakeld als de para meters in de 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-De batch transcriptie-service kan een groot aantal verzonden transcripties verwerken. U kunt de status van uw transcripties opvragen via a `GET` op [Get transcripties](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions). Roep het [verwijderen van transcriptie](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) regel matig aan bij de service zodra u de resultaten hebt opgehaald. Stel `timeToLive` de eigenschap ook in op een redelijke waarde om te zorgen dat de resultaten uiteindelijk worden verwijderd.
+De batch transcriptie-service kan een groot aantal verzonden transcripties verwerken. U kunt de status van uw transcripties opvragen bij [Get transcripties](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions).
+Roep het [verwijderen van transcriptie](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) regel matig aan bij de service zodra u de resultaten hebt opgehaald. Stel `timeToLive` de eigenschap ook in om ervoor te zorgen dat de resultaten uiteindelijk worden verwijderd.
 
 ## <a name="sample-code"></a>Voorbeeldcode
 

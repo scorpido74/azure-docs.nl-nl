@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e2c1b9bb8d8fa1e7b82bebfa31963be19d9024af
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: aee88420fe8b88de9af9a2397316dd065144e610
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648493"
+ms.locfileid: "88685286"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Voor geheugen geoptimaliseerde dv2-en Dsv2-serie
 
@@ -65,7 +65,7 @@ Updates voor geheugen behoud: ondersteund
 | Standard_DS14_v2 <sup>3</sup> | 16 | 112 | 224 | 64 | 64000/512 (576) | 51200/768 | 8|12000 |
 | Standard_DS15_v2 <sup>2</sup> | 20 | 140 | 280 | 64 | 80000/640 (720) | 64000/960 | 8|25000 <sup>4</sup> |
 
-<sup>1</sup> de maximale schijf doorvoer (IOPS of Mbps) die mogelijk is met een virtuele machine uit de DSv2-serie kan worden beperkt door het aantal, de grootte en de striping van de gekoppelde schijven.  Zie [ontwerpen voor hoge prestaties](./windows/premium-storage-performance.md)voor meer informatie.
+<sup>1</sup> de maximale schijf doorvoer (IOPS of Mbps) die mogelijk is met een virtuele machine uit de DSv2-serie kan worden beperkt door het aantal, de grootte en de striping van de gekoppelde schijven.  Zie [ontwerpen voor hoge prestaties](./premium-storage-performance.md)voor meer informatie.
 <sup>2</sup>  exemplaar is geïsoleerd voor de Intel Haswell-hardware en is bestemd voor één klant.  
 <sup>3</sup> beperkte core-grootten beschikbaar.  
 <sup>4</sup> 25000 Mbps met versneld netwerken.

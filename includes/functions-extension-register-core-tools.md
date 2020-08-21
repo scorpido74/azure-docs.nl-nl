@@ -4,17 +4,26 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 08/07/2020
 ms.author: glenga
-ms.openlocfilehash: 2936d22eacef73daef4433b3fd296dd4757fa410
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: a4f03223b5067d18f5d6e747b3bb630a86031b8f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031117"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689547"
 ---
-Als u geen uitbreidings bundels kunt gebruiken, kunt u Azure Functions Core Tools lokaal gebruiken om de specifieke extensie pakketten te installeren die vereist zijn voor uw project. 
+Als u geen uitbreidings bundels kunt gebruiken, kunt u Azure Functions Core Tools lokaal gebruiken om de specifieke extensie pakketten te installeren die vereist zijn voor uw project.
+
+> [!IMPORTANT]
+> U kunt geen expliciete uitbrei dingen installeren in een functie-app die gebruikmaakt van uitbreidings bundels. Verwijder de `extensionBundle` sectie in *host.jsop* voordat u de extensies expliciet installeert.
+
+De volgende items beschrijven enkele redenen die u mogelijk hand matig moet installeren:
+
+* U moet toegang hebben tot een specifieke versie van een uitbrei ding die niet beschikbaar is in een bundel.
+* U moet toegang hebben tot een aangepaste extensie die niet beschikbaar is in een bundel.
+* U moet toegang hebben tot een specifieke combi natie van extensies die niet beschikbaar zijn in een enkele bundel.
 
 > [!NOTE]
-> Als u de uitbrei dingen hand matig wilt installeren met behulp van kern Hulpprogramma's, moet u de .NET Core 2. x SDK hebben geïnstalleerd.
+> Als u de uitbrei dingen hand matig wilt installeren met behulp van kern Hulpprogramma's, moet u de [.net Core 2. x SDK](https://dotnet.microsoft.com/download) hebben geïnstalleerd. De .NET Core SDK wordt gebruikt door Azure Functions Core Tools om uitbrei dingen van NuGet te installeren. U hoeft geen kennis te hebben van .NET om Azure Functions-extensies te gebruiken.
 
 Wanneer u de extensies expliciet installeert, wordt een .NET-project bestand met de naam Extensions. csproj toegevoegd aan de hoofdmap van uw project. Dit bestand definieert de set NuGet-pakketten die vereist zijn voor uw functies. Hoewel u met de NuGet- [pakket verwijzingen](/nuget/consume-packages/package-references-in-project-files) in dit bestand kunt werken, kunt u met de belangrijkste hulpprogram ma's uitbrei dingen installeren zonder het bestand hand matig te hoeven bewerken.
 
@@ -28,6 +37,8 @@ Gebruik de volgende opdracht om automatisch alle extensie pakketten toe te voege
 func extensions install
 ```
 Met de opdracht leest u de *function.jsin* het bestand om te zien welke pakketten u nodig hebt, installeert u ze en bouwt u het project extensies uit (extensies. csproj). Er worden nieuwe bindingen aan de huidige versie toegevoegd, maar bestaande bindingen worden niet bijgewerkt. Gebruik de `--force` optie om bestaande bindingen bij te werken naar de meest recente versie bij het installeren van nieuwe.
+
+Als uw functie-app bindingen gebruikt die niet worden herkend door kern Hulpprogramma's, moet u de specifieke extensie hand matig installeren.
 
 #### <a name="install-a-specific-extension"></a>Een specifieke extensie installeren
 

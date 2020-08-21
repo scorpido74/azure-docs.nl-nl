@@ -5,12 +5,12 @@ description: Meer informatie over het dynamisch maken van een permanent volume m
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 3d01b2c2098dcbe896ecaa7f854d91477eba2cab
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648765"
+ms.locfileid: "88683603"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisch een permanent volume maken en gebruiken met Azure-schijven in azure Kubernetes service (AKS)
 
@@ -40,7 +40,7 @@ Elk AKS-cluster bevat vier vooraf gemaakte opslag klassen, waarvan er twee zijn 
     
 Als u een van de standaard-opslag klassen gebruikt, kunt u de volume grootte niet bijwerken nadat de opslag klasse is gemaakt. Als u wilt dat de volume grootte kan worden bijgewerkt nadat een opslag klasse is gemaakt, voegt u de regel toe `allowVolumeExpansion: true` aan een van de standaard-opslag klassen of kunt u een eigen aangepaste opslag klasse maken. Houd er rekening mee dat het niet wordt ondersteund om de grootte van een PVC te verminderen (om verlies van gegevens te voor komen). U kunt een bestaande opslag klasse bewerken met behulp van de `kubectl edit sc` opdracht. 
 
-Als u bijvoorbeeld een schijf van grootte 4 TiB wilt gebruiken, moet u een opslag klasse maken die definieert, `cachingmode: None` omdat [schijf cache gebruik niet wordt ondersteund voor schijven van 4 TIB en groter](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
+Als u bijvoorbeeld een schijf van grootte 4 TiB wilt gebruiken, moet u een opslag klasse maken die definieert, `cachingmode: None` omdat [schijf cache gebruik niet wordt ondersteund voor schijven van 4 TIB en groter](../virtual-machines/premium-storage-performance.md#disk-caching).
 
 Zie [opslag opties voor toepassingen in AKS][storage-class-concepts]voor meer informatie over opslag klassen en het maken van uw eigen opslag klasse.
 

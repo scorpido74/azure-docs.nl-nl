@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb24100eaebc54b98adf2f09fa3e557e4d6fa0be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcce4485e00415f9caa706966cac1c936c1f15f6
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580656"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690405"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-grootschalige (Citus) bewaken en afstemmen
 
@@ -28,11 +28,11 @@ Naast het weer geven van grafieken van de metrische gegevens kunt u waarschuwing
 
 Deze metrische gegevens zijn beschikbaar voor grootschalige-knoop punten (Citus):
 
-|Metrisch|Weergave naam voor metrische gegevens|Eenheid|Beschrijving|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Beschrijving|
 |---|---|---|---|
-|active_connections|Actieve verbindingen|Count|Het aantal actieve verbindingen met de server.|
+|active_connections|Actieve verbindingen|Aantal|Het aantal actieve verbindingen met de server.|
 |cpu_percent|CPU-percentage|Percentage|Het percentage CPU-gebruik.|
-|IOPS|IOPS|Count|De [IOPS-definitie](../virtual-machines/linux/premium-storage-performance.md#iops) en [grootschalige-door Voer](concepts-hyperscale-configuration-options.md) bekijken|
+|IOPS|IOPS|Aantal|De [IOPS-definitie](../virtual-machines/premium-storage-performance.md#iops) en [grootschalige-door Voer](concepts-hyperscale-configuration-options.md) bekijken|
 |memory_percent|Geheugen percentage|Percentage|Het percentage geheugen dat in gebruik is.|
 |network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
 |network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|

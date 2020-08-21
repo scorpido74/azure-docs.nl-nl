@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd4ea4438e82ea9fb1d503b262bfda1b22b2737
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83845437"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690303"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Azure Multi-Factor Authentication-server configureren voor IIS-webtoepassingen
 
@@ -58,7 +58,7 @@ Als u een IIS-webtoepassing wilt beveiligen die gebruikmaakt van geïntegreerde 
 1. Klik op de Azure Multi-Factor Authentication-server in het menu links op het pictogram IIS-verificatie.
 2. Klik op het tabblad **http** .
 3. Klik op **Add**.
-4. Voer in het dialoog venster basis-URL toevoegen in het veld de URL in voor de website waar de HTTP-verificatie wordt uitgevoerd (zoals <http://localhost/owa> ) en geef een toepassings naam op (optioneel). De naam van de toepassing wordt vermeld in Azure Multi-Factor Authentication-rapporten en kan worden weergegeven in verificatieberichten via sms of mobiele apps.
+4. Voer in het dialoog venster basis-URL toevoegen in het veld de URL in voor de website waar de HTTP-verificatie wordt uitgevoerd (zoals `http://localhost/owa` ) en geef een toepassings naam op (optioneel). De naam van de toepassing wordt vermeld in Azure Multi-Factor Authentication-rapporten en kan worden weergegeven in verificatieberichten via sms of mobiele apps.
 5. Pas de tijd voor time-out voor inactiviteit en voor Maximale sessie aan als de standaardwaarde niet voldoende is.
 6. Schakel het selectievakje **Overeenkomende Multi-Factor Authentication-gebruiker vereisen** in als alle gebruikers zijn of moeten worden geïmporteerd in de server en aan Multi-Factor Authentication moeten worden onderworpen. Als een groot aantal gebruikers nog niet is geïmporteerd in de server en/of vrijgesteld zal zijn van Multi-Factor Authentication, laat u het vakje uitgeschakeld.
 7. Schakel, indien gewenst, het selectievakje **Cookie gebruiken om voltooide authenticaties in de cache op te slaan** in.

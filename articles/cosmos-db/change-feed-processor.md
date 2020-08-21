@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: faf46a90a04e35eb041deb31913980575b1e0d28
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236468"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688042"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB
 
@@ -100,8 +100,8 @@ Er worden kosten in rekening gebracht voor het verbruikte RUs, omdat gegevens ve
 De Change feed-processor kan worden gehost in elk platform dat ondersteuning biedt voor langlopende processen of taken:
 
 * Een continue uitvoering van [Azure-Webtaak](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/).
-* Een proces op een [virtuele machine van Azure](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines).
-* Een achtergrond taak in de [Azure Kubernetes-service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service).
+* Een proces op een [virtuele machine van Azure](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines).
+* Een achtergrond taak in de [Azure Kubernetes-service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service).
 * Een [ASP.net-gehoste service](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services).
 
 Hoewel de feed-processor in korte Bewaar omgevingen kan worden uitgevoerd, omdat de lease-container de status behoudt, zullen de begin-en eind cyclus van deze omgevingen vertraging oplopen om de meldingen te ontvangen (als gevolg van de overhead van het starten van de processor telkens wanneer de omgeving wordt gestart).

@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: Aro, open Shift, AZ Aro, Red Hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 40a915531aa58567b17a774a15504dc92770479f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 046cd30c0f93a468287c73573a3d18f4ba66221b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854259"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690218"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Een Azure Red Hat open Shift 4-cluster toepassing back-up maken
 
@@ -29,7 +29,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="install-velero"></a>Velero installeren
 
-Als u Velero op uw systeem wilt [installeren](https://velero.io/docs/master/basic-install/) , volgt u het aanbevolen proces voor uw besturings systeem.
+Als u Velero op uw systeem wilt [installeren](https://velero.io/docs/main/basic-install/) , volgt u het aanbevolen proces voor uw besturings systeem.
 
 ### <a name="set-up-azure-storage-account-and-blob-container"></a>Azure Storage-account en BLOB-container instellen
 

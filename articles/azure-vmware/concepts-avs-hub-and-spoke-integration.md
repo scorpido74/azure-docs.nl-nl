@@ -2,13 +2,13 @@
 title: 'Concept: een implementatie van een Azure VMware-oplossing integreren in een hub-en spoke-architectuur'
 description: Meer informatie over de aanbevelingen voor het integreren van een implementatie van een Azure VMware-oplossing in een bestaande of een nieuwe hub-en spoke-architectuur in Azure.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: a1ba75369a1d6f19ca7ae1f36107170f219f72d0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 08/20/2020
+ms.openlocfilehash: deb2756f7e83250ff58836098dc4954ec482fbda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649581"
+ms.locfileid: "88684490"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-oplossing integreren in een hub-en spoke-architectuur
 
@@ -28,10 +28,7 @@ Verkeer tussen het on-premises Data Center, de privécloud van Azure VMware-oplo
 
 In het diagram ziet u een voor beeld van een hub-en spoke-implementatie in azure die is verbonden met on-premises en Azure VMware-oplossing via ExpressRoute.
 
-:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie":::
-
-
-
+:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Implementatie van Azure VMware Solution hub en spoke-integratie" border="false":::
 
 De architectuur heeft de volgende hoofd onderdelen:
 
@@ -64,12 +61,12 @@ On-premises connectiviteit kan ook gebruikmaken van ExpressRoute Global Reach, m
 
 * **Verkeers stroom van on-premises naar Azure VMware-oplossing**
 
-  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="Verkeers stroom van on-premises naar Azure VMware-oplossing":::
+  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="Verkeers stroom van on-premises naar Azure VMware-oplossing" border="false":::
 
 
 * **Azure VMware-oplossing voor hub VNET-verkeers stroom**
 
-  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware-oplossing voor het hub-verkeer van virtuele netwerken":::
+  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware-oplossing voor het hub-verkeer van virtuele netwerken" border="false":::
 
 
 Meer informatie over Azure VMware Solution Network-en interconnectiviteit-concepten vindt u in de [product documentatie van de Azure VMware-oplossing](./concepts-networking.md).
@@ -97,7 +94,7 @@ Een tweede niveau van Traffic segmentatie met behulp van de netwerk beveiligings
 
 Azure-toepassing gateway v1 en v2 zijn getest met web apps die worden uitgevoerd op virtuele machines uit de Azure VMware-oplossing als back-end-groep. Application Gateway is momenteel de enige methode die wordt ondersteund om web-apps die worden uitgevoerd op virtuele machines van Azure VMware-oplossingen, beschikbaar te maken op internet. Ook kunnen de apps veilig worden blootgesteld aan interne gebruikers.
 
-:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Tweede niveau van verkeers segmentatie met behulp van de netwerk beveiligings groepen":::
+:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="Tweede niveau van verkeers segmentatie met behulp van de netwerk beveiligings groepen" border="false":::
 
 
 ### <a name="jumpbox-and-azure-bastion"></a>JumpBox en Azure Bastion
@@ -110,7 +107,7 @@ Implementeer [Microsoft Azure Bastion](../bastion/index.yml) -service in het vir
 > Geef geen openbaar IP-adres aan de JumpBox-VM of open de poort 3389/TCP voor het open bare Internet. 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Virtueel Azure Bastion hub-netwerk":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Virtueel Azure Bastion hub-netwerk" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Overwegingen voor Azure DNS oplossingen

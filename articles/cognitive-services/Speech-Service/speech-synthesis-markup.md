@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ae98f74092c3955a54c0817082e8f29c1b251237
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3394882574f94e4a1af3aa942f3b0bd87be55368
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533390"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690082"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -46,7 +46,7 @@ Elk SSML-document wordt gemaakt met SSML-elementen (of-Tags). Deze elementen wor
 
 ## <a name="create-an-ssml-document"></a>Een SSML-document maken
 
-`speak`is het hoofd element en is **vereist** voor alle SSML-documenten. Het `speak` -element bevat belang rijke informatie, zoals versie, taal en de definitie van de aantekeningen woordenlijst.
+`speak` is het hoofd element en is **vereist** voor alle SSML-documenten. Het `speak` -element bevat belang rijke informatie, zoals versie, taal en de definitie van de aantekeningen woordenlijst.
 
 **Syntaxis**
 
@@ -192,7 +192,7 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > De aanpassing van gesp roken stijlen werkt alleen met Neural stemmen.
 
-Standaard wordt tekst door de service tekst naar spraak gesynthesizerd met behulp van een neutrale spreek stijl voor de standaard-en Neural stemmen. Met Neural stemmen kunt u de spreek stijl aanpassen aan een snelle andere emoties, zoals cheerfulness, empathie en rustig, of de stem optimaliseren voor verschillende scenario's zoals aangepaste service, newscasting en Voice Assistant, met behulp van het element <mstts: Express-as>. Dit is een optioneel element dat uniek is voor de spraak service.
+Standaard wordt tekst door de service tekst naar spraak gesynthesizerd met behulp van een neutrale spreek stijl voor de standaard-en Neural stemmen. Met Neural stemmen kunt u de spreek stijl aanpassen aan een snelle andere emoties, zoals cheerfulness, empathie en rustig, of de stem optimaliseren voor verschillende scenario's zoals aangepaste service, newscasting en Voice Assistant, met behulp van het-  `mstts:express-as`   element. Dit is een optioneel element dat uniek is voor de spraak service.
 
 Op dit moment worden de volgende Neural stemmen ondersteund:
 * `en-US-AriaNeural`
@@ -263,7 +263,7 @@ Gebruik het `break` element om pauzes (of onderbrekingen) tussen woorden in te v
 | Kenmerk | Beschrijving | Vereist/optioneel |
 |-----------|-------------|---------------------|
 | `strength` | Hiermee geeft u de relatieve duur van een onderbreking op met een van de volgende waarden:<ul><li>geen</li><li>x-zwak</li><li>Schakel</li><li>gemiddeld (standaard)</li><li>strakk</li><li>x-Strong</li></ul> | Optioneel |
-| `time` | Hiermee geeft u de absolute duur van een onderbreking in seconden of milliseconden. Voor beelden van geldige waarden zijn `2s` en`500` | Optioneel |
+| `time` | Hiermee geeft u de absolute duur van een onderbreking in seconden of milliseconden. Voor beelden van geldige waarden zijn `2s` en `500` | Optioneel |
 
 | Hoger                      | Beschrijving |
 |-------------------------------|-------------|
@@ -286,7 +286,7 @@ Gebruik het `break` element om pauzes (of onderbrekingen) tussen woorden in te v
 
 ## <a name="specify-paragraphs-and-sentences"></a>Alinea's en zinnen opgeven
 
-`p`en `s` elementen worden gebruikt om respectievelijk alinea's en zinnen aan te duiden. Als deze elementen ontbreken, bepaalt de tekst naar spraak-service automatisch de structuur van het SSML-document.
+`p` en `s` elementen worden gebruikt om respectievelijk alinea's en zinnen aan te duiden. Als deze elementen ontbreken, bepaalt de tekst naar spraak-service automatisch de structuur van het SSML-document.
 
 Het `p` element kan tekst en de volgende elementen bevatten: `audio` , `break` , `phoneme` , `prosody` , `say-as` , `sub` , en `mstts:express-as` `s` .
 
@@ -564,7 +564,7 @@ Wijzigingen in de hoogte kunnen worden toegepast op standaard stemmen op het niv
 ```
 ## <a name="say-as-element"></a>het element dict-as
 
-`say-as`is een optioneel element dat het inhouds type (zoals getal of datum) van de tekst van het element aangeeft. Dit biedt richt lijnen voor de engine voor spraak synthese over hoe u de tekst uitspreekt.
+`say-as` is een optioneel element dat het inhouds type (zoals getal of datum) van de tekst van het element aangeeft. Dit biedt richt lijnen voor de engine voor spraak synthese over hoe u de tekst uitspreekt.
 
 **Syntaxis**
 
@@ -617,7 +617,7 @@ De engine voor spraak synthese spreekt het volgende voor beeld uit als ' uw eers
 
 ## <a name="add-recorded-audio"></a>Opgenomen audio toevoegen
 
-`audio`is een optioneel element waarmee u MP3-audio kunt invoegen in een SSML-document. De hoofd tekst van het audio-element kan onbewerkte tekst of SSML markeringen bevatten die worden gesp roken als het audio bestand niet beschikbaar is of niet kan worden afgespeeld. Daarnaast kan het `audio` element tekst en de volgende elementen bevatten: `audio` ,, `break` `p` ,,,, en `s` `phoneme` `prosody` `say-as` `sub` .
+`audio` is een optioneel element waarmee u MP3-audio kunt invoegen in een SSML-document. De hoofd tekst van het audio-element kan onbewerkte tekst of SSML markeringen bevatten die worden gesp roken als het audio bestand niet beschikbaar is of niet kan worden afgespeeld. Daarnaast kan het `audio` element tekst en de volgende elementen bevatten: `audio` ,, `break` `p` ,,,, en `s` `phoneme` `prosody` `say-as` `sub` .
 
 Audio die is opgenomen in het SSML-document moet voldoen aan deze vereisten:
 

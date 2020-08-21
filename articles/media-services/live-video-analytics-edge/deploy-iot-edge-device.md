@@ -3,17 +3,16 @@ title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 26be76a46fa514917ee1c89cab7d1f112ee85431
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652454"
+ms.locfileid: "88684096"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
 In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
-
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -23,6 +22,7 @@ In dit artikel worden de stappen beschreven die u helpen bij het implementeren v
 * [IoT Edge-apparaat registreren](../../iot-edge/how-to-register-device.md)
 * [De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Een Azure Media Services-account maken](../latest/create-account-howto.md)
+
     * Gebruik een van deze regio's: VS-Oost 2, VS-midden, Noord-Centraal VS, Japan-Oost, VS-West 2, VS-West-Centraal, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
     * U wordt aangeraden v2-opslag accounts voor algemeen gebruik (GPv2) te gebruiken
 
@@ -190,6 +190,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
+
    > [!Note]
    > De dubbele eigenschap **allowUnsecuredEndpoints** is ingesteld op True voor het doel van de zelf studies en de Quick starts.   
    U moet deze eigenschap instellen op **Onwaar** als deze wordt uitgevoerd in de productie omgeving. Dit zorgt ervoor dat alle onbeveiligde eind punten worden geblokkeerd door de toepassing en dat de grafiek topologieën moeten worden uitgevoerd als er geldige verbindings referenties nodig zijn.  
@@ -210,8 +211,8 @@ Controleer uw implementatie gegevens en selecteer vervolgens maken.
 
 Nadat u de implementatie hebt gemaakt, keert u terug naar de pagina IoT Edge van uw IoT-hub.
 
-1.  Selecteer het IoT Edge apparaat waarop de implementatie is gericht om de details ervan te openen.
-2.  Controleer in de details van het apparaat of de module Blob Storage wordt vermeld als **opgegeven in de implementatie en wordt gerapporteerd door het apparaat**.
+1. Selecteer het IoT Edge apparaat waarop de implementatie is gericht om de details ervan te openen.
+2. Controleer in de details van het apparaat of de module Blob Storage wordt vermeld als **opgegeven in de implementatie en wordt gerapporteerd door het apparaat**.
 
 Het kan even duren voordat de module op het apparaat is gestart en vervolgens weer aan IoT Hub is gemeld. Vernieuw de pagina om de bijgewerkte status weer te geven.
 Status code: 200 – OK betekent dat [de runtime van IOT Edge](../../iot-edge/iot-edge-runtime.md) in orde is en goed werkt.
@@ -247,6 +248,7 @@ Vervolgens kunt u het voor beeld testen door een directe methode aan te roepen. 
     ![De status 200 bericht](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Probeer [Quick Start: aan de slag-live video Analytics op IOT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]

@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95fb9798bc62236d785c911ec75db8d6e11f6e97
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424372"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685711"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API fout codes
  
@@ -89,7 +89,7 @@ Tokens zijn base64-gecodeerd en de waarden kunnen worden gedecodeerd op websites
 
 Er kunnen veel belang rijke onderdelen in dit token worden weer geven:
 
-- AUD (doel groep): de bron van het token. Zoals u ziet, is dit <https://vault.azure.net> . Dit token werkt niet voor resources die niet expliciet overeenkomen met deze waarde, zoals Graph.
+- AUD (doel groep): de bron van het token. Zoals u ziet, is dit `https://vault.azure.net` . Dit token werkt niet voor resources die niet expliciet overeenkomen met deze waarde, zoals Graph.
 - IAT (uitgegeven op): het aantal maat streepjes sinds het begin van de Epoch wanneer het token is uitgegeven.
 - NBF (niet vóór): het aantal maat streepjes sinds het begin van de epoche wanneer dit token geldig wordt.
 - EXP (verval datum): het aantal maat streepjes sinds het begin van de epoche wanneer dit token verloopt.

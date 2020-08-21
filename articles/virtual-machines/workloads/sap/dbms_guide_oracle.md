@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75f8a1f42c5d5702fdb4a588b0829636c30f80a6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654613"
+ms.locfileid: "88690320"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines DBMS-implementatie voor SAP-workload
 
@@ -420,7 +420,7 @@ Zie [herstel na nood gevallen voor een Oracle database 12c-data base in een Azur
 
 ### <a name="accelerated-networking"></a>Versneld netwerken
 Voor Oracle-implementaties in Windows wordt het beste versneld netwerken aanbevolen, zoals beschreven in [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Houd ook rekening met de aanbevelingen die worden gedaan in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). 
-### <a name="other"></a>Overige
+### <a name="other"></a>Overig
 [Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Details voor Oracle Database op Oracle Linux
@@ -444,7 +444,7 @@ In dit geval kunt u het beste de installatie/locatie van Oracle Home, stage, sap
 
 De bestands systemen van ext4, xfs of Oracle ASM worden ondersteund voor Oracle Database-bestanden in Azure. Alle database bestanden moeten worden opgeslagen op deze bestands systemen op basis van Vhd's of Managed Disks. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) of [Azure Managed disks](../../managed-disks-overview.md).
 
-Voor Oracle Linux UEK-kernels is mini maal UEK versie 4 vereist voor de ondersteuning van [Azure Premium ssd's](../../windows/premium-storage-performance.md#disk-caching).
+Voor Oracle Linux UEK-kernels is mini maal UEK versie 4 vereist voor de ondersteuning van [Azure Premium ssd's](../../premium-storage-performance.md#disk-caching).
 
 Het wordt sterk aanbevolen om [Azure Managed disks](../../managed-disks-overview.md)te gebruiken. Het wordt ook nadrukkelijk aanbevolen [Azure Premium ssd's](../../disks-types.md) te gebruiken voor uw Oracle database-implementaties.
 
@@ -523,5 +523,5 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Overig
 [Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.

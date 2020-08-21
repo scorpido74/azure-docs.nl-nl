@@ -10,16 +10,16 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 8255a4c6556dc1a36d763e48f6bcc5eec012b553
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6276d5c8d333f29c55720f2255f2cdf27e1e36cc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292993"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690745"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Gebruikers gegevens in een product weer geven en verwijderen uit Azure AI Gallery
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 U kunt de gebruikers gegevens van uw product weer geven en verwijderen uit Azure AI Gallery met behulp van de interface of de AI Gallery Catalog-API. In dit artikel leest u hoe.
 

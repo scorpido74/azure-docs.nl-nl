@@ -8,12 +8,12 @@ ms.date: 07/16/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: dc2509aad3f42e1e7d93d867da832fef60965a68
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f51c8fe3bf92526bc7e132275255e116381ba06
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088407"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689691"
 ---
 # <a name="azure-shared-disks"></a>Gedeelde Azure-schijven
 
@@ -21,4 +21,4 @@ ms.locfileid: "87088407"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u graag gedeelde schijven voor uw Managed disks wilt inschakelen en gebruiken, gaat u naar ons artikel een [gedeelde schijf inschakelen](disks-shared-enable.md).
+Als u graag gedeelde schijven voor uw Managed disks wilt inschakelen en gebruiken, gaat u naar ons artikel een [gedeelde schijf inschakelen](../disks-shared-enable.md).

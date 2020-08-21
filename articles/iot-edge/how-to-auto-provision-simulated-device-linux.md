@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092384"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684453"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Een IoT Edge apparaat maken en inrichten met een TPM in Linux
 
@@ -61,7 +61,7 @@ Als er fouten worden weer geven tijdens het maken van de nieuwe virtuele switch,
 
 ### <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. Down load een schijf kopie bestand dat u voor de virtuele machine wilt gebruiken en sla het lokaal op. Bijvoorbeeld [Ubuntu server 18,04](http://releases.ubuntu.com/18.04.4/). Zie [Azure IOT Edge-ondersteunde systemen](support.md)voor meer informatie over de ondersteunde besturings systemen voor IOT edge apparaten.
+1. Down load een schijf kopie bestand dat u voor de virtuele machine wilt gebruiken en sla het lokaal op. Bijvoorbeeld [Ubuntu server 18,04](http://releases.ubuntu.com/18.04/). Zie [Azure IOT Edge-ondersteunde systemen](support.md)voor meer informatie over de ondersteunde besturings systemen voor IOT edge apparaten.
 
 2. In Hyper-V-beheer opnieuw, selecteer **actie**  >  **nieuwe**  >  **virtuele machine** in het menu **acties** .
 

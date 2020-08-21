@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 4cc00ecb3810b1499f52ea9f3a0c110e92c75dff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec765e2eb635449140d60ee98762e35aea12fe44
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009609"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689606"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure PowerShell
 
@@ -28,7 +28,7 @@ ms.locfileid: "87009609"
 
 ## <a name="getting-started"></a>Aan de slag
 
-Als u liever schijven wilt uploaden via een grafische gebruikers interface, kunt u dit doen met behulp van Azure Storage Explorer. Raadpleeg voor meer informatie: [Azure Storage Explorer gebruiken om Azure Managed disks te beheren](disks-use-storage-explorer-managed-disks.md)
+Als u liever schijven wilt uploaden via een grafische gebruikers interface, kunt u dit doen met behulp van Azure Storage Explorer. Raadpleeg voor meer informatie: [Azure Storage Explorer gebruiken om Azure Managed disks te beheren](../disks-use-storage-explorer-managed-disks.md)
 
 Als u uw VHD naar Azure wilt uploaden, moet u een lege beheerde schijf maken die is geconfigureerd voor dit upload proces. Voordat u er een maakt, moet u over deze schijven enige aanvullende informatie weten.
 

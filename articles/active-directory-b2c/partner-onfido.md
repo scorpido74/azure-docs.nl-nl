@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 580d3cea94e3c550954fc0fa1aa6f2c3a73e9386
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554791"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683858"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van Onfido met Azure Active Directory B2C
 
@@ -84,7 +84,7 @@ Zie [ONFIDO API documentation](https://documentation.onfido.com) and [Onfido Dev
 
 Toepassings instellingen kunnen worden geconfigureerd in de [app service in azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Met de app service kunnen instellingen veilig worden geconfigureerd zonder deze in een opslag plaats te controleren. De rest-API moet de volgende instellingen hebben:
 
-| Naam van toepassings instelling | Bron | Notities |
+| Naam van toepassings instelling | Bron | Opmerkingen |
 |:-------------------------|:-------|:-------|
 |OnfidoSettings: AuthToken| Onfido-account |
 
@@ -136,7 +136,7 @@ Zoek in het meegeleverde aangepaste beleid de volgende tijdelijke aanduidingen e
 | {your_tenant_extensions_app_objectid}                  | Object-ID van de opslag toepassing van uw Tenant                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_app_insights_instrumentation_key} | Instrumentatie sleutel van uw app Insights-exemplaar *| 01234567-89ab-cdef-0123-456789abcdef|
 |{your_ui_file_base_url}| De URL van de locatie waar de mappen **ocean_blue**, **distributie**en **assets** van de gebruikers interface zich bevinden | https://yourstorage.blob.core.windows.net/UI/|
-| {your_app_service_URL}                                 | URL van de app service die u hebt ingesteld                                             | <https://yourapp.azurewebsites.net>          |
+| {your_app_service_URL}                                 | URL van de app service die u hebt ingesteld                                             | `https://yourapp.azurewebsites.net`          |
 
 * App Insights kan zich in een andere Tenant bevindt. Deze stap is optioneel. Verwijder, indien nodig, de bijbehorende TechnicalProfiles en OrchestrationSteps.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 2201cae66aae8c2d9d106871db0d4ebbd003f361
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4489aae873c3fa4153974209074e14959307c772
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052144"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690337"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle-VM-installatie kopieën en hun implementatie op Microsoft Azure
 
@@ -112,7 +112,7 @@ Deze mogelijkheden zijn mogelijk omdat Azure NetApp Files is gebaseerd op NetApp
 ## <a name="licensing-oracle-database--software-on-azure"></a>Licentie Oracle Database & software op Azure
 
 Microsoft Azure is een geautoriseerde cloud omgeving voor het uitvoeren van Oracle Database. De Oracle core factor Table is niet van toepassing op Oracle-data bases in de Cloud. Bij het gebruik van Vm's met Hyper-Threading-technologie die is ingeschakeld voor Enter prise Edition-data bases, telt u twee Vcpu's als gelijkwaardig aan één Oracle-processor licentie als hyperthreading is ingeschakeld (zoals vermeld in het beleids document). De details van het beleid vindt u [hier](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
-Oracle-data bases vereisen over het algemeen meer geheugen en IO. Daarom worden [Vm's geoptimaliseerd voor geheugen](../../sizes-memory.md) aanbevolen voor deze werk belastingen. Om uw workloads verder te optimaliseren, worden [beperkte kern vcpu's](../../linux/constrained-vcpu.md) aanbevolen voor Oracle database workloads die hoge geheugen, opslag ruimte en I/O-band breedte nodig hebben, maar geen hoog aantal kernen.
+Oracle-data bases vereisen over het algemeen meer geheugen en IO. Daarom worden [Vm's geoptimaliseerd voor geheugen](../../sizes-memory.md) aanbevolen voor deze werk belastingen. Om uw workloads verder te optimaliseren, worden [beperkte kern vcpu's](../../constrained-vcpu.md) aanbevolen voor Oracle database workloads die hoge geheugen, opslag ruimte en I/O-band breedte nodig hebben, maar geen hoog aantal kernen.
 
 Wanneer Oracle-software en-workloads van on-premises naar Microsoft Azure worden gemigreerd, biedt Oracle licentie mobiliteit zoals vermeld in de [Veelgestelde vragen over Oracle op Azure](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)
 

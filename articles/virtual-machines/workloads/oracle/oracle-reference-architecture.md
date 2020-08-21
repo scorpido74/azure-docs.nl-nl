@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 4be24d645d2145ee07f9b9a4696b825a26dcf5c9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8feede515cf7ed861f3219fdf5f4642a33c9e83e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448757"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690354"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referentie architecturen voor Oracle Database Enterprise Edition op Azure
 
@@ -59,7 +59,7 @@ Als uw toepassing het prestatie verlies niet toestaat bij het instellen van een 
 
 Wanneer u Oracle Standard Edition-data bases gebruikt, zijn er ISV-oplossingen, zoals DBVisit standby, waarmee u hoge Beschik baarheid en herstel na nood gevallen kunt instellen.
 
-## <a name="reference-architectures"></a>Referentie-archtecturen
+## <a name="reference-architectures"></a>Referentiearchitecturen
 
 ### <a name="oracle-data-guard"></a>Oracle Data Guard
 
@@ -79,7 +79,7 @@ Het volgende diagram is een aanbevolen architectuur voor het gebruik van Oracle 
 
 ![Oracle Database beschikbaarheids zones gebruiken met Data Guard Broker-FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
-In het voor gaande diagram opent het client systeem een aangepaste toepassing met Oracle-back-end via het web. De web-front-end is geconfigureerd in een load balancer. Met de web-frontend wordt een aanroep uitgevoerd naar de juiste toepassings server om het werk af te handelen. De toepassings server voert een query uit op de primaire Oracle-data base. De Oracle-data base is geconfigureerd met een [virtuele machine](../../sizes-memory.md) met hyperthreaded geoptimaliseerd voor geheugen met [beperkte kern vcpu's](../../../virtual-machines/windows/constrained-vcpu.md) om de licentie kosten op te slaan en de prestaties te maximaliseren. Er worden meerdere Premium-of Ultra schijven (Managed Disks) gebruikt voor prestaties en hoge Beschik baarheid.
+In het voor gaande diagram opent het client systeem een aangepaste toepassing met Oracle-back-end via het web. De web-front-end is geconfigureerd in een load balancer. Met de web-frontend wordt een aanroep uitgevoerd naar de juiste toepassings server om het werk af te handelen. De toepassings server voert een query uit op de primaire Oracle-data base. De Oracle-data base is geconfigureerd met een [virtuele machine](../../sizes-memory.md) met hyperthreaded geoptimaliseerd voor geheugen met [beperkte kern vcpu's](../../../virtual-machines/constrained-vcpu.md) om de licentie kosten op te slaan en de prestaties te maximaliseren. Er worden meerdere Premium-of Ultra schijven (Managed Disks) gebruikt voor prestaties en hoge Beschik baarheid.
 
 De Oracle-data bases worden in meerdere beschikbaarheids zones geplaatst voor hoge Beschik baarheid. Elke zone bestaat uit een of meer data centers die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Ten minste drie afzonderlijke zones worden in alle ingeschakelde regio's ingesteld om tolerantie te garanderen. De fysieke schei ding van beschikbaarheids zones binnen een regio beveiligt de gegevens van fouten in data centers. Daarnaast zijn twee FSFO-waarnemers in twee beschikbaarheids zones ingesteld voor het initiëren en failoveren van de Data Base naar de secundaire als er een storing optreedt. 
 
@@ -113,7 +113,7 @@ Het volgende diagram is een architectuur die gebruikmaakt van Oracle Data Guard 
 
 Golden Gate maakt het mogelijk om gegevens op transactie niveau uit te wisselen en te bewerken via meerdere heterogene platformen in de hele onderneming. Er worden doorgevoerde trans acties met trans actie-integriteit en minimale overhead op uw bestaande infra structuur verplaatst. Dankzij de modulaire architectuur hebt u de flexibiliteit om geselecteerde gegevens records, transactionele wijzigingen en wijzigingen in DDL (Data Definition Language) uit verschillende topologieën op te halen en te repliceren.
 
-Met Oracle Golden Gate kunt u uw data base configureren voor maximale Beschik baarheid door bidirectionele replicatie te bieden. Hiermee kunt u een configuratie met **meerdere masters** of **actief-actief**instellen. Het volgende diagram is een aanbevolen architectuur voor Oracle Golden Gate Active-Active-Setup op Azure. In de volgende architectuur is de Oracle-data base geconfigureerd met behulp van een [virtuele machine](../../sizes-memory.md) met hyperthreaded geoptimaliseerd voor geheugen met [beperkte kern vcpu's](../../../virtual-machines/windows/constrained-vcpu.md) om de licentie kosten op te slaan en de prestaties te maximaliseren. Er worden meerdere Premium-of Ultra schijven (Managed disks) gebruikt voor prestaties en beschik baarheid.
+Met Oracle Golden Gate kunt u uw data base configureren voor maximale Beschik baarheid door bidirectionele replicatie te bieden. Hiermee kunt u een configuratie met **meerdere masters** of **actief-actief**instellen. Het volgende diagram is een aanbevolen architectuur voor Oracle Golden Gate Active-Active-Setup op Azure. In de volgende architectuur is de Oracle-data base geconfigureerd met behulp van een [virtuele machine](../../sizes-memory.md) met hyperthreaded geoptimaliseerd voor geheugen met [beperkte kern vcpu's](../../../virtual-machines/constrained-vcpu.md) om de licentie kosten op te slaan en de prestaties te maximaliseren. Er worden meerdere Premium-of Ultra schijven (Managed disks) gebruikt voor prestaties en beschik baarheid.
 
 ![Oracle Database beschikbaarheids zones gebruiken met Data Guard Broker-FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -215,7 +215,7 @@ Het patchen van het besturings systeem van de virtuele machine kan worden geauto
 
 ## <a name="architecture-and-design-considerations"></a>Architectuur-en ontwerp overwegingen
 
-- Overweeg het gebruik van hyperthreaded [geheugen geoptimaliseerde virtuele machine](../../sizes-memory.md) met [beperkte kern vcpu's](../../../virtual-machines/windows/constrained-vcpu.md) voor uw Oracle database-VM om de licentie kosten op te slaan en de prestaties te maximaliseren. Gebruik meerdere Premium-of Ultra-schijven (Managed disks) voor prestaties en beschik baarheid.
+- Overweeg het gebruik van hyperthreaded [geheugen geoptimaliseerde virtuele machine](../../sizes-memory.md) met [beperkte kern vcpu's](../../../virtual-machines/constrained-vcpu.md) voor uw Oracle database-VM om de licentie kosten op te slaan en de prestaties te maximaliseren. Gebruik meerdere Premium-of Ultra-schijven (Managed disks) voor prestaties en beschik baarheid.
 - Wanneer u beheerde schijven gebruikt, kan de naam van de schijf/apparaat worden gewijzigd bij het opnieuw opstarten. Het is raadzaam om de UUID van het apparaat te gebruiken in plaats van de naam om ervoor te zorgen dat uw koppelingen behouden blijven tijdens het opnieuw opstarten. Meer informatie vindt u [hier](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab).
 - Gebruik beschikbaarheids zones voor maximale Beschik baarheid in-regio.
 - Overweeg het gebruik van ultra schijven (indien beschikbaar) of Premium-schijven voor uw Oracle-data base.

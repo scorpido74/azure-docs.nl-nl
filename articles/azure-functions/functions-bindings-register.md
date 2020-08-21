@@ -3,55 +3,63 @@ title: Azure Functions bindings uitbreidingen registreren
 description: Meer informatie over het registreren van een Azure Functions bindings uitbreiding op basis van uw omgeving.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 07/08/2019
+ms.date: 08/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 43bc278ea3cbd14690f1a9ac9263872536b5b174
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224778"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689548"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions bindings uitbreidingen registreren
 
-Met ingang van Azure Functions versie 2. x zijn [bindingen](./functions-triggers-bindings.md) beschikbaar als afzonderlijke pakketten vanuit de functions-runtime. Terwijl .NET functions toegang tot bindingen via NuGet-pakketten maakt, bieden uitbreidings bundels een andere functie toegang tot alle bindingen via een configuratie-instelling.
+Vanaf Azure Functions versie 2. x bevat de functions-runtime standaard alleen HTTP-en timer-triggers. Andere [Triggers en bindingen](./functions-triggers-bindings.md) zijn beschikbaar als afzonderlijke pakketten.
 
-Houd rekening met de volgende punten met betrekking tot bindings extensies:
-
-- Bindings uitbreidingen worden niet expliciet geregistreerd in functions 1. x, behalve wanneer [u een C#-klassebibliotheek maakt met Visual Studio](#local-csharp).
-
-- HTTP-en timer-triggers worden standaard ondersteund en vereisen geen uitbrei ding.
+.NET Class Library functions apps gebruiken bindingen die in het project zijn geïnstalleerd als NuGet-pakketten. Met uitbreidings bundels kunnen apps met non-.NET-functies gebruikmaken van dezelfde bindingen zonder dat ze de .NET-infra structuur hoeven te verwerken.
 
 De volgende tabel geeft aan wanneer en hoe u bindingen registreert.
 
 | Ontwikkelomgeving |Registratie<br/> in functions 1. x  |Registratie<br/> in functies 3. x/2. x  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatisch|Automatisch<sup>*</sup>|
-|Ontwikkeling van Non-.NET-talen of lokale Azure core-Hulpprogram Ma's|Automatisch|[Azure Functions Core Tools-en uitbreidings bundels gebruiken](#extension-bundles)|
+|Non-.NET talen|Automatisch|Gebruik [uitbreidings bundels](#extension-bundles) (aanbevolen) of [Installeer expliciet extensies](#explicitly-install-extensions)|
 |C# Class-bibliotheek met Visual Studio|[NuGet-hulpprogram ma's gebruiken](#vs)|[NuGet-hulpprogram ma's gebruiken](#vs)|
 |C#-klassen bibliotheek met Visual Studio code|N.v.t.|[.NET Core SLI gebruiken](#vs-code)|
 
 <sup>*</sup> Portal maakt gebruik van uitbreidings bundels.
 
-## <a name="extension-bundles"></a><a name="extension-bundles"></a>Uitbreidings bundels
+## <a name="access-extensions-in-non-net-languages"></a>Toegangs uitbreidingen in non-.NET talen
 
-Met uitbreidings bundels kunt u een compatibele set van functies bindings extensies toevoegen aan uw functie-app. Wanneer u bundels gebruikt, wordt er een vooraf gedefinieerde set extensies toegevoegd wanneer u uw app bouwt. Extensie pakketten die in een bundel zijn gedefinieerd, worden geverifieerd om compatibel te zijn met elkaar, waarmee u conflicten tussen pakketten kunt voor komen. Met uitbreidings bundels kunt u voor komen dat u .NET-project code publiceert met een project met non-.NET-functies. U schakelt uitbreidings bundels in de host.jsvan de app in.  
+Voor Java-, java script-, Power shell-, python-en aangepaste handler-functie-apps raden we u aan uitbreidings bundels te gebruiken om toegang te krijgen tot bindingen. In gevallen waarin uitbreidings bundels niet kunnen worden gebruikt, kunt u expliciet bindings uitbreidingen installeren.
 
-U kunt uitbreidings bundels gebruiken met versie 2. x en latere versies van de functions-runtime. 
+### <a name="extension-bundles"></a><a name="extension-bundles"></a>Uitbreidings bundels
 
-Gebruik uitbreidings bundels voor lokale ontwikkeling met behulp van Azure Functions Core Tools, Visual Studio code en wanneer u op afstand bouwt. Zorg ervoor dat u de nieuwste versie van [Azure functions core tools](functions-run-local.md#v2)gebruikt bij het ontwikkelen van lokale. Uitbreidings bundels worden ook gebruikt bij het ontwikkelen van functies in de Azure Portal. 
+Uitbreidings bundels zijn een manier om een compatibele set bindings uitbreidingen toe te voegen aan uw functie-app. U schakelt uitbreidings bundels in de *host.jsvan* de app in.
 
-Als u geen uitbreidings bundels gebruikt, moet u de .NET Core 2. x SDK installeren op uw lokale computer voordat u de [bindings uitbreidingen expliciet installeert](#explicitly-install-extensions). Een uitbrei ding. csproj-bestand, waarmee expliciet de vereiste extensies worden gedefinieerd, wordt toegevoegd aan uw project. Met uitbreidings bundels worden deze vereisten voor lokale ontwikkeling verwijderd. 
+U kunt uitbreidings bundels gebruiken met versie 2. x en latere versies van de functions-runtime.
 
-Als u uitbreidings bundels wilt gebruiken, moet u de *host.jsin* het bestand bijwerken met de volgende vermelding voor `extensionBundle` :
- 
+Uitbreidings bundels zijn versie nummer. Elke versie bevat een specifieke set bindings uitbreidingen die worden gecontroleerd om samen te werken. Selecteer een bundel versie op basis van de uitbrei dingen die u nodig hebt in uw app.
+
+Als u een uitbreidings bundel wilt toevoegen aan uw functie-app, voegt `extensionBundle` u de sectie toe aan *host.jsop*. In veel gevallen voegt Visual Studio code en Azure Functions Core Tools deze automatisch toe voor u.
+
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-## <a name="explicitly-install-extensions"></a>Expliciete extensies installeren
+De volgende tabel geeft een lijst van de momenteel beschik bare versies van de standaard *micro soft. Azure. functions. ExtensionBundle* bundel en koppelingen naar de uitbrei dingen die ze bevatten.
+
+| Bundel versie | Versie in host.jsop | Inbegrepen uitbrei dingen |
+| --- | --- | --- |
+| 1.x | `[1.*, 2.0.0)` | Zie [extensions.jsvoor](https://github.com/Azure/azure-functions-extension-bundles/blob/v1.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) het genereren van de bundel |
+| 2.x | `[2.*, 3.0.0)` | Zie [extensions.jsvoor](https://github.com/Azure/azure-functions-extension-bundles/blob/v2.x/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) het genereren van de bundel |
+
+> [!NOTE]
+> Hoewel u een aangepast versie bereik kunt opgeven in host.js, raden we u aan om een versie waarde uit deze tabel te gebruiken.
+
+### <a name="explicitly-install-extensions"></a><a name="explicitly-install-extensions"></a>Expliciete extensies installeren
 
 [!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
-## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet-pakketten
+## <a name="install-extensions-from-nuget-in-net-languages"></a><a name="local-csharp"></a>Extensies van NuGet in .NET-talen installeren
 
 Voor een project op basis van C#-klassen bibliotheek moet u de extensies rechtstreeks installeren. Uitbreidings bundels zijn speciaal ontworpen voor projecten die geen C#-klassen bibliotheek zijn.
 
@@ -69,7 +77,7 @@ Vervang `<TARGET_VERSION>` in het voor beeld door een specifieke versie van het 
 
 Als u gebruikt `Install-Package` om te verwijzen naar een binding, hoeft u geen [uitbreidings bundels](#extension-bundles)te gebruiken. Deze benadering is specifiek voor klassen bibliotheken die zijn gemaakt in Visual Studio.
 
-## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> C#-klassen bibliotheek met Visual Studio code
+### <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> C#-klassen bibliotheek met Visual Studio code
 
 In **Visual Studio code**installeert u pakketten voor een C# Class Library-project vanaf de opdracht prompt met behulp van de [DotNet add package](/dotnet/core/tools/dotnet-add-package) opdracht in de .net core SLI. In het volgende voor beeld ziet u hoe u een binding toevoegt:
 

@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 94c47369d7b638640fab1971801177103779e896
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 34c29a6f6cab77eaa69c7f28f57a4b823dd23d08
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648935"
+ms.locfileid: "88685235"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- en Esv4-serie
 
@@ -82,7 +82,7 @@ Updates voor geheugen behoud: ondersteund
 | Standard_E48s_v4 | 48 | 384 | Alleen externe opslag | 32 | 462000/2904 (1200) | 76800/1152 | 8|24000 |
 | Standard_E64s_v4 <sup>1</sup> | 64 | 504| Alleen externe opslag | 32 | 615000/3872 (1600) | 80000/1200 | 8|30.000 |
 
-Er zijn <sup>1</sup> [beperkte core-grootten beschikbaar](./windows/constrained-vcpu.md).
+Er zijn <sup>1</sup> [beperkte core-grootten beschikbaar](./constrained-vcpu.md).
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 110d39791b3779a30e6541e77c0c6062cd51144c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076050"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688552"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -31,7 +31,7 @@ Zie [end-to-end-probleem oplossing met behulp van Azure Storage metrische gegeve
 * [Uw opslag service controleren]
   * [Service status controleren]
   * [Bewakings capaciteit]
-  * [Beschik baarheid bewaken]
+  * [Beschikbaarheid bewaken]
   * [Prestaties bewaken]
 * [Problemen met opslag vaststellen]
   * [Service status problemen]
@@ -136,7 +136,7 @@ Met metrische gegevens voor opslag worden alleen metrische gegevens over capacit
 
 Zie het blog bericht [over Azure Storage facturering – band breedte, trans acties en capaciteit](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)voor hulp bij het schatten van de grootte van verschillende opslag objecten, zoals blobs.
 
-### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Beschik baarheid bewaken
+### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Beschikbaarheid bewaken
 U moet de beschik baarheid van de opslag Services in uw opslag account bewaken door de waarde in de kolom **Beschik baarheid** te bewaken in de metrische tabellen per uur of minuut, **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue** **$MetricsCapacityBlob.** De kolom **Beschik baarheid** bevat een percentage waarde waarmee de beschik baarheid van de service of de API-bewerking wordt aangegeven die wordt vertegenwoordigd door de rij (de **RowKey** geeft aan of de rij metrische gegevens bevat voor de service als geheel of voor een specifieke API-bewerking).
 
 Een waarde van minder dan 100% geeft aan dat sommige opslag aanvragen mislukken. U kunt zien waarom ze mislukken door de andere kolommen in de metrische gegevens te onderzoeken die het aantal aanvragen weer geven met verschillende fout typen, zoals **ServerTimeoutError**. U verwacht dat de **Beschik baarheid** tijdelijk onder 100% wordt weer gegeven om redenen als tijdelijke time-outs bij de server terwijl de service partities verplaatst naar een betere Load-Balancing-aanvraag; de logica voor opnieuw proberen in uw client toepassing moet dergelijke periodieke omstandigheden afhandelen. Het artikel [Opslaganalyse vastgelegde bewerkingen en status berichten](https://msdn.microsoft.com/library/azure/hh343260.aspx) bevat een lijst met de transactie typen die door metrische gegevens voor opslag zijn opgenomen in de **beschikbaarheids** berekening.
@@ -468,7 +468,7 @@ Als de clienttoepassing een HTTP 403-fout (verboden) weergeeft, is een vermoedel
 | Bron | Uitgebreidheid | Uitgebreidheid | Clientaanvraag-id | Tekst van bewerking |
 | --- | --- | --- | --- | --- |
 | Micro soft. Azure. Storage |Informatie |3 |85d077ab-... |De bewerking wordt gestart met locatie Primary per locatie modus PrimaryOnly. |
-| Micro soft. Azure. Storage |Informatie |3 |85d077ab-... |Synchrone aanvraag wordt gestart om<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Micro soft. Azure. Storage |Informatie |3 |85d077ab-... |Synchrone aanvraag wordt gestart om <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests#Synchronous_request> |
 | Micro soft. Azure. Storage |Informatie |3 |85d077ab-... |Er wordt gewacht op reactie. |
 | Micro soft. Azure. Storage |Waarschuwing |2 |85d077ab-... |Er is een uitzonde ring opgetreden tijdens het wachten op een reactie: de externe server heeft een fout geretourneerd: (403) verboden. |
 | Micro soft. Azure. Storage |Informatie |3 |85d077ab-... |Antwoord ontvangen. Status code = 403, aanvraag-ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, content-MD5 =, ETag =. |
@@ -516,7 +516,7 @@ Logboek vermeldingen:
 | 07b26a5d-... |Synchrone aanvraag wordt gestart naar `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD.............. x-MS-Client-Request-id: 07b26a5d-.... x-MS-date: DIN, 03 jun 2014 10:33:11 GMT. x-MS-version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: container. |
 | 07b26a5d-... |Er wordt gewacht op reactie. |
-| 07b26a5d-... |Antwoord ontvangen. Status code = 200, aanvraag-ID = eeead849-... Content-MD5 =, ETag = &quot; 0x8D14D2DC63D059B &quot; . |
+| 07b26a5d-... |Antwoord ontvangen. Status code = 200, aanvraag-ID = eeead849-... Content-MD5 =, ETag =    &quot; 0x8D14D2DC63D059B &quot; . |
 | 07b26a5d-... |De antwoord headers zijn verwerkt, waarbij de rest van de bewerking wordt voortgezet. |
 | 07b26a5d-... |De antwoord tekst wordt gedownload. |
 | 07b26a5d-... |De bewerking is voltooid. |
@@ -624,7 +624,7 @@ Als dit probleem regel matig optreedt, moet u onderzoeken waarom de client geen 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>De client ontvangt HTTP 409-meldingen (conflict)
 In de volgende tabel ziet u een uittreksel van het logboek aan de server zijde voor twee client bewerkingen: **DeleteIfExists** gevolgd door **CreateIfNotExists** met dezelfde BLOB-container naam. Elke client bewerking resulteert in twee aanvragen die naar de server worden verzonden, eerst een **GetContainerProperties** -aanvraag om te controleren of de container bestaat, gevolgd door de **Delete container** -of **CreateContainer** -aanvraag.
 
-| Timestamp | Bewerking | Resultaat | Containernaam | Clientaanvraag-id |
+| Tijdstempel | Bewerking | Resultaat | Containernaam | Clientaanvraag-id |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |Delete container |202 |mmcont |c9f52c89-... |
@@ -824,7 +824,7 @@ Raadpleeg de volgende bronnen voor meer informatie over Analytics in Azure Stora
 [Uw opslag service controleren]: #monitoring-your-storage-service
 [Service status controleren]: #monitoring-service-health
 [Bewakings capaciteit]: #monitoring-capacity
-[Beschik baarheid bewaken]: #monitoring-availability
+[Beschikbaarheid bewaken]: #monitoring-availability
 [Prestaties bewaken]: #monitoring-performance
 
 [Problemen met opslag vaststellen]: #diagnosing-storage-issues
