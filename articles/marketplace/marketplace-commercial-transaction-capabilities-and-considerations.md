@@ -4,35 +4,39 @@ description: In dit artikel worden de prijs-, facturerings-, facturerings-en uit
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 5058f37fcf96c7c556b55f0afb8753390f51f4d1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 04a984a2dfa473502fd9e534e52b60b33be52757
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607342"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88704957"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
-## <a name="transactions-by-publishing-option"></a>Optie trans acties per publicatie
+In dit artikel worden de prijs-, facturerings-, facturerings-en uitbetalings overwegingen voor de micro soft Commercial Marketplace beschreven. 
 
-De uitgever of micro soft is verantwoordelijk voor het beheer van software licentie transacties voor aanbiedingen in de commerciële Marketplace. De publicatie optie die u voor uw aanbieding kiest, bepaalt wie de trans actie beheert. Zie [uw publicatie optie bepalen](./determine-your-listing-type.md#choose-a-call-to-action) voor Beschik baarheid en uitleg van elke publicatie optie.
+## <a name="transactions-by-listing-option"></a>De optie trans acties per aanbieding
 
-### <a name="list-trial-and-byol-publishing-options"></a>Lijst-, proef-en BYOL-publicatie opties
+De uitgever of micro soft is verantwoordelijk voor het beheer van software licentie transacties voor aanbiedingen in de commerciële Marketplace. De optie die u kiest voor uw aanbieding bepaalt wie de trans actie beheert. Zie [een optie voor een vermelding kiezen](./determine-your-listing-type.md#choose-a-listing-option) voor Beschik baarheid en uitleg van elke publicatie optie.
 
-Uitgevers met bestaande mogelijkheden van Commerce kunnen lijst-, proef-en BYOL-publicatie opties kiezen voor promotie-en gebruikers wervings doeleinden. Met deze opties neemt micro soft niet rechtstreeks deel aan de software licentie transacties van de uitgever en zijn er geen transactie kosten in rekening gebracht. Uitgevers zijn verantwoordelijk voor de ondersteuning van alle aspecten van de software licentie transacties, inclusief, maar niet beperkt tot order, verwerking, meting, facturering, facturering, betaling en incasso. Met de lijst-en proef publicatie opties blijven er 100% van de licentie kosten voor Publisher-software van de klant ontvangen.
+### <a name="contact-me-free-trial-and-byol-options"></a>Contact opnemen, gratis proef versie en BYOL-opties
+
+Uitgevers kunnen kiezen voor de _contact persoon_ en _gratis proef versie_, opties voor promotie-en gebruikers verwervings doeleinden. Voor sommige aanbiedings typen kunnen uitgevers kiezen voor de optie uw eigen licentie (BYOL) meenemen zodat klanten een abonnement op uw aanbieding kunnen kopen met een licentie die hij of zij rechtstreeks van u heeft gekocht. Met deze opties neemt micro soft niet rechtstreeks deel aan de software licentie transacties van de uitgever en zijn er geen transactie kosten in rekening gebracht. 
+
+Uitgevers zijn verantwoordelijk voor de ondersteuning van alle aspecten van de software licentie transacties. Dit omvat, maar is niet beperkt tot order, verwerking, meting, facturering, facturering, betaling en incasso. Met de optie contact opnemen met mij kunnen uitgevers 100% van de licentie kosten voor de uitgever van de software blijven ontvangen van de klant.
 
 ### <a name="transact-publishing-option"></a>Optie voor het publiceren van Transact
 
-De optie voor het publiceren van Transact maakt gebruik van de mogelijkheden van micro soft commerce en biedt een end-to-end-ervaring van detectie en evaluatie tot aankoop en implementatie. Voor aanbiedingen in de Transact worden gefactureerd tegen een bestaand micro soft-abonnement of een credit card, zodat micro soft Cloud-Marketplace-trans acties kan hosten namens de uitgever.
+Door micro soft te verkopen kunt u profiteren van de mogelijkheden van micro soft commerce en biedt een end-to-end-ervaring van detectie en evaluatie tot aankoop en implementatie. Een aanbieding die kan worden transactable is een waarin micro soft de uitwisseling van geld voor een software licentie voor de uitgever vereenvoudigt. Aanbiedingen die kunnen worden verwerkt, worden gefactureerd tegen een bestaand micro soft-abonnement of een credit card, waardoor micro soft Cloud-Marketplace-trans acties kan hosten namens de uitgever.
 
-U kiest de optie Transact wanneer u een nieuwe aanbieding maakt in het partner centrum. Selecteer op de pagina **installatie van aanbieding** onder **Details van installatie**de optie Ja, ik wil graag door micro soft verkopen en micro soft-host-trans acties voor mijn naam hebben. " Deze optie wordt alleen weer gegeven als Transact beschikbaar is voor het type van uw aanbieding.
+U kiest de optie Transact wanneer u een nieuwe aanbieding maakt in het partner centrum. Deze optie wordt alleen weer gegeven als Transact beschikbaar is voor het type van uw aanbieding.
 
 ## <a name="transact-overview"></a>Overzicht van Transact
 
-Wanneer u de optie voor het publiceren van Transact gebruikt, maakt micro soft de verkoop van software van derden en de implementatie van sommige aanbiedings typen mogelijk voor het Azure-abonnement van de klant. De uitgever moet rekening houden met de facturering van de kosten voor de infra structuur en de kosten voor uw eigen software licenties bij het selecteren van een facturerings model en aanbiedings type.
+Wanneer u de optie Transact gebruikt, maakt micro soft de verkoop van software van derden en de implementatie van sommige aanbiedings typen mogelijk voor het Azure-abonnement van de klant. De uitgever moet rekening houden met de facturering van de kosten voor de infra structuur en uw eigen software licentie kosten wanneer u een prijs model selecteert voor een aanbieding.
 
 De optie voor het publiceren van Transact wordt momenteel ondersteund voor de volgende aanbiedings typen:
 
@@ -44,31 +48,37 @@ De optie voor het publiceren van Transact wordt momenteel ondersteund voor de vo
 
 Voor **virtuele machines** en **Azure-toepassingen**worden Azure-infrastructuur gebruiks kosten in rekening gebracht voor het Azure-abonnement van de klant. De kosten voor het gebruik van de infra structuur zijn geprijsd en worden afzonderlijk van de licentie kosten van de software provider weer gegeven op de factuur van de klant.
 
-Voor **SaaS-apps**moet u de uitgever de Azure-infrastructuur gebruiks kosten en software licentie kosten account als één kosten item.  Het wordt weer gegeven als een vast bedrag voor de klant. Het gebruik van de Azure-infra structuur wordt rechtstreeks beheerd en gefactureerd met de partner. De werkelijke gebruiks kosten voor de infra structuur zijn niet zichtbaar voor de klant. Uitgevers willen doorgaans de gebruiks kosten voor Azure-infra structuur bundelen in hun prijzen voor software licenties. Software licentie kosten worden niet gemeten of verbruikt.
+Voor **SaaS-apps**moet u de uitgever de Azure-infrastructuur gebruiks kosten en software licentie kosten account als één kosten item.  Het wordt weer gegeven als een vast bedrag voor de klant. Het gebruik van de Azure-infra structuur wordt rechtstreeks beheerd en gefactureerd met de uitgever. De werkelijke gebruiks kosten voor de infra structuur zijn niet zichtbaar voor de klant. Uitgevers willen doorgaans de gebruiks kosten voor Azure-infra structuur bundelen in hun prijzen voor software licenties. Software licentie kosten worden niet gemeten of gebaseerd op het verbruik van de gebruiker.
 
-## <a name="transact-billing-models"></a>Facturerings modellen voor trans acties
+## <a name="pricing-models"></a>Prijsmodellen
 
-Afhankelijk van de gebruikte transactie optie zijn de kosten voor software licenties als volgt:
+Afhankelijk van de gebruikte transactie optie zijn abonnements kosten als volgt:
 
-- **Gratis** : er worden geen kosten in rekening gebracht voor software licenties.
-- **Bring your own License** (BYOL): alle toepasselijke kosten voor software licenties worden rechtstreeks beheerd tussen de uitgever en de klant. Micro soft passeert alleen de gebruiks kosten voor Azure-infra structuur. Dit geldt alleen voor virtuele machines en Azure-toepassingen.
-- **Betalen** per gebruik: software licentie kosten worden weer gegeven als een vCPU-prijs tarief, gebaseerd op de gebruikte Azure-infra structuur. Dit geldt alleen voor virtuele machines en Azure-toepassingen.
-- **Abonnements prijzen** : software licentie kosten worden weer gegeven als maandelijks of jaarlijks, terugkerend bedrag in rekening gebracht als een vast tarief of per seat. Dit geldt alleen voor SaaS-apps (maandelijks of jaarlijks) en door Azure toepassingen beheerde apps (maandelijks).
-- **Gratis software-proef versie** : er worden gedurende 30 of 90 dagen geen kosten in rekening gebracht voor software licenties.
+- **Nu downloaden (gratis)** : er worden geen kosten in rekening gebracht voor software licenties. Klanten betalen geen Azure Marketplace-kosten voor het gebruik van een gratis aanbieding. Gratis aanbiedingen kunnen niet worden omgezet in een betaald abonnement. Klanten moeten een betaalde aanbieding best Ellen.
+- **Bring your own License** (BYOL): alle toepasselijke kosten voor software licenties worden rechtstreeks beheerd tussen de uitgever en de klant. Micro soft passeert alleen de gebruiks kosten voor Azure-infra structuur. Als een aanbieding wordt vermeld in de commerciële Marketplace, worden klanten die toegang krijgen tot of gebruik van de aanbieding buiten de commerciële Marketplace, niet in rekening gebracht voor commerciële Marketplace-kosten.
+- **Abonnements prijzen** : de kosten voor software licenties worden weer gegeven als maandelijks of jaarlijks tarief voor terugkerende abonnementen, gefactureerd als een vast tarief of per seat. Nieuwe abonnements kosten worden niet evenredig geclassificeerd voor annuleringen van klanten op de middel lange termijn, of ongebruikte services. De kosten voor het opnieuw uitvoeren van het abonnement kunnen worden gefactureerd als de klant het abonnement in het midden van de abonnements termijn bijupgradet of versnelt.
+- **Prijzen op basis van gebruik** : voor aanbiedingen van Azure virtual machine worden klanten in rekening gebracht op basis van de omvang van het gebruik van de aanbieding. Voor installatie kopieën van virtuele machines worden klanten een gratis Azure Marketplace-tarief in rekening gebracht, zoals ingesteld door uitgevers, voor het gebruik van virtuele machines die zijn geïmplementeerd vanuit de VM-installatie kopieën. Het uurtarief kan uniform zijn of variëren tussen de grootten van virtuele machines. Gedeeltelijke uren worden per minuut in rekening gebracht. Abonnementen worden maandelijks gefactureerd.
+- **Prijzen in licentie** : voor Azure-toepassing aanbiedingen en SaaS-aanbiedingen kunnen uitgevers de [Marketplace-meet service](./partner-center-portal/marketplace-metering-service-apis.md) gebruiken om verbruik te factureren op basis van de meter dimensies die ze kiezen. Bijvoorbeeld band breedte, tickets of e-mail berichten verwerkt. Uitgevers kunnen een of meer meter dimensies definiëren voor elk abonnement. Uitgevers zijn verantwoordelijk voor het bijhouden van het gebruik van afzonderlijke klanten, waarbij elke meter in de aanbieding is gedefinieerd. Gebeurtenissen moeten binnen een uur aan micro soft worden gerapporteerd. Micro soft berekent klanten op basis van de gebruiks gegevens die door uitgevers zijn gerapporteerd voor de desbetreffende facturerings periode.
+- **Gratis proef versie** : kosten voor software licenties die variëren van 30 dagen tot zes maanden, afhankelijk van het type aanbieding. Als uitgevers een gratis proef versie bieden op meerdere abonnementen binnen dezelfde aanbieding, kunnen klanten overschakelen naar een gratis proef versie op een ander abonnement, maar de proef periode wordt niet opnieuw opgestart. Voor de aanbiedingen van virtuele machines worden klanten de kosten van Azure-infra structuur in rekening gebracht voor het gebruik van de aanbieding tijdens een proef periode. Nadat de proef periode is verlopen, worden klanten automatisch in rekening gebracht voor het laatste abonnement dat ze hebben geprobeerd op basis van standaard tarieven, tenzij ze vóór het einde van de proef periode worden geannuleerd.
 
-### <a name="free-and-bring-your-own-license-byol-pricing"></a>Gratis en BYOL-prijzen (uw eigen licentie)
+> [!NOTE]
+> Aanbiedingen die worden gefactureerd op basis van verbruik nadat een oplossing is gebruikt, komen niet in aanmerking voor restituties.
 
-Bij het publiceren van een gratis of uw eigen licentie transactie aanbieding speelt micro soft geen rol om de verkoop transactie voor uw software licentie kosten te vergemakkelijken. Net als de opties voor het publiceren van een lijst en proef versie, houdt de uitgever 100% van de software licentie kosten in rekening.
+Uitgevers die de gebruiks kosten voor een aanbieding willen wijzigen, moeten eerst de aanbieding (of het specifieke abonnement binnen de aanbieding) verwijderen van de commerciële Marketplace. De verwijdering moet worden uitgevoerd in overeenstemming met de vereisten van de [micro soft Publisher-overeenkomst](https://go.microsoft.com/fwlink/?LinkID=699560). Vervolgens kan de uitgever een nieuwe aanbieding (of plan binnen een aanbieding) publiceren waarin de nieuwe gebruiks kosten zijn opgenomen. Zie voor meer informatie over het verwijderen van een aanbieding of plan stoppen om te [verkopen van een aanbieding of abonnement](./partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan).
 
-### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Prijzen voor betalen per gebruik en abonnementen (op site gebaseerd)
+### <a name="free-contact-me-and-bring-your-own-license-byol-pricing"></a>Gratis, neem contact met mij op en breng uw BYOL-prijzen (uw eigen licentie)
 
-Wanneer u een betalen per gebruik-of abonnements transactie aanbieding publiceert, biedt micro soft de technologie en services voor het verwerken van de aankopen, retour neren en terugstortingen van software licenties. In dit scenario wordt micro soft door de uitgever geautoriseerd om als agent te fungeren voor deze doel einden. De uitgever stelt micro soft in staat om de Software Licensing-trans actie te vergemakkelijken, waarbij de toewijzing wordt behouden als verkoper, provider, distributeur en licentie gever.
+Wanneer u een aanbieding publiceert met de optie nu downloaden (gratis), contact opnemen of BYOL, speelt micro soft geen rol af bij het vergemakkelijken van de verkoop transactie voor uw software licentie kosten. Net als de lijst en de publicatie opties voor gratis proef versies, houdt de uitgever 100% van de software licentie kosten in rekening.
+
+### <a name="usage-based-and-subscription-pricing"></a>Prijzen op basis van gebruik en abonnementen
+
+Bij het publiceren van een aanbieding op basis van een gebruiker of een abonnement, biedt micro soft de technologie en services voor het verwerken van software licentie-aankopen, retour neren en terugstortingen. In dit scenario wordt micro soft door de uitgever geautoriseerd om als agent te fungeren voor deze doel einden. De uitgever stelt micro soft in staat om de Software Licensing-trans actie te vergemakkelijken, waarbij de toewijzing wordt behouden als verkoper, provider, distributeur en licentie gever.
 
 Micro soft stelt klanten in staat om uw software te best Ellen, te bestemmen en te gebruiken, onder voor waarden van zowel de commerciële Marketplace van micro soft als uw licentie overeenkomst voor eind gebruikers. U moet uw eigen gebruiksrecht overeenkomst voor de eind gebruiker opgeven of het [standaard contract](./standard-contract.md) selecteren bij het maken van de aanbieding.
 
 ### <a name="free-software-trials"></a>Gratis software-experimenten
 
-Voor scenario's voor het publiceren van Transact kunt u een software licentie gratis beschikbaar maken gedurende 30 of 90 dagen. Deze functie korting omvat niet de kosten van het gebruik van Azure-infra structuur dat wordt aangestuurd door het gebruik van de partner oplossing.
+Voor scenario's voor het publiceren van Transact kunt u een software licentie gratis beschikbaar maken gedurende 30 tot 120 dagen, afhankelijk van het abonnement. Deze functie korting omvat niet de kosten van het gebruik van Azure-infra structuur dat wordt aangestuurd door het gebruik van de partner oplossing.
 
 ### <a name="private-offers"></a>Persoonlijke aanbiedingen
 
@@ -78,9 +88,9 @@ Met deze optie kunnen hogere of lagere prijzen worden gemaakt dan voor de openba
 
 ### <a name="examples"></a>Voorbeelden
 
-**Betalen per gebruik** 
+**Op basis van gebruik** 
 
-Betalen per gebruik heeft de volgende kosten structuur:
+Op gebruik gebaseerde prijzen hebben de volgende kosten structuur:
 
 |De licentie kosten  | $1,00 per uur   |
 |---------|---------|
@@ -127,8 +137,6 @@ Deze optie moet worden geconfigureerd om via micro soft te worden verkocht en ka
 
 In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt $80,00 op de Publisher uitgewisseld.
 
-Partners die in aanmerking komen voor de lagere kosten voor Marketplace-service, zien een gereduceerde transactie kosten voor de SaaS-aanbiedingen van mei 2019 tot juni 2020.
-
 In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt $90,00 op de Publisher uitgewisseld:
 
 |Micro soft-facturen  | $100,00 per maand  |
@@ -136,7 +144,7 @@ In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt
 |Micro soft betaalt u 80% van uw licentie kosten <br> \* Micro soft betaalt u 90% van de licentie kosten voor alle gekwalificeerde SaaS-apps   |   $80,00 per maand <br> \* $90,00 per maand    |
 |Micro soft bewaart 20% van de licentie kosten <br> \* Micro soft houdt 10% van de licentie kosten voor alle gekwalificeerde SaaS-apps.  |  $20,00 per maand <br> \* $10,00     |
 
-Voor bepaalde aanbiedingen die u publiceert op commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Voor uw aanbieding (en) die u wilt kwalificeren, moeten uw aanbieding (en) zijn aangewezen door micro soft als Azure IP-gemotiveerd. Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om de lagere kosten voor Marketplace-service voor de maand te ontvangen. De lagere kosten voor Marketplace-service zijn van toepassing op Azure IP gemotiveerd SaaS, Vm's, beheerde apps en alle andere gekwalificeerd transactable-IaaS aanbiedingen die beschikbaar worden gesteld via de commerciële Marketplace.
+Voor bepaalde aanbiedingen die u publiceert op commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de [overeenkomst voor micro soft Publisher](https://go.microsoft.com/fwlink/?LinkID=699560)) tot 10%. Voor uw aanbieding (en) die u wilt kwalificeren, moeten uw aanbieding (en) zijn aangewezen door micro soft als Azure IP-gemotiveerd. Voor het einde van elke kalender maand moet aan de voor waarden worden voldaan ten minste vijf werk dagen voordat de maandelijkse kosten voor Marketplace-service voor de maand worden ontvangen. De lagere kosten voor Marketplace-service zijn van toepassing op Azure IP gemotiveerd SaaS, Vm's, beheerde apps en alle andere gekwalificeerd transactable-IaaS aanbiedingen die beschikbaar worden gesteld via de commerciële Marketplace.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Facturering, betaling, facturering en verzamelingen van klanten
 
@@ -163,7 +171,7 @@ Klanten kopen normaal gesp roken gebruik van de Enterprise Agreement of een op e
 
 #### <a name="billing-questions-and-support"></a>Vragen en ondersteuning voor facturering
 
-Zie de [Publisher-overeenkomst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (beschikbaar in Partner Center) voor meer informatie en juridisch beleid.
+Zie de [micro soft Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560) (beschikbaar in Partner Center) voor meer informatie en juridisch beleid.
 
 Neem contact op met de ondersteuning voor [commerciële Marketplace-Uitgever](https://aka.ms/marketplacepublishersupport)voor hulp bij het vragen over facturering.
 
@@ -182,7 +190,7 @@ Zie [uw commerciële Marketplace-account beheren in partner centrum](partner-cen
 
 De optie voor het publiceren van Transact is alleen beschikbaar voor gebruik met de volgende typen Marketplace-aanbiedingen:
 
-- **Virtuele machine** : Selecteer een gratis, uw eigen licentie of uw betalen per gebruik-prijs modellen en presenteert als plannen die zijn gedefinieerd op het niveau van de aanbieding. Op de Azure-factuur van de klant presenteert micro soft de licentie kosten van de uitgever software afzonderlijk van de onderliggende kosten voor Azure-infra structuur. Kosten voor Azure-infra structuur worden aangestuurd door het gebruik van de uitgever software.
+- **Virtuele machine van Azure** : Selecteer een gratis, uw eigen licentie of op gebruik gebaseerde prijs modellen, en presenteer deze als plannen die zijn gedefinieerd op het niveau van de aanbieding. Op de Azure-factuur van de klant presenteert micro soft de licentie kosten van de uitgever software afzonderlijk van de onderliggende kosten voor Azure-infra structuur. Kosten voor Azure-infra structuur worden aangestuurd door het gebruik van de uitgever software.
 
 - **Azure-toepassing: oplossings sjabloon of beheerde app** : moet een of meer virtuele machines inrichten en de som van de prijzen van de virtuele machine ophalen. Voor beheerde apps in één abonnement kan een maandelijks abonnement met een vaste frequentie worden geselecteerd als het prijs model in plaats van de prijzen van de virtuele machine. In sommige gevallen worden gebruiks kosten voor Azure-infra structuur door gegeven aan de klant, onafhankelijk van software licentie kosten, maar op hetzelfde factuur overzicht. Als u echter een beheerde app-aanbieding voor ISV-infrastructuur kosten configureert, worden de Azure-resources gefactureerd aan de uitgever en ontvangt de klant een vast bedrag dat de kosten van infra structuur, software licenties en beheer Services omvat.
 

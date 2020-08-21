@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d303f8a04a9159eeb4dc5e78ef09b57f5a966c72
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807856"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691357"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD
 
@@ -89,7 +89,7 @@ Zorg ervoor dat de eerste persoon die PIM in uw organisatie gebruikt, is toegewe
 Nadat u Azure AD Privileged Identity Management hebt ingeschakeld, bekijkt u de gebruikers die zich in de volgende Azure AD-rollen bevinden:
 
 * Globale beheerder
-* Beheerder van geprivilegieerde rol
+* Beheerder voor bevoorrechte rollen
 * Exchange-beheerder
 * SharePoint-beheerder
 
@@ -322,7 +322,7 @@ Met Azure-logboek integratie kunt u onbewerkte logboeken van uw Azure-resources 
 
 * Activiteiten logboeken van Azure
 * Azure Security Center-waarschuwingen
-* Azure-resource logboeken
+* Azure-resourcelogboeken
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Aanvullende stappen voor organisaties die toegang tot andere Cloud-apps beheren via Azure AD
 
@@ -373,7 +373,7 @@ We raden u aan de volgende procedures uit te voeren wanneer u accounts voor bevo
 * Ken alleen uitgebreide toegang toe wanneer dit nodig is en verwijder deze later (just-in-time)
 * Controle activiteiten logboeken met betrekking tot bevoegde accounts houden
 
-Zie voor meer informatie over het bouwen van een volledig beveiligings schema [micro soft Cloud IT-architectuur bronnen](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Neem contact op met uw micro soft-vertegenwoordiger of Zie [essentiële Cyber-verdediging bouwen om uw bedrijf te beschermen](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)als u wilt deel nemen aan micro soft-Services om u te helpen bij het implementeren van uw plan.
+Zie voor meer informatie over het bouwen van een volledig beveiligings schema [micro soft Cloud IT-architectuur bronnen](https://almbok.com/office365/microsoft_cloud_it_architecture_resources). Neem contact op met uw micro soft-vertegenwoordiger of Zie [essentiële Cyber-verdediging bouwen om uw bedrijf te beschermen](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)als u wilt deel nemen aan micro soft-Services om u te helpen bij het implementeren van uw plan.
 
 Deze laatste voortdurende fase van het beveiligde privileged Access-schema bevat de volgende onderdelen.
 

@@ -8,12 +8,12 @@ ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: db7ae0bd33bc52f80788db4994dcf2a3ca4d909a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520517"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705908"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 [Azure files](storage-files-introduction.md) kunnen op twee manieren worden geïmplementeerd: door de Serverloze Azure-bestands shares rechtstreeks te koppelen of door Azure-bestands shares on-premises in de cache op te maken met behulp van Azure file sync. Welke implementatie optie u kiest, wijzigt de dingen die u moet overwegen bij het plannen van uw implementatie. 
@@ -37,7 +37,7 @@ Wanneer u Azure-bestands shares in opslag accounts implementeert, kunt u het vol
 
 ## <a name="identity"></a>Identiteit
 Om toegang te krijgen tot een Azure-bestands share, moet de gebruiker van de bestands share worden geverifieerd en moeten ze toegang hebben tot de share. Dit wordt gedaan op basis van de identiteit van de gebruiker die toegang heeft tot de bestands share. Azure Files integreert met drie belangrijkste id-providers:
-- **On-premises Active Directory Domain Services (AD DS, of on-premises AD DS)** (preview): Azure-opslag accounts kunnen lid zijn van een domein, Active Directory Domain Services, net als een Windows Server-Bestands server of een NAS-apparaat. U kunt een domein controller on-premises, in een Azure-VM of zelfs als een virtuele machine in een andere Cloud provider implementeren. Azure Files is neutraal waar uw domein controller wordt gehost. Als een opslag account is toegevoegd aan een domein, kan de eind gebruiker een bestands share koppelen met het gebruikers account waarmee ze zijn aangemeld bij hun PC. Op AD gebaseerde verificatie maakt gebruik van het Kerberos-verificatie protocol.
+- **On-premises Active Directory Domain Services (AD DS, of on-premises AD DS)**: Azure Storage-accounts kunnen lid zijn van een domein dat eigendom is van een klant Active Directory Domain Services, net als een Windows Server-Bestands server of een NAS-apparaat. U kunt een domein controller on-premises, in een Azure-VM of zelfs als een virtuele machine in een andere Cloud provider implementeren. Azure Files is neutraal waar uw domein controller wordt gehost. Als een opslag account is toegevoegd aan een domein, kan de eind gebruiker een bestands share koppelen met het gebruikers account waarmee ze zijn aangemeld bij hun PC. Op AD gebaseerde verificatie maakt gebruik van het Kerberos-verificatie protocol.
 - **Azure Active Directory Domain Services (azure AD DS)**: Azure AD DS biedt een door micro soft beheerde domein controller die kan worden gebruikt voor Azure-resources. Een domein dat wordt toegevoegd aan uw opslag account voor Azure AD DS biedt vergelijk bare voor delen als het domein wordt toegevoegd aan een Active Directory van een klant. Deze implementatie optie is het nuttigst voor toepassingen die zijn gebaseerd op AD-machtigingen. Omdat Azure AD DS op AD gebaseerde verificatie biedt, gebruikt deze optie ook het Kerberos-verificatie protocol.
 - **Azure Storage-account sleutel**: Azure-bestands shares kunnen ook worden gekoppeld met een Azure Storage-account sleutel. Als u een bestands share op deze manier wilt koppelen, wordt de naam van het opslag account gebruikt als de gebruikers naam en de sleutel voor het opslag account als wacht woord. Het gebruik van de sleutel van het opslag account voor het koppelen van de Azure-bestands share is in feite een beheerders bewerking, omdat de gekoppelde bestands share volledige machtigingen heeft voor alle bestanden en mappen op de share, zelfs als deze Acl's hebben. Wanneer u de sleutel voor het opslag account gebruikt om te koppelen via SMB, wordt het NTLMv2-verificatie protocol gebruikt.
 

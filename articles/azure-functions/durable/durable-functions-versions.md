@@ -3,14 +3,14 @@ title: Overzicht van Durable Functions-versies-Azure Functions
 description: Meer informatie over Durable Functions-versies.
 author: cgillum
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1dc58bc7c758330c0333a5359622c4e54bb95026
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c8a536086e426a2d83d26538f9d0efe1ea63eb4
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024721"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705789"
 ---
 # <a name="durable-functions-versions-overview"></a>Overzicht van Durable Functions versies
 
@@ -44,7 +44,29 @@ In deze sectie wordt beschreven hoe u uw bestaande versie 1. x Durable Functions
 
 ### <a name="upgrade-the-extension"></a>De extensie upgraden
 
-Installeer versie 2. x van de [uitbrei ding voor de Durable functions bindingen](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in uw project. Zie [Azure functions bindings uitbreidingen registreren](../functions-bindings-register.md) voor meer informatie.
+Installeer de meest recente versie van 2. x van de uitbrei ding Durable Functions bindingen in uw project.
+
+#### <a name="javascript-and-python"></a>Java script en python
+
+Durable Functions 2. x is beschikbaar in versie 2. x van de [Azure functions extensie bundel](../functions-bindings-register.md#extension-bundles).
+
+Als u de versie van de uitbreidings bundel in uw project wilt bijwerken, opent u host.jsop en werkt `extensionBundle` u de sectie bij om versie 2. x () te gebruiken `[2.*, 3.0.0)` .
+
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[2.*, 3.0.0)"
+    }
+}
+```
+
+#### <a name="net"></a>.NET
+
+Werk uw .NET-project bij om de meest recente versie van de [uitbrei ding voor het Durable functions-bindingen](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)te gebruiken.
+
+Zie [Azure functions bindings uitbreidingen registreren](../functions-bindings-register.md#local-csharp) voor meer informatie.
 
 ### <a name="update-your-code"></a>Uw code bijwerken
 
@@ -54,9 +76,9 @@ Durable Functions 2. x introduceert diverse belang rijke wijzigingen. Durable Fu
 
 Durable Functions 2. x maakt gebruik van een nieuwe host.jsop schema. De belangrijkste wijzigingen van 1. x zijn onder andere:
 
-* `"storageProvider"`(en de `"azureStorage"` Subsectie) voor Storage-specifieke configuratie.
-* `"tracing"`voor configuratie van tracering en logboek registratie.
-* `"notifications"`(en de `"eventGrid"` Subsectie) voor configuratie van gebeurtenis raster meldingen.
+* `"storageProvider"` (en de `"azureStorage"` Subsectie) voor Storage-specifieke configuratie.
+* `"tracing"` voor configuratie van tracering en logboek registratie.
+* `"notifications"` (en de `"eventGrid"` Subsectie) voor configuratie van gebeurtenis raster meldingen.
 
 Zie de [Durable Functions host.jsin referentie documentatie](durable-functions-bindings.md#durable-functions-2-0-host-json) voor meer informatie.
 

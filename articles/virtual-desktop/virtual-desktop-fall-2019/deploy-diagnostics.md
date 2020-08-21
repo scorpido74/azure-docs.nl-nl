@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c456f7e82bb605909f31b35cdd838145900396e2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009185"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691408"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Het Windows-hulp programma voor virtueel bureau blad (klassiek) implementeren
 
@@ -112,7 +112,7 @@ U kunt als volgt de aanbevolen prestatie meter items hand matig configureren:
 
 1. Open uw Internet browser en meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw beheerders account.
 2. Ga vervolgens naar **log Analytics-werk ruimten** om de geconfigureerde Windows-prestatie meter items te controleren.
-3. Selecteer in de sectie **instellingen** de optie **Geavanceerde instellingen**.
+3. Selecteer in de sectie **instellingen** de optie  **Geavanceerde instellingen**.
 4. Daarna gaat u naar **gegevens**  >  **prestatie meter items van Windows** en voegt u de volgende tellers toe:
 
     -   Logische schijf ( \* ) \\ % beschik bare ruimte
@@ -162,7 +162,7 @@ Als u de status van virtuele machines wilt kunnen bekijken, moet u de Log Analyt
 2. Ga naar uw Log Analytics-werk ruimte.
 3. Selecteer in het linkerdeel venster onder gegevens bronnen voor werk ruimte de optie **virtuele machines**.
 4. Selecteer de naam van de virtuele machine waarmee u verbinding wilt maken.
-5. Selecteer **Verbinden**.
+5. Selecteer **Verbinding maken**.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -196,7 +196,7 @@ De omleidings-URI instellen:
    > [!div class="mx-imgBorder"]
    > ![De omleidings-URI-pagina](../media/redirect-uri-page.png)
 
-8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon hebt gebruikt `contosoapp45` , bijvoorbeeld is, is de bijbehorende URL <https://contosoapp45.azurewebsites.net> ).
+8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon hebt gebruikt `contosoapp45` , bijvoorbeeld is, is de bijbehorende URL <http://contoso.azurewebsites.net> ).
 9. Meld u aan met het juiste Azure Active Directory gebruikers account.
 10.   Selecteer **Accepteren**.
 

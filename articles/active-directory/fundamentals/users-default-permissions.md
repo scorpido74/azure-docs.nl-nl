@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/16/2019
+ms.date: 08/17/2020
 ms.author: ajburnle
 ms.reviewer: vincesm
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae802d8aa9378155bcca0713992a8cc041ea1a9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 042a881cc6021842dec126c92ff13f306f79dad1
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799018"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705228"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Wat zijn de standaard machtigingen voor gebruikers in Azure Active Directory?
 In Azure Active Directory (Azure AD) wordt aan alle gebruikers een reeks standaardmachtigingen verleend. De toegang van een gebruiker bestaat uit het type gebruiker, hun [roltoewijzingen](active-directory-users-assign-role-azure-portal.md)en hun eigendom van afzonderlijke objecten. Dit artikel beschrijft deze standaardmachtigingen en bevat een vergelijking van de standaardinstellingen voor lid- en gastgebruikers. De standaard gebruikers machtigingen kunnen alleen worden gewijzigd in gebruikers instellingen in azure AD.
@@ -26,26 +26,24 @@ In Azure Active Directory (Azure AD) wordt aan alle gebruikers een reeks standaa
 ## <a name="member-and-guest-users"></a>Lid- en gastgebruikers
 De set standaard machtigingen die worden ontvangen, is afhankelijk van het feit of de gebruiker een native lid is van de Tenant (lid van de gebruiker) of dat de gebruiker wordt overgezet van een andere directory als B2B-samenwerkings gast (gast gebruiker). Zie [Wat is Azure AD B2B-samen werking?](../b2b/what-is-b2b.md) voor meer informatie over het toevoegen van gast gebruikers.
 * Lidgebruikers kunnen toepassingen registreren, hun eigen profielfoto en mobiele telefoonnummer beheren, hun eigen wachtwoord wijzigen en B2B-gasten uitnodigen. Gebruikers kunnen bovendien (op een paar uitzonderingen na) alle directorygegevens lezen. 
-* Gast gebruikers hebben beperkte mapmachtigingen. Gastgebruikers kunnen bijvoorbeeld afgezien van hun eigen profielgegevens niet bladeren door informatie van de tenant. Een gastgebruiker kan echter informatie over een andere gebruiker ophalen door de Principal-naam van gebruiker of de object-id te verstrekken. Een gast gebruiker kan eigenschappen lezen van de groepen waartoe ze behoren, met inbegrip van groepslid maatschappen, ongeacht de **machtigingen voor gast gebruikers** . Een gast kan geen informatie weer geven over andere Tenant objecten.
-
-Standaardmachtigingen voor gasten zijn standaard beperkt. Gasten kunnen worden toegevoegd aan beheerdersrollen, waarmee aan hen volledige lees- en schrijftoegang voor de rol wordt verleend. Er is een aanvullende beperking beschikbaar, namelijk de mogelijkheid voor gasten om andere gasten uit te nodigen. Als de instelling **Gasten kunnen uitnodigingen versturen** op **Nee** wordt ingesteld, kunnen gasten geen andere gasten uitnodigen. Zie [Uitnodigingen delegeren voor B2B-samenwerking](../b2b/delegate-invitations.md) voor meer informatie. Als u gastgebruikers standaard dezelfde machtigingen wilt verlenen als lidgebruikers, stelt u **De machtigingen van gastgebruikers zijn beperkt** in op **Nee**. Met deze instelling worden alle gebruikersmachtigingen van leden standaard verleend aan gastgebruikers, en is het ook toegestaan gastgebruikers toe te voegen aan beheerdersrollen.
+* Gast gebruikers hebben beperkte mapmachtigingen. Ze kunnen hun eigen profiel beheren, hun eigen wacht woord wijzigen en bepaalde informatie over andere gebruikers, groepen en apps ophalen, maar ze kunnen niet alle Directory gegevens lezen. Gast gebruikers kunnen bijvoorbeeld gebruikers, groepen en andere Directory-objecten niet opsommen. Gasten kunnen worden toegevoegd aan beheerdersrollen, waarmee aan hen volledige lees- en schrijftoegang voor de rol wordt verleend. Gasten kunnen ook andere gasten uitnodigen.
 
 ## <a name="compare-member-and-guest-default-permissions"></a>Standaardmachtigingen voor leden en gasten vergelijken
 
-**Gebied** | **Machtigingen voor lidgebruikers** | **Gebruikersmachtigingen voor gasten**
------------- | --------- | ----------
-Gebruikers en contactpersonen | Alle openbare eigenschappen lezen van gebruikers en contactpersonen<br>Gasten uitnodigen<br>Eigen wachtwoord wijzigen<br>Eigen mobiele nummer beheren<br>Eigen foto beheren<br>Eigen vernieuwingstekens ongeldig verklaren | Eigen eigenschappen lezen<br>Weergave naam, e-mail adres, aanmeldings naam, foto, user principal name en gebruikers type-eigenschappen van andere gebruikers en contact personen lezen<br>Eigen wachtwoord wijzigen
-Groepen | Beveiligingsgroepen maken<br>Office 365-groepen maken<br>Alle eigenschappen van groepen lezen<br>Niet-verborgen groepslidmaatschappen lezen<br>Verborgen Office 365-groepslidmaatschappen voor gekoppelde groep lezen<br>Eigenschappen, eigendom en lidmaatschap van groepen beheren waarvan de gebruiker eigenaar is<br>Gasten toevoegen aan groepen in eigendom<br>Instellingen voor dynamisch lidmaatschap beheren<br>Groepen in eigendom verwijderen<br>Office 365-groepen in eigendom herstellen | Alle eigenschappen van groepen lezen<br>Niet-verborgen groepslidmaatschappen lezen<br>Verborgen Office 365-groepslidmaatschappen voor gekoppelde groepen lezen<br>Groepen in eigendom beheren<br>Gasten toevoegen aan groepen in eigendom (indien toegestaan)<br>Groepen in eigendom verwijderen<br>Office 365-groepen in eigendom herstellen<br>Lees de eigenschappen van de groepen waartoe ze behoren, inclusief het lidmaatschap.
-Toepassingen | Nieuwe toepassing registreren (maken)<br>Eigenschappen van geregistreerde en bedrijfstoepassingen lezen<br>Eigenschappen, toewijzingen en referenties van toepassingen beheren voor toepassingen in eigendom<br>Toepassingswachtwoord voor gebruiker maken of verwijderen<br>Toepassingen in eigendom verwijderen<br>Toepassingen in eigendom herstellen | Eigenschappen van geregistreerde en bedrijfstoepassingen lezen<br>Eigenschappen, toewijzingen en referenties van toepassingen beheren voor toepassingen in eigendom<br>Toepassingen in eigendom verwijderen<br>Toepassingen in eigendom herstellen
-Apparaten | Alle eigenschappen van apparaten lezen<br>Alle eigenschappen van apparaten in eigendom lezen<br> | Geen machtigingen<br>Apparaten in eigendom verwijderen<br>
-Directory | Alle bedrijfsgegevens lezen<br>Alle domeinen lezen<br>Alle partnercontracten lezen | Weergavenaam en geverifieerde domeinen lezen
-Rollen en bereiken | Alle beheerdersrollen en lidmaatschappen lezen<br>Alle eigenschappen en het lidmaatschap van beheereenheden lezen | Geen machtigingen 
-Abonnementen | Alle abonnementen lezen<br>Serviceplanlid inschakelen | Geen machtigingen
-Beleidsregels | Alle eigenschappen van beleid lezen<br>Alle eigenschappen van beleid in eigendom lezen | Geen machtigingen
+**Gebied** | **Machtigingen voor lidgebruikers** | **Standaard machtigingen voor gast gebruikers** | **Beperkte gebruikers machtigingen voor gasten (preview-versie)**
+------------ | --------- | ---------- | ----------
+Gebruikers en contactpersonen | <ul><li>Alle openbare eigenschappen lezen van gebruikers en contactpersonen</li><li>Gasten uitnodigen<li>Eigen wachtwoord wijzigen<li>Eigen mobiele nummer beheren<li>Eigen foto beheren<li>Eigen vernieuwingstekens ongeldig verklaren</li></ul> | <ul><li>Eigen eigenschappen lezen<li>Weergave naam, e-mail adres, aanmeldings naam, foto, user principal name en gebruikers type-eigenschappen van andere gebruikers en contact personen lezen<li>Eigen wachtwoord wijzigen<li>Zoeken naar een andere gebruiker op weergave naam, User Principal name of ObjectId (indien toegestaan)<li>Informatie over lees beheer en directe rapporten van andere gebruikers</li></ul> | <ul><li>Eigen eigenschappen lezen<li>Eigen wachtwoord wijzigen</li></ul>
+Groepen | <ul><li>Beveiligingsgroepen maken<li>Office 365-groepen maken<li>Alle eigenschappen van groepen lezen<li>Niet-verborgen groepslidmaatschappen lezen<li>Verborgen Office 365-groepslidmaatschappen voor gekoppelde groep lezen<li>Eigenschappen, eigendom en lidmaatschap van groepen beheren waarvan de gebruiker eigenaar is<li>Gasten toevoegen aan groepen in eigendom<li>Instellingen voor dynamisch lidmaatschap beheren<li>Groepen in eigendom verwijderen<li>Office 365-groepen in eigendom herstellen</li></ul> | <ul><li>Eigenschappen lezen van alle niet-verborgen groepen, inclusief lidmaatschap en eigendom (zelfs niet-gekoppelde groepen)<li>Verborgen Office 365-groepslidmaatschappen voor gekoppelde groepen lezen<li>Zoeken naar groepen op weergave naam of ObjectId (indien toegestaan)</li></ul> | Geen machtigingen
+Toepassingen | <ul><li>Nieuwe toepassing registreren (maken)<li>Eigenschappen van geregistreerde en bedrijfstoepassingen lezen<li>Eigenschappen, toewijzingen en referenties van toepassingen beheren voor toepassingen in eigendom<li>Toepassingswachtwoord voor gebruiker maken of verwijderen<li>Toepassingen in eigendom verwijderen<li>Toepassingen in eigendom herstellen</li></ul> | <ul><li>Eigenschappen van geregistreerde en bedrijfstoepassingen lezen</li></ul> | <ul><li>Eigenschappen van geregistreerde en bedrijfstoepassingen lezen
+Apparaten</li></ul> | <ul><li>Alle eigenschappen van apparaten lezen<li>Alle eigenschappen van apparaten in eigendom lezen</li></ul> | Geen machtigingen | Geen machtigingen
+Directory | <ul><li>Alle bedrijfsgegevens lezen<li>Alle domeinen lezen<li>Alle partnercontracten lezen</li></ul> | <ul><li>Weergavenaam en geverifieerde domeinen lezen</li></ul> | <ul><li>Weergavenaam en geverifieerde domeinen lezen</li></ul>
+Rollen en bereiken | <ul><li>Alle beheerdersrollen en lidmaatschappen lezen<li>Alle eigenschappen en het lidmaatschap van beheereenheden lezen</li></ul> | Geen machtigingen | Geen machtigingen
+Abonnementen | <ul><li>Alle abonnementen lezen<li>Serviceplanlid inschakelen</li></ul> | Geen machtigingen | Geen machtigingen
+Beleidsregels | <ul><li>Alle eigenschappen van beleid lezen<li>Alle eigenschappen van beleid in eigendom lezen</li></ul> | Geen machtigingen | Geen machtigingen
 
 ## <a name="to-restrict-the-default-permissions-for-member-users"></a>De standaardmachtigingen voor lidgebruikers beperken
 
-Standaardmachtigingen voor lidgebruikers kunnen op de volgende manieren worden beperkt.
+Standaard machtigingen voor gebruikers met een lid kunnen op de volgende manieren worden beperkt:
 
 Machtiging | Uitleg van de instelling
 ---------- | ------------
@@ -53,8 +51,23 @@ Gebruikers kunnen de toepassing registreren | Als u deze optie instelt op Nee, v
 Gebruikers toestaan om een werk-of school account te verbinden met LinkedIn | Als u deze optie instelt op Nee, kunnen gebruikers hun werk-of school account niet verbinden met hun LinkedIn-account. Zie voor meer informatie [LinkedIn-account verbindingen gegevens delen en toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent).
 De mogelijkheid beveiligingsgroepen te maken | Als u deze optie op Nee instelt, kunnen gebruikers geen beveiligingsgroepen maken. Globale beheerders en gebruikers beheerders kunnen nog steeds beveiligings groepen maken. Zie [Azure Active Directory-cmdlets voor het configureren van groepsinstellingen](../users-groups-roles/groups-settings-cmdlets.md) voor meer informatie.
 De mogelijkheid Office 365-groepen te maken | Als u deze optie op Nee instelt, kunnen gebruikers geen Office 365-groepen maken. Als u deze optie op Sommige instelt, kan een beperkte selectie van gebruikers Office 365-groepen maken. Globale beheerders en gebruikers beheerders kunnen nog steeds Office 365-groepen maken. Zie [Azure Active Directory-cmdlets voor het configureren van groepsinstellingen](../users-groups-roles/groups-settings-cmdlets.md) voor meer informatie.
-De toegang tot de Azure AD-beheerportal beperken | Als u deze optie instelt op Nee, kunnen niet-beheerders de Azure AD-beheer Portal gebruiken om Azure AD-resources te lezen en te beheren. Ja beperkt alle niet-beheerders om toegang te krijgen tot Azure AD-gegevens in de beheer Portal. Belang rijk om te weten: met deze instelling wordt de toegang tot Azure AD-gegevens niet beperkt met Power shell of andere clients zoals Visual Studio. Als deze optie is ingesteld op Ja, kunt u de Azure AD-beheer Portal gebruiken om een bepaalde niet-beheerders gebruiker toe te staan om een administratieve rol, zoals de rol van Directory lezers, toe te wijzen. Met deze rol kunnen elementaire Directory gegevens worden gelezen, die gebruikers standaard hebben (gasten en service-principals).
+De toegang tot de Azure AD-beheerportal beperken | Als u deze optie instelt op Nee, kunnen niet-beheerders de Azure AD-beheer Portal gebruiken om Azure AD-resources te lezen en te beheren. Ja beperkt alle niet-beheerders om toegang te krijgen tot Azure AD-gegevens in de beheer Portal.<p>**Opmerking**: met deze instelling wordt de toegang tot Azure AD-gegevens niet beperkt met Power shell of andere clients, zoals Visual Studio. Wanneer u deze optie instelt op Ja, kunt u de Azure AD-beheer Portal gebruiken om een administratieve rol toe te wijzen, zoals de rol van lezers van Active Directory.<p>Met deze rol kunnen elementaire Directory gegevens worden gelezen, die gebruikers standaard hebben (gasten en service-principals).
 Mogelijkheid om andere gebruikers te lezen | Deze instelling is alleen beschikbaar in PowerShell. Als u deze vlag instelt op $false, voor komt u dat alle niet-beheerders gebruikers informatie uit de map lezen. Met deze markering wordt het lezen van gebruikers gegevens in andere micro soft-Services, zoals Exchange Online, niet voor komen. Deze instelling is bedoeld voor speciale omstandigheden en het instellen van deze markering op $false wordt niet aanbevolen.
+
+
+## <a name="to-restrict-the-default-permissions-for-guest-users"></a>De standaard machtigingen voor gast gebruikers beperken
+
+Standaard machtigingen voor gast gebruikers kunnen op de volgende manieren worden beperkt:
+
+>[!NOTE] 
+>De instelling voor gebruikers toegang voor gasten is vervangen door de **machtigingen voor gast gebruikers beperkt** . Zie voor hulp bij het gebruik van deze functie [toegangs machtigingen voor gasten beperken (preview) in azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+
+Machtiging | Uitleg van de instelling
+---------- | ------------
+Gebruikers toegangs beperkingen van gasten (preview-versie) | Als u deze optie instelt op gast gebruikers, hebben dezelfde toegang als leden, waarbij alle gebruikers machtigingen voor alle leden standaard worden verleend aan gast gebruikers.<p>Als u deze optie instelt op de toegang van gast gebruikers is beperkt tot eigenschappen en lidmaatschappen van hun eigen Directory-objecten, beperkt de gast toegang alleen tot hun eigen gebruikers profiel. Toegang tot andere gebruikers is niet langer toegestaan, zelfs niet als u zoekt op User Principal name of objectId. Toegang tot groepen met inbegrip van groepen lidmaatschappen is ook niet langer toegestaan. Met deze instelling wordt de toegang tot groepen in andere micro soft-Services, zoals micro soft-teams, niet voor komen. Zie [gast toegang van micro soft teams]() voor meer informatie.<p>Gast gebruikers kunnen nog steeds worden toegevoegd aan beheerders rollen, ongeacht deze machtigings instellingen.
+Gasten kunnen uitnodigingen versturen | Als u deze optie instelt op Ja, kunnen gasten andere gasten uitnodigen. Zie [uitnodigingen voor B2B-samen werking delegeren](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations#configure-b2b-external-collaboration-settings) voor meer informatie.
+Leden kunnen uitnodigingen versturen | Leden kunnen de instelling met deze optie in te stellen op Ja Hiermee kunnen niet-beheerders leden van uw directory gasten uitnodigen. Zie [uitnodigingen voor B2B-samen werking delegeren](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations#configure-b2b-external-collaboration-settings) voor meer informatie.
+Beheerders en gebruikers in de rol van gastuitnodiger kunnen uitnodigingen versturen | Als u deze optie instelt op Ja, kunnen beheerders en gebruikers in de rol ' gast uitnodiging ' gasten uitnodigen. Als deze optie is ingesteld op Ja, kunnen gebruikers in de rol gast-uitnodiging nog steeds gasten uitnodigen, ongeacht de leden kunnen de instelling uitnodigen. Zie [uitnodigingen voor B2B-samen werking delegeren](https://docs.microsoft.com/azure/active-directory/external-identities/delegate-invitations#assign-the-guest-inviter-role-to-a-user) voor meer informatie.
 
 ## <a name="object-ownership"></a>Eigendom van objecten
 
@@ -130,6 +143,7 @@ Gebruikers kunnen de volgende acties uitvoeren op groepen in eigendom.
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Zie voor meer informatie over de instelling voor gebruikers toegang voor gasten [beperken de machtigingen voor gast toegang (preview) in azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
 * Zie [een gebruiker toewijzen aan beheerders rollen in azure Active Directory](active-directory-users-assign-role-azure-portal.md) voor meer informatie over het toewijzen van Azure AD-beheerders rollen.
 * Als u meer wilt weten over hoe de toegang tot resources wordt beheerd in Microsoft Azure, ziet u [Inzicht krijgen in toegang tot resources in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Zie [Hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) voor meer informatie over hoe Azure Active Directory aan uw Azure-abonnement wordt gekoppeld

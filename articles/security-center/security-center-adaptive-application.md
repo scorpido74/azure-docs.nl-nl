@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036951"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691476"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
 
@@ -51,7 +51,7 @@ Door lijsten met bekende veilige toepassingen te definiëren en waarschuwingen t
 |Aspect|Details|
 |----|:----|
 |Release status:|Algemene beschikbaarheid|
-|Koers|Standard-laag|
+|Koers|Standaardlaag|
 |Ondersteunde machines:|![Ja ](./media/icons/yes-icon.png) Azure-en niet-Azure-machines met Windows en Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -machines|
 |Vereiste rollen en machtigingen:|**Beveiligings lezers** en **lezers** rollen kunnen zowel groepen als de lijsten met bekende veilige toepassingen weer geven<br>**Inzender** -en **beveiligings beheerders** rollen kunnen zowel groepen bewerken als de lijsten met bekende veilige toepassingen|
 |Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
@@ -83,7 +83,7 @@ Selecteer de aanbeveling of open de pagina adaptieve toepassings besturings elem
     - **Geen aanbeveling** : machines zonder een gedefinieerde lijst met toegestane toepassingen en die de functie niet ondersteunen. Uw computer kan om de volgende redenen op dit tabblad staan:
       - Er ontbreekt een Log Analytics agent
       - De Log Analytics-agent verzendt geen gebeurtenissen
-      - Het is een Windows-computer met een reeds bestaand [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker) -beleid ingeschakeld door ofwel een GPO ofwel een lokaal beveiligings beleid
+      - Het is een Windows-computer met een reeds bestaand [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) -beleid ingeschakeld door ofwel een GPO ofwel een lokaal beveiligings beleid
 
       > [!TIP]
       > Security Center moet ten minste twee weken aan gegevens hebben om de unieke aanbevelingen per groep machines te definiëren. Computers die onlangs zijn gemaakt of die behoren tot abonnementen die alleen recent zijn ingeschakeld met de laag standaard, worden weer gegeven op het tabblad **geen aanbeveling** .
@@ -187,7 +187,7 @@ Wanneer u een machine van de ene naar de andere groep verplaatst, wordt het toep
 
 1. Selecteer op de pagina **adaptieve toepassings besturings elementen** op het tabblad **geconfigureerd** de groep die de computer bevat die moet worden verplaatst.
 
-1. Open de lijst met **geconfigureerde machines**.
+1. Open de lijst met  **geconfigureerde machines**.
 
 1. Open het menu van de computer vanaf drie punten aan het einde van de rij en selecteer **verplaatsen**. De **computer verplaatsen naar een ander groeps** deel venster wordt geopend.
 

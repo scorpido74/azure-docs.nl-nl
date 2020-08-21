@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8d57b4499f3f1b2f22c14cc912e81b709ec4054c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d1e7c90e558a6834a169b528d2e8c2f96af377b0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500324"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705694"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Niet-aangesloten beheerde en niet-beheerde Azure-schijven zoeken en verwijderen
 
@@ -52,14 +52,14 @@ foreach ($md in $managedDisks) {
 Onbeheerde schijven zijn VHD-bestanden die zijn opgeslagen als [pagina-blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) in [Azure-opslag accounts](../../storage/common/storage-account-overview.md). Het volgende script zoekt naar niet-gekoppelde niet-beheerde schijven (pagina-blobs) door de waarde van de eigenschap **LeaseStatus** te controleren. Wanneer een niet-beheerde schijf is gekoppeld aan een virtuele machine, wordt de eigenschap **LeaseStatus** ingesteld op **vergrendeld**. Wanneer een onbeheerde schijf niet is gekoppeld, wordt de eigenschap **LeaseStatus** ingesteld op **ontgrendeld**. Het script onderzoekt alle niet-beheerde schijven in alle Azure Storage-accounts in een Azure-abonnement. Wanneer het script een onbeheerde schijf zoekt waarvan de eigenschap **LeaseStatus** is ingesteld op **ontgrendeld**, wordt door het script bepaald dat de schijf niet is gekoppeld.
 
 >[!IMPORTANT]
->Voer eerst het script uit door de variabele **deleteUnattachedVHDs** in te stellen op 0. Met deze actie kunt u alle niet-gekoppelde onbeheerde Vhd's vinden en weer geven.
+>Voer eerst het script uit door de variabele **deleteUnattachedVHDs** in te stellen op `$false` . Met deze actie kunt u alle niet-gekoppelde onbeheerde Vhd's vinden en weer geven.
 >
->Nadat u alle niet-gekoppelde schijven hebt gecontroleerd, voert u het script opnieuw uit en stelt u de **deleteUnattachedVHDs** -variabele in op 1. Met deze actie kunt u alle niet-gekoppelde onbeheerde Vhd's verwijderen.
+>Nadat u alle niet-gekoppelde schijven hebt gecontroleerd, voert u het script opnieuw uit en stelt u de **deleteUnattachedVHDs** -variabele in op `$true` . Met deze actie kunt u alle niet-gekoppelde onbeheerde Vhd's verwijderen.
 
 ```azurepowershell-interactive
-# Set deleteUnattachedVHDs=1 if you want to delete unattached VHDs
-# Set deleteUnattachedVHDs=0 if you want to see the Uri of the unattached VHDs
-$deleteUnattachedVHDs=0
+# Set deleteUnattachedVHDs=$true if you want to delete unattached VHDs
+# Set deleteUnattachedVHDs=$false if you want to see the Uri of the unattached VHDs
+$deleteUnattachedVHDs=$false
 $storageAccounts = Get-AzStorageAccount
 foreach($storageAccount in $storageAccounts){
     $storageKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccount.ResourceGroupName -Name $storageAccount.StorageAccountName)[0].Value
@@ -71,7 +71,7 @@ foreach($storageAccount in $storageAccounts){
         $blobs | Where-Object {$_.BlobType -eq 'PageBlob' -and $_.Name.EndsWith('.vhd')} | ForEach-Object { 
             #If a Page blob is not attached as disk then LeaseStatus will be unlocked
             if($_.ICloudBlob.Properties.LeaseStatus -eq 'Unlocked'){
-                    if($deleteUnattachedVHDs -eq 1){
+                    if($deleteUnattachedVHDs){
                         Write-Host "Deleting unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"
                         $_ | Remove-AzStorageBlob -Force
                         Write-Host "Deleted unattached VHD with Uri: $($_.ICloudBlob.Uri.AbsoluteUri)"

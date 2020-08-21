@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607441"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705874"
 ---
 # <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
 
@@ -47,9 +47,9 @@ In de volgende tabel ziet u de publicatie opties voor aanbiedings typen in Micro
 
 &#42;&#42; Microsoft 365 aanbiedingen zijn gratis te installeren en kunnen worden te gelde via SaaS-aanbieding als licentie service. Zie [geld verdienen Your Office 365-invoeg toepassing via micro soft Commercial Marketplace](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)(Engelstalig) voor meer informatie.
 
-## <a name="choose-a-call-to-action"></a>Kies een actie oproep
+## <a name="choose-a-listing-option"></a>Een optie voor een vermelding kiezen
 
-De beschik bare publicatie opties bieden een gedifferentieerde klant betrokkenheid, waarbij u toegang krijgt tot het delen van leads en [commerciële Marketplace-voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Let op de aanroepen-naar-actie die overeenkomt met de publicatie optie:
+De beschik bare aanbiedings opties bieden een gedifferentieerde klant betrokkenheid, waarbij u toegang krijgt tot het delen van leads en [commerciële Marketplace-voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Let op de aanbiedings opties die overeenkomen met de publicatie optie:
 
 | **Publicatie optie**    | **Beschrijving**  |
 | :------------------- | :-------------------|

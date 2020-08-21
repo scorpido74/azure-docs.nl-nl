@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 8656f0396aff7f20c867a5fae3d929236a3aa0d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c7eb50caa4e7f0505809da64dd0309c6e0b8709f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510443"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691340"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure CLI
 
@@ -28,7 +28,7 @@ ms.locfileid: "86510443"
 
 ## <a name="getting-started"></a>Aan de slag
 
-Als u liever schijven wilt uploaden via een grafische gebruikers interface, kunt u dit doen met behulp van Azure Storage Explorer. Raadpleeg voor meer informatie: [Azure Storage Explorer gebruiken om Azure Managed disks te beheren](disks-use-storage-explorer-managed-disks.md)
+Als u liever schijven wilt uploaden via een grafische gebruikers interface, kunt u dit doen met behulp van Azure Storage Explorer. Raadpleeg voor meer informatie: [Azure Storage Explorer gebruiken om Azure Managed disks te beheren](../disks-use-storage-explorer-managed-disks.md)
 
 Als u uw VHD naar Azure wilt uploaden, moet u een lege beheerde schijf maken die is geconfigureerd voor dit upload proces. Voordat u er een maakt, moet u over deze schijven enige aanvullende informatie weten.
 

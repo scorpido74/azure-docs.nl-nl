@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ec0c39bad8a7c12822e5ebf5cd4a958aa8653050
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a0f06c2db0a5bf196ae610efadd85ef1df8defe8
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844640"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691306"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Gebruik Azure Machine Learning met het open-source pakket Fairlearn om de verdeling van ML-modellen te beoordelen (preview-versie)
 
@@ -33,7 +33,7 @@ In deze hand leiding vindt u informatie over het gebruik van het [Fairlearn](htt
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure Machine Learning verdeling SDK 
 
-De Azure Machine Learning verdeling SDK, `azureml-contrib-fairness` , integreert het open source python-pakket [Fairlearn](http://fairlearn.github.io), binnen Azure machine learning. Bekijk deze [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)voor meer informatie over de integratie van Fairlearn in azure machine learning. Voor meer informatie over Fairlearn raadpleegt u de voorbeeld [handleiding](https://fairlearn.github.io/auto_examples/notebooks/index.html) en de [voorbeeld notitieblokken](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
+De Azure Machine Learning verdeling SDK, `azureml-contrib-fairness` , integreert het open source python-pakket [Fairlearn](http://fairlearn.github.io), binnen Azure machine learning. Bekijk deze [voorbeeld notitieblokken](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)voor meer informatie over de integratie van Fairlearn in azure machine learning. Voor meer informatie over Fairlearn raadpleegt u de voorbeeld [handleiding](https://fairlearn.github.io/auto_examples/) en de [voorbeeld notitieblokken](https://github.com/fairlearn/fairlearn/tree/master/notebooks). 
 
 Gebruik de volgende opdrachten om de- `azureml-contrib-fairness` en-pakketten te installeren `fairlearn` :
 ```bash

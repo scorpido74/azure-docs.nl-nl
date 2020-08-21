@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 0c60eb8618568d01af9ec6ad0e3d00fe1332b766
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: cb986f1e0172c4a44381b2f9cf043025cb5abe8a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213018"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705024"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET-uitvoer cache provider voor Azure cache voor redis
 
@@ -57,7 +57,7 @@ Configureer de kenmerken met de waarden van uw cache-Blade in de Microsoft Azure
 | *hostsite* | tekenreeks | lokalehost | Het IP-adres of de hostnaam van de redis-server |
 | *Importeer* | positief geheel getal | 6379 (niet-TLS/SSL)<br/>6380 (TLS/SSL) | Redis-server poort |
 | *accessKey* | tekenreeks | "" | Redis-server wachtwoord wanneer redis-autorisatie is ingeschakeld. De waarde is een lege teken reeks, wat betekent dat de sessie status provider geen wacht woord gebruikt bij het verbinden met de redis-server. **Als uw redis-server zich in een openbaar toegankelijk netwerk zoals Azure Redis Cache bevindt, zorg er dan voor dat u redis-autorisatie inschakelt om de beveiliging te verbeteren en een veilig wacht woord op te geven.** |
-| *-* | boolean | **terecht** | Hiermee wordt aangegeven of verbinding moet worden gemaakt met een redis-server via TLS. Deze waarde is standaard **False** omdat redis geen ondersteuning biedt voor TLS van het vak. **Als u Azure Redis Cache gebruikt dat SSL van het vak ondersteunt, moet u dit instellen op waar om de beveiliging te verbeteren.**<br/><br/>De niet-TLS-poort is standaard uitgeschakeld voor nieuwe caches. Geef **waar** op als u wilt dat deze instelling de TLS-poort gebruikt. Zie de sectie [toegangs poorten](cache-configure.md#access-ports) in het onderwerp [een cache configureren](cache-configure.md) voor meer informatie over het inschakelen van de niet-TLS-poort. |
+| *-* | boolean | **terecht** | Hiermee wordt aangegeven of verbinding moet worden gemaakt met een redis-server via TLS. Deze waarde is standaard **False** omdat redis geen ondersteuning biedt voor TLS van het vak. **Als u Azure Redis Cache gebruikt dat SSL van het vak ondersteunt, moet u dit instellen op waar om de beveiliging te verbeteren.**<br/><br/>De niet-TLS-poort is standaard uitgeschakeld voor nieuwe caches. Geef **waar** op als u wilt dat deze instelling de niet-TLS-poort gebruikt. Zie de sectie [toegangs poorten](cache-configure.md#access-ports) in het onderwerp [een cache configureren](cache-configure.md) voor meer informatie over het inschakelen van de niet-TLS-poort. |
 | *databaseIdNumber* | positief geheel getal | 0 | *Dit kenmerk kan alleen worden opgegeven via web.config of AppSettings.*<br/><br/>Geef op welke redis-data base moet worden gebruikt. |
 | *connectionTimeoutInMilliseconds* | positief geheel getal | Verschaft door stack Exchange. redis | Wordt gebruikt om *ConnectTimeout* in te stellen bij het maken van stack Exchange. redis. ConnectionMultiplexer. |
 | *operationTimeoutInMilliseconds* | positief geheel getal | Verschaft door stack Exchange. redis | Wordt gebruikt om *SyncTimeout* in te stellen bij het maken van stack Exchange. redis. ConnectionMultiplexer. |

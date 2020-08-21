@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076739"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705721"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Back-up en replicatie instellen voor Apache HBase en Apache Phoenix op HDInsight
 
@@ -114,11 +114,11 @@ Het doel adres bestaat uit de volgende drie onderdelen:
 
 `<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
-* `<ZooKeeperQuorum>`is een door komma's gescheiden lijst met Apache ZooKeeper knooppunten, bijvoorbeeld:
+* `<ZooKeeperQuorum>` is een door komma's gescheiden lijst met Apache ZooKeeper knooppunten, bijvoorbeeld:
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, ZK4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>`op HDInsight worden standaard ingesteld op 2181 en `<ZnodeParent>` is `/hbase-unsecure` de volledige waarde `<destinationAddress>` :
+* `<Port>` op HDInsight worden standaard ingesteld op 2181 en `<ZnodeParent>` is `/hbase-unsecure` de volledige waarde `<destinationAddress>` :
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, ZK4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net: 2181:/hbase-UNSECURE
 
@@ -213,7 +213,13 @@ Dit `<hdfsHBaseLocation>` kan elk van de opslag locaties zijn die toegankelijk z
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
-Nadat de moment opname is geëxporteerd, gaat u naar het hoofd knooppunt van het doel cluster en herstelt u de moment opname met de restore_snapshot opdracht, zoals eerder is beschreven.
+Als u geen secundair Azure Storage-account hebt gekoppeld aan uw bron cluster of als uw bron cluster een on-premises cluster is (of een niet-HDI cluster), kunt u autorisatie problemen ondervinden wanneer u probeert toegang te krijgen tot het opslag account van uw HDI-cluster. U kunt dit oplossen door de sleutel voor uw opslag account op te geven als een opdracht regel parameter, zoals wordt weer gegeven in het volgende voor beeld. U kunt de sleutel naar uw opslag account in de Azure Portal ophalen.
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
+
+Nadat de moment opname is geëxporteerd, moet u SSH in het hoofd knooppunt van het doel cluster en de moment opname herstellen met behulp van de `restore_snapshot` opdracht zoals eerder beschreven.
 
 Moment opnamen bieden een volledige back-up van een tabel op het moment van de `snapshot` opdracht. Met moment opnamen kunt u niet de mogelijkheid bieden om incrementele moment opnamen op te zetten en kunt u geen subsets van kolom families opgeven die moeten worden opgenomen in de moment opname.
 

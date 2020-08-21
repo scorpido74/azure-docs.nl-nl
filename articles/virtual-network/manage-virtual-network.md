@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265242"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706027"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -49,9 +49,8 @@ Voer de volgende taken uit voordat u de stappen in een van de secties van dit ar
 
      Hoewel u slechts één adres bereik kunt definiëren wanneer u het virtuele netwerk in de portal maakt, kunt u meer adresbereiken toevoegen aan de adres ruimte nadat het virtuele netwerk is gemaakt. Zie [een adres bereik toevoegen of verwijderen](#add-or-remove-an-address-range)voor meer informatie over het toevoegen van een adres bereik aan een bestaand virtueel netwerk.
 
-     >[!WARNING]
-     >Als een virtueel netwerk adresbereiken heeft die overlappen met een ander virtueel netwerk of een on-premises netwerk, kunnen de twee netwerken niet worden verbonden. Voordat u een adres bereik definieert, moet u overwegen of u het virtuele netwerk in de toekomst mogelijk wilt verbinden met andere virtuele netwerken of on-premises netwerken.
-     >
+     > [!WARNING]
+     > Als een virtueel netwerk adresbereiken heeft die overlappen met een ander virtueel netwerk of een on-premises netwerk, kunnen de twee netwerken niet worden verbonden. Voordat u een adres bereik definieert, moet u overwegen of u het virtuele netwerk in de toekomst mogelijk wilt verbinden met andere virtuele netwerken of on-premises netwerken. Micro soft raadt aan om virtuele netwerk adresbereiken te configureren met een privé adres ruimte of open bare adres ruimte die eigendom is van uw organisatie.
      >
 
      - **Subnetnaam**: de naam van het subnet moet uniek zijn binnen het virtuele netwerk. U kunt de naam van het subnet niet wijzigen nadat het subnet is gemaakt. Voor de portal moet u één subnet definiëren wanneer u een virtueel netwerk maakt, zelfs als een virtueel netwerk geen subnets nodig heeft. In de portal kunt u slechts één subnet definiëren wanneer u een virtueel netwerk maakt. U kunt later meer subnetten toevoegen aan het virtuele netwerk nadat het virtuele netwerk is gemaakt. Zie [subnets beheren](virtual-network-manage-subnet.md)om een subnet toe te voegen aan een virtueel netwerk. U kunt een virtueel netwerk met meerdere subnetten maken met behulp van Azure CLI of Power shell.

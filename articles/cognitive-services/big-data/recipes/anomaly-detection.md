@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 823d61d94913122fc279e81698933b7e648dd114
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244343"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691459"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: voor speld onderhoud met de Cognitive Services voor Big Data
 
@@ -151,4 +151,4 @@ Als dit lukt, ziet uw uitvoer er als volgt uit:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe u voorspellende onderhoud op schaal kunt uitvoeren met Azure Cognitive Services, Azure Synapse Analytics en Azure CosmosDB. Zie voor meer informatie het volledige voor beeld op [github](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples/tree/master/IoT).
+Meer informatie over hoe u voorspellende onderhoud op schaal kunt uitvoeren met Azure Cognitive Services, Azure Synapse Analytics en Azure CosmosDB. Zie voor meer informatie het volledige voor beeld op [github](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples).

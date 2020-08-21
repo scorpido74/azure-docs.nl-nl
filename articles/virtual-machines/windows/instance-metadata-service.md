@@ -11,18 +11,18 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: fe059f684306e2c98e625af72248f03f0932ebad
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168266"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705058"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
 De Azure Instance Metadata Service (IMDS) bevat informatie over actieve exemplaren van virtuele machines en kan worden gebruikt voor het beheren en configureren van uw virtuele machines.
 Deze informatie omvat de gebeurtenissen SKU, opslag, netwerk configuraties en gepland onderhoud. Zie [meta data api's](#metadata-apis)voor een volledige lijst van de beschik bare gegevens.
-Instance Metadata Service is beschikbaar voor exemplaren van de VM-schaalset en de virtuele machine. Het is alleen beschikbaar voor het uitvoeren van Vm's die zijn gemaakt/beheerd met behulp van [Azure Resource Manager](/rest/api/resources/).
+Instance Metadata Service is beschikbaar voor het uitvoeren van exemplaren van virtuele machines en virtuele-machine schaal sets. Alle Api's ondersteunen Vm's die zijn gemaakt/beheerd met behulp van [Azure Resource Manager](/rest/api/resources/). Alleen de Geattesteerde en netwerk-eind punten ondersteunen de klassieke (niet-ARM) Vm's en worden alleen voor een beperkt gebied afverklaard.
 
 De IMDS van Azure is een REST-eind punt dat beschikbaar is via een bekend, niet-routeerbaar IP-adres ( `169.254.169.254` ). het kan alleen worden geopend vanuit de virtuele machine. De communicatie tussen de virtuele machine en de IMDS verlaat nooit de host.
 Het is best practice om ervoor te hebben dat uw HTTP-clients Web-proxy's in de virtuele machine overs Laan tijdens het uitvoeren van een query op IMDS en behandelen `169.254.169.254` hetzelfde als [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) .
@@ -685,7 +685,7 @@ Nonce is een optionele teken reeks van tien cijfers. Als u dit niet opgeeft, ret
 }
 ```
 
-De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details zoals vmId, SKU, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure Marketplace. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
+De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met bepaalde specifieke details van de virtuele machine. Voor ARM-Vm's geldt het volgende: vmId, SKU, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure Marketplace. Voor klassieke virtuele machines (zonder ARM) is alleen de vmId gegarandeerd. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
 Het document bevat de volgende velden:
 
 Gegevens | Beschrijving
@@ -697,6 +697,9 @@ tijds tempel-expiresOn | De UTC-tijds tempel voor het verloopt van het onderteke
 vmId |  De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine
 subscriptionId | Azure-abonnement voor de virtuele machine, geïntroduceerd in `2019-04-30`
 sku | Specifieke SKU voor de VM-installatie kopie, geïntroduceerd in `2019-11-01`
+
+> [!NOTE]
+> Voor klassieke virtuele machines (zonder ARM) is alleen de vmId gegarandeerd.
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>Voor beeld 2: controleren of de virtuele machine wordt uitgevoerd in azure
 

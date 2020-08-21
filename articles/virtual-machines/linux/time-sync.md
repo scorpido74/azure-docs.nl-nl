@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4214fca9e295dc7716d8e2c069f52c719aa74697
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292105"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705637"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Tijd synchronisatie voor virtuele Linux-machines in azure
 
@@ -64,7 +64,7 @@ De meeste installatie kopieën van Azure Marketplace voor Linux zijn standaard g
 - NTP als primair, waarmee tijd wordt opgehaald van een NTP-server. Ubuntu 16,04 LTS Marketplace-installatie kopieën gebruiken bijvoorbeeld **NTP.Ubuntu.com**.
 - De VMICTimeSync-service als secundair, wordt gebruikt om de hosttijd te communiceren met de Vm's en om correcties aan te brengen nadat de virtuele machine voor onderhoud is onderbroken. Azure-hosts gebruiken micro soft-systemen met stratum 1 om nauw keurige tijd te hand haven.
 
-In nieuwere Linux-distributies maakt de VMICTimeSync-service gebruik van het Precision-tijd Protocol (PTP), maar eerdere distributies bieden geen ondersteuning voor PTP en vallen terug naar NTP voor het verkrijgen van tijd van de host.
+In nieuwere Linux-distributies biedt de VMICTimeSync-service een NTP-klok bron (Time Protocol), maar eerdere distributies bieden deze klok bron mogelijk niet aan en vallen terug op NTP om tijd te halen van de host.
 
 Voer de opdracht uit om te controleren of NTP correct synchroniseert `ntpq -p` .
 
@@ -112,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>Controleren op PTP
+### <a name="check-for-ptp-clock-source"></a>Controleren op PTP-Clock-bron
 
-Met nieuwere versies van Linux is een timer-klok bron (Precision Time Protocol) beschikbaar als onderdeel van de VMICTimeSync-provider. In oudere versies van Red Hat Enterprise Linux of CentOS 7. x de [Linux-integratie Services](https://github.com/LIS/lis-next) kunnen worden gedownload en gebruikt om het bijgewerkte stuur programma te installeren. Wanneer u PTP gebruikt, heeft het Linux-apparaat de vorm/dev/PTP*x*. 
+Met nieuwere versies van Linux is een timer-klok bron (Precision Time Protocol) beschikbaar als onderdeel van de VMICTimeSync-provider. In oudere versies van Red Hat Enterprise Linux of CentOS 7. x de [Linux-integratie Services](https://github.com/LIS/lis-next) kunnen worden gedownload en gebruikt om het bijgewerkte stuur programma te installeren. Wanneer de PTP-Clock-bron beschikbaar is, is het Linux-apparaat de vorm/dev/PTP*x*. 
 
 Bekijk welke PTP-timer bronnen beschikbaar zijn.
 

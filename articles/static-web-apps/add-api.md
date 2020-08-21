@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8d48a8a9f52c3edb4350c16a25deda9894dcdda1
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271155"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691493"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Een API toevoegen aan de preview-versie van statische Web Apps van Azure met Azure Functions
 
@@ -147,7 +147,7 @@ Visual Studio code integreert met [Azure functions core tools](../azure-function
 
     :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Een nieuwe Azure Functions maken met Visual Studio code":::
 
-1. Als er kern Hulpprogramma's worden uitgevoerd, gaat u naar de volgende URL om te controleren of de API correct wordt uitgevoerd: <http://localhost:7071/api/message> .
+1. Als er kern Hulpprogramma's worden uitgevoerd, gaat u naar de volgende URL om te controleren of de API correct wordt uitgevoerd: `http://localhost:7071/api/message` .
 
    Het antwoord in de browser moet er ongeveer uitzien als in het volgende voor beeld:
 

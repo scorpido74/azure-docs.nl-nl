@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 22eb43e7249214e4184abe723c8348c726979fa6
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 4d48ca3685dca36157307e7cb4b3d25261c243aa
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511062"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705738"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database-en Azure Synapse Analytics-connectiviteits architectuur
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,14 +80,14 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Australië-Central2   | 20.36.113.0 |
 | Australië - oost       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Australië - zuidoost | 191.239.192.109, 13.73.109.251, 13.77.48.10 |
-| Brazil South         | 104.41.11.5, 191.233.200.14 |
+| Brazilië - zuid         | 104.41.11.5, 191.233.200.14 |
 | Canada - midden       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
-| Canada - oost          | 40.86.226.166, 40.86.226.166, 52.242.30.154 |
-| Central US           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
+| Canada - oost          | 40.86.226.166, 52.242.30.154 |
+| VS - centraal           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | China East           | 139.219.130.35     |
 | China-oost 2         | 40.73.82.1         |
 | China - noord          | 139.219.15.17      |
-| China-noord 2        | 40.73.50.0         |
+| China - noord 2        | 40.73.50.0         |
 | Azië - oost            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | VS - oost              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | VS - oost 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
@@ -97,7 +97,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | India - centraal        | 104.211.96.159     |
 | India - zuid          | 104.211.224.146    |
 | India - west           | 104.211.160.80     |
-| Japan East           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
+| Japan - oost           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
 | Japan - west           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 |
 | Korea - centraal        | 52.231.32.42       |
 | Korea - zuid          | 52.231.200.86      |
@@ -107,18 +107,18 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Noorwegen - west          | 51.120.216.0       |
 | Zuid-Afrika - noord   | 102.133.152.0, 102.133.120.2       |
 | Zuid-Afrika - west    | 102.133.24.0       |
-| South Central US     | 13.66.62.124, 23.98.162.75, 104.214.16.32, 20.45.121.1, 20.49.88.1   |
+| VS - zuid-centraal     | 13.66.62.124, 23.98.162.75, 104.214.16.32, 20.45.121.1, 20.49.88.1   |
 | Azië - zuidoost      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
 | Zwitserland - noord    | 51.107.56.0, 51.107.57.0 |
 | Zwitserland - west     | 51.107.152.0, 51.107.153.0 |
 | UAE - centraal          | 20.37.72.64        |
 | UAE - noord            | 65.52.248.0        |
-| Verenigd Koninkrijk Zuid             | 51.140.184.11,51.140.184.11, 51.105.64.0 |
+| Verenigd Koninkrijk Zuid             | 51.140.184.11, 51.105.64.0 |
 | Verenigd Koninkrijk West              | 51.141.8.11        |
 | VS - west-centraal      | 13.78.145.25, 13.78.248.43        |
 | Europa -west          | 40.68.37.158, 191.237.232.75, 104.40.168.105, 52.236.184.163  |
 | VS - west              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| West US 2            | 13.66.226.202, 40.78.240.8, 40.78.248.10  |
+| VS - west 2            | 13.66.226.202, 40.78.240.8, 40.78.248.10  |
 |                      |                    |
 
 ## <a name="next-steps"></a>Volgende stappen

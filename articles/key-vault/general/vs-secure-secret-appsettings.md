@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: f20a40603916e703d6f3cfc13ee2d165675f3ca2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: df2c626de39ff4482a4dc69fa5a514fc92002ccb
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588497"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705857"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Instellingen voor geheime toepassingen veilig opslaan voor een webtoepassing
 
@@ -101,35 +101,22 @@ Als u wilt door gaan, kunt u [.net 4.7.1 downloaden](https://www.microsoft.com/d
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Bewaar geheime instellingen in een geheim bestand dat zich buiten de map voor broncode beheer bevindt
 Als u een snel prototype schrijft en Azure-resources niet wilt inrichten, gaat u naar deze optie.
 
-1. Het volgende NuGet-pakket installeren op uw project
-    ```
-    Microsoft.Configuration.ConfigurationBuilders.Base
-    ```
+1. Klik met de rechter muisknop op het project en selecteer **gebruikers geheimen beheren**. Hiermee installeert u een NuGet-pakket **Microsoft.Configuration.ConfigurationBuilders. UserSecrets** , maakt u een bestand voor het opslaan van geheime instellingen buiten web.config bestand en voegt u een sectie **ConfigBuilders** toe aan het web.config-bestand.
 
-2. Maak een bestand dat er ongeveer als volgt uitziet. Sla het bestand op onder een locatie buiten de projectmap.
+2. Geheime instellingen opnemen onder hoofd element. Hieronder ziet u een voor beeld
 
     ```xml
+    <?xml version="1.0" encoding="utf-8"?>
     <root>
-        <secrets ver="1.0">
-            <secret name="secret1" value="foo_one" />
-            <secret name="secret2" value="foo_two" />
-        </secrets>
+      <secrets ver="1.0">
+        <secret name="secret" value="foo"/>
+        <secret name="secret1" value="foo_one" />
+        <secret name="secret2" value="foo_two" />
+      </secrets>
     </root>
     ```
 
-3. Definieer het geheime bestand als Configuration builder in uw Web.config-bestand. Plaats deze sectie voor de sectie *appSettings* .
-
-    ```xml
-    <configBuilders>
-        <builders>
-            <add name="Secrets"
-                 secretsFile="C:\Users\AppData\MyWebApplication1\secret.xml" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder,
-                    Microsoft.Configuration.ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
-        </builders>
-    </configBuilders>
-    ```
-
-4. De sectie appSettings opgeven maakt gebruik van de functie voor het maken van geheime configuratie. Zorg ervoor dat er een vermelding voor de geheime instelling met een dummy waarde is.
+3. De sectie appSettings opgeven maakt gebruik van de functie voor het maken van geheime configuratie. Zorg ervoor dat er een vermelding voor de geheime instelling met een dummy waarde is.
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -148,20 +135,18 @@ Volg de instructies in de sectie ASP.NET-kern om een Key Vault voor uw project t
 
 1. Het volgende NuGet-pakket installeren op uw project
    ```
-   Microsoft.Configuration.ConfigurationBuilders.UserSecrets
+   Microsoft.Configuration.ConfigurationBuilders.Azure
    ```
 
-2. Definieer Key Vault Configuration builder in Web.config. Plaats deze sectie voor de sectie *appSettings* . Vervang de *kluisnaam* door de Key Vault naam als uw Key Vault zich in open bare Azure of volledige URI bevindt als u een soevereine Cloud gebruikt.
+2. Definieer Key Vault Configuration builder in Web.config. Plaats deze sectie voor de sectie *appSettings* . Vervang de *kluisnaam* door de Key Vault naam als uw Key Vault zich in een globaal Azure of volledige URI bevindt als u een soevereine Cloud gebruikt.
 
     ```xml
-    <configSections>
-        <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
-    </configSections>
-    <configBuilders>
+     <configBuilders>
         <builders>
-            <add name="AzureKeyVault" vaultName="Test911" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, ConfigurationBuilders, Version=1.0.0.0, Culture=neutral" />
+            <add name="Secrets" userSecretsId="695823c3-6921-4458-b60b-2b82bbd39b8d" type="Microsoft.Configuration.ConfigurationBuilders.UserSecretsConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+            <add name="AzureKeyVault" vaultName="[VaultName]" type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Azure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
         </builders>
-    </configBuilders>
+      </configBuilders>
     ```
 3. De sectie appSettings opgeven maakt gebruik van de Key Vault Configuration Builder. Zorg ervoor dat er een vermelding voor de geheime instelling met een dummy waarde is.
 

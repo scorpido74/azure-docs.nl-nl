@@ -8,30 +8,30 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 465543e639514753bc0a6762dbbeb888d490ccd2
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606757"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705041"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
-Marketplace-beloningen bieden ondersteuning voor uw specifieke groei fase, te beginnen met bewustmakings activiteiten om u te helpen uw eerste klanten te krijgen. Wanneer u de commerciële Marketplace groeit, kunt u nieuwe voor delen opheffen die u helpen bij het converteren van klanten en het sluiten van deals.
+Marketplace-beloningen bieden ondersteuning voor uw specifieke groei fase, te beginnen met bewustmakings activiteiten om u te helpen uw eerste klanten te krijgen. Als u de micro soft Commercial Marketplace inbreidt, kunt u nieuwe voor delen opheffen die u helpen klanten te converteren en deals te sluiten.
 
 Er wordt een positieve feedback lus gemaakt: de voor delen van elke fase van groei helpen u bij de volgende fase, zodat u uw bedrijf kunt uitbreiden naar klanten van micro soft, met het veld van micro soft en via het kanaal van micro soft door gebruik te maken van de commerciële Marketplace als uw platform.
 
-Uw voor delen worden gedifferentieerd op basis van het feit of uw aanbieding een [lijst, proef versie of trans acties](../determine-your-listing-type.md#choose-a-call-to-action)is.
+Uw voor delen worden gedifferentieerd op basis van het feit of uw aanbieding een [lijst, proef versie of trans acties](../determine-your-listing-type.md#choose-a-listing-option)is.
 
 U wordt contact opgenomen met een lid van het team voor beloningen wanneer uw aanbieding live gaat, op basis van uw geschiktheid.
 
-Voor Transact-partners, wanneer u uw gefactureerde verkoop via het Marketplace-platform hebt uitgebreid, kunt u meer voor delen per laag ontgrendelen.
+Voor Transact-partners, wanneer u uw gefactureerde verkoop via het commerciële Marketplace-platform hebt uitgebreid, kunt u meer voor delen per laag ontgrendelen.
 
-De minimale vereiste voor het publiceren in de online winkels is een MPNID, zodat deze voor delen beschikbaar zijn voor alle partners, ongeacht de status van de MPN-competentie of het partner type. Elke partner is gemachtigd om hun bedrijf te laten groeien als een platform.
+De minimale vereiste voor het publiceren in de online winkels is een MPNID, zodat deze voor delen beschikbaar zijn voor alle partners, ongeacht de status van de MPN-competentie of het partner type. Elke partner is gemachtigd om hun bedrijf te laten groeien door de commerciële Marketplace als een platform.
 
 U krijgt ondersteuning bij het goed keuren van de beschik bare bronnen en in de implementatie van de best practices, die u ook [op uw eigen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)manier kunt controleren.
 
-Controleer [hier](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)uw geschiktheid voor het programma voor Marketplace-beloningen.
+Als u wilt controleren of u in aanmerking komt voor het programma Marketplace-beloningen, raadpleegt u de pagina [Marketplace-beloningen](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) in Partner Center.
 
 De stappen om aan de slag te gaan zijn eenvoudig:
 

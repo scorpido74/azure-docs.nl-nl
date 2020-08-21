@@ -5,22 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 08/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6a2c1a9b908503ee5afc2687ebef473ffed626a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908674"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705984"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samenwerking inschakelen en beheren wie gasten kan uitnodigen
 
-In dit artikel wordt beschreven hoe u de samen werking van Azure Active Directory (Azure AD) inschakelt en bepaalt wie gasten kunnen uitnodigen. Standaard kunnen alle gebruikers en gasten in uw directory gasten uitnodigen, zelfs als ze niet zijn toegewezen aan een beheerdersrol. Met instellingen voor externe samen werking kunt u uitnodigingen voor gasten in-of uitschakelen voor verschillende soorten gebruikers in uw organisatie. U kunt uitnodigingen ook overdragen aan afzonderlijke gebruikers door rollen toe te wijzen waarmee gasten kunnen worden uitgenodigd.
+In dit artikel wordt beschreven hoe u de samen werking van Azure Active Directory (Azure AD) inschakelt, aanwijst wie gasten kan uitnodigen en welke machtigingen gast gebruikers hebben in uw Azure AD. 
+
+Standaard kunnen alle gebruikers en gasten in uw directory gasten uitnodigen, zelfs als ze niet zijn toegewezen aan een beheerdersrol. Met instellingen voor externe samen werking kunt u uitnodigingen voor gasten in-of uitschakelen voor verschillende soorten gebruikers in uw organisatie. U kunt uitnodigingen ook overdragen aan afzonderlijke gebruikers door rollen toe te wijzen waarmee gasten kunnen worden uitgenodigd.
+
+Met Azure AD kunt u bepalen welke externe gast gebruikers in uw Azure AD-Directory kunnen worden weer geven. Gast gebruikers zijn standaard ingesteld op een beperkt machtigings niveau waarmee ze worden geblokkeerd voor het inventariseren van gebruikers, groepen of andere Directory bronnen, maar ze kunnen het lidmaatschap van niet-verborgen groepen zien. Met een nieuwe preview-instelling kunt u de toegang tot gasten nog verder beperken, zodat gasten alleen hun eigen profiel gegevens kunnen weer geven. 
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>Externe B2B-samenwerkings instellingen configureren
 
@@ -38,19 +42,38 @@ Standaard kunnen alle gebruikers, inclusief gasten, gast gebruikers uitnodigen.
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een Tenant beheerder.
 2. Selecteer **Azure Active Directory**.
 3. Externe **identiteiten**  >  **externe instellingen voor samen werking**selecteren.
-6. Kies op de pagina **instellingen voor externe samen werking** de beleids regels die u wilt inschakelen.
 
-   ![Instellingen voor externe samenwerking](./media/delegate-invitations/control-who-to-invite.png)
+4. Kies onder **toegangs beperkingen voor gast gebruikers (preview)** het toegangs niveau dat u wilt dat gast gebruikers hebben:
 
-  - **Machtigingen voor gast gebruikers zijn beperkt**: dit beleid bepaalt de machtigingen voor gasten in uw Directory. Selecteer **Ja** om gasten van bepaalde directory taken te blok keren, zoals het opsommen van gebruikers, groepen of andere Directory bronnen. Selecteer **Nee** om gasten dezelfde toegang te geven tot Directory gegevens als gewone gebruikers in uw Directory.
+   > [!IMPORTANT]
+   > Voor een korte periode zijn deze nieuwe portal besturings elementen voor gast gebruikers machtigingen alleen zichtbaar via de URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . Zie [machtigingen voor gast toegang beperken (preview)](https://aka.ms/exid-users-restrict-guest-permissions)voor meer informatie.
+
+   - **Gast gebruikers hebben dezelfde toegang als leden (ten opzichte van de meeste)**: met deze optie krijgen gasten dezelfde toegang tot Azure AD-resources en Directory gegevens als gebruikers van een lid.
+
+   - **Gast gebruikers hebben beperkte toegang tot de eigenschappen en lidmaatschappen van Directory-objecten**: (standaard) met deze instelling worden gasten geblokkeerd voor bepaalde directory taken, zoals het inventariseren van gebruikers, groepen of andere Directory bronnen. Gasten kunnen lidmaatschap van alle niet-verborgen groepen zien.
+
+   - **Toegang voor gast gebruikers is beperkt tot eigenschappen en lidmaatschappen van hun eigen Directory-objecten (het meest beperkend)**: met deze instelling hebben gasten alleen toegang tot hun eigen profielen. Gasten mogen geen profielen, groepen of groepslid maatschappen van andere gebruikers zien.
+  
+    ![Instellingen voor toegangs beperkingen van gast gebruikers](./media/delegate-invitations/guest-user-access.png)
+
+5. Kies onder **instellingen voor uitnodiging voor gast**de gewenste instellingen:
+
    - **Beheerders en gebruikers in de rol van de gast-uitnodiging kunnen uitnodigen**: als u beheerders en gebruikers in de rol ' gast uitnodiging ' wilt toestaan om gasten uit te nodigen, stelt u dit beleid in op **Ja**.
+
    - **Leden kunnen uitnodigen**: Stel dit beleid in op **Ja**als u niet-beheerders leden van uw directory toestemming wilt geven gasten uit te nodigen.
+
    - **Gasten kunnen uitnodigen**: als u gasten wilt toestaan andere gasten uit te nodigen, stelt u dit beleid in op **Ja**.
+
    - **Eenmalige e-mail wachtwoord voor gasten inschakelen (preview-versie)**: Zie [eenmalige verificatie per e-mail (preview)](one-time-passcode.md)voor meer informatie over de functie voor eenmalige wachtwoord code.
-   - **Samenwerkings beperkingen**: voor meer informatie over het toestaan of blok keren van uitnodigingen voor specifieke domeinen raadpleegt [u uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](allow-deny-list.md).
-   
+
+   - **Aanmelden via self-service voor gasten inschakelen via de gebruikers stromen (preview)**: Zie [een self-service voor het registreren van een selfservice gebruiker toevoegen aan een app (preview)](self-service-sign-up-user-flow.md)voor meer informatie over deze instelling.
+
    > [!NOTE]
    > Als **leden kunnen worden uitgenodigd** is ingesteld op **Nee** en **beheerders en gebruikers in de rol gast uitnodigingen kunnen worden uitgenodigd** is ingesteld op **Ja**, kunnen gebruikers in de rol **gast uitnodiging** nog steeds gasten uitnodigen.
+
+    ![Instellingen voor uitnodiging voor gast](./media/delegate-invitations/guest-invite-settings.png)
+
+6. Kies onder **samenwerkings beperkingen**of u uitnodigingen wilt toestaan of weigeren aan de domeinen die u opgeeft. Zie [uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](allow-deny-list.md)voor meer informatie.
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>De rol van de gast-uitnodiging toewijzen aan een gebruiker
 
