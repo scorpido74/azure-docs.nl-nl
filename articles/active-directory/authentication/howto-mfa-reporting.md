@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c550576a5bd762d3333aa8a533ee6106369193c3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418233"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719509"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Het rapport aanmeldingen gebruiken om Azure Multi-Factor Authentication-gebeurtenissen te controleren
 
@@ -90,7 +90,7 @@ De volgende details worden weer gegeven in het venster *verificatie Details* voo
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>Power shell-rapportage voor gebruikers die zijn geregistreerd voor MFA
 
-Controleer eerst of de [MSOnline v1 Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) is geïnstalleerd.
+Controleer eerst of de [MSOnline v1 Power shell-module](/powershell/azure/active-directory/overview?view=azureadps-1.0) is geïnstalleerd.
 
 Identificeer gebruikers die zijn geregistreerd voor MFA met behulp van de volgende Power shell. Met deze reeks opdrachten worden uitgeschakelde gebruikers uitgesloten, omdat deze accounts niet kunnen worden geverifieerd bij Azure AD:
 

@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051298"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716330"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Veelgestelde vragen over self-service voor wachtwoord herstel
 
 Hier volgen enkele veelgestelde vragen (FAQ) voor alle zaken met betrekking tot de selfservice voor wachtwoord herstel.
 
-Als u een algemene vraag hebt over Azure Active Directory (Azure AD) en self-service voor het opnieuw instellen van wacht woorden (SSPR) die hier niet wordt beantwoord, kunt u de Community vragen om hulp op de [pagina micro soft Q&een vraag voor Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html). Leden van de Community bevatten technici, product managers, Mvp's en andere IT-professionals.
+Als u een algemene vraag hebt over Azure Active Directory (Azure AD) en self-service voor het opnieuw instellen van wacht woorden (SSPR) die hier niet wordt beantwoord, kunt u de Community vragen om hulp op de [pagina micro soft Q&een vraag voor Azure Active Directory](/answers/topics/azure-active-directory.html). Leden van de Community bevatten technici, product managers, Mvp's en andere IT-professionals.
 
 Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
 
@@ -197,7 +197,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
   >
 * **V: kunnen mijn gebruikers op de hoogte worden gesteld in de Office-Portal wanneer hun on-premises wacht woord verloopt?**
 
-  > **A:** Ja, dit is mogelijk op dit moment als u Active Directory Federation Services (AD FS) gebruikt. Als u AD FS gebruikt, volgt u de instructies in de [claim wachtwoord beleid verzenden met AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) artikel. Als u synchronisatie met wacht woord-hash gebruikt, is dit niet mogelijk vandaag. Wachtwoord beleid van on-premises directory's wordt niet gesynchroniseerd, dus het is niet mogelijk om verlopen meldingen te verzenden naar Cloud ervaringen. In beide gevallen is het ook mogelijk om [gebruikers te informeren waarvan de wacht woorden bijna verlopen via Power shell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > **A:** Ja, dit is mogelijk op dit moment als u Active Directory Federation Services (AD FS) gebruikt. Als u AD FS gebruikt, volgt u de instructies in de [claim wachtwoord beleid verzenden met AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) artikel. Als u synchronisatie met wacht woord-hash gebruikt, is dit niet mogelijk vandaag. Wachtwoord beleid van on-premises directory's wordt niet gesynchroniseerd, dus het is niet mogelijk om verlopen meldingen te verzenden naar Cloud ervaringen. In beide gevallen is het ook mogelijk om [gebruikers te informeren waarvan de wacht woorden bijna verlopen via Power shell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
 * **V: kan ik voor komen dat gebruikers hun wacht woord wijzigen?**
@@ -243,7 +243,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
 
 * **V: Hoe werkt het terugschrijven van wacht woorden achter de schermen?**
 
-  > **A:** Zie het artikel [over het terugschrijven van wacht woorden](howto-sspr-writeback.md) voor een uitleg van wat er gebeurt wanneer u wacht woord terugschrijven inschakelt en hoe gegevens via het systeem weer naar uw on-premises omgeving worden gepasseerd.
+  > **A:** Zie het artikel [over het terugschrijven van wacht woorden](./tutorial-enable-sspr-writeback.md) voor een uitleg van wat er gebeurt wanneer u wacht woord terugschrijven inschakelt en hoe gegevens via het systeem weer naar uw on-premises omgeving worden gepasseerd.
   >
   >
 * **V: hoe lang duurt het terugschrijven van wacht woorden? Is er sprake van een synchronisatie vertraging, zoals bij een wachtwoord-hash-synchronisatie?**
@@ -273,7 +273,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
   >
 * **V: is het terugschrijven van wacht woorden veilig?  Hoe weet ik zeker dat ik niet gekraakt kan worden?**
 
-  > **A:** Ja, het terugschrijven van wacht woorden is veilig. Voor meer informatie over de meerdere beveiligings lagen die worden geïmplementeerd door de service voor het terugschrijven van wacht woorden, raadpleegt u de sectie [wacht woord terugschrijven](concept-sspr-writeback.md#password-writeback-security) in het artikel voor het [terugschrijven van wacht woorden](howto-sspr-writeback.md) .
+  > **A:** Ja, het terugschrijven van wacht woorden is veilig. Voor meer informatie over de meerdere beveiligings lagen die worden geïmplementeerd door de service voor het terugschrijven van wacht woorden, raadpleegt u de sectie [wacht woord terugschrijven](concept-sspr-writeback.md#password-writeback-security) in het artikel voor het [terugschrijven van wacht woorden](./tutorial-enable-sspr-writeback.md) .
   >
   >
 
@@ -286,7 +286,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
 * [Welke gegevens worden gebruikt door selfservice voor wachtwoordherstel en welke gegevens moet u voor uw gebruikers invullen?](howto-sspr-authenticationdata.md)
 * [Welke verificatiemethoden zijn beschikbaar voor gebruikers?](concept-sspr-howitworks.md#authentication-methods)
 * [Wat zijn de beleidsopties bij selfservice voor wachtwoordherstel?](concept-sspr-policy.md)
-* [Wat is Wachtwoord terugschrijven en waarom is dit van belang?](howto-sspr-writeback.md)
+* [Wat is Wachtwoord terugschrijven en waarom is dit van belang?](./tutorial-enable-sspr-writeback.md)
 * [Hoe maak ik rapporten van activiteit in selfservice voor wachtwoordherstel?](howto-sspr-reporting.md)
 * [Wat zijn alle opties in selfservice voor wachtwoordherstel en wat houden ze in?](concept-sspr-howitworks.md)
 * [Ik denk dat er iets is verbroken. Hoe kan ik problemen met SSPR oplossen?](active-directory-passwords-troubleshoot.md)

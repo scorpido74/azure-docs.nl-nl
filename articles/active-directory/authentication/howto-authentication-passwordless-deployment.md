@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81451428"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717146"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Een authenticatie-implementatie met een wacht woord plannen in Azure Active Directory
 
@@ -43,9 +43,9 @@ Als u een wacht woord opgeeft, wordt het wacht woord vervangen door iets wat u h
 ## <a name="passwordless-authentication-methods"></a>Verificatie methoden met een wacht woord
 Micro soft biedt drie verificatie opties met een wacht woord voor veel scenario's. Deze methoden kunnen samen worden gebruikt:
 
-- [Windows hello voor bedrijven](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) is het meest geschikt voor gebruikers op hun specifieke Windows-computers.
-- Aanmelding met beveiligings sleutel met [FIDO2-beveiligings sleutels](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) is vooral nuttig voor gebruikers die zich aanmelden bij gedeelde computers als kiosken, in situaties waarin het gebruik van telefoons is beperkt en voor identiteiten met een hoge bevoegdheid.
-- Aanmelden met de Microsoft Authenticator- [app](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) is handig voor het bieden van een wacht woordloze optie voor gebruikers met mobiele apparaten. Met de verificator-app wordt een wille keurige iOS-of Android-telefoon omgezet in een sterke, wacht woordloze referentie door gebruikers toe te staan zich aan te melden bij een platform of browser. Gebruikers melden zich aan met een melding op hun telefoon, die overeenkomt met een nummer dat op het scherm wordt weer gegeven op de telefoon en vervolgens met behulp van de biometrische gegevens of de pincode.
+- [Windows hello voor bedrijven](./concept-authentication-passwordless.md) is het meest geschikt voor gebruikers op hun specifieke Windows-computers.
+- Aanmelding met beveiligings sleutel met [FIDO2-beveiligings sleutels](./concept-authentication-passwordless.md) is vooral nuttig voor gebruikers die zich aanmelden bij gedeelde computers als kiosken, in situaties waarin het gebruik van telefoons is beperkt en voor identiteiten met een hoge bevoegdheid.
+- Aanmelden met de Microsoft Authenticator- [app](./concept-authentication-passwordless.md) is handig voor het bieden van een wacht woordloze optie voor gebruikers met mobiele apparaten. Met de verificator-app wordt een wille keurige iOS-of Android-telefoon omgezet in een sterke, wacht woordloze referentie door gebruikers toe te staan zich aan te melden bij een platform of browser. Gebruikers melden zich aan met een melding op hun telefoon, die overeenkomt met een nummer dat op het scherm wordt weer gegeven op de telefoon en vervolgens met behulp van de biometrische gegevens of de pincode.
 
 ### <a name="passwordless-authentication-scenarios"></a>Verificatie scenario's met een wacht woord
 
@@ -59,7 +59,7 @@ Met de verificatie methoden met een wacht woord van micro soft kunnen verschille
 | **Aanmelden voor de web-app**: <br> vanaf een mobiel of niet-Windows-apparaat | **Ja** | **Nee** | **Nee** |
 | **Aanmelden bij computer**: <br> Niet-Windows-computer | **Nee** | **Nee** | **Nee** |
 
-Zie [een methode voor een wacht woord kiezen](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method)voor meer informatie over het selecteren van de beste methode voor uw organisatie.
+Zie [een methode voor een wacht woord kiezen](./concept-authentication-passwordless.md#choose-a-passwordless-method)voor meer informatie over het selecteren van de beste methode voor uw organisatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -72,11 +72,11 @@ Organisaties moeten voldoen aan de volgende vereisten voordat een implementatie 
 | [Gebruikers zijn geregistreerd voor Azure multi-factor Authentication en SSPR](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Gebruikers hebben hun mobiele apparaten bij Azure Active Directory geregistreerd](../devices/overview.md) | √ |   |
 | Windows 10 versie 1809 of hoger met een ondersteunde browser zoals micro soft Edge of Mozilla Firefox <br> (versie 67 of hoger). <br> *Micro soft raadt versie 1903 of hoger aan voor systeem eigen ondersteuning*. |   | √ |
-| Compatibele FIDO2-beveiligings sleutels. Zorg ervoor dat u een door [micro soft getest en gecontroleerd](howto-authentication-passwordless-enable.md) FIDO2 Security-apparaat of een ander compatibel FIDO2-beveiligings apparaat gebruikt. |   | √ |
+| Compatibele FIDO2-beveiligings sleutels. Zorg ervoor dat u een door [micro soft getest en gecontroleerd](./concept-authentication-passwordless.md) FIDO2 Security-apparaat of een ander compatibel FIDO2-beveiligings apparaat gebruikt. |   | √ |
 
 ### <a name="prerequisites-for-windows-hello-for-business"></a>Vereisten voor Windows hello voor bedrijven
 
-De vereisten voor Windows hello zijn zeer afhankelijk van of u implementeert in een on-premises, hybride of Cloud configuratie. Zie voor meer informatie de [volledige lijst met vereisten voor Windows hello voor bedrijven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+De vereisten voor Windows hello zijn zeer afhankelijk van of u implementeert in een on-premises, hybride of Cloud configuratie. Zie voor meer informatie de [volledige lijst met vereisten voor Windows hello voor bedrijven](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
@@ -93,7 +93,7 @@ Houd rekening met de behoeften van uw bedrijf en de use cases voor elke verifica
 
 De volgende tabel bevat een overzicht van de use cases die tijdens dit project moeten worden geïmplementeerd.
 
-| Onderwerp | Beschrijving |
+| Gebied | Beschrijving |
 | --- | --- |
 | **Toegang** | Aanmelden met een wacht woord is beschikbaar vanaf een zakelijk of persoonlijk apparaat binnen of buiten het bedrijfs netwerk. |
 | **Controle** | Gebruiks gegevens zijn beschikbaar voor beheerders die bijna in realtime kunnen worden gecontroleerd. <br> Gebruiks gegevens worden minstens elke 29 dagen naar bedrijfs systemen gedownload, of het hulp programma SIEM wordt gebruikt. |
@@ -132,7 +132,7 @@ Zie [Aanbevolen procedures voor een pilot](https://aka.ms/deploymentplans) op de
 
 De Microsoft Authenticator-app is een gratis down load van Google Play of de Apple App Store. Meer [informatie over het downloaden van de app Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Laat gebruikers de app Microsoft Authenticator downloaden. en volg de instructies om de aanmelding via telefoon in te scha kelen. 
 
-Hiermee wordt een wille keurige iOS-of Android-telefoon omgezet in een sterke, wacht woordloze referentie. Gebruikers melden zich aan bij een platform of browser door een melding te ontvangen op de telefoon, een nummer dat op het scherm wordt weer gegeven op de telefoon en vervolgens biometrie of een pincode te gebruiken om te bevestigen. [Bekijk de details van de werking van de Microsoft Authenticator-app](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app).
+Hiermee wordt een wille keurige iOS-of Android-telefoon omgezet in een sterke, wacht woordloze referentie. Gebruikers melden zich aan bij een platform of browser door een melding te ontvangen op de telefoon, een nummer dat op het scherm wordt weer gegeven op de telefoon en vervolgens biometrie of een pincode te gebruiken om te bevestigen. [Bekijk de details van de werking van de Microsoft Authenticator-app](./concept-authentication-passwordless.md#microsoft-authenticator-app).
 
 ![aanmelden met de verificator-app](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 
@@ -150,7 +150,7 @@ Er zijn drie soorten aanmeld implementaties met een wacht woord die beschikbaar 
 -    Azure Active Directory Web-apps in een ondersteunde browser
 -    Azure Active Directory gekoppelde Windows 10-apparaten
 -    Hybride Azure Active Directory gekoppelde Windows 10-apparaten (preview-versie)
-     -    Biedt toegang tot bronnen op basis van de Cloud en on-premises. Zie voor meer informatie over toegang tot on-premises resources [SSO to on-premises resources met behulp van FIDOP2-sleutels](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises)
+     -    Biedt toegang tot bronnen op basis van de Cloud en on-premises. Zie voor meer informatie over toegang tot on-premises resources [SSO to on-premises resources met behulp van FIDOP2-sleutels](./howto-authentication-passwordless-security-key-on-premises.md)
 
 U moet **compatibele FIDO2-beveiligings sleutels**inschakelen. Micro soft introduceert [belang rijke partnerschappen met FIDO2-sleutel leveranciers](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493).
 
@@ -164,7 +164,7 @@ U moet **compatibele FIDO2-beveiligings sleutels**inschakelen. Micro soft introd
 -    Volledige patches van domein servers met Windows Server 2016 of 2019.
 -    Nieuwste versie van Azure AD Connect
 
-Zie voor een volledige lijst met vereisten [wacht woord voor wachtwoord beveiliging inschakelen voor Windows 10-apparaten met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-windows#requirements).
+Zie voor een volledige lijst met vereisten [wacht woord voor wachtwoord beveiliging inschakelen voor Windows 10-apparaten met Azure Active Directory](./howto-authentication-passwordless-security-key-windows.md#requirements).
 
 
 ### <a name="security-key-life-cycle"></a>Levens cyclus van beveiligings sleutel
@@ -320,7 +320,7 @@ Volg de stappen in het artikel, [Schakel wacht woordloze beveiligings sleutel aa
 | --- | --- |
 | Gebruiker kan geen gecombineerde registratie uitvoeren. | Zorg ervoor dat [gecombineerde registratie](concept-registration-mfa-sspr-combined.md) is ingeschakeld. |
 | Gebruiker kan geen beveiligings sleutel toevoegen in de [beveiligings instellingen](https://aka.ms/mysecurityinfo). | Zorg ervoor dat de [beveiligings sleutels](howto-authentication-passwordless-security-key.md) zijn ingeschakeld. |
-| Gebruiker kan beveiligings sleutel niet toevoegen aan aanmeldings opties voor Windows 10. | [Zorg ervoor dat de beveiligings sleutels voor Windows-aanmelding](howto-authentication-passwordless-enable.md) |
+| Gebruiker kan beveiligings sleutel niet toevoegen aan aanmeldings opties voor Windows 10. | [Zorg ervoor dat de beveiligings sleutels voor Windows-aanmelding](./concept-authentication-passwordless.md) |
 | **Fout bericht**: er is vastgesteld dat deze browser of dit besturings systeem geen FIDO2-beveiligings sleutels ondersteunt. | Wacht woord-FIDO2 beveiligings apparaten kunnen alleen worden geregistreerd in ondersteunde browsers (micro soft Edge, Firefox versie 67) op Windows 10 versie 1809 of hoger. |
 | **Fout bericht**: voor uw bedrijfs beleid moet u een andere methode gebruiken om u aan te melden. | Controleren of beveiligings sleutels zijn ingeschakeld in de Tenant. |
 | Gebruiker kan mijn beveiligings sleutel niet beheren in Windows 10 versie 1809 | Versie 1809 vereist dat u de software voor beveiligings sleutel beheer gebruikt die wordt verschaft door de leverancier van de FIDO2-sleutel. Neem contact op met de leverancier voor ondersteuning. |
@@ -331,4 +331,3 @@ Volg de stappen in het artikel, [Schakel wacht woordloze beveiligings sleutel aa
 - [Wachtwoordloze beveiligings sleutels inschakelen voor aanmelding bij Azure AD](howto-authentication-passwordless-security-key.md)
 - [Aanmelden zonder wacht woord inschakelen met de app Microsoft Authenticator](howto-authentication-passwordless-phone.md)
 - [Meer informatie over het gebruik van verificatie methoden & Insights](howto-authentication-methods-usage-insights.md)
-

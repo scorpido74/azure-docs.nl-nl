@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550642"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716993"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor on-premises resources met Azure Active Directory (preview-versie)
 
 Dit document richt zich op het inschakelen van verificatie zonder wacht woord voor on-premises resources voor omgevingen met zowel **Azure AD join** als **hybride Azure AD gekoppelde** Windows 10-apparaten. Deze functionaliteit biedt naadloze eenmalige aanmelding (SSO) voor on-premises resources met behulp van met micro soft compatibele beveiligings sleutels.
 
 > [!NOTE]
-> FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+> FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>Eenmalige aanmelding voor on-premises resources met behulp van FIDO2-sleutels
 
@@ -48,10 +48,10 @@ Organisaties moeten ook voldoen aan de volgende software vereisten.
 
 - Op apparaten moet Windows 10 Insider build 18945 of hoger worden uitgevoerd.
 - U moet beschikken over versie 1.4.32.0 of hoger van [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect).
-  - Zie voor meer informatie over de beschik bare opties voor hybride verificatie van Azure AD [de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing](../../security/fundamentals/choose-ad-authn.md) en [Selecteer welk installatie type u wilt gebruiken voor Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
+  - Zie voor meer informatie over de beschik bare opties voor hybride verificatie van Azure AD [de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing](../hybrid/choose-ad-authn.md) en [Selecteer welk installatie type u wilt gebruiken voor Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
 - Op uw Windows Server-domein controllers moeten de volgende patches zijn geïnstalleerd:
-    - Voor Windows Server 2016-https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - Voor Windows Server 2019-https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+    - Voor Windows Server 2016- https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
+    - Voor Windows Server 2019- https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
 
 ### <a name="supported-scenarios"></a>Ondersteunde scenario's
 
@@ -75,7 +75,7 @@ De volgende scenario's worden niet ondersteund:
 Beheerders gebruiken Power shell-hulpprogram ma's van de Azure AD Connect server voor het maken van een Azure AD Kerberos-server object in hun on-premises Directory. Voer de volgende stappen uit in elk domein en forest in uw organisatie die Azure AD-gebruikers bevatten:
 
 1. Voer een upgrade uit naar de nieuwste versie van Azure AD Connect. In deze instructies wordt ervan uitgegaan dat u Azure AD Connect al hebt geconfigureerd om uw hybride omgeving te ondersteunen.
-1. Open op de Azure AD Connect-server een Power shell-prompt met verhoogde bevoegdheid en navigeer naar`C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
+1. Open op de Azure AD Connect-server een Power shell-prompt met verhoogde bevoegdheid en navigeer naar `C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
 1. Voer de volgende Power shell-opdrachten uit om een nieuw Azure AD Kerberos-server object te maken in zowel uw on-premises Active Directory domein als Azure Active Directory Tenant.
 
 > [!NOTE]
@@ -114,7 +114,7 @@ Met deze opdracht worden de eigenschappen van de Azure AD Kerberos-server uitgev
 | Id | De unieke ID van het AD DS DC-object. Deze ID wordt soms aangeduid als ' sleuf ' of ' vertakking-ID '. |
 | DomainDnsName | De DNS-domein naam van de Active Directory-domein. |
 | ComputerAccount | Het object computer account van het object van de Azure AD Kerberos-server (de domein controller). |
-| User account | Het uitgeschakelde gebruikers account-object dat de Azure AD Kerberos server TGT-versleutelings sleutel bevat. De DN van dit account is`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
+| User account | Het uitgeschakelde gebruikers account-object dat de Azure AD Kerberos server TGT-versleutelings sleutel bevat. De DN van dit account is `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
 | Versie | De sleutel versie van de TGT-versleutelings sleutel van de Azure AD Kerberos-server. De versie wordt toegewezen wanneer de sleutel wordt gemaakt. De versie wordt vervolgens verhoogd telkens wanneer de sleutel wordt gedraaid. De stappen zijn gebaseerd op meta gegevens van replicatie en waarschijnlijk meer dan één. De eerste *versie* kan bijvoorbeeld *192272*zijn. De eerste keer dat de sleutel wordt gedraaid, kan de versie worden voortgezet in *212621*. Het is belang rijk om te controleren of de *versie* van het on-premises object en de *CloudKeyVersion* voor het Cloud object hetzelfde zijn. |
 | KeyUpdatedOn | De datum en tijd waarop de TGT-versleutelings sleutel van de Azure AD Kerberos-server is bijgewerkt of gemaakt. |
 | KeyUpdatedFrom | De domein controller waarop de TGT-versleutelings sleutel van de Azure AD Kerberos-server voor het laatst is bijgewerkt. |

@@ -5,12 +5,12 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4f3b67794d1a7f3935c79c70f18b8bd4a1e0d7ef
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423419"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716619"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Toegang tot Azure Service Bus naam ruimten toestaan via persoonlijke eind punten
 
@@ -189,7 +189,7 @@ Er zijn vier inrichtingsstatussen:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren, afwijzen of verwijderen
 
-1. Meld u aan bij Azure Portal.
+1. Meld u aan bij de Azure-portal.
 1. Typ **Service Bus**in de zoek balk.
 1. Selecteer de **naam ruimte** die u wilt beheren.
 1. Selecteer het tabblad **netwerken** .
@@ -234,7 +234,7 @@ Er zijn vier inrichtingsstatussen:
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de Private Link werkt
 
-U moet controleren of de resources binnen hetzelfde subnet van de persoonlijke eindpunt resource verbinding maken met uw Service Bus naam ruimte via een privé-IP-adres en dat ze de juiste integratie van de persoonlijke DNS-zone hebben.
+U moet valideren dat bronnen binnen het virtuele netwerk van het persoonlijke eind punt verbinding maken met uw Service Bus naam ruimte via een privé-IP-adres en dat ze de juiste integratie van de persoonlijke DNS-zone hebben.
 
 Maak eerst een nieuwe virtuele machine door de instructies te volgen in [Een virtuele Windows-machine in de Azure Portal maken](../virtual-machines/windows/quick-create-portal.md)
 

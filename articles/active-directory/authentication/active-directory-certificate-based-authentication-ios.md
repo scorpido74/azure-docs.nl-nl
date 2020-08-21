@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 584fb5c370fa0be629d057eb94dc4c2a8b9edc15
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144069"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716432"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Op certificaten gebaseerde verificatie op iOS Azure Active Directory
 
@@ -40,7 +40,7 @@ In dit artikel vindt u informatie over de vereisten en de ondersteunde scenario'
 | OneDrive |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Outlook |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Power BI |![Vinkje voor ondersteuning voor deze toepassing][1] |
-| Skype voor bedrijven |![Vinkje voor ondersteuning voor deze toepassing][1] |
+| Skype voor Bedrijven |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Word/Excel/Power Point |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Yammer |![Vinkje voor ondersteuning voor deze toepassing][1] |
 
@@ -61,15 +61,15 @@ De volgende Active Directory Federation Services (ADFS)-vereisten en overweginge
 
 Als u een client certificaat wilt intrekken voor Azure AD, moet het ADFS-token de volgende claims hebben. Azure AD voegt deze claims toe aan het vernieuwings token als deze beschikbaar zijn in het ADFS-token (of een ander SAML-token). Wanneer het vernieuwings token moet worden gevalideerd, wordt deze informatie gebruikt om de intrekking te controleren:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`-het serie nummer van uw client certificaat toevoegen
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`-de teken reeks voor de uitgever van uw client certificaat toevoegen
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` -het serie nummer van uw client certificaat toevoegen
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` -de teken reeks voor de uitgever van uw client certificaat toevoegen
 
 Als best practice moet u ook de ADFS-fout pagina's van uw organisatie bijwerken met de volgende informatie:
 
 * De vereiste voor het installeren van de Microsoft Authenticator op iOS.
 * Instructies voor het ophalen van een gebruikers certificaat.
 
-Zie [de AD FS-aanmeldings pagina aanpassen](https://technet.microsoft.com/library/dn280950.aspx)voor meer informatie.
+Zie [de AD FS-aanmeldings pagina aanpassen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11))voor meer informatie.
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Moderne verificatie gebruiken met Office-apps
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d9d06433e2b915b8a96375bb39157adbce6ef2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027643"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716313"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>How it works: Azure AD self-service password reset (Hoe het werkt: selfservice voor wachtwoordherstel in Azure AD)
 
@@ -101,7 +101,7 @@ De volgende verificatie methoden zijn beschikbaar voor SSPR:
 
 * Meldingen via mobiele app
 * Code van mobiele app
-* E-mail
+* Email
 * Mobiele telefoon
 * Zakelijke telefoon
 * Beveiligingsvragen
@@ -139,7 +139,7 @@ Gebruikers hebben geen optie om hun mobiele app te registreren wanneer ze zich r
 >
 > Bij het configureren van SSPR-beleid dat de verificator-app als methode bevat, moet er ten minste één extra methode worden geselecteerd wanneer één methode vereist is, en moeten er ten minste twee extra methoden worden geselecteerd wanneer twee methoden worden geconfigureerd.
 >
-> Deze vereiste is omdat de huidige registratie-ervaring voor SSPR niet de optie bevat voor het registreren van de verificator-app. De optie voor het registreren van de verificator-app is opgenomen in de nieuwe [gecombineerde registratie-ervaring](concept-registration-mfa-sspr-converged.md).
+> Deze vereiste is omdat de huidige registratie-ervaring voor SSPR niet de optie bevat voor het registreren van de verificator-app. De optie voor het registreren van de verificator-app is opgenomen in de nieuwe [gecombineerde registratie-ervaring](./concept-registration-mfa-sspr-combined.md).
 >
 > Het toestaan van beleids regels die alleen de verificator-app gebruiken (als één methode is vereist) of de verificator-app en slechts één extra methode (wanneer twee methoden zijn vereist), kunnen ertoe leiden dat gebruikers niet worden geregistreerd voor SSPR totdat ze zijn geconfigureerd voor het gebruik van de nieuwe gecombineerde registratie-ervaring.
 
@@ -191,13 +191,13 @@ Azure AD controleert uw huidige hybride verbinding en biedt een van de volgende 
 * Azure AD is online en is verbonden met uw on-premises terugschrijf client. Het lijkt echter alsof de geïnstalleerde versie van Azure AD Connect verouderd is. Overweeg het [upgraden van Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) om ervoor te zorgen dat u beschikt over de nieuwste connectiviteits functies en belang rijke problemen met oplossingen.
 * Helaas kan de status van uw on-premises terugschrijf client niet worden gecontroleerd, omdat de geïnstalleerde versie van Azure AD Connect verouderd is. [Upgrade Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) zodat u de verbindings status kunt controleren.
 * Helaas lijkt het alsof er geen verbinding kan worden gemaakt met uw on-premises back-upclient. [Problemen met Azure AD Connect oplossen](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) om de verbinding te herstellen.
-* Er kan geen verbinding worden gemaakt met uw on-premises terugschrijf client omdat het terugschrijven van wacht woorden niet correct is geconfigureerd. [Configureer write-back van wacht woord](howto-sspr-writeback.md) om de verbinding te herstellen.
+* Er kan geen verbinding worden gemaakt met uw on-premises terugschrijf client omdat het terugschrijven van wacht woorden niet correct is geconfigureerd. [Configureer write-back van wacht woord](./tutorial-enable-sspr-writeback.md) om de verbinding te herstellen.
 * Helaas lijkt het alsof er geen verbinding kan worden gemaakt met uw on-premises back-upclient. Dit kan worden veroorzaakt door tijdelijke problemen aan onze kant. Als het probleem zich blijft voordoen, [lost u Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) op om de verbinding te herstellen.
 
 Voltooi de volgende zelf studie om aan de slag te gaan met SSPR write-back:
 
 > [!div class="nextstepaction"]
-> [Zelf studie: write-back van self-service voor wacht woord opnieuw instellen (SSPR) inschakelen](tutorial-enable-writeback.md)
+> [Zelf studie: write-back van self-service voor wacht woord opnieuw instellen (SSPR) inschakelen](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Wacht woorden terugschrijven naar uw on-premises Directory
 
@@ -223,7 +223,7 @@ Wacht woord opnieuw instellen en wijzigen worden volledig ondersteund voor alle 
 
 * **Gebruikers van een partner organisatie met een bestaande Azure AD-Tenant**: als de organisatie waarmee u een partner hebt, een bestaande Azure AD-Tenant heeft, respecteren we dat het beleid voor het opnieuw instellen van het wacht woord is ingeschakeld voor die Tenant. Om het wacht woord opnieuw in te stellen, moet de partner organisatie alleen ervoor zorgen dat Azure AD SSPR is ingeschakeld. Er worden geen extra kosten in rekening gebracht voor Office 365-klanten.
 * **Gebruikers die zich aanmelden via** Self-Service-aanmelding: als de organisatie die u hebt gebruikt de [self-service-registratie](../users-groups-roles/directory-self-service-signup.md) functie in een Tenant krijgt, kunnen we het wacht woord opnieuw instellen met het e-mail bericht dat ze hebben geregistreerd.
-* **B2B-gebruikers**: alle nieuwe B2B-gebruikers die zijn gemaakt met de nieuwe [mogelijkheden van Azure AD B2B](../b2b/what-is-b2b.md) , kunnen hun wacht woord ook opnieuw instellen met het e-mail adres dat is geregistreerd tijdens het INVITE-proces.
+* **B2B-gebruikers**: alle nieuwe B2B-gebruikers die zijn gemaakt met de nieuwe [mogelijkheden van Azure AD B2B](../external-identities/what-is-b2b.md) , kunnen hun wacht woord ook opnieuw instellen met het e-mail adres dat is geregistreerd tijdens het INVITE-proces.
 
 Als u dit scenario wilt testen, gaat u naar https://passwordreset.microsoftonline.com met een van deze partner-gebruikers. Als er een alternatieve e-mail of verificatie-e-mail is gedefinieerd, werkt wacht woord opnieuw instellen zoals verwacht.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904816"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718098"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Overwegingen bij het plannen van Service Fabric cluster capaciteit
 
@@ -56,7 +56,7 @@ Het aantal eerste typen knoop punten is afhankelijk van het doel van het cluster
 
     Service Fabric ondersteunt clusters die over meerdere [Beschikbaarheidszones](../availability-zones/az-overview.md) beschikken door knooppunt typen te implementeren die zijn vastgemaakt aan specifieke zones, waardoor uw toepassingen een hoge Beschik baarheid bieden. Beschikbaarheidszones vereisen extra planning van het type knoop punt en minimale vereisten. Zie voor meer informatie [aanbevolen topologie voor het primaire knooppunt type van service Fabric clusters over Beschikbaarheidszones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
-Bij het bepalen van het aantal en de eigenschappen van knooppunt typen voor het maken van de eerste keer dat u uw cluster maakt, moet u ervoor zorgen dat u altijd (niet-primaire) knooppunt typen kunt toevoegen, wijzigen of verwijderen zodra het cluster is geïmplementeerd. [Primaire knooppunt typen kunnen ook worden gewijzigd](service-fabric-scale-up-node-type.md) in actieve clusters (hoewel voor dergelijke bewerkingen veel planning en waarschuwing in productie omgevingen nodig zijn).
+Bij het bepalen van het aantal en de eigenschappen van knooppunt typen voor het maken van de eerste keer dat u uw cluster maakt, moet u ervoor zorgen dat u altijd (niet-primaire) knooppunt typen kunt toevoegen, wijzigen of verwijderen zodra het cluster is geïmplementeerd. [Primaire knooppunt typen kunnen ook worden gewijzigd](service-fabric-scale-up-primary-node-type.md) in actieve clusters (hoewel voor dergelijke bewerkingen veel planning en waarschuwing in productie omgevingen nodig zijn).
 
 Een verdere overweging voor de eigenschappen van het knooppunt type is duurzaamheids niveau, waarmee de bevoegdheden worden bepaald van de Vm's van een knooppunt type in de Azure-infra structuur. Gebruik de grootte van de virtuele machines die u voor uw cluster kiest en het aantal instanties dat u toewijst voor afzonderlijke knooppunt typen om te helpen bij het bepalen van de juiste duurzaamheids categorie voor elk van uw knooppunt typen, zoals hierna wordt beschreven.
 
@@ -105,7 +105,7 @@ Gebruik Silver of Gold-duurzaamheid voor alle knooppunt typen die stateful servi
 Volg deze aanbevelingen voor het beheren van knooppunt typen met Silver of Gold duurzaamheid:
 
 * Houd uw cluster en toepassingen te allen tijde in orde en zorg ervoor dat toepassingen reageren op alle gebeurtenissen van de [levens cyclus van de service replica](service-fabric-reliable-services-lifecycle.md) (zoals replica in Build is vastgelopen) tijdig.
-* U kunt veiliger manieren instellen om een VM-grootte te wijzigen (omhoog/omlaag schalen). Het wijzigen van de VM-grootte van een schaalset voor virtuele machines vereist een zorgvuldige planning en voorzichtigheid. Zie [een service Fabric knooppunt type omhoog schalen](service-fabric-scale-up-node-type.md) voor meer informatie
+* U kunt veiliger manieren instellen om een VM-grootte te wijzigen (omhoog/omlaag schalen). Het wijzigen van de VM-grootte van een schaalset voor virtuele machines vereist een zorgvuldige planning en voorzichtigheid. Zie [een service Fabric knooppunt type omhoog schalen](service-fabric-scale-up-primary-node-type.md) voor meer informatie
 * Behoud een minimum aantal van vijf knoop punten voor een schaalset voor virtuele machines met duurzaamheids niveau goud of zilver ingeschakeld. In uw cluster wordt de fout status ingevoerd als u onder deze drempel waarde schaalt en u moet de status () hand matig opschonen `Remove-ServiceFabricNodeState` voor de verwijderde knoop punten.
 * Elke schaalset voor virtuele machines met duurzaamheids niveau zilver of goud moet worden toegewezen aan het eigen knooppunt type in het Service Fabric cluster. Als u meerdere virtuele-machine schaal sets aan één knooppunt type toewijst, kan de coördinatie tussen het Service Fabric cluster en de Azure-infra structuur niet goed werken.
 * Verwijder geen wille keurige VM-exemplaren, gebruik altijd schaal sets voor virtuele machines in functie. Als u wille keurige VM-exemplaren verwijdert, is het mogelijk dat er onbalansen in de VM-instantie worden gemaakt over [upgrade domeinen](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) en [fout domeinen](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains). Dit onevenwichtige kan een nadelige invloed hebben op de systeem capaciteit van de service-exemplaren/service-replica's.

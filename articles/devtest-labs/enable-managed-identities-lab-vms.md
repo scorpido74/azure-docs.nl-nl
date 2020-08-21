@@ -3,12 +3,12 @@ title: Beheerde identiteiten inschakelen op uw Lab-Vm's in Azure DevTest Labs
 description: In dit artikel wordt beschreven hoe een Lab-eigenaar door de gebruiker toegewezen beheerde identiteiten kan inschakelen op uw virtuele lab-machines.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 886dc3b541c624d9f7a300fbbe696e1d2e143641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85475999"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717626"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Door de gebruiker toegewezen beheerde identiteiten inschakelen op virtuele lab-machines in Azure DevTest Labs
 Als eigenaar van een lab kunt u door de gebruiker toegewezen beheerde identiteiten inschakelen op uw virtuele lab-machines (Vm's) in Azure DevTest Labs.
@@ -25,14 +25,16 @@ Voer de volgende stappen uit om een door de gebruiker toegewezen beheerde identi
 
 1. [Een door de gebruiker toegewezen beheerde identiteit maken in uw abonnement](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 1. Navigeer naar de pagina **configuratie en beleid** voor uw Lab.
-2. Selecteer **identiteit (preview)** in het menu links.
-3. Selecteer het tabblad **virtuele machine** .
-4. Selecteer **toevoegen** om een bestaande identiteit te selecteren in een vooraf gevulde vervolg keuzelijst. 
+1. Selecteer **identiteit (preview)** in het menu links.
+1. Selecteer het tabblad **virtuele machine** .
+1. Selecteer **toevoegen** om een bestaande identiteit te selecteren in een vooraf gevulde vervolg keuzelijst. 
 
-    ![Knop identiteit toevoegen](./media/enable-managed-identities-lab-vms/add-identity-button.png)
-5. Selecteer een bestaande door de **gebruiker beheerde identiteit** in de vervolg keuzelijst en selecteer **OK**. 
+    > [!div class="mx-imgBorder"]
+    > ![Knop identiteit toevoegen](./media/enable-managed-identities-lab-vms/add-identity-button.png)
+1. Selecteer een bestaande door de **gebruiker beheerde identiteit** in de vervolg keuzelijst en selecteer **OK**. 
 
-    ![Identiteit toevoegen](./media/enable-managed-identities-lab-vms/add-identity.png)
+    > [!div class="mx-imgBorder"]
+    > ![Identiteit toevoegen](./media/enable-managed-identities-lab-vms/add-identity.png)
 
 ## <a name="use-api"></a>API gebruiken
 

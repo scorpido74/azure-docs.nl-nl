@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/18/2020
-ms.openlocfilehash: be12393591d534b4141594439f0409d0db331bd0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 08/21/2020
+ms.openlocfilehash: 135993a39a3b06bdabfff4a219df92d41c736a51
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522671"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718251"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Gegevens kopiëren vanuit of naar Azure File Storage met behulp van Azure Data Factory
 
@@ -33,7 +33,12 @@ Deze Azure File Storage-connector wordt ondersteund voor de volgende activiteite
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)
 - [Activiteit verwijderen](delete-activity.md)
 
-Met name deze Azure File Storage-connector ondersteunt het kopiëren van bestanden als is of het parseren/genereren van bestanden met de [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs.md).
+U kunt gegevens van Azure-File Storage kopiëren naar elk ondersteund Sink-gegevens archief of gegevens uit een ondersteund bron gegevens archief kopiëren naar Azure File Storage. Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
+
+Deze Azure File Storage-connector ondersteunt met name:
+
+- Kopiëren van bestanden met behulp van account sleutel of SAS-verificatie (Shared Access Signature).
+- Kopiëren van bestanden als-is of parseren/genereren van bestanden met de [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -43,7 +48,139 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 ## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor de gekoppelde Azure File Storage-service:
+Deze Azure File Storage-connector ondersteunt de volgende verificatie typen. Raadpleeg de bijbehorende gedeelten voor meer informatie.
+
+- [Verificatie van account sleutel](#account-key-authentication)
+- [Verificatie van de Shared Access-hand tekening](#shared-access-signature-authentication)
+
+>[!NOTE]
+> Als u Azure File Storage gekoppelde service met een [verouderd model](#legacy-model)gebruikt, waarbij de gebruikers interface van ADF die wordt weer gegeven als basis verificatie, nog steeds wordt ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe model te gebruiken. Het verouderde model brengt gegevens over van/naar opslag via SMB (Server Message Block), terwijl het nieuwe model gebruikmaakt van de opslag-SDK met een betere door voer. Als u een upgrade wilt uitvoeren, kunt u de gekoppelde service bewerken om de verificatie methode te wijzigen in ' account sleutel ' of ' SAS-URI '; Er is geen wijziging nodig voor de gegevensset-of kopieer activiteit.
+
+### <a name="account-key-authentication"></a>Verificatie van account sleutel
+
+Data Factory ondersteunt de volgende eigenschappen voor de sleutel verificatie van de Azure File Storage-account:
+
+| Eigenschap | Beschrijving | Vereist |
+|:--- |:--- |:--- |
+| type | De eigenschap type moet worden ingesteld op: **AzureFileStorage**. | Ja |
+| Verbindings | Geef de gegevens op die nodig zijn om verbinding te maken met Azure File Storage. <br/> U kunt ook de account sleutel in Azure Key Vault plaatsen en de `accountKey` configuratie uit de Connection String halen. Zie voor meer informatie de volgende voor beelden en de [referenties van de winkel in azure Key Vault](store-credentials-in-key-vault.md) artikel. |Ja |
+| Bestands share | Geef de bestands share op. | Ja |
+| momentopname | Geef de datum van de [moment opname van de bestands share](../storage/files/storage-snapshots-files.md) op als u wilt kopiëren uit een moment opname. | Nee |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+
+**Voorbeeld:**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.windows.net;",
+            "fileShare": "<file share name>"
+        },
+        "connectVia": {
+          "referenceName": "<name of Integration Runtime>",
+          "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Voor beeld: Sla de account sleutel op in Azure Key Vault**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
+            "fileShare": "<file share name>",
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }            
+    }
+}
+```
+
+### <a name="shared-access-signature-authentication"></a>Verificatie van de Shared Access-hand tekening
+
+Een Shared Access Signature biedt gedelegeerde toegang tot resources in uw opslag account. U kunt een gedeelde hand tekening voor toegang gebruiken om een opgegeven periode een client met beperkte machtigingen te verlenen aan objecten in uw opslag account. Zie voor meer informatie over hand tekeningen voor gedeelde toegang, [Shared Access Signatures: inzicht in het model voor de Shared Access-hand tekening](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+
+Data Factory ondersteunt de volgende eigenschappen voor het gebruik van verificatie met een gedeelde toegangs handtekening:
+
+| Eigenschap | Beschrijving | Vereist |
+|:--- |:--- |:--- |
+| type | De eigenschap type moet worden ingesteld op: **AzureFileStorage**. | Ja |
+| sasUri | Geef de URI van de Shared Access-hand tekening op voor de resources. <br/>Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory. U kunt ook de SAS-token in Azure Key Vault plaatsen om automatische rotatie te gebruiken en het token gedeelte te verwijderen. Voor meer informatie raadpleegt u de volgende voor beelden en [slaat u referenties op in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| Bestands share | Geef de bestands share op. | Ja |
+| momentopname | Geef de datum van de [moment opname van de bestands share](../storage/files/storage-snapshots-files.md) op als u wilt kopiëren uit een moment opname. | Nee |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+
+**Voorbeeld:**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "sasUri": {
+                "type": "SecureString",
+                "value": "<SAS URI of the resource e.g. https://<accountname>.file.core.windows.net/?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>"
+            },
+            "fileShare": "<file share name>",
+            "snapshot": "<snapshot version>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Voor beeld: Sla de account sleutel op in Azure Key Vault**
+
+```json
+{
+    "name": "AzureFileStorageLinkedService",
+    "properties": {
+        "type": "AzureFileStorage",
+        "typeProperties": {
+            "sasUri": {
+                "type": "SecureString",
+                "value": "<SAS URI of the Azure Storage resource without token e.g. https://<accountname>.file.core.windows.net/>"
+            },
+            "sasToken": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="legacy-model"></a>Verouderd model
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
@@ -52,13 +189,6 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde Azure File Stora
 | userid | Geef de gebruiker op om toegang te krijgen tot de Azure-File Storage als: <br/>-Gebruikers interface gebruiken: opgeven `AZURE\<storage name>`<br/>-JSON gebruiken: `"userid": "AZURE\\<storage name>"` . | Ja |
 | wachtwoord | Geef de toegangs sleutel voor opslag op. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee voor bron, ja voor Sink |
-
->[!IMPORTANT]
-> - Als u gegevens wilt kopiëren naar Azure File Storage met behulp van Azure Integration Runtime, maakt u expliciet [een Azure IR](create-azure-integration-runtime.md#create-azure-ir) met de locatie van uw file storage en koppelt u deze aan de gekoppelde service als het volgende voor beeld.
-> - Als u gegevens wilt kopiëren van/naar Azure File Storage via zelf-hostende Integration Runtime buiten Azure, moet u de uitgaande TCP-poort 445 in het lokale netwerk openen.
-
->[!TIP]
->Wanneer u de ADF-gebruikers interface voor het ontwerpen wilt gebruiken, kunt u de specifieke vermelding ' Azure File Storage ' vinden voor het maken van gekoppelde services, die onder type object wordt gegenereerd `FileServer` .
 
 **Voorbeeld:**
 
@@ -138,9 +268,10 @@ De volgende eigenschappen worden ondersteund voor Azure-File Storage onder `stor
 | type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **FileServerReadSettings**. | Ja                                           |
 | ***Zoek de bestanden die moeten worden gekopieerd:*** |  |  |
 | OPTIE 1: statisch pad<br> | Kopiëren uit de opgegeven map of het opgegeven bestandspad in de gegevensset. Als u alle bestanden uit een map wilt kopiëren, moet u ook opgeven `wildcardFileName` als `*` . |  |
-| OPTIE 2: Joker teken<br>- wildcardFolderPath | Het mappad met Joker tekens om de bron mappen te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat. <br>Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Nee                                            |
-| OPTIE 2: Joker teken<br>- wildcardFileName | De naam van het bestand met Joker tekens onder de opgegeven folderPath/wildcardFolderPath voor het filteren van bron bestanden. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat.  Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Ja |
-| OPTIE 3: een lijst met bestanden<br>- fileListPath | Hiermee wordt aangegeven dat een opgegeven bestandenset moet worden gekopieerd. Wijs naar een tekst bestand met een lijst met bestanden die u wilt kopiëren, één bestand per regel, het relatieve pad naar het pad dat is geconfigureerd in de gegevensset.<br/>Wanneer u deze optie gebruikt, geeft u geen bestands naam op in DataSet. Meer voor beelden vindt u in [voor beelden van bestands lijsten](#file-list-examples). |Nee |
+| OPTIE 2: voor voegsel van bestand<br>-voor voegsel | Voor voegsel voor de bestands naam onder de opgegeven bestands share die is geconfigureerd in een gegevensset om bron bestanden te filteren. Bestanden waarvan de naam begint met `fileshare_in_linked_service/this_prefix` zijn geselecteerd. Er wordt gebruikgemaakt van het filter aan de service zijde voor Azure File Storage, dat betere prestaties biedt dan een filter voor joker tekens. Deze functie wordt niet ondersteund bij het gebruik van een [verouderd gekoppeld service model](#legacy-model). | Nee                                                          |
+| OPTIE 3: Joker teken<br>- wildcardFolderPath | Het mappad met Joker tekens om de bron mappen te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat. <br>Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Nee                                            |
+| OPTIE 3: Joker teken<br>- wildcardFileName | De naam van het bestand met Joker tekens onder de opgegeven folderPath/wildcardFolderPath voor het filteren van bron bestanden. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat.  Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Ja |
+| OPTIE 4: een lijst met bestanden<br>- fileListPath | Hiermee wordt aangegeven dat een opgegeven bestandenset moet worden gekopieerd. Wijs naar een tekst bestand met een lijst met bestanden die u wilt kopiëren, één bestand per regel, het relatieve pad naar het pad dat is geconfigureerd in de gegevensset.<br/>Wanneer u deze optie gebruikt, geeft u geen bestands naam op in DataSet. Meer voor beelden vindt u in [voor beelden van bestands lijsten](#file-list-examples). |Nee |
 | ***Aanvullende instellingen:*** |  | |
 | recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Houd er rekening mee dat wanneer recursief is ingesteld op True en de Sink een archief op basis van bestanden is, een lege map of submap niet wordt gekopieerd of gemaakt bij de sink. <br>Toegestane waarden zijn **True** (standaard) en **Onwaar**.<br>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . |Nee |
 | deleteFilesAfterCompletion | Hiermee wordt aangegeven of de binaire bestanden uit het bron archief worden verwijderd nadat naar het doel archief is verplaatst. Het verwijderen van bestanden is per bestand, dus wanneer de Kopieer activiteit mislukt, ziet u dat er al een aantal bestanden naar het doel is gekopieerd en verwijderd uit de bron, terwijl andere nog steeds in het bron archief blijven staan. <br/>Deze eigenschap is alleen geldig in een scenario met binaire kopieën, waarbij gegevens bron archieven blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, file, Azure file, SFTP of FTP zijn. De standaard waarde is False. |Nee |

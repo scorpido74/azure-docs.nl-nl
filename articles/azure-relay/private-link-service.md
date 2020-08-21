@@ -3,12 +3,12 @@ title: Azure Relay integreren met Azure Private Link service
 description: Meer informatie over het integreren van Azure Relay met Azure Private Link service
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317314"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719424"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integreren met een persoonlijke Azure-koppeling (preview-versie)
 Met Azure **Private Link service** kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Relay, Azure service bus, Azure Event Hubs, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk. Zie [Wat is Azure private link (preview)?](../private-link/private-link-overview.md) voor meer informatie.
@@ -39,7 +39,7 @@ Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 ### <a name="steps"></a>Stappen
 Zie [een Azure relay naam ruimte maken met behulp van de Azure Portal](relay-create-namespace-portal.md)voor stapsgewijze instructies voor het maken van een nieuwe Azure relay naam ruimte en entiteiten hierin.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **relays**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.
@@ -65,7 +65,7 @@ Zie [een Azure relay naam ruimte maken met behulp van de Azure Portal](relay-cre
         
             ![Privé-eind punt maken-resource pagina](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Als u **verbinding maken met een Azure-resource selecteert op resource-id of alias** , omdat de naam ruimte zich niet in dezelfde map bevindt als die van het persoonlijke eind punt, volgt u deze stappen:
-        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Azure Relay naam ruimte in de Azure Portal en het gedeelte van de URI te kopiëren vanaf `/subscriptions/` . Hier volgt een voor beeld:`/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
+        1. Voer de **resource-id** of **alias**in. Dit kan de resource-ID of alias zijn die iemand met u heeft gedeeld. De eenvoudigste manier om de resource-ID op te halen, is door te navigeren naar de Azure Relay naam ruimte in de Azure Portal en het gedeelte van de URI te kopiëren vanaf `/subscriptions/` . Hier volgt een voor beeld: `/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
         2. Voer een **naam ruimte**in voor de **subresource**van het doel. Het is het type van de subbron waartoe uw persoonlijke eind punt toegang heeft.
         3. Beschrijving Voer een **aanvraag bericht**in. De resource-eigenaar ziet dit bericht tijdens het beheer van de verbinding met een privé-eind punt.
         4. Selecteer vervolgens **volgende: configuratie >** knop onder aan de pagina.
@@ -167,7 +167,7 @@ Er zijn vier inrichtingsstatussen:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren, afwijzen of verwijderen
 
-1. Meld u aan bij Azure Portal.
+1. Meld u aan bij de Azure-portal.
 1. Typ in de zoek balk in **Relay**.
 1. Selecteer de **naam ruimte** die u wilt beheren.
 1. Selecteer het tabblad **netwerken** .
@@ -179,7 +179,7 @@ Er zijn vier inrichtingsstatussen:
 2. Selecteer het **privé-eind punt** dat u wilt goed keuren
 3. Selecteer de knop **goed keuren** .
 
-    ![Persoonlijk eind punt goed keuren](./media/private-link-service/private-endpoint-approve.png)
+    ![Keur het privé-eindpunt goed](./media/private-link-service/private-endpoint-approve.png)
 4. Voer op de pagina **verbinding goed keuren** een optionele **Opmerking**in en selecteer **Ja**. Als u **Nee**selecteert, gebeurt er niets. 
 
     ![Verbindings pagina goed keuren](./media/private-link-service/approve-connection-page.png)
@@ -207,7 +207,7 @@ Er zijn vier inrichtingsstatussen:
 3. U ziet dat de status is gewijzigd in **verbroken**. Vervolgens ziet u dat het eind punt verdwijnt uit de lijst. 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de Private Link werkt
-U moet controleren of bronnen binnen hetzelfde subnet van het persoonlijke eind punt verbinding maken met uw Azure Relay naam ruimte via het bijbehorende privé-IP-adres.
+U moet controleren of de resources binnen het virtuele netwerk van het persoonlijke eind punt verbinding maken met uw Azure Relay naam ruimte via het bijbehorende privé-IP-adres.
 
 Voor deze test maakt u een virtuele machine door de stappen te volgen in de [virtuele Windows-machine maken in de Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 

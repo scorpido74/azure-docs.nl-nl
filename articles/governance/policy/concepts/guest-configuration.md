@@ -3,12 +3,12 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21034aaae42aa4abfa6848ce22db5fa4c21a11ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685762"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717573"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
@@ -70,7 +70,7 @@ In de volgende tabel ziet u een lijst met ondersteunde besturings systemen in az
 |Microsoft-peering|Windows-client|Windows 10|
 |OpenLogic|CentOS|7,3 en hoger|
 |Red Hat|Red Hat Enterprise Linux|7,4-7,8|
-|SuSE|SLES|12 SP3 en hoger|
+|SuSE|SLES|12 SP3-SP5|
 
 Aangepaste installatie kopieën van virtuele machines worden ondersteund door gast configuratie beleidsregels, zolang ze een van de besturings systemen in de bovenstaande tabel zijn.
 
@@ -95,6 +95,11 @@ Verkeer wordt gerouteerd met behulp van het [virtuele openbaar IP-adres](../../.
 Knoop punten die zich buiten Azure bevinden en die zijn verbonden met Azure Arc, vereisen connectiviteit met de gast configuratie service. Details over netwerk-en proxy vereisten in de [documentatie van Azure Arc](../../../azure-arc/servers/overview.md).
 
 Voor de communicatie met de provider van de gast configuratie resource in azure, hebben computers uitgaande toegang tot Azure-data centers op poort **443**. Als een netwerk in azure geen uitgaand verkeer toestaat, moet u uitzonde ringen configureren met de regels voor de [netwerk beveiligings groep](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . De [servicetag ' GuestAndHybridManagement ' kan](../../../virtual-network/service-tags-overview.md) worden gebruikt om te verwijzen naar de gast configuratie service.
+
+Voor Arc connected servers in private data centers, verkeer toestaan met de volgende patronen:
+
+- Poort: alleen TCP 443 vereist voor uitgaande internet toegang
+- Globale URL: `*.guestconfiguration.azure.com`
 
 ## <a name="managed-identity-requirements"></a>Vereisten voor beheerde identiteit
 
@@ -139,9 +144,12 @@ Als u het beleid toewijst met behulp van een Azure Resource Manager sjabloon (AR
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Configuraties Toep assen met behulp van gast configuratie
 
-Met de nieuwste functie van Azure Policy configureert u instellingen binnen machines. De definitie _configureren van de tijd zone op Windows-machines_ brengt wijzigingen aan op de machine door de tijd zone te configureren.
+Alleen de definitie _configureren van de tijd zone op Windows-machines_ wijzigt de machine door de tijd zone te configureren. Aangepaste beleids definities voor het configureren van instellingen binnen machines worden niet ondersteund.
 
 Bij het toewijzen van definities die beginnen met _configureren_, moet u ook de _vereisten voor definitie-implementatie toewijzen om gast configuratie beleid in te scha kelen op Windows-vm's_. U kunt deze definities in een initiatief combi neren, indien gewenst.
+
+> [!NOTE]
+> Het ingebouwde tijd zone beleid is de enige definitie die het configureren van instellingen binnen machines en aangepaste beleids regels ondersteunt, waardoor het configureren van instellingen binnen machines niet wordt ondersteund.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Beleids regels toewijzen aan computers buiten Azure
 

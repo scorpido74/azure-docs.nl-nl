@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 42faf4ba0a596fc5b2b34f403a5117e5ceea82ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903337"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718812"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Back-ups van uw formulieren Recognizer-modellen maken en herstellen
 
@@ -39,6 +39,9 @@ Het proces voor het kopiëren van een aangepast model bestaat uit de volgende st
 1. Eerst geeft u een Kopieer autorisatie aanvraag naar de doel bron &mdash; , de resource die het gekopieerde model zal ontvangen. U krijgt een back-up van de URL van het zojuist gemaakte doel model, waarin de gekopieerde gegevens worden ontvangen.
 1. Vervolgens verzendt u de Kopieer aanvraag naar de bron bron van &mdash; de resource die het model bevat dat moet worden gekopieerd. U krijgt een URL terug waarmee u een query kunt uitvoeren om de voortgang van de bewerking bij te houden.
 1. U gebruikt de referenties van uw bron bron voor het uitvoeren van een query op de voortgangs-URL totdat de bewerking is voltooid. U kunt ook een query uitvoeren op de nieuwe model-ID in de doel bron om de status van het nieuwe model op te halen.
+
+> [!CAUTION]
+> De copy API biedt momenteel geen ondersteuning voor model-Id's voor [bestaande aangepaste modellen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose). Model opstellen is een preview-functie in v 2.1-Preview. 1 Preview. 
 
 ## <a name="generate-copy-authorization-request"></a>Kopieer autorisatie aanvraag genereren
 
@@ -90,7 +93,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 |Fout|Oplossing|
 |:--|:--|
-| 400/ongeldige aanvraag met`"code:" "1002"` | Geeft een validatie fout of een onjuist gevormde Kopieer aanvraag aan. Veelvoorkomende problemen zijn onder andere: a) ongeldige of gewijzigde `copyAuthorization` nettolading. b) verlopen waarde voor `expirationDateTimeTicks` token ( `copyAuhtorization` Payload is 24 uur geldig). c) ongeldig of wordt niet ondersteund `targetResourceRegion` . d) ongeldige of verkeerd ingedeelde `targetResourceId` teken reeks.
+| 400/ongeldige aanvraag met `"code:" "1002"` | Geeft een validatie fout of een onjuist gevormde Kopieer aanvraag aan. Veelvoorkomende problemen zijn onder andere: a) ongeldige of gewijzigde `copyAuthorization` nettolading. b) verlopen waarde voor `expirationDateTimeTicks` token ( `copyAuhtorization` Payload is 24 uur geldig). c) ongeldig of wordt niet ondersteund `targetResourceRegion` . d) ongeldige of verkeerd ingedeelde `targetResourceId` teken reeks.
 |
 
 ## <a name="track-copy-progress"></a>Voortgang van kopiëren bijhouden

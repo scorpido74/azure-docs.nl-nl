@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d949f4b10bc6b7b592556d78edfcf02a05ec7144
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 433cfa3789aa37f4145982da97719526c0abfc47
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565771"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719492"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Microsoft Azure Multi-Factor Authentication per gebruiker inschakelen om aanmeldingsgebeurtenissen te beveiligen
 
@@ -76,7 +76,7 @@ Voer de volgende stappen uit om de Azure-Multi-Factor Authentication status per 
 
 1. Bevestig uw selectie in het pop-upvenster dat wordt geopend.
 
-Nadat u gebruikers hebt ingeschakeld, stelt u deze via e-mail op de hoogte. Vertel de gebruikers dat een prompt wordt weer gegeven om te vragen de volgende keer dat ze zich aanmelden te registreren. Als uw organisatie niet-browser-apps gebruikt die geen ondersteuning bieden voor moderne verificatie, moeten ze ook app-wacht woorden maken. Raadpleeg voor meer informatie de [Azure multi-factor Authentication-eind gebruiker handleiding](../user-help/multi-factor-authentication-end-user.md) om hen te helpen aan de slag te gaan.
+Nadat u gebruikers hebt ingeschakeld, stelt u deze via e-mail op de hoogte. Vertel de gebruikers dat een prompt wordt weer gegeven om te vragen de volgende keer dat ze zich aanmelden te registreren. Als uw organisatie niet-browser-apps gebruikt die geen ondersteuning bieden voor moderne verificatie, moeten ze ook app-wacht woorden maken. Raadpleeg voor meer informatie de [Azure multi-factor Authentication-eind gebruiker handleiding](../user-help/multi-factor-authentication-end-user-first-time.md) om hen te helpen aan de slag te gaan.
 
 ## <a name="change-state-using-powershell"></a>Status wijzigen met behulp van Power shell
 

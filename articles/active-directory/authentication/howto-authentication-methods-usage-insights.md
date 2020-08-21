@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75c08f0a390e798435b70bbe2409ec4a9732214
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680191"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717163"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Gebruik van de verificatie methoden & Insights (preview-versie)
 
@@ -33,7 +33,7 @@ De volgende rollen hebben toegang tot het gebruik en inzichten:
 
 Er is geen aanvullende licentie vereist voor toegang tot gebruik en inzichten. De licentie gegevens voor Azure Multi-Factor Authentication en self-service voor het opnieuw instellen van wacht woorden (SSPR) zijn te vinden op de [Azure Active Directory-prijs site](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 Voor toegang tot het gebruik van de verificatie methode en inzichten:
 
@@ -65,7 +65,7 @@ Door te klikken op de gebruikers die zijn **geregistreerd**, **gebruikers ingesc
 
 In het rapport registratie Details wordt de volgende informatie weer gegeven voor elke gebruiker:
 
-- Name
+- Naam
 - Gebruikersnaam
 - Registratie status (alle, geregistreerd, niet geregistreerd)
 - Ingeschakelde status (alle, ingeschakeld, niet ingeschakeld)
@@ -80,7 +80,7 @@ Als u op de registraties klikt of opnieuw instelt, worden de gegevens opnieuw in
 
 Het rapport opnieuw instellen Details toont de registratie-en reset gebeurtenissen van de afgelopen 30 dagen, inclusief:
 
-- Name
+- Naam
 - Gebruikersnaam
 - Functie (alle, registratie, opnieuw instellen)
 - Verificatie methode (app-melding, app-code, telefoon gesprek, Office-oproep, SMS, E-mail, beveiligings vragen)
@@ -98,6 +98,6 @@ Het rapport kan momenteel niet worden gefilterd om externe gebruikers uit te slu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Werken met de verificatie methoden gebruiks rapport-API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Werken met de verificatie methoden gebruiks rapport-API](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [Verificatie methoden kiezen voor uw organisatie](concept-authentication-methods.md)
 - [Gecombineerde registratie-ervaring](concept-registration-mfa-sspr-combined.md)

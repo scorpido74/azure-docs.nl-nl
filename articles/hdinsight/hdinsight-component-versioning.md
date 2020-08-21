@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/28/2020
-ms.openlocfilehash: 7a6a672cef42eb15cbd8f2f254207e0a9d96ee33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/13/2020
+ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736200"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717248"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Apache-onderdelen en-versies die beschikbaar zijn voor Azure HDInsight
 
@@ -43,9 +43,9 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies, w
 | Apache Storm           | -             | 1.1.0                       |
 | Apache mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.4.4         | 2.3.2, 2.2.0, 2.1.0         |
-| Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 2.1.1         | 1.1                        |
+| Apache Spark           | 2.4.4         | verschijnsel.                      |
+| Apache Livy            | 0,5           | 0,4.                        |
+| Apache Kafka           | 2.1.1         | 1.1                         |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
@@ -78,9 +78,22 @@ Deze tabel geeft een lijst van de versies van HDInsight die beschikbaar zijn in 
 | HDInsight-versie | VM-besturingssysteem | Releasedatum | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid in de Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |September 24, 2018 | | |Ja |Ja |
-| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 april 2017 | 31 december 2020 |31 december 2020 |Ja |Ja |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 april 2017      | * 31 juni 2021 |31 juni 2021 |Ja |Ja |
 
-De ondersteuning voor Spark 2,1, 2,2 en Kafka 1,0-clusters verloopt op 30 juni 2020.
+* We verlengen de ondersteunings periode voor bepaalde cluster typen van HDInsight 3,6
+
+| Clustertype                    | Framework-versie | Huidige ondersteunings termijn        | Nieuwe verval datum van ondersteuning |
+|---------------------------------|-------------------|-----------------------------------|-----------------------------|
+| HDInsight 3,6 Hadoop            | 2.7.3             | 31 december 2020                      | 30 juni 2021               |
+| HDInsight 3,6 Spark             | 2.3               | 31 december 2020                      | 30 juni 2021               |
+| HDInsight 3,6 Spark             | 2.2               | Ingetrokken op 30 juni 2020          |                             |
+| HDInsight 3,6 Spark             | 2.1               | Ingetrokken op 30 juni 2020          |                             |
+| HDInsight 3,6 Kafka             | 1.1               | 31 december 2020                      | 30 juni 2021               |
+| HDInsight 3,6 Kafka             | 1.0               | Ingetrokken op 30 juni 2020.         |                             |
+| HDInsight 3,6 HBase             | 1.1               | 31 december 2020                      | 30 juni 2021               |
+| HDInsight 3,6 Interactive-query | 2.1               | 31 december 2020                      | 30 juni 2021               |
+| HDInsight 3,6 Storm             | 1.1               | 31 december 2020                      | 30 juni 2021               |
+| HDInsight 3,6 ML-Services      | 9.3               | 31 december 2020                      | 31 december 2020                |
 
 > [!NOTE]
 > Nadat de ondersteuning voor een cluster versie is verlopen, is deze mogelijk niet meer beschikbaar via de Azure Portal. In sommige gevallen blijven cluster versies beschikbaar met behulp van de para meter **Version** in de Windows Power shell [New-AzHDInsightCluster-](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) opdracht en de .NET SDK tot de datum waarop de versie is uitgevallen.
@@ -91,14 +104,14 @@ Deze tabel geeft een lijst van de versies van HDInsight die niet beschikbaar zij
 
 | HDInsight-versie | HDP-versie | VM-besturingssysteem | Releasedatum | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid in de Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 september 2016 |5 september 2017 |28 juni 2018 |Yes |No |
-| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 maart 2016 |29 december 2016 |9 januari 2018 |Yes |No |
-| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 december 2015 |27 juni 2016 |31 juli 2018 |Yes |No |
-| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 december 2015 |27 juni 2016 |31 juli 2017 |Yes |No |
-| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS of Windows Server 2012 R2 |18 februari 2015 |1 maart 2016 |1 april 2017 |Yes |No |
-| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 juni 2014 |18 mei 2015 |30 juni 2016 |Yes |No |
-| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 februari 2014 |17 september 2014 |30 juni 2015 |Yes |No |
-| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 oktober 2013 |12 mei 2014 |31 mei 2015 |Yes |No |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 september 2016 |5 september 2017 |28 juni 2018 |Ja |Nee |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 maart 2016 |29 december 2016 |9 januari 2018 |Ja |Nee |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 december 2015 |27 juni 2016 |31 juli 2018 |Ja |Nee |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 december 2015 |27 juni 2016 |31 juli 2017 |Ja |Nee |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS of Windows Server 2012 R2 |18 februari 2015 |1 maart 2016 |1 april 2017 |Ja |Nee |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 juni 2014 |18 mei 2015 |30 juni 2016 |Ja |Nee |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 februari 2014 |17 september 2014 |30 juni 2015 |Ja |Nee |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 oktober 2013 |12 mei 2014 |31 mei 2015 |Ja |Nee |
 | HDInsight 1,6 |HDP 1,1 | |28 oktober 2013 |26 april 2014 |31 mei 2015 |Nee |Nee |
 
 > [!NOTE]

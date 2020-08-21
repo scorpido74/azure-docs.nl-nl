@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: dedf1174e00f5bb75822fb720a592af86121ec2d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: baed9ef099ed818fa0967c7a3e7ab61fb4921f75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691425"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719305"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Wijzigings feed in Azure Blob Storage verwerken (preview-versie)
 
@@ -22,15 +22,16 @@ Change feed biedt transactie logboeken van alle wijzigingen die plaatsvinden in 
 Zie [Change feed in Azure Blob Storage (preview)](storage-blob-change-feed.md)voor meer informatie over de feed voor wijzigingen.
 
 > [!NOTE]
-> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in de regio's **westcentralus** en **westus2** . Zie [ondersteuning voor feeds wijzigen in Azure Blob Storage](storage-blob-change-feed.md)voor meer informatie over deze functie, samen met bekende problemen en beperkingen. De processor bibliotheek van de wijzigings feed kan nu worden gewijzigd en wanneer deze bibliotheek algemeen beschikbaar wordt.
+> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in een beperkt aantal regio's. Zie [ondersteuning voor feeds wijzigen in Azure Blob Storage](storage-blob-change-feed.md)voor meer informatie over deze functie, samen met bekende problemen en beperkingen. De processor bibliotheek van de wijzigings feed kan nu worden gewijzigd en wanneer deze bibliotheek algemeen beschikbaar wordt.
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>De processor bibliotheek voor het wijzigen van de BLOB-feed ophalen
 
 1. Open een opdracht venster (bijvoorbeeld: Windows Power shell).
-2. Installeer in de projectmap het **Azure. storage. blobs. Changefeed** NuGet-pakket.
+2. Installeer in de projectmap het [ **Azure. storage. blobs. Changefeed** NuGet-pakket](https://www.nuget.org/packages/Azure.Storage.Blobs.ChangeFeed/).
 
 ```console
-dotnet add package Azure.Storage.Blobs.ChangeFeed --source https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json --version 12.0.0-dev.20200604.2
+dotnet add package Azure.Storage.Blobs --version 12.5.1
+dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
 ## <a name="read-records"></a>Records lezen
 
@@ -117,7 +118,7 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
 ## <a name="stream-processing-of-records"></a>Stroom verwerking van records
 
-U kunt ervoor kiezen om wijzigingen in de feed-records te verwerken wanneer ze binnenkomen. Zie [specificaties](storage-blob-change-feed.md#specifications). We raden u aan om elk uur te controleren of er wijzigingen zijn.
+U kunt ervoor kiezen om wijzigingen in de feed te verwerken wanneer ze worden toegewezen aan de wijzigings feed. Zie [specificaties](storage-blob-change-feed.md#specifications). De wijzigings gebeurtenissen worden gemiddeld met een periode van 60 seconden gepubliceerd in de wijzigings feed. U wordt aangeraden te controleren of er nieuwe wijzigingen zijn met deze periode wanneer u uw polling-interval opgeeft.
 
 In dit voor beeld wordt periodiek gecontroleerd op wijzigingen.  Als er wijzigings records bestaan, worden deze door de code verwerkt en wordt de cursor voor wijzigings invoer opgeslagen. Op die manier als het proces wordt gestopt en vervolgens weer wordt gestart, kan de toepassing de cursor gebruiken om de verwerking van records te hervatten waar deze voor het laatst was uitgeschakeld. In dit voor beeld wordt de cursor opgeslagen in een configuratie bestand van een lokale toepassing, maar de toepassing kan deze opslaan in een wille keurige vorm die het handigst is voor uw scenario. 
 
@@ -181,7 +182,7 @@ public void SaveCursor(string cursor)
 
 ## <a name="reading-records-within-a-time-range"></a>Records in een tijds bereik lezen
 
-U kunt records lezen die binnen een bepaald tijds bereik vallen. In dit voor beeld worden alle records in de wijzigings feed door lopen van 3:00 uur op 2 2017 en 2:00 uur op 7 2019 oktober, worden deze toegevoegd aan een lijst en wordt die lijst vervolgens geretourneerd naar de aanroeper.
+U kunt records lezen die binnen een bepaald tijds bereik vallen. In dit voor beeld worden alle records in de wijzigings feed door lopen van 3:00 uur op 2 2020 en 2:00 uur op 7 2020 augustus, worden deze toegevoegd aan een lijst en wordt die lijst vervolgens geretourneerd naar de aanroeper.
 
 ### <a name="selecting-segments-for-a-time-range"></a>Segmenten selecteren voor een tijds bereik
 
@@ -198,8 +199,8 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
     // Create the start and end time.  The change feed client will round start time down to
     // the nearest hour, and round endTime up to the next hour if you provide DateTimeOffsets
     // with minutes and seconds.
-    DateTimeOffset startTime = new DateTimeOffset(2017, 3, 2, 15, 0, 0, TimeSpan.Zero);
-    DateTimeOffset endTime = new DateTimeOffset(2020, 10, 7, 2, 0, 0, TimeSpan.Zero);
+    DateTimeOffset startTime = new DateTimeOffset(2020, 3, 2, 15, 0, 0, TimeSpan.Zero);
+    DateTimeOffset endTime = new DateTimeOffset(2020, 8, 7, 2, 0, 0, TimeSpan.Zero);
 
     // You can also provide just a start or end time.
     await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync(

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc4bd817fda762e62e791542aea2df65deb0dae3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 763c02cca954f7bcd3f9763bfe45f3954dacf0a7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054048"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719441"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Aan de slag met de Azure Multi-Factor Authentication-server
 
@@ -209,7 +209,7 @@ De nieuwe server is nu actief en wordt uitgevoerd met de oorspronkelijke configu
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Beheer van de TLS/SSL-protocollen en coderingssuites
 
-Nadat u een upgrade naar MFA Server versie 8.x of hoger hebt uitgevoerd of deze hebt geïnstalleerd, is het raadzaam oudere en zwakkere coderingssuites uit te schakelen of te verwijderen, tenzij uw organisatie ze nodig heeft. Informatie over het uitvoeren van deze taak vindt u in het artikel [​​SSL/TLS-protocollen en coderingssuites beheren voor AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)
+Nadat u een upgrade naar MFA Server versie 8.x of hoger hebt uitgevoerd of deze hebt geïnstalleerd, is het raadzaam oudere en zwakkere coderingssuites uit te schakelen of te verwijderen, tenzij uw organisatie ze nodig heeft. Informatie over het uitvoeren van deze taak vindt u in het artikel [​​SSL/TLS-protocollen en coderingssuites beheren voor AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)
 
 ## <a name="next-steps"></a>Volgende stappen
 

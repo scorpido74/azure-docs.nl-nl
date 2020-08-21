@@ -3,12 +3,12 @@ title: Azure Event Hubs integreren met de persoonlijke koppelings service van Az
 description: Meer informatie over het integreren van Azure Event Hubs met de persoonlijke koppelings service van Azure
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185465"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716788"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Toegang tot Azure Event Hubs-naam ruimten toestaan via persoonlijke eind punten 
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
@@ -50,7 +50,7 @@ Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 ### <a name="steps"></a>Stappen
 Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particuliere verbinding maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Microsoft Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer **netwerken** onder **instellingen** in het menu links.
@@ -211,7 +211,7 @@ Er zijn vier inrichtingsstatussen:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren, afwijzen of verwijderen
 
-1. Meld u aan bij Azure Portal.
+1. Meld u aan bij de Azure-portal.
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** die u wilt beheren.
 4. Selecteer het tabblad **netwerken** .
@@ -222,7 +222,7 @@ Er zijn vier inrichtingsstatussen:
 2. Selecteer het **privé-eind punt** dat u wilt goed keuren
 3. Selecteer de knop **goed keuren** .
 
-    ![Installatiekopie](./media/private-link-service/approve-private-endpoint.png)
+    ![Keur het privé-eindpunt goed](./media/private-link-service/approve-private-endpoint.png)
 4. Voeg op de pagina **verbinding goed keuren** een opmerking toe (optioneel) en selecteer **Ja**. Als u **Nee**selecteert, gebeurt er niets. 
 5. Als het goed is, ziet u de status van de verbinding met een privé-eind punt in de lijst gewijzigd in **goedgekeurd**. 
 
@@ -230,7 +230,7 @@ Er zijn vier inrichtingsstatussen:
 
 1. Als er particuliere endpoint-verbindingen zijn die u wilt weigeren, ongeacht of het een aanvraag in behandeling of een bestaande verbinding is, selecteert u de verbinding en klikt u op de knop **afwijzen** .
 
-    ![Installatiekopie](./media/private-link-service/private-endpoint-reject-button.png)
+    ![Persoonlijk eind punt afwijzen](./media/private-link-service/private-endpoint-reject-button.png)
 2. Voer op de pagina **verbinding afwijzen** een opmerking in (optioneel) en selecteer **Ja**. Als u **Nee**selecteert, gebeurt er niets. 
 3. Als het goed is, ziet u de status van de verbinding met een privé-eind punt in de lijst gewijzigd in **afgewezen**. 
 
@@ -242,7 +242,7 @@ Er zijn vier inrichtingsstatussen:
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de Private Link werkt
 
-U moet controleren of de resources binnen hetzelfde subnet van de persoonlijke eindpunt resource verbinding maken met uw Event Hubs naam ruimte via een privé-IP-adres en dat ze de juiste integratie van de persoonlijke DNS-zone hebben.
+U moet valideren dat bronnen binnen het virtuele netwerk van het persoonlijke eind punt verbinding maken met uw Event Hubs naam ruimte via een privé-IP-adres en dat ze de juiste integratie van de persoonlijke DNS-zone hebben.
 
 Maak eerst een nieuwe virtuele machine door de instructies te volgen in [Een virtuele Windows-machine in de Azure Portal maken](../virtual-machines/windows/quick-create-portal.md)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: f31e238c705a4b03c400a38fa6eb5f42db7204b0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535022"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719339"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
 
@@ -71,7 +71,7 @@ In de volgende stappen ontwikkelt u een model om te voors pellen of een bepaalde
 
 Omdat de onbewerkte gegevens zich in een Parquet-indeling bevindt, kunt u de Spark-context gebruiken om het bestand rechtstreeks in het geheugen te halen als een data frame. Hoewel in de volgende code de standaard opties worden gebruikt, is het mogelijk om zo nodig de toewijzing van gegevens typen en andere schema kenmerken te forceren.
 
-1. Voer de volgende regels uit om een Spark-data frame te maken door de code in een nieuwe cel te plakken. Hiermee haalt u de gegevens op via de API open data sets. Als u al deze gegevens ophaalt, worden er meer dan 1.500.000.000 rijen gegenereerd. Afhankelijk van de grootte van uw Spark-groep (preview) kunnen de onbewerkte gegevens te groot zijn of te veel tijd in beslag nemen. U kunt deze gegevens naar een kleiner filter filteren. Het gebruik van start_date en end_date past een filter toe waarmee een maand aan gegevens wordt geretourneerd.
+1. Voer de volgende regels uit om een Spark-data frame te maken door de code in een nieuwe cel te plakken. Hiermee haalt u de gegevens op via de API open data sets. Als u al deze gegevens ophaalt, worden er meer dan 1.500.000.000 rijen gegenereerd. Afhankelijk van de grootte van uw Spark-groep (preview) kunnen de onbewerkte gegevens te groot zijn of te veel tijd in beslag nemen. U kunt deze gegevens naar een kleiner filter filteren. Het volgende code voorbeeld maakt gebruik van start_date en end_date om een filter toe te passen dat één maand aan gegevens retourneert.
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -126,7 +126,7 @@ ax1.set_ylabel('Counts')
 plt.suptitle('')
 plt.show()
 
-# How many passengers tip'd by various amounts
+# How many passengers tipped by various amounts
 ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
 ax2.set_title('Tip amount by Passenger count')
 ax2.set_xlabel('Passenger count')
@@ -157,7 +157,7 @@ In de code onder vier bewerkings categorieën worden de volgende bewerkingen uit
 - Het verwijderen van uitschieters/onjuiste waarden via filteren.
 - Het verwijderen van kolommen is niet nodig.
 - Het maken van nieuwe kolommen die zijn afgeleid van de onbewerkte gegevens om het model effectiever te maken, ook wel parametrisatie genoemd.
-- Labelen: als u een binaire classificatie hebt (er is een tip of niet op een bepaalde reis), moet u het fooie bedrag converteren naar een waarde van 0 of 1.
+- Labelen: omdat u een binaire classificatie hebt (er is een tip of niet op een bepaalde reis), moet u het fooie bedrag converteren naar een waarde van 0 of 1.
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -196,7 +196,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 De laatste taak is het converteren van de gelabelde gegevens in een indeling die door logistiek regressie kan worden geanalyseerd. De invoer van een algoritme voor logistiek regressie moet een set van *Vector paren voor label functies*zijn, waarbij de *functie Vector* een vector is van getallen die het invoer punt vertegenwoordigen. Daarom moeten de categorische-kolommen worden geconverteerd naar getallen. De `trafficTimeBins` `weekdayString` kolommen en moeten worden geconverteerd naar gehele getallen. Er zijn meerdere benaderingen voor het uitvoeren van de conversie, maar de benadering die in dit voor beeld wordt gegeven, is *OneHotEncoding*, een gemeen schappelijke aanpak.
 
 ```python
-# The sample uses an algorithm that only works with numeric features convert them so they can be consumed
+# Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
 sI1 = StringIndexer(inputCol="trafficTimeBins", outputCol="trafficTimeBinsIndex")
 en1 = OneHotEncoder(dropLast=False, inputCol="trafficTimeBinsIndex", outputCol="trafficTimeBinsVec")
 sI2 = StringIndexer(inputCol="weekdayString", outputCol="weekdayIndex")
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Nu er twee DataFrames zijn, bestaat de volgende taak uit het maken van de model formule en voert u deze uit met de training data frame en valideert u vervolgens op basis van de test data frame. Experimenteer met verschillende versies van de model formule om de impact van verschillende combi Naties te bekijken.
 
 > [!Note]
-> Als u het model wilt opslaan, hebt u de Azure-rol Storage BLOB data contributor nodig. Navigeer onder uw opslagaccount naar Access Control (IAM) en selecteer Roltoewijzing toevoegen. Wijs Azure-rol Storage BLOB data Inzender toe aan uw SQL Database-Server. Alleen leden met de bevoegdheid Eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [gids](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor verschillende ingebouwde Azure-rollen.
+> Als u het model wilt opslaan, hebt u de Azure-rol Storage BLOB data contributor nodig. Navigeer onder uw opslag account naar Access Control (IAM) en selecteer **roltoewijzing toevoegen**. Wijs Azure-rol Storage BLOB data Inzender toe aan uw SQL Database-Server. Alleen leden met de bevoegdheid Eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [gids](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor verschillende ingebouwde Azure-rollen.
 
 ```python
 ## Create a new LR object for the model
@@ -250,7 +250,7 @@ metrics = BinaryClassificationMetrics(predictionAndLabels)
 print("Area under ROC = %s" % metrics.areaUnderROC)
 ```
 
-De uitvoer van deze cel is
+De uitvoer van deze cel is:
 
 ```shell
 Area under ROC = 0.9779470729751403

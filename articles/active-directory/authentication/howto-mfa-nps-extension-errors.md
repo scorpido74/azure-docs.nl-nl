@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848667"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716721"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Resolve error messages from the NPS extension for Azure Multi-Factor Authentication (Foutberichten van de NPS-extensie voor Azure Multi-Factor Authentication oplossen)
 
@@ -30,8 +30,8 @@ Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentic
 | **CONTACT_SUPPORT** | [Neem contact op met de ondersteuning](#contact-microsoft-support)en vermeld de lijst met stappen voor het verzamelen van Logboeken. Geef zoveel informatie op als u wilt weten wat er is gebeurd vóór de fout, waaronder Tenant-ID en user principal name (UPN). |
 | **CLIENT_CERT_INSTALL_ERROR** | Er is mogelijk een probleem met de manier waarop het client certificaat is geïnstalleerd of gekoppeld aan uw Tenant. Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten. |
 | **ESTS_TOKEN_ERROR** | Volg de instructies in [Troubleshooting the MFA-extensie voor het](howto-mfa-nps-extension.md#troubleshooting) uitvoeren van problemen met client certificaten en ADAL-tokens. |
-| **HTTPS_COMMUNICATION_ERROR** | De NPS-server kan geen reacties ontvangen van Azure MFA. Controleer of de firewalls zijn geopend in twee richtingen voor verkeer naar en vanhttps://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | Op de server waarop de NPS-extensie wordt uitgevoerd, controleert u of u kunt bereiken `https://adnotifications.windowsazure.com` en `https://login.microsoftonline.com/` . Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
+| **HTTPS_COMMUNICATION_ERROR** | De NPS-server kan geen reacties ontvangen van Azure MFA. Controleer of de firewalls zijn geopend in twee richtingen voor verkeer naar en van https://adnotifications.windowsazure.com |
+| **HTTP_CONNECT_ERROR** | Op de server waarop de NPS-extensie wordt uitgevoerd, controleert u of u kunt bereiken  `https://adnotifications.windowsazure.com` en `https://login.microsoftonline.com/` . Als deze sites niet worden geladen, kunt u problemen met de connectiviteit op die server oplossen. |
 | **NPS-extensie voor Azure MFA:** <br> De NPS-extensie voor Azure MFA voert alleen secundaire verificatie voor RADIUS-aanvragen uit in de AccessAccept-status. Er is een aanvraag ontvangen voor de gebruikers naam van de gebruiker met de reactie status AccessReject, aanvraag wordt genegeerd. | Deze fout weerspiegelt meestal een verificatie fout in AD of de NPS-server kan geen reacties ontvangen van Azure AD. Controleer of de firewalls zijn geopend voor verkeer naar en van `https://adnotifications.windowsazure.com` en `https://login.microsoftonline.com` met behulp van de poorten 80 en 443. Het is ook belang rijk om te controleren of op het tabblad inbel netwerk toegangs machtigingen de instelling is ingesteld op toegang beheren via NPS-netwerk beleid. Deze fout kan ook worden geactiveerd als aan de gebruiker geen licentie is toegewezen. |
 | **REGISTRY_CONFIG_ERROR** | Er ontbreekt een sleutel in het REGI ster voor de toepassing. Dit kan zijn omdat het [Power shell-script](howto-mfa-nps-extension.md#install-the-nps-extension) niet is uitgevoerd na de installatie. Het fout bericht moet de ontbrekende sleutel bevatten. Zorg ervoor dat u de sleutel onder HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Er ontbreekt een verplicht userName\Identifier kenmerk van de RADIUS-aanvraag. Controleren of NPS RADIUS-aanvragen ontvangt | Deze fout weerspiegelt meestal een installatie probleem. De NPS-extensie moet worden geïnstalleerd in NPS-servers die RADIUS-aanvragen kunnen ontvangen. NPS-servers die zijn geïnstalleerd als afhankelijkheden voor services als RDG en RRAS ontvangen geen RADIUS-aanvragen. De NPS-extensie werkt niet wanneer deze wordt geïnstalleerd via dergelijke installaties en er zijn fouten opgetreden omdat de gegevens van de verificatie aanvraag niet kunnen worden gelezen. |
@@ -43,7 +43,7 @@ Als u problemen ondervindt met de NPS-extensie voor Azure Multi-Factor Authentic
 | Foutcode | Foutbericht | Stappen voor probleemoplossing |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Fout: userObjectSid-zoek actie is mislukt | Controleer of de gebruiker aanwezig is in uw on-premises Active Directory-exemplaar. Als u vertrouwens relaties tussen forests gebruikt, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor verdere hulp. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Fout: kan de alternatieve LoginId niet opzoeken | Controleer of LDAP_ALTERNATE_LOGINID_ATTRIBUTE is ingesteld op een [geldig Active Directory-kenmerk](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Als LDAP_FORCE_GLOBAL_CATALOG is ingesteld op True, of LDAP_LOOKUP_FORESTS is geconfigureerd met een niet-lege waarde, controleert u of u een globale catalogus hebt geconfigureerd en of het kenmerk AlternateLoginId is toegevoegd. <br><br> Als LDAP_LOOKUP_FORESTS is geconfigureerd met een niet-lege waarde, controleert u of de waarde juist is. Als er meer dan één Forestnaam is, moeten de namen worden gescheiden door punt komma's, geen spaties. <br><br> Als u het probleem niet kunt oplossen met deze stappen, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor meer hulp. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Fout: kan de alternatieve LoginId niet opzoeken | Controleer of LDAP_ALTERNATE_LOGINID_ATTRIBUTE is ingesteld op een [geldig Active Directory-kenmerk](/windows/win32/adschema/attributes-all). <br><br> Als LDAP_FORCE_GLOBAL_CATALOG is ingesteld op True, of LDAP_LOOKUP_FORESTS is geconfigureerd met een niet-lege waarde, controleert u of u een globale catalogus hebt geconfigureerd en of het kenmerk AlternateLoginId is toegevoegd. <br><br> Als LDAP_LOOKUP_FORESTS is geconfigureerd met een niet-lege waarde, controleert u of de waarde juist is. Als er meer dan één Forestnaam is, moeten de namen worden gescheiden door punt komma's, geen spaties. <br><br> Als u het probleem niet kunt oplossen met deze stappen, [neemt u contact op met de ondersteuning](#contact-microsoft-support) voor meer hulp. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Fout: de alternatieve LoginId-waarde is leeg | Controleer of het kenmerk AlternateLoginId is geconfigureerd voor de gebruiker. |
 
 ## <a name="errors-your-users-may-encounter"></a>Fouten die uw gebruikers kunnen tegen komen
@@ -81,7 +81,7 @@ Als u een van deze fouten tegen komt, raden wij u aan [contact op](#contact-micr
 | ---------- | ------------- |
 | **InvalidParameter** | Aanvraag mag niet null zijn |
 | **InvalidParameter** | ObjectId mag niet null of leeg zijn voor ReplicationScope:{0} |
-| **InvalidParameter** | De lengte van CompanyName \{ 0} \ is langer dan de Maxi maal toegestane lengte{1} |
+| **InvalidParameter** | De lengte van CompanyName \{ 0} \ is langer dan de Maxi maal toegestane lengte {1} |
 | **InvalidParameter** | UserPrincipalName mag niet null of leeg zijn |
 | **InvalidParameter** | De gegeven TenantId heeft niet de juiste indeling |
 | **InvalidParameter** | Sessie-id mag niet null of leeg zijn |
@@ -99,7 +99,7 @@ Als uw gebruikers problemen ondervinden [met verificatie in twee stappen](../use
 
 ### <a name="health-check-script"></a>Status controle script
 
-Het [Azure MFA-status controle script](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) voor de NPS-extensie voert een eenvoudige status controle uit bij het oplossen van problemen met de NPS-extensie. Voer het script uit en kies optie 3.
+Het [Azure MFA-status controle script](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) voor de NPS-extensie voert een eenvoudige status controle uit bij het oplossen van problemen met de NPS-extensie. Voer het script uit en kies optie 3.
 
 ### <a name="contact-microsoft-support"></a>Contact opnemen met Microsoft Ondersteuning
 

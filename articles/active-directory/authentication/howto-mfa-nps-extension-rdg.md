@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117019"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717843"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Uw Extern bureaublad-gateway-infra structuur integreren met behulp van de Network Policy Server (NPS)-extensie en Azure AD
 
 In dit artikel vindt u informatie over het integreren van uw Extern bureaublad-gateway-infra structuur met Azure Multi-Factor Authentication (MFA) met behulp van de Network Policy Server (NPS)-extensie voor Microsoft Azure.
 
-Met de uitbrei ding van de Network Policy Server (NPS) voor Azure kunnen klanten de verificatie van Remote Authentication Dial-In User Service (RADIUS)-client beveiligen met behulp van de Cloud [multi-factor Authentication (MFA)](multi-factor-authentication.md)van Azure. Deze oplossing biedt verificatie in twee stappen voor het toevoegen van een tweede beveiligingslaag aan gebruikers aanmeldingen en trans acties.
+Met de uitbrei ding van de Network Policy Server (NPS) voor Azure kunnen klanten de verificatie van Remote Authentication Dial-In User Service (RADIUS)-client beveiligen met behulp van de Cloud [multi-factor Authentication (MFA)](./concept-mfa-howitworks.md)van Azure. Deze oplossing biedt verificatie in twee stappen voor het toevoegen van een tweede beveiligingslaag aan gebruikers aanmeldingen en trans acties.
 
 In dit artikel vindt u stapsgewijze instructies voor het integreren van de NPS-infra structuur met Azure MFA met de NPS-extensie voor Azure. Hiermee wordt beveiligde verificatie ingeschakeld voor gebruikers die zich willen aanmelden bij een Extern bureaublad-gateway.
 
@@ -75,7 +75,7 @@ In deze sectie vindt u informatie over de vereisten die nodig zijn voordat u Azu
 U moet een werkende Extern bureaublad-services-infra structuur (RDS) hebben. Als dat niet het geval is, kunt u deze infra structuur snel maken in azure met behulp van de volgende Quick Start-sjabloon: [create extern bureaublad sessie verzamelings implementatie](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
 Als u hand matig een on-premises RDS-infra structuur voor test doeleinden wilt maken, volgt u de stappen voor het implementeren van een.
-**Meer informatie**: [RDS implementeren met Azure Quick](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) start en [eenvoudige implementatie van RDS-infra structuur](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+**Meer informatie**: [RDS implementeren met Azure Quick](/windows-server/remote/remote-desktop-services/rds-in-azure) start en [eenvoudige implementatie van RDS-infra structuur](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 ### <a name="azure-mfa-license"></a>Azure MFA-licentie
 
@@ -89,7 +89,7 @@ Voor de NPS-extensie is Windows Server 2008 R2 SP1 of hoger vereist, terwijl de 
 
 De functie Service NPS levert de RADIUS-server-en client functionaliteit en de Network Access Policy Health-Service. Deze rol moet worden geïnstalleerd op ten minste twee computers in uw infra structuur: de Extern bureaublad-gateway en een andere lidserver of domein controller. De rol is standaard al aanwezig op de computer die is geconfigureerd als de Extern bureaublad-gateway.  U moet ook de NPS-rol op ten minste op een andere computer, zoals een domein controller of lidserver, installeren.
 
-Zie [een NAP-status beleids server installeren](https://technet.microsoft.com/library/dd296890.aspx)voor meer informatie over het installeren van de NPS-functie service Windows Server 2012 of ouder. Zie [Aanbevolen procedures voor NPS](https://technet.microsoft.com/library/cc771746)voor een beschrijving van best practices voor NPS, met inbegrip van de aanbeveling voor het installeren van NPS op een domein controller.
+Zie [een NAP-status beleids server installeren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10))voor meer informatie over het installeren van de NPS-functie service Windows Server 2012 of ouder. Zie [Aanbevolen procedures voor NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10))voor een beschrijving van best practices voor NPS, met inbegrip van de aanbeveling voor het installeren van NPS op een domein controller.
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory gesynchroniseerd met on-premises Active Directory
 
@@ -109,7 +109,7 @@ Volg de stappen in aan [de slag met Azure multi-factor Authentication in de Clou
 
 Zodra een account voor MFA is ingeschakeld, kunt u zich niet meer aanmelden bij bronnen waarvoor het MFA-beleid geldt, totdat u een vertrouwd apparaat hebt geconfigureerd om te gebruiken voor de tweede verificatie factor en u hebt geverifieerd met verificatie in twee stappen.
 
-Volg de stappen in [Wat heeft Azure multi-factor Authentication voor mij?](../user-help/multi-factor-authentication-end-user.md) om uw apparaten te begrijpen en goed te configureren voor MFA met uw gebruikers account.
+Volg de stappen in [Wat heeft Azure multi-factor Authentication voor mij?](../user-help/multi-factor-authentication-end-user-first-time.md) om uw apparaten te begrijpen en goed te configureren voor MFA met uw gebruikers account.
 
 > [!IMPORTANT]
 > Het aanmeldings gedrag voor Extern bureaublad-gateway biedt geen optie om een verificatie code in te voeren met Azure Multi-Factor Authentication. U moet een gebruikers account configureren voor telefonische verificatie of de Microsoft Authenticator-app met push meldingen.
@@ -250,7 +250,7 @@ Wanneer u de RD-gateway configureert voor het gebruik van een centraal beleids A
 1. Klik op **Annuleren**.
 
 >[!NOTE]
-> Voor meer informatie over het maken van een beleid voor verbindings aanvragen raadpleegt u het artikel, Configureer de documentatie voor [beleid voor verbindings aanvragen](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) voor dezelfde. 
+> Voor meer informatie over het maken van een beleid voor verbindings aanvragen raadpleegt u het artikel, Configureer de documentatie voor [beleid voor verbindings aanvragen](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy) voor dezelfde. 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>NPS configureren op de server waarop de NPS-extensie is geïnstalleerd
 
@@ -378,13 +378,13 @@ Hieronder vindt u een verwante gebeurtenis uit de AzureMFA-logboeken:
 
 Als u geavanceerde opties voor probleem oplossing wilt uitvoeren, raadpleegt u de logboek bestanden van de NPS-data base-indeling waarin de NPS-service is geïnstalleerd. Deze logboek bestanden worden gemaakt in de map _%systemroot%\System32\Logs_ als tekst bestanden met door komma's gescheiden waarden.
 
-Zie [NPS data base Format-logboek bestanden interpreteren](https://technet.microsoft.com/library/cc771748.aspx)voor een beschrijving van deze logboek bestanden. De vermeldingen in deze logboek bestanden kunnen lastig zijn om te interpreteren zonder ze te importeren in een spread sheet of een Data Base. U kunt verschillende IAS-parsers online vinden om u te helpen bij het interpreteren van de logboek bestanden.
+Zie [NPS data base Format-logboek bestanden interpreteren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10))voor een beschrijving van deze logboek bestanden. De vermeldingen in deze logboek bestanden kunnen lastig zijn om te interpreteren zonder ze te importeren in een spread sheet of een Data Base. U kunt verschillende IAS-parsers online vinden om u te helpen bij het interpreteren van de logboek bestanden.
 
 In de onderstaande afbeelding ziet u de uitvoer van een gedownloade [shareware-toepassing](https://www.deepsoftware.com/iasviewer).
 
 ![Voor beeld van shareware-app IAS-parser](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Ten slotte kunt u een protocol analyse gebruiken, zoals [micro soft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx), voor extra probleemoplossings opties.
+Ten slotte kunt u een protocol analyse gebruiken, zoals [micro soft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide), voor extra probleemoplossings opties.
 
 In de onderstaande afbeelding van micro soft Message Analyzer wordt het netwerk verkeer weer gegeven dat is gefilterd op het RADIUS-protocol dat de gebruikers naam **CONTOSO\AliceC**bevat.
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c88a54661e8fee2dd7c3b4dc34336d44a6803090
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680914"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719458"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Gebruikersportal voor de Azure Multi-Factor Authentication-server
 
@@ -45,7 +45,7 @@ Als de SDK van de webservice Azure Multi-Factor Authentication nog **niet** is g
 3. Voltooi de installatie met de standaardinstellingen, tenzij u een speciale reden hebt om een andere instelling te kiezen.
 4. Bind een TLS/SSL-certificaat aan de site in IIS.
 
-Als u vragen hebt over het configureren van een TLS/SSL-certificaat op een IIS-server, raadpleegt u het artikel [SSL instellen op IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Als u vragen hebt over het configureren van een TLS/SSL-certificaat op een IIS-server, raadpleegt u het artikel [SSL instellen op IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
 De Web Service SDK moet zijn beveiligd met een TLS/SSL-certificaat. Voor dit doel kan een zelfondertekend certificaat worden gebruikt. Importeer het certificaat in het archief vertrouwde basis certificerings instanties van het lokale computer account op de webserver van de gebruikers Portal, zodat het certificaat wordt vertrouwd wanneer de TLS-verbinding wordt gestart.
 
@@ -73,7 +73,7 @@ Voer de volgende stappen uit om de gebruikersportal te implementeren:
 
 ![Installatie van gebruikersportal van MFA-server](./media/howto-mfaserver-deploy-userportal/install.png)
 
-Als u vragen hebt over het configureren van een TLS/SSL-certificaat op een IIS-server, raadpleegt u het artikel [SSL instellen op IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Als u vragen hebt over het configureren van een TLS/SSL-certificaat op een IIS-server, raadpleegt u het artikel [SSL instellen op IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>De gebruikersportal implementeren op een afzonderlijke server
 
@@ -110,7 +110,7 @@ Voor de installatie van de gebruikersportal op een andere server dan de Azure Mu
 
 6. Open een webbrowser op een wille keurige computer en navigeer naar de URL waar de gebruikers Portal is geïnstalleerd (bijvoorbeeld: `https://mfa.contoso.com/MultiFactorAuth` ). Controleer of er geen certificaatwaarschuwingen of -fouten worden weergegeven.
 
-Als u vragen hebt over het configureren van een TLS/SSL-certificaat op een IIS-server, raadpleegt u het artikel [SSL instellen op IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Als u vragen hebt over het configureren van een TLS/SSL-certificaat op een IIS-server, raadpleegt u het artikel [SSL instellen op IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Instellingen voor de gebruikersportal configureren op de Azure Multi-Factor Authentication-server
 
@@ -130,7 +130,7 @@ Optionele configuratie:
 
 De Azure Multi-Factor Authentication-server biedt verschillende opties voor de gebruikersportal. De volgende tabel geeft een lijst van deze opties en een verklaring van de taak waarvoor ze worden gebruikt.
 
-| Instellingen van gebruikersportal | Description |
+| Instellingen van gebruikersportal | Beschrijving |
 |:--- |:--- |
 | URL gebruikersportal | Hiermee kunt u de URL invoeren van de locatie waar de portal wordt gehost. |
 | Primaire authenticatie | Hiermee kunt u opgeven welk verificatietype moet worden gebruikt bij de aanmelding bij de portal. Windows-, Radius- of LDAP-authenticatie. |

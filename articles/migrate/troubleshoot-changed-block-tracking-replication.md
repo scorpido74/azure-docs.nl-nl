@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5748f758d8ac2f1723a20858920a4f261c07f938
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: a1ef0e9fe3805f1c6d4d1000a9ea70accc64f4d2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608817"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718693"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Problemen met replicatie oplossen in VMware VM-migratie zonder agent
 
@@ -59,7 +59,7 @@ Het onderdeel dat gegevens probeert te repliceren naar Azure, is niet actief of 
 
    2.  Open de MMC-module van micro soft-Services (Voer > Services. msc) uit en controleer of de Microsoft Azure Gateway Service wordt uitgevoerd. Als de service is gestopt of niet wordt uitgevoerd, start u de service. U kunt ook een opdracht prompt of Power shell openen en: "net start asrgwy"
 
-3. Controleren op verbindings problemen tussen Azure Migrate apparaat en cache-opslag account: 
+3. Controleer of er verbindings problemen zijn tussen Azure Migrate apparaat en het opslag account voor het apparaat: 
 
     Voer de volgende opdracht uit nadat u azcopy in het Azure Migrate apparaat hebt gedownload:
     
@@ -149,7 +149,7 @@ De mogelijke oorzaken zijn:
     
       1. Azcopy [downloaden](https://go.microsoft.com/fwlink/?linkid=2138966)
         
-      2. Zoek naar het opslag account voor het apparaat in de resource groep. Het opslag account heeft een naam die lijkt op migrategwsa \* \* \* \* \* \* \* \* \* \* . Dit is de waarde van para meter [account] in de bovenstaande opdracht.
+      2. Zoek naar het opslag account voor het apparaat in de resource groep. Het opslag account heeft een naam die lijkt op migratelsa \* \* \* \* \* \* \* \* \* \* . Dit is de waarde van para meter [account] in de bovenstaande opdracht.
         
       3. Zoek uw opslag account in de Azure Portal. Zorg ervoor dat het abonnement dat u gebruikt om te zoeken, hetzelfde abonnement is (het doel abonnement) waarin het opslag account is gemaakt. Ga naar containers in de sectie BLOB-service. Klik op + container en maak een container. Geef het niveau van open bare toegang tot de standaard geselecteerde waarde.
         
@@ -226,7 +226,7 @@ Bijvoorbeeld: fout bericht: er is een interne fout opgetreden. [Er is een ongeld
 
 In de volgende sectie vindt u een aantal veelvoorkomende VMware-fouten en hoe u deze kunt oplossen.
 
-## <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Fout bericht: er is een interne fout opgetreden. [Server heeft verbinding geweigerd]
+### <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Fout bericht: er is een interne fout opgetreden. [Server heeft verbinding geweigerd]
 
 Het probleem is een bekend VMware-probleem en treedt op in VDDK 6,7. U moet de Gateway-Service die wordt uitgevoerd in het Azure Migrate apparaat stoppen, [een update downloaden uit VMware KB](https://go.microsoft.com/fwlink/?linkid=2138889)en de Gateway Service opnieuw starten.
 
@@ -240,33 +240,33 @@ Stappen voor het starten van de Gateway Service:
 1. Druk op Windows + R, Open Services. msc. Klik met de rechter muisknop op Microsoft Azure Gateway Service en start deze.
 2. U kunt ook een opdracht prompt of Power shell openen en: net start asrgwy.
 
-## <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Fout bericht: er is een interne fout opgetreden. [' Er is een ongeldige momentopname configuratie gedetecteerd. ']
+### <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Fout bericht: er is een interne fout opgetreden. [' Er is een ongeldige momentopname configuratie gedetecteerd. ']
 
 Als u een virtuele machine met meerdere schijven hebt, kan deze fout optreden als u een schijf van de virtuele machine verwijdert. Raadpleeg de stappen in [dit VMware-artikel](https://go.microsoft.com/fwlink/?linkid=2138890)om dit probleem te verhelpen.
 
-## <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Fout bericht: er is een interne fout opgetreden. [Moment opname genereren is vastgelopen]
+### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Fout bericht: er is een interne fout opgetreden. [Moment opname genereren is vastgelopen]
 
 Dit probleem treedt op wanneer het genereren van moment opnamen is vastgelopen. Als dit probleem zich voordoet, kunt u de taak moment opname maken stoppen om 95% of 99%. Raadpleeg deze [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) om dit probleem op te lossen.
 
-## <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Fout bericht: er is een interne fout opgetreden. [Kan de schijven niet consolideren op de VM _[redenen]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Fout bericht: er is een interne fout opgetreden. [Kan de schijven niet consolideren op de VM _[redenen]_]
 
 Wanneer we schijven aan het einde van de replicatie cyclus consolideren, mislukt de bewerking. Volg de instructies in [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970) door de juiste _reden_ te selecteren om het probleem op te lossen.
 
 De volgende fouten treden op wanneer er VMware-momentopname bewerkingen worden uitgevoerd: maken, verwijderen of consolideren van schijven. Volg de instructies in de volgende sectie om de fouten te herstellen:
 
-## <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Fout bericht: er is een interne fout opgetreden. [Er wordt al een andere taak uitgevoerd]
+### <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Fout bericht: er is een interne fout opgetreden. [Er wordt al een andere taak uitgevoerd]
 
 Dit probleem treedt op wanneer er sprake is van conflicterende taken van virtuele machines die op de achtergrond worden uitgevoerd, of wanneer er een time-out optreedt voor een taak binnen het vCenter Server. Volg de oplossing die is opgenomen in de volgende [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138891).
 
-## <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Fout bericht: er is een interne fout opgetreden. [De bewerking is niet toegestaan in de huidige status]
+### <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Fout bericht: er is een interne fout opgetreden. [De bewerking is niet toegestaan in de huidige status]
 
 Dit probleem treedt op wanneer vCenter Server beheer agenten niet meer werken. Raadpleeg de oplossing in de volgende [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138971)om dit probleem op te lossen.
 
-## <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Fout bericht: er is een interne fout opgetreden. [Schijf grootte van moment opname is ongeldig]
+### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Fout bericht: er is een interne fout opgetreden. [Schijf grootte van moment opname is ongeldig]
 
 Dit is een bekend VMware-probleem waarin de schijf grootte die wordt aangegeven door de moment opname nul wordt. Volg de oplossing die is opgegeven in [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138972).
 
-## <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Fout bericht: er is een interne fout opgetreden. [Geheugen toewijzing is mislukt. Onvoldoende geheugen.]
+### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Fout bericht: er is een interne fout opgetreden. [Geheugen toewijzing is mislukt. Onvoldoende geheugen.]
 
 Dit gebeurt wanneer de NFC-host buffer onvoldoende geheugen heeft. Om dit probleem op te lossen, moet u de virtuele machine (Compute vMotion) verplaatsen naar een andere host, die vrije bronnen heeft.
 

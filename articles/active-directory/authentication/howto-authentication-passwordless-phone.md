@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5022dfc5811f3db59774a46a7034ff14c4dcf4a8
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6ed1c3628b33d3ed29c3af3b773f2b635e684a67
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428028"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717044"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aanmelding zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)
 
@@ -46,7 +46,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Verificatie methoden met wacht woord-aanmeld authenticatie inschakelen
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een **globaal beheerders** account.
-1. Zoek naar *Azure Active Directory* en selecteer deze optie. **Beveiligings**  >  **verificatie methoden**selecteren  >  **beleid voor verificatie methode (preview-versie)**
+1. Zoek en selecteer de optie *Azure Active Directory*. **Beveiligings**  >  **verificatie methoden**selecteren  >  **beleid voor verificatie methode (preview-versie)**
 1. Onder **Aanmelden met een wacht woord voor eenmalige aanmelding**kiest u de volgende opties
    1. **Inschakelen** -ja of Nee
    1. **Doel** -alle gebruikers of Selecteer gebruikers
@@ -62,7 +62,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 1. In **Microsoft Authenticator**kiest u **Aanmelden via telefoon inschakelen** in de vervolg keuzelijst account
 1. Volg de instructies in de app om de registratie te volt ooien voor aanmelden met een wacht woord. 
 
-Organisaties kunnen hun gebruikers naar het artikel [Aanmelden met uw telefoon, niet uw wacht woord](../user-help/microsoft-authenticator-app-phone-signin-faq.md) voor meer hulp bij het instellen van de app Microsoft Authenticator en het inschakelen van de aanmelding via de telefoon. Als u deze instellingen wilt Toep assen, moet u zich mogelijk afmelden en weer aanmelden bij de Tenant. 
+Organisaties kunnen hun gebruikers naar het artikel [Aanmelden met uw telefoon, niet uw wacht woord](../user-help/user-help-auth-app-sign-in.md) voor meer hulp bij het instellen van de app Microsoft Authenticator en het inschakelen van de aanmelding via de telefoon. Als u deze instellingen wilt Toep assen, moet u zich mogelijk afmelden en weer aanmelden bij de Tenant. 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Aanmelden met een wacht woord zonder referenties
 

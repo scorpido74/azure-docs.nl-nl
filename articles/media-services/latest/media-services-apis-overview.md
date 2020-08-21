@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 703c08cd5a884c8bfdd027b4ecf457c9e954a2dc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043414"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719186"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-API’s
 
@@ -86,7 +86,7 @@ De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam
 
 De bewerkingen die zijn gemarkeerd met `x-ms-long-running-operation` in de Azure Media Services [Swagger-bestanden](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) zijn langlopende bewerkingen. 
 
-Zie [asynchrone bewerkingen](../../azure-resource-manager/management/async-operations.md#monitor-status-of-operation)voor meer informatie over het bijhouden van asynchrone Azure-bewerkingen.
+Zie [asynchrone bewerkingen](../../azure-resource-manager/management/async-operations.md)voor meer informatie over het bijhouden van asynchrone Azure-bewerkingen.
 
 Media Services heeft de volgende langlopende bewerkingen:
 
@@ -109,7 +109,7 @@ Media Services heeft de volgende langlopende bewerkingen:
 
 Wanneer een lange bewerking is ingediend, ontvangt u een ' 202 accepted ' en moet u de bewerking volt ooien met de geretourneerde bewerkings-ID.
 
-In het artikel [asynchrone Azure-bewerkingen bijhouden](../../azure-resource-manager/management/async-operations.md) wordt uitgelegd hoe u de status van asynchrone bewerkingen van Azure kunt volgen met de waarden die in het antwoord worden geretourneerd.
+In het artikel [Asynchrone Azure-bewerkingen volgen](../../azure-resource-manager/management/async-operations.md) wordt uitvoerig beschreven hoe de status van asynchrone Azure-bewerkingen wordt gevolgd aan de hand van waarden die zijn geretourneerd in het antwoord.
 
 Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live gebeurtenis of een van de bijbehorende live-uitvoer bewerkingen. Eenmaal gestart, moet een langlopende bewerking worden voltooid voordat een volgende langlopende bewerking wordt gestart op dezelfde LiveEvent of aan de gekoppelde live uitvoer. Voor Live-gebeurtenissen met meerdere Live outputs moet u wachten op het volt ooien van een langlopende bewerking op één live uitvoer voordat een langlopende bewerking wordt geactiveerd op een andere live uitvoer. 
 
@@ -118,7 +118,7 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 > [!NOTE]
 > De Azure Media Services v3 Sdk's zijn niet gegarandeerd thread-safe. Wanneer u een app met meerdere threads ontwikkelt, moet u uw eigen thread synchronisatie logica toevoegen om de client te beveiligen of een nieuw AzureMediaServicesClient-object per thread te gebruiken. Wees ook voorzichtig met het oplossen van problemen met meerdere threads die worden geïntroduceerd door de optionele objecten die door uw code worden verstrekt aan de client (zoals een httpclient maakt-exemplaar in .NET).
 
-|SDK|Verwijzing|
+|SDK|Naslaginformatie|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](https://aka.ms/ams-v3-java-ref)|
@@ -127,7 +127,7 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 |[Go-SDK](https://aka.ms/ams-v3-go-sdk) |[Go-ref](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>Zie tevens
+### <a name="see-also"></a>Zie ook
 
 - [EventGrid .NET SDK die media service-gebeurtenissen bevat](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definities van Media Services gebeurtenissen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
@@ -146,7 +146,7 @@ Zie [filteren, ordenen, pagineren van Azure Media Services entiteiten](entities-
 
 Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Als u alle benodigde waarden wilt ophalen, raadpleegt u de [Access Azure Media Services-API](./access-api-howto.md).
 

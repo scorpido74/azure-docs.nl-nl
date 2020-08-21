@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebcb79088ebac761632e882e98e00f165cc4bd05
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035228"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717349"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Schakel Azure Active Directory selfservice voor wachtwoord herstel in op het Windows-aanmeldings scherm
 
@@ -35,7 +35,7 @@ De volgende beperkingen zijn van toepassing op het gebruik van SSPR in het Windo
 
 - Wacht woord opnieuw instellen wordt momenteel niet ondersteund vanuit een Extern bureaublad of via Hyper-V-uitgebreide sessies.
 - Sommige externe providers van derden veroorzaken problemen met deze functie.
-- Het uitschakelen van UAC via wijziging van de [register sleutel EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) is bekend bij het veroorzaken van problemen.
+- Het uitschakelen van UAC via wijziging van de [register sleutel EnableLUA](/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) is bekend bij het veroorzaken van problemen.
 - Deze functie werkt niet voor netwerken met 802.1 x-netwerk verificatie geïmplementeerd en de optie ' direct voor gebruikers aanmelding uitvoeren '. Voor netwerken met 802.1 x-netwerk verificatie is het aanbevolen om computer verificatie te gebruiken om deze functie in te scha kelen.
 - Hybride Azure AD-computers moeten over een netwerk verbinding beschikken om het nieuwe wacht woord te kunnen gebruiken en referenties in de cache op te slaan. Dit betekent dat apparaten op het interne netwerk van de organisatie of op een VPN met netwerk toegang tot een on-premises domein controller moeten zijn.
 - Als u een installatie kopie gebruikt voordat u Sysprep uitvoert, moet u ervoor zorgen dat de webcache voor de ingebouwde beheerder is gewist voordat u de stap CopyProfile uitvoert. Meer informatie over deze stap vindt u in de ondersteunings artikelen [verslechte prestaties bij gebruik van aangepast standaard gebruikers profiel](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
@@ -59,10 +59,10 @@ Als u een Windows 10-apparaat wilt configureren voor SSPR op het aanmeldings sch
 ### <a name="windows-10-prerequisites"></a>Windows 10-vereisten
 
 - Een beheerder [moet Azure AD selfservice voor wachtwoord herstel inschakelen vanuit het Azure Portal](tutorial-enable-sspr.md).
-- Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken op[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken op [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Niet uniek om SSPR te gebruiken in het Windows-aanmeldings scherm, moeten alle gebruikers de contact gegevens van de verificatie opgeven voordat ze hun wacht woord opnieuw kunnen instellen.
 - Vereisten voor netwerk proxy:
-    - Poort 443 tot `passwordreset.microsoftonline.com` en`ajax.aspnetcdn.com`
+    - Poort 443 tot `passwordreset.microsoftonline.com` en `ajax.aspnetcdn.com`
     - Windows 10-apparaten ondersteunen alleen proxy configuratie op computer niveau.
 - Voer ten minste Windows 10, versie april 2018 update (v1803) uit en de apparaten moeten zijn:
     - Azure AD-deelname
@@ -126,10 +126,10 @@ Als u een Windows 7-, 8-of 8,1-apparaat wilt configureren voor SSPR op het aanme
 ### <a name="windows-7-8-and-81-prerequisites"></a>Vereisten voor Windows 7, 8 en 8,1
 
 - Een beheerder [moet Azure AD selfservice voor wachtwoord herstel inschakelen vanuit het Azure Portal](tutorial-enable-sspr.md).
-- Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken op[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
+- Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken op [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
     - Niet uniek om SSPR te gebruiken in het Windows-aanmeldings scherm, moeten alle gebruikers de contact gegevens van de verificatie opgeven voordat ze hun wacht woord opnieuw kunnen instellen.
 - Vereisten voor netwerk proxy:
-    - Poort 443 tot`passwordreset.microsoftonline.com`
+    - Poort 443 tot `passwordreset.microsoftonline.com`
 - Een patch uitgevoerd voor Windows 7-of Windows 8,1-besturings systeem.
 - TLS 1,2 ingeschakeld met behulp van de richt lijnen die zijn gevonden in de [register instellingen van Transport Layer Security (TLS)](/windows-server/security/tls/tls-registry-settings#tls-12).
 - Als er meer dan één externe referentie provider op uw computer is ingeschakeld, zien gebruikers meer dan één gebruikers profiel in het aanmeldings scherm.
@@ -143,7 +143,7 @@ Voor Windows 7, 8 en 8,1 moet er een kleine component op de computer zijn geïns
 
 1. Down load het juiste installatie programma voor de versie van Windows die u wilt inschakelen.
 
-    Het software-installatie programma is beschikbaar in het micro soft Download centrum op[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+    Het software-installatie programma is beschikbaar in het micro soft Download centrum op [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
 1. Meld u aan bij de computer waarop u wilt installeren en voer het installatie programma uit.
 1. Na de installatie wordt u ten zeerste aangeraden opnieuw op te starten.
 1. Nadat het systeem opnieuw is opgestart, kiest u in het aanmeldings scherm een gebruiker en selecteert u wacht woord verg eten? om de werk stroom voor het opnieuw instellen van wacht woorden te initiëren.

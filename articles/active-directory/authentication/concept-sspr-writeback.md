@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027594"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717435"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hoe werkt de write-back van self-service voor wacht woord opnieuw instellen in Azure Active Directory?
 
@@ -29,7 +29,7 @@ Met Azure Active Directory (Azure AD) self-service voor het opnieuw instellen va
 
 Wacht woord terugschrijven wordt ondersteund in omgevingen die gebruikmaken van de volgende hybride identiteits modellen:
 
-* [Wachtwoord-hashsynchronisatie](../hybrid/how-to-connect-password-hash-synchronization.md)
+* [Synchronisatie van wachtwoord-hashes](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [Pass-through-verificatie](../hybrid/how-to-connect-pta.md)
 * [Active Directory Federation Services](../hybrid/how-to-connect-fed-management.md)
 
@@ -47,7 +47,7 @@ Het terugschrijven van wacht woorden biedt de volgende functies:
 Voltooi de volgende zelf studie om aan de slag te gaan met SSPR write-back:
 
 > [!div class="nextstepaction"]
-> [Zelf studie: write-back van self-service voor wacht woord opnieuw instellen (SSPR) inschakelen](tutorial-enable-writeback.md)
+> [Zelf studie: write-back van self-service voor wacht woord opnieuw instellen (SSPR) inschakelen](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>Hoe wachtwoord terugschrijven werkt
 
@@ -140,7 +140,7 @@ Wacht woorden worden weer gegeven in de volgende situaties:
    * Een door de beheerder selfservice bewerking voor het wijzigen van het wacht woord, bijvoorbeeld wacht woord verloopt.
    * Een selfservice voor wachtwoord herstel voor beheerders die afkomstig is uit de [Portal voor het opnieuw instellen](https://passwordreset.microsoftonline.com)van het wacht woord.
    * Een door de beheerder geïnitieerde wachtwoord herstel van de gebruiker van de [Azure Portal](https://portal.azure.com).
-   * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers van de [Microsoft Graph API bèta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http).
+   * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers van de [Microsoft Graph API bèta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta).
 
 ## <a name="unsupported-writeback-operations"></a>Niet-ondersteunde Write-bewerkingen
 
@@ -149,7 +149,7 @@ Wacht woorden worden niet weer gegeven in een van de volgende situaties:
 * **Niet-ondersteunde bewerkingen voor eind gebruikers**
    * Eind gebruikers stellen hun eigen wacht woord opnieuw in met behulp van Power shell versie 1, versie 2 of de Microsoft Graph-API.
 * **Niet-ondersteunde beheerders bewerkingen**
-   * Een door de beheerder geïnitieerde wachtwoord herstel van de gebruiker wordt opnieuw ingesteld op basis van Power shell-versie 1, versie 2 of de Microsoft Graph-API (de [Microsoft Graph API Beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) wordt ondersteund).
+   * Een door de beheerder geïnitieerde wachtwoord herstel van de gebruiker wordt opnieuw ingesteld op basis van Power shell-versie 1, versie 2 of de Microsoft Graph-API (de [Microsoft Graph API Beta](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta) wordt ondersteund).
    * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers vanuit het [Microsoft 365-beheer centrum](https://admin.microsoft.com).
    * Een beheerder kan het hulp programma voor wachtwoord herstel niet gebruiken om hun eigen wacht woord opnieuw in te stellen voor wacht woord terugschrijven.
 
@@ -161,4 +161,4 @@ Wacht woorden worden niet weer gegeven in een van de volgende situaties:
 Voltooi de volgende zelf studie om aan de slag te gaan met SSPR write-back:
 
 > [!div class="nextstepaction"]
-> [Zelf studie: write-back van self-service voor wacht woord opnieuw instellen (SSPR) inschakelen](tutorial-enable-writeback.md)
+> [Zelf studie: write-back van self-service voor wacht woord opnieuw instellen (SSPR) inschakelen](./tutorial-enable-sspr-writeback.md)

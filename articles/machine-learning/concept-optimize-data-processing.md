@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500960"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719271"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Gegevens verwerking optimaliseren met Azure Machine Learning
 
@@ -33,9 +33,9 @@ CSV-bestanden worden meestal gebruikt voor het importeren en exporteren van gege
 
 ## <a name="pandas-dataframe"></a>Panda data frame
 
-[Panda dataframes](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) worden vaak gebruikt voor het bewerken en analyseren van gegevens. `Pandas`geschikt voor gegevens groottes die kleiner zijn dan 1 GB, maar verwerkings tijden voor `pandas` dataframes vertragen wanneer de bestands grootte ongeveer 1 GB bereikt. Deze vertraging is omdat de grootte van uw gegevens in de opslag niet gelijk is aan de grootte van de gegevens in een data frame. Zo kunnen gegevens in CSV-bestanden Maxi maal 10 keer worden uitgebreid in een data frame, zodat een CSV-bestand van 1 GB 10 GB kan worden in een data frame.
+[Panda dataframes](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) worden vaak gebruikt voor het bewerken en analyseren van gegevens. `Pandas` geschikt voor gegevens groottes die kleiner zijn dan 1 GB, maar verwerkings tijden voor `pandas` dataframes vertragen wanneer de bestands grootte ongeveer 1 GB bereikt. Deze vertraging is omdat de grootte van uw gegevens in de opslag niet gelijk is aan de grootte van de gegevens in een data frame. Zo kunnen gegevens in CSV-bestanden Maxi maal 10 keer worden uitgebreid in een data frame, zodat een CSV-bestand van 1 GB 10 GB kan worden in een data frame.
 
-`Pandas`is één thread, wat betekent dat bewerkingen op één CPU tegelijk worden uitgevoerd. U kunt werk belastingen eenvoudig parallelliserenen op meerdere virtuele Cpu's op een enkele Azure Machine Learning Reken instantie met pakketten zoals [modi](https://modin.readthedocs.io/en/latest/) die teruglopen `Pandas` met behulp van een gedistribueerde back-end.
+`Pandas` is één thread, wat betekent dat bewerkingen op één CPU tegelijk worden uitgevoerd. U kunt werk belastingen eenvoudig parallelliserenen op meerdere virtuele Cpu's op een enkele Azure Machine Learning Reken instantie met pakketten zoals [modi](https://modin.readthedocs.io/en/latest/) die teruglopen `Pandas` met behulp van een gedistribueerde back-end.
 
 Als u uw taken wilt parallelliseren `Modin` en [Dask](https://dask.org), wijzigt u deze regel met code `import pandas as pd` in `import modin.pandas as pd` .
 
@@ -46,6 +46,16 @@ Normaal gesp roken treedt er een *geheugen* fout op wanneer uw data frame boven 
 Eén oplossing is het verg Roten van het RAM-geheugen om de data frame in het geheugen aan te passen. Het is raadzaam om de reken grootte en de verwerkings capaciteit twee keer zoveel RAM-geheugen te hebben. Dus als uw data frame 10 GB is, gebruikt u een reken doel met ten minste 20 GB RAM om ervoor te zorgen dat de data frame kan worden aangepast aan het geheugen en worden verwerkt. 
 
 Voor meerdere virtuele Cpu's, vCPU moet u er voor zorgen dat de ene partitie in het RAM-geheugen past dat elke vCPU op de computer kan hebben. Dat wil zeggen, als u 16 GB RAM 4 Vcpu's hebt, wilt u per vCPU ongeveer 2 GB dataframes.
+
+### <a name="local-vs-remote"></a>Lokaal versus extern
+
+U kunt bepaalde Panda-data frame-opdrachten sneller uitvoeren wanneer u werkt op uw lokale PC en een externe virtuele machine die u hebt ingericht met Azure Machine Learning. Op de lokale computer is doorgaans een pagina bestand ingeschakeld, waarmee u meer kunt laden dan in het fysieke geheugen past, dat wil zeggen dat uw harde schijf wordt gebruikt als een uitbrei ding van uw RAM. Op dit moment kunnen Azure Machine Learning Vm's zonder wissel bestand worden uitgevoerd, kan daarom zoveel gegevens worden geladen als beschikbaar fysiek RAM-geheugen. 
+
+Voor Compute-zware taken kunt u het beste een grotere VM kiezen om de verwerkings snelheden te verbeteren.
+
+Meer informatie over de [beschik bare VM-reeksen en-groottes](concept-compute-target.md#supported-vm-series-and-sizes) voor Azure machine learning. 
+
+Zie de bijbehorende pagina's van de VM-reeks, zoals, [dv2-Dsv2 Series](../virtual-machines/dv2-dsv2-series-memory.md) of [NC Series](../virtual-machines/nc-series.md), voor het RAM-geheugen.
 
 ### <a name="minimize-cpu-workloads"></a>CPU-workloads minimaliseren
 
@@ -71,10 +81,10 @@ In de volgende tabel wordt gedistribueerde Frameworks aanbevolen die zijn geïnt
 
 Ervaring of gegevens grootte | Aanbeveling
 ------|------
-Als u bekend bent met`Pandas`| `Modin`of `Dask` Data frame
-Als u wilt`Spark` | `PySpark`
-Voor gegevens die kleiner zijn dan 1 GB | `Pandas`lokaal **of** een externe Azure machine learning reken instantie
-Voor gegevens die groter zijn dan 10 GB| Verplaatsen naar een cluster met `Ray` , `Dask` of`Spark`
+Als u bekend bent met `Pandas`| `Modin` of `Dask` Data frame
+Als u wilt `Spark` | `PySpark`
+Voor gegevens die kleiner zijn dan 1 GB | `Pandas` lokaal **of** een externe Azure machine learning reken instantie
+Voor gegevens die groter zijn dan 10 GB| Verplaatsen naar een cluster met `Ray` , `Dask` of `Spark`
 
 U kunt `Dask` clusters maken in azure ml Compute Cluster met het [dask-cloudprovider-](https://cloudprovider.dask.org/en/latest/#azure) pakket. U kunt ook `Dask` lokaal uitvoeren op een reken instantie.
 

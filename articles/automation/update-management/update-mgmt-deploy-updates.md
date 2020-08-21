@@ -3,14 +3,14 @@ title: Update-implementaties voor Azure Automation maken Updatebeheer
 description: In dit artikel wordt beschreven hoe u update-implementaties plant en hoe u de status ervan controleert.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2a81376b284e0d1df84a69b969335c0e63999a00
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4336ba272dd83ad2a35060c1c7524a564b928484
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450260"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717690"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Updates implementeren en resultaten bekijken
 
@@ -41,8 +41,10 @@ Een nieuwe update-implementatie plannen:
 
 6. Gebruik de regio **Update classificaties** om [Update classificaties](update-mgmt-view-update-assessments.md#work-with-update-classifications) voor producten op te geven. Voor elk product deselecteert u alle ondersteunde update classificaties, maar ook voor de implementatie van de update.
 
-7. Gebruik de regio **updates opnemen/uitsluiten** om specifieke updates voor implementatie te selecteren. Op de pagina opnemen/uitsluiten worden de updates weer gegeven op KB-artikel-ID-nummers die moeten worden opgenomen of uitgesloten.
-    
+    Als uw implementatie alleen van toepassing is op een bepaalde set updates, is het nood zakelijk om alle vooraf geselecteerde update classificaties te deselecteren bij het configureren van de optie voor het **opnemen/uitsluiten van updates** , zoals wordt beschreven in de volgende stap. Dit zorgt ervoor dat alleen de *updates die u hebt opgegeven in deze* implementatie zijn geïnstalleerd op de doel computers.
+
+7. Gebruik de regio **updates opnemen/uitsluiten** om geselecteerde updates van de implementatie toe te voegen of uit te sluiten. Op de pagina **opnemen/uitsluiten** voert u KB-artikel-id-nummers in om op te nemen of uit te sluiten.
+
    > [!IMPORTANT]
    > Houd er rekening mee dat uitsluitingen insluitingen opheffen. Als u bijvoorbeeld een uitsluitings regel van opgeeft `*` , updatebeheer sluit alle patches of pakketten van de installatie uit. Uitgesloten patches worden nog steeds weer gegeven als ontbrekend op de computers. Als u op Linux-computers een pakket opneemt dat een afhankelijk pakket bevat dat is uitgesloten, installeert Updatebeheer het hoofdpakket niet.
 

@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338563"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717741"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Een Azure Active Directory self-service voor het opnieuw instellen van wacht woorden plannen
 
@@ -30,7 +30,7 @@ ms.locfileid: "84338563"
 SSPR heeft de volgende belang rijke mogelijkheden:
 
 * Met self-service kunnen eind gebruikers hun verlopen of niet-verlopen wacht woorden opnieuw instellen zonder contact op te nemen met een beheerder of Help Desk voor ondersteuning.
-* Met [wacht woord terugschrijven](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) kunt u on-premises wacht woorden en omzetting van account vergrendeling als de Cloud beheren.
+* Met [wacht woord terugschrijven](./concept-sspr-writeback.md) kunt u on-premises wacht woorden en omzetting van account vergrendeling als de Cloud beheren.
 * Met activiteiten rapporten voor wachtwoord beheer kunt u beheerders inzicht geven in het opnieuw instellen van wacht woorden en registratie activiteiten in hun organisatie.
 
 In deze implementatie handleiding wordt uitgelegd hoe u een SSPR implementeert en test.
@@ -42,7 +42,7 @@ Als u snel SSPR in actie wilt zien en vervolgens meer wilt weten over aanvullend
 
 ## <a name="learn-about-sspr"></a>Meer informatie over SSPR
 
-Meer informatie over SSPR. Zie [hoe het werkt: Azure AD selfservice voor wacht woord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks).
+Meer informatie over SSPR. Zie [hoe het werkt: Azure AD selfservice voor wacht woord opnieuw instellen](./concept-sspr-howitworks.md).
 
 ### <a name="key-benefits"></a>Belangrijkste voordelen
 
@@ -60,7 +60,7 @@ De belangrijkste voor delen van het inschakelen van SSPR zijn:
 
 Azure Active Directory wordt per gebruiker in licentie gegeven, wat betekent dat elke gebruiker een geschikte licentie nodig heeft voor de functies die ze gebruiken. U wordt aangeraden om op groep gebaseerde licentie verlening voor SSPR te verlenen. 
 
-Zie [licentie vereisten voor Azure AD selfservice voor wacht woord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-licensing)voor het vergelijken van edities en functies en het inschakelen van licentie verlening op basis van groepen of gebruikers.
+Zie [licentie vereisten voor Azure AD selfservice voor wacht woord opnieuw instellen](./concept-sspr-licensing.md)voor het vergelijken van edities en functies en het inschakelen van licentie verlening op basis van groepen of gebruikers.
 
 Zie [Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/)voor meer informatie over prijzen.
 
@@ -83,10 +83,10 @@ Zie [Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details
 | Online cursussen|[Identiteiten beheren in Microsoft Azure Active Directory](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) Gebruik SSPR om uw gebruikers een moderne, beveiligde ervaring te geven. Zie met name de module '[beheer van Azure Active Directory-gebruikers en-groepen](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)'. |
 |Betaalde cursussen Pluralsight |[De problemen met identiteits-en toegangs beheer](https://www.pluralsight.com/courses/identity-access-management-issues) Meer informatie over IAM-en beveiligings problemen waarvan u rekening moet houden in uw organisatie. Zie vooral de module ' andere verificatie methoden '.|
 | |[Aan de slag met de micro soft Enter prise Mobility Suite](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) Meer informatie over de aanbevolen procedures voor het uitbreiden van on-premises assets naar de Cloud op een manier die verificatie, autorisatie, versleuteling en een beveiligde mobiele ervaring mogelijk maakt. Zie met name de module ' geavanceerde functies van Microsoft Azure Active Directory Premium configureren '.
-|Zelfstudies |[Een pilot van een Azure AD-selfservice voor wachtwoordherstel uitrollen](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
-| |[Wachtwoord terugschrijven inschakelen](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
-| |[Azure AD-wacht woord opnieuw instellen vanuit het aanmeldings scherm voor Windows 10](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| Veelgestelde vragen|[Veelgestelde vragen over wachtwoord beheer](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+|Zelfstudies |[Een pilot van een Azure AD-selfservice voor wachtwoordherstel uitrollen](./tutorial-enable-sspr.md) |
+| |[Wachtwoord terugschrijven inschakelen](./tutorial-enable-sspr-writeback.md) |
+| |[Azure AD-wacht woord opnieuw instellen vanuit het aanmeldings scherm voor Windows 10](./howto-sspr-windows.md) |
+| Veelgestelde vragen|[Veelgestelde vragen over wachtwoord beheer](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>Architectuur voor de oplossing
@@ -103,7 +103,7 @@ Om het wacht woord opnieuw in te stellen, gaan gebruikers naar de portal voor he
 
 * Voor hybride gebruikers schrijft SSPR het wacht woord terug naar de on-premises Active Directory via de Azure AD Connect-service. 
 
-Opmerking: voor gebruikers met een [wacht woord-hash-synchronisatie (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) is uitgeschakeld, slaat SSPR de wacht woorden alleen op in de on-premises Active Directory.
+Opmerking: voor gebruikers met een [wacht woord-hash-synchronisatie (PHS)](../hybrid/whatis-phs.md) is uitgeschakeld, slaat SSPR de wacht woorden alleen op in de on-premises Active Directory.
 
 ### <a name="best-practices"></a>Aanbevolen procedures
 
@@ -141,27 +141,27 @@ Communicatie is van cruciaal belang voor het slagen van een nieuwe service. U mo
 
 ### <a name="plan-a-pilot"></a>Een pilot plannen
 
-We raden u aan de initiële configuratie van SSPR in een test omgeving te hebben. Begin met een test groep door SSPR in te scha kelen voor een subset van gebruikers in uw organisatie. Bekijk [Aanbevolen procedures voor een pilot](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans).
+We raden u aan de initiële configuratie van SSPR in een test omgeving te hebben. Begin met een test groep door SSPR in te scha kelen voor een subset van gebruikers in uw organisatie. Bekijk [Aanbevolen procedures voor een pilot](../fundamentals/active-directory-deployment-plans.md).
 
-Zie [een groep maken en leden toevoegen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal)voor het maken van een groep. 
+Zie [een groep maken en leden toevoegen in azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md)voor het maken van een groep. 
 
 ## <a name="plan-configuration"></a>Configuratie plannen
 
 De volgende instellingen zijn vereist om SSPR samen met aanbevolen waarden in te scha kelen.
 
-| Onderwerp | Instelling | Waarde |
+| Gebied | Instelling | Waarde |
 | --- | --- | --- |
 | **SSPR-eigenschappen** | Self-service voor wacht woord opnieuw instellen is ingeschakeld | **Geselecteerde** groep voor pilot/ **all** voor productie |
 | **Verificatiemethoden** | Verificatie methoden die nodig zijn om te registreren | Altijd 1 meer dan vereist voor opnieuw instellen |
 |   | Verificatie methoden die nodig zijn om opnieuw in te stellen | Een of twee |
-| **Registratie** | Vereisen dat gebruiker zich bij aanmelding registreren | Yes |
+| **Registratie** | Vereisen dat gebruiker zich bij aanmelding registreren | Ja |
 |   | Het aantal dagen waarna gebruikers wordt gevraagd om de verificatiegegevens opnieuw te bevestigen | 90 – 180 dagen |
-| **Meldingen** | Gebruikers een melding tonen over het opnieuw instellen van hun wachtwoord | Yes |
-|   | Alle beheerders waarschuwen wanneer andere beheerders hun wachtwoord opnieuw instellen | Yes |
-| **Aanpassing** | Help Desk-koppeling aanpassen | Yes |
+| **Meldingen** | Gebruikers een melding tonen over het opnieuw instellen van hun wachtwoord | Ja |
+|   | Alle beheerders waarschuwen wanneer andere beheerders hun wachtwoord opnieuw instellen | Ja |
+| **Aanpassing** | Help Desk-koppeling aanpassen | Ja |
 |   | Aangepaste e-mail adres of URL voor de Help Desk | Ondersteunings site of e-mail adres |
-| **On-premises integratie** | Wacht woorden terugschrijven naar on-premises AD | Yes |
-|   | Gebruikers toestaan om het account te ontgrendelen zonder het wacht woord opnieuw in te stellen | Yes |
+| **On-premises integratie** | Wacht woorden terugschrijven naar on-premises AD | Ja |
+|   | Gebruikers toestaan om het account te ontgrendelen zonder het wacht woord opnieuw in te stellen | Ja |
 
 ### <a name="sspr-properties"></a>SSPR-eigenschappen
 
@@ -172,7 +172,7 @@ Wanneer u SSPR inschakelt, kiest u een geschikte beveiligings groep in de test o
 
 ### <a name="authentication-methods"></a>Verificatiemethoden
 
-Wanneer SSPR is ingeschakeld, kunnen gebruikers hun wacht woord alleen opnieuw instellen als ze gegevens bevatten in de verificatie methoden die de beheerder heeft ingeschakeld. Methoden zijn onder andere telefoon, verificator-app-melding, beveiligings vragen, enzovoort. Zie [Wat zijn verificatie methoden?](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)voor meer informatie.
+Wanneer SSPR is ingeschakeld, kunnen gebruikers hun wacht woord alleen opnieuw instellen als ze gegevens bevatten in de verificatie methoden die de beheerder heeft ingeschakeld. Methoden zijn onder andere telefoon, verificator-app-melding, beveiligings vragen, enzovoort. Zie [Wat zijn verificatie methoden?](./concept-authentication-methods.md)voor meer informatie.
 
 We raden u aan de volgende verificatie methode-instellingen te configureren:
 
@@ -180,7 +180,7 @@ We raden u aan de volgende verificatie methode-instellingen te configureren:
 
 * Stel het **aantal methoden in** dat moet worden ingesteld op een niveau dat geschikt is voor uw organisatie. Voor één is de minste wrijving vereist, terwijl twee de beveiligings postuur kan verg Roten. 
 
-Opmerking: de gebruiker moet de verificatie methoden hebben geconfigureerd in het [wachtwoord beleid en de beperkingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy).
+Opmerking: de gebruiker moet de verificatie methoden hebben geconfigureerd in het [wachtwoord beleid en de beperkingen in azure Active Directory](./concept-sspr-policy.md).
 
 ### <a name="registration-settings"></a>Registratie-instellingen
 
@@ -196,11 +196,11 @@ Configureer de **gebruikers op de hoogte van het opnieuw instellen van wacht woo
 
 Het is essentieel om de e-mail adres of URL van de Help Desk aan te passen om ervoor te zorgen dat gebruikers die problemen ervaren, direct hulp kunnen krijgen. Stel deze optie in op een gemeen schappelijke e-mail adres van de Help Desk of de webpagina waarmee uw gebruikers bekend zijn. 
 
-Zie [de Azure AD-functionaliteit aanpassen voor selfservice voor wachtwoord herstel](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)voor meer informatie.
+Zie [de Azure AD-functionaliteit aanpassen voor selfservice voor wachtwoord herstel](./howto-sspr-customization.md)voor meer informatie.
 
 ### <a name="password-writeback"></a>Wacht woord terugschrijven
 
-**Wacht woord terugschrijven** is ingeschakeld met [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity) en schrijft wacht woorden opnieuw in de Cloud terug naar een bestaande on-premises Directory in real time. Zie [Wat is wacht woord terugschrijven?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) voor meer informatie.
+**Wacht woord terugschrijven** is ingeschakeld met [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) en schrijft wacht woorden opnieuw in de Cloud terug naar een bestaande on-premises Directory in real time. Zie [Wat is wacht woord terugschrijven?](./concept-sspr-writeback.md) voor meer informatie.
 
 We raden u aan de volgende instellingen te volgen:
 
@@ -220,7 +220,7 @@ U wordt aangeraden om uw on-premises Active Directory-beheerders accounts niet t
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>Omgevingen met meerdere systemen voor identiteits beheer
 
-Sommige omgevingen hebben meerdere systemen voor identiteits beheer. On-premises identiteits managers als Oracle AM en SiteMinder vereisen synchronisatie met AD voor wacht woorden. U kunt dit doen met behulp van een hulp programma zoals de meldings service voor wachtwoord wijzigingen (PCNS) met Microsoft Identity Manager (MIM). Zie het artikel [de MIM-meldings service voor wachtwoord wijzigingen implementeren op een domein controller](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)voor meer informatie over dit complexe scenario.
+Sommige omgevingen hebben meerdere systemen voor identiteits beheer. On-premises identiteits managers als Oracle AM en SiteMinder vereisen synchronisatie met AD voor wacht woorden. U kunt dit doen met behulp van een hulp programma zoals de meldings service voor wachtwoord wijzigingen (PCNS) met Microsoft Identity Manager (MIM). Zie het artikel [de MIM-meldings service voor wachtwoord wijzigingen implementeren op een domein controller](/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)voor meer informatie over dit complexe scenario.
 
 ## <a name="plan-testing-and-support"></a>Testen en ondersteuning plannen
 
@@ -228,7 +228,7 @@ Zorg ervoor dat in elke fase van de implementatie van de eerste test groepen via
 
 ### <a name="plan-testing"></a>Tests plannen
 
-Om ervoor te zorgen dat uw implementatie werkt zoals verwacht, moet u een set test cases plannen om de implementatie te valideren. Als u de test cases wilt beoordelen, moet u een gebruiker die geen beheerder is, een wacht woord hebben. Als u een gebruiker wilt maken, raadpleegt u [nieuwe gebruikers toevoegen aan Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+Om ervoor te zorgen dat uw implementatie werkt zoals verwacht, moet u een set test cases plannen om de implementatie te valideren. Als u de test cases wilt beoordelen, moet u een gebruiker die geen beheerder is, een wacht woord hebben. Als u een gebruiker wilt maken, raadpleegt u [nieuwe gebruikers toevoegen aan Azure Active Directory](../fundamentals/add-users-azure-active-directory.md).
 
 De volgende tabel bevat nuttige test scenario's die u kunt gebruiken om uw organisaties de verwachte resultaten te documenteren op basis van uw beleid.
 <br>
@@ -246,7 +246,7 @@ De volgende tabel bevat nuttige test scenario's die u kunt gebruiken om uw organ
 | Het gebruikers wachtwoord opnieuw instellen vanaf het vergrendelings scherm van Windows 10 Azure AD dat is toegevoegd aan het gekoppelde of hybride Azure AD-apparaat| Gebruiker kan wacht woord opnieuw instellen |
 | SSPR-registratie en gebruiks gegevens zijn bijna in real time beschikbaar voor beheerders| Is beschikbaar via audit logboeken |
 
-U kunt ook verwijzen naar [een Azure AD self-service voor het opnieuw instellen van wacht woorden](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot). In deze zelf studie maakt u een pilot-implementatie van SSPR in uw organisatie mogelijk en test u een niet-beheerders account.
+U kunt ook verwijzen naar [een Azure AD self-service voor het opnieuw instellen van wacht woorden](./tutorial-enable-sspr.md). In deze zelf studie maakt u een pilot-implementatie van SSPR in uw organisatie mogelijk en test u een niet-beheerders account.
 
 ### <a name="plan-support"></a>Ondersteuning plannen
 
@@ -254,7 +254,7 @@ Hoewel SSPR doorgaans geen gebruikers problemen maakt, is het belang rijk om ond
 
 Om het succes van uw ondersteunings team in te scha kelen, kunt u een veelgestelde vragen maken op basis van vragen die u van uw gebruikers ontvangt. Enkele voorbeelden:
 
-| Scenario's| Description |
+| Scenario's| Beschrijving |
 | - | - |
 | De gebruiker heeft geen geregistreerde verificatie methoden beschikbaar| Een gebruiker probeert het wacht woord opnieuw in te stellen, maar heeft geen van de authenticatie methoden die ze beschikbaar hebben (voor beeld: ze hebben hun mobiele telefoon thuis verlaten en kunnen geen toegang krijgen tot e-mail) |
 | De gebruiker ontvangt geen tekst of gesprek op hun kantoor of mobiele telefoon| Een gebruiker probeert zijn identiteit te verifiëren via tekst of gesprek, maar ontvangt geen tekst/oproep. |
@@ -289,20 +289,20 @@ Voordat u implementeert, moet u ervoor zorgen dat u het volgende hebt gedaan:
 
 **U bent nu klaar om SSPR te implementeren.**
 
-Zie [selfservice voor wacht woord opnieuw instellen inschakelen](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot#enable-self-service-password-reset) voor volledige stapsgewijze instructies voor het configureren van de volgende gebieden.
+Zie [selfservice voor wacht woord opnieuw instellen inschakelen](./tutorial-enable-sspr.md#enable-self-service-password-reset) voor volledige stapsgewijze instructies voor het configureren van de volgende gebieden.
 
-1. [Verificatiemethoden](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+1. [Verificatiemethoden](./concept-authentication-methods.md)
 
-1. [Registratie-instellingen](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)
+1. [Registratie-instellingen](./concept-registration-mfa-sspr-combined.md)
 
 1. [Instellingen voor meldingen](#notifications-settings)
 
-1. [Aanpassings instellingen](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+1. [Aanpassings instellingen](./howto-sspr-customization.md)
 
-1. [On-premises integratie](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
+1. [On-premises integratie](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="enable-sspr-in-windows"></a>SSPR in Windows inschakelen
-Voor computers met Windows 7, 8, 8,1 en 10 kunt u [gebruikers in staat stellen hun wacht woord opnieuw in te stellen in het Windows-aanmeldings scherm](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
+Voor computers met Windows 7, 8, 8,1 en 10 kunt u [gebruikers in staat stellen hun wacht woord opnieuw in te stellen in het Windows-aanmeldings scherm](./howto-sspr-windows.md)
 
 ## <a name="manage-sspr"></a>SSPR beheren
 
@@ -310,41 +310,41 @@ Azure AD kan extra informatie over uw SSPR-prestaties bieden via audits en rappo
 
 ### <a name="password-management-activity-reports"></a>Rapporten voor wachtwoord beheer activiteiten 
 
-U kunt vooraf gemaakte rapporten op Azure Portal gebruiken om de prestaties van de SSPR te meten. Als u een juiste licentie hebt, kunt u ook aangepaste query's maken. Zie [rapportage opties voor Azure AD-wachtwoord beheer](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) voor meer informatie.
+U kunt vooraf gemaakte rapporten op Azure Portal gebruiken om de prestaties van de SSPR te meten. Als u een juiste licentie hebt, kunt u ook aangepaste query's maken. Zie [rapportage opties voor Azure AD-wachtwoord beheer](./howto-sspr-reporting.md) voor meer informatie.
 
 > [!NOTE]
->  U moet [een globale beheerder](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)zijn en u moet zich aanmelden om deze gegevens te verzamelen voor uw organisatie. Als u zich wilt aanmelden, moet u ten minste één keer naar het tabblad rapportage of de audit Logboeken in azure Portal. Tot die toe worden de gegevens niet verzameld voor uw organisatie.
+>  U moet [een globale beheerder](../users-groups-roles/directory-assign-admin-roles.md)zijn en u moet zich aanmelden om deze gegevens te verzamelen voor uw organisatie. Als u zich wilt aanmelden, moet u ten minste één keer naar het tabblad rapportage of de audit Logboeken in azure Portal. Tot die toe worden de gegevens niet verzameld voor uw organisatie.
 
-Audit logboeken voor registratie en het opnieuw instellen van wacht woorden zijn 30 dagen beschikbaar. Als de beveiligings controle binnen uw bedrijf een langere retentie vereist, moeten de logboeken worden geëxporteerd en gebruikt in een SIEM-hulp programma zoals [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-active-directory), Splunk of ArcSight.
+Audit logboeken voor registratie en het opnieuw instellen van wacht woorden zijn 30 dagen beschikbaar. Als de beveiligings controle binnen uw bedrijf een langere retentie vereist, moeten de logboeken worden geëxporteerd en gebruikt in een SIEM-hulp programma zoals [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk of ArcSight.
 
 ![Scherm opname van SSPR-rapportage](./media/howto-sspr-deployment/sspr-reporting.png)
 
 ### <a name="authentication-methods--usage-and-insights"></a>Verificatie methoden-gebruik en inzichten
 
-[Gebruik en inzichten](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights) bieden inzicht in hoe verificatie methoden voor functies zoals Azure MFA en SSPR in uw organisatie werken. Deze rapportage mogelijkheid voorziet uw organisatie van de middelen om inzicht te krijgen in de methoden die worden geregistreerd en hoe ze kunnen worden gebruikt.
+[Gebruik en inzichten](./howto-authentication-methods-usage-insights.md) bieden inzicht in hoe verificatie methoden voor functies zoals Azure MFA en SSPR in uw organisatie werken. Deze rapportage mogelijkheid voorziet uw organisatie van de middelen om inzicht te krijgen in de methoden die worden geregistreerd en hoe ze kunnen worden gebruikt.
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-* Raadpleeg [problemen met selfservice voor wachtwoord herstel oplossen](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot) 
+* Raadpleeg [problemen met selfservice voor wachtwoord herstel oplossen](./active-directory-passwords-troubleshoot.md) 
 
-* [Veelgestelde vragen over wachtwoord beheer](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) volgen 
+* [Veelgestelde vragen over wachtwoord beheer](./active-directory-passwords-faq.md) volgen 
 
 ### <a name="helpful-documentation"></a>Nuttige documentatie
 
-* [Wat zijn verificatiemethoden?](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+* [Wat zijn verificatiemethoden?](./concept-authentication-methods.md)
 
-* [Hoe werkt het? selfservice voor wachtwoord herstel van Azure AD?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)
+* [Hoe werkt het? selfservice voor wachtwoord herstel van Azure AD?](./concept-sspr-howitworks.md)
 
-* [De Azure AD-functionaliteit aanpassen voor Self-service voor wachtwoord herstel](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+* [De Azure AD-functionaliteit aanpassen voor Self-service voor wachtwoord herstel](./howto-sspr-customization.md)
 
-* [Wachtwoordbeleid en beperkingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)
+* [Wachtwoordbeleid en beperkingen in Azure Active Directory](./concept-sspr-policy.md)
 
-* [Wat is wacht woord terugschrijven?](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+* [Wat is wacht woord terugschrijven?](./concept-sspr-writeback.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Als u aan de slag wilt gaan met de implementatie van SSPR, raadpleegt u [Azure AD selfservice voor wachtwoord herstel inschakelen](tutorial-enable-sspr.md)
 
-* [Implementatie van Azure AD-wachtwoord beveiliging overwegen](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
+* [Implementatie van Azure AD-wachtwoord beveiliging overwegen](./concept-password-ban-bad.md)
 
-* [Overweeg het implementeren van Azure AD Smart-vergren deling](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)
+* [Overweeg het implementeren van Azure AD Smart-vergren deling](./howto-password-smart-lockout.md)

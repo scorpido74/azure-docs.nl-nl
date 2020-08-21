@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4c8a536086e426a2d83d26538f9d0efe1ea63eb4
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705789"
+ms.locfileid: "88719407"
 ---
 # <a name="durable-functions-versions-overview"></a>Overzicht van Durable Functions versies
 
@@ -46,7 +46,7 @@ In deze sectie wordt beschreven hoe u uw bestaande versie 1. x Durable Functions
 
 Installeer de meest recente versie van 2. x van de uitbrei ding Durable Functions bindingen in uw project.
 
-#### <a name="javascript-and-python"></a>Java script en python
+#### <a name="javascript-python-and-powershell"></a>Java script, python en Power shell
 
 Durable Functions 2. x is beschikbaar in versie 2. x van de [Azure functions extensie bundel](../functions-bindings-register.md#extension-bundles).
 

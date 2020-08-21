@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641072"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717027"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie plannen
 
@@ -74,7 +74,7 @@ Gebruik de aanpas bare posters en e-mail sjablonen in [multi-factor Authenticati
 
 Met beleid voor voorwaardelijke toegang wordt de registratie afgedwongen, waarbij niet-geregistreerde gebruikers zijn vereist voor het volt ooien van de registratie bij de eerste aanmelding, een belang rijk veiligheids aspect.
 
-[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) draagt zowel een registratie beleid voor als het beleid voor automatische risico detectie en herstel op het Azure multi-factor Authentication-artikel. Beleids regels kunnen worden gemaakt om wachtwoord wijzigingen af te dwingen wanneer er sprake is van een bedreiging van de identiteit aangetast of MFA vereist wanneer een aanmelding als riskant wordt beschouwd door de volgende [gebeurtenissen](../reports-monitoring/concept-risk-events.md):
+[Azure AD Identity Protection](../identity-protection/howto-identity-protection-configure-risk-policies.md) draagt zowel een registratie beleid voor als het beleid voor automatische risico detectie en herstel op het Azure multi-factor Authentication-artikel. Beleids regels kunnen worden gemaakt om wachtwoord wijzigingen af te dwingen wanneer er sprake is van een bedreiging van de identiteit aangetast of MFA vereist wanneer een aanmelding als riskant wordt beschouwd door de volgende [gebeurtenissen](../identity-protection/overview-identity-protection.md):
 
 * Gelekte referenties
 * Aanmeldingen vanaf anonieme IP-adressen
@@ -151,7 +151,7 @@ Beheerders moeten bepalen hoe gebruikers hun methoden registreren. Organisaties 
 
 ### <a name="registration-with-identity-protection"></a>Registratie met identiteits beveiliging
 
-Als uw organisatie Azure Active Directory Identity Protection gebruikt, [configureert u het MFA-registratie beleid](../identity-protection/howto-mfa-policy.md) zodat uw gebruikers wordt gevraagd de volgende keer dat ze zich interactief aanmelden in te schrijven.
+Als uw organisatie Azure Active Directory Identity Protection gebruikt, [configureert u het MFA-registratie beleid](../identity-protection/howto-identity-protection-configure-mfa-policy.md) zodat uw gebruikers wordt gevraagd de volgende keer dat ze zich interactief aanmelden in te schrijven.
 
 ### <a name="registration-without-identity-protection"></a>Registratie zonder identiteits beveiliging
 
@@ -165,7 +165,7 @@ Met behulp van de volgende stappen kan een beleid voor voorwaardelijke toegang e
 2. Gebruik voorwaardelijke toegang voor het afdwingen van multi-factor Authentication voor deze groep voor toegang tot alle resources.
 3. Evalueer het groepslid maatschap regel matig en verwijder gebruikers die zijn geregistreerd bij de groep.
 
-U kunt geregistreerde en niet-geregistreerde Azure MFA-gebruikers identificeren met Power shell-opdrachten die afhankelijk zijn van de [MSOnline Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
+U kunt geregistreerde en niet-geregistreerde Azure MFA-gebruikers identificeren met Power shell-opdrachten die afhankelijk zijn van de [MSOnline Power shell-module](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
 
 #### <a name="identify-registered-users"></a>Geregistreerde gebruikers identificeren
 
@@ -281,7 +281,7 @@ De NPS-uitbrei ding fungeert als een adapter tussen RADIUS-en Cloud-Azure MFA om
 
 #### <a name="implementing-your-nps-server"></a>De NPS-server implementeren
 
-Als er al een NPS-exemplaar is geïmplementeerd en in gebruik is, kunt [u uw bestaande NPS-infra structuur integreren met Azure multi-factor Authentication](howto-mfa-nps-extension.md). Als u NPS voor de eerste keer instelt, raadpleegt u [Network Policy Server (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) voor instructies. Richt lijnen voor probleem oplossing vindt u in het artikel de [fout berichten van de NPS-extensie voor Azure multi-factor Authentication oplossen](howto-mfa-nps-extension-errors.md).
+Als er al een NPS-exemplaar is geïmplementeerd en in gebruik is, kunt [u uw bestaande NPS-infra structuur integreren met Azure multi-factor Authentication](howto-mfa-nps-extension.md). Als u NPS voor de eerste keer instelt, raadpleegt u [Network Policy Server (NPS)](/windows-server/networking/technologies/nps/nps-top) voor instructies. Richt lijnen voor probleem oplossing vindt u in het artikel de [fout berichten van de NPS-extensie voor Azure multi-factor Authentication oplossen](howto-mfa-nps-extension-errors.md).
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>NPS voorbereiden voor gebruikers die niet zijn Inge schreven voor MFA
 
@@ -325,7 +325,7 @@ Standaard AD FS 2016 en 2019 logboek registratie in het Windows-beveiligings log
 
 Op elke AD FS-server, in het archief van de lokale computer, is er een zelfondertekend Azure MFA-certificaat met de titel OE = micro soft AD FS Azure MFA, dat de verval datum van het certificaat bevat. Controleer de geldigheids periode van dit certificaat op elke AD FS-server om de verval datum te bepalen.
 
-Als de geldigheids periode van uw certificaten bijna is verlopen, [genereert en verifieert u een nieuw MFA-certificaat op elke AD FS-server](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
+Als de geldigheids periode van uw certificaten bijna is verlopen, [genereert en verifieert u een nieuw MFA-certificaat op elke AD FS-server](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
 In de volgende richt lijnen vindt u informatie over het beheren van de Azure MFA-certificaten op uw AD FS-servers. Wanneer u AD FS met Azure MFA configureert, zijn de certificaten die zijn gegenereerd via de `New-AdfsAzureMfaTenantCertificate` Power shell-cmdlet twee jaar geldig. Vernieuw en installeer de verlengde certificaten vóór de verval datum van Ovoid-onderbrekingen in de MFA-service.
 
@@ -336,7 +336,7 @@ Nu u uw oplossing hebt gepland, kunt u deze implementeren door de volgende stapp
 1. Voldoen aan de vereiste vereisten
    1. [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) implementeren voor hybride scenario's
    1. [Azure AD-toepassingsproxy](../manage-apps/application-proxy.md) implementeren voor alle on-premises apps die zijn gepubliceerd voor Cloud toegang
-   1. [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) implementeren voor RADIUS-verificatie
+   1. [NPS](/windows-server/networking/technologies/nps/nps-top) implementeren voor RADIUS-verificatie
    1. Zorg ervoor dat gebruikers zijn overgestapt op ondersteunde versies van Microsoft Office waarvoor moderne verificatie is ingeschakeld
 1. Gekozen [verificatie methoden](#choose-verification-options) configureren
 1. Definieer uw [benoemde netwerk locaties](../conditional-access/location-condition.md#named-locations)
@@ -344,7 +344,7 @@ Nu u uw oplossing hebt gepland, kunt u deze implementeren door de volgende stapp
 1. Uw [beleid voor voorwaardelijke toegang](#create-conditional-access-policy) configureren
 1. Configureer uw MFA-registratie beleid
    1. [Gecombineerde MFA en SSPR](howto-registration-mfa-sspr-combined.md)
-   1. Met [identiteits beveiliging](../identity-protection/howto-mfa-policy.md)
+   1. Met [identiteits beveiliging](../identity-protection/howto-identity-protection-configure-mfa-policy.md)
 1. Gebruikers communicatie verzenden en gebruikers ontvangen om te registreren op [https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [Bijhouden wie is inge schreven](#identify-non-registered-users)
 

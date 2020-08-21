@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dd4c95c3c02f4b4a807b5238aa61e76ecb56e3e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680213"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716415"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Verificatie op basis van certificaten op Android Azure Active Directory
 
@@ -42,7 +42,7 @@ Deze functie is beschikbaar als preview-versie van Office 365 Amerikaanse overhe
 | OneDrive |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Outlook |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Power BI |![Vinkje voor ondersteuning voor deze toepassing][1] |
-| Skype voor bedrijven |![Vinkje voor ondersteuning voor deze toepassing][1] |
+| Skype voor Bedrijven |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Word/Excel/Power Point |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Yammer |![Vinkje voor ondersteuning voor deze toepassing][1] |
 
@@ -54,8 +54,8 @@ Er moet een Federatie server worden geconfigureerd.
 
 Als Azure Active Directory een client certificaat wilt intrekken, moet het ADFS-token de volgende claims hebben:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`(Het serie nummer van het client certificaat)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`(De teken reeks voor de verlener van het client certificaat)
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (Het serie nummer van het client certificaat)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (De teken reeks voor de verlener van het client certificaat)
 
 Azure Active Directory voegt deze claims toe aan het vernieuwings token als deze beschikbaar zijn in het ADFS-token (of een ander SAML-token). Wanneer het vernieuwings token moet worden gevalideerd, wordt deze informatie gebruikt om het intrekken te controleren.
 
@@ -64,7 +64,7 @@ Als best practice moet u de ADFS-fout pagina's van uw organisatie bijwerken met 
 * De vereiste voor het installeren van de Microsoft Authenticator op Android.
 * Instructies voor het ophalen van een gebruikers certificaat.
 
-Zie [de AD FS-aanmeldings pagina's aanpassen](https://technet.microsoft.com/library/dn280950.aspx)voor meer informatie.
+Zie [de AD FS-aanmeldings pagina's aanpassen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11))voor meer informatie.
 
 Sommige Office-apps (waarvoor moderne verificatie is ingeschakeld) verzenden '*prompt = login*' naar Azure AD in de aanvraag. Standaard vertaalt Azure AD '*prompt = login*' in de aanvraag bij ADFS als '*wauth = usernamepassworduri*' (vraagt ADFS om u/P-verificatie te doen) en '*wfresh = 0*' (vraagt ADFS de SSO-status te negeren en een nieuwe verificatie uit te voeren). Als u verificatie op basis van certificaten voor deze apps wilt inschakelen, moet u het standaard gedrag van Azure AD wijzigen. Stel de*PromptLoginBehavior*in uw federatieve domein instellingen in op*uitgeschakeld*.
 U kunt de [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) -cmdlet gebruiken om deze taak uit te voeren:
