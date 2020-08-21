@@ -1,20 +1,20 @@
 ---
-title: Onderdelen van Application Gateway
+title: Application Gateway-onderdelen
 description: Dit artikel bevat informatie over de verschillende onderdelen in een toepassings gateway
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.author: absha
-ms.openlocfilehash: 20d43666919f8528c25735592c2727601af10bbb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/21/2020
+ms.author: surmb
+ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088084"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723313"
 ---
-# <a name="application-gateway-components"></a>Onderdelen van Application Gateway
+# <a name="application-gateway-components"></a>Application Gateway-onderdelen
 
  Een toepassings gateway fungeert als één aanspreek punt voor clients. Het distribueert het binnenkomende toepassings verkeer over meerdere back-end-Pools, waaronder Azure-Vm's, schaal sets voor virtuele machines, Azure App Service en on-premises/externe servers. Voor het distribueren van verkeer gebruikt een toepassings gateway verschillende onderdelen die in dit artikel worden beschreven.
 
@@ -69,9 +69,9 @@ Er zijn twee soorten listeners:
 
 - **Basic**. Dit type listener luistert naar één domein site, waarbij deze één DNS-toewijzing heeft voor het IP-adres van de toepassings gateway. Deze listener-configuratie is vereist wanneer u één site host achter een toepassings gateway.
 
-- **Meerdere locaties**. Deze listener-configuratie is vereist wanneer u route ring wilt configureren op basis van de hostnaam of domein naam voor meer dan één webtoepassing op dezelfde toepassings gateway. Hiermee kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één toepassings gateway. Elke website kan worden omgeleid naar een eigen back-endpool. Bijvoorbeeld drie domeinen, contoso.com, fabrikam.com en adatum.com, wijs naar het IP-adres van de toepassings gateway. U maakt drie [multi-site listeners](multiple-site-overview.md) en configureert elke listener voor de respectieve poort-en protocol instelling. 
+- **Meerdere locaties**. Deze listener-configuratie is vereist wanneer u route ring wilt configureren op basis van de hostnaam of domein naam voor meer dan één webtoepassing op dezelfde toepassings gateway. Dit stelt u in staat om een efficiëntere topologie voor uw implementaties te configureren door maximaal 100 websites toe te voegen aan één toepassingsgateway. Elke website kan worden omgeleid naar een eigen back-endpool. Drie domeinen - contoso.com, fabrikam.com en adatum.com - wijzen bijvoorbeeld naar het IP-adres van de toepassingsgateway. U maakt drie [multi-site listeners](multiple-site-overview.md) en configureert elke listener voor de respectieve poort-en protocol instelling. 
 
-    U kunt ook hostnamen voor joker tekens definiëren in een multi-site-listener en Maxi maal vijf hostnamen per listener. Zie [namen van hostnamen in listener (preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview)voor meer informatie.
+    U kunt ook hostnamen met jokertekens definiëren in een listener voor meerdere sites (maximaal vijf hostnamen per listener). Zie [namen van hostnamen in listener (preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview)voor meer informatie.
 
     Zie voor meer informatie over het configureren van een multi-site [-listener meerdere sites hosten in Application Gateway met behulp van Azure Portal](create-multiple-sites-portal.md).
 

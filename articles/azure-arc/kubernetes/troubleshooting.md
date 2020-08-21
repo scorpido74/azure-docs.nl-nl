@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Veelvoorkomende problemen met Kubernetes-clusters met Arc-functionaliteit oplossen.
 keywords: Kubernetes, Arc, Azure, containers
-ms.openlocfilehash: 1527f8d4ca06c2deaf4ce18b73bfdb515dcadc63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725581"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723670"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Probleem oplossing voor Azure Arc ingeschakeld Kubernetes (preview)
 
@@ -69,9 +69,9 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-Alle peulen moeten `STATUS` worden weer gegeven als `Running` en `READY` moeten ofwel `3/3` of zijn `2/2` . Logboeken ophalen en de peulen beschrijven die worden geretourneerd `Error` of `CrashLoopBackOff` .
+Alle peulen moeten `STATUS` worden weer gegeven als `Running` en `READY` moeten ofwel `3/3` of zijn `2/2` . Logboeken ophalen en de peulen beschrijven die worden geretourneerd `Error` of `CrashLoopBackOff` . Als een van deze peulen in `Pending` staat is, kan dit worden veroorzaakt door onvoldoende bronnen op cluster knooppunten. Als u [het cluster omhoog schaalt](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster) , krijgen deze peulen de `Running` status.
 
-## <a name="unable-to-connect-my-kubernetes-cluster-to-azure"></a>Kan geen verbinding maken tussen mijn Kubernetes-cluster en Azure
+## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Kubernetes-clusters verbinden met Azure Arc
 
 Voor het verbinden van clusters met Azure is toegang vereist tot zowel een Azure-abonnement als `cluster-admin` toegang tot een doel cluster. Als het cluster niet kan worden bereikt of als de onboarding van onvoldoende machtigingen kan worden uitgevoerd.
 
@@ -99,8 +99,6 @@ $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
-
-There was a problem with connect-agent deployment. Please run 'kubectl -n azure-arc logs -l app.kubernetes.io/component=connect-agent -c connect-agent' to debug the error.
 ```
 
 ## <a name="configuration-management"></a>Configuratiebeheer
@@ -116,7 +114,7 @@ az k8sconfiguration create <parameters> --debug
 ### <a name="create-source-control-configuration"></a>Broncode beheer configuratie maken
 De rol Inzender voor de resource micro soft. Kubernetes/connectedCluster is nood zakelijk en voldoende voor het maken van een resource van micro soft. KubernetesConfiguration/sourceControlConfiguration.
 
-### <a name="configuration-remains-pending"></a>Configuratie blijft`Pending`
+### <a name="configuration-remains-pending"></a>Configuratie blijft `Pending`
 
 ```console
 kubectl -n azure-arc logs -l app.kubernetes.io/component=config-agent -c config-agent
@@ -158,4 +156,11 @@ kind: List
 metadata:
   resourceVersion: ""
   selfLink: ""
+```
+## <a name="monitoring"></a>Bewaking
+
+Voor het Azure Monitor van containers moet de Daemonset worden uitgevoerd in de geprivilegieerde modus. Voer de volgende opdracht uit om een canonieke geruimen Kubernetes-cluster voor bewaking in te stellen:
+
+```console
+juju config kubernetes-worker allow-privileged=true
 ```

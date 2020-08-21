@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e0cb9492f6e0b52cb0816d16be5d67d3b92cfe56
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ef9c578a936160379e1daabbe62b3c3fa5bdd172
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651400"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723874"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -76,7 +76,7 @@ Hoewel ML-pijp lijnen modellen kunnen trainen, kunnen ze ook gegevens voorbereid
 Gebruik de volgende secties om deze reken doelen te configureren:
 
 * [Lokale computer](#local)
-* [Azure Machine Learning Compute-Cluster](#amlcompute)
+* [Azure Machine Learning-rekenclusters](#amlcompute)
 * [Azure Machine Learning-rekeninstantie](#instance)
 * [Externe virtuele machines](#vm)
 * [Azure HDInsight](#hdinsight)
@@ -151,7 +151,7 @@ Gebruik een van de volgende manieren om een VM met lage prioriteit op te geven:
 
 
 
-### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning-rekeninstantie
+### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Reken instantie Azure Machine Learning
 
 [Azure machine learning Compute-instantie](concept-compute-instance.md) is een infra structuur voor beheerde berekeningen waarmee u eenvoudig één virtuele machine kunt maken. De berekening wordt gemaakt in uw werkruimte regio, maar in tegens telling tot een reken cluster kan een exemplaar niet worden gedeeld met andere gebruikers in uw werk ruimte. Het exemplaar wordt ook niet automatisch omlaag geschaald.  U moet de resource stoppen om lopende kosten te voor komen.
 
@@ -161,7 +161,33 @@ Reken instanties kunnen taken veilig uitvoeren in een [virtuele netwerk omgeving
 
 1. **Maken en koppelen**: 
     
-    [! notebook-python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb? name = create_instance)]
+    ```python
+    import datetime
+    import time
+    
+    from azureml.core.compute import ComputeTarget, ComputeInstance
+    from azureml.core.compute_target import ComputeTargetException
+    
+    # Choose a name for your instance
+    # Compute instance name should be unique across the azure region
+    compute_name = "ci{}".format(ws._workspace_id)[:10]
+    
+    # Verify that instance does not exist already
+    try:
+        instance = ComputeInstance(workspace=ws, name=compute_name)
+        print('Found existing instance, use it.')
+    except ComputeTargetException:
+        compute_config = ComputeInstance.provisioning_configuration(
+            vm_size='STANDARD_D3_V2',
+            ssh_public_access=False,
+            # vnet_resourcegroup_name='<my-resource-group>',
+            # vnet_name='<my-vnet-name>',
+            # subnet_name='default',
+            # admin_user_ssh_public_key='<my-sshkey>'
+        )
+        instance = ComputeInstance.create(ws, compute_name, compute_config)
+        instance.wait_for_completion(show_output=True)
+    ```
 
 1. **Configureren**: een uitvoerings configuratie maken.
     

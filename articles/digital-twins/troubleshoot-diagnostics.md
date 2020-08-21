@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612398"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723925"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problemen oplossen met Azure Digital Apparaatdubbels: logboek registratie van diagnostische gegevens
 
@@ -49,7 +49,7 @@ Hier vindt u informatie over het inschakelen van diagnostische instellingen voor
     
 4. Sla de nieuwe instellingen op. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Scherm opname van de pagina met Diagnostische instellingen en de knop die u wilt toevoegen":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Scherm afbeelding van de pagina met Diagnostische instellingen waarop de gebruiker de naam van de diagnostische instelling heeft ingevuld en enkele selectie vakjes hebt geselecteerd voor categorie Details en doel gegevens. De knop Opslaan is gemarkeerd.":::
 
 Nieuwe instellingen worden in ongeveer 10 minuten van kracht. Daarna worden logboeken weer gegeven in de geconfigureerde doel weer op de pagina **Diagnostische instellingen** voor uw exemplaar. 
 
@@ -81,18 +81,147 @@ Hier volgt een uitgebreide lijst met de bewerkingen en bijbehorende [Azure Digit
 | Logboekcategorie | Bewerking | REST API-aanroepen en andere gebeurtenissen |
 | --- | --- | --- |
 | ADTModelsOperation | Micro soft. DigitalTwins/modellen/schrijven | Update-API voor digitale dubbele modellen |
-|  | Micro soft. DigitalTwins/modellen/lezen | Digitale twee modellen ontvangen op id en lijst-Api's |
+|  | Micro soft. DigitalTwins/modellen/lezen | Digitale twee modellen ontvangen op ID en lijst-Api's |
 |  | Micro soft. DigitalTwins/modellen/verwijderen | Digitale dubbele modellen API verwijderen |
 |  | Micro soft. DigitalTwins/modellen/actie | Digitale dubbele modellen API toevoegen |
 | ADTQueryOperation | Micro soft. DigitalTwins/query/actie | Query Apparaatdubbels-API |
 | ADTEventRoutesOperation | Micro soft. DigitalTwins/eventroutes/schrijven | Gebeurtenis routes toevoegen API |
-|  | Micro soft. DigitalTwins/eventroutes/lezen | Gebeurtenis routes ophalen op basis van id en lijst-Api's |
+|  | Micro soft. DigitalTwins/eventroutes/lezen | Gebeurtenis routes ophalen op basis van ID en lijst-Api's |
 |  | Micro soft. DigitalTwins/eventroutes/verwijderen | Gebeurtenis routes verwijderen API |
 |  | Micro soft. DigitalTwins/eventroutes/actie | Fout bij het publiceren van gebeurtenissen naar een eindpunt service (geen API-aanroep) |
 | ADTDigitalTwinsOperation | Micro soft. DigitalTwins/DigitalTwins/schrijven | Digitale Apparaatdubbels toevoegen, relatie toevoegen, bijwerken, onderdeel bijwerken |
-|  | Micro soft. DigitalTwins/DigitalTwins/lezen | Digital Apparaatdubbels get by id, component ophalen, relatie ophalen op id, binnenkomende relaties weer geven, lijst relaties |
+|  | Micro soft. DigitalTwins/DigitalTwins/lezen | Digital Apparaatdubbels get by ID, component ophalen, relatie ophalen op ID, binnenkomende relaties weer geven, lijst relaties |
 |  | Micro soft. DigitalTwins/DigitalTwins/verwijderen | Digitale Apparaatdubbels verwijderen, relatie verwijderen |
 |  | Micro soft. DigitalTwins/DigitalTwins/actie | Digital Apparaatdubbels, telemetrie van het onderdeel verzenden, telemetrie verzenden |
+
+## <a name="log-schemas"></a>Logboek schema's 
+
+Elke logboek categorie heeft een schema dat definieert hoe gebeurtenissen in die categorie worden gerapporteerd. Elke afzonderlijke logboek vermelding wordt als tekst opgeslagen en opgemaakt als een JSON-blob. De velden in de logboeken en voor beeld-JSON-instanties worden aangegeven voor elk logboek type hieronder. 
+
+`ADTDigitalTwinsOperation`, `ADTModelsOperation` en `ADTQueryOperation` gebruik een consistent API-logboek schema; `ADTEventRoutesOperation` heeft een eigen afzonderlijk schema.
+
+### <a name="api-log-schemas"></a>API-logboek schema's
+
+Dit logboek schema is consistent voor `ADTDigitalTwinsOperation` , `ADTModelsOperation` en `ADTQueryOperation` . Het bevat informatie die betrekking heeft op API-aanroepen naar een Azure Digital Apparaatdubbels-exemplaar.
+
+Dit zijn de omschrijvingen van velden en eigenschappen voor API-Logboeken.
+
+| Veldnaam | Gegevenstype | Beschrijving |
+|-----|------|-------------|
+| `Time` | DateTime | De datum en tijd waarop deze gebeurtenis is opgetreden, in UTC |
+| `ResourceID` | Tekenreeks | De Azure Resource Manager Resource-ID voor de resource waar het evenement plaatsvond |
+| `OperationName` | Tekenreeks  | Het type actie dat wordt uitgevoerd tijdens de gebeurtenis |
+| `OperationVersion` | Tekenreeks | De API-versie die wordt gebruikt tijdens de gebeurtenis |
+| `Category` | Tekenreeks | Het type bron dat wordt verzonden |
+| `ResultType` | Tekenreeks | Resultaat van de gebeurtenis |
+| `ResultSignature` | Tekenreeks | Http-status code voor de gebeurtenis |
+| `ResultDescription` | Tekenreeks | Aanvullende informatie over de gebeurtenis |
+| `DurationMs` | Tekenreeks | Hoe lang het duurt om de gebeurtenis in milliseconden uit te voeren |
+| `CallerIpAddress` | Tekenreeks | Een gemaskeerde IP-adres van de bron voor de gebeurtenis |
+| `CorrelationId` | Guid | Door de klant ingevoerde unieke id voor de gebeurtenis |
+| `Level` | Tekenreeks | De ernst van de logboek registratie van de gebeurtenis |
+| `Location` | Tekenreeks | De regio waar het evenement plaatsvond |
+| `RequestUri` | Uri | Het eind punt dat wordt gebruikt tijdens de gebeurtenis |
+
+Hieronder ziet u voor beelden van JSON-instanties voor deze typen logboeken.
+
+#### <a name="adtdigitaltwinsoperation"></a>ADTDigitalTwinsOperation
+
+```json
+{
+  "time": "2020-03-14T21:11:14.9918922Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/digitaltwins/write",
+  "operationVersion": "2020-05-31-preview",
+  "category": "DigitalTwinOperation",
+  "resultType": "Success",
+  "resultSignature": "200",
+  "resultDescription": "",
+  "durationMs": "314",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-05-31-preview"
+}
+```
+
+#### <a name="adtmodelsoperation"></a>ADTModelsOperation
+
+```json
+{
+  "time": "2020-10-29T21:12:24.2337302Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/models/write",
+  "operationVersion": "2020-05-31-preview",
+  "category": "ModelsOperation",
+  "resultType": "Success",
+  "resultSignature": "201",
+  "resultDescription": "",
+  "durationMs": "935",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-05-31-preview",
+}
+```
+
+#### <a name="adtqueryoperation"></a>ADTQueryOperation
+
+```json
+{
+  "time": "2020-12-04T21:11:44.1690031Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/query/action",
+  "operationVersion": "2020-05-31-preview",
+  "category": "QueryOperation",
+  "resultType": "Success",
+  "resultSignature": "200",
+  "resultDescription": "",
+  "durationMs": "255",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-05-31-preview",
+}
+```
+
+### <a name="egress-log-schemas"></a>Uitgangs logboek schema's
+
+Dit is het schema voor `ADTEventRoutesOperation` Logboeken. Deze bevatten informatie over uitzonde ringen en de API-bewerkingen rond eind punten die zijn verbonden met een Azure Digital Apparaatdubbels-exemplaar.
+
+|Veldnaam | Gegevenstype | Beschrijving |
+|-----|------|-------------|
+| `Time` | DateTime | De datum en tijd waarop deze gebeurtenis is opgetreden, in UTC |
+| `ResourceId` | Tekenreeks | De Azure Resource Manager Resource-ID voor de resource waar het evenement plaatsvond |
+| `OperationName` | Tekenreeks  | Het type actie dat wordt uitgevoerd tijdens de gebeurtenis |
+| `Category` | Tekenreeks | Het type bron dat wordt verzonden |
+| `ResultDescription` | Tekenreeks | Aanvullende informatie over de gebeurtenis |
+| `Level` | Tekenreeks | De ernst van de logboek registratie van de gebeurtenis |
+| `Location` | Tekenreeks | De regio waar het evenement plaatsvond |
+| `EndpointName` | Tekenreeks | De naam van het uitgangs eindpunt dat is gemaakt in azure Digital Apparaatdubbels |
+
+Hieronder ziet u voor beelden van JSON-instanties voor deze typen logboeken.
+
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+
+```json
+{
+  "time": "2020-11-05T22:18:38.0708705Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/eventroutes/action",
+  "category": "EventRoutesOperation",
+  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
+  "level": "3",
+  "location": "southcentralus",
+  "properties": {
+    "endpointName": "endpointEventGridInvalidKey"
+  }
+}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

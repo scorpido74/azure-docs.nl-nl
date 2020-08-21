@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Een Azure Arc-Kubernetes-cluster verbinden met Azure Arc
 keywords: Kubernetes, Arc, azure, K8s, containers
 ms.custom: references_regions
-ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080487"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723738"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Een Azure Arc-Kubernetes-cluster verbinden (preview-versie)
 
@@ -61,8 +61,8 @@ Controleer of u de volgende vereisten hebt voor bereid:
 
 Voor Azure Arc-agenten moeten de volgende protocollen/poorten/uitgaande Url's worden gebruikt.
 
-* TCP op poort 443-->`https://:443`
-* TCP op poort 9418-->`git://:9418`
+* TCP op poort 443--> `https://:443`
+* TCP op poort 9418--> `git://:9418`
 
 | Eind punt (DNS)                                                                                               | Beschrijving                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -72,6 +72,7 @@ Voor Azure Arc-agenten moeten de volgende protocollen/poorten/uitgaande Url's wo
 | `https://github.com`, git://github.com                                                                         | Voor beeld van GitOps opslag plaatsen worden gehost op GitHub. Configuratie agent vereist connectiviteit met het opgegeven Git-eind punt dat u opgeeft. |
 | `https://login.microsoftonline.com`                                                                            | Vereist om Azure Resource Manager-tokens op te halen en bij te werken                                                                                    |
 | `https://azurearcfork8s.azurecr.io`                                                                            | Vereist voor het ophalen van container installatie kopieën voor Azure Arc-agents                                                                  |
+| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Vereist voor het ophalen van door het systeem toegewezen beheerde identiteits certificaten                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Registreer de twee providers voor Azure Arc enabled Kubernetes:
 
@@ -113,7 +114,7 @@ eastus      AzureArcTest
 
 We gaan ons Kubernetes-cluster nu koppelen aan Azure. De werk stroom voor `az connectedk8s connect` is als volgt:
 
-1. Controleer de verbinding met uw Kubernetes-cluster: via `KUBECONFIG` , `~/.kube/config` , of`--kube-config`
+1. Controleer de verbinding met uw Kubernetes-cluster: via `KUBECONFIG` , `~/.kube/config` , of `--kube-config`
 1. Azure Arc-agents voor Kubernetes implementeren met behulp van helm 3 in de `azure-arc` naam ruimte
 
 ```console
@@ -174,7 +175,7 @@ U kunt deze resource ook bekijken op de [Azure Portal](https://portal.azure.com/
 
 ## <a name="connect-using-an-outbound-proxy-server"></a>Verbinding maken via een uitgaande proxy server
 
-Als uw cluster zich achter een uitgaande proxy server bevindt, moeten Azure CLI en de Arc enabled Kubernetes-agents hun aanvragen via de uitgaande proxy server routeren. De volgende configuratie zorgt ervoor dat:
+Als uw cluster zich achter een uitgaande proxy server bevindt, moeten Azure CLI en de Arc enabled Kubernetes-agents hun aanvragen via de uitgaande proxy server routeren. Met de volgende configuratie kunt u:
 
 1. Controleer de versie van de `connectedk8s` extensie die op uw computer is geïnstalleerd door deze opdracht uit te voeren:
 
@@ -182,7 +183,7 @@ Als uw cluster zich achter een uitgaande proxy server bevindt, moeten Azure CLI 
     az -v
     ```
 
-    U hebt `connectedk8s` extensie versie >= 0.2.3 nodig voor het instellen van agents met een uitgaande proxy. Als u versie < 0.2.3 op uw computer, volgt u de [stappen](#before-you-begin) voor het bijwerken om de nieuwste versie van de extensie op uw computer te verkrijgen.
+    U hebt `connectedk8s` extensie versie >= 0.2.3 nodig om agents met een uitgaande proxy in te stellen. Als u versie < 0.2.3 op uw computer, volgt u de [stappen](#before-you-begin) voor het bijwerken om de nieuwste versie van de extensie op uw computer te verkrijgen.
 
 2. Stel de omgevings variabelen in die nodig zijn voor Azure CLI:
 

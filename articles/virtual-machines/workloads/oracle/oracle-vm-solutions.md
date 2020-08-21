@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 4489aae873c3fa4153974209074e14959307c772
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c22c5fa9c1a1680734a8cf5d8f4079e8c7b5c5f7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690337"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723413"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle-VM-installatie kopieën en hun implementatie op Microsoft Azure
 
@@ -118,7 +118,7 @@ Wanneer Oracle-software en-workloads van on-premises naar Microsoft Azure worden
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
 
-Oracle Real Application Cluster (Oracle RAC) is ontworpen om het mislukken van één knoop punt in een on-premises cluster configuratie met meerdere knoop punten te verhelpen. Het is afhankelijk van twee on-premises technologieën die niet standaard zijn voor het maken van open bare Cloud omgevingen: netwerk multi cast en gedeelde schijven. Als uw database oplossing Oracle RAC vereist in azure, hebt u de software van derden nodig om deze technologieën in te scha kelen. Zie de [pagina FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)voor meer informatie over Oracle RAC.
+Oracle Real Application Cluster (Oracle RAC) is ontworpen om het mislukken van één knoop punt in een on-premises cluster configuratie met meerdere knoop punten te verhelpen. Het is afhankelijk van twee on-premises technologieën die niet standaard zijn voor het maken van open bare Cloud omgevingen: netwerk multi cast en gedeelde schijven. Als uw database oplossing Oracle RAC vereist in azure, hebt u software van derden nodig om deze technologieën in te scha kelen. Zie de [pagina FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)voor meer informatie over Oracle RAC.
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Overwegingen voor hoge Beschik baarheid en herstel na nood gevallen
 

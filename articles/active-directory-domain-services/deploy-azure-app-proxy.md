@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 0880f697ceea9c10a070ede0a73235022ce0529d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: f02f8c0c5aabc48e7b9966898028485a4687f413
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220286"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723075"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure AD-toepassingsproxy implementeren voor beveiligde toegang tot interne toepassingen in een Azure Active Directory Domain Services beheerd domein
 
@@ -36,7 +36,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
     * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
     * Een **Azure AD Premium licentie** is vereist voor het gebruik van de Azure AD-toepassingsproxy.
 * Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
-    * [Maak en configureer, indien nodig, een door Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
+    * [Maak en configureer zo nodig een door Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 
 ## <a name="create-a-domain-joined-windows-vm"></a>Een aan een domein gekoppelde Windows-VM maken
 
@@ -113,7 +113,7 @@ Als u meerdere Azure AD-toepassingsproxy-connectors implementeert, moet u op res
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met Azure AD-toepassingsproxy geïntegreerd met Azure AD DS kunt u toepassingen publiceren zodat gebruikers er toegang toe hebben. Zie [toepassingen publiceren met Azure AD-toepassingsproxy](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)voor meer informatie.
+Met Azure AD-toepassingsproxy geïntegreerd met Azure AD DS kunt u toepassingen publiceren zodat gebruikers er toegang toe hebben. Zie [toepassingen publiceren met Azure AD-toepassingsproxy](../active-directory/manage-apps/application-proxy-add-on-premises-application.md)voor meer informatie.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

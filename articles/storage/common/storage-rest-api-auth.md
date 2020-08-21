@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: d43df68f48273b03fa9bde9633b487d69c0834ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 29bec00916f4cc3683dae5b6d3065e02a3cbe10f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905377"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724163"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API bewerkingen aanroepen met gedeelde sleutel autorisatie
 
@@ -65,7 +65,7 @@ Controleer de verwijzing voor de [ListContainers](/rest/api/storageservices/List
 
 **Aanvraag methode**: ophalen. Dit woord is de HTTP-methode die u opgeeft als een eigenschap van het object Request. Andere waarden voor deze term zijn onder andere HEAD, PUT en DELETE, afhankelijk van de API die u aanroept.
 
-**Aanvraag-URI**: `https://myaccount.blob.core.windows.net/?comp=list` .De aanvraag-URI wordt gemaakt op basis van het eind punt van het Blob-opslag account `http://myaccount.blob.core.windows.net` en de bron teken reeks `/?comp=list` .
+**Aanvraag-URI**: `https://myaccount.blob.core.windows.net/?comp=list` .De aanvraag-URI wordt gemaakt op basis van het eind punt van het Blob-opslag account `https://myaccount.blob.core.windows.net` en de bron teken reeks `/?comp=list` .
 
 [URI-para meters](/rest/api/storageservices/List-Containers2#uri-parameters): er zijn aanvullende query parameters die u kunt gebruiken bij het aanroepen van ListContainers. Enkele van deze para meters zijn *time-out* voor de aanroep (in seconden) en het *voor voegsel*, dat wordt gebruikt voor het filteren.
 

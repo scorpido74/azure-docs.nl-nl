@@ -2,17 +2,17 @@
 title: End-to-end TLS inschakelen op Azure-toepassing gateway
 description: Dit artikel bevat een overzicht van de Application Gateway end-to-end TLS-ondersteuning.
 services: application-gateway
-author: amsriva
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 5/13/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3d714b579bebb096745a47410da3f8f458e27161
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962098"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723296"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway
 
@@ -30,7 +30,7 @@ Application Gateway ondersteunt TLS-beëindiging op de gateway, waarna verkeer d
 Als u TLS-beëindiging wilt configureren, moet er een TLS/SSL-certificaat aan de listener worden toegevoegd om de Application Gateway in te scha kelen voor het afleiden van een symmetrische sleutel conform TLS/SSL-protocol specificatie. De symmetrische sleutel wordt vervolgens gebruikt voor het versleutelen en ontsleutelen van het verkeer dat naar de gateway wordt verzonden. Het TLS/SSL-certificaat moet de PFX-indeling (Personal Information Exchange) hebben. Met deze bestands indeling kunt u de persoonlijke sleutel exporteren die is vereist voor de toepassings gateway om de versleuteling en ontsleuteling van verkeer uit te voeren.
 
 > [!IMPORTANT] 
-> Houd er rekening mee dat voor het certificaat op de listener de volledige certificaat keten moet worden geüpload. 
+> Voor het certificaat op de listener moet de volledige certificaat keten worden geüpload (het basis certificaat van de certificerings instantie, de tussenliggende en het blad certificaat) om de vertrouwens keten in te richten. 
 
 
 > [!NOTE] 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: GitOps gebruiken met helm voor een Azure Arc-cluster configuratie (preview-versie)
 keywords: GitOps, Kubernetes, K8s, azure, helm, Arc, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 44803338a27fc492f4dc896a0edb398b2ce486ea
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cca48910b679ff8f72ee06f4ed990bd480fb2200
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926124"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723636"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Helm-grafieken implementeren met behulp van GitOps op Kubernetes-cluster waarvoor Arc is ingeschakeld (preview)
 
@@ -53,7 +53,7 @@ arc-helm-demo  eastus      k8s-clusters
 
 ```bash
 ├── charts
-│   └── azure-vote
+│   └── azure-arc-sample
 │       ├── Chart.yaml
 │       ├── templates
 │       │   ├── NOTES.txt
@@ -61,34 +61,34 @@ arc-helm-demo  eastus      k8s-clusters
 │       │   └── service.yaml
 │       └── values.yaml
 └── releases
-    └── vote-app.yaml
+    └── app.yaml
 ```
 
-In de Git-opslag plaats hebben we twee directory's, een met een helm-grafiek en één die de configuratie van de releases bevat. In de `releases` map bevat de `vote-app.yaml` HelmRelease-configuratie die hieronder wordt weer gegeven:
+In de Git-opslag plaats hebben we twee directory's, een met een helm-grafiek en één die de configuratie van de releases bevat. In de `releases` map bevat de `app.yaml` HelmRelease-configuratie die hieronder wordt weer gegeven:
 
-```bash
+```yaml
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: vote-app
+  name: azure-arc-sample
   namespace: arc-k8s-demo
 spec:
   releaseName: arc-k8s-demo
   chart:
     git: https://github.com/Azure/arc-helm-demo
     ref: master
-    path: charts/azure-vote
+    path: charts/azure-arc-sample
   values:
-    frontendServiceName: arc-k8s-demo-vote-front
+    serviceName: arc-k8s-demo
 ```
 
 De helm-release configuratie bevat de volgende velden:
 
-- `metadata.name`is verplicht en moet voldoen aan de Kubernetes-naamgevings conventies
-- `metadata.namespace`is optioneel en bepaalt waar de release wordt gemaakt
-- `spec.releaseName`is optioneel en als niet wordt vermeld, wordt de release naam $namespace-$name
-- `spec.chart.path`is de map met de grafiek, opgegeven ten opzichte van de hoofdmap van de opslag plaats
-- `spec.values`zijn gebruikers aanpassingen van standaard parameter waarden in de grafiek zelf
+- `metadata.name` is verplicht en moet voldoen aan de Kubernetes-naamgevings conventies
+- `metadata.namespace` is optioneel en bepaalt waar de release wordt gemaakt
+- `spec.releaseName` is optioneel en als niet wordt vermeld, wordt de release naam $namespace-$name
+- `spec.chart.path` is de map met de grafiek, opgegeven ten opzichte van de hoofdmap van de opslag plaats
+- `spec.values` zijn gebruikers aanpassingen van standaard parameter waarden in de grafiek zelf
 
 De opties die zijn opgegeven in de HelmRelease spec.-waarden, overschrijven de opties die zijn opgegeven in values. yaml uit de grafiek bron.
 
@@ -96,10 +96,10 @@ Meer informatie over de HelmRelease vindt u in de officiële [helm-operator docu
 
 ## <a name="create-a-configuration"></a>Een configuratie maken
 
-Met de Azure CLI-extensie voor kunt `k8sconfiguration` u ons verbonden cluster koppelen aan de voor beeld van de Git-opslag plaats. We geven deze configuratie een naam `azure-voting-app` en implementeren de stroom operator in de `arc-k8s-demo` naam ruimte.
+Met de Azure CLI-extensie voor kunt `k8sconfiguration` u ons verbonden cluster koppelen aan de voor beeld van de Git-opslag plaats. We geven deze configuratie een naam `azure-arc-sample` en implementeren de stroom operator in de `arc-k8s-demo` naam ruimte.
 
 ```bash
-az k8sconfiguration create --name azure-voting-app \
+az k8sconfiguration create --name azure-arc-sample \
   --resource-group $RESOURCE_GROUP --cluster-name $CLUSTER_NAME \
   --operator-instance-name flux --operator-namespace arc-k8s-demo \
   --operator-params='--git-readonly --git-path=releases' \
@@ -118,7 +118,7 @@ az k8sconfiguration create --name azure-voting-app \
 Controleer met behulp van de Azure CLI of de `sourceControlConfiguration` is gemaakt.
 
 ```console
-az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-voting-app --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
+az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-arc-sample --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
 ```
 
 De `sourceControlConfiguration` resource wordt bijgewerkt met de nalevings status, berichten en informatie over fout opsporing.
@@ -139,8 +139,8 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
     "chartValues": "--set helm.versions=v3",
     "chartVersion": "0.6.0"
   },
-  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/azure-voting-app",
-  "name": "azure-voting-app",
+  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/azure-arc-sample",
+  "name": "azure-arc-sample",
   "operatorInstanceName": "flux",
   "operatorNamespace": "arc-k8s-demo",
   "operatorParams": "--git-readonly --git-path=releases",
@@ -156,10 +156,10 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="validate-application"></a>Toepassing valideren
 
-Voer de volgende opdracht uit en navigeer naar `localhost:3000` in uw browser om te controleren of de toepassing wordt uitgevoerd.
+Voer de volgende opdracht uit en navigeer naar `localhost:8080` in uw browser om te controleren of de toepassing wordt uitgevoerd.
 
 ```bash
-kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo-vote-front 3000:80
+kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506325"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723160"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Een Azure Active Directory Domain Services resource-forest en een uitgaand forest-vertrouwens relatie met een on-premises domein maken met behulp van Azure PowerShell
 
@@ -56,7 +56,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-In dit artikel maakt en configureert u de uitgaande forestvertrouwensrelatie vanuit een beheerd domein met behulp van de Azure Portal. Meld u eerst aan bij de [Azure-portal](https://portal.azure.com) om aan de slag te gaan.
+In dit artikel maakt en configureert u de uitgaande forestvertrouwensrelatie vanuit een beheerd domein met behulp van de Azure Portal. Meld u eerst aan bij [Azure Portal](https://portal.azure.com) om aan de slag te gaan.
 
 ## <a name="deployment-process"></a>Implementatieproces
 
@@ -148,15 +148,15 @@ Voordat u begint, moet u ervoor zorgen dat u inzicht krijgt in de [overwegingen 
 
 1. De hybride verbinding met uw on-premises netwerk met Azure maken met behulp van een Azure VPN-of Azure ExpressRoute-verbinding. De configuratie van het hybride netwerk valt buiten het bereik van deze documentatie en kan al bestaan in uw omgeving. Raadpleeg de volgende artikelen voor meer informatie over specifieke scenario's:
 
-    * [Azure site-naar-site-VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-    * [Overzicht van Azure ExpressRoute](/azure/expressroute/expressroute-introduction).
+    * [Azure site-naar-site-VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+    * [Overzicht van Azure ExpressRoute](../expressroute/expressroute-introduction.md).
 
     > [!IMPORTANT]
     > Als u de verbinding rechtstreeks maakt naar het virtuele netwerk van uw beheerde domein, gebruikt u een afzonderlijk gateway-subnet. Maak de gateway niet in het subnet van het beheerde domein.
 
 1. Als u een beheerd domein wilt beheren, maakt u een beheer-VM, voegt u deze toe aan het beheerde domein en installeert u de vereiste AD DS-beheer hulpprogramma's.
 
-    Terwijl het forest met het beheerde domein resource wordt geïmplementeerd, [maakt u een Windows Server-VM](https://docs.microsoft.com/azure/active-directory-domain-services/join-windows-vm) en installeert u vervolgens [de kern AD DS-beheer hulpprogramma's](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-management-vm) om de benodigde beheer hulpprogramma's te installeren. Wacht tot een van de volgende stappen wordt uitgevoerd nadat het domein met succes is geïmplementeerd.
+    Terwijl het forest met het beheerde domein resource wordt geïmplementeerd, [maakt u een Windows Server-VM](./join-windows-vm.md) en installeert u vervolgens [de kern AD DS-beheer hulpprogramma's](./tutorial-create-management-vm.md) om de benodigde beheer hulpprogramma's te installeren. Wacht tot een van de volgende stappen wordt uitgevoerd nadat het domein met succes is geïmplementeerd.
 
 1. Valideer de netwerk verbinding tussen uw on-premises netwerk en het virtuele Azure-netwerk.
 
@@ -260,7 +260,7 @@ U moet een virtuele Windows Server-machine koppelen aan het resource domein van 
 1. Maak verbinding met de VM van het beheerde domein met behulp van Extern bureaublad en de referenties van uw beheerde domein beheerder. Als er een verificatie op netwerkniveau-fout (NLA) wordt weer geven, controleert u of het gebruikers account dat u hebt gebruikt geen domein gebruikers account is.
 
     > [!TIP]
-    > Als u een beveiligde verbinding wilt maken met uw Vm's die zijn toegevoegd aan Azure AD Domain Services, kunt u de [Azure bastion host-service](https://docs.microsoft.com/azure/bastion/bastion-overview) gebruiken in ondersteunde Azure-regio's.
+    > Als u een beveiligde verbinding wilt maken met uw Vm's die zijn toegevoegd aan Azure AD Domain Services, kunt u de [Azure bastion host-service](../bastion/bastion-overview.md) gebruiken in ondersteunde Azure-regio's.
 
 1. Open een opdrachtprompt en gebruik de opdracht `whoami` om de DN-naam van de momenteel geverifieerde gebruiker weer te geven:
 
@@ -286,7 +286,7 @@ Met behulp van de Windows Server-VM die is toegevoegd aan het forest met het beh
 1. Maak verbinding met de VM van het beheerde domein met behulp van Extern bureaublad en de referenties van uw beheerde domein beheerder. Als er een verificatie op netwerkniveau-fout (NLA) wordt weer geven, controleert u of het gebruikers account dat u hebt gebruikt geen domein gebruikers account is.
 
     > [!TIP]
-    > Als u een beveiligde verbinding wilt maken met uw Vm's die zijn toegevoegd aan Azure AD Domain Services, kunt u de [Azure bastion host-service](https://docs.microsoft.com/azure/bastion/bastion-overview) gebruiken in ondersteunde Azure-regio's.
+    > Als u een beveiligde verbinding wilt maken met uw Vm's die zijn toegevoegd aan Azure AD Domain Services, kunt u de [Azure bastion host-service](../bastion/bastion-overview.md) gebruiken in ondersteunde Azure-regio's.
 
 1. Open **Windows-instellingen**. Zoek en selecteer vervolgens **Netwerkcentrum**.
 1. Kies de optie **Geavanceerde instellingen voor delen wijzigen**.

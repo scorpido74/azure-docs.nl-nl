@@ -2,14 +2,14 @@
 title: Status van asynchrone bewerkingen
 description: Hierin wordt beschreven hoe u asynchrone bewerkingen in azure kunt volgen. Hierin worden de waarden weer gegeven die u gebruikt om de status van een langlopende bewerking op te halen.
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68a00e50c7d3e0da757ee7a3a09274c5f1dbecad
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718421"
+ms.locfileid: "88723449"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Asynchrone Azure-bewerkingen bijhouden
 
@@ -31,7 +31,7 @@ Raadpleeg de [documentatie van rest API](/rest/api/azure/) voor een overzicht va
 
 Nadat u de respons code 201 of 202 hebt opgehaald, kunt u de status van de bewerking controleren.
 
-## <a name="use-url-to-monitor-status"></a>URL gebruiken om de status te controleren
+## <a name="url-to-monitor-status"></a>URL om de status te controleren
 
 Er zijn twee verschillende manieren om de status van de asynchrone bewerking te controleren. U kunt de juiste aanpak bepalen door de header waarden te controleren die worden geretourneerd door de oorspronkelijke aanvraag. Zoek eerst naar:
 
@@ -45,7 +45,9 @@ Als `Azure-AsyncOperation` dit niet het geval is, zoekt u naar:
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation-aanvraag en-antwoord
 
-Als u een URL van de `Azure-AsyncOperation` header waarde hebt, verzendt u een GET-aanvraag naar die URL. Gebruik de waarde van `Retry-After` om te plannen hoe vaak de status moet worden gecontroleerd. De antwoord eigenschappen kunnen variëren, maar bevatten altijd de status van de asynchrone bewerking.
+Als u een URL van de `Azure-AsyncOperation` header waarde hebt, verzendt u een GET-aanvraag naar die URL. Gebruik de waarde van `Retry-After` om te plannen hoe vaak de status moet worden gecontroleerd. U ontvangt een reactie object dat de status van de bewerking aangeeft. Er wordt een andere reactie geretourneerd bij het controleren van de status van de bewerking met de `Location` URL. Zie voor meer informatie over de reactie van een locatie-URL [opslag account maken (202 met locatie en opnieuw proberen na)](#create-storage-account-202-with-location-and-retry-after).
+
+De antwoord eigenschappen kunnen variëren, maar bevatten altijd de status van de asynchrone bewerking.
 
 ```json
 {

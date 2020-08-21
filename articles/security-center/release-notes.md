@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: 7bec65867373293ff06a2295f08a05db6ffaa480
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c7df035aec199953bdf9a6bd56262af70a5a77e7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653831"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723959"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -43,7 +43,7 @@ De updates in augustus zijn onder andere:
 
 ### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>Inventaris van activa-krachtige nieuwe weer gave van de beveiligings postuur van uw assets
 
-De Asset Inventory van Security Center biedt een manier om de beveiligings postuur weer te geven van de resources waarmee u verbinding hebt gemaakt met Security Center.
+De Asset Inventory van Security Center (momenteel als preview-versie) biedt een manier om de beveiligings postuur weer te geven van de resources waarmee u verbinding hebt gemaakt met Security Center.
 
 Security Center regel matig de beveiligings status van uw Azure-resources analyseren om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen voor het oplossen van deze beveiligings problemen. Wanneer een resource openstaande aanbevelingen heeft, worden deze weer gegeven in de inventarisatie.
 

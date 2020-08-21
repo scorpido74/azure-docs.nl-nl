@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: bece22fa0b9d41f29f8829d47a26f4ae2075feac
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 993a73a42887b3869c097d14b6945a1093ac6889
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040109"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723058"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Een door Azure Active Directory Domain Services beheerd domein verwijderen met de Azure Portal
 
@@ -37,7 +37,7 @@ Dit artikel laat u zien hoe u de Azure Portal kunt gebruiken om een beheerd dome
 
 Als u een beheerd domein wilt verwijderen, voert u de volgende stappen uit:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**.
+1. Zoek en selecteer **Azure AD Domain Services** in de Azure-portal.
 1. Selecteer de naam van uw beheerde domein, zoals *aaddscontoso.com*.
 1. Selecteer **Verwijderen** op de pagina **Overzicht**. Om het verwijderen te bevestigen, typt u de domein naam van het beheerde domein opnieuw en selecteert u vervolgens **verwijderen**.
 
@@ -50,5 +50,5 @@ Overweeg [feedback te delen][feedback] voor de functies die u wilt zien in azure
 Zie [een Azure Active Directory Domain Services beheerd domein maken en configureren][create-instance]als u opnieuw aan de slag wilt gaan met Azure AD DS.
 
 <!-- INTERNAL LINKS -->
-[feedback]: contact-us.md
+[feedback]: https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160593%3fcategory_id%3d160593
 [create-instance]: tutorial-create-instance.md

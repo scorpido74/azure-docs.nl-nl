@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 183a3561a7c01d8f0911a70846384cf8ebc7dd9c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254840"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723942"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Configuratie van API Management-service opslaan en configureren met behulp van Git
 
@@ -222,41 +222,41 @@ De laatste instelling, `$ref-policy` , verwijst naar het bestand met globale bel
 ### <a name="apis-folder"></a>de map api's
 De `apis` map bevat een map voor elke API in het service-exemplaar, die de volgende items bevat.
 
-* `apis\<api name>\configuration.json`-Dit is de configuratie voor de API en bevat informatie over de URL van de back-end-service en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u [een specifieke API](/rest/api/apimanagement/2019-12-01/apis/get) met in-indeling moet aanroepen `export=true` `application/json` .
-* `apis\<api name>\api.description.html`-Dit is de beschrijving van de API en komt overeen met de `description` eigenschap van de [API-entiteit](/java/api/com.microsoft.azure.storage.table.entityproperty).
-* `apis\<api name>\operations\`-deze map bevat `<operation name>.description.html` bestanden die zijn toegewezen aan de bewerkingen in de API. Elk bestand bevat de beschrijving van één bewerking in de API, die wordt toegewezen aan de `description` eigenschap van de [entiteit](/rest/api/visualstudio/operations/list#operationproperties) van de bewerking in de rest API.
+* `apis\<api name>\configuration.json` -Dit is de configuratie voor de API en bevat informatie over de URL van de back-end-service en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u [een specifieke API](/rest/api/apimanagement/2019-12-01/apis/get) met in-indeling moet aanroepen `export=true` `application/json` .
+* `apis\<api name>\api.description.html` -Dit is de beschrijving van de API en komt overeen met de `description` eigenschap van de [API-entiteit](/java/api/com.microsoft.azure.storage.table.entityproperty).
+* `apis\<api name>\operations\` -deze map bevat `<operation name>.description.html` bestanden die zijn toegewezen aan de bewerkingen in de API. Elk bestand bevat de beschrijving van één bewerking in de API, die wordt toegewezen aan de `description` eigenschap van de [entiteit](/rest/api/visualstudio/operations/list#operationproperties) van de bewerking in de rest API.
 
 ### <a name="groups-folder"></a>map groepen
 De `groups` map bevat een map voor elke groep die is gedefinieerd in het service-exemplaar.
 
-* `groups\<group name>\configuration.json`: dit is de configuratie voor de groep. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke groep ophalen](/rest/api/apimanagement/2019-12-01/group/get) aanroept.
-* `groups\<group name>\description.html`-Dit is de beschrijving van de groep en komt overeen met de `description` eigenschap van de [entiteit groep](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
+* `groups\<group name>\configuration.json` : dit is de configuratie voor de groep. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke groep ophalen](/rest/api/apimanagement/2019-12-01/group/get) aanroept.
+* `groups\<group name>\description.html` -Dit is de beschrijving van de groep en komt overeen met de `description` eigenschap van de [entiteit groep](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>map beleid
 De `policies` map bevat de beleids instructies voor uw service-exemplaar.
 
-* `policies\global.xml`-bevat beleids regels die zijn gedefinieerd in het globale bereik voor uw service-exemplaar.
-* `policies\apis\<api name>\`-Als u beleids regels hebt gedefinieerd in het API-bereik, zijn deze opgenomen in deze map.
-* `policies\apis\<api name>\<operation name>\`map: als er beleids regels zijn gedefinieerd in het bewerkings bereik, worden deze opgenomen in deze map in `<operation name>.xml` bestanden die worden toegewezen aan de beleids instructies voor elke bewerking.
-* `policies\products\`-Als u beleids regels hebt gedefinieerd op product bereik, zijn deze opgenomen in deze map, die `<product name>.xml` bestanden bevat die zijn gekoppeld aan de beleids instructies voor elk product.
+* `policies\global.xml` -bevat beleids regels die zijn gedefinieerd in het globale bereik voor uw service-exemplaar.
+* `policies\apis\<api name>\` -Als u beleids regels hebt gedefinieerd in het API-bereik, zijn deze opgenomen in deze map.
+* `policies\apis\<api name>\<operation name>\` map: als er beleids regels zijn gedefinieerd in het bewerkings bereik, worden deze opgenomen in deze map in `<operation name>.xml` bestanden die worden toegewezen aan de beleids instructies voor elke bewerking.
+* `policies\products\` -Als u beleids regels hebt gedefinieerd op product bereik, zijn deze opgenomen in deze map, die `<product name>.xml` bestanden bevat die zijn gekoppeld aan de beleids instructies voor elk product.
 
 ### <a name="portalstyles-folder"></a>map portalStyles
 De `portalStyles` map bevat configuratie-en stijl bladen voor aanpassingen van de ontwikkelaars portal voor het service-exemplaar.
 
-* `portalStyles\configuration.json`-bevat de namen van de opmaak modellen die worden gebruikt door de ontwikkelaars Portal
-* `portalStyles\<style name>.css`-elk `<style name>.css` bestand bevat stijlen voor de ontwikkelaars Portal ( `Preview.css` en is `Production.css` standaard).
+* `portalStyles\configuration.json` -bevat de namen van de opmaak modellen die worden gebruikt door de ontwikkelaars Portal
+* `portalStyles\<style name>.css` -elk `<style name>.css` bestand bevat stijlen voor de ontwikkelaars Portal ( `Preview.css` en is `Production.css` standaard).
 
 ### <a name="products-folder"></a>de map Products
 De `products` map bevat een map voor elk product dat is gedefinieerd in het service-exemplaar.
 
-* `products\<product name>\configuration.json`: dit is de configuratie voor het product. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke product ophalen](/rest/api/apimanagement/2019-12-01/product/get) aanroept.
-* `products\<product name>\product.description.html`: dit is de beschrijving van het product en komt overeen met de `description` eigenschap van de [product entiteit](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in de rest API.
+* `products\<product name>\configuration.json` : dit is de configuratie voor het product. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke product ophalen](/rest/api/apimanagement/2019-12-01/product/get) aanroept.
+* `products\<product name>\product.description.html` : dit is de beschrijving van het product en komt overeen met de `description` eigenschap van de [product entiteit](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in de rest API.
 
 ### <a name="templates"></a>sjablonen
 De `templates` map bevat configuratie voor de [e-mail sjablonen](api-management-howto-configure-notifications.md) van het service-exemplaar.
 
-* `<template name>\configuration.json`-Dit is de configuratie voor de e-mail sjabloon.
-* `<template name>\body.html`: dit is de hoofd tekst van de e-mail sjabloon.
+* `<template name>\configuration.json` -Dit is de configuratie voor de e-mail sjabloon.
+* `<template name>\body.html` : dit is de hoofd tekst van de e-mail sjabloon.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor meer informatie over andere manieren om uw service-exemplaar te beheren:

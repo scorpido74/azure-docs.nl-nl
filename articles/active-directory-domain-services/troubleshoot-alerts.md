@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 29bd7490ea9a03118f134ba11923ede2075e6fd5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86222969"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722582"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekende problemen: gemeen schappelijke waarschuwingen en oplossingen in Azure Active Directory Domain Services
 
@@ -106,7 +106,7 @@ Azure AD DS vereist een actief abonnement en kan niet worden verplaatst naar een
 
 Voor Azure AD DS is een actief abonnement vereist. Als het Azure-abonnement waaraan het beheerde domein is gekoppeld, niet actief is, moet u het vernieuwen om het abonnement opnieuw te activeren.
 
-1. [Verleng uw Azure-abonnement](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Verleng uw Azure-abonnement](../cost-management-billing/manage/subscription-disabled.md).
 2. Zodra het abonnement is vernieuwd, kunt u met een melding van Azure AD DS het beheerde domein opnieuw inschakelen.
 
 Wanneer het beheerde domein opnieuw wordt ingeschakeld, wordt de status van het beheerde domein automatisch bijgewerkt binnen twee uur en wordt de waarschuwing verwijderd.
@@ -162,7 +162,7 @@ Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bes
 
 Sommige automatisch gegenereerde service-principals worden gebruikt voor het beheren en maken van resources voor een beheerd domein. Als de toegangs machtigingen voor een van deze service-principals zijn gewijzigd, kan het domein de resources niet op de juiste manier beheren. In de volgende stappen wordt uitgelegd hoe u toegangs machtigingen voor een Service-Principal begrijpt en vervolgens verkent:
 
-1. Meer informatie over [op rollen gebaseerd toegangs beheer en het verlenen van toegang tot toepassingen in de Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+1. Meer informatie over [op rollen gebaseerd toegangs beheer en het verlenen van toegang tot toepassingen in de Azure Portal](../role-based-access-control/role-assignments-portal.md).
 2. Controleer de toegang die de service-principal met de ID *abba844e-bc0e-44b0-947a-dc74e5d09022* heeft en verleen de toegang die op een eerdere datum is geweigerd.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: er is onvoldoende IP-adres in het beheerde domein
@@ -276,7 +276,7 @@ De volgende veelvoorkomende oorzaken hebben tot gevolg dat synchronisatie in een
 
 Voor Azure AD DS is een actief abonnement vereist. Als het Azure-abonnement waaraan het beheerde domein is gekoppeld, niet actief is, moet u het vernieuwen om het abonnement opnieuw te activeren.
 
-1. [Verleng uw Azure-abonnement](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
+1. [Verleng uw Azure-abonnement](../cost-management-billing/manage/subscription-disabled.md).
 2. Zodra het abonnement is vernieuwd, kunt u met een melding van Azure AD DS het beheerde domein opnieuw inschakelen.
 
 Wanneer het beheerde domein opnieuw wordt ingeschakeld, wordt de status van het beheerde domein automatisch bijgewerkt binnen twee uur en wordt de waarschuwing verwijderd.

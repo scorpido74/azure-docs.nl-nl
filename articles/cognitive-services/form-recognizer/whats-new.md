@@ -9,37 +9,61 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 22eab216714d45e4b8a91fd58325424d4baef95e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a48511c896a3e4c677c35ca3069ff236761c444
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272943"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724129"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Wat is er nieuw in Form Recognizer?
 
 De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om op de hoogte te blijven van de functie verbeteringen, oplossingen en documentatie-updates.
 
-> [!NOTE]
-> De Quick starts en hand leidingen voor de formulier Recognizer gebruiken altijd de nieuwste versie van de API, tenzij opgegeven.
+## <a name="august-2020"></a>Augustus 2020
+
+### <a name="new-features"></a>Nieuwe functies
+
+**De open bare preview van de formulier Recognizer v 2.1 is nu beschikbaar.** V 2.1-Preview. 1 is uitgebracht, met inbegrip van de volgende functies: 
+
+
+- **Rest API referentie is beschikbaar** : Bekijk de [referentie v 2.1-Preview. 1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
+- **Nieuwe talen die naast Engels worden ondersteund**, worden de volgende talen nu ondersteund: voor `Layout` en `Train Custom Model` : Engels (en), Chinees (vereenvoudigd) (zh-ZH), Nederlands (nl), Frans (FR), Duits (de), Italiaans (IT), Portugees (PT) en Spaans (ES).
+- **Detectie van selectie vakjes/selectie markering** : formulier Recognizer ondersteunt detectie en extractie van selectie markeringen zoals selectie vakjes en keuze rondjes. De selectie markeringen worden geëxtraheerd in `Layout` en u kunt nu ook labels maken en trainen in `Train Custom Model`  -  _trein voorzien_ om paren van sleutel waarden te extra heren voor selectie markeringen. 
+- Met **model opstellen** kunnen meerdere modellen worden samengesteld en aangeroepen met één model-id. Wanneer een document wordt ingediend om te worden geanalyseerd met een bestaande model-id, wordt eerst een classificatie stap uitgevoerd om deze naar het juiste aangepaste model te routeren. Model opstellen is beschikbaar voor `Train Custom Model`  -  _trein met labels_.
+- **Model naam** Voeg een beschrijvende naam toe aan uw aangepaste modellen, zodat u eenvoudiger kunt beheren en bijhouden.
+- **Nieuw vooraf ontworpen model voor visite kaartjes** voor het extra heren van algemene velden in het Engels, visite kaartjes voor talen.
+- **Nieuwe land instellingen voor vooraf gemaakte ontvangst bevestigingen** naast en-us, ondersteuning is nu beschikbaar voor en-au, en-ca, en-GB, en-in
+- **Kwaliteits verbeteringen** voor `Layout` , `Train Custom Model`  -  _Train zonder labels_ en _trein met labels_.
+
+
+**v 2.0** bevat de volgende update:
+-   De [client bibliotheken](quickstarts/client-library.md) voor net, Python, Java en Java script hebben algemene Beschik baarheid. 
+
+
+**Nieuwe voor beelden** zijn beschikbaar op github. 
+- De [recepten voor kennis extractie: formulieren Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) verzamelen aanbevolen procedures van de klant afspraken van Real Form Recognizer en biedt bruikbare code voorbeelden, controle lijsten en voorbeeld pijplijnen die worden gebruikt voor het ontwikkelen van deze projecten. 
+- Het voor beeld van een [intelligent kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) formulier Recognizer laat zien hoe u `Analyze Receipt` zonder labels integreert en `Train Custom Model`  -  _traint_.
+
+
 
 ## <a name="july-2020"></a>Juli 2020
 
 ### <a name="new-features"></a>Nieuwe functies
 * **v 2.0-verwijzing beschikbaar** Bekijk de [v 2.0 API-referentie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) en de bijgewerkte sdk's voor [.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet), [python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)en [Java script](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest).
-* Verbeteringen in de **tabel en** uitbrei ding van de extractie omvatten nauw keurige verbeteringen en verbeteringen in tabel extractie, met name de mogelijkheid om tabellen en structuren in een aangepaste trein zonder labels te leren. 
+* Verbeteringen in de **tabel en** uitbrei ding van de extractie omvatten nauw keurige verbeteringen en verbeteringen in tabel extractie, met name de mogelijkheid om tabellen en structuren in een _aangepaste trein zonder labels_te leren. 
 * **Valuta ondersteuning** Detectie en extractie van algemene valuta symbolen.
 * **Azure-gov** Formulier herkenning is nu ook beschikbaar in azure gov.
 * **Verbeterde beveiligings functies**: 
-   * **Uw eigen sleutel meenemen**  Met de formulier herkenning worden uw gegevens automatisch versleuteld wanneer deze worden opgeslagen in de cloud om deze te beveiligen en om u te helpen te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Uw abonnement maakt standaard gebruik van door micro soft beheerde versleutelings sleutels. U kunt uw abonnement nu ook beheren met uw eigen coderings sleutels. [Door de klant beheerde sleutels (CMK), ook wel bekend als het nemen van uw eigen sleutel (BYOK)](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest), bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.  
-   * **Persoonlijke eind punten** – Hiermee kunt u een virtueel netwerk (VNet) [gebruiken om veilig toegang te krijgen tot gegevens via een privé-koppeling.](https://docs.microsoft.com/azure/private-link/private-link-overview)
+   * **Uw eigen sleutel meenemen**  Met de formulier herkenning worden uw gegevens automatisch versleuteld wanneer deze worden opgeslagen in de cloud om deze te beveiligen en om u te helpen te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Uw abonnement maakt standaard gebruik van door Microsoft beheerde versleutelingssleutels. U kunt uw abonnement nu ook beheren met uw eigen coderings sleutels. [Door de klant beheerde sleutels (CMK), ook wel bekend als het nemen van uw eigen sleutel (BYOK)](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest), bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelingssleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.  
+   * **Persoonlijke eind punten** – Hiermee kunt u een virtueel netwerk (VNet) [gebruiken om veilig toegang te krijgen tot gegevens via een privé-koppeling. ](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 
 ## <a name="june-2020"></a>Juni 2020
 
 ### <a name="new-features"></a>Nieuwe functies
 * **CopyModel-API is toegevoegd aan de client-sdk's** U kunt nu de client-Sdk's gebruiken om modellen van het ene naar het andere abonnement te kopiëren. Zie [back-ups maken en modellen herstellen](./disaster-recovery.md) voor algemene informatie over deze functie.
-* **Integratie van Azure Active Directory** U kunt nu uw AAD-referenties gebruiken om uw formulieren Recognizer-client objecten in de Sdk's te verifiëren.
+* **Integratie van Azure Active Directory** U kunt nu uw Azure AD-referenties gebruiken om uw formulieren Recognizer-client objecten in de Sdk's te verifiëren.
 * **SDK-specifieke wijzigingen** Dit omvat zowel toevoegingen aan de secundaire functie als belang rijke wijzigingen. Raadpleeg de SDK-changelogs voor meer informatie.
   * [C# SDK preview 3 wijzigingen logboek](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
   * [Python SDK preview 3 wijzigingen logboek](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
@@ -72,11 +96,11 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 
 * **Waardetypen voor labelen** U kunt nu de typen waarden opgeven die u wilt labelen met het hulp programma voor het labelen van het voor beeld van de formulier herkenning. De volgende waardetypen en variaties worden momenteel ondersteund:
   * `string`
-    * standaard, `no-whitespaces` ,`alphanumeric`
+    * standaard, `no-whitespaces`, `alphanumeric`
   * `number`
-    * prijs`currency`
+    * standaard, `currency`
   * `date` 
-    * standaard, `dmy` , `mdy` ,`ymd`
+    * standaard, `dmy`, `mdy`, `ymd`
   * `time`
   * `integer`
 
@@ -107,7 +131,7 @@ Raadpleeg de documentatie die beschikbaar is op [github](https://github.com/micr
 
 ### <a name="tls-12-enforcement"></a>TLS 1.2 afdwingen
 
-TLS 1,2 wordt nu afgedwongen voor alle HTTP-aanvragen voor deze service. Zie [Azure Cognitive Services Security](../cognitive-services-security.md)(Engelstalig) voor meer informatie.
+TLS 1.2 wordt nu afgedwongen voor alle HTTP-aanvragen bij deze service. Zie [Beveiliging van Azure Cognitive Services](../cognitive-services-security.md) voor meer informatie.
 
 ## <a name="january-2020"></a>Januari 2020
 

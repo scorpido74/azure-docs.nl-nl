@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e0188a35289c22da784ca856c80212638052a609
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1e3546239dfcfd4c6ef23ad16f3340f34f958901
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040279"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723211"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Een organisatie-eenheid (OE) maken in een Azure Active Directory Domain Services beheerd domein
 
@@ -89,8 +89,8 @@ Als u een aangepaste OE wilt maken, gebruikt u de Active Directory-beheer Progra
 
 Raadpleeg de volgende artikelen voor meer informatie over het gebruik van de beheer Programma's of het maken en gebruiken van service accounts:
 
-* [Active Directory-beheercentrum: aan de slag](https://technet.microsoft.com/library/dd560651.aspx)
-* [Service Accounts Step-by-Step Guide (Engelstalig)](https://technet.microsoft.com/library/dd548356.aspx)
+* [Active Directory-beheercentrum: aan de slag](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560651(v=ws.10))
+* [Service Accounts Step-by-Step Guide (Engelstalig)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

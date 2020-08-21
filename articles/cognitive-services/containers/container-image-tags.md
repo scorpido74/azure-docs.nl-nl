@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cabc3d2a0f8eb3a75938d1768bb0085aab528391
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e0df3de5eadfd2cc5c00c52da5c4942b42a68b2b
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584600"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722565"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Tags voor Azure Cognitive Services container installatie kopieën
 
@@ -35,13 +35,29 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 ## <a name="computer-vision"></a>Computer Vision
 
-De [Computer Vision][cv-containers] container installatie kopie vindt u in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-read` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
+De [Computer Vision][cv-containers] OCR-container installatie kopie lezen kan worden gevonden in het `containerpreview.azurecr.io` container register. Deze bevindt zich in de `microsoft` opslag plaats en heet `cognitive-services-read` . De volledig gekwalificeerde naam van de container installatie kopie is, `containerpreview.azurecr.io/microsoft/cognitive-services-read` .
 
 Deze container installatie kopie heeft de volgende tags beschikbaar:
 
 | Afbeeldings Tags                    | Opmerkingen |
 |-------------------------------|:------|
-| `latest`                      |       |
+| `latest ( (2.0.013250001-amd64-preview)` | • Verminder het geheugen gebruik voor de container verder. |
+|                                          | • Externe cache is vereist voor het instellen van meerdere peulen. Stel bijvoorbeeld redis in voor caching. |
+|                                          | • Oplossen van ontbrekende resultaten wanneer de redis-cache is ingesteld en ResultExpirationPeriod = 0.  |
+|                                          | • De limiet voor de grootte van de aanvraag hoofdtekst verwijderen van 26MB. De container kan nu >26MB-bestanden accepteren.  |
+|                                          | • Tijds tempel toevoegen en versie bouwen aan console Logboeken.  |
+| `1.1.013050001-amd64-preview`            | * Added ReadEngineConfig: ResultExpirationPeriod container initialisatie configuratie om op te geven wanneer het systeem de herkennings resultaten moet opschonen. |
+|                                          | De instelling is in uren en de standaard waarde is 48hr.   |
+|                                          |   De instelling kan het geheugen gebruik verminderen voor het opslaan van de resultaten, met name als de opslag ruimte in het geheugen wordt gebruikt.  |
+|                                          |    * Voor beeld 1. ReadEngineConfig: ResultExpirationPeriod = 1, het systeem verwijdert het herkennings resultaat 1hr na het proces.   |
+|                                          |    * Voor beeld 2. ReadEngineConfig: ResultExpirationPeriod = 0, het systeem zal het herkennings resultaat wissen na het ophalen van resultaten.  |
+|                                          | Er is een interne server fout 500 opgetreden. er is een ongeldige afbeeldings indeling door gegeven aan het systeem. Er wordt nu een 400-fout geretourneerd:   |
+|                                          | `{`  |
+|                                          | `"error": {`  |
+|                                          |      `"code": "InvalidImageSize",`  |
+|                                          |      `"message": "Image must be between 1024 and 209715200 bytes."`  |
+|                                          |          `}`  |
+|                                          | `}`  |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
