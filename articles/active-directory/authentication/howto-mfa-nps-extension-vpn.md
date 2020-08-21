@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507175"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717860"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Uw VPN-infra structuur integreren met Azure MFA met behulp van de Network Policy Server-extensie voor Azure
 
@@ -41,7 +41,7 @@ Services voor netwerk beleid en-toegang biedt organisaties de volgende mogelijkh
 * Netwerk toegangs beveiliging (NAP) client Health Policies instellen en afdwingen om te bepalen of apparaten onbeperkte of beperkte toegang tot netwerk bronnen worden verleend.
 
 * Bieden een manier om verificatie en autorisatie af te dwingen voor toegang tot draadloze 802.1 x-compatibele en Ethernet-switches.
-  Zie [Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)voor meer informatie.
+  Zie [Network Policy Server](/windows-server/networking/technologies/nps/nps-top)voor meer informatie.
 
 Om de beveiliging te verbeteren en een hoge mate van naleving te bieden, kunnen organisaties NPS integreren met Azure Multi-Factor Authentication om ervoor te zorgen dat gebruikers verificatie in twee stappen gebruiken om verbinding te maken met de virtuele poort op de VPN-server. Gebruikers kunnen alleen toegang krijgen als ze de combi natie van gebruikers naam en wacht woord opgeven en andere informatie die ze beheren. Deze informatie moet worden vertrouwd en kan niet eenvoudig worden gedupliceerd. Het kan een GSM-nummer, een vast nummer of een toepassing op een mobiel apparaat bevatten.
 
@@ -94,7 +94,7 @@ Als u niet beschikt over een werkende VPN-infra structuur, kunt u deze snel make
 
 Services voor netwerk beleid en-toegang biedt de RADIUS-server en-client functionaliteit. In dit artikel wordt ervan uitgegaan dat u de functie Services voor netwerk beleid en-toegang hebt geïnstalleerd op een lidserver of domein controller in uw omgeving. In deze hand leiding configureert u RADIUS voor een VPN-configuratie. Installeer de functie Services voor netwerk beleid en-toegang op een *andere server dan* uw VPN-server.
 
-Zie [een NAP-status beleids server installeren](https://technet.microsoft.com/library/dd296890.aspx)voor meer informatie over het installeren van de functie Service Services voor netwerk beleid en-toegang Windows Server 2012 of hoger. NAP is afgeschaft in Windows Server 2016. Zie [Aanbevolen procedures voor NPS](https://technet.microsoft.com/library/cc771746)voor een beschrijving van best practices voor NPS, met inbegrip van de aanbeveling voor het installeren van NPS op een domein controller.
+Zie [een NAP-status beleids server installeren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10))voor meer informatie over het installeren van de functie Service Services voor netwerk beleid en-toegang Windows Server 2012 of hoger. NAP is afgeschaft in Windows Server 2016. Zie [Aanbevolen procedures voor NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10))voor een beschrijving van best practices voor NPS, met inbegrip van de aanbeveling voor het installeren van NPS op een domein controller.
 
 ### <a name="azure-mfa-license"></a>Azure MFA-licentie
 
@@ -178,7 +178,7 @@ U kunt een standaard instelling (op basis van een wizard) of een geavanceerde co
 
     ![Geef het venster gebruikers groepen op om toegang toe te staan of te weigeren](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. Selecteer **Volgende**.
+9. Selecteer **Next**.
 
 10. Selecteer **volgende**in het venster **IP-filters opgeven** .
 
@@ -446,13 +446,13 @@ Een gerelateerde gebeurtenis in het Azure Multi-Factor Authentication-logboek wo
 
 ![Azure Multi-Factor Authentication-logboeken](./media/howto-mfa-nps-extension-vpn/image48.png)
 
-Raadpleeg de logboek bestanden van de NPS-data base-indeling waarin de NPS-service is geïnstalleerd voor geavanceerde probleem oplossing. De logboek bestanden worden gemaakt in de map _%systemroot%\System32\Logs_ als tekst bestanden met door komma's gescheiden waarden. Zie [NPS data base Format-logboek bestanden interpreteren](https://technet.microsoft.com/library/cc771748.aspx)voor een beschrijving van de logboek bestanden.
+Raadpleeg de logboek bestanden van de NPS-data base-indeling waarin de NPS-service is geïnstalleerd voor geavanceerde probleem oplossing. De logboek bestanden worden gemaakt in de map _%systemroot%\System32\Logs_ als tekst bestanden met door komma's gescheiden waarden. Zie [NPS data base Format-logboek bestanden interpreteren](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10))voor een beschrijving van de logboek bestanden.
 
 De vermeldingen in deze logboek bestanden zijn lastig te interpreteren, tenzij u deze exporteert naar een spread sheet of een Data Base. U kunt een groot aantal hulpprogram ma's voor Internet Authentication Service (IAS) online parseren om u te helpen bij het interpreteren van de logboek bestanden. De uitvoer van een dergelijke Download bare [shareware-toepassing](https://www.deepsoftware.com/iasviewer) wordt hier weer gegeven:
 
 ![Voor beeld van shareware-app IAS-parser](./media/howto-mfa-nps-extension-vpn/image49.png)
 
-Als u extra problemen wilt oplossen, kunt u een protocol analyse gebruiken zoals wireshark of [micro soft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx). De volgende afbeelding uit wireshark toont de RADIUS-berichten tussen de VPN-server en de NPS.
+Als u extra problemen wilt oplossen, kunt u een protocol analyse gebruiken zoals wireshark of [micro soft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide). De volgende afbeelding uit wireshark toont de RADIUS-berichten tussen de VPN-server en de NPS.
 
 ![Micro soft Message Analyzer met gefilterd verkeer](./media/howto-mfa-nps-extension-vpn/image50.png)
 

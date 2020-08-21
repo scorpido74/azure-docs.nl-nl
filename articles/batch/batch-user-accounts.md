@@ -2,14 +2,14 @@
 title: Taken uitvoeren onder gebruikers accounts
 description: Meer informatie over de typen gebruikers accounts en hoe u deze kunt configureren.
 ms.topic: how-to
-ms.date: 11/18/2019
+ms.date: 08/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142673"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719356"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Taken uitvoeren onder gebruikers accounts in batch
 
@@ -49,18 +49,13 @@ Het niveau van de verhoging van het gebruikers account geeft aan of een taak wor
 
 ## <a name="auto-user-accounts"></a>Automatische gebruikers accounts
 
-Taken worden standaard in batch uitgevoerd onder een automatische gebruikers account, als een standaard gebruiker zonder verhoogde toegang en met het taak bereik. Wanneer de specificatie van de automatische gebruiker is geconfigureerd voor het taak bereik, maakt de batch-service alleen een automatische-gebruikers account voor die taak.
+Taken worden standaard uitgevoerd in batch onder een automatische gebruikers account, als standaard gebruiker zonder verhoogde toegang en met groeps bereik. Groeps bereik betekent dat de taak wordt uitgevoerd onder een automatische gebruikers account dat beschikbaar is voor elke taak in de groep. Zie [een taak uitvoeren als een automatische gebruiker met een groeps bereik](#run-a-task-as-an-auto-user-with-pool-scope)voor meer informatie over het groeps bereik.
 
-Het alternatief voor het taak bereik is een groeps bereik. Wanneer de specificatie voor automatische gebruikers voor een taak is geconfigureerd voor het groeps bereik, wordt de taak uitgevoerd onder een automatische gebruikers account dat beschikbaar is voor elke taak in de groep. Zie [een taak uitvoeren als een automatische gebruiker met een groeps bereik](#run-a-task-as-an-auto-user-with-pool-scope)voor meer informatie over het groeps bereik.
-
-Het standaard bereik verschilt op Windows-en Linux-knoop punten:
-
-- Op Windows-knoop punten worden taken standaard onder het taak bereik uitgevoerd.
-- Linux-knoop punten worden altijd uitgevoerd onder groeps bereik.
+Het alternatief voor het bereik van de groep is het taak bereik. Wanneer de specificatie van de automatische gebruiker is geconfigureerd voor het taak bereik, maakt de batch-service alleen een automatische-gebruikers account voor die taak.
 
 Er zijn vier mogelijke configuraties voor de specificatie van automatische gebruikers, elk met een unieke automatische gebruikers account:
 
-- Niet-beheerders toegang met het taak bereik (de standaard specificatie voor automatische gebruikers)
+- Niet-beheerders toegang met taak bereik
 - Beheerder (verhoogde toegang) met taak bereik
 - Niet-beheerders toegang met groeps bereik
 - Beheerders toegang met groeps bereik
@@ -75,7 +70,7 @@ U kunt de automatische gebruikers specificatie voor beheerders bevoegdheden conf
 > [!NOTE]
 > Gebruik alleen verhoogde toegang wanneer dit nodig is. Aanbevolen procedures worden aanbevolen de minimale bevoegdheid toe te kennen die nodig is om het gewenste resultaat te krijgen. Als een begin taak bijvoorbeeld software installeert voor de huidige gebruiker, in plaats van voor alle gebruikers, kunt u voor komen dat er verhoogde toegang tot taken wordt verleend. U kunt de automatische gebruikers specificatie voor groeps bereik en niet-beheerders toegang configureren voor alle taken die moeten worden uitgevoerd onder hetzelfde account, met inbegrip van de start taak.
 
-De volgende code fragmenten laten zien hoe de automatische gebruikers specificatie moet worden geconfigureerd. In de voor beelden is het verhogings niveau ingesteld op `Admin` en het bereik `Task` . Het taak bereik is de standaard instelling, maar is wel opgenomen in het voor beeld.
+De volgende code fragmenten laten zien hoe de automatische gebruikers specificatie moet worden geconfigureerd. In de voor beelden is het verhogings niveau ingesteld op `Admin` en het bereik `Task` .
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -90,7 +85,7 @@ taskToAdd.withId(taskId)
             .withAutoUser(new AutoUserSpecification()
                 .withElevationLevel(ElevationLevel.ADMIN))
                 .withScope(AutoUserScope.TASK));
-        .withCommandLine("cmd /c echo hello");                        
+        .withCommandLine("cmd /c echo hello");
 ```
 
 #### <a name="batch-python"></a>Batch Python
@@ -113,7 +108,7 @@ Wanneer een knoop punt wordt ingericht, worden er twee accounts voor automatisch
 
 Wanneer u het groeps bereik voor de automatische gebruiker opgeeft, worden alle taken die worden uitgevoerd met beheerders toegang uitgevoerd onder hetzelfde groeps-brede automatische gebruikers account. Taken die worden uitgevoerd zonder beheerders machtigingen, worden ook uitgevoerd onder één account voor automatische gebruikers van de hele groep.
 
-> [!NOTE] 
+> [!NOTE]
 > De twee groeps accounts voor automatische gebruikers zijn afzonderlijke accounts. Taken die worden uitgevoerd onder het beheerders account voor de hele groep, kunnen geen gegevens delen met taken die worden uitgevoerd onder het standaard account en vice versa.
 
 Het voor deel van het uitvoeren van hetzelfde automatische gebruikers account is dat taken gegevens kunnen delen met andere taken die op hetzelfde knoop punt worden uitgevoerd.
@@ -291,7 +286,7 @@ De batch-Service versie 2017 -01-01.4.0 introduceert een belang rijke wijziging,
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`niet opgegeven | Er is geen update vereist                                                                                               |
+| `CloudTask.RunElevated` niet opgegeven | Er is geen update vereist                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
@@ -299,7 +294,7 @@ De batch-Service versie 2017 -01-01.4.0 introduceert een belang rijke wijziging,
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`niet opgegeven | Er is geen update vereist                                                                                                                     |
+| `CloudTask.withRunElevated` niet opgegeven | Er is geen update vereist                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
@@ -307,7 +302,7 @@ De batch-Service versie 2017 -01-01.4.0 introduceert een belang rijke wijziging,
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, waarbij <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
 | `run_elevated=False`                      | `user_identity=user`, waarbij <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
-| `run_elevated`niet opgegeven | Er is geen update vereist                                                                                                                                  |
+| `run_elevated` niet opgegeven | Er is geen update vereist                                                                                                                                  |
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fafe9fd46322b0720d876f5b70d204fdf23fbb2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027611"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716296"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Maak een flexibele toegangs beheer strategie met Azure Active Directory
 
@@ -30,7 +30,7 @@ Dit document bevat richt lijnen voor strategieën die een organisatie moet nemen
 
  1. Organisaties kunnen hun tolerantie verhogen om het risico van vergren deling **vóór een onderbreking** te verminderen door beperkings strategieën of nood plannen te implementeren.
  2. Organisaties kunnen de apps en resources die ze kiezen **tijdens een onderbreking** blijven gebruiken door problemen met de risico beperking en nood plannen te ondervinden.
- 3. Organisaties moeten ervoor zorgen dat ze gegevens, zoals Logboeken, bewaren **na een onderbreking** en voordat ze terugvallen op eventuele nood herstel.
+ 3. Organisaties moeten ervoor zorgen dat ze gegevens, zoals Logboeken, bewaren  **na een onderbreking** en voordat ze terugvallen op eventuele nood herstel.
  4. Organisaties die preventie strategieën of alternatieve abonnementen niet hebben geïmplementeerd, kunnen **nood herstel opties** implementeren om de onderbreking te verstoren.
 
 ## <a name="key-guidance"></a>Belangrijkste richt lijnen
@@ -55,7 +55,7 @@ Het beperken van een daad werkelijke onderbreking moet de primaire focus van een
 
 ### <a name="administrator-lockout-contingency"></a>Onvoorziene uitsluiting van beheerder
 
-Als u de beheerders toegang tot uw Tenant wilt ontgrendelen, moet u accounts voor nood toegang maken. Deze accounts voor toegang tot nood gevallen, ook wel account voor *afbreek glazen* genoemd, bieden toegang tot het beheren van de Azure AD-configuratie wanneer het normale privileged account Access procedures niet beschikbaar is. Er moeten ten minste twee accounts voor toegang in nood gevallen worden gemaakt na de aanbevelingen voor het [toegangs account]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access).
+Als u de beheerders toegang tot uw Tenant wilt ontgrendelen, moet u accounts voor nood toegang maken. Deze accounts voor toegang tot nood gevallen, ook wel account voor *afbreek glazen* genoemd, bieden toegang tot het beheren van de Azure AD-configuratie wanneer het normale privileged account Access procedures niet beschikbaar is. Er moeten ten minste twee accounts voor toegang in nood gevallen worden gemaakt na de aanbevelingen voor het [toegangs account]( ../users-groups-roles/directory-emergency-access.md).
 
 ### <a name="mitigating-user-lockout"></a>Vergren deling van gebruikers beperken
 
@@ -65,11 +65,11 @@ Als u de beheerders toegang tot uw Tenant wilt ontgrendelen, moet u accounts voo
 
 De volgende toegangs controles opnemen in uw bestaande beleids regels voor voorwaardelijke toegang voor de organisatie:
 
-1. Richt meerdere verificatie methoden in voor elke gebruiker die afhankelijk is van verschillende communicatie kanalen, bijvoorbeeld de Microsoft Authenticator app (op Internet), OATH-token (gegenereerd op het apparaat) en SMS (telephon). Met het volgende Power shell-script kunt u vooraf bepalen welke aanvullende methoden uw gebruikers moeten registreren: [script voor de analyse van de Azure MFA-verificatie methode](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
+1. Richt meerdere verificatie methoden in voor elke gebruiker die afhankelijk is van verschillende communicatie kanalen, bijvoorbeeld de Microsoft Authenticator app (op Internet), OATH-token (gegenereerd op het apparaat) en SMS (telephon). Met het volgende Power shell-script kunt u vooraf bepalen welke aanvullende methoden uw gebruikers moeten registreren: [script voor de analyse van de Azure MFA-verificatie methode](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
 2. Implementeer Windows hello voor bedrijven op Windows 10-apparaten om rechtstreeks aan de vereisten voor MFA te voldoen bij het aanmelden bij het apparaat.
-3. Gebruik vertrouwde apparaten via [Azure AD Hybrid join's](https://docs.microsoft.com/azure/active-directory/devices/overview) of [Microsoft intune beheerde apparaten](https://docs.microsoft.com/intune/planning-guide). Vertrouwde apparaten verbeteren de gebruikers ervaring omdat het vertrouwde apparaat zelf kan voldoen aan de sterke verificatie vereisten van het beleid zonder een MFA-uitdaging voor de gebruiker. MFA is vervolgens vereist bij het registreren van een nieuw apparaat en bij het openen van apps of bronnen van niet-vertrouwde apparaten.
+3. Gebruik vertrouwde apparaten via [Azure AD Hybrid join's](../devices/overview.md) of [Microsoft intune beheerde apparaten](/intune/planning-guide). Vertrouwde apparaten verbeteren de gebruikers ervaring omdat het vertrouwde apparaat zelf kan voldoen aan de sterke verificatie vereisten van het beleid zonder een MFA-uitdaging voor de gebruiker. MFA is vervolgens vereist bij het registreren van een nieuw apparaat en bij het openen van apps of bronnen van niet-vertrouwde apparaten.
 4. Op risico gebaseerd beleid van Azure AD Identity Protection gebruiken om toegang te voor komen wanneer de gebruiker of het aanmelden een risico vormt voor een vast MFA-beleid.
-5. Als u VPN-toegang met de Azure MFA NPS-extensie beveiligt, kunt u federeren uw VPN-oplossing als een [SAML-app](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) gebruiken en de app-categorie bepalen, zoals hieronder wordt aanbevolen. 
+5. Als u VPN-toegang met de Azure MFA NPS-extensie beveiligt, kunt u federeren uw VPN-oplossing als een [SAML-app](../manage-apps/view-applications-portal.md) gebruiken en de app-categorie bepalen, zoals hieronder wordt aanbevolen. 
 
 >[!NOTE]
 > Voor beleids regels op basis van Risico's zijn [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) -licenties vereist.
@@ -92,7 +92,7 @@ Met dit voor beeld van een beleidset worden geselecteerde gebruikers in **AppUse
 
 ### <a name="contingencies-for-user-lockout"></a>Onvoorziene gebeurtenissen voor gebruikers vergrendeling
 
-Het is ook mogelijk dat uw organisatie een nood beleid maakt. Als u nood beleid wilt maken, moet u criteria voor de balans tussen bedrijfs continuïteit, operationele kosten, financiële kosten en beveiligings Risico's definiëren. U kunt bijvoorbeeld een beleid voor nood gevallen alleen activeren voor een subset van gebruikers, voor een subset van apps, voor een subset van clients of van een subset van locaties. Bij een nood geval kunnen beheerders en eind gebruikers toegang krijgen tot apps en bronnen tijdens een onderbreking wanneer er geen beperkings methode is geïmplementeerd. Micro soft raadt aan om nood beleid in de [modus alleen rapport](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-report-only) in te scha kelen wanneer het niet wordt gebruikt, zodat beheerders de mogelijke gevolgen van het beleid kunnen bewaken. deze moeten worden ingeschakeld.
+Het is ook mogelijk dat uw organisatie een nood beleid maakt. Als u nood beleid wilt maken, moet u criteria voor de balans tussen bedrijfs continuïteit, operationele kosten, financiële kosten en beveiligings Risico's definiëren. U kunt bijvoorbeeld een beleid voor nood gevallen alleen activeren voor een subset van gebruikers, voor een subset van apps, voor een subset van clients of van een subset van locaties. Bij een nood geval kunnen beheerders en eind gebruikers toegang krijgen tot apps en bronnen tijdens een onderbreking wanneer er geen beperkings methode is geïmplementeerd. Micro soft raadt aan om nood beleid in de [modus alleen rapport](../conditional-access/howto-conditional-access-report-only.md) in te scha kelen wanneer het niet wordt gebruikt, zodat beheerders de mogelijke gevolgen van het beleid kunnen bewaken. deze moeten worden ingeschakeld.
 
  Als u uw bloot stelling tijdens een onderbreking begrijpt, vermindert u het risico en is dit een belang rijk onderdeel van uw plannings proces. Bepaal eerst de volgende zakelijke vereisten van uw organisatie om uw rampen plan te maken:
 
@@ -119,7 +119,7 @@ Een beleid voor voorwaardelijke toegang voor nood gevallen is een **back-upbelei
 
 * Een set terugval beleid configureren als een onderbreking in één referentie type of een mechanisme voor toegangs beheer invloed heeft op de toegang tot uw apps. Configureer een beleid in de status alleen rapport waarvoor lidmaatschap van een domein als een besturings element is vereist als back-up voor een actief beleid waarvoor een MFA-provider van derden is vereist.
 * Verminder het risico dat ongeldige actors wacht woorden raden als MFA niet vereist is door de procedures in het technisch document voor [richt lijnen voor wacht](https://aka.ms/passwordguidance) woorden te volgen.
-* Implementeer [Azure AD self-service voor wachtwoord herstel (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) en [Azure AD-wachtwoord beveiliging](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) om ervoor te zorgen dat gebruikers geen gemeen schappelijk wacht woord en voor waarden gebruiken die u wilt verbieden.
+* Implementeer [Azure AD self-service voor wachtwoord herstel (SSPR)](./tutorial-enable-sspr.md) en [Azure AD-wachtwoord beveiliging](./howto-password-ban-bad-on-premises-deploy.md) om ervoor te zorgen dat gebruikers geen gemeen schappelijk wacht woord en voor waarden gebruiken die u wilt verbieden.
 * Gebruik beleids regels voor het beperken van de toegang binnen de apps als een bepaald verificatie niveau niet wordt bereikt in plaats van eenvoudigweg terug te vallen op volledige toegang. Bijvoorbeeld:
   * Configureer een back-upbeleid dat de beperkte sessie claim verzendt naar Exchange en share point.
   * Als uw organisatie gebruikmaakt van Microsoft Cloud App Security, overweeg dan terug te vallen op een beleid dat MCAS en vervolgens MCAS alleen-lezen toegang toestaat, maar niet uploads.
@@ -208,7 +208,7 @@ Volg orde van activering:
 
 ### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>Onvoorziene gebeurtenissen voor het vergren delen van gebruikers uit on-premises resources (NPS-extensie)
 
-Als u VPN-toegang met de Azure MFA NPS-extensie beveiligt, kunt u federeren uw VPN-oplossing als een [SAML-app](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications) gebruiken en de app-categorie bepalen, zoals hieronder wordt aanbevolen. 
+Als u VPN-toegang met de Azure MFA NPS-extensie beveiligt, kunt u federeren uw VPN-oplossing als een [SAML-app](../manage-apps/view-applications-portal.md) gebruiken en de app-categorie bepalen, zoals hieronder wordt aanbevolen. 
 
 Als u Azure AD MFA NPS-extensie hebt geïmplementeerd voor het beveiligen van on-premises resources, zoals VPN en Extern bureaublad-gateway, met MFA, moet u vooraf rekening houden als u in een nood geval MFA kunt uitschakelen.
 
@@ -233,7 +233,7 @@ Gebruikers kunnen zich ook vergren delen als aan de volgende voor waarden wordt 
 - Uw organisatie gebruikt een hybride identiteits oplossing met Pass Through-verificatie of Federatie.
 - Uw on-premises identiteits systemen (zoals Active Directory, AD FS of een afhankelijk onderdeel) zijn niet beschikbaar. 
  
-Voor meer flexibeler moet uw organisatie de [wachtwoord hash-synchronisatie inschakelen](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), omdat u kunt [overschakelen naar het gebruik van wachtwoord-hash-synchronisatie](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) als uw on-premises identiteits systemen niet actief zijn.
+Voor meer flexibeler moet uw organisatie de [wachtwoord hash-synchronisatie inschakelen](../hybrid/choose-ad-authn.md), omdat u kunt [overschakelen naar het gebruik van wachtwoord-hash-synchronisatie](../hybrid/plan-connect-user-signin.md) als uw on-premises identiteits systemen niet actief zijn.
 
 #### <a name="microsoft-recommendations"></a>Aanbevelingen van micro soft
  Schakel wacht woord-hash-synchronisatie in met behulp van de Azure AD Connect wizard, ongeacht of uw organisatie gebruikmaakt van Federatie-of Pass-Through-verificatie.
@@ -255,7 +255,7 @@ Afhankelijk van welke oplossingen of onvoorziene gebeurtenissen worden gebruikt 
 1. Als onderdeel van uw strategie voor het wijzigen van het besturings element, documenteren elke wijziging en de status van het bedrijf om eventuele onvoorziene gebeurtenissen terug te draaien zodra de toegangs beheer functies volledig operationeel zijn.
 2. Stel dat kwaad aardige actors proberen wacht woorden te oogsten door middel van wachtwoord spray of phishing-aanvallen, terwijl u MFA uitschakelt. Het is ook mogelijk dat ongeldige actors al wacht woorden hebben die voorheen geen toegang verlenen tot resources die tijdens dit venster kunnen worden geprobeerd. Voor kritieke gebruikers, zoals leidinggevenden, kunt u dit risico gedeeltelijk beperken door hun wacht woorden opnieuw in te stellen voordat u MFA uitschakelt.
 3. Archiveer alle aanmeldings activiteiten om te bepalen wie toegang heeft tot wat er tijdens de tijd MFA is uitgeschakeld.
-4. [Sorteren alle risico detecties gerapporteerd](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) tijdens dit venster.
+4. [Sorteren alle risico detecties gerapporteerd](../reports-monitoring/concept-sign-ins.md) tijdens dit venster.
 
 ## <a name="after-a-disruption"></a>Na een onderbreking
 
@@ -265,8 +265,8 @@ De wijzigingen die u hebt gemaakt als onderdeel van het geactiveerde rampen plan
 2. Schakel de beleids regels voor nood gevallen weer in op de modus alleen rapport. 
 3. Terugdraaiende wijzigingen die u hebt aangebracht en die tijdens de onderbreking zijn gedocumenteerd.
 4. Als u een account voor toegang tot nood gevallen hebt gebruikt, moet u de referenties opnieuw genereren en de nieuwe gegevens van de referenties fysiek beveiligen als onderdeel van de procedures voor de nood toegangs account.
-5. Ga door met het [sorteren van alle risico detecties](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) die zijn gerapporteerd na de onderbreking van verdachte activiteiten.
-6. Alle vernieuwings tokens die zijn uitgegeven [met Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) intrekken voor een aantal gebruikers. Het intrekken van alle vernieuwings tokens is belang rijk voor geprivilegieerde accounts die worden gebruikt tijdens de onderbreking en het uitvoeren ervan zal afdwingen dat ze opnieuw worden geverifieerd en voldoen aan het beheer van het herstelde beleid.
+5. Ga door met het [sorteren van alle risico detecties](../reports-monitoring/concept-sign-ins.md) die zijn gerapporteerd na de onderbreking van verdachte activiteiten.
+6. Alle vernieuwings tokens die zijn uitgegeven [met Power shell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) intrekken voor een aantal gebruikers. Het intrekken van alle vernieuwings tokens is belang rijk voor geprivilegieerde accounts die worden gebruikt tijdens de onderbreking en het uitvoeren ervan zal afdwingen dat ze opnieuw worden geverifieerd en voldoen aan het beheer van het herstelde beleid.
 
 ## <a name="emergency-options"></a>Opties voor nood gevallen
 
@@ -280,17 +280,17 @@ Als uw organisatie verouderd beleid voor MFA per gebruiker gebruikt, kunt u het 
  > Als u de vertrouwde IP-adressen uitbreidt om de toegang te blok keren, worden risico detecties die zijn gekoppeld aan IP-adressen (bijvoorbeeld onmogelijk reizen of niet-vertrouwde locaties) niet gegenereerd.
 
 >[!NOTE]
- > Het configureren van [vertrouwde IP-adressen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) voor Azure MFA is alleen beschikbaar met [Azure AD Premium-licenties](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).
+ > Het configureren van [vertrouwde IP-adressen](./howto-mfa-mfasettings.md) voor Azure MFA is alleen beschikbaar met [Azure AD Premium-licenties](./concept-mfa-licensing.md).
 
 ## <a name="learn-more"></a>Meer informatie
 
-* [Documentatie voor Azure AD-verificatie](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [Beheer accounts voor toegang in nood gevallen beheren in azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Benoemde locaties configureren in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
-  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
-* [Hybride Azure Active Directory-apparaten configureren](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [Implementatiehandleiding Windows Hello voor Bedrijven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Documentatie voor Azure AD-verificatie](./howto-mfaserver-iis.md)
+* [Beheer accounts voor toegang in nood gevallen beheren in azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Benoemde locaties configureren in Azure Active Directory](../reports-monitoring/quickstart-configure-named-locations.md)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+* [Hybride Azure Active Directory-apparaten configureren](../devices/hybrid-azuread-join-plan.md)
+* [Implementatiehandleiding Windows Hello voor Bedrijven](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Richt lijnen voor wacht woorden-micro soft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Wat zijn voor waarden in Azure Active Directory voorwaardelijke toegang?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Wat zijn toegangs beheer in Azure Active Directory voorwaardelijke toegang?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
-* [Wat is de modus alleen rapport-alleen voor voorwaardelijke toegang?](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only)
+* [Wat zijn voor waarden in Azure Active Directory voorwaardelijke toegang?](../conditional-access/concept-conditional-access-conditions.md)
+* [Wat zijn toegangs beheer in Azure Active Directory voorwaardelijke toegang?](../conditional-access/controls.md)
+* [Wat is de modus alleen rapport-alleen voor voorwaardelijke toegang?](../conditional-access/concept-conditional-access-report-only.md)

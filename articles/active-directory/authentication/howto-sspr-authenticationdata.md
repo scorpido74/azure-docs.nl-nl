@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 116fa2a4c71fc8ebc67387cf02090bbd664b862a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22037468c47de45513351e1d6126d3f3e5fccadc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035380"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717792"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Contact gegevens van gebruikers verificatie vooraf invullen voor Azure Active Directory self-service voor wachtwoord herstel (SSPR)
 
@@ -88,7 +88,7 @@ De volgende velden kunnen worden ingesteld via Power shell:
 
 ### <a name="use-powershell-version-1"></a>Power shell versie 1 gebruiken
 
-[Down load en installeer de Azure AD Power shell-module](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)om aan de slag te gaan. Nadat de app is geïnstalleerd, gebruikt u de volgende stappen om elk veld te configureren.
+[Down load en installeer de Azure AD Power shell-module](/previous-versions/azure/jj151815(v=azure.100)#bkmk_installmodule)om aan de slag te gaan. Nadat de app is geïnstalleerd, gebruikt u de volgende stappen om elk veld te configureren.
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>Verificatie gegevens instellen met Power shell versie 1
 
@@ -126,7 +126,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>Power shell versie 2 gebruiken
 
-[Down load en installeer de Azure AD-versie 2 Power shell-module](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0)om aan de slag te gaan.
+[Down load en installeer de Azure AD-versie 2 Power shell-module](/powershell/module/azuread/?view=azureadps-2.0)om aan de slag te gaan.
 
 Voer de volgende opdrachten uit om snel te installeren vanuit recente versies van Power shell die ondersteuning bieden voor `Install-Module` . De eerste regel controleert of de module al is geïnstalleerd:
 

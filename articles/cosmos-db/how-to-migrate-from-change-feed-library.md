@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9640800bb53fe2fd5b27cb6e232e09c72158f8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b610748e425b9497e12c389cca4d797d6da54087
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261406"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718998"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migreren van de bibliotheek voor het wijzigen van de feed-processor naar de Azure Cosmos DB .NET v3 SDK
 
@@ -46,10 +46,6 @@ Net als bij de wijzigings bibliotheek van de feed-processor gebruikt de functie 
 De SDK v3 Change feed-processor detecteert elke oude status van de bibliotheek en migreert deze automatisch naar het nieuwe schema bij de eerste uitvoering van de gemigreerde toepassings code. 
 
 U kunt de toepassing veilig stoppen met de oude code, de code migreren naar de nieuwe versie, de gemigreerde toepassing starten en eventuele wijzigingen die zijn opgetreden tijdens het stoppen van de toepassing, worden opgehaald en verwerkt door de nieuwe versie.
-
-> [!NOTE]
-> Migraties van toepassingen die gebruikmaken van de bibliotheek naar de .NET v3 SDK, zijn in één richting, aangezien de status (leases) wordt gemigreerd naar het nieuwe schema. De migratie is niet achterwaarts compatibel.
-
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

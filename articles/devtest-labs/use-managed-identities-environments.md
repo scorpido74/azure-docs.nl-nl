@@ -3,43 +3,46 @@ title: Azure Managed Identities gebruiken om omgevingen te maken in DevTest Labs
 description: Meer informatie over het gebruik van beheerde identiteiten in azure voor het implementeren van omgevingen in een lab in Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d4df9cab17289eba21caf9d7c88eb37626b3349
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5bac4210afee6db1c7617dac1cd6d2ff9149439
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478872"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718970"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Door Azure beheerde identiteiten gebruiken voor het implementeren van omgevingen in een Lab 
+
 Als eigenaar van een lab kunt u een beheerde identiteit gebruiken voor het implementeren van omgevingen in een lab. Deze functie is handig in scenario's waarin de omgeving bevat of verwijzingen naar Azure-resources, zoals sleutel kluizen, gemeen schappelijke afbeeldings galerieën en netwerken die zich buiten de resource groep van de omgeving bevinden. Het maakt het mogelijk sandbox-omgevingen te maken die niet beperkt zijn tot de resource groep van die omgeving.
 
 > [!NOTE]
 > Op dit moment wordt één door de gebruiker toegewezen identiteit ondersteund per Lab. 
 
 ## <a name="prerequisites"></a>Vereisten
+
 - [Een rol maken, weer geven, verwijderen of toewijzen aan een door de gebruiker toegewezen beheerde identiteit met behulp van de Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
+    
+    Zorg ervoor dat uw beheerde identiteit is gemaakt in dezelfde regio en hetzelfde abonnement als uw Lab. De beheerde identiteit hoeft zich niet in dezelfde resource groep te bekomen.
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
+
 In deze sectie kunt u als eigenaar van het lab de Azure Portal gebruiken om een door de gebruiker beheerde identiteit toe te voegen aan het lab. 
 
-1. Selecteer op de pagina Lab de optie **configuratie en beleid**. 
-1. Selecteer **identiteit** in het gedeelte **instellingen** .
-1. Als u een door de gebruiker toegewezen identiteit wilt toevoegen, selecteert u **toevoegen** op de werk balk. 
-1. Selecteer een **identiteit** in een vooraf gevulde vervolg keuzelijst.
-1. Selecteer **OK**.
-
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar **DevTest Labs**.
+1. Selecteer in de lijst met Labs het gewenste Lab.
+1. Selecteer de identiteit van de **configuratie en het beleid**  ->  **(preview-versie)**. 
+1. Als u een door de gebruiker toegewezen identiteit wilt toevoegen, selecteert u het tabblad door de **gebruiker toegewezen** .
+1. Druk op **toevoegen** .
+1. Selecteer een bestaande gebruiker die u hebt gemaakt en/of toegang hebt tot in de vervolg keuzelijst.
+ 
     ![Door de gebruiker beheerde identiteit toevoegen](./media/use-managed-identities-environments/add-user-managed-identity.png)
-2. U ziet de toegevoegde door de gebruiker beheerde identiteit in de lijst. 
+1. Druk boven op de pagina op **Opslaan** .
 
-    ![Door de gebruiker beheerde identiteit in de lijst](./media/use-managed-identities-environments/identity-in-list.png)
-
-Wanneer het lab is opgeslagen, gebruikt deze identiteit tijdens het implementeren van alle test omgevingen. U kunt ook toegang krijgen tot de identiteits bron in azure door de identiteit te selecteren in de lijst. 
+    Wanneer het lab is opgeslagen, gebruikt deze identiteit tijdens het implementeren van alle test omgevingen. U kunt ook toegang krijgen tot de identiteits bron in azure door de identiteit te selecteren in de lijst. 
 
 De eigenaar van het lab hoeft niets te doen bij het implementeren van een omgeving zolang de identiteit die aan het lab is toegevoegd, machtigingen heeft voor de externe bronnen waartoe de omgeving toegang moet hebben. 
 
 Als u de door de gebruiker beheerde identiteit die is toegewezen aan het lab, wilt wijzigen, moet u eerst de identiteit die aan het lab is gekoppeld, verwijderen en vervolgens een andere id toevoegen aan het lab. Als u een aan het lab gekoppelde identiteit wilt verwijderen, selecteert u **... (weglatings tekens)** en klik op **verwijderen**. 
-
-![Door de gebruiker beheerde identiteit in de lijst](./media/use-managed-identities-environments/replace-identity.png)  
 
 ## <a name="use-api"></a>API gebruiken
 

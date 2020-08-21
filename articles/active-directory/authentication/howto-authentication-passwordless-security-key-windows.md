@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acf7f89ab7c84d74dcd6e3dff2c2c688da1cefea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550623"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717962"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten met Azure Active Directory (preview-versie)
 
 Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wacht woorden met Windows 10-apparaten. Aan het einde van dit artikel kunt u zich aanmelden bij uw Azure AD-en hybride Azure AD Windows 10-apparaten met uw Azure AD-account met behulp van een FIDO2-beveiligings sleutel.
 
 > [!NOTE]
-> FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews) voor meer informatie.
+> FIDO2-beveiligings sleutels zijn een open bare preview-functie van Azure Active Directory. Zie  [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
 
 ## <a name="requirements"></a>Vereisten
 
@@ -37,7 +37,7 @@ Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wa
 | Voor [hybride apparaten die zijn toegevoegd aan Azure AD](../devices/concept-azure-ad-join-hybrid.md) is Windows 10 versie 2004 of hoger vereist |   | X |
 | Volledige patches voor Windows Server 2016/2019-domein controllers. |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) versie 1.4.32.0 of hoger |   | X |
-| [Microsoft intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (optioneel) | X | X |
+| [Microsoft intune](/intune/fundamentals/what-is-intune) (optioneel) | X | X |
 | Inrichtings pakket (optioneel) | X | X |
 | Groepsbeleid (optioneel) |   | X |
 
@@ -78,7 +78,7 @@ Organisaties kunnen ervoor kiezen om een of meer van de volgende methoden te geb
 
 Voer de volgende stappen uit om het gebruik van beveiligings sleutels met intune in te scha kelen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Blader naar **Microsoft intune**  >  **Device enrollment**  >  **registratie**  >  **van Windows hello voor bedrijven**-inschrijving voor het apparaat  >  **Properties**.
 1. Stel onder **instellingen** **beveiligings sleutels gebruiken voor aanmelden in** op **ingeschakeld**.
 
@@ -88,7 +88,7 @@ Configuratie van beveiligings sleutels voor aanmelden is niet afhankelijk van he
 
 Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te scha kelen, gebruikt u de volgende aangepaste instellingen via intune:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar **Microsoft intune**  >  **apparaatconfiguratie**  >  **profielen**  >  **profiel maken**.
 1. Configureer het nieuwe profiel met de volgende instellingen:
    - Naam: beveiligings sleutels voor Windows-aanmelding
@@ -100,7 +100,7 @@ Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te 
       - OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - Gegevens type: geheel getal
       - Waarde: 1
-1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Zie [profielen voor gebruikers en apparaten toewijzen in Microsoft intune](https://docs.microsoft.com/intune/device-profile-assign)voor meer informatie.
+1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Zie [profielen voor gebruikers en apparaten toewijzen in Microsoft intune](/intune/device-profile-assign)voor meer informatie.
 
 ![Beleid voor aangepaste configuratie van intune-apparaten maken](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
 
@@ -122,10 +122,10 @@ Voor apparaten die niet worden beheerd door intune, kan een inrichtings pakket w
 1. Noteer of wijzig het pad in de **Build** -Vensters onder **selecteren waar het inrichtings pakket moet worden opgeslagen** en selecteer **volgende**.
 1. Selecteer **samen stellen** op de pagina **het inrichtings pakket bouwen** .
 1. Sla de twee gemaakte bestanden (*ppkg* en *Cat*) op een locatie op waar u ze op een later tijdstip op de computers kunt Toep assen.
-1. Als u het inrichtings pakket wilt Toep assen dat u hebt gemaakt, raadpleegt u [een inrichtings pakket Toep assen](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package).
+1. Als u het inrichtings pakket wilt Toep assen dat u hebt gemaakt, raadpleegt u [een inrichtings pakket Toep assen](/windows/configuration/provisioning-packages/provisioning-apply-package).
 
 > [!NOTE]
-> Op apparaten met Windows 10 versie 1809 moet ook de modus gedeelde PC (*EnableSharedPCMode*) worden ingeschakeld. Zie [een gedeelde of gast computer instellen met Windows 10](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc)voor meer informatie over het inschakelen van deze functionaliteit.
+> Op apparaten met Windows 10 versie 1809 moet ook de modus gedeelde PC (*EnableSharedPCMode*) worden ingeschakeld. Zie [een gedeelde of gast computer instellen met Windows 10](/windows/configuration/set-up-shared-or-guest-pc)voor meer informatie over het inschakelen van deze functionaliteit.
 
 ### <a name="enable-with-group-policy"></a>Inschakelen met groepsbeleid
 

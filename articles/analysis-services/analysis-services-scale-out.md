@@ -4,15 +4,15 @@ description: Azure Analysis Services servers repliceren met scale-out. Client qu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 08/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78247996"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716925"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Uitschalen van Azure Analysis Services
 
@@ -30,7 +30,7 @@ Ongeacht het aantal query replica's in een query groep, worden de verwerkings we
 
 Wanneer u uitschaalt, kan het tot vijf minuten duren voordat nieuwe query replica's incrementeel worden toegevoegd aan de query groep. Wanneer alle nieuwe query replica's actief zijn, worden nieuwe client verbindingen verdeeld over alle resources in de query groep. Bestaande client verbindingen worden niet gewijzigd ten opzichte van de resource waarmee ze momenteel zijn verbonden. Bij het schalen in worden alle bestaande client verbindingen met een bron van de query groep die uit de query groep wordt verwijderd, beëindigd. Clients kunnen opnieuw verbinding maken met een resterende resource in de query groep.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe het werkt
 
 Wanneer u de eerste keer scale-out configureert, worden model databases op uw primaire server *automatisch* gesynchroniseerd met nieuwe replica's in een nieuwe query groep. Automatische synchronisatie wordt slechts één keer uitgevoerd. Tijdens automatische synchronisatie worden de gegevens bestanden van de primaire server (versleuteld op rest in Blob Storage) gekopieerd naar een tweede locatie, ook versleuteld op rest in Blob Storage. Replica's in de query groep worden vervolgens *gehydrateerd* met gegevens uit de tweede set bestanden. 
 
@@ -50,7 +50,7 @@ Wanneer u een volgende uitschaal bewerking uitvoert, bijvoorbeeld het aantal rep
 
 ### <a name="synchronization-mode"></a>Synchronisatie modus
 
-Standaard worden query replica's volledig opnieuw gehydrateerd, niet incrementeel. Rehydratatie treedt op in fasen. Ze worden twee tegelijk losgekoppeld en gekoppeld (ervan uitgaande dat er ten minste drie replica's zijn) om ervoor te zorgen dat ten minste één replica online wordt gehouden voor query's op een bepaald moment. In sommige gevallen moeten clients mogelijk opnieuw verbinding maken met een van de online replica's terwijl dit proces plaatsvindt. Met de instelling (in Preview) **ReplicaSyncMode** kunt u nu de synchronisatie van de query replica opgeven, parallel. Parallelle synchronisatie biedt de volgende voor delen: 
+Standaard worden query replica's volledig opnieuw gehydrateerd, niet incrementeel. Rehydratatie treedt op in fasen. Ze worden twee tegelijk losgekoppeld en gekoppeld (ervan uitgaande dat er ten minste drie replica's zijn) om ervoor te zorgen dat ten minste één replica online wordt gehouden voor query's op een bepaald moment. In sommige gevallen moeten clients mogelijk opnieuw verbinding maken met een van de online replica's terwijl dit proces plaatsvindt. Met behulp van de **ReplicaSyncMode** -instelling kunt u nu de synchronisatie van query's replica's opgeven, parallel. Parallelle synchronisatie biedt de volgende voor delen: 
 
 - Aanzienlijke vermindering van de synchronisatie tijd. 
 - Gegevens in replica's zijn waarschijnlijker consistent tijdens het synchronisatie proces. 
@@ -61,7 +61,7 @@ Standaard worden query replica's volledig opnieuw gehydrateerd, niet incrementee
 
 Gebruik SSMS om ReplicaSyncMode in te stellen in geavanceerde eigenschappen. De mogelijke waarden zijn: 
 
-- `1`(standaard): volledige replica database rehydratatie in fasen (incrementeel). 
+- `1` (standaard): volledige replica database rehydratatie in fasen (incrementeel). 
 - `2`: Geoptimaliseerde synchronisatie parallel. 
 
 ![RelicaSyncMode-instelling](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e4afc5e554e72fc2ab78173368930b2e5317bce7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512972"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718914"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Registratie van gecombineerde beveiligings gegevens voor Azure Active Directory overzicht
 
@@ -32,7 +32,7 @@ In dit artikel vindt u een overzicht van de gecombineerde beveiligings registrat
 
 ![Mijn profiel waarin geregistreerde beveiligings gegevens voor een gebruiker worden weer gegeven](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-Voordat u de nieuwe ervaring inschakelt, raadpleegt u deze documentatie met beheerders rechten en de gebruikers gerichte documentatie om te controleren of u de functionaliteit en het effect van deze functie begrijpt. Baseer uw training op de [gebruikers documentatie](../user-help/user-help-security-info-overview.md) om uw gebruikers voor te bereiden op de nieuwe ervaring en om te zorgen voor een geslaagde implementatie.
+Voordat u de nieuwe ervaring inschakelt, raadpleegt u deze documentatie met beheerders rechten en de gebruikers gerichte documentatie om te controleren of u de functionaliteit en het effect van deze functie begrijpt. Baseer uw training op de [gebruikers documentatie](../user-help/security-info-setup-signin.md) om uw gebruikers voor te bereiden op de nieuwe ervaring en om te zorgen voor een geslaagde implementatie.
 
 Registratie van gegevens over gecombineerde beveiliging van Azure AD is momenteel niet beschikbaar voor nationale Clouds, zoals Azure VS government, Azure Duitsland of Azure China 21Vianet.
 
@@ -59,7 +59,7 @@ Bij gecombineerde registratie worden de volgende verificatie methoden en-acties 
 | Telefoon | Ja | Ja | Ja |
 | Alternatief telefoon nummer | Ja | Ja | Ja |
 | Zakelijke telefoon | Nee | Nee | Nee |
-| E-mail | Ja | Ja | Ja |
+| Email | Ja | Ja | Ja |
 | Beveiligingsvragen | Ja | Nee | Ja |
 | App-wachtwoorden | Ja | Nee | Ja |
 | FIDO2-beveiligings sleutels<br />*Beheerde modus alleen via de pagina met [beveiligings gegevens](https://mysignins.microsoft.com/security-info)*| Ja | Ja | Ja |

@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82143229"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718948"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>On-premises Azure Active Directory wachtwoord beveiliging plannen en implementeren
 
-Gebruikers maken vaak wacht woorden die gebruikmaken van veelgebruikte lokale woorden, zoals een school, een sport team of een beroemde persoon. Deze wacht woorden zijn gemakkelijk te raden en zwak tegen Woordenboek aanvallen. Voor het afdwingen van sterke wacht woorden in uw organisatie, biedt Azure Active Directory-wachtwoord beveiliging van Azure Active Directory een globale en aangepaste lijst met verboden wacht woorden. Een aanvraag voor het wijzigen van het wacht woord is mislukt als er een overeenkomst is gevonden in de lijst met verboden wacht woorden.
+Gebruikers maken vaak wachtwoorden waarin woorden voorkomen die lokaal veel worden gebruikt, zoals de naam van een school, een sportvereniging of een beroemde persoon. Deze wachtwoorden zijn gemakkelijk te raden en zijn slecht bestand tegen zogenaamde woordenboekaanvallen. Voor het afdwingen van sterke wacht woorden in uw organisatie, biedt Azure Active Directory-wachtwoord beveiliging van Azure Active Directory een globale en aangepaste lijst met verboden wacht woorden. Een aanvraag voor het wijzigen van het wacht woord is mislukt als er een overeenkomst is gevonden in de lijst met verboden wacht woorden.
 
 Om uw on-premises Active Directory Domain Services-omgeving (AD DS) te beveiligen, kunt u Azure AD-wachtwoord beveiliging installeren en configureren om met uw on-premises DC te werken. In dit artikel wordt beschreven hoe u de Azure AD-service voor wachtwoord beveiliging proxy en Azure AD Password Protection DC-agent in uw on-premises omgeving installeert en registreert.
 
@@ -88,7 +88,7 @@ De volgende kern vereisten zijn van toepassing:
     * De RPC-server poort is standaard een dynamische RPC-poort, maar kan worden geconfigureerd voor het [gebruik van een statische poort](#static).
 * Alle computers waarop de Azure AD-proxy service voor wachtwoord beveiliging wordt geïnstalleerd, moeten netwerk toegang hebben tot de volgende eind punten:
 
-    |**Eindpunt**|**Functie**|
+    |**Eindpunt**|**Doel**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Verificatie aanvragen|
     |`https://enterpriseregistration.windows.net`|Azure AD-functionaliteit voor wachtwoord beveiliging|
@@ -101,7 +101,7 @@ De volgende vereisten zijn van toepassing op de Azure AD-agent voor wachtwoord b
     * Het Active Directory domein of forest hoeft niet te zijn op het Windows Server 2012-domein functionaliteits niveau (DFL) of forestfunctionaliteitsniveau (FFL). Zoals vermeld in [ontwerp principes](concept-password-ban-bad-on-premises.md#design-principles), is er geen mini maal DFL of FFL vereist voor het uitvoeren van de DC-agent of proxy software.
 * Op alle computers waarop de Azure AD-agent voor wachtwoord beveiliging wordt uitgevoerd, moet .NET 4,5 zijn geïnstalleerd.
 * Een Active Directory domein waarop de Azure AD-service voor wachtwoord beveiliging van de domein controller wordt uitgevoerd, moet Distributed File System replicatie (DFSR) voor SYSVOL-replicatie gebruiken.
-   * Als DFSR nog niet wordt gebruikt voor uw domein, moet u migreren voordat u Azure AD-wachtwoord beveiliging installeert. Zie [SYSVOL-replicatie migratie handleiding: FRS naar DSF-replicatie](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10)) voor meer informatie
+   * Als DFSR nog niet wordt gebruikt voor uw domein, moet u migreren voordat u Azure AD-wachtwoord beveiliging installeert. Zie [SYSVOL-replicatie migratie handleiding: FRS naar DSF-replicatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10)) voor meer informatie
 
     > [!WARNING]
     > De Azure AD-agent software voor wachtwoord beveiliging wordt momenteel geïnstalleerd op domein controllers in domeinen die nog steeds gebruikmaken van FRS (de voorafgaande technologie naar DFSR) voor SYSVOL-replicatie, maar de software werkt niet goed in deze omgeving.
@@ -124,14 +124,14 @@ De volgende vereisten zijn van toepassing op de Azure AD-proxy service voor wach
 * Alle computers die de Azure AD-proxy service voor wachtwoord beveiliging hosten, moeten worden geconfigureerd om domein controllers de mogelijkheid te geven zich aan te melden bij de proxy service. Deze mogelijkheid wordt bepaald via de toewijzing van de bevoegdheid toegang tot deze computer vanaf het netwerk.
 * Alle computers die de Azure AD-proxy service voor wachtwoord beveiliging hosten, moeten zo worden geconfigureerd dat HTTP-verkeer van uitgaande TLS 1,2 is toegestaan.
 * Een *Algemeen beheerders* account voor het registreren van de Azure AD-service voor wachtwoord beveiliging, en het forest met Azure AD.
-* Netwerk toegang moet zijn ingeschakeld voor de set van poorten en Url's die zijn opgegeven in de [installatie procedures van de toepassings proxy omgeving](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment).
+* Netwerk toegang moet zijn ingeschakeld voor de set van poorten en Url's die zijn opgegeven in de [installatie procedures van de toepassings proxy omgeving](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Vereisten voor de Microsoft Azure AD verbinding maken met de agent updater
 
 De Microsoft Azure AD connect agent Updater-service wordt naast de Azure AD-proxy service voor wachtwoord beveiliging geïnstalleerd. Aanvullende configuratie is vereist om te kunnen werken met de Microsoft Azure AD connect agent Updater-Service:
 
-* Als in uw omgeving een HTTP-proxy server wordt gebruikt, volgt u de richt lijnen die zijn opgegeven in [werken met bestaande on-premises proxy servers](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers).
-* De Microsoft Azure AD de service connect agent Updater vereist ook de TLS 1,2-stappen die zijn opgegeven in de [TLS-vereisten](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#tls-requirements).
+* Als in uw omgeving een HTTP-proxy server wordt gebruikt, volgt u de richt lijnen die zijn opgegeven in [werken met bestaande on-premises proxy servers](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md).
+* De Microsoft Azure AD de service connect agent Updater vereist ook de TLS 1,2-stappen die zijn opgegeven in de [TLS-vereisten](../manage-apps/application-proxy-add-on-premises-application.md#tls-requirements).
 
 > [!WARNING]
 > Azure AD-wachtwoord beveiligings proxy en Azure AD-toepassingsproxy verschillende versies van de Microsoft Azure AD connect agent Updater-service installeren. Dit is de reden waarom de instructies verwijzen naar de inhoud van de toepassings proxy. Deze verschillende versies zijn incompatibel wanneer ze naast elkaar worden geïnstalleerd en Hiermee wordt voor komen dat de agent Updater-Service contact opneemt met Azure voor software-updates, zodat u Azure AD-wachtwoord beveiligings proxy en toepassings proxy nooit op dezelfde computer hoeft te installeren.

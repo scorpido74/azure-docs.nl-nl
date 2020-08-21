@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24db7981557cf76f9108a1dca37ea4c4c9f51951
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d67dbc0eedba8cc32c188636032d96b31f45adf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283075"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717775"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Veelgestelde vragen over Azure AD-wachtwoord beveiliging
 
@@ -38,7 +38,7 @@ Met de Azure AD-Portal kunt u de configuratie van on-premises specifieke ' wacht
 
 **V: hoe kan ik de voor delen van Azure AD-wachtwoord beveiliging Toep assen op een subset van mijn on-premises gebruikers?**
 
-Niet ondersteund. Als Azure AD-wachtwoord beveiliging eenmaal is geïmplementeerd en ingeschakeld, krijgen alle gebruikers dezelfde beveiligings voordelen.
+Wordt niet ondersteund. Als Azure AD-wachtwoord beveiliging eenmaal is geïmplementeerd en ingeschakeld, krijgen alle gebruikers dezelfde beveiligings voordelen.
 
 **V: wat is het verschil tussen een wachtwoord wijziging en een wachtwoordset (of opnieuw instellen)?**
 
@@ -46,7 +46,7 @@ Een wijziging van het wacht woord is wanneer een gebruiker een nieuw wacht woord
 
 Een wachtwoordset (ook wel wacht woord opnieuw instellen genoemd) is wanneer een beheerder het wacht woord voor een account vervangt door een nieuw wacht woord, bijvoorbeeld met behulp van het beheer programma Active Directory gebruikers en computers. Voor deze bewerking is een hoog bevoegdheids niveau (meestal domein beheerder) vereist. de persoon die de bewerking uitvoert, heeft doorgaans geen kennis van het oude wacht woord. Help Desk-scenario's voeren vaak wachtwoord sets in, bijvoorbeeld bij het helpen van een gebruiker die het wacht woord is verg eten. U ziet ook wachtwoord sets wanneer er voor de eerste keer een nieuwe gebruikers account wordt gemaakt met een wacht woord.
 
-Het wachtwoord validatie beleid gedraagt zich hetzelfde, ongeacht of er een wacht woord is gewijzigd of ingesteld. De Azure AD-Agent service voor wachtwoord beveiliging registreert verschillende gebeurtenissen om u te informeren of een wacht woord is gewijzigd of een set-bewerking is uitgevoerd.  Zie [Azure AD-controle programma voor wachtwoord beveiliging en logboek registratie](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+Het wachtwoord validatie beleid gedraagt zich hetzelfde, ongeacht of er een wacht woord is gewijzigd of ingesteld. De Azure AD-Agent service voor wachtwoord beveiliging registreert verschillende gebeurtenissen om u te informeren of een wacht woord is gewijzigd of een set-bewerking is uitgevoerd.  Zie [Azure AD-controle programma voor wachtwoord beveiliging en logboek registratie](./howto-password-ban-bad-on-premises-monitor.md).
 
 **V: Waarom worden duplicaat gebeurtenissen voor het afkeuren van wacht woorden vastgelegd bij het instellen van een zwak wacht woord met behulp van de Active Directory-module gebruikers en computers beheren?**
 
@@ -54,7 +54,7 @@ De Active Directory-module gebruikers en computers wordt eerst geprobeerd het ni
 
 **V: Waarom worden wachtwoord validatie gebeurtenissen van Azure AD-wacht woord met een lege gebruikers naam vastgelegd?**
 
-Active Directory ondersteunt de mogelijkheid om een wacht woord te testen om te zien of de huidige wachtwoord complexiteits vereisten van het domein worden door gegeven, bijvoorbeeld met behulp van de [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) -API. Wanneer een wacht woord op deze manier wordt gevalideerd, omvat het testen ook de validatie van op wacht woord-filter-dll gebaseerde producten, zoals Azure AD-wachtwoord beveiliging, maar de gebruikers namen die zijn door gegeven aan een opgegeven wachtwoord filter-dll zijn leeg. In dit scenario zal Azure AD-wachtwoord beveiliging het wacht woord nog steeds valideren met behulp van het wachtwoord beleid dat momenteel wordt gebruikt en wordt er een gebeurtenis logboek bericht weer gegeven om het resultaat vast te leggen, maar het gebeurtenis logboek bericht bevat lege velden voor gebruikers namen.
+Active Directory ondersteunt de mogelijkheid om een wacht woord te testen om te zien of de huidige wachtwoord complexiteits vereisten van het domein worden door gegeven, bijvoorbeeld met behulp van de [NetValidatePasswordPolicy](/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) -API. Wanneer een wacht woord op deze manier wordt gevalideerd, omvat het testen ook de validatie van op wacht woord-filter-dll gebaseerde producten, zoals Azure AD-wachtwoord beveiliging, maar de gebruikers namen die zijn door gegeven aan een opgegeven wachtwoord filter-dll zijn leeg. In dit scenario zal Azure AD-wachtwoord beveiliging het wacht woord nog steeds valideren met behulp van het wachtwoord beleid dat momenteel wordt gebruikt en wordt er een gebeurtenis logboek bericht weer gegeven om het resultaat vast te leggen, maar het gebeurtenis logboek bericht bevat lege velden voor gebruikers namen.
 
 **V: wordt it ondersteund voor het installeren van Azure AD-wachtwoord beveiliging naast elkaar met andere op wacht woorden gebaseerde producten?**
 
@@ -62,11 +62,11 @@ Ja. Ondersteuning voor meerdere geregistreerde wachtwoord filter-dll's is een ke
 
 **V: hoe kan ik Azure AD-wachtwoord beveiliging in mijn Active Directory omgeving implementeren en configureren zonder Azure te gebruiken?**
 
-Niet ondersteund. Azure AD-wachtwoord beveiliging is een Azure-functie die ondersteuning biedt voor uitgebreid in een on-premises Active Directory omgeving.
+Wordt niet ondersteund. Azure AD-wachtwoord beveiliging is een Azure-functie die ondersteuning biedt voor uitgebreid in een on-premises Active Directory omgeving.
 
 **V: hoe kan ik de inhoud van het beleid op het Active Directory niveau wijzigen?**
 
-Niet ondersteund. Het beleid kan alleen worden beheerd via de Azure AD-Portal. Zie ook de vorige vraag.
+Wordt niet ondersteund. Het beleid kan alleen worden beheerd via de Azure AD-Portal. Zie ook de vorige vraag.
 
 **V: Waarom is DFSR vereist voor SYSVOL-replicatie?**
 
@@ -74,13 +74,13 @@ FRS (de voorafgaande technologie naar DFSR) heeft veel bekende problemen en word
 
 Raadpleeg de volgende artikelen voor meer informatie:
 
-[Het geval voor de migratie van SYSVOL-replicatie naar DFSR](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
+[Het geval voor de migratie van SYSVOL-replicatie naar DFSR](/archive/blogs/askds/the-case-for-migrating-sysvol-to-dfsr)
 
 [Het einde is nigh voor FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
 Als het domein niet al gebruikmaakt van DFSR, moet u het migreren naar DFSR voordat u Azure AD-wachtwoord beveiliging installeert. Zie de volgende koppeling voor meer informatie:
 
-[Migratie handleiding voor SYSVOL-replicatie: FRS naar DSF-replicatie](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+[Migratie handleiding voor SYSVOL-replicatie: FRS naar DSF-replicatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
 > [!WARNING]
 > De Azure AD-agent software voor wachtwoord beveiliging wordt momenteel geïnstalleerd op domein controllers in domeinen die nog steeds gebruikmaken van FRS voor SYSVOL-replicatie, maar de software zal niet goed werken in deze omgeving. Bijkomende negatieve neven effecten omvatten afzonderlijke bestanden die niet worden gerepliceerd, en SYSVOL-herstel procedures die worden uitgevoerd, maar die niet op de achtergrond worden gerepliceerd. U moet uw domein zo snel mogelijk migreren naar het gebruik van DFSR en de implementatie van Azure AD-wachtwoord beveiliging blok keren. Toekomstige versies van de software worden automatisch uitgeschakeld wanneer ze worden uitgevoerd in een domein dat nog steeds FRS gebruikt.
@@ -101,7 +101,7 @@ Nee. Omdat de proxy server stateless is, is het niet belang rijk welke specifiek
 
 Ja. De Azure AD-proxy service voor wachtwoord beveiliging en Azure AD Connect mogen nooit direct met elkaar conflicteren.
 
-Helaas is er een incompatibiliteit gevonden tussen de versie van de Microsoft Azure AD connect agent Updater-service die is geïnstalleerd door de Azure AD-proxy software voor wachtwoord beveiliging en de versie van de service die door de [Azure Active Directory-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) -software is geïnstalleerd. Deze incompatibiliteit kan ertoe leiden dat de agent Updater-service geen verbinding kan maken met Azure voor software-updates. Het wordt niet aanbevolen om Azure AD-wachtwoord beveiligings proxy en Azure Active Directory-toepassingsproxy op dezelfde computer te installeren.
+Helaas is er een incompatibiliteit gevonden tussen de versie van de Microsoft Azure AD connect agent Updater-service die is geïnstalleerd door de Azure AD-proxy software voor wachtwoord beveiliging en de versie van de service die door de [Azure Active Directory-toepassingsproxy](../manage-apps/application-proxy.md) -software is geïnstalleerd. Deze incompatibiliteit kan ertoe leiden dat de agent Updater-service geen verbinding kan maken met Azure voor software-updates. Het wordt niet aanbevolen om Azure AD-wachtwoord beveiligings proxy en Azure Active Directory-toepassingsproxy op dezelfde computer te installeren.
 
 **V: in welke volg orde moeten de DC-agents en-proxy's worden geïnstalleerd en geregistreerd?**
 

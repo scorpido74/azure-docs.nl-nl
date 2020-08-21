@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 034a49793d3a3e416f307741e49446979eb33bb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090447"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717333"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnose van Standard Load Balancer met metrische gegevens, meldingen en status van resources
 
@@ -25,7 +25,7 @@ Azure Standard Load Balancer maakt de volgende diagnostische mogelijkheden besch
 
 * **Multi-dimensionale metrische gegevens en waarschuwingen**: biedt multi-dimensionale diagnostische mogelijkheden via [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) voor standaard Load Balancer configuraties. U kunt uw standaard load balancer-resources bewaken, beheren en problemen oplossen.
 
-* **Resource status**: de Load Balancer pagina in de Azure Portal en de resource Health pagina (onder monitor) geven de sectie Resource Health voor Standard Load Balancer zichtbaar. 
+* **Resource status**: de resource Health status van uw Load Balancer is beschikbaar op de pagina Resource Health onder monitor. Deze automatische controle informeert u over de huidige Beschik baarheid van uw Load Balancer-resource.
 
 Dit artikel bevat een korte rond leiding door deze mogelijkheden en biedt manieren om ze te gebruiken voor Standard Load Balancer. 
 
@@ -35,7 +35,7 @@ Azure Load Balancer biedt multidimensionale metrische gegevens via de metrische 
 
 De verschillende Standard Load Balancer configuraties bieden de volgende metrische gegevens:
 
-| Metrisch gegeven | Resourcetype | Beschrijving | Aanbevolen aggregatie |
+| Gegevens | Resourcetype | Beschrijving | Aanbevolen aggregatie |
 | --- | --- | --- | --- |
 | Gegevenspadbeschikbaarheid | Openbare en interne load balancer | Standard Load Balancer oefent doorlopend het gegevenspad vanuit een regio naar de front-end van de load balancer, helemaal tot de SDN-stack die ondersteuning biedt voor de VM. Zolang de gezonde instanties blijven bestaan, volgt de meting hetzelfde pad als het verkeer met gelijke taak verdeling van uw toepassing. Het gegevenspad dat uw klanten gebruiken, wordt ook gevalideerd. De meting is onzichtbaar voor de toepassing en heeft geen invloed op andere bewerkingen.| Average |
 | Status van statustest | Openbare en interne load balancer | Standard Load Balancer maakt gebruik van een gedistribueerde status-probing-service die de status van uw toepassings eindpunt bewaakt volgens de configuratie-instellingen. Deze metriek biedt een gefilterde weergave van een aggregatie of per-eindpunt van elk exemplaareindpunt in de load balancer-groep. U ziet hoe in Load Balancer de status van de toepassing wordt weergegeven, zoals aangeduid via de statustestconfiguratie. |  Average |
@@ -91,7 +91,7 @@ Waarschuwingen configureren:
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Is het gegevenspad actief en beschikbaar voor mijn Load Balancer frontend?
 <details><summary>Uitvouwen</summary>
 
-De metrische Beschik baarheid van Beschik baarheid van gegevens paden beschrijft de status van het gegevenspad in de regio naar de compute-host waar uw Vm's zich bevinden. De metriek is een reflectie van de status van de Azure-infra structuur. U kunt de metrische gegevens gebruiken voor het volgende:
+De metrische gegevens voor de beschik baarheid van het gegevenspad beschrijven de status van het gegevenspad in de regio naar de compute-host waar uw Vm's zich bevinden. De metriek is een reflectie van de status van de Azure-infra structuur. U kunt de metrische gegevens gebruiken voor het volgende:
 - De externe Beschik baarheid van uw service bewaken
 - Dieper en begrijp of het platform waarop uw service is geïmplementeerd in orde is en of uw gast besturingssysteem of toepassings exemplaar in orde is.
 - Isoleer of een gebeurtenis is gerelateerd aan uw service of het onderliggende gegevens vlak. Verwar deze metrische waarde niet met de status van Health Probe ("Beschik baarheid back-instance").
@@ -110,7 +110,7 @@ De metriek wordt gegenereerd door een actieve, in-band meting. Een probing-servi
 
 Een pakket dat overeenkomt met de front-end van de implementatie en de regel wordt regel matig gegenereerd. Hiermee wordt de regio gepasseerd van de bron naar de host waar een virtuele machine in de back-end-pool zich bevindt. De load balancer-infra structuur voert dezelfde taak verdeling en vertaal bewerkingen uit, zoals voor al het andere verkeer. Deze test bevindt zich in de band van uw eind punt met gelijke taak verdeling. Wanneer de test op de compute-host arriveert, waarbij een gezonde VM in de back-end-pool is gevonden, genereert de compute-host een reactie op de service voor het zoeken naar de juiste locatie. Dit verkeer wordt niet in uw virtuele machine weer geven.
 
-De beschik baarheid van DataPath-Beschik baarheid mislukt om de volgende redenen:
+De DataPath-Beschik baarheid mislukt om de volgende redenen:
 - Uw implementatie heeft geen gezonde Vm's in de back-end-pool. 
 - Er is een storing in de infra structuur opgetreden.
 
@@ -155,14 +155,14 @@ Statistieken voor de SNAT-verbinding ophalen:
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>Het gebruik en de toewijzing van mijn SNAT-poort Hoe kan ik controleren?
 <details>
   <summary>Uitvouwen</summary>
-De metrische gegevens over het gebruik van SNAT geeft aan hoeveel unieke stromen er worden ingesteld tussen een Internet bron en een back-end-VM of virtuele-machine schaalset die zich achter een load balancer bevindt en geen openbaar IP-adres heeft. Door dit te vergelijken met de toewijzings metriek voor SNAT kunt u bepalen of uw service ondervindt of op het risico van overschrijding van de SNAT en de resulterende uitgaande stroom storing. 
+De metrische gegevens van de SNAT-poorten traceren hoeveel SNAT-poorten worden gebruikt voor het onderhouden van uitgaande stromen. Dit geeft aan hoeveel unieke stromen er tot stand worden gebracht tussen een Internet bron en een back-end-VM of virtuele-machine schaalset die zich achter een load balancer bevindt en geen openbaar IP-adres heeft. Door het aantal SNAT-poorten te vergelijken dat u gebruikt met de toegewezen statistieken voor de SNAT-poorten, kunt u bepalen of uw service zich voordoet of het risico op overschrijding van de SNAT en de resulterende uitgaande stroom storing. 
 
 Als uw metrische gegevens duiden op een risico op [uitgaand stroom](https://aka.ms/lboutbound) storingen, raadpleegt u het artikel en neemt u stappen om dit te beperken om de service status te garanderen.
 
 Het gebruik en de toewijzing van het SNAT-poort weer geven:
 1. Stel de tijd aggregatie van de grafiek in op 1 minuut om ervoor te zorgen dat de gewenste gegevens worden weer gegeven.
-1. Selecteer **SNAT-gebruik** en/of **SNAT-toewijzing** als het metrieke type en **gemiddelde** als de aggregatie
-    * Standaard is dit het gemiddelde aantal SNAT-poorten dat is toegewezen aan of gebruikt door elke back-end-Vm's of VMSSes, die overeenkomt met alle open bare frontend-IP-adressen die zijn toegewezen aan de Load Balancer, geaggregeerd via TCP en UDP.
+1. **Gebruikte SNAT-poorten** en/of **toegewezen SNAT-poorten** selecteren als meet type en **gemiddelde** als de aggregatie
+    * Deze metrische gegevens zijn standaard het gemiddelde aantal SNAT-poorten dat is toegewezen aan of gebruikt door elke back-end-VM of VMSS, die overeenkomt met alle open bare frontend-Ip's die zijn toegewezen aan de Load Balancer, geaggregeerd via TCP en UDP.
     * De totale SNAT-poorten weer geven die worden gebruikt door of toegewezen voor de load balancer metrische aggregatie **som** gebruiken
 1. Filteren op een specifiek **protocol type**, een reeks **back-ip's**en/of frontend- **IP-adressen**.
 1. Als u de status per back-end-of front-end-exemplaar wilt bewaken, moet u 
@@ -252,13 +252,14 @@ De status van uw open bare Standard Load Balancer-resources weer geven:
 
    *Afbeelding: Load Balancer resource status weer geven*
  
-De verschillende statussen van de bron en de bijbehorende beschrijvingen worden weer gegeven in de volgende tabel: 
+De beschrijving van de algemene resource status is beschikbaar in de [RHC-documentatie](https://docs.microsoft.com/azure/service-health/resource-health-overview). Zie de onderstaande tabel voor specifieke statussen voor de Azure Load Balancer: 
 
 | Status van resource status | Beschrijving |
 | --- | --- |
 | Beschikbaar | Uw standaard load balancer resource is in orde en beschikbaar. |
-| Niet beschikbaar | Uw standaard load balancer resource is niet in orde. De status vaststellen door **Azure monitor**  >  **metrische gegevens**te selecteren.<br>(Niet-*beschik bare* status kan ook betekenen dat de resource niet is verbonden met uw standaard Load Balancer.) |
-| Onbekend | De resource status voor de standaard load balancer resource is nog niet bijgewerkt.<br>(*Onbekende* status kan ook betekenen dat de bron niet is verbonden met uw standaard Load Balancer.)  |
+| Verminderd beschikbaar | Uw standaard load balancer heeft platform of door de gebruiker gestarte gebeurtenissen die invloed hebben op de prestaties. De metriek van de DataPath-Beschik baarheid heeft minder dan 90% gerapporteerd, maar meer dan 25% van de status gedurende ten minste twee minuten. U ondervindt aanzienlijke invloed op de prestaties. [Volg de hand leiding voor het oplossen van problemen met gegevenspaden voor gegevens
+| Niet beschikbaar | Uw standaard load balancer resource is niet in orde. De metriek voor DataPath-Beschik baarheid heeft minder dan 25% status gerapporteerd voor ten minste twee minuten. U ondervindt aanzienlijke gevolgen voor de prestaties of gebrek aan Beschik baarheid voor binnenkomende verbindingen. Er zijn mogelijk gebruikers-of platform gebeurtenissen waardoor er geen Beschik baarheid wordt veroorzaakt. [Volg de hand leiding voor het oplossen van problemen met gegevenspaden van het gegevens traject] om te bepalen of er door de gebruiker gestarte gebeurtenissen van invloed zijn |
+| Onbekend | De resource status voor uw standaard load balancer resource is nog niet bijgewerkt of heeft niet de beschikbaarheids gegevens van het gegevenspad ontvangen voor de afgelopen 10 minuten. Deze status moet tijdelijk zijn en de juiste status weer geven zodra er gegevens worden ontvangen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,161 +3,202 @@ title: Taal pakketten installeren op Windows 10-Vm's in virtueel bureau blad van
 description: Taal pakketten installeren voor Vm's met meerdere sessies van Windows 10 in Windows virtueel bureau blad.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/03/2020
+ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008760"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719139"
 ---
-# <a name="install-language-packs"></a>Taalpakketten installeren
+# <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Taal pakketten toevoegen aan een Windows 10-installatie kopie met meerdere sessies
 
-Wanneer u de implementaties van Windows virtueel bureau blad internationaal hebt ingesteld, is het een goed idee om ervoor te zorgen dat uw implementatie meerdere talen ondersteunt. U kunt taal pakketten installeren op een installatie kopie van een virtuele machine met Windows 10 Enter prise voor meerdere sessies (VM) ter ondersteuning van zoveel talen als uw organisatie behoeften. In dit artikel wordt uitgelegd hoe u taal pakketten installeert en installatie kopieën kunt vastleggen waarmee uw gebruikers hun eigen weergave talen kunnen kiezen.
+Windows Virtual Desktop is een service die uw gebruikers overal en overal kunnen implementeren. Daarom is het belang rijk dat uw gebruikers kunnen aanpassen in welke taal hun Windows 10 Enter prise-afbeelding voor meerdere sessies wordt weer gegeven.
 
-Meer informatie over het implementeren van een VM in azure vindt u [in een virtuele Windows-machine maken in een beschikbaarheids zone met de Azure Portal](../virtual-machines/windows/create-portal-availability-zone.md).
+Er zijn twee manieren waarop u de taal behoeften van uw gebruikers kunt aanpassen:
 
->[!NOTE]
->Dit artikel is van toepassing op Vm's met meerdere sessies met Windows 10 Enter prise.
+- Bouw specifieke hostgroepen met een aangepaste installatie kopie voor elke taal.
+- Hebben gebruikers met verschillende taal-en lokalisatie vereisten in dezelfde hostgroep, maar aanpassen hun installatie kopieën om ervoor te zorgen dat ze de gewenste taal kunnen selecteren.
 
-## <a name="install-a-language-pack"></a>Een taal pakket installeren
+Deze laatste methode is veel efficiënter en rendabeler. U kunt echter zelf bepalen welke methode het beste aansluit bij uw behoeften. In dit artikel wordt uitgelegd hoe u talen voor uw installatie kopieën kunt aanpassen.
 
-Als u een VM-installatie kopie met taal pakketten wilt maken, moet u eerst taal pakketten installeren op een computer en een installatie kopie hiervan vastleggen.
+## <a name="prerequisites"></a>Vereisten
 
-Taal pakketten installeren:
+U hebt de volgende zaken nodig om uw installatie kopieën met meerdere sessies van Windows 10 Enter prise aan te passen om meerdere talen toe te voegen:
 
-1. Meld u aan als beheerder.
-2. Zorg ervoor dat u alle meest recente Windows-en Windows Store-updates hebt geïnstalleerd.
-3. Ga naar **instellingen**  >  **tijd & taal**  >  **regio**.
-4. Onder **land of regio**selecteert u het land of de regio van uw voor keur in de vervolg keuzelijst.
-    In dit voor beeld gaan we **Frank rijk**selecteren, zoals wordt weer gegeven in de volgende scherm afbeelding:
+- Een Azure-virtuele machine (VM) met Windows 10 Enter prise meerdere sessies, versie 1903 of hoger
 
-    > [!div class="mx-imgBorder"]
-    > ![Een scherm afbeelding van de regio pagina. De regio die momenteel is geselecteerd, is Frank rijk.](media/region-page-france.png)
+- De taal ISO en functie op aanvraag (DOM) schijf 1 van de versie van het besturings systeem die wordt gebruikt door de installatie kopie. U kunt ze hier downloaden:
+     
+     - Taal ISO:
+        - [Windows 10, versie 1903 of 1909 taal pakket ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [Windows 10, versie 2004 taal pakket ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
-5. Selecteer vervolgens **taal**en selecteer vervolgens **een taal toevoegen**. Kies de taal die u wilt installeren in de lijst en selecteer vervolgens **volgende**.
-6. Wanneer het venster **taal functies installeren** wordt geopend, schakelt u het selectie vakje taal **pakket installeren in en stelt u in als mijn Windows-weergave taal**.
-7. Selecteer **Installeren**.
-8. Als u meerdere talen tegelijk wilt toevoegen, selecteert u **een taal toevoegen**en herhaalt u het proces om een taal toe te voegen aan stap 5 en 6. Herhaal dit proces voor elke taal die u wilt installeren. U kunt echter maar één taal per keer instellen als uw weergave taal.
+     - Dom-schijf 1 ISO:
+        - [Windows 10, versie 1903 of 1909 dom schijf 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [Windows 10, versie 2004 dom schijf 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
 
-    Laten we een snelle visuele demonstratie uitvoeren. De volgende afbeeldingen laten zien hoe u de Franse en Nederlandse taal pakketten installeert en vervolgens Frans als weergave taal instelt.
-
-    > [!div class="mx-imgBorder"]
-    > ![Een scherm opname van de taal pagina aan het begin van het proces. De geselecteerde Windows-weergave taal is Engels.](media/language-page-default.png)
-
-    > [!div class="mx-imgBorder"]
-    > ![Een scherm opname van het taal selectie venster. De gebruiker heeft Frans ingevoerd in de zoek balk om de pakketten in de Franse taal te vinden.](media/select-language-french.png)
-
-    > [!div class="mx-imgBorder"]
-    > ![Een scherm opname van de pagina taal functies installeren. Frans is geselecteerd als de voorkeurs taal. De geselecteerde opties zijn ' mijn weergave taal instellen ', ' taal pakket installeren ', ' spraak herkenning ' en ' hand schrift '.](media/install-language-features.png)
-
-    Nadat de taal pakketten zijn geïnstalleerd, ziet u dat de namen van uw taal pakketten worden weer gegeven in de lijst met talen.
-
-    > [!div class="mx-imgBorder"]
-    > ![Een scherm opname van de taal pagina waarop de nieuwe taal pakketten zijn geïnstalleerd. De Franse en Nederlandse taal pakketten worden vermeld onder voorkeurs talen.](media/language-page-complete.png)
-
-9. Als er een venster wordt weer gegeven waarin u wordt gevraagd om u af te melden bij uw sessie. Meld u af en meld u vervolgens opnieuw aan. De weergave taal moet nu de geselecteerde taal zijn.
-
-10.  Ga naar de klok van **het configuratie scherm**  >  **en**de regio  >  **regio**.
-
-11.  Wanneer het **regio** venster wordt geopend, selecteert u het tabblad **beheer** en selecteert u **instellingen kopiëren**.
-
-12.  Selecteer de selectie vakjes met het label **aanmeldings scherm en systeem accounts** en **nieuwe gebruikers accounts**.
-
-13.  Selecteer **OK**.
-
-14.  Er wordt een venster geopend waarin u de sessie opnieuw kunt starten. Selecteer **nu opnieuw opstarten**.
-
-15.  Nadat u zich hebt aangemeld, gaat u terug naar de klok van **het configuratie scherm**  >  **en de regio**  >  **regio**.
-
-16.  Selecteer het tabblad **beheer** .
-
-17.  Selecteer **systeem land instelling wijzigen**.
-
-18. Selecteer in de vervolg keuzelijst onder **huidige systeem land instelling**de taal van de land instellingen die u wilt gebruiken. Daarna selecteert u **OK**.
-
-19. Selecteer **nu opnieuw opstarten** om de sessie opnieuw te starten.
-
-Gefeliciteerd, u hebt uw taal pakketten geïnstalleerd.
-
-Voordat u doorgaat, moet u controleren of op uw systeem de nieuwste versies van Windows en Windows Store zijn geïnstalleerd.
-
-## <a name="sysprep"></a>Sysprep
-
-Vervolgens moet u uw computer Sysprep om deze voor te bereiden voor het proces voor het vastleggen van de installatie kopie.
-
-U kunt als volgt Sysprep uitvoeren op uw computer:
-
-1. Open PowerShell als administrator.
-2. Voer de volgende cmdlet uit om naar de juiste map te gaan:
-
-    ```powershell
-    cd Windows\System32\Sysprep
-    ```
-
-3. Voer vervolgens de volgende cmdlet uit:
-
-    ```powershell
-    .\sysprep.exe
-    ```
-
-4. Wanneer het hulp programma voor systeem voorbereiding wordt geopend, schakelt u het selectie vakje **generalize**in, gaat u naar **Opties voor afsluiten** en selecteert u **Afsluiten** in de vervolg keuzelijst.
+- Een Azure Files share of bestands share op een virtuele machine met Windows-Bestands server
 
 >[!NOTE]
->Het duurt enkele minuten voordat het syprep-proces is voltooid. Wanneer de VM wordt afgesloten, wordt de verbinding met uw externe sessie verbroken.
+>De bestands share (opslag plaats) moet toegankelijk zijn vanaf de Azure-VM die u wilt gebruiken om de aangepaste installatie kopie te maken.
 
-### <a name="resolve-sysprep-errors"></a>Sysprep-fouten oplossen
+## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>Een inhouds opslagplaats maken voor taal pakketten en onderdelen op aanvraag
 
-Als er tijdens het Sysprep-proces een fout bericht wordt weer gegeven, kunt u het volgende doen:
+De inhouds opslagplaats voor taal pakketten en FODs maken:
 
-1. Open **station C** en ga naar **Windows**  >  **System32 Sysprep**  >  **Panther**en open vervolgens het **Setuperr** -bestand.
+1. Down load op een virtuele Azure-machine de installatie kopieën van Windows 10 multi-language ISO en FODs voor Windows 10 Enter prise multi-session, versie 1903, 1909 en 2004 van de koppelingen in [vereisten](#prerequisites).
 
-   De tekst in het fout bestand geeft aan dat u een specifiek taal pakket moet verwijderen, zoals wordt weer gegeven in de volgende afbeelding. Kopieer de naam van het taal pakket voor de volgende stap.
+2. Open en koppel de ISO-bestanden op de VM.
 
-   > [!div class="mx-imgBorder"]
-   > ![Een scherm opname van het Setuperr-bestand. De tekst met de pakket naam wordt in donker blauw gemarkeerd.](media/setuperr-package-name.png)
+3. Ga naar het taal pakket ISO en kopieer de inhoud van de **LocalExperiencePacks** -en x64-bestanden van het Pack ** \\ lang** en plak de inhoud vervolgens in de bestands share.
 
-2. Open een nieuw Power shell-venster en voer de volgende cmdlet uit met de pakket naam die u in stap 2 hebt gekopieerd om het taal pakket te verwijderen:
+4. Ga naar het **bestand in de Dom ISO**, kopieer alle inhoud en plak het in de bestands share.
 
-   ```powershell
-   Remove-AppxPackage <package name>
-   ```
+     >[!NOTE]
+     > Als u met beperkte opslag werkt, kopieert u alleen de bestanden voor de talen die uw gebruikers nodig hebben. U kunt de bestanden uit elkaar laten zien door de taal codes in hun bestands namen te bekijken. Het Franse bestand heeft bijvoorbeeld de code ' fr-FR ' in de naam. Zie [beschik bare taal pakketten voor Windows](/windows-hardware/manufacture/desktop/available-language-packs-for-windows)voor een volledige lijst met taal codes voor alle beschik bare talen.
 
-3. Controleer of u het pakket hebt verwijderd door de `Remove-AppxPackage` cmdlet opnieuw uit te voeren. Als u het pakket hebt verwijderd, wordt een bericht weer gegeven met de melding dat het pakket dat u probeert te verwijderen niet aanwezig is.
+     >[!IMPORTANT]
+     > Voor sommige talen zijn extra letter typen in satelliet pakketten vereist die voldoen aan verschillende naam conventies. Bijvoorbeeld: Japanse lettertype bestandsnamen bevatten ' Jpan '.
+     >
+     > [!div class="mx-imgBorder"]
+     > ![Een voor beeld van de Japanse taal pakketten met de taal code ' Jpan ' in hun bestands namen.](media/language-pack-example.png)
 
-4. Voer de `sysprep.exe` cmdlet opnieuw uit.
+5. Stel de machtigingen in op de taal van de opslag plaats voor inhoud, zodat u over lees toegang hebt vanaf de VM die u gebruikt om de aangepaste installatie kopie te maken.
 
-## <a name="capture-the-image"></a>De installatie kopie vastleggen
+## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>Een aangepaste Windows 10 Enter prise-installatie kopie voor meerdere sessies hand matig maken
 
-Nu uw systeem klaar is, kunt u een installatie kopie vastleggen zodat andere gebruikers met behulp van Vm's op basis van uw systeem kunnen beginnen zonder het configuratie proces te herhalen.
+Hand matig een aangepaste Windows 10 Enter prise-installatie kopie maken:
 
-Een installatie kopie vastleggen:
+1. Implementeer een Azure VM en ga naar de Azure-galerie en selecteer de huidige versie van Windows 10 Enter prise multi-session die u gebruikt.
+2. Nadat u de virtuele machine hebt geïmplementeerd, maakt u deze met behulp van RDP als een lokale beheerder.
+3. Zorg ervoor dat uw VM over alle meest recente Windows-updates beschikt. Down load de updates en start de VM indien nodig opnieuw op.
+4. Maak verbinding met de opslag plaats van het taal pakket en de Dom-bestands share en koppel deze aan een stationsletter (bijvoorbeeld station E).
 
-1. Ga naar de Azure Portal en selecteer de naam van de computer die u hebt geconfigureerd in [een taal pakket installeren](#install-a-language-pack) en [Sysprep](#sysprep).
+## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>Automatisch een aangepaste installatie kopie van Windows 10 Enter prise maken
 
-2. Selecteer **vastleggen**.
+Als u liever talen installeert via een geautomatiseerd proces, kunt u een script instellen in Power shell. U kunt het volgende script voorbeeld gebruiken om de taal pakketten Spaans (Spanje), Frans (Frank rijk) en Chinees (volks Republiek China) en satelliet pakketten voor Windows 10 Enter prise multi-session versie 2004 te installeren. Het script integreert het taal interface pakket en alle benodigde satelliet pakketten in de installatie kopie. U kunt dit script echter ook aanpassen om andere talen te installeren. Zorg ervoor dat u het script uitvoert vanuit een Power shell-sessie met verhoogde bevoegdheid, anders werkt het niet.
 
-3. Voer in het veld **naam** een naam in voor de afbeelding en wijs deze toe aan de resource groep met behulp van de vervolg keuzelijst **resource groep** , zoals weer gegeven in de volgende afbeelding.
+```powershell
+########################################################
+## Add Languages to running Windows Image for Capture##
+########################################################
 
-   > [!div class="mx-imgBorder"]
-   > ![Een scherm opname van het venster installatie kopie maken. De naam die de gebruiker aan deze test installatie kopie heeft gegeven, is "vmwvd-image-FR" en ze hebben deze toegewezen aan de resource groep ' testwvdimagerg '.](media/create-image.png)
+##Disable Language Pack Cleanup##
+Disable-ScheduledTask -TaskPath "\Microsoft\Windows\AppxDeploymentClient\" -TaskName "Pre-staged app cleanup"
 
-4. Selecteer **Maken**.
+##Set Language Pack Content Stores##
+[string]$LIPContent = "E:"
 
-5. Wacht enkele minuten totdat het vastleggen is voltooid. Wanneer de installatie kopie gereed is, ziet u een bericht in het meldingen centrum zodat u weet dat de afbeelding is vastgelegd.
+##Spanish##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\es-es\LanguageExperiencePack.es-es.Neutral.appx -LicensePath $LIPContent\es-es\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_es-es.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("es-es")
+Set-WinUserLanguageList $LanguageList -force
 
-U kunt nu een VM implementeren met behulp van uw nieuwe installatie kopie. Wanneer u de virtuele machine implementeert, moet u de instructies in [een virtuele Windows-machine maken in een beschikbaarheids zone met de Azure Portal](../virtual-machines/windows/create-portal-availability-zone.md)volgen.
+##French##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\fr-fr\LanguageExperiencePack.fr-fr.Neutral.appx -LicensePath $LIPContent\fr-fr\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_fr-fr.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~fr-fr~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("fr-fr")
+Set-WinUserLanguageList $LanguageList -force
 
-### <a name="how-to-change-display-language-for-standard-users"></a>De weergave taal voor standaard gebruikers wijzigen
+##Chinese(PRC)##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\zh-cn\LanguageExperiencePack.zh-cn.Neutral.appx -LicensePath $LIPContent\zh-cn\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_zh-cn.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Fonts-Hans-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("zh-cn")
+Set-WinUserLanguageList $LanguageList -force
+```
 
-Standaard gebruikers kunnen de weergave taal van hun virtuele machines wijzigen.
+>[!IMPORTANT]
+>Het pakket bestand is niet vereist voor Windows 10 Enter prise-versies 1903 en 1909 `Microsoft-Windows-Client-Language-Pack_x64_<language-code>.cab` .
 
-De weergave taal wijzigen:
+Het script kan enige tijd duren, afhankelijk van het aantal talen dat u moet installeren.
 
-1. Ga naar **taal instellingen**. Als u dat niet weet, kunt u de **taal** invoeren in de zoek balk van het menu Start.
+Nadat het script is uitgevoerd, controleert u of de taal pakketten correct zijn geïnstalleerd door naar **Start**  >  **Settings**  >  **time & language**  >  **Language**te gaan. Als de taal bestanden zich daar bevinden, bent u klaar.
 
-2. Selecteer in de vervolg keuzelijst Windows-weergave taal de taal die u wilt gebruiken als uw weergave taal.
+Wanneer u klaar bent, moet u de verbinding met de share verbreken.
 
-3. Meld u af bij uw sessie en meld u vervolgens opnieuw aan. De weergave taal moet nu zijn geselecteerd in stap 2.
+## <a name="finish-customizing-your-image"></a>Het aanpassen van uw installatie kopie volt ooien
+
+Nadat u de taal pakketten hebt geïnstalleerd, kunt u andere software installeren die u wilt toevoegen aan uw aangepaste installatie kopie.
+
+Wanneer u klaar bent met het aanpassen van uw installatie kopie, moet u het hulp programma voor systeem voorbereiding (Sysprep) uitvoeren.
+
+Sysprep uitvoeren:
+
+1. Open een opdracht prompt met verhoogde bevoegdheid en voer de volgende opdracht uit om de installatie kopie te generaliseren:  
+   
+     ```cmd
+     C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
+     ```
+
+2. Sluit de virtuele machine af en leg deze vast in een beheerde installatie kopie door de instructies in [een beheerde installatie kopie maken van een gegeneraliseerde vm in azure](../virtual-machines/windows/capture-image-resource.md)te volgen.
+
+3. U kunt nu de aangepaste installatie kopie gebruiken voor het implementeren van een Windows-hostgroep voor virtueel bureau blad. Zie [zelf studie: een hostgroep maken met de Azure Portal](create-host-pools-azure-marketplace.md)voor meer informatie over het implementeren van een hostgroep.
+
+## <a name="enable-languages-in-windows-settings-app"></a>Talen inschakelen in de Windows-instellingen-app
+
+Ten slotte moet u de taal toevoegen aan de taal lijst van elke gebruiker zodat deze de voorkeurs taal kan selecteren in het menu instellingen.
+
+Om ervoor te zorgen dat uw gebruikers de talen kunnen selecteren die u hebt geïnstalleerd, meldt u zich aan als de gebruiker en voert u de volgende Power shell-cmdlet uit om de geïnstalleerde taal pakketten toe te voegen aan het menu talen. U kunt dit script ook instellen als een geautomatiseerde taak die wordt geactiveerd wanneer de gebruiker zich aanmeldt bij de sessie.
+
+```powershell
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("es-es")
+$LanguageList.Add("fr-fr")
+$LanguageList.Add("zh-cn")
+Set-WinUserLanguageList $LanguageList -force
+```
+
+Nadat een gebruiker de taal instellingen heeft gewijzigd, moeten ze zich afmelden bij hun Windows Virtual Desktop-sessie en zich opnieuw aanmelden om de wijzigingen van kracht te laten worden. 
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie [taal pakketten toevoegen in Windows 10, versie 1803 en latere versies](/windows-hardware/manufacture/desktop/language-packs-known-issue)voor meer informatie over bekende problemen voor taal pakketten: bekende problemen.
+
+Als u andere vragen over Windows 10 Enter prise multi-session hebt, lees dan onze [Veelgestelde vragen](windows-10-multisession-faq.md).
