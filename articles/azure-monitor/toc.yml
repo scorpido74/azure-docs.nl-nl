@@ -482,16 +482,12 @@
           href: platform/autoscale-resource-log-schema.md
     - name: Waarschuwingen
       items:
-        - name: Waarschuwingsregels voor toepassingen
-          items:
-            - name: Beschikbaarheid
-              href: app/monitor-web-app-availability.md
-            - name: Metrische waarschuwingen
-              href: ./platform/alerts-log.md
         - name: Regels voor metrische waarschuwingen
           items:
             - name: Metrische waarschuwingen beheren
               href: platform/alerts-metric.md
+            - name: Beschikbaarheid
+              href: app/monitor-web-app-availability.md
             - name: Dynamische drempels gebruiken
               href: platform/alerts-dynamic-thresholds.md
             - name: Enkele waarschuwingen voor veel tijdreeksen

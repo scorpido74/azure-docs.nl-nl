@@ -239,7 +239,7 @@
             - name: Mv2-serie
               href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Beperkte vCPU's
-              href: constrained-vcpu.md
+              href: ../constrained-vcpu.md
         - name: Geoptimaliseerde opslag
           items:
             - name: Overzicht
@@ -294,7 +294,7 @@
             - name: Wat zijn Azure-reserveringen?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: Flexibiliteit van de VM-instantiegrootte
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
         - name: Spot-VM's
           displayName: 'pre-empt, preempt'
           href: spot-vms.md
@@ -317,7 +317,7 @@
             - name: Wat zijn Azure-reserveringen?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Flexibiliteit van de VM-instantiegrootte
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
         - name: Benchmarkscores
           href: compute-benchmark-scores.md
     - name: Goedgekeurde distributies
@@ -329,21 +329,21 @@
     - name: File Storage
       items:
         - name: Inleiding tot beheerde schijven
-          href: managed-disks-overview.md
+          href: ../managed-disks-overview.md
         - name: Een schijftype selecteren voor IaaS-VM's
-          href: disks-types.md
+          href: ../disks-types.md
         - name: Versleuteling
           href: disk-encryption.md
         - name: Disk Storage-reservering
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Ontwerpen voor hoge prestaties
-          href: premium-storage-performance.md
+          href: ../premium-storage-performance.md
         - name: Disk Bursting
           href: disk-bursting.md
         - name: Schaalbaarheidsdoelen voor schijven
           href: disk-scalability-targets.md
         - name: Back-up en herstel na noodgeval voor schijven
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Gedeelde schijven
           href: disks-shared.md
         - name: Kortstondige besturingssysteemschijven
@@ -357,7 +357,7 @@
     - name: Beveiliging
       items:
         - name: Beveiliging en beleid
-          href: security-policy.md
+          href: ../security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
         - name: Besturingselementen voor beveiliging van Azure Policy
@@ -958,7 +958,7 @@
           displayName: 'Azure Resource Manager, ARM'
           href: ../using-managed-disks-template-deployments.md
         - name: Gedeelde schijven inschakelen
-          href: disks-shared-enable.md
+          href: ../disks-shared-enable.md
         - name: Een VHD uploaden naar een schijf - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Een schijf veilig importeren/exporteren - CLI
@@ -968,11 +968,11 @@
         - name: De grootte van een schijf wijzigen
           href: expand-disks.md
         - name: Storage Explorer gebruiken om schijven te beheren
-          href: disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md
         - name: Een momentopname maken van een schijf
           href: snapshot-copy-managed-disk.md
         - name: Disk Storage reserveren
-          href: disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md
         - name: Een incrementele momentopname maken - CLI
           href: disks-incremental-snapshots.md
         - name: Een incrementele momentopname maken - Portal
@@ -1008,7 +1008,7 @@
             - name: Write Accelerator gebruiken
               href: ../how-to-enable-write-accelerator.md
             - name: Ultraschijven gebruiken
-              href: disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md
             - name: Een benchmark-test uitvoeren op een schijf
               href: disks-benchmarks.md
             - name: Prestaties optimaliseren

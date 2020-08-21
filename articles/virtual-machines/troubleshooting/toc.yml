@@ -193,7 +193,7 @@
 - name: Problemen met het beheren van virtuele schijven
   items:
     - name: Overzicht
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: Veelgestelde vragen
       href: ../windows/faq-for-disks.md
     - name: Fouten bij het verwijderen van opslagresources

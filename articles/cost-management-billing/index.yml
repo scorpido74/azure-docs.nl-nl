@@ -5,17 +5,18 @@ metadata:
   title: Azure Kostenbeheer en facturering
   description: Azure Kostenbeheer en facturering helpt u inzicht te krijgen in Azure-facturering, het beheer van uw account en abonnementen, Azure-uitgaven te bewaken en controleren en uw resourcegebruik te optimaliseren. Leer hoe u kosten analyseert, budgetten maakt en beheert, gegevens exporteert, en aanbevelingen bekijkt en hier actie op onderneemt.
   ms.service: cost-management-billing
+  ms.subservice: common
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 06/01/2020
-  ms.openlocfilehash: c999417f091d82adf09df5d6962de146ef58b285
-  ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+  ms.date: 08/20/2020
+  ms.openlocfilehash: 1d3fafd26b5ad7f92d9280701a386a09f1ad3d22
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/16/2020
-  ms.locfileid: "88257375"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88683127"
 landingContent:
 - title: Uw kosten analyseren
   linkLists:

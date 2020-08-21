@@ -72,9 +72,6 @@
       items:
         - name: Trainen en implementeren met CLI
           href: tutorial-train-deploy-model-cli.md
-        - name: Werkruimten maken met een ARM-sjabloon
-          displayName: Resource Manager
-          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Azure Machine Learning-extensie instellen

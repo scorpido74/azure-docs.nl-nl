@@ -140,9 +140,6 @@
         - name: Galeriegegevens
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-        - name: Notebooks downloaden
-          displayName: export
-          href: download-notebooks-data.md
 - name: Naslaginformatie
   items:
     - name: Naslaginformatie over algoritmen en modules
@@ -165,5 +162,5 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
-    - name: 'Aangepaste neurale netwerken (Net#)'
+    - name: Aangepaste neurale netwerken (Net#)
       href: azure-ml-netsharp-reference-guide.md
