@@ -204,6 +204,8 @@
               href: ./spark/apache-spark-concepts.md
             - name: Wat is Delta Lake
               href: ./spark/apache-spark-what-is-delta-lake.md
+            - name: Functioneel overzicht van Delta Lake
+              href: ./spark/apache-spark-delta-lake-overview.md
             - name: Prestaties van Apache Spark
               href: ./spark/apache-spark-performance.md
             - name: Gedrag van Apache Spark bij automatisch schalen
@@ -454,6 +456,8 @@
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Een query uitvoeren op analytische opslag in Azure Cosmos DB met Apache Spark voor Azure Synapse Analytics
               href: ./synapse-link/how-to-query-analytical-store-spark.md
+            - name: Gegevens kopiëren van Synapse Link naar een SQL-pool met Apache Spark
+              href: ./synapse-link/how-to-copy-to-sql-pool.md
         - name: Synapse SQL
           items:
             - name: Query uitvoeren op gegevens in opslag

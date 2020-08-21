@@ -9,22 +9,22 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 12/04/2019
-ms.openlocfilehash: 764e4c33182499b922499c798d57fd05d8859742
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 6ddff84de6b8ffd5bc8f7c7dcaa7cb4df3d71f81
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83673387"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88704443"
 ---
-**Reken doelen kunnen opnieuw worden gebruikt voor een trainings taak naar de volgende**. Als u bijvoorbeeld een externe virtuele machine aan uw werk ruimte koppelt, kunt u deze opnieuw gebruiken voor meerdere taken.  Voor machine learning pijp lijnen gebruikt u de juiste [pijplijn stap](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py) voor elk Compute-doel.
+**Rekendoelen kunnen opnieuw worden gebruikt voor trainingstaken**. Nadat u een externe VM koppelt aan uw werkruimte, kunt u die bijvoorbeeld voor meerdere taken gebruiken.  Voor machine learning-pijplijn gebruikt u de juiste [pijplijnstap](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py) voor elk rekendoel.
 
-|Trainings &nbsp; doelen|[Geautomatiseerde machine learning](../articles/machine-learning/concept-automated-ml.md) | [Machine learning-pijplijnen](../articles/machine-learning/concept-ml-pipelines.md) | [Azure Machine Learning Designer](../articles/machine-learning/concept-designer.md)
+|Trainingsdoelen&nbsp;|[Geautomatiseerde machine learning](../articles/machine-learning/concept-automated-ml.md) | [Machine learning-pijplijnen](../articles/machine-learning/concept-ml-pipelines.md) | [Azure Machine Learning-ontwerpprogramma](../articles/machine-learning/concept-designer.md)
 |----|:----:|:----:|:----:|
 |[Lokale computer](../articles/machine-learning/how-to-set-up-training-targets.md#local)| ja | &nbsp; | &nbsp; |
-|[Azure Machine Learning Compute-Cluster](../articles/machine-learning/how-to-set-up-training-targets.md#amlcompute)| Ja & <br/>afstemming &nbsp; afstemmen | ja | ja |
-|[Reken instantie Azure Machine Learning](../articles/machine-learning/concept-compute-instance.md) | Ja & <br/>afstemming afstemmen | ja |  |
-|[Externe VM](../articles/machine-learning/how-to-set-up-training-targets.md#vm) | Ja & <br/>afstemming afstemmen | ja | &nbsp; |
-|[Azure- &nbsp; Databricks](../articles/machine-learning/how-to-create-your-first-pipeline.md#databricks)| Ja (alleen de lokale SDK-modus) | ja | &nbsp; |
+|[Azure Machine Learning-rekenclusters](../articles/machine-learning/how-to-set-up-training-targets.md#amlcompute)| ja en <br/>hyperparameter&nbsp;afstemming | ja | ja |
+|[Azure Machine Learning-rekeninstantie](../articles/machine-learning/how-to-set-up-training-targets.md#instance) | ja en <br/>hyperparameterafstemming | ja |  |
+|[Externe VM](../articles/machine-learning/how-to-set-up-training-targets.md#vm) | ja en <br/>hyperparameterafstemming | ja | &nbsp; |
+|[Azure&nbsp;Databricks](../articles/machine-learning/how-to-create-your-first-pipeline.md#databricks)| ja (alleen de lokale SDK-modus) | ja | &nbsp; |
 |[Azure Data Lake Analytics](../articles/machine-learning/how-to-create-your-first-pipeline.md#adla) | &nbsp; | ja | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/how-to-set-up-training-targets.md#hdinsight) | &nbsp; | ja | &nbsp; |
 |[Azure Batch](../articles/machine-learning/how-to-set-up-training-targets.md#azbatch) | &nbsp; | ja | &nbsp; |

@@ -3,12 +3,12 @@ title: "Zelfstudie: Een inhoudsbibliotheek maken voor het implementeren van VM's
 description: In deze zelfstudie over Azure VMware Solution (AVS) maakt u een inhoudsbibliotheek voor het implementeren van een virtuele machine in een AVS-privécloud.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d5f0f26293af9eb146cfb4b2f3adf47fe8cce94f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079380"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612789"
 ---
 # <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>Zelfstudie: Een inhoudsbibliotheek maken voor het implementeren van VM's in Azure VMware Solution (AVS)
 
@@ -22,7 +22,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van deze zelfstudie zijn een NSX-T-segment voor logische switches en een beheerde DHCP-service vereist.  Zie [Hoe beheert u DHCP in Azure VMWare Solution (AVS)-preview](manage-dhcp.md) voor meer informatie.
+Voor het voltooien van deze zelfstudie zijn een NSX-T-segment voor logische switches en een beheerde DHCP-service vereist.  Raadpleeg [Hoe beheert u DHCP in Azure VMware Solution (AVS)-preview](manage-dhcp.md) voor meer informatie.
 
 ## <a name="create-a-content-library"></a>Maak een inhoudsbibliotheek
 

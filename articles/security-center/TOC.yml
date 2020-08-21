@@ -39,6 +39,8 @@
       href: security-center-enable-data-collection.md
     - name: E-mailmeldingen instellen
       href: security-center-provide-security-contact-details.md
+    - name: Een automatische reactie maken op een waarschuwing met een ARM-sjabloon
+      href: quickstart-automation-alert.md
 - name: Zelfstudies
   items:
     - name: Handleiding voor planning en bewerking

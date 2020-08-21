@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Documentatie voor Azure Lighthouse
-summary: Azure Lighthouse biedt serviceproviders de mogelijkheid om Azure-resources bij al hun klanten te beheren met een grotere mate van automatisering en schaalbaarheid en verbeterde governance.
+summary: Met Azure Lighthouse kunt u meerdere tenants beheren, meer automatiseren en schalen en hebt u verbeterde governance in resources en tenants.
 metadata:
   title: Documentatie voor Azure Lighthouse
   description: Azure Lighthouse biedt serviceproviders de mogelijkheid om Azure-resources bij al hun klanten te beheren met een grotere mate van automatisering en schaalbaarheid en verbeterde governance.
@@ -10,12 +10,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 07/20/2020
-  ms.openlocfilehash: f30f07fd200a5ac14e9733e5def7541b197004b2
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 40352965db20c12e589f52f76869032d1f5f1b10
+  ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87072671"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88659871"
 landingContent:
 - title: Over Azure Lighthouse
   linkLists:

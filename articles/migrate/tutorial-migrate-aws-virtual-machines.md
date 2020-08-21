@@ -2,21 +2,21 @@
 title: VM's met Amazon Web Services (AWS) EC2 ontdekken, beoordelen en migreren naar Azure
 description: In dit artikel wordt beschreven hoe AWS-VM's naar Azure migreert met Azure Migrate.
 ms.topic: tutorial
-ms.date: 06/16/2020
+ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066641"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611429"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-VM's (AWS) ontdekken, beoordelen en migreren naar Azure
 
-In deze zelfstudie ziet u hoe u AWS-VM’s (Amazon Web Services) ontdekt, beoordeelt en naar Azure migreert met behulp van Azure Migrate: Hulpprogramma's voor serverevaluatie en servermigratie
+In deze zelfstudie ziet u hoe u AWS-VM’s (Amazon Web Services) ontdekt, beoordeelt en naar Azure migreert met behulp van Azure Migrate: Server Assessment en Azure Migrate: Servicemigratiehulpprogramma's.
 
 > [!NOTE]
-> Wanneer u uw AWS-VM's naar Azure migreert, worden de VM's behandeld als fysieke servers. U gebruikt de servermigratiestroom voor de migratie van fysieke machines, om uw AWS-VM's naar Azure te migreren.
+> U migreert AWS-VM's naar Azure door ze te behandelen als fysieke servers.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -33,20 +33,29 @@ In deze zelfstudie leert u het volgende:
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aan voordat u begint.
 
-## <a name="discover-and-assess-aws-vms"></a>AWS-VM's detecteren en evalueren  
+## <a name="discover-and-assess"></a>Detecteren en evalueren
 
 Voordat u naar Azure migreert, raden we u aan een evaluatie van de VM-detectie en -migratie uit te voeren. Deze evaluatie helpt u bij een correcte instelling van de grootte van de AWS-VM's voor migratie naar Azure en bij het inschatten van de potentiële Azure-uitvoeringskosten.
 
 U stelt als volgt een evaluatie in:
 
-1. Een evaluatie kan worden uitgevoerd door uw AWS-VM's als fysieke machines te behandelen voor het uitvoeren van een evaluatie met behulp van de Azure Migrate: Serverevaluatieprogramma. Volg de [zelfstudie](./tutorial-prepare-physical.md) om Azure in te stellen en uw AWS-VM's voor te bereiden voor een evaluatie.
+1. Volg de [zelfstudie](./tutorial-prepare-physical.md) om Azure in te stellen en uw AWS-VM's voor te bereiden voor een evaluatie. Opmerking:
+
+    - Azure Migrate gebruikt wachtwoordverificatie wanneer u AWS-instanties detecteert. AWS-instanties ondersteunen niet standaard wachtwoordverificatie. Voordat u een instantie kunt detecteren, moet u wachtwoordverificatie inschakelen.
+        - Voor Windows-machines staat u WinRM-poort 5986 (HTTPS) en 5985 (HTTP) toe. Zo kunt u externe WMI aanroepen. Voor de instelling 
+        - Voor Linux-machines:
+            1. Aanmelden bij elke Linux-machine.
+            2. Open het bestand sshd_config: vi /etc/ssh/sshd_config
+            3. Ga in het bestand naar de regel **PasswordAuthentication** en wijzig de waarde in **yes**.
+            4. Sla het bestand op en sluit het. Start de ssh-service opnieuw.
+
 2. Volg vervolgens deze [zelfstudie](./tutorial-assess-physical.md) om een Azure Migrate-project en -apparaat in te stellen om uw AWS-VM's te ontdekken en te evalueren.
 
 We raden u aan om een evaluatie uit te voeren, maar het uitvoeren van een evaluatie is geen verplichte stap voor het migreren van VM's.
 
-## <a name="migrate-aws-vms"></a>AWS-VM's migreren   
 
-## <a name="1-prerequisites-for-migration"></a>1. Vereisten voor migratie
+
+## <a name="prerequisites"></a>Vereisten 
 
 - Zorg ervoor dat de AWS-VM’s die u wilt migreren, worden uitgevoerd met een ondersteunde versie van het besturingssysteem. Voor het doel van de migratie worden AWS-VM's behandeld als fysieke machines. Bekijk de [ondersteunde besturingssystemen](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor de migratiewerkstroom voor fysieke servers. U wordt aangeraden een testmigratie (testfailover) uit te voeren om te controleren of de virtuele machine werken zoals verwacht, voordat u doorgaat met de daadwerkelijke migratie.
 - Zorg ervoor dat de AWS-VM's voldoen aan de [ondersteunde configuraties](./migrate-support-matrix-physical-migration.md#physical-server-requirements) voor migratie naar Azure.
@@ -56,7 +65,7 @@ We raden u aan om een evaluatie uit te voeren, maar het uitvoeren van een evalua
     - Het is belangrijk dat u deze wijzigingen aanbrengt voordat u begint met de migratie. Als u de VM migreert voordat u de wijzigingen doorvoert, start de VM mogelijk niet op in Azure.
 Controleer de voor [Windows](prepare-for-migration.md#windows-machines) en [Linux](prepare-for-migration.md#linux-machines) vereiste wijzigingen.
 
-## <a name="2-prepare-azure-resources-for-migration"></a>2. Azure-resources voorbereiden op migratie
+### <a name="prepare-azure-resources-for-migration"></a>Azure-resources voorbereiden op migratie
 
 Zo bereidt u Azure voor op migratie met Azure Migrate: tool Server Migration van Azure Migrate.
 
@@ -85,7 +94,7 @@ Wijs de rol van Inzender voor virtuele machines toe aan het Azure-account. Deze 
 
 [Stel](../virtual-network/manage-virtual-network.md#create-a-virtual-network) een virtueel Azure-netwerk (VNet) in. Wanneer u repliceert naar Azure, worden de Azure-VM's gemaakt en gekoppeld aan het Azure VNet dat u opgeeft wanneer u de migratie instelt.
 
-## <a name="3-prepare-aws-instances-for-migration"></a>3. AWS-instanties voorbereiden voor migratie
+## <a name="prepare-aws-instances-for-migration"></a>AWS-instanties voorbereiden voor migratie
 
 Om AWS voor te bereiden op migratie naar Azure, moet u een replicatieapparaat voorbereiden en implementeren voor migratie.
 
@@ -111,7 +120,7 @@ Bereid de implementatie van het apparaat als volgt voor:
 - Het replicatieapparaat maakt gebruik van MySQL. Bekijk de [opties](migrate-replication-appliance.md#mysql-installation) voor het installeren van MySQL op het apparaat.
 - Controleer de vereiste Azure-URL's voor het replicatieapparaat om toegang te krijgen tot [openbare](migrate-replication-appliance.md#url-access) clouds en [overheidsclouds](migrate-replication-appliance.md#azure-government-url-access).
 
-## <a name="4-add-the-server-migration-tool"></a>4. Het hulpprogramma Server Migration toevoegen
+## <a name="add-the-server-migration-tool"></a>Het hulpprogramma Server Migration toevoegen
 
 Stel een Azure Migrate-project in en voeg daarna het hulpprogramma Server Migration eraan toe.
 
@@ -135,7 +144,7 @@ Stel een Azure Migrate-project in en voeg daarna het hulpprogramma Server Migrat
 10. Controleer in **Beoordelen en hulpprogramma's toevoegen** de instellingen en klik op **Hulpmiddelen toevoegen**
 11. Nadat u het hulpprogramma hebt toegevoegd, wordt het weergegeven in het Azure Migrate-project > **Servers** > **Migratieprogramma's**.
 
-## <a name="5-set-up-the-replication-appliance"></a>5. Het replicatieapparaat instellen
+## <a name="set-up-the-replication-appliance"></a>Het replicatieapparaat instellen
 
 De eerste stap van de migratie is het instellen van het replicatieapparaat. Als u het apparaat voor de migratie van AWS-VM's wilt instellen, downloadt u het installatiebestand voor het apparaat. Vervolgens voert u het uit op de [VM die u hebt voorbereid](#prepare-a-machine-for-the-replication-appliance).
 
@@ -177,7 +186,7 @@ De eerste stap van de migratie is het instellen van het replicatieapparaat. Als 
 
     ![Registratie voltooien](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-## <a name="6-install-the-mobility-service"></a>6. De Mobility-service installeren
+## <a name="install-the-mobility-service"></a>De Mobility-service installeren
 
 Er moet een Mobility-serviceagent zijn geïnstalleerd op de bron-AWS-VM's die moeten worden gemigreerd. De installatieprogramma's voor de agent zijn beschikbaar op het replicatieapparaat. Na het vinden van het juiste installatie programma installeert u de agent op elke computer die u wilt migreren. Ga als volgt te werk:
 
@@ -229,7 +238,7 @@ Er moet een Mobility-serviceagent zijn geïnstalleerd op de bron-AWS-VM's die mo
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <replication appliance IP address> -P <Passphrase File Path>
     ```
 
-## <a name="7-enable-replication-for-aws-vms"></a>7. Schakel replicatie in voor AWS-VM's
+## <a name="enable-replication-for-aws-vms"></a>Schakel replicatie in voor AWS-VM's
 
 > [!NOTE]
 > Via de portal kunt u maximaal 10 VM's voor replicatie tegelijk toevoegen. Als u meer VM's tegelijk wilt repliceren, kunt u ze toevoegen in batches van 10.
@@ -276,7 +285,7 @@ Er moet een Mobility-serviceagent zijn geïnstalleerd op de bron-AWS-VM's die mo
 > [!NOTE]
 > U kunt de replicatie-instellingen op elk gewenst moment bijwerken voordat de replicatie begint, **Beheren** > **Machines repliceren**. De instellingen kunnen niet meer worden gewijzigd nadat de replicatie is begonnen.
 
-## <a name="8-track-and-monitor-replication-status"></a>8. Traceer en bewaak replicatiestatus
+## <a name="track-and-monitor-replication-status"></a>Traceer en bewaak replicatiestatus
 
 - Wanneer u op **Repliceren** klikt, wordt een taak voor het starten van de replicatie gestart.
 - Wanneer deze taak is voltooid, beginnen de VM's hun initiële replicatie naar Azure.
@@ -288,7 +297,7 @@ U kunt de replicatiestatus controleren door te klikken op **Replicerende servers
 
 ![Replicatie controleren](./media/tutorial-migrate-physical-virtual-machines/replicating-servers.png)
 
-## <a name="9-run-a-test-migration"></a>9. Een testmigratie uitvoeren
+## <a name="run-a-test-migration"></a>Een testmigratie uitvoeren
 
 Wanneer de deltareplicatie begint, kunt u een testmigratie voor de virtuele machines uitvoeren voordat u een volledige migratie naar Azure uitvoert. De testmigratie wordt sterk aanbevolen en biedt de mogelijkheid om mogelijke problemen op te sporen en op te lossen voordat u doorgaat met de daadwerkelijke migratie. U wordt geadviseerd om dit ten minste één keer te doen voor elke VM voordat u deze migreert.
 
@@ -314,7 +323,7 @@ Ga als volgt te werk om een testmigratie uit te voeren:
     ![Migratie opschonen](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
 
 
-## <a name="10-migrate-aws-vms"></a>10. AWS-VM's migreren
+## <a name="migrate-aws-vms"></a>AWS-VM's migreren
 
 Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de AWS-VM's migreren.
 
@@ -340,6 +349,9 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
 5. Leid het verkeer naar het gemigreerde Azure VM-exemplaar.
 6. Werk eventuele interne documentatie bij met de nieuwe locatie en het nieuwe IP-adres van de Azure VM's. 
 
+
+
+
 ## <a name="post-migration-best-practices"></a>Best practices na de migratie
 
 - Voor grotere flexibiliteit:
@@ -353,9 +365,7 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
 - Voor controle en beheer:
     - Overweeg de implementatie van [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) om uw resourcegebruik en uitgaven te bewaken.
 
-## <a name="next-steps"></a>Volgende stappen
 
-Onderzoek de [cloudmigratiereis](/azure/architecture/cloud-adoption/getting-started/migrate) in het Azure Cloud Adoption Framework.
 
 ## <a name="troubleshooting--tips"></a>Probleemoplossing/tips
 
@@ -376,3 +386,7 @@ Onderzoek de [cloudmigratiereis](/azure/architecture/cloud-adoption/getting-star
 
 **Vraag:** Ik kan geen AWS-instanties detecteren met Azure Migrate als gevolg van een HTTP-statuscode 504 van de externe Windows-beheerservice    
 **Antwoord:** Controleer de vereisten van het Azure Migrate-apparaat en de URL-toegangsbehoeften. Zorg ervoor dat er geen proxyinstellingen zijn die de registratie van het apparaat blokkeren.   
+
+## <a name="next-steps"></a>Volgende stappen
+
+Onderzoek de [cloudmigratiereis](/azure/architecture/cloud-adoption/getting-started/migrate) in het Azure Cloud Adoption Framework.

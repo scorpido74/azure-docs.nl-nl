@@ -36,10 +36,6 @@
           href: virtual-wan-locations-partners.md
         - name: Automatiseringsrichtlijnen voor partners
           href: virtual-wan-configure-automation-providers.md
-    - name: Prijsconcepten
-      href: pricing-concepts.md
-    - name: Over NVA in een virtuele hub
-      href: about-nva-hub.md
     - name: Routering
       items:
         - name: Over virtuele hub-routering
@@ -54,15 +50,15 @@
               href: scenario-isolate-vnets-custom.md
             - name: VNets in gedeelde services
               href: scenario-shared-services-vnet.md
-            - name: Routeren via NVA
+            - name: Routeren via een NVA
               href: scenario-route-through-nva.md
-            - name: Routeren via NVA - aangepast (preview)
+            - name: Routeren via een NVA - aangepast
               href: scenario-route-through-nvas-custom.md
             - name: Azure Firewall - aangepast
               href: scenario-route-between-vnets-firewall.md
     - name: Bewaking
       items:
-        - name: Over Azure Monitor Insights voor virtuele WAN (Preview)
+        - name: Over Azure Monitor Insights voor virtuele WAN
           href: azure-monitor-insights.md
     - name: Site-naar-site
       items:
@@ -70,11 +66,15 @@
           href: virtual-wan-ipsec.md
         - name: Meerdere ISP-koppelingen - selectie van Azure-pad
           href: path-selection-multiple-links.md
+    - name: Prijsconcepten
+      href: pricing-concepts.md
+    - name: Over NVA in een virtuele hub
+      href: about-nva-hub.md
 - name: Instructiegidsen
   items:
     - name: Een virtuele WAN-SKU upgraden
       href: upgrade-virtual-wan.md
-    - name: NVA maken in een virtuele hub (preview)
+    - name: Een NVA in een virtuele hub maken
       href: How-to-nva-hub.md
     - name: ExpressRoute
       items:
@@ -154,14 +154,18 @@
   items:
     - name: Veelgestelde vragen
       href: virtual-wan-faq.md
-    - name: Azure-roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Abonnements- en servicebeperkingen
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Aankondigingen bijwerken
+      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: Abonnements- en servicebeperkingen
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Netwerkroutekaart
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Netwerkblog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Meldingen over netwerkupdates
+      href: 'https://azure.microsoft.com/updates/?category=networking'
     - name: Prijscalculator
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SLA

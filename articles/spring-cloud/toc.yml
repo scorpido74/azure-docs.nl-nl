@@ -40,6 +40,8 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: Beheerde identiteit gebruiken om Key Vault te koppelen met een Azure Spring Cloud-app
       href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: Azure Spring Cloud implementeren in een virtueel netwerk
+      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
 - name: Voorbeelden
   items:
     - name: Ingebouwde modules voor Azure Policy

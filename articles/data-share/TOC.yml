@@ -8,6 +8,8 @@
       href: supported-data-stores.md
 - name: Snelstartgidsen
   items:
+    - name: Gegevensshare maken - Azure Portal
+      href: share-your-data-portal.md
     - name: Gegevensshare maken - ARM-sjabloon
       displayName: Resource Manager
       href: share-your-data-arm.md
@@ -52,6 +54,9 @@
       href: security.md
     - name: Herstel na noodgeval
       href: disaster-recovery.md
+    - name: Azure Data Explorer-gegevens delen
+      href: /azure/data-explorer/data-share
+      maintainContext: true
 - name: Naslaginformatie
   items:
     - name: .NET

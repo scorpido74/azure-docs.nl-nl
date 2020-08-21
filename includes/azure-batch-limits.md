@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 8d23da1c3a45ed12193dfd4c1fc2ede453fc6ac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 2a35180e4c5ca26d53be135718e345f9657af6a2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84323876"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655015"
 ---
 | **Resource** | **Standaardlimiet** | **Maximumlimiet** |
 | --- | --- | --- |
@@ -26,10 +26,10 @@ ms.locfileid: "84323876"
 <sup>1</sup>Neem contact op met de ondersteuning van Azure als u een grotere hoeveelheid wilt aanvragen.
 
 > [!IMPORTANT]
-> We wijzigen de manier waarop u toegewezen quota aanvraagt en beheert.  Het totale toegewezen Vcpu's is de momenteel afgedwongen waarde, maar binnenkort wordt het toegewezen quotum per VM-serie afgedwongen. Quota met een lage prioriteit worden nog steeds afgedwongen op basis van de totale limiet; deze wordt niet afgedwongen door de VM-serie.
+> We veranderen de manier waarop u toegewezen quota aanvraagt en beheert.  Het totale toegewezen vCPU's is de momenteel afgedwongen waarde, maar binnenkort dwingen we toegewezen quota af per VM-serie. Quota met een lage prioriteit worden nog steeds afgedwongen op basis van het totale limiet, niet op basis van VM-serie.
 
 > [!NOTE]
 > De standaardlimieten variëren afhankelijk van het type abonnement dat u gebruikt voor het maken van een Batch-account. De weergegeven kerngeheugenquota zijn voor Batch-accounts in de modus Batch-service. [Bekijk de quota in uw Batch-account](../articles/batch/batch-quota-limit.md#view-batch-quotas).
 
 > [!IMPORTANT]
-> Om ervoor te zorgen dat onze capaciteit beter kan worden beheerd tijdens de wereldwijde gezondheidspandemie, zijn de standaard kerngeheugenquota voor nieuwe Batch-accounts in sommige regio's en voor sommige typen abonnementen verlaagd. In sommige gevallen zijn de bovenstaande waarden tot nul kerngeheugens verlaagd. Wanneer u een nieuw Batch-account maakt, moet u [uw quotum voor kerngeheugens controleren](../articles/batch/batch-quota-limit.md#view-batch-quotas) en indien nodig [een verhoging van het kerngeheugenquotum aanvragen](../articles/batch/batch-quota-limit.md#increase-a-quota). 
+> Om ervoor te zorgen dat onze capaciteit beter kan worden beheerd tijdens de wereldwijde gezondheidspandemie, zijn de standaard kerngeheugenquota voor nieuwe Batch-accounts in sommige regio's en voor sommige typen abonnementen verlaagd. In sommige gevallen zijn de bovenstaande waarden tot nul kerngeheugens verlaagd. Wanneer u een nieuw Batch-account maakt, moet u [uw quotum voor kerngeheugens controleren](../articles/batch/batch-quota-limit.md#view-batch-quotas) en indien nodig [een verhoging van het kerngeheugenquotum aanvragen](../articles/batch/batch-quota-limit.md#increase-a-quota). Als alternatief kunt u ook Batch-accounts opnieuw gebruiken die al voldoende quota hebben. 

@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 60e8a0dc93e19dfec0982080d0353466b08373de
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586831"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654477"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKU's
 
-Azure Load Balancer heeft twee soorten of SKU's.
+Azure Load Balancer heeft twee SKU's.
 
 ## <a name="sku-comparison"></a><a name="skus"></a>-SKU vergelijking
 
-Load Balancer ondersteunt zowel Basic als Standard SKU's. Deze SKU's verschillen van schaal, functies en prijs. Elk scenario dat mogelijk is met de Basic-versie van Load Balancer kan worden gemaakt met de Standard-versie ervan.
+Load balancer ondersteund zowel Standard als Basic SKU's. Deze SKU's verschillen van schaal, functies en prijs. Elk scenario dat mogelijk is met de Basic-versie van Load Balancer kan worden gemaakt met de Standard-versie ervan.
 
 Als u de verschillen met elkaar wilt vergelijken en wilt weten wat ze precies inhouden, kunt u de volgende tabel raadplegen. Zie [Overzicht van Azure Standard Load Balancer](load-balancer-standard-overview.md) voor meer informatie.
 
@@ -37,11 +37,11 @@ Zelfstandige virtuele machines, beschikbaarheidssets en virtuele-machineschaalse
 | **[Grootte van back-end-pool](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)** | Ondersteunt maximaal 1000 instanties. | Ondersteunt maximaal 300 instanties. |
 | **Eindpunten voor de back-end-pool** | Virtuele machines of virtuele-machineschaalsets in een enkel virtueel netwerk. | Virtuele machines in een beschikbaarheidsset of virtuele-machineschaalset. |
 | **[Statuscontroles](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
-| **[Gedrag statustest inactief](./load-balancer-custom-probe-overview.md#probedown)** | TCP-verbindingen blijven actief als een instantietest inactief is __en__ als alle tests inactief zijn. | TCP-verbindingen blijven actief als een instantietest inactief is. Alle TCP-verbindingen worden beëindigd wanneer alle tests inactief zijn. |
+| **[Gedrag statustest inactief](./load-balancer-custom-probe-overview.md#probedown)** | TCP-verbindingen blijven actief als een instantietest inactief is __en__ als alle tests inactief zijn. | TCP-verbindingen blijven actief als een instantietest inactief is. Alle TCP-verbindingen worden beëindigd als tests inactief zijn. |
 | **Beschikbaarheidszones** | Zone-redundante en zonale front-ends voor binnenkomend en uitgaand verkeer. | Niet beschikbaar |
 | **Diagnostics** | [Multidimensionale metrische gegevens van Azure Monitor](./load-balancer-standard-diagnostics.md) | [Azure Monitor-logboeken](./load-balancer-monitor-log.md) |
 | **HA-poorten** | [Beschikbaar voor interne Load Balancer](./load-balancer-ha-ports-overview.md) | Niet beschikbaar |
-| **Standaard beveiligd** | Gesloten voor binnenkomende stromen, tenzij dat toegestaan wordt door een netwerkbeveiligingsgroep. Merk op dat intern verkeer van het VNet naar de interne Load Balancer is toegestaan. | Standaard open. Netwerkbeveiligingsgroep optioneel. |
+| **Standaard beveiligd** | Gesloten voor binnenkomende stromen, tenzij dat toegestaan wordt door een netwerkbeveiligingsgroep. Intern verkeer van het virtuele netwerk naar de interne load balancer is toegestaan. | Standaard open. Netwerkbeveiligingsgroep optioneel. |
 | **Regels voor uitgaand verkeer** | [Declaratieve uitgaande NAT-configuratie](./load-balancer-outbound-rules-overview.md) | Niet beschikbaar |
 | **TCP opnieuw instellen bij inactiviteit** | [Beschikbaar op alle regels](./load-balancer-tcp-reset.md) | Niet beschikbaar |
 | **[Meerdere front-ends](./load-balancer-multivip-overview.md)** | Inkomend en [uitgaand](./load-balancer-outbound-connections.md) | Alleen inkomend |

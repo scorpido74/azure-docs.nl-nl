@@ -3,12 +3,12 @@ title: 'Zelfstudie: een back-up van SQL Server-databases maken in Azure'
 description: In deze zelfstudie leert u hoe u een back-up naar een Azure Backup Recovery Services-kluis maakt van een SQL Server-database die op een Azure-VM wordt uitgevoerd.
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: e0f3ec8e9407c97f91a7f215a6a2734a254006d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17a8472da2595c08cb198baaf853faf110a619fa
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513302"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612449"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Een back-up maken van een SQL Server-database in een Azure-VM
 
@@ -117,7 +117,7 @@ Configureer de back-up als volgt:
 
    ![Back-up configureren selecteren](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-2. Klik op **Back-up configureren**. De blade **Selecteer items voor back-up** wordt weergegeven. Hiermee worden alle geregistreerde beschikbaarheidsgroepen en zelfstandige SQL-servers weergegeven. Vouw de dubbele punthaak links van de rij uit om alle onbeveiligde databases in die instantie te bekijken of de beschikbaarheidsgroep Permanent te zien.  
+2. Selecteer **Back-up configureren**. Het venster **Selecteer items voor back-up** wordt weergegeven. Hiermee worden alle geregistreerde beschikbaarheidsgroepen en zelfstandige SQL-servers weergegeven. Vouw de dubbele punthaak links van de rij uit om alle onbeveiligde databases in die instantie te bekijken of de beschikbaarheidsgroep Permanent te zien.  
 
     ![Alle SQL Server-exemplaren met zelfstandige databases weergeven](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
@@ -129,11 +129,11 @@ Configureer de back-up als volgt:
 
      * U kunt ook automatische beveiliging inschakelen voor het hele exemplaar of de AlwaysOn-beschikbaarheidsgroep door de optie **ON** (AAN) te selecteren in de bijbehorende vervolgkeuzelijst in de kolom **AUTOPROTECT** (AUTOMATISCHE BEVEILIGING). Met de functie voor automatische beveiliging kunt u niet alleen alle bestaande databases in één keer beveiligen, maar ook automatisch nieuwe databases beveiligen die in de toekomst aan dat exemplaar of de beschikbaarheidsgroep worden toegevoegd.  
 
-4. Klik op **OK** om de blade **Back-upbeleid** te openen.
+4. Selecteer **OK** om het venster **Back-upbeleid** te openen.
 
     ![Automatische beveiliging inschakelen voor de AlwaysOn-beschikbaarheidsgroep](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. In **Back-upbeleid kiezen** selecteert u een beleid en klikt u vervolgens op **OK**.
+5. In **Back-upbeleid kiezen** selecteert u een beleid en selecteert u vervolgens **OK**.
 
    * Het standaardbeleid selecteren: HourlyLogBackup.
    * Een bestaand back-upbeleid kiezen dat u eerder hebt gemaakt voor SQL.
@@ -161,8 +161,8 @@ Een back-upbeleid bepaalt wanneer back-ups worden gemaakt en hoe lang ze worden 
 
 Ga als volgt te werk om een back-upbeleid te maken:
 
-1. Klik in de kluis op **Back-upbeleid** > **Toevoegen**.
-2. Klik in het menu **Toevoegen** op **SQL Server in Azure-VM** om het beleidstype te definiëren.
+1. Selecteer in de kluis **Back-upbeleid** > **Toevoegen**.
+2. Selecteer in het menu **Toevoegen** **SQL Server in Azure-VM** om het beleidstype te definiëren.
 
    ![Een beleidstype voor het nieuwe back-upbeleid kiezen](./media/backup-azure-sql-database/policy-type-details.png)
 
@@ -171,7 +171,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
 
    * Als u **Dagelijks** kiest, selecteert u het tijdstip en de tijdzone waarop de back-uptaak moet worden gestart.
    * U moet een volledige back-up maken omdat u de optie **Volledige back-up** niet kunt uitschakelen.
-   * Klik op **Volledige back-up** om het beleid te bekijken.
+   * Selecteer **Volledige back-up** om het beleid te bekijken.
    * U kunt geen differentiële back-ups maken voor dagelijkse volledige back-ups.
    * Als u **Wekelijks** kiest, selecteert u de dag van de week, het tijdstip en de tijdzone waarop de back-uptaak moet worden gestart.
 
@@ -214,7 +214,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
 ## <a name="run-an-on-demand-backup"></a>Een on-demand back-up uitvoeren
 
 1. In de Recovery Services-kluis kiest u Back-upitems.
-2. Klik op SQL in Azure-VM.
+2. Selecteer SQL in Azure VM.
 3. Klik met de rechtermuisknop op een database en kies Nu back-up maken.
 4. Kies het back-uptype (volledig/differentieel/logboek/alleen volledige kopiëren) en de compressie (inschakelen/uitschakelen)
 5. Selecteer OK om de back-up te starten.

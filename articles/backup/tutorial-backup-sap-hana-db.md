@@ -3,12 +3,12 @@ title: 'Zelfstudie: back-ups maken van SAP HANA-databases in virtuele Azure-mach
 description: In deze zelfstudie ontdekt u hoe u een back-up naar een Azure Backup Recovery Services-kluis maakt van SAP HANA-databases die op een virtuele Azure-machine worden uitgevoerd.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: e892bf2b943d35728b15a9354308e149af2e478e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810204"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611820"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Zelfstudie: Een back-up maken van SAP HANA-databases in een Azure-VM
 
@@ -39,7 +39,7 @@ Doe het volgende voordat u back-ups gaat configureren:
 * Voer als de hoofdgebruiker het SAP HANA-back-upconfiguratiescript uit (script vóór registratie) op de virtuele machine waarop HANA is geïnstalleerd. [Met behulp van dit script](https://aka.ms/scriptforpermsonhana) wordt het HANA-systeem voorbereid op de back-up. Raadpleeg de sectie [Wat doet het script vóór registratie](#what-the-pre-registration-script-does) voor meer informatie over het script vóór registratie.
 
 >[!NOTE]
->Het script voor registratie vooraf installeert de **compat-unixODBC234** voor SAP HANA-workloads die worden uitgevoerd op RHEL (7.4, 7.6 en 7.7) en **unixODBC** voor RHEL 8.1. [Dit pakket bevindt zich in de opslagplaats RHEL for SAP HANA (voor RHEL 7 Server) Update Services for SAP Solutions (RPM's)](https://access.redhat.com/solutions/5094721).  Voor de Azure Marketplace RHEL-installatie kopie is de opslagplaats **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms**.
+>Het script voor registratie vooraf installeert de **compat-unixODBC234** voor SAP HANA-workloads die worden uitgevoerd op RHEL (7.4, 7.6 en 7.7) en **unixODBC** voor RHEL 8.1. [Dit pakket bevindt zich in de opslagplaats RHEL for SAP HANA (voor RHEL 7 Server) Update Services for SAP Solutions (RPM's)](https://access.redhat.com/solutions/5094721).  Voor een Azure Marketplace RHEL-installatie kopie is de opslagplaats **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms**.
 
 ## <a name="set-up-network-connectivity"></a>De netwerkverbinding instellen
 

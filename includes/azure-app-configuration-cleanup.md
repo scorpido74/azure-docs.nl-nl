@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: e49f68f43044b93f329295181717ec2d3ade9fc6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 751613e7b3b2252b62dff2c3e1adad83bdc8c393
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116985"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88639037"
 ---
 Als u niet door wilt gaan met de resources die in dit artikel zijn gemaakt, verwijdert u de resourcegroep die u hier hebt gemaakt om kosten te voorkomen.
 
@@ -22,7 +22,7 @@ Als u niet door wilt gaan met de resources die in dit artikel zijn gemaakt, verw
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
 1. Voer de naam van de resourcegroep in het vak **Filteren op naam** in. 
-1. In de lijst met resultaten selecteert u de resourcegroep en klikt u met de rechtermuisknop op de rij of gebruikt u de knop met **weglatingstekens** ( **...** ) om het contextmenu te openen.
+1. Selecteer in de resultatenlijst de resourcegroepnaam om een overzicht te bekijken.
 1. Selecteer **Resourcegroep verwijderen**.
 1. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Voer de naam van de resourcegroep in ter bevestiging en selecteer **Verwijderen**.
 

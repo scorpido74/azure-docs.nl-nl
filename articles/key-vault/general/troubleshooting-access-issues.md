@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f31782fb4e91b72f51d6f0550fe9010cba7ca3d6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 270e5ba1879b229fbe9f5e6c8692bd8b4e9eebc7
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585454"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688637"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Problemen met het toegangsbeleid voor Azure Key Vault oplossen
 
@@ -25,7 +25,7 @@ Nadat u een of meer sleutelkluizen hebt gemaakt, wilt u wellicht controleren hoe
 Wanneer u begint met het schalen van uw service, neemt het aantal aanvragen toe dat naar uw sleutelkluis wordt verzonden. Dit kan de latentie van uw aanvragen verhogen en er in uitzonderlijke gevallen voor zorgen dat uw aanvragen worden beperkt, waardoor de prestaties van uw service worden beïnvloed. U kunt de metrische gegevens van de prestaties van de sleutelkluis controleren en waarschuwingen ontvangen voor specifieke drempelwaarden. [Lees meer](https://docs.microsoft.com/azure/key-vault/general/alert) voor een stapsgewijze handleiding voor het configureren van bewaking.
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Hoe kan ik toegangsbeheer per sleutelkluisobject toewijzen? 
-De beschikbaarheid van de functie voor toegangsbeheer per geheim/sleutel/certificaat wordt hier vermeld. [Meer informatie](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/.32213176-per-secret-key-certificate-access-control)
+De beschikbaarheid van de functie voor toegangsbeheer per geheim/sleutel/certificaat wordt hier vermeld. [Meer informatie](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control)
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>Hoe kan ik Key Vault-verificatie bieden met een toegangsbeheerbeleid?
 De eenvoudigste manier om een cloudtoepassing toegang te verlenen tot Key Vault, is met een beheerde identiteit. Zie [Een door App Service beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault]( https://docs.microsoft.com/azure/key-vault/general/managed-identity) voor meer informatie.
