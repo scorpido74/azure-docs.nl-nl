@@ -1,6 +1,6 @@
 ---
 title: Cloud groepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory | Microsoft Docs
-description: Preview van aangepaste Azure AD-rollen voor het delegeren van identiteits beheer. Azure-rollen beheren in de Azure Portal, Power shell of Graph API.
+description: Bekijk een voorbeeld van aangepaste Azure AD-rollen voor het delegeren van identiteitsbeheer. Beheer Azure-rollen in Azure Portal, PowerShell of Graph API.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d18041a746a0c1046a51cf408494ccb81019c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183204"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798309"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Cloud groepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory (preview-versie)
 
@@ -33,7 +33,7 @@ Maak een nieuwe Office 365-of beveiligings groep waarbij de eigenschap ' isAssig
 Als u niet wilt dat leden van de groep permanente toegang tot de rol hebben, kunt u Azure AD Privileged Identity Management gebruiken. Wijs een groep toe als een in aanmerking komend lid van een Azure AD-rol. Elk lid van de groep komt dan in aanmerking om hun toewijzing te activeren voor de rol waaraan de groep is toegewezen. Ze kunnen vervolgens hun roltoewijzing activeren voor een vaste tijds duur.
 
 > [!Note]
-> U moet over een bijgewerkte versie van Privileged Identity Management beschikken om een groep aan de Azure AD-rol via PIM toe te wijzen. U kunt een oudere versie van PIM gebruiken omdat uw Azure AD-organisatie gebruikmaakt van de Privileged Identity Management-API. Neem contact op met de alias pim_preview@microsoft.com om uw organisatie te verplaatsen en uw API bij te werken. Meer informatie over [Azure AD-rollen en-functies in PIM](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-roles-features).
+> U moet over een bijgewerkte versie van Privileged Identity Management beschikken om een groep aan de Azure AD-rol via PIM toe te wijzen. U kunt een oudere versie van PIM gebruiken omdat uw Azure AD-organisatie gebruikmaakt van de Privileged Identity Management-API. Neem contact op met de alias pim_preview@microsoft.com om uw organisatie te verplaatsen en uw API bij te werken. Meer informatie over [Azure AD-rollen en-functies in PIM](../privileged-identity-management/azure-ad-roles-features.md).
 
 ## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>Waarom we het maken van een speciale groep voor het toewijzen aan een rol afdwingen
 
@@ -65,11 +65,11 @@ De volgende scenario's worden momenteel niet ondersteund:
   - In de PIM-portal kunnen **mijn rollen** slechts één roltoewijzing tonen, ongeacht het aantal methoden waarmee de toewijzing wordt verleend (via een of meer groepen en direct).
 - *Alleen klanten met een licentie voor Azure AD P2* Zelfs na het verwijderen van de groep wordt er nog steeds een in aanmerking komend lid van de rol weer gegeven in PIM-gebruikers interface. Er is functioneel geen probleem. het is slechts een cache probleem in de Azure Portal.  
 - Exchange-beheer centrum herkent het rollidmaatschap niet via de groep, maar de Power shell-cmdlet werkt wel.
-- Azure Information Protection-Portal (de klassieke Portal) herkent het lidmaatschap van de rol nog niet via groep. U kunt [migreren naar het Unified sensitivive labeling platform](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) en vervolgens het Office 365 Security & compliance gebruiken om groeps toewijzingen te gebruiken voor het beheren van rollen.
+- Azure Information Protection-Portal (de klassieke Portal) herkent het lidmaatschap van de rol nog niet via groep. U kunt [migreren naar het Unified sensitivive labeling platform](/azure/information-protection/configure-policy-migrate-labels) en vervolgens het Office 365 Security & compliance gebruiken om groeps toewijzingen te gebruiken voor het beheren van rollen.
 
 Deze problemen worden opgelost.
 
-## <a name="required-license-plan"></a>Vereist licentie plan
+## <a name="required-license-plan"></a>Vereiste licentieplan
 
 Als u deze functie wilt gebruiken, hebt u een beschik bare Azure AD Premium P1-licentie in uw Azure AD-organisatie nodig. Als u ook wilt gebruiken Privileged Identity Management voor Just-in-time-functie activering, moet u een beschik bare Azure AD Premium P2-licentie hebben. Zie [Algemeen beschik bare functies van de gratis en Premium-abonnementen vergelijken](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)om de juiste licentie voor uw vereisten te vinden.
 

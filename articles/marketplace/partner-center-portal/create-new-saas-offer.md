@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6344cb5f1a4bd52395378f97ba2848eeec336572
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604741"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817014"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Een SaaS-aanbieding maken in de commerciële Marketplace
 
@@ -282,18 +282,19 @@ Dit veld is vereist.
 #### <a name="files-and-images"></a>Bestanden en installatie kopieën
 
 - **Documenten** (vereist): Voeg gerelateerde marketing documenten toe voor uw aanbieding, in PDF-indeling, van ten minste één en Maxi maal drie documenten per aanbieding.
-- **Afbeeldingen**  : logo afbeeldingen uploaden in PNG-indeling:
+- **Installatie kopieën** (vereist): er zijn meerdere locaties waar de logo afbeeldingen van uw aanbieding kunnen worden weer gegeven in de Marketplace ('s). Geef een PNG-bestand voor het logo van **grote** grootte op. Het partner centrum gebruikt deze om een **klein** en **gemiddeld** logo te maken. U kunt deze desgewenst later vervangen door andere installatie kopieën.
 
-  - **Klein** (48 x 48 pixels, vereist)
-  - **Gemiddeld** (90 x 90 pixels, vereist)
-  - **Groot** (216 x 216 pixels, vereist)
-  - **Breed** (255 x 115 pixels) (optioneel)
+  - **Groot** (van 216 x 216 tot 350 x 350 px, vereist)
+  - **Gemiddeld** (90 x 90 px, optioneel)
+  - **Klein** (48 x 48 px, optioneel)
+  
+  Deze logo's worden op verschillende plaatsen in de vermelding gebruikt:
 
-   Deze drie logo grootten worden op verschillende plaatsen in de online winkels gebruikt:
+   - Het grote logo wordt weer gegeven op de aanbiedings pagina van uw aanbieding in azure Marketplace en Microsoft AppSource.
+   - Het logo gemiddeld wordt weer gegeven wanneer u een nieuwe resource maakt in Microsoft Azure.
+   - Het kleine logo wordt weer gegeven in de zoek resultaten voor Azure Marketplace en op de pagina Microsoft AppSource hoofd pagina en zoek resultaten.
 
-   -   Het kleine logo (48 x 48 pixels) wordt weer gegeven in de zoek resultaten voor Azure Marketplace en op de pagina Microsoft AppSource hoofd pagina en zoek resultaten. 
-   -   Het gemiddelde logo (90 x 90 pixels) wordt weer gegeven wanneer u een nieuwe resource maakt in Microsoft Azure.
-   -   Het grote logo (tussen 216 x 216 en 350 x 350 pixels) wordt weer gegeven op uw aanbiedings pagina in azure Marketplace en Microsoft AppSource.
+   [!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 - **Scherm afbeeldingen** (vereist): Voeg een maximum van vijf scherm opnamen toe, met een grootte van 1280 x 720 pixels. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
 - **Video's** (optioneel): voeg links toe aan Video's die uw aanbieding aantonen. U kunt links gebruiken naar YouTube-en/of Vimeo-Video's, die samen met uw aanbieding aan klanten worden weer gegeven. U moet ook een miniatuur afbeelding van de video invoeren, met een grootte van 1280 x 720 pixels in PNG-indeling. U kunt Maxi maal vier Video's per aanbieding weer geven.

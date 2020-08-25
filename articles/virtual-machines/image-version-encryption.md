@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245550"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816487"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Voor beeld: door de klant beheerde sleutels gebruiken voor het versleutelen van installatie kopieën
 
@@ -27,9 +27,9 @@ Versleuteling aan de server zijde met door de klant beheerde sleutels maakt gebr
 
 Voor dit artikel moet u al een schijf versleuteling instellen die voor uw installatie kopie moet worden gebruikt.
 
-- Als u alleen een door de klant beheerde sleutel wilt gebruiken, raadpleegt u door de **klant beheerde sleutels met versleuteling aan de server zijde inschakelen** met behulp van de [Azure Portal](./windows/disks-enable-customer-managed-keys-portal.md) of [Power shell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
+- Als u alleen een door de klant beheerde sleutel wilt gebruiken, raadpleegt u door de **klant beheerde sleutels met versleuteling aan de server zijde inschakelen** met behulp van de [Azure Portal](./disks-enable-customer-managed-keys-portal.md) of [Power shell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
 
-- Als u zowel door het platform beheerde als door de klant beheerde sleutels wilt gebruiken (voor dubbele versleuteling), raadpleegt u **dubbele versleuteling inschakelen bij rest** met behulp van de [Azure Portal](./windows/disks-enable-double-encryption-at-rest-portal.md) of [Power shell](./windows/disks-enable-double-encryption-at-rest-powershell.md).
+- Als u zowel door het platform beheerde als door de klant beheerde sleutels wilt gebruiken (voor dubbele versleuteling), raadpleegt u **dubbele versleuteling inschakelen bij rest** met behulp van de [Azure Portal](./disks-enable-double-encryption-at-rest-portal.md) of [Power shell](./windows/disks-enable-double-encryption-at-rest-powershell.md).
     > [!IMPORTANT]
     > U moet deze koppeling gebruiken [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) om toegang te krijgen tot de Azure Portal. Dubbele versleuteling bij rest is momenteel niet zichtbaar in de open bare Azure Portal zonder de koppeling te gebruiken.
 

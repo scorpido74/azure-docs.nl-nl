@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2030620446f414f985f86218b96c6db78ab090a1
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524485"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763674"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -22,10 +22,10 @@ In dit artikel vindt u informatie over het oplossen van problemen bij het config
 - Controleer of een bestands share onder het opslag account al is beveiligd met een andere Recovery Services kluis.
 
   >[!NOTE]
-  >Alle bestandsshares in een opslagaccount kunnen in maar één Recovery Services-kluis worden beveiligd. U kunt [Dit script](scripts/backup-powershell-script-find-recovery-services-vault.md) gebruiken om de Recovery Services-kluis te vinden waar uw opslag account is geregistreerd.
+  >Alle bestandsshares in een opslagaccount kunnen in maar één Recovery Services-kluis worden beveiligd. U kunt [Dit script](scripts/backup-powershell-script-find-recovery-services-vault.md) gebruiken om de Recovery Services kluis te vinden waar uw opslag account is geregistreerd.
 
 - Zorg ervoor dat de bestands share niet aanwezig is in een van de niet-ondersteunde opslag accounts. Raadpleeg de [ondersteunings matrix voor Azure file share backup](azure-file-share-support-matrix.md) om ondersteunde opslag accounts te vinden.
-- Zorg ervoor dat de gecombineerde lengte van de naam van het opslag account en de naam van de resource groep niet langer is dan 84 tekens 77 in het geval van klassieke opslag accounts. 
+- Zorg ervoor dat de gecombineerde lengte van de naam van het opslag account en de naam van de resource groep niet langer zijn dan 84 tekens voor nieuwe opslag accounts en 77 tekens in het geval van klassieke opslag accounts.
 - Controleer de firewall-instellingen van het opslag account om ervoor te zorgen dat de optie voor het toestaan van vertrouwde micro soft-Services voor toegang tot het opslag account is ingeschakeld.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Fout in de portal geeft aan dat de detectie van opslagaccounts is mislukt
@@ -54,7 +54,7 @@ Voer de registratie opnieuw uit. Neem contact op met de ondersteuning als het pr
 Open in de Azure Portal uw **kluis**  >  **back-upinfrastructuur**  >  **opslag accounts** en klik op **registratie ongedaan maken** om de opslag accounts te verwijderen uit de Recovery Services kluis.
 
 >[!NOTE]
->Een Recovery Services-kluis kan alleen worden verwijderd na het ongedaan maken van de registratie van alle opslag accounts die zijn geregistreerd bij de kluis.
+>Een Recovery Services kluis kan alleen worden verwijderd na het ongedaan maken van de registratie van alle opslag accounts die zijn geregistreerd bij de kluis.
 
 ## <a name="common-backup-or-restore-errors"></a>Veelvoorkomende back-up-of herstel fouten
 

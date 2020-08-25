@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fd819f0b819007611f5232d0fdfb324173d9c4b4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797918"
+ms.locfileid: "88814447"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor inactieve gegevens
 
@@ -68,7 +68,7 @@ U kunt een of meer versleutelings zoekbereiken maken voor een opslag account met
 Nadat u een versleutelings bereik hebt gemaakt, kunt u het versleutelings bereik opgeven voor een aanvraag voor het maken van een container of BLOB. Zie [encrypties maken en beheren (preview)](../blobs/encryption-scope-manage.md)voor meer informatie over het maken van een versleutelings bereik.
 
 > [!NOTE]
-> Versleutelings bereiken worden tijdens de preview-periode niet ondersteund met geo-redundante opslag met lees toegang (RA-GRS).
+> Versleutelings bereiken worden niet ondersteund met geografisch redundante opslag met lees toegang (RA-GRS) en accounts met geozone-redundante opslag (RA-GZRS) met lees toegang tijdens de preview-versie.
 
 > [!IMPORTANT]
 > De preview-versie van het versleutelings bereik is alleen bedoeld voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.

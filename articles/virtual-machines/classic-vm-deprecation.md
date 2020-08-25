@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: c1807da76fe25d31581a07706489967d6e83f748
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0b2b995a6fe4cedd14b2e4ceeddc5747ec2423cf
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505305"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754800"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migreer uw IaaS-resources naar Azure Resource Manager op 1 maart 2023 
 
@@ -38,6 +38,8 @@ De volgende Azure-Services en-functionaliteit worden **niet** beïnvloed door di
 ## <a name="what-actions-should-i-take"></a>Welke acties moet ik ondernemen? 
 
 - Begin met het plannen van de migratie naar Azure Resource Manager, vandaag. 
+
+- Maak een lijst van alle betrokken Vm's. VM-type Virtual Machines (klassiek) op de [Blade VM](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines) van de Azure-Portal zijn alle betrokken vm's binnen het abonnement. 
 
 - Meer [informatie](./windows/migration-classic-resource-manager-overview.md) over het migreren van uw klassieke [Linux](./linux/migration-classic-resource-manager-plan.md) -en [Windows](./windows/migration-classic-resource-manager-plan.md) -vm's naar Azure Resource Manager.
 

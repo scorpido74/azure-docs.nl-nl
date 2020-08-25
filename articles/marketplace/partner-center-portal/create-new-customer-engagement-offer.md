@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 159cdef6b2c831e8c20d7249334bebac4f2061c5
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 93e7a720e9d39eca6d808c8c49b3b340226997ff
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606122"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817031"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken
 
@@ -197,12 +197,16 @@ Bied logo's en installatie kopieën voor uw aanbieding. Alle installatie kopieë
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef het logo van uw aanbod op in drie pixel grootten:
-- **Klein** (vereist; 48 x 48)
-- **Groot** (vereist; 216 x 216)
-- **Breed** (optioneel; 255 x 115)
+Geef een PNG-bestand voor het logo van **grote** grootte op. Het partner centrum gebruikt deze om een **klein** logo te maken. U kunt dit eventueel later vervangen door een andere installatie kopie.
+
+- **Groot** (van 216 x 216 tot 350 x 350 px, vereist)
+- **Klein** (48 x 48 px, optioneel)
+
+Deze logo's worden op verschillende plaatsen in de vermelding gebruikt:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

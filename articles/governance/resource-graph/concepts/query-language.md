@@ -1,14 +1,14 @@
 ---
 title: Inzicht krijgen in de querytaal
 description: Hierin worden resource grafiek tabellen en de beschik bare Kusto-gegevens typen,-Opera tors en-functies die bruikbaar zijn met Azure resource Graph beschreven.
-ms.date: 08/21/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea274c349c968852b77f3c3f2d39637f91484335
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723431"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798547"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
 
@@ -64,6 +64,25 @@ Resources
 > [!NOTE]
 > Als de `join` resultaten worden beperkt met `project` , moet de eigenschap die wordt gebruikt `join` om de twee tabellen te koppelen, _subscriptionId_ in het bovenstaande voor beeld zijn opgenomen in `project` .
 
+## <a name="extended-properties-preview"></a><a name="extended-properties"></a>Uitgebreide eigenschappen (preview-versie)
+
+Als _Preview_ -functie bevatten sommige resource typen in resource Graph aanvullende eigenschappen die betrekking hebben op het type dat kan worden opgevraagd naast de eigenschappen van Azure Resource Manager. Deze reeks waarden, ook wel _uitgebreide eigenschappen_genoemd, bestaat voor een ondersteund resource type in `properties.extended` . Gebruik de volgende query om te zien welke resource typen _uitgebreide eigenschappen_hebben:
+
+```kusto
+Resources
+| where isnotnull(properties.extended)
+| distinct type
+| order by type asc
+```
+
+Voor beeld: het aantal virtuele machines ophalen op `instanceView.powerState.code` :
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
+
 ## <a name="resource-graph-custom-language-elements"></a>Aangepaste taal elementen van resource grafiek
 
 ### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>Gedeelde query syntaxis (preview-versie)
@@ -99,7 +118,7 @@ Resource grafiek ondersteunt een subset van KQL- [gegevens typen](/azure/kusto/q
 
 Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource grafiek met specifieke voor beelden:
 
-|KQL |Voorbeeld query resource grafiek |Opmerkingen |
+|KQL |Voorbeeld query resource grafiek |Notities |
 |---|---|---|
 |[count](/azure/kusto/query/countoperator) |[Sleutel kluizen tellen](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[Afzonderlijke waarden voor een specifieke alias tonen](../samples/starter.md#distinct-alias-values) | |
@@ -123,8 +142,7 @@ Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource gra
 Het bereik van de abonnementen waaruit resources worden geretourneerd door een query is afhankelijk van de methode voor toegang tot de resource grafiek. Azure CLI en Azure PowerShell vullen de lijst met abonnementen die in de aanvraag moeten worden meegenomen op basis van de context van de geautoriseerde gebruiker. De lijst met abonnementen kan hand matig worden gedefinieerd voor elk met de **abonnementen** en **abonnements** parameters.
 In REST API en alle andere Sdk's moet de lijst met abonnementen waaruit resources moeten worden opgenomen, expliciet worden gedefinieerd als onderdeel van de aanvraag.
 
-Als **Preview**voegt rest API versie `2020-04-01-preview` een eigenschap toe om de query aan een [beheer groep](../../management-groups/overview.md)toe te voegen. Met deze preview-API wordt de abonnements eigenschap ook optioneel gemaakt. Als noch de beheer groep of abonnements lijst zijn gedefinieerd, is het query bereik alle bronnen waartoe de geverifieerde gebruiker toegang heeft. De nieuwe `managementGroupId` eigenschap neemt de beheer groep-ID in, die verschilt van de naam van de beheer groep.
-Wanneer `managementGroupId` is opgegeven, worden resources van de eerste 5000-abonnementen in of onder de opgegeven beheer groep-hiërarchie opgenomen. `managementGroupId` kan niet worden gebruikt op hetzelfde moment als `subscriptions` .
+Als **Preview**voegt rest API versie `2020-04-01-preview` een eigenschap toe om de query aan een [beheer groep](../../management-groups/overview.md)toe te voegen. Met deze preview-API wordt de abonnements eigenschap ook optioneel gemaakt. Als er geen beheer groep of abonnements lijst is gedefinieerd, is het query bereik alle bronnen waartoe de geverifieerde gebruiker toegang heeft. De nieuwe `managementGroupId` eigenschap neemt de beheer groep-ID in, die verschilt van de naam van de beheer groep. Wanneer `managementGroupId` is opgegeven, worden resources van de eerste 5000-abonnementen in of onder de opgegeven beheer groep-hiërarchie opgenomen. `managementGroupId` kan niet worden gebruikt op hetzelfde moment als `subscriptions` .
 
 Voor beeld: een query uitvoeren op alle resources binnen de hiërarchie van de beheer groep met de naam ' My-beheer groep ' met ID ' myMG '.
 
