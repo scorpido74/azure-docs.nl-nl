@@ -4,16 +4,16 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e913fa1e609eff687b5757a566583539b32b1b8e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654154"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757146"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
-Azure Backup biedt de mogelijkheid om [Azure virtual machines (vm's) en schijven](./backup-azure-arm-restore-vms.md) van back-ups van Azure-vm's, ook wel herstel punten genoemd, te herstellen. In dit artikel wordt uitgelegd hoe u bestanden en mappen kunt herstellen vanuit een back-up van een Azure-VM. Het terugzetten van bestanden en mappen is alleen beschikbaar voor virtuele Azure-machines die zijn geïmplementeerd met het Resource Manager-model en die zijn beveiligd met een Recovery Services-kluis.
+Azure Backup biedt de mogelijkheid om [Azure virtual machines (vm's) en schijven](./backup-azure-arm-restore-vms.md) van back-ups van Azure-vm's, ook wel herstel punten genoemd, te herstellen. In dit artikel wordt uitgelegd hoe u bestanden en mappen kunt herstellen vanuit een back-up van een Azure-VM. Het terugzetten van bestanden en mappen is alleen beschikbaar voor virtuele Azure-machines die zijn geïmplementeerd met het Resource Manager-model en die zijn beveiligd met een Recovery Services kluis.
 
 > [!NOTE]
 > Deze functie is beschikbaar voor virtuele Azure-machines die zijn geïmplementeerd met het Resource Manager-model en die zijn beveiligd met een Recovery Services kluis.
@@ -68,7 +68,7 @@ Raadpleeg de sectie [toegangs vereisten](#access-requirements) om te controleren
 
 Wanneer u het uitvoer bare bestand uitvoert, koppelt het besturings systeem de nieuwe volumes en worden er stationsletters toegewezen. U kunt Windows Verkenner of bestanden Verkenner gebruiken om deze stations te doorzoeken. De stationsletters die aan de volumes zijn toegewezen, mogen niet dezelfde letters als de oorspronkelijke virtuele machine zijn. De naam van het volume blijft echter behouden. Als het volume op de oorspronkelijke virtuele machine bijvoorbeeld ' gegevens schijf (E: `\` ) ' is, kan dat volume als "gegevens schijf (" wille keurige letter ":) op de lokale computer worden aangesloten `\` . Blader door alle volumes die worden vermeld in de uitvoer van het script totdat u uw bestanden of map vindt.  
 
-   ![Menu bestands herstel](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
+   ![Gekoppelde herstel volumes](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
 #### <a name="for-linux"></a>Voor Linux
 
@@ -302,7 +302,7 @@ Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit 
 Als u het script uitvoert op een computer met beperkte toegang, moet u toegang hebben tot:
 
 - `download.microsoft.com`
-- Url's van de Recovery service (geo-naam verwijst naar de regio waar de Recovery service-kluis zich bevindt)
+- Url's van de Recovery service (geo-naam verwijst naar de regio waarin de Recovery Services kluis zich bevindt)
   - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Voor open bare Azure-regio's)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Voor Azure China 21Vianet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Voor Azure Amerikaanse overheid)
@@ -332,7 +332,7 @@ Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de vo
     - Zorg ervoor dat het besturings systeem WS 2012 of hoger is.
     - Zorg ervoor dat de register sleutels zijn ingesteld zoals hieronder wordt beschreven op de Restore-server en zorg ervoor dat u de server opnieuw opstart. Het getal naast de GUID kan variëren van 0001-0005. In het volgende voor beeld is het 0004. Navigeer door het pad naar de register sleutel tot het gedeelte para meters.
 
-    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![Register sleutel wijzigingen](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
@@ -343,7 +343,7 @@ Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de vo
 
 - Als de Restore-server een virtuele Linux-machine is:
   - Wijzig de instelling in het bestand/etc/iscsi/iscsid.conf in:
-    - node. verbonden [0]. Timeo. noop_out_timeout = 5 naar node. verbonden [0]. Timeo. noop_out_timeout = 30
+    - `node.conn[0].timeo.noop_out_timeout = 5`  Aan `node.conn[0].timeo.noop_out_timeout = 30`
 - Nadat u de bovenstaande wijziging hebt aangebracht, voert u het script opnieuw uit. Met deze wijzigingen is het zeer waarschijnlijk dat de bestands herstel slaagt.
 - Telkens wanneer een gebruiker een script downloadt, initieert Azure Backup het proces van het voorbereiden van het herstel punt voor down loads. Bij grote schijven neemt dit proces veel tijd in beslag. Als er opeenvolgende bursts van aanvragen zijn, gaat de voor bereiding van het doel naar een down load Spiral. Daarom is het raadzaam om een script te downloaden vanuit Portal/Power shell/CLI, te wachten gedurende 20-30 minuten (een heuristiek) en het vervolgens uit te voeren. Op dit moment wordt verwacht dat het doel gereed is voor verbinding vanuit het script.
 - Nadat het bestand is hersteld, gaat u terug naar de portal en selecteert u **schijven loskoppelen** voor herstel punten waar u geen volumes meer kunt koppelen. In wezen worden bestaande processen/sessies opgeschoond en wordt de kans op herstel verbeterd.

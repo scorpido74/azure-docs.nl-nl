@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperfq1
+ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737628"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757809"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Optimalisatie van gegevens opslag voor Apache Spark
 
@@ -56,11 +57,11 @@ Wanneer u een nieuw Spark-cluster maakt, kunt u Azure Blob Storage of Azure Data
 
 | Winkeltype | Bestandssysteem | Snelheid | Wijk | Gebruiksscenario's |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Yes | Tijdelijk cluster |
-| Azure Blob Storage (beveiligd) | **wasbs:**//URL/ | **Standard** | Yes | Tijdelijk cluster |
-| Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gereed** | Yes | Tijdelijk cluster |
-| Azure Data Lake Storage gen 1| **ADL:**//URL/ | **Gereed** | Yes | Tijdelijk cluster |
-| Lokale HDFS | **hdfs:**//URL/ | **Snelste** | No | Interactive 24/7-cluster |
+| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Ja | Tijdelijk cluster |
+| Azure Blob Storage (beveiligd) | **wasbs:**//URL/ | **Standard** | Ja | Tijdelijk cluster |
+| Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gereed** | Ja | Tijdelijk cluster |
+| Azure Data Lake Storage gen 1| **ADL:**//URL/ | **Gereed** | Ja | Tijdelijk cluster |
+| Lokale HDFS | **hdfs:**//URL/ | **Snelste** | Nee | Interactive 24/7-cluster |
 
 Zie [opslag opties vergelijken voor gebruik met Azure HDInsight-clusters](../hdinsight-hadoop-compare-storage-options.md)voor een volledige beschrijving van opslag opties.
 
@@ -77,7 +78,7 @@ Spark biedt systeemeigen mechanismen voor caching die kunnen worden gebruikt via
     * Maakt gebruik van in-Memory en SSD-caching.
 
 * Lokale HDFS (aanbevolen)
-    * `hdfs://mycluster`programmapad.
+    * `hdfs://mycluster` programmapad.
     * Maakt gebruik van SSD-caching.
     * Gegevens in de cache gaan verloren wanneer u het cluster verwijdert, waardoor een cache opnieuw moet worden opgebouwd.
 
@@ -86,7 +87,7 @@ Spark biedt systeemeigen mechanismen voor caching die kunnen worden gebruikt via
 Spark-taken worden gedistribueerd, daarom is de juiste gegevensserialisatie belangrijk voor de beste prestaties.  Er zijn twee opties voor serialisatie voor Spark:
 
 * Java-serialisatie is de standaardinstelling.
-* `Kryo`serialisatie is een nieuwere indeling en kan leiden tot snellere en meer compacte serialisatie dan Java.  `Kryo`Hiervoor moet u de klassen in het programma registreren en wordt niet alle serialiseerbare typen ondersteund.
+* `Kryo` serialisatie is een nieuwere indeling en kan leiden tot snellere en meer compacte serialisatie dan Java.  `Kryo` Hiervoor moet u de klassen in het programma registreren en wordt niet alle serialiseerbare typen ondersteund.
 
 ## <a name="use-bucketing"></a>Bucketing gebruiken
 

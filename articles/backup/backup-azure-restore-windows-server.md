@@ -3,12 +3,12 @@ title: Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 description: In dit artikel vindt u informatie over het herstellen van gegevens die zijn opgeslagen in azure naar een Windows-Server of Windows-computer met de Microsoft Azure Recovery Services-agent (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: d96c6c54431d0160bd58be0c3491ef2b22753e53
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: d9bc22204156f7562290f53db77272b9cabe6c69
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263398"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757078"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 
@@ -72,7 +72,7 @@ Als u een bestand per ongeluk hebt verwijderd en op dezelfde computer wilt herst
 
 9. Wanneer u klaar bent, selecteert u op de pagina **Bladeren en herstel bestanden** de optie **ontkoppelen**. Selecteer vervolgens **Ja** om te bevestigen dat u het volume wilt ontkoppelen.
 
-    ![Scherm afbeelding van de wizard gegevens herstellen bladeren en bestanden herstellen (herstellen op dezelfde machine)](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Scherm afbeelding van de wizard gegevens herstellen bladeren en bestanden herstellen (herstellen naar dezelfde machine)-het herstel volume bevestigen ontkoppelen](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
     > Als u niet **ontkoppelen**selecteert, blijft het herstel volume gedurende 6 uur vanaf het moment waarop het is gekoppeld. De koppel tijd wordt echter Maxi maal 24 uur verlengd in het geval van een doorlopende bestands kopie. Er worden geen back-upbewerkingen uitgevoerd terwijl het volume is gekoppeld. Elke back-upbewerking die is gepland om te worden uitgevoerd op het moment dat het volume wordt gekoppeld, wordt uitgevoerd nadat het herstel volume is ontkoppeld.

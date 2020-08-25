@@ -3,12 +3,12 @@ title: Versleuteling van back-upgegevens met door de klant beheerde sleutels
 description: Meer informatie over hoe u met Azure Backup uw back-upgegevens kunt versleutelen met behulp van door de klant beheerde sleutels (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: dfed3f983867568befc77d7dbc81cdde70eef9ed
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2c83350acad59e72cfabc8e40069aab46d785b63
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589602"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763113"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Versleuteling van back-upgegevens met door de klant beheerde sleutels
 
@@ -133,7 +133,7 @@ U kunt met behulp van de volgende stappen ook de beveiliging van zacht verwijder
 ### <a name="assign-encryption-key-to-the-rs-vault"></a>Versleutelings sleutel toewijzen aan de RS-kluis
 
 >[!NOTE]
-> Controleer het volgende voordat u verdergaat:
+> Voordat u verder gaat, controleert u het volgende:
 >
 > - Alle hierboven genoemde stappen zijn voltooid:
 >   - De beheerde identiteit van de Recovery Services kluis is ingeschakeld en de vereiste machtigingen zijn toegewezen

@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: da358ecb126dda21d18120bbe698fec234c85e4f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850905"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798955"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Uw gebruikers beheren met mijn personeel (preview)
 
@@ -64,7 +64,7 @@ Zodra u AUs hebt geconfigureerd, kunt u dit bereik Toep assen op uw gebruikers d
 
 U kunt de portal mijn personeel beveiligen met behulp van het beleid voor voorwaardelijke toegang van Azure AD. Gebruik het voor taken zoals het vereisen van multi-factor Authentication voordat ze toegang krijgen tot mijn personeel.
 
-We raden u ten zeerste aan om mijn personeel te beschermen met het [beleid voor voorwaardelijke toegang van Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/). Als u een beleid voor voorwaardelijke toegang wilt Toep assen op mijn personeel, moet u de service-principal van mijn personeel hand matig maken met behulp van Power shell.
+We raden u ten zeerste aan om mijn personeel te beschermen met het [beleid voor voorwaardelijke toegang van Azure AD](../conditional-access/index.yml). Als u een beleid voor voorwaardelijke toegang wilt Toep assen op mijn personeel, moet u de service-principal van mijn personeel hand matig maken met behulp van Power shell.
 
 ### <a name="apply-a-conditional-access-policy-to-my-staff"></a>Een beleid voor voorwaardelijke toegang Toep assen op mijn personeel
 
@@ -119,7 +119,7 @@ Als u het telefoon nummer van een gebruiker wilt beheren, moet u een van de volg
 - [Beheerder voor geprivilegieerde authenticatie](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globale beheerder](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
-## <a name="search"></a>Search
+## <a name="search"></a>Zoeken
 
 U kunt zoeken naar AUs en gebruikers in uw organisatie met behulp van de zoek balk in mijn personeel. U kunt zoeken in alle AUs en gebruikers in uw organisatie, maar u kunt alleen wijzigingen aanbrengen aan gebruikers die zich in een AU bevinden waarvoor u beheerders machtigingen hebt gekregen.
 

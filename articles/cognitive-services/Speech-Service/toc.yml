@@ -3,10 +3,8 @@
 - name: Overzicht
   expanded: true
   items:
-    - name: Wat is de Speech-service?
+    - name: Overzicht van Speech Service
       href: overview.md
-    - name: Speech Service gratis uitproberen
-      href: get-started.md
     - name: Taal- en spraakondersteuning
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md

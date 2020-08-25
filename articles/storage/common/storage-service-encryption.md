@@ -4,21 +4,21 @@ description: Azure Storage beveiligt uw gegevens door deze automatisch te versle
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/16/2020
+ms.date: 08/21/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 002eeaedf4ae479408cd1ba0c7a373d8a2661cdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5e7060b31a936bd54dc0a1f084f823beb076044
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089393"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756806"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor inactieve gegevens
 
-Azure Storage worden uw gegevens automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Azure Storage versleuteling beveiligt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie.
+Azure Storage versleutelt uw gegevens automatisch wanneer deze in de cloud worden bewaard. Azure Storage versleuteling beveiligt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie.
 
 ## <a name="about-azure-storage-encryption"></a>Over Azure Storage versleuteling
 
@@ -43,13 +43,13 @@ Gegevens in een nieuw opslag account worden versleuteld met door micro soft behe
 
 De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage versleuteling.
 
-| Para meter voor sleutel beheer | Door micro soft beheerde sleutels | Door klant beheerde sleutels | Door de klant verschafte sleutels |
+| Para meter voor sleutel beheer | Door Microsoft beheerde sleutels | Door klant beheerde sleutels | Door de klant verschafte sleutels |
 |--|--|--|--|
 | Bewerkingen voor versleuteling/ontsleuteling | Azure | Azure | Azure |
 | Azure Storage services ondersteund | Alles | Blob-opslag, Azure Files<sup>1, 2</sup> | Blob Storage |
 | Sleutel opslag | Micro soft-sleutel archief | Azure Key Vault | Eigen sleutel archief van de klant |
-| Verantwoordelijkheid voor sleutel rotatie | Microsoft | Klant | Klant |
-| Sleutel besturings element | Microsoft | Klant | Klant |
+| Verantwoordelijkheid voor sleutel rotatie | Microsoft-peering | Klant | Klant |
+| Sleutel besturings element | Microsoft-peering | Klant | Klant |
 
 <sup>1</sup> Zie [een account maken dat door de klant beheerde sleutels voor wacht rijen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met behulp van een wachtrij opslag.<br />
 <sup>2</sup> Zie voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met table-opslag [een account maken dat door de klant beheerde sleutels voor tabellen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).

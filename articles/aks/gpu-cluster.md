@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749134"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757639"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Gebruik Gpu's voor computerintensieve werk belastingen op Azure Kubernetes service (AKS)
 
@@ -158,12 +158,12 @@ Als u de AKS-preview CLI-extensie wilt bijwerken, gebruikt u de volgende Azure C
 az extension update --name aks-preview
 ```
 
-### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>De AKS specialistische GPU-installatie kopie gebruiken in nieuwe clusters (preview-versie)
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>De AKS specialistische GPU-installatie kopie gebruiken in nieuwe clusters (preview-versie)    
 
 Configureer het cluster voor het gebruik van de AKS specialistische GPU-installatie kopie wanneer het cluster wordt gemaakt. Gebruik de `--aks-custom-headers` vlag voor de GPU-agent knooppunten op uw nieuwe cluster om de AKS specialistische GPU-afbeelding te gebruiken.
 
 ```azure-cli
-az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
 Als u een cluster wilt maken met behulp van de gewone AKS-installatie kopieën, kunt u dit doen door de aangepaste tag weg te laten `--aks-custom-headers` . U kunt er ook voor kiezen om meer gespecialiseerde GPU-knooppunt groepen toe te voegen aan de hand van hieronder.
@@ -178,6 +178,12 @@ az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myRe
 ```
 
 Als u een knooppunt groep wilt maken met behulp van de gewone AKS-installatie kopieën, kunt u dit doen door de aangepaste tag weg te laten `--aks-custom-headers` . 
+
+> [!NOTE]
+> Als uw GPU-SKU generatie 2 virtuele machines vereist, kunt u het volgende doen:
+> ```azure-cli
+> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
+> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>Controleer of de Gpu's Schedulable zijn
 

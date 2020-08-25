@@ -4,12 +4,12 @@ description: Meer informatie over de versleutelings functies in Azure Backup u h
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1350be3fb869e7b81eaba14f91aff7f0e9e3c992
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 71183e99522707737812096567d877df740c4bae
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586644"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763640"
 ---
 # <a name="encryption-in-azure-backup"></a>Versleuteling in Azure Backup
 
@@ -27,7 +27,7 @@ Azure Backup omvat versleuteling op twee niveaus:
   - **Back-up van Azure virtual machine**: Azure Backup ondersteunt het maken van back-ups van vm's met schijven die zijn versleuteld met door het [platform beheerde sleutels](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys), en door de [klant beheerde sleutels](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) die eigendom zijn van en worden beheerd door u. Daarnaast kunt u ook een back-up maken van uw virtuele Azure-machines waarvan het besturings systeem of de gegevens schijven zijn versleuteld met behulp van [Azure Disk Encryption](backup-azure-vms-encryption.md#encryption-support-using-ade). ADE maakt gebruik van BitLocker voor Windows-Vm's en DM-crypt voor Linux Vm's om in-gast versleuteling uit te voeren.
 
 >[!NOTE]
->Infrastructuur versleuteling is momenteel in beperkte preview en is alleen beschikbaar in de regio's VS-Oost, VS-West2, VS Zuid-Centraal, US Gov-Arizona en VS GOV Virginia. Als u de functie in een van deze regio's wilt gebruiken, vult u [dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) in en gaat u een e-mail sturen naar [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>Infrastructuur versleuteling is momenteel in beperkte preview en is alleen beschikbaar in de regio's VS-Oost, VS-West2, VS Zuid-Centraal, US Gov-Arizona en VS GOV Virginia. Als u de functie in een van deze regio's wilt gebruiken, vult u [dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) in en e-mail ons op [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="next-steps"></a>Volgende stappen
 

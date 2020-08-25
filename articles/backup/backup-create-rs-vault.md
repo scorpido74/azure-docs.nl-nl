@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het maken en configureren va
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 309d87da11c6a015a9e4db8429587e498d55882c
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586185"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757741"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Een Recovery Services kluis maken en configureren
 
@@ -20,7 +20,7 @@ ms.locfileid: "88586185"
 Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die opslag wordt gerepliceerd.
 
 > [!NOTE]
-> Het wijzigen van het **type opslag replicatie** (lokaal redundant/geo-redundant) voor een Recovery Services-kluis moet worden uitgevoerd voordat u back-ups in de kluis configureert. Zodra u een back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld.
+> Het wijzigen van het **replicatie type** van de opslag (lokaal redundante/geo-redundant) voor een Recovery Services kluis moet worden uitgevoerd voordat u back-ups in de kluis configureert. Zodra u een back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld.
 >
 >- Als u de back-up nog niet hebt geconfigureerd, [volgt u deze stappen](#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
 >- Als u de back-up al hebt geconfigureerd en van GRS naar LRS moet verplaatsen, [raadpleegt u deze oplossingen](#how-to-change-from-grs-to-lrs-after-configuring-backup).

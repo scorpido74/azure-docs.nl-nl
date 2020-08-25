@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209473"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799057"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory
 
@@ -211,7 +211,7 @@ Als u gebruikmaakt van op groepen gebaseerde licentie verlening, is het een goed
 
 - Wanneer licenties zijn toegewezen of gewijzigd voor een grote groep (bijvoorbeeld 100.000 gebruikers), kan dit van invloed zijn op de prestaties. Met name het aantal wijzigingen dat door Azure AD Automation wordt gegenereerd, kan de prestaties van uw adreslijst synchronisatie tussen Azure AD en on-premises systemen negatief beïnvloeden.
 
-- Als u gebruikmaakt van dynamische groepen om het lidmaatschap van de gebruiker te beheren, controleert u of de gebruiker deel uitmaakt van de groep. Dit is noodzakelijk voor het toewijzen van licenties. Als dit niet het geval is, [controleert u de verwerkingsstatus voor de lidmaatschapsregel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) van de dynamische groep.
+- Als u gebruikmaakt van dynamische groepen om het lidmaatschap van de gebruiker te beheren, controleert u of de gebruiker deel uitmaakt van de groep. Dit is noodzakelijk voor het toewijzen van licenties. Als dit niet het geval is, [controleert u de verwerkingsstatus voor de lidmaatschapsregel](./groups-create-rule.md) van de dynamische groep.
 
 - Bij bepaalde hoge belasting situaties kan het enige tijd duren om licentie wijzigingen voor groepen of lidmaatschaps wijzigingen te verwerken in groepen met bestaande licenties. Als u ziet dat uw wijzigingen meer dan 24 uur duren om de groeps grootte van 60K gebruikers of minder te verwerken, [opent u een ondersteunings ticket](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) om ons te laten onderzoeken. 
 

@@ -3,12 +3,12 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: af913a6bb1fb7c871a7f6740a0fb2d66efa3f712
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717573"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756687"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Gastconfiguratie van Azure Policy begrijpen
 
@@ -111,25 +111,16 @@ Als de computer momenteel een door de gebruiker toegewezen systeem identiteit he
 
 ## <a name="guest-configuration-definition-requirements"></a>Vereisten voor gast configuratie definitie
 
-Voor elke controle die wordt uitgevoerd per gast configuratie zijn twee beleids definities, een **DeployIfNotExists** -definitie en een **AuditIfNotExists** -definitie vereist. De **DeployIfNotExists** -beleids definities beheren afhankelijkheden voor het uitvoeren van controles op elke machine.
+Gast configuratie beleidsregels gebruiken het **AuditIfNotExists** -effect. Wanneer de definitie wordt toegewezen, wordt de levens cyclus van alle vereisten in de Azure-resource provider automatisch door een back-end-service afgehandeld `Microsoft.GuestConfiguration` .
 
-De **DeployIfNotExists** -beleids definitie valideert en corrigeert de volgende items:
+Het **AuditIfNotExists** -beleid retourneert geen compliantie resultaten totdat aan alle vereisten wordt voldaan op de computer. De requirments worden beschreven in de sectie [vereisten voor Azure virtual machines implementeren](#deploy-requirements-for-azure-virtual-machines)
 
-- Controleer of aan de computer een configuratie is toegewezen om te evalueren. Als er momenteel geen toewijzing aanwezig is, haalt u de toewijzing op en bereidt u de machine voor door het volgende te doen:
-  - Verifiëren met de computer met behulp van een [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md)
-  - De nieuwste versie van de **micro soft. GuestConfiguration** -extensie installeren
-  - [Validatie hulpprogramma's](#validation-tools) en afhankelijkheden, indien nodig, installeren
+> [!IMPORTANT]
+> In een eerdere versie van de gast configuratie was een initiatief vereist om **DeployIfNoteExists** -en **AuditIfNotExists** -definities te combi neren. **DeployIfNotExists** -definities zijn niet meer vereist. De definities en intiaitives hebben een label, `[Deprecated]` maar bestaande toewijzingen blijven functioneren.
+>
+> Er is een hand matige stap vereist. Als u de beleids initiatieven in categorie eerder hebt toegewezen `Guest Configuration` , verwijdert u de beleids toewijzing en wijst u de nieuwe definitie toe. Gast configuratie beleidsregels hebben als volgt een naam patroon: `Audit <Windows/Linux> machines that <non-compliant condition>`
 
-Als de **DeployIfNotExists** -toewijzing niet compatibel is, kan een [herstel taak](../how-to/remediate-resources.md#create-a-remediation-task) worden gebruikt.
-
-Zodra de **DeployIfNotExists** -toewijzing compatibel is, bepaalt de toewijzing van het **AuditIfNotExists** -beleid of de gast toewijzing compatibel of niet-compatibel is. Het validatie hulpprogramma levert de resultaten aan de gast configuratie-client. De-client stuurt de resultaten door naar de gast uitbreiding, waardoor deze beschikbaar worden gemaakt via de provider van de gast configuratie resource.
-
-Azure Policy maakt gebruik van de **complianceStatus** -eigenschap van de gast configuratie resource providers om naleving te rapporteren in het knoop punt **naleving** . Zie [nalevings gegevens ophalen](../how-to/get-compliance-data.md)voor meer informatie.
-
-> [!NOTE]
-> Het **DeployIfNotExists** -beleid is vereist voor het **AuditIfNotExists** -beleid om resultaten te retour neren. Zonder de **DeployIfNotExists**wordt met het **AuditIfNotExists** -beleid ' 0 van 0 ' resources weer gegeven als status.
-
-Alle ingebouwde beleids regels voor gast configuratie zijn opgenomen in een initiatief om de definities te groeperen voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam _ \[ Preview \] : wachtwoord beveiliging controleren binnen Linux-en Windows-machines_ bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** -en **AuditIfNotExists** -paren voor Windows en drie paren voor Linux. De [beleids definitie](definition-structure.md#policy-rule) logica valideert dat alleen het doel besturingssysteem wordt geëvalueerd.
+Azure Policy maakt gebruik van de eigenschap **complianceStatus** van de gast configuratie resource provider om naleving te rapporteren in het knoop punt **naleving** . Zie [nalevings gegevens ophalen](../how-to/get-compliance-data.md)voor meer informatie.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>De instellingen van het besturings systeem controleren volgens de industrie basislijnen
 

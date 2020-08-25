@@ -3,12 +3,12 @@ title: Voorlopig verwijderen voor SQL Server in azure VM en SAP HANA in werk bel
 description: Meer informatie over hoe zacht verwijderen voor SQL Server in azure VM en SAP HANA in azure VM-workloads maakt back-ups veiliger.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c0eaedea2d5428376befaade42f87348cf84e7bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bf9cc2551d85c1bc663db2f9e61e2ea6895f1d23
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538187"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757469"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Voorlopig verwijderen voor SQL Server in azure VM en SAP HANA in werk belastingen voor Azure VM
 
@@ -62,7 +62,7 @@ Azure Backup biedt nu zacht verwijderen voor SQL Server in azure VM en SAP HANA 
 >[!NOTE]
 >Deze instructies zijn ook van toepassing op SAP HANA in azure VM.
 
-1. Als u de back-upgegevens van een data base in een SQL-Server wilt verwijderen, moet de back-up worden gestopt. Ga in het Azure Portal naar de Recovery Services-kluis, ga naar het back-upitem en kies **back-up stoppen**.
+1. Als u de back-upgegevens van een data base in een SQL-Server wilt verwijderen, moet de back-up worden gestopt. Ga in het Azure Portal naar uw Recovery Services kluis, ga naar het back-upitem en kies **back-up stoppen**.
 
    ![Back-up stoppen](./media/soft-delete-sql-saphana-in-azure-vm/stop-backup.png)
 

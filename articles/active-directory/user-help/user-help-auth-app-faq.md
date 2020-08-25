@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 34720a10796a1a215d541baef9f2c225857d3bc0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423623"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799465"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Veelgestelde vragen over de Microsoft Authenticator-app
 
@@ -64,6 +64,6 @@ De app Microsoft Authenticator heeft de Azure Authenticator-app vervangen en de 
 
 - Als u meer informatie wilt over verificatie in twee stappen, raadpleegt u [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md)
 
-- Zie voor meer informatie over beveiligings informatie [overzicht van beveiligings gegevens (preview)](user-help-security-info-overview.md)
+- Zie voor meer informatie over beveiligings informatie [overzicht van beveiligings gegevens (preview)](./security-info-setup-signin.md)
 
 - Als uw vraag hier niet is beantwoord, willen we u graag van u horen. Ga naar het [Microsoft Authenticator app-forum](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp) om uw vraag te plaatsen en hulp van de community te ontvangen of laat een opmerking op deze pagina staan.

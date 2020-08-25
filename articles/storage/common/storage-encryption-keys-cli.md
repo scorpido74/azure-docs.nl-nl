@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 351fe5acd8d607b5b60817c235161ac09e530e99
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 25ee5d389bc70d82730c7056c752de393a6bf4c5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495009"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799142"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Azure CLI
 
@@ -94,13 +94,16 @@ Azure Storage Encryption ondersteunt RSA-en RSA-HSM-sleutels met een grootte van
 
 Azure Storage versleuteling maakt standaard gebruik van door micro soft beheerde sleutels. In deze stap configureert u uw Azure Storage-account voor het gebruik van door de klant beheerde sleutels met Azure Key Vault en geeft u vervolgens de sleutel op die u wilt koppelen aan het opslag account.
 
-Wanneer u versleuteling met door de klant beheerde sleutels configureert, kunt u ervoor kiezen om automatisch de sleutel te draaien die wordt gebruikt voor versleuteling wanneer de versie wordt gewijzigd in de bijbehorende sleutel kluis. U kunt ook expliciet een sleutel versie opgeven die moet worden gebruikt voor versleuteling totdat de sleutel versie hand matig wordt bijgewerkt.
+Wanneer u versleuteling met door de klant beheerde sleutels configureert, kunt u ervoor kiezen om de sleutel die wordt gebruikt voor versleuteling automatisch bij te werken wanneer de sleutel versie wordt gewijzigd in de bijbehorende sleutel kluis. U kunt ook expliciet een sleutel versie opgeven die moet worden gebruikt voor versleuteling totdat de sleutel versie hand matig wordt bijgewerkt.
 
-### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Versleuteling configureren voor automatische rotatie van door de klant beheerde sleutels
+> [!NOTE]
+> Als u een sleutel wilt draaien, maakt u een nieuwe versie van de sleutel in Azure Key Vault. Azure Storage de draai hoek van de sleutel in Azure Key Vault niet verwerkt. u moet de sleutel dus hand matig draaien of een functie maken om deze op een schema te draaien.
 
-Als u versleuteling wilt configureren voor automatische rotatie van door de klant beheerde sleutels, installeert u [Azure CLI versie 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) of hoger. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor meer informatie.
+### <a name="configure-encryption-to-automatically-update-the-key-version"></a>Versleuteling configureren om de sleutel versie automatisch bij te werken
 
-Als u automatisch door de klant beheerde sleutels wilt draaien, laat u de sleutel versie weg wanneer u door de klant beheerde sleutels voor het opslag account configureert. Roep [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan om de versleutelings instellingen van het opslag account bij te werken, zoals wordt weer gegeven in het volgende voor beeld. Neem de `--encryption-key-source` para meter op en stel deze in om door `Microsoft.Keyvault` de klant beheerde sleutels voor het account in te scha kelen. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
+Als u versleuteling wilt configureren met door de klant beheerde sleutels om de sleutel versie automatisch bij te werken, installeert u [Azure CLI versie 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) of hoger. Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor meer informatie.
+
+Als u de sleutel versie automatisch wilt bijwerken voor een door de klant beheerde sleutel, laat u de sleutel versie weg wanneer u versleuteling configureert met door de klant beheerde sleutels voor het opslag account. Roep [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan om de versleutelings instellingen van het opslag account bij te werken, zoals wordt weer gegeven in het volgende voor beeld. Neem de `--encryption-key-source` para meter op en stel deze in om door `Microsoft.Keyvault` de klant beheerde sleutels voor het account in te scha kelen. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -116,7 +119,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-### <a name="configure-encryption-for-manual-rotation-of-key-versions"></a>Versleuteling configureren voor hand matige draaiing van sleutel versies
+### <a name="configure-encryption-for-manual-updating-of-key-versions"></a>Versleuteling configureren voor het hand matig bijwerken van belang rijke versies
 
 Als u expliciet een sleutel versie wilt opgeven die moet worden gebruikt voor versleuteling, geeft u de sleutel versie op wanneer u versleuteling configureert met door de klant beheerde sleutels voor het opslag account. Roep [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan om de versleutelings instellingen van het opslag account bij te werken, zoals wordt weer gegeven in het volgende voor beeld. Neem de `--encryption-key-source` para meter op en stel deze in om door `Microsoft.Keyvault` de klant beheerde sleutels voor het account in te scha kelen. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
 
@@ -140,7 +143,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-Wanneer u de sleutel versie hand matig roteert, moet u de versleutelings instellingen van het opslag account bijwerken om de nieuwe versie te gebruiken. Eerst moet u een query uitvoeren voor de sleutel kluis-URI door het aanroepen van [AZ Key kluis show](/cli/azure/keyvault#az-keyvault-show), en voor de sleutel versie door het aanroepen van [AZ sleutel kluis Key List-versies](/cli/azure/keyvault/key#az-keyvault-key-list-versions). Roep vervolgens [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan om de versleutelings instellingen van het opslag account bij te werken om de nieuwe versie van de sleutel te gebruiken, zoals wordt weer gegeven in het vorige voor beeld.
+Wanneer u de sleutel versie hand matig bijwerkt, moet u de versleutelings instellingen van het opslag account bijwerken om de nieuwe versie te gebruiken. Eerst moet u een query uitvoeren voor de sleutel kluis-URI door het aanroepen van [AZ Key kluis show](/cli/azure/keyvault#az-keyvault-show), en voor de sleutel versie door het aanroepen van [AZ sleutel kluis Key List-versies](/cli/azure/keyvault/key#az-keyvault-key-list-versions). Roep vervolgens [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan om de versleutelings instellingen van het opslag account bij te werken om de nieuwe versie van de sleutel te gebruiken, zoals wordt weer gegeven in het vorige voor beeld.
 
 ## <a name="use-a-different-key"></a>Een andere sleutel gebruiken
 

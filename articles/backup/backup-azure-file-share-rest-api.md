@@ -3,18 +3,18 @@ title: Back-ups maken van Azure-bestands shares met REST API
 description: Meer informatie over het gebruik van REST API voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: bf737dfa366796c4a392ec3d00609134978057ac
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b3d83104b699740c43b0c6506c00694c2b2ac063
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654137"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757129"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Back-up maken van Azure-bestands share met Azure Backup via rest API
 
 In dit artikel wordt beschreven hoe u een back-up van een Azure-bestands share maakt met behulp van Azure Backup via REST API.
 
-In dit artikel wordt ervan uitgegaan dat u al een Recovery Services-kluis en een beleid voor het configureren van back-ups voor uw bestands share hebt gemaakt. Als dat niet het geval is, raadpleegt u de zelf studies voor het maken van de [kluis](./backup-azure-arm-userestapi-createorupdatevault.md) en het [maken van beleid](./backup-azure-arm-userestapi-createorupdatepolicy.md) rest API voor het maken van nieuwe kluizen en beleid.
+In dit artikel wordt ervan uitgegaan dat u al een Recovery Services kluis en beleid hebt gemaakt voor het configureren van back-ups voor uw bestands share. Als dat niet het geval is, raadpleegt u de zelf studies voor het maken van de [kluis](./backup-azure-arm-userestapi-createorupdatevault.md) en het [maken van beleid](./backup-azure-arm-userestapi-createorupdatepolicy.md) rest API voor het maken van nieuwe kluizen en beleid.
 
 Voor dit artikel gebruiken we de volgende bronnen:
 
@@ -156,7 +156,7 @@ protectableContainers/StorageContainer;Storage;AzureFiles;testvault2",
 }
 ```
 
-Omdat we het *testvault2* -opslag account in de antwoord tekst met de beschrijvende naam kunnen vinden, is de eerder uitgevoerde vernieuwings bewerking geslaagd. De Recovery Services-kluis kan nu opslag accounts met niet-beveiligde bestands shares detecteren in hetzelfde abonnement.
+Omdat we het *testvault2* -opslag account in de antwoord tekst met de beschrijvende naam kunnen vinden, is de eerder uitgevoerde vernieuwings bewerking geslaagd. De Recovery Services kluis kan nu opslag accounts met niet-beveiligde bestands shares vinden in hetzelfde abonnement.
 
 ### <a name="register-storage-account-with-recovery-services-vault"></a>Opslag account registreren bij Recovery Services kluis
 

@@ -3,12 +3,12 @@ title: Privé-eindpunten
 description: Meer informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 789aab1174f599a2ae484c7b0d91ddba15bd4fd6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bbb59439677f6c7297aabbecbafeb04327f482b5
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654698"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762909"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
@@ -239,7 +239,7 @@ Hiervoor moet u vermeldingen voor elke FQDN in uw privé-eind punt in uw Privé-
 Zodra de privé-eind punten die zijn gemaakt voor de kluis in uw VNet zijn goedgekeurd, kunt u deze gebruiken om uw back-ups te maken en op te slaan.
 
 >[!IMPORTANT]
->Zorg ervoor dat u alle bovenstaande stappen in het document hebt voltooid voordat u verdergaat. Voor samen vatting moet u de stappen in de volgende controle lijst hebben voltooid:
+>Zorg ervoor dat u alle hierboven vermelde stappen in het document hebt voltooid voordat u verdergaat. Voor samen vatting moet u de stappen in de volgende controle lijst hebben voltooid:
 >
 >1. Er is een (nieuwe) Recovery Services kluis gemaakt
 >1. De kluis is ingeschakeld om een door het systeem toegewezen beheerde identiteit te gebruiken

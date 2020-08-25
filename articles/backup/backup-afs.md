@@ -3,12 +3,12 @@ title: Back-ups maken van Azure-bestands shares in de Azure Portal
 description: Meer informatie over het gebruik van de Azure Portal voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: e0d9edbcb89dbdcac51893eb720da880a150bc7b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 40b966d719360570a472b17fbf733aa4c8795b4d
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532664"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757792"
 ---
 # <a name="back-up-azure-file-shares"></a>Een back-up maken van Azure-bestandsshares
 
@@ -31,7 +31,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="configure-backup-from-the-recovery-services-vault"></a>Back-up van de Recovery Services kluis configureren
 
-In de volgende stappen wordt uitgelegd hoe u een back-up kunt configureren voor meerdere bestands shares in het deel venster Recovery service-kluis:
+In de volgende stappen wordt uitgelegd hoe u een back-up kunt configureren voor meerdere bestands shares in het deel venster Recovery Services kluis:
 
 1. Open in de [Azure Portal](https://portal.azure.com/)de Recovery Services kluis die u wilt gebruiken voor het configureren van de back-up voor de bestands share.
 
@@ -123,16 +123,16 @@ In de volgende stappen wordt uitgelegd hoe u een back-up kunt configureren voor 
 
 1. Voer een van de volgende handelingen uit voor de Recovery Services kluis electie:
 
-    * Als u al een kluis hebt, selecteert u het keuze rondje bestaande Recovery service-kluis **selecteren** en kiest u een van de bestaande kluizen in de vervolg keuzelijst **kluis naam** .
+    * Als u al een kluis hebt, selecteert u het keuze rondje bestaande Recovery Services kluis **selecteren** en kiest u een van de bestaande kluizen in de vervolg keuzelijst **kluis naam** .
 
        ![Bestaande kluis selecteren](./media/backup-afs/select-existing-vault.png)
 
-    * Als u geen kluis hebt, selecteert u het keuze rondje nieuwe Recovery service-kluis **maken** . Geef een naam op voor de kluis. Deze wordt gemaakt in dezelfde regio als de bestands share. Standaard wordt de kluis gemaakt in dezelfde resource groep als de bestands share. Als u een andere resource groep wilt kiezen, selecteert u **nieuwe koppeling maken** onder de vervolg keuzelijst **resource type** en geeft u een naam op voor de resource groep. Selecteer **OK** om door te gaan.
+    * Als u geen kluis hebt, selecteert u het keuze rondje nieuwe Recovery Services kluis **maken** . Geef een naam op voor de kluis. Deze wordt gemaakt in dezelfde regio als de bestands share. Standaard wordt de kluis gemaakt in dezelfde resource groep als de bestands share. Als u een andere resource groep wilt kiezen, selecteert u **nieuwe koppeling maken** onder de vervolg keuzelijst **resource type** en geeft u een naam op voor de resource groep. Selecteer **OK** om door te gaan.
 
        ![Nieuwe kluis maken](./media/backup-afs/create-new-vault.png)
 
       >[!IMPORTANT]
-      >Als het opslag account is geregistreerd bij een kluis of als er weinig beveiligde shares zijn binnen het opslag account dat als host fungeert voor de bestands share die u wilt beveiligen, wordt de naam van de Recovery Services-kluis vooraf ingevuld en kunt u deze niet [meer](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share)bewerken.
+      >Als het opslag account is geregistreerd bij een kluis of als er weinig beveiligde shares zijn binnen het opslag account dat als host fungeert voor de bestands share die u wilt beveiligen, wordt de naam van de Recovery Services kluis vooraf ingevuld en kunt u deze niet [meer](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share)bewerken.
 
 1. Voer een van de volgende handelingen uit voor de selectie van het **back-upbeleid** :
 
@@ -168,7 +168,7 @@ In de volgende stappen wordt uitgelegd hoe u een back-up kunt configureren voor 
 
 In sommige gevallen wilt u mogelijk een back-upmomentopname of een herstel punt genereren, buiten het tijdstip dat is gepland in het back-upbeleid. Een veelvoorkomende reden voor het genereren van een back-up op aanvraag is direct nadat u het back-upbeleid hebt geconfigureerd. Op basis van de planning in het back-upbeleid, kan het uren of dagen duren totdat er een moment opname wordt gemaakt. Als u uw gegevens wilt beschermen totdat het back-upbeleid actief wordt, start u een back-up op aanvraag. Het maken van een back-up op aanvraag is vaak vereist voordat u geplande wijzigingen aanbrengt aan uw bestands shares.
 
-### <a name="from-the-recovery-services-vault"></a>Van de Recovery Services-kluis
+### <a name="from-the-recovery-services-vault"></a>Uit de Recovery Services kluis
 
 1. Open de Recovery Services kluis die u hebt gebruikt voor het maken van een back-up van uw bestands share. Selecteer in het deel venster **overzicht** de optie **Back-upitems** onder de sectie **beveiligde items** .
 

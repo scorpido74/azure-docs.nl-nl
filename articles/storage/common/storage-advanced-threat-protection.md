@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/21/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e037607d1f86e6df4d3f5b12e29ba8fde447ebc9
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118410"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757928"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Geavanceerde bedreigings beveiliging voor Azure Storage configureren
 
@@ -32,6 +32,17 @@ Advanced Threat Protection voor Azure Storage is momenteel beschikbaar voor Blob
 Accounts met hiërarchische naam ruimten die zijn ingeschakeld voor Data Lake Storage ondersteunings transacties met behulp van de Azure Blob Storage-Api's en de Data Lake Storage-Api's. Azure-bestands shares ondersteunen trans acties via SMB.
 
 Voor prijs informatie, inclusief een gratis proef versie van 30 dagen, raadpleegt u de [pagina met Azure Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/).
+
+De volgende lijst bevat een overzicht van de beschik baarheid van Advanced Threat Protection voor Azure Storage:
+
+- Release status:
+  - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (algemene Beschik baarheid)
+  - [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (preview ondersteunt SMB-en rest-trans acties)
+  - Azure Data Lake Storage Gen2 (preview-versie)
+- Clouds<br>
+    ✔ Commerciële Clouds<br>
+    ✔ US Gov<br>
+    ✘ China gov, andere gov
 
 ## <a name="set-up-advanced-threat-protection"></a>Geavanceerde bedreigings beveiliging instellen
 

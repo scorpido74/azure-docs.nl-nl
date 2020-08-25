@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: a93901bd95d57b29aeb1464652737a77a1a84376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791993"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799329"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren
 
@@ -144,6 +144,22 @@ Ga als volgt te werk om de toewijzing van de rol beheerder voor gebruikers toega
     ```
 
 ## <a name="azure-cli"></a>Azure CLI
+
+### <a name="elevate-access-for-a-global-administrator"></a>Toegang verhogen voor een globale beheerder
+
+Gebruik de volgende basis stappen om de toegang tot een globale beheerder te verhogen met behulp van de Azure CLI.
+
+1. Gebruik de opdracht [AZ rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) om het eind punt aan te roepen `elevateAccess` , waarmee u de rol beheerder voor gebruikers toegang in het hoofd bereik ( `/` ) verleent.
+
+    ```azurecli
+    az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
+    ```
+
+1. Breng de wijzigingen aan die u nodig hebt om een verhoogde toegang te maken.
+
+    Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure cli](role-assignments-cli.md)voor meer informatie over het toewijzen van rollen.
+
+1. Voer de stappen in een latere sectie uit om de verhoogde toegang te verwijderen.
 
 ### <a name="list-role-assignment-at-root-scope-"></a>Roltoewijzing in hoofd bereik weer geven (/)
 
@@ -275,7 +291,7 @@ Wanneer u aanroept `elevateAccess` , maakt u een roltoewijzing voor uzelf, zodat
     ```
         
     >[!NOTE] 
-    >Een Directory-beheerder mag niet veel toewijzingen hebben, als de vorige query te veel toewijzingen retourneert, kunt u ook een query uitvoeren voor alle toewijzingen, alleen op het niveau van een mapniveau en vervolgens de resultaten filteren:`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >Een Directory-beheerder mag niet veel toewijzingen hebben, als de vorige query te veel toewijzingen retourneert, kunt u ook een query uitvoeren voor alle toewijzingen, alleen op het niveau van een mapniveau en vervolgens de resultaten filteren: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
             
 1. De vorige oproepen retour neren een lijst met roltoewijzingen. Zoek naar de roltoewijzing waar de scope zich bevindt `"/"` en `roleDefinitionId` eindigt met de rolnaam-id die u in stap 1 hebt gevonden en `principalId` overeenkomt met de objectId van de Directory-beheerder. 
     

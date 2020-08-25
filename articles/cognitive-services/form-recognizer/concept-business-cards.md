@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1c9e40738d70b6fbb9fed267a6a047d8330023b7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2fc87f08b30d648ec38d2b93e96a32d125b856be
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749286"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757911"
 ---
 # <a name="business-card-concepts"></a>Concepten van visite kaartjes
 
@@ -391,9 +391,8 @@ De Business Card-API voorziet ook in de [verwerkings functie voor AIBuilder-bedr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Volg de Snelstartgids om aan de slag te gaan 
-- [Quick start voor Business Cards API python](./quickstarts/python-business-cards.md)
-- Meer informatie over de [rest API voor formulier herkenning](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)
+- Volg de Snelstartgids om aan de slag te gaan met de [Snelstartgids voor Business Cards API python](./quickstarts/python-business-cards.md)
+- Meer informatie over de [rest API voor formulier herkenning](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
 - Meer informatie over de [formulier herkenning](overview.md)
 
 

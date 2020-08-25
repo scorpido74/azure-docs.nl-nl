@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 69be4118aca45582c38bb49a996782d661d8084f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 2f472f15f5f15fb48563aba90df273e31bb1b665
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604401"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88812866"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Verkoop richtlijnen voor Azure Marketplace
 
@@ -24,7 +24,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 |:--- |:--- |:--- |:--- |
 | 1 | Doel van de lead | Er is een doel voor de lead geconfigureerd.| De ene commerciële partner (OCP)-catalogus heeft de doel-CRM-gegevens van de lead die ook worden vermeld op het tabblad partner oplossing. |
 | 2 | Titel van aanbieding | Een korte beschrijving van de oplossings aanbieding. Komt overeen met de online promotie van de oplossing op de website van de partner. | Bevat tref woorden voor de sleutel. |
-| 3 | Logo | Het logo wordt correct weer gegeven. | Het logo wordt correct weer gegeven. |
+| 3 | Logo | Het logo wordt correct weer gegeven.  | Het logo wordt correct weer gegeven.  |
 | 4 |  Beschrijving van aanbieding | <ul><li> Bevat 2-3 alinea's.</li><li>De aanbieding van oplossingen kan in één oogopslag worden begrepen.</li><li>Is geen spel-en grammatica fouten.</li><li>Is uitgebreid en legt doel publiek, type gebruiker en waarom het waardevol is (toegevoegde waarde).</li><li>Bevindt zich in een oplopende alinea met korte zinnen die eenvoudig te begrijpen zijn.</li></ul> | <ul><li> De doel branche wordt beschreven (indien van toepassing).</li><li>Een goede stijl opmaak, waarbij elke kop van een alinea een enkele zin of woord groep bevat waarmee de inhoud wordt samenvatten die volgt, en waar nodig, indien van toepassing, voor het benadrukken van belang rijke voor delen. Het doel is voor de lezer om inzicht te krijgen in de aanbieding in één oogopslag in een gemakkelijk te bekijken indeling en hoeft geen lange alinea's te lezen.</li><li>Er is ruimte tussen elke alinea. Het wordt als een auto brochure gelezen. Dat wil zeggen dat het uitgebreid is en beschrijft de aanbieding gewoon, zonder technisch jargon. | 
 | 5 | Categorieën en industrieën | <ul><li>Categorieën en subcategorieën moeten overeenkomen met de mogelijkheden van de aanbieding </li><li>Selecteer geen categorieën/subcategorieën die niet geschikt zijn voor uw aanbiedings mogelijkheden. </li></ul> | <ul><li>Selecteer Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).</li><li>Selecteer Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie is geselecteerd, kan uw aanbieding nog steeds worden gedetecteerd voor de geselecteerde categorie.</li></ul> |
 | 6 | Installatiekopieën | <ul><li>Installatie kopie vereisten worden vermeld in Partner Center.</li><li>De tekst die in de scherm opname is opgenomen, is leesbaar en de afbeelding is duidelijk. | De oplossings aanbieding kan in één oogopslag worden begrepen. |
@@ -53,7 +53,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 | 4 | Details van online winkel: overzicht van aanbieding | Wordt op de zoek pagina van de app weer gegeven en heeft een maximum van 100 tekens. | |
 | 5 | Details van online winkel: industrieën | Industries (max. 2): Selecteer de branches die uw app het beste is uitgelijnd en van toepassing is op. | |
 | 6 | Beschrijving van aanbieding | <ul><li>Eenvoudige HTML is toegestaan, inclusief \<p> , \<em> , \<ul> , \<li> , \<ol> en header-tags. Met maximaal 3000 tekens.</li><li>Bevat 2-3 alinea's.</li><li>De aanbieding van oplossingen kan in één oogopslag worden begrepen.</li><li>Beschrijving is uitgebreid en legt doel publiek, type gebruiker en waarom het waardevol is (toegevoegde waarde).</li><li>Bevindt zich in de vorm van een alinea, met korte zinnen die eenvoudig te begrijpen zijn. | <ul><li>De doel branche wordt beschreven (indien van toepassing).</li><li>Een goede stijl opmaak, waarbij elke kop van een alinea een enkele zin of woord groep bevat waarmee de inhoud wordt samenvatten die volgt, en waar nodig, indien van toepassing, voor het benadrukken van belang rijke voor delen. Het doel is dat de lezer de aanbieding in één oogopslag in een overzichtelijke indeling kan zien en dat u geen alinea's hoeft te lezen.</li><li>Er is ruimte tussen elke alinea. Het wordt als een auto brochure gelezen. Dat wil zeggen dat het uitgebreid is en beschrijft de aanbieding gewoon, zonder technisch jargon. | 
-| 7 | Marketing artefacten | Logo's worden correct weer gegeven. | <ul><li>Logo's: klein (48 x 48 pixels), gemiddeld (90 x 90 pixels) en groot (tussen 216 x 216 en 350 x 350 pixels) zijn vereist.</li><li>Scherm afbeelding (max. 5): vereist een. PNG-afbeelding met een resolutie van 1280x720 pixels. |
+| 7 | Marketing artefacten | Logo's worden correct weer gegeven. | <ul><li>Logo's: klein (48 x 48 px, optioneel), normaal (90 x 90 px, optioneel) en groot (van 216 x 216 tot 350 x 350 px, vereist).</li><li>Scherm afbeelding (max. 5): vereist een. PNG-afbeelding met een resolutie van 1280x720 pixels. |
 | 8 | Categorieën en industrieën | <ul><li>Categorieën komen overeen met de mogelijkheden van oplossingen.</li><li>Selecteer ten minste één item in het pop-upvenster.</li><li>Selecteer geen categorieën die niet geschikt zijn voor de oplossing.</li><li>Optimale industrie of alle geselecteerde branches (als dit niet de beste branches zijn). | Met maximaal 3 categorieën geselecteerd, indien van toepassing. |
 | 9 | Leadbeheer | Selecteer het systeem waarin uw leads worden opgeslagen. Zie [leads van klanten ophalen](./partner-center-portal/commercial-marketplace-get-customer-leads.md) om verbinding te maken met uw CRM-systeem. |  |
 | 10 | Contacts: oplossings ondersteuning en Help | <ul><li>Naam technische contact persoon: de naam van de technische contact persoon voor uw app. Deze contact persoon ontvangt technische communicatie van micro soft.</li><li>Technische contact persoon: het e-mail adres van de technische contact persoon voor uw app.</li><li>Technisch contact persoons nummer: het telefoon nummer van de IT-afdeling. De [notaties voor ISO-telefoon nummers](https://en.wikipedia.org/wiki/E.123) worden ondersteund.</li><li>Ondersteunings naam contact persoon: de naam van het ondersteunings contact voor uw app. Deze contact persoon ontvangt berichten over ondersteuning van micro soft.</li><li>Contact opnemen met e-mail: het e-mail adres van de contact persoon voor ondersteuning voor uw app.</li><li>Telefoon nummer voor ondersteuning van contact persoon De [notaties voor ISO-telefoon nummers](https://en.wikipedia.org/wiki/E.123) worden ondersteund.</li><li>Ondersteunings-URL: de URL van uw ondersteunings pagina. | <ul><li>Alle ondersteunings methoden worden weer gegeven.</li><li>Betaalde ondersteuning wordt gratis aangeboden tijdens de *proef* -of *test drive* -periode. |
@@ -66,7 +66,7 @@ In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven
 |:--- |:--- |:--- |:--- |
 |1 |Aanbiedingsinstellingen | <ul><li>Aanbiedings-ID: max. 50 tekens.</li><li>Uitgevers-ID: Selecteer deze in de vervolg keuzelijst.</li><li>Naam: max. 50 tekens. | Komt overeen met de titel stijl die al beschikbaar is in de beschrijving. Vermijd het gebruik van lange titels. |
 | 2 | Abonnementen | De partner selecteert nieuwe abonnementen.| De titel komt overeen met de titel stijl die al beschikbaar is in de beschrijving. Vermijd het gebruik van lange titels.  |
-| 3 | Marketplace-artefacten | Logo's worden correct weer gegeven. |<ul><li>Logo's: klein (48 x 48 pixels), gemiddeld (90 x 90 pixels) en groot (tussen 216 x 216 en 350 x 350 pixels) zijn vereist.</li><li>Scherm afbeelding (max. 5): vereist een. PNG-afbeelding met een resolutie van 1280 x 720 pixels.|
+| 3 | Marketplace-artefacten | Logo's worden correct weer gegeven. |<ul><li>Logo's: klein (48 x 48 px, optioneel), normaal (90 x 90 px, optioneel) en groot (van 216 x 216 tot 350 x 350 px, vereist).</li><li>Scherm afbeelding (max. 5): vereist een. PNG-afbeelding met een resolutie van 1280 x 720 pixels.|
 | 4 | Leadbeheer |<ul><li>Beheer van leads: Selecteer het systeem waarin uw leads worden opgeslagen.</li><li>Zie [leads van klanten ophalen](./partner-center-portal/commercial-marketplace-get-customer-leads.md) om verbinding te maken met uw CRM-systeem. | |
 |||
 

@@ -3,12 +3,12 @@ title: Een back-up maken van een SQL Server-VM vanuit het deel venster VM
 description: In dit artikel vindt u informatie over het maken van een back-up van SQL Server-data bases op virtuele machines van Azure vanuit het deel venster VM.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: dd30ca1fb138d3e3bd44633b9d5e71beae6d96be
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d7cdf0a04acc57341200b363da4d012f04fe3454
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227117"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755242"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>Een back-up maken van een SQL Server vanuit het VM-deel venster
 
@@ -62,7 +62,7 @@ U kunt back-up op uw SQL Server-VM inschakelen vanuit het deel venster **back-up
 
     ![Gereedheid voor back-ups is niet gereed](./media/backup-sql-server-vm-from-vm-pane/backup-readiness-not-ready.png)
 
-8. Ga naar de bijbehorende kluis van de Recovery service voor verdere bewerkingen of bewaking die u moet uitvoeren op de back-up van SQL Server VM. Ga naar **Back-upitems** om alle data bases te bekijken waarvan een back-up is gemaakt in deze kluis en activeer bewerkingen zoals back-up en herstel op aanvraag. Ga op dezelfde manier naar **back-uptaken** voor het [bewaken](manage-monitor-sql-database-backup.md) van taken die overeenkomen met bewerkingen, zoals beveiliging, back-up en herstel.
+8. Ga naar de bijbehorende Recovery Services kluis voor verdere bewerkingen of bewaking die u moet uitvoeren op de back-up van SQL Server VM. Ga naar **Back-upitems** om alle data bases te bekijken waarvan een back-up is gemaakt in deze kluis en activeer bewerkingen zoals back-up en herstel op aanvraag. Ga op dezelfde manier naar **back-uptaken** voor het [bewaken](manage-monitor-sql-database-backup.md) van taken die overeenkomen met bewerkingen, zoals beveiliging, back-up en herstel.
 
     ![Zie back-ups van data bases in back-upitems](./media/backup-sql-server-vm-from-vm-pane/backup-items.png)
 

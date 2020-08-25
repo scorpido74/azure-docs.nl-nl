@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497060"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797935"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Problemen met Azure FarmBeats oplossen
 
-Dit artikel bevat oplossingen voor veelvoorkomende problemen met Azure FarmBeats. Neem contact op met ons [ondersteunings forum](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) of e-mail ons op voor meer hulp farmbeatssupport@microsoft.com .
+Dit artikel bevat oplossingen voor veelvoorkomende problemen met Azure FarmBeats. Neem contact op met onze [Q&een ondersteunings forum](https://aka.ms/farmbeatssupport) of e-mail ons op voor meer hulp farmbeatssupport@microsoft.com .
 
 > [!NOTE]
   > Als u FarmBeats hebt geïnstalleerd tijdens april en uw taken mislukken met een leeg fout bericht, heeft uw installatie mogelijk geen batch quotum toegewezen om de prioriteit van de ondersteuning voor kritieke en veiligheids organisaties te bepalen. Zie [hier](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) voor meer informatie. U moet Vm's aanvragen om te worden toegewezen aan het batch-account om taken te kunnen uitvoeren.
@@ -285,7 +285,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Azure Data Factory-taak Logboeken of App Service-logboeken verzamelen in Datahub
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Datahub.
 3. Zoek in het dash board van de **resource groep** naar het *datahublogs \* * -opslag account. Bijvoorbeeld *datahublogsmvxmq*.  
 4. Selecteer in de kolom **naam** het opslag account om het dash board van het **opslag account** weer te geven.
@@ -297,7 +297,7 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Azure Data Factory-taak Logboeken of App Service logboeken voor de Accelerator verzamelen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek in **het zoekvak naar de resource** groep FarmBeats Accelerator.
 3. Zoek het * \* opslag* account op in het dash board van de **resource groep** . Bijvoorbeeld *storagedop4k \* *.
 4. Selecteer het opslag account in de kolom **naam** om het dash board van het **opslag account** weer te geven.

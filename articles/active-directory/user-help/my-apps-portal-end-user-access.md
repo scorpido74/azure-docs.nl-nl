@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78204be967bafdd7d01af4f9f286bd15347e4a9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741969"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798037"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Meld u aan en start apps vanuit de portal mijn apps
 
@@ -33,7 +33,7 @@ Als u geen toegang hebt tot de portal **mijn apps** , neemt u contact op met de 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Deze inhoud is bedoeld voor gebruikers van Mijn apps. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> Deze inhoud is bedoeld voor gebruikers van Mijn apps. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](../manage-apps/index.yml).
 
 ## <a name="supported-browsers"></a>Ondersteunde browsers
 
@@ -59,7 +59,7 @@ Met deze extensie kunt u het volgende doen:
 
 - Bekijk de laatste apps die u hebt gebruikt in de sectie **recently used** .
 
-- Interne bedrijfs-Url's gebruiken terwijl u op afstand met [toepassings proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
+- Interne bedrijfs-Url's gebruiken terwijl u op afstand met [toepassings proxy](../manage-apps/application-proxy.md).
 
 ### <a name="to-download-and-install-the-extension"></a>De uitbrei ding downloaden en installeren
 

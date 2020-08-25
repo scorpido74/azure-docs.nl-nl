@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3bf180c2b70a686879082888e45e67936cdbec67
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494822"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799227"
 ---
 # <a name="design-tables-using-synapse-sql"></a>Tabellen ontwerpen met behulp van Synapse SQL
 
@@ -27,27 +27,27 @@ De volgende tabel bevat de onderwerpen die relevant zijn voor SQL-groep versus S
 
 | Onderwerp                                                        | SQL-pool | SQL on-demand |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
-| [Tabel categorie bepalen](#determine-table-category)        | Yes                | Nee                      |
+| [Tabel categorie bepalen](#determine-table-category)        | Ja                | Nee                      |
 | [Schema namen](#schema-names)                                | Ja                | Ja                     |
-| [Tabel namen](#table-names)                                  | Yes                | Nee                      |
-| [Tabel persistentie](#table-persistence)                      | Yes                | Nee                      |
-| [Reguliere tabel](#regular-table)                              | Yes                | Nee                      |
+| [Tabel namen](#table-names)                                  | Ja                | Nee                      |
+| [Tabel persistentie](#table-persistence)                      | Ja                | Nee                      |
+| [Reguliere tabel](#regular-table)                              | Ja                | Nee                      |
 | [Tijdelijke tabel](#temporary-table)                          | Ja                | Ja                     |
 | [Externe tabel](#external-table)                            | Ja                | Ja                     |
 | [Gegevenstypen](#data-types)                                    | Ja                | Ja                     |
-| [Gedistribueerde tabellen](#distributed-tables)                    | Yes                | Nee                      |
-| [Met hash gedistribueerde tabellen](#hash-distributed-tables)          | Yes                | Nee                      |
-| [Gerepliceerde tabellen](#replicated-tables)                      | Yes                | Nee                      |
-| [Round-Robin tabellen](#round-robin-tables)                    | Yes                | Nee                      |
-| [Algemene distributie methoden voor tabellen](#common-distribution-methods-for-tables) | Yes                | Nee                      |
+| [Gedistribueerde tabellen](#distributed-tables)                    | Ja                | Nee                      |
+| [Met hash gedistribueerde tabellen](#hash-distributed-tables)          | Ja                | Nee                      |
+| [Gerepliceerde tabellen](#replicated-tables)                      | Ja                | Nee                      |
+| [Round-Robin tabellen](#round-robin-tables)                    | Ja                | Nee                      |
+| [Algemene distributie methoden voor tabellen](#common-distribution-methods-for-tables) | Ja                | Nee                      |
 | [Partities](#partitions)                                    | Ja                | Ja                     |
-| [Columnstore-indexen](#columnstore-indexes)                  | Yes                | Nee                      |
+| [Columnstore-indexen](#columnstore-indexes)                  | Ja                | Nee                      |
 | [Statistieken](#statistics)                                    | Ja                | Ja                     |
-| [Primaire sleutel en unieke sleutel](#primary-key-and-unique-key)    | Yes                | Nee                      |
-| [Opdrachten voor het maken van tabellen](#commands-for-creating-tables) | Yes                | Nee                      |
-| [Bron gegevens uitlijnen met het Data Warehouse](#align-source-data-with-the-data-warehouse) | Yes                | Nee                      |
-| [Niet-ondersteunde tabel functies](#unsupported-table-features)    | Yes                | Nee                      |
-| [Tabel grootte query's](#table-size-queries)                    | Yes                | Nee                      |
+| [Primaire sleutel en unieke sleutel](#primary-key-and-unique-key)    | Ja                | Nee                      |
+| [Opdrachten voor het maken van tabellen](#commands-for-creating-tables) | Ja                | Nee                      |
+| [Bron gegevens uitlijnen met het Data Warehouse](#align-source-data-with-the-data-warehouse) | Ja                | Nee                      |
+| [Niet-ondersteunde tabel functies](#unsupported-table-features)    | Ja                | Nee                      |
+| [Tabel grootte query's](#table-size-queries)                    | Ja                | Nee                      |
 
 ## <a name="determine-table-category"></a>Tabel categorie bepalen
 
@@ -96,7 +96,7 @@ Er bestaat alleen een tijdelijke tabel voor de duur van de sessie. U kunt een ti
 
 SQL on demand ondersteunt tijdelijke tabellen. Maar het gebruik ervan is beperkt omdat u kunt kiezen uit een tijdelijke tabel, maar niet kan worden gekoppeld aan bestanden in de opslag.
 
-Zie voor meer informatie [tijdelijke tabellen](develop-tables-temporary.md).
+Zie voor meer informatie  [tijdelijke tabellen](develop-tables-temporary.md).
 
 ### <a name="external-table"></a>Externe tabel
 
@@ -207,7 +207,7 @@ De primaire sleutel wordt alleen ondersteund als niet-geclusterd en niet afgedwo
 
 U kunt een tabel maken als een nieuwe, lege tabel. U kunt ook een tabel maken en vullen met de resultaten van een SELECT-instructie. Hieronder vindt u de T-SQL-opdrachten voor het maken van een tabel.
 
-| T-SQL-instructie | Description |
+| T-SQL-instructie | Beschrijving |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een lege tabel door alle tabel kolommen en opties te definiëren. |
 | [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Hiermee maakt u een externe tabel. De definitie van de tabel wordt opgeslagen in de SQL-groep. De tabel gegevens worden opgeslagen in Azure Blob Storage of Azure Data Lake Storage. |
@@ -360,6 +360,9 @@ SELECT *
 FROM size
 ;
 ```
+
+>[!TIP]
+> Voor betere prestaties van Synapse SQL kunt u het gebruik van **sys. pdw_permanent_table_mappings** in plaats van **sys. pdw_table_mappings** op permanente gebruikers tabellen. Zie **[sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** voor meer informatie.
 
 ### <a name="table-space-summary"></a>Overzicht van tabel ruimte
 

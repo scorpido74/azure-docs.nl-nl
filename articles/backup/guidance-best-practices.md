@@ -3,12 +3,12 @@ title: Richtlijnen en aanbevolen procedures
 description: Ontdek de aanbevolen procedures en richt lijnen voor het maken van een back-up van de Cloud en on-premises werk belasting naar de Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1e2680c5fbcdb685e13b6ad990aaf98b013c98bb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650873"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757588"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Back-ups in de Cloud en on-premises naar de Cloud
 
@@ -48,7 +48,7 @@ Azure Backup maakt gegevens beveiliging mogelijk voor verschillende werk belasti
 
 ### <a name="management-plane"></a>Beheerlaag
 
-* **Toegangs beheer** : de Recovery service-kluis biedt de beheer mogelijkheden en is toegankelijk via de Azure Portal, SDK, CLI en zelfs rest api's. Het is ook een RBAC-grens, waardoor u de mogelijkheid hebt om de toegang tot back-ups alleen te beperken tot geautoriseerde back-upbeheerders.
+* **Toegangs beheer** : de Recovery Services kluis biedt de beheer mogelijkheden en is toegankelijk via de Azure Portal, SDK, CLI en zelfs rest api's. Het is ook een RBAC-grens, waardoor u de mogelijkheid hebt om de toegang tot back-ups alleen te beperken tot geautoriseerde back-upbeheerders.
 
 * **Beleids beheer** : Azure backup beleid binnen elke kluis definieert wanneer de back-ups moeten worden geactiveerd en hoe lang ze moeten worden bewaard. U kunt deze beleids regels ook beheren en deze Toep assen op meerdere items.
 
@@ -72,7 +72,7 @@ U kunt één kluis of meerdere kluizen gebruiken om uw back-up te organiseren en
 
 * Als uw werk belastingen verspreid zijn over abonnementen, kunt u meerdere kluizen maken, een of meer abonnementen per abonnement.
   * Als u de bewaking van operationele activiteiten in alle kluizen, abonnementen en tenants wilt vereenvoudigen, kunt u back-up Verkenner en rapporten gebruiken. Meer [informatie vindt u hier](monitor-azure-backup-with-backup-explorer.md) om een geaggregeerde weer gave te verkrijgen.
-  * Als u een consistent beleid voor de kluizen nodig hebt, kunt u Azure Policy gebruiken om het back-upbeleid door te geven over meerdere kluizen. U kunt een aangepaste [Azure Policy definitie](../governance/policy/concepts/definition-structure.md) schrijven die het effect [' deployifnotexists '](../governance/policy/concepts/effects.md#deployifnotexists) gebruikt voor het door geven van een back-upbeleid op meerdere kluizen. U toewijst [deze Azure Policy definitie toe aan](../governance/policy/assign-policy-portal.md) een bepaald bereik (abonnement of RG), zodat de resource een ' back-upbeleid ' implementeert op alle Recovery Services-kluizen in het bereik van de Azure Policy toewijzing. De instellingen van het back-upbeleid (zoals back-upfrequentie, retentie, enzovoort) moeten door de gebruiker worden opgegeven als para meters in de toewijzing van de Azure Policy.
+  * Als u een consistent beleid voor de kluizen nodig hebt, kunt u Azure Policy gebruiken om het back-upbeleid door te geven over meerdere kluizen. U kunt een aangepaste [Azure Policy definitie](../governance/policy/concepts/definition-structure.md) schrijven die het effect [' deployifnotexists '](../governance/policy/concepts/effects.md#deployifnotexists) gebruikt voor het door geven van een back-upbeleid op meerdere kluizen. U toewijst [deze Azure Policy definitie toe aan](../governance/policy/assign-policy-portal.md) een bepaald bereik (abonnement of RG), zodat de resource een ' back-upbeleid ' implementeert op alle Recovery Services kluizen in het bereik van de Azure Policy toewijzing. De instellingen van het back-upbeleid (zoals back-upfrequentie, retentie, enzovoort) moeten door de gebruiker worden opgegeven als para meters in de toewijzing van de Azure Policy.
 
 * Als uw organisatie footprint groeit, wilt u mogelijk werk belastingen verplaatsen tussen abonnementen om de volgende redenen: uitlijnen op back-upbeleid, kluizen samen voegen, afhandelen tegen lagere redundantie om kosten op te slaan (van GRS naar LRS).  Azure Backup ondersteunt het verplaatsen van een Recovery Services kluis over Azure-abonnementen of naar een andere resource groep binnen hetzelfde abonnement. Meer [informatie vindt u hier](backup-azure-move-recovery-services-vault.md).
 
@@ -143,7 +143,7 @@ Azure Backup zorgt voor de bescherming van uw back-upgegevens en het voldoen aan
 
 * Azure Backup heeft verschillende beveiligings mechanismen die zijn ingebouwd in de service om beveiligings problemen te voor komen, te detecteren en op te lossen (meer informatie)
 
-* Opslag accounts die worden gebruikt door Recovery Services-kluizen, zijn geïsoleerd en kunnen niet worden geopend door gebruikers voor schadelijke doel einden. De toegang is alleen toegestaan via Azure Backup beheer bewerkingen, zoals herstellen.
+* Opslag accounts die worden gebruikt door Recovery Services kluizen, zijn geïsoleerd en kunnen niet worden geopend door gebruikers voor schadelijke doel einden. De toegang is alleen toegestaan via Azure Backup beheer bewerkingen, zoals herstellen.
 
 ### <a name="encryption-of-data-in-transit-and-at-rest"></a>Versleuteling van gegevens die onderweg en in rust zijn
 
@@ -247,7 +247,7 @@ Als back-upgebruiker of-beheerder moet u alle back-upoplossingen kunnen bewaken 
 
 * Azure Backup biedt een **ingebouwd** mechanisme voor waarschuwings meldingen via e-mail voor fouten, waarschuwingen en kritieke bewerkingen. U kunt afzonderlijke e-mail adressen of distributie lijsten opgeven die moeten worden gewaarschuwd wanneer er een waarschuwing wordt gegenereerd. U kunt ook kiezen of u wilt worden gewaarschuwd voor elke afzonderlijke waarschuwing of ze wilt groeperen in een samen vatting per uur en vervolgens een melding ontvangen.
   * Deze waarschuwingen worden gedefinieerd door de service en bieden ondersteuning voor beperkte scenario's: back-up-en herstel fouten, beveiliging stoppen met het bewaren van gegevens of beveiliging tegen het verwijderen van gegevens, enzovoort. Meer [informatie vindt u hier](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Als er een destructieve bewerking wordt uitgevoerd, zoals het stoppen van de beveiliging bij het verwijderen van gegevens, wordt er een waarschuwing gegenereerd en wordt er een e-mail bericht verzonden naar eigen aars, beheerders en mede beheerders, zelfs als er geen meldingen zijn geconfigureerd voor de Recovery service-kluis.
+  * Als er een destructieve bewerking wordt uitgevoerd, zoals het stoppen van de beveiliging bij het verwijderen van gegevens, wordt er een waarschuwing gegenereerd en wordt er een e-mail bericht verzonden naar de eigen aren van het abonnement, beheerders en mede beheerders, zelfs als er geen meldingen zijn geconfigureerd voor de Recovery Services kluis.
   * Bepaalde werk belastingen kunnen een hoge frequentie van fouten genereren (bijvoorbeeld SQL Server om de 15 minuten). Om te voor komen dat er wordt overspoeld met waarschuwingen die worden gegenereerd voor elk fout voorval, worden de waarschuwingen geconsolideerd. Meer [informatie vindt u hier](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * De ingebouwde waarschuwingen kunnen niet worden aangepast en zijn beperkt tot e-mail berichten die zijn gedefinieerd in de Azure Portal.
 

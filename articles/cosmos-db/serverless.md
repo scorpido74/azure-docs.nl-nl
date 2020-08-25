@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: d99deea8271a3f9e630a7d2e8cd9f73bd41645a2
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608784"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757894"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB serverloze (preview-versie)
 
@@ -93,5 +93,5 @@ Serverloze resources geven specifieke prestatie kenmerken door die afwijken van 
 Ga aan de slag met serverloos met de volgende artikelen:
 
 - [Aanvraageenheden in Azure Cosmos DB](request-units.md)
-- [Kiezen tussen ingerichte door Voer en serverloos](throughput-serverless.md)
+- [Kies tussen ingerichte doorvoer en serverloos](throughput-serverless.md)
 - [Prijsmodel in Azure Cosmos DB](how-pricing-works.md)

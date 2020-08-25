@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het beheren van herstel bewe
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: add4bdeaa202c244ce2e0e83f999f29afdca5c28
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761471"
+ms.locfileid: "88763538"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
 
@@ -115,11 +115,16 @@ X-Powered-By: ASP.NET
 
 Het herstel punt wordt aangeduid met het `{name}` veld in het bovenstaande antwoord.
 
-## <a name="restore-disks"></a>Schijven herstellen
+## <a name="restore-operations"></a>Herstel bewerkingen
 
-Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kan de ene schijf alleen herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services kluis en mag niet zone redundant zijn. De schijven en de configuratie van de back-up van de virtuele machine (vmconfig.jsop) worden opgeslagen in het opgegeven opslag account.
+Nadat u het [relevante herstel punt](#select-recovery-point)hebt geselecteerd, gaat u door met het activeren van de herstel bewerking.
 
-Het activeren van herstel schijven is een *post* -aanvraag. Raadpleeg de [rest API trigger herstellen](/rest/api/backup/restores/trigger)voor meer informatie over de bewerking schijven herstellen.
+***Alle herstel bewerkingen voor het back-upitem worden uitgevoerd met dezelfde *bericht* -API. Alleen de hoofd tekst van de aanvraag wordt gewijzigd met de herstel scenario's.***
+
+> [!IMPORTANT]
+> [Hier](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)worden alle details van de verschillende opties voor terugzetten en de bijbehorende afhankelijkheden beschreven. Controleer voordat u doorgaat met het activeren van deze bewerkingen.
+
+Het activeren van herstel bewerkingen is een *post* -aanvraag. Raadpleeg de [rest API trigger herstellen](/rest/api/backup/restores/trigger)voor meer informatie over de API.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -127,41 +132,15 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 De `{containerName}` en `{protectedItemName}` zijn [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)gemaakt. `{fabricName}` is ' Azure ' en het `{recoveryPointId}` is het `{name}` veld van het [hierboven](#example-response)vermelde herstel punt.
 
-### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
+Zodra het herstel punt is verkregen, moeten we de aanvraag tekst voor het relevante herstel scenario maken. De volgende secties bevatten een overzicht van de aanvraag tekst voor elk scenario.
 
-Als u een schijf herstel wilt activeren vanuit een back-up van een Azure-VM, volgt u de onderdelen van de hoofd tekst van de aanvraag.
+- [Schijven herstellen](#restore-disks)
+- [Schijven vervangen](#replace-disks-in-a-backed-up-virtual-machine)
+- [Herstellen als een nieuwe virtuele machine](#restore-as-another-virtual-machine)
 
-|Naam  |Type  |Beschrijving  |
-|---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+### <a name="restore-response"></a>Antwoord herstellen
 
-Raadpleeg voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details verwijzen naar [herstel rest API document activeren](/rest/api/backup/restores/trigger#request-body).
-
-#### <a name="example-request"></a>Voorbeeldaanvraag
-
-De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn om een schijf herstel te activeren.
-
-```json
-{
-  "properties": {
-    "objectType": "IaasVMRestoreRequest",
-    "recoveryPointId": "20982486783671",
-    "recoveryType": "RestoreDisks",
-    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
-    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
-    "region": "westus",
-    "createNewCloudService": false,
-    "originalStorageAccountOption": false,
-    "encryptionDetails": {
-      "encryptionEnabled": false
-    }
-  }
-}
-```
-
-### <a name="response"></a>Antwoord
-
-Het activeren van een herstel schijf is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+Het activeren van een herstel bewerking is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
@@ -227,15 +206,90 @@ X-Powered-By: ASP.NET
 }
 ```
 
-Aangezien de back-uptaak een langlopende bewerking is, moet deze worden gevolgd zoals uitgelegd in de [taken bewaken met rest API document](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
+Omdat de herstel taak een langlopende bewerking is, moet deze worden gevolgd zoals uitgelegd in de [taken bewaken met behulp van rest API document](backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
-Zodra de langlopende taak is voltooid, zijn de schijven en de configuratie van de back-up van de virtuele machine (VMConfig.jsop) aanwezig in het opgegeven opslag account.
+### <a name="restore-disks"></a>Schijven herstellen
 
-## <a name="restore-as-another-virtual-machine"></a>Herstellen als een andere virtuele machine
+Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kan de ene schijf alleen herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services kluis en mag niet zone redundant zijn. De schijven en de configuratie van de back-up van de virtuele machine (vmconfig.jsop) worden opgeslagen in het opgegeven opslag account. Zoals [hierboven](#restore-operations)is uitgelegd, wordt de relevante aanvraag tekst voor herstel schijven hieronder weer gegeven.
 
-[Selecteer het herstel punt](#select-recovery-point) en maak de hoofd tekst van de aanvraag, zoals hieronder is opgegeven, om een andere virtuele Azure-machine te maken met de gegevens van het herstel punt.
+#### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
 
-De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn om het terugzetten van een virtuele machine te activeren.
+Als u een schijf herstel wilt activeren vanuit een back-up van een Azure-VM, volgt u de onderdelen van de hoofd tekst van de aanvraag.
+
+|Naam  |Type  |Beschrijving  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+Raadpleeg voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details verwijzen naar [herstel rest API document activeren](/rest/api/backup/restores/trigger#request-body).
+
+##### <a name="example-request"></a>Voorbeeldaanvraag
+
+De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn om een schijf herstel te activeren.
+
+```json
+{
+  "properties": {
+    "objectType": "IaasVMRestoreRequest",
+    "recoveryPointId": "20982486783671",
+    "recoveryType": "RestoreDisks",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+    "region": "westus",
+    "createNewCloudService": false,
+    "originalStorageAccountOption": false,
+    "encryptionDetails": {
+      "encryptionEnabled": false
+    }
+  }
+}
+```
+
+Zodra u het antwoord hebt gevolgd zoals [hierboven](#responses)is uitgelegd en de langlopende taak is voltooid, zijn de schijven en de configuratie van de back-up van de virtuele machine (VMConfig.jsop) aanwezig in het opgegeven opslag account.
+
+### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>Schijven vervangen in een back-up van een virtuele machine
+
+Bij het terugzetten van schijven van het herstel punt worden schijven vervangen door de schijven van de back-up van de virtuele machine die is gemaakt met de schijf van het herstel punt. Zoals [hierboven](#restore-operations)is uitgelegd, wordt de relevante aanvraag tekst voor het vervangen van schijven hieronder vermeld.
+
+#### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
+
+Als u een schijf vervanging wilt activeren vanuit een back-up van een Azure-VM, volgt u de onderdelen van de hoofd tekst van de aanvraag.
+
+|Naam  |Type  |Beschrijving  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+Raadpleeg voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details verwijzen naar [herstel rest API document activeren](/rest/api/backup/restores/trigger#request-body).
+
+#### <a name="example-request"></a>Voorbeeldaanvraag
+
+De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn om een schijf herstel te activeren.
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "OriginalLocation",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",  
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "affinityGroup": "",
+        "diskEncryptionSetId": null,
+        "subnetId": null,
+        "targetDomainNameId": null,
+        "targetResourceGroupId": null,
+        "targetVirtualMachineId": null,
+        "virtualNetworkId": null
+     }
+}
+
+```
+
+### <a name="restore-as-another-virtual-machine"></a>Herstellen als een andere virtuele machine
+
+Zoals [hierboven](#restore-operations)is uitgelegd, definieert de volgende aanvraag tekst eigenschappen die nodig zijn om het terugzetten van een virtuele machine te activeren.
 
 ```json
 {
@@ -271,7 +325,7 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn om het
 }
 ```
 
-Het antwoord moet worden afgehandeld op dezelfde manier als [hierboven beschreven voor het herstellen van schijven](#response).
+Het antwoord moet worden afgehandeld op dezelfde manier als [hierboven beschreven voor het herstellen van schijven](#responses).
 
 ## <a name="next-steps"></a>Volgende stappen
 

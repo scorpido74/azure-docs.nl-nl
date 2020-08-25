@@ -3,12 +3,12 @@ title: Back-ups van Azure-bestandsshares beheren
 description: In dit artikel worden algemene taken beschreven voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up is gemaakt door Azure Backup.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073302"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757622"
 ---
 # <a name="manage-azure-file-share-backups"></a>Back-ups van Azure-bestandsshares beheren
 
@@ -143,7 +143,7 @@ Back-upgegevens voor de Azure-bestands share verwijderen:
 
 ## <a name="unregister-a-storage-account"></a>Registratie van een opslag account ongedaan maken
 
-Als u uw bestands shares in een bepaald opslag account wilt beveiligen met behulp van een andere Recovery Services-kluis, moet u eerst de [beveiliging stoppen voor alle bestands shares](#stop-protection-on-a-file-share) in dat opslag account. Hef de registratie van het account vervolgens op bij de huidige Recovery Services-kluis die wordt gebruikt voor de beveiliging.
+Als u uw bestands shares in een bepaald opslag account wilt beveiligen met behulp van een andere Recovery Services kluis, moet u eerst de [beveiliging stoppen voor alle bestands shares](#stop-protection-on-a-file-share) in dat opslag account. Hef de registratie van het account vervolgens op bij de huidige Recovery Services kluis die wordt gebruikt voor de beveiliging.
 
 In de volgende procedure wordt ervan uitgegaan dat de beveiliging is gestopt voor alle bestands shares in het opslag account waarvoor u de registratie ongedaan wilt maken.
 

@@ -2,14 +2,14 @@
 title: Scenario's voor het gebruik van een virtueel netwerk
 description: Scenario's, bronnen en beperkingen voor het implementeren van container groepen naar een virtueel Azure-netwerk.
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259546"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797854"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scenario's en resources voor het virtuele netwerk
 
@@ -43,6 +43,8 @@ Met container groepen die zijn geïmplementeerd in een virtueel Azure-netwerk, k
 * U kunt geen test voor de [duur](container-instances-liveness-probe.md) van de bewaarde of [gereedheids test](container-instances-readiness-probe.md) inschakelen in een container groep die is geïmplementeerd in een virtueel netwerk.
 * Vanwege de extra netwerk bronnen die betrokken zijn, zijn implementaties naar een virtueel netwerk doorgaans langzamer dan het implementeren van een standaard container exemplaar.
 
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
+
 ## <a name="where-to-deploy"></a>Implementatie van
 
 De volgende regio's en maximum resources zijn beschikbaar voor het implementeren van een container groep in een virtueel Azure-netwerk.
@@ -63,7 +65,7 @@ Met subnetten wordt het virtuele netwerk gesegmenteerd tot afzonderlijke adres r
 
 Het subnet dat u voor container groepen gebruikt, mag alleen container groepen bevatten. Wanneer u een container groep voor het eerst naar een subnet implementeert, wordt dat subnet door Azure gedelegeerd aan Azure Container Instances. Wanneer het subnet is gedelegeerd, kan het alleen worden gebruikt voor container groepen. Als u probeert andere resources dan container groepen te implementeren op een overgedragen subnet, mislukt de bewerking.
 
-### <a name="network-profile"></a>Netwerk profiel
+### <a name="network-profile"></a>Netwerkprofiel
 
 Een netwerk profiel is een netwerk configuratie sjabloon voor Azure-resources. Hiermee geeft u bepaalde netwerk eigenschappen voor de resource op, bijvoorbeeld het subnet waarin het moet worden geïmplementeerd. Wanneer u de opdracht [AZ container Create][az-container-create] gebruikt voor het implementeren van een container groep naar een subnet (en dus een virtueel netwerk), maakt Azure een netwerk profiel voor u. U kunt dat netwerk profiel vervolgens gebruiken voor toekomstige implementaties naar het subnet. 
 

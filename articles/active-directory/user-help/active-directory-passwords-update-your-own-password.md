@@ -11,21 +11,21 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266114"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799040"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Uw werk-of school wachtwoord opnieuw instellen met behulp van beveiligings gegevens
 
-Als u uw werk-of school Wachtwoord verg eten bent, nooit een wacht woord hebt ontvangen van uw organisatie of uw account hebt vergrendeld, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw werk-of school wachtwoord opnieuw in te stellen. Uw beheerder moet deze functie inschakelen zodat u uw gegevens kunt instellen en [uw eigen wacht woord opnieuw instelt](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register).
+Als u uw werk-of school Wachtwoord verg eten bent, nooit een wacht woord hebt ontvangen van uw organisatie of uw account hebt vergrendeld, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw werk-of school wachtwoord opnieuw in te stellen. Uw beheerder moet deze functie inschakelen zodat u uw gegevens kunt instellen en [uw eigen wacht woord opnieuw instelt](./active-directory-passwords-reset-register.md).
 
-Als u uw wacht woord kent en u dit wilt wijzigen, raadpleegt u de secties [uw wachtwoord stappen wijzigen](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) in dit artikel.
+Als u uw wacht woord kent en u dit wilt wijzigen, raadpleegt u de secties [uw wachtwoord stappen wijzigen](#how-to-change-your-password) in dit artikel.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die proberen een verg eten of onbekend werk-of school account-wacht woord opnieuw in te stellen. Als u een beheerder bent die op zoek is naar informatie over het inschakelen van de selfservice voor wachtwoord herstel voor uw werk nemers of andere gebruikers, raadpleegt u de [implementatie van Azure AD self-service voor wachtwoord herstel en andere artikelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Dit artikel is bedoeld voor gebruikers die proberen een verg eten of onbekend werk-of school account-wacht woord opnieuw in te stellen. Als u een beheerder bent die op zoek is naar informatie over het inschakelen van de selfservice voor wachtwoord herstel voor uw werk nemers of andere gebruikers, raadpleegt u de [implementatie van Azure AD self-service voor wachtwoord herstel en andere artikelen](../authentication/howto-sspr-deployment.md).
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Uw wacht woord opnieuw instellen of ontgrendelen voor een werk-of school account
 
@@ -155,7 +155,7 @@ Als uw beheerder de functionaliteit heeft ingeschakeld, kunt u een koppeling zie
 
 Hier volgen enkele veelvoorkomende fout gevallen en hun oplossingen:
 
-|Probleem|Description|Oplossing|
+|Probleem|Beschrijving|Oplossing|
 | --- | --- | --- |
 |Wanneer ik mijn wacht woord probeer te wijzigen, krijg ik een fout melding. |Uw wacht woord heeft een woord, woord groep of patroon waarmee uw wacht woord gemakkelijk kan worden geraden.| Probeer het opnieuw met een sterker wacht woord.|
 |Nadat ik mijn gebruikers-ID heb ingevoerd, ga ik naar een pagina met de tekst ' Neem contact op met de beheerder '.|Micro soft heeft vastgesteld dat het wacht woord van uw gebruikers account wordt beheerd door uw beheerder in een on-premises omgeving. Als gevolg hiervan kunt u uw wacht woord niet opnieuw instellen via de koppeling geen toegang tot uw account. |Neem contact op met de beheerder voor meer informatie.|
@@ -164,6 +164,6 @@ Hier volgen enkele veelvoorkomende fout gevallen en hun oplossingen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over beveiligings informatie vindt u in het [overzichts artikel Security info (preview)](user-help-security-info-overview.md) .
+- Meer informatie over beveiligings informatie vindt u in het [overzichts artikel Security info (preview)](./security-info-setup-signin.md) .
 
 - Als u probeert terug te gaan naar een persoonlijk account, zoals Xbox, hotmail.com of outlook.com, kunt u de suggesties in de weer gegeven [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account-artikel](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

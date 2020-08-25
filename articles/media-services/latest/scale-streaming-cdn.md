@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80128056"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799346"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Inhoud streamen met CDN-integratie
 
@@ -47,7 +47,7 @@ In dit onderwerp vindt u informatie over het inschakelen van [CDN-integratie](#e
 
 Nadat een streaming-eind punt is ingericht met CDN ingeschakeld, is er een gedefinieerde wacht tijd op Media Services voordat de DNS-update wordt uitgevoerd om het streaming-eind punt toe te wijzen aan het CDN-eind punt.
 
-Als u het CDN later wilt uitschakelen/inschakelen, moet het streaming-eind punt de status **gestopt** hebben. Het kan tot twee uur duren voordat de Azure CDN integratie is ingeschakeld en de wijzigingen voor alle CDN-Pop's actief zijn. U kunt echter het streaming-eind punt starten en streamen zonder onderbrekingen van het streaming-eind punt. Zodra de integratie is voltooid, wordt de stroom geleverd vanuit het CDN. Tijdens de inrichtings periode bevinden uw streaming-eind punt zich in de **Start** status en kunt u gedegradeerde prestaties waarnemen.
+Als u het CDN later wilt uitschakelen/inschakelen, moet het streaming-eind punt de status **gestopt** hebben. Zodra het streaming-eind punt is gestart, kan het tot twee uur duren voordat de integratie van Azure CDN is ingeschakeld en dat de wijzigingen in alle CDN-Pop's actief zijn. U kunt echter het streaming-eind punt starten en streamen zonder onderbrekingen van het streaming-eind punt. Zodra de integratie is voltooid, wordt de stroom geleverd vanuit het CDN. Tijdens de inrichtings periode bevinden uw streaming-eind punt zich in de **Start** status en kunt u gedegradeerde prestaties waarnemen.
 
 Wanneer het standaard streaming-eind punt wordt gemaakt, wordt het standaard geconfigureerd met standaard Verizon. U kunt Premium Verizon-of Standard Akamai-providers configureren met behulp van REST Api's.
 
@@ -82,11 +82,11 @@ De voor delen van de functie voor *CDN-prefetch van oorsprong-assistentie zijn* 
 > [!NOTE]
 > Deze functie is nog niet van toepassing op het Akamai CDN dat is geïntegreerd met Media Services streaming-eind punt. Het is echter wel beschikbaar voor Media Services klanten die een reeds bestaand Akamai-contract hebben en aangepaste integratie vereisen tussen Akamai CDN en de Media Services oorsprong.
 
-### <a name="how-it-works"></a>Uitleg
+### <a name="how-it-works"></a>Hoe het werkt
 
 CDN-ondersteuning voor de `Origin-Assist CDN-Prefetch` headers (voor Live en video on-demand streaming) is beschikbaar voor klanten die een direct-contract met AKAMAI CDN hebben. De functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en de Media Services Origin:
 
-|HTTP-header|Waarden|Afzender|Ontvanger|Functie|
+|HTTP-header|Waarden|Afzender|Ontvanger|Doel|
 | ---- | ---- | ---- | ---- | ----- |
 |`CDN-Origin-Assist-Prefetch-Enabled` | 1 (standaard) of 0 |CDN|Oorsprong|Om aan te geven dat CDN is ingeschakeld.|
 |`CDN-Origin-Assist-Prefetch-Path`| Voorbeeld: <br/>Fragmenten (video = 1400000000, Format = mpd-time-CMAF)|Oorsprong|CDN|Om het prefetch-pad naar CDN op te geven.|
@@ -152,7 +152,7 @@ De `Origin-Assist CDN-Prefetch` functie ondersteunt de volgende streaming-protoc
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

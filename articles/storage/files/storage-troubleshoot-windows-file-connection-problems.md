@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 322a3b4e8d362d1b751b2c016e6f7cf904f11d7e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927212"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752332"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
 
@@ -364,6 +364,16 @@ U kunt de volgende symptomen ondervinden bij het configureren van Windows-Acl's 
 ### <a name="solution"></a>Oplossing
 
 U wordt aangeraden om het [icacls-hulp programma](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) te gebruiken om de machtigingen voor het Directory/bestands niveau als tijdelijke oplossing te configureren. 
+
+## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Fouten bij het uitvoeren van de cmdlet voor samen voegen AzStorageAccountForAuth
+
+### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>Fout: de Directory service kan geen relatieve id toewijzen.
+
+Deze fout kan optreden als een domein controller met de FSMO-functie van de RID-master niet beschikbaar is of uit het domein is verwijderd en teruggezet vanuit een back-up.  Bevestig dat alle domein controllers actief zijn en beschikbaar zijn.
+
+### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>Fout: ‘Kan de positieparameters niet binden, omdat er geen namen zijn opgegeven’
+
+Deze fout wordt waarschijnlijk veroorzaakt door een syntaxisfout in de opdracht Join-AzStorageAccountforAuth.  Controleer de opdracht of er fouten zijn opgetreden met de spelling of syntaxis fout en controleer of de meest recente versie van de AzFilesHybrid-module ( https://github.com/Azure-Samples/azure-files-samples/releases) is geïnstalleerd).  
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

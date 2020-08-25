@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het beheren van back-up-en h
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 0170bda1ca956efe971695e34dc0d14b68eb109a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c4aa88399bfbdd7814864170d9861a7b7d14dc58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079329"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757248"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-kluis maken met behulp van REST API
 
@@ -38,7 +38,7 @@ Zie [onderdelen van een rest API aanvraag/antwoord](/rest/api/azure/#components-
 
 De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag tekst:
 
-|Naam  |Vereist  |Type  |Description  |
+|Naam  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
 |location     |  true       |Tekenreeks         |   Resource locatie      |
@@ -66,7 +66,7 @@ De volgende voorbeeld tekst wordt gebruikt voor het maken van een kluis in ' vs-
 
 Er zijn twee geslaagde reacties voor de bewerking om een Recovery Services kluis te maken of bij te werken:
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |   [Kluis](/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 gemaakt     | [Kluis](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Gemaakt      |
