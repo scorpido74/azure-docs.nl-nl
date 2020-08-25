@@ -3,12 +3,12 @@ title: Over het herstel proces van de virtuele Azure-machine
 description: Meer informatie over hoe de Azure Backup-service virtuele Azure-machines herstelt
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: a604e146dbe387675e9ed82030639921cfc03167
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb3f6bf729047dc6fe1c13c5ead1191188e30e5c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067469"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761386"
 ---
 # <a name="about-azure-vm-restore"></a>Over Azure-VM herstellen
 
@@ -46,12 +46,6 @@ In dit artikel wordt beschreven hoe de [Azure backup-service](./backup-overview.
 | [Specifieke bestanden binnen de VM herstellen](./backup-azure-restore-files-from-vm.md) | Kies herstel punt, blader, Selecteer bestanden en zet ze terug in hetzelfde (of compatibel) besturings systeem als de back-up van de virtuele machine. |  Als u weet welke specifieke bestanden u moet herstellen, gebruikt u deze optie in plaats van de volledige virtuele machine te herstellen. |
 | [Een versleutelde VM herstellen](./backup-azure-vms-encryption.md) | Herstel de schijven vanuit de portal en gebruik Power shell om de virtuele machine te maken | <li> [Versleutelde VM met Azure Active Directory (AAD)](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [Versleutelde VM zonder AAD](../virtual-machines/windows/disk-encryption-windows.md) <li> [Versleutelde virtuele machine *met Aad* gemigreerd naar *zonder Aad*](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
 | [Meerdere regio's herstellen](./backup-azure-arm-restore-vms.md#cross-region-restore) | Een nieuwe virtuele machine maken of schijven terugzetten naar een secundaire regio (Azure gekoppelde regio) | <li> **Volledige onderbreking**: met de functie voor het terugzetten van meerdere regio's is er geen wacht tijd meer om gegevens in de secundaire regio te herstellen. U kunt herstel bewerkingen in de secundaire regio initiëren, zelfs voordat Azure een onderbreking declareert. <li> **Gedeeltelijke storing**: uitval tijd kan optreden in specifieke opslag clusters waar Azure Backup uw back-upgegevens opslaat of zelfs in het netwerk, Azure backup en opslag clusters verbindt die zijn gekoppeld aan uw back-upgegevens. Met het herstel van meerdere regio's kunt u een herstel bewerking uitvoeren in de secundaire regio met behulp van een replica van back-ups van gegevens in de secundaire regio. <li> **Geen storing**: u kunt bedrijfs continuïteit en herstel na nood gevallen (BCDR) uitvoeren voor controle-of nalevings doeleinden met de gegevens van de secundaire regio. Hierdoor kunt u een back-up van gegevens in de secundaire regio herstellen, zelfs als er geen volledige of gedeeltelijke onderbreking in de primaire regio is voor bedrijfs continuïteit en herstel na nood gevallen.  |
-
-------
-
-
-
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

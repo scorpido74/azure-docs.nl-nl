@@ -3,12 +3,12 @@ title: Azure Backup Server voor de Azure VMware-oplossing instellen
 description: Stel uw Azure VMware-oplossings omgeving in om een back-up te maken van virtuele machines met behulp van Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079533"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750611"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure Backup Server voor de Azure VMware-oplossing instellen
 
@@ -56,7 +56,7 @@ Als u Azure Backup Server voor de Azure VMware-oplossing wilt instellen, moet u 
 
 Azure Backup Server wordt geïmplementeerd als een Azure-infra structuur als een service (IaaS) voor de beveiliging van virtuele machines met Azure VMware-oplossingen.
 
-:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="Architectuur van AVS-implementatie" border="false":::
+:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="Azure Backup Server wordt geïmplementeerd als een Azure-infra structuur als een service (IaaS) voor de beveiliging van virtuele machines met Azure VMware-oplossingen." border="false":::
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Vereisten voor de Azure Backup Server omgeving
 
@@ -138,38 +138,38 @@ Een Recovery Services kluis is een opslag entiteit waarin de herstel punten word
 
 1. Meld u aan bij uw abonnement in [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer in het menu links **alle services**.
+1. Selecteer in het menu links **Alle services**.
 
-   ![Alle services selecteren](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![Selecteer in het menu links alle services.](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. Voer in het dialoog venster **alle services** het **Recovery Services** in en selecteer **Recovery Services kluizen** in de lijst.
 
-   ![Recovery Services-kluizen invoeren en kiezen](../backup/media/backup-create-rs-vault/all-services.png)
+   ![Voer Recovery Services kluizen in en kies deze.](../backup/media/backup-create-rs-vault/all-services.png)
 
    De lijst met Recovery Services-kluizen in het abonnement wordt weergeven.
 
-1. Selecteer **toevoegen**op het **Recovery Services kluizen** -dash board.
+1. Op het dashboard van de **Recovery Services**-kluizen selecteert u **Toevoegen**.
 
-   ![Een Recovery Services kluis toevoegen](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
+   ![Een Recovery Services kluis toevoegen.](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
 
    Het dialoogvenster **Recovery Service-kluis** wordt geopend.
 
 1. Voer waarden in voor de **naam**, het **abonnement**, de **resource groep**en de **locatie**.
 
-   ![De Recovery Services kluis configureren](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
+   ![Configureer de Recovery Services kluis.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
    - **Naam**: Voer een beschrijvende naam in om de kluis aan te duiden. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op met ten minste twee, maar niet meer dan 50 tekens. De naam moet beginnen met een letter en mag alleen uit letters, cijfers en afbreekstreepjes bestaan.
    - **Abonnement**: Kies het abonnement dat u wilt gebruiken. Als u lid bent van maar één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u moet gebruiken, gebruikt u het standaardabonnement (voorgesteld). Er zijn alleen meerdere mogelijkheden als uw werk- of schoolaccount is gekoppeld aan meerdere Azure-abonnementen.
-   - **Resourcegroep**: Gebruik een bestaande resourcegroep of maak een nieuwe. Als u de lijst met beschik bare resource groepen in uw abonnement wilt weer geven, selecteert u **bestaande gebruiken**en selecteert u een resource in de vervolg keuzelijst. Als u een nieuwe resourcegroep wilt maken, selecteert u **Nieuwe maken** en voert u de naam in.
+   - **Resourcegroep**: Gebruik een bestaande resourcegroep of maak een nieuwe. Als u de lijst met beschikbare resourcegroepen in uw abonnement wilt weergeven, selecteert u **Bestaande gebruiken** en vervolgens selecteert u een resource in de vervolgkeuzelijst. Als u een nieuwe resourcegroep wilt maken, selecteert u **Nieuwe maken** en voert u de naam in.
    - **Locatie**: Selecteer de geografische regio voor de kluis. Als u een kluis wilt maken om virtuele machines van Azure VMware-oplossingen te beveiligen, *moet* de kluis zich in dezelfde regio bevinden als de privécloud van de Azure VMware-oplossing.
 
-1. Wanneer u klaar bent om de Recovery Services kluis te maken, selecteert u **maken**.
+1. Wanneer u klaar bent om de Recovery Services-kluis te maken, selecteert u **Maken**.
 
-   ![De Recovery Services kluis maken](../backup/media/backup-create-rs-vault/click-create-button.png)
+   ![Maak de Recovery Services kluis.](../backup/media/backup-create-rs-vault/click-create-button.png)
 
-   Het kan even duren om de Recovery Services kluis te maken. Bewaak de status meldingen in het gebied **meldingen** in de rechter bovenhoek van de portal. Nadat de kluis is gemaakt, wordt deze weer gegeven in de lijst met Recovery Services kluizen. Als uw kluis niet wordt weer geven, selecteert u **vernieuwen**.
+   Het kan even duren voordat de Recovery Services-kluis is gemaakt. Bewaak de status meldingen in het gebied **meldingen** in de rechter bovenhoek van de portal. Als de kluis is gemaakt, is deze zichtbaar in de lijst met Recovery Services-kluizen. Als uw kluis niet wordt weergegeven, selecteert u **Vernieuwen**.
 
-   ![De lijst met back-upkluizen vernieuwen](../backup/media/backup-create-rs-vault/refresh-button.png)
+   ![Vernieuw de lijst met back-upkluizen.](../backup/media/backup-create-rs-vault/refresh-button.png)
 
 ## <a name="set-storage-replication"></a>Opslag replicatie instellen
 
@@ -184,7 +184,7 @@ Met de optie voor opslag replicatie kunt u kiezen tussen geo-redundante opslag (
 
 1. Selecteer het type opslag replicatie en selecteer **Opslaan**.
 
-   ![Opslag configuratie voor nieuwe kluis instellen](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+   ![Stel de opslag configuratie voor de nieuwe kluis in.](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="download-and-install-the-software-package"></a>Het software pakket downloaden en installeren
 
@@ -192,7 +192,7 @@ Volg de stappen in deze sectie om het software pakket te downloaden, uit te pakk
 
 ### <a name="download-the-software-package"></a>Het software pakket downloaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Als er al een Recovery Services kluis is geopend, gaat u verder met de volgende stap. Als er geen Recovery Services-kluis is geopend, maar u zich in de Azure Portal bevindt, selecteert u in het hoofd menu **Bladeren**.
 
@@ -206,15 +206,15 @@ Volg de stappen in deze sectie om het software pakket te downloaden, uit te pakk
 
    Het geselecteerde kluisdashboard wordt geopend.
 
-   ![Kluis dashboard openen](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+   ![Het geselecteerde kluisdashboard wordt geopend.](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 
    De optie **instellingen** wordt standaard geopend. Als deze optie is gesloten, selecteert u **instellingen** om deze te openen.
 
-   ![Optie kluis instellingen openen](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
+   ![De optie instellingen wordt standaard geopend. Als deze optie is gesloten, selecteert u instellingen om deze te openen.](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
 
 1. Selecteer **back-up** om de wizard **aan de slag** te openen.
 
-   ![Met back-up wordt de wizard aan de slag gestart](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
+   ![Selecteer back-up om de wizard aan de slag te openen.](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
 1. Ga als volgt te werk in het venster dat wordt geopend:
 
@@ -241,7 +241,7 @@ Volg de stappen in deze sectie om het software pakket te downloaden, uit te pakk
    > [!NOTE]
    > U moet alle bestanden naar dezelfde map downloaden. Omdat de download grootte van de bestanden groter is dan 3 GB, kan het tot 60 minuten duren voordat de down load is voltooid. 
 
-   ![Bestanden selecteren in Download centrum](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+   ![Selecteer op de pagina downloaden de optie alle bestanden en selecteer volgende.](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
 ### <a name="extract-the-software-package"></a>Het software pakket uitpakken
 
@@ -256,9 +256,9 @@ Als u het software pakket naar een andere server hebt gedownload, kopieert u de 
 
 1. Selecteer **extra heren** om het extractie proces te starten.
 
-   ![Wizard Microsoft Azure Backup-installatie](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
+   ![Selecteer extra heren om het extractie proces te starten.](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-1. Zodra het bestand is geëxtraheerd, selecteert u de optie om setup.exeuit te **voeren** en selecteert u vervolgens **volt ooien**.
+1. Zodra het bestand is geëxtraheerd, selecteert u de optie om setup.exeuit te **voeren ** en selecteert u vervolgens **volt ooien**.
 
 > [!TIP]
 > U kunt het setup.exe-bestand ook vinden in de map waar u het software pakket hebt uitgepakt.
@@ -267,17 +267,17 @@ Als u het software pakket naar een andere server hebt gedownload, kopieert u de 
 
 1. Selecteer in het venster Setup onder **installeren**de optie **Microsoft Azure backup** om de installatie wizard te openen.
 
-   ![Knop installatie van wizard Microsoft Azure Backup-installatie](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
+   ![Selecteer in het venster Setup onder installeren de optie Microsoft Azure Backup om de installatie wizard te openen.](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
 1. Selecteer in het scherm **Welkom** de optie **volgende** om door te gaan naar de pagina **vereisten controles** .
 
 1. Selecteer **opnieuw controleren** om te bepalen of aan de hardware-en software vereisten voor Azure backup server wordt voldaan. Als u de bewerking hebt uitgevoerd, selecteert u **volgende**.
 
-   ![Azure Backup Server controle op vereisten](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
+   ![ Selecteer opnieuw controleren om te bepalen of aan de hardware-en software vereisten voor Azure Backup Server wordt voldaan. Als u de bewerking hebt uitgevoerd, selecteert u volgende.](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 
 1. Het Azure Backup Server-installatie pakket wordt geleverd met de juiste SQL Server binaire bestanden die nodig zijn. Wanneer u een nieuwe Azure Backup Server-installatie start, selecteert u de optie **nieuw exemplaar van SQL Server installeren met deze installatie** . Selecteer vervolgens **controleren en installeren**.
 
-   ![SQL Server selectie Azure Backup Server](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
+   ![Het Azure Backup Server-installatie pakket wordt geleverd met de juiste SQL Server binaire bestanden die nodig zijn.](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
    > Als u uw eigen SQL Server exemplaar wilt gebruiken, zijn de ondersteunde SQL Server versies SQL Server 2014 SP1 of hoger, 2016 en 2017. Alle SQL Server versies moeten Standard of ENTER prise 64-bit zijn. Azure Backup Server werkt niet met een extern SQL Server exemplaar. Het exemplaar dat door Azure Backup Server wordt gebruikt, moet lokaal zijn. Als u een bestaand SQL Server-exemplaar voor Azure Backup Server gebruikt, ondersteunt de installatie alleen het gebruik van *benoemde exemplaren* van SQL Server.
@@ -321,18 +321,18 @@ Als u het software pakket naar een andere server hebt gedownload, kopieert u de 
    > [!NOTE]
    > De Scratch locatie is vereist voor back-up naar Azure. Zorg ervoor dat de Scratch locatie ten minste 5% van de gegevens bevindt waarvan een back-up naar de Cloud wordt gepland. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd nadat de installatie is voltooid. Zie [opslag groepen en schijf opslag configureren](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12))voor meer informatie over opslag groepen.
 
-   ![Installatie-instellingen voor Microsoft Azure Backup installatie](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
+   ![Geef een locatie op voor de installatie van Microsoft Azure Backup Server-bestanden en selecteer volgende.](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
 1. Geef een sterk wacht woord op voor beperkte lokale gebruikers accounts en selecteer **volgende**.
 
-   ![Beveiligings instellingen van Microsoft Azure Backup-installatie](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
+   ![Geef een sterk wacht woord op voor beperkte lokale gebruikers accounts en selecteer volgende.](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
 
 1. Selecteer of u Microsoft Update wilt gebruiken om te controleren op updates en selecteer **volgende**.
 
    > [!NOTE]
    > U kunt het beste Windows Update omleiden naar Microsoft Update, waarmee beveiligings-en belang rijke updates voor Windows en andere producten zoals Azure Backup Server worden geboden.
 
-   ![Opt-in Microsoft Azure Backup instellen Microsoft Update](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+   ![Selecteer of u Microsoft Update wilt gebruiken om te controleren op updates en selecteer volgende.](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
 1. Bekijk het **samen vatting van instellingen**en selecteer **installeren**.
 
@@ -352,7 +352,7 @@ Als u het software pakket naar een andere server hebt gedownload, kopieert u de 
 
    Nadat de installatie van de Microsoft Azure Recovery Services-agent is voltooid, gaat de installatie stap over naar de installatie en configuratie van SQL Server en de Azure Backup Server-onderdelen.
 
-   ![Installatie van Microsoft Azure Backup installatie](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+   ![Nadat de installatie van de Microsoft Azure Recovery Services-agent is voltooid, gaat de installatie stap over naar de installatie en configuratie van SQL Server en de Azure Backup Server-onderdelen.](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 1. Nadat de installatie stap is voltooid, selecteert u **sluiten**.
 

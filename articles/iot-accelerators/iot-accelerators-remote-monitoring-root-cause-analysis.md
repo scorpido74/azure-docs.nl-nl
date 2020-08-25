@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "77565465"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Zelfstudie: Een analyse uitvoeren van de hoofdoorzaak van een waarschuwing
@@ -38,7 +38,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Gebruik filters om te selecteren welke verbonden apparaten worden weergegeven op de pagina **Dashboard**. Om alleen de **Truck**-apparaten weer te geven, kiest u het ingebouwde **Trucks**-filter in de vervolgkeuzelijst met filters:
 
-[![Filteren op vracht wagens op het dash board](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
+[![Filteren op trucks in het dashboard](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
 
 Wanneer u een filter toepast, worden alleen de apparaten die voldoen aan de filtervoorwaarden weergegeven op de kaart en in het deelvenster Telemetrie van het **Dashboard**. U kunt zien dat twee trucks verbonden zijn met de oplossingsversnellers, waaronder **vrachtwagen-02**.
 
@@ -46,37 +46,37 @@ Wanneer u een filter toepast, worden alleen de apparaten die voldoen aan de filt
 
 De oplossingsversneller plot in realtime telemetrie in de grafiek op de pagina **Dashboard**. In de grafiek worden standaard de telemetriegegevens over de hoogte weergegeven. Dit verandert na verloop van tijd:
 
-[![Telemetrie-grafiek hoogte](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-expanded.png#lightbox)
+[![Tekengebied voor telemetriegegevens over hoogte van vrachtwagen](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-expanded.png#lightbox)
 
 Als u voor de trucks temperatuurtelemetrie wilt weergeven, klikt u op **Temperatuur** in het **deelvenster Telemetrie**. U kunt zien hoe de temperatuur voor beide vrachtwagens in de afgelopen 15 minuten is veranderd. U kunt ook zien dat er een waarschuwing voor lage temperatuur is geactiveerd voor delivery-truck-02 in het deelvenster met waarschuwingen.
 
-[![RM-dash board met weinig tijdelijke waarschuwing](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-expanded.png#lightbox)
+[![RM-dashboard met waarschuwing voor lage temperatuur](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-expanded.png#lightbox)
 
 ## <a name="explore-the-data"></a>De gegevens verkennen
 
 Als u de oorzaak van het alarm voor een lage temperatuur wilt identificeren, opent u de telemetriegegevens van de vrachtwagen in de Time Series Insights-verkenner. Klik op een van de koppelingen **Verkennen in Time Series Insights** op het dashboard:
 
-[![RM-dash board met TSI koppelingen gemarkeerd](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-expanded.png#lightbox)
+[![RM-dashboard met gemarkeerde TSI-koppelingen](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-expanded.png#lightbox)
 
 Zodra de verkenner wordt geopend, ziet u al uw apparaten in een lijst:
 
-[![De eerste weer gave van de TSI Explorer](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-expanded.png#lightbox)
+[![Initiële weergaven TSI Explorer](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-expanded.png#lightbox)
 
 Filter de apparaten door **delivery-truck** in het filtervak te typen en selecteer **temperatuur** als de **Meeteenheid** in het linkerdeelvenster:
 
-[![Tempe ratuur van de TSI Explorer-truck](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
+[![TSI Explorer temperatuur vrachtwagen](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
 
 U ziet dezelfde weergave als in het dashboard Externe bewaking. Bovendien kunt u nu verder inzoomen op het tijdsbestek waarin de waarschuwing is geactiveerd:
 
-[![TSI Explorer zoomen](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
+[![Zoomen met TSI-verkenner](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
 
 U kunt ook andere telemetriestreams toevoegen die afkomstig zijn uit de vrachtwagens. Klik op de knop **Toevoegen** in de linkerbovenhoek. Er wordt een nieuw deelvenster weergegeven:
 
-[![TSI Verkenner met nieuw deel venster](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
+[![TSI Explorer met nieuw deelvenster](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
 
 In het nieuwe deelvenster wijzigt u de naam van het nieuwe label in **Apparaten** zodat dit overeenkomt met de vorige. Selecteer **hoogte** als de **Meeteenheid** en **iothub-connection-device-id** als de **Splitsen op**-waarde om de hoogtetelemetrie in uw weergave toe te voegen:
 
-[![TSI Verkenner met Tempe ratuur en hoogte](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
+[![TSI Explorer met temperatuur en hoogte](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
 
 ## <a name="diagnose-the-alert"></a>De waarschuwing diagnosticeren
 
@@ -84,13 +84,13 @@ Wanneer u de streams in de huidige weergave bekijkt, kunt u zien dat de hoogtepr
 
 Als u wilt bevestigen dat de vrachtwagens andere routes hebben afgelegd, voegt u in het zijpaneel een nieuw deelvenster toe met behulp van de knop **Toevoegen**. In het nieuwe deelvenster wijzigt u de naam van het nieuwe label in **Apparaten** zodat dit overeenkomt met de vorige. Selecteer **lengtegraad** als **Meeteenheid** en **iothub-connection-device-id** als de **Scheiden op**-waarde om de lengtegraadtelemetrie in uw weergave toe te voegen. U kunt zien dat de vrachtwagens inderdaad een andere route heeft gevolgd door naar het verschil tussen de **lengtegraad**-streams te kijken:
 
-[![TSI Verkenner met Tempe ratuur, hoogte breedte en lengte graad](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-expanded.png#lightbox)
+[![TSI Explorer met temperatuur, hoogte en lengtegraad](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-expanded.png#lightbox)
 
 ## <a name="create-a-new-rule"></a>Een nieuwe regel maken
 
 Hoewel vrachtwagenroutes doorgaans van tevoren zijn geoptimaliseerd, realiseert u zich dat verkeerspatronen, het weer en andere onverwachte gebeurtenissen tot vertragingen kunnen leiden en dat vrachtwagenchauffeurs naar eigen inzicht op het laatste moment nog de route kunnen veranderen. Aangezien de temperatuur van uw assets in het voertuig echter essentieel is, moet u een aanvullende regel in uw externe bewakingsoplossing maken. Deze regel moet ervoor zorgen dat u een waarschuwing krijgt als de gemiddelde hoogte in een interval van 1 minuut boven 350 feet komt:
 
-[![Tabblad regels voor controle op afstand stellen regel voor hoogte in](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
+[![Tabblad Regels voor externe bewaking voor instellen hoogteregel](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
 
 Als u wilt leren hoe u regels maakt en bewerkt, bekijkt u de vorige zelfstudie over [het detecteren van apparaatproblemen](iot-accelerators-remote-monitoring-automate.md).
 

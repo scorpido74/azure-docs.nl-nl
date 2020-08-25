@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: b4cd1fefb728da797d5ff56fe833662f21630c58
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338053"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796405"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Gekoppelde services in Azure Data Factory
 
@@ -68,20 +68,20 @@ In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 
 Eigenschap | Beschrijving | Vereist |
 -------- | ----------- | -------- |
-naam | De naam van de gekoppelde service. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Yes |
-type | Het type van de gekoppelde service. Bijvoorbeeld: Azure Storage (gegevens archief) of AzureBatch (Compute). Zie de beschrijving voor typeProperties. | Yes |
-typeProperties | De type-eigenschappen verschillen voor elke gegevens opslag of compute. <br/><br/> Zie de tabel [type gegevensset](concepts-datasets-linked-services.md#dataset-type) in dit artikel voor de ondersteunde typen gegevens opslag en de type-eigenschappen ervan. Navigeer naar het gegevens archief connector artikel voor meer informatie over type-eigenschappen die specifiek zijn voor een gegevens archief. <br/><br/> Zie [gekoppelde services berekenen](compute-linked-services.md)voor de ondersteunde reken typen en de bijbehorende type-eigenschappen. | Yes |
+naam | De naam van de gekoppelde service. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
+type | Het type van de gekoppelde service. Bijvoorbeeld: AzureBlobStorage (Data Store) of AzureBatch (Compute). Zie de beschrijving voor typeProperties. | Ja |
+typeProperties | De type-eigenschappen verschillen voor elke gegevens opslag of compute. <br/><br/> Zie het [overzichts](copy-activity-overview.md#supported-data-stores-and-formats) artikel van de connector voor de ondersteunde typen gegevens opslag en de type-eigenschappen ervan. Navigeer naar het gegevens archief connector artikel voor meer informatie over type-eigenschappen die specifiek zijn voor een gegevens archief. <br/><br/> Zie [gekoppelde services berekenen](compute-linked-services.md)voor de ondersteunde reken typen en de bijbehorende type-eigenschappen. | Ja |
 connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | No
 
 ## <a name="linked-service-example"></a>Voor beeld van gekoppelde service
 
-De volgende gekoppelde service is een Azure Storage gekoppelde service. U ziet dat het type is ingesteld op Azure Storage. De type-eigenschappen voor de Azure Storage gekoppelde service omvatten een connection string. De Data Factory-service gebruikt deze connection string om tijdens de uitvoering verbinding te maken met het gegevens archief.
+De volgende gekoppelde service is een gekoppelde Azure Blob Storage-service. U ziet dat het type is ingesteld op Azure Blob-opslag. De type-eigenschappen voor de gekoppelde Azure Blob Storage-service omvatten een connection string. De Data Factory-service gebruikt deze connection string om tijdens de uitvoering verbinding te maken met het gegevens archief.
 
 ```json
 {
-    "name": "AzureStorageLinkedService",
+    "name": "AzureBlobStorageLinkedService",
     "properties": {
-        "type": "AzureStorage",
+        "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: ed311e9c8031f8586762d2adc4c104545e323bc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d94e19753a93d2682043d7b67b867325067cee5d
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711507"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762297"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure DDoS Protection Standard beheren met de Azure Portal
 
@@ -81,8 +81,7 @@ U kunt een virtueel netwerk niet verplaatsen naar een andere resource groep of e
 ## <a name="disable-ddos-for-a-virtual-network"></a>DDoS uitschakelen voor een virtueel netwerk
 
 1. Voer de naam in van het virtuele netwerk waarvoor u de DDoS-beveiligings standaard wilt uitschakelen in het **vak resources, services en documenten zoeken** bovenaan de portal. Wanneer de naam van het virtuele netwerk wordt weer gegeven in de zoek resultaten, selecteert u dit.
-2. Selecteer **DDoS Protection**onder **instellingen**.
-3. Selecteer **basis** onder **DDoS-beschermings plan** en selecteer vervolgens **Opslaan**.
+2. Selecteer **onder DDoS Protection standaard**de optie **uitschakelen**.
 
 **Opdrachten** 
 - Azure CLI: [AZ Network DDoS-Protection delete](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-delete)
@@ -148,7 +147,7 @@ Zie [DDoS Detection valideren](#validate-ddos-detection)als u een DDoS-aanval wi
 
 ## <a name="view-ddos-mitigation-policies"></a>DDoS-beperkings beleid weer geven
 
-DDoS Protection Standard heeft drie automatisch afgestemde beperkende beleids regels (TCP SYN, TCP & UDP) voor elk openbaar IP-adres van de beveiligde bron, in het virtuele netwerk waarop DDoS is ingeschakeld. U kunt de drempel waarden voor het beleid weer geven door de **binnenkomende TCP-pakketten te selecteren voor het activeren van DDoS-beperking** en **binnenkomende UDP-pakketten om DDoS-beperkende metrische gegevens te activeren** met het **aggregatie** type ' Max ', zoals wordt weer gegeven in de volgende afbeelding:
+DDoS Protection Standard heeft drie automatisch afgestemde beperkende beleids regels (TCP SYN, TCP & UDP) voor elk openbaar IP-adres van de beveiligde bron, in het virtuele netwerk waarop DDoS is ingeschakeld. U kunt de drempel waarden voor het beleid weer geven door de  **binnenkomende TCP-pakketten te selecteren voor het activeren van DDoS-beperking** en **binnenkomende UDP-pakketten om DDoS-beperkende metrische gegevens te activeren** met het **aggregatie** type ' Max ', zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Risico beperkings beleid weer geven](./media/manage-ddos-protection/view-mitigation-policies.png)
 
@@ -192,7 +191,7 @@ Met de stroom logboeken voor risico beperking kunt u het verloren verkeer, het d
     - **Archiveren naar een opslag account**: gegevens worden naar een Azure Storage-account geschreven. Zie [Archief bron logboeken](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over deze optie.
     - **Streamen naar een event hub**: Hiermee kan een logboek ontvanger logboeken ophalen met behulp van een Azure Event hub. Event hubs maken integratie mogelijk met Splunk of andere SIEM-systemen. Zie [bron logboeken streamen naar een event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over deze optie.
     - **Verzenden naar log Analytics**: schrijft logboeken naar de Azure Monitor-service. Zie [Logboeken verzamelen voor gebruik in azure monitor-logboeken voor](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)meer informatie over deze optie.
-1. Als u de gegevens van stroom logboeken wilt weer geven in het dash board van Azure Analytics, kunt u het voorbeeld dashboard importeren uithttps://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
+1. Als u de gegevens van stroom logboeken wilt weer geven in het dash board van Azure Analytics, kunt u het voorbeeld dashboard importeren uit https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Stroom logboeken bevatten de volgende velden: 
 - Bron-IP
@@ -230,7 +229,7 @@ De waarschuwingen bevatten algemene informatie over het open bare IP-adres dat w
 
 Als u wilt werken met DDoS-beveiligings plannen, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Bewerking                                            | Name                                     |
+| Bewerking                                            | Naam                                     |
 | ---------                                         | -------------                            |
 | Micro soft. Network/ddosProtectionPlans/lezen        | Een DDoS-beschermings plan lezen              |
 | Micro soft. Network/ddosProtectionPlans/schrijven       | Een DDoS-beschermings plan maken of bijwerken  |

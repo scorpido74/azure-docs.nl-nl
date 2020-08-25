@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 36719fc8370c04e9c2d01422536502f90e124c12
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82735246"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Voorbeelden van de Bing Webzoekopdrachten-SDK
@@ -32,7 +32,7 @@ Gebruik deze koppelingen voor toegang tot de SDK voor de taal van uw voorkeur.
 
 * Aan de slag met [Python-voorbeelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
   * Zie ook [Python-bibliotheken](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-websearch) voor definities en afhankelijkheden.
-* Aan de slag met voor [beelden van node. js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* Aan de slag met [Node.js-voorbeelden](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
   * Zie ook [Node.js Web Search](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesWebSearch).
 * Aan de slag met [.NET-voorbeelden](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
   * [NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)
