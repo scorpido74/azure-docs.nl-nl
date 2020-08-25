@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16a9c8ddfbc2c2a45067080dc68a759de226591b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0b8e107fb377a30b35f0941b89c490e11fc458c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339575"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783532"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Een catalogus met resources maken en beheren in azure AD-rechts beheer
 
@@ -31,7 +31,7 @@ Een catalogus is een container met resources en toegangs pakketten. U maakt een 
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder of maker van catalogus
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **catalogi**.
 
@@ -53,7 +53,7 @@ Een catalogus is een container met resources en toegangs pakketten. U maakt een 
 
 ### <a name="creating-a-catalog-programmatically"></a>Een catalogus programmatisch maken
 
-U kunt ook een catalogus maken met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de API aanroepen om [een accessPackageCatalog te maken](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+U kunt ook een catalogus maken met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de API aanroepen om [een accessPackageCatalog te maken](/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
 
 ## <a name="add-resources-to-a-catalog"></a>Resources toevoegen aan een catalogus
 
@@ -61,7 +61,7 @@ Als u resources wilt toevoegen aan een toegangs pakket, moeten de resources aanw
 
 **Vereiste rol:** De [vereiste rollen weer geven om resources toe te voegen aan een catalogus](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **catalogi** en open vervolgens de catalogus waaraan u resources wilt toevoegen.
 
@@ -83,7 +83,7 @@ Als u resources wilt toevoegen aan een toegangs pakket, moeten de resources aanw
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Een resource via een programma aan een catalogus toevoegen
 
-U kunt ook een resource toevoegen aan een catalogus met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol of een catalogus-en resource-eigenaar, met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen om [een accessPackageResourceRequest te maken](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
+U kunt ook een resource toevoegen aan een catalogus met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol of een catalogus-en resource-eigenaar, met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen om [een accessPackageResourceRequest te maken](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
 
 ## <a name="remove-resources-from-a-catalog"></a>Resources uit een catalogus verwijderen
 
@@ -91,7 +91,7 @@ U kunt resources verwijderen uit een catalogus. Een resource kan alleen uit een 
 
 **Vereiste rol:** De [vereiste rollen weer geven om resources toe te voegen aan een catalogus](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **catalogi** en open vervolgens de catalogus waaruit u resources wilt verwijderen.
 
@@ -109,7 +109,7 @@ Volg deze stappen om een gebruiker toe te wijzen aan de rol van de catalogus eig
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **catalogi** en open vervolgens de catalogus waaraan u beheerders wilt toevoegen.
 
@@ -127,7 +127,7 @@ U kunt de naam en beschrijving voor een catalogus bewerken. Gebruikers zien deze
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **catalogi** en open vervolgens de catalogus die u wilt bewerken.
 
@@ -145,7 +145,7 @@ U kunt een catalogus verwijderen, maar alleen als deze geen toegangs pakketten h
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **catalogi** en open vervolgens de catalogus die u wilt verwijderen.
 
@@ -155,7 +155,7 @@ U kunt een catalogus verwijderen, maar alleen als deze geen toegangs pakketten h
 
 ### <a name="deleting-a-catalog-programmatically"></a>Een catalogus programmatisch verwijderen
 
-U kunt ook een catalogus verwijderen met Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de API aanroepen om [een accessPackageCatalog te verwijderen](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
+U kunt ook een catalogus verwijderen met Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de API aanroepen om [een accessPackageCatalog te verwijderen](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Volgende stappen
 

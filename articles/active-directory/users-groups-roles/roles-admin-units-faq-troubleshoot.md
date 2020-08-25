@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db710385448ed3cdd54e3cbe692ea8b610741af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b48bebe6aa5f9862d5f51fea257c4b7f3057639b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732239"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794467"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD-beheer eenheden: problemen oplossen en veelgestelde vragen
 
-Voor gedetailleerdere administratieve controle in Azure Active Directory (Azure AD) kunt u gebruikers toewijzen aan een Azure AD-rol met een bereik dat beperkt is tot een of meer administratieve eenheden (AUs). Zie [werken met beheer eenheden](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)voor voor beelden van Power shell-scripts voor algemene taken.
+Voor gedetailleerdere administratieve controle in Azure Active Directory (Azure AD) kunt u gebruikers toewijzen aan een Azure AD-rol met een bereik dat beperkt is tot een of meer administratieve eenheden (AUs). Zie [werken met beheer eenheden](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)voor voor beelden van Power shell-scripts voor algemene taken.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -67,11 +67,11 @@ Om een uitbrei ding van bevoegdheden te voor komen, kan een beheerder met een be
 
 **V: worden er administratieve eenheden ondersteund in Power shell en de Graph API?**
 
-**A:** Klikt. U vindt ondersteuning voor beheer eenheden in [Power shell-cmdlet-documentatie](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0-preview) en [voorbeeld scripts](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview). 
+**A:** Klikt. U vindt ondersteuning voor beheer eenheden in [Power shell-cmdlet-documentatie](/powershell/module/Azuread/?view=azureadps-2.0-preview) en [voorbeeld scripts](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview). 
 
-Zoek ondersteuning voor het [resource type administrativeUnit](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/administrativeunit) in Microsoft Graph.
+Zoek ondersteuning voor het [resource type administrativeUnit](/graph/api/resources/administrativeunit?view=graph-rest-beta) in Microsoft Graph.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Bereik beperken voor rollen met behulp van beheer eenheden](directory-administrative-units.md)
-- [Beheer eenheden beheren](roles-admin-units-manage.md)
+- [Beheereenheden beheren](roles-admin-units-manage.md)

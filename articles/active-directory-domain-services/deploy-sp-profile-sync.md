@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: f498111afaaeff935e1ea7d1d3400cfe05efda12
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: aa66f7150e5c3ac4560d7f97cb73b1effb8eec89
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722956"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749633"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services configureren voor de ondersteuning van synchronisatie van gebruikers profielen voor share Point server
 
@@ -71,7 +71,7 @@ Voer de volgende stappen uit op de virtuele machine met Azure AD DS Management:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Active Directory Domain Services machtigingen verlenen voor profiel synchronisatie in share Point server](/SharePoint/administration/user-profile-service-administration) voor meer informatie.
+Zie [synchronisatie van gebruikers profielen beheren in share Point server](/SharePoint/administration/manage-profile-synchronization)voor meer informatie.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

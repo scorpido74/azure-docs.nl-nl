@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "61450549"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Zelfstudie: Een aangepast gesimuleerd apparaat maken
@@ -64,7 +64,7 @@ Vul het formulier in met de volgende gegevens:
 | ------------------- | ---------------------------------------------------- |
 | Naam van apparaatmodel   | Koelkast                                         |
 | Modelbeschrijving   | Een koelkast met temperatuur- en vochtigheidssensoren |
-| Versie             | 1.0                                                  |
+| Versie             | 1,0                                                  |
 
 > [!NOTE]
 > De naam van het apparaatmodel moet uniek zijn.

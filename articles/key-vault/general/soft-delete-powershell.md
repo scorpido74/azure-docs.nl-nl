@@ -1,20 +1,20 @@
 ---
 title: 'Azure Key Vault: voorlopig verwijderen gebruiken met PowerShell'
-description: Gebruiksvoorbeelden van voorlopig verwijderen met PowerShell-codefragmenten
+description: Meer informatie over het gebruik van Azure PowerShell voor het gebruik van de functie voor het voorlopig verwijderen van Azure Key Vault waardoor sleutelkluizen en sleutelkluisobjecten kunnen worden hersteld.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 55e4bd20b6cc17a5cbad620d3a404d6ada41b81a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6ec784048d2c30d215fe046ccda39ef6f8a3daa5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136470"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585539"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>De Key Vault-functie voor voorlopig verwijderen gebruiken met PowerShell
 
