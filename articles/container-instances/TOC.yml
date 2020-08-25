@@ -41,7 +41,7 @@
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=container%20instance'
     - name: Resource Manager-sjablonen
       href: container-instances-samples-rm.md
 - name: Concepten

@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497576"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816232"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Veelgestelde vragen over Azure Red Hat open Shift
 
@@ -65,25 +65,9 @@ In azure Red Hat open Shift 4. x-clusters zijn er momenteel geen infrastructuur 
 
 In azure Red Hat open Shift 3,11-clusters zijn standaard infrastructuur knooppunten opgenomen.
 
-## <a name="upgrades"></a>Uitvoeren
+## <a name="how-do-i-handle-cluster-upgrades"></a>Cluster upgrades Hoe kan ik verwerken?
 
-###  <a name="what-is-the-general-upgrade-process"></a>Wat is het algemene upgrade proces?
-
-Patches worden automatisch toegepast op uw cluster. U hoeft geen actie te ondernemen voor het ontvangen van patch upgrades voor uw cluster.
-
-Het uitvoeren van een upgrade is een veilig proces dat kan worden uitgevoerd en die Cluster Services niet kan verstoren. Het gezamenlijke micro soft-Red Hat-team kan het upgrade proces activeren wanneer er nieuwe versies beschikbaar zijn of veelvoorkomende beveiligings lekken en bloot stellingen worden verstaan. Beschik bare updates worden getest in een faserings omgeving en vervolgens toegepast op productie clusters. Volg de aanbevolen procedures om ervoor te zorgen dat er mini maal geen uitval tijd is.
-
-Gepland onderhoud is niet voorgepland met de klant. Meldingen met betrekking tot onderhoud kunnen via e-mail worden verzonden.
-
-### <a name="what-is-the-azure-red-hat-openshift-maintenance-process"></a>Wat is het onderhouds proces van Azure Red Hat open Shift?
-
-Er zijn twee soorten onderhoud voor Azure Red Hat open Shift: upgrades en door de Cloud provider geïnitieerd onderhoud.
-- Upgrades omvatten software-upgrades en veelvoorkomende beveiligings lekken en bloot stellingen.
-- Door de Cloud provider geïnitieerd onderhoud omvat netwerk-, opslag-en regionale storingen. Het onderhoud is afhankelijk van de Cloud provider en is afhankelijk van door de provider geleverde updates.
-
-### <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Hoe zit het met nood en geplande onderhouds Vensters?
-
-Er wordt geen onderscheid gemaakt tussen de twee soorten onderhoud. Onze teams zijn beschikbaar 24/7/365 en gebruiken geen traditionele, geplande ' out-of-uren ' onderhouds Vensters.
+Raadpleeg de [hand leiding voor de ondersteunings levenscyclus](support-lifecycle.md)voor informatie over upgrades, onderhoud en ondersteunde versies.
 
 ### <a name="how-will-the-host-operating-system-and-openshift-software-be-updated"></a>Hoe worden het besturings systeem van de host en open Shift-software bijgewerkt?
 
@@ -157,7 +141,7 @@ Klanten en afzonderlijke project beheerders kunnen meerdere naam ruimte netwerke
 
 ### <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Ik probeer te koppelen aan een virtueel netwerk in een ander abonnement, maar kan geen VNet CIDR-fout ophalen.
 
-Zorg er in het abonnement met het virtuele netwerk voor dat u `Microsoft.ContainerService` de provider registreert met de volgende opdracht:`az provider register -n Microsoft.ContainerService --wait`
+Zorg er in het abonnement met het virtuele netwerk voor dat u `Microsoft.ContainerService` de provider registreert met de volgende opdracht: `az provider register -n Microsoft.ContainerService --wait`
 
 ### <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Kunnen we IP-bereiken voor implementatie op het privé-VNet opgeven, waardoor er geen conflict is met andere bedrijfs VNets zodra het peerend is?
 
