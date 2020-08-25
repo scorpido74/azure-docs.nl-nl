@@ -3,12 +3,12 @@ title: Back-ups maken van Windows-machines met behulp van de MARS-agent
 description: Gebruik de Microsoft Azure Recovery Services (MARS)-agent om een back-up te maken van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 381df40dfe4149b2f43dc22bb2186ec1f17b0515
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538629"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825883"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Back-ups maken van Windows Server-bestanden en-mappen naar Azure
 
@@ -127,7 +127,7 @@ Netwerk beperking inschakelen:
     ![Netwerk beperking instellen voor back-upbewerkingen](./media/backup-configure-vault/throttling-dialog.png)
 1. Geef de toegestane band breedte op tijdens werk uren en niet-werk uren. Bandbreedte waarden beginnen bij 512 kbps en gaan tot 1.023 MBps. Selecteer vervolgens **OK**.
 
-## <a name="run-an-on-demand-backup"></a>Een back-up op aanvraag uitvoeren
+## <a name="run-an-on-demand-backup"></a>Een on-demand back-up uitvoeren
 
 1. Selecteer **Nu back-up maken**in de Mars-agent.
 

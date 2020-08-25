@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873633"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827423"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>De werk ruimte achter een firewall gebruiken voor Azure Machine Learning
 
@@ -57,6 +57,7 @@ De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodi
 | **mcr.microsoft.com** | Micro soft Container Registry voor base docker-installatie kopieën |
 | **your-acr-server-name.azurecr.io** | Alleen nodig als uw Azure Container Registry zich achter het virtuele netwerk bevindt. In deze configuratie wordt een persoonlijke koppeling vanuit de micro soft-omgeving gemaakt naar het ACR-exemplaar in uw abonnement. Gebruik de ACR-server naam voor uw Azure Machine Learning-werk ruimte. |
 | **\*. notebooks.azure.net** | Vereist door de notitie blokken in Azure Machine Learning Studio. |
+| **graph.windows.net** | Vereist voor notebooks |
 
 ## <a name="python-hosts"></a>Python-hosts
 
@@ -78,6 +79,15 @@ De hosts in deze sectie worden gebruikt voor het installeren van R-pakketten. Ze
 | **Hostnaam** | **Doel** |
 | ---- | ---- |
 | **cloud.r-project.org** | Wordt gebruikt bij het installeren van KRANs pakketten. |
+
+## <a name="azure-government-region"></a>Azure Government regio
+
+Vereiste Url's voor de Azure Government regio's.
+
+| **Hostnaam** | **Doel** |
+| ---- | ---- |
+| **usgovarizona.api.ml.azure.us** | De regio VS-Arizona |
+| **usgovvirginia.api.ml.azure.us** | De regio vs-Virginia |
 
 ## <a name="next-steps"></a>Volgende stappen
 

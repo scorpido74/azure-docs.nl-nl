@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over selectieve back-ups en herst
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: dd4691f6248099bdc4fa713c84d396adac6011fa
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757435"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824743"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Back-up en herstel van selectieve schijven voor virtuele Azure-machines
 
@@ -190,7 +190,7 @@ Wanneer u deze opdrachten uitvoert, ziet u `"diskExclusionProperties": null` .
 
 ## <a name="using-powershell"></a>PowerShell gebruiken
 
-Zorg ervoor dat u Azure versie 3.7.0 of hoger gebruikt.
+Zorg ervoor dat u Azure PowerShell versie 3.7.0 of hoger gebruikt.
 
 ### <a name="enable-backup-with-powershell"></a>Back-up inschakelen met Power shell
 
@@ -277,7 +277,7 @@ Selectief schijf herstel is een extra functionaliteit die u krijgt wanneer u de 
 - Het terugzetten van selectieve schijven wordt alleen ondersteund voor herstel punten die zijn gemaakt nadat de functie schijf uitsluiting is ingeschakeld.
 - Back-ups met de instelling voor het uitsluiten van schijven bieden alleen ondersteuning **voor** de optie **schijf herstellen** . **VM herstellen** of **vervangen bestaande** herstel opties worden in dit geval niet ondersteund.
 
-![De optie voor het herstellen van de VM en het vervangen ervan zijn niet beschikbaar tijdens de herstel bewerking](./media/selective-disk-backup-restore/options-not-available.png)
+![De optie voor het herstellen van de VM en vervangen van bestaande zijn niet beschikbaar tijdens de herstel bewerking](./media/selective-disk-backup-restore/options-not-available.png)
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -293,5 +293,5 @@ De kosten voor het **beveiligde exemplaar (PI)** worden alleen berekend voor de 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ondersteuningsmatrix voor back-up van Azure-VM](backup-support-matrix-iaas.md)
+- [Ondersteuningsmatrix voor back-ups van virtuele Azure-machines](backup-support-matrix-iaas.md)
 - [Veelgestelde vragen: back-ups maken van virtuele Azure-machines](backup-azure-vm-backup-faq.md)

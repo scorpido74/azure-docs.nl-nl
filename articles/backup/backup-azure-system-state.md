@@ -3,12 +3,12 @@ title: Back-up van Windows-systeem status maken in azure
 description: Meer informatie over het maken van een back-up van de systeem status van Windows Server-computers naar Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263041"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824459"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Back-up van Windows-systeem status maken in azure
 
@@ -98,7 +98,7 @@ Nu u een kluis hebt gemaakt, configureert u deze voor het maken van een back-up 
 ## <a name="install-and-register-the-agent"></a>De agent installeren en registreren
 
 > [!NOTE]
-> Het maken van back-ups via Azure Portal is nog niet beschikbaar. Gebruik de Microsoft Azure Recovery Services-agent om een back-up te maken van de systeem status van Windows Server.
+> Het inschakelen van back-ups via de Azure Portal is niet beschikbaar. Gebruik de Microsoft Azure Recovery Services-agent om een back-up te maken van de systeem status van Windows Server.
 >
 
 1. Zoek en dubbelklik op **MARSagentinstaller.exe** in de map Downloads (of een andere locatie waar het bestand is opgeslagen).
@@ -116,7 +116,7 @@ Nu u een kluis hebt gemaakt, configureert u deze voor het maken van een back-up 
    * De wachtwoordzin voor de versleuteling op een veilige locatie opslaan.
 
      > [!NOTE]
-     > Als u de wachtwoordzin kwijtraakt of vergeet, kan Microsoft u niet helpen om de back-upgegevens te herstellen. Sla het bestand daarom op een veilige locatie op. Het is verplicht om een back-up te herstellen.
+     > Als u de wachtwoordzin kwijtraakt of vergeet, kan micro soft u niet helpen bij het herstellen van de back-upgegevens. Sla het bestand daarom op een veilige locatie op. Het is vereist om een back-up te herstellen.
      >
      >
 
@@ -132,7 +132,7 @@ De eerste back-up bevat twee taken:
 Gebruik de Microsoft Azure Recovery Services-agent om de eerste back-up uit te voeren.
 
 > [!NOTE]
-> U kunt back-ups maken van de systeem status op Windows Server 2008 R2 via Windows Server 2016. Het maken van een back-up van de systeem status wordt niet ondersteund op client-Sku's. De systeem status wordt niet weer gegeven als een optie voor Windows-clients of Windows Server 2008 SP2-machines.
+> U kunt back-ups maken van de systeem status op Windows Server 2008 R2 via Windows Server 2016. Het maken van een back-up van de systeem status wordt niet ondersteund op client-Sku's. Systeem status wordt niet weer gegeven als een optie voor Windows-clients of Windows Server 2008 SP2-machines.
 >
 >
 

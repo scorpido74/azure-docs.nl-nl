@@ -3,12 +3,12 @@ title: Versleuteling van back-upgegevens met door de klant beheerde sleutels
 description: Meer informatie over hoe u met Azure Backup uw back-upgegevens kunt versleutelen met behulp van door de klant beheerde sleutels (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2c83350acad59e72cfabc8e40069aab46d785b63
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 9e299095709e07d3c73c8e8c847042cc51f549dd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763113"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827338"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Versleuteling van back-upgegevens met door de klant beheerde sleutels
 
@@ -39,7 +39,7 @@ In dit artikel komen de volgende onderwerpen aan bod:
 
 - Deze functie is momenteel alleen te configureren vanaf het Azure Portal.
 
-Als u uw Recovery Services kluis niet hebt gemaakt en geconfigureerd, kunt u [hier lezen hoe](backup-create-rs-vault.md)u dit doet.
+Als u uw Recovery Services kluis nog niet hebt gemaakt en geconfigureerd, kunt u [hier lezen hoe](backup-create-rs-vault.md)u dit doet.
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Een kluis configureren om te versleutelen met door de klant beheerde sleutels
 
@@ -60,7 +60,7 @@ Het is nood zakelijk dat al deze stappen in de bovenstaande volg orde worden gev
 Azure Backup maakt gebruik van door het systeem toegewezen beheerde identiteit om de Recovery Services kluis te verifiëren voor toegang tot versleutelings sleutels die zijn opgeslagen in de Azure Key Vault. Volg de onderstaande stappen om de beheerde identiteit voor uw Recovery Services kluis in te scha kelen.
 
 >[!NOTE]
->Wanneer de beheerde identiteit is ingeschakeld, mag deze niet worden uitgeschakeld (zelfs tijdelijk). Het uitschakelen van de beheerde identiteit kan leiden tot inconsistent gedrag.
+>Wanneer de beheerde identiteit is ingeschakeld, mag deze **niet** worden uitgeschakeld (zelfs tijdelijk). Het uitschakelen van de beheerde identiteit kan leiden tot inconsistent gedrag.
 
 1. Ga naar uw Recovery Services kluis-> **identiteit**
 
@@ -138,7 +138,7 @@ U kunt met behulp van de volgende stappen ook de beveiliging van zacht verwijder
 > - Alle hierboven genoemde stappen zijn voltooid:
 >   - De beheerde identiteit van de Recovery Services kluis is ingeschakeld en de vereiste machtigingen zijn toegewezen
 >   - De Azure Key Vault heeft het voorlopig verwijderen en leegmaken van de beveiliging ingeschakeld
-> - De Recovery Services kluis waarvoor u CMK-versleuteling wilt inschakelen, heeft geen items die worden beveiligd of geregistreerd
+> - De Recovery Services kluis waarvoor u CMK-versleuteling wilt inschakelen, heeft **geen** items die worden beveiligd of geregistreerd
 
 Zodra het bovenstaande is gewaarborgd, gaat u door met het selecteren van de versleutelings sleutel voor uw kluis.
 
@@ -240,7 +240,7 @@ Nee, CMK-versleuteling kan alleen worden ingeschakeld voor nieuwe kluizen. De kl
 
 ### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-enable-cmk-encryption-for-this-vault"></a>Ik heb geprobeerd een item te beveiligen voor mijn kluis, maar dit is mislukt en de kluis bevat nog steeds geen items die ermee zijn beveiligd. Kan ik CMK-versleuteling inschakelen voor deze kluis?
 
-Nee, de kluis mag geen pogingen hebben gehad om in het verleden items te beveiligen.
+Nee, de kluis mag geen pogingen hebben gedaan om de items in het verleden te beveiligen.
 
 ### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Ik heb een kluis die gebruikmaakt van CMK-versleuteling. Kan ik later teruggaan naar versleuteling met behulp van door het platform beheerde sleutels, zelfs als er back-upitems zijn die zijn beveiligd met de kluis?
 

@@ -5,20 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51804a9f98bfa17dcfbeb90a268b91b2d28dbbde
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086588"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827219"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-logboeken en metrische gegevens
 
 U kunt Azure Firewall bewaken met behulp van firewall-logboeken. U kunt ook activiteitenlogboeken gebruiken om bewerkingen in Azure Firewall-resources te controleren.
 
-Via de portal kunt u toegang verkrijgen tot sommige van deze logboeken. Logboeken kunnen worden verzonden naar [Azure Monitor-logboeken](../azure-monitor/insights/azure-networking-analytics.md), Storage en Event Hubs en kunnen worden geanalyseerd in Azure Monitor-logboeken of door verschillende hulpprogramma's zoals Excel en Power BI.
+Via de portal kunt u toegang verkrijgen tot sommige van deze logboeken. Logboeken kunnen worden verzonden naar [Azure monitor logboeken](../azure-monitor/insights/azure-networking-analytics.md), opslag en Event hubs en worden geanalyseerd in azure monitor Logboeken of door verschillende hulpprogram Ma's zoals Excel en Power bi.
 
 Metrische gegevens zijn licht gewicht en kunnen bijna realtime-scenario's ondersteunen, waardoor ze nuttig zijn voor waarschuwingen en snelle detectie van problemen.
 
@@ -111,21 +111,21 @@ De volgende metrische gegevens zijn beschikbaar voor Azure Firewall:
 
     Eenheid: percentage
 
-   Deze metriek heeft twee dimensies:
+   Deze metrische waarde heeft twee dimensies:
   - Status: mogelijke waarden zijn *in orde*, *gedegradeerd*, *beschadigd.*
   - Reden: geeft de reden aan van de bijbehorende status van de firewall. 
 
-     Als er een SNAT-poort wordt gebruikt > 95%, worden deze als uitgeput beschouwd en is de status 50% met het**cijfer = verslechterd** en reden =**SNAT-poort**. De firewall verwerkt verkeer en bestaande verbindingen worden niet beïnvloed. Nieuwe verbindingen mogen echter niet af en toe tot stand worden gebracht.
+     Als er een SNAT-poort wordt gebruikt > 95%, worden deze als uitgeput beschouwd en is de status 50% met het**cijfer = verslechterd** en reden =**SNAT-poort**. De firewall blijft verkeer verwerken en bestaande verbindingen worden niet beïnvloed. Het is echter mogelijk dat het niet altijd lukt om nieuwe verbindingen tot stand te brengen.
 
      Als er SNAT-poorten worden gebruikt < 95%, wordt de firewall als gezond beschouwd en wordt de status weer gegeven als 100%.
 
-     Als er geen gebruik wordt gerapporteerd van de SNAT-poorten, wordt de status weer gegeven als 0%. 
+     Als er geen gebruik van SNAT-poorten wordt gerapporteerd, wordt de status weergegeven als 0%. 
 
 - **SNAT-poort gebruik** : het percentage SNAT-poorten dat door de firewall is gebruikt.
 
     Eenheid: percentage
 
-   Wanneer u meer open bare IP-adressen aan uw firewall toevoegt, zijn er meer SNAT-poorten beschikbaar, waardoor het gebruik van de SNAT-poorten wordt verminderd. Daarnaast worden er ook extra SNAT-poorten beschikbaar wanneer de firewall wordt geschaald om verschillende redenen (bijvoorbeeld CPU of door Voer). Een bepaald percentage van het gebruik van de SNAT-poorten kan dan ook worden vervolgd zonder dat u open bare IP-adressen toevoegt, alleen omdat de service is uitgeschaald. U kunt het aantal open bare IP-adressen dat beschikbaar is voor het verg Roten van de beschik bare poorten op uw firewall, direct beheren. Maar u kunt het schalen van de firewall niet rechtstreeks beheren. Op dit moment worden er alleen SNAT-poorten toegevoegd voor de eerste vijf open bare IP-adressen.   
+   Wanneer u meer openbare IP-adressen aan uw firewall toevoegt, zijn er meer SNAT-poorten beschikbaar, waardoor het gebruik van de SNAT-poorten afneemt. Als de firewall om wat voor reden dan ook wordt uitgeschaald (bijvoorbeeld CPU of doorvoer), komen er ook extra SNAT-poorten beschikbaar. Een bepaald percentage van het gebruik van de SNAT-poorten kan dan ook worden vervolgd zonder dat u open bare IP-adressen toevoegt, alleen omdat de service is uitgeschaald. U kunt het aantal open bare IP-adressen dat beschikbaar is voor het verg Roten van de beschik bare poorten op uw firewall, direct beheren. Maar u kunt het schalen van de firewall niet rechtstreeks beheren.
 
 
 ## <a name="next-steps"></a>Volgende stappen

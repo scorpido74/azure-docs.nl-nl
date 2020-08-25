@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het maken en configureren va
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 309d87da11c6a015a9e4db8429587e498d55882c
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 048b0e3fae776be5577948f91d84bb2be7fa2d59
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757741"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827355"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Een Recovery Services kluis maken en configureren
 
@@ -37,7 +37,7 @@ Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die
    - Meer informatie over [geo](../storage/common/storage-redundancy.md) en [lokale](../storage/common/storage-redundancy.md) redundantie.
 
 >[!NOTE]
->De opslag replicatie-instellingen voor de kluis zijn niet relevant voor Azure file share backup, omdat de huidige oplossing moment opname is en er geen gegevens worden overgebracht naar de kluis. Moment opnamen worden opgeslagen in hetzelfde opslag account als de back-up van de bestands share.
+>De opslag replicatie-instellingen voor de kluis zijn niet relevant voor Azure file share-back-up, omdat de huidige oplossing moment opname is en er geen gegevens naar de kluis worden overgebracht. Moment opnamen worden opgeslagen in hetzelfde opslag account als de back-up van de bestands share.
 
 ## <a name="set-cross-region-restore"></a>Meerdere regio's herstellen instellen
 

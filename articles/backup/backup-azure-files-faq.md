@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382709"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824726"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
@@ -36,7 +36,7 @@ Wanneer u een back-up wilt maken, selecteert u een opslag account om bestands sh
 
 ### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>Waarom kan ik de kluis niet wijzigen om een back-up voor de bestands share te configureren?
 
-Als het opslag account al is geregistreerd bij een kluis of andere bestands shares in het opslag account worden beveiligd met een kluis, hebt u geen optie om het te wijzigen omdat alle bestands shares in een opslag account alleen kunnen worden beveiligd door dezelfde kluis. Als u de kluis wilt wijzigen, moet u de [beveiliging voor alle bestands shares in het opslag account](manage-afs-backup.md#stop-protection-on-a-file-share) van de verbonden kluis stoppen, de registratie van het opslag account [ongedaan maken](manage-afs-backup.md#unregister-a-storage-account) en vervolgens een andere kluis voor beveiliging kiezen.
+Als het opslag account al is geregistreerd bij een kluis of andere bestands shares in het opslag account worden beveiligd met behulp van een kluis, hebt u geen optie om het te wijzigen. Alle bestands shares in een opslag account kunnen alleen worden beveiligd door dezelfde kluis. Als u de kluis wilt wijzigen, moet u de [beveiliging stoppen voor alle bestands shares in het opslag account](manage-afs-backup.md#stop-protection-on-a-file-share) van de verbonden kluis, de registratie van het opslag account [ongedaan maken](manage-afs-backup.md#unregister-a-storage-account) en vervolgens een andere kluis voor beveiliging kiezen.
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Kan ik de kluis wijzigen waarnaar ik een back-up van mijn bestands shares Maak?
 

@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: add54955def7df31f8e1688f56382067343616fe
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763385"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824267"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problemen met de systeem status back-up oplossen
 
@@ -37,7 +37,7 @@ U wordt aangeraden de volgende validatie stappen uit te voeren voordat u begint 
 
 ### <a name="limitation"></a>Beperking
 
-- Het herstellen van bestanden naar andere hardware met behulp van systeemstatusherstel wordt niet aanbevolen door Microsoft
+- Herstellen naar verschillende hardware met systeem status herstel wordt niet aanbevolen door micro soft
 - Systeem status back-up ondersteunt momenteel ' on-premises ' Windows-servers. Deze functionaliteit is niet beschikbaar voor virtuele Azure-machines.
 
 ## <a name="prerequisites"></a>Vereisten

@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96ff7fedf0574d5eb1b7bb540ccb425f4d7e9ade
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757197"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827389"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -214,7 +214,7 @@ Ja. De gegevens in Azure zijn in rust versleuteld.
 - Voor on-premises back-ups wordt versleuteling in rust geboden met de wachtwoordzin die u opgeeft wanneer u een back-up maakt in Azure.
 - Voot Azure-VM’s worden gegevens in rust versleuteld met behulp van SSE (Storage Service Encryption).
 
-De back-upgegevens worden nooit door Microsoft ontsleuteld.
+Micro soft ontsleutelt de back-upgegevens op geen enkel moment.
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Wat is de minimale lengte van de versleutelings sleutel die wordt gebruikt om back-upgegevens te versleutelen?
 
@@ -222,7 +222,7 @@ De versleutelings sleutel die wordt gebruikt door de Microsoft Azure Recovery Se
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Wat gebeurt er als ik de versleutelingssleutel kwijtraak? Kan ik de gegevens herstellen? Kan Microsoft de gegevens herstellen?
 
-De sleutel die wordt gebruikt om de back-upgegevens te versleutelen, is alleen beschikbaar op uw site. Microsoft bewaart geen kopie in Azure en heeft geen toegang tot de sleutel. Als u de sleutel kwijtraakt, kan Microsoft de back-upgegevens niet herstellen.
+De sleutel die wordt gebruikt om de back-upgegevens te versleutelen, is alleen beschikbaar op uw site. Micro soft onderhoudt geen kopie in Azure en heeft geen toegang tot de sleutel. Als u de sleutel kwijtraakt, kan Microsoft de back-upgegevens niet herstellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

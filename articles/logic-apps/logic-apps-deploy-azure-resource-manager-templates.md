@@ -3,22 +3,22 @@ title: Sjablonen voor logische app gebruiken
 description: Meer informatie over het implementeren van Azure Resource Manager sjablonen die zijn gemaakt voor Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d3ef4275e5b309bb499338fe90c0f527aeaeb71f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4fce5b191e0af6a69fe218c4ed7272f352c3bdd2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501505"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827491"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Resource Manager-sjablonen inzetten voor Azure Logic Apps
 
 Nadat u een Azure Resource Manager sjabloon voor uw logische app hebt gemaakt, kunt u uw sjabloon op de volgende manieren implementeren:
 
-* [Azure-portal](#portal)
+* [Azure Portal](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure-CLI](#cli)
@@ -119,13 +119,18 @@ Hier volgen de algemene stappen op hoog niveau voor het gebruik van Azure-pijp l
 
 ## <a name="authorize-oauth-connections"></a>OAuth-verbindingen autoriseren
 
-Na de implementatie werkt uw logische app end-to-end met geldige para meters. U moet echter nog steeds OAuth-verbindingen autoriseren om geldige toegangs tokens te genereren voor [het verifiëren van uw referenties](../active-directory/develop/authentication-vs-authorization.md). Hier volgen manieren waarop u OAuth-verbindingen kunt autoriseren:
+Na de implementatie werkt uw logische app end-to-end met geldige para meters. U moet echter nog steeds geautoriseerde OAuth-verbindingen goed keuren of gebruiken om geldige toegangs tokens te genereren voor [het verifiëren van uw referenties](../active-directory/develop/authentication-vs-authorization.md). Hier volgen enkele suggesties:
 
-* Voor automatische implementaties kunt u een script gebruiken dat toestemming geeft voor elke OAuth-verbinding. Hier volgt een voor beeld van een script in GitHub in het [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) -project.
+* Het vooraf autoriseren en delen van API-verbindings resources over Logic apps die zich in dezelfde regio bevinden. API-verbindingen bestaan onafhankelijk van Logic apps als Azure-resources. Hoewel Logic apps afhankelijkheden hebben van de API-verbindings resources, hebben de API-verbindings resources geen afhankelijkheden op Logic apps en blijven ze aanwezig nadat u de afhankelijke Logic apps hebt verwijderd. Logic apps kunnen ook API-verbindingen gebruiken die voor komen in andere resource groepen. De Logic app Designer biedt echter alleen ondersteuning voor het maken van API-verbindingen in dezelfde resource groep als uw logische apps.
 
-* Als u OAuth-verbindingen hand matig wilt autoriseren, opent u de logische app in de ontwerp functie voor logische apps, in de Azure Portal of in Visual Studio. Machtig de vereiste verbindingen in de ontwerp functie.
+  > [!NOTE]
+  > Als u overweegt om API-verbindingen te delen, moet u ervoor zorgen dat uw oplossing [mogelijk problemen](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling)met de beperking kan verwerken. Beperking gebeurt op het verbindings niveau, waardoor het mogelijk is om de kans op problemen te beperken door dezelfde verbinding te gebruiken tussen meerdere Logic apps.
 
-Als u een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory (Azure AD) gebruikt om verbindingen te autoriseren, leert u hoe u [para meters voor de Service-Principal opgeeft in uw sjabloon voor logische apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
+* Tenzij uw scenario Services en systemen omvat waarvoor multi-factor Authentication is vereist, kunt u een Power shell-script gebruiken om toestemming te geven voor elke OAuth-verbinding door een doorlopende integratie-werk nemer uit te voeren als een normaal gebruikers account op een virtuele machine met actieve browser sessies met de autorisaties en toestemming die al zijn verstrekt. U kunt bijvoorbeeld het voorbeeld script dat wordt verschaft door het LogicAppConnectionAuth- [project in de Logic apps github opslag plaats](https://github.com/logicappsio/LogicAppConnectionAuth).
+
+* Machtig OAuth-verbindingen hand matig door uw logische app te openen in de ontwerp functie voor logische apps, hetzij in de Azure Portal of in Visual Studio.
+
+* Als u een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory (Azure AD) gebruikt om verbindingen te autoriseren, leert u hoe u [para meters voor de Service-Principal opgeeft in uw sjabloon voor logische apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections).
 
 ## <a name="next-steps"></a>Volgende stappen
 

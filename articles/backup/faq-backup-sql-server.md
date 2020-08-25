@@ -4,12 +4,12 @@ description: Vind antwoorden op veelgestelde vragen over het maken van back-ups 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762841"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827236"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -30,7 +30,7 @@ In sommige gevallen worden herstel back-ups door de Azure Backup-service geactiv
 - Als u ervoor kiest om de data base te overschrijven tijdens het herstellen, mislukt het volgende logboek/differentiële back-up en wordt in plaats daarvan een volledige back-up geactiveerd.
 - In gevallen waarin een volledige back-up is vereist voor het opnieuw instellen van de logboek ketens als gevolg van een wijziging in het database herstel model, wordt er automatisch een volledige activering uitgevoerd in de volgende planning.
 
-Automatisch herstellen als een mogelijkheid is standaard ingeschakeld voor alle gebruikers. Als u er echter voor kiest om dit te doen, voert u de onderstaande stappen uit:
+Automatisch herstellen als een mogelijkheid is standaard ingeschakeld voor alle gebruikers. Als u er echter voor kiest om het uit te kiezen, voert u de volgende stappen uit:
 
 - Op het SQL Server-exemplaar in de map *C:\Program Files\Azure workload Backup\bin* maakt of bewerkt u de **ExtensionSettingsOverrides.jsin** het bestand.
 - Stel *{"EnableAutoHealer": False}* in het **ExtensionSettingsOverrides.js**in.
@@ -56,7 +56,7 @@ De standaard waarde van DefaultBackupTasksThreshold is **20**.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Kan ik een volledige back-up van een secundaire replica uitvoeren?
 
-Volgens de beperkingen van SQL kunt u alleen volledige back-up kopiëren op de secundaire replica. Volledige back-up is echter niet toegestaan.
+Volgens de beperkingen van SQL kunt u alleen volledige back-up kopiëren op de secundaire replica. Volledige back-ups zijn echter niet toegestaan.
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>Kan ik beschikbaarheids groepen on-premises beveiligen?
 
@@ -92,7 +92,7 @@ Als u geen **back-up maakt met gegevens verwijderen**, zullen er geen toekomstig
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Als ik de naam van de data base Wijzig nadat deze is beveiligd, wat is dan het gedrag?
 
-Een hernoemde data base wordt behandeld als een nieuwe data base. De service behandelt deze situatie dus als de data base niet is gevonden en de back-ups mislukken.
+Een hernoemde data base wordt behandeld als een nieuwe data base. De service behandelt deze situatie dus als de data base niet is gevonden en de back-ups niet kunnen worden uitgevoerd.
 
 U kunt de data base selecteren, waarvan de naam nu wordt gewijzigd en er beveiliging op configureren. Als de automatische beveiliging is ingeschakeld voor het exemplaar, wordt de data base waarvan de naam is gewijzigd, automatisch gedetecteerd en beveiligd.
 

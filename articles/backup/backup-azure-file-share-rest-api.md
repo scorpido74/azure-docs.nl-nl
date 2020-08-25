@@ -3,12 +3,12 @@ title: Back-ups maken van Azure-bestands shares met REST API
 description: Meer informatie over het gebruik van REST API voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: b3d83104b699740c43b0c6506c00694c2b2ac063
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757129"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824862"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Back-up maken van Azure-bestands share met Azure Backup via rest API
 
@@ -175,7 +175,7 @@ Stel de variabelen voor de URI als volgt in:
    In ons voor beeld is het *StorageContainer; Opslagpad Azure files; testvault2*
 
 >[!NOTE]
-> Neem altijd het naam kenmerk van het antwoord en vul dit op in deze aanvraag. GEEN vaste code of de indeling van de container naam maken. Als u deze code maakt of inschakelt, mislukt de API-aanroep als de indeling van de container naam in de toekomst wordt gewijzigd.
+> Neem altijd het naam kenmerk van het antwoord en vul dit op in deze aanvraag. U hoeft geen vaste code op te maken of de indeling van de container naam. Als u deze code maakt of inschakelt, mislukt de API-aanroep als de indeling van de container naam in de toekomst wordt gewijzigd.
 
 <br>
 
@@ -373,7 +373,7 @@ In ons voor beeld is de ID van de bestands share die u wilt beveiligen:
 U kunt ook verwijzen naar het **naam** kenmerk van de beveiligings container en de beveiligings reacties van items.
 
 >[!NOTE]
->Neem altijd het naam kenmerk van het antwoord en vul dit op in deze aanvraag. Zorg dat u geen vaste code maakt of de indeling van de naam van de beveiligde items wilt maken. Als u deze code maakt of inschakelt, mislukt de API-aanroep als de indeling van de container naam of de naam van het beveiligde item in de toekomst wordt gewijzigd.
+>Neem altijd het naam kenmerk van het antwoord en vul dit op in deze aanvraag. U hoeft geen vaste code in te stellen of de indeling van de naam van de beveiligde items te maken. Als u deze code maakt of inschakelt, mislukt de API-aanroep als de indeling van de container naam of de naam van het beveiligde item in de toekomst wordt gewijzigd.
 
 <br>
 

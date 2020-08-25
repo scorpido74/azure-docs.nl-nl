@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905586"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824947"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Query's uitvoeren op de Azure Digital Apparaatdubbels dubbele grafiek
 
@@ -187,7 +187,7 @@ Er kan een vertraging van Maxi maal tien seconden zijn voordat wijzigingen in uw
 
 Er zijn extra beperkingen voor het gebruik van `JOIN` tijdens de preview-versie.
 * Er worden geen subquery's ondersteund in de `FROM` instructie.
-* `OUTER JOIN`semantische waarden worden niet ondersteund, wat betekent dat als de relatie een positie van nul heeft, de hele rij wordt verwijderd uit de uitvoer resultaatset.
+* `OUTER JOIN` semantische waarden worden niet ondersteund, wat betekent dat als de relatie een positie van nul heeft, de hele rij wordt verwijderd uit de uitvoer resultaatset.
 * Tijdens de preview-periode is de diepte van de grafiek traverser beperkt tot vijf `JOIN` niveaus per query.
 * De bron voor `JOIN` bewerkingen is beperkt: de query moet de apparaatdubbels declareren waar de query wordt gestart.
 
@@ -222,7 +222,6 @@ Hieronder vindt u enkele tips voor het uitvoeren van query's met Azure Digital A
         AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
         ```
 * Eigenschaps namen en-waarden zijn hoofdletter gevoelig, dus let erop dat u de exacte namen gebruikt die in de modellen zijn gedefinieerd. Als de namen van eigenschappen verkeerd zijn gespeld of onjuist zijn, is de resultatenset leeg zonder dat er fouten worden geretourneerd.
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

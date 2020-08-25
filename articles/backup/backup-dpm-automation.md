@@ -3,12 +3,12 @@ title: Power shell gebruiken voor het maken van back-ups van DPM-workloads
 description: Meer informatie over het implementeren en beheren van Azure Backup voor Data Protection Manager (DPM) met behulp van Power shell
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 8a60d1c412a36c5c2a7ca264eda524b5d5649f1a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 1f77337c9b5b1dce73f39cff7090bb5d892c29cd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762737"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825967"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor Data Protection Manager (DPM)-servers
 
@@ -69,7 +69,7 @@ De volgende stappen leiden u door het maken van een Recovery Services kluis. Een
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. Geef het type opslag redundantie op dat moet worden gebruikt. u kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md) of [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md)gebruiken. In het volgende voor beeld ziet u de optie-BackupStorageRedundancy voor testVault is ingesteld op georedundant.
+4. Geef het type opslag redundantie op dat moet worden gebruikt. U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md) of [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md)gebruiken. In het volgende voor beeld ziet u de optie-BackupStorageRedundancy voor testVault is ingesteld op georedundant.
 
    > [!TIP]
    > Voor veel Azure Backup-cmdlets is het object Recovery Services-kluis als invoer vereist. Daarom is het handiger het object Backup Recovery Services-kluis in een variabele op te slaan.
@@ -220,7 +220,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 ```
 
 > [!IMPORTANT]
-> Behoud de wachtwoordzingegevens veilig en veilig zodra deze is ingesteld. Het is niet mogelijk om gegevens te herstellen vanuit Azure zonder deze wachtwoordzin.
+> Behoud de wachtwoordzingegevens veilig en veilig zodra deze is ingesteld. U kunt geen gegevens herstellen vanuit Azure zonder deze wachtwoordzin.
 >
 >
 
@@ -262,7 +262,7 @@ Elke DPM-agent kent de lijst met gegevens bronnen op de server waarop deze is ge
 3. Een lijst met alle gegevens bronnen op de server ophalen.
 4. Een of meer gegevens bronnen kiezen en toevoegen aan de beveiligings groep
 
-De lijst met servers waarop de DPM-agent is geïnstalleerd en die wordt beheerd door de DPM-server is verkregen met de cmdlet [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) . In dit voor beeld wordt gefilterd en wordt alleen PS met de naam *productionserver01* voor back-up geconfigureerd.
+De lijst met servers waarop de DPM-agent is geïnstalleerd en die wordt beheerd door de DPM-server is verkregen met de cmdlet [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) . In dit voor beeld filteren en configureert u alleen Power shell met de naam *productionserver01* voor back-up.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}

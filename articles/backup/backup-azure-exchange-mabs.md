@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van een Exchange-Ser
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 2e3e89d93ab35724a09138d48863badad6a41b71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 043122271bfa91b1cbaa490760da712cd1b867cc
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514115"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825032"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Een back-up maken van een Exchange-Server naar Azure met Azure Backup Server
 
@@ -61,7 +61,7 @@ Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de 
 9. Selecteer de Data Base voor **back-up kopiëren**en klik vervolgens op **volgende**.
 
    > [!NOTE]
-   > Als u geen volledige back-up voor ten minste één DAG kopie van een Data Base selecteert, worden logboeken niet afgekapt.
+   > Als u geen volledige back-up voor ten minste één DAG kopie van een Data Base selecteert, worden de logboeken niet afgekapt.
    >
    >
 10. Configureer de doel stellingen voor **back-up op korte termijn**en klik vervolgens op **volgende**.
