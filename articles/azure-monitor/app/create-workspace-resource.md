@@ -4,13 +4,13 @@ description: Meer informatie over de stappen die nodig zijn om de nieuwe Azure M
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/24/2020
+ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824984"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783838"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Application Insights resources op basis van een werk ruimte (preview)
 
@@ -27,7 +27,7 @@ Als u de nieuwe ervaring wilt testen, meldt u zich aan bij de [Azure Portal](htt
 
 Als u nog geen bestaande Log Analytics-werk ruimte hebt, [raadpleegt u de documentatie voor het maken van log Analytics werk ruimte](../learn/quick-create-workspace.md).
 
-Voor de open bare preview **-werk ruimte zijn op dit moment beperkt tot vs-West 2, VS-Oost en Zuid-Centraal vs.**
+**Op werk ruimte gebaseerde resources zijn momenteel beschikbaar in alle commerciële regio's en Azure Government**
 
 Zodra de resource is gemaakt, worden de bijbehorende werkruimte gegevens weer gegeven in het deel venster **overzicht** :
 
@@ -53,10 +53,10 @@ Voor het bewaken van toepassingen op basis van code installeert u gewoon de juis
 Raadpleeg de Language/Framework-specifieke documentatie voor gedetailleerde documentatie over het instellen van een Application Insights SDK voor bewaking op basis van code.
 
 - [ASP.NET](./asp-net.md)
-- [ASP.NET Core](./asp-net-core.md)
+- [ASP.NET Core ](./asp-net-core.md)
 - [Achtergrond taken & moderne console toepassingen (.NET/.NET core)](./worker-service.md)
 - [Klassieke console toepassingen (.NET)](./console.md) 
-- [Diagnostisch](./java-get-started.md?tabs=maven)
+- [Diagnostisch ](./java-get-started.md?tabs=maven)
 - [JavaScript](./javascript.md)
 - [Node.js](./nodejs.md)
 - [Python](./opencensus-python.md)
@@ -79,7 +79,7 @@ Als u toegang wilt krijgen tot de preview-Application Insights Azure CLI-opdrach
  az extension add -n application-insights
 ```
 
-Als u de opdracht niet uitvoert `az extension add` , wordt een fout bericht weer gegeven waarin staat:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Als u de opdracht niet uitvoert `az extension add` , wordt een fout bericht weer gegeven waarin staat: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 U kunt nu het volgende uitvoeren om uw Application Insights-resource te maken:
 
@@ -155,7 +155,7 @@ De `New-AzApplicationInsights` Power shell-opdracht biedt momenteel geen onderst
 }
 ```
 
-#### <a name="parameters-file"></a>Parameter bestand
+#### <a name="parameters-file"></a>Parameterbestand
 
 ```json
 {
@@ -184,6 +184,14 @@ De `New-AzApplicationInsights` Power shell-opdracht biedt momenteel geen onderst
 }
 
 ```
+
+## <a name="new-capabilities"></a>Nieuwe mogelijkheden
+
+Met Application Insights op basis van een werk ruimte kunt u profiteren van de nieuwste mogelijkheden van Azure Monitor, waaronder:
+
+* Door de [klant beheerde sleutels (CMK)](../platform/customer-managed-keys.md) bieden versleuteling op rest voor uw gegevens met versleutelings sleutels waartoe alleen u toegang hebt.
+* Met de [persoonlijke Azure-koppeling](../platform/private-link-security.md) kunt u Azure PaaS-services veilig koppelen aan uw virtuele netwerk met behulp van privé-eind punten.
+* [Met uw eigen opslag (BYOS) voor Profiler en snapshot debugger](./profiler-bring-your-own-storage.md) hebt u volledige controle over het beleid voor versleuteling op rest, het beheer beleid voor levens duur en netwerk toegang tot alle gegevens die zijn gekoppeld aan Application Insights Profiler en snapshot debugger. 
 
 ## <a name="modifying-the-associated-workspace"></a>De gekoppelde werk ruimte wijzigen
 

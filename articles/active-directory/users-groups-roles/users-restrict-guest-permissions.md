@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8cba89abd65844d238120726572481457f27cb
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706150"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798428"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Machtigingen voor gast toegang (preview) beperken in Azure Active Directory
 
@@ -54,7 +54,7 @@ Er zijn wijzigingen aangebracht in de bestaande Azure Portal-besturings elemente
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Bijwerken met de Microsoft Graph-API
 
-We hebben een nieuwe Microsoft Graph-API toegevoegd om gast machtigingen in uw Azure AD-organisatie te configureren. De volgende API-aanroepen kunnen worden uitgevoerd om een machtigings niveau toe te wijzen. De waarde voor guestUserRoleId die hier wordt gebruikt, is bedoeld ter illustratie van de instelling voor de meeste beperkte gast gebruikers. Zie [authorizationPolicy resource type](https://docs.microsoft.com/graph/api/resources/authorizationpolicy)voor meer informatie over het gebruik van de Microsoft Graph om gast machtigingen in te stellen.
+We hebben een nieuwe Microsoft Graph-API toegevoegd om gast machtigingen in uw Azure AD-organisatie te configureren. De volgende API-aanroepen kunnen worden uitgevoerd om een machtigings niveau toe te wijzen. De waarde voor guestUserRoleId die hier wordt gebruikt, is bedoeld ter illustratie van de instelling voor de meeste beperkte gast gebruikers. Zie [authorizationPolicy resource type](/graph/api/resources/authorizationpolicy)voor meer informatie over het gebruik van de Microsoft Graph om gast machtigingen in te stellen.
 
 ### <a name="configuring-for-the-first-time"></a>Voor de eerste keer configureren
 
@@ -168,5 +168,5 @@ Zijn er licentie vereisten voor deze functie? | Nee, er zijn geen nieuwe licenti
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Wat zijn de standaard gebruikers machtigingen in azure Active Directory?](../fundamentals/users-default-permissions.md)voor meer informatie over bestaande gast machtigingen in azure AD.
-- Zie [authorizationPolicy resource type](https://docs.microsoft.com/graph/api/resources/authorizationpolicy)voor een overzicht van de Microsoft Graph API-methoden voor het beperken van toegang tot gasten.
+- Zie [authorizationPolicy resource type](/graph/api/resources/authorizationpolicy)voor een overzicht van de Microsoft Graph API-methoden voor het beperken van toegang tot gasten.
 - Als u alle toegang voor een gebruiker wilt intrekken, raadpleegt u [gebruikers toegang intrekken in azure AD](users-revoke-access.md).

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f1b9e2af7cb6dd234e58218c6a33c01f321de947
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057935"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798513"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Wijs aangepaste beheerders rollen toe met behulp van de Microsoft Graph-API in Azure Active Directory 
 
@@ -49,7 +49,7 @@ Hoofdtekst
 }
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 201 Created
@@ -73,7 +73,7 @@ Hoofdtekst
 }
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 404 Not Found
@@ -96,7 +96,7 @@ Hoofdtekst
 }
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 201 Created
@@ -120,7 +120,7 @@ Hoofdtekst
 }
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 400 Bad Request
@@ -136,7 +136,7 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-Er is slechts een subset van ingebouwde rollen ingeschakeld voor het bereik van een administratieve eenheid. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles) voor de lijst met ingebouwde rollen die worden ondersteund via een administratieve eenheid.
+Er is slechts een subset van ingebouwde rollen ingeschakeld voor het bereik van een administratieve eenheid. Raadpleeg [deze documentatie](./roles-admin-units-assign-roles.md) voor de lijst met ingebouwde rollen die worden ondersteund via een administratieve eenheid.
 
 ## <a name="get-operations-on-roleassignment"></a>GET-bewerkingen op RoleAssignment
 
@@ -148,7 +148,7 @@ GET
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=principalId eq ‘<object-id-of-principal>’
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -178,7 +178,7 @@ GET
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -202,7 +202,7 @@ GET
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -223,7 +223,7 @@ GET
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=directoryScopeId eq '/d23998b1-8853-4c87-b95f-be97d6c6b610'
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -255,7 +255,7 @@ DELETE
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Reactie
+Antwoord
 ``` HTTP
 HTTP/1.1 204 No Content
 ```
@@ -268,7 +268,7 @@ DELETE
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 404 Not Found
@@ -282,7 +282,7 @@ DELETE
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-Reactie
+Antwoord
 
 ``` HTTP
 HTTP/1.1 400 Bad Request
@@ -304,6 +304,6 @@ We voor komen dat gebruikers hun eigen rol van globale beheerder kunnen verwijde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* U kunt graag delen met ons op het [forum van Azure AD-beheerders](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+* U kunt dit met ons delen op het forum voor [Azure AD-beheerders](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 * Zie [beheerders rollen toewijzen](directory-assign-admin-roles.md)voor meer informatie over functies en de toewijzing van beheerdersrol.
 * Zie voor standaard gebruikers machtigingen een [vergelijking van de standaard machtigingen voor gast-en gebruikers rechten](../fundamentals/users-default-permissions.md).

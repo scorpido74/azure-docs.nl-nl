@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 55f2ab7008644ac084782e448e8e761cd19ea37e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: bcc7ebd8d9a6e61425ba7cd980a400c3fe756492
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225781"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762331"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Verwijderactiviteit in Azure Data Factory
 
@@ -53,7 +53,7 @@ Hier volgen enkele aanbevelingen voor het gebruik van de activiteit verwijderen:
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
 -   [Google Cloud Storage](connector-google-cloud-storage.md)
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -64,8 +64,11 @@ Hier volgen enkele aanbevelingen voor het gebruik van de activiteit verwijderen:
             "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
-        "recursive": true/false,
-        "maxConcurrentConnections": <number>,
+        "storeSettings": {
+            "type": "<source type>",
+            "recursive": true/false,
+            "maxConcurrentConnections": <number>
+        },
         "enableLogging": true/false,
         "logStorageSettings": {
             "linkedServiceName": {
@@ -116,12 +119,12 @@ Er zijn twee locaties waar u de resultaten van de Delete-activiteit kunt zien en
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Voorbeeld logboek bestand van de activiteit verwijderen
 
-| Name | Categorie | Status | Fout |
+| Naam | Categorie | Status | Fout |
 |:--- |:--- |:--- |:--- |
-| test1/yyy.jsop | File | Verwijderd |  |
-| Test2/hello789.txt | File | Verwijderd |  |
-| Test2/Test3/hello000.txt | File | Verwijderd |  |
-| Test2/Test3/zzz.jsop | File | Verwijderd |  |
+| test1/yyy.jsop | Bestand | Verwijderd |  |
+| Test2/hello789.txt | Bestand | Verwijderd |  |
+| Test2/Test3/hello000.txt | Bestand | Verwijderd |  |
+| Test2/Test3/zzz.jsop | Bestand | Verwijderd |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Voor beelden van het gebruik van de activiteit verwijderen
 
@@ -133,7 +136,7 @@ Basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 Nu gebruikt u de activiteit verwijderen om map of bestanden te verwijderen met de combi natie van verschillende eigenschaps waarden uit de gegevensset en de activiteit verwijderen:
 
-| folderPath (uit gegevensset) | Bestands naam (van gegevensset) | recursief (vanuit de activiteit verwijderen) | Uitvoer |
+| folderPath | fileName | recursieve | Uitvoer |
 |:--- |:--- |:--- |:--- |
 | Hoofdmap/Folder_A_2 | NULL | Niet waar | Basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
 | Hoofdmap/Folder_A_2 | NULL | Waar | Basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
@@ -761,7 +764,7 @@ U kunt ook de sjabloon ophalen om bestanden van [hier](solution-template-move-fi
 
 -   Delete-activiteit biedt geen ondersteuning voor het verwijderen van een lijst met mappen die worden beschreven door een Joker teken.
 
--   Wanneer u bestands kenmerk filter: modifiedDatetimeStart en modifiedDatetimeEnd gebruikt om bestanden te selecteren die moeten worden verwijderd, moet u "bestands naam": "*" in gegevensset instellen.
+-   Wanneer u bestands kenmerk filter gebruikt in Delete-activiteit: modifiedDatetimeStart en modifiedDatetimeEnd om bestanden te selecteren die moeten worden verwijderd, moet u er ook voor zorgen dat u ' wildcardFileName ': ' * ' in Delete-activiteit hebt ingesteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

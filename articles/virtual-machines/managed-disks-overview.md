@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 03a7a1929e591216255c10f35d31c1a282a7e06a
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 72f68b35d171503bb07fc5e6f58a858ceea4c6cf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723279"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749691"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Inleiding tot beheerde Azure-schijven
 
@@ -30,37 +30,37 @@ Beheerde schijven zijn ontworpen voor een beschikbaarheid van 99,999%. Beheerde 
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Eenvoudige en schaalbare VM-implementatie
 
-Met beheerde schijven kunt u maximaal 50.000 VM-**schijven** van een type in een abonnement per regio maken, zodat u duizenden **VM's** kunt maken in één abonnement. Deze functie verhoogt ook de schaalbaarheid van [schaalsets voor virtuele machines](~/articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) omdat u maximaal 1.000 VM's in een schaalset voor virtuele machines kunt maken met behulp van een Marketplace-installatiekopie.
+Met beheerde schijven kunt u maximaal 50.000 VM-**schijven** van een type in een abonnement per regio maken, zodat u duizenden **VM's** kunt maken in één abonnement. Deze functie verhoogt ook de schaalbaarheid van [schaalsets voor virtuele machines](../virtual-machine-scale-sets/overview.md) omdat u maximaal 1.000 VM's in een schaalset voor virtuele machines kunt maken met behulp van een Marketplace-installatiekopie.
 
 ### <a name="integration-with-availability-sets"></a>Integratie met beschikbaarheidssets
 
-Beheerde schijven zijn geïntegreerd met beschikbaarheidssets om ervoor te zorgen dat de schijven van [VM's in een beschikbaarheidsset](~/articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) voldoende van elkaar zijn verwijderd, waardoor een SPOF (Single Point Of Failure) wordt voorkomen. Schijven worden automatisch in verschillende schaaleenheden voor opslag (stempels) geplaatst. Wanneer een hardware- of softwarefout optreedt in een stempel, worden alleen de VM-exemplaren met schijven op deze stempels beïnvloed. Stel bijvoorbeeld dat u een toepassing hebt die op vijf VM's wordt uitgevoerd en dat de VM's zich in een beschikbaarheidsset bevinden. De schijven voor deze VM's worden niet allemaal opgeslagen in dezelfde stempel, dus als de ene stempel uitvalt, worden de andere exemplaren van de toepassing nog steeds uitgevoerd.
+Beheerde schijven zijn geïntegreerd met beschikbaarheidssets om ervoor te zorgen dat de schijven van [VM's in een beschikbaarheidsset](windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) voldoende van elkaar zijn verwijderd, waardoor een SPOF (Single Point Of Failure) wordt voorkomen. Schijven worden automatisch in verschillende schaaleenheden voor opslag (stempels) geplaatst. Wanneer een hardware- of softwarefout optreedt in een stempel, worden alleen de VM-exemplaren met schijven op deze stempels beïnvloed. Stel bijvoorbeeld dat u een toepassing hebt die op vijf VM's wordt uitgevoerd en dat de VM's zich in een beschikbaarheidsset bevinden. De schijven voor deze VM's worden niet allemaal opgeslagen in dezelfde stempel, dus als de ene stempel uitvalt, worden de andere exemplaren van de toepassing nog steeds uitgevoerd.
 
 ### <a name="integration-with-availability-zones"></a>Integratie met beschikbaarheidszones
 
-Beheerde schijven ondersteunen [beschikbaarheidszones](~/articles/availability-zones/az-overview.md). Dit is een oplossing met hoge beschikbaarheid die uw toepassingen beschermt tegen datacenterfouten. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's. Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%.
+Beheerde schijven ondersteunen [beschikbaarheidszones](../availability-zones/az-overview.md). Dit is een oplossing met hoge beschikbaarheid die uw toepassingen beschermt tegen datacenterfouten. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's. Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%.
 
 ### <a name="azure-backup-support"></a>Ondersteuning voor Azure Backup
 
-[Azure Backup](~/articles/backup/backup-overview.md) kan ter bescherming tegen regionale noodgevallen worden gebruikt om een back-uptaak te maken met back-ups op basis van tijd en beleidsregels voor het bewaren van back-ups. Op die manier kunt u naar wens herstelbewerkingen voor VM's of beheerde schijven uitvoeren. Momenteel ondersteunt Azure Backup schijfgrootten tot 32 TiB (tebibytes). [Meer informatie](~/articles/backup/backup-support-matrix-iaas.md) over ondersteuning voor Azure VM-back-ups.
+[Azure Backup](../backup/backup-overview.md) kan ter bescherming tegen regionale noodgevallen worden gebruikt om een back-uptaak te maken met back-ups op basis van tijd en beleidsregels voor het bewaren van back-ups. Op die manier kunt u naar wens herstelbewerkingen voor VM's of beheerde schijven uitvoeren. Momenteel ondersteunt Azure Backup schijfgrootten tot 32 TiB (tebibytes). [Meer informatie](../backup/backup-support-matrix-iaas.md) over ondersteuning voor Azure VM-back-ups.
 
 ### <a name="granular-access-control"></a>Gedetailleerd toegangsbeheer
 
-U kunt [op rollen gebaseerd toegangsbeheer (Azure RBAC)](~/articles/role-based-access-control/overview.md) van Azure gebruiken om specifieke machtigingen voor een beheerde schijf aan een of meer gebruikers toe te wijzen. Beheerde schijven bieden verschillende bewerkingen, waaronder lezen, schrijven (maken/bijwerken), verwijderen en ophalen van een [SAS-URI (Shared Access Signature)](~/articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) voor de schijf. U kunt alleen toegang verlenen tot de bewerkingen die een persoon nodig heeft om de taak uit te voeren. Als u bijvoorbeeld niet wilt dat een persoon een beheerde schijf naar een opslagaccount kopieert, kunt u ervoor kiezen geen toegang te verlenen tot de exportbewerking voor die beheerde schijf. En als u niet wilt dat een gebruiker een SAS-URI gebruikt om een beheerde schijf te kopiëren, kunt u ervoor kiezen deze machtiging niet te verlenen aan de beheerde schijf.
+U kunt [op rollen gebaseerd toegangsbeheer (Azure RBAC)](../role-based-access-control/overview.md) van Azure gebruiken om specifieke machtigingen voor een beheerde schijf aan een of meer gebruikers toe te wijzen. Beheerde schijven bieden verschillende bewerkingen, waaronder lezen, schrijven (maken/bijwerken), verwijderen en ophalen van een [SAS-URI (Shared Access Signature)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) voor de schijf. U kunt alleen toegang verlenen tot de bewerkingen die een persoon nodig heeft om de taak uit te voeren. Als u bijvoorbeeld niet wilt dat een persoon een beheerde schijf naar een opslagaccount kopieert, kunt u ervoor kiezen geen toegang te verlenen tot de exportbewerking voor die beheerde schijf. En als u niet wilt dat een gebruiker een SAS-URI gebruikt om een beheerde schijf te kopiëren, kunt u ervoor kiezen deze machtiging niet te verlenen aan de beheerde schijf.
 
 ### <a name="upload-your-vhd"></a>Uw vhd uploaden
 
 Direct uploaden maakt het eenvoudig om uw vhd over te zetten naar een door Azure beheerde schijf. Voorheen moest u een complexer proces volgen dat de fasering van uw gegevens in een opslagaccount bevatte. Nu zijn er minder stappen. Het is nu eenvoudiger om on-premises VM's naar Azure te uploaden, te uploaden naar grote beheerde schijven en het back-up- en herstelproces is vereenvoudigd. Het vermindert ook de kosten omdat u gegevens rechtstreeks naar beheerde schijven kunt uploaden zonder ze aan VM's toe te voegen. U kunt direct uploaden gebruiken om vhd's met een grootte van maximaal 32 TiB te uploaden.
 
-Zie de [CLI](~/articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md)- of [PowerShell](~/articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)-artikelen voor meer informatie over het overdragen van uw vhd naar Azure.
+Zie de [CLI](linux/disks-upload-vhd-to-managed-disk-cli.md)- of [PowerShell](windows/disks-upload-vhd-to-managed-disk-powershell.md)-artikelen voor meer informatie over het overdragen van uw vhd naar Azure.
 
 ## <a name="security"></a>Beveiliging
 
 ### <a name="private-links"></a>Privékoppelingen
 
-Private Link-ondersteuning voor beheerde schijven is momenteel in preview en kan worden gebruikt om een beheerde interne schijf naar uw netwerk te importeren of exporteren. Met privékoppelingen kunt u een tijdsgebonden Shared Access Signature-URI (SAS) genereren voor niet-gekoppelde beheerde schijven en momentopnamen die u kunt gebruiken voor het exporteren van de gegevens naar een andere regio voor regionale expansie, herstel na noodgevallen en forensische analyse. U kunt ook de SAS-URI gebruiken om de VHD rechtstreeks naar een lege schijf van on-premises te uploaden. U kunt [Privékoppelingen](~/articles/private-link/private-link-overview.md) nu gebruiken om het exporteren en importeren van beheerde schijven te beperken zodat dit alleen kan worden uitgevoerd in uw virtuele Azure-netwerk. Met privékoppelingen kunt u ervoor zorgen dat uw gegevens alleen binnen het beveiligde Microsoft-backbone-netwerk worden verplaatst.
+Private Link-ondersteuning voor beheerde schijven is momenteel in preview en kan worden gebruikt om een beheerde interne schijf naar uw netwerk te importeren of exporteren. Met privékoppelingen kunt u een tijdsgebonden Shared Access Signature-URI (SAS) genereren voor niet-gekoppelde beheerde schijven en momentopnamen die u kunt gebruiken voor het exporteren van de gegevens naar een andere regio voor regionale expansie, herstel na noodgevallen en forensische analyse. U kunt ook de SAS-URI gebruiken om de VHD rechtstreeks naar een lege schijf van on-premises te uploaden. U kunt [Privékoppelingen](../private-link/private-link-overview.md) nu gebruiken om het exporteren en importeren van beheerde schijven te beperken zodat dit alleen kan worden uitgevoerd in uw virtuele Azure-netwerk. Met privékoppelingen kunt u ervoor zorgen dat uw gegevens alleen binnen het beveiligde Microsoft-backbone-netwerk worden verplaatst.
 
-Zie de artikelen over de [CLI](~/articles/virtual-machines/linux/disks-export-import-private-links-cli.md) of [Portal](~/articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md) voor meer informatie over het inschakelen van privékoppelingen voor het importeren of exporteren van een beheerde schijf.
+Zie de artikelen over de [CLI](linux/disks-export-import-private-links-cli.md) of [Portal](disks-enable-private-links-for-import-export-portal.md) voor meer informatie over het inschakelen van privékoppelingen voor het importeren of exporteren van een beheerde schijf.
 
 ### <a name="encryption"></a>Versleuteling
 
@@ -70,12 +70,12 @@ Beheerde schijven bieden twee verschillende soorten versleuteling. De eerste is 
 
 Met versleuteling aan serverzijde kunt u inactieve gegevens versleutelen en kunt u uw gegevens zodanig beschermen dat wordt voldaan aan de beveiligings- en nalevingsverplichtingen van de organisatie. SSE is standaard ingeschakeld voor alle beheerde schijven, momentopnamen en installatiekopieën in alle regio's waar beheerde schijven beschikbaar zijn. (Tijdelijke schijven worden daarentegen niet versleuteld door versleuteling aan serverzijde tenzij u versleuteling inschakelt op de host; zie [Schijfrollen: tijdelijke schijven](#temporary-disk)).
 
-U kunt Azure toestaan uw sleutels voor u te beheren (dit zijn door het platform beheerde sleutels) of u kunt de sleutels zelf beheren (door de klant beheerde sleutels). Lees het artikel [Versleuteling aan serverzijde van Azure Disk Storage](~/articles/virtual-machines/windows/disk-encryption.md) voor meer informatie.
+U kunt Azure toestaan uw sleutels voor u te beheren (dit zijn door het platform beheerde sleutels) of u kunt de sleutels zelf beheren (door de klant beheerde sleutels). Lees het artikel [Versleuteling aan serverzijde van Azure Disk Storage](windows/disk-encryption.md) voor meer informatie.
 
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Met Azure Disk Encryption kunt u het besturingssysteem en de gegevensschijven versleutelen die worden gebruikt door een virtuele IaaS-machine. Deze versleuteling omvat beheerde schijven. Voor Windows worden de stations versleuteld met behulp van de standaard BitLocker-versleutelingstechnologie. Voor Linux worden de schijven versleuteld met behulp van de DM-Crypt-technologie. Het versleutelingsproces is geïntegreerd met Azure Key Vault zodat u de schijfversleutelingssleutels kunt controleren en beheren. Zie [Azure Disk Encryption voor virtuele Linux-machines](~/articles/virtual-machines/linux/disk-encryption-overview.md) of [Azure Disk Encryption voor virtuele Windows-machines](~/articles/virtual-machines/windows/disk-encryption-overview.md) voor meer informatie.
+Met Azure Disk Encryption kunt u het besturingssysteem en de gegevensschijven versleutelen die worden gebruikt door een virtuele IaaS-machine. Deze versleuteling omvat beheerde schijven. Voor Windows worden de stations versleuteld met behulp van de standaard BitLocker-versleutelingstechnologie. Voor Linux worden de schijven versleuteld met behulp van de DM-Crypt-technologie. Het versleutelingsproces is geïntegreerd met Azure Key Vault zodat u de schijfversleutelingssleutels kunt controleren en beheren. Zie [Azure Disk Encryption voor virtuele Linux-machines](linux/disk-encryption-overview.md) of [Azure Disk Encryption voor virtuele Windows-machines](windows/disk-encryption-overview.md) voor meer informatie.
 
 ## <a name="disk-roles"></a>Schijfrollen
 
@@ -95,7 +95,7 @@ Deze gegevensschijf heeft een maximale capaciteit van 2.048 GiB.
 
 ### <a name="temporary-disk"></a>Tijdelijke schijf
 
-De meeste Vm's bevatten een tijdelijke schijf, die geen beheerde schijf is. De tijdelijke schijf biedt kortetermijnbeveiliging voor toepassingen en processen en is bedoeld om alleen gegevens op te slaan, zoals pagina-of Wissel bestanden. Gegevens op de tijdelijke schijf kunnen verloren gaan tijdens een [onderhoudsgebeurtenis](~/articles/virtual-machines/windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime) of wanneer u een [virtuele machine opnieuw implementeert](~/articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Tijdens een geslaagde standaard herstart van de virtuele machine blijven de gegevens op de tijdelijke schijf behouden. Voor meer informatie over virtuele machines zonder tijdelijke schijven raadpleegt u [Azure VM-grootten met geen lokale tijdelijke schijf](~/articles/virtual-machines/azure-vms-no-temp-disk.md).
+De meeste Vm's bevatten een tijdelijke schijf, die geen beheerde schijf is. De tijdelijke schijf biedt kortetermijnbeveiliging voor toepassingen en processen en is bedoeld om alleen gegevens op te slaan, zoals pagina-of Wissel bestanden. Gegevens op de tijdelijke schijf kunnen verloren gaan tijdens een [onderhoudsgebeurtenis](windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime) of wanneer u een [virtuele machine opnieuw implementeert](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Tijdens een geslaagde standaard herstart van de virtuele machine blijven de gegevens op de tijdelijke schijf behouden. Voor meer informatie over virtuele machines zonder tijdelijke schijven raadpleegt u [Azure VM-grootten met geen lokale tijdelijke schijf](azure-vms-no-temp-disk.md).
 
 Op virtuele machines van Azure Linux is de tijdelijke schijf doorgaans /dev/sdb en op virtuele Windows-machines is de tijdelijke schijf standaard D:. De tijdelijke schijf wordt niet versleuteld door versleuteling aan serverzijde tenzij u versleuteling inschakelt op de host.
 
@@ -107,8 +107,8 @@ Momentopnamen worden gefactureerd op basis van de gebruikte grootte. Als u bijvo
 
 Raadpleeg de volgende bronnen voor meer informatie over het maken van momentopnamen voor beheerde schijven:
 
-* [Een momentopname van een beheerde schijf maken in Windows](~/articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Een momentopname van een beheerde schijf maken in Linux](~/articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+- [Een momentopname van een beheerde schijf maken in Windows](windows/snapshot-copy-managed-disk.md)
+- [Een momentopname van een beheerde schijf maken in Linux](linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>Installatiekopieën
 
@@ -116,8 +116,8 @@ Beheerde schijven bieden ook ondersteuning voor het maken van een beheerde aange
 
 Zie de volgende artikelen voor meer informatie over het maken van installatiekopieën:
 
-* [Een beheerde installatiekopie van een gegeneraliseerde VM vastleggen in Azure](~/articles/virtual-machines/windows/capture-image-resource.md)
-* [Een virtuele Linux-machine generaliseren en vastleggen met de Azure CLI](~/articles/virtual-machines/linux/capture-image.md)
+- [Een beheerde installatiekopie van een gegeneraliseerde VM vastleggen in Azure](windows/capture-image-resource.md)
+- [Een virtuele Linux-machine generaliseren en vastleggen met de Azure CLI](linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Installatiekopieën versus momentopnamen
 
@@ -141,7 +141,7 @@ Een voorbeeld van deze beperkingen: er wordt voorkomen dat een Standard_DS1v1 VM
 
 Azure maakt gebruik van een netwerkkanaal met prioriteit voor schijfverkeer, dat de prioriteit krijgt boven een ander netwerkverkeer met een lage prioriteit. Op die manier kunnen schijven hun verwachte prestaties behouden in het geval van netwerkconflicten. Op dezelfde manier worden resourceconflicten en andere problemen door Azure Storage op de achtergrond verwerkt met automatische taakverdeling. Azure Storage wijst de vereiste bronnen toe wanneer u een schijf maakt en past proactieve en reactieve verdeling van resources toe om het verkeersniveau af te handelen. Zo zorgt u ervoor dat schijven hun verwachte IOPS- en doorvoerdoelen kunnen behouden. U kunt de metrische gegevens op het niveau van de virtuele machine en op schijfniveau gebruiken om de prestatie- en configuratiemeldingen naar behoefte bij te houden.
 
-Raadpleeg ons artikel [Ontwerp voor hoge prestaties](~/articles/virtual-machines/windows/premium-storage-performance.md) voor meer informatie over de aanbevolen procedures voor het optimaliseren van VM- en schijfconfiguraties, zodat u de gewenste prestaties kunt garanderen
+Raadpleeg ons artikel [Ontwerp voor hoge prestaties](premium-storage-performance.md) voor meer informatie over de aanbevolen procedures voor het optimaliseren van VM- en schijfconfiguraties, zodat u de gewenste prestaties kunt garanderen
 
 ## <a name="next-steps"></a>Volgende stappen
 

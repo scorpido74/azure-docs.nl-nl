@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: 0499d52a6fe3da7349d31748ca3b5add16369571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 1e66774d4239bdad6c8af426a28af6081bb0da3c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137651"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782172"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Uitmuntende beslissings structuur module met twee klassen
 
@@ -22,9 +22,11 @@ In dit artikel wordt een module in Azure Machine Learning Designer (preview) bes
 
 Gebruik deze module om een machine learning model te maken dat is gebaseerd op het boosted Decision Trees-algoritme. 
 
-Een versterkte beslissings structuur is een ensemble leer methode waarbij de tweede structuur de fouten van de eerste structuur corrigeert, de derde structuur corrigeert voor de fouten van de eerste en tweede bomen, enzovoort.  Voor spellingen zijn gebaseerd op de hele ensemble van structuren, samen met de voor spelling.
+Een versterkte beslissings structuur is een ensemble leer methode waarbij de tweede structuur de fouten van de eerste structuur corrigeert, de derde structuur corrigeert voor de fouten van de eerste en tweede bomen, enzovoort. Voor spellingen zijn gebaseerd op de hele ensemble van structuren, samen met de voor spelling.
   
 Over het algemeen is het zo dat gestimuleerde beslissings structuren optimaal worden geconfigureerd, waarmee u de beste prestaties kunt verkrijgen voor een groot aantal machine learning taken. Ze zijn echter ook een van de meer geheugenintensieve leerers, en de huidige implementatie houdt alles in het geheugen. Daarom kan een verbeterd beslissings structuur model mogelijk niet de grote gegevens sets verwerken die sommige lineaire leerers kunnen verwerken.
+
+Deze module is gebaseerd op LightGBM-algoritme.
 
 ## <a name="how-to-configure"></a>Configureren
 

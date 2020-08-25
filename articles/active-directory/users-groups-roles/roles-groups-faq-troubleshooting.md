@@ -13,14 +13,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208191"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798292"
 ---
-# <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Problemen met rollen die zijn toegewezen aan Cloud groepen oplossen
+# <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Problemen met rollen die zijn toegewezen aan cloudgroepen oplossen
 
 Hier volgen enkele veelgestelde vragen en tips voor probleem oplossing voor het toewijzen van rollen aan groepen in Azure Active Directory (Azure AD).
 
@@ -40,8 +40,8 @@ Hier volgen enkele veelgestelde vragen en tips voor probleem oplossing voor het 
 
 **A:** De gebruiker kan een eigenaar zijn van een door een functie toewijs bare groep. Wij beveiligen eigen aren van door rollen toewijs bare groepen om misbruik van bevoegdheden te voor komen. Een voor beeld hiervan kan zijn als er een groep Contoso_Security_Admins is toegewezen aan de rol beveiligings beheerder, waarbij Bob de groeps eigenaar is en ANNEER is wachtwoord beheerder in de organisatie. Als deze beveiliging niet aanwezig is, kan Anja de referenties van Dirk opnieuw instellen en zijn identiteit overnemen. Daarna kan Anne zichzelf of iedereen toevoegen aan de groep Contoso_Security_Admins groep om een beveiligings beheerder in de organisatie te worden. Als u wilt weten of een gebruiker een groeps eigenaar is, haalt u de lijst met objecten in eigendom van die gebruiker op en controleert u of voor een van de groepen isAssignableToRole is ingesteld op True. Zo ja, dan is die gebruiker beveiligd en is het gedrag inherent aan het ontwerp. Raadpleeg deze documentes voor het ophalen van objecten in eigendom:
 
-- [Get-AzureADUserOwnedObject](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [OwnedObjects weer geven](https://docs.microsoft.com/graph/api/user-list-ownedobjects?view=graph-rest-1.0&tabs=http)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
+- [OwnedObjects weer geven](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
 
 **V:** Kan ik een toegangs beoordeling maken voor groepen die kunnen worden toegewezen aan Azure AD-rollen (met name groepen waarvoor de eigenschap isAssignableToRole is ingesteld op waar)?  
 

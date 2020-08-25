@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 8/6/2020
+ms.openlocfilehash: 5b5840c1b668e9a509f58d7edf65175f621d9e4c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314217"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794300"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens
 
@@ -20,7 +20,7 @@ Met Azure Stream Analytics kunt u profiteren van een van de toonaangevende hulpp
 
 Dit artikel gaat verder met de Stream Analytics zelf studie voor [fraude detectie in realtime](stream-analytics-real-time-fraud-detection.md) . Het is gebaseerd op de werk stroom die in deze zelf studie is gemaakt en voegt een Power BI uitvoer toe, zodat u frauduleuze telefoon gesprekken kunt visualiseren die worden gedetecteerd door een streaming Analytics-taak. 
 
-U kunt [een video](https://www.youtube.com/watch?v=SGUpT-a99MA) bekijken waarin dit scenario wordt geïllustreerd.
+U kunt [een video](https://www.youtube.com/watch?v=SGUpT-a99MA)  bekijken waarin dit scenario wordt geïllustreerd.
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -39,7 +39,10 @@ In de zelf studie voor fraude detectie wordt de uitvoer naar Azure Blob-opslag v
 
 2. Selecteer in het linkermenu **uitvoer** onder **taak topologie**. Selecteer vervolgens **+ toevoegen** en kies **Power bi** in het vervolg keuzemenu.
 
-3. Selecteer **+ Toevoegen** > **Power BI**. Vul vervolgens het formulier in met de volgende gegevens en selecteer **Autoriseren**:
+3. Selecteer **+ Toevoegen** > **Power BI**. Vul vervolgens het formulier in met de volgende gegevens en selecteer **autoriseren** om uw eigen gebruikers-id te gebruiken om verbinding te maken met Power bi (het token is geldig gedurende 90 dagen). 
+
+>[!NOTE]
+>Voor productie taken wordt u aangeraden om verbinding te maken met [beheerde identiteit om uw Azure stream Analytics-taak te verifiëren voor Power bi](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
 
    |**Instelling**  |**Voorgestelde waarde**  |
    |---------|---------|
@@ -230,3 +233,4 @@ Nadat de autorisatie is vernieuwd met Power BI, wordt een groene waarschuwing we
 * [Stream Analytics uitvoer](stream-analytics-define-outputs.md)
 * [Naslag informatie voor de query taal Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Naslag informatie over Azure Stream Analytics beheer REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren voor Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

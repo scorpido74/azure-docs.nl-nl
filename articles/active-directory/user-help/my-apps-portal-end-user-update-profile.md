@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: edbe76145c83e000c549f7e0dd89cc500e6f05f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b442d5dfae6596b3aea9301d86e9a7cb6d2cbb9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741776"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799210"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Uw profiel-en account gegevens bijwerken in de portal mijn apps
 
@@ -33,7 +33,7 @@ Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Deze inhoud is bedoeld voor gebruikers van **Mijn apps**. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> Deze inhoud is bedoeld voor gebruikers van **Mijn apps**. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](../manage-apps/index.yml).
 
 ## <a name="view-your-organization-related-profile-information"></a>De profiel gegevens van uw organisatie weer geven
 

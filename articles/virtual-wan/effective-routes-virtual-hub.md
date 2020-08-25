@@ -7,46 +7,33 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513703"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762263"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Efficiënte routes voor virtuele hubs weergeven
 
 U kunt alle routes van uw virtuele WAN-hub weer geven in de Azure Portal. Dit artikel begeleidt u stapsgewijs door de stappen voor het weer geven van efficiënte routes. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over virtuele-hub-route ring.
 
-> [!NOTE]
-> Op het Azure Portal kunnen sommige van deze functies nog steeds worden geïmplementeerd en niet beschikbaar zijn in de week van augustus 17. 
->
-
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Verbindingen of route tabellen selecteren
 
 1. Navigeer naar uw virtuele hub en selecteer vervolgens **route ring**. Op de pagina route ring selecteert u de **juiste routes**.
-1. In de vervolg keuzelijst kunt u **verbindings type** of **route tabel**selecteren. Als u de optie route tabel niet ziet, betekent dit dat u geen aangepaste of standaard route tabel hebt ingesteld in deze virtuele hub.
-1. In de vervolg keuzelijst voor **verbindingen/route tabellen**kunt u een keuze maken uit de volgende items:
-
-   * Virtual Network verbinding
-   * VPN-site verbinding
-   * ExpressRoute-verbinding
-   * Punt-naar-site-verbinding
-   * Routetabel
-
-   :::image type="content" source="./media/effective-routes-virtual-hub/routing.png" alt-text="Routering":::
+1. In de vervolg keuzelijst kunt u **route tabel**selecteren. Als u de optie route tabel niet ziet, betekent dit dat u geen aangepaste of standaard route tabel hebt ingesteld in deze virtuele hub.
 
 ## <a name="view-output"></a><a name="output"></a>Uitvoer weer geven
 
 De pagina-uitvoer bevat de volgende velden:
 
-* **Voor voegsel**: adres voorvoegsel bekend bij de huidige entiteit.
+* **Voor voegsel**: adres voorvoegsel bekend bij de huidige entiteit (informatie van de virtuele hub-router)
 * **Type volgende hop**: kan Virtual Network verbinding, VPN_S2S_Gateway, ExpressRouteGateway, externe Hub of Azure firewall zijn.
-* **Volgende hop**: dit is het IP-adres of het veld staat op koppeling om de huidige hub te impliceren.
+* **Volgende hop**: dit is de koppeling naar de resource-id van de volgende hop, of u ziet gewoon on-link om de huidige hub te impliceren.
 * **Oorsprong**: bron-id van de routerings bron.
 * **Als pad**: BGP-kenmerk as (autonoom systeem) een lijst met alle as-nummers die moeten worden gepasseerd om de locatie te bereiken waar het voor voegsel waaraan het pad is gekoppeld, wordt geadverteerd.
 
-### <a name="example"></a><a name="example"></a>Hierbij
+### <a name="example"></a><a name="example"></a>Voorbeeld
 
 De waarden in de volgende voorbeeld tabel impliceren dat de virtuele-hub-verbinding of route tabel de route van 10.2.0.0/24 (een vertakkings voorvoegsel) heeft geleerd. De route is geleerd door het type volgende hop van de **VPN-** VPN_S2S_Gateway met de **volgende hop** VPN gateway resource-id. **Route oorsprong** wijst naar de resource-id van de oorspronkelijke VPN-gateway/route tabel/-verbinding. **As Path** geeft het as-pad voor de vertakking aan.
 
@@ -54,13 +41,15 @@ Gebruik de schuif balk aan de onderkant van de tabel om het "AS-pad" weer te gev
 
 | **Voorvoegsel** |  **Volgend hoptype** | **Volgende hop** |  **Route oorsprong** |**ALS pad** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20.000|
+| 10.2.0.0/24| VPN_S2S_Gateway |/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw|/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20.000|
 
 **Tot**
 
 * Als u 0.0.0.0/0 ziet in de uitvoer van de **meest efficiënte routes** , betekent dit dat de route bestaat in een van de route tabellen. Als deze route echter is ingesteld voor Internet, is er een extra vlag **"enableInternetSecurity": True** is vereist voor de verbinding. In de actieve route op de VM-NIC wordt de route niet weer gegeven als de vlag ' enableInternetSecurity ' voor de verbinding ' false ' is.
 
 * Het veld **standaard route door geven** wordt weer gegeven in de Azure Virtual WAN-Portal wanneer u een virtuele netwerk verbinding, een VPN-verbinding of een ExpressRoute-verbinding bewerkt. Dit veld geeft de **enableInternetSecurity** -vlag aan, die altijd standaard is ingesteld op ' false ' voor ExpressRoute-en VPN-verbindingen, maar ' True ' voor virtuele netwerk verbindingen.
+
+* Bij het weer geven van efficiënte routes op een VM-NIC wordt de volgende hop als ' Virtual Network gateway ' weer gegeven, die de virtuele hub-router impliceert wanneer de VM zich in een spoke bevindt die is verbonden met een virtuele WAN-hub.
 
 ## <a name="next-steps"></a>Volgende stappen
 

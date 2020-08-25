@@ -3,12 +3,12 @@ title: Modern Backup Storage gebruiken met Azure Backup Server
 description: Meer informatie over de nieuwe functies in Azure Backup Server. In dit artikel wordt beschreven hoe u de installatie van de back-upserver bijwerkt.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c7533a5ee2fc65beb86c0c803a522e0acb1df6d
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513707"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762433"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Opslag toevoegen aan Azure Backup Server
 

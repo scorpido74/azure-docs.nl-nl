@@ -2,18 +2,18 @@
 title: Zelf studie voor het exporteren van gegevens uit Azure Data Box | Microsoft Docs
 description: Meer informatie over de implementatie vereisten en het exporteren van gegevens uit een Azure Data Box
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.author: v-grpr
-ms.openlocfilehash: 5b17488ebab8dc29221723fabf8efe0c00467509
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.author: twooley
+ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209319"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783617"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Zelf studie: export volgorde voor Azure Data Box maken (preview)
 
@@ -48,7 +48,7 @@ Zorg voordat u begint voor het volgende:
 
 * Er is een hostcomputer verbonden met het datacenternetwerk. U kopieert de gegevens van Azure Data Box naar deze computer. Uw hostcomputer moet een ondersteund besturingssysteem hebben, zoals beschreven in [Systeemvereisten voor Azure Data Box](data-box-system-requirements.md).
 
-* Uw datacenter moet een netwerk met hoge snelheid hebben. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10 GbE-verbinding beschikbaar is, kan een 1 GbE-gegevens koppeling worden gebruikt, maar de Kopieer snelheden worden beïnvloed.
+* Uw datacenter moet een netwerk met hoge snelheid hebben. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10 GbE-verbinding beschikbaar is, kan een 1 GbE-gegevenskoppeling worden gebruikt. Dit heeft echter wel invloed op de kopieersnelheid.
 
 ## <a name="order-data-box-for-export"></a>Data Box voor het exporteren van orders
 
@@ -70,7 +70,7 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     |---------|---------|
     |Type overdracht     | Selecteer **exporteren naar Azure**.        |
     |Abonnement     | Selecteer een EA-, CSP- of Azure Sponsorship-abonnement voor de Data Box-service. <br> Het abonnement is gekoppeld aan uw factureringsrekening.       |
-    |Resourcegroep     |    Selecteer een bestaande resource groep. <br> Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd.         |
+    |Resourcegroep     |    Selecteer een bestaande resourcegroep. <br> Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd.         |
     |Azure-regio van bron    |    Selecteer de Azure-regio waarin uw gegevens zich momenteel bevinden.         |
     |Land van bestemming     |     Selecteer het land waar u het apparaat wilt verzenden.        |
 
@@ -85,7 +85,7 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     |Instelling  |Waarde  |
     |---------|---------|
     |Abonnement     | Het abonnement wordt automatisch ingevuld op basis van uw eerdere selectie.|
-    |Resourcegroep | De resource groep die u eerder hebt geselecteerd. |
+    |Resourcegroep | De resourcegroep die u eerder hebt geselecteerd. |
     |Naam van de export volgorde     |  Geef een beschrijvende naam op om de bestelling te volgen. <br> De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). <br> De naam moet beginnen en eindigen met een letter of cijfer.      |
 
     ![Basis principes van export volgorde](media/data-box-deploy-export-ordered/azure-data-box-export-03.png)
@@ -205,11 +205,11 @@ Als self-managed Shipping is geselecteerd, ontvangt u een e-mail melding met de 
 
 ## <a name="cancel-the-order"></a>De bestelling annuleren
 
-Als u deze order wilt annuleren, gaat u in het Azure Portal naar **overzicht** en selecteert u **Annuleren** op de opdracht balk.
+Als u deze bestelling wilt annuleren, gaat u in de Azure-portal naar **Overzicht** en selecteert u **Annuleren** in de opdrachtbalk.
 
 Nadat u een bestelling hebt geplaatst, kunt u deze op elk gewenst moment annuleren voordat de order wordt verwerkt.
 
-Als u een geannuleerde order wilt verwijderen, gaat u naar **overzicht** en selecteert u **verwijderen** in de opdracht balk.
+Als u een geannuleerde bestelling wilt verwijderen, gaat u naar **Overzicht** en selecteert u **Verwijderen** in de opdrachtbalk.
 
 ## <a name="sample-xml-file"></a>XML-voorbeeld bestand
 

@@ -2,18 +2,18 @@
 title: Azure Stack Edge & Azure Data Box Gateway 2007-release opmerkingen | Microsoft Docs
 description: Hierin worden essentiële openstaande problemen en oplossingen voor de Azure Stack Edge en Data Box Gateway uitgevoerd 2007-versie beschreven.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
 ms.date: 07/14/2020
-ms.author: v-grpr
-ms.openlocfilehash: 4964454a5636120840fbdb5f3fbdd3aee30d8e74
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: twooley
+ms.openlocfilehash: f9a08cda1466dbe284a0ac3c0e34b109be236883
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531747"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783923"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-2007-release-notes"></a>Release opmerkingen bij Azure Stack Edge en Azure Data Box Gateway 2007
 
@@ -29,7 +29,7 @@ Deze release komt overeen met de software versies:
 > [!NOTE]
 > Update 2007 kan alleen worden toegepast op alle apparaten met algemene Beschik baarheid (GA)-versies van de software of hoger.
 
-## <a name="whats-new"></a>Nieuw
+## <a name="whats-new"></a>Nieuwe functies
 
 Deze release bevat de volgende fout oplossing:
 

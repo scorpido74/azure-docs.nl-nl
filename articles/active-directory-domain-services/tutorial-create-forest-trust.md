@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492153"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722718"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Zelfstudie: Een uitgaande forestvertrouwensrelatie in één richting maken naar een on-premises domein in Azure Active Directory Domain Services
 
@@ -128,7 +128,7 @@ Met de volgende algemene scenario's kunt u valideren of met de forestvertrouwens
 
 U moet een virtuele Windows Server-machine koppelen aan het beheerde domein. Gebruik deze virtuele machine om te testen of uw on-premises gebruiker kan worden geverifieerd op de virtuele machine. Als dat nodig is, [een Windows-VM maken en deze koppelen aan het beheerde domein][join-windows-vm].
 
-1. Maak verbinding met de Windows Server-VM die is gekoppeld aan de Azure AD DS-resourceforest, met behulp van [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) en uw Azure AD DS-beheerdersreferenties.
+1. Maak verbinding met de Windows Server-VM die is gekoppeld aan de Azure AD DS-resourceforest, met behulp van [Azure Bastion](../bastion/bastion-overview.md) en uw Azure AD DS-beheerdersreferenties.
 1. Open een opdrachtprompt en gebruik de opdracht `whoami` om de DN-naam van de momenteel geverifieerde gebruiker weer te geven:
 
     ```console
@@ -150,7 +150,7 @@ Met behulp van de Windows Server-VM die is gekoppeld aan de Azure AD-forest kunt
 
 #### <a name="enable-file-and-printer-sharing"></a>Bestands- en printerdeling inschakelen
 
-1. Maak verbinding met de Windows Server-VM die is gekoppeld aan de Azure AD DS-resourceforest, met behulp van [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) en uw Azure AD DS-beheerdersreferenties.
+1. Maak verbinding met de Windows Server-VM die is gekoppeld aan de Azure AD DS-resourceforest, met behulp van [Azure Bastion](../bastion/bastion-overview.md) en uw Azure AD DS-beheerdersreferenties.
 
 1. Open **Windows-instellingen**. Zoek en selecteer vervolgens **Netwerkcentrum**.
 1. Kies de optie **Geavanceerde instellingen voor delen wijzigen**.

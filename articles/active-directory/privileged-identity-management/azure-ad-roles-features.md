@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256625"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784008"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Beheer mogelijkheden voor Azure AD-rollen in Privileged Identity Management
 
@@ -52,11 +52,11 @@ Zodra u een tijd afhankelijke toewijzing hebt, kan de eerste vraag worden gevraa
 - **Uitbreiden**: wanneer een roltoewijzing bijna is verlopen, kan de gebruiker privileged Identity Management gebruiken om een uitbrei ding aan te vragen voor die roltoewijzing
 - **Vernieuwen**: wanneer een roltoewijzing is verlopen, kan de gebruiker privileged Identity Management gebruiken om een verlenging aan te vragen voor die roltoewijzing
 
-Voor zowel door de gebruiker geïnitieerde acties is een goed keuring van een globale beheerder of een beheerder met een bevoegde rol vereist. Beheerders hoeven deze verloop tijd niet langer te beheersen. Ze hoeven alleen te wachten op de verlenging of de vernieuwings aanvragen en ze worden goedgekeurd als de aanvraag geldig is.
+Voor beide door de gebruiker geïnitieerde acties is goedkeuring van een Globale beheerder of een Beheerder voor bevoorrechte rollen vereist. Beheerders hoeven het verlopen van toewijzingen niet meer zelf te beheren. Ze hoeven alleen te wachten op de verlenging of de vernieuwings aanvragen en ze worden goedgekeurd als de aanvraag geldig is.
 
 ## <a name="api-changes"></a>API-wijzigingen
 
-Wanneer klanten de bijgewerkte versie hebben geïmplementeerd naar hun Azure AD-organisatie, werkt de bestaande Graph-API niet meer. U moet overstappen om de [Graph API voor Azure-resource rollen](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)te gebruiken. Als u Azure AD-rollen wilt beheren met die API, wisselt u `/azureResources` `/aadroles` uit in de hand tekening en gebruikt u de map-id voor `resourceId` .
+Wanneer klanten de bijgewerkte versie hebben geïmplementeerd naar hun Azure AD-organisatie, werkt de bestaande Graph-API niet meer. U moet overstappen om de [Graph API voor Azure-resource rollen](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)te gebruiken. Als u Azure AD-rollen wilt beheren met die API, wisselt u `/azureResources` `/aadroles` uit in de hand tekening en gebruikt u de map-id voor `resourceId` .
 
 We hebben ons het beste getracht te bereiken voor alle klanten die de vorige API gebruiken om ze van tevoren op de hoogte te stellen. Als uw Azure AD-organisatie is verplaatst naar de nieuwe versie en u nog steeds afhankelijk bent van de oude API, kunt u contact met het team bereiken op pim_preview@microsoft.com .
 

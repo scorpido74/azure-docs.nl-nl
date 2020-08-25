@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6f47200f6978d91f46c010640bb9c2bb26e9b7d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6869abb3040feb6431d60799536c9986c6ccb954
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302488"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798241"
 ---
 # <a name="log10-azure-cosmos-db"></a>LOG10 (Azure Cosmos DB)
  Retourneert de logaritme met grondtal 10 van de opgegeven numerieke expressie.  
@@ -34,7 +34,7 @@ LOG10 (<numeric_expr>)
   
 ## <a name="remarks"></a>Opmerkingen
   
-  De functies LOG10 en POWER zijn inverse gerelateerd aan elkaar. Bijvoorbeeld: 10 ^ LOG10 (n) = n.  
+  De functies LOG10 en POWER zijn inverse gerelateerd aan elkaar. Bijvoorbeeld: 10 ^ LOG10 (n) = n. Deze systeem functie maakt geen gebruik van de index.
   
 ## <a name="examples"></a>Voorbeelden
   
@@ -49,10 +49,6 @@ SELECT LOG10(100) AS log10
 ```json
 [{log10: 2}]  
 ```  
-
-## <a name="remarks"></a>Opmerkingen
-
-Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3d680fb105b6bde26e5b02544359009f316647bb
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513720"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762314"
 ---
 # <a name="about-virtual-hub-routing"></a>Over virtuele hub-routering
 
@@ -25,10 +25,6 @@ Zie [route ring van virtuele hub configureren voor meer informatie over het](how
 ## <a name="routing-concepts"></a><a name="concepts"></a>Routerings concepten
 
 In de volgende secties worden de belangrijkste concepten in virtuele hub-route ring beschreven.
-
-> [!NOTE]
-> Sommige van deze nieuwe concepten voor de route tabel van de hub, de koppeling, het door sturen en statische routes in een virtuele netwerk verbinding kunnen nog steeds worden geïmplementeerd en verwacht in de week van Aug 17.
->
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Route tabel van de hub
 
@@ -77,9 +73,9 @@ Routeringstabellen hebben nu functies voor koppeling en doorgifte. Een vooraf be
 
 * **Standaard virtuele WAN-klanten met al bestaande routes in de virtuele hub**:
 
-Als u nieuwe mogelijkheden voor de route tabel wilt gebruiken, moet u tot de week augustus 17 wachten tot de implementatie in Azure is voltooid. Als u al bestaande routes in de sectie route ring voor de hub in Azure Portal hebt, moet u deze eerst verwijderen en vervolgens proberen nieuwe route tabellen te maken (beschikbaar in de sectie route tabellen van de hub in Azure Portal)
+Als u al bestaande routes in de sectie route ring voor de hub in Azure Portal hebt, moet u deze eerst verwijderen en vervolgens proberen nieuwe route tabellen te maken (beschikbaar in de sectie route tabellen van de hub in Azure Portal)
 
-* **Eenvoudige virtuele WAN-klanten met reeds bestaande routes in de virtuele hub**: als u de nieuwe mogelijkheden voor de route tabel wilt gebruiken, wacht u tot de week augustus 17 om de implementatie in azure te volt ooien. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en **upgrade** uw virtuele WAN Basic naar Standard. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
+* **Eenvoudige virtuele WAN-klanten met reeds bestaande routes in de virtuele hub**: als u al bestaande routes in de sectie route ring voor de hub in azure Portal hebt, moet u deze eerst verwijderen en vervolgens uw virtuele standaard-WAN **upgraden** naar standaard virtuele WAN. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
 
 ## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Aandachtspunten voor virtuele WAN-route ring
 
@@ -89,6 +85,8 @@ Houd rekening met het volgende bij het configureren van virtuele WAN-route ring:
 * Alle vertakkings verbindingen moeten hun routes door geven aan dezelfde set route tabellen. Als u bijvoorbeeld besluit dat vertakkingen moeten worden door gegeven aan de standaard route tabel, moet deze configuratie consistent zijn voor alle vertakkingen. Als gevolg hiervan kunnen alle verbindingen die aan de standaard route tabel zijn gekoppeld, alle vertakkingen bereiken.
 * Vertakking-naar-vertakking via Azure Firewall wordt momenteel niet ondersteund.
 * Wanneer u Azure Firewall in meerdere regio's gebruikt, moeten alle spoke-virtuele netwerken aan dezelfde route tabel zijn gekoppeld. Als er bijvoorbeeld een subset van de VNets door de Azure Firewall, terwijl andere VNets overs Laan, is het niet mogelijk om de Azure Firewall in dezelfde virtuele hub over te slaan.
+* Eén volgende hop-IP kan per VNet-verbinding worden geconfigureerd.
+* Virtuele hub biedt geen ondersteuning voor een statische route voor 0.0.0.0/0 en de volgende hop Virtual Network verbinding (of een IP-adres van een apparaat in de VNet-verbinding)
 
 ## <a name="next-steps"></a>Volgende stappen
 

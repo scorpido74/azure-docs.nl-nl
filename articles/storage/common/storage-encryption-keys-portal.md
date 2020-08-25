@@ -6,18 +6,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/31/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a216714939dc45fd1b220f24414a527969ab7fcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a506f59d3f2d331e4c7680565f3c110b9cd12956
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029562"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799163"
 ---
-# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Door de klant beheerde sleutels met Azure Key Vault configureren met behulp van de Azure Portal
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van de Azure Portal
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
@@ -45,11 +45,11 @@ Voer de volgende stappen uit om door de klant beheerde sleutels in te scha kelen
 
 ## <a name="specify-a-key"></a>Een sleutel opgeven
 
-Nadat u door de klant beheerde sleutels hebt ingeschakeld, hebt u de mogelijkheid om een sleutel op te geven die u wilt koppelen aan het opslag account. U kunt ook aangeven of Azure Storage de door de klant beheerde sleutel automatisch moet draaien, of dat u de sleutel hand matig wilt draaien.
+Nadat u door de klant beheerde sleutels hebt ingeschakeld, hebt u de mogelijkheid om een sleutel op te geven die u wilt koppelen aan het opslag account. U kunt ook aangeven of Azure Storage de door de klant beheerde sleutel automatisch moet bijwerken naar de nieuwste versie, of dat u de sleutel versie hand matig wilt bijwerken.
 
 ### <a name="specify-a-key-from-a-key-vault"></a>Een sleutel uit een sleutel kluis opgeven
 
-Wanneer u een door de klant beheerde sleutel van een sleutel kluis selecteert, wordt automatisch de automatische rotatie van de sleutel ingeschakeld. Als u de sleutel versie hand matig wilt beheren, geeft u in plaats daarvan de sleutel-URI op en neemt u de sleutel versie op. Zie [een sleutel opgeven als een URI](#specify-a-key-as-a-uri)voor meer informatie.
+Wanneer u een door de klant beheerde sleutel van een sleutel kluis selecteert, wordt automatisch bijwerken van de sleutel versie ingeschakeld. Als u de sleutel versie hand matig wilt beheren, geeft u in plaats daarvan de sleutel-URI op en neemt u de sleutel versie op. Zie [een sleutel opgeven als een URI](#specify-a-key-as-a-uri)voor meer informatie.
 
 Voer de volgende stappen uit om een sleutel van een sleutel kluis op te geven:
 
@@ -64,7 +64,12 @@ Voer de volgende stappen uit om een sleutel van een sleutel kluis op te geven:
 
 ### <a name="specify-a-key-as-a-uri"></a>Een sleutel opgeven als een URI
 
-Wanneer u de sleutel-URI opgeeft, laat u de sleutel versie weg om automatische rotatie van de door de klant beheerde sleutel in te scha kelen. Als u de sleutel versie opneemt in de sleutel-URI, is automatisch draaien niet ingeschakeld en moet u de sleutel versie zelf beheren. Zie [de sleutel versie hand matig bijwerken](#manually-update-the-key-version)voor meer informatie over het bijwerken van de sleutel versie.
+Azure Storage kunt de door de klant beheerde sleutel die wordt gebruikt voor versleuteling automatisch bijwerken om de nieuwste sleutel versie te gebruiken. Wanneer de door de klant beheerde sleutel is gedraaid in Azure Key Vault, zal Azure Storage automatisch de meest recente versie van de sleutel gebruiken voor versleuteling.
+
+> [!NOTE]
+> Als u een sleutel wilt draaien, maakt u een nieuwe versie van de sleutel in Azure Key Vault. Azure Storage de draai hoek van de sleutel in Azure Key Vault niet verwerkt. u moet de sleutel dus hand matig draaien of een functie maken om deze op een schema te draaien.
+
+Wanneer u de sleutel-URI opgeeft, laat u de sleutel versie van de URI weg om automatisch bijwerken naar de nieuwste sleutel versie in te scha kelen. Als u de sleutel versie opneemt in de sleutel-URI, wordt automatisch bijwerken niet ingeschakeld en moet u de sleutel versie zelf beheren. Zie [de sleutel versie hand matig bijwerken](#manually-update-the-key-version)voor meer informatie over het bijwerken van de sleutel versie.
 
 Voer de volgende stappen uit om een sleutel als URI op te geven:
 
@@ -74,25 +79,25 @@ Voer de volgende stappen uit om een sleutel als URI op te geven:
     ![Scherm opname van sleutel kluis sleutel-URI](media/storage-encryption-keys-portal/portal-copy-key-identifier.png)
 
 1. Kies in de instellingen voor de versleutelings **sleutel** voor uw opslag account de optie **sleutel-URI opgeven** .
-1. Plak de URI die u hebt gekopieerd in het veld **sleutel-URI** . Laat de sleutel versie van de URI weg om automatische rotatie in te scha kelen.
+1. Plak de URI die u hebt gekopieerd in het veld **sleutel-URI** . Laat de sleutel versie van de URI weg om automatische updates van de sleutel versie in te scha kelen.
 
    ![Scherm afbeelding die laat zien hoe de sleutel-URI moet worden ingevoerd](./media/storage-encryption-keys-portal/portal-specify-key-uri.png)
 
 1. Geef het abonnement op dat de sleutel kluis bevat.
 1. Sla uw wijzigingen op.
 
-Nadat u de sleutel hebt opgegeven, geeft de Azure Portal aan of het automatisch draaien van sleutels is ingeschakeld en wordt de sleutel versie weer gegeven die momenteel wordt gebruikt voor versleuteling.
+Nadat u de sleutel hebt opgegeven, geeft de Azure Portal aan of automatisch bijwerken van de sleutel versie is ingeschakeld en geeft de sleutel versie weer die momenteel wordt gebruikt voor versleuteling.
 
-:::image type="content" source="media/storage-encryption-keys-portal/portal-auto-rotation-enabled.png" alt-text="Scherm afbeelding van automatische rotatie van door de klant beheerde sleutels ingeschakeld":::
+:::image type="content" source="media/storage-encryption-keys-portal/portal-auto-rotation-enabled.png" alt-text="Scherm opname van het automatisch bijwerken van de sleutel versie ingeschakeld":::
 
 ## <a name="manually-update-the-key-version"></a>De sleutel versie hand matig bijwerken
 
-Standaard worden door de klant beheerde sleutels door Azure Storage automatisch voor u geroteerd, zoals beschreven in de vorige secties. Als u ervoor kiest om de sleutel versie zelf te beheren, moet u telkens wanneer u een nieuwe versie van de sleutel maakt, de sleutel versie bijwerken die is opgegeven voor het opslag account.
+Wanneer u een nieuwe versie van een door de klant beheerde sleutel in Key Vault maakt, gebruikt Azure Storage automatisch de nieuwe versie voor versleuteling met door de klant beheerde sleutels, zoals beschreven in de vorige secties. Als u ervoor kiest om de sleutel versie zelf te beheren, moet u telkens wanneer u een nieuwe versie van de sleutel maakt, de sleutel versie bijwerken die aan het opslag account is gekoppeld.
 
 Voer de volgende stappen uit om het opslag account bij te werken voor het gebruik van de nieuwe sleutel versie:
 
 1. Navigeer naar uw opslag account en geef de **versleutelings** instellingen weer.
-1. Voer de URI in voor de nieuwe sleutel versie. U kunt ook de sleutel kluis en de sleutel opnieuw selecteren om de versie bij te werken.
+1. Voer de URI in voor de nieuwe versie van de sleutel. U kunt ook de sleutel kluis en de sleutel opnieuw selecteren om de versie bij te werken.
 1. Sla uw wijzigingen op.
 
 ## <a name="switch-to-a-different-key"></a>Overschakelen naar een andere sleutel

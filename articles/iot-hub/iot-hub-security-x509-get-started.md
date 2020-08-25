@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7bf31f7b16fa987bb9c710835d1a3aff8214604
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307281"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783260"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>X.509-beveiliging instellen in uw Azure IoT Hub
 
@@ -49,6 +49,9 @@ U kunt een van de volgende manieren kiezen om uw certificaten op te halen:
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X. 509 CA-certificaten bij uw IoT-hub registreren
 
 Deze stappen laten zien hoe u een nieuwe certificerings instantie aan uw IoT-hub kunt toevoegen via de portal.
+
+> [!NOTE]
+> Het maximum aantal X. 509-CA-certificaten dat kan worden geregistreerd voor een IoT-hub is 25. Zie [Azure IOT hub quota's en beperking](iot-hub-devguide-quotas-throttling.md)voor meer informatie.
 
 1. Navigeer in het Azure Portal naar uw IOT-hub en selecteer **instellingen**  >  **certificaten** voor de hub.
 
@@ -90,7 +93,7 @@ Als u uw X. 509-apparaat wilt verifiëren, moet u het apparaat eerst ondertekene
 
 We laten nu zien hoe u een C#-toepassing kunt maken om het X. 509-apparaat te simuleren dat voor uw IoT-hub is geregistreerd. De waarden voor de Tempe ratuur en lucht vochtigheid worden verzonden vanaf het gesimuleerde apparaat naar uw hub. In deze zelf studie maakt u alleen de apparaat-app. Het is aan de lezers te blijven om de IoT Hub-service toepassing te maken die een reactie verzendt naar de gebeurtenissen die door dit gesimuleerde apparaat worden verzonden. De C#-toepassing veronderstelt dat u de stappen in het [beheer van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)hebt gevolgd.
 
-1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Next**.
+1. Open Visual Studio, selecteer **een nieuw project maken**en kies vervolgens de project sjabloon **console-app (.NET Framework)** . Selecteer **Volgende**.
 
 1. Geef in **uw nieuwe project**de naam project *SimulateX509Device*en selecteer vervolgens **maken**.
 

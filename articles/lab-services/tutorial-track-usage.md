@@ -4,10 +4,10 @@ description: In deze zelfstudie houdt u, als maker/eigenaar van een lab, het geb
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: a9a9b49b568decc621be1969a8578d61ac7e4861
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85445029"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Zelfstudie: gebruik van een lab bijhouden in Azure Lab Services

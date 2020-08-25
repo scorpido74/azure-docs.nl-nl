@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dd97932d0aaa89373636a60e793f531cda18abdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: HT
+ms.openlocfilehash: 38ef1188503d0076cfd98843f6f68c990fba7463
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091433"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762358"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Een instantie van een Spring Cloud Config Server instellen voor uw service
 
@@ -146,14 +146,14 @@ Nu dat uw configuratiebestanden zijn opgeslagen in een opslagplaats, moet u Azur
 
     * **Basisverificatie**: Plak de URI van de opslagplaats in de sectie **Standaardopslagplaats** in het vak **URI** en selecteer vervolgens de knop **Verificatie** (pictogram van potlood). Selecteer **HTTP-basis** in het venster **Verificatie bewerken** in de vervolgkeuzelijst **Verificatietype** en voer vervolgens uw gebruikersnaam en wachtwoord/token in om toegang te verlenen tot Azure Spring Cloud. Selecteer **OK** en vervolgens **Toepassen** om de instelling van uw instantie van een Config Server te voltooien.
 
-    ![Het deelvenster Verificatie bewerken](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    ![Het deel venster verificatie bewerken basis verificatie](media/spring-cloud-tutorial-config-server/basic-auth.png)
     
     > [!CAUTION]
     > Sommige servers voor Git-opslagplaatsen, zoals GitHub, gebruiken een *persoonlijk-token* of een *toegangs-token*, zoals een wachtwoord, voor **Basisverificatie**. U kunt dit soort token gebruiken als wachtwoord in Azure Spring Cloud aangezien het nooit verloopt. Maar voor andere servers voor Git-opslagplaatsen, zoals Bitbucket en Azure DevOps, verloopt het *toegangs-token* binnen één of twee uur. Dit betekent dat de optie niet werkbaar is wanneer u die servers voor opslagplaatsen gebruikt met Azure Spring Cloud.
 
     * **SSH**: Plak de URI van de opslagplaats in het vak **URI** in de sectie **Standaardopslagplaats** en selecteer vervolgens de knop **Verificatie** (pictogram van potlood). Selecteer **SSH** in de vervolgkeuzelijst **Verificatietype** in het deelvenster **Verificatie bewerken** en voer vervolgens uw **Persoonlijke sleutel** in. U kunt eventueel uw **Hostsleutel** en **Algoritme van de hostsleutel** opgeven. Zorg ervoor dat u uw openbare sleutel in uw opslagplaats voor de Config Server opneemt. Selecteer **OK** en vervolgens **Toepassen** om de instelling van uw instantie van een Config Server te voltooien.
 
-    ![Het deelvenster Verificatie bewerken](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+    ![Het deel venster verificatie bewerken SSH auth](media/spring-cloud-tutorial-config-server/ssh-auth.png)
 
 #### <a name="pattern-repository"></a>Opslagplaats voor patronen
 
@@ -182,6 +182,48 @@ Klik op de knop **Instellingen importeren** en selecteer vervolgens het YAML-bes
 
 De informatie uit uw YAML-bestand zou moeten worden weergegeven in het Azure-portal. Selecteer **Toepassen** om te voltooien. 
 
+## <a name="using-azure-repos-for-azure-spring-cloud-configuration"></a>Azure opslag plaatsen gebruiken voor Azure lente-Cloud configuratie
+
+Azure lente Cloud kan toegang krijgen tot Git-opslag plaatsen die openbaar zijn, worden beveiligd door SSH of worden beveiligd met behulp van HTTP-basis verificatie. We zullen deze laatste optie gebruiken, omdat het eenvoudiger is om te maken en te beheren met Azure opslag plaatsen.
+
+### <a name="get-repo-url-and-credentials"></a>Opslag plaats-URL en referenties ophalen
+1. Klik in de Azure opslag plaatsen-portal voor uw project op de knop klonen:
+
+    ![Knop klonen](media/spring-cloud-tutorial-config-server/clone-button.png)
+
+1. Kopieer de kloon-URL uit het tekstvak. Deze URL heeft normaal gesp roken de volgende vorm:
+
+    ```Text
+    https://<organization name>@dev.azure.com/<organization name>/<project name>/_git/<repository name>
+    ```
+
+    Verwijder alles na `https://` en voor `dev.azure.com` , inclusief de `@` . De resulterende URL moet de volgende indeling hebben:
+
+    ```Text
+    https://dev.azure.com/<organization name>/<project name>/_git/<repository name>
+    ```
+
+    Sla deze URL op voor gebruik in de volgende sectie.
+
+1. Klik op Git-Referenties genereren. Er wordt een gebruikers naam en wacht woord weer gegeven. Sla deze op voor gebruik in de volgende sectie.
+
+
+### <a name="configure-azure-spring-cloud-to-access-the-git-repository"></a>Azure Spring Cloud configureren voor toegang tot de Git-opslagplaats
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+
+1. Ga naar de pagina **Overzicht** van Azure Spring Cloud.
+
+1. Selecteer de service die u wilt configureren.
+
+1. Selecteer in het linkerdeel venster van de service pagina onder **instellingen**het tabblad **Configuratie server** . Configureer de opslag plaats die u eerder hebt gemaakt:
+   - Voeg de URL van de opslag plaats toe die u in de vorige sectie hebt opgeslagen
+   - Klik op `Authentication` en selecteer `HTTP Basic`
+   - De __gebruikers naam__ is de gebruikers naam die is opgeslagen in de vorige sectie
+   - Het __wacht__ woord is het wacht woord dat u in de vorige sectie hebt opgeslagen
+   - Klik op Toep assen en wacht totdat de bewerking is voltooid
+
+   ![Spring Cloud-configuratieserver](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
 ## <a name="delete-your-app-configuration"></a>Uw app-configuratie verwijderen
 

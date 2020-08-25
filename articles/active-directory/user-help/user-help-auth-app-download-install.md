@@ -12,17 +12,17 @@ ms.topic: end-user-help
 ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aac6c0b903a3b2adf481a2c63847272122ce2d7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266216"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798972"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>De app Microsoft Authenticator downloaden en installeren
 
 >[!Important]
->Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Azure Active Directory (Azure AD)-omgeving in de [beheer documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+>Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Azure Active Directory (Azure AD)-omgeving in de [beheer documentatie voor Azure Active Directory](../index.yml).
 >
 > Als u problemen ondervindt met aanmelden bij uw account, gaat u naar [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429) voor hulp.  U kunt ook meer informatie over wat u moet doen wanneer u het bericht [' dat Microsoft-account niet bestaat '](https://support.microsoft.com/help/13811) ontvangt wanneer u zich probeert aan te melden bij uw Microsoft-account.
 

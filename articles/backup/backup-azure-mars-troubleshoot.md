@@ -3,12 +3,12 @@ title: Problemen met de Azure Backup-Agent oplossen
 description: In dit artikel vindt u informatie over het oplossen van problemen met de installatie en registratie van de Azure Backup-Agent.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1afe437239ec7015bf3bbc195cf0b90e75698142
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564109"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763504"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problemen met de Microsoft Azure Recovery Services-agent (MARS) oplossen
 
@@ -204,7 +204,7 @@ Het herstel volume kan ook na enkele minuten niet worden gekoppeld Azure Backup.
 
 5. Klik met de rechter muisknop op **Onbekend apparaat** en selecteer **update stuur programma software**.
 
-6. Werk het stuur programma bij door de optie te selecteren om **automatisch te zoeken naar bijgewerkte stuur programma-software**. Deze update moet het **onbekende apparaat** wijzigen in **micro soft iSCSI-initiator**:
+6. Werk het stuur programma bij door de optie te selecteren om  **automatisch te zoeken naar bijgewerkte stuur programma-software**. Deze update moet het **onbekende apparaat** wijzigen in **micro soft iSCSI-initiator**:
 
     ![Scherm opname van Azure Backup Apparaatbeheer, waarbij opslag controllers zijn gemarkeerd](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
@@ -224,7 +224,7 @@ De back-upbewerking kan mislukken als de cachemap (ook wel Scratch map genoemd) 
 
 ### <a name="prerequisites"></a>Vereisten
 
-Voor MARS-agent bewerkingen moet de cachemap voldoen aan de onderstaande vereisten:
+Voor MARS-agent bewerkingen moet de cachemap voldoen aan de volgende vereisten:
 
 - [Zorg ervoor dat 5% tot 10% beschik bare volume ruimte beschikbaar is op de locatie van de Scratch map](backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [Zorg ervoor dat de locatie van de map Scratch geldig en toegankelijk is](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
@@ -238,15 +238,15 @@ Back-upbewerkingen kunnen mislukken als er voldoende opslag ruimte voor schaduw 
 
 - Controleer de huidige schaduw opslag ruimte van de opdracht prompt met verhoogde bevoegdheid:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
-- Verg root de schaduw opslag ruimte met behulp van de onderstaande opdracht:<br/>
+- Verg root de schaduw opslag ruimte met de volgende opdracht:<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Een ander proces of antivirus software die de toegang tot de cachemap blokkeert
 
 Als er antivirus software op de server is geïnstalleerd, voegt u de benodigde uitsluitings regels toe aan de antivirus scan voor deze bestanden en mappen:  
 
-- De map Scratch. De standaard locatie is`C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-- De bin-map op`C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
+- De map Scratch. De standaard locatie is `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+- De bin-map op `C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
 - CBengine.exe
 - CSC.exe
 
@@ -270,13 +270,13 @@ De Microsoft Azure Recovery Services-agent heeft geen toegang gekregen tot de sc
 
 Foutbericht | Aanbevolen actie
 --|--
-Het maken van de back-up is mislukt vanwege onvoldoende opslag ruimte op het volume waar de Scratch map zich bevindt | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/>- [Zorg ervoor dat de MARS-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Opslag problemen controleren en oplossen die van invloed zijn op de Scratch ruimte van de back-up](#prerequisites)
+Het maken van de back-up is mislukt vanwege onvoldoende opslag ruimte op het volume waar de Scratch map zich bevindt | Controleer de volgende stappen om dit probleem op te lossen en voer de bewerking opnieuw uit:<br/>- [Zorg ervoor dat de MARS-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Opslag problemen controleren en oplossen die van invloed zijn op de Scratch ruimte van de back-up](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Foutbericht | Aanbevolen actie
 --|--
-Kan wijzigingen niet vinden in een bestand. Dit kan verschillende redenen hebben. Voer de bewerking opnieuw uit | Om dit probleem op te lossen, controleert u de onderstaande stappen en voert u de bewerking opnieuw uit:<br/> - [Zorg ervoor dat de MARS-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Opslag problemen controleren en oplossen die van invloed zijn op de Scratch ruimte van de back-up](#prerequisites)
+Kan wijzigingen niet vinden in een bestand. Dit kan verschillende redenen hebben. Voer de bewerking opnieuw uit | Controleer de volgende stappen om dit probleem op te lossen en voer de bewerking opnieuw uit:<br/> - [Zorg ervoor dat de MARS-agent het meest recent is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Opslag problemen controleren en oplossen die van invloed zijn op de Scratch ruimte van de back-up](#prerequisites)
 
 ## <a name="next-steps"></a>Volgende stappen
 

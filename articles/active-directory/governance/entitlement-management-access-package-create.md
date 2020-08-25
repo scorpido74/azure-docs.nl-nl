@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f5c88de72bcd241f0cd42d338acbe707de6f34
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: a80dafda39c0b37b1a7477b93d7f649fa1beeade
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798780"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783634"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Een nieuw toegangs pakket maken in het beheer van rechten van Azure AD
 
@@ -67,7 +67,7 @@ Dit zijn de stappen op hoog niveau voor het maken van een nieuw toegangs pakket.
    
     ![Rechtenbeheer in de Azure-portal](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>Basisinstellingen
+## <a name="basics"></a>Basisbeginselen
 
 Op het tabblad **basis beginselen** geeft u het toegangs pakket een naam en geeft u op in welke catalogus u het toegangs pakket wilt maken.
 
@@ -119,7 +119,7 @@ Afhankelijk van wie u dit toegangs pakket wilt kunnen aanvragen, voert u de stap
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="review--create"></a>Controleren en maken
+## <a name="review--create"></a>Beoordelen en maken
 
 Op het tabblad **controleren en maken** kunt u uw instellingen controleren en controleren of er validatie fouten zijn.
 
@@ -135,11 +135,11 @@ Op het tabblad **controleren en maken** kunt u uw instellingen controleren en co
 
 U kunt ook een toegangs pakket maken met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de API aanroepen naar
 
-1. [Vermeld de accessPackageResources in de catalogus](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) en [Maak een accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) voor alle resources die nog niet in de catalogus staan.
-1. [Vermeld de accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) van elke accessPackageResource in een accessPackageCatalog. Deze lijst met rollen wordt vervolgens gebruikt voor het selecteren van een rol, wanneer u vervolgens een accessPackageResourceRoleScope maakt.
-1. [Een AccessPackage maken](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta).
-1. [Een AccessPackageAssignmentPolicy maken](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
-1. [Maak een accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) voor elke resource functie die nodig is in het toegangs pakket.
+1. [Vermeld de accessPackageResources in de catalogus](/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) en [Maak een accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) voor alle resources die nog niet in de catalogus staan.
+1. [Vermeld de accessPackageResourceRoles](/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) van elke accessPackageResource in een accessPackageCatalog. Deze lijst met rollen wordt vervolgens gebruikt voor het selecteren van een rol, wanneer u vervolgens een accessPackageResourceRoleScope maakt.
+1. [Een AccessPackage maken](/graph/api/accesspackage-post?view=graph-rest-beta).
+1. [Een AccessPackageAssignmentPolicy maken](/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
+1. [Maak een accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) voor elke resource functie die nodig is in het toegangs pakket.
 
 ## <a name="next-steps"></a>Volgende stappen
 

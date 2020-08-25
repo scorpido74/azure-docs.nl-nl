@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: cb3cb41b46c2def4f99af7f1811e4ff96dff7070
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 985fbc70f15c0806c45ae43d62995590e10b1bb2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167025"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798921"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Blob Storage koppelen met behulp van het NFS-protocol (Network File System) 3,0 (preview)
 
@@ -112,7 +112,7 @@ Maak een container in uw opslag account met behulp van een van deze hulpprogram 
 |[Azure-opslagverkenner](data-lake-storage-explorer.md#create-a-container)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
-|[Azure-CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
+|[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
 |[Azure Portal](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>Stap 7: de container koppelen
@@ -153,6 +153,15 @@ Maak een map in uw Windows-of Linux-systeem en koppel vervolgens een container i
    - Vervang de `<storage-account-name>` tijdelijke aanduiding die wordt weer gegeven in deze opdracht door de naam van uw opslag account.  
 
    - Vervang de `<container-name>` tijdelijke aanduiding door de naam van de container.
+
+3. Als u schrijf machtigingen nodig hebt, moet u mogelijk de standaard-UID en GID wijzigen die Windows gebruikt om verbinding te maken met de share. Als u dit wilt doen, voert u de volgende Power shell-opdrachten uit als beheerder:
+
+   ```
+   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousUid -PropertyType DWord -Value 0
+   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousGid -PropertyType DWord -Value 0
+   ```
+   
+   - Start de NFS-client service opnieuw of start de server opnieuw op nadat u deze wijziging hebt aangebracht.
 
 ---
 

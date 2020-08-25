@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408943"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749857"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Beheerde identiteiten in azure HDInsight
 
@@ -25,7 +25,9 @@ Er zijn twee soorten beheerde identiteiten: aan de gebruiker toegewezen en het s
 
 ## <a name="hdinsight-managed-identity-implementation"></a>Implementatie van door HDInsight beheerde identiteit
 
-In azure HDInsight worden beheerde identiteiten ingericht op elk knoop punt van het cluster. Deze identiteits onderdelen kunnen echter alleen worden gebruikt door de HDInsight-service. Er wordt momenteel geen methode ondersteund voor het genereren van toegangs tokens met behulp van de beheerde identiteiten die zijn geïnstalleerd op HDInsight-cluster knooppunten. Voor sommige Azure-Services worden beheerde identiteiten geïmplementeerd met een eind punt dat u kunt gebruiken voor het verkrijgen van toegangs tokens. Gebruik de tokens voor interactie met andere Azure-Services.
+In azure HDInsight kunnen beheerde identiteiten alleen worden gebruikt door de HDInsight-service voor interne onderdelen. Er wordt momenteel geen methode ondersteund voor het genereren van toegangs tokens met behulp van de beheerde identiteiten die zijn geïnstalleerd op HDInsight-cluster knooppunten voor toegang tot externe services. Voor sommige Azure-Services, zoals reken-Vm's, worden beheerde identiteiten geïmplementeerd met een eind punt dat u kunt gebruiken voor het verkrijgen van toegangs tokens. Dit eind punt is momenteel niet beschikbaar in HDInsight-knoop punten.
+
+Als u uw toepassingen moet Boots trappen om geheimen/wacht woorden te vermijden in de analyse taken (bijvoorbeeld SCALA-taken), kunt u uw eigen certificaten distrubte met behulp van script acties en vervolgens dat certificaat gebruiken om een toegangs token te ophalen (bijvoorbeeld om toegang te krijgen tot Azure-sleutel kluis).
 
 ## <a name="create-a-managed-identity"></a>Een beheerde identiteit maken
 
@@ -34,7 +36,7 @@ Beheerde identiteiten kunnen worden gemaakt met een van de volgende methoden:
 * [Azure-portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
 * [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
-* [Azure-CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
+* [Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 
 De resterende stappen voor het configureren van de beheerde identiteit zijn afhankelijk van het scenario waarin het wordt gebruikt.
 

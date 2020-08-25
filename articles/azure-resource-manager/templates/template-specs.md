@@ -2,15 +2,15 @@
 title: Overzicht van sjabloon specificaties
 description: Hierin wordt beschreven hoe u sjabloon specificaties maakt en deze deelt met andere gebruikers in uw organisatie.
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: f5151550b9f23ba63380688f53325f8976f14a51
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a88e799d2298cb21b5196f5aa143e5453c0447c0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921875"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783787"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sjabloon specificaties (preview-versie)
 
@@ -37,32 +37,32 @@ In het volgende voor beeld ziet u een eenvoudige sjabloon voor het maken van een
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_LRS",
-            "allowedValues": [
-                "Standard_LRS",
-                "Standard_GRS",
-                "Standard_ZRS",
-                "Premium_LRS"
-            ]
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-06-01",
-            "name": "[concat('store', uniquestring(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "kind": "StorageV2",
-            "sku": {
-                "name": "[parameters('storageAccountType')]"
-            }
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-06-01",
+      "name": "[concat('store', uniquestring(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "[parameters('storageAccountType')]"
+      }
+    }
+  ]
 }
 ```
 
@@ -70,21 +70,59 @@ Wanneer u de sjabloon specificatie maakt, wordt het hoofd sjabloon bestand door 
 
 Een sjabloon specificatie maken met behulp van:
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
-New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -TemplateJsonFile ./mainTemplate.json
+New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateJsonFile ./mainTemplate.json
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az template-specs create \
+  --name storageSpec \
+  --version "1.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json"
+```
+
+---
+
 U kunt alle sjabloon specificaties in uw abonnement weer geven met behulp van:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Get-AzTemplateSpec
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az template-specs list
+```
+
+---
+
 U kunt details van een sjabloon specificatie bekijken, inclusief de versies met:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Get-AzTemplateSpec -ResourceGroupName templateSpecsRG -Name storageSpec
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az template-specs show \
+    --name storageSpec \
+    --resource-group templateSpecRG \
+    --version "1.0"
+```
+
+---
 
 ## <a name="deploy-template-spec"></a>Sjabloonspecificatie implementeren
 
@@ -98,7 +136,9 @@ In plaats van een pad of URI voor een sjabloon door te geven, implementeert u ee
 
 U ziet dat de resource-ID een versie nummer bevat voor de sjabloon specificatie.
 
-U implementeert bijvoorbeeld een sjabloon spec met de volgende Power shell-opdracht.
+U implementeert bijvoorbeeld een sjabloon specificatie met de volgende opdracht.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0"
@@ -108,15 +148,41 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName demoRG
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0"
+
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id
+```
+
+---
+
 In de praktijk voert u meestal uit `Get-AzTemplateSpec` om de id op te halen van de sjabloon specificatie die u wilt implementeren.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
 
 New-AzResourceGroupDeployment `
-  -TemplateSpecId $id `
-  -ResourceGroupName demoRG
+  -ResourceGroupName demoRG `
+  -TemplateSpecId $id
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+id = $(az template-specs show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id
+```
+
+---
 
 ## <a name="parameters"></a>Parameters
 
@@ -124,12 +190,25 @@ Het door geven van para meters aan sjabloon spec is precies hetzelfde als het do
 
 Als u een para meter inline wilt door geven, gebruikt u:
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName demoRG `
   -StorageAccountType Standard_GRS
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id \
+  --parameters storageAccountType='Standard_GRS'
+```
+
+---
 
 Als u een lokaal parameter bestand wilt maken, gebruikt u:
 
@@ -147,12 +226,25 @@ Als u een lokaal parameter bestand wilt maken, gebruikt u:
 
 En geef dat parameter bestand door:
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName demoRG `
   -TemplateParameterFile ./mainTemplate.parameters.json
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id \
+  --parameters "./mainTemplate.parameters.json"
+```
+
+---
 
 ## <a name="create-a-template-spec-with-linked-templates"></a>Een sjabloon specificatie met gekoppelde sjablonen maken
 
@@ -162,35 +254,34 @@ Het volgende voor beeld bestaat uit een hoofd sjabloon met twee gekoppelde sjabl
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    ...
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            ...
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "relativePath": "artifacts/webapp.json"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            ...
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "relativePath": "artifacts/database.json"
-                }
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      ...
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "artifacts/webapp.json"
         }
-    ],
-    "outputs": {}
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      ...
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "artifacts/database.json"
+        }
+      }
+    }
+  ],
+  "outputs": {}
 }
-
 ```
 
 Wanneer de Power shell-of CLI-opdracht voor het maken van de sjabloon specificatie wordt uitgevoerd voor het voor gaande voor beeld, wordt met de opdracht drie bestanden gevonden: de hoofd sjabloon, de sjabloon web-app ( `webapp.json` ) en de database sjabloon ( `database.json` ) en verpakt in de sjabloon specificatie.
@@ -207,35 +298,35 @@ Het volgende voor beeld is vergelijkbaar met het vorige voor beeld, maar u gebru
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    ...
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "networkingDeployment",
-            ...
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'networkingSpec', '1.0')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "storageDeployment",
-            ...
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
-                }
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "networkingDeployment",
+      ...
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'networkingSpec', '1.0')]"
         }
-    ],
-    "outputs": {}
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "storageDeployment",
+      ...
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
+        }
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 

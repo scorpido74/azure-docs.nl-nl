@@ -11,18 +11,18 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747272"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798496"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Beveiligingsgegevens instellen vanaf een aanmeldingsprompt
 
 U kunt deze stappen volgen als u wordt gevraagd uw beveiligingsgegevens in te stellen, onmiddellijk nadat u zich aanmeldt bij uw werk- of schoolaccount.
 
-U ziet deze prompt alleen als u niet de beveiligingsgegevens hebt ingesteld die zijn vereist door uw organisatie. Als u eerder de beveiligingsgegevens hebt ingesteld, maar u wijzigingen wilt aanbrengen, kunt u de stappen volgen in de verschillende artikelen met uitleg per methode. Zie [Uw overzicht met beveiligingsinformatie toevoegen of bijwerken](security-info-add-update-methods-overview.md) voor meer informatie.
+U ziet deze prompt alleen als u niet de beveiligingsgegevens hebt ingesteld die zijn vereist door uw organisatie. Als u eerder de beveiligingsgegevens hebt ingesteld, maar u wijzigingen wilt aanbrengen, kunt u de stappen volgen in de verschillende artikelen met uitleg per methode. Zie [Uw overzicht met beveiligingsinformatie toevoegen of bijwerken](./security-info-setup-auth-app.md) voor meer informatie.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 

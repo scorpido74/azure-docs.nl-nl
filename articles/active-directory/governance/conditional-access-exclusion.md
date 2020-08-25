@@ -16,19 +16,19 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a619843f781fa24bfdc2a339e67fdb49b1bff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078843"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783685"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD-toegangs beoordelingen gebruiken voor het beheren van gebruikers die zijn uitgesloten van het beleid voor voorwaardelijke toegang
 
-In een ideale wereld volgen alle gebruikers het toegangs beleid om de toegang tot de resources van uw organisatie te beveiligen. Soms zijn er echter zakelijke cases waarvoor u uitzonde ringen moet maken. In dit artikel worden enkele voor beelden gegeven van situaties waarin uitsluitingen nood zakelijk kunnen zijn. Als IT-beheerder kan deze taak beheren, het toezicht op beleids uitzonderingen voor komen en Audi tors voorzien van een bewijs dat deze uitzonde ringen regel matig worden gecontroleerd met behulp van Azure Active Directory (Azure AD)-toegangs Beoordelingen.
+In een ideale wereld volgen alle gebruikers het toegangs beleid om de toegang tot de resources van uw organisatie te beveiligen. Soms zijn er echter zakelijke cases die uitzonderingen vereisen. In dit artikel worden enkele voor beelden gegeven van situaties waarin uitsluitingen nood zakelijk kunnen zijn. Als IT-beheerder kan deze taak beheren, het toezicht op beleids uitzonderingen voor komen en Audi tors voorzien van een bewijs dat deze uitzonde ringen regel matig worden gecontroleerd met behulp van Azure Active Directory (Azure AD)-toegangs Beoordelingen.
 
 >[!NOTE]
-> Een geldige Azure AD Premium P2, Enterprise Mobility + Security E5 betaalde of een proef licentie is vereist voor het gebruik van Azure AD-toegangs Beoordelingen. Zie [Azure Active Directory-edities](../fundamentals/active-directory-whatis.md)voor meer informatie.
+> Een geldige Azure AD Premium P2, Enterprise Mobility + Security E5 betaalde of een proef licentie is vereist voor het gebruik van Azure AD-toegangs Beoordelingen. Zie [Azure Active Directory-edities](../fundamentals/active-directory-whatis.md) voor meer informatie.
 
 ## <a name="why-would-you-exclude-users-from-policies"></a>Waarom zou u gebruikers uitsluiten van beleid?
 
@@ -144,7 +144,7 @@ Stel dat u een beleid voor voorwaardelijke toegang hebt waarmee de toegang wordt
     ![Een toegangs beoordelings venster maken bijvoorbeeld 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
 >[!IMPORTANT] 
->Als u veel uitsluitings groepen hebt en daarom meerdere toegangs beoordelingen moet maken, hebben we nu een API in het Microsoft Graph bèta-eind punt waarmee u ze programmatisch kunt maken en beheren. Als u aan de slag wilt gaan, raadpleegt u de [Azure AD Access beoordelingen API-referentie](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) en [voor beeld van het ophalen van Azure AD-toegangs beoordelingen via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
+>Als u veel uitsluitings groepen hebt en daarom meerdere toegangs beoordelingen moet maken, hebben we nu een API in het Microsoft Graph bèta-eind punt waarmee u ze programmatisch kunt maken en beheren. Als u aan de slag wilt gaan, raadpleegt u de [Azure AD Access beoordelingen API-referentie](/graph/api/resources/accessreviews-root?view=graph-rest-beta) en [voor beeld van het ophalen van Azure AD-toegangs beoordelingen via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
 ## <a name="access-review-results-and-audit-logs"></a>Resultaten en audit logboeken voor toegang controleren
 
@@ -166,5 +166,5 @@ Als IT-beheerder weet u dat het beheren van uitsluitings groepen in uw beleid so
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een toegangs beoordeling van groepen of toepassingen maken](create-access-review.md)
+- [Een toegangsbeoordeling van groepen of toepassingen maken](create-access-review.md)
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](../conditional-access/overview.md)

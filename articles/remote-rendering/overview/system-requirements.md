@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300603"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798462"
 ---
 # <a name="system-requirements"></a>Systeemvereisten
 
@@ -24,7 +24,7 @@ Dit hoofd stuk bevat de minimale systeem vereisten voor het werken met *Azure re
 
 * Windows 10 versie 1903 of hoger.
 * Up-to-date grafische Stuur Programma's.
-* Optioneel: H265 hardware-video decoder als u de lokale preview van extern gerenderde inhoud wilt gebruiken (bijvoorbeeld eenheids Unit).
+* Optioneel: [H265 hardware-video decoder](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)als u de lokale preview van extern gerenderde inhoud wilt gebruiken (bijvoorbeeld eenheids Unit).
 
 > [!IMPORTANT]
 > Windows Update levert niet altijd de meest recente GPU-Stuur Programma's. Raadpleeg de website van uw GPU-fabrikant voor de meest recente Stuur Programma's:
@@ -52,7 +52,7 @@ Het is belang rijk dat u de nieuwste HEVC-codec gebruikt, omdat nieuwere versies
 1. Start de **Microsoft Store**.
 1. Klik op de knop **'... '** in de rechter bovenhoek.
 1. Selecteer **down loads en updates**.
-1. Zoek in de lijst naar **HEVC-video-uitbrei dingen van de fabrikant van het apparaat**.
+1. Zoek in de lijst naar **HEVC-video-uitbrei dingen van de fabrikant van het apparaat**. Als dit item niet onder updates wordt weer gegeven, is de meest recente versie al geïnstalleerd.
 1. Zorg ervoor dat de vermelde codec ten minste versie **1.0.21821.0**.
 1. Klik op de knop **updates ophalen** en wacht totdat deze is geïnstalleerd.
 
@@ -74,7 +74,7 @@ De volgende software moet zijn geïnstalleerd:
   * **Universal Windows Platform (UWP)-ontwikkeling**
 * **Windows SDK 10.0.18362.0** [(down load)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **Git** [(down load)](https://git-scm.com/downloads)
-* Optioneel: als u de video stroom van de server op een desktop computer wilt weer geven, hebt u de **HEVC-video-extensie** [(Microsoft Store link)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)nodig.
+* Optioneel: als u de video stroom van de server op een desktop computer wilt weer geven, hebt u de **HEVC-video-extensie** [(Microsoft Store link)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)nodig. Controleer of de meest recente versie is geïnstalleerd door te controleren op updates in de Store.
 
 ## <a name="unity"></a>Unity
 

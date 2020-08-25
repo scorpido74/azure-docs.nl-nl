@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164220"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798394"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Accounts delen met Azure AD
 
@@ -59,7 +59,7 @@ Azure AD-functies die het delen van accounts mogelijk maken omvatten:
 * Aanmeldings agent voor eenmalige aanmelding
 * [Groeps toewijzing](groups-self-service-management.md)
 * Aangepaste wacht woord-apps
-* [App-gebruiks Dashboard/-rapporten](../active-directory-passwords-get-insights.md)
+* [App-gebruiks Dashboard/-rapporten](../authentication/howto-sspr-reporting.md)
 * Portals voor toegang door eind gebruikers
 * [App-proxy](../manage-apps/application-proxy.md)
 * [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
@@ -72,10 +72,10 @@ Als u Azure AD wilt gebruiken om een account te delen, moet u het volgende doen:
 * De toepassing configureren voor eenmalige aanmelding met een wacht woord (SSO)
 * Gebruik [toewijzing op basis van een groep](groups-saasapps.md) en selecteer de optie om een gedeelde referentie in te voeren
 
-U kunt uw gedeelde account ook veiliger maken met Multi-Factor Authentication (MFA) (meer informatie over het [beveiligen van toepassingen met Azure AD](../authentication/concept-mfa-whichversion.md)) en u kunt de mogelijkheid voor het beheren van toegang tot de toepassing overdragen met behulp van het selfservice groeps beheer van [Azure AD](groups-self-service-management.md) .
+U kunt uw gedeelde account ook veiliger maken met Multi-Factor Authentication (MFA) (meer informatie over het [beveiligen van toepassingen met Azure AD](../authentication/concept-mfa-howitworks.md)) en u kunt de mogelijkheid voor het beheren van toegang tot de toepassing overdragen met behulp van het selfservice groeps beheer van [Azure AD](groups-self-service-management.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Application Management in Azure Active Directory](../manage-apps/what-is-application-management.md) (Toepassingsbeheer in Azure Active Directory)
-* [Apps beveiligen met voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md)
+* [Apps beveiligen met voorwaardelijke toegang](../conditional-access/overview.md)
 * [Self-service voor groeps beheer/SSAA](groups-self-service-management.md)

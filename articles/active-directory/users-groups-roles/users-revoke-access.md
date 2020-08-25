@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb2ad8e6d37190d0473f3f9f4af7738edd3b27f
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475206"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798411"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Gebruikers toegang intrekken in Azure Active Directory
 
@@ -38,7 +38,7 @@ Toegangs tokens en vernieuwings tokens worden vaak gebruikt met dikke client toe
 
 Azure AD evalueert vervolgens het autorisatie beleid opnieuw. Als de gebruiker nog gemachtigd is, geeft Azure AD een nieuw toegangs token en vernieuwings token uit.
 
-Toegangs tokens kunnen een beveiligings probleem zijn als de toegang moet worden ingetrokken binnen een tijd die korter is dan de levens duur van het token, meestal ongeveer een uur. Daarom werkt micro soft actief om [voortdurende toegang](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation) te geven aan Office 365-toepassingen, waardoor de validatie van toegangs tokens in bijna realtime niet mogelijk is.  
+Toegangs tokens kunnen een beveiligings probleem zijn als de toegang moet worden ingetrokken binnen een tijd die korter is dan de levens duur van het token, meestal ongeveer een uur. Daarom werkt micro soft actief om [voortdurende toegang](../fundamentals/concept-fundamentals-continuous-access-evaluation.md) te geven aan Office 365-toepassingen, waardoor de validatie van toegangs tokens in bijna realtime niet mogelijk is.  
 
 ## <a name="session-tokens-cookies"></a>Sessie tokens (cookies)
 
@@ -60,13 +60,13 @@ Voor een hybride omgeving met on-premises Active Directory gesynchroniseerd met 
 
 Als beheerder in de Active Directory maakt u verbinding met uw on-premises netwerk, opent u Power shell en voert u de volgende acties uit:
 
-1. Schakel de gebruiker uit in Active Directory. Raadpleeg [Disable-ADAccount](https://docs.microsoft.com/powershell/module/addsadministration/disable-adaccount?view=win10-ps).
+1. Schakel de gebruiker uit in Active Directory. Raadpleeg [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps).
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. Het wacht woord van de gebruiker twee keer opnieuw instellen in de Active Directory. Raadpleeg [set-ADAccountPassword](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps).
+1. Het wacht woord van de gebruiker twee keer opnieuw instellen in de Active Directory. Raadpleeg [set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps).
 
     > [!NOTE]
     > De reden voor het twee keer wijzigen van het wacht woord van een gebruiker is het verminderen van het risico van Pass-the-hash, met name als er vertragingen optreden bij de on-premises wachtwoord replicatie. Als u veilig kunt aannemen dat dit account niet is aangetast, kunt u het wacht woord slechts eenmaal opnieuw instellen.
@@ -83,18 +83,18 @@ Als beheerder in de Active Directory maakt u verbinding met uw on-premises netwe
 
 Als beheerder in Azure Active Directory opent u Power shell, voert u uit ``Connect-AzureAD`` en neemt u de volgende acties:
 
-1. Schakel de gebruiker uit in azure AD. Raadpleeg [set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
+1. Schakel de gebruiker uit in azure AD. Raadpleeg [set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. Trek de Azure AD-vernieuwings tokens van de gebruiker in. Raadpleeg [REVOKE-AzureADUserAllRefreshToken](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
+1. Trek de Azure AD-vernieuwings tokens van de gebruiker in. Raadpleeg [REVOKE-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. Schakel de apparaten van de gebruiker uit. Raadpleeg [Get-AzureADUserRegisteredDevice](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
+1. Schakel de apparaten van de gebruiker uit. Raadpleeg [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -102,9 +102,9 @@ Als beheerder in Azure Active Directory opent u Power shell, voert u uit ``Conne
 
 ## <a name="optional-steps"></a>Optionele stappen
 
-- [Bedrijfs gegevens wissen uit door intune beheerde toepassingen](https://docs.microsoft.com/mem/intune/apps/apps-selective-wipe).
+- [Bedrijfs gegevens wissen uit door intune beheerde toepassingen](/mem/intune/apps/apps-selective-wipe).
 
-- [Apparaten in bedrijfs eigendom wissen het apparaat wordt opnieuw ingesteld op de standaard fabrieks instellingen](https://docs.microsoft.com/mem/intune/remote-actions/devices-wipe).
+- [Apparaten in bedrijfs eigendom wissen het apparaat wordt opnieuw ingesteld op de standaard fabrieks instellingen](/mem/intune/remote-actions/devices-wipe).
 
 > [!NOTE]
 > Gegevens op het apparaat kunnen niet worden hersteld na een gewist.

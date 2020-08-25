@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: f06f8d3450f8907aa1be34b738565ac55e5e3d2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 160912ef53b5c079d026c5d16230f49eadf66366
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559135"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794431"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Verbinding maken met gegevens van Azure Information Protection
 
@@ -57,15 +57,17 @@ Als de logboek gegevens van Azure Information Protection echter naar een andere 
 
 Gebruik de volgende instructies als u geen Log Analytics werk ruimte voor Azure Information Protection hebt geconfigureerd of als u de werk ruimte wilt wijzigen waarin de logboek gegevens van Azure Information Protection worden opgeslagen.
 
-1. In azure Sentinel selecteert u **Data connectors**en vervolgens **Azure Information Protection (preview)**.
+1. Selecteer in azure Sentinel Azure Information Protection **Data connectors**  >  **(preview)**.
 
 2. Selecteer de **pagina connector openen**.
 
-3. Selecteer op de Blade **analyse configureren (preview)** de werk ruimte die u momenteel gebruikt voor Azure Sentinel. Als u een andere werk ruimte selecteert, zijn de rapport gegevens van Azure Information Protection niet beschikbaar voor Azure Sentinel.
+3. Selecteer onder **configuratie**de optie **verbinding maken Azure Information Protection logboeken**.
 
-4. Wanneer u een werk ruimte hebt geselecteerd, selecteert u **OK** . de **status** van de connector moet nu worden gewijzigd in **verbonden**.
+4. Selecteer op de Blade **analyse configureren (preview)** de werk ruimte die u momenteel gebruikt voor Azure Sentinel. Als u een andere werk ruimte selecteert, zijn de rapport gegevens van Azure Information Protection niet beschikbaar voor Azure Sentinel.
 
-5. De rapport gegevens van Azure Information Protection worden opgeslagen in de **InformationProtectionLogs_CL** tabel in de geselecteerde werk ruimte. 
+5. Nadat u een werk ruimte hebt geselecteerd, selecteert u **OK**. De **status** van de connector verandert in **verbonden**.
+
+6. De rapport gegevens van Azure Information Protection worden opgeslagen in de **InformationProtectionLogs_CL** tabel in de geselecteerde werk ruimte. 
     
     Als u het relevante schema in Azure Monitor voor deze rapport gegevens wilt gebruiken, zoekt u naar **InformationProtectionEvents**. Zie de sectie [beschrijvende schema verwijzing voor gebeurtenis functies](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) in de Azure Information Protection-documentatie voor meer informatie over deze gebeurtenis functies.
 
