@@ -4,15 +4,15 @@ description: Hierin worden gegevens bronnen en connectors beschreven die worden 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503596"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749081"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Ondersteunde gegevensbronnen in Azure Analysis Services
 
@@ -22,15 +22,15 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 
 |Gegevensbron  |In het geheugen  |DirectQuery  |Opmerkingen |
 |---------|---------|---------|---------|
-|Azure SQL Database      |   Ja      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure Synapse Analytics (SQL DW)      |   Ja      |   Yes       |<sup>[twee](#azprovider)</sup>|
-|Azure Blob Storage      |   Yes       |    Nee      | <sup>[i](#tab1400a)</sup> |
-|Azure Table Storage     |   Yes       |    Nee      | <sup>[i](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Yes        |  Nee        |<sup>[i](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Yes       |    Nee      |<sup>[i](#tab1400a)</sup> |
-|Azure Data Lake Store Gen2       |   Yes       |    Nee      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|Azure HDInsight HDFS    |     Yes     |   Nee       |<sup>[i](#tab1400a)</sup> |
-|Azure HDInsight Spark     |   Yes       |   Nee       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
+|Azure SQL Database      |   Ja      |    Ja      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   Ja      |   Ja       |<sup>[twee](#azprovider)</sup>|
+|Azure Blob Storage      |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup> |
+|Azure Table Storage     |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Ja        |  Nee        |<sup>[i](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Ja       |    Nee      |<sup>[i](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   Ja       |    Nee      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Azure HDInsight HDFS    |     Ja     |   Nee       |<sup>[i](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   Ja       |   Nee       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
 **Opmerkingen:**
@@ -43,37 +43,37 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 
 ## <a name="other-data-sources"></a>Andere gegevensbronnen
 
-|Gegevensbron | In het geheugen | DirectQuery |Notities   |
+|Gegevensbron | In het geheugen | DirectQuery |Opmerkingen   |
 |  --- | --- | --- | --- |
-|Access-database     |  Yes | Nee |  |
-|Active Directory     |  Yes | Nee | <sup>[6,5](#tab1400b)</sup>  |
-|Analysis Services     |  Yes | Nee |  |
-|Analytics platform systeem     |  Yes | Nee |  |
-|CSV-bestand  |Yes | Nee |  |
-|Dynamics 365     |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Excel-werkmap     |  Yes | Nee |  |
-|Exchange      |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Access-database     |  Ja | Nee |  |
+|Active Directory     |  Ja | Nee | <sup>[6,5](#tab1400b)</sup>  |
+|Analysis Services     |  Ja | Nee |  |
+|Analytics platform systeem     |  Ja | Nee |  |
+|CSV-bestand  |Ja | Nee |  |
+|Dynamics 365     |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Excel-werkmap     |  Ja | Nee |  |
+|Exchange      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
 |Map      |Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|IBM Informix  |Yes | Nee |  |
-|JSON-document      |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Regels van binair bestand      | Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
-|MySQL-database     | Yes | Nee |  |
-|OData-feed      |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
-|ODBC-query     | Yes | Nee |  |
-|OLE DB     |   Yes | Nee |  |
-|Oracle  | Ja  |Yes  | <sup>[9](#oracle)</sup> |
-|PostgreSQL-database   | Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Salesforce-objecten|  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Salesforce-rapporten |Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
-|SAP HANA     |  Yes | Nee |  |
-|SAP Business Warehouse    |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
-|SharePoint-lijst      |   Yes | Nee | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Ja   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|SQL Server Data Warehouse |Ja   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|Sybase-database     |  Yes | Nee |  |
-|Teradata | Ja  | Yes  | <sup>[6](#teradata)</sup> |
-|TXT-bestand  |Yes | Nee |  |
-|XML-tabel    |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|IBM Informix  |Ja | Nee |  |
+|JSON-document      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Regels van binair bestand      | Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|MySQL-database     | Ja | Nee |  |
+|OData-feed      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|ODBC-query     | Ja | Nee |  |
+|OLE DB     |   Ja | Nee |  |
+|Oracle  | Ja  |Ja  | <sup>[9](#oracle)</sup> |
+|PostgreSQL-database   | Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Salesforce-objecten|  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Salesforce-rapporten |Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|SAP HANA     |  Ja | Nee |  |
+|SAP Business Warehouse    |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|SharePoint-lijst      |   Ja | Nee | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|SQL Server |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server Data Warehouse |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|Sybase-database     |  Ja | Nee |  |
+|Teradata | Ja  | Ja  | <sup>[6](#teradata)</sup> |
+|TXT-bestand  |Ja | Nee |  |
+|XML-tabel    |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
 | | | |
 
 **Opmerkingen:**  
@@ -120,7 +120,7 @@ Voor gegevens bronnen in de Cloud:
 
 ## <a name="oauth-credentials"></a>OAuth-referenties
 
-Voor modellen in tabel vorm met het compatibiliteits niveau 1400 en hoger met behulp van de modus in het geheugen, Azure SQL Database, Azure Synapse (voorheen SQL Data Warehouse), Dynamics 365 en share Point List ondersteunen OAuth-referenties. Azure Analysis Services beheert het vernieuwen van tokens voor OAuth-gegevens bronnen om time-outs voor langdurige vernieuwings bewerkingen te voor komen. Als u geldige tokens wilt genereren, stelt u referenties in met behulp van SSMS.
+Voor modellen in tabel vorm met het compatibiliteits niveau 1400 en hoger met behulp van de modus in het geheugen, Azure SQL Database, Azure Synapse (voorheen SQL Data Warehouse), Dynamics 365 en share Point List ondersteunen OAuth-referenties. Azure Analysis Services beheert het vernieuwen van tokens voor OAuth-gegevens bronnen om time-outs voor langdurige vernieuwings bewerkingen te voor komen. Als u geldige tokens wilt genereren, stelt u referenties in met behulp van Power Query.
 
 De direct query-modus wordt niet ondersteund met OAuth-referenties.
 

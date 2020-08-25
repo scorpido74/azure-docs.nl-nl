@@ -1,29 +1,29 @@
 ---
-title: Shared Access Signature-tokens ophalen in code | Azure Key Vault
-description: De functie Managed Storage-account biedt een naadloze integratie tussen Azure Key Vault en een Azure Storage-account.
-ms.topic: conceptual
+title: Shared Acces Signature-tokens in code ophalen | Azure Key Vault
+description: De functie voor beheerde opslagaccounts biedt een naadloze integratie tussen Azure Key Vault en een Azure-opslagaccount.
+ms.topic: tutorial
 ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: e429115ce2624685c413ae252229964feee70137
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
-ms.translationtype: MT
+ms.openlocfilehash: 6530434e36f7c9a9a60a9782bcf2dce7ba447dab
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232590"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584910"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>Shared Acces Signature-tokens in code ophalen
 
-U kunt uw opslag account met SAS-tokens (Shared Access Signature) beheren die zijn opgeslagen in uw sleutel kluis. Zie [granting Limited Access to Azure storage resources using SAS](../../storage/common/storage-sas-overview.md)(Engelstalig) voor meer informatie.
+U kunt uw opslagaccount met SAS-tokens (Shared Access Signature) beheren die zijn opgeslagen in uw sleutelkluis. Zie [Beperkte toegang verlenen tot Azure Storage-resources via SAS](../../storage/common/storage-sas-overview.md) voor meer informatie.
 
-In dit artikel vindt u voor beelden van .NET-code waarmee een SAS-token wordt opgehaald en waarmee bewerkingen worden uitgevoerd. Zie voor meer informatie over het maken en opslaan van SAS-tokens [sleutels voor opslag accounts beheren met Key Vault en de Azure CLI of de](overview-storage-keys.md) [sleutels van het opslag account beheren met Key Vault en Azure PowerShell](overview-storage-keys-powershell.md).
+In dit artikel vindt u voorbeelden van .NET-code die een SAS-token ophaalt waarmee bewerkingen worden uitgevoerd. Voor informatie over het maken en opslaan van SAS-tokens, raadpleegt u [Sleutels voor opslagaccounts beheren met Key Vault en de Azure CLI](overview-storage-keys.md) of [Sleutels voor opslagaccounts beheren met Key Vault en Azure PowerShell](overview-storage-keys-powershell.md).
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-In dit voor beeld wordt met de code een SAS-token uit uw sleutel kluis opgehaald, gebruikt om een nieuw opslag account te maken en wordt een nieuwe Blob service-client gemaakt.
+In dit voorbeeld haalt de code een SAS-token uit uw sleutelkluis op, deze gebruikt het token om een nieuw opslagaccount te maken en maakt deze een nieuwe Blob service-client.
 
 ```cs
 // The shared access signature is stored as a secret in keyvault. 
@@ -45,7 +45,7 @@ CloudStorageAccount accountWithSAS = new CloudStorageAccount(accountSAS, "<stora
 CloudBlobClient blobClientWithSAS = accountWithSAS.CreateCloudBlobClient();
 ```
 
-Als uw Shared Access Signature-token bijna is verlopen, kunt u het token voor de Shared Access-hand tekening ophalen uit de sleutel kluis en de code bijwerken.
+Als uw SAS-token bijna is verlopen, kunt u het SAS-token ophalen uit de sleutelkluis en de code bijwerken.
 
 ```cs
 // If your shared access signature token is about to expire,
@@ -57,6 +57,6 @@ accountSAS.UpdateSASToken(sasToken);
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het [verlenen van beperkte toegang tot Azure storage-resources met behulp van SAS](../../storage/common/storage-sas-overview.md).
-- Meer informatie over het [beheren van sleutels voor opslag accounts met Key Vault en de Azure cli](overview-storage-keys.md) of [Azure PowerShell](overview-storage-keys-powershell.md).
-- Zie [sleutel voorbeelden voor beheerde opslag accounts](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
+- Meer informatie over [Beperkte toegang verlenen tot Azure Storage-resources via SAS](../../storage/common/storage-sas-overview.md).
+- Meer informatie over [Sleutels voor opslagaccounts beheren met Key Vault en de Azure CLI](overview-storage-keys.md) of [Azure PowerShell](overview-storage-keys-powershell.md).
+- Zie [Voorbeelden van sleutels voor beheerde opslagaccounts](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)

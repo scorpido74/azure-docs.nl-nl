@@ -1,21 +1,21 @@
 ---
 title: Toegang tot Key Vault achter een firewall - Azure Key Vault | Microsoft Docs
-description: Meer informatie over toegang tot Azure Key Vault vanuit een toepassing achter een firewall
+description: Informatie over welke poorten, hosts en IP-adressen moeten worden geopend om een sleutelkluis-clienttoepassing achter een firewall toegang te geven tot de sleutelkluis.
 services: key-vault
 author: amitbapat
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: db5c35db271f84a88fdc03f4f0178ee1c35f727e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1ab5ae7bf9f1d13458e3bbeeec564fe642eb3303
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834319"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588725"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Toegang tot Azure Key Vault achter een firewall
 

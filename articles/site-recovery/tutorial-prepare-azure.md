@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498970"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653814"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Azure voorbereiden op herstel na noodgevallen van on-premises machines naar Azure
 
@@ -94,4 +94,4 @@ Het duurt een paar seconden voordat het virtuele netwerk is gemaakt. Nadat dit i
 - Voor herstel na noodgevallen voor Hyper-V-servers [bereidt u de on-premises Hyper-V-servers voor](hyper-v-prepare-on-premises-tutorial.md).
 - Voor herstel na noodgevallen voor fysieke servers [stelt u de configuratieserver en bronomgeving in](physical-azure-disaster-recovery.md).
 - [Meer informatie](../virtual-network/virtual-networks-overview.md) over Azure-netwerken.
-- [Meer informatie](../virtual-machines/windows/managed-disks-overview.md) over beheerde schijven.
+- [Meer informatie](../virtual-machines/managed-disks-overview.md) over beheerde schijven.

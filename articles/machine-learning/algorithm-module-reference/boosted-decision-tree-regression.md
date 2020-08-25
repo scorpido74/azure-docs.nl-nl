@@ -8,19 +8,21 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/22/2020
-ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 171c53aa36ecc854cf32a64f9f2639a7086c24e5
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84448628"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782580"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Regressie module voor versterkte beslissings structuur
 
 In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een ensemble van regressie structuren te maken met behulp van Boosting. *Versterking* houdt in dat elke boom structuur afhankelijk is van eerdere structuren. Het algoritme leert u door het aanpassen van de rest van de bomen die erop werden gevolgd. Zo kunt u in een beslissings structuur een ensemble verhogen om de nauw keurigheid van een klein risico van minder behoefte aan te nemen.  
+
+Deze module is gebaseerd op LightGBM-algoritme.
   
 Deze regressie methode is een *gelabelde*leer methode en vereist daarom een gegevensset met de naam. De label kolom moet numerieke waarden bevatten.  
 

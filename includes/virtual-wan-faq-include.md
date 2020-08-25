@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 7411b4c000569693335cb0438fe186b290750247
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507571"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88602512"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker over hub en spoke beschikken met SD-WAN/VPN-apparaten om Azure Virtual WAN te kunnen gebruiken?
 
@@ -256,6 +256,9 @@ IPv6 wordt niet ondersteund in Virtual WAN-hub en de bijbehorende gateways. Dit 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Wat is de aanbevolen API-versie die door scripts moet worden gebruikt om verschillende Virtual WAN-functionaliteit te automatiseren?
 
 Er is minimaal de versie van 05-01-2020 (1 mei 2020) vereist. 
+
+### <a name="any-virtual-wan-limits"></a>Zijn er limieten voor Virtual WAN van toepassing?
+Limieten voor Virtual WAN: https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Wat zijn de verschillen tussen de Virtual WAN-typen (Basic en Standard)?
 

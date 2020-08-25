@@ -1,14 +1,14 @@
 ---
 title: Beheeropties voor het blauwdrukvoorbeeld IRS 1075
 description: Toewijzing van beheeropties voor het blauwdrukvoorbeeld IRS 1075. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpen bij de evaluatie.
-ms.date: 05/13/2020
+ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: ce753ff1a7c6dd0029f3d6ee773ae40ab4cc78e9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b7208a475d35674cc1abb6932a04681a11f7e89b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920769"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653746"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Toewijzing van beheeropties voor het blauwdrukvoorbeeld IRS 1075
 
@@ -21,7 +21,7 @@ De volgende toewijzingen zijn voor de **IRS 1075**-beheeropties. Gebruik de navi
 
 ## <a name="9321-ac-2-account-management"></a>9.3.2.1 AC-2 Account Management
 
-Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoen aan de accountbeheervereisten van uw organisatie. Met deze blauwdruk wordt [Azure Policy](../../../policy/overview.md)-definities toegewezen die externe accounts controleren met lees-, schrijf- en eigenaarsmachtigingen voor een abonnement en afgeschafte accounts. Door de evaluatie van de door dit beleid gecontroleerde accounts kunt u de juiste actie ondernemen om ervoor te zorgen dat aan de vereisten voor accountbeheer is voldaan.
+Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoen aan de accountbeheervereisten van uw organisatie. Met deze blauwdruk worden [Azure Policy](../../../policy/overview.md)-definities toegewezen die externe accounts controleren met lees-, schrijf- en eigenaarsmachtigingen voor een abonnement en afgeschafte accounts. Door de evaluatie van de door dit beleid gecontroleerde accounts kunt u de juiste actie ondernemen om ervoor te zorgen dat aan de vereisten voor accountbeheer is voldaan.
 
 - Afgeschafte accounts moeten worden verwijderd uit uw abonnement
 - Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
@@ -39,7 +39,7 @@ In Azure wordt [op rollen gebaseerde toegangsbeheer van Azure (Azure RBAC)](../.
 
 ## <a name="9321-ac-2-12-account-management--account-monitoring--atypical-usage"></a>9.3.2.1 AC-2 (12) Account Management | Accountbewaking/ongewoon gebruik
 
-Just-In-Time-VM-toegang vergrendelt binnenkomend verkeer naar uw Azure-VM's, zodat u minder kwetsbaar bent voor aanvallen maar tegelijkertijd eenvoudig toegang wordt geboden om verbinding met VM's te kunnen maken wanneer dat nodig is. Alle JIT-aanvragen voor toegang tot virtuele machines worden vastgelegd in het activiteitenlogboek, zodat u dit kunt controleren op ongewoon gebruik. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u virtuele machines kunt bewaken die just-in-time-toegang kunnen ondersteunen, maar die nog niet zijn geconfigureerd.
+Met Just-In-Time-VM-toegang wordt binnenkomend verkeer naar uw Azure-VM's vergrendeld, zodat u minder kwetsbaar bent voor aanvallen maar wordt tegelijkertijd eenvoudig toegang geboden om verbinding met VM's te kunnen maken wanneer dat nodig is. Alle JIT-aanvragen voor toegang tot virtuele machines worden vastgelegd in het activiteitenlogboek, zodat u kunt controleren op ongewoon gebruik. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u virtuele machines kunt bewaken die just-in-time-toegang kunnen ondersteunen, maar die nog niet zijn geconfigureerd.
 
 - Just-In-Time-netwerktoegangsbeheer moet worden toegepast op virtuele machines
 
@@ -254,7 +254,7 @@ Met deze blauwdruk kunt u de vertrouwelijkheid en integriteit van verzonden info
 
 ## <a name="93166-sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>9.3.16.6 SC-28 (1) Protection of Information at Rest | Cryptografische beveiliging
 
-Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties voor het beveiligen van inactieve informatie, door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen waarmee u specifieke cryptografische beheeropties kunt afdwingen en het gebruik van zwakke cryptografische instellingen kunt controleren. Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name de beleidsdefinities die door deze blauwdrukken worden toegewezen, vereisen versleuteling voor data lake-opslagaccounts en transparante gegevensversleuteling voor SQL-databases, en controleren op ontbrekende versleuteling voor SQL-databases, schijven van virtuele machines en accountvariabelen voor automatisering.
+Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties voor het beveiligen van inactieve informatie, door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen waarmee u specifieke cryptografische beheeropties kunt afdwingen en het gebruik van zwakke cryptografische instellingen kunt controleren. Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name voor de beleidsdefinities die door deze blauwdrukken worden toegewezen, is vereist dat data lake-opslagaccounts en transparante gegevensversleuteling voor SQL-databases zijn versleuteld, en dat wordt gecontroleerd op ontbrekende versleuteling voor SQL-databases, schijven van virtuele machines en accountvariabelen voor automatisering.
 
 - Advanced Data Security moet zijn ingeschakeld voor uw beheerde instanties
 - Advanced Data Security moet zijn ingeschakeld op uw SQL-servers

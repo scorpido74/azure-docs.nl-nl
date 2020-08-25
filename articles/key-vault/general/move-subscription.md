@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d37fae18cd2f3e3bfad647cc176253dc6bb101ab
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585743"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782716"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Een Azure Key Vault verplaatsen naar een ander abonnement
 
@@ -59,7 +59,9 @@ Zorg ervoor dat u naar de pagina Azure Policy gaat in de Azure Portal en Bekijk 
 
 ## <a name="procedure"></a>Procedure
 
-### <a name="initial-steps-moving-key-vault"></a>Eerste stappen (verplaatsen Key Vault)
+Als u 
+
+### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Key Vault verplaatsen naar een nieuw abonnement binnen dezelfde Tenant
 
 1. Aanmelden bij Azure Portal
 2. Navigeer naar uw sleutelkluis
@@ -70,9 +72,9 @@ Zorg ervoor dat u naar de pagina Azure Policy gaat in de Azure Portal en Bekijk 
 7. De waarschuwing bevestigen over het verplaatsen van resources
 8. Selecteer OK
 
-### <a name="additional-steps-post-move"></a>Aanvullende stappen (post verplaatsing)
+### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>Aanvullende stappen als u de sleutel kluis hebt verplaatst naar een abonnement in een nieuwe Tenant
 
-Nu u de sleutel kluis naar het nieuwe abonnement hebt verplaatst, moet u de Tenant-ID bijwerken en het oude toegangs beleid verwijderen. Hier vindt u zelf studies voor deze stappen in Power shell en Azure CLI.
+Als u de sleutel kluis naar een abonnement in een nieuwe Tenant hebt verplaatst, moet u de Tenant-ID hand matig bijwerken en het oude toegangs beleid verwijderen. Hier vindt u zelf studies voor deze stappen in Power shell en Azure CLI. Als u Power shell gebruikt, moet u mogelijk de opdracht Clear-AzContext uitvoeren die hieronder wordt beschreven, zodat u de resources buiten het huidige geselecteerde bereik kunt zien. 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

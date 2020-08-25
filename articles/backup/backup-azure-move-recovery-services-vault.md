@@ -1,15 +1,15 @@
 ---
 title: Azure Backup Recovery Services kluizen verplaatsen
-description: Instructies voor het verplaatsen van de Recovery Services-kluis in azure-abonnementen en resource groepen.
+description: Instructies voor het verplaatsen van een Recovery Services kluis over Azure-abonnementen en resource groepen.
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4751a6068904ef03a4d30d322a285e4074476b70
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b4de4c58e6a6551fa7c27db9755bb02a11700721
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650910"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755735"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Een Recovery Services kluis verplaatsen over Azure-abonnementen en-resource groepen
 
@@ -50,12 +50,12 @@ Frankrijk-centraal, Frankrijk-zuid, Duitsland-noordoost, Duitsland-centraal, US 
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Azure Portal gebruiken om Recovery Services kluis te verplaatsen naar een andere resource groep
 
-Een Recovery Services-kluis en de bijbehorende resources verplaatsen naar een andere resource groep
+Een Recovery Services kluis en de bijbehorende resources verplaatsen naar een andere resource groep:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de lijst met **Recovery Services kluizen** en selecteer de kluis die u wilt verplaatsen. Wanneer het kluis dashboard wordt geopend, wordt het weer gegeven zoals in de volgende afbeelding.
 
-   ![Service kluis herstellen openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Recovery Services kluis openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
    Als u de **essentiële** informatie voor uw kluis niet ziet, selecteert u het pictogram vervolg keuzelijst. U ziet nu de essentiële informatie voor uw kluis.
 
@@ -84,7 +84,7 @@ U kunt een Recovery Services kluis en de bijbehorende resources naar een ander a
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de lijst met Recovery Services kluizen en selecteer de kluis die u wilt verplaatsen. Wanneer het kluis dashboard wordt geopend, wordt het weer gegeven zoals in de volgende afbeelding.
 
-    ![Service kluis herstellen openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+    ![Recovery Services kluis openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
     Als u de **essentiële** informatie voor uw kluis niet ziet, selecteert u het pictogram vervolg keuzelijst. U ziet nu de essentiële informatie voor uw kluis.
 

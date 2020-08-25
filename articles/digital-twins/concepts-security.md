@@ -7,24 +7,26 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d29bccdadeef44f1ae4cdae5875257f95395b96f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 973eeebfdf9164cb50cf98ae8edc845a80a7e080
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534036"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794504"
 ---
-# <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Azure Digital Apparaatdubbels beveiligen met op rollen gebaseerd toegangs beheer
+# <a name="secure-azure-digital-twins"></a>Azure Digital Apparaatdubbels beveiligen
 
 Voor de beveiliging biedt Azure Digital Apparaatdubbels nauw keurige toegangs controle over specifieke gegevens, resources en acties in uw implementatie. Dit wordt gedaan via een gedetailleerde beheer strategie voor rollen en machtigingen die **op rollen gebaseerd toegangs beheer (RBAC)** wordt genoemd. Meer informatie over de algemene principes van RBAC voor Azure vindt u [hier](../role-based-access-control/overview.md).
 
-## <a name="rbac-through-azure-ad"></a>RBAC via Azure AD
+Azure Digital Apparaatdubbels biedt ook ondersteuning voor versleuteling van gegevens in rust.
+
+## <a name="granting-permissions-with-rbac"></a>Machtigingen verlenen met RBAC
 
 RBAC wordt geleverd aan Azure Digital Apparaatdubbels via integratie met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
 
 U kunt RBAC gebruiken om machtigingen te verlenen aan een *beveiligingsprincipal*, die een gebruiker, een groep of een Application Service-Principal kan zijn. De beveiligingsprincipal wordt geverifieerd door Azure AD en ontvangt een OAuth 2,0-token als resultaat. Dit token kan worden gebruikt voor het autoriseren van een toegangs aanvraag aan een Azure Digital Apparaatdubbels-exemplaar.
 
-## <a name="authentication-and-authorization"></a>Verificatie en autorisatie
+### <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 
 In azure AD is Access een proces dat uit twee stappen bestaat. Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot Azure Digital Apparaatdubbels, moet de aanvraag worden *geverifieerd* en *geautoriseerd*. 
 
@@ -37,13 +39,13 @@ De autorisatie stap vereist dat een Azure-rol wordt toegewezen aan de beveiligin
 
 Zie [*inzicht in de verschillende rollen*](../role-based-access-control/rbac-and-directory-admin-roles.md) in de documentatie van Azure RBAC voor meer informatie over rollen en roltoewijzingen die worden ondersteund in Azure.
 
-### <a name="authentication-with-managed-identities"></a>Verificatie met beheerde identiteiten
+#### <a name="authentication-with-managed-identities"></a>Verificatie met beheerde identiteiten
 
 [Beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) is een functie van meerdere Azure waarmee u een beveiligde identiteit kunt maken die is gekoppeld aan de implementatie waarin de toepassings code wordt uitgevoerd. U kunt deze identiteit vervolgens koppelen aan toegangs beheer rollen om aangepaste machtigingen te verlenen voor toegang tot specifieke Azure-resources die uw toepassing nodig heeft.
 
 Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U hoeft geen toegangs sleutels op te slaan en te beveiligen in uw toepassings code of configuratie, hetzij voor de identiteit zelf, hetzij voor de resources die u nodig hebt. Een Azure Digital Apparaatdubbels-client-app die binnen een Azure App Service-toepassing wordt uitgevoerd, hoeft geen SAS-regels en sleutels of andere toegangs tokens te verwerken. De client-app heeft alleen het eindpunt adres van de Azure Digital Apparaatdubbels-naam ruimte nodig. Wanneer de app verbinding maakt, koppelt Azure Digital Apparaatdubbels de context van de beheerde entiteit aan de client. Zodra deze is gekoppeld aan een beheerde identiteit, kan uw Azure Digital Apparaatdubbels-client alle geautoriseerde bewerkingen uitvoeren. De autorisatie wordt vervolgens verleend door een beheerde entiteit te koppelen aan een Azure Digital Apparaatdubbels Azure-rol (hieronder beschreven).
 
-### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Autorisatie: Azure-functies voor Azure Digital Apparaatdubbels
+#### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Autorisatie: Azure-functies voor Azure Digital Apparaatdubbels
 
 Azure biedt de onderstaande ingebouwde Azure-rollen voor het verlenen van toegang tot een Azure Digital Apparaatdubbels-resource:
 * *Azure Digital apparaatdubbels-eigenaar (preview)* : gebruik deze rol om volledige toegang te geven tot Azure Digital apparaatdubbels-resources.
@@ -60,9 +62,9 @@ U kunt rollen op twee manieren toewijzen:
 
 Voor meer gedetailleerde stappen over hoe u dit doet, kunt u het uitproberen in de zelf studie over Azure Digital Apparaatdubbels [*: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md).
 
-## <a name="permission-scopes"></a>Machtigingsbereiken
+### <a name="permission-scopes"></a>Machtigingsbereiken
 
-Voordat u een Azure-rol toewijst aan een beveiligingsprincipal, bepaalt u het bereik van toegang dat de beveiligingsprincipal moet hebben. Aanbevolen procedures bepalen dat het het beste is om alleen het smalle mogelijke bereik toe te kennen.
+Voordat u een Azure-rol toewijst een beveiligingsprincipal, moet u het toegangsbereik bepalen dat de beveiligingsprincipal moet hebben. Aanbevolen procedures bepalen dat het het beste is om alleen het smalle mogelijke bereik toe te kennen.
 
 In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Azure Digital Apparaatdubbels-resources kunt bereiken.
 * Modellen: met de acties voor deze resource bepaalt u de controle over [modellen](concepts-models.md) die zijn geüpload in azure Digital apparaatdubbels.
@@ -71,9 +73,13 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Azure Di
 * Digitale dubbele relatie: de acties voor deze bron bepalen de controle over ruwe bewerkingen op [relaties](concepts-twins-graph.md) tussen digitale apparaatdubbels in het dubbele diagram.
 * Gebeurtenis route: de acties voor deze bron bepalen de machtigingen voor het [routeren van gebeurtenissen](concepts-route-events.md) van Azure Digital apparaatdubbels naar een eindpunt service, zoals [Event hub](../event-hubs/event-hubs-about.md), [Event grid](../event-grid/overview.md)of [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
 
-## <a name="troubleshooting"></a>Problemen oplossen
+### <a name="troubleshooting-permissions"></a>Machtigingen voor probleem oplossing
 
 Als een gebruiker probeert een actie uit te voeren die niet is toegestaan door hun rol, wordt mogelijk een fout bericht weer gegeven bij het lezen van de service aanvraag `403 (Forbidden)` . Zie [*probleem oplossing: Azure Digital apparaatdubbels-aanvraag is mislukt met status: 403 (verboden)*](troubleshoot-error-403.md)voor meer informatie en stappen voor probleem oplossing.
+
+## <a name="encryption-of-data-at-rest"></a>Versleuteling van data-at-rest
+
+Azure Digital Apparaatdubbels zorgt voor versleuteling van gegevens in rust en in transit als deze zijn geschreven in onze data centers en ontsleutelt deze voor u wanneer u er toegang toe hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

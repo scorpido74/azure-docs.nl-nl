@@ -17,10 +17,10 @@ ms.author: markvi
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57b68ebb21c0c10c3fbe3fd77d11785d16a10053
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "60443463"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Zelfstudie: een door de gebruiker toegewezen beheerde identiteit gebruiken op een Linux-VM om toegang te krijgen tot Azure Resource Manager
@@ -41,7 +41,7 @@ In deze zelfstudie leert u het volgende:
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-- [Aanmelden bij Azure Portal](https://portal.azure.com)
+- [Meld u aan bij Azure Portal](https://portal.azure.com)
 
 - [Een virtuele Linux-machine maken](/azure/virtual-machines/linux/quick-create-portal)
 
@@ -124,7 +124,7 @@ Voor de rest van de zelfstudie werken we op de virtuele machine die we eerder he
 
 U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) gebruiken. 
 
-1. Meld u aan bij Azure [Portal](https://portal.azure.com).
+1. Meld u aan bij de Azure [Portal](https://portal.azure.com).
 2. Navigeer in de portal naar **Virtuele machines**, ga naar de virtuele Windows-machine en klik op de pagina **Overzicht** op **Verbinden**. Kopieer de verbindingsreeks voor uw virtuele machine.
 3. Maak verbinding met de virtuele machine met de SSH-client van uw keuze. Als u Windows gebruikt, kunt u de SSH-client in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) gebruiken. Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](~/articles/virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](~/articles/virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
 4. Dien in het terminalvenster met behulp van CURL een aanvraag in op het Azure IMDS-eindpunt (Instance Metadata Service) om een toegangstoken voor Azure Resource Manager op te halen.  

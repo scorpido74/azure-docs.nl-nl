@@ -4,15 +4,15 @@ description: Los problemen met bekende prestaties op met Azure-bestands shares. 
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 04/25/2019
+ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6739e5619a0dcaa940d38571c4a88c4f68971dfe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009270"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782367"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 
@@ -20,13 +20,13 @@ In dit artikel worden enkele veelvoorkomende problemen met betrekking tot Azure-
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Problemen met hoge latentie, lage door Voer en algemene prestaties
 
-### <a name="cause-1-share-experiencing-throttling"></a>Oorzaak 1: delen die de beperking ondervindt
+### <a name="cause-1-share-was-throttled"></a>Oorzaak 1: de share is beperkt
 
-Het standaard quotum voor een Premium-share is 100 GiB. Dit biedt 100 Baseline IOPS (met een kans om Maxi maal 300 voor een uur te burstiseren). Zie de sectie [ingerichte shares](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) in de plannings handleiding voor meer informatie over het inrichten en de relatie met IOPS.
+Aanvragen worden beperkt wanneer de limiet voor IOPS, binnenkomend of uitgaand verkeer voor een bestands share is bereikt. Zie [Bestands share en bestands schaal doelen](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)voor meer informatie over de limieten voor standaard-en Premium-bestands shares.
 
 Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de metrische gegevens van Azure in de portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **alle services** en zoek vervolgens naar **metrische gegevens**.
 
@@ -47,7 +47,8 @@ Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de met
 
 ### <a name="solution"></a>Oplossing
 
-- Verhoog de ingerichte capaciteit door een hoger quotum op uw share op te geven.
+- Als u een standaard bestands share gebruikt, schakelt u [grote bestands shares](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) in voor uw opslag account. Grote bestands shares bieden ondersteuning voor Maxi maal 10.000 IOPS per share.
+- Als u een Premium-bestands share gebruikt, verg root u de grootte van de ingerichte bestands share om de limiet voor IOPS te verhogen. Zie de sectie [over het inrichten van Premium-bestands shares](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) in de Azure files plannings handleiding voor meer informatie.
 
 ### <a name="cause-2-metadatanamespace-heavy-workload"></a>Oorzaak 2: meta gegevens/naam ruimte zware werk belasting
 

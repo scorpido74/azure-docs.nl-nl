@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/17/2020
-ms.openlocfilehash: 01e33f7b0133eb5d081e6e8f3c3c9497c11bae95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 916d23670e1db22efe43e2966d96aa1c82f1852a
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983413"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782155"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
@@ -77,11 +77,11 @@ In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, 
 
 Wanneer de training is voltooid:
 
-+ Als u een set nauw keurige metrische gegevens voor het beste model wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u vervolgens **visualiseren**.
++ Als u de opschonings resultaten wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u vervolgens **visualiseren**.
 
-    De uitvoer bevat alle nauwkeurigheids gegevens die van toepassing zijn op het model type, maar de metrische gegevens die u hebt geselecteerd voor de rang schikking bepalen welk model als ' Best ' wordt beschouwd.
+    De uitvoer bevat alle para meters voor het weglaten en nauw keurigheid van gegevens die van toepassing zijn op het model type, maar de metrische gegevens die u hebt geselecteerd voor de rang schikking bepalen welk model als ' Best ' wordt beschouwd.
 
-+ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer en logboeken** in het rechter paneel van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
 
 
 ## <a name="technical-notes"></a>Technische opmerkingen

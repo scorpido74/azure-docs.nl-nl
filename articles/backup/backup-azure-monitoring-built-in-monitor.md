@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over de bewakings-en meldings mog
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ec0453725186ddef359f85f8c3e5554ff240d3e3
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654120"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755718"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 
@@ -95,7 +95,7 @@ Als de frequentie is ingesteld op een samen vatting per uur en er binnen een uur
 
 > [!NOTE]
 >
-> - Als er een destructieve bewerking wordt uitgevoerd, zoals het **stoppen van de beveiliging bij het verwijderen van gegevens** , wordt er een waarschuwing gegenereerd en wordt er een e-mail bericht verzonden naar de eigen aren van het abonnement, beheerders en mede beheerders, zelfs als er geen meldingen zijn geconfigureerd voor de herstel service-kluis.
+> - Als er een destructieve bewerking wordt uitgevoerd, zoals het **stoppen van de beveiliging bij het verwijderen van gegevens** , wordt er een waarschuwing gegenereerd en wordt er een e-mail bericht verzonden naar de eigen aren van het abonnement, beheerders en mede beheerders, zelfs als er geen meldingen zijn geconfigureerd voor de Recovery Services kluis.
 > - Gebruik [log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace)voor het configureren van een melding voor geslaagde taken.
 
 ## <a name="inactivating-alerts"></a>Waarschuwingen inactiveren
