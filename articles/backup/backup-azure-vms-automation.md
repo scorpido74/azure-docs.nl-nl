@@ -3,12 +3,12 @@ title: Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 description: Hierin wordt beschreven hoe u back-ups van virtuele Azure-machines maakt en herstelt met Azure Backup met Power shell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 23ae2b5b04823bc809712190a3e1617fec65e73a
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: f5d2e10213970ce6f9d1f9c77ff8f7f4c36c3547
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763368"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826443"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -96,7 +96,7 @@ De volgende stappen leiden u door het maken van een Recovery Services kluis. Een
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Geef het type opslag redundantie op dat moet worden gebruikt. u kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md) of [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md)gebruiken. In het volgende voor beeld ziet u de optie-BackupStorageRedundancy voor testvault is ingesteld op georedundant.
+3. Geef het type opslag redundantie op dat moet worden gebruikt. U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md) of [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md)gebruiken. In het volgende voor beeld ziet u de optie-BackupStorageRedundancy voor testvault is ingesteld op georedundant.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 Zodra u het beveiligings beleid hebt gedefinieerd, moet u het beleid voor een item nog steeds inschakelen. Gebruik [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) om de beveiliging in te scha kelen. Voor het inschakelen van beveiliging zijn twee objecten vereist: het item en het beleid. Zodra het beleid is gekoppeld aan de kluis, wordt de werk stroom voor het maken van de back-up geactiveerd op het tijdstip dat is gedefinieerd in het beleids schema.
 
 > [!IMPORTANT]
-> Wanneer u PS gebruikt om back-ups in meerdere Vm's tegelijk in te scha kelen, moet u ervoor zorgen dat aan één beleid niet meer dan 100 Vm's zijn gekoppeld. Dit is een [aanbevolen best practice](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Op dit moment blokkeert de PS-client niet expliciet als er meer dan 100 VM's zijn, maar deze controle wordt in de toekomst toegevoegd.
+> Wanneer u Power shell gebruikt om back-ups in meerdere Vm's tegelijk in te scha kelen, moet u ervoor zorgen dat aan één beleid niet meer dan 100 Vm's zijn gekoppeld. Dit is een [aanbevolen best practice](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy). Op dit moment wordt de Power shell-client niet expliciet geblokkeerd als er meer dan 100 Vm's zijn, maar de controle is gepland om in de toekomst te worden toegevoegd.
 
 In de volgende voor beelden wordt de beveiliging voor het item V2VM ingeschakeld, met behulp van het beleid NewPolicy. De voor beelden zijn afhankelijk van het feit of de virtuele machine is versleuteld en welk type versleuteling.
 
@@ -315,7 +315,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 #### <a name="configuring-instant-restore-snapshot-retention"></a>De retentie van moment opnamen van Instant Restore configureren
 
 > [!NOTE]
-> Vanaf AZ PS version 1.6.0 kunt u de retentie periode voor direct terugzetten in het beleid bijwerken met behulp van Power shell
+> Vanuit Azure PowerShell versie 1.6.0, kan de retentie periode voor direct terugzetten in het beleid worden bijgewerkt met behulp van Power shell
 
 ````powershell
 $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -323,12 +323,12 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-De standaard waarde is 2, de gebruiker kan de waarde instellen met een minimum van 1 en Maxi maal 5. Voor wekelijks back-upbeleid is de periode ingesteld op 5 en kan niet worden gewijzigd.
+De standaard waarde is 2, de gebruiker kan de waarde instellen op mini maal 1 en Maxi maal 5. Voor wekelijks back-upbeleid is de periode ingesteld op 5 en kan niet worden gewijzigd.
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Azure Backup resource groep maken tijdens het bewaren van moment opnamen
 
 > [!NOTE]
-> Vanuit Azure PS versie 3.7.0 kunt u een resource groep maken en bewerken die is gemaakt voor het opslaan van moment opnamen van direct.
+> Vanuit Azure PowerShell versie 3.7.0 kunt u een resource groep maken en bewerken die is gemaakt voor het opslaan van moment opnamen van direct.
 
 Raadpleeg de [Azure backup resource groep voor virtual machines](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines) documentatie voor meer informatie over de regels voor het maken van een resource groep en andere relevante informatie.
 
@@ -385,7 +385,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 #### <a name="retain-data"></a>Gegevens behouden
 
-Als de gebruiker de beveiliging wil stoppen, kunnen ze de cmdlet [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS gebruiken. Hiermee worden de geplande back-ups gestopt, maar de gegevens waarvan een back-up is gemaakt tot nu toe worden bewaard, blijven behouden.
+Als u de beveiliging wilt stoppen, kunt u de Power shell [-cmdlet Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) gebruiken. Hiermee worden de geplande back-ups gestopt, maar de gegevens waarvan een back-up is gemaakt tot nu toe worden bewaard, blijven behouden.
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
@@ -481,7 +481,7 @@ $restorejob
 Geef een extra para meter **TargetResourceGroupName** op om de RG op te geven waarop de beheerde schijven moeten worden hersteld.
 
 > [!IMPORTANT]
-> Het is raadzaam om de para meter **TargetResourceGroupName** te gebruiken voor het herstellen van beheerde schijven, omdat deze resulteert in aanzienlijke prestatie verbeteringen. Als deze para meter niet wordt opgegeven, kunnen klanten niet profiteren van de functie voor direct terugzetten en is de herstel bewerking langzamer. Als het doel is om Managed disks als niet-beheerde schijven te herstellen, geeft u deze para meter niet op en maakt u de bedoeling helder door de para meter-RestoreAsUnmanagedDisks op te geven. De para meter-RestoreAsUnmanagedDisks is beschikbaar vanaf AZ PS 3.7.0. In toekomstige versies is het verplicht om een van deze para meters op te geven voor de juiste herstel ervaring
+> Het is raadzaam om de para meter **TargetResourceGroupName** te gebruiken voor het herstellen van beheerde schijven, omdat deze resulteert in aanzienlijke prestatie verbeteringen. Als deze para meter niet is opgegeven, kunt u niet profiteren van de functie voor direct terugzetten en is de herstel bewerking langzamer. Als het doel is om Managed disks als niet-beheerde schijven te herstellen, geeft u deze para meter niet op en maakt u de bedoeling duidelijk door de para meter op te geven `-RestoreAsUnmanagedDisks` . De `-RestoreAsUnmanagedDisks` para meter is beschikbaar vanaf Azure PowerShell 3.7.0. In toekomstige versies is het verplicht om een van deze para meters op te geven voor de juiste herstel ervaring.
 >
 >
 
@@ -530,7 +530,7 @@ Nadat u de schijven hebt hersteld, gebruikt u de volgende stappen om de virtuele
 >
 > 1. AzureAz-module 3.0.0 of hoger is vereist. <br>
 > 2. Als u versleutelde Vm's van herstelde schijven wilt maken, moet uw Azure-rol gemachtigd zijn om de actie uit te voeren, **micro soft. sleutel kluis/kluizen/implementeren/actie**. Als uw rol niet over deze machtiging beschikt, maakt u een aangepaste rol met deze actie. Zie [aangepaste rollen in azure RBAC](../role-based-access-control/custom-roles.md)voor meer informatie. <br>
-> 3. Na het herstellen van de schijven kunt u nu een implementatie sjabloon ophalen die u rechtstreeks kunt gebruiken om een nieuwe virtuele machine te maken. Er zijn geen andere PS-cmdlets meer om beheerde/onbeheerde Vm's te maken die zijn versleuteld/niet-versleuteld.<br>
+> 3. Na het herstellen van de schijven kunt u nu een implementatie sjabloon ophalen die u rechtstreeks kunt gebruiken om een nieuwe virtuele machine te maken. U hebt geen verschillende Power shell-cmdlets nodig om beheerde/onbeheerde Vm's te maken die versleuteld/niet-versleuteld zijn.<br>
 > <br>
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>Een virtuele machine maken met behulp van de implementatie sjabloon

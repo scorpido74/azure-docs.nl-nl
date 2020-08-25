@@ -4,12 +4,12 @@ description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met bet
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 99e175f20247058a57bb64a47465cce1ce7fbd75
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755365"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826050"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -119,7 +119,7 @@ Deze fout treedt op wanneer een van de uitbrei dingen de virtuele machine inrich
 Aanbevolen actie:<br>
 U kunt dit probleem oplossen door de vergren deling van de resource groep van de virtuele machine te verwijderen en de bewerking opnieuw uit te voeren om het opschonen te activeren.
 > [!NOTE]
-> Backup-service maakt een afzonderlijke resource groep dan de resource groep van de virtuele machine om de herstel punt verzameling op te slaan. Klanten wordt aangeraden de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen. De naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: AzureBackupRG_ `<Geo>` _ `<number>` bijvoorbeeld: AzureBackupRG_northeurope_1
+> Backup-service maakt een afzonderlijke resource groep dan de resource groep van de virtuele machine om de herstel punt verzameling op te slaan. U wordt aangeraden de resource groep die is gemaakt voor gebruik door de back-upservice, niet te vergren delen. De naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: AzureBackupRG_ `<Geo>` _ `<number>` . Bijvoorbeeld: *AzureBackupRG_northeurope_1*
 
 **Stap 1: [de vergren deling van de resource groep voor het herstel punt verwijderen](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Stap 2: [herstel punt verzameling opschonen](#clean_up_restore_point_collection)**<br>
@@ -297,7 +297,7 @@ Volg een van de volgende methoden om de herstel punten op te schonen:<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Herstel punt verzameling opschonen door back-ups op aanvraag uit te voeren
 
-Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starten. Met deze actie wordt ervoor gezorgd dat de herstel punten automatisch worden opgeruimd. Verwacht dat deze on-demand-bewerking de eerste keer mislukt. het zorgt er echter voor dat automatisch opschonen in plaats van het hand matig verwijderen van herstel punten. Na het opschonen moet de volgende geplande back-up slagen.
+Nadat u de vergren deling hebt verwijderd, moet u een back-up op aanvraag starten. Met deze actie wordt ervoor gezorgd dat de herstel punten automatisch worden opgeruimd. Verwacht dat deze on-demand-bewerking de eerste keer mislukt. Het zorgt er echter voor dat automatisch opschonen in plaats van het hand matig verwijderen van herstel punten. Na het opschonen moet de volgende geplande back-up slagen.
 
 > [!NOTE]
 > Automatische opschoning gebeurt na enkele uren dat de back-up op aanvraag wordt geactiveerd. Als uw geplande back-up nog steeds mislukt, probeert u de verzameling met herstel punten hand matig te verwijderen met behulp van de stappen die [hier](#clean-up-restore-point-collection-from-azure-portal)worden beschreven.
@@ -320,4 +320,4 @@ Voer de volgende stappen uit om de verzameling met herstel punten hand matig te 
 6. Voer de back-upbewerking opnieuw uit.
 
 > [!NOTE]
- >Als de resource (RP-verzameling) een groot aantal herstel punten heeft, kan de time-out van de-portal worden verwijderd en mislukt. Dit is een bekend CRP-probleem, waarbij alle herstel punten niet worden verwijderd binnen de vastgestelde tijd en er een time-out optreedt voor de bewerking. de verwijderings bewerking slaagt echter normaal gesp roken na 2 of 3 nieuwe pogingen.
+ >Als de resource (RP-verzameling) een groot aantal herstel punten heeft, kan de time-out van de-portal worden verwijderd en mislukt. Dit is een bekend CRP-probleem, waarbij alle herstel punten niet worden verwijderd binnen de vastgestelde tijd en er een time-out optreedt voor de bewerking. De verwijderings bewerking slaagt echter normaal gesp roken na twee of drie nieuwe pogingen.

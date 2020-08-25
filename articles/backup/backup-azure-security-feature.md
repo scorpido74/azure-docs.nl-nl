@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van beveiligings functies in Azure
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a793b67b88f11988a584e3f57a296c69606cdd5f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757027"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826902"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van hybride back-ups die gebruikmaken van Azure Backup
 
@@ -20,7 +20,7 @@ Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware e
 - **Herstel**. Verwijderde back-upgegevens worden nog 14 dagen na de verwijdering bewaard. Dit waarborgt de herstel baarheid van de gegevens binnen een bepaalde periode, waardoor er geen gegevens verloren gaan, zelfs als er een aanval plaatsvindt. Daarnaast worden er voor het beveiligen van beschadigde gegevens een groter aantal minimale herstel punten onderhouden.
 
 > [!NOTE]
-> Beveiligings functies mogen niet worden ingeschakeld als u een IaaS-back-up (Infrastructure as a Service) gebruikt. Deze functies zijn nog niet beschikbaar voor IaaS VM-back-up, dus het inschakelen ervan heeft geen gevolgen. Beveiligings functies moeten alleen worden ingeschakeld als u het volgende gebruikt: <br/>
+> Beveiligings functies mogen niet zijn ingeschakeld als u een IaaS-back-up (Infrastructure as a Service) gebruikt. Deze functies zijn nog niet beschikbaar voor IaaS VM-back-up, waardoor het niet mogelijk is om ze in te scha kelen. Beveiligings functies moeten alleen worden ingeschakeld als u het volgende gebruikt: <br/>
 >
 > - **Azure backup-agent**. Minimale agent versie 2.0.9052. Nadat u deze functies hebt ingeschakeld, moet u een upgrade uitvoeren naar deze agent versie om kritieke bewerkingen uit te voeren. <br/>
 > - **Azure backup server**. Minimale 2.0.9052-versie van Azure Backup Agent met Azure Backup Server Update 1. <br/>
@@ -88,7 +88,7 @@ Als onderdeel van het toevoegen van een extra beveiligingslaag voor kritieke bew
 
 Deze pincode ontvangen:
 
-1. Meld u aan bij de Azure-portal.
+1. Meld u aan bij Azure Portal.
 2. Blader naar **Recovery Services**eigenschappen van de kluis  >  **instellingen**  >  **Properties**.
 3. Onder **BEVEILIGINGS pincode**selecteert u **genereren**. Hiermee opent u een deel venster dat de pincode bevat die moet worden ingevoerd in de gebruikers interface van de Azure Recovery Services-agent.
     Deze pincode is slechts vijf minuten geldig en wordt na die periode automatisch gegenereerd.

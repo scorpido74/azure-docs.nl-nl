@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649411"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826137"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: veelgestelde vragen
 
@@ -56,13 +56,13 @@ A.  Als u wilt zien waar de Data Box schijven op dit moment beschikbaar zijn, ga
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>V. In welke regio's kan ik gegevens opslaan met Data Box Disks?
 A. Data Box Disk wordt ondersteund voor alle regio's binnen de Verenigde Staten, Canada, Australië, Europa-west en Europa-noord, Korea en Japan. Alleen de Azure-regio's met een openbare cloud worden ondersteund. Azure Government of andere onafhankelijke clouds worden niet ondersteund.
 
-### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>V. Maakt mijn Data Box Disk tijdens de verzen ding deel uit van de land-en regio grenzen?
-A. Data Box Disk worden verzonden vanuit hetzelfde land/dezelfde regio als de bestemming en er worden geen internationale grenzen in rekening gebracht. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waarbij schijven kunnen worden verzonden naar en vanuit elk land/regio in de EU.
+### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>V. In welke regio's kan ik gegevens opslaan met Data Box Disks?
+A. Data Box Disk wordt ondersteund voor alle regio's binnen de Verenigde Staten, Canada, Australië, Europa-west en Europa-noord, Korea en Japan. Alleen de Azure-regio's met een openbare cloud worden ondersteund. Azure Government of andere onafhankelijke clouds worden niet ondersteund.
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>V. Hoe kan ik mijn on-premises bron gegevens in een land/regio importeren in een Azure-regio in een ander land/dezelfde regio?
-A. Data Box Disk ondersteunt alleen gegevens opname binnen dezelfde regio (Commerce boundary). In alle andere gevallen moet u mogelijk extra actie ondernemen. 
+### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>V. Hoe kan ik bron gegevens op mijn locatie in een land/regio importeren naar een Azure-regio in een ander land?
+A. Data Box Disk ondersteunt alleen gegevens opname binnen hetzelfde land/dezelfde regio als de bestemming en snijdt geen internationale grenzen. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar Data Box schijven kunnen worden verzonden naar en van een EU-land/regio.
 
-Als u bijvoorbeeld on-premises gegevens in Canada hebt die u wilt verplaatsen naar een Azure Westus-opslag account, kunt u deze op de volgende manier belopen:
+Als u bijvoorbeeld gegevens op uw locatie in Canada wilt verplaatsen naar een Azure Westus-opslag account, kunt u deze op de volgende manier belopen:
 
 ### <a name="option-1"></a>Optie 1: 
 

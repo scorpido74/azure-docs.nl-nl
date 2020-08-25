@@ -3,12 +3,12 @@ title: Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
 description: Een artikel met informatie over het gebruik van Azure Policy om back-up automatisch in te scha kelen voor alle Vm's die in een bepaald bereik zijn gemaakt
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: fd54c25899bc1e58a753821d2c7c2df8ff213865
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: de4923000bc842203535e03727fd532c67a8f517
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763589"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826069"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
 
@@ -52,7 +52,7 @@ Volg de onderstaande stappen om het beleid toe te wijzen aan het vereiste bereik
 
 > [!NOTE]
 >
-> Het wordt aanbevolen dat dit beleid per keer niet aan meer dan 200 Vm's wordt toegewezen. Als het beleid is toegewezen aan meer dan 200 Vm's, kan dit ertoe leiden dat de back-up een paar uur later wordt geactiveerd dan dat is opgegeven in de planning.
+> Het is raadzaam dat dit beleid per keer niet wordt toegewezen aan meer dan 200 Vm's. Als het beleid is toegewezen aan meer dan 200 Vm's, kan dit ertoe leiden dat de back-up een paar uur later wordt geactiveerd dan het tijdstip dat is opgegeven in de planning.
 
 ## <a name="next-steps"></a>Volgende stappen
 

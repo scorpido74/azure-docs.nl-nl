@@ -3,12 +3,12 @@ title: Zacht verwijderen voor Azure Backup
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: b3ccd944ce1f6a30b4441c205a83e71374e7aff2
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: d791b76698330cd14c56f01cf5da62c8a64bec29
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763436"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826970"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Zacht verwijderen voor Azure Backup
 
@@ -44,9 +44,9 @@ Voer de volgende stappen uit om de tijdelijke verwijdering uit te scha kelen:
 ### <a name="disabling-soft-delete-using-azure-powershell"></a>Zacht verwijderen uitschakelen met Azure PowerShell
 
 > [!IMPORTANT]
-> De AZ. Recovery Services-versie die is vereist voor het gebruik van voorlopig verwijderen met Azure PS, is mini maal 2.2.0. Gebruik ```Install-Module -Name Az.RecoveryServices -Force``` om de nieuwste versie op te halen.
+> De AZ. Recovery Services-versie die is vereist voor het gebruik van voorlopig verwijderen met Azure PowerShell is mini maal 2.2.0. Gebruik ```Install-Module -Name Az.RecoveryServices -Force``` om de nieuwste versie op te halen.
 
-Als u wilt uitschakelen, gebruikt u de [set-AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PS-cmdlet.
+Als u wilt uitschakelen, gebruikt u de Power shell [-cmdlet Set-AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) .
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable

@@ -3,12 +3,12 @@ title: Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 description: In dit artikel vindt u informatie over het herstellen van gegevens die zijn opgeslagen in azure naar een Windows-Server of Windows-computer met de Microsoft Azure Recovery Services-agent (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: d9bc22204156f7562290f53db77272b9cabe6c69
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e5158681971c5c10e813187fedb61bc0022ee9e1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757078"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827066"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 

@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het beheren van herstel bewe
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 03815cd9956e323583d6d66097e0eeaa3d492f44
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763538"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826358"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
 
@@ -210,7 +210,7 @@ Omdat de herstel taak een langlopende bewerking is, moet deze worden gevolgd zoa
 
 ### <a name="restore-disks"></a>Schijven herstellen
 
-Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kan de ene schijf alleen herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services kluis en mag niet zone redundant zijn. De schijven en de configuratie van de back-up van de virtuele machine (vmconfig.jsop) worden opgeslagen in het opgegeven opslag account. Zoals [hierboven](#restore-operations)is uitgelegd, wordt de relevante aanvraag tekst voor herstel schijven hieronder weer gegeven.
+Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kunt u alleen schijven herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten van die schijven. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services kluis en mag niet zone redundant zijn. De schijven, evenals de configuratie van de back-up van de virtuele machine (vmconfig.jsop), worden opgeslagen in het opgegeven opslag account. Zoals [hierboven](#restore-operations)is uitgelegd, wordt de relevante aanvraag tekst voor herstel schijven hieronder weer gegeven.
 
 #### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
 

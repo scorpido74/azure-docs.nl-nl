@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136334"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826766"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace
 
@@ -166,18 +166,25 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\*Voor klanten in Brazilië maakt de Marketplace via Cloud Solution Providers (CSP) gebruik van USD.
+\* Voor klanten in Brazilië maakt de Marketplace via Cloud Solution Providers (CSP) gebruik van USD.
 
 \** Alleen vrije en BYOL VM-installatie kopieën.
 
 ## <a name="how-we-convert-currency"></a>Hoe we valuta converteren
 
-Voor alle betaalde aanbiedings typen hebben Isv's de mogelijkheid om prijzen in te voeren in USD of om prijzen in de lokale valuta te uploaden. Prijzen die zijn ingevoerd in USD worden automatisch geconverteerd naar een lokale valuta wanneer de pagina wordt opgeslagen. Het tarieven partner centrum gebruikt worden dagelijks bijgewerkt. Isv's kunnen de prijzen exporteren en de geconverteerde equivalenten controleren.
+Voor alle betaalde aanbiedings typen hebt u de mogelijkheid om prijzen in USD in te voeren of prijzen in de lokale valuta te uploaden. Prijzen die zijn ingevoerd in USD worden automatisch geconverteerd naar een lokale valuta wanneer de pagina wordt opgeslagen. Het tarieven partner centrum gebruikt worden dagelijks bijgewerkt. U kunt de prijzen exporteren en de geconverteerde equivalenten controleren.
 
 Als u de prijs wilt aanpassen voordat u publiceert, exporteert u het werk blad prijzen, wijzigt u het en uploadt u het met de wijzigingen.
 
 > [!NOTE]
 > Nadat een prijs voor een markt in uw abonnement is gepubliceerd, kunt u deze later niet meer wijzigen. Om ervoor te zorgen dat de prijzen goed zijn voordat u ze publiceert, exporteert u het werk blad prijzen en bekijkt u de prijzen op elke markt.
+
+De prijs van een aanbieding wordt altijd weer gegeven aan klanten in hun lokale valuta. De prijs die u in Partner Center selecteert, wordt omgezet in de lokale valuta van klanten, op basis van de wissel koers op het moment dat u de prijs hebt opgeslagen in het partner centrum. De prijs die wordt weer gegeven voor klanten in de online winkels, wordt niet gewijzigd, tenzij u uw aanbieding opnieuw publiceert.
+
+Micro soft ontvangt betalingen van klanten in hun lokale valuta en betaalt u in uw lokale valuta. Micro soft converteert de lokale valuta van de klant naar uw lokale valuta met de wissel koers van de aankoop datum.
+
+> [!NOTE]
+> Micro soft converteert prijzen voor aanbiedingen met behulp van de micro soft schatkist koers.
 
 ## <a name="retrieving-currency-information-by-api"></a>De valuta gegevens worden opgehaald door de API
 
@@ -189,7 +196,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het invoeren van prijz
 - [Een Azure-container aanbieding maken](partner-center-portal/create-azure-container-offer.md)
 - [Een Azure Virtual Machine-aanbieding maken](partner-center-portal/azure-vm-create-offer.md)
 - [Een adviesservice-aanbieding maken](partner-center-portal/create-consulting-service-offer.md)
-- [Een Dynamics 365 maken voor klant betrokkenheid & PowerApps-aanbieding](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Een Dynamics 365 for Operations-aanbieding maken](partner-center-portal/create-new-operations-offer.md)
 - [Een Dynamics 365 Business Central-aanbieding maken](partner-center-portal/create-new-business-central-offer.md)
 - [Aanbieding voor IoT Edge-module maken](partner-center-portal/azure-iot-edge-module-creation.md)

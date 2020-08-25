@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: bcb9e75cea06be6ce69c6baccb5ac252c1666d4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755259"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826851"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -89,7 +89,7 @@ Gebruik dit tabblad om de para meters voor de sleutel facturering voor uw back-u
    ![Tabblad gebruik](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> Voor DPM-werk belastingen zien gebruikers mogelijk een enigszins verschil (van de volg orde van 20 MB per DPM-server) tussen de gebruiks waarden die worden weer gegeven in de rapporten, vergeleken met de waarde voor geaggregeerde gebruik zoals weer gegeven op het tabblad Recovery Services kluis **overzicht** . Dit verschil wordt verwerkt door het feit dat elke DPM-server die voor back-up wordt geregistreerd, een gekoppelde meta gegevens bron heeft die niet wordt opgehaald als een artefact voor rapportage.
+> Voor DPM-werk belastingen zien gebruikers mogelijk een enigszins verschil (van de volg orde van 20 MB per DPM-server) tussen de gebruiks waarden die worden weer gegeven in de rapporten, vergeleken met de waarde voor geaggregeerde gebruik zoals weer gegeven op het tabblad Recovery Services kluis **overzicht** . Dit verschil wordt verwerkt door het feit dat elke DPM-server die voor back-up wordt geregistreerd, een gekoppelde meta gegevens bron heeft die niet wordt weer gegeven als een artefact voor rapportage.
 
 ##### <a name="jobs"></a>Taken
 
@@ -109,7 +109,7 @@ Gebruik dit tabblad om inzicht te krijgen in potentiële mogelijkheden voor kost
 
 ###### <a name="inactive-resources"></a>Inactieve resources
 
-In deze weer gave kunt u de back-upitems identificeren waarvan de back-up gedurende een aanzienlijke duur niet is geslaagd. Dit kan betekenen dat de onderliggende computer waarvan een back-up wordt gemaakt, niet meer bestaat (en dus wat resulteert in mislukte back-ups), of er is een probleem met de computer waardoor back-ups niet betrouwbaar kunnen worden uitgevoerd.
+In deze weer gave kunt u de back-upitems identificeren waarvan de back-up gedurende een aanzienlijk tijds duur niet is geslaagd. Dit kan betekenen dat de onderliggende computer waarvan een back-up wordt gemaakt, niet meer bestaat (en dus wat resulteert in mislukte back-ups), of er is een probleem met de computer waardoor back-ups niet betrouwbaar kunnen worden uitgevoerd.
 
 Als u inactieve resources wilt weer geven, gaat u naar het tabblad **optimaliseren** en selecteert u de tegel **inactieve resources** . Selecteer deze tegel bevat een raster met details van alle inactieve resources die in het geselecteerde bereik bestaan. Het raster toont standaard items die geen herstel punt hebben in de afgelopen zeven dagen. Als u inactieve resources wilt zoeken voor een ander tijds bereik, kunt u het filter **tijd bereik** aanpassen boven aan het tabblad.
 

@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2030620446f414f985f86218b96c6db78ab090a1
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763674"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825457"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -251,7 +251,7 @@ Fout bericht: kan de moment opname van de Azure-bestands share die overeenkomt m
 - Zorg ervoor dat de moment opname van de bestands share, die overeenkomt met het herstel punt dat u voor herstel wilt gebruiken, nog bestaat.
 
   >[!NOTE]
-  >Als u een moment opname van een bestands share verwijdert die is gemaakt door Azure Backup, worden de bijbehorende herstel punten onbruikbaar. U wordt aangeraden geen moment opnamen te verwijderen om gegarandeerd herstel te garanderen.
+  >Als u een moment opname van een bestands share verwijdert die is gemaakt door Azure Backup, worden de bijbehorende herstel punten onbruikbaar. Het is raadzaam moment opnamen niet te verwijderen om gegarandeerd herstel te garanderen.
 
 - Selecteer een ander herstel punt om uw gegevens te herstellen.
 

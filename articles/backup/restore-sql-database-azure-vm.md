@@ -3,12 +3,12 @@ title: SQL Server data bases herstellen op een virtuele Azure-machine
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases herstelt die worden uitgevoerd op een virtuele Azure-machine en waarvan een back-up is gemaakt met Azure Backup.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 97cf8a7d7fcae0e31dde14e045b222c5899dbb02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921143"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826553"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-databases herstellen in Azure-VM's
 
@@ -126,7 +126,7 @@ Als u de back-upgegevens wilt herstellen als. bak-bestanden in plaats van een Da
     >
     >- Voer uit `PsExec -s cmd` om in te voeren in de NT AUTHORITY\SYSTEM-shell
     >   - Voer `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` uit
-    >   - Toegang controleren met`dir \\<storageacct>.file.core.windows.net\<filesharename>`
+    >   - Toegang controleren met `dir \\<storageacct>.file.core.windows.net\<filesharename>`
     >- Een terugzet bewerking starten als bestanden van de back-upkluis naar `\\<storageacct>.file.core.windows.net\<filesharename>` het pad<BR>
     U kunt PsExec downloaden van de [Sysinternals](/sysinternals/downloads/psexec) -pagina.
 
@@ -165,7 +165,7 @@ Ga als volgt te werk als u **volledige & differentieel** hebt geselecteerd als h
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Data bases herstellen met een groot aantal bestanden
 
-Als de totale grootte van de teken reeks van bestanden in een Data Base groter is dan een [bepaalde limiet](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), Azure backup slaat de lijst met database bestanden op in een andere pit-component, zodat u het pad voor het terugzetten van de doel groep niet kunt instellen tijdens de herstel bewerking. De bestanden worden in plaats daarvan teruggezet naar het standaardpad voor SQL.
+Als de totale grootte van de teken reeks van bestanden in een Data Base groter is dan een [bepaalde limiet](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), Azure backup slaat de lijst met database bestanden op in een ander onderdeel van de pit, zodat u het pad voor het terugzetten van de doel groep niet kunt instellen tijdens de herstel bewerking. De bestanden worden in plaats daarvan teruggezet naar het standaardpad voor SQL.
 
   ![Data base herstellen met een groot bestand](./media/backup-azure-sql-database/restore-large-files.jpg)
 

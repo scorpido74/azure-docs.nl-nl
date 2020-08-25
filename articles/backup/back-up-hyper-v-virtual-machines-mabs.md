@@ -3,12 +3,12 @@ title: Back-up maken van Hyper-V virtuele machines met MABS
 description: Dit artikel bevat de procedures voor het maken van back-ups en het herstellen van virtuele machines met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514545"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823961"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Back-up maken van virtuele Hyper-V-machines met Azure Backup Server
 
@@ -139,7 +139,7 @@ Wanneer u back-ups van virtuele machines wilt herstellen, gebruikt u de wizard H
     - **Herstellen naar oorspronkelijk exemplaar**: als u het oorspronkelijke exemplaar herstelt, wordt de oorspronkelijke VHD verwijderd. MABS herstelt de VHD en andere configuratie bestanden op de oorspronkelijke locatie met behulp van Hyper-V-VSS Writer. Aan het einde van het herstelproces zijn virtuele machines nog steeds maximaal beschikbaar.
         De brongroep moet aanwezig zijn voor het herstel. Als de groep niet beschikbaar is, herstelt u naar een alternatieve locatie en stelt u de virtuele machine maximaal beschikbaar.
 
-    - **Herstellen als virtuele machine op een wille keurige host**: MABS ondersteunt een probleemloze herstel bewerking van een beveiligde hyper-v-virtuele machine naar een andere hyper-v-host, onafhankelijk van de processor architectuur. Hyper-V virtuele machines die worden hersteld op een clusterknooppunt zullen niet maximaal beschikbaar zijn. Als u deze optie kiest, biedt de wizard Herstellen u een extra scherm voor het identificeren van het doel en doelpad.
+    - **Herstellen als virtuele machine op een wille keurige host**: MABS ondersteunt een probleemloze herstel bewerking van een beveiligde hyper-v-virtuele machine naar een andere hyper-v-host, onafhankelijk van de processor architectuur. Virtuele Hyper-V-machines die worden hersteld naar een cluster knooppunt zijn niet Maxi maal beschikbaar. Als u deze optie kiest, biedt de wizard Herstellen u een extra scherm voor het identificeren van het doel en doelpad.
 
     - **Kopiëren naar een netwerkmap**: MABS ondersteunt herstel op item niveau (ILR), waarmee u op item niveau bestanden, mappen, volumes en virtuele harde schijven (vhd's) kunt herstellen vanaf een back-up op hostniveau van virtuele Hyper-V-machines naar een netwerk share of een volume op een MABS beveiligde server. De MABS-beveiligings agent hoeft niet in de gast te worden geïnstalleerd om herstel op item niveau uit te voeren. Als u deze optie kiest, biedt de wizard Herstellen u een extra scherm voor het identificeren van het doel en doelpad.
 

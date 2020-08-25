@@ -3,12 +3,12 @@ title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652777"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824029"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -134,7 +134,7 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
 
 1. Wanneer u back-up voor een virtuele machine van Azure inschakelt, wordt een back-up uitgevoerd volgens het schema dat u opgeeft.
 1. Tijdens de eerste back-up wordt een back-upextensie op de VM geïnstalleerd als de virtuele machine wordt uitgevoerd.
-    - Voor virtuele Windows-machines wordt de VMSnapshot-extensie geïnstalleerd.
+    - Op virtuele Windows-machines wordt de VMSnapshot-extensie geïnstalleerd.
     - Voor virtuele Linux-machines wordt de VMSnapshot Linux-extensie geïnstalleerd.
 1. De uitbrei ding neemt een moment opname op het opslag niveau.
     - Voor Windows-Vm's waarop wordt uitgevoerd, worden er back-upcoördinaten met de Windows-Volume Shadow Copy Service (VSS) gebruikt voor het maken van een app-consistente moment opname van de virtuele machine. Standaard maakt back-ups volledige VSS-back-ups. Als back-up geen app-consistente moment opname kan maken, wordt een bestands consistente moment opname gebruikt.
@@ -143,7 +143,7 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
 1. Nadat de moment opname is gemaakt, worden de gegevens overgedragen naar de kluis.
     - Alleen gegevens blokken die zijn gewijzigd sinds de laatste back-up zijn gekopieerd.
     - De gegevens zijn niet versleuteld. Azure Backup kunt een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption.
-    - Momentopname gegevens worden mogelijk niet direct naar de kluis gekopieerd. Het maken van een back-up kan enige tijd duren. De totale back-uptijd voor een virtuele machine is minder dan 24 uur voor dagelijks back-upbeleid.
+    - Momentopnamegegevens worden mogelijk niet direct naar de kluis gekopieerd. Het maken van een back-up kan enige tijd duren. De totale back-uptijd voor een virtuele machine is minder dan 24 uur bij beleid voor dagelijkse back-ups.
 1. Nadat de gegevens naar de kluis zijn verzonden, wordt een herstel punt gemaakt. Standaard worden moment opnamen twee dagen bewaard voordat ze worden verwijderd. Met deze functie kunt u de herstel bewerking van deze moment opnamen herstellen. Het vermindert de tijd die nodig is om gegevens terug te zetten en te kopiëren van de kluis. Zie [Azure backup mogelijkheid om direct te herstellen](./backup-instant-restore-capability.md).
 
 U hoeft geen expliciete Internet connectiviteit toe te staan om een back-up te maken van uw Azure-Vm's.

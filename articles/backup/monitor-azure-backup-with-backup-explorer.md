@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u met back-up-Verkenner realtim
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092793"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824409"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Uw back-ups controleren met backup Explorer
 
@@ -28,7 +28,7 @@ Deze mogelijkheden worden out-of-Box door systeem eigen integratie geboden met A
 > * Backup Explorer is momenteel alleen beschikbaar voor Azure virtual machines-gegevens (Vm's).
 > * Backup Explorer is bedoeld als operationeel dash board voor het weer geven van informatie over uw back-ups in de afgelopen 7 dagen (maximum).
 > * Backup Explorer wordt momenteel niet ondersteund in nationale Clouds.
-> * Het is momenteel niet mogelijk om de back-upverkenner-sjabloon aan te passen.
+> * Op dit moment wordt de back-upverkenner-sjabloon niet ondersteund.
 > * Het is niet raadzaam om aangepaste Automatiseringen te schrijven op Azure-resource grafiek gegevens.
 > * Op dit moment kunt u met backup Explorer back-ups controleren over Maxi maal 1000 abonnementen (tussen tenants).
 

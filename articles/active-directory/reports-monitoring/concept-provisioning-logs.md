@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/04/2019
+ms.date: 08/25/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38cffdcc9c99cdec2aeac8bf6fe1dc1575691c8d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924027"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826868"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Rapporten inrichten in de Azure Active Directory Portal (preview)
 
@@ -85,7 +85,7 @@ Hiermee kunt u extra velden weergeven of velden verwijderen die al worden weerge
 
 Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
-![Gedetailleerde informatie](./media/concept-provisioning-logs/steps.png "Filteren")
+![Gedetailleerde informatie](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ## <a name="filter-provisioning-activities"></a>Inrichtings activiteiten filteren
@@ -94,12 +94,12 @@ U kunt uw inrichtings gegevens filteren. Sommige filter waarden worden dynamisch
 In de standaard weergave kunt u de volgende filters selecteren:
 
 - Identiteit
-- Date
+- Datum
 - Status
 - Actie
 
 
-![Filter](./media/concept-provisioning-logs/default-filter.png "Filteren")
+![Filter](./media/concept-provisioning-logs/default-filter.png "Filter")
 
 Met het **identiteits** filter kunt u de naam of de identiteit opgeven die u bevalt. Deze identiteit kan een gebruiker, een groep, een rol of een ander object zijn. U kunt zoeken op de naam of ID van het object. De ID is afhankelijk van het scenario. Wanneer u bijvoorbeeld een object inricht vanuit Azure AD naar Sales Force, is de bron-ID de object-ID van de gebruiker in azure AD terwijl de TargetID de ID van de gebruiker in Sales Force is. Bij het inrichten van workday naar Active Directory, is de bron-ID de werk nemer-ID van de werkdag. Houd er rekening mee dat de naam van de gebruiker mogelijk niet altijd aanwezig is in de identiteits kolom. Er wordt altijd één ID weer. 
 
@@ -118,7 +118,7 @@ Wanneer u een aangepast tijds bestek selecteert, kunt u een begin-en eind datum 
 
 Met het **status** filter kunt u het volgende selecteren:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
 - Overgeslagen
@@ -131,7 +131,7 @@ Met het **actie** filter kunt u het volgende filteren:
 - Bijwerken
 - Verwijderen
 - Uitschakelen
-- Overige
+- Anders
 
 Daarnaast kunt u aan de filters van de standaard weergave ook de volgende filters instellen:
 
@@ -175,7 +175,7 @@ De details worden gegroepeerd op basis van de volgende categorieën:
 - Samenvatting
 
 
-![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "Tabbladen")
+![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "Tabs")
 
 
 
@@ -190,7 +190,7 @@ Het tabblad **stappen** bevat een overzicht van de stappen voor het inrichten va
 
 
 
-![Filter](./media/concept-provisioning-logs/steps.png "Filteren")
+![Filter](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Problemen oplossen en aanbevelingen
@@ -242,6 +242,8 @@ Gebruik de onderstaande tabel voor meer informatie over het oplossen van fouten 
 |LicenseLimitExceeded|De gebruiker kan niet worden gemaakt in de doel toepassing omdat er geen beschik bare licenties voor deze gebruiker zijn. U kunt aanvullende licenties voor de doel toepassing aanschaffen of uw gebruikers toewijzingen en configuratie van kenmerk toewijzing controleren om ervoor te zorgen dat de juiste gebruikers zijn toegewezen met de juiste kenmerken.|
 |DuplicateTargetEntries  |De bewerking kan niet worden voltooid omdat er meer dan één gebruiker in de doel toepassing is gevonden met de geconfigureerde overeenkomende kenmerken. Verwijder de dubbele gebruiker uit de doel toepassing of configureer de kenmerk toewijzingen opnieuw, zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)wordt beschreven.|
 |DuplicateSourceEntries | De bewerking kan niet worden voltooid omdat er meer dan één gebruiker met de geconfigureerde overeenkomende kenmerken is gevonden. Verwijder de dubbele gebruiker of configureer de kenmerk toewijzingen opnieuw, zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)wordt beschreven.|
+|ImportSkipped | Wanneer elke gebruiker wordt geëvalueerd, wordt geprobeerd de gebruiker te importeren uit het bron systeem. Deze fout treedt doorgaans op wanneer de gebruiker die wordt geïmporteerd, de overeenkomende eigenschap die is gedefinieerd in uw kenmerk toewijzingen ontbreekt. Zonder dat er een waarde aanwezig is in het gebruikers object voor het overeenkomende kenmerk, kunnen we geen bereik-, zoek-of export wijzigingen evalueren. Let op: de aanwezigheid van deze fout geeft niet aan dat de gebruiker zich in het bereik bevindt omdat er nog geen bereik voor de gebruiker is geëvalueerd.|
+|EntrySynchronizationSkipped | De inrichtings service heeft een query uitgevoerd op het bron systeem en heeft de gebruiker geïdentificeerd. Er is geen verdere actie ondernomen voor de gebruiker en deze is overgeslagen. De overs Laan kan worden veroorzaakt door de gebruiker buiten het bereik of de gebruiker die al in het doel systeem aanwezig is, zonder verdere wijzigingen vereist.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

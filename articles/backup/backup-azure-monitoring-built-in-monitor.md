@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over de bewakings-en meldings mog
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 9a4558367d3af6858310ce4455cbf1df2a596312
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763470"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827185"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 
@@ -63,7 +63,7 @@ Voor back-upoplossingen van Azure, zoals SQL en SAP HANA, kunnen logboek back-up
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Uitzonde ringen wanneer een waarschuwing niet wordt gegenereerd
 
-Er zijn enkele uitzonde ringen wanneer een waarschuwing niet wordt gegenereerd bij een fout. Dit zijn:
+Er zijn enkele uitzonde ringen wanneer een waarschuwing niet wordt gegenereerd bij een fout. Dat zijn:
 
 - De gebruiker heeft de actieve taak expliciet geannuleerd
 - De taak is mislukt omdat er een andere back-uptaak wordt uitgevoerd (er is niets om te handelen omdat we er gewoon op moeten wachten tot de vorige taak is voltooid)
@@ -83,7 +83,7 @@ Waarschuwingen zijn gebaseerd op ernst van waarschuwingen en kunnen worden gedef
 ## <a name="notification-for-backup-alerts"></a>Melding voor back-upwaarschuwingen
 
 > [!NOTE]
-> De configuratie van de melding kan alleen worden gedaan via de Azure Portal. Ondersteuning voor PS/CLI/REST API/Azure Resource Manager-sjablonen wordt niet ondersteund.
+> De configuratie van de melding kan alleen worden gedaan via de Azure Portal. Ondersteuning voor PS/CLI/REST API/Azure Resource Manager-sjabloon wordt niet ondersteund.
 
 Zodra een waarschuwing is gegenereerd, worden gebruikers hiervan op de hoogte gebracht. Azure Backup biedt een ingebouwd meldings mechanisme via e-mail. Een kan afzonderlijke e-mail adressen of distributie lijsten opgeven die moeten worden gewaarschuwd wanneer er een waarschuwing wordt gegenereerd. U kunt ook kiezen of u wilt worden gewaarschuwd voor elke afzonderlijke waarschuwing of ze wilt groeperen in een samen vatting per uur en vervolgens een melding ontvangen.
 

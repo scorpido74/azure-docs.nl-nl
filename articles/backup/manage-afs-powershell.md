@@ -3,19 +3,19 @@ title: Back-ups van Azure-bestands shares beheren met Power shell
 description: Informatie over het gebruik van Power shell voor het beheren en bewaken van Azure-bestands shares waarvan een back-up is gemaakt door de Azure Backup service.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 889c9bb3ef087c700bbfc3a68959f2c5924bffda
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bb400c25ca6b1deebaef6af6fe4b322951dfcdcc
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538590"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826749"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Back-ups van Azure-bestands shares beheren met Power shell
 
 In dit artikel wordt beschreven hoe u Azure PowerShell gebruikt voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up wordt gemaakt door de Azure Backup-service.
 
 > [!WARNING]
-> Zorg ervoor dat de PS-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups. Raadpleeg de [sectie](backup-azure-afs-automation.md#important-notice-backup-item-identification) overzicht van de vereiste voor deze wijziging voor meer informatie.
+> Controleer of de Power shell-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups. Raadpleeg de [sectie](backup-azure-afs-automation.md#important-notice-backup-item-identification) overzicht van de vereiste voor deze wijziging voor meer informatie.
 
 ## <a name="modify-the-protection-policy"></a>Het beveiligings beleid wijzigen
 

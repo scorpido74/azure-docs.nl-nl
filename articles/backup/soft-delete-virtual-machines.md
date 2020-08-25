@@ -4,19 +4,19 @@ description: Meer informatie over hoe u met zacht verwijderen voor virtuele mach
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: 19de26024a6a31a213130ec419132fd7dd8134a0
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 90d55e8ed6c831adf4efaf0663d191697177ea63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763691"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826477"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Voorlopig verwijderen voor virtuele machines
 
 Zacht verwijderen voor Vm's beveiligt de back-ups van uw Vm's tegen onbedoeld verwijderen. Zelfs nadat de back-ups zijn verwijderd, blijven ze gedurende 14 extra dagen bewaard in de status van zacht verwijderen.
 
 > [!NOTE]
-> Met zacht verwijderen worden verwijderde back-upgegevens alleen beveiligd. Als een virtuele machine wordt verwijderd zonder een back-up, worden de gegevens niet bewaard met de functie voor voorlopig verwijderen. Alle resources moeten worden beveiligd met Azure Backup om volledige tolerantie te garanderen.
+> Met zacht verwijderen worden verwijderde back-upgegevens alleen beveiligd. Als een virtuele machine wordt verwijderd zonder een back-up, blijven de gegevens in de functie voor het voorlopig verwijderen bewaard. Alle resources moeten worden beveiligd met Azure Backup om volledige tolerantie te garanderen.
 >
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
@@ -38,7 +38,7 @@ Voorlopig verwijderen wordt momenteel ondersteund in de West-Centraal VS, Azië-
    ![Scherm opname van Azure Portal, VM in de status zacht verwijderen](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > Als er tijdelijke, verwijderde back-upitems aanwezig zijn in de kluis, kan de kluis op dat moment niet worden verwijderd. Probeer de kluis te verwijderen nadat de back-upitems definitief zijn verwijderd en er geen item is met de status zacht verwijderd links in de kluis.
+   > Als er tijdelijke, verwijderde back-upitems aanwezig zijn in de kluis, kan de kluis op dat moment niet worden verwijderd. Probeer de kluis te verwijderen nadat de back-upitems definitief zijn verwijderd en er geen items zijn met de status zacht verwijderd naar de kluis.
 
 4. Als u de voorlopig verwijderde virtuele machine wilt herstellen, moet deze eerst worden verwijderd. Als u de verwijdering ongedaan wilt maken, kiest u de voorlopig verwijderde virtuele machine en selecteert u vervolgens de optie **verwijderen ongedaan**maken.
 
@@ -62,13 +62,13 @@ Voorlopig verwijderen wordt momenteel ondersteund in de West-Centraal VS, Azië-
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>Voorlopig verwijderen voor Vm's met behulp van Azure PowerShell
 
 > [!IMPORTANT]
-> De AZ. Recovery Services-versie die is vereist voor het gebruik van voorlopig verwijderen met Azure PS, is mini maal 2.2.0. Gebruik ```Install-Module -Name Az.RecoveryServices -Force``` om de nieuwste versie op te halen.
+> De AZ. Recovery Services-versie die is vereist voor het gebruik van voorlopig verwijderen met Azure PowerShell is mini maal 2.2.0. Gebruik ```Install-Module -Name Az.RecoveryServices -Force``` om de nieuwste versie op te halen.
 
 Zoals hierboven wordt beschreven voor Azure Portal, is de volg orde van de stappen hetzelfde wanneer u ook Azure PowerShell.
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>Het back-upitem verwijderen met Azure PowerShell
 
-Verwijder het back-upitem met de cmdlet [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS.
+Verwijder het back-upitem met de Power shell [-cmdlet Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) .
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -95,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-Vervolgens voert u de bewerking voor ongedaan maken uit met de PS [-cmdlet Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) .
+Voer vervolgens de bewerking voor het ongedaan maken van de verwijdering uit met de Power shell [-cmdlet Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) .
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

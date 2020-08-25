@@ -3,12 +3,12 @@ title: Offline back-up met Azure Data Box voor DPM en MABS
 description: U kunt Azure Data Box gebruiken om de eerste back-upgegevens offline van DPM en MABS te maken.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 974be6d337c3376d10e09ba6211f7804c2c8cada
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762450"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824556"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline seeding met behulp van Azure Data Box voor DPM en MABS (preview)
 
@@ -67,7 +67,7 @@ Zorg ervoor dat:
 Zorg ervoor dat de vereiste Data Box-apparaten de status *bezorgd* hebben voordat u offline back-ups gaat activeren. Bekijk de [grootte van back-upgegevens en ondersteunde data Box sku's](#backup-data-size-and-supported-data-box-skus) om de meest geschikte SKU voor uw vereiste te best Ellen. Volg de stappen in [dit artikel](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) om uw data Box-apparaten te best Ellen en te ontvangen.
 
 > [!IMPORTANT]
-> Selecteer niet *BlobStorage* voor het **soort account**. Voor de DPM-MABS-server is een account vereist dat pagina-blobs ondersteunt. dit wordt niet ondersteund wanneer *BlobStorage* is geselecteerd. Selecteer  **opslag v2 (algemeen gebruik v2)** als het **soort account** bij het maken van het doel opslag account voor uw Azure data Box-taak.
+> Selecteer *BlobStorage* voor het **soort account**niet. Voor de DPM-MABS-server is een account vereist dat pagina-blobs ondersteunt. dit wordt niet ondersteund wanneer *BlobStorage* is geselecteerd. Selecteer  **opslag v2 (algemeen gebruik v2)** als het **soort account** bij het maken van het doel opslag account voor uw Azure data Box-taak.
 
 ![Azure databox instellen](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -234,7 +234,7 @@ U kunt dit probleem oplossen door de volgende stappen uit te voeren en de beleid
 2. Als voor geen enkele andere server offline seeding is geconfigureerd en er geen andere server afhankelijk is van de `AzureOfflineBackup_<Azure User Id>` toepassing, verwijdert u deze toepassing uit **Azure Portal > Azure Active Directory > app-registraties**.
 
    > [!NOTE]
-   > Controleer of de toepassing geen `AzureOfflineBackup_<Azure User Id>` andere offline-seeding heeft geconfigureerd en of er geen andere server afhankelijk is van deze toepassing. Ga naar **instellingen > sleutels** onder de sectie open bare sleutels er mogen geen andere **open bare sleutels** zijn toegevoegd. Raadpleeg de volgende scherm afbeelding voor referentie:
+   > Controleer of er geen `AzureOfflineBackup_<Azure User Id>` andere offline seeding is geconfigureerd voor de toepassing en of er geen andere server afhankelijk is van deze toepassing. Ga naar **instellingen > sleutels** onder de sectie open bare sleutels. Er mogen geen andere **open bare sleutels** worden toegevoegd. Raadpleeg de volgende scherm afbeelding voor referentie:
    >
    > ![Open bare sleutels](./media/offline-backup-azure-data-box-dpm-mabs/public-keys.png)
 

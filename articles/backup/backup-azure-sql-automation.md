@@ -4,12 +4,12 @@ description: Back-ups maken van SQL-data bases in azure-Vm's en deze herstellen 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 51c3aa13b088eb056e8b7dcaa2af80b83a606a54
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 46583a0a26c86a0f77b115178fb53592977aef09
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763402"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826885"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
@@ -44,7 +44,7 @@ Raadpleeg de naslag informatie **AZ. Recovery Services** [cmdlet](/powershell/mo
 
 Stel Power shell als volgt in:
 
-1. [Down load de nieuwste versie van AZ Power shell](/powershell/azure/install-az-ps). De mini maal vereiste versie is 1.5.0.
+1. [Down load de nieuwste versie van AZ Power shell](/powershell/azure/install-az-PowerShell). De mini maal vereiste versie is 1.5.0.
 
 2. Zoek de Azure Backup Power shell-cmdlets met de volgende opdracht:
 
@@ -170,7 +170,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]
-> U moet de start tijd binnen 30 minuten meerdere keer opgeven. In het bovenstaande voor beeld kan de waarde alleen ' 01:00:00 ' of ' 02:30:00 ' zijn. De begin tijd mag niet ' 01:15:00 ' zijn
+> U moet de start tijd binnen 30 minuten meerdere keer opgeven. In het bovenstaande voor beeld kan de waarde alleen ' 01:00:00 ' of ' 02:30:00 ' zijn. De begin tijd mag niet ' 01:15:00 ' zijn.
 
 In het volgende voor beeld worden het plannings beleid en het Bewaar beleid opgeslagen in variabelen. Vervolgens worden deze variabelen gebruikt als para meters voor een nieuw beleid (**NewSQLPolicy**). **NewSQLPolicy** neemt dagelijks een volledige back-up, behoudt deze gedurende 180 dagen en maakt elke 2 uur een logboek back-up
 
@@ -193,7 +193,7 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>De SQL-VM registreren
 
-Voor Azure VM-back-ups en Azure-bestands shares kan de back-upservice verbinding maken met deze Azure Resource Manager resources en de relevante gegevens ophalen. Omdat SQL een toepassing binnen een Azure-VM is, heeft de back-upservice toestemming nodig om toegang te krijgen tot de toepassing en de benodigde gegevens op te halen. Hiervoor moet u de Azure-VM die de SQL-toepassing bevat, *registreren* bij een Recovery Services kluis. Wanneer u een SQL-VM met een kluis registreert, kunt u de SQL-Db's alleen op die kluis beveiligen. Gebruik [REGI ster-AzRecoveryServicesBackupContainer PS-](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) cmdlet om de virtuele machine te registreren.
+Voor Azure VM-back-ups en Azure-bestands shares kan de back-upservice verbinding maken met deze Azure Resource Manager resources en de relevante gegevens ophalen. Omdat SQL een toepassing binnen een Azure-VM is, heeft de back-upservice toestemming nodig om toegang te krijgen tot de toepassing en de benodigde gegevens op te halen. Hiervoor moet u de Azure-VM die de SQL-toepassing bevat, *registreren* bij een Recovery Services kluis. Wanneer u een SQL-VM met een kluis registreert, kunt u de SQL-Db's alleen op die kluis beveiligen. Gebruik de Power shell [-cmdlet REGI ster-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) om de virtuele machine te registreren.
 
 ```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -203,11 +203,11 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 De opdracht retourneert een ' back-upcontainer ' van deze resource en de status is geregistreerd
 
 > [!NOTE]
-> Als de para meter Forces niet wordt opgegeven, wordt de gebruiker gevraagd om te bevestigen met een tekst. Als u de beveiliging voor deze container wilt uitschakelen. Negeer deze tekst en zeg "Y" om te bevestigen. Dit is een bekend probleem en er wordt gewerkt aan het verwijderen van de tekst en de vereiste voor de para meter forceren.
+> Als de para meter Forces niet is opgegeven, wordt u gevraagd om te bevestigen met een tekst ' wilt u de beveiliging voor deze container uitschakelen '. Negeer deze tekst en zeg "Y" om te bevestigen. Dit is een bekend probleem en er wordt gewerkt aan het verwijderen van de tekst en de vereiste voor de para meter forceren.
 
 ### <a name="fetching-sql-dbs"></a>SQL-Db's ophalen
 
-Zodra de registratie is voltooid, kan de back-upservice alle beschik bare SQL-onderdelen in de virtuele machine weer geven. Gebruik de cmdlet [Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PS om alle SQL-onderdelen weer te geven waarvoor u een back-up van deze kluis wilt maken.
+Zodra de registratie is voltooid, kan de back-upservice alle beschik bare SQL-onderdelen in de virtuele machine weer geven. Gebruik de Power shell-cmdlet [Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) om alle SQL-onderdelen weer te geven waarvoor u een back-up van deze kluis wilt maken.
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -VaultId $targetVault.ID
@@ -237,7 +237,7 @@ master           ConfigureBackup      Completed            3/18/2019 6:00:21 PM 
 
 ### <a name="fetching-new-sql-dbs"></a>Nieuwe SQL-Db's ophalen
 
-Zodra de computer is geregistreerd, haalt de back-upservice de details op van de beschik bare Db's. Als de gebruiker op een later tijdstip SQL Db's-exemplaren aan de geregistreerde machine toevoegt, moet de back-upservice hand matig worden geactiveerd om een nieuwe ' query ' te kunnen uitvoeren om alle onbeveiligde Db's (inclusief de nieuwe toegevoegde) opnieuw te verkrijgen. Gebruik de [initialisatie-AzRecoveryServicesBackupItem PS-](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) cmdlet op de SQL-VM om een nieuwe query uit te voeren. De opdracht wacht totdat de bewerking is voltooid. Gebruik later de cmdlet [Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) PS om de lijst op te halen met de nieuwste ONbeveiligde SQL-onderdelen
+Zodra de computer is geregistreerd, haalt de back-upservice de details op van de beschik bare Db's. Als de gebruiker op een later tijdstip SQL Db's-exemplaren aan de geregistreerde machine toevoegt, moet de back-upservice hand matig worden geactiveerd om een nieuwe ' query ' te kunnen uitvoeren om alle onbeveiligde Db's (inclusief de nieuwe toegevoegde) opnieuw te verkrijgen. Gebruik de [initialisatie-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/initialize-azrecoveryservicesbackupprotectableitem) Power shell-cmdlet op de SQL-VM om een nieuwe query uit te voeren. De opdracht wacht totdat de bewerking is voltooid. Gebruik later de Power shell [-cmdlet Get-AzRecoveryServicesBackupProtectableItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem) om de lijst op te halen met de nieuwste ONbeveiligde SQL-onderdelen
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -250,7 +250,7 @@ Als u een nieuwe Db's niet hand matig wilt detecteren, kunt u ervoor kiezen om a
 
 ## <a name="enable-autoprotection"></a>Autobeveiliging inschakelen
 
-Een gebruiker kan een back-up zodanig configureren dat alle Db's die in de toekomst worden toegevoegd, automatisch worden beveiligd met een bepaald beleid. Gebruik [Enable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupautoprotection) PS cmdlet om autobeveiliging in te scha kelen.
+U kunt back-ups configureren zodat alle Db's die in de toekomst worden toegevoegd, automatisch worden beveiligd met een bepaald beleid. Als u autoprotection wilt inschakelen, gebruikt u de Power shell [-cmdlet Enable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupautoprotection) .
 
 Omdat de instructie een back-up van alle toekomstige Db's maakt, wordt de bewerking uitgevoerd op een SQLInstance niveau.
 
@@ -270,7 +270,7 @@ Azure Backup kunt SQL Server-data bases die worden uitgevoerd op virtuele Azure-
 
 Controleer de vereisten die [hier](restore-sql-database-azure-vm.md#prerequisites) worden vermeld voordat u SQL db's herstelt.
 
-Haal eerst de relevante back-up van de SQL-Data Base op met behulp van de cmdlet [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PS.
+Haal eerst de relevante back-up van de SQL-Data Base op met behulp van de Power shell [-cmdlet Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) .
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -307,7 +307,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 
 #### <a name="fetch-point-in-time-recovery-point"></a>Herstel punt voor punt in tijd ophalen
 
-Als de gebruiker de Data Base naar een bepaald tijdstip wil herstellen, gebruikt u de cmdlet [Get-AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) PS. De cmdlet retourneert een lijst met datums die de begin-en eind tijden van een niet-verbroken, doorlopende logboek keten voor dat SQL-back-upitem vertegenwoordigen. Het gewenste tijdstip moet binnen dit bereik liggen.
+Als de gebruiker de Data Base naar een bepaald tijdstip wil herstellen, gebruikt u de Power shell-cmdlet [Get-AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) . De cmdlet retourneert een lijst met datums die de begin-en eind tijden van een niet-verbroken, doorlopende logboek keten voor dat SQL-back-upitem vertegenwoordigen. Het gewenste tijdstip moet binnen dit bereik liggen.
 
 ```powershell
 Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
@@ -321,10 +321,10 @@ ItemName                       StartTime                      EndTime
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
 ```
 
-De bovenstaande uitvoer betekent dat de gebruiker kan herstellen naar een wille keurig tijdstip tussen de weer gegeven start tijd en eind tijd. De tijden zijn UTC. Maak een wille keurig tijdstip in PS dat zich binnen het hierboven weer gegeven bereik bevindt.
+De bovenstaande uitvoer betekent dat de gebruiker kan herstellen naar een wille keurig tijdstip tussen de weer gegeven start tijd en eind tijd. De tijden zijn UTC. Maak een wille keurig tijdstip in Power shell dat zich binnen het hierboven weer gegeven bereik bevindt.
 
 > [!NOTE]
-> Wanneer er een logboek punt-in-time is geselecteerd voor herstellen, hoeft de gebruiker geen begin punt op te geven, dat wil zeggen, volledige back-up van waaruit de data base is hersteld. Azure Backup-service zorgt voor het hele herstel plan, dat wil zeggen, welke volledige back-up moet worden gekozen, welke logboek back-ups u wilt Toep assen enz.
+> Wanneer er een logboek punt-in-time is geselecteerd voor herstellen, hoeft u het begin punt niet op te geven, dat wil zeggen, de volledige back-up van waaruit de data base is hersteld. Azure Backup-service zorgt voor het hele herstel plan, dat wil zeggen, welke volledige back-up moet worden gekozen, welke logboek back-ups moeten worden toegepast, enzovoort.
 
 ### <a name="determine-recovery-configuration"></a>Herstel configuratie bepalen
 
@@ -335,7 +335,7 @@ In het geval van een SQL DB-terugzet bewerking worden de volgende herstel scenar
 * De SQL-data base herstellen als een nieuwe data base in een ander SQL-exemplaar in een andere SQL-VM-AlternateWorkloadRestore
 * De SQL-data base herstellen als. bak-bestanden-RestoreAsFiles
 
-Nadat u het relevante herstel punt (DISTINCT of log Point-in-time) hebt opgehaald, gebruikt u de cmdlet [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) PS om het herstel configuratie object op te halen volgens het gewenste herstel plan.
+Nadat u het relevante herstel punt (DISTINCT of log Point-in-time) hebt opgehaald, gebruikt u de Power shell-cmdlet [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) om het herstel configuratie object op te halen volgens het gewenste herstel plan.
 
 #### <a name="original-workload-restore"></a>Oorspronkelijke werk belasting herstellen
 
@@ -406,7 +406,7 @@ Als u een specifieke volledigheid wilt opgeven die moet worden gebruikt voor her
 $FileRestoreWithLogAndSpecificFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -FromFull $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
 ```
 
-Het laatste herstel punt configuratie object dat is verkregen van de cmdlet [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) PS, heeft alle relevante informatie voor herstellen en is zoals hieronder wordt weer gegeven.
+Het laatste herstel punt configuratie object dat is verkregen van de Power shell [-cmdlet Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupworkloadrecoveryconfig) , heeft alle relevante informatie voor herstellen en is zoals hieronder wordt weer gegeven.
 
 ```output
 TargetServer         : <SQL server name>
@@ -435,7 +435,7 @@ Data        azurebackup1      F:\Data\azurebackup1.mdf    F:\Data\azurebackup1_1
 Log         azurebackup1_log  F:\Log\azurebackup1_log.ldf F:\Log\azurebackup1_log_1553001753.ldf
 ```
 
-Stel de relevante PS-eigenschappen in als teken reeks waarden zoals hieronder wordt weer gegeven.
+Stel de relevante Power shell-eigenschappen in als teken reeks waarden zoals hieronder wordt weer gegeven.
 
 ```powershell
 $AnotherInstanceWithFullConfig.OverwriteWLIfpresent = "Yes"
@@ -461,7 +461,7 @@ PointInTime          : 1/1/0001 12:00:00 AM
 
 ### <a name="restore-with-relevant-configuration"></a>Herstellen met de relevante configuratie
 
-Zodra het relevante herstel configuratie object is verkregen en geverifieerd, gebruikt u de cmdlet [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) PS om het herstel proces te starten.
+Wanneer het relevante herstel configuratie object is verkregen en geverifieerd, gebruikt u de Power shell [-cmdlet Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) om het herstel proces te starten.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $targetVault.ID
@@ -479,7 +479,7 @@ MSSQLSERVER/m... Restore              InProgress           3/17/2019 10:02:45 AM
 
 ### <a name="on-demand-backup"></a>Back-ups op aanvraag
 
-Zodra de back-up is ingeschakeld voor een Data Base, kan de gebruiker ook een back-up op aanvraag voor de data base activeren met [Backup-AzRecoveryServicesBackupItem PS-](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) cmdlet. In het volgende voor beeld wordt een volledige back-up geactiveerd op een SQL-data base waarvoor compressie is ingeschakeld en moet de volledige back-up gedurende 60 dagen worden bewaard.
+Zodra de back-up is ingeschakeld voor een Data Base, kan de gebruiker ook een back-up op aanvraag voor de data base activeren met behulp van de Power shell [-cmdlet backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) . In het volgende voor beeld wordt een volledige back-up geactiveerd op een SQL-data base waarvoor compressie is ingeschakeld en moet de volledige back-up gedurende 60 dagen worden bewaard.
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -545,7 +545,7 @@ Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManag
 
 #### <a name="retain-data"></a>Gegevens behouden
 
-Als de gebruiker de beveiliging wil stoppen, kunnen ze de cmdlet [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS gebruiken. Hiermee worden de geplande back-ups gestopt, maar de gegevens waarvan een back-up is gemaakt tot nu toe worden bewaard, blijven behouden.
+Als de gebruiker de beveiliging wil stoppen, kunnen ze de Power shell [-cmdlet Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) gebruiken. Hiermee worden de geplande back-ups gestopt, maar de gegevens waarvan een back-up is gemaakt tot nu toe worden bewaard, blijven behouden.
 
 ```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
@@ -562,7 +562,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="disable-auto-protection"></a>Automatische beveiliging uitschakelen
 
-Als autobeveiliging is geconfigureerd op een SQLInstance, kan de gebruiker deze uitschakelen met de cmdlet [Disable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) PS.
+Als autobeveiliging is geconfigureerd op een SQLInstance, kan de gebruiker deze uitschakelen met de Power shell [-cmdlet Disable-AzRecoveryServicesBackupAutoProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) .
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
@@ -571,7 +571,7 @@ Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupMa
 
 #### <a name="unregister-sql-vm"></a>Registratie van SQL-VM opheffen
 
-Als alle Db's van een SQL-Server [niet meer worden beveiligd en er geen back-upgegevens bestaan](#delete-backup-data), kan de gebruiker de registratie van de SQL-VM uit deze kluis ongedaan maken. Alleen vervolgens kan de gebruiker Db's beveiligen met een andere kluis. Gebruik [unregister-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) PS cmdlet om de registratie van de SQL-VM ongedaan te maken.
+Als alle Db's van een SQL-Server [niet meer worden beveiligd en er geen back-upgegevens bestaan](#delete-backup-data), kan de gebruiker de registratie van de SQL-VM uit deze kluis ongedaan maken. Alleen vervolgens kan de gebruiker Db's beveiligen met een andere kluis. Gebruik [unregister-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) Power shell cmdlet om de registratie van de SQL-VM ongedaan te maken.
 
 ```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
@@ -580,21 +580,21 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 ### <a name="track-azure-backup-jobs"></a>Azure Backup taken bijhouden
 
-Het is belang rijk te weten dat Azure Backup door de gebruiker geactiveerde taken in SQL backup alleen wilt bijhouden. Geplande back-ups (inclusief back-ups van Logboeken) zijn niet zichtbaar in portal/Power shell. Als er echter geplande taken mislukken, wordt er een [back-upwaarschuwing](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) gegenereerd en weer gegeven in de portal. [Gebruik Azure monitor](backup-azure-monitoring-use-azuremonitor.md) om alle geplande taken en andere relevante informatie bij te houden.
+Het is belang rijk te weten dat Azure Backup door de gebruiker geactiveerde taken in SQL backup alleen wilt bijhouden. Geplande back-ups (inclusief back-ups van Logboeken) zijn niet zichtbaar in de portal of Power shell. Als er echter geplande taken mislukken, wordt er een [back-upwaarschuwing](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) gegenereerd en weer gegeven in de portal. [Gebruik Azure monitor](backup-azure-monitoring-use-azuremonitor.md) om alle geplande taken en andere relevante informatie bij te houden.
 
-Gebruikers kunnen op aanvraag/door gebruiker geactiveerde bewerkingen volgen met de JobID die wordt geretourneerd in de [uitvoer](#on-demand-backup) van asynchrone taken, zoals back-up. Gebruik de cmdlet [Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) PS om de taak en de bijbehorende details bij te houden.
+Gebruikers kunnen op aanvraag/door gebruiker geactiveerde bewerkingen volgen met de JobID die wordt geretourneerd in de [uitvoer](#on-demand-backup) van asynchrone taken, zoals back-up. Gebruik de Power shell [-cmdlet Get-AzRecoveryServicesBackupJobDetail](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjobdetail) om de taak en de bijbehorende details bij te houden.
 
 ```powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ```
 
-Gebruik de cmdlet [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) PS om de lijst met taken op aanvraag en hun status van Azure backup service op te halen. In het volgende voor beeld worden alle actieve SQL-taken geretourneerd.
+Gebruik de Power shell-cmdlet [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) om de lijst met taken op aanvraag en hun status van Azure backup service op te halen. In het volgende voor beeld worden alle actieve SQL-taken geretourneerd.
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
 ```
 
-Als u een taak die in voortgang is, wilt annuleren, gebruikt u de cmdlet [Stop-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) PS.
+Als u een taak die in voortgang is, wilt annuleren, gebruikt u de Power shell [-cmdlet stop-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) .
 
 ## <a name="managing-sql-always-on-availability-groups"></a>On-beschikbaarheids groepen voor SQL always beheren
 
@@ -611,4 +611,4 @@ Laten we bijvoorbeeld uitgaan dat een SQL AG twee knoop punten heeft: ' SQL-Serv
 
 SQL-Server-0, SQL-Server-1 wordt ook weer gegeven als ' AzureVMAppContainer ' als [er back-upcontainers worden weer gegeven](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
 
-U hoeft alleen de relevante data base op te halen om [back-ups in te scha kelen](#configuring-backup) en de [PS-cmdlets](#restore-sql-dbs) [op aanvraag](#on-demand-backup) en herstellen identiek te maken.
+U hoeft alleen de relevante data base op te halen om [back-ups](#configuring-backup) te maken en de [Power shell-cmdlets](#restore-sql-dbs) [op aanvraag](#on-demand-backup) en herstel te herstellen.

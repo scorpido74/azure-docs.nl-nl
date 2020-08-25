@@ -4,16 +4,16 @@ description: Bewaak Azure Backup werk belastingen en maak aangepaste waarschuwin
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: fbd1c7f5e7fab9f77815e782160e855a9a854dc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f5f663a2f0ed0f91cc414d352e975a2ff3b9649
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054610"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827151"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Op schaal controleren met behulp van Azure Monitor
 
-Azure Backup biedt [ingebouwde mogelijkheden voor bewaking en waarschuwingen](backup-azure-monitoring-built-in-monitor.md) in een Recovery Services kluis. Deze mogelijkheden zijn beschikbaar zonder enige extra beheerinfrastructuur. Maar deze ingebouwde service is beperkt in de volgende scenario's:
+Azure Backup biedt [ingebouwde mogelijkheden voor bewaking en waarschuwingen](backup-azure-monitoring-built-in-monitor.md) in een Recovery Services kluis. Deze functionaliteit is beschikbaar zonder enige extra beheerinfrastructuur. Maar deze ingebouwde service is beperkt in de volgende scenario's:
 
 - Als u gegevens van meerdere Recovery Services-kluizen in abonnementen bewaakt
 - Als het voorkeurs meldings kanaal *geen* e-mail adres is
@@ -46,7 +46,7 @@ Het definiëren van het kenmerk van een waarschuwing is de trigger voorwaarde. S
 Indien nodig kunt u de Kusto-query bewerken. Kies een drempel waarde, punt en frequentie. De drempel waarde bepaalt wanneer de waarschuwing wordt gegenereerd. De periode is het tijd venster waarin de query wordt uitgevoerd. Als de drempel waarde bijvoorbeeld groter is dan 0, de periode 5 minuten is en de frequentie 5 minuten is, voert de regel de query elke vijf minuten uit, waarna de vorige 5 minuten wordt gecontroleerd. Als het aantal resultaten groter is dan 0, ontvangt u een melding via de geselecteerde actie groep.
 
 > [!NOTE]
-> Als u de waarschuwings regel één keer per dag wilt uitvoeren, wijzigt u in alle gebeurtenissen/logboeken die zijn gemaakt op de opgegeven dag de waarde van zowel ' period ' als ' frequency ' in 1440, d.w.z. 24 uur.
+> Als u de waarschuwings regel één keer per dag wilt uitvoeren, wijzigt u in alle gebeurtenissen/logboeken die zijn gemaakt op de opgegeven dag de waarde van zowel ' period ' als ' frequency ' in 1440, dat wil zeggen 24 uur.
 
 #### <a name="alert-action-groups"></a>Waarschuwings actie groepen
 
@@ -182,7 +182,7 @@ Het juiste logboek identificeren en een waarschuwing maken:
 3. Selecteer **nieuwe waarschuwings regel** om de pagina **regel maken** te openen.
 4. Maak een waarschuwing door de stappen te volgen in [waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure monitor](../azure-monitor/platform/alerts-activity-log.md).
 
-   ![Nieuwe waarschuwings regel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
+   ![Nieuwe waarschuwingsregel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
 Hier is de resource de Recovery Services kluis zelf. Herhaal dezelfde stappen voor alle kluizen waarin u wilt worden gewaarschuwd via activiteiten Logboeken. De voor waarde heeft geen drempel waarde, punt of frequentie omdat deze waarschuwing is gebaseerd op gebeurtenissen. Zodra het relevante activiteiten logboek wordt gegenereerd, wordt de waarschuwing geactiveerd.
 

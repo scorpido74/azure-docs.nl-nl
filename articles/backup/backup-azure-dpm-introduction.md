@@ -3,12 +3,12 @@ title: De DPM-server voorbereiden op het maken van back-ups van workloads
 description: In dit artikel wordt beschreven hoe u back-ups van System Center-Data Protection Manager (DPM) kunt voorbereiden op Azure met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 86becc2b989c55ac080b9bdcbfcca182987e9fb2
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612653"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827304"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Voorbereiden op back-ups van workloads naar Azure met System Center DPM
 
@@ -160,8 +160,8 @@ Op elke machine waarvan een back-up wordt gemaakt door Azure Backup moet de back
     ![Versleuteling](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
 
     > [!WARNING]
-    > U bent eigenaar van de coderings wachtwoordzin en micro soft heeft er geen zicht op.
-    > Als de wachtwoordzin verloren is gegaan of is verg eten. Micro soft kan niet helpen bij het herstellen van de back-upgegevens.
+    > U bent eigenaar van de coderings wachtwoordzin en micro soft heeft deze niet zichtbaar.
+    > Als de wachtwoordzin verloren is gegaan of is verg eten, kan micro soft u niet helpen bij het herstellen van de back-upgegevens.
 
 7. Selecteer **registreren** om de DPM-server te registreren bij de kluis.
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/25/2020
+ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751467"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826817"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Opmerkingen bij de release van Azure HDInsight
 
@@ -75,4 +75,4 @@ Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document]
 
 ## <a name="known-issues"></a>Bekende problemen
 
-Wanneer er wordt geprobeerd een Azure HDInsight-cluster te maken op basis van de Azure Portal en een SSH-verificatie type van een open bare sleutel te gebruiken, treedt er een fout op wanneer gebruikers op **beoordelen + maken**klikken. De fout in de portal is ' mag geen drie opeenvolgende tekens bevatten van SSH-gebruikers naam '. Dit probleem wordt opgelost. Als u deze fout ondervindt, wordt de tijdelijke oplossing echter een cluster met een ARM-sjabloon gemaakt. 
+Er is een probleem opgelost in azure Portal, waar gebruikers een fout ondervonden tijdens het maken van een Azure HDInsight-cluster met behulp van een SSH-verificatie type open bare sleutel. Wanneer gebruikers op **controleren + maken**klikken, ontvangen ze de fout ' mag geen drie opeenvolgende tekens bevatten van SSH-gebruikers naam '. Dit probleem is opgelost, maar mogelijk moet u de cache van de browser vernieuwen door op CTRL + F5 te drukken om de gecorrigeerde weer gave te laden. De tijdelijke oplossing voor dit probleem was het maken van een cluster met een ARM-sjabloon. 

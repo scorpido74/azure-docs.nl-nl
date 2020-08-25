@@ -3,12 +3,12 @@ title: Back-ups maken van VMware-Vm's met Azure Backup Server
 description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 892d308df15ef745f34419ec315e2c5000b0852c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263534"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826936"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
@@ -484,7 +484,7 @@ Ga naar de MABS-server waarop de virtuele VMware-machine is geconfigureerd voor 
   4. Als u de schijf wilt uitsluiten, gaat u naar de `Bin` map en voert u het *ExcludeDisk.ps1* script uit met de volgende para meters:
 
         > [!NOTE]
-        > Voordat u deze opdracht uitvoert, stopt u de DPMRA-service op de MABS-server. Anders wordt de uitsluitings lijst niet bijgewerkt met het script. Zorg ervoor dat er geen taken worden uitgevoerd voordat u de service stopt.
+        > Voordat u deze opdracht uitvoert, stopt u de DPMRA-service op de MABS-server. Als dat niet het geval is, wordt de uitsluitings lijst niet bijgewerkt met het script. Zorg ervoor dat er geen taken worden uitgevoerd voordat u de service stopt.
 
      **Als u de schijf wilt toevoegen aan of verwijderen uit de uitsluiting, voert u de volgende opdracht uit:**
 

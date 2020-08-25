@@ -3,12 +3,12 @@ title: Back-ups van SAP HANA data bases op virtuele machines van Azure beheren
 description: In dit artikel leert u algemene taken voor het beheren en bewaken van SAP HANA-data bases die worden uitgevoerd op virtuele machines van Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049461"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826698"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Back-ups van SAP HANA-databases beheren en bewaken
 
@@ -32,7 +32,7 @@ Ga voor meer informatie over bewaking naar [bewaking in het Azure Portal](./back
 
 Waarschuwingen zijn een eenvoudige manier om back-ups van SAP HANA-data bases te bewaken. Waarschuwingen zorgen ervoor dat u zich kunt concentreren op de gebeurtenissen die u het meest vindt, zonder dat u in het grootst aan gebeurtenissen gaat die door een back-up worden gegenereerd. Met Azure Backup kunt u waarschuwingen instellen en ze kunnen als volgt worden bewaakt:
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 * Selecteer **back-upwaarschuwingen**op het kluis dashboard.
 
   ![Back-upwaarschuwingen op het kluis dashboard](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -57,7 +57,7 @@ Ga voor meer informatie over bewaking naar [bewaking in het Azure Portal](./back
 
 Azure Backup maakt het beheer van een back-up van SAP HANA data base eenvoudig met een overvloed aan beheer bewerkingen die worden ondersteund. Deze bewerkingen worden uitgebreid beschreven in de volgende secties.
 
-### <a name="run-an-on-demand-backup"></a>Een back-up op aanvraag uitvoeren
+### <a name="run-an-on-demand-backup"></a>Een on-demand back-up uitvoeren
 
 Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back-up op aanvraag uitvoeren:
 
@@ -162,18 +162,18 @@ U kunt de beleids versie voor alle betrokken items met één klik oplossen:
 
 ![Beleids versie herstellen](./media/sap-hana-db-manage/fix-policy-version.png)
 
-### <a name="stop-protection-for-an-sap-hana-database"></a>De beveiliging van een SAP HANA data base stoppen
+### <a name="stop-protection-for-an-sap-hana-database"></a>Beveiliging van een SAP HANA-database stoppen
 
-U kunt het beveiligen van een SAP HANA Data Base op een aantal manieren stoppen:
+U kunt de beveiliging van een SAP HANA-database op een aantal manieren stoppen:
 
 * Alle toekomstige back-uptaken stoppen en alle herstelpunten verwijderen.
-* Alle toekomstige back-uptaken stoppen en de herstel punten intact laten.
+* Alle toekomstige back-uptaken stoppen en de herstelpunten intact laten.
 
-Als u ervoor kiest herstel punten te verlaten, houdt u deze details in acht:
+Houd rekening met het volgende als u ervoor kiest de herstelpunten intact te laten:
 
-* Alle herstel punten blijven intact, alle weghalen stoppen bij het stoppen van de beveiliging bij het bewaren van gegevens.
+* Alle herstel punten blijven intact en alle Pruning stopt bij het stoppen van de beveiliging met behoud van gegevens.
 * Er worden kosten in rekening gebracht voor het beveiligde exemplaar en de verbruikte opslag. Zie [Azure backup prijzen](https://azure.microsoft.com/pricing/details/backup/)voor meer informatie.
-* Als u een gegevens bron verwijdert zonder back-ups te stoppen, zullen nieuwe back-ups mislukken.
+* Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups.
 
 Ga als volgt te werk om de beveiliging van een database te stoppen:
 

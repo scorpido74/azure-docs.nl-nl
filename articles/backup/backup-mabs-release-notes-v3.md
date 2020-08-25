@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over bekende problemen en tijdeli
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26d30a56b3117642678f98ba3e7927c27bfd6a69
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032558"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826613"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Release opmerkingen voor Microsoft Azure Backup Server
 
@@ -78,7 +78,7 @@ In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Micro
 **Tijdelijke oplossing**: Voer de volgende stappen uit om de RDL-bestanden te vervangen:
 
 1. Open SQL Reporting Services Web Portal-URL op de computer MABS.
-1. Op de URL van de webportal is de map map dpmreports aanwezig in de indeling van**`DPMReports_<GUID>`**
+1. Op de URL van de webportal is de map map dpmreports aanwezig in de indeling van **`DPMReports_<GUID>`**
 
     >[!NOTE]
     >Er is altijd maar één map met deze naamgevings Conventie. Als MABS is bijgewerkt van een vorige versie, kan er ook nog een oudere map zijn, maar u kunt deze niet openen.
@@ -95,7 +95,7 @@ In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Micro
 
 1. Selecteer op de pagina nieuw de optie **vervangen** om de bestanden te vervangen door de meest recente rapport bestanden.
 
-    De meest recente rapport bestanden vindt u in het pad`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+    De meest recente rapport bestanden vindt u in het pad `<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 
     Bijvoorbeeld: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
 

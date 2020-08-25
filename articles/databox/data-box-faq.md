@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d300252893a72ef6296e941f5a573a67807779f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652573"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823978"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
 
@@ -57,7 +57,7 @@ A.  Voor informatie over welke landen/regio's de Data Box beschikbaar is, gaat u
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>V. In welke regio's kan ik gegevens opslaan met Data Box?
 A. Data Box wordt ondersteund voor alle regio's in VS, Europa-west, Europa-noord, Frank rijk, UK, Japan, Australië en Canada. Ga naar [beschik bare regio](data-box-overview.md#region-availability)voor meer informatie.
 
-### <a name="q-how-can-i-import-my-on-premises-source-data-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>V. Hoe kan ik mijn on-premises bron gegevens importeren naar een Azure-regio in een ander land of een andere regio of gegevens uit een Azure-regio in één land exporteren naar een ander land/dezelfde regio?
+### <a name="q-how-can-i-import-source-data-at-my-location-in-a-particular-country-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>V. Hoe kan ik bron gegevens op mijn locatie in een bepaald land importeren in een Azure-regio in een ander land/regio of gegevens uit een Azure-regio in één land exporteren naar een ander land/dezelfde regio?
 
 Data Box ondersteunt opname van gegevens of uitgaand verkeer binnen hetzelfde land/dezelfde regio als de bestemming en snijdt geen internationale grenzen. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar gegevens vakken kunnen worden verzonden naar en van een EU-land/regio.
 

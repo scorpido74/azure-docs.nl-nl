@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763300"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826237"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -26,9 +26,9 @@ In deze sectie wordt de back-upbewerking voor de virtuele machine van Azure besc
 * Controleer of er geen andere back-upservice wordt uitgevoerd.
   * Om ervoor te zorgen dat er geen problemen zijn met de uitbrei ding van de moment opname, [verwijdert u de uitbrei dingen om opnieuw te laden](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md).
 * Controleer of de virtuele machine verbinding met internet heeft.
-  * Zorg ervoor dat er geen andere back-upservice wordt uitgevoerd.
+  * Zorg ervoor dat de andere back-upservice niet wordt uitgevoerd.
 * `Services.msc`Controleer of de **Windows Azure Guest agent** -service wordt **uitgevoerd**. Als de **Windows Azure Guest agent** -service ontbreekt, installeert u deze vanuit een back-up van [virtuele Azure-machines in een Recovery Services kluis](./backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-* In het **gebeurtenis logboek** kunnen back-upfouten worden weer gegeven die afkomstig zijn van andere back-upproducten, bijvoorbeeld Windows Server back-up, en niet door Azure Backup zijn. Gebruik de volgende stappen om te bepalen of het probleem met Azure Backup:
+* In het **gebeurtenis logboek** kunnen back-upfouten worden weer gegeven die afkomstig zijn van andere back-upproducten, bijvoorbeeld Windows Server back-up, en niet door Azure backup. Gebruik de volgende stappen om te bepalen of het probleem met Azure Backup:
   * Als er een fout is opgetreden bij een **back-upbewerking** in de gebeurtenis bron of het bericht, controleert u of de back-ups van de Azure IaaS VM zijn geslaagd en of er een herstel punt is gemaakt met het gewenste type moment opname.
   * Als Azure Backup werkt, wordt het probleem waarschijnlijk veroorzaakt door een andere back-upoplossing.
   * Hier volgt een voor beeld van een fout 517 van de gebeurtenis Viewer waarbij Azure Backup werkt, maar ' Windows Server Back-up ' is mislukt:<br>
@@ -71,7 +71,7 @@ De back-upbewerking is mislukt, omdat de VM de status Mislukt heeft. Voor een ge
 Fout code: UserErrorFsFreezeFailed <br/>
 Fout bericht: kan een of meer koppel punten van de VM niet blok keren om een consistente moment opname van het bestands systeem te maken.
 
-* Ontkoppel de apparaten waarvoor de bestandssysteem status niet is opgeschoond, met behulp van de **umount** -opdracht.
+* Ontkoppelen van de apparaten waarvoor de status van het bestands systeem niet is opgeschoond, met behulp van de **umount** opdracht.
 * Voer een consistentie controle van het bestands systeem op deze apparaten uit met behulp van de **fsck** -opdracht.
 * Koppel de apparaten opnieuw en voer de back-upbewerking opnieuw uit.</ol>
 
@@ -167,8 +167,8 @@ Fout bericht: de momentopname bewerking is mislukt omdat de limiet voor moment o
 
 De momentopname bewerking is mislukt omdat de limiet voor de moment opname is overschreden voor sommige van de gekoppelde schijven. Voer de volgende stappen uit om het probleem te verhelpen en voer de bewerking vervolgens opnieuw uit.
 
-* Verwijder de schijf-BLOB-moment opnamen die niet vereist zijn. Wees voorzichtig met het verwijderen van de schijf-blob, alleen de moment opname-blobs moeten worden verwijderd.
-* Als de functie voor het voorlopig verwijderen van VM-opslag accounts is ingeschakeld, moet u de Bewaar periode voor tijdelijke verwijdering zodanig configureren dat bestaande moment opnamen kleiner zijn dan het maximum aantal dat is toegestaan op elk gewenst moment.
+* Verwijder de schijven die niet vereist zijn voor de schijf-BLOB-moment opnamen. Zorg ervoor dat u geen schijf-blobs verwijdert. Alleen moment opname-blobs moeten worden verwijderd.
+* Als de functie voor het voorlopig verwijderen van VM-opslag accounts is ingeschakeld, moet u de Bewaar periode voor tijdelijke verwijdering configureren zodat de bestaande moment opnamen kleiner zijn dan het maximum aantal dat is toegestaan op elk gewenst moment.
 * Als Azure Site Recovery is ingeschakeld op de back-up van de virtuele machine, voert u de volgende stappen uit:
 
   * Zorg ervoor dat de waarde van **isanysnapshotfailed** is ingesteld op False in/etc/Azure/vmbackup.conf

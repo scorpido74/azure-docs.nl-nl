@@ -3,12 +3,12 @@ title: Richtlijnen en aanbevolen procedures
 description: Ontdek de aanbevolen procedures en richt lijnen voor het maken van een back-up van de Cloud en on-premises werk belasting naar de Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757588"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825576"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Back-ups in de Cloud en on-premises naar de Cloud
 
@@ -247,13 +247,13 @@ Als back-upgebruiker of-beheerder moet u alle back-upoplossingen kunnen bewaken 
 
 * Azure Backup biedt een **ingebouwd** mechanisme voor waarschuwings meldingen via e-mail voor fouten, waarschuwingen en kritieke bewerkingen. U kunt afzonderlijke e-mail adressen of distributie lijsten opgeven die moeten worden gewaarschuwd wanneer er een waarschuwing wordt gegenereerd. U kunt ook kiezen of u wilt worden gewaarschuwd voor elke afzonderlijke waarschuwing of ze wilt groeperen in een samen vatting per uur en vervolgens een melding ontvangen.
   * Deze waarschuwingen worden gedefinieerd door de service en bieden ondersteuning voor beperkte scenario's: back-up-en herstel fouten, beveiliging stoppen met het bewaren van gegevens of beveiliging tegen het verwijderen van gegevens, enzovoort. Meer [informatie vindt u hier](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
-  * Als er een destructieve bewerking wordt uitgevoerd, zoals het stoppen van de beveiliging bij het verwijderen van gegevens, wordt er een waarschuwing gegenereerd en wordt er een e-mail bericht verzonden naar de eigen aren van het abonnement, beheerders en mede beheerders, zelfs als er geen meldingen zijn geconfigureerd voor de Recovery Services kluis.
+  * Als er een destructieve bewerking wordt uitgevoerd, zoals het stoppen van de beveiliging bij het verwijderen van gegevens, wordt er een waarschuwing gegenereerd en wordt er een e-mail bericht verzonden naar de eigen aren van het abonnement, beheerders en mede beheerders, zelfs als er **geen** meldingen zijn geconfigureerd voor de Recovery Services kluis.
   * Bepaalde werk belastingen kunnen een hoge frequentie van fouten genereren (bijvoorbeeld SQL Server om de 15 minuten). Om te voor komen dat er wordt overspoeld met waarschuwingen die worden gegenereerd voor elk fout voorval, worden de waarschuwingen geconsolideerd. Meer [informatie vindt u hier](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * De ingebouwde waarschuwingen kunnen niet worden aangepast en zijn beperkt tot e-mail berichten die zijn gedefinieerd in de Azure Portal.
 
 * Als u **aangepaste waarschuwingen wilt maken** (bijvoorbeeld waarschuwingen van geslaagde taken), gebruikt u log Analytics. In Azure Monitor kunt u uw eigen waarschuwingen maken in een Log Analytics-werk ruimte. Hybride werk belastingen (DPM/MABS) kunnen ook gegevens verzenden naar LA en LA gebruiken om algemene waarschuwingen te bieden voor werk belastingen die door Azure Backup worden ondersteund.
 
-* U kunt ook meldingen ontvangen via ingebouwde Recovery Services kluis **activiteiten logboeken**. het ondersteunt echter beperkte scenario's en is niet geschikt voor bewerkingen zoals een geplande back-up, die beter is afgestemd op resource logboeken dan met activiteiten Logboeken. Raadpleeg dit [artikel](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)voor meer informatie over deze beperkingen en hoe u log Analytics werk ruimte kunt gebruiken voor bewaking en waarschuwingen op schaal voor al uw workloads die worden beveiligd door Azure backup.
+* U kunt ook meldingen ontvangen via ingebouwde Recovery Services kluis **activiteiten logboeken**. Het ondersteunt echter beperkte scenario's en is niet geschikt voor bewerkingen zoals een geplande back-up, die beter is afgestemd op resource logboeken dan met activiteiten Logboeken. Raadpleeg dit [artikel](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)voor meer informatie over deze beperkingen en hoe u log Analytics werk ruimte kunt gebruiken voor bewaking en waarschuwingen op schaal voor al uw workloads die worden beveiligd door Azure backup.
 
 ## <a name="next-steps"></a>Volgende stappen
 
