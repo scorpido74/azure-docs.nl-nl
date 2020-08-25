@@ -4,12 +4,12 @@ description: Een virtuele Azure-machine herstellen vanaf een herstel punt met be
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 4aca863dd4e9c418872cd67bdf54df616a7a0c5b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 66d29294d74e9fee28dd88d34f67ed3bdc4b8e7b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651145"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756483"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure VM-gegevens herstellen in Azure Portal
 
@@ -65,7 +65,7 @@ Als u geen machtigingen hebt, kunt u [een schijf herstellen](#restore-disks)en n
     - **Nieuwe maken**: gebruik deze optie als u een nieuwe virtuele machine wilt maken. U kunt een virtuele machine maken met eenvoudige instellingen, of een schijf herstellen en een aangepaste virtuele machine maken.
     - **Bestaande vervangen**: gebruik deze optie als u de schijven op een bestaande virtuele machine wilt vervangen.
 
-        ![Wizard configuratie herstellen](./media/backup-azure-arm-restore-vms/restore-configuration.png)
+        ![Wizard virtuele-machine configuratie herstellen](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
 1. Geef de instellingen voor de geselecteerde terugzet optie op.
 
@@ -79,7 +79,7 @@ Als een van de [Opties voor terugzetten](#restore-options)kunt u snel een virtue
 1. Selecteer in **virtueel netwerk**het VNet waarin de virtuele machine wordt geplaatst. Alle VNets die aan het abonnement zijn gekoppeld, worden weer gegeven. Selecteer het subnet. Het eerste subnet is standaard geselecteerd.
 1. Geef in **faserings locatie**het opslag account voor de virtuele machine op. [Meer informatie](#storage-accounts).
 
-    ![Wizard configuratie herstellen](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
+    ![Wizard configuratie herstellen: Kies opties voor terugzetten](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
 1. Selecteer **herstellen** om de herstel bewerking te activeren.
 

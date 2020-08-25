@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: d041bfe1187c48e5544e8933763eaf45a507a424
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701496"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752059"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Kosten verlagen met Azure Disk reservation
 
@@ -31,7 +31,7 @@ Er wordt een schijf reservering per schijf-SKU gemaakt. Als gevolg hiervan is he
 Stel dat u een P40-schijf met 2 TiB van de ingerichte opslag capaciteit reserveert. Stel ook dat u slechts twee P30-schijven toewijst. De P40-reserve ring in dat geval heeft geen rekening met het P30-verbruik en u betaalt het betalen naar gebruik-tarief op de P30-schijven.
 <br/>
 <br/>
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="purchase-considerations"></a>Aankoopoverwegingen
 
@@ -55,7 +55,7 @@ In zeldzame gevallen beperkt Azure de aanschaf van nieuwe reserve ringen aan een
 
 ## <a name="buy-a-disk-reservation"></a>Een schijf reservering aanschaffen
 
-U kunt Azure Disk Storage reserve ringen aanschaffen via de [Azure Portal](https://portal.azure.com/). U kunt betalen voor de reserve ring, hetzij vooraf, hetzij met maandelijkse betalingen. Zie [reserve ringen met maandelijkse betalingen kopen](~/articles/cost-management-billing/reservations/monthly-payments-reservations.md)voor meer informatie over het aanschaffen met maandelijkse betalingen.
+U kunt Azure Disk Storage reserve ringen aanschaffen via de [Azure Portal](https://portal.azure.com/). U kunt betalen voor de reserve ring, hetzij vooraf, hetzij met maandelijkse betalingen. Zie [reserve ringen met maandelijkse betalingen kopen](../cost-management-billing/reservations/prepare-buy-reservation.md#buy-reservations-with-monthly-payments)voor meer informatie over het aanschaffen met maandelijkse betalingen.
 
 Volg deze stappen om gereserveerde capaciteit aan te schaffen:
 
@@ -103,5 +103,5 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat zijn Azure-reserveringen?](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [Reserveringskorting toepassen op Azure Disk Storage](~/articles/cost-management-billing/reservations/understand-disk-reservations.md)
+- [Wat zijn Azure-reserveringen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Reserveringskorting toepassen op Azure Disk Storage](../cost-management-billing/reservations/understand-disk-reservations.md)

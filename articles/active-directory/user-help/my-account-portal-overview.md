@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
-ms.translationtype: HT
+ms.openlocfilehash: 95947a9350f19f0f0ff45b7c65e14729b66f26cf
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422404"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798156"
 ---
 # <a name="what-is-the-my-account-portal"></a>Wat is de portal Mijn account?
 
@@ -33,11 +33,11 @@ U opent de portal **Mijn account** (https://myaccount.microsoft.com) ), in de hu
 ![Portal Mijn account, overzichtspagina](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die toegang willen krijgen tot de portal Mijn account om hun beveiligingsgegevens, apparaatgegevens, wachtwoord, verbonden organisaties, taalinstellingen, privacy of eerdere aanmeldingsgegevens bij te werken. Als u een beheerder bent die informatie zoekt over het inschakelen van verificatie en andere functies van Azure Active Directory (Azure AD) voor uw werknemers en andere toepassingen, raadpleegt u [Documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
+>Dit artikel is bedoeld voor gebruikers die toegang willen krijgen tot de portal Mijn account om hun beveiligingsgegevens, apparaatgegevens, wachtwoord, verbonden organisaties, taalinstellingen, privacy of eerdere aanmeldingsgegevens bij te werken. Als u een beheerder bent die informatie zoekt over het inschakelen van verificatie en andere functies van Azure Active Directory (Azure AD) voor uw werknemers en andere toepassingen, raadpleegt u [Documentatie voor Azure Active Directory](../index.yml).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Selecteren om uw [beveiligingsgegevens](user-help-security-info-overview.md) weer te geven of te beheren
+- Selecteren om uw [beveiligingsgegevens](./security-info-setup-signin.md) weer te geven of te beheren
 
 - Uw verbonden [apparaten](my-account-portal-devices-page.md) weergeven of beheren
 

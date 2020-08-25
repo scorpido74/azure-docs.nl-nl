@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 08/21/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4a204be0730a0ce4edcd2e343364ed8fc724430e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cdee82ddae7f6edf43765063bb610b743dbf0121
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88655268"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88809795"
 ---
 Het inschakelen van gedeelde schijven is alleen beschikbaar voor een subset van schijf typen. Op dit moment kunnen alleen Ultra disks en Premium Ssd's gedeelde schijven inschakelen. Op elke beheerde schijf waarvoor gedeelde schijven zijn ingeschakeld, gelden de volgende beperkingen, geordend op schijf type:
 
@@ -30,7 +30,7 @@ Gedeelde Ultra schijven zijn beschikbaar in alle regio's die standaard ondersteu
 
 ### <a name="premium-ssds"></a>Premium-SSD's
 
-- Momenteel alleen ondersteund in de regio West-Centraal vs.
+- Momenteel alleen ondersteund in [een subset van regio's](#regional-availability).
 - Momenteel beperkt tot Azure Resource Manager-of SDK-ondersteuning. 
 - Kan alleen worden ingeschakeld op gegevens schijven, niet op OS-schijven.
 - **Alleen-lezen** host-caching is niet beschikbaar voor Premium-ssd's met `maxShares>1` .
@@ -39,5 +39,22 @@ Gedeelde Ultra schijven zijn beschikbaar in alle regio's die standaard ondersteu
 - Wanneer u [proximity placement groups (PPG)](../articles/virtual-machines/windows/proximity-placement-groups.md)gebruikt, moeten alle virtuele machines die een schijf delen deel uitmaken van dezelfde PPG.
 - Alleen standaard schijven kunnen worden gebruikt in combi natie met sommige versies van Windows Server-failovercluster, voor meer informatie, [Hardware-vereisten en opslag opties voor failover clustering](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
 - Azure Backup-en Azure Site Recovery-ondersteuning is nog niet beschikbaar.
+
+#### <a name="regional-availability"></a>Regionale beschikbaarheid
+
+Gedeelde Premium-Ssd's worden alleen ondersteund in de volgende regio's:
+
+- VS - oost
+- VS - oost 2
+- VS - west
+- VS - west 2
+- VS - west-centraal
+- South Central US
+- Central US
+- Korea - centraal
+- Canada - midden
+- Canada - oost
+- VS (overheid) - Virginia
+- VS (overheid) - Arizona
 
 Als u geïnteresseerd bent in het proberen van gedeelde Premium Ssd's, [meldt u zich aan voor toegang](https://aka.ms/AzureSharedDiskGASignUp).

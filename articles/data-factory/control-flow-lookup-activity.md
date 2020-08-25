@@ -3,22 +3,23 @@ title: Opzoek activiteit in Azure Data Factory
 description: Leer hoe u de opzoek activiteit kunt gebruiken om een waarde te zoeken vanuit een externe bron. Naar deze uitvoer kan worden verwezen door geslaagde activiteiten.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: linda33wj
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/15/2018
-ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: 7a0b4e52d729c3f13d5ac425627970d67b87979e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417995"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795878"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Opzoek activiteit in Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Met opzoek activiteit kan een gegevensset worden opgehaald uit een van de Azure Data Factory ondersteunde gegevens bronnen. Gebruik het in het volgende scenario:
@@ -36,18 +37,17 @@ De volgende gegevens bronnen worden ondersteund voor opzoek activiteiten. Het gr
 
 ```json
 {
-    "name": "LookupActivity",
-    "type": "Lookup",
-    "typeProperties": {
-        "source": {
-            "type": "<source type>"
-            <additional source specific properties (optional)>
+    "name":"LookupActivity",
+    "type":"Lookup",
+    "typeProperties":{
+        "source":{
+            "type":"<source type>"
         },
-        "dataset": { 
-            "referenceName": "<source dataset name>",
-            "type": "DatasetReference"
+        "dataset":{
+            "referenceName":"<source dataset name>",
+            "type":"DatasetReference"
         },
-        "firstRowOnly": false
+        "firstRowOnly":<true or false>
     }
 }
 ```
@@ -58,7 +58,7 @@ Naam | Beschrijving | Type | Vereist?
 ---- | ----------- | ---- | --------
 sets | Bevat de referentie voor de gegevensset voor de zoek actie. Details ophalen uit de sectie **Eigenschappen van gegevensset** in elk bijbehorend connector artikel. | Sleutel/waarde-paar | Ja
 source | Bevat eigenschappen van een gegevensset, hetzelfde als de bron van de Kopieer activiteit. Details ophalen uit de sectie **Eigenschappen van Kopieer activiteit** in elk bijbehorende connector-artikel. | Sleutel/waarde-paar | Ja
-firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourneerd. | Boolean-waarde | Nee. De standaardwaarde is `true`.
+firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourneerd. | Boolean | Nee. De standaardwaarde is `true`.
 
 > [!NOTE]
 > 
@@ -66,23 +66,24 @@ firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourne
 > * De **structuur** wordt niet ondersteund in de definitie van de gegevensset. Gebruik voor tekstindelings bestanden de rij met koppen om de kolom naam op te geven.
 > * Als uw lookup-bron een JSON-bestand is, wordt de `jsonPathDefinition` instelling voor het vorm geven van het JSON-object niet ondersteund. De volledige objecten worden opgehaald.
 
-## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Het resultaat van de opzoek activiteit gebruiken in een volgende activiteit
+## <a name="use-the-lookup-activity-result"></a>Het resultaat van de opzoek activiteit gebruiken
 
 Het Zoek resultaat wordt geretourneerd in de `output` sectie van het resultaat van de uitvoering van de activiteit.
 
-* **Wanneer `firstRowOnly` is ingesteld op `true` (standaard)**, is de uitvoer indeling zoals wordt weer gegeven in de volgende code. Het Zoek resultaat bevindt zich onder een vaste `firstRow` sleutel. Gebruik het patroon van om het resultaat in de volgende activiteit te gebruiken `@{activity('MyLookupActivity').output.firstRow.TableName}` .
+* **Wanneer `firstRowOnly` is ingesteld op `true` (standaard)**, is de uitvoer indeling zoals wordt weer gegeven in de volgende code. Het Zoek resultaat bevindt zich onder een vaste `firstRow` sleutel. Gebruik het patroon van om het resultaat in de volgende activiteit te gebruiken  `@{activity('LookupActivity').output.firstRow.table` .
 
     ```json
     {
         "firstRow":
         {
             "Id": "1",
-            "TableName" : "Table1"
+            "schema":"dbo",
+            "table":"Table1"
         }
     }
     ```
 
-* **Wanneer `firstRowOnly` is ingesteld op `false` **, is de uitvoer indeling zoals in de volgende code wordt weer gegeven. Een `count` veld geeft aan hoeveel records er worden geretourneerd. Gedetailleerde waarden worden weer gegeven onder een vaste `value` matrix. In een dergelijk geval wordt de opzoek activiteit gevolgd door een [foreach-activiteit](control-flow-for-each-activity.md). U geeft de `value` matrix door aan het veld foreach-activiteit met `items` behulp van het patroon van `@activity('MyLookupActivity').output.value` . Als u elementen in de `value` matrix wilt openen, gebruikt u de volgende syntaxis: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Een voorbeeld is `@{activity('lookupActivity').output.value[0].tablename}`.
+* **Wanneer `firstRowOnly` is ingesteld op `false` **, is de uitvoer indeling zoals in de volgende code wordt weer gegeven. Een `count` veld geeft aan hoeveel records er worden geretourneerd. Gedetailleerde waarden worden weer gegeven onder een vaste `value` matrix. In een dergelijk geval wordt de opzoek activiteit gevolgd door een [foreach-activiteit](control-flow-for-each-activity.md). U geeft de `value` matrix door aan het veld foreach-activiteit met `items` behulp van het patroon van `@activity('MyLookupActivity').output.value` . Als u elementen in de `value` matrix wilt openen, gebruikt u de volgende syntaxis: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Een voorbeeld is `@{activity('lookupActivity').output.value[0].schema}`.
 
     ```json
     {
@@ -90,23 +91,26 @@ Het Zoek resultaat wordt geretourneerd in de `output` sectie van het resultaat v
         "value": [
             {
                 "Id": "1",
-                "TableName" : "Table1"
+                "schema":"dbo",
+                "table":"Table1"
             },
             {
                 "Id": "2",
-                "TableName" : "Table2"
+                "schema":"dbo",
+                "table":"Table2"
             }
         ]
     } 
     ```
 
-### <a name="copy-activity-example"></a>Voor beeld van Kopieer activiteit
-In dit voor beeld kopieert u met de Kopieer activiteit gegevens uit een SQL-tabel in uw Azure SQL Database-exemplaar naar Azure Blob-opslag. De naam van de SQL-tabel wordt opgeslagen in een JSON-bestand in Blob Storage. De opzoek activiteit zoekt de tabel naam tijdens runtime. JSON wordt dynamisch gewijzigd met behulp van deze methode. U hoeft geen pijp lijnen of gegevens sets opnieuw te implementeren. 
+## <a name="example"></a>Voorbeeld
+
+In dit voor beeld bevat de pijp lijn twee activiteiten: **zoeken** en **kopiëren**. De Kopieer activiteit kopieert gegevens uit een SQL-tabel in uw Azure SQL Database-exemplaar naar Azure Blob-opslag. De naam van de SQL-tabel wordt opgeslagen in een JSON-bestand in Blob Storage. De opzoek activiteit zoekt de tabel naam tijdens runtime. JSON wordt dynamisch gewijzigd met behulp van deze methode. U hoeft geen pijp lijnen of gegevens sets opnieuw te implementeren. 
 
 In dit voor beeld wordt alleen de zoek functie voor de eerste rij gedemonstreerd. Zie de voor beelden in [meerdere tabellen tegelijk kopiëren met behulp van Azure Data Factory](tutorial-bulk-copy.md)voor het opzoeken van alle rijen en het koppelen van de resultaten met de foreach-activiteit.
 
+
 ### <a name="pipeline"></a>Pijplijn
-Deze pijp lijn bevat twee activiteiten: zoeken en kopiëren. 
 
 - De opzoek activiteit is geconfigureerd voor het gebruik van **LookupDataset**, die verwijst naar een locatie in Azure Blob Storage. De opzoek activiteit leest de naam van de SQL-tabel vanuit een JSON-bestand op deze locatie. 
 - De Kopieer activiteit maakt gebruik van de uitvoer van de opzoek activiteit. Dit is de naam van de SQL-tabel. De eigenschap **TableName** in de **Source dataset** is geconfigureerd voor het gebruik van de uitvoer van de opzoek activiteit. Met de Kopieer activiteit worden gegevens uit de SQL-tabel gekopieerd naar een locatie in Azure Blob Storage. De locatie wordt opgegeven door de eigenschap **SinkDataset** . 
@@ -119,161 +123,241 @@ Deze pijp lijn bevat twee activiteiten: zoeken en kopiëren.
             {
                 "name": "LookupActivity",
                 "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
                 "typeProperties": {
                     "source": {
-                        "type": "BlobSource"
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
                     },
-                    "dataset": { 
-                        "referenceName": "LookupDataset", 
-                        "type": "DatasetReference" 
-                    }
+                    "dataset": {
+                        "referenceName": "LookupDataset",
+                        "type": "DatasetReference"
+                    },
+                    "firstRowOnly": true
                 }
             },
             {
                 "name": "CopyActivity",
                 "type": "Copy",
-                "typeProperties": {
-                    "source": { 
-                        "type": "SqlSource", 
-                        "sqlReaderQuery": "select * from @{activity('LookupActivity').output.firstRow.tableName}" 
-                    },
-                    "sink": { 
-                        "type": "BlobSink" 
+                "dependsOn": [
+                    {
+                        "activity": "LookupActivity",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
                     }
-                },                
-                "dependsOn": [ 
-                    { 
-                        "activity": "LookupActivity", 
-                        "dependencyConditions": [ "Succeeded" ] 
-                    }
-                 ],
-                "inputs": [ 
-                    { 
-                        "referenceName": "SourceDataset", 
-                        "type": "DatasetReference" 
-                    } 
                 ],
-                "outputs": [ 
-                    { 
-                        "referenceName": "SinkDataset", 
-                        "type": "DatasetReference" 
-                    } 
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": {
+                            "value": "select * from [@{activity('LookupActivity').output.firstRow.schema}].[@{activity('LookupActivity').output.firstRow.table}]",
+                            "type": "Expression"
+                        },
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "DelimitedTextSink",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextWriteSettings",
+                            "quoteAllText": true,
+                            "fileExtension": ".txt"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "SourceDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "schemaName": {
+                                "value": "@activity('LookupActivity').output.firstRow.schema",
+                                "type": "Expression"
+                            },
+                            "tableName": {
+                                "value": "@activity('LookupActivity').output.firstRow.table",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "SinkDataset",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "schema": {
+                                "value": "@activity('LookupActivity').output.firstRow.schema",
+                                "type": "Expression"
+                            },
+                            "table": {
+                                "value": "@activity('LookupActivity').output.firstRow.table",
+                                "type": "Expression"
+                            }
+                        }
+                    }
                 ]
             }
-        ]
+        ],
+        "annotations": [],
+        "lastPublishTime": "2020-08-17T10:48:25Z"
     }
 }
 ```
 
 ### <a name="lookup-dataset"></a>Zoek gegevensset
-De **lookup** -gegevensset is de **sourcetable.jsvoor** het bestand in de Azure Storage lookup-map die is opgegeven door het type **AzureStorageLinkedService** . 
+
+De **lookup** -gegevensset is de **sourcetable.jsvoor** het bestand in de Azure Storage lookup-map die is opgegeven door het type **AzureBlobStorageLinkedService** . 
 
 ```json
 {
     "name": "LookupDataset",
     "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "lookup",
-            "fileName": "sourcetable.json",
-            "format": {
-                "type": "JsonFormat",
-                "filePattern": "SetOfObjects"
-            }
-        },
         "linkedServiceName": {
-            "referenceName": "AzureStorageLinkedService",
+            "referenceName": "AzureBlobStorageLinkedService",
             "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Json",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "sourcetable.json",
+                "container": "lookup"
+            }
         }
     }
 }
 ```
 
 ### <a name="source-dataset-for-copy-activity"></a>**Bron** gegevensset voor kopieer activiteit
+
 De **bron** -gegevensset gebruikt de uitvoer van de opzoek activiteit, die de naam van de SQL-tabel is. Met de Kopieer activiteit worden gegevens uit deze SQL-tabel gekopieerd naar een locatie in Azure Blob Storage. De locatie wordt opgegeven door de **sink** -gegevensset. 
 
 ```json
 {
     "name": "SourceDataset",
     "properties": {
-        "type": "AzureSqlTable",
-        "typeProperties":{
-            "tableName": "@{activity('LookupActivity').output.firstRow.tableName}"
-        },
         "linkedServiceName": {
-            "referenceName": "AzureSqlLinkedService",
+            "referenceName": "AzureSqlDatabase",
             "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "schemaName": {
+                "type": "string"
+            },
+            "tableName": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": {
+                "value": "@dataset().schemaName",
+                "type": "Expression"
+            },
+            "table": {
+                "value": "@dataset().tableName",
+                "type": "Expression"
+            }
         }
     }
 }
 ```
 
 ### <a name="sink-dataset-for-copy-activity"></a>**Sink** -gegevensset voor kopieer activiteit
-Met de Kopieer activiteit worden gegevens uit de SQL-tabel gekopieerd naar het **filebylookup.csv** -bestand in de **CSV** -map in azure Storage. Het bestand wordt opgegeven door de eigenschap **AzureStorageLinkedService** . 
+
+Met de Kopieer activiteit worden gegevens uit de SQL-tabel gekopieerd naar het **filebylookup.csv** -bestand in de **CSV** -map in azure Storage. Het bestand wordt opgegeven door de eigenschap **AzureBlobStorageLinkedService** . 
 
 ```json
 {
     "name": "SinkDataset",
     "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "csv",
-            "fileName": "filebylookup.csv",
-            "format": {
-                "type": "TextFormat"                                                                    
+        "linkedServiceName": {
+            "referenceName": "AzureBlobStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "schema": {
+                "type": "string"
+            },
+            "table": {
+                "type": "string"
             }
         },
-        "linkedServiceName": {
-            "referenceName": "AzureStorageLinkedService",
-            "type": "LinkedServiceReference"
-        }
-    }
-}
-```
-
-### <a name="azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service
-Dit opslag account bevat het JSON-bestand met de namen van de SQL-tabellen. 
-
-```json
-{
-    "properties": {
-        "type": "AzureStorage",
+        "annotations": [],
+        "type": "DelimitedText",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>"
-        }
-    },
-        "name": "AzureStorageLinkedService"
-}
-```
-
-### <a name="azure-sql-database-linked-service"></a>Een gekoppelde Azure SQL Database-service
-Dit Azure SQL Database-exemplaar bevat de gegevens die moeten worden gekopieerd naar de Blob-opslag. 
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "description": "",
-        "typeProperties": {
-            "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
-        }
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": {
+                    "value": "@{dataset().schema}_@{dataset().table}.csv",
+                    "type": "Expression"
+                },
+                "container": "csv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "quoteChar": "\""
+        },
+        "schema": []
     }
 }
 ```
 
 ### <a name="sourcetablejson"></a>sourcetable.jsop
 
+U kunt de volgende twee soorten indelingen gebruiken voor **sourcetable.js** voor het bestand.
+
 #### <a name="set-of-objects"></a>Set met objecten
 
 ```json
 {
-  "Id": "1",
-  "tableName": "Table1"
+   "Id":"1",
+   "schema":"dbo",
+   "table":"Table1"
 }
 {
-   "Id": "2",
-  "tableName": "Table2"
+   "Id":"2",
+   "schema":"dbo",
+   "table":"Table2"
 }
 ```
 
@@ -283,11 +367,13 @@ Dit Azure SQL Database-exemplaar bevat de gegevens die moeten worden gekopieerd 
 [ 
     {
         "Id": "1",
-        "tableName": "Table1"
+        "schema":"dbo",
+        "table":"Table1"
     },
     {
         "Id": "2",
-        "tableName": "Table2"
+        "schema":"dbo",
+        "table":"Table2"
     }
 ]
 ```
@@ -307,4 +393,4 @@ Zie andere controle stroom activiteiten die door Data Factory worden ondersteund
 - [Pijplijn activiteit uitvoeren](control-flow-execute-pipeline-activity.md)
 - [Activiteit ForEach](control-flow-for-each-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)
-- [Webactiviteit](control-flow-web-activity.md)
+- [Activiteit Web](control-flow-web-activity.md)

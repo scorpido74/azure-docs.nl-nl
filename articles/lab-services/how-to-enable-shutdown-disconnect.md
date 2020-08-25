@@ -3,12 +3,12 @@ title: Automatisch afsluiten van Vm's voor een lab in Azure Lab Services configu
 description: Meer informatie over het in-of uitschakelen van automatisch afsluiten van Vm's wanneer een verbinding met een extern bureau blad wordt verbroken.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 3188117ac651f31057b4db88e32dfb42c45abb60
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0df3fdcaea99c00461caac37a3b655d152a0e527
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604876"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798479"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>Automatisch afsluiten van Vm's voor een lab configureren
 
@@ -20,7 +20,7 @@ U kunt verschillende functies voor het automatisch afsluiten van kosten beheer i
 * Virtuele machines automatisch uitschakelen wanneer gebruikers de verbinding verbreken (Windows & Linux).
 * Virtuele machines die zijn gestart automatisch afsluiten, maar gebruikers maken geen verbinding.
 
-Bekijk meer informatie over de functies voor automatisch afsluiten in het gedeelte [kosten beheer maximaliseren met instellingen voor automatisch afsluiten](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) .
+Bekijk meer informatie over de functies voor automatisch afsluiten in het gedeelte [kosten beheer maximaliseren met instellingen voor automatisch afsluiten](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) .
 
 Een Lab-account beheerder kan deze instelling configureren voor het lab-account waarin u Labs maakt. Zie [Configure Automatic Shutdown of vm's voor een Lab-account](how-to-configure-lab-accounts.md)voor meer informatie. Als eigenaar van het lab kunt u de instelling onderdrukken wanneer u een Lab maakt of nadat het lab is gemaakt. 
 
@@ -34,7 +34,7 @@ U kunt de instelling voor automatisch afsluiten configureren in het [Azure Lab S
 > [!div class="mx-imgBorder"]
 > ![Configureren op het moment dat het lab wordt gemaakt](./media/how-to-enable-shutdown-disconnect/configure-lab-creation.png)
 
-Controleer de informatie over automatisch afsluiten in het gedeelte [kosten beheer maximaliseren met instellingen voor automatisch afsluiten](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) .
+Controleer de informatie over automatisch afsluiten in het gedeelte [kosten beheer maximaliseren met instellingen voor automatisch afsluiten](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) .
 
 > [!WARNING]
 > Als u het Windows-besturings systeem (OS) op een virtuele machine afsluit voordat u een RDP-sessie met de virtuele machine verbreekt, werkt de functie automatisch afsluiten niet goed.  

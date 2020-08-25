@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 60c2b3ed1f367dc5c501a51ed52440f7d9d3ed6b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741174"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799431"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Wat is de Microsoft Authenticator-app?
 
@@ -33,7 +33,7 @@ U kunt de Microsoft Authenticator-app op meerdere manieren gebruiken, bijvoorbee
 > [!Important]
 > De Microsoft Authenticator-app werkt met elk account dat verificatie in twee stappen gebruikt en de TOTP-normen (Time-Based One-Time Passwords) ondersteunt.
 >
->Dit artikel is bedoeld voor gebruikers die de Microsoft Authenticator-app willen downloaden en gebruiken als beveiligingsverificatiemethode. Als u een beheerder bent die informatie zoekt over het inschakelen van aanmelding zonder wachtwoord met behulp van de Authenticator-app voor uw werknemers en andere toepassingen, raadpleegt u [Aanmelding zonder wachtwoord met de Microsoft Authenticator-app inschakelen (preview)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone).
+>Dit artikel is bedoeld voor gebruikers die de Microsoft Authenticator-app willen downloaden en gebruiken als beveiligingsverificatiemethode. Als u een beheerder bent die informatie zoekt over het inschakelen van aanmelding zonder wachtwoord met behulp van de Authenticator-app voor uw werknemers en andere toepassingen, raadpleegt u [Aanmelding zonder wachtwoord met de Microsoft Authenticator-app inschakelen (preview)](../authentication/howto-authentication-passwordless-phone.md).
 
 ## <a name="terminology"></a>Terminologie
 

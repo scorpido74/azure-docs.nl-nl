@@ -3,12 +3,12 @@ title: Wat Azure Backup Server v3 RTM back-ups kan maken?
 description: Dit artikel bevat een beveiligings matrix met alle werk belastingen, gegevens typen en installaties die Azure Backup voor v3 RTM beveiligt.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 21c5fbcdf8aa3454a9af968509cb4cbf76b31f9e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661279"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763606"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server v3 RTM-beveiligings matrix
 
@@ -92,7 +92,7 @@ Met open bare peering: Zorg ervoor dat u toegang hebt tot de volgende domeinen/a
 * `.microsoftonline.com`
 * `.windows.net`
 
-Bij micro soft-peering moet u de volgende services/regio's en relevante Community-waarden selecteren:
+Selecteer bij micro soft-peering de volgende services/regio's en relevante Community-waarden:
 
 * Azure Active Directory (12076:5060)
 * Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)

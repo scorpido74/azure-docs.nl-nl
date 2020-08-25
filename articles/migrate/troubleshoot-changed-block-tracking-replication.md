@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: a1ef0e9fe3805f1c6d4d1000a9ea70accc64f4d2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 55e79877fb186a5ba2aece316c61f542adeda60c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718693"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796932"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Problemen met replicatie oplossen in VMware VM-migratie zonder agent
 
@@ -246,7 +246,7 @@ Als u een virtuele machine met meerdere schijven hebt, kan deze fout optreden al
 
 ### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Fout bericht: er is een interne fout opgetreden. [Moment opname genereren is vastgelopen]
 
-Dit probleem treedt op wanneer het genereren van moment opnamen is vastgelopen. Als dit probleem zich voordoet, kunt u de taak moment opname maken stoppen om 95% of 99%. Raadpleeg deze [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) om dit probleem op te lossen.
+Dit probleem treedt op wanneer het genereren van moment opnamen niet meer reageert. Als dit probleem zich voordoet, kunt u de taak moment opname maken stoppen om 95% of 99%. Raadpleeg deze [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) om dit probleem op te lossen.
 
 ### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Fout bericht: er is een interne fout opgetreden. [Kan de schijven niet consolideren op de VM _[redenen]_]
 

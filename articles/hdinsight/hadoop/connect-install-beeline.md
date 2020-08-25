@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
+ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: e93d750dd2feaa70692ab1077ee4333c835417db
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076773"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754953"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Verbinding maken met Apache Beeline op HDInsight of lokaal installeren
 
@@ -146,7 +146,7 @@ Hoewel Beeline is opgenomen op de hoofd knooppunten, wilt u deze mogelijk lokaal
 
 1. Wijzig het bashrc-bestand verder. U moet het pad naar de locatie waar de archieven zijn uitgepakt, identificeren. Als u het [Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10)gebruikt en u de stappen precies hebt uitgevoerd, is het pad `/mnt/c/Users/user/` waar `user` uw gebruikers naam is.
 
-    1. Open het bestand:`nano ~/.bashrc`
+    1. Open het bestand: `nano ~/.bashrc`
 
     1. Wijzig de onderstaande opdrachten met het juiste pad en voer deze vervolgens aan het einde van het bashrc-bestand in:
 

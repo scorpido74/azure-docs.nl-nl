@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 3a48511c896a3e4c677c35ca3069ff236761c444
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: b3485ebbdf9cf428b09364b73197220e02e9ffa8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724129"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751071"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Wat is er nieuw in Form Recognizer?
 
@@ -30,7 +30,7 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 - **Rest API referentie is beschikbaar** : Bekijk de [referentie v 2.1-Preview. 1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
 - **Nieuwe talen die naast Engels worden ondersteund**, worden de volgende talen nu ondersteund: voor `Layout` en `Train Custom Model` : Engels (en), Chinees (vereenvoudigd) (zh-ZH), Nederlands (nl), Frans (FR), Duits (de), Italiaans (IT), Portugees (PT) en Spaans (ES).
 - **Detectie van selectie vakjes/selectie markering** : formulier Recognizer ondersteunt detectie en extractie van selectie markeringen zoals selectie vakjes en keuze rondjes. De selectie markeringen worden geëxtraheerd in `Layout` en u kunt nu ook labels maken en trainen in `Train Custom Model`  -  _trein voorzien_ om paren van sleutel waarden te extra heren voor selectie markeringen. 
-- Met **model opstellen** kunnen meerdere modellen worden samengesteld en aangeroepen met één model-id. Wanneer een document wordt ingediend om te worden geanalyseerd met een bestaande model-id, wordt eerst een classificatie stap uitgevoerd om deze naar het juiste aangepaste model te routeren. Model opstellen is beschikbaar voor `Train Custom Model`  -  _trein met labels_.
+- Met **model opstellen** kunnen meerdere modellen worden samengesteld en aangeroepen met één model-id. Wanneer een document wordt ingediend om te worden geanalyseerd met een bestaande model-ID, wordt eerst een classificatie stap uitgevoerd om deze naar het juiste aangepaste model te routeren. Model opstellen is beschikbaar voor `Train Custom Model`  -  _trein met labels_.
 - **Model naam** Voeg een beschrijvende naam toe aan uw aangepaste modellen, zodat u eenvoudiger kunt beheren en bijhouden.
 - **Nieuw vooraf ontworpen model voor visite kaartjes** voor het extra heren van algemene velden in het Engels, visite kaartjes voor talen.
 - **Nieuwe land instellingen voor vooraf gemaakte ontvangst bevestigingen** naast en-us, ondersteuning is nu beschikbaar voor en-au, en-ca, en-GB, en-in
@@ -50,8 +50,10 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 ## <a name="july-2020"></a>Juli 2020
 
 ### <a name="new-features"></a>Nieuwe functies
+
 * **v 2.0-verwijzing beschikbaar** Bekijk de [v 2.0 API-referentie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) en de bijgewerkte sdk's voor [.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet), [python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)en [Java script](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest).
 * Verbeteringen in de **tabel en** uitbrei ding van de extractie omvatten nauw keurige verbeteringen en verbeteringen in tabel extractie, met name de mogelijkheid om tabellen en structuren in een _aangepaste trein zonder labels_te leren. 
+
 * **Valuta ondersteuning** Detectie en extractie van algemene valuta symbolen.
 * **Azure-gov** Formulier herkenning is nu ook beschikbaar in azure gov.
 * **Verbeterde beveiligings functies**: 
@@ -76,8 +78,8 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 * **SDK-ondersteuning voor de open bare preview van de Form Recognizer API v 2.0** Deze maand breidden onze service ondersteuning uit om een preview-SDK voor de versie van de formulier Recognizer v 2.0 (preview) op te nemen. Gebruik de onderstaande koppelingen om aan de slag te gaan met de taal van uw keuze: 
    * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)
    * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-python-preview)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre?view=azure-node-preview)
 
   De nieuwe SDK ondersteunt alle functies van de v 2.0 REST API voor de formulier herkenner. U kunt bijvoorbeeld een model trainen met of zonder labels en extra tekst, sleutel waardeparen en tabellen uit uw formulieren extra heren, gegevens uit de bevestigingen ophalen met de vooraf gemaakte ontvangst bevestigingen en tekst en tabellen met de lay-outservice uit uw documenten ophalen. U kunt uw feedback op de Sdk's delen via het [SDK-feedback formulier](https://aka.ms/FR_SDK_v1_feedback).
  

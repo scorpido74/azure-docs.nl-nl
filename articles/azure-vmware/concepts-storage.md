@@ -1,18 +1,18 @@
 ---
 title: Concepten-opslag
-description: Meer informatie over de mogelijkheden voor de belangrijkste opslag in de Azure VMware-oplossing (AVS) preview van persoonlijke Clouds.
+description: Meer informatie over de mogelijkheden voor de belangrijkste opslag in azure VMware-oplossing preview persoonlijke Clouds.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604113"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752223"
 ---
-# <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware-oplossing (AVS) voor beeld van opslag concepten
+# <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware-oplossing preview opslag concepten
 
-Persoonlijke Clouds van AVS bieden systeem eigen opslag voor het hele cluster met VMware vSAN. Alle lokale opslag van elke host in een cluster wordt gebruikt in een vSAN-Data Store, en versleuteling van gegevens op rest is standaard beschikbaar en is ingeschakeld. U kunt Azure Storage resources gebruiken om de opslag mogelijkheden van uw persoonlijke Clouds uit te breiden.
+Persoonlijke Clouds van Azure VMware bieden systeem eigen opslag voor het hele cluster met VMware vSAN. Alle lokale opslag van elke host in een cluster wordt gebruikt in een vSAN-Data Store, en versleuteling van gegevens op rest is standaard beschikbaar en is ingeschakeld. U kunt Azure Storage resources gebruiken om de opslag mogelijkheden van uw persoonlijke Clouds uit te breiden.
 
 ## <a name="vsan-clusters"></a>vSAN-clusters
 

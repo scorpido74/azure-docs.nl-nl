@@ -14,12 +14,12 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 230ccb3d10c7ba6f3abcac9d83309fd7fa3c5c3f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025214"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797680"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Power shell en Graph-voor beelden voor op groepen gebaseerde licentie verlening in azure AD
 
@@ -445,7 +445,7 @@ HTTP/1.1 200 OK
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Directe licenties voor gebruikers met groeps licenties verwijderen
 
-Het doel van dit script is om onnodige directe licenties te verwijderen van gebruikers die al dezelfde licentie van een groep overnemen. bijvoorbeeld als onderdeel van een [overgang naar groeps-gebaseerde licentie verlening](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal).
+Het doel van dit script is om onnodige directe licenties te verwijderen van gebruikers die al dezelfde licentie van een groep overnemen. bijvoorbeeld als onderdeel van een [overgang naar groeps-gebaseerde licentie verlening](./licensing-groups-migrate-users.md).
 > [!NOTE]
 > Het is belang rijk om eerst te valideren dat de direct te verwijderen licenties geen meer service functionaliteit bieden dan de overgenomen licenties. Anders kan het verwijderen van de rechtstreekse licentie de toegang tot services en gegevens voor gebruikers uitschakelen. Het is momenteel niet mogelijk om via Power shell te controleren welke services zijn ingeschakeld via overgenomen licenties versus direct. In het script geven we het minimale service niveau aan dat wordt overgenomen van groepen en om ervoor te zorgen dat gebruikers niet onverwacht de toegang tot services verliezen.
 

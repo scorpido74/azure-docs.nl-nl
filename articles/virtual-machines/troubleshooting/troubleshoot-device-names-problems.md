@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6d3e35f44d11cd9ed41badbc64ff7528b5b15558
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 31f64a504156134b1d622705d5301d9cd5a5f5b1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084389"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756823"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Naam wijzigingen van Linux VM-apparaat oplossen
 
@@ -42,7 +42,7 @@ Het probleem treedt op omdat het scannen van apparaten in Linux wordt gepland do
 
 U kunt dit probleem oplossen door permanente naamgeving te gebruiken. Er zijn vier manieren om permanente naamgeving te gebruiken: op bestandssysteem label, op UUID, op ID of op pad. U kunt het beste het bestandssysteem label of de UUID voor virtuele Azure Linux-machines gebruiken.
 
-De meeste distributies bieden de `fstab` **nofail** **nobootwait** -para meters. Met deze para meters kan een systeem worden opgestart wanneer de schijf niet kan worden gekoppeld bij het opstarten. Raadpleeg uw distributie documentatie voor meer informatie over deze para meters. Zie [verbinding maken met de Linux-VM voor het koppelen van de nieuwe schijf](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)voor meer informatie over het configureren van een virtuele Linux-machine voor het gebruik van een UUID wanneer u een gegevens schijf toevoegt.
+De meeste distributies bieden de `fstab` **nofail** **nobootwait** -para meters. Met deze para meters kan een systeem worden opgestart wanneer de schijf niet kan worden gekoppeld bij het opstarten. Raadpleeg uw distributie documentatie voor meer informatie over deze para meters. Zie [verbinding maken met de Linux-VM voor het koppelen van de nieuwe schijf](../linux/add-disk.md#format-and-mount-the-disk)voor meer informatie over het configureren van een virtuele Linux-machine voor het gebruik van een UUID wanneer u een gegevens schijf toevoegt.
 
 Wanneer de Azure Linux-agent is geïnstalleerd op een virtuele machine, gebruikt de agent udev-regels voor het samen stellen van een set symbolische koppelingen onder het pad/dev/disk/Azure. Toepassingen en scripts gebruiken udev-regels voor het identificeren van schijven die zijn gekoppeld aan de virtuele machine, samen met het schijf type en schijf-Lun's.
 
@@ -162,7 +162,7 @@ Voer de volgende opdrachten uit om de meest recente Azure Storage regels op te h
 # sudo udevadm trigger --subsystem-match=block
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Raadpleeg voor meer informatie de volgende artikelen:
 

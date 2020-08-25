@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611285"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799550"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Problemen met licentie toewijzing voor een groep in Azure Active Directory identificeren en oplossen
 
@@ -66,7 +66,7 @@ Als u wilt zien welke gebruikers en groepen licenties gebruiken, selecteert u ee
 
 **Probleem:** Een van de producten die in de groep zijn opgegeven, bevat een service abonnement dat conflicteert met een ander service abonnement dat al aan de gebruiker is toegewezen via een ander product. Sommige service plannen worden zo geconfigureerd dat ze niet kunnen worden toegewezen aan dezelfde gebruiker als een ander, gerelateerd service plan.
 
-Overweeg het volgende scenariovoorbeeld. Een gebruiker heeft rechtstreeks een licentie voor Office 365 Enter prise *E1* toegewezen, waarbij alle abonnementen zijn ingeschakeld. De gebruiker is toegevoegd aan een groep waaraan het Office 365 Enter prise *E3* -product is toegewezen. Het E3-product bevat service plannen die niet kunnen overlappen met de abonnementen die zijn opgenomen in E1, waardoor de toewijzing van de groeps licentie mislukt met de fout ' conflicterende service abonnementen '. In dit voor beeld zijn de conflicterende service plannen:
+Bekijk het volgende voorbeeld. Een gebruiker heeft rechtstreeks een licentie voor Office 365 Enter prise *E1* toegewezen, waarbij alle abonnementen zijn ingeschakeld. De gebruiker is toegevoegd aan een groep waaraan het Office 365 Enter prise *E3* -product is toegewezen. Het E3-product bevat service plannen die niet kunnen overlappen met de abonnementen die zijn opgenomen in E1, waardoor de toewijzing van de groeps licentie mislukt met de fout ' conflicterende service abonnementen '. In dit voor beeld zijn de conflicterende service plannen:
 
 - Share point online (abonnement 2) is in conflict met share point online (abonnement 1).
 - Exchange Online (abonnement 2) veroorzaakt een conflict met Exchange Online (abonnement 1).
@@ -107,7 +107,7 @@ Als u Exchange Online gebruikt, zijn sommige gebruikers in uw organisatie mogeli
 > ```
 > Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> Zie het [fout bericht ' proxy adres wordt al gebruikt ' in Exchange Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)voor meer informatie over dit probleem. Het artikel bevat ook informatie over [het maken van verbinding met Exchange Online met behulp van externe Power shell](https://technet.microsoft.com/library/jj984289.aspx).
+> Zie het [fout bericht ' proxy adres wordt al gebruikt ' in Exchange Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)voor meer informatie over dit probleem. Het artikel bevat ook informatie over [het maken van verbinding met Exchange Online met behulp van externe Power shell](/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps).
 
 Nadat u de problemen met het proxy adres voor de betrokken gebruikers hebt opgelost, moet u ervoor zorgen dat de licentie verwerking voor de groep afdwingt, zodat u zeker weet dat de licenties nu kunnen worden toegepast.
 

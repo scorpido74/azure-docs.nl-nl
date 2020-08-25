@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b00fe7a515d1d27ce9be2ab62a96c719d5e045a5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302913"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798581"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Retourneert een expressie die is vertaald naar een matrix. Als expressie niet kan worden vertaald, retourneert ongedefinieerd.  
@@ -33,7 +33,7 @@ StringToArray(<str_expr>)
   Retourneert een matrix expressie of is niet gedefinieerd. 
   
 ## <a name="remarks"></a>Opmerkingen
-  Geneste teken reeks waarden moeten worden geschreven met dubbele aanhalings tekens die een geldige JSON moeten hebben. Zie [JSON.org](https://json.org/) voor meer informatie over de JSON-indeling.
+  Geneste teken reeks waarden moeten worden geschreven met dubbele aanhalings tekens die een geldige JSON moeten hebben. Zie [JSON.org](https://json.org/)voor meer informatie over de JSON-indeling. Deze systeem functie maakt geen gebruik van de index.
   
 ## <a name="examples"></a>Voorbeelden
   
@@ -90,10 +90,6 @@ Dit is de resultatenset.
 ```json
 [{}]
 ```
-
-## <a name="remarks"></a>Opmerkingen
-
-Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 

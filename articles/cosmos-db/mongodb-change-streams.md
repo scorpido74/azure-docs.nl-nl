@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b5bf7cc74a5444e5f51aaddb1d088f6b0c1e52a8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036705"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798887"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Streams wijzigen in de API van Azure Cosmos DB voor MongoDB
 
@@ -21,26 +21,6 @@ ms.locfileid: "88036705"
 
 > [!NOTE]
 > Als u een wijzigings stroom wilt gebruiken, maakt u het account met versie 3,6 van de API van Azure Cosmos DB voor MongoDB of een latere versie. Als u de voor beelden van de wijzigings stroom uitvoert voor een eerdere versie, ziet u mogelijk de `Unrecognized pipeline stage name: $changeStream` fout.
-
-## <a name="current-limitations"></a>Huidige beperkingen
-
-De volgende beperkingen zijn van toepassing wanneer u een wijzigings stroom gebruikt:
-
-* De `operationType` `updateDescription` Eigenschappen en worden nog niet ondersteund in het uitvoer document.
-* De `insert` `update` typen, en `replace` bewerkingen worden momenteel ondersteund. 
-* De Verwijder bewerking of andere gebeurtenissen worden nog niet ondersteund.
-
-Als gevolg van deze beperkingen zijn de opties $match fase, $project fase en fullDocument vereist, zoals in de vorige voor beelden wordt weer gegeven.
-
-In tegens telling tot de wijzigings feed in de SQL-API van Azure Cosmos DB, is er geen afzonderlijke [feed voor wijzigings doorvoer](change-feed-processor.md) stroom voor het gebruik van wijzigings stromen of de behoefte aan een lease-container. Er is momenteel geen ondersteuning voor [Azure functions-triggers](change-feed-functions.md) om veranderingen stromen te verwerken.
-
-## <a name="error-handling"></a>Foutafhandeling
-
-De volgende fout codes en-berichten worden ondersteund bij het gebruik van wijzigings stromen:
-
-* **HTTP-fout code 16500** -wanneer de wijzigings stroom wordt beperkt, wordt een lege pagina geretourneerd.
-
-* **NamespaceNotFound (OperationType ongeldig)** : als u een wijzigings stroom uitvoert voor de verzameling die niet bestaat of als de verzameling wordt verwijderd, wordt een `NamespaceNotFound` fout geretourneerd. Omdat de `operationType` eigenschap niet kan worden geretourneerd in het uitvoer document, in plaats van de `operationType Invalidate` fout, `NamespaceNotFound` wordt de fout geretourneerd.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -156,15 +136,17 @@ var cursor = db.coll.watch(
 De volgende beperkingen zijn van toepassing wanneer u een wijzigings stroom gebruikt:
 
 * De `operationType` `updateDescription` Eigenschappen en worden nog niet ondersteund in het uitvoer document.
-* De `insert` `update` typen, en `replace` bewerkingen worden momenteel ondersteund. De Verwijder bewerking of andere gebeurtenissen worden nog niet ondersteund.
+* De `insert` `update` typen, en `replace` bewerkingen worden momenteel ondersteund. De Verwijder bewerking of andere gebeurtenissen worden echter nog niet ondersteund.
 
 Als gevolg van deze beperkingen zijn de opties $match fase, $project fase en fullDocument vereist, zoals in de vorige voor beelden wordt weer gegeven.
+
+In tegens telling tot de wijzigings feed in de SQL-API van Azure Cosmos DB, is er geen afzonderlijke [feed voor wijzigings doorvoer](change-feed-processor.md) stroom voor het gebruik van wijzigings stromen of de behoefte aan een lease-container. Er is momenteel geen ondersteuning voor [Azure functions-triggers](change-feed-functions.md) om veranderingen stromen te verwerken.
 
 ## <a name="error-handling"></a>Foutafhandeling
 
 De volgende fout codes en-berichten worden ondersteund bij het gebruik van wijzigings stromen:
 
-* **HTTP-fout code 429** -wanneer de wijzigings stroom wordt beperkt, wordt een lege pagina geretourneerd.
+* **HTTP-fout code 16500** -wanneer de wijzigings stroom wordt beperkt, wordt een lege pagina geretourneerd.
 
 * **NamespaceNotFound (OperationType ongeldig)** : als u een wijzigings stroom uitvoert voor de verzameling die niet bestaat of als de verzameling wordt verwijderd, wordt een `NamespaceNotFound` fout geretourneerd. Omdat de `operationType` eigenschap niet kan worden geretourneerd in het uitvoer document, in plaats van de `operationType Invalidate` fout, `NamespaceNotFound` wordt de fout geretourneerd.
 

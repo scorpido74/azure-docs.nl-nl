@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8f084057c8bc2d0be1e04dc1821378c9733cc050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e003c45aa1e7d75b709b7fbf99532fb1302fcbb9
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741545"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797646"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Voeg uw werk-of school account toe aan de app Microsoft Authenticator
 
@@ -30,7 +30,7 @@ Als uw organisatie twee ledige verificatie gebruikt, kunt u uw werk-of school ac
 1. Ga op uw computer naar de pagina [aanvullende beveiligings verificatie](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) .
 
     >[!Note]
-    >Als de pagina **aanvullende beveiligings verificatie** niet wordt weer gegeven, is het mogelijk dat de beheerder de ervaring voor beveiligings gegevens (preview) heeft ingeschakeld. Als dat het geval is, volgt u de instructies in de sectie [beveiligings gegevens instellen voor het gebruik van een verificator-app](security-info-setup-auth-app.md) . Als dat niet het geval is, moet u contact opnemen met de Help Desk van uw organisatie voor hulp. Zie voor meer informatie over beveiligings informatie [overzicht van beveiligings gegevens (preview)](user-help-security-info-overview.md).
+    >Als de pagina **aanvullende beveiligings verificatie** niet wordt weer gegeven, is het mogelijk dat de beheerder de ervaring voor beveiligings gegevens (preview) heeft ingeschakeld. Als dat het geval is, volgt u de instructies in de sectie [beveiligings gegevens instellen voor het gebruik van een verificator-app](security-info-setup-auth-app.md) . Als dat niet het geval is, moet u contact opnemen met de Help Desk van uw organisatie voor hulp. Zie voor meer informatie over beveiligings informatie [overzicht van beveiligings gegevens (preview)](./security-info-setup-signin.md).
 
 2. Schakel het selectie vakje naast de **verificator-app**in en selecteer **configureren**.
 

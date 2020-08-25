@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: fc95e988b3f89402967cdbedd06c4b945a99f99a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266250"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795980"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Wat is de pagina Aanvullende verificatie?
 
@@ -33,7 +33,7 @@ Verificatie met twee factoren is veiliger dan alleen een wacht woord omdat het a
 Verificatie met twee factoren kan helpen voor komen dat kwaadwillende hackers zich voordoen. Zelfs als ze uw wacht woord hebben, zijn de conflicteert dat ze niet uw apparaat hebben.
 
 >[!Important]
->Als u een beheerder bent die op zoek is naar informatie over het inschakelen van tweeledige verificatie voor uw werknemers of andere gebruikers, raadpleegt u de [documentatie voor Azure Active Directory-verificatie](https://docs.microsoft.com/azure/active-directory/authentication/). Dit artikel is bedoeld voor gebruikers die proberen twee ledige verificatie te gebruiken met een werk-of school account (zoals alain@contoso.com ).
+>Als u een beheerder bent die op zoek is naar informatie over het inschakelen van tweeledige verificatie voor uw werknemers of andere gebruikers, raadpleegt u de [documentatie voor Azure Active Directory-verificatie](../authentication/index.yml). Dit artikel is bedoeld voor gebruikers die proberen twee ledige verificatie te gebruiken met een werk-of school account (zoals alain@contoso.com ).
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Wie besluit of u deze functie gebruikt?
 

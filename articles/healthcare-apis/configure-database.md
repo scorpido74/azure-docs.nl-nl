@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: adc6fdf144927d10f811a00aa33f244cfdc25042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 652445a96acfa0358211d1d97e0fcf288989d6ba
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871762"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795776"
 ---
 # <a name="configure-database-settings"></a>Data base-instellingen configureren 
 
@@ -25,8 +25,11 @@ De door voer moet worden ingericht om ervoor te zorgen dat er te allen tijde vol
 > [!NOTE]
 > Als verschillende bewerkingen een verschillend aantal RU gebruiken, retour neren we het werkelijke aantal dat is gebruikt in elke API-aanroep in de reactie header. Op deze manier kunt u het aantal door uw toepassing verbruikte RUs-profielen.
 
-## <a name="update-throughput"></a>Door Voer bijwerken
+## <a name="update-throughput"></a>Doorvoer bijwerken
+
 Als u deze instelling in de Azure Portal wilt wijzigen, gaat u naar de Azure API voor FHIR en opent u de Blade data base. Wijzig vervolgens de ingerichte door voer naar de gewenste waarde, afhankelijk van uw prestatie behoeften. U kunt de waarde wijzigen tot een maximum van 10.000 RU/s. Als u een hogere waarde nodig hebt, neemt u contact op met de ondersteuning van Azure.
+
+Als de doorvoer capaciteit van de data base groter is dan 10.000 RU/s of als de gegevens die in de Data Base zijn opgeslagen meer dan 50 GB zijn, moet uw client toepassing vervolg tokens kunnen verwerken. Er wordt in de Data Base een nieuwe partitie gemaakt voor elke doorvoer verhoging van 10.000 RU/s of als de hoeveelheid opgeslagen gegevens groter is dan 50 GB. Meerdere partities maken een antwoord voor meerdere pagina's waarbij paginering wordt geïmplementeerd met behulp van vervolg tokens.
 
 > [!NOTE] 
 > Hoe hoger de waarde, hoe hoger de Azure-API voor FHIR-door Voer en hogere kosten voor de service.

@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 4b2d79b24263a848d146bbbe8d42f23ec28f49b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19e441334395f600c3adaa867660345164537f96
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415879"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799448"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Meld u aan bij uw accounts met behulp van de app Microsoft Authenticator
 
@@ -55,7 +55,7 @@ Open de Microsoft Authenticator-app, ga naar uw werk-of school account en schake
 - **Als u de app al hebt gebruikt voor twee ledige verificatie**, kunt u op de tegel account tikken om een volledig scherm van het account weer te geven. Tik vervolgens op **Aanmelden via de telefoon** om aanmelding via de telefoon in te scha kelen.
 - **Als u uw werk-of school account niet kunt vinden** op het scherm **accounts** van de app, betekent dit dat u dit nog niet hebt toegevoegd aan de app. Voeg uw werk-of school account toe door de stappen in de [Help van uw werk-of school account toevoegen](user-help-auth-app-add-work-school-account.md)te volgen.
 
-Nadat u aanmelding via de telefoon hebt ingeschakeld, kunt u zich aanmelden met alleen de Microsoft Authenticator-app. U doet dit als volgt:
+Nadat u aanmelding via de telefoon hebt ingeschakeld, kunt u zich aanmelden met alleen de Microsoft Authenticator-app. Dit doet u als volgt:
 
 1. Meld u aan bij uw werk-of school account.
 
@@ -110,7 +110,7 @@ Voor de stappen die nodig zijn om u aan te melden bij uw werk of school of uw pe
 | Hoe wordt het aanmelden met mijn telefoon veiliger dan het invoeren van een wacht woord? | De meeste gebruikers melden zich aan bij websites of apps met behulp van een gebruikers naam en wacht woord. Wacht woorden kunnen helaas verloren gaan, worden gestolen of worden geraden door hackers.<br><br>Nadat u de app Microsoft Authenticator hebt ingesteld, maakt deze een sleutel op uw telefoon om uw account te ontgrendelen dat wordt beveiligd door de pincode of biometrische vergren deling van uw telefoon. Deze sleutel wordt vervolgens gebruikt om uw identiteit te bewijzen tijdens het aanmelden.<br><br>**Belangrijk**<br>Uw gegevens worden alleen gebruikt om uw sleutel lokaal te beveiligen. Het wordt nooit verzonden naar of opgeslagen in de Cloud. |
 | Wordt verificatie in twee stappen vervangen door aanmelding via de telefoon? Moet ik deze uitschakelen? | Aanmelding via de telefoon is een type verificatie van twee stappen waarbij de twee stap beide op het mobiele apparaat plaatsvinden. Houd verificatie in twee stappen ingeschakeld om extra beveiliging te bieden voor uw account. |
 | Als ik verificatie in twee stappen voor mijn account inschakel, moet ik dan twee meldingen goed keuren? | Nee. Als u zich aanmeldt bij uw Microsoft-account met behulp van uw telefoon, telt dit ook op als verificatie in twee stappen, dus er is geen tweede goed keuring vereist. |
-| Wat moet ik doen als ik mijn telefoon kwijt ben? Hoe kan ik toegang tot mijn account? | U kunt altijd de koppeling een wacht woord gebruiken in plaats daarvan op de aanmeldings pagina selecteren om terug te gaan naar het gebruik van uw wacht woord. Als u echter verificatie in twee stappen gebruikt, moet u nog steeds een tweede methode gebruiken om uw identiteit te verifiëren.<br><br>**Belangrijk**<br>We raden u ten zeerste aan om ervoor te zorgen dat er meer dan één, up-to-date en verificatie methode zijn gekoppeld aan uw account.<br><br>U kunt uw verificatie methoden voor persoonlijke accounts beheren via de pagina [beveiligings instellingen](https://account.live.com/proofs/manage) . Voor werk-of school accounts gaat u naar de [aanvullende beveiligings verificatie](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) pagina van uw organisatie of de pagina **uw account beveiligen** als uw beheerder beveiligings gegevens heeft ingeschakeld. Zie voor meer informatie over beveiligings informatie [overzicht van beveiligings gegevens (preview)](user-help-security-info-overview.md).<br><br>Als u uw verificatie methoden niet kunt beheren, moet u contact opnemen met uw beheerder. |
+| Wat moet ik doen als ik mijn telefoon kwijt ben? Hoe kan ik toegang tot mijn account? | U kunt altijd de koppeling een wacht woord gebruiken in plaats daarvan op de aanmeldings pagina selecteren om terug te gaan naar het gebruik van uw wacht woord. Als u echter verificatie in twee stappen gebruikt, moet u nog steeds een tweede methode gebruiken om uw identiteit te verifiëren.<br><br>**Belangrijk**<br>We raden u ten zeerste aan om ervoor te zorgen dat er meer dan één, up-to-date en verificatie methode zijn gekoppeld aan uw account.<br><br>U kunt uw verificatie methoden voor persoonlijke accounts beheren via de pagina [beveiligings instellingen](https://account.live.com/proofs/manage) . Voor werk-of school accounts gaat u naar de [aanvullende beveiligings verificatie](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) pagina van uw organisatie of de pagina **uw account beveiligen** als uw beheerder beveiligings gegevens heeft ingeschakeld. Zie voor meer informatie over beveiligings informatie [overzicht van beveiligings gegevens (preview)](./security-info-setup-signin.md).<br><br>Als u uw verificatie methoden niet kunt beheren, moet u contact opnemen met uw beheerder. |
 | Hoe kan ik deze functie niet meer gebruiken en gaat u terug naar mijn wacht woord gebruiken? | Voor persoonlijke accounts selecteert u de koppeling **een wacht woord gebruiken** tijdens het aanmelden. De meest recente keuze is onthouden en wordt standaard aangeboden als u zich de volgende keer aanmeldt. Als u ooit terug wilt gaan naar het gebruik van de aanmelding via de telefoon, selecteert u de koppeling **een app gebruiken tijdens het** aanmelden.<br><br>Voor werk-of school accounts moet u de registratie van het apparaat opheffen via de pagina **instellingen** van de app Microsoft Authenticator of het apparaat uitschakelen vanuit het gebied **apparaten & activiteit** van uw profiel. Zie [uw profiel-en account gegevens bijwerken in de portal mijn apps](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)voor meer informatie over het uitschakelen van uw apparaat uit uw profiel. |
 | Waarom kan ik niet meer dan één werk-of school account gebruiken voor aanmelding via de telefoon? | Een telefoon moet worden geregistreerd bij één werk-of school account. Als u aanmelden via telefoon wilt inschakelen voor een ander werk-of school account, moet u de registratie van uw account bij dit apparaat ongedaan maken via de pagina **instellingen** . |
 | Kan ik me via mijn telefoon aanmelden bij mijn computer? | Voor uw computer wordt u aangeraden zich aan te melden met Windows hello op Windows 10. Met Windows hello kunt u zich aanmelden met uw gezicht, vinger afdruk of pincode. |
@@ -123,4 +123,4 @@ Voor de stappen die nodig zijn om u aan te melden bij uw werk of school of uw pe
 
 - Als u meer informatie wilt over verificatie in twee stappen, raadpleegt u [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md)
 
-- Zie voor meer informatie over beveiligings informatie [overzicht van beveiligings gegevens (preview)](user-help-security-info-overview.md)
+- Zie voor meer informatie over beveiligings informatie [overzicht van beveiligings gegevens (preview)](./security-info-setup-signin.md)

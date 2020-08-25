@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c303527c7411ead585e70fc2e31db4dd2d35e996
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f45ecf9985f17008ce7f751b21a04deefc285461
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259826"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88809810"
 ---
 - Alleen [software-en HSM RSA-sleutels](../articles/key-vault/keys/about-keys.md) met een grootte van 2.048 bits, 3.072-bits en 4.096 bits worden ondersteund, geen andere sleutels of grootten.
     - Voor [HSM](../articles/key-vault/keys/hsm-protected-keys.md) -sleutels is de **Premium** -laag van Azure-sleutel kluizen vereist.
@@ -21,6 +21,6 @@ ms.locfileid: "86259826"
 - Moment opnamen die zijn gemaakt op basis van schijven die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
 - Alle resources met betrekking tot uw door de klant beheerde sleutels (Azure Key kluizen, schijf versleutelings sets, Vm's, schijven en moment opnamen) moeten zich in hetzelfde abonnement en dezelfde regio bevinden.
 - Schijven, moment opnamen en installatie kopieën die zijn versleuteld met door de klant beheerde sleutels, kunnen niet worden verplaatst naar een ander abonnement.
-- Beheerde schijven die zijn versleuteld met door de klant beheerde sleutels, kunnen niet ook worden versleuteld met Azure Disk Encryption.
+- Beheerde schijven die momenteel of eerder zijn versleuteld met Azure Disk Encryption kunnen niet worden versleuteld met door de klant beheerde sleutels.
 - Kan Maxi maal 50 schijf versleutelings sets per regio per abonnement maken.
 - Zie [Preview: door de klant beheerde sleutels gebruiken voor het versleutelen van afbeeldingen](../articles/virtual-machines/image-version-encryption.md)voor meer informatie over het gebruik van door de klant beheerde sleutels met galerieën met gedeelde afbeeldingen.

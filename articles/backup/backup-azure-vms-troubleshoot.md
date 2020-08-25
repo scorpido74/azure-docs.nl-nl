@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761760"
+ms.locfileid: "88763300"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -44,7 +44,7 @@ Hier volgen enkele veelvoorkomende problemen met back-upfouten op virtuele machi
 Fout code: VMRestorePointInternalError
 
 Als er op het moment van de back-up de **Logboeken toepassings logboeken** de naam van het fout bericht van de toepassing worden weer gegeven **: IaaSBcdrExtension.exe** vervolgens bevestigd dat de in de virtuele machine geconfigureerde antivirus de uitvoering van de back-upextensie beperkt.
-U kunt dit probleem oplossen door de volgende mappen in de antivirus configuratie uit te sluiten en de back-upbewerking opnieuw uit te voeren.
+U kunt dit probleem oplossen door de onderstaande mappen in de antivirus configuratie uit te sluiten en de back-upbewerking opnieuw uit te voeren.
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 * `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -90,11 +90,11 @@ De back-upbewerking is mislukt vanwege een probleem met de Windows service **com
 
 * Probeer de Windows service **com+-systeem toepassing** te starten/opnieuw te starten (vanaf een opdracht prompt met verhoogde bevoegdheid **-net start COMSysApp**).
 * Zorg ervoor dat **Distributed Transaction Coordinator** service wordt uitgevoerd als **netwerk service** account. Als dat niet het geval is, wijzigt u deze in uitvoeren als **netwerk service** account en start u **com+-systeem toepassing**opnieuw.
-* Als de service niet opnieuw kan worden gestart, installeert u **Distributed Transaction Coordinator** -service opnieuw door de onderstaande stappen te volgen:
+* Als de service niet opnieuw kan worden gestart, installeert u **Distributed Transaction Coordinator** -service opnieuw door de volgende stappen uit te voeren:
   * Stop de MSDTC-service
   * Open een opdrachtprompt (cmd)
-  * Opdracht ' MSDTC-Uninstall ' uitvoeren
-  * Voer de opdracht ' MSDTC-install ' uit
+  * Voer de opdracht `msdtc -uninstall` uit
+  * Voer de opdracht `msdtc -install` uit
   * Start de MSDTC-service
 * Start de Windows service **com+-systeem toepassing**. Nadat de **com+-systeem toepassing** is gestart, wordt een back-uptaak geactiveerd vanuit het Azure Portal.</ol>
 
@@ -165,7 +165,7 @@ De back-upbewerking is mislukt vanwege een inconsistente status van de back-upex
 Fout code: ExtensionFailedSnapshotLimitReachedError  <br/>
 Fout bericht: de momentopname bewerking is mislukt omdat de limiet voor moment opnamen is overschreden voor een aantal gekoppelde schijven
 
-De momentopname bewerking is mislukt omdat de limiet voor de moment opname is overschreden voor sommige van de gekoppelde schijven. Voer de onderstaande stappen voor probleem oplossing uit en voer de bewerking opnieuw uit.
+De momentopname bewerking is mislukt omdat de limiet voor de moment opname is overschreden voor sommige van de gekoppelde schijven. Voer de volgende stappen uit om het probleem te verhelpen en voer de bewerking vervolgens opnieuw uit.
 
 * Verwijder de schijf-BLOB-moment opnamen die niet vereist zijn. Wees voorzichtig met het verwijderen van de schijf-blob, alleen de moment opname-blobs moeten worden verwijderd.
 * Als de functie voor het voorlopig verwijderen van VM-opslag accounts is ingeschakeld, moet u de Bewaar periode voor tijdelijke verwijdering zodanig configureren dat bestaande moment opnamen kleiner zijn dan het maximum aantal dat is toegestaan op elk gewenst moment.
@@ -183,7 +183,7 @@ De back-upbewerking op de virtuele machine is mislukt vanwege een vertraging in 
 
 **Stap 1**: een moment opname maken via de host
 
-Voer vanaf een opdrachtprompt met verhoogde bevoegdheid (beheerder) de onderstaande opdracht uit:
+Voer de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheden:
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f

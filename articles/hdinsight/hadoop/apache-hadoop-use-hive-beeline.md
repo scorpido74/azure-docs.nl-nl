@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020
-ms.date: 04/17/2020
-ms.openlocfilehash: 3614fac027dd32ab5f5d70f5835432ac3b9b512d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/21/2020
+ms.custom: contperfq1
+ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207736"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755089"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>De Apache Beeline-client gebruiken met Apache Hive
 
@@ -25,7 +25,7 @@ Beeline is een Hive-client die is opgenomen op de hoofd knooppunten van uw HDIns
 
 * Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Let op het URI-schema voor de primaire opslag van uw cluster. Bijvoorbeeld `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, is de URI `wasbs://` . Zie [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md)voor meer informatie.
+* Let op het URI-schema voor de primaire opslag van uw cluster. Bijvoorbeeld  `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, is de URI `wasbs://` . Zie [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md)voor meer informatie.
 
 * Optie 1: een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md). Bij de meeste stappen in dit document wordt ervan uitgegaan dat u Beeline gebruikt vanuit een SSH-sessie naar het cluster.
 
