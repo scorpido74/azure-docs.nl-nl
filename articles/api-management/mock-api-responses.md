@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "70067945"
 ---
 # <a name="mock-api-responses"></a>Gesimuleerde antwoorden van een API
@@ -39,9 +39,9 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Leer de [terminologie van Azure API Management](api-management-terminology.md).
++ Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
 + Inzicht in het [beleidsconcept in Azure API Management](api-management-howto-policies.md).
-+ Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
++ Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Een test-API maken 
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/19/2018
 ms.author: jingwang
 ms.openlocfilehash: 3ead267ee11cba65e20f3df2fb76d9138a080bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "73850326"
 ---
 | Categorie | Gegevensarchief | Ondersteund als een bron | Ondersteund als een sink |
@@ -23,17 +23,17 @@ ms.locfileid: "73850326"
 | **Databases** |[Amazon Redshift](../articles/data-factory/v1/data-factory-amazon-redshift-connector.md) |✓ | |
 | &nbsp; |[DB2](../articles/data-factory/v1/data-factory-onprem-db2-connector.md)* |✓ | |
 | &nbsp; |[MySQL](../articles/data-factory/v1/data-factory-onprem-mysql-connector.md)* |✓ | |
-| &nbsp; |[Oracle9i](../articles/data-factory/v1/data-factory-onprem-oracle-connector.md)* |✓ |✓ |
+| &nbsp; |[Oracle](../articles/data-factory/v1/data-factory-onprem-oracle-connector.md)* |✓ |✓ |
 | &nbsp; |[PostgreSQL](../articles/data-factory/v1/data-factory-onprem-postgresql-connector.md)* |✓ | |
 | &nbsp; |[SAP Business Warehouse](../articles/data-factory/v1/data-factory-sap-business-warehouse-connector.md)* |✓ | |
 | &nbsp; |[SAP HANA](../articles/data-factory/v1/data-factory-sap-hana-connector.md)* |✓ | |
 | &nbsp; |[SQL Server](../articles/data-factory/v1/data-factory-sqlserver-connector.md)* |✓ |✓ |
-| &nbsp; |[Syba](../articles/data-factory/v1/data-factory-onprem-sybase-connector.md)* |✓ | |
+| &nbsp; |[Sybase](../articles/data-factory/v1/data-factory-onprem-sybase-connector.md)* |✓ | |
 | &nbsp; |[Teradata](../articles/data-factory/v1/data-factory-onprem-teradata-connector.md)* |✓ | |
 | **NoSQL** |[Cassandra](../articles/data-factory/v1/data-factory-onprem-cassandra-connector.md)* |✓ | |
 | &nbsp; |[MongoDB](../articles/data-factory/v1/data-factory-on-premises-mongodb-connector.md)* |✓ | |
 | **File** |[Amazon S3](../articles/data-factory/v1/data-factory-amazon-simple-storage-service-connector.md) |✓ | |
-| &nbsp; |[Bestands systeem](../articles/data-factory/v1/data-factory-onprem-file-system-connector.md)* |✓ |✓ |
+| &nbsp; |[File System](../articles/data-factory/v1/data-factory-onprem-file-system-connector.md)* |✓ |✓ |
 | &nbsp; |[FTP](../articles/data-factory/v1/data-factory-ftp-connector.md) |✓ | |
 | &nbsp; |[HDFS](../articles/data-factory/v1/data-factory-hdfs-connector.md)* |✓ | |
 | &nbsp; |[SFTP](../articles/data-factory/v1/data-factory-sftp-connector.md) |✓ | |

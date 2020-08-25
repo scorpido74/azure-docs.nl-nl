@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be8a714d57d0f84b195c9f3846964aa2bf2525b
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c2b3a838e52bb0b9f3a3be7195bd528c08e499c0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605088"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783651"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
@@ -158,7 +158,7 @@ Als gasten als revisoren zijn toegewezen en ze de uitnodiging niet hebben geacce
 
 ## <a name="create-reviews-via-apis"></a>Beoordelingen maken via Api's
 
-U kunt ook toegangs beoordelingen maken met behulp van Api's. Wat u doet om toegangs beoordelingen van groepen en toepassings gebruikers in het Azure Portal te beheren, kunt u ook uitvoeren met behulp van Microsoft Graph-Api's. Zie voor meer informatie de [Azure AD Access beoordelingen API-referentie](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Voor een code voorbeeld, Zie [voor beeld van het ophalen van Azure AD-toegangs beoordelingen via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+U kunt ook toegangs beoordelingen maken met behulp van Api's. Wat u doet om toegangs beoordelingen van groepen en toepassings gebruikers in het Azure Portal te beheren, kunt u ook uitvoeren met behulp van Microsoft Graph-Api's. Zie voor meer informatie de [Azure AD Access beoordelingen API-referentie](/graph/api/resources/accessreviews-root?view=graph-rest-beta). Voor een code voorbeeld, Zie [voor beeld van het ophalen van Azure AD-toegangs beoordelingen via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
 ## <a name="next-steps"></a>Volgende stappen
 

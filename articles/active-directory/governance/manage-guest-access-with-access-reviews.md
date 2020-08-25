@@ -16,17 +16,17 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66f8020ec2561bf06716db0720a7ec4292f36eb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034119"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783192"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Gasttoegang beheren met Azure AD-toegangsbeoordelingen
 
 
-Met Azure Active Directory (Azure AD) kunt u op eenvoudige wijze samen werking in de grenzen van de organisatie inschakelen met behulp van de [functie B2B van Azure AD](../b2b/what-is-b2b.md). Gast gebruikers van andere tenants kunnen worden [uitgenodigd door beheerders](../b2b/add-users-administrator.md) of door [andere gebruikers](../b2b/what-is-b2b.md). Deze mogelijkheid is ook van toepassing op sociale identiteiten, zoals micro soft-accounts.
+Met Azure Active Directory (Azure AD) kunt u op eenvoudige wijze samen werking in de grenzen van de organisatie inschakelen met behulp van de [functie B2B van Azure AD](../external-identities/what-is-b2b.md). Gast gebruikers van andere tenants kunnen worden [uitgenodigd door beheerders](../external-identities/add-users-administrator.md) of door [andere gebruikers](../external-identities/what-is-b2b.md). Deze mogelijkheid is ook van toepassing op sociale identiteiten, zoals micro soft-accounts.
 
 U kunt ook gemakkelijk controleren of gast gebruikers de juiste toegang hebben. U kunt de gasten zelf of een beslissings Maker vragen om deel te nemen aan een toegangs beoordeling en de toegang tot de gasten te bevestigen (of verklaard). De beoordelaars kunnen op basis van suggesties uit Azure AD hun mening geven over de mate waarin een gebruiker per se toegang moet krijgen. Wanneer een toegangs beoordeling is voltooid, kunt u wijzigingen aanbrengen en de toegang verwijderen voor gasten die deze niet meer nodig hebben.
 
@@ -119,11 +119,4 @@ In sommige organisaties is het mogelijk dat gasten zich niet bewust zijn van hun
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een toegangs beoordeling van groepen of toepassingen maken](create-access-review.md)
-
-
-
-
-
-
-
+[Een toegangsbeoordeling van groepen of toepassingen maken](create-access-review.md)

@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cccab009ddd5624fcc98ad6f871fe40d9540823
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604005"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783600"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Implementatie van Azure Active Directory Access beoordelingen plannen
 
@@ -180,7 +180,7 @@ Typische doelen voor controle zijn onder andere:
 
 * [Toepassingen die zijn geïntegreerd met Azure AD voor eenmalige aanmelding](../manage-apps/what-is-application-management.md) (zoals SaaS, line-of-Business).
 
-* Groepslid [maatschap](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) (gesynchroniseerd met Azure AD of gemaakt in azure AD of Office 365, inclusief micro soft teams).
+* Groepslid [maatschap](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (gesynchroniseerd met Azure AD of gemaakt in azure AD of Office 365, inclusief micro soft teams).
 
 * [Toegangs pakket](/entitlement-management-overview.md) waarmee resources (groepen, apps en sites) in één pakket worden gegroepeerd om de toegang te beheren.
 
@@ -389,7 +389,7 @@ Toegangs beoordelingen kunnen gelden voor de leden van een groep of voor gebruik
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>De beoordeling van Azure AD-en Azure-resource rollen plannen
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) vereenvoudigt de manier waarop bedrijven bevoorrechte toegang tot resources in azure AD beheren. Hierdoor blijft de lijst met geprivilegieerde rollen, zowel in [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) als [Azure-bronnen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) , veel kleiner en wordt de algehele beveiliging van de Directory verhoogd.
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) vereenvoudigt de manier waarop bedrijven bevoorrechte toegang tot resources in azure AD beheren. Hierdoor blijft de lijst met geprivilegieerde rollen, zowel in [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) als [Azure-bronnen](../../role-based-access-control/built-in-roles.md) , veel kleiner en wordt de algehele beveiliging van de Directory verhoogd.
 
 Met toegangs beoordelingen kunnen revisoren worden verklaard of gebruikers nog steeds een rol moeten hebben. Net als bij toegangs Beoordelingen voor toegangs pakketten worden Beoordelingen voor Azure AD-rollen en Azure-resources geïntegreerd in de gebruikers ervaring van de PIM-beheerder. We raden u aan om regel matig de volgende roltoewijzingen te controleren:
 
@@ -452,9 +452,9 @@ Volg de instructies in de onderstaande koppelingen:
 
 | Artikelen met procedures | Beschrijving |
 | - | - |
- [Toegangs beoordelingen maken](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review?toc=/azure/active-directory/governance/toc.json)| Toegangs beoordelingen maken voor beschermde Azure AD-rollen in PIM |
-| [Zelf uw toegang controleren](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review?toc=/azure/active-directory/governance/toc.json)| Als u bent toegewezen aan een beheerdersrol, de toegang tot uw rol goedkeurt of weigert |
-| [Een toegangs beoordeling volt ooien](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-complete-review?toc=/azure/active-directory/governance/toc.json)| Een toegangs beoordeling bekijken en de resultaten Toep assen |
+ [Toegangs beoordelingen maken](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Toegangs beoordelingen maken voor beschermde Azure AD-rollen in PIM |
+| [Zelf uw toegang controleren](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Als u bent toegewezen aan een beheerdersrol, de toegang tot uw rol goedkeurt of weigert |
+| [Een toegangs beoordeling volt ooien](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Een toegangs beoordeling bekijken en de resultaten Toep assen |
 
 
 ### <a name="review-azure-resource-roles"></a>Azure-resource rollen controleren
@@ -467,14 +467,14 @@ Volg de instructies in de onderstaande koppelingen:
 
 | Artikelen met procedures| Beschrijving |
 | - | -|
-| [Toegangs beoordelingen maken](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review?toc=/azure/active-directory/governance/toc.json)| Toegangs beoordelingen maken voor beschermde Azure-resource rollen in PIM |
-| [Zelf uw toegang controleren](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-perform-access-review?toc=/azure/active-directory/governance/toc.json)| Als u bent toegewezen aan een beheerdersrol, de toegang tot uw rol goedkeurt of weigert |
-| [Een toegangs beoordeling volt ooien](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-complete-access-review?toc=/azure/active-directory/governance/toc.json)| Een toegangs beoordeling bekijken en de resultaten Toep assen |
+| [Toegangs beoordelingen maken](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Toegangs beoordelingen maken voor beschermde Azure-resource rollen in PIM |
+| [Zelf uw toegang controleren](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Als u bent toegewezen aan een beheerdersrol, de toegang tot uw rol goedkeurt of weigert |
+| [Een toegangs beoordeling volt ooien](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Een toegangs beoordeling bekijken en de resultaten Toep assen |
 
 
 ## <a name="use-the-access-reviews-api"></a>De Access beoordelingen-API gebruiken
 
-Zie [Graph API-methoden](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) en [machtigings verificatie voor rollen en toepassingen](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) om te communiceren met en het beheren van opnieuw te bekijken resources. De methoden voor toegangs beoordelingen in de Microsoft Graph-API zijn beschikbaar voor zowel de toepassing als de gebruikers contexten. Bij het uitvoeren van scripts in de toepassings context moet het account dat wordt gebruikt voor het uitvoeren van de API (het Service-principe) de machtiging ' AccessReview. Read. all ' krijgen om toegang te krijgen tot de gegevens van de toegangs Beoordelingen.
+Zie [Graph API-methoden](/graph/api/resources/accessreviews-root?view=graph-rest-beta) en [machtigings verificatie voor rollen en toepassingen](/graph/api/resources/accessreviews-root?view=graph-rest-beta) om te communiceren met en het beheren van opnieuw te bekijken resources. De methoden voor toegangs beoordelingen in de Microsoft Graph-API zijn beschikbaar voor zowel de toepassing als de gebruikers contexten. Bij het uitvoeren van scripts in de toepassings context moet het account dat wordt gebruikt voor het uitvoeren van de API (het Service-principe) de machtiging ' AccessReview. Read. all ' krijgen om toegang te krijgen tot de gegevens van de toegangs Beoordelingen.
 
 Populaire toegang controleert taken om het gebruik van de Graph API voor toegangs beoordelingen te automatiseren:
 
@@ -519,4 +519,3 @@ Meer informatie over de onderstaande verwante technologieën.
 
 * [Wat is Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
 
- 

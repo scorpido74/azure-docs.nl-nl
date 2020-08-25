@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b6fe3238a2ad602b388ff24faaee3a200084ae0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4cdeff5e08813140c45d0a30877c3789d1bc21b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419475"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718846"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Zelfstudie: Gebruikers in staat stellen hun account te ontgrendelen of wachtwoorden opnieuw in te stellen met self-service voor wachtwoordherstel voor Azure Active Directory
 
@@ -148,4 +148,4 @@ In deze zelfstudie hebt u self-service voor wachtwoordherstel van Azure AD voor 
 > * Het SSPR-proces testen als een gebruiker
 
 > [!div class="nextstepaction"]
-> [Azure Multi-Factor Authentication inschakelen](tutorial-mfa-applications.md)
+> [Azure Multi-Factor Authentication inschakelen](./tutorial-enable-azure-mfa.md)

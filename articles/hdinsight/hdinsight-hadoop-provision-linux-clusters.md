@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 1d11318d2af640a0cf417286ee777ce833297a4f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873599"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749868"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer
 
@@ -34,7 +34,7 @@ In de volgende tabel ziet u de verschillende methoden die u kunt gebruiken om ee
 
 | Clusters die zijn gemaakt met | Webbrowser | Opdrachtregel | REST-API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure-portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure-CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -43,7 +43,7 @@ In de volgende tabel ziet u de verschillende methoden die u kunt gebruiken om ee
 
 Dit artikel begeleidt u bij het instellen van de [Azure Portal](https://portal.azure.com), waar u een HDInsight-cluster kunt maken.
 
-## <a name="basics"></a>Basisinstellingen
+## <a name="basics"></a>Basisbeginselen
 
 ![opties voor hdinsight maken aangepaste snelle](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
@@ -97,13 +97,13 @@ Met HDInsight-clusters kunt u twee gebruikers accounts configureren tijdens het 
 
 De HTTP-gebruikers naam heeft de volgende beperkingen:
 
-* Toegestane speciale tekens: `_` en`@`
+* Toegestane speciale tekens: `_` en `@`
 * Tekens zijn niet toegestaan: #;. "', \/ : '! *? $ () {} [] <>|&--= +% ~ ^ ruimte
 * Maximale lengte: 20
 
 De SSH-gebruikers naam heeft de volgende beperkingen:
 
-* Toegestane speciale tekens: `_` en`@`
+* Toegestane speciale tekens: `_` en `@`
 * Tekens zijn niet toegestaan: #;. "', \/ : '! *? $ () {} [] <>|&--= +% ~ ^ ruimte
 * Maximale lengte: 64
 * Gereserveerde namen: Hadoop, users, oozie, Hive, mapred, ambari-QA, Zookeeper, TEZ, hdfs, sqoop, garens, hcat, AMS, hbase, Storm, Administrator, admin, User, gebruiker1, test,, test1, user3, admin1, 1, 123, a, actuser, adm, Admin2, ASPNET, backup, console, David, gast, John, owner, root, Server, SQL, ondersteuning, support_388945a0, sys, Test2, Test3, user4, user5, Spark
@@ -133,6 +133,9 @@ Tijdens de configuratie geeft u voor het standaard opslag eindpunt een BLOB-cont
 
 > [!IMPORTANT]
 > Het inschakelen van beveiligde opslag overdracht na het maken van een cluster kan leiden tot fouten bij het gebruik van uw opslag account en wordt niet aanbevolen. Het is beter om een nieuw cluster te maken met behulp van een opslag account waarvoor beveiligde overdracht al is ingeschakeld.
+
+> [!Note]  
+> Azure HDInsight brengt uw opgeslagen gegevens in Azure Storage van de ene regio naar de andere niet automatisch over, verplaatst of kopieert deze.
 
 ### <a name="metastore-settings"></a>Meta Store-instellingen
 

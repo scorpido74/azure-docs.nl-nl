@@ -3,18 +3,18 @@ title: Azure Recovery Services-kluizen en-servers beheren
 description: In dit artikel leert u hoe u het overzichts Dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: ee96acf624f1c313c85b21840c142e1e2d6f40d8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a34ac44e3fe8d3a0b7789b37b0b0308d42d4e3da
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654205"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756058"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-kluizen beheren en controleren
 
 In dit artikel wordt uitgelegd hoe u het **overzichts** dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren. Wanneer u een Recovery Services kluis in de lijst opent, wordt het **overzichts** dashboard voor de geselecteerde kluis geopend. Het dash board biedt verschillende details over de kluis. Er zijn *tegels* die worden weer gegeven: de status van kritieke en waarschuwings meldingen, in uitvoering en mislukte back-uptaken en de hoeveelheid lokaal redundante opslag (LRS) en geo-redundante opslag (GRS). Als u een back-up maakt van virtuele Azure-machines in de kluis, worden in de [tegel **status van back-up** voor het controleren alle kritieke items weer gegeven](#backup-pre-check-status). De volgende afbeelding is het **overzichts** dashboard voor **Contoso-kluis**. Op de tegel **Back-upitems** ziet u dat er negen items zijn geregistreerd bij de kluis.
 
-![Recovery Services-kluis dashboard](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
+![Recovery Services kluis dashboard](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
 De vereisten voor dit artikel zijn: een Azure-abonnement, een Recovery Services kluis en dat er ten minste één back-upitem is geconfigureerd voor de kluis.
 
@@ -32,11 +32,11 @@ Open de kluis om waarschuwingen te controleren of beheer gegevens over een Recov
 
 3. Typ in het dialoog venster **alle services** het **Recovery Services**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Wanneer de optie **Recovery Services kluizen** wordt weer gegeven, selecteert u deze om de lijst met Recovery Services kluizen in uw abonnement te openen.
 
-    ![Een Recovery Services-kluis maken, stap 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
+    ![Recovery Services kluis maken stap 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
 4. Selecteer een kluis in de lijst met kluizen om het dash board **overzicht** te openen.
 
-    ![Recovery Services-kluis dashboard](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
+    ![Recovery Services kluis dashboard](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
     Het overzichts dashboard gebruikt tegels om waarschuwingen en back-uptaak gegevens te bieden.
 

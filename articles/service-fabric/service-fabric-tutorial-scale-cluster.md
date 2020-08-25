@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u een Service Fabric-cluster in Azur
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257101"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716874"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster schalen in Azure
 
@@ -833,7 +833,7 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Het aantal knooppuntresources verhogen 
-Nadat u een Service Fabric-cluster hebt gemaakt, kunt u de schaal van een clusterknooppunttype verticaal aanpassen (de resources van de knooppunten wijzigen) of het besturingssysteem van de virtuele machines van het knooppunttype upgraden door het oorspronkelijke knooppunttype te vervangen door een nieuw knooppunttype (met een bijgewerkte VM-SKU of installatiekopie van het besturingssysteem). Zie [Een Azure Service Fabric-knooppunttype opschalen](service-fabric-scale-up-node-type.md) voor meer informatie.
+Nadat u een Service Fabric-cluster hebt gemaakt, kunt u de schaal van een clusterknooppunttype verticaal aanpassen (de resources van de knooppunten wijzigen) of het besturingssysteem van de virtuele machines van het knooppunttype upgraden door het oorspronkelijke knooppunttype te vervangen door een nieuw knooppunttype (met een bijgewerkte VM-SKU of installatiekopie van het besturingssysteem). Zie [Een Azure Service Fabric-knooppunttype opschalen](service-fabric-scale-up-primary-node-type.md) voor meer informatie.
 
 > [!IMPORTANT]
 > Probeer een VM-SKU of installatiekopie van het besturingssysteem nooit ter plekke zelf te wijzigen. Dit is een gevaarlijke bewerking die niet wordt ondersteund.

@@ -10,18 +10,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 42364e791711258e42883bdfcd658ba2c45ecd28
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 524e3682e39b6d9153beeef781deeb20e6ea8750
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723143"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749643"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Implementatie en beheer van Azure Cloud Solution Providers Azure Active Directory Domain Services
 
 Azure Cloud Solution Providers (CSP) is een programma voor micro soft-partners en biedt een licentie kanaal voor verschillende micro soft-Cloud Services. Met Azure CSP kunnen partners verkopen beheren, eigenaar worden van de facturerings relatie, technische en facturerings ondersteuning bieden en het individuele contact punt van de klant zijn. Daarnaast biedt Azure CSP een volledige set hulpprogram ma's, waaronder een Self-Service Portal en bijbehorende Api's. Met deze hulpprogram ma's kunnen CSP-partners eenvoudig Azure-resources inrichten en beheren, en factuur maken voor klanten en hun abonnementen.
 
-De [Portal van het partner centrum](/azure/cloud-solution-provider/overview/partner-center-overview) is het toegangs punt voor alle Azure CSP-partners en biedt uitgebreide mogelijkheden voor klant beheer, geautomatiseerde verwerking en meer. Azure CSP-partners kunnen partner centrum mogelijkheden gebruiken met behulp van een webinterface of met behulp van Power shell en verschillende API-aanroepen.
+De [Portal van het partner centrum](/partner-center/azure-plan-lp) is het toegangs punt voor alle Azure CSP-partners en biedt uitgebreide mogelijkheden voor klant beheer, geautomatiseerde verwerking en meer. Azure CSP-partners kunnen partner centrum mogelijkheden gebruiken met behulp van een webinterface of met behulp van Power shell en verschillende API-aanroepen.
 
 In het volgende diagram ziet u hoe het CSP-model op een hoog niveau werkt. Hier heeft Contoso een Azure Active Directory-Tenant (Azure AD). Ze hebben een samen werking met een CSP, die resources implementeert en beheert in hun Azure CSP-abonnement. Contoso kan ook normale (direct) Azure-abonnementen hebben, die rechtstreeks aan contoso worden gefactureerd.
 
@@ -33,7 +33,7 @@ De groep *Administrator* -agents wordt toegewezen aan de rol Tenant beheerder in
 
 Wanneer de CSP-partner een Azure CSP-abonnement voor contoso heeft ingericht, wordt de groep Administrator-agents toegewezen aan de rol van eigenaar voor dat abonnement. Als gevolg hiervan beschikken de beheerders agents van de CSP-partner over de vereiste bevoegdheden om Azure-resources zoals virtuele machines, virtuele netwerken en Azure AD Domain Services namens Contoso in te richten.
 
-Zie [Azure CSP Overview](/azure/cloud-solution-provider/overview/azure-csp-overview) (Engelstalig) voor meer informatie.
+Zie [Azure CSP Overview](/partner-center/azure-plan-lp) (Engelstalig) voor meer informatie.
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>Voor delen van het gebruik van Azure AD DS in een Azure CSP-abonnement
 

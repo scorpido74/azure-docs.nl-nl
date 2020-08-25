@@ -32,6 +32,8 @@
           href: tutorial-micro-fulfillment-center.md
     - name: 'Videoanalyse: object- en bewegingsdetectie'
       items:
+        - name: 0 - Een toepassing voor object- en bewegingsdetectie implementeren
+          href: tutorial-video-analytics-deploy.md
         - name: 1 - Een toepassing voor videoanalyse maken
           href: tutorial-video-analytics-create-app.md
         - name: 2 - Een IoT Edge-apparaat configureren
@@ -64,8 +66,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: Instructiegidsen
   items:
-    - name: Toepassing voor object- en bewegingsdetectie implementeren
-      href: howto-deploy-video-analytics-template.md
     - name: Apparaten verbinden
       items:
         - name: Een Rigado Cascade 500 voorbereiden en verbinden

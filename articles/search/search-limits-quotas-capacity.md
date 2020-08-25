@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 35cac2c05a8603313bb2bbe1bde3817dc88c6ed2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: 99b64ca8e807fcf6a142f10878d90e77e3639698
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682625"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749483"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Servicelimieten in Azure Cognitive Search
 
@@ -83,8 +83,8 @@ Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit v
 | Maximum vaardig heden <sup>4</sup> |3 |5 of 15 |50 |200 |200 |N.v.t. |10 |10 |
 | Maximale indexerings belasting per aanroep |10.000 documenten |Alleen beperkt door de maximale hoeveelheid documenten |Alleen beperkt door de maximale hoeveelheid documenten |Alleen beperkt door de maximale hoeveelheid documenten |Alleen beperkt door de maximale hoeveelheid documenten |N.v.t. |Geen limiet |Geen limiet |
 | Minimale planning | 5 minuten |5 minuten |5 minuten |5 minuten |5 minuten |5 minuten |5 minuten | 5 minuten |
-| Maximale uitvoerings tijd <sup>5</sup> | 1-3 minuten |24 uur |24 uur |24 uur |24 uur |N.v.t.  |24 uur |24 uur |
-| Maximale uitvoerings tijd voor cognitieve Zoek vaardig heden of BLOB-indexering met afbeeldings analyse <sup>5</sup> | 3-10 minuten |2 uur |2 uur |2 uur |2 uur |N.v.t.  |2 uur |2 uur |
+| Maximale uitvoerings tijd| 1-3 minuten |24 uur |24 uur |24 uur |24 uur |N.v.t.  |24 uur |24 uur |
+| Maximale uitvoerings tijd voor Indexeer functies met een vaardig heden- <sup>5</sup> | 3-10 minuten |2 uur |2 uur |2 uur |2 uur |N.v.t.  |2 uur |2 uur |
 | BLOB-Indexer: maximale grootte van BLOB, MB |16 |16 |128 |256 |256 |N.v.t.  |256 |256 |
 | BLOB-Indexeer functie: maximum aantal tekens inhoud geëxtraheerd uit een BLOB |32.000 |64.000 |4 &nbsp; miljoen |8 &nbsp; miljoen |16 &nbsp; miljoen |N.v.t. |4 &nbsp; miljoen |4 &nbsp; miljoen |
 

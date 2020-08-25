@@ -14,16 +14,16 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: e242e6ce59c715cf3a9ca95523a9a9eda274407a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418913"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795239"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
-`id_tokens`worden verzonden naar de client toepassing als onderdeel van een OIDC-stroom ( [OpenID Connect Connect](v2-protocols-oidc.md) ). Ze kunnen worden verzonden aan de zijkant of in plaats van een toegangs token en worden door de client gebruikt om de gebruiker te verifiëren.
+`id_tokens` worden verzonden naar de client toepassing als onderdeel van een OIDC-stroom ( [OpenID Connect Connect](v2-protocols-oidc.md) ). Ze kunnen worden verzonden aan de zijkant of in plaats van een toegangs token en worden door de client gebruikt om de gebruiker te verifiëren.
 
 ## <a name="using-the-id_token"></a>De id_token gebruiken
 
@@ -31,7 +31,7 @@ ID-tokens moeten worden gebruikt om te controleren of een gebruiker aan wie ze b
 
 ## <a name="claims-in-an-id_token"></a>Claims in een id_token
 
-`id_tokens`zijn [JWTs](https://tools.ietf.org/html/rfc7519) (JSON-webtokens), wat betekent dat ze bestaan uit een header, lading en hand tekening gedeelte. U kunt de header en hand tekening gebruiken om de authenticiteit van het token te controleren. de payload bevat de informatie over de gebruiker die door de client is aangevraagd. Tenzij anders vermeld, worden alle hier vermelde JWT-claims weer gegeven in de tokens v 1.0 en v 2.0.
+`id_tokens` zijn [JWTs](https://tools.ietf.org/html/rfc7519) (JSON-webtokens), wat betekent dat ze bestaan uit een header, lading en hand tekening gedeelte. U kunt de header en hand tekening gebruiken om de authenticiteit van het token te controleren. de payload bevat de informatie over de gebruiker die door de client is aangevraagd. Tenzij anders vermeld, worden alle hier vermelde JWT-claims weer gegeven in de tokens v 1.0 en v 2.0.
 
 ### <a name="v10"></a>v1.0
 
@@ -80,7 +80,7 @@ In deze lijst worden de JWT-claims weer gegeven die in de meeste id_tokens stand
 |`oid` | Teken reeks, een GUID | De onveranderbare id voor een object in het micro soft-identiteits systeem, in dit geval een gebruikers account. Met deze ID wordt de gebruiker op unieke wijze in verschillende toepassingen geïdentificeerd: twee verschillende toepassingen die in dezelfde gebruiker worden ondertekend, ontvangen dezelfde waarde in de `oid` claim. De Microsoft Graph retourneert deze ID als de `id` eigenschap voor een bepaald gebruikers account. Omdat `oid` meerdere apps toestaan gebruikers te correleren, is het `profile` bereik vereist om deze claim te ontvangen. Houd er rekening mee dat als één gebruiker bestaat in meerdere tenants, de gebruiker een andere object-ID in elke Tenant bevat. deze worden beschouwd als verschillende accounts, zelfs als de gebruiker zich aanmeldt bij elke account met dezelfde referenties. De `oid` claim is een GUID en kan niet opnieuw worden gebruikt. |
 |`roles`| Matrix van tekenreeksen | De set met rollen die zijn toegewezen aan de gebruiker die zich aanmeldt. |
 |`rh` | Dekkende teken reeks |Een interne claim die door Azure wordt gebruikt om tokens opnieuw te valideren. Moet worden genegeerd. |
-|`sub` | Teken reeks, een GUID | De principal over welke het token informatie bedient, zoals de gebruiker van een app. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het onderwerp is een Pairwise id en is uniek voor een bepaalde toepassings-ID. Als één gebruiker zich bij twee verschillende apps aanmeldt met twee verschillende client-Id's, ontvangen deze apps twee verschillende waarden voor de claim van de certificaat houder. Dit kan al dan niet gewenst zijn, afhankelijk van uw architectuur en privacy-vereisten. |
+|`sub` | Tekenreeks | De principal over welke het token informatie bedient, zoals de gebruiker van een app. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het onderwerp is een Pairwise id en is uniek voor een bepaalde toepassings-ID. Als één gebruiker zich bij twee verschillende apps aanmeldt met twee verschillende client-Id's, ontvangen deze apps twee verschillende waarden voor de claim van de certificaat houder. Dit kan al dan niet gewenst zijn, afhankelijk van uw architectuur en privacy-vereisten. |
 |`tid` | Teken reeks, een GUID | Een GUID die de Azure AD-Tenant vertegenwoordigt waaruit de gebruiker zich bevindt. Voor werk-en school accounts is de GUID de onveranderlijke Tenant-ID van de organisatie waartoe de gebruiker behoort. De waarde is voor persoonlijke accounts `9188040d-6c67-4c5b-b112-36a304b66dad` . Het `profile` bereik is vereist om deze claim te ontvangen. |
 |`unique_name` | Tekenreeks | Biedt een voor mensen leesbare waarde waarmee het onderwerp van het token wordt geïdentificeerd. Deze waarde is uniek op een bepaald moment, maar als e-mail berichten en andere id's opnieuw kunnen worden gebruikt, kan deze waarde opnieuw worden weer gegeven op andere accounts en moet daarom alleen worden gebruikt voor weergave doeleinden. Alleen uitgegeven in v 1.0 `id_tokens` . |
 |`uti` | Dekkende teken reeks | Een interne claim die door Azure wordt gebruikt om tokens opnieuw te valideren. Moet worden genegeerd. |
@@ -89,8 +89,8 @@ In deze lijst worden de JWT-claims weer gegeven die in de meeste id_tokens stand
 > [!NOTE]
 > De id_token v 1.0 en v 2.0 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. De versie is gebaseerd op het eind punt van waaruit het is aangevraagd. Hoewel bestaande toepassingen waarschijnlijk gebruikmaken van het Azure AD-eind punt, moeten nieuwe toepassingen het eind punt van het micro soft Identity-platform ' v 2.0 ' gebruiken.
 >
-> - v 1.0: Azure AD-eind punten:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - v 2.0: micro soft Identity platform-eind punten:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v 1.0: Azure AD-eind punten: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - v 2.0: micro soft Identity platform-eind punten: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Claims gebruiken om een gebruiker op een betrouw bare wijze te identificeren (onderwerp en object-ID)
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586568"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783940"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Een verbonden organisatie toevoegen in het beheer van rechten van Azure AD
 
@@ -43,8 +43,8 @@ In dit geval kunt u twee verbonden organisaties configureren. U maakt één verb
 Hoe gebruikers van de Azure AD-Directory of het domein verifiëren, is afhankelijk van het verificatie type. De verificatie typen voor verbonden organisaties zijn:
 
 - Azure AD
-- [Directe federatie](../b2b/direct-federation.md)
-- [Eenmalige wachtwoord code](../b2b/one-time-passcode.md) (domein)
+- [Directe federatie](../external-identities/direct-federation.md)
+- [Eenmalige wachtwoord code](../external-identities/one-time-passcode.md) (domein)
 
 Bekijk de volgende video voor een demonstratie van het toevoegen van een verbonden organisatie:
 
@@ -79,7 +79,7 @@ Volg de instructies in deze sectie om een extern Azure AD-Directory of-domein to
 1. Selecteer **toevoegen** om de Azure AD-Directory of het domein toe te voegen. Op dit moment kunt u slechts één Azure AD-adres lijst of-domein toevoegen per verbonden organisatie.
 
     > [!NOTE]
-    > Alle gebruikers uit de Azure AD-adres lijst of het-domein kunnen dit toegangs pakket aanvragen. Dit geldt ook voor gebruikers in azure AD van alle subdomeinen die zijn gekoppeld aan de Directory, tenzij deze domeinen worden geblokkeerd door de Azure AD Business to Business (B2B)-lijst voor toestaan of weigeren. Zie [uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](../b2b/allow-deny-list.md)voor meer informatie.
+    > Alle gebruikers uit de Azure AD-adres lijst of het-domein kunnen dit toegangs pakket aanvragen. Dit geldt ook voor gebruikers in azure AD van alle subdomeinen die zijn gekoppeld aan de Directory, tenzij deze domeinen worden geblokkeerd door de Azure AD Business to Business (B2B)-lijst voor toestaan of weigeren. Zie [uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](../external-identities/allow-deny-list.md)voor meer informatie.
 
 1. Nadat u de Azure AD-Directory of het domein hebt toegevoegd, selecteert u **selecteren**.
 
@@ -89,7 +89,7 @@ Volg de instructies in deze sectie om een extern Azure AD-Directory of-domein to
 
 1. Selecteer het tabblad **sponsors** en voeg vervolgens optionele sponsors toe voor deze verbonden organisatie.
 
-    Sponsors zijn interne of externe gebruikers in uw directory die het contact punt vormen voor de relatie met deze verbonden organisatie. Interne sponsors zijn lid van gebruikers in uw Directory. Externe sponsors zijn gast gebruikers van de verbonden organisatie die eerder zijn uitgenodigd en zich al in uw directory bevinden. Sponsors kunnen worden gebruikt als goed keurders wanneer gebruikers in deze verbonden organisatie toegang aanvragen tot dit toegangs pakket. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../b2b/add-users-administrator.md)voor informatie over het uitnodigen van een gast gebruiker aan uw Directory.
+    Sponsors zijn interne of externe gebruikers in uw directory die het contact punt vormen voor de relatie met deze verbonden organisatie. Interne sponsors zijn lid van gebruikers in uw Directory. Externe sponsors zijn gast gebruikers van de verbonden organisatie die eerder zijn uitgenodigd en zich al in uw directory bevinden. Sponsors kunnen worden gebruikt als goed keurders wanneer gebruikers in deze verbonden organisatie toegang aanvragen tot dit toegangs pakket. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../external-identities/add-users-administrator.md)voor informatie over het uitnodigen van een gast gebruiker aan uw Directory.
 
     Wanneer u **toevoegen/verwijderen**selecteert, wordt er een deel venster geopend waarin u interne of externe sponsors kunt kiezen. In het deel venster wordt een niet-gefilterde lijst met gebruikers en groepen in uw directory weer gegeven.
 
@@ -134,9 +134,9 @@ Als u geen relatie meer hebt met een extern Azure AD-adres lijst of-domein, kunt
 
 ## <a name="managing-a-connected-organization-programmatically"></a>Een verbonden organisatie programmatisch beheren
 
-U kunt ook verbonden organisaties maken, weer geven, bijwerken en verwijderen met behulp van Microsoft Graph. Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen om [connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) -objecten te beheren en sponsors voor hen in te stellen.
+U kunt ook verbonden organisaties maken, weer geven, bijwerken en verwijderen met behulp van Microsoft Graph. Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen om [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) -objecten te beheren en sponsors voor hen in te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegang voor externe gebruikers beheren](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
+- [Toegang voor externe gebruikers beheren](./entitlement-management-external-users.md)
 - [De toegang bepalen voor gebruikers die zich niet in uw directory besturen](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

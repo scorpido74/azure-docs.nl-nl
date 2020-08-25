@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145774"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783328"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Het beheer van rechten voor Azure AD oplossen
 
@@ -45,9 +45,9 @@ In dit artikel worden enkele items beschreven die u moet controleren om te helpe
 
 * Als er gebruikers zijn die al zijn toegewezen aan een resource die u met een toegangspakket wilt beheren, moet u ervoor zorgen dat de gebruikers met een toepasselijk beleid worden toegewezen aan het toegangspakket. Het is bijvoorbeeld mogelijk dat u een groep wilt opnemen in een toegangspakket dat al gebruikers in de groep bevat. Als die gebruikers in de groep voortdurende toegang nodig hebben, moeten ze beschikken over het juiste beleid voor de toegangspakketten, zodat ze hun toegang tot de groep niet verliezen. U kunt het toegangspakket toewijzen door de gebruikers te vragen het toegangspakket met die resource aan te vragen, of door ze rechtstreeks toe te wijzen aan het toegangspakket. Zie [instellingen voor aanvraag en goed keuring wijzigen voor een toegangs pakket](entitlement-management-access-package-request-policy.md)voor meer informatie.
 
-* Wanneer u een lid van een team verwijdert, worden deze ook uit de groep Microsoft 365 verwijderd. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [groepslid maatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie.
+* Wanneer u een lid van een team verwijdert, worden deze ook uit de groep Microsoft 365 verwijderd. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [groepslid maatschap](/microsoftteams/office-365-groups#group-membership)voor meer informatie.
 
-* Zorg ervoor dat uw directory niet is geconfigureerd voor Multi-Geo. Rechtenbeheer biedt momenteel geen ondersteuning voor Multi-Geo-locaties voor SharePoint Online. SharePoint Online-sites moeten zich in de standaard geo-locatie bevinden om te worden beheerd met rechtenbeheer. Zie [multi-geo-mogelijkheden in OneDrive en share point online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)voor meer informatie.
+* Zorg ervoor dat uw directory niet is geconfigureerd voor Multi-Geo. Rechtenbeheer biedt momenteel geen ondersteuning voor Multi-Geo-locaties voor SharePoint Online. SharePoint Online-sites moeten zich in de standaard geo-locatie bevinden om te worden beheerd met rechtenbeheer. Zie [multi-geo-mogelijkheden in OneDrive en share point online](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)voor meer informatie.
 
 ## <a name="access-packages"></a>Toegangspakketten
 
@@ -69,15 +69,15 @@ In dit artikel worden enkele items beschreven die u moet controleren om te helpe
 
 * Wanneer een gebruiker die zich nog niet in uw directory bevindt zich aanmeldt bij de portal Mijn toegang om een toegangspakket aan te vragen, moet deze zich authenticeren met zijn/haar organisatieaccount. Het organisatieaccount kan een account in de resourcedirectory zijn, of in een directory die is opgenomen in een van de beleidsregels van het toegangspakket. Als het account van de gebruiker geen organisatieaccount is, of de directory waar deze zich authenticeert niet is opgenomen in het beleid, kan de gebruiker het toegangspakket niet zien. Zie [toegang tot een toegangs pakket aanvragen](entitlement-management-request-access.md)voor meer informatie.
 
-* Als een gebruiker zich niet kan aanmelden bij de resourcedirectory, kan deze geen toegang aanvragen in de portal Mijn toegang. Voordat de gebruiker toegang kan aanvragen, moet u de aanmeldingsblokkering verwijderen uit het profiel van de gebruiker. Als u het aanmeldings blok wilt verwijderen, klikt u in het Azure Portal op **Azure Active Directory**, klikt u op **gebruikers**, klikt u op de gebruiker en klikt u vervolgens op **profiel**. Bewerk de sectie **instellingen** en wijzig de **blok aanmelding in** op **Nee**. Zie [de profiel gegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md)voor meer informatie.  U kunt ook controleren of de gebruiker is geblokkeerd vanwege een [beleid voor identiteits beveiliging](../identity-protection/howto-unblock-user.md).
+* Als een gebruiker zich niet kan aanmelden bij de resourcedirectory, kan deze geen toegang aanvragen in de portal Mijn toegang. Voordat de gebruiker toegang kan aanvragen, moet u de aanmeldingsblokkering verwijderen uit het profiel van de gebruiker. Als u het aanmeldings blok wilt verwijderen, klikt u in het Azure Portal op **Azure Active Directory**, klikt u op **gebruikers**, klikt u op de gebruiker en klikt u vervolgens op **profiel**. Bewerk de sectie **instellingen** en wijzig de **blok aanmelding in** op **Nee**. Zie [de profiel gegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md)voor meer informatie.  U kunt ook controleren of de gebruiker is geblokkeerd vanwege een [beleid voor identiteits beveiliging](../identity-protection/howto-identity-protection-remediate-unblock.md).
 
 * Als een gebruiker zowel een aanvrager als een fiatteur is, wordt in de portal mijn toegang de aanvraag voor een toegangs pakket niet weer geven op de pagina **goed keuringen** . Dit gedrag is opzettelijk: een gebruiker kan zijn/haar eigen aanvraag niet goedkeuren. Zorg ervoor dat er meerdere fiatteurs zijn geconfigureerd in het beleid voor het toegangspakket dat de gebruiker aanvraagt. Zie [instellingen voor aanvraag en goed keuring wijzigen voor een toegangs pakket](entitlement-management-access-package-request-policy.md)voor meer informatie.
 
 ### <a name="view-a-requests-delivery-errors"></a>De leverings fouten van een aanvraag weer geven
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
@@ -103,9 +103,9 @@ U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw
 
 - Als de fout **niet is** opgelost tijdens het venster experimenten, kan de status van de aanvraag mogelijk niet worden **bezorgd of gedeeltelijk geleverd**. Vervolgens kunt u de knop opnieuw **verwerken** gebruiken. U hebt zeven dagen nodig om de aanvraag opnieuw te verwerken.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
@@ -121,9 +121,9 @@ U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw
 
 U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is bezorgd of waarvoor de bezorging is mislukt. De knop **Annuleren** wordt anders grijs weer gegeven.
 
-**Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
+**Vereiste rol:** globale beheerder, gebruikersbeheerder, cataloguseigenaar of toegangspakketbeheerder
 
-1. Klik in de Azure Portal op **Azure Active Directory** en klik vervolgens op **Identity governance**.
+1. Klik in de Azure-portal op **Azure Active Directory** en vervolgens op **Identity Governance**.
 
 1. Klik in het menu links op **toegangs pakketten** en open vervolgens het toegangs pakket.
 
@@ -143,9 +143,9 @@ U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is
 
     | Beleids prioriteit | Bereik |
     | --- | --- |
-    | B1 | Specifieke gebruikers en groepen in uw Directory of specifieke verbonden organisaties |
-    | B2 | Alle leden in uw directory (exclusief gasten) |
-    | B3 | Alle gebruikers in uw directory (inclusief gasten) of specifieke verbonden organisaties |
+    | P1 | Specifieke gebruikers en groepen in uw Directory of specifieke verbonden organisaties |
+    | P2 | Alle leden in uw directory (exclusief gasten) |
+    | P3 | Alle gebruikers in uw directory (inclusief gasten) of specifieke verbonden organisaties |
     | P4 | Alle verbonden organisaties of alle gebruikers (alle verbonden organisaties en alle nieuwe externe gebruikers) |
     
     Als een beleid zich in een categorie met hogere prioriteit bevindt, worden de categorieën met lagere prioriteit genegeerd. Zie [een beleid selecteren](entitlement-management-request-access.md#select-a-policy)voor een voor beeld van hoe er meerdere beleids regels met dezelfde prioriteit worden weer gegeven voor de aanvrager.

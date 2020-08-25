@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 56948b700f816c13d35915400658136ffcf48846
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798632"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783583"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Resource rollen wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
@@ -78,7 +78,7 @@ U kunt elke [Azure AD-beveiligings groep of Office 365-groep](../fundamentals/ac
 - Azure AD kan het lidmaatschap van een groep die is gesynchroniseerd vanuit Windows Server Active Directory met Azure AD Connect of die in Exchange Online is gemaakt als distributie groep niet wijzigen.  
 - Het lidmaatschap van dynamische groepen kan niet worden bijgewerkt door een lid toe te voegen of te verwijderen, zodat dynamische groepslid maatschappen niet geschikt zijn voor gebruik met rechten beheer.
 
-Zie groepen en [Office 365-groepen en micro soft teams](https://docs.microsoft.com/microsoftteams/office-365-groups) [vergelijken](https://docs.microsoft.com/office365/admin/create-groups/compare-groups) voor meer informatie.
+Zie groepen en [Office 365-groepen en micro soft teams](/microsoftteams/office-365-groups) [vergelijken](/office365/admin/create-groups/compare-groups) voor meer informatie.
 
 1. Klik op de pagina **resource rollen toevoegen aan toegangs pakket** op **groepen en teams** om het deel venster groepen selecteren te openen.
 
@@ -178,7 +178,7 @@ Azure AD kan gebruikers automatisch toegang geven tot een share point online-sit
 
 In het recht op beheer worden bulksgewijs wijzigingen in de toewijzing en resources in uw toegangs pakketten enkele keren per dag verwerkt door Azure AD. Als u dus een toewijzing maakt of de resource rollen van uw toegangs pakket wijzigt, kan het tot 24 uur duren voordat deze wijziging wordt doorgevoerd in azure AD, plus de hoeveelheid tijd die nodig is om deze wijzigingen door te geven aan andere micro soft Online Services of verbonden SaaS-toepassingen. Als uw wijziging van invloed is op slechts enkele objecten, duurt het waarschijnlijk slechts enkele minuten om toe te passen in azure AD, waarna andere onderdelen van Azure AD vervolgens detecteren dat de SaaS-toepassingen worden gewijzigd en bijgewerkt. Als uw wijziging gevolgen heeft voor duizenden objecten, neemt de wijziging langer in beslag. Als u bijvoorbeeld een toegangs pakket hebt met 2 toepassingen en 100 gebruikers toewijzingen en u besluit een share point-siterol toe te voegen aan het toegangs pakket, kan er een vertraging optreden totdat alle gebruikers deel uitmaken van die share point-siterol. U kunt de voortgang bewaken via het Azure AD-controle logboek, het Azure AD-inrichtings logboek en de audit logboeken van de share point-site.
 
-Wanneer u een lid van een team verwijdert, wordt deze persoon ook verwijderd uit de Office 365-groep. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [groepslid maatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie.
+Wanneer u een lid van een team verwijdert, wordt deze persoon ook verwijderd uit de Office 365-groep. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [groepslid maatschap](/microsoftteams/office-365-groups#group-membership)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,18 +14,18 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea3e307df95fe4cb18986ed8e68a7f3381c5fbe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 95b0b026b75b9b77c94451245ac4f18d487fc2e4
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742892"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783515"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Microsoft Graph-API's voor PIM (Privileged Identity Management) (preview)
 
-U kunt Privileged Identity Management-taken uitvoeren met behulp van de [Microsoft Graph-API's](https://developer.microsoft.com/graph/docs/concepts/overview) voor Azure Active Directory. In dit artikel worden enkele belangrijke concepten beschreven bij het gebruik van de Microsoft Graph-API's voor Privileged Identity Management.
+U kunt Privileged Identity Management-taken uitvoeren met behulp van de [Microsoft Graph-API's](/graph/overview) voor Azure Active Directory. In dit artikel worden enkele belangrijke concepten beschreven bij het gebruik van de Microsoft Graph-API's voor Privileged Identity Management.
 
-Zie de [naslag bij Azure AD Privileged Identity Management-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root) voor meer informatie over de Microsoft Graph-API's.
+Zie de [naslag bij Azure AD Privileged Identity Management-API](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta) voor meer informatie over de Microsoft Graph-API's.
 
 > [!IMPORTANT]
 > API's onder de /bèta-versie in Microsoft Graph zijn beschikbaar als preview en kunnen worden gewijzigd. Het gebruik van deze API's in productie-apps wordt niet ondersteund.
@@ -61,4 +61,4 @@ Als u Graph Explorer gebruikt om uw aanroepen te testen, kunt u de machtigingen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Naslag bij Azure AD Privileged Identity Management-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)
+- [Naslag bij Azure AD Privileged Identity Management-API](/graph/api/resources/privilegedidentitymanagement-root?view=graph-rest-beta)

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a98ff68500593c644e6f0fa5eacb338ab90f5604
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421719"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795388"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Accounts voor nood toegang beheren in azure AD
 
@@ -44,7 +44,7 @@ Maak twee of meer nood toegangs accounts. Deze accounts moeten alleen Cloud acco
 Bij het configureren van deze accounts moet aan de volgende vereisten worden voldaan:
 
 - De accounts voor toegang in nood gevallen mogen niet worden gekoppeld aan een afzonderlijke gebruiker in de organisatie. Zorg ervoor dat uw accounts niet zijn verbonden met mobiele telefoons die door werk nemers worden geleverd, hardware-tokens die met afzonderlijke werk nemers reizen of andere specifieke referenties voor werk nemers. Deze voorzorgsmaatregel geldt voor instanties waarbij een individuele werk nemer onbereikbaar is wanneer de referentie nodig is. Het is belang rijk om ervoor te zorgen dat geregistreerde apparaten worden bewaard op een bekende, veilige locatie met meerdere manieren om te communiceren met Azure AD.
-- Het authenticatie mechanisme dat wordt gebruikt voor een account voor toegang in nood gevallen moet verschillend zijn van de accounts die worden gebruikt door uw andere Administrator, waaronder andere accounts voor toegang tot een nood geval.  Als uw normale beheerder zich bijvoorbeeld via on-premises MFA bevindt, is Azure MFA een ander mechanisme.  Als Azure MFA echter het primaire deel van de verificatie is voor uw beheerders accounts, kunt u een andere benadering gebruiken, zoals het gebruik van voorwaardelijke toegang met een externe MFA-provider via [aangepaste besturings elementen](https://docs.microsoft.com/azure/active-directory/conditional-access/controls).
+- Het authenticatie mechanisme dat wordt gebruikt voor een account voor toegang in nood gevallen moet verschillend zijn van de accounts die worden gebruikt door uw andere Administrator, waaronder andere accounts voor toegang tot een nood geval.  Als uw normale beheerder zich bijvoorbeeld via on-premises MFA bevindt, is Azure MFA een ander mechanisme.  Als Azure MFA echter het primaire deel van de verificatie is voor uw beheerders accounts, kunt u een andere benadering gebruiken, zoals het gebruik van voorwaardelijke toegang met een externe MFA-provider via [aangepaste besturings elementen](../conditional-access/controls.md).
 - Het apparaat of de referentie mag niet verlopen of een automatische opschoning hebben vanwege een gebrek aan gebruik.  
 - U moet de globale beheerdersrol permanent maken voor uw accounts voor toegang voor nood gevallen. 
 
@@ -74,7 +74,7 @@ Organisaties moeten de activiteiten voor aanmelding en controle logboeken van de
 
 ### <a name="prerequisites"></a>Vereisten
 
-1. [Verzend logboeken van Azure AD-aanmelding](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) naar Azure monitor.
+1. [Verzend logboeken van Azure AD-aanmelding](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) naar Azure monitor.
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Object-Id's van de afbreek glazen accounts ophalen
 
@@ -156,5 +156,5 @@ Deze stappen moeten met regel matige tussen pozen en voor belang rijke wijziging
 - [Gebruikers toevoegen met Azure AD](../fundamentals/add-users-azure-active-directory.md) en [de nieuwe gebruiker toewijzen aan de rol van globale beheerder](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [Meld u aan voor Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)als u zich nog niet hebt aangemeld
 - [Verificatie in twee stappen vereisen voor een gebruiker](../authentication/howto-mfa-userstates.md)
-- [Extra beveiligingen voor globale beheerders in Microsoft 365 configureren](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts), als u Microsoft 365 gebruikt
+- [Extra beveiligingen voor globale beheerders in Microsoft 365 configureren](/office365/enterprise/protect-your-global-administrator-accounts), als u Microsoft 365 gebruikt
 - [Een toegangs beoordeling van globale beheerders starten](../privileged-identity-management/pim-how-to-start-security-review.md) en [bestaande globale beheerders overstappen naar meer specifieke beheerders rollen](directory-assign-admin-roles.md)

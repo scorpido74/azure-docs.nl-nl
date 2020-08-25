@@ -10,12 +10,12 @@ ms.date: 07/29/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e7bb996b3d42e2db2b4fa65d050ec1cb6a935bc6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533373"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755905"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Een mini maal vereiste versie van Transport Layer Security (TLS) afdwingen voor aanvragen van een opslag account
 
@@ -338,6 +338,10 @@ Nadat u het beleid met het effect deny hebt gemaakt en aan een bereik hebt toege
 In de volgende afbeelding ziet u de fout die optreedt als u probeert een opslag account te maken met de minimale TLS-versie die is ingesteld op TLS 1,0 (de standaard waarde voor een nieuw account) wanneer een beleid met een deny-effect vereist dat de minimum versie van TLS wordt ingesteld op TLS 1,2.
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Scherm opname met de fout die optreedt bij het maken van een opslag account in schending van het beleid":::
+
+## <a name="network-considerations"></a>Overwegingen voor het netwerk
+
+Wanneer een client een aanvraag naar het opslag account verzendt, brengt de client eerst een verbinding tot stand met het open bare eind punt van het opslag account voordat aanvragen worden verwerkt. De instelling minimale TLS-versie wordt gecontroleerd nadat de verbinding tot stand is gebracht. Als voor de aanvraag een eerdere versie van TLS wordt gebruikt dan die is opgegeven door de instelling, blijft de verbinding slagen, maar zal de aanvraag uiteindelijk mislukken. Zie [resource-URI-syntaxis](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#resource-uri-syntax)voor meer informatie over open bare eind punten voor Azure Storage.
 
 ## <a name="next-steps"></a>Volgende stappen
 

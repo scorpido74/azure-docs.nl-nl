@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4756ced858210f86bb8e979705db99a563441490
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078179"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783815"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Logboeken en rapporten archiveren op het beheer van rechten van Azure AD in Azure Monitor
 
@@ -33,7 +33,7 @@ Voordat u de Azure Monitor werkmappen kunt gebruiken, moet u Azure AD configurer
 
 Voor het archiveren van Azure AD-controle logboeken moet u Azure Monitor in een Azure-abonnement hebben. Meer informatie over de vereisten en geschatte kosten van het gebruik van Azure Monitor in [Azure AD-activiteiten Logboeken vindt u in azure monitor](../reports-monitoring/concept-activity-logs-azure-monitor.md).
 
-**Vereiste rol**: globale beheerder
+**Vereiste rol**: Hoofdbeheerder
 
 1. Meld u aan bij de Azure Portal als een gebruiker die een globale beheerder is. Zorg ervoor dat u toegang hebt tot de resource groep met de Azure Monitor-werk ruimte.
  
@@ -59,7 +59,7 @@ Voor het archiveren van Azure AD-controle logboeken moet u Azure Monitor in een 
 
 ## <a name="view-events-for-an-access-package"></a>Gebeurtenissen voor een toegangs pakket weer geven  
 
-Als u gebeurtenissen voor een toegangs pakket wilt weer geven, moet u toegang hebben tot de onderliggende Azure monitor-werk ruimte (Zie [toegang beheren voor logboek gegevens en werk ruimten in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) voor informatie) en in een van de volgende rollen: 
+Als u gebeurtenissen voor een toegangs pakket wilt weer geven, moet u toegang hebben tot de onderliggende Azure monitor-werk ruimte (Zie [toegang beheren voor logboek gegevens en werk ruimten in azure monitor](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions) voor informatie) en in een van de volgende rollen: 
 
 - Globale beheerder  
 - Beveiligingsbeheerder  
@@ -170,7 +170,7 @@ $wks | ft CustomerId, Name
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>De query naar de Log Analytics-werk ruimte verzenden
 Ten slotte, wanneer u een werk ruimte hebt geïdentificeerd, kunt u [invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) gebruiken om een Kusto-query naar die werk ruimte te verzenden. Deze query's worden geschreven in de [Kusto-query taal](https://docs.microsoft.com/azure/kusto/query/).
+) gebruiken om een Kusto-query naar die werk ruimte te verzenden. Deze query's worden geschreven in de [Kusto-query taal](/azure/kusto/query/).
  
 U kunt bijvoorbeeld het datum bereik van de controle gebeurtenis records ophalen uit de werk ruimte Log Analytics, met Power shell-cmdlets voor het verzenden van een query zoals:
  
@@ -189,5 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Volgende stappen:
-- [Interactieve rapporten maken met Azure Monitor werkmappen](../../azure-monitor/platform/workbooks-overview.md) 
-
+- [Interactieve rapporten maken met Azure Monitor werkmappen](../../azure-monitor/platform/workbooks-overview.md)

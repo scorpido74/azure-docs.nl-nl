@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 9ae8fd824144c70edeb1e084155e8cdff95cd8b9
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 802b7919abcd510db68396b2d9576f8cacc06a6e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612330"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756007"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -101,7 +101,7 @@ De instelling voor opslagreplicatie bewerken:
    * Typ in de lijst met resources **Recovery Services**.
    * Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Wanneer u **Recovery Services kluizen**ziet, selecteert u deze.
 
-     ![Een Recovery Services-kluis maken, stap 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Recovery Services kluis maken stap 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
      De lijst met Recovery Services-kluizen wordt weergegeven.
    * Selecteer in de lijst met Recovery Services-kluizen een kluis.
@@ -135,7 +135,7 @@ De instelling voor opslagreplicatie bewerken:
 
     ![Wizard aan de slag](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. In het deel venster **infra structuur voorbereiden** dat wordt geopend, selecteert u de **Download** koppelingen voor installatie Azure backup server en kluis referenties downloaden. U gebruikt de kluis referenties tijdens de registratie van Azure Backup Server aan de Recovery Services-kluis. Met de koppelingen gaat u naar het Download centrum waar het software pakket kan worden gedownload.
+6. In het deel venster **infra structuur voorbereiden** dat wordt geopend, selecteert u de **Download** koppelingen voor installatie Azure backup server en kluis referenties downloaden. U gebruikt de kluis referenties tijdens de registratie van Azure Backup Server aan de Recovery Services kluis. Met de koppelingen gaat u naar het Download centrum waar het software pakket kan worden gedownload.
 
     ![Infra structuur voorbereiden voor Azure Backup Server](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
@@ -143,7 +143,7 @@ De instelling voor opslagreplicatie bewerken:
 
     ![Down load Center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    Omdat de download grootte van alle bestanden samen > 3G is, kan het tot 60 minuten duren voordat de down load is voltooid.
+    Omdat de download grootte van alle bestanden samen > 3 GB is, kan het tot 60 minuten duren voordat de down load is voltooid.
 
 ### <a name="extracting-the-software-package"></a>Het software pakket extra heren
 
@@ -216,7 +216,7 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de volledig
     ![Samen vatting van instellingen](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. De installatie vindt plaats in fasen. In de eerste fase wordt de Microsoft Azure Recovery Services-agent geïnstalleerd op de server. De wizard controleert ook op Internet connectiviteit. Als Internet connectiviteit beschikbaar is, kunt u door gaan met de installatie. Als dat niet het geval is, moet u proxy gegevens opgeven om verbinding te maken met internet.
 
-    De volgende stap is het configureren van de Microsoft Azure Recovery Services agent. Als onderdeel van de configuratie moet u uw kluis referenties opgeven om de machine te registreren bij de Recovery Services-kluis. U geeft ook een wachtwoordzin op voor het versleutelen/ontsleutelen van de gegevens die tussen Azure en uw locatie worden verzonden. U kunt automatisch een wachtwoordzin genereren of uw eigen minimale 16-teken wachtwoordzin opgeven. Ga door met de wizard totdat de agent is geconfigureerd.
+    De volgende stap is het configureren van de Microsoft Azure Recovery Services agent. Als onderdeel van de configuratie moet u uw kluis referenties opgeven om de machine te registreren bij de Recovery Services kluis. U geeft ook een wachtwoordzin op voor het versleutelen/ontsleutelen van de gegevens die tussen Azure en uw locatie worden verzonden. U kunt automatisch een wachtwoordzin genereren of uw eigen minimale 16-teken wachtwoordzin opgeven. Ga door met de wizard totdat de agent is geconfigureerd.
 
     ![Wizard Server registreren](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Zodra de registratie van de Microsoft Azure Backup-Server is voltooid, wordt de installatie en configuratie van SQL Server en de Azure Backup Server-onderdelen voortgezet. Zodra de installatie van het SQL Server onderdeel is voltooid, worden de Azure Backup Server-onderdelen geïnstalleerd.
