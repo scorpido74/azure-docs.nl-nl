@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498222"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798598"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Beheer delegeren in Azure Active Directory
 
@@ -60,7 +60,7 @@ Bepaal de Active Directory taken die worden uitgevoerd door beheerders en hoe de
 Elke taak moet worden geëvalueerd voor frequentie, urgentie en moeilijkheids graad. Deze criteria zijn een belang rijke aspecten van de taak definitie, omdat ze bepalen of een machtiging moet worden gedelegeerd:
 
 * Taken die u regel matig uitvoert, een beperkt risico hebben en zijn lastig te volt ooien, zijn uitstekende kandidaten voor delegering.
-* Taken die u zelden onderneemt, maar een grote invloed heeft op de hele organisatie en die hoge vaardigheids niveaus vereisen, moeten zorgvuldig worden overwogen voordat ze worden gedelegeerd. In plaats daarvan kunt u [tijdelijk een account verhogen naar de vereiste rol](../active-directory-privileged-identity-management-configure.md) of de taak opnieuw toewijzen.
+* Taken die u zelden onderneemt, maar een grote invloed heeft op de hele organisatie en die hoge vaardigheids niveaus vereisen, moeten zorgvuldig worden overwogen voordat ze worden gedelegeerd. In plaats daarvan kunt u [tijdelijk een account verhogen naar de vereiste rol](../privileged-identity-management/pim-configure.md) of de taak opnieuw toewijzen.
 
 ## <a name="delegate-app-administration"></a>App-beheer delegeren
 
@@ -110,7 +110,7 @@ Aanvallers die het beheer van geprivilegieerde accounts verkrijgen, kunnen grote
 
 ## <a name="elevate-privilege-temporarily"></a>Bevoegdheid om tijdelijk bevoegdheden uit te breiden
 
-Voor de meeste dagelijkse activiteiten hebben niet alle gebruikers globale beheerders rechten nodig en moeten ze niet allemaal permanent worden toegewezen aan de rol van globale beheerder. Wanneer gebruikers de machtigingen van een globale beheerder nodig hebben, moeten ze de roltoewijzing activeren in azure AD [privileged Identity Management](../active-directory-privileged-identity-management-configure.md) op hun eigen account of een alternatief beheerders account.
+Voor de meeste dagelijkse activiteiten hebben niet alle gebruikers globale beheerders rechten nodig en moeten ze niet allemaal permanent worden toegewezen aan de rol van globale beheerder. Wanneer gebruikers de machtigingen van een globale beheerder nodig hebben, moeten ze de roltoewijzing activeren in azure AD [privileged Identity Management](../privileged-identity-management/pim-configure.md) op hun eigen account of een alternatief beheerders account.
 
 ## <a name="next-steps"></a>Volgende stappen
 

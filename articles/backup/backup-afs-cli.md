@@ -3,18 +3,18 @@ title: Back-ups maken van Azure-bestands shares met Azure CLI
 description: Meer informatie over het gebruik van Azure CLI voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 273c8fadc25ed60ba9fb57ec69bda0b59f155f87
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9afd1e866c85770a8797493c3f89e531e2ef72fc
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514438"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763216"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Back-ups maken van Azure-bestands shares met CLI
 
 De Azure-opdracht regel interface (CLI) biedt een opdracht regel ervaring voor het beheer van Azure-resources. Het is een uitstekend hulp programma voor het maken van aangepaste automatisering om Azure-resources te gebruiken. In dit artikel wordt beschreven hoe u back-ups van Azure-bestands shares maakt met Azure CLI. U kunt deze stappen ook uitvoeren met [Azure PowerShell](./backup-azure-afs-automation.md) of in [Azure Portal](backup-afs.md).
 
-Aan het einde van deze zelf studie leert u hoe u de onderstaande bewerkingen kunt uitvoeren met Azure CLI:
+Aan het einde van deze zelf studie leert u hoe u de bewerkingen hieronder kunt uitvoeren met Azure CLI:
 
 * Een Recovery Services-kluis maken
 * Back-ups voor Azure-bestands shares inschakelen
@@ -24,11 +24,11 @@ Aan het einde van deze zelf studie leert u hoe u de onderstaande bewerkingen kun
 
 Als u de CLI lokaal wilt installeren en gebruiken, moet u Azure CLI versie 2.0.18 of hoger gebruiken. Om de CLI-versie te zoeken `run az --version` . Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-a-recovery-services-vault"></a>Een Recovery Services kluis maken
+## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-Een Recovery service-kluis is een entiteit die u een geconsolideerde weer gave en beheer mogelijkheden biedt voor alle back-upitems. Wanneer de back-uptaak voor een beveiligde resource wordt uitgevoerd, wordt er binnen de Recovery Services-kluis een herstelpunt gemaakt. U kunt vervolgens een van deze herstelpunten gebruiken om gegevens voor dat tijdstip te herstellen.
+Een Recovery Services kluis is een entiteit die u een geconsolideerde weer gave en beheer mogelijkheden biedt voor alle back-upitems. Wanneer de back-uptaak voor een beveiligde resource wordt uitgevoerd, wordt er binnen de Recovery Services-kluis een herstelpunt gemaakt. U kunt vervolgens een van deze herstelpunten gebruiken om gegevens voor dat tijdstip te herstellen.
 
-Voer de volgende stappen uit om een Recovery Services-kluis te maken:
+Volg deze stappen om een Recovery Services kluis te maken:
 
 1. Een kluis wordt in een resource groep geplaatst. Als u geen bestaande resource groep hebt, maakt u een nieuwe met [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) . In deze zelf studie maken we de nieuwe resource groep *Azure files* in de regio VS-Oost.
 
@@ -44,7 +44,7 @@ Voer de volgende stappen uit om een Recovery Services-kluis te maken:
 
 1. Gebruik de [AZ backup-kluis Create](/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) cmdlet om de kluis te maken. Geef dezelfde locatie op als de kluis die voor de resource groep is gebruikt.
 
-    In het volgende voor beeld wordt een Recovery Services-kluis gemaakt met de naam *azurefilesvault* in de regio VS-Oost.
+    In het volgende voor beeld wordt een Recovery Services kluis gemaakt met de naam *azurefilesvault* in de regio VS-Oost.
 
     ```azurecli-interactive
     az backup vault create --resource-group azurefiles --name azurefilesvault --location eastus --output table

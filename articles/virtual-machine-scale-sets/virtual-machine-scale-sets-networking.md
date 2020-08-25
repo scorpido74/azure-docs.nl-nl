@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837156"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783719"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -43,28 +43,7 @@ Versneld netwerken in Azure verbetert de prestaties van het netwerk door het ins
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Virtuele-machine schaal sets van Azure met Azure Load Balancer
-
-Wanneer u werkt met schaal sets voor virtuele machines en load balancer, moeten de volgende items worden overwogen:
-
-* **Meerdere virtuele-machine schaal sets kunnen niet dezelfde Load Balancer gebruiken**.
-* **Poort door sturen en binnenkomende NAT-regels**:
-  * Elke schaalset voor virtuele machines moet een binnenkomende NAT-regel hebben.
-  * Nadat de schaalset is gemaakt, kan de backend-poort niet worden gewijzigd voor een taakverdelings regel die wordt gebruikt door een status test van de load balancer. Als u de poort wilt wijzigen, kunt u de status test verwijderen door de schaalset voor virtuele Azure-machines bij te werken, de poort bij te werken en de status test vervolgens opnieuw te configureren.
-  * Wanneer u de schaalset voor virtuele machines gebruikt in de back-endadresgroep van de load balancer worden de standaard regels voor binnenkomend NAT automatisch gemaakt.
-* **Binnenkomende NAT-groep**:
-  * De binnenkomende NAT-pool is een verzameling van binnenkomende NAT-regels. Eén binnenkomende NAT-pool kan geen meerdere virtuele-machine schaal sets ondersteunen.
-* Taakverdelings **regels**:
-  * Wanneer u de schaalset voor virtuele machines in de back-endadresgroep van de load balancer gebruikt, wordt de standaard regel voor taak verdeling automatisch gemaakt.
-* **Uitgaande regels**:
-  *  Als u een uitgaande regel wilt maken voor een back-end-groep waarnaar al wordt verwezen door een taakverdelings regel, moet u eerst **"impliciete uitgaande regels maken"** als **Nee** in de portal markeren wanneer de regel voor binnenkomende taak verdeling wordt gemaakt.
-
-  :::image type="content" source="./media/vmsslb.png" alt-text="Taak verdelings regel maken" border="true":::
-
-De volgende methoden kunnen worden gebruikt voor het implementeren van een schaalset voor virtuele machines met een bestaande Azure-load balancer.
-
-* [Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van de Azure Portal](../load-balancer/configure-vm-scale-set-portal.md).
-* [Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van Azure PowerShell](../load-balancer/configure-vm-scale-set-powershell.md).
-* [Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van de Azure cli](../load-balancer/configure-vm-scale-set-cli.md).
+Zie [Azure Load Balancer en virtual machine Scale sets](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) voor meer informatie over het configureren van uw Standard Load Balancer met Virtual Machine Scale sets op basis van uw scenario.
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Een schaalset maken die verwijst naar een toepassingsgateway
 Om een schaalset te maken die gebruikmaakt van een toepassingsgateway, verwijst u naar de back-endadresgroep van de toepassingsgateway in de sectie ipConfigurations van uw schaalset zoals in deze ARM-sjabloonconfiguratie:

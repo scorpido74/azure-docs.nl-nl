@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 8519daffd8ee0ad6c12be2f40fd8030caaaf34c8
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 1c9e40738d70b6fbb9fed267a6a047d8330023b7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724974"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749286"
 ---
 # <a name="business-card-concepts"></a>Concepten van visite kaartjes
 
@@ -69,6 +69,8 @@ De tweede stap bestaat uit het aanroepen van de [resultaat bewerking analyse van
 | |  | geslaagd: de analyse bewerking is voltooid. |
 
 Wanneer het veld **status** de waarde **geslaagd** heeft, bevat het JSON-antwoord de resultaten van de kaart en tekst herkenning. Het resultaat van het visite kaartje is ingedeeld als een woorden lijst met benoemde veld waarden, waarbij elke waarde de geëxtraheerde tekst, genormaliseerde waarde, het begrenzingsvak, betrouw baarheid en bijbehorende woord elementen bevat. Het resultaat van de tekst herkenning is ingedeeld als een hiërarchie van lijnen en woorden, met tekst, selectie kader en betrouwbaarheids informatie.
+
+![Contoso smample-resultaten](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Voor beeld van JSON-uitvoer
 
@@ -374,7 +376,7 @@ Zie het volgende voor beeld van een geslaagde JSON-reactie: het knoop punt ' rea
 }
 ```
 
-Volg de Snelstartgids voor het extra heren van [gegevens van visite kaartjes](./QuickStarts/python-business-cards.md) voor gegevens extractie met python en de rest API.
+Volg de Snelstartgids voor het [extra heren van gegevens van visite kaartjes](./QuickStarts/python-business-cards.md) voor het implementeren van gegevens extractie met behulp van python en de rest API.
 
 ## <a name="customer-scenarios"></a>Klant Scenario's  
 

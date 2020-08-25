@@ -1,16 +1,16 @@
 ---
 title: 'Concepten: identiteit en toegang'
-description: Meer informatie over de identiteits-en toegangs concepten van de Azure VMware-oplossing (AVS)
+description: Meer informatie over de identiteits-en toegangs concepten van de Azure VMware-oplossing
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82740952"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750583"
 ---
-# <a name="azure-vmware-solution-avs-identity-concepts"></a>Azure VMware-oplossing (AVS)-identiteits concepten
+# <a name="azure-vmware-solution-identity-concepts"></a>Concepten van Azure VMware-oplossings identiteiten
 
 Een vCenter-Server en NSX-T-beheer worden ingericht wanneer een privécloud wordt geïmplementeerd. U gebruikt vCenter voor het beheren van werk belastingen van virtuele machines en NSX-T-beheer voor het uitbreiden van het software-gedefinieerd netwerk van de privécloud.
 

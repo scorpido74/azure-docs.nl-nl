@@ -2,13 +2,13 @@
 title: Definitie van het app-schema
 description: De LUIS-app wordt weer gegeven in de `.json` of `.lu` en bevat alle intenties, entiteiten, voor beelden van uitingen, functies en instellingen.
 ms.topic: reference
-ms.date: 05/05/2020
-ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 08/22/2020
+ms.openlocfilehash: 816a6c50129f37a55ab3dba72319358e832a6b8b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684359"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756785"
 ---
 # <a name="app-schema-definition"></a>Definitie van het app-schema
 
@@ -55,12 +55,30 @@ Wanneer u de app importeert en exporteert, kiest u `.json` of `.lu` .
   "tokenizerVersion": "1.0.0",
   "patternAnyEntities": [],
   "regex_entities": [],
-  "phraselists": [],
+  "phraselists": [
+  ],
   "regex_features": [],
   "patterns": [],
   "settings": []
 }
 ```
+
+| ElementName                  | Opmerking                              |
+|--------------------------|--------------------------------------|
+| "hiërarchische": [],     | Afgeschaft, gebruik [machine learning-entiteiten](luis-concept-entity-types.md).   |
+| "samen stellingen": [],        | Afgeschaft, gebruik [machine learning-entiteiten](luis-concept-entity-types.md). [Samengestelde entiteits](reference-entity-composite.md) verwijzing. |
+| "closedLists": [],       | [Lijst entiteiten](reference-entity-list.md) verwijzing, voornamelijk gebruikt als functies voor entiteiten.    |
+| "versionId": "0,1",      | Versie van een LUIS-app.|
+| "naam": "voor beeld-app",   | De naam van de LUIS-app. |
+| desc: "",              | Optionele beschrijving van de LUIS-app.  |
+| "cultuur": "en-US",      | De [taal](luis-language-support.md) van de app heeft betrekking op onderliggende functies, zoals vooraf ontwikkelde entiteiten, machine learning en tokenizer.  |
+| "tokenizerVersion": "1.0.0", | [Tokenizer](luis-language-support.md#tokenization)  |
+| "patternAnyEntities": [],   | [Pattern.any-entiteit](reference-entity-pattern-any.md)    |
+| "regex_entities": [],    |  [Een entiteit in de vorm van een reguliere expressie](reference-entity-regular-expression.md)   |
+| "phraselists": [],       |  [Woordgroepen lijsten (functie)](luis-concept-feature.md#create-a-phrase-list-for-a-concept)   |
+| "regex_features": [],    |  Afgeschaft, gebruik [machine learning-entiteiten](luis-concept-entity-types.md). |
+| "patronen": [],          |  [Patronen verbeteren de nauw keurigheid](luis-concept-patterns.md) van de voor spelling met de syntaxis van het [patroon](reference-pattern-syntax.md)   |
+| "instellingen": []           | [App-instellingen](luis-reference-application-settings.md)|
 
 ## <a name="version-6x"></a>Versie 6. x
 

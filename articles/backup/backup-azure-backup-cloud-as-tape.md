@@ -3,12 +3,12 @@ title: De tape-infra structuur vervangen
 description: Meer informatie over het Azure Backup van tape-achtige semantiek waarmee u back-ups kunt maken en gegevens kunt herstellen in azure
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 71bfa86611b3a63fa6a28f60f80608b394cab5a3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4174868d391eda70ce4921deee63b8bacf672b4c
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514183"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757231"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Uw lange termijn opslag verplaatsen van tape naar de Azure-Cloud
 
@@ -64,7 +64,7 @@ Het totale aantal herstel punten is 56.
 
 Door te klikken op **wijzigen** in het voor gaande scherm, hebben klanten nog meer flexibiliteit bij het opgeven van Bewaar schema's.
 
-![Wijzigen](./media/backup-azure-backup-cloud-as-tape/modify.png)
+![Beleids venster wijzigen](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

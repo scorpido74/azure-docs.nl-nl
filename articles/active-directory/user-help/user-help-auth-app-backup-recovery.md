@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415980"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798989"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Back-up en herstel van account referenties met behulp van de app Microsoft Authenticator
 
@@ -100,7 +100,7 @@ Voor persoonlijke micro soft-accounts kunt u uw identiteit bewijzen door uw wach
     :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Verificator presenteert een eenmalig wacht woord als een verificatie code" border="true":::
 
 >[!NOTE]
->Voor meer informatie over QR-codes en hoe u er een kunt krijgen, raadpleegt u aan [de slag met de Microsoft Authenticator-app](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) of [beveiligings gegevens instellen voor het gebruik van een verificator-app](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app), op basis van het feit of uw beheerder beveiligings gegevens heeft ingeschakeld.
+>Voor meer informatie over QR-codes en hoe u er een kunt krijgen, raadpleegt u aan [de slag met de Microsoft Authenticator-app](./user-help-auth-app-download-install.md) of [beveiligings gegevens instellen voor het gebruik van een verificator-app](./security-info-setup-auth-app.md), op basis van het feit of uw beheerder beveiligings gegevens heeft ingeschakeld.
 >
 >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of de wilt toestaan foto's te maken en video op te nemen (Android). U moet **Toestaan** selecteren, zodat de Authenticator-app toegang heeft tot uw camera om in de volgende stap een foto te maken van de QR-code. Als u de app geen cameratoegang geeft, kunt u de Authenticator-app wel installeren, maar moet u de codegegevens handmatig toevoegen. Zie [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md) voor informatie over het handmatig toevoegen van de code.
 
@@ -130,4 +130,4 @@ Nu u een back-up hebt gemaakt en uw account referenties hebt hersteld naar uw ni
 
 - [Veelgestelde vragen over Microsoft Authenticator-app](user-help-auth-app-faq.md)
 
-- [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)
+- [Multi-Factor Authentication](/azure/multi-factor-authentication/)

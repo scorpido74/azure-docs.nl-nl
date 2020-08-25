@@ -13,12 +13,12 @@ ms.date: 01/04/2019
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 68d7b06aa6473a99422d8cfb51f6e3a465933a0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b59ebe0bdab66a5ce6bdb1eefe6d9ae4b47bba0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747393"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799397"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Uw persoonlijke apparaat registreren op het netwerk van uw organisatie
 Registreer uw persoonlijke apparaat (meestal een telefoon of Tablet) op het netwerk van uw organisatie. Nadat het apparaat is geregistreerd, heeft het toegang tot de beperkte resources van uw organisatie.
@@ -31,9 +31,9 @@ Wanneer u uw apparaat registreert op het netwerk van uw organisatie, zullen de v
 
 - Windows registreert uw apparaat in het netwerk van uw organisatie.
 
-- Afhankelijk van de keuzes van uw organisatie wordt u mogelijk gevraagd om verificatie in twee stappen in te stellen met behulp van [multi-factor Authentication](multi-factor-authentication-end-user-first-time.md) of [beveiligings gegevens](user-help-security-info-overview.md).
+- Afhankelijk van de keuzes van uw organisatie wordt u mogelijk gevraagd om verificatie in twee stappen in te stellen met behulp van [multi-factor Authentication](multi-factor-authentication-end-user-first-time.md) of [beveiligings gegevens](./security-info-setup-signin.md).
 
-- U kunt eventueel, op basis van de keuzes van uw organisatie, automatisch worden inge schreven bij Mobile Device Management, zoals Microsoft Intune. Zie [uw apparaat inschrijven bij intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)voor meer informatie over het inschrijven van Microsoft intune.
+- U kunt eventueel, op basis van de keuzes van uw organisatie, automatisch worden inge schreven bij Mobile Device Management, zoals Microsoft Intune. Zie [uw apparaat inschrijven bij intune](/intune-user-help/enroll-your-device-in-intune-all)voor meer informatie over het inschrijven van Microsoft intune.
 
 - U gaat door met de gebruikers naam en het wacht woord voor uw werk-of school account.
 
@@ -70,6 +70,3 @@ U kunt ervoor zorgen dat u bent geregistreerd door te kijken naar uw instellinge
 Nadat u uw persoonlijke apparaat hebt geregistreerd bij het netwerk van uw organisatie, kunt u toegang krijgen tot de meeste resources.
 
 - Als uw organisatie u wil toevoegen aan uw werk apparaat, raadpleegt u [uw werk apparaat toevoegen aan het netwerk van uw organisatie](user-help-join-device-on-network.md).
-
-
-

@@ -3,12 +3,12 @@ title: Offline back-up met Azure Data Box voor DPM en MABS
 description: U kunt Azure Data Box gebruiken om de eerste back-upgegevens offline van DPM en MABS te maken.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 8b585dc46eb2bdd54e48950ca861f0edc8f0a7ed
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186949"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762450"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline seeding met behulp van Azure Data Box voor DPM en MABS (preview)
 
@@ -149,7 +149,7 @@ Geef een alternatieve bron op: *Wim: D: \Sources\Install.Wim: 4*
           -Azure. Storage       *4.6.1*<br>
      >  - De Azure AD-toepassing is geregistreerd *als \<object GUID of the user> AzureOfflineBackup_*.
 
-13. Selecteer de juiste volg orde voor data vakken waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Next**.
+13. Selecteer de juiste volg orde voor data vakken waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Volgende**.
 
     ![Selecteer de databox](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -165,7 +165,7 @@ Geef een alternatieve bron op: *Wim: D: \Sources\Install.Wim: 4*
     > Als het pad van de schijf `\\mydomain\myserver\disk1\` en *Disk1* bijvoorbeeld een map bevat met de naam *PageBlob*, is het pad dat moet worden gegeven in de wizard DPM/MABS server `\\mydomain\myserver\disk1\` .
     > Als u [een Azure Data Box 100 TB-apparaat hebt ingesteld](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box), geeft u het volgende op als het netwerkpad naar het apparaat `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
 
-15. Selecteer **Next**. Controleer uw instellingen op de pagina **samen vatting** en selecteer **groep maken**.
+15. Selecteer **Volgende**. Controleer uw instellingen op de pagina **samen vatting** en selecteer **groep maken**.
 
     ![Databox detecteren](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 
@@ -243,7 +243,7 @@ U kunt dit probleem oplossen door de volgende stappen uit te voeren en de beleid
 Voer de volgende acties uit vanaf de DPM-MABS-server die u wilt configureren voor offline back-ups:
 
 1. Open het tabblad **computer certificaat toepassing beheren**  >  **Personal** en zoek naar het certificaat met de naam `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
-2. Selecteer het certificaat dat hierboven wordt vermeld, klik met de rechter muisknop op **alle taken** en **Exporteer** zonder persoonlijke sleutel in de. CER-indeling.
+2. Selecteer het certificaat hierboven, klik met de rechter muisknop op **alle taken** en **Exporteer** zonder persoonlijke sleutel, in de. CER-indeling.
 3. Ga naar de Azure offline back-uptoepassing die wordt vermeld in **punt 2**. Upload het certificaat dat u in de bovenstaande stap hebt geëxporteerd in de sleutel **instellingen**voor het uploaden van de  >  **Keys**  >  **open bare sleutel** .
 
    ![Open bare sleutels uploaden](./media/offline-backup-azure-data-box-dpm-mabs/upload-public-keys.png)
@@ -260,7 +260,7 @@ Voer de volgende acties uit vanaf de DPM-MABS-server die u wilt configureren voo
 6. Klik met de rechter muisknop op de teken reeks die u in de bovenstaande stap hebt toegevoegd en selecteer **wijzigen**. Geef in de waarde de vinger afdruk op van het certificaat dat u in **punt 2** hebt geëxporteerd en selecteer **OK**.
 7. Als u de waarde van de vinger afdruk wilt ophalen, dubbelklikt u op het certificaat en selecteert u vervolgens **Details**  en schuift u totdat het veld vinger afdruk wordt weer geven. Selecteer **vinger afdruk** en kopieer de waarde.
 
-   ![Certificaat](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
+   ![Vingerafdruk waarde](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

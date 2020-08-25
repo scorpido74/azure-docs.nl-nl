@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: e5ad882f172007e2563f832ec8eb61145cd0b36a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744495"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799193"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>App-wacht woorden maken op de pagina beveiligings gegevens (preview)
 
@@ -84,4 +84,4 @@ Als u een app die een app-wacht woord vereist, niet meer nodig hebt, kunt u het 
 
 ## <a name="for-more-information"></a>Voor meer informatie
 
-- Voor meer informatie over de pagina met **beveiligings gegevens** en hoe u deze kunt instellen, raadpleegt u [overzicht van beveiligings gegevens](user-help-security-info-overview.md)
+- Voor meer informatie over de pagina met **beveiligings gegevens** en hoe u deze kunt instellen, raadpleegt u [overzicht van beveiligings gegevens](./security-info-setup-signin.md)

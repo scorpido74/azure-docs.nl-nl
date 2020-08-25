@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: c7e2b522d475a49f694a8cb57bf57f62900948b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42ced6632ebfa56af8fe13a02f531b9835e13df3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743195"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799380"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Meld u aan met verificatie in twee stappen of beveiligings gegevens
 
@@ -90,9 +90,9 @@ Als u om de een of andere reden uw primaire aanmeldings methode niet kunt gebrui
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over beveiligings informatie vindt u in het [overzichts artikel Security info (preview)](user-help-security-info-overview.md) .
+- Meer informatie over beveiligings informatie vindt u in het [overzichts artikel Security info (preview)](./security-info-setup-signin.md) .
 
-- Meer informatie over verificatie in twee stappen vindt u in het artikel [verificatie overzicht in twee stappen](user-help-two-step-verification-overview.md) .
+- Meer informatie over verificatie in twee stappen vindt u in het artikel [verificatie overzicht in twee stappen](./multi-factor-authentication-end-user-first-time.md) .
 
 - Uw wacht woord opnieuw instellen als u het kwijtraakt of vergeet, vanuit de portal voor het [opnieuw instellen](https://passwordreset.microsoftonline.com/) van het wacht woord
 

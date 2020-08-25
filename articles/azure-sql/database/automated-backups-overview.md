@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921942"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756721"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -36,14 +36,12 @@ Wanneer u een Data Base herstelt, bepaalt de service welke volledige, differenti
 
 ### <a name="backup-storage-redundancy"></a>Opslag redundantie van back-ups
 
-> [!IMPORTANT]
-> Configureer bare opslag redundantie voor back-ups is momenteel alleen beschikbaar voor SQL Managed instance en kan alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
+SQL Database en SQL Managed instance slaan gegevens standaard op in geo-redundante (RA-GRS) [opslag-blobs](../../storage/common/storage-redundancy.md) die worden gerepliceerd naar een [gekoppelde regio](../../best-practices-availability-paired-regions.md). Zo kunt u zich beschermen tegen storingen die van invloed zijn op de back-upopslag in de primaire regio en kunt u uw server herstellen naar een andere regio in het geval van een ramp. 
 
-De optie voor het configureren van redundantie opslag voor back-ups biedt de flexibiliteit om te kiezen tussen lokaal redundante (LRS), zone redundante (ZRS) of geografisch redundante (RA-GRS) [opslag-blobs](../../storage/common/storage-redundancy.md). Opslag redundantie mechanismen slaan meerdere kopieën van uw gegevens op, zodat deze beschermd zijn tegen geplande en niet-geplande gebeurtenissen, waaronder tijdelijke hardwarestoringen, netwerk-of energie storingen of enorme natuur rampen. Deze functie is momenteel alleen beschikbaar voor SQL Managed instance.
+Met SQL Managed instance wordt de mogelijkheid geboden om de opslag redundantie te wijzigen in opslag-blobs met lokaal redundante (LRS) of zone redundante (ZRS) om ervoor te zorgen dat uw gegevens binnen dezelfde regio blijven waar uw beheerde exemplaar wordt geïmplementeerd. Opslag redundantie mechanismen slaan meerdere kopieën van uw gegevens op, zodat deze beschermd zijn tegen geplande en niet-geplande gebeurtenissen, waaronder tijdelijke hardwarestoringen, netwerk-of energie storingen of enorme natuur rampen. 
 
-RA-GRS-opslag-blobs worden gerepliceerd naar een [gekoppeld gebied](../../best-practices-availability-paired-regions.md) om te beschermen tegen storingen die van invloed zijn op de back-upopslag in de primaire regio en u in staat stellen om uw server te herstellen naar een andere regio in het geval van een ramp. 
+De optie voor het configureren van redundantie opslag voor back-ups biedt de flexibiliteit om te kiezen tussen LRS, ZRS of RA-GRS opslag-blobs voor een SQL Managed instance. De redundantie van back-upopslag configureren tijdens het proces voor het maken van een beheerd exemplaar als de resource is ingericht, is het niet meer mogelijk om de opslag redundantie te wijzigen. (Zone-redundante opslag (ZRS) is momenteel alleen beschikbaar in [bepaalde regio's](../../storage/common/storage-redundancy.md#zone-redundant-storage)).
 
-LRS-en ZRS-opslag-blobs zorgen ervoor dat uw gegevens binnen dezelfde regio blijven waar uw SQL Database of SQL Managed instance wordt geïmplementeerd. Zone-redundante opslag (ZRS) is momenteel alleen beschikbaar in [bepaalde regio's](../../storage/common/storage-redundancy.md#zone-redundant-storage).
 
 > [!IMPORTANT]
 > In het SQL Managed instance wordt de geconfigureerde back-upredundantie toegepast op de instellingen voor retentie van back-ups op korte termijn die worden gebruikt voor herstel van een punt in tijd (PITR) en back-ups voor lange termijn retentie die worden gebruikt voor langdurige back-ups (LTR).
@@ -116,7 +114,7 @@ Voor het verbruik van back-upopslag tot de maximale gegevens grootte voor een Da
 - Gebruik TempDB in plaats van permanente tabellen in uw toepassings logica om tijdelijke resultaten en/of tijdelijke gegevens op te slaan.
 - Gebruik waar mogelijk lokaal redundante back-upopslag (bijvoorbeeld ontwikkel-en test omgevingen)
 
-## <a name="backup-retention"></a>Retentie van back-ups
+## <a name="backup-retention"></a>Back-upretentie
 
 Voor alle nieuwe, herstelde en gekopieerde data bases Azure SQL Database en Azure SQL Managed instance voldoende back-ups behouden zodat PITR in de afgelopen 7 dagen standaard is toegestaan. Met uitzonde ring van grootschalige-data bases, kunt u de [Bewaar periode voor back-ups wijzigen](#change-the-pitr-backup-retention-period) per actieve data base in het bereik van 1-35 dagen. Zoals beschreven in [back-upopslag](#backup-storage-consumption), is het mogelijk dat back-ups die zijn opgeslagen om PITR in te scha kelen, ouder zijn dan de retentie periode. Alleen voor Azure SQL Managed instance is het mogelijk om de retentie frequentie van PITR-back-ups in te stellen wanneer een Data Base binnen het bereik van 0-35 dagen is verwijderd. 
 
@@ -194,7 +192,7 @@ Voeg een filter toe voor **service naam**en selecteer vervolgens **SQL data base
 
 ## <a name="encrypted-backups"></a>Versleutelde back-ups
 
-Als uw data base is versleuteld met TDE, worden back-ups automatisch versleuteld op rest, waaronder LTR-back-ups. Alle nieuwe data bases in Azure SQL worden geconfigureerd met TDE standaard ingeschakeld. Zie [transparent Data Encryption met SQL Database & Managed instance](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie over TDe.
+Als uw data base is versleuteld met TDE, worden back-ups automatisch versleuteld op rest, waaronder LTR-back-ups. Alle nieuwe data bases in Azure SQL worden geconfigureerd met TDE standaard ingeschakeld. Zie  [transparent Data Encryption met SQL Database & Managed instance](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie over TDe.
 
 ## <a name="backup-integrity"></a>Back-upintegriteit
 

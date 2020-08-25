@@ -3,12 +3,12 @@ title: Live video-analyses op IoT Edge quota's-Azure
 description: In dit artikel wordt de analyse van live video op IoT Edge quota's en beperkingen beschreven.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091807"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750221"
 ---
 # <a name="quotas-and-limitations"></a>Quota en beperkingen
 
@@ -36,21 +36,23 @@ Met de preview-versie zijn er beperkingen op verschillende knoop punten die kunn
    * Er is slechts één RTSP-bron per grafiek topologie toegestaan.
 * Processor voor frame frequentie filter
    * Moet direct worden downstream van de RTSP-bron-of bewegings detectie processor.
-   * Kan niet worden gebruikt downstream van een HTTP-extensie processor.
+   * Kan niet worden gebruikt als downstream van een HTTP-of gRPC-extensie processor.
    * Kan niet upstream van een bewegings detectie processor zijn.
 * HTTP-extensie processor
+   * Er kan Maxi maal één processor per grafiek topologie zijn.
+* gRPC-extensie processor
    * Er kan Maxi maal één processor per grafiek topologie zijn.
 * Bewegings detectie processor
    * Moet direct worden downstream van de RTSP-bron.
    * Er kan Maxi maal één processor per grafiek topologie zijn.
-   * Kan niet worden gebruikt downstream van een HTTP-extensie processor.
+   * Kan niet worden gebruikt als downstream van een HTTP-of gRPC-extensie processor.
 * Signal Gate-processor
    * Moet direct worden downstream van de RTSP-bron.
 * Asset Sink 
    * Moet direct worden downstream van de RTSP-bron-of signaal Gate-processor.
 * Bestands Sink
    * Moet direct worden downstream van de Signal Gate-processor.
-   * Kan niet direct voorbij de HTTP-uitbreidings processor of de bewegings detectie processor
+   * Kan niet direct worden downstream van een HTTP-of gRPC-extensie processor of een bewegings detectie processor
 * IoT Hub Sink
    * Kan niet direct worden downstream van een IoT Hub bron.
 

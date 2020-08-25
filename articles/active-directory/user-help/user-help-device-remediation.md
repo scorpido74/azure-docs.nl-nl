@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: b76e84f6ae2449347604ab823fde5b74d5c68f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740999"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799414"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Mogelijke oplossingen voor het fout bericht ' u kunt geen van deze hier ophalen '
 
@@ -68,6 +68,6 @@ Als uw apparaat niet is toegevoegd aan het netwerk van uw organisatie, kunt u ee
 - **Registreer uw persoonlijke apparaat voor werk.** Registreer uw persoonlijke apparaat, meestal een telefoon of Tablet, op het netwerk van uw organisatie. Nadat het apparaat is geregistreerd, kan het toegang krijgen tot de beperkte bronnen van uw organisatie. Zie [uw persoonlijke apparaat registreren op het netwerk van uw organisatie](user-help-register-device-on-network.md)voor meer informatie en stapsgewijze instructies.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Wat is de MyApps-Portal?](active-directory-saas-access-panel-introduction.md)
+- [Wat is de MyApps-Portal?](./my-apps-portal-end-user-access.md)
 
 - [Aanmelden met uw telefoon, niet met uw wachtwoord](user-help-auth-app-sign-in.md)

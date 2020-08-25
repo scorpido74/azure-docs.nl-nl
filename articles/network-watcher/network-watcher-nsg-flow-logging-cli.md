@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 8ecdcf6f44409f3b72d4a8040be348d4a6f9a863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c62fbe1621e396ab938327d5159ed8ca8fb84fbf
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738189"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756857"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Stroom logboeken voor netwerk beveiligings groepen configureren met Azure CLI
 
@@ -44,9 +44,9 @@ az provider register --namespace Microsoft.Insights
 De opdracht om stroom Logboeken in te scha kelen wordt weer gegeven in het volgende voor beeld:
 
 ```azurecli
-az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
+az network watcher flow-log create --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName --location location
 # Configure 
-az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName  --format JSON --log-version 2
+az network watcher flow-log create --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName --location location --format JSON --log-version 2
 ```
 
 Voor het opslag account dat u opgeeft, kunnen geen netwerk regels worden geconfigureerd die de netwerk toegang beperken tot alleen micro soft-Services of specifieke virtuele netwerken. Het opslag account kan zich in hetzelfde of een ander Azure-abonnement bevindt dan de NSG waarvoor u het stroom logboek inschakelt. Als u verschillende abonnementen gebruikt, moeten deze beide zijn gekoppeld aan dezelfde Azure Active Directory Tenant. Het account dat u voor elk abonnement gebruikt, moet de [benodigde machtigingen](required-rbac-permissions.md)hebben. 
@@ -63,7 +63,7 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 ## <a name="download-a-flow-log"></a>Een stroom logboek downloaden
 
-De opslag locatie van een stroom logboek wordt gedefinieerd bij het maken. Een handig hulp middel om toegang te krijgen tot deze stroom logboeken die zijn opgeslagen in een opslag account, is Microsoft Azure Storage Explorer, dat hier kan worden gedownload:https://storageexplorer.com/
+De opslag locatie van een stroom logboek wordt gedefinieerd bij het maken. Een handig hulp middel om toegang te krijgen tot deze stroom logboeken die zijn opgeslagen in een opslag account, is Microsoft Azure Storage Explorer, dat hier kan worden gedownload:  https://storageexplorer.com/
 
 Als er een opslag account is opgegeven, worden flow-logboek bestanden opgeslagen in een opslag account op de volgende locatie:
 

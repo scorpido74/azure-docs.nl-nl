@@ -3,14 +3,14 @@ title: Diagnostische gegevens in Durable Functions-Azure
 description: Meer informatie over het vaststellen van problemen met de Durable Functions extensie voor Azure Functions.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: fcd92f1f134b79d23da6848cbb04894b242fcec0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae721d2a8df981ecf9ab8e8b04d0e0d287d523cd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081811"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750707"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostische gegevens in Durable Functions in Azure
 
@@ -28,7 +28,7 @@ Elke levens cyclus gebeurtenis van een indelings instantie zorgt ervoor dat een 
 
 * **hubName**: de naam van de taak hub waarin uw Orchestrations worden uitgevoerd.
 * **AppName**: de naam van de functie-app. Dit veld is handig wanneer u meerdere functie-apps hebt die hetzelfde Application Insights exemplaar delen.
-* naam **sleuf**: de [implementatie site](../functions-deployment-slots.md) waarin de huidige functie-app wordt uitgevoerd. Dit veld is handig wanneer u implementatie sleuven gebruikt voor het versie gebruik van uw Orchestrations.
+* naam **sleuf**: de [implementatie site](../functions-deployment-slots.md) waarin de huidige functie-app wordt uitgevoerd. Dit veld is handig wanneer u implementatie sleuven gebruikt voor het versie nummer van uw Orchestrations.
 * Rolnaam: de naam van **de functie Orchestrator**of de activiteit.
 * **functionType**: het type functie, zoals **Orchestrator** of **Activity**.
 * **instanceId**: de unieke id van het Orchestration-exemplaar.
@@ -88,7 +88,7 @@ Als u de uitgebreide Orchestration replay-gebeurtenissen wilt laten verzenden, `
 
 #### <a name="functions-20"></a>Functies 2,0
 
-```javascript
+```json
 {
     "extensions": {
         "durableTask": {
@@ -103,9 +103,9 @@ Als u de uitgebreide Orchestration replay-gebeurtenissen wilt laten verzenden, `
 
 ### <a name="single-instance-query"></a>Query met één exemplaar
 
-Met de volgende query worden historische tracking gegevens weer gegeven voor één exemplaar van de functie Orchestration van de [Hello-reeks](durable-functions-sequence.md) . Het is geschreven met behulp van de [Application Insights query language (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Hiermee wordt de uitvoering van herhalingen gefilterd, zodat alleen het *logische* uitvoerings traject wordt weer gegeven. Gebeurtenissen kunnen worden gerangschikt door te sorteren op `timestamp` en `sequenceNumber` zoals wordt weer gegeven in de onderstaande query:
+Met de volgende query worden historische tracking gegevens weer gegeven voor één exemplaar van de functie Orchestration van de [Hello-reeks](durable-functions-sequence.md) . Het is geschreven met behulp van de [Kusto-query taal](/azure/data-explorer/kusto/query/). Hiermee wordt de uitvoering van herhalingen gefilterd, zodat alleen het *logische* uitvoerings traject wordt weer gegeven. Gebeurtenissen kunnen worden gerangschikt door te sorteren op `timestamp` en `sequenceNumber` zoals wordt weer gegeven in de onderstaande query:
 
-```AIQL
+```kusto
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
 let start = datetime(2018-03-25T09:20:00);
 traces
@@ -124,13 +124,13 @@ traces
 
 Het resultaat is een lijst met tracerings gebeurtenissen waarmee het pad van de uitvoering van de indeling wordt weer gegeven, inclusief de activiteit functies die worden besteld door de uitvoerings tijd in oplopende volg orde.
 
-![Application Insights query](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+![Application Insights geordende query voor één exemplaar](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
 
 ### <a name="instance-summary-query"></a>Query voor exemplaar samenvatting
 
 Met de volgende query wordt de status weer gegeven van alle indelings instanties die zijn uitgevoerd in een opgegeven tijds bereik.
 
-```AIQL
+```kusto
 let start = datetime(2017-09-30T04:30:00);
 traces
 | where timestamp > start and timestamp < start + 1h
@@ -148,13 +148,61 @@ traces
 
 Het resultaat is een lijst met exemplaar-Id's en de huidige runtime status.
 
-![Application Insights query](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
+![Application Insights query met één exemplaar](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
-## <a name="logging"></a>Logboekregistratie
+## <a name="durable-task-framework-logging"></a>Duurzame logboek registratie van taak raamwerk
+
+De duurzame extensie logboeken zijn handig voor het bepalen van het gedrag van uw Orchestration Logic. Deze logboeken bevatten echter niet altijd voldoende informatie om problemen met de prestaties van het Framework-niveau en de betrouw baarheid op te sporen. Vanaf **v 2.3.0** van de duurzame uitbrei ding zijn de logboeken die worden gegenereerd door het onderliggende duurzame taak raamwerk (DTFx) ook beschikbaar voor de verzameling.
+
+Bij het bekijken van de logboeken die worden gegenereerd door de DTFx, is het belang rijk te weten dat de DTFx-engine bestaat uit twee onderdelen: de kern Dispatch Engine ( `DurableTask.Core` ) en een van de vele ondersteunde opslag providers (Durable functions `DurableTask.AzureStorage` standaard gebruikt).
+
+* **DurableTask. core**: bevat informatie over de uitvoering van Orchestration en het plannen op laag niveau.
+* **DurableTask. opslag**: bevat informatie met betrekking tot interacties met Azure Storage artefacten, waaronder de interne wacht rijen, blobs en opslag tabellen die worden gebruikt voor het opslaan en ophalen van de interne Orchestrator-status.
+
+U kunt deze logboeken inschakelen door de `logging/logLevel` sectie van dehost.jsvan uw functie-app ** bij** te werken in het bestand. In het volgende voor beeld ziet u hoe u waarschuwings-en fout logboeken inschakelt van zowel `DurableTask.Core` en `DurableTask.AzureStorage` :
+
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "logLevel": {
+      "DurableTask.AzureStorage": "Warning",
+      "DurableTask.Core": "Warning"
+    }
+  }
+}
+```
+
+Als u Application Insights hebt ingeschakeld, worden deze logboeken automatisch toegevoegd aan de `trace` verzameling. U kunt deze op dezelfde manier doorzoeken als andere `trace` Logboeken met behulp van Kusto-query's.
+
+> [!NOTE]
+> Voor productie toepassingen is het raadzaam om `DurableTask.Core` het filter in te scha kelen en `DurableTask.AzureStorage` Logboeken te gebruiken `"Warning"` . Hogere uitgebreide filters, zoals `"Information"` is nuttig voor het oplossen van problemen met prestaties. Deze logboek gebeurtenissen zijn echter zeer groot en kunnen de kosten voor de Application Insights gegevens opslag aanzienlijk verhogen.
+
+De volgende Kusto-query laat zien hoe u een query kunt uitvoeren voor DTFx-Logboeken. Het belangrijkste deel van de query is `where customerDimensions.Category startswith "DurableTask"` omdat de resultaten worden gefilterd op Logboeken in de `DurableTask.Core` en- `DurableTask.AzureStorage` Categorieën.
+
+```kusto
+traces
+| where customDimensions.Category startswith "DurableTask"
+| project
+    timestamp,
+    severityLevel,
+    Category = customDimensions.Category,
+    EventId = customDimensions.EventId,
+    message,
+    customDimensions
+| order by timestamp asc 
+```
+Het resultaat is een set logboeken die zijn geschreven door de duurzame logboek providers van het taak raamwerk.
+
+![DTFx-query resultaten Application Insights](./media/durable-functions-diagnostics/app-insights-dtfx.png)
+
+Voor meer informatie over welke logboek gebeurtenissen beschikbaar zijn, raadpleegt u de [documentatie over de gestructureerde logboek registratie van het duurzame taak raamwerk op github](https://github.com/Azure/durabletask/tree/master/src/DurableTask.Core/Logging#durabletaskcore-logging).
+
+## <a name="app-logging"></a>App-logboek registratie
 
 Het is belang rijk om ervoor te zorgen dat het Orchestrator-gedrag voor het opnieuw afspelen van een logboeken rechtstreeks vanuit een Orchestrator-functie wordt geschreven. Denk bijvoorbeeld aan de volgende Orchestrator-functie:
 
-### <a name="precompiled-c"></a>Precompiled C #
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -172,24 +220,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="c-script"></a>C#-script
-
-```csharp
-public static async Task Run(
-    IDurableOrchestrationContext context,
-    ILogger log)
-{
-    log.LogInformation("Calling F1.");
-    await context.CallActivityAsync("F1");
-    log.LogInformation("Calling F2.");
-    await context.CallActivityAsync("F2");
-    log.LogInformation("Calling F3");
-    await context.CallActivityAsync("F3");
-    log.LogInformation("Done!");
-}
-```
-
-### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -204,6 +235,26 @@ module.exports = df.orchestrator(function*(context){
     context.log("Done!");
 });
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    logging.info("Calling F1.")
+    yield context.call_activity("F1")
+    logging.info("Calling F2.")
+    yield context.call_activity("F2")
+    logging.info("Calling F3.")
+    yield context.call_activity("F3")
+    return None
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
 
 De resulterende logboek gegevens zien er ongeveer uit zoals in de volgende voorbeeld uitvoer:
 
@@ -223,9 +274,9 @@ Done!
 > [!NOTE]
 > Houd er rekening mee dat de logboeken van de claim F1, F2 en F3 worden aangeroepen. deze functies *worden alleen de* eerste keer dat ze worden aangetroffen. Volgende aanroepen die tijdens het herhalen plaatsvinden, worden overgeslagen en de uitvoer wordt opnieuw afgespeeld naar de Orchestrator-logica.
 
-Als u zich alleen wilt aanmelden voor een niet-replay-uitvoering, kunt u een voorwaardelijke expressie schrijven om alleen te registreren als dat zo `IsReplaying` is `false` . Bekijk het bovenstaande voor beeld, maar deze keer met replay controles.
+Als u alleen logboeken met niet-replay-uitvoeringen wilt schrijven, kunt u een voorwaardelijke expressie schrijven om alleen te registreren als de vlag ' wordt opnieuw afspelen ' is `false` . Bekijk het bovenstaande voor beeld, maar deze keer met replay controles.
 
-#### <a name="precompiled-c"></a>Precompiled C #
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -243,40 +294,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="c"></a>C#
-
-```cs
-public static async Task Run(
-    IDurableOrchestrationContext context,
-    ILogger log)
-{
-    if (!context.IsReplaying) log.LogInformation("Calling F1.");
-    await context.CallActivityAsync("F1");
-    if (!context.IsReplaying) log.LogInformation("Calling F2.");
-    await context.CallActivityAsync("F2");
-    if (!context.IsReplaying) log.LogInformation("Calling F3");
-    await context.CallActivityAsync("F3");
-    log.LogInformation("Done!");
-}
-```
-
-#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
-
-```javascript
-const df = require("durable-functions");
-
-module.exports = df.orchestrator(function*(context){
-    if (!context.df.isReplaying) context.log("Calling F1.");
-    yield context.df.callActivity("F1");
-    if (!context.df.isReplaying) context.log("Calling F2.");
-    yield context.df.callActivity("F2");
-    if (!context.df.isReplaying) context.log("Calling F3.");
-    yield context.df.callActivity("F3");
-    context.log("Done!");
-});
-```
-
-Vanaf Durable Functions 2,0 kunnen .NET Orchestrator-functies ook een optie maken `ILogger` waarmee logboek overzichten tijdens het opnieuw afspelen automatisch worden gefilterd. Deze automatische filter bewerking wordt uitgevoerd met behulp van de `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API.
+Vanaf Durable Functions 2,0 kunnen .NET Orchestrator-functies ook een optie maken `ILogger` waarmee logboek overzichten tijdens het opnieuw afspelen automatisch worden gefilterd. Deze automatische filter bewerking wordt uitgevoerd met behulp van de API [IDurableOrchestrationContext. CreateReplaySafeLogger (ILogger)](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.durablecontextextensions.createreplaysafelogger) .
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -295,6 +313,49 @@ public static async Task Run(
 }
 ```
 
+> [!NOTE]
+> De vorige C#-voor beelden zijn voor Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    if (!context.df.isReplaying) context.log("Calling F1.");
+    yield context.df.callActivity("F1");
+    if (!context.df.isReplaying) context.log("Calling F2.");
+    yield context.df.callActivity("F2");
+    if (!context.df.isReplaying) context.log("Calling F3.");
+    yield context.df.callActivity("F3");
+    context.log("Done!");
+});
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    if not context.is_replaying:
+        logging.info("Calling F1.")
+    yield context.call_activity("F1")
+    if not context.is_replaying:
+        logging.info("Calling F2.")
+    yield context.call_activity("F2")
+    if not context.is_replaying:
+        logging.info("Calling F3.")
+    yield context.call_activity("F3")
+    return None
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 Met de eerder genoemde wijzigingen ziet de logboek uitvoer er als volgt uit:
 
 ```txt
@@ -304,14 +365,11 @@ Calling F3.
 Done!
 ```
 
-> [!NOTE]
-> De vorige C#-voor beelden zijn voor Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
-
 ## <a name="custom-status"></a>Aangepaste status
 
-Met de aangepaste indelings status kunt u een aangepaste status waarde instellen voor uw Orchestrator-functie. Deze status wordt weer gegeven via de HTTP-status query-API of de `IDurableOrchestrationClient.GetStatusAsync` API. De aangepaste indelings status maakt uitgebreide bewaking mogelijk voor Orchestrator-functies. De functie code van Orchestrator kan bijvoorbeeld `IDurableOrchestrationContext.SetCustomStatus` aanroepen bevatten om de voortgang voor een langlopende bewerking bij te werken. Een-client, zoals een webpagina of een ander extern systeem, kan vervolgens periodiek query's uitvoeren op de HTTP-status query Api's voor informatie over rijkere voortgang. Hieronder vindt u een voor beeld van het gebruik `IDurableOrchestrationContext.SetCustomStatus` :
+Met de aangepaste indelings status kunt u een aangepaste status waarde instellen voor uw Orchestrator-functie. Deze aangepaste status is vervolgens zichtbaar voor externe clients via de [HTTP-status query-API](durable-functions-http-api.md#get-instance-status) of via taalspecifieke API-aanroepen. De aangepaste indelings status maakt uitgebreide bewaking mogelijk voor Orchestrator-functies. De functie code van Orchestrator kan bijvoorbeeld de API ' aangepaste status instellen ' aanroepen om de voortgang voor een langlopende bewerking bij te werken. Een-client, zoals een webpagina of een ander extern systeem, kan vervolgens periodiek query's uitvoeren op de HTTP-status query Api's voor informatie over rijkere voortgang. Hieronder vindt u voorbeeld code voor het instellen van een aangepaste status waarde in een Orchestrator-functie:
 
-### <a name="precompiled-c"></a>Precompiled C #
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("SetStatusTest")]
@@ -330,7 +388,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 > [!NOTE]
 > Het vorige C#-voor beeld is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -346,10 +404,32 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    # ...do work...
+
+    # update the status of the orchestration with some arbitrary data
+    custom_status = {'completionPercentage': 90.0, 'status': 'Updating database records'}
+    context.set_custom_status(custom_status)
+    # ...do more work...
+
+    return None
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 Terwijl de Orchestration wordt uitgevoerd, kunnen externe clients deze aangepaste status ophalen:
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/instance123
+GET /runtime/webhooks/durabletask/instances/instance123?code=XYZ
 
 ```
 
@@ -379,7 +459,7 @@ Azure Functions ondersteunt functie code voor fout opsporing rechtstreeks en dez
 * **Stoppen en starten**: berichten in duurzame functies blijven behouden tussen sessies voor fout opsporing. Als u de fout opsporing stopt en het lokale hostproces beëindigt terwijl een duurzame functie wordt uitgevoerd, wordt deze functie mogelijk automatisch opnieuw uitgevoerd in een toekomstige foutopsporingssessie. Dit gedrag kan verwarrend zijn wanneer niet wordt verwacht. Het wissen van alle berichten uit de [interne opslag wachtrijen](durable-functions-perf-and-scale.md#internal-queue-triggers) tussen sessies voor fout opsporing is een techniek om dit gedrag te voor komen.
 
 > [!TIP]
-> Als u onderbrekings punten instelt in Orchestrator-functies en u alleen een niet-replay-uitvoering wilt onderbreken, kunt u een voorwaardelijk onderbrekings punt instellen dat alleen als is afgebroken `IsReplaying` `false` .
+> Als u onderbrekings punten instelt in Orchestrator-functies en u alleen een niet-replay-uitvoering wilt onderbreken, kunt u een voorwaardelijk onderbrekings punt instellen dat alleen wordt onderbroken als de waarde ' wordt opnieuw afspelen ' is `false` .
 
 ## <a name="storage"></a>Storage
 

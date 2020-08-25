@@ -150,41 +150,45 @@
       href: concept-ml-pipelines.md
     - name: Gereedheid en beveiliging voor bedrijven
       items:
+        - name: Overzicht van Enterprise-beveiliging
+          displayName: authorization authentication encryption aad azure active directory
+          href: concept-enterprise-security.md
         - name: Beveiligingsbasislijn
           href: security-baseline.md
-        - name: Enterprisebeveiliging en governance
+        - name: Identiteits- en toegangsbeheer
           items:
-            - name: Overzicht van Enterprise-beveiliging
-              displayName: authorization authentication encryption aad azure active directory
-              href: concept-enterprise-security.md
+            - name: Verificatie instellen
+              displayName: 'authentication, auth, oauth'
+              href: how-to-setup-authentication.md
             - name: Gebruikers en rollen beheren
               href: how-to-assign-roles.md
+            - name: Azure AD-identiteit gebruiken in AKS-implementaties
+              href: how-to-use-azure-ad-identity.md
+        - name: Netwerkbeveiliging
+          items:
             - name: Virtuele netwerken gebruiken
               displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: Private Link gebruiken
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: Webservices beveiligen met TLS
-              displayName: ssl
+            - name: Beveiligde webservices configureren
+              displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
+            - name: Firewall configureren
+              href: how-to-access-azureml-behind-firewall.md
+        - name: Gegevensbeveiliging
+          items:
             - name: Tolerantie verhogen
               displayName: 'high availability, disaster recovery'
               href: how-to-high-availability-machine-learning.md
-            - name: Azure AD-identiteit gebruiken in AKS-implementaties
-              href: how-to-use-azure-ad-identity.md
             - name: Opslagtoegangssleutels opnieuw genereren
               href: how-to-change-storage-access-key.md
-            - name: Azure Firewall gebruiken
-              href: how-to-access-azureml-behind-firewall.md
-            - name: Veilige codering
-              href: concept-secure-code-best-practice.md
-              displayName: security threat
-        - name: Verificatie instellen
-          displayName: 'authentication, auth, oauth'
-          href: how-to-setup-authentication.md
         - name: Azure Machine Learning bewaken
           href: monitor-azure-machine-learning.md
+        - name: Veilige codering
+          href: concept-secure-code-best-practice.md
+          displayName: security threat
     - name: Verantwoordelijke ML
       items:
         - name: Overzicht van verantwoordelijke ML

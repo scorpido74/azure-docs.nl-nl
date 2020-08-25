@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190498"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757282"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -121,6 +121,18 @@ Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om 
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
+* **Azure Machine Learning SDK-installatie mislukt met een uitzonde ring: ModuleNotFoundError: geen module met de naam ruamel of ImportError: geen module met de naam ruamel. yaml**
+   
+   Dit probleem wordt ontdekt met de installatie van Azure Machine Learning SDK voor python op de laatste PIP (>20.1.1) in de Conda-basis omgeving voor alle uitgebrachte versies van Azure Machine Learning SDK voor python. Raadpleeg de volgende tijdelijke oplossingen:
+
+    * Vermijd het installeren van python SDK in de Conda-basis omgeving, in plaats daarvan uw Conda-omgeving te maken en SDK te installeren op die zojuist gemaakte gebruikers omgeving. De meest recente PIP moet werken op die nieuwe Conda-omgeving.
+
+    * Voor het maken van installatie kopieën in docker, waar u niet uit de Conda-basis omgeving kunt scha kelen, moet u 20.1.1 in het docker-bestand vast<maken.
+
+    ```Python
+    conda install -c r -y conda python=3.6.2 pip=20.1.1
+    ```
+    
 * **Databricks-fout bij het installeren van pakketten**
 
     Azure Machine Learning SDK-installatie mislukt op Azure Databricks wanneer er meer pakketten zijn geïnstalleerd. Sommige pakketten, zoals `psutil` , kunnen conflicten veroorzaken. Installeer pakketten door de bibliotheek versie te blok keren om installatie fouten te voor komen. Dit probleem heeft betrekking op Databricks en niet op de Azure Machine Learning SDK. Dit probleem kan ook optreden met andere bibliotheken. Voorbeeld:
@@ -214,7 +226,7 @@ Beperkingen en bekende problemen voor gegevens drift-monitors:
 * De monitors van de gegevensset werken alleen voor gegevens sets die 50 rijen of meer bevatten.
 * Kolommen, of functies, worden in de gegevensset geclassificeerd als categorische of numeriek op basis van de voor waarden in de volgende tabel. Als de functie niet aan deze voor waarden voldoet, bijvoorbeeld een kolom van het type teken reeks met de unieke waarden van >100, wordt de functie verwijderd uit onze data drift-algoritme, maar is nog steeds profileeerd. 
 
-    | Onderdeel type | Gegevenstype | Voorwaarde | Beperkingen | 
+    | Onderdeel type | Gegevenstype | Conditie | Beperkingen | 
     | ------------ | --------- | --------- | ----------- |
     | Categorische gegevens | teken reeks, BOOL, int, float | Het aantal unieke waarden in de functie is kleiner dan 100 en minder dan 5% van het aantal rijen. | NULL wordt beschouwd als een eigen categorie. | 
     | Cijfer | int, float | De waarden in de functie zijn van een numeriek gegevens type en voldoen niet aan de voor waarde voor een categorische-functie. | De functie is verwijderd als >15% van de waarden null zijn. | 
@@ -237,7 +249,7 @@ Beperkingen en bekende problemen voor gegevens drift-monitors:
    compute = ws.compute_targets.get("xxx")
    ```
 
-## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Designer
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-ontwerpprogramma
 
 * **Lange Compute-voorbereidings tijd:**
 

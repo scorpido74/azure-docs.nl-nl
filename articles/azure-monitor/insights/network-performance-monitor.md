@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326083"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798904"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
 
@@ -37,8 +37,10 @@ Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatieme
 ## <a name="supported-regions"></a>Ondersteunde regio's
 NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de volgende regio's:
 * Europa - noord
-* Europa - west
+* Europa -west
+* Zwitserland - noord
 * Frankrijk - centraal
+* Zuid-Afrika - noord
 * Canada - midden
 * VS - west
 * VS - west-centraal
@@ -46,7 +48,7 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * VS - zuid-centraal
 * Central US
 * VS - oost
-* US - oost 2
+* VS - oost 2
 * US - west 2
 * Japan-Oost
 * Azië - zuidoost
@@ -58,6 +60,7 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * Korea - centraal
 * India - centraal
 * Virginia van de Amerikaanse overheid
+* Amerikaanse overheid Arizona
 * China-oost 2
 
 

@@ -3,12 +3,12 @@ title: Over back-ups van Azure-bestands share
 description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7441157d6346eefc256e9e7c29f9bb1fa5c13b79
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c57537519888138698e9add1a687e0018d330cfa
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289520"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757877"
 ---
 # <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
 
@@ -29,7 +29,7 @@ Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplo
 
 ## <a name="how-the-backup-process-works"></a>Hoe het back-upproces werkt
 
-1. De eerste stap bij het configureren van de back-up voor Azure-bestands shares is het maken van een Recovery Services-kluis. De kluis biedt een geconsolideerde weer gave van de back-ups die zijn geconfigureerd voor verschillende werk belastingen.
+1. De eerste stap bij het configureren van back-ups voor Azure-bestands shares is het maken van een Recovery Services kluis. De kluis biedt een geconsolideerde weer gave van de back-ups die zijn geconfigureerd voor verschillende werk belastingen.
 
 2. Wanneer u een kluis hebt gemaakt, detecteert de Azure Backup-service de opslag accounts die kunnen worden geregistreerd bij de kluis. U kunt het opslag account selecteren dat als host fungeert voor de bestands shares die u wilt beveiligen.
 
@@ -42,9 +42,9 @@ Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplo
     >[!NOTE]
     >De bestands share gegevens worden niet overgebracht naar de back-upservice omdat de back-upservice moment opnamen maakt en beheert die deel uitmaken van uw opslag account en back-ups niet worden overgedragen naar de kluis.
 
-6. U kunt de inhoud van de Azure-bestands share (afzonderlijke bestanden of de volledige share) herstellen op basis van moment opnamen die beschikbaar zijn op de bron bestands share. Zodra de bewerking is geactiveerd, wordt de URL van de moment opname opgehaald uit het meta gegevens archief en worden de gegevens weer gegeven en overgebracht van de bron momentopname naar de doel bestands share van uw keuze. 
+6. U kunt de inhoud van de Azure-bestands share (afzonderlijke bestanden of de volledige share) herstellen op basis van moment opnamen die beschikbaar zijn op de bron bestands share. Zodra de bewerking is geactiveerd, wordt de URL van de moment opname opgehaald uit het meta gegevens archief en worden de gegevens weer gegeven en overgebracht van de bron momentopname naar de doel bestands share van uw keuze.
 
-7. Als u Azure File Sync gebruikt, geeft de back-upservice aan de Azure File Sync-Service de paden van de bestanden die worden teruggezet, waardoor een detectie proces voor de achtergrond wijzigingen op deze bestanden wordt geactiveerd. Alle bestanden die zijn gewijzigd, worden naar het eind punt van de server gesynchroniseerd. Dit proces gebeurt parallel met de oorspronkelijke terugzet bewerking naar de Azure-bestands share. 
+7. Als u Azure File Sync gebruikt, geeft de back-upservice aan de Azure File Sync-Service de paden van de bestanden die worden teruggezet, waardoor een detectie proces voor de achtergrond wijzigingen op deze bestanden wordt geactiveerd. Alle bestanden die zijn gewijzigd, worden naar het eind punt van de server gesynchroniseerd. Dit proces gebeurt parallel met de oorspronkelijke terugzet bewerking naar de Azure-bestands share.
 
 8. De bewakings gegevens van de taak back-up en herstel worden gepusht naar de Azure Backup monitoring-service. Hierdoor kunt u Cloud back-ups voor uw bestands shares in één dash board bewaken. Daarnaast kunt u ook waarschuwingen of e-mail meldingen configureren wanneer de status van de back-up wordt beïnvloed. E-mails worden verzonden via de e-mail service van Azure.
 

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 12/26/2018
 ms.custom: include file
 ms.openlocfilehash: cb9899712fd023aaec41f4b6bb34357b60ecb106
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75751934"
 ---
 ## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>Globale databaseregio's toevoegen met Azure Portal
@@ -20,7 +20,7 @@ Azure Cosmos DB is wereldwijd beschikbaar in alle [Azure-regio's][azureregions].
 
 1. Klik in [Azure Portal](https://portal.azure.com/) in de linkerbalk op **Azure Cosmos DB**.
 2. Selecteer op de pagina **Azure Cosmos DB** het databaseaccount dat u wilt wijzigen.
-3. Klik op de accountpagina op **Gegevens globaal repliceren** in het menu.
+3. Klik op de accountpagina op **Gegevens wereldwijd repliceren** in het menu.
 4. Selecteer op de pagina **Gegevens globaal repliceren** de regio's die u wilt toevoegen of verwijderen door op de kaart op regio's te klikken. Klik vervolgens op **Opslaan**. Er zijn kosten verbonden aan het toevoegen van regio's. Raadpleeg de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) of het artikel [Gegevens globaal distribueren met Azure Cosmos DB](../articles/cosmos-db/distribute-data-globally.md) voor meer informatie.
    
     ![Klik op de kaart op de regio's die u wilt toevoegen of verwijderen][1]

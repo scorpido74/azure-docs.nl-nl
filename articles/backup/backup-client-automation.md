@@ -3,12 +3,12 @@ title: Power shell gebruiken om een back-up te maken van Windows Server naar Azu
 description: In dit artikel leert u hoe u Power shell gebruikt om Azure Backup in te stellen op Windows Server of een Windows-client, en back-up en herstel te beheren.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: d0ae5165fc13193737ec75cf06060123ca4a13d4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564024"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756993"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor een Windows-server/Windows-client
 

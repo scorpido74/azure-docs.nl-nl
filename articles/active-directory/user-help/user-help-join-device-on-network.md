@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745720"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799482"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Uw werk apparaat toevoegen aan het netwerk van uw organisatie
 Voeg uw werkend Windows 10-apparaat toe aan het netwerk van uw organisatie, zodat u mogelijk beperkte bronnen kunt openen.
@@ -27,9 +27,9 @@ Terwijl u uw Windows 10-apparaat aan het netwerk van uw organisatie koppelt, zul
 
 - Windows registreert uw apparaat in het netwerk van uw organisatie, zodat u toegang hebt tot uw resources met uw persoonlijke account. Nadat het apparaat is geregistreerd, voegt Windows uw apparaat vervolgens toe aan het netwerk, zodat u de gebruikers naam en het wacht woord van uw organisatie kunt gebruiken om u aan te melden en toegang te krijgen tot beperkte bronnen.
 
-- Afhankelijk van de keuzes van uw organisatie wordt u mogelijk gevraagd om verificatie in twee stappen in te stellen met behulp van [multi-factor Authentication](multi-factor-authentication-end-user-first-time.md) of [beveiligings gegevens](user-help-security-info-overview.md).
+- Afhankelijk van de keuzes van uw organisatie wordt u mogelijk gevraagd om verificatie in twee stappen in te stellen met behulp van [multi-factor Authentication](multi-factor-authentication-end-user-first-time.md) of [beveiligings gegevens](./security-info-setup-signin.md).
 
-- U kunt eventueel, op basis van de keuzes van uw organisatie, automatisch worden inge schreven bij Mobile Device Management, zoals Microsoft Intune. Zie [uw apparaat inschrijven bij intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)voor meer informatie over het inschrijven van Microsoft intune.
+- U kunt eventueel, op basis van de keuzes van uw organisatie, automatisch worden inge schreven bij Mobile Device Management, zoals Microsoft Intune. Zie [uw apparaat inschrijven bij intune](/intune-user-help/enroll-your-device-in-intune-all)voor meer informatie over het inschrijven van Microsoft intune.
 
 - U gaat de aanmeldings procedure door lopen met behulp van automatische aanmelding met uw organisatie account.
 
@@ -91,7 +91,7 @@ Als u uw apparaat al een tijdje hebt en het reeds is ingesteld, kunt u deze stap
 
     ![Scherm voor mobiele meldingen](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. Bekijk op het scherm **Zorg ervoor dat dit uw organisatie is** en controleer de informatie om er zeker van te zijn dat het goed is, en selecteer vervolgens **toevoegen**.
+7. Bekijk op het scherm  **Zorg ervoor dat dit uw organisatie is** en controleer de informatie om er zeker van te zijn dat het goed is, en selecteer vervolgens **toevoegen**.
 
     ![Controleer of dit het scherm voor de verificatie van uw organisatie is](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
@@ -115,4 +115,4 @@ Nadat u uw apparaat aan het netwerk van uw organisatie hebt toegevoegd, kunt u t
 
 - Als uw organisatie uw persoonlijke apparaat wil registreren, zoals uw telefoon, raadpleegt u [uw persoonlijke apparaat registreren op het netwerk van uw organisatie](user-help-register-device-on-network.md).
 
-- Als uw organisatie wordt beheerd met Microsoft Intune en u vragen hebt over inschrijving, aanmelden of een ander probleem met betrekking tot intune, raadpleegt u de [Help-inhoud van intune-gebruikers](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).
+- Als uw organisatie wordt beheerd met Microsoft Intune en u vragen hebt over inschrijving, aanmelden of een ander probleem met betrekking tot intune, raadpleegt u de [Help-inhoud van intune-gebruikers](/intune-user-help/use-managed-devices-to-get-work-done).

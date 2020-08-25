@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u de configuratie van de kluis kunt bijw
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c3f964032d10988bf7ae615eb64d3b56b99a7747
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513112"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757299"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
 
@@ -65,7 +65,7 @@ Zodra de GET-aanvraag is verzonden, wordt een antwoord van 200 (geslaagd) gereto
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>Status van voorlopig verwijderen bijwerken met REST API
 
-Als u de voorlopig verwijderings status van de Recovery Services-kluis wilt bijwerken met behulp van REST API, gebruikt u de volgende *patch* bewerking
+Als u de voorlopig verwijderings status van de Recovery Services kluis wilt bijwerken met behulp van REST API, gebruikt u de volgende *patch* bewerking
 
 ```http
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
@@ -103,7 +103,7 @@ Het volgende voor beeld wordt gebruikt om de status van zacht verwijderen bij te
 }
 ```
 
-#### <a name="responses"></a>Antwoorden
+#### <a name="responses-for-the-patch-operation"></a>Reacties voor de PATCH bewerking
 
 Het geslaagde antwoord voor de PATCH bewerking wordt hieronder weer gegeven:
 
@@ -111,7 +111,7 @@ Het geslaagde antwoord voor de PATCH bewerking wordt hieronder weer gegeven:
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
-##### <a name="example-response"></a>Voorbeeld van een antwoord
+##### <a name="example-response-for-the-patch-operation"></a>Voorbeeld reactie voor de PATCH bewerking
 
 Zodra de PATCH aanvraag is verzonden, wordt een antwoord van 200 (geslaagd) geretourneerd.
 

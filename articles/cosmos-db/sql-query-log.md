@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74d07076fb322214348d52fe65dbc98bdff3cd44
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302505"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798258"
 ---
 # <a name="log-azure-cosmos-db"></a>LOGBOEK (Azure Cosmos DB)
  Retourneert de natuurlijke logaritme van de opgegeven numerieke expressie.  
@@ -41,7 +41,9 @@ LOG (<numeric_expr> [, <base>])
   
   De natuurlijke logaritme is de logaritme van het grondtal **e**, waarbij **e** een Irrational-constante is die ongeveer gelijk is aan 2,718281828.  
   
-  De natuurlijke logaritme van de exponentiële waarde van een getal is het getal zelf: logboek (EXP (n)) = n. En de exponentiële waarde van de natuurlijke logaritme van een getal is het getal zelf: EXP (LOG (n)) = n.  
+  De natuurlijke logaritme van de exponentiële waarde van een getal is het getal zelf: logboek (EXP (n)) = n. En de exponentiële waarde van de natuurlijke logaritme van een getal is het getal zelf: EXP (LOG (n)) = n.
+
+  Deze systeem functie maakt geen gebruik van de index.
   
 ## <a name="examples"></a>Voorbeelden
   
@@ -68,10 +70,6 @@ SELECT EXP(LOG(10)) AS expLog
 ```json
 [{expLog: 10.000000000000002}]  
 ```  
-
-## <a name="remarks"></a>Opmerkingen
-
-Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 

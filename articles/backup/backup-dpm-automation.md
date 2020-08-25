@@ -3,12 +3,12 @@ title: Power shell gebruiken voor het maken van back-ups van DPM-workloads
 description: Meer informatie over het implementeren en beheren van Azure Backup voor Data Protection Manager (DPM) met behulp van Power shell
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 4d8b8f6ca233c997bc2a94f88903d14009481d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a60d1c412a36c5c2a7ca264eda524b5d5649f1a
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538850"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762737"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor Data Protection Manager (DPM)-servers
 
@@ -177,7 +177,7 @@ Zodra de DPM-server is geregistreerd bij de Recovery Services kluis, begint de s
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-Alle wijzigingen worden aangebracht in dit lokale Power shell-object ```$setting``` , waarna het volledige object wordt doorgevoerd in DPM en Azure backup worden opgeslagen met behulp van de cmdlet [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . U moet de vlag gebruiken ```–Commit``` om ervoor te zorgen dat de wijzigingen behouden blijven. De instellingen worden niet toegepast en worden gebruikt door Azure Backup tenzij ze worden vastgelegd.
+Alle wijzigingen worden aangebracht in dit lokale Power shell-object ```$setting```  , waarna het volledige object wordt doorgevoerd in DPM en Azure backup worden opgeslagen met behulp van de cmdlet [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . U moet de vlag gebruiken ```–Commit``` om ervoor te zorgen dat de wijzigingen behouden blijven. De instellingen worden niet toegepast en worden gebruikt door Azure Backup tenzij ze worden vastgelegd.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -323,10 +323,10 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 In het bovenstaande voor beeld ```$onlineSch``` is een matrix met vier elementen die het bestaande schema voor online beveiliging voor de beveiligings groep in het gfs-schema bevat:
 
-1. ```$onlineSch[0]```bevat het dagelijkse schema
-2. ```$onlineSch[1]```bevat de wekelijkse planning
-3. ```$onlineSch[2]```bevat de maandelijkse planning
-4. ```$onlineSch[3]```bevat het jaarlijkse schema
+1. ```$onlineSch[0]``` bevat het dagelijkse schema
+2. ```$onlineSch[1]``` bevat de wekelijkse planning
+3. ```$onlineSch[2]``` bevat de maandelijkse planning
+4. ```$onlineSch[3]``` bevat het jaarlijkse schema
 
 Als u de wekelijkse planning wilt wijzigen, moet u dus verwijzen naar ```$onlineSch[1]``` .
 
@@ -354,8 +354,8 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 U kunt de cmdlet [Get-DPMRecoveryPoint](/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) gebruiken om een lijst met alle herstel punten voor een gegevens bron op te halen. In dit voor beeld zullen we het volgende doen:
 
-* alle PGs op de DPM-server ophalen en opslaan in een matrix```$PG```
-* Haal de gegevens bronnen op die overeenkomen met de```$PG[0]```
+* alle PGs op de DPM-server ophalen en opslaan in een matrix ```$PG```
+* Haal de gegevens bronnen op die overeenkomen met de ```$PG[0]```
 * alle herstel punten voor een gegevens bron ophalen.
 
 ```powershell
@@ -370,7 +370,7 @@ Het herstellen van gegevens is een combi natie van een ```RecoverableItem``` obj
 
 In het onderstaande voor beeld laten we zien hoe u een Hyper-V virtuele machine van Azure Backup herstelt door back-uppunten te combi neren met het doel voor herstel. Dit voor beeld bevat het volgende:
 
-* Een herstel optie maken met de cmdlet [New-DPMRecoveryOption](/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) .
+* Een herstel optie maken met de cmdlet  [New-DPMRecoveryOption](/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) .
 * De matrix met back-uppunten ophalen met behulp van de ```Get-DPMRecoveryPoint``` cmdlet.
 * Een back-uppunt kiezen om te herstellen van.
 
