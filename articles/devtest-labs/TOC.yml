@@ -83,6 +83,8 @@
           href: devtest-lab-internal-support-message.md
         - name: Beleid en planningen instellen
           href: devtest-lab-set-lab-policy.md
+        - name: "Labidentiteit configureren\_"
+          href: configure-lab-identity.md
         - name: Een lab configureren voor gebruik van een Extern bureaublad-gateway
           href: configure-lab-remote-desktop-gateway.md
         - name: Aankondiging plaatsen in een lab
@@ -95,8 +97,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: Uw lab schalen
           href: devtest-lab-scale-lab.md
-        - name: Beheerde identiteiten inschakelen voor lab-VM's
-          href: enable-managed-identities-lab-vms.md
         - name: Bases van virtuele machines beheren
           items:
             - name: Azure Marketplace-installatiekopieën configureren
@@ -167,6 +167,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: Virtuele machines importeren uit een ander lab
           href: import-virtual-machines-from-another-lab.md
+        - name: Beheerde identiteiten inschakelen voor lab-VM's
+          href: enable-managed-identities-lab-vms.md
     - name: Omgevingen gebruiken in een lab
       items:
         - name: Een omgeving maken

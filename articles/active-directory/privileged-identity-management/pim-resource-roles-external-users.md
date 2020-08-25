@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743776"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782733"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Gast gebruikers uitnodigen en Azure-resource rollen toewijzen in Privileged Identity Management
 
@@ -45,7 +45,7 @@ Hier volgen enkele voor beelden van wanneer u gasten kunt uitnodigen voor uw org
 
 ## <a name="how-does-collaboration-using-b2b-guests-work"></a>Hoe werkt samen werking met B2B-gasten?
 
-Wanneer u B2B-samen werking gebruikt, kunt u een externe gebruiker als gast uitnodigen voor uw organisatie. De gast kan worden beheerd als een gebruiker in uw organisatie, maar een gast moet worden geverifieerd in hun eigen organisatie en niet in uw Azure AD-organisatie. Dit betekent dat als de gast geen toegang meer heeft tot hun thuis organisatie, ook de toegang tot uw organisatie verloren gaat. Als de gast bijvoorbeeld hun organisatie verlaat, verliezen ze automatisch de toegang tot resources die u met hen hebt gedeeld in azure AD zonder dat u iets hoeft te doen. Zie [Wat is gast gebruikers toegang in azure Active Directory B2B?](../b2b/what-is-b2b.md)voor meer informatie over B2B-samen werking.
+Wanneer u B2B-samen werking gebruikt, kunt u een externe gebruiker als gast uitnodigen voor uw organisatie. De gast kan worden beheerd als een gebruiker in uw organisatie, maar een gast moet worden geverifieerd in hun eigen organisatie en niet in uw Azure AD-organisatie. Dit betekent dat als de gast geen toegang meer heeft tot hun thuis organisatie, ook de toegang tot uw organisatie verloren gaat. Als de gast bijvoorbeeld hun organisatie verlaat, verliezen ze automatisch de toegang tot resources die u met hen hebt gedeeld in azure AD zonder dat u iets hoeft te doen. Zie [Wat is gast gebruikers toegang in azure Active Directory B2B?](../external-identities/what-is-b2b.md)voor meer informatie over B2B-samen werking.
 
 ![Diagram waarin wordt getoond hoe een gast gebruiker wordt geverifieerd in de hoofdmap](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
@@ -166,4 +166,4 @@ U kunt audit logboeken bekijken om bij te houden wat gasten doen.
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure AD-beheerders rollen toewijzen in Privileged Identity Management](pim-how-to-add-role-to-user.md)
-- [Wat is gast gebruikers toegang in azure AD B2B-samen werking?](../b2b/what-is-b2b.md)
+- [Wat is gast gebruikers toegang in azure AD B2B-samen werking?](../external-identities/what-is-b2b.md)

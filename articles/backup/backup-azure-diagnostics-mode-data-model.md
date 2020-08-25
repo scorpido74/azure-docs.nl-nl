@@ -3,12 +3,12 @@ title: Gegevens model van Azure Monitor logboeken
 description: In dit artikel vindt u informatie over de Azure Monitor Log Analytics gegevens model gegevens voor Azure Backup gegevens.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 897431feae6cd3166b594d4d6848204df76fe3fa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539071"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761403"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics gegevens model voor Azure Backup gegevens
 
@@ -35,9 +35,9 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | AlertStatus_s |Tekst |De status van de waarschuwing, bijvoorbeeld actief |
 | AlertOccurrenceDateTime_s |Datum en tijd |Datum en tijd waarop de waarschuwing is gemaakt |
 | AlertSeverity_s |Tekst |Ernst van de waarschuwing, bijvoorbeeld kritiek |
-|AlertTimeToResolveInMinutes_s    | Getal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
+|AlertTimeToResolveInMinutes_s    | Aantal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
 |AlertConsolidationStatus_s   |Tekst         |Vaststellen of de waarschuwing een geconsolideerde waarschuwing is         |
-|CountOfAlertsConsolidated_s     |Getal         |Aantal geconsolidatiete waarschuwingen als het een geconsolideerde waarschuwing is          |
+|CountOfAlertsConsolidated_s     |Aantal         |Aantal geconsolidatiete waarschuwingen als het een geconsolideerde waarschuwing is          |
 |AlertRaisedOn_s     |Tekst         |Het type entiteit waarop de waarschuwing is opgetreden         |
 |AlertCode_s     |Tekst         |Code voor een unieke identificatie van een waarschuwings type         |
 |RecommendedAction_s   |Tekst         |Aanbevolen actie om de waarschuwing op te lossen         |
@@ -155,8 +155,8 @@ Deze tabel bevat details over projectgerelateerde velden.
 | JobStartDateTime_s |Datum en tijd |Datum en tijd waarop de taak is gestart |
 | BackupStorageDestination_s |Tekst |Doel van back-upopslag, bijvoorbeeld Cloud, schijf  |
 | AdHocOrScheduledJob_s |Tekst | Veld om op te geven of de taak ad-hoc of gepland is |
-| JobDurationInSecs_s | Getal |Totale taak duur in seconden |
-| DataTransferredInMB_s | Getal |Gegevens die worden overgebracht in MB voor deze taak|
+| JobDurationInSecs_s | Aantal |Totale taak duur in seconden |
+| DataTransferredInMB_s | Aantal |Gegevens die worden overgebracht in MB voor deze taak|
 | JobUniqueId_g |Tekst |Unieke ID voor het identificeren van de taak |
 | RecoveryJobDestination_s |Tekst | Doel van een herstel taak, waarbij de gegevens worden hersteld |
 | RecoveryJobRPDateTime_s |DateTime | De datum, het tijdstip waarop het herstel punt dat wordt hersteld, is gemaakt |
@@ -258,7 +258,7 @@ Deze tabel bevat basis velden over beveiligde containers. (Was ProtectedServer i
 | ProtectedContainerType_s |Tekst |Of de beveiligde container een server of een container is |
 | ProtectedContainerProtectionState_s '  |Tekst |Beveiligings status van de beveiligde container |
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 
 Deze tabel bevat details over velden die betrekking hebben op opslag.
 
@@ -297,8 +297,8 @@ Deze tabel bevat basis velden die betrekking hebben op opslag en die opslag aan 
 | BackupItemUniqueId_s |Tekst |Unieke ID die wordt gebruikt om het back-upitem te identificeren dat is gerelateerd aan de opslag entiteit |
 | BackupManagementServerUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de back-upbeheerserver te identificeren die betrekking heeft op de opslag entiteit|
 | VaultUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de kluis te identificeren die is gerelateerd aan de opslag entiteit|
-| StorageConsumedInMBs_s |Getal|Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
-| StorageAllocatedInMBs_s |Getal |Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf|
+| StorageConsumedInMBs_s |Aantal|Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
+| StorageAllocatedInMBs_s |Aantal |Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf|
 
 ### <a name="vault"></a>Kluis
 
@@ -461,35 +461,37 @@ Hieronder vindt u enkele voor beelden voor het schrijven van query's op Azure Ba
     ````
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1-schema VS v2-schema
-Eerder werden de diagnostische gegevens voor Azure Backup Agent en Azure VM-back-up verzonden naar Azure Diagnostics tabel in een schema waarnaar wordt verwezen als ***v1-schema***. Daarna werden nieuwe kolommen toegevoegd ter ondersteuning van andere scenario's en werk belastingen, en worden diagnostische gegevens gepusht in een nieuw schema waarnaar wordt verwezen als ***v2-schema***. 
 
-Om redenen van achterwaartse compatibiliteit, worden diagnostische gegevens voor Azure Backup-Agent en Azure VM-back-up momenteel verzonden naar Azure Diagnostics tabel in zowel het v1-als het v2-schema (met v1-schema nu op een afschaffing-pad). U kunt bepalen welke records in Log Analytics van v1-schema door records te filteren voor SchemaVersion_s = "v1" in uw logboek query's. 
+Eerder werden de diagnostische gegevens voor Azure Backup Agent en Azure VM-back-up verzonden naar Azure Diagnostics tabel in een schema waarnaar wordt verwezen als ***v1-schema***. Daarna werden nieuwe kolommen toegevoegd ter ondersteuning van andere scenario's en werk belastingen, en worden diagnostische gegevens gepusht in een nieuw schema waarnaar wordt verwezen als ***v2-schema***.  
+
+Om redenen van achterwaartse compatibiliteit, worden diagnostische gegevens voor Azure Backup-Agent en Azure VM-back-up momenteel verzonden naar Azure Diagnostics tabel in zowel het v1-als het v2-schema (met v1-schema nu op een afschaffing-pad). U kunt bepalen welke records in Log Analytics van v1-schema door records te filteren voor SchemaVersion_s = "v1" in uw logboek query's.
 
 Raadpleeg de derde kolom ' description ' in het hierboven beschreven [gegevens model](#using-azure-backup-data-model) om te bepalen welke kolommen alleen bij v1-schema horen.
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>Uw query's wijzigen om het v2-schema te gebruiken
+
 Omdat het v1-schema zich op een afschaffing pad bevindt, wordt u aangeraden alleen het v2-schema te gebruiken in alle aangepaste query's op Azure Backup diagnostische gegevens. Hieronder ziet u een voor beeld van hoe u uw query's bijwerkt om afhankelijkheden van v1-schema te verwijderen:
 
 1. Bepaal of uw query een veld gebruikt dat alleen van toepassing is op v1-schema. Stel dat u een query hebt om alle back-upitems en de bijbehorende beveiligde servers als volgt weer te geven:
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+    ````
 
-De bovenstaande query gebruikt het veld ProtectedServerUniqueId_s dat alleen van toepassing is op het v1-schema. Het v2-schema equivalent van dit veld is ProtectedContainerUniqueId_s (zie tabellen hierboven). Het veld BackupItemUniqueId_s is van toepassing op zelfs het v2-schema en hetzelfde veld kan worden gebruikt in deze query.
+    De bovenstaande query gebruikt het veld ProtectedServerUniqueId_s dat alleen van toepassing is op het v1-schema. Het v2-schema equivalent van dit veld is ProtectedContainerUniqueId_s (zie tabellen hierboven). Het veld BackupItemUniqueId_s is van toepassing op zelfs het v2-schema en hetzelfde veld kan worden gebruikt in deze query.
 
 2. Werk de query bij om de v2-schema veld namen te gebruiken. Het is raadzaam om het filter ' where SchemaVersion_s = = ' v2 ' in al uw query's te gebruiken, zodat alleen records die overeenkomen met het v2-schema worden geparseerd door de query:
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| where SchemaVersion_s=="V2"
-| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | where SchemaVersion_s=="V2"
+    | distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s
+    ````
 
 ## <a name="next-steps"></a>Volgende stappen
 

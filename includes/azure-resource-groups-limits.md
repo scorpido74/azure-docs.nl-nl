@@ -4,37 +4,37 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: f0ab7c2efc499c43245680e56a7e5ca1b5261397
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424720"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748772"
 ---
 | Resource | Limiet |
 | --- | --- |
-| Resources per [resource groep](../articles/azure-resource-manager/management/overview.md#resource-groups) | Resources worden niet beperkt door de resource groep. In plaats daarvan worden ze beperkt door het resource type in een resource groep. Zie de volgende rij. |
-| Resources per resource groep, per resource type |800-sommige resource typen kunnen de 800-limiet overschrijden. Zie [resources niet beperkt tot 800 exemplaren per resource groep](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
-| Implementaties per resource groep in de implementatie geschiedenis |800<sup>1</sup> |
-| Bronnen per implementatie |800 |
-| Beheer vergrendelingen per uniek bereik |20 |
-| Aantal Tags per resource of resource groep |50 |
-| Sleutel lengte van tag |512 |
-| Lengte van label waarde |256 |
+| Resources per [resourcegroep](../articles/azure-resource-manager/management/overview.md#resource-groups) | Het aantal resources wordt niet beperkt door de resourcegroep. In plaats daarvan wordt het aantal beperkt door het resourcetype in een resourcegroep. Zie de volgende rij. |
+| Resources per resourcegroep, per resourcetype |800 - Sommige resourcetypen kunnen de limiet van 800 overschrijden. Raadpleeg [Resources not limited to 800 instances per resource group](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md) (Resources die niet beperkt zijn tot 800 exemplaren per resourcegroep). |
+| Implementaties per resourcegroep in de implementatiegeschiedenis |800<sup>1</sup> |
+| Resources per implementatie |800 |
+| Beheervergrendelingen per uniek [bereik](../articles/azure-resource-manager/management/overview.md#understand-scope)  |20 |
+| Aantal tags per resource of resourcegroep |50 |
+| Lengte van tagsleutel |512 |
+| Lengte van tagwaarde |256 |
 
-<sup>1</sup> Vanaf juni 2020 worden implementaties automatisch verwijderd uit de geschiedenis, net als bij de limiet. Het verwijderen van een item uit de implementatie geschiedenis heeft geen invloed op de geïmplementeerde resources. Zie [automatische verwijderingen uit de implementatie geschiedenis](../articles/azure-resource-manager/templates/deployment-history-deletions.md)voor meer informatie.
+<sup>1</sup>Vanaf juni 2020 worden implementaties automatisch verwijderd uit de geschiedenis als u dicht bij de limiet komt. Als u een item uit de implementatiegeschiedenis verwijdert, heeft dit geen gevolgen voor de geïmplementeerde resources. Raadpleeg [Automatic deletions from deployment history](../articles/azure-resource-manager/templates/deployment-history-deletions.md) (Automatische verwijderingen uit de implementatiegeschiedenis) voor meer informatie.
 
-#### <a name="template-limits"></a>Sjabloon limieten
+#### <a name="template-limits"></a>Limieten voor sjablonen
 
 | Waarde | Limiet |
 | --- | --- |
 | Parameters |256 |
 | Variabelen |256 |
-| Bronnen (met inbegrip van het aantal kopieën) |800 |
-| Uitvoer |64 |
-| Expressie voor sjabloon |24.576 tekens |
+| Resources (inclusief het aantal kopieën) |800 |
+| Uitvoerwaarden |64 |
+| Sjabloonexpressie |24.576 tekens |
 | Resources in geëxporteerde sjablonen |200 |
-| Sjabloon grootte |4 MB |
-| Parameter bestands grootte |64 kB |
+| Sjabloongrootte |4 MB |
+| Grootte van parameterbestand |64 kB |
 
-U kunt enkele sjabloon limieten overschrijden met behulp van een geneste sjabloon. Zie voor meer informatie [gekoppelde sjablonen gebruiken wanneer u Azure-resources implementeert](../articles/azure-resource-manager/templates/linked-templates.md). Als u het aantal para meters, variabelen of uitvoer wilt reduceren, kunt u verschillende waarden combi neren in een-object. Zie [objecten als para meters](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md)voor meer informatie.
+U kunt enkele limieten voor sjablonen overschrijden met behulp van een geneste sjabloon. Voor meer informatie raadpleegt u [Use linked templates when you deploy Azure resources](../articles/azure-resource-manager/templates/linked-templates.md) (Gekoppelde sjablonen gebruiken bij het implementeren van Azure-resources). Als u het aantal parameters, variabelen of uitvoerwaarden wilt verkleinen, kunt u verschillende waarden combineren in een object. Raadpleeg [Objects as parameters](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md) (Objecten als parameters) voor meer informatie.

@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd11690f2a3597d6e1a835ad7ca9c5880117eeea
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535686"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782206"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Een actieve DNS-naam migreren naar Azure App Service
 
@@ -29,35 +29,33 @@ Voor het volt ooien van deze procedure:
 
 ## <a name="bind-the-domain-name-preemptively"></a>Bind de domein naam preventief
 
-Wanneer u een aangepast domein preventief bindt, voert u de volgende handelingen uit voordat u wijzigingen aanbrengt in uw DNS-records:
+Wanneer u een aangepast domein preventief bindt, voert u de volgende handelingen uit voordat u wijzigingen aanbrengt in uw bestaande DNS-records:
 
-- Domein eigendom verifiëren
+- Domeineigendom controleren
 - De domein naam voor uw app inschakelen
 
 Wanneer u ten slotte uw aangepaste DNS-naam migreert van de oude-site naar de App App Service, wordt er geen downtime in DNS-omzetting.
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
+### <a name="get-domain-verification-id"></a>Verificatie-id van domein ophalen
+
+De domein verificatie-ID voor uw app ophalen door de stappen te volgen in de [domein verificatie-id ophalen](app-service-web-tutorial-custom-domain.md#get-domain-verification-id).
+
 ### <a name="create-domain-verification-record"></a>Domein verificatie record maken
 
-Voeg een TXT-record toe om het domein eigendom te controleren. De TXT-record wordt toegewezen vanuit _awverify. &lt; subdomein>_ op _ &lt; appname>. azurewebsites.net_. 
-
-De TXT-record die u nodig hebt, is afhankelijk van de DNS-record die u wilt migreren. Zie de volgende tabel ( `@` Dit is meestal het hoofd domein) voor voor beelden:
+Voeg een TXT-record toe voor domein verificatie om het domein eigendom te controleren. De hostnaam voor de TXT-record is afhankelijk van het type DNS-record type dat u wilt toewijzen. Zie de volgende tabel ( `@` Dit is meestal het hoofd domein):
 
 | Voor beeld van DNS-record | TXT-host | TXT-waarde |
 | - | - | - |
-| \@basis | _awverify_ | _&lt;appName>. azurewebsites.net_ |
-| www (sub) | _awverify. www_ | _&lt;appName>. azurewebsites.net_ |
-| \*vervanging | _awverify.\*_ | _&lt;appName>. azurewebsites.net_ |
+| \@ basis | _asuid_ | [Domein verificatie-ID voor uw app](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| www (sub) | _asuid. www_ | [Domein verificatie-ID voor uw app](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
+| \* vervanging | _asuid_ | [Domein verificatie-ID voor uw app](app-service-web-tutorial-custom-domain.md#get-domain-verification-id) |
 
 Noteer op de pagina DNS-records het record type van de DNS-naam die u wilt migreren. App Service ondersteunt toewijzingen van CNAME-en A-records.
 
 > [!NOTE]
-> Voor bepaalde providers, zoals CloudFlare, `awverify.*` is geen geldige record. Gebruik `*` in plaats daarvan.
-
-> [!NOTE]
 > `*`Met Joker records worden subdomeinen met een bestaande CNAME-record niet gevalideerd. U moet mogelijk expliciet een TXT-record maken voor elk subdomein.
-
 
 ### <a name="enable-the-domain-for-your-app"></a>Het domein voor uw app inschakelen
 
@@ -69,7 +67,7 @@ Selecteer op de pagina **aangepaste domeinen** het **+** pictogram naast **hostn
 
 ![Hostnaam toevoegen](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Typ de Fully Qualified Domain Name waarvoor u de TXT-record hebt toegevoegd, zoals `www.contoso.com` . Voor een Joker teken domein (zoals \* . contoso.com) kunt u een DNS-naam gebruiken die overeenkomt met het Joker teken domein. 
+Typ de Fully Qualified Domain Name die u wilt migreren, die overeenkomt met de TXT-record die u maakt, zoals `contoso.com` , `www.contoso.com` of `*.contoso.com` .
 
 Selecteer **Valideren**.
 
@@ -117,11 +115,11 @@ Voor het `contoso.com` voor beeld van het hoofd domein wijst u de A-of CNAME-rec
 | www \. -contoso.com (sub) | CNAME | `www` | _&lt;appName>. azurewebsites.net_ |
 | \*. contoso.com (Joker teken) | CNAME | _\*_ | _&lt;appName>. azurewebsites.net_ |
 
-Sla uw wijzigingen op.
+Sla uw instellingen op.
 
 DNS-query's moeten meteen beginnen met het oplossen van problemen met de App Service-app nadat de DNS-doorgifte is uitgevoerd.
 
-## <a name="active-domain-in-azure"></a>Actief domein in azure
+## <a name="migrate-domain-from-another-app"></a>Domein migreren vanuit een andere app
 
 U kunt een actief aangepast domein migreren in azure, tussen abonnementen of binnen hetzelfde abonnement. Een dergelijke migratie zonder downtime vereist echter dat de bron-app en de doel-app op een bepaald moment hetzelfde aangepaste domein toewijzen. Daarom moet u ervoor zorgen dat de twee apps niet zijn geïmplementeerd in dezelfde implementatie-eenheid (intern bekend als een webruimte). Een domein naam kan slechts aan één app in elke implementatie-eenheid worden toegewezen.
 

@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80762511591d10bd2823101e2ff233fdd0f0eb00
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 862b304d1f36567aecd4452f91f31d1a50c3198a
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495621"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782478"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Rollen die u niet kunt beheren in Privileged Identity Management
 
@@ -37,7 +37,7 @@ Zie voor meer informatie over de beheerders rollen van klassieke abonnementen [k
 
 ## <a name="what-about-office-365-admin-roles"></a>Hoe zit het met Office 365-beheerders rollen?
 
-We ondersteunen alle Office365-functies in de Azure AD-functies en-Portal-ervaring, zoals Exchange-beheerder en share point-beheerder, maar ondersteunen geen specifieke rollen binnen Exchange RBAC of share point RBAC. Zie voor meer informatie over deze Office 365-Services [office 365-beheerders rollen](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+We ondersteunen alle Office365-functies in de Azure AD-functies en-Portal-ervaring, zoals Exchange-beheerder en share point-beheerder, maar ondersteunen geen specifieke rollen binnen Exchange RBAC of share point RBAC. Zie voor meer informatie over deze Office 365-Services [office 365-beheerders rollen](/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
 > Gebruikers die in aanmerking komen voor de share point-beheerdersrol, de rol van het apparaat en alle rollen die toegang proberen te krijgen tot het micro soft Security and Compliance Center kunnen vertragingen van een paar uur ondervinden na het activeren van hun rol. We werken samen met die teams om de problemen op te lossen.

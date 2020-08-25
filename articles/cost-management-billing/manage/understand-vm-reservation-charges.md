@@ -4,14 +4,14 @@ description: Meer informatie over hoe korting voor gereserveerde VM-instanties i
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/13/2020
 ms.author: banders
-ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018379"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192215"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Toepassing van de reserveringskorting op virtuele machines
 
@@ -56,11 +56,15 @@ Wanneer u Windows-VM-instanties uitvoert, wordt de reservering toegepast om de i
 
 ## <a name="discount-can-apply-to-different-sizes"></a>Korting kan van toepassing zijn op verschillende grootten
 
-Wanneer u een gereserveerde VM-instantie aanschaft en u selecteert **Geoptimaliseerd voor**: **instantiegrootte**, dan is de kortingsdekking afhankelijk van de door u geselecteerde VM-grootte. De reservering kan worden toegepast op de VM-grootten in de groep met series van dezelfde grootte. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie.
+Wanneer u een gereserveerde VM-instantie aanschaft en **Geoptimaliseerd voor flexibiliteit van instantiegrootte** selecteert, is de kortingsdekking van toepassing op de door u geselecteerde VM-grootte. De dekking kan ook van toepassing zijn op andere VM-grootten die zich in dezelfde flexibiliteitsgroep/-reeks van de instantiegrootte bevinden. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie.
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>Korting geldt alleen voor een overeenkomstig ServiceType
+## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Voor VM’s met Premium-opslag gelden geen niet-premium-kortingen
 
-Een reserveringskorting is alleen van toepassing op het VM-gebruik waar de `ServiceType`-waarde in `AdditionalInfo` overeenkomt met de aangekochte reservering. De toepassing van de reserveringskorting negeert de voor VM's gebruikte meter en kijkt alleen naar `ServiceType`. Weet voor welk servicetype u de VM hebt aangeschaft. U kunt een niet-premium VM- opslagreservering inruilen voor een premium opslagreservering, of omgekeerd.
+Hier volgt een voorbeeld. Stel dat u een reservering hebt gekocht voor vijf Standard_D1-VM’s. De reserveringskorting is alleen van toepassing op Standard_D1-VM’s of andere VM’s in dezelfde instantiefamilie. De korting is niet van toepassing op Standard_DS1-VM’s of andere grootten in de DS1-flexibiliteitsgroep van de instantiegrootte.
+
+Bij het toepassen van de reserveringskorting wordt de voor VM's gebruikte meter genegeerd, en wordt alleen gekeken naar ServiceType. Bekijk de waarde `ServiceType` in `AdditionalInfo` om de informatie voor de instantieflexibiliteitsgroep/-reeks voor uw VM´s te bepalen. De waarden bevinden zich in het CSV-bestand voor gebruik.
+
+U kunt de instantieflexibiliteitsgroep/-reeks van de reservering niet rechtstreeks wijzigen na de aankoop. U kunt echter een VM-reservering *wisselen* van de ene instantieflexibiliteitsgroep/-reeks naar een andere.
 
 ## <a name="services-that-get-vm-reservation-discounts"></a>Services waarop VM-reserveringskortingen van toepassing zijn
 
@@ -94,7 +98,7 @@ Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virt
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -107,4 +111,4 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../reservations/understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../reservations/understand-reserved-instance-usage-ea.md)
 - [Inzicht in het gebruik van reserveringen voor CSP-abonnementen](/partner-center/azure-reservations)
-- [Kosten van Windows-software zijn niet inbegrepen bij reserveringen](../reservations/reserved-instance-windows-software-costs.md)
+- [Kosten van Windows-software zijn niet inbegrepen in reserveringen](../reservations/reserved-instance-windows-software-costs.md)

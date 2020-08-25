@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371733"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761760"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -35,7 +35,7 @@ In deze sectie wordt de back-upbewerking voor de virtuele machine van Azure besc
     ![Windows Server Back-up mislukt](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Als Azure Backup is mislukt, zoekt u naar de bijbehorende fout code in de sectie veelvoorkomende fouten in VM-back-ups in dit artikel.
 
-## <a name="common-issues"></a>Veelvoorkomende problemen
+## <a name="common-issues"></a>Algemene problemen
 
 Hier volgen enkele veelvoorkomende problemen met back-upfouten op virtuele machines van Azure.
 
@@ -56,7 +56,7 @@ Fout bericht: er is een time-out opgetreden tijdens het kopiëren van de back-up
 
 Dit kan gebeuren als gevolg van tijdelijke opslag fouten of onvoldoende opslag account-IOPS voor de back-upservice om binnen de time-outperiode gegevens over te dragen naar de kluis. Configureer VM-back-ups met behulp van deze [Aanbevolen procedures](backup-azure-vms-introduction.md#best-practices) en voer de back-upbewerking opnieuw uit.
 
-### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState-VM heeft geen status die back-ups toestaat
+### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState: VM is niet in een status die back-ups toestaat
 
 Fout code: UserErrorVmNotInDesirableState <br/>
 Fout bericht: de VM heeft geen status die back-ups mogelijk maakt.<br/>
@@ -162,7 +162,7 @@ De back-upbewerking is mislukt vanwege een inconsistente status van de back-upex
 
 ### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError-momentopname bewerking mislukt omdat de limiet voor moment opnamen is overschreden voor een aantal gekoppelde schijven
 
-Fout code: ExtensionFailedSnapshotLimitReachedError <br/>
+Fout code: ExtensionFailedSnapshotLimitReachedError  <br/>
 Fout bericht: de momentopname bewerking is mislukt omdat de limiet voor moment opnamen is overschreden voor een aantal gekoppelde schijven
 
 De momentopname bewerking is mislukt omdat de limiet voor de moment opname is overschreden voor sommige van de gekoppelde schijven. Voer de onderstaande stappen voor probleem oplossing uit en voer de bewerking opnieuw uit.
@@ -248,7 +248,7 @@ Fout code: ExtensionVCRedistInstallationFailure <br/> Fout bericht: de momentopn
 * Ga naar `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` en installeer vcredist2013_x64.<br/>Zorg ervoor dat de waarde van de register sleutel die de service-installatie toestaat, is ingesteld op de juiste waarde. Stel de **begin** waarde in **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** in op **3** en niet **4**. <br><br>Als u nog steeds problemen ondervindt met de installatie, start u de installatie service opnieuw door **Msiexec/unregister** gevolgd door **Msiexec/register** vanaf een opdracht prompt met verhoogde bevoegdheid uit te voeren.
 * Controleer het gebeurtenis logboek om te controleren of u merkt problemen hebt. Bijvoorbeeld: *product: micro soft Visual C++ 2013 x64 mini maal runtime-12.0.21005--error 1401. de sleutel kan niet worden gemaakt: Software\Classes.  Systeem fout 5.  Controleer of u voldoende toegangs rechten voor deze sleutel hebt of neem contact op met het ondersteunings personeel.* <br><br> Zorg ervoor dat de beheerder of het gebruikers account voldoende machtigingen heeft om de register sleutel **HKEY_LOCAL_MACHINE \Software\Classes**bij te werken. Geef voldoende machtigingen op en start de Windows Azure-gast agent opnieuw.<br><br> <li> Als er antivirus producten aanwezig zijn, moet u ervoor zorgen dat ze beschikken over de juiste uitsluitings regels voor het toestaan van de installatie.
 
-### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-er is een ongeldig beleid geconfigureerd op de virtuele machine, waardoor de bewerking van de moment opname wordt voor komen
+### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy: er is een ongeldig beleid geconfigureerd op de VM, waardoor de momentopnamebewerking niet kan worden uitgevoerd
 
 Fout code: UserErrorRequestDisallowedByPolicy <BR> Fout bericht: er is een ongeldig beleid geconfigureerd op de VM, waardoor er geen momentopname bewerking kan worden uitgevoerd.
 
@@ -289,23 +289,23 @@ Als uw back-up meer dan 12 uur duurt of als de herstel bewerking langer dan 6 uu
 
 Normaal gesp roken is de VM-agent al aanwezig in de Vm's die zijn gemaakt in de Azure-galerie. Virtuele machines die zijn gemigreerd vanuit on-premises data centers, hebben geen VM-agent geïnstalleerd. Voor deze Vm's moet de VM-agent expliciet worden geïnstalleerd.
 
-#### <a name="windows-vms"></a>Virtuele Windows-machines
+#### <a name="windows-vms---set-up-the-agent"></a>Windows-Vm's: Stel de agent in
 
 * Download en installeer de [agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). U hebt beheerders bevoegdheden nodig om de installatie te volt ooien.
 * Voor virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model, [werkt u de eigenschap VM](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) bij om aan te geven dat de agent is geïnstalleerd. Deze stap is niet vereist voor het Azure Resource Manager van virtuele machines.
 
-#### <a name="linux-vms"></a>Virtuele Linux-machines
+#### <a name="linux-vms---set-up-the-agent"></a>Linux-Vm's: de agent instellen
 
 * Installeer de nieuwste versie van de agent vanuit de distributie opslagplaats. Raadpleeg de [opslag plaats](https://github.com/Azure/WALinuxAgent)van de Linux-agent voor meer informatie over de pakket naam.
 * Voor virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model, [werkt u de VM-eigenschap](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) bij en controleert u of de agent is geïnstalleerd. Deze stap is niet vereist voor virtuele machines van Resource Manager.
 
 ### <a name="update-the-vm-agent"></a>De VM-agent bijwerken
 
-#### <a name="windows-vms"></a>Virtuele Windows-machines
+#### <a name="windows-vms---update-the-agent"></a>Windows-Vm's: de agent bijwerken
 
 * Als u de VM-agent wilt bijwerken, installeert u de [binaire bestanden](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)van de VM-agent opnieuw. Voordat u de agent bijwerkt, moet u ervoor zorgen dat er geen back-upbewerkingen worden uitgevoerd tijdens de VM-agent update.
 
-#### <a name="linux-vms"></a>Virtuele Linux-machines
+#### <a name="linux-vms---update-the-agent"></a>Linux-Vm's: de agent bijwerken
 
 * Als u de Linux VM-agent wilt bijwerken, volgt u de instructies in het artikel [de Linux VM-agent bijwerken](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json).
 

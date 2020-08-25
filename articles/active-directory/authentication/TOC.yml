@@ -43,7 +43,7 @@
         - name: Licenties
           href: concept-mfa-licensing.md
         - name: MFA voor Office 365
-          href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: Veelgestelde vragen
           href: multi-factor-authentication-faq.md
     - name: Verificatie zonder wachtwoord
@@ -87,7 +87,7 @@
         - name: Directory Federation
           items:
             - name: Windows Server 2016 AD FS Adapter
-              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
+              href: /windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
             - name: Federation Services
               href: multi-factor-authentication-get-started-adfs.md
             - name: AD FS gebruiken
@@ -119,7 +119,7 @@
         - name: Zonder wachtwoord aanmelden via telefoon
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello voor Bedrijven
-          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+          href: /windows/security/identity-protection/hello-for-business/hello-identity-verification
     - name: Registratie van beveiligingsinformatie
       items:
         - name: Gecombineerde registratie inschakelen
@@ -220,7 +220,7 @@
 - name: Naslaginformatie
   items:
     - name: MFA-gebruikershandleiding
-      href: ./end-user/current/multi-factor-authentication-end-user.md
+      href: ../user-help/multi-factor-authentication-end-user-first-time.md
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell-cmdlets
@@ -234,7 +234,7 @@
     - name: Azure-feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A-vragenpagina
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Service-updates

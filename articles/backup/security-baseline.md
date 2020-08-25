@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 72c038bda88ecc9b7518f1f764a41bd4c49f52c6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2951d0ee8719ec3b0f195a9abcd1af6f65f2c141
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589415"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761811"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
 
@@ -186,7 +186,7 @@ Daarnaast verzendt Azure Backup diagnostische gebeurtenissen die kunnen worden v
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
 
-**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze mogelijkheden zijn beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
+**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze functionaliteit is beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
 
 Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een Log Analytics-werk ruimte. Voer query's uit in Log Analytics om zoek termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten te bieden op basis van de activiteiten logboek gegevens die mogelijk zijn verzameld voor Recovery Services kluizen.
 
@@ -202,7 +202,7 @@ Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteit
 
-**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze mogelijkheden zijn beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
+**Hulp**: Azure Backup biedt ingebouwde mogelijkheden voor bewaking en waarschuwingen in een Recovery Services kluis. Deze functionaliteit is beschikbaar zonder enige extra beheerinfrastructuur. U kunt tevens de schaal van uw bewaking en rapportage vergroten door Azure Monitor te gebruiken.
 
 Waarschuwingen zijn voornamelijk scenario's waarin gebruikers een melding ontvangen dat ze relevante actie kunnen ondernemen. In het gedeelte back-upwaarschuwingen worden waarschuwingen weer gegeven die zijn gegenereerd door Azure Backup service. Deze waarschuwingen worden gedefinieerd door de service en u kunt geen aangepaste waarschuwingen maken.
 
@@ -426,7 +426,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: bij het maken van een back-up van Azure IaaS vm's biedt Azure backup onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van originele gegevens. Back-ups worden opgeslagen in een Recovery Services-kluis met ingebouwd beheer van herstelpunten.
+**Richt lijnen**: bij het maken van een back-up van Azure IaaS vm's biedt Azure backup onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van originele gegevens. Back-ups worden in een Recovery Services-kluis opgeslagen waarin het beheer van herstelpunten is ingebouwd.
 
 Implementeer afzonderlijke abonnementen en/of beheer groepen voor ontwikkelings-, test-en productie Recovery Services kluizen. Resources moeten worden gescheiden door VNet/subnet, op de juiste wijze worden gelabeld en beveiligd door een NSG of Azure Firewall. Resources die gevoelige gegevens opslaan of verwerken, moeten voldoende geïsoleerd zijn. Voor Virtual Machines het opslaan of verwerken van gevoelige gegevens, implementeert u beleid en procedure (s) om ze uit te scha kelen wanneer ze niet worden gebruikt.
 

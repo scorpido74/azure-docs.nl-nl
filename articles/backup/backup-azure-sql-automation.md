@@ -4,12 +4,12 @@ description: Back-ups maken van SQL-data bases in azure-Vm's en deze herstellen 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: a5b62b05c36afac078ccc7aeb7ed0e7259072fc1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6bd119b743ad83bcab9f92d386a5091593f6a5c0
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513792"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761318"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
@@ -193,7 +193,7 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>De SQL-VM registreren
 
-Voor Azure VM-back-ups en Azure-bestands shares kan de back-upservice verbinding maken met deze Azure Resource Manager resources en de relevante gegevens ophalen. Omdat SQL een toepassing binnen een Azure-VM is, heeft de back-upservice toestemming nodig om toegang te krijgen tot de toepassing en de benodigde gegevens op te halen. Hiervoor moet u de Azure VM die de SQL-toepassing bevat, *registreren* bij een Recovery Services-kluis. Wanneer u een SQL-VM met een kluis registreert, kunt u de SQL-Db's alleen op die kluis beveiligen. Gebruik [REGI ster-AzRecoveryServicesBackupContainer PS-](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) cmdlet om de virtuele machine te registreren.
+Voor Azure VM-back-ups en Azure-bestands shares kan de back-upservice verbinding maken met deze Azure Resource Manager resources en de relevante gegevens ophalen. Omdat SQL een toepassing binnen een Azure-VM is, heeft de back-upservice toestemming nodig om toegang te krijgen tot de toepassing en de benodigde gegevens op te halen. Hiervoor moet u de Azure-VM die de SQL-toepassing bevat, *registreren* bij een Recovery Services kluis. Wanneer u een SQL-VM met een kluis registreert, kunt u de SQL-Db's alleen op die kluis beveiligen. Gebruik [REGI ster-AzRecoveryServicesBackupContainer PS-](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) cmdlet om de virtuele machine te registreren.
 
 ```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -522,6 +522,7 @@ Als u een bestaand beleid wilt bewerken, gebruikt u de opdracht [set-AzRecoveryS
 ```powershell
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
 ```
+
 Controleer of de back-uptaken op een bepaald moment zijn geslaagd om eventuele fouten op te sporen. Als dat het geval is, moet u de problemen oplossen. Voer vervolgens de opdracht beleid bewerken opnieuw uit met de para meter **FixForInconsistentItems** om het beleid opnieuw te bewerken voor alle back-upitems waarvoor de bewerking eerder is mislukt.
 
 ```powershell

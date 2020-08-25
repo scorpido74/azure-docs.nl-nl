@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828503"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782937"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -80,6 +80,10 @@ Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverken
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hoe kan ik logboek gegevens ophalen?
 Alle gegevens worden opgehaald uit een Log Analytics-werk ruimte met behulp van een logboek query die is geschreven met Kusto query language (KQL). U kunt uw eigen query's schrijven of oplossingen en inzichten gebruiken die logboek query's bevatten voor een bepaalde toepassing of service. Zie [overzicht van logboek query's in azure monitor](log-query/log-query-overview.md).
+
+### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Kan ik gegevens verwijderen uit een Log Analytics-werk ruimte?
+Gegevens worden uit een werk ruimte verwijderd op basis van de [Bewaar periode](platform/manage-cost-storage.md#change-the-data-retention-period). U kunt specifieke gegevens verwijderen voor privacy-of nalevings redenen. Zie [persoonlijke gegevens exporteren en verwijderen](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) voor meer informatie.
+
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Wat is een Log Analytics-werkruimte?
 Alle door Azure Monitor verzamelde logboek gegevens worden opgeslagen in een Log Analytics-werk ruimte. Een werk ruimte is in feite een container waarin logboek gegevens worden verzameld uit verschillende bronnen. Mogelijk hebt u een enkele Log Analytics-werk ruimte voor al uw bewakings gegevens of hebt u vereisten voor meerdere werk ruimten. Zie [de implementatie van uw Azure monitor-logboeken ontwerpen](platform/design-logs-deployment.md).
@@ -171,7 +175,7 @@ Gebruik de stappen die worden beschreven in [een waarschuwing bij het maken van 
 - **Waarschuwings voorwaarde definiëren**: geef uw log Analytics-werk ruimte op als bron doel.
 - **Waarschuwings criteria** 
    - **Signaal naam**: *aangepaste zoek opdracht in Logboeken*
-   - **Zoek query**:`Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Zoek query**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **Waarschuwings logica**: **gebaseerd op** het *aantal resultaten*, **waarde** *groter dan*, **drempel waarde** *0*
    - **Geëvalueerd op basis van**: **periode (in minuten)** *30*, **frequentie (in minuten)** *10*
 - **Waarschuwingsdetails definiëren** 
@@ -371,7 +375,7 @@ Gebruik één resource voor alle onderdelen of rollen in één bedrijfs systeem.
 * Als een echte gebruiker uw site in verschillende browsers gebruikt of als u in-private/incognito Browse of verschillende computers gebruikt, worden deze meerdere keren geteld.
 * Als u een aangemelde gebruiker op verschillende computers en browsers wilt identificeren, voegt u een aanroep toe aan [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
 
-### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a>Heb ik alles in Application Insights ingeschakeld?
+### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Heb ik alles in Application Insights ingeschakeld?
 | Wat u moet zien | Hoe kan ik het downloaden? | Waarom u wilt |
 | --- | --- | --- |
 | Beschikbaarheids grafieken |[Webtests](app/monitor-web-app-availability.md) |Weet u zeker dat uw web-app actief is |
@@ -430,9 +434,9 @@ We raden u aan om onze Sdk's te gebruiken en de [SDK API](app/api-custom-events-
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Kan ik een intranet webserver bewaken?
 
 Ja, maar u moet het verkeer naar onze services toestaan door Firewall-uitzonde ringen of proxy omleidingen.
-- QuickPulse`https://rt.services.visualstudio.com:443` 
-- ApplicationIdProvider`https://dc.services.visualstudio.com:443` 
-- TelemetryChannel`https://dc.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
 Bekijk [hier](app/ip-addresses.md)onze volledige lijst met Services en IP-adressen.
@@ -714,7 +718,7 @@ Dit kan een paar oorzaken hebben.  Als er sprake is van een onderbreking in het 
 Ja, nadat u de afhankelijkheids agent hebt geïnstalleerd, verzamelen we informatie van de virtuele machines om groepen weer te geven op basis van het abonnement, de resource groep, de schaal sets voor virtuele machines en Cloud Services.  Als u Servicetoewijzing hebt gebruikt en computer groepen hebt gemaakt, worden deze ook weer gegeven.  Computer groepen worden ook weer gegeven in het filter groepen als u deze hebt gemaakt voor de werk ruimte die u bekijkt. 
 
 ### <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hoe kan ik raadpleegt u de details van wat is de 95e percentiel regel in de samengevoegde prestatie grafieken?
-Standaard wordt de lijst gesorteerd om u de virtuele machines weer te geven die de hoogste waarde voor het 95e percentiel hebben voor de geselecteerde metriek, met uitzonde ring van de beschik bare geheugen grafiek, waarin de computers met de laagste waarde van het vijfde percentiel worden weer gegeven.  Als u op de grafiek klikt, wordt de **bovenste N lijst** weergave geopend met de juiste metriek geselecteerd.
+Standaard wordt de lijst gesorteerd om u de virtuele machines weer te geven die de hoogste waarde voor het 95e percentiel hebben voor de geselecteerde metriek, met uitzonde ring van de beschik bare geheugen grafiek, waarin de computers met de laagste waarde van het vijfde percentiel worden weer gegeven.  Als u op de grafiek klikt, wordt de **bovenste N lijst**  weergave geopend met de juiste metriek geselecteerd.
 
 ### <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hoe verwerken de kaart functie dubbele IP-adressen over verschillende vnets en subnetten?
 Als u IP-bereiken dupliceert met Vm's of virtuele-machine schaal sets van Azure in subnetten en vnets, kan dit ertoe leiden dat Azure Monitor voor VM's kaart onjuiste gegevens weergeeft. Dit is een bekend probleem en we onderzoeken de opties om deze ervaring te verbeteren.

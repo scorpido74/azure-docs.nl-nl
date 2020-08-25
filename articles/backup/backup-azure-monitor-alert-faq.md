@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over de Az
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28645311328a2e2054851af6bacf07927eaa88aa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76989566"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761114"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Bewakings waarschuwing Azure Backup-Veelgestelde vragen
 
@@ -47,22 +47,6 @@ Ja, u kunt rapporten weer geven in kluizen en abonnementen, evenals in regio's. 
 ### <a name="can-i-view-reports-across-tenants"></a>Kan ik rapporten weer geven over tenants?
 
 Als u een [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) -gebruiker bent met gedelegeerde toegang tot de abonnementen of La-werk ruimten van uw klanten, kunt u back-uprapporten gebruiken om gegevens in al uw tenants weer te geven.
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Hoe lang duurt het voordat de taak status van de Azure backup-agent in de portal wordt weer gegeven?
-
-Het Azure Portal kan Maxi maal 15 minuten duren om de taak status van de Azure backup-agent weer te geven.
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Hoelang duurt het om een waarschuwing te geven als een back-uptaak mislukt?
-
-Er wordt een waarschuwing gegenereerd binnen 20 minuten van de Azure backup-fout.
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Is er sprake van een e-mail bericht dat niet wordt verzonden als er meldingen zijn geconfigureerd?
-
-Ja. In de volgende situaties worden er geen meldingen verzonden.
-
-* Als meldingen per uur worden geconfigureerd en er binnen het uur een waarschuwing wordt gegenereerd en opgelost
-* Wanneer een taak wordt geannuleerd
-* Als een tweede back-uptaak mislukt, omdat de oorspronkelijke back-uptaak wordt uitgevoerd
 
 ## <a name="recovery-services-vault"></a>Recovery Services-kluis
 

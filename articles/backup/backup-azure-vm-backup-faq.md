@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262769"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761505"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
@@ -195,8 +195,8 @@ Ja, er is een limiet van 100 Vm's die kunnen worden gekoppeld aan hetzelfde back
 
 ### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>Hoe kan ik de Bewaar instellingen voor mijn back-ups weer geven?
 
-Op dit moment kunt u de Bewaar instellingen weer geven op het niveau van het back-upitem (VM) op basis van het back-upbeleid dat is toegewezen aan de virtuele machine. 
+Op dit moment kunt u de Bewaar instellingen weer geven op het niveau van het back-upitem (VM) op basis van het back-upbeleid dat is toegewezen aan de virtuele machine.
 
 Een van de manieren om de Bewaar instellingen voor uw back-ups weer te geven, is door te navigeren naar het [dash board](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) back-upitem voor uw virtuele machine in de Azure Portal. Als u op de koppeling naar het back-upbeleid klikt, kunt u de Bewaar periode van alle dagelijkse, wekelijkse, maandelijkse en jaarlijkse Bewaar punten voor de virtuele machine bekijken.
 
-U kunt ook [Backup Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) gebruiken om de Bewaar instellingen voor al uw virtuele machines te bekijken binnen één deel venster. Ga vanuit een Recovery Services kluis naar back-up Verkenner, ga naar het tabblad **Back-upitems** en selecteer de geavanceerde weer gave om gedetailleerde informatie over de Bewaar periode voor elke VM weer te geven.  
+U kunt ook [Backup Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) gebruiken om de Bewaar instellingen voor al uw virtuele machines te bekijken binnen één deel venster. Ga vanuit een Recovery Services kluis naar back-up Verkenner, ga naar het tabblad **Back-upitems** en selecteer de geavanceerde weer gave om gedetailleerde informatie over de Bewaar periode voor elke VM weer te geven.
