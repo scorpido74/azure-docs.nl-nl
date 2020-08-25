@@ -1,18 +1,18 @@
 ---
 title: Hulp krijgen bij implementatie van Azure VMware-oplossing of het inrichten van fouten
-description: Informatie over hoe u de gegevens die u nodig hebt uit uw Azure VMware-oplossing (AVS)-privécloud kunt ophalen om een service aanvraag voor AVS-implementatie of inrichtings fouten te maken.
+description: U kunt de informatie die u nodig hebt, ophalen uit de privécloud van uw Azure VMware-oplossing om een service aanvraag te doen voor implementatie van Azure VMware-oplossingen of het inrichten van fouten.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514574"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752237"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Hulp krijgen bij implementatie van Azure VMware-oplossing of het inrichten van fouten
 
-In dit artikel leert u hoe u hulp kunt krijgen bij het implementeren van de Azure VMware-oplossing (AVS) of het inrichten van fouten in uw privécloud door een service aanvraag (SR) te openen in de Azure Portal. U moet eerst enkele belang rijke informatie verzamelen in de Azure Portal. In de meeste gevallen hebt u het volgende nodig:
+In dit artikel leert u hoe u hulp kunt krijgen bij het implementeren van de Azure VMware-oplossing of het inrichten van fouten in uw privécloud door een service aanvraag (SR) te openen in de Azure Portal. U moet eerst enkele belang rijke informatie verzamelen in de Azure Portal. In de meeste gevallen hebt u het volgende nodig:
 
 - Correlatie-ID (van de mislukte implementatie)
 - ExpressRoute-circuit-ID (bij het schalen of koppelen van een bestaande privécloud met het ExpressRoute-circuit privécloud en mislukt)
@@ -27,7 +27,7 @@ Hier volgt een voor beeld van de uitvoer van een mislukte implementatie van een 
 
 Kopieer de correlatie-ID en sla deze op die moet worden opgenomen in de service aanvraag. Zie [uw ondersteunings aanvraag maken](#create-your-support-request) aan het einde van dit artikel voor meer informatie.
 
-Als de fout optreedt in de voorafgaande validatie fasen voordat een privécloud wordt geïmplementeerd, wordt er geen correlatie-ID gegenereerd. In dit geval kunt u gewoon de gegevens opgeven die u hebt gebruikt bij het maken van de automatische AVS-Cloud, waaronder:
+Als de fout optreedt in de voorafgaande validatie fasen voordat een privécloud wordt geïmplementeerd, wordt er geen correlatie-ID gegenereerd. In dit geval kunt u gewoon de gegevens opgeven die u hebt gebruikt bij het maken van de Azure VMware-oplossing privécloud, waaronder:
 
 - Locatie
 - Resourcegroep
@@ -53,7 +53,7 @@ Selecteer in meldingen **meer gebeurtenissen in het activiteiten logboek**.
 
 Zoek vervolgens naar de naam van de resource of op een andere unieke informatie die u hebt gebruikt bij het maken van de resource om de mislukte implementatie en de correlatie-ID te vinden. In het volgende voor beeld worden Zoek resultaten weer gegeven voor een privécloud (pc03).
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Eerdere mislukte AVS-implementaties zoeken.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Eerdere mislukte implementaties van Azure VMware-oplossingen zoeken.":::
  
 Als u de bewerkings naam van de mislukte implementatie selecteert, wordt er een venster met details geopend. Selecteer het tabblad JSON en zoek naar correlationId. Kopieer en neem deze op in de SR. 
  
@@ -63,7 +63,7 @@ Mogelijk hebt u al een privécloud en is er een fout opgetreden bij het schalen 
 
 Wanneer u een privécloud in de portal bekijkt, selecteert u **connectiviteit > ExpressRoute** en kopieert u de **ExpressRoute-id** naar het klem bord.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Een ExpressRoute-ID verzamelen."::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Kopieer de ExpressRoute-ID naar het klem bord."::: 
  
 Plak de ExpressRoute-ID in het juiste veld in de nieuwe ondersteunings aanvraag. Voor meer informatie, zie de volgende sectie, [uw ondersteunings aanvraag maken](#create-your-support-request).
  
@@ -74,11 +74,11 @@ Plak de ExpressRoute-ID in het juiste veld in de nieuwe ondersteunings aanvraag.
 
 Zie [een Azure-ondersteunings aanvraag maken](../azure-portal/supportability/how-to-create-azure-support-request.md)voor algemene richt lijnen bij het maken van uw ondersteunings aanvraag. 
 
-Hier vindt u aanvullende richt lijnen die specifiek zijn voor het maken van een SR voor AVS-implementatie of het inrichten van fouten.
+Hier vindt u aanvullende richt lijnen die specifiek zijn voor het maken van een SR voor implementatie van een Azure VMware-oplossing of het inrichten van fouten.
 
 1. Selecteer het **Help** -pictogram en vervolgens **+ nieuwe ondersteunings aanvraag**.
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Een ExpressRoute-ID verzamelen.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Een ExpressRoute-ID voor uw SR verzamelen.":::
 
 2. Vul alle vereiste velden in en op het tabblad **basis beginselen** :
 

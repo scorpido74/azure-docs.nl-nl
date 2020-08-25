@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d831d40733f9fa1d0db4c53d72de22898e493639
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037096"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795861"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
 
@@ -123,7 +123,7 @@ Als u het analytische opslag systeem loskoppelt van het analytische berekenings 
 > [!NOTE]
 > U kunt alleen lezen uit de analytische opslag met behulp van Synapse Analytics run time. U kunt de gegevens terugschrijven naar uw transactionele archief als een te leveren laag.
 
-## <a name="pricing"></a><a id="analytical-store-pricing"></a>Koers
+## <a name="pricing"></a><a id="analytical-store-pricing"></a> Koers
 
 In de analytische opslag wordt een prijs model op basis van verbruik gevolgd waarvoor u in rekening wordt gebracht:
 
@@ -134,17 +134,17 @@ In de analytische opslag wordt een prijs model op basis van verbruik gevolgd waa
 * Analytische Lees bewerkingen: de Lees bewerkingen die worden uitgevoerd voor het analytische archief van Synapse Analytics Spark en SQL Serverloze uitvoerings tijden.
 
 > [!NOTE]
-> Azure Cosmos DB-analytische opslag is tot en met 30 augustus 2020 beschikbaar in de open bare preview.
+> Azure Cosmos DB Analytical Store is momenteel beschikbaar in open bare Preview gratis van kosten.
 
 Prijzen voor een analytische opslag zijn gescheiden van het prijs model voor de transactie opslag. Er is geen concept van het ingerichte RUs in de analytische opslag. Zie [Azure Cosmos DB-pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)voor meer informatie over het prijs model voor de analytische opslag.
 
 Als u een schatting wilt maken van de kosten op hoog niveau om analytische opslag op een Azure Cosmos DB-container in te scha kelen, kunt u de [Azure Cosmos DB capacity planner](https://cosmos.azure.com/capacitycalculator/) gebruiken en een schatting maken van uw analytische opslag-en schrijf bewerkings kosten. Analytische Lees bewerkings kosten zijn afhankelijk van de kenmerken van de analytische werk belasting, maar als een schatting op hoog niveau is het scannen van 1 TB aan gegevens in de analytische opslag meestal het resultaat van 130.000 analytische Lees bewerkingen en de kosten van $0,065.
 
-## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a>Analytische time-to-Live (TTL)
+## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> Analytische time-to-Live (TTL)
 
 Analytical TTL geeft aan hoe lang gegevens voor een container moeten worden bewaard in uw analytische opslag. 
 
-De toevoegingen, updates, verwijderingen van de operationele gegevens worden automatisch gesynchroniseerd vanuit transactioneel archief naar een analytische opslag, ongeacht de transactionele TTL-configuratie. De retentie van deze operationele gegevens in de analytische opslag kan worden bepaald door de analytische TTL-waarde op container niveau, zoals hieronder is aangegeven:
+Als het analytische archief is ingeschakeld, worden invoeg acties, updates en verwijderingen van operationele gegevens automatisch gesynchroniseerd vanuit transactioneel archief naar een analytische archief, onafhankelijk van de transactionele TTL-configuratie. De retentie van deze operationele gegevens in de analytische opslag kan worden bepaald door de analytische TTL-waarde op container niveau, zoals hieronder is aangegeven:
 
 De analyse-TTL voor een container wordt ingesteld met behulp van de `AnalyticalStoreTimeToLiveInSeconds` eigenschap:
 
@@ -152,7 +152,7 @@ De analyse-TTL voor een container wordt ingesteld met behulp van de `AnalyticalS
 
 * Indien aanwezig en de waarde is ingesteld op '-1 ': de analytische opslag behoudt alle historische gegevens, ongeacht de Bewaar periode van de gegevens in het transactionele archief. Met deze instelling geeft u aan dat het analytische archief oneindig bewaren van uw operationele gegevens bevat
 
-* Indien aanwezig en de waarde is ingesteld op een positief getal ' n ': items verlopen vanaf de ' n ' seconden van het analytische archief na de laatste wijziging in het transactionele archief. Deze instelling kan worden gebruikt als u uw operationele gegevens gedurende een beperkte periode wilt bewaren in de analytische opslag, ongeacht het bewaren van de gegevens in het transactionele archief.
+* Indien aanwezig en de waarde is ingesteld op een positief getal ' n ': items verlopen vanaf de ' n ' seconden van het analytische archief na de laatste wijziging in het transactionele archief. Deze instelling kan worden gebruikt als u uw operationele gegevens gedurende een beperkte periode wilt bewaren in de analytische opslag, ongeacht de retentie van de gegevens in het transactionele archief
 
 Enkele punten om in overweging te nemen:
 *   Nadat de analytische opslag is ingeschakeld met een analytische TTL-waarde, kan deze later worden bijgewerkt naar een andere geldige waarde. 

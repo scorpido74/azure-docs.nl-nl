@@ -3,18 +3,18 @@ title: Concepten-persoonlijke Clouds en clusters
 description: Meer informatie over de belangrijkste mogelijkheden van Azure VMware-software-gedefinieerde data centers en vSphere-clusters in VMware-oplossing in azure op VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906986"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752289"
 ---
-# <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware-oplossing (AVS) voor beeld van persoonlijke Cloud en cluster concepten
+# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware-oplossing preview persoonlijke Cloud en cluster concepten
 
-De Azure VMware-oplossing (AVS) levert privé-Clouds op basis van VMware in Azure. De persoonlijke Clouds zijn gebouwd op basis van clusters van toegewezen bare-metal hosts en worden geïmplementeerd en beheerd via de Azure Portal. Clusters in persoonlijke Clouds worden ingericht met VMware vSphere-, vCenter-, vSAN-en NSX-software. AVS-hardware-en software-implementaties in de Cloud zijn volledig geïntegreerd en geautomatiseerd in Azure.
+De Azure VMware-oplossing levert persoonlijke Clouds op basis van VMware in Azure. De persoonlijke Clouds zijn gebouwd op basis van clusters van toegewezen bare-metal hosts en worden geïmplementeerd en beheerd via de Azure Portal. Clusters in persoonlijke Clouds worden ingericht met VMware vSphere-, vCenter-, vSAN-en NSX-software. Azure VMware-oplossing, hardware-en software-implementaties in de privécloud zijn volledig geïntegreerd en geautomatiseerd in Azure.
 
-Er is een logische relatie tussen Azure-abonnementen, AVS-persoonlijke Clouds, vSAN-clusters en-hosts. In het diagram worden twee persoonlijke Clouds in één Azure-abonnement weer gegeven. Persoonlijke Clouds vertegenwoordigen een ontwikkelings-en een productie omgeving, elk met hun eigen privécloud. In elk van deze persoonlijke Clouds zijn er twee clusters. Als u de lagere mogelijke behoeften van een ontwikkel omgeving wilt weer geven, worden kleinere clusters met hosts met een lagere capaciteit gebruikt. Al deze concepten worden beschreven in de volgende secties.
+Er is een logische relatie tussen Azure-abonnementen, persoonlijke Clouds van Azure VMware, vSAN-clusters en hosts. In het diagram worden twee persoonlijke Clouds in één Azure-abonnement weer gegeven. Persoonlijke Clouds vertegenwoordigen een ontwikkelings-en een productie omgeving, elk met hun eigen privécloud. In elk van deze persoonlijke Clouds zijn er twee clusters. Als u de lagere mogelijke behoeften van een ontwikkel omgeving wilt weer geven, worden kleinere clusters met hosts met een lagere capaciteit gebruikt. Al deze concepten worden beschreven in de volgende secties.
 
 ![Afbeelding van twee persoonlijke Clouds in een klant abonnement](./media/hosts-clusters-private-clouds-final.png)
 
@@ -34,7 +34,7 @@ U kunt clusters maken, verwijderen en schalen via de portal of API. U kunt nog s
 
 ## <a name="hosts"></a>Hosts
 
-De knoop punten met een Hyper-Metal-infra structuur worden gebruikt in de automatische AVS-Cloud clusters. De geheugen-, CPU-en schijf capaciteit van de host vindt u in de volgende tabel. 
+De knoop punten met een Hyper-Metal-infrastructuur beheerder worden gebruikt in azure VMware-oplossingen voor particuliere cloud clusters. De geheugen-, CPU-en schijf capaciteit van de host vindt u in de volgende tabel. 
 
 | Hosttype              |             CPU             |   RAM (GB)   |  vSAN NVMe-cache-laag (TB, RAW)  |  vSAN SSD-capaciteits tier (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
@@ -44,27 +44,27 @@ Hosts die worden gebruikt voor het bouwen of schalen van clusters, worden verkre
 
 ## <a name="vmware-software-versions"></a>VMware-software versies
 
-De huidige software versies van de VMware-software die in de automatische AVS-Cloud clusters worden gebruikt, zijn:
+De huidige software versies van de VMware-software die worden gebruikt in azure VMware-oplossingen persoonlijke Cloud clusters zijn:
 
 | Software              |    Versie   |
 | :---                  |     :---:    |
 | VCSA/vSphere/ESXi |    6,7 U2    | 
 | ESXi                  |    6,7 U2    | 
 | vSAN                  |    6,7 U2    |
-| NSX-T                 |      2.5     |
+| NSX-T                 |      2,5     |
 
 Voor elk nieuw cluster in een privécloud komt de versie van de software overeen met wat er momenteel wordt uitgevoerd in de privécloud. Voor elke nieuwe privécloud in een klant abonnement is de nieuwste versie van de software stack geïnstalleerd.
 
-Het algemene upgrade beleid en de processen voor de software van het AVS-platform worden beschreven in het document concepten bijwerken.
+Het algemene upgrade beleid en de processen voor de Azure VMware Solution platform-software worden beschreven in het document concepten bijwerken.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Host onderhoud en levenscyclus beheer
 
 Host onderhoud en levenscyclus beheer worden uitgevoerd zonder gevolgen voor de capaciteit of prestaties van particuliere cloud clusters. Voor beelden van automatische host onderhoud zijn onder andere firmware-upgrades en reparaties of vervangingen van hardware.
 
-Micro soft is verantwoordelijk voor het levenscyclus beheer van NSX-T-apparaten, zoals NSX-T-beheer en NSX-T EDGE. Micro soft is ook verantwoordelijk voor het Boots trappen van de netwerk configuratie, zoals het maken van de laag-0-gateway en het inschakelen van Noord-Zuid-route ring. Als beheerder van de privécloud van uw AVS bent u verantwoordelijk voor de configuratie van NSX-T SDN, zoals netwerk segmenten, gedistribueerde firewall regels, laag 1-gateways en load balancers.
+Micro soft is verantwoordelijk voor het levenscyclus beheer van NSX-T-apparaten, zoals NSX-T-beheer en NSX-T EDGE. Micro soft is ook verantwoordelijk voor het Boots trappen van de netwerk configuratie, zoals het maken van de laag-0-gateway en het inschakelen van Noord-Zuid-route ring. Als beheerder van uw Azure VMware-oplossing privécloud, bent u verantwoordelijk voor NSX-T SDN-configuratie, zoals netwerk segmenten, gedistribueerde firewall regels, laag 1-gateways en load balancers.
 
 > [!IMPORTANT]
-> Een AVS-beheerder mag de configuratie van NSX-T-rand of tier-0-gateway niet wijzigen. Dit kan leiden tot een verlies van de service.
+> Een Azure VMware-oplossings beheerder mag de configuratie van de NSX-T-rand of de laag-0-gateway niet wijzigen. Dit kan leiden tot een verlies van de service.
 
 ## <a name="backup-and-restoration"></a>Back-ups maken en herstellen
 

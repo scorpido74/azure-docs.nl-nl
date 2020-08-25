@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008794"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752098"
 ---
 # <a name="configure-an-aks-cluster"></a>Een AKS-cluster configureren
 
@@ -81,17 +81,17 @@ Als u knooppunt Pools met de AKS Ubuntu 16,04-installatie kopie wilt maken, kunt
 
 Een container-runtime is software die containers uitvoert en container installatie kopieën beheert op een knoop punt. De runtime helpt bij het samen vatting van de specifieke functionaliteit van het besturings systeem (OS) voor het uitvoeren van containers in Linux of Windows. Vandaag AKS maakt gebruik van [Moby](https://mobyproject.org/) (upstream docker) als container runtime. 
     
-![Docker CRI](media/cluster-configuration/docker-cri.png)
+![Docker CRI 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/)is een [OCI](https://opencontainers.org/) (open container Initiative) compatibele kern container-runtime die de minimale set vereiste functionaliteit biedt om containers uit te voeren en installatie kopieën op een knoop punt te beheren. Het is [gedoneerd](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) aan de Cloud systeem eigen Compute Foundation (CNCF) in maart 2017. De huidige Moby-versie die AKS gebruikt, maakt al gebruik van en is gebaseerd op `containerd` , zoals hierboven wordt weer gegeven. 
+[`Containerd`](https://containerd.io/) is een [OCI](https://opencontainers.org/) (open container Initiative) compatibele kern container-runtime die de minimale set vereiste functionaliteit biedt om containers uit te voeren en installatie kopieën op een knoop punt te beheren. Het is [gedoneerd](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/) aan de Cloud systeem eigen Compute Foundation (CNCF) in maart 2017. De huidige Moby-versie die AKS gebruikt, maakt al gebruik van en is gebaseerd op `containerd` , zoals hierboven wordt weer gegeven. 
 
 Met een container knooppunt en knooppunt groepen, in plaats van te praten met de `dockershim` , wordt de kubelet `containerd` via de INVOEG toepassing cri (container runtime-Interface) rechtstreeks gecommuniceerd, waarbij extra hops in de stroom worden verwijderd in vergelijking met de DOCKer cri-implementatie. Als zodanig ziet u hoe beter pod opstart latentie en minder bronnen (CPU en geheugen) worden gebruikt.
 
 Door te gebruiken `containerd` voor AKS-knoop punten, verbetert de opstart latentie van Pod en wordt het gebruik van knooppunt bronnen door de container runtime afgenomen. Deze verbeteringen worden door deze nieuwe architectuur ingeschakeld, waarbij kubelet rechtstreeks naar de `containerd` cri-invoeg toepassing praat terwijl de Moby/docker-architectuur kubelet de `dockershim` en de docker-Engine zonder problemen zou kunnen praten voordat `containerd` ze bereiken, waardoor er extra hops in de stroom zijn.
 
-![Docker CRI](media/cluster-configuration/containerd-cri.png)
+![Docker CRI 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd`werkt bij elke GA-versie van kubernetes in AKS en in elke upstream-kubernetes-versie hoger dan v 1,10, en ondersteunt alle functies kubernetes en AKS.
+`Containerd` werkt bij elke GA-versie van kubernetes in AKS en in elke upstream-kubernetes-versie hoger dan v 1,10, en ondersteunt alle functies kubernetes en AKS.
 
 > [!IMPORTANT]
 > Nadat het `containerd` algemeen beschikbaar is op AKS, is dit de standaard optie en alleen beschikbaar voor container runtime op nieuwe clusters. U kunt nog steeds Moby nodepools en clusters op oudere ondersteunde versies gebruiken totdat deze ondersteuning bieden. 
@@ -159,14 +159,14 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 Als u knooppunt Pools met de Moby (docker)-runtime wilt maken, kunt u dit doen door de aangepaste tag weg te laten `--aks-custom-headers` .
 
 
-### <a name="containerd-limitationsdifferences"></a>`Containerd`beperkingen/verschillen
+### <a name="containerd-limitationsdifferences"></a>`Containerd` beperkingen/verschillen
 
 * Als `containerd` u de container runtime wilt gebruiken, moet u AKS Ubuntu 18,04 gebruiken als basis installatie kopie van het besturings systeem.
 * Terwijl de docker-werkset nog steeds aanwezig is op de knoop punten, wordt Kubernetes gebruikt `containerd` als container runtime. Omdat Moby/docker de door Kubernetes gemaakte containers niet op de knoop punten beheert, kunt u uw containers daarom niet weer geven of gebruiken met behulp van docker-opdrachten (zoals `docker ps` ) of de docker-API.
 * Voor `containerd` kunt u het beste [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) als vervangings-CLI gebruiken in plaats van de docker-CLI, voor het **oplossen** van een Peul, containers en container installatie kopieën op Kubernetes-knoop punten (bijvoorbeeld `crictl ps` ). 
    * Het biedt geen volledige functionaliteit van de docker-CLI. Het is alleen bedoeld voor het oplossen van problemen.
-   * `crictl`biedt een meer kubernetes gebruiks vriendelijke weer gave van containers, met concepten zoals peulen, enzovoort.
-* `Containerd`Hiermee stelt u logboek registratie in met de gestandaardiseerde `cri` logboek indeling (die verschilt van wat u momenteel van het JSON-stuur programma van de docker haalt). Uw logboek registratie oplossing moet ondersteuning bieden voor de `cri` indeling voor logboek registratie (zoals [Azure monitor voor containers](../azure-monitor/insights/container-insights-enable-new-cluster.md))
+   * `crictl` biedt een meer kubernetes gebruiks vriendelijke weer gave van containers, met concepten zoals peulen, enzovoort.
+* `Containerd` Hiermee stelt u logboek registratie in met de gestandaardiseerde `cri` logboek indeling (die verschilt van wat u momenteel van het JSON-stuur programma van de docker haalt). Uw logboek registratie oplossing moet ondersteuning bieden voor de `cri` indeling voor logboek registratie (zoals [Azure monitor voor containers](../azure-monitor/insights/container-insights-enable-new-cluster.md))
 * U hebt geen toegang meer tot de docker-engine, of u kunt `/var/run/docker.sock` docker-in-docker (DinD) niet meer gebruiken.
   * Als u momenteel toepassings Logboeken of bewakings gegevens van de docker-engine uitpakt, kunt u in plaats daarvan iets gebruiken als [Azure monitor voor containers](../azure-monitor/insights/container-insights-enable-new-cluster.md) . Daarnaast biedt AKS geen ondersteuning voor het uitvoeren van out-of-band-opdrachten op de agent knooppunten die instabiliteit kunnen veroorzaken.
   * Zelfs bij gebruik van Moby/docker, het bouwen van installatie kopieën en rechtstreeks gebruikmaken van de docker-engine via de bovenstaande methoden, wordt sterk afgeraden. Kubernetes is niet volledig op de hoogte van deze verbruikte resources en deze benaderingen presen teren hier talloze problemen die [hier](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) [worden beschreven, bijvoorbeeld.](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)
@@ -236,7 +236,7 @@ Als u reguliere gen1-knooppunt groepen wilt maken, kunt u dit doen door de aange
 
 ## <a name="ephemeral-os-preview"></a>Kortstondige OS (preview-versie)
 
-De besturingssysteem schijf voor een virtuele machine van Azure wordt standaard automatisch gerepliceerd naar Azure Storage om gegevens verlies te voor komen, omdat de VM moet worden verplaatst naar een andere host. Omdat containers echter niet zijn ontworpen om de lokale status persistent te maken, biedt dit gedrag een beperkte waarde bij een aantal nadelen, waaronder het langzamer inrichten van knoop punten en een lagere latentie bij lees/schrijf bewerkingen.
+De besturingssysteem schijf voor een virtuele machine van Azure wordt standaard automatisch gerepliceerd naar Azure Storage om gegevens verlies te voor komen, omdat de VM moet worden verplaatst naar een andere host. Omdat containers echter niet zijn ontworpen om de lokale status persistent te maken, biedt dit gedrag een beperkte waarde bij een aantal nadelen, waaronder het langzamer inrichten van knoop punten en een hogere latentie bij lees/schrijf bewerkingen.
 
 Tijdelijke besturingssysteem schijven worden daarentegen alleen op de hostcomputer opgeslagen, net als een tijdelijke schijf. Dit biedt een lagere latentie voor lezen/schrijven, met snellere knooppunt schaling en cluster upgrades.
 

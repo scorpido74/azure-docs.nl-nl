@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2020
-ms.openlocfilehash: 82a66d88b3c7c3492e7cb90116ff8ff8e61ca1b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/21/2020
+ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036586"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751467"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Opmerkingen bij de release van Azure HDInsight
 
@@ -72,3 +72,7 @@ Hieronder vindt u een back-up van de JIRAs voor HBase:
 
 ## <a name="component-version-change"></a>Onderdeel versie wijzigen
 Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)vindt u de huidige versie van de onderdelen voor hdinsight 4,0 en hdinsight 3,6.
+
+## <a name="known-issues"></a>Bekende problemen
+
+Wanneer er wordt geprobeerd een Azure HDInsight-cluster te maken op basis van de Azure Portal en een SSH-verificatie type van een open bare sleutel te gebruiken, treedt er een fout op wanneer gebruikers op **beoordelen + maken**klikken. De fout in de portal is ' mag geen drie opeenvolgende tekens bevatten van SSH-gebruikers naam '. Dit probleem wordt opgelost. Als u deze fout ondervindt, wordt de tijdelijke oplossing echter een cluster met een ARM-sjabloon gemaakt. 

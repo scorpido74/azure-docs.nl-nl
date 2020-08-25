@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214213"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796966"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u de uitgangs route van een cluster kunt aan
 
 ## <a name="overview-of-outbound-types-in-aks"></a>Overzicht van uitgaande typen in AKS
 
-Een AKS-cluster kan worden aangepast met een uniek `outboundType` type Load Balancer of door de gebruiker gedefinieerde route ring.
+Een AKS-cluster kan worden aangepast met een uniek `outboundType` type `loadBalancer` of `userDefinedRouting` .
 
 > [!IMPORTANT]
 > Uitgaand type is alleen van invloed op het uitgaande verkeer van uw cluster. Zie voor meer informatie over het [instellen van ingress-controllers](ingress-basic.md).
@@ -62,7 +62,11 @@ Als `userDefinedRouting` is ingesteld, AKS niet automatisch uitzonderings paden 
 
 Het AKS-cluster moet worden geïmplementeerd in een bestaand virtueel netwerk met een subnet dat eerder is geconfigureerd omdat als er geen standaard load balancer-architectuur (SLB) wordt gebruikt, moet u expliciete uitgang instellen. Daarom vereist deze architectuur expliciet uitgaand verkeer naar een apparaat als een firewall, gateway, proxy of om de NAT (Network Address Translation) toe te staan door een openbaar IP-adres dat is toegewezen aan de standaard load balancer of het apparaat.
 
-De resource provider AKS implementeert een Standard-load balancer (SLB). De load balancer is niet geconfigureerd met regels en er [worden geen kosten in rekening gebracht tot er een regel wordt geplaatst](https://azure.microsoft.com/pricing/details/load-balancer/). AKS wordt niet automatisch een openbaar IP-adres voor de SLB-frontend ingericht en de load balancer back-end-groep **niet** automatisch geconfigureerd.
+#### <a name="load-balancer-creation-with-userdefinedrouting"></a>Load Balancer maken met userDefinedRouting
+
+AKS-clusters met een uitgaand type UDR ontvangen alleen een standaard load balancer (SLB) wanneer de eerste Kubernetes-service van het type Load Balancer wordt geïmplementeerd. De load balancer is geconfigureerd met een openbaar IP-adres voor *inkomende* aanvragen en een back-end-groep voor *inkomende* aanvragen. Binnenkomende regels worden geconfigureerd door de Azure-Cloud provider, maar **Er zijn geen uitgaand openbaar IP-adres of uitgaande regels** geconfigureerd als gevolg van een uitgaand type UDR. Uw UDR is nog steeds de enige bron voor uitgaand verkeer.
+
+Er worden geen kosten in rekening gebracht voor Azure load balancers [totdat een regel is geplaatst](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 ## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>Een cluster met uitgaand type UDR en Azure Firewall implementeren
 
@@ -70,9 +74,7 @@ Ter illustratie van de toepassing van een cluster met een uitgaand type met behu
 
 > [!IMPORTANT]
 > Uitgaand type UDR vereist dat er een route voor 0.0.0.0/0 en de volgende hop-bestemming van NVA (virtueel netwerk apparaat) in de route tabel is.
-> De route tabel heeft al een standaard 0.0.0.0/0 op internet, zonder een openbaar IP-adres voor SNAT. Als u deze route alleen wilt toevoegen, hoeft u niets te doen. AKS valideert dat u geen 0.0.0.0/0-route hebt gemaakt die verwijst naar het Internet, maar in plaats daarvan NVA of gateway, enzovoort.
-> 
-> Wanneer u een uitgaand type UDR gebruikt, wordt er geen load balancer open bare IP-adres gemaakt, tenzij een service van het type *Load Balancer* is geconfigureerd.
+> De route tabel heeft al een standaard 0.0.0.0/0 op internet, zonder een openbaar IP-adres voor SNAT. Als u deze route alleen wilt toevoegen, hoeft u niets te doen. AKS valideert dat u geen 0.0.0.0/0-route hebt gemaakt die verwijst naar het Internet, maar in plaats daarvan NVA of gateway, enzovoort. Wanneer u een uitgaand type UDR gebruikt, wordt er geen load balancer openbaar IP-adres voor **inkomende aanvragen** gemaakt, tenzij een service van het type *Load Balancer* is geconfigureerd. Een openbaar IP-adres voor **uitgaande aanvragen** wordt nooit gemaakt door aks als een uitgaand type UDR is ingesteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

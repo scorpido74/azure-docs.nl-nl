@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 03477fa46aaec04c0563ed38b085605dce5b87a1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120827"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751736"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,9 @@ Meer informatie over het gebruik van Azure Machine Learning voor het implementer
 - __Opties voor hardwareversnelling,__ zoals GPU en Programmeer bare poort matrices (FPGA).
 
 > [!IMPORTANT]
-> Het schalen van clusters wordt niet ondersteund via de Azure Machine Learning SDK. Zie [het aantal knoop punten schalen in een AKS-cluster](../aks/scale-cluster.md)voor meer informatie over het schalen van de knooppunten in een AKS-cluster.
+> Het schalen van clusters wordt niet ondersteund via de Azure Machine Learning SDK. Zie voor meer informatie over het schalen van de knoop punten in een AKS-cluster 
+- [Het aantal knoop punten in een AKS-cluster hand matig schalen](../aks/scale-cluster.md)
+- [Automatische cluster schaal instellen in AKS](../aks/cluster-autoscaler.md)
 
 Wanneer u implementeert in azure Kubernetes service, implementeert u naar een AKS-cluster dat is __verbonden met uw werk ruimte__. Er zijn twee manieren om een AKS-cluster te verbinden met uw werk ruimte:
 
@@ -43,7 +45,7 @@ Het AKS-cluster en de AML-werk ruimte kunnen zich in verschillende resource groe
 > [!IMPORTANT]
 > U wordt aangeraden lokaal fouten op te sporen voordat u de webservice implementeert. Zie voor meer informatie [fouten opsporen in lokaal](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
 >
-> U kunt ook verwijzen naar Azure Machine Learning- [implementeren naar lokale notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
+> U kunt ook verwijzen naar Azure Machine Learning: [Deploy to Local Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) (Implementeren naar lokale notebook)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -55,9 +57,9 @@ Het AKS-cluster en de AML-werk ruimte kunnen zich in verschillende resource groe
 
 - In de code fragmenten van __python__ in dit artikel wordt ervan uitgegaan dat de volgende variabelen zijn ingesteld:
 
-    * `ws`-Ingesteld op uw werk ruimte.
-    * `model`-Ingesteld op uw geregistreerde model.
-    * `inference_config`-Stel in op de configuratie voor het afstellen van het model.
+    * `ws` -Ingesteld op uw werk ruimte.
+    * `model` -Ingesteld op uw geregistreerde model.
+    * `inference_config` -Stel in op de configuratie voor het afstellen van het model.
 
     Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
@@ -65,9 +67,16 @@ Het AKS-cluster en de AML-werk ruimte kunnen zich in verschillende resource groe
 
 - Als u een Standard Load Balancer (SLB) hebt geïmplementeerd in uw cluster in plaats van een Basic-Load Balancer (BLB), maakt u een cluster in de AKS-Portal/CLI/SDK en koppelt u het vervolgens aan de werk ruimte AML.
 
-- Als u een AKS-cluster koppelt, waarvoor een [geautoriseerd IP-bereik is ingeschakeld voor toegang tot de API-server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), schakelt u de IP-adresbereiken van het AML-besturings vlak in voor het AKS-cluster. Het AML-besturings vlak wordt geïmplementeerd in gepaarde regio's en er wordt een detwistisatie voor het AKS-cluster geïmplementeerd. Als u geen toegang hebt tot de API-server, kan het niet meer worden geïmplementeerd. Gebruik de [IP-bereiken](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) voor beide [regio's]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) bij het inschakelen van de IP-bereiken in een AKS-cluster.
+- Als u een Azure Policy hebt waarmee het maken van een openbaar IP-adres wordt beperkt, mislukt het maken van een AKS-cluster. AKS vereist een openbaar IP-adres voor uitgaand [verkeer](https://docs.microsoft.com/azure/aks/limit-egress-traffic). Dit artikel bevat ook richt lijnen voor het vergren delen van uitgaand verkeer van het cluster via het open bare IP-adres, met uitzonde ring van een paar FQDN. Er zijn twee manieren om een openbaar IP-adres in te scha kelen:
+  - Het cluster kan gebruikmaken van het open bare IP-adres dat standaard is gemaakt met de BLB of SLB, of
+  - Het cluster kan worden gemaakt zonder een openbaar IP-adres en een openbaar IP-adres wordt geconfigureerd met een firewall met een door de gebruiker gedefinieerde route zoals [hier](https://docs.microsoft.com/azure/aks/egress-outboundtype) wordt beschreven 
+  
+  Het AML-besturings vlak communiceert niet met dit open bare IP-adres. Het spreekt naar het AKS-besturings vlak voor implementaties. 
 
-__IP-adresbereiken van Authroized werken alleen met Standard Load Balancer.__
+- Als u een AKS-cluster koppelt, waarvoor een [geautoriseerd IP-bereik is ingeschakeld voor toegang tot de API-server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), schakelt u de IP-adresbereiken voor het AML Contol-vlak in voor het AKS-cluster. Het AML-besturings vlak wordt geïmplementeerd in gepaarde regio's en er wordt een detwistisatie voor het AKS-cluster geïmplementeerd. Als u geen toegang hebt tot de API-server, kan het niet meer worden geïmplementeerd. Gebruik de [IP-bereiken](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) voor beide [regio's]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) bij het inschakelen van de IP-bereiken in een AKS-cluster.
+
+
+  IP-adresbereiken van Authroized werken alleen met Standard Load Balancer.
  
  - De naam van de compute moet uniek zijn binnen een werk ruimte
    - De naam is vereist en moet tussen de 3 en 24 tekens lang zijn.
@@ -76,10 +85,6 @@ __IP-adresbereiken van Authroized werken alleen met Standard Load Balancer.__
    - De naam moet uniek zijn voor alle bestaande berekeningen binnen een Azure-regio. U ziet een waarschuwing als de naam die u kiest, niet uniek is
    
  - Als u modellen wilt implementeren op GPU-knoop punten of FPGA-knoop punten (of een specifieke SKU), moet u een cluster maken met de specifieke SKU. Er is geen ondersteuning voor het maken van een secundaire knooppunt groep in een bestaand cluster en het implementeren van modellen in de secundaire knooppunt groep.
- 
- 
-
-
 
 ## <a name="create-a-new-aks-cluster"></a>Een nieuw AKS-cluster maken
 
@@ -290,7 +295,7 @@ In Azure Machine Learning wordt ' implementatie ' gebruikt voor een meer algemen
     1. Als deze niet wordt gevonden, bouwt het systeem een nieuwe installatie kopie (die wordt opgeslagen in de cache en geregistreerd bij de werk ruimte ACR)
 1. Het gecomprimeerde project bestand downloaden naar de tijdelijke opslag op het reken knooppunt
 1. Het project bestand uitgepakt
-1. Het reken knooppunt wordt uitgevoerd`python <entry script> <arguments>`
+1. Het reken knooppunt wordt uitgevoerd `python <entry script> <arguments>`
 1. Logboeken, model bestanden en andere bestanden die zijn geschreven naar `./outputs` naar het opslag account dat is gekoppeld aan de werk ruimte opslaan
 1. Computer omlaag schalen, inclusief het verwijderen van tijdelijke opslag (gekoppeld aan Kubernetes)
 
@@ -409,7 +414,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Als u een sleutel opnieuw moet genereren, gebruikt u[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+> Als u een sleutel opnieuw moet genereren, gebruikt u [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>Verificatie met tokens
 

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d303f8a04a9159eeb4dc5e78ef09b57f5a966c72
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691357"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795912"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD
 
@@ -37,7 +37,7 @@ Het beveiligen van bevoegde toegang vereist wijzigingen in:
 * Processen, beheer procedures en kennis beheer
 * Technische onderdelen, zoals beveiligingen van de host, account bescherming en identiteits beheer
 
-Beveilig uw bevoorrechte toegang op een manier die wordt beheerd en gerapporteerd in de micro soft-services die u begeleidt. Als u on-premises beheerders accounts hebt, raadpleegt u de richt lijnen voor on-premises en hybride privileged Access in Active Directory op het [beveiligen van bevoegde toegang](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access).
+Beveilig uw bevoorrechte toegang op een manier die wordt beheerd en gerapporteerd in de micro soft-services die u begeleidt. Als u on-premises beheerders accounts hebt, raadpleegt u de richt lijnen voor on-premises en hybride privileged Access in Active Directory op het [beveiligen van bevoegde toegang](/windows-server/identity/securing-privileged-access/securing-privileged-access).
 
 > [!NOTE]
 > De richt lijnen in dit artikel zijn voornamelijk bedoeld voor functies van Azure Active Directory die zijn opgenomen in Azure Active Directory Premium plan P1 en P2. Azure Active Directory Premium P2 is opgenomen in EMS E5 Suite en Microsoft 365 E5 Suite. In deze richt lijnen wordt ervan uitgegaan dat uw organisatie al Azure AD Premium P2-licenties heeft gekocht voor uw gebruikers. Als u deze licenties niet hebt, is het mogelijk dat bepaalde instructies niet van toepassing zijn op uw organisatie. In dit artikel wordt ook de term globale beheerder (of globale beheerder) beschouwd als ' bedrijfs beheerder ' of ' Tenant beheerder '.
@@ -93,7 +93,7 @@ Nadat u Azure AD Privileged Identity Management hebt ingeschakeld, bekijkt u de 
 * Exchange-beheerder
 * SharePoint-beheerder
 
-Als u geen Azure AD Privileged Identity Management hebt in uw organisatie, kunt u de [Power shell-API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)gebruiken. Begin met de rol van globale beheerder omdat een globale beheerder dezelfde machtigingen heeft voor alle Cloud Services waarvoor uw organisatie een abonnement heeft. Deze machtigingen worden verleend, ongeacht waar ze zijn toegewezen: in het Microsoft 365-beheer centrum, de Azure Portal of de Azure AD-module voor micro soft power shell.
+Als u geen Azure AD Privileged Identity Management hebt in uw organisatie, kunt u de [Power shell-API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)gebruiken. Begin met de rol van globale beheerder omdat een globale beheerder dezelfde machtigingen heeft voor alle Cloud Services waarvoor uw organisatie een abonnement heeft. Deze machtigingen worden verleend, ongeacht waar ze zijn toegewezen: in het Microsoft 365-beheer centrum, de Azure Portal of de Azure AD-module voor micro soft power shell.
 
 Verwijder alle accounts die niet meer nodig zijn voor deze rollen. Vervolgens categoriseert u de overige accounts die zijn toegewezen aan beheerders rollen:
 
@@ -130,7 +130,7 @@ De toename van ' uw eigen apparaat meenemen ' en het werken met een thuis beleid
 
 * Identificeer de gebruikers met beheerders rollen en de services die ze kunnen beheren.
 * Gebruik Azure AD PIM om erachter te komen welke gebruikers in uw organisatie beheerders toegang hebben tot Azure AD.
-* Naast de functies die zijn gedefinieerd in azure AD, wordt Office 365 geleverd met een set beheerders rollen die u kunt toewijzen aan gebruikers in uw organisatie. Elke beheerdersrol wordt toegewezen aan algemene bedrijfs functies en geeft personen in uw organisatie machtigingen om specifieke taken uit te voeren in het [Microsoft 365-beheer centrum](https://admin.microsoft.com). Gebruik het Microsoft 365-beheer centrum om erachter te komen welke gebruikers in uw organisatie beheerders toegang hebben tot Office 365, met inbegrip van rollen die niet worden beheerd in azure AD. Zie [over office 365-beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) en [beveiligings procedures voor Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)voor meer informatie.
+* Naast de functies die zijn gedefinieerd in azure AD, wordt Office 365 geleverd met een set beheerders rollen die u kunt toewijzen aan gebruikers in uw organisatie. Elke beheerdersrol wordt toegewezen aan algemene bedrijfs functies en geeft personen in uw organisatie machtigingen om specifieke taken uit te voeren in het [Microsoft 365-beheer centrum](https://admin.microsoft.com). Gebruik het Microsoft 365-beheer centrum om erachter te komen welke gebruikers in uw organisatie beheerders toegang hebben tot Office 365, met inbegrip van rollen die niet worden beheerd in azure AD. Zie [over office 365-beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) en [beveiligings procedures voor Office 365](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)voor meer informatie.
 * Maak de inventarisatie in services die uw organisatie afhankelijk maakt, zoals Azure, intune of Dynamics 365.
 * Zorg ervoor dat uw accounts worden gebruikt voor beheer doeleinden:
 
@@ -169,11 +169,11 @@ Inschakelen:
 
 * [MFA met beleids regels voor voorwaardelijke toegang](../authentication/howto-mfa-getstarted.md) voor alle gebruikers in uw organisatie.
 
-Als u Windows hello voor bedrijven gebruikt, kan aan de MFA-vereiste worden voldaan door gebruik te maken van de aanmeld ervaring van Windows hello. Zie [Windows hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)voor meer informatie.
+Als u Windows hello voor bedrijven gebruikt, kan aan de MFA-vereiste worden voldaan door gebruik te maken van de aanmeld ervaring van Windows hello. Zie [Windows hello](/windows/uwp/security/microsoft-passport)voor meer informatie.
 
 #### <a name="configure-identity-protection"></a>Identiteits beveiliging configureren
 
-Azure AD Identity Protection is een op algoritme gebaseerd hulp programma voor bewaking en rapportage dat mogelijke beveiligings problemen detecteert die van invloed zijn op de identiteiten van uw organisatie. U kunt automatische reacties op gedetecteerde verdachte activiteiten configureren en de juiste actie ondernemen om ze op te lossen. Zie [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) voor meer informatie.
+Azure AD Identity Protection is een op algoritme gebaseerd hulp programma voor bewaking en rapportage dat mogelijke beveiligings problemen detecteert die van invloed zijn op de identiteiten van uw organisatie. U kunt automatische reacties op gedetecteerde verdachte activiteiten configureren en de juiste actie ondernemen om ze op te lossen. Zie [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) voor meer informatie.
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Uw Office 365 Secure score verkrijgen (als u Office 365 gebruikt)
 
@@ -193,7 +193,7 @@ Het opzetten van een geslaagde reactie op incidenten vereist veel planning en br
 
 #### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>On-premises geprivilegieerde beheerders accounts beveiligen als dat nog niet is gebeurd
 
-Als uw Azure Active Directory-organisatie is gesynchroniseerd met on-premises Active Directory, volgt u de instructies in de hand leiding voor [beveiligde toegang](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): deze fase omvat:
+Als uw Azure Active Directory-organisatie is gesynchroniseerd met on-premises Active Directory, volgt u de instructies in de hand leiding voor [beveiligde toegang](/windows-server/identity/securing-privileged-access/securing-privileged-access): deze fase omvat:
 
 * Afzonderlijke beheerders accounts maken voor gebruikers die on-premises beheer taken moeten uitvoeren
 * Werk stations met verhoogde toegang implementeren voor Active Directory beheerders
@@ -211,13 +211,13 @@ Micro soft-accounts uit andere Program ma's, zoals Xbox, Live en Outlook, mogen 
 
 #### <a name="monitor-azure-activity"></a>Azure-activiteit bewaken
 
-Het Azure-activiteitenlogboek bevat een geschiedenis van gebeurtenissen op abonnementsniveau in Azure. Het biedt informatie over wie de resources heeft gemaakt, bijgewerkt en verwijderd, en wanneer deze gebeurtenissen zich hebben voorgedaan. Zie [controleren en meldingen ontvangen over belang rijke acties in uw Azure-abonnement](../../azure-monitor/platform/quick-audit-notify-action-subscription.md)voor meer informatie.
+Het Azure-activiteitenlogboek bevat een geschiedenis van gebeurtenissen op abonnementsniveau in Azure. Het biedt informatie over wie de resources heeft gemaakt, bijgewerkt en verwijderd, en wanneer deze gebeurtenissen zich hebben voorgedaan. Zie [controleren en meldingen ontvangen over belang rijke acties in uw Azure-abonnement](../../azure-monitor/platform/alerts-activity-log.md)voor meer informatie.
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Aanvullende stappen voor organisaties die toegang tot andere Cloud-apps beheren via Azure AD
 
 #### <a name="configure-conditional-access-policies"></a>Beleid voor voorwaardelijke toegang configureren
 
-Bereid het beleid voor voorwaardelijke toegang voor op on-premises en in de Cloud gehoste toepassingen. Als u apparaten aan de werk plek hebt toegevoegd, kunt u meer informatie krijgen [over het instellen van on-premises voorwaardelijke toegang met behulp van Azure Active Directory apparaatregistratie](../active-directory-device-registration-on-premises-setup.md).
+Bereid het beleid voor voorwaardelijke toegang voor op on-premises en in de Cloud gehoste toepassingen. Als u apparaten aan de werk plek hebt toegevoegd, kunt u meer informatie krijgen [over het instellen van on-premises voorwaardelijke toegang met behulp van Azure Active Directory apparaatregistratie](../devices/overview.md).
 
 ## <a name="stage-3-take-control-of-admin-activity"></a>Fase 3: beheer activiteiten overnemen
 
@@ -255,7 +255,7 @@ Kwaadwillende personen kunnen proberen om geautoriseerde accounts te richten, zo
 * Imitatie aanvallen
 * Referentie diefstal aanvallen, zoals toetsaanslag registratie, Pass-the-hash en Pass-the-ticket
 
-Door privileged Access workstations te implementeren, kunt u het risico dat beheerders hun referenties invoeren, beperken in een bureaublad omgeving die niet is gehard. Zie [privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)(Engelstalig) voor meer informatie.
+Door privileged Access workstations te implementeren, kunt u het risico dat beheerders hun referenties invoeren, beperken in een bureaublad omgeving die niet is gehard. Zie [privileged Access workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)(Engelstalig) voor meer informatie.
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Bestudeer het National Institute of Standards and Technology aanbevelingen voor het afhandelen van incidenten
 
@@ -279,7 +279,7 @@ Als u Azure AD Privileged Identity Management al gebruikt, past u de tijds perio
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>De bloot stelling aan aanmeldings protocollen op basis van wacht woorden bepalen (als u Exchange Online gebruikt)
 
-We raden u aan elke mogelijke gebruiker te identificeren die kan leiden tot een onherstelbare organisatie als hun referenties zijn aangetast. Voor deze gebruikers wordt gebruikgemaakt van sterke verificatie vereisten en het gebruik van voorwaardelijke toegang van Azure AD om ervoor te zorgen dat ze zich niet kunnen aanmelden bij hun e-mail adres met behulp van gebruikers naam en wacht woord. U kunt [verouderde verificatie blok keren met behulp van voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)en u kunt [basis verificatie blok keren](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) via Exchange Online.
+We raden u aan elke mogelijke gebruiker te identificeren die kan leiden tot een onherstelbare organisatie als hun referenties zijn aangetast. Voor deze gebruikers wordt gebruikgemaakt van sterke verificatie vereisten en het gebruik van voorwaardelijke toegang van Azure AD om ervoor te zorgen dat ze zich niet kunnen aanmelden bij hun e-mail adres met behulp van gebruikers naam en wacht woord. U kunt [verouderde verificatie blok keren met behulp van voorwaardelijke toegang](../conditional-access/block-legacy-authentication.md)en u kunt [basis verificatie blok keren](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) via Exchange Online.
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Beoordeling van functies volt ooien evaluatie voor Office 365-rollen (als u Office 365 gebruikt)
 
@@ -291,7 +291,7 @@ U kunt dit rapport downloaden vanuit het [beheer van beveiligings incidenten in 
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Blijf on-premises geprivilegieerde beheerders accounts beveiligen
 
-Als uw Azure Active Directory is verbonden met on-premises Active Directory, volgt u de richt lijnen in de [beveiligings schema voor bevoegde toegang](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): fase 2. In deze fase gaat u als volgt te werk:
+Als uw Azure Active Directory is verbonden met on-premises Active Directory, volgt u de richt lijnen in de [beveiligings schema voor bevoegde toegang](/windows-server/identity/securing-privileged-access/securing-privileged-access): fase 2. In deze fase gaat u als volgt te werk:
 
 * Privileged Access workstations implementeren voor alle beheerders
 * MFA vereisen
@@ -314,11 +314,11 @@ Normaal gesp roken hoeft u geen gebruikers onbeperkte machtigingen te geven voor
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>PIM implementeren voor Azure AD-beheerders rollen
 
-Gebruik privileged Identity Management met Azure AD-beheerders rollen voor het beheren, beheren en bewaken van de toegang tot Azure-resources. Met PIM beschermt u de belichtings tijd van bevoegdheden en verhoogt u uw zicht baarheid in het gebruik via rapporten en waarschuwingen. Zie RBAC-toegang tot [Azure-resources beheren met privileged Identity Management](../../role-based-access-control/pim-azure-resource.md)voor meer informatie.
+Gebruik privileged Identity Management met Azure AD-beheerders rollen voor het beheren, beheren en bewaken van de toegang tot Azure-resources. Met PIM beschermt u de belichtings tijd van bevoegdheden en verhoogt u uw zicht baarheid in het gebruik via rapporten en waarschuwingen. Zie RBAC-toegang tot [Azure-resources beheren met privileged Identity Management](../../role-based-access-control/best-practices.md)voor meer informatie.
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Azure-logboek integratie gebruiken om relevante Azure-logboeken te verzenden naar uw SIEM-systemen
 
-Met Azure-logboek integratie kunt u onbewerkte logboeken van uw Azure-resources integreren in de bestaande Security Information and Event Management-systemen (SIEM) van uw organisatie. [Azure-logboek integratie](../../security/fundamentals/azure-log-integration-overview.md) verzamelt Windows-gebeurtenissen van Windows Logboeken-Logboeken en Azure-resources vanaf:
+Met Azure-logboek integratie kunt u onbewerkte logboeken van uw Azure-resources integreren in de bestaande Security Information and Event Management-systemen (SIEM) van uw organisatie. [Azure-logboek integratie](/previous-versions/azure/security/fundamentals/azure-log-integration-overview) verzamelt Windows-gebeurtenissen van Windows Logboeken-Logboeken en Azure-resources vanaf:
 
 * Activiteiten logboeken van Azure
 * Azure Security Center-waarschuwingen
@@ -332,7 +332,7 @@ Met Azure AD kunt u het maken en onderhouden van gebruikers identiteiten in Clou
 
 #### <a name="integrate-information-protection"></a>Gegevens beveiliging integreren
 
-Met Microsoft Cloud App Security kunt u bestanden onderzoeken en beleid instellen op basis van Azure Information Protection classificatie labels, waardoor u meer inzicht krijgt in en controle hebt over uw Cloud gegevens. Bestanden in de Cloud scannen en classificeren en Azure Information Protection-labels Toep assen. Zie [Azure Information Protection-integratie](https://docs.microsoft.com/cloud-app-security/azip-integration)voor meer informatie.
+Met Microsoft Cloud App Security kunt u bestanden onderzoeken en beleid instellen op basis van Azure Information Protection classificatie labels, waardoor u meer inzicht krijgt in en controle hebt over uw Cloud gegevens. Bestanden in de Cloud scannen en classificeren en Azure Information Protection-labels Toep assen. Zie [Azure Information Protection-integratie](/cloud-app-security/azip-integration)voor meer informatie.
 
 #### <a name="configure-conditional-access"></a>Voorwaardelijke toegang configureren
 
@@ -340,7 +340,7 @@ Configureer voorwaardelijke toegang op basis van een groep, locatie en toepassin
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>Activiteit in verbonden Cloud-apps bewaken
 
-U kunt het beste [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) gebruiken om ervoor te zorgen dat de gebruikers toegang ook wordt beveiligd in verbonden toepassingen. Deze functie beveiligt de bedrijfs toegang tot Cloud-apps en beveiligt uw beheerders accounts, zodat u het volgende kunt doen:
+U kunt het beste [Microsoft Cloud app Security](/cloud-app-security/what-is-cloud-app-security) gebruiken om ervoor te zorgen dat de gebruikers toegang ook wordt beveiligd in verbonden toepassingen. Deze functie beveiligt de bedrijfs toegang tot Cloud-apps en beveiligt uw beheerders accounts, zodat u het volgende kunt doen:
 
 * Zicht baarheid en beheer voor Cloud-apps uitbreiden
 * Beleids regels maken voor toegang, activiteiten en het delen van gegevens
@@ -348,7 +348,7 @@ U kunt het beste [Microsoft Cloud app Security](https://docs.microsoft.com/cloud
 * Lekkage van gegevens voor komen
 * Risico's en automatische bedreigings preventie en beleids afdwinging minimaliseren
 
-De Cloud App Security SIEM-Agent integreert Cloud App Security met uw SIEM-server om gecentraliseerde bewaking van Office 365-waarschuwingen en-activiteiten mogelijk te maken. Het wordt uitgevoerd op uw server en er worden waarschuwingen en activiteiten opgehaald van Cloud App Security en deze worden naar de SIEM-server gestreamd. Zie [Siem-integratie](https://docs.microsoft.com/cloud-app-security/siem)voor meer informatie.
+De Cloud App Security SIEM-Agent integreert Cloud App Security met uw SIEM-server om gecentraliseerde bewaking van Office 365-waarschuwingen en-activiteiten mogelijk te maken. Het wordt uitgevoerd op uw server en er worden waarschuwingen en activiteiten opgehaald van Cloud App Security en deze worden naar de SIEM-server gestreamd. Zie [Siem-integratie](/cloud-app-security/siem)voor meer informatie.
 
 ## <a name="stage-4-continue-building-defenses"></a>Fase 4: door gaan met het bouwen van verdediging
 
@@ -359,7 +359,7 @@ Fase 4 van het schema moet worden geïmplementeerd op zes maanden en verder. Vol
 Het beveiligen van bevoegde toegang is belang rijk voor het instellen van beveiligings garanties voor uw bedrijfs middelen. Het moet echter deel uitmaken van een volledig beveiligings programma dat permanente beveiligings garanties biedt. Dit programma moet elementen bevatten zoals:
 
 * Beleid
-* Bewerkingen
+* Operations
 * Gegevens beveiliging
 * Servers
 * Toepassingen
@@ -385,7 +385,7 @@ Bepaal of de huidige ingebouwde Azure AD-beheerders rollen nog steeds up-to-date
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Gebruikers met een beheer van aan Azure AD gekoppelde apparaten bekijken
 
-Zie [Configure hybrid Azure Active Directory joind devices](../device-management-hybrid-azuread-joined-devices-setup.md)(Engelstalig) voor meer informatie.
+Zie [Configure hybrid Azure Active Directory joind devices](../devices/hybrid-azuread-join-plan.md)(Engelstalig) voor meer informatie.
 
 #### <a name="review-members-of-built-in-office-365-admin-roles"></a>Leden van [ingebouwde Office 365-beheerders rollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) controleren
 Sla deze stap over als u geen gebruik maakt van Office 365.

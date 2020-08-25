@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: 28bb69dc21702a7c98755dc07389ea4147848f7a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82853029"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Zelfstudie: Gegevens opvragen uit een Cassandra-API-account in Azure Cosmos DB
@@ -25,11 +25,11 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Gegevens opvragen uit een Cassandra-tabel
 > * De app uitvoeren
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Dit artikel maakt deel uit van een meerdelige zelfstudie. Voordat u begint, moet u ervoor zorgen dat u de voor gaande stappen hebt voltooid om de voorbeeld gegevens van de Cassandra-API-account, de functie code en de tabel te maken en te [laden in de tabel](cassandra-api-load-data.md). 
+* Dit artikel maakt deel uit van een meerdelige zelfstudie. Begin pas met deze zelfstudie nadat u de stappen hebt voltooid voor het maken van het Cassandra-API-account, de keyspace en de tabel, en nadat de [voorbeeldgegevens zijn geladen in de tabel](cassandra-api-load-data.md). 
 
 ## <a name="query-data"></a>Querygegevens
 

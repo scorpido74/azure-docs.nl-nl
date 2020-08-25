@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587596"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796949"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -104,8 +104,10 @@ object result = await client.GetDigitalTwin(id);
 
 Deze aanroep retourneert twee gegevens als een JSON-teken reeks. 
 
-> [!TIP]
-> Alleen eigenschappen die ten minste eenmaal zijn ingesteld, worden geretourneerd wanneer u een dubbele met ophaalt `GetDigitalTwin` .
+Alleen eigenschappen die ten minste eenmaal zijn ingesteld, worden geretourneerd wanneer u een dubbele met ophaalt `GetDigitalTwin` .
+
+>[!TIP]
+>De `displayName` for a-server maakt deel uit van de meta gegevens van het model en wordt dus niet weer gegeven bij het ophalen van gegevens voor het dubbele exemplaar. Als u deze waarde wilt zien, kunt u [deze uit het model ophalen](how-to-manage-model.md#retrieve-models).
 
 Als u meerdere apparaatdubbels met één API-aanroep wilt ophalen, raadpleegt u de query-API-voor beelden in [*de instructies: Query's uitvoeren op de dubbele grafiek*](how-to-query-graph.md).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: d190d3f133c4b12b58dade878dc66755c25e1ed8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 99c5ff39820b652a33ab670e63ca709f8747c4cf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078371"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751275"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-beveiligings-en DevOps best practices
 
@@ -85,7 +85,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Overzicht van Azure Virtual Networks](../../virtual-network/virtual-networks-overview.md)
 - [Overzicht van Azure-netwerk beveiligings groepen](../../virtual-network/security-overview.md)
-- [Peering van virtuele Azure-netwerken](../../virtual-network/virtual-network-peering-overview.md)
+- [Peering van virtuele netwerken in Azure](../../virtual-network/virtual-network-peering-overview.md)
 - [Azure Storage-beveiligingshandleiding](../../storage/blobs/security-recommendations.md)
 - [Versleuteling van Azure Storage-service bij rest](../../storage/common/storage-service-encryption.md)
 
@@ -111,8 +111,6 @@ Voer regel matig een upgrade uit naar de nieuwste HDInsight-versie om te profite
 Zie het artikel: [HDInsight-cluster upgraden naar een nieuwe versie](../hdinsight-upgrade-cluster.md)voor meer informatie.
 
 ## <a name="patch-cluster-operating-systems"></a>Patch voor cluster besturingssystemen
-
-Als beheerde Hadoop-service zorgt HDInsight voor het patchen van het besturings systeem van de virtuele machines die worden gebruikt door HDInsight-clusters.
 
 Zie het artikel: [patches voor het besturings systeem voor HDInsight](../hdinsight-os-patching.md)voor meer informatie.
 

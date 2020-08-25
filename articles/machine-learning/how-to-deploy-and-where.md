@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 67a66ae94508a8d7f54d6112de95fa65a8fd5f09
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d7502414f6476cafcc85bbefd28a4ec463f62099
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185414"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751698"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -76,7 +76,7 @@ Zie de documentatie van [Azure machine learning SDK voor python](https://docs.mi
 ---
 
 
-## <a name="register-your-model"></a><a id="registermodel"></a>Uw model registreren
+## <a name="register-your-model"></a><a id="registermodel"></a> Uw model registreren
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
 
@@ -218,12 +218,12 @@ In de configuratie voor demijnen wordt Azure Machine Learning omgevingen gebruik
 
 name: project_environment
 dependencies:
-    - python=3.6.2
-    - scikit-learn=0.20.0
-    - pip:
-        # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
+- python=3.6.2
+- scikit-learn=0.22.1
+- pip:
+ # You must list azureml-defaults as a pip dependency
+ - azureml-defaults>=1.0.45
+ - inference-schema[numpy-support]
 ```
 
 > [!IMPORTANT]
@@ -357,12 +357,12 @@ In de volgende tabel worden de verschillende service statussen beschreven:
 | In orde | De service is in orde en het eind punt is beschikbaar. | Ja |
 
 
-### <a name="batch-inference"></a><a id="azuremlcompute"></a>Batch-deinterferentie
+### <a name="batch-inference"></a><a id="azuremlcompute"></a> Batch-deinterferentie
 Azure Machine Learning Compute-doelen worden gemaakt en beheerd door Azure Machine Learning. Ze kunnen worden gebruikt voor batch voorspelling van Azure Machine Learning pijp lijnen.
 
 Zie [batch voorspellingen uitvoeren](tutorial-pipeline-batch-scoring-classification.md)voor een overzicht van batch deinterferentie met Azure machine learning compute.
 
-### <a name="iot-edge-inference"></a><a id="iotedge"></a>IoT Edge afleiding
+### <a name="iot-edge-inference"></a><a id="iotedge"></a> IoT Edge afleiding
 Ondersteuning voor het implementeren naar de rand is in preview. Zie [Deploy Azure machine learning als een IOT Edge-module](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)voor meer informatie.
 
 ## <a name="delete-resources"></a>Resources verwijderen
@@ -371,7 +371,7 @@ Ondersteuning voor het implementeren naar de rand is in preview. Zie [Deploy Azu
 
 Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `az ml service <name of webservice>` .
 
-Als u een geregistreerd model uit uw werk ruimte wilt verwijderen, gebruikt u`az ml model delete <model id>`
+Als u een geregistreerd model uit uw werk ruimte wilt verwijderen, gebruikt u `az ml model delete <model id>`
 
 Meer informatie over [het verwijderen van een webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) en [het verwijderen van een model](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete).
 

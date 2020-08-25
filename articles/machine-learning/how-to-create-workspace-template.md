@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 05a45a2a8aeabae2b160701020e5deb89fb3aa81
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192333"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751715"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
@@ -165,158 +165,50 @@ Zie [versleuteling bij rest](concept-enterprise-security.md#encryption-at-rest)v
 
 > [!IMPORTANT]
 > Er zijn enkele specifieke vereisten waaraan uw abonnement moet voldoen voordat u deze sjabloon gebruikt:
->
-> * De __Azure machine learning__ toepassing moet een __bijdrager__ zijn voor uw Azure-abonnement.
 > * U moet een bestaande Azure Key Vault hebben die een versleutelings sleutel bevat.
-> * U moet een toegangs beleid hebben in de Azure Key Vault waarmee u de toegang tot de __Azure Cosmos DB__ toepassing __krijgt__, __verpakt__en __terugloopt__ .
 > * De Azure Key Vault moet zich in dezelfde regio bevinden waar u van plan bent de Azure Machine Learning-werk ruimte te maken.
+> * U moet de ID van de Azure Key Vault en de URI van de versleutelings sleutel opgeven.
 
-Gebruik de volgende opdrachten __om de Azure machine learning-app als Inzender toe te voegen__:
+__Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resource_cmk_uri` para meters (Key URI) wilt ophalen die nodig zijn voor deze sjabloon, gebruikt u de volgende stappen:    
 
-1. Meld u aan bij uw Azure-account en ontvang uw abonnements-ID. Dit abonnement moet gelijk zijn aan de naam die uw Azure Machine Learning-werk ruimte bevat.  
+1. Als u de Key Vault-ID wilt ophalen, gebruikt u de volgende opdracht:  
 
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)   
 
-    ```azurecli
-    az account list --query '[].[name,id]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv   
+    ``` 
 
-    > [!TIP]
-    > Als u een ander abonnement wilt selecteren, gebruikt u de `az account set -s <subscription name or ID>` opdracht en geeft u de naam van het abonnement of de id op om over te scha kelen. Zie [meerdere Azure-abonnementen gebruiken](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)voor meer informatie over het selecteren van abonnementen. 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzSubscription
-    ```
-
-    > [!TIP]
-    > Als u een ander abonnement wilt selecteren, gebruikt u de `Az-SetContext -SubscriptionId <subscription ID>` opdracht en geeft u de naam van het abonnement of de id op om over te scha kelen. Zie [meerdere Azure-abonnementen gebruiken](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0)voor meer informatie over het selecteren van abonnementen.
-
-    ---
-
-1. Gebruik de volgende opdracht om de object-ID van de Azure Machine Learning-app op te halen. De waarde kan verschillen voor elk van uw Azure-abonnementen:
-
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
-
-    ```azurecli
-    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
-    ```
-
-    ---
-    Met deze opdracht wordt de object-ID geretourneerd. Dit is een GUID.
-
-1. Als u de object-ID als Inzender wilt toevoegen aan uw abonnement, gebruikt u de volgende opdracht. Vervang door `<object-ID>` de object-id van de Service-Principal. Vervang door `<subscription-ID>` de naam of id van uw Azure-abonnement:
-
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
-
-    ```azurecli
-    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
-    ```
-
-    ---
-
-1. Gebruik een van de volgende opdrachten om een sleutel te genereren in een bestaande Azure Key Vault. Vervang door `<keyvault-name>` de naam van de sleutel kluis. Vervang door `<key-name>` de naam die u wilt gebruiken voor de sleutel:
-
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
-    ```
+    ```azurepowershell  
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'    
+    ``` 
     --- 
 
-__Gebruik de volgende opdrachten om een toegangs beleid toe te voegen aan de sleutel kluis__:
+    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .  
 
-1. Gebruik de volgende opdracht om de object-ID van de Azure Cosmos DB-app op te halen. De waarde kan verschillen voor elk van uw Azure-abonnementen:
+1. Als u de waarde voor de URI voor de door de klant beheerde sleutel wilt ophalen, gebruikt u de volgende opdracht:    
 
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)   
 
-    ```azurecli
-    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
-    ```
+    ```azurecli 
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv  
+    ``` 
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell) 
 
-    ```azurepowershell
-    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
-    ```
-    ---
+    ```azurepowershell  
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>' 
+    ``` 
+    --- 
 
-    Met deze opdracht wordt de object-ID geretourneerd. Dit is een GUID. Sla het voor later op
+    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` . 
 
-1. Als u het beleid wilt instellen, gebruikt u de volgende opdracht. Vervang door `<keyvault-name>` de naam van de bestaande Azure Key Vault. Vervang door `<object-ID>` de GUID uit de vorige stap:
-
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-    
-    ```azurepowershell
-    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
-    ```
-    ---    
-
-__Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resource_cmk_uri` para meters (Key URI) wilt ophalen die nodig zijn voor deze sjabloon, gebruikt u de volgende stappen:
-
-1. Als u de Key Vault-ID wilt ophalen, gebruikt u de volgende opdracht:
-
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault show --name <keyvault-name> --query 'id' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
-    ```
-    ---
-
-    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .
-
-1. Als u de waarde voor de URI voor de door de klant beheerde sleutel wilt ophalen, gebruikt u de volgende opdracht:
-
-    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
-
-    ```azurecli
-    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
-
-    ```azurepowershell
-    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
-    ```
-    ---
-
-    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Als een werk ruimte eenmaal is gemaakt, kunt u de instellingen voor vertrouwelijke gegevens, versleuteling, sleutel kluis-ID of sleutel-id's niet wijzigen. Als u deze waarden wilt wijzigen, moet u een nieuwe werk ruimte maken met behulp van de nieuwe waarden.
 
-Nadat u de bovenstaande stappen hebt voltooid, implementeert u uw sjabloon zoals gebruikelijk. Stel de volgende para meters in om het gebruik van door de klant beheerde sleutels in te scha kelen:
+Als u het gebruik van door de klant beheerde sleutels wilt inschakelen, stelt u de volgende para meters in bij het implementeren van de sjabloon:
 
 * **Encryption_status** **ingeschakeld**.
 * **cmk_keyvault** de `cmk_keyvault` waarde die in de vorige stappen is verkregen.
@@ -648,7 +540,7 @@ New-AzResourceGroupDeployment `
    * Regio: Selecteer de Azure-regio waar de resources worden gemaakt.
    * Werkruimte naam: de naam die moet worden gebruikt voor de Azure Machine Learning werk ruimte die wordt gemaakt. De naam van de werk ruimte moet tussen de 3 en 33 tekens lang zijn. De naam mag alleen alfanumerieke tekens en '-' bevatten.
    * Locatie: Selecteer de locatie waar de resources worden gemaakt.
-1. Selecteer __Controleren en maken__.
+1. Selecteer __Controleren + maken__.
 1. Ga in het scherm __bekijken en maken__ naar de vermelde voor waarden en selecteer __maken__.
 
 Zie [resources implementeren vanuit een aangepaste sjabloon](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)voor meer informatie.

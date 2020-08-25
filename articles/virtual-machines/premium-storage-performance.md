@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0e0f6df04eda45af04659edc2010e8d68b013892
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0fab0bf956790db2860daf75866d84173bfa6cbf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701489"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751503"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
 
@@ -31,16 +31,16 @@ Dit artikel helpt u bij het beantwoorden van de volgende veelgestelde vragen ove
 We hebben deze richt lijnen specifiek voor Premium Storage gegeven, omdat werk belastingen die worden uitgevoerd op Premium Storage uiterst prestaties gevoelig zijn. Er zijn voor beelden, waar van toepassing. U kunt ook enkele van deze richt lijnen Toep assen op toepassingen die worden uitgevoerd op IaaS-Vm's met standaard opslag schijven.
 
 > [!NOTE]
-> Soms is het een probleem met de prestaties van een schijf. In deze situaties moet u de [netwerk prestaties](~/articles/virtual-network/virtual-network-optimize-network-bandwidth.md)optimaliseren.
+> Soms is het een probleem met de prestaties van een schijf. In deze situaties moet u de [netwerk prestaties](../virtual-network/virtual-network-optimize-network-bandwidth.md)optimaliseren.
 >
 > Als u een bench Mark-schijf wilt maken, raadpleegt u onze artikelen over de benchmarking van een schijf:
 >
-> * Voor Linux: [Bench Mark your application on Azure Disk Storage](./linux/disks-benchmarks.md)
-> * Voor Windows: [benchmarking van een schijf](./windows/disks-benchmarks.md).
+> * Voor Linux: [Bench Mark your application on Azure Disk Storage](linux/disks-benchmarks.md)
+> * Voor Windows: [benchmarking van een schijf](windows/disks-benchmarks.md).
 >
-> Als uw virtuele machine versneld netwerken ondersteunt, moet u ervoor zorgen dat deze is ingeschakeld. Als deze optie niet is ingeschakeld, kunt u deze inschakelen op al geïmplementeerde Vm's in [Windows](~/articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) en [Linux](~/articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
+> Als uw virtuele machine versneld netwerken ondersteunt, moet u ervoor zorgen dat deze is ingeschakeld. Als deze optie niet is ingeschakeld, kunt u deze inschakelen op al geïmplementeerde Vm's in [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) en [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Voordat u begint, lees dan eerst de [Select a Azure-schijf type voor IaaS vm's](./linux/disks-types.md) en [schaalbaarheids doelen voor Premium Premium Storage-pagina-Blob-opslag accounts](~/articles/storage/blobs/scalability-targets-premium-page-blobs.md).
+Voordat u begint, lees dan eerst de [Select a Azure-schijf type voor IaaS vm's](disks-types.md) en [schaalbaarheids doelen voor Premium Premium Storage-pagina-Blob-opslag accounts](../storage/blobs/scalability-targets-premium-page-blobs.md).
 
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -62,7 +62,7 @@ Wanneer u een Premium-opslag schijf koppelt aan een grootschalige virtuele machi
 
 Er is een relatie tussen door Voer en IOPS, zoals wordt weer gegeven in de onderstaande formule.
 
-![Relatie van IOPS en door Voer](~/articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
+![Relatie van IOPS en door Voer](linux/media/premium-storage-performance/image1.png)
 
 Daarom is het belang rijk om de optimale door Voer en IOPS waarden te bepalen die uw toepassing nodig heeft. Als u probeert een optimalisatie uit te proberen, wordt dit ook beïnvloed. In een latere sectie worden de prestaties van de *toepassing geoptimaliseerd*. we bespreken nu meer informatie over het optimaliseren van IOPS en door voer.
 
@@ -144,7 +144,7 @@ In deze sectie raadpleegt u de controle lijst voor toepassings vereisten die u h
 
 De volgende tabel bevat een overzicht van de prestatie factoren en de stappen die nodig zijn om IOPS, door Voer en latentie te optimaliseren. De secties die volgen op deze samen vatting geven een beschrijving van elke factor is veel meer.
 
-Zie [Linux VM-grootten](~/articles/virtual-machines/linux/sizes.md) of [Windows VM](~/articles/virtual-machines/windows/sizes.md)-grootten voor meer informatie over VM-grootten en over de IOPS, door Voer en latentie die beschikbaar zijn voor elk type virtuele machine.
+Zie [grootten voor virtuele machines in azure](sizes.md)voor meer informatie over VM-grootten en over de IOPS, door Voer en latentie die beschikbaar zijn voor elk type virtuele machine.
 
 | | **IOPS** | **Doorvoer** | **Latentie** |
 | --- | --- | --- | --- |
@@ -206,7 +206,7 @@ Virtuele machines met een hoge schaal zijn beschikbaar in verschillende groottes
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Lokale SSD = 224 GB |32 |576 GB |50.000 IOPS <br> 512 MB per seconde |4.000 IOPS en 33 MB per seconde |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Lokale SSD = 896 GB |64 |4224 GB |80.000 IOPS <br> 2.000 MB per seconde |5.000 IOPS en 50 MB per seconde |
 
-Als u een volledige lijst met alle beschik bare Azure VM-grootten wilt weer geven, raadpleegt u [Windows VM-grootten](~/articles/virtual-machines/windows/sizes.md) of [grootten voor Linux VM](~/articles/virtual-machines/linux/sizes.md). Kies een VM-grootte die kan voldoen aan de gewenste prestatie vereisten voor de toepassing en deze kan worden geschaald. Daarnaast moet u rekening houden met de volgende belang rijke overwegingen bij het kiezen van VM-grootten.
+Zie [grootten voor virtuele machines in azure](sizes.md) of als u een volledige lijst met alle beschik bare Azure VM-grootten wilt weer geven. Kies een VM-grootte die kan voldoen aan de gewenste prestatie vereisten voor de toepassing en deze kan worden geschaald. Daarnaast moet u rekening houden met de volgende belang rijke overwegingen bij het kiezen van VM-grootten.
 
 *Schaal limieten*  
 De maximale IOPS-limieten per VM en per schijf zijn verschillend en zijn onafhankelijk van elkaar. Zorg ervoor dat de toepassing IOPS behaalt binnen de limieten van de virtuele machine en de Premium-schijven die eraan zijn gekoppeld. Anders werkt de prestaties van de toepassing met vertraging.
@@ -238,7 +238,7 @@ Wanneer u Linux met Premium Storage uitvoert, controleert u de meest recente upd
 
 Azure Premium Storage biedt tal van grootten, zodat u er een kunt kiezen die het beste bij uw behoeften past. Elke schijf grootte heeft een andere schaal limiet voor IOPS, band breedte en opslag. Kies de juiste Premium Storage schijf grootte, afhankelijk van de toepassings vereisten en de grootte van de VM met hoge schaal. In de volgende tabel ziet u de grootte van de schijven en de mogelijkheden ervan. P4-, P6-, P15-, P60-, P70-en P80-grootten worden momenteel alleen ondersteund voor Managed Disks.
 
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 Hoeveel schijven u kiest, is afhankelijk van de gekozen schijf grootte. U kunt één P50-schijf of meerdere P10-schijven gebruiken om te voldoen aan de vereisten van uw toepassing. Houd rekening met onderstaande aandachtspunten wanneer u de keuze maakt.
 
@@ -353,14 +353,14 @@ In Windows kunt u opslag ruimten gebruiken om schijven samen te strepen. U moet 
 
 Belang rijk: het gebruik van Serverbeheer gebruikers interface kunt u het totale aantal kolommen instellen op 8 voor een striped volume. Wanneer u meer dan acht schijven koppelt, gebruikt u Power shell om het volume te maken. Met behulp van Power shell kunt u het aantal kolommen instellen dat gelijk is aan het aantal schijven. Als er bijvoorbeeld 16 schijven in één stripeset zijn ingesteld; Geef 16 kolommen op in de para meter *NumberOfColumns* van de Power shell-cmdlet *New-VirtualDisk* .
 
-Gebruik in Linux het MDADM-hulp programma om schijven samen te strippen. Zie [Software RAID op Linux configureren](~/articles/virtual-machines/linux/configure-raid.md)voor gedetailleerde stappen voor het verwijderen van schijven in Linux.
+Gebruik in Linux het MDADM-hulp programma om schijven samen te strippen. Zie [Software RAID op Linux configureren](linux/configure-raid.md)voor gedetailleerde stappen voor het verwijderen van schijven in Linux.
 
 *Streepgrootte*  
 Een belang rijke configuratie van schijf striping is de Stripe-grootte. De Stripe-grootte of blok grootte is het kleinste deel van de gegevens dat een toepassing op een striped volume kan adresseren. De Stripe-grootte die u configureert, is afhankelijk van het type toepassing en het bijbehorende aanvraag patroon. Als u de verkeerde Stripe-grootte kiest, kan dit leiden tot een onjuiste uitlijning van IO, wat leidt tot verminderde prestaties van uw toepassing.
 
 Als een i/o-aanvraag die door uw toepassing is gegenereerd, groter is dan de schijf Stripe-grootte, wordt deze door het opslag systeem naar de grenzen van Stripe-eenheden op meer dan één schijf geschreven. Wanneer het tijd is om toegang te krijgen tot deze gegevens, moet er meer dan één Stripe-eenheid worden verzameld om de aanvraag te volt ooien. Het cumulatieve effect van dit gedrag kan leiden tot aanzienlijke prestatie vermindering. Aan de andere kant, als de IO-aanvraag grootte kleiner is dan de Stripe-grootte en als deze wille keurige aard is, kunnen de i/o-aanvragen op dezelfde schijf worden toegevoegd die een knel punt veroorzaken en uiteindelijk de i/o-prestaties verlagen.
 
-Afhankelijk van het type werk belasting dat door uw toepassing wordt uitgevoerd, kiest u de juiste Stripe-grootte. Gebruik voor wille keurige kleine i/o-aanvragen een kleinere Stripe-grootte. Dat voor grote sequentiële IO-aanvragen een grotere Stripe-grootte gebruiken. Bekijk de aanbevelingen voor de Stripe-grootte voor de toepassing die u wilt uitvoeren op Premium Storage. Configureer voor SQL Server de Stripe-grootte van 64 KB voor OLTP-workloads en 256 KB voor werk belastingen voor gegevens opslag. Zie [Aanbevolen procedures voor de prestaties van SQL Server op virtuele machines van Azure voor](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) meer informatie.
+Afhankelijk van het type werk belasting dat door uw toepassing wordt uitgevoerd, kiest u de juiste Stripe-grootte. Gebruik voor wille keurige kleine i/o-aanvragen een kleinere Stripe-grootte. Dat voor grote sequentiële IO-aanvragen een grotere Stripe-grootte gebruiken. Bekijk de aanbevelingen voor de Stripe-grootte voor de toepassing die u wilt uitvoeren op Premium Storage. Configureer voor SQL Server de Stripe-grootte van 64 KB voor OLTP-workloads en 256 KB voor werk belastingen voor gegevens opslag. Zie [Aanbevolen procedures voor de prestaties van SQL Server op virtuele machines van Azure voor](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) meer informatie.
 
 > [!NOTE]
 > U kunt Maxi maal 32 Premium-opslag schijven samen voegen op een DS-serie VM en 64 Premium-opslag schijven op een GS-serie VM.
@@ -414,15 +414,15 @@ Azure Premium Storage voorziet in een opgegeven aantal IOPS en door Voer, afhank
 
 Als u een bench Mark-schijf wilt maken, raadpleegt u onze artikelen over de benchmarking van een schijf:
 
-* Voor Linux: [Bench Mark your application on Azure Disk Storage](./linux/disks-benchmarks.md)
-* Voor Windows: [benchmarking van een schijf](./windows/disks-benchmarks.md).
+* Voor Linux: [Bench Mark your application on Azure Disk Storage](linux/disks-benchmarks.md)
+* Voor Windows: [benchmarking van een schijf](windows/disks-benchmarks.md).
 
 Meer informatie over de beschik bare schijf typen:
 
-* Voor Linux: [Selecteer een schijf type](./linux/disks-types.md)
-* Voor Windows: [Selecteer een schijf type](./windows//disks-types.md)
+* Voor Linux: [Selecteer een schijf type](disks-types.md)
+* Voor Windows: [Selecteer een schijf type](disks-types.md)
 
 Lees voor SQL Server gebruikers artikelen over best practices voor prestaties voor SQL Server:
 
-* [Aanbevolen procedures voor de prestaties van SQL Server in azure Virtual Machines](~/articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
+* [Aanbevolen procedures voor de prestaties van SQL Server in azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
 * [Azure Premium Storage biedt de beste prestaties voor SQL Server in azure VM](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)

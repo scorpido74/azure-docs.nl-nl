@@ -13,12 +13,12 @@ ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2be68a858773dd4e76126ba6cd04ad98a2fd6a06
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 12edbcda7354d9d6d4b03ebe32304d988b2eb579
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313435"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751459"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2,0 en OpenID Connect Connect protocols op micro soft Identity platform
 
@@ -30,7 +30,7 @@ In bijna alle OAuth 2,0-en OpenID Connect Connect-stromen zijn er vier partijen 
 
 ![Diagram van de OAuth 2,0-rollen](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* De **autorisatie server** is het micro soft Identity platform-eind punt en is verantwoordelijk voor het garanderen van de identiteit van de gebruiker, het verlenen en intrekken van de toegang tot bronnen en het uitgeven van tokens. De autorisatie server, ook wel bekend als de identiteits provider, handelt veilig alles af met de informatie van de gebruiker, hun toegang en de vertrouwens relaties tussen partijen in een stroom.
+* De **autorisatie server** is het micro soft Identity platform-eind punt en is verantwoordelijk voor het garanderen van de identiteit van de gebruiker, het verlenen en intrekken van de toegang tot bronnen en het uitgeven van tokens. De autorisatie server staat ook bekend als de ID-provider: deze zorgt er veilig voor dat u alles kunt doen met de informatie van de gebruiker, hun toegang en de vertrouwens relaties tussen partijen in een stroom.
 * De **resource-eigenaar** is doorgaans de eind gebruiker. Het is de partij die eigenaar is van de gegevens en de kracht heeft om clients toegang te geven tot die gegevens of bron.
 * De **OAuth-client** is uw app, geïdentificeerd door de toepassings-id. De OAuth-client is doorgaans de partij waarmee de eind gebruiker communiceert en die tokens van de autorisatie server aanvraagt. Aan de client moet een machtiging worden verleend voor toegang tot de resource door de resource-eigenaar.
 * De **resource server** is de locatie waar de resource of gegevens zich bevinden. Het vertrouwt de autorisatie server voor het veilig verifiëren en autoriseren van de OAuth-client en maakt gebruik van toegangs tokens van Bearer om ervoor te zorgen dat toegang tot een bron kan worden verleend.

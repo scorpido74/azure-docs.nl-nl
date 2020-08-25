@@ -4,16 +4,16 @@ description: Configureer een Azure Managed disk met gedeelde schijven, zodat u d
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 08/21/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f6b34cd93dcfabee2974bea5cf57258527df94d7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701504"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752042"
 ---
 # <a name="enable-shared-disk"></a>Gedeelde schijf inschakelen
 
@@ -21,21 +21,21 @@ In dit artikel wordt beschreven hoe u de functie gedeelde schijven voor Azure Ma
 
 Als u op zoek bent naar algemene informatie over Managed disks waarop gedeelde schijven zijn ingeschakeld, raadpleegt u:
 
-* Voor Linux: [gedeelde Azure-schijven](./linux/disks-shared.md)
+* Voor Linux: [gedeelde Azure-schijven](linux/disks-shared.md)
 
-* Voor Windows: [gedeelde Azure-schijven](./windows/disks-shared.md)
+* Voor Windows: [gedeelde Azure-schijven](windows/disks-shared.md)
 
 ## <a name="limitations"></a>Beperkingen
 
-[!INCLUDE [virtual-machines-disks-shared-limitations](~/includes/virtual-machines-disks-shared-limitations.md)]
+[!INCLUDE [virtual-machines-disks-shared-limitations](../../includes/virtual-machines-disks-shared-limitations.md)]
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-Gedeelde schijven bieden ondersteuning voor verschillende besturings systemen. Zie de secties [Windows](~/articles/virtual-machines/windows/disks-shared.md#windows) en [Linux](~/articles/virtual-machines/linux/disks-shared.md#linux) van het conceptuele artikel voor de ondersteunde besturings systemen.
+Gedeelde schijven bieden ondersteuning voor verschillende besturings systemen. Zie de secties [Windows](windows/disks-shared.md#windows) en [Linux](linux/disks-shared.md#linux) van het conceptuele artikel voor de ondersteunde besturings systemen.
 
 ## <a name="disk-sizes"></a>Schijf grootten
 
-[!INCLUDE [virtual-machines-disks-shared-sizes](~/includes/virtual-machines-disks-shared-sizes.md)]
+[!INCLUDE [virtual-machines-disks-shared-sizes](../../includes/virtual-machines-disks-shared-sizes.md)]
 
 ## <a name="deploy-shared-disks"></a>Gedeelde schijven implementeren
 
@@ -147,7 +147,7 @@ Vervang,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[para
 Wanneer u een gedeelde schijf met hebt geïmplementeerd `maxShares>1` , kunt u de schijf koppelen aan een of meer van uw virtuele machines.
 
 > [!NOTE]
-> Als u een ultra schijf implementeert, moet u ervoor zorgen dat deze overeenkomt met de benodigde vereisten. Zie de sectie [Power shell](~/articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) of [cli](~/articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) van het artikel over de ultra disk voor meer informatie.
+> Als u een ultra schijf implementeert, moet u ervoor zorgen dat deze overeenkomt met de benodigde vereisten. Zie de sectie [Power shell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) of [cli](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) van het artikel over de ultra disk voor meer informatie.
 
 ```azurepowershell-interactive
 

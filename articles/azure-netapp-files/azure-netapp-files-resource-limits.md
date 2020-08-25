@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 08/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 0c790d1d8bec972135796533542a5efad6094d7c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9facbc1629b8e1330c6bbafb4444d5bfc237d16f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006669"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752310"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
@@ -33,7 +33,7 @@ In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven
 |----------------|---------------------|--------------------------------------|
 |  Aantal NetApp-accounts per Azure-regio   |  10    |  Ja   |
 |  Aantal capaciteits Pools per NetApp-account   |    25     |   Ja   |
-|  Aantal volumes per NetApp-account   |    500     |   Ja   |
+|  Aantal volumes per abonnement   |    500     |   Ja   |
 |  Aantal volumes per capaciteits pool     |    500   |    Ja     |
 |  Aantal moment opnamen per volume       |    255     |    Nee        |
 |  Aantal subnetten dat wordt gedelegeerd aan Azure NetApp Files (micro soft. NetApp/volumes) per Azure-Virtual Network    |   1   |    Nee    |
@@ -48,7 +48,7 @@ In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven
 
 Zie [Veelgestelde vragen over capaciteits beheer](azure-netapp-files-faqs.md#capacity-management-faqs)voor meer informatie.
 
-## <a name="maxfiles-limits"></a>Limieten voor maxfiles<a name="maxfiles"></a> 
+## <a name="maxfiles-limits"></a>Limieten voor maxfiles <a name="maxfiles"></a> 
 
 Azure NetApp Files volumes hebben een limiet van *maxfiles*. De limiet voor maxfiles is het aantal bestanden dat een volume kan bevatten. De limiet voor het aantal maxfiles voor een Azure NetApp Files volume wordt geïndexeerd op basis van de grootte (quotum) van het volume. De maxfiles-limiet voor een volume verhoogt of verlaagt de snelheid van 20.000.000 bestanden per TiB van de ingerichte grootte van het volume. 
 
@@ -64,7 +64,7 @@ De service past de maxfiles-limiet voor een volume dynamisch aan op basis van de
 
 Als u al ten minste 4 TiB aan quota voor een volume hebt toegewezen, kunt u een [ondersteunings aanvraag](#limit_increase) initiëren om de maxfiles limiet van meer dan 100.000.000 te verhogen.
 
-## <a name="request-limit-increase"></a>Toename van aanvraag limiet<a name="limit_increase"></a> 
+## <a name="request-limit-increase"></a>Toename van aanvraag limiet <a name="limit_increase"></a> 
 
 U kunt een ondersteunings aanvraag voor Azure maken om de aanpas bare limieten van de bovenstaande tabel te verg Roten. 
 
@@ -80,7 +80,7 @@ Vanuit Azure Portal navigatie vlak:
 4. Op het tabblad Details:
     1. Geef in het vak Beschrijving de volgende informatie op voor het bijbehorende resource type:
 
-        |  Resource  |    Bovenliggende resources      |    Aangevraagde nieuwe limieten     |    Reden voor toename van quotum       |
+        |  Resource  |    Bovenliggende resources      |    Aangevraagde nieuwe limieten     |    Reden voor verhoging van quotum       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Account |  *Abonnements-id*   |  *Aangevraagd nieuw Maxi maal **account** nummer*    |  *Welk scenario of use-case vraagt de aanvraag?*  |
         |  Pool    |  *Abonnements-ID, account-URI*  |  *Nieuw maximum **groeps** nummer aangevraagd*   |  *Welk scenario of use-case vraagt de aanvraag?*  |

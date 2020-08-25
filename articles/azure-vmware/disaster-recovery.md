@@ -1,14 +1,14 @@
 ---
 title: Een nood herstel van virtuele machines volt ooien
-description: In dit artikel wordt beschreven hoe u een herstel na nood geval voor virtuele machines kunt uitvoeren met behulp van AVS
+description: In dit artikel wordt beschreven hoe u een nood herstel van virtuele machines kunt uitvoeren met behulp van de Azure VMware-oplossing
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a417b9ba00c4c0e6e958e5a04d19aecfe24563
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749957"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752262"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Een nood herstel van virtuele machines met Azure VMware-oplossing volt ooien
 
@@ -46,7 +46,7 @@ Voer het gebied voor **nood herstel** in en klik op **virtuele machines beveilig
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machine.png" alt-text="Selecteer vm's beveiligen" border="true":::
 
-Selecteer in het venster dat wordt geopend de bron en de externe sites, de externe site in dit geval moet de privécloud zijn.
+Selecteer in het venster dat wordt geopend de bron en de externe sites, de externe site in dit geval moet de privécloud van de Azure VMware-oplossing zijn.
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machines.png" alt-text="venster Vm's beveiligen" border="true":::
 
@@ -56,7 +56,7 @@ Selecteer, indien nodig, de standaard opties voor replicatie:
 
 - **Quiescence inschakelen:** Pauzeert de virtuele machine om ervoor te zorgen dat een consistente kopie wordt gesynchroniseerd met de externe site.
 
-- **Doel opslag:** Selecteer de externe gegevens opslag voor de beveiligde virtuele machine (s). In een privécloud in de Cloud moet deze selectie het vSAN-gegevens opslag zijn.
+- **Doel opslag:** Selecteer de externe gegevens opslag voor de beveiligde virtuele machine (s). In een privécloud van Azure VMware-oplossingen moet deze selectie het vSAN-gegevens archief zijn.
 
 - **Compute-container:** Het externe vSphere-cluster of de resource groep.
 
@@ -95,7 +95,7 @@ Wanneer de virtuele machine is ingeschakeld, wordt het synchronisatie proces voo
 
 ## <a name="complete-a-test-recover-of-virtual-machines"></a>Een test herstel van virtuele machines volt ooien
 
-Meld u aan bij de **vSphere-client** op de externe site. Dit is de privécloud. Selecteer in de **HCX-invoeg toepassing**in het gebied nood herstel de verticale ellipsen op een wille keurige virtuele machine om het menu bewerkingen weer te geven. Selecteer **VM herstellen testen**.
+Meld u aan bij de **vSphere-client** op de externe site. Dit is de privécloud van de Azure VMware-oplossing. Selecteer in de **HCX-invoeg toepassing**in het gebied nood herstel de verticale ellipsen op een wille keurige virtuele machine om het menu bewerkingen weer te geven. Selecteer **VM herstellen testen**.
 
 :::image type="content" source="./media/disaster-recovery/test-recover-virtual-machine.png" alt-text="Selecteer VM herstellen testen" border="true":::
 
@@ -105,7 +105,7 @@ Selecteer in het nieuwe venster de opties voor de test. Selecteer de moment opna
 
 Nadat u op **testen**hebt geklikt, wordt de herstel bewerking gestart.
 
-Wanneer de bewerking voor het testen van de test is voltooid, kan de nieuwe virtuele machine worden gecontroleerd in de automatische AVS-Cloud-vCenter.
+Wanneer de bewerking voor het testen van de test is voltooid, kan de nieuwe VM worden gecontroleerd in de Azure VMware-oplossing Private Cloud vCenter.
 
 :::image type="content" source="./media/disaster-recovery/verify-test-recovery.png" alt-text="herstel bewerking controleren" border="true":::
 
@@ -115,7 +115,7 @@ Tot slot nadat het testen is uitgevoerd op de virtuele machine of een toepassing
 
 ## <a name="recover-virtual-machines"></a>Virtuele machines herstellen
 
-Meld u aan bij de **vSphere-client** op de externe site, die de privécloud is en open de **HCX-invoeg toepassing**.
+Meld u aan bij de **vSphere-client** op de externe site, de Azure VMware-oplossing privécloud en open de **HCX-invoeg toepassing**.
 
 Voor het herstel scenario is dit een groep virtuele machines die worden gebruikt voor dit voor beeld.
 
@@ -131,7 +131,7 @@ Nadat de herstel bewerking is voltooid, worden de nieuwe virtuele machines weer 
 
 ## <a name="complete-a-reverse-replication-on-virtual-machines"></a>Een omgekeerde replicatie voor virtuele machines volt ooien
 
-Meld u aan bij de **vSphere-client** op uw AVS-privécloud en de toegang tot **HCX-invoeg toepassing**.
+Meld u aan bij de **vSphere-client** op uw Azure VMware-oplossing privécloud en open de **HCX-invoeg toepassing**.
 Het is vereist dat de oorspronkelijke virtuele machines op de bron site worden uitgeschakeld voordat u de omgekeerde replicatie start. De bewerking mislukt als de virtuele machines niet zijn uitgeschakeld.
 
 Selecteer de virtuele machines die u wilt repliceren naar de bron site uit de lijst, open het menu **acties** en selecteer **omkeren**. Klik in het pop-upvenster op **terug** om de replicatie te starten.
