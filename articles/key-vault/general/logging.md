@@ -1,21 +1,21 @@
 ---
 title: Logboekregistratie voor Azure Key Vault | Microsoft Docs
-description: Deze zelfstudie helpt u op weg met de logboekregistratie van Azure Sleutelkluis.
+description: Meer informatie over het bewaken van de toegang van uw sleutelkluizen door logboekregistratie voor Azure Key Vault in te schakelen. Hierbij wordt de informatie opgeslagen in een Azure-opslagaccount dat u opgeeft.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9507525dc2c52f584bd7883a12da401b5999f50
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090583"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585913"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 

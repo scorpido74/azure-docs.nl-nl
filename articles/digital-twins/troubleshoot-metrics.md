@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: dafea083e68b2afe6b6bcf45b4cff8779f817049
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905195"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749020"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problemen met Azure Digital Apparaatdubbels: metrische gegevens oplossen
 
@@ -88,9 +88,9 @@ Metrische gegevens die moeten worden uitgevoerd met route ring:
 
 | Gegevens | Weergave naam voor metrische gegevens | Eenheid | Aggregatietype| Beschrijving | Dimensies |
 | --- | --- | --- | --- | --- | --- |
-| MessagesRouted | Verzonden berichten (preview-versie) | Aantal | Totaal | Het aantal berichten dat wordt doorgestuurd naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Schijf <br>Resultaat |
-| RoutingFailureRate | Aantal mislukte routeringen (preview-versie) | Percentage | Gemiddeld | Het percentage gebeurtenissen dat resulteert in een fout wanneer ze worden doorgestuurd van Azure Digital Apparaatdubbels naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Schijf <br>Resultaat |
-| RoutingLatency | Routerings latentie (preview-versie) | Milliseconden | Gemiddeld | De tijd die is verstreken tussen een gebeurtenis die wordt gerouteerd van Azure Digital Apparaatdubbels naar het moment dat deze wordt geplaatst in de Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Schijf <br>Resultaat |
+| MessagesRouted | Verzonden berichten (preview-versie) | Aantal | Totaal | Het aantal berichten dat wordt doorgestuurd naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Type eind punt, <br>Resultaat |
+| RoutingFailureRate | Aantal mislukte routeringen (preview-versie) | Percentage | Gemiddeld | Het percentage gebeurtenissen dat resulteert in een fout wanneer ze worden doorgestuurd van Azure Digital Apparaatdubbels naar een Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Type eind punt, <br>Resultaat |
+| RoutingLatency | Routerings latentie (preview-versie) | Milliseconden | Gemiddeld | De tijd die is verstreken tussen een gebeurtenis die wordt gerouteerd van Azure Digital Apparaatdubbels naar het moment dat deze wordt geplaatst in de Azure-service voor eind punten, zoals Event hub, Service Bus of Event Grid. | Type eind punt, <br>Resultaat |
 
 ## <a name="dimensions"></a>Dimensies
 
@@ -100,7 +100,7 @@ Met dimensies kunt u meer informatie over de metrische gegevens vaststellen. Som
 | --- | --- |
 | Verificatie | OAuth |
 | Bewerking (voor API-aanvragen) | Micro soft. DigitalTwins/DigitalTwins/verwijderen, <br>Micro soft. DigitalTwins/DigitalTwins/schrijven, <br>Micro soft. DigitalTwins/DigitalTwins/lezen, <br>Micro soft. DigitalTwins/eventroutes/lezen, <br>Micro soft. DigitalTwins/eventroutes/schrijven, <br>Micro soft. DigitalTwins/eventroutes/verwijderen, <br>Micro soft. DigitalTwins/modellen/lezen, <br>Micro soft. DigitalTwins/modellen/schrijven, <br>Micro soft. DigitalTwins/modellen/verwijderen, <br>Micro soft. DigitalTwins/query/actie |
-| Bewerking (voor route ring) | Event Grid <br>Event hub, <br>Service Bus |
+| Eindpunttype | Event Grid <br>Event hub, <br>Service Bus |
 | Protocol | HTTPS |
 | Resultaat | Geleverd <br>Fout |
 | Statuscode | 200, 404, 500, enzovoort. |

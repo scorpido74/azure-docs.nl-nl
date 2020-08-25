@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: cc23e32db71439067421a9be8b18a1827515bd9c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6523e16bfe3bf0592b78da544d7d52dc3d969af4
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563276"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749119"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA voor uptime van Azure Kubernetes service (AKS)
 
@@ -25,9 +25,8 @@ Klanten kunnen nog steeds onbeperkte gratis clusters met een serviceniveau doels
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-SLA voor uptime is beschikbaar in open bare regio's waar [AKS wordt ondersteund](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+SLA voor uptime is beschikbaar in open bare regio's en Azure Government regio's waar [AKS wordt ondersteund](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
-* Azure Government wordt momenteel niet ondersteund.
 * Azure China 21Vianet wordt momenteel niet ondersteund.
 
 ## <a name="limitations"></a>Beperkingen

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 307b1a6838c3a78c04ba6a36ffd52bd6b98aae04
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722820"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749621"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure Active Directory Domain Services
 
@@ -104,7 +104,7 @@ Een beheerd domein maakt sommige netwerk bronnen tijdens de implementatie. Deze 
 
 ## <a name="network-security-groups-and-required-ports"></a>Netwerk beveiligings groepen en de vereiste poorten
 
-Een [netwerk beveiligings groep (NSG)](../virtual-network/virtual-network-vnet-plan-design-arm.md) bevat een lijst met regels waarmee netwerk verkeer naar verkeer in een virtueel Azure-netwerk wordt toegestaan of geweigerd. Er wordt een netwerk beveiligings groep gemaakt wanneer u een beheerd domein implementeert dat een set regels bevat waarmee de service verificatie-en beheer functies kan bieden. Deze standaard netwerk beveiligings groep is gekoppeld aan het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
+Een [netwerk beveiligings groep (NSG)](../virtual-network/security-overview.md) bevat een lijst met regels waarmee netwerk verkeer naar verkeer in een virtueel Azure-netwerk wordt toegestaan of geweigerd. Er wordt een netwerk beveiligings groep gemaakt wanneer u een beheerd domein implementeert dat een set regels bevat waarmee de service verificatie-en beheer functies kan bieden. Deze standaard netwerk beveiligings groep is gekoppeld aan het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
 
 De volgende regels voor de netwerk beveiligings groep zijn vereist voor het beheerde domein voor het leveren van verificatie-en beheer Services. Wijzig of verwijder deze regels voor netwerk beveiligings groepen niet voor het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
 

@@ -1,21 +1,21 @@
 ---
 title: Toepassingen toegang verlenen tot een Azure-sleutelkluis - Azure Key Vault | Microsoft Docs
-description: Ontdek hoe u veel toepassingen toegang verleent tot een sleutelkluis
+description: Informatie over het handmatig registreren van een service-principal en toegang bieden tot Azure Key Vault met behulp van een toegangsbeheerbeleid. Dit kan in sommige gevallen noodzakelijk zijn.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8369c507ee7a9e11969c17bbaac7c6e31892e196
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: d0607b1adb76fd32ce9f4dc9ebede92c7aa96862
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406245"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588718"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Key Vault-verificatie met een toegangsbeheerbeleid bieden
 

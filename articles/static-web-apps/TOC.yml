@@ -8,7 +8,14 @@
   expanded: true
   items:
     - name: Uw eerste statische web-app bouwen
-      href: getting-started.md
+      expanded: true
+      items:
+        - name: Visual Studio Code
+          href: getting-started.md
+        - name: Azure Portal
+          href: get-started-portal.md
+        - name: Azure CLI
+          href: get-started-cli.md
 - name: Concepten
   items:
     - name: API-ondersteuning met Azure Functions

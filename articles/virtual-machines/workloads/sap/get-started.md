@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/18/2020
+ms.date: 08/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 538ea1746e92b3ec7d45f06031cfdc965e286d7a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4b1705fbfae297c7f92de6b4080569deaad3de98
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603851"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749662"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -75,7 +75,7 @@ Zie voor informatie over de integratie tussen Azure Active Directory (Azure AD) 
 - [Zelfstudie: Azure Active Directory-integratie met SAP Cloud Platform](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Zelfstudie: Azure Active Directory-integratie met SAP NetWeaver](../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Zelfstudie: Azure Active Directory-integratie met SAP Business ByDesign](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Zelf studie: integratie Azure Active Directory met SAP HANA](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Zelfstudie: Azure Active Directory-integratie met SAP HANA](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Uw S/4HANA-omgeving: Fiori launchpad SAML eenmalige aanmelding met Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
 
 Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
@@ -88,6 +88,7 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 08/21/2020: nieuwe besturingssysteem versie toevoegen aan [compatibele besturings systemen voor Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) als beschikbaar besturings systeem voor HLI-eenheden van het type i en II
 - 08/18/2020: release van [ha voor SAP Hana scale-up met ANF op RHEL](./sap-hana-high-availability-netapp-files-red-hat.md)
 - 08/17/2020: informatie over het gebruik van Azure Site Recovery voor het verplaatsen van SAP NetWeaver-systemen van on-premises naar Azure in artikel [azure virtual machines planning en implementatie van SAP NetWeaver](./planning-guide.md)
 - 08/14/2020: het toevoegen van een schijf configuratie advies voor Db2 in artikel [IBM Db2 Azure virtual machines DBMS-implementatie voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)

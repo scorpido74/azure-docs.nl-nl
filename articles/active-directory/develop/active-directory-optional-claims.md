@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/30/2020
+ms.date: 08/24/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e82f5fb868dd728d439c68943c8809c5373ae133
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ff3e2c9f989a6688e200a1c34e85ef3a22860840
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115727"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794672"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Procedure: optionele claims voor uw app opgeven
 
@@ -49,7 +49,7 @@ Hieronder vindt u de set optionele claims die standaard beschikbaar zijn voor he
 
 **Tabel 2: v 1.0 en v 2.0 optionele claim sets**
 
-| Naam                       |  Beschrijving   | Token type | Gebruikers type | Opmerkingen  |
+| Naam                       |  Beschrijving   | Token type | Gebruikers type | Notities  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Tijdstip waarop de laatste verificatie van de gebruiker is gestart. Zie OpenID Connect Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | De regio van de resource-Tenant | JWT        |           | |
@@ -59,8 +59,8 @@ Hieronder vindt u de set optionele claims die standaard beschikbaar zijn voor he
 | `verified_secondary_email` | Bron van de SecondaryAuthoritativeEmail van de gebruiker   | JWT        |           |        |
 | `vnet`                     | Gegevens van VNET-specificatie. | JWT        |           |      |
 | `fwd`                      | IP-adres.| JWT    |   | Hiermee wordt het oorspronkelijke IPv4-adres van de aanvragende client toegevoegd (in een VNET) |
-| `ctry`                     | Land/regio van gebruiker | JWT |  | Azure AD retourneert de `ctry` optionele claim als deze aanwezig is en de waarde van de claim is een standaard land/regio code van twee letters, zoals fr, JP, Sz, enzovoort. |
-| `tenant_ctry`              | Land/regio van resource Tenant | JWT | | |
+| `ctry`                     | Land/regio van gebruiker | JWT |  | Azure AD retourneert de `ctry` optionele claim als deze aanwezig is en de waarde van het veld is een standaard land/regio code van twee letters, zoals fr, JP, Sz, enzovoort. |
+| `tenant_ctry`              | Land van de resource Tenant | JWT | | Gelijk aan `ctry` , behalve instellen op Tenant niveau door een beheerder.  Moet ook een standaard waarde van twee letters zijn. |
 | `xms_pdl`             | Voorkeurs locatie van gegevens   | JWT | | Voor multi-geo-tenants is de gewenste gegevens locatie de code van drie letters waarin de geografische regio waarin de gebruiker zich bevindt. Zie de [Azure AD Connect documentatie over de voorkeurs locatie van gegevens](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)voor meer informatie.<br/>Bijvoorbeeld: `APC` voor Azië en Stille Oceaan. |
 | `xms_pl`                   | Voorkeurs taal van gebruiker  | JWT ||De voorkeurs taal van de gebruiker, indien ingesteld. Vanuit hun thuis Tenant, in scenario's voor toegang tot de gast. Geformatteerd LL-CC ("en-US"). |
 | `xms_tpl`                  | Voorkeurs taal van Tenant| JWT | | De voorkeurs taal van de resource-Tenant, indien ingesteld. Opgemaakte LL ("en"). |
@@ -77,7 +77,7 @@ Deze claims zijn altijd opgenomen in de Azure AD-tokens v 1.0, maar zijn niet op
 
 **Tabel 3: alleen optionele claims voor v 2.0**
 
-| JWT-claim     | Naam                            | Beschrijving                                | Opmerkingen |
+| JWT-claim     | Naam                            | Beschrijving                                | Notities |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-adres                      | Het IP-adres van de client die is aangemeld bij.   |       |
 | `onprem_sid`  | Lokale beveiligings-id |                                             |       |
@@ -98,7 +98,7 @@ Sommige optionele claims kunnen worden geconfigureerd om de manier waarop de cla
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kan worden gebruikt voor SAML-en JWT-antwoorden, en voor de tokens v 1.0 en v 2.0. |
 |                | `include_externally_authenticated_upn`  | Bevat de gast-UPN zoals deze is opgeslagen in de resource-Tenant. Bijvoorbeeld: `foo_hometenant.com#EXT#@resourcetenant.com` |
-|                | `include_externally_authenticated_upn_without_hash` | Hetzelfde als hierboven, behalve dat de hash-markeringen ( `#` ) worden vervangen door onderstrepings tekens ( `_` ), bijvoorbeeld`foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | Hetzelfde als hierboven, behalve dat de hash-markeringen ( `#` ) worden vervangen door onderstrepings tekens ( `_` ), bijvoorbeeld `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>Voor beeld van extra eigenschappen
 
@@ -216,9 +216,9 @@ De extensies schema en open worden niet ondersteund door optionele claims, allee
 
 Gebruik de volledige naam van de extensie (in de indeling:) bij het configureren van optionele claims voor Directory-extensies met het toepassings manifest `extension_<appid>_<attributename>` . De `<appid>` moet overeenkomen met de id van de toepassing die de claim aanvraagt.
 
-In de JWT worden deze claims verzonden met de volgende naam indeling: `extn.<attributename>` .
+In de JWT worden deze claims verzonden met de volgende naam indeling:  `extn.<attributename>` .
 
-Binnen de SAML-tokens worden deze claims verzonden met de volgende URI-indeling:`http://schemas.microsoft.com/identity/claims/extn.<attributename>`
+Binnen de SAML-tokens worden deze claims verzonden met de volgende URI-indeling: `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
 
 ## <a name="configuring-groups-optional-claims"></a>Groepen optionele claims configureren
 
@@ -241,7 +241,7 @@ In deze sectie worden de configuratie opties beschreven onder optionele claims v
 1. Claim voor het **toevoegen van groepen** selecteren
 1. Selecteer de groeps typen die moeten worden geretourneerd (**alle groepen**, **beveiligings groep**of **DirectoryRole**). De optie **alle groepen** omvat **beveiligings groep**, **DirectoryRole**en **DistributionList**
 1. Optioneel: Selecteer de specifieke eigenschappen van het token type om de claim waarde van de groep zodanig te wijzigen dat deze lokale groeps kenmerken bevat of om het claim type te wijzigen in een rol
-1. Selecteer **Opslaan**
+1. Selecteer **Opslaan**.
 
 **Groepen optionele claims configureren via het toepassings manifest:**
 
@@ -399,7 +399,7 @@ In het onderstaande voor beeld gebruikt u de gebruikers interface voor **token c
 
 **Manifest configuratie:**
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Nadat u bent geverifieerd, kiest u uw Azure AD-Tenant door deze te selecteren in de rechter bovenhoek van de pagina.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Zoek de toepassing waarvoor u de optionele claims wilt configureren in de lijst en selecteer deze.

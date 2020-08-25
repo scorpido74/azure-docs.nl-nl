@@ -8,23 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782531"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749312"
 ---
 # <a name="speech-service-supported-regions"></a>Ondersteunde regio's voor spraak Services
 
 Met de speech-service kan uw toepassing audio naar tekst omzetten, spraak omzetting uitvoeren en tekst naar spraak converteren. De service is beschikbaar in meerdere regio's met unieke eind punten voor de Speech SDK en REST Api's.
 
-De spraak Portal om aangepaste configuraties uit te voeren op uw spraak ervaring voor alle regio's is hier beschikbaar:https://speech.microsoft.com
+De spraak Portal om aangepaste configuraties uit te voeren op uw spraak ervaring voor alle regio's is hier beschikbaar: https://speech.microsoft.com
 
-Zorg ervoor dat de oproep overeenkomt met de regio voor uw abonnement voor het aanroepen van uw spraak service.
+Houd rekening met de volgende punten bij het overwegen van regio's:
+
+* Als uw toepassing gebruikmaakt van een [spraak-SDK](speech-sdk.md), geeft u de regio-id op, zoals bij het maken van `westus` een spraak configuratie.
+* Als uw toepassing gebruikmaakt van een van de rest- [api's](rest-apis.md)van de speech-service, maakt de regio deel uit van de EINDPUNT-URI die u gebruikt bij het maken van aanvragen.
+* Sleutels die zijn gemaakt voor een regio, zijn alleen geldig in die regio. Als u deze probeert te gebruiken met andere regio's, worden verificatie fouten veroorzaakt.
 
 ## <a name="speech-sdk"></a>Speech-SDK
 
@@ -32,7 +36,7 @@ In de [Speech SDK](speech-sdk.md)worden regio's opgegeven als een teken reeks (b
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Spraak naar tekst, tekst-naar-spraak en omzetting
 
-De portal voor spraak aanpassing is hier beschikbaar:https://speech.microsoft.com
+De portal voor spraak aanpassing is hier beschikbaar: https://speech.microsoft.com
 
 De speech-service is beschikbaar in deze regio's voor **spraak herkenning**, **tekst naar spraak**en **vertaling**:
 

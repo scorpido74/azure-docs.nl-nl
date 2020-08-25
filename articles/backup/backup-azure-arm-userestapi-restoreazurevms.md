@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het beheren van herstel bewe
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: add4bdeaa202c244ce2e0e83f999f29afdca5c28
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079295"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761471"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
 
@@ -25,7 +25,7 @@ De beschik bare herstel punten van een back-upitem kunnen worden weer gegeven me
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
-De `{containerName}` en `{protectedItemName}` zijn [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)gemaakt. `{fabricName}`is ' Azure '.
+De `{containerName}` en `{protectedItemName}` zijn [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)gemaakt. `{fabricName}` is ' Azure '.
 
 De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag tekst nodig
 
@@ -117,7 +117,7 @@ Het herstel punt wordt aangeduid met het `{name}` veld in het bovenstaande antwo
 
 ## <a name="restore-disks"></a>Schijven herstellen
 
-Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kan de ene schijf alleen herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services-kluis en mag niet zone redundant zijn. De schijven en de configuratie van de back-up van de virtuele machine (vmconfig.jsop) worden opgeslagen in het opgegeven opslag account.
+Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kan de ene schijf alleen herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services kluis en mag niet zone redundant zijn. De schijven en de configuratie van de back-up van de virtuele machine (vmconfig.jsop) worden opgeslagen in het opgegeven opslag account.
 
 Het activeren van herstel schijven is een *post* -aanvraag. Raadpleeg de [rest API trigger herstellen](/rest/api/backup/restores/trigger)voor meer informatie over de bewerking schijven herstellen.
 
@@ -125,7 +125,7 @@ Het activeren van herstel schijven is een *post* -aanvraag. Raadpleeg de [rest A
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-De `{containerName}` en `{protectedItemName}` zijn [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)gemaakt. `{fabricName}`is ' Azure ' en het `{recoveryPointId}` is het `{name}` veld van het [hierboven](#example-response)vermelde herstel punt.
+De `{containerName}` en `{protectedItemName}` zijn [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)gemaakt. `{fabricName}` is ' Azure ' en het `{recoveryPointId}` is het `{name}` veld van het [hierboven](#example-response)vermelde herstel punt.
 
 ### <a name="create-request-body"></a>Hoofd tekst van aanvraag maken
 
@@ -159,7 +159,7 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn om een
 }
 ```
 
-### <a name="response"></a>Reactie
+### <a name="response"></a>Antwoord
 
 Het activeren van een herstel schijf is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 

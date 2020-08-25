@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aea29cfff6b3827cfb9169722e48120e3a5a3709
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78302182"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794325"
 ---
 # <a name="replicate-azure-cosmos-db"></a>REPLICEREN (Azure Cosmos DB)
  Herhaalt een tekenreekswaarde een opgegeven aantal keren.
@@ -36,7 +36,8 @@ REPLICATE(<str_expr>, <num_expr>)
   Retourneert een teken reeks expressie.
   
 ## <a name="remarks"></a>Opmerkingen
-  De maximale lengte van het resultaat is 10.000 tekens, dat wil zeggen (length (*str_expr*) * *num_expr*) <= 10.000.
+
+  De maximale lengte van het resultaat is 10.000 tekens, dat wil zeggen (length (*str_expr*) *  *num_expr*) <= 10.000. Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="examples"></a>Voorbeelden
   
@@ -51,10 +52,6 @@ SELECT REPLICATE("a", 3) AS replicate
 ```json
 [{"replicate": "aaa"}]
 ```  
-
-## <a name="remarks"></a>Opmerkingen
-
-Deze systeem functie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964495"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588922"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault integreren met DigiCert-certificeringsinstantie
 
@@ -105,7 +105,7 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzureKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
 $issuerName = "DigiCertCA"
 ```
@@ -131,6 +131,16 @@ Als het certificaat is uitgegeven in de status 'uitgeschakeld' in de Azure-porta
  ![Certificaateigenschappen](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 Raadpleeg de [Certificaatbewerkingen in de REST API-naslag voor Key Vault](/rest/api/keyvault) voor meer informatie. Raadpleeg [Kluizen: maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [Kluizen: toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy) voor meer informatie over het instellen van machtigingen.
+
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+- Kan ik een Digicert-certificaat met jokerteken genereren met behulp van KeyVault? 
+   Ja. Dit is afhankelijk van hoe u uw Digicert-account hebt geconfigureerd.
+- Als we een EV-certificaat willen maken, hoe geven we dat op? 
+   Wanneer u een certificaat maakt, klikt u op Geavanceerde beleidsconfiguratie en geeft u vervolgens het certificaattype op. Ondersteunde waarden zijn: OV-SSL, EV-SSL
+- Zit er een vertraging in het maken van het Digicert-certificaat via integratie versus het rechtstreeks verkrijgen van het certificaat via Digicert?
+   Nee. Als er een certificaat wordt gemaakt, kan het verificatieproces tijd kosten. Deze verificatie is afhankelijk van het proces dat door DigiCert wordt gevolgd.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

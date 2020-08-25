@@ -1,71 +1,82 @@
 ---
-title: Over Azure Key Vault certificaat vernieuwen
-description: Over Azure Key Vault certificaat vernieuwen
+title: Informatie over het verlengen van Azure Key Vault-certificaten
+description: In dit artikel wordt beschreven hoe u Azure Key Vault-certificaten kunt verlengen.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: bbd65cdfc7c8ebbc08b914158577337cc49ec887
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
-ms.translationtype: MT
+ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236060"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588800"
 ---
-# <a name="about-azure-key-vault-certificate-renewal"></a>Over Azure Key Vault certificaat vernieuwen
+# <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault-certificaten verlengen
 
-Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inrichten, beheren en implementeren en beveiligde communicatie mogelijk maken voor toepassingen. Zie voor meer algemene informatie over certificaten [Azure Key Vault certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)
+Met Azure Key Vault kunt u eenvoudig digitale certificaten voor uw netwerk inrichten, beheren en implementeren en beveiligde communicatie voor toepassingen mogelijk maken. Zie [Azure Key Vault-certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) voor meer informatie over certificaten.
 
-Met een kort certificaat of het verg Roten van de frequentie van de draaiing van certificaten beperkt het bereik van de kwaadwillende persoon voor schade.
+Door gebruik te maken van kortlevende certificaten of door de frequentie van de rotatie van certificaten te verhogen, kunt u toegang tot uw toepassingen door onbevoegde gebruikers voorkomen.
 
-## <a name="certificate-expiration-notifications"></a>Meldingen voor verlopen van certificaten
-Zorg er eerst voor dat u een certificaat contact persoon toevoegt aan uw Key Vault om een melding te ontvangen wanneer certificaten bijna verlopen (bijvoorbeeld gebruik Power shell [add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)) om te configureren wanneer u een melding wilt ontvangen over het verlopen van certificaten. [Voer de volgende stappen](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) uit om de actie voor de levens duur te configureren
+In dit artikel wordt beschreven hoe u Azure Key Vault-certificaten kunt verlengen.
 
-Er zijn drie categorieën voor het maken van certificaten in sleutel kluis. Deze hand leiding helpt u te begrijpen hoe het vernieuwen van certificaten kan worden gerealiseerd.
--   Certificaten die zijn gemaakt met een geïntegreerde CA (DigiCert of GlobalSign)
+## <a name="get-notified-about-certificate-expirations"></a>Meldingen ontvangen over verlopen certificaten
+Ga als volgt te werk als u een melding wilt ontvangen wanneer uw certificaten bijna zijn verlopen:
+
+Voeg eerst een certificaatcontactpersoon aan uw sleutelkluis toen met behulp van de PowerShell-cmdlet [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0).
+
+Stel vervolgens het tijdstip in wanneer u wilt worden gewaarschuwd over het verlopen van het certificaat. Zie [Automatisch roteren van certificaatconfiguratie in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) voor informatie over het configureren van de levenscycluskenmerken van het certificaat.
+
+Key Vault kent drie categorieën certificaten:
+-   Certificaten die zijn gemaakt met een geïntegreerde certificeringsinstantie (CA), zoals DigiCert of GlobalSign
 -   Certificaten die zijn gemaakt met een niet-geïntegreerde CA
 -   Zelfondertekende certificaten
 
-## <a name="renewal-of-integrated-ca-certificate"></a>Verlenging van het geïntegreerde CA-certificaat 
-Goed nieuws. Azure-sleutel kluizen zorgen voor het end-to-end-onderhoud van certificaten die worden uitgegeven door vertrouwde certificerings instanties van micro soft, dat wil zeggen DigiCert en GlobalSign. Meer informatie over het [integreren van een vertrouwde CA met sleutel kluis](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority).
+## <a name="renew-an-integrated-ca-certificate"></a>Een geïntegreerd CA-certificaat verlengen 
+Azure Key Vault verwerkt het end-to-end-onderhoud van certificaten die worden uitgegeven door de vertrouwde Microsoft-certificeringsinstanties DigiCert en GlobalSign. Meer informatie over het [integreren van een vertrouwde CA met Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority).
 
-## <a name="renewal-of-non-integrated-ca-certificate"></a>Vernieuwen van niet-geïntegreerd CA-certificaat 
-Azure Key kluis biedt gebruikers het voor deel van het importeren van certificaten van elke CA zodat de gebruikers kunnen integreren met verschillende Azure-resources en de implementatie eenvoudig kunnen uitvoeren. Als u bang bent dat het bijhouden van uw certificaat verloopt, of erger dat uw certificaat al is verlopen, Vervolgens kunt Key Vault u helpen om up-to-date te blijven. Voor een niet-geïntegreerd CA-certificaat kan de gebruiker met sleutel kluis bijna verlopen e-mail meldingen instellen. Deze meldingen kunnen ook worden ingesteld voor meerdere gebruikers.
+## <a name="renew-a-nonintegrated-ca-certificate"></a>Een niet-geïntegreerd CA-certificaat verlengen 
+U kunt met behulp van Azure Key Vault certificaten importeren vanuit elke CA, een voordeel waarmee u met verschillende Azure-resources kunt integreren en de implementatie eenvoudig kunt maken. Als u zich zorgen maakt dat u de vervaldatum van uw certificaat niet meer weet of, erger, dat u hebt ontdekt dat een certificaat al is verlopen, kunt u met behulp van uw sleutelkluis up-to-date blijven. Voor niet-geïntegreerde CA-certificaten kunt u met de sleutelkluis e-mailmeldingen instellen bij bijna verlopen certificaten. Dergelijke meldingen kunnen ook voor meerdere gebruikers worden ingesteld.
 
-Als u nu een certificaat wilt vernieuwen, is het belang rijk om te begrijpen dat een Azure Key Vault certificaat een object met versie is. Als de huidige versie verloopt, moet u een nieuwe versie maken. In het algemeen wordt elke nieuwe versie samen met een nieuw certificaat, samengesteld uit sleutel en een blob, waarmee die sleutel wordt gekoppeld aan een identiteit. Wanneer u een niet-gelieerde certificerings instantie gebruikt, genereert sleutel kluis een sleutel waarde-paar en wordt de CSR geretourneerd.
+> [!IMPORTANT]
+> Een certificaat is een object met versiebeheer. Als de huidige versie verloopt, moet u een nieuwe versie maken. Elke nieuwe versie is conceptueel een nieuw certificaat dat bestaat uit een sleutel en een blob die die sleutel aan een identiteit koppelt. Wanneer u een niet-gelieerde CA gebruikt, genereert de sleutelkluis een sleutel-/waardepaar en wordt een aanvraag voor certificaatondertekening (CSR) geretourneerd.
 
-**Stappen om te volgen in Azure Portal:-**
-1.  Open het certificaat dat u wilt verlengen.
-2.  Selecteer de knop **+ nieuwe versie** op het scherm certificaat.
-3.  **Certificaat bewerking** selecteren
-4.  Selecteer **CSR downloaden**. Hiermee wordt een CSR-bestand gedownload op uw lokale station.
-5.  De CSR naar keuze van de certificerings instantie voor het ondertekenen van de aanvraag meenemen
-6.  Breng de ondertekende aanvraag terug en selecteer **CSR samen voegen** op hetzelfde certificaat bewerkings scherm.
+Ga als volgt te werk als u een niet-geïntegreerd CA-certificaat wilt verlengen:
+
+1. Meld u aan bij Azure Portal en open vervolgens het certificaat dat u wilt verlengen.
+1. Selecteer **Nieuwe versie** in het certificaatdeelvenster.
+1. Selecteer **Certificaatbewerking**.
+1. Selecteer **CSR downloaden** om een CSR-bestand naar uw lokale station te downloaden.
+1. Verzend de CSR naar de gewenste certificeringsinstantie om de aanvraag te ondertekenen.
+1. Breng de ondertekende aanvraag terug en selecteer **CSR samenvoegen** in hetzelfde venster voor de certificaatbewerking.
 
 > [!NOTE]
-> Het is belang rijk om de ondertekende CSR samen te voegen met dezelfde CSR-aanvraag die is gemaakt, anders zou de sleutel niet overeenkomen.
+> Het is van belang om de ondertekende CSR samen te voegen met dezelfde CSR-aanvraag die u hebt gemaakt. Anders komt de sleutel niet overeen.
 
-De stappen zijn vergelijkbaar met het maken van een nieuw certificaat en [worden meer beschreven in informatie.]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal)
+Zie [een CSR maken en samenvoegen in Key Vault]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal) voor meer informatie over het maken van een nieuwe CSR.
 
-## <a name="renewal-of-self-signed-certificate"></a>Het zelfondertekend certificaat vernieuwen
+## <a name="renew-a-self-signed-certificate"></a>Een zelfondertekend certificaat verlengen
 
-Goed nieuws. Azure-sleutel kluizen zorgen er ook voor dat zelfondertekende certificaten automatisch worden vernieuwd voor de gebruikers. Meer informatie over het wijzigen van het uitgifte beleid en het bijwerken van de levensduur actie kenmerken van het certificaat [vindt u hier](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
+Azure Key Vault verwerkt ook het automatisch verlengen van zelfondertekende certificaten. Zie [Automatisch roteren van certificaatconfiguratie in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) voor meer informatie over het wijzigen van het uitgiftebeleid en het bijwerken van de levenscycluskenmerken van een certificaat.
 
-### <a name="troubleshoot"></a>Problemen oplossen
-Als het certificaat dat is uitgegeven de status uitgeschakeld heeft in de Azure Portal, gaat u door met het weer geven van de certificaat bewerking om het fout bericht voor dat certificaat weer te geven.
+## <a name="troubleshoot"></a>Problemen oplossen
+Als het uitgegeven certificaat in Azure Portal de status *uitgeschakeld* heeft, gaat u naar **Certificaatbewerking** om het foutbericht voor dat certificaat te bekijken.
 
-### <a name="frequently-asked-questions"></a>Veelgestelde vragen
-* Hoe kan ik de functie voor het door draaien van het certificaat testen?
-  Maak een certificaat met een geldigheids duur van 1 maand en stel vervolgens de actie voor de levens duur voor rotatie in op 1%. Met deze instelling wordt het certificaat binnen 7,2 uur geroteerd.
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+**Hoe kan ik de functie voor het automatisch roteren van het certificaat testen?**
+
+Maak een certificaat met een geldigheidsduur van **1 maand** en stel vervolgens de levensduuractie voor rotatie in op **1%** . Met deze instelling wordt het certificaat elke 7,2 uur geroteerd.
   
-* Worden de labels gerepliceerd nadat het certificaat automatisch is vernieuwd?
-  Ja, de tags worden gerepliceerd na het automatisch verlengen.
+**Worden de labels gerepliceerd als het certificaat automatisch is verlengd?**
 
-### <a name="see-also"></a>Zie ook
+Ja, de labels worden na het verlengen gerepliceerd.
+
+## <a name="next-steps"></a>Volgende stappen
 *   [Key Vault integreren met DigiCert-certificeringsinstantie](how-to-integrate-certificate-authority.md)
 *   [Zelfstudie: Automatische rotatie van certificaten in Key Vault configureren](tutorial-rotate-certificates.md)

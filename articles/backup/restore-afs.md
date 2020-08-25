@@ -3,12 +3,12 @@ title: Azure-bestands shares herstellen
 description: Informatie over het gebruik van de Azure Portal om een volledige bestands share of specifieke bestanden te herstellen vanaf een herstel punt dat is gemaakt door Azure Backup.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503639"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761845"
 ---
 # <a name="restore-azure-file-shares"></a>Azure-bestands shares herstellen
 
@@ -66,7 +66,7 @@ U kunt deze terugzet optie gebruiken om de volledige bestands share te herstelle
     * **Oorspronkelijke locatie**: herstel de volledige bestands share naar dezelfde locatie als de oorspronkelijke bron.
     * **Alternatieve locatie**: herstel de volledige bestands share naar een andere locatie en behoud de oorspronkelijke bestands share.
 
-#### <a name="restore-to-the-original-location"></a>Herstellen naar de oorspronkelijke locatie
+#### <a name="restore-to-the-original-location-full-share-recovery"></a>Herstellen naar de oorspronkelijke locatie (volledige share herstel)
 
 1. Selecteer **oorspronkelijke locatie** als **herstel doel**en selecteer of u wilt overs Laan of overschrijven als er conflicten zijn, door de desbetreffende optie te kiezen in de vervolg keuzelijst **in het geval van conflicten** .
 
@@ -74,7 +74,7 @@ U kunt deze terugzet optie gebruiken om de volledige bestands share te herstelle
 
     ![Selecteer herstellen om te starten](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Herstellen naar een alternatieve locatie
+#### <a name="restore-to-an-alternate-location-full-share-recovery"></a>Herstellen naar een andere locatie (volledige share herstel)
 
 1. Selecteer **alternatieve locatie** als **herstel bestemming**.
 1. Selecteer het doel-opslag account waar u de inhoud waarvan een back-up is gemaakt, wilt herstellen uit de vervolg keuzelijst **opslag account** .
@@ -106,7 +106,7 @@ U kunt deze terugzet optie gebruiken om afzonderlijke bestanden of mappen op de 
     * **Oorspronkelijke locatie**: Zet geselecteerde bestanden of mappen terug naar dezelfde bestands share als de oorspronkelijke bron.
     * **Alternatieve locatie**: geselecteerde bestanden of mappen terugzetten op een andere locatie en de oorspronkelijke bestands share-inhoud blijven gebruiken.
 
-#### <a name="restore-to-the-original-location"></a>Herstellen naar de oorspronkelijke locatie
+#### <a name="restore-to-the-original-location-item-level-recovery"></a>Herstellen naar de oorspronkelijke locatie (herstel op item niveau)
 
 1. Selecteer **oorspronkelijke locatie** als **herstel doel**en selecteer of u wilt overs Laan of overschrijven als er conflicten optreden door de juiste optie te kiezen in de vervolg keuzelijst **in het geval van conflicten** .
 
@@ -125,7 +125,7 @@ U kunt deze terugzet optie gebruiken om afzonderlijke bestanden of mappen op de 
 
     ![Selecteer herstellen om te starten](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Herstellen naar een alternatieve locatie
+#### <a name="restore-to-an-alternate-location-item-level-recovery"></a>Herstellen naar een andere locatie (herstel op item niveau)
 
 1. Selecteer **alternatieve locatie** als **herstel bestemming**.
 1. Selecteer het doel-opslag account waar u de inhoud waarvan een back-up is gemaakt, wilt herstellen uit de vervolg keuzelijst **opslag account** .

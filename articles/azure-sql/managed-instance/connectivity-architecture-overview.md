@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 059828336288eeadc0567fed060db07e323f885c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706202"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761862"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Connectiviteitsarchitectuur van Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -89,7 +89,12 @@ Om beveiligings-en beheer vereisten van de klant op te lossen, wordt door SQL be
 
 Met de service-gewerkte subnet-configuratie heeft de gebruiker volledig beheer van gegevens (TDS)-verkeer, terwijl SQL Managed instance verantwoordelijk is voor een ononderbroken stroom van beheer verkeer om te voldoen aan een SLA.
 
-Service-geautomatiseerd subnet-configuratie bouwt voort op de functie voor het [delegeren van subnetten](../../virtual-network/subnet-delegation-overview.md) van het virtuele netwerk om automatisch netwerk configuratie beheer te bieden en service-eind punten in te scha kelen. Service-eind punten kunnen worden gebruikt voor het configureren van firewall regels voor virtuele netwerken op opslag accounts die back-ups en audit logboeken bewaren.
+Service-geautomatiseerd subnet-configuratie bouwt voort op de functie voor het [delegeren van subnetten](../../virtual-network/subnet-delegation-overview.md) van het virtuele netwerk om automatisch netwerk configuratie beheer te bieden en service-eind punten in te scha kelen. 
+
+Service-eind punten kunnen worden gebruikt voor het configureren van firewall regels voor virtuele netwerken op opslag accounts die back-ups en audit logboeken bewaren. Zelfs als service-eind punten zijn ingeschakeld, worden klanten aangemoedigd om een [persoonlijke koppeling](../../private-link/private-link-overview.md) te gebruiken die extra beveiliging biedt dan service-eind punten.
+
+> [!IMPORTANT]
+> Als gevolg van de configuratie kenmerken van het besturings vlak, worden service-geaidede subnetten niet ingeschakeld voor de configuratie van de services in nationale Clouds. 
 
 ### <a name="network-requirements"></a>Netwerkvereisten
 
@@ -106,7 +111,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte regels voor binnenkomende beveiliging met configuratie van geaidede subnetten
 
-| Name       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNET  |Toestaan |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-SUBNET  |Toestaan |
@@ -116,14 +121,14 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Verplichte uitgaande beveiligings regels met een service-aided subnet-configuratie
 
-| Name       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Door de gebruiker gedefinieerde routes met de service-aided subnet-configuratie
 
-|Name|Adresvoorvoegsel|Volgende hop|
+|Naam|Adresvoorvoegsel|Volgende hop|
 |----|--------------|-------|
 |subnet-to-vnetlocal|MI-SUBNET|Virtueel netwerk|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -294,7 +299,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 |Mi-204-79-180-24-nexthop-Internet|204.79.180.0/24|Internet|
 ||||
 
-\*MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm x. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
+\* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm x. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
 
 Daarnaast kunt u vermeldingen aan de route tabel toevoegen om verkeer met on-premises privé-IP-adresbereiken als bestemming te routeren via de gateway van het virtuele netwerk of het virtuele netwerk apparaat (NVA).
 
@@ -326,7 +331,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-inbound-security-rules"></a>Verplichte regels voor binnenkomende beveiliging
 
-| Name       |Poort                        |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort                        |Protocol|Bron           |Doel|Bewerking|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |beheer  |9000, 9003, 1438, 1440, 1452|TCP     |Alle              |MI-SUBNET  |Toestaan |
 |mi_subnet   |Alle                         |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -334,7 +339,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="mandatory-outbound-security-rules"></a>Verplichte uitgaande beveiligings regels
 
-| Name       |Poort          |Protocol|Bron           |Doel|Bewerking|
+| Naam       |Poort          |Protocol|Bron           |Doel|Bewerking|
 |------------|--------------|--------|-----------------|-----------|------|
 |beheer  |443, 12000    |TCP     |MI-SUBNET        |AzureCloud |Toestaan |
 |mi_subnet   |Alle           |Alle     |MI-SUBNET        |MI-SUBNET  |Toestaan |
@@ -342,7 +347,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 > [!IMPORTANT]
 > Zorg ervoor dat er slechts één binnenkomende regel is voor poorten 9000, 9003, 1438, 1440 en 1452, en één uitgaande regel voor poorten 443 en 12000. Het inrichten van SQL Managed instance via Azure Resource Manager implementaties mislukt als inkomende en uitgaande regels afzonderlijk voor elke poort worden geconfigureerd. Als deze poorten zich in afzonderlijke regels bevinden, mislukt de implementatie met de fout code `VnetSubnetConflictWithIntendedPolicy` .
 
-\*MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm x. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
+\* MI-SUBNET verwijst naar het IP-adres bereik voor het SUBNET in de vorm x. x. x. x/y. U kunt deze informatie vinden in het Azure Portal, in eigenschappen van subnet.
 
 > [!IMPORTANT]
 > Hoewel vereiste binnenkomende beveiligings regels verkeer toestaan van _een_ bron op poort 9000, 9003, 1438, 1440 en 1452, worden deze poorten beveiligd door een ingebouwde firewall. Zie [het adres van het beheer eindpunt bepalen](management-endpoint-find-ip-address.md)voor meer informatie.
@@ -352,7 +357,7 @@ Implementeer SQL Managed instance in een toegewezen subnet in het virtuele netwe
 
 ### <a name="user-defined-routes"></a>Door de gebruiker gedefinieerde routes
 
-|Name|Adresvoorvoegsel|Volgende hop|
+|Naam|Adresvoorvoegsel|Volgende hop|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI-SUBNET|Virtueel netwerk|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
