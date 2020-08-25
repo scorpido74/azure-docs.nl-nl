@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727191"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797986"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn-account verbindingen integreren in Azure Active Directory
 
@@ -33,14 +33,14 @@ U kunt gebruikers in uw organisatie in staat stellen om toegang te krijgen tot h
 > * De instelling is standaard uitgeschakeld voor Azure AD-organisaties die zijn ingericht in Duitsland. Houd er rekening mee dat de instelling niet beschikbaar is voor klanten die Microsoft Cloud Duitsland gebruiken.
 > * De instelling is standaard uitgeschakeld voor organisaties die in Frank rijk zijn ingericht.
 >
-> Zodra de verbinding met het LinkedIn-account voor uw organisatie is ingeschakeld, werken de account verbindingen nadat gebruikers toestemming geven voor apps die namens hen toegang hebben tot Bedrijfs gegevens. Zie de [toegang van een gebruiker tot een toepassing verwijderen](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)voor meer informatie over de instelling van toestemming voor gebruikers.
+> Zodra de verbinding met het LinkedIn-account voor uw organisatie is ingeschakeld, werken de account verbindingen nadat gebruikers toestemming geven voor apps die namens hen toegang hebben tot Bedrijfs gegevens. Zie de [toegang van een gebruiker tot een toepassing verwijderen](../manage-apps/methods-for-removing-user-access.md)voor meer informatie over de instelling van toestemming voor gebruikers.
 
 ## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>LinkedIn-account verbindingen inschakelen in de Azure Portal
 
 U kunt LinkedIn-account verbindingen inschakelen voor alleen de gebruikers die u toegang wilt geven, vanuit uw hele organisatie tot alleen geselecteerde gebruikers in uw organisatie.
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com/) met een account dat een globale beheerder is voor de Azure AD-organisatie.
-1. Selecteer **gebruikers**.
+1. Selecteer **Gebruikers**.
 1. Op de pagina **gebruikers** selecteert u **gebruikers instellingen**.
 1. Onder **LinkedIn-account verbindingen**kunnen gebruikers hun accounts verbinden voor toegang tot hun LinkedIn-verbindingen binnen sommige micro soft-apps. Er worden geen gegevens gedeeld wanneer gebruikers toestemming hebben om verbinding te maken met hun accounts.
 
@@ -71,7 +71,7 @@ We hebben de optie geselecteerd vervangen, waarmee een lijst met gebruikers word
 1. Maak een CSV-bestand van de gebruikers die zijn geselecteerd voor de verbindingen van het LinkedIn-account.
 1. Meld u aan bij Microsoft 365 met uw beheerders account.
 1. Start PowerShell.
-1. De Azure AD-module installeren door uit te voeren`Install-Module AzureAD`
+1. De Azure AD-module installeren door uit te voeren `Install-Module AzureAD`
 1. Voer het volgende script uit:
 
   ``` PowerShell

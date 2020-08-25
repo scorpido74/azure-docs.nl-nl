@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: eef2af8b48bba7408a887947c20f8c9407f8a4da
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658065"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754970"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Back-ups en herstel na nood gevallen voor Azure IaaS-schijven
 
@@ -48,7 +48,7 @@ Deze architectuur heeft ervoor gezorgd dat Azure consistente duurzaamheid op bed
 
 Lokale hardwarestoringen op de compute-host of het opslagplatform kunnen soms leiden tot de tijdelijke onbeschikbaarheid van de virtuele machine die wordt gedekt door de [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) voor VM-beschikbaarheid. Azure biedt ook een toonaangevende SLA voor afzonderlijke VM-instanties die gebruikmaken van Azure Premium SSD's.
 
-Om toepassingsworkloads te beschermen tegen downtime vanwege de tijdelijke onbeschikbaarheid van een schijf of virtuele machine, kunnen klanten [beschikbaarheidssets gebruiken](~/articles/virtual-machines/windows/manage-availability.md). Twee of meer virtuele machines in een beschikbaarheidsset bieden redundantie voor de toepassing. Azure maakt deze virtuele machines en schijven vervolgens in afzonderlijke foutdomeinen met verschillende stroom-, netwerk- en serveronderdelen.
+Om toepassingsworkloads te beschermen tegen downtime vanwege de tijdelijke onbeschikbaarheid van een schijf of virtuele machine, kunnen klanten [beschikbaarheidssets gebruiken](windows/manage-availability.md). Twee of meer virtuele machines in een beschikbaarheidsset bieden redundantie voor de toepassing. Azure maakt deze virtuele machines en schijven vervolgens in afzonderlijke foutdomeinen met verschillende stroom-, netwerk- en serveronderdelen.
 
 Vanwege deze afzonderlijke foutdomeinen hebben lokale hardwarestoringen doorgaans geen invloed op meerdere virtuele machines in de set tegelijkertijd. Afzonderlijke foutdomeinen bieden een hoge beschikbaarheid voor uw toepassing. Het is een goede gewoonte om beschikbaarheidssets te gebruiken wanneer hoge beschikbaarheid is vereist. In de volgende sectie wordt herstel na noodgevallen beschreven.
 
@@ -97,24 +97,24 @@ Problemen met gegevens van IaaS-toepassingen zijn een andere mogelijkheid. Overw
 
 ## <a name="disaster-recovery-solution-azure-backup"></a>Oplossing voor herstel na noodgevallen: Azure Backup 
 
-[Azure Backup](https://azure.microsoft.com/services/backup/) wordt gebruikt voor back-ups en herstel na noodgevallen. Het werkt met [beheerde schijven](~/articles/virtual-machines/managed-disks-overview.md) en onbeheerde schijven. U kunt een back-uptaak maken met op tijd gebaseerde back-ups, eenvoudig VM-herstel en bewaarbeleid voor back-ups.
+[Azure Backup](https://azure.microsoft.com/services/backup/) wordt gebruikt voor back-ups en herstel na noodgevallen. Het werkt met [beheerde schijven](managed-disks-overview.md) en onbeheerde schijven. U kunt een back-uptaak maken met op tijd gebaseerde back-ups, eenvoudig VM-herstel en bewaarbeleid voor back-ups.
 
-Als u [Premium SSD's](~/articles/virtual-machines/disks-types.md), [beheerde schijven](~/articles/virtual-machines/managed-disks-overview.md)of andere schijftypen met de optie [lokaal redundante opslag](~/articles/storage/common/storage-redundancy-lrs.md) gebruikt, is het vooral belangrijk om periodieke back-ups te maken voor herstel na noodgevallen. Azure Backup slaat de gegevens op in uw Recovery Services-kluis voor langetermijnretentie. Kies de optie [geografisch redundante opslag](~/articles/storage/common/storage-redundancy-grs.md) voor de Recovery Services-kluis voor back-ups. Deze optie zorgt ervoor dat back-ups worden gerepliceerd naar een andere Azure-regio ter bescherming tegen regionale rampen.
+Als u [Premium SSD's](disks-types.md), [beheerde schijven](managed-disks-overview.md)of andere schijftypen met de optie [lokaal redundante opslag](../storage/common/storage-redundancy.md#locally-redundant-storage) gebruikt, is het vooral belangrijk om periodieke back-ups te maken voor herstel na noodgevallen. Azure Backup slaat de gegevens op in uw Recovery Services-kluis voor langetermijnretentie. Kies de optie [geografisch redundante opslag](../storage/common/storage-redundancy.md#geo-redundant-storage) voor de Recovery Services-kluis voor back-ups. Deze optie zorgt ervoor dat back-ups worden gerepliceerd naar een andere Azure-regio ter bescherming tegen regionale rampen.
 
 Voor onbeheerde IaaS-schijven kunt u het lokaal redundante opslagtype gebruiken. Zorg er wel voor dat Azure Backup is ingeschakeld met de geografisch redundante opslagoptie voor de Recovery Services-kluis.
 
 > [!NOTE]
-> Als u de [geografisch redundante opslag](~/articles/storage/common/storage-redundancy-grs.md) of [geografisch redundante opslag met leestoegang](~/articles/storage/common/storage-redundancy.md) voor uw onbeheerde schijven gebruikt, hebt u nog steeds consistente momentopnames nodig voor back-ups en herstel na noodgevallen. Gebruik [Azure Backup](https://azure.microsoft.com/services/backup/) of [consistente momentopnames](#alternative-solution-consistent-snapshots).
+> Als u de geo [-redundante opslag](../storage/common/storage-redundancy.md#geo-redundant-storage) of [geografisch redundante opslag optie met lees toegang](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)  voor uw onbeheerde schijven gebruikt, hebt u nog steeds consistente moment opnamen nodig voor back-up en Dr. Gebruik [Azure Backup](https://azure.microsoft.com/services/backup/) of [consistente momentopnames](#alternative-solution-consistent-snapshots).
 
  De volgende tabel bevat een overzicht van de oplossingen die beschikbaar zijn voor herstel na noodgevallen.
 
 | Scenario | Automatische replicatie | Oplossing voor herstel na noodgevallen |
 | --- | --- | --- |
-| Premium SSD-schijven | Lokaal ([lokaal redundante opslag](~/articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Managed Disks | Lokaal ([lokaal redundante opslag](~/articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Onbeheerde lokaal redundante opslagschijven | Lokaal ([lokaal redundante opslag](~/articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Onbeheerde geografisch redundante opslagschijven | Meerdere regio’s ([geografisch redundante opslag](~/articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistente momentopnames](#alternative-solution-consistent-snapshots) |
-| Onbeheerde geografisch redundante opslagschijven met leestoegang | Meerdere regio’s ([geografisch redundante opslag met leestoegang](~/articles/storage/common/storage-redundancy.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistente momentopnames](#alternative-solution-consistent-snapshots) |
+| Premium SSD-schijven | Lokaal ([lokaal redundante opslag](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Managed Disks | Lokaal ([lokaal redundante opslag](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Onbeheerde lokaal redundante opslagschijven | Lokaal ([lokaal redundante opslag](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Onbeheerde geografisch redundante opslagschijven | Meerdere regio’s ([geografisch redundante opslag](../storage/common/storage-redundancy.md#geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistente momentopnames](#alternative-solution-consistent-snapshots) |
+| Onbeheerde geografisch redundante opslagschijven met leestoegang | Meerdere regio’s ([geografisch redundante opslag met leestoegang](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistente momentopnames](#alternative-solution-consistent-snapshots) |
 
 Hoge beschikbaarheid wordt het makkelijkst bereikt door beheerde schijven in een beschikbaarheidsset te gebruiken samen met Azure Backup. Als u onbeheerde schijven gebruikt, kunt u nog steeds Azure Backup gebruiken voor herstel na noodgevallen. Als u Azure Backup niet kunt gebruiken, dan zijn [consistente momentopnames](#alternative-solution-consistent-snapshots), zoals verderop beschreven, een alternatieve manier voor het maken van back-ups en herstel na noodgevallen.
 
@@ -127,19 +127,19 @@ Uw keuzes voor hoge beschikbaarheid, back-up en herstel na noodgevallen op voor 
 
 ### <a name="using-azure-backup"></a>Azure Backup gebruiken 
 
-Met [Azure Backup](~/articles/backup/backup-azure-vms-introduction.md) kunt u een back-up maken van uw virtuele machines met Windows of Linux naar de Azure Recovery Services-kluis. Het maken van een back-up en het herstellen van bedrijfskritische gegevens is gecompliceerd door het feit dat er een back-up van bedrijfskritieke gegevens moet worden gemaakt terwijl de toepassingen die de gegevens produceren, worden uitgevoerd. 
+Met [Azure Backup](../backup/backup-azure-vms-introduction.md) kunt u een back-up maken van uw virtuele machines met Windows of Linux naar de Azure Recovery Services-kluis. Het maken van een back-up en het herstellen van bedrijfskritische gegevens is gecompliceerd door het feit dat er een back-up van bedrijfskritieke gegevens moet worden gemaakt terwijl de toepassingen die de gegevens produceren, worden uitgevoerd. 
 
-Om dit probleem op te lossen, biedt Azure Backup toepassingsconsistente back-ups voor Microsoft-workloads. Het gebruikt de volume-schaduwservice om ervoor te zorgen dat de gegevens correct naar de opslag worden geschreven. Voor Linux-VM’s is de standaardmodus voor back-upconsistentie het gebruik van bestandsconsistente back-ups, omdat Linux niet dezelfde functionaliteit heeft als de volume-schaduwservice in Windows. Zie [Toepassingsconsistente back-up van Azure Linux-VM’s](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) voor Linux-computers.
+Om dit probleem op te lossen, biedt Azure Backup toepassingsconsistente back-ups voor Microsoft-workloads. Het gebruikt de volume-schaduwservice om ervoor te zorgen dat de gegevens correct naar de opslag worden geschreven. Voor Linux-VM’s is de standaardmodus voor back-upconsistentie het gebruik van bestandsconsistente back-ups, omdat Linux niet dezelfde functionaliteit heeft als de volume-schaduwservice in Windows. Zie [Toepassingsconsistente back-up van Azure Linux-VM’s](../backup/backup-azure-linux-app-consistent.md) voor Linux-computers.
 
 ![Stroom van Azure Backup][1]
 
 Wanneer er op het geplande tijdstip een back-uptaak wordt gestart met Azure Backup, wordt de back-upextensie die in de virtuele machine is geïnstalleerd, geactiveerd om een momentopname van een bepaald tijdstip te maken. Er wordt een momentopname gemaakt in combinatie met de volume-schaduwservice om een consistente momentopname van de schijven op de virtuele machine te kunnen maken zonder deze af te sluiten. De back-upextensie in de virtuele machine verwijdert alle schrijfbewerkingen voordat een consistente momentopname van alle schijven wordt gemaakt. Na het maken van de momentopname worden de gegevens door Azure Backup overgedragen naar de back-upkluis. Om het back-upproces efficiënter te maken, identificeert en draagt de service alleen de gegevensblokken over die sinds de vorige back-up zijn gewijzigd.
 
-Als u deze wilt herstellen, kunt u de beschikbare back-ups bekijken via Azure Backup en vervolgens een herstel starten. U kunt Azure-back-ups maken en herstellen via de [Azure-portal](https://portal.azure.com/) door [PowerShell](~/articles/backup/backup-azure-vms-automation.md) of [Azure CLI](/cli/azure/) te gebruiken.
+Als u deze wilt herstellen, kunt u de beschikbare back-ups bekijken via Azure Backup en vervolgens een herstel starten. U kunt Azure-back-ups maken en herstellen via de [Azure-portal](https://portal.azure.com/) door [PowerShell](../backup/backup-azure-vms-automation.md) of [Azure CLI](/cli/azure/) te gebruiken.
 
 ### <a name="steps-to-enable-a-backup"></a>Stappen voor het inschakelen van een back-up
 
-Gebruik de volgende stappen om back-ups van uw virtuele machines in te schakelen met behulp van de [Azure-portal](https://portal.azure.com/). Er zijn enkele verschillen, afhankelijk van uw exacte scenario. Raadpleeg de documentatie over [Azure Backup](~/articles/backup/backup-azure-vms-introduction.md) voor volledige informatie. Azure Backup [ondersteunt ook virtuele machines met beheerde schijven](https://azure.microsoft.com/blog/azure-managed-disk-backup/).
+Gebruik de volgende stappen om back-ups van uw virtuele machines in te schakelen met behulp van de [Azure-portal](https://portal.azure.com/). Er zijn enkele verschillen, afhankelijk van uw exacte scenario. Raadpleeg de documentatie over [Azure Backup](../backup/backup-azure-vms-introduction.md) voor volledige informatie. Azure Backup [ondersteunt ook virtuele machines met beheerde schijven](https://azure.microsoft.com/blog/azure-managed-disk-backup/).
 
 1.  Een Recovery Services-kluis voor een VM maken:
 
@@ -151,11 +151,11 @@ Gebruik de volgende stappen om back-ups van uw virtuele machines in te schakelen
 
 1.  Configureer het back-upbeleid en selecteer de virtuele machine in dezelfde gebruikersinterface.
 
-1.  Zorg ervoor dat de back-upagent is geïnstalleerd op de virtuele machine. Als uw virtuele machine is gemaakt met behulp van een Azure Gallery-installatiekopie, is de back-upagent al geïnstalleerd. Anders (als u een aangepaste installatiekopie gebruikt), gebruikt u de instructies om de VM-agent op een virtuele machine te [installeren](~/articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent).
+1.  Zorg ervoor dat de back-upagent is geïnstalleerd op de virtuele machine. Als uw virtuele machine is gemaakt met behulp van een Azure Gallery-installatiekopie, is de back-upagent al geïnstalleerd. Anders (als u een aangepaste installatiekopie gebruikt), gebruikt u de instructies om de VM-agent op een virtuele machine te [installeren](../backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 
 1.  Nadat de vorige stappen zijn voltooid, wordt de back-up met regelmatige intervallen uitgevoerd zoals opgegeven in het back-upbeleid. Indien nodig kunt u de eerste back-up handmatig activeren vanuit het kluisdashboard op de Azure-portal.
 
-Raadpleeg [PowerShell-cmdlets voor back-up van VM’s](~/articles/backup/backup-azure-vms-automation.md) voor het automatiseren van Azure Backup met behulp van scripts.
+Raadpleeg [PowerShell-cmdlets voor back-up van VM’s](../backup/backup-azure-vms-automation.md) voor het automatiseren van Azure Backup met behulp van scripts.
 
 ### <a name="steps-for-recovery"></a>Stappen voor herstel
 
@@ -165,17 +165,17 @@ Als u een virtuele machine moet herstellen of herbouwen, kunt u de virtuele mach
 
 -   U kunt de schijven herstellen en vervolgens de sjabloon voor de virtuele machine gebruiken om de herstelde virtuele machine aan te passen en te herbouwen.
 
-Zie voor meer informatie de instructies voor het [gebruik van de Azure-portal voor het herstellen van virtuele machines](~/articles/backup/backup-azure-arm-restore-vms.md). In dit document worden ook de specifieke stappen beschreven voor het herstellen van back-ups van virtuele machines naar een gekoppeld datacentrum met behulp van uw geografisch redundante back-upkluis als er sprake is van een noodgeval in het primaire datacentrum. In dat geval gebruikt Azure Backup de compute-service van de secundaire regio om de herstelde virtuele machine te maken.
+Zie voor meer informatie de instructies voor het [gebruik van de Azure-portal voor het herstellen van virtuele machines](../backup/backup-azure-arm-restore-vms.md). In dit document worden ook de specifieke stappen beschreven voor het herstellen van back-ups van virtuele machines naar een gekoppeld datacentrum met behulp van uw geografisch redundante back-upkluis als er sprake is van een noodgeval in het primaire datacentrum. In dat geval gebruikt Azure Backup de compute-service van de secundaire regio om de herstelde virtuele machine te maken.
 
-U kunt ook PowerShell gebruiken voor [het maken van een nieuwe virtuele machine op basis van herstelde schijven](~/articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+U kunt ook PowerShell gebruiken voor [het maken van een nieuwe virtuele machine op basis van herstelde schijven](../backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
 ## <a name="alternative-solution-consistent-snapshots"></a>Alternatieve oplossing: Consistente momentopnames
 
 Als Azure Backup niet kan worden gebruikt, kunt u uw eigen back-upmechanisme implementeren met behulp van momentopnames. Het maken van consistente momentopnames voor alle schijven die worden gebruikt door een virtuele machine en het repliceren van die momentopnames naar een andere regio is gecompliceerd. Daarom beschouwt Azure het gebruik van de back-upservice als een betere optie dan het bouwen van een aangepaste oplossing.
 
-Als u geografisch redundante opslag/geografisch redundante opslag met leestoegang gebruikt voor schijven, worden momentopnames automatisch gerepliceerd naar een secundair datacentrum. Als u lokaal redundante opslag voor schijven gebruikt, moet u de gegevens zelf repliceren. Zie [Back-ups maken van onbeheerde Azure-VM-schijven met incrementele momentopnames](~/articles/virtual-machines/windows/incremental-snapshots.md) voor meer informatie.
+Als u geografisch redundante opslag/geografisch redundante opslag met leestoegang gebruikt voor schijven, worden momentopnames automatisch gerepliceerd naar een secundair datacentrum. Als u lokaal redundante opslag voor schijven gebruikt, moet u de gegevens zelf repliceren. Zie [Back-ups maken van onbeheerde Azure-VM-schijven met incrementele momentopnames](windows/incremental-snapshots.md) voor meer informatie.
 
-Een momentopname is een representatie van een object op een bepaald moment. Een momentopname wordt gefactureerd voor de incrementele grootte van de gegevens die het bevat. Zie [Een blob-momentopname maken](~/articles/storage/blobs/storage-blob-snapshots.md) voor meer informatie.
+Een momentopname is een representatie van een object op een bepaald moment. Een momentopname wordt gefactureerd voor de incrementele grootte van de gegevens die het bevat. Zie [Een blob-momentopname maken](../storage/blobs/snapshots-overview.md) voor meer informatie.
 
 ### <a name="create-snapshots-while-the-vm-is-running"></a>Momentopnames maken terwijl de virtuele machine wordt uitgevoerd
 
@@ -187,9 +187,9 @@ Om deze situatie te voorkomen, moeten de volgende stappen worden geïmplementeer
 
 1.  Alle in behandeling zijnde schrijfbewerkingen leegmaken.
 
-1.  [Een blobl-momentopname maken](~/articles/storage/blobs/storage-blob-snapshots.md) voor alle schijven.
+1.  [Een blobl-momentopname maken](../storage/blobs/snapshots-manage-dotnet.md) voor alle schijven.
 
-Sommige Windows-toepassingen, zoals SQL Server, bieden een gecoördineerd back-upmechanisme via een volume-schaduwservice om toepassingsconsistente back-ups te maken. In Linux kunt u een hulpprogramma zoals *fsfreeze* gebruiken voor het coördineren van de schijven. Dit hulpprogramma biedt bestandsconsistente back-ups, maar geen toepassingsconsistente momentopnames. Dit proces is complex, dus u kunt overwegen [Azure Backup](~/articles/backup/backup-azure-vms-introduction.md) of een back-upoplossing van derden te gebruiken die deze procedure al implementeert.
+Sommige Windows-toepassingen, zoals SQL Server, bieden een gecoördineerd back-upmechanisme via een volume-schaduwservice om toepassingsconsistente back-ups te maken. In Linux kunt u een hulpprogramma zoals *fsfreeze* gebruiken voor het coördineren van de schijven. Dit hulpprogramma biedt bestandsconsistente back-ups, maar geen toepassingsconsistente momentopnames. Dit proces is complex, dus u kunt overwegen [Azure Backup](../backup/backup-azure-vms-introduction.md) of een back-upoplossing van derden te gebruiken die deze procedure al implementeert.
 
 Het vorige proces resulteert in een verzameling gecoördineerde momentopnames voor alle VM-schijven, die een specifieke point-in-time weergave van de virtuele machine vertegenwoordigen. Dit is een herstelpunt voor back-ups van de virtuele machine. U kunt het proces op geplande intervallen herhalen om periodieke back-ups te maken. Zie [De back-ups naar een andere regio kopiëren](#copy-the-snapshots-to-another-region) voor stappen om de momentopnames naar een andere regio te kopiëren voor herstel na noodgevallen.
 
@@ -201,7 +201,7 @@ Een andere optie voor het maken van consistente back-ups is het afsluiten van de
 
 1. Maak een momentopname van elke virtuele harde schijf-blob. Dit neemt slechts een paar seconden in beslag.
 
-    Als u een momentopname wilt maken, kunt u gebruikmaken van [Power shell](~/articles/storage/common/storage-powershell-guide-full.md), de [Azure Storage REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx), [Azure CLI](/cli/azure/), of een van de Azure Storage-clientbibliotheken, zoals [de Storage-clientbibliotheek voor .NET](https://msdn.microsoft.com/library/azure/hh488361.aspx).
+    Als u een momentopname wilt maken, kunt u gebruikmaken van [Power shell](https://docs.microsoft.com/powershell/module/az.storage), de [Azure Storage REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx), [Azure CLI](/cli/azure/), of een van de Azure Storage-clientbibliotheken, zoals [de Storage-clientbibliotheek voor .NET](https://msdn.microsoft.com/library/azure/hh488361.aspx).
 
 1. Start de virtuele machine om de downtime te beëindigen. Normaal gesproken is het hele proces binnen een paar minuten voltooid.
 
@@ -218,13 +218,13 @@ Als u geografisch redundante opslag of geografisch redundante opslag met leestoe
 
 Als u lokaal redundante opslag gebruikt, moet u de momentopnames direct na het maken van de momentopnames naar een ander opslagaccount kopiëren. Het kopieerdoel kan een lokaal redundant opslagaccount in een andere regio zijn, waardoor de kopie zich in een externe regio zal bevinden. U kunt de momentopname ook kopiëren naar een geografisch redundant opslagaccount met leestoegang in dezelfde regio. In dit geval wordt de momentopname vertraagd gerepliceerd naar de externe secundaire regio. Uw back-up wordt beschermd tegen rampen op de primaire site nadat het kopiëren en repliceren is voltooid.
 
-Als u uw incrementele momentopnames op efficiënte wijze wilt kopiëren voor herstel na noodgevallen, bekijkt u de instructies in [Back-ups maken van onbeheerde Azure-VM-schijven met incrementele momentopnames](~/articles/virtual-machines/windows/incremental-snapshots.md).
+Als u uw incrementele momentopnames op efficiënte wijze wilt kopiëren voor herstel na noodgevallen, bekijkt u de instructies in [Back-ups maken van onbeheerde Azure-VM-schijven met incrementele momentopnames](windows/incremental-snapshots.md).
 
 ![Back-ups maken van onbeheerde VM-schijven met incrementele momentopnames][2]
 
 ### <a name="recovery-from-snapshots"></a>Herstel van momentopnames
 
-Als u een momentopname wilt ophalen, moet u deze kopiëren om een nieuwe blob te maken. Als u de momentopname van het primaire account kopieert, kunt u de momentopname kopiëren naar de basis-blob van de momentopname. Met dit proces wordt de schijf teruggezet naar de momentopname. Dit proces staat bekend als het promoten van de momentopname. Als u de back-up van de momentopname van een secundair account kopieert, moet u deze naar een primair account kopiëren in het geval van een geografisch redundant opslagaccount met leestoegang. U kunt een momentopname kopiëren door [PowerShell](~/articles/storage/common/storage-powershell-guide-full.md) te gebruiken of door het AzCopy-hulpprogramma te gebruiken. Zie [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) voor meer informatie.
+Als u een momentopname wilt ophalen, moet u deze kopiëren om een nieuwe blob te maken. Als u de momentopname van het primaire account kopieert, kunt u de momentopname kopiëren naar de basis-blob van de momentopname. Met dit proces wordt de schijf teruggezet naar de momentopname. Dit proces staat bekend als het promoten van de momentopname. Als u de back-up van de momentopname van een secundair account kopieert, moet u deze naar een primair account kopiëren in het geval van een geografisch redundant opslagaccount met leestoegang. U kunt een momentopname kopiëren door [PowerShell](https://docs.microsoft.com/powershell/module/az.storage) te gebruiken of door het AzCopy-hulpprogramma te gebruiken. Zie [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) voor meer informatie.
 
 Voor virtuele machines met meerdere schijven moet u alle momentopnames kopiëren die deel uitmaken van hetzelfde gecoördineerde herstelpunt. Nadat u de momentopnames naar schrijfbare VHD-blobs hebt gekopieerd, kunt u de blobs gebruiken om de virtuele machine opnieuw te maken met behulp van de sjabloon voor de virtuele machine.
 
@@ -232,7 +232,7 @@ Voor virtuele machines met meerdere schijven moet u alle momentopnames kopiëren
 
 ### <a name="sql-server"></a>SQL Server
 
-Een SQL Server die in een virtuele machine worden uitgevoerd, heeft zijn eigen ingebouwde mogelijkheden om een back-up van uw SQL Server-database te maken naar Azure Blob-opslag of een bestandsshare. Als het opslagaccount een geografisch redundante opslag of geografisch redundante opslag met leestoegang is, hebt u toegang tot de back-ups in het secundaire datacentrum van het opslagaccount in het geval van een ramp, met dezelfde beperkingen als eerder besproken. Zie voor meer informatie [Back-up en herstel voor SQL Server in Azure Virtual Machines](~/articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). [SQL Server AlwaysOn-beschikbaarheidsgroepen](~/articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) kunnen niet alleen back-ups maken en herstellen, maar ook secundaire replica's van databases onderhouden. Deze mogelijkheid verkort het herstel na noodgevallen aanzienlijk.
+Een SQL Server die in een virtuele machine worden uitgevoerd, heeft zijn eigen ingebouwde mogelijkheden om een back-up van uw SQL Server-database te maken naar Azure Blob-opslag of een bestandsshare. Als het opslagaccount een geografisch redundante opslag of geografisch redundante opslag met leestoegang is, hebt u toegang tot de back-ups in het secundaire datacentrum van het opslagaccount in het geval van een ramp, met dezelfde beperkingen als eerder besproken. Zie voor meer informatie [Back-up en herstel voor SQL Server in Azure Virtual Machines](../azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). [SQL Server AlwaysOn-beschikbaarheidsgroepen](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) kunnen niet alleen back-ups maken en herstellen, maar ook secundaire replica's van databases onderhouden. Deze mogelijkheid verkort het herstel na noodgevallen aanzienlijk.
 
 ## <a name="other-considerations"></a>Andere overwegingen
 
@@ -257,11 +257,11 @@ Het belangrijkste verschil tussen geografisch redundante opslag en geografisch r
 
 Als het een aanzienlijke storing blijkt te zijn, kan het Azure-team een geo-failover activeren en de primaire DNS-vermeldingen wijzigen om naar de secundaire opslag te verwijzen. Als u op dit moment geografisch redundante opslag of geografisch redundante opslag met leestoegang hebt ingeschakeld, kunt u toegang tot de gegevens krijgen in de regio die vroeger de secundaire was. Met andere woorden, als uw opslagaccount geografisch redundante opslag is en er een probleem is, hebt u alleen toegang tot de secundaire opslag als er een geo-failover is.
 
-Zie voor meer informatie [Wat te doen in het geval van een Azure Storage-storing](~/articles/storage/common/storage-disaster-recovery-guidance.md).
+Zie voor meer informatie [Wat te doen in het geval van een Azure Storage-storing](../storage/common/storage-disaster-recovery-guidance.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [back-ups maken van niet-beheerde virtuele machines van Azure met incrementele moment opnamen](./linux/incremental-snapshots.md).
+Zie [back-ups maken van niet-beheerde virtuele machines van Azure met incrementele moment opnamen](linux/incremental-snapshots.md).
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

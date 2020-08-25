@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: ae431d27af4a1717a32e348ba852f9b2b9fe9331
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 8034a7a520cc50b2e57e0ad26205da2e408296a1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87451284"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760584"
 ---
 | Resource | Standaardbestandsshares | Premiumbestandsshares |
 |----------|---------------|------------------------------------------|
@@ -17,7 +17,7 @@ ms.locfileid: "87451284"
 | Maximale grootte van een bestandsshare | 100 TiB *, 5 TiB | 100 TiB |
 | Maximale grootte van een bestand in een bestandsshare | 1 TiB | 4 TiB |
 | Maximum aantal bestanden in een bestandsshare | Geen limiet | Geen limiet |
-| Maximum aantal IOPS per share | 10.000 IOPS *, 1.000 IOPS | 100.000 IOPS |
+| Maximum aantal IOPS per share | 10.000 IOPS*, 1000 IOPS of 100 aanvragen in 100 ms | 100.000 IOPS |
 | Maximaal aantal opgeslagen toegangsbeleidsregels per bestandsshare | 5 | 5 |
 | Doeldoorvoer voor één bestandsshare | maximaal 300 MiB/sec *, maximaal 60 MiB/sec,  | Bekijk de inkomende en uitgaande waarden voor premiumbestandsshares|
 | Maximum aantal uitgaande waarden voor één bestandsshare | Bekijk de standaard doeldoorvoer voor bestandsshares | Maximaal 6204 MiB/s |

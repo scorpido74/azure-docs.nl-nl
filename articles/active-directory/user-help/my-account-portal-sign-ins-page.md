@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: 1816170da0fb6e5120f8cec6b6dda68d2ea1c678
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543180"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798122"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Uw recente aanmeldings activiteit bekijken en doorzoeken vanaf de pagina Mijn aanmeldingen
 
@@ -72,7 +72,7 @@ Aanmeldingen die als ongebruikelijke activiteiten zijn gemarkeerd, kunnen worden
 
 Nadat u uw recente aanmeldings activiteit hebt bekeken, kunt u het volgende doen:
 
-- Je [beveiligings gegevens](user-help-security-info-overview.md)weer geven of beheren.
+- Je [beveiligings gegevens](./security-info-setup-signin.md)weer geven of beheren.
 
 - Uw verbonden [apparaten](my-account-portal-devices-page.md)weer geven of beheren.
 

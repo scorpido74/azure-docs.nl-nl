@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
-ms.openlocfilehash: b21b2a9f2d2bd483ed48a4c30b504908bb54a101
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 61ba06054e86d544ae4ab1edbdef8d86667ef3b2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661434"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796575"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen met verificatie in twee stappen en uw werk- of schoolaccount
 
@@ -33,7 +33,7 @@ Als 2FV is ingeschakeld, is voor uw account aanmelding een combi natie van de vo
 2FV is veiliger dan alleen een wacht woord, omdat 2FV iets vereist wat u al _kent_ en wat u _hebt_. Geen hackers hebben uw fysieke telefoon.
 
 >[!Important]
->Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Azure AD-omgeving in de [Azure AD-documentatie](https://docs.microsoft.com/azure/active-directory).
+>Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Azure AD-omgeving in de [Azure AD-documentatie](../index.yml).
 
 Deze inhoud is bedoeld om u te helpen bij uw werk-of school account. Dit is het account dat u hebt ontvangen van uw organisatie (bijvoorbeeld dritan@contoso.com ). Als u problemen ondervindt met twee ledige verificatie voor een persoonlijk Microsoft-account, een account dat u zelf hebt ingesteld (bijvoorbeeld danielle@outlook.com ), raadpleegt u [twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 

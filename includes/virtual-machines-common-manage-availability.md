@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2c8f2d95e7e06f2fff3d8344a3fffa5b19648ede
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88655312"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760570"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Informatie over het opnieuw opstarten van VM's - onderhoud versus downtime
 Er zijn drie scenario's die ertoe kunnen leiden dat een virtuele machine in Azure wordt beïnvloed: niet-gepland hardwareonderhoud, onverwachte downtime, en gepland onderhoud.
@@ -34,7 +34,7 @@ Om de gevolgen van downtime vanwege een of meer van deze gebeurtenissen te beper
 * [Beheerde schijven voor virtuele machines in een beschikbaarheidsset gebruiken]
 * [Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM's](../articles/virtual-machines/linux/scheduled-events.md)
 * [Configureer elke toepassingslaag in afzonderlijke beschikbaarheidssets]
-* [Combineer het gebruik van een load balancer met beschikbaarheidssets]
+* [Een load balancer combineren met beschikbaarheidszones of -sets]
 * [Beschikbaarheidszones gebruiken om te beschermen tegen fouten op datacenterniveau]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Beschikbaarheidszones gebruiken om te beschermen tegen fouten op datacenterniveau
@@ -110,7 +110,7 @@ Zie [VM's voor taakverdeling in alle beschikbaarheidszones met de Azure CLI](../
 
 <!-- Link references -->
 [Configureer meerdere virtuele machines in een beschikbaarheidsset voor redundantie]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Combineer het gebruik van een load balancer met beschikbaarheidssets]: #combine-a-load-balancer-with-availability-zones-or-sets
+[Een load balancer combineren met beschikbaarheidszones of -sets]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Beheerde schijven voor virtuele machines in een beschikbaarheidsset gebruiken]: #use-managed-disks-for-vms-in-an-availability-set
 [Beschikbaarheidszones gebruiken om te beschermen tegen fouten op datacenterniveau]: #use-availability-zones-to-protect-from-datacenter-level-failures

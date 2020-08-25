@@ -12,12 +12,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983302"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798377"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>De twee ledige verificatie methode en-instellingen wijzigen
 
@@ -31,10 +31,10 @@ Nadat u de beveiligings verificatie methoden voor uw werk-of school account hebt
 
 ## <a name="using-the-additional-security-verification-page"></a>De extra beveiligings verificatie pagina gebruiken
 
-Als uw organisatie u specifieke stappen heeft gegeven over het inschakelen en beheren van uw twee ledige verificatie, moet u eerst deze instructies volgen. Als dat niet het geval is, kunt u de instellingen voor de beveiligings verificatie methode van de [extra beveiligings verificatie](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) pagina.
+Als uw organisatie u specifieke stappen heeft gegeven over het inschakelen en beheren van uw twee ledige verificatie, moet u eerst deze instructies volgen. Als dat niet het geval is, kunt u de instellingen voor de beveiligings verificatie methode van de [extra beveiligings verificatie](./multi-factor-authentication-end-user-first-time.md) pagina.
 
 >[!Note]
->Als datgene wat u op uw scherm ziet, niet overeenkomt met wat er in dit artikel wordt behandeld, betekent dit dat de beheerder de **beveiligings gegevens (preview-versie)** heeft ingeschakeld of dat uw organisatie uw eigen aangepaste portal heeft opgegeven. Zie [overzicht van beveiligings informatie (preview)](user-help-security-info-overview.md)voor meer informatie over de nieuwe ervaring met beveiligings informatie. Neem contact op met de Help Desk van uw organisatie voor meer informatie over de aangepaste portal van uw organisatie.
+>Als datgene wat u op uw scherm ziet, niet overeenkomt met wat er in dit artikel wordt behandeld, betekent dit dat de beheerder de **beveiligings gegevens (preview-versie)** heeft ingeschakeld of dat uw organisatie uw eigen aangepaste portal heeft opgegeven. Zie [overzicht van beveiligings informatie (preview)](./security-info-setup-signin.md)voor meer informatie over de nieuwe ervaring met beveiligings informatie. Neem contact op met de Help Desk van uw organisatie voor meer informatie over de aangepaste portal van uw organisatie.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>De extra beveiligings verificatie pagina weer geven
 

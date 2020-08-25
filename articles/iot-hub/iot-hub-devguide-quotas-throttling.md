@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: f8522171fca6a88f81c3b8f0161fc382041aae1e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782563"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797799"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -112,7 +112,7 @@ IoT Hub dwingt andere operationele limieten af:
 | Automatische implementaties IoT Edge<sup>1</sup> | 50 modules per implementatie. 100 implementaties (inclusief gelaagde implementaties) per betaalde SKU-hub. 10 implementaties per gratis SKU-hub. |
 | Apparaatdubbels<sup>1</sup> | De sectie maximale grootte van gewenste eigenschappen en gerapporteerde eigenschappen is 32 KB. De sectie maximum grootte van tags is 8 KB. |
 | Gedeeld toegangsbeleid | Het maximum aantal Shared Access-beleids regels is 16. |
-| CA-certificaten | Het maximum aantal X. 509 CA-certificaten dat kan worden geregistreerd, is 25. |
+| x509 CA-certificaten | Het maximum aantal x509 CA-certificaten dat kan worden geregistreerd op IoT Hub is 25. |
 
 <sup>1</sup> Deze functie is niet beschikbaar in de laag basis van IoT Hub. Zie [de juiste IOT hub kiezen](iot-hub-scaling.md)voor meer informatie.
 

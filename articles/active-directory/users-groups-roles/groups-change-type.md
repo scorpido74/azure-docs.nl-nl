@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05bcf589e685d0a35a58bb1e8069a6ce3699b61c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6ee5af5d7489835f125319050d291a89ab252a6
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728381"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797119"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Statisch groepslid maatschap wijzigen in Azure Active Directory
 
@@ -33,7 +33,7 @@ U kunt het lidmaatschap van een groep wijzigen van statisch in dynamisch (of omg
 ## <a name="change-the-membership-type-for-a-group"></a>Het lidmaatschaps type voor een groep wijzigen
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat een globale beheerder of een gebruikers beheerder in uw Azure AD-organisatie is.
-2. Selecteer **groepen**.
+2. Selecteer **Groepen**.
 3. Open de groep die u wilt wijzigen in de lijst **alle groepen** .
 4. Selecteer **Eigenschappen**.
 5. Selecteer op de pagina **Eigenschappen** van de groep een **type lidmaatschap** van toegewezen (statisch), dynamische gebruiker of dynamisch apparaat, afhankelijk van het gewenste lidmaatschaps type. Voor dynamisch lidmaatschap kunt u de regel Builder gebruiken om opties voor een eenvoudige regel te selecteren of zelf een lidmaatschaps regel te schrijven. 
@@ -57,7 +57,7 @@ De volgende stappen zijn een voor beeld van het wijzigen van een groep van stati
 ## <a name="change-membership-type-for-a-group-powershell"></a>Type lidmaatschap voor een groep wijzigen (Power shell)
 
 > [!NOTE]
-> Als u de eigenschappen van dynamische groepen wilt wijzigen, moet u cmdlets uit **de preview-versie van** [Azure AD Power shell versie 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)gebruiken. U kunt de preview-versie van de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureADPreview)installeren.
+> Als u de eigenschappen van dynamische groepen wilt wijzigen, moet u cmdlets uit **de preview-versie van** [Azure AD Power shell versie 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)gebruiken. U kunt de preview-versie van de [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureADPreview)installeren.
 
 Hier volgt een voor beeld van functies die het lidmaatschaps beheer voor een bestaande groep wijzigen. In dit voor beeld wordt ervoor gezorgd dat de eigenschap GroupTypes correct kan worden gemanipuleerd en alle waarden worden behouden die geen verband houden met het dynamische lidmaatschap.
 

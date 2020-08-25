@@ -3,12 +3,12 @@ title: SQL Server Db's op een virtuele Azure-machine beheren en controleren
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases die worden uitgevoerd op een virtuele machine van Azure kunt beheren en controleren.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ada367e94b75c30a98bedf5848b248cadfe9acc2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c9d8b9b56820182f7bf7866d38d40df8f5488a7a
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659553"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756313"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Back-ups van SQL Server-databases beheren en bewaken
 
@@ -16,15 +16,11 @@ In dit artikel worden algemene taken beschreven voor het beheren en bewaken van 
 
 Als u nog geen back-ups voor uw SQL Server-data bases hebt geconfigureerd, raadpleegt u back-ups [maken van SQL server-data bases op virtuele](backup-azure-sql-database.md)
 
-## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Hand matige back-uptaken controleren in de portal
+## <a name="monitor-backup-jobs-in-the-portal"></a>Back-uptaken in de portal bewaken
 
-Azure Backup worden alle hand matig geactiveerde taken weer gegeven in de portal voor **back-uptaken** . De taken die u in deze Portal ziet, omvatten database detectie en-registratie, en back-up-en herstel bewerkingen.
+Azure Backup worden alle geplande bewerkingen en acties op aanvraag weer gegeven onder **back-uptaken** in de portal, met uitzonde ring van de geplande back-ups van het logboek, omdat ze zeer vaak kunnen worden uitgevoerd. De taken die u in deze Portal ziet, zijn onder andere database detectie en-registratie, het configureren van back-ups en back-up-en herstel bewerkingen.
 
 ![De portal voor back-uptaken](./media/backup-azure-sql-database/jobs-list.png)
-
-> [!NOTE]
-> In de portal voor **back-uptaken** worden geen geplande back-uptaken weer gegeven. Geplande back-uptaken kunt u bewaken met SQL Server Management Studio, zoals wordt beschreven in het volgende gedeelte.
->
 
 Ga voor meer informatie over bewakings scenario's naar [bewaking in het Azure Portal](backup-azure-monitoring-built-in-monitor.md) en [bewaking met behulp van Azure monitor](backup-azure-monitoring-use-azuremonitor.md).  
 
@@ -162,7 +158,7 @@ Hef de registratie van een SQL Server-exemplaar op nadat u de beveiliging hebt u
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>De extensie opnieuw registreren op de SQL Server-VM
 
-Soms kan de uitbrei ding van de werk belasting op de VM één reden of een andere worden beïnvloed. In dergelijke gevallen zullen alle bewerkingen die op de virtuele machine worden geactiveerd, mislukken. Mogelijk moet u de extensie opnieuw registreren op de VM. Met de bewerking **opnieuw registreren** wordt de back-upextensie van de werk belasting op de VM opnieuw geïnstalleerd zodat bewerkingen kunnen worden voortgezet. U kunt deze optie vinden onder **back-upinfrastructuur** in de Recovery service-kluis.
+De uitbrei ding van de werk belasting op de VM kan soms worden beïnvloed door een of meer reden. In dergelijke gevallen zullen alle bewerkingen die op de virtuele machine worden geactiveerd, mislukken. Mogelijk moet u de extensie opnieuw registreren op de VM. Met de bewerking **opnieuw registreren** wordt de back-upextensie van de werk belasting op de VM opnieuw geïnstalleerd zodat bewerkingen kunnen worden voortgezet. U kunt deze optie vinden onder **back-upinfrastructuur** in de Recovery Services kluis.
 
 ![Beveiligde servers onder back-upinfrastructuur](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
 

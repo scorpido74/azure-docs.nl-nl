@@ -4,12 +4,12 @@ description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met bet
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611854"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755365"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -176,7 +176,7 @@ De back-upbewerking kan mislukken bij het maken van een back-up van een virtuele
 De recente back-uptaak is mislukt, omdat er een bestaande back-uptaak wordt uitgevoerd. U kunt pas een nieuwe back-uptaak starten als de huidige taak is voltooid. Controleer of de back-upbewerking die momenteel wordt uitgevoerd, is voltooid voordat u een andere back-up maakt of plant. Als u de status van de back-uptaken wilt controleren, voert u de volgende stappen uit:
 
 1. Meld u aan bij de Azure Portal en selecteer **alle services**. Typ Recovery Services en selecteer **Recovery Services kluizen**. De lijst met Recovery Services-kluizen wordt weergegeven.
-2. Selecteer in de lijst met Recovery Services-kluizen een kluis waarin de back-up is geconfigureerd.
+2. Selecteer in de lijst met Recovery Services kluizen een kluis waarin de back-up is geconfigureerd.
 3. Selecteer in het menu van het kluis dashboard **back-uptaken** . alle back-uptaken worden weer gegeven.
    - Als er een back-uptaak wordt uitgevoerd, wacht u totdat deze klaar is of annuleert u de back-uptaak.
      - Als u de back-uptaak wilt annuleren, klikt u met de rechter muisknop op de back-uptaak en selecteert u **Annuleren** of [Power shell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)gebruiken.

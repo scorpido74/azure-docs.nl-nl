@@ -3,12 +3,12 @@ title: Offline back-ups met behulp van Azure Data Box
 description: Meer informatie over hoe u Azure Data Box kunt gebruiken om grote initiële back-upgegevens offline te brengen van de MARS-agent naar een Recovery Services kluis.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091025"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761556"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline back-up Azure Backup met behulp van Azure Data Box
 
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u Azure Data Box kunt gebruiken om grote init
 
 Het proces voor het seeden van gegevens van de MARS-agent met behulp van Azure Data Box wordt ondersteund op de volgende Windows-Sku's.
 
-| **OS**                                 | **SKU**                                                      |
+| **Besturingssysteem**                                 | **SKU**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **Werkstation**                        |                                                              |
 | Windows 10 64-bits                     | Enterprise, Pro, Home                                       |
@@ -259,13 +259,13 @@ Wanneer u offline back-ups configureert, is het mogelijk dat u een probleem onde
 
 Voer een van de volgende stappen uit om te zien of het probleem hetzelfde is als de eerder beschreven.
 
-#### <a name="step-1"></a>Stap 1
+#### <a name="step-1-of-verification"></a>Stap 1 van verificatie
 
 Controleer of het volgende fout bericht wordt weer gegeven in de MAB-console wanneer u offline back-up hebt geconfigureerd.
 
 ![Kan geen offline back-upbeleid maken voor het huidige Azure-account](./media/offline-backup-azure-data-box/unable-to-create-policy.png)
 
-#### <a name="step-2"></a>Stap 2
+#### <a name="step-2-of-verification"></a>Stap 2 van verificatie
 
 1. Open de map **temp** in het installatiepad. Het standaardpad voor de tijdelijke map is *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*. Zoek naar het *CBUICurr* -bestand en open het bestand.
 
@@ -275,11 +275,11 @@ Controleer of het volgende fout bericht wordt weer gegeven in de MAB-console wan
 
 Als tijdelijke oplossing om dit probleem op te lossen, voert u de volgende stappen uit en probeert u de beleids configuratie opnieuw uit te voeren.
 
-#### <a name="step-1"></a>Stap 1
+#### <a name="step-1-of-workaround"></a>Stap 1 van de tijdelijke oplossing
 
 Meld u aan bij Power shell die wordt weer gegeven in de gebruikers interface van MAB met behulp van een ander account met beheerders toegang voor het abonnement waarop de import-of export taak wordt gemaakt.
 
-#### <a name="step-2"></a>Stap 2
+#### <a name="step-2-of-workaround"></a>Stap 2 van de tijdelijke oplossing
 
 Als voor geen enkele andere server offline seeding is geconfigureerd en er geen andere server afhankelijk is van de `AzureOfflineBackup_<Azure User Id>` toepassing, moet u deze toepassing verwijderen. Selecteer **Azure Portal**  >  **Azure Active Directory**  >  **app-registraties**.
 

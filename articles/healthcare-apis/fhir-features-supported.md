@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142516"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796558"
 ---
 # <a name="features"></a>Functies
 
@@ -49,13 +49,13 @@ Eerdere versies die momenteel worden ondersteund, zijn onder andere: `3.0.2`
 | haalt                         | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | `self` en `next` worden ondersteund                     |
 | schakels                 | Nee        | Nee        | Nee        |                                                     |
 
-## <a name="search"></a>Search
+## <a name="search"></a>Zoeken
 
 Alle typen zoek parameters worden ondersteund. 
 
 | Type zoek parameter | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
 |-----------------------|-----------|-----------|-----------|---------|
-| Getal                | Ja       | Ja       | Ja       |         |
+| Aantal                | Ja       | Ja       | Ja       |         |
 | Datum/datum/tijd         | Ja       | Ja       | Ja       |         |
 | Tekenreeks                | Ja       | Ja       | Ja       |         |
 | Token                 | Ja       | Ja       | Ja       |         |
@@ -90,7 +90,7 @@ Alle typen zoek parameters worden ondersteund.
 | `_security`             | Ja       | Ja       | Ja       |         |
 | `_text`                 | Nee        | Nee        | Nee        |         |
 | `_content`              | Nee        | Nee        | Nee        |         |
-| `_list`                 | Nee        | Ja       | Ja       |         |
+| `_list`                 | Ja       | Ja       | Ja       |         |
 | `_has`                  | Nee        | Nee        | Nee        |         |
 | `_type`                 | Ja       | Ja       | Ja       |         |
 | `_query`                | Nee        | Nee        | Nee        |         |

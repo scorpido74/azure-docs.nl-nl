@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21e0358e2226f93a6c7088906d1146e5e2cf740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729027"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795419"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Een Tenant verwijderen in Azure Active Directory
 
@@ -85,7 +85,7 @@ Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene**
 
    ![Koppeling verwijderen voor het verwijderen van het abonnement](./media/directory-delete-howto/delete-command.png)
 
-6. Selecteer **abonnement verwijderen** om het abonnement te verwijderen en de voor waarden te accepteren. Alle gegevens worden binnen drie dagen definitief verwijderd. Als u van gedachten verandert, kunt u [het abonnement opnieuw activeren](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) tijdens de periode van drie dagen.
+6. Selecteer **abonnement verwijderen** om het abonnement te verwijderen en de voor waarden te accepteren. Alle gegevens worden binnen drie dagen definitief verwijderd. Als u van gedachten verandert, kunt u [het abonnement opnieuw activeren](/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) tijdens de periode van drie dagen.
   
    ![voor waarden zorgvuldig lezen](./media/directory-delete-howto/delete-terms.png)
 
@@ -97,18 +97,18 @@ Met het Microsoft 365-beheer centrum kunt u een abonnement op de **onvoorziene**
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Ik heb een proef abonnement dat verwijderen blokkeert
 
-Er zijn [self-service-aanmeldingen](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , zoals micro soft Power BI, Rights Management Services, micro soft power apps of Dynamics 365, afzonderlijke gebruikers kunnen zich aanmelden via Office 365, waarmee ook een gast gebruiker voor verificatie in uw Azure AD-organisatie wordt gemaakt. Met deze self-service producten worden verwijderde mappen geblokkeerd totdat de producten volledig zijn verwijderd uit de organisatie, om gegevens verlies te voor komen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of het product heeft toegewezen.
+Er zijn [self-service-aanmeldingen](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , zoals micro soft Power BI, Rights Management Services, micro soft power apps of Dynamics 365, afzonderlijke gebruikers kunnen zich aanmelden via Office 365, waarmee ook een gast gebruiker voor verificatie in uw Azure AD-organisatie wordt gemaakt. Met deze self-service producten worden verwijderde mappen geblokkeerd totdat de producten volledig zijn verwijderd uit de organisatie, om gegevens verlies te voor komen. Ze kunnen alleen worden verwijderd door de Azure AD-beheerder, ongeacht of de gebruiker zich afzonderlijk heeft aangemeld of het product heeft toegewezen.
 
 Er zijn twee soorten self-service registratie producten die worden toegewezen: 
 
 * Toewijzing op organisatie niveau: een Azure AD-beheerder wijst het product toe aan de hele organisatie en een gebruiker kan actief gebruikmaken van de service met deze toewijzing op organisatie niveau, zelfs als ze niet afzonderlijk een licentie hebben.
 * Toewijzing op gebruikers niveau: een afzonderlijke gebruiker tijdens een self-service-aanmelding wijst het product zonder beheerder toe aan zichzelf. Zodra de organisatie wordt beheerd door een beheerder (Zie [beheerders overname van een onbeheerde organisatie](domains-admin-takeover.md), kan de beheerder het product rechtstreeks aan gebruikers toewijzen zonder selfservice registratie.  
 
-Wanneer u het verwijderen van het self-service-aanmeldings product start, worden de gegevens door de actie permanent verwijderd en wordt alle gebruikers toegang tot de service verwijderd. Gebruikers aan wie de aanbieding afzonderlijk of op het niveau van de organisatie is toegewezen, kunnen zich niet aanmelden of toegang tot bestaande gegevens krijgen. Als u gegevens verlies wilt voor komen met het self-service registratie product zoals [micro soft power bi Dash boards](https://docs.microsoft.com/power-bi/service-export-to-pbix) of [Rights Management Services-beleids configuratie](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), moet u ervoor zorgen dat er een back-up van de gegevens wordt gemaakt en op een andere locatie worden opgeslagen.
+Wanneer u het verwijderen van het self-service-aanmeldings product start, worden de gegevens door de actie permanent verwijderd en wordt alle gebruikers toegang tot de service verwijderd. Gebruikers aan wie de aanbieding afzonderlijk of op het niveau van de organisatie is toegewezen, kunnen zich niet aanmelden of toegang tot bestaande gegevens krijgen. Als u gegevens verlies wilt voor komen met het self-service registratie product zoals [micro soft power bi Dash boards](/power-bi/service-export-to-pbix) of [Rights Management Services-beleids configuratie](/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), moet u ervoor zorgen dat er een back-up van de gegevens wordt gemaakt en op een andere locatie worden opgeslagen.
 
-Zie [beschik bare selfservice Program ma's](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)voor meer informatie over momenteel beschik bare self-service voor het aanmelden van services.
+Zie [beschik bare selfservice Program ma's](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)voor meer informatie over momenteel beschik bare self-service voor het aanmelden van services.
 
-Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Office 365 verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licentie). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Office 365 voor bedrijven-abonnement wordt beëindigd?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)voor meer informatie over het bewaren van gegevens in Office 365 en de levens cyclus van abonnementen.
+Zie de volgende tabel voor wat u kunt verwachten wanneer een proef versie van Office 365 verloopt (exclusief betaalde partner/CSP, Enterprise Agreement of volume licentie). Zie [Wat gebeurt er met mijn gegevens en toegang wanneer mijn Office 365 voor bedrijven-abonnement wordt beëindigd?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)voor meer informatie over het bewaren van gegevens in Office 365 en de levens cyclus van abonnementen.
 
 Product status | Gegevens | Toegang tot gegevens
 ------------- | ---- | --------------
@@ -143,4 +143,4 @@ U kunt een self-service registratie product, zoals micro soft Power BI of Azure 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+[Documentatie voor Azure Active Directory](../index.yml)

@@ -1,35 +1,35 @@
 ---
 title: Veelgestelde vragen
-description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure VMware-oplossing (AVS).
+description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure VMware-oplossing.
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: cffa31bb66adfde2af24ab2542322479639ed9dd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872324"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752177"
 ---
-# <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Veelgestelde vragen over de preview-versie van Azure VMware Solution (AVS)
+# <a name="frequently-asked-questions-about-azure-vmware-solution-preview"></a>Veelgestelde vragen over de preview-versie van Azure VMware-oplossingen
 
-Antwoorden op veelgestelde vragen over de Azure VMware-oplossing (AVS).
+Antwoorden op veelgestelde vragen over de Azure VMware-oplossing.
 
 ## <a name="general"></a>Algemeen
 
-**Wat is de Azure VMware-oplossing (AVS)?**
+**Wat is de Azure VMware-oplossing?**
 
-Als ondernemingen de strategie voor modernisatie verhogen om de flexibiliteit van het bedrijf te verbeteren, kosten te verlagen en innovatie te versnellen, zijn hybride Cloud platforms opgegroeid als belangrijkste digitale trans formatie van klanten. AVS combineert SDDC-software (Software Defined Data Center) van VMware met Microsoft Azure Global Cloud service-ecosysteem. De AVS-oplossing wordt beheerd om te voldoen aan de vereisten voor prestaties, Beschik baarheid, beveiliging en naleving.
+Als ondernemingen de strategie voor modernisatie verhogen om de flexibiliteit van het bedrijf te verbeteren, kosten te verlagen en innovatie te versnellen, zijn hybride Cloud platforms opgegroeid als belangrijkste digitale trans formatie van klanten. De oplossing Azure VMware combineert SDDC-software (Software Defined Data Center) van VMware met Microsoft Azure Global Cloud service-ecosysteem. De Azure VMware-oplossing wordt beheerd om te voldoen aan de vereisten voor prestaties, Beschik baarheid, beveiliging en naleving.
 
-## <a name="avs-service"></a>AVS-service
+## <a name="azure-vmware-solution-service"></a>Azure VMware-oplossings service
 
-**Waar is de AVS vandaag beschikbaar?**
+**Waar is de Azure VMware-oplossing vandaag nog beschikbaar?**
 
 De service wordt doorlopend toegevoegd aan nieuwe regio's, dus Bekijk de [meest recente informatie over de service-Beschik baarheid](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) voor meer informatie. 
 
-**Kunnen werk belastingen die worden uitgevoerd in een exemplaar van de Azure VMware-oplossing (AVS) worden gebruikt of worden geïntegreerd met Azure-Services?**
+**Kunnen werk belastingen die worden uitgevoerd in een exemplaar van de Azure VMware-oplossing worden gebruikt of worden geïntegreerd met Azure-Services?**
 
-Alle Azure-Services zijn beschikbaar voor klanten van AVS-oplossingen. De beperkingen voor de prestaties en de beschik baarheid van specifieke services moeten per geval worden behandeld.
+Alle Azure-Services zijn beschikbaar voor klanten met Azure VMware-oplossingen. De beperkingen voor de prestaties en de beschik baarheid van specifieke services moeten per geval worden behandeld.
 
 **Gebruik ik dezelfde hulp middelen die ik nu gebruik voor het beheren van persoonlijke Cloud bronnen?**
 
@@ -37,13 +37,13 @@ Ja. De Azure Portal wordt gebruikt voor implementatie en een aantal beheer bewer
 
 **Kan ik een privécloud beheren met mijn on-premises vCenter?**
 
-Bij het starten ondersteunt AVS geen enkele beheer ervaring in on-premises en particuliere cloud omgevingen. Particuliere cloud clusters worden beheerd met vCenter en NSX Manager lokaal naar een privécloud.
+Bij het starten ondersteunt de Azure VMware-oplossing geen enkele beheer ervaring in on-premises en particuliere cloud omgevingen. Particuliere cloud clusters worden beheerd met vCenter en NSX Manager lokaal naar een privécloud.
 
 **Kan ik vRealize-Suite gebruiken die on-premises wordt uitgevoerd?** 
 
 Specifieke integratie-en gebruiks voorbeelden kunnen per geval worden geëvalueerd.
 
-**Kan ik vSphere-Vm's migreren uit on-premises omgevingen om persoonlijke Clouds te AVS?**
+**Kan ik vSphere-Vm's migreren van on-premises omgevingen naar persoonlijke Clouds van Azure VMware?**
 
 Ja. VM-migratie en vMotion kunnen worden gebruikt om Vm's naar een privécloud te verplaatsen als aan de standaard vereisten voor cross vCenter van [vMotion](https://kb.vmware.com/s/article/210695) wordt voldaan.
 
@@ -89,7 +89,7 @@ Elke ESXi-host heeft twee vSAN-diskgroups met een capaciteits laag van 15,2 TB e
 
 **Hoeveel netwerk bandbreedte is beschikbaar op elke ESXi-host?**
 
-Elke ESXi-host is AVS geconfigureerd met 4 25 Gbps Nic's, met twee Nic's die zijn ingericht voor ESXi-systeem verkeer en twee Nic's die zijn ingericht voor werkbelasting verkeer. 
+Elke ESXi-host is een Azure VMware-oplossing is geconfigureerd met 4 25 Gbps Nic's, met twee Nic's die zijn ingericht voor ESXi-systeem verkeer en twee Nic's die zijn ingericht voor werkbelasting verkeer. 
 
 **Worden gegevens opgeslagen op de vSAN-data stores die zijn versleuteld op rest?**
 
@@ -111,13 +111,13 @@ Ja, clusters worden geschaald tussen het minimale en het maximale aantal ESXi-ho
 
 **Wat zijn proef clusters?**
 
-Proef clusters zijn drie host-clusters die worden gebruikt voor één maand evaluaties van de AVS-persoonlijke Clouds.
+Proef clusters zijn drie host-clusters die worden gebruikt voor één maand evaluatie van persoonlijke Clouds van Azure VMware.
 
 **Kan ik hoogwaardige hosts gebruiken voor proef clusters?**
 
 Nee. High-end ESXi-hosts zijn gereserveerd voor gebruik in productie clusters.
 
-## <a name="avs-and-vmware-software"></a>AVS-en VMware-software
+## <a name="azure-vmware-solution-and-vmware-software"></a>Azure VMware-oplossing en VMware-software
 
 **Welke versies van VMware-software worden gebruikt in persoonlijke Clouds?**
 
@@ -125,7 +125,7 @@ Persoonlijke Clouds gebruiken vSphere 6,7, vSAN 6,7, HCX en versie 2,5 van NSX-T
 
 **Gebruiken persoonlijke Clouds VMware NSX?**
 
-Ja, NSX-T 2,5 wordt gebruikt voor het software-gedefinieerde netwerk in de automatische AVS-Clouds.
+Ja, NSX-T 2,5 wordt gebruikt voor de software gedefinieerde netwerken in azure VMware-oplossingen voor persoonlijke Clouds.
 
 **Kan ik VMware NSX-V in een privécloud gebruiken?**
 
@@ -147,9 +147,9 @@ De privécloud wordt bijgewerkt volgens een schema dat met de release van de sof
 
 **Welk netwerk-IP-adres moet er worden gepland om persoonlijke Clouds te integreren met on-premises omgevingen?**
 
-Een particulier netwerk/22 adres ruimte is vereist voor het implementeren van een automatische AVS-Cloud. Deze privé adres ruimte mag niet overlappen met andere virtuele netwerken in een abonnement of met on-premises netwerken.
+Er is een privé netwerk/22 adres ruimte vereist voor het implementeren van een privécloud van Azure VMware-oplossing. Deze privé adres ruimte mag niet overlappen met andere virtuele netwerken in een abonnement of met on-premises netwerken.
  
-**Hoe kan ik verbinding maken vanuit on-premises omgevingen met een nieuwe AVS-Cloud?**
+**Hoe kan ik verbinding maken vanuit on-premises omgevingen met een privécloud van Azure VMware-oplossing?**
 
 U kunt op een van de volgende twee manieren verbinding maken met de service: 
 
@@ -170,7 +170,7 @@ Ja. U moet NSX-T-beheer gebruiken om een firewall te maken waarmee de toegang to
 
 ## <a name="accounts-and-privileges"></a>Accounts en bevoegdheden
 
-**Welke accounts en bevoegdheden krijgt u bij mijn nieuwe AVS-privécloud?**
+**Welke accounts en bevoegdheden krijg ik bij mijn nieuwe Azure VMware-oplossing privécloud?**
 
 U kunt referenties opgeven voor een cloudadmin-gebruiker in vCenter en beheerders toegang op NSX-T-beheer. Er is ook een CloudAdmin-groep die kan worden gebruikt om Azure Active Directory op te nemen. Zie [toegangs-en identiteits concepten](concepts-identity.md)voor meer informatie.
 
@@ -191,19 +191,19 @@ U hebt volledige beheerders bevoegdheden voor NSX-T en kan toegangs beheer op ba
 
 ## <a name="billing-and-support"></a>Facturering en ondersteuning
 
-**Hoe wordt er gefactureerd tijdens de preview-versie van AVS**
+**Hoe wordt er gefactureerd tijdens de preview van de Azure VMware-oplossing**
 
-Facturering voor AVS tijdens de preview is maandelijks op basis van betalen naar gebruik. Er zijn extra opties beschikbaar voor algemene Beschik baarheid.
+Facturering voor de Azure VMware-oplossing tijdens de preview is maandelijks op basis van betalen naar gebruik. Er zijn extra opties beschikbaar voor algemene Beschik baarheid.
 
-**Hoe worden de prijzen gestructureerd tijdens de preview-versie van AVS?**
+**Hoe worden de prijzen gestructureerd tijdens de preview-versie van de Azure VMware-oplossing?**
 
 Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/azure-vmware) voor Azure VMware-oplossingen voor algemene vragen over prijzen. Preview-prijzen zijn beschikbaar op aanvraag. Neem contact op met uw account team of volg de koppeling op de pagina met prijzen om contact op te nemen met de verkoop.
 
-**Wie ondersteunt AVS?**
+**Wie ondersteunt de Azure VMware-oplossing?**
 
-Ondersteuning voor AVS wordt geleverd door micro soft. Houd er rekening mee dat we per onze preview-richt lijnen ondersteuning bieden tijdens een PST-werk periode van 9 tot 5 uur, maandag t/m vrijdag. U kunt via [deze koppeling](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) een ondersteunings ticket genereren
+Ondersteuning voor de Azure VMware-oplossing wordt geleverd door micro soft. Houd er rekening mee dat we per onze preview-richt lijnen ondersteuning bieden tijdens een PST-werk periode van 9 tot 5 uur, maandag t/m vrijdag. U kunt via [deze koppeling](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) een ondersteunings ticket genereren
 
-**Welke accounts heb ik nodig om een privécloud te maken?**
+**Welke accounts heb ik nodig om een privécloud van Azure VMware-oplossing te maken?**
 
 U hebt een Azure-account in een Azure-abonnement nodig.
 

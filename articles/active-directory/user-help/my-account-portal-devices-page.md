@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422472"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798207"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Uw verbonden apparaten beheren via de pagina apparaten
 
@@ -27,7 +27,7 @@ De pagina **apparaten** van de portal van **Mijn account** helpt u bij het beher
 - Schakel alle apparaten uit die u niet meer bezit, verloren of die zijn gestolen.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die proberen de apparaatgegevens bij te werken die zijn verbonden met een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over Apparaatbeheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor apparaat-id's](https://docs.microsoft.com/azure/active-directory/devices/index).
+>Dit artikel is bedoeld voor gebruikers die proberen de apparaatgegevens bij te werken die zijn verbonden met een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over Apparaatbeheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor apparaat-id's](../devices/index.yml).
 
 ## <a name="view-your-connected-devices"></a>Uw verbonden apparaten weer geven
 
@@ -68,7 +68,7 @@ Als u uw apparaat hebt vergrendeld of een fatale fout hebt, kunt u naar een ande
 
 Nadat u de verbonden apparaten hebt weer gegeven, kunt u het volgende doen:
 
-- Selecteer deze optie om uw [beveiligings gegevens](user-help-security-info-overview.md)weer te geven of te beheren.
+- Selecteer deze optie om uw [beveiligings gegevens](./security-info-setup-signin.md)weer te geven of te beheren.
 
 - Uw [organisaties](my-account-portal-organizations-page.md)weer geven en beheren.
 
@@ -76,7 +76,7 @@ Nadat u de verbonden apparaten hebt weer gegeven, kunt u het volgende doen:
 
 - Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).
 
-- De [Portal instellingen van mijn account](my-account-portal-settings.md) wijzigen
+- Wijzig de [Portalinstellingen van mijn account](my-account-portal-settings.md)
 
 ## <a name="related-office-content"></a>Verwante Office-inhoud
 

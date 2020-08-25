@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: bd8b8deed2afafc22e99ac15f2bcffdf65af83c4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422437"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798173"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Uw verbonden organisaties beheren via de pagina organisaties
 
@@ -30,7 +30,7 @@ De pagina **organisaties** van de portal van **Mijn account** helpt u bij het be
 - **Andere organisaties.** De andere organisaties zijn een groep waarbij u zich eerder hebt aangemeld met uw werk-of school account. U kunt deze organisaties op elk gewenst moment verlaten.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die de organisatie gegevens willen bijwerken die zijn verbonden met een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over groeps-en gebruikers beheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor Enter prise-gebruikers beheer](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+>Dit artikel is bedoeld voor gebruikers die de organisatie gegevens willen bijwerken die zijn verbonden met een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over groeps-en gebruikers beheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor Enter prise-gebruikers beheer](../users-groups-roles/index.yml).
 
 ## <a name="view-your-organizations"></a>Uw organisaties weer geven
 
@@ -61,7 +61,7 @@ U kunt elke organisatie die niet uw thuis organisatie is, verlaten.
 
 Nadat u uw organisaties hebt bekeken, kunt u het volgende doen:
 
-- Je [beveiligings gegevens](user-help-security-info-overview.md)weer geven of beheren.
+- Je [beveiligings gegevens](./security-info-setup-signin.md)weer geven of beheren.
 
 - Uw verbonden [apparaten](my-account-portal-devices-page.md)weer geven of beheren.
 
@@ -69,4 +69,4 @@ Nadat u uw organisaties hebt bekeken, kunt u het volgende doen:
 
 - Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).
 
-- De [Portal instellingen van mijn account](my-account-portal-settings.md) wijzigen
+- Wijzig de [Portalinstellingen van mijn account](my-account-portal-settings.md)

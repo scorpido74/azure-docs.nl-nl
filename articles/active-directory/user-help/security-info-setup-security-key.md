@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: 91138f104c787148042b187f4cf59a60bc1448d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744421"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797663"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Stel een beveiligings sleutel in als uw verificatie methode
 
@@ -158,13 +158,13 @@ U kunt een nieuwe pincode voor de beveiligings sleutel maken voor uw beveiliging
 
 ## <a name="additional-security-info-methods"></a>Aanvullende beveiligings gegevens methoden
 
-Als u een beveiligings sleutel wilt registreren, moet u ten minste één aanvullende methode voor beveiligings verificatie hebben geregistreerd. Zie de [sectie Overzicht](security-info-add-update-methods-overview.md) voor meer informatie. 
+Als u een beveiligings sleutel wilt registreren, moet u ten minste één aanvullende methode voor beveiligings verificatie hebben geregistreerd. Zie de [sectie Overzicht](./security-info-setup-auth-app.md) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Lees voor meer informatie over verificatie methoden met een wacht woord de [open bare preview-versie van FIDO2-beveiligings sleutels van micro soft, het inschakelen van blogs met een wacht woord](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) , of lees de artikelen [wat is de Microsoft Authenticator-app?](user-help-auth-app-overview.md) en [Windows hello-overzicht](https://www.microsoft.com/windows/windows-hello) .
 
-- Voor meer informatie over [beveiligings sleutels die compatibel zijn met micro soft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
+- Voor meer informatie over [beveiligings sleutels die compatibel zijn met micro soft](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 
 - Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md).
 

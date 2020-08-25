@@ -11,19 +11,19 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 55df08b0782c446d7313e709de9b8ceaeb58ab2b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422505"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798190"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Het wacht woord voor uw werk-of school account wijzigen op de pagina wacht woord wijzigen
 
 De pagina **wacht woord wijzigen** van de portal **Mijn account** helpt u bij het bijwerken van een bestaand wacht woord voor uw werk-of school account, ervan uitgaande dat u het wacht woord herinnert en dat u uw account niet hebt vergrendeld. Als u uw wacht woord niet meer weet, als u uw account hebt vergrendeld of als u nooit een wacht woord hebt ontvangen van uw organisatie, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw wacht woord opnieuw in te stellen.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die proberen een bekend wacht woord bij te werken voor een bestaand werk-of school account. Als u een gebruiker bent die probeert toegang te krijgen tot een persoonlijk account, zoals voor Xbox, Hotmail of Outlook.com, probeert u de suggesties in de [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) -artikel. Zie [selfservice voor wachtwoord herstel](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)voor meer informatie over het testen van self-service voor het opnieuw instellen van wacht woorden voor uw werk nemers of andere gebruikers.
+>Dit artikel is bedoeld voor gebruikers die proberen een bekend wacht woord bij te werken voor een bestaand werk-of school account. Als u een gebruiker bent die probeert toegang te krijgen tot een persoonlijk account, zoals voor Xbox, Hotmail of Outlook.com, probeert u de suggesties in de [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) -artikel. Zie [selfservice voor wachtwoord herstel](../authentication/tutorial-enable-sspr.md)voor meer informatie over het testen van self-service voor het opnieuw instellen van wacht woorden voor uw werk nemers of andere gebruikers.
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Een wacht woord bijwerken op de pagina wacht woord wijzigen
 
@@ -45,7 +45,7 @@ De pagina **wacht woord wijzigen** van de portal **Mijn account** helpt u bij he
 
 Nadat u uw wacht woord hebt gewijzigd, kunt u het volgende doen:
 
-- Je [beveiligings gegevens](user-help-security-info-overview.md)weer geven of beheren.
+- Je [beveiligings gegevens](./security-info-setup-signin.md)weer geven of beheren.
 
 - Uw verbonden [apparaten](my-account-portal-devices-page.md)weer geven of beheren.
 
@@ -55,4 +55,4 @@ Nadat u uw wacht woord hebt gewijzigd, kunt u het volgende doen:
 
 - Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).
 
-- De [Portal instellingen van mijn account](my-account-portal-settings.md) wijzigen
+- Wijzig de [Portalinstellingen van mijn account](my-account-portal-settings.md)

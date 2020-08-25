@@ -1,28 +1,28 @@
 ---
 title: Concepten-op rollen gebaseerd toegangs beheer (RBAC)
-description: Meer informatie over de belangrijkste mogelijkheden van toegangs beheer op basis van rollen voor de Azure VMware-oplossing (AVS)
+description: Meer informatie over de belangrijkste mogelijkheden van toegangs beheer op basis van rollen voor de Azure VMware-oplossing
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8628c88c300ef8ed271f5e06a8e8dfae40231fec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b9e83f0442953f59d02c42514a8550301ea947b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660821"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752249"
 ---
-# <a name="role-based-access-control-rbac-for-azure-vmware-solution-avs"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor Azure VMware-oplossing (AVS)
+# <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor Azure VMware-oplossing
 
-In een vCenter-en ESXi on-premises-implementatie heeft de beheerder toegang tot het vCenter- administrator@vsphere.local account en kunnen er aanvullende Active Directory (AD) gebruikers/groepen worden toegewezen. In een implementatie van een Azure VMware-oplossing (AVS) heeft de beheerder echter geen toegang tot het gebruikers account van de beheerder, maar kan AD-gebruikers en-groepen niet toewijzen aan de CloudAdmin-rol in vCenter.  Daarnaast heeft de gebruiker AVS van de privécloud geen toestemming voor het openen of configureren van specifieke beheer onderdelen die worden ondersteund en worden beheerd door micro soft, zoals clusters, hosts, gegevens opslag en gedistribueerde virtuele switches.
+In een vCenter-en ESXi on-premises-implementatie heeft de beheerder toegang tot het vCenter- administrator@vsphere.local account en kunnen er aanvullende Active Directory (AD) gebruikers/groepen worden toegewezen. In een implementatie van een Azure VMware-oplossing heeft de beheerder echter geen toegang tot het gebruikers account van de beheerder, maar kan AD-gebruikers en-groepen niet toewijzen aan de CloudAdmin-rol in vCenter.  Daarnaast heeft de gebruiker van de privécloud-oplossing van Azure VMware geen machtiging voor toegang tot of configureren van specifieke beheer onderdelen die worden ondersteund en beheerd door micro soft, zoals clusters, hosts, gegevens opslag en gedistribueerde virtuele switches.
 
 
-In AVS heeft vCenter een ingebouwde lokale gebruiker met de naam cloudadmin die is toegewezen aan de ingebouwde CloudAdmin-rol. De lokale cloudadmin-gebruiker wordt gebruikt om aanvullende gebruikers in AD in te stellen. De rol CloudAdmin in het algemeen heeft de bevoegdheid om werk belastingen te maken en te beheren in uw privécloud (virtuele machines, resource groepen, gegevens opslag en netwerken). De rol CloudAdmin in AVS heeft een specifieke set vCenter-bevoegdheden die verschillen van andere VMware-cloud oplossingen.   
+In de Azure VMware-oplossing heeft vCenter een ingebouwde lokale gebruiker met de naam cloudadmin die is toegewezen aan de ingebouwde CloudAdmin-rol. De lokale cloudadmin-gebruiker wordt gebruikt om aanvullende gebruikers in AD in te stellen. De rol CloudAdmin in het algemeen heeft de bevoegdheid om werk belastingen te maken en te beheren in uw privécloud (virtuele machines, resource groepen, gegevens opslag en netwerken). De CloudAdmin-rol in de Azure VMware-oplossing heeft een specifieke set vCenter-bevoegdheden die verschillen van andere VMware-cloud oplossingen.   
 
 > [!NOTE]
-> AVS biedt momenteel geen aangepaste rollen in vCenter of de AVS-Portal. 
+> De Azure VMware-oplossing biedt momenteel geen aangepaste rollen in vCenter of de Azure VMware-oplossings Portal. 
 
-## <a name="avs-cloudadmin-role-on-vcenter"></a>AVS CloudAdmin-rol op vCenter
+## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>Azure VMware-oplossing CloudAdmin Role in vCenter
 
-U kunt de bevoegdheden weer geven die zijn verleend aan de AVS CloudAdmin-rol op uw AVS-persoonlijke Cloud-vCenter.
+U kunt de bevoegdheden weer geven die zijn verleend aan de Azure VMware Solution CloudAdmin-rol in uw Azure VMware-oplossing privécloud-vCenter.
 
 1. Meld u aan bij de SDDC vSphere-client en ga naar **menu**  >  **beheer**.
 1. Onder **Access Control**selecteert u **rollen**.
@@ -30,15 +30,15 @@ U kunt de bevoegdheden weer geven die zijn verleend aan de AVS CloudAdmin-rol op
 
    :::image type="content" source="media/rbac-cloudadmin-role-privileges.png" alt-text="De bevoegdheden voor CloudAdmin in vSphere-client weer geven":::
 
-De rol CloudAdmin in AVS heeft de volgende bevoegdheden op vCenter. Raadpleeg de [VMware-product documentatie](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) voor een gedetailleerde uitleg van elke bevoegdheid.
+De CloudAdmin-rol in de Azure VMware-oplossing heeft de volgende bevoegdheden op vCenter. Raadpleeg de [VMware-product documentatie](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) voor een gedetailleerde uitleg van elke bevoegdheid.
 
-| Bevoegdheid | Description |
+| Bevoegdheid | Beschrijving |
 | --------- | ----------- |
 | **Waarschuwingen** | Waarschuwing bevestigen<br />Alarm maken<br />Waarschuwings actie uitschakelen<br />Waarschuwing wijzigen<br />Waarschuwing verwijderen<br />Waarschuwings status instellen |
 | **Machtigingen** | Machtigingen wijzigen |
 | **Inhoudsbibliotheek** | Bibliotheek item toevoegen<br />Een abonnement voor een gepubliceerde bibliotheek maken<br />Lokale bibliotheek maken<br />Geabonneerde bibliotheek maken<br />Bibliotheek item verwijderen<br />Lokale bibliotheek verwijderen<br />Geabonneerde bibliotheek verwijderen<br />Het abonnement van een gepubliceerde bibliotheek verwijderen<br />Bestanden downloaden<br />Bibliotheek items verwijderen<br />Geabonneerde bibliotheek verwijderen<br />Opslag importeren<br />Abonnements gegevens testen<br />Een bibliotheek item publiceren naar de abonnee servers<br />Een bibliotheek publiceren naar de abonnee servers<br />Opslag lezen<br />Bibliotheek item synchroniseren<br />Geabonneerde bibliotheek synchroniseren<br />Type introspectie<br />Configuratie-instellingen bijwerken<br />Update bestanden<br />Bibliotheek bijwerken<br />Bibliotheek item bijwerken<br />Lokale bibliotheek bijwerken<br />Geabonneerde bibliotheek bijwerken<br />Abonnement van een gepubliceerde bibliotheek bijwerken<br />Configuratie-instellingen weer geven |
 | **Cryptografische bewerkingen** | Directe toegang |
-| **Gegevensarchief** | Ruimte toewijzen<br />Door gegevens opslag bladeren<br />Gegevens opslag configureren<br />Bestands bewerkingen op laag niveau<br />Bestanden verwijderen<br />Meta gegevens van de virtuele machine bijwerken |
+| **Gegevensarchief** | Ruimte toewijzen<br />Door gegevensarchief bladeren<br />Gegevens opslag configureren<br />Bestands bewerkingen op laag niveau<br />Bestanden verwijderen<br />Meta gegevens van de virtuele machine bijwerken |
 | **Map** | Map maken<br />Map verwijderen<br />Map verplaatsen<br />Mapnaam wijzigen |
 | **Globaal** | Taak annuleren<br />Global-Tag<br />Gezondheidszorg<br />Logboek gebeurtenis<br />Aangepaste kenmerken beheren<br />Service managers<br />Aangepast kenmerk instellen<br />Systeem label |
 | **Host** | vSphere-replicatie<br />Replicatie &#160;&#160;&#160;&#160;beheren |
