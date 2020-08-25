@@ -3,12 +3,12 @@ title: Diagnostische instellingen voor Recovery Services kluizen gebruiken
 description: In dit artikel wordt beschreven hoe u de oude en nieuwe diagnostische gebeurtenissen voor Azure Backup gebruikt.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 2b562ee7fc4afbc28119aa36cfa071291dd61f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 908420a3447869d3e417da51e6b2501fbf2fa5a0
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612619"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763521"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Diagnostische instellingen voor Recovery Services kluizen gebruiken
 
@@ -29,7 +29,7 @@ Azure Backup biedt de volgende diagnostische gebeurtenissen. Elke gebeurtenis bi
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-Als u de [verouderde gebeurtenis](#legacy-event) AzureBackupReport gebruikt, kunt u het beste overschakelen naar de bovenstaande gebeurtenissen op het eerste gebruik.
+Als u nog steeds de [oude gebeurtenis](#legacy-event) AzureBackupReport gebruikt, kunt u het beste overschakelen naar het gebruik van bovenstaande gebeurtenissen.
 
 Zie voor meer informatie [gegevens model voor Azure backup diagnostische gebeurtenissen](./backup-azure-reports-data-model.md).
 

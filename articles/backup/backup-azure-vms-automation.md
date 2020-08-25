@@ -3,12 +3,12 @@ title: Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 description: Hierin wordt beschreven hoe u back-ups van virtuele Azure-machines maakt en herstelt met Azure Backup met Power shell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e695fae087ca4e10a1d900a45cb02947bd5afa0b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 23ae2b5b04823bc809712190a3e1617fec65e73a
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652743"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763368"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -196,7 +196,7 @@ Een beleid voor back-upbeveiliging is gekoppeld aan ten minste één Bewaar bele
 * Met de cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) maakt u een Power shell-object dat informatie over het back-upbeleid bevat.
 * De beleids objecten planning en bewaren worden gebruikt als invoer voor de cmdlet New-AzRecoveryServicesBackupProtectionPolicy.
 
-Standaard wordt een begin tijd gedefinieerd in het object plannings beleid. Gebruik het volgende voor beeld om de begin tijd te wijzigen in de gewenste start tijd. De gewenste start tijd moet ook in UTC zijn. In het onderstaande voor beeld wordt ervan uitgegaan dat de gewenste start tijd 01:00 uur UTC is voor dagelijkse back-ups.
+Standaard wordt een begin tijd gedefinieerd in het object plannings beleid. Gebruik het volgende voor beeld om de begin tijd te wijzigen in de gewenste start tijd. De gewenste start tijd moet ook in UTC zijn. In het volgende voor beeld wordt ervan uitgegaan dat de gewenste start tijd 01:00 uur UTC is voor dagelijkse back-ups.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -516,7 +516,7 @@ Wanneer u de schijven herstelt, gaat u naar de volgende sectie om de virtuele ma
 
 ## <a name="replace-disks-in-azure-vm"></a>Schijven in azure VM vervangen
 
-Voer de onderstaande stappen uit om de schijven en configuratie-informatie te vervangen:
+Voer de volgende stappen uit om de schijven en configuratie-informatie te vervangen:
 
 * Stap 1: [de schijven herstellen](backup-azure-vms-automation.md#restore-the-disks)
 * Stap 2: [gegevens schijf loskoppelen met Power shell](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-powershell)
@@ -638,7 +638,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
 
     * **Niet-beheerde en versleutelde vm's zonder Azure AD (alleen bek)** : voor niet-beheerde, versleutelde virtuele machines zonder Azure AD (alleen versleuteld met bek), als de bron sleutel **kluis/het geheim niet beschikbaar is** , herstelt u de geheimen naar de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md) Voer vervolgens de volgende scripts uit om versleutelings Details in te stellen op de teruggezette OS-BLOB (deze stap is niet vereist voor een gegevens-blob). De $dekurl kan worden opgehaald uit de herstelde sleutel kluis.
 
-    Het onderstaande script moet alleen worden uitgevoerd als de bron sleutel kluis/het geheim niet beschikbaar is.
+    Het volgende script moet alleen worden uitgevoerd als de bron sleutel kluis/het geheim niet beschikbaar is.
 
     ```powershell
         $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"

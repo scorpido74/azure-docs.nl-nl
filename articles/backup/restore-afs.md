@@ -3,12 +3,12 @@ title: Azure-bestands shares herstellen
 description: Informatie over het gebruik van de Azure Portal om een volledige bestands share of specifieke bestanden te herstellen vanaf een herstel punt dat is gemaakt door Azure Backup.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761845"
+ms.locfileid: "88762819"
 ---
 # <a name="restore-azure-file-shares"></a>Azure-bestands shares herstellen
 

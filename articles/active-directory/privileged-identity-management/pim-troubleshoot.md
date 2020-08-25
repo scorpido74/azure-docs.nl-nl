@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2ba5806e23aa87e5d7787be300512444f95b25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b02b8f3b94d191c7439aadf5a56ec0e2a1c38e28
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742144"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782495"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Problemen met Privileged Identity Management oplossen
 
@@ -36,10 +36,10 @@ Dit probleem kan zich voordoen wanneer de rol beheerder voor gebruikers toegang 
 
 ### <a name="resolution"></a>Oplossing
 
-Wijs de rol beheerder voor gebruikers toegang toe aan de privileged Identity Management Service Principal Name (MS-PIM) op abonnements niveau. Deze toewijzing moet de privileged Identity Management-service toestaan om toegang te krijgen tot de Azure-resources. De rol kan worden toegewezen op een niveau van de beheer groep of op het abonnements niveau, afhankelijk van uw vereisten. Zie [een toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)voor meer informatie over service-principals.
+Wijs de rol beheerder voor gebruikers toegang toe aan de privileged Identity Management Service Principal Name (MS-PIM) op abonnements niveau. Deze toewijzing moet de privileged Identity Management-service toestaan om toegang te krijgen tot de Azure-resources. De rol kan worden toegewezen op een niveau van de beheer groep of op het abonnements niveau, afhankelijk van uw vereisten. Zie [een toepassing toewijzen aan een rol](../develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)voor meer informatie over service-principals.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Licentie vereisten voor het gebruik van Privileged Identity Management](subscription-requirements.md)
+- [Licentievereisten voor het gebruik van Privileged Identity Management](subscription-requirements.md)
 - [Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Privileged Identity Management implementeren](pim-deployment-plan.md)

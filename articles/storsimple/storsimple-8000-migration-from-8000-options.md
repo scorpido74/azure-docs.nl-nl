@@ -2,17 +2,17 @@
 title: Opties voor gegevens migratie van StorSimple 8000 Series-apparaten
 description: Hierin wordt een overzicht gegeven van de opties voor het migreren van gegevens uit de StorSimple 8000-serie.
 services: storsimple
-author: priestlg
+author: twooley
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: v-grpr
-ms.openlocfilehash: 39c78e1dc579f74207ba828f2f6a49ad44dd4a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 92ab570b3e06d67d7986a8103e9622e95eb57e7e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514705"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783906"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Opties voor het migreren van gegevens uit de StorSimple 8000-serie
 

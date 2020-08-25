@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374845"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749173"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Overzicht van Azure HDInsight 4,0
 
@@ -92,7 +92,7 @@ Er wordt geen ondersteund upgradepad van eerdere versies van HDInsight naar HDIn
 * HDInsight 4,0 biedt geen ondersteuning voor MapReduce voor Apache Hive. Gebruik in plaats daarvan Apache Tez. Meer informatie over [Apache Tez](https://tez.apache.org/).
 * HDInsight 4,0 biedt geen ondersteuning voor Apache Storm.
 * HDInsight 4,0 biedt geen ondersteuning voor het cluster type van de MILLILITERs Services.
-* De Hive-weer gave is niet meer beschikbaar in HDInsight 4,0.
+* De Hive-weer gave is alleen beschikbaar op HDInsight 4,0-clusters met een versie nummer dat gelijk is aan of groter is dan 4,1. Dit versie nummer is beschikbaar in Ambari admin-> versies.
 * Shell-interpreter in Apache Zeppelin wordt niet ondersteund in Spark-en interactieve query clusters.
 * U kunt LLAP in een Apache Spark-LLAP-cluster niet *uitschakelen*. U kunt alleen LLAP uitschakelen.
 * Azure Data Lake Storage Gen2 kunt geen Jupyter-notebooks opslaan in een Spark-cluster.

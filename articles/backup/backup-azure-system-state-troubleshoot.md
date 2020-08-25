@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: add54955def7df31f8e1688f56382067343616fe
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513842"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763385"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problemen met de systeem status back-up oplossen
 
@@ -17,7 +17,7 @@ In dit artikel worden oplossingen beschreven voor problemen die kunnen optreden 
 
 ## <a name="basic-troubleshooting"></a>Eenvoudige probleemoplossing
 
-U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met het oplossen van problemen met de systeem status back-up:
+U wordt aangeraden de volgende validatie stappen uit te voeren voordat u begint met het oplossen van problemen met de systeem status back-up:
 
 - [Controleren of de MARS-agent (Microsoft Azure Recovery Services) up-to-date is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Zorg ervoor dat er netwerkverbinding is tussen de MARS-agent en Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -42,7 +42,7 @@ U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat er problemen met de systeem status back-up met Azure Backup worden opgelost, moet u de onderstaande controle van vereisten uitvoeren.  
+Voordat er problemen met de systeem status back-up met Azure Backup worden opgelost, moet u de volgende controle van vereisten uitvoeren.  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Controleren of de Windows Server Back-up is geïnstalleerd
 
@@ -56,7 +56,7 @@ Als voor de uitvoer de **installatie status** **beschikbaar**wordt weer gegeven,
 
 #### <a name="method-1-install-windows-server-backup-using-powershell"></a>Methode 1: Windows Server Back-up installeren met behulp van Power shell
 
-Als u Windows Server Back-up wilt installeren met behulp van Power shell, voert u de onderstaande opdracht uit:
+Als u Windows Server Back-up wilt installeren met behulp van Power shell, voert u de volgende opdracht uit:
 
   ```powershell
   Install-WindowsFeature -Name Windows-Server-Backup
@@ -64,7 +64,7 @@ Als u Windows Server Back-up wilt installeren met behulp van Power shell, voert 
 
 #### <a name="method-2-install-windows-server-backup-using-server-manager"></a>Methode 2: Windows Server Back-up installeren met behulp van Serverbeheer
 
-Voer de volgende stappen uit om Windows Server Back-up te installeren met behulp van Serverbeheer:
+Als u Windows Server Back-up wilt installeren met behulp van Serverbeheer, voert u de volgende stappen uit:
 
 1. Klik in **Server**beheer op **functies en onderdelen toevoegen**. De **wizard functies en onderdelen toevoegen** wordt weer gegeven.
 
@@ -77,20 +77,20 @@ Voer de volgende stappen uit om Windows Server Back-up te installeren met behulp
 3. Selecteer een server uit de Server groep en klik op **volgende**. In de serverrol, behoud de standaard selectie en klik op **volgende**.
 4. Selecteer **Windows Server back-up** op het tabblad **functies** en klik op **volgende**.
 
-    ![features](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![Het venster onderdelen selecteren](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. Klik op het tabblad **bevestiging** op **installeren** om het installatie proces te starten.
 6. Op het tabblad **resultaten** wordt weer gegeven dat de functie Windows Server back-up is geïnstalleerd op uw Windows-Server.
 
-    ![result](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![Resultaten van de installatie](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Machtiging voor systeem volume gegevens
 
-Zorg ervoor dat het lokale systeem volledig beheer heeft over de map **systeem volume gegevens** op het volume waarop Windows is geïnstalleerd. Dit is doorgaans **C:\System Volume gegevens**. Windows Server back-up kan mislukken als de bovenstaande machtigingen niet juist zijn ingesteld
+Zorg ervoor dat het lokale systeem volledig beheer heeft over de map **systeem volume gegevens** op het volume waarop Windows is geïnstalleerd. Dit is doorgaans **C:\System Volume gegevens**. Windows Server back-up kan mislukken als de bovenstaande machtigingen niet juist zijn ingesteld.
 
 ### <a name="dependent-services"></a>Afhankelijke services
 
-Zorg ervoor dat de onderstaande services worden uitgevoerd:
+Zorg ervoor dat de onderstaande services de status actief hebben:
 
 **Servicenaam** | **Opstart type**
 --- | ---
@@ -113,7 +113,7 @@ Voer de volgende stappen uit om Windows Server Back-up status te valideren:
 
     - Als deze fout is opgetreden, installeert u de functie Windows Server Back-up op de Server computer, zoals vermeld in stap 1 van de vereisten.
 
-  - Zorg ervoor dat WSB-back-up correct werkt door de onderstaande opdracht uit te voeren vanaf een opdracht prompt met verhoogde bevoegdheid:
+  - Zorg ervoor dat WSB-back-up correct werkt door de volgende opdracht uit te voeren vanaf een opdracht prompt met verhoogde bevoegdheid:
 
       `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 

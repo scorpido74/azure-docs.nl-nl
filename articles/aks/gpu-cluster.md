@@ -3,13 +3,15 @@ title: Gpu's gebruiken op Azure Kubernetes service (AKS)
 description: Meer informatie over het gebruik van Gpu's voor high performance Compute of grafisch intensieve workloads op Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 03/27/2020
-ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/21/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213191"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749134"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Gebruik Gpu's voor computerintensieve werk belastingen op Azure Kubernetes service (AKS)
 
@@ -117,6 +119,65 @@ $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
+
+## <a name="use-the-aks-specialized-gpu-image-preview"></a>De AKS Special GPU-installatie kopie gebruiken (preview-versie)
+
+Als alternatief voor deze stappen biedt AKS een volledig geconfigureerde AKS-installatie kopie die al de [invoeg toepassing voor nvidia-apparaten bevat voor Kubernetes][nvidia-github].
+
+> [!WARNING]
+> U moet niet hand matig de NVIDIA-apparaat-daemon voor de invoeg toepassing installeren voor clusters met behulp van de nieuwe AKS specialistische GPU-installatie kopie.
+
+
+De `GPUDedicatedVHDPreview` functie registreren:
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+Als u de AKS-preview CLI-extensie wilt installeren, gebruikt u de volgende Azure CLI-opdrachten:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+Als u de AKS-preview CLI-extensie wilt bijwerken, gebruikt u de volgende Azure CLI-opdrachten:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>De AKS specialistische GPU-installatie kopie gebruiken in nieuwe clusters (preview-versie)
+
+Configureer het cluster voor het gebruik van de AKS specialistische GPU-installatie kopie wanneer het cluster wordt gemaakt. Gebruik de `--aks-custom-headers` vlag voor de GPU-agent knooppunten op uw nieuwe cluster om de AKS specialistische GPU-afbeelding te gebruiken.
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Als u een cluster wilt maken met behulp van de gewone AKS-installatie kopieën, kunt u dit doen door de aangepaste tag weg te laten `--aks-custom-headers` . U kunt er ook voor kiezen om meer gespecialiseerde GPU-knooppunt groepen toe te voegen aan de hand van hieronder.
+
+
+### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>De AKS specialistische GPU-installatie kopie gebruiken in bestaande clusters (preview-versie)
+
+Configureer een nieuwe knooppunt groep om de AKS Special GPU-installatie kopie te gebruiken. Gebruik de `--aks-custom-headers` vlag Flag voor de GPU-agent knooppunten in de nieuwe knooppunt groep om de AKS Special GPU-installatie kopie te gebruiken.
+
+```azure-cli
+az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+Als u een knooppunt groep wilt maken met behulp van de gewone AKS-installatie kopieën, kunt u dit doen door de aangepaste tag weg te laten `--aks-custom-headers` . 
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>Controleer of de Gpu's Schedulable zijn
 

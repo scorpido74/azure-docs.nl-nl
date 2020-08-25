@@ -6,13 +6,13 @@ manager: barbkess
 ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
-ms.custom: security-recommendations
-ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.custom: security-recommendations,fasttrack-edit
+ms.openlocfilehash: 39073169fbc4558492a47f78f0840a0e314b3ee8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447919"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763555"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Problemen met terugkerende uitgaande verbindings fouten in Azure App Service oplossen
 
@@ -64,7 +64,7 @@ Standaard worden verbindingen voor NodeJS niet actief bewaard. Hieronder vindt u
 HTTP-keepalive
 
 * [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
-* [Documentatie voorNode.js v 13.9.0](https://nodejs.org/api/http.html)
+* [ Documentatie voorNode.js v 13.9.0](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
@@ -120,7 +120,7 @@ Raadpleeg voor andere omgevingen de provider of stuur programma-specifieke docum
 * Een [belasting test](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) moet de werkelijke gegevens in een constante voedings snelheid simuleren. Door apps en functies te testen onder echte wereld wijde stress kunnen de SNAT-poort afvoer problemen voor tijdig worden opgespoord en opgelost.
 * Zorg ervoor dat de back-end-services snel reacties kunnen retour neren. Raadpleeg [Azure SQL database prestatie problemen oplossen met intelligent Insights](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)voor meer informatie over het oplossen van prestatie problemen met Azure SQL database.
 * Uitschalen naar meer exemplaren van het App Service plan. Zie [een app schalen in azure app service](https://docs.microsoft.com/azure/app-service/manage-scale-up)voor meer informatie over schalen. Aan elk worker-exemplaar in een app service-plan is een aantal SNAT-poorten toegewezen. Als u uw gebruik verspreid over meer instanties, kunt u het SNAT-poort gebruik per exemplaar verkrijgen onder de aanbevolen limiet van 100 uitgaande verbindingen, per uniek extern eind punt.
-* Overweeg om over te stappen op [app service Environment (ASE)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase), waarbij u één uitgaand IP-adres hebt toegewezen en de limieten voor verbindingen en SNAT-poorten veel hoger zijn.
+* Overweeg om over te stappen op [app service Environment (ASE)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase), waarbij u één uitgaand IP-adres hebt toegewezen en de limieten voor verbindingen en SNAT-poorten veel hoger zijn. In een ASE is het aantal SNAT-poorten per instantie gebaseerd op de tabel voor de vooraf- [toewijzing van Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatporttable) , bijvoorbeeld een ASE met 1-50 worker-werk exemplaren van 1024 vooraf toegewezen poorten per instantie, terwijl een ASE met 51-100 512 exemplaren van de vooraf toegewezen poorten per instantie.
 
 Het voor komen van de uitgaande TCP-limieten is gemakkelijker te oplossen, omdat de limieten worden ingesteld op basis van de grootte van uw werk nemer. U kunt de limieten in [sandbox cross-VM numerieke limieten weer geven-TCP-verbindingen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 

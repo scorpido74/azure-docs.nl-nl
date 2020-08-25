@@ -1,15 +1,15 @@
 ---
 title: Een blockchain-toepassing maken - Azure Blockchain Workbench
 description: Zelfstudie over het maken van een blockchain-toepassing voor Azure Blockchain Workbench (preview-versie).
-ms.date: 10/14/2019
+ms.date: 08/24/2020
 ms.topic: tutorial
-ms.reviewer: brendal
-ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: ravastra
+ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073119"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784025"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Zelfstudie: Een blockchain-toepassing maken voor Azure Blockchain Workbench
 
@@ -40,7 +40,7 @@ Volg de stappen om de toepassingsbestanden te maken. U kunt [het voorbeeld ook d
 
 ## <a name="configuration-file"></a>Configuratiebestand
 
-Configuratiemetagegevens definiëren de werkstromen van hoog niveau en het interactiemodel van de blockchain-toepassing. Configuratiemetagegevens definiëren de werkstroomfasen en het interactiemodel van de blockchain-toepassing.
+Configuratiemetagegevens definiëren de werkstromen van hoog niveau en het interactiemodel van de blockchain-toepassing. Configuratiemetagegevens definiëren de werkstroomfasen en het interactiemodel van de blockchain-toepassing. Zie [Naslaginformatie over Azure Blockchain Workbench-configuratie](configuration.md) voor meer informatie over de inhoud van configuratiebestanden.
 
 1. Maak in uw favoriete editor een bestand met de naam `HelloBlockchain.json`.
 2. Voeg de volgende JSON toe om de configuratie van de blockchain-toepassing te definiëren.
@@ -211,8 +211,6 @@ In de sectie over toepassingsrollen worden de gebruikersrollen gedefinieerd met 
 ### <a name="workflows"></a>Werkstromen
 
 Met werkstromen worden een of meer fasen en acties van het contract gedefinieerd. In het aanvraag-antwoordscenario bestaat de eerste fase (status) van de werkstroom uit een aanvrager (rol) die een actie (overgang) onderneemt om een aanvraag (functie) te verzenden. In de volgende fase (status) voert een beantwoorder (rol) een actie (overgang) uit om een antwoord (functie) te verzenden. Bij de werkstroom van een toepassing kunnen eigenschappen, functies en statussen betrokken zijn die zijn vereist om de stroom van een contract te beschrijven.
-
-Zie [Naslaginformatie over Azure Blockchain Workbench-configuratie](configuration.md) voor meer informatie over de inhoud van configuratiebestanden.
 
 ## <a name="smart-contract-code-file"></a>Een bestand voor slimme-contractcode
 

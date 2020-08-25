@@ -4,12 +4,12 @@ description: Problemen met de installatie, registratie van Azure Backup Server e
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 40f461c1c2e62b12497800bb1a4d1c0ee0b04579
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522841"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763487"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
 
@@ -17,7 +17,7 @@ Gebruik de informatie in de volgende tabellen om fouten op te lossen die optrede
 
 ## <a name="basic-troubleshooting"></a>Eenvoudige probleemoplossing
 
-U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met het oplossen van problemen Microsoft Azure Backup Server (MABS):
+U wordt aangeraden de volgende validatie uit te voeren voordat u begint met het oplossen van problemen Microsoft Azure Backup Server (MABS):
 
 - [Controleren of de MARS-agent (Microsoft Azure Recovery Services) up-to-date is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Zorg ervoor dat er een netwerk verbinding is tussen MARS-agent en Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| Herstellen | **Fout code**: CBPServerRegisteredVaultDontMatchWithCurrent/kluis referentie fout: 100110 <br/> <br/>**Fout bericht**: de oorspronkelijke en externe DPM-servers moeten zijn geregistreerd bij dezelfde kluis | **Oorzaak**: dit probleem treedt op wanneer u bestanden probeert te herstellen op de alternatieve server van de oorspronkelijke server met behulp van een externe DPM-herstel optie en als de server die wordt hersteld en de oorspronkelijke server van waaruit de gegevens worden opgeslagen, niet zijn gekoppeld aan dezelfde Recovery service-kluis.<br/> <br/>**Tijdelijke oplossing** Om dit probleem op te lossen, moet u ervoor zorgen dat de oorspronkelijke en alternatieve server zijn geregistreerd bij dezelfde kluis.|
+| Herstellen | **Fout code**: CBPServerRegisteredVaultDontMatchWithCurrent/kluis referentie fout: 100110 <br/> <br/>**Fout bericht**: de oorspronkelijke en externe DPM-servers moeten zijn geregistreerd bij dezelfde kluis | **Oorzaak**: dit probleem treedt op wanneer u bestanden probeert te herstellen op de alternatieve server van de oorspronkelijke server met behulp van een externe DPM-herstel optie en als de server die wordt hersteld en de oorspronkelijke server van waaruit de gegevens worden opgeslagen, niet zijn gekoppeld aan dezelfde Recovery Services kluis.<br/> <br/>**Tijdelijke oplossing** Om dit probleem op te lossen, moet u ervoor zorgen dat de oorspronkelijke en alternatieve server zijn geregistreerd bij dezelfde kluis.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Taken voor het maken van online herstel punten voor VMware VM mislukken
 
@@ -119,7 +119,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Beveiligings groepen configureren | DPM kan het toepassings onderdeel op de beveiligde computer (beveiligde computer naam) niet opsommen. | Selecteer **vernieuwen** in het scherm gebruikers interface van beveiligings groep configureren op het relevante gegevens bron/onderdeel niveau. |
 | Beveiligings groepen configureren | Kan de beveiliging niet configureren | Als de beveiligde server een SQL-Server is, controleert u of de sysadmin-rolmachtigingen zijn toegewezen aan het systeem account (NTAuthority\System) op de beveiligde computer, zoals beschreven in [dit artikel](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019).
 | Beveiligings groepen configureren | Er is onvoldoende vrije ruimte in de opslag groep voor deze beveiligings groep. | De schijven die worden toegevoegd aan de opslag groep [mogen geen partitie bevatten](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019). Verwijder alle bestaande volumes op de schijven. Voeg ze vervolgens toe aan de opslag groep.|
-| Beleids wijziging |Het back-upbeleid kan niet worden gewijzigd. Fout: de huidige bewerking is mislukt vanwege een interne service fout [0x29834]. Voer de bewerking opnieuw uit nadat het is geslaagd. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft-ondersteuning. | **Wordt**<br/>Deze fout treedt op onder drie omstandigheden: wanneer de beveiligings instellingen zijn ingeschakeld, kunt u de Bewaar termijn verlagen met de minimum waarden die u eerder hebt opgegeven en wanneer u een niet-ondersteunde versie gebruikt. (Niet-ondersteunde versies zijn onder Microsoft Azure Backup Server versie 2.0.9052 en Azure Backup Server Update 1.) <br/>**Aanbevolen actie:**<br/> Als u wilt door gaan met beleids updates, stelt u de retentie periode in boven de opgegeven minimale Bewaar periode. (De minimale Bewaar periode is zeven dagen voor dagelijks, vier weken voor wekelijks, drie weken voor maandelijks of één jaar voor jaarlijks.) <br><br>Een andere voorkeurs benadering is het bijwerken van de back-upagent en Azure Backup Server om alle beveiligings updates te benutten. |
+| Beleids wijziging |Het back-upbeleid kan niet worden gewijzigd. Fout: de huidige bewerking is mislukt vanwege een interne service fout [0x29834]. Voer de bewerking opnieuw uit nadat het is geslaagd. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft-ondersteuning. | **Wordt**<br/>Deze fout treedt op onder drie omstandigheden: wanneer de beveiligings instellingen zijn ingeschakeld, kunt u de Bewaar termijn verlagen met de minimum waarden die u eerder hebt opgegeven en wanneer u een niet-ondersteunde versie gebruikt. (Niet-ondersteunde versies zijn lager dan Microsoft Azure Backup Server versie 2.0.9052 en Azure Backup Server Update 1.) <br/>**Aanbevolen actie:**<br/> Als u wilt door gaan met beleids updates, stelt u de retentie periode in boven de opgegeven minimale Bewaar periode. (De minimale Bewaar periode is zeven dagen voor dagelijks, vier weken voor wekelijks, drie weken voor maandelijks of één jaar voor jaarlijks.) <br><br>Een andere voorkeurs benadering is het bijwerken van de back-upagent en Azure Backup Server om alle beveiligings updates te benutten. |
 
 ## <a name="backup"></a>Backup
 

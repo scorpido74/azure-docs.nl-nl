@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2b8a5cf1bd3df1405f148c5fe84701c04a4d0c0a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658042"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752008"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welke schijftypen zijn beschikbaar in Azure?
 
@@ -26,7 +26,7 @@ De volgende tabel bevat een vergelijking van ultra disks, Premium-schijven (Soli
 | Detail | Ultraschijven | Premium SSD | Standard SSD | Standard HDD |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |Schijftype   |SSD   |SSD   |SSD   |HDD   |
-|Scenario   |I/o-intensieve workloads, zoals [SAP Hana](~/articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), data bases in de bovenste laag (bijvoorbeeld SQL, Oracle) en andere trans acties met een zware werk belasting.   |Productie- en prestatiegevoelige workloads   |Webservers, bedrijfstoepassingen die weinig wordt gebruikt en dev/test   |Back-up, niet-kritiek, incidentele toegang   |
+|Scenario   |I/o-intensieve workloads, zoals [SAP Hana](workloads/sap/hana-vm-operations-storage.md), data bases in de bovenste laag (bijvoorbeeld SQL, Oracle) en andere trans acties met een zware werk belasting.   |Productie- en prestatiegevoelige workloads   |Webservers, bedrijfstoepassingen die weinig wordt gebruikt en dev/test   |Back-up, niet-kritiek, incidentele toegang   |
 |Maximale schijfgrootte   |65.536 gibibyte (GiB)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
 |Maximale doorvoer   |2.000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
 |Max. IOPS   |160.000    |20.000   |6.000   |2.000   |
@@ -62,7 +62,7 @@ Enkele belang rijke mogelijkheden van ultra disk zijn:
 
 ### <a name="ga-scope-and-limitations"></a>GA bereik en beperkingen
 
-[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](~/includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](../../includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
 
 Als u ultra disks wilt gaan gebruiken, raadpleegt u ons artikel over het onderwerp: [Azure Ultra Disk gebruiken](disks-enable-ultra-ssd.md).
@@ -71,10 +71,10 @@ Als u ultra disks wilt gaan gebruiken, raadpleegt u ons artikel over het onderwe
 
 Azure Premium Ssd's bieden ondersteuning voor hoge prestaties en lage latentie voor virtuele machines (Vm's) met invoer/uitvoer-intensieve workloads. Als u gebruik wilt maken van de snelheid en prestaties van Premium-opslag schijven, kunt u bestaande VM-schijven migreren naar Premium-Ssd's. Premium-Ssd's zijn geschikt voor essentiële productie toepassingen. Premium-Ssd's kan alleen worden gebruikt in combi natie met een VM-reeks die compatibel is met Premium Storage.
 
-Zie [Windows VM-grootten](~/articles/virtual-machines/windows/sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Windows, waaronder de grootte die compatibel is met Premium Storage. Zie [Linux VM-grootten](~/articles/virtual-machines/linux/sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Linux, waaronder de grootte van Premium Storage-compatibel. Vanuit een van deze artikelen moet u elk artikel van de afzonderlijke VM-grootte controleren om te bepalen of het een Premium-opslag compatibel is.
+Zie [grootten voor virtuele machines in azure](sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Windows of Linux, waaronder de grootte van Premium Storage-compatibel. Zie [grootten voor virtuele machines in azure](sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Linux, waaronder de grootte van Premium Storage-compatibel. Vanuit een van deze artikelen moet u elk artikel van de afzonderlijke VM-grootte controleren om te bepalen of het een Premium-opslag compatibel is.
 
 ### <a name="disk-size"></a>Schijfgrootte
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 Wanneer u een Premium-opslag schijf inricht, in tegens telling tot standaard opslag, bent u verzekerd van de capaciteit, IOPS en door Voer van de schijf. Als u bijvoorbeeld een P50-schijf maakt, wordt de opslag capaciteit van 4.095 GB door Azure ingericht, 7.500 IOPS en een door Voer van 250 MB/s voor die schijf. Uw toepassing kan alle of een deel van de capaciteit en prestaties gebruiken. Premium-SSD schijven zijn zodanig ontworpen dat er in de voor gaande tabel 99,9% van de tijd minder dan één milliseconde latentie en doel-IOPS en-door voer worden beschreven.
 
@@ -82,7 +82,7 @@ Wanneer u een Premium-opslag schijf inricht, in tegens telling tot standaard ops
 
 Premium-SSD grootten die kleiner zijn dan P30 bieden nu schijf bursting en kunnen de IOPS per schijf tot 3.500 en de band breedte van Maxi maal 170 Mbps. Bursting wordt geautomatiseerd en werkt op basis van een tegoed systeem. Tegoeden worden automatisch opgeteld in een burst-Bucket wanneer het schijf verkeer lager is dan het ingerichte prestatie doel en de tegoeden automatisch worden gebruikt wanneer het verkeer groter wordt dan het doel, tot de maximale burst-limiet. De maximale burst-limiet bepaalt het maximum van schijf-IOPS & band breedte, zelfs als u burst-tegoeden hebt om te gebruiken. Schijf bursting biedt betere tolerantie voor onvoorspelbare wijzigingen van i/o-patronen. U kunt dit het beste gebruiken voor het opstarten van de besturingssysteem schijf en toepassingen met piekige-verkeer.    
 
-Schijven die ondersteuning bieden voor bursting, worden standaard ingeschakeld voor nieuwe implementaties van toepasselijke schijf grootten, zonder dat de gebruiker actie hoeft te ondernemen. Voor bestaande schijven van de toepasselijke grootten kunt u bursting met een van de volgende twee opties inschakelen: Ontkoppel en koppel de schijf opnieuw of stop de gekoppelde VM. Alle burst-toepasselijke schijf grootten beginnen met een volledige burst-credit Bucket wanneer de schijf is gekoppeld aan een virtuele machine die een maximale duur van Maxi maal 30 minuten ondersteunt. Zie [Premium-SSD bursting](~/articles/virtual-machines/linux/disk-bursting.md)voor meer informatie over hoe bursting werkt op Azure-schijven. 
+Schijven die ondersteuning bieden voor bursting, worden standaard ingeschakeld voor nieuwe implementaties van toepasselijke schijf grootten, zonder dat de gebruiker actie hoeft te ondernemen. Voor bestaande schijven van de toepasselijke grootten kunt u bursting met een van de volgende twee opties inschakelen: Ontkoppel en koppel de schijf opnieuw of stop de gekoppelde VM. Alle burst-toepasselijke schijf grootten beginnen met een volledige burst-credit Bucket wanneer de schijf is gekoppeld aan een virtuele machine die een maximale duur van Maxi maal 30 minuten ondersteunt. Zie [Premium-SSD bursting](linux/disk-bursting.md)voor meer informatie over hoe bursting werkt op Azure-schijven. 
 
 ### <a name="transactions"></a>Transacties
 
@@ -93,7 +93,7 @@ Voor Premium-Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB va
 Azure Standard Ssd's is een voordelige opslag optie die is geoptimaliseerd voor workloads die consistente prestaties op lagere IOPS-niveaus nodig hebben. Standard-SSD biedt een goede ervaring op instap niveau voor degenen die willen overstappen op de Cloud, met name als u problemen ondervindt met de variantie van werk belastingen die op uw HDD-oplossingen op locatie worden uitgevoerd. In vergelijking met de standaard-Hdd's bieden de standaard-Ssd's betere Beschik baarheid, consistentie, betrouw baarheid en latentie. Standaard Ssd's zijn geschikt voor webservers, lage IOPS-toepassings servers, intensief gebruikte zakelijke toepassingen en werk belastingen voor ontwikkelen en testen. Net als standaard Hdd's zijn standaard Ssd's beschikbaar op alle Azure-Vm's.
 
 ### <a name="disk-size"></a>Schijfgrootte
-[!INCLUDE [disk-storage-standard-ssd-sizes](~/includes/disk-storage-standard-ssd-sizes.md)]
+[!INCLUDE [disk-storage-standard-ssd-sizes](../../includes/disk-storage-standard-ssd-sizes.md)]
 
 Standaard Ssd's zijn ontworpen om latentie van één cijfer en de IOPS en door voer te bieden tot de limieten die zijn beschreven in de voor gaande tabel 99% van de tijd. De werkelijke IOPS en door Voer kunnen soms variëren, afhankelijk van de verkeers patronen. Standaard Ssd's bieden consistente prestaties dan de harde schijven met een lagere latentie.
 
@@ -106,7 +106,7 @@ Voor standaard Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB 
 Azure Standard Hdd's levert betrouw bare, voordelige schijf ondersteuning voor virtuele machines met latentie-ongevoelig werk belastingen. Bij standaard opslag worden de gegevens opgeslagen op de harde schijven (Hdd's). Latentie, IOPS en door Voer van Standard-HDD schijven kunnen veel meer verschillen in vergelijking met schijven op basis van SSD. Standard-HDD schijven zijn ontworpen voor het leveren van schrijf latentie onder 10 MS en lees latentie onder 20ms voor de meeste i/o-bewerkingen, maar de werkelijke prestaties kunnen echter variëren, afhankelijk van de i/o-grootte en het werkbelasting patroon. Wanneer u werkt met Vm's, kunt u standaard HDD-schijven gebruiken voor dev/test-scenario's en minder kritieke workloads. Standaard Hdd's zijn beschikbaar in alle Azure-regio's en kunnen worden gebruikt met alle Azure-Vm's.
 
 ### <a name="disk-size"></a>Schijfgrootte
-[!INCLUDE [disk-storage-standard-hdd-sizes](~/includes/disk-storage-standard-hdd-sizes.md)]
+[!INCLUDE [disk-storage-standard-hdd-sizes](../../includes/disk-storage-standard-hdd-sizes.md)]
 
 ### <a name="transactions"></a>Transacties
 
@@ -139,7 +139,7 @@ Zie [Managed disks prijzen](https://azure.microsoft.com/pricing/details/managed-
 Azure-Vm's hebben de mogelijkheid om aan te geven of ze compatibel zijn met ultra disks. Een ultra Disk-compatibele VM wijst toegewezen bandbreedte capaciteit toe tussen het Compute-VM-exemplaar en de schaal eenheid voor blok opslag om de prestaties te optimaliseren en de latentie te verminderen. Het toevoegen van deze mogelijkheid op de VM resulteert in een reserverings kosten die alleen worden opgelegd als u ultra Disk-functionaliteit op de virtuele machine hebt ingeschakeld zonder een ultra schijf aan de VM te koppelen. Wanneer een ultra schijf is gekoppeld aan de ultra Disk compatible VM, worden deze kosten niet toegepast. Deze kosten zijn per vCPU ingericht op de VM. 
 
 > [!Note]
-> Voor [beperkte core VM-grootten](~/articles/virtual-machines/linux/constrained-vcpu.md)zijn de reserverings kosten gebaseerd op het werkelijke aantal vcpu's en niet de beperkte kernen. Voor Standard_E32-8s_v3 zijn de reserverings kosten gebaseerd op 32 kernen. 
+> Voor [beperkte core VM-grootten](constrained-vcpu.md)zijn de reserverings kosten gebaseerd op het werkelijke aantal vcpu's en niet de beperkte kernen. Voor Standard_E32-8s_v3 zijn de reserverings kosten gebaseerd op 32 kernen. 
 
 Raadpleeg de [pagina met prijzen voor Azure](https://azure.microsoft.com/pricing/details/managed-disks/) disks voor Ultra Disk-prijs informatie.
 
