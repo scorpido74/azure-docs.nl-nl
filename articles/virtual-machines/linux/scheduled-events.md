@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: f91b5879922fc473ff1e46f817b3d649b1b30a9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088730"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816725"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events voor Linux-Vm's
 
@@ -42,7 +42,7 @@ Scheduled Events bevat gebeurtenissen in de volgende use-cases:
 - Door het [platform geïnitieerd onderhoud](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json) (bijvoorbeeld VM opnieuw opstarten, Livemigratie of geheugen behoud van updates voor host)
 - De virtuele machine wordt uitgevoerd op hardware die is [gedegradeerd als host](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) die binnenkort wordt voorspeld
 - Door de gebruiker geïnitieerd onderhoud (bijvoorbeeld: een gebruiker start een virtuele machine opnieuw of implementeert deze)
-- [Spot-VM](spot-vms.md) en verwijderingen van exemplaren van de [schaalset](../../virtual-machine-scale-sets/use-spot.md) .
+- [Spot-VM](../spot-vms.md) en verwijderingen van exemplaren van de [schaalset](../../virtual-machine-scale-sets/use-spot.md) .
 
 ## <a name="the-basics"></a>De basis beginselen  
 
@@ -73,7 +73,7 @@ Als de virtuele machine niet is gemaakt binnen een Virtual Network, zijn de stan
 ### <a name="version-and-region-availability"></a>Beschik baarheid van versie en regio
 Er is een versie van de Scheduled Events-service. Versies zijn verplicht. de huidige versie is `2019-01-01` .
 
-| Versie | Release type | Regio's | Opmerkingen bij de release | 
+| Versie | Release type | Regio's | Releaseopmerkingen | 
 | - | - | - | - | 
 | 2019-08-01 | Algemene Beschik baarheid | Alles | <li> Ondersteuning toegevoegd voor Event source |
 | 2019-04-01 | Algemene Beschik baarheid | Alles | <li> Er is ondersteuning toegevoegd voor de beschrijving van de gebeurtenis |
@@ -139,7 +139,7 @@ Als er geplande gebeurtenissen zijn, bevat het antwoord een matrix met gebeurten
 | EventStatus | De status van deze gebeurtenis. <br><br> Waarden: <ul><li>`Scheduled`: Deze gebeurtenis is gepland om te starten na het tijdstip dat is opgegeven in de `NotBefore` eigenschap.<li>`Started`: Deze gebeurtenis is gestart.</ul> Er `Completed` is ooit geen of vergelijk bare status. De gebeurtenis wordt niet meer geretourneerd wanneer de gebeurtenis is voltooid.
 | NotBefore| Tijdstip waarna deze gebeurtenis kan worden gestart. <br><br> Voorbeeld: <br><ul><li> Ma, 19 sep 2016 18:29:47 GMT  |
 | Beschrijving | Beschrijving van deze gebeurtenis. <br><br> Voorbeeld: <br><ul><li> De hostserver ondergaat onderhoud. |
-| Source | Initiator van de gebeurtenis. <br><br> Voorbeeld: <br><ul><li> `Platform`: Deze gebeurtenis wordt geïnitieerd door platfrom. <li>`User`: Deze gebeurtenis wordt geïnitieerd door de gebruiker. |
+| Source | Initiator van de gebeurtenis. <br><br> Voorbeeld: <br><ul><li> `Platform`: Deze gebeurtenis wordt gestart door het platform. <li>`User`: Deze gebeurtenis wordt geïnitieerd door de gebruiker. |
 
 ### <a name="event-scheduling"></a>Gebeurtenissen plannen
 Elke gebeurtenis wordt in de toekomst gepland op basis van het gebeurtenis type. Deze tijd wordt weer gegeven in de eigenschap van een gebeurtenis `NotBefore` . 

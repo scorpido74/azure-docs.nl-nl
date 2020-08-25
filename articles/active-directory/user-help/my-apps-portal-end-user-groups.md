@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 23b7205e63c7991368efe421d5c067e980314611
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5804819e3a7a63120fa8c64d8df27b16608ece1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741986"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798071"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uw groeps gegevens bijwerken op de portal mijn apps
 
@@ -26,7 +26,7 @@ U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op he
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](../manage-apps/index.yml).
 
 ## <a name="view-your-groups-information"></a>Uw groeps gegevens weer geven
 
@@ -78,11 +78,11 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
 2. Voer de vereiste gegevens in:
 
-    - **Groepstype:**
+    - **Groeps type:**
 
         - **Beveiligingsprincipal.** Gebruikt voor het beheren van leden en toegang tot computers voor gedeelde resources voor een groep gebruikers. U kunt bijvoorbeeld een beveiligingsgroep voor een specifiek beveiligingsbeleid maken. Op deze manier kunt u in één keer een reeks machtigingen geven aan alle leden in plaats van machtigingen individueel voor elk lid toe te voegen.
 
-        - **Office 365.** Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Met deze optie kunt u ook personen van buiten uw organisatie toegang verlenen tot de groep.
+        - **Office 365.** Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Deze optie geeft u ook de mogelijkheid om mensen buiten uw organisatie toegang te geven tot de groep.
 
     - **Groeps naam.** Voeg een naam voor de groep toe, iets wat u moet onthouden en dat klinkt logisch.
 

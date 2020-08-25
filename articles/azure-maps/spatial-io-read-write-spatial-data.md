@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a482b860ae13e817727ca0c3848a598fe3632136
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b094f63c075bdb8af225ff366343c60bc6818224
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277584"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816759"
 ---
 # <a name="read-and-write-spatial-data"></a>Ruimtelijke gegevens lezen en schrijven
 
@@ -150,9 +150,15 @@ De volgende code toont de lees-en schrijf bewerkingen van bekende tekst heen en 
 GML is een ruimtelijke XML-bestands specificatie die vaak wordt gebruikt als een uitbrei ding van andere XML-specificaties. Geojson-gegevens kunnen met behulp van de functie worden geschreven als XML met GML-tags `atlas.io.core.GmlWriter.write` . De XML die GML bevat, kan worden gelezen met behulp van de `atlas.io.core.GmlReader.read` functie. De functie Read heeft twee opties:
 
 - De `isAxisOrderLonLat` optie-de as-volg orde van de coördinaten "breedte graad, lengte graad" of "lengte graad" kan variëren tussen gegevens sets en is niet altijd goed gedefinieerd. De GML Reader leest de coördinaten gegevens standaard als ' breedte graad, lengte graad ', maar als deze optie is ingesteld op True, wordt deze als ' lengte graad, breedte graad ' gelezen.
-- De `propertyTypes` optie-deze optie is een opzoek tabel voor sleutel waarden waarbij de sleutel de naam is van een eigenschap in de gegevensset. De waarde is het object type waarmee de waarde moet worden omgezet tijdens het parseren. De ondersteunde type waarden zijn: `string` , `number` , en `boolean` `date` . Als een eigenschap zich niet in de opzoek tabel bevindt of als het type niet is gedefinieerd, wordt de eigenschap geparseerd als een teken reeks.
+- De `propertyTypes` optie-deze optie is een opzoek tabel voor sleutel waarden waarbij de sleutel de naam is van een eigenschap in de gegevensset. De waarde is het object type waarmee de waarde moet worden omgezet tijdens het parseren. De ondersteunde type waarden zijn: `string` , `number` , en `boolean`  `date` . Als een eigenschap zich niet in de opzoek tabel bevindt of als het type niet is gedefinieerd, wordt de eigenschap geparseerd als een teken reeks.
 
 De functie `atlas.io.read` wordt standaard ingesteld op de `atlas.io.core.GmlReader.read` functie wanneer deze detecteert dat de invoer gegevens XML zijn, maar de gegevens zijn niet een van de andere ruimtelijke XML-indelingen die worden ondersteund.
+
+De verdeelt `GmlReader` coördinaten met een van de volgende srid's:
+
+- EPSG: 4326 (voor keur)
+- EPSG: 4269, EPSG: 4283, EPSG: 4258, EPSG: 4308, EPSG: 4230, EPSG: 4272, EPSG: 4271, EPSG: 4267, EPSG: 4608, EPSG: 4674 mogelijk met een kleine fout marge.
+- EPSG: 3857, EPSG: 102100, EPSG: 3785, EPSG: 900913, EPSG: 102113, EPSG: 41001, EPSG: 54004
 
 ## <a name="next-steps"></a>Volgende stappen
 

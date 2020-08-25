@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185210"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816162"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Problemen met push-installatie van Mobility service oplossen
 
@@ -41,8 +41,8 @@ Voor Windows (**fout 95107**) controleert u of het gebruikers account beheerders
 * Hand matig een register sleutel toevoegen die toegangs beheer voor externe gebruikers uitschakelt:
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * Nieuwe toevoegen `DWORD` :`LocalAccountTokenFilterPolicy`
-  * Stel de waarde in op`1`
+  * Nieuwe toevoegen `DWORD` : `LocalAccountTokenFilterPolicy`
+  * Stel de waarde in op `1`
 
 * Voer de volgende opdracht uit vanaf een opdracht prompt om de register sleutel toe te voegen:
 
@@ -129,6 +129,28 @@ Om de fout op te lossen:
 ## <a name="connectivity-failure-errorid-95523"></a>Connectiviteits fout (ErrorID: 95523)
 
 Deze fout treedt op wanneer het netwerk dat de bron machine niet kan worden gevonden, is verwijderd of niet langer beschikbaar is. De enige manier om de fout op te lossen is om er zeker van te zijn dat het netwerk bestaat.
+
+## <a name="check-access-for-network-shared-folders-on-source-machine-errorid-9510595523"></a>Controleer de toegang tot gedeelde netwerk mappen op de bron machine (ErrorID: 95105, 95523)
+
+Controleer of de gedeelde netwerk mappen op uw virtuele machine toegankelijk zijn vanaf de proces server (PS) op afstand met de opgegeven referenties. Om toegang te bevestigen: 
+
+1. Meld u aan bij de computer met de proces server.
+2. Open Verkenner. Typ in de adres balk `\\<SOURCE-MACHINE-IP>\C$` en klik op ENTER.
+
+    ![Map openen in PS](./media/vmware-azure-troubleshoot-push-install/open-folder-process-server.PNG)
+
+3. Bestanden Verkenner vraagt om referenties. Voer de gebruikers naam en het wacht woord in en klik op OK. <br><br/>
+
+    ![Referenties opgeven](./media/vmware-azure-troubleshoot-push-install/provide-credentials.PNG)
+
+    >[!NOTE]
+    > Als de bron machine lid is van een domein, geeft u de domein naam en de gebruikers naam op als `<domainName>\<username>` . Als de bron machine zich in de werk groep bevindt, geeft u alleen de gebruikers naam op.
+
+4. Als de verbinding tot stand is gebracht, worden de mappen van de bron machine op afstand zichtbaar van de proces server.
+
+    ![Zicht bare mappen van de bron machine](./media/vmware-azure-troubleshoot-push-install/visible-folders-from-source.png)
+
+Als de verbinding is mislukt, controleert u of aan alle vereisten wordt voldaan.
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Controle van bestands-en printer deling-Services (ErrorID: 95105 & 95106)
 
@@ -260,7 +282,7 @@ Wanneer de Mobility-agent naar de bron machine wordt gekopieerd, is ten minste 1
 
 ## <a name="low-system-resources"></a>Weinig systeem bronnen
 
-Dit probleem treedt op wanneer het systeem weinig beschikbaar geheugen heeft en kan geen geheugen toewijzen voor de installatie van de Mobility-service. Zorg ervoor dat er voldoende geheugen beschikbaar is voor de installatie om door te gaan en goed te volt ooien.
+De mogelijke fout-Id's voor dit probleem zijn 95572 en 95573. Dit probleem treedt op wanneer het systeem weinig beschikbaar geheugen heeft en kan geen geheugen toewijzen voor de installatie van de Mobility-service. Zorg ervoor dat er voldoende geheugen beschikbaar is voor de installatie om door te gaan en goed te volt ooien.
 
 ## <a name="vss-installation-failures"></a>VSS-installatie fouten
 

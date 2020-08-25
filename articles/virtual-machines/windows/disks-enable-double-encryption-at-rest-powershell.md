@@ -2,24 +2,24 @@
 title: Azure PowerShell-dubbele versleuteling op schijven met rest-beheer inschakelen
 description: Schakel dubbele versleuteling in op rest voor uw beheerde schijf gegevens met behulp van Azure PowerShell.
 author: roygara
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5e70d434fcb297ff39b32a83b89a86e85fe9564f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6cb0bf9ae12169f9431cf221431f442b5870d932
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088441"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816504"
 ---
-# <a name="azure-powershell---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure PowerShell-dubbele versleuteling inschakelen op de rest van uw beheerde schijven
+# <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>De module Azure PowerShell gebruiken om dubbele versleuteling in te scha kelen voor beheerde schijven
 
 Azure Disk Storage ondersteunt dubbele versleuteling in rust voor beheerde schijven. Zie de sectie [dubbele versleuteling bij rest](disk-encryption.md#double-encryption-at-rest) van ons artikel over schijf versleuteling voor conceptuele informatie over dubbele versleuteling in rust, evenals andere beheerde schijf versleutelings typen.
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: bdce311efbe7e41e09a3be76562c6be752a4b5c1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 79bf5f0d6b7e3fa4735d94c7b26c1736ab25113e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606107"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816997"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Een Dynamics 365 for Operations-aanbieding maken
 
@@ -21,7 +21,7 @@ In dit onderwerp wordt uitgelegd hoe u een nieuwe Dynamics 365 voor de bewerking
 Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](create-account.md) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
 >[!NOTE]
-> Zodra een aanbieding is gepubliceerd, worden wijzigingen die zijn aangebracht in het partner centrum, alleen in het systeem bijgewerkt en opgeslagen vóór het opnieuw publiceren. Zorg ervoor dat u de aanbieding voor publicatie verzendt nadat u wijzigingen hebt aangebracht.
+> Zodra een aanbieding is gepubliceerd, worden wijzigingen in de aanbieding alleen bijgewerkt in partner centrum en de online winkel nadat u de aanbieding opnieuw hebt ingediend voor publicatie.
 
 ## <a name="create-a-new-offer"></a>Een nieuwe aanbieding maken
 
@@ -193,12 +193,16 @@ In deze sectie kunt u logo's en installatie kopieën opgeven die worden gebruikt
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef het logo van uw aanbod op in twee pixel grootten:
+Geef een PNG-bestand voor het logo van **grote** grootte op. Het partner centrum gebruikt deze om een **klein** logo te maken. U kunt dit eventueel later vervangen door een andere installatie kopie.
 
-- **Klein** (48 x 48)
-- **Groot** (216 x 216)
+- **Groot** (van 216 x 216 tot 350 x 350 px, vereist)
+- **Klein** (48 x 48 px, optioneel)
+
+Deze logo's worden op verschillende plaatsen in de vermelding gebruikt:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

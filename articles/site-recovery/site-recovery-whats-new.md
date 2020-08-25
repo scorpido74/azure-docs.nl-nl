@@ -3,12 +3,12 @@ title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 09afd4416efc8e6904b7c487d5ed2f3be22db081
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 837344d10e21d20488760f6d5aa4749c039f9b07
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654817"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816946"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -538,7 +538,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-**Linux Support** | Ondersteuning toegevoegd voor RedHat Enter prise Linux 6,10, CentOS 6,10.<br/><br/> Op Linux gebaseerde virtuele machines die gebruikmaken van de partitie stijl GPT (GUID-partitie tabel) in verouderde BIOS-compatibiliteits modus, worden nu ondersteund. Raadpleeg de [Veelgestelde vragen over Azure VM](../virtual-machines/linux/faq-for-disks.md) voor meer informatie.
+**Linux Support** | Ondersteuning toegevoegd voor RedHat Enter prise Linux 6,10, CentOS 6,10.<br/><br/> Op Linux gebaseerde virtuele machines die gebruikmaken van de partitie stijl GPT (GUID-partitie tabel) in verouderde BIOS-compatibiliteits modus, worden nu ondersteund. Raadpleeg de [Veelgestelde vragen over Azure VM](../virtual-machines/faq-for-disks.md) voor meer informatie.
 **Herstel na nood geval voor Vm's na migratie** | Ondersteuning voor het inschakelen van herstel na nood gevallen naar een secundaire regio voor een on-premises virtuele VMware-machine die is gemigreerd naar Azure, zonder dat u de Mobility-service op de virtuele machine hoeft te verwijderen voordat u replicatie inschakelt.
 **Windows Server 2008** | Ondersteuning voor de migratie van computers met Windows Server 2008 R2/2008 64-bits en 32-bits.<br/><br/> Alleen migratie (replicatie en failover). Failback wordt niet ondersteund.
 

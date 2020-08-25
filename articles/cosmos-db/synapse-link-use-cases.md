@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 493a2b0d0aab47c2e38648ec8f6be75685dfd7ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a522a5a5945fe7a4b63dc759077d744f951a76f
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119491"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814413"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link voor Azure Cosmos DB: Use cases voor bijna realtime analyses
 
@@ -34,7 +34,7 @@ Fabrikanten doen de voor bereiding op Cloud-systeem eigen technologieën om te v
 
 De volgende architectuur toont de kracht van het gebruik van Azure Cosmos DB als de Cloud-native operationele data base en Synapse-koppeling in Supply Chain Analytics:
 
-:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="Azure Synapse-koppeling voor Azure Cosmos DB in Supply Chain Analytics" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/supply-chain-analytics.png" alt-text="Azure Synapse-koppeling voor Azure Cosmos DB in Supply Chain Analytics " border="false":::
 
 Op basis van de vorige architectuur kunt u de volgende use-cases gebruiken met Synapse link voor Azure Cosmos DB:
 
@@ -52,9 +52,9 @@ Op basis van de vorige architectuur kunt u de volgende use-cases gebruiken met S
 
   Synapse link voor Azure Cosmos DB maakt geavanceerde business intelligence (BI)/Reporting-scenario's mogelijk:
 
-  * Query's uitvoeren op operationele gegevens uit Azure Cosmos DB Analytical Store met behulp van systeem eigen integratie met Synapse SQL Serverloze en volledige onduidelijkheid van T-SQL-taal.
+  * Query's uitvoeren op operationele gegevens uit Azure Cosmos DB Analytical Store met behulp van systeem eigen integratie met Synapse SQL serverloze en volledige onduidelijkheid van T-SQL-taal.
 
-  * Model en publiceer automatisch vernieuwen van BI-Dash boards over Azure Cosmos DB via Synapse SQL Serverloze ondersteuning voor bekende BI-hulpprogram ma's. Bijvoorbeeld Azure Analysis Services, Power BI Premium, enzovoort.
+  * Model en publiceer automatisch vernieuwen van BI-Dash boards over Azure Cosmos DB via Synapse SQL serverloze ondersteuning voor bekende BI-hulpprogram ma's. Bijvoorbeeld Azure Analysis Services, Power BI Premium, enzovoort.
 
 Hier volgen enkele richt lijnen voor gegevens integratie voor het uitvoeren van batch-& streaminggegevens in Azure Cosmos DB:
 
@@ -140,6 +140,6 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 * [Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 
-* [Apache Spark in azure Synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)
+* [Apache Spark in Azure Synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)
 
 * [SQL serverloos/op aanvraag in azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)

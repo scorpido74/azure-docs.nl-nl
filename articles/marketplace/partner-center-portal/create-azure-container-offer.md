@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606358"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815625"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Een Azure Container-aanbieding maken in Azure Marketplace
 
@@ -197,16 +197,17 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
- Bied PNG-bestanden van het logo van uw aanbieding in elk van de volgende vier pixel grootten:
+Geef een PNG-bestand voor het logo van **grote** grootte op. Het partner centrum gebruikt deze om een **klein** en **gemiddeld** logo te maken. U kunt deze desgewenst later vervangen door andere installatie kopieën.
 
-- **Klein** (48 x 48)
-- **Gemiddeld** (90 X 90)
-- **Groot** (216 x 216)
-- **Breed** (255 X 115)
+- **Groot** (van 216 x 216 tot 350 x 350 px, vereist)
+- **Gemiddeld** (90 x 90 px, optioneel)
+- **Klein** (48 x 48 px, optioneel)
 
-Alle vier de logo's zijn vereist en worden gebruikt op verschillende plaatsen in de Marketplace-vermelding.
+Deze logo's worden op verschillende plaatsen in de vermelding gebruikt:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Scherm afbeeldingen (optioneel)
 

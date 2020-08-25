@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607448"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814719"
 ---
 # <a name="consulting-service-offers"></a>Aanbiedingen voor advies service
 
@@ -72,40 +72,40 @@ Ga naar de pagina [competenties van Microsoft Partner Network](https://partner.m
 
 Systeem-integrator-partners kunnen advies-service aanbiedingen voor de volgende twintig landen/regio's verzenden:
 
-| Landen  | (vervolg)   | (vervolg)  | (vervolg)  |
+| Landen | (vervolg) |  (vervolg) |  (vervolg) |
 |---------|----------|----------|----------|
 | Australië | België | Canada | Denemarken |
 | Finland  | Frankrijk | Duitsland  | India   |
 | Italië    | Japan  |  Mexico  |  Nederland  |
 |  Nieuw-Zeeland  |  Noorwegen  |  Polen  | Zuid-Afrika |
 |  Zweden  | Zwitserland  |  Verenigde Staten  | Verenigd Koninkrijk  |
-||
+|
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Registreren voor advies Services in de commerciële Marketplace
 
-Begin met het [registreren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) van uw bedrijfs gegevens in de Marketplace. Zie [een uitgever in de Marketplace worden](become-publisher.md)voor een volledige controle lijst met registratie vereisten. 
+Begin met het [registreren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) van uw bedrijfs gegevens in de Marketplace. Zie [een uitgever in de Marketplace worden](become-publisher.md)voor een volledige controle lijst met registratie vereisten.
 
 ## <a name="prepare-your-publishing-artifacts"></a>Uw publicatie artefacten voorbereiden
 Voordat u zich registreert, kunt u beginnen met het verzamelen en voorbereiden van de inhoud die uw vermelding helpt de waarde van uw service en oplossing voor uw doel klant te vermelden. 
 
 |Installatie voor nieuwe uitgevers  |
-|---------|
-|MPN-id     |
-|Bedrijfs logo's (48 x 48, 216 x 216 pixels)     |
-|Doel van de lead     |
-||
+| - |
+| MPN-id |
+| Bedrijfs logo's (48 x 48, 216 x 216 pixels) |
+| Doel van de lead |
+|
 
 |Installatie voor nieuwe aanbiedingen  |
-|---------|
-|Naam van aanbieding (200 tekens) en beschrijving (2.000 tekens)    |
-|Competenties     |
-|Beschik baarheid land/regio     |
-|Duur van betrokkenheid     |
-|Toepasselijke branches, categorieën en zoek woorden     |
-|Video over product overzicht    |
-|Scherm afbeeldingen (Maxi maal 5, 1280 x 720 pixels)     |
-|Marketing documenten (Maxi maal 3)     |
-||
+| - |
+| Naam van aanbieding (200 tekens) en beschrijving (2.000 tekens) |
+| Competenties  |
+| Beschik baarheid land/regio |
+| Duur van betrokkenheid  |
+| Toepasselijke branches, categorieën en zoek woorden |
+| Video over product overzicht |
+| Scherm afbeeldingen (Maxi maal 5, 1280 x 720 pixels) |
+| Marketing documenten (Maxi maal 3) |
+|
 
 ## <a name="the-publishing-process"></a>Het publicatie proces
 

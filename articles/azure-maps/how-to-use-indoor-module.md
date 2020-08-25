@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b9ec42620ee5ffaaf5fd79da5dabc944fc3bc422
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bfb017bb085d22c187e8074ba4f2b026d17f442
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287096"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815943"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>De module voor kaarten van Azure Maps gebruiken
 
-De Azure Maps Web-SDK bevat de module *Azure Maps binnenshuis* . Met de module *Azure Maps binnen* kunt u kaarten weer geven die zijn gemaakt in azure Maps Maker.
+De Azure Maps Web-SDK bevat de module *Azure Maps binnenshuis* . Met de module  *Azure Maps binnen* kunt u kaarten weer geven die zijn gemaakt in azure Maps Maker.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,10 +35,8 @@ U kunt de module *Azure Maps binnenshuis* op een van de volgende twee manieren i
 Als u de wereld wijd gehoste versie van Azure Content Delivery Network van de module *Azure Maps binnenshuis* wilt gebruiken, raadpleegt u de volgende Java script-en stijl blad verwijzingen in het `<head>` element van het HTML-bestand:
 
 ```html
-<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
 <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
 ```
 
  Of u kunt de module *Azure Maps binnenshuis* downloaden. De module *Azure Maps binnenshuis* bevat een client bibliotheek voor het verkrijgen van toegang tot Azure Maps Services. Volg de onderstaande stappen voor het installeren en laden van de module *binnen* in uw webtoepassing.  
@@ -46,15 +44,14 @@ Als u de wereld wijd gehoste versie van Azure Content Delivery Network van de mo
   1. Installeer het [pakket Azure-Maps-binnenshuis](https://www.npmjs.com/package/azure-maps-indoor).
   
       ```powershell
-      >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
   2. Verwijs naar het *Azure Maps* module-java script en stijl blad in het `<head>` element van het HTML-bestand:
 
       ```html
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.js"></script>
       ```
 
 ## <a name="instantiate-the-map-object"></a>Het kaart object instantiëren
@@ -148,11 +145,11 @@ In dit voor beeld ziet u hoe u de module *Azure Maps binnenshuis* gebruikt in uw
 3. In de HTML-header verwijzen we naar de *Azure Maps* module-java script en stijl blad stijlen.
 
 4. Initialiseer een *kaart object*. Het *kaart-object* ondersteunt de volgende opties:
-    - `Subscription key`is uw Azure Maps primaire abonnements sleutel.
-    - `center`Hiermee definieert u een breedte graad en lengte graad voor de locatie van het kaarten centrum. Geef een waarde op `center` Als u geen waarde wilt opgeven voor `bounds` . De notatie moet er als volgt uitzien `center` : [-122,13315, 47,63637].
-    - `bounds`is de kleinste rechthoekige vorm die de kaart gegevens van de tegelset omsluit. Stel een waarde in voor `bounds` Als u geen waarde wilt instellen voor `center` . U kunt de toewijzings grenzen vinden door de List-API van de [tegelset](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)aan te roepen. De listing-API van de Tegelset retourneert de `bbox` , die u kunt parseren en toewijzen `bounds` . De notatie moet er als volgt uitzien `bounds` : [# West, # Zuid, # East, # Noord].
-    - `style`Hiermee kunt u de kleur van de achtergrond instellen. Als u een witte achtergrond wilt weer geven, definieert u `style` als leeg.
-    - `zoom`Hiermee kunt u het minimum-en maximum zoom niveau voor de kaart opgeven.
+    - `Subscription key` is uw Azure Maps primaire abonnements sleutel.
+    - `center` Hiermee definieert u een breedte graad en lengte graad voor de locatie van het kaarten centrum. Geef een waarde op `center` Als u geen waarde wilt opgeven voor `bounds` . De notatie moet er als volgt uitzien `center` : [-122,13315, 47,63637].
+    - `bounds` is de kleinste rechthoekige vorm die de kaart gegevens van de tegelset omsluit. Stel een waarde in voor `bounds` Als u geen waarde wilt instellen voor `center` . U kunt de toewijzings grenzen vinden door de List-API van de [tegelset](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)aan te roepen. De listing-API van de Tegelset retourneert de `bbox` , die u kunt parseren en toewijzen `bounds` . De notatie moet er als volgt uitzien `bounds` : [# West, # Zuid, # East, # Noord].
+    - `style` Hiermee kunt u de kleur van de achtergrond instellen. Als u een witte achtergrond wilt weer geven, definieert u `style` als leeg.
+    - `zoom` Hiermee kunt u het minimum-en maximum zoom niveau voor de kaart opgeven.
 
 5. Maak vervolgens de module voor het beheer van de *binnenste* . Wijs het *Azure Maps binnen* `tilesetId` en voeg eventueel de toe `statesetId` .
 

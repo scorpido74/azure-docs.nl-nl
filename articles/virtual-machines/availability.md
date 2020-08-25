@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 583e4d3a45d31b9c386b542d42d8e749b0c36bc1
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650210"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815603"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Beschikbaarheidsopties voor virtuele machines in Azure
 
@@ -59,7 +59,7 @@ Een beschikbaarheidsset is een logische groepering van Vm's binnen een Data Cent
 
 In een beschikbaarheidsset worden Vm's automatisch gedistribueerd in deze fout domeinen. Deze aanpak beperkt de gevolgen van mogelijke problemen met de fysieke hardware, netwerkstoringen of stroomonderbrekingen.
 
-Voor virtuele machines die gebruikmaken van [Azure Managed Disks](./windows/faq-for-disks.md) en deel uitmaken van een beheerde beschikbaarheidsset, worden de virtuele machines afgestemd op Managed Disk-foutdomeinen. Deze afstemming zorgt ervoor dat alle beheerde schijven die zijn gekoppeld aan een virtuele machine, zich binnen hetzelfde Managed Disk-foutdomein bevinden. 
+Voor virtuele machines die gebruikmaken van [Azure Managed Disks](./faq-for-disks.md) en deel uitmaken van een beheerde beschikbaarheidsset, worden de virtuele machines afgestemd op Managed Disk-foutdomeinen. Deze afstemming zorgt ervoor dat alle beheerde schijven die zijn gekoppeld aan een virtuele machine, zich binnen hetzelfde Managed Disk-foutdomein bevinden. 
 
 In een beheerde beschikbaarheidsset kunnen alleen virtuele machines met beheerde schijven worden gemaakt. Het aantal Managed Disk-foutdomeinen verschilt per regio: er zijn twee of drie Managed Disk-foutdomeinen per regio. Meer informatie over deze Managed Disk-fout domeinen voor [Linux-vm's](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) of [Windows-vm's](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set)vindt u hier.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 75c604df2f44e9c732fa9c2ce2093237e4e484a4
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 9ff11312b6d231927f5053868b64e0b825df371e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606056"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816980"
 ---
 # <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
@@ -135,18 +135,19 @@ In deze sectie kunt u logo's en installatie kopieën opgeven die worden gebruikt
 >[!NOTE]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
 
-#### <a name="marketplace-logos"></a>Marketplace-logo's
+#### <a name="store-logos"></a>Winkel logo's
 
-Geef het logo van uw aanbod op in vier pixel grootten:
+Geef een PNG-bestand voor het logo van **grote** grootte op. Het partner centrum gebruikt deze om een **klein** en **gemiddeld** logo te maken. U kunt deze desgewenst later vervangen door andere installatie kopieën.
 
-- **Klein** (48 x 48)
-- **Gemiddeld** (90 x 90)
-- **Groot** (216 x 216)
-- **Breed** (255 x 115)
+- **Groot** (van 216 x 216 tot 350 x 350 px, vereist)
+- **Gemiddeld** (90 x 90 px, optioneel)
+- **Klein** (48 x 48 px, optioneel)
 
-Deze logo's worden op verschillende plaatsen op de Azure Marketplace gebruikt:
+Deze logo's worden op verschillende plaatsen in de vermelding gebruikt:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

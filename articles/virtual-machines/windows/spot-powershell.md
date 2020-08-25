@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: f615ed5183142ca7684c7e705fa6a42bd3124d19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bcf90368e8d43dce2d10fa3744024bcbc7e4b52
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514832"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816538"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>Plaats virtuele machines met behulp van Azure PowerShell
 
 
-Met behulp van [Spot vm's](spot-vms.md) kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
+Met behulp van [Spot vm's](../spot-vms.md) kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
-Prijzen voor spot Vm's zijn variabel, op basis van de regio en de SKU. Zie prijzen voor VM'S voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. Zie [Spot vm's-prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de maximum prijs.
+Prijzen voor spot Vm's zijn variabel, op basis van de regio en de SKU. Zie prijzen voor VM'S voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. Zie [Spot vm's-prijzen](../spot-vms.md#pricing)voor meer informatie over het instellen van de maximum prijs.
 
 U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stellen die u wilt betalen, per uur. De maximale prijs voor een steun-VM kan worden ingesteld in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765` is bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximale prijs instelt op `-1` , wordt de VM niet verwijderd op basis van de prijs. De prijs voor de virtuele machine is de huidige prijs voor steun of de prijs voor een standaard-VM, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn.
 
@@ -28,7 +28,7 @@ U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stell
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
 Maak een spotVM met [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) om de configuratie te maken. Insluiten `-Priority Spot` en instellen `-MaxPrice` op:
-- `-1`de virtuele machine wordt dus niet verwijderd op basis van de prijs.
+- `-1` de virtuele machine wordt dus niet verwijderd op basis van de prijs.
 - een dollar bedrag, Maxi maal vijf cijfers. `-MaxPrice .98765`Betekent bijvoorbeeld dat de toewijzing van de virtuele machine ongedaan wordt gemaakt wanneer de prijs voor een spotVM ongeveer $. 98765 per uur duurt.
 
 

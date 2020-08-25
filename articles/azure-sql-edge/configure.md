@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 0cb2eed0895c10f649facaa184a5f9f9ea158aa5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551979"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816878"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge configureren (preview-versie)
 
@@ -157,6 +157,60 @@ Eerdere CTP van Azure SQL Edge zijn geconfigureerd om te worden uitgevoerd als d
   - Werk de opties voor het maken van de container bij om `*"User": "user_name | user_id*` sleutel-waardepaar toevoegen onder Opties voor container maken op te geven. Vervang user_name of user_id met een eigen user_name of user_id van uw docker-host. 
   - Wijzig de machtigingen voor het Directory/mount-volume.
 
+## <a name="persist-your-data"></a>Uw gegevens behouden
+
+De wijzigingen in de configuratie van Azure SQL Edge en database bestanden blijven behouden in de container, zelfs als u de container opnieuw opstart met `docker stop` en `docker start` . Als u de container echter verwijdert met `docker rm` , wordt alles in de container verwijderd, inclusief Azure SQL Edge en uw data bases. In de volgende sectie wordt uitgelegd hoe u **gegevens volumes** kunt gebruiken om uw database bestanden te bewaren, zelfs als de bijbehorende containers worden verwijderd.
+
+> [!IMPORTANT]
+> Voor Azure SQL Edge is het essentieel dat u de gegevens persistentie in docker begrijpt. Naast de discussie in deze sectie raadpleegt u docker-documentatie over [het beheren van gegevens in docker-containers](https://docs.docker.com/engine/tutorials/dockervolumes/).
+
+### <a name="mount-a-host-directory-as-data-volume"></a>Een host-Directory als gegevens volume koppelen
+
+De eerste optie is het koppelen van een directory op uw host als een gegevens volume in de container. Gebruik hiervoor de `docker run` opdracht met de `-v <host directory>:/var/opt/mssql` vlag. Hierdoor kunnen de gegevens worden teruggezet tussen container uitvoeringen.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+Met deze techniek kunt u ook de bestanden op de host buiten docker delen en weer geven.
+
+> [!IMPORTANT]
+> Toewijzing van host-volume voor **docker op Windows** biedt momenteel geen ondersteuning voor het toewijzen van de volledige `/var/opt/mssql` Directory. U kunt echter een submap toewijzen, zoals `/var/opt/mssql/data` aan uw hostmachine.
+
+> [!IMPORTANT]
+> De toewijzing van het hostvolume voor **docker op Mac** met de installatie kopie van de Azure SQL-rand wordt op dit moment niet ondersteund. Gebruik in plaats daarvan gegevens volume containers. Deze beperking is specifiek voor de `/var/opt/mssql` Directory. Het lezen van een gekoppelde map werkt prima. U kunt bijvoorbeeld een host-Directory koppelen met-v op Mac en een back-up terugzetten vanuit een. bak-bestand dat zich op de host bevindt.
+
+### <a name="use-data-volume-containers"></a>Gegevens volume containers gebruiken
+
+De tweede optie is het gebruik van een gegevens volume container. U kunt een gegevens volume container maken door een volume naam op te geven in plaats van een host Directory met de `-v` para meter. In het volgende voor beeld wordt een gedeeld gegevens volume gemaakt met de naam **sqlvolume**.
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+> [!NOTE]
+> Deze techniek voor het impliciet maken van een gegevens volume in de opdracht uitvoeren werkt niet met oudere versies van docker. In dat geval gebruikt u de expliciete stappen die worden beschreven in de docker-documentatie, het [maken en koppelen van een gegevens volume container](https://docs.docker.com/engine/tutorials/dockervolumes/#creating-and-mounting-a-data-volume-container).
+
+Zelfs als u deze container stopt en verwijdert, blijft het gegevens volume behouden. U kunt deze weer geven met de `docker volume ls` opdracht.
+
+```bash
+docker volume ls
+```
+
+Als u vervolgens een andere container met dezelfde volume naam maakt, gebruikt de nieuwe container dezelfde Azure SQL Edge-gegevens die in het volume zijn opgenomen.
+
+Als u een gegevens volume container wilt verwijderen, gebruikt u de `docker volume rm` opdracht.
+
+> [!WARNING]
+> Als u de gegevens volume container verwijdert, worden alle gegevens van de Azure SQL-Edge in de container *permanent* verwijderd.
 
 
 ## <a name="next-steps"></a>Volgende stappen

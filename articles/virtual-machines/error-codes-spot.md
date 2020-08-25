@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e151145bd3c4d1db87ef5d1b0d553555a580279
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069801"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816742"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>Fout berichten voor de plaats van virtuele machines en schaal sets
 
@@ -31,11 +31,11 @@ Hier volgen enkele mogelijke fout codes die u kunt ontvangen bij het gebruik van
 | MaxPriceChangeNotAllowedForAllocatedVMs | De maximale prijs wijziging is niet toegestaan wanneer de virtuele machine {0} momenteel is toegewezen. Maak de toewijzing ongedaan en probeer het opnieuw. | Stop\Deallocate de virtuele machine, zodat u de maximum prijs kunt wijzigen. |
 | MaxPriceChangeNotAllowed | De maximale prijs wijziging is niet toegestaan. | U kunt de maximale prijs voor deze virtuele machine niet wijzigen. |
 | AzureSpotIsNotSupportedForThisAPIVersion  |  Azure spot wordt niet ondersteund voor deze API-versie. | De API-versie moet 2019-03-01 zijn. |
-| AzureSpotIsNotSupportedForThisVMSize  |  Azure spot wordt niet ondersteund voor deze VM-grootte {0} . | Selecteer een andere VM-grootte. Zie [Spot Virtual Machines](./linux/spot-vms.md)voor meer informatie. |
-| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  De maximale prijs wordt alleen ondersteund voor Azure Spot Virtual Machines. | Zie [Spot Virtual Machines](./linux/spot-vms.md)voor meer informatie. |
+| AzureSpotIsNotSupportedForThisVMSize  |  Azure spot wordt niet ondersteund voor deze VM-grootte {0} . | Selecteer een andere VM-grootte. Zie [Spot Virtual Machines](./spot-vms.md)voor meer informatie. |
+| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  De maximale prijs wordt alleen ondersteund voor Azure Spot Virtual Machines. | Zie [Spot Virtual Machines](./spot-vms.md)voor meer informatie. |
 | MoveResourcesWithAzureSpotVMNotSupported  |  De aanvraag voor het verplaatsen van resources bevat een Azure spot-virtuele machine. Dit wordt momenteel niet ondersteund. Raadpleeg de fout Details voor de Id's van de virtuele machine. | U kunt geen spot Vm's verplaatsen. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  De aanvraag resources verplaatsen bevat een Azure spot-schaalset voor virtuele machines. Dit wordt momenteel niet ondersteund. Raadpleeg de fout Details voor de virtuele-machine schaal sets-Id's. | U kunt geen instanties van de set met steun schalen verplaatsen. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | De virtuele machine van Azure spot wordt niet ondersteund in de Schaalset voor virtuele machines met de modus VM-indeling. | Stel de Orchestration-modus in op virtuele-machine schaal sets om spot instanties te gebruiken. |
 
 
-**Volgende stappen** Zie [spot virtual machines](./linux/spot-vms.md)voor meer informatie.
+**Volgende stappen** Zie [spot virtual machines](./spot-vms.md)voor meer informatie.

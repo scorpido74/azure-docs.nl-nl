@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 29a202b3833bbc6ee550df89b240d95ecb38ef83
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: d1059bae047774864868fbe90df50a877f9a3869
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742054"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798054"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Verzamelingen gebruiken in de portal Mijn apps
 
@@ -26,7 +26,7 @@ Verzamelingen zijn verschillende app-weergaven die u in de portal **Mijn apps** 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Deze inhoud is bedoeld voor gebruikers van **Mijn apps**. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
+>Deze inhoud is bedoeld voor gebruikers van **Mijn apps**. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](../manage-apps/access-panel-collections.md).
 
 ## <a name="access-apps-using-collections"></a>Apps openen met behulp van verzamelingen
 

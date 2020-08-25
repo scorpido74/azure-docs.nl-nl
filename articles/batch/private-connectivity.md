@@ -4,12 +4,12 @@ description: Meer informatie over het verbinden van privé met een Azure Batch-a
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004238"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814107"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privé-eindpunten gebruiken met Azure Batch-accounts
 
@@ -19,7 +19,8 @@ Met behulp van een [persoonlijke Azure-koppeling](../private-link/private-link-o
 
 Met persoonlijke koppeling kunnen gebruikers toegang krijgen tot een Azure Batch-account vanuit het virtuele netwerk of via een peered virtueel netwerk. Resources die zijn toegewezen aan een privé koppeling, zijn ook on-premises toegankelijk via privé-peering via VPN of [Azure ExpressRoute](../expressroute/expressroute-introduction.md). U kunt verbinding maken met een Azure Batch account dat is geconfigureerd met een persoonlijke koppeling met behulp van de [automatische of hand matige goedkeurings methode](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
 
-Ondersteuning voor particuliere connectiviteit in Azure Batch is momenteel beschikbaar in de volgende Azure-regio's: West-Centraal VS, VS-West 2, Oost-VS, Zuid-Centraal VS, US Gov-Virginia, US Gov-Arizona, Azië-oost, Frank rijk en UK-zuid.
+> [!IMPORTANT]
+> Ondersteuning voor particuliere connectiviteit in Azure Batch is momenteel beschikbaar in de volgende Azure-regio's: VS-centraal, Noord-Centraal VS, Zuid-Centraal VS, West-Centraal VS, VS-Oost, VS-Oost 2, VS-West, VS-West 2, Azië-oost, Frankrijk-centraal, UK-zuid, Europa-noord, Europa-west, Japan-Oost, Japan-West, Australië-Oost en alle US Gov en US DoD regio's.
 
 In dit artikel worden de stappen beschreven voor het maken van een persoonlijk batch-account en het openen met behulp van een persoonlijk eind punt.
 

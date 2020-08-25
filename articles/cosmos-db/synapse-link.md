@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9e8dd4b7d7e6f0de1f3ce19238e4ab1e3cf958e1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034175"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814387"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Wat is een Azure Synapse-koppeling voor Azure Cosmos DB (preview)?
 
@@ -27,7 +27,7 @@ In de volgende afbeelding ziet u de integratie van de Azure Synapse-koppeling me
 
 :::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Architectuur diagram voor Azure Synapse Analytics-integratie met Azure Cosmos DB" border="false":::
 
-## <a name="benefits"></a><a id="synapse-link-benefits"></a>Verleend
+## <a name="benefits"></a><a id="synapse-link-benefits"></a> Verleend
 
 Voor het analyseren van grote operationele gegevens sets en het minimaliseren van de impact op de prestaties van bedrijfskritische transactionele werk belastingen, zijn de operationele gegevens in Azure Cosmos DB echter geëxtraheerd en verwerkt door een ETL-pijp lijn (extract-Transform-Load). ETL-pijp lijnen vereisen veel lagen van gegevens verplaatsing, wat resulteert in veel operationele complexiteit, en invloed heeft op de prestaties van uw transactionele werk belastingen. Daarnaast neemt de latentie toe om de operationele gegevens te analyseren vanaf het tijdstip van de oorsprong.
 

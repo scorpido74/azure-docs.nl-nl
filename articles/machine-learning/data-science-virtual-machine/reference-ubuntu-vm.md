@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c919e8abc55dd5cb36325ae060340c1ee147a1a0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852222"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816300"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Naslag informatie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -248,8 +248,6 @@ Operationeel maken de machine learning modellen die u hebt gemaakt door deze in 
 
 U kunt ook uw modellen bouwen in R of python op de virtuele machine en deze vervolgens implementeren in productie op Azure Machine Learning. Er zijn bibliotheken geïnstalleerd in R (**azureml**) en python (**azureml**) om deze functionaliteit in te scha kelen.
 
-Zie [tien dingen die u kunt doen op de data Science virtual machine](vm-do-ten-things.md)voor meer informatie over het implementeren van modellen in R en Python in azure machine learning.
-
 > [!NOTE]
 > Deze instructies zijn geschreven voor de Windows-versie van de Data Science Virtual Machine. Maar de informatie over het implementeren van modellen naar Azure Machine Learning is van toepassing op de virtuele Linux-machine.
 
@@ -282,7 +280,7 @@ cd vwdemo
 vw house_dataset
 ```
 
-Er zijn andere, grotere demo's in de Directory. Zie [deze sectie van github](https://github.com/JohnLangford/vowpal_wabbit) en de [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki)voor meer informatie over Vowpal Wabbit.
+Er zijn andere, grotere demo's in de Directory. Zie  [deze sectie van github](https://github.com/JohnLangford/vowpal_wabbit) en de [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki)voor meer informatie over Vowpal Wabbit.
 
 ### <a name="xgboost"></a>xgboost
 

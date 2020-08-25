@@ -10,14 +10,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fc87f08b30d648ec38d2b93e96a32d125b856be
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757911"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799278"
 ---
-# <a name="business-card-concepts"></a>Concepten van visite kaartjes
+# <a name="business-card-concepts"></a>Concepten van visitekaartjes
 
 Met een van de vooraf ontwikkelde modellen kan Azure Form Recognizer sleutel waardeparen analyseren en extra heren uit visite kaartjes. De Business Card-API combineert krachtige functies voor optische teken herkenning (OCR) met ons model voor visite kaartjes voor het extra heren van belang rijke informatie uit visite kaartjes in het Engels. Hiermee worden persoonlijke contact gegevens, bedrijfs naam, functie titel en meer opgehaald. De vooraf ontwikkelde Business Card-API is openbaar beschikbaar in de preview-versie van de formulier Recognizer v 2.1. 
 
@@ -70,7 +70,7 @@ De tweede stap bestaat uit het aanroepen van de [resultaat bewerking analyse van
 
 Wanneer het veld **status** de waarde **geslaagd** heeft, bevat het JSON-antwoord de resultaten van de kaart en tekst herkenning. Het resultaat van het visite kaartje is ingedeeld als een woorden lijst met benoemde veld waarden, waarbij elke waarde de geëxtraheerde tekst, genormaliseerde waarde, het begrenzingsvak, betrouw baarheid en bijbehorende woord elementen bevat. Het resultaat van de tekst herkenning is ingedeeld als een hiërarchie van lijnen en woorden, met tekst, selectie kader en betrouwbaarheids informatie.
 
-![Contoso smample-resultaten](./media/business-card-results.png)
+![voorbeeld uitvoer van visite kaartjes](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>Voor beeld van JSON-uitvoer
 
@@ -90,8 +90,8 @@ Zie het volgende voor beeld van een geslaagde JSON-reactie: het knoop punt ' rea
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-    "lines": 
-         {
+                "lines": 
+                          {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,

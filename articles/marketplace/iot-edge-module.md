@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: f7a4997117c8730b767f245050caa3f3157fb6fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/18/2020
+ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750244"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816249"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modules
 
@@ -40,13 +40,13 @@ Het IoT Edge-module aanbod type is een specifiek type container dat wordt uitgev
 
 **De online winkel rechts selecteren**
 
-IoT Edge-modules worden alleen gepubliceerd naar Azure Marketplace. AppSource is niet van toepassing.  Zie [uw publicatie optie bepalen](determine-your-listing-type.md)voor meer informatie over de verschillen en doel groepen in online winkels.
- 
+IoT Edge modules worden alleen gepubliceerd op de Azure Marketplace. AppSource is niet van toepassing. Zie [uw publicatie optie bepalen](determine-your-listing-type.md)voor meer informatie over de verschillen en doel groepen in online winkels.
+
 **Facturerings opties**
 
 De Marketplace ondersteunt momenteel **gratis** en **BYOL-facturerings opties (uw eigen licentie)** voor IOT Edge modules.
- 
-**Publicatie opties**
+
+### <a name="publishing-options"></a>Publicatie opties
 
 In alle gevallen moeten IoT Edge modules de optie voor het publiceren van **Transact** selecteren.  Zie [een publicatie optie kiezen](determine-your-listing-type.md) voor meer informatie over publicatie opties.  
 
@@ -54,22 +54,22 @@ In alle gevallen moeten IoT Edge modules de optie voor het publiceren van **Tran
 
 Alle voor waarden van de Microsoft Azure Marketplace overeenkomsten en beleids regels zijn van toepassing op IoT Edge module aanbiedingen.  Daarnaast zijn er vereisten en technische vereisten voor IoT Edge modules.  
 
-**Vereisten**
+### <a name="prerequisites"></a>Vereisten
 
 Als u een IoT Edge module naar Azure Marketplace wilt publiceren, moet u aan de volgende vereisten voldoen:
 
 - Toegang tot het partner centrum. Zie de [publicatie handleiding voor Azure Marketplace en AppSource](marketplace-publishers-guide.md)voor meer informatie.
-- Host uw IoT Edge-module in een Azure Container Registry. 
-- De meta gegevens van uw IoT Edge-module gereed maken, zoals (niet-limitatieve lijst): 
+- Host uw IoT Edge-module in een Azure Container Registry.
+- De meta gegevens van uw IoT Edge-module gereed maken, zoals (niet-limitatieve lijst):
     - Een titel
     - Een beschrijving (in HTML-indeling)
-    - Een logo afbeelding (PNG-indeling en vaste afbeeldings grootten, waaronder 40x40px, 90x90px, 115x115px, 255x115px)
+    - Een logo afbeelding (in grootten van 48 x 48 (optioneel), 90 x 90 (optioneel) en van 216 x 216 tot 350 x 350 px, allemaal in PNG-indeling)
     - Een gebruiks voorwaarden en privacybeleid
     - Standaard module configuratie (route, dubbele gewenste eigenschappen, createOptions, omgevings variabelen)
     - Documentatie
     - Contactpersonen voor ondersteuning
 
-**Technische vereisten**
+### <a name="technical-requirements"></a>Technische vereisten
 
 De belangrijkste technische vereisten voor een IoT Edge module, zodat IT kan worden gecertificeerd en gepubliceerd op de Azure Marketplace, worden beschreven in de [technische activa van uw IOT Edge module voorbereiden](./partner-center-portal/create-iot-edge-module-asset.md).
 

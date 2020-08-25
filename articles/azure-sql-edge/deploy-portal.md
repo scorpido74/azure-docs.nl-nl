@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233243"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816861"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge implementeren (preview-versie) 
 
@@ -114,9 +114,114 @@ Azure Marketplace is een online Marketplace voor toepassingen en services waar u
 12. Klik op **Volgende**.
 13. Klik op **Submit**
 
-In deze Quick Start hebt u een SQL Edge-module geïmplementeerd op een IoT Edge apparaat.
+## <a name="connect-to-azure-sql-edge"></a>Verbinding maken met Azure SQL Edge
+
+In de volgende stappen wordt het opdracht regel programma voor Azure SQL Edge, **Sqlcmd**, in de container gebruikt om verbinding te maken met Azure SQL Edge.
+
+> [!NOTE]
+> Sqlcmd-hulp programma is niet beschikbaar in de ARM64-versie van SQL Edge-containers.
+
+1. Gebruik de `docker exec -it` opdracht om een interactieve bash-shell in de container die wordt uitgevoerd te starten. In het volgende voor beeld `azuresqledge` is de naam die is opgegeven door de `Name` para meter van uw IOT Edge-module.
+
+   ```bash
+   sudo docker exec -it azuresqledge "bash"
+   ```
+
+2. In de container kunt u lokaal verbinding maken met Sqlcmd. Sqlcmd bevindt zich standaard niet in het pad, dus u moet het volledige pad opgeven.
+
+   ```bash
+   /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
+   ```
+
+   > [!TIP]
+   > U kunt het wacht woord op de opdracht regel weglaten om het in te voeren.
+
+3. Als dit is gelukt, krijgt u een **Sqlcmd** -opdracht prompt: `1>` .
+
+## <a name="create-and-query-data"></a>Gegevens maken en er query's op uitvoeren
+
+In de volgende secties wordt uitgelegd hoe u **Sqlcmd** en Transact-SQL kunt gebruiken om een nieuwe Data Base te maken, gegevens toe te voegen en een eenvoudige query uit te voeren.
+
+### <a name="create-a-new-database"></a>Een nieuwe database maken
+
+Met de volgende stappen maakt u een nieuwe Data Base met de naam `TestDB` .
+
+1. Plak de volgende Transact-SQL-opdracht in de **Sqlcmd** -opdracht prompt om een test database te maken:
+
+   ```sql
+   CREATE DATABASE TestDB
+   Go
+   ```
+
+2. Op de volgende regel schrijft u een query om de naam van alle data bases op uw server te retour neren:
+
+   ```sql
+   SELECT Name from sys.Databases
+   Go
+   ```
+
+### <a name="insert-data"></a>Gegevens invoegen
+
+Maak vervolgens een nieuwe tabel `Inventory` en Voeg twee nieuwe rijen in.
+
+1. Ga vanaf de **Sqlcmd** -opdracht prompt naar de nieuwe `TestDB` Data Base:
+
+   ```sql
+   USE TestDB
+   ```
+
+2. Nieuwe tabel maken met de naam `Inventory` :
+
+   ```sql
+   CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+   ```
+
+3. Gegevens invoegen in de nieuwe tabel:
+
+   ```sql
+   INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
+   ```
+
+4. Typ `GO` om de vorige opdrachten uit te voeren:
+
+   ```sql
+   GO
+   ```
+
+### <a name="select-data"></a>Gegevens selecteren
+
+Voer nu een query uit om gegevens uit de tabel te retour neren `Inventory` .
+
+1. Voer vanaf de **Sqlcmd** -opdracht prompt een query in die rijen uit de `Inventory` tabel retourneert waarin de hoeveelheid groter is dan 152:
+
+   ```sql
+   SELECT * FROM Inventory WHERE quantity > 152;
+   ```
+
+2. Voer de volgende opdracht uit:
+
+   ```sql
+   GO
+   ```
+
+### <a name="exit-the-sqlcmd-command-prompt"></a>Sluit de Sqlcmd-opdracht prompt
+
+1. Als u uw **Sqlcmd** -sessie wilt beëindigen, typt u `QUIT` :
+
+   ```sql
+   QUIT
+   ```
+
+2. Als u de interactieve opdracht prompt in uw container wilt afsluiten, typt u `exit` . Uw container blijft actief nadat u de interactieve bash-shell hebt afgesloten.
+
+## <a name="connect-from-outside-the-container"></a>Verbinding maken van buiten de container
+
+U kunt vanuit elk extern Linux-, Windows-of macOS-hulp programma verbinding maken met SQL-query's en deze uitvoeren op een exemplaar van de Azure SQL-rand die SQL-verbindingen ondersteunt. Voor meer informatie over het maken van een verbinding met een SQL Edge-container van buiten, raadpleegt u [verbinding maken en Query's uitvoeren op Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/connect).
+
+In deze Quick Start hebt u een SQL Edge-module geïmplementeerd op een IoT Edge apparaat. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Machine learning en kunst matige intelligentie met ONNX in SQL Edge](onnx-overview.md).
 - [Bouw een end-to-end IOT-oplossing met SQL Edge met behulp van IOT Edge](tutorial-deploy-azure-resources.md).
+- [Gegevens stromen in Azure SQL Edge](stream-data.md)

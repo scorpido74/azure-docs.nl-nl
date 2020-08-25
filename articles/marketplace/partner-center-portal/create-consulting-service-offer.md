@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 03fa302d2e8aa173419912b99d60734c7a4e0356
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606158"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814261"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
@@ -101,7 +101,7 @@ Op deze pagina kunt u het primaire product instellen dat door uw consulting serv
     - Analyse
     - App-modernisatie
     - Archiveren
-    - AI + Machine Learning
+    - AI en Machine Learning
     - Backup
     - Big data
     - Gegevens platform
@@ -209,15 +209,14 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Bied PNG-bestanden van het logo van uw aanbieding in elk van de volgende pixel grootten:
+Geef een PNG-bestand voor het logo van **grote** grootte op. Het partner centrum gebruikt deze om een **klein** logo te maken. U kunt dit eventueel later vervangen door een andere installatie kopie.
 
-- **Klein (48 x 48)**
-- **Groot (216 x 216)**
+- **Groot** (van 216 x 216 tot 350 x 350 px, vereist)
+- **Klein** (48 x 48 px, optioneel)
 
-Alle logo's zijn vereist en worden op verschillende plaatsen in de Marketplace-vermelding gebruikt.
+Deze logo's worden op verschillende plaatsen in de lijst gebruikt.
 
--   Het kleine logo (48 x 48 pixels) wordt weer gegeven in de zoek resultaten voor Azure Marketplace en op de pagina Microsoft AppSource hoofd pagina en zoek resultaten. 
--   Het grote logo (tussen 216 x 216 en 350 x 350 pixels) wordt weer gegeven op uw aanbiedings pagina in azure Marketplace en Microsoft AppSource.
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Scherm afbeeldingen (optioneel)
 

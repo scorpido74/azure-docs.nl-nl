@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6440e71eade32bfea4ed19448fd2f2007b519cc8
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388115"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816079"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Aanmeldactiviteitenrapporten in Azure Active Directory Portal
 
@@ -47,11 +47,7 @@ In dit artikel vindt u een overzicht van het rapport met aanmeldingen.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welke Azure AD-licentie heb ik nodig voor toegang tot aanmeldingsactiviteiten?
 
-- Het rapport voor de aanmeldings activiteit is beschikbaar in [alle edities van Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data).
-
-- Als u toegang wilt tot de aanmeldings gegevens met behulp van een API, moet aan uw Tenant een [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) -licentie zijn gekoppeld.
-
-
+Het rapport voor de aanmeldings activiteit is beschikbaar in [alle versies van Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) en kan ook worden geopend via de Microsoft Graph-API.
 
 ## <a name="sign-ins-report"></a>Aanmeldingenrapport
 
@@ -150,9 +146,9 @@ De **locatie** -de locatie van de verbinding vanaf:
 |---|:-:|---|
 |Geverifieerde SMTP| |Wordt gebruikt door de POP-en IMAP-client om e-mail berichten te verzenden.|
 |Autodis cover| |Wordt gebruikt door Outlook-en EAS-clients om post vakken in Exchange Online te vinden en er verbinding mee te maken.|
-|Exchange ActiveSync| |Dit filter geeft alle aanmeldings pogingen weer waarin is geprobeerd het EAS-protocol uit te voeren.|
+|Exchange ActiveSync:| |Dit filter geeft alle aanmeldings pogingen weer waarin is geprobeerd het EAS-protocol uit te voeren.|
 |Browser|![Selecteren](./media/concept-sign-ins/check.png)|Toont alle aanmeldings pogingen van gebruikers met behulp van webbrowsers|
-|Exchange ActiveSync| | Geeft alle aanmeldings pogingen van gebruikers met client-apps met behulp van Exchange ActiceSync om verbinding te maken met Exchange Online|
+|Exchange ActiveSync:| | Geeft alle aanmeldings pogingen van gebruikers met client-apps met behulp van Exchange ActiceSync om verbinding te maken met Exchange Online|
 |Exchange Online Power shell| |Wordt gebruikt om verbinding te maken met Exchange Online met externe Power shell. Als u basis verificatie voor Exchange Online Power shell blokkeert, moet u de Exchange Online Power shell-module gebruiken om verbinding te maken. Zie [verbinding maken met Exchange Online Power shell met multi-factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)voor instructies.|
 |Exchange-webservices| |Een programmeer interface die wordt gebruikt door Outlook, Outlook voor Mac en apps van derden.|
 |IMAP4| |Een verouderde e-mailclient die gebruikmaakt van IMAP om e-mail op te halen.|
@@ -237,8 +233,8 @@ Door op een item te klikken, krijgt u meer informatie over de aanmelding:
 - Toepassing
 - Client
 - Locatie
-- Het IP-adres
-- Date
+- IP-adres
+- Datum
 - MFA vereist
 - Aanmeldingsstatus
 

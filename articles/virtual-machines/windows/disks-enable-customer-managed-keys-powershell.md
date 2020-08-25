@@ -2,17 +2,17 @@
 title: Azure PowerShell-door de klant beheerde sleutels inschakelen met SSE-beheerde schijven
 description: Schakel versleuteling aan de server zijde in met door de klant beheerde sleutels op uw beheerde schijven met Azure PowerShell.
 author: roygara
-ms.date: 07/09/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: f27f704c0bfbe0c7718ef9c64e907c86a065ebbd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: f967d061ece5887457375b4e93469809f6a575f9
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235934"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814770"
 ---
 # <a name="azure-powershell---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure PowerShell-door de klant beheerde sleutels inschakelen met versleuteling aan server zijde-beheerde schijven
 
@@ -189,5 +189,5 @@ Update-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $Reso
 
 - [Bekijk de Azure Resource Manager sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Computers repliceren met door de klant beheerde sleutels ingeschakelde schijven](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
-- [Herstel na nood geval instellen voor virtuele VMware-machines in azure met Power shell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
-- [Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)
+- [Herstel na noodgevallen van virtuele VMware-machines naar Azure instellen met PowerShell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
+- [Herstel na noodgeval instellen naar Azure voor Hyper-V-VM's met behulp van PowerShell en Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

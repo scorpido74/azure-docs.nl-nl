@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/10/2020
+ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e99d378b49596ac208f7235a4d1d8b2b1c8c5310
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c85af0f4078010fa5b6a1d116b3bfda942c0490c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498766"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816912"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van Power shell
 
@@ -30,8 +30,8 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for mysql server](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de AZ. MySql Power shell-module in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MySql -AllowPrerelease` .
-> Zodra de AZ. MySql Power shell-module algemeen beschikbaar is, wordt het onderdeel van toekomstige AZ Power shell-module releases en is deze systeem eigen beschikbaar vanuit Azure Cloud Shell.
+> Zo lang de PowerShell-module Az.MySQL in preview is, moet u deze afzonderlijk van de Az-module van PowerShell installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> Zodra de PowerShell-module Az.MySQL algemeen beschikbaar is, wordt het onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) .
 
@@ -49,21 +49,21 @@ Een lees replica-server kan worden gemaakt met behulp van de volgende opdracht:
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
-  New-AzMySqlServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
+  New-AzMySqlReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-Voor de `New-AzMySqlServerReplica` opdracht zijn de volgende para meters vereist:
+Voor de `New-AzMySqlReplica` opdracht zijn de volgende para meters vereist:
 
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
-| Name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| Naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 
 Gebruik de **locatie** parameter om een lees replica te maken. In het volgende voor beeld wordt een replica gemaakt in de regio **VS-West** .
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
-  New-AzMySqlServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
+  New-AzMySqlReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
 Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica.

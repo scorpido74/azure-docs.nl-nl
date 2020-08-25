@@ -5,12 +5,12 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959990"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816691"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Virtuele machines met lage prioriteit met Batch gebruiken
 
@@ -23,7 +23,7 @@ Het saldo voor het gebruik van virtuele machines met lage prioriteit is dat deze
 Vm's met lage prioriteit worden aangeboden tegen een aanzienlijk gereduceerde prijs vergeleken met toegewezen Vm's. Zie [batch-prijzen](https://azure.microsoft.com/pricing/details/batch/)voor meer informatie over prijzen.
 
 > [!NOTE]
-> [Er zijn nu virtuele machines beschikbaar](https://azure.microsoft.com/pricing/spot/) voor [virtuele machines met één exemplaar](../virtual-machines/linux/spot-vms.md) en [VM-schaal sets](../virtual-machine-scale-sets/use-spot.md). Spot-Vm's zijn een evolutie van Vm's met lage prioriteit, maar verschillen in die prijzen kunnen variëren en een optionele maximum prijs kan worden ingesteld bij het toewijzen van spot-Vm's.
+> [Er zijn nu virtuele machines beschikbaar](https://azure.microsoft.com/pricing/spot/) voor [virtuele machines met één exemplaar](../virtual-machines/spot-vms.md) en [VM-schaal sets](../virtual-machine-scale-sets/use-spot.md). Spot-Vm's zijn een evolutie van Vm's met lage prioriteit, maar verschillen in die prijzen kunnen variëren en een optionele maximum prijs kan worden ingesteld bij het toewijzen van spot-Vm's.
 >
 > Azure Batch-groepen beginnen met het ondersteunen van spot-Vm's binnen een paar maanden nadat ze algemeen beschikbaar zijn, met nieuwe versies van de [batch-api's en-hulpprogram ma's](./batch-apis-tools.md). Zodra er ondersteuning beschikbaar is voor virtuele machines met lage prioriteit, wordt de virtuele machine met goedkope werk worden afgeschaft. deze worden gedurende ten minste 12 maanden worden ondersteund met behulp van de huidige Api's en hulpprogram ma's van het hulp programma om voldoende tijd te bieden voor de migratie naar de locatie van virtuele machines. 
 >

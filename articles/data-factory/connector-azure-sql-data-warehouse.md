@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/05/2020
-ms.openlocfilehash: eb4d79d2d51312e0850a84123790cf0cb5957e5a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 08/25/2020
+ms.openlocfilehash: 4890013fe584c49caa9e358c924911255a7f5d33
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847284"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815960"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in azure Synapse Analytics (voorheen Azure SQL Data Warehouse) kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -68,7 +68,7 @@ De volgende eigenschappen worden ondersteund voor een gekoppelde Azure Synapse A
 | servicePrincipalId  | Geef de client-ID van de toepassing op.                         | Ja, wanneer u Azure AD-verificatie gebruikt met een service-principal. |
 | servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja, wanneer u Azure AD-verificatie gebruikt met een service-principal. |
 | tenant              | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja, wanneer u Azure AD-verificatie gebruikt met een service-principal. |
-| azureCloudType | Voor Service-Principal-verificatie geeft u het type van de Azure-cloud omgeving op waarvoor uw AAD-toepassing is geregistreerd. <br/> Toegestane waarden zijn **AzurePublic**, **AzureChina**, **AzureUsGovernment**en **AzureGermany**. De cloud omgeving van de data factory wordt standaard gebruikt. | Nee |
+| azureCloudType | Voor Service-Principal-verificatie geeft u het type van de Azure-cloud omgeving op waarvoor uw Azure AD-toepassing is geregistreerd. <br/> Toegestane waarden zijn **AzurePublic**, **AzureChina**, **AzureUsGovernment**en **AzureGermany**. De cloud omgeving van de data factory wordt standaard gebruikt. | Nee |
 | connectVia          | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of een zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee                                                           |
 
 Raadpleeg de volgende secties over respectievelijk de vereisten en JSON-voor beelden voor verschillende verificatie typen:
@@ -176,7 +176,7 @@ Voer de volgende stappen uit om verificatie van Azure AD-toepassings tokens op b
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>Beheerde identiteiten voor Azure-bronnen verificatie
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Beheerde identiteiten voor Azure-bronnen verificatie
 
 Een data factory kan worden gekoppeld aan een [beheerde identiteit voor Azure-resources](data-factory-service-identity.md) die de specifieke Factory vertegenwoordigt. U kunt deze beheerde identiteit voor Azure Synapse Analytics-verificatie gebruiken. De aangewezen Factory heeft toegang tot en kopiëren van gegevens van of naar uw data warehouse met behulp van deze identiteit.
 
@@ -268,10 +268,10 @@ Als u gegevens wilt kopiëren uit Azure Synapse Analytics, stelt u de eigenschap
 | sqlReaderStoredProcedureName | De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. De laatste SQL-instructie moet een instructie SELECT in de opgeslagen procedure zijn. | Nee       |
 | storedProcedureParameters    | Para meters voor de opgeslagen procedure.<br/>Toegestane waarden zijn naam-of waardeparen. Namen en hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. | Nee       |
 | isolationLevel | Hiermee geeft u het vergrendelings gedrag van de trans actie voor de SQL-bron op. De toegestane waarden zijn: **ReadCommitted**, **ReadUncommitted**, **RepeatableRead**, **Serializable**, **snap shot**. Als u niets opgeeft, wordt het standaard isolatie niveau van de data base gebruikt. Raadpleeg [dit document](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) voor meer informatie. | Nee |
-| partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Azure Synapse Analytics. <br>Toegestane waarden zijn: **geen** (standaard), **PhysicalPartitionsOfTable** en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, niet `None` ), is de mate van parallelle uitvoering om gegevens van een Azure Synapse Analytics gelijktijdig te laden, bepaald door de [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) instelling van de Kopieer activiteit. | Nee |
+| partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens uit Azure Synapse Analytics. <br>Toegestane waarden zijn: **geen** (standaard), **PhysicalPartitionsOfTable**en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen, niet `None` ), is de mate van parallelle uitvoering om gegevens van een Azure Synapse Analytics gelijktijdig te laden, bepaald door de [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) instelling van de Kopieer activiteit. | Nee |
 | partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen wanneer de partitie optie niet is `None` . | Nee |
 | ***Onder `partitionSettings` :*** | | |
-| partitionColumnName | Geef de naam op van de bron kolom **in geheel getal of datum/tijd-type** dat wordt gebruikt voor het partitioneren van het bereik voor parallelle kopieën. Als u niets opgeeft, wordt de index of de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als de partitie kolom.<br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, Hook `?AdfDynamicRangePartitionCondition ` in de component WHERE. Zie de sectie [parallel kopiëren van SQL database](#parallel-copy-from-synapse-analytics) voor een voor beeld. | Nee |
+| partitionColumnName | Geef de naam op van de bron kolom **in geheel getal of datum/tijd-type** dat wordt gebruikt voor het partitioneren van het bereik voor parallelle kopieën. Als u niets opgeeft, wordt de index of de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als de partitie kolom.<br>Toep assen wanneer de partitie optie is `DynamicRange` . Als u een query gebruikt om de bron gegevens op te halen, Hook  `?AdfDynamicRangePartitionCondition ` in de component WHERE. Zie de sectie [parallel kopiëren van SQL database](#parallel-copy-from-synapse-analytics) voor een voor beeld. | Nee |
 | partitionUpperBound | De maximum waarde van de partitie kolom voor het splitsen van het partitie bereik. Deze waarde wordt gebruikt om de partitie stride te bepalen, niet voor het filteren van de rijen in de tabel. Alle rijen in het tabel-of query resultaat worden gepartitioneerd en gekopieerd. Als deze optie niet is opgegeven, wordt de waarde automatisch gedetecteerd met de Kopieer activiteit.  <br>Toep assen wanneer de partitie optie is `DynamicRange` . Zie de sectie [parallel kopiëren van SQL database](#parallel-copy-from-synapse-analytics) voor een voor beeld. | Nee |
 | partitionLowerBound | De minimum waarde van de partitie kolom voor het splitsen van een partitie bereik. Deze waarde wordt gebruikt om de partitie stride te bepalen, niet voor het filteren van de rijen in de tabel. Alle rijen in het tabel-of query resultaat worden gepartitioneerd en gekopieerd. Als deze optie niet is opgegeven, wordt de waarde automatisch gedetecteerd met de Kopieer activiteit.<br>Toep assen wanneer de partitie optie is `DynamicRange` . Zie de sectie [parallel kopiëren van SQL database](#parallel-copy-from-synapse-analytics) voor een voor beeld. | Nee |
 
@@ -362,7 +362,7 @@ END
 GO
 ```
 
-### <a name="azure-synapse-analytics-as-sink"></a><a name="azure-sql-data-warehouse-as-sink"></a>Azure Synapse Analytics als Sink
+### <a name="azure-synapse-analytics-as-sink"></a><a name="azure-sql-data-warehouse-as-sink"></a> Azure Synapse Analytics als Sink
 
 Azure Data Factory ondersteunt drie manieren om gegevens te laden in SQL Data Warehouse.
 
@@ -379,9 +379,9 @@ Als u gegevens wilt kopiëren naar Azure SQL Data Warehouse, stelt u het sink-ty
 | Eigenschap          | Beschrijving                                                  | Vereist                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op **SqlDWSink**. | Ja                                           |
-| allowPolyBase     | Hiermee wordt aangegeven of poly Base moet worden gebruikt voor het laden van gegevens in SQL Data Warehouse. `allowCopyCommand`en `allowPolyBase` kan niet beide zijn ingesteld op ' True '. <br/><br/>Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sectie voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee.<br/>Toep assen bij het gebruik van poly base.     |
+| allowPolyBase     | Hiermee wordt aangegeven of poly Base moet worden gebruikt voor het laden van gegevens in SQL Data Warehouse. `allowCopyCommand` en `allowPolyBase` kan niet beide zijn ingesteld op ' True '. <br/><br/>Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) sectie voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee.<br/>Toep assen bij het gebruik van poly base.     |
 | polyBaseSettings  | Een groep eigenschappen die kan worden opgegeven wanneer de `allowPolybase` eigenschap is ingesteld op **True**. | Nee.<br/>Toep assen bij het gebruik van poly base. |
-| allowCopyCommand | Hiermee wordt aangegeven of een [copy-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) moet worden gebruikt om gegevens te laden in SQL Data Warehouse. `allowCopyCommand`en `allowPolyBase` kan niet beide zijn ingesteld op ' True '. <br/><br/>Zie de [instructie Copy gebruiken om gegevens te laden in Azure SQL Data Warehouse](#use-copy-statement) sectie voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee.<br>Toep assen bij het gebruik van COPY. |
+| allowCopyCommand | Hiermee wordt aangegeven of een [copy-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) moet worden gebruikt om gegevens te laden in SQL Data Warehouse. `allowCopyCommand` en `allowPolyBase` kan niet beide zijn ingesteld op ' True '. <br/><br/>Zie de [instructie Copy gebruiken om gegevens te laden in Azure SQL Data Warehouse](#use-copy-statement) sectie voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee.<br>Toep assen bij het gebruik van COPY. |
 | copyCommandSettings | Een groep eigenschappen die kan worden opgegeven wanneer `allowCopyCommand` eigenschap is ingesteld op True. | Nee.<br/>Toep assen bij het gebruik van COPY. |
 | writeBatchSize    | Het aantal rijen dat in de SQL-tabel **per batch**moet worden ingevoegd.<br/><br/>De toegestane waarde is een **geheel getal** (aantal rijen). Standaard bepaalt Data Factory dynamisch de juiste Batch grootte op basis van de Rijgrootte. | Nee.<br/>Toep assen bij het gebruik van bulksgewijs invoegen.     |
 | writeBatchTimeout | Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt.<br/><br/>De toegestane waarde is **time span**. Voor beeld: "00:30:00" (30 minuten). | Nee.<br/>Toep assen bij het gebruik van bulksgewijs invoegen.        |
@@ -418,7 +418,7 @@ U wordt aangeraden om parallelle kopieën in te scha kelen met gegevens partitie
 | Scenario                                                     | Aanbevolen instellingen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Volledige belasting van een grote tabel met fysieke partities.        | **Partitie optie**: fysieke partities van tabel. <br><br/>Tijdens de uitvoering worden de fysieke partities automatisch door Data Factory gedetecteerd en worden de gegevens gekopieerd op partities. |
-| Volledige belasting van een grote tabel, zonder fysieke partities, met een geheel getal of datum/tijd-kolom voor het partitioneren van gegevens. | **Partitie opties**: partitie met dynamisch bereik.<br>**Partitie kolom** (optioneel): Geef de kolom op die wordt gebruikt om gegevens te partitioneren. Als u niets opgeeft, wordt de kolom index of primaire sleutel gebruikt.<br/>De **bovengrens van partities** en * * onderste gebonden partitie * * (optioneel): Geef op of u de partitie stride wilt bepalen. Dit is niet voor het filteren van de rijen in de tabel, alle rijen in de tabel worden gepartitioneerd en gekopieerd. Indien niet opgegeven, kopieer activiteit automatische detectie van de waarden.<br><br>Als uw partitie kolom ' ID ' bijvoorbeeld waarden bereik van 1 tot 100 heeft en u de ondergrens instelt op 20 en de bovengrens als 80, met parallelle kopie als 4, Data Factory worden gegevens opgehaald met vier partities-Id's in bereik <= 20, [21, 50], [51, 80] en >= 81, respectievelijk. |
+| Volledige belasting van een grote tabel, zonder fysieke partities, met een geheel getal of datum/tijd-kolom voor het partitioneren van gegevens. | **Partitie opties**: partitie met dynamisch bereik.<br>**Partitie kolom** (optioneel): Geef de kolom op die wordt gebruikt om gegevens te partitioneren. Als u niets opgeeft, wordt de kolom index of primaire sleutel gebruikt.<br/>De **bovengrens** van de partitie en de **ondergrens** van de partitie (optioneel): Geef op of u de partitie-stride wilt bepalen. Dit is niet voor het filteren van de rijen in de tabel, alle rijen in de tabel worden gepartitioneerd en gekopieerd. Indien niet opgegeven, kopieer activiteit automatische detectie van de waarden.<br><br>Als uw partitie kolom ' ID ' bijvoorbeeld waarden bereik van 1 tot 100 heeft en u de ondergrens instelt op 20 en de bovengrens als 80, met parallelle kopie als 4, Data Factory worden gegevens opgehaald met vier partities-Id's in bereik <= 20, [21, 50], [51, 80] en >= 81, respectievelijk. |
 | Laad een grote hoeveelheid gegevens met behulp van een aangepaste query, zonder fysieke partities, terwijl een kolom met een geheel getal of datum/tijd is voor het partitioneren van gegevens. | **Partitie opties**: partitie met dynamisch bereik.<br>**Query**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Partitie kolom**: Geef de kolom op die wordt gebruikt om gegevens te partitioneren.<br>De **bovengrens** van de partitie en de **ondergrens** van de partitie (optioneel): Geef op of u de partitie-stride wilt bepalen. Dit is niet voor het filteren van de rijen in de tabel, alle rijen in het query resultaat worden gepartitioneerd en gekopieerd. Als deze optie niet is opgegeven, wordt de waarde automatisch gedetecteerd met de Kopieer activiteit.<br><br>Tijdens de uitvoering wordt Data Factory vervangen `?AdfRangePartitionColumnName` door de werkelijke kolom naam en waardeparen voor elke partitie, en verzonden naar Azure Synapse Analytics. <br>Als uw partitie kolom ' ID ' bijvoorbeeld waarden bereik van 1 tot 100 heeft en u de ondergrens instelt op 20 en de bovengrens als 80, met parallelle kopie als 4, Data Factory worden gegevens opgehaald met vier partities-Id's in bereik <= 20, [21, 50], [51, 80] en >= 81, respectievelijk. |
 
 Aanbevolen procedures voor het laden van gegevens met de optie partitie:
@@ -426,7 +426,7 @@ Aanbevolen procedures voor het laden van gegevens met de optie partitie:
 1. Kies een onderscheidende kolom als partitie kolom (zoals primaire sleutel of unieke sleutel) om te voor komen dat gegevens scheef trekken. 
 2. Als de tabel een ingebouwde partitie heeft, gebruikt u partitie optie fysieke partities van tabel om betere prestaties te krijgen.
 3. Als u Azure Integration Runtime gebruikt om gegevens te kopiëren, kunt u grotere '[Data Integration units (DIU)](copy-activity-performance-features.md#data-integration-units)' (>4) instellen om meer computer bronnen te gebruiken. Controleer de toepasselijke scenario's.
-4. "[Mate van kopiëren van parallellisme](copy-activity-performance-features.md#parallel-copy)" bepalen van de partitie nummers, het instellen van dit getal dat te groot is, voor de prestaties, het is raadzaam om dit aantal in te stellen als (DIU of het aantal zelf-hostende IR-knoop punten) * (2 tot 4).
+4. "[Mate van kopiëren van parallellisme](copy-activity-performance-features.md#parallel-copy)" bepalen van de partitie nummers, het instellen van dit getal is te groot. Dit kan de prestaties nadelig beïnvloeden, het is raadzaam om dit aantal in te stellen als (DIU of het aantal zelf-HOSTende IR-knoop punten) * (2 tot 4).
 5. Opmerking Azure Synapse Analytics kan Maxi maal 32 query's tegelijk uitvoeren. Als u het aantal ' mate van kopiëren van parallellisme ' te groot instelt, kan dit leiden tot een Synapse-beperkings probleem.
 
 **Voor beeld: volledige belasting van een grote tabel met fysieke partities**
@@ -496,15 +496,15 @@ Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data 
 
    1. Mappad bevat geen filter voor joker tekens.
    2. De bestands naam is leeg of verwijst naar één bestand. Als u de naam van het Joker teken opgeeft in de Kopieer activiteit, kan deze alleen zijn `*` of `*.*` .
-   3. `rowDelimiter`is **standaard**, **\n**, **\r\n**of **\r**.
-   4. `nullValue`is standaard **ingesteld op '** "' ('"), en `treatEmptyAsNull` wordt als standaard waarde ingevuld of ingesteld op True.
-   5. `encodingName`is standaard ingesteld op **UTF-8**.
+   3. `rowDelimiter` is **standaard**, **\n**, **\r\n**of **\r**.
+   4. `nullValue` is standaard **ingesteld op '** "' ('"), en `treatEmptyAsNull` wordt als standaard waarde ingevuld of ingesteld op True.
+   5. `encodingName` is standaard ingesteld op **UTF-8**.
    6. `quoteChar`, `escapeChar` en `skipLineCount` niet opgegeven. Poly base-ondersteuning koptekst rij overs Laan, die in ADF kan worden geconfigureerd `firstRowAsHeader` .
-   7. `compression`kan **geen compressie**, **gzip**of **Deflate**zijn.
+   7. `compression` kan **geen compressie**, **gzip**of **Deflate**zijn.
 
 3. Als uw bron een map is, `recursive` moet u de Kopieer activiteit instellen op True.
 
-4. `wildcardFolderPath`, `wildcardFilename` , `modifiedDateTimeStart` `modifiedDateTimeEnd` en `additionalColumns` zijn niet opgegeven.
+4. `wildcardFolderPath` , `wildcardFilename` , `modifiedDateTimeStart` `modifiedDateTimeEnd` en `additionalColumns` zijn niet opgegeven.
 
 >[!NOTE]
 >Als uw bron een map is, noteert u met poly base bestanden ophalen uit de map en alle bijbehorende submappen en worden er geen gegevens opgehaald uit bestanden waarvoor de bestands naam begint met een onderstreping (_) of een punt (.), zoals [hier wordt beschreven: locatie argument](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2).
@@ -622,7 +622,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 De oplossing bestaat uit het opheffen van de selectie van de optie**type standaard gebruiken**(als onwaar) in Sink voor kopieer activiteit-> poly base-instellingen. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )" is een poly base systeem eigen configuratie, waarmee wordt aangegeven hoe ontbrekende waarden in tekst bestanden met scheidings tekens moeten worden verwerkt wanneer poly base gegevens ophaalt uit het tekst bestand.
 
-**`tableName`in azure Synapse Analytics**
+**`tableName` in azure Synapse Analytics**
 
 De volgende tabel bevat voor beelden van de manier waarop u de eigenschap **TableName** in de JSON-gegevensset kunt opgeven. Er worden verschillende combi Naties van schema-en tabel namen weer gegeven.
 
@@ -649,7 +649,7 @@ All columns of the table must be specified in the INSERT BULK statement.
 
 De NULL-waarde is een speciale vorm van de standaard waarde. Als de kolom null-waarden bevat, kunnen de invoer gegevens in de BLOB voor die kolom leeg zijn. Maar dit kan niet ontbreken in de invoer gegevensset. Poly base voegt NULL toe voor ontbrekende waarden in azure Synapse Analytics.
 
-## <a name="use-copy-statement-to-load-data-into-azure-sql-data-warehouse-preview"></a><a name="use-copy-statement"></a>De instructie COPY gebruiken om gegevens in Azure SQL Data Warehouse te laden (preview)
+## <a name="use-copy-statement-to-load-data-into-azure-sql-data-warehouse-preview"></a><a name="use-copy-statement"></a> De instructie COPY gebruiken om gegevens in Azure SQL Data Warehouse te laden (preview)
 
 SQL Data Warehouse [copy-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) biedt ondersteuning voor het laden van gegevens uit **Azure Blob en Azure data Lake Storage Gen2**. Als uw bron gegevens voldoen aan de criteria die in deze sectie worden beschreven, kunt u de instructie COPY gebruiken in ADF om gegevens te laden in Azure SQL Data Warehouse. Azure Data Factory controleert de instellingen en mislukt de uitvoering van de Kopieer activiteit als niet aan de criteria wordt voldaan.
 
@@ -675,16 +675,16 @@ De instructie COPY gebruiken ondersteunt de volgende configuratie:
    1. Voor **Parquet**: `compression` kan **geen compressie**, **Snappy**of **gzip**zijn.
    2. Voor **Orc**: `compression` kan **geen compressie**, **```zlib```** of **Snappy**zijn.
    3. Voor **tekst met scheidings tekens**:
-      1. `rowDelimiter`is expliciet ingesteld als **één teken** of als '**\r\n**', de standaard waarde wordt niet ondersteund.
-      2. `nullValue`is standaard ingesteld op een **lege teken reeks** ("").
-      3. `encodingName`is standaard ingesteld op **UTF-8 of UTF-16**.
-      4. `escapeChar`moet hetzelfde zijn als `quoteChar` , en is niet leeg.
-      5. `skipLineCount`is standaard ingesteld op 0.
-      6. `compression`kan **geen compressie** of **gzip**zijn.
+      1. `rowDelimiter` is expliciet ingesteld als **één teken** of als '**\r\n**', de standaard waarde wordt niet ondersteund.
+      2. `nullValue` is standaard ingesteld op een **lege teken reeks** ("").
+      3. `encodingName` is standaard ingesteld op **UTF-8 of UTF-16**.
+      4. `escapeChar` moet hetzelfde zijn als `quoteChar` , en is niet leeg.
+      5. `skipLineCount` is standaard ingesteld op 0.
+      6. `compression` kan **geen compressie** of **gzip**zijn.
 
 3. Als uw bron een map is, `recursive` moet u in de Kopieer activiteit de waarde true instellen en `wildcardFilename` moet dit zijn `*` . 
 
-4. `wildcardFolderPath`, `wildcardFilename` (andere dan `*` ), `modifiedDateTimeStart` `modifiedDateTimeEnd` en `additionalColumns` zijn niet opgegeven.
+4. `wildcardFolderPath` , `wildcardFilename` (andere dan `*` ), `modifiedDateTimeStart` `modifiedDateTimeEnd` en `additionalColumns` zijn niet opgegeven.
 
 De volgende instellingen voor de Kopieer instructie worden ondersteund onder `allowCopyCommand` in de Kopieer activiteit:
 
@@ -754,7 +754,7 @@ Instellingen die specifiek zijn voor Azure Synapse Analytics, zijn beschikbaar o
 
 **Query**: als u in het invoer veld query selecteert, voert u een SQL-query in voor uw bron. Deze instelling overschrijft elke tabel die u in de gegevensset hebt gekozen. **Order by** -componenten worden hier niet ondersteund, maar u kunt een volledige Select from-instructie instellen. U kunt ook door de gebruiker gedefinieerde tabel functies gebruiken. **Select * from udfGetData ()** is een UDF in SQL die een tabel retourneert. Met deze query wordt een bron tabel geproduceerd die u in uw gegevens stroom kunt gebruiken. Het gebruik van query's is ook een uitstekende manier om rijen te verminderen voor het testen of voor Zoek opdrachten.
 
-SQL-voor beeld:```Select * from MyTable where customerId > 1000 and customerId < 2000```
+SQL-voor beeld: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **Batch grootte**: Voer een batch grootte in om grote hoeveel heden gegevens in Lees bewerkingen te segmenteren. In gegevens stromen gebruikt ADF deze instelling om in te stellen Spark in cache opslaan. Dit is een optie veld waarin de standaard waarden van Spark worden gebruikt als deze leeg blijven.
 
@@ -806,26 +806,26 @@ Wanneer u gegevens kopieert vanuit of naar Azure Synapse Analytics, worden de vo
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
 | binair                                | Byte []                         |
-| bit                                   | Booleaans                        |
+| bit                                   | Boolean                        |
 | char                                  | Teken reeks, char []                 |
 | date                                  | DateTime                       |
 | Datum/tijd                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | Date time offset                        | Date time offset                 |
-| Decimal                               | Decimal                        |
+| Decimaal                               | Decimaal                        |
 | FILESTREAM-kenmerk (varbinary (max)) | Byte []                         |
 | Float                                 | Dubbel                         |
 | image                                 | Byte []                         |
 | int                                   | Int32                          |
-| money                                 | Decimal                        |
+| money                                 | Decimaal                        |
 | nchar                                 | Teken reeks, char []                 |
-| numeriek                               | Decimal                        |
+| numeriek                               | Decimaal                        |
 | nvarchar                              | Teken reeks, char []                 |
-| werkelijk                                  | Enkelvoudig                         |
+| werkelijk                                  | Enkel                         |
 | rowversion                            | Byte []                         |
 | smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |
-| smallmoney                            | Decimal                        |
+| smallmoney                            | Decimaal                        |
 | tijd                                  | TimeSpan                       |
 | tinyint                               | Byte                           |
 | uniqueidentifier                      | Guid                           |

@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 7391fbccaf7983a070d80da64a2908333280420b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/07/2020
+ms.openlocfilehash: e11d5b14bdf6b134fefea79a1f709ec73499bd20
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83608998"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815705"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Preview-functies Azure Stream Analytics
 
@@ -24,16 +24,15 @@ De volgende functies zijn beschikbaar in de open bare preview-versie. U kunt dez
 
 ### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Verifiëren voor SQL Database uitvoer met beheerde identiteiten
 
-Azure Stream Analytics ondersteunt [beheerde identiteits verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor Azure SQL database uitvoer-Sinks. Beheerde identiteiten elimineren de beperkingen van verificatie methoden op basis van gebruikers, zoals de nood zaak om opnieuw te worden geverifieerd als gevolg van wachtwoord wijzigingen of verlopen van gebruikers tokens die elke 90 dagen worden uitgevoerd. Wanneer u de nood zaak om hand matig te verifiëren verwijdert, kunnen uw Stream Analytics-implementaties volledig worden geautomatiseerd.
+Azure Stream Analytics ondersteunt [beheerde identiteits verificatie](../active-directory/managed-identities-azure-resources/overview.md) voor Azure SQL database uitvoer-Sinks. Beheerde identiteiten elimineren de beperkingen van verificatie methoden op basis van gebruikers, zoals de nood zaak om opnieuw te verifiëren vanwege wachtwoord wijzigingen. 
 
 ### <a name="output-to-azure-synapse-analytics"></a>Uitvoer naar Azure Synapse Analytics
 
 Azure Stream Analytics-taken kunnen worden uitgevoerd naar een SQL-groeps tabel in [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) en kunnen doorvoer snelheden tot 200 MB per seconde verwerken. Dit biedt ondersteuning voor de meest veeleisende, realtime analyse-en hot-path gegevens verwerking voor werk belastingen, zoals rapportage en dash boarding.  
 
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Beoordeling in realtime hoge prestaties met aangepaste ML-modellen die worden beheerd door Azure Machine Learning
 
-### <a name="online-scaling"></a>Online schalen
-
-Wanneer u online schalen hebt, hoeft u uw taak niet te stoppen als u de SU-toewijzing wilt wijzigen. U kunt de SU-capaciteit van een actieve taak verg Roten of verkleinen zonder dat u deze hoeft te stoppen. Dit bouwt voort op de klant belofte van langlopende bedrijfskritische pijp lijnen die vandaag Stream Analytics worden aangeboden. Zie [Azure stream Analytics streaming-eenheden configureren](stream-analytics-streaming-unit-consumption.md#configure-stream-analytics-streaming-units-sus)voor meer informatie.
+Azure Stream Analytics ondersteunt hoogwaardige, realtime scores door gebruik te maken van aangepaste vooraf getrainde Machine Learning modellen die worden beheerd door Azure Machine Learning en die worden gehost in azure Kubernetes service (AKS) of Azure Container Instances (ACI), met behulp van een werk stroom waarvoor u geen code hoeft te schrijven. [Aanmelden](https://aka.ms/asapreview1) voor preview
 
 ### <a name="c-custom-de-serializers"></a>Aangepaste C#-serializers
 Ontwikkel aars kunnen gebruikmaken van de kracht van Azure Stream Analytics om gegevens in protobuf, XML of een aangepaste indeling te verwerken. U kunt [aangepaste deserializers](custom-deserializer-examples.md) implementeren in C#, die vervolgens kunnen worden gebruikt om de gebeurtenissen te deserialiseren die door Azure stream Analytics worden ontvangen.
@@ -42,33 +41,22 @@ Ontwikkel aars kunnen gebruikmaken van de kracht van Azure Stream Analytics om g
 
 Ontwikkel aars die Stream Analytics-modules in de Cloud of op IoT Edge maken, kunnen aangepaste C#-functies schrijven of opnieuw gebruiken en deze rechtstreeks in de query aanroepen via door de [gebruiker gedefinieerde functies](stream-analytics-edge-csharp-udf-methods.md).
 
-
 ### <a name="debug-query-steps-in-visual-studio"></a>Debug-query stappen in Visual Studio
 
 U kunt eenvoudig een voor beeld van de tussenliggende Rijset in een gegevens diagram bekijken bij het uitvoeren van lokale tests in Azure Stream Analytics-hulpprogram ma's voor Visual Studio. 
-
-### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Lokale tests met Live-gegevens in Visual Studio code
-
-U kunt uw query's testen op Live-gegevens op uw lokale machine voordat u de taak naar Azure verzendt. Elke test herhaling neemt gemiddeld minder dan twee tot drie seconden in beslag, wat resulteert in een zeer efficiënt ontwikkelings proces.
-
-### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio code voor Azure Stream Analytics
-
-Azure Stream Analytics-taken kunnen worden gemaakt in Visual Studio code. Bekijk onze [zelf studie over de VS code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
-
-
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Beoordeling in realtime hoge prestaties met aangepaste ML-modellen die worden beheerd door Azure Machine Learning
-
-Azure Stream Analytics ondersteunt hoogwaardige, realtime scores door gebruik te maken van aangepaste vooraf getrainde Machine Learning modellen die worden beheerd door Azure Machine Learning en die worden gehost in azure Kubernetes service (AKS) of Azure Container Instances (ACI), met behulp van een werk stroom waarvoor u geen code hoeft te schrijven. [Aanmelden](https://aka.ms/asapreview1) voor preview
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Live data tests in Visual Studio
 
 Visual Studio Tools for Azure Stream Analytics verbeteren de lokale test functie waarmee u query's kunt testen op live gebeurtenis stromen vanuit Cloud bronnen zoals Event hub of IoT hub. Meer informatie over hoe u [Live-gegevens lokaal kunt testen met behulp van Azure stream Analytics-hulpprogram ma's voor Visual Studio](stream-analytics-live-data-local-testing.md).
 
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio code voor Azure Stream Analytics
 
-### <a name="net-user-defined-functions-on-iot-edge"></a>Door de gebruiker gedefinieerde .NET-functies op IoT Edge
+Azure Stream Analytics-taken kunnen worden gemaakt in Visual Studio code. Bekijk onze [zelf studie over de VS code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
 
-Met .NET Standard-door de gebruiker gedefinieerde functies kunt u .NET Standard-code uitvoeren als onderdeel van uw streaming-pijp lijn. U kunt eenvoudige C#-klassen maken of het volledige project en de bibliotheken importeren. De volledige functionaliteit voor het ontwerpen en opsporen van fouten wordt ondersteund in Visual Studio. Ga voor meer informatie naar [.NET Standard-door de gebruiker gedefinieerde functies ontwikkelen voor Azure stream Analytics Edge-taken](stream-analytics-edge-csharp-udf-methods.md).
+### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Lokale tests met Live-gegevens in Visual Studio code
+
+U kunt uw query's testen op Live-gegevens op uw lokale machine voordat u de taak naar Azure verzendt. Elke test herhaling neemt gemiddeld minder dan twee tot drie seconden in beslag, wat resulteert in een zeer efficiënt ontwikkelings proces.
 
 ## <a name="other-previews"></a>Andere voor beelden
 

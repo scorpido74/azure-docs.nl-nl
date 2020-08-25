@@ -4,18 +4,18 @@ description: End-to-end-versleuteling voor uw virtuele Azure-machines inschakele
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6cb6235c5c1a34cb3f48d315adee565591bb72c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a352ecc2d2b02f03e2b55f7c5896ac905077921
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088458"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814789"
 ---
-# <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-powershell"></a>End-to-end-versleuteling inschakelen met behulp van versleuteling op host-Azure PowerShell
+# <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>De module Azure PowerShell gebruiken om end-to-end-versleuteling in te scha kelen met behulp van versleuteling op de host
 
 Wanneer u versleuteling inschakelt op de host, worden gegevens die op de VM-host zijn opgeslagen, versleuteld op rest en stromen die zijn versleuteld naar de opslag service. Zie [versleuteling bij host-end-to-end-versleuteling voor uw VM-gegevens](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)voor conceptuele informatie over versleuteling op de host, evenals andere beheerde schijf versleutelings typen.
 
@@ -23,7 +23,7 @@ Wanneer u versleuteling inschakelt op de host, worden gegevens die op de VM-host
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>Ondersteunde regio's
+### <a name="supported-regions"></a>Ondersteunde regio’s
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -35,7 +35,7 @@ Mogelijk vindt u ook de VM-grootten via een programma. Zie de sectie [ondersteun
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u versleuteling wilt gebruiken op de host voor uw Vm's of virtuele-machine schaal sets, moet u de functie inschakelen voor uw abonnement. Stuur een e-mail naar encryptionAtHost@microsoft . com met uw abonnement-id's om de functie in te scha kelen voor uw abonnementen.
+Als u versleuteling wilt gebruiken op de host voor uw Vm's of virtuele-machine schaal sets, moet u de functie inschakelen voor uw abonnement. Stuur een e-mail naar encryptionAtHost@microsoft .com met uw abonnement-id's om de functie in te schakelen voor uw abonnementen.
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Een Azure Key Vault en DiskEncryptionSet maken
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166702"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816521"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -227,7 +227,7 @@ Geef de ondersteunings website op waar klanten uw ondersteunings team kunnen ber
 Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wanneer uw klanten een ondersteunings ticket openen. Deze informatie wordt niet vermeld op Azure Marketplace.
 
 - Naam
-- Email
+- E-mail
 - Telefoon
 
 ### <a name="engineering-contact"></a>Technische contact persoon
@@ -235,7 +235,7 @@ Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wan
 Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn met uw aanbieding, met inbegrip van problemen met certificering. Deze informatie wordt niet vermeld op Azure Marketplace.
 
 - Naam
-- Email
+- E-mail
 - Telefoon
 
 ### <a name="azure-marketplace-media"></a>Azure Marketplace-media
@@ -249,16 +249,17 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="azure-marketplace-logos"></a>Azure Marketplace-logo's
 
-Geef PNG-bestanden van het logo van uw aanbieding op met de volgende vier afbeeldings dimensies:
+Geef een PNG-bestand voor het logo van **grote** grootte op. Het partner centrum gebruikt deze om een **klein** en **gemiddeld** logo te maken. U kunt deze desgewenst later vervangen door andere installatie kopieën.
 
-- **Klein** (48 &times; 48 pixels)
-- **Gemiddeld** (90 &times; 90 pixels)
-- **Groot** (216 &times; 216 pixels)
-- **Breed** (255 &times; 115 pixels)
+- **Groot** (van 216 x 216 tot 350 x 350 px, vereist)
+- **Gemiddeld** (90 x 90 px, optioneel)
+- **Klein** (48 x 48 px, optioneel)
 
-Alle vier de logo's zijn vereist en worden weer gegeven in verschillende Azure Marketplace-vermeldingen.
+Deze logo's worden op verschillende plaatsen in de vermelding gebruikt:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 
@@ -403,7 +404,7 @@ Voor een op gebruik gebaseerd maandelijks gefactureerd abonnement gebruikt u een
 
 U kunt uw klanten een *gratis proef versie* van één maand of drie maanden aanbieden.
 
-#### <a name="visibility"></a>Zichtbaarheid
+#### <a name="visibility"></a>Zicht
 
 U kunt elk plan ontwerpen dat zichtbaar is voor iedereen of alleen voor een vooraf geselecteerde doel groep. Lidmaatschappen in deze beperkte doel groep toewijzen met behulp van Azure-abonnement-Id's.
 

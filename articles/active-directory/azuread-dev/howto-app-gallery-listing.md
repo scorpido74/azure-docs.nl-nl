@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 08/20/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: dcb8f709bc75fdf9fe80ee26497acb78cc023327
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 662bda03fc2d389ed316bd2c7141d5e6a30cef1a
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116339"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814603"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -45,7 +45,7 @@ In dit artikel wordt beschreven hoe u een toepassing kunt weer geven in de toepa
 
 **Hoe kan ik Azure AD voor ontwikkel aars ophalen?**
 
-U kunt een gratis test account krijgen met alle Premium Azure AD-functies-90 dagen gratis en kunnen worden uitgebreid zolang u de ontwikkel aars ermee kunt werken:https://docs.microsoft.com/office/developer-program/office-365-developer-program
+U kunt een gratis test account krijgen met alle Premium Azure AD-functies-90 dagen gratis en kunnen worden uitgebreid zolang u de ontwikkel aars ermee kunt werken: https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
 ## <a name="submit-the-request-in-the-portal"></a>De aanvraag verzenden in de portal
 
@@ -113,7 +113,7 @@ Maak een webtoepassing met een HTML-aanmeldings pagina voor het configureren [va
 
 ![Een SSO-toepassing voor wacht woorden in de galerie weer geven](./media/howto-app-gallery-listing/passwordsso.png)
 
-* Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van wacht woord-SSO, selecteert u **SSO van wacht woord** , zoals wordt weer gegeven.
+* Als u uw toepassing wilt toevoegen aan de lijst in de galerie met behulp van wacht woord-SSO, selecteert u **wacht woord-SSO (gebruikers naam & wacht woord)** , zoals wordt weer gegeven.
 * Als u problemen hebt met Access, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="request-for-user-provisioning"></a>Aanvraag voor gebruikers inrichting

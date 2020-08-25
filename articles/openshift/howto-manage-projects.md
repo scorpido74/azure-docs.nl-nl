@@ -8,14 +8,14 @@ ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35474df96254b158a39b6d913171c553bf30aea4
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79139110"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816436"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projecten, sjablonen, afbeeldings stromen beheren in een Azure Red Hat open Shift-cluster 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projecten, sjablonen, afbeeldings stromen beheren in een Azure Red Hat open Shift-cluster
 
 In een open Shift container platform worden projecten gebruikt om verwante objecten te groeperen en te isoleren. Als beheerder kunt u ontwikkel aars toegang geven tot specifieke projecten, toestaan dat ze hun eigen projecten maken en ze beheerders rechten verlenen aan afzonderlijke projecten.
 
@@ -45,7 +45,7 @@ De toegang tot de API wordt verleend aan ontwikkel aars met de cluster functie v
    oc edit template project-request -n openshift
    ```
 
-3. Verwijder de standaard project sjabloon uit het update proces van Azure Red Hat open Shift (ARO) door de volgende aantekening toe te voegen:`openshift.io/reconcile-protect: "true"`
+3. Verwijder de standaard project sjabloon uit het update proces van Azure Red Hat open Shift (ARO) door de volgende aantekening toe te voegen: `openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -112,7 +112,7 @@ Updates voor alle `Templates` en in de `ImageStreams` `openshift` naam ruimte ui
    oc edit namespace openshift
    ```
 
-3. Verwijder `openshift` de naam ruimte uit het Aro-update proces door de volgende aantekening toe te voegen:`openshift.io/reconcile-protect: "true"`
+3. Verwijder `openshift` de naam ruimte uit het Aro-update proces door de volgende aantekening toe te voegen: `openshift.io/reconcile-protect: "true"`
 
    ```
    ...

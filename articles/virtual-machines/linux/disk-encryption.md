@@ -1,6 +1,6 @@
 ---
 title: Versleuteling aan de server zijde van Azure Managed Disks-Azure CLI
-description: Azure Storage beveiligt uw gegevens door deze te versleutelen voordat deze in de opslag clusters worden bewaard. U kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling van uw beheerde schijven, of u kunt door de klant beheerde sleutels gebruiken om versleuteling te beheren met uw eigen sleutels.
+description: Azure Storage beveiligt uw gegevens door deze te versleutelen voordat deze in de opslag clusters worden bewaard. U kunt door de klant beheerde sleutels gebruiken om versleuteling te beheren met uw eigen sleutels, of u kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling van uw beheerde schijven.
 author: roygara
 ms.date: 07/10/2020
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0a1f97cc7467d115ecc8462a301e45f90d73818
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e541fd90f0cb9c8f0e2763f16541824c5a7b3000
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449151"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816895"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Versleuteling aan de server zijde van Azure Disk Storage
 
@@ -58,7 +58,7 @@ Tijdelijke schijven worden op rest versleuteld met door het platform beheerde sl
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-#### <a name="supported-regions"></a>Ondersteunde regio's
+#### <a name="supported-regions"></a>Ondersteunde regio’s
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -70,7 +70,7 @@ Tijdelijke schijven worden op rest versleuteld met door het platform beheerde sl
 
 Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is gekoppeld aan een bepaalde versleutelings algoritme, implementatie of sleutel die wordt aangetast, kunnen nu kiezen voor extra versleutelen met een ander versleutelings algoritme/dezelfde modus op de laag van de infra structuur met behulp van door het platform beheerde versleutelings sleutels. Deze nieuwe laag kan worden toegepast op schijven, moment opnamen en installatie kopieën, die allemaal worden versleuteld met dubbele versleuteling.
 
-### <a name="supported-regions"></a>Ondersteunde regio's
+### <a name="supported-regions"></a>Ondersteunde regio’s
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
@@ -80,7 +80,7 @@ Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- End-to-end-versleuteling inschakelen met versleuteling op de host met [cli](disks-enable-host-based-encryption-cli.md) of de [Azure Portal](disks-enable-host-based-encryption-portal.md).
-- Schakel dubbele versleuteling in op de rest voor beheerde schijven met [cli](disks-enable-double-encryption-at-rest-cli.md) of de [Azure Portal](disks-enable-double-encryption-at-rest-portal.md).
-- Door de klant beheerde sleutels voor beheerde schijven inschakelen met [cli](disks-enable-customer-managed-keys-cli.md) of de [Azure Portal](disks-enable-customer-managed-keys-portal.md).
+- End-to-end-versleuteling inschakelen met versleuteling op de host met [cli](disks-enable-host-based-encryption-cli.md) of de [Azure Portal](../disks-enable-host-based-encryption-portal.md).
+- Schakel dubbele versleuteling in op de rest voor beheerde schijven met [cli](disks-enable-double-encryption-at-rest-cli.md) of de [Azure Portal](../disks-enable-double-encryption-at-rest-portal.md).
+- Door de klant beheerde sleutels voor beheerde schijven inschakelen met [cli](disks-enable-customer-managed-keys-cli.md) of de [Azure Portal](../disks-enable-customer-managed-keys-portal.md).
 - [Wat is Azure Key Vault?](../../key-vault/general/overview.md)

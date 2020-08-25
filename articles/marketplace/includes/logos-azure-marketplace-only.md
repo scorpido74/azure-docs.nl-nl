@@ -1,5 +1,5 @@
 ---
-title: Include-bestand
+title: bestand opnemen
 description: file
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,14 +7,14 @@ ms.topic: include
 author: dannyevers
 ms.author: mingshen
 ms.reviewer: trkeya
-ms.date: 08/07/2020
-ms.openlocfilehash: 5dcf1f932e72473b6d4bc2442b19b5a674becaa4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/18/2020
+ms.openlocfilehash: 3659b9dbdd6108a650ffc44169bed1d33b140345
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031484"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815624"
 ---
--   Het kleine logo (48 x 48 pixels) wordt weer gegeven in de zoek resultaten voor Azure Marketplace.
--   Het gemiddelde logo (90 x 90 pixels) wordt weer gegeven wanneer u een nieuwe resource maakt in Microsoft Azure.
--   Het grote logo (tussen 216 x 216 en 350 x 350 pixels) wordt weer gegeven op de aanbiedings pagina van de aanbieding in azure Marketplace.
+- Het grote logo wordt weer gegeven op de aanbiedings pagina van uw aanbieding in azure Marketplace.
+- Het normale logo (optioneel) wordt weer gegeven wanneer u een nieuwe resource maakt in Microsoft Azure.
+- Het kleine logo (optioneel) wordt weer gegeven in de zoek resultaten voor Azure Marketplace.

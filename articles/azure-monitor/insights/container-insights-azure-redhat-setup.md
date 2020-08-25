@@ -3,14 +3,14 @@ title: Azure Red Hat open Shift v3. x configureren met Azure Monitor voor contai
 description: In dit artikel wordt beschreven hoe u de bewaking van een Kubernetes-cluster configureert met Azure Monitor die worden gehost op Azure Red Hat open Shift versie 3 en hoger.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e462fb25672fa1912f7bb24efad4ea9a6d27d078
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317974"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816640"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift v3 configureren met Azure Monitor voor containers
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift v3 configureren met Azure Monitor voor containers 
 
 Azure Monitor voor containers biedt uitgebreide bewakings ervaring voor de Azure Kubernetes-service (AKS) en AKS-engine clusters. In dit artikel wordt beschreven hoe u de bewaking kunt inschakelen van Kubernetes-clusters die worden gehost op [Azure Red Hat open Shift](../../openshift/intro-openshift.md) versie 3 en de meest recente ondersteunde versie van versie 3, om een vergelijk bare bewakings ervaring te krijgen.
 
@@ -32,7 +32,7 @@ Azure Monitor voor containers biedt ondersteuning voor het bewaken van Azure Red
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een [log Analytics-werk ruimte](../platform/design-logs-deployment.md).
+- Een [Log Analytics-werkruimte](../platform/design-logs-deployment.md).
 
     Azure Monitor voor containers ondersteunt een Log Analytics-werk ruimte in de regio's die worden vermeld in azure- [producten per regio](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om uw eigen werk ruimte te maken, kan deze worden gemaakt via [Azure Resource Manager](../platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../learn/quick-create-workspace.md).
 
@@ -120,7 +120,7 @@ Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal inst
     az login
     ```
 
-    Als u toegang hebt tot meerdere abonnementen, voert `az account set -s {subscription ID}` `{subscription ID}` u de vervanging uit met het abonnement dat u wilt gebruiken.
+    Als u toegang hebt tot meerdere abonnementen, voert u `az account set -s {subscription ID}` uit en vervangt u `{subscription ID}` door het abonnement dat u wilt gebruiken.
 
 3. Maak een resource groep voor het cluster als u er nog geen hebt. Zie [ondersteunde regio's](../../openshift/supported-resources.md#azure-regions)voor een lijst met Azure-regio's die openshift op Azure ondersteunen.
 
@@ -130,7 +130,7 @@ Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal inst
 
 4. Bewerk het JSON-parameter bestand **newClusterWithMonitoringParam.jsop** en werk de volgende waarden bij:
 
-    - *locatie*
+    - *location*
     - *clusterName*
     - *aadTenantId*
     - *aadClientId*
@@ -207,7 +207,7 @@ Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal inst
     az login
     ```
 
-    Als u toegang hebt tot meerdere abonnementen, voert `az account set -s {subscription ID}` `{subscription ID}` u de vervanging uit met het abonnement dat u wilt gebruiken.
+    Als u toegang hebt tot meerdere abonnementen, voert u `az account set -s {subscription ID}` uit en vervangt u `{subscription ID}` door het abonnement dat u wilt gebruiken.
 
 3. Geef het abonnement van het Azure RedHat open Shift-cluster op.
 

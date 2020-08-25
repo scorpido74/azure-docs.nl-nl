@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 30839fac6a264ad9defb565663b28a5b12b571b5
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034461"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814515"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -24,7 +24,7 @@ Azure Storage slaat altijd meerdere kopieën van uw gegevens op, zodat deze besc
 Wanneer u bepaalt welke optie voor redundantie het beste is voor uw scenario, kunt u rekening houden met de compromissen met lagere kosten en een hogere Beschik baarheid en duurzaamheid. De factoren waarmee u de gewenste redundantie optie kunt bepalen, zijn onder andere:  
 
 - Hoe uw gegevens worden gerepliceerd in de primaire regio
-- Of uw gegevens worden gerepliceerd naar een tweede locatie die geografisch onbereikbaar is naar de primaire regio, ter bescherming tegen regionale rampen
+- Of uw gegevens worden gerepliceerd naar een tweede regio die geografisch onbereikbaar is naar de primaire regio, ter bescherming tegen regionale rampen
 - Of voor uw toepassing Lees toegang is vereist voor de gerepliceerde gegevens in de secundaire regio als de primaire regio om een of andere reden niet beschikbaar is
 
 ## <a name="redundancy-in-the-primary-region"></a>Redundantie in de primaire regio
@@ -64,13 +64,13 @@ In de volgende tabel ziet u welke typen opslag accounts ZRS ondersteunen in welk
 | Type opslagaccount | Ondersteunde regio’s | Ondersteunde services |
 |--|--|--|
 | Algemeen gebruik v2<sup>1</sup> | Azië - zuidoost<br /> Australië - oost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan East<br /> Zuid-Afrika - noord<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2 | Blok-blobs<br /> Pagina-blobs<sup>2</sup><br /> Bestands shares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
-| BlockBlobStorage<sup>1</sup> | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost | Alleen Premium-blok-blobs |
-| FileStorage | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost | Premium-bestanden alleen shares |
+| BlockBlobStorage<sup>1</sup> | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost <br /> US - west 2| Alleen Premium-blok-blobs |
+| FileStorage | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost <br /> US - west 2 | Premium-bestanden alleen shares |
 
 <sup>1</sup> de Archive-laag wordt momenteel niet ondersteund voor ZRS-accounts.<br />
 <sup>2</sup> opslag accounts die Azure Managed disks voor virtuele machines bevatten, gebruiken altijd LRS. Onbeheerde schijven van Azure moeten ook LRS gebruiken. Het is mogelijk om een opslag account te maken voor Azure unmanaged disks die gebruikmaken van GRS, maar dit wordt niet aanbevolen vanwege mogelijke problemen met de consistentie van de asynchrone geo-replicatie. Geen van de beheerde schijven of niet-Managed disks ondersteunen ZRS of GZRS. Zie [prijzen voor Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)(Engelstalig) voor meer informatie over Managed disks.
 
-Voor informatie over welke regio's ZRS ondersteunen, Zie **Services ondersteuning per regio** in [Wat zijn Azure-beschikbaarheidszones?](../../availability-zones/az-overview.md).
+Voor informatie over welke regio's ZRS ondersteunen, Zie **Services ondersteuning per regio**  in [Wat zijn Azure-beschikbaarheidszones?](../../availability-zones/az-overview.md).
 
 ## <a name="redundancy-in-a-secondary-region"></a>Redundantie in een secundaire regio
 
@@ -83,9 +83,9 @@ Azure Storage biedt twee opties voor het kopiëren van uw gegevens naar een secu
 - **Geografisch redundante opslag (GRS)** kopieert uw gegevens synchroon drie keer binnen één fysieke locatie in de primaire regio met behulp van LRS. Vervolgens worden uw gegevens asynchroon gekopieerd naar één fysieke locatie in de secundaire regio.
 - **Geo-zone-redundante opslag (GZRS)** kopieert uw gegevens synchroon over drie Azure-beschikbaarheids zones in de primaire regio met behulp van ZRS. Vervolgens worden uw gegevens asynchroon gekopieerd naar één fysieke locatie in de secundaire regio.
 
-Het belangrijkste verschil tussen GRS en GZRS is hoe gegevens worden gerepliceerd in de primaire regio. Binnen de secundaire locatie worden gegevens altijd synchroon drie keer gerepliceerd met behulp van LRS. LRS in de secundaire regio beschermt uw gegevens tegen hardwarestoringen.
+Het belangrijkste verschil tussen GRS en GZRS is hoe gegevens worden gerepliceerd in de primaire regio. Binnen de secundaire regio worden gegevens altijd synchroon drie keer gerepliceerd met behulp van LRS. LRS in de secundaire regio beschermt uw gegevens tegen hardwarestoringen.
 
-Met GRS of GZRS zijn de gegevens op de secundaire locatie niet beschikbaar voor lees-of schrijf toegang, tenzij er een failover naar de secundaire regio wordt gemaakt. Configureer voor lees toegang tot de secundaire locatie uw opslag account voor het gebruik van geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS). Zie [Lees toegang tot gegevens in de secundaire regio](#read-access-to-data-in-the-secondary-region)voor meer informatie.
+Met GRS of GZRS zijn de gegevens in de secundaire regio niet beschikbaar voor lees-of schrijf toegang, tenzij er een failover naar de secundaire regio wordt gemaakt. Configureer voor lees toegang tot de secundaire regio uw opslag account voor het gebruik van geografisch redundante opslag met lees toegang (RA-GRS) of geografisch redundante opslag met lees toegang (RA-GZRS). Zie [Lees toegang tot gegevens in de secundaire regio](#read-access-to-data-in-the-secondary-region)voor meer informatie.
 
 Als de primaire regio niet beschikbaar is, kunt u een failover uitvoeren naar de secundaire regio. Nadat de failover is voltooid, wordt de secundaire regio de primaire regio en kunt u opnieuw gegevens lezen en schrijven. Zie [nood herstel en failover van het opslag account](storage-disaster-recovery-guidance.md)voor meer informatie over herstel na nood gevallen en voor informatie over het uitvoeren van een failover naar de secundaire regio.
 
@@ -196,4 +196,4 @@ Azure Storage controleert regel matig de integriteit van gegevens die zijn opges
 - [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)
 - [De redundantie optie voor een opslag account wijzigen](redundancy-migration.md)
 - [Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)
-- [Herstel na nood geval en failover van het opslag account](storage-disaster-recovery-guidance.md)
+- [Herstel na noodgeval en failover van opslagaccount](storage-disaster-recovery-guidance.md)

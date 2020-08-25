@@ -7,13 +7,13 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/19/2019
-ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186631"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816453"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: fouten bij het maken van een cluster
 
@@ -24,19 +24,17 @@ In dit artikel worden oplossingen beschreven voor fouten die u kunt tegen komen 
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fout code: DeploymentDocument ' CsmDocument_2_0 ' is niet gevalideerd
 
-### <a name="error"></a>Fout
+**Fout**: de locatie van de script actie kan geen toegang krijgen tot \<SCRIPT ACTION URL\> URI:
 
-"Locatie van de script actie kan geen toegang krijgen tot URI: \<SCRIPT ACTION URL\> "
-
-#### <a name="error-message"></a>Foutbericht
+### <a name="error-message-1"></a>Fout bericht 1
 
 De externe server heeft een fout geretourneerd: (404) niet gevonden. "
 
-### <a name="cause"></a>Oorzaak
+#### <a name="cause"></a>Oorzaak
 
 De HDInsight-service heeft geen toegang tot de script actie-URL die u hebt gegeven als onderdeel van de aanvraag Create cluster. De service ontvangt het voor gaande fout bericht wanneer er wordt geprobeerd om de script actie te openen.
 
-### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Oplossing
 
 - Voor een HTTP-of HTTPS-URL verifieert u de URL door te proberen ernaar te gaan vanuit een incognito-browser venster.
 - Zorg ervoor dat het script bestaat in het opslag account dat u in de aanvraag geeft voor een WASB-URL. Zorg er ook voor dat de opslag sleutel voor dit opslag account juist is.
@@ -44,37 +42,29 @@ De HDInsight-service heeft geen toegang tot de script actie-URL die u hebt gegev
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fout code: DeploymentDocument ' CsmDocument_2_0 ' is niet gevalideerd
-
-### <a name="error"></a>Fout
-
-"Locatie van de script actie kan geen toegang krijgen tot URI: \<SCRIPT_ACTION_URL\> "
-
-#### <a name="error-message"></a>Foutbericht
+### <a name="error-message-2"></a>Fout bericht 2
 
 "De opgegeven script-URI \<SCRIPT_URI\> bevindt zich in ADLS, maar dit cluster heeft geen data Lake Storage-Principal"
 
-### <a name="cause"></a>Oorzaak
+#### <a name="cause"></a>Oorzaak
 
 De HDInsight-service heeft geen toegang tot de script actie-URL die u hebt gegeven als onderdeel van de aanvraag Create cluster. De service ontvangt het voor gaande fout bericht wanneer er wordt geprobeerd om de script actie te openen.
 
-### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Oplossing
 
 Voeg het bijbehorende Azure Data Lake Storage gen 1-account toe aan het cluster. Voeg ook de service-principal die toegang heeft tot het Data Lake Storage gen 1-account toe aan het cluster.
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fout code: DeploymentDocument ' CsmDocument_2_0 ' is niet gevalideerd
-
-### <a name="error"></a>Fout
+### <a name="error-message-3"></a>Fout bericht 3
 
 De VM-grootte \<CUSTOMER_SPECIFIED_VM_SIZE\> die in de aanvraag is gegeven, is ongeldig of wordt niet ondersteund voor de rol \<ROLE\> . Geldige waarden zijn: \<VALID_VM_SIZE_FOR_ROLE\> . "
 
-### <a name="cause"></a>Oorzaak
+#### <a name="cause"></a>Oorzaak
 
 De grootte van de virtuele machine die u hebt opgegeven, is niet toegestaan voor de rol. Deze fout kan optreden omdat de waarde voor de VM-grootte niet werkt zoals verwacht of niet geschikt is voor de computer functie.
 
-### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Oplossing
 
 In het fout bericht worden de geldige waarden voor de VM-grootte weer gegeven. Selecteer een van deze waarden en voer de aanvraag cluster maken opnieuw uit.
 
@@ -230,7 +220,7 @@ Als u aangepaste VNet-netwerk beveiligings groep (Nsg's) en door de gebruiker ge
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Fout code: implementaties zijn mislukt vanwege beleids overtreding: ' resource ' <Resource URI> ' is niet toegestaan door beleid. Beleids-id's: [{"policyAssignment": {"naam": " <Policy Name> ", "ID": "/providers/Microsoft.Management/managementgroups/. <Management Group Name> providers/micro soft. Authorization/policyAssignments/ <Policy Name> "}, "policyDefinition":<Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Fout code: implementaties zijn mislukt vanwege beleids overtreding: ' resource ' <Resource URI> ' is niet toegestaan door beleid. Beleids-id's: [{"policyAssignment": {"naam": " <Policy Name> ", "ID": "/providers/Microsoft.Management/managementgroups/. <Management Group Name> providers/micro soft. Authorization/policyAssignments/ <Policy Name> "}, "policyDefinition": <Policy Definition>
 
 ### <a name="cause"></a>Oorzaak
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 37cbddbb54493c54a29a790d617bbdb44bf17da9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653134"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815569"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
 
@@ -19,7 +19,7 @@ De Synapse-koppeling voor Azure Cosmos DB is een HTAP-functie (hybride transacti
 
 
 > [!IMPORTANT]
-> Als u Azure Synapse-koppeling wilt gebruiken, zorgt u ervoor dat u uw Azure Cosmos-account inricht & Azure Synapse Analytics-werk ruimte in een van de hierboven ondersteunde regio's. Zie [Azure service-updates](https://azure.microsoft.com/updates/)voor een lijst met ondersteunde regio's. 
+> Als u Azure Synapse-koppeling wilt gebruiken, zorgt u ervoor dat u uw Azure Cosmos-account inricht & Azure Synapse Analytics-werk ruimte in een van de ondersteunde regio's. De koppeling naar Azure Synapse is momenteel beschikbaar in de volgende Azure-regio's: US West-Centraal, VS-Oost, West-VS2, Europa-noord, Europa-west, Zuid-Centraal VS, Zuidoost-Azië, Australië-oost, Oost-U2, UK-zuid.
 
 Gebruik de volgende stappen om analytische query's uit te voeren met de Synapse-koppeling voor Azure Cosmos DB:
 
@@ -32,7 +32,7 @@ Gebruik de volgende stappen om analytische query's uit te voeren met de Synapse-
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 

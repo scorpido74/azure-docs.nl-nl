@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: d63c1517c025b9d7a3fd5523c6184eb5f43aad90
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bf56f1fac1f12f9e4994221d672410715393ae9f
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825307"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815135"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Schaalbaarheids-en prestatie doelen voor VM-schijven in Windows
 
@@ -22,7 +22,7 @@ Zie [Windows VM-grootten](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%
 
 ## <a name="managed-virtual-machine-disks"></a>Beheerde schijven van virtuele machines
 
-Groottes die worden aangeduid met een sterretje, zijn momenteel beschikbaar als preview-versie. Zie onze [Veelgestelde vragen](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) voor meer informatie over de regio's waar ze beschikbaar zijn.
+Groottes die worden aangeduid met een sterretje, zijn momenteel beschikbaar als preview-versie. Zie onze [Veelgestelde vragen](../faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) voor meer informatie over de regio's waar ze beschikbaar zijn.
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 
@@ -31,6 +31,6 @@ Groottes die worden aangeduid met een sterretje, zijn momenteel beschikbaar als 
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Limieten, quota's en beperkingen voor het Azure-abonnement en de Azure-service](../../azure-resource-manager/management/azure-subscription-service-limits.md)

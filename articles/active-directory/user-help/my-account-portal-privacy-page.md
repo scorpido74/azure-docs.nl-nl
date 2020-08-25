@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: ec050f3dfd2537f8cffde353772d61c32cb9d676
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5104783aff5684471819ecf04e965670fff2798b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422357"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798139"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Weergeven hoe uw organisatie gebruikmaakt van uw privacy-gerelateerde gegevens
 
@@ -42,7 +42,7 @@ U kunt zien hoe uw organisatie uw gegevens gebruikt op de pagina **instellingen 
 
 Nadat u hebt bekeken hoe uw organisatie uw gegevens gebruikt, kunt u het volgende doen:
 
-- Je [beveiligings gegevens](user-help-security-info-overview.md)weer geven of beheren.
+- Je [beveiligings gegevens](./security-info-setup-signin.md)weer geven of beheren.
 
 - Uw verbonden [apparaten](my-account-portal-devices-page.md)weer geven of beheren.
 
@@ -50,6 +50,6 @@ Nadat u hebt bekeken hoe uw organisatie uw gegevens gebruikt, kunt u het volgend
 
 - Bekijk uw [aanmeldings activiteit](my-account-portal-sign-ins-page.md).
 
-- De [Portal instellingen van mijn account](my-account-portal-settings.md) wijzigen
+- Wijzig de [Portalinstellingen van mijn account](my-account-portal-settings.md)
 
 - U kunt ook uw Microsoft Office-gerelateerde contact voorkeuren en privacy-informatie weer geven op de [pagina Office-Portal, beveiliging & privacy](https://portal.office.com/account/#security).

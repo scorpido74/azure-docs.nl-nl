@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e913fa1e609eff687b5757a566583539b32b1b8e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: ca523370a887ed1178312c48a577695f5ba6da8f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757146"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763453"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -200,13 +200,13 @@ Nu hebben we alle VG-namen met unieke Id's.
 
 ###### <a name="active-volume-groups"></a>Actieve volume groepen
 
-Zorg ervoor dat de volume groepen die overeenkomen met de volumes van het script, actief zijn. De onderstaande opdracht wordt gebruikt om actieve volume groepen weer te geven. Controleer of de verwante volume groepen van het script aanwezig zijn in deze lijst.
+Zorg ervoor dat de volume groepen die overeenkomen met de volumes van het script, actief zijn. De volgende opdracht wordt gebruikt om actieve volume groepen weer te geven. Controleer of de verwante volume groepen van het script aanwezig zijn in deze lijst.
 
 ```bash
 vgdisplay -a
 ```  
 
-Als dat niet het geval is, activeert u de volume groep met behulp van de onderstaande opdracht.
+Als dat niet het geval is, activeert u de volume groep met behulp van de volgende opdracht.
 
 ```bash
 #!/bin/bash
@@ -215,7 +215,7 @@ vgchange –a y  <volume-group-name>
 
 ##### <a name="listing-logical-volumes-within-volume-groups"></a>Logische volumes in volume groepen weer geven
 
-Zodra we de unieke, actieve lijst met VGs met betrekking tot het script hebben ontvangen, kunnen de logische volumes in deze volume groepen worden weer gegeven met behulp van de onderstaande opdracht.
+Zodra we de unieke, actieve lijst met VGs met betrekking tot het script hebben ontvangen, kunnen de logische volumes in deze volume groepen worden weer gegeven met behulp van de volgende opdracht.
 
 ```bash
 #!/bin/bash

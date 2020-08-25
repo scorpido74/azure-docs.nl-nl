@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 8996673cf8f01334e3dcd35aab8544643bd37360
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d46354b18d5c3317cc1ed67d839feb26b7b6b5d0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88802184"
+ms.locfileid: "88815841"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Procedure: een toepassing uitvoeren met Fortanix enclave Manager 
 
@@ -46,7 +46,6 @@ In deze zelf studie leert u hoe u de installatie kopie van uw toepassing kunt co
 1. Meld u aan bij [FORTANIX em](https://fortanix.com)
 1. Navigeer naar de pagina **accounts** en selecteer **account toevoegen** om een nieuw account te maken. 
     
-[!div class="mx-imgBorder"]
 ![Een account maken](media/how-to-fortanix-enclave-manager/create-account.png)
 
 1. Nadat uw account is gemaakt, klikt u op **selecteren** om het zojuist gemaakte account te selecteren. Nu kunnen we de reken knooppunten registreren en toepassingen maken. 

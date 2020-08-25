@@ -4,17 +4,17 @@ description: Azure Storage beveiligt uw gegevens door deze automatisch te versle
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/21/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a5e7060b31a936bd54dc0a1f084f823beb076044
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: fd819f0b819007611f5232d0fdfb324173d9c4b4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756806"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797918"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor inactieve gegevens
 
@@ -36,7 +36,7 @@ Voor informatie over versleuteling en sleutel beheer voor Azure Managed disks, Z
 
 ## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
-Gegevens in een nieuw opslag account worden versleuteld met door micro soft beheerde sleutels. U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen van uw gegevens, maar u kunt ook versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling te beheren met uw eigen sleutels, hebt u twee opties:
+Gegevens in een nieuw opslag account worden standaard versleuteld met door micro soft beheerde sleutels. U kunt door micro soft beheerde sleutels blijven gebruiken voor het versleutelen van uw gegevens of u kunt versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling te beheren met uw eigen sleutels, hebt u twee opties. U kunt een van beide typen sleutel beheer of beide gebruiken:
 
 - U kunt een door de *klant beheerde sleutel* opgeven met Azure Key Vault die moet worden gebruikt voor het versleutelen en ontsleutelen van gegevens in Blob Storage en in azure files. <sup>1, 2</sup> als u meer informatie wilt over door de klant beheerde sleutels, raadpleegt u [door de klant beheerde sleutels gebruiken met Azure Key Vault voor het beheren van Azure Storage versleuteling](encryption-customer-managed-keys.md).
 - U kunt een door de *klant opgegeven sleutel* voor Blob-opslag bewerkingen opgeven. Een client die een lees-of schrijf aanvraag uitvoert voor Blob Storage, kan een versleutelings sleutel bevatten op de aanvraag voor gedetailleerde controle over hoe BLOB-gegevens worden versleuteld en ontsleuteld. Zie [een versleutelings sleutel voor een aanvraag voor Blob-opslag bieden](encryption-customer-provided-keys.md)voor meer informatie over door de klant geleverde sleutels.
@@ -53,6 +53,9 @@ De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage ve
 
 <sup>1</sup> Zie [een account maken dat door de klant beheerde sleutels voor wacht rijen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met behulp van een wachtrij opslag.<br />
 <sup>2</sup> Zie voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met table-opslag [een account maken dat door de klant beheerde sleutels voor tabellen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
+
+> [!NOTE]
+> Door micro soft beheerde sleutels worden naar behoren geroteerd per nalevings vereisten. Als u specifieke vereisten voor sleutel rotatie hebt, raadt micro soft u aan om over te stappen op door de klant beheerde sleutels zodat u de draaiing zelf kunt beheren en controleren.
 
 ## <a name="encryption-scopes-for-blob-storage-preview"></a>Versleutelings bereik voor Blob-opslag (preview-versie)
 

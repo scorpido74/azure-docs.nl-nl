@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607400"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816266"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
@@ -54,12 +54,12 @@ Categorieën en subcategorieën worden toegewezen aan elke online winkel op basi
 
 Selecteer categorieën en subcategorieën die het beste aansluiten bij uw aanbieding en uw beoogde doel groep. U kunt het volgende selecteren:
 
-* Maxi maal twee (2) categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
-* Maxi maal twee (2) subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie is geselecteerd, kunt u nog steeds alleen de geselecteerde categorie detecteerbaar maken.
+* Maxi maal twee categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
+* Maxi maal twee subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie is geselecteerd, kunt u nog steeds alleen de geselecteerde categorie detecteerbaar maken.
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-**BELANG rijk: SaaS-aanbiedingen en Microsoft 365-invoeg toepassingen**
+#### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>BELANG rijk: SaaS-aanbiedingen en Microsoft 365-invoeg toepassingen
 
 Raadpleeg de [hand leiding van het aanbiedings type](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) voor specifieke informatie over hoe de Transact-mogelijkheden kunnen beïnvloeden hoe uw aanbieding kan worden weer gegeven en gekocht door klanten van Marketplace. Voor SaaS-aanbiedingen wordt de transactie capaciteit van de aanbieding en de categorie selectie bepaald door de online winkel waar uw aanbieding wordt gepubliceerd:
 
@@ -120,9 +120,9 @@ Tref woorden kunnen klanten helpen bij het zoeken naar uw aanbieding. Bepaal de 
 ## <a name="online-store-marketing-details"></a>Marketing Details voor online winkels
 | Instelling | Best practice |
 |:--- |:--- |  
-| Logo van aanbieding (PNG-indeling, 48 &nbsp; &times; &nbsp; 48): zoek pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de zoek pagina van uw aanbieding. |
-| Logo van aanbieding (PNG-indeling, 216 &nbsp; &times; &nbsp; 216): app-details pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de pagina met details van de app van uw aanbieding. |
-| Documenten ' meer informatie ' | Ondersteunende verkoop-en marketing assets onder "meer informatie" bevatten enkele voor beelden: <ul> <li> technische documenten, </li> <li> brochures </li> <li> controle lijsten of </li> <li> Power Point-presentaties.</li> </ul>Sla alle bestanden op in PDF-indeling. Het doel is hier om klanten te informeren en daar niet aan te verkopen. <br><br>Een koppeling naar uw app-landings pagina toevoegen aan al uw documenten en URL-para meters toevoegen om bezoekers en experimenten bij te houden. |
+| Logo van aanbieding (PNG-indeling, van 216 x 216 tot 350 x 350 px): app-details pagina | Uw logo ontwerpen en optimaliseren voor een digitaal medium:<br>Upload het logo in PNG-indeling naar de pagina met details van de app van uw aanbieding. Het formaat van het partner centrum wordt gewijzigd in de vereiste logo grootten. |
+| Logo van aanbieding (PNG-indeling, 48 x 48 pixels): zoek pagina | Het partner centrum genereert dit logo van het grote logo dat u hebt geüpload. U kunt dit eventueel later vervangen door een andere installatie kopie. |
+| Documenten ' meer informatie ' | Ondersteunende verkoop-en marketing assets onder "meer informatie" bevatten enkele voor beelden:<ul><li>technische documenten</li><li> brochures</li><li>controle lijsten of</li><li> Power Point-presentaties</li></ul><br>Sla alle bestanden op in PDF-indeling. Het doel is hier om klanten te informeren en daar niet aan te verkopen.<br><br>Een koppeling naar uw app-landings pagina toevoegen aan al uw documenten en URL-para meters toevoegen om bezoekers en experimenten bij te houden. |
 | Video's: AppSource, Consulting Services en SaaS biedt alleen | De krach tigste Video's communiceren de waarde van uw aanbieding in een verhalende vorm:<ul> <li> Maak uw klant, niet uw bedrijf, de held van het verhaal. </li> <li> Uw video moet de belangrijkste uitdagingen en doel stellingen van uw doel klant aanpakken. </li> <li> Aanbevolen lengte: 60-90 seconden.</li> <li> Belang rijke Zoek woorden opnemen die de naam van de Video's gebruiken. </li> <li> Overweeg extra Video's toe te voegen, zoals een procedure, aan de slag of klant ervaringen. </li> </ul> |
 | Scherm afbeeldingen (1280 &nbsp; &times; &nbsp; 720) | Maxi maal vijf scherm opnamen toevoegen:<br>Belang rijke Zoek woorden opnemen in de bestands namen. |
 
@@ -141,4 +141,3 @@ Door de para meters aan uw AppSource-URL toe te voegen, kunt u de effectiviteit 
 Meer informatie over de [voor delen van uw commerciële Marketplace](./gtm-your-marketplace-benefits.md).
 
 Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken en te configureren.
-

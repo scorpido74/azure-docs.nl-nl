@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ebc3ad6957890423314bb2d8623c7b4708aed10b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604644"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815404"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding maken
 
@@ -209,13 +209,16 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Bied PNG-bestanden van het logo van uw aanbieding in twee pixel grootten:
-- **Klein** (48 x 48)
-- **Groot** (216 x 216)
+Geef een PNG-bestand voor het logo van **grote** grootte op. Het partner centrum gebruikt deze om een **klein** logo te maken. U kunt dit eventueel later vervangen door een andere installatie kopie.
 
-Beide logo's zijn vereist en worden gebruikt op verschillende plaatsen in de Marketplace-vermelding.
+- **Groot** (van 216 x 216 tot 350 x 350 px, vereist)
+- **Klein** (48 x 48 px, optioneel)
+
+Deze logo's worden op verschillende plaatsen in de vermelding gebruikt:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

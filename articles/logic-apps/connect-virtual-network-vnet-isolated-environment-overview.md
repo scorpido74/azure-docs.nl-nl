@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: 85f4cc9f9e6e762a85571010840cc697bc6c9888
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963662"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816015"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Toegang tot Azure Virtual Network resources vanuit Azure Logic Apps met behulp van integratie service omgevingen (ISEs)
 
@@ -95,7 +95,7 @@ Als u toegang wilt krijgen tot on-premises systemen en gegevens bronnen die geen
 
 Wanneer u uw ISE maakt, kunt u de Developer SKU of Premium SKU selecteren. Dit zijn de verschillen tussen deze Sku's:
 
-* **Ontwikkelaar**
+* **Developer**
 
   Biedt een voordelige ISE die u kunt gebruiken voor experimenteren, ontwikkelen en testen, maar niet voor productie-of prestatie testen. De Developer SKU bevat ingebouwde triggers en acties, standaard connectors, zakelijke connectors en één [gratis laag](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integratie account voor een vaste maandelijkse prijs. Deze SKU bevat echter geen SLA (Service Level Agreement), opties voor het schalen van de capaciteit of redundantie tijdens het recyclen, wat betekent dat u vertragingen of downtime mogelijk ondervindt.
 
@@ -117,7 +117,14 @@ Wanneer u uw ISE maakt, kunt u kiezen of u interne of Externe toegangs punten wi
 > [!IMPORTANT]
 > U kunt het toegangs eindpunt alleen selecteren tijdens het maken van ISE. deze optie kan later niet worden gewijzigd.
 
-* **Intern**: met persoonlijke eind punten kunt u aan Logic apps in uw ISE aanroepen waar u invoer en uitvoer van Logic apps *alleen vanuit het virtuele netwerk*weer geven en er toegang toe hebt. Zorg ervoor dat u verbinding hebt met het netwerk tussen de privé-eind punten en de computer van waaruit u de geschiedenis van uitvoeringen wilt openen. Uw client computer kan bijvoorbeeld bestaan in het virtuele netwerk van de ISE of binnen een virtueel netwerk dat is verbonden met het virtuele netwerk van de ISE, bijvoorbeeld via peering of een virtueel particulier netwerk.
+* **Intern**: met persoonlijke eind punten kunt u aan Logic apps in uw ISE aanroepen waar u invoer en uitvoer van Logic apps *alleen vanuit het virtuele netwerk*weer geven en er toegang toe hebt.
+
+  > [!IMPORTANT]
+  > Zorg ervoor dat u verbinding hebt met het netwerk tussen de privé-eind punten en de computer van waaruit u de uitvoerings geschiedenis wilt bekijken. Als u de uitvoerings geschiedenis van de logische app probeert weer te geven, krijgt u een fout melding met de tekst ' onverwachte fout '. Kan niet ophalen.
+  >
+  > ![Azure Storage actie fout die voortkomt uit het onvermogen om verkeer te verzenden via een firewall](./media/connect-virtual-network-vnet-isolated-environment-overview/integration-service-environment-error.png)
+  >
+  > Uw client computer kan bijvoorbeeld bestaan in het virtuele netwerk van de ISE of binnen een virtueel netwerk dat is verbonden met het virtuele netwerk van de ISE via peering of een virtueel particulier netwerk. 
 
 * **Extern**: open bare eind punten maken het mogelijk om Logic apps in uw ISE aan te roepen, waar u de invoer en uitvoer van de geschiedenis van Logic apps *van buiten uw virtuele netwerk*kunt bekijken en openen. Als u netwerk beveiligings groepen (Nsg's) gebruikt, moet u ervoor zorgen dat deze zijn ingesteld met regels voor binnenkomende verbindingen zodat de invoer en uitvoer van de uitvoerings geschiedenis toegankelijk zijn. Zie [Enable Access for ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)voor meer informatie.
 

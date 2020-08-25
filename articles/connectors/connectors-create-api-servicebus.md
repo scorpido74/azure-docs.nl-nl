@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461593"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815722"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -77,6 +77,9 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
    Alle Service Bus triggers zijn *lange polling* triggers. Deze beschrijving betekent dat wanneer de trigger wordt geactiveerd, de trigger alle berichten verwerkt en vervolgens 30 seconden wacht totdat er meer berichten worden weer gegeven in de wachtrij of het onderwerp. Als er gedurende 30 seconden geen berichten worden weer gegeven, wordt de trigger wordt uitgevoerd. Anders wordt het lezen van berichten voortgezet totdat de wachtrij of het onderwerp leeg is. De volgende trigger poll is gebaseerd op het interval van het terugkeer patroon dat is opgegeven in de eigenschappen van de trigger.
 
    Sommige triggers, zoals het **tijdstip waarop een of meer berichten binnenkomen in een wachtrij (automatisch volt ooien)** , kunnen een of meer berichten retour neren. Wanneer deze triggers worden geactiveerd, retour neren ze tussen één en het aantal berichten dat is opgegeven door de eigenschap **maximum aantal berichten** van de trigger.
+
+    > [!NOTE]
+    > Met de trigger automatisch aanvullen wordt een bericht automatisch voltooid, maar de voltooiing wordt alleen uitgevoerd bij de volgende trigger. Dit gedrag kan van invloed zijn op het ontwerp van uw logische app. Als u bijvoorbeeld de trigger voor automatisch aanvullen instelt om elke minuut op berichten te controleren, maar de duur van de vergren deling is ingesteld op 30 seconden aan Service Bus zijde, is het resultaat een ' lock expired-fout die optreedt bij het volt ooien van het bericht. U moet de vergrendelings duur instellen op een waarde die langer is dan het polling-interval.
 
 1. Als uw trigger voor de eerste keer verbinding maakt met uw Service Bus-naam ruimte, voert u de volgende stappen uit wanneer de ontwerp functie voor logische apps u om verbindings informatie vraagt.
 

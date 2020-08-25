@@ -3,17 +3,17 @@ title: BESTURINGSSYSTEEM schijven versleutelen met door de klant beheerde sleute
 description: Meer informatie over het versleutelen van besturings systeem schijven (OS) met door de klant beheerde sleutels in Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566196"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815918"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Besturings systemen (OS)-schijven versleutelen met door de klant beheerde sleutels in Azure DevTest Labs
 Met SSE (server side Encryption) beschermt u uw gegevens en kunt u voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Met SSE worden uw gegevens die zijn opgeslagen op Managed disks in azure (OS-en gegevens schijven), op rest standaard automatisch versleuteld wanneer deze in de cloud worden bewaard. Meer informatie over [schijf versleuteling](../virtual-machines/windows/disk-encryption.md) in Azure. 
 
-In DevTest Labs worden alle besturingssysteem schijven en gegevens schijven die zijn gemaakt als onderdeel van een lab, versleuteld met door het platform beheerde sleutels. Als eigenaar van een lab kunt u echter kiezen voor het versleutelen van de besturingssysteem schijven van de virtuele machine met behulp van uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, kunt u een door de **klant beheerde sleutel** opgeven die moet worden gebruikt voor het versleutelen van gegevens in Lab-besturingssysteem schijven. Zie door de [klant beheerde sleutels](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)voor meer informatie over de versleuteling aan de server zijde (SSE) met door de klant beheerde sleutels en andere beheerde schijf versleutelings typen. Zie ook [beperkingen voor het gebruik van door de klant beheerde sleutels](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
+In DevTest Labs worden alle besturingssysteem schijven en gegevens schijven die zijn gemaakt als onderdeel van een lab, versleuteld met door het platform beheerde sleutels. Als eigenaar van een lab kunt u echter kiezen voor het versleutelen van de besturingssysteem schijven van de virtuele machine met behulp van uw eigen sleutels. Als u ervoor kiest om versleuteling met uw eigen sleutels te beheren, kunt u een door de **klant beheerde sleutel** opgeven die moet worden gebruikt voor het versleutelen van gegevens in Lab-besturingssysteem schijven. Zie door de [klant beheerde sleutels](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)voor meer informatie over de versleuteling aan de server zijde (SSE) met door de klant beheerde sleutels en andere beheerde schijf versleutelings typen. Zie ook [beperkingen voor het gebruik van door de klant beheerde sleutels](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions).
 
 
 > [!NOTE]
@@ -25,7 +25,7 @@ In de volgende sectie ziet u hoe een Lab-eigenaar versleuteling kan instellen me
 
 ## <a name="pre-requisites"></a>Vereisten
 
-1. Als u geen schijf versleuteling hebt ingesteld, volgt u dit artikel om [een Key Vault en een schijf versleutelings](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault)in te stellen. Houd rekening met de volgende vereisten voor de schijf versleutelings: 
+1. Als u geen schijf versleuteling hebt ingesteld, volgt u dit artikel om [een Key Vault en een schijf versleutelings](../virtual-machines/disks-enable-customer-managed-keys-portal.md)in te stellen. Houd rekening met de volgende vereisten voor de schijf versleutelings: 
 
     - De schijf versleutelings moet zich **in dezelfde regio en hetzelfde abonnement bevinden als uw Lab**. 
     - Zorg ervoor dat u (eigenaar van het lab) ten minste toegang hebt tot de schijf versleuteling die wordt gebruikt om Lab **-** besturingssysteem schijven te versleutelen. 

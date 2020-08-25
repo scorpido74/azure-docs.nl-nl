@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2d4ab180818e597afa86a4cfdf73c6948d44e630
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132450"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815467"
 ---
 Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u resources in een bepaalde volg orde maken, als u deze voor de eerste keer uitvoert. Eerst moet u een Azure Key Vault maken en instellen.
 
@@ -22,7 +22,7 @@ Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u reso
 1. Meld u aan bij [Azure Portal](https://aka.ms/diskencryptionupdates).
 1. Zoek en selecteer **sleutel kluizen**.
 
-    [![server-side-encryption-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
+    [![Scherm afbeelding van het Azure Portal in het dialoog venster zoeken is uitgevouwen.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
 
     > [!IMPORTANT]
     > De Azure-sleutel kluis, de schijf versleutelings, de virtuele machine, de schijven en moment opnamen moeten allemaal in dezelfde regio en hetzelfde abonnement staan om te kunnen worden geïmplementeerd.
@@ -36,25 +36,25 @@ Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u reso
 
 1. Selecteer **controleren + maken**, Controleer uw keuzes en selecteer vervolgens **maken**.
 
-    ![Scherm opname van de Azure Key Vault maken. De specifieke waarden weer geven die u maakt](media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-vault.png)
+    ![Scherm opname van de Azure Key Vault maken. De specifieke waarden weer geven die u maakt](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-vault.png)
 
 1. Als uw sleutel kluis is geïmplementeerd, selecteert u deze.
 1. Selecteer **sleutels** onder **instellingen**.
 1. Selecteer **Genereren/importeren**.
 
-    ![Scherm opname van het deel venster Key Vault resource-instellingen. Hiermee wordt de knop genereren/importeren in instellingen weer gegeven.](media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-generate-settings.png)
+    ![Scherm opname van het deel venster Key Vault resource-instellingen. Hiermee wordt de knop genereren/importeren in instellingen weer gegeven.](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-generate-settings.png)
 
 1. Zorg dat het **sleutel type** is ingesteld op **RSA** en **RSA-sleutel grootte** ingesteld op **2048**.
 1. Vul de resterende selecties in zoals u wilt en selecteer vervolgens **maken**.
 
-    ![Scherm afbeelding van de Blade een sleutel maken die wordt weer gegeven nadat de knop genereren/importeren is geselecteerd](media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
+    ![Scherm afbeelding van de Blade een sleutel maken die wordt weer gegeven nadat de knop genereren/importeren is geselecteerd](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
 
 ## <a name="set-up-your-disk-encryption-set"></a>Uw schijf versleutelings set instellen
 
 1. Zoek naar **schijf versleutelings sets** en selecteer deze.
 1. Selecteer **+ toevoegen**op de Blade **schijf versleutelings sets** .
 
-    ![Scherm afbeelding van het hoofd scherm van de portal voor schijf versleuteling. De knop toevoegen markeren](media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
+    ![Scherm afbeelding van het hoofd scherm van de portal voor schijf versleuteling. De knop toevoegen markeren](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
 
 1. Selecteer uw resource groep, geef uw versleutelings set een naam en selecteer dezelfde regio als uw sleutel kluis.
 1. Voor **versleutelings type** selecteert u **versleuteling op rest met een door de klant beheerde sleutel**.
@@ -67,12 +67,12 @@ Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u reso
 1. Druk op **selecteren**.
 1. Selecteer **controleren + maken** en vervolgens **maken**.
 
-    ![Scherm opname van de Blade voor het maken van schijf versleuteling. Het abonnement, de resource groep, de naam van de schijf versleutelings, de regio en de sleutel kluis + sleutel kiezer worden weer gegeven.](media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
+    ![Scherm opname van de Blade voor het maken van schijf versleuteling. Het abonnement, de resource groep, de naam van de schijf versleutelings, de regio en de sleutel kluis + sleutel kiezer worden weer gegeven.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
 
 1. Open de schijf versleutelings nadat deze is gemaakt en selecteer de waarschuwing die wordt weer gegeven.
 
-    ![Scherm afbeelding van pop-up van waarschuwing: ' als u een schijf, installatie kopie of moment opname aan een schijf versleutelings wilt koppelen, moet u machtigingen verlenen aan de sleutel kluis. Selecteer deze waarschuwing om door te gaan](media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-alert-fix.png)
+    ![Scherm afbeelding van pop-up van waarschuwing: ' als u een schijf, installatie kopie of moment opname aan een schijf versleutelings wilt koppelen, moet u machtigingen verlenen aan de sleutel kluis. Selecteer deze waarschuwing om door te gaan](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-alert-fix.png)
 
     Er worden twee meldingen over de pop-up en geslaagd. Hierdoor kunt u de schijf versleuteling instellen met uw sleutel kluis.
 
-    ![Scherm opname van geslaagde machtiging en roltoewijzing voor uw sleutel kluis.](media/virtual-machines-disk-encryption-portal/disk-encryption-notification-success.png)
+    ![Scherm opname van geslaagde machtiging en roltoewijzing voor uw sleutel kluis.](./media/virtual-machines-disk-encryption-portal/disk-encryption-notification-success.png)

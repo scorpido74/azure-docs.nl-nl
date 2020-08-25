@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4de682bd315eef100bdbf8dd24faa128c5b8c2a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336919"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815807"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -113,7 +113,7 @@ Hieronder vindt u een hand leiding voor het instellen van een Azure pijp lijnen 
     h. Selecteer **Incrementeel** voor de **implementatie modus**.
 
     > [!WARNING]
-    > Als u **volt ooien** voor de **implementatie modus**selecteert, kunnen bestaande resources worden verwijderd, inclusief alle resources in de doel resource groep die niet zijn gedefinieerd in de Resource Manager-sjabloon.
+    > In de volledige implementatie modus worden resources die in de resource groep aanwezig zijn, maar niet opgegeven in de nieuwe resource manager-sjabloon, **verwijderd**. Raadpleeg [Azure Resource Manager-implementatie modi](../azure-resource-manager/templates/deployment-modes.md) voor meer informatie
 
     ![Data Factory Prod-implementatie](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -165,7 +165,7 @@ Er zijn twee manieren om geheimen af te handelen:
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Machtigingen verlenen aan de Azure pipelines-agent
 
-De Azure Key Vault taak kan mislukken met de fout toegang geweigerd als de juiste machtigingen niet zijn ingesteld. Down load de logboeken voor de release en zoek het. ps1-bestand dat de opdracht bevat om machtigingen te verlenen aan de Azure pipelines-agent. U kunt de opdracht rechtstreeks uitvoeren. U kunt ook de principal-ID uit het bestand kopiëren en het toegangs beleid hand matig toevoegen in de Azure Portal. `Get`en `List` zijn de mini maal vereiste machtigingen.
+De Azure Key Vault taak kan mislukken met de fout toegang geweigerd als de juiste machtigingen niet zijn ingesteld. Down load de logboeken voor de release en zoek het. ps1-bestand dat de opdracht bevat om machtigingen te verlenen aan de Azure pipelines-agent. U kunt de opdracht rechtstreeks uitvoeren. U kunt ook de principal-ID uit het bestand kopiëren en het toegangs beleid hand matig toevoegen in de Azure Portal. `Get` en `List` zijn de mini maal vereiste machtigingen.
 
 ### <a name="updating-active-triggers"></a>Actieve triggers bijwerken
 
@@ -305,7 +305,7 @@ Hier volgt een voor beeld van hoe een parameterisering-sjabloon eruit kan zien:
 ```
 Hier volgt een uitleg van de manier waarop de vorige sjabloon is samengesteld, onderverdeeld op resource type.
 
-#### <a name="pipelines"></a>Pijplijnen
+#### <a name="pipelines"></a>Pipelines
     
 * Een eigenschap in het pad `activities/typeProperties/waitTimeInSeconds` is para meters. Alle activiteiten in een pijp lijn met de naam eigenschap `waitTimeInSeconds` (bijvoorbeeld de `Wait` activiteit) worden als een getal met een standaard naam vastgelegd. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
 * Op dezelfde manier is een eigenschap `headers` (bijvoorbeeld in een `Web` activiteit) para meters van het type `object` (JObject). Het heeft een standaard waarde. Dit is dezelfde waarde als die van de bron-Factory.
@@ -630,7 +630,7 @@ Als u gebruik wilt maken van Git-integratie met uw data factory en een CI/CD-pij
 
 -   U kunt momenteel geen projecten hosten op bitbucket.
 
-## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a>Voor beeld van een script vóór en na implementatie
+## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> Voor beeld van een script vóór en na implementatie
 
 Het volgende voorbeeld script kan worden gebruikt om triggers voor implementatie te stoppen en opnieuw op te starten. Het script bevat ook code voor het verwijderen van resources die zijn verwijderd. Sla het script op in een Azure DevOps Git-opslag plaats en verwijs naar een Azure PowerShell-taak met behulp van versie 4. *.
 

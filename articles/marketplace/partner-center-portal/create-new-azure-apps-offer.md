@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f62483880d2572b6487c87bbd73e0dd7033238d3
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606178"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815659"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -50,7 +50,7 @@ Bekijk de volgende bronnen wanneer u uw Azure-toepassings aanbieding voorbereidt
 
 * Voor beelden
 
-    * [Azure-CLI](../../managed-applications/cli-samples.md)
+    * [Azure CLI](../../managed-applications/cli-samples.md)
     * [Azure PowerShell](../../managed-applications/powershell-samples.md)
     * [Beheerde toepassingsoplossingen](../../managed-applications/sample-projects.md)
 
@@ -249,16 +249,17 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef in de volgende drie pixel grootten PNG-bestanden van het logo van uw aanbieding op:
+Geef een PNG-bestand voor het logo van **grote** grootte op. Het partner centrum gebruikt deze om een **klein** en **gemiddeld** logo te maken. U kunt deze desgewenst later vervangen door andere installatie kopieën.
 
-- **Klein** (48 x 48)
-- **Gemiddeld** (90 x 90)
-- **Groot** (216 x 216)
-- **Breed** (255 x 115)
+- **Groot** (van 216 x 216 tot 350 x 350 px, vereist)
+- **Gemiddeld** (90 x 90 px, optioneel)
+- **Klein** (48 x 48 px, optioneel)
 
-Alle drie de logo's zijn vereist en worden op verschillende plaatsen in de lijst gebruikt.
+Deze logo's worden op verschillende plaatsen in de vermelding gebruikt:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

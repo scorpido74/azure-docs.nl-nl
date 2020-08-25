@@ -4,18 +4,18 @@ description: Gebruik versleuteling op host om end-to-end versleuteling in te sch
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff56654981ef69648b1fa7ad11a8681c887289f6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029005"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816963"
 ---
-# <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>End-to-end-versleuteling inschakelen met versleuteling op host-Azure CLI
+# <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>De Azure CLI gebruiken om end-to-end versleuteling in te scha kelen met behulp van versleuteling op de host
 
 Wanneer u versleuteling inschakelt op de host, worden gegevens die op de VM-host zijn opgeslagen, versleuteld op rest en stromen die zijn versleuteld naar de opslag service. Zie [versleuteling bij host-end-to-end-versleuteling voor uw VM-gegevens](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)voor conceptuele informatie over versleuteling op de host, evenals andere beheerde schijf versleutelings typen.
 
@@ -23,7 +23,7 @@ Wanneer u versleuteling inschakelt op de host, worden gegevens die op de VM-host
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>Ondersteunde regio's
+### <a name="supported-regions"></a>Ondersteunde regio’s
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 

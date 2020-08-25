@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: b3485ebbdf9cf428b09364b73197220e02e9ffa8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751071"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816368"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Wat is er nieuw in Form Recognizer?
 
@@ -28,12 +28,12 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 
 
 - **Rest API referentie is beschikbaar** : Bekijk de [referentie v 2.1-Preview. 1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
-- **Nieuwe talen die naast Engels worden ondersteund**, worden de volgende talen nu ondersteund: voor `Layout` en `Train Custom Model` : Engels (en), Chinees (vereenvoudigd) (zh-ZH), Nederlands (nl), Frans (FR), Duits (de), Italiaans (IT), Portugees (PT) en Spaans (ES).
+- **Nieuwe talen die naast Engels worden ondersteund**, worden de volgende [talen](language-support.md) nu ondersteund: voor `Layout` en `Train Custom Model` : Engels ( `en` ), Chinees (vereenvoudigd) ( `zh-Hans` ), Nederlands ( `nl` ), Frans (), `fr` Duits ( `de` ), Italiaans ( `it` ), Portugees () `pt` en Spaans ( `es` ).
 - **Detectie van selectie vakjes/selectie markering** : formulier Recognizer ondersteunt detectie en extractie van selectie markeringen zoals selectie vakjes en keuze rondjes. De selectie markeringen worden geëxtraheerd in `Layout` en u kunt nu ook labels maken en trainen in `Train Custom Model`  -  _trein voorzien_ om paren van sleutel waarden te extra heren voor selectie markeringen. 
 - Met **model opstellen** kunnen meerdere modellen worden samengesteld en aangeroepen met één model-id. Wanneer een document wordt ingediend om te worden geanalyseerd met een bestaande model-ID, wordt eerst een classificatie stap uitgevoerd om deze naar het juiste aangepaste model te routeren. Model opstellen is beschikbaar voor `Train Custom Model`  -  _trein met labels_.
 - **Model naam** Voeg een beschrijvende naam toe aan uw aangepaste modellen, zodat u eenvoudiger kunt beheren en bijhouden.
-- **Nieuw vooraf ontworpen model voor visite kaartjes** voor het extra heren van algemene velden in het Engels, visite kaartjes voor talen.
-- **Nieuwe land instellingen voor vooraf gemaakte ontvangst bevestigingen** naast en-us, ondersteuning is nu beschikbaar voor en-au, en-ca, en-GB, en-in
+- **[Nieuw vooraf ontworpen model voor visite kaartjes](concept-business-cards.md)** voor het extra heren van algemene velden in het Engels, visite kaartjes voor talen.
+- **[Nieuwe land instellingen voor vooraf gemaakte ontvangst bevestigingen](concept-receipts.md)** naast en-us, ondersteuning is nu beschikbaar voor en-au, en-ca, en-GB, en-in
 - **Kwaliteits verbeteringen** voor `Layout` , `Train Custom Model`  -  _Train zonder labels_ en _trein met labels_.
 
 
@@ -43,6 +43,7 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 
 **Nieuwe voor beelden** zijn beschikbaar op github. 
 - De [recepten voor kennis extractie: formulieren Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) verzamelen aanbevolen procedures van de klant afspraken van Real Form Recognizer en biedt bruikbare code voorbeelden, controle lijsten en voorbeeld pijplijnen die worden gebruikt voor het ontwikkelen van deze projecten. 
+- Het [hulp programma voor het labelen](https://github.com/microsoft/OCR-Form-Tools) van het voor beeld is bijgewerkt ter ondersteuning van de nieuwe v 2.1-functionaliteit. Bekijk deze [Snelstartgids](quickstarts/label-tool.md) om aan de slag te gaan met het hulp programma. 
 - Het voor beeld van een [intelligent kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) formulier Recognizer laat zien hoe u `Analyze Receipt` zonder labels integreert en `Train Custom Model`  -  _traint_.
 
 

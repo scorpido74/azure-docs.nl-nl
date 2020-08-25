@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642211"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816402"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions PowerShell
 
@@ -375,7 +375,7 @@ param([string] $myBlob)
 
 In Power shell is het concept van een Power shell-profiel. Zie [about Profiles](/powershell/module/microsoft.powershell.core/about/about_profiles)(Engelstalig) als u niet bekend bent met Power shell-profielen.
 
-In Power shell-functies wordt het profiel script uitgevoerd wanneer de functie-app wordt gestart. Functie-apps worden gestart wanneer deze voor het eerst worden geïmplementeerd en na een inactiviteit van het systeem ([koude start](#cold-start)).
+In Power shell-functies wordt het profiel script eenmaal per Power shell worker-werk exemplaar in de app uitgevoerd wanneer het voor het eerst wordt geïmplementeerd en na een inactiviteit van het systeem ([koude start](#cold-start). Wanneer gelijktijdigheid wordt ingeschakeld door de waarde voor [PSWorkerInProcConcurrencyUpperBound](#concurrency) in te stellen, wordt het profiel script uitgevoerd voor elke runs Pace die wordt gemaakt.
 
 Wanneer u een functie-app maakt met behulp van hulpprogram ma's, zoals Visual Studio code en Azure Functions Core Tools, wordt er een standaard `profile.ps1` voor u gemaakt. Het standaard profiel wordt beheerd [op basis van de kern Hulpprogramma's github-opslag plaats](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) en bevat:
 
@@ -417,7 +417,10 @@ Wanneer u een nieuw Power shell-functie project maakt, wordt afhankelijkheids be
 Wanneer u het requirements.psd1-bestand bijwerkt, worden bijgewerkte modules geïnstalleerd na het opnieuw opstarten.
 
 > [!NOTE]
-> Voor beheerde afhankelijkheden is toegang tot www.powershellgallery.com nodig om modules te downloaden. Wanneer u lokaal uitvoert, moet u ervoor zorgen dat de runtime toegang heeft tot deze URL door de vereiste firewall regels toe te voegen. 
+> Voor beheerde afhankelijkheden is toegang tot www.powershellgallery.com nodig om modules te downloaden. Wanneer u lokaal uitvoert, moet u ervoor zorgen dat de runtime toegang heeft tot deze URL door de vereiste firewall regels toe te voegen.
+
+> [!NOTE]
+> Beheerde afhankelijkheden bieden momenteel geen ondersteuning voor modules waarvoor de gebruiker een licentie moet accepteren, hetzij door de licentie interactief te accepteren, hetzij door een switch te bieden `-AcceptLicense` bij het aanroepen van `Install-Module` .
 
 De volgende toepassings instellingen kunnen worden gebruikt om te wijzigen hoe de beheerde afhankelijkheden worden gedownload en geïnstalleerd. De upgrade van uw app begint binnen en `MDMaxBackgroundUpgradePeriod` het upgrade proces wordt binnen ongeveer de uitgevoerd `MDNewSnapshotCheckPeriod` .
 
@@ -435,6 +438,7 @@ In functions `PSModulePath` bevat twee paden:
 
 * Een `Modules` map die bestaat in de hoofdmap van de functie-app.
 * Een pad naar een `Modules` map die wordt beheerd door de werk nemer van de Power shell-taal.
+
 
 ### <a name="function-app-level-modules-folder"></a>Functie app-niveau- `Modules` map
 
@@ -502,17 +506,22 @@ De functies van Power shell runtime kunnen standaard slechts één aanroep van e
 * Wanneer u een groot aantal aanroepen tegelijk probeert af te handelen.
 * Wanneer u functies hebt die andere functies binnen dezelfde functie-app aanroepen.
 
-U kunt dit gedrag wijzigen door de volgende omgevings variabele in te stellen op een geheel getal:
+Er zijn een aantal gelijktijdigheids modellen die u kunt verkennen, afhankelijk van het type werk belasting:
 
-```
-PSWorkerInProcConcurrencyUpperBound
-```
+* Verg Roten ```FUNCTIONS_WORKER_PROCESS_COUNT``` . Hierdoor kunnen functie-aanroepen worden verwerkt in meerdere processen binnen hetzelfde exemplaar, waardoor bepaalde CPU-en geheugen overhead wordt geïntroduceerd. In het algemeen zijn de I/O-gebonden functies niet van deze overhead. Voor CPU-gebonden functies is de impact mogelijk aanzienlijk.
 
-U stelt deze omgevings variabele in de [app-instellingen](functions-app-settings.md) van uw functie-app in.
+* Verhoog de waarde voor de instelling van de ```PSWorkerInProcConcurrencyUpperBound``` app. Hierdoor kunt u meerdere runspaces maken binnen hetzelfde proces, waardoor de CPU en de overhead van het geheugen aanzienlijk minder worden.
+
+U kunt deze omgevings variabelen instellen in de [app-instellingen](functions-app-settings.md) van uw functie-app.
+
+Afhankelijk van uw use-case kunnen Durable Functions de schaal baarheid aanzienlijk verbeteren. Zie [Durable functions toepassings patronen](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)voor meer informatie.
+
+>[!NOTE]
+> U krijgt mogelijk de waarschuwingen ' aanvragen worden in de wachtrij geplaatst vanwege geen beschik bare runspaces '. Dit is geen fout. Het bericht vertelt u dat aanvragen in de wachtrij worden geplaatst en worden verwerkt wanneer de vorige aanvragen zijn voltooid.
 
 ### <a name="considerations-for-using-concurrency"></a>Overwegingen voor het gebruik van gelijktijdigheid
 
-Power shell is standaard een script taal met _één thread_ . Gelijktijdigheid kan echter worden toegevoegd met behulp van meerdere Power shell-runspaces in hetzelfde proces. De hoeveelheid runspaces die wordt gemaakt, komt overeen met de instelling van de PSWorkerInProcConcurrencyUpperBound-toepassing. De door Voer wordt beïnvloed door de hoeveelheid CPU en het geheugen die beschikbaar is in het geselecteerde abonnement.
+Power shell is standaard een script taal met _één thread_ . Gelijktijdigheid kan echter worden toegevoegd met behulp van meerdere Power shell-runspaces in hetzelfde proces. De hoeveelheid runspaces die wordt gemaakt, komt overeen met de instelling van de ```PSWorkerInProcConcurrencyUpperBound``` toepassing. De door Voer wordt beïnvloed door de hoeveelheid CPU en het geheugen die beschikbaar is in het geselecteerde abonnement.
 
 Azure PowerShell maakt gebruik van bepaalde contexten op _proces niveau_ en de status om u te helpen bij het besparen van het overschrijven van typen. Als u echter gelijktijdig gebruik in uw functie-app inschakelt en acties aanroept die de status wijzigen, kunt u de timing van race problemen beëindigen. Deze race voorwaarden zijn moeilijk te debuggen omdat een aanroep afhankelijk is van een bepaalde status en de andere aanroep de status heeft gewijzigd.
 

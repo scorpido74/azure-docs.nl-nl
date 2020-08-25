@@ -7,15 +7,15 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: ae9a421a165d6c8bda688819c5233ae5bb1a8562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38686ba35285159d7a27724b5402a6b6e2f3a696
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79139093"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815518"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Azure Red Hat open Shift-klant beheerdersrol
-
+ 
 U bent de Cluster beheerder van een Azure Red Hat open Shift-cluster. Uw account heeft verhoogde machtigingen en toegang tot alle door de gebruiker gemaakte projecten.
 
 Als uw account is gekoppeld aan de autorisatie rol klant-beheerder-cluster, kan hiermee automatisch een project worden beheerd.
@@ -37,7 +37,7 @@ U kunt de cluster functie klant-beheerder-cluster alleen configureren tijdens he
 
 ## <a name="confirm-membership-in-the-customer-administrator-role"></a>Lidmaatschap van de rol klant beheerder bevestigen
 
-Als u het lidmaatschap van de groep klanten beheerder wilt bevestigen, probeert u de open Shift CLI-opdrachten `oc get nodes` of `oc projects` . `oc get nodes`Er wordt een lijst met knoop punten weer gegeven als u de rol klant-admin-cluster hebt en een machtigings fout als u alleen de rol klant-beheerder-project hebt. `oc projects`alle projecten in het cluster worden weer gegeven in plaats van alleen de projecten waarin u werkt.
+Als u het lidmaatschap van de groep klanten beheerder wilt bevestigen, probeert u de open Shift CLI-opdrachten `oc get nodes` of `oc projects` . `oc get nodes` Er wordt een lijst met knoop punten weer gegeven als u de rol klant-admin-cluster hebt en een machtigings fout als u alleen de rol klant-beheerder-project hebt. `oc projects` alle projecten in het cluster worden weer gegeven in plaats van alleen de projecten waarin u werkt.
 
 Als u de rollen en machtigingen in uw cluster verder wilt verkennen, kunt u de [`oc policy who-can <verb> <resource>`](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_rbac.html#managing-role-bindings) opdracht gebruiken.
 

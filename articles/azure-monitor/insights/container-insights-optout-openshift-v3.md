@@ -3,16 +3,16 @@ title: Stoppen met het bewaken van uw Azure Red Hat open Shift v3-cluster | Micr
 description: In dit artikel wordt beschreven hoe u de bewaking van uw Azure Red Hat open Shift-cluster kunt stoppen met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 26c8a574894e117694545508174d0ce7d0f0f5ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091212"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815433"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Het bewaken van uw Azure Red Hat open Shift v3-cluster stoppen
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Het bewaken van uw Azure Red Hat open Shift v3-cluster stoppen 
 
-Nadat u de bewaking van uw Azure Red Hat open Shift versie 3. x-cluster hebt ingeschakeld, kunt u stoppen met het bewaken van het cluster met Azure Monitor voor containers als u besluit dat u het niet meer wilt controleren. In dit artikel wordt beschreven hoe u dit kunt doen met behulp van de Azure Resource Manager sjabloon.  
+Nadat u de bewaking van uw Azure Red Hat open Shift versie 3. x-cluster hebt ingeschakeld, kunt u stoppen met het bewaken van het cluster met Azure Monitor voor containers als u besluit dat u het niet meer wilt controleren. In dit artikel wordt beschreven hoe u dit kunt doen met behulp van de Azure Resource Manager sjabloon. 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 

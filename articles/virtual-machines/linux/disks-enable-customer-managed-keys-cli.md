@@ -2,19 +2,19 @@
 title: 'Azure CLI: door de klant beheerde sleutels inschakelen met met SSE beheerde schijven'
 description: Door de klant beheerde sleutels op uw beheerde schijven inschakelen met de Azure CLI.
 author: roygara
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: cd1855a4ce2d394559db28448d9f1c9a01b4bd08
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 2acc95190454de2ffdd81a05a6e6cf166a9a6549
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235995"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814128"
 ---
-# <a name="azure-cli---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure CLI: door de klant beheerde sleutels inschakelen met versleuteling aan server zijde die beheerde schijven
+# <a name="use-the-azure-cli-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>De Azure CLI gebruiken om versleuteling aan de server zijde in te scha kelen met door de klant beheerde sleutels voor beheerde schijven
 
 Met Azure Disk Storage kunt u uw eigen sleutels beheren wanneer u gebruikmaakt van SSE (server side Encryption) voor beheerde schijven, indien gewenst. Zie de sectie door de [klant beheerde sleutels](disk-encryption.md#customer-managed-keys) in ons artikel over schijf versleuteling voor conceptuele informatie over SSE met door de klant beheerde sleutels en andere beheerde schijf versleutelings typen.
 
@@ -129,5 +129,5 @@ az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url 
 
 - [Bekijk de Azure Resource Manager sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Computers repliceren met door de klant beheerde sleutels ingeschakelde schijven](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
-- [Herstel na nood geval instellen voor virtuele VMware-machines in azure met Power shell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
-- [Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)
+- [Herstel na noodgevallen van virtuele VMware-machines naar Azure instellen met PowerShell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
+- [Herstel na noodgeval instellen naar Azure voor Hyper-V-VM's met behulp van PowerShell en Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

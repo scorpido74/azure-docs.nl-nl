@@ -8,14 +8,14 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448939"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815586"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage"></a>Versleuteling aan de server zijde van Azure Disk Storage
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>Versleuteling aan de server zijde van Azure Disk Storage voor Power shell
 
 Met SSE (server side Encryption) beschermt u uw gegevens en kunt u voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Met SSE worden uw gegevens die zijn opgeslagen op Azure Managed disks (besturings systeem en gegevens schijven), op rest automatisch gecodeerd wanneer deze in de cloud worden bewaard. 
 
@@ -58,7 +58,7 @@ Tijdelijke schijven en tijdelijke besturingssysteem schijven worden op rest vers
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-#### <a name="supported-regions"></a>Ondersteunde regio's
+#### <a name="supported-regions"></a>Ondersteunde regio’s
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -70,7 +70,7 @@ Tijdelijke schijven en tijdelijke besturingssysteem schijven worden op rest vers
 
 Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is gekoppeld aan een bepaalde versleutelings algoritme, implementatie of sleutel die wordt aangetast, kunnen nu kiezen voor extra versleutelen met een ander versleutelings algoritme/dezelfde modus op de laag van de infra structuur met behulp van door het platform beheerde versleutelings sleutels. Deze nieuwe laag kan worden toegepast op blijvende besturings systeem-en gegevens schijven, moment opnamen en installatie kopieën, die allemaal worden versleuteld met dubbele versleuteling.
 
-### <a name="supported-regions"></a>Ondersteunde regio's
+### <a name="supported-regions"></a>Ondersteunde regio’s
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
@@ -84,8 +84,8 @@ Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- End-to-end-versleuteling inschakelen met versleuteling op de host met [Power shell](disks-enable-host-based-encryption-powershell.md) of de [Azure Portal](disks-enable-host-based-encryption-portal.md).
-- Schakel dubbele versleuteling in op de rest voor Managed disks met [Power shell](disks-enable-double-encryption-at-rest-powershell.md) of de [Azure Portal](disks-enable-double-encryption-at-rest-portal.md).
-- Door de klant beheerde sleutels voor beheerde schijven inschakelen met [Power shell](disks-enable-customer-managed-keys-powershell.md) of de [Azure Portal](disks-enable-customer-managed-keys-portal.md).
+- End-to-end-versleuteling inschakelen met versleuteling op de host met [Power shell](disks-enable-host-based-encryption-powershell.md) of de [Azure Portal](../disks-enable-host-based-encryption-portal.md).
+- Schakel dubbele versleuteling in op de rest voor Managed disks met [Power shell](disks-enable-double-encryption-at-rest-powershell.md) of de [Azure Portal](../disks-enable-double-encryption-at-rest-portal.md).
+- Door de klant beheerde sleutels voor beheerde schijven inschakelen met [Power shell](disks-enable-customer-managed-keys-powershell.md) of de [Azure Portal](../disks-enable-customer-managed-keys-portal.md).
 - [Bekijk de Azure Resource Manager sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Wat is Azure Key Vault?](../../key-vault/general/overview.md)

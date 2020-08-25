@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: c648387547e9543c9e509344aa86285504dced7a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 3006522f75ed732c08e453a266e660cf4c577917
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761369"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815365"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteuningsmatrix voor herstel na noodgeval van Azure-VM's tussen Azure-regio's
 
@@ -31,10 +31,10 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 **Resource actie** | **Details**
 --- | ---
 **Kluizen verplaatsen tussen resource groepen** | Niet ondersteund
-**Berekenings-en opslag/netwerk bronnen verplaatsen over resource groepen** | Wordt niet ondersteund.<br/><br/> Als u een virtuele machine of gekoppelde onderdelen, zoals opslag/netwerk, verplaatst nadat de VM is gerepliceerd, moet u de replicatie voor de virtuele machine uitschakelen en opnieuw inschakelen.
+**Berekenings-en opslag/netwerk bronnen verplaatsen over resource groepen** | Niet ondersteund.<br/><br/> Als u een virtuele machine of gekoppelde onderdelen, zoals opslag/netwerk, verplaatst nadat de VM is gerepliceerd, moet u de replicatie voor de virtuele machine uitschakelen en opnieuw inschakelen.
 **Virtuele Azure-machines van het ene naar het andere abonnement repliceren voor herstel na nood gevallen** | Ondersteund binnen dezelfde Azure Active Directory Tenant.
 **Vm's migreren tussen regio's binnen ondersteunde geografische clusters (binnen en tussen abonnementen)** | Ondersteund binnen dezelfde Azure Active Directory Tenant.
-**Vm's binnen dezelfde regio migreren** | Wordt niet ondersteund.
+**Vm's binnen dezelfde regio migreren** | Niet ondersteund.
 
 ## <a name="region-support"></a>Ondersteuning voor regio
 
@@ -185,7 +185,7 @@ Azure Gallery-installatie kopieën-derde partij gepubliceerd | Ondersteund | Wor
 Aangepaste installatie kopieën-externe partij gepubliceerd | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Vm's die zijn gemigreerd met behulp van Site Recovery | Ondersteund | Als een VMware-VM of fysieke machine met Site Recovery is gemigreerd naar Azure, moet u de oudere versie van Mobility service op de computer verwijderen en de computer opnieuw opstarten voordat u deze naar een andere Azure-regio repliceert.
 RBAC-beleid | Niet ondersteund | Beleids regels op basis van op rollen gebaseerd toegangs beheer (RBAC) op Vm's worden niet gerepliceerd naar de failover-VM in de doel regio.
-Extensies | Niet ondersteund | Uitbrei dingen worden niet gerepliceerd naar de failover-VM in de doel regio. Deze moet hand matig worden geïnstalleerd na een failover.
+Uitbreidingen | Niet ondersteund | Uitbrei dingen worden niet gerepliceerd naar de failover-VM in de doel regio. Deze moet hand matig worden geïnstalleerd na een failover.
 Proximity-plaatsings groepen | Ondersteund | Virtuele machines die zich in een proximity-plaatsings groep bevinden, kunnen worden beveiligd met Site Recovery.
 
 
@@ -195,6 +195,7 @@ Proximity-plaatsings groepen | Ondersteund | Virtuele machines die zich in een p
 -- | ---
 Grootte van schijf op een gerepliceerde VM wijzigen | Ondersteund op de bron-VM vóór de failover. U hoeft replicatie niet uit te scha kelen of opnieuw in te scha kelen.<br/><br/> Als u de bron-VM na een failover wijzigt, worden de wijzigingen niet vastgelegd.<br/><br/> Als u na de failover de schijf grootte op de Azure-VM wijzigt, worden de wijzigingen niet door Site Recovery vastgelegd en wordt de oorspronkelijke VM-grootte door failback gewijzigd.
 Een schijf toevoegen aan een gerepliceerde VM | Ondersteund
+Offline wijzigingen in beveiligde schijven | Als u schijven wilt ontkoppelen en offline wijzigingen wilt aanbrengen, moet u een volledige hersynchronisatie activeren.
 
 ## <a name="replicated-machines---storage"></a>Gerepliceerde machines-opslag
 
@@ -254,6 +255,7 @@ De volgende tabel geeft een overzicht van Site Recovery limieten.
 - Deze limieten zijn gebaseerd op onze tests, maar uiteraard dekken niet alle mogelijke toepassings-I/O-combi Naties.
 - De werkelijke resultaten kunnen variëren op basis van de I/O-mix van de app.
 - Er zijn twee limieten die u moet overwegen: gegevens verloop per schijf en per gegevens verloop van de virtuele machine.
+- De huidige limiet voor gegevens verloop per virtuele machine is 54 MB/s, ongeacht de grootte.
 
 **Opslag doel** | **Gemiddelde bron schijf-I/O** |**Gemiddeld gegevens verloop van bron schijf** | **Totale gegevens verloop van bron schijf per dag**
 ---|---|---|---

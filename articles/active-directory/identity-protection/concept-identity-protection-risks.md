@@ -1,22 +1,22 @@
 ---
-title: Wat is risico? Azure AD-identiteitsbeveiliging
+title: Wat is risico? Azure AD Identity Protection
 description: Risico's in Azure AD Identity Protection uitleggen
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507430"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815049"
 ---
 # <a name="what-is-risk"></a>Wat is risico?
 
@@ -39,6 +39,7 @@ Deze Risico's worden offline berekend met de interne en externe Threat Intellige
 | Risico detectie | Beschrijving |
 | --- | --- |
 | Gelekte referenties | Dit type risico detectie geeft aan dat de geldige referenties van de gebruiker zijn gelekt. Wanneer Cybercriminals geldige wacht woorden van legitieme gebruikers beveiligt, delen ze deze referenties vaak. Dit delen geschiedt doorgaans door op het donkere web te plaatsen, sites te plakken of door de referenties op de zwarte markt te verhandelen en te verkopen. Wanneer de micro soft lekkende referentie Service gebruikers referenties ophaalt van de donkere websites, plak sites of andere bronnen, worden ze gecontroleerd op basis van de huidige geldige referenties van de Azure AD-gebruikers om geldige overeenkomsten te vinden. Zie [Veelgestelde vragen](#common-questions)voor meer informatie over gelekte referenties. |
+| Wachtwoord spuit | Een aanval met een wacht woord is het geval wanneer meerdere gebruikers namen worden aangevallen met veelvoorkomende wacht woorden in een geïntegreerde brute kracht om onbevoegde toegang te krijgen. Deze risico detectie wordt geactiveerd wanneer een wachtwoord sproei-aanval is uitgevoerd. |
 | Azure AD-bedreigingsinformatie | Dit type risico detectie duidt op de activiteit van de gebruiker die ongebruikelijk is voor de gegeven gebruiker of is consistent met bekende aanvals patronen op basis van de interne en externe informatie bronnen van micro soft. |
 
 ### <a name="sign-in-risk"></a>Aanmeldingsrisico
