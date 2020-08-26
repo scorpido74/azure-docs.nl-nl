@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: c772345b9cf5d6e4fafdcd951f65bd8c796ab839
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f72952737af9b76b76ac9a08138238138c54614b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082145"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642177"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Quickstart: Een Apache HBase-cluster maken in Azure HDInsight met een ARM-sjabloon
 
@@ -33,7 +33,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux/).
 
-:::code language="json" source="~/quickstart-templates/101-hdinsight-hbase-linux/azuredeploy.json" range="1-199" highlight="103-136":::
+:::code language="json" source="~/quickstart-templates/101-hdinsight-hbase-linux/azuredeploy.json":::
 
 Er worden twee Azure-resources gedefinieerd in de sjabloon:
 
@@ -54,10 +54,10 @@ Er worden twee Azure-resources gedefinieerd in de sjabloon:
     |Resourcegroep|Selecteer in de vervolgkeuzelijst de bestaande resourcegroep of selecteer **Nieuwe maken**.|
     |Locatie|De waarde wordt automatisch ingevuld met de locatie die wordt gebruikt voor de resourcegroep.|
     |Clusternaam|Geef een wereldwijd unieke naam op. Gebruik voor deze sjabloon alleen kleine letters en cijfers.|
-    |Gebruikersnaam voor clusteraanmelding|Geef de gebruikers naam op; de standaard is **beheerder**.|
+    |Gebruikersnaam voor clusteraanmelding|Geef de gebruikersnaam op; de standaard is **beheerder**.|
     |Wachtwoord voor clusteraanmelding|Geef een wachtwoord op. Het wachtwoord moet uit minstens tien tekens bestaan en moet minstens één cijfer, één hoofdletter, één kleine letter en één niet-alfanumeriek teken bevatten (uitgezonderd ' " ` ). |
-    |SSH-gebruikersnaam|Geef de gebruikersnaam op; de standaardwaarde is sshuser|
-    |SSH-wachtwoord|Geef het wachtwoord op.|
+    |Ssh-gebruikersnaam|Geef de gebruikersnaam op; de standaardwaarde is sshuser|
+    |Ssh-wachtwoord|Geef het wachtwoord op.|
 
     ![Resource Manager-sjabloon HBase](./media/quickstart-resource-manager-template/resource-manager-template-hbase.png)
 
@@ -71,7 +71,7 @@ Zodra het cluster is gemaakt, ontvangt u de melding **Implementatie voltooid** m
 
 Nadat u de quickstart hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
-Ga in Azure Portal naar het cluster en selecteer **Verwijderen**.
+Ga in de Azure-portal naar het cluster en selecteer **Verwijderen**.
 
 ![Resource Manager-sjabloon HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
 

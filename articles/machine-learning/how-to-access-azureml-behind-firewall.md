@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827423"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889937"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>De werk ruimte achter een firewall gebruiken voor Azure Machine Learning
 
@@ -24,9 +24,9 @@ In dit artikel vindt u informatie over het configureren van Azure Firewall voor 
 
 Hoewel de informatie in dit document is gebaseerd op het gebruik van [Azure firewall](../firewall/tutorial-firewall-deploy-portal.md), kunt u het gebruiken met andere firewall producten. Als u vragen hebt over het toestaan van communicatie via uw firewall, raadpleegt u de documentatie voor de firewall die u gebruikt.
 
-## <a name="network-rules"></a>Netwerk regels
+## <a name="application-rules"></a>Toepassingsregels
 
-Maak op uw firewall een netwerk regel die verkeer naar en van de adressen in dit artikel toestaat.
+Maak op uw firewall een _toepassings regel_ die verkeer naar en van de adressen in dit artikel toestaat.
 
 > [!TIP]
 > Wanneer u de netwerk regel toevoegt, stelt u het __protocol__ in op wille keurige en de poorten `*` .

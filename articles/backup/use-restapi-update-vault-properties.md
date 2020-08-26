@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u de configuratie van de kluis kunt bijw
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: c68d3accfc6963d7a5eebfef128e3521b45ac886
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827253"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890039"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
 
@@ -17,7 +17,7 @@ In dit artikel wordt beschreven hoe u back-up-gerelateerde configuraties in azur
 
 ## <a name="soft-delete-state"></a>Status voorlopig verwijderen
 
-Het verwijderen van back-ups van een beveiligd item is een belang rijke bewerking die moet worden bewaakt. Ter bescherming tegen onbedoelde verwijderingen heeft Azure Recovery Services kluis een mogelijkheid tot tijdelijke verwijdering. Met deze mogelijkheid kunnen klanten verwijderde back-ups, indien nodig, binnen een bepaalde periode na het verwijderen herstellen.
+Het verwijderen van back-ups van een beveiligd item is een belang rijke bewerking die moet worden bewaakt. Ter bescherming tegen onbedoelde verwijderingen heeft Azure Recovery Services kluis een mogelijkheid tot tijdelijke verwijdering. Met deze mogelijkheid kunt u verwijderde back-ups, indien nodig, binnen een bepaalde periode na het verwijderen herstellen.
 
 Maar er zijn scenario's waarin deze mogelijkheid niet vereist is. Een Azure Recovery Services kluis kan niet worden verwijderd als er back-upitems in zijn, zelfs als ze worden verwijderd. Dit kan een probleem vormen als de kluis onmiddellijk moet worden verwijderd. Bijvoorbeeld: implementatie bewerkingen schonen vaak de gemaakte resources in dezelfde werk stroom. Een implementatie kan een kluis maken, back-ups voor een item configureren, een test herstellen en vervolgens door gaan met het verwijderen van de back-upitems en de kluis. Als het verwijderen van de kluis mislukt, kan de volledige implementatie mislukken. Het uitschakelen van zacht verwijderen is de enige manier om direct verwijderen te garanderen.
 

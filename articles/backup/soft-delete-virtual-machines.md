@@ -4,12 +4,12 @@ description: Meer informatie over hoe u met zacht verwijderen voor virtuele mach
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: 90d55e8ed6c831adf4efaf0663d191697177ea63
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826477"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889822"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Voorlopig verwijderen voor virtuele machines
 
@@ -19,7 +19,7 @@ Zacht verwijderen voor Vm's beveiligt de back-ups van uw Vm's tegen onbedoeld ve
 > Met zacht verwijderen worden verwijderde back-upgegevens alleen beveiligd. Als een virtuele machine wordt verwijderd zonder een back-up, blijven de gegevens in de functie voor het voorlopig verwijderen bewaard. Alle resources moeten worden beveiligd met Azure Backup om volledige tolerantie te garanderen.
 >
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio's
 
 Voorlopig verwijderen wordt momenteel ondersteund in de West-Centraal VS, Azië-oost, Canada-centraal, Canada-oost, Frankrijk-centraal, Frankrijk-zuid, Korea-centraal, Korea-zuid, UK-zuid, UK-west, Australië-oost, Australië-Zuid-Oost, Europa-noord, VS-West, West VS2, VS-midden, Zuid-Azië-oost, Noord-Centraal VS, Zuid-Centraal VS, Japan-Oost, Japan-West, VS-Oost 2 , Zwitserland-noord, Zwitserland-west, Noor wegen West, Noor wegen Oost en alle nationale regio's.
 
@@ -110,7 +110,7 @@ De ' DeleteState ' van het back-upitem wordt teruggezet op ' NotDeleted '. De be
 ## <a name="soft-delete-for-vms-using-rest-api"></a>Voorlopig verwijderen voor Vm's met behulp van REST API
 
 - Verwijder de back-ups met REST API zoals [hier](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)wordt vermeld.
-- Als de gebruiker deze Verwijder bewerkingen ongedaan wil maken, raadpleegt u de stappen die [hier](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)worden beschreven.
+- Als u deze Verwijder bewerkingen ongedaan wilt maken, raadpleegt u de stappen die [hier](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)worden beschreven.
 
 ## <a name="how-to-disable-soft-delete"></a>Voorlopig verwijderen uitschakelen
 

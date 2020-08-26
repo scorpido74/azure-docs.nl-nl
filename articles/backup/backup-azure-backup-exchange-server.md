@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van een Exchange-Ser
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 139741c4f721f0fd86cc585b4cfb2ed97c45b25c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 48a0e0f4b838b3f9b26de5a9cf297ddcdfc2a7e9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827406"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889716"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Met System Center 2012 R2 DPM een back-up maken van een Exchange-server in Azure Backup
 
@@ -32,7 +32,7 @@ Voordat u doorgaat, moet u ervoor zorgen dat aan alle [vereisten](backup-azure-d
 * De agent-en kluis referenties zijn gedownload naar de DPM-server.
 * De agent is geïnstalleerd op de DPM-server.
 * De kluis referenties zijn gebruikt voor het registreren van de DPM-server.
-* Als u Exchange 2016 beveiligt, moet u een upgrade uitvoeren naar DPM 2012 R2 UR9 of hoger
+* Als u Exchange 2016 wilt beveiligen, moet u een upgrade uitvoeren naar DPM 2012 R2 UR9 of hoger.
 
 ## <a name="dpm-protection-agent"></a>DPM-beveiligings agent
 
@@ -49,7 +49,7 @@ Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de E
 4. Selecteer de Exchange Server-Data Base die u wilt beveiligen en klik op **volgende**.
 
    > [!NOTE]
-   > Als u Exchange 2013 beveiligt, controleert u de [vereisten voor exchange 2013](/system-center/dpm/back-up-exchange).
+   > Als u Exchange 2013 wilt beveiligen, controleert u de [vereisten voor exchange 2013](/system-center/dpm/back-up-exchange).
    >
    >
 

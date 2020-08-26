@@ -4,12 +4,12 @@ description: Vind antwoorden op veelgestelde vragen over het maken van back-ups 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827236"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890552"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -68,7 +68,7 @@ De Azure Backup Recovery Services kluis kan alle knoop punten die zich in dezelf
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>Maken succesvolle back-uptaken waarschuwingen?
 
-Nee. Succesvolle back-uptaken maken geen waarschuwingen. Er worden alleen waarschuwingen verzonden voor mislukte back-uptaken. Gedetailleerd gedrag voor portal waarschuwingen wordt [hier](backup-azure-monitoring-built-in-monitor.md)beschreven. Als u echter geïnteresseerd bent over waarschuwingen, zelfs voor geslaagde taken, kunt u bewaking gebruiken [met behulp van Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+Nee. Succesvolle back-uptaken maken geen waarschuwingen. Er worden alleen waarschuwingen verzonden voor mislukte back-uptaken. Gedetailleerd gedrag voor portal waarschuwingen wordt [hier](backup-azure-monitoring-built-in-monitor.md)beschreven. Als u echter geïnteresseerd bent in waarschuwingen, zelfs voor geslaagde taken, kunt u de [bewaking gebruiken met behulp van Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Kan ik geplande back-uptaken weer geven in het menu back-uptaken?
 
@@ -94,7 +94,7 @@ Als u geen **back-up maakt met gegevens verwijderen**, zullen er geen toekomstig
 
 Een hernoemde data base wordt behandeld als een nieuwe data base. De service behandelt deze situatie dus als de data base niet is gevonden en de back-ups niet kunnen worden uitgevoerd.
 
-U kunt de data base selecteren, waarvan de naam nu wordt gewijzigd en er beveiliging op configureren. Als de automatische beveiliging is ingeschakeld voor het exemplaar, wordt de data base waarvan de naam is gewijzigd, automatisch gedetecteerd en beveiligd.
+U kunt de data base selecteren, waarvan de naam nu wordt gewijzigd en er beveiliging op configureren. Als de automatische beveiliging is ingeschakeld voor het exemplaar, wordt de naam van de data base automatisch gedetecteerd en beveiligd.
 
 ## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Waarom kan ik een toegevoegde data base niet zien voor een niet-beveiligde instantie?
 

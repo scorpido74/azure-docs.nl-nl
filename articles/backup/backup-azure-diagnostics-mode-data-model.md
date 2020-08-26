@@ -3,12 +3,12 @@ title: Gegevens model van Azure Monitor logboeken
 description: In dit artikel vindt u informatie over de Azure Monitor Log Analytics gegevens model gegevens voor Azure Backup gegevens.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 897431feae6cd3166b594d4d6848204df76fe3fa
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761403"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890260"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics gegevens model voor Azure Backup gegevens
 
@@ -37,7 +37,7 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | AlertSeverity_s |Tekst |Ernst van de waarschuwing, bijvoorbeeld kritiek |
 |AlertTimeToResolveInMinutes_s    | Aantal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
 |AlertConsolidationStatus_s   |Tekst         |Vaststellen of de waarschuwing een geconsolideerde waarschuwing is         |
-|CountOfAlertsConsolidated_s     |Aantal         |Aantal geconsolidatiete waarschuwingen als het een geconsolideerde waarschuwing is          |
+|CountOfAlertsConsolidated_s     |Aantal         |Aantal waarschuwingen dat is geconsolideerd als het een geconsolideerde waarschuwing is          |
 |AlertRaisedOn_s     |Tekst         |Het type entiteit waarop de waarschuwing is opgetreden         |
 |AlertCode_s     |Tekst         |Code voor een unieke identificatie van een waarschuwings type         |
 |RecommendedAction_s   |Tekst         |Aanbevolen actie om de waarschuwing op te lossen         |
@@ -94,14 +94,14 @@ Deze tabel bevat details over koppelingen van back-upitems met verschillende ent
 
 | Veld | Gegevenstype | Beschrijving |
 | --- | --- | --- |
-| EventName_s |Tekst |Dit veld vertegenwoordigt de naam van deze gebeurtenis, maar is altijd AzureBackupCentralReport |  
+| EventName_s |Tekst |Dit veld vertegenwoordigt de naam van deze gebeurtenis. Het is altijd AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Tekst |De unieke ID van het back-upitem |
-| SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
+| SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Het is **v2** |
 | State_s |Tekst |Huidige status van het object koppeling van het back-upitem, bijvoorbeeld actief, verwijderd |
 | BackupManagementType_s |Tekst |Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
 | BackupItemSourceSize_s |Tekst | Front-end grootte van het back-upitem |
 | BackupManagementServerUniqueId_s |Tekst | Veld voor het identificeren van de back-upbeheerserver waarop het back-upitem is beveiligd, indien van toepassing |
-| Categorie |Tekst |Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Log Analytics zijn gepusht, en is AzureBackupReport |
+| Categorie |Tekst |Dit veld vertegenwoordigt de categorie diagnostische gegevens die naar Log Analytics zijn gepusht. Het is AzureBackupReport |
 | OperationName |Tekst |Dit veld vertegenwoordigt de naam van de huidige bewerking-BackupItemAssociation |
 | Resource |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | ProtectedContainerUniqueId_s |Tekst |De unieke id van de beveiligde server die is gekoppeld aan het back-upitem (was ProtectedServerUniqueId_s in v1) |
@@ -144,7 +144,7 @@ Deze tabel bevat details over projectgerelateerde velden.
 | State_s |Tekst |Huidige status van het taak object, bijvoorbeeld actief, verwijderd |
 | BackupManagementType_s |Tekst |Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
 | OperationName |Tekst |Dit veld bevat de naam van de huidige bewerking-taak |
-| Categorie |Tekst |Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
+| Categorie |Tekst |Dit veld vertegenwoordigt de categorie diagnostische gegevens die naar Azure Monitor logboeken worden gepusht. Het is AzureBackupReport |
 | Resource |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | ProtectedServerUniqueId_s |Tekst |De unieke id van de beveiligde server die aan de taak is gekoppeld |
 | ProtectedContainerUniqueId_s |Tekst | Unieke ID voor het identificeren van de beveiligde container waarop de taak wordt uitgevoerd |
@@ -174,12 +174,12 @@ Deze tabel bevat details over velden die betrekking hebben op het beleid.
 
 | Veld | Gegevenstype | Versies van toepassing | Beschrijving |
 | --- | --- | --- | --- |
-| EventName_s |Tekst ||Dit veld vertegenwoordigt de naam van deze gebeurtenis, maar is altijd AzureBackupCentralReport |
-| SchemaVersion_s |Tekst ||Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
+| EventName_s |Tekst ||Dit veld vertegenwoordigt de naam van deze gebeurtenis. Het is altijd AzureBackupCentralReport |
+| SchemaVersion_s |Tekst ||Dit veld geeft de huidige versie van het schema aan. Het is **v2** |
 | State_s |Tekst ||Huidige status van het beleids object, bijvoorbeeld actief, verwijderd |
 | BackupManagementType_s |Tekst ||Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
 | OperationName |Tekst ||Dit veld bevat de naam van de huidige bewerking-beleid |
-| Categorie |Tekst ||Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
+| Categorie |Tekst ||Dit veld vertegenwoordigt de categorie diagnostische gegevens die naar Azure Monitor logboeken worden gepusht. Het is AzureBackupReport |
 | Resource |Tekst ||Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | PolicyUniqueId_g |Tekst ||Unieke ID voor het identificeren van het beleid |
 | PolicyName_s |Tekst ||De naam van het beleid dat is gedefinieerd |
@@ -196,7 +196,7 @@ Deze tabel bevat details over velden die betrekking hebben op het beleid.
 | MonthlyRetentionTimes_s |Tekst ||De datum en tijd waarop de maandelijkse retentie is geconfigureerd |
 | MonthlyRetentionFormat_s |Tekst ||Type configuratie voor de maandelijkse Bewaar periode, bijvoorbeeld dagelijks voor dag, wekelijks voor op basis van de week |
 | MonthlyRetentionDaysOfTheWeek_s |Tekst ||Dagen van de week geselecteerd voor een maandelijkse Bewaar periode |
-| MonthlyRetentionWeeksOfTheMonth_s |Tekst ||Weken van de maand waarin de maandelijkse retentie is geconfigureerd, bijvoorbeeld eerst, laatste, enzovoort. |
+| MonthlyRetentionWeeksOfTheMonth_s |Tekst ||Weken van de maand waarin de maandelijkse retentie is geconfigureerd, bijvoorbeeld eerst, laatste |
 | YearlyRetentionDuration_s |Decimaal getal ||Totale Bewaar duur in jaren voor geconfigureerde back-ups |
 | YearlyRetentionTimes_s |Tekst ||De datum en tijd waarop de jaarlijkse Bewaar periode is geconfigureerd |
 | YearlyRetentionMonthsOfTheYear_s |Tekst ||Maanden van het jaar dat is geselecteerd voor een jaarlijkse Bewaar periode |
@@ -222,12 +222,12 @@ Deze tabel bevat details over beleids koppelingen met verschillende entiteiten.
 
 | Veld | Gegevenstype | Versies van toepassing | Beschrijving |
 | --- | --- | --- | --- |
-| EventName_s |Tekst ||Dit veld vertegenwoordigt de naam van deze gebeurtenis, maar is altijd AzureBackupCentralReport |
-| SchemaVersion_s |Tekst ||Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
+| EventName_s |Tekst ||Dit veld vertegenwoordigt de naam van deze gebeurtenis. Het is altijd AzureBackupCentralReport |
+| SchemaVersion_s |Tekst ||Dit veld geeft de huidige versie van het schema aan. Het is **v2** |
 | State_s |Tekst ||Huidige status van het beleids object, bijvoorbeeld actief, verwijderd |
 | BackupManagementType_s |Tekst ||Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
 | OperationName |Tekst ||Dit veld vertegenwoordigt de naam van de huidige bewerking-PolicyAssociation |
-| Categorie |Tekst ||Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
+| Categorie |Tekst ||Dit veld vertegenwoordigt de categorie diagnostische gegevens die naar Azure Monitor logboeken worden gepusht. Het is AzureBackupReport |
 | Resource |Tekst ||Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | PolicyUniqueId_g |Tekst ||Unieke ID voor het identificeren van het beleid |
 | VaultUniqueId_s |Tekst ||De unieke ID van de kluis waartoe dit beleid behoort |
@@ -266,12 +266,12 @@ Deze tabel bevat details over velden die betrekking hebben op opslag.
 | --- | --- | --- |
 | CloudStorageInBytes_s |Decimaal getal |Back-upopslag voor de cloud die wordt gebruikt voor back-ups, berekend op basis van de meest recente waarde (dit veld is alleen voor v1-schema)|
 | ProtectedInstances_s |Decimaal getal |Aantal beveiligde instanties dat wordt gebruikt voor het berekenen van de front-end opslag in de facturering, berekend op basis van de nieuwste waarde |
-| EventName_s |Tekst |Dit veld vertegenwoordigt de naam van deze gebeurtenis, maar is altijd AzureBackupCentralReport |
-| SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
+| EventName_s |Tekst |Dit veld vertegenwoordigt de naam van deze gebeurtenis. Het is altijd AzureBackupCentralReport |
+| SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Het is **v2** |
 | State_s |Tekst |Huidige status van het opslag object, bijvoorbeeld actief, verwijderd |
 | BackupManagementType_s |Tekst |Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
 | OperationName |Tekst |Dit veld bevat de naam van de huidige bewerking-opslag |
-| Categorie |Tekst |Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
+| Categorie |Tekst |Dit veld vertegenwoordigt de categorie diagnostische gegevens die naar Azure Monitor logboeken worden gepusht. Het is AzureBackupReport |
 | Resource |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | ProtectedServerUniqueId_s |Tekst |De unieke ID van de beveiligde server waarvoor opslag wordt berekend |
 | VaultUniqueId_s |Tekst |De unieke ID van de kluis voor opslag wordt berekend |
@@ -293,7 +293,7 @@ Deze tabel bevat basis velden die betrekking hebben op opslag en die opslag aan 
 | Veld | Gegevenstype | Beschrijving |
 | --- | --- |  --- |
 | StorageUniqueId_s |Tekst |Unieke ID die wordt gebruikt voor het identificeren van de opslag entiteit |
-| SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
+| SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Het is **v2** |
 | BackupItemUniqueId_s |Tekst |Unieke ID die wordt gebruikt om het back-upitem te identificeren dat is gerelateerd aan de opslag entiteit |
 | BackupManagementServerUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de back-upbeheerserver te identificeren die betrekking heeft op de opslag entiteit|
 | VaultUniqueId_s |Tekst |Unieke ID die wordt gebruikt om de kluis te identificeren die is gerelateerd aan de opslag entiteit|
@@ -306,11 +306,11 @@ Deze tabel bevat details over aan de kluis gerelateerde velden.
 
 | Veld | Gegevenstype | Beschrijving |
 | --- | --- | --- |
-| EventName_s |Tekst |Dit veld vertegenwoordigt de naam van deze gebeurtenis, maar is altijd AzureBackupCentralReport |
-| SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
+| EventName_s |Tekst |Dit veld vertegenwoordigt de naam van deze gebeurtenis. Het is altijd AzureBackupCentralReport |
+| SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Het is **v2** |
 | State_s |Tekst |Huidige status van het kluis object, bijvoorbeeld actief, verwijderd |
 | OperationName |Tekst |Dit veld bevat de naam van de huidige bewerking-kluis |
-| Categorie |Tekst |Dit veld vertegenwoordigt een categorie met diagnostische gegevens die naar Azure Monitor logboeken zijn gepusht, en is AzureBackupReport |
+| Categorie |Tekst |Dit veld vertegenwoordigt de categorie diagnostische gegevens die naar Azure Monitor logboeken worden gepusht. Het is AzureBackupReport |
 | Resource |Tekst |Dit is de resource waarvoor gegevens worden verzameld, de naam van Recovery Services kluis wordt weer gegeven |
 | VaultUniqueId_s |Tekst |De unieke ID van de kluis |
 | VaultName_s |Tekst |Naam van de kluis |
@@ -470,7 +470,7 @@ Raadpleeg de derde kolom ' description ' in het hierboven beschreven [gegevens m
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>Uw query's wijzigen om het v2-schema te gebruiken
 
-Omdat het v1-schema zich op een afschaffing pad bevindt, wordt u aangeraden alleen het v2-schema te gebruiken in alle aangepaste query's op Azure Backup diagnostische gegevens. Hieronder ziet u een voor beeld van hoe u uw query's bijwerkt om afhankelijkheden van v1-schema te verwijderen:
+Omdat het v1-schema zich op een afschaffing pad bevindt, is het raadzaam om alleen het v2-schema te gebruiken in alle aangepaste query's op Azure Backup diagnostische gegevens. Hieronder ziet u een voor beeld van hoe u uw query's bijwerkt om afhankelijkheden van v1-schema te verwijderen:
 
 1. Bepaal of uw query een veld gebruikt dat alleen van toepassing is op v1-schema. Stel dat u een query hebt om alle back-upitems en de bijbehorende beveiligde servers als volgt weer te geven:
 
@@ -481,9 +481,9 @@ Omdat het v1-schema zich op een afschaffing pad bevindt, wordt u aangeraden alle
     | distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
     ````
 
-    De bovenstaande query gebruikt het veld ProtectedServerUniqueId_s dat alleen van toepassing is op het v1-schema. Het v2-schema equivalent van dit veld is ProtectedContainerUniqueId_s (zie tabellen hierboven). Het veld BackupItemUniqueId_s is van toepassing op zelfs het v2-schema en hetzelfde veld kan worden gebruikt in deze query.
+    De bovenstaande query gebruikt het veld ProtectedServerUniqueId_s, dat alleen van toepassing is op het v1-schema. Het v2-schema equivalent van dit veld is ProtectedContainerUniqueId_s (zie tabellen hierboven). Het veld BackupItemUniqueId_s is van toepassing op zelfs het v2-schema en hetzelfde veld kan worden gebruikt in deze query.
 
-2. Werk de query bij om de v2-schema veld namen te gebruiken. Het is raadzaam om het filter ' where SchemaVersion_s = = ' v2 ' in al uw query's te gebruiken, zodat alleen records die overeenkomen met het v2-schema worden geparseerd door de query:
+2. Werk de query bij om de v2-schema veld namen te gebruiken. Het is een aanbevolen procedure om het filter te gebruiken **waarbij SchemaVersion_s = ' v2 '** in al uw query's, zodat alleen records die overeenkomen met het v2-schema worden geparseerd door de query:
 
     ````Kusto
     AzureDiagnostics

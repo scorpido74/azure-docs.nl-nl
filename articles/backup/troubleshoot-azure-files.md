@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825457"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889805"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -300,7 +300,7 @@ Fout bericht: de vermelde herstel punten zijn niet beschikbaar omdat de bijbehor
 Controleer of de back-up van de bestands share is verwijderd. Als de status zacht verwijderd was, controleert u of de tijdelijke verwijdering van de Bewaar periode is afgelopen en niet is hersteld. In een van deze gevallen gaan alle moment opnamen permanent verloren en kunnen de gegevens niet worden hersteld.
 
 >[!NOTE]
-> U wordt aangeraden de back-ups van de bestands share niet te verwijderen, of als deze de status zacht verwijderd heeft, verwijdert u de verwijdering voordat de tijdelijke verwijderings periode eindigt, om te voor komen dat alle herstel punten verloren gaan.
+> U wordt aangeraden de back-ups van de bestands share niet te verwijderen, of als deze de status zacht verwijderd heeft, de verwijdering ongedaan te maken voordat de tijdelijke verwijderings periode eindigt, om te voor komen dat alle herstel punten verloren gaan.
 
 ### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState-back-up is mislukt omdat de Azure-bestands share de status zacht verwijderd heeft
 

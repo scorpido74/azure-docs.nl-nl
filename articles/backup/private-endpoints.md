@@ -3,12 +3,12 @@ title: Privé-eindpunten
 description: Meer informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b7f7c6461701b6f4e438cbead60456b327c7c207
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871544"
+ms.locfileid: "88890889"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
@@ -99,7 +99,7 @@ Er zijn twee verplichte DNS-zones die moeten worden gemaakt:
 
 ### <a name="optional-dns-zone"></a>Optionele DNS-zone
 
-Klanten kunnen ervoor kiezen om hun persoonlijke eind punten te integreren met privé-DNS-zones voor Azure Backup (besproken in de sectie over het maken van privé-eind punten) voor service communicatie. Als u niet wilt integreren met de privé-DNS-zone, kunt u ervoor kiezen om uw eigen DNS-server te gebruiken of een privé-DNS-zone afzonderlijk te maken. Dit is een aanvulling op de twee verplichte privé-DNS-zones die in de vorige sectie zijn besproken.
+U kunt ervoor kiezen om uw persoonlijke eind punten te integreren met privé-DNS-zones voor Azure Backup (besproken in de sectie voor het [maken en gebruiken van persoonlijke eind punten voor back-up](#creating-and-using-private-endpoints-for-backup)) voor service communicatie. Als u niet wilt integreren met de privé-DNS-zone, kunt u ervoor kiezen om uw eigen DNS-server te gebruiken of een privé-DNS-zone afzonderlijk te maken. Dit is een aanvulling op de twee verplichte privé-DNS-zones die in de vorige sectie zijn besproken.
 
 Als u een afzonderlijke privé-DNS-zone wilt maken in azure, kunt u hetzelfde doen met behulp van dezelfde stappen die worden gebruikt voor het maken van verplichte DNS-zones. De naamgevings-en abonnements gegevens worden hieronder gedeeld:
 

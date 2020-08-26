@@ -4,12 +4,12 @@ description: 'Quickstart: Een Event Hubs-naamruimte met een Event Hub en consume
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: 445a52593e95074d9941a1592d688de7eea9c006
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dbec62c182fe804ba45cae2f9e40c189b9bc0279
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522037"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641123"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>Quickstart: Een Event Hub maken met behulp van een ARM-sjabloon
 
@@ -29,7 +29,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/).
 
-:::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
+:::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json":::
 
 Onder meer de volgende resources worden in de sjabloon gedefinieerd:
 

@@ -3,12 +3,12 @@ title: Offline back-up voor Data Protection Manager (DPM) en Microsoft Azure Bac
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor eerdere versies van DPM en Azure Backup Server uitgelegd.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 45518607b96848dc211c1a787ecfa85432cd842e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826596"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890090"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Offline back-upwerk stroom voor DPM en Azure Backup Server (vorige versies)
 
@@ -203,7 +203,7 @@ Het hulp programma *AzureOfflineBackupDiskPrep* wordt gebruikt om de SATA-schijv
 
 1. Voer de stationsletter zonder de afsluitende dubbele punt in voor de gekoppelde schijf die u wilt voorbereiden voor overdracht naar Azure. Wanneer u hierom wordt gevraagd, geeft u een bevestiging voor de Format teren van het station.
 
-    Het hulp programma begint vervolgens met het voorbereiden van de schijf en het kopiëren van de back-upgegevens. Mogelijk moet u extra schijven koppelen wanneer u hierom wordt gevraagd, in het geval dat de schijf niet voldoende ruimte heeft voor de back-upgegevens. <br/>
+    Het hulp programma begint vervolgens met het voorbereiden van de schijf en het kopiëren van de back-upgegevens. Mogelijk moet u extra schijven toevoegen wanneer u hierom wordt gevraagd door het hulp programma als de schijf niet voldoende ruimte heeft voor de back-upgegevens. <br/>
 
     Wanneer het hulp programma is voltooid, zijn een of meer schijven die u hebt geleverd voor bereid voor verzen ding naar Azure. Een import taak met de naam die u hebt ingevoerd tijdens de werk stroom in de sectie ' offline back-up initiëren ' wordt ook gemaakt in Azure. Ten slotte wordt in het hulp programma het verzend adres weer gegeven naar het Azure-Data Center waar de schijven moeten worden verzonden.
 

@@ -3,12 +3,12 @@ title: Overzicht van Recovery Services-kluizen
 description: Een overzicht en vergelijking tussen Recovery Services kluizen en Azure Backup kluizen.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: c69883a88473cd304bb772430ddfe662da4d8fac
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757095"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889614"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
 
@@ -20,7 +20,7 @@ In dit artikel worden de functies van een Recovery Services kluis beschreven. Ee
 
 - **Op rollen gebaseerd Access Control (RBAC)**: RBAC biedt nauw keurig beheer van toegangs beheer in Azure. [Azure biedt verschillende ingebouwde rollen](../role-based-access-control/built-in-roles.md)en Azure backup heeft drie [ingebouwde rollen voor het beheren van herstel punten](backup-rbac-rs-vault.md). Recovery Services kluizen zijn compatibel met RBAC, waarmee back-up-en herstel toegang wordt beperkt tot de gedefinieerde set gebruikers rollen. [Meer informatie](backup-rbac-rs-vault.md)
 
-- **Voorlopig verwijderen**: met zacht verwijderen, zelfs als een schadelijke actor een back-up verwijdert (of de back-upgegevens per ongeluk zijn verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De resterende 14 dagen voor het bewaren van back-upgegevens in de status ' voorlopig verwijderen ' zijn niet van toepassing op de klant. [Meer informatie](backup-azure-security-feature-cloud.md).
+- **Voorlopig verwijderen**: met zacht verwijderen, zelfs als een schadelijke actor een back-up verwijdert (of de back-upgegevens per ongeluk zijn verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen voor het bewaren van back-upgegevens in de status ' voorlopig verwijderen ' maken geen kosten voor u. [Meer informatie](backup-azure-security-feature-cloud.md).
 
 - **Restore voor meerdere regio's**: met cross Region Restore (CRR) kunt u virtuele Azure-machines herstellen in een secundaire regio, een Azure-gekoppelde regio. Als Azure een nood geval in de primaire regio declareert, kunnen de gegevens die in de secundaire regio worden gerepliceerd, in de secundaire regio worden teruggezet om de werkelijke downtime in de primaire regio voor hun omgeving te verminderen. [Meer informatie](backup-azure-arm-restore-vms.md#cross-region-restore).
 

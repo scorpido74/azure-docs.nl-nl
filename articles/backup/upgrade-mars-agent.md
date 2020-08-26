@@ -3,12 +3,12 @@ title: De Microsoft Azure Recovery Services-agent (MARS) upgraden
 description: Meer informatie over het upgraden van de Microsoft Azure Recovery Services-agent (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 1f4fd5074b0c6195742935e0cf0e742a00a3549e
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 79abc877f102d83cdb3c72a571f2203984eb54e4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827321"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890192"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>De Microsoft Azure Recovery Services-agent (MARS) upgraden
 
@@ -31,7 +31,7 @@ Voor installaties van Azure Backup Agent en Azure backup server:
 
     ![Lijst met servers waarop de MARS-agent is geïnstalleerd](./media/upgrade-mars-agent/protected-servers.png)
 
-1. Sorteer de kolom Azure Backup Agent versie door te klikken op de kolom **Agent versie** voor de installatie van Mars agent of de kolom **Azure Backup Agent versie** voor installaties van Azure backup server.
+1. Sorteer de kolom Azure Backup Agent versie door de kolom **Agent versie** te selecteren voor installatie van de Mars-agent of de kolom **Azure Backup Agent versie** voor installaties van Azure backup server.
 
 1. In de vorige stap krijgt u de lijst met servers met Azure Backup-agents met een lagere versie dan 2.0.9083.0 of agent versies vermeld als lege waarden. Dit zijn de servers waar Azure Backup agents moeten worden bijgewerkt.
 
@@ -39,13 +39,13 @@ Voor installaties van Azure Backup Agent en Azure backup server:
 
 Zodra u hebt vastgesteld welke servers een Azure Backup Agent update nodig hebben, voert u de volgende stappen uit voor elke geïdentificeerde server (met behulp van Azure backup server of de MARS-agent). [Down load de nieuwste versie van de Azure backup-agent](https://aka.ms/azurebackup_agent) voordat u de volgende stappen uitvoert.
 
-1. Klik op een rij met Azure Backup Agent kleiner dan 2.0.9083.0 of leeg is. Hiermee wordt het scherm Server Details geopend.
+1. Selecteer een rij met Azure Backup Agent kleiner dan 2.0.9083.0 of leeg is. Hiermee wordt het scherm Server Details geopend.
 
     ![Beveiligde servers met verouderde agent versies](./media/upgrade-mars-agent/old-agent-version.png)
 
     ![Azure backup-servers met verouderde agent versies](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
 
-1. Klik op **verbinding maken** om een extern bureau blad-verbindings bestand te ontvangen om verbinding te maken met de server of rechtstreeks verbinding te maken met de server via de Extern bureaublad verbinding op uw server.
+1. Selecteer **verbinding maken** om een extern bureau blad-verbindings bestand te ontvangen om verbinding te maken met de server of maak rechtstreeks verbinding met de server via de Extern bureaublad verbinding op uw server.
 
     ![Verbinding maken met de server via verbinding met extern bureau blad](./media/upgrade-mars-agent/connect-to-server.png)
 
@@ -57,7 +57,7 @@ Zodra u hebt vastgesteld welke servers een Azure Backup Agent update nodig hebbe
 1. Als uw server of server proxy beperkte internet toegang heeft, zorgt u ervoor dat de firewall-instellingen op de server/proxy zo zijn geconfigureerd dat de URL die geschikt is voor de Azure-Cloud die u gebruikt, wordt toegestaan:
 
     Azure-Cloud | URL
-    -- | ---
+    --- | ---
     Azure-Cloud (openbaar) |   `https://login.windows.net`
     Azure China 21Vianet-Cloud   | `https://login.chinacloudapi.cn`
     Azure-cloud van de Amerikaanse overheid |   `https://login.microsoftonline.us`
@@ -71,9 +71,9 @@ Zodra u hebt vastgesteld welke servers een Azure Backup Agent update nodig hebbe
 
     ![De wizard upgrade van de Microsoft Azure Recovery Services-agent](./media/upgrade-mars-agent/agent-upgrade-wizard.png)
 
-1. Klik op **Volgende**.
+1. Selecteer **Volgende**.
 
-1. Klik op **Upgrade**.
+1. Selecteer **upgrade**.
 
     ![Installatie van de Microsoft Azure Recovery Services-agent](./media/upgrade-mars-agent/upgrade-installation.png)
 
@@ -85,7 +85,7 @@ Als u Azure backup-agents hebt geïnstalleerd op de System Center Data Protectio
 
 1. Meld u als beheerder aan bij uw SC DPM-server.
 2. Open de DPM-console.
-3. Klik op **beheer** in de linkerbenedenhoek van de-console.
+3. Selecteer **beheer** in de linkerbenedenhoek van de-console.
 4. Zoek in de informatie die wordt weer gegeven in de linkernavigatiebalk naar de versie gegevens van de Azure Backup Agent.
 5. Als de versie lager is dan 2.0.9083.0, downloadt u het installatie programma van de nieuwste Azure backup-agent en voert u het installatie programma uit op de DPM-server om de Azure Backup-Agent bij te werken.
 

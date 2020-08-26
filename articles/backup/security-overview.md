@@ -3,12 +3,12 @@ title: Overzicht van beveiligings functies
 description: Meer informatie over de beveiligings mogelijkheden in Azure Backup waarmee u uw back-upgegevens kunt beschermen en voldoen aan de beveiligings behoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 0354e319c82e02072a8771f9aae383bf0b6240f6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824591"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890464"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Overzicht van beveiligings functies in Azure Backup
 
@@ -56,7 +56,7 @@ Versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>Beveiliging van back-upgegevens tegen onbedoelde verwijderingen
 
-Azure Backup biedt beveiligings functies voor het beveiligen van back-upgegevens, zelfs na verwijdering. Als de gebruiker de back-up van een virtuele machine verwijdert, wordt de back-up met de optie voorlopig verwijderd gedurende 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' heeft geen kosten voor de klant. Meer [informatie over zacht verwijderen](backup-azure-security-feature-cloud.md).
+Azure Backup biedt beveiligings functies voor het beveiligen van back-upgegevens, zelfs na verwijdering. Als de gebruiker de back-up van een virtuele machine verwijdert, wordt de back-up met de optie voorlopig verwijderd gedurende 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen retentie van back-upgegevens in de status ' voorlopig verwijderen ' brengt geen kosten voor u in rekening. Meer [informatie over zacht verwijderen](backup-azure-security-feature-cloud.md).
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Bewaking en waarschuwingen van verdachte activiteiten
 
