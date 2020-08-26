@@ -3,12 +3,12 @@ title: Privé-eindpunten
 description: Meer informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 5c2c994b48fb2b950afb67f5c8b6d3c4f7d01e39
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b7f7c6461701b6f4e438cbead60456b327c7c207
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826647"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871544"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
@@ -21,7 +21,7 @@ In dit artikel vindt u informatie over het proces van het maken van privé-eind 
 - Privé-eind punten kunnen alleen worden gemaakt voor nieuwe Recovery Services kluizen (waarvoor geen items zijn geregistreerd bij de kluis). Daarom moeten persoonlijke eind punten worden gemaakt voordat u items op de kluis probeert te beveiligen.
 - Eén virtueel netwerk kan persoonlijke eind punten voor meerdere Recovery Services kluizen bevatten. Daarnaast kan een Recovery Services kluis persoonlijke eind punten in meerdere virtuele netwerken hebben. Het maximum aantal privé-eind punten dat voor een kluis kan worden gemaakt, is echter 12.
 - Zodra een persoonlijk eind punt is gemaakt voor een kluis, wordt de kluis vergrendeld. Het is niet toegankelijk (voor back-ups en herstel bewerkingen) van netwerken van een locatie die een persoonlijk eind punt voor de kluis bevatten. Als alle persoonlijke eind punten voor de kluis worden verwijderd, is de kluis toegankelijk vanuit alle netwerken.
-- Een VPN-verbinding voor back-up gebruikt in totaal 11 privé Ip's in uw subnet. Dit aantal kan hoger zijn (Maxi maal 25) voor bepaalde Azure-regio's. Daarom raden we aan dat u voldoende privé Ip's hebt die beschikbaar zijn wanneer u persoonlijke eind punten voor back-ups probeert te maken.
+- Een particuliere endpoint-verbinding voor back-up gebruikt een totaal van 11 privé Ip's in uw subnet, inclusief de IP-adressen die worden gebruikt door Azure Backup voor opslag. Dit aantal kan hoger zijn (Maxi maal 25) voor bepaalde Azure-regio's. Daarom raden we aan dat u voldoende privé Ip's hebt die beschikbaar zijn wanneer u persoonlijke eind punten voor back-ups probeert te maken.
 - Hoewel een Recovery Services kluis wordt gebruikt door (beide) Azure Backup en Azure Site Recovery, wordt in dit artikel alleen het gebruik van privé-eind punten voor Azure Backup besproken.
 - Azure Active Directory biedt momenteel geen ondersteuning voor persoonlijke eind punten. IP-adressen en FQDN-namen die vereist zijn voor de Azure Active Directory om in een regio te werken, moeten dus uitgaande toegang hebben tot het beveiligde netwerk wanneer ze back-ups maken van data bases in azure-Vm's en-back-ups met behulp van de MARS-agent. U kunt ook NSG Tags en Azure Firewall Tags gebruiken om toegang te verlenen tot Azure AD, zoals van toepassing.
 - Virtuele netwerken met netwerk beleidsregels worden niet ondersteund voor privé-eind punten. U moet netwerk beleid uitschakelen voordat u doorgaat.

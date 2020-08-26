@@ -155,7 +155,7 @@
           href: search-howto-large-index.md
         - name: Gelijktijdige updates verwerken
           href: search-howto-concurrency.md
-    - name: Azure-gegevens opnemen
+    - name: Alleen Azure-gegevens opnemen
       items:
         - name: Indexeerfuncties configureren
           href: search-indexer-overview.md
@@ -203,7 +203,7 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
-    - name: Opnemen met AI
+    - name: Vaardigheden (AI) gebruiken
       items:
         - name: Een Cognitive Services-resource toevoegen
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +215,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Toewijzen aan indexvelden
               href: cognitive-search-output-field-mapping.md
-            - name: Informatie uit installatiekopieën extraheren
+            - name: Installatiekopiebestanden verwerken
               href: cognitive-search-concept-image-scenarios.md
             - name: Incrementele verrijking cachen
               href: search-howto-incremental-index.md

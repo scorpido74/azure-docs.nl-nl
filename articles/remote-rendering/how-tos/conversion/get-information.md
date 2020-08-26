@@ -1,20 +1,40 @@
 ---
-title: Informatie ophalen over een geconverteerd model
-description: Beschrijving van alle para meters voor model conversie
+title: Informatie over conversies ophalen
+description: Informatie over conversies ophalen
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509294"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870286"
 ---
-# <a name="get-information-about-a-converted-model"></a>Informatie ophalen over een geconverteerd model
+# <a name="get-information-about-conversions"></a>Informatie over conversies ophalen
 
-Het arrAsset-bestand dat door de conversie service wordt geproduceerd, is uitsluitend bedoeld voor gebruik door de rendering-service. Het kan echter voor komen dat u toegang wilt krijgen tot informatie over een model zonder een rendering-sessie te starten. Daarom plaatst de conversie service een JSON-bestand naast het arrAsset-bestand in de uitvoer container. Als een bestand bijvoorbeeld `buggy.gltf` wordt geconverteerd, bevat de uitvoer container een bestand dat `buggy.info.json` naast het geconverteerde activum wordt genoemd `buggy.arrAsset` . Het bevat informatie over het bron model, het geconverteerde model en de conversie zelf.
+## <a name="information-about-a-conversion-the-result-file"></a>Informatie over een conversie: het resultaat bestand
+
+Wanneer de conversie service een Asset converteert, wordt een samen vatting van eventuele problemen naar een ' resultaat bestand ' geschreven. Als een bestand bijvoorbeeld `buggy.gltf` wordt geconverteerd, bevat de uitvoer container een bestand met de naam `buggy.result.json` .
+
+In het resultaat bestand worden eventuele fouten en waarschuwingen weer gegeven die zijn opgetreden tijdens de conversie en wordt een resultaat samengevat, een van `succeeded` `failed` of `succeeded with warnings` .
+Het resultaat bestand is gestructureerd als een JSON-matrix met objecten, die allemaal een teken reeks eigenschap hebben die is een van,,, `warning` `error` `internal warning` `internal error` en `result` . Er is Maxi maal één fout ( `error` of `internal error` ) en er is er altijd een `result` .
+
+## <a name="example-result-file"></a>Voor beeld van *resultaat* bestand
+
+In het volgende voor beeld wordt een conversie beschreven waarbij een arrAsset is gegenereerd. Omdat er echter een structuur ontbreekt, is de resulterende arrAsset mogelijk niet zo bedoeld.
+
+```JSON
+[
+  {"warning":"4004","title":"Missing texture","details":{"texture":"buggy_baseColor.png","material":"buggy_col"}},
+  {"result":"succeeded with warnings"}
+]
+```
+
+## <a name="information-about-a-converted-model-the-info-file"></a>Informatie over een geconverteerd model: het info bestand
+
+Het arrAsset-bestand dat door de conversie service wordt geproduceerd, is uitsluitend bedoeld voor gebruik door de rendering-service. Het kan echter voor komen dat u toegang wilt krijgen tot informatie over een model zonder een rendering-sessie te starten. Ter ondersteuning van deze werk stroom plaatst de conversie service een JSON-bestand naast het arrAsset-bestand in de uitvoer container. Als een bestand bijvoorbeeld `buggy.gltf` wordt geconverteerd, bevat de uitvoer container een bestand dat `buggy.info.json` naast het geconverteerde activum wordt genoemd `buggy.arrAsset` . Het bevat informatie over het bron model, het geconverteerde model en de conversie zelf.
 
 ## <a name="example-info-file"></a>Voor beeld van *info* bestand
 
@@ -124,6 +144,11 @@ In deze sectie worden gegevens vastgelegd die zijn berekend op basis van de geco
 * `numMeshPartsInstanced`: Het aantal mazen dat opnieuw wordt gebruikt in de arrAsset.
 * `recenteringOffset`: Als de `recenterToOrigin` optie in de [ConversionSettings](configure-model-conversion.md) is ingeschakeld, is deze waarde de vertaling waarmee het geconverteerde model weer naar de oorspronkelijke positie wordt verplaatst.
 * `boundingBox`: De grenzen van het model.
+
+## <a name="deprecated-features"></a>Verouderde functies:
+
+De conversie service schrijft de bestanden `stdout.txt` en `stderr.txt` naar de uitvoer container en deze zijn de enige bron van waarschuwingen en fouten.
+Deze bestanden zijn nu afgeschaft. Gebruik in plaats daarvan [resultaat bestanden](#information-about-a-conversion-the-result-file) voor dit doel einde.
 
 ## <a name="next-steps"></a>Volgende stappen
 

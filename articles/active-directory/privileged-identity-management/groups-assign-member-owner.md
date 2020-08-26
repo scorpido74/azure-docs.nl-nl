@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1dcc98366e37455f462fe1a0740aa161201912f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506223"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869635"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Wijs geschiktheid toe voor een bevoegde toegangs groep (preview) in Privileged Identity Management
 
@@ -33,19 +33,14 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kan u hel
 
 Volg deze stappen om een gebruiker in aanmerking te laten komen als lid of eigenaar van een bevoegde toegangs groep.
 
-1. Meld u aan bij [privileged Identity Management](https://portal.azure.com/) in het Azure Portal met machtigingen voor beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. [Meld u aan bij Azure AD](https://aad.portal.azure.com) met de machtigingen van de globale beheerder of groeps eigenaar.
+1. Selecteer **groepen** en selecteer vervolgens de groep die u wilt beheren. U kunt de lijst zoeken of filteren.
 
-    Voor informatie over het verlenen van een andere beheerder toegang tot het beheren van Privileged Identity Management raadpleegt u [toegang verlenen aan andere beheerders om privileged Identity Management te beheren](pim-how-to-give-access-to-pim.md).
+    ![een door een functie toewijs bare groep zoeken om te beheren in PIM](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. Open **Azure AD privileged Identity Management**.
+1. Open de groep en selecteer **bevoorrechte toegang (preview)**.
 
-1. Selecteer **bevoorrechte toegang (preview)**.
-
-1. U kunt zoeken naar een groeps naam en het **groeps type** gebruiken om de lijst te filteren om de groep te selecteren die u wilt beheren.
-
-    ![Lijst met geprivilegieerde toegangs groepen die u wilt beheren](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. Selecteer onder **beheren**de optie **toewijzingen**.
+    ![De Privileged Identity Management-ervaring openen](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. Selecteer **toewijzingen toevoegen**.
 
@@ -77,21 +72,20 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen als lid of eigen
 
 Volg deze stappen om een bestaande roltoewijzing bij te werken of te verwijderen.
 
-1. Open **Azure AD privileged Identity Management**.
+1. [Meld u aan bij Azure AD](https://aad.portal.azure.com) met de machtigingen van de globale beheerder of groeps eigenaar.
+1. Selecteer **groepen** en selecteer vervolgens de groep die u wilt beheren. U kunt de lijst zoeken of filteren.
 
-1. Selecteer **bevoorrechte toegang (preview)**.
+    ![een door een functie toewijs bare groep zoeken om te beheren in PIM](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. U kunt zoeken naar een groeps naam en het **groeps type** gebruiken om de lijst te filteren om de groep te selecteren die u wilt beheren.
+1. Open de groep en selecteer **bevoorrechte toegang (preview)**.
 
-    ![Lijst met geprivilegieerde toegangs groepen die u wilt beheren](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. Selecteer onder **beheren**de optie **toewijzingen**.
+    ![De Privileged Identity Management-ervaring openen](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. Selecteer de rol die u wilt bijwerken of verwijderen.
 
 1. Zoek naar de roltoewijzing op de tabbladen **in aanmerking komende rollen** of **actieve rollen** .
 
-    ![Roltoewijzing bijwerken of verwijderen](./media/groups-assign-member-owner/groups-add-assignment.png)
+    ![Roltoewijzing bijwerken of verwijderen](./media/groups-assign-member-owner/groups-bring-under-management.png)
 
 1. Selecteer **bijwerken** of **verwijderen** om de roltoewijzing bij te werken of te verwijderen.
 

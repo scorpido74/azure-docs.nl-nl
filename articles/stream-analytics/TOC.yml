@@ -122,7 +122,7 @@
       href: stream-analytics-concepts-checkpoint-replay.md
     - name: Foutbeleid
       href: stream-analytics-output-error-policy.md
-- name: Instructiegidsen
+- name: Procedures
   items:
     - name: Beheren
       items:
@@ -172,6 +172,8 @@
           href: stream-analytics-real-time-fraud-detection.md
         - name: Taken uitvoeren in IoT Edge
           href: stream-analytics-edge.md
+        - name: Taken uitvoeren in Azure Stack
+          href: on-azure-stack.md
         - name: Analyse van de sensorgegevens van een tolloket
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
         - name: High-frequency trading

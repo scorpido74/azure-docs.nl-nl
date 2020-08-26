@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525412"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869215"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat update-infra structuur voor Red Hat Enterprise Linux Vm's op aanvraag in azure
  Met de [Red Hat Update infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunnen cloud providers, zoals Azure, gehoste inhoud van een opslag plaats met Red Hat worden gespiegeld, aangepaste opslag plaatsen met Azure-specifieke inhoud maken en deze beschikbaar maken voor virtuele machines van eind gebruikers.
@@ -49,7 +49,7 @@ Voor een volledige lijst met installatie kopieën voert `az vm image list --publ
 
 ### <a name="images-connected-to-non-eus-repositories"></a>Afbeeldingen die zijn verbonden met niet-EUS-opslag plaatsen
 
-Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met niet-EUS-opslag plaatsen, wordt u bijgewerkt naar de meest recente RHEL-versie wanneer u uitvoert `sudo yum update` . Als u bijvoorbeeld een virtuele machine inricht vanuit een RHEL 7,4 PAYG-installatie kopie en uitvoert `sudo yum update` , hebt u een RHEL 7,7 VM (de meest recente secundaire versie in de RHEL7-serie).
+Als u een virtuele machine inricht vanuit een RHEL-installatie kopie die is verbonden met niet-EUS-opslag plaatsen, wordt u bijgewerkt naar de meest recente RHEL-versie wanneer u uitvoert `sudo yum update` . Als u bijvoorbeeld een virtuele machine inricht vanuit een RHEL 7,4 PAYG-installatie kopie en uitvoert `sudo yum update` , hebt u een RHEL 7,8 VM (de meest recente secundaire versie in de RHEL7-serie).
 
 Installatie kopieën die zijn verbonden met niet-EUS-opslag plaatsen, bevatten geen secundair versie nummer in de SKU. De SKU is het derde element in de URN (volledige naam van de afbeelding). Zo worden alle volgende installatie kopieën gekoppeld aan niet-EUS-opslag plaatsen:
 

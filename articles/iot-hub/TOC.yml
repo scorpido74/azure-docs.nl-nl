@@ -53,6 +53,9 @@
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
           href: quickstart-device-streams-proxy-c.md
+    - name: Automatisch berichten routeren met een ARM-sjabloon
+      displayName: Resource Manager
+      href: horizontal-arm-route-messages.md
 - name: Zelfstudies
   items:
     - name: Berichten routeren

@@ -3,16 +3,19 @@ title: Archief met Azure Service Fabric Central-geheimen
 description: In dit artikel wordt beschreven hoe u het archief centrale geheimen kunt gebruiken in azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9fd435803ad5354b0eb2d4f5de50009a8cbbfe2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197768"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869752"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Archief met centrale geheimen in azure Service Fabric 
 In dit artikel wordt beschreven hoe u centraal geheimen (CSS) in azure Service Fabric kunt gebruiken om geheimen te maken in Service Fabric toepassingen. CSS is een lokale archief cache voor het opslaan van gevoelige gegevens, zoals een wacht woord, tokens en sleutels, versleuteld in het geheugen.
 
+  > [!NOTE] 
+  > Wanneer CSS voor de eerste keer wordt geactiveerd vóór SF-versie 7,1. CU3, de activering kan mislukken en de status van CSS wordt permanent beschadigd als: CSS wordt geactiveerd op een Windows-geauthenticeerd cluster. CSS is op een cluster geactiveerd, maar `EncryptionCertificateThumbprint` is onjuist gedeclareerd of het bijbehorende certificaat is niet geïnstalleerd/acl's-Ed op knoop punten. Voor Windows-verificatie cluster gaat u naar 7,1. CU3 voordat u doorgaat. Voor andere clusters controleert u deze invarianties of gaat u naar 7,1. CU3.
+  
 ## <a name="enable-central-secrets-store"></a>Archief met centrale geheimen inschakelen
 Voeg het volgende script toe aan de cluster configuratie onder `fabricSettings` om CSS in te scha kelen. Het is raadzaam om een ander certificaat dan een cluster certificaat voor CSS te gebruiken. Zorg ervoor dat het versleutelings certificaat is geïnstalleerd op alle knoop punten en dat `NetworkService` Lees machtigingen heeft voor de persoonlijke sleutel van het certificaat.
   ```json

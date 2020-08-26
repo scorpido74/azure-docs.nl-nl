@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 3170b51b8e580a625b2dbb4d83229c59bafa900e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534801"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870575"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault-beveiliging
 
@@ -99,4 +99,4 @@ Raadpleeg de [Azure Storage-beveiligings handleiding](../../storage/blobs/securi
 
 - [Virtuele netwerk service-eind punten voor Azure Key Vault](overview-vnet-service-endpoints.md)
 - [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)
-- [virtuele netwerk service-eind punten voor Azure Key Vault](overview-vnet-service-endpoints.md)
+

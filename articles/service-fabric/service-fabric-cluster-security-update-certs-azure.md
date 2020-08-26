@@ -3,12 +3,12 @@ title: Certificaten in een Azure Service Fabric-cluster beheren
 description: Hierin wordt beschreven hoe u nieuwe certificaten, rollover certificaat en certificaat kunt toevoegen aan of verwijderen uit een Service Fabric-cluster.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83658385"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869742"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Certificaten voor een Service Fabric-cluster in Azure toevoegen of verwijderen
 Het is raadzaam om vertrouwd te raken met de manier waarop Service Fabric X. 509-certificaten gebruikt en dat u vertrouwd bent met de [beveiligings scenario's](service-fabric-cluster-security.md)voor het cluster. Voordat u verder gaat, moet u weten wat een cluster certificaat is en wat wordt gebruikt voor.
@@ -179,7 +179,7 @@ Bewerk het parameter bestand voor de Resource Manager-sjabloon, voeg de twee nie
 
 ```
 
-### <a name="deploy-the-template-to-azure"></a>De sjabloon implementeren in azure
+### <a name="deploy-the-template-to-azure"></a>De sjabloon implementeren in Azure
 
 - U bent nu klaar om uw sjabloon te implementeren in Azure. Open een opdracht prompt van Azure PS versie 1 +.
 - Meld u aan bij uw Azure-account en selecteer het specifieke Azure-abonnement. Dit is een belang rijke stap voor mensen die toegang hebben tot meer dan één Azure-abonnement.
@@ -260,7 +260,7 @@ Naast de cluster certificaten kunt u client certificaten toevoegen om beheer bew
 
 U kunt twee soorten client certificaten toevoegen: beheerder of alleen-lezen. Deze kunnen vervolgens worden gebruikt om de toegang tot de beheer bewerkingen en query bewerkingen op het cluster te beheren. Standaard worden de cluster certificaten toegevoegd aan de lijst met toegestane beheerders certificaten.
 
-u kunt een wille keurig aantal client certificaten opgeven. Elke toevoeging/verwijdering resulteert in een configuratie-update voor het Service Fabric cluster
+U kunt een wille keurig aantal client certificaten opgeven. Elke toevoeging/verwijdering resulteert in een configuratie-update voor het Service Fabric cluster.
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Client certificaten toevoegen-beheerder of alleen-lezen via Portal

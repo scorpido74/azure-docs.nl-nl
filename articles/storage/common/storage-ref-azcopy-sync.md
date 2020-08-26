@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 04b87f8d0dd6a8fff35e3ae769652b50e7d0ef34
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285200"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869436"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -39,7 +39,7 @@ De synchronisatie opdracht wijkt af van de Kopieer opdracht op verschillende man
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Gegevens overdragen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
 - [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ### <a name="advanced"></a>Geavanceerd
@@ -143,13 +143,17 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--exclude-patroon** teken reeks bestanden uitsluiten waarbij de naam overeenkomt met de patroon lijst. Bijvoorbeeld: `*.jpg;*.pdf;exactName`
 
-**--Help** Help voor synchronisatie.
+**--Help**    Help voor synchronisatie.
 
 **--include-** kenmerk reeks (alleen Windows) bevat alleen bestanden waarvan de kenmerken overeenkomen met de kenmerk lijst. Bijvoorbeeld: `A;S;R`
 
 **--include-patroon** teken reeks alleen bestanden opnemen waarvan de naam overeenkomt met de patroon lijst. Bijvoorbeeld: `*.jpg;*.pdf;exactName`
 
 **--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: `INFO` (alle aanvragen en antwoorden), `WARNING` (trage reacties), `ERROR` (alleen mislukte aanvragen) en `NONE` (geen uitvoer Logboeken). (standaard `INFO` ). 
+
+**--behoud-SMB-info**     Standaard onwaar.Hiermee behoudt u SMB-eigenschaps gegevens (laatste schrijf tijd, aanmaak tijd, kenmerk bits) tussen SMB-bewuste resources (Windows en Azure Files).Deze vlag is van toepassing op bestanden en mappen, tenzij een filter alleen-lezen is opgegeven (bijvoorbeeld het patroon include).De gegevens die voor mappen worden overgezet, zijn hetzelfde als voor bestanden, met uitzonde ring van de laatste schrijf tijd die niet voor mappen is behouden.
+
+**--behoud-SMB-machtigingen**     Standaard onwaar.Hiermee blijven SMB-Acl's behouden tussen de bewuste resources (Windows en Azure Files).Deze vlag is van toepassing op bestanden en mappen, tenzij een filter voor alleen bestanden is opgegeven (bijvoorbeeld  `include-pattern` ).
 
 **--put-MD5**     Maak een MD5-hash van elk bestand en sla de hash op als de eigenschap content-MD5 van de BLOB of het doel bestand. (Standaard wordt de hash niet gemaakt.) Alleen beschikbaar bij het uploaden.
 
@@ -165,6 +169,6 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|
 |--vertrouwd-micro soft-achtervoegsels teken reeks   |Hiermee geeft u aanvullende domein achtervoegsels op waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.|
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 - [azcopy](storage-ref-azcopy.md)

@@ -227,6 +227,8 @@
               href: high-availability-guide-rhel-netapp-files.md
         - name: SAP Multi-SID
           items:
+            - name: Windows met gedeelde Azure-schijven voor een (A)SCS-exemplaar
+              href: sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
             - name: Windows met gedeelde schijven voor een (A)SCS-exemplaar
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows met SOFS-bestandsshare voor een (A)SCS-exemplaar

@@ -509,6 +509,8 @@
       href: monitor-resource-reference.md
     - name: YAML-verwijzing voor machine learning-pijplijn
       href: reference-pipeline-yaml.md
+    - name: Pariteit van de onafhankelijke cloud
+      href: reference-machine-learning-cloud-parity.md
 - name: Resources
   items:
     - name: Releaseopmerkingen

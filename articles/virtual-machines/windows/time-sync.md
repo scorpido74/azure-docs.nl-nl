@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074045"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871476"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Tijd synchronisatie voor Windows-Vm's in azure
 
@@ -60,7 +60,7 @@ Standaard worden installatie kopieën van het Windows-besturings systeem geconfi
 - De NtpClient-provider, die informatie uit time.windows.com haalt.
 - De VMICTimeSync-service wordt gebruikt om de hosttijd te communiceren met de Vm's en om correcties aan te brengen nadat de virtuele machine is onderbroken voor onderhoud. Azure-hosts gebruiken micro soft-systemen met stratum 1 om nauw keurige tijd te hand haven.
 
-W32Time zou de tijd provider liever in de volgende volg orde van prioriteit: stratum-niveau, hoofd vertraging, basis sprei ding, tijd verschuiving. In de meeste gevallen zal W32Time liever time.windows.com aan de host, omdat time.windows.com rapporten lagere stratum hebben. 
+W32Time zou de tijd provider liever in de volgende volg orde van prioriteit: stratum-niveau, hoofd vertraging, basis sprei ding, tijd verschuiving. In de meeste gevallen zal W32Time op een Azure-VM de voor keur geven aan de hosttijd als gevolg van de evaluatie. Dit zou doen om beide tijd bronnen te vergelijken. 
 
 Voor computers die lid zijn van een domein, stelt het domein zelf tijd synchronisatie hiërarchie in, maar het forest-hoofd moet nog steeds tijd in beslag nemen en de volgende overwegingen blijven waar.
 
@@ -115,8 +115,8 @@ w32tm /query /source
 
 Dit is de uitvoer die u kunt zien en wat het zou betekenen:
     
-- **time.Windows.com** : in de standaard configuratie W32Time zou tijd van time.Windows.com ophalen. De synchronisatie kwaliteit van de tijd is afhankelijk van de verbinding met internet en wordt beïnvloed door de vertragingen van het pakket. Dit is de gebruikelijke uitvoer van de standaard instelling.
-- **Synchronisatie provider voor IC-tijd voor VM** : de virtuele machine wordt gesynchroniseerd met de tijd van de host. Dit is doorgaans het gevolg als u zich aanmeldt voor een alleen-host-tijd synchronisatie of als de NtpServer op het moment niet beschikbaar is. 
+- **time.Windows.com** : in de standaard configuratie W32Time zou tijd van time.Windows.com ophalen. De synchronisatie kwaliteit van de tijd is afhankelijk van de verbinding met internet en wordt beïnvloed door de vertragingen van het pakket. Dit is de gebruikelijke uitvoer die u op een fysieke machine zou krijgen.
+- **Synchronisatie provider voor IC-tijd voor VM**  : de virtuele machine wordt gesynchroniseerd met de tijd van de host. Dit is de gebruikelijke uitvoer van een virtuele machine die wordt uitgevoerd op Azure. 
 - *Uw domein server* : de huidige computer bevindt zich in een domein en het domein definieert de tijd synchronisatie hiërarchie.
 - *Een andere server* -W32Time is expliciet geconfigureerd om de tijd op te halen van een andere server. De duur van de synchronisatie van tijd is afhankelijk van de kwaliteit van de server.
 - De **lokale CMOS-klok** klok is niet gesynchroniseerd. U kunt deze uitvoer ophalen als W32Time onvoldoende tijd heeft om te starten nadat de computer opnieuw is opgestart of als alle geconfigureerde tijd bronnen niet beschikbaar zijn.
@@ -160,7 +160,7 @@ reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v U
 w32tm /config /update
 ```
 
-Voor W32Time dat de nieuwe poll intervallen kunnen worden gebruikt, wordt de NtpServers gemarkeerd als gebruiken. Als servers zijn voorzien van een aantekening met 0x1 bitflag masker, zou dit mechanisme negeren en wordt in plaats daarvan SpecialPollInterval gebruikt. Zorg ervoor dat de opgegeven NTP-servers de vlag 0x8 gebruiken of helemaal geen vlag hebben:
+Voor W32Time om de nieuwe poll intervallen te kunnen gebruiken, moet de NtpServers worden gemarkeerd als gebruiken. Als servers zijn voorzien van een aantekening met 0x1 bitflag masker, zou dit mechanisme negeren en wordt in plaats daarvan SpecialPollInterval gebruikt. Zorg ervoor dat de opgegeven NTP-servers de vlag 0x8 gebruiken of helemaal geen vlag hebben:
 
 Controleer welke vlaggen worden gebruikt voor de gebruikte NTP-servers.
 
@@ -173,6 +173,6 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 Hieronder vindt u koppelingen naar meer informatie over de tijd synchronisatie:
 
 - [Hulpprogramma’s en instellingen voor de Windows Time-service](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
-- [Verbeteringen in Windows Server 2016](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Verbeteringen in Windows Server 2016 ](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
 - [Nauw keurige tijd voor Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time)
 - [Ondersteunings grens voor het configureren van de Windows Time-service voor omgevingen met hoge nauw keurigheid](/windows-server/networking/windows-time-service/support-boundary)

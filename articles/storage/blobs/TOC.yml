@@ -572,12 +572,14 @@
               href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Toegankelijkheid van Storage Explorer
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure Storage-forum
+        - name: Azure Storage in Microsoft Q&A
           href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
         - name: Azure Storage op Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-        - name: Prijzen voor Blob-opslag
+        - name: Prijzen voor blok-blobs
           href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
+        - name: Prijzen voor pagina-blobs
+          href: 'https://azure.microsoft.com/pricing/details/storage/page-blobs/'
         - name: Azure-prijscalculator
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Video's

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1dd38f0360a4471124497d8357481283cd98383c
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566298"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871561"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors voor Azure Logic Apps
 
@@ -48,7 +48,7 @@ Connectors zijn beschikbaar als ingebouwde triggers en acties of als beheerde co
 
   Connectors worden geclassificeerd als Standard of ENTER prise. [Enter prise-connectors](#enterprise-connectors) bieden toegang tot bedrijfs systemen zoals SAP, IBM MQ en IBM 3270 voor extra kosten. Als u wilt bepalen of een connector Standard of ENTER prise is, raadpleegt u de technische details van de referentie pagina van elke connector onder [connectors Overview](/connectors)(Engelstalig).
 
-  U kunt connectors ook identificeren met behulp van deze categorieën, hoewel sommige connectors meerdere categorieën kunnen passeren. SAP is bijvoorbeeld een Enter prise-connector en een on-premises connector:
+  U kunt connectors ook identificeren met behulp van deze categorieën, hoewel sommige connectors in meerdere categorieën kunnen bestaan. SAP is bijvoorbeeld een Enter prise-connector en een on-premises connector:
 
   | Categorie | Beschrijving |
   |----------|-------------|
@@ -68,7 +68,7 @@ Voor Logic apps die directe toegang tot resources in een virtueel Azure-netwerk 
 
 | Label | Voorbeeld | Beschrijving |
 |-------|---------|-------------|
-| **BAAN** | ![Voor beeld van ISE-connector](./media/apis-list/example-core-connector.png) | Ingebouwde triggers en acties met dit label worden uitgevoerd in dezelfde ISE als uw logische apps. |
+| **BAAN** | ![Voor beeld van basis connector](./media/apis-list/example-core-connector.png) | Ingebouwde triggers en acties met dit label worden uitgevoerd in dezelfde ISE als uw logische apps. |
 | **ISE** | ![Voor beeld van ISE-connector](./media/apis-list/example-ise-connector.png) | Beheerde connectors met dit label worden uitgevoerd in dezelfde ISE als uw logische apps. Als u een on-premises systeem hebt dat is verbonden met een virtueel Azure-netwerk, biedt een ISE uw Logic apps rechtstreeks toegang tot dat systeem zonder de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-connection.md). In plaats daarvan kunt u de **ISE** -connector van dat systeem gebruiken als deze beschikbaar is, een http-actie of een [aangepaste connector](#custom). Voor on-premises systemen zonder **ISE** -connectors gebruikt u de on-premises gegevens gateway. Zie [ISE-connectors](#ise-connectors)als u beschik bare ISE-connectors wilt bekijken. |
 | Geen label | ![Voor beeld van een multi tenant-connector](./media/apis-list/example-multi-tenant-connector.png) | Alle andere connectors zonder het label **core** of **ISE** , die u kunt blijven gebruiken, voert u uit in de wereld wijde multi tenant-Logic apps service. |
 |||
@@ -81,13 +81,13 @@ Logic Apps biedt ingebouwde triggers en acties zodat u werk stromen op basis van
 
 | Naam | Beschrijving |
 |------|-------------|
-| [![API-pictogram ][schedule-icon]<br> **schema**][schedule-doc] | -Een logische app uitvoeren op een opgegeven terugkeer patroon, variërend van de Basic-naar-geavanceerde planningen met de [ **terugkeer patroon** trigger][schedule-recurrence-doc]. <br>-Een logische app uitvoeren die gegevens in doorlopende segmenten moet afhandelen met de [ **verschuivende venster** trigger][schedule-sliding-window-doc]. <br>-Pauzeer uw logische app voor een opgegeven duur met de [ **vertragings** actie][schedule-delay-doc]. <br>-Pauzeer uw logische app tot de opgegeven datum en tijd met de [ **vertraging tot** actie][schedule-delay-until-doc]. |
-| [![API-pictogram ][batch-icon]<br> **batch**][batch-doc] | -Berichten in batches verwerken met de trigger voor **batch berichten** . <br>-Logische apps aanroepen die bestaande batch triggers hebben met de actie **berichten verzenden naar batch** . |
-| [![API ][http-icon]<br> **-pictogram http**][http-doc] | HTTP- of HTTPS-eindpunten aanroepen met triggers en acties voor HTTP. Andere HTTP-triggers en-acties zijn onder andere [http + Swagger][http-swagger-doc] en [http + webhook][http-webhook-doc]. |
-| [![API-pictogram ][http-request-icon]<br> **aanvraag**][http-request-doc] | -Maak uw logische app aanroepen van andere apps of services, Activeer Event Grid bron gebeurtenissen of Activeer reacties op antwoorden op Azure Security Center waarschuwingen met de **aanvraag** trigger. <br>-Antwoorden verzenden naar een app of service met de **reactie** actie. |
-| [![API-pictogram ][azure-api-management-icon]<br> **Azure API <br> Management**][azure-api-management-doc] | Roep triggers en acties aan die zijn gedefinieerd door de eigen API's die u beheert en publiceert met Azure API Management. |
-| [![API-pictogram ][azure-app-services-icon]<br> **Azure-app <br> Services**][azure-app-services-doc] | Roep Azure API-apps of Web-apps aan, die worden gehost in Azure App Service. De triggers en acties die door deze apps worden gedefinieerd, worden weer gegeven als andere triggers voor de eerste klasse en acties wanneer Swagger is opgenomen. |
-| [![API-pictogram ][azure-logic-apps-icon]<br> **Azure Logic <br> apps**][nested-logic-app-doc] | Roep andere logische apps aan die beginnen met de **aanvraag** trigger. |
+| [![][schedule-icon]<br>**Schedule** Schema voor ingebouwde connector plannen][schedule-doc] | -Een logische app uitvoeren op een opgegeven terugkeer patroon, variërend van de Basic-naar-geavanceerde planningen met de [ **terugkeer patroon** trigger][schedule-recurrence-doc]. <br>-Een logische app uitvoeren die gegevens in doorlopende segmenten moet afhandelen met de [ **verschuivende venster** trigger][schedule-sliding-window-doc]. <br>-Pauzeer uw logische app voor een opgegeven duur met de [ **vertragings** actie][schedule-delay-doc]. <br>-Pauzeer uw logische app tot de opgegeven datum en tijd met de [ **vertraging tot** actie][schedule-delay-until-doc]. |
+| [![Batch-ingebouwde connector ][batch-icon]<br> **batch**][batch-doc] | -Berichten in batches verwerken met de trigger voor **batch berichten** . <br>-Logische apps aanroepen die bestaande batch triggers hebben met de actie **berichten verzenden naar batch** . |
+| [![Http ingebouwde HTTP-connector ][http-icon]<br> **HTTP**][http-doc] | HTTP- of HTTPS-eindpunten aanroepen met triggers en acties voor HTTP. Andere ingebouwde HTTP-triggers en-acties zijn onder andere [http + Swagger ingebouwde connector][http-swagger-doc] en [http + webhook][http-webhook-doc]. |
+| [![][http-request-icon]<br>**Request** Aanvraag van ingebouwde connector aanvragen][http-request-doc] | -Maak uw logische app aanroepen van andere apps of services, Activeer Event Grid bron gebeurtenissen of Activeer reacties op antwoorden op Azure Security Center waarschuwingen met de **aanvraag** trigger. <br>-Antwoorden verzenden naar een app of service met de **reactie** actie. |
+| [![Azure ][azure-api-management-icon]<br> **API <br> Management** voor Azure API Management ingebouwde connector][azure-api-management-doc] | Roep triggers en acties aan die zijn gedefinieerd door de eigen API's die u beheert en publiceert met Azure API Management. |
+| [![Azure-app Services ingebouwde connector ][azure-app-services-icon]<br> **Azure-app <br> Services**][azure-app-services-doc] | Roep Azure API-apps of Web-apps aan, die worden gehost in Azure App Service. De triggers en acties die door deze apps worden gedefinieerd, worden weer gegeven als andere triggers voor de eerste klasse en acties wanneer Swagger is opgenomen. |
+| [![Azure Logic Apps ingebouwde connector, ][azure-logic-apps-icon]<br> **Azure Logic <br> apps**][nested-logic-app-doc] | Roep andere logische apps aan die beginnen met de **aanvraag** trigger. |
 |||
 
 ### <a name="run-code-from-logic-apps"></a>Code uitvoeren vanuit Logic apps
@@ -96,8 +96,8 @@ Logic Apps biedt ingebouwde acties voor het uitvoeren van uw eigen code in de we
 
 | Naam | Beschrijving |
 |------|-------------|
-| [![API-pictogram ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Azure functions aanroepen waarmee aangepaste code fragmenten (C# of Node.js) uit uw Logic apps worden uitgevoerd. |
-| [![Inline API-pictogram ][inline-code-icon]<br> **Inline code**][inline-code-doc] | Voeg java script-code fragmenten toe en voer deze uit vanuit uw Logic apps. |
+| [![Azure Functions ingebouwde connector ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Azure functions aanroepen waarmee aangepaste code fragmenten (C# of Node.js) uit uw Logic apps worden uitgevoerd. |
+| [![Inline code ingebouwde connector ][inline-code-icon]<br> **inline-code**][inline-code-doc] | Voeg java script-code fragmenten toe en voer deze uit vanuit uw Logic apps. |
 |||
 
 ### <a name="control-workflow"></a>Werk stroom beheren
@@ -106,12 +106,12 @@ Logic Apps biedt ingebouwde acties voor het structureren en beheren van de actie
 
 | Naam | Beschrijving |
 |------|-------------|
-| [![Ingebouwde pictogram ][condition-icon]<br> **voorwaarde**][condition-doc] | Evalueer een voor waarde en voer verschillende acties uit op basis van het feit of de voor waarde waar of onwaar is. |
-| [![Ingebouwd pictogram ][for-each-icon]<br> **voor elk**][for-each-doc] | Voer dezelfde acties uit op elk item in een matrix. |
-| [![Ingebouwd pictogram ][scope-icon]<br> **bereik**][scope-doc] | Groepeer acties in *bereiken*die hun eigen status krijgen nadat de acties in het bereik zijn uitgevoerd. |
-| [![Ingebouwde pictogram ][switch-icon]<br> **Switch**][switch-doc] | Groepeer acties in *gevallen*, waaraan unieke waarden worden toegewezen, met uitzonde ring van de standaard situatie. Voer alleen die aanvraag uit waarvan de toegewezen waarde overeenkomt met het resultaat van een expressie, object of token. Als er geen overeenkomsten bestaan, voert u het standaard hoofdletter gebruik uit. |
-| [![Het ingebouwde pictogram ][terminate-icon]<br> **beëindigen**][terminate-doc] | Stop een actieve werk stroom voor logische apps. |
-| [![Ingebouwd pictogram ][until-icon]<br> **tot**][until-doc] | Herhaal acties totdat de opgegeven voor waarde waar is of een andere status is gewijzigd. |
+| [![Voor waarde voor waarde ingebouwde ][condition-icon]<br> **Condition** actie][condition-doc] | Evalueer een voor waarde en voer verschillende acties uit op basis van het feit of de voor waarde waar of onwaar is. |
+| [![Voor elke ingebouwde actie ][for-each-icon]<br> **voor elk**][for-each-doc] | Voer dezelfde acties uit op elk item in een matrix. |
+| [![Bereik ingebouwd actie ][scope-icon]<br> **bereik**][scope-doc] | Groepeer acties in *bereiken*die hun eigen status krijgen nadat de acties in het bereik zijn uitgevoerd. |
+| [![][switch-icon]<br>**Switch** Schakelaar voor ingebouwde actie][switch-doc] | Groepeer acties in *gevallen*, waaraan unieke waarden worden toegewezen, met uitzonde ring van de standaard situatie. Voer alleen die aanvraag uit waarvan de toegewezen waarde overeenkomt met het resultaat van een expressie, object of token. Als er geen overeenkomsten bestaan, voert u het standaard hoofdletter gebruik uit. |
+| [![Het beëindigen van de ingebouwde ][terminate-icon]<br> **Terminate** bewerking is beëindigd][terminate-doc] | Stop een actieve werk stroom voor logische apps. |
+| [![Totdat de ingebouwde actie ][until-icon]<br> **tot**][until-doc] | Herhaal acties totdat de opgegeven voor waarde waar is of een andere status is gewijzigd. |
 |||
 
 ### <a name="manage-or-manipulate-data"></a>Gegevens beheren of bewerken
@@ -120,9 +120,9 @@ Logic Apps biedt ingebouwde acties voor het werken met gegevens uitvoer en de bi
 
 | Naam | Beschrijving |
 |------|-------------|
-| [![Ingebouwde pictogram ][data-operations-icon]<br> **gegevens bewerkingen**][data-operations-doc] | Bewerkingen uitvoeren met gegevens: <p>- **Opstellen**: Maak één uitvoer van meerdere invoer met verschillende typen. <br>- **CSV-tabel maken**: Maak een tabel met door komma's gescheiden waarden (CSV) van een matrix met JSON-objecten. <br>- **HTML-tabel maken**: een HTML-tabel maken op basis van een matrix met JSON-objecten. <br>- **Filter matrix**: Maak een matrix van items in een andere matrix die aan uw criteria voldoen. <br>- **Samen voegen**: een teken reeks maken van alle items in een matrix en deze items scheiden met het opgegeven scheidings teken. <br>- **JSON parseren**: Maak gebruikers vriendelijke tokens van eigenschappen en hun waarden in JSON-inhoud zodat u deze eigenschappen in uw werk stroom kunt gebruiken. <br>- **Select**: Maak een matrix met JSON-objecten door items of waarden in een andere matrix te transformeren en deze items aan de opgegeven eigenschappen toe te wijzen. |
-| ![Ingebouwd pictogram][date-time-icon]<br>**Datum en tijd** | Bewerkingen uitvoeren met tijds tempels: <p>- **Toevoegen aan tijd**: Voeg het opgegeven aantal eenheden toe aan een tijds tempel. <br>- **Tijd zone converteren**: Converteer een tijds tempel van de bron tijdzone naar de doel tijdzone. <br>- **Huidige tijd**: de huidige tijds tempel wordt geretourneerd als een teken reeks. <br>- **Toekomstige tijd ophalen**: retourneert de huidige tijds tempel plus de opgegeven tijds eenheden. <br>- **Vorige tijd ophalen**: retourneert de huidige tijds tempel min de opgegeven tijds eenheden. <br>- **Aftrekken van tijd**: Trek een aantal tijds eenheden af van een tijds tempel. |
-| [![Ingebouwde pictogram ][variables-icon]<br> **variabelen**][variables-doc] | Bewerkingen uitvoeren met variabelen: <p>- **Toevoegen aan matrix variabele**: een waarde invoegen als laatste item in een matrix die is opgeslagen door een variabele. <br>- **Toevoegen aan teken reeks variabele**: Voeg een waarde toe als het laatste teken in een teken reeks die is opgeslagen door een variabele. <br>- **Variabele verlagen**: Hiermee verkleint u een variabele met een constante waarde. <br>- **Toename van variabele**: Verhoog een variabele met een constante waarde. <br>- **Variabele initialiseren**: een variabele maken en het gegevens type en de begin waarde declareren. <br>- **Set-variabele**: wijs een andere waarde toe aan een bestaande variabele. |
+| [![Gegevens bewerkingen ingebouwde actie ][data-operations-icon]<br> **gegevens bewerkingen**][data-operations-doc] | Bewerkingen uitvoeren met gegevens: <p>- **Opstellen**: Maak één uitvoer van meerdere invoer met verschillende typen. <br>- **CSV-tabel maken**: Maak een tabel met door komma's gescheiden waarden (CSV) van een matrix met JSON-objecten. <br>- **HTML-tabel maken**: een HTML-tabel maken op basis van een matrix met JSON-objecten. <br>- **Filter matrix**: Maak een matrix van items in een andere matrix die aan uw criteria voldoen. <br>- **Samen voegen**: een teken reeks maken van alle items in een matrix en deze items scheiden met het opgegeven scheidings teken. <br>- **JSON parseren**: Maak gebruikers vriendelijke tokens van eigenschappen en hun waarden in JSON-inhoud zodat u deze eigenschappen in uw werk stroom kunt gebruiken. <br>- **Select**: Maak een matrix met JSON-objecten door items of waarden in een andere matrix te transformeren en deze items aan de opgegeven eigenschappen toe te wijzen. |
+| ![Datum en tijd ingebouwde actie][date-time-icon]<br>**Datum en tijd** | Bewerkingen uitvoeren met tijds tempels: <p>- **Toevoegen aan tijd**: Voeg het opgegeven aantal eenheden toe aan een tijds tempel. <br>- **Tijd zone converteren**: Converteer een tijds tempel van de bron tijdzone naar de doel tijdzone. <br>- **Huidige tijd**: de huidige tijds tempel wordt geretourneerd als een teken reeks. <br>- **Toekomstige tijd ophalen**: retourneert de huidige tijds tempel plus de opgegeven tijds eenheden. <br>- **Vorige tijd ophalen**: retourneert de huidige tijds tempel min de opgegeven tijds eenheden. <br>- **Aftrekken van tijd**: Trek een aantal tijds eenheden af van een tijds tempel. |
+| [![Variabelen ingebouwde actie ][variables-icon]<br> **variabelen**][variables-doc] | Bewerkingen uitvoeren met variabelen: <p>- **Toevoegen aan matrix variabele**: een waarde invoegen als laatste item in een matrix die is opgeslagen door een variabele. <br>- **Toevoegen aan teken reeks variabele**: Voeg een waarde toe als het laatste teken in een teken reeks die is opgeslagen door een variabele. <br>- **Variabele verlagen**: Hiermee verkleint u een variabele met een constante waarde. <br>- **Toename van variabele**: Verhoog een variabele met een constante waarde. <br>- **Variabele initialiseren**: een variabele maken en het gegevens type en de begin waarde declareren. <br>- **Set-variabele**: wijs een andere waarde toe aan een bestaande variabele. |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -133,18 +133,18 @@ Logic Apps biedt deze populaire standaard connectors voor het automatiseren van 
 
 | Naam | Beschrijving |
 |------|-------------|
-| [![API-pictogram ][azure-service-bus-icon]<br> **Azure service bus**][azure-service-bus-doc] | Beheer asynchrone berichten, sessies en abonnementen op onderwerpen met behulp van de meest gebruikte connector in Logic Apps. |
-| [![API-pictogram ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Maak verbinding met uw SQL Server on-premises of een Azure SQL Database in de Cloud, zodat u records kunt beheren, opgeslagen procedures uitvoert of query's uitvoert. |
-| [![API-pictogram ][azure-blob-storage-icon]<br> **Azure Blob- <br> opslag**][azure-blob-storage-doc] | Maak verbinding met uw opslag account zodat u blob-inhoud kunt maken en beheren. |
-| [![API-pictogram ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Maak verbinding met uw e-mail account voor Office 365 zodat u e-mail berichten, taken, agenda-items en vergaderingen, contact personen, aanvragen en meer kunt maken en beheren. |
-| [![API ][sftp-ssh-icon]<br> **-pictogram SFTP-SSH**][sftp-ssh-doc] | Verbinding maken met SFTP-servers die u via het internet kunt openen met behulp van SSH, zodat u met uw bestanden en mappen kunt werken. |
-| [![API ][sharepoint-online-icon]<br> **-pictogram share point <br> online**][sharepoint-online-doc] | Maak verbinding met share point online, zodat u bestanden, bijlagen, mappen en meer kunt beheren. |
-| [![API-pictogram ][azure-queues-icon]<br> **Azure- <br> wacht rijen**][azure-queues-doc] | Maak verbinding met uw Azure Storage-account zodat u wacht rijen en berichten kunt maken en beheren. |
-| [![API ][ftp-icon]<br> **-pictogram FTP**][ftp-doc] | Verbinding maken met FTP-servers die u vanaf internet kunt gebruiken zodat u kunt werken met uw bestanden en mappen. |
-| [![][file-system-icon]<br>**Bestands <br> systeem** van API-pictogram][file-system-doc] | Maak verbinding met uw on-premises bestands share, zodat u bestanden kunt maken en beheren. |
-| [![API-pictogram ][azure-event-hubs-icon]<br> **Azure Event hubs**][azure-event-hubs-doc] | Gebeurtenissen gebruiken en publiceren via een event hub. U kunt bijvoorbeeld uitvoer van uw logische app ophalen met Event Hubs en de uitvoer vervolgens verzenden naar een realtime analytics-provider. |
-| [![API-pictogram ][azure-event-grid-icon]<br> **Azure Event** <br> **grid**][azure-event-grid-doc] | Gebeurtenissen bewaken die zijn gepubliceerd door een Event Grid, bijvoorbeeld wanneer Azure-resources of bronnen van derden worden gewijzigd. |
-| [![API-pictogram ][salesforce-icon]<br> **Sales Force**][salesforce-doc] | Maak verbinding met uw Sales Force-account zodat u items zoals records, taken, objecten en meer kunt maken en beheren. |
+| [![Azure Service Bus beheerde connector ][azure-service-bus-icon]<br> **Azure Service Bus** Azure service bus][azure-service-bus-doc] | Beheer asynchrone berichten, sessies en abonnementen op onderwerpen met behulp van de meest gebruikte connector in Logic Apps. |
+| [![SQL Server beheerde connector ][sql-server-icon]<br> **SQL Server** SQL Server][sql-server-doc] | Maak verbinding met uw SQL Server on-premises of een Azure SQL Database in de Cloud, zodat u records kunt beheren, opgeslagen procedures uitvoert of query's uitvoert. |
+| [![Azure ][azure-blob-storage-icon]<br> **BLOB- <br> opslag** voor Azure Blob Storage Managed connector][azure-blob-storage-doc] | Maak verbinding met uw opslag account zodat u blob-inhoud kunt maken en beheren. |
+| [![Office 365 Outlook Managed connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Maak verbinding met uw e-mail account voor Office 365 zodat u e-mail berichten, taken, agenda-items en vergaderingen, contact personen, aanvragen en meer kunt maken en beheren. |
+| [![SFTP-SSH Managed connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Verbinding maken met SFTP-servers die u via het internet kunt openen met behulp van SSH, zodat u met uw bestanden en mappen kunt werken. |
+| [![Share point online Managed connector ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Maak verbinding met share point online, zodat u bestanden, bijlagen, mappen en meer kunt beheren. |
+| [![Azure queues Managed connector van Azure Queue ][azure-queues-icon]<br> ** <br> **][azure-queues-doc] | Maak verbinding met uw Azure Storage-account zodat u wacht rijen en berichten kunt maken en beheren. |
+| [![][ftp-icon]<br>**FTP** FTP Managed connector][ftp-doc] | Verbinding maken met FTP-servers die u vanaf internet kunt gebruiken zodat u kunt werken met uw bestanden en mappen. |
+| [![Bestands systeem Managed connector van bestands systeem ][file-system-icon]<br> ** <br> **][file-system-doc] | Maak verbinding met uw on-premises bestands share, zodat u bestanden kunt maken en beheren. |
+| [![Azure-Event Hubs voor Azure Event Hubs Managed connector ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Gebeurtenissen gebruiken en publiceren via een event hub. U kunt bijvoorbeeld uitvoer van uw logische app ophalen met Event Hubs en de uitvoer vervolgens verzenden naar een realtime analytics-provider. |
+| [![][azure-event-grid-icon]<br>**Azure Event** <br> **grid** van Azure Event grid Managed connector][azure-event-grid-doc] | Gebeurtenissen bewaken die zijn gepubliceerd door een Event Grid, bijvoorbeeld wanneer Azure-resources of bronnen van derden worden gewijzigd. |
+| [![De Sales Force Managed connector ][salesforce-icon]<br> **Sales Force**][salesforce-doc] | Maak verbinding met uw Sales Force-account zodat u items zoals records, taken, objecten en meer kunt maken en beheren. |
 |||
 
 <a name="on-premises-connectors"></a>
@@ -155,38 +155,38 @@ Hier volgen enkele veelgebruikte standaard-connectors die Logic Apps biedt voor 
 
 :::row:::
     :::column:::
-        [![API-pictogram ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
+        [![][biztalk-server-icon]<br>**BizTalk** <br> **Server** BizTalk Server-connector][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![][file-system-icon]<br>**Bestands <br> systeem** van API-pictogram][file-system-doc]
+        [![Bestands systeem connector ][file-system-icon]<br> ** <br> ** bestandssysteem][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+        [![DB2-connector ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-pictogram ][mysql-icon]<br> **MySQL**][mysql-doc]
-    :::column-end:::
-    :::column:::
-        [![API-pictogram ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc]
-    :::column-end:::
-    :::column:::
-        [![API-pictogram ][postgre-sql-icon]<br> **postgresql**][postgre-sql-doc]
-    :::column-end:::
-    :::column:::
-        [![API ][sharepoint-server-icon]<br> **-pictogram share point <br> Server**][sharepoint-server-doc]
+        [![Informix-connector ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-pictogram ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+        [![MySQL-Connector ][mysql-icon]<br> **MySQL**][mysql-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][teradata-icon]<br> **Teradata**][teradata-doc]
+        [![Oracle DB connector ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![PostgreSQL PostgreSQL-connector ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![Share Point server connector share ][sharepoint-server-icon]<br> **Point <br> Server**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![][sql-server-icon]<br>**SQL <br> Server** SQL Server-connector][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Teradata van Teradata-connector ][teradata-icon]<br> **Teradata**][teradata-doc]
     :::column-end:::
     :::column:::
         
@@ -204,44 +204,44 @@ Logic Apps biedt standaard connectors voor het bouwen van Business-to-Business (
 
 :::row:::
     :::column:::
-        [![API-pictogram ][as2-icon]<br> **AS2- <br> decodering**][as2-doc]
+        [![AS2-decoderings actie ][as2-icon]<br> **AS2 <br> decodering**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][as2-icon]<br> **AS2- <br> code ring**][as2-doc]
+        [![][as2-icon]<br>** <br> Code ring** voor AS2-coderings actie AS2][as2-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][edifact-icon]<br> **EDIFACT- <br> decodering**][edifact-decode-doc]
+        [![EDIFACT-decoderings actie ][edifact-icon]<br> **EDIFACT <br> decodering**][edifact-decode-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][edifact-icon]<br> **EDIFACT- <br> code ring**][edifact-encode-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-pictogram ][flat-file-decode-icon]<br> **platte bestands <br> codering**][flat-file-decode-doc]
-    :::column-end:::
-    :::column:::
-        [![API-pictogram ][flat-file-encode-icon]<br> **platte bestands <br> codering**][flat-file-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![][integration-account-icon]<br>**Integratie <br> account** API-pictogram][integration-account-doc]
-    :::column-end:::
-    :::column:::
-        [![API-pictogram ][liquid-icon]<br> **liquide** <br> **trans formaties**][json-liquid-transform-doc]
+        [![][edifact-icon]<br>** <br> Code ring** voor EDIFACT-coderings actie EDIFACT][edifact-encode-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-pictogram ][x12-icon]<br> **X12- <br> decodering**][x12-decode-doc]
+        [![Decoderings actie plat ][flat-file-decode-icon]<br> ** <br> bestand**][flat-file-decode-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][x12-icon]<br> **X12- <br> code ring**][x12-encode-doc]
+        [![Flat file encoding-actie met platte ][flat-file-encode-icon]<br> **bestands <br> codering**][flat-file-encode-doc]
     :::column-end:::
     :::column:::
-        [![API ][xml-transform-icon]<br> **-pictogram XML-** <br> **trans formaties**][xml-transform-doc]
+        [![][integration-account-icon]<br>**Integratie <br> account** voor actie integratie account][integration-account-doc]
     :::column-end:::
     :::column:::
-        [![API ][xml-validate-icon]<br> **-pictogram XML- <br> validatie**][xml-validate-doc]
+        [![Liquid trans formaties actie ][liquid-icon]<br> **liquide** trans <br> **formaties**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![X12-decoderings actie ][x12-icon]<br> **X12 <br> decodering**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![][x12-icon]<br>** <br> Code ring** voor X12-coderings actie X12][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![XML transformeert XML-trans ][xml-transform-icon]<br> **XML** <br> **formaties** actie][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![XML-validatie van XML-validatie actie ][xml-validate-icon]<br> ** <br> **][xml-validate-doc]
     :::column-end:::
 :::row-end:::
 
@@ -253,13 +253,13 @@ Logic Apps biedt deze zakelijke connectors voor toegang tot bedrijfs systemen, z
 
 :::row:::
     :::column:::
-        [![API-pictogram ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+        [![IBM 3270-connector ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+        [![MQ-connector ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][sap-icon]<br> **SAP**][sap-connector-doc]
+        [![SAP connector ][sap-icon]<br> **SAP**][sap-connector-doc]
     :::column-end:::
     :::column:::
         
@@ -274,86 +274,86 @@ Voor Logic apps die u in een dedicated [Integration service Environment (ISE)](#
 
 :::row:::
     :::column:::
-        [![API-pictogram ][as2-icon]<br> **AS2**][as2-doc]
+        [![AS2 ISE-connector ][as2-icon]<br> **AS2**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc]
+        [![Azure Automation ISE-connector ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][azure-blob-storage-icon]<br> **Azure Blob- <br> opslag**][azure-blob-storage-doc]
+        [![Azure ][azure-blob-storage-icon]<br> **BLOB- <br> opslag** voor Azure Blob Storage ISE-connector][azure-blob-storage-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> db**][azure-cosmos-db-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-pictogram ][azure-event-hubs-icon]<br> **Azure event <br> hubs**][azure-event-hubs-doc]
-    :::column-end:::
-    :::column:::
-        [![API-pictogram ][azure-event-grid-icon]<br> **Azure event <br> grid**][azure-event-grid-doc]
-    :::column-end:::
-    :::column:::
-        [![API-pictogram ][azure-file-storage-icon]<br> **Azure file <br> Storage**][azure-file-storage-doc]
-    :::column-end:::
-    :::column:::
-        [![API-pictogram ][azure-key-vault-icon]<br> **Azure-sleutel <br> kluis**][azure-key-vault-doc]
+        [![Azure Cosmos DB ISE-connector ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> db**][azure-cosmos-db-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-pictogram ][azure-monitor-logs-icon]<br> **Azure monitor <br> Logboeken**][azure-monitor-logs-doc]
+        [![][azure-event-hubs-icon]<br>Azure ISE-connector voor**Azure <br> Event hubs**][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][azure-service-bus-icon]<br> **Azure service <br> bus**][azure-service-bus-doc]
+        [![][azure-event-grid-icon]<br>**Azure Event <br> grid** Azure Event grid ISE-connector][azure-event-grid-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse**][azure-sql-data-warehouse-doc]
+        [![Azure ][azure-file-storage-icon]<br> **file <br> Storage** voor Azure File Storage ISE-connector][azure-file-storage-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][azure-table-storage-icon]<br> **Azure-tabel <br> opslag**][azure-table-storage-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-pictogram ][azure-queues-icon]<br> **Azure- <br> wacht rijen**][azure-queues-doc]
-    :::column-end:::
-    :::column:::
-        [![API-pictogram ][edifact-icon]<br> **EDIFACT**][edifact-doc]
-    :::column-end:::
-    :::column:::
-        [![][file-system-icon]<br>**Bestands <br> systeem** van API-pictogram][file-system-doc]
-    :::column-end:::
-    :::column:::
-        [![API ][ftp-icon]<br> **-pictogram FTP**][ftp-doc]
+        [![][azure-key-vault-icon]<br>**Azure-sleutel <br> kluis** voor Azure Key Vault ISE-connector][azure-key-vault-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-pictogram ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+        [![Azure Monitor logboeken ISE-connector ][azure-monitor-logs-icon]<br> **Azure monitor <br> Logboeken**][azure-monitor-logs-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+        [![Azure Service Bus ISE-connector ][azure-service-bus-icon]<br> **Azure service <br> bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+        [![Azure SQL Data Warehouse ISE-connector ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][sap-icon]<br> **SAP**][sap-connector-doc]
+        [![Azure- ][azure-table-storage-icon]<br> **tabel <br> opslag** voor Azure Table Storage ISE-connector][azure-table-storage-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API ][sftp-ssh-icon]<br> **-pictogram SFTP-SSH**][sftp-ssh-doc]
+        [![Azure queues ISE ][azure-queues-icon]<br> **- <br> ** connector][azure-queues-doc]
     :::column-end:::
     :::column:::
-        [![API ][smtp-icon]<br> **-pictogram SMTP**][smtp-doc]
+        [![EDIFACT ISE-connector ][edifact-icon]<br> **EDIFACT**][edifact-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+        [![Bestands systeem ISE connector ][file-system-icon]<br> ** <br> ** bestandssysteem][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API-pictogram ][x12-icon]<br> **X12**][x12-doc]
+        [![FTP ISE-connector ][ftp-icon]<br> **FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![IBM 3270 ISE-connector ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![DB2 ISE-connector ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![MQ ISE-connector ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![SAP ISE-connector ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SFTP-SSH ISE-connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![][smtp-icon]<br>**SMTP** SMTP ISE-connector][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![][sql-server-icon]<br>**SQL <br> Server** SQL Server ISE-connector][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 ISE-connector ][x12-icon]<br> **X12**][x12-doc]
     :::column-end:::
 :::row-end:::
 
@@ -410,7 +410,7 @@ Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp v
 
 ## <a name="get-ready-for-deployment"></a>Bereid u voor op implementatie
 
-Hoewel u verbindingen maakt vanuit een logische app, zijn de verbindingen afzonderlijke Azure-resources met hun eigen resource definities. Als u deze verbindings bron definities wilt controleren, kunt u [de resource groep voor uw logische app inspecteren met behulp van de Azure Portal](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#view-resource-definitions) of [uw logische app downloaden van Azure in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md). Dit is de eenvoudigste manier om een geldige sjabloon voor logische sjablonen met para meters te maken die het meest geschikt is voor implementatie.
+Hoewel u verbindingen maakt vanuit een logische app, zijn de verbindingen afzonderlijke Azure-resources met hun eigen resource definities. Als u deze resource definities voor verbindingen wilt bekijken, [downloadt u uw logische app van Azure in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md). Dit is de eenvoudigste manier om een geldige sjabloon voor een logische app met para meters te maken die het meest geschikt is voor implementatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 description: In dit artikel vindt u informatie over het herstellen van gegevens die zijn opgeslagen in azure naar een Windows-Server of Windows-computer met de Microsoft Azure Recovery Services-agent (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e5158681971c5c10e813187fedb61bc0022ee9e1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 78663edadfdef581dbdd259882a6dd4afe5a4b0b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827066"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871255"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 
@@ -50,7 +50,7 @@ Als u een bestand per ongeluk hebt verwijderd en op dezelfde computer wilt herst
    > De optie voor het herstellen van afzonderlijke bestanden en mappen vereist .NET Framework 4.5.2 of hoger. Als u de optie **afzonderlijke bestanden en mappen** niet ziet, moet u .NET Framework bijwerken naar versie 4.5.2 of hoger en het opnieuw proberen.
 
    > [!TIP]
-   > Met de optie **afzonderlijke bestanden en mappen** kunt u snel toegang krijgen tot de herstel punt gegevens. Het is geschikt voor het herstellen van afzonderlijke bestanden, met een totale grootte van niet meer dan 80 GB en biedt overdrachts-of kopieer snelheden van Maxi maal 6 MBps tijdens het herstel. De **volume** optie herstelt alle back-ups van gegevens in een opgegeven volume. Deze optie biedt snellere overdrachts snelheden (Maxi maal 40 MBps), die ideaal zijn voor het herstellen van grote hoeveel heden gegevens of volledige volumes.
+   > Met de optie **afzonderlijke bestanden en mappen** kunt u snel toegang krijgen tot de herstel punt gegevens. Het is geschikt voor het herstellen van afzonderlijke bestanden en wordt aanbevolen voor een totale grootte van minder dan 80 GB. Het biedt overdrachts-of kopieer snelheden van Maxi maal 6 MBps tijdens het herstel. De **volume** optie herstelt alle back-ups van gegevens in een opgegeven volume. Deze optie biedt snellere overdrachts snelheden (Maxi maal 40 MBps) en wordt aanbevolen voor het herstellen van grote hoeveel heden gegevens of volledige volumes.
 
 5. Selecteer op de pagina **volume en datum selecteren** het volume dat de bestanden en mappen bevat die u wilt herstellen.
 

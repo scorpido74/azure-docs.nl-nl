@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565550"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871459"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen
 
@@ -269,17 +269,7 @@ Uw sjabloon heeft een `resources` -object, een matrix die definities bevat voor 
 
 ### <a name="view-resource-definitions"></a>Resource definities weer geven
 
-Als u de resource definities voor alle resources in een Azure-resource groep wilt weer geven, downloadt u de [logische app van Azure in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md). Dit is de eenvoudigste manier om een geldige sjabloon voor een logische app met para meters te maken die het meest geschikt is voor implementatie, of volg deze stappen in de Azure portal:
-
-1. Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Portal](https://portal.azure.com).
-
-1. Zoek de Azure-resource groep die uw logische app, verbindingen en andere resources bevat.
-
-1. Selecteer **overzicht**op de werk balk van de resource groep en selecteer vervolgens alle resources in de resource groep.
-
-1. Selecteer op de werk balk van de resource groep onder **instellingen**de optie **sjabloon exporteren**.
-
-   In de portal worden de definities weer gegeven voor de resources die u hebt geselecteerd. Zie voor meer informatie [het exporteren van één en meerdere resources naar een sjabloon in azure Portal](../azure-resource-manager/templates/export-template-portal.md).
+Als u de resource definities voor alle resources in een Azure-resource groep wilt weer geven, [downloadt u uw logische app van Azure in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md). Dit is de eenvoudigste manier om een geldige sjabloon voor logische sjablonen met para meters te maken die het meest geschikt is voor implementatie.
 
 Zie de volgende onderwerpen voor algemene informatie over sjabloon bronnen en hun kenmerken:
 
@@ -584,7 +574,7 @@ Zie [para meters-werk stroom definitie taal](../logic-apps/logic-apps-workflow-d
 
 ## <a name="connection-resource-definitions"></a>Verbindings bron definities
 
-Wanneer uw logische app verbindingen met andere services en het systeem maakt en gebruikt met [beheerde connectors](../connectors/apis-list.md), bevat het object van de sjabloon `resources` de resource definities voor deze verbindingen.
+Wanneer uw logische app verbindingen met andere services en het systeem maakt en gebruikt met [beheerde connectors](../connectors/apis-list.md), bevat het object van de sjabloon `resources` de resource definities voor deze verbindingen. Hoewel u verbindingen maakt vanuit een logische app, zijn de verbindingen afzonderlijke Azure-resources met hun eigen resource definities. Als u deze resource definities voor verbindingen wilt bekijken, [downloadt u uw logische app van Azure in Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md). Dit is de eenvoudigste manier om een geldige sjabloon voor een logische app met para meters te maken die het meest geschikt is voor implementatie.
 
 ```json
 {

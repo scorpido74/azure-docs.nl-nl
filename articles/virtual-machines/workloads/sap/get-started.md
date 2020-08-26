@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/21/2020
+ms.date: 08/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b1705fbfae297c7f92de6b4080569deaad3de98
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749662"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871374"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -88,7 +88,10 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
-- 08/21/2020: nieuwe besturingssysteem versie toevoegen aan [compatibele besturings systemen voor Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) als beschikbaar besturings systeem voor HLI-eenheden van het type i en II
+- 08/25/2020: wijziging in [ha-hand leiding voor SAP ASCS/SCS met wsfc en gedeelde schijf](./sap-high-availability-guide-wsfc-shared-disk.md), een [Azure-infra structuur voorbereiden voor SAP ASCS/SCS met de wsfc-en gedeelde schijf](./sap-high-availability-infrastructure-wsfc-shared-disk.md) en [SAP NW ha installeren met wsfc en gedeelde schijf](./sap-high-availability-guide-wsfc-shared-disk.md) om de optie te gebruiken voor het gebruik van een gedeelde Azure-schijf en document SAP ERS2-architectuur
+- 08/25/2020: release van een [multi-sid ha-hand leiding voor SAP ASCS/SCS met WSFC-en Azure gedeelde schijf](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)
+- 08/25/2020: wijziging in [ha-hand leiding voor SAP ASCS/SCS met WSFC en Azure NetApp files (SMB)](./high-availability-guide-windows-netapp-files-smb.md), [bereid Azure-infra structuur voor SAP ASCS/SCS met](./sap-high-availability-infrastructure-wsfc-file-share.md)behulp van de wsfc-en bestands share, [multi-sid ha-hand leiding voor SAP ASCS/SCS met de wsfc-en gedeelde schijf](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) en de [multi-sid ha-hand leiding voor SAP ASCS/SCS met wsfc-en SOFS-bestands share](./sap-ascs-ha-multi-sid-wsfc-file-share.md) als gevolg van de inhouds updates 
+- 08/21/2020: nieuwe besturingssysteem versie toevoegen aan [compatibele besturings systemen voor Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) als beschikbaar besturings systeem voor HLI-eenheden van het type I en II
 - 08/18/2020: release van [ha voor SAP Hana scale-up met ANF op RHEL](./sap-hana-high-availability-netapp-files-red-hat.md)
 - 08/17/2020: informatie over het gebruik van Azure Site Recovery voor het verplaatsen van SAP NetWeaver-systemen van on-premises naar Azure in artikel [azure virtual machines planning en implementatie van SAP NetWeaver](./planning-guide.md)
 - 08/14/2020: het toevoegen van een schijf configuratie advies voor Db2 in artikel [IBM Db2 Azure virtual machines DBMS-implementatie voor SAP-workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)

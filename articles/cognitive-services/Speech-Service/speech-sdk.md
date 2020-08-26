@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 79f7924b021de9426eeb66adf2ec12f8033efcea
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056853"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870711"
 ---
 # <a name="about-the-speech-sdk"></a>Info over de Speech-SDK
 
@@ -31,17 +31,52 @@ De Speech-SDK maakt veel functies van de speech-service beschikbaar, maar niet a
 
 Met [spraak naar tekst](speech-to-text.md) (ook wel *spraak herkenning*genoemd) worden audio stromen getranscribeerd naar tekst die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken of weer geven. Gebruik spraak-naar-tekst met [Language Understanding (Luis)](../luis/index.yml) om gebruikers intentie af te leiden van transcribed speech en Act on Voice Commands. Gebruik [spraak omzetting](speech-translation.md) om spraak invoer te vertalen naar een andere taal met één aanroep. Zie [basis beginselen van spraak naar tekst](speech-to-text-basics.md)voor meer informatie.
 
+De **spraak herkenning (SR), woordgroepen lijst, intentie, vertaling en on-premises containers** zijn beschikbaar op de volgende platformen:
+
+  - C++/Windows & Linux & macOS
+  - C# (Framework & .NET core)/Windows & UWP & unit & Xamarin & Linux & macOS
+  - Java (jre en Android)
+  - Java script (browser en NodeJS)
+  - Python
+  - Swift
+  - Objective-C  
+  - Go (alleen SR)
+
 ### <a name="text-to-speech"></a>Tekst naar spraak
 
 [Tekst-naar-spraak](text-to-speech.md) (ook wel *spraak-synthese*genoemd) converteert tekst naar humane-achtige gesynthesizerde spraak. De invoer tekst is letterlijke teken reeksen of het gebruik van de [SSML (Speech synthese Markup Language)](speech-synthesis-markup.md). Zie voor meer informatie over de standaard-of Neural stemmen [tekst-naar-spraak-taal en spraak ondersteuning](language-support.md#text-to-speech).
+
+**Tekst-naar-spraak (TTS)** is beschikbaar op de volgende platformen:
+
+  - C++/Windows & Linux
+  - C#/Windows & UWP & eenheid
+  - Java (jre en Android)
+  - Python
+  - Swift
+  - Objective-C
+  - TTS-REST API kunnen worden gebruikt in elke andere situatie.
 
 ### <a name="voice-assistants"></a>Spraakassistenten
 
 [Met de spraak-](voice-assistants.md) SDK kunnen ontwikkel aars natuurlijke, menselijke-achtige gespreks interfaces maken voor hun toepassingen en ervaringen. De Voice Assistant-service biedt snelle, betrouw bare interactie tussen een apparaat en een assistent. De implementatie maakt gebruik van het direct lijn speech Channel van het bot-Framework of de geïntegreerde service voor het volt ooien van taken (preview). Daarnaast kunnen spraak assistenten aangepaste stemmen gebruiken die zijn gemaakt in de [aangepaste Voice Portal](https://aka.ms/customvoice) om een unieke spraak-uitvoer ervaring toe te voegen.
 
+Op de volgende platforms is **spraak assistenten** beschikbaar:
+
+  - C++/Windows & Linux & macOS
+  - C#/Windows
+  - Java/Windows & Linux & macOS & Android (Speech apparaten SDK)
+
 #### <a name="keyword-spotting"></a>Tref woord herkennen
 
 Het concept van [trefwoord herkennen](speech-devices-sdk-create-kws.md) wordt ondersteund in de Speech SDK. Trefwoord herkennen is de handeling van het identificeren van een sleutel woord in spraak, gevolgd door een actie na het horen van het sleutel woord. Bijvoorbeeld: "Hey Cortana" zou de Cortana-assistent activeren.
+
+**Trefwoord herkennen (KWS)** is beschikbaar op de volgende platformen:
+
+  - C++/Windows & Linux
+  - C#/Windows & Linux
+  - Python/Windows & Linux
+  - Java/Windows & Linux & Android (Speech-apparaten SDK)
+  - De functionaliteit van trefwoord herkennen (KWS) kan worden gebruikt voor elk type microfoon, maar de ondersteuning van officiële KWS is momenteel beperkt tot de microfoon matrices die zijn gevonden in de Azure Kinect DK-hardware of de speech-apparaten SDK
 
 ### <a name="meeting-scenarios"></a>Scenario's voor vergaderingen
 
@@ -51,9 +86,20 @@ De Speech SDK is perfect voor het overzetten van Vergader scenario's, hetzij van
 
 [Conversatie transcriptie](conversation-transcription.md) maakt spraak herkenning in realtime (en asynchroon) mogelijk, waarbij elke spreker (ook wel bekend als *diarization*) wordt toegeschreven. Het is ideaal voor het overzetten van persoonlijke vergaderingen met de mogelijkheid om de luid sprekers te onderscheiden.
 
+**Conversation transcriptie** is beschikbaar op de volgende platformen:
+
+  - C++/Windows & Linux
+  - C# (Framework & .NET core)/Windows & UWP & Linux
+  - Java/Windows & Linux & Android (Speech-apparaten SDK)
+
 #### <a name="multi-device-conversation"></a>Conversatie met meerdere apparaten
 
 Met een [gesprek met meerdere](multi-device-conversation.md)apparaten kunt u meerdere apparaten of clients in een gesprek verbinden om berichten op basis van spraak of tekst te verzenden, met eenvoudige ondersteuning voor transcriptie en vertaling.
+
+**Multi-device-conversatie** is beschikbaar op de volgende platforms:
+
+  - C++/Windows
+  - C# (Framework & .NET core)/Windows
 
 ### <a name="custom--agent-scenarios"></a>Aangepaste/Agent scenario's
 
@@ -63,9 +109,17 @@ De Speech-SDK kan worden gebruikt voor het transcriberen van oproep centrum scen
 
 [Call Center transcriptie](call-center-transcription.md) is een veelvoorkomend scenario voor spraak naar tekst voor het transcriberen van grote hoeveel heden telefoon gegevens die afkomstig kunnen zijn van verschillende systemen, zoals Interactive Voice Response (IVR). De nieuwste spraakherkennings modellen van de speech-service Excel bij het transcriberen van deze telefoon gegevens, zelfs in gevallen waarin de gegevens moeilijk te begrijpen zijn.
 
+**Call Center transcriptie** is beschikbaar via de batch speech-service via de rest API en kan in elke situatie worden gebruikt.
+
 ### <a name="codec-compressed-audio-input"></a>Door codec gecomprimeerde audio-invoer
 
 Diverse spraak-SDK-programmeer talen ondersteunen codec gecomprimeerde audio-invoer stromen. Zie <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">gecomprimeerde audio-invoer indelingen <span class="docon docon-navigate-external x-hidden-focus"></span> gebruiken </a>voor meer informatie.
+
+De **gecomprimeerde audio-invoer** voor de codec is beschikbaar op de volgende platforms:
+
+  - C++/Linux
+  - C#-/Linux
+  - Java/Linux, Android en iOS
 
 ## <a name="rest-api"></a>REST-API
 

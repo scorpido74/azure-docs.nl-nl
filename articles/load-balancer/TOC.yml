@@ -16,6 +16,8 @@
       href: quickstart-load-balancer-standard-public-template.md
     - name: Een interne load balancer maken - Portal
       href: quickstart-load-balancer-standard-internal-portal.md
+    - name: Een interne load balancer maken - Azure CLI
+      href: quickstart-load-balancer-standard-internal-cli.md
   expanded: true
 - name: Zelfstudies
   items:

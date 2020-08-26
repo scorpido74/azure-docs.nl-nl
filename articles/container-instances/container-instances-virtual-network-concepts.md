@@ -4,12 +4,12 @@ description: Scenario's, bronnen en beperkingen voor het implementeren van conta
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: danlep
-ms.openlocfilehash: d904f1333ddf4b22bfca2546bd064b1ae8f299dd
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0474a5f85829080a89a74195483484c464de5840
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797854"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870762"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scenario's en resources voor het virtuele netwerk
 
@@ -80,6 +80,7 @@ In het volgende diagram zijn verschillende container groepen geïmplementeerd na
 * Zie [container instanties implementeren in een virtueel Azure-netwerk](container-instances-vnet.md)voor implementatie voorbeelden met de Azure cli.
 * Zie [een Azure-container groep met VNet maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )voor het implementeren van een nieuw virtueel netwerk, subnet, netwerk profiel en container groep met behulp van een resource manager-sjabloon.
+* Wanneer u de [Azure Portal](container-instances-quickstart-portal.md) gebruikt om een container exemplaar te maken, kunt u ook instellingen voor een nieuw of exsting virtueel netwerk opgeven op het tabblad **netwerk** .
 
 
 <!-- IMAGES -->

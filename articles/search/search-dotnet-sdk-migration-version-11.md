@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5dd061309447dd6037d2dd664e7c5db2c7df38cc
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688348"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870201"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 11
 
@@ -70,7 +70,7 @@ Naast de verschillen tussen de client (eerder vermeld en daarom wegge laten), he
 
 | Versie 10 | Equivalent van versie 11 |
 |------------|-----------------------|
-| [Index](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.index) | [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) |
+| [TabIndex](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.index) | [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) |
 | [Veld](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [SearchField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [Param1](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [ItemError](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
@@ -153,6 +153,8 @@ Met de volgende stappen kunt u aan de slag gaan met een code migratie door de ee
    using Azure.Search.Documents.Indexes.Models;
    using Azure.Search.Documents.Models;
    ```
+
+1. Voor klassen waarvoor JSON-serialisatie is vereist, vervangt u door `using Newtonsoft.Json` `using System.Text.Json.Serialization` .
 
 1. Client verificatie code wijzigen. In vorige versies zou u eigenschappen op het client object gebruiken om de API-sleutel in te stellen (bijvoorbeeld de eigenschap [SearchServiceClient. credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) ). Gebruik in de huidige versie de [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) -klasse om de sleutel als referentie door te geven, zodat u, indien nodig, de API-sleutel kunt bijwerken zonder nieuwe client objecten te maken.
 

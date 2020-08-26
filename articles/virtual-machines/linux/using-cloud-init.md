@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: e303b713adf2925af8bc012a5b858c6f5740fccf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510069"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869266"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
@@ -23,7 +23,7 @@ Inrichting van de VM is het proces waarbij Azure de parameter waarden voor de VM
 Azure ondersteunt twee inrichtings agenten [Cloud-init](https://cloudinit.readthedocs.io)en de [Azure Linux-agent (Wala)](../extensions/agent-linux.md).
 
 ## <a name="cloud-init-overview"></a>overzicht van Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een virtuele Linux-machine wanneer deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Omdat Cloud-init wordt aangeroepen tijdens het eerste opstart proces, zijn er geen extra stappen of vereiste agents om uw configuratie toe te passen.  `#cloud-config`Zie de [Cloud-init-documentatie site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)voor meer informatie over het correct format teren van uw bestanden of andere invoer.  `#cloud-config`bestanden zijn tekst bestanden die worden gecodeerd in base64.
+[Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een virtuele Linux-machine wanneer deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Omdat Cloud-init wordt aangeroepen tijdens het eerste opstart proces, zijn er geen extra stappen of vereiste agents om uw configuratie toe te passen.  `#cloud-config`Zie de [Cloud-init-documentatie site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)voor meer informatie over het correct format teren van uw bestanden of andere invoer.  `#cloud-config` bestanden zijn tekst bestanden die worden gecodeerd in base64.
 
 Cloud-init werkt ook over distributies. U gebruikt bijvoorbeeld niet **apt-get install** of **yum install** om een pakket te installeren. In plaats daarvan kunt u een lijst definiëren met te installeren pakketten. Cloud-init maakt automatisch gebruik van het systeem eigen pakket beheer programma voor de distributie die u selecteert.
 
@@ -37,16 +37,16 @@ Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde bestur
 ### <a name="canonical"></a>Canonical
 | Uitgever/versie| Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonieke 20,04 |UbuntuServer |18,04-LTS |meest recente |ja | ja |
-|Canonieke 18,04 |UbuntuServer |18,04-LTS |meest recente |ja | ja |
+|Canonieke 20,04 |UbuntuServer |18.04-LTS |meest recente |ja | ja |
+|Canonieke 18,04 |UbuntuServer |18.04-LTS |meest recente |ja | ja |
 |Canonieke 16,04|UbuntuServer |16.04-LTS |meest recente |ja | ja |
 |Canonieke 14,04|UbuntuServer |14.04.5-LTS |meest recente |ja | ja |
 
 ### <a name="rhel"></a>RHEL
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja, ondersteuning van pakket versie: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een voorbeeld afbeelding en **mag** niet meer worden gebruikt. dit wordt 1e september 2020) | N.v.t. |
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja, ondersteuning van pakket versie: *18.2-1. el7_6.2*|
+|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een voorbeeld afbeelding en **mag** niet meer worden gebruikt. dit wordt 1e september 2020) | N.v.t. |
 |RedHat 7,7 (gen1)|RHEL |7,7 | 7.7.2020051912 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
 |RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
 |RedHat 7,7 (gen1)|RHEL |7-LVM | 7.7.2020051921 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
@@ -62,14 +62,14 @@ Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde bestur
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Open Logic 7,7 |CentOS |7-CI |7.7.20190920 |Ja (Opmerking: dit is een voorbeeld afbeelding en **mag** niet meer worden gebruikt. dit wordt 1e september 2020) | N.v.t. |
-|Open Logic 7,7 |CentOS | 7,7 |7.7.2020062400 |ja | Ja, ondersteuning van pakket versie:`18.5-6.el7.centos.5`|
-|Open Logic 7,7 (Gen2) |CentOS | 7_7-Gen2 |7.7.2020062401 |ja | Ja, ondersteuning van pakket versie:`18.5-6.el7.centos.5`|
-|Open Logic 7,7 |CentOS-HPC | 7,7 |7.6.2020062600 |ja | Ja, ondersteuning van pakket versie:`18.5-6.el7.centos.5`|
-|Open Logic 7,7 (Gen2) |CentOS-HPC | 7_7-Gen2 |7.6.2020062601 |ja | Ja, ondersteuning van pakket versie:`18.5-6.el7.centos.5`|
-|Open Logic 8,1 |CentOS | 8_1 |8.1.2020062400 |ja | Ja, ondersteuning van pakket versie:`18.5-7.el8_1.1`|
-|Open Logic 8,1 (Gen2) |CentOS | 8_1-Gen2 |8.1.2020062401 |ja | Ja, ondersteuning van pakket versie:`18.5-7.el8_1.1`|
-|Open Logic 8,1 |CentOS-HPC | 8_1 |8.1.2020062400 |ja | Ja, ondersteuning van pakket versie:`18.5-7.el8_1.1`|
-|Open Logic 8,1 (Gen2) |CentOS-HPC: 8_1-Gen2 | 8_1-Gen2 |8.1.2020062401 |ja | Ja, ondersteuning van pakket versie:`18.5-7.el8_1.1`|
+|Open Logic 7,7 |CentOS | 7,7 |7.7.2020062400 |ja | Ja, ondersteuning van pakket versie: `18.5-6.el7.centos.5`|
+|Open Logic 7,7 (Gen2) |CentOS | 7_7-Gen2 |7.7.2020062401 |ja | Ja, ondersteuning van pakket versie: `18.5-6.el7.centos.5`|
+|Open Logic 7,7 |CentOS-HPC | 7,7 |7.6.2020062600 |ja | Ja, ondersteuning van pakket versie: `18.5-6.el7.centos.5`|
+|Open Logic 7,7 (Gen2) |CentOS-HPC | 7_7-Gen2 |7.6.2020062601 |ja | Ja, ondersteuning van pakket versie: `18.5-6.el7.centos.5`|
+|Open Logic 8,1 |CentOS | 8_1 |8.1.2020062400 |ja | Ja, ondersteuning van pakket versie: `18.5-7.el8_1.1`|
+|Open Logic 8,1 (Gen2) |CentOS | 8_1-Gen2 |8.1.2020062401 |ja | Ja, ondersteuning van pakket versie: `18.5-7.el8_1.1`|
+|Open Logic 8,1 |CentOS-HPC | 8_1 |8.1.2020062400 |ja | Ja, ondersteuning van pakket versie: `18.5-7.el8_1.1`|
+|Open Logic 8,1 (Gen2) |CentOS-HPC: 8_1-Gen2 | 8_1-Gen2 |8.1.2020062401 |ja | Ja, ondersteuning van pakket versie: `18.5-7.el8_1.1`|
 
 * Alle open Logic: CentOS 7,8-en 8,2-installatie kopieën (gen1 en Gen2) worden ingericht met behulp van Cloud-init.
 
@@ -151,6 +151,8 @@ az vm create \
 ```
 
 Wanneer de virtuele machine is gemaakt, toont de Azure CLI informatie die specifiek is voor uw implementatie. Noteer het `publicIpAddress`. Dit adres wordt gebruikt voor toegang tot de virtuele machine.  Het duurt enige tijd voordat de virtuele machine is gemaakt, de pakketten die moeten worden geïnstalleerd en de app worden gestart. Er zijn achtergrondtaken die nog worden uitgevoerd nadat u door de Azure CLI bent teruggeleid naar de prompt. U kunt een SSH-verbinding met de virtuele machine uitvoeren en de stappen volgen die worden beschreven in de sectie probleem oplossing om de Cloud-init-logboeken te bekijken. 
+
+U kunt ook een virtuele machine die is ingeschakeld voor Cloud initialisatie implementeren door de [para meters in arm-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)door te geven.
 
 ## <a name="troubleshooting-cloud-init"></a>Problemen met Cloud-init oplossen
 Zodra de VM is ingericht, wordt de Cloud-init uitgevoerd via alle modules en het script dat is gedefinieerd in om `--custom-data` de virtuele machine te configureren.  Als u fouten of omissies van de configuratie moet oplossen, moet u zoeken naar de module naam ( `disk_setup` of `runcmd` bijvoorbeeld) in het Cloud-init-logboek dat zich bevindt in **/var/log/Cloud-init.log**.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 50c6d3ff6e1e8b979b3544c423a15ae8e1e42f6f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dba43c9e9b214a1ad077a2a15bdf014e057bb04e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592148"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869878"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Ondersteuning voor natuurlijke taal voor Azure Cognitive Services
 
@@ -37,10 +37,10 @@ Deze Cognitive Services zijn taal neutraal en hebben geen beperkingen op basis v
 
 ## <a name="language"></a>Taal
 
-* [Insluitende lezer (preview)](./immersive-reader/language-support.md)
+* [Immersive Reader](./immersive-reader/language-support.md)
 * [Language Understanding (LUIS)](./luis/luis-supported-languages.md)
 * [QnA Maker](./qnamaker/overview/languages-supported.md)
-* [Text Analytics](./text-analytics/text-analytics-supported-languages.md)
+* [Tekstanalyse](./text-analytics/text-analytics-supported-languages.md)
 * [Translator](./translator/languages.md)
 
 ## <a name="speech"></a>Spraak
@@ -51,13 +51,13 @@ Deze Cognitive Services zijn taal neutraal en hebben geen beperkingen op basis v
 
 ## <a name="search"></a>Zoeken
 
-* [Bing Custom Search](./bing-custom-search/supported-countries-markets.md)
-* [Bing Image Search](./bing-image-search/supported-countries-markets.md)
-* [Bing News Search](./bing-news-search/supported-countries-markets.md)
+* [Bing Aangepaste zoekopdrachten](./bing-custom-search/supported-countries-markets.md)
+* [Bing Afbeeldingen zoeken](./bing-image-search/supported-countries-markets.md)
+* [Bing Nieuws zoeken](./bing-news-search/supported-countries-markets.md)
 * [Bing Automatische suggesties](./Bing-Autosuggest/bing-autosuggest-supported-languages.md)
 * [Bing Spellingcontrole](./bing-spell-check/bing-spell-check-supported-languages.md)
-* [Bing Visual Search](./bing-visual-search/supported-countries-markets.md)
-* [Bing Web Search](./bing-web-search/supported-countries-markets.md)
+* [Bing Visuele zoekopdrachten](./bing-visual-search/supported-countries-markets.md)
+* [Bing Webzoekopdrachten](./bing-web-search/supported-countries-markets.md)
 
 ## <a name="decision"></a>Besluit
 

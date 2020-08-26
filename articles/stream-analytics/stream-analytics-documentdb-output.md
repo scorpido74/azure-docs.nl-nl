@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83848038"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870830"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics uitvoer naar Azure Cosmos DB  
 Azure Stream Analytics kan gericht zijn op [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) voor json-uitvoer, waardoor gegevens worden gearchiveerd en query's met lage latentie worden uitgevoerd op ONgestructureerde JSON-gegevens. Dit document bevat enkele aanbevolen procedures voor het implementeren van deze configuratie.
@@ -95,7 +95,7 @@ De binnenkomende gebeurtenis snelheid in Event Hubs is twee keer hoger dan Azure
 
 ![Vergelijking van metrische gegevens Azure Cosmos DB](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-Met 1,2 is Stream Analytics intelligenter in het gebruik van 100 procent van de beschik bare door Voer in Azure Cosmos DB met weinig herverzendingen tegen beperking of frequentie beperking. Dit biedt een betere ervaring voor andere werk belastingen, zoals query's die op de container worden uitgevoerd. Als u wilt zien hoe Stream Analytics met Azure Cosmos DB wordt geschaald als een Sink voor 1.000 tot 10.000 berichten per seconde, probeert u [Dit Azure-voorbeeld project](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb).
+Met 1,2 is Stream Analytics intelligenter in het gebruik van 100 procent van de beschik bare door Voer in Azure Cosmos DB met weinig herverzendingen tegen beperking of frequentie beperking. Dit biedt een betere ervaring voor andere werk belastingen, zoals query's die op de container worden uitgevoerd. Als u wilt zien hoe Stream Analytics met Azure Cosmos DB wordt geschaald als een Sink voor 1.000 tot 10.000 berichten per seconde, probeert u  [Dit Azure-voorbeeld project](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb).
 
 De door Voer van Azure Cosmos DB uitvoer is identiek aan 1,0 en 1,1. We *raden u ten zeerste* aan dat u het compatibiliteits niveau 1,2 in stream Analytics gebruikt met Azure Cosmos db.
 

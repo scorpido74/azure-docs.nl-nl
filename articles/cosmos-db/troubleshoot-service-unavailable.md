@@ -1,42 +1,42 @@
 ---
-title: Problemen met uitzonde ringen Azure Cosmos DB service niet beschikbaar oplossen
-description: Uitzonde ringen voor Cosmos DB Service diagnosticeren en oplossen
+title: Problemen oplossen met uitzonde ringen Azure Cosmos DB service niet beschikbaar
+description: Meer informatie over het opsporen en oplossen van uitzonde ringen voor Azure Cosmos DB service niet beschikbaar.
 author: j82w
 ms.service: cosmos-db
 ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b9c24ee3b94be86ccf9d27b928c42fc194800a3b
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 749592b778612c6903c9c15e336de3fb00978199
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987372"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870864"
 ---
-# <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable"></a>Problemen vaststellen en oplossen Azure Cosmos DB service niet beschikbaar is
-De SDK kan geen verbinding maken met de Azure Cosmos DB-service.
+# <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable-exceptions"></a>Problemen vaststellen en oplossen Azure Cosmos DB service niet-beschik bare uitzonde ringen
+De SDK kan geen verbinding maken met Azure Cosmos DB.
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 De volgende lijst bevat bekende oorzaken en oplossingen voor niet-beschik bare uitzonde ringen voor services.
 
-### <a name="1-the-required-ports-are-being-blocked"></a>1. de vereiste poorten worden geblokkeerd
+### <a name="the-required-ports-are-being-blocked"></a>De vereiste poorten worden geblokkeerd
 Controleer of alle [vereiste poorten](performance-tips-dotnet-sdk-v3-sql.md#networking) zijn ingeschakeld.
 
-### <a name="2-client-side-transient-connectivity-issues"></a>2. tijdelijke verbindings problemen aan de client zijde
-De service niet-beschik bare uitzonde ringen kan Opper vlak zijn wanneer er tijdelijke verbindings problemen zijn die time-outs veroorzaken. Doorgaans bevat de stack tracering met betrekking tot dit scenario een `TransportException` , bijvoorbeeld:
+### <a name="client-side-transient-connectivity-issues"></a>Problemen met de tijdelijke verbinding aan de client zijde
+Onbeschikbaare uitzonde ringen voor services kunnen zich op het Opper vlak bevinden wanneer er tijdelijke verbindings problemen zijn die time-outs veroorzaken. Normaal gesp roken bevat de stack tracering die betrekking heeft op dit scenario, een `TransportException` fout. Bijvoorbeeld:
 
 ```C#
 TransportException: A client transport error occurred: The request timed out while waiting for a server response. 
 (Time: xxx, activity ID: xxx, error code: ReceiveTimeout [0x0010], base error: HRESULT 0x80131500
 ```
 
-Volg de [probleem oplossing](troubleshoot-dot-net-sdk-request-timeout.md#troubleshooting-steps) voor het oplossen van de aanvraag om dit op te lossen.
+Volg de stappen voor het oplossen van de [aanvraag time-out](troubleshoot-dot-net-sdk-request-timeout.md#troubleshooting-steps) om deze op te lossen.
 
-### <a name="3-service-outage"></a>3. service uitval
-Controleer de [status van Azure](https://status.azure.com/status) om te zien of er sprake is van een doorlopend probleem.
+### <a name="service-outage"></a>Service-onderbreking
+Controleer de [status van Azure](https://status.azure.com/status) om te zien of er een doorlopend probleem is.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Problemen [vaststellen en oplossen](troubleshoot-dot-net-sdk.md) bij het gebruik van Azure Cosmos db .NET SDK
-* Meer informatie over prestatie richtlijnen voor [.net v3](performance-tips-dotnet-sdk-v3-sql.md) en [.NET v2](performance-tips.md)
+* Problemen [vaststellen en oplossen](troubleshoot-dot-net-sdk.md) wanneer u de Azure Cosmos db .NET SDK gebruikt.
+* Meer informatie over prestatie richtlijnen voor [.net v3](performance-tips-dotnet-sdk-v3-sql.md) en [.NET v2](performance-tips.md).
