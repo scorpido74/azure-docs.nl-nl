@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/29/2019
+ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: b8b19b5bbb327c55b4f4103a133e77e73f0ae4bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088254"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853111"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's in Windows met Azure NetApp Files (SMB) voor SAP-toepassingen
 
@@ -101,19 +101,19 @@ De vereisten voor een SMB-bestands share zijn:
 
 De share voor de SAP Central-Services in deze referentie architectuur wordt aangeboden door Azure NetApp Files:
 
-![SAP ASCS/SCS HA-architectuur met SMB-share](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-detail.png)
+![SAP ASCS/SCS HA-architectuur met SMB-share Details](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-detail.png)
 
 ## <a name="create-and-mount-smb-volume-for-azure-netapp-files"></a>Een SMB-volume voor Azure NetApp Files maken en koppelen
 
 Voer de volgende stappen uit, als voor bereiding op het gebruik van Azure NetApp Files.  
 
 1. Volg de stappen om u te [registreren voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-register.md)  
-2. Maak een Azure NetApp-account aan de hand van de stappen die worden beschreven in [een NetApp-account maken](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)  
+2. Maak een Azure NetApp-account aan de hand van de stappen die worden beschreven in  [een NetApp-account maken](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)  
 3. Stel de capaciteits pool in en volg de instructies in [een capaciteits groep instellen](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)
 4. Azure NetApp Files resources moeten zich in een gedelegeerd subnet bevinden. Volg de instructies in [een subnet overdragen aan Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) om het gedelegeerde subnet te maken.  
 
-> [!IMPORTANT]
-> U moet Active Directory verbindingen maken voordat u een SMB-volume maakt. Bekijk de [vereisten voor Active Directory verbindingen](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections).  
+   > [!IMPORTANT]
+   > U moet Active Directory verbindingen maken voordat u een SMB-volume maakt. Bekijk de [vereisten voor Active Directory verbindingen](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections).  
 
 5. Active Directory verbinding maken, zoals beschreven in [een Active Directory-verbinding maken](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)  
 6. SMB-Azure NetApp Files SMB-volume maken, volgens de instructies in [een SMB-volume toevoegen](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)  
@@ -124,15 +124,11 @@ Voer de volgende stappen uit, als voor bereiding op het gebruik van Azure NetApp
 
 ## <a name="prepare-the-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster"></a>De infra structuur voor SAP HA voorbereiden met behulp van een Windows-failovercluster 
 
-1. [De vereiste IP-adressen voor DNS instellen](./sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e)  
-2. [Stel statische IP-adressen in voor de virtuele machines van SAP](./sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30).
-3. [Stel een statisch IP-adres in voor de interne Load Balancer van Azure](./sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e).
-4. [Stel de standaard regels voor ASCS/SCS-verdeling in voor de interne Load Balancer van Azure](./sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c).
-5. [Wijzig de ASCS/SCS-standaard regels voor taak verdeling voor de interne Azure-Load Balancer](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716).
-6. [Virtuele Windows-machines toevoegen aan het domein](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c).
-7. [Voeg register vermeldingen toe aan cluster knooppunten van het SAP ASCS/SCS-exemplaar](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
-8. [Een Windows Server-failovercluster instellen voor een SAP ASCS/SCS-exemplaar](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
-9. Als u Windows Server 2016 gebruikt, raden we u aan Azure- [cloudwitness](/windows-server/failover-clustering/deploy-cloud-witness)te configureren.
+1. [Stel de ASCS/SCS-taakverdelings regels in voor de interne Load Balancer van Azure](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716).
+2. [Virtuele Windows-machines toevoegen aan het domein](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c).
+3. [Voeg register vermeldingen toe aan cluster knooppunten van het SAP ASCS/SCS-exemplaar](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
+4. [Een Windows Server-failovercluster instellen voor een SAP ASCS/SCS-exemplaar](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
+5. Als u Windows Server 2016 gebruikt, raden we u aan Azure- [cloudwitness](/windows-server/failover-clustering/deploy-cloud-witness)te configureren.
 
 
 ## <a name="install-sap-ascs-instance-on-both-nodes"></a>SAP ASCS-exemplaar op beide knoop punten installeren
@@ -152,11 +148,11 @@ U hebt de volgende software van SAP nodig:
 2. Selecteer **Bestands share cluster** als de configuratie van de cluster share in SWPM.  
 3. Wanneer u wordt gevraagd om stap **SAP-para meters**van het systeem, voert u de hostnaam in voor de Azure NetApp files SMB-share die u al hebt gemaakt als hostnaam van de **Bestands share**.  In dit voor beeld is de hostnaam van de SMB **-share anfsmb-9562**. 
 
-> [!IMPORTANT]
-> Als de SWPM-resultaten van de functie voor de voortdurende Beschik baarheid in de voor waarden van de voor gaande controle worden weer gegeven, kunt u dit probleem verhelpen door de instructies in [een vertraagde fout bericht te volgen wanneer u een gedeelde map probeert te openen die niet meer in Windows bestaat](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l).  
+   > [!IMPORTANT]
+   > Als de SWPM-resultaten van de functie voor de voortdurende Beschik baarheid in de voor waarden van de voor gaande controle worden weer gegeven, kunt u dit probleem verhelpen door de instructies in [een vertraagde fout bericht te volgen wanneer u een gedeelde map probeert te openen die niet meer in Windows bestaat](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l).  
 
-> [!TIP]
-> Als de controle van de vereisten in SWPM wordt weer gegeven, wordt niet voldaan aan de voor waarde voor wissel grootte, kunt u de wissel grootte aanpassen door te navigeren naar mijn computer>systeem eigenschappen>prestatie-instellingen> Geavanceerd> virtueel geheugen> gewijzigd.  
+   > [!TIP]
+   > Als de controle van de vereisten in SWPM wordt weer gegeven, wordt niet voldaan aan de voor waarde voor wissel grootte, kunt u de wissel grootte aanpassen door te navigeren naar mijn computer>systeem eigenschappen>prestatie-instellingen> Geavanceerd> virtueel geheugen> gewijzigd.  
 
 4. Configureer een SAP-cluster bron, de `SAP-SID-IP` test poort, met behulp van Power shell. Voer deze configuratie uit op een van de SAP ASCS/SCS-cluster knooppunten, zoals beschreven in [test poort configureren](./sap-high-availability-installation-wsfc-shared-disk.md#10822f4f-32e7-4871-b63a-9b86c76ce761).
 

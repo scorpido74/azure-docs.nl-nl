@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141717"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855194"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Time Series-model in Azure Time Series Insights Gen2
 
@@ -24,7 +24,7 @@ In dit artikel worden de tijdreeks modellen, de mogelijkheden en het maken en bi
 > [!TIP]
 >
 > * Ga naar de [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving voor een live time series model-voor beeld.
-> * Meer informatie [over het werken met een time series-model](/azure/time-series-insights/how-to-edit-your-model) met behulp van de Azure time series Insights Gen2 Explorer.
+> * Meer informatie [over het werken met een time series-model](/azure/time-series-insights/how-to-edit-your-model) met behulp van de Azure time series Insights TSI Explorer.
 
 ## <a name="summary"></a>Samenvatting
 
@@ -75,7 +75,7 @@ Deze onderdelen worden gecombineerd om een time series-model op te geven en om u
 
 [![Overzichts grafiek voor tijdreeks model](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Een time series-model kan worden gemaakt en beheerd via de [Azure time series Insights Gen2 Explorer](/azure/time-series-insights/concepts-model-overview). Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
+Een tijdreeks model kan worden gemaakt en beheerd via de [Azure time series INSIGHTS TSI-Verkenner](/azure/time-series-insights/concepts-model-overview). Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
 
 ## <a name="time-series-model-instances"></a>Exemplaren van de time series-model
 
@@ -87,7 +87,7 @@ Instanties bevatten beschrijvende informatie die betrekking heeft op *instantie-
 
 *Exemplaar velden* zijn een verzameling beschrijvende gegevens die waarden voor hiërarchie niveaus kunnen bevatten, evenals de fabrikant, operator, enzovoort.
 
-Nadat een gebeurtenis bron is geconfigureerd voor de Azure Time Series Insights Gen2-omgeving, worden exemplaren automatisch gedetecteerd en gemaakt in een time series-model. De exemplaren kunnen worden gemaakt of bijgewerkt via de Azure Time Series Insights Gen2 Explorer door gebruik te maken van Time Series-model query's.
+Nadat een gebeurtenis bron is geconfigureerd voor de Azure Time Series Insights Gen2-omgeving, worden exemplaren automatisch gedetecteerd en gemaakt in een time series-model. De exemplaren kunnen worden gemaakt of bijgewerkt via de Azure Time Series Insights TSI-Verkenner door gebruik te maken van Time Series-model query's.
 
 De [demo](https://insights.timeseries.azure.com/preview/samples) van de contoso-Farm bevat enkele voor beelden van Live instances.
 
@@ -182,8 +182,8 @@ Hiërarchieën worden weer gegeven in JSON als:
 
 In het vorige voor beeld van JSON:
 
-* `Location`Hiermee definieert u een hiërarchie met bovenliggend `states` en onderliggend item `cities` . Elk `location` kan meerdere hebben `states` , die op zijn beurt meerdere kunnen bevatten `cities` .
-* `ManufactureDate`Hiermee definieert u een hiërarchie met bovenliggend `year` en onderliggend item `month` . Elk `ManufactureDate` kan meerdere hebben `years` , die op zijn beurt meerdere kunnen bevatten `months` .
+* `Location` Hiermee definieert u een hiërarchie met bovenliggend `states` en onderliggend item `cities` . Elk `location` kan meerdere hebben `states` , die op zijn beurt meerdere kunnen bevatten `cities` .
+* `ManufactureDate` Hiermee definieert u een hiërarchie met bovenliggend `year` en onderliggend item `month` . Elk `ManufactureDate` kan meerdere hebben `years` , die op zijn beurt meerdere kunnen bevatten `months` .
 
 > [!TIP]
 > Lees voor de hiërarchie-API maken, lezen, bijwerken en verwijderen (ruwe) ondersteuning het artikel [gegevens query's](concepts-query-overview.md#time-series-model-query-tsm-q-apis) en de documentatie van de [hiërarchie-API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api).
@@ -216,7 +216,7 @@ Op basis van de instantie velden die worden gebruikt in de vorige definitie en e
 | ID4 | ' buil ding ' = ' 1000 ', ' Floor ' = ' 10 '  |
 | ID5 | Geen: ' buil ding ', ' Floor ' of ' room ' is ingesteld. |
 
-Time Series **id1** en **ID4** worden weer gegeven als onderdeel van de hiërarchie **H1** in de [Azure time series Insights Gen2 Explorer](time-series-insights-update-explorer.md) , omdat ze volledig gedefinieerde en correct bestelde *bouw*-, *vloer*-en *room* -para meters hebben gedefinieerd.
+Time Series **id1** en **ID4** worden weer gegeven als onderdeel van de hiërarchie **H1** in de [Azure time series Insights TSI-Explorer](time-series-insights-update-explorer.md) , omdat ze volledig gedefinieerde en correct bestelde *bouw*-, *vloer*-en *room* -para meters hebben.
 
 De andere zijn ingedeeld onder niet- *bovenliggende instanties* , omdat ze niet voldoen aan de opgegeven gegevens hiërarchie.
 

@@ -13,19 +13,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035975"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855216"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en file share op Azure
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows OS][Logo_Windows] Windows
 >
 
 U kunt meerdere virtuele IP-adressen beheren door gebruik te maken van een [interne Load Balancer van Azure][load-balancer-multivip-overview]. 
@@ -61,6 +61,7 @@ _**Afbeelding 1:** Een SAP ASCS/SCS-exemplaar en SOFS geïmplementeerd in twee c
 > * Verschillende SAP Global hosts bestands shares die deel uitmaken van verschillende SAP-Sid's, moeten hetzelfde SOFS-cluster delen.
 > * Elke Database Management System (DBMS) SID moet een eigen toegewezen WSFC-cluster hebben.
 > * SAP-toepassings servers die deel uitmaken van één SAP-systeem-SID moeten hun eigen toegewezen Vm's hebben.
+> * Een combi natie van replicatie server in de wachtrij 1 en de in plaats van gerepliceerde replicatie Server 2 in hetzelfde cluster wordt niet ondersteund.  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>Multi-SID-architectuur van SAP ASCS/SCS met bestands share
 

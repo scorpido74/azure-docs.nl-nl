@@ -8,12 +8,12 @@ ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4f49d4e78cd58d16627a0b6fda1957baa9f1f085
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4c005bc49780edcb7f322455e37163e78d87619f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752080"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852689"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra Disk gebruiken
 
@@ -128,7 +128,7 @@ Zodra de VM is ingericht, kunt u de gegevens schijven partitioneren en Format te
 
 ## <a name="deploy-an-ultra-disk-using-the-azure-portal"></a>Een ultra schijf implementeren met behulp van de Azure Portal
 
-In deze sectie wordt beschreven hoe u een virtuele machine implementeert met een ultra schijf als een gegevens schijf. Hierbij wordt ervan uitgegaan dat u bekend bent met het implementeren van een virtuele machine. als dat niet het geval is, raadpleegt u onze [Snelstartgids: een virtuele Windows-machine maken in de Azure Portal](~/articles/virtual-machines/windows/quick-create-portal.md).
+In deze sectie wordt beschreven hoe u een virtuele machine implementeert met een ultra schijf als een gegevens schijf. Hierbij wordt ervan uitgegaan dat u bekend bent met het implementeren van een virtuele machine. als dat niet het geval is, raadpleegt u onze [Snelstartgids: een virtuele Windows-machine maken in de Azure Portal](./windows/quick-create-portal.md).
 
 - Meld u aan bij de [Azure Portal](https://portal.azure.com/) en navigeer om een virtuele machine (VM) te implementeren.
 - Zorg ervoor dat u een [ondersteunde VM-grootte en-regio](#ga-scope-and-limitations)kiest.

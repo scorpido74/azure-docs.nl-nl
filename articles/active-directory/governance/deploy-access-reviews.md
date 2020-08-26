@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783600"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853029"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Implementatie van Azure Active Directory Access beoordelingen plannen
 
@@ -283,7 +283,7 @@ Externe identiteiten kunnen toegang tot bedrijfs bronnen krijgen via een van de 
 
 * Er is een geprivilegieerde rol toegewezen in azure AD of in een Azure-abonnement
 
-Zie [voorbeeld script](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse.). In het script wordt weer gegeven waar externe identiteiten worden gebruikt die worden uitgenodigd voor de Tenant. U kunt het groepslid maatschap, de roltoewijzingen en toepassings toewijzingen van een externe gebruiker in azure AD bekijken. In het script worden geen toewijzingen weer gegeven buiten Azure AD, zoals het toewijzen van directe rechten aan share point-resources, zonder het gebruik van groepen.
+Zie [voorbeeld script](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse). In het script wordt weer gegeven waar externe identiteiten worden gebruikt die worden uitgenodigd voor de Tenant. U kunt het groepslid maatschap, de roltoewijzingen en toepassings toewijzingen van een externe gebruiker in azure AD bekijken. In het script worden geen toewijzingen weer gegeven buiten Azure AD, zoals het toewijzen van directe rechten aan share point-resources, zonder het gebruik van groepen.
 
 Wanneer u een toegangs beoordeling maakt voor groepen of toepassingen, kunt u ervoor kiezen om de revisor te richten op iedereen met toegang of alleen gast gebruikers. Als u alleen gast gebruikers selecteert, krijgen revisors een lijst met gerichte externe identiteiten van Azure AD B2B die toegang hebben tot de resource.
 

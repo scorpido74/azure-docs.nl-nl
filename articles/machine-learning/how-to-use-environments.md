@@ -3,20 +3,20 @@ title: Software omgevingen gebruiken
 titleSuffix: Azure Machine Learning
 description: Omgevingen maken en beheren voor model training en-implementatie. Python-pakketten en andere instellingen voor de omgeving beheren.
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: saachigopal
+ms.author: sagopal
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a08575ac118f38361d82198ccc86a09f7b2558d6
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 1994407de579e8fd7bc6dfc2ecc9f021d1bf0ec5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783736"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853243"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Software omgevingen maken & gebruiken in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -153,7 +153,7 @@ Voeg pakketten toe aan een omgeving met behulp van Conda-, PIP-of privé-wiel be
 
 Als een pakket beschikbaar is in een Conda-pakket opslagplaats, is het raadzaam om de installatie van Conda te gebruiken in plaats van de PIP-installatie. Conda-pakketten worden meestal geleverd met vooraf gemaakte binaire bestanden die de installatie betrouwbaarder maken.
 
-In het volgende voor beeld wordt toegevoegd aan de omgeving. Er wordt versie 1.17.0 van toegevoegd `numpy` . Het pakket wordt ook toegevoegd `pillow` `myenv` . In het voor beeld worden [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) respectievelijk de methode en de [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) methode gebruikt.
+In het volgende voor beeld wordt toegevoegd aan de omgeving `myenv` . Er wordt versie 1.17.0 van toegevoegd `numpy` . Het pakket wordt ook toegevoegd `pillow` . In het voor beeld worden [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) respectievelijk de methode en de [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) methode gebruikt.
 
 ```python
 from azureml.core.environment import Environment
@@ -245,7 +245,7 @@ build.wait_for_completion(show_output=True)
 Het is handig eerst installatie kopieën lokaal te bouwen met behulp van de- [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) methode. En als u de optionele para meter instelt `pushImageToWorkspaceAcr = True` , wordt de resulterende installatie kopie naar het container register van de Azure ml-werk ruimte gepusht. 
 
 > [!WARNING]
->  Het wijzigen van de volg orde van afhankelijkheden of kanalen in een omgeving resulteert in een nieuwe omgeving en moet een nieuwe installatie kopie maken.
+>  Het wijzigen van de volg orde van afhankelijkheden of kanalen in een omgeving resulteert in een nieuwe omgeving en moet een nieuwe installatie kopie maken. Als u de `build()` methode voor een bestaande installatie kopie aanroept, worden ook de afhankelijkheden bijgewerkt als er nieuwe versies zijn. 
 
 ## <a name="enable-docker"></a>Docker inschakelen
 
@@ -323,7 +323,7 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 Voor een geregistreerde omgeving kunt u details van de installatie kopie ophalen met behulp van de volgende code, waarbij `details` een instantie van [DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py) is (AzureML python SDK >= 1,11) en alle informatie bevat over de omgevings afbeelding, zoals de dockerfile, het REGI ster en de naam van de installatie kopie.
 
 ```python
-details = environment.get_image_details()
+details = environment.get_image_details(workspace=ws)
 ```
 
 ## <a name="use-environments-for-training"></a>Omgevingen gebruiken voor training

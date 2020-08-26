@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 719b96c9186d463ca3ee41c6fb401a8f22c4c11c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4f3733806eb810cff7722e6432bb274b6d46a37
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431959"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854825"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Aan de slag met Azure Machine Learning Studio (klassiek) in R
 
-**van toepassing op:** ![ Ja ](../../../includes/media/aml-applies-to-skus/yes.png) machine learning Studio (klassiek) ![ Nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure machine learning](../compare-azure-ml-to-studio-classic.md)  
+**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
 <!-- Stephen F Elston, Ph.D. -->
@@ -225,7 +225,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 [De gegevensset voor het](#loading)laden van gegevens sets is al besproken. Als u het R-script hebt gemaakt en getest dat in de vorige sectie wordt weer gegeven, gaat u als volgt te werk:
 
-1. Sla het R-script op in een. R-bestand. Ik bel mijn script bestand "simpleplot. R. Dit is de inhoud.
+1. Sla het R-script op in een. R-bestand. Ik bel mijn script bestand "simpleplot. R. Dit is what's in het bestand:
 
    ```r
    ## Only one of the following two lines should be used
@@ -250,7 +250,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. Typ de `source()` functie met de naam van het zip-bestand in het code venster voor de module voor het uitvoeren van een [R-script][execute-r-script] . In mijn geval heb ik getypt `source("src/simpleplot.R")` .  
 
-1. Zorg ervoor dat u **Opslaan**selecteert.
+1. Zorg ervoor dat u **Opslaan** selecteert.
 
 Zodra deze stappen zijn voltooid, wordt [het r][execute-r-script] -script in het zip-bestand uitgevoerd wanneer het experiment wordt uitgevoerd. Op dit moment moet het experiment er ongeveer als volgt uitzien, zoals in afbeelding 5.
 
@@ -570,11 +570,11 @@ Het lijkt alsof alles werkt. We hebben de nieuwe kolom met de verwachte waarden 
 
 In deze sectie worden enkele eenvoudige trans formaties uitgevoerd op de waarden in een aantal van de kolommen van onze data frame. De R-taal ondersteunt bijna wille keurige waarden trans formaties. De verwijzingen in [verdere Lees bewerkingen](#appendixb) bevatten uitgebreide voor beelden.
 
-Als u de waarden in de samen vattingen van onze data frame bekijkt, moet u hier iets oneven kijken. Is er meer ijs dan in Californië geproduceerde melk? Nee, uiteraard niet, als dit niet zinvol is, is het mogelijk dat er een deel van de Amerikaanse Ice room-Lovers is. De eenheden verschillen. De prijs is in eenheden van Amerikaanse ponden, melk in eenheden van 1 M VS pond, ijs is in eenheden van 1.000 VS gallons en huis kaas is in eenheden van 1.000 VS pond. Aangenomen dat ijs ongeveer 6,5 pond per gallon weegt, kunnen we de vermenigvuldiging eenvoudig uitvoeren om deze waarden te converteren zodat ze allemaal in gelijke eenheden van 1.000 Euro's liggen.
+Als u de waarden in de samen vattingen van onze data frame bekijkt, ziet u hier iets oneven. Is er meer ijs dan in Californië geproduceerde melk? Nee, uiteraard niet, als dit niet zinvol is, is het mogelijk dat er een deel van de Amerikaanse Ice room-Lovers is. De eenheden verschillen. De prijs is in eenheden van Amerikaanse ponden, melk in eenheden van 1 M VS pond, ijs is in eenheden van 1.000 VS gallons en huis kaas is in eenheden van 1.000 VS pond. Aangenomen dat ijs ongeveer 6,5 pond per gallon weegt, kunnen we de vermenigvuldiging eenvoudig uitvoeren om deze waarden te converteren, zodat ze allemaal in gelijke eenheden van 1.000 pond zijn.
 
 Voor ons prognose model gebruiken we een multiplicative-model voor trend en seizoen aanpassing van deze gegevens. Met een logboek transformatie kan ons een lineair model gebruiken, waardoor dit proces wordt vereenvoudigd. We kunnen de logboek transformatie Toep assen in dezelfde functie als de vermenigvuldiger wordt toegepast.
 
-In de volgende code definieert u een nieuwe functie `log.transform()` en past u deze toe op de rijen met de numerieke waarden. De `Map()` functie R wordt gebruikt om de `log.transform()` functie toe te passen op de geselecteerde kolommen van de data frame. `Map()`is vergelijkbaar met `apply()` maar biedt meer dan een lijst met argumenten voor de functie. Houd er rekening mee dat een lijst met vermenigvuldigers het tweede argument voor de `log.transform()` functie levert. De `na.omit()` functie wordt gebruikt als een beetje opschoning om ervoor te zorgen dat er geen ontbrekende of niet-gedefinieerde waarden in de data frame zijn.
+In de volgende code definieert u een nieuwe functie `log.transform()` en past u deze toe op de rijen met de numerieke waarden. De `Map()` functie R wordt gebruikt om de `log.transform()` functie toe te passen op de geselecteerde kolommen van de data frame. `Map()` is vergelijkbaar met `apply()` maar biedt meer dan een lijst met argumenten voor de functie. Houd er rekening mee dat een lijst met vermenigvuldigers het tweede argument voor de `log.transform()` functie levert. De `na.omit()` functie wordt gebruikt als een beetje opschoning om ervoor te zorgen dat er geen ontbrekende of niet-gedefinieerde waarden in de data frame zijn.
 
 ```r
 log.transform <- function(invec, multiplier = 1) {
@@ -773,7 +773,7 @@ De relaties tussen deze variabelen hebben een enkele onevene structuur. Misschie
 
 ### <a name="correlation-analysis"></a>Correlatieanalyse
 
-Om correlatie-analyses uit te voeren, moeten zowel de trend worden genormaliseerd als de variabelen worden gestandaardiseerd. We kunnen eenvoudigweg de R `scale()` -functie gebruiken, waarmee variabelen worden gecentreerd en geschaald. Deze functie kan sneller worden uitgevoerd. Ik wil echter een voor beeld zien van een verdedigings programma in R.
+Om correlatie-analyses uit te voeren, moeten zowel de trend worden genormaliseerd als de variabelen worden gestandaardiseerd. We kunnen eenvoudigweg de R `scale()` -functie gebruiken, waarmee variabelen worden gecentreerd en geschaald. Deze functie kan sneller worden uitgevoerd. Ik wil echter een voor beeld zien van een verdedigings programmering in R.
 
 De `ts.detrend()` functie die hieronder wordt weer gegeven, voert beide bewerkingen uit. De volgende twee regels code detrenden de gegevens en vervolgens worden de waarden genormaliseerd.
 
@@ -1338,7 +1338,7 @@ RStudio is behoorlijk goed gedocumenteerd. Hier vindt u enkele koppelingen naar 
 Deze zelf studie R-programmeer behandelt de basis beginselen van wat u nodig hebt om de R-taal met Azure Machine Learning Studio (klassiek) te gebruiken. Als u niet bekend bent met R, zijn er twee inleidingen beschikbaar op KRANen:
 
 * [R voor beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) door Emmanuel Paradis is een goede plaats om te starten.  
-* [Een inleiding tot R](https://cran.r-project.org/doc/manuals/R-intro.html) door W. N. Venables et. al. meer dieper.
+* [Een inleiding tot R](https://cran.r-project.org/doc/manuals/R-intro.html) door W. N. Venables et al. gaat meer dieper in.
 
 Er zijn veel boeken op R die u kunnen helpen om aan de slag te gaan. Hier vindt u enkele nuttige informatie:
 
@@ -1355,7 +1355,8 @@ De **inleidende tijd reeks** van het boek met r door Paul Cowpertwait en Andrew 
 Hier volgen enkele fantastische Internet bronnen:
 
 * DataCamp u in het comfort van uw browser met video lessen en coderings oefeningen. Er zijn interactieve zelf studies voor de nieuwste R-technieken en-pakketten. Maak de gratis [interactieve R-zelf studie](https://www.datacamp.com/courses/introduction-to-r).
-* [Meer informatie over R-Program ma's, de definitieve hand leiding](https://www.programiz.com/r-programming) van Programiz.
+* [Meer informatie over R-Program ma's, de definitieve hand leiding](https://www.datamentor.io/r-programming/) van DataMentor.
+* [R-Codeer](https://r-coder.com/). Uitgebreide R-zelf studies en een gratis R-cursus voor beginners.
 * Een snelle [R-zelf studie](https://www.cyclismo.org/tutorial/R/) van Kelly Black van Clarkson University.
 * Er zijn meer dan 60 R-resources die worden weer gegeven in [de bovenste R-taal bronnen om uw gegevens vaardigheden te verbeteren](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
 

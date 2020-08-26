@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7b9077af50115e912415d784dc98ace081c0c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300321"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852695"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway ontwerp
 
@@ -26,6 +26,8 @@ Het is belangrijk te weten dat er verschillende configuraties beschikbaar zijn v
 Een site-naar-site-VPN-gatewayverbinding (S2S) is een verbinding via een VPN-tunnel met IPsec/IKE (IKEv1 of IKEv2). S2S-verbindingen kunnen worden gebruikt voor cross-premises en hybride configuraties. Voor een S2S-verbinding is een VPN-apparaat op locatie vereist waaraan een openbaar IP-adres is toegewezen. Zie [Veelgestelde vragen over VPN Gateways - VPN-apparaten](vpn-gateway-vpn-faq.md#s2s) voor meer informatie over het selecteren van een VPN-apparaat.
 
 ![Voorbeeld van een site-naar-site-verbinding met Azure VPN Gateway](./media/design/vpngateway-site-to-site-connection-diagram.png)
+
+VPN Gateway kunnen in de modus actief/stand-by worden geconfigureerd met behulp van een open bare IP of in de modus actief-actief met behulp van twee open bare Ip's. In de modus actief/stand-by is een IPsec-tunnel actief en de andere tunnel is in stand-by. In deze installatie loopt verkeer via de actieve tunnel en als er een probleem is met deze tunnel, schakelt het verkeer over naar de stand-by-tunnel. Het instellen van VPN Gateway in de modus actief-actief wordt *Aanbevolen* , waarbij zowel de IPSec-tunnels gelijktijdig actief zijn, met gegevens die via beide tunnels worden door lopen. Een extra voor deel van de modus actief-actief is dat klanten hogere door voeren ondervinden.
 
 ### <a name="multi-site"></a><a name="Multi"></a>Meerdere locaties
 
@@ -75,7 +77,7 @@ Zolang het virtuele netwerk voldoet aan bepaalde vereisten, kunt u VNet-peering 
 
 ## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute (privéverbinding)
 
-Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en CRM Online. De connectiviteit kan van een wille keurig netwerk (IP VPN), een Point-to-Point Ethernet-netwerk of een virtuele Kruis verbinding via een connectiviteits provider op een functie voor samen locatie zijn.
+Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een privéverbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en CRM Online. De connectiviteit kan van een wille keurig netwerk (IP VPN), een Point-to-Point Ethernet-netwerk of een virtuele Kruis verbinding via een connectiviteits provider op een functie voor samen locatie zijn.
 
 ExpressRoute-verbindingen gaan niet via het openbare internet. Daardoor zijn ExpressRoute-verbindingen betrouwbaarder en sneller en hebben ze lagere latenties en betere beveiliging dan gewone verbindingen via internet.
 

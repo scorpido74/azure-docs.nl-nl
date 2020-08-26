@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 08/25/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9042318d29b9a7fc8c2064bdf845d6f0d5a4f3e8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76697894"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853860"
 ---
 # <a name="brokered-authentication-in-android"></a>Brokered-verificatie in Android
 
@@ -58,7 +58,7 @@ Als op een apparaat nog geen Broker-app is geïnstalleerd, geeft MSAL de gebruik
 
 Wanneer een Broker op een apparaat is geïnstalleerd, worden alle volgende interactieve token aanvragen (aanroepen naar `acquireToken()` ) afgehandeld door de broker in plaats van lokaal door MSAL. Elke SSO-status die eerder beschikbaar is voor MSAL, is niet beschikbaar voor de Broker. Als gevolg hiervan moet de gebruiker zich opnieuw verifiëren of een account selecteren uit de bestaande lijst met accounts die bekend zijn bij het apparaat.
 
-Als u een Broker installeert, hoeft de gebruiker zich niet opnieuw aan te melden. Alleen als de gebruiker een moet omzetten `MsalUiRequiredException` , gaat de volgende aanvraag naar de Broker. `MsalUiRequiredException`wordt om een aantal redenen gegenereerd en moet interactief worden opgelost. Dit zijn enkele veelvoorkomende redenen:
+Als u een Broker installeert, hoeft de gebruiker zich niet opnieuw aan te melden. Alleen als de gebruiker een moet omzetten `MsalUiRequiredException` , gaat de volgende aanvraag naar de Broker. `MsalUiRequiredException` wordt om een aantal redenen gegenereerd en moet interactief worden opgelost. Dit zijn enkele veelvoorkomende redenen:
 
 - De gebruiker heeft het wacht woord gewijzigd dat is gekoppeld aan het account.
 - Het account van de gebruiker voldoet niet meer aan het beleid voor voorwaardelijke toegang.
@@ -76,7 +76,7 @@ Als Intune-bedrijfsportal is geïnstalleerd en als de actieve Broker fungeert, e
 
 U moet een omleidings-URI registreren die compatibel is met de Broker. De omleidings-URI voor de Broker moet de pakket naam van uw app bevatten, evenals de door base64 gecodeerde representatie van de hand tekening van uw app.
 
-De indeling van de omleidings-URI is:`msauth://<yourpackagename>/<base64urlencodedsignature>`
+De indeling van de omleidings-URI is: `msauth://<yourpackagename>/<base64urlencodedsignature>`
 
 Genereer uw base64 URL-gecodeerde hand tekening met behulp van de handtekening sleutels van uw app. Hier volgen enkele voor beelden van opdrachten die gebruikmaken van uw handtekening sleutels voor fout opsporing:
 
@@ -122,3 +122,12 @@ Als er een met de fout code wordt weer geven `MsalClientException` `"BROKER_BIND
 
 - Vraag de gebruiker om energie optimalisatie uit te scha kelen voor de Microsoft Authenticator-app en de Intune-bedrijfsportal.
 - De gebruiker vragen om de machtiging te verlenen `"READ_CONTACTS"`
+
+## <a name="verifying-broker-integration"></a>De integratie van de Broker controleren
+
+Het is mogelijk niet onmiddellijk duidelijk dat de integratie van de Broker werkt, maar u kunt de volgende stappen gebruiken om te controleren:
+
+1. Voltooi op uw Android-apparaat een aanvraag met behulp van de Broker.
+1. Zoek in de instellingen op uw Android-apparaat naar een nieuw gemaakt account dat overeenkomt met het account waarmee u bent geverifieerd. Het account moet van het type *work-account*zijn.
+
+U kunt het account uit instellingen verwijderen als u de test wilt herhalen.

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4fce5b191e0af6a69fe218c4ed7272f352c3bdd2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 8c51095c9e33cd9e5f6da7e972e0cc596eec6478
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827491"
+ms.locfileid: "88855593"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Resource Manager-sjablonen inzetten voor Azure Logic Apps
 
@@ -119,7 +119,9 @@ Hier volgen de algemene stappen op hoog niveau voor het gebruik van Azure-pijp l
 
 ## <a name="authorize-oauth-connections"></a>OAuth-verbindingen autoriseren
 
-Na de implementatie werkt uw logische app end-to-end met geldige para meters. U moet echter nog steeds geautoriseerde OAuth-verbindingen goed keuren of gebruiken om geldige toegangs tokens te genereren voor [het verifiëren van uw referenties](../active-directory/develop/authentication-vs-authorization.md). Hier volgen enkele suggesties:
+Na de implementatie werkt de logische app end-to-end met geldige para meters, maar om geldige toegangs tokens te genereren voor [het verifiëren van uw referenties](../active-directory/develop/authentication-vs-authorization.md), moet u nog steeds vooraf geautoriseerde OAuth-verbindingen goed keuren of gebruiken. U hoeft echter alleen maar eenmaal API-verbindings bronnen te implementeren en te verifiëren, wat betekent dat u deze verbindings bronnen niet hoeft op te nemen in latere implementaties, tenzij u de verbindings gegevens moet bijwerken. Als u een pijp lijn voor continue integratie en continue implementatie gebruikt, implementeert u alleen bijgewerkte Logic Apps resources en hoeft u de verbindingen niet telkens opnieuw te autoriseren.
+
+Hier volgen enkele suggesties voor het afhandelen van autorisatie verbindingen:
 
 * Het vooraf autoriseren en delen van API-verbindings resources over Logic apps die zich in dezelfde regio bevinden. API-verbindingen bestaan onafhankelijk van Logic apps als Azure-resources. Hoewel Logic apps afhankelijkheden hebben van de API-verbindings resources, hebben de API-verbindings resources geen afhankelijkheden op Logic apps en blijven ze aanwezig nadat u de afhankelijke Logic apps hebt verwijderd. Logic apps kunnen ook API-verbindingen gebruiken die voor komen in andere resource groepen. De Logic app Designer biedt echter alleen ondersteuning voor het maken van API-verbindingen in dezelfde resource groep als uw logische apps.
 

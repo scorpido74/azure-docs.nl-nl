@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8bed6c46b0660d5bf43863a5c7aaf4eeaf7e26f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853203"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852095"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scenario: verkeer routeren via een NVA
 
 Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare scenario's. In dit NVA-scenario is het doel om verkeer te routeren via een NVA (virtueel netwerk apparaat) voor vertakking naar VNet en VNet naar vertakking. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over route ring van virtuele hub.
 
 > [!NOTE]
-> Sommige van de routerings mogelijkheden kunnen nog steeds worden geïmplementeerd. Als de implementatie nog niet in uw regio is gebeurd, moet u de stappen in deze versies van de artikelen in de tussen tijd gebruiken:
+> Als u al een configuratie hebt met routes die ouder zijn dan de nieuwe functies [voor het configureren van virtuele-hub-route ring](how-to-virtual-hub-routing.md) beschikbaar, gebruikt u de stappen in deze artikelen:
 >* [Azure Portal artikel](virtual-wan-route-table-nva-portal.md)
 >* [Power shell-artikel](virtual-wan-route-table-nva.md)
 >
 
-## <a name="design"></a><a name="design"></a>Ontwerpen
+## <a name="design"></a><a name="design"></a>Ontwerp
 
 In dit scenario gebruiken we de naamgevings Conventie:
 

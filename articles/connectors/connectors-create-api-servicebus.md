@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815722"
+ms.locfileid: "88853295"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -85,23 +85,23 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 
    1. Geef een naam op voor de verbinding en selecteer uw Service Bus naam ruimte.
 
-      ![Service Bus verbinding maken, deel 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
+      ![Scherm opname van de naam van de verbinding en het selecteren van Service Bus naam ruimte](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
       Als u de connection string in plaats daarvan hand matig wilt invoeren, selecteert u **hand matig verbindings gegevens invoeren**. Als u uw connection string niet hebt, kunt u hier meer informatie [vinden over uw Connection String](#permissions-connection-string).
 
    1. Selecteer uw Service Bus-beleid en selecteer **maken**.
 
-      ![Service Bus verbinding maken, deel 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
+      ![Scherm opname van het selecteren van Service Bus beleid](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. Selecteer de gewenste Messa ging-entiteit, zoals een wachtrij of onderwerp. Selecteer voor dit voor beeld uw Service Bus wachtrij.
    
-      ![Service Bus wachtrij selecteren](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
+      ![Scherm opname van het selecteren van Service Bus wachtrij](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. Geef de benodigde informatie op voor de geselecteerde trigger. Als u andere beschik bare eigenschappen aan de actie wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste eigenschappen.
 
    Selecteer voor de trigger van dit voor beeld het polling-interval en de frequentie voor het controleren van de wachtrij.
 
-   ![Polling-interval instellen](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![Scherm opname van het instellen van polling-interval voor de Service Bus trigger](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
    Zie de [referentie pagina](/connectors/servicebus/)van de connector voor meer informatie over de beschik bare triggers en eigenschappen.
 
@@ -123,29 +123,29 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 
    Selecteer voor dit voor beeld de actie **bericht verzenden** .
 
-   ![Service Bus actie selecteren](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   ![Scherm opname van het selecteren van de Service Bus actie](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
 1. Als uw actie voor de eerste keer verbinding maakt met uw Service Bus-naam ruimte, voert u de volgende stappen uit wanneer de ontwerp functie voor logische apps u vraagt om verbindings gegevens.
 
    1. Geef een naam op voor de verbinding en selecteer uw Service Bus naam ruimte.
 
-      ![Service Bus verbinding maken, deel 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+      ![Scherm opname van het geven van een verbindings naam en het selecteren van een Service Bus naam ruimte](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
       Als u de connection string in plaats daarvan hand matig wilt invoeren, selecteert u **hand matig verbindings gegevens invoeren**. Als u uw connection string niet hebt, kunt u hier meer informatie [vinden over uw Connection String](#permissions-connection-string).
 
    1. Selecteer uw Service Bus-beleid en selecteer **maken**.
 
-      ![Service Bus verbinding maken, deel 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+      ![Scherm opname van het selecteren van een Service Bus beleid en het selecteren van de knop maken](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
    1. Selecteer de gewenste Messa ging-entiteit, zoals een wachtrij of onderwerp. Selecteer voor dit voor beeld uw Service Bus wachtrij.
 
-      ![Service Bus wachtrij selecteren](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+      ![Scherm opname van het selecteren van een Service Bus wachtrij](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
 1. Geef de benodigde gegevens op voor de geselecteerde actie. Als u andere beschik bare eigenschappen aan de actie wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste eigenschappen.
 
    Selecteer bijvoorbeeld de eigenschappen **Content** en **Content type** , zodat u deze toevoegt aan de actie. Geef vervolgens de inhoud op voor het bericht dat u wilt verzenden.
 
-   ![Bericht inhoud en-Details opgeven](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   ![Scherm opname van het inhouds type en de details van het bericht](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
    Zie de [referentie pagina](/connectors/servicebus/)van de connector voor meer informatie over beschik bare acties en hun eigenschappen.
 

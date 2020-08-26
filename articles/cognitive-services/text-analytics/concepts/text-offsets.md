@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 6e404c710a244f06676edf50c3f5c95a7d681e35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219234"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855648"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Tekst verschuivingen in de Text Analytics-API uitvoer
 
-Meertalige en Emoji-ondersteuning heeft geleid tot Unicode-code ringen die meer dan één [code punt](https://wikipedia.org/wiki/Code_point) gebruiken om één weer gegeven teken te vertegenwoordigen, een grapheme genoemd. Bijvoorbeeld, emojis als 🌷 en 👍 kunnen meerdere tekens gebruiken om de vorm samen te stellen met extra tekens voor visuele kenmerken, zoals de weergave kleur. Op dezelfde manier wordt het `अनुच्छेद` Hindi woord als vijf letters gecodeerd en worden drie tekens gecombineerd.
+Meertalige en Emoji-ondersteuning heeft geleid tot Unicode-code ringen die meer dan één [code punt](https://wikipedia.org/wiki/Code_point) gebruiken om één weer gegeven teken te vertegenwoordigen, een grapheme genoemd. Bijvoorbeeld, emojis als 🌷 en 👍 kunnen meerdere tekens gebruiken om de vorm samen te stellen met extra tekens voor visuele kenmerken, zoals de weergave kleur. Op dezelfde manier wordt het Hindi woord `अनुच्छेद` als vijf letters gecodeerd en worden drie tekens gecombineerd.
 
 Vanwege de verschillende lengtes van mogelijke meertalige en Emoji-code ringen, kan de Text Analytics-API retour neren in het antwoord.
 
@@ -40,10 +40,20 @@ In .NET kunt u de [StringInfo](https://docs.microsoft.com/dotnet/api/system.glob
 
 De Text Analytics-API retourneert ook deze tekstuele elementen, voor het gemak.
 
+## <a name="offsets-in-api-version-31-preview"></a>Verschuivingen in API-versie 3,1-Preview
+
+Vanaf API-versie 3,1-Preview. 1 worden alle Text Analytics-API eind punten die een offset retour neren, ondersteuning voor de `stringIndexType` para meter. Met deze para meter `offset` worden de en- `length` kenmerken in de API-uitvoer aangepast zodat deze overeenkomen met het aangevraagde teken reeks iteratie schema. Op dit moment ondersteunen we drie typen:
+
+1. `textElement_v8` (standaard): herhaalt de graphemes zoals gedefinieerd door de [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) -standaard
+2. `unicodeCodePoint`: herhaalt meer dan [Unicode-code punten](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564), het standaard schema voor python 3
+3. `utf16CodeUnit`: herhaalt over [UTF-16-code-eenheden](https://unicode.org/faq/utf_bom.html#UTF16), het standaard schema voor Java script, Java en .net
+
+Als de `stringIndexType` aanvraag overeenkomt met de programmeer omgeving van Choice, kan subtekenreeks worden geëxtraheerd met behulp van standaard subtekenreeks of segment methoden. 
+
 ## <a name="see-also"></a>Zie ook
 
 * [Overzicht van Text Analytics](../overview.md)
 * [Sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Entiteit herkenning](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Herkenning van entiteiten](../how-tos/text-analytics-how-to-entity-linking.md)
 * [Taal detecteren](../how-tos/text-analytics-how-to-keyword-extraction.md)
-* [Taal herkenning](../how-tos/text-analytics-how-to-language-detection.md)
+* [Taalherkenning](../how-tos/text-analytics-how-to-language-detection.md)

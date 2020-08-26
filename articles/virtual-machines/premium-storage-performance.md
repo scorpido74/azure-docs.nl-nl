@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0fab0bf956790db2860daf75866d84173bfa6cbf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a13fa7c819dcccc101c23015214bac55d2ab26c9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751503"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855537"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
 
@@ -148,7 +148,7 @@ Zie [grootten voor virtuele machines in azure](sizes.md)voor meer informatie ove
 
 | | **IOPS** | **Doorvoer** | **Latentie** |
 | --- | --- | --- | --- |
-| **Voorbeeld scenario** |De OLTP-toepassing voor ondernemingen vereist zeer hoge trans acties per seconde. |Bedrijfs gegevens magazijn toepassing verwerkt grote hoeveel heden gegevens. |Bijna realtime toepassingen die directe reacties op aanvragen van gebruikers vereisen, zoals online gaming. |
+| **Voorbeeldscenario** |De OLTP-toepassing voor ondernemingen vereist zeer hoge trans acties per seconde. |Bedrijfs gegevens magazijn toepassing verwerkt grote hoeveel heden gegevens. |Bijna realtime toepassingen die directe reacties op aanvragen van gebruikers vereisen, zoals online gaming. |
 | **Prestatie factoren** | &nbsp; | &nbsp; | &nbsp; |
 | **I/o-grootte** |Bij een kleinere IO-grootte wordt een hogere IOPS als resultaat verkregen. |Grotere IO-grootte om een hogere door voer te leveren. | &nbsp;|
 | **VM-grootte** |Gebruik een VM-grootte die IOPS groter is dan de vereiste van uw toepassing. |Gebruik een VM-grootte met een doorvoer limiet van meer dan uw toepassings vereiste. |Gebruik een VM-grootte die groter is dan de vereiste schaal limieten. |
@@ -230,7 +230,7 @@ Onderstaande tabel bevat een overzicht van de kosten analyse van dit scenario vo
 
 *Linux-distributies*  
 
-Met Azure Premium Storage beschikt u over hetzelfde prestatie niveau voor Vm's met Windows en Linux. We ondersteunen veel soorten Linux-distributies en u kunt [hier](~/articles/virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)de volledige lijst zien. Het is belang rijk te weten dat verschillende distributies beter geschikt zijn voor verschillende soorten workloads. U ziet verschillende prestatie niveaus, afhankelijk van de distributie waarop uw werk belasting wordt uitgevoerd. Test de Linux-distributies met uw toepassing en kies de versie die het beste werkt.
+Met Azure Premium Storage beschikt u over hetzelfde prestatie niveau voor Vm's met Windows en Linux. We ondersteunen veel soorten Linux-distributies en u kunt [hier](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)de volledige lijst zien. Het is belang rijk te weten dat verschillende distributies beter geschikt zijn voor verschillende soorten workloads. U ziet verschillende prestatie niveaus, afhankelijk van de distributie waarop uw werk belasting wordt uitgevoerd. Test de Linux-distributies met uw toepassing en kies de versie die het beste werkt.
 
 Wanneer u Linux met Premium Storage uitvoert, controleert u de meest recente updates over de vereiste Stuur Programma's om hoge prestaties te garanderen.
 

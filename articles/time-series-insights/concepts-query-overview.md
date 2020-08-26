@@ -8,18 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 61c969bc0c0ac9731ae35e445b82db633c3c5191
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cbf1c678307d76361e6083f4e2231fb9e48a112f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163166"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855144"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Query's uitvoeren op gegevens uit Azure Time Series Insights Gen2
 
-Azure Time Series Insights Gen2 maakt gegevens query's op gebeurtenissen en meta gegevens die zijn opgeslagen in de omgeving via open bare Surface-Api's. Deze Api's worden ook gebruikt door de [Azure time series Insights Gen2 Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
+Azure Time Series Insights Gen2 maakt gegevens query's op gebeurtenissen en meta gegevens die zijn opgeslagen in de omgeving via open bare Surface-Api's. Deze Api's worden ook gebruikt door de [Azure time series INSIGHTS TSI-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
 
 Er zijn drie primaire API-categorieën beschikbaar in Azure Time Series Insights Gen2:
 
@@ -73,4 +73,4 @@ Deze Api's zijn beschikbaar in beide winkels (warm en koud) in onze opslag oplos
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over verschillende variabelen die kunnen worden gedefinieerd in het [Time Series-model](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm).
-* Meer informatie over het opvragen van gegevens uit de [Azure time series Insights Gen2 Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).
+* Meer informatie over het opvragen van gegevens uit de [Azure time series INSIGHTS TSI-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer).

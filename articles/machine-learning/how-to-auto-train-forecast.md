@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: f423ae957d11248b16a180e22647d6566157b7be
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 3a6ecc44791602ea074ebdd1fdf4e11393e10a4b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782835"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852160"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -178,6 +178,7 @@ De volgende tabel bevat een overzicht van deze aanvullende para meters. Zie de [
 |`enable_dnn`|[DNNs voor het maken van prognoses]().||
 |`time_series_id_column_names`|De kolom namen die worden gebruikt voor het uniek identificeren van de tijd reeks in gegevens die meerdere rijen met dezelfde tijds tempel hebben. Als er geen tijd reeks-id's zijn gedefinieerd, wordt ervan uitgegaan dat de gegevensset één keer wordt gebruikt. Zie de [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)voor meer informatie over één time-serie.||
 |`target_lags`|Het aantal rijen dat de doel waarden moeten worden vertraagd op basis van de frequentie van de gegevens. De vertraging wordt weer gegeven als een lijst of één geheel getal. Er moet een vertraging worden gebruikt wanneer de relatie tussen de onafhankelijke variabelen en de afhankelijke variabele standaard niet overeenkomt met of correleert. ||
+|`feature_lags`| De functies voor vertraging worden automatisch bepaald door automatische MILLILITERs wanneer `target_lags` ze zijn ingesteld en `feature_lags` ingesteld op `auto` . Het inschakelen van functie lags kan helpen de nauw keurigheid te verbeteren. Functie lags zijn standaard uitgeschakeld. ||
 |`target_rolling_window_size`|*n* historische Peri Oden die moeten worden gebruikt voor het genereren van prognose waarden, <= grootte van de Trainingsset. Als u dit weglaat, is *n* de volledige grootte van de Trainingsset. Geef deze para meter op als u alleen een bepaalde hoeveelheid geschiedenis wilt beschouwen bij het trainen van het model. Meer informatie over het [samen voegen van target-rollen](#target-rolling-window-aggregation).||
 
 

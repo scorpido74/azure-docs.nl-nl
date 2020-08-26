@@ -2,13 +2,13 @@
 title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: e3a51bb7c21b6ea2e8baa86fe2981184c41d7d69
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.date: 08/25/2020
+ms.openlocfilehash: 91c6d5930a9066e73355a0c8e6021b1e7c20802d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272430"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855083"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](tag-resources.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport. U kunt kosten op labels weer geven in de [Cost Management kosten analyse](../../cost-management-billing/costs/group-filter.md) en de gegevens voor de [factuur en dagelijks gebruik van Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -28,6 +28,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. AppPlatform](#microsoftappplatform)
 > - [Micro soft. Attestation](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
+> - [Micro soft. automanage](#microsoftautomanage)
 > - [Microsoft.Automation](#microsoftautomation)
 > - [Micro soft. AVS](#microsoftavs)
 > - [Micro soft. Azure. Genève](#microsoftazuregeneva)
@@ -51,6 +52,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Micro soft. Codespaces](#microsoftcodespaces)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
@@ -78,6 +80,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. DeploymentManager](#microsoftdeploymentmanager)
 > - [Micro soft. DesktopVirtualization](#microsoftdesktopvirtualization)
 > - [Microsoft.Devices](#microsoftdevices)
+> - [Micro soft. DeviceUpdate](#microsoftdeviceupdate)
 > - [Micro soft. DevOps](#microsoftdevops)
 > - [Micro soft. DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
@@ -180,7 +183,6 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [Micro soft. VMware](#microsoftvmware)
 > - [Micro soft. VMwareCloudSimple](#microsoftvmwarecloudsimple)
-> - [Micro soft. VMwareOnAzure](#microsoftvmwareonazure)
 > - [Micro soft. VnfManager](#microsoftvnfmanager)
 > - [Micro soft. VSOnline](#microsoftvsonline)
 > - [Microsoft.Web](#microsoftweb)
@@ -225,6 +227,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | advisorScore | Nee | Nee |
 > | configuraties | Nee | Nee |
 > | generateRecommendations | Nee | Nee |
 > | metagegevens | Nee | Nee |
@@ -268,6 +271,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | configurationStores | Ja | Ja |
 > | configurationStores / eventGridFilters | Nee | Nee |
+> | configurationStores/-waarden | Nee | Nee |
 
 ## <a name="microsoftappplatform"></a>Micro soft. AppPlatform
 
@@ -291,6 +295,8 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | accessReviewScheduleDefinitions | Nee | Nee |
+> | accessReviewScheduleSettings | Nee | Nee |
 > | classicAdministrators | Nee | Nee |
 > | dataAliases | Nee | Nee |
 > | denyAssignments | Nee | Nee |
@@ -300,13 +306,23 @@ Ga naar de naam ruimte van een resource provider:
 > | permissions | Nee | Nee |
 > | policyAssignments | Nee | Nee |
 > | policyDefinitions | Nee | Nee |
+> | policyExemptions | Nee | Nee |
 > | policySetDefinitions | Nee | Nee |
 > | privateLinkAssociations | Nee | Nee |
 > | providerOperations | Nee | Nee |
-> | resourceManagementPrivateLinks | Nee | Nee |
+> | resourceManagementPrivateLinks | Ja | Ja |
 > | roleAssignments | Nee | Nee |
 > | roleAssignmentsUsageMetrics | Nee | Nee |
 > | roleDefinitions | Nee | Nee |
+
+## <a name="microsoftautomanage"></a>Micro soft. automanage
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
+> | ------------- | ----------- | ----------- |
+> | accounts | Ja | Ja |
+> | configurationProfileAssignments | Nee | Nee |
+> | configurationProfilePreferences | Ja | Ja |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -323,9 +339,8 @@ Ga naar de naam ruimte van een resource provider:
 > | automationAccounts / softwareUpdateConfigurations | Nee | Nee |
 > | automationAccounts/webhooks | Nee | Nee |
 
->[!NOTE]
->Azure Automation biedt alleen ondersteuning voor het maken van Maxi maal 15 label naam/waarde-paren voor elke Automation-resource.
-> 
+> [!NOTE]
+> Azure Automation biedt alleen ondersteuning voor het maken van Maxi maal 15 label naam/waarde-paren voor elke Automation-resource.
 
 ## <a name="microsoftavs"></a>Micro soft. AVS
 
@@ -335,7 +350,15 @@ Ga naar de naam ruimte van een resource provider:
 > | privateClouds | Ja | Ja |
 > | privateClouds/autorisaties | Nee | Nee |
 > | privateClouds/clusters | Nee | Nee |
+> | privateClouds / globalReachConnections | Nee | Nee |
 > | privateClouds / hcxEnterpriseSites | Nee | Nee |
+> | privateClouds / workloadNetworks | Nee | Nee |
+> | privateClouds / workloadNetworks / dhcpConfigurations | Nee | Nee |
+> | privateClouds/workloadNetworks/gateways | Nee | Nee |
+> | privateClouds / workloadNetworks / portMirroringProfiles | Nee | Nee |
+> | privateClouds/workloadNetworks/segmenten | Nee | Nee |
+> | privateClouds/workloadNetworks/informatie | Nee | Nee |
+> | privateClouds / workloadNetworks / vmGroups | Nee | Nee |
 
 ## <a name="microsoftazuregeneva"></a>Micro soft. Azure. Genève
 
@@ -354,6 +377,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | b2cDirectories | Ja | Nee |
 > | b2ctenants | Nee | Nee |
+> | guestUsages | Ja | Ja |
 
 ## <a name="microsoftazuredata"></a>Micro soft. Azureworden
 
@@ -361,9 +385,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | dataControllers | Ja | Ja |
-> | hybridDataManagers | Ja | Ja |
 > | postgresInstances | Ja | Ja |
-> | sqlInstances | Ja | Ja |
 > | sqlManagedInstances | Ja | Ja |
 > | sqlServerInstances | Ja | Ja |
 > | sqlServerRegistrations | Ja | Ja |
@@ -432,6 +454,7 @@ Ga naar de naam ruimte van een resource provider:
 > | billingAccounts / billingProfiles / pricesheetDownloadOperations | Nee | Nee |
 > | billingAccounts/billingProfiles/producten | Nee | Nee |
 > | billingAccounts/billingProfiles/trans acties | Nee | Nee |
+> | billingAccounts / billingProfiles / validateDetachPaymentMethodEligibility | Nee | Nee |
 > | billingAccounts / billingRoleAssignments | Nee | Nee |
 > | billingAccounts / billingRoleDefinitions | Nee | Nee |
 > | billingAccounts / billingSubscriptions | Nee | Nee |
@@ -688,12 +711,23 @@ Ga naar de naam ruimte van een resource provider:
 > | Storage accounts/vmImages | Nee | Nee |
 > | vmImages | Nee | Nee |
 
+## <a name="microsoftcodespaces"></a>Micro soft. Codespaces
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
+> | ------------- | ----------- | ----------- |
+> | plant | Ja | Ja |
+> | registeredSubscriptions | Nee | Nee |
+
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | accounts | Ja | Ja |
+> | accounts/privateEndpointConnectionProxies | Nee | Nee |
+> | accounts/privateEndpointConnections | Nee | Nee |
+> | accounts/privateLinkResources | Nee | Nee |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -709,6 +743,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | Availability sets | Ja | Ja |
+> | cloudServices | Ja | Ja |
 > | diskAccesses | Ja | Ja |
 > | diskEncryptionSets | Ja | Ja |
 > | cd's | Ja | Ja |
@@ -860,6 +895,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ExternalSubscriptions/prognose | Nee | Nee |
 > | ExternalSubscriptions/query | Nee | Nee |
 > | Prognose | Nee | Nee |
+> | Inzichten | Nee | Nee |
 > | Query’s uitvoeren | Nee | Nee |
 > | registreren | Nee | Nee |
 > | Reportconfigs | Nee | Nee |
@@ -873,7 +909,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | aanvragen | Nee | Nee |
+> | requests | Nee | Nee |
 
 ## <a name="microsoftcustomproviders"></a>Micro soft. CustomProviders
 
@@ -913,22 +949,17 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | catalogi | Ja | Ja |
-> | datacatalogs | Ja | Ja |
-> | datacatalogs/gegevens bronnen | Nee | Nee |
-> | datacatalogs/gegevens bronnen/scans | Nee | Nee |
-> | datacatalogs/gegevens bronnen/scans/gegevens sets | Nee | Nee |
-> | datacatalogs/gegevens bronnen/scans/triggers | Nee | Nee |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | dataFactories | Ja | Nee |
+> | dataFactories | Ja | Ja |
 > | dataFactories / diagnosticSettings | Nee | Nee |
 > | dataFactories / metricDefinitions | Nee | Nee |
 > | dataFactorySchema | Nee | Nee |
-> | factory's | Ja | Nee |
+> | factory's | Ja | Ja |
 > | fabrieken/integrationRuntimes | Nee | Nee |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
@@ -1022,6 +1053,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | flexibleServers | Ja | Ja |
 > | serverGroups | Ja | Ja |
 > | Server | Ja | Ja |
 > | servers/adviseurs | Nee | Nee |
@@ -1035,7 +1067,6 @@ Ga naar de naam ruimte van een resource provider:
 > | servers/virtualNetworkRules | Nee | Nee |
 > | servers/waitStatistics | Nee | Nee |
 > | serversv2 | Ja | Ja |
-> | singleServers | Ja | Ja |
 
 ## <a name="microsoftdeploymentmanager"></a>Micro soft. DeploymentManager
 
@@ -1078,6 +1109,14 @@ Ga naar de naam ruimte van een resource provider:
 > | ProvisioningServices | Ja | Ja |
 > | gebruik | Nee | Nee |
 
+## <a name="microsoftdeviceupdate"></a>Micro soft. DeviceUpdate
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
+> | ------------- | ----------- | ----------- |
+> | accounts | Ja | Ja |
+> | accounts/exemplaren | Ja | Ja |
+
 ## <a name="microsoftdevops"></a>Micro soft. DevOps
 
 > [!div class="mx-tableFixed"]
@@ -1119,6 +1158,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | databaseAccountNames | Nee | Nee |
 > | databaseAccounts | Ja | Ja |
+> | restorableDatabaseAccounts | Nee | Nee |
 
 ## <a name="microsoftdomainregistration"></a>Micro soft. DomainRegistration
 
@@ -1301,10 +1341,10 @@ Ga naar de naam ruimte van een resource provider:
 > | devices | Ja | Ja |
 > | registeredSubscriptions | Nee | Nee |
 > | crediteur | Nee | Nee |
-> | leveranciers/sku's | Nee | Nee |
-> | leveranciers/vnfs | Nee | Nee |
-> | virtualNetworkFunctionSkus | Nee | Nee |
-> | vnfs | Ja | Ja |
+> | leveranciers/vendorskus | Nee | Nee |
+> | leveranciers/vendorskus/previewSubscriptions | Nee | Nee |
+> | virtualnetworkfunctions | Ja | Ja |
+> | virtualnetworkfunctionvendors | Nee | Nee |
 
 ## <a name="microsofthydra"></a>Micro soft. Hydra
 
@@ -1397,6 +1437,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | Extensions | Nee | Nee |
 > | sourceControlConfigurations | Nee | Nee |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
@@ -1451,6 +1492,9 @@ Ga naar de naam ruimte van een resource provider:
 > | workspaces | Ja | Ja |
 > | werk ruimten/reken bewerkingen | Nee | Nee |
 > | werk ruimten/eventGridFilters | Nee | Nee |
+> | werk ruimten/inferenceEndpoints | Ja | Ja |
+> | werk ruimten/inferenceEndpoints/implementaties | Ja | Ja |
+> | werk ruimten/linkedServices | Nee | Nee |
 
 ## <a name="microsoftmaintenance"></a>Micro soft. onderhoud
 
@@ -1460,6 +1504,7 @@ Ga naar de naam ruimte van een resource provider:
 > | applyUpdates | Nee | Nee |
 > | configurationAssignments | Nee | Nee |
 > | maintenanceConfigurations | Ja | Ja |
+> | publicMaintenanceConfigurations | Nee | Nee |
 > | updates | Nee | Nee |
 
 ## <a name="microsoftmanagedidentity"></a>Micro soft. ManagedIdentity
@@ -1515,6 +1560,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | macc | Nee | Nee |
 > | over | Nee | Nee |
 > | offerTypes | Nee | Nee |
 > | offerTypes/uitgevers | Nee | Nee |
@@ -1563,15 +1609,15 @@ Ga naar de naam ruimte van een resource provider:
 > | Media Services/liveEventOperations | Nee | Nee |
 > | Media Services/liveEvents | Ja | Ja |
 > | Media Services/liveEvents/liveOutputs | Nee | Nee |
-> | Media Services/liveEvents/privateEndpointConnectionProxies | Nee | Nee |
 > | Media Services/liveOutputOperations | Nee | Nee |
 > | Media Services/mediaGraphs | Nee | Nee |
+> | Media Services/privateEndpointConnectionOperations | Nee | Nee |
+> | Media Services/privateEndpointConnectionProxies | Nee | Nee |
+> | Media Services/privateEndpointConnections | Nee | Nee |
 > | Media Services/streamingEndpointOperations | Nee | Nee |
 > | Media Services/streamingEndpoints | Ja | Ja |
-> | Media Services/streamingEndpoints/privateEndpointConnectionProxies | Nee | Nee |
 > | Media Services/streamingLocators | Nee | Nee |
 > | Media Services/streamingPolicies | Nee | Nee |
-> | Media Services/streamingPrivateEndpointConnectionProxyOperations | Nee | Nee |
 > | Media Services/trans formaties | Nee | Nee |
 > | Media Services/trans formaties/taken | Nee | Nee |
 
@@ -1734,6 +1780,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | HyperVSites | Ja | Ja |
 > | ImportSites | Ja | Ja |
+> | MasterSites | Ja | Ja |
 > | ServerSites | Ja | Ja |
 > | VMwareSites | Ja | Ja |
 
@@ -1782,6 +1829,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | verklaringen | Nee | Nee |
 > | policyEvents | Nee | Nee |
 > | policyMetadata | Nee | Nee |
 > | policyStates | Nee | Nee |
@@ -1944,6 +1992,7 @@ Ga naar de naam ruimte van een resource provider:
 > | automatisering | Ja | Ja |
 > | AutoProvisioningSettings | Nee | Nee |
 > | Ingebouwde strengste | Nee | Nee |
+> | connectoren | Nee | Nee |
 > | dataCollectionAgents | Nee | Nee |
 > | deviceSecurityGroups | Nee | Nee |
 > | discoveredSecuritySolutions | Nee | Nee |
@@ -1955,7 +2004,10 @@ Ga naar de naam ruimte van een resource provider:
 > | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | Nee | Nee |
 > | iotSecuritySolutions / iotAlerts | Nee | Nee |
 > | iotSecuritySolutions / iotAlertTypes | Nee | Nee |
+> | iotSecuritySolutions / iotRecommendations | Nee | Nee |
+> | iotSecuritySolutions / iotRecommendationTypes | Nee | Nee |
 > | jitNetworkAccessPolicies | Nee | Nee |
+> | jitPolicies | Nee | Nee |
 > | policies | Nee | Nee |
 > | prijzen | Nee | Nee |
 > | regulatoryComplianceStandards | Nee | Nee |
@@ -2004,6 +2056,7 @@ Ga naar de naam ruimte van een resource provider:
 > | officeConsents | Nee | Nee |
 > | instellingen | Nee | Nee |
 > | threatIntelligence | Nee | Nee |
+> | watchlists | Nee | Nee |
 
 ## <a name="microsoftserialconsole"></a>Micro soft. SerialConsole
 
@@ -2226,7 +2279,11 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
+> | acceptChangeTenant | Nee | Nee |
+> | aliassen | Nee | Nee |
 > | annuleren | Nee | Nee |
+> | changeTenantRequest | Nee | Nee |
+> | changeTenantStatus | Nee | Nee |
 > | CreateSubscription | Nee | Nee |
 > | inschakelen | Nee | Nee |
 > | naam wijzigen | Nee | Nee |
@@ -2243,6 +2300,7 @@ Ga naar de naam ruimte van een resource provider:
 > | workspaces | Ja | Ja |
 > | werk ruimten/bigDataPools | Ja | Ja |
 > | werk ruimten/operationStatuses | Nee | Nee |
+> | werk ruimten/sqlDatabases | Ja | Ja |
 > | werk ruimten/sqlPools | Ja | Ja |
 
 ## <a name="microsofttimeseriesinsights"></a>Micro soft. TimeSeriesInsights
@@ -2293,13 +2351,6 @@ Ga naar de naam ruimte van een resource provider:
 > | dedicatedCloudNodes | Ja | Ja |
 > | dedicatedCloudServices | Ja | Ja |
 > | Informatie | Ja | Ja |
-
-## <a name="microsoftvmwareonazure"></a>Micro soft. VMwareOnAzure
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Ondersteunt labels | Label in kosten rapport |
-> | ------------- | ----------- | ----------- |
-> | privateClouds | Ja | Ja |
 
 ## <a name="microsoftvnfmanager"></a>Micro soft. VnfManager
 

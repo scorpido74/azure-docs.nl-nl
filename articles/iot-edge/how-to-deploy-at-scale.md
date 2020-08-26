@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512007"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855382"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Implementeer IoT Edge modules op schaal met behulp van de Azure Portal
 
@@ -61,7 +61,7 @@ Er zijn vijf stappen voor het maken van een implementatie. In de volgende sectie
 
 ### <a name="step-2-modules"></a>Stap 2: modules
 
-U kunt Maxi maal 30 modules aan een implementatie toevoegen. Als u een implementatie zonder modules maakt, worden alle huidige modules van de doel apparaten verwijderd.
+U kunt Maxi maal 50 modules aan een implementatie toevoegen. Als u een implementatie zonder modules maakt, worden alle huidige modules van de doel apparaten verwijderd.
 
 In implementaties kunt u de instellingen voor de IoT Edge agent en IoT Edge hub-modules beheren. Selecteer **runtime-instellingen** om de twee runtime modules te configureren. In gelaagde implementaties zijn de runtime modules niet opgenomen en kunnen niet worden geconfigureerd.
 

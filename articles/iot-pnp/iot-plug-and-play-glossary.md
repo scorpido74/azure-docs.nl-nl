@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475461"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854218"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
 
@@ -54,6 +54,10 @@ Een connection string de gegevens die nodig zijn om verbinding te maken met een 
 
 - Met verbindings reeksen voor apparaten kunnen [iot Plug en Play-apparaten](#iot-plug-and-play-device) verbinding maken met de op het apparaat gerichte eind punten op een IOT-hub. Client code op een apparaat gebruikt de connection string om een beveiligde verbinding met een IoT-hub tot stand te brengen.
 - IoT Hub verbindings reeksen kunnen back-end-oplossingen en hulpprogram ma's gebruiken om veilig verbinding te maken met de service gerichte eind punten op een IoT-hub. Deze oplossingen en hulpprogram ma's beheren de IoT-hub en de apparaten die ermee zijn verbonden.
+
+## <a name="device-certification"></a>Apparaat certificering
+
+Met het IoT Plug en Play Device-certificerings programma wordt gecontroleerd of een apparaat voldoet aan de vereisten voor de IoT-Plug en Play-certificering. U kunt een gecertificeerd apparaat toevoegen aan de open bare, [gecertificeerde Azure IOT-apparaatinstantie](https://aka.ms/devicecatalog).
 
 ## <a name="device-model"></a>Apparaatmodel
 
@@ -103,7 +107,7 @@ IoT-Plug en Play [apparaten](#iot-plug-and-play-device) worden naar verwachting 
 
 Wanneer een IoT Plug en Play-apparaat verbinding maakt met een IoT Hub wordt de **model-id** van het [DTDL](#digital-twins-definition-language) -model dat wordt geïmplementeerd, verzonden. Hierdoor kan de oplossing het model van het apparaat vinden.
 
-## <a name="model-repository"></a>Model opslagplaats
+## <a name="model-repository"></a>Modelopslagplaats
 
 Met een [model opslagplaats](concepts-model-repository.md) worden modellen en [interfaces](#interface)van [apparaten](#device-model) opgeslagen.
 

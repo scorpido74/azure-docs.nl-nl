@@ -2,17 +2,20 @@
 title: Sjabloon veilig implementeren met SAS-token
 description: Resources implementeren in azure met een Azure Resource Manager sjabloon die wordt beveiligd met een SAS-token. Toont Azure PowerShell en Azure CLI.
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/25/2020
+ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80156392"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855657"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>Een persoonlijke ARM-sjabloon met SAS-token implementeren
 
-Wanneer uw Azure Resource Manager-sjabloon (ARM) zich in een opslag account bevindt, kunt u de toegang tot de sjabloon beperken om te voor komen dat deze openbaar wordt weer gegeven. U opent een beveiligde sjabloon door een SAS-token (Shared Access Signature) te maken voor de sjabloon en dat token tijdens de implementatie op te geven. In dit artikel wordt uitgelegd hoe u Azure PowerShell of Azure CLI gebruikt voor het implementeren van een sjabloon met een SAS-token.
+Wanneer uw Azure Resource Manager sjabloon (ARM-sjabloon) zich in een opslag account bevindt, kunt u de toegang tot de sjabloon beperken om te voor komen dat deze openbaar wordt weer gegeven. U opent een beveiligde sjabloon door een SAS-token (Shared Access Signature) te maken voor de sjabloon en dat token tijdens de implementatie op te geven. In dit artikel wordt uitgelegd hoe u Azure PowerShell of Azure CLI gebruikt voor het implementeren van een sjabloon met een SAS-token.
+
+> [!IMPORTANT]
+> In plaats van uw sjabloon te beveiligen met een SAS-token, kunt u de [sjabloon specificaties](template-specs.md)gebruiken. Met sjabloon specificaties kunt u uw sjablonen delen met andere gebruikers in uw organisatie en de toegang tot de sjablonen beheren via Azure RBAC.
 
 ## <a name="create-storage-account-with-secured-container"></a>Een opslag account maken met een beveiligde container
 
@@ -87,10 +90,10 @@ az storage blob upload \
 
 ## <a name="provide-sas-token-during-deployment"></a>SAS-token opgeven tijdens de implementatie
 
-Als u een persoonlijke sjabloon in een opslag account wilt implementeren, genereert u een SAS-token en neemt u deze op in de URI voor de sjabloon. Stel de verloop tijd zo in dat er voldoende tijd is om de implementatie te volt ooien.
+Als u een privésjabloon in een opslagaccount wilt implementeren, genereert u een SAS-token en neemt u het op in de URI voor de sjabloon. Stel de vervaltijd zo in, dat er genoeg tijd is om de implementatie te voltooien.
 
 > [!IMPORTANT]
-> De blob die de sjabloon bevat, is alleen toegankelijk voor de eigenaar van het account. Wanneer u echter een SAS-token voor de BLOB maakt, is de BLOB toegankelijk voor iedereen met die URI. Als een andere gebruiker de URI onderschept, kan die gebruiker toegang krijgen tot de sjabloon. Een SAS-token is een goede manier om de toegang tot uw sjablonen te beperken, maar u mag geen gevoelige gegevens zoals wacht woorden rechtstreeks in de sjabloon toevoegen.
+> De blob met de sjabloon is alleen toegankelijk voor de eigenaar van het account. Maar als u een SAS-token voor de blob maakt, is de blob toegankelijk voor iedereen met die URI. Als een andere gebruiker de URI onderschept, kan die gebruiker toegang krijgen tot de sjabloon. Een SAS-token is een goede manier om de toegang tot uw sjablonen te beperken, maar u mag geen gevoelige gegevens zoals wachtwoorden rechtstreeks in de sjabloon toevoegen.
 >
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -110,6 +113,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+Het volgende voor beeld werkt met de bash-omgeving in Cloud Shell. Andere omgevingen hebben mogelijk een andere syntaxis nodig om de verloop tijd voor het SAS-token te maken.
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)

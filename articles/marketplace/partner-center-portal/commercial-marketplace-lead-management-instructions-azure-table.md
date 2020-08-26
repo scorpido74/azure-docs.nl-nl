@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/25/2020
+ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120837"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855717"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure-tabel opslag gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -28,19 +28,19 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
     1. Selecteer **opslag** in het deel venster **Nieuw** . Aan de rechter kant wordt een **Aanbevolen** lijst weer gegeven.
     1. Selecteer **opslag account** om te beginnen met het maken van het account. Volg de instructies in [een opslag account maken](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
 
-        ![Stappen voor het maken van een Azure Storage-account](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
+        :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png" alt-text="Stappen voor het maken van een Azure-opslag account.":::
 
         Zie Quick Start- [zelf studie](../../storage/index.yml)voor meer informatie over opslag accounts. Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
 
-1. Wacht tot uw opslag account is ingericht. Dit proces duurt doorgaans enkele minuten. 
+1. Wacht tot uw opslag account is ingericht. Dit proces duurt doorgaans enkele minuten.
 
 ## <a name="create-a-table-in-your-storage-account"></a>Een tabel in uw opslag account maken
 
 1. Selecteer op de **Start** pagina van de Azure Portal **alle resources weer geven** om toegang te krijgen tot uw opslag account. U kunt ook **alle resources** selecteren in de linkermenu van de Azure Portal.
 
-    ![Toegang tot uw Azure Storage-account](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Toegang tot uw Azure Storage-account.":::
 
-1. Selecteer in het deel venster opslag account de optie **toegangs sleutels** en kopieer de **verbindings reeks** waarde voor de sleutel. Sla deze waarde op omdat het de waarde voor de **verbindings reeks voor het opslag account** is die u moet opgeven in de portal voor publiceren om leads voor uw Azure Marketplace-aanbieding te ontvangen. 
+1. Selecteer in het deel venster opslag account de optie **toegangs sleutels** en kopieer de **verbindings reeks** waarde voor de sleutel. Sla deze waarde op omdat het de waarde voor de **verbindings reeks voor het opslag account** is die u moet opgeven in de portal voor publiceren om leads voor uw Azure Marketplace-aanbieding te ontvangen.
 
     Hier volgt een voor beeld van een connection string.
 
@@ -48,13 +48,14 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    ![Azure-opslag sleutel](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure-opslag sleutel.":::
+
 
 1. Selecteer in het deel venster opslag account de optie **tabellen**en selecteer **+ tabel** om een tabel te maken. Voer een naam in voor de tabel en selecteer **OK**. Sla deze waarde op omdat u deze nodig hebt als u een stroom wilt configureren voor het ontvangen van e-mail meldingen wanneer leads worden ontvangen.
 
     ![Azure-tabellen](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    U kunt [Azure Storage Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) of een ander hulp programma gebruiken om de gegevens in uw opslag tabel te bekijken. U kunt ook de gegevens in de Azure-tabel exporteren. 
+    U kunt [Azure Storage Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) of een ander hulp programma gebruiken om de gegevens in uw opslag tabel te bekijken. U kunt ook de gegevens in de Azure-tabel exporteren.
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>Beschrijving Energie automatisering gebruiken om lead meldingen op te halen
 
@@ -66,7 +67,7 @@ In het voor beeld wordt een stroom gemaakt waarmee automatisch een e-mail meldin
 
 1. Meld u aan bij uw energiebeheer account.
 1. Selecteer in de linker balk **mijn stromen**.
-1. Selecteer op de bovenste balk **+ Nieuw**. 
+1. Selecteer op de bovenste balk **+ Nieuw**.
 1. Selecteer in de vervolg keuzelijst **+ gepland--leeg**.
 
    ![Mijn stromen + gepland--van leeg](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
@@ -78,7 +79,7 @@ In het voor beeld wordt een stroom gemaakt waarmee automatisch een e-mail meldin
 
    ![Een geplande stroom bouwen](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
-1. Selecteer **+ Nieuwe stap**.
+1. Selecteer **+ nieuwe stap**.
 1. Zoek in het venster **een actie kiezen** naar **vorige tijd ophalen**. Selecteer vervolgens onder **acties** **vorige tijd ophalen**.
 
    ![Kies een actie](./media/commercial-marketplace-lead-management-instructions-azure-table/choose-an-action.png)
@@ -90,12 +91,12 @@ In het voor beeld wordt een stroom gemaakt waarmee automatisch een e-mail meldin
 
     ![Het tijds interval voor ophalen instellen](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-getpast-time.png)
 
-   >[!TIP] 
+   >[!TIP]
    >U kunt de stroom op elk gewenst moment controleren om te controleren of elke stap correct is geconfigureerd. Als u de stroom wilt controleren, selecteert u **stroom controle** in de menu balk van de **stroom** .
 
    In de volgende reeks stappen maakt u verbinding met uw tabel en stelt u de verwerkings logica in voor het verwerken van nieuwe leads.
 
-1. Selecteer **+ Nieuwe stap**. Zoek vervolgens naar **Get entities** in het venster **een actie kiezen** .
+1. Selecteer **+ nieuwe stap**. Zoek vervolgens naar **Get entities** in het venster **een actie kiezen** .
 1. Onder **acties**, selecteert u **entiteiten ophalen (Azure Table Storage)**.
 1. Geef in het venster **Azure Table Storage** informatie op voor de volgende vakken en selecteer **maken**:
 
@@ -111,7 +112,7 @@ In het voor beeld wordt een stroom gemaakt waarmee automatisch een e-mail meldin
 
      ![Het venster entiteiten ophalen](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-   * **Filter query**: Schakel dit selectie vakje in en plak deze functie in het vak:`Timestamp gt datetime'@{body('Get_past_time')}'`
+   * **Filter query**: Schakel dit selectie vakje in en plak deze functie in het vak: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
      ![Het dialoog venster entiteiten ophalen, query filteren](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -123,7 +124,7 @@ In het voor beeld wordt een stroom gemaakt waarmee automatisch een e-mail meldin
 
 1. Selecteer **een waarde kiezen**in het venster **voor waarde** . Selecteer vervolgens **expressie** in het pop-upvenster.
 
-1. Plak `length(body('Get_entities')?['value'])` het in het **FX** -vak. Selecteer **OK** om deze functie toe te voegen. 
+1. Plak `length(body('Get_entities')?['value'])` het in het **FX** -vak. Selecteer **OK** om deze functie toe te voegen.
 
 1. Het instellen van de voor waarde volt ooien:
     1. Select **is groter dan** in de vervolg keuzelijst.
@@ -134,7 +135,7 @@ In het voor beeld wordt een stroom gemaakt waarmee automatisch een e-mail meldin
    In de volgende stappen stelt u de actie in die moet worden uitgevoerd op basis van het resultaat van de voor waarde:
 
    * Als de voor waarde wordt omgezet in **als Nee**, moet u niets doen.
-   * Als de voor waarde wordt omgezet in **Indien ja**, moet u een actie activeren die uw Office 365-account verbindt om een e-mail te verzenden. 
+   * Als de voor waarde wordt omgezet in **Indien ja**, moet u een actie activeren die uw Office 365-account verbindt om een e-mail te verzenden.
 
 1. Selecteer **een actie toevoegen** onder **als ja**.
 

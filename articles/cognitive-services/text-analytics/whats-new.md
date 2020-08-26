@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 06c36b3f3939c8804149448ecb770a22d658fcbf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192025"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854732"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
@@ -28,6 +28,7 @@ De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u inform
 * Model versie `2020-07-01` voor de V3 `/keyphrases` `/pii` en `/languages` eind punten die het volgende toevoegen:
     * Aanvullende overheids [Categorieën](named-entity-types.md?tabs=personal) en land instellingen voor benoemde entiteiten herkenning.
 * Er wordt nu een HTTP 400-fout geretourneerd voor v3 API-aanvragen die de gepubliceerde [gegevens limieten](concepts/data-limits.md)overschrijden. 
+* Eind punten die een offset retour neren, bieden nu ondersteuning voor de optionele `stringIndexType` para meter, waarmee de geretourneerde `offset` en `length` waarden worden aangepast, zodat deze overeenkomen met een ondersteund [reeks index schema](concepts/text-offsets.md).
 
 ### <a name="text-analytics-for-health-container-august-updates"></a>Text Analytics voor updates van status container augustus
 
@@ -189,7 +190,7 @@ Het biedt ondersteuning voor Engels ( `en` ), Japans ( `ja` ), vereenvoudigd Chi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Text Analytics-API?](overview.md)  
+* [Wat is de Text Analytics-API?](overview.md)  
 * [Voorbeeldgebruikerscenario's](text-analytics-user-scenarios.md)
 * [Sentimentanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Taaldetectie](how-tos/text-analytics-how-to-language-detection.md)

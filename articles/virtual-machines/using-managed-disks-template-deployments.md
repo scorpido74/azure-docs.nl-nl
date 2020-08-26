@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 15c3f2de30509a7dc6836f5d39fac4c0ea8b7f25
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513194"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854338"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Managed Disks gebruiken in Azure Resource Manager sjablonen
 
@@ -263,7 +263,7 @@ Raadpleeg de documentatie voor het [maken van een beheerde schijf rest API](/res
 * Ga naar de volgende opslag plaats-koppelingen voor Azure Quick start voor volledige sjablonen die gebruikmaken van beheerde schijven.
     * [Windows-VM met beheerde schijf](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
     * [Linux-VM met beheerde schijf](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* Ga naar het document [overzicht van Azure Managed disks](~/articles/virtual-machines/windows/managed-disks-overview.md) voor meer informatie over Managed disks.
+* Ga naar het document [overzicht van Azure Managed disks](managed-disks-overview.md) voor meer informatie over Managed disks.
 * Raadpleeg de documentatie over de sjabloon voor virtuele machines voor meer informatie. Ga naar het document [micro soft. Compute/informatie voor sjablonen](/azure/templates/microsoft.compute/virtualmachines) .
 * Raadpleeg de documentatie over sjablonen voor schijf bronnen door naar het document [micro soft. Compute/disks-sjabloon](/azure/templates/microsoft.compute/disks) te gaan.
 * Ga voor meer informatie over het gebruik van beheerde schijven in virtuele-machine schaal sets van Azure naar het document [gegevens schijven met schaal sets gebruiken](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) .

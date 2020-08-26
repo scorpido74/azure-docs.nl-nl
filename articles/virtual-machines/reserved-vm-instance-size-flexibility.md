@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: manshuk
-ms.openlocfilehash: 05119a6f9af935a0f4a2887eae53f3d5bdb1a482
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658077"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855512"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibiliteit van de VM-grootte met gereserveerde VM-instanties
 
-Wanneer u een gereserveerde VM-instantie koopt, kunt u ervoor kiezen om te optimaliseren voor de flexibiliteit van de instantie grootte of de prioriteit van de capaciteit. Zie voor meer informatie over het instellen of wijzigen van de instelling Optimize voor gereserveerde VM-instanties [de instelling optimaliseren wijzigen voor gereserveerde](~/articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)VM-instanties.
+Wanneer u een gereserveerde VM-instantie koopt, kunt u ervoor kiezen om te optimaliseren voor de flexibiliteit van de instantie grootte of de prioriteit van de capaciteit. Zie voor meer informatie over het instellen of wijzigen van de instelling Optimize voor gereserveerde VM-instanties [de instelling optimaliseren wijzigen voor gereserveerde](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)VM-instanties.
 
 Met een gereserveerde virtuele machine-instantie die is geoptimaliseerd voor flexibiliteit van de instantie grootte, kan de door u gekochte reserve ring gelden voor de grootte van virtuele machines (Vm's) in dezelfde groep voor de flexibiliteit van de instantie grootte. Als u bijvoorbeeld een reserve ring aanschaft voor een VM-grootte die wordt vermeld in de DSv2-serie, zoals Standard_DS5_v2, kan de reserverings korting van toepassing zijn op de andere vier grootten die worden vermeld in die zelfde groep voor de grotere instantie grootte:
 
@@ -52,4 +52,4 @@ De bestands-URL en het schema worden hersteld, zodat u dit bestand programmatisc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Wat zijn Azure Reservations](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)voor meer informatie.
+Zie [Wat zijn Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md)voor meer informatie.

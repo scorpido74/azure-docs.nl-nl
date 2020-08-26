@@ -9,14 +9,16 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: dbb20d5331275f73945a4ad2ba3f428a3e415797
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 78e2bd80b689394b654a85ea913c618c08120091
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681750"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854011"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Queue Storage gebruiken met Java
+
+[!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 In deze hand leiding wordt uitgelegd hoe u code kunt gebruiken voor algemene scenario's die gebruikmaken van de Azure Queue Storage-service. De voorbeelden zijn geschreven in Java en maken gebruik van de [Azure Storage SDK voor Java][Azure Storage SDK for Java]. Scenario's zijn het **Invoegen**, **inspecteren**, **ophalen**en **verwijderen** van wachtrij berichten. De code voor **het maken** en **verwijderen** van wacht rijen wordt ook behandeld. Zie de sectie [volgende stappen](#next-steps) voor meer informatie over wacht rijen.
 

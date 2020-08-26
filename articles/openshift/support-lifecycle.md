@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 56328500c1c220a04b3e2219c145ad5db0e07ff7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817454"
+ms.locfileid: "88854496"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Ondersteunings levenscyclus voor Azure Red Hat open Shift 4
 
@@ -97,9 +97,9 @@ Raadpleeg de volgende hand leiding voor de [release geschiedenis van de eerdere 
 
 |OCP-versie|Upstream-release|Algemene Beschik baarheid van Azure Red Hat open Shift|Einde van de levens duur|
 |-|-|-|-|
-|4.3|23 januari 2020|28 april 2020|2 augustus 2020|
-|4.4|5 mei 2020|29 juli 2020|4,6 GA|
-|4.5|13 juli 2020|28 september 2020|4,7 GA
+|4.3|Februari 2020|Mei 2020|Augustus 2020|
+|4.4|Mei 2020|Augustus 2020|4,6 GA|
+|4.5|Juli 2020|Oktober 2020|4,7 GA
 |4,6|* Vroege Q4, 2020|* Latere Q4, 2020|4,8 GA|
 
 \*_Bevestiging van release datum van de upstream in behandeling._

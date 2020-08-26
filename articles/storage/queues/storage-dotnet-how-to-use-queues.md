@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11fa99acda5f1c8edac3026961c426257bb74d92
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808841"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853652"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Aan de slag met Azure Queue Storage met .NET
 
@@ -49,7 +49,7 @@ Maak in Visual Studio een nieuwe Windows-consoletoepassing. In de volgende stapp
 
 1. Selecteer **bestand**  >  **Nieuw**  >  **project**
 2. **Platform**  >  **Vensters** selecteren
-3. Selecteer **Consoletoepassing (.NET Framework)**
+3. **Console-app selecteren (.NET Framework)**
 4. Selecteer **Volgende**
 5. Voer in het veld **project naam** een naam in voor uw toepassing
 6. Selecteer **Maken**
@@ -154,6 +154,8 @@ Als u de Azurite-opslag emulator wilt richten, kunt u een snelkoppeling gebruike
 ```
 
 ### <a name="add-using-directives"></a>Using-instructies toevoegen
+
+[!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 Voeg de volgende `Program.cs`-instructies aan het begin van het bestand `using` toe:
 
@@ -495,7 +497,7 @@ Nu u de basisprincipes van Queue Storage hebt geleerd, volgt u deze koppelingen 
 
 - Bekijk de naslagdocumentatie over de Queue-service voor meer informatie over beschikbare API's:
   - [Naslaginformatie over de Storage-clientbibliotheek voor .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [Naslaginformatie over REST-API](https://msdn.microsoft.com/library/azure/dd179355)
+  - [Naslaginformatie over REST API](https://msdn.microsoft.com/library/azure/dd179355)
 - Leer hoe u de code die u schrijft om te werken met Azure Storage, kunt vereenvoudigen met behulp van de [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 - Bekijk meer functiehandleidingen voor informatie over aanvullende mogelijkheden voor het opslaan van gegevens in Azure.
   - [Aan de slag met Azure Table Storage met .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) voor het opslaan van gestructureerde gegevens.

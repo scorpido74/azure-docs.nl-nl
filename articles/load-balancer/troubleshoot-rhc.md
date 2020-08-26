@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 6148cedbf004e3e63200ac50b91a40866c5b18db
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719661"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855254"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Problemen met Beschik baarheid van resource, front-end en back-end oplossen 
 
@@ -30,6 +30,9 @@ De metrische gegevens voor de beschik baarheid van het gegevenspad worden elke 2
 
 ## <a name="health-probe-status"></a>Status van statustest
 De metrische waarde van de status test wordt gegenereerd door een ping van het protocol dat is gedefinieerd in de status test. Deze ping wordt verzonden naar elk exemplaar van de back-endserver en op de poort die is gedefinieerd in de status test. Voor HTTP-en HTTPS-tests vereist een geslaagde ping een HTTP 200 OK-antwoord, terwijl een antwoord op de TCP-test wordt uitgevoerd. De opeenvolgende successen of fouten van elke sonde bepalen vervolgens of een back-end-exemplaar in orde is en dat er verkeer kan worden ontvangen voor de taakverdelings regels waaraan de back-end-pool is toegewezen. Net als bij de beschik baarheid van gegevenspaden gebruiken we de gemiddelde aggregatie, waarmee we tijdens het steekproef interval de gemiddelde geslaagde/totale pings vertelt. Met deze status waarde wordt de backend-status in isolatie van uw load balancer aangegeven door uw back-end-exemplaren te zoeken zonder verkeer via het front-end te verzenden.
+
+>[!IMPORTANT]
+>Health probe status wordt op één minuut verzameld. Dit kan leiden tot kleine schommelingen in een andere constante waarde. Als er bijvoorbeeld twee back-end-instanties zijn, één wordt getest en er één wordt ingedrukt, kan de Health probe-service 7 voor beelden vastleggen voor de gezonde instantie en 6 voor het beschadigde exemplaar. Dit leidt tot een eerder geconstante waarde van 50 die wordt weer gegeven als 46,15 gedurende een interval van één minuut. 
 
 ## <a name="diagnose-degraded-and-unavailable-load-balancers"></a>Problemen met gedegradeerde en niet-beschik bare load balancers vaststellen
 Zoals beschreven in het artikel over de [resource status](load-balancer-standard-diagnostics.md#resource-health-status), is er een gedegradeerde Load Balancer die wordt weer gegeven tussen 25% en 90% Beschik baarheid van gegevenspaden en een niet-beschik bare Load Balancer met een Beschik baarheid van minder dan 25% gegevenspaden, gedurende een periode van twee minuten. U kunt dezelfde stappen uitvoeren om het probleem te onderzoeken dat wordt weer gegeven in de status van alle Beschik baarheid van een Health probie of voor gegevens paden die u hebt geconfigureerd. We gaan de zaak ontdekken waar we onze resource status hebben gecontroleerd en dat onze load balancer niet meer beschikbaar zijn met de beschik baarheid van een gegevenspad van 0%. onze service is niet actief.

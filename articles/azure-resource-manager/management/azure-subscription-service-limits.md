@@ -4,12 +4,12 @@ description: Biedt een lijst met algemene Azure-abonnementen en service limieten
 ms.topic: conceptual
 author: davidsmatlak
 ms.date: 06/04/2020
-ms.openlocfilehash: 79aaa594a708fe775a2cdcc6e15b7c7f880f9f50
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 86c9958818b5439502ab37471ed7a51fb3f21bf9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810476"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854099"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limieten, quota's en beperkingen voor het Azure-abonnement en de Azure-service
 
@@ -276,6 +276,10 @@ Zie [Media Services v2 (verouderd)](../../media-services/previous/media-services
 
 [!INCLUDE [expressroute-limits](../../../includes/expressroute-limits.md)]
 
+### <a name="virtual-network-gateway-limits"></a>Virtual Network gateway limieten
+
+[!INCLUDE [virtual-wan-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+
 ### <a name="virtual-wan-limits"></a>Virtuele WAN-limieten
 
 [!INCLUDE [virtual-wan-limits](../../../includes/virtual-wan-limits.md)]
@@ -423,7 +427,7 @@ Er zijn limieten, per abonnement, voor het implementeren van resources met behul
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Meer informatie over Azure-limieten en toename](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Grootten van virtuele machines en Cloud Services voor Azure](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

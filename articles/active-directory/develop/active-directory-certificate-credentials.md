@@ -13,16 +13,16 @@ ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163659"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853386"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Referenties voor verificatie certificaat voor micro soft-identiteits platform
 
-Met het micro soft Identity-platform kan een toepassing eigen referenties voor verificatie gebruiken, bijvoorbeeld in de OAuth 2,0- [client referenties toekennings](v2-oauth2-client-creds-grant-flow.md) stroom en de OBO-stroom ( [on-of](v2-oauth2-on-behalf-of-flow.md) --).
+Met het micro soft Identity-platform kan een toepassing eigen referenties voor verificatie gebruiken, bijvoorbeeld in de OAuth 2,0-  [client referenties toekennings](v2-oauth2-client-creds-grant-flow.md) stroom en de OBO-stroom ( [on-of](v2-oauth2-on-behalf-of-flow.md) --).
 
 Een van de referenties die een toepassing voor verificatie kan gebruiken is een [JSON Web token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT)-verklaring die is ondertekend met een certificaat waarvan de toepassing eigenaar is.
 
@@ -36,13 +36,13 @@ Als u de bewering wilt berekenen, kunt u een van de vele JWT-bibliotheken gebrui
 | --- | --- |
 | `alg` | Moet **RS256** zijn |
 | `typ` | Moet **JWT** zijn |
-| `x5t` | De X. 509-certificaat-hash (ook wel bekend als de SHA-1- *vinger afdruk*van het certificaat) die is gecodeerd als een base64-teken reeks waarde. Als u bijvoorbeeld een 509 van een X. certificaat van opgeeft `84E05C1D98BCE3A5421D225B140B36E86A3D5534` , `x5t` zou dit een claim zijn `hOBcHZi846VCHSJbFAs26Go9VTQ` . |
+| `x5t` | De X. 509-certificaat-hash (ook wel bekend als de SHA-1- *vinger afdruk*van het certificaat) hexadecimale weer gave die is gecodeerd als een base64-teken reeks waarde. Als u bijvoorbeeld een X. 509-certificaat-hash van `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (hex) hebt opgegeven, zou dit een `x5t` claim zijn `hOBcHZi846VCHSJbFAs26Go9VTQ=` . |
 
 ### <a name="claims-payload"></a>Claims (Payload)
 
 | Parameter |  Opmerkingen |
 | --- | --- |
-| `aud` | Doel groep: moet`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
+| `aud` | Doel groep: moet `https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
 | `exp` | Verval datum: de datum waarop het token verloopt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat de geldigheid van het token verloopt. We raden u aan om een korte verloop tijd-10 minuten tot een uur te gebruiken.|
 | `iss` | Verlener: moet de client_id (client-*id)* van de client service zijn. |
 | `jti` | GUID: de JWT-ID |
@@ -103,8 +103,8 @@ In de registratie van de Azure-app voor de client toepassing:
 
 Als u een certificaat hebt, moet u het volgende berekenen:
 
-- `$base64Thumbprint`-Met base64 gecodeerde waarde van de certificaat-hash
-- `$base64Value`-Base64-gecodeerde waarde van de onbewerkte gegevens van het certificaat
+- `$base64Thumbprint` -Met base64 gecodeerde waarde van de certificaat-hash
+- `$base64Value` -Base64-gecodeerde waarde van de onbewerkte gegevens van het certificaat
 
 U moet ook een GUID opgeven om de sleutel te identificeren in het manifest van de toepassing ( `$keyId` ).
 

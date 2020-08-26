@@ -11,14 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 9ee0fbd69c0004306b67cbff0aca3b257d905eeb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: cbba0dd5341ad148831ac3b1f94685bf2beddd5a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541121"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855265"
 ---
-# <a name="deploy-a-model-to-azure-container-instances"></a>Een model implementeren naar Azure Container Instances
+# <a name="deploy-a-model-to-azure-container-instances"></a>Een model implementeren op Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op Azure Container Instances (ACI). Gebruik Azure Container Instances als aan een van de volgende voor waarden wordt voldaan:
@@ -31,7 +31,7 @@ Zie [quota's en regionale Beschik baarheid voor Azure container instances](https
 > [!IMPORTANT]
 > Het wordt ten zeerste aanbevolen om lokaal fouten op te sporen voordat u de webservice implementeert, voor meer informatie. Raadpleeg [lokaal fouten opsporen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
 >
-> U kunt ook verwijzen naar Azure Machine Learning- [implementeren naar lokale notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
+> U kunt ook verwijzen naar Azure Machine Learning: [Deploy to Local Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) (Implementeren naar lokale notebook)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,9 +43,9 @@ Zie [quota's en regionale Beschik baarheid voor Azure container instances](https
 
 - In de code fragmenten van __python__ in dit artikel wordt ervan uitgegaan dat de volgende variabelen zijn ingesteld:
 
-    * `ws`-Ingesteld op uw werk ruimte.
-    * `model`-Ingesteld op uw geregistreerde model.
-    * `inference_config`-Stel in op de configuratie voor het afstellen van het model.
+    * `ws` -Ingesteld op uw werk ruimte.
+    * `model` -Ingesteld op uw geregistreerde model.
+    * `inference_config` -Stel in op de configuratie voor het afstellen van het model.
 
     Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
@@ -56,8 +56,9 @@ Zie [quota's en regionale Beschik baarheid voor Azure container instances](https
 Als u een model wilt implementeren in Azure Container Instances, maakt u een __implementatie configuratie__ waarin de benodigde reken resources worden beschreven. Bijvoorbeeld het aantal kernen en het geheugen. U hebt ook een Afleidings __configuratie__nodig, waarmee de omgeving wordt beschreven die nodig is voor het hosten van het model en de webservice. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van de configuratie voor demijnen.
 
 > [!NOTE]
-> * ACI is alleen geschikt voor kleine modellen <1 GB groot. 
-> * We raden u aan om één knoop punt AKS te gebruiken voor dev-test van grotere modellen.
+> * ACI is alleen geschikt voor kleine modellen met een grootte van 1 GB. 
+> * We raden u aan om één knoop punt AKS te gebruiken voor ontwikkel-en test grotere modellen.
+> * Het aantal modellen dat moet worden geïmplementeerd, is beperkt tot 1.000 modellen per implementatie (per container). 
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 

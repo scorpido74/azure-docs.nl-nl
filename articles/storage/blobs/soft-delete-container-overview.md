@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 47582f941c314933baf378478b1380cb8316935b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066607"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854545"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Voorlopig verwijderen voor containers (preview-versie)
 
@@ -27,8 +27,8 @@ Micro soft raadt u aan de volgende functies voor gegevens beveiliging in te scha
 - Zacht verwijderen van BLOB, om te beschermen tegen onbedoeld verwijderen of overschrijven van een afzonderlijke blob. Zie [voorlopig verwijderen voor blobs](soft-delete-blob-overview.md)voor meer informatie over het inschakelen van de optie voor het voorlopig verwijderen van blobs.
 - BLOB-versie beheer (preview), om automatisch eerdere versies van een BLOB te onderhouden. Wanneer BLOB-versie beheer is ingeschakeld, kunt u een eerdere versie van een BLOB herstellen om uw gegevens te herstellen als deze ten onrechte zijn gewijzigd of verwijderd. Zie [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)voor meer informatie over het inschakelen van BLOB-versies.
 
-> [!IMPORTANT]
-> Configureer een **CannotDelete** -vergren deling voor de bron van het opslag account om onbedoeld verwijderen van een opslag account te voor komen. Zie [resources vergren delen om onverwachte wijzigingen](../../azure-resource-manager/management/lock-resources.md)te voor komen voor meer informatie over het vergren delen van Azure-resources.
+> [!WARNING]
+> Het verwijderen van een opslag account kan niet ongedaan worden gemaakt. Zacht verwijderen beschermt niet tegen het verwijderen van een opslag account. Configureer een **CannotDelete** -vergren deling voor de bron van het opslag account om onbedoeld verwijderen van een opslag account te voor komen. Zie [resources vergren delen om onverwachte wijzigingen](../../azure-resource-manager/management/lock-resources.md)te voor komen voor meer informatie over het vergren delen van Azure-resources.
 
 ## <a name="how-container-soft-delete-works"></a>De werking van de functie voor voorlopig verwijderen van containers
 
@@ -82,7 +82,7 @@ Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u zich wilt registreren bij Azure CLI, roept u de opdracht [AZ feature REGI ster](/cli/azure/feature#az-feature-register) aan.
 
@@ -105,7 +105,7 @@ Als u de status van uw registratie met Power shell wilt controleren, roept u de 
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName ContainerSoftDelete
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u de status van uw registratie met Azure CLI wilt controleren, roept u de opdracht [AZ functie](/cli/azure/feature#az-feature-show) aan.
 
@@ -122,5 +122,5 @@ Er worden geen extra kosten in rekening gebracht voor het inschakelen van het vo
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Zacht verwijderen van container configureren](soft-delete-container-enable.md)
-- [Voorlopig verwijderen voor blobs](soft-delete-blob-overview.md)
+- [Blobs voorlopig verwijderen](soft-delete-blob-overview.md)
 - [Versie beheer van BLOB (preview)](versioning-overview.md)

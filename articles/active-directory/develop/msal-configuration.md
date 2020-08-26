@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 3de252b22d7b33e45c3b45e2b6c05e4b33df663d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027050"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854906"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Configuratie bestand voor micro soft-verificatie bibliotheek voor Android
 
@@ -30,14 +30,14 @@ In dit artikel vindt u meer informatie over de verschillende instellingen in het
 
 ### <a name="general-settings"></a>Algemene instellingen
 
-| Eigenschap | Gegevenstype | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype | Vereist | Notities |
 |-----------|------------|-------------|-------|
 | `client_id` | Tekenreeks | Ja | De client-ID van uw app op de [pagina Toepassings registratie](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
 | `redirect_uri`   | Tekenreeks | Ja | De omleidings-URI van uw app op de [pagina Toepassings registratie](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `authorities` | Lijst\<Authority> | No | De lijst met instanties die uw app nodig heeft |
-| `authorization_user_agent` | AuthorizationAgent (enum) | No | Mogelijke waarden: `DEFAULT` , `BROWSER` ,`WEBVIEW` |
-| `http` | HttpConfiguration | No | Configureren `HttpUrlConnection` `connect_timeout` en`read_timeout` |
-| `logging` | LoggingConfiguration | No | Hiermee geeft u het detail niveau voor logboek registratie op. Optionele configuraties omvatten: `pii_enabled` , die een Booleaanse waarde en,,, `log_level` `ERROR` , of, accepteert,, `WARNING` `INFO` of `VERBOSE` . |
+| `authorities` | Lijst\<Authority> | Nee | De lijst met instanties die uw app nodig heeft |
+| `authorization_user_agent` | AuthorizationAgent (enum) | Nee | Mogelijke waarden: `DEFAULT` , `BROWSER` , `WEBVIEW` |
+| `http` | HttpConfiguration | Nee | Configureren `HttpUrlConnection` `connect_timeout` en `read_timeout` |
+| `logging` | LoggingConfiguration | Nee | Hiermee geeft u het detail niveau voor logboek registratie op. Optionele configuraties omvatten: `pii_enabled` , die een Booleaanse waarde en,,, `log_level` `ERROR` , of, accepteert,, `WARNING` `INFO` of `VERBOSE` . |
 
 ### <a name="client_id"></a>client_id
 
@@ -58,7 +58,7 @@ De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de ins
     "audience": {
         "type": "AzureADandPersonalMicrosoftAccount"
     },
-    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken or acquireTokenSilent call
+    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken call
 },
 // Example AzureAD My Organization
 {
@@ -86,9 +86,9 @@ De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de ins
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>AAD Authority & doel groep toewijzen aan micro soft Identity platform-eind punten
 
-| Type | Doelgroep | Tenant-id | Authority_Url | Resulterende eind punt | Opmerkingen |
+| Type | Doelgroep | Tenant-id | Authority_Url | Resulterende eind punt | Notities |
 |------|------------|------------|----------------|----------------------|---------|
-| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common`is een Tenant alias voor waar het account zich bevindt. Zoals een specifieke Azure Active Directory Tenant of het Microsoft-account systeem. |
+| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` is een Tenant alias voor waar het account zich bevindt. Zoals een specifieke Azure Active Directory Tenant of het Microsoft-account systeem. |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | Alleen accounts die aanwezig zijn in contoso.com kunnen een token verkrijgen. Elk geverifieerd domein of de Tenant-GUID kan worden gebruikt als Tenant-ID. |
 | AAD | AzureADMultipleOrgs | | | `https://login.microsoftonline.com/organizations` | Alleen Azure Active Directory accounts kunnen met dit eind punt worden gebruikt. Micro soft-accounts kunnen lid zijn van organisaties. Voor het verkrijgen van een token met behulp van een Microsoft-account voor een resource in een organisatie, geeft u de Tenant van de organisatie op waarvan u het token wilt maken. |
 | AAD | PersonalMicrosoftAccount | | | `https://login.microsoftonline.com/consumers` | Alleen micro soft-accounts kunnen dit eind punt gebruiken. |
@@ -101,18 +101,18 @@ De lijst met instanties die bekend zijn en worden vertrouwd door u. Naast de ins
 
 #### <a name="authority-properties"></a>Instantie-eigenschappen
 
-| Eigenschap | Gegevenstype  | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype  | Vereist | Notities |
 |-----------|-------------|-----------|--------|
-| `type` | Tekenreeks | Ja | Komt overeen met de doel groep of het account type van uw app-doelen. Mogelijke waarden: `AAD` ,`B2C` |
-| `audience` | Object | No | Alleen van toepassing als type = `AAD` . Hiermee geeft u de identiteit op van uw app-doelen. De waarde van de app-registratie gebruiken |
+| `type` | Tekenreeks | Ja | Komt overeen met de doel groep of het account type van uw app-doelen. Mogelijke waarden: `AAD` , `B2C` |
+| `audience` | Object | Nee | Alleen van toepassing als type = `AAD` . Hiermee geeft u de identiteit op van uw app-doelen. De waarde van de app-registratie gebruiken |
 | `authority_url` | Tekenreeks | Ja | Alleen vereist als type = `B2C` . Hiermee geeft u de CA-URL of het beleid dat door uw app moet worden gebruikt  |
-| `default` | boolean | Yes | Eén `"default":true` is vereist wanneer een of meer instanties zijn opgegeven. |
+| `default` | boolean | Ja | Eén `"default":true` is vereist wanneer een of meer instanties zijn opgegeven. |
 
 #### <a name="audience-properties"></a>Eigenschappen van doel groep
 
-| Eigenschap | Gegevenstype  | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype  | Vereist | Notities |
 |-----------|-------------|------------|-------|
-| `type` | Tekenreeks | Ja | Hiermee geeft u de doel groep op die uw app wil richten. Mogelijke waarden: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` ,`AzureADMyOrg` |
+| `type` | Tekenreeks | Ja | Hiermee geeft u de doel groep op die uw app wil richten. Mogelijke waarden: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
 | `tenant_id` | Tekenreeks | Ja | Alleen vereist wanneer `"type":"AzureADMyOrg"` . Optioneel voor andere `type` waarden. Dit kan een Tenant domein `contoso.com` , zoals of een Tenant-id, zoals `72f988bf-86f1-41af-91ab-2d7cd011db46` ) |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
@@ -138,26 +138,26 @@ Als u de AAD-instantie met de doel groep hebt ingesteld op `"MicrosoftPersonalAc
 
 Algemene instellingen voor HTTP-time-outs configureren, zoals:
 
-| Eigenschap | Gegevenstype | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype | Vereist | Notities |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | No | Tijd in milliseconden |
-| `read_timeout` | int | No | Tijd in milliseconden |
+| `connect_timeout` | int | Nee | Tijd in milliseconden |
+| `read_timeout` | int | Nee | Tijd in milliseconden |
 
 ### <a name="logging"></a>logboekregistratie
 
 De volgende algemene instellingen zijn voor logboek registratie:
 
-| Eigenschap | Gegevenstype  | Vereist | Opmerkingen |
+| Eigenschap | Gegevenstype  | Vereist | Notities |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | No | Of persoons gegevens moeten worden geverzendd |
+| `pii_enabled`  | boolean | Nee | Of persoons gegevens moeten worden geverzendd |
 | `log_level`   | tekenreeks | No | De logboek berichten die moeten worden uitgevoerd. De ondersteunde logboek niveaus zijn onder andere `ERROR` , `WARNING` , en `INFO` `VERBOSE` . |
-| `logcat_enabled` | boolean | No | Of er moet worden uitgevoerd naar log kat naast de interface voor logboek registratie |
+| `logcat_enabled` | boolean | Nee | Of er moet worden uitgevoerd naar log kat naast de interface voor logboek registratie |
 
 ### <a name="account_mode"></a>account_mode
 
 Hiermee geeft u op hoeveel accounts in uw app tegelijk kunnen worden gebruikt. De mogelijke waarden zijn:
 
-- `MULTIPLE`Prijs
+- `MULTIPLE` Prijs
 - `SINGLE`
 
 Als u een `PublicClientApplication` account modus maakt die niet overeenkomt met deze instelling, resulteert dit in een uitzonde ring.

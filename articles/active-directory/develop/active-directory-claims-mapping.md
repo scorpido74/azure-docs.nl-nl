@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141530"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853365"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -143,7 +143,6 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | onprem_sid |
 | openid2_id |
 | wachtwoord |
-| platf |
 | polids |
 | pop_jwk |
 | preferred_username |
@@ -248,11 +247,11 @@ Als u wilt bepalen welke claims worden verzonden en waar de gegevens vandaan kom
 
 **Samen vatting:** Deze eigenschap bepaalt of de set basis claims is opgenomen in tokens die door dit beleid worden beïnvloed.
 
-- Als deze eigenschap is ingesteld op True, worden alle claims in de set basis claims verzonden in tokens die door het beleid worden beïnvloed. 
+- Als deze eigenschap is ingesteld op True, worden alle claims in de set basis claims verzonden in tokens die door het beleid worden beïnvloed.
 - Als deze eigenschap is ingesteld op False, bevinden claims in de set basis claims zich niet in de tokens, tenzij ze afzonderlijk worden toegevoegd in de eigenschappen van het claim schema van hetzelfde beleid.
 
-> [!NOTE] 
-> Claims in de set met kern claims zijn aanwezig in elk token, ongeacht waar deze eigenschap is ingesteld. 
+> [!NOTE]
+> Claims in de set met kern claims zijn aanwezig in elk token, ongeacht waar deze eigenschap is ingesteld.
 
 ### <a name="claims-schema"></a>Claim schema
 
@@ -267,14 +266,14 @@ Voor elke claim schema vermelding die in deze eigenschap is gedefinieerd, is bep
 
 **Waarde:** Het element waarde definieert een statische waarde als de gegevens die moeten worden verzonden in de claim.
 
-**Bron/ID-paar:** De bron-en ID-elementen bepalen waar de gegevens in de claim worden gebrond.  
+**Bron/ID-paar:** De bron-en ID-elementen bepalen waar de gegevens in de claim worden gebrond.
 
 **Bron-ExtensionID-paar:** De bron-en ExtensionID-elementen definiëren het kenmerk Directory schema-uitbrei ding waaruit de gegevens in de claim afkomstig zijn. Zie [kenmerken van Directory-schema uitbreidingen gebruiken in claims](active-directory-schema-extensions.md)voor meer informatie.
 
-Stel het bron element in op een van de volgende waarden: 
+Stel het bron element in op een van de volgende waarden:
 
-- gebruiker: de gegevens in de claim zijn een eigenschap van het gebruikers object. 
-- "toepassing": de gegevens in de claim zijn een eigenschap van de service-principal van de toepassing (client). 
+- gebruiker: de gegevens in de claim zijn een eigenschap van het gebruikers object.
+- "toepassing": de gegevens in de claim zijn een eigenschap van de service-principal van de toepassing (client).
 - resource: de gegevens in de claim zijn een eigenschap van de resource Service-Principal.
 - "doel groep": de gegevens in de claim zijn een eigenschap van de service-principal die de doel groep is van het token (de client-of resource service-principal).
 - ' bedrijf ': de gegevens in de claim zijn een eigenschap van het bedrijfs object van de resource-Tenant.
@@ -323,7 +322,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | othermail | Andere E-mail |
 | Gebruiker | country | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | staat | Status |
+| Gebruiker | staat | Staat |
 | Gebruiker | jobtitle | Functie |
 | Gebruiker | employeeid | Werknemers-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
@@ -349,7 +348,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 
 **Teken reeks:** ClaimsTransformation
 
-**Gegevens type:** JSON-blob, met een of meer transformatie vermeldingen 
+**Gegevens type:** JSON-blob, met een of meer transformatie vermeldingen
 
 **Samen vatting:** Gebruik deze eigenschap om veelvoorkomende trans formaties toe te passen op Bron gegevens om de uitvoer gegevens te genereren voor claims die zijn opgegeven in het claims-schema.
 
@@ -368,7 +367,7 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 **InputClaims:** Gebruik een InputClaims-element om de gegevens van een claim schema vermelding door te geven aan een trans formatie. Het heeft twee kenmerken: **ClaimTypeReferenceId** en **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** is gekoppeld aan het id-element van de claim schema vermelding om de juiste invoer claim te vinden. 
+- **ClaimTypeReferenceId** is gekoppeld aan het id-element van de claim schema vermelding om de juiste invoer claim te vinden.
 - **TransformationClaimType** wordt gebruikt om een unieke naam te geven aan deze invoer. Deze naam moet overeenkomen met een van de verwachte invoer waarden voor de transformatie methode.
 
 **Invoer parameters:** Gebruik een input parameters-element om een constante waarde door te geven aan een trans formatie. Het heeft twee kenmerken: **waarde** en **id**.
@@ -420,7 +419,7 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 Een aangepaste ondertekeningssleutel moet worden toegewezen aan het Service-Principal-object om een claim toewijzings beleid van kracht te laten worden. Dit zorgt ervoor dat de bevestiging van tokens door de maker van het beleid voor claim toewijzing is gewijzigd en dat toepassingen worden beschermd tegen beleids regels voor claim toewijzing die door kwaad aardige Actors zijn gemaakt. Als u een aangepaste ondertekeningssleutel wilt toevoegen, kunt u de cmdlet Azure PowerShell gebruiken `new-azureadapplicationkeycredential` om een symmetrische sleutel referentie voor uw toepassings object te maken. Zie [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)voor meer informatie over deze Azure PowerShell-cmdlet.
 
-Apps waarvoor claim toewijzing is ingeschakeld, moeten hun token handtekening sleutels valideren door `appid={client_id}` toe te voegen aan hun [OpenID Connect Connect-aanvragen voor meta gegevens](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Hieronder ziet u de indeling van het OpenID Connect Connect-meta gegevens document dat u moet gebruiken: 
+Apps waarvoor claim toewijzing is ingeschakeld, moeten hun token handtekening sleutels valideren door `appid={client_id}` toe te voegen aan hun [OpenID Connect Connect-aanvragen voor meta gegevens](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Hieronder ziet u de indeling van het OpenID Connect Connect-meta gegevens document dat u moet gebruiken:
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -464,20 +463,20 @@ Voer de volgende stappen uit om aan de slag te gaan:
 In dit voor beeld maakt u een beleid waarmee de set basis claims wordt verwijderd uit tokens die zijn uitgegeven aan gekoppelde service-principals.
 
 1. Maak een claim toewijzings beleid. Dit beleid, dat is gekoppeld aan specifieke service-principals, verwijdert de basis claimset van tokens.
-   1. Voer de volgende opdracht uit om het beleid te maken: 
-    
+   1. Voer de volgende opdracht uit om het beleid te maken:
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
       ```
    2. Voer de volgende opdracht uit om het nieuwe beleid te bekijken en de beleids-ObjectId op te halen:
-    
+
       ``` powershell
       Get-AzureADPolicy
       ```
 1. Wijs het beleid toe aan uw service-principal. U moet ook de ObjectId voor uw Service-Principal ophalen.
    1. Als u de service-principals van uw organisatie wilt weer geven, kunt u [een query uitvoeren op de Microsoft Graph-API](/graph/traverse-the-graph). Of Meld u in [Microsoft Graph Verkenner](https://developer.microsoft.com/graph/graph-explorer)aan bij uw Azure ad-account.
-   2. Wanneer u de ObjectId van uw Service-Principal hebt, voert u de volgende opdracht uit:  
-     
+   2. Wanneer u de ObjectId van uw Service-Principal hebt, voert u de volgende opdracht uit:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -487,21 +486,21 @@ In dit voor beeld maakt u een beleid waarmee de set basis claims wordt verwijder
 In dit voor beeld maakt u een beleid waarmee de werk nemer-en TenantCountry worden toegevoegd aan tokens die zijn uitgegeven aan gekoppelde service-principals. De werk nemer-aanvraag wordt verzonden als het naam claim type in SAML-tokens en JWTs. De TenantCountry wordt verzonden als het land/de regio claim type in zowel de SAML-tokens als de JWTs. In dit voor beeld blijven de basis claims in de tokens worden toegevoegd.
 
 1. Maak een claim toewijzings beleid. Met dit beleid, dat is gekoppeld aan specifieke service-principals, worden de werk nemer-en TenantCountry claims toegevoegd aan tokens.
-   1. Voer de volgende opdracht uit om het beleid te maken:  
-     
+   1. Voer de volgende opdracht uit om het beleid te maken:
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
+
    2. Voer de volgende opdracht uit om het nieuwe beleid te bekijken en de beleids-ObjectId op te halen:
-     
-      ``` powershell  
+
+      ``` powershell
       Get-AzureADPolicy
       ```
-1. Wijs het beleid toe aan uw service-principal. U moet ook de ObjectId voor uw Service-Principal ophalen. 
+1. Wijs het beleid toe aan uw service-principal. U moet ook de ObjectId voor uw Service-Principal ophalen.
    1. Als u de service-principals van uw organisatie wilt weer geven, kunt u [een query uitvoeren op de Microsoft Graph-API](/graph/traverse-the-graph). Of Meld u in [Microsoft Graph Verkenner](https://developer.microsoft.com/graph/graph-explorer)aan bij uw Azure ad-account.
-   2. Wanneer u de ObjectId van uw Service-Principal hebt, voert u de volgende opdracht uit:  
-     
+   2. Wanneer u de ObjectId van uw Service-Principal hebt, voert u de volgende opdracht uit:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -512,20 +511,20 @@ In dit voor beeld maakt u een beleid dat een aangepaste claim ' JoinedData ' uit
 
 1. Maak een claim toewijzings beleid. Met dit beleid, dat is gekoppeld aan specifieke service-principals, worden de werk nemer-en TenantCountry claims toegevoegd aan tokens.
    1. Voer de volgende opdracht uit om het beleid te maken:
-     
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
-   2. Voer de volgende opdracht uit om het nieuwe beleid te bekijken en de beleids-ObjectId op te halen: 
-     
+
+   2. Voer de volgende opdracht uit om het nieuwe beleid te bekijken en de beleids-ObjectId op te halen:
+
       ``` powershell
       Get-AzureADPolicy
       ```
-1. Wijs het beleid toe aan uw service-principal. U moet ook de ObjectId voor uw Service-Principal ophalen. 
+1. Wijs het beleid toe aan uw service-principal. U moet ook de ObjectId voor uw Service-Principal ophalen.
    1. Als u de service-principals van uw organisatie wilt weer geven, kunt u [een query uitvoeren op de Microsoft Graph-API](/graph/traverse-the-graph). Of Meld u in [Microsoft Graph Verkenner](https://developer.microsoft.com/graph/graph-explorer)aan bij uw Azure ad-account.
-   2. Wanneer u de ObjectId van uw Service-Principal hebt, voert u de volgende opdracht uit: 
-     
+   2. Wanneer u de ObjectId van uw Service-Principal hebt, voert u de volgende opdracht uit:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```

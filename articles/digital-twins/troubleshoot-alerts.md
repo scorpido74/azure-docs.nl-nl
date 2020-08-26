@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 1b296cd942e36817da2832467ab603ebd833f825
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ded2f54379e60e8e3fc26d9c2166930a6f953078
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908867"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854863"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Problemen met Azure Digital Apparaatdubbels oplossen: waarschuwingen
 
@@ -28,13 +28,17 @@ Hier vindt u informatie over het inschakelen van waarschuwingen voor uw Azure Di
 
 2. Selecteer **waarschuwingen** in het menu en vervolgens **+ nieuwe waarschuwings regel**.
 
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Scherm afbeelding van de pagina met waarschuwingen en de knop om toe te voegen. Er zijn nog geen waarschuwingen geconfigureerd" lightbox="media/troubleshoot-alerts/alerts-pre.png":::
-
 3. Op de volgende pagina *waarschuwings regel maken* kunt u de prompts voor het definiëren van voor waarden, te activeren acties en waarschuwings Details volgen.     
-    * De **Scope** details moeten automatisch worden gevuld met de details van uw exemplaar.
-    * U definieert **voor waarde** en **actie groeps** gegevens voor het aanpassen van waarschuwings triggers en antwoorden.
+    * De **Scope** gegevens moeten automatisch worden gevuld met de details van uw exemplaar
+    * U definieert **voor waarde** en **actie groeps** gegevens voor het aanpassen van waarschuwings triggers en antwoorden
+    * Voer in de sectie **Details van waarschuwings regel** de _naam van de waarschuwings regel_in _(optioneel)_. U kunt het selectie vakje _waarschuwings regel inschakelen bij maken_ selecteren als u wilt dat de waarschuwing actief wordt zodra deze wordt gemaakt.
+    * Op basis van bepaalde voor waarden en acties die u toevoegt, moet u _waarschuwings regel opslaan in resource groep_ en _Ernst_ van de respectieve vervolg keuzelijsten selecteren.
 
-    :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Scherm opname van de pagina waarschuwings regel maken met secties voor het bereik, de voor waarde en de actie groep" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+4. Selecteer de knop _waarschuwings regel maken_ om uw waarschuwings regel te maken.
+
+:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Scherm opname van de pagina waarschuwings regel maken met secties voor het bereik, de voor waarde en de actie groep" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+
+:::image type="content" source="media/troubleshoot-alerts/alert-rule-details.png" alt-text="Scherm afbeelding van het gedeelte waarschuwings regel Details van het maken van een waarschuwings regel" lightbox="media/troubleshoot-alerts/alert-rule-details.png":::
 
 Zie [*overzicht van waarschuwingen in Microsoft Azure*](../azure-monitor/platform/alerts-overview.md)voor een rond overzicht van het invullen van deze velden. Hieronder ziet u enkele voor beelden van hoe de stappen eruitzien voor Azure Digital Apparaatdubbels.
 
