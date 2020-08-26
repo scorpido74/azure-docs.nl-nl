@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78668462"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864677"
 ---
 ## <a name="authentication"></a>Verificatie
 
@@ -30,7 +30,7 @@ Wanneer u de `Authorization: Bearer` header gebruikt, moet u een aanvraag indien
 
 ### <a name="how-to-get-an-access-token"></a>Hoe kan ik een toegangs Token ophalen?
 
-Als u een toegangs token wilt ophalen, moet u een aanvraag indienen bij het `issueToken` eind punt met `Ocp-Apim-Subscription-Key` behulp van de en uw abonnements sleutel.
+Als u een toegangs token wilt ophalen, moet u een aanvraag indienen bij het `issueToken` eind punt met behulp van de `Ocp-Apim-Subscription-Key` en uw abonnements sleutel.
 
 Het `issueToken` eind punt heeft de volgende indeling:
 
@@ -38,7 +38,7 @@ Het `issueToken` eind punt heeft de volgende indeling:
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
-Vervang `<REGION_IDENTIFIER>` door de id die overeenkomt met de regio van uw abonnement uit deze tabel:
+Vervang door `<REGION_IDENTIFIER>` de id die overeenkomt met de regio van uw abonnement uit deze tabel:
 
 [!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
@@ -46,7 +46,7 @@ Gebruik deze voor beelden om uw toegangs token aanvraag te maken.
 
 #### <a name="http-sample"></a>HTTP-voor beeld
 
-Dit voor beeld is een eenvoudige HTTP-aanvraag om een token op te halen. Vervang `YOUR_SUBSCRIPTION_KEY` door uw abonnements sleutel voor uw spraak service. Als uw abonnement zich niet in de regio vs West bevindt, vervangt u de `Host` header door de hostnaam van uw regio.
+Dit voor beeld is een eenvoudige HTTP-aanvraag om een token op te halen. Vervang door `YOUR_SUBSCRIPTION_KEY` uw abonnements sleutel voor uw spraak service. Als uw abonnement zich niet in de regio vs West bevindt, vervangt u de header door de `Host` hostnaam van uw regio.
 
 ```http
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -60,7 +60,7 @@ De hoofd tekst van het antwoord bevat de toegangs token in de indeling JSON Web 
 
 #### <a name="powershell-sample"></a>Voorbeeld van PowerShell
 
-Dit voor beeld is een eenvoudig Power shell-script om een toegangs token op te halen. Vervang `YOUR_SUBSCRIPTION_KEY` door uw abonnements sleutel voor uw spraak service. Zorg ervoor dat u het juiste eind punt gebruikt voor de regio die overeenkomt met uw abonnement. Dit voor beeld is momenteel ingesteld op VS-West.
+Dit voor beeld is een eenvoudig Power shell-script om een toegangs token op te halen. Vervang door `YOUR_SUBSCRIPTION_KEY` uw abonnements sleutel voor uw spraak service. Zorg ervoor dat u het juiste eind punt gebruikt voor de regio die overeenkomt met uw abonnement. Dit voor beeld is momenteel ingesteld op VS-West.
 
 ```powershell
 $FetchTokenHeader = @{
@@ -79,10 +79,10 @@ $OAuthToken
 
 #### <a name="curl-sample"></a>Krul voorbeeld
 
-Krul is een opdracht regel programma dat beschikbaar is in Linux (en in het Windows-subsysteem voor Linux). Deze krul opdracht illustreert hoe u een toegangs token kunt ophalen. Vervang `YOUR_SUBSCRIPTION_KEY` door uw abonnements sleutel voor uw spraak service. Zorg ervoor dat u het juiste eind punt gebruikt voor de regio die overeenkomt met uw abonnement. Dit voor beeld is momenteel ingesteld op VS-West.
+Krul is een opdracht regel programma dat beschikbaar is in Linux (en in het Windows-subsysteem voor Linux). Deze krul opdracht illustreert hoe u een toegangs token kunt ophalen. Vervang door `YOUR_SUBSCRIPTION_KEY` uw abonnements sleutel voor uw spraak service. Zorg ervoor dat u het juiste eind punt gebruikt voor de regio die overeenkomt met uw abonnement. Dit voor beeld is momenteel ingesteld op VS-West.
 
 ```console
-curl -v -X POST
+curl -v -X POST \
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
  -H "Content-Length: 0" \
@@ -91,7 +91,7 @@ curl -v -X POST
 
 #### <a name="c-sample"></a>C#-voorbeeld
 
-Deze C#-klasse laat zien hoe u een toegangs token kunt ophalen. Geef uw abonnements sleutel voor uw spraak service op wanneer u een instantie van de klasse maakt. Als uw abonnement zich niet in de regio vs-West bevindt `FetchTokenUri` , wijzigt u de waarde van zodat deze overeenkomt met de regio voor uw abonnement.
+Deze C#-klasse laat zien hoe u een toegangs token kunt ophalen. Geef uw abonnements sleutel voor uw spraak service op wanneer u een instantie van de klasse maakt. Als uw abonnement zich niet in de regio vs-West bevindt, wijzigt u de waarde van `FetchTokenUri` zodat deze overeenkomt met de regio voor uw abonnement.
 
 ```csharp
 public class Authentication

@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a93e0b6d29bb10e5e71f48134916cac9cd563fb2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420036"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855953"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Aangepaste Sdk's voor Azure Digital Apparaatdubbels maken met auto rest
 
@@ -41,10 +41,10 @@ npm install -g autorest@2.0.4413
 Voer de volgende stappen uit om auto rest te gebruiken voor het Swagger-bestand van de Azure Digital Apparaatdubbels:
 1. Kopieer het Azure Digital Apparaatdubbels Swagger-bestand en de bijbehorende map met voor beelden naar een werkmap.
 2. Gebruik een opdracht prompt venster om over te scha kelen naar die werkmap.
-3. Voer auto rest uit met de volgende opdracht. Vervang de `<language>` tijdelijke aanduiding door de taal van uw keuze: `--python` ,, `--java` , enzovoort `--go` . (U vindt de volledige lijst met opties in het [Leesmij-bestand](https://github.com/Azure/autorest)voor auto rest.)
+3. Voer auto rest uit met de volgende opdracht. Vervang de `<language>` tijdelijke aanduiding door de taal van uw keuze: `python` ,, `java` , enzovoort `go` . (U vindt de volledige lijst met opties in het [Leesmij-bestand](https://github.com/Azure/autorest)voor auto rest.)
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
 Als gevolg hiervan ziet u een nieuwe map met de naam *ADTApi* in uw werkmap. De gegenereerde SDK-bestanden hebben de naam ruimte *ADTApi*. U kunt die naam ruimte blijven gebruiken via de rest van de voor beelden van het gebruik in dit artikel.
@@ -83,7 +83,7 @@ U kunt nu het project bouwen en dit toevoegen als een project verwijzing in een 
 
 ## <a name="general-guidelines-for-generated-sdks"></a>Algemene richt lijnen voor gegenereerde Sdk's
 
-Deze sectie bevat algemene informatie over en richt lijnen voor het gebruik van de gegenereerde SDK.
+Deze sectie bevat algemene informatie en richt lijnen voor het gebruik van de gegenereerde SDK.
 
 ### <a name="synchronous-and-asynchronous-calls"></a>Synchrone en asynchrone aanroepen
 

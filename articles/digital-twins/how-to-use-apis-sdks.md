@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 39c33efb4896893c8baa18d06f62defc26c64949
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587559"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855881"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -63,7 +63,7 @@ U kunt ook datum vlak-Api's uitoefenen door interactie met Azure Digital Apparaa
 De Azure Digital Apparaatdubbels .NET (C#) SDK maakt deel uit van de Azure SDK voor .NET. Het is open source en is gebaseerd op de Azure Digital Apparaatdubbels data vlak-Api's.
 
 > [!NOTE]
-> Zie algemene [ontwerp principes voor Azure sdk's](https://azure.github.io/azure-sdk/general_introduction.html) en de specifieke [.net-ontwerp richtlijnen](https://azure.github.io/azure-sdk/dotnet_introduction.html)voor uitgebreide informatie over het ontwerp van de SDK.
+> Zie algemene [ontwerp principes voor Azure sdk's](https://azure.github.io/azure-sdk/general_introduction.html) en de specifieke [.net-ontwerp richtlijnen](https://azure.github.io/azure-sdk/dotnet_introduction.html)voor meer informatie over het ontwerp van de SDK.
 
 Als u de SDK wilt gebruiken, voegt u het NuGet-pakket **Azure. DigitalTwins. core** toe aan uw project. U hebt ook het **Azure. Identity** -pakket (versie 1.1.1) nodig.
 
@@ -143,7 +143,7 @@ U kunt ook aanvullende voor beelden vinden in de [github-opslag plaats voor de .
 
 #### <a name="serialization-helpers"></a>Helpers voor serialisatie
 
-Zoals eerder beschreven, retour neren de kern SDK-methoden dubbele gegevens als JSON. De SDK bevat echter ook hulp klassen voor serialisatie. Met deze hulp functies kunt u snel dubbele gegevens maken of deserialiseren voor toegang tot basis informatie.
+Helpers voor serialisatie zijn hulp functies die beschikbaar zijn in de SDK voor het snel maken of deserialiseren van dubbele gegevens voor toegang tot basis informatie. Aangezien de kern-SDK-methoden dubbele gegevens standaard als JSON retour neren, kan het handig zijn om deze hulp klassen te gebruiken om de dubbele gegevens verder te verbreken.
 
 De beschik bare Help klassen zijn:
 * `BasicDigitalTwin`: Hiermee worden de belangrijkste gegevens van een digitale dubbele
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>Relatie maken
 
-Met behulp van de `BasicDigitalTwin` -klasse kunt u ook gegevens voorbereiden voor het maken van relaties op een dubbele instantie:
+Met behulp van de `BasicRelationship` -klasse kunt u ook gegevens voorbereiden voor het maken van relaties op een dubbele instantie:
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();

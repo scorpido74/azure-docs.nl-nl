@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 149d1eab696ae8419bed79cd2cdc0b066c32060c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531156"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856119"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gegevens toegang verlenen tot een omgeving
 
@@ -64,7 +64,7 @@ De `Guest` rol is geen beheer functie. Het is een term die wordt gebruikt voor e
 
 Volg deze stappen om gast toegang tot een Azure Time Series Insights omgeving toe te kennen aan een Azure AD-gebruiker vanuit een andere Tenant.
 
-1. Ga naar Azure Portal, klik op **Azure Active Directory**, Schuif omlaag op het tabblad **overzicht** en selecteer vervolgens **gast gebruiker**.
+1. Ga naar Azure Portal, klik op  **Azure Active Directory**, Schuif omlaag op het tabblad **overzicht** en selecteer vervolgens **gast gebruiker**.
 
     [![Selecteer gegevens toegangs beleid en klik vervolgens op uitnodigen](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
@@ -106,7 +106,7 @@ Volg deze stappen om gast toegang tot een Azure Time Series Insights omgeving to
 
 1. De beheerder [deelt de omgevings-URL](time-series-insights-parameterized-urls.md) met hun gast.
 
-1. Nadat de gast gebruiker is aangemeld bij het e-mail adres dat u hebt gebruikt om ze te nodigen, worden ze omgeleid naar Azure Portal. 
+1. Nadat de gast gebruiker is aangemeld bij het e-mail adres dat u hebt gebruikt om ze te nodigen, worden ze omgeleid naar Azure Portal.
 
 1. De gast heeft nu toegang tot de gedeelde omgeving met behulp van de omgevings-URL die door de beheerder is ingesteld. Ze kunnen deze URL in hun webbrowser invoeren voor directe toegang.
 
@@ -114,14 +114,14 @@ Volg deze stappen om gast toegang tot een Azure Time Series Insights omgeving to
 
     [![Avatar selecteren op insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
+    Nadat de gast gebruiker de Tenant van de beheerder heeft geselecteerd, kunnen ze de gedeelde Azure Time Series Insights omgeving selecteren.
 
-    Nadat de gast gebruiker de Tenant van de beheerder heeft geselecteerd, kunnen ze de gedeelde Azure Time Series Insights omgeving selecteren. 
-    
     Ze hebben nu alle mogelijkheden die zijn gekoppeld aan de rol die u hebt gegeven in **stap 5**.
 
     [![Gast gebruiker selecteert uw Azure-Tenant in de vervolg keuzelijst](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * Lees [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md) voor de stappen voor het registreren van Azure Active Directory-apps.
 
-* Bekijk [uw omgeving in de Azure time series Insights Gen2 Explorer](./time-series-insights-update-explorer.md).
+* Bekijk [uw omgeving in de Azure time series INSIGHTS TSI-Explorer](./time-series-insights-update-explorer.md).

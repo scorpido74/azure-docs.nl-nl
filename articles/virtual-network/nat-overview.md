@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 08/25/2020
 ms.author: allensu
-ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135807"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855794"
 ---
 # <a name="what-is-virtual-network-nat"></a>Wat is Azure Virtual Network NAT?
 
@@ -123,31 +123,17 @@ U kunt de werking van uw NAT bewaken door middel van multidimensionale metrische
 
 Bij algemene beschikbaarheid is het NAT-gegevenspad ten minste 99,9% beschikbaar.
 
-
 ## <a name="pricing"></a>Prijzen
 
-De NAT-gateway wordt gefactureerd met twee afzonderlijke meters:
-
-| Meter | Tarief |
-| --- | --- |
-| Resource-uren | $ 0,045/uur |
-| Verwerkte gegevens | $ 0,045/GB |
-
-Resource-uren staan voor de periode gedurende waarin een NAT-gatewayresource bestaat.
-Verwerkte gegevens staan voor al het verkeer dat is verwerkt door een NAT-gatewayresource.
+Zie [Virtual Network prijzen](https://azure.microsoft.com/pricing/details/virtual-network)voor prijs informatie.
 
 ## <a name="availability"></a>Beschikbaarheid
 
-Virtual Network NAT en de NAT-gatewayresource zijn beschikbaar in alle [regio's](https://azure.microsoft.com/global-infrastructure/regions/) van de openbare cloud van Azure.
-
-## <a name="support"></a>Ondersteuning
-
-NAT wordt ondersteund via normale ondersteuningskanalen.
+Virtual Network NAT en de NAT-gateway resource zijn beschikbaar in alle regio's van alle Azure-Cloud [regio's](https://azure.microsoft.com/global-infrastructure/regions/).
 
 ## <a name="suggestions"></a>Suggesties
 
 We willen graag weten hoe we de service kunnen verbeteren. Doe een voorstel en stem op wat we hierna moeten bouwen op [UserVoice voor NAT](https://aka.ms/natuservoice).
-
 
 ## <a name="limitations"></a>Beperkingen
 

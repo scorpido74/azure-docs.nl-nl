@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 008d5f22a48fdd31c90e63643adc94b26a975ca2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 00219dbebb8e84c21b9e5b84cf71309c63fc518e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589364"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855968"
 ---
 # <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
@@ -39,18 +39,19 @@ Neem eerst de volgende pakketten op in uw project om de .NET SDK en verificatie 
 
 Afhankelijk van uw hulp middelen kunt u de pakketten toevoegen met behulp van Visual Studio package manager of het `dotnet` opdracht regel programma. 
 
-Als u wilt verifiëren met de .NET SDK, gebruikt u een van de methoden voor het verkrijgen van referenties die zijn gedefinieerd in de [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) -bibliotheek.
-
-Hier volgen twee die veel worden gebruikt: 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet). Deze methode is bedoeld voor interactieve toepassingen en brengt een webbrowser voor verificatie.
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet). Deze methode werkt goed in gevallen waarin u [beheerde identiteiten (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)nodig hebt, bijvoorbeeld bij het werken met Azure functions. 
-
 U hebt ook het volgende nodig met-instructies:
 
 ```csharp
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
+Als u wilt verifiëren met de .NET SDK, gebruikt u een van de methoden voor het verkrijgen van referenties die zijn gedefinieerd in de [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) -bibliotheek. Hier volgen twee die vaak worden gebruikt (zelfs samen in dezelfde toepassing):
+
+* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) is bedoeld voor interactieve toepassingen en kan worden gebruikt voor het maken van een geverifieerde SDK-client
+* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) werkt prima in gevallen waarin u beheerde identiteiten (MSI) nodig hebt, en is een goede kandidaat voor het werken met Azure functions
+
+### <a name="interactivebrowsercredential-method"></a>Methode InteractiveBrowserCredential
+De methode [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) is bedoeld voor interactieve toepassingen en brengt een webbrowser voor verificatie.
 
 Als u de interactieve browser referenties wilt gebruiken om een geverifieerde SDK-client te maken, voegt u de volgende code toe:
 
@@ -79,6 +80,8 @@ try
 >[!NOTE]
 > Hoewel u de client-ID, Tenant-ID en instantie-URL rechtstreeks in de code kunt plaatsen zoals hierboven wordt weer gegeven, is het een goed idee om uw code deze waarden te laten ophalen uit een configuratie bestand of omgevings variabele.
 
+### <a name="managedidentitycredential-method"></a>Methode ManagedIdentityCredential
+ De methode [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) werkt prima in gevallen waar u [beheerde identiteiten (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)nodig hebt, bijvoorbeeld bij het werken met Azure functions.
 In een Azure-functie kunt u de referenties van de beheerde identiteit als volgt gebruiken:
 
 ```csharp

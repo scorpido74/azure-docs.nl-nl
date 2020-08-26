@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 6f633a585e4fa6ebd12e8d12408847b5ee758855
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513138"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855919"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Technische details over door platforms ondersteunde migratie van klassiek naar Azure Resource Manager
 
@@ -33,7 +33,7 @@ Ten eerste is het belang rijk dat u begrijpt wat het verschil is tussen bewerkin
 
 Het gegevens vlak is hetzelfde als het klassieke implementatie model en Resource Manager-stacks. Het verschil is dat tijdens het migratie proces micro soft de weer gave van de resources uit het klassieke implementatie model vertaalt naar die in de Resource Manager-stack. Als gevolg hiervan moet u nieuwe hulpprogram ma's, Api's en Sdk's gebruiken om uw resources te beheren in de Resource Manager-stack.
 
-![Diagram waarin het verschil tussen het beheer-en besturings vlak en het gegevens vlak wordt weer gegeven](~/articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![Diagram waarin het verschil tussen het beheer-en besturings vlak en het gegevens vlak wordt weer gegeven](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -52,7 +52,7 @@ Voordat u de migratie start:
 
 De migratie werk stroom is als volgt:
 
-![Diagram waarin de migratie werk stroom wordt weer gegeven](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![Diagram waarin de migratie werk stroom wordt weer gegeven](windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > De bewerkingen die in de volgende secties worden beschreven, zijn alle idempotent. Als er een ander probleem is dan een niet-ondersteunde functie of een configuratie fout, voert u de bewerking voorbereiden, afbreken of door voeren opnieuw uit. Azure probeert de actie opnieuw uit te stellen.
@@ -94,17 +94,17 @@ Azure start de migratie van meta gegevens van het klassieke implementatie model 
 Nadat de voor bereiding is voltooid, hebt u de mogelijkheid om de resources te visualiseren in het klassieke implementatie model en in Resource Manager. Voor elke cloudservice in het klassieke implementatiemodel maakt het Azure-platform een resourcegroepnaam met de indeling `cloud-service-name>-Migrated`.
 
 > [!NOTE]
-> Het is niet mogelijk om de naam te selecteren van een resource groep die is gemaakt voor gemigreerde resources (dat wil zeggen, "-gemigreerd"). Nadat de migratie is voltooid, kunt u de functie verplaatsen van Azure Resource Manager echter gebruiken om resources te verplaatsen naar een resource groep die u wilt. Zie voor meer informatie [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](~/articles/resource-group-move-resources.md).
+> Het is niet mogelijk om de naam te selecteren van een resource groep die is gemaakt voor gemigreerde resources (dat wil zeggen, "-gemigreerd"). Nadat de migratie is voltooid, kunt u de functie verplaatsen van Azure Resource Manager echter gebruiken om resources te verplaatsen naar een resource groep die u wilt. Zie voor meer informatie [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Met de volgende twee scherm afbeeldingen wordt het resultaat weer gegeven na een geslaagde voor bereiding. De eerste bevat een resource groep die de oorspronkelijke Cloud service bevat. De tweede bevat de nieuwe '-gemigreerde ' resource groep die de equivalente Azure Resource Manager resources bevat.
 
-![Scherm afbeelding waarin de oorspronkelijke Cloud service wordt weer gegeven](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![Scherm afbeelding waarin de oorspronkelijke Cloud service wordt weer gegeven](windows/media/migration-classic-resource-manager/portal-classic.png)
 
-![Scherm opname van Azure Resource Manager resources in de voorbereidings bewerking](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![Scherm opname van Azure Resource Manager resources in de voorbereidings bewerking](windows/media/migration-classic-resource-manager/portal-arm.png)
 
 Hier ziet u een voor achtergrond van uw resources na het volt ooien van de voorbereidings fase. Houd er rekening mee dat de resource in het gegevens vlak hetzelfde is. Deze wordt weer gegeven in het beheer vlak (klassiek implementatie model) en het besturings vlak (Resource Manager).
 
-![Diagram van de voorbereidings fase](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![Diagram van de voorbereidings fase](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > Vm's die zich niet in een virtueel netwerk in het klassieke implementatie model bevinden, worden in deze fase van de migratie gestopt en opgeheven.
@@ -124,7 +124,7 @@ Als er problemen zijn, kunt u altijd de migratie altijd afbreken en terugkeren n
 ### <a name="abort"></a>Afbreken
 Dit is een optionele stap als u de wijzigingen in het klassieke implementatie model wilt terugdraaien en de migratie wilt stoppen. Met deze bewerking worden de meta gegevens van Resource Manager (gemaakt in de stap voorbereiden) voor uw resources verwijderd. 
 
-![Diagram van de stap afbreken](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![Diagram van de stap afbreken](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,18 +139,18 @@ Nadat de validatie is voltooid, kunt u de migratie doorvoeren. Resources worden 
 >
 >
 
-![Diagram van commit-stap](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![Diagram van commit-stap](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>Migratie stroomdiagram
 
 Hier volgt een stroom diagram dat laat zien hoe u kunt door gaan met de migratie:
 
-![Schermafbeelding van de migratiestappen](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Schermafbeelding van de migratiestappen](windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Vertaling van het klassieke implementatie model naar Resource Manager-resources
 U vindt het klassieke implementatie model en de Resource Manager-weer gave van de resources in de volgende tabel. Andere functies en resources worden momenteel niet ondersteund.
 
-| Klassieke weergave | Weergave van de Resource Manager | Opmerkingen |
+| Klassieke weergave | Weergave van de Resource Manager | Notities |
 | --- | --- | --- |
 | Naam cloudservice |DNS-naam |Tijdens de migratie wordt een nieuwe resourcegroep gemaakt voor elke cloudservice met het naamgevingspatroon `<cloudservicename>-migrated`. Deze resourcegroep bevat al uw resources. De naam van de cloudservice wordt een DNS-naam die is gekoppeld aan het openbare IP-adres. |
 | Virtuele machine |Virtuele machine |VM-specifieke eigenschappen worden ongewijzigd gemigreerd. Bepaalde osProfile-gegevens, zoals computer naam, worden niet opgeslagen in het klassieke implementatie model en blijven leeg na de migratie. |

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6344cb5f1a4bd52395378f97ba2848eeec336572
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c1550b941c6d0f58feba7d505c7206993e14226b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817014"
+ms.locfileid: "88856071"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Een SaaS-aanbieding maken in de commerciële Marketplace
 
@@ -234,7 +234,7 @@ Voor **waarden voor aangepaste aanpassingen aan het Standard-contract voor de co
 
 #### <a name="terms-and-conditions"></a>Voorwaarden
 
-Als u uw eigen aangepaste voor waarden wilt opgeven, kunt u ervoor kiezen deze in het veld voor waarden in te voeren. U kunt Maxi maal 10.000 tekens tekst in dit veld invoeren. Als voor de voor waarden een langere beschrijving is vereist, voert u in dit veld een koppeling naar een enkele URL in waarin u de voor waarden kunt vinden. Het wordt weer gegeven voor klanten als een actieve koppeling.
+Als u uw eigen aangepaste voor waarden wilt opgeven, kunt u ervoor kiezen deze in het veld voor waarden in te voeren. U kunt Maxi maal 10.000 tekens tekst in dit veld invoeren. Als voor de voor waarden een langere beschrijving is vereist, voert u in dit veld een koppeling naar een enkele URL in waarin u de voor waarden kunt vinden.
 
 Klanten moeten deze voor waarden accepteren voordat ze uw aanbieding kunnen proberen.
 
