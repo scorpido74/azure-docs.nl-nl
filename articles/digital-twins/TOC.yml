@@ -88,6 +88,8 @@
           href: how-to-integrate-maps.md
         - name: Integreren met Azure Time Series Insights
           href: how-to-integrate-time-series-insights.md
+        - name: Integreren met Logic Apps
+          href: how-to-integrate-logic-apps.md
     - name: Problemen oplossen
       items:
         - name: Metrische gegevens weergeven in Azure Monitor

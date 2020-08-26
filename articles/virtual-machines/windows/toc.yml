@@ -282,7 +282,7 @@
               href: ../reserved-vm-instance-size-flexibility.md
         - name: Spot-VM's
           displayName: 'pre-empt, preempt'
-          href: spot-vms.md
+          href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Virtuele Azure-machines zonder tijdelijke schijf
           href: ../azure-vms-no-temp-disk.md
         - name: Naamconventies van Azure VM-groottes
@@ -879,15 +879,15 @@
             - name: Versleuteling op de host inschakelen - PowerShell
               href: disks-enable-host-based-encryption-powershell.md
             - name: Versleuteling op de host inschakelen - Portal
-              href: disks-enable-host-based-encryption-portal.md
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Door de klant beheerde sleutels inschakelen - PowerShell
               href: disks-enable-customer-managed-keys-powershell.md
             - name: Door de klant beheerde sleutels inschakelen - portal
-              href: disks-enable-customer-managed-keys-portal.md
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Dubbele versleuteling in rust inschakelen
               href: disks-enable-double-encryption-at-rest-powershell.md
             - name: Dubbele versleuteling-at-rest inschakelen - Portal
-              href: disks-enable-double-encryption-at-rest-portal.md
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Migratie en conversie
           items:
             - name: Een schijf converteren van Standard naar Premium
@@ -911,7 +911,7 @@
         - name: Niet-gekoppelde schijven zoeken - Portal
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Veelgestelde vragen over schijven
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Netwerken beheren
       href: ps-common-network-ref.md
       items:

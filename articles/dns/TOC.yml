@@ -41,6 +41,10 @@
           href: tutorial-alias-rr.md
 - name: Concepten
   items:
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Openbare DNS
       items:
         - name: Zones en records

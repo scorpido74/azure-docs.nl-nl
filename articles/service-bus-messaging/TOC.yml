@@ -117,6 +117,8 @@
           href: network-security.md
 - name: Instructiegidsen
   items:
+    - name: Verplaatsen tussen regio's
+      href: move-across-regions.md
     - name: Migreren van Azure Service Manager-API's (klassiek) naar Resource Manager-API's
       href: deprecate-service-bus-management.md
     - name: Een naamruimte maken
