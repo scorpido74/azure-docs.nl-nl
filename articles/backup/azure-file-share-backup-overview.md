@@ -3,12 +3,12 @@ title: Over back-ups van Azure-bestands share
 description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c57537519888138698e9add1a687e0018d330cfa
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 1c44d406519c8c0d9fb71b5e94bcb6bcaa1a7253
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757877"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823877"
 ---
 # <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
 
@@ -40,7 +40,7 @@ Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplo
 5. Op basis van het opgegeven beleid activeert de Azure Backup Scheduler op het geplande tijdstip back-ups. Als onderdeel van deze taak wordt de moment opname van de bestands share gemaakt met behulp van de bestands share-API. Alleen de URL van de moment opname wordt opgeslagen in het meta gegevens archief.
 
     >[!NOTE]
-    >De bestands share gegevens worden niet overgebracht naar de back-upservice omdat de back-upservice moment opnamen maakt en beheert die deel uitmaken van uw opslag account en back-ups niet worden overgedragen naar de kluis.
+    >De bestands share gegevens worden niet overgebracht naar de back-upservice omdat de back-upservice moment opnamen maakt en beheert die deel uitmaken van uw opslag account. back-ups worden niet overgedragen naar de kluis.
 
 6. U kunt de inhoud van de Azure-bestands share (afzonderlijke bestanden of de volledige share) herstellen op basis van moment opnamen die beschikbaar zijn op de bron bestands share. Zodra de bewerking is geactiveerd, wordt de URL van de moment opname opgehaald uit het meta gegevens archief en worden de gegevens weer gegeven en overgebracht van de bron momentopname naar de doel bestands share van uw keuze.
 

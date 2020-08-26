@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e03d496881b0d563387ee5a5943b60f456530453
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009219"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825440"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Een profiel container maken met Azure Files en AD DS
 
@@ -35,7 +35,7 @@ Een opslag account instellen:
 
 3. Selecteer **+ toevoegen**.
 
-4. Voer de volgende gegevens in op de pagina **opslag account maken** :
+4. Voer de volgende gegevens in op de pagina  **opslag account maken** :
 
     - Een nieuwe resourcegroep maken.
     - Voer een unieke naam in voor het opslagaccount.
@@ -127,7 +127,7 @@ U kunt als volgt het UNC-pad ophalen:
 
 5. Nadat u de URI hebt gekopieerd, moet u de volgende dingen doen om deze te wijzigen in de UNC:
 
-    - Verwijderen `https://` en vervangen door`\\`
+    - Verwijderen `https://` en vervangen door `\\`
     - Vervang de slash door `/` een back slash `\` .
     - Voeg de naam toe van de bestands share die u hebt gemaakt in [een Azure-bestands share maken](#create-an-azure-file-share) aan het einde van de UNC.
 
@@ -151,15 +151,15 @@ Uw NTFS-machtigingen configureren:
 
 1. Open een opdracht prompt op een VM die is gekoppeld aan een domein.
 
-2. Voer de volgende cmdlet uit om de Azure-bestandsshare te koppelen en een stationsletter toe te wijzen: 
+2. Voer de volgende opdracht uit om de Azure-bestands share te koppelen en een stationsletter toe te wijzen:
 
-     ```powershell
+     ```cmd
      net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
      ```
 
-3. Voer de volgende cmdlet uit om de toegangs machtigingen voor de Azure-bestands share te controleren:
+3. Voer de volgende opdracht uit om de toegangs machtigingen voor de Azure-bestands share te controleren:
 
-    ```powershell
+    ```cmd
     icacls <mounted-drive-letter>:
     ```
 
@@ -167,9 +167,9 @@ Uw NTFS-machtigingen configureren:
 
     Zowel *NT Authority\Authenticated-gebruikers* als *BUILTIN\Users* hebben standaard bepaalde machtigingen. Met deze standaard machtigingen kunnen deze gebruikers de profiel containers van andere gebruikers lezen. Met de machtigingen die zijn beschreven in [opslag machtigingen configureren voor gebruik met profiel containers en Office-containers](/fslogix/fslogix-storage-config-ht) kunnen gebruikers echter niet de profiel containers van de andere personen lezen.
 
-4. Voer de volgende cmdlets uit om ervoor te zorgen dat uw Windows virtueel-bureaublad gebruikers hun eigen profiel containers kunnen maken, terwijl de toegang tot de profiel container van andere gebruikers wordt geblokkeerd.
+4. Voer de volgende opdrachten uit om uw Windows virtueel-bureaublad gebruikers in staat te stellen hun eigen profiel container te maken en de toegang tot hun profiel containers van andere gebruikers te blok keren.
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
@@ -181,7 +181,7 @@ Uw NTFS-machtigingen configureren:
 
      Bijvoorbeeld:
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"

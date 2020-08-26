@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 802b7919abcd510db68396b2d9576f8cacc06a6e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 74d4d01d535f7148d3c3878a431dac2f951ae134
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756007"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827372"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -343,7 +343,7 @@ Gebruik de volgende stappen om MABS bij te werken:
 
    > [!NOTE]
    >
-   > Sluit niet af terwijl uw SQL-exemplaar wordt geüpgraded. Als u een upgrade uitvoert, wordt het SQL Reporting-exemplaar verwijderd en mislukt het opnieuw bijwerken van MABS.
+   > Sluit niet af terwijl uw SQL-exemplaar wordt bijgewerkt. Als u afsluit, wordt het exemplaar van SQL Reporting verwijderd en zal er geen poging worden gedaan om de MABS opnieuw bij te werken.
 
    > [!IMPORTANT]
    >

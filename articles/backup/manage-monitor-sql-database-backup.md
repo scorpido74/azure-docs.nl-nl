@@ -3,12 +3,12 @@ title: SQL Server Db's op een virtuele Azure-machine beheren en controleren
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases die worden uitgevoerd op een virtuele machine van Azure kunt beheren en controleren.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: c9d8b9b56820182f7bf7866d38d40df8f5488a7a
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 26a1a6cf7bc011edce61a8bb60926dad2cb29a16
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756313"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826630"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Back-ups van SQL Server-databases beheren en bewaken
 
@@ -53,7 +53,7 @@ U kunt op verschillende manieren stoppen met het maken van een back-up van een S
 
 Houd rekening met het volgende als u ervoor kiest de herstelpunten intact te laten:
 
-- Alle herstelpunten blijven voor onbepaalde tijd intact; alle verwijderbewerkingen stoppen bij het stoppen van de beveiliging met behoud van gegevens.
+- Alle herstel punten blijven intact en alle Pruning stopt bij het stoppen van de beveiliging met behoud van gegevens.
 - Er worden kosten in rekening gebracht voor het beveiligde exemplaar en de verbruikte opslag. Zie [Azure backup prijzen](https://azure.microsoft.com/pricing/details/backup/)voor meer informatie.
 - Als u een gegevensbron verwijdert zonder back-ups te stoppen, mislukken nieuwe back-ups. Oude herstel punten verlopen volgens het beleid, maar er wordt altijd één laatste herstel punt bewaard totdat u de back-ups stopt en de gegevens verwijdert.
 

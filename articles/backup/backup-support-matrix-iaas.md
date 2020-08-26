@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: f0783d937178c88265c33c8b7339f71520506fc5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816113"
+ms.locfileid: "88825253"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -49,7 +49,7 @@ Back-ups per dag (via DPM/MABS) | Twee geplande back-ups per dag.
 Maandelijkse/jaarlijkse back-up| Niet ondersteund bij het maken van een back-up met de Azure VM-extensie. Alleen dagelijks en wekelijks worden ondersteund.<br/><br/> U kunt het beleid zo instellen dat dagelijks/wekelijks back-ups worden bewaard voor een maandelijks/jaarlijks Bewaar periode.
 Automatische aanpassing van de klok | Niet ondersteund.<br/><br/> Azure Backup wordt niet automatisch aangepast aan de zomer-en winter tijd wanneer een back-up van een virtuele machine wordt gemaakt.<br/><br/>  Pas het beleid waar nodig handmatig aan.
 [Beveiligings functies voor hybride back-ups](./backup-azure-security-feature.md) |Het uitschakelen van beveiligings functies wordt niet ondersteund.
-Maak een back-up van de VM waarvan de machine tijd is gewijzigd | Niet ondersteund.<br/><br/> Als de machine tijd wordt gewijzigd in een toekomstige datum-tijd na het inschakelen van de back-up voor die VM; maar zelfs als de tijd wijziging wordt teruggedraaid, is een geslaagde back-up niet gegarandeerd.
+Maak een back-up van de VM waarvan de machine tijd is gewijzigd | Niet ondersteund.<br/><br/> Als de tijd van de machine wordt gewijzigd in een toekomstige datum-tijd na het inschakelen van de back-up voor die VM, wordt een geslaagde back-up echter niet gegarandeerd.
 Azure-Vm's in [schaal sets voor virtuele machines](../virtual-machine-scale-sets/overview.md) | Back-up en herstel worden ondersteund voor virtuele machines waarop de [Orchestration-modus](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) is ingesteld op 3. <br><br>Beschikbaarheids sets worden niet ondersteund.
 
 ## <a name="operating-system-support-windows"></a>Ondersteuning voor besturings systeem (Windows)
