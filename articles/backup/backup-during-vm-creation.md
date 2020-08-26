@@ -3,12 +3,12 @@ title: Back-up inschakelen wanneer u een Azure-VM maakt
 description: Hierin wordt beschreven hoe u back-ups inschakelt wanneer u een Azure VM maakt met Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 8612061ca21b4609600f5b9822ca4f6fe3b673f1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: bbc00239a34fc0eb88991fcabd91c5a0eb7dbea7
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825950"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892300"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Back-up inschakelen wanneer u een Azure-VM maakt
 
@@ -66,7 +66,7 @@ Punten om te noteren:
 4. De eerste `<alpha-numeric-string>` is verplicht wanneer de tweede na ' n ' optioneel is. Dit geldt alleen als u een aangepaste naam wilt opgeven. Als u niets opgeeft in een van de tekst vakken, wordt de standaard naam gebruikt.
 5. U kunt de naam van de RG bewerken door het beleid te wijzigen als en wanneer dat nodig is. Als het naam patroon wordt gewijzigd, wordt er nieuwe RPs in de nieuwe RG gemaakt. De oude RPs blijft echter wel aanwezig in de oude RG en niet worden verplaatst, omdat de RP-verzameling geen ondersteuning biedt voor het verplaatsen van resources. Uiteindelijk krijgt de RPs de garbage verzameld wanneer de punten verlopen.
 ![Naam wijzigen bij het wijzigen van beleid](./media/backup-during-vm-creation/modify-policy.png)
-6. Het is raadzaam de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen.
+6. Het is raadzaam om de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen.
 
 Als u de resource groep Azure Backup wilt configureren voor Virtual Machines met behulp van Power shell, raadpleegt u [Azure backup resource groep maken tijdens de retentie van de moment opname](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention).
 

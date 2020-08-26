@@ -4,15 +4,16 @@ description: Dit artikel helpt u te bepalen welke reservering u het beste kunt a
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 909d712e0c8e8ea242c27ab93f16a36e22d36aae
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759887"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684742"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>Bepalen welke reservering u moet aanschaffen
 
@@ -38,7 +39,7 @@ Als u de analyse wilt beperken tot het gebruik van in aanmerking komende VM’s,
 
 Negeer resources met een gebruik van minder dan 24 uur per dag.
 
-Als u de instantiegrootte wilt analyseren op familieniveau, kunt u de flexibiliteitswaarden voor de instantiegrootte ophalen uit [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv). Combineer de waarden met uw gegevens om de analyse uit te voeren. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie over flexibiliteit met instantiegrootten.
+Als u de instantiegrootte wilt analyseren op familieniveau, kunt u de flexibiliteitswaarden voor de instantiegrootte ophalen uit [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv). Combineer de waarden met uw gegevens om de analyse uit te voeren. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/reserved-vm-instance-size-flexibility.md) voor meer informatie over flexibiliteit met instantiegrootten.
 
 ### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Gebruik analyseren voor de aankoop van een gereserveerd exemplaar voor Azure Synapse Analytics
 

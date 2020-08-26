@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3d810d14dd6b49bc054e3844a60ec33c62dc084c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271240"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891858"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uw app publiceren in de app-galerie van Azure AD
 
@@ -98,7 +98,7 @@ OAuth 2,0 is een protocol voor de [industrie standaard](https://oauth.net/2/) vo
 
 ### <a name="saml-20-or-ws-fed"></a>SAML 2,0 of WS-voeder
 
-SAML is een volwassene en uitgebreide, eenmalige aanmelding voor webtoepassingen. Zie [hoe Azure het SAML-protocol gebruikt](active-directory-saml-protocol-reference.md)voor meer informatie over hoe Azure SAML gebruikt. 
+SAML is een volwassene en uitgebreide, [eenmalige aanmelding](https://www.oasis-open.org/standards#samlv2.0) voor webtoepassingen. Zie [hoe Azure het SAML-protocol gebruikt](active-directory-saml-protocol-reference.md)voor meer informatie over hoe Azure SAML gebruikt. 
 
 Webservices-federatie (WS-voeder) is een [industrie standaard](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) die algemeen wordt gebruikt voor webtoepassingen die zijn ontwikkeld met behulp van het .NET-platform.
 

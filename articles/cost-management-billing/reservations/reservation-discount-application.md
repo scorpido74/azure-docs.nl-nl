@@ -4,15 +4,16 @@ description: Dit artikel helpt u te begrijpen hoe kortingen voor gereserveerde i
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: cd09bb7bde759c543b066070c5d2450404949610
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 1c038e896a9f9fc65c3b2201b3e763e966285c56
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627106"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684674"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>Toepassen van een reserveringskorting
 
@@ -38,7 +39,7 @@ Wanneer u een reservering koopt, kan de korting ook worden toegepast op andere i
 
 Service-abonnementen:
 
-- Gereserveerde VM-instanties: Wanneer u de reservering koopt en **Geoptimaliseerd voor flexibiliteit van de instantiegrootte** selecteert, hangt de kortingsdekking af van de VM-grootte die u selecteert. De reservering kan worden toegepast op de VM-grootten in de groep met series van dezelfde grootte. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie.
+- Gereserveerde VM-instanties: Wanneer u de reservering koopt en **Geoptimaliseerd voor flexibiliteit van de instantiegrootte** selecteert, hangt de kortingsdekking af van de VM-grootte die u selecteert. De reservering kan worden toegepast op de VM-grootten in de groep met series van dezelfde grootte. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/reserved-vm-instance-size-flexibility.md) voor meer informatie.
 - Gereserveerde Azure Storage-capaciteit: U kunt gereserveerde capaciteit voor standaard Azure Storage-accounts aanschaffen in eenheden van 100 TiB of 1 PiB per maand. Raadpleeg [Blok-blob-prijzen](https://azure.microsoft.com/pricing/details/storage/blobs/) voor informatie over welke regio's gereserveerde Azure Storage-capaciteit ondersteunen. Gereserveerde Azure Storage-capaciteit is beschikbaar voor alle lagen (dynamisch, statisch en archief) en voor alle replicatieconfiguraties (LRS, GRS of ZRS).
 - Gereserveerde capaciteit voor SQL Database: De kortingsdekking hangt af van de prestatielaag die u kiest. Zie [Begrip van de manier waarop Azure-reserveringskorting wordt toegepast](understand-reservation-charges.md) voor meer informatie.
 - Gereserveerde Azure Cosmos DB-capaciteit: De kortingsdekking hangt af van de ingerichte doorvoer. Zie [Begrip van de manier waarop Azure Cosmos DB-reserveringskorting wordt toegepast](understand-cosmosdb-reservation-charges.md) voor meer informatie.

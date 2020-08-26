@@ -3,15 +3,16 @@ title: Inzicht in korting voor gereserveerde VM-instanties in Azure
 description: Meer informatie over hoe korting voor gereserveerde VM-instanties in Azure wordt toegepast op het gebruik van virtuele machines.
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192215"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686442"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Toepassing van de reserveringskorting op virtuele machines
 
@@ -93,7 +94,7 @@ Als de instelling aan staat, worden de reserveringskortingen automatisch toegepa
 
 Controleer de *ConsumedService*-waarde in uw gebruiksgegevens om te bepalen of het gebruik in aanmerking komt voor reserveringskortingen.
 
-Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie over flexibiliteit met instantiegrootten.
+Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/reserved-vm-instance-size-flexibility.md) voor meer informatie over flexibiliteit met instantiegrootten.
 
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen

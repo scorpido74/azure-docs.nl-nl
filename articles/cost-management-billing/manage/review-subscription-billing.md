@@ -3,15 +3,16 @@ title: Factureringsgegevens van het Azure-abonnement controleren met REST API
 description: Meer informatie over het gebruik van Azure REST API's om de factureringsgegevens van het abonnement te controleren. U kunt filters gebruiken om de resultaten aan te passen.
 author: lleonard-msft
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ac5bbc1d93347654cea118ea9521d6074a9af7c8
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 345535ae52b9a271bcee5ff7a2b651af144624f1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461830"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684708"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Facturering van abonnementen controleren met behulp van REST-API's
 
